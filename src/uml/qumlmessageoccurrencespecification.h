@@ -46,7 +46,6 @@
 #include <QtUml/QUmlOccurrenceSpecification>
 #include <QtUml/QUmlMessageEnd>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -56,16 +55,13 @@ QT_MODULE(QtUml)
 class Q_UML_EXPORT QUmlMessageOccurrenceSpecification : public QUmlOccurrenceSpecification, public QUmlMessageEnd
 {
 public:
-    explicit QUmlMessageOccurrenceSpecification(bool createQObject = true);
+    explicit QUmlMessageOccurrenceSpecification(bool createQModelingObject = true);
     virtual ~QUmlMessageOccurrenceSpecification();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
 
 protected:
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

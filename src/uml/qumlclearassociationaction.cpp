@@ -71,26 +71,24 @@
 
     \brief A clear association action is an action that destroys all links of an association in which a particular object participates.
  */
-QUmlClearAssociationAction::QUmlClearAssociationAction(bool createQObject) :
+QUmlClearAssociationAction::QUmlClearAssociationAction(bool createQModelingObject) :
     _association(0),
     _object(0)
 {
-    if (createQObject)
-        _qObject = new QUmlClearAssociationActionObject(this);
-    setGroupProperties();
-    setPropertyData();
+    if (createQModelingObject)
+        _qModelingObject = qobject_cast<QModelingObject *>(new QUmlClearAssociationActionObject(this));
 }
 
 QUmlClearAssociationAction::~QUmlClearAssociationAction()
 {
-    if (!deletingFromQObject) {
-        if (_qObject)
-            _qObject->setProperty("deletingFromModelingObject", true);
-        delete _qObject;
+    if (!deletingFromQModelingObject) {
+        if (_qModelingObject)
+            _qModelingObject->setProperty("deletingFromModelingObject", true);
+        delete _qModelingObject;
     }
 }
 
-QModelingObject *QUmlClearAssociationAction::clone() const
+QModelingElement *QUmlClearAssociationAction::clone() const
 {
     QUmlClearAssociationAction *c = new QUmlClearAssociationAction;
     foreach (QUmlComment *element, ownedComments())
@@ -148,8 +146,8 @@ void QUmlClearAssociationAction::setAssociation(QUmlAssociation *association)
 
     if (_association != association) {
         _association = association;
-        if (association && association->asQObject() && this->asQObject())
-            QObject::connect(association->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setAssociation()));
+        if (association && association->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(association->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setAssociation()));
     }
 }
 
@@ -172,71 +170,14 @@ void QUmlClearAssociationAction::setObject(QUmlInputPin *object)
         removeInput(_object);
 
         _object = object;
-        if (object && object->asQObject() && this->asQObject())
-            QObject::connect(object->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setObject()));
-        object->asQObject()->setParent(this->asQObject());
+        if (object && object->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(object->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setObject()));
+        object->asQModelingObject()->setParent(this->asQModelingObject());
 
         // Adjust subsetted properties
         if (object) {
             addInput(object);
         }
     }
-}
-
-void QUmlClearAssociationAction::setGroupProperties()
-{
-    const QMetaObject *metaObject = _qObject->metaObject();
-
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
-    _groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isLeaf"))));
-    _groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinitionContexts"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("activity"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inGroups"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inInterruptibleRegions"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inPartitions"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inStructuredNode"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("incomings"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("outgoings"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinedNodes"))));
-    _groupProperties.insert(QStringLiteral("QUmlExecutableNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("handlers"))));
-    _groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("context"))));
-    _groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inputs"))));
-    _groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isLocallyReentrant"))));
-    _groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("localPostconditions"))));
-    _groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("localPreconditions"))));
-    _groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("outputs"))));
-    _groupProperties.insert(QStringLiteral("QUmlClearAssociationAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("association"))));
-    _groupProperties.insert(QStringLiteral("QUmlClearAssociationAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("object"))));
-}
-
-void QUmlClearAssociationAction::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClearAssociationAction")][QStringLiteral("association")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClearAssociationAction")][QStringLiteral("association")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlClearAssociationAction");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClearAssociationAction")][QStringLiteral("association")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClearAssociationAction")][QStringLiteral("association")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClearAssociationAction")][QStringLiteral("association")][QtModeling::DocumentationRole] = QStringLiteral("Association to be cleared.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClearAssociationAction")][QStringLiteral("association")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClearAssociationAction")][QStringLiteral("association")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClearAssociationAction")][QStringLiteral("association")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClearAssociationAction")][QStringLiteral("object")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClearAssociationAction")][QStringLiteral("object")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlClearAssociationAction");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClearAssociationAction")][QStringLiteral("object")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClearAssociationAction")][QStringLiteral("object")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClearAssociationAction")][QStringLiteral("object")][QtModeling::DocumentationRole] = QStringLiteral("Gives the input pin from which is obtained the object whose participation in the association is to be cleared.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClearAssociationAction")][QStringLiteral("object")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClearAssociationAction")][QStringLiteral("object")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Action-input");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClearAssociationAction")][QStringLiteral("object")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
 }
 

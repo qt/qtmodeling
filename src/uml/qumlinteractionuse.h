@@ -45,7 +45,6 @@
 
 #include <QtUml/QUmlInteractionFragment>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -60,10 +59,10 @@ class QUmlValueSpecification;
 class Q_UML_EXPORT QUmlInteractionUse : public QUmlInteractionFragment
 {
 public:
-    explicit QUmlInteractionUse(bool createQObject = true);
+    explicit QUmlInteractionUse(bool createQModelingObject = true);
     virtual ~QUmlInteractionUse();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
     const QSet<QUmlGate *> actualGates() const;
@@ -85,9 +84,6 @@ protected:
     QUmlInteraction *_refersTo;
     QUmlValueSpecification *_returnValue;
     QUmlProperty *_returnValueRecipient;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

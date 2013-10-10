@@ -70,28 +70,26 @@
 
     \brief A read is classified object action is an action that determines whether a runtime object is classified by a given classifier.
  */
-QUmlReadIsClassifiedObjectAction::QUmlReadIsClassifiedObjectAction(bool createQObject) :
+QUmlReadIsClassifiedObjectAction::QUmlReadIsClassifiedObjectAction(bool createQModelingObject) :
     _classifier(0),
     _isDirect(false),
     _object(0),
     _result(0)
 {
-    if (createQObject)
-        _qObject = new QUmlReadIsClassifiedObjectActionObject(this);
-    setGroupProperties();
-    setPropertyData();
+    if (createQModelingObject)
+        _qModelingObject = qobject_cast<QModelingObject *>(new QUmlReadIsClassifiedObjectActionObject(this));
 }
 
 QUmlReadIsClassifiedObjectAction::~QUmlReadIsClassifiedObjectAction()
 {
-    if (!deletingFromQObject) {
-        if (_qObject)
-            _qObject->setProperty("deletingFromModelingObject", true);
-        delete _qObject;
+    if (!deletingFromQModelingObject) {
+        if (_qModelingObject)
+            _qModelingObject->setProperty("deletingFromModelingObject", true);
+        delete _qModelingObject;
     }
 }
 
-QModelingObject *QUmlReadIsClassifiedObjectAction::clone() const
+QModelingElement *QUmlReadIsClassifiedObjectAction::clone() const
 {
     QUmlReadIsClassifiedObjectAction *c = new QUmlReadIsClassifiedObjectAction;
     foreach (QUmlComment *element, ownedComments())
@@ -152,8 +150,8 @@ void QUmlReadIsClassifiedObjectAction::setClassifier(QUmlClassifier *classifier)
 
     if (_classifier != classifier) {
         _classifier = classifier;
-        if (classifier && classifier->asQObject() && this->asQObject())
-            QObject::connect(classifier->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setClassifier()));
+        if (classifier && classifier->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(classifier->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setClassifier()));
     }
 }
 
@@ -173,7 +171,7 @@ void QUmlReadIsClassifiedObjectAction::setDirect(bool isDirect)
 
     if (_isDirect != isDirect) {
         _isDirect = isDirect;
-        _modifiedResettableProperties << QStringLiteral("isDirect");
+        _qModelingObject->modifiedResettableProperties() << QStringLiteral("isDirect");
     }
 }
 
@@ -196,9 +194,9 @@ void QUmlReadIsClassifiedObjectAction::setObject(QUmlInputPin *object)
         removeInput(_object);
 
         _object = object;
-        if (object && object->asQObject() && this->asQObject())
-            QObject::connect(object->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setObject()));
-        object->asQObject()->setParent(this->asQObject());
+        if (object && object->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(object->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setObject()));
+        object->asQModelingObject()->setParent(this->asQModelingObject());
 
         // Adjust subsetted properties
         if (object) {
@@ -226,91 +224,14 @@ void QUmlReadIsClassifiedObjectAction::setResult(QUmlOutputPin *result)
         removeOutput(_result);
 
         _result = result;
-        if (result && result->asQObject() && this->asQObject())
-            QObject::connect(result->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setResult()));
-        result->asQObject()->setParent(this->asQObject());
+        if (result && result->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(result->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setResult()));
+        result->asQModelingObject()->setParent(this->asQModelingObject());
 
         // Adjust subsetted properties
         if (result) {
             addOutput(result);
         }
     }
-}
-
-void QUmlReadIsClassifiedObjectAction::setGroupProperties()
-{
-    const QMetaObject *metaObject = _qObject->metaObject();
-
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
-    _groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isLeaf"))));
-    _groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinitionContexts"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("activity"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inGroups"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inInterruptibleRegions"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inPartitions"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inStructuredNode"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("incomings"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("outgoings"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinedNodes"))));
-    _groupProperties.insert(QStringLiteral("QUmlExecutableNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("handlers"))));
-    _groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("context"))));
-    _groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inputs"))));
-    _groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isLocallyReentrant"))));
-    _groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("localPostconditions"))));
-    _groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("localPreconditions"))));
-    _groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("outputs"))));
-    _groupProperties.insert(QStringLiteral("QUmlReadIsClassifiedObjectAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("classifier"))));
-    _groupProperties.insert(QStringLiteral("QUmlReadIsClassifiedObjectAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isDirect"))));
-    _groupProperties.insert(QStringLiteral("QUmlReadIsClassifiedObjectAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("object"))));
-    _groupProperties.insert(QStringLiteral("QUmlReadIsClassifiedObjectAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("result"))));
-}
-
-void QUmlReadIsClassifiedObjectAction::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadIsClassifiedObjectAction")][QStringLiteral("classifier")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadIsClassifiedObjectAction")][QStringLiteral("classifier")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlReadIsClassifiedObjectAction");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadIsClassifiedObjectAction")][QStringLiteral("classifier")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadIsClassifiedObjectAction")][QStringLiteral("classifier")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadIsClassifiedObjectAction")][QStringLiteral("classifier")][QtModeling::DocumentationRole] = QStringLiteral("The classifier against which the classification of the input object is tested.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadIsClassifiedObjectAction")][QStringLiteral("classifier")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadIsClassifiedObjectAction")][QStringLiteral("classifier")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadIsClassifiedObjectAction")][QStringLiteral("classifier")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadIsClassifiedObjectAction")][QStringLiteral("isDirect")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadIsClassifiedObjectAction")][QStringLiteral("isDirect")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlReadIsClassifiedObjectAction");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadIsClassifiedObjectAction")][QStringLiteral("isDirect")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadIsClassifiedObjectAction")][QStringLiteral("isDirect")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadIsClassifiedObjectAction")][QStringLiteral("isDirect")][QtModeling::DocumentationRole] = QStringLiteral("Indicates whether the classifier must directly classify the input object.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadIsClassifiedObjectAction")][QStringLiteral("isDirect")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadIsClassifiedObjectAction")][QStringLiteral("isDirect")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadIsClassifiedObjectAction")][QStringLiteral("isDirect")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadIsClassifiedObjectAction")][QStringLiteral("object")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadIsClassifiedObjectAction")][QStringLiteral("object")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlReadIsClassifiedObjectAction");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadIsClassifiedObjectAction")][QStringLiteral("object")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadIsClassifiedObjectAction")][QStringLiteral("object")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadIsClassifiedObjectAction")][QStringLiteral("object")][QtModeling::DocumentationRole] = QStringLiteral("Holds the object whose classification is to be tested.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadIsClassifiedObjectAction")][QStringLiteral("object")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadIsClassifiedObjectAction")][QStringLiteral("object")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Action-input");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadIsClassifiedObjectAction")][QStringLiteral("object")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadIsClassifiedObjectAction")][QStringLiteral("result")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadIsClassifiedObjectAction")][QStringLiteral("result")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlReadIsClassifiedObjectAction");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadIsClassifiedObjectAction")][QStringLiteral("result")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadIsClassifiedObjectAction")][QStringLiteral("result")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadIsClassifiedObjectAction")][QStringLiteral("result")][QtModeling::DocumentationRole] = QStringLiteral("After termination of the action, will hold the result of the test.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadIsClassifiedObjectAction")][QStringLiteral("result")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadIsClassifiedObjectAction")][QStringLiteral("result")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Action-output");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadIsClassifiedObjectAction")][QStringLiteral("result")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
 }
 

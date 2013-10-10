@@ -47,7 +47,6 @@
 
 
 #include <QtUml/QtUmlNamespace>
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -60,10 +59,10 @@ class QUmlStateMachine;
 class Q_UML_EXPORT QUmlPseudostate : public QUmlVertex
 {
 public:
-    explicit QUmlPseudostate(bool createQObject = true);
+    explicit QUmlPseudostate(bool createQModelingObject = true);
     virtual ~QUmlPseudostate();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
     QtUml::PseudostateKind kind() const;
@@ -77,9 +76,6 @@ protected:
     QtUml::PseudostateKind _kind;
     QUmlState *_state;
     QUmlStateMachine *_stateMachine;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

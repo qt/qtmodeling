@@ -45,7 +45,6 @@
 
 #include <QtUml/QUmlAction>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -58,10 +57,10 @@ class QUmlInputPin;
 class Q_UML_EXPORT QUmlReclassifyObjectAction : public QUmlAction
 {
 public:
-    explicit QUmlReclassifyObjectAction(bool createQObject = true);
+    explicit QUmlReclassifyObjectAction(bool createQModelingObject = true);
     virtual ~QUmlReclassifyObjectAction();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
     bool isReplaceAll() const;
@@ -80,9 +79,6 @@ protected:
     QSet<QUmlClassifier *> _newClassifiers;
     QUmlInputPin *_object;
     QSet<QUmlClassifier *> _oldClassifiers;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

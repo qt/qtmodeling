@@ -45,7 +45,6 @@
 
 #include <QtUml/QUmlElement>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -57,7 +56,7 @@ class Q_UML_EXPORT QUmlRelationship : public virtual QUmlElement
 public:
     virtual ~QUmlRelationship();
 
-    Q_DECL_HIDDEN QModelingObject *clone() const;
+    Q_DECL_HIDDEN virtual QModelingElement *clone() const;
 
     // Owned attributes
     const QSet<QUmlElement *> relatedElements() const;
@@ -68,9 +67,6 @@ protected:
     explicit QUmlRelationship();
 
     QSet<QUmlElement *> _relatedElements;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

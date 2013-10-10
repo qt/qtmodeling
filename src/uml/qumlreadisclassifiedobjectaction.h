@@ -45,7 +45,6 @@
 
 #include <QtUml/QUmlAction>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -59,10 +58,10 @@ class QUmlOutputPin;
 class Q_UML_EXPORT QUmlReadIsClassifiedObjectAction : public QUmlAction
 {
 public:
-    explicit QUmlReadIsClassifiedObjectAction(bool createQObject = true);
+    explicit QUmlReadIsClassifiedObjectAction(bool createQModelingObject = true);
     virtual ~QUmlReadIsClassifiedObjectAction();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
     QUmlClassifier *classifier() const;
@@ -79,9 +78,6 @@ protected:
     bool _isDirect;
     QUmlInputPin *_object;
     QUmlOutputPin *_result;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

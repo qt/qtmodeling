@@ -45,7 +45,6 @@
 
 #include <QtUml/QUmlPackage>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -55,10 +54,10 @@ QT_MODULE(QtUml)
 class Q_UML_EXPORT QUmlModel : public QUmlPackage
 {
 public:
-    explicit QUmlModel(bool createQObject = true);
+    explicit QUmlModel(bool createQModelingObject = true);
     virtual ~QUmlModel();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
     QString viewpoint() const;
@@ -66,9 +65,6 @@ public:
 
 protected:
     QString _viewpoint;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

@@ -43,7 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtCore/QObject>
+#include <QtModeling/QModelingObject>
 
 #include <QtUml/QtUmlNamespace>
 
@@ -54,9 +54,12 @@ QT_BEGIN_NAMESPACE
 QT_MODULE(QtUml)
 
 class QUmlActivityFinalNode;
-class Q_UML_EXPORT QUmlActivityFinalNodeObject : public QObject
+class QModelingObjectPrivate;
+class Q_UML_EXPORT QUmlActivityFinalNodeObject : public QModelingObject
 {
     Q_OBJECT
+    Q_DISABLE_COPY(QUmlActivityFinalNodeObject)
+    Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [Element]
     Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
@@ -87,7 +90,7 @@ class Q_UML_EXPORT QUmlActivityFinalNodeObject : public QObject
     Q_PROPERTY(QSet<QObject *> redefinedNodes READ redefinedNodes)
 
 public:
-    Q_INVOKABLE explicit QUmlActivityFinalNodeObject(QUmlActivityFinalNode *qModelingObject);
+    Q_INVOKABLE explicit QUmlActivityFinalNodeObject(QUmlActivityFinalNode *qModelingElement);
     virtual ~QUmlActivityFinalNodeObject();
 
     // Owned attributes [Element]
@@ -173,6 +176,10 @@ public Q_SLOTS:
     void removeOutgoing(QObject *outgoing);
     void addRedefinedNode(QObject *redefinedNode);
     void removeRedefinedNode(QObject *redefinedNode);
+
+protected:
+    virtual void setGroupProperties();
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

@@ -45,7 +45,6 @@
 
 #include <QtUml/QUmlDataType>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -57,10 +56,10 @@ class QUmlEnumerationLiteral;
 class Q_UML_EXPORT QUmlEnumeration : public QUmlDataType
 {
 public:
-    explicit QUmlEnumeration(bool createQObject = true);
+    explicit QUmlEnumeration(bool createQModelingObject = true);
     virtual ~QUmlEnumeration();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
     const QList<QUmlEnumerationLiteral *> ownedLiterals() const;
@@ -69,9 +68,6 @@ public:
 
 protected:
     QList<QUmlEnumerationLiteral *> _ownedLiterals;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

@@ -43,7 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtCore/QObject>
+#include <QtModeling/QModelingObject>
 
 #include <QtUml/QtUmlNamespace>
 
@@ -54,9 +54,12 @@ QT_BEGIN_NAMESPACE
 QT_MODULE(QtUml)
 
 class QUmlConnector;
-class Q_UML_EXPORT QUmlConnectorObject : public QObject
+class QModelingObjectPrivate;
+class Q_UML_EXPORT QUmlConnectorObject : public QModelingObject
 {
     Q_OBJECT
+    Q_DISABLE_COPY(QUmlConnectorObject)
+    Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [Element]
     Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
@@ -88,7 +91,7 @@ class Q_UML_EXPORT QUmlConnectorObject : public QObject
     Q_PROPERTY(QObject * type READ type WRITE setType)
 
 public:
-    Q_INVOKABLE explicit QUmlConnectorObject(QUmlConnector *qModelingObject);
+    Q_INVOKABLE explicit QUmlConnectorObject(QUmlConnector *qModelingElement);
     virtual ~QUmlConnectorObject();
 
     // Owned attributes [Element]
@@ -175,6 +178,10 @@ public Q_SLOTS:
     void addRedefinedConnector(QObject *redefinedConnector);
     void removeRedefinedConnector(QObject *redefinedConnector);
     void setType(QObject *type = 0);
+
+protected:
+    virtual void setGroupProperties();
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

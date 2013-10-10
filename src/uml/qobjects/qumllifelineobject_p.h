@@ -43,7 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtCore/QObject>
+#include <QtModeling/QModelingObject>
 
 #include <QtUml/QtUmlNamespace>
 
@@ -54,9 +54,12 @@ QT_BEGIN_NAMESPACE
 QT_MODULE(QtUml)
 
 class QUmlLifeline;
-class Q_UML_EXPORT QUmlLifelineObject : public QObject
+class QModelingObjectPrivate;
+class Q_UML_EXPORT QUmlLifelineObject : public QModelingObject
 {
     Q_OBJECT
+    Q_DISABLE_COPY(QUmlLifelineObject)
+    Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [Element]
     Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
@@ -79,7 +82,7 @@ class Q_UML_EXPORT QUmlLifelineObject : public QObject
     Q_PROPERTY(QObject * selector READ selector WRITE setSelector)
 
 public:
-    Q_INVOKABLE explicit QUmlLifelineObject(QUmlLifeline *qModelingObject);
+    Q_INVOKABLE explicit QUmlLifelineObject(QUmlLifeline *qModelingElement);
     virtual ~QUmlLifelineObject();
 
     // Owned attributes [Element]
@@ -137,6 +140,10 @@ public Q_SLOTS:
     void setInteraction(QObject *interaction = 0);
     void setRepresents(QObject *represents = 0);
     void setSelector(QObject *selector = 0);
+
+protected:
+    virtual void setGroupProperties();
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

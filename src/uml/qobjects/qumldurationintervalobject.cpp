@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumldurationintervalobject_p.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlDurationInterval>
 #include <QtUml/QUmlComment>
@@ -56,16 +57,18 @@
 
 QT_BEGIN_NAMESPACE
 
-QUmlDurationIntervalObject::QUmlDurationIntervalObject(QUmlDurationInterval *qModelingObject)
+QUmlDurationIntervalObject::QUmlDurationIntervalObject(QUmlDurationInterval *qModelingElement)
 {
-    setProperty("modelingObject", QVariant::fromValue(static_cast<QModelingObject *>(qModelingObject)));
+    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(qModelingElement)));
+    setGroupProperties();
+    setPropertyData();
 }
 
 QUmlDurationIntervalObject::~QUmlDurationIntervalObject()
 {
     if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingobjectproperty_cast<QUmlDurationInterval *>(this)->deletingFromQObject = true;
-        delete qmodelingobjectproperty_cast<QUmlComment *>(this);
+        qmodelingelementproperty_cast<QUmlDurationInterval *>(this)->deletingFromQModelingObject = true;
+        delete qmodelingelementproperty_cast<QUmlComment *>(this);
     }
 }
 
@@ -74,25 +77,25 @@ QUmlDurationIntervalObject::~QUmlDurationIntervalObject()
 const QSet<QObject *> QUmlDurationIntervalObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlDurationInterval *>(this)->ownedComments())
-        set.insert(element->asQObject());
+    foreach (QUmlComment *element, qmodelingelementproperty_cast<QUmlDurationInterval *>(this)->ownedComments())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlDurationIntervalObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlDurationInterval *>(this)->ownedElements())
-        set.insert(element->asQObject());
+    foreach (QUmlElement *element, qmodelingelementproperty_cast<QUmlDurationInterval *>(this)->ownedElements())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 QObject *QUmlDurationIntervalObject::owner() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlDurationInterval *>(this)->owner())
+    if (!qmodelingelementproperty_cast<QUmlDurationInterval *>(this)->owner())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlDurationInterval *>(this)->owner()->asQObject();
+        return qmodelingelementproperty_cast<QUmlDurationInterval *>(this)->owner()->asQModelingObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -100,88 +103,88 @@ QObject *QUmlDurationIntervalObject::owner() const
 const QSet<QObject *> QUmlDurationIntervalObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlDurationInterval *>(this)->clientDependencies())
-        set.insert(element->asQObject());
+    foreach (QUmlDependency *element, qmodelingelementproperty_cast<QUmlDurationInterval *>(this)->clientDependencies())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 QString QUmlDurationIntervalObject::name() const
 {
-    return qmodelingobjectproperty_cast<QUmlDurationInterval *>(this)->name();
+    return qmodelingelementproperty_cast<QUmlDurationInterval *>(this)->name();
 }
 
 QObject *QUmlDurationIntervalObject::nameExpression() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlDurationInterval *>(this)->nameExpression())
+    if (!qmodelingelementproperty_cast<QUmlDurationInterval *>(this)->nameExpression())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlDurationInterval *>(this)->nameExpression()->asQObject();
+        return qmodelingelementproperty_cast<QUmlDurationInterval *>(this)->nameExpression()->asQModelingObject();
 }
 
 QObject *QUmlDurationIntervalObject::namespace_() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlDurationInterval *>(this)->namespace_())
+    if (!qmodelingelementproperty_cast<QUmlDurationInterval *>(this)->namespace_())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlDurationInterval *>(this)->namespace_()->asQObject();
+        return qmodelingelementproperty_cast<QUmlDurationInterval *>(this)->namespace_()->asQModelingObject();
 }
 
 QString QUmlDurationIntervalObject::qualifiedName() const
 {
-    return qmodelingobjectproperty_cast<QUmlDurationInterval *>(this)->qualifiedName();
+    return qmodelingelementproperty_cast<QUmlDurationInterval *>(this)->qualifiedName();
 }
 
 // OWNED ATTRIBUTES [TypedElement]
 
 QObject *QUmlDurationIntervalObject::type() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlDurationInterval *>(this)->type())
+    if (!qmodelingelementproperty_cast<QUmlDurationInterval *>(this)->type())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlDurationInterval *>(this)->type()->asQObject();
+        return qmodelingelementproperty_cast<QUmlDurationInterval *>(this)->type()->asQModelingObject();
 }
 
 // OWNED ATTRIBUTES [ParameterableElement]
 
 QObject *QUmlDurationIntervalObject::owningTemplateParameter() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlDurationInterval *>(this)->owningTemplateParameter())
+    if (!qmodelingelementproperty_cast<QUmlDurationInterval *>(this)->owningTemplateParameter())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlDurationInterval *>(this)->owningTemplateParameter()->asQObject();
+        return qmodelingelementproperty_cast<QUmlDurationInterval *>(this)->owningTemplateParameter()->asQModelingObject();
 }
 
 QObject *QUmlDurationIntervalObject::templateParameter() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlDurationInterval *>(this)->templateParameter())
+    if (!qmodelingelementproperty_cast<QUmlDurationInterval *>(this)->templateParameter())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlDurationInterval *>(this)->templateParameter()->asQObject();
+        return qmodelingelementproperty_cast<QUmlDurationInterval *>(this)->templateParameter()->asQModelingObject();
 }
 
 // OWNED ATTRIBUTES [PackageableElement]
 
 QtUml::VisibilityKind QUmlDurationIntervalObject::visibility() const
 {
-    return qmodelingobjectproperty_cast<QUmlDurationInterval *>(this)->visibility();
+    return qmodelingelementproperty_cast<QUmlDurationInterval *>(this)->visibility();
 }
 
 // OWNED ATTRIBUTES [DurationInterval]
 
 QObject *QUmlDurationIntervalObject::max() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlDurationInterval *>(this)->max())
+    if (!qmodelingelementproperty_cast<QUmlDurationInterval *>(this)->max())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlDurationInterval *>(this)->max()->asQObject();
+        return qmodelingelementproperty_cast<QUmlDurationInterval *>(this)->max()->asQModelingObject();
 }
 
 QObject *QUmlDurationIntervalObject::min() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlDurationInterval *>(this)->min())
+    if (!qmodelingelementproperty_cast<QUmlDurationInterval *>(this)->min())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlDurationInterval *>(this)->min()->asQObject();
+        return qmodelingelementproperty_cast<QUmlDurationInterval *>(this)->min()->asQModelingObject();
 }
 
 // OPERATIONS [Element]
@@ -189,14 +192,14 @@ QObject *QUmlDurationIntervalObject::min() const
 QSet<QObject *> QUmlDurationIntervalObject::allOwnedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlDurationInterval *>(this)->allOwnedElements())
-        set.insert(element->asQObject());
+    foreach (QUmlElement *element, qmodelingelementproperty_cast<QUmlDurationInterval *>(this)->allOwnedElements())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 bool QUmlDurationIntervalObject::mustBeOwned() const
 {
-    return qmodelingobjectproperty_cast<QUmlDurationInterval *>(this)->mustBeOwned();
+    return qmodelingelementproperty_cast<QUmlDurationInterval *>(this)->mustBeOwned();
 }
 
 // OPERATIONS [NamedElement]
@@ -204,177 +207,240 @@ bool QUmlDurationIntervalObject::mustBeOwned() const
 QList<QObject *> QUmlDurationIntervalObject::allNamespaces() const
 {
     QList<QObject *> set;
-    foreach (QUmlNamespace *element, qmodelingobjectproperty_cast<QUmlDurationInterval *>(this)->allNamespaces())
-        set.append(element->asQObject());
+    foreach (QUmlNamespace *element, qmodelingelementproperty_cast<QUmlDurationInterval *>(this)->allNamespaces())
+        set.append(element->asQModelingObject());
     return set;
 }
 
 QSet<QObject *> QUmlDurationIntervalObject::allOwningPackages() const
 {
     QSet<QObject *> set;
-    foreach (QUmlPackage *element, qmodelingobjectproperty_cast<QUmlDurationInterval *>(this)->allOwningPackages())
-        set.insert(element->asQObject());
+    foreach (QUmlPackage *element, qmodelingelementproperty_cast<QUmlDurationInterval *>(this)->allOwningPackages())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 bool QUmlDurationIntervalObject::isDistinguishableFrom(QObject *n, QObject *ns) const
 {
-    return qmodelingobjectproperty_cast<QUmlDurationInterval *>(this)->isDistinguishableFrom(qmodelingobjectproperty_cast<QUmlNamedElement *>(n), qmodelingobjectproperty_cast<QUmlNamespace *>(ns));
+    return qmodelingelementproperty_cast<QUmlDurationInterval *>(this)->isDistinguishableFrom(qmodelingelementproperty_cast<QUmlNamedElement *>(n), qmodelingelementproperty_cast<QUmlNamespace *>(ns));
 }
 
 QString QUmlDurationIntervalObject::separator() const
 {
-    return qmodelingobjectproperty_cast<QUmlDurationInterval *>(this)->separator();
+    return qmodelingelementproperty_cast<QUmlDurationInterval *>(this)->separator();
 }
 
 // OPERATIONS [ParameterableElement]
 
 bool QUmlDurationIntervalObject::isTemplateParameter() const
 {
-    return qmodelingobjectproperty_cast<QUmlDurationInterval *>(this)->isTemplateParameter();
+    return qmodelingelementproperty_cast<QUmlDurationInterval *>(this)->isTemplateParameter();
 }
 
 // OPERATIONS [ValueSpecification]
 
 bool QUmlDurationIntervalObject::booleanValue() const
 {
-    return qmodelingobjectproperty_cast<QUmlDurationInterval *>(this)->booleanValue();
+    return qmodelingelementproperty_cast<QUmlDurationInterval *>(this)->booleanValue();
 }
 
 int QUmlDurationIntervalObject::integerValue() const
 {
-    return qmodelingobjectproperty_cast<QUmlDurationInterval *>(this)->integerValue();
+    return qmodelingelementproperty_cast<QUmlDurationInterval *>(this)->integerValue();
 }
 
 bool QUmlDurationIntervalObject::isCompatibleWith(QObject *p) const
 {
-    return qmodelingobjectproperty_cast<QUmlDurationInterval *>(this)->isCompatibleWith(qmodelingobjectproperty_cast<QUmlParameterableElement *>(p));
+    return qmodelingelementproperty_cast<QUmlDurationInterval *>(this)->isCompatibleWith(qmodelingelementproperty_cast<QUmlParameterableElement *>(p));
 }
 
 bool QUmlDurationIntervalObject::isComputable() const
 {
-    return qmodelingobjectproperty_cast<QUmlDurationInterval *>(this)->isComputable();
+    return qmodelingelementproperty_cast<QUmlDurationInterval *>(this)->isComputable();
 }
 
 bool QUmlDurationIntervalObject::isNull() const
 {
-    return qmodelingobjectproperty_cast<QUmlDurationInterval *>(this)->isNull();
+    return qmodelingelementproperty_cast<QUmlDurationInterval *>(this)->isNull();
 }
 
 double QUmlDurationIntervalObject::realValue() const
 {
-    return qmodelingobjectproperty_cast<QUmlDurationInterval *>(this)->realValue();
+    return qmodelingelementproperty_cast<QUmlDurationInterval *>(this)->realValue();
 }
 
 QString QUmlDurationIntervalObject::stringValue() const
 {
-    return qmodelingobjectproperty_cast<QUmlDurationInterval *>(this)->stringValue();
+    return qmodelingelementproperty_cast<QUmlDurationInterval *>(this)->stringValue();
 }
 
 int QUmlDurationIntervalObject::unlimitedValue() const
 {
-    return qmodelingobjectproperty_cast<QUmlDurationInterval *>(this)->unlimitedValue();
+    return qmodelingelementproperty_cast<QUmlDurationInterval *>(this)->unlimitedValue();
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Element]
 
 void QUmlDurationIntervalObject::addOwnedComment(QObject *ownedComment)
 {
-    qmodelingobjectproperty_cast<QUmlDurationInterval *>(this)->addOwnedComment(qmodelingobjectproperty_cast<QUmlComment *>(ownedComment));
+    qmodelingelementproperty_cast<QUmlDurationInterval *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
 }
 
 void QUmlDurationIntervalObject::removeOwnedComment(QObject *ownedComment)
 {
-    qmodelingobjectproperty_cast<QUmlDurationInterval *>(this)->removeOwnedComment(qmodelingobjectproperty_cast<QUmlComment *>(ownedComment));
+    qmodelingelementproperty_cast<QUmlDurationInterval *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
 }
 
 void QUmlDurationIntervalObject::addOwnedElement(QObject *ownedElement)
 {
-    qmodelingobjectproperty_cast<QUmlDurationInterval *>(this)->addOwnedElement(qmodelingobjectproperty_cast<QUmlElement *>(ownedElement));
+    qmodelingelementproperty_cast<QUmlDurationInterval *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
 }
 
 void QUmlDurationIntervalObject::removeOwnedElement(QObject *ownedElement)
 {
-    qmodelingobjectproperty_cast<QUmlDurationInterval *>(this)->removeOwnedElement(qmodelingobjectproperty_cast<QUmlElement *>(ownedElement));
+    qmodelingelementproperty_cast<QUmlDurationInterval *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
 }
 
 void QUmlDurationIntervalObject::setOwner(QObject *owner)
 {
-    qmodelingobjectproperty_cast<QUmlDurationInterval *>(this)->setOwner(qmodelingobjectproperty_cast<QUmlElement *>(owner));
+    qmodelingelementproperty_cast<QUmlDurationInterval *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [NamedElement]
 
 void QUmlDurationIntervalObject::addClientDependency(QObject *clientDependency)
 {
-    qmodelingobjectproperty_cast<QUmlDurationInterval *>(this)->addClientDependency(qmodelingobjectproperty_cast<QUmlDependency *>(clientDependency));
+    qmodelingelementproperty_cast<QUmlDurationInterval *>(this)->addClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
 }
 
 void QUmlDurationIntervalObject::removeClientDependency(QObject *clientDependency)
 {
-    qmodelingobjectproperty_cast<QUmlDurationInterval *>(this)->removeClientDependency(qmodelingobjectproperty_cast<QUmlDependency *>(clientDependency));
+    qmodelingelementproperty_cast<QUmlDurationInterval *>(this)->removeClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
 }
 
 void QUmlDurationIntervalObject::setName(QString name)
 {
-    qmodelingobjectproperty_cast<QUmlDurationInterval *>(this)->setName(name);
+    qmodelingelementproperty_cast<QUmlDurationInterval *>(this)->setName(name);
 }
 
 void QUmlDurationIntervalObject::setNameExpression(QObject *nameExpression)
 {
-    qmodelingobjectproperty_cast<QUmlDurationInterval *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
+    qmodelingelementproperty_cast<QUmlDurationInterval *>(this)->setNameExpression(qmodelingelementproperty_cast<QUmlStringExpression *>(nameExpression));
 }
 
 void QUmlDurationIntervalObject::setNamespace(QObject *namespace_)
 {
-    qmodelingobjectproperty_cast<QUmlDurationInterval *>(this)->setNamespace(qmodelingobjectproperty_cast<QUmlNamespace *>(namespace_));
+    qmodelingelementproperty_cast<QUmlDurationInterval *>(this)->setNamespace(qmodelingelementproperty_cast<QUmlNamespace *>(namespace_));
 }
 
 void QUmlDurationIntervalObject::setQualifiedName(QString qualifiedName)
 {
-    qmodelingobjectproperty_cast<QUmlDurationInterval *>(this)->setQualifiedName(qualifiedName);
+    qmodelingelementproperty_cast<QUmlDurationInterval *>(this)->setQualifiedName(qualifiedName);
 }
 // SLOTS FOR OWNED ATTRIBUTES [TypedElement]
 
 void QUmlDurationIntervalObject::setType(QObject *type)
 {
-    qmodelingobjectproperty_cast<QUmlDurationInterval *>(this)->setType(qmodelingobjectproperty_cast<QUmlType *>(type));
+    qmodelingelementproperty_cast<QUmlDurationInterval *>(this)->setType(qmodelingelementproperty_cast<QUmlType *>(type));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ParameterableElement]
 
 void QUmlDurationIntervalObject::setOwningTemplateParameter(QObject *owningTemplateParameter)
 {
-    qmodelingobjectproperty_cast<QUmlDurationInterval *>(this)->setOwningTemplateParameter(qmodelingobjectproperty_cast<QUmlTemplateParameter *>(owningTemplateParameter));
+    qmodelingelementproperty_cast<QUmlDurationInterval *>(this)->setOwningTemplateParameter(qmodelingelementproperty_cast<QUmlTemplateParameter *>(owningTemplateParameter));
 }
 
 void QUmlDurationIntervalObject::setTemplateParameter(QObject *templateParameter)
 {
-    qmodelingobjectproperty_cast<QUmlDurationInterval *>(this)->setTemplateParameter(qmodelingobjectproperty_cast<QUmlTemplateParameter *>(templateParameter));
+    qmodelingelementproperty_cast<QUmlDurationInterval *>(this)->setTemplateParameter(qmodelingelementproperty_cast<QUmlTemplateParameter *>(templateParameter));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [PackageableElement]
 
 void QUmlDurationIntervalObject::setVisibility(QtUml::VisibilityKind visibility)
 {
-    qmodelingobjectproperty_cast<QUmlDurationInterval *>(this)->setVisibility(visibility);
+    qmodelingelementproperty_cast<QUmlDurationInterval *>(this)->setVisibility(visibility);
 }
 
 void QUmlDurationIntervalObject::unsetVisibility()
 {
-    qmodelingobjectproperty_cast<QUmlDurationInterval *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("visibility"));
+    Q_D(QModelingObject);
+    d->modifiedResettableProperties.removeAll(QStringLiteral("visibility"));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [DurationInterval]
 
 void QUmlDurationIntervalObject::setMax(QObject *max)
 {
-    qmodelingobjectproperty_cast<QUmlDurationInterval *>(this)->setMax(qmodelingobjectproperty_cast<QUmlDuration *>(max));
+    qmodelingelementproperty_cast<QUmlDurationInterval *>(this)->setMax(qmodelingelementproperty_cast<QUmlDuration *>(max));
 }
 
 void QUmlDurationIntervalObject::setMin(QObject *min)
 {
-    qmodelingobjectproperty_cast<QUmlDurationInterval *>(this)->setMin(qmodelingobjectproperty_cast<QUmlDuration *>(min));
+    qmodelingelementproperty_cast<QUmlDurationInterval *>(this)->setMin(qmodelingelementproperty_cast<QUmlDuration *>(min));
+}
+
+
+void QUmlDurationIntervalObject::setGroupProperties()
+{
+    Q_D(QModelingObject);
+    const QMetaObject *metaObject = this->metaObject();
+
+    d->propertyGroups << QStringLiteral("QObject");
+    d->groupProperties.insert(QStringLiteral("QObject"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("objectName"))));
+
+    d->propertyGroups << QStringLiteral("QUmlElement");
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
+
+    d->propertyGroups << QStringLiteral("QUmlNamedElement");
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
+
+    d->propertyGroups << QStringLiteral("QUmlTypedElement");
+    d->groupProperties.insert(QStringLiteral("QUmlTypedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("type"))));
+
+    d->propertyGroups << QStringLiteral("QUmlParameterableElement");
+    d->groupProperties.insert(QStringLiteral("QUmlParameterableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owningTemplateParameter"))));
+    d->groupProperties.insert(QStringLiteral("QUmlParameterableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("templateParameter"))));
+
+    d->propertyGroups << QStringLiteral("QUmlPackageableElement");
+    d->groupProperties.insert(QStringLiteral("QUmlPackageableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
+
+    d->propertyGroups << QStringLiteral("QUmlValueSpecification");
+
+    d->propertyGroups << QStringLiteral("QUmlInterval");
+
+    d->propertyGroups << QStringLiteral("QUmlDurationInterval");
+    d->groupProperties.insert(QStringLiteral("QUmlDurationInterval"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("max"))));
+    d->groupProperties.insert(QStringLiteral("QUmlDurationInterval"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("min"))));
+}
+
+void QUmlDurationIntervalObject::setPropertyData()
+{
+    Q_DECLARE_METAPROPERTY_INFO(QUmlDurationInterval, max, AggregationRole, QStringLiteral("none"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlDurationInterval, max, PropertyClassRole, QStringLiteral("QUmlDurationInterval"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlDurationInterval, max, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlDurationInterval, max, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlDurationInterval, max, DocumentationRole, QStringLiteral("Refers to the Duration denoting the maximum value of the range."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlDurationInterval, max, RedefinedPropertiesRole, QStringLiteral("Interval-max"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlDurationInterval, max, SubsettedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlDurationInterval, max, OppositeEndRole, QStringLiteral(""));
+
+    Q_DECLARE_METAPROPERTY_INFO(QUmlDurationInterval, min, AggregationRole, QStringLiteral("none"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlDurationInterval, min, PropertyClassRole, QStringLiteral("QUmlDurationInterval"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlDurationInterval, min, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlDurationInterval, min, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlDurationInterval, min, DocumentationRole, QStringLiteral("Refers to the Duration denoting the minimum value of the range."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlDurationInterval, min, RedefinedPropertiesRole, QStringLiteral("Interval-min"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlDurationInterval, min, SubsettedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlDurationInterval, min, OppositeEndRole, QStringLiteral(""));
+
 }
 
 QT_END_NAMESPACE

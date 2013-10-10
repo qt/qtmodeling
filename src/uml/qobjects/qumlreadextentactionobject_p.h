@@ -43,7 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtCore/QObject>
+#include <QtModeling/QModelingObject>
 
 #include <QtUml/QtUmlNamespace>
 
@@ -54,9 +54,12 @@ QT_BEGIN_NAMESPACE
 QT_MODULE(QtUml)
 
 class QUmlReadExtentAction;
-class Q_UML_EXPORT QUmlReadExtentActionObject : public QObject
+class QModelingObjectPrivate;
+class Q_UML_EXPORT QUmlReadExtentActionObject : public QModelingObject
 {
     Q_OBJECT
+    Q_DISABLE_COPY(QUmlReadExtentActionObject)
+    Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [Element]
     Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
@@ -102,7 +105,7 @@ class Q_UML_EXPORT QUmlReadExtentActionObject : public QObject
     Q_PROPERTY(QObject * result READ result WRITE setResult)
 
 public:
-    Q_INVOKABLE explicit QUmlReadExtentActionObject(QUmlReadExtentAction *qModelingObject);
+    Q_INVOKABLE explicit QUmlReadExtentActionObject(QUmlReadExtentAction *qModelingElement);
     virtual ~QUmlReadExtentActionObject();
 
     // Owned attributes [Element]
@@ -224,6 +227,10 @@ public Q_SLOTS:
     // Slots for owned attributes [ReadExtentAction]
     void setClassifier(QObject *classifier = 0);
     void setResult(QObject *result = 0);
+
+protected:
+    virtual void setGroupProperties();
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

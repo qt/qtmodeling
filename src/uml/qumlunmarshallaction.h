@@ -45,7 +45,6 @@
 
 #include <QtUml/QUmlAction>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -59,10 +58,10 @@ class QUmlOutputPin;
 class Q_UML_EXPORT QUmlUnmarshallAction : public QUmlAction
 {
 public:
-    explicit QUmlUnmarshallAction(bool createQObject = true);
+    explicit QUmlUnmarshallAction(bool createQModelingObject = true);
     virtual ~QUmlUnmarshallAction();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
     QUmlInputPin *object() const;
@@ -77,9 +76,6 @@ protected:
     QUmlInputPin *_object;
     QSet<QUmlOutputPin *> _results;
     QUmlClassifier *_unmarshallType;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

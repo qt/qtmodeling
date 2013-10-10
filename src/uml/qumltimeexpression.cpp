@@ -62,25 +62,23 @@
 
     \brief A time expression defines a value specification that represents a time value.
  */
-QUmlTimeExpression::QUmlTimeExpression(bool createQObject) :
+QUmlTimeExpression::QUmlTimeExpression(bool createQModelingObject) :
     _expr(0)
 {
-    if (createQObject)
-        _qObject = new QUmlTimeExpressionObject(this);
-    setGroupProperties();
-    setPropertyData();
+    if (createQModelingObject)
+        _qModelingObject = qobject_cast<QModelingObject *>(new QUmlTimeExpressionObject(this));
 }
 
 QUmlTimeExpression::~QUmlTimeExpression()
 {
-    if (!deletingFromQObject) {
-        if (_qObject)
-            _qObject->setProperty("deletingFromModelingObject", true);
-        delete _qObject;
+    if (!deletingFromQModelingObject) {
+        if (_qModelingObject)
+            _qModelingObject->setProperty("deletingFromModelingObject", true);
+        delete _qModelingObject;
     }
 }
 
-QModelingObject *QUmlTimeExpression::clone() const
+QModelingElement *QUmlTimeExpression::clone() const
 {
     QUmlTimeExpression *c = new QUmlTimeExpression;
     foreach (QUmlComment *element, ownedComments())
@@ -125,9 +123,9 @@ void QUmlTimeExpression::setExpr(QUmlValueSpecification *expr)
         removeOwnedElement(_expr);
 
         _expr = expr;
-        if (expr && expr->asQObject() && this->asQObject())
-            QObject::connect(expr->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setExpr()));
-        expr->asQObject()->setParent(this->asQObject());
+        if (expr && expr->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(expr->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setExpr()));
+        expr->asQModelingObject()->setParent(this->asQModelingObject());
 
         // Adjust subsetted properties
         if (expr) {
@@ -152,8 +150,8 @@ void QUmlTimeExpression::addObservation(QUmlObservation *observation)
 
     if (!_observations.contains(observation)) {
         _observations.insert(observation);
-        if (observation && observation->asQObject() && this->asQObject())
-            QObject::connect(observation->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeObservation(QObject *)));
+        if (observation && observation->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(observation->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeObservation(QObject *)));
     }
 }
 
@@ -164,47 +162,5 @@ void QUmlTimeExpression::removeObservation(QUmlObservation *observation)
     if (_observations.contains(observation)) {
         _observations.remove(observation);
     }
-}
-
-void QUmlTimeExpression::setGroupProperties()
-{
-    const QMetaObject *metaObject = _qObject->metaObject();
-
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
-    _groupProperties.insert(QStringLiteral("QUmlTypedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("type"))));
-    _groupProperties.insert(QStringLiteral("QUmlParameterableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owningTemplateParameter"))));
-    _groupProperties.insert(QStringLiteral("QUmlParameterableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("templateParameter"))));
-    _groupProperties.insert(QStringLiteral("QUmlPackageableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
-    _groupProperties.insert(QStringLiteral("QUmlTimeExpression"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("expr"))));
-    _groupProperties.insert(QStringLiteral("QUmlTimeExpression"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("observations"))));
-}
-
-void QUmlTimeExpression::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTimeExpression")][QStringLiteral("expr")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTimeExpression")][QStringLiteral("expr")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlTimeExpression");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTimeExpression")][QStringLiteral("expr")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTimeExpression")][QStringLiteral("expr")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTimeExpression")][QStringLiteral("expr")][QtModeling::DocumentationRole] = QStringLiteral("The value of the time expression.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTimeExpression")][QStringLiteral("expr")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTimeExpression")][QStringLiteral("expr")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTimeExpression")][QStringLiteral("expr")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTimeExpression")][QStringLiteral("observations")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTimeExpression")][QStringLiteral("observations")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlTimeExpression");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTimeExpression")][QStringLiteral("observations")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTimeExpression")][QStringLiteral("observations")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTimeExpression")][QStringLiteral("observations")][QtModeling::DocumentationRole] = QStringLiteral("Refers to the time and duration observations that are involved in expr.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTimeExpression")][QStringLiteral("observations")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTimeExpression")][QStringLiteral("observations")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTimeExpression")][QStringLiteral("observations")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
 }
 

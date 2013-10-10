@@ -124,5 +124,7 @@ int main ()
     delete profile; // That will delete all owned elements
     delete umlModel; // That will delete all owned elements
     delete extension; // That will delete all owned elements
+    delete stereotype; // That will delete all owned elements
+    delete elementImport; // That will delete all owned elements
 }
 

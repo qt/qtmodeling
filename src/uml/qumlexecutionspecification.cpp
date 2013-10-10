@@ -64,15 +64,13 @@ QUmlExecutionSpecification::QUmlExecutionSpecification() :
     _finish(0),
     _start(0)
 {
-    setGroupProperties();
-    setPropertyData();
 }
 
 QUmlExecutionSpecification::~QUmlExecutionSpecification()
 {
 }
 
-QModelingObject *QUmlExecutionSpecification::clone() const
+QModelingElement *QUmlExecutionSpecification::clone() const
 {
     QUmlExecutionSpecification *c = new QUmlExecutionSpecification;
     foreach (QUmlComment *element, ownedComments())
@@ -116,8 +114,8 @@ void QUmlExecutionSpecification::setFinish(QUmlOccurrenceSpecification *finish)
 
     if (_finish != finish) {
         _finish = finish;
-        if (finish && finish->asQObject() && this->asQObject())
-            QObject::connect(finish->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setFinish()));
+        if (finish && finish->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(finish->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setFinish()));
     }
 }
 
@@ -137,51 +135,8 @@ void QUmlExecutionSpecification::setStart(QUmlOccurrenceSpecification *start)
 
     if (_start != start) {
         _start = start;
-        if (start && start->asQObject() && this->asQObject())
-            QObject::connect(start->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setStart()));
+        if (start && start->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(start->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setStart()));
     }
-}
-
-void QUmlExecutionSpecification::setGroupProperties()
-{
-    const QMetaObject *metaObject = _qObject->metaObject();
-
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
-    _groupProperties.insert(QStringLiteral("QUmlInteractionFragment"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("covered"))));
-    _groupProperties.insert(QStringLiteral("QUmlInteractionFragment"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("enclosingInteraction"))));
-    _groupProperties.insert(QStringLiteral("QUmlInteractionFragment"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("enclosingOperand"))));
-    _groupProperties.insert(QStringLiteral("QUmlInteractionFragment"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("generalOrderings"))));
-    _groupProperties.insert(QStringLiteral("QUmlExecutionSpecification"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("finish"))));
-    _groupProperties.insert(QStringLiteral("QUmlExecutionSpecification"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("start"))));
-}
-
-void QUmlExecutionSpecification::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExecutionSpecification")][QStringLiteral("finish")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExecutionSpecification")][QStringLiteral("finish")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlExecutionSpecification");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExecutionSpecification")][QStringLiteral("finish")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExecutionSpecification")][QStringLiteral("finish")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExecutionSpecification")][QStringLiteral("finish")][QtModeling::DocumentationRole] = QStringLiteral("References the OccurrenceSpecification that designates the finish of the Action or Behavior.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExecutionSpecification")][QStringLiteral("finish")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExecutionSpecification")][QStringLiteral("finish")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExecutionSpecification")][QStringLiteral("finish")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExecutionSpecification")][QStringLiteral("start")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExecutionSpecification")][QStringLiteral("start")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlExecutionSpecification");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExecutionSpecification")][QStringLiteral("start")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExecutionSpecification")][QStringLiteral("start")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExecutionSpecification")][QStringLiteral("start")][QtModeling::DocumentationRole] = QStringLiteral("References the OccurrenceSpecification that designates the start of the Action or Behavior");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExecutionSpecification")][QStringLiteral("start")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExecutionSpecification")][QStringLiteral("start")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExecutionSpecification")][QStringLiteral("start")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
 }
 

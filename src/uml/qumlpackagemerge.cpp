@@ -53,26 +53,24 @@
 
     \brief A package merge defines how the contents of one package are extended by the contents of another package.
  */
-QUmlPackageMerge::QUmlPackageMerge(bool createQObject) :
+QUmlPackageMerge::QUmlPackageMerge(bool createQModelingObject) :
     _mergedPackage(0),
     _receivingPackage(0)
 {
-    if (createQObject)
-        _qObject = new QUmlPackageMergeObject(this);
-    setGroupProperties();
-    setPropertyData();
+    if (createQModelingObject)
+        _qModelingObject = qobject_cast<QModelingObject *>(new QUmlPackageMergeObject(this));
 }
 
 QUmlPackageMerge::~QUmlPackageMerge()
 {
-    if (!deletingFromQObject) {
-        if (_qObject)
-            _qObject->setProperty("deletingFromModelingObject", true);
-        delete _qObject;
+    if (!deletingFromQModelingObject) {
+        if (_qModelingObject)
+            _qModelingObject->setProperty("deletingFromModelingObject", true);
+        delete _qModelingObject;
     }
 }
 
-QModelingObject *QUmlPackageMerge::clone() const
+QModelingElement *QUmlPackageMerge::clone() const
 {
     QUmlPackageMerge *c = new QUmlPackageMerge;
     foreach (QUmlComment *element, ownedComments())
@@ -105,8 +103,8 @@ void QUmlPackageMerge::setMergedPackage(QUmlPackage *mergedPackage)
         removeTarget(_mergedPackage);
 
         _mergedPackage = mergedPackage;
-        if (mergedPackage && mergedPackage->asQObject() && this->asQObject())
-            QObject::connect(mergedPackage->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setMergedPackage()));
+        if (mergedPackage && mergedPackage->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(mergedPackage->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setMergedPackage()));
 
         // Adjust subsetted properties
         if (mergedPackage) {
@@ -134,8 +132,8 @@ void QUmlPackageMerge::setReceivingPackage(QUmlPackage *receivingPackage)
         removeSource(_receivingPackage);
 
         _receivingPackage = receivingPackage;
-        if (receivingPackage && receivingPackage->asQObject() && this->asQObject())
-            QObject::connect(receivingPackage->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setReceivingPackage()));
+        if (receivingPackage && receivingPackage->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(receivingPackage->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setReceivingPackage()));
 
         // Adjust subsetted properties
         setOwner(receivingPackage);
@@ -143,41 +141,5 @@ void QUmlPackageMerge::setReceivingPackage(QUmlPackage *receivingPackage)
             addSource(receivingPackage);
         }
     }
-}
-
-void QUmlPackageMerge::setGroupProperties()
-{
-    const QMetaObject *metaObject = _qObject->metaObject();
-
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
-    _groupProperties.insert(QStringLiteral("QUmlRelationship"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("relatedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlDirectedRelationship"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("sources"))));
-    _groupProperties.insert(QStringLiteral("QUmlDirectedRelationship"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("targets"))));
-    _groupProperties.insert(QStringLiteral("QUmlPackageMerge"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("mergedPackage"))));
-    _groupProperties.insert(QStringLiteral("QUmlPackageMerge"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("receivingPackage"))));
-}
-
-void QUmlPackageMerge::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPackageMerge")][QStringLiteral("mergedPackage")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPackageMerge")][QStringLiteral("mergedPackage")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlPackageMerge");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPackageMerge")][QStringLiteral("mergedPackage")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPackageMerge")][QStringLiteral("mergedPackage")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPackageMerge")][QStringLiteral("mergedPackage")][QtModeling::DocumentationRole] = QStringLiteral("References the Package that is to be merged with the receiving package of the PackageMerge.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPackageMerge")][QStringLiteral("mergedPackage")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPackageMerge")][QStringLiteral("mergedPackage")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("DirectedRelationship-target");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPackageMerge")][QStringLiteral("mergedPackage")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPackageMerge")][QStringLiteral("receivingPackage")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPackageMerge")][QStringLiteral("receivingPackage")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlPackageMerge");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPackageMerge")][QStringLiteral("receivingPackage")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPackageMerge")][QStringLiteral("receivingPackage")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPackageMerge")][QStringLiteral("receivingPackage")][QtModeling::DocumentationRole] = QStringLiteral("References the Package that is being extended with the contents of the merged package of the PackageMerge.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPackageMerge")][QStringLiteral("receivingPackage")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPackageMerge")][QStringLiteral("receivingPackage")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-owner DirectedRelationship-source");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPackageMerge")][QStringLiteral("receivingPackage")][QtModeling::OppositeEndRole] = QStringLiteral("Package-packageMerge");
-
 }
 

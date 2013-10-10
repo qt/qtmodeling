@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlopaqueexpressionobject_p.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlOpaqueExpression>
 #include <QtUml/QUmlBehavior>
@@ -56,16 +57,18 @@
 
 QT_BEGIN_NAMESPACE
 
-QUmlOpaqueExpressionObject::QUmlOpaqueExpressionObject(QUmlOpaqueExpression *qModelingObject)
+QUmlOpaqueExpressionObject::QUmlOpaqueExpressionObject(QUmlOpaqueExpression *qModelingElement)
 {
-    setProperty("modelingObject", QVariant::fromValue(static_cast<QModelingObject *>(qModelingObject)));
+    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(qModelingElement)));
+    setGroupProperties();
+    setPropertyData();
 }
 
 QUmlOpaqueExpressionObject::~QUmlOpaqueExpressionObject()
 {
     if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingobjectproperty_cast<QUmlOpaqueExpression *>(this)->deletingFromQObject = true;
-        delete qmodelingobjectproperty_cast<QUmlComment *>(this);
+        qmodelingelementproperty_cast<QUmlOpaqueExpression *>(this)->deletingFromQModelingObject = true;
+        delete qmodelingelementproperty_cast<QUmlComment *>(this);
     }
 }
 
@@ -74,25 +77,25 @@ QUmlOpaqueExpressionObject::~QUmlOpaqueExpressionObject()
 const QSet<QObject *> QUmlOpaqueExpressionObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlOpaqueExpression *>(this)->ownedComments())
-        set.insert(element->asQObject());
+    foreach (QUmlComment *element, qmodelingelementproperty_cast<QUmlOpaqueExpression *>(this)->ownedComments())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlOpaqueExpressionObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlOpaqueExpression *>(this)->ownedElements())
-        set.insert(element->asQObject());
+    foreach (QUmlElement *element, qmodelingelementproperty_cast<QUmlOpaqueExpression *>(this)->ownedElements())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 QObject *QUmlOpaqueExpressionObject::owner() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlOpaqueExpression *>(this)->owner())
+    if (!qmodelingelementproperty_cast<QUmlOpaqueExpression *>(this)->owner())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlOpaqueExpression *>(this)->owner()->asQObject();
+        return qmodelingelementproperty_cast<QUmlOpaqueExpression *>(this)->owner()->asQModelingObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -100,98 +103,98 @@ QObject *QUmlOpaqueExpressionObject::owner() const
 const QSet<QObject *> QUmlOpaqueExpressionObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlOpaqueExpression *>(this)->clientDependencies())
-        set.insert(element->asQObject());
+    foreach (QUmlDependency *element, qmodelingelementproperty_cast<QUmlOpaqueExpression *>(this)->clientDependencies())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 QString QUmlOpaqueExpressionObject::name() const
 {
-    return qmodelingobjectproperty_cast<QUmlOpaqueExpression *>(this)->name();
+    return qmodelingelementproperty_cast<QUmlOpaqueExpression *>(this)->name();
 }
 
 QObject *QUmlOpaqueExpressionObject::nameExpression() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlOpaqueExpression *>(this)->nameExpression())
+    if (!qmodelingelementproperty_cast<QUmlOpaqueExpression *>(this)->nameExpression())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlOpaqueExpression *>(this)->nameExpression()->asQObject();
+        return qmodelingelementproperty_cast<QUmlOpaqueExpression *>(this)->nameExpression()->asQModelingObject();
 }
 
 QObject *QUmlOpaqueExpressionObject::namespace_() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlOpaqueExpression *>(this)->namespace_())
+    if (!qmodelingelementproperty_cast<QUmlOpaqueExpression *>(this)->namespace_())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlOpaqueExpression *>(this)->namespace_()->asQObject();
+        return qmodelingelementproperty_cast<QUmlOpaqueExpression *>(this)->namespace_()->asQModelingObject();
 }
 
 QString QUmlOpaqueExpressionObject::qualifiedName() const
 {
-    return qmodelingobjectproperty_cast<QUmlOpaqueExpression *>(this)->qualifiedName();
+    return qmodelingelementproperty_cast<QUmlOpaqueExpression *>(this)->qualifiedName();
 }
 
 // OWNED ATTRIBUTES [TypedElement]
 
 QObject *QUmlOpaqueExpressionObject::type() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlOpaqueExpression *>(this)->type())
+    if (!qmodelingelementproperty_cast<QUmlOpaqueExpression *>(this)->type())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlOpaqueExpression *>(this)->type()->asQObject();
+        return qmodelingelementproperty_cast<QUmlOpaqueExpression *>(this)->type()->asQModelingObject();
 }
 
 // OWNED ATTRIBUTES [ParameterableElement]
 
 QObject *QUmlOpaqueExpressionObject::owningTemplateParameter() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlOpaqueExpression *>(this)->owningTemplateParameter())
+    if (!qmodelingelementproperty_cast<QUmlOpaqueExpression *>(this)->owningTemplateParameter())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlOpaqueExpression *>(this)->owningTemplateParameter()->asQObject();
+        return qmodelingelementproperty_cast<QUmlOpaqueExpression *>(this)->owningTemplateParameter()->asQModelingObject();
 }
 
 QObject *QUmlOpaqueExpressionObject::templateParameter() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlOpaqueExpression *>(this)->templateParameter())
+    if (!qmodelingelementproperty_cast<QUmlOpaqueExpression *>(this)->templateParameter())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlOpaqueExpression *>(this)->templateParameter()->asQObject();
+        return qmodelingelementproperty_cast<QUmlOpaqueExpression *>(this)->templateParameter()->asQModelingObject();
 }
 
 // OWNED ATTRIBUTES [PackageableElement]
 
 QtUml::VisibilityKind QUmlOpaqueExpressionObject::visibility() const
 {
-    return qmodelingobjectproperty_cast<QUmlOpaqueExpression *>(this)->visibility();
+    return qmodelingelementproperty_cast<QUmlOpaqueExpression *>(this)->visibility();
 }
 
 // OWNED ATTRIBUTES [OpaqueExpression]
 
 QObject *QUmlOpaqueExpressionObject::behavior() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlOpaqueExpression *>(this)->behavior())
+    if (!qmodelingelementproperty_cast<QUmlOpaqueExpression *>(this)->behavior())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlOpaqueExpression *>(this)->behavior()->asQObject();
+        return qmodelingelementproperty_cast<QUmlOpaqueExpression *>(this)->behavior()->asQModelingObject();
 }
 
 const QList<QString> QUmlOpaqueExpressionObject::bodies() const
 {
-    return qmodelingobjectproperty_cast<QUmlOpaqueExpression *>(this)->bodies();
+    return qmodelingelementproperty_cast<QUmlOpaqueExpression *>(this)->bodies();
 }
 
 const QList<QString> QUmlOpaqueExpressionObject::languages() const
 {
-    return qmodelingobjectproperty_cast<QUmlOpaqueExpression *>(this)->languages();
+    return qmodelingelementproperty_cast<QUmlOpaqueExpression *>(this)->languages();
 }
 
 QObject *QUmlOpaqueExpressionObject::result() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlOpaqueExpression *>(this)->result())
+    if (!qmodelingelementproperty_cast<QUmlOpaqueExpression *>(this)->result())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlOpaqueExpression *>(this)->result()->asQObject();
+        return qmodelingelementproperty_cast<QUmlOpaqueExpression *>(this)->result()->asQModelingObject();
 }
 
 // OPERATIONS [Element]
@@ -199,14 +202,14 @@ QObject *QUmlOpaqueExpressionObject::result() const
 QSet<QObject *> QUmlOpaqueExpressionObject::allOwnedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlOpaqueExpression *>(this)->allOwnedElements())
-        set.insert(element->asQObject());
+    foreach (QUmlElement *element, qmodelingelementproperty_cast<QUmlOpaqueExpression *>(this)->allOwnedElements())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 bool QUmlOpaqueExpressionObject::mustBeOwned() const
 {
-    return qmodelingobjectproperty_cast<QUmlOpaqueExpression *>(this)->mustBeOwned();
+    return qmodelingelementproperty_cast<QUmlOpaqueExpression *>(this)->mustBeOwned();
 }
 
 // OPERATIONS [NamedElement]
@@ -214,219 +217,300 @@ bool QUmlOpaqueExpressionObject::mustBeOwned() const
 QList<QObject *> QUmlOpaqueExpressionObject::allNamespaces() const
 {
     QList<QObject *> set;
-    foreach (QUmlNamespace *element, qmodelingobjectproperty_cast<QUmlOpaqueExpression *>(this)->allNamespaces())
-        set.append(element->asQObject());
+    foreach (QUmlNamespace *element, qmodelingelementproperty_cast<QUmlOpaqueExpression *>(this)->allNamespaces())
+        set.append(element->asQModelingObject());
     return set;
 }
 
 QSet<QObject *> QUmlOpaqueExpressionObject::allOwningPackages() const
 {
     QSet<QObject *> set;
-    foreach (QUmlPackage *element, qmodelingobjectproperty_cast<QUmlOpaqueExpression *>(this)->allOwningPackages())
-        set.insert(element->asQObject());
+    foreach (QUmlPackage *element, qmodelingelementproperty_cast<QUmlOpaqueExpression *>(this)->allOwningPackages())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 bool QUmlOpaqueExpressionObject::isDistinguishableFrom(QObject *n, QObject *ns) const
 {
-    return qmodelingobjectproperty_cast<QUmlOpaqueExpression *>(this)->isDistinguishableFrom(qmodelingobjectproperty_cast<QUmlNamedElement *>(n), qmodelingobjectproperty_cast<QUmlNamespace *>(ns));
+    return qmodelingelementproperty_cast<QUmlOpaqueExpression *>(this)->isDistinguishableFrom(qmodelingelementproperty_cast<QUmlNamedElement *>(n), qmodelingelementproperty_cast<QUmlNamespace *>(ns));
 }
 
 QString QUmlOpaqueExpressionObject::separator() const
 {
-    return qmodelingobjectproperty_cast<QUmlOpaqueExpression *>(this)->separator();
+    return qmodelingelementproperty_cast<QUmlOpaqueExpression *>(this)->separator();
 }
 
 // OPERATIONS [ParameterableElement]
 
 bool QUmlOpaqueExpressionObject::isTemplateParameter() const
 {
-    return qmodelingobjectproperty_cast<QUmlOpaqueExpression *>(this)->isTemplateParameter();
+    return qmodelingelementproperty_cast<QUmlOpaqueExpression *>(this)->isTemplateParameter();
 }
 
 // OPERATIONS [ValueSpecification]
 
 bool QUmlOpaqueExpressionObject::booleanValue() const
 {
-    return qmodelingobjectproperty_cast<QUmlOpaqueExpression *>(this)->booleanValue();
+    return qmodelingelementproperty_cast<QUmlOpaqueExpression *>(this)->booleanValue();
 }
 
 int QUmlOpaqueExpressionObject::integerValue() const
 {
-    return qmodelingobjectproperty_cast<QUmlOpaqueExpression *>(this)->integerValue();
+    return qmodelingelementproperty_cast<QUmlOpaqueExpression *>(this)->integerValue();
 }
 
 bool QUmlOpaqueExpressionObject::isCompatibleWith(QObject *p) const
 {
-    return qmodelingobjectproperty_cast<QUmlOpaqueExpression *>(this)->isCompatibleWith(qmodelingobjectproperty_cast<QUmlParameterableElement *>(p));
+    return qmodelingelementproperty_cast<QUmlOpaqueExpression *>(this)->isCompatibleWith(qmodelingelementproperty_cast<QUmlParameterableElement *>(p));
 }
 
 bool QUmlOpaqueExpressionObject::isComputable() const
 {
-    return qmodelingobjectproperty_cast<QUmlOpaqueExpression *>(this)->isComputable();
+    return qmodelingelementproperty_cast<QUmlOpaqueExpression *>(this)->isComputable();
 }
 
 bool QUmlOpaqueExpressionObject::isNull() const
 {
-    return qmodelingobjectproperty_cast<QUmlOpaqueExpression *>(this)->isNull();
+    return qmodelingelementproperty_cast<QUmlOpaqueExpression *>(this)->isNull();
 }
 
 double QUmlOpaqueExpressionObject::realValue() const
 {
-    return qmodelingobjectproperty_cast<QUmlOpaqueExpression *>(this)->realValue();
+    return qmodelingelementproperty_cast<QUmlOpaqueExpression *>(this)->realValue();
 }
 
 QString QUmlOpaqueExpressionObject::stringValue() const
 {
-    return qmodelingobjectproperty_cast<QUmlOpaqueExpression *>(this)->stringValue();
+    return qmodelingelementproperty_cast<QUmlOpaqueExpression *>(this)->stringValue();
 }
 
 int QUmlOpaqueExpressionObject::unlimitedValue() const
 {
-    return qmodelingobjectproperty_cast<QUmlOpaqueExpression *>(this)->unlimitedValue();
+    return qmodelingelementproperty_cast<QUmlOpaqueExpression *>(this)->unlimitedValue();
 }
 
 // OPERATIONS [OpaqueExpression]
 
 bool QUmlOpaqueExpressionObject::isIntegral() const
 {
-    return qmodelingobjectproperty_cast<QUmlOpaqueExpression *>(this)->isIntegral();
+    return qmodelingelementproperty_cast<QUmlOpaqueExpression *>(this)->isIntegral();
 }
 
 bool QUmlOpaqueExpressionObject::isNonNegative() const
 {
-    return qmodelingobjectproperty_cast<QUmlOpaqueExpression *>(this)->isNonNegative();
+    return qmodelingelementproperty_cast<QUmlOpaqueExpression *>(this)->isNonNegative();
 }
 
 bool QUmlOpaqueExpressionObject::isPositive() const
 {
-    return qmodelingobjectproperty_cast<QUmlOpaqueExpression *>(this)->isPositive();
+    return qmodelingelementproperty_cast<QUmlOpaqueExpression *>(this)->isPositive();
 }
 
 int QUmlOpaqueExpressionObject::value() const
 {
-    return qmodelingobjectproperty_cast<QUmlOpaqueExpression *>(this)->value();
+    return qmodelingelementproperty_cast<QUmlOpaqueExpression *>(this)->value();
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Element]
 
 void QUmlOpaqueExpressionObject::addOwnedComment(QObject *ownedComment)
 {
-    qmodelingobjectproperty_cast<QUmlOpaqueExpression *>(this)->addOwnedComment(qmodelingobjectproperty_cast<QUmlComment *>(ownedComment));
+    qmodelingelementproperty_cast<QUmlOpaqueExpression *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
 }
 
 void QUmlOpaqueExpressionObject::removeOwnedComment(QObject *ownedComment)
 {
-    qmodelingobjectproperty_cast<QUmlOpaqueExpression *>(this)->removeOwnedComment(qmodelingobjectproperty_cast<QUmlComment *>(ownedComment));
+    qmodelingelementproperty_cast<QUmlOpaqueExpression *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
 }
 
 void QUmlOpaqueExpressionObject::addOwnedElement(QObject *ownedElement)
 {
-    qmodelingobjectproperty_cast<QUmlOpaqueExpression *>(this)->addOwnedElement(qmodelingobjectproperty_cast<QUmlElement *>(ownedElement));
+    qmodelingelementproperty_cast<QUmlOpaqueExpression *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
 }
 
 void QUmlOpaqueExpressionObject::removeOwnedElement(QObject *ownedElement)
 {
-    qmodelingobjectproperty_cast<QUmlOpaqueExpression *>(this)->removeOwnedElement(qmodelingobjectproperty_cast<QUmlElement *>(ownedElement));
+    qmodelingelementproperty_cast<QUmlOpaqueExpression *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
 }
 
 void QUmlOpaqueExpressionObject::setOwner(QObject *owner)
 {
-    qmodelingobjectproperty_cast<QUmlOpaqueExpression *>(this)->setOwner(qmodelingobjectproperty_cast<QUmlElement *>(owner));
+    qmodelingelementproperty_cast<QUmlOpaqueExpression *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [NamedElement]
 
 void QUmlOpaqueExpressionObject::addClientDependency(QObject *clientDependency)
 {
-    qmodelingobjectproperty_cast<QUmlOpaqueExpression *>(this)->addClientDependency(qmodelingobjectproperty_cast<QUmlDependency *>(clientDependency));
+    qmodelingelementproperty_cast<QUmlOpaqueExpression *>(this)->addClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
 }
 
 void QUmlOpaqueExpressionObject::removeClientDependency(QObject *clientDependency)
 {
-    qmodelingobjectproperty_cast<QUmlOpaqueExpression *>(this)->removeClientDependency(qmodelingobjectproperty_cast<QUmlDependency *>(clientDependency));
+    qmodelingelementproperty_cast<QUmlOpaqueExpression *>(this)->removeClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
 }
 
 void QUmlOpaqueExpressionObject::setName(QString name)
 {
-    qmodelingobjectproperty_cast<QUmlOpaqueExpression *>(this)->setName(name);
+    qmodelingelementproperty_cast<QUmlOpaqueExpression *>(this)->setName(name);
 }
 
 void QUmlOpaqueExpressionObject::setNameExpression(QObject *nameExpression)
 {
-    qmodelingobjectproperty_cast<QUmlOpaqueExpression *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
+    qmodelingelementproperty_cast<QUmlOpaqueExpression *>(this)->setNameExpression(qmodelingelementproperty_cast<QUmlStringExpression *>(nameExpression));
 }
 
 void QUmlOpaqueExpressionObject::setNamespace(QObject *namespace_)
 {
-    qmodelingobjectproperty_cast<QUmlOpaqueExpression *>(this)->setNamespace(qmodelingobjectproperty_cast<QUmlNamespace *>(namespace_));
+    qmodelingelementproperty_cast<QUmlOpaqueExpression *>(this)->setNamespace(qmodelingelementproperty_cast<QUmlNamespace *>(namespace_));
 }
 
 void QUmlOpaqueExpressionObject::setQualifiedName(QString qualifiedName)
 {
-    qmodelingobjectproperty_cast<QUmlOpaqueExpression *>(this)->setQualifiedName(qualifiedName);
+    qmodelingelementproperty_cast<QUmlOpaqueExpression *>(this)->setQualifiedName(qualifiedName);
 }
 // SLOTS FOR OWNED ATTRIBUTES [TypedElement]
 
 void QUmlOpaqueExpressionObject::setType(QObject *type)
 {
-    qmodelingobjectproperty_cast<QUmlOpaqueExpression *>(this)->setType(qmodelingobjectproperty_cast<QUmlType *>(type));
+    qmodelingelementproperty_cast<QUmlOpaqueExpression *>(this)->setType(qmodelingelementproperty_cast<QUmlType *>(type));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ParameterableElement]
 
 void QUmlOpaqueExpressionObject::setOwningTemplateParameter(QObject *owningTemplateParameter)
 {
-    qmodelingobjectproperty_cast<QUmlOpaqueExpression *>(this)->setOwningTemplateParameter(qmodelingobjectproperty_cast<QUmlTemplateParameter *>(owningTemplateParameter));
+    qmodelingelementproperty_cast<QUmlOpaqueExpression *>(this)->setOwningTemplateParameter(qmodelingelementproperty_cast<QUmlTemplateParameter *>(owningTemplateParameter));
 }
 
 void QUmlOpaqueExpressionObject::setTemplateParameter(QObject *templateParameter)
 {
-    qmodelingobjectproperty_cast<QUmlOpaqueExpression *>(this)->setTemplateParameter(qmodelingobjectproperty_cast<QUmlTemplateParameter *>(templateParameter));
+    qmodelingelementproperty_cast<QUmlOpaqueExpression *>(this)->setTemplateParameter(qmodelingelementproperty_cast<QUmlTemplateParameter *>(templateParameter));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [PackageableElement]
 
 void QUmlOpaqueExpressionObject::setVisibility(QtUml::VisibilityKind visibility)
 {
-    qmodelingobjectproperty_cast<QUmlOpaqueExpression *>(this)->setVisibility(visibility);
+    qmodelingelementproperty_cast<QUmlOpaqueExpression *>(this)->setVisibility(visibility);
 }
 
 void QUmlOpaqueExpressionObject::unsetVisibility()
 {
-    qmodelingobjectproperty_cast<QUmlOpaqueExpression *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("visibility"));
+    Q_D(QModelingObject);
+    d->modifiedResettableProperties.removeAll(QStringLiteral("visibility"));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [OpaqueExpression]
 
 void QUmlOpaqueExpressionObject::setBehavior(QObject *behavior)
 {
-    qmodelingobjectproperty_cast<QUmlOpaqueExpression *>(this)->setBehavior(qmodelingobjectproperty_cast<QUmlBehavior *>(behavior));
+    qmodelingelementproperty_cast<QUmlOpaqueExpression *>(this)->setBehavior(qmodelingelementproperty_cast<QUmlBehavior *>(behavior));
 }
 
 void QUmlOpaqueExpressionObject::addBody(QString  body)
 {
-    qmodelingobjectproperty_cast<QUmlOpaqueExpression *>(this)->addBody(body);
+    qmodelingelementproperty_cast<QUmlOpaqueExpression *>(this)->addBody(body);
 }
 
 void QUmlOpaqueExpressionObject::removeBody(QString  body)
 {
-    qmodelingobjectproperty_cast<QUmlOpaqueExpression *>(this)->removeBody(body);
+    qmodelingelementproperty_cast<QUmlOpaqueExpression *>(this)->removeBody(body);
 }
 
 void QUmlOpaqueExpressionObject::addLanguage(QString  language)
 {
-    qmodelingobjectproperty_cast<QUmlOpaqueExpression *>(this)->addLanguage(language);
+    qmodelingelementproperty_cast<QUmlOpaqueExpression *>(this)->addLanguage(language);
 }
 
 void QUmlOpaqueExpressionObject::removeLanguage(QString  language)
 {
-    qmodelingobjectproperty_cast<QUmlOpaqueExpression *>(this)->removeLanguage(language);
+    qmodelingelementproperty_cast<QUmlOpaqueExpression *>(this)->removeLanguage(language);
 }
 
 void QUmlOpaqueExpressionObject::setResult(QObject *result)
 {
-    qmodelingobjectproperty_cast<QUmlOpaqueExpression *>(this)->setResult(qmodelingobjectproperty_cast<QUmlParameter *>(result));
+    qmodelingelementproperty_cast<QUmlOpaqueExpression *>(this)->setResult(qmodelingelementproperty_cast<QUmlParameter *>(result));
+}
+
+
+void QUmlOpaqueExpressionObject::setGroupProperties()
+{
+    Q_D(QModelingObject);
+    const QMetaObject *metaObject = this->metaObject();
+
+    d->propertyGroups << QStringLiteral("QObject");
+    d->groupProperties.insert(QStringLiteral("QObject"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("objectName"))));
+
+    d->propertyGroups << QStringLiteral("QUmlElement");
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
+
+    d->propertyGroups << QStringLiteral("QUmlNamedElement");
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
+
+    d->propertyGroups << QStringLiteral("QUmlTypedElement");
+    d->groupProperties.insert(QStringLiteral("QUmlTypedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("type"))));
+
+    d->propertyGroups << QStringLiteral("QUmlParameterableElement");
+    d->groupProperties.insert(QStringLiteral("QUmlParameterableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owningTemplateParameter"))));
+    d->groupProperties.insert(QStringLiteral("QUmlParameterableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("templateParameter"))));
+
+    d->propertyGroups << QStringLiteral("QUmlPackageableElement");
+    d->groupProperties.insert(QStringLiteral("QUmlPackageableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
+
+    d->propertyGroups << QStringLiteral("QUmlValueSpecification");
+
+    d->propertyGroups << QStringLiteral("QUmlOpaqueExpression");
+    d->groupProperties.insert(QStringLiteral("QUmlOpaqueExpression"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("behavior"))));
+    d->groupProperties.insert(QStringLiteral("QUmlOpaqueExpression"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("bodies"))));
+    d->groupProperties.insert(QStringLiteral("QUmlOpaqueExpression"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("languages"))));
+    d->groupProperties.insert(QStringLiteral("QUmlOpaqueExpression"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("result"))));
+}
+
+void QUmlOpaqueExpressionObject::setPropertyData()
+{
+    Q_DECLARE_METAPROPERTY_INFO(QUmlOpaqueExpression, behavior, AggregationRole, QStringLiteral("none"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlOpaqueExpression, behavior, PropertyClassRole, QStringLiteral("QUmlOpaqueExpression"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlOpaqueExpression, behavior, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlOpaqueExpression, behavior, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlOpaqueExpression, behavior, DocumentationRole, QStringLiteral("Specifies the behavior of the opaque expression."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlOpaqueExpression, behavior, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlOpaqueExpression, behavior, SubsettedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlOpaqueExpression, behavior, OppositeEndRole, QStringLiteral(""));
+
+    Q_DECLARE_METAPROPERTY_INFO(QUmlOpaqueExpression, bodies, AggregationRole, QStringLiteral("none"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlOpaqueExpression, bodies, PropertyClassRole, QStringLiteral("QUmlOpaqueExpression"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlOpaqueExpression, bodies, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlOpaqueExpression, bodies, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlOpaqueExpression, bodies, DocumentationRole, QStringLiteral("The text of the expression, possibly in multiple languages."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlOpaqueExpression, bodies, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlOpaqueExpression, bodies, SubsettedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlOpaqueExpression, bodies, OppositeEndRole, QStringLiteral(""));
+
+    Q_DECLARE_METAPROPERTY_INFO(QUmlOpaqueExpression, languages, AggregationRole, QStringLiteral("none"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlOpaqueExpression, languages, PropertyClassRole, QStringLiteral("QUmlOpaqueExpression"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlOpaqueExpression, languages, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlOpaqueExpression, languages, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlOpaqueExpression, languages, DocumentationRole, QStringLiteral("Specifies the languages in which the expression is stated. The interpretation of the expression body depends on the languages. If the languages are unspecified, they might be implicit from the expression body or the context. Languages are matched to body strings by order."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlOpaqueExpression, languages, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlOpaqueExpression, languages, SubsettedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlOpaqueExpression, languages, OppositeEndRole, QStringLiteral(""));
+
+    Q_DECLARE_METAPROPERTY_INFO(QUmlOpaqueExpression, result, AggregationRole, QStringLiteral("none"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlOpaqueExpression, result, PropertyClassRole, QStringLiteral("QUmlOpaqueExpression"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlOpaqueExpression, result, IsDerivedRole, true);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlOpaqueExpression, result, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlOpaqueExpression, result, DocumentationRole, QStringLiteral("Restricts an opaque expression to return exactly one return result. When the invocation of the opaque expression completes, a single set of values is returned to its owner. This association is derived from the single return result parameter of the associated behavior."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlOpaqueExpression, result, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlOpaqueExpression, result, SubsettedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlOpaqueExpression, result, OppositeEndRole, QStringLiteral(""));
+
 }
 
 QT_END_NAMESPACE

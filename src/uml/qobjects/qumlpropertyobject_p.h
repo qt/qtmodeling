@@ -43,7 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtCore/QObject>
+#include <QtModeling/QModelingObject>
 
 #include <QtUml/QtUmlNamespace>
 
@@ -54,9 +54,12 @@ QT_BEGIN_NAMESPACE
 QT_MODULE(QtUml)
 
 class QUmlProperty;
-class Q_UML_EXPORT QUmlPropertyObject : public QObject
+class QModelingObjectPrivate;
+class Q_UML_EXPORT QUmlPropertyObject : public QModelingObject
 {
     Q_OBJECT
+    Q_DISABLE_COPY(QUmlPropertyObject)
+    Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [Element]
     Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
@@ -125,7 +128,7 @@ class Q_UML_EXPORT QUmlPropertyObject : public QObject
     Q_PROPERTY(QSet<QObject *> subsettedProperties READ subsettedProperties)
 
 public:
-    Q_INVOKABLE explicit QUmlPropertyObject(QUmlProperty *qModelingObject);
+    Q_INVOKABLE explicit QUmlPropertyObject(QUmlProperty *qModelingElement);
     virtual ~QUmlPropertyObject();
 
     // Owned attributes [Element]
@@ -317,6 +320,10 @@ public Q_SLOTS:
     void removeRedefinedProperty(QObject *redefinedProperty);
     void addSubsettedProperty(QObject *subsettedProperty);
     void removeSubsettedProperty(QObject *subsettedProperty);
+
+protected:
+    virtual void setGroupProperties();
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

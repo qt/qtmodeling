@@ -45,7 +45,6 @@
 
 #include <QtUml/QUmlWriteVariableAction>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -57,10 +56,10 @@ class QUmlInputPin;
 class Q_UML_EXPORT QUmlRemoveVariableValueAction : public QUmlWriteVariableAction
 {
 public:
-    explicit QUmlRemoveVariableValueAction(bool createQObject = true);
+    explicit QUmlRemoveVariableValueAction(bool createQModelingObject = true);
     virtual ~QUmlRemoveVariableValueAction();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
     bool isRemoveDuplicates() const;
@@ -71,9 +70,6 @@ public:
 protected:
     bool _isRemoveDuplicates;
     QUmlInputPin *_removeAt;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

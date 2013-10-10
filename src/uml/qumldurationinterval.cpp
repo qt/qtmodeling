@@ -62,27 +62,25 @@
 
     \brief A duration interval defines the range between two durations.
  */
-QUmlDurationInterval::QUmlDurationInterval(bool createQObject) :
+QUmlDurationInterval::QUmlDurationInterval(bool createQModelingObject) :
     QUmlInterval(false),
     _max(0),
     _min(0)
 {
-    if (createQObject)
-        _qObject = new QUmlDurationIntervalObject(this);
-    setGroupProperties();
-    setPropertyData();
+    if (createQModelingObject)
+        _qModelingObject = qobject_cast<QModelingObject *>(new QUmlDurationIntervalObject(this));
 }
 
 QUmlDurationInterval::~QUmlDurationInterval()
 {
-    if (!deletingFromQObject) {
-        if (_qObject)
-            _qObject->setProperty("deletingFromModelingObject", true);
-        delete _qObject;
+    if (!deletingFromQModelingObject) {
+        if (_qModelingObject)
+            _qModelingObject->setProperty("deletingFromModelingObject", true);
+        delete _qModelingObject;
     }
 }
 
-QModelingObject *QUmlDurationInterval::clone() const
+QModelingElement *QUmlDurationInterval::clone() const
 {
     QUmlDurationInterval *c = new QUmlDurationInterval;
     foreach (QUmlComment *element, ownedComments())
@@ -124,8 +122,8 @@ void QUmlDurationInterval::setMax(QUmlDuration *max)
 
     if (_max != max) {
         _max = max;
-        if (max && max->asQObject() && this->asQObject())
-            QObject::connect(max->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setMax()));
+        if (max && max->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(max->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setMax()));
     }
 }
 
@@ -145,50 +143,8 @@ void QUmlDurationInterval::setMin(QUmlDuration *min)
 
     if (_min != min) {
         _min = min;
-        if (min && min->asQObject() && this->asQObject())
-            QObject::connect(min->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setMin()));
+        if (min && min->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(min->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setMin()));
     }
-}
-
-void QUmlDurationInterval::setGroupProperties()
-{
-    const QMetaObject *metaObject = _qObject->metaObject();
-
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
-    _groupProperties.insert(QStringLiteral("QUmlTypedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("type"))));
-    _groupProperties.insert(QStringLiteral("QUmlParameterableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owningTemplateParameter"))));
-    _groupProperties.insert(QStringLiteral("QUmlParameterableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("templateParameter"))));
-    _groupProperties.insert(QStringLiteral("QUmlPackageableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
-    _groupProperties.insert(QStringLiteral("QUmlDurationInterval"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("max"))));
-    _groupProperties.insert(QStringLiteral("QUmlDurationInterval"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("min"))));
-}
-
-void QUmlDurationInterval::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDurationInterval")][QStringLiteral("max")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDurationInterval")][QStringLiteral("max")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlDurationInterval");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDurationInterval")][QStringLiteral("max")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDurationInterval")][QStringLiteral("max")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDurationInterval")][QStringLiteral("max")][QtModeling::DocumentationRole] = QStringLiteral("Refers to the Duration denoting the maximum value of the range.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDurationInterval")][QStringLiteral("max")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("Interval-max");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDurationInterval")][QStringLiteral("max")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDurationInterval")][QStringLiteral("max")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDurationInterval")][QStringLiteral("min")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDurationInterval")][QStringLiteral("min")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlDurationInterval");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDurationInterval")][QStringLiteral("min")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDurationInterval")][QStringLiteral("min")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDurationInterval")][QStringLiteral("min")][QtModeling::DocumentationRole] = QStringLiteral("Refers to the Duration denoting the minimum value of the range.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDurationInterval")][QStringLiteral("min")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("Interval-min");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDurationInterval")][QStringLiteral("min")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDurationInterval")][QStringLiteral("min")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
 }
 

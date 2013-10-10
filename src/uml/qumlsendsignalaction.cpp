@@ -72,26 +72,24 @@
 
     \brief A send signal action is an action that creates a signal instance from its inputs, and transmits it to the target object, where it may cause the firing of a state machine transition or the execution of an activity. The argument values are available to the execution of associated behaviors. The requestor continues execution immediately. Any reply message is ignored and is not transmitted to the requestor. If the input is already a signal instance, use a send object action.
  */
-QUmlSendSignalAction::QUmlSendSignalAction(bool createQObject) :
+QUmlSendSignalAction::QUmlSendSignalAction(bool createQModelingObject) :
     _signal(0),
     _target(0)
 {
-    if (createQObject)
-        _qObject = new QUmlSendSignalActionObject(this);
-    setGroupProperties();
-    setPropertyData();
+    if (createQModelingObject)
+        _qModelingObject = qobject_cast<QModelingObject *>(new QUmlSendSignalActionObject(this));
 }
 
 QUmlSendSignalAction::~QUmlSendSignalAction()
 {
-    if (!deletingFromQObject) {
-        if (_qObject)
-            _qObject->setProperty("deletingFromModelingObject", true);
-        delete _qObject;
+    if (!deletingFromQModelingObject) {
+        if (_qModelingObject)
+            _qModelingObject->setProperty("deletingFromModelingObject", true);
+        delete _qModelingObject;
     }
 }
 
-QModelingObject *QUmlSendSignalAction::clone() const
+QModelingElement *QUmlSendSignalAction::clone() const
 {
     QUmlSendSignalAction *c = new QUmlSendSignalAction;
     foreach (QUmlComment *element, ownedComments())
@@ -153,8 +151,8 @@ void QUmlSendSignalAction::setSignal(QUmlSignal *signal)
 
     if (_signal != signal) {
         _signal = signal;
-        if (signal && signal->asQObject() && this->asQObject())
-            QObject::connect(signal->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setSignal()));
+        if (signal && signal->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(signal->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setSignal()));
     }
 }
 
@@ -177,73 +175,14 @@ void QUmlSendSignalAction::setTarget(QUmlInputPin *target)
         removeInput(_target);
 
         _target = target;
-        if (target && target->asQObject() && this->asQObject())
-            QObject::connect(target->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setTarget()));
-        target->asQObject()->setParent(this->asQObject());
+        if (target && target->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(target->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setTarget()));
+        target->asQModelingObject()->setParent(this->asQModelingObject());
 
         // Adjust subsetted properties
         if (target) {
             addInput(target);
         }
     }
-}
-
-void QUmlSendSignalAction::setGroupProperties()
-{
-    const QMetaObject *metaObject = _qObject->metaObject();
-
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
-    _groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isLeaf"))));
-    _groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinitionContexts"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("activity"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inGroups"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inInterruptibleRegions"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inPartitions"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inStructuredNode"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("incomings"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("outgoings"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinedNodes"))));
-    _groupProperties.insert(QStringLiteral("QUmlExecutableNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("handlers"))));
-    _groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("context"))));
-    _groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inputs"))));
-    _groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isLocallyReentrant"))));
-    _groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("localPostconditions"))));
-    _groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("localPreconditions"))));
-    _groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("outputs"))));
-    _groupProperties.insert(QStringLiteral("QUmlInvocationAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("arguments"))));
-    _groupProperties.insert(QStringLiteral("QUmlInvocationAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("onPort"))));
-    _groupProperties.insert(QStringLiteral("QUmlSendSignalAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("signal"))));
-    _groupProperties.insert(QStringLiteral("QUmlSendSignalAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("target"))));
-}
-
-void QUmlSendSignalAction::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlSendSignalAction")][QStringLiteral("signal")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlSendSignalAction")][QStringLiteral("signal")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlSendSignalAction");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlSendSignalAction")][QStringLiteral("signal")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlSendSignalAction")][QStringLiteral("signal")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlSendSignalAction")][QStringLiteral("signal")][QtModeling::DocumentationRole] = QStringLiteral("The type of signal transmitted to the target object.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlSendSignalAction")][QStringLiteral("signal")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlSendSignalAction")][QStringLiteral("signal")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlSendSignalAction")][QStringLiteral("signal")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlSendSignalAction")][QStringLiteral("target")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlSendSignalAction")][QStringLiteral("target")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlSendSignalAction");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlSendSignalAction")][QStringLiteral("target")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlSendSignalAction")][QStringLiteral("target")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlSendSignalAction")][QStringLiteral("target")][QtModeling::DocumentationRole] = QStringLiteral("The target object to which the signal is sent.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlSendSignalAction")][QStringLiteral("target")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlSendSignalAction")][QStringLiteral("target")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Action-input");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlSendSignalAction")][QStringLiteral("target")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
 }
 

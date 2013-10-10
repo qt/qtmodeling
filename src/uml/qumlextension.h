@@ -45,7 +45,6 @@
 
 #include <QtUml/QUmlAssociation>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -59,10 +58,10 @@ class QUmlProperty;
 class Q_UML_EXPORT QUmlExtension : public QUmlAssociation
 {
 public:
-    explicit QUmlExtension(bool createQObject = true);
+    explicit QUmlExtension(bool createQModelingObject = true);
     virtual ~QUmlExtension();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
     bool isRequired() const;
@@ -77,9 +76,6 @@ public:
 
 protected:
     QUmlExtensionEnd *_ownedEnd;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

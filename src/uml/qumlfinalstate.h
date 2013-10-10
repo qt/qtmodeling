@@ -45,7 +45,6 @@
 
 #include <QtUml/QUmlState>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -55,16 +54,13 @@ QT_MODULE(QtUml)
 class Q_UML_EXPORT QUmlFinalState : public QUmlState
 {
 public:
-    explicit QUmlFinalState(bool createQObject = true);
+    explicit QUmlFinalState(bool createQModelingObject = true);
     virtual ~QUmlFinalState();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
 
 protected:
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

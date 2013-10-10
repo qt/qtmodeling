@@ -45,7 +45,6 @@
 
 #include <QtUml/QUmlClassifier>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -60,10 +59,10 @@ class QUmlReception;
 class Q_UML_EXPORT QUmlInterface : public QUmlClassifier
 {
 public:
-    explicit QUmlInterface(bool createQObject = true);
+    explicit QUmlInterface(bool createQModelingObject = true);
     virtual ~QUmlInterface();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
     const QList<QUmlClassifier *> nestedClassifiers() const;
@@ -91,9 +90,6 @@ protected:
     QSet<QUmlReception *> _ownedReceptions;
     QUmlProtocolStateMachine *_protocol;
     QSet<QUmlInterface *> _redefinedInterfaces;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

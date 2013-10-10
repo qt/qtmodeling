@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlanyreceiveeventobject_p.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlAnyReceiveEvent>
 #include <QtUml/QUmlComment>
@@ -53,16 +54,18 @@
 
 QT_BEGIN_NAMESPACE
 
-QUmlAnyReceiveEventObject::QUmlAnyReceiveEventObject(QUmlAnyReceiveEvent *qModelingObject)
+QUmlAnyReceiveEventObject::QUmlAnyReceiveEventObject(QUmlAnyReceiveEvent *qModelingElement)
 {
-    setProperty("modelingObject", QVariant::fromValue(static_cast<QModelingObject *>(qModelingObject)));
+    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(qModelingElement)));
+    setGroupProperties();
+    setPropertyData();
 }
 
 QUmlAnyReceiveEventObject::~QUmlAnyReceiveEventObject()
 {
     if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingobjectproperty_cast<QUmlAnyReceiveEvent *>(this)->deletingFromQObject = true;
-        delete qmodelingobjectproperty_cast<QUmlComment *>(this);
+        qmodelingelementproperty_cast<QUmlAnyReceiveEvent *>(this)->deletingFromQModelingObject = true;
+        delete qmodelingelementproperty_cast<QUmlComment *>(this);
     }
 }
 
@@ -71,43 +74,43 @@ QUmlAnyReceiveEventObject::~QUmlAnyReceiveEventObject()
 const QSet<QObject *> QUmlAnyReceiveEventObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlAnyReceiveEvent *>(this)->ownedComments())
-        set.insert(element->asQObject());
+    foreach (QUmlComment *element, qmodelingelementproperty_cast<QUmlAnyReceiveEvent *>(this)->ownedComments())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlAnyReceiveEventObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlAnyReceiveEvent *>(this)->ownedElements())
-        set.insert(element->asQObject());
+    foreach (QUmlElement *element, qmodelingelementproperty_cast<QUmlAnyReceiveEvent *>(this)->ownedElements())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 QObject *QUmlAnyReceiveEventObject::owner() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlAnyReceiveEvent *>(this)->owner())
+    if (!qmodelingelementproperty_cast<QUmlAnyReceiveEvent *>(this)->owner())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlAnyReceiveEvent *>(this)->owner()->asQObject();
+        return qmodelingelementproperty_cast<QUmlAnyReceiveEvent *>(this)->owner()->asQModelingObject();
 }
 
 // OWNED ATTRIBUTES [ParameterableElement]
 
 QObject *QUmlAnyReceiveEventObject::owningTemplateParameter() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlAnyReceiveEvent *>(this)->owningTemplateParameter())
+    if (!qmodelingelementproperty_cast<QUmlAnyReceiveEvent *>(this)->owningTemplateParameter())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlAnyReceiveEvent *>(this)->owningTemplateParameter()->asQObject();
+        return qmodelingelementproperty_cast<QUmlAnyReceiveEvent *>(this)->owningTemplateParameter()->asQModelingObject();
 }
 
 QObject *QUmlAnyReceiveEventObject::templateParameter() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlAnyReceiveEvent *>(this)->templateParameter())
+    if (!qmodelingelementproperty_cast<QUmlAnyReceiveEvent *>(this)->templateParameter())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlAnyReceiveEvent *>(this)->templateParameter()->asQObject();
+        return qmodelingelementproperty_cast<QUmlAnyReceiveEvent *>(this)->templateParameter()->asQModelingObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -115,42 +118,42 @@ QObject *QUmlAnyReceiveEventObject::templateParameter() const
 const QSet<QObject *> QUmlAnyReceiveEventObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlAnyReceiveEvent *>(this)->clientDependencies())
-        set.insert(element->asQObject());
+    foreach (QUmlDependency *element, qmodelingelementproperty_cast<QUmlAnyReceiveEvent *>(this)->clientDependencies())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 QString QUmlAnyReceiveEventObject::name() const
 {
-    return qmodelingobjectproperty_cast<QUmlAnyReceiveEvent *>(this)->name();
+    return qmodelingelementproperty_cast<QUmlAnyReceiveEvent *>(this)->name();
 }
 
 QObject *QUmlAnyReceiveEventObject::nameExpression() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlAnyReceiveEvent *>(this)->nameExpression())
+    if (!qmodelingelementproperty_cast<QUmlAnyReceiveEvent *>(this)->nameExpression())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlAnyReceiveEvent *>(this)->nameExpression()->asQObject();
+        return qmodelingelementproperty_cast<QUmlAnyReceiveEvent *>(this)->nameExpression()->asQModelingObject();
 }
 
 QObject *QUmlAnyReceiveEventObject::namespace_() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlAnyReceiveEvent *>(this)->namespace_())
+    if (!qmodelingelementproperty_cast<QUmlAnyReceiveEvent *>(this)->namespace_())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlAnyReceiveEvent *>(this)->namespace_()->asQObject();
+        return qmodelingelementproperty_cast<QUmlAnyReceiveEvent *>(this)->namespace_()->asQModelingObject();
 }
 
 QString QUmlAnyReceiveEventObject::qualifiedName() const
 {
-    return qmodelingobjectproperty_cast<QUmlAnyReceiveEvent *>(this)->qualifiedName();
+    return qmodelingelementproperty_cast<QUmlAnyReceiveEvent *>(this)->qualifiedName();
 }
 
 // OWNED ATTRIBUTES [PackageableElement]
 
 QtUml::VisibilityKind QUmlAnyReceiveEventObject::visibility() const
 {
-    return qmodelingobjectproperty_cast<QUmlAnyReceiveEvent *>(this)->visibility();
+    return qmodelingelementproperty_cast<QUmlAnyReceiveEvent *>(this)->visibility();
 }
 
 // OPERATIONS [Element]
@@ -158,26 +161,26 @@ QtUml::VisibilityKind QUmlAnyReceiveEventObject::visibility() const
 QSet<QObject *> QUmlAnyReceiveEventObject::allOwnedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlAnyReceiveEvent *>(this)->allOwnedElements())
-        set.insert(element->asQObject());
+    foreach (QUmlElement *element, qmodelingelementproperty_cast<QUmlAnyReceiveEvent *>(this)->allOwnedElements())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 bool QUmlAnyReceiveEventObject::mustBeOwned() const
 {
-    return qmodelingobjectproperty_cast<QUmlAnyReceiveEvent *>(this)->mustBeOwned();
+    return qmodelingelementproperty_cast<QUmlAnyReceiveEvent *>(this)->mustBeOwned();
 }
 
 // OPERATIONS [ParameterableElement]
 
 bool QUmlAnyReceiveEventObject::isCompatibleWith(QObject *p) const
 {
-    return qmodelingobjectproperty_cast<QUmlAnyReceiveEvent *>(this)->isCompatibleWith(qmodelingobjectproperty_cast<QUmlParameterableElement *>(p));
+    return qmodelingelementproperty_cast<QUmlAnyReceiveEvent *>(this)->isCompatibleWith(qmodelingelementproperty_cast<QUmlParameterableElement *>(p));
 }
 
 bool QUmlAnyReceiveEventObject::isTemplateParameter() const
 {
-    return qmodelingobjectproperty_cast<QUmlAnyReceiveEvent *>(this)->isTemplateParameter();
+    return qmodelingelementproperty_cast<QUmlAnyReceiveEvent *>(this)->isTemplateParameter();
 }
 
 // OPERATIONS [NamedElement]
@@ -185,109 +188,149 @@ bool QUmlAnyReceiveEventObject::isTemplateParameter() const
 QList<QObject *> QUmlAnyReceiveEventObject::allNamespaces() const
 {
     QList<QObject *> set;
-    foreach (QUmlNamespace *element, qmodelingobjectproperty_cast<QUmlAnyReceiveEvent *>(this)->allNamespaces())
-        set.append(element->asQObject());
+    foreach (QUmlNamespace *element, qmodelingelementproperty_cast<QUmlAnyReceiveEvent *>(this)->allNamespaces())
+        set.append(element->asQModelingObject());
     return set;
 }
 
 QSet<QObject *> QUmlAnyReceiveEventObject::allOwningPackages() const
 {
     QSet<QObject *> set;
-    foreach (QUmlPackage *element, qmodelingobjectproperty_cast<QUmlAnyReceiveEvent *>(this)->allOwningPackages())
-        set.insert(element->asQObject());
+    foreach (QUmlPackage *element, qmodelingelementproperty_cast<QUmlAnyReceiveEvent *>(this)->allOwningPackages())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 bool QUmlAnyReceiveEventObject::isDistinguishableFrom(QObject *n, QObject *ns) const
 {
-    return qmodelingobjectproperty_cast<QUmlAnyReceiveEvent *>(this)->isDistinguishableFrom(qmodelingobjectproperty_cast<QUmlNamedElement *>(n), qmodelingobjectproperty_cast<QUmlNamespace *>(ns));
+    return qmodelingelementproperty_cast<QUmlAnyReceiveEvent *>(this)->isDistinguishableFrom(qmodelingelementproperty_cast<QUmlNamedElement *>(n), qmodelingelementproperty_cast<QUmlNamespace *>(ns));
 }
 
 QString QUmlAnyReceiveEventObject::separator() const
 {
-    return qmodelingobjectproperty_cast<QUmlAnyReceiveEvent *>(this)->separator();
+    return qmodelingelementproperty_cast<QUmlAnyReceiveEvent *>(this)->separator();
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Element]
 
 void QUmlAnyReceiveEventObject::addOwnedComment(QObject *ownedComment)
 {
-    qmodelingobjectproperty_cast<QUmlAnyReceiveEvent *>(this)->addOwnedComment(qmodelingobjectproperty_cast<QUmlComment *>(ownedComment));
+    qmodelingelementproperty_cast<QUmlAnyReceiveEvent *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
 }
 
 void QUmlAnyReceiveEventObject::removeOwnedComment(QObject *ownedComment)
 {
-    qmodelingobjectproperty_cast<QUmlAnyReceiveEvent *>(this)->removeOwnedComment(qmodelingobjectproperty_cast<QUmlComment *>(ownedComment));
+    qmodelingelementproperty_cast<QUmlAnyReceiveEvent *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
 }
 
 void QUmlAnyReceiveEventObject::addOwnedElement(QObject *ownedElement)
 {
-    qmodelingobjectproperty_cast<QUmlAnyReceiveEvent *>(this)->addOwnedElement(qmodelingobjectproperty_cast<QUmlElement *>(ownedElement));
+    qmodelingelementproperty_cast<QUmlAnyReceiveEvent *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
 }
 
 void QUmlAnyReceiveEventObject::removeOwnedElement(QObject *ownedElement)
 {
-    qmodelingobjectproperty_cast<QUmlAnyReceiveEvent *>(this)->removeOwnedElement(qmodelingobjectproperty_cast<QUmlElement *>(ownedElement));
+    qmodelingelementproperty_cast<QUmlAnyReceiveEvent *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
 }
 
 void QUmlAnyReceiveEventObject::setOwner(QObject *owner)
 {
-    qmodelingobjectproperty_cast<QUmlAnyReceiveEvent *>(this)->setOwner(qmodelingobjectproperty_cast<QUmlElement *>(owner));
+    qmodelingelementproperty_cast<QUmlAnyReceiveEvent *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ParameterableElement]
 
 void QUmlAnyReceiveEventObject::setOwningTemplateParameter(QObject *owningTemplateParameter)
 {
-    qmodelingobjectproperty_cast<QUmlAnyReceiveEvent *>(this)->setOwningTemplateParameter(qmodelingobjectproperty_cast<QUmlTemplateParameter *>(owningTemplateParameter));
+    qmodelingelementproperty_cast<QUmlAnyReceiveEvent *>(this)->setOwningTemplateParameter(qmodelingelementproperty_cast<QUmlTemplateParameter *>(owningTemplateParameter));
 }
 
 void QUmlAnyReceiveEventObject::setTemplateParameter(QObject *templateParameter)
 {
-    qmodelingobjectproperty_cast<QUmlAnyReceiveEvent *>(this)->setTemplateParameter(qmodelingobjectproperty_cast<QUmlTemplateParameter *>(templateParameter));
+    qmodelingelementproperty_cast<QUmlAnyReceiveEvent *>(this)->setTemplateParameter(qmodelingelementproperty_cast<QUmlTemplateParameter *>(templateParameter));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [NamedElement]
 
 void QUmlAnyReceiveEventObject::addClientDependency(QObject *clientDependency)
 {
-    qmodelingobjectproperty_cast<QUmlAnyReceiveEvent *>(this)->addClientDependency(qmodelingobjectproperty_cast<QUmlDependency *>(clientDependency));
+    qmodelingelementproperty_cast<QUmlAnyReceiveEvent *>(this)->addClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
 }
 
 void QUmlAnyReceiveEventObject::removeClientDependency(QObject *clientDependency)
 {
-    qmodelingobjectproperty_cast<QUmlAnyReceiveEvent *>(this)->removeClientDependency(qmodelingobjectproperty_cast<QUmlDependency *>(clientDependency));
+    qmodelingelementproperty_cast<QUmlAnyReceiveEvent *>(this)->removeClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
 }
 
 void QUmlAnyReceiveEventObject::setName(QString name)
 {
-    qmodelingobjectproperty_cast<QUmlAnyReceiveEvent *>(this)->setName(name);
+    qmodelingelementproperty_cast<QUmlAnyReceiveEvent *>(this)->setName(name);
 }
 
 void QUmlAnyReceiveEventObject::setNameExpression(QObject *nameExpression)
 {
-    qmodelingobjectproperty_cast<QUmlAnyReceiveEvent *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
+    qmodelingelementproperty_cast<QUmlAnyReceiveEvent *>(this)->setNameExpression(qmodelingelementproperty_cast<QUmlStringExpression *>(nameExpression));
 }
 
 void QUmlAnyReceiveEventObject::setNamespace(QObject *namespace_)
 {
-    qmodelingobjectproperty_cast<QUmlAnyReceiveEvent *>(this)->setNamespace(qmodelingobjectproperty_cast<QUmlNamespace *>(namespace_));
+    qmodelingelementproperty_cast<QUmlAnyReceiveEvent *>(this)->setNamespace(qmodelingelementproperty_cast<QUmlNamespace *>(namespace_));
 }
 
 void QUmlAnyReceiveEventObject::setQualifiedName(QString qualifiedName)
 {
-    qmodelingobjectproperty_cast<QUmlAnyReceiveEvent *>(this)->setQualifiedName(qualifiedName);
+    qmodelingelementproperty_cast<QUmlAnyReceiveEvent *>(this)->setQualifiedName(qualifiedName);
 }
 // SLOTS FOR OWNED ATTRIBUTES [PackageableElement]
 
 void QUmlAnyReceiveEventObject::setVisibility(QtUml::VisibilityKind visibility)
 {
-    qmodelingobjectproperty_cast<QUmlAnyReceiveEvent *>(this)->setVisibility(visibility);
+    qmodelingelementproperty_cast<QUmlAnyReceiveEvent *>(this)->setVisibility(visibility);
 }
 
 void QUmlAnyReceiveEventObject::unsetVisibility()
 {
-    qmodelingobjectproperty_cast<QUmlAnyReceiveEvent *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("visibility"));
+    Q_D(QModelingObject);
+    d->modifiedResettableProperties.removeAll(QStringLiteral("visibility"));
+}
+
+
+void QUmlAnyReceiveEventObject::setGroupProperties()
+{
+    Q_D(QModelingObject);
+    const QMetaObject *metaObject = this->metaObject();
+
+    d->propertyGroups << QStringLiteral("QObject");
+    d->groupProperties.insert(QStringLiteral("QObject"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("objectName"))));
+
+    d->propertyGroups << QStringLiteral("QUmlElement");
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
+
+    d->propertyGroups << QStringLiteral("QUmlParameterableElement");
+    d->groupProperties.insert(QStringLiteral("QUmlParameterableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owningTemplateParameter"))));
+    d->groupProperties.insert(QStringLiteral("QUmlParameterableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("templateParameter"))));
+
+    d->propertyGroups << QStringLiteral("QUmlNamedElement");
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
+
+    d->propertyGroups << QStringLiteral("QUmlPackageableElement");
+    d->groupProperties.insert(QStringLiteral("QUmlPackageableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
+
+    d->propertyGroups << QStringLiteral("QUmlEvent");
+
+    d->propertyGroups << QStringLiteral("QUmlMessageEvent");
+
+    d->propertyGroups << QStringLiteral("QUmlAnyReceiveEvent");
+}
+
+void QUmlAnyReceiveEventObject::setPropertyData()
+{
 }
 
 QT_END_NAMESPACE

@@ -45,7 +45,6 @@
 
 #include <QtUml/QUmlNamedElement>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -61,7 +60,7 @@ class Q_UML_EXPORT QUmlActivityGroup : public virtual QUmlNamedElement
 public:
     virtual ~QUmlActivityGroup();
 
-    Q_DECL_HIDDEN QModelingObject *clone() const;
+    Q_DECL_HIDDEN virtual QModelingElement *clone() const;
 
     // Owned attributes
     const QSet<QUmlActivityEdge *> containedEdges() const;
@@ -86,9 +85,6 @@ protected:
     QUmlActivity *_inActivity;
     QSet<QUmlActivityGroup *> _subgroups;
     QUmlActivityGroup *_superGroup;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

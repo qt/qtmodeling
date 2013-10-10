@@ -67,15 +67,13 @@
  */
 QUmlExecutableNode::QUmlExecutableNode()
 {
-    setGroupProperties();
-    setPropertyData();
 }
 
 QUmlExecutableNode::~QUmlExecutableNode()
 {
 }
 
-QModelingObject *QUmlExecutableNode::clone() const
+QModelingElement *QUmlExecutableNode::clone() const
 {
     QUmlExecutableNode *c = new QUmlExecutableNode;
     foreach (QUmlComment *element, ownedComments())
@@ -124,9 +122,9 @@ void QUmlExecutableNode::addHandler(QUmlExceptionHandler *handler)
 
     if (!_handlers.contains(handler)) {
         _handlers.insert(handler);
-        if (handler && handler->asQObject() && this->asQObject())
-            QObject::connect(handler->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeHandler(QObject *)));
-        handler->asQObject()->setParent(this->asQObject());
+        if (handler && handler->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(handler->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeHandler(QObject *)));
+        handler->asQModelingObject()->setParent(this->asQModelingObject());
 
         // Adjust subsetted properties
         addOwnedElement(handler);
@@ -144,8 +142,8 @@ void QUmlExecutableNode::removeHandler(QUmlExceptionHandler *handler)
 
     if (_handlers.contains(handler)) {
         _handlers.remove(handler);
-        if (handler->asQObject())
-            handler->asQObject()->setParent(0);
+        if (handler->asQModelingObject())
+            handler->asQModelingObject()->setParent(0);
 
         // Adjust subsetted properties
         removeOwnedElement(handler);
@@ -155,45 +153,5 @@ void QUmlExecutableNode::removeHandler(QUmlExceptionHandler *handler)
             handler->setProtectedNode(0);
         }
     }
-}
-
-void QUmlExecutableNode::setGroupProperties()
-{
-    const QMetaObject *metaObject = _qObject->metaObject();
-
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
-    _groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isLeaf"))));
-    _groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinitionContexts"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("activity"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inGroups"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inInterruptibleRegions"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inPartitions"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inStructuredNode"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("incomings"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("outgoings"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinedNodes"))));
-    _groupProperties.insert(QStringLiteral("QUmlExecutableNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("handlers"))));
-}
-
-void QUmlExecutableNode::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExecutableNode")][QStringLiteral("handlers")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExecutableNode")][QStringLiteral("handlers")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlExecutableNode");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExecutableNode")][QStringLiteral("handlers")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExecutableNode")][QStringLiteral("handlers")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExecutableNode")][QStringLiteral("handlers")][QtModeling::DocumentationRole] = QStringLiteral("A set of exception handlers that are examined if an uncaught exception propagates to the outer level of the executable node.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExecutableNode")][QStringLiteral("handlers")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExecutableNode")][QStringLiteral("handlers")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExecutableNode")][QStringLiteral("handlers")][QtModeling::OppositeEndRole] = QStringLiteral("ExceptionHandler-protectedNode");
-
 }
 

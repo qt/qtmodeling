@@ -45,7 +45,6 @@
 
 #include <QtUml/QUmlDirectedRelationship>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -59,10 +58,10 @@ class QUmlTemplateSignature;
 class Q_UML_EXPORT QUmlTemplateBinding : public QUmlDirectedRelationship
 {
 public:
-    explicit QUmlTemplateBinding(bool createQObject = true);
+    explicit QUmlTemplateBinding(bool createQModelingObject = true);
     virtual ~QUmlTemplateBinding();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
     QUmlTemplateableElement *boundElement() const;
@@ -77,9 +76,6 @@ protected:
     QUmlTemplateableElement *_boundElement;
     QSet<QUmlTemplateParameterSubstitution *> _parameterSubstitutions;
     QUmlTemplateSignature *_signature;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

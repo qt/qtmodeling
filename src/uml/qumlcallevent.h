@@ -45,7 +45,6 @@
 
 #include <QtUml/QUmlMessageEvent>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -57,10 +56,10 @@ class QUmlOperation;
 class Q_UML_EXPORT QUmlCallEvent : public QUmlMessageEvent
 {
 public:
-    explicit QUmlCallEvent(bool createQObject = true);
+    explicit QUmlCallEvent(bool createQModelingObject = true);
     virtual ~QUmlCallEvent();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
     QUmlOperation *operation() const;
@@ -68,9 +67,6 @@ public:
 
 protected:
     QUmlOperation *_operation;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

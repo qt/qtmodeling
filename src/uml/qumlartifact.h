@@ -46,7 +46,6 @@
 #include <QtUml/QUmlDeployedArtifact>
 #include <QtUml/QUmlClassifier>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -60,10 +59,10 @@ class QUmlProperty;
 class Q_UML_EXPORT QUmlArtifact : public QUmlDeployedArtifact, public QUmlClassifier
 {
 public:
-    explicit QUmlArtifact(bool createQObject = true);
+    explicit QUmlArtifact(bool createQModelingObject = true);
     virtual ~QUmlArtifact();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
     QString fileName() const;
@@ -87,9 +86,6 @@ protected:
     QSet<QUmlArtifact *> _nestedArtifacts;
     QList<QUmlProperty *> _ownedAttributes;
     QList<QUmlOperation *> _ownedOperations;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

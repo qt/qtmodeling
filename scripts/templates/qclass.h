@@ -54,7 +54,7 @@
 [% END -%]
 [%- END -%]
 [%- IF superclasses.size == 0 -%]
-#include <QtModeling/QModelingObject>
+#include <QtModeling/QModelingElement>
 
 [% END -%]
 [%- SET useNamespace = 'false' -%]
@@ -70,7 +70,6 @@
 [%- IF useNamespace == 'true' %]
 #include <Qt${namespace}/Qt${namespace}Namespace>
 [% END -%]
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -89,16 +88,16 @@ public Q${namespace}${superclass.findvalue("@general")}
 [%- IF !loop.last %], [% END -%]
 [%- END -%]
 [%- IF superclasses.size == 0 -%]
-public QModelingObject
+public QModelingElement
 [%- END %]
 {
 public:
 [%- IF class.findvalue("@isAbstract") != "true" %]
-    explicit Q${namespace}${className}(bool createQObject = true);
+    explicit Q${namespace}${className}(bool createQModelingObject = true);
 [%- END %]
     virtual ~Q${namespace}${className}();
 
-    [% IF class.findvalue("@isAbstract") == "true" %]Q_DECL_HIDDEN [% END %]QModelingObject *clone() const;
+    [% IF class.findvalue("@isAbstract") == "true" %]Q_DECL_HIDDEN [% END %]virtual QModelingElement *clone() const;
 [% FOREACH attribute = class.findnodes("ownedAttribute") -%]
     [%- IF loop.first %]
     // Owned attributes
@@ -140,9 +139,6 @@ protected:
 [%- FOREACH attribute = class.findnodes("ownedAttribute[(@isDerived=\"false\" or not(@isDerived)) or (@isDerivedUnion and @isDerivedUnion=\"true\")]") %]
     [% QT_TYPE(namespace, attribute) -%]_[%- PLURALFORM(QT_ATTRIBUTE(attribute), attribute) %];
 [%- END %]
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

@@ -74,7 +74,7 @@ int main ()
     class2_->setName("InterStudent");
 
     QUmlGeneralization *generalization = new QUmlGeneralization;
-    generalization->asQObject()->setObjectName("generalization");
+    generalization->asQModelingObject()->setObjectName("generalization");
     generalization->setGeneral(class_);
     class2_->addGeneralization(generalization);
 
@@ -92,7 +92,7 @@ int main ()
         return 1;
     }
 
-    QXmiWriter writer(model);
+    QXmiWriter writer(model->asQModelingObject());
     if (writer.writeFile(&file))
         qDebug() << "XMI file saved !";
     else

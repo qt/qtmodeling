@@ -63,25 +63,23 @@
 
     \brief A behavior execution specification is a kind of execution specification representing the execution of a behavior.
  */
-QUmlBehaviorExecutionSpecification::QUmlBehaviorExecutionSpecification(bool createQObject) :
+QUmlBehaviorExecutionSpecification::QUmlBehaviorExecutionSpecification(bool createQModelingObject) :
     _behavior(0)
 {
-    if (createQObject)
-        _qObject = new QUmlBehaviorExecutionSpecificationObject(this);
-    setGroupProperties();
-    setPropertyData();
+    if (createQModelingObject)
+        _qModelingObject = qobject_cast<QModelingObject *>(new QUmlBehaviorExecutionSpecificationObject(this));
 }
 
 QUmlBehaviorExecutionSpecification::~QUmlBehaviorExecutionSpecification()
 {
-    if (!deletingFromQObject) {
-        if (_qObject)
-            _qObject->setProperty("deletingFromModelingObject", true);
-        delete _qObject;
+    if (!deletingFromQModelingObject) {
+        if (_qModelingObject)
+            _qModelingObject->setProperty("deletingFromModelingObject", true);
+        delete _qModelingObject;
     }
 }
 
-QModelingObject *QUmlBehaviorExecutionSpecification::clone() const
+QModelingElement *QUmlBehaviorExecutionSpecification::clone() const
 {
     QUmlBehaviorExecutionSpecification *c = new QUmlBehaviorExecutionSpecification;
     foreach (QUmlComment *element, ownedComments())
@@ -127,43 +125,8 @@ void QUmlBehaviorExecutionSpecification::setBehavior(QUmlBehavior *behavior)
 
     if (_behavior != behavior) {
         _behavior = behavior;
-        if (behavior && behavior->asQObject() && this->asQObject())
-            QObject::connect(behavior->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setBehavior()));
+        if (behavior && behavior->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(behavior->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setBehavior()));
     }
-}
-
-void QUmlBehaviorExecutionSpecification::setGroupProperties()
-{
-    const QMetaObject *metaObject = _qObject->metaObject();
-
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
-    _groupProperties.insert(QStringLiteral("QUmlInteractionFragment"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("covered"))));
-    _groupProperties.insert(QStringLiteral("QUmlInteractionFragment"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("enclosingInteraction"))));
-    _groupProperties.insert(QStringLiteral("QUmlInteractionFragment"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("enclosingOperand"))));
-    _groupProperties.insert(QStringLiteral("QUmlInteractionFragment"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("generalOrderings"))));
-    _groupProperties.insert(QStringLiteral("QUmlExecutionSpecification"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("finish"))));
-    _groupProperties.insert(QStringLiteral("QUmlExecutionSpecification"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("start"))));
-    _groupProperties.insert(QStringLiteral("QUmlBehaviorExecutionSpecification"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("behavior"))));
-}
-
-void QUmlBehaviorExecutionSpecification::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehaviorExecutionSpecification")][QStringLiteral("behavior")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehaviorExecutionSpecification")][QStringLiteral("behavior")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlBehaviorExecutionSpecification");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehaviorExecutionSpecification")][QStringLiteral("behavior")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehaviorExecutionSpecification")][QStringLiteral("behavior")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehaviorExecutionSpecification")][QStringLiteral("behavior")][QtModeling::DocumentationRole] = QStringLiteral("Behavior whose execution is occurring.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehaviorExecutionSpecification")][QStringLiteral("behavior")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehaviorExecutionSpecification")][QStringLiteral("behavior")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehaviorExecutionSpecification")][QStringLiteral("behavior")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
 }
 

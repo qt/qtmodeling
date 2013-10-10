@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlactivitypartitionobject_p.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlActivityPartition>
 #include <QtUml/QUmlActivity>
@@ -55,16 +56,18 @@
 
 QT_BEGIN_NAMESPACE
 
-QUmlActivityPartitionObject::QUmlActivityPartitionObject(QUmlActivityPartition *qModelingObject)
+QUmlActivityPartitionObject::QUmlActivityPartitionObject(QUmlActivityPartition *qModelingElement)
 {
-    setProperty("modelingObject", QVariant::fromValue(static_cast<QModelingObject *>(qModelingObject)));
+    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(qModelingElement)));
+    setGroupProperties();
+    setPropertyData();
 }
 
 QUmlActivityPartitionObject::~QUmlActivityPartitionObject()
 {
     if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingobjectproperty_cast<QUmlActivityPartition *>(this)->deletingFromQObject = true;
-        delete qmodelingobjectproperty_cast<QUmlComment *>(this);
+        qmodelingelementproperty_cast<QUmlActivityPartition *>(this)->deletingFromQModelingObject = true;
+        delete qmodelingelementproperty_cast<QUmlComment *>(this);
     }
 }
 
@@ -73,25 +76,25 @@ QUmlActivityPartitionObject::~QUmlActivityPartitionObject()
 const QSet<QObject *> QUmlActivityPartitionObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlActivityPartition *>(this)->ownedComments())
-        set.insert(element->asQObject());
+    foreach (QUmlComment *element, qmodelingelementproperty_cast<QUmlActivityPartition *>(this)->ownedComments())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlActivityPartitionObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlActivityPartition *>(this)->ownedElements())
-        set.insert(element->asQObject());
+    foreach (QUmlElement *element, qmodelingelementproperty_cast<QUmlActivityPartition *>(this)->ownedElements())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 QObject *QUmlActivityPartitionObject::owner() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlActivityPartition *>(this)->owner())
+    if (!qmodelingelementproperty_cast<QUmlActivityPartition *>(this)->owner())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlActivityPartition *>(this)->owner()->asQObject();
+        return qmodelingelementproperty_cast<QUmlActivityPartition *>(this)->owner()->asQModelingObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -99,40 +102,40 @@ QObject *QUmlActivityPartitionObject::owner() const
 const QSet<QObject *> QUmlActivityPartitionObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlActivityPartition *>(this)->clientDependencies())
-        set.insert(element->asQObject());
+    foreach (QUmlDependency *element, qmodelingelementproperty_cast<QUmlActivityPartition *>(this)->clientDependencies())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 QString QUmlActivityPartitionObject::name() const
 {
-    return qmodelingobjectproperty_cast<QUmlActivityPartition *>(this)->name();
+    return qmodelingelementproperty_cast<QUmlActivityPartition *>(this)->name();
 }
 
 QObject *QUmlActivityPartitionObject::nameExpression() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlActivityPartition *>(this)->nameExpression())
+    if (!qmodelingelementproperty_cast<QUmlActivityPartition *>(this)->nameExpression())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlActivityPartition *>(this)->nameExpression()->asQObject();
+        return qmodelingelementproperty_cast<QUmlActivityPartition *>(this)->nameExpression()->asQModelingObject();
 }
 
 QObject *QUmlActivityPartitionObject::namespace_() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlActivityPartition *>(this)->namespace_())
+    if (!qmodelingelementproperty_cast<QUmlActivityPartition *>(this)->namespace_())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlActivityPartition *>(this)->namespace_()->asQObject();
+        return qmodelingelementproperty_cast<QUmlActivityPartition *>(this)->namespace_()->asQModelingObject();
 }
 
 QString QUmlActivityPartitionObject::qualifiedName() const
 {
-    return qmodelingobjectproperty_cast<QUmlActivityPartition *>(this)->qualifiedName();
+    return qmodelingelementproperty_cast<QUmlActivityPartition *>(this)->qualifiedName();
 }
 
 QtUml::VisibilityKind QUmlActivityPartitionObject::visibility() const
 {
-    return qmodelingobjectproperty_cast<QUmlActivityPartition *>(this)->visibility();
+    return qmodelingelementproperty_cast<QUmlActivityPartition *>(this)->visibility();
 }
 
 // OWNED ATTRIBUTES [ActivityGroup]
@@ -140,41 +143,41 @@ QtUml::VisibilityKind QUmlActivityPartitionObject::visibility() const
 const QSet<QObject *> QUmlActivityPartitionObject::containedEdges() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlActivityPartition *>(this)->containedEdges())
-        set.insert(element->asQObject());
+    foreach (QUmlActivityEdge *element, qmodelingelementproperty_cast<QUmlActivityPartition *>(this)->containedEdges())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlActivityPartitionObject::containedNodes() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityNode *element, qmodelingobjectproperty_cast<QUmlActivityPartition *>(this)->containedNodes())
-        set.insert(element->asQObject());
+    foreach (QUmlActivityNode *element, qmodelingelementproperty_cast<QUmlActivityPartition *>(this)->containedNodes())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 QObject *QUmlActivityPartitionObject::inActivity() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlActivityPartition *>(this)->inActivity())
+    if (!qmodelingelementproperty_cast<QUmlActivityPartition *>(this)->inActivity())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlActivityPartition *>(this)->inActivity()->asQObject();
+        return qmodelingelementproperty_cast<QUmlActivityPartition *>(this)->inActivity()->asQModelingObject();
 }
 
 const QSet<QObject *> QUmlActivityPartitionObject::subgroups() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityGroup *element, qmodelingobjectproperty_cast<QUmlActivityPartition *>(this)->subgroups())
-        set.insert(element->asQObject());
+    foreach (QUmlActivityGroup *element, qmodelingelementproperty_cast<QUmlActivityPartition *>(this)->subgroups())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 QObject *QUmlActivityPartitionObject::superGroup() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlActivityPartition *>(this)->superGroup())
+    if (!qmodelingelementproperty_cast<QUmlActivityPartition *>(this)->superGroup())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlActivityPartition *>(this)->superGroup()->asQObject();
+        return qmodelingelementproperty_cast<QUmlActivityPartition *>(this)->superGroup()->asQModelingObject();
 }
 
 // OWNED ATTRIBUTES [ActivityPartition]
@@ -182,51 +185,51 @@ QObject *QUmlActivityPartitionObject::superGroup() const
 const QSet<QObject *> QUmlActivityPartitionObject::edges() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlActivityPartition *>(this)->edges())
-        set.insert(element->asQObject());
+    foreach (QUmlActivityEdge *element, qmodelingelementproperty_cast<QUmlActivityPartition *>(this)->edges())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 bool QUmlActivityPartitionObject::isDimension() const
 {
-    return qmodelingobjectproperty_cast<QUmlActivityPartition *>(this)->isDimension();
+    return qmodelingelementproperty_cast<QUmlActivityPartition *>(this)->isDimension();
 }
 
 bool QUmlActivityPartitionObject::isExternal() const
 {
-    return qmodelingobjectproperty_cast<QUmlActivityPartition *>(this)->isExternal();
+    return qmodelingelementproperty_cast<QUmlActivityPartition *>(this)->isExternal();
 }
 
 const QSet<QObject *> QUmlActivityPartitionObject::nodes() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityNode *element, qmodelingobjectproperty_cast<QUmlActivityPartition *>(this)->nodes())
-        set.insert(element->asQObject());
+    foreach (QUmlActivityNode *element, qmodelingelementproperty_cast<QUmlActivityPartition *>(this)->nodes())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 QObject *QUmlActivityPartitionObject::represents() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlActivityPartition *>(this)->represents())
+    if (!qmodelingelementproperty_cast<QUmlActivityPartition *>(this)->represents())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlActivityPartition *>(this)->represents()->asQObject();
+        return qmodelingelementproperty_cast<QUmlActivityPartition *>(this)->represents()->asQModelingObject();
 }
 
 const QSet<QObject *> QUmlActivityPartitionObject::subpartitions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityPartition *element, qmodelingobjectproperty_cast<QUmlActivityPartition *>(this)->subpartitions())
-        set.insert(element->asQObject());
+    foreach (QUmlActivityPartition *element, qmodelingelementproperty_cast<QUmlActivityPartition *>(this)->subpartitions())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 QObject *QUmlActivityPartitionObject::superPartition() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlActivityPartition *>(this)->superPartition())
+    if (!qmodelingelementproperty_cast<QUmlActivityPartition *>(this)->superPartition())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlActivityPartition *>(this)->superPartition()->asQObject();
+        return qmodelingelementproperty_cast<QUmlActivityPartition *>(this)->superPartition()->asQModelingObject();
 }
 
 // OPERATIONS [Element]
@@ -234,14 +237,14 @@ QObject *QUmlActivityPartitionObject::superPartition() const
 QSet<QObject *> QUmlActivityPartitionObject::allOwnedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlActivityPartition *>(this)->allOwnedElements())
-        set.insert(element->asQObject());
+    foreach (QUmlElement *element, qmodelingelementproperty_cast<QUmlActivityPartition *>(this)->allOwnedElements())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 bool QUmlActivityPartitionObject::mustBeOwned() const
 {
-    return qmodelingobjectproperty_cast<QUmlActivityPartition *>(this)->mustBeOwned();
+    return qmodelingelementproperty_cast<QUmlActivityPartition *>(this)->mustBeOwned();
 }
 
 // OPERATIONS [NamedElement]
@@ -249,195 +252,303 @@ bool QUmlActivityPartitionObject::mustBeOwned() const
 QList<QObject *> QUmlActivityPartitionObject::allNamespaces() const
 {
     QList<QObject *> set;
-    foreach (QUmlNamespace *element, qmodelingobjectproperty_cast<QUmlActivityPartition *>(this)->allNamespaces())
-        set.append(element->asQObject());
+    foreach (QUmlNamespace *element, qmodelingelementproperty_cast<QUmlActivityPartition *>(this)->allNamespaces())
+        set.append(element->asQModelingObject());
     return set;
 }
 
 QSet<QObject *> QUmlActivityPartitionObject::allOwningPackages() const
 {
     QSet<QObject *> set;
-    foreach (QUmlPackage *element, qmodelingobjectproperty_cast<QUmlActivityPartition *>(this)->allOwningPackages())
-        set.insert(element->asQObject());
+    foreach (QUmlPackage *element, qmodelingelementproperty_cast<QUmlActivityPartition *>(this)->allOwningPackages())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 bool QUmlActivityPartitionObject::isDistinguishableFrom(QObject *n, QObject *ns) const
 {
-    return qmodelingobjectproperty_cast<QUmlActivityPartition *>(this)->isDistinguishableFrom(qmodelingobjectproperty_cast<QUmlNamedElement *>(n), qmodelingobjectproperty_cast<QUmlNamespace *>(ns));
+    return qmodelingelementproperty_cast<QUmlActivityPartition *>(this)->isDistinguishableFrom(qmodelingelementproperty_cast<QUmlNamedElement *>(n), qmodelingelementproperty_cast<QUmlNamespace *>(ns));
 }
 
 QString QUmlActivityPartitionObject::separator() const
 {
-    return qmodelingobjectproperty_cast<QUmlActivityPartition *>(this)->separator();
+    return qmodelingelementproperty_cast<QUmlActivityPartition *>(this)->separator();
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Element]
 
 void QUmlActivityPartitionObject::addOwnedComment(QObject *ownedComment)
 {
-    qmodelingobjectproperty_cast<QUmlActivityPartition *>(this)->addOwnedComment(qmodelingobjectproperty_cast<QUmlComment *>(ownedComment));
+    qmodelingelementproperty_cast<QUmlActivityPartition *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
 }
 
 void QUmlActivityPartitionObject::removeOwnedComment(QObject *ownedComment)
 {
-    qmodelingobjectproperty_cast<QUmlActivityPartition *>(this)->removeOwnedComment(qmodelingobjectproperty_cast<QUmlComment *>(ownedComment));
+    qmodelingelementproperty_cast<QUmlActivityPartition *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
 }
 
 void QUmlActivityPartitionObject::addOwnedElement(QObject *ownedElement)
 {
-    qmodelingobjectproperty_cast<QUmlActivityPartition *>(this)->addOwnedElement(qmodelingobjectproperty_cast<QUmlElement *>(ownedElement));
+    qmodelingelementproperty_cast<QUmlActivityPartition *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
 }
 
 void QUmlActivityPartitionObject::removeOwnedElement(QObject *ownedElement)
 {
-    qmodelingobjectproperty_cast<QUmlActivityPartition *>(this)->removeOwnedElement(qmodelingobjectproperty_cast<QUmlElement *>(ownedElement));
+    qmodelingelementproperty_cast<QUmlActivityPartition *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
 }
 
 void QUmlActivityPartitionObject::setOwner(QObject *owner)
 {
-    qmodelingobjectproperty_cast<QUmlActivityPartition *>(this)->setOwner(qmodelingobjectproperty_cast<QUmlElement *>(owner));
+    qmodelingelementproperty_cast<QUmlActivityPartition *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [NamedElement]
 
 void QUmlActivityPartitionObject::addClientDependency(QObject *clientDependency)
 {
-    qmodelingobjectproperty_cast<QUmlActivityPartition *>(this)->addClientDependency(qmodelingobjectproperty_cast<QUmlDependency *>(clientDependency));
+    qmodelingelementproperty_cast<QUmlActivityPartition *>(this)->addClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
 }
 
 void QUmlActivityPartitionObject::removeClientDependency(QObject *clientDependency)
 {
-    qmodelingobjectproperty_cast<QUmlActivityPartition *>(this)->removeClientDependency(qmodelingobjectproperty_cast<QUmlDependency *>(clientDependency));
+    qmodelingelementproperty_cast<QUmlActivityPartition *>(this)->removeClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
 }
 
 void QUmlActivityPartitionObject::setName(QString name)
 {
-    qmodelingobjectproperty_cast<QUmlActivityPartition *>(this)->setName(name);
+    qmodelingelementproperty_cast<QUmlActivityPartition *>(this)->setName(name);
 }
 
 void QUmlActivityPartitionObject::setNameExpression(QObject *nameExpression)
 {
-    qmodelingobjectproperty_cast<QUmlActivityPartition *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
+    qmodelingelementproperty_cast<QUmlActivityPartition *>(this)->setNameExpression(qmodelingelementproperty_cast<QUmlStringExpression *>(nameExpression));
 }
 
 void QUmlActivityPartitionObject::setNamespace(QObject *namespace_)
 {
-    qmodelingobjectproperty_cast<QUmlActivityPartition *>(this)->setNamespace(qmodelingobjectproperty_cast<QUmlNamespace *>(namespace_));
+    qmodelingelementproperty_cast<QUmlActivityPartition *>(this)->setNamespace(qmodelingelementproperty_cast<QUmlNamespace *>(namespace_));
 }
 
 void QUmlActivityPartitionObject::setQualifiedName(QString qualifiedName)
 {
-    qmodelingobjectproperty_cast<QUmlActivityPartition *>(this)->setQualifiedName(qualifiedName);
+    qmodelingelementproperty_cast<QUmlActivityPartition *>(this)->setQualifiedName(qualifiedName);
 }
 
 void QUmlActivityPartitionObject::setVisibility(QtUml::VisibilityKind visibility)
 {
-    qmodelingobjectproperty_cast<QUmlActivityPartition *>(this)->setVisibility(visibility);
+    qmodelingelementproperty_cast<QUmlActivityPartition *>(this)->setVisibility(visibility);
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ActivityGroup]
 
 void QUmlActivityPartitionObject::addContainedEdge(QObject *containedEdge)
 {
-    qmodelingobjectproperty_cast<QUmlActivityPartition *>(this)->addContainedEdge(qmodelingobjectproperty_cast<QUmlActivityEdge *>(containedEdge));
+    qmodelingelementproperty_cast<QUmlActivityPartition *>(this)->addContainedEdge(qmodelingelementproperty_cast<QUmlActivityEdge *>(containedEdge));
 }
 
 void QUmlActivityPartitionObject::removeContainedEdge(QObject *containedEdge)
 {
-    qmodelingobjectproperty_cast<QUmlActivityPartition *>(this)->removeContainedEdge(qmodelingobjectproperty_cast<QUmlActivityEdge *>(containedEdge));
+    qmodelingelementproperty_cast<QUmlActivityPartition *>(this)->removeContainedEdge(qmodelingelementproperty_cast<QUmlActivityEdge *>(containedEdge));
 }
 
 void QUmlActivityPartitionObject::addContainedNode(QObject *containedNode)
 {
-    qmodelingobjectproperty_cast<QUmlActivityPartition *>(this)->addContainedNode(qmodelingobjectproperty_cast<QUmlActivityNode *>(containedNode));
+    qmodelingelementproperty_cast<QUmlActivityPartition *>(this)->addContainedNode(qmodelingelementproperty_cast<QUmlActivityNode *>(containedNode));
 }
 
 void QUmlActivityPartitionObject::removeContainedNode(QObject *containedNode)
 {
-    qmodelingobjectproperty_cast<QUmlActivityPartition *>(this)->removeContainedNode(qmodelingobjectproperty_cast<QUmlActivityNode *>(containedNode));
+    qmodelingelementproperty_cast<QUmlActivityPartition *>(this)->removeContainedNode(qmodelingelementproperty_cast<QUmlActivityNode *>(containedNode));
 }
 
 void QUmlActivityPartitionObject::setInActivity(QObject *inActivity)
 {
-    qmodelingobjectproperty_cast<QUmlActivityPartition *>(this)->setInActivity(qmodelingobjectproperty_cast<QUmlActivity *>(inActivity));
+    qmodelingelementproperty_cast<QUmlActivityPartition *>(this)->setInActivity(qmodelingelementproperty_cast<QUmlActivity *>(inActivity));
 }
 
 void QUmlActivityPartitionObject::addSubgroup(QObject *subgroup)
 {
-    qmodelingobjectproperty_cast<QUmlActivityPartition *>(this)->addSubgroup(qmodelingobjectproperty_cast<QUmlActivityGroup *>(subgroup));
+    qmodelingelementproperty_cast<QUmlActivityPartition *>(this)->addSubgroup(qmodelingelementproperty_cast<QUmlActivityGroup *>(subgroup));
 }
 
 void QUmlActivityPartitionObject::removeSubgroup(QObject *subgroup)
 {
-    qmodelingobjectproperty_cast<QUmlActivityPartition *>(this)->removeSubgroup(qmodelingobjectproperty_cast<QUmlActivityGroup *>(subgroup));
+    qmodelingelementproperty_cast<QUmlActivityPartition *>(this)->removeSubgroup(qmodelingelementproperty_cast<QUmlActivityGroup *>(subgroup));
 }
 
 void QUmlActivityPartitionObject::setSuperGroup(QObject *superGroup)
 {
-    qmodelingobjectproperty_cast<QUmlActivityPartition *>(this)->setSuperGroup(qmodelingobjectproperty_cast<QUmlActivityGroup *>(superGroup));
+    qmodelingelementproperty_cast<QUmlActivityPartition *>(this)->setSuperGroup(qmodelingelementproperty_cast<QUmlActivityGroup *>(superGroup));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ActivityPartition]
 
 void QUmlActivityPartitionObject::addEdge(QObject *edge)
 {
-    qmodelingobjectproperty_cast<QUmlActivityPartition *>(this)->addEdge(qmodelingobjectproperty_cast<QUmlActivityEdge *>(edge));
+    qmodelingelementproperty_cast<QUmlActivityPartition *>(this)->addEdge(qmodelingelementproperty_cast<QUmlActivityEdge *>(edge));
 }
 
 void QUmlActivityPartitionObject::removeEdge(QObject *edge)
 {
-    qmodelingobjectproperty_cast<QUmlActivityPartition *>(this)->removeEdge(qmodelingobjectproperty_cast<QUmlActivityEdge *>(edge));
+    qmodelingelementproperty_cast<QUmlActivityPartition *>(this)->removeEdge(qmodelingelementproperty_cast<QUmlActivityEdge *>(edge));
 }
 
 void QUmlActivityPartitionObject::setDimension(bool isDimension)
 {
-    qmodelingobjectproperty_cast<QUmlActivityPartition *>(this)->setDimension(isDimension);
+    qmodelingelementproperty_cast<QUmlActivityPartition *>(this)->setDimension(isDimension);
 }
 
 void QUmlActivityPartitionObject::unsetDimension()
 {
-    qmodelingobjectproperty_cast<QUmlActivityPartition *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("dimension"));
+    Q_D(QModelingObject);
+    d->modifiedResettableProperties.removeAll(QStringLiteral("dimension"));
 }
 
 void QUmlActivityPartitionObject::setExternal(bool isExternal)
 {
-    qmodelingobjectproperty_cast<QUmlActivityPartition *>(this)->setExternal(isExternal);
+    qmodelingelementproperty_cast<QUmlActivityPartition *>(this)->setExternal(isExternal);
 }
 
 void QUmlActivityPartitionObject::unsetExternal()
 {
-    qmodelingobjectproperty_cast<QUmlActivityPartition *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("external"));
+    Q_D(QModelingObject);
+    d->modifiedResettableProperties.removeAll(QStringLiteral("external"));
 }
 
 void QUmlActivityPartitionObject::addNode(QObject *node)
 {
-    qmodelingobjectproperty_cast<QUmlActivityPartition *>(this)->addNode(qmodelingobjectproperty_cast<QUmlActivityNode *>(node));
+    qmodelingelementproperty_cast<QUmlActivityPartition *>(this)->addNode(qmodelingelementproperty_cast<QUmlActivityNode *>(node));
 }
 
 void QUmlActivityPartitionObject::removeNode(QObject *node)
 {
-    qmodelingobjectproperty_cast<QUmlActivityPartition *>(this)->removeNode(qmodelingobjectproperty_cast<QUmlActivityNode *>(node));
+    qmodelingelementproperty_cast<QUmlActivityPartition *>(this)->removeNode(qmodelingelementproperty_cast<QUmlActivityNode *>(node));
 }
 
 void QUmlActivityPartitionObject::setRepresents(QObject *represents)
 {
-    qmodelingobjectproperty_cast<QUmlActivityPartition *>(this)->setRepresents(qmodelingobjectproperty_cast<QUmlElement *>(represents));
+    qmodelingelementproperty_cast<QUmlActivityPartition *>(this)->setRepresents(qmodelingelementproperty_cast<QUmlElement *>(represents));
 }
 
 void QUmlActivityPartitionObject::addSubpartition(QObject *subpartition)
 {
-    qmodelingobjectproperty_cast<QUmlActivityPartition *>(this)->addSubpartition(qmodelingobjectproperty_cast<QUmlActivityPartition *>(subpartition));
+    qmodelingelementproperty_cast<QUmlActivityPartition *>(this)->addSubpartition(qmodelingelementproperty_cast<QUmlActivityPartition *>(subpartition));
 }
 
 void QUmlActivityPartitionObject::removeSubpartition(QObject *subpartition)
 {
-    qmodelingobjectproperty_cast<QUmlActivityPartition *>(this)->removeSubpartition(qmodelingobjectproperty_cast<QUmlActivityPartition *>(subpartition));
+    qmodelingelementproperty_cast<QUmlActivityPartition *>(this)->removeSubpartition(qmodelingelementproperty_cast<QUmlActivityPartition *>(subpartition));
 }
 
 void QUmlActivityPartitionObject::setSuperPartition(QObject *superPartition)
 {
-    qmodelingobjectproperty_cast<QUmlActivityPartition *>(this)->setSuperPartition(qmodelingobjectproperty_cast<QUmlActivityPartition *>(superPartition));
+    qmodelingelementproperty_cast<QUmlActivityPartition *>(this)->setSuperPartition(qmodelingelementproperty_cast<QUmlActivityPartition *>(superPartition));
+}
+
+
+void QUmlActivityPartitionObject::setGroupProperties()
+{
+    Q_D(QModelingObject);
+    const QMetaObject *metaObject = this->metaObject();
+
+    d->propertyGroups << QStringLiteral("QObject");
+    d->groupProperties.insert(QStringLiteral("QObject"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("objectName"))));
+
+    d->propertyGroups << QStringLiteral("QUmlElement");
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
+
+    d->propertyGroups << QStringLiteral("QUmlNamedElement");
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
+
+    d->propertyGroups << QStringLiteral("QUmlActivityGroup");
+    d->groupProperties.insert(QStringLiteral("QUmlActivityGroup"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("containedEdges"))));
+    d->groupProperties.insert(QStringLiteral("QUmlActivityGroup"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("containedNodes"))));
+    d->groupProperties.insert(QStringLiteral("QUmlActivityGroup"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inActivity"))));
+    d->groupProperties.insert(QStringLiteral("QUmlActivityGroup"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("subgroups"))));
+    d->groupProperties.insert(QStringLiteral("QUmlActivityGroup"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("superGroup"))));
+
+    d->propertyGroups << QStringLiteral("QUmlActivityPartition");
+    d->groupProperties.insert(QStringLiteral("QUmlActivityPartition"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("edges"))));
+    d->groupProperties.insert(QStringLiteral("QUmlActivityPartition"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isDimension"))));
+    d->groupProperties.insert(QStringLiteral("QUmlActivityPartition"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isExternal"))));
+    d->groupProperties.insert(QStringLiteral("QUmlActivityPartition"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nodes"))));
+    d->groupProperties.insert(QStringLiteral("QUmlActivityPartition"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("represents"))));
+    d->groupProperties.insert(QStringLiteral("QUmlActivityPartition"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("subpartitions"))));
+    d->groupProperties.insert(QStringLiteral("QUmlActivityPartition"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("superPartition"))));
+}
+
+void QUmlActivityPartitionObject::setPropertyData()
+{
+    Q_DECLARE_METAPROPERTY_INFO(QUmlActivityPartition, edges, AggregationRole, QStringLiteral("none"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlActivityPartition, edges, PropertyClassRole, QStringLiteral("QUmlActivityPartition"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlActivityPartition, edges, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlActivityPartition, edges, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlActivityPartition, edges, DocumentationRole, QStringLiteral("Edges immediately contained in the group."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlActivityPartition, edges, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlActivityPartition, edges, SubsettedPropertiesRole, QStringLiteral("ActivityGroup-containedEdge"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlActivityPartition, edges, OppositeEndRole, QStringLiteral("ActivityEdge-inPartition"));
+
+    Q_DECLARE_METAPROPERTY_INFO(QUmlActivityPartition, isDimension, AggregationRole, QStringLiteral("none"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlActivityPartition, isDimension, PropertyClassRole, QStringLiteral("QUmlActivityPartition"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlActivityPartition, isDimension, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlActivityPartition, isDimension, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlActivityPartition, isDimension, DocumentationRole, QStringLiteral("Tells whether the partition groups other partitions along a dimension."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlActivityPartition, isDimension, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlActivityPartition, isDimension, SubsettedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlActivityPartition, isDimension, OppositeEndRole, QStringLiteral(""));
+
+    Q_DECLARE_METAPROPERTY_INFO(QUmlActivityPartition, isExternal, AggregationRole, QStringLiteral("none"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlActivityPartition, isExternal, PropertyClassRole, QStringLiteral("QUmlActivityPartition"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlActivityPartition, isExternal, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlActivityPartition, isExternal, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlActivityPartition, isExternal, DocumentationRole, QStringLiteral("Tells whether the partition represents an entity to which the partitioning structure does not apply."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlActivityPartition, isExternal, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlActivityPartition, isExternal, SubsettedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlActivityPartition, isExternal, OppositeEndRole, QStringLiteral(""));
+
+    Q_DECLARE_METAPROPERTY_INFO(QUmlActivityPartition, nodes, AggregationRole, QStringLiteral("none"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlActivityPartition, nodes, PropertyClassRole, QStringLiteral("QUmlActivityPartition"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlActivityPartition, nodes, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlActivityPartition, nodes, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlActivityPartition, nodes, DocumentationRole, QStringLiteral("Nodes immediately contained in the group."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlActivityPartition, nodes, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlActivityPartition, nodes, SubsettedPropertiesRole, QStringLiteral("ActivityGroup-containedNode"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlActivityPartition, nodes, OppositeEndRole, QStringLiteral("ActivityNode-inPartition"));
+
+    Q_DECLARE_METAPROPERTY_INFO(QUmlActivityPartition, represents, AggregationRole, QStringLiteral("none"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlActivityPartition, represents, PropertyClassRole, QStringLiteral("QUmlActivityPartition"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlActivityPartition, represents, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlActivityPartition, represents, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlActivityPartition, represents, DocumentationRole, QStringLiteral("An element constraining behaviors invoked by nodes in the partition."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlActivityPartition, represents, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlActivityPartition, represents, SubsettedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlActivityPartition, represents, OppositeEndRole, QStringLiteral(""));
+
+    Q_DECLARE_METAPROPERTY_INFO(QUmlActivityPartition, subpartitions, AggregationRole, QStringLiteral("composite"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlActivityPartition, subpartitions, PropertyClassRole, QStringLiteral("QUmlActivityPartition"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlActivityPartition, subpartitions, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlActivityPartition, subpartitions, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlActivityPartition, subpartitions, DocumentationRole, QStringLiteral("Partitions immediately contained in the partition."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlActivityPartition, subpartitions, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlActivityPartition, subpartitions, SubsettedPropertiesRole, QStringLiteral("ActivityGroup-subgroup"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlActivityPartition, subpartitions, OppositeEndRole, QStringLiteral("ActivityPartition-superPartition"));
+
+    Q_DECLARE_METAPROPERTY_INFO(QUmlActivityPartition, superPartition, AggregationRole, QStringLiteral("none"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlActivityPartition, superPartition, PropertyClassRole, QStringLiteral("QUmlActivityPartition"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlActivityPartition, superPartition, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlActivityPartition, superPartition, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlActivityPartition, superPartition, DocumentationRole, QStringLiteral("Partition immediately containing the partition."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlActivityPartition, superPartition, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlActivityPartition, superPartition, SubsettedPropertiesRole, QStringLiteral("ActivityGroup-superGroup"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlActivityPartition, superPartition, OppositeEndRole, QStringLiteral("ActivityPartition-subpartition"));
+
 }
 
 QT_END_NAMESPACE

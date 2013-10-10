@@ -47,7 +47,6 @@
 #include <QtUml/QUmlRedefinableElement>
 #include <QtUml/QUmlVertex>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -66,10 +65,10 @@ class QUmlTrigger;
 class Q_UML_EXPORT QUmlState : public QUmlNamespace, public QUmlRedefinableElement, public QUmlVertex
 {
 public:
-    explicit QUmlState(bool createQObject = true);
+    explicit QUmlState(bool createQModelingObject = true);
     virtual ~QUmlState();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
     const QSet<QUmlConnectionPointReference *> connections() const;
@@ -123,9 +122,6 @@ protected:
     QSet<QUmlRegion *> _regions;
     QUmlConstraint *_stateInvariant;
     QUmlStateMachine *_submachine;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

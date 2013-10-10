@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlactionexecutionspecificationobject_p.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlActionExecutionSpecification>
 #include <QtUml/QUmlAction>
@@ -57,16 +58,18 @@
 
 QT_BEGIN_NAMESPACE
 
-QUmlActionExecutionSpecificationObject::QUmlActionExecutionSpecificationObject(QUmlActionExecutionSpecification *qModelingObject)
+QUmlActionExecutionSpecificationObject::QUmlActionExecutionSpecificationObject(QUmlActionExecutionSpecification *qModelingElement)
 {
-    setProperty("modelingObject", QVariant::fromValue(static_cast<QModelingObject *>(qModelingObject)));
+    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(qModelingElement)));
+    setGroupProperties();
+    setPropertyData();
 }
 
 QUmlActionExecutionSpecificationObject::~QUmlActionExecutionSpecificationObject()
 {
     if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingobjectproperty_cast<QUmlActionExecutionSpecification *>(this)->deletingFromQObject = true;
-        delete qmodelingobjectproperty_cast<QUmlComment *>(this);
+        qmodelingelementproperty_cast<QUmlActionExecutionSpecification *>(this)->deletingFromQModelingObject = true;
+        delete qmodelingelementproperty_cast<QUmlComment *>(this);
     }
 }
 
@@ -75,25 +78,25 @@ QUmlActionExecutionSpecificationObject::~QUmlActionExecutionSpecificationObject(
 const QSet<QObject *> QUmlActionExecutionSpecificationObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlActionExecutionSpecification *>(this)->ownedComments())
-        set.insert(element->asQObject());
+    foreach (QUmlComment *element, qmodelingelementproperty_cast<QUmlActionExecutionSpecification *>(this)->ownedComments())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlActionExecutionSpecificationObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlActionExecutionSpecification *>(this)->ownedElements())
-        set.insert(element->asQObject());
+    foreach (QUmlElement *element, qmodelingelementproperty_cast<QUmlActionExecutionSpecification *>(this)->ownedElements())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 QObject *QUmlActionExecutionSpecificationObject::owner() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlActionExecutionSpecification *>(this)->owner())
+    if (!qmodelingelementproperty_cast<QUmlActionExecutionSpecification *>(this)->owner())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlActionExecutionSpecification *>(this)->owner()->asQObject();
+        return qmodelingelementproperty_cast<QUmlActionExecutionSpecification *>(this)->owner()->asQModelingObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -101,40 +104,40 @@ QObject *QUmlActionExecutionSpecificationObject::owner() const
 const QSet<QObject *> QUmlActionExecutionSpecificationObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlActionExecutionSpecification *>(this)->clientDependencies())
-        set.insert(element->asQObject());
+    foreach (QUmlDependency *element, qmodelingelementproperty_cast<QUmlActionExecutionSpecification *>(this)->clientDependencies())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 QString QUmlActionExecutionSpecificationObject::name() const
 {
-    return qmodelingobjectproperty_cast<QUmlActionExecutionSpecification *>(this)->name();
+    return qmodelingelementproperty_cast<QUmlActionExecutionSpecification *>(this)->name();
 }
 
 QObject *QUmlActionExecutionSpecificationObject::nameExpression() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlActionExecutionSpecification *>(this)->nameExpression())
+    if (!qmodelingelementproperty_cast<QUmlActionExecutionSpecification *>(this)->nameExpression())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlActionExecutionSpecification *>(this)->nameExpression()->asQObject();
+        return qmodelingelementproperty_cast<QUmlActionExecutionSpecification *>(this)->nameExpression()->asQModelingObject();
 }
 
 QObject *QUmlActionExecutionSpecificationObject::namespace_() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlActionExecutionSpecification *>(this)->namespace_())
+    if (!qmodelingelementproperty_cast<QUmlActionExecutionSpecification *>(this)->namespace_())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlActionExecutionSpecification *>(this)->namespace_()->asQObject();
+        return qmodelingelementproperty_cast<QUmlActionExecutionSpecification *>(this)->namespace_()->asQModelingObject();
 }
 
 QString QUmlActionExecutionSpecificationObject::qualifiedName() const
 {
-    return qmodelingobjectproperty_cast<QUmlActionExecutionSpecification *>(this)->qualifiedName();
+    return qmodelingelementproperty_cast<QUmlActionExecutionSpecification *>(this)->qualifiedName();
 }
 
 QtUml::VisibilityKind QUmlActionExecutionSpecificationObject::visibility() const
 {
-    return qmodelingobjectproperty_cast<QUmlActionExecutionSpecification *>(this)->visibility();
+    return qmodelingelementproperty_cast<QUmlActionExecutionSpecification *>(this)->visibility();
 }
 
 // OWNED ATTRIBUTES [InteractionFragment]
@@ -142,32 +145,32 @@ QtUml::VisibilityKind QUmlActionExecutionSpecificationObject::visibility() const
 const QSet<QObject *> QUmlActionExecutionSpecificationObject::covered() const
 {
     QSet<QObject *> set;
-    foreach (QUmlLifeline *element, qmodelingobjectproperty_cast<QUmlActionExecutionSpecification *>(this)->covered())
-        set.insert(element->asQObject());
+    foreach (QUmlLifeline *element, qmodelingelementproperty_cast<QUmlActionExecutionSpecification *>(this)->covered())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 QObject *QUmlActionExecutionSpecificationObject::enclosingInteraction() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlActionExecutionSpecification *>(this)->enclosingInteraction())
+    if (!qmodelingelementproperty_cast<QUmlActionExecutionSpecification *>(this)->enclosingInteraction())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlActionExecutionSpecification *>(this)->enclosingInteraction()->asQObject();
+        return qmodelingelementproperty_cast<QUmlActionExecutionSpecification *>(this)->enclosingInteraction()->asQModelingObject();
 }
 
 QObject *QUmlActionExecutionSpecificationObject::enclosingOperand() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlActionExecutionSpecification *>(this)->enclosingOperand())
+    if (!qmodelingelementproperty_cast<QUmlActionExecutionSpecification *>(this)->enclosingOperand())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlActionExecutionSpecification *>(this)->enclosingOperand()->asQObject();
+        return qmodelingelementproperty_cast<QUmlActionExecutionSpecification *>(this)->enclosingOperand()->asQModelingObject();
 }
 
 const QSet<QObject *> QUmlActionExecutionSpecificationObject::generalOrderings() const
 {
     QSet<QObject *> set;
-    foreach (QUmlGeneralOrdering *element, qmodelingobjectproperty_cast<QUmlActionExecutionSpecification *>(this)->generalOrderings())
-        set.insert(element->asQObject());
+    foreach (QUmlGeneralOrdering *element, qmodelingelementproperty_cast<QUmlActionExecutionSpecification *>(this)->generalOrderings())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
@@ -175,28 +178,28 @@ const QSet<QObject *> QUmlActionExecutionSpecificationObject::generalOrderings()
 
 QObject *QUmlActionExecutionSpecificationObject::finish() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlActionExecutionSpecification *>(this)->finish())
+    if (!qmodelingelementproperty_cast<QUmlActionExecutionSpecification *>(this)->finish())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlActionExecutionSpecification *>(this)->finish()->asQObject();
+        return qmodelingelementproperty_cast<QUmlActionExecutionSpecification *>(this)->finish()->asQModelingObject();
 }
 
 QObject *QUmlActionExecutionSpecificationObject::start() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlActionExecutionSpecification *>(this)->start())
+    if (!qmodelingelementproperty_cast<QUmlActionExecutionSpecification *>(this)->start())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlActionExecutionSpecification *>(this)->start()->asQObject();
+        return qmodelingelementproperty_cast<QUmlActionExecutionSpecification *>(this)->start()->asQModelingObject();
 }
 
 // OWNED ATTRIBUTES [ActionExecutionSpecification]
 
 QObject *QUmlActionExecutionSpecificationObject::action() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlActionExecutionSpecification *>(this)->action())
+    if (!qmodelingelementproperty_cast<QUmlActionExecutionSpecification *>(this)->action())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlActionExecutionSpecification *>(this)->action()->asQObject();
+        return qmodelingelementproperty_cast<QUmlActionExecutionSpecification *>(this)->action()->asQModelingObject();
 }
 
 // OPERATIONS [Element]
@@ -204,14 +207,14 @@ QObject *QUmlActionExecutionSpecificationObject::action() const
 QSet<QObject *> QUmlActionExecutionSpecificationObject::allOwnedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlActionExecutionSpecification *>(this)->allOwnedElements())
-        set.insert(element->asQObject());
+    foreach (QUmlElement *element, qmodelingelementproperty_cast<QUmlActionExecutionSpecification *>(this)->allOwnedElements())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 bool QUmlActionExecutionSpecificationObject::mustBeOwned() const
 {
-    return qmodelingobjectproperty_cast<QUmlActionExecutionSpecification *>(this)->mustBeOwned();
+    return qmodelingelementproperty_cast<QUmlActionExecutionSpecification *>(this)->mustBeOwned();
 }
 
 // OPERATIONS [NamedElement]
@@ -219,142 +222,191 @@ bool QUmlActionExecutionSpecificationObject::mustBeOwned() const
 QList<QObject *> QUmlActionExecutionSpecificationObject::allNamespaces() const
 {
     QList<QObject *> set;
-    foreach (QUmlNamespace *element, qmodelingobjectproperty_cast<QUmlActionExecutionSpecification *>(this)->allNamespaces())
-        set.append(element->asQObject());
+    foreach (QUmlNamespace *element, qmodelingelementproperty_cast<QUmlActionExecutionSpecification *>(this)->allNamespaces())
+        set.append(element->asQModelingObject());
     return set;
 }
 
 QSet<QObject *> QUmlActionExecutionSpecificationObject::allOwningPackages() const
 {
     QSet<QObject *> set;
-    foreach (QUmlPackage *element, qmodelingobjectproperty_cast<QUmlActionExecutionSpecification *>(this)->allOwningPackages())
-        set.insert(element->asQObject());
+    foreach (QUmlPackage *element, qmodelingelementproperty_cast<QUmlActionExecutionSpecification *>(this)->allOwningPackages())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 bool QUmlActionExecutionSpecificationObject::isDistinguishableFrom(QObject *n, QObject *ns) const
 {
-    return qmodelingobjectproperty_cast<QUmlActionExecutionSpecification *>(this)->isDistinguishableFrom(qmodelingobjectproperty_cast<QUmlNamedElement *>(n), qmodelingobjectproperty_cast<QUmlNamespace *>(ns));
+    return qmodelingelementproperty_cast<QUmlActionExecutionSpecification *>(this)->isDistinguishableFrom(qmodelingelementproperty_cast<QUmlNamedElement *>(n), qmodelingelementproperty_cast<QUmlNamespace *>(ns));
 }
 
 QString QUmlActionExecutionSpecificationObject::separator() const
 {
-    return qmodelingobjectproperty_cast<QUmlActionExecutionSpecification *>(this)->separator();
+    return qmodelingelementproperty_cast<QUmlActionExecutionSpecification *>(this)->separator();
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Element]
 
 void QUmlActionExecutionSpecificationObject::addOwnedComment(QObject *ownedComment)
 {
-    qmodelingobjectproperty_cast<QUmlActionExecutionSpecification *>(this)->addOwnedComment(qmodelingobjectproperty_cast<QUmlComment *>(ownedComment));
+    qmodelingelementproperty_cast<QUmlActionExecutionSpecification *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
 }
 
 void QUmlActionExecutionSpecificationObject::removeOwnedComment(QObject *ownedComment)
 {
-    qmodelingobjectproperty_cast<QUmlActionExecutionSpecification *>(this)->removeOwnedComment(qmodelingobjectproperty_cast<QUmlComment *>(ownedComment));
+    qmodelingelementproperty_cast<QUmlActionExecutionSpecification *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
 }
 
 void QUmlActionExecutionSpecificationObject::addOwnedElement(QObject *ownedElement)
 {
-    qmodelingobjectproperty_cast<QUmlActionExecutionSpecification *>(this)->addOwnedElement(qmodelingobjectproperty_cast<QUmlElement *>(ownedElement));
+    qmodelingelementproperty_cast<QUmlActionExecutionSpecification *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
 }
 
 void QUmlActionExecutionSpecificationObject::removeOwnedElement(QObject *ownedElement)
 {
-    qmodelingobjectproperty_cast<QUmlActionExecutionSpecification *>(this)->removeOwnedElement(qmodelingobjectproperty_cast<QUmlElement *>(ownedElement));
+    qmodelingelementproperty_cast<QUmlActionExecutionSpecification *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
 }
 
 void QUmlActionExecutionSpecificationObject::setOwner(QObject *owner)
 {
-    qmodelingobjectproperty_cast<QUmlActionExecutionSpecification *>(this)->setOwner(qmodelingobjectproperty_cast<QUmlElement *>(owner));
+    qmodelingelementproperty_cast<QUmlActionExecutionSpecification *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [NamedElement]
 
 void QUmlActionExecutionSpecificationObject::addClientDependency(QObject *clientDependency)
 {
-    qmodelingobjectproperty_cast<QUmlActionExecutionSpecification *>(this)->addClientDependency(qmodelingobjectproperty_cast<QUmlDependency *>(clientDependency));
+    qmodelingelementproperty_cast<QUmlActionExecutionSpecification *>(this)->addClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
 }
 
 void QUmlActionExecutionSpecificationObject::removeClientDependency(QObject *clientDependency)
 {
-    qmodelingobjectproperty_cast<QUmlActionExecutionSpecification *>(this)->removeClientDependency(qmodelingobjectproperty_cast<QUmlDependency *>(clientDependency));
+    qmodelingelementproperty_cast<QUmlActionExecutionSpecification *>(this)->removeClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
 }
 
 void QUmlActionExecutionSpecificationObject::setName(QString name)
 {
-    qmodelingobjectproperty_cast<QUmlActionExecutionSpecification *>(this)->setName(name);
+    qmodelingelementproperty_cast<QUmlActionExecutionSpecification *>(this)->setName(name);
 }
 
 void QUmlActionExecutionSpecificationObject::setNameExpression(QObject *nameExpression)
 {
-    qmodelingobjectproperty_cast<QUmlActionExecutionSpecification *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
+    qmodelingelementproperty_cast<QUmlActionExecutionSpecification *>(this)->setNameExpression(qmodelingelementproperty_cast<QUmlStringExpression *>(nameExpression));
 }
 
 void QUmlActionExecutionSpecificationObject::setNamespace(QObject *namespace_)
 {
-    qmodelingobjectproperty_cast<QUmlActionExecutionSpecification *>(this)->setNamespace(qmodelingobjectproperty_cast<QUmlNamespace *>(namespace_));
+    qmodelingelementproperty_cast<QUmlActionExecutionSpecification *>(this)->setNamespace(qmodelingelementproperty_cast<QUmlNamespace *>(namespace_));
 }
 
 void QUmlActionExecutionSpecificationObject::setQualifiedName(QString qualifiedName)
 {
-    qmodelingobjectproperty_cast<QUmlActionExecutionSpecification *>(this)->setQualifiedName(qualifiedName);
+    qmodelingelementproperty_cast<QUmlActionExecutionSpecification *>(this)->setQualifiedName(qualifiedName);
 }
 
 void QUmlActionExecutionSpecificationObject::setVisibility(QtUml::VisibilityKind visibility)
 {
-    qmodelingobjectproperty_cast<QUmlActionExecutionSpecification *>(this)->setVisibility(visibility);
+    qmodelingelementproperty_cast<QUmlActionExecutionSpecification *>(this)->setVisibility(visibility);
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [InteractionFragment]
 
 void QUmlActionExecutionSpecificationObject::addCovered(QObject *covered)
 {
-    qmodelingobjectproperty_cast<QUmlActionExecutionSpecification *>(this)->addCovered(qmodelingobjectproperty_cast<QUmlLifeline *>(covered));
+    qmodelingelementproperty_cast<QUmlActionExecutionSpecification *>(this)->addCovered(qmodelingelementproperty_cast<QUmlLifeline *>(covered));
 }
 
 void QUmlActionExecutionSpecificationObject::removeCovered(QObject *covered)
 {
-    qmodelingobjectproperty_cast<QUmlActionExecutionSpecification *>(this)->removeCovered(qmodelingobjectproperty_cast<QUmlLifeline *>(covered));
+    qmodelingelementproperty_cast<QUmlActionExecutionSpecification *>(this)->removeCovered(qmodelingelementproperty_cast<QUmlLifeline *>(covered));
 }
 
 void QUmlActionExecutionSpecificationObject::setEnclosingInteraction(QObject *enclosingInteraction)
 {
-    qmodelingobjectproperty_cast<QUmlActionExecutionSpecification *>(this)->setEnclosingInteraction(qmodelingobjectproperty_cast<QUmlInteraction *>(enclosingInteraction));
+    qmodelingelementproperty_cast<QUmlActionExecutionSpecification *>(this)->setEnclosingInteraction(qmodelingelementproperty_cast<QUmlInteraction *>(enclosingInteraction));
 }
 
 void QUmlActionExecutionSpecificationObject::setEnclosingOperand(QObject *enclosingOperand)
 {
-    qmodelingobjectproperty_cast<QUmlActionExecutionSpecification *>(this)->setEnclosingOperand(qmodelingobjectproperty_cast<QUmlInteractionOperand *>(enclosingOperand));
+    qmodelingelementproperty_cast<QUmlActionExecutionSpecification *>(this)->setEnclosingOperand(qmodelingelementproperty_cast<QUmlInteractionOperand *>(enclosingOperand));
 }
 
 void QUmlActionExecutionSpecificationObject::addGeneralOrdering(QObject *generalOrdering)
 {
-    qmodelingobjectproperty_cast<QUmlActionExecutionSpecification *>(this)->addGeneralOrdering(qmodelingobjectproperty_cast<QUmlGeneralOrdering *>(generalOrdering));
+    qmodelingelementproperty_cast<QUmlActionExecutionSpecification *>(this)->addGeneralOrdering(qmodelingelementproperty_cast<QUmlGeneralOrdering *>(generalOrdering));
 }
 
 void QUmlActionExecutionSpecificationObject::removeGeneralOrdering(QObject *generalOrdering)
 {
-    qmodelingobjectproperty_cast<QUmlActionExecutionSpecification *>(this)->removeGeneralOrdering(qmodelingobjectproperty_cast<QUmlGeneralOrdering *>(generalOrdering));
+    qmodelingelementproperty_cast<QUmlActionExecutionSpecification *>(this)->removeGeneralOrdering(qmodelingelementproperty_cast<QUmlGeneralOrdering *>(generalOrdering));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ExecutionSpecification]
 
 void QUmlActionExecutionSpecificationObject::setFinish(QObject *finish)
 {
-    qmodelingobjectproperty_cast<QUmlActionExecutionSpecification *>(this)->setFinish(qmodelingobjectproperty_cast<QUmlOccurrenceSpecification *>(finish));
+    qmodelingelementproperty_cast<QUmlActionExecutionSpecification *>(this)->setFinish(qmodelingelementproperty_cast<QUmlOccurrenceSpecification *>(finish));
 }
 
 void QUmlActionExecutionSpecificationObject::setStart(QObject *start)
 {
-    qmodelingobjectproperty_cast<QUmlActionExecutionSpecification *>(this)->setStart(qmodelingobjectproperty_cast<QUmlOccurrenceSpecification *>(start));
+    qmodelingelementproperty_cast<QUmlActionExecutionSpecification *>(this)->setStart(qmodelingelementproperty_cast<QUmlOccurrenceSpecification *>(start));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ActionExecutionSpecification]
 
 void QUmlActionExecutionSpecificationObject::setAction(QObject *action)
 {
-    qmodelingobjectproperty_cast<QUmlActionExecutionSpecification *>(this)->setAction(qmodelingobjectproperty_cast<QUmlAction *>(action));
+    qmodelingelementproperty_cast<QUmlActionExecutionSpecification *>(this)->setAction(qmodelingelementproperty_cast<QUmlAction *>(action));
+}
+
+
+void QUmlActionExecutionSpecificationObject::setGroupProperties()
+{
+    Q_D(QModelingObject);
+    const QMetaObject *metaObject = this->metaObject();
+
+    d->propertyGroups << QStringLiteral("QObject");
+    d->groupProperties.insert(QStringLiteral("QObject"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("objectName"))));
+
+    d->propertyGroups << QStringLiteral("QUmlElement");
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
+
+    d->propertyGroups << QStringLiteral("QUmlNamedElement");
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
+
+    d->propertyGroups << QStringLiteral("QUmlInteractionFragment");
+    d->groupProperties.insert(QStringLiteral("QUmlInteractionFragment"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("covered"))));
+    d->groupProperties.insert(QStringLiteral("QUmlInteractionFragment"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("enclosingInteraction"))));
+    d->groupProperties.insert(QStringLiteral("QUmlInteractionFragment"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("enclosingOperand"))));
+    d->groupProperties.insert(QStringLiteral("QUmlInteractionFragment"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("generalOrderings"))));
+
+    d->propertyGroups << QStringLiteral("QUmlExecutionSpecification");
+    d->groupProperties.insert(QStringLiteral("QUmlExecutionSpecification"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("finish"))));
+    d->groupProperties.insert(QStringLiteral("QUmlExecutionSpecification"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("start"))));
+
+    d->propertyGroups << QStringLiteral("QUmlActionExecutionSpecification");
+    d->groupProperties.insert(QStringLiteral("QUmlActionExecutionSpecification"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("action"))));
+}
+
+void QUmlActionExecutionSpecificationObject::setPropertyData()
+{
+    Q_DECLARE_METAPROPERTY_INFO(QUmlActionExecutionSpecification, action, AggregationRole, QStringLiteral("none"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlActionExecutionSpecification, action, PropertyClassRole, QStringLiteral("QUmlActionExecutionSpecification"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlActionExecutionSpecification, action, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlActionExecutionSpecification, action, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlActionExecutionSpecification, action, DocumentationRole, QStringLiteral("Action whose execution is occurring."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlActionExecutionSpecification, action, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlActionExecutionSpecification, action, SubsettedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlActionExecutionSpecification, action, OppositeEndRole, QStringLiteral(""));
+
 }
 
 QT_END_NAMESPACE

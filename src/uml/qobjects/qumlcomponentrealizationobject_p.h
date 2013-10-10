@@ -43,7 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtCore/QObject>
+#include <QtModeling/QModelingObject>
 
 #include <QtUml/QtUmlNamespace>
 
@@ -54,9 +54,12 @@ QT_BEGIN_NAMESPACE
 QT_MODULE(QtUml)
 
 class QUmlComponentRealization;
-class Q_UML_EXPORT QUmlComponentRealizationObject : public QObject
+class QModelingObjectPrivate;
+class Q_UML_EXPORT QUmlComponentRealizationObject : public QModelingObject
 {
     Q_OBJECT
+    Q_DISABLE_COPY(QUmlComponentRealizationObject)
+    Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [Element]
     Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
@@ -96,7 +99,7 @@ class Q_UML_EXPORT QUmlComponentRealizationObject : public QObject
     Q_PROPERTY(QSet<QObject *> realizingClassifiers READ realizingClassifiers)
 
 public:
-    Q_INVOKABLE explicit QUmlComponentRealizationObject(QUmlComponentRealization *qModelingObject);
+    Q_INVOKABLE explicit QUmlComponentRealizationObject(QUmlComponentRealization *qModelingElement);
     virtual ~QUmlComponentRealizationObject();
 
     // Owned attributes [Element]
@@ -198,6 +201,10 @@ public Q_SLOTS:
     void setAbstraction(QObject *abstraction = 0);
     void addRealizingClassifier(QObject *realizingClassifier);
     void removeRealizingClassifier(QObject *realizingClassifier);
+
+protected:
+    virtual void setGroupProperties();
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

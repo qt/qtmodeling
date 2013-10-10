@@ -62,26 +62,24 @@
 
     \brief A deployment is the allocation of an artifact or artifact instance to a deployment target.A component deployment is the deployment of one or more artifacts or artifact instances to a deployment target, optionally parameterized by a deployment specification. Examples are executables and configuration files.
  */
-QUmlDeployment::QUmlDeployment(bool createQObject) :
+QUmlDeployment::QUmlDeployment(bool createQModelingObject) :
     QUmlDependency(false),
     _location(0)
 {
-    if (createQObject)
-        _qObject = new QUmlDeploymentObject(this);
-    setGroupProperties();
-    setPropertyData();
+    if (createQModelingObject)
+        _qModelingObject = qobject_cast<QModelingObject *>(new QUmlDeploymentObject(this));
 }
 
 QUmlDeployment::~QUmlDeployment()
 {
-    if (!deletingFromQObject) {
-        if (_qObject)
-            _qObject->setProperty("deletingFromModelingObject", true);
-        delete _qObject;
+    if (!deletingFromQModelingObject) {
+        if (_qModelingObject)
+            _qModelingObject->setProperty("deletingFromModelingObject", true);
+        delete _qModelingObject;
     }
 }
 
-QModelingObject *QUmlDeployment::clone() const
+QModelingElement *QUmlDeployment::clone() const
 {
     QUmlDeployment *c = new QUmlDeployment;
     foreach (QUmlComment *element, ownedComments())
@@ -127,9 +125,9 @@ void QUmlDeployment::addConfiguration(QUmlDeploymentSpecification *configuration
 
     if (!_configurations.contains(configuration)) {
         _configurations.insert(configuration);
-        if (configuration && configuration->asQObject() && this->asQObject())
-            QObject::connect(configuration->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeConfiguration(QObject *)));
-        configuration->asQObject()->setParent(this->asQObject());
+        if (configuration && configuration->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(configuration->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeConfiguration(QObject *)));
+        configuration->asQModelingObject()->setParent(this->asQModelingObject());
 
         // Adjust subsetted properties
         addOwnedElement(configuration);
@@ -147,8 +145,8 @@ void QUmlDeployment::removeConfiguration(QUmlDeploymentSpecification *configurat
 
     if (_configurations.contains(configuration)) {
         _configurations.remove(configuration);
-        if (configuration->asQObject())
-            configuration->asQObject()->setParent(0);
+        if (configuration->asQModelingObject())
+            configuration->asQModelingObject()->setParent(0);
 
         // Adjust subsetted properties
         removeOwnedElement(configuration);
@@ -176,8 +174,8 @@ void QUmlDeployment::addDeployedArtifact(QUmlDeployedArtifact *deployedArtifact)
 
     if (!_deployedArtifacts.contains(deployedArtifact)) {
         _deployedArtifacts.insert(deployedArtifact);
-        if (deployedArtifact && deployedArtifact->asQObject() && this->asQObject())
-            QObject::connect(deployedArtifact->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeDeployedArtifact(QObject *)));
+        if (deployedArtifact && deployedArtifact->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(deployedArtifact->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeDeployedArtifact(QObject *)));
 
         // Adjust subsetted properties
         addSupplier(deployedArtifact);
@@ -215,8 +213,8 @@ void QUmlDeployment::setLocation(QUmlDeploymentTarget *location)
         removeClient(_location);
 
         _location = location;
-        if (location && location->asQObject() && this->asQObject())
-            QObject::connect(location->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setLocation()));
+        if (location && location->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(location->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setLocation()));
 
         // Adjust subsetted properties
         setOwner(location);
@@ -224,61 +222,5 @@ void QUmlDeployment::setLocation(QUmlDeploymentTarget *location)
             addClient(location);
         }
     }
-}
-
-void QUmlDeployment::setGroupProperties()
-{
-    const QMetaObject *metaObject = _qObject->metaObject();
-
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
-    _groupProperties.insert(QStringLiteral("QUmlParameterableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owningTemplateParameter"))));
-    _groupProperties.insert(QStringLiteral("QUmlParameterableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("templateParameter"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
-    _groupProperties.insert(QStringLiteral("QUmlPackageableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
-    _groupProperties.insert(QStringLiteral("QUmlRelationship"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("relatedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlDirectedRelationship"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("sources"))));
-    _groupProperties.insert(QStringLiteral("QUmlDirectedRelationship"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("targets"))));
-    _groupProperties.insert(QStringLiteral("QUmlDependency"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clients"))));
-    _groupProperties.insert(QStringLiteral("QUmlDependency"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("suppliers"))));
-    _groupProperties.insert(QStringLiteral("QUmlDeployment"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("configurations"))));
-    _groupProperties.insert(QStringLiteral("QUmlDeployment"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("deployedArtifacts"))));
-    _groupProperties.insert(QStringLiteral("QUmlDeployment"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("location"))));
-}
-
-void QUmlDeployment::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDeployment")][QStringLiteral("configurations")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDeployment")][QStringLiteral("configurations")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlDeployment");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDeployment")][QStringLiteral("configurations")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDeployment")][QStringLiteral("configurations")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDeployment")][QStringLiteral("configurations")][QtModeling::DocumentationRole] = QStringLiteral("The specification of properties that parameterize the deployment and execution of one or more Artifacts.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDeployment")][QStringLiteral("configurations")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDeployment")][QStringLiteral("configurations")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDeployment")][QStringLiteral("configurations")][QtModeling::OppositeEndRole] = QStringLiteral("DeploymentSpecification-deployment");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDeployment")][QStringLiteral("deployedArtifacts")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDeployment")][QStringLiteral("deployedArtifacts")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlDeployment");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDeployment")][QStringLiteral("deployedArtifacts")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDeployment")][QStringLiteral("deployedArtifacts")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDeployment")][QStringLiteral("deployedArtifacts")][QtModeling::DocumentationRole] = QStringLiteral("The Artifacts that are deployed onto a Node. This association specializes the supplier association.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDeployment")][QStringLiteral("deployedArtifacts")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDeployment")][QStringLiteral("deployedArtifacts")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Dependency-supplier");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDeployment")][QStringLiteral("deployedArtifacts")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDeployment")][QStringLiteral("location")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDeployment")][QStringLiteral("location")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlDeployment");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDeployment")][QStringLiteral("location")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDeployment")][QStringLiteral("location")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDeployment")][QStringLiteral("location")][QtModeling::DocumentationRole] = QStringLiteral("The DeployedTarget which is the target of a Deployment.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDeployment")][QStringLiteral("location")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDeployment")][QStringLiteral("location")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-owner Dependency-client");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDeployment")][QStringLiteral("location")][QtModeling::OppositeEndRole] = QStringLiteral("DeploymentTarget-deployment");
-
 }
 

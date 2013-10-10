@@ -45,7 +45,6 @@
 
 #include <QtUml/QUmlNamedElement>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -61,10 +60,10 @@ class QUmlValueSpecification;
 class Q_UML_EXPORT QUmlLifeline : public QUmlNamedElement
 {
 public:
-    explicit QUmlLifeline(bool createQObject = true);
+    explicit QUmlLifeline(bool createQModelingObject = true);
     virtual ~QUmlLifeline();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
     const QSet<QUmlInteractionFragment *> coveredBy() const;
@@ -85,9 +84,6 @@ protected:
     QUmlInteraction *_interaction;
     QUmlConnectableElement *_represents;
     QUmlValueSpecification *_selector;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

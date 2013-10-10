@@ -45,7 +45,6 @@
 
 #include <QtUml/QUmlWriteLinkAction>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -57,10 +56,10 @@ class QUmlLinkEndDestructionData;
 class Q_UML_EXPORT QUmlDestroyLinkAction : public QUmlWriteLinkAction
 {
 public:
-    explicit QUmlDestroyLinkAction(bool createQObject = true);
+    explicit QUmlDestroyLinkAction(bool createQModelingObject = true);
     virtual ~QUmlDestroyLinkAction();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
     const QSet<QUmlLinkEndDestructionData *> endData() const;
@@ -69,9 +68,6 @@ public:
 
 protected:
     QSet<QUmlLinkEndDestructionData *> _endData;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

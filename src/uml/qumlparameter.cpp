@@ -66,29 +66,27 @@
 
     \brief Parameters are allowed to be treated as connectable elements.A parameter is a specification of an argument used to pass information into or out of an invocation of a behavioral feature.Parameters have support for streaming, exceptions, and parameter sets.
  */
-QUmlParameter::QUmlParameter(bool createQObject) :
+QUmlParameter::QUmlParameter(bool createQModelingObject) :
     _defaultValue(0),
     _direction(QtUml::ParameterDirectionKindIn),
     _isException(false),
     _isStream(false),
     _operation(0)
 {
-    if (createQObject)
-        _qObject = new QUmlParameterObject(this);
-    setGroupProperties();
-    setPropertyData();
+    if (createQModelingObject)
+        _qModelingObject = qobject_cast<QModelingObject *>(new QUmlParameterObject(this));
 }
 
 QUmlParameter::~QUmlParameter()
 {
-    if (!deletingFromQObject) {
-        if (_qObject)
-            _qObject->setProperty("deletingFromModelingObject", true);
-        delete _qObject;
+    if (!deletingFromQModelingObject) {
+        if (_qModelingObject)
+            _qModelingObject->setProperty("deletingFromModelingObject", true);
+        delete _qModelingObject;
     }
 }
 
-QModelingObject *QUmlParameter::clone() const
+QModelingElement *QUmlParameter::clone() const
 {
     QUmlParameter *c = new QUmlParameter;
     foreach (QUmlComment *element, ownedComments())
@@ -169,9 +167,9 @@ void QUmlParameter::setDefaultValue(QUmlValueSpecification *defaultValue)
         removeOwnedElement(_defaultValue);
 
         _defaultValue = defaultValue;
-        if (defaultValue && defaultValue->asQObject() && this->asQObject())
-            QObject::connect(defaultValue->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setDefaultValue()));
-        defaultValue->asQObject()->setParent(this->asQObject());
+        if (defaultValue && defaultValue->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(defaultValue->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setDefaultValue()));
+        defaultValue->asQModelingObject()->setParent(this->asQModelingObject());
 
         // Adjust subsetted properties
         if (defaultValue) {
@@ -196,7 +194,7 @@ void QUmlParameter::setDirection(QtUml::ParameterDirectionKind direction)
 
     if (_direction != direction) {
         _direction = direction;
-        _modifiedResettableProperties << QStringLiteral("direction");
+        _qModelingObject->modifiedResettableProperties() << QStringLiteral("direction");
     }
 }
 
@@ -235,7 +233,7 @@ void QUmlParameter::setException(bool isException)
 
     if (_isException != isException) {
         _isException = isException;
-        _modifiedResettableProperties << QStringLiteral("isException");
+        _qModelingObject->modifiedResettableProperties() << QStringLiteral("isException");
     }
 }
 
@@ -255,7 +253,7 @@ void QUmlParameter::setStream(bool isStream)
 
     if (_isStream != isStream) {
         _isStream = isStream;
-        _modifiedResettableProperties << QStringLiteral("isStream");
+        _qModelingObject->modifiedResettableProperties() << QStringLiteral("isStream");
     }
 }
 
@@ -275,8 +273,8 @@ void QUmlParameter::setOperation(QUmlOperation *operation)
 
     if (_operation != operation) {
         _operation = operation;
-        if (operation && operation->asQObject() && this->asQObject())
-            QObject::connect(operation->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setOperation()));
+        if (operation && operation->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(operation->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setOperation()));
     }
 }
 
@@ -296,8 +294,8 @@ void QUmlParameter::addParameterSet(QUmlParameterSet *parameterSet)
 
     if (!_parameterSets.contains(parameterSet)) {
         _parameterSets.insert(parameterSet);
-        if (parameterSet && parameterSet->asQObject() && this->asQObject())
-            QObject::connect(parameterSet->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeParameterSet(QObject *)));
+        if (parameterSet && parameterSet->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(parameterSet->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeParameterSet(QObject *)));
 
         // Adjust opposite properties
         if (parameterSet) {
@@ -318,114 +316,5 @@ void QUmlParameter::removeParameterSet(QUmlParameterSet *parameterSet)
             parameterSet->removeParameter(this);
         }
     }
-}
-
-void QUmlParameter::setGroupProperties()
-{
-    const QMetaObject *metaObject = _qObject->metaObject();
-
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
-    _groupProperties.insert(QStringLiteral("QUmlMultiplicityElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isOrdered"))));
-    _groupProperties.insert(QStringLiteral("QUmlMultiplicityElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isUnique"))));
-    _groupProperties.insert(QStringLiteral("QUmlMultiplicityElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("lower"))));
-    _groupProperties.insert(QStringLiteral("QUmlMultiplicityElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("lowerValue"))));
-    _groupProperties.insert(QStringLiteral("QUmlMultiplicityElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("upper"))));
-    _groupProperties.insert(QStringLiteral("QUmlMultiplicityElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("upperValue"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
-    _groupProperties.insert(QStringLiteral("QUmlTypedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("type"))));
-    _groupProperties.insert(QStringLiteral("QUmlParameterableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owningTemplateParameter"))));
-    _groupProperties.insert(QStringLiteral("QUmlConnectableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ends"))));
-    _groupProperties.insert(QStringLiteral("QUmlConnectableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("templateParameter"))));
-    _groupProperties.insert(QStringLiteral("QUmlParameter"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("default_"))));
-    _groupProperties.insert(QStringLiteral("QUmlParameter"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("defaultValue"))));
-    _groupProperties.insert(QStringLiteral("QUmlParameter"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("direction"))));
-    _groupProperties.insert(QStringLiteral("QUmlParameter"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("effect"))));
-    _groupProperties.insert(QStringLiteral("QUmlParameter"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isException"))));
-    _groupProperties.insert(QStringLiteral("QUmlParameter"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isStream"))));
-    _groupProperties.insert(QStringLiteral("QUmlParameter"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("operation"))));
-    _groupProperties.insert(QStringLiteral("QUmlParameter"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("parameterSets"))));
-}
-
-void QUmlParameter::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameter")][QStringLiteral("default_")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameter")][QStringLiteral("default_")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlParameter");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameter")][QStringLiteral("default_")][QtModeling::IsDerivedRole] = true;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameter")][QStringLiteral("default_")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameter")][QStringLiteral("default_")][QtModeling::DocumentationRole] = QStringLiteral("Specifies a String that represents a value to be used when no argument is supplied for the Parameter.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameter")][QStringLiteral("default_")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameter")][QStringLiteral("default_")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameter")][QStringLiteral("default_")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameter")][QStringLiteral("defaultValue")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameter")][QStringLiteral("defaultValue")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlParameter");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameter")][QStringLiteral("defaultValue")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameter")][QStringLiteral("defaultValue")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameter")][QStringLiteral("defaultValue")][QtModeling::DocumentationRole] = QStringLiteral("Specifies a ValueSpecification that represents a value to be used when no argument is supplied for the Parameter.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameter")][QStringLiteral("defaultValue")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameter")][QStringLiteral("defaultValue")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameter")][QStringLiteral("defaultValue")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameter")][QStringLiteral("direction")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameter")][QStringLiteral("direction")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlParameter");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameter")][QStringLiteral("direction")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameter")][QStringLiteral("direction")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameter")][QStringLiteral("direction")][QtModeling::DocumentationRole] = QStringLiteral("Indicates whether a parameter is being sent into or out of a behavioral element.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameter")][QStringLiteral("direction")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameter")][QStringLiteral("direction")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameter")][QStringLiteral("direction")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameter")][QStringLiteral("effect")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameter")][QStringLiteral("effect")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlParameter");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameter")][QStringLiteral("effect")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameter")][QStringLiteral("effect")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameter")][QStringLiteral("effect")][QtModeling::DocumentationRole] = QStringLiteral("Specifies the effect that the owner of the parameter has on values passed in or out of the parameter.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameter")][QStringLiteral("effect")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameter")][QStringLiteral("effect")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameter")][QStringLiteral("effect")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameter")][QStringLiteral("isException")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameter")][QStringLiteral("isException")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlParameter");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameter")][QStringLiteral("isException")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameter")][QStringLiteral("isException")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameter")][QStringLiteral("isException")][QtModeling::DocumentationRole] = QStringLiteral("Tells whether an output parameter may emit a value to the exclusion of the other outputs.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameter")][QStringLiteral("isException")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameter")][QStringLiteral("isException")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameter")][QStringLiteral("isException")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameter")][QStringLiteral("isStream")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameter")][QStringLiteral("isStream")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlParameter");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameter")][QStringLiteral("isStream")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameter")][QStringLiteral("isStream")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameter")][QStringLiteral("isStream")][QtModeling::DocumentationRole] = QStringLiteral("Tells whether an input parameter may accept values while its behavior is executing, or whether an output parameter post values while the behavior is executing.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameter")][QStringLiteral("isStream")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameter")][QStringLiteral("isStream")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameter")][QStringLiteral("isStream")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameter")][QStringLiteral("operation")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameter")][QStringLiteral("operation")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlParameter");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameter")][QStringLiteral("operation")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameter")][QStringLiteral("operation")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameter")][QStringLiteral("operation")][QtModeling::DocumentationRole] = QStringLiteral("References the Operation owning this parameter.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameter")][QStringLiteral("operation")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameter")][QStringLiteral("operation")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("A_ownedParameter_ownerFormalParam-ownerFormalParam");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameter")][QStringLiteral("operation")][QtModeling::OppositeEndRole] = QStringLiteral("Operation-ownedParameter");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameter")][QStringLiteral("parameterSets")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameter")][QStringLiteral("parameterSets")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlParameter");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameter")][QStringLiteral("parameterSets")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameter")][QStringLiteral("parameterSets")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameter")][QStringLiteral("parameterSets")][QtModeling::DocumentationRole] = QStringLiteral("The parameter sets containing the parameter. See ParameterSet.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameter")][QStringLiteral("parameterSets")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameter")][QStringLiteral("parameterSets")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameter")][QStringLiteral("parameterSets")][QtModeling::OppositeEndRole] = QStringLiteral("ParameterSet-parameter");
-
 }
 

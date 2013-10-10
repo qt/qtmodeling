@@ -43,7 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtCore/QObject>
+#include <QtModeling/QModelingObject>
 
 #include <QtUml/QtUmlNamespace>
 
@@ -54,9 +54,12 @@ QT_BEGIN_NAMESPACE
 QT_MODULE(QtUml)
 
 class QUmlMessageOccurrenceSpecification;
-class Q_UML_EXPORT QUmlMessageOccurrenceSpecificationObject : public QObject
+class QModelingObjectPrivate;
+class Q_UML_EXPORT QUmlMessageOccurrenceSpecificationObject : public QModelingObject
 {
     Q_OBJECT
+    Q_DISABLE_COPY(QUmlMessageOccurrenceSpecificationObject)
+    Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [Element]
     Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
@@ -85,7 +88,7 @@ class Q_UML_EXPORT QUmlMessageOccurrenceSpecificationObject : public QObject
     Q_PROPERTY(QObject * message READ message WRITE setMessage)
 
 public:
-    Q_INVOKABLE explicit QUmlMessageOccurrenceSpecificationObject(QUmlMessageOccurrenceSpecification *qModelingObject);
+    Q_INVOKABLE explicit QUmlMessageOccurrenceSpecificationObject(QUmlMessageOccurrenceSpecification *qModelingElement);
     virtual ~QUmlMessageOccurrenceSpecificationObject();
 
     // Owned attributes [Element]
@@ -157,6 +160,10 @@ public Q_SLOTS:
 
     // Slots for owned attributes [MessageEnd]
     void setMessage(QObject *message = 0);
+
+protected:
+    virtual void setGroupProperties();
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

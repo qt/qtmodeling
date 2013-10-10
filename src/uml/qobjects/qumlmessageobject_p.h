@@ -43,7 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtCore/QObject>
+#include <QtModeling/QModelingObject>
 
 #include <QtUml/QtUmlNamespace>
 
@@ -54,9 +54,12 @@ QT_BEGIN_NAMESPACE
 QT_MODULE(QtUml)
 
 class QUmlMessage;
-class Q_UML_EXPORT QUmlMessageObject : public QObject
+class QModelingObjectPrivate;
+class Q_UML_EXPORT QUmlMessageObject : public QModelingObject
 {
     Q_OBJECT
+    Q_DISABLE_COPY(QUmlMessageObject)
+    Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [Element]
     Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
@@ -82,7 +85,7 @@ class Q_UML_EXPORT QUmlMessageObject : public QObject
     Q_PROPERTY(QObject * signature READ signature WRITE setSignature)
 
 public:
-    Q_INVOKABLE explicit QUmlMessageObject(QUmlMessage *qModelingObject);
+    Q_INVOKABLE explicit QUmlMessageObject(QUmlMessage *qModelingElement);
     virtual ~QUmlMessageObject();
 
     // Owned attributes [Element]
@@ -148,6 +151,10 @@ public Q_SLOTS:
     void setReceiveEvent(QObject *receiveEvent = 0);
     void setSendEvent(QObject *sendEvent = 0);
     void setSignature(QObject *signature = 0);
+
+protected:
+    virtual void setGroupProperties();
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

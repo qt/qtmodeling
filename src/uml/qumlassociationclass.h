@@ -46,7 +46,6 @@
 #include <QtUml/QUmlClass>
 #include <QtUml/QUmlAssociation>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -56,16 +55,13 @@ QT_MODULE(QtUml)
 class Q_UML_EXPORT QUmlAssociationClass : public QUmlClass, public QUmlAssociation
 {
 public:
-    explicit QUmlAssociationClass(bool createQObject = true);
+    explicit QUmlAssociationClass(bool createQModelingObject = true);
     virtual ~QUmlAssociationClass();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
 
 protected:
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

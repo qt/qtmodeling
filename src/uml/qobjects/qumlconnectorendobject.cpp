@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlconnectorendobject_p.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlConnectorEnd>
 #include <QtUml/QUmlComment>
@@ -50,16 +51,18 @@
 
 QT_BEGIN_NAMESPACE
 
-QUmlConnectorEndObject::QUmlConnectorEndObject(QUmlConnectorEnd *qModelingObject)
+QUmlConnectorEndObject::QUmlConnectorEndObject(QUmlConnectorEnd *qModelingElement)
 {
-    setProperty("modelingObject", QVariant::fromValue(static_cast<QModelingObject *>(qModelingObject)));
+    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(qModelingElement)));
+    setGroupProperties();
+    setPropertyData();
 }
 
 QUmlConnectorEndObject::~QUmlConnectorEndObject()
 {
     if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingobjectproperty_cast<QUmlConnectorEnd *>(this)->deletingFromQObject = true;
-        delete qmodelingobjectproperty_cast<QUmlComment *>(this);
+        qmodelingelementproperty_cast<QUmlConnectorEnd *>(this)->deletingFromQModelingObject = true;
+        delete qmodelingelementproperty_cast<QUmlComment *>(this);
     }
 }
 
@@ -68,89 +71,89 @@ QUmlConnectorEndObject::~QUmlConnectorEndObject()
 const QSet<QObject *> QUmlConnectorEndObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlConnectorEnd *>(this)->ownedComments())
-        set.insert(element->asQObject());
+    foreach (QUmlComment *element, qmodelingelementproperty_cast<QUmlConnectorEnd *>(this)->ownedComments())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlConnectorEndObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlConnectorEnd *>(this)->ownedElements())
-        set.insert(element->asQObject());
+    foreach (QUmlElement *element, qmodelingelementproperty_cast<QUmlConnectorEnd *>(this)->ownedElements())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 QObject *QUmlConnectorEndObject::owner() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlConnectorEnd *>(this)->owner())
+    if (!qmodelingelementproperty_cast<QUmlConnectorEnd *>(this)->owner())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlConnectorEnd *>(this)->owner()->asQObject();
+        return qmodelingelementproperty_cast<QUmlConnectorEnd *>(this)->owner()->asQModelingObject();
 }
 
 // OWNED ATTRIBUTES [MultiplicityElement]
 
 bool QUmlConnectorEndObject::isOrdered() const
 {
-    return qmodelingobjectproperty_cast<QUmlConnectorEnd *>(this)->isOrdered();
+    return qmodelingelementproperty_cast<QUmlConnectorEnd *>(this)->isOrdered();
 }
 
 bool QUmlConnectorEndObject::isUnique() const
 {
-    return qmodelingobjectproperty_cast<QUmlConnectorEnd *>(this)->isUnique();
+    return qmodelingelementproperty_cast<QUmlConnectorEnd *>(this)->isUnique();
 }
 
 int QUmlConnectorEndObject::lower() const
 {
-    return qmodelingobjectproperty_cast<QUmlConnectorEnd *>(this)->lower();
+    return qmodelingelementproperty_cast<QUmlConnectorEnd *>(this)->lower();
 }
 
 QObject *QUmlConnectorEndObject::lowerValue() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlConnectorEnd *>(this)->lowerValue())
+    if (!qmodelingelementproperty_cast<QUmlConnectorEnd *>(this)->lowerValue())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlConnectorEnd *>(this)->lowerValue()->asQObject();
+        return qmodelingelementproperty_cast<QUmlConnectorEnd *>(this)->lowerValue()->asQModelingObject();
 }
 
 int QUmlConnectorEndObject::upper() const
 {
-    return qmodelingobjectproperty_cast<QUmlConnectorEnd *>(this)->upper();
+    return qmodelingelementproperty_cast<QUmlConnectorEnd *>(this)->upper();
 }
 
 QObject *QUmlConnectorEndObject::upperValue() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlConnectorEnd *>(this)->upperValue())
+    if (!qmodelingelementproperty_cast<QUmlConnectorEnd *>(this)->upperValue())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlConnectorEnd *>(this)->upperValue()->asQObject();
+        return qmodelingelementproperty_cast<QUmlConnectorEnd *>(this)->upperValue()->asQModelingObject();
 }
 
 // OWNED ATTRIBUTES [ConnectorEnd]
 
 QObject *QUmlConnectorEndObject::definingEnd() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlConnectorEnd *>(this)->definingEnd())
+    if (!qmodelingelementproperty_cast<QUmlConnectorEnd *>(this)->definingEnd())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlConnectorEnd *>(this)->definingEnd()->asQObject();
+        return qmodelingelementproperty_cast<QUmlConnectorEnd *>(this)->definingEnd()->asQModelingObject();
 }
 
 QObject *QUmlConnectorEndObject::partWithPort() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlConnectorEnd *>(this)->partWithPort())
+    if (!qmodelingelementproperty_cast<QUmlConnectorEnd *>(this)->partWithPort())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlConnectorEnd *>(this)->partWithPort()->asQObject();
+        return qmodelingelementproperty_cast<QUmlConnectorEnd *>(this)->partWithPort()->asQModelingObject();
 }
 
 QObject *QUmlConnectorEndObject::role() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlConnectorEnd *>(this)->role())
+    if (!qmodelingelementproperty_cast<QUmlConnectorEnd *>(this)->role())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlConnectorEnd *>(this)->role()->asQObject();
+        return qmodelingelementproperty_cast<QUmlConnectorEnd *>(this)->role()->asQModelingObject();
 }
 
 // OPERATIONS [Element]
@@ -158,147 +161,210 @@ QObject *QUmlConnectorEndObject::role() const
 QSet<QObject *> QUmlConnectorEndObject::allOwnedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlConnectorEnd *>(this)->allOwnedElements())
-        set.insert(element->asQObject());
+    foreach (QUmlElement *element, qmodelingelementproperty_cast<QUmlConnectorEnd *>(this)->allOwnedElements())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 bool QUmlConnectorEndObject::mustBeOwned() const
 {
-    return qmodelingobjectproperty_cast<QUmlConnectorEnd *>(this)->mustBeOwned();
+    return qmodelingelementproperty_cast<QUmlConnectorEnd *>(this)->mustBeOwned();
 }
 
 // OPERATIONS [MultiplicityElement]
 
 bool QUmlConnectorEndObject::compatibleWith(QObject *other) const
 {
-    return qmodelingobjectproperty_cast<QUmlConnectorEnd *>(this)->compatibleWith(qmodelingobjectproperty_cast<QUmlMultiplicityElement *>(other));
+    return qmodelingelementproperty_cast<QUmlConnectorEnd *>(this)->compatibleWith(qmodelingelementproperty_cast<QUmlMultiplicityElement *>(other));
 }
 
 bool QUmlConnectorEndObject::includesCardinality(int C) const
 {
-    return qmodelingobjectproperty_cast<QUmlConnectorEnd *>(this)->includesCardinality(C);
+    return qmodelingelementproperty_cast<QUmlConnectorEnd *>(this)->includesCardinality(C);
 }
 
 bool QUmlConnectorEndObject::includesMultiplicity(QObject *M) const
 {
-    return qmodelingobjectproperty_cast<QUmlConnectorEnd *>(this)->includesMultiplicity(qmodelingobjectproperty_cast<QUmlMultiplicityElement *>(M));
+    return qmodelingelementproperty_cast<QUmlConnectorEnd *>(this)->includesMultiplicity(qmodelingelementproperty_cast<QUmlMultiplicityElement *>(M));
 }
 
 bool QUmlConnectorEndObject::is(int lowerbound, int upperbound) const
 {
-    return qmodelingobjectproperty_cast<QUmlConnectorEnd *>(this)->is(lowerbound, upperbound);
+    return qmodelingelementproperty_cast<QUmlConnectorEnd *>(this)->is(lowerbound, upperbound);
 }
 
 bool QUmlConnectorEndObject::isMultivalued() const
 {
-    return qmodelingobjectproperty_cast<QUmlConnectorEnd *>(this)->isMultivalued();
+    return qmodelingelementproperty_cast<QUmlConnectorEnd *>(this)->isMultivalued();
 }
 
 int QUmlConnectorEndObject::lowerBound() const
 {
-    return qmodelingobjectproperty_cast<QUmlConnectorEnd *>(this)->lowerBound();
+    return qmodelingelementproperty_cast<QUmlConnectorEnd *>(this)->lowerBound();
 }
 
 //int QUmlConnectorEndObject::upperBound() const
 //{
-//    return qmodelingobjectproperty_cast<QUmlConnectorEnd *>(this)->upperBound();
+//    return qmodelingelementproperty_cast<QUmlConnectorEnd *>(this)->upperBound();
 //}
 
 // SLOTS FOR OWNED ATTRIBUTES [Element]
 
 void QUmlConnectorEndObject::addOwnedComment(QObject *ownedComment)
 {
-    qmodelingobjectproperty_cast<QUmlConnectorEnd *>(this)->addOwnedComment(qmodelingobjectproperty_cast<QUmlComment *>(ownedComment));
+    qmodelingelementproperty_cast<QUmlConnectorEnd *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
 }
 
 void QUmlConnectorEndObject::removeOwnedComment(QObject *ownedComment)
 {
-    qmodelingobjectproperty_cast<QUmlConnectorEnd *>(this)->removeOwnedComment(qmodelingobjectproperty_cast<QUmlComment *>(ownedComment));
+    qmodelingelementproperty_cast<QUmlConnectorEnd *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
 }
 
 void QUmlConnectorEndObject::addOwnedElement(QObject *ownedElement)
 {
-    qmodelingobjectproperty_cast<QUmlConnectorEnd *>(this)->addOwnedElement(qmodelingobjectproperty_cast<QUmlElement *>(ownedElement));
+    qmodelingelementproperty_cast<QUmlConnectorEnd *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
 }
 
 void QUmlConnectorEndObject::removeOwnedElement(QObject *ownedElement)
 {
-    qmodelingobjectproperty_cast<QUmlConnectorEnd *>(this)->removeOwnedElement(qmodelingobjectproperty_cast<QUmlElement *>(ownedElement));
+    qmodelingelementproperty_cast<QUmlConnectorEnd *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
 }
 
 void QUmlConnectorEndObject::setOwner(QObject *owner)
 {
-    qmodelingobjectproperty_cast<QUmlConnectorEnd *>(this)->setOwner(qmodelingobjectproperty_cast<QUmlElement *>(owner));
+    qmodelingelementproperty_cast<QUmlConnectorEnd *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [MultiplicityElement]
 
 void QUmlConnectorEndObject::setOrdered(bool isOrdered)
 {
-    qmodelingobjectproperty_cast<QUmlConnectorEnd *>(this)->setOrdered(isOrdered);
+    qmodelingelementproperty_cast<QUmlConnectorEnd *>(this)->setOrdered(isOrdered);
 }
 
 void QUmlConnectorEndObject::unsetOrdered()
 {
-    qmodelingobjectproperty_cast<QUmlConnectorEnd *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("ordered"));
+    Q_D(QModelingObject);
+    d->modifiedResettableProperties.removeAll(QStringLiteral("ordered"));
 }
 
 void QUmlConnectorEndObject::setUnique(bool isUnique)
 {
-    qmodelingobjectproperty_cast<QUmlConnectorEnd *>(this)->setUnique(isUnique);
+    qmodelingelementproperty_cast<QUmlConnectorEnd *>(this)->setUnique(isUnique);
 }
 
 void QUmlConnectorEndObject::unsetUnique()
 {
-    qmodelingobjectproperty_cast<QUmlConnectorEnd *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("unique"));
+    Q_D(QModelingObject);
+    d->modifiedResettableProperties.removeAll(QStringLiteral("unique"));
 }
 
 void QUmlConnectorEndObject::setLower(int lower)
 {
-    qmodelingobjectproperty_cast<QUmlConnectorEnd *>(this)->setLower(lower);
+    qmodelingelementproperty_cast<QUmlConnectorEnd *>(this)->setLower(lower);
 }
 
 void QUmlConnectorEndObject::unsetLower()
 {
-    qmodelingobjectproperty_cast<QUmlConnectorEnd *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("lower"));
+    Q_D(QModelingObject);
+    d->modifiedResettableProperties.removeAll(QStringLiteral("lower"));
 }
 
 void QUmlConnectorEndObject::setLowerValue(QObject *lowerValue)
 {
-    qmodelingobjectproperty_cast<QUmlConnectorEnd *>(this)->setLowerValue(qmodelingobjectproperty_cast<QUmlValueSpecification *>(lowerValue));
+    qmodelingelementproperty_cast<QUmlConnectorEnd *>(this)->setLowerValue(qmodelingelementproperty_cast<QUmlValueSpecification *>(lowerValue));
 }
 
 void QUmlConnectorEndObject::setUpper(int upper)
 {
-    qmodelingobjectproperty_cast<QUmlConnectorEnd *>(this)->setUpper(upper);
+    qmodelingelementproperty_cast<QUmlConnectorEnd *>(this)->setUpper(upper);
 }
 
 void QUmlConnectorEndObject::unsetUpper()
 {
-    qmodelingobjectproperty_cast<QUmlConnectorEnd *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("upper"));
+    Q_D(QModelingObject);
+    d->modifiedResettableProperties.removeAll(QStringLiteral("upper"));
 }
 
 void QUmlConnectorEndObject::setUpperValue(QObject *upperValue)
 {
-    qmodelingobjectproperty_cast<QUmlConnectorEnd *>(this)->setUpperValue(qmodelingobjectproperty_cast<QUmlValueSpecification *>(upperValue));
+    qmodelingelementproperty_cast<QUmlConnectorEnd *>(this)->setUpperValue(qmodelingelementproperty_cast<QUmlValueSpecification *>(upperValue));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ConnectorEnd]
 
 void QUmlConnectorEndObject::setDefiningEnd(QObject *definingEnd)
 {
-    qmodelingobjectproperty_cast<QUmlConnectorEnd *>(this)->setDefiningEnd(qmodelingobjectproperty_cast<QUmlProperty *>(definingEnd));
+    qmodelingelementproperty_cast<QUmlConnectorEnd *>(this)->setDefiningEnd(qmodelingelementproperty_cast<QUmlProperty *>(definingEnd));
 }
 
 void QUmlConnectorEndObject::setPartWithPort(QObject *partWithPort)
 {
-    qmodelingobjectproperty_cast<QUmlConnectorEnd *>(this)->setPartWithPort(qmodelingobjectproperty_cast<QUmlProperty *>(partWithPort));
+    qmodelingelementproperty_cast<QUmlConnectorEnd *>(this)->setPartWithPort(qmodelingelementproperty_cast<QUmlProperty *>(partWithPort));
 }
 
 void QUmlConnectorEndObject::setRole(QObject *role)
 {
-    qmodelingobjectproperty_cast<QUmlConnectorEnd *>(this)->setRole(qmodelingobjectproperty_cast<QUmlConnectableElement *>(role));
+    qmodelingelementproperty_cast<QUmlConnectorEnd *>(this)->setRole(qmodelingelementproperty_cast<QUmlConnectableElement *>(role));
+}
+
+
+void QUmlConnectorEndObject::setGroupProperties()
+{
+    Q_D(QModelingObject);
+    const QMetaObject *metaObject = this->metaObject();
+
+    d->propertyGroups << QStringLiteral("QObject");
+    d->groupProperties.insert(QStringLiteral("QObject"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("objectName"))));
+
+    d->propertyGroups << QStringLiteral("QUmlElement");
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
+
+    d->propertyGroups << QStringLiteral("QUmlMultiplicityElement");
+    d->groupProperties.insert(QStringLiteral("QUmlMultiplicityElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isOrdered"))));
+    d->groupProperties.insert(QStringLiteral("QUmlMultiplicityElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isUnique"))));
+    d->groupProperties.insert(QStringLiteral("QUmlMultiplicityElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("lower"))));
+    d->groupProperties.insert(QStringLiteral("QUmlMultiplicityElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("lowerValue"))));
+    d->groupProperties.insert(QStringLiteral("QUmlMultiplicityElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("upper"))));
+    d->groupProperties.insert(QStringLiteral("QUmlMultiplicityElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("upperValue"))));
+
+    d->propertyGroups << QStringLiteral("QUmlConnectorEnd");
+    d->groupProperties.insert(QStringLiteral("QUmlConnectorEnd"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("definingEnd"))));
+    d->groupProperties.insert(QStringLiteral("QUmlConnectorEnd"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("partWithPort"))));
+    d->groupProperties.insert(QStringLiteral("QUmlConnectorEnd"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("role"))));
+}
+
+void QUmlConnectorEndObject::setPropertyData()
+{
+    Q_DECLARE_METAPROPERTY_INFO(QUmlConnectorEnd, definingEnd, AggregationRole, QStringLiteral("none"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlConnectorEnd, definingEnd, PropertyClassRole, QStringLiteral("QUmlConnectorEnd"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlConnectorEnd, definingEnd, IsDerivedRole, true);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlConnectorEnd, definingEnd, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlConnectorEnd, definingEnd, DocumentationRole, QStringLiteral("A derived association referencing the corresponding association end on the association which types the connector owing this connector end. This association is derived by selecting the association end at the same place in the ordering of association ends as this connector end."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlConnectorEnd, definingEnd, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlConnectorEnd, definingEnd, SubsettedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlConnectorEnd, definingEnd, OppositeEndRole, QStringLiteral(""));
+
+    Q_DECLARE_METAPROPERTY_INFO(QUmlConnectorEnd, partWithPort, AggregationRole, QStringLiteral("none"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlConnectorEnd, partWithPort, PropertyClassRole, QStringLiteral("QUmlConnectorEnd"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlConnectorEnd, partWithPort, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlConnectorEnd, partWithPort, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlConnectorEnd, partWithPort, DocumentationRole, QStringLiteral("Indicates the role of the internal structure of a classifier with the port to which the connector end is attached."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlConnectorEnd, partWithPort, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlConnectorEnd, partWithPort, SubsettedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlConnectorEnd, partWithPort, OppositeEndRole, QStringLiteral(""));
+
+    Q_DECLARE_METAPROPERTY_INFO(QUmlConnectorEnd, role, AggregationRole, QStringLiteral("none"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlConnectorEnd, role, PropertyClassRole, QStringLiteral("QUmlConnectorEnd"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlConnectorEnd, role, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlConnectorEnd, role, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlConnectorEnd, role, DocumentationRole, QStringLiteral("The connectable element attached at this connector end. When an instance of the containing classifier is created, a link may (depending on the multiplicities) be created to an instance of the classifier that types this connectable element."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlConnectorEnd, role, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlConnectorEnd, role, SubsettedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlConnectorEnd, role, OppositeEndRole, QStringLiteral("ConnectableElement-end"));
+
 }
 
 QT_END_NAMESPACE

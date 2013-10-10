@@ -59,15 +59,13 @@
 QUmlRedefinableElement::QUmlRedefinableElement() :
     _isLeaf(false)
 {
-    setGroupProperties();
-    setPropertyData();
 }
 
 QUmlRedefinableElement::~QUmlRedefinableElement()
 {
 }
 
-QModelingObject *QUmlRedefinableElement::clone() const
+QModelingElement *QUmlRedefinableElement::clone() const
 {
     QUmlRedefinableElement *c = new QUmlRedefinableElement;
     foreach (QUmlComment *element, ownedComments())
@@ -100,7 +98,7 @@ void QUmlRedefinableElement::setLeaf(bool isLeaf)
 
     if (_isLeaf != isLeaf) {
         _isLeaf = isLeaf;
-        _modifiedResettableProperties << QStringLiteral("isLeaf");
+        _qModelingObject->modifiedResettableProperties() << QStringLiteral("isLeaf");
     }
 }
 
@@ -120,8 +118,8 @@ void QUmlRedefinableElement::addRedefinedElement(QUmlRedefinableElement *redefin
 
     if (!_redefinedElements.contains(redefinedElement)) {
         _redefinedElements.insert(redefinedElement);
-        if (redefinedElement && redefinedElement->asQObject() && this->asQObject())
-            QObject::connect(redefinedElement->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeRedefinedElement(QObject *)));
+        if (redefinedElement && redefinedElement->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(redefinedElement->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeRedefinedElement(QObject *)));
     }
 }
 
@@ -150,8 +148,8 @@ void QUmlRedefinableElement::addRedefinitionContext(QUmlClassifier *redefinition
 
     if (!_redefinitionContexts.contains(redefinitionContext)) {
         _redefinitionContexts.insert(redefinitionContext);
-        if (redefinitionContext && redefinitionContext->asQObject() && this->asQObject())
-            QObject::connect(redefinitionContext->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeRedefinitionContext(QObject *)));
+        if (redefinitionContext && redefinitionContext->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(redefinitionContext->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeRedefinitionContext(QObject *)));
     }
 }
 
@@ -186,54 +184,5 @@ bool QUmlRedefinableElement::isRedefinitionContextValid(QUmlRedefinableElement *
 
     Q_UNUSED(redefined);
     return bool ();
-}
-
-void QUmlRedefinableElement::setGroupProperties()
-{
-    const QMetaObject *metaObject = _qObject->metaObject();
-
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
-    _groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isLeaf"))));
-    _groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinitionContexts"))));
-}
-
-void QUmlRedefinableElement::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRedefinableElement")][QStringLiteral("isLeaf")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRedefinableElement")][QStringLiteral("isLeaf")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlRedefinableElement");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRedefinableElement")][QStringLiteral("isLeaf")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRedefinableElement")][QStringLiteral("isLeaf")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRedefinableElement")][QStringLiteral("isLeaf")][QtModeling::DocumentationRole] = QStringLiteral("Indicates whether it is possible to further redefine a RedefinableElement. If the value is true, then it is not possible to further redefine the RedefinableElement. Note that this property is preserved through package merge operations; that is, the capability to redefine a RedefinableElement (i.e., isLeaf=false) must be preserved in the resulting RedefinableElement of a package merge operation where a RedefinableElement with isLeaf=false is merged with a matching RedefinableElement with isLeaf=true: the resulting RedefinableElement will have isLeaf=false. Default value is false.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRedefinableElement")][QStringLiteral("isLeaf")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRedefinableElement")][QStringLiteral("isLeaf")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRedefinableElement")][QStringLiteral("isLeaf")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRedefinableElement")][QStringLiteral("redefinedElements")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRedefinableElement")][QStringLiteral("redefinedElements")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlRedefinableElement");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRedefinableElement")][QStringLiteral("redefinedElements")][QtModeling::IsDerivedRole] = true;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRedefinableElement")][QStringLiteral("redefinedElements")][QtModeling::IsDerivedUnionRole] = true;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRedefinableElement")][QStringLiteral("redefinedElements")][QtModeling::DocumentationRole] = QStringLiteral("The redefinable element that is being redefined by this element.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRedefinableElement")][QStringLiteral("redefinedElements")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRedefinableElement")][QStringLiteral("redefinedElements")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRedefinableElement")][QStringLiteral("redefinedElements")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRedefinableElement")][QStringLiteral("redefinitionContexts")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRedefinableElement")][QStringLiteral("redefinitionContexts")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlRedefinableElement");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRedefinableElement")][QStringLiteral("redefinitionContexts")][QtModeling::IsDerivedRole] = true;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRedefinableElement")][QStringLiteral("redefinitionContexts")][QtModeling::IsDerivedUnionRole] = true;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRedefinableElement")][QStringLiteral("redefinitionContexts")][QtModeling::DocumentationRole] = QStringLiteral("References the contexts that this element may be redefined from.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRedefinableElement")][QStringLiteral("redefinitionContexts")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRedefinableElement")][QStringLiteral("redefinitionContexts")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRedefinableElement")][QStringLiteral("redefinitionContexts")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
 }
 

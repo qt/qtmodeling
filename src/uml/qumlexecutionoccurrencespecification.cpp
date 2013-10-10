@@ -62,26 +62,24 @@
 
     \brief An execution occurrence specification represents moments in time at which actions or behaviors start or finish.
  */
-QUmlExecutionOccurrenceSpecification::QUmlExecutionOccurrenceSpecification(bool createQObject) :
+QUmlExecutionOccurrenceSpecification::QUmlExecutionOccurrenceSpecification(bool createQModelingObject) :
     QUmlOccurrenceSpecification(false),
     _execution(0)
 {
-    if (createQObject)
-        _qObject = new QUmlExecutionOccurrenceSpecificationObject(this);
-    setGroupProperties();
-    setPropertyData();
+    if (createQModelingObject)
+        _qModelingObject = qobject_cast<QModelingObject *>(new QUmlExecutionOccurrenceSpecificationObject(this));
 }
 
 QUmlExecutionOccurrenceSpecification::~QUmlExecutionOccurrenceSpecification()
 {
-    if (!deletingFromQObject) {
-        if (_qObject)
-            _qObject->setProperty("deletingFromModelingObject", true);
-        delete _qObject;
+    if (!deletingFromQModelingObject) {
+        if (_qModelingObject)
+            _qModelingObject->setProperty("deletingFromModelingObject", true);
+        delete _qModelingObject;
     }
 }
 
-QModelingObject *QUmlExecutionOccurrenceSpecification::clone() const
+QModelingElement *QUmlExecutionOccurrenceSpecification::clone() const
 {
     QUmlExecutionOccurrenceSpecification *c = new QUmlExecutionOccurrenceSpecification;
     foreach (QUmlComment *element, ownedComments())
@@ -127,43 +125,8 @@ void QUmlExecutionOccurrenceSpecification::setExecution(QUmlExecutionSpecificati
 
     if (_execution != execution) {
         _execution = execution;
-        if (execution && execution->asQObject() && this->asQObject())
-            QObject::connect(execution->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setExecution()));
+        if (execution && execution->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(execution->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setExecution()));
     }
-}
-
-void QUmlExecutionOccurrenceSpecification::setGroupProperties()
-{
-    const QMetaObject *metaObject = _qObject->metaObject();
-
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
-    _groupProperties.insert(QStringLiteral("QUmlInteractionFragment"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("enclosingInteraction"))));
-    _groupProperties.insert(QStringLiteral("QUmlInteractionFragment"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("enclosingOperand"))));
-    _groupProperties.insert(QStringLiteral("QUmlInteractionFragment"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("generalOrderings"))));
-    _groupProperties.insert(QStringLiteral("QUmlOccurrenceSpecification"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("covered"))));
-    _groupProperties.insert(QStringLiteral("QUmlOccurrenceSpecification"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("toAfters"))));
-    _groupProperties.insert(QStringLiteral("QUmlOccurrenceSpecification"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("toBefores"))));
-    _groupProperties.insert(QStringLiteral("QUmlExecutionOccurrenceSpecification"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("execution"))));
-}
-
-void QUmlExecutionOccurrenceSpecification::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExecutionOccurrenceSpecification")][QStringLiteral("execution")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExecutionOccurrenceSpecification")][QStringLiteral("execution")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlExecutionOccurrenceSpecification");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExecutionOccurrenceSpecification")][QStringLiteral("execution")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExecutionOccurrenceSpecification")][QStringLiteral("execution")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExecutionOccurrenceSpecification")][QStringLiteral("execution")][QtModeling::DocumentationRole] = QStringLiteral("References the execution specification describing the execution that is started or finished at this execution event.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExecutionOccurrenceSpecification")][QStringLiteral("execution")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExecutionOccurrenceSpecification")][QStringLiteral("execution")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExecutionOccurrenceSpecification")][QStringLiteral("execution")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
 }
 

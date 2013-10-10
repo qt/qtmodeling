@@ -43,7 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtCore/QObject>
+#include <QtModeling/QModelingObject>
 
 #include <QtUml/QtUmlNamespace>
 
@@ -54,9 +54,12 @@ QT_BEGIN_NAMESPACE
 QT_MODULE(QtUml)
 
 class QUmlDestroyObjectAction;
-class Q_UML_EXPORT QUmlDestroyObjectActionObject : public QObject
+class QModelingObjectPrivate;
+class Q_UML_EXPORT QUmlDestroyObjectActionObject : public QModelingObject
 {
     Q_OBJECT
+    Q_DISABLE_COPY(QUmlDestroyObjectActionObject)
+    Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [Element]
     Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
@@ -103,7 +106,7 @@ class Q_UML_EXPORT QUmlDestroyObjectActionObject : public QObject
     Q_PROPERTY(QObject * target READ target WRITE setTarget)
 
 public:
-    Q_INVOKABLE explicit QUmlDestroyObjectActionObject(QUmlDestroyObjectAction *qModelingObject);
+    Q_INVOKABLE explicit QUmlDestroyObjectActionObject(QUmlDestroyObjectAction *qModelingElement);
     virtual ~QUmlDestroyObjectActionObject();
 
     // Owned attributes [Element]
@@ -229,6 +232,10 @@ public Q_SLOTS:
     void setDestroyOwnedObjects(bool isDestroyOwnedObjects);
     void unsetDestroyOwnedObjects();
     void setTarget(QObject *target = 0);
+
+protected:
+    virtual void setGroupProperties();
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

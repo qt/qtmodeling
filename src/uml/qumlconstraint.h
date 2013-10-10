@@ -45,7 +45,6 @@
 
 #include <QtUml/QUmlPackageableElement>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -59,10 +58,10 @@ class QUmlValueSpecification;
 class Q_UML_EXPORT QUmlConstraint : public QUmlPackageableElement
 {
 public:
-    explicit QUmlConstraint(bool createQObject = true);
+    explicit QUmlConstraint(bool createQModelingObject = true);
     virtual ~QUmlConstraint();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
     const QList<QUmlElement *> constrainedElements() const;
@@ -77,9 +76,6 @@ protected:
     QList<QUmlElement *> _constrainedElements;
     QUmlNamespace *_context;
     QUmlValueSpecification *_specification;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

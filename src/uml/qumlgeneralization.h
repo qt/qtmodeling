@@ -45,7 +45,6 @@
 
 #include <QtUml/QUmlDirectedRelationship>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -58,10 +57,10 @@ class QUmlGeneralizationSet;
 class Q_UML_EXPORT QUmlGeneralization : public QUmlDirectedRelationship
 {
 public:
-    explicit QUmlGeneralization(bool createQObject = true);
+    explicit QUmlGeneralization(bool createQModelingObject = true);
     virtual ~QUmlGeneralization();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
     QUmlClassifier *general() const;
@@ -79,9 +78,6 @@ protected:
     QSet<QUmlGeneralizationSet *> _generalizationSets;
     bool _isSubstitutable;
     QUmlClassifier *_specific;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

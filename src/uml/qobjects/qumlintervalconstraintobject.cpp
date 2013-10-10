@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlintervalconstraintobject_p.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlIntervalConstraint>
 #include <QtUml/QUmlComment>
@@ -55,16 +56,18 @@
 
 QT_BEGIN_NAMESPACE
 
-QUmlIntervalConstraintObject::QUmlIntervalConstraintObject(QUmlIntervalConstraint *qModelingObject)
+QUmlIntervalConstraintObject::QUmlIntervalConstraintObject(QUmlIntervalConstraint *qModelingElement)
 {
-    setProperty("modelingObject", QVariant::fromValue(static_cast<QModelingObject *>(qModelingObject)));
+    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(qModelingElement)));
+    setGroupProperties();
+    setPropertyData();
 }
 
 QUmlIntervalConstraintObject::~QUmlIntervalConstraintObject()
 {
     if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingobjectproperty_cast<QUmlIntervalConstraint *>(this)->deletingFromQObject = true;
-        delete qmodelingobjectproperty_cast<QUmlComment *>(this);
+        qmodelingelementproperty_cast<QUmlIntervalConstraint *>(this)->deletingFromQModelingObject = true;
+        delete qmodelingelementproperty_cast<QUmlComment *>(this);
     }
 }
 
@@ -73,43 +76,43 @@ QUmlIntervalConstraintObject::~QUmlIntervalConstraintObject()
 const QSet<QObject *> QUmlIntervalConstraintObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlIntervalConstraint *>(this)->ownedComments())
-        set.insert(element->asQObject());
+    foreach (QUmlComment *element, qmodelingelementproperty_cast<QUmlIntervalConstraint *>(this)->ownedComments())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlIntervalConstraintObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlIntervalConstraint *>(this)->ownedElements())
-        set.insert(element->asQObject());
+    foreach (QUmlElement *element, qmodelingelementproperty_cast<QUmlIntervalConstraint *>(this)->ownedElements())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 QObject *QUmlIntervalConstraintObject::owner() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlIntervalConstraint *>(this)->owner())
+    if (!qmodelingelementproperty_cast<QUmlIntervalConstraint *>(this)->owner())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlIntervalConstraint *>(this)->owner()->asQObject();
+        return qmodelingelementproperty_cast<QUmlIntervalConstraint *>(this)->owner()->asQModelingObject();
 }
 
 // OWNED ATTRIBUTES [ParameterableElement]
 
 QObject *QUmlIntervalConstraintObject::owningTemplateParameter() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlIntervalConstraint *>(this)->owningTemplateParameter())
+    if (!qmodelingelementproperty_cast<QUmlIntervalConstraint *>(this)->owningTemplateParameter())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlIntervalConstraint *>(this)->owningTemplateParameter()->asQObject();
+        return qmodelingelementproperty_cast<QUmlIntervalConstraint *>(this)->owningTemplateParameter()->asQModelingObject();
 }
 
 QObject *QUmlIntervalConstraintObject::templateParameter() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlIntervalConstraint *>(this)->templateParameter())
+    if (!qmodelingelementproperty_cast<QUmlIntervalConstraint *>(this)->templateParameter())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlIntervalConstraint *>(this)->templateParameter()->asQObject();
+        return qmodelingelementproperty_cast<QUmlIntervalConstraint *>(this)->templateParameter()->asQModelingObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -117,42 +120,42 @@ QObject *QUmlIntervalConstraintObject::templateParameter() const
 const QSet<QObject *> QUmlIntervalConstraintObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlIntervalConstraint *>(this)->clientDependencies())
-        set.insert(element->asQObject());
+    foreach (QUmlDependency *element, qmodelingelementproperty_cast<QUmlIntervalConstraint *>(this)->clientDependencies())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 QString QUmlIntervalConstraintObject::name() const
 {
-    return qmodelingobjectproperty_cast<QUmlIntervalConstraint *>(this)->name();
+    return qmodelingelementproperty_cast<QUmlIntervalConstraint *>(this)->name();
 }
 
 QObject *QUmlIntervalConstraintObject::nameExpression() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlIntervalConstraint *>(this)->nameExpression())
+    if (!qmodelingelementproperty_cast<QUmlIntervalConstraint *>(this)->nameExpression())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlIntervalConstraint *>(this)->nameExpression()->asQObject();
+        return qmodelingelementproperty_cast<QUmlIntervalConstraint *>(this)->nameExpression()->asQModelingObject();
 }
 
 QObject *QUmlIntervalConstraintObject::namespace_() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlIntervalConstraint *>(this)->namespace_())
+    if (!qmodelingelementproperty_cast<QUmlIntervalConstraint *>(this)->namespace_())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlIntervalConstraint *>(this)->namespace_()->asQObject();
+        return qmodelingelementproperty_cast<QUmlIntervalConstraint *>(this)->namespace_()->asQModelingObject();
 }
 
 QString QUmlIntervalConstraintObject::qualifiedName() const
 {
-    return qmodelingobjectproperty_cast<QUmlIntervalConstraint *>(this)->qualifiedName();
+    return qmodelingelementproperty_cast<QUmlIntervalConstraint *>(this)->qualifiedName();
 }
 
 // OWNED ATTRIBUTES [PackageableElement]
 
 QtUml::VisibilityKind QUmlIntervalConstraintObject::visibility() const
 {
-    return qmodelingobjectproperty_cast<QUmlIntervalConstraint *>(this)->visibility();
+    return qmodelingelementproperty_cast<QUmlIntervalConstraint *>(this)->visibility();
 }
 
 // OWNED ATTRIBUTES [Constraint]
@@ -160,27 +163,27 @@ QtUml::VisibilityKind QUmlIntervalConstraintObject::visibility() const
 const QList<QObject *> QUmlIntervalConstraintObject::constrainedElements() const
 {
     QList<QObject *> list;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlIntervalConstraint *>(this)->constrainedElements())
-        list.append(element->asQObject());
+    foreach (QUmlElement *element, qmodelingelementproperty_cast<QUmlIntervalConstraint *>(this)->constrainedElements())
+        list.append(element->asQModelingObject());
     return list;
 }
 
 QObject *QUmlIntervalConstraintObject::context() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlIntervalConstraint *>(this)->context())
+    if (!qmodelingelementproperty_cast<QUmlIntervalConstraint *>(this)->context())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlIntervalConstraint *>(this)->context()->asQObject();
+        return qmodelingelementproperty_cast<QUmlIntervalConstraint *>(this)->context()->asQModelingObject();
 }
 
 // OWNED ATTRIBUTES [IntervalConstraint]
 
 QObject *QUmlIntervalConstraintObject::specification() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlIntervalConstraint *>(this)->specification())
+    if (!qmodelingelementproperty_cast<QUmlIntervalConstraint *>(this)->specification())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlIntervalConstraint *>(this)->specification()->asQObject();
+        return qmodelingelementproperty_cast<QUmlIntervalConstraint *>(this)->specification()->asQModelingObject();
 }
 
 // OPERATIONS [Element]
@@ -188,26 +191,26 @@ QObject *QUmlIntervalConstraintObject::specification() const
 QSet<QObject *> QUmlIntervalConstraintObject::allOwnedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlIntervalConstraint *>(this)->allOwnedElements())
-        set.insert(element->asQObject());
+    foreach (QUmlElement *element, qmodelingelementproperty_cast<QUmlIntervalConstraint *>(this)->allOwnedElements())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 bool QUmlIntervalConstraintObject::mustBeOwned() const
 {
-    return qmodelingobjectproperty_cast<QUmlIntervalConstraint *>(this)->mustBeOwned();
+    return qmodelingelementproperty_cast<QUmlIntervalConstraint *>(this)->mustBeOwned();
 }
 
 // OPERATIONS [ParameterableElement]
 
 bool QUmlIntervalConstraintObject::isCompatibleWith(QObject *p) const
 {
-    return qmodelingobjectproperty_cast<QUmlIntervalConstraint *>(this)->isCompatibleWith(qmodelingobjectproperty_cast<QUmlParameterableElement *>(p));
+    return qmodelingelementproperty_cast<QUmlIntervalConstraint *>(this)->isCompatibleWith(qmodelingelementproperty_cast<QUmlParameterableElement *>(p));
 }
 
 bool QUmlIntervalConstraintObject::isTemplateParameter() const
 {
-    return qmodelingobjectproperty_cast<QUmlIntervalConstraint *>(this)->isTemplateParameter();
+    return qmodelingelementproperty_cast<QUmlIntervalConstraint *>(this)->isTemplateParameter();
 }
 
 // OPERATIONS [NamedElement]
@@ -215,132 +218,182 @@ bool QUmlIntervalConstraintObject::isTemplateParameter() const
 QList<QObject *> QUmlIntervalConstraintObject::allNamespaces() const
 {
     QList<QObject *> set;
-    foreach (QUmlNamespace *element, qmodelingobjectproperty_cast<QUmlIntervalConstraint *>(this)->allNamespaces())
-        set.append(element->asQObject());
+    foreach (QUmlNamespace *element, qmodelingelementproperty_cast<QUmlIntervalConstraint *>(this)->allNamespaces())
+        set.append(element->asQModelingObject());
     return set;
 }
 
 QSet<QObject *> QUmlIntervalConstraintObject::allOwningPackages() const
 {
     QSet<QObject *> set;
-    foreach (QUmlPackage *element, qmodelingobjectproperty_cast<QUmlIntervalConstraint *>(this)->allOwningPackages())
-        set.insert(element->asQObject());
+    foreach (QUmlPackage *element, qmodelingelementproperty_cast<QUmlIntervalConstraint *>(this)->allOwningPackages())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 bool QUmlIntervalConstraintObject::isDistinguishableFrom(QObject *n, QObject *ns) const
 {
-    return qmodelingobjectproperty_cast<QUmlIntervalConstraint *>(this)->isDistinguishableFrom(qmodelingobjectproperty_cast<QUmlNamedElement *>(n), qmodelingobjectproperty_cast<QUmlNamespace *>(ns));
+    return qmodelingelementproperty_cast<QUmlIntervalConstraint *>(this)->isDistinguishableFrom(qmodelingelementproperty_cast<QUmlNamedElement *>(n), qmodelingelementproperty_cast<QUmlNamespace *>(ns));
 }
 
 QString QUmlIntervalConstraintObject::separator() const
 {
-    return qmodelingobjectproperty_cast<QUmlIntervalConstraint *>(this)->separator();
+    return qmodelingelementproperty_cast<QUmlIntervalConstraint *>(this)->separator();
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Element]
 
 void QUmlIntervalConstraintObject::addOwnedComment(QObject *ownedComment)
 {
-    qmodelingobjectproperty_cast<QUmlIntervalConstraint *>(this)->addOwnedComment(qmodelingobjectproperty_cast<QUmlComment *>(ownedComment));
+    qmodelingelementproperty_cast<QUmlIntervalConstraint *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
 }
 
 void QUmlIntervalConstraintObject::removeOwnedComment(QObject *ownedComment)
 {
-    qmodelingobjectproperty_cast<QUmlIntervalConstraint *>(this)->removeOwnedComment(qmodelingobjectproperty_cast<QUmlComment *>(ownedComment));
+    qmodelingelementproperty_cast<QUmlIntervalConstraint *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
 }
 
 void QUmlIntervalConstraintObject::addOwnedElement(QObject *ownedElement)
 {
-    qmodelingobjectproperty_cast<QUmlIntervalConstraint *>(this)->addOwnedElement(qmodelingobjectproperty_cast<QUmlElement *>(ownedElement));
+    qmodelingelementproperty_cast<QUmlIntervalConstraint *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
 }
 
 void QUmlIntervalConstraintObject::removeOwnedElement(QObject *ownedElement)
 {
-    qmodelingobjectproperty_cast<QUmlIntervalConstraint *>(this)->removeOwnedElement(qmodelingobjectproperty_cast<QUmlElement *>(ownedElement));
+    qmodelingelementproperty_cast<QUmlIntervalConstraint *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
 }
 
 void QUmlIntervalConstraintObject::setOwner(QObject *owner)
 {
-    qmodelingobjectproperty_cast<QUmlIntervalConstraint *>(this)->setOwner(qmodelingobjectproperty_cast<QUmlElement *>(owner));
+    qmodelingelementproperty_cast<QUmlIntervalConstraint *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ParameterableElement]
 
 void QUmlIntervalConstraintObject::setOwningTemplateParameter(QObject *owningTemplateParameter)
 {
-    qmodelingobjectproperty_cast<QUmlIntervalConstraint *>(this)->setOwningTemplateParameter(qmodelingobjectproperty_cast<QUmlTemplateParameter *>(owningTemplateParameter));
+    qmodelingelementproperty_cast<QUmlIntervalConstraint *>(this)->setOwningTemplateParameter(qmodelingelementproperty_cast<QUmlTemplateParameter *>(owningTemplateParameter));
 }
 
 void QUmlIntervalConstraintObject::setTemplateParameter(QObject *templateParameter)
 {
-    qmodelingobjectproperty_cast<QUmlIntervalConstraint *>(this)->setTemplateParameter(qmodelingobjectproperty_cast<QUmlTemplateParameter *>(templateParameter));
+    qmodelingelementproperty_cast<QUmlIntervalConstraint *>(this)->setTemplateParameter(qmodelingelementproperty_cast<QUmlTemplateParameter *>(templateParameter));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [NamedElement]
 
 void QUmlIntervalConstraintObject::addClientDependency(QObject *clientDependency)
 {
-    qmodelingobjectproperty_cast<QUmlIntervalConstraint *>(this)->addClientDependency(qmodelingobjectproperty_cast<QUmlDependency *>(clientDependency));
+    qmodelingelementproperty_cast<QUmlIntervalConstraint *>(this)->addClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
 }
 
 void QUmlIntervalConstraintObject::removeClientDependency(QObject *clientDependency)
 {
-    qmodelingobjectproperty_cast<QUmlIntervalConstraint *>(this)->removeClientDependency(qmodelingobjectproperty_cast<QUmlDependency *>(clientDependency));
+    qmodelingelementproperty_cast<QUmlIntervalConstraint *>(this)->removeClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
 }
 
 void QUmlIntervalConstraintObject::setName(QString name)
 {
-    qmodelingobjectproperty_cast<QUmlIntervalConstraint *>(this)->setName(name);
+    qmodelingelementproperty_cast<QUmlIntervalConstraint *>(this)->setName(name);
 }
 
 void QUmlIntervalConstraintObject::setNameExpression(QObject *nameExpression)
 {
-    qmodelingobjectproperty_cast<QUmlIntervalConstraint *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
+    qmodelingelementproperty_cast<QUmlIntervalConstraint *>(this)->setNameExpression(qmodelingelementproperty_cast<QUmlStringExpression *>(nameExpression));
 }
 
 void QUmlIntervalConstraintObject::setNamespace(QObject *namespace_)
 {
-    qmodelingobjectproperty_cast<QUmlIntervalConstraint *>(this)->setNamespace(qmodelingobjectproperty_cast<QUmlNamespace *>(namespace_));
+    qmodelingelementproperty_cast<QUmlIntervalConstraint *>(this)->setNamespace(qmodelingelementproperty_cast<QUmlNamespace *>(namespace_));
 }
 
 void QUmlIntervalConstraintObject::setQualifiedName(QString qualifiedName)
 {
-    qmodelingobjectproperty_cast<QUmlIntervalConstraint *>(this)->setQualifiedName(qualifiedName);
+    qmodelingelementproperty_cast<QUmlIntervalConstraint *>(this)->setQualifiedName(qualifiedName);
 }
 // SLOTS FOR OWNED ATTRIBUTES [PackageableElement]
 
 void QUmlIntervalConstraintObject::setVisibility(QtUml::VisibilityKind visibility)
 {
-    qmodelingobjectproperty_cast<QUmlIntervalConstraint *>(this)->setVisibility(visibility);
+    qmodelingelementproperty_cast<QUmlIntervalConstraint *>(this)->setVisibility(visibility);
 }
 
 void QUmlIntervalConstraintObject::unsetVisibility()
 {
-    qmodelingobjectproperty_cast<QUmlIntervalConstraint *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("visibility"));
+    Q_D(QModelingObject);
+    d->modifiedResettableProperties.removeAll(QStringLiteral("visibility"));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Constraint]
 
 void QUmlIntervalConstraintObject::addConstrainedElement(QObject *constrainedElement)
 {
-    qmodelingobjectproperty_cast<QUmlIntervalConstraint *>(this)->addConstrainedElement(qmodelingobjectproperty_cast<QUmlElement *>(constrainedElement));
+    qmodelingelementproperty_cast<QUmlIntervalConstraint *>(this)->addConstrainedElement(qmodelingelementproperty_cast<QUmlElement *>(constrainedElement));
 }
 
 void QUmlIntervalConstraintObject::removeConstrainedElement(QObject *constrainedElement)
 {
-    qmodelingobjectproperty_cast<QUmlIntervalConstraint *>(this)->removeConstrainedElement(qmodelingobjectproperty_cast<QUmlElement *>(constrainedElement));
+    qmodelingelementproperty_cast<QUmlIntervalConstraint *>(this)->removeConstrainedElement(qmodelingelementproperty_cast<QUmlElement *>(constrainedElement));
 }
 
 void QUmlIntervalConstraintObject::setContext(QObject *context)
 {
-    qmodelingobjectproperty_cast<QUmlIntervalConstraint *>(this)->setContext(qmodelingobjectproperty_cast<QUmlNamespace *>(context));
+    qmodelingelementproperty_cast<QUmlIntervalConstraint *>(this)->setContext(qmodelingelementproperty_cast<QUmlNamespace *>(context));
 }
 // SLOTS FOR OWNED ATTRIBUTES [IntervalConstraint]
 
 void QUmlIntervalConstraintObject::setSpecification(QObject *specification)
 {
-    qmodelingobjectproperty_cast<QUmlIntervalConstraint *>(this)->setSpecification(qmodelingobjectproperty_cast<QUmlInterval *>(specification));
+    qmodelingelementproperty_cast<QUmlIntervalConstraint *>(this)->setSpecification(qmodelingelementproperty_cast<QUmlInterval *>(specification));
+}
+
+
+void QUmlIntervalConstraintObject::setGroupProperties()
+{
+    Q_D(QModelingObject);
+    const QMetaObject *metaObject = this->metaObject();
+
+    d->propertyGroups << QStringLiteral("QObject");
+    d->groupProperties.insert(QStringLiteral("QObject"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("objectName"))));
+
+    d->propertyGroups << QStringLiteral("QUmlElement");
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
+
+    d->propertyGroups << QStringLiteral("QUmlParameterableElement");
+    d->groupProperties.insert(QStringLiteral("QUmlParameterableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owningTemplateParameter"))));
+    d->groupProperties.insert(QStringLiteral("QUmlParameterableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("templateParameter"))));
+
+    d->propertyGroups << QStringLiteral("QUmlNamedElement");
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
+
+    d->propertyGroups << QStringLiteral("QUmlPackageableElement");
+    d->groupProperties.insert(QStringLiteral("QUmlPackageableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
+
+    d->propertyGroups << QStringLiteral("QUmlConstraint");
+    d->groupProperties.insert(QStringLiteral("QUmlConstraint"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("constrainedElements"))));
+    d->groupProperties.insert(QStringLiteral("QUmlConstraint"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("context"))));
+
+    d->propertyGroups << QStringLiteral("QUmlIntervalConstraint");
+    d->groupProperties.insert(QStringLiteral("QUmlIntervalConstraint"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("specification"))));
+}
+
+void QUmlIntervalConstraintObject::setPropertyData()
+{
+    Q_DECLARE_METAPROPERTY_INFO(QUmlIntervalConstraint, specification, AggregationRole, QStringLiteral("composite"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlIntervalConstraint, specification, PropertyClassRole, QStringLiteral("QUmlIntervalConstraint"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlIntervalConstraint, specification, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlIntervalConstraint, specification, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlIntervalConstraint, specification, DocumentationRole, QStringLiteral("A condition that must be true when evaluated in order for the constraint to be satisfied."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlIntervalConstraint, specification, RedefinedPropertiesRole, QStringLiteral("Constraint-specification"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlIntervalConstraint, specification, SubsettedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlIntervalConstraint, specification, OppositeEndRole, QStringLiteral(""));
+
 }
 
 QT_END_NAMESPACE

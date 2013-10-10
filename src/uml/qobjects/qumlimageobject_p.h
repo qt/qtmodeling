@@ -43,7 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtCore/QObject>
+#include <QtModeling/QModelingObject>
 
 QT_BEGIN_HEADER
 
@@ -52,9 +52,12 @@ QT_BEGIN_NAMESPACE
 QT_MODULE(QtUml)
 
 class QUmlImage;
-class Q_UML_EXPORT QUmlImageObject : public QObject
+class QModelingObjectPrivate;
+class Q_UML_EXPORT QUmlImageObject : public QModelingObject
 {
     Q_OBJECT
+    Q_DISABLE_COPY(QUmlImageObject)
+    Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [Element]
     Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
@@ -67,7 +70,7 @@ class Q_UML_EXPORT QUmlImageObject : public QObject
     Q_PROPERTY(QString location READ location WRITE setLocation)
 
 public:
-    Q_INVOKABLE explicit QUmlImageObject(QUmlImage *qModelingObject);
+    Q_INVOKABLE explicit QUmlImageObject(QUmlImage *qModelingElement);
     virtual ~QUmlImageObject();
 
     // Owned attributes [Element]
@@ -97,6 +100,10 @@ public Q_SLOTS:
     void setContent(QString content);
     void setFormat(QString format);
     void setLocation(QString location);
+
+protected:
+    virtual void setGroupProperties();
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

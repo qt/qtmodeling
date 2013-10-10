@@ -45,7 +45,6 @@
 
 #include <QtUml/QUmlAction>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -58,10 +57,10 @@ class QUmlOutputPin;
 class Q_UML_EXPORT QUmlOpaqueAction : public QUmlAction
 {
 public:
-    explicit QUmlOpaqueAction(bool createQObject = true);
+    explicit QUmlOpaqueAction(bool createQModelingObject = true);
     virtual ~QUmlOpaqueAction();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
     const QList<QString> bodies() const;
@@ -82,9 +81,6 @@ protected:
     QSet<QUmlInputPin *> _inputValues;
     QList<QString> _languages;
     QSet<QUmlOutputPin *> _outputValues;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

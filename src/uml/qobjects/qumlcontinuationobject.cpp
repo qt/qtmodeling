@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlcontinuationobject_p.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlContinuation>
 #include <QtUml/QUmlComment>
@@ -55,16 +56,18 @@
 
 QT_BEGIN_NAMESPACE
 
-QUmlContinuationObject::QUmlContinuationObject(QUmlContinuation *qModelingObject)
+QUmlContinuationObject::QUmlContinuationObject(QUmlContinuation *qModelingElement)
 {
-    setProperty("modelingObject", QVariant::fromValue(static_cast<QModelingObject *>(qModelingObject)));
+    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(qModelingElement)));
+    setGroupProperties();
+    setPropertyData();
 }
 
 QUmlContinuationObject::~QUmlContinuationObject()
 {
     if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingobjectproperty_cast<QUmlContinuation *>(this)->deletingFromQObject = true;
-        delete qmodelingobjectproperty_cast<QUmlComment *>(this);
+        qmodelingelementproperty_cast<QUmlContinuation *>(this)->deletingFromQModelingObject = true;
+        delete qmodelingelementproperty_cast<QUmlComment *>(this);
     }
 }
 
@@ -73,25 +76,25 @@ QUmlContinuationObject::~QUmlContinuationObject()
 const QSet<QObject *> QUmlContinuationObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlContinuation *>(this)->ownedComments())
-        set.insert(element->asQObject());
+    foreach (QUmlComment *element, qmodelingelementproperty_cast<QUmlContinuation *>(this)->ownedComments())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlContinuationObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlContinuation *>(this)->ownedElements())
-        set.insert(element->asQObject());
+    foreach (QUmlElement *element, qmodelingelementproperty_cast<QUmlContinuation *>(this)->ownedElements())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 QObject *QUmlContinuationObject::owner() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlContinuation *>(this)->owner())
+    if (!qmodelingelementproperty_cast<QUmlContinuation *>(this)->owner())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlContinuation *>(this)->owner()->asQObject();
+        return qmodelingelementproperty_cast<QUmlContinuation *>(this)->owner()->asQModelingObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -99,40 +102,40 @@ QObject *QUmlContinuationObject::owner() const
 const QSet<QObject *> QUmlContinuationObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlContinuation *>(this)->clientDependencies())
-        set.insert(element->asQObject());
+    foreach (QUmlDependency *element, qmodelingelementproperty_cast<QUmlContinuation *>(this)->clientDependencies())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 QString QUmlContinuationObject::name() const
 {
-    return qmodelingobjectproperty_cast<QUmlContinuation *>(this)->name();
+    return qmodelingelementproperty_cast<QUmlContinuation *>(this)->name();
 }
 
 QObject *QUmlContinuationObject::nameExpression() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlContinuation *>(this)->nameExpression())
+    if (!qmodelingelementproperty_cast<QUmlContinuation *>(this)->nameExpression())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlContinuation *>(this)->nameExpression()->asQObject();
+        return qmodelingelementproperty_cast<QUmlContinuation *>(this)->nameExpression()->asQModelingObject();
 }
 
 QObject *QUmlContinuationObject::namespace_() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlContinuation *>(this)->namespace_())
+    if (!qmodelingelementproperty_cast<QUmlContinuation *>(this)->namespace_())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlContinuation *>(this)->namespace_()->asQObject();
+        return qmodelingelementproperty_cast<QUmlContinuation *>(this)->namespace_()->asQModelingObject();
 }
 
 QString QUmlContinuationObject::qualifiedName() const
 {
-    return qmodelingobjectproperty_cast<QUmlContinuation *>(this)->qualifiedName();
+    return qmodelingelementproperty_cast<QUmlContinuation *>(this)->qualifiedName();
 }
 
 QtUml::VisibilityKind QUmlContinuationObject::visibility() const
 {
-    return qmodelingobjectproperty_cast<QUmlContinuation *>(this)->visibility();
+    return qmodelingelementproperty_cast<QUmlContinuation *>(this)->visibility();
 }
 
 // OWNED ATTRIBUTES [InteractionFragment]
@@ -140,32 +143,32 @@ QtUml::VisibilityKind QUmlContinuationObject::visibility() const
 const QSet<QObject *> QUmlContinuationObject::covered() const
 {
     QSet<QObject *> set;
-    foreach (QUmlLifeline *element, qmodelingobjectproperty_cast<QUmlContinuation *>(this)->covered())
-        set.insert(element->asQObject());
+    foreach (QUmlLifeline *element, qmodelingelementproperty_cast<QUmlContinuation *>(this)->covered())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 QObject *QUmlContinuationObject::enclosingInteraction() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlContinuation *>(this)->enclosingInteraction())
+    if (!qmodelingelementproperty_cast<QUmlContinuation *>(this)->enclosingInteraction())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlContinuation *>(this)->enclosingInteraction()->asQObject();
+        return qmodelingelementproperty_cast<QUmlContinuation *>(this)->enclosingInteraction()->asQModelingObject();
 }
 
 QObject *QUmlContinuationObject::enclosingOperand() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlContinuation *>(this)->enclosingOperand())
+    if (!qmodelingelementproperty_cast<QUmlContinuation *>(this)->enclosingOperand())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlContinuation *>(this)->enclosingOperand()->asQObject();
+        return qmodelingelementproperty_cast<QUmlContinuation *>(this)->enclosingOperand()->asQModelingObject();
 }
 
 const QSet<QObject *> QUmlContinuationObject::generalOrderings() const
 {
     QSet<QObject *> set;
-    foreach (QUmlGeneralOrdering *element, qmodelingobjectproperty_cast<QUmlContinuation *>(this)->generalOrderings())
-        set.insert(element->asQObject());
+    foreach (QUmlGeneralOrdering *element, qmodelingelementproperty_cast<QUmlContinuation *>(this)->generalOrderings())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
@@ -173,7 +176,7 @@ const QSet<QObject *> QUmlContinuationObject::generalOrderings() const
 
 bool QUmlContinuationObject::setting() const
 {
-    return qmodelingobjectproperty_cast<QUmlContinuation *>(this)->setting();
+    return qmodelingelementproperty_cast<QUmlContinuation *>(this)->setting();
 }
 
 // OPERATIONS [Element]
@@ -181,14 +184,14 @@ bool QUmlContinuationObject::setting() const
 QSet<QObject *> QUmlContinuationObject::allOwnedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlContinuation *>(this)->allOwnedElements())
-        set.insert(element->asQObject());
+    foreach (QUmlElement *element, qmodelingelementproperty_cast<QUmlContinuation *>(this)->allOwnedElements())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 bool QUmlContinuationObject::mustBeOwned() const
 {
-    return qmodelingobjectproperty_cast<QUmlContinuation *>(this)->mustBeOwned();
+    return qmodelingelementproperty_cast<QUmlContinuation *>(this)->mustBeOwned();
 }
 
 // OPERATIONS [NamedElement]
@@ -196,135 +199,181 @@ bool QUmlContinuationObject::mustBeOwned() const
 QList<QObject *> QUmlContinuationObject::allNamespaces() const
 {
     QList<QObject *> set;
-    foreach (QUmlNamespace *element, qmodelingobjectproperty_cast<QUmlContinuation *>(this)->allNamespaces())
-        set.append(element->asQObject());
+    foreach (QUmlNamespace *element, qmodelingelementproperty_cast<QUmlContinuation *>(this)->allNamespaces())
+        set.append(element->asQModelingObject());
     return set;
 }
 
 QSet<QObject *> QUmlContinuationObject::allOwningPackages() const
 {
     QSet<QObject *> set;
-    foreach (QUmlPackage *element, qmodelingobjectproperty_cast<QUmlContinuation *>(this)->allOwningPackages())
-        set.insert(element->asQObject());
+    foreach (QUmlPackage *element, qmodelingelementproperty_cast<QUmlContinuation *>(this)->allOwningPackages())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 bool QUmlContinuationObject::isDistinguishableFrom(QObject *n, QObject *ns) const
 {
-    return qmodelingobjectproperty_cast<QUmlContinuation *>(this)->isDistinguishableFrom(qmodelingobjectproperty_cast<QUmlNamedElement *>(n), qmodelingobjectproperty_cast<QUmlNamespace *>(ns));
+    return qmodelingelementproperty_cast<QUmlContinuation *>(this)->isDistinguishableFrom(qmodelingelementproperty_cast<QUmlNamedElement *>(n), qmodelingelementproperty_cast<QUmlNamespace *>(ns));
 }
 
 QString QUmlContinuationObject::separator() const
 {
-    return qmodelingobjectproperty_cast<QUmlContinuation *>(this)->separator();
+    return qmodelingelementproperty_cast<QUmlContinuation *>(this)->separator();
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Element]
 
 void QUmlContinuationObject::addOwnedComment(QObject *ownedComment)
 {
-    qmodelingobjectproperty_cast<QUmlContinuation *>(this)->addOwnedComment(qmodelingobjectproperty_cast<QUmlComment *>(ownedComment));
+    qmodelingelementproperty_cast<QUmlContinuation *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
 }
 
 void QUmlContinuationObject::removeOwnedComment(QObject *ownedComment)
 {
-    qmodelingobjectproperty_cast<QUmlContinuation *>(this)->removeOwnedComment(qmodelingobjectproperty_cast<QUmlComment *>(ownedComment));
+    qmodelingelementproperty_cast<QUmlContinuation *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
 }
 
 void QUmlContinuationObject::addOwnedElement(QObject *ownedElement)
 {
-    qmodelingobjectproperty_cast<QUmlContinuation *>(this)->addOwnedElement(qmodelingobjectproperty_cast<QUmlElement *>(ownedElement));
+    qmodelingelementproperty_cast<QUmlContinuation *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
 }
 
 void QUmlContinuationObject::removeOwnedElement(QObject *ownedElement)
 {
-    qmodelingobjectproperty_cast<QUmlContinuation *>(this)->removeOwnedElement(qmodelingobjectproperty_cast<QUmlElement *>(ownedElement));
+    qmodelingelementproperty_cast<QUmlContinuation *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
 }
 
 void QUmlContinuationObject::setOwner(QObject *owner)
 {
-    qmodelingobjectproperty_cast<QUmlContinuation *>(this)->setOwner(qmodelingobjectproperty_cast<QUmlElement *>(owner));
+    qmodelingelementproperty_cast<QUmlContinuation *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [NamedElement]
 
 void QUmlContinuationObject::addClientDependency(QObject *clientDependency)
 {
-    qmodelingobjectproperty_cast<QUmlContinuation *>(this)->addClientDependency(qmodelingobjectproperty_cast<QUmlDependency *>(clientDependency));
+    qmodelingelementproperty_cast<QUmlContinuation *>(this)->addClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
 }
 
 void QUmlContinuationObject::removeClientDependency(QObject *clientDependency)
 {
-    qmodelingobjectproperty_cast<QUmlContinuation *>(this)->removeClientDependency(qmodelingobjectproperty_cast<QUmlDependency *>(clientDependency));
+    qmodelingelementproperty_cast<QUmlContinuation *>(this)->removeClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
 }
 
 void QUmlContinuationObject::setName(QString name)
 {
-    qmodelingobjectproperty_cast<QUmlContinuation *>(this)->setName(name);
+    qmodelingelementproperty_cast<QUmlContinuation *>(this)->setName(name);
 }
 
 void QUmlContinuationObject::setNameExpression(QObject *nameExpression)
 {
-    qmodelingobjectproperty_cast<QUmlContinuation *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
+    qmodelingelementproperty_cast<QUmlContinuation *>(this)->setNameExpression(qmodelingelementproperty_cast<QUmlStringExpression *>(nameExpression));
 }
 
 void QUmlContinuationObject::setNamespace(QObject *namespace_)
 {
-    qmodelingobjectproperty_cast<QUmlContinuation *>(this)->setNamespace(qmodelingobjectproperty_cast<QUmlNamespace *>(namespace_));
+    qmodelingelementproperty_cast<QUmlContinuation *>(this)->setNamespace(qmodelingelementproperty_cast<QUmlNamespace *>(namespace_));
 }
 
 void QUmlContinuationObject::setQualifiedName(QString qualifiedName)
 {
-    qmodelingobjectproperty_cast<QUmlContinuation *>(this)->setQualifiedName(qualifiedName);
+    qmodelingelementproperty_cast<QUmlContinuation *>(this)->setQualifiedName(qualifiedName);
 }
 
 void QUmlContinuationObject::setVisibility(QtUml::VisibilityKind visibility)
 {
-    qmodelingobjectproperty_cast<QUmlContinuation *>(this)->setVisibility(visibility);
+    qmodelingelementproperty_cast<QUmlContinuation *>(this)->setVisibility(visibility);
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [InteractionFragment]
 
 void QUmlContinuationObject::addCovered(QObject *covered)
 {
-    qmodelingobjectproperty_cast<QUmlContinuation *>(this)->addCovered(qmodelingobjectproperty_cast<QUmlLifeline *>(covered));
+    qmodelingelementproperty_cast<QUmlContinuation *>(this)->addCovered(qmodelingelementproperty_cast<QUmlLifeline *>(covered));
 }
 
 void QUmlContinuationObject::removeCovered(QObject *covered)
 {
-    qmodelingobjectproperty_cast<QUmlContinuation *>(this)->removeCovered(qmodelingobjectproperty_cast<QUmlLifeline *>(covered));
+    qmodelingelementproperty_cast<QUmlContinuation *>(this)->removeCovered(qmodelingelementproperty_cast<QUmlLifeline *>(covered));
 }
 
 void QUmlContinuationObject::setEnclosingInteraction(QObject *enclosingInteraction)
 {
-    qmodelingobjectproperty_cast<QUmlContinuation *>(this)->setEnclosingInteraction(qmodelingobjectproperty_cast<QUmlInteraction *>(enclosingInteraction));
+    qmodelingelementproperty_cast<QUmlContinuation *>(this)->setEnclosingInteraction(qmodelingelementproperty_cast<QUmlInteraction *>(enclosingInteraction));
 }
 
 void QUmlContinuationObject::setEnclosingOperand(QObject *enclosingOperand)
 {
-    qmodelingobjectproperty_cast<QUmlContinuation *>(this)->setEnclosingOperand(qmodelingobjectproperty_cast<QUmlInteractionOperand *>(enclosingOperand));
+    qmodelingelementproperty_cast<QUmlContinuation *>(this)->setEnclosingOperand(qmodelingelementproperty_cast<QUmlInteractionOperand *>(enclosingOperand));
 }
 
 void QUmlContinuationObject::addGeneralOrdering(QObject *generalOrdering)
 {
-    qmodelingobjectproperty_cast<QUmlContinuation *>(this)->addGeneralOrdering(qmodelingobjectproperty_cast<QUmlGeneralOrdering *>(generalOrdering));
+    qmodelingelementproperty_cast<QUmlContinuation *>(this)->addGeneralOrdering(qmodelingelementproperty_cast<QUmlGeneralOrdering *>(generalOrdering));
 }
 
 void QUmlContinuationObject::removeGeneralOrdering(QObject *generalOrdering)
 {
-    qmodelingobjectproperty_cast<QUmlContinuation *>(this)->removeGeneralOrdering(qmodelingobjectproperty_cast<QUmlGeneralOrdering *>(generalOrdering));
+    qmodelingelementproperty_cast<QUmlContinuation *>(this)->removeGeneralOrdering(qmodelingelementproperty_cast<QUmlGeneralOrdering *>(generalOrdering));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Continuation]
 
 void QUmlContinuationObject::setSetting(bool setting)
 {
-    qmodelingobjectproperty_cast<QUmlContinuation *>(this)->setSetting(setting);
+    qmodelingelementproperty_cast<QUmlContinuation *>(this)->setSetting(setting);
 }
 
 void QUmlContinuationObject::unsetSetting()
 {
-    qmodelingobjectproperty_cast<QUmlContinuation *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("setting"));
+    Q_D(QModelingObject);
+    d->modifiedResettableProperties.removeAll(QStringLiteral("setting"));
+}
+
+
+void QUmlContinuationObject::setGroupProperties()
+{
+    Q_D(QModelingObject);
+    const QMetaObject *metaObject = this->metaObject();
+
+    d->propertyGroups << QStringLiteral("QObject");
+    d->groupProperties.insert(QStringLiteral("QObject"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("objectName"))));
+
+    d->propertyGroups << QStringLiteral("QUmlElement");
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
+
+    d->propertyGroups << QStringLiteral("QUmlNamedElement");
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
+
+    d->propertyGroups << QStringLiteral("QUmlInteractionFragment");
+    d->groupProperties.insert(QStringLiteral("QUmlInteractionFragment"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("covered"))));
+    d->groupProperties.insert(QStringLiteral("QUmlInteractionFragment"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("enclosingInteraction"))));
+    d->groupProperties.insert(QStringLiteral("QUmlInteractionFragment"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("enclosingOperand"))));
+    d->groupProperties.insert(QStringLiteral("QUmlInteractionFragment"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("generalOrderings"))));
+
+    d->propertyGroups << QStringLiteral("QUmlContinuation");
+    d->groupProperties.insert(QStringLiteral("QUmlContinuation"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("setting"))));
+}
+
+void QUmlContinuationObject::setPropertyData()
+{
+    Q_DECLARE_METAPROPERTY_INFO(QUmlContinuation, setting, AggregationRole, QStringLiteral("none"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlContinuation, setting, PropertyClassRole, QStringLiteral("QUmlContinuation"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlContinuation, setting, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlContinuation, setting, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlContinuation, setting, DocumentationRole, QStringLiteral("True: when the Continuation is at the end of the enclosing InteractionFragment and False when it is in the beginning."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlContinuation, setting, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlContinuation, setting, SubsettedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlContinuation, setting, OppositeEndRole, QStringLiteral(""));
+
 }
 
 QT_END_NAMESPACE

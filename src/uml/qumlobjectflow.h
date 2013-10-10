@@ -45,7 +45,6 @@
 
 #include <QtUml/QUmlActivityEdge>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -57,10 +56,10 @@ class QUmlBehavior;
 class Q_UML_EXPORT QUmlObjectFlow : public QUmlActivityEdge
 {
 public:
-    explicit QUmlObjectFlow(bool createQObject = true);
+    explicit QUmlObjectFlow(bool createQModelingObject = true);
     virtual ~QUmlObjectFlow();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
     bool isMulticast() const;
@@ -77,9 +76,6 @@ protected:
     bool _isMultireceive;
     QUmlBehavior *_selection;
     QUmlBehavior *_transformation;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

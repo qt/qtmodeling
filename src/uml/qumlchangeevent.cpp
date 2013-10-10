@@ -60,25 +60,23 @@
 
     \brief A change event models a change in the system configuration that makes a condition true.
  */
-QUmlChangeEvent::QUmlChangeEvent(bool createQObject) :
+QUmlChangeEvent::QUmlChangeEvent(bool createQModelingObject) :
     _changeExpression(0)
 {
-    if (createQObject)
-        _qObject = new QUmlChangeEventObject(this);
-    setGroupProperties();
-    setPropertyData();
+    if (createQModelingObject)
+        _qModelingObject = qobject_cast<QModelingObject *>(new QUmlChangeEventObject(this));
 }
 
 QUmlChangeEvent::~QUmlChangeEvent()
 {
-    if (!deletingFromQObject) {
-        if (_qObject)
-            _qObject->setProperty("deletingFromModelingObject", true);
-        delete _qObject;
+    if (!deletingFromQModelingObject) {
+        if (_qModelingObject)
+            _qModelingObject->setProperty("deletingFromModelingObject", true);
+        delete _qModelingObject;
     }
 }
 
-QModelingObject *QUmlChangeEvent::clone() const
+QModelingElement *QUmlChangeEvent::clone() const
 {
     QUmlChangeEvent *c = new QUmlChangeEvent;
     foreach (QUmlComment *element, ownedComments())
@@ -119,45 +117,14 @@ void QUmlChangeEvent::setChangeExpression(QUmlValueSpecification *changeExpressi
         removeOwnedElement(_changeExpression);
 
         _changeExpression = changeExpression;
-        if (changeExpression && changeExpression->asQObject() && this->asQObject())
-            QObject::connect(changeExpression->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setChangeExpression()));
-        changeExpression->asQObject()->setParent(this->asQObject());
+        if (changeExpression && changeExpression->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(changeExpression->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setChangeExpression()));
+        changeExpression->asQModelingObject()->setParent(this->asQModelingObject());
 
         // Adjust subsetted properties
         if (changeExpression) {
             addOwnedElement(changeExpression);
         }
     }
-}
-
-void QUmlChangeEvent::setGroupProperties()
-{
-    const QMetaObject *metaObject = _qObject->metaObject();
-
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
-    _groupProperties.insert(QStringLiteral("QUmlParameterableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owningTemplateParameter"))));
-    _groupProperties.insert(QStringLiteral("QUmlParameterableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("templateParameter"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
-    _groupProperties.insert(QStringLiteral("QUmlPackageableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
-    _groupProperties.insert(QStringLiteral("QUmlChangeEvent"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("changeExpression"))));
-}
-
-void QUmlChangeEvent::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlChangeEvent")][QStringLiteral("changeExpression")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlChangeEvent")][QStringLiteral("changeExpression")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlChangeEvent");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlChangeEvent")][QStringLiteral("changeExpression")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlChangeEvent")][QStringLiteral("changeExpression")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlChangeEvent")][QStringLiteral("changeExpression")][QtModeling::DocumentationRole] = QStringLiteral("A Boolean-valued expression that will result in a change event whenever its value changes from false to true.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlChangeEvent")][QStringLiteral("changeExpression")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlChangeEvent")][QStringLiteral("changeExpression")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlChangeEvent")][QStringLiteral("changeExpression")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
 }
 

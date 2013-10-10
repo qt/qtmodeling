@@ -45,7 +45,6 @@
 
 #include <QtUml/QUmlWriteVariableAction>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -57,10 +56,10 @@ class QUmlInputPin;
 class Q_UML_EXPORT QUmlAddVariableValueAction : public QUmlWriteVariableAction
 {
 public:
-    explicit QUmlAddVariableValueAction(bool createQObject = true);
+    explicit QUmlAddVariableValueAction(bool createQModelingObject = true);
     virtual ~QUmlAddVariableValueAction();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
     QUmlInputPin *insertAt() const;
@@ -71,9 +70,6 @@ public:
 protected:
     QUmlInputPin *_insertAt;
     bool _isReplaceAll;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

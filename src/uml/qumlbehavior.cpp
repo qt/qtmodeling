@@ -92,15 +92,13 @@ QUmlBehavior::QUmlBehavior() :
     _isReentrant(true),
     _specification(0)
 {
-    setGroupProperties();
-    setPropertyData();
 }
 
 QUmlBehavior::~QUmlBehavior()
 {
 }
 
-QModelingObject *QUmlBehavior::clone() const
+QModelingElement *QUmlBehavior::clone() const
 {
     QUmlBehavior *c = new QUmlBehavior;
     foreach (QUmlComment *element, ownedComments())
@@ -229,7 +227,7 @@ void QUmlBehavior::setReentrant(bool isReentrant)
 
     if (_isReentrant != isReentrant) {
         _isReentrant = isReentrant;
-        _modifiedResettableProperties << QStringLiteral("isReentrant");
+        _qModelingObject->modifiedResettableProperties() << QStringLiteral("isReentrant");
     }
 }
 
@@ -249,9 +247,9 @@ void QUmlBehavior::addOwnedParameter(QUmlParameter *ownedParameter)
 
     if (!_ownedParameters.contains(ownedParameter)) {
         _ownedParameters.append(ownedParameter);
-        if (ownedParameter && ownedParameter->asQObject() && this->asQObject())
-            QObject::connect(ownedParameter->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeOwnedParameter(QObject *)));
-        ownedParameter->asQObject()->setParent(this->asQObject());
+        if (ownedParameter && ownedParameter->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(ownedParameter->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeOwnedParameter(QObject *)));
+        ownedParameter->asQModelingObject()->setParent(this->asQModelingObject());
 
         // Adjust subsetted properties
         addOwnedMember(ownedParameter);
@@ -264,8 +262,8 @@ void QUmlBehavior::removeOwnedParameter(QUmlParameter *ownedParameter)
 
     if (_ownedParameters.contains(ownedParameter)) {
         _ownedParameters.removeAll(ownedParameter);
-        if (ownedParameter->asQObject())
-            ownedParameter->asQObject()->setParent(0);
+        if (ownedParameter->asQModelingObject())
+            ownedParameter->asQModelingObject()->setParent(0);
 
         // Adjust subsetted properties
         removeOwnedMember(ownedParameter);
@@ -288,9 +286,9 @@ void QUmlBehavior::addOwnedParameterSet(QUmlParameterSet *ownedParameterSet)
 
     if (!_ownedParameterSets.contains(ownedParameterSet)) {
         _ownedParameterSets.insert(ownedParameterSet);
-        if (ownedParameterSet && ownedParameterSet->asQObject() && this->asQObject())
-            QObject::connect(ownedParameterSet->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeOwnedParameterSet(QObject *)));
-        ownedParameterSet->asQObject()->setParent(this->asQObject());
+        if (ownedParameterSet && ownedParameterSet->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(ownedParameterSet->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeOwnedParameterSet(QObject *)));
+        ownedParameterSet->asQModelingObject()->setParent(this->asQModelingObject());
 
         // Adjust subsetted properties
         addOwnedMember(ownedParameterSet);
@@ -303,8 +301,8 @@ void QUmlBehavior::removeOwnedParameterSet(QUmlParameterSet *ownedParameterSet)
 
     if (_ownedParameterSets.contains(ownedParameterSet)) {
         _ownedParameterSets.remove(ownedParameterSet);
-        if (ownedParameterSet->asQObject())
-            ownedParameterSet->asQObject()->setParent(0);
+        if (ownedParameterSet->asQModelingObject())
+            ownedParameterSet->asQModelingObject()->setParent(0);
 
         // Adjust subsetted properties
         removeOwnedMember(ownedParameterSet);
@@ -327,9 +325,9 @@ void QUmlBehavior::addPostcondition(QUmlConstraint *postcondition)
 
     if (!_postconditions.contains(postcondition)) {
         _postconditions.insert(postcondition);
-        if (postcondition && postcondition->asQObject() && this->asQObject())
-            QObject::connect(postcondition->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removePostcondition(QObject *)));
-        postcondition->asQObject()->setParent(this->asQObject());
+        if (postcondition && postcondition->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(postcondition->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removePostcondition(QObject *)));
+        postcondition->asQModelingObject()->setParent(this->asQModelingObject());
 
         // Adjust subsetted properties
         addOwnedRule(postcondition);
@@ -342,8 +340,8 @@ void QUmlBehavior::removePostcondition(QUmlConstraint *postcondition)
 
     if (_postconditions.contains(postcondition)) {
         _postconditions.remove(postcondition);
-        if (postcondition->asQObject())
-            postcondition->asQObject()->setParent(0);
+        if (postcondition->asQModelingObject())
+            postcondition->asQModelingObject()->setParent(0);
 
         // Adjust subsetted properties
         removeOwnedRule(postcondition);
@@ -366,9 +364,9 @@ void QUmlBehavior::addPrecondition(QUmlConstraint *precondition)
 
     if (!_preconditions.contains(precondition)) {
         _preconditions.insert(precondition);
-        if (precondition && precondition->asQObject() && this->asQObject())
-            QObject::connect(precondition->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removePrecondition(QObject *)));
-        precondition->asQObject()->setParent(this->asQObject());
+        if (precondition && precondition->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(precondition->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removePrecondition(QObject *)));
+        precondition->asQModelingObject()->setParent(this->asQModelingObject());
 
         // Adjust subsetted properties
         addOwnedRule(precondition);
@@ -381,8 +379,8 @@ void QUmlBehavior::removePrecondition(QUmlConstraint *precondition)
 
     if (_preconditions.contains(precondition)) {
         _preconditions.remove(precondition);
-        if (precondition->asQObject())
-            precondition->asQObject()->setParent(0);
+        if (precondition->asQModelingObject())
+            precondition->asQModelingObject()->setParent(0);
 
         // Adjust subsetted properties
         removeOwnedRule(precondition);
@@ -405,8 +403,8 @@ void QUmlBehavior::addRedefinedBehavior(QUmlBehavior *redefinedBehavior)
 
     if (!_redefinedBehaviors.contains(redefinedBehavior)) {
         _redefinedBehaviors.insert(redefinedBehavior);
-        if (redefinedBehavior && redefinedBehavior->asQObject() && this->asQObject())
-            QObject::connect(redefinedBehavior->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeRedefinedBehavior(QObject *)));
+        if (redefinedBehavior && redefinedBehavior->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(redefinedBehavior->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeRedefinedBehavior(QObject *)));
 
         // Adjust subsetted properties
         addRedefinedClassifier(redefinedBehavior);
@@ -441,148 +439,8 @@ void QUmlBehavior::setSpecification(QUmlBehavioralFeature *specification)
 
     if (_specification != specification) {
         _specification = specification;
-        if (specification && specification->asQObject() && this->asQObject())
-            QObject::connect(specification->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setSpecification()));
+        if (specification && specification->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(specification->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setSpecification()));
     }
-}
-
-void QUmlBehavior::setGroupProperties()
-{
-    const QMetaObject *metaObject = _qObject->metaObject();
-
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("elementImports"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("importedMembers"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("members"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedMembers"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedRules"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("packageImports"))));
-    _groupProperties.insert(QStringLiteral("QUmlParameterableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owningTemplateParameter"))));
-    _groupProperties.insert(QStringLiteral("QUmlPackageableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
-    _groupProperties.insert(QStringLiteral("QUmlType"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("package"))));
-    _groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isLeaf"))));
-    _groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinitionContexts"))));
-    _groupProperties.insert(QStringLiteral("QUmlTemplateableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("templateBindings"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("attributes"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("collaborationUses"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("features"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("generalizations"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inheritedMembers"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isFinalSpecialization"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedTemplateSignature"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedUseCases"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("powertypeExtents"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinedClassifiers"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("representation"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("substitutions"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("templateParameter"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("useCases"))));
-    _groupProperties.insert(QStringLiteral("QUmlStructuredClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedConnectors"))));
-    _groupProperties.insert(QStringLiteral("QUmlStructuredClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("parts"))));
-    _groupProperties.insert(QStringLiteral("QUmlStructuredClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("roles"))));
-    _groupProperties.insert(QStringLiteral("QUmlEncapsulatedClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedPorts"))));
-    _groupProperties.insert(QStringLiteral("QUmlBehavioredClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("classifierBehavior"))));
-    _groupProperties.insert(QStringLiteral("QUmlBehavioredClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("interfaceRealizations"))));
-    _groupProperties.insert(QStringLiteral("QUmlBehavioredClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedBehaviors"))));
-    _groupProperties.insert(QStringLiteral("QUmlClass"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("extensions"))));
-    _groupProperties.insert(QStringLiteral("QUmlClass"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isAbstract"))));
-    _groupProperties.insert(QStringLiteral("QUmlClass"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isActive"))));
-    _groupProperties.insert(QStringLiteral("QUmlClass"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nestedClassifiers"))));
-    _groupProperties.insert(QStringLiteral("QUmlClass"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedAttributes"))));
-    _groupProperties.insert(QStringLiteral("QUmlClass"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedOperations"))));
-    _groupProperties.insert(QStringLiteral("QUmlClass"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedReceptions"))));
-    _groupProperties.insert(QStringLiteral("QUmlClass"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("superClasses"))));
-    _groupProperties.insert(QStringLiteral("QUmlBehavior"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("context"))));
-    _groupProperties.insert(QStringLiteral("QUmlBehavior"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isReentrant"))));
-    _groupProperties.insert(QStringLiteral("QUmlBehavior"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedParameters"))));
-    _groupProperties.insert(QStringLiteral("QUmlBehavior"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedParameterSets"))));
-    _groupProperties.insert(QStringLiteral("QUmlBehavior"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("postconditions"))));
-    _groupProperties.insert(QStringLiteral("QUmlBehavior"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("preconditions"))));
-    _groupProperties.insert(QStringLiteral("QUmlBehavior"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinedBehaviors"))));
-    _groupProperties.insert(QStringLiteral("QUmlBehavior"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("specification"))));
-}
-
-void QUmlBehavior::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavior")][QStringLiteral("context")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavior")][QStringLiteral("context")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlBehavior");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavior")][QStringLiteral("context")][QtModeling::IsDerivedRole] = true;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavior")][QStringLiteral("context")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavior")][QStringLiteral("context")][QtModeling::DocumentationRole] = QStringLiteral("The classifier that is the context for the execution of the behavior. If the behavior is owned by a BehavioredClassifier, that classifier is the context. Otherwise, the context is the first BehavioredClassifier reached by following the chain of owner relationships. For example, following this algorithm, the context of an entry action in a state machine is the classifier that owns the state machine. The features of the context classifier as well as the elements visible to the context classifier are visible to the behavior.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavior")][QStringLiteral("context")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavior")][QStringLiteral("context")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("RedefinableElement-redefinitionContext");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavior")][QStringLiteral("context")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavior")][QStringLiteral("isReentrant")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavior")][QStringLiteral("isReentrant")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlBehavior");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavior")][QStringLiteral("isReentrant")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavior")][QStringLiteral("isReentrant")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavior")][QStringLiteral("isReentrant")][QtModeling::DocumentationRole] = QStringLiteral("Tells whether the behavior can be invoked while it is still executing from a previous invocation.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavior")][QStringLiteral("isReentrant")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavior")][QStringLiteral("isReentrant")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavior")][QStringLiteral("isReentrant")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavior")][QStringLiteral("ownedParameters")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavior")][QStringLiteral("ownedParameters")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlBehavior");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavior")][QStringLiteral("ownedParameters")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavior")][QStringLiteral("ownedParameters")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavior")][QStringLiteral("ownedParameters")][QtModeling::DocumentationRole] = QStringLiteral("References a list of parameters to the behavior which describes the order and type of arguments that can be given when the behavior is invoked and of the values which will be returned when the behavior completes its execution.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavior")][QStringLiteral("ownedParameters")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavior")][QStringLiteral("ownedParameters")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Namespace-ownedMember");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavior")][QStringLiteral("ownedParameters")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavior")][QStringLiteral("ownedParameterSets")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavior")][QStringLiteral("ownedParameterSets")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlBehavior");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavior")][QStringLiteral("ownedParameterSets")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavior")][QStringLiteral("ownedParameterSets")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavior")][QStringLiteral("ownedParameterSets")][QtModeling::DocumentationRole] = QStringLiteral("The ParameterSets owned by this Behavior.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavior")][QStringLiteral("ownedParameterSets")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavior")][QStringLiteral("ownedParameterSets")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Namespace-ownedMember");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavior")][QStringLiteral("ownedParameterSets")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavior")][QStringLiteral("postconditions")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavior")][QStringLiteral("postconditions")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlBehavior");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavior")][QStringLiteral("postconditions")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavior")][QStringLiteral("postconditions")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavior")][QStringLiteral("postconditions")][QtModeling::DocumentationRole] = QStringLiteral("An optional set of Constraints specifying what is fulfilled after the execution of the behavior is completed, if its precondition was fulfilled before its invocation.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavior")][QStringLiteral("postconditions")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavior")][QStringLiteral("postconditions")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Namespace-ownedRule");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavior")][QStringLiteral("postconditions")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavior")][QStringLiteral("preconditions")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavior")][QStringLiteral("preconditions")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlBehavior");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavior")][QStringLiteral("preconditions")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavior")][QStringLiteral("preconditions")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavior")][QStringLiteral("preconditions")][QtModeling::DocumentationRole] = QStringLiteral("An optional set of Constraints specifying what must be fulfilled when the behavior is invoked.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavior")][QStringLiteral("preconditions")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavior")][QStringLiteral("preconditions")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Namespace-ownedRule");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavior")][QStringLiteral("preconditions")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavior")][QStringLiteral("redefinedBehaviors")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavior")][QStringLiteral("redefinedBehaviors")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlBehavior");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavior")][QStringLiteral("redefinedBehaviors")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavior")][QStringLiteral("redefinedBehaviors")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavior")][QStringLiteral("redefinedBehaviors")][QtModeling::DocumentationRole] = QStringLiteral("References a behavior that this behavior redefines. A subtype of Behavior may redefine any other subtype of Behavior. If the behavior implements a behavioral feature, it replaces the redefined behavior. If the behavior is a classifier behavior, it extends the redefined behavior.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavior")][QStringLiteral("redefinedBehaviors")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavior")][QStringLiteral("redefinedBehaviors")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Classifier-redefinedClassifier");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavior")][QStringLiteral("redefinedBehaviors")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavior")][QStringLiteral("specification")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavior")][QStringLiteral("specification")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlBehavior");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavior")][QStringLiteral("specification")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavior")][QStringLiteral("specification")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavior")][QStringLiteral("specification")][QtModeling::DocumentationRole] = QStringLiteral("Designates a behavioral feature that the behavior implements. The behavioral feature must be owned by the classifier that owns the behavior or be inherited by it. The parameters of the behavioral feature and the implementing behavior must match. A behavior does not need to have a specification, in which case it either is the classifer behavior of a BehavioredClassifier or it can only be invoked by another behavior of the classifier.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavior")][QStringLiteral("specification")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavior")][QStringLiteral("specification")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavior")][QStringLiteral("specification")][QtModeling::OppositeEndRole] = QStringLiteral("BehavioralFeature-method");
-
 }
 

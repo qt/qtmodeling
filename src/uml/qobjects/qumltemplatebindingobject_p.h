@@ -43,7 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtCore/QObject>
+#include <QtModeling/QModelingObject>
 
 QT_BEGIN_HEADER
 
@@ -52,9 +52,12 @@ QT_BEGIN_NAMESPACE
 QT_MODULE(QtUml)
 
 class QUmlTemplateBinding;
-class Q_UML_EXPORT QUmlTemplateBindingObject : public QObject
+class QModelingObjectPrivate;
+class Q_UML_EXPORT QUmlTemplateBindingObject : public QModelingObject
 {
     Q_OBJECT
+    Q_DISABLE_COPY(QUmlTemplateBindingObject)
+    Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [Element]
     Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
@@ -74,7 +77,7 @@ class Q_UML_EXPORT QUmlTemplateBindingObject : public QObject
     Q_PROPERTY(QObject * signature READ signature WRITE setSignature)
 
 public:
-    Q_INVOKABLE explicit QUmlTemplateBindingObject(QUmlTemplateBinding *qModelingObject);
+    Q_INVOKABLE explicit QUmlTemplateBindingObject(QUmlTemplateBinding *qModelingElement);
     virtual ~QUmlTemplateBindingObject();
 
     // Owned attributes [Element]
@@ -122,6 +125,10 @@ public Q_SLOTS:
     void addParameterSubstitution(QObject *parameterSubstitution);
     void removeParameterSubstitution(QObject *parameterSubstitution);
     void setSignature(QObject *signature = 0);
+
+protected:
+    virtual void setGroupProperties();
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

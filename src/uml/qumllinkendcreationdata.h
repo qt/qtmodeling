@@ -45,7 +45,6 @@
 
 #include <QtUml/QUmlLinkEndData>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -57,10 +56,10 @@ class QUmlInputPin;
 class Q_UML_EXPORT QUmlLinkEndCreationData : public QUmlLinkEndData
 {
 public:
-    explicit QUmlLinkEndCreationData(bool createQObject = true);
+    explicit QUmlLinkEndCreationData(bool createQModelingObject = true);
     virtual ~QUmlLinkEndCreationData();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
     QUmlInputPin *insertAt() const;
@@ -71,9 +70,6 @@ public:
 protected:
     QUmlInputPin *_insertAt;
     bool _isReplaceAll;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

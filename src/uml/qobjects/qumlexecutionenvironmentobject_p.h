@@ -43,7 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtCore/QObject>
+#include <QtModeling/QModelingObject>
 
 #include <QtUml/QtUmlNamespace>
 
@@ -54,9 +54,12 @@ QT_BEGIN_NAMESPACE
 QT_MODULE(QtUml)
 
 class QUmlExecutionEnvironment;
-class Q_UML_EXPORT QUmlExecutionEnvironmentObject : public QObject
+class QModelingObjectPrivate;
+class Q_UML_EXPORT QUmlExecutionEnvironmentObject : public QModelingObject
 {
     Q_OBJECT
+    Q_DISABLE_COPY(QUmlExecutionEnvironmentObject)
+    Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [Element]
     Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
@@ -142,7 +145,7 @@ class Q_UML_EXPORT QUmlExecutionEnvironmentObject : public QObject
     Q_PROPERTY(QSet<QObject *> nestedNodes READ nestedNodes)
 
 public:
-    Q_INVOKABLE explicit QUmlExecutionEnvironmentObject(QUmlExecutionEnvironment *qModelingObject);
+    Q_INVOKABLE explicit QUmlExecutionEnvironmentObject(QUmlExecutionEnvironment *qModelingElement);
     virtual ~QUmlExecutionEnvironmentObject();
 
     // Owned attributes [Element]
@@ -396,6 +399,10 @@ public Q_SLOTS:
     // Slots for owned attributes [Node]
     void addNestedNode(QObject *nestedNode);
     void removeNestedNode(QObject *nestedNode);
+
+protected:
+    virtual void setGroupProperties();
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

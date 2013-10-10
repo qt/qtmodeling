@@ -42,11 +42,9 @@
 #define QTMODELING_QMODELINGOBJECT_H
 
 #include <QtModeling/QtModelingGlobal>
+
 #include <QtModeling/QtModelingNamespace>
 
-#include <QtCore/QObject>
-
-#include <QtCore/QStringList>
 #include <QtCore/QMetaProperty>
 
 QT_BEGIN_HEADER
@@ -70,7 +68,9 @@ public:
     static QVariant propertyData(QString className, QMetaProperty metaProperty, QtModeling::MetaPropertyDataRole role);
     int propertyGroupIndex(QMetaProperty metaProperty) const;
     const QStringList &propertyGroups() const;
-    const QStringList &modifiedResettableProperties() const;
+    QStringList &modifiedResettableProperties();
+
+    static QHash< QString, QHash< QString, QHash<QtModeling::MetaPropertyDataRole, QVariant> > > propertyDataHash;
 
 protected:
     QModelingObject();
@@ -84,3 +84,4 @@ QT_END_NAMESPACE
 QT_END_HEADER
 
 #endif // QTMODELING_QMODELINGOBJECT_H
+

@@ -79,24 +79,22 @@
 
     \brief An artifact is the source of a deployment to a node.An artifact is the specification of a physical piece of information that is used or produced by a software development process, or by deployment and operation of a system. Examples of artifacts include model files, source files, scripts, and binary executable files, a table in a database system, a development deliverable, or a word-processing document, a mail message.
  */
-QUmlArtifact::QUmlArtifact(bool createQObject)
+QUmlArtifact::QUmlArtifact(bool createQModelingObject)
 {
-    if (createQObject)
-        _qObject = new QUmlArtifactObject(this);
-    setGroupProperties();
-    setPropertyData();
+    if (createQModelingObject)
+        _qModelingObject = qobject_cast<QModelingObject *>(new QUmlArtifactObject(this));
 }
 
 QUmlArtifact::~QUmlArtifact()
 {
-    if (!deletingFromQObject) {
-        if (_qObject)
-            _qObject->setProperty("deletingFromModelingObject", true);
-        delete _qObject;
+    if (!deletingFromQModelingObject) {
+        if (_qModelingObject)
+            _qModelingObject->setProperty("deletingFromModelingObject", true);
+        delete _qModelingObject;
     }
 }
 
-QModelingObject *QUmlArtifact::clone() const
+QModelingElement *QUmlArtifact::clone() const
 {
     QUmlArtifact *c = new QUmlArtifact;
     foreach (QUmlComment *element, ownedComments())
@@ -191,9 +189,9 @@ void QUmlArtifact::addManifestation(QUmlManifestation *manifestation)
 
     if (!_manifestations.contains(manifestation)) {
         _manifestations.insert(manifestation);
-        if (manifestation && manifestation->asQObject() && this->asQObject())
-            QObject::connect(manifestation->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeManifestation(QObject *)));
-        manifestation->asQObject()->setParent(this->asQObject());
+        if (manifestation && manifestation->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(manifestation->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeManifestation(QObject *)));
+        manifestation->asQModelingObject()->setParent(this->asQModelingObject());
 
         // Adjust subsetted properties
         addOwnedElement(manifestation);
@@ -207,8 +205,8 @@ void QUmlArtifact::removeManifestation(QUmlManifestation *manifestation)
 
     if (_manifestations.contains(manifestation)) {
         _manifestations.remove(manifestation);
-        if (manifestation->asQObject())
-            manifestation->asQObject()->setParent(0);
+        if (manifestation->asQModelingObject())
+            manifestation->asQModelingObject()->setParent(0);
 
         // Adjust subsetted properties
         removeOwnedElement(manifestation);
@@ -232,9 +230,9 @@ void QUmlArtifact::addNestedArtifact(QUmlArtifact *nestedArtifact)
 
     if (!_nestedArtifacts.contains(nestedArtifact)) {
         _nestedArtifacts.insert(nestedArtifact);
-        if (nestedArtifact && nestedArtifact->asQObject() && this->asQObject())
-            QObject::connect(nestedArtifact->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeNestedArtifact(QObject *)));
-        nestedArtifact->asQObject()->setParent(this->asQObject());
+        if (nestedArtifact && nestedArtifact->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(nestedArtifact->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeNestedArtifact(QObject *)));
+        nestedArtifact->asQModelingObject()->setParent(this->asQModelingObject());
 
         // Adjust subsetted properties
         addOwnedMember(nestedArtifact);
@@ -247,8 +245,8 @@ void QUmlArtifact::removeNestedArtifact(QUmlArtifact *nestedArtifact)
 
     if (_nestedArtifacts.contains(nestedArtifact)) {
         _nestedArtifacts.remove(nestedArtifact);
-        if (nestedArtifact->asQObject())
-            nestedArtifact->asQObject()->setParent(0);
+        if (nestedArtifact->asQModelingObject())
+            nestedArtifact->asQModelingObject()->setParent(0);
 
         // Adjust subsetted properties
         removeOwnedMember(nestedArtifact);
@@ -271,9 +269,9 @@ void QUmlArtifact::addOwnedAttribute(QUmlProperty *ownedAttribute)
 
     if (!_ownedAttributes.contains(ownedAttribute)) {
         _ownedAttributes.append(ownedAttribute);
-        if (ownedAttribute && ownedAttribute->asQObject() && this->asQObject())
-            QObject::connect(ownedAttribute->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeOwnedAttribute(QObject *)));
-        ownedAttribute->asQObject()->setParent(this->asQObject());
+        if (ownedAttribute && ownedAttribute->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(ownedAttribute->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeOwnedAttribute(QObject *)));
+        ownedAttribute->asQModelingObject()->setParent(this->asQModelingObject());
 
         // Adjust subsetted properties
         addOwnedMember(ownedAttribute);
@@ -287,8 +285,8 @@ void QUmlArtifact::removeOwnedAttribute(QUmlProperty *ownedAttribute)
 
     if (_ownedAttributes.contains(ownedAttribute)) {
         _ownedAttributes.removeAll(ownedAttribute);
-        if (ownedAttribute->asQObject())
-            ownedAttribute->asQObject()->setParent(0);
+        if (ownedAttribute->asQModelingObject())
+            ownedAttribute->asQModelingObject()->setParent(0);
 
         // Adjust subsetted properties
         removeOwnedMember(ownedAttribute);
@@ -312,9 +310,9 @@ void QUmlArtifact::addOwnedOperation(QUmlOperation *ownedOperation)
 
     if (!_ownedOperations.contains(ownedOperation)) {
         _ownedOperations.append(ownedOperation);
-        if (ownedOperation && ownedOperation->asQObject() && this->asQObject())
-            QObject::connect(ownedOperation->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeOwnedOperation(QObject *)));
-        ownedOperation->asQObject()->setParent(this->asQObject());
+        if (ownedOperation && ownedOperation->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(ownedOperation->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeOwnedOperation(QObject *)));
+        ownedOperation->asQModelingObject()->setParent(this->asQModelingObject());
 
         // Adjust subsetted properties
         addFeature(ownedOperation);
@@ -328,109 +326,12 @@ void QUmlArtifact::removeOwnedOperation(QUmlOperation *ownedOperation)
 
     if (_ownedOperations.contains(ownedOperation)) {
         _ownedOperations.removeAll(ownedOperation);
-        if (ownedOperation->asQObject())
-            ownedOperation->asQObject()->setParent(0);
+        if (ownedOperation->asQModelingObject())
+            ownedOperation->asQModelingObject()->setParent(0);
 
         // Adjust subsetted properties
         removeFeature(ownedOperation);
         removeOwnedMember(ownedOperation);
     }
-}
-
-void QUmlArtifact::setGroupProperties()
-{
-    const QMetaObject *metaObject = _qObject->metaObject();
-
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("elementImports"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("importedMembers"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("members"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedMembers"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedRules"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("packageImports"))));
-    _groupProperties.insert(QStringLiteral("QUmlParameterableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owningTemplateParameter"))));
-    _groupProperties.insert(QStringLiteral("QUmlPackageableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
-    _groupProperties.insert(QStringLiteral("QUmlType"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("package"))));
-    _groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isLeaf"))));
-    _groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinitionContexts"))));
-    _groupProperties.insert(QStringLiteral("QUmlTemplateableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("templateBindings"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("attributes"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("collaborationUses"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("features"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("generals"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("generalizations"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inheritedMembers"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isAbstract"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isFinalSpecialization"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedTemplateSignature"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedUseCases"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("powertypeExtents"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinedClassifiers"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("representation"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("substitutions"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("templateParameter"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("useCases"))));
-    _groupProperties.insert(QStringLiteral("QUmlArtifact"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("fileName"))));
-    _groupProperties.insert(QStringLiteral("QUmlArtifact"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("manifestations"))));
-    _groupProperties.insert(QStringLiteral("QUmlArtifact"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nestedArtifacts"))));
-    _groupProperties.insert(QStringLiteral("QUmlArtifact"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedAttributes"))));
-    _groupProperties.insert(QStringLiteral("QUmlArtifact"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedOperations"))));
-}
-
-void QUmlArtifact::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlArtifact")][QStringLiteral("fileName")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlArtifact")][QStringLiteral("fileName")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlArtifact");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlArtifact")][QStringLiteral("fileName")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlArtifact")][QStringLiteral("fileName")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlArtifact")][QStringLiteral("fileName")][QtModeling::DocumentationRole] = QStringLiteral("A concrete name that is used to refer to the Artifact in a physical context. Example: file system name, universal resource locator.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlArtifact")][QStringLiteral("fileName")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlArtifact")][QStringLiteral("fileName")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlArtifact")][QStringLiteral("fileName")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlArtifact")][QStringLiteral("manifestations")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlArtifact")][QStringLiteral("manifestations")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlArtifact");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlArtifact")][QStringLiteral("manifestations")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlArtifact")][QStringLiteral("manifestations")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlArtifact")][QStringLiteral("manifestations")][QtModeling::DocumentationRole] = QStringLiteral("The set of model elements that are manifested in the Artifact. That is, these model elements are utilized in the construction (or generation) of the artifact.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlArtifact")][QStringLiteral("manifestations")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlArtifact")][QStringLiteral("manifestations")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement NamedElement-clientDependency");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlArtifact")][QStringLiteral("manifestations")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlArtifact")][QStringLiteral("nestedArtifacts")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlArtifact")][QStringLiteral("nestedArtifacts")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlArtifact");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlArtifact")][QStringLiteral("nestedArtifacts")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlArtifact")][QStringLiteral("nestedArtifacts")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlArtifact")][QStringLiteral("nestedArtifacts")][QtModeling::DocumentationRole] = QStringLiteral("The Artifacts that are defined (nested) within the Artifact. The association is a specialization of the ownedMember association from Namespace to NamedElement.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlArtifact")][QStringLiteral("nestedArtifacts")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlArtifact")][QStringLiteral("nestedArtifacts")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Namespace-ownedMember");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlArtifact")][QStringLiteral("nestedArtifacts")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlArtifact")][QStringLiteral("ownedAttributes")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlArtifact")][QStringLiteral("ownedAttributes")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlArtifact");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlArtifact")][QStringLiteral("ownedAttributes")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlArtifact")][QStringLiteral("ownedAttributes")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlArtifact")][QStringLiteral("ownedAttributes")][QtModeling::DocumentationRole] = QStringLiteral("The attributes or association ends defined for the Artifact. The association is a specialization of the ownedMember association.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlArtifact")][QStringLiteral("ownedAttributes")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlArtifact")][QStringLiteral("ownedAttributes")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Namespace-ownedMember Classifier-attribute");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlArtifact")][QStringLiteral("ownedAttributes")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlArtifact")][QStringLiteral("ownedOperations")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlArtifact")][QStringLiteral("ownedOperations")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlArtifact");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlArtifact")][QStringLiteral("ownedOperations")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlArtifact")][QStringLiteral("ownedOperations")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlArtifact")][QStringLiteral("ownedOperations")][QtModeling::DocumentationRole] = QStringLiteral("The Operations defined for the Artifact. The association is a specialization of the ownedMember association.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlArtifact")][QStringLiteral("ownedOperations")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlArtifact")][QStringLiteral("ownedOperations")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Classifier-feature A_redefinitionContext_redefinableElement-redefinableElement Namespace-ownedMember");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlArtifact")][QStringLiteral("ownedOperations")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
 }
 

@@ -70,27 +70,25 @@
 
     \brief A protocol transition specifies a legal transition for an operation. Transitions of protocol state machines have the following information: a pre condition (guard), on trigger, and a post condition. Every protocol transition is associated to zero or one operation (referred BehavioralFeature) that belongs to the context classifier of the protocol state machine.
  */
-QUmlProtocolTransition::QUmlProtocolTransition(bool createQObject) :
+QUmlProtocolTransition::QUmlProtocolTransition(bool createQModelingObject) :
     QUmlTransition(false),
     _postCondition(0),
     _preCondition(0)
 {
-    if (createQObject)
-        _qObject = new QUmlProtocolTransitionObject(this);
-    setGroupProperties();
-    setPropertyData();
+    if (createQModelingObject)
+        _qModelingObject = qobject_cast<QModelingObject *>(new QUmlProtocolTransitionObject(this));
 }
 
 QUmlProtocolTransition::~QUmlProtocolTransition()
 {
-    if (!deletingFromQObject) {
-        if (_qObject)
-            _qObject->setProperty("deletingFromModelingObject", true);
-        delete _qObject;
+    if (!deletingFromQModelingObject) {
+        if (_qModelingObject)
+            _qModelingObject->setProperty("deletingFromModelingObject", true);
+        delete _qModelingObject;
     }
 }
 
-QModelingObject *QUmlProtocolTransition::clone() const
+QModelingElement *QUmlProtocolTransition::clone() const
 {
     QUmlProtocolTransition *c = new QUmlProtocolTransition;
     foreach (QUmlComment *element, ownedComments())
@@ -151,9 +149,9 @@ void QUmlProtocolTransition::setPostCondition(QUmlConstraint *postCondition)
         removeOwnedRule(_postCondition);
 
         _postCondition = postCondition;
-        if (postCondition && postCondition->asQObject() && this->asQObject())
-            QObject::connect(postCondition->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setPostCondition()));
-        postCondition->asQObject()->setParent(this->asQObject());
+        if (postCondition && postCondition->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(postCondition->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setPostCondition()));
+        postCondition->asQModelingObject()->setParent(this->asQModelingObject());
 
         // Adjust subsetted properties
         if (postCondition) {
@@ -180,9 +178,9 @@ void QUmlProtocolTransition::setPreCondition(QUmlConstraint *preCondition)
         // Adjust subsetted properties
 
         _preCondition = preCondition;
-        if (preCondition && preCondition->asQObject() && this->asQObject())
-            QObject::connect(preCondition->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setPreCondition()));
-        preCondition->asQObject()->setParent(this->asQObject());
+        if (preCondition && preCondition->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(preCondition->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setPreCondition()));
+        preCondition->asQModelingObject()->setParent(this->asQModelingObject());
 
         // Adjust subsetted properties
         setGuard(preCondition);
@@ -223,71 +221,5 @@ void QUmlProtocolTransition::removeReferred(QUmlOperation *referred)
     if (false /* <derivedexclusion-criteria> */) {
         // <derived-code>
     }
-}
-
-void QUmlProtocolTransition::setGroupProperties()
-{
-    const QMetaObject *metaObject = _qObject->metaObject();
-
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
-    _groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isLeaf"))));
-    _groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("elementImports"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("importedMembers"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("members"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedMembers"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedRules"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("packageImports"))));
-    _groupProperties.insert(QStringLiteral("QUmlTransition"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("container"))));
-    _groupProperties.insert(QStringLiteral("QUmlTransition"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("effect"))));
-    _groupProperties.insert(QStringLiteral("QUmlTransition"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("guard"))));
-    _groupProperties.insert(QStringLiteral("QUmlTransition"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("kind"))));
-    _groupProperties.insert(QStringLiteral("QUmlTransition"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinedTransition"))));
-    _groupProperties.insert(QStringLiteral("QUmlTransition"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinitionContext"))));
-    _groupProperties.insert(QStringLiteral("QUmlTransition"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("source"))));
-    _groupProperties.insert(QStringLiteral("QUmlTransition"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("target"))));
-    _groupProperties.insert(QStringLiteral("QUmlTransition"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("triggers"))));
-    _groupProperties.insert(QStringLiteral("QUmlProtocolTransition"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("postCondition"))));
-    _groupProperties.insert(QStringLiteral("QUmlProtocolTransition"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("preCondition"))));
-    _groupProperties.insert(QStringLiteral("QUmlProtocolTransition"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("referred"))));
-}
-
-void QUmlProtocolTransition::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProtocolTransition")][QStringLiteral("postCondition")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProtocolTransition")][QStringLiteral("postCondition")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlProtocolTransition");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProtocolTransition")][QStringLiteral("postCondition")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProtocolTransition")][QStringLiteral("postCondition")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProtocolTransition")][QStringLiteral("postCondition")][QtModeling::DocumentationRole] = QStringLiteral("Specifies the post condition of the transition which is the condition that should be obtained once the transition is triggered. This post condition is part of the post condition of the operation connected to the transition.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProtocolTransition")][QStringLiteral("postCondition")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProtocolTransition")][QStringLiteral("postCondition")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Namespace-ownedRule");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProtocolTransition")][QStringLiteral("postCondition")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProtocolTransition")][QStringLiteral("preCondition")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProtocolTransition")][QStringLiteral("preCondition")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlProtocolTransition");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProtocolTransition")][QStringLiteral("preCondition")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProtocolTransition")][QStringLiteral("preCondition")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProtocolTransition")][QStringLiteral("preCondition")][QtModeling::DocumentationRole] = QStringLiteral("Specifies the precondition of the transition. It specifies the condition that should be verified before triggering the transition. This guard condition added to the source state will be evaluated as part of the precondition of the operation referred by the transition if any.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProtocolTransition")][QStringLiteral("preCondition")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProtocolTransition")][QStringLiteral("preCondition")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Transition-guard");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProtocolTransition")][QStringLiteral("preCondition")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProtocolTransition")][QStringLiteral("referred")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProtocolTransition")][QStringLiteral("referred")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlProtocolTransition");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProtocolTransition")][QStringLiteral("referred")][QtModeling::IsDerivedRole] = true;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProtocolTransition")][QStringLiteral("referred")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProtocolTransition")][QStringLiteral("referred")][QtModeling::DocumentationRole] = QStringLiteral("This association refers to the associated operation. It is derived from the operation of the call trigger when applicable.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProtocolTransition")][QStringLiteral("referred")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProtocolTransition")][QStringLiteral("referred")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProtocolTransition")][QStringLiteral("referred")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
 }
 

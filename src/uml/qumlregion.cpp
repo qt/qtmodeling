@@ -67,27 +67,25 @@
 
     \brief A region is an orthogonal part of either a composite state or a state machine. It contains states and transitions.
  */
-QUmlRegion::QUmlRegion(bool createQObject) :
+QUmlRegion::QUmlRegion(bool createQModelingObject) :
     _extendedRegion(0),
     _state(0),
     _stateMachine(0)
 {
-    if (createQObject)
-        _qObject = new QUmlRegionObject(this);
-    setGroupProperties();
-    setPropertyData();
+    if (createQModelingObject)
+        _qModelingObject = qobject_cast<QModelingObject *>(new QUmlRegionObject(this));
 }
 
 QUmlRegion::~QUmlRegion()
 {
-    if (!deletingFromQObject) {
-        if (_qObject)
-            _qObject->setProperty("deletingFromModelingObject", true);
-        delete _qObject;
+    if (!deletingFromQModelingObject) {
+        if (_qModelingObject)
+            _qModelingObject->setProperty("deletingFromModelingObject", true);
+        delete _qModelingObject;
     }
 }
 
-QModelingObject *QUmlRegion::clone() const
+QModelingElement *QUmlRegion::clone() const
 {
     QUmlRegion *c = new QUmlRegion;
     foreach (QUmlComment *element, ownedComments())
@@ -139,8 +137,8 @@ void QUmlRegion::setExtendedRegion(QUmlRegion *extendedRegion)
         removeRedefinedElement(_extendedRegion);
 
         _extendedRegion = extendedRegion;
-        if (extendedRegion && extendedRegion->asQObject() && this->asQObject())
-            QObject::connect(extendedRegion->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setExtendedRegion()));
+        if (extendedRegion && extendedRegion->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(extendedRegion->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setExtendedRegion()));
 
         // Adjust subsetted properties
         if (extendedRegion) {
@@ -191,8 +189,8 @@ void QUmlRegion::setState(QUmlState *state)
         // Adjust subsetted properties
 
         _state = state;
-        if (state && state->asQObject() && this->asQObject())
-            QObject::connect(state->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setState()));
+        if (state && state->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(state->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setState()));
 
         // Adjust subsetted properties
         setNamespace(state);
@@ -217,8 +215,8 @@ void QUmlRegion::setStateMachine(QUmlStateMachine *stateMachine)
         // Adjust subsetted properties
 
         _stateMachine = stateMachine;
-        if (stateMachine && stateMachine->asQObject() && this->asQObject())
-            QObject::connect(stateMachine->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setStateMachine()));
+        if (stateMachine && stateMachine->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(stateMachine->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setStateMachine()));
 
         // Adjust subsetted properties
         setNamespace(stateMachine);
@@ -241,9 +239,9 @@ void QUmlRegion::addSubvertex(QUmlVertex *subvertex)
 
     if (!_subvertices.contains(subvertex)) {
         _subvertices.insert(subvertex);
-        if (subvertex && subvertex->asQObject() && this->asQObject())
-            QObject::connect(subvertex->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeSubvertex(QObject *)));
-        subvertex->asQObject()->setParent(this->asQObject());
+        if (subvertex && subvertex->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(subvertex->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeSubvertex(QObject *)));
+        subvertex->asQModelingObject()->setParent(this->asQModelingObject());
 
         // Adjust subsetted properties
         addOwnedMember(subvertex);
@@ -261,8 +259,8 @@ void QUmlRegion::removeSubvertex(QUmlVertex *subvertex)
 
     if (_subvertices.contains(subvertex)) {
         _subvertices.remove(subvertex);
-        if (subvertex->asQObject())
-            subvertex->asQObject()->setParent(0);
+        if (subvertex->asQModelingObject())
+            subvertex->asQModelingObject()->setParent(0);
 
         // Adjust subsetted properties
         removeOwnedMember(subvertex);
@@ -290,9 +288,9 @@ void QUmlRegion::addTransition(QUmlTransition *transition)
 
     if (!_transitions.contains(transition)) {
         _transitions.insert(transition);
-        if (transition && transition->asQObject() && this->asQObject())
-            QObject::connect(transition->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeTransition(QObject *)));
-        transition->asQObject()->setParent(this->asQObject());
+        if (transition && transition->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(transition->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeTransition(QObject *)));
+        transition->asQModelingObject()->setParent(this->asQModelingObject());
 
         // Adjust subsetted properties
         addOwnedMember(transition);
@@ -310,8 +308,8 @@ void QUmlRegion::removeTransition(QUmlTransition *transition)
 
     if (_transitions.contains(transition)) {
         _transitions.remove(transition);
-        if (transition->asQObject())
-            transition->asQObject()->setParent(0);
+        if (transition->asQModelingObject())
+            transition->asQModelingObject()->setParent(0);
 
         // Adjust subsetted properties
         removeOwnedMember(transition);
@@ -365,92 +363,5 @@ bool QUmlRegion::isRedefinitionContextValid(QUmlRegion *redefined) const
 
     Q_UNUSED(redefined);
     return bool ();
-}
-
-void QUmlRegion::setGroupProperties()
-{
-    const QMetaObject *metaObject = _qObject->metaObject();
-
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
-    _groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isLeaf"))));
-    _groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("elementImports"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("importedMembers"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("members"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedMembers"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedRules"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("packageImports"))));
-    _groupProperties.insert(QStringLiteral("QUmlRegion"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("extendedRegion"))));
-    _groupProperties.insert(QStringLiteral("QUmlRegion"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinitionContext"))));
-    _groupProperties.insert(QStringLiteral("QUmlRegion"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("state"))));
-    _groupProperties.insert(QStringLiteral("QUmlRegion"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("stateMachine"))));
-    _groupProperties.insert(QStringLiteral("QUmlRegion"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("subvertices"))));
-    _groupProperties.insert(QStringLiteral("QUmlRegion"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("transitions"))));
-}
-
-void QUmlRegion::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRegion")][QStringLiteral("extendedRegion")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRegion")][QStringLiteral("extendedRegion")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlRegion");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRegion")][QStringLiteral("extendedRegion")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRegion")][QStringLiteral("extendedRegion")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRegion")][QStringLiteral("extendedRegion")][QtModeling::DocumentationRole] = QStringLiteral("The region of which this region is an extension.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRegion")][QStringLiteral("extendedRegion")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRegion")][QStringLiteral("extendedRegion")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("RedefinableElement-redefinedElement");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRegion")][QStringLiteral("extendedRegion")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRegion")][QStringLiteral("redefinitionContext")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRegion")][QStringLiteral("redefinitionContext")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlRegion");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRegion")][QStringLiteral("redefinitionContext")][QtModeling::IsDerivedRole] = true;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRegion")][QStringLiteral("redefinitionContext")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRegion")][QStringLiteral("redefinitionContext")][QtModeling::DocumentationRole] = QStringLiteral("References the classifier in which context this element may be redefined.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRegion")][QStringLiteral("redefinitionContext")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("RedefinableElement-redefinitionContext");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRegion")][QStringLiteral("redefinitionContext")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRegion")][QStringLiteral("redefinitionContext")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRegion")][QStringLiteral("state")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRegion")][QStringLiteral("state")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlRegion");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRegion")][QStringLiteral("state")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRegion")][QStringLiteral("state")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRegion")][QStringLiteral("state")][QtModeling::DocumentationRole] = QStringLiteral("The State that owns the Region. If a Region is owned by a State, then it cannot also be owned by a StateMachine.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRegion")][QStringLiteral("state")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRegion")][QStringLiteral("state")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("NamedElement-namespace");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRegion")][QStringLiteral("state")][QtModeling::OppositeEndRole] = QStringLiteral("State-region");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRegion")][QStringLiteral("stateMachine")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRegion")][QStringLiteral("stateMachine")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlRegion");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRegion")][QStringLiteral("stateMachine")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRegion")][QStringLiteral("stateMachine")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRegion")][QStringLiteral("stateMachine")][QtModeling::DocumentationRole] = QStringLiteral("The StateMachine that owns the Region. If a Region is owned by a StateMachine, then it cannot also be owned by a State.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRegion")][QStringLiteral("stateMachine")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRegion")][QStringLiteral("stateMachine")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("NamedElement-namespace");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRegion")][QStringLiteral("stateMachine")][QtModeling::OppositeEndRole] = QStringLiteral("StateMachine-region");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRegion")][QStringLiteral("subvertices")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRegion")][QStringLiteral("subvertices")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlRegion");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRegion")][QStringLiteral("subvertices")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRegion")][QStringLiteral("subvertices")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRegion")][QStringLiteral("subvertices")][QtModeling::DocumentationRole] = QStringLiteral("The set of vertices that are owned by this region.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRegion")][QStringLiteral("subvertices")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRegion")][QStringLiteral("subvertices")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Namespace-ownedMember");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRegion")][QStringLiteral("subvertices")][QtModeling::OppositeEndRole] = QStringLiteral("Vertex-container");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRegion")][QStringLiteral("transitions")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRegion")][QStringLiteral("transitions")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlRegion");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRegion")][QStringLiteral("transitions")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRegion")][QStringLiteral("transitions")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRegion")][QStringLiteral("transitions")][QtModeling::DocumentationRole] = QStringLiteral("The set of transitions owned by the region.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRegion")][QStringLiteral("transitions")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRegion")][QStringLiteral("transitions")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Namespace-ownedMember");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRegion")][QStringLiteral("transitions")][QtModeling::OppositeEndRole] = QStringLiteral("Transition-container");
-
 }
 

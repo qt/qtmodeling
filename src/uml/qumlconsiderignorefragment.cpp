@@ -62,25 +62,23 @@
 
     \brief A consider ignore fragment is a kind of combined fragment that is used for the consider and ignore cases, which require lists of pertinent messages to be specified.
  */
-QUmlConsiderIgnoreFragment::QUmlConsiderIgnoreFragment(bool createQObject) :
+QUmlConsiderIgnoreFragment::QUmlConsiderIgnoreFragment(bool createQModelingObject) :
     QUmlCombinedFragment(false)
 {
-    if (createQObject)
-        _qObject = new QUmlConsiderIgnoreFragmentObject(this);
-    setGroupProperties();
-    setPropertyData();
+    if (createQModelingObject)
+        _qModelingObject = qobject_cast<QModelingObject *>(new QUmlConsiderIgnoreFragmentObject(this));
 }
 
 QUmlConsiderIgnoreFragment::~QUmlConsiderIgnoreFragment()
 {
-    if (!deletingFromQObject) {
-        if (_qObject)
-            _qObject->setProperty("deletingFromModelingObject", true);
-        delete _qObject;
+    if (!deletingFromQModelingObject) {
+        if (_qModelingObject)
+            _qModelingObject->setProperty("deletingFromModelingObject", true);
+        delete _qModelingObject;
     }
 }
 
-QModelingObject *QUmlConsiderIgnoreFragment::clone() const
+QModelingElement *QUmlConsiderIgnoreFragment::clone() const
 {
     QUmlConsiderIgnoreFragment *c = new QUmlConsiderIgnoreFragment;
     foreach (QUmlComment *element, ownedComments())
@@ -127,8 +125,8 @@ void QUmlConsiderIgnoreFragment::addMessage(QUmlNamedElement *message)
 
     if (!_messages.contains(message)) {
         _messages.insert(message);
-        if (message && message->asQObject() && this->asQObject())
-            QObject::connect(message->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeMessage(QObject *)));
+        if (message && message->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(message->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeMessage(QObject *)));
     }
 }
 
@@ -139,41 +137,5 @@ void QUmlConsiderIgnoreFragment::removeMessage(QUmlNamedElement *message)
     if (_messages.contains(message)) {
         _messages.remove(message);
     }
-}
-
-void QUmlConsiderIgnoreFragment::setGroupProperties()
-{
-    const QMetaObject *metaObject = _qObject->metaObject();
-
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
-    _groupProperties.insert(QStringLiteral("QUmlInteractionFragment"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("covered"))));
-    _groupProperties.insert(QStringLiteral("QUmlInteractionFragment"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("enclosingInteraction"))));
-    _groupProperties.insert(QStringLiteral("QUmlInteractionFragment"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("enclosingOperand"))));
-    _groupProperties.insert(QStringLiteral("QUmlInteractionFragment"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("generalOrderings"))));
-    _groupProperties.insert(QStringLiteral("QUmlCombinedFragment"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("cfragmentGates"))));
-    _groupProperties.insert(QStringLiteral("QUmlCombinedFragment"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("interactionOperator"))));
-    _groupProperties.insert(QStringLiteral("QUmlCombinedFragment"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("operands"))));
-    _groupProperties.insert(QStringLiteral("QUmlConsiderIgnoreFragment"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("messages"))));
-}
-
-void QUmlConsiderIgnoreFragment::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConsiderIgnoreFragment")][QStringLiteral("messages")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConsiderIgnoreFragment")][QStringLiteral("messages")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlConsiderIgnoreFragment");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConsiderIgnoreFragment")][QStringLiteral("messages")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConsiderIgnoreFragment")][QStringLiteral("messages")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConsiderIgnoreFragment")][QStringLiteral("messages")][QtModeling::DocumentationRole] = QStringLiteral("The set of messages that apply to this fragment");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConsiderIgnoreFragment")][QStringLiteral("messages")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConsiderIgnoreFragment")][QStringLiteral("messages")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConsiderIgnoreFragment")][QStringLiteral("messages")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
 }
 

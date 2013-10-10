@@ -59,25 +59,23 @@
 
     \brief A duration observation is a reference to a duration during an execution. It points out the element(s) in the model to observe and whether the observations are when this model element is entered or when it is exited.
  */
-QUmlDurationObservation::QUmlDurationObservation(bool createQObject) :
+QUmlDurationObservation::QUmlDurationObservation(bool createQModelingObject) :
     _event(0)
 {
-    if (createQObject)
-        _qObject = new QUmlDurationObservationObject(this);
-    setGroupProperties();
-    setPropertyData();
+    if (createQModelingObject)
+        _qModelingObject = qobject_cast<QModelingObject *>(new QUmlDurationObservationObject(this));
 }
 
 QUmlDurationObservation::~QUmlDurationObservation()
 {
-    if (!deletingFromQObject) {
-        if (_qObject)
-            _qObject->setProperty("deletingFromModelingObject", true);
-        delete _qObject;
+    if (!deletingFromQModelingObject) {
+        if (_qModelingObject)
+            _qModelingObject->setProperty("deletingFromModelingObject", true);
+        delete _qModelingObject;
     }
 }
 
-QModelingObject *QUmlDurationObservation::clone() const
+QModelingElement *QUmlDurationObservation::clone() const
 {
     QUmlDurationObservation *c = new QUmlDurationObservation;
     foreach (QUmlComment *element, ownedComments())
@@ -116,8 +114,8 @@ void QUmlDurationObservation::setEvent(QUmlNamedElement *event)
 
     if (_event != event) {
         _event = event;
-        if (event && event->asQObject() && this->asQObject())
-            QObject::connect(event->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setEvent()));
+        if (event && event->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(event->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setEvent()));
     }
 }
 
@@ -138,46 +136,5 @@ void QUmlDurationObservation::setFirstEvent(bool firstEvent)
     if (_firstEvent != firstEvent) {
         _firstEvent = firstEvent;
     }
-}
-
-void QUmlDurationObservation::setGroupProperties()
-{
-    const QMetaObject *metaObject = _qObject->metaObject();
-
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
-    _groupProperties.insert(QStringLiteral("QUmlParameterableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owningTemplateParameter"))));
-    _groupProperties.insert(QStringLiteral("QUmlParameterableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("templateParameter"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
-    _groupProperties.insert(QStringLiteral("QUmlPackageableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
-    _groupProperties.insert(QStringLiteral("QUmlDurationObservation"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("event"))));
-    _groupProperties.insert(QStringLiteral("QUmlDurationObservation"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("firstEvent"))));
-}
-
-void QUmlDurationObservation::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDurationObservation")][QStringLiteral("event")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDurationObservation")][QStringLiteral("event")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlDurationObservation");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDurationObservation")][QStringLiteral("event")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDurationObservation")][QStringLiteral("event")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDurationObservation")][QStringLiteral("event")][QtModeling::DocumentationRole] = QStringLiteral("The observation is determined by the entering or exiting of the event element during execution.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDurationObservation")][QStringLiteral("event")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDurationObservation")][QStringLiteral("event")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDurationObservation")][QStringLiteral("event")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDurationObservation")][QStringLiteral("firstEvent")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDurationObservation")][QStringLiteral("firstEvent")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlDurationObservation");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDurationObservation")][QStringLiteral("firstEvent")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDurationObservation")][QStringLiteral("firstEvent")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDurationObservation")][QStringLiteral("firstEvent")][QtModeling::DocumentationRole] = QStringLiteral("The value of firstEvent[i] is related to event[i] (where i is 1 or 2). If firstEvent[i] is true, then the corresponding observation event is the first time instant the execution enters event[i]. If firstEvent[i] is false, then the corresponding observation event is the time instant the execution exits event[i]. Default value is true applied when event[i] refers an element that represents only one time instant.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDurationObservation")][QStringLiteral("firstEvent")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDurationObservation")][QStringLiteral("firstEvent")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDurationObservation")][QStringLiteral("firstEvent")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
 }
 

@@ -43,7 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtCore/QObject>
+#include <QtModeling/QModelingObject>
 
 #include <QtUml/QtUmlNamespace>
 
@@ -54,9 +54,12 @@ QT_BEGIN_NAMESPACE
 QT_MODULE(QtUml)
 
 class QUmlDataStoreNode;
-class Q_UML_EXPORT QUmlDataStoreNodeObject : public QObject
+class QModelingObjectPrivate;
+class Q_UML_EXPORT QUmlDataStoreNodeObject : public QModelingObject
 {
     Q_OBJECT
+    Q_DISABLE_COPY(QUmlDataStoreNodeObject)
+    Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [Element]
     Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
@@ -97,7 +100,7 @@ class Q_UML_EXPORT QUmlDataStoreNodeObject : public QObject
     Q_PROPERTY(QObject * upperBound READ upperBound WRITE setUpperBound)
 
 public:
-    Q_INVOKABLE explicit QUmlDataStoreNodeObject(QUmlDataStoreNode *qModelingObject);
+    Q_INVOKABLE explicit QUmlDataStoreNodeObject(QUmlDataStoreNode *qModelingElement);
     virtual ~QUmlDataStoreNodeObject();
 
     // Owned attributes [Element]
@@ -206,6 +209,10 @@ public Q_SLOTS:
     void unsetOrdering();
     void setSelection(QObject *selection = 0);
     void setUpperBound(QObject *upperBound = 0);
+
+protected:
+    virtual void setGroupProperties();
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

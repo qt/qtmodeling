@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlmessageobject_p.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlMessage>
 #include <QtUml/QUmlComment>
@@ -55,16 +56,18 @@
 
 QT_BEGIN_NAMESPACE
 
-QUmlMessageObject::QUmlMessageObject(QUmlMessage *qModelingObject)
+QUmlMessageObject::QUmlMessageObject(QUmlMessage *qModelingElement)
 {
-    setProperty("modelingObject", QVariant::fromValue(static_cast<QModelingObject *>(qModelingObject)));
+    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(qModelingElement)));
+    setGroupProperties();
+    setPropertyData();
 }
 
 QUmlMessageObject::~QUmlMessageObject()
 {
     if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingobjectproperty_cast<QUmlMessage *>(this)->deletingFromQObject = true;
-        delete qmodelingobjectproperty_cast<QUmlComment *>(this);
+        qmodelingelementproperty_cast<QUmlMessage *>(this)->deletingFromQModelingObject = true;
+        delete qmodelingelementproperty_cast<QUmlComment *>(this);
     }
 }
 
@@ -73,25 +76,25 @@ QUmlMessageObject::~QUmlMessageObject()
 const QSet<QObject *> QUmlMessageObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlMessage *>(this)->ownedComments())
-        set.insert(element->asQObject());
+    foreach (QUmlComment *element, qmodelingelementproperty_cast<QUmlMessage *>(this)->ownedComments())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlMessageObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlMessage *>(this)->ownedElements())
-        set.insert(element->asQObject());
+    foreach (QUmlElement *element, qmodelingelementproperty_cast<QUmlMessage *>(this)->ownedElements())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 QObject *QUmlMessageObject::owner() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlMessage *>(this)->owner())
+    if (!qmodelingelementproperty_cast<QUmlMessage *>(this)->owner())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlMessage *>(this)->owner()->asQObject();
+        return qmodelingelementproperty_cast<QUmlMessage *>(this)->owner()->asQModelingObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -99,40 +102,40 @@ QObject *QUmlMessageObject::owner() const
 const QSet<QObject *> QUmlMessageObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlMessage *>(this)->clientDependencies())
-        set.insert(element->asQObject());
+    foreach (QUmlDependency *element, qmodelingelementproperty_cast<QUmlMessage *>(this)->clientDependencies())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 QString QUmlMessageObject::name() const
 {
-    return qmodelingobjectproperty_cast<QUmlMessage *>(this)->name();
+    return qmodelingelementproperty_cast<QUmlMessage *>(this)->name();
 }
 
 QObject *QUmlMessageObject::nameExpression() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlMessage *>(this)->nameExpression())
+    if (!qmodelingelementproperty_cast<QUmlMessage *>(this)->nameExpression())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlMessage *>(this)->nameExpression()->asQObject();
+        return qmodelingelementproperty_cast<QUmlMessage *>(this)->nameExpression()->asQModelingObject();
 }
 
 QObject *QUmlMessageObject::namespace_() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlMessage *>(this)->namespace_())
+    if (!qmodelingelementproperty_cast<QUmlMessage *>(this)->namespace_())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlMessage *>(this)->namespace_()->asQObject();
+        return qmodelingelementproperty_cast<QUmlMessage *>(this)->namespace_()->asQModelingObject();
 }
 
 QString QUmlMessageObject::qualifiedName() const
 {
-    return qmodelingobjectproperty_cast<QUmlMessage *>(this)->qualifiedName();
+    return qmodelingelementproperty_cast<QUmlMessage *>(this)->qualifiedName();
 }
 
 QtUml::VisibilityKind QUmlMessageObject::visibility() const
 {
-    return qmodelingobjectproperty_cast<QUmlMessage *>(this)->visibility();
+    return qmodelingelementproperty_cast<QUmlMessage *>(this)->visibility();
 }
 
 // OWNED ATTRIBUTES [Message]
@@ -140,59 +143,59 @@ QtUml::VisibilityKind QUmlMessageObject::visibility() const
 const QList<QObject *> QUmlMessageObject::arguments() const
 {
     QList<QObject *> list;
-    foreach (QUmlValueSpecification *element, qmodelingobjectproperty_cast<QUmlMessage *>(this)->arguments())
-        list.append(element->asQObject());
+    foreach (QUmlValueSpecification *element, qmodelingelementproperty_cast<QUmlMessage *>(this)->arguments())
+        list.append(element->asQModelingObject());
     return list;
 }
 
 QObject *QUmlMessageObject::connector() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlMessage *>(this)->connector())
+    if (!qmodelingelementproperty_cast<QUmlMessage *>(this)->connector())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlMessage *>(this)->connector()->asQObject();
+        return qmodelingelementproperty_cast<QUmlMessage *>(this)->connector()->asQModelingObject();
 }
 
 QObject *QUmlMessageObject::interaction() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlMessage *>(this)->interaction())
+    if (!qmodelingelementproperty_cast<QUmlMessage *>(this)->interaction())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlMessage *>(this)->interaction()->asQObject();
+        return qmodelingelementproperty_cast<QUmlMessage *>(this)->interaction()->asQModelingObject();
 }
 
 QtUml::MessageKind QUmlMessageObject::messageKind() const
 {
-    return qmodelingobjectproperty_cast<QUmlMessage *>(this)->messageKind();
+    return qmodelingelementproperty_cast<QUmlMessage *>(this)->messageKind();
 }
 
 QtUml::MessageSort QUmlMessageObject::messageSort() const
 {
-    return qmodelingobjectproperty_cast<QUmlMessage *>(this)->messageSort();
+    return qmodelingelementproperty_cast<QUmlMessage *>(this)->messageSort();
 }
 
 QObject *QUmlMessageObject::receiveEvent() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlMessage *>(this)->receiveEvent())
+    if (!qmodelingelementproperty_cast<QUmlMessage *>(this)->receiveEvent())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlMessage *>(this)->receiveEvent()->asQObject();
+        return qmodelingelementproperty_cast<QUmlMessage *>(this)->receiveEvent()->asQModelingObject();
 }
 
 QObject *QUmlMessageObject::sendEvent() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlMessage *>(this)->sendEvent())
+    if (!qmodelingelementproperty_cast<QUmlMessage *>(this)->sendEvent())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlMessage *>(this)->sendEvent()->asQObject();
+        return qmodelingelementproperty_cast<QUmlMessage *>(this)->sendEvent()->asQModelingObject();
 }
 
 QObject *QUmlMessageObject::signature() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlMessage *>(this)->signature())
+    if (!qmodelingelementproperty_cast<QUmlMessage *>(this)->signature())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlMessage *>(this)->signature()->asQObject();
+        return qmodelingelementproperty_cast<QUmlMessage *>(this)->signature()->asQModelingObject();
 }
 
 // OPERATIONS [Element]
@@ -200,14 +203,14 @@ QObject *QUmlMessageObject::signature() const
 QSet<QObject *> QUmlMessageObject::allOwnedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlMessage *>(this)->allOwnedElements())
-        set.insert(element->asQObject());
+    foreach (QUmlElement *element, qmodelingelementproperty_cast<QUmlMessage *>(this)->allOwnedElements())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 bool QUmlMessageObject::mustBeOwned() const
 {
-    return qmodelingobjectproperty_cast<QUmlMessage *>(this)->mustBeOwned();
+    return qmodelingelementproperty_cast<QUmlMessage *>(this)->mustBeOwned();
 }
 
 // OPERATIONS [NamedElement]
@@ -215,148 +218,259 @@ bool QUmlMessageObject::mustBeOwned() const
 QList<QObject *> QUmlMessageObject::allNamespaces() const
 {
     QList<QObject *> set;
-    foreach (QUmlNamespace *element, qmodelingobjectproperty_cast<QUmlMessage *>(this)->allNamespaces())
-        set.append(element->asQObject());
+    foreach (QUmlNamespace *element, qmodelingelementproperty_cast<QUmlMessage *>(this)->allNamespaces())
+        set.append(element->asQModelingObject());
     return set;
 }
 
 QSet<QObject *> QUmlMessageObject::allOwningPackages() const
 {
     QSet<QObject *> set;
-    foreach (QUmlPackage *element, qmodelingobjectproperty_cast<QUmlMessage *>(this)->allOwningPackages())
-        set.insert(element->asQObject());
+    foreach (QUmlPackage *element, qmodelingelementproperty_cast<QUmlMessage *>(this)->allOwningPackages())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 bool QUmlMessageObject::isDistinguishableFrom(QObject *n, QObject *ns) const
 {
-    return qmodelingobjectproperty_cast<QUmlMessage *>(this)->isDistinguishableFrom(qmodelingobjectproperty_cast<QUmlNamedElement *>(n), qmodelingobjectproperty_cast<QUmlNamespace *>(ns));
+    return qmodelingelementproperty_cast<QUmlMessage *>(this)->isDistinguishableFrom(qmodelingelementproperty_cast<QUmlNamedElement *>(n), qmodelingelementproperty_cast<QUmlNamespace *>(ns));
 }
 
 QString QUmlMessageObject::separator() const
 {
-    return qmodelingobjectproperty_cast<QUmlMessage *>(this)->separator();
+    return qmodelingelementproperty_cast<QUmlMessage *>(this)->separator();
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Element]
 
 void QUmlMessageObject::addOwnedComment(QObject *ownedComment)
 {
-    qmodelingobjectproperty_cast<QUmlMessage *>(this)->addOwnedComment(qmodelingobjectproperty_cast<QUmlComment *>(ownedComment));
+    qmodelingelementproperty_cast<QUmlMessage *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
 }
 
 void QUmlMessageObject::removeOwnedComment(QObject *ownedComment)
 {
-    qmodelingobjectproperty_cast<QUmlMessage *>(this)->removeOwnedComment(qmodelingobjectproperty_cast<QUmlComment *>(ownedComment));
+    qmodelingelementproperty_cast<QUmlMessage *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
 }
 
 void QUmlMessageObject::addOwnedElement(QObject *ownedElement)
 {
-    qmodelingobjectproperty_cast<QUmlMessage *>(this)->addOwnedElement(qmodelingobjectproperty_cast<QUmlElement *>(ownedElement));
+    qmodelingelementproperty_cast<QUmlMessage *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
 }
 
 void QUmlMessageObject::removeOwnedElement(QObject *ownedElement)
 {
-    qmodelingobjectproperty_cast<QUmlMessage *>(this)->removeOwnedElement(qmodelingobjectproperty_cast<QUmlElement *>(ownedElement));
+    qmodelingelementproperty_cast<QUmlMessage *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
 }
 
 void QUmlMessageObject::setOwner(QObject *owner)
 {
-    qmodelingobjectproperty_cast<QUmlMessage *>(this)->setOwner(qmodelingobjectproperty_cast<QUmlElement *>(owner));
+    qmodelingelementproperty_cast<QUmlMessage *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [NamedElement]
 
 void QUmlMessageObject::addClientDependency(QObject *clientDependency)
 {
-    qmodelingobjectproperty_cast<QUmlMessage *>(this)->addClientDependency(qmodelingobjectproperty_cast<QUmlDependency *>(clientDependency));
+    qmodelingelementproperty_cast<QUmlMessage *>(this)->addClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
 }
 
 void QUmlMessageObject::removeClientDependency(QObject *clientDependency)
 {
-    qmodelingobjectproperty_cast<QUmlMessage *>(this)->removeClientDependency(qmodelingobjectproperty_cast<QUmlDependency *>(clientDependency));
+    qmodelingelementproperty_cast<QUmlMessage *>(this)->removeClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
 }
 
 void QUmlMessageObject::setName(QString name)
 {
-    qmodelingobjectproperty_cast<QUmlMessage *>(this)->setName(name);
+    qmodelingelementproperty_cast<QUmlMessage *>(this)->setName(name);
 }
 
 void QUmlMessageObject::setNameExpression(QObject *nameExpression)
 {
-    qmodelingobjectproperty_cast<QUmlMessage *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
+    qmodelingelementproperty_cast<QUmlMessage *>(this)->setNameExpression(qmodelingelementproperty_cast<QUmlStringExpression *>(nameExpression));
 }
 
 void QUmlMessageObject::setNamespace(QObject *namespace_)
 {
-    qmodelingobjectproperty_cast<QUmlMessage *>(this)->setNamespace(qmodelingobjectproperty_cast<QUmlNamespace *>(namespace_));
+    qmodelingelementproperty_cast<QUmlMessage *>(this)->setNamespace(qmodelingelementproperty_cast<QUmlNamespace *>(namespace_));
 }
 
 void QUmlMessageObject::setQualifiedName(QString qualifiedName)
 {
-    qmodelingobjectproperty_cast<QUmlMessage *>(this)->setQualifiedName(qualifiedName);
+    qmodelingelementproperty_cast<QUmlMessage *>(this)->setQualifiedName(qualifiedName);
 }
 
 void QUmlMessageObject::setVisibility(QtUml::VisibilityKind visibility)
 {
-    qmodelingobjectproperty_cast<QUmlMessage *>(this)->setVisibility(visibility);
+    qmodelingelementproperty_cast<QUmlMessage *>(this)->setVisibility(visibility);
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Message]
 
 void QUmlMessageObject::addArgument(QObject *argument)
 {
-    qmodelingobjectproperty_cast<QUmlMessage *>(this)->addArgument(qmodelingobjectproperty_cast<QUmlValueSpecification *>(argument));
+    qmodelingelementproperty_cast<QUmlMessage *>(this)->addArgument(qmodelingelementproperty_cast<QUmlValueSpecification *>(argument));
 }
 
 void QUmlMessageObject::removeArgument(QObject *argument)
 {
-    qmodelingobjectproperty_cast<QUmlMessage *>(this)->removeArgument(qmodelingobjectproperty_cast<QUmlValueSpecification *>(argument));
+    qmodelingelementproperty_cast<QUmlMessage *>(this)->removeArgument(qmodelingelementproperty_cast<QUmlValueSpecification *>(argument));
 }
 
 void QUmlMessageObject::setConnector(QObject *connector)
 {
-    qmodelingobjectproperty_cast<QUmlMessage *>(this)->setConnector(qmodelingobjectproperty_cast<QUmlConnector *>(connector));
+    qmodelingelementproperty_cast<QUmlMessage *>(this)->setConnector(qmodelingelementproperty_cast<QUmlConnector *>(connector));
 }
 
 void QUmlMessageObject::setInteraction(QObject *interaction)
 {
-    qmodelingobjectproperty_cast<QUmlMessage *>(this)->setInteraction(qmodelingobjectproperty_cast<QUmlInteraction *>(interaction));
+    qmodelingelementproperty_cast<QUmlMessage *>(this)->setInteraction(qmodelingelementproperty_cast<QUmlInteraction *>(interaction));
 }
 
 void QUmlMessageObject::setMessageKind(QtUml::MessageKind messageKind)
 {
-    qmodelingobjectproperty_cast<QUmlMessage *>(this)->setMessageKind(messageKind);
+    qmodelingelementproperty_cast<QUmlMessage *>(this)->setMessageKind(messageKind);
 }
 
 void QUmlMessageObject::unsetMessageKind()
 {
-    qmodelingobjectproperty_cast<QUmlMessage *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("messageKind"));
+    Q_D(QModelingObject);
+    d->modifiedResettableProperties.removeAll(QStringLiteral("messageKind"));
 }
 
 void QUmlMessageObject::setMessageSort(QtUml::MessageSort messageSort)
 {
-    qmodelingobjectproperty_cast<QUmlMessage *>(this)->setMessageSort(messageSort);
+    qmodelingelementproperty_cast<QUmlMessage *>(this)->setMessageSort(messageSort);
 }
 
 void QUmlMessageObject::unsetMessageSort()
 {
-    qmodelingobjectproperty_cast<QUmlMessage *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("messageSort"));
+    Q_D(QModelingObject);
+    d->modifiedResettableProperties.removeAll(QStringLiteral("messageSort"));
 }
 
 void QUmlMessageObject::setReceiveEvent(QObject *receiveEvent)
 {
-    qmodelingobjectproperty_cast<QUmlMessage *>(this)->setReceiveEvent(qmodelingobjectproperty_cast<QUmlMessageEnd *>(receiveEvent));
+    qmodelingelementproperty_cast<QUmlMessage *>(this)->setReceiveEvent(qmodelingelementproperty_cast<QUmlMessageEnd *>(receiveEvent));
 }
 
 void QUmlMessageObject::setSendEvent(QObject *sendEvent)
 {
-    qmodelingobjectproperty_cast<QUmlMessage *>(this)->setSendEvent(qmodelingobjectproperty_cast<QUmlMessageEnd *>(sendEvent));
+    qmodelingelementproperty_cast<QUmlMessage *>(this)->setSendEvent(qmodelingelementproperty_cast<QUmlMessageEnd *>(sendEvent));
 }
 
 void QUmlMessageObject::setSignature(QObject *signature)
 {
-    qmodelingobjectproperty_cast<QUmlMessage *>(this)->setSignature(qmodelingobjectproperty_cast<QUmlNamedElement *>(signature));
+    qmodelingelementproperty_cast<QUmlMessage *>(this)->setSignature(qmodelingelementproperty_cast<QUmlNamedElement *>(signature));
+}
+
+
+void QUmlMessageObject::setGroupProperties()
+{
+    Q_D(QModelingObject);
+    const QMetaObject *metaObject = this->metaObject();
+
+    d->propertyGroups << QStringLiteral("QObject");
+    d->groupProperties.insert(QStringLiteral("QObject"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("objectName"))));
+
+    d->propertyGroups << QStringLiteral("QUmlElement");
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
+
+    d->propertyGroups << QStringLiteral("QUmlNamedElement");
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
+
+    d->propertyGroups << QStringLiteral("QUmlMessage");
+    d->groupProperties.insert(QStringLiteral("QUmlMessage"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("arguments"))));
+    d->groupProperties.insert(QStringLiteral("QUmlMessage"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("connector"))));
+    d->groupProperties.insert(QStringLiteral("QUmlMessage"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("interaction"))));
+    d->groupProperties.insert(QStringLiteral("QUmlMessage"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("messageKind"))));
+    d->groupProperties.insert(QStringLiteral("QUmlMessage"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("messageSort"))));
+    d->groupProperties.insert(QStringLiteral("QUmlMessage"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("receiveEvent"))));
+    d->groupProperties.insert(QStringLiteral("QUmlMessage"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("sendEvent"))));
+    d->groupProperties.insert(QStringLiteral("QUmlMessage"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("signature"))));
+}
+
+void QUmlMessageObject::setPropertyData()
+{
+    Q_DECLARE_METAPROPERTY_INFO(QUmlMessage, arguments, AggregationRole, QStringLiteral("composite"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlMessage, arguments, PropertyClassRole, QStringLiteral("QUmlMessage"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlMessage, arguments, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlMessage, arguments, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlMessage, arguments, DocumentationRole, QStringLiteral("The arguments of the Message"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlMessage, arguments, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlMessage, arguments, SubsettedPropertiesRole, QStringLiteral("Element-ownedElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlMessage, arguments, OppositeEndRole, QStringLiteral(""));
+
+    Q_DECLARE_METAPROPERTY_INFO(QUmlMessage, connector, AggregationRole, QStringLiteral("none"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlMessage, connector, PropertyClassRole, QStringLiteral("QUmlMessage"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlMessage, connector, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlMessage, connector, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlMessage, connector, DocumentationRole, QStringLiteral("The Connector on which this Message is sent."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlMessage, connector, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlMessage, connector, SubsettedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlMessage, connector, OppositeEndRole, QStringLiteral(""));
+
+    Q_DECLARE_METAPROPERTY_INFO(QUmlMessage, interaction, AggregationRole, QStringLiteral("none"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlMessage, interaction, PropertyClassRole, QStringLiteral("QUmlMessage"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlMessage, interaction, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlMessage, interaction, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlMessage, interaction, DocumentationRole, QStringLiteral("The enclosing Interaction owning the Message"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlMessage, interaction, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlMessage, interaction, SubsettedPropertiesRole, QStringLiteral("NamedElement-namespace"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlMessage, interaction, OppositeEndRole, QStringLiteral("Interaction-message"));
+
+    Q_DECLARE_METAPROPERTY_INFO(QUmlMessage, messageKind, AggregationRole, QStringLiteral("none"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlMessage, messageKind, PropertyClassRole, QStringLiteral("QUmlMessage"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlMessage, messageKind, IsDerivedRole, true);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlMessage, messageKind, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlMessage, messageKind, DocumentationRole, QStringLiteral("The derived kind of the Message (complete, lost, found or unknown)"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlMessage, messageKind, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlMessage, messageKind, SubsettedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlMessage, messageKind, OppositeEndRole, QStringLiteral(""));
+
+    Q_DECLARE_METAPROPERTY_INFO(QUmlMessage, messageSort, AggregationRole, QStringLiteral("none"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlMessage, messageSort, PropertyClassRole, QStringLiteral("QUmlMessage"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlMessage, messageSort, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlMessage, messageSort, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlMessage, messageSort, DocumentationRole, QStringLiteral("The sort of communication reflected by the Message"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlMessage, messageSort, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlMessage, messageSort, SubsettedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlMessage, messageSort, OppositeEndRole, QStringLiteral(""));
+
+    Q_DECLARE_METAPROPERTY_INFO(QUmlMessage, receiveEvent, AggregationRole, QStringLiteral("none"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlMessage, receiveEvent, PropertyClassRole, QStringLiteral("QUmlMessage"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlMessage, receiveEvent, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlMessage, receiveEvent, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlMessage, receiveEvent, DocumentationRole, QStringLiteral("References the Receiving of the Message"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlMessage, receiveEvent, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlMessage, receiveEvent, SubsettedPropertiesRole, QStringLiteral("A_message_messageEnd-messageEnd"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlMessage, receiveEvent, OppositeEndRole, QStringLiteral(""));
+
+    Q_DECLARE_METAPROPERTY_INFO(QUmlMessage, sendEvent, AggregationRole, QStringLiteral("none"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlMessage, sendEvent, PropertyClassRole, QStringLiteral("QUmlMessage"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlMessage, sendEvent, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlMessage, sendEvent, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlMessage, sendEvent, DocumentationRole, QStringLiteral("References the Sending of the Message."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlMessage, sendEvent, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlMessage, sendEvent, SubsettedPropertiesRole, QStringLiteral("A_message_messageEnd-messageEnd"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlMessage, sendEvent, OppositeEndRole, QStringLiteral(""));
+
+    Q_DECLARE_METAPROPERTY_INFO(QUmlMessage, signature, AggregationRole, QStringLiteral("none"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlMessage, signature, PropertyClassRole, QStringLiteral("QUmlMessage"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlMessage, signature, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlMessage, signature, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlMessage, signature, DocumentationRole, QStringLiteral("The signature of the Message is the specification of its content. It refers either an Operation or a Signal."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlMessage, signature, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlMessage, signature, SubsettedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlMessage, signature, OppositeEndRole, QStringLiteral(""));
+
 }
 
 QT_END_NAMESPACE

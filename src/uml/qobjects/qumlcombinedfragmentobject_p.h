@@ -43,7 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtCore/QObject>
+#include <QtModeling/QModelingObject>
 
 #include <QtUml/QtUmlNamespace>
 
@@ -54,9 +54,12 @@ QT_BEGIN_NAMESPACE
 QT_MODULE(QtUml)
 
 class QUmlCombinedFragment;
-class Q_UML_EXPORT QUmlCombinedFragmentObject : public QObject
+class QModelingObjectPrivate;
+class Q_UML_EXPORT QUmlCombinedFragmentObject : public QModelingObject
 {
     Q_OBJECT
+    Q_DISABLE_COPY(QUmlCombinedFragmentObject)
+    Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [Element]
     Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
@@ -83,7 +86,7 @@ class Q_UML_EXPORT QUmlCombinedFragmentObject : public QObject
     Q_PROPERTY(QList<QObject *> operands READ operands)
 
 public:
-    Q_INVOKABLE explicit QUmlCombinedFragmentObject(QUmlCombinedFragment *qModelingObject);
+    Q_INVOKABLE explicit QUmlCombinedFragmentObject(QUmlCombinedFragment *qModelingElement);
     virtual ~QUmlCombinedFragmentObject();
 
     // Owned attributes [Element]
@@ -153,6 +156,10 @@ public Q_SLOTS:
     void unsetInteractionOperator();
     void addOperand(QObject *operand);
     void removeOperand(QObject *operand);
+
+protected:
+    virtual void setGroupProperties();
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

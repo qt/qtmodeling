@@ -43,7 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtCore/QObject>
+#include <QtModeling/QModelingObject>
 
 #include <QtUml/QtUmlNamespace>
 
@@ -54,9 +54,12 @@ QT_BEGIN_NAMESPACE
 QT_MODULE(QtUml)
 
 class QUmlInputPin;
-class Q_UML_EXPORT QUmlInputPinObject : public QObject
+class QModelingObjectPrivate;
+class Q_UML_EXPORT QUmlInputPinObject : public QModelingObject
 {
     Q_OBJECT
+    Q_DISABLE_COPY(QUmlInputPinObject)
+    Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [Element]
     Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
@@ -108,7 +111,7 @@ class Q_UML_EXPORT QUmlInputPinObject : public QObject
     Q_PROPERTY(bool isControl READ isControl WRITE setControl RESET unsetControl)
 
 public:
-    Q_INVOKABLE explicit QUmlInputPinObject(QUmlInputPin *qModelingObject);
+    Q_INVOKABLE explicit QUmlInputPinObject(QUmlInputPin *qModelingElement);
     virtual ~QUmlInputPinObject();
 
     // Owned attributes [Element]
@@ -253,6 +256,10 @@ public Q_SLOTS:
     // Slots for owned attributes [Pin]
     void setControl(bool isControl);
     void unsetControl();
+
+protected:
+    virtual void setGroupProperties();
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

@@ -45,7 +45,6 @@
 
 #include <QtUml/QUmlStateMachine>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -57,10 +56,10 @@ class QUmlProtocolConformance;
 class Q_UML_EXPORT QUmlProtocolStateMachine : public QUmlStateMachine
 {
 public:
-    explicit QUmlProtocolStateMachine(bool createQObject = true);
+    explicit QUmlProtocolStateMachine(bool createQModelingObject = true);
     virtual ~QUmlProtocolStateMachine();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
     const QSet<QUmlProtocolConformance *> conformance() const;
@@ -69,9 +68,6 @@ public:
 
 protected:
     QSet<QUmlProtocolConformance *> _conformance;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

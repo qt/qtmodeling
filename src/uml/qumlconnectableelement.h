@@ -46,7 +46,6 @@
 #include <QtUml/QUmlTypedElement>
 #include <QtUml/QUmlParameterableElement>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -61,7 +60,7 @@ class Q_UML_EXPORT QUmlConnectableElement : public virtual QUmlTypedElement, pub
 public:
     virtual ~QUmlConnectableElement();
 
-    Q_DECL_HIDDEN QModelingObject *clone() const;
+    Q_DECL_HIDDEN virtual QModelingElement *clone() const;
 
     // Owned attributes
     const QList<QUmlConnectorEnd *> ends() const;
@@ -74,9 +73,6 @@ protected:
     explicit QUmlConnectableElement();
 
     QUmlConnectableElementTemplateParameter *_templateParameter;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

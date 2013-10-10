@@ -60,25 +60,23 @@
 
     \brief A call event models the receipt by an object of a message invoking a call of an operation.
  */
-QUmlCallEvent::QUmlCallEvent(bool createQObject) :
+QUmlCallEvent::QUmlCallEvent(bool createQModelingObject) :
     _operation(0)
 {
-    if (createQObject)
-        _qObject = new QUmlCallEventObject(this);
-    setGroupProperties();
-    setPropertyData();
+    if (createQModelingObject)
+        _qModelingObject = qobject_cast<QModelingObject *>(new QUmlCallEventObject(this));
 }
 
 QUmlCallEvent::~QUmlCallEvent()
 {
-    if (!deletingFromQObject) {
-        if (_qObject)
-            _qObject->setProperty("deletingFromModelingObject", true);
-        delete _qObject;
+    if (!deletingFromQModelingObject) {
+        if (_qModelingObject)
+            _qModelingObject->setProperty("deletingFromModelingObject", true);
+        delete _qModelingObject;
     }
 }
 
-QModelingObject *QUmlCallEvent::clone() const
+QModelingElement *QUmlCallEvent::clone() const
 {
     QUmlCallEvent *c = new QUmlCallEvent;
     foreach (QUmlComment *element, ownedComments())
@@ -116,39 +114,8 @@ void QUmlCallEvent::setOperation(QUmlOperation *operation)
 
     if (_operation != operation) {
         _operation = operation;
-        if (operation && operation->asQObject() && this->asQObject())
-            QObject::connect(operation->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setOperation()));
+        if (operation && operation->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(operation->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setOperation()));
     }
-}
-
-void QUmlCallEvent::setGroupProperties()
-{
-    const QMetaObject *metaObject = _qObject->metaObject();
-
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
-    _groupProperties.insert(QStringLiteral("QUmlParameterableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owningTemplateParameter"))));
-    _groupProperties.insert(QStringLiteral("QUmlParameterableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("templateParameter"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
-    _groupProperties.insert(QStringLiteral("QUmlPackageableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
-    _groupProperties.insert(QStringLiteral("QUmlCallEvent"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("operation"))));
-}
-
-void QUmlCallEvent::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlCallEvent")][QStringLiteral("operation")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlCallEvent")][QStringLiteral("operation")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlCallEvent");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlCallEvent")][QStringLiteral("operation")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlCallEvent")][QStringLiteral("operation")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlCallEvent")][QStringLiteral("operation")][QtModeling::DocumentationRole] = QStringLiteral("Designates the operation whose invocation raised the call event.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlCallEvent")][QStringLiteral("operation")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlCallEvent")][QStringLiteral("operation")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlCallEvent")][QStringLiteral("operation")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
 }
 

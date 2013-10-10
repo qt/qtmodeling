@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlqualifiervalueobject_p.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlQualifierValue>
 #include <QtUml/QUmlComment>
@@ -48,16 +49,18 @@
 
 QT_BEGIN_NAMESPACE
 
-QUmlQualifierValueObject::QUmlQualifierValueObject(QUmlQualifierValue *qModelingObject)
+QUmlQualifierValueObject::QUmlQualifierValueObject(QUmlQualifierValue *qModelingElement)
 {
-    setProperty("modelingObject", QVariant::fromValue(static_cast<QModelingObject *>(qModelingObject)));
+    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(qModelingElement)));
+    setGroupProperties();
+    setPropertyData();
 }
 
 QUmlQualifierValueObject::~QUmlQualifierValueObject()
 {
     if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingobjectproperty_cast<QUmlQualifierValue *>(this)->deletingFromQObject = true;
-        delete qmodelingobjectproperty_cast<QUmlComment *>(this);
+        qmodelingelementproperty_cast<QUmlQualifierValue *>(this)->deletingFromQModelingObject = true;
+        delete qmodelingelementproperty_cast<QUmlComment *>(this);
     }
 }
 
@@ -66,43 +69,43 @@ QUmlQualifierValueObject::~QUmlQualifierValueObject()
 const QSet<QObject *> QUmlQualifierValueObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlQualifierValue *>(this)->ownedComments())
-        set.insert(element->asQObject());
+    foreach (QUmlComment *element, qmodelingelementproperty_cast<QUmlQualifierValue *>(this)->ownedComments())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlQualifierValueObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlQualifierValue *>(this)->ownedElements())
-        set.insert(element->asQObject());
+    foreach (QUmlElement *element, qmodelingelementproperty_cast<QUmlQualifierValue *>(this)->ownedElements())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 QObject *QUmlQualifierValueObject::owner() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlQualifierValue *>(this)->owner())
+    if (!qmodelingelementproperty_cast<QUmlQualifierValue *>(this)->owner())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlQualifierValue *>(this)->owner()->asQObject();
+        return qmodelingelementproperty_cast<QUmlQualifierValue *>(this)->owner()->asQModelingObject();
 }
 
 // OWNED ATTRIBUTES [QualifierValue]
 
 QObject *QUmlQualifierValueObject::qualifier() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlQualifierValue *>(this)->qualifier())
+    if (!qmodelingelementproperty_cast<QUmlQualifierValue *>(this)->qualifier())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlQualifierValue *>(this)->qualifier()->asQObject();
+        return qmodelingelementproperty_cast<QUmlQualifierValue *>(this)->qualifier()->asQModelingObject();
 }
 
 QObject *QUmlQualifierValueObject::value() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlQualifierValue *>(this)->value())
+    if (!qmodelingelementproperty_cast<QUmlQualifierValue *>(this)->value())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlQualifierValue *>(this)->value()->asQObject();
+        return qmodelingelementproperty_cast<QUmlQualifierValue *>(this)->value()->asQModelingObject();
 }
 
 // OPERATIONS [Element]
@@ -110,53 +113,94 @@ QObject *QUmlQualifierValueObject::value() const
 QSet<QObject *> QUmlQualifierValueObject::allOwnedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlQualifierValue *>(this)->allOwnedElements())
-        set.insert(element->asQObject());
+    foreach (QUmlElement *element, qmodelingelementproperty_cast<QUmlQualifierValue *>(this)->allOwnedElements())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 bool QUmlQualifierValueObject::mustBeOwned() const
 {
-    return qmodelingobjectproperty_cast<QUmlQualifierValue *>(this)->mustBeOwned();
+    return qmodelingelementproperty_cast<QUmlQualifierValue *>(this)->mustBeOwned();
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Element]
 
 void QUmlQualifierValueObject::addOwnedComment(QObject *ownedComment)
 {
-    qmodelingobjectproperty_cast<QUmlQualifierValue *>(this)->addOwnedComment(qmodelingobjectproperty_cast<QUmlComment *>(ownedComment));
+    qmodelingelementproperty_cast<QUmlQualifierValue *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
 }
 
 void QUmlQualifierValueObject::removeOwnedComment(QObject *ownedComment)
 {
-    qmodelingobjectproperty_cast<QUmlQualifierValue *>(this)->removeOwnedComment(qmodelingobjectproperty_cast<QUmlComment *>(ownedComment));
+    qmodelingelementproperty_cast<QUmlQualifierValue *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
 }
 
 void QUmlQualifierValueObject::addOwnedElement(QObject *ownedElement)
 {
-    qmodelingobjectproperty_cast<QUmlQualifierValue *>(this)->addOwnedElement(qmodelingobjectproperty_cast<QUmlElement *>(ownedElement));
+    qmodelingelementproperty_cast<QUmlQualifierValue *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
 }
 
 void QUmlQualifierValueObject::removeOwnedElement(QObject *ownedElement)
 {
-    qmodelingobjectproperty_cast<QUmlQualifierValue *>(this)->removeOwnedElement(qmodelingobjectproperty_cast<QUmlElement *>(ownedElement));
+    qmodelingelementproperty_cast<QUmlQualifierValue *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
 }
 
 void QUmlQualifierValueObject::setOwner(QObject *owner)
 {
-    qmodelingobjectproperty_cast<QUmlQualifierValue *>(this)->setOwner(qmodelingobjectproperty_cast<QUmlElement *>(owner));
+    qmodelingelementproperty_cast<QUmlQualifierValue *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [QualifierValue]
 
 void QUmlQualifierValueObject::setQualifier(QObject *qualifier)
 {
-    qmodelingobjectproperty_cast<QUmlQualifierValue *>(this)->setQualifier(qmodelingobjectproperty_cast<QUmlProperty *>(qualifier));
+    qmodelingelementproperty_cast<QUmlQualifierValue *>(this)->setQualifier(qmodelingelementproperty_cast<QUmlProperty *>(qualifier));
 }
 
 void QUmlQualifierValueObject::setValue(QObject *value)
 {
-    qmodelingobjectproperty_cast<QUmlQualifierValue *>(this)->setValue(qmodelingobjectproperty_cast<QUmlInputPin *>(value));
+    qmodelingelementproperty_cast<QUmlQualifierValue *>(this)->setValue(qmodelingelementproperty_cast<QUmlInputPin *>(value));
+}
+
+
+void QUmlQualifierValueObject::setGroupProperties()
+{
+    Q_D(QModelingObject);
+    const QMetaObject *metaObject = this->metaObject();
+
+    d->propertyGroups << QStringLiteral("QObject");
+    d->groupProperties.insert(QStringLiteral("QObject"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("objectName"))));
+
+    d->propertyGroups << QStringLiteral("QUmlElement");
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
+
+    d->propertyGroups << QStringLiteral("QUmlQualifierValue");
+    d->groupProperties.insert(QStringLiteral("QUmlQualifierValue"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifier"))));
+    d->groupProperties.insert(QStringLiteral("QUmlQualifierValue"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("value"))));
+}
+
+void QUmlQualifierValueObject::setPropertyData()
+{
+    Q_DECLARE_METAPROPERTY_INFO(QUmlQualifierValue, qualifier, AggregationRole, QStringLiteral("none"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlQualifierValue, qualifier, PropertyClassRole, QStringLiteral("QUmlQualifierValue"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlQualifierValue, qualifier, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlQualifierValue, qualifier, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlQualifierValue, qualifier, DocumentationRole, QStringLiteral("Attribute representing the qualifier for which the value is to be specified."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlQualifierValue, qualifier, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlQualifierValue, qualifier, SubsettedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlQualifierValue, qualifier, OppositeEndRole, QStringLiteral(""));
+
+    Q_DECLARE_METAPROPERTY_INFO(QUmlQualifierValue, value, AggregationRole, QStringLiteral("none"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlQualifierValue, value, PropertyClassRole, QStringLiteral("QUmlQualifierValue"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlQualifierValue, value, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlQualifierValue, value, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlQualifierValue, value, DocumentationRole, QStringLiteral("Input pin from which the specified value for the qualifier is taken."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlQualifierValue, value, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlQualifierValue, value, SubsettedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlQualifierValue, value, OppositeEndRole, QStringLiteral(""));
+
 }
 
 QT_END_NAMESPACE

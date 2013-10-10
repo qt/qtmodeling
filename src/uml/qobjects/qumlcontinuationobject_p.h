@@ -43,7 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtCore/QObject>
+#include <QtModeling/QModelingObject>
 
 #include <QtUml/QtUmlNamespace>
 
@@ -54,9 +54,12 @@ QT_BEGIN_NAMESPACE
 QT_MODULE(QtUml)
 
 class QUmlContinuation;
-class Q_UML_EXPORT QUmlContinuationObject : public QObject
+class QModelingObjectPrivate;
+class Q_UML_EXPORT QUmlContinuationObject : public QModelingObject
 {
     Q_OBJECT
+    Q_DISABLE_COPY(QUmlContinuationObject)
+    Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [Element]
     Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
@@ -81,7 +84,7 @@ class Q_UML_EXPORT QUmlContinuationObject : public QObject
     Q_PROPERTY(bool setting READ setting WRITE setSetting RESET unsetSetting)
 
 public:
-    Q_INVOKABLE explicit QUmlContinuationObject(QUmlContinuation *qModelingObject);
+    Q_INVOKABLE explicit QUmlContinuationObject(QUmlContinuation *qModelingElement);
     virtual ~QUmlContinuationObject();
 
     // Owned attributes [Element]
@@ -145,6 +148,10 @@ public Q_SLOTS:
     // Slots for owned attributes [Continuation]
     void setSetting(bool setting);
     void unsetSetting();
+
+protected:
+    virtual void setGroupProperties();
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

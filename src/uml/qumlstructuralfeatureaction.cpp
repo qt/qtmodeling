@@ -73,15 +73,13 @@ QUmlStructuralFeatureAction::QUmlStructuralFeatureAction() :
     _object(0),
     _structuralFeature(0)
 {
-    setGroupProperties();
-    setPropertyData();
 }
 
 QUmlStructuralFeatureAction::~QUmlStructuralFeatureAction()
 {
 }
 
-QModelingObject *QUmlStructuralFeatureAction::clone() const
+QModelingElement *QUmlStructuralFeatureAction::clone() const
 {
     QUmlStructuralFeatureAction *c = new QUmlStructuralFeatureAction;
     foreach (QUmlComment *element, ownedComments())
@@ -142,9 +140,9 @@ void QUmlStructuralFeatureAction::setObject(QUmlInputPin *object)
         removeInput(_object);
 
         _object = object;
-        if (object && object->asQObject() && this->asQObject())
-            QObject::connect(object->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setObject()));
-        object->asQObject()->setParent(this->asQObject());
+        if (object && object->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(object->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setObject()));
+        object->asQModelingObject()->setParent(this->asQModelingObject());
 
         // Adjust subsetted properties
         if (object) {
@@ -169,65 +167,8 @@ void QUmlStructuralFeatureAction::setStructuralFeature(QUmlStructuralFeature *st
 
     if (_structuralFeature != structuralFeature) {
         _structuralFeature = structuralFeature;
-        if (structuralFeature && structuralFeature->asQObject() && this->asQObject())
-            QObject::connect(structuralFeature->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setStructuralFeature()));
+        if (structuralFeature && structuralFeature->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(structuralFeature->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setStructuralFeature()));
     }
-}
-
-void QUmlStructuralFeatureAction::setGroupProperties()
-{
-    const QMetaObject *metaObject = _qObject->metaObject();
-
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
-    _groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isLeaf"))));
-    _groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinitionContexts"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("activity"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inGroups"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inInterruptibleRegions"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inPartitions"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inStructuredNode"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("incomings"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("outgoings"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinedNodes"))));
-    _groupProperties.insert(QStringLiteral("QUmlExecutableNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("handlers"))));
-    _groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("context"))));
-    _groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inputs"))));
-    _groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isLocallyReentrant"))));
-    _groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("localPostconditions"))));
-    _groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("localPreconditions"))));
-    _groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("outputs"))));
-    _groupProperties.insert(QStringLiteral("QUmlStructuralFeatureAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("object"))));
-    _groupProperties.insert(QStringLiteral("QUmlStructuralFeatureAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("structuralFeature"))));
-}
-
-void QUmlStructuralFeatureAction::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStructuralFeatureAction")][QStringLiteral("object")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStructuralFeatureAction")][QStringLiteral("object")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlStructuralFeatureAction");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStructuralFeatureAction")][QStringLiteral("object")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStructuralFeatureAction")][QStringLiteral("object")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStructuralFeatureAction")][QStringLiteral("object")][QtModeling::DocumentationRole] = QStringLiteral("Gives the input pin from which the object whose structural feature is to be read or written is obtained.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStructuralFeatureAction")][QStringLiteral("object")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStructuralFeatureAction")][QStringLiteral("object")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Action-input");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStructuralFeatureAction")][QStringLiteral("object")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStructuralFeatureAction")][QStringLiteral("structuralFeature")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStructuralFeatureAction")][QStringLiteral("structuralFeature")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlStructuralFeatureAction");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStructuralFeatureAction")][QStringLiteral("structuralFeature")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStructuralFeatureAction")][QStringLiteral("structuralFeature")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStructuralFeatureAction")][QStringLiteral("structuralFeature")][QtModeling::DocumentationRole] = QStringLiteral("Structural feature to be read.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStructuralFeatureAction")][QStringLiteral("structuralFeature")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStructuralFeatureAction")][QStringLiteral("structuralFeature")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStructuralFeatureAction")][QStringLiteral("structuralFeature")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
 }
 

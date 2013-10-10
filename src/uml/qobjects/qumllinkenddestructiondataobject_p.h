@@ -43,7 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtCore/QObject>
+#include <QtModeling/QModelingObject>
 
 QT_BEGIN_HEADER
 
@@ -52,9 +52,12 @@ QT_BEGIN_NAMESPACE
 QT_MODULE(QtUml)
 
 class QUmlLinkEndDestructionData;
-class Q_UML_EXPORT QUmlLinkEndDestructionDataObject : public QObject
+class QModelingObjectPrivate;
+class Q_UML_EXPORT QUmlLinkEndDestructionDataObject : public QModelingObject
 {
     Q_OBJECT
+    Q_DISABLE_COPY(QUmlLinkEndDestructionDataObject)
+    Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [Element]
     Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
@@ -71,7 +74,7 @@ class Q_UML_EXPORT QUmlLinkEndDestructionDataObject : public QObject
     Q_PROPERTY(bool isDestroyDuplicates READ isDestroyDuplicates WRITE setDestroyDuplicates RESET unsetDestroyDuplicates)
 
 public:
-    Q_INVOKABLE explicit QUmlLinkEndDestructionDataObject(QUmlLinkEndDestructionData *qModelingObject);
+    Q_INVOKABLE explicit QUmlLinkEndDestructionDataObject(QUmlLinkEndDestructionData *qModelingElement);
     virtual ~QUmlLinkEndDestructionDataObject();
 
     // Owned attributes [Element]
@@ -111,6 +114,10 @@ public Q_SLOTS:
     void setDestroyAt(QObject *destroyAt = 0);
     void setDestroyDuplicates(bool isDestroyDuplicates);
     void unsetDestroyDuplicates();
+
+protected:
+    virtual void setGroupProperties();
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

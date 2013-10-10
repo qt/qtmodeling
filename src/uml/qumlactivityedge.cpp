@@ -73,15 +73,13 @@ QUmlActivityEdge::QUmlActivityEdge() :
     _target(0),
     _weight(0)
 {
-    setGroupProperties();
-    setPropertyData();
 }
 
 QUmlActivityEdge::~QUmlActivityEdge()
 {
 }
 
-QModelingObject *QUmlActivityEdge::clone() const
+QModelingElement *QUmlActivityEdge::clone() const
 {
     QUmlActivityEdge *c = new QUmlActivityEdge;
     foreach (QUmlComment *element, ownedComments())
@@ -134,8 +132,8 @@ void QUmlActivityEdge::setActivity(QUmlActivity *activity)
         // Adjust subsetted properties
 
         _activity = activity;
-        if (activity && activity->asQObject() && this->asQObject())
-            QObject::connect(activity->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setActivity()));
+        if (activity && activity->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(activity->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setActivity()));
 
         // Adjust subsetted properties
         setOwner(activity);
@@ -161,9 +159,9 @@ void QUmlActivityEdge::setGuard(QUmlValueSpecification *guard)
         removeOwnedElement(_guard);
 
         _guard = guard;
-        if (guard && guard->asQObject() && this->asQObject())
-            QObject::connect(guard->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setGuard()));
-        guard->asQObject()->setParent(this->asQObject());
+        if (guard && guard->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(guard->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setGuard()));
+        guard->asQModelingObject()->setParent(this->asQModelingObject());
 
         // Adjust subsetted properties
         if (guard) {
@@ -188,8 +186,8 @@ void QUmlActivityEdge::addInGroup(QUmlActivityGroup *inGroup)
 
     if (!_inGroups.contains(inGroup)) {
         _inGroups.insert(inGroup);
-        if (inGroup && inGroup->asQObject() && this->asQObject())
-            QObject::connect(inGroup->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeInGroup(QObject *)));
+        if (inGroup && inGroup->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(inGroup->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeInGroup(QObject *)));
 
         // Adjust opposite properties
         if (inGroup) {
@@ -228,8 +226,8 @@ void QUmlActivityEdge::addInPartition(QUmlActivityPartition *inPartition)
 
     if (!_inPartitions.contains(inPartition)) {
         _inPartitions.insert(inPartition);
-        if (inPartition && inPartition->asQObject() && this->asQObject())
-            QObject::connect(inPartition->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeInPartition(QObject *)));
+        if (inPartition && inPartition->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(inPartition->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeInPartition(QObject *)));
 
         // Adjust subsetted properties
         addInGroup(inPartition);
@@ -277,8 +275,8 @@ void QUmlActivityEdge::setInStructuredNode(QUmlStructuredActivityNode *inStructu
         removeInGroup(_inStructuredNode);
 
         _inStructuredNode = inStructuredNode;
-        if (inStructuredNode && inStructuredNode->asQObject() && this->asQObject())
-            QObject::connect(inStructuredNode->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setInStructuredNode()));
+        if (inStructuredNode && inStructuredNode->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(inStructuredNode->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setInStructuredNode()));
 
         // Adjust subsetted properties
         if (inStructuredNode) {
@@ -304,8 +302,8 @@ void QUmlActivityEdge::setInterrupts(QUmlInterruptibleActivityRegion *interrupts
 
     if (_interrupts != interrupts) {
         _interrupts = interrupts;
-        if (interrupts && interrupts->asQObject() && this->asQObject())
-            QObject::connect(interrupts->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setInterrupts()));
+        if (interrupts && interrupts->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(interrupts->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setInterrupts()));
     }
 }
 
@@ -325,8 +323,8 @@ void QUmlActivityEdge::addRedefinedEdge(QUmlActivityEdge *redefinedEdge)
 
     if (!_redefinedEdges.contains(redefinedEdge)) {
         _redefinedEdges.insert(redefinedEdge);
-        if (redefinedEdge && redefinedEdge->asQObject() && this->asQObject())
-            QObject::connect(redefinedEdge->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeRedefinedEdge(QObject *)));
+        if (redefinedEdge && redefinedEdge->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(redefinedEdge->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeRedefinedEdge(QObject *)));
 
         // Adjust subsetted properties
         addRedefinedElement(redefinedEdge);
@@ -361,8 +359,8 @@ void QUmlActivityEdge::setSource(QUmlActivityNode *source)
 
     if (_source != source) {
         _source = source;
-        if (source && source->asQObject() && this->asQObject())
-            QObject::connect(source->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setSource()));
+        if (source && source->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(source->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setSource()));
     }
 }
 
@@ -382,8 +380,8 @@ void QUmlActivityEdge::setTarget(QUmlActivityNode *target)
 
     if (_target != target) {
         _target = target;
-        if (target && target->asQObject() && this->asQObject())
-            QObject::connect(target->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setTarget()));
+        if (target && target->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(target->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setTarget()));
     }
 }
 
@@ -406,136 +404,14 @@ void QUmlActivityEdge::setWeight(QUmlValueSpecification *weight)
         removeOwnedElement(_weight);
 
         _weight = weight;
-        if (weight && weight->asQObject() && this->asQObject())
-            QObject::connect(weight->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setWeight()));
-        weight->asQObject()->setParent(this->asQObject());
+        if (weight && weight->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(weight->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setWeight()));
+        weight->asQModelingObject()->setParent(this->asQModelingObject());
 
         // Adjust subsetted properties
         if (weight) {
             addOwnedElement(weight);
         }
     }
-}
-
-void QUmlActivityEdge::setGroupProperties()
-{
-    const QMetaObject *metaObject = _qObject->metaObject();
-
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
-    _groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isLeaf"))));
-    _groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinitionContexts"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityEdge"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("activity"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityEdge"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("guard"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityEdge"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inGroups"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityEdge"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inPartitions"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityEdge"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inStructuredNode"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityEdge"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("interrupts"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityEdge"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinedEdges"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityEdge"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("source"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityEdge"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("target"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityEdge"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("weight"))));
-}
-
-void QUmlActivityEdge::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityEdge")][QStringLiteral("activity")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityEdge")][QStringLiteral("activity")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlActivityEdge");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityEdge")][QStringLiteral("activity")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityEdge")][QStringLiteral("activity")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityEdge")][QStringLiteral("activity")][QtModeling::DocumentationRole] = QStringLiteral("Activity containing the edge.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityEdge")][QStringLiteral("activity")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityEdge")][QStringLiteral("activity")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-owner");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityEdge")][QStringLiteral("activity")][QtModeling::OppositeEndRole] = QStringLiteral("Activity-edge");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityEdge")][QStringLiteral("guard")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityEdge")][QStringLiteral("guard")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlActivityEdge");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityEdge")][QStringLiteral("guard")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityEdge")][QStringLiteral("guard")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityEdge")][QStringLiteral("guard")][QtModeling::DocumentationRole] = QStringLiteral("Specification evaluated at runtime to determine if the edge can be traversed.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityEdge")][QStringLiteral("guard")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityEdge")][QStringLiteral("guard")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityEdge")][QStringLiteral("guard")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityEdge")][QStringLiteral("inGroups")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityEdge")][QStringLiteral("inGroups")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlActivityEdge");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityEdge")][QStringLiteral("inGroups")][QtModeling::IsDerivedRole] = true;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityEdge")][QStringLiteral("inGroups")][QtModeling::IsDerivedUnionRole] = true;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityEdge")][QStringLiteral("inGroups")][QtModeling::DocumentationRole] = QStringLiteral("Groups containing the edge.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityEdge")][QStringLiteral("inGroups")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityEdge")][QStringLiteral("inGroups")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityEdge")][QStringLiteral("inGroups")][QtModeling::OppositeEndRole] = QStringLiteral("ActivityGroup-containedEdge");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityEdge")][QStringLiteral("inPartitions")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityEdge")][QStringLiteral("inPartitions")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlActivityEdge");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityEdge")][QStringLiteral("inPartitions")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityEdge")][QStringLiteral("inPartitions")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityEdge")][QStringLiteral("inPartitions")][QtModeling::DocumentationRole] = QStringLiteral("Partitions containing the edge.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityEdge")][QStringLiteral("inPartitions")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityEdge")][QStringLiteral("inPartitions")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("ActivityEdge-inGroup");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityEdge")][QStringLiteral("inPartitions")][QtModeling::OppositeEndRole] = QStringLiteral("ActivityPartition-edge");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityEdge")][QStringLiteral("inStructuredNode")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityEdge")][QStringLiteral("inStructuredNode")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlActivityEdge");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityEdge")][QStringLiteral("inStructuredNode")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityEdge")][QStringLiteral("inStructuredNode")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityEdge")][QStringLiteral("inStructuredNode")][QtModeling::DocumentationRole] = QStringLiteral("Structured activity node containing the edge.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityEdge")][QStringLiteral("inStructuredNode")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityEdge")][QStringLiteral("inStructuredNode")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("ActivityEdge-inGroup Element-owner");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityEdge")][QStringLiteral("inStructuredNode")][QtModeling::OppositeEndRole] = QStringLiteral("StructuredActivityNode-edge");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityEdge")][QStringLiteral("interrupts")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityEdge")][QStringLiteral("interrupts")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlActivityEdge");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityEdge")][QStringLiteral("interrupts")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityEdge")][QStringLiteral("interrupts")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityEdge")][QStringLiteral("interrupts")][QtModeling::DocumentationRole] = QStringLiteral("Region that the edge can interrupt.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityEdge")][QStringLiteral("interrupts")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityEdge")][QStringLiteral("interrupts")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityEdge")][QStringLiteral("interrupts")][QtModeling::OppositeEndRole] = QStringLiteral("InterruptibleActivityRegion-interruptingEdge");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityEdge")][QStringLiteral("redefinedEdges")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityEdge")][QStringLiteral("redefinedEdges")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlActivityEdge");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityEdge")][QStringLiteral("redefinedEdges")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityEdge")][QStringLiteral("redefinedEdges")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityEdge")][QStringLiteral("redefinedEdges")][QtModeling::DocumentationRole] = QStringLiteral("Inherited edges replaced by this edge in a specialization of the activity.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityEdge")][QStringLiteral("redefinedEdges")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityEdge")][QStringLiteral("redefinedEdges")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("RedefinableElement-redefinedElement");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityEdge")][QStringLiteral("redefinedEdges")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityEdge")][QStringLiteral("source")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityEdge")][QStringLiteral("source")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlActivityEdge");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityEdge")][QStringLiteral("source")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityEdge")][QStringLiteral("source")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityEdge")][QStringLiteral("source")][QtModeling::DocumentationRole] = QStringLiteral("Node from which tokens are taken when they traverse the edge.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityEdge")][QStringLiteral("source")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityEdge")][QStringLiteral("source")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityEdge")][QStringLiteral("source")][QtModeling::OppositeEndRole] = QStringLiteral("ActivityNode-outgoing");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityEdge")][QStringLiteral("target")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityEdge")][QStringLiteral("target")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlActivityEdge");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityEdge")][QStringLiteral("target")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityEdge")][QStringLiteral("target")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityEdge")][QStringLiteral("target")][QtModeling::DocumentationRole] = QStringLiteral("Node to which tokens are put when they traverse the edge.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityEdge")][QStringLiteral("target")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityEdge")][QStringLiteral("target")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityEdge")][QStringLiteral("target")][QtModeling::OppositeEndRole] = QStringLiteral("ActivityNode-incoming");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityEdge")][QStringLiteral("weight")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityEdge")][QStringLiteral("weight")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlActivityEdge");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityEdge")][QStringLiteral("weight")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityEdge")][QStringLiteral("weight")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityEdge")][QStringLiteral("weight")][QtModeling::DocumentationRole] = QStringLiteral("The minimum number of tokens that must traverse the edge at the same time.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityEdge")][QStringLiteral("weight")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityEdge")][QStringLiteral("weight")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityEdge")][QStringLiteral("weight")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
 }
 

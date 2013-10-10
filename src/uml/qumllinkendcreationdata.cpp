@@ -55,27 +55,25 @@
 
     \brief A link end creation data is not an action. It is an element that identifies links. It identifies one end of a link to be created by a create link action.
  */
-QUmlLinkEndCreationData::QUmlLinkEndCreationData(bool createQObject) :
+QUmlLinkEndCreationData::QUmlLinkEndCreationData(bool createQModelingObject) :
     QUmlLinkEndData(false),
     _insertAt(0),
     _isReplaceAll(false)
 {
-    if (createQObject)
-        _qObject = new QUmlLinkEndCreationDataObject(this);
-    setGroupProperties();
-    setPropertyData();
+    if (createQModelingObject)
+        _qModelingObject = qobject_cast<QModelingObject *>(new QUmlLinkEndCreationDataObject(this));
 }
 
 QUmlLinkEndCreationData::~QUmlLinkEndCreationData()
 {
-    if (!deletingFromQObject) {
-        if (_qObject)
-            _qObject->setProperty("deletingFromModelingObject", true);
-        delete _qObject;
+    if (!deletingFromQModelingObject) {
+        if (_qModelingObject)
+            _qModelingObject->setProperty("deletingFromModelingObject", true);
+        delete _qModelingObject;
     }
 }
 
-QModelingObject *QUmlLinkEndCreationData::clone() const
+QModelingElement *QUmlLinkEndCreationData::clone() const
 {
     QUmlLinkEndCreationData *c = new QUmlLinkEndCreationData;
     foreach (QUmlComment *element, ownedComments())
@@ -110,8 +108,8 @@ void QUmlLinkEndCreationData::setInsertAt(QUmlInputPin *insertAt)
 
     if (_insertAt != insertAt) {
         _insertAt = insertAt;
-        if (insertAt && insertAt->asQObject() && this->asQObject())
-            QObject::connect(insertAt->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setInsertAt()));
+        if (insertAt && insertAt->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(insertAt->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setInsertAt()));
     }
 }
 
@@ -131,43 +129,7 @@ void QUmlLinkEndCreationData::setReplaceAll(bool isReplaceAll)
 
     if (_isReplaceAll != isReplaceAll) {
         _isReplaceAll = isReplaceAll;
-        _modifiedResettableProperties << QStringLiteral("isReplaceAll");
+        _qModelingObject->modifiedResettableProperties() << QStringLiteral("isReplaceAll");
     }
-}
-
-void QUmlLinkEndCreationData::setGroupProperties()
-{
-    const QMetaObject *metaObject = _qObject->metaObject();
-
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
-    _groupProperties.insert(QStringLiteral("QUmlLinkEndData"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("end"))));
-    _groupProperties.insert(QStringLiteral("QUmlLinkEndData"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiers"))));
-    _groupProperties.insert(QStringLiteral("QUmlLinkEndData"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("value"))));
-    _groupProperties.insert(QStringLiteral("QUmlLinkEndCreationData"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("insertAt"))));
-    _groupProperties.insert(QStringLiteral("QUmlLinkEndCreationData"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isReplaceAll"))));
-}
-
-void QUmlLinkEndCreationData::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLinkEndCreationData")][QStringLiteral("insertAt")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLinkEndCreationData")][QStringLiteral("insertAt")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlLinkEndCreationData");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLinkEndCreationData")][QStringLiteral("insertAt")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLinkEndCreationData")][QStringLiteral("insertAt")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLinkEndCreationData")][QStringLiteral("insertAt")][QtModeling::DocumentationRole] = QStringLiteral("Specifies where the new link should be inserted for ordered association ends, or where an existing link should be moved to. The type of the input is UnlimitedNatural, but the input cannot be zero. This pin is omitted for association ends that are not ordered.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLinkEndCreationData")][QStringLiteral("insertAt")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLinkEndCreationData")][QStringLiteral("insertAt")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLinkEndCreationData")][QStringLiteral("insertAt")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLinkEndCreationData")][QStringLiteral("isReplaceAll")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLinkEndCreationData")][QStringLiteral("isReplaceAll")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlLinkEndCreationData");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLinkEndCreationData")][QStringLiteral("isReplaceAll")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLinkEndCreationData")][QStringLiteral("isReplaceAll")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLinkEndCreationData")][QStringLiteral("isReplaceAll")][QtModeling::DocumentationRole] = QStringLiteral("Specifies whether the existing links emanating from the object on this end should be destroyed before creating a new link.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLinkEndCreationData")][QStringLiteral("isReplaceAll")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLinkEndCreationData")][QStringLiteral("isReplaceAll")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLinkEndCreationData")][QStringLiteral("isReplaceAll")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
 }
 

@@ -45,7 +45,6 @@
 
 #include <QtUml/QUmlStructuredClassifier>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -59,7 +58,7 @@ class Q_UML_EXPORT QUmlEncapsulatedClassifier : public QUmlStructuredClassifier
 public:
     virtual ~QUmlEncapsulatedClassifier();
 
-    Q_DECL_HIDDEN QModelingObject *clone() const;
+    Q_DECL_HIDDEN virtual QModelingElement *clone() const;
 
     // Owned attributes
     const QSet<QUmlPort *> ownedPorts() const;
@@ -69,9 +68,6 @@ public:
 protected:
     explicit QUmlEncapsulatedClassifier();
 
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

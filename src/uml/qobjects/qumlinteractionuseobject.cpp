@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlinteractionuseobject_p.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlInteractionUse>
 #include <QtUml/QUmlComment>
@@ -58,16 +59,18 @@
 
 QT_BEGIN_NAMESPACE
 
-QUmlInteractionUseObject::QUmlInteractionUseObject(QUmlInteractionUse *qModelingObject)
+QUmlInteractionUseObject::QUmlInteractionUseObject(QUmlInteractionUse *qModelingElement)
 {
-    setProperty("modelingObject", QVariant::fromValue(static_cast<QModelingObject *>(qModelingObject)));
+    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(qModelingElement)));
+    setGroupProperties();
+    setPropertyData();
 }
 
 QUmlInteractionUseObject::~QUmlInteractionUseObject()
 {
     if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingobjectproperty_cast<QUmlInteractionUse *>(this)->deletingFromQObject = true;
-        delete qmodelingobjectproperty_cast<QUmlComment *>(this);
+        qmodelingelementproperty_cast<QUmlInteractionUse *>(this)->deletingFromQModelingObject = true;
+        delete qmodelingelementproperty_cast<QUmlComment *>(this);
     }
 }
 
@@ -76,25 +79,25 @@ QUmlInteractionUseObject::~QUmlInteractionUseObject()
 const QSet<QObject *> QUmlInteractionUseObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlInteractionUse *>(this)->ownedComments())
-        set.insert(element->asQObject());
+    foreach (QUmlComment *element, qmodelingelementproperty_cast<QUmlInteractionUse *>(this)->ownedComments())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlInteractionUseObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlInteractionUse *>(this)->ownedElements())
-        set.insert(element->asQObject());
+    foreach (QUmlElement *element, qmodelingelementproperty_cast<QUmlInteractionUse *>(this)->ownedElements())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 QObject *QUmlInteractionUseObject::owner() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlInteractionUse *>(this)->owner())
+    if (!qmodelingelementproperty_cast<QUmlInteractionUse *>(this)->owner())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlInteractionUse *>(this)->owner()->asQObject();
+        return qmodelingelementproperty_cast<QUmlInteractionUse *>(this)->owner()->asQModelingObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -102,40 +105,40 @@ QObject *QUmlInteractionUseObject::owner() const
 const QSet<QObject *> QUmlInteractionUseObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlInteractionUse *>(this)->clientDependencies())
-        set.insert(element->asQObject());
+    foreach (QUmlDependency *element, qmodelingelementproperty_cast<QUmlInteractionUse *>(this)->clientDependencies())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 QString QUmlInteractionUseObject::name() const
 {
-    return qmodelingobjectproperty_cast<QUmlInteractionUse *>(this)->name();
+    return qmodelingelementproperty_cast<QUmlInteractionUse *>(this)->name();
 }
 
 QObject *QUmlInteractionUseObject::nameExpression() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlInteractionUse *>(this)->nameExpression())
+    if (!qmodelingelementproperty_cast<QUmlInteractionUse *>(this)->nameExpression())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlInteractionUse *>(this)->nameExpression()->asQObject();
+        return qmodelingelementproperty_cast<QUmlInteractionUse *>(this)->nameExpression()->asQModelingObject();
 }
 
 QObject *QUmlInteractionUseObject::namespace_() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlInteractionUse *>(this)->namespace_())
+    if (!qmodelingelementproperty_cast<QUmlInteractionUse *>(this)->namespace_())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlInteractionUse *>(this)->namespace_()->asQObject();
+        return qmodelingelementproperty_cast<QUmlInteractionUse *>(this)->namespace_()->asQModelingObject();
 }
 
 QString QUmlInteractionUseObject::qualifiedName() const
 {
-    return qmodelingobjectproperty_cast<QUmlInteractionUse *>(this)->qualifiedName();
+    return qmodelingelementproperty_cast<QUmlInteractionUse *>(this)->qualifiedName();
 }
 
 QtUml::VisibilityKind QUmlInteractionUseObject::visibility() const
 {
-    return qmodelingobjectproperty_cast<QUmlInteractionUse *>(this)->visibility();
+    return qmodelingelementproperty_cast<QUmlInteractionUse *>(this)->visibility();
 }
 
 // OWNED ATTRIBUTES [InteractionFragment]
@@ -143,32 +146,32 @@ QtUml::VisibilityKind QUmlInteractionUseObject::visibility() const
 const QSet<QObject *> QUmlInteractionUseObject::covered() const
 {
     QSet<QObject *> set;
-    foreach (QUmlLifeline *element, qmodelingobjectproperty_cast<QUmlInteractionUse *>(this)->covered())
-        set.insert(element->asQObject());
+    foreach (QUmlLifeline *element, qmodelingelementproperty_cast<QUmlInteractionUse *>(this)->covered())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 QObject *QUmlInteractionUseObject::enclosingInteraction() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlInteractionUse *>(this)->enclosingInteraction())
+    if (!qmodelingelementproperty_cast<QUmlInteractionUse *>(this)->enclosingInteraction())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlInteractionUse *>(this)->enclosingInteraction()->asQObject();
+        return qmodelingelementproperty_cast<QUmlInteractionUse *>(this)->enclosingInteraction()->asQModelingObject();
 }
 
 QObject *QUmlInteractionUseObject::enclosingOperand() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlInteractionUse *>(this)->enclosingOperand())
+    if (!qmodelingelementproperty_cast<QUmlInteractionUse *>(this)->enclosingOperand())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlInteractionUse *>(this)->enclosingOperand()->asQObject();
+        return qmodelingelementproperty_cast<QUmlInteractionUse *>(this)->enclosingOperand()->asQModelingObject();
 }
 
 const QSet<QObject *> QUmlInteractionUseObject::generalOrderings() const
 {
     QSet<QObject *> set;
-    foreach (QUmlGeneralOrdering *element, qmodelingobjectproperty_cast<QUmlInteractionUse *>(this)->generalOrderings())
-        set.insert(element->asQObject());
+    foreach (QUmlGeneralOrdering *element, qmodelingelementproperty_cast<QUmlInteractionUse *>(this)->generalOrderings())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
@@ -177,41 +180,41 @@ const QSet<QObject *> QUmlInteractionUseObject::generalOrderings() const
 const QSet<QObject *> QUmlInteractionUseObject::actualGates() const
 {
     QSet<QObject *> set;
-    foreach (QUmlGate *element, qmodelingobjectproperty_cast<QUmlInteractionUse *>(this)->actualGates())
-        set.insert(element->asQObject());
+    foreach (QUmlGate *element, qmodelingelementproperty_cast<QUmlInteractionUse *>(this)->actualGates())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QList<QObject *> QUmlInteractionUseObject::arguments() const
 {
     QList<QObject *> list;
-    foreach (QUmlValueSpecification *element, qmodelingobjectproperty_cast<QUmlInteractionUse *>(this)->arguments())
-        list.append(element->asQObject());
+    foreach (QUmlValueSpecification *element, qmodelingelementproperty_cast<QUmlInteractionUse *>(this)->arguments())
+        list.append(element->asQModelingObject());
     return list;
 }
 
 QObject *QUmlInteractionUseObject::refersTo() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlInteractionUse *>(this)->refersTo())
+    if (!qmodelingelementproperty_cast<QUmlInteractionUse *>(this)->refersTo())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlInteractionUse *>(this)->refersTo()->asQObject();
+        return qmodelingelementproperty_cast<QUmlInteractionUse *>(this)->refersTo()->asQModelingObject();
 }
 
 QObject *QUmlInteractionUseObject::returnValue() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlInteractionUse *>(this)->returnValue())
+    if (!qmodelingelementproperty_cast<QUmlInteractionUse *>(this)->returnValue())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlInteractionUse *>(this)->returnValue()->asQObject();
+        return qmodelingelementproperty_cast<QUmlInteractionUse *>(this)->returnValue()->asQModelingObject();
 }
 
 QObject *QUmlInteractionUseObject::returnValueRecipient() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlInteractionUse *>(this)->returnValueRecipient())
+    if (!qmodelingelementproperty_cast<QUmlInteractionUse *>(this)->returnValueRecipient())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlInteractionUse *>(this)->returnValueRecipient()->asQObject();
+        return qmodelingelementproperty_cast<QUmlInteractionUse *>(this)->returnValueRecipient()->asQModelingObject();
 }
 
 // OPERATIONS [Element]
@@ -219,14 +222,14 @@ QObject *QUmlInteractionUseObject::returnValueRecipient() const
 QSet<QObject *> QUmlInteractionUseObject::allOwnedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlInteractionUse *>(this)->allOwnedElements())
-        set.insert(element->asQObject());
+    foreach (QUmlElement *element, qmodelingelementproperty_cast<QUmlInteractionUse *>(this)->allOwnedElements())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 bool QUmlInteractionUseObject::mustBeOwned() const
 {
-    return qmodelingobjectproperty_cast<QUmlInteractionUse *>(this)->mustBeOwned();
+    return qmodelingelementproperty_cast<QUmlInteractionUse *>(this)->mustBeOwned();
 }
 
 // OPERATIONS [NamedElement]
@@ -234,160 +237,245 @@ bool QUmlInteractionUseObject::mustBeOwned() const
 QList<QObject *> QUmlInteractionUseObject::allNamespaces() const
 {
     QList<QObject *> set;
-    foreach (QUmlNamespace *element, qmodelingobjectproperty_cast<QUmlInteractionUse *>(this)->allNamespaces())
-        set.append(element->asQObject());
+    foreach (QUmlNamespace *element, qmodelingelementproperty_cast<QUmlInteractionUse *>(this)->allNamespaces())
+        set.append(element->asQModelingObject());
     return set;
 }
 
 QSet<QObject *> QUmlInteractionUseObject::allOwningPackages() const
 {
     QSet<QObject *> set;
-    foreach (QUmlPackage *element, qmodelingobjectproperty_cast<QUmlInteractionUse *>(this)->allOwningPackages())
-        set.insert(element->asQObject());
+    foreach (QUmlPackage *element, qmodelingelementproperty_cast<QUmlInteractionUse *>(this)->allOwningPackages())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 bool QUmlInteractionUseObject::isDistinguishableFrom(QObject *n, QObject *ns) const
 {
-    return qmodelingobjectproperty_cast<QUmlInteractionUse *>(this)->isDistinguishableFrom(qmodelingobjectproperty_cast<QUmlNamedElement *>(n), qmodelingobjectproperty_cast<QUmlNamespace *>(ns));
+    return qmodelingelementproperty_cast<QUmlInteractionUse *>(this)->isDistinguishableFrom(qmodelingelementproperty_cast<QUmlNamedElement *>(n), qmodelingelementproperty_cast<QUmlNamespace *>(ns));
 }
 
 QString QUmlInteractionUseObject::separator() const
 {
-    return qmodelingobjectproperty_cast<QUmlInteractionUse *>(this)->separator();
+    return qmodelingelementproperty_cast<QUmlInteractionUse *>(this)->separator();
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Element]
 
 void QUmlInteractionUseObject::addOwnedComment(QObject *ownedComment)
 {
-    qmodelingobjectproperty_cast<QUmlInteractionUse *>(this)->addOwnedComment(qmodelingobjectproperty_cast<QUmlComment *>(ownedComment));
+    qmodelingelementproperty_cast<QUmlInteractionUse *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
 }
 
 void QUmlInteractionUseObject::removeOwnedComment(QObject *ownedComment)
 {
-    qmodelingobjectproperty_cast<QUmlInteractionUse *>(this)->removeOwnedComment(qmodelingobjectproperty_cast<QUmlComment *>(ownedComment));
+    qmodelingelementproperty_cast<QUmlInteractionUse *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
 }
 
 void QUmlInteractionUseObject::addOwnedElement(QObject *ownedElement)
 {
-    qmodelingobjectproperty_cast<QUmlInteractionUse *>(this)->addOwnedElement(qmodelingobjectproperty_cast<QUmlElement *>(ownedElement));
+    qmodelingelementproperty_cast<QUmlInteractionUse *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
 }
 
 void QUmlInteractionUseObject::removeOwnedElement(QObject *ownedElement)
 {
-    qmodelingobjectproperty_cast<QUmlInteractionUse *>(this)->removeOwnedElement(qmodelingobjectproperty_cast<QUmlElement *>(ownedElement));
+    qmodelingelementproperty_cast<QUmlInteractionUse *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
 }
 
 void QUmlInteractionUseObject::setOwner(QObject *owner)
 {
-    qmodelingobjectproperty_cast<QUmlInteractionUse *>(this)->setOwner(qmodelingobjectproperty_cast<QUmlElement *>(owner));
+    qmodelingelementproperty_cast<QUmlInteractionUse *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [NamedElement]
 
 void QUmlInteractionUseObject::addClientDependency(QObject *clientDependency)
 {
-    qmodelingobjectproperty_cast<QUmlInteractionUse *>(this)->addClientDependency(qmodelingobjectproperty_cast<QUmlDependency *>(clientDependency));
+    qmodelingelementproperty_cast<QUmlInteractionUse *>(this)->addClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
 }
 
 void QUmlInteractionUseObject::removeClientDependency(QObject *clientDependency)
 {
-    qmodelingobjectproperty_cast<QUmlInteractionUse *>(this)->removeClientDependency(qmodelingobjectproperty_cast<QUmlDependency *>(clientDependency));
+    qmodelingelementproperty_cast<QUmlInteractionUse *>(this)->removeClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
 }
 
 void QUmlInteractionUseObject::setName(QString name)
 {
-    qmodelingobjectproperty_cast<QUmlInteractionUse *>(this)->setName(name);
+    qmodelingelementproperty_cast<QUmlInteractionUse *>(this)->setName(name);
 }
 
 void QUmlInteractionUseObject::setNameExpression(QObject *nameExpression)
 {
-    qmodelingobjectproperty_cast<QUmlInteractionUse *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
+    qmodelingelementproperty_cast<QUmlInteractionUse *>(this)->setNameExpression(qmodelingelementproperty_cast<QUmlStringExpression *>(nameExpression));
 }
 
 void QUmlInteractionUseObject::setNamespace(QObject *namespace_)
 {
-    qmodelingobjectproperty_cast<QUmlInteractionUse *>(this)->setNamespace(qmodelingobjectproperty_cast<QUmlNamespace *>(namespace_));
+    qmodelingelementproperty_cast<QUmlInteractionUse *>(this)->setNamespace(qmodelingelementproperty_cast<QUmlNamespace *>(namespace_));
 }
 
 void QUmlInteractionUseObject::setQualifiedName(QString qualifiedName)
 {
-    qmodelingobjectproperty_cast<QUmlInteractionUse *>(this)->setQualifiedName(qualifiedName);
+    qmodelingelementproperty_cast<QUmlInteractionUse *>(this)->setQualifiedName(qualifiedName);
 }
 
 void QUmlInteractionUseObject::setVisibility(QtUml::VisibilityKind visibility)
 {
-    qmodelingobjectproperty_cast<QUmlInteractionUse *>(this)->setVisibility(visibility);
+    qmodelingelementproperty_cast<QUmlInteractionUse *>(this)->setVisibility(visibility);
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [InteractionFragment]
 
 void QUmlInteractionUseObject::addCovered(QObject *covered)
 {
-    qmodelingobjectproperty_cast<QUmlInteractionUse *>(this)->addCovered(qmodelingobjectproperty_cast<QUmlLifeline *>(covered));
+    qmodelingelementproperty_cast<QUmlInteractionUse *>(this)->addCovered(qmodelingelementproperty_cast<QUmlLifeline *>(covered));
 }
 
 void QUmlInteractionUseObject::removeCovered(QObject *covered)
 {
-    qmodelingobjectproperty_cast<QUmlInteractionUse *>(this)->removeCovered(qmodelingobjectproperty_cast<QUmlLifeline *>(covered));
+    qmodelingelementproperty_cast<QUmlInteractionUse *>(this)->removeCovered(qmodelingelementproperty_cast<QUmlLifeline *>(covered));
 }
 
 void QUmlInteractionUseObject::setEnclosingInteraction(QObject *enclosingInteraction)
 {
-    qmodelingobjectproperty_cast<QUmlInteractionUse *>(this)->setEnclosingInteraction(qmodelingobjectproperty_cast<QUmlInteraction *>(enclosingInteraction));
+    qmodelingelementproperty_cast<QUmlInteractionUse *>(this)->setEnclosingInteraction(qmodelingelementproperty_cast<QUmlInteraction *>(enclosingInteraction));
 }
 
 void QUmlInteractionUseObject::setEnclosingOperand(QObject *enclosingOperand)
 {
-    qmodelingobjectproperty_cast<QUmlInteractionUse *>(this)->setEnclosingOperand(qmodelingobjectproperty_cast<QUmlInteractionOperand *>(enclosingOperand));
+    qmodelingelementproperty_cast<QUmlInteractionUse *>(this)->setEnclosingOperand(qmodelingelementproperty_cast<QUmlInteractionOperand *>(enclosingOperand));
 }
 
 void QUmlInteractionUseObject::addGeneralOrdering(QObject *generalOrdering)
 {
-    qmodelingobjectproperty_cast<QUmlInteractionUse *>(this)->addGeneralOrdering(qmodelingobjectproperty_cast<QUmlGeneralOrdering *>(generalOrdering));
+    qmodelingelementproperty_cast<QUmlInteractionUse *>(this)->addGeneralOrdering(qmodelingelementproperty_cast<QUmlGeneralOrdering *>(generalOrdering));
 }
 
 void QUmlInteractionUseObject::removeGeneralOrdering(QObject *generalOrdering)
 {
-    qmodelingobjectproperty_cast<QUmlInteractionUse *>(this)->removeGeneralOrdering(qmodelingobjectproperty_cast<QUmlGeneralOrdering *>(generalOrdering));
+    qmodelingelementproperty_cast<QUmlInteractionUse *>(this)->removeGeneralOrdering(qmodelingelementproperty_cast<QUmlGeneralOrdering *>(generalOrdering));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [InteractionUse]
 
 void QUmlInteractionUseObject::addActualGate(QObject *actualGate)
 {
-    qmodelingobjectproperty_cast<QUmlInteractionUse *>(this)->addActualGate(qmodelingobjectproperty_cast<QUmlGate *>(actualGate));
+    qmodelingelementproperty_cast<QUmlInteractionUse *>(this)->addActualGate(qmodelingelementproperty_cast<QUmlGate *>(actualGate));
 }
 
 void QUmlInteractionUseObject::removeActualGate(QObject *actualGate)
 {
-    qmodelingobjectproperty_cast<QUmlInteractionUse *>(this)->removeActualGate(qmodelingobjectproperty_cast<QUmlGate *>(actualGate));
+    qmodelingelementproperty_cast<QUmlInteractionUse *>(this)->removeActualGate(qmodelingelementproperty_cast<QUmlGate *>(actualGate));
 }
 
 void QUmlInteractionUseObject::addArgument(QObject *argument)
 {
-    qmodelingobjectproperty_cast<QUmlInteractionUse *>(this)->addArgument(qmodelingobjectproperty_cast<QUmlValueSpecification *>(argument));
+    qmodelingelementproperty_cast<QUmlInteractionUse *>(this)->addArgument(qmodelingelementproperty_cast<QUmlValueSpecification *>(argument));
 }
 
 void QUmlInteractionUseObject::removeArgument(QObject *argument)
 {
-    qmodelingobjectproperty_cast<QUmlInteractionUse *>(this)->removeArgument(qmodelingobjectproperty_cast<QUmlValueSpecification *>(argument));
+    qmodelingelementproperty_cast<QUmlInteractionUse *>(this)->removeArgument(qmodelingelementproperty_cast<QUmlValueSpecification *>(argument));
 }
 
 void QUmlInteractionUseObject::setRefersTo(QObject *refersTo)
 {
-    qmodelingobjectproperty_cast<QUmlInteractionUse *>(this)->setRefersTo(qmodelingobjectproperty_cast<QUmlInteraction *>(refersTo));
+    qmodelingelementproperty_cast<QUmlInteractionUse *>(this)->setRefersTo(qmodelingelementproperty_cast<QUmlInteraction *>(refersTo));
 }
 
 void QUmlInteractionUseObject::setReturnValue(QObject *returnValue)
 {
-    qmodelingobjectproperty_cast<QUmlInteractionUse *>(this)->setReturnValue(qmodelingobjectproperty_cast<QUmlValueSpecification *>(returnValue));
+    qmodelingelementproperty_cast<QUmlInteractionUse *>(this)->setReturnValue(qmodelingelementproperty_cast<QUmlValueSpecification *>(returnValue));
 }
 
 void QUmlInteractionUseObject::setReturnValueRecipient(QObject *returnValueRecipient)
 {
-    qmodelingobjectproperty_cast<QUmlInteractionUse *>(this)->setReturnValueRecipient(qmodelingobjectproperty_cast<QUmlProperty *>(returnValueRecipient));
+    qmodelingelementproperty_cast<QUmlInteractionUse *>(this)->setReturnValueRecipient(qmodelingelementproperty_cast<QUmlProperty *>(returnValueRecipient));
+}
+
+
+void QUmlInteractionUseObject::setGroupProperties()
+{
+    Q_D(QModelingObject);
+    const QMetaObject *metaObject = this->metaObject();
+
+    d->propertyGroups << QStringLiteral("QObject");
+    d->groupProperties.insert(QStringLiteral("QObject"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("objectName"))));
+
+    d->propertyGroups << QStringLiteral("QUmlElement");
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
+
+    d->propertyGroups << QStringLiteral("QUmlNamedElement");
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
+
+    d->propertyGroups << QStringLiteral("QUmlInteractionFragment");
+    d->groupProperties.insert(QStringLiteral("QUmlInteractionFragment"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("covered"))));
+    d->groupProperties.insert(QStringLiteral("QUmlInteractionFragment"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("enclosingInteraction"))));
+    d->groupProperties.insert(QStringLiteral("QUmlInteractionFragment"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("enclosingOperand"))));
+    d->groupProperties.insert(QStringLiteral("QUmlInteractionFragment"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("generalOrderings"))));
+
+    d->propertyGroups << QStringLiteral("QUmlInteractionUse");
+    d->groupProperties.insert(QStringLiteral("QUmlInteractionUse"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("actualGates"))));
+    d->groupProperties.insert(QStringLiteral("QUmlInteractionUse"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("arguments"))));
+    d->groupProperties.insert(QStringLiteral("QUmlInteractionUse"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("refersTo"))));
+    d->groupProperties.insert(QStringLiteral("QUmlInteractionUse"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("returnValue"))));
+    d->groupProperties.insert(QStringLiteral("QUmlInteractionUse"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("returnValueRecipient"))));
+}
+
+void QUmlInteractionUseObject::setPropertyData()
+{
+    Q_DECLARE_METAPROPERTY_INFO(QUmlInteractionUse, actualGates, AggregationRole, QStringLiteral("composite"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlInteractionUse, actualGates, PropertyClassRole, QStringLiteral("QUmlInteractionUse"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlInteractionUse, actualGates, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlInteractionUse, actualGates, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlInteractionUse, actualGates, DocumentationRole, QStringLiteral("The actual gates of the InteractionUse"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlInteractionUse, actualGates, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlInteractionUse, actualGates, SubsettedPropertiesRole, QStringLiteral("Element-ownedElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlInteractionUse, actualGates, OppositeEndRole, QStringLiteral(""));
+
+    Q_DECLARE_METAPROPERTY_INFO(QUmlInteractionUse, arguments, AggregationRole, QStringLiteral("composite"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlInteractionUse, arguments, PropertyClassRole, QStringLiteral("QUmlInteractionUse"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlInteractionUse, arguments, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlInteractionUse, arguments, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlInteractionUse, arguments, DocumentationRole, QStringLiteral("The actual arguments of the Interaction"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlInteractionUse, arguments, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlInteractionUse, arguments, SubsettedPropertiesRole, QStringLiteral("Element-ownedElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlInteractionUse, arguments, OppositeEndRole, QStringLiteral(""));
+
+    Q_DECLARE_METAPROPERTY_INFO(QUmlInteractionUse, refersTo, AggregationRole, QStringLiteral("none"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlInteractionUse, refersTo, PropertyClassRole, QStringLiteral("QUmlInteractionUse"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlInteractionUse, refersTo, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlInteractionUse, refersTo, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlInteractionUse, refersTo, DocumentationRole, QStringLiteral("Refers to the Interaction that defines its meaning"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlInteractionUse, refersTo, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlInteractionUse, refersTo, SubsettedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlInteractionUse, refersTo, OppositeEndRole, QStringLiteral(""));
+
+    Q_DECLARE_METAPROPERTY_INFO(QUmlInteractionUse, returnValue, AggregationRole, QStringLiteral("composite"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlInteractionUse, returnValue, PropertyClassRole, QStringLiteral("QUmlInteractionUse"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlInteractionUse, returnValue, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlInteractionUse, returnValue, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlInteractionUse, returnValue, DocumentationRole, QStringLiteral("The value of the executed Interaction."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlInteractionUse, returnValue, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlInteractionUse, returnValue, SubsettedPropertiesRole, QStringLiteral("Element-ownedElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlInteractionUse, returnValue, OppositeEndRole, QStringLiteral(""));
+
+    Q_DECLARE_METAPROPERTY_INFO(QUmlInteractionUse, returnValueRecipient, AggregationRole, QStringLiteral("none"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlInteractionUse, returnValueRecipient, PropertyClassRole, QStringLiteral("QUmlInteractionUse"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlInteractionUse, returnValueRecipient, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlInteractionUse, returnValueRecipient, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlInteractionUse, returnValueRecipient, DocumentationRole, QStringLiteral("The recipient of the return value."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlInteractionUse, returnValueRecipient, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlInteractionUse, returnValueRecipient, SubsettedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlInteractionUse, returnValueRecipient, OppositeEndRole, QStringLiteral(""));
+
 }
 
 QT_END_NAMESPACE

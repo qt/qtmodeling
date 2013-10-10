@@ -45,7 +45,6 @@
 
 #include <QtUml/QUmlWriteStructuralFeatureAction>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -57,10 +56,10 @@ class QUmlInputPin;
 class Q_UML_EXPORT QUmlAddStructuralFeatureValueAction : public QUmlWriteStructuralFeatureAction
 {
 public:
-    explicit QUmlAddStructuralFeatureValueAction(bool createQObject = true);
+    explicit QUmlAddStructuralFeatureValueAction(bool createQModelingObject = true);
     virtual ~QUmlAddStructuralFeatureValueAction();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
     QUmlInputPin *insertAt() const;
@@ -71,9 +70,6 @@ public:
 protected:
     QUmlInputPin *_insertAt;
     bool _isReplaceAll;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

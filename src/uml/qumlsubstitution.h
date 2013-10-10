@@ -45,7 +45,6 @@
 
 #include <QtUml/QUmlRealization>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -57,10 +56,10 @@ class QUmlClassifier;
 class Q_UML_EXPORT QUmlSubstitution : public QUmlRealization
 {
 public:
-    explicit QUmlSubstitution(bool createQObject = true);
+    explicit QUmlSubstitution(bool createQModelingObject = true);
     virtual ~QUmlSubstitution();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
     QUmlClassifier *contract() const;
@@ -71,9 +70,6 @@ public:
 protected:
     QUmlClassifier *_contract;
     QUmlClassifier *_substitutingClassifier;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

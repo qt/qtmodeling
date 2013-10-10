@@ -61,15 +61,13 @@
 QUmlVertex::QUmlVertex() :
     _container(0)
 {
-    setGroupProperties();
-    setPropertyData();
 }
 
 QUmlVertex::~QUmlVertex()
 {
 }
 
-QModelingObject *QUmlVertex::clone() const
+QModelingElement *QUmlVertex::clone() const
 {
     QUmlVertex *c = new QUmlVertex;
     foreach (QUmlComment *element, ownedComments())
@@ -105,8 +103,8 @@ void QUmlVertex::setContainer(QUmlRegion *container)
         // Adjust subsetted properties
 
         _container = container;
-        if (container && container->asQObject() && this->asQObject())
-            QObject::connect(container->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setContainer()));
+        if (container && container->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(container->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setContainer()));
 
         // Adjust subsetted properties
         setNamespace(container);
@@ -215,54 +213,5 @@ QUmlStateMachine *QUmlVertex::containingStateMachine() const
     qWarning("UmlVertex::containingStateMachine(): to be implemented (operation)");
 
     return 0;
-}
-
-void QUmlVertex::setGroupProperties()
-{
-    const QMetaObject *metaObject = _qObject->metaObject();
-
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
-    _groupProperties.insert(QStringLiteral("QUmlVertex"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("container"))));
-    _groupProperties.insert(QStringLiteral("QUmlVertex"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("incomings"))));
-    _groupProperties.insert(QStringLiteral("QUmlVertex"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("outgoings"))));
-}
-
-void QUmlVertex::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlVertex")][QStringLiteral("container")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlVertex")][QStringLiteral("container")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlVertex");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlVertex")][QStringLiteral("container")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlVertex")][QStringLiteral("container")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlVertex")][QStringLiteral("container")][QtModeling::DocumentationRole] = QStringLiteral("The region that contains this vertex.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlVertex")][QStringLiteral("container")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlVertex")][QStringLiteral("container")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("NamedElement-namespace");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlVertex")][QStringLiteral("container")][QtModeling::OppositeEndRole] = QStringLiteral("Region-subvertex");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlVertex")][QStringLiteral("incomings")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlVertex")][QStringLiteral("incomings")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlVertex");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlVertex")][QStringLiteral("incomings")][QtModeling::IsDerivedRole] = true;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlVertex")][QStringLiteral("incomings")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlVertex")][QStringLiteral("incomings")][QtModeling::DocumentationRole] = QStringLiteral("Specifies the transitions entering this vertex.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlVertex")][QStringLiteral("incomings")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlVertex")][QStringLiteral("incomings")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlVertex")][QStringLiteral("incomings")][QtModeling::OppositeEndRole] = QStringLiteral("Transition-target");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlVertex")][QStringLiteral("outgoings")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlVertex")][QStringLiteral("outgoings")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlVertex");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlVertex")][QStringLiteral("outgoings")][QtModeling::IsDerivedRole] = true;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlVertex")][QStringLiteral("outgoings")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlVertex")][QStringLiteral("outgoings")][QtModeling::DocumentationRole] = QStringLiteral("Specifies the transitions departing from this vertex.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlVertex")][QStringLiteral("outgoings")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlVertex")][QStringLiteral("outgoings")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlVertex")][QStringLiteral("outgoings")][QtModeling::OppositeEndRole] = QStringLiteral("Transition-source");
-
 }
 

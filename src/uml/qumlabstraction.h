@@ -45,7 +45,6 @@
 
 #include <QtUml/QUmlDependency>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -57,10 +56,10 @@ class QUmlOpaqueExpression;
 class Q_UML_EXPORT QUmlAbstraction : public QUmlDependency
 {
 public:
-    explicit QUmlAbstraction(bool createQObject = true);
+    explicit QUmlAbstraction(bool createQModelingObject = true);
     virtual ~QUmlAbstraction();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
     QUmlOpaqueExpression *mapping() const;
@@ -68,9 +67,6 @@ public:
 
 protected:
     QUmlOpaqueExpression *_mapping;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

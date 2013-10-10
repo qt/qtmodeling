@@ -58,26 +58,24 @@
 
     \brief A general ordering represents a binary relation between two occurrence specifications, to describe that one occurrence specification must occur before the other in a valid trace. This mechanism provides the ability to define partial orders of occurrence cpecifications that may otherwise not have a specified order.
  */
-QUmlGeneralOrdering::QUmlGeneralOrdering(bool createQObject) :
+QUmlGeneralOrdering::QUmlGeneralOrdering(bool createQModelingObject) :
     _after(0),
     _before(0)
 {
-    if (createQObject)
-        _qObject = new QUmlGeneralOrderingObject(this);
-    setGroupProperties();
-    setPropertyData();
+    if (createQModelingObject)
+        _qModelingObject = qobject_cast<QModelingObject *>(new QUmlGeneralOrderingObject(this));
 }
 
 QUmlGeneralOrdering::~QUmlGeneralOrdering()
 {
-    if (!deletingFromQObject) {
-        if (_qObject)
-            _qObject->setProperty("deletingFromModelingObject", true);
-        delete _qObject;
+    if (!deletingFromQModelingObject) {
+        if (_qModelingObject)
+            _qModelingObject->setProperty("deletingFromModelingObject", true);
+        delete _qModelingObject;
     }
 }
 
-QModelingObject *QUmlGeneralOrdering::clone() const
+QModelingElement *QUmlGeneralOrdering::clone() const
 {
     QUmlGeneralOrdering *c = new QUmlGeneralOrdering;
     foreach (QUmlComment *element, ownedComments())
@@ -113,8 +111,8 @@ void QUmlGeneralOrdering::setAfter(QUmlOccurrenceSpecification *after)
 
     if (_after != after) {
         _after = after;
-        if (after && after->asQObject() && this->asQObject())
-            QObject::connect(after->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setAfter()));
+        if (after && after->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(after->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setAfter()));
     }
 }
 
@@ -134,47 +132,8 @@ void QUmlGeneralOrdering::setBefore(QUmlOccurrenceSpecification *before)
 
     if (_before != before) {
         _before = before;
-        if (before && before->asQObject() && this->asQObject())
-            QObject::connect(before->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setBefore()));
+        if (before && before->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(before->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setBefore()));
     }
-}
-
-void QUmlGeneralOrdering::setGroupProperties()
-{
-    const QMetaObject *metaObject = _qObject->metaObject();
-
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
-    _groupProperties.insert(QStringLiteral("QUmlGeneralOrdering"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("after"))));
-    _groupProperties.insert(QStringLiteral("QUmlGeneralOrdering"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("before"))));
-}
-
-void QUmlGeneralOrdering::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlGeneralOrdering")][QStringLiteral("after")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlGeneralOrdering")][QStringLiteral("after")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlGeneralOrdering");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlGeneralOrdering")][QStringLiteral("after")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlGeneralOrdering")][QStringLiteral("after")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlGeneralOrdering")][QStringLiteral("after")][QtModeling::DocumentationRole] = QStringLiteral("The OccurrenceSpecification referenced comes after the OccurrenceSpecification referenced by before.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlGeneralOrdering")][QStringLiteral("after")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlGeneralOrdering")][QStringLiteral("after")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlGeneralOrdering")][QStringLiteral("after")][QtModeling::OppositeEndRole] = QStringLiteral("OccurrenceSpecification-toBefore");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlGeneralOrdering")][QStringLiteral("before")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlGeneralOrdering")][QStringLiteral("before")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlGeneralOrdering");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlGeneralOrdering")][QStringLiteral("before")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlGeneralOrdering")][QStringLiteral("before")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlGeneralOrdering")][QStringLiteral("before")][QtModeling::DocumentationRole] = QStringLiteral("The OccurrenceSpecification referenced comes before the OccurrenceSpecification referenced by after.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlGeneralOrdering")][QStringLiteral("before")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlGeneralOrdering")][QStringLiteral("before")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlGeneralOrdering")][QStringLiteral("before")][QtModeling::OppositeEndRole] = QStringLiteral("OccurrenceSpecification-toAfter");
-
 }
 

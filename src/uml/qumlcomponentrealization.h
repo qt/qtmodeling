@@ -45,7 +45,6 @@
 
 #include <QtUml/QUmlRealization>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -58,10 +57,10 @@ class QUmlComponent;
 class Q_UML_EXPORT QUmlComponentRealization : public QUmlRealization
 {
 public:
-    explicit QUmlComponentRealization(bool createQObject = true);
+    explicit QUmlComponentRealization(bool createQModelingObject = true);
     virtual ~QUmlComponentRealization();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
     QUmlComponent *abstraction() const;
@@ -73,9 +72,6 @@ public:
 protected:
     QUmlComponent *_abstraction;
     QSet<QUmlClassifier *> _realizingClassifiers;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

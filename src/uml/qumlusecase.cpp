@@ -81,24 +81,22 @@
 
     \brief A use case is the specification of a set of actions performed by a system, which yields an observable result that is, typically, of value for one or more actors or other stakeholders of the system.
  */
-QUmlUseCase::QUmlUseCase(bool createQObject)
+QUmlUseCase::QUmlUseCase(bool createQModelingObject)
 {
-    if (createQObject)
-        _qObject = new QUmlUseCaseObject(this);
-    setGroupProperties();
-    setPropertyData();
+    if (createQModelingObject)
+        _qModelingObject = qobject_cast<QModelingObject *>(new QUmlUseCaseObject(this));
 }
 
 QUmlUseCase::~QUmlUseCase()
 {
-    if (!deletingFromQObject) {
-        if (_qObject)
-            _qObject->setProperty("deletingFromModelingObject", true);
-        delete _qObject;
+    if (!deletingFromQModelingObject) {
+        if (_qModelingObject)
+            _qModelingObject->setProperty("deletingFromModelingObject", true);
+        delete _qModelingObject;
     }
 }
 
-QModelingObject *QUmlUseCase::clone() const
+QModelingElement *QUmlUseCase::clone() const
 {
     QUmlUseCase *c = new QUmlUseCase;
     foreach (QUmlComment *element, ownedComments())
@@ -179,9 +177,9 @@ void QUmlUseCase::addExtend(QUmlExtend *extend)
 
     if (!_extends.contains(extend)) {
         _extends.insert(extend);
-        if (extend && extend->asQObject() && this->asQObject())
-            QObject::connect(extend->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeExtend(QObject *)));
-        extend->asQObject()->setParent(this->asQObject());
+        if (extend && extend->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(extend->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeExtend(QObject *)));
+        extend->asQModelingObject()->setParent(this->asQModelingObject());
 
         // Adjust subsetted properties
         addOwnedMember(extend);
@@ -199,8 +197,8 @@ void QUmlUseCase::removeExtend(QUmlExtend *extend)
 
     if (_extends.contains(extend)) {
         _extends.remove(extend);
-        if (extend->asQObject())
-            extend->asQObject()->setParent(0);
+        if (extend->asQModelingObject())
+            extend->asQModelingObject()->setParent(0);
 
         // Adjust subsetted properties
         removeOwnedMember(extend);
@@ -228,9 +226,9 @@ void QUmlUseCase::addExtensionPoint(QUmlExtensionPoint *extensionPoint)
 
     if (!_extensionPoints.contains(extensionPoint)) {
         _extensionPoints.insert(extensionPoint);
-        if (extensionPoint && extensionPoint->asQObject() && this->asQObject())
-            QObject::connect(extensionPoint->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeExtensionPoint(QObject *)));
-        extensionPoint->asQObject()->setParent(this->asQObject());
+        if (extensionPoint && extensionPoint->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(extensionPoint->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeExtensionPoint(QObject *)));
+        extensionPoint->asQModelingObject()->setParent(this->asQModelingObject());
 
         // Adjust subsetted properties
         addOwnedMember(extensionPoint);
@@ -248,8 +246,8 @@ void QUmlUseCase::removeExtensionPoint(QUmlExtensionPoint *extensionPoint)
 
     if (_extensionPoints.contains(extensionPoint)) {
         _extensionPoints.remove(extensionPoint);
-        if (extensionPoint->asQObject())
-            extensionPoint->asQObject()->setParent(0);
+        if (extensionPoint->asQModelingObject())
+            extensionPoint->asQModelingObject()->setParent(0);
 
         // Adjust subsetted properties
         removeOwnedMember(extensionPoint);
@@ -277,9 +275,9 @@ void QUmlUseCase::addInclude(QUmlInclude *include)
 
     if (!_includes.contains(include)) {
         _includes.insert(include);
-        if (include && include->asQObject() && this->asQObject())
-            QObject::connect(include->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeInclude(QObject *)));
-        include->asQObject()->setParent(this->asQObject());
+        if (include && include->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(include->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeInclude(QObject *)));
+        include->asQModelingObject()->setParent(this->asQModelingObject());
 
         // Adjust subsetted properties
         addOwnedMember(include);
@@ -297,8 +295,8 @@ void QUmlUseCase::removeInclude(QUmlInclude *include)
 
     if (_includes.contains(include)) {
         _includes.remove(include);
-        if (include->asQObject())
-            include->asQObject()->setParent(0);
+        if (include->asQModelingObject())
+            include->asQModelingObject()->setParent(0);
 
         // Adjust subsetted properties
         removeOwnedMember(include);
@@ -326,8 +324,8 @@ void QUmlUseCase::addSubject(QUmlClassifier *subject)
 
     if (!_subjects.contains(subject)) {
         _subjects.insert(subject);
-        if (subject && subject->asQObject() && this->asQObject())
-            QObject::connect(subject->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeSubject(QObject *)));
+        if (subject && subject->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(subject->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeSubject(QObject *)));
 
         // Adjust opposite properties
         if (subject) {
@@ -360,95 +358,5 @@ QSet<QUmlUseCase *> QUmlUseCase::allIncludedUseCases() const
     qWarning("UmlUseCase::allIncludedUseCases(): to be implemented (operation)");
 
     return QSet<QUmlUseCase *> ();
-}
-
-void QUmlUseCase::setGroupProperties()
-{
-    const QMetaObject *metaObject = _qObject->metaObject();
-
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("elementImports"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("importedMembers"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("members"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedMembers"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedRules"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("packageImports"))));
-    _groupProperties.insert(QStringLiteral("QUmlParameterableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owningTemplateParameter"))));
-    _groupProperties.insert(QStringLiteral("QUmlPackageableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
-    _groupProperties.insert(QStringLiteral("QUmlType"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("package"))));
-    _groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isLeaf"))));
-    _groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinitionContexts"))));
-    _groupProperties.insert(QStringLiteral("QUmlTemplateableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("templateBindings"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("attributes"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("collaborationUses"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("features"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("generals"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("generalizations"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inheritedMembers"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isAbstract"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isFinalSpecialization"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedTemplateSignature"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedUseCases"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("powertypeExtents"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinedClassifiers"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("representation"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("substitutions"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("templateParameter"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("useCases"))));
-    _groupProperties.insert(QStringLiteral("QUmlBehavioredClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("classifierBehavior"))));
-    _groupProperties.insert(QStringLiteral("QUmlBehavioredClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("interfaceRealizations"))));
-    _groupProperties.insert(QStringLiteral("QUmlBehavioredClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedBehaviors"))));
-    _groupProperties.insert(QStringLiteral("QUmlUseCase"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("extends"))));
-    _groupProperties.insert(QStringLiteral("QUmlUseCase"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("extensionPoints"))));
-    _groupProperties.insert(QStringLiteral("QUmlUseCase"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("includes"))));
-    _groupProperties.insert(QStringLiteral("QUmlUseCase"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("subjects"))));
-}
-
-void QUmlUseCase::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlUseCase")][QStringLiteral("extends")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlUseCase")][QStringLiteral("extends")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlUseCase");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlUseCase")][QStringLiteral("extends")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlUseCase")][QStringLiteral("extends")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlUseCase")][QStringLiteral("extends")][QtModeling::DocumentationRole] = QStringLiteral("References the Extend relationships owned by this use case.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlUseCase")][QStringLiteral("extends")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlUseCase")][QStringLiteral("extends")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("A_source_directedRelationship-directedRelationship Namespace-ownedMember");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlUseCase")][QStringLiteral("extends")][QtModeling::OppositeEndRole] = QStringLiteral("Extend-extension");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlUseCase")][QStringLiteral("extensionPoints")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlUseCase")][QStringLiteral("extensionPoints")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlUseCase");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlUseCase")][QStringLiteral("extensionPoints")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlUseCase")][QStringLiteral("extensionPoints")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlUseCase")][QStringLiteral("extensionPoints")][QtModeling::DocumentationRole] = QStringLiteral("References the ExtensionPoints owned by the use case.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlUseCase")][QStringLiteral("extensionPoints")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlUseCase")][QStringLiteral("extensionPoints")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Namespace-ownedMember");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlUseCase")][QStringLiteral("extensionPoints")][QtModeling::OppositeEndRole] = QStringLiteral("ExtensionPoint-useCase");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlUseCase")][QStringLiteral("includes")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlUseCase")][QStringLiteral("includes")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlUseCase");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlUseCase")][QStringLiteral("includes")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlUseCase")][QStringLiteral("includes")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlUseCase")][QStringLiteral("includes")][QtModeling::DocumentationRole] = QStringLiteral("References the Include relationships owned by this use case.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlUseCase")][QStringLiteral("includes")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlUseCase")][QStringLiteral("includes")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("A_source_directedRelationship-directedRelationship Namespace-ownedMember");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlUseCase")][QStringLiteral("includes")][QtModeling::OppositeEndRole] = QStringLiteral("Include-includingCase");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlUseCase")][QStringLiteral("subjects")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlUseCase")][QStringLiteral("subjects")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlUseCase");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlUseCase")][QStringLiteral("subjects")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlUseCase")][QStringLiteral("subjects")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlUseCase")][QStringLiteral("subjects")][QtModeling::DocumentationRole] = QStringLiteral("References the subjects to which this use case applies. The subject or its parts realize all the use cases that apply to this subject. Use cases need not be attached to any specific subject, however. The subject may, but need not, own the use cases that apply to it.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlUseCase")][QStringLiteral("subjects")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlUseCase")][QStringLiteral("subjects")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlUseCase")][QStringLiteral("subjects")][QtModeling::OppositeEndRole] = QStringLiteral("Classifier-useCase");
-
 }
 

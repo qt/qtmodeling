@@ -45,7 +45,6 @@
 
 #include <QtUml/QUmlCentralBufferNode>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -55,16 +54,13 @@ QT_MODULE(QtUml)
 class Q_UML_EXPORT QUmlDataStoreNode : public QUmlCentralBufferNode
 {
 public:
-    explicit QUmlDataStoreNode(bool createQObject = true);
+    explicit QUmlDataStoreNode(bool createQModelingObject = true);
     virtual ~QUmlDataStoreNode();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
 
 protected:
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

@@ -43,7 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtCore/QObject>
+#include <QtModeling/QModelingObject>
 
 QT_BEGIN_HEADER
 
@@ -52,9 +52,12 @@ QT_BEGIN_NAMESPACE
 QT_MODULE(QtUml)
 
 class QUmlClause;
-class Q_UML_EXPORT QUmlClauseObject : public QObject
+class QModelingObjectPrivate;
+class Q_UML_EXPORT QUmlClauseObject : public QModelingObject
 {
     Q_OBJECT
+    Q_DISABLE_COPY(QUmlClauseObject)
+    Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [Element]
     Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
@@ -70,7 +73,7 @@ class Q_UML_EXPORT QUmlClauseObject : public QObject
     Q_PROPERTY(QSet<QObject *> tests READ tests)
 
 public:
-    Q_INVOKABLE explicit QUmlClauseObject(QUmlClause *qModelingObject);
+    Q_INVOKABLE explicit QUmlClauseObject(QUmlClause *qModelingElement);
     virtual ~QUmlClauseObject();
 
     // Owned attributes [Element]
@@ -111,6 +114,10 @@ public Q_SLOTS:
     void removeSuccessorClause(QObject *successorClause);
     void addTest(QObject *test);
     void removeTest(QObject *test);
+
+protected:
+    virtual void setGroupProperties();
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

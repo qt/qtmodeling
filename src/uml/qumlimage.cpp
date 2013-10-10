@@ -52,24 +52,22 @@
 
     \brief Physical definition of a graphical image.
  */
-QUmlImage::QUmlImage(bool createQObject)
+QUmlImage::QUmlImage(bool createQModelingObject)
 {
-    if (createQObject)
-        _qObject = new QUmlImageObject(this);
-    setGroupProperties();
-    setPropertyData();
+    if (createQModelingObject)
+        _qModelingObject = qobject_cast<QModelingObject *>(new QUmlImageObject(this));
 }
 
 QUmlImage::~QUmlImage()
 {
-    if (!deletingFromQObject) {
-        if (_qObject)
-            _qObject->setProperty("deletingFromModelingObject", true);
-        delete _qObject;
+    if (!deletingFromQModelingObject) {
+        if (_qModelingObject)
+            _qModelingObject->setProperty("deletingFromModelingObject", true);
+        delete _qModelingObject;
     }
 }
 
-QModelingObject *QUmlImage::clone() const
+QModelingElement *QUmlImage::clone() const
 {
     QUmlImage *c = new QUmlImage;
     foreach (QUmlComment *element, ownedComments())
@@ -137,48 +135,5 @@ void QUmlImage::setLocation(QString location)
     if (_location != location) {
         _location = location;
     }
-}
-
-void QUmlImage::setGroupProperties()
-{
-    const QMetaObject *metaObject = _qObject->metaObject();
-
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
-    _groupProperties.insert(QStringLiteral("QUmlImage"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("content"))));
-    _groupProperties.insert(QStringLiteral("QUmlImage"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("format"))));
-    _groupProperties.insert(QStringLiteral("QUmlImage"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("location"))));
-}
-
-void QUmlImage::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlImage")][QStringLiteral("content")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlImage")][QStringLiteral("content")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlImage");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlImage")][QStringLiteral("content")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlImage")][QStringLiteral("content")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlImage")][QStringLiteral("content")][QtModeling::DocumentationRole] = QStringLiteral("This contains the serialization of the image according to the format. The value could represent a bitmap, image such as a GIF file, or drawing 'instructions' using a standard such as Scalable Vector Graphic (SVG) (which is XML based).");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlImage")][QStringLiteral("content")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlImage")][QStringLiteral("content")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlImage")][QStringLiteral("content")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlImage")][QStringLiteral("format")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlImage")][QStringLiteral("format")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlImage");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlImage")][QStringLiteral("format")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlImage")][QStringLiteral("format")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlImage")][QStringLiteral("format")][QtModeling::DocumentationRole] = QStringLiteral("This indicates the format of the content - which is how the string content should be interpreted. The following values are reserved: SVG, GIF, PNG, JPG, WMF, EMF, BMP. In addition the prefix 'MIME: ' is also reserved. This option can be used as an alternative to express the reserved values above, for example 'SVG' could instead be expressed as 'MIME: image/svg+xml'.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlImage")][QStringLiteral("format")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlImage")][QStringLiteral("format")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlImage")][QStringLiteral("format")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlImage")][QStringLiteral("location")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlImage")][QStringLiteral("location")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlImage");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlImage")][QStringLiteral("location")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlImage")][QStringLiteral("location")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlImage")][QStringLiteral("location")][QtModeling::DocumentationRole] = QStringLiteral("This contains a location that can be used by a tool to locate the image as an alternative to embedding it in the stereotype.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlImage")][QStringLiteral("location")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlImage")][QStringLiteral("location")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlImage")][QStringLiteral("location")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
 }
 

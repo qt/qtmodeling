@@ -45,7 +45,6 @@
 
 #include <QtUml/QUmlInteractionFragment>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -55,10 +54,10 @@ QT_MODULE(QtUml)
 class Q_UML_EXPORT QUmlContinuation : public QUmlInteractionFragment
 {
 public:
-    explicit QUmlContinuation(bool createQObject = true);
+    explicit QUmlContinuation(bool createQModelingObject = true);
     virtual ~QUmlContinuation();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
     bool setting() const;
@@ -66,9 +65,6 @@ public:
 
 protected:
     bool _setting;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

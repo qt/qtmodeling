@@ -43,7 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtCore/QObject>
+#include <QtModeling/QModelingObject>
 
 #include <QtUml/QtUmlNamespace>
 
@@ -54,9 +54,12 @@ QT_BEGIN_NAMESPACE
 QT_MODULE(QtUml)
 
 class QUmlInclude;
-class Q_UML_EXPORT QUmlIncludeObject : public QObject
+class QModelingObjectPrivate;
+class Q_UML_EXPORT QUmlIncludeObject : public QModelingObject
 {
     Q_OBJECT
+    Q_DISABLE_COPY(QUmlIncludeObject)
+    Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [Element]
     Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
@@ -83,7 +86,7 @@ class Q_UML_EXPORT QUmlIncludeObject : public QObject
     Q_PROPERTY(QObject * includingCase READ includingCase WRITE setIncludingCase)
 
 public:
-    Q_INVOKABLE explicit QUmlIncludeObject(QUmlInclude *qModelingObject);
+    Q_INVOKABLE explicit QUmlIncludeObject(QUmlInclude *qModelingElement);
     virtual ~QUmlIncludeObject();
 
     // Owned attributes [Element]
@@ -151,6 +154,10 @@ public Q_SLOTS:
     // Slots for owned attributes [Include]
     void setAddition(QObject *addition = 0);
     void setIncludingCase(QObject *includingCase = 0);
+
+protected:
+    virtual void setGroupProperties();
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

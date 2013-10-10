@@ -60,15 +60,13 @@
 QUmlFeature::QUmlFeature() :
     _isStatic(false)
 {
-    setGroupProperties();
-    setPropertyData();
 }
 
 QUmlFeature::~QUmlFeature()
 {
 }
 
-QModelingObject *QUmlFeature::clone() const
+QModelingElement *QUmlFeature::clone() const
 {
     QUmlFeature *c = new QUmlFeature;
     foreach (QUmlComment *element, ownedComments())
@@ -102,8 +100,8 @@ void QUmlFeature::addFeaturingClassifier(QUmlClassifier *featuringClassifier)
 
     if (!_featuringClassifiers.contains(featuringClassifier)) {
         _featuringClassifiers.insert(featuringClassifier);
-        if (featuringClassifier && featuringClassifier->asQObject() && this->asQObject())
-            QObject::connect(featuringClassifier->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeFeaturingClassifier(QObject *)));
+        if (featuringClassifier && featuringClassifier->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(featuringClassifier->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeFeaturingClassifier(QObject *)));
 
         // Adjust opposite properties
         if (featuringClassifier) {
@@ -142,49 +140,7 @@ void QUmlFeature::setStatic(bool isStatic)
 
     if (_isStatic != isStatic) {
         _isStatic = isStatic;
-        _modifiedResettableProperties << QStringLiteral("isStatic");
+        _qModelingObject->modifiedResettableProperties() << QStringLiteral("isStatic");
     }
-}
-
-void QUmlFeature::setGroupProperties()
-{
-    const QMetaObject *metaObject = _qObject->metaObject();
-
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
-    _groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isLeaf"))));
-    _groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinitionContexts"))));
-    _groupProperties.insert(QStringLiteral("QUmlFeature"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("featuringClassifiers"))));
-    _groupProperties.insert(QStringLiteral("QUmlFeature"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isStatic"))));
-}
-
-void QUmlFeature::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlFeature")][QStringLiteral("featuringClassifiers")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlFeature")][QStringLiteral("featuringClassifiers")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlFeature");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlFeature")][QStringLiteral("featuringClassifiers")][QtModeling::IsDerivedRole] = true;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlFeature")][QStringLiteral("featuringClassifiers")][QtModeling::IsDerivedUnionRole] = true;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlFeature")][QStringLiteral("featuringClassifiers")][QtModeling::DocumentationRole] = QStringLiteral("The Classifiers that have this Feature as a feature.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlFeature")][QStringLiteral("featuringClassifiers")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlFeature")][QStringLiteral("featuringClassifiers")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("A_member_memberNamespace-memberNamespace");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlFeature")][QStringLiteral("featuringClassifiers")][QtModeling::OppositeEndRole] = QStringLiteral("Classifier-feature");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlFeature")][QStringLiteral("isStatic")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlFeature")][QStringLiteral("isStatic")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlFeature");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlFeature")][QStringLiteral("isStatic")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlFeature")][QStringLiteral("isStatic")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlFeature")][QStringLiteral("isStatic")][QtModeling::DocumentationRole] = QStringLiteral("Specifies whether this feature characterizes individual instances classified by the classifier (false) or the classifier itself (true).");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlFeature")][QStringLiteral("isStatic")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlFeature")][QStringLiteral("isStatic")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlFeature")][QStringLiteral("isStatic")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
 }
 

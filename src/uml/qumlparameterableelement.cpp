@@ -55,15 +55,13 @@ QUmlParameterableElement::QUmlParameterableElement() :
     _owningTemplateParameter(0),
     _templateParameter(0)
 {
-    setGroupProperties();
-    setPropertyData();
 }
 
 QUmlParameterableElement::~QUmlParameterableElement()
 {
 }
 
-QModelingObject *QUmlParameterableElement::clone() const
+QModelingElement *QUmlParameterableElement::clone() const
 {
     QUmlParameterableElement *c = new QUmlParameterableElement;
     foreach (QUmlComment *element, ownedComments())
@@ -95,8 +93,8 @@ void QUmlParameterableElement::setOwningTemplateParameter(QUmlTemplateParameter 
         // Adjust subsetted properties
 
         _owningTemplateParameter = owningTemplateParameter;
-        if (owningTemplateParameter && owningTemplateParameter->asQObject() && this->asQObject())
-            QObject::connect(owningTemplateParameter->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setOwningTemplateParameter()));
+        if (owningTemplateParameter && owningTemplateParameter->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(owningTemplateParameter->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setOwningTemplateParameter()));
 
         // Adjust subsetted properties
         setTemplateParameter(owningTemplateParameter);
@@ -120,8 +118,8 @@ void QUmlParameterableElement::setTemplateParameter(QUmlTemplateParameter *templ
 
     if (_templateParameter != templateParameter) {
         _templateParameter = templateParameter;
-        if (templateParameter && templateParameter->asQObject() && this->asQObject())
-            QObject::connect(templateParameter->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setTemplateParameter()));
+        if (templateParameter && templateParameter->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(templateParameter->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setTemplateParameter()));
     }
 }
 
@@ -146,38 +144,5 @@ bool QUmlParameterableElement::isTemplateParameter() const
     qWarning("UmlParameterableElement::isTemplateParameter(): to be implemented (operation)");
 
     return bool ();
-}
-
-void QUmlParameterableElement::setGroupProperties()
-{
-    const QMetaObject *metaObject = _qObject->metaObject();
-
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
-    _groupProperties.insert(QStringLiteral("QUmlParameterableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owningTemplateParameter"))));
-    _groupProperties.insert(QStringLiteral("QUmlParameterableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("templateParameter"))));
-}
-
-void QUmlParameterableElement::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameterableElement")][QStringLiteral("owningTemplateParameter")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameterableElement")][QStringLiteral("owningTemplateParameter")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlParameterableElement");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameterableElement")][QStringLiteral("owningTemplateParameter")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameterableElement")][QStringLiteral("owningTemplateParameter")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameterableElement")][QStringLiteral("owningTemplateParameter")][QtModeling::DocumentationRole] = QStringLiteral("The formal template parameter that owns this element.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameterableElement")][QStringLiteral("owningTemplateParameter")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameterableElement")][QStringLiteral("owningTemplateParameter")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("ParameterableElement-templateParameter Element-owner");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameterableElement")][QStringLiteral("owningTemplateParameter")][QtModeling::OppositeEndRole] = QStringLiteral("TemplateParameter-ownedParameteredElement");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameterableElement")][QStringLiteral("templateParameter")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameterableElement")][QStringLiteral("templateParameter")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlParameterableElement");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameterableElement")][QStringLiteral("templateParameter")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameterableElement")][QStringLiteral("templateParameter")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameterableElement")][QStringLiteral("templateParameter")][QtModeling::DocumentationRole] = QStringLiteral("The template parameter that exposes this element as a formal parameter.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameterableElement")][QStringLiteral("templateParameter")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameterableElement")][QStringLiteral("templateParameter")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameterableElement")][QStringLiteral("templateParameter")][QtModeling::OppositeEndRole] = QStringLiteral("TemplateParameter-parameteredElement");
-
 }
 

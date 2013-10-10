@@ -61,27 +61,25 @@
 
     \brief A pseudostate is an abstraction that encompasses different types of transient vertices in the state machine graph.
  */
-QUmlPseudostate::QUmlPseudostate(bool createQObject) :
+QUmlPseudostate::QUmlPseudostate(bool createQModelingObject) :
     _kind(QtUml::PseudostateKindInitial),
     _state(0),
     _stateMachine(0)
 {
-    if (createQObject)
-        _qObject = new QUmlPseudostateObject(this);
-    setGroupProperties();
-    setPropertyData();
+    if (createQModelingObject)
+        _qModelingObject = qobject_cast<QModelingObject *>(new QUmlPseudostateObject(this));
 }
 
 QUmlPseudostate::~QUmlPseudostate()
 {
-    if (!deletingFromQObject) {
-        if (_qObject)
-            _qObject->setProperty("deletingFromModelingObject", true);
-        delete _qObject;
+    if (!deletingFromQModelingObject) {
+        if (_qModelingObject)
+            _qModelingObject->setProperty("deletingFromModelingObject", true);
+        delete _qModelingObject;
     }
 }
 
-QModelingObject *QUmlPseudostate::clone() const
+QModelingElement *QUmlPseudostate::clone() const
 {
     QUmlPseudostate *c = new QUmlPseudostate;
     foreach (QUmlComment *element, ownedComments())
@@ -120,7 +118,7 @@ void QUmlPseudostate::setKind(QtUml::PseudostateKind kind)
 
     if (_kind != kind) {
         _kind = kind;
-        _modifiedResettableProperties << QStringLiteral("kind");
+        _qModelingObject->modifiedResettableProperties() << QStringLiteral("kind");
     }
 }
 
@@ -142,8 +140,8 @@ void QUmlPseudostate::setState(QUmlState *state)
         // Adjust subsetted properties
 
         _state = state;
-        if (state && state->asQObject() && this->asQObject())
-            QObject::connect(state->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setState()));
+        if (state && state->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(state->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setState()));
 
         // Adjust subsetted properties
         setNamespace(state);
@@ -168,63 +166,11 @@ void QUmlPseudostate::setStateMachine(QUmlStateMachine *stateMachine)
         // Adjust subsetted properties
 
         _stateMachine = stateMachine;
-        if (stateMachine && stateMachine->asQObject() && this->asQObject())
-            QObject::connect(stateMachine->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setStateMachine()));
+        if (stateMachine && stateMachine->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(stateMachine->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setStateMachine()));
 
         // Adjust subsetted properties
         setNamespace(stateMachine);
     }
-}
-
-void QUmlPseudostate::setGroupProperties()
-{
-    const QMetaObject *metaObject = _qObject->metaObject();
-
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
-    _groupProperties.insert(QStringLiteral("QUmlVertex"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("container"))));
-    _groupProperties.insert(QStringLiteral("QUmlVertex"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("incomings"))));
-    _groupProperties.insert(QStringLiteral("QUmlVertex"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("outgoings"))));
-    _groupProperties.insert(QStringLiteral("QUmlPseudostate"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("kind"))));
-    _groupProperties.insert(QStringLiteral("QUmlPseudostate"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("state"))));
-    _groupProperties.insert(QStringLiteral("QUmlPseudostate"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("stateMachine"))));
-}
-
-void QUmlPseudostate::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPseudostate")][QStringLiteral("kind")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPseudostate")][QStringLiteral("kind")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlPseudostate");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPseudostate")][QStringLiteral("kind")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPseudostate")][QStringLiteral("kind")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPseudostate")][QStringLiteral("kind")][QtModeling::DocumentationRole] = QStringLiteral("Determines the precise type of the Pseudostate and can be one of: entryPoint, exitPoint, initial, deepHistory, shallowHistory, join, fork, junction, terminate or choice.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPseudostate")][QStringLiteral("kind")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPseudostate")][QStringLiteral("kind")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPseudostate")][QStringLiteral("kind")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPseudostate")][QStringLiteral("state")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPseudostate")][QStringLiteral("state")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlPseudostate");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPseudostate")][QStringLiteral("state")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPseudostate")][QStringLiteral("state")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPseudostate")][QStringLiteral("state")][QtModeling::DocumentationRole] = QStringLiteral("The State that owns this pseudostate and in which it appears.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPseudostate")][QStringLiteral("state")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPseudostate")][QStringLiteral("state")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("NamedElement-namespace");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPseudostate")][QStringLiteral("state")][QtModeling::OppositeEndRole] = QStringLiteral("State-connectionPoint");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPseudostate")][QStringLiteral("stateMachine")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPseudostate")][QStringLiteral("stateMachine")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlPseudostate");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPseudostate")][QStringLiteral("stateMachine")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPseudostate")][QStringLiteral("stateMachine")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPseudostate")][QStringLiteral("stateMachine")][QtModeling::DocumentationRole] = QStringLiteral("The StateMachine in which this Pseudostate is defined. This only applies to Pseudostates of the kind entryPoint or exitPoint.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPseudostate")][QStringLiteral("stateMachine")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPseudostate")][QStringLiteral("stateMachine")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("NamedElement-namespace");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPseudostate")][QStringLiteral("stateMachine")][QtModeling::OppositeEndRole] = QStringLiteral("StateMachine-connectionPoint");
-
 }
 

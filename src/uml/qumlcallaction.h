@@ -45,7 +45,6 @@
 
 #include <QtUml/QUmlInvocationAction>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -59,7 +58,7 @@ class Q_UML_EXPORT QUmlCallAction : public QUmlInvocationAction
 public:
     virtual ~QUmlCallAction();
 
-    Q_DECL_HIDDEN QModelingObject *clone() const;
+    Q_DECL_HIDDEN virtual QModelingElement *clone() const;
 
     // Owned attributes
     bool isSynchronous() const;
@@ -73,9 +72,6 @@ protected:
 
     bool _isSynchronous;
     QList<QUmlOutputPin *> _results;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

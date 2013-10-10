@@ -71,25 +71,23 @@
 
     \brief A accept event action is an action that waits for the occurrence of an event meeting specified conditions.
  */
-QUmlAcceptEventAction::QUmlAcceptEventAction(bool createQObject) :
+QUmlAcceptEventAction::QUmlAcceptEventAction(bool createQModelingObject) :
     _isUnmarshall(false)
 {
-    if (createQObject)
-        _qObject = new QUmlAcceptEventActionObject(this);
-    setGroupProperties();
-    setPropertyData();
+    if (createQModelingObject)
+        _qModelingObject = qobject_cast<QModelingObject *>(new QUmlAcceptEventActionObject(this));
 }
 
 QUmlAcceptEventAction::~QUmlAcceptEventAction()
 {
-    if (!deletingFromQObject) {
-        if (_qObject)
-            _qObject->setProperty("deletingFromModelingObject", true);
-        delete _qObject;
+    if (!deletingFromQModelingObject) {
+        if (_qModelingObject)
+            _qModelingObject->setProperty("deletingFromModelingObject", true);
+        delete _qModelingObject;
     }
 }
 
-QModelingObject *QUmlAcceptEventAction::clone() const
+QModelingElement *QUmlAcceptEventAction::clone() const
 {
     QUmlAcceptEventAction *c = new QUmlAcceptEventAction;
     foreach (QUmlComment *element, ownedComments())
@@ -148,7 +146,7 @@ void QUmlAcceptEventAction::setUnmarshall(bool isUnmarshall)
 
     if (_isUnmarshall != isUnmarshall) {
         _isUnmarshall = isUnmarshall;
-        _modifiedResettableProperties << QStringLiteral("isUnmarshall");
+        _qModelingObject->modifiedResettableProperties() << QStringLiteral("isUnmarshall");
     }
 }
 
@@ -168,9 +166,9 @@ void QUmlAcceptEventAction::addResult(QUmlOutputPin *result)
 
     if (!_results.contains(result)) {
         _results.insert(result);
-        if (result && result->asQObject() && this->asQObject())
-            QObject::connect(result->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeResult(QObject *)));
-        result->asQObject()->setParent(this->asQObject());
+        if (result && result->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(result->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeResult(QObject *)));
+        result->asQModelingObject()->setParent(this->asQModelingObject());
 
         // Adjust subsetted properties
         addOutput(result);
@@ -183,8 +181,8 @@ void QUmlAcceptEventAction::removeResult(QUmlOutputPin *result)
 
     if (_results.contains(result)) {
         _results.remove(result);
-        if (result->asQObject())
-            result->asQObject()->setParent(0);
+        if (result->asQModelingObject())
+            result->asQModelingObject()->setParent(0);
 
         // Adjust subsetted properties
         removeOutput(result);
@@ -207,9 +205,9 @@ void QUmlAcceptEventAction::addTrigger(QUmlTrigger *trigger)
 
     if (!_triggers.contains(trigger)) {
         _triggers.insert(trigger);
-        if (trigger && trigger->asQObject() && this->asQObject())
-            QObject::connect(trigger->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeTrigger(QObject *)));
-        trigger->asQObject()->setParent(this->asQObject());
+        if (trigger && trigger->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(trigger->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeTrigger(QObject *)));
+        trigger->asQModelingObject()->setParent(this->asQModelingObject());
 
         // Adjust subsetted properties
         addOwnedElement(trigger);
@@ -222,78 +220,11 @@ void QUmlAcceptEventAction::removeTrigger(QUmlTrigger *trigger)
 
     if (_triggers.contains(trigger)) {
         _triggers.remove(trigger);
-        if (trigger->asQObject())
-            trigger->asQObject()->setParent(0);
+        if (trigger->asQModelingObject())
+            trigger->asQModelingObject()->setParent(0);
 
         // Adjust subsetted properties
         removeOwnedElement(trigger);
     }
-}
-
-void QUmlAcceptEventAction::setGroupProperties()
-{
-    const QMetaObject *metaObject = _qObject->metaObject();
-
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
-    _groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isLeaf"))));
-    _groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinitionContexts"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("activity"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inGroups"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inInterruptibleRegions"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inPartitions"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inStructuredNode"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("incomings"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("outgoings"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinedNodes"))));
-    _groupProperties.insert(QStringLiteral("QUmlExecutableNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("handlers"))));
-    _groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("context"))));
-    _groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inputs"))));
-    _groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isLocallyReentrant"))));
-    _groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("localPostconditions"))));
-    _groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("localPreconditions"))));
-    _groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("outputs"))));
-    _groupProperties.insert(QStringLiteral("QUmlAcceptEventAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isUnmarshall"))));
-    _groupProperties.insert(QStringLiteral("QUmlAcceptEventAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("results"))));
-    _groupProperties.insert(QStringLiteral("QUmlAcceptEventAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("triggers"))));
-}
-
-void QUmlAcceptEventAction::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAcceptEventAction")][QStringLiteral("isUnmarshall")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAcceptEventAction")][QStringLiteral("isUnmarshall")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlAcceptEventAction");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAcceptEventAction")][QStringLiteral("isUnmarshall")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAcceptEventAction")][QStringLiteral("isUnmarshall")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAcceptEventAction")][QStringLiteral("isUnmarshall")][QtModeling::DocumentationRole] = QStringLiteral("Indicates whether there is a single output pin for the event, or multiple output pins for attributes of the event.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAcceptEventAction")][QStringLiteral("isUnmarshall")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAcceptEventAction")][QStringLiteral("isUnmarshall")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAcceptEventAction")][QStringLiteral("isUnmarshall")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAcceptEventAction")][QStringLiteral("results")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAcceptEventAction")][QStringLiteral("results")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlAcceptEventAction");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAcceptEventAction")][QStringLiteral("results")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAcceptEventAction")][QStringLiteral("results")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAcceptEventAction")][QStringLiteral("results")][QtModeling::DocumentationRole] = QStringLiteral("Pins holding the received event objects or their attributes. Event objects may be copied in transmission, so identity might not be preserved.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAcceptEventAction")][QStringLiteral("results")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAcceptEventAction")][QStringLiteral("results")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Action-output");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAcceptEventAction")][QStringLiteral("results")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAcceptEventAction")][QStringLiteral("triggers")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAcceptEventAction")][QStringLiteral("triggers")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlAcceptEventAction");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAcceptEventAction")][QStringLiteral("triggers")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAcceptEventAction")][QStringLiteral("triggers")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAcceptEventAction")][QStringLiteral("triggers")][QtModeling::DocumentationRole] = QStringLiteral("The type of events accepted by the action, as specified by triggers. For triggers with signal events, a signal of the specified type or any subtype of the specified signal type is accepted.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAcceptEventAction")][QStringLiteral("triggers")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAcceptEventAction")][QStringLiteral("triggers")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAcceptEventAction")][QStringLiteral("triggers")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
 }
 

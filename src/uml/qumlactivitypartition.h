@@ -45,7 +45,6 @@
 
 #include <QtUml/QUmlActivityGroup>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -59,10 +58,10 @@ class QUmlElement;
 class Q_UML_EXPORT QUmlActivityPartition : public QUmlActivityGroup
 {
 public:
-    explicit QUmlActivityPartition(bool createQObject = true);
+    explicit QUmlActivityPartition(bool createQModelingObject = true);
     virtual ~QUmlActivityPartition();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
     const QSet<QUmlActivityEdge *> edges() const;
@@ -91,9 +90,6 @@ protected:
     QUmlElement *_represents;
     QSet<QUmlActivityPartition *> _subpartitions;
     QUmlActivityPartition *_superPartition;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

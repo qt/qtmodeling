@@ -42,15 +42,10 @@
 #define QTMODELING_QMODELINGELEMENT_H
 
 #include <QtModeling/QtModelingGlobal>
-#include <QtModeling/QtModelingNamespace>
 
-#include <QtCore/QSet>
-#include <QtCore/QList>
-#include <QtCore/QString>
+#include <QtModeling/QModelingObject>
+
 #include <QtCore/QPointer>
-#include <QtCore/QMetaType>
-#include <QtCore/QStringList>
-#include <QtCore/QMetaProperty>
 
 QT_BEGIN_HEADER
 
@@ -58,32 +53,30 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtModeling)
 
-class QObject;
-
 class Q_MODELING_EXPORT QModelingElement
 {
 public:
     virtual ~QModelingElement() {}
-    inline QObject *asQObject() { return _qObject; }
+    inline QModelingObject *asQModelingObject() { return _qModelingObject; }
 
-    bool deletingFromQObject;
+    bool deletingFromQModelingObject;
 
     virtual QModelingElement *clone() const = 0;
 
 protected:
-    QModelingElement() : deletingFromQObject(false), _qObject(0) {}
-    QPointer<QObject> _qObject;
+    QModelingElement() : deletingFromQModelingObject(false), _qModelingObject(0) {}
+    QPointer<QModelingObject> _qModelingObject;
 };
 
-inline QModelingElement *qModelingElement(const QObject *object)
+inline QModelingElement *qModelingElement(const QObject * const object)
 {
     return object ? object->property("modelingElement").value<QModelingElement *>():0;
 }
 
 template<class T>
-inline T qmodelingelementproperty_cast(const QObject *object)
+inline T qmodelingelementproperty_cast(const QObject * const modelingObject)
 {
-    return object ? dynamic_cast<T>(qModelingElement(object)):T();
+    return modelingObject ? dynamic_cast<T>(qModelingElement(modelingObject)):T();
 }
 
 QT_END_NAMESPACE

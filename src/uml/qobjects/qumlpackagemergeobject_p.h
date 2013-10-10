@@ -43,7 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtCore/QObject>
+#include <QtModeling/QModelingObject>
 
 QT_BEGIN_HEADER
 
@@ -52,9 +52,12 @@ QT_BEGIN_NAMESPACE
 QT_MODULE(QtUml)
 
 class QUmlPackageMerge;
-class Q_UML_EXPORT QUmlPackageMergeObject : public QObject
+class QModelingObjectPrivate;
+class Q_UML_EXPORT QUmlPackageMergeObject : public QModelingObject
 {
     Q_OBJECT
+    Q_DISABLE_COPY(QUmlPackageMergeObject)
+    Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [Element]
     Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
@@ -73,7 +76,7 @@ class Q_UML_EXPORT QUmlPackageMergeObject : public QObject
     Q_PROPERTY(QObject * receivingPackage READ receivingPackage WRITE setReceivingPackage)
 
 public:
-    Q_INVOKABLE explicit QUmlPackageMergeObject(QUmlPackageMerge *qModelingObject);
+    Q_INVOKABLE explicit QUmlPackageMergeObject(QUmlPackageMerge *qModelingElement);
     virtual ~QUmlPackageMergeObject();
 
     // Owned attributes [Element]
@@ -118,6 +121,10 @@ public Q_SLOTS:
     // Slots for owned attributes [PackageMerge]
     void setMergedPackage(QObject *mergedPackage = 0);
     void setReceivingPackage(QObject *receivingPackage = 0);
+
+protected:
+    virtual void setGroupProperties();
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

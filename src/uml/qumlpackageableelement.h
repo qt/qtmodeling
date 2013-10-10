@@ -48,7 +48,6 @@
 
 
 #include <QtUml/QtUmlNamespace>
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -60,7 +59,7 @@ class Q_UML_EXPORT QUmlPackageableElement : public QUmlParameterableElement, pub
 public:
     virtual ~QUmlPackageableElement();
 
-    Q_DECL_HIDDEN QModelingObject *clone() const;
+    Q_DECL_HIDDEN virtual QModelingElement *clone() const;
 
     // Owned attributes
     QtUml::VisibilityKind visibility() const;
@@ -70,9 +69,6 @@ protected:
     explicit QUmlPackageableElement();
 
     QtUml::VisibilityKind _visibility;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

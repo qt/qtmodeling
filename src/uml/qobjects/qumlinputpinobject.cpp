@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlinputpinobject_p.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlInputPin>
 #include <QtUml/QUmlActivity>
@@ -65,16 +66,18 @@
 
 QT_BEGIN_NAMESPACE
 
-QUmlInputPinObject::QUmlInputPinObject(QUmlInputPin *qModelingObject)
+QUmlInputPinObject::QUmlInputPinObject(QUmlInputPin *qModelingElement)
 {
-    setProperty("modelingObject", QVariant::fromValue(static_cast<QModelingObject *>(qModelingObject)));
+    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(qModelingElement)));
+    setGroupProperties();
+    setPropertyData();
 }
 
 QUmlInputPinObject::~QUmlInputPinObject()
 {
     if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingobjectproperty_cast<QUmlInputPin *>(this)->deletingFromQObject = true;
-        delete qmodelingobjectproperty_cast<QUmlComment *>(this);
+        qmodelingelementproperty_cast<QUmlInputPin *>(this)->deletingFromQModelingObject = true;
+        delete qmodelingelementproperty_cast<QUmlComment *>(this);
     }
 }
 
@@ -83,63 +86,63 @@ QUmlInputPinObject::~QUmlInputPinObject()
 const QSet<QObject *> QUmlInputPinObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlInputPin *>(this)->ownedComments())
-        set.insert(element->asQObject());
+    foreach (QUmlComment *element, qmodelingelementproperty_cast<QUmlInputPin *>(this)->ownedComments())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlInputPinObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlInputPin *>(this)->ownedElements())
-        set.insert(element->asQObject());
+    foreach (QUmlElement *element, qmodelingelementproperty_cast<QUmlInputPin *>(this)->ownedElements())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 QObject *QUmlInputPinObject::owner() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlInputPin *>(this)->owner())
+    if (!qmodelingelementproperty_cast<QUmlInputPin *>(this)->owner())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlInputPin *>(this)->owner()->asQObject();
+        return qmodelingelementproperty_cast<QUmlInputPin *>(this)->owner()->asQModelingObject();
 }
 
 // OWNED ATTRIBUTES [MultiplicityElement]
 
 bool QUmlInputPinObject::isOrdered() const
 {
-    return qmodelingobjectproperty_cast<QUmlInputPin *>(this)->isOrdered();
+    return qmodelingelementproperty_cast<QUmlInputPin *>(this)->isOrdered();
 }
 
 bool QUmlInputPinObject::isUnique() const
 {
-    return qmodelingobjectproperty_cast<QUmlInputPin *>(this)->isUnique();
+    return qmodelingelementproperty_cast<QUmlInputPin *>(this)->isUnique();
 }
 
 int QUmlInputPinObject::lower() const
 {
-    return qmodelingobjectproperty_cast<QUmlInputPin *>(this)->lower();
+    return qmodelingelementproperty_cast<QUmlInputPin *>(this)->lower();
 }
 
 QObject *QUmlInputPinObject::lowerValue() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlInputPin *>(this)->lowerValue())
+    if (!qmodelingelementproperty_cast<QUmlInputPin *>(this)->lowerValue())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlInputPin *>(this)->lowerValue()->asQObject();
+        return qmodelingelementproperty_cast<QUmlInputPin *>(this)->lowerValue()->asQModelingObject();
 }
 
 int QUmlInputPinObject::upper() const
 {
-    return qmodelingobjectproperty_cast<QUmlInputPin *>(this)->upper();
+    return qmodelingelementproperty_cast<QUmlInputPin *>(this)->upper();
 }
 
 QObject *QUmlInputPinObject::upperValue() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlInputPin *>(this)->upperValue())
+    if (!qmodelingelementproperty_cast<QUmlInputPin *>(this)->upperValue())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlInputPin *>(this)->upperValue()->asQObject();
+        return qmodelingelementproperty_cast<QUmlInputPin *>(this)->upperValue()->asQModelingObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -147,62 +150,62 @@ QObject *QUmlInputPinObject::upperValue() const
 const QSet<QObject *> QUmlInputPinObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlInputPin *>(this)->clientDependencies())
-        set.insert(element->asQObject());
+    foreach (QUmlDependency *element, qmodelingelementproperty_cast<QUmlInputPin *>(this)->clientDependencies())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 QString QUmlInputPinObject::name() const
 {
-    return qmodelingobjectproperty_cast<QUmlInputPin *>(this)->name();
+    return qmodelingelementproperty_cast<QUmlInputPin *>(this)->name();
 }
 
 QObject *QUmlInputPinObject::nameExpression() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlInputPin *>(this)->nameExpression())
+    if (!qmodelingelementproperty_cast<QUmlInputPin *>(this)->nameExpression())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlInputPin *>(this)->nameExpression()->asQObject();
+        return qmodelingelementproperty_cast<QUmlInputPin *>(this)->nameExpression()->asQModelingObject();
 }
 
 QObject *QUmlInputPinObject::namespace_() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlInputPin *>(this)->namespace_())
+    if (!qmodelingelementproperty_cast<QUmlInputPin *>(this)->namespace_())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlInputPin *>(this)->namespace_()->asQObject();
+        return qmodelingelementproperty_cast<QUmlInputPin *>(this)->namespace_()->asQModelingObject();
 }
 
 QString QUmlInputPinObject::qualifiedName() const
 {
-    return qmodelingobjectproperty_cast<QUmlInputPin *>(this)->qualifiedName();
+    return qmodelingelementproperty_cast<QUmlInputPin *>(this)->qualifiedName();
 }
 
 QtUml::VisibilityKind QUmlInputPinObject::visibility() const
 {
-    return qmodelingobjectproperty_cast<QUmlInputPin *>(this)->visibility();
+    return qmodelingelementproperty_cast<QUmlInputPin *>(this)->visibility();
 }
 
 // OWNED ATTRIBUTES [RedefinableElement]
 
 bool QUmlInputPinObject::isLeaf() const
 {
-    return qmodelingobjectproperty_cast<QUmlInputPin *>(this)->isLeaf();
+    return qmodelingelementproperty_cast<QUmlInputPin *>(this)->isLeaf();
 }
 
 const QSet<QObject *> QUmlInputPinObject::redefinedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlRedefinableElement *element, qmodelingobjectproperty_cast<QUmlInputPin *>(this)->redefinedElements())
-        set.insert(element->asQObject());
+    foreach (QUmlRedefinableElement *element, qmodelingelementproperty_cast<QUmlInputPin *>(this)->redefinedElements())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlInputPinObject::redefinitionContexts() const
 {
     QSet<QObject *> set;
-    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlInputPin *>(this)->redefinitionContexts())
-        set.insert(element->asQObject());
+    foreach (QUmlClassifier *element, qmodelingelementproperty_cast<QUmlInputPin *>(this)->redefinitionContexts())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
@@ -210,65 +213,65 @@ const QSet<QObject *> QUmlInputPinObject::redefinitionContexts() const
 
 QObject *QUmlInputPinObject::activity() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlInputPin *>(this)->activity())
+    if (!qmodelingelementproperty_cast<QUmlInputPin *>(this)->activity())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlInputPin *>(this)->activity()->asQObject();
+        return qmodelingelementproperty_cast<QUmlInputPin *>(this)->activity()->asQModelingObject();
 }
 
 const QSet<QObject *> QUmlInputPinObject::inGroups() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityGroup *element, qmodelingobjectproperty_cast<QUmlInputPin *>(this)->inGroups())
-        set.insert(element->asQObject());
+    foreach (QUmlActivityGroup *element, qmodelingelementproperty_cast<QUmlInputPin *>(this)->inGroups())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlInputPinObject::inInterruptibleRegions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlInterruptibleActivityRegion *element, qmodelingobjectproperty_cast<QUmlInputPin *>(this)->inInterruptibleRegions())
-        set.insert(element->asQObject());
+    foreach (QUmlInterruptibleActivityRegion *element, qmodelingelementproperty_cast<QUmlInputPin *>(this)->inInterruptibleRegions())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlInputPinObject::inPartitions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityPartition *element, qmodelingobjectproperty_cast<QUmlInputPin *>(this)->inPartitions())
-        set.insert(element->asQObject());
+    foreach (QUmlActivityPartition *element, qmodelingelementproperty_cast<QUmlInputPin *>(this)->inPartitions())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 QObject *QUmlInputPinObject::inStructuredNode() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlInputPin *>(this)->inStructuredNode())
+    if (!qmodelingelementproperty_cast<QUmlInputPin *>(this)->inStructuredNode())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlInputPin *>(this)->inStructuredNode()->asQObject();
+        return qmodelingelementproperty_cast<QUmlInputPin *>(this)->inStructuredNode()->asQModelingObject();
 }
 
 const QSet<QObject *> QUmlInputPinObject::incomings() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlInputPin *>(this)->incomings())
-        set.insert(element->asQObject());
+    foreach (QUmlActivityEdge *element, qmodelingelementproperty_cast<QUmlInputPin *>(this)->incomings())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlInputPinObject::outgoings() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlInputPin *>(this)->outgoings())
-        set.insert(element->asQObject());
+    foreach (QUmlActivityEdge *element, qmodelingelementproperty_cast<QUmlInputPin *>(this)->outgoings())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlInputPinObject::redefinedNodes() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityNode *element, qmodelingobjectproperty_cast<QUmlInputPin *>(this)->redefinedNodes())
-        set.insert(element->asQObject());
+    foreach (QUmlActivityNode *element, qmodelingelementproperty_cast<QUmlInputPin *>(this)->redefinedNodes())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
@@ -276,10 +279,10 @@ const QSet<QObject *> QUmlInputPinObject::redefinedNodes() const
 
 QObject *QUmlInputPinObject::type() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlInputPin *>(this)->type())
+    if (!qmodelingelementproperty_cast<QUmlInputPin *>(this)->type())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlInputPin *>(this)->type()->asQObject();
+        return qmodelingelementproperty_cast<QUmlInputPin *>(this)->type()->asQModelingObject();
 }
 
 // OWNED ATTRIBUTES [ObjectNode]
@@ -287,42 +290,42 @@ QObject *QUmlInputPinObject::type() const
 const QSet<QObject *> QUmlInputPinObject::inStates() const
 {
     QSet<QObject *> set;
-    foreach (QUmlState *element, qmodelingobjectproperty_cast<QUmlInputPin *>(this)->inStates())
-        set.insert(element->asQObject());
+    foreach (QUmlState *element, qmodelingelementproperty_cast<QUmlInputPin *>(this)->inStates())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 bool QUmlInputPinObject::isControlType() const
 {
-    return qmodelingobjectproperty_cast<QUmlInputPin *>(this)->isControlType();
+    return qmodelingelementproperty_cast<QUmlInputPin *>(this)->isControlType();
 }
 
 QtUml::ObjectNodeOrderingKind QUmlInputPinObject::ordering() const
 {
-    return qmodelingobjectproperty_cast<QUmlInputPin *>(this)->ordering();
+    return qmodelingelementproperty_cast<QUmlInputPin *>(this)->ordering();
 }
 
 QObject *QUmlInputPinObject::selection() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlInputPin *>(this)->selection())
+    if (!qmodelingelementproperty_cast<QUmlInputPin *>(this)->selection())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlInputPin *>(this)->selection()->asQObject();
+        return qmodelingelementproperty_cast<QUmlInputPin *>(this)->selection()->asQModelingObject();
 }
 
 QObject *QUmlInputPinObject::upperBound() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlInputPin *>(this)->upperBound())
+    if (!qmodelingelementproperty_cast<QUmlInputPin *>(this)->upperBound())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlInputPin *>(this)->upperBound()->asQObject();
+        return qmodelingelementproperty_cast<QUmlInputPin *>(this)->upperBound()->asQModelingObject();
 }
 
 // OWNED ATTRIBUTES [Pin]
 
 bool QUmlInputPinObject::isControl() const
 {
-    return qmodelingobjectproperty_cast<QUmlInputPin *>(this)->isControl();
+    return qmodelingelementproperty_cast<QUmlInputPin *>(this)->isControl();
 }
 
 // OPERATIONS [Element]
@@ -330,51 +333,51 @@ bool QUmlInputPinObject::isControl() const
 QSet<QObject *> QUmlInputPinObject::allOwnedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlInputPin *>(this)->allOwnedElements())
-        set.insert(element->asQObject());
+    foreach (QUmlElement *element, qmodelingelementproperty_cast<QUmlInputPin *>(this)->allOwnedElements())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 bool QUmlInputPinObject::mustBeOwned() const
 {
-    return qmodelingobjectproperty_cast<QUmlInputPin *>(this)->mustBeOwned();
+    return qmodelingelementproperty_cast<QUmlInputPin *>(this)->mustBeOwned();
 }
 
 // OPERATIONS [MultiplicityElement]
 
 bool QUmlInputPinObject::compatibleWith(QObject *other) const
 {
-    return qmodelingobjectproperty_cast<QUmlInputPin *>(this)->compatibleWith(qmodelingobjectproperty_cast<QUmlMultiplicityElement *>(other));
+    return qmodelingelementproperty_cast<QUmlInputPin *>(this)->compatibleWith(qmodelingelementproperty_cast<QUmlMultiplicityElement *>(other));
 }
 
 bool QUmlInputPinObject::includesCardinality(int C) const
 {
-    return qmodelingobjectproperty_cast<QUmlInputPin *>(this)->includesCardinality(C);
+    return qmodelingelementproperty_cast<QUmlInputPin *>(this)->includesCardinality(C);
 }
 
 bool QUmlInputPinObject::includesMultiplicity(QObject *M) const
 {
-    return qmodelingobjectproperty_cast<QUmlInputPin *>(this)->includesMultiplicity(qmodelingobjectproperty_cast<QUmlMultiplicityElement *>(M));
+    return qmodelingelementproperty_cast<QUmlInputPin *>(this)->includesMultiplicity(qmodelingelementproperty_cast<QUmlMultiplicityElement *>(M));
 }
 
 bool QUmlInputPinObject::is(int lowerbound, int upperbound) const
 {
-    return qmodelingobjectproperty_cast<QUmlInputPin *>(this)->is(lowerbound, upperbound);
+    return qmodelingelementproperty_cast<QUmlInputPin *>(this)->is(lowerbound, upperbound);
 }
 
 bool QUmlInputPinObject::isMultivalued() const
 {
-    return qmodelingobjectproperty_cast<QUmlInputPin *>(this)->isMultivalued();
+    return qmodelingelementproperty_cast<QUmlInputPin *>(this)->isMultivalued();
 }
 
 int QUmlInputPinObject::lowerBound() const
 {
-    return qmodelingobjectproperty_cast<QUmlInputPin *>(this)->lowerBound();
+    return qmodelingelementproperty_cast<QUmlInputPin *>(this)->lowerBound();
 }
 
 //int QUmlInputPinObject::upperBound() const
 //{
-//    return qmodelingobjectproperty_cast<QUmlInputPin *>(this)->upperBound();
+//    return qmodelingelementproperty_cast<QUmlInputPin *>(this)->upperBound();
 //}
 
 // OPERATIONS [NamedElement]
@@ -382,320 +385,393 @@ int QUmlInputPinObject::lowerBound() const
 QList<QObject *> QUmlInputPinObject::allNamespaces() const
 {
     QList<QObject *> set;
-    foreach (QUmlNamespace *element, qmodelingobjectproperty_cast<QUmlInputPin *>(this)->allNamespaces())
-        set.append(element->asQObject());
+    foreach (QUmlNamespace *element, qmodelingelementproperty_cast<QUmlInputPin *>(this)->allNamespaces())
+        set.append(element->asQModelingObject());
     return set;
 }
 
 QSet<QObject *> QUmlInputPinObject::allOwningPackages() const
 {
     QSet<QObject *> set;
-    foreach (QUmlPackage *element, qmodelingobjectproperty_cast<QUmlInputPin *>(this)->allOwningPackages())
-        set.insert(element->asQObject());
+    foreach (QUmlPackage *element, qmodelingelementproperty_cast<QUmlInputPin *>(this)->allOwningPackages())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 bool QUmlInputPinObject::isDistinguishableFrom(QObject *n, QObject *ns) const
 {
-    return qmodelingobjectproperty_cast<QUmlInputPin *>(this)->isDistinguishableFrom(qmodelingobjectproperty_cast<QUmlNamedElement *>(n), qmodelingobjectproperty_cast<QUmlNamespace *>(ns));
+    return qmodelingelementproperty_cast<QUmlInputPin *>(this)->isDistinguishableFrom(qmodelingelementproperty_cast<QUmlNamedElement *>(n), qmodelingelementproperty_cast<QUmlNamespace *>(ns));
 }
 
 QString QUmlInputPinObject::separator() const
 {
-    return qmodelingobjectproperty_cast<QUmlInputPin *>(this)->separator();
+    return qmodelingelementproperty_cast<QUmlInputPin *>(this)->separator();
 }
 
 // OPERATIONS [RedefinableElement]
 
 bool QUmlInputPinObject::isConsistentWith(QObject *redefinee) const
 {
-    return qmodelingobjectproperty_cast<QUmlInputPin *>(this)->isConsistentWith(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefinee));
+    return qmodelingelementproperty_cast<QUmlInputPin *>(this)->isConsistentWith(qmodelingelementproperty_cast<QUmlRedefinableElement *>(redefinee));
 }
 
 bool QUmlInputPinObject::isRedefinitionContextValid(QObject *redefined) const
 {
-    return qmodelingobjectproperty_cast<QUmlInputPin *>(this)->isRedefinitionContextValid(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefined));
+    return qmodelingelementproperty_cast<QUmlInputPin *>(this)->isRedefinitionContextValid(qmodelingelementproperty_cast<QUmlRedefinableElement *>(redefined));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Element]
 
 void QUmlInputPinObject::addOwnedComment(QObject *ownedComment)
 {
-    qmodelingobjectproperty_cast<QUmlInputPin *>(this)->addOwnedComment(qmodelingobjectproperty_cast<QUmlComment *>(ownedComment));
+    qmodelingelementproperty_cast<QUmlInputPin *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
 }
 
 void QUmlInputPinObject::removeOwnedComment(QObject *ownedComment)
 {
-    qmodelingobjectproperty_cast<QUmlInputPin *>(this)->removeOwnedComment(qmodelingobjectproperty_cast<QUmlComment *>(ownedComment));
+    qmodelingelementproperty_cast<QUmlInputPin *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
 }
 
 void QUmlInputPinObject::addOwnedElement(QObject *ownedElement)
 {
-    qmodelingobjectproperty_cast<QUmlInputPin *>(this)->addOwnedElement(qmodelingobjectproperty_cast<QUmlElement *>(ownedElement));
+    qmodelingelementproperty_cast<QUmlInputPin *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
 }
 
 void QUmlInputPinObject::removeOwnedElement(QObject *ownedElement)
 {
-    qmodelingobjectproperty_cast<QUmlInputPin *>(this)->removeOwnedElement(qmodelingobjectproperty_cast<QUmlElement *>(ownedElement));
+    qmodelingelementproperty_cast<QUmlInputPin *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
 }
 
 void QUmlInputPinObject::setOwner(QObject *owner)
 {
-    qmodelingobjectproperty_cast<QUmlInputPin *>(this)->setOwner(qmodelingobjectproperty_cast<QUmlElement *>(owner));
+    qmodelingelementproperty_cast<QUmlInputPin *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [MultiplicityElement]
 
 void QUmlInputPinObject::setOrdered(bool isOrdered)
 {
-    qmodelingobjectproperty_cast<QUmlInputPin *>(this)->setOrdered(isOrdered);
+    qmodelingelementproperty_cast<QUmlInputPin *>(this)->setOrdered(isOrdered);
 }
 
 void QUmlInputPinObject::unsetOrdered()
 {
-    qmodelingobjectproperty_cast<QUmlInputPin *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("ordered"));
+    Q_D(QModelingObject);
+    d->modifiedResettableProperties.removeAll(QStringLiteral("ordered"));
 }
 
 void QUmlInputPinObject::setUnique(bool isUnique)
 {
-    qmodelingobjectproperty_cast<QUmlInputPin *>(this)->setUnique(isUnique);
+    qmodelingelementproperty_cast<QUmlInputPin *>(this)->setUnique(isUnique);
 }
 
 void QUmlInputPinObject::unsetUnique()
 {
-    qmodelingobjectproperty_cast<QUmlInputPin *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("unique"));
+    Q_D(QModelingObject);
+    d->modifiedResettableProperties.removeAll(QStringLiteral("unique"));
 }
 
 void QUmlInputPinObject::setLower(int lower)
 {
-    qmodelingobjectproperty_cast<QUmlInputPin *>(this)->setLower(lower);
+    qmodelingelementproperty_cast<QUmlInputPin *>(this)->setLower(lower);
 }
 
 void QUmlInputPinObject::unsetLower()
 {
-    qmodelingobjectproperty_cast<QUmlInputPin *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("lower"));
+    Q_D(QModelingObject);
+    d->modifiedResettableProperties.removeAll(QStringLiteral("lower"));
 }
 
 void QUmlInputPinObject::setLowerValue(QObject *lowerValue)
 {
-    qmodelingobjectproperty_cast<QUmlInputPin *>(this)->setLowerValue(qmodelingobjectproperty_cast<QUmlValueSpecification *>(lowerValue));
+    qmodelingelementproperty_cast<QUmlInputPin *>(this)->setLowerValue(qmodelingelementproperty_cast<QUmlValueSpecification *>(lowerValue));
 }
 
 void QUmlInputPinObject::setUpper(int upper)
 {
-    qmodelingobjectproperty_cast<QUmlInputPin *>(this)->setUpper(upper);
+    qmodelingelementproperty_cast<QUmlInputPin *>(this)->setUpper(upper);
 }
 
 void QUmlInputPinObject::unsetUpper()
 {
-    qmodelingobjectproperty_cast<QUmlInputPin *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("upper"));
+    Q_D(QModelingObject);
+    d->modifiedResettableProperties.removeAll(QStringLiteral("upper"));
 }
 
 void QUmlInputPinObject::setUpperValue(QObject *upperValue)
 {
-    qmodelingobjectproperty_cast<QUmlInputPin *>(this)->setUpperValue(qmodelingobjectproperty_cast<QUmlValueSpecification *>(upperValue));
+    qmodelingelementproperty_cast<QUmlInputPin *>(this)->setUpperValue(qmodelingelementproperty_cast<QUmlValueSpecification *>(upperValue));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [NamedElement]
 
 void QUmlInputPinObject::addClientDependency(QObject *clientDependency)
 {
-    qmodelingobjectproperty_cast<QUmlInputPin *>(this)->addClientDependency(qmodelingobjectproperty_cast<QUmlDependency *>(clientDependency));
+    qmodelingelementproperty_cast<QUmlInputPin *>(this)->addClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
 }
 
 void QUmlInputPinObject::removeClientDependency(QObject *clientDependency)
 {
-    qmodelingobjectproperty_cast<QUmlInputPin *>(this)->removeClientDependency(qmodelingobjectproperty_cast<QUmlDependency *>(clientDependency));
+    qmodelingelementproperty_cast<QUmlInputPin *>(this)->removeClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
 }
 
 void QUmlInputPinObject::setName(QString name)
 {
-    qmodelingobjectproperty_cast<QUmlInputPin *>(this)->setName(name);
+    qmodelingelementproperty_cast<QUmlInputPin *>(this)->setName(name);
 }
 
 void QUmlInputPinObject::setNameExpression(QObject *nameExpression)
 {
-    qmodelingobjectproperty_cast<QUmlInputPin *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
+    qmodelingelementproperty_cast<QUmlInputPin *>(this)->setNameExpression(qmodelingelementproperty_cast<QUmlStringExpression *>(nameExpression));
 }
 
 void QUmlInputPinObject::setNamespace(QObject *namespace_)
 {
-    qmodelingobjectproperty_cast<QUmlInputPin *>(this)->setNamespace(qmodelingobjectproperty_cast<QUmlNamespace *>(namespace_));
+    qmodelingelementproperty_cast<QUmlInputPin *>(this)->setNamespace(qmodelingelementproperty_cast<QUmlNamespace *>(namespace_));
 }
 
 void QUmlInputPinObject::setQualifiedName(QString qualifiedName)
 {
-    qmodelingobjectproperty_cast<QUmlInputPin *>(this)->setQualifiedName(qualifiedName);
+    qmodelingelementproperty_cast<QUmlInputPin *>(this)->setQualifiedName(qualifiedName);
 }
 
 void QUmlInputPinObject::setVisibility(QtUml::VisibilityKind visibility)
 {
-    qmodelingobjectproperty_cast<QUmlInputPin *>(this)->setVisibility(visibility);
+    qmodelingelementproperty_cast<QUmlInputPin *>(this)->setVisibility(visibility);
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [RedefinableElement]
 
 void QUmlInputPinObject::setLeaf(bool isLeaf)
 {
-    qmodelingobjectproperty_cast<QUmlInputPin *>(this)->setLeaf(isLeaf);
+    qmodelingelementproperty_cast<QUmlInputPin *>(this)->setLeaf(isLeaf);
 }
 
 void QUmlInputPinObject::unsetLeaf()
 {
-    qmodelingobjectproperty_cast<QUmlInputPin *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("leaf"));
+    Q_D(QModelingObject);
+    d->modifiedResettableProperties.removeAll(QStringLiteral("leaf"));
 }
 
 void QUmlInputPinObject::addRedefinedElement(QObject *redefinedElement)
 {
-    qmodelingobjectproperty_cast<QUmlInputPin *>(this)->addRedefinedElement(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefinedElement));
+    qmodelingelementproperty_cast<QUmlInputPin *>(this)->addRedefinedElement(qmodelingelementproperty_cast<QUmlRedefinableElement *>(redefinedElement));
 }
 
 void QUmlInputPinObject::removeRedefinedElement(QObject *redefinedElement)
 {
-    qmodelingobjectproperty_cast<QUmlInputPin *>(this)->removeRedefinedElement(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefinedElement));
+    qmodelingelementproperty_cast<QUmlInputPin *>(this)->removeRedefinedElement(qmodelingelementproperty_cast<QUmlRedefinableElement *>(redefinedElement));
 }
 
 void QUmlInputPinObject::addRedefinitionContext(QObject *redefinitionContext)
 {
-    qmodelingobjectproperty_cast<QUmlInputPin *>(this)->addRedefinitionContext(qmodelingobjectproperty_cast<QUmlClassifier *>(redefinitionContext));
+    qmodelingelementproperty_cast<QUmlInputPin *>(this)->addRedefinitionContext(qmodelingelementproperty_cast<QUmlClassifier *>(redefinitionContext));
 }
 
 void QUmlInputPinObject::removeRedefinitionContext(QObject *redefinitionContext)
 {
-    qmodelingobjectproperty_cast<QUmlInputPin *>(this)->removeRedefinitionContext(qmodelingobjectproperty_cast<QUmlClassifier *>(redefinitionContext));
+    qmodelingelementproperty_cast<QUmlInputPin *>(this)->removeRedefinitionContext(qmodelingelementproperty_cast<QUmlClassifier *>(redefinitionContext));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ActivityNode]
 
 void QUmlInputPinObject::setActivity(QObject *activity)
 {
-    qmodelingobjectproperty_cast<QUmlInputPin *>(this)->setActivity(qmodelingobjectproperty_cast<QUmlActivity *>(activity));
+    qmodelingelementproperty_cast<QUmlInputPin *>(this)->setActivity(qmodelingelementproperty_cast<QUmlActivity *>(activity));
 }
 
 void QUmlInputPinObject::addInGroup(QObject *inGroup)
 {
-    qmodelingobjectproperty_cast<QUmlInputPin *>(this)->addInGroup(qmodelingobjectproperty_cast<QUmlActivityGroup *>(inGroup));
+    qmodelingelementproperty_cast<QUmlInputPin *>(this)->addInGroup(qmodelingelementproperty_cast<QUmlActivityGroup *>(inGroup));
 }
 
 void QUmlInputPinObject::removeInGroup(QObject *inGroup)
 {
-    qmodelingobjectproperty_cast<QUmlInputPin *>(this)->removeInGroup(qmodelingobjectproperty_cast<QUmlActivityGroup *>(inGroup));
+    qmodelingelementproperty_cast<QUmlInputPin *>(this)->removeInGroup(qmodelingelementproperty_cast<QUmlActivityGroup *>(inGroup));
 }
 
 void QUmlInputPinObject::addInInterruptibleRegion(QObject *inInterruptibleRegion)
 {
-    qmodelingobjectproperty_cast<QUmlInputPin *>(this)->addInInterruptibleRegion(qmodelingobjectproperty_cast<QUmlInterruptibleActivityRegion *>(inInterruptibleRegion));
+    qmodelingelementproperty_cast<QUmlInputPin *>(this)->addInInterruptibleRegion(qmodelingelementproperty_cast<QUmlInterruptibleActivityRegion *>(inInterruptibleRegion));
 }
 
 void QUmlInputPinObject::removeInInterruptibleRegion(QObject *inInterruptibleRegion)
 {
-    qmodelingobjectproperty_cast<QUmlInputPin *>(this)->removeInInterruptibleRegion(qmodelingobjectproperty_cast<QUmlInterruptibleActivityRegion *>(inInterruptibleRegion));
+    qmodelingelementproperty_cast<QUmlInputPin *>(this)->removeInInterruptibleRegion(qmodelingelementproperty_cast<QUmlInterruptibleActivityRegion *>(inInterruptibleRegion));
 }
 
 void QUmlInputPinObject::addInPartition(QObject *inPartition)
 {
-    qmodelingobjectproperty_cast<QUmlInputPin *>(this)->addInPartition(qmodelingobjectproperty_cast<QUmlActivityPartition *>(inPartition));
+    qmodelingelementproperty_cast<QUmlInputPin *>(this)->addInPartition(qmodelingelementproperty_cast<QUmlActivityPartition *>(inPartition));
 }
 
 void QUmlInputPinObject::removeInPartition(QObject *inPartition)
 {
-    qmodelingobjectproperty_cast<QUmlInputPin *>(this)->removeInPartition(qmodelingobjectproperty_cast<QUmlActivityPartition *>(inPartition));
+    qmodelingelementproperty_cast<QUmlInputPin *>(this)->removeInPartition(qmodelingelementproperty_cast<QUmlActivityPartition *>(inPartition));
 }
 
 void QUmlInputPinObject::setInStructuredNode(QObject *inStructuredNode)
 {
-    qmodelingobjectproperty_cast<QUmlInputPin *>(this)->setInStructuredNode(qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(inStructuredNode));
+    qmodelingelementproperty_cast<QUmlInputPin *>(this)->setInStructuredNode(qmodelingelementproperty_cast<QUmlStructuredActivityNode *>(inStructuredNode));
 }
 
 void QUmlInputPinObject::addIncoming(QObject *incoming)
 {
-    qmodelingobjectproperty_cast<QUmlInputPin *>(this)->addIncoming(qmodelingobjectproperty_cast<QUmlActivityEdge *>(incoming));
+    qmodelingelementproperty_cast<QUmlInputPin *>(this)->addIncoming(qmodelingelementproperty_cast<QUmlActivityEdge *>(incoming));
 }
 
 void QUmlInputPinObject::removeIncoming(QObject *incoming)
 {
-    qmodelingobjectproperty_cast<QUmlInputPin *>(this)->removeIncoming(qmodelingobjectproperty_cast<QUmlActivityEdge *>(incoming));
+    qmodelingelementproperty_cast<QUmlInputPin *>(this)->removeIncoming(qmodelingelementproperty_cast<QUmlActivityEdge *>(incoming));
 }
 
 void QUmlInputPinObject::addOutgoing(QObject *outgoing)
 {
-    qmodelingobjectproperty_cast<QUmlInputPin *>(this)->addOutgoing(qmodelingobjectproperty_cast<QUmlActivityEdge *>(outgoing));
+    qmodelingelementproperty_cast<QUmlInputPin *>(this)->addOutgoing(qmodelingelementproperty_cast<QUmlActivityEdge *>(outgoing));
 }
 
 void QUmlInputPinObject::removeOutgoing(QObject *outgoing)
 {
-    qmodelingobjectproperty_cast<QUmlInputPin *>(this)->removeOutgoing(qmodelingobjectproperty_cast<QUmlActivityEdge *>(outgoing));
+    qmodelingelementproperty_cast<QUmlInputPin *>(this)->removeOutgoing(qmodelingelementproperty_cast<QUmlActivityEdge *>(outgoing));
 }
 
 void QUmlInputPinObject::addRedefinedNode(QObject *redefinedNode)
 {
-    qmodelingobjectproperty_cast<QUmlInputPin *>(this)->addRedefinedNode(qmodelingobjectproperty_cast<QUmlActivityNode *>(redefinedNode));
+    qmodelingelementproperty_cast<QUmlInputPin *>(this)->addRedefinedNode(qmodelingelementproperty_cast<QUmlActivityNode *>(redefinedNode));
 }
 
 void QUmlInputPinObject::removeRedefinedNode(QObject *redefinedNode)
 {
-    qmodelingobjectproperty_cast<QUmlInputPin *>(this)->removeRedefinedNode(qmodelingobjectproperty_cast<QUmlActivityNode *>(redefinedNode));
+    qmodelingelementproperty_cast<QUmlInputPin *>(this)->removeRedefinedNode(qmodelingelementproperty_cast<QUmlActivityNode *>(redefinedNode));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [TypedElement]
 
 void QUmlInputPinObject::setType(QObject *type)
 {
-    qmodelingobjectproperty_cast<QUmlInputPin *>(this)->setType(qmodelingobjectproperty_cast<QUmlType *>(type));
+    qmodelingelementproperty_cast<QUmlInputPin *>(this)->setType(qmodelingelementproperty_cast<QUmlType *>(type));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ObjectNode]
 
 void QUmlInputPinObject::addInState(QObject *inState)
 {
-    qmodelingobjectproperty_cast<QUmlInputPin *>(this)->addInState(qmodelingobjectproperty_cast<QUmlState *>(inState));
+    qmodelingelementproperty_cast<QUmlInputPin *>(this)->addInState(qmodelingelementproperty_cast<QUmlState *>(inState));
 }
 
 void QUmlInputPinObject::removeInState(QObject *inState)
 {
-    qmodelingobjectproperty_cast<QUmlInputPin *>(this)->removeInState(qmodelingobjectproperty_cast<QUmlState *>(inState));
+    qmodelingelementproperty_cast<QUmlInputPin *>(this)->removeInState(qmodelingelementproperty_cast<QUmlState *>(inState));
 }
 
 void QUmlInputPinObject::setControlType(bool isControlType)
 {
-    qmodelingobjectproperty_cast<QUmlInputPin *>(this)->setControlType(isControlType);
+    qmodelingelementproperty_cast<QUmlInputPin *>(this)->setControlType(isControlType);
 }
 
 void QUmlInputPinObject::unsetControlType()
 {
-    qmodelingobjectproperty_cast<QUmlInputPin *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("controlType"));
+    Q_D(QModelingObject);
+    d->modifiedResettableProperties.removeAll(QStringLiteral("controlType"));
 }
 
 void QUmlInputPinObject::setOrdering(QtUml::ObjectNodeOrderingKind ordering)
 {
-    qmodelingobjectproperty_cast<QUmlInputPin *>(this)->setOrdering(ordering);
+    qmodelingelementproperty_cast<QUmlInputPin *>(this)->setOrdering(ordering);
 }
 
 void QUmlInputPinObject::unsetOrdering()
 {
-    qmodelingobjectproperty_cast<QUmlInputPin *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("ordering"));
+    Q_D(QModelingObject);
+    d->modifiedResettableProperties.removeAll(QStringLiteral("ordering"));
 }
 
 void QUmlInputPinObject::setSelection(QObject *selection)
 {
-    qmodelingobjectproperty_cast<QUmlInputPin *>(this)->setSelection(qmodelingobjectproperty_cast<QUmlBehavior *>(selection));
+    qmodelingelementproperty_cast<QUmlInputPin *>(this)->setSelection(qmodelingelementproperty_cast<QUmlBehavior *>(selection));
 }
 
 void QUmlInputPinObject::setUpperBound(QObject *upperBound)
 {
-    qmodelingobjectproperty_cast<QUmlInputPin *>(this)->setUpperBound(qmodelingobjectproperty_cast<QUmlValueSpecification *>(upperBound));
+    qmodelingelementproperty_cast<QUmlInputPin *>(this)->setUpperBound(qmodelingelementproperty_cast<QUmlValueSpecification *>(upperBound));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Pin]
 
 void QUmlInputPinObject::setControl(bool isControl)
 {
-    qmodelingobjectproperty_cast<QUmlInputPin *>(this)->setControl(isControl);
+    qmodelingelementproperty_cast<QUmlInputPin *>(this)->setControl(isControl);
 }
 
 void QUmlInputPinObject::unsetControl()
 {
-    qmodelingobjectproperty_cast<QUmlInputPin *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("control"));
+    Q_D(QModelingObject);
+    d->modifiedResettableProperties.removeAll(QStringLiteral("control"));
+}
+
+
+void QUmlInputPinObject::setGroupProperties()
+{
+    Q_D(QModelingObject);
+    const QMetaObject *metaObject = this->metaObject();
+
+    d->propertyGroups << QStringLiteral("QObject");
+    d->groupProperties.insert(QStringLiteral("QObject"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("objectName"))));
+
+    d->propertyGroups << QStringLiteral("QUmlElement");
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
+
+    d->propertyGroups << QStringLiteral("QUmlMultiplicityElement");
+    d->groupProperties.insert(QStringLiteral("QUmlMultiplicityElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isOrdered"))));
+    d->groupProperties.insert(QStringLiteral("QUmlMultiplicityElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isUnique"))));
+    d->groupProperties.insert(QStringLiteral("QUmlMultiplicityElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("lower"))));
+    d->groupProperties.insert(QStringLiteral("QUmlMultiplicityElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("lowerValue"))));
+    d->groupProperties.insert(QStringLiteral("QUmlMultiplicityElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("upper"))));
+    d->groupProperties.insert(QStringLiteral("QUmlMultiplicityElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("upperValue"))));
+
+    d->propertyGroups << QStringLiteral("QUmlNamedElement");
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
+
+    d->propertyGroups << QStringLiteral("QUmlRedefinableElement");
+    d->groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isLeaf"))));
+    d->groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinedElements"))));
+    d->groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinitionContexts"))));
+
+    d->propertyGroups << QStringLiteral("QUmlActivityNode");
+    d->groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("activity"))));
+    d->groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inGroups"))));
+    d->groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inInterruptibleRegions"))));
+    d->groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inPartitions"))));
+    d->groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inStructuredNode"))));
+    d->groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("incomings"))));
+    d->groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("outgoings"))));
+    d->groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinedNodes"))));
+
+    d->propertyGroups << QStringLiteral("QUmlTypedElement");
+    d->groupProperties.insert(QStringLiteral("QUmlTypedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("type"))));
+
+    d->propertyGroups << QStringLiteral("QUmlObjectNode");
+    d->groupProperties.insert(QStringLiteral("QUmlObjectNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inStates"))));
+    d->groupProperties.insert(QStringLiteral("QUmlObjectNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isControlType"))));
+    d->groupProperties.insert(QStringLiteral("QUmlObjectNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ordering"))));
+    d->groupProperties.insert(QStringLiteral("QUmlObjectNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("selection"))));
+    d->groupProperties.insert(QStringLiteral("QUmlObjectNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("upperBound"))));
+
+    d->propertyGroups << QStringLiteral("QUmlPin");
+    d->groupProperties.insert(QStringLiteral("QUmlPin"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isControl"))));
+
+    d->propertyGroups << QStringLiteral("QUmlInputPin");
+}
+
+void QUmlInputPinObject::setPropertyData()
+{
 }
 
 QT_END_NAMESPACE

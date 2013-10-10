@@ -59,15 +59,13 @@
 QUmlTypedElement::QUmlTypedElement() :
     _type(0)
 {
-    setGroupProperties();
-    setPropertyData();
 }
 
 QUmlTypedElement::~QUmlTypedElement()
 {
 }
 
-QModelingObject *QUmlTypedElement::clone() const
+QModelingElement *QUmlTypedElement::clone() const
 {
     QUmlTypedElement *c = new QUmlTypedElement;
     foreach (QUmlComment *element, ownedComments())
@@ -101,37 +99,8 @@ void QUmlTypedElement::setType(QUmlType *type)
 
     if (_type != type) {
         _type = type;
-        if (type && type->asQObject() && this->asQObject())
-            QObject::connect(type->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setType()));
+        if (type && type->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(type->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setType()));
     }
-}
-
-void QUmlTypedElement::setGroupProperties()
-{
-    const QMetaObject *metaObject = _qObject->metaObject();
-
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
-    _groupProperties.insert(QStringLiteral("QUmlTypedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("type"))));
-}
-
-void QUmlTypedElement::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTypedElement")][QStringLiteral("type")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTypedElement")][QStringLiteral("type")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlTypedElement");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTypedElement")][QStringLiteral("type")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTypedElement")][QStringLiteral("type")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTypedElement")][QStringLiteral("type")][QtModeling::DocumentationRole] = QStringLiteral("This information is derived from the return result for this Operation.The type of the TypedElement.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTypedElement")][QStringLiteral("type")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTypedElement")][QStringLiteral("type")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTypedElement")][QStringLiteral("type")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
 }
 

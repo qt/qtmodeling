@@ -46,7 +46,6 @@
 #include <QtUml/QUmlClassifier>
 #include <QtUml/QUmlRelationship>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -59,10 +58,10 @@ class QUmlType;
 class Q_UML_EXPORT QUmlAssociation : public virtual QUmlClassifier, public QUmlRelationship
 {
 public:
-    explicit QUmlAssociation(bool createQObject = true);
+    explicit QUmlAssociation(bool createQModelingObject = true);
     virtual ~QUmlAssociation();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
     const QList<QUmlType *> endTypes() const;
@@ -85,9 +84,6 @@ protected:
     QList<QUmlProperty *> _memberEnds;
     QSet<QUmlProperty *> _navigableOwnedEnds;
     QList<QUmlProperty *> _ownedEnds;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

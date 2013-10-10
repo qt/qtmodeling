@@ -43,7 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtCore/QObject>
+#include <QtModeling/QModelingObject>
 
 #include <QtUml/QtUmlNamespace>
 
@@ -54,9 +54,12 @@ QT_BEGIN_NAMESPACE
 QT_MODULE(QtUml)
 
 class QUmlAnyReceiveEvent;
-class Q_UML_EXPORT QUmlAnyReceiveEventObject : public QObject
+class QModelingObjectPrivate;
+class Q_UML_EXPORT QUmlAnyReceiveEventObject : public QModelingObject
 {
     Q_OBJECT
+    Q_DISABLE_COPY(QUmlAnyReceiveEventObject)
+    Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [Element]
     Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
@@ -78,7 +81,7 @@ class Q_UML_EXPORT QUmlAnyReceiveEventObject : public QObject
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility RESET unsetVisibility)
 
 public:
-    Q_INVOKABLE explicit QUmlAnyReceiveEventObject(QUmlAnyReceiveEvent *qModelingObject);
+    Q_INVOKABLE explicit QUmlAnyReceiveEventObject(QUmlAnyReceiveEvent *qModelingElement);
     virtual ~QUmlAnyReceiveEventObject();
 
     // Owned attributes [Element]
@@ -138,6 +141,10 @@ public Q_SLOTS:
     // Slots for owned attributes [PackageableElement]
     void setVisibility(QtUml::VisibilityKind visibility);
     void unsetVisibility();
+
+protected:
+    virtual void setGroupProperties();
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

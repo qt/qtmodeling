@@ -63,15 +63,13 @@
 QUmlConnectableElement::QUmlConnectableElement() :
     _templateParameter(0)
 {
-    setGroupProperties();
-    setPropertyData();
 }
 
 QUmlConnectableElement::~QUmlConnectableElement()
 {
 }
 
-QModelingObject *QUmlConnectableElement::clone() const
+QModelingElement *QUmlConnectableElement::clone() const
 {
     QUmlConnectableElement *c = new QUmlConnectableElement;
     foreach (QUmlComment *element, ownedComments())
@@ -155,49 +153,8 @@ void QUmlConnectableElement::setTemplateParameter(QUmlConnectableElementTemplate
 
     if (_templateParameter != templateParameter) {
         _templateParameter = templateParameter;
-        if (templateParameter && templateParameter->asQObject() && this->asQObject())
-            QObject::connect(templateParameter->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setTemplateParameter()));
+        if (templateParameter && templateParameter->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(templateParameter->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setTemplateParameter()));
     }
-}
-
-void QUmlConnectableElement::setGroupProperties()
-{
-    const QMetaObject *metaObject = _qObject->metaObject();
-
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
-    _groupProperties.insert(QStringLiteral("QUmlTypedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("type"))));
-    _groupProperties.insert(QStringLiteral("QUmlParameterableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owningTemplateParameter"))));
-    _groupProperties.insert(QStringLiteral("QUmlConnectableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ends"))));
-    _groupProperties.insert(QStringLiteral("QUmlConnectableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("templateParameter"))));
-}
-
-void QUmlConnectableElement::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectableElement")][QStringLiteral("ends")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectableElement")][QStringLiteral("ends")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlConnectableElement");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectableElement")][QStringLiteral("ends")][QtModeling::IsDerivedRole] = true;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectableElement")][QStringLiteral("ends")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectableElement")][QStringLiteral("ends")][QtModeling::DocumentationRole] = QStringLiteral("Denotes a set of connector ends that attaches to this connectable element.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectableElement")][QStringLiteral("ends")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectableElement")][QStringLiteral("ends")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectableElement")][QStringLiteral("ends")][QtModeling::OppositeEndRole] = QStringLiteral("ConnectorEnd-role");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectableElement")][QStringLiteral("templateParameter")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectableElement")][QStringLiteral("templateParameter")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlConnectableElement");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectableElement")][QStringLiteral("templateParameter")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectableElement")][QStringLiteral("templateParameter")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectableElement")][QStringLiteral("templateParameter")][QtModeling::DocumentationRole] = QStringLiteral("The ConnectableElementTemplateParameter for this ConnectableElement parameter.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectableElement")][QStringLiteral("templateParameter")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("ParameterableElement-templateParameter");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectableElement")][QStringLiteral("templateParameter")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectableElement")][QStringLiteral("templateParameter")][QtModeling::OppositeEndRole] = QStringLiteral("ConnectableElementTemplateParameter-parameteredElement");
-
 }
 

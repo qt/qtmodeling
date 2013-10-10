@@ -43,7 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtCore/QObject>
+#include <QtModeling/QModelingObject>
 
 QT_BEGIN_HEADER
 
@@ -52,9 +52,12 @@ QT_BEGIN_NAMESPACE
 QT_MODULE(QtUml)
 
 class QUmlProfileApplication;
-class Q_UML_EXPORT QUmlProfileApplicationObject : public QObject
+class QModelingObjectPrivate;
+class Q_UML_EXPORT QUmlProfileApplicationObject : public QModelingObject
 {
     Q_OBJECT
+    Q_DISABLE_COPY(QUmlProfileApplicationObject)
+    Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [Element]
     Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
@@ -74,7 +77,7 @@ class Q_UML_EXPORT QUmlProfileApplicationObject : public QObject
     Q_PROPERTY(bool isStrict READ isStrict WRITE setStrict RESET unsetStrict)
 
 public:
-    Q_INVOKABLE explicit QUmlProfileApplicationObject(QUmlProfileApplication *qModelingObject);
+    Q_INVOKABLE explicit QUmlProfileApplicationObject(QUmlProfileApplication *qModelingElement);
     virtual ~QUmlProfileApplicationObject();
 
     // Owned attributes [Element]
@@ -122,6 +125,10 @@ public Q_SLOTS:
     void setApplyingPackage(QObject *applyingPackage = 0);
     void setStrict(bool isStrict);
     void unsetStrict();
+
+protected:
+    virtual void setGroupProperties();
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

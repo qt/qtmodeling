@@ -88,26 +88,24 @@
 
     \brief In the namespace of a component, all model elements that are involved in or related to its definition are either owned or imported explicitly. This may include, for example, use cases and dependencies (e.g. mappings), packages, components, and artifacts.A component represents a modular part of a system that encapsulates its contents and whose manifestation is replaceable within its environment.
  */
-QUmlComponent::QUmlComponent(bool createQObject) :
+QUmlComponent::QUmlComponent(bool createQModelingObject) :
     QUmlClass(false),
     _isIndirectlyInstantiated(true)
 {
-    if (createQObject)
-        _qObject = new QUmlComponentObject(this);
-    setGroupProperties();
-    setPropertyData();
+    if (createQModelingObject)
+        _qModelingObject = qobject_cast<QModelingObject *>(new QUmlComponentObject(this));
 }
 
 QUmlComponent::~QUmlComponent()
 {
-    if (!deletingFromQObject) {
-        if (_qObject)
-            _qObject->setProperty("deletingFromModelingObject", true);
-        delete _qObject;
+    if (!deletingFromQModelingObject) {
+        if (_qModelingObject)
+            _qModelingObject->setProperty("deletingFromModelingObject", true);
+        delete _qModelingObject;
     }
 }
 
-QModelingObject *QUmlComponent::clone() const
+QModelingElement *QUmlComponent::clone() const
 {
     QUmlComponent *c = new QUmlComponent;
     foreach (QUmlComment *element, ownedComments())
@@ -196,7 +194,7 @@ void QUmlComponent::setIndirectlyInstantiated(bool isIndirectlyInstantiated)
 
     if (_isIndirectlyInstantiated != isIndirectlyInstantiated) {
         _isIndirectlyInstantiated = isIndirectlyInstantiated;
-        _modifiedResettableProperties << QStringLiteral("isIndirectlyInstantiated");
+        _qModelingObject->modifiedResettableProperties() << QStringLiteral("isIndirectlyInstantiated");
     }
 }
 
@@ -216,9 +214,9 @@ void QUmlComponent::addPackagedElement(QUmlPackageableElement *packagedElement)
 
     if (!_packagedElements.contains(packagedElement)) {
         _packagedElements.insert(packagedElement);
-        if (packagedElement && packagedElement->asQObject() && this->asQObject())
-            QObject::connect(packagedElement->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removePackagedElement(QObject *)));
-        packagedElement->asQObject()->setParent(this->asQObject());
+        if (packagedElement && packagedElement->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(packagedElement->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removePackagedElement(QObject *)));
+        packagedElement->asQModelingObject()->setParent(this->asQModelingObject());
 
         // Adjust subsetted properties
         addOwnedMember(packagedElement);
@@ -231,8 +229,8 @@ void QUmlComponent::removePackagedElement(QUmlPackageableElement *packagedElemen
 
     if (_packagedElements.contains(packagedElement)) {
         _packagedElements.remove(packagedElement);
-        if (packagedElement->asQObject())
-            packagedElement->asQObject()->setParent(0);
+        if (packagedElement->asQModelingObject())
+            packagedElement->asQModelingObject()->setParent(0);
 
         // Adjust subsetted properties
         removeOwnedMember(packagedElement);
@@ -291,9 +289,9 @@ void QUmlComponent::addRealization(QUmlComponentRealization *realization)
 
     if (!_realizations.contains(realization)) {
         _realizations.insert(realization);
-        if (realization && realization->asQObject() && this->asQObject())
-            QObject::connect(realization->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeRealization(QObject *)));
-        realization->asQObject()->setParent(this->asQObject());
+        if (realization && realization->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(realization->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeRealization(QObject *)));
+        realization->asQModelingObject()->setParent(this->asQModelingObject());
 
         // Adjust subsetted properties
         addOwnedElement(realization);
@@ -311,8 +309,8 @@ void QUmlComponent::removeRealization(QUmlComponentRealization *realization)
 
     if (_realizations.contains(realization)) {
         _realizations.remove(realization);
-        if (realization->asQObject())
-            realization->asQObject()->setParent(0);
+        if (realization->asQModelingObject())
+            realization->asQModelingObject()->setParent(0);
 
         // Adjust subsetted properties
         removeOwnedElement(realization);
@@ -382,115 +380,5 @@ QSet<QUmlInterface *> QUmlComponent::usedInterfaces(QUmlClassifier *classifier) 
 
     Q_UNUSED(classifier);
     return QSet<QUmlInterface *> ();
-}
-
-void QUmlComponent::setGroupProperties()
-{
-    const QMetaObject *metaObject = _qObject->metaObject();
-
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("elementImports"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("importedMembers"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("members"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedMembers"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedRules"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("packageImports"))));
-    _groupProperties.insert(QStringLiteral("QUmlParameterableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owningTemplateParameter"))));
-    _groupProperties.insert(QStringLiteral("QUmlPackageableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
-    _groupProperties.insert(QStringLiteral("QUmlType"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("package"))));
-    _groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isLeaf"))));
-    _groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinitionContexts"))));
-    _groupProperties.insert(QStringLiteral("QUmlTemplateableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("templateBindings"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("attributes"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("collaborationUses"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("features"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("generalizations"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inheritedMembers"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isFinalSpecialization"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedTemplateSignature"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedUseCases"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("powertypeExtents"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinedClassifiers"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("representation"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("substitutions"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("templateParameter"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("useCases"))));
-    _groupProperties.insert(QStringLiteral("QUmlStructuredClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedConnectors"))));
-    _groupProperties.insert(QStringLiteral("QUmlStructuredClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("parts"))));
-    _groupProperties.insert(QStringLiteral("QUmlStructuredClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("roles"))));
-    _groupProperties.insert(QStringLiteral("QUmlEncapsulatedClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedPorts"))));
-    _groupProperties.insert(QStringLiteral("QUmlBehavioredClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("classifierBehavior"))));
-    _groupProperties.insert(QStringLiteral("QUmlBehavioredClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("interfaceRealizations"))));
-    _groupProperties.insert(QStringLiteral("QUmlBehavioredClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedBehaviors"))));
-    _groupProperties.insert(QStringLiteral("QUmlClass"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("extensions"))));
-    _groupProperties.insert(QStringLiteral("QUmlClass"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isAbstract"))));
-    _groupProperties.insert(QStringLiteral("QUmlClass"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isActive"))));
-    _groupProperties.insert(QStringLiteral("QUmlClass"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nestedClassifiers"))));
-    _groupProperties.insert(QStringLiteral("QUmlClass"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedAttributes"))));
-    _groupProperties.insert(QStringLiteral("QUmlClass"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedOperations"))));
-    _groupProperties.insert(QStringLiteral("QUmlClass"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedReceptions"))));
-    _groupProperties.insert(QStringLiteral("QUmlClass"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("superClasses"))));
-    _groupProperties.insert(QStringLiteral("QUmlComponent"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isIndirectlyInstantiated"))));
-    _groupProperties.insert(QStringLiteral("QUmlComponent"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("packagedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlComponent"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("provided"))));
-    _groupProperties.insert(QStringLiteral("QUmlComponent"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("realizations"))));
-    _groupProperties.insert(QStringLiteral("QUmlComponent"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("required"))));
-}
-
-void QUmlComponent::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("isIndirectlyInstantiated")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("isIndirectlyInstantiated")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlComponent");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("isIndirectlyInstantiated")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("isIndirectlyInstantiated")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("isIndirectlyInstantiated")][QtModeling::DocumentationRole] = QStringLiteral("isIndirectlyInstantiated : Boolean {default = true} The kind of instantiation that applies to a Component. If false, the component is instantiated as an addressable object. If true, the Component is defined at design-time, but at run-time (or execution-time) an object specified by the Component does not exist, that is, the component is instantiated indirectly, through the instantiation of its realizing classifiers or parts. Several standard stereotypes use this meta attribute (e.g., specification, focus, subsystem).");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("isIndirectlyInstantiated")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("isIndirectlyInstantiated")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("isIndirectlyInstantiated")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("packagedElements")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("packagedElements")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlComponent");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("packagedElements")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("packagedElements")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("packagedElements")][QtModeling::DocumentationRole] = QStringLiteral("The set of PackageableElements that a Component owns. In the namespace of a component, all model elements that are involved in or related to its definition may be owned or imported explicitly. These may include e.g. Classes, Interfaces, Components, Packages, Use cases, Dependencies (e.g. mappings), and Artifacts.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("packagedElements")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("packagedElements")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Namespace-ownedMember");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("packagedElements")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("provided")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("provided")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlComponent");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("provided")][QtModeling::IsDerivedRole] = true;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("provided")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("provided")][QtModeling::DocumentationRole] = QStringLiteral("The interfaces that the component exposes to its environment. These interfaces may be Realized by the Component or any of its realizingClassifiers, or they may be the Interfaces that are provided by its public Ports.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("provided")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("provided")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("provided")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("realizations")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("realizations")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlComponent");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("realizations")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("realizations")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("realizations")][QtModeling::DocumentationRole] = QStringLiteral("The set of Realizations owned by the Component. Realizations reference the Classifiers of which the Component is an abstraction; i.e., that realize its behavior.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("realizations")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("realizations")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("A_supplier_supplierDependency-supplierDependency Element-ownedElement");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("realizations")][QtModeling::OppositeEndRole] = QStringLiteral("ComponentRealization-abstraction");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("required")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("required")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlComponent");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("required")][QtModeling::IsDerivedRole] = true;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("required")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("required")][QtModeling::DocumentationRole] = QStringLiteral("The interfaces that the component requires from other components in its environment in order to be able to offer its full set of provided functionality. These interfaces may be used by the Component or any of its realizingClassifiers, or they may be the Interfaces that are required by its public Ports.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("required")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("required")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("required")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
 }
 

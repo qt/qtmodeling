@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlactivityparameternodeobject_p.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlActivityParameterNode>
 #include <QtUml/QUmlActivity>
@@ -65,16 +66,18 @@
 
 QT_BEGIN_NAMESPACE
 
-QUmlActivityParameterNodeObject::QUmlActivityParameterNodeObject(QUmlActivityParameterNode *qModelingObject)
+QUmlActivityParameterNodeObject::QUmlActivityParameterNodeObject(QUmlActivityParameterNode *qModelingElement)
 {
-    setProperty("modelingObject", QVariant::fromValue(static_cast<QModelingObject *>(qModelingObject)));
+    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(qModelingElement)));
+    setGroupProperties();
+    setPropertyData();
 }
 
 QUmlActivityParameterNodeObject::~QUmlActivityParameterNodeObject()
 {
     if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->deletingFromQObject = true;
-        delete qmodelingobjectproperty_cast<QUmlComment *>(this);
+        qmodelingelementproperty_cast<QUmlActivityParameterNode *>(this)->deletingFromQModelingObject = true;
+        delete qmodelingelementproperty_cast<QUmlComment *>(this);
     }
 }
 
@@ -83,25 +86,25 @@ QUmlActivityParameterNodeObject::~QUmlActivityParameterNodeObject()
 const QSet<QObject *> QUmlActivityParameterNodeObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->ownedComments())
-        set.insert(element->asQObject());
+    foreach (QUmlComment *element, qmodelingelementproperty_cast<QUmlActivityParameterNode *>(this)->ownedComments())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlActivityParameterNodeObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->ownedElements())
-        set.insert(element->asQObject());
+    foreach (QUmlElement *element, qmodelingelementproperty_cast<QUmlActivityParameterNode *>(this)->ownedElements())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 QObject *QUmlActivityParameterNodeObject::owner() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->owner())
+    if (!qmodelingelementproperty_cast<QUmlActivityParameterNode *>(this)->owner())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->owner()->asQObject();
+        return qmodelingelementproperty_cast<QUmlActivityParameterNode *>(this)->owner()->asQModelingObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -109,62 +112,62 @@ QObject *QUmlActivityParameterNodeObject::owner() const
 const QSet<QObject *> QUmlActivityParameterNodeObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->clientDependencies())
-        set.insert(element->asQObject());
+    foreach (QUmlDependency *element, qmodelingelementproperty_cast<QUmlActivityParameterNode *>(this)->clientDependencies())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 QString QUmlActivityParameterNodeObject::name() const
 {
-    return qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->name();
+    return qmodelingelementproperty_cast<QUmlActivityParameterNode *>(this)->name();
 }
 
 QObject *QUmlActivityParameterNodeObject::nameExpression() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->nameExpression())
+    if (!qmodelingelementproperty_cast<QUmlActivityParameterNode *>(this)->nameExpression())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->nameExpression()->asQObject();
+        return qmodelingelementproperty_cast<QUmlActivityParameterNode *>(this)->nameExpression()->asQModelingObject();
 }
 
 QObject *QUmlActivityParameterNodeObject::namespace_() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->namespace_())
+    if (!qmodelingelementproperty_cast<QUmlActivityParameterNode *>(this)->namespace_())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->namespace_()->asQObject();
+        return qmodelingelementproperty_cast<QUmlActivityParameterNode *>(this)->namespace_()->asQModelingObject();
 }
 
 QString QUmlActivityParameterNodeObject::qualifiedName() const
 {
-    return qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->qualifiedName();
+    return qmodelingelementproperty_cast<QUmlActivityParameterNode *>(this)->qualifiedName();
 }
 
 QtUml::VisibilityKind QUmlActivityParameterNodeObject::visibility() const
 {
-    return qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->visibility();
+    return qmodelingelementproperty_cast<QUmlActivityParameterNode *>(this)->visibility();
 }
 
 // OWNED ATTRIBUTES [RedefinableElement]
 
 bool QUmlActivityParameterNodeObject::isLeaf() const
 {
-    return qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->isLeaf();
+    return qmodelingelementproperty_cast<QUmlActivityParameterNode *>(this)->isLeaf();
 }
 
 const QSet<QObject *> QUmlActivityParameterNodeObject::redefinedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlRedefinableElement *element, qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->redefinedElements())
-        set.insert(element->asQObject());
+    foreach (QUmlRedefinableElement *element, qmodelingelementproperty_cast<QUmlActivityParameterNode *>(this)->redefinedElements())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlActivityParameterNodeObject::redefinitionContexts() const
 {
     QSet<QObject *> set;
-    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->redefinitionContexts())
-        set.insert(element->asQObject());
+    foreach (QUmlClassifier *element, qmodelingelementproperty_cast<QUmlActivityParameterNode *>(this)->redefinitionContexts())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
@@ -172,65 +175,65 @@ const QSet<QObject *> QUmlActivityParameterNodeObject::redefinitionContexts() co
 
 QObject *QUmlActivityParameterNodeObject::activity() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->activity())
+    if (!qmodelingelementproperty_cast<QUmlActivityParameterNode *>(this)->activity())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->activity()->asQObject();
+        return qmodelingelementproperty_cast<QUmlActivityParameterNode *>(this)->activity()->asQModelingObject();
 }
 
 const QSet<QObject *> QUmlActivityParameterNodeObject::inGroups() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityGroup *element, qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->inGroups())
-        set.insert(element->asQObject());
+    foreach (QUmlActivityGroup *element, qmodelingelementproperty_cast<QUmlActivityParameterNode *>(this)->inGroups())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlActivityParameterNodeObject::inInterruptibleRegions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlInterruptibleActivityRegion *element, qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->inInterruptibleRegions())
-        set.insert(element->asQObject());
+    foreach (QUmlInterruptibleActivityRegion *element, qmodelingelementproperty_cast<QUmlActivityParameterNode *>(this)->inInterruptibleRegions())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlActivityParameterNodeObject::inPartitions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityPartition *element, qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->inPartitions())
-        set.insert(element->asQObject());
+    foreach (QUmlActivityPartition *element, qmodelingelementproperty_cast<QUmlActivityParameterNode *>(this)->inPartitions())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 QObject *QUmlActivityParameterNodeObject::inStructuredNode() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->inStructuredNode())
+    if (!qmodelingelementproperty_cast<QUmlActivityParameterNode *>(this)->inStructuredNode())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->inStructuredNode()->asQObject();
+        return qmodelingelementproperty_cast<QUmlActivityParameterNode *>(this)->inStructuredNode()->asQModelingObject();
 }
 
 const QSet<QObject *> QUmlActivityParameterNodeObject::incomings() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->incomings())
-        set.insert(element->asQObject());
+    foreach (QUmlActivityEdge *element, qmodelingelementproperty_cast<QUmlActivityParameterNode *>(this)->incomings())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlActivityParameterNodeObject::outgoings() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->outgoings())
-        set.insert(element->asQObject());
+    foreach (QUmlActivityEdge *element, qmodelingelementproperty_cast<QUmlActivityParameterNode *>(this)->outgoings())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlActivityParameterNodeObject::redefinedNodes() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityNode *element, qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->redefinedNodes())
-        set.insert(element->asQObject());
+    foreach (QUmlActivityNode *element, qmodelingelementproperty_cast<QUmlActivityParameterNode *>(this)->redefinedNodes())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
@@ -238,10 +241,10 @@ const QSet<QObject *> QUmlActivityParameterNodeObject::redefinedNodes() const
 
 QObject *QUmlActivityParameterNodeObject::type() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->type())
+    if (!qmodelingelementproperty_cast<QUmlActivityParameterNode *>(this)->type())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->type()->asQObject();
+        return qmodelingelementproperty_cast<QUmlActivityParameterNode *>(this)->type()->asQModelingObject();
 }
 
 // OWNED ATTRIBUTES [ObjectNode]
@@ -249,45 +252,45 @@ QObject *QUmlActivityParameterNodeObject::type() const
 const QSet<QObject *> QUmlActivityParameterNodeObject::inStates() const
 {
     QSet<QObject *> set;
-    foreach (QUmlState *element, qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->inStates())
-        set.insert(element->asQObject());
+    foreach (QUmlState *element, qmodelingelementproperty_cast<QUmlActivityParameterNode *>(this)->inStates())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 bool QUmlActivityParameterNodeObject::isControlType() const
 {
-    return qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->isControlType();
+    return qmodelingelementproperty_cast<QUmlActivityParameterNode *>(this)->isControlType();
 }
 
 QtUml::ObjectNodeOrderingKind QUmlActivityParameterNodeObject::ordering() const
 {
-    return qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->ordering();
+    return qmodelingelementproperty_cast<QUmlActivityParameterNode *>(this)->ordering();
 }
 
 QObject *QUmlActivityParameterNodeObject::selection() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->selection())
+    if (!qmodelingelementproperty_cast<QUmlActivityParameterNode *>(this)->selection())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->selection()->asQObject();
+        return qmodelingelementproperty_cast<QUmlActivityParameterNode *>(this)->selection()->asQModelingObject();
 }
 
 QObject *QUmlActivityParameterNodeObject::upperBound() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->upperBound())
+    if (!qmodelingelementproperty_cast<QUmlActivityParameterNode *>(this)->upperBound())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->upperBound()->asQObject();
+        return qmodelingelementproperty_cast<QUmlActivityParameterNode *>(this)->upperBound()->asQModelingObject();
 }
 
 // OWNED ATTRIBUTES [ActivityParameterNode]
 
 QObject *QUmlActivityParameterNodeObject::parameter() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->parameter())
+    if (!qmodelingelementproperty_cast<QUmlActivityParameterNode *>(this)->parameter())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->parameter()->asQObject();
+        return qmodelingelementproperty_cast<QUmlActivityParameterNode *>(this)->parameter()->asQModelingObject();
 }
 
 // OPERATIONS [Element]
@@ -295,14 +298,14 @@ QObject *QUmlActivityParameterNodeObject::parameter() const
 QSet<QObject *> QUmlActivityParameterNodeObject::allOwnedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->allOwnedElements())
-        set.insert(element->asQObject());
+    foreach (QUmlElement *element, qmodelingelementproperty_cast<QUmlActivityParameterNode *>(this)->allOwnedElements())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 bool QUmlActivityParameterNodeObject::mustBeOwned() const
 {
-    return qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->mustBeOwned();
+    return qmodelingelementproperty_cast<QUmlActivityParameterNode *>(this)->mustBeOwned();
 }
 
 // OPERATIONS [NamedElement]
@@ -310,263 +313,330 @@ bool QUmlActivityParameterNodeObject::mustBeOwned() const
 QList<QObject *> QUmlActivityParameterNodeObject::allNamespaces() const
 {
     QList<QObject *> set;
-    foreach (QUmlNamespace *element, qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->allNamespaces())
-        set.append(element->asQObject());
+    foreach (QUmlNamespace *element, qmodelingelementproperty_cast<QUmlActivityParameterNode *>(this)->allNamespaces())
+        set.append(element->asQModelingObject());
     return set;
 }
 
 QSet<QObject *> QUmlActivityParameterNodeObject::allOwningPackages() const
 {
     QSet<QObject *> set;
-    foreach (QUmlPackage *element, qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->allOwningPackages())
-        set.insert(element->asQObject());
+    foreach (QUmlPackage *element, qmodelingelementproperty_cast<QUmlActivityParameterNode *>(this)->allOwningPackages())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 bool QUmlActivityParameterNodeObject::isDistinguishableFrom(QObject *n, QObject *ns) const
 {
-    return qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->isDistinguishableFrom(qmodelingobjectproperty_cast<QUmlNamedElement *>(n), qmodelingobjectproperty_cast<QUmlNamespace *>(ns));
+    return qmodelingelementproperty_cast<QUmlActivityParameterNode *>(this)->isDistinguishableFrom(qmodelingelementproperty_cast<QUmlNamedElement *>(n), qmodelingelementproperty_cast<QUmlNamespace *>(ns));
 }
 
 QString QUmlActivityParameterNodeObject::separator() const
 {
-    return qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->separator();
+    return qmodelingelementproperty_cast<QUmlActivityParameterNode *>(this)->separator();
 }
 
 // OPERATIONS [RedefinableElement]
 
 bool QUmlActivityParameterNodeObject::isConsistentWith(QObject *redefinee) const
 {
-    return qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->isConsistentWith(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefinee));
+    return qmodelingelementproperty_cast<QUmlActivityParameterNode *>(this)->isConsistentWith(qmodelingelementproperty_cast<QUmlRedefinableElement *>(redefinee));
 }
 
 bool QUmlActivityParameterNodeObject::isRedefinitionContextValid(QObject *redefined) const
 {
-    return qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->isRedefinitionContextValid(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefined));
+    return qmodelingelementproperty_cast<QUmlActivityParameterNode *>(this)->isRedefinitionContextValid(qmodelingelementproperty_cast<QUmlRedefinableElement *>(redefined));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Element]
 
 void QUmlActivityParameterNodeObject::addOwnedComment(QObject *ownedComment)
 {
-    qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->addOwnedComment(qmodelingobjectproperty_cast<QUmlComment *>(ownedComment));
+    qmodelingelementproperty_cast<QUmlActivityParameterNode *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
 }
 
 void QUmlActivityParameterNodeObject::removeOwnedComment(QObject *ownedComment)
 {
-    qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->removeOwnedComment(qmodelingobjectproperty_cast<QUmlComment *>(ownedComment));
+    qmodelingelementproperty_cast<QUmlActivityParameterNode *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
 }
 
 void QUmlActivityParameterNodeObject::addOwnedElement(QObject *ownedElement)
 {
-    qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->addOwnedElement(qmodelingobjectproperty_cast<QUmlElement *>(ownedElement));
+    qmodelingelementproperty_cast<QUmlActivityParameterNode *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
 }
 
 void QUmlActivityParameterNodeObject::removeOwnedElement(QObject *ownedElement)
 {
-    qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->removeOwnedElement(qmodelingobjectproperty_cast<QUmlElement *>(ownedElement));
+    qmodelingelementproperty_cast<QUmlActivityParameterNode *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
 }
 
 void QUmlActivityParameterNodeObject::setOwner(QObject *owner)
 {
-    qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->setOwner(qmodelingobjectproperty_cast<QUmlElement *>(owner));
+    qmodelingelementproperty_cast<QUmlActivityParameterNode *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [NamedElement]
 
 void QUmlActivityParameterNodeObject::addClientDependency(QObject *clientDependency)
 {
-    qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->addClientDependency(qmodelingobjectproperty_cast<QUmlDependency *>(clientDependency));
+    qmodelingelementproperty_cast<QUmlActivityParameterNode *>(this)->addClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
 }
 
 void QUmlActivityParameterNodeObject::removeClientDependency(QObject *clientDependency)
 {
-    qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->removeClientDependency(qmodelingobjectproperty_cast<QUmlDependency *>(clientDependency));
+    qmodelingelementproperty_cast<QUmlActivityParameterNode *>(this)->removeClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
 }
 
 void QUmlActivityParameterNodeObject::setName(QString name)
 {
-    qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->setName(name);
+    qmodelingelementproperty_cast<QUmlActivityParameterNode *>(this)->setName(name);
 }
 
 void QUmlActivityParameterNodeObject::setNameExpression(QObject *nameExpression)
 {
-    qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
+    qmodelingelementproperty_cast<QUmlActivityParameterNode *>(this)->setNameExpression(qmodelingelementproperty_cast<QUmlStringExpression *>(nameExpression));
 }
 
 void QUmlActivityParameterNodeObject::setNamespace(QObject *namespace_)
 {
-    qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->setNamespace(qmodelingobjectproperty_cast<QUmlNamespace *>(namespace_));
+    qmodelingelementproperty_cast<QUmlActivityParameterNode *>(this)->setNamespace(qmodelingelementproperty_cast<QUmlNamespace *>(namespace_));
 }
 
 void QUmlActivityParameterNodeObject::setQualifiedName(QString qualifiedName)
 {
-    qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->setQualifiedName(qualifiedName);
+    qmodelingelementproperty_cast<QUmlActivityParameterNode *>(this)->setQualifiedName(qualifiedName);
 }
 
 void QUmlActivityParameterNodeObject::setVisibility(QtUml::VisibilityKind visibility)
 {
-    qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->setVisibility(visibility);
+    qmodelingelementproperty_cast<QUmlActivityParameterNode *>(this)->setVisibility(visibility);
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [RedefinableElement]
 
 void QUmlActivityParameterNodeObject::setLeaf(bool isLeaf)
 {
-    qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->setLeaf(isLeaf);
+    qmodelingelementproperty_cast<QUmlActivityParameterNode *>(this)->setLeaf(isLeaf);
 }
 
 void QUmlActivityParameterNodeObject::unsetLeaf()
 {
-    qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("leaf"));
+    Q_D(QModelingObject);
+    d->modifiedResettableProperties.removeAll(QStringLiteral("leaf"));
 }
 
 void QUmlActivityParameterNodeObject::addRedefinedElement(QObject *redefinedElement)
 {
-    qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->addRedefinedElement(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefinedElement));
+    qmodelingelementproperty_cast<QUmlActivityParameterNode *>(this)->addRedefinedElement(qmodelingelementproperty_cast<QUmlRedefinableElement *>(redefinedElement));
 }
 
 void QUmlActivityParameterNodeObject::removeRedefinedElement(QObject *redefinedElement)
 {
-    qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->removeRedefinedElement(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefinedElement));
+    qmodelingelementproperty_cast<QUmlActivityParameterNode *>(this)->removeRedefinedElement(qmodelingelementproperty_cast<QUmlRedefinableElement *>(redefinedElement));
 }
 
 void QUmlActivityParameterNodeObject::addRedefinitionContext(QObject *redefinitionContext)
 {
-    qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->addRedefinitionContext(qmodelingobjectproperty_cast<QUmlClassifier *>(redefinitionContext));
+    qmodelingelementproperty_cast<QUmlActivityParameterNode *>(this)->addRedefinitionContext(qmodelingelementproperty_cast<QUmlClassifier *>(redefinitionContext));
 }
 
 void QUmlActivityParameterNodeObject::removeRedefinitionContext(QObject *redefinitionContext)
 {
-    qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->removeRedefinitionContext(qmodelingobjectproperty_cast<QUmlClassifier *>(redefinitionContext));
+    qmodelingelementproperty_cast<QUmlActivityParameterNode *>(this)->removeRedefinitionContext(qmodelingelementproperty_cast<QUmlClassifier *>(redefinitionContext));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ActivityNode]
 
 void QUmlActivityParameterNodeObject::setActivity(QObject *activity)
 {
-    qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->setActivity(qmodelingobjectproperty_cast<QUmlActivity *>(activity));
+    qmodelingelementproperty_cast<QUmlActivityParameterNode *>(this)->setActivity(qmodelingelementproperty_cast<QUmlActivity *>(activity));
 }
 
 void QUmlActivityParameterNodeObject::addInGroup(QObject *inGroup)
 {
-    qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->addInGroup(qmodelingobjectproperty_cast<QUmlActivityGroup *>(inGroup));
+    qmodelingelementproperty_cast<QUmlActivityParameterNode *>(this)->addInGroup(qmodelingelementproperty_cast<QUmlActivityGroup *>(inGroup));
 }
 
 void QUmlActivityParameterNodeObject::removeInGroup(QObject *inGroup)
 {
-    qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->removeInGroup(qmodelingobjectproperty_cast<QUmlActivityGroup *>(inGroup));
+    qmodelingelementproperty_cast<QUmlActivityParameterNode *>(this)->removeInGroup(qmodelingelementproperty_cast<QUmlActivityGroup *>(inGroup));
 }
 
 void QUmlActivityParameterNodeObject::addInInterruptibleRegion(QObject *inInterruptibleRegion)
 {
-    qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->addInInterruptibleRegion(qmodelingobjectproperty_cast<QUmlInterruptibleActivityRegion *>(inInterruptibleRegion));
+    qmodelingelementproperty_cast<QUmlActivityParameterNode *>(this)->addInInterruptibleRegion(qmodelingelementproperty_cast<QUmlInterruptibleActivityRegion *>(inInterruptibleRegion));
 }
 
 void QUmlActivityParameterNodeObject::removeInInterruptibleRegion(QObject *inInterruptibleRegion)
 {
-    qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->removeInInterruptibleRegion(qmodelingobjectproperty_cast<QUmlInterruptibleActivityRegion *>(inInterruptibleRegion));
+    qmodelingelementproperty_cast<QUmlActivityParameterNode *>(this)->removeInInterruptibleRegion(qmodelingelementproperty_cast<QUmlInterruptibleActivityRegion *>(inInterruptibleRegion));
 }
 
 void QUmlActivityParameterNodeObject::addInPartition(QObject *inPartition)
 {
-    qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->addInPartition(qmodelingobjectproperty_cast<QUmlActivityPartition *>(inPartition));
+    qmodelingelementproperty_cast<QUmlActivityParameterNode *>(this)->addInPartition(qmodelingelementproperty_cast<QUmlActivityPartition *>(inPartition));
 }
 
 void QUmlActivityParameterNodeObject::removeInPartition(QObject *inPartition)
 {
-    qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->removeInPartition(qmodelingobjectproperty_cast<QUmlActivityPartition *>(inPartition));
+    qmodelingelementproperty_cast<QUmlActivityParameterNode *>(this)->removeInPartition(qmodelingelementproperty_cast<QUmlActivityPartition *>(inPartition));
 }
 
 void QUmlActivityParameterNodeObject::setInStructuredNode(QObject *inStructuredNode)
 {
-    qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->setInStructuredNode(qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(inStructuredNode));
+    qmodelingelementproperty_cast<QUmlActivityParameterNode *>(this)->setInStructuredNode(qmodelingelementproperty_cast<QUmlStructuredActivityNode *>(inStructuredNode));
 }
 
 void QUmlActivityParameterNodeObject::addIncoming(QObject *incoming)
 {
-    qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->addIncoming(qmodelingobjectproperty_cast<QUmlActivityEdge *>(incoming));
+    qmodelingelementproperty_cast<QUmlActivityParameterNode *>(this)->addIncoming(qmodelingelementproperty_cast<QUmlActivityEdge *>(incoming));
 }
 
 void QUmlActivityParameterNodeObject::removeIncoming(QObject *incoming)
 {
-    qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->removeIncoming(qmodelingobjectproperty_cast<QUmlActivityEdge *>(incoming));
+    qmodelingelementproperty_cast<QUmlActivityParameterNode *>(this)->removeIncoming(qmodelingelementproperty_cast<QUmlActivityEdge *>(incoming));
 }
 
 void QUmlActivityParameterNodeObject::addOutgoing(QObject *outgoing)
 {
-    qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->addOutgoing(qmodelingobjectproperty_cast<QUmlActivityEdge *>(outgoing));
+    qmodelingelementproperty_cast<QUmlActivityParameterNode *>(this)->addOutgoing(qmodelingelementproperty_cast<QUmlActivityEdge *>(outgoing));
 }
 
 void QUmlActivityParameterNodeObject::removeOutgoing(QObject *outgoing)
 {
-    qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->removeOutgoing(qmodelingobjectproperty_cast<QUmlActivityEdge *>(outgoing));
+    qmodelingelementproperty_cast<QUmlActivityParameterNode *>(this)->removeOutgoing(qmodelingelementproperty_cast<QUmlActivityEdge *>(outgoing));
 }
 
 void QUmlActivityParameterNodeObject::addRedefinedNode(QObject *redefinedNode)
 {
-    qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->addRedefinedNode(qmodelingobjectproperty_cast<QUmlActivityNode *>(redefinedNode));
+    qmodelingelementproperty_cast<QUmlActivityParameterNode *>(this)->addRedefinedNode(qmodelingelementproperty_cast<QUmlActivityNode *>(redefinedNode));
 }
 
 void QUmlActivityParameterNodeObject::removeRedefinedNode(QObject *redefinedNode)
 {
-    qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->removeRedefinedNode(qmodelingobjectproperty_cast<QUmlActivityNode *>(redefinedNode));
+    qmodelingelementproperty_cast<QUmlActivityParameterNode *>(this)->removeRedefinedNode(qmodelingelementproperty_cast<QUmlActivityNode *>(redefinedNode));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [TypedElement]
 
 void QUmlActivityParameterNodeObject::setType(QObject *type)
 {
-    qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->setType(qmodelingobjectproperty_cast<QUmlType *>(type));
+    qmodelingelementproperty_cast<QUmlActivityParameterNode *>(this)->setType(qmodelingelementproperty_cast<QUmlType *>(type));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ObjectNode]
 
 void QUmlActivityParameterNodeObject::addInState(QObject *inState)
 {
-    qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->addInState(qmodelingobjectproperty_cast<QUmlState *>(inState));
+    qmodelingelementproperty_cast<QUmlActivityParameterNode *>(this)->addInState(qmodelingelementproperty_cast<QUmlState *>(inState));
 }
 
 void QUmlActivityParameterNodeObject::removeInState(QObject *inState)
 {
-    qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->removeInState(qmodelingobjectproperty_cast<QUmlState *>(inState));
+    qmodelingelementproperty_cast<QUmlActivityParameterNode *>(this)->removeInState(qmodelingelementproperty_cast<QUmlState *>(inState));
 }
 
 void QUmlActivityParameterNodeObject::setControlType(bool isControlType)
 {
-    qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->setControlType(isControlType);
+    qmodelingelementproperty_cast<QUmlActivityParameterNode *>(this)->setControlType(isControlType);
 }
 
 void QUmlActivityParameterNodeObject::unsetControlType()
 {
-    qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("controlType"));
+    Q_D(QModelingObject);
+    d->modifiedResettableProperties.removeAll(QStringLiteral("controlType"));
 }
 
 void QUmlActivityParameterNodeObject::setOrdering(QtUml::ObjectNodeOrderingKind ordering)
 {
-    qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->setOrdering(ordering);
+    qmodelingelementproperty_cast<QUmlActivityParameterNode *>(this)->setOrdering(ordering);
 }
 
 void QUmlActivityParameterNodeObject::unsetOrdering()
 {
-    qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("ordering"));
+    Q_D(QModelingObject);
+    d->modifiedResettableProperties.removeAll(QStringLiteral("ordering"));
 }
 
 void QUmlActivityParameterNodeObject::setSelection(QObject *selection)
 {
-    qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->setSelection(qmodelingobjectproperty_cast<QUmlBehavior *>(selection));
+    qmodelingelementproperty_cast<QUmlActivityParameterNode *>(this)->setSelection(qmodelingelementproperty_cast<QUmlBehavior *>(selection));
 }
 
 void QUmlActivityParameterNodeObject::setUpperBound(QObject *upperBound)
 {
-    qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->setUpperBound(qmodelingobjectproperty_cast<QUmlValueSpecification *>(upperBound));
+    qmodelingelementproperty_cast<QUmlActivityParameterNode *>(this)->setUpperBound(qmodelingelementproperty_cast<QUmlValueSpecification *>(upperBound));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ActivityParameterNode]
 
 void QUmlActivityParameterNodeObject::setParameter(QObject *parameter)
 {
-    qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->setParameter(qmodelingobjectproperty_cast<QUmlParameter *>(parameter));
+    qmodelingelementproperty_cast<QUmlActivityParameterNode *>(this)->setParameter(qmodelingelementproperty_cast<QUmlParameter *>(parameter));
+}
+
+
+void QUmlActivityParameterNodeObject::setGroupProperties()
+{
+    Q_D(QModelingObject);
+    const QMetaObject *metaObject = this->metaObject();
+
+    d->propertyGroups << QStringLiteral("QObject");
+    d->groupProperties.insert(QStringLiteral("QObject"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("objectName"))));
+
+    d->propertyGroups << QStringLiteral("QUmlElement");
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
+
+    d->propertyGroups << QStringLiteral("QUmlNamedElement");
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
+
+    d->propertyGroups << QStringLiteral("QUmlRedefinableElement");
+    d->groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isLeaf"))));
+    d->groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinedElements"))));
+    d->groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinitionContexts"))));
+
+    d->propertyGroups << QStringLiteral("QUmlActivityNode");
+    d->groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("activity"))));
+    d->groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inGroups"))));
+    d->groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inInterruptibleRegions"))));
+    d->groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inPartitions"))));
+    d->groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inStructuredNode"))));
+    d->groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("incomings"))));
+    d->groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("outgoings"))));
+    d->groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinedNodes"))));
+
+    d->propertyGroups << QStringLiteral("QUmlTypedElement");
+    d->groupProperties.insert(QStringLiteral("QUmlTypedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("type"))));
+
+    d->propertyGroups << QStringLiteral("QUmlObjectNode");
+    d->groupProperties.insert(QStringLiteral("QUmlObjectNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inStates"))));
+    d->groupProperties.insert(QStringLiteral("QUmlObjectNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isControlType"))));
+    d->groupProperties.insert(QStringLiteral("QUmlObjectNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ordering"))));
+    d->groupProperties.insert(QStringLiteral("QUmlObjectNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("selection"))));
+    d->groupProperties.insert(QStringLiteral("QUmlObjectNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("upperBound"))));
+
+    d->propertyGroups << QStringLiteral("QUmlActivityParameterNode");
+    d->groupProperties.insert(QStringLiteral("QUmlActivityParameterNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("parameter"))));
+}
+
+void QUmlActivityParameterNodeObject::setPropertyData()
+{
+    Q_DECLARE_METAPROPERTY_INFO(QUmlActivityParameterNode, parameter, AggregationRole, QStringLiteral("none"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlActivityParameterNode, parameter, PropertyClassRole, QStringLiteral("QUmlActivityParameterNode"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlActivityParameterNode, parameter, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlActivityParameterNode, parameter, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlActivityParameterNode, parameter, DocumentationRole, QStringLiteral("The parameter the object node will be accepting or providing values for."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlActivityParameterNode, parameter, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlActivityParameterNode, parameter, SubsettedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlActivityParameterNode, parameter, OppositeEndRole, QStringLiteral(""));
+
 }
 
 QT_END_NAMESPACE

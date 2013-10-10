@@ -55,26 +55,24 @@
 
     \brief An operation template parameter exposes an operation as a formal parameter for a template.
  */
-QUmlOperationTemplateParameter::QUmlOperationTemplateParameter(bool createQObject) :
+QUmlOperationTemplateParameter::QUmlOperationTemplateParameter(bool createQModelingObject) :
     QUmlTemplateParameter(false),
     _parameteredElement(0)
 {
-    if (createQObject)
-        _qObject = new QUmlOperationTemplateParameterObject(this);
-    setGroupProperties();
-    setPropertyData();
+    if (createQModelingObject)
+        _qModelingObject = qobject_cast<QModelingObject *>(new QUmlOperationTemplateParameterObject(this));
 }
 
 QUmlOperationTemplateParameter::~QUmlOperationTemplateParameter()
 {
-    if (!deletingFromQObject) {
-        if (_qObject)
-            _qObject->setProperty("deletingFromModelingObject", true);
-        delete _qObject;
+    if (!deletingFromQModelingObject) {
+        if (_qModelingObject)
+            _qModelingObject->setProperty("deletingFromModelingObject", true);
+        delete _qModelingObject;
     }
 }
 
-QModelingObject *QUmlOperationTemplateParameter::clone() const
+QModelingElement *QUmlOperationTemplateParameter::clone() const
 {
     QUmlOperationTemplateParameter *c = new QUmlOperationTemplateParameter;
     foreach (QUmlComment *element, ownedComments())
@@ -110,35 +108,8 @@ void QUmlOperationTemplateParameter::setParameteredElement(QUmlOperation *parame
 
     if (_parameteredElement != parameteredElement) {
         _parameteredElement = parameteredElement;
-        if (parameteredElement && parameteredElement->asQObject() && this->asQObject())
-            QObject::connect(parameteredElement->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setParameteredElement()));
+        if (parameteredElement && parameteredElement->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(parameteredElement->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setParameteredElement()));
     }
-}
-
-void QUmlOperationTemplateParameter::setGroupProperties()
-{
-    const QMetaObject *metaObject = _qObject->metaObject();
-
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
-    _groupProperties.insert(QStringLiteral("QUmlTemplateParameter"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("default_"))));
-    _groupProperties.insert(QStringLiteral("QUmlTemplateParameter"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedDefault"))));
-    _groupProperties.insert(QStringLiteral("QUmlTemplateParameter"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedParameteredElement"))));
-    _groupProperties.insert(QStringLiteral("QUmlTemplateParameter"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("signature"))));
-    _groupProperties.insert(QStringLiteral("QUmlOperationTemplateParameter"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("parameteredElement"))));
-}
-
-void QUmlOperationTemplateParameter::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperationTemplateParameter")][QStringLiteral("parameteredElement")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperationTemplateParameter")][QStringLiteral("parameteredElement")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlOperationTemplateParameter");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperationTemplateParameter")][QStringLiteral("parameteredElement")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperationTemplateParameter")][QStringLiteral("parameteredElement")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperationTemplateParameter")][QStringLiteral("parameteredElement")][QtModeling::DocumentationRole] = QStringLiteral("The operation for this template parameter.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperationTemplateParameter")][QStringLiteral("parameteredElement")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("TemplateParameter-parameteredElement");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperationTemplateParameter")][QStringLiteral("parameteredElement")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperationTemplateParameter")][QStringLiteral("parameteredElement")][QtModeling::OppositeEndRole] = QStringLiteral("Operation-templateParameter");
-
 }
 

@@ -43,7 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtCore/QObject>
+#include <QtModeling/QModelingObject>
 
 #include <QtUml/QtUmlNamespace>
 
@@ -54,9 +54,12 @@ QT_BEGIN_NAMESPACE
 QT_MODULE(QtUml)
 
 class QUmlUnmarshallAction;
-class Q_UML_EXPORT QUmlUnmarshallActionObject : public QObject
+class QModelingObjectPrivate;
+class Q_UML_EXPORT QUmlUnmarshallActionObject : public QModelingObject
 {
     Q_OBJECT
+    Q_DISABLE_COPY(QUmlUnmarshallActionObject)
+    Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [Element]
     Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
@@ -103,7 +106,7 @@ class Q_UML_EXPORT QUmlUnmarshallActionObject : public QObject
     Q_PROPERTY(QObject * unmarshallType READ unmarshallType WRITE setUnmarshallType)
 
 public:
-    Q_INVOKABLE explicit QUmlUnmarshallActionObject(QUmlUnmarshallAction *qModelingObject);
+    Q_INVOKABLE explicit QUmlUnmarshallActionObject(QUmlUnmarshallAction *qModelingElement);
     virtual ~QUmlUnmarshallActionObject();
 
     // Owned attributes [Element]
@@ -228,6 +231,10 @@ public Q_SLOTS:
     void addResult(QObject *result);
     void removeResult(QObject *result);
     void setUnmarshallType(QObject *unmarshallType = 0);
+
+protected:
+    virtual void setGroupProperties();
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

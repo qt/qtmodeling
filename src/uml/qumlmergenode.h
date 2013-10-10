@@ -45,7 +45,6 @@
 
 #include <QtUml/QUmlControlNode>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -55,16 +54,13 @@ QT_MODULE(QtUml)
 class Q_UML_EXPORT QUmlMergeNode : public QUmlControlNode
 {
 public:
-    explicit QUmlMergeNode(bool createQObject = true);
+    explicit QUmlMergeNode(bool createQModelingObject = true);
     virtual ~QUmlMergeNode();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
 
 protected:
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

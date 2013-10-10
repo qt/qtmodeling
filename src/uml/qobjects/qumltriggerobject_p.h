@@ -43,7 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtCore/QObject>
+#include <QtModeling/QModelingObject>
 
 #include <QtUml/QtUmlNamespace>
 
@@ -54,9 +54,12 @@ QT_BEGIN_NAMESPACE
 QT_MODULE(QtUml)
 
 class QUmlTrigger;
-class Q_UML_EXPORT QUmlTriggerObject : public QObject
+class QModelingObjectPrivate;
+class Q_UML_EXPORT QUmlTriggerObject : public QModelingObject
 {
     Q_OBJECT
+    Q_DISABLE_COPY(QUmlTriggerObject)
+    Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [Element]
     Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
@@ -76,7 +79,7 @@ class Q_UML_EXPORT QUmlTriggerObject : public QObject
     Q_PROPERTY(QSet<QObject *> ports READ ports)
 
 public:
-    Q_INVOKABLE explicit QUmlTriggerObject(QUmlTrigger *qModelingObject);
+    Q_INVOKABLE explicit QUmlTriggerObject(QUmlTrigger *qModelingElement);
     virtual ~QUmlTriggerObject();
 
     // Owned attributes [Element]
@@ -128,6 +131,10 @@ public Q_SLOTS:
     void setEvent(QObject *event = 0);
     void addPort(QObject *port);
     void removePort(QObject *port);
+
+protected:
+    virtual void setGroupProperties();
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

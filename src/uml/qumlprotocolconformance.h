@@ -45,7 +45,6 @@
 
 #include <QtUml/QUmlDirectedRelationship>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -57,10 +56,10 @@ class QUmlProtocolStateMachine;
 class Q_UML_EXPORT QUmlProtocolConformance : public QUmlDirectedRelationship
 {
 public:
-    explicit QUmlProtocolConformance(bool createQObject = true);
+    explicit QUmlProtocolConformance(bool createQModelingObject = true);
     virtual ~QUmlProtocolConformance();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
     QUmlProtocolStateMachine *generalMachine() const;
@@ -71,9 +70,6 @@ public:
 protected:
     QUmlProtocolStateMachine *_generalMachine;
     QUmlProtocolStateMachine *_specificMachine;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

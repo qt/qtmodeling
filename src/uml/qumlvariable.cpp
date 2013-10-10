@@ -67,26 +67,24 @@
 
     \brief A variable is considered a connectable element.Variables are elements for passing data between actions indirectly. A local variable stores values shared by the actions within a structured activity group but not accessible outside it. The output of an action may be written to a variable and read for the input to a subsequent action, which is effectively an indirect data flow path. Because there is no predefined relationship between actions that read and write variables, these actions must be sequenced by control flows to prevent race conditions that may occur between actions that read or write the same variable.
  */
-QUmlVariable::QUmlVariable(bool createQObject) :
+QUmlVariable::QUmlVariable(bool createQModelingObject) :
     _activityScope(0),
     _scope(0)
 {
-    if (createQObject)
-        _qObject = new QUmlVariableObject(this);
-    setGroupProperties();
-    setPropertyData();
+    if (createQModelingObject)
+        _qModelingObject = qobject_cast<QModelingObject *>(new QUmlVariableObject(this));
 }
 
 QUmlVariable::~QUmlVariable()
 {
-    if (!deletingFromQObject) {
-        if (_qObject)
-            _qObject->setProperty("deletingFromModelingObject", true);
-        delete _qObject;
+    if (!deletingFromQModelingObject) {
+        if (_qModelingObject)
+            _qModelingObject->setProperty("deletingFromModelingObject", true);
+        delete _qModelingObject;
     }
 }
 
-QModelingObject *QUmlVariable::clone() const
+QModelingElement *QUmlVariable::clone() const
 {
     QUmlVariable *c = new QUmlVariable;
     foreach (QUmlComment *element, ownedComments())
@@ -136,8 +134,8 @@ void QUmlVariable::setActivityScope(QUmlActivity *activityScope)
         // Adjust subsetted properties
 
         _activityScope = activityScope;
-        if (activityScope && activityScope->asQObject() && this->asQObject())
-            QObject::connect(activityScope->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setActivityScope()));
+        if (activityScope && activityScope->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(activityScope->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setActivityScope()));
 
         // Adjust subsetted properties
         setNamespace(activityScope);
@@ -162,8 +160,8 @@ void QUmlVariable::setScope(QUmlStructuredActivityNode *scope)
         // Adjust subsetted properties
 
         _scope = scope;
-        if (scope && scope->asQObject() && this->asQObject())
-            QObject::connect(scope->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setScope()));
+        if (scope && scope->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(scope->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setScope()));
 
         // Adjust subsetted properties
         setNamespace(scope);
@@ -181,54 +179,5 @@ bool QUmlVariable::isAccessibleBy(QUmlAction *a) const
 
     Q_UNUSED(a);
     return bool ();
-}
-
-void QUmlVariable::setGroupProperties()
-{
-    const QMetaObject *metaObject = _qObject->metaObject();
-
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
-    _groupProperties.insert(QStringLiteral("QUmlMultiplicityElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isOrdered"))));
-    _groupProperties.insert(QStringLiteral("QUmlMultiplicityElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isUnique"))));
-    _groupProperties.insert(QStringLiteral("QUmlMultiplicityElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("lower"))));
-    _groupProperties.insert(QStringLiteral("QUmlMultiplicityElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("lowerValue"))));
-    _groupProperties.insert(QStringLiteral("QUmlMultiplicityElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("upper"))));
-    _groupProperties.insert(QStringLiteral("QUmlMultiplicityElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("upperValue"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
-    _groupProperties.insert(QStringLiteral("QUmlTypedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("type"))));
-    _groupProperties.insert(QStringLiteral("QUmlParameterableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owningTemplateParameter"))));
-    _groupProperties.insert(QStringLiteral("QUmlConnectableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ends"))));
-    _groupProperties.insert(QStringLiteral("QUmlConnectableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("templateParameter"))));
-    _groupProperties.insert(QStringLiteral("QUmlVariable"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("activityScope"))));
-    _groupProperties.insert(QStringLiteral("QUmlVariable"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("scope"))));
-}
-
-void QUmlVariable::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlVariable")][QStringLiteral("activityScope")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlVariable")][QStringLiteral("activityScope")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlVariable");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlVariable")][QStringLiteral("activityScope")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlVariable")][QStringLiteral("activityScope")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlVariable")][QStringLiteral("activityScope")][QtModeling::DocumentationRole] = QStringLiteral("An activity that owns the variable.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlVariable")][QStringLiteral("activityScope")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlVariable")][QStringLiteral("activityScope")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("NamedElement-namespace");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlVariable")][QStringLiteral("activityScope")][QtModeling::OppositeEndRole] = QStringLiteral("Activity-variable");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlVariable")][QStringLiteral("scope")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlVariable")][QStringLiteral("scope")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlVariable");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlVariable")][QStringLiteral("scope")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlVariable")][QStringLiteral("scope")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlVariable")][QStringLiteral("scope")][QtModeling::DocumentationRole] = QStringLiteral("A structured activity node that owns the variable.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlVariable")][QStringLiteral("scope")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlVariable")][QStringLiteral("scope")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("NamedElement-namespace");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlVariable")][QStringLiteral("scope")][QtModeling::OppositeEndRole] = QStringLiteral("StructuredActivityNode-variable");
-
 }
 

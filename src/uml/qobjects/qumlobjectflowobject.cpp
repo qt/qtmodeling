@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlobjectflowobject_p.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlObjectFlow>
 #include <QtUml/QUmlActivity>
@@ -62,16 +63,18 @@
 
 QT_BEGIN_NAMESPACE
 
-QUmlObjectFlowObject::QUmlObjectFlowObject(QUmlObjectFlow *qModelingObject)
+QUmlObjectFlowObject::QUmlObjectFlowObject(QUmlObjectFlow *qModelingElement)
 {
-    setProperty("modelingObject", QVariant::fromValue(static_cast<QModelingObject *>(qModelingObject)));
+    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(qModelingElement)));
+    setGroupProperties();
+    setPropertyData();
 }
 
 QUmlObjectFlowObject::~QUmlObjectFlowObject()
 {
     if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->deletingFromQObject = true;
-        delete qmodelingobjectproperty_cast<QUmlComment *>(this);
+        qmodelingelementproperty_cast<QUmlObjectFlow *>(this)->deletingFromQModelingObject = true;
+        delete qmodelingelementproperty_cast<QUmlComment *>(this);
     }
 }
 
@@ -80,25 +83,25 @@ QUmlObjectFlowObject::~QUmlObjectFlowObject()
 const QSet<QObject *> QUmlObjectFlowObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->ownedComments())
-        set.insert(element->asQObject());
+    foreach (QUmlComment *element, qmodelingelementproperty_cast<QUmlObjectFlow *>(this)->ownedComments())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlObjectFlowObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->ownedElements())
-        set.insert(element->asQObject());
+    foreach (QUmlElement *element, qmodelingelementproperty_cast<QUmlObjectFlow *>(this)->ownedElements())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 QObject *QUmlObjectFlowObject::owner() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->owner())
+    if (!qmodelingelementproperty_cast<QUmlObjectFlow *>(this)->owner())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->owner()->asQObject();
+        return qmodelingelementproperty_cast<QUmlObjectFlow *>(this)->owner()->asQModelingObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -106,62 +109,62 @@ QObject *QUmlObjectFlowObject::owner() const
 const QSet<QObject *> QUmlObjectFlowObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->clientDependencies())
-        set.insert(element->asQObject());
+    foreach (QUmlDependency *element, qmodelingelementproperty_cast<QUmlObjectFlow *>(this)->clientDependencies())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 QString QUmlObjectFlowObject::name() const
 {
-    return qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->name();
+    return qmodelingelementproperty_cast<QUmlObjectFlow *>(this)->name();
 }
 
 QObject *QUmlObjectFlowObject::nameExpression() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->nameExpression())
+    if (!qmodelingelementproperty_cast<QUmlObjectFlow *>(this)->nameExpression())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->nameExpression()->asQObject();
+        return qmodelingelementproperty_cast<QUmlObjectFlow *>(this)->nameExpression()->asQModelingObject();
 }
 
 QObject *QUmlObjectFlowObject::namespace_() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->namespace_())
+    if (!qmodelingelementproperty_cast<QUmlObjectFlow *>(this)->namespace_())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->namespace_()->asQObject();
+        return qmodelingelementproperty_cast<QUmlObjectFlow *>(this)->namespace_()->asQModelingObject();
 }
 
 QString QUmlObjectFlowObject::qualifiedName() const
 {
-    return qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->qualifiedName();
+    return qmodelingelementproperty_cast<QUmlObjectFlow *>(this)->qualifiedName();
 }
 
 QtUml::VisibilityKind QUmlObjectFlowObject::visibility() const
 {
-    return qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->visibility();
+    return qmodelingelementproperty_cast<QUmlObjectFlow *>(this)->visibility();
 }
 
 // OWNED ATTRIBUTES [RedefinableElement]
 
 bool QUmlObjectFlowObject::isLeaf() const
 {
-    return qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->isLeaf();
+    return qmodelingelementproperty_cast<QUmlObjectFlow *>(this)->isLeaf();
 }
 
 const QSet<QObject *> QUmlObjectFlowObject::redefinedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlRedefinableElement *element, qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->redefinedElements())
-        set.insert(element->asQObject());
+    foreach (QUmlRedefinableElement *element, qmodelingelementproperty_cast<QUmlObjectFlow *>(this)->redefinedElements())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlObjectFlowObject::redefinitionContexts() const
 {
     QSet<QObject *> set;
-    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->redefinitionContexts())
-        set.insert(element->asQObject());
+    foreach (QUmlClassifier *element, qmodelingelementproperty_cast<QUmlObjectFlow *>(this)->redefinitionContexts())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
@@ -169,110 +172,110 @@ const QSet<QObject *> QUmlObjectFlowObject::redefinitionContexts() const
 
 QObject *QUmlObjectFlowObject::activity() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->activity())
+    if (!qmodelingelementproperty_cast<QUmlObjectFlow *>(this)->activity())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->activity()->asQObject();
+        return qmodelingelementproperty_cast<QUmlObjectFlow *>(this)->activity()->asQModelingObject();
 }
 
 QObject *QUmlObjectFlowObject::guard() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->guard())
+    if (!qmodelingelementproperty_cast<QUmlObjectFlow *>(this)->guard())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->guard()->asQObject();
+        return qmodelingelementproperty_cast<QUmlObjectFlow *>(this)->guard()->asQModelingObject();
 }
 
 const QSet<QObject *> QUmlObjectFlowObject::inGroups() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityGroup *element, qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->inGroups())
-        set.insert(element->asQObject());
+    foreach (QUmlActivityGroup *element, qmodelingelementproperty_cast<QUmlObjectFlow *>(this)->inGroups())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlObjectFlowObject::inPartitions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityPartition *element, qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->inPartitions())
-        set.insert(element->asQObject());
+    foreach (QUmlActivityPartition *element, qmodelingelementproperty_cast<QUmlObjectFlow *>(this)->inPartitions())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 QObject *QUmlObjectFlowObject::inStructuredNode() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->inStructuredNode())
+    if (!qmodelingelementproperty_cast<QUmlObjectFlow *>(this)->inStructuredNode())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->inStructuredNode()->asQObject();
+        return qmodelingelementproperty_cast<QUmlObjectFlow *>(this)->inStructuredNode()->asQModelingObject();
 }
 
 QObject *QUmlObjectFlowObject::interrupts() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->interrupts())
+    if (!qmodelingelementproperty_cast<QUmlObjectFlow *>(this)->interrupts())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->interrupts()->asQObject();
+        return qmodelingelementproperty_cast<QUmlObjectFlow *>(this)->interrupts()->asQModelingObject();
 }
 
 const QSet<QObject *> QUmlObjectFlowObject::redefinedEdges() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->redefinedEdges())
-        set.insert(element->asQObject());
+    foreach (QUmlActivityEdge *element, qmodelingelementproperty_cast<QUmlObjectFlow *>(this)->redefinedEdges())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 QObject *QUmlObjectFlowObject::source() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->source())
+    if (!qmodelingelementproperty_cast<QUmlObjectFlow *>(this)->source())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->source()->asQObject();
+        return qmodelingelementproperty_cast<QUmlObjectFlow *>(this)->source()->asQModelingObject();
 }
 
 QObject *QUmlObjectFlowObject::target() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->target())
+    if (!qmodelingelementproperty_cast<QUmlObjectFlow *>(this)->target())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->target()->asQObject();
+        return qmodelingelementproperty_cast<QUmlObjectFlow *>(this)->target()->asQModelingObject();
 }
 
 QObject *QUmlObjectFlowObject::weight() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->weight())
+    if (!qmodelingelementproperty_cast<QUmlObjectFlow *>(this)->weight())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->weight()->asQObject();
+        return qmodelingelementproperty_cast<QUmlObjectFlow *>(this)->weight()->asQModelingObject();
 }
 
 // OWNED ATTRIBUTES [ObjectFlow]
 
 bool QUmlObjectFlowObject::isMulticast() const
 {
-    return qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->isMulticast();
+    return qmodelingelementproperty_cast<QUmlObjectFlow *>(this)->isMulticast();
 }
 
 bool QUmlObjectFlowObject::isMultireceive() const
 {
-    return qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->isMultireceive();
+    return qmodelingelementproperty_cast<QUmlObjectFlow *>(this)->isMultireceive();
 }
 
 QObject *QUmlObjectFlowObject::selection() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->selection())
+    if (!qmodelingelementproperty_cast<QUmlObjectFlow *>(this)->selection())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->selection()->asQObject();
+        return qmodelingelementproperty_cast<QUmlObjectFlow *>(this)->selection()->asQModelingObject();
 }
 
 QObject *QUmlObjectFlowObject::transformation() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->transformation())
+    if (!qmodelingelementproperty_cast<QUmlObjectFlow *>(this)->transformation())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->transformation()->asQObject();
+        return qmodelingelementproperty_cast<QUmlObjectFlow *>(this)->transformation()->asQModelingObject();
 }
 
 // OPERATIONS [Element]
@@ -280,14 +283,14 @@ QObject *QUmlObjectFlowObject::transformation() const
 QSet<QObject *> QUmlObjectFlowObject::allOwnedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->allOwnedElements())
-        set.insert(element->asQObject());
+    foreach (QUmlElement *element, qmodelingelementproperty_cast<QUmlObjectFlow *>(this)->allOwnedElements())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 bool QUmlObjectFlowObject::mustBeOwned() const
 {
-    return qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->mustBeOwned();
+    return qmodelingelementproperty_cast<QUmlObjectFlow *>(this)->mustBeOwned();
 }
 
 // OPERATIONS [NamedElement]
@@ -295,234 +298,323 @@ bool QUmlObjectFlowObject::mustBeOwned() const
 QList<QObject *> QUmlObjectFlowObject::allNamespaces() const
 {
     QList<QObject *> set;
-    foreach (QUmlNamespace *element, qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->allNamespaces())
-        set.append(element->asQObject());
+    foreach (QUmlNamespace *element, qmodelingelementproperty_cast<QUmlObjectFlow *>(this)->allNamespaces())
+        set.append(element->asQModelingObject());
     return set;
 }
 
 QSet<QObject *> QUmlObjectFlowObject::allOwningPackages() const
 {
     QSet<QObject *> set;
-    foreach (QUmlPackage *element, qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->allOwningPackages())
-        set.insert(element->asQObject());
+    foreach (QUmlPackage *element, qmodelingelementproperty_cast<QUmlObjectFlow *>(this)->allOwningPackages())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 bool QUmlObjectFlowObject::isDistinguishableFrom(QObject *n, QObject *ns) const
 {
-    return qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->isDistinguishableFrom(qmodelingobjectproperty_cast<QUmlNamedElement *>(n), qmodelingobjectproperty_cast<QUmlNamespace *>(ns));
+    return qmodelingelementproperty_cast<QUmlObjectFlow *>(this)->isDistinguishableFrom(qmodelingelementproperty_cast<QUmlNamedElement *>(n), qmodelingelementproperty_cast<QUmlNamespace *>(ns));
 }
 
 QString QUmlObjectFlowObject::separator() const
 {
-    return qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->separator();
+    return qmodelingelementproperty_cast<QUmlObjectFlow *>(this)->separator();
 }
 
 // OPERATIONS [RedefinableElement]
 
 bool QUmlObjectFlowObject::isConsistentWith(QObject *redefinee) const
 {
-    return qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->isConsistentWith(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefinee));
+    return qmodelingelementproperty_cast<QUmlObjectFlow *>(this)->isConsistentWith(qmodelingelementproperty_cast<QUmlRedefinableElement *>(redefinee));
 }
 
 bool QUmlObjectFlowObject::isRedefinitionContextValid(QObject *redefined) const
 {
-    return qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->isRedefinitionContextValid(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefined));
+    return qmodelingelementproperty_cast<QUmlObjectFlow *>(this)->isRedefinitionContextValid(qmodelingelementproperty_cast<QUmlRedefinableElement *>(redefined));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Element]
 
 void QUmlObjectFlowObject::addOwnedComment(QObject *ownedComment)
 {
-    qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->addOwnedComment(qmodelingobjectproperty_cast<QUmlComment *>(ownedComment));
+    qmodelingelementproperty_cast<QUmlObjectFlow *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
 }
 
 void QUmlObjectFlowObject::removeOwnedComment(QObject *ownedComment)
 {
-    qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->removeOwnedComment(qmodelingobjectproperty_cast<QUmlComment *>(ownedComment));
+    qmodelingelementproperty_cast<QUmlObjectFlow *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
 }
 
 void QUmlObjectFlowObject::addOwnedElement(QObject *ownedElement)
 {
-    qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->addOwnedElement(qmodelingobjectproperty_cast<QUmlElement *>(ownedElement));
+    qmodelingelementproperty_cast<QUmlObjectFlow *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
 }
 
 void QUmlObjectFlowObject::removeOwnedElement(QObject *ownedElement)
 {
-    qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->removeOwnedElement(qmodelingobjectproperty_cast<QUmlElement *>(ownedElement));
+    qmodelingelementproperty_cast<QUmlObjectFlow *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
 }
 
 void QUmlObjectFlowObject::setOwner(QObject *owner)
 {
-    qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->setOwner(qmodelingobjectproperty_cast<QUmlElement *>(owner));
+    qmodelingelementproperty_cast<QUmlObjectFlow *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [NamedElement]
 
 void QUmlObjectFlowObject::addClientDependency(QObject *clientDependency)
 {
-    qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->addClientDependency(qmodelingobjectproperty_cast<QUmlDependency *>(clientDependency));
+    qmodelingelementproperty_cast<QUmlObjectFlow *>(this)->addClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
 }
 
 void QUmlObjectFlowObject::removeClientDependency(QObject *clientDependency)
 {
-    qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->removeClientDependency(qmodelingobjectproperty_cast<QUmlDependency *>(clientDependency));
+    qmodelingelementproperty_cast<QUmlObjectFlow *>(this)->removeClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
 }
 
 void QUmlObjectFlowObject::setName(QString name)
 {
-    qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->setName(name);
+    qmodelingelementproperty_cast<QUmlObjectFlow *>(this)->setName(name);
 }
 
 void QUmlObjectFlowObject::setNameExpression(QObject *nameExpression)
 {
-    qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
+    qmodelingelementproperty_cast<QUmlObjectFlow *>(this)->setNameExpression(qmodelingelementproperty_cast<QUmlStringExpression *>(nameExpression));
 }
 
 void QUmlObjectFlowObject::setNamespace(QObject *namespace_)
 {
-    qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->setNamespace(qmodelingobjectproperty_cast<QUmlNamespace *>(namespace_));
+    qmodelingelementproperty_cast<QUmlObjectFlow *>(this)->setNamespace(qmodelingelementproperty_cast<QUmlNamespace *>(namespace_));
 }
 
 void QUmlObjectFlowObject::setQualifiedName(QString qualifiedName)
 {
-    qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->setQualifiedName(qualifiedName);
+    qmodelingelementproperty_cast<QUmlObjectFlow *>(this)->setQualifiedName(qualifiedName);
 }
 
 void QUmlObjectFlowObject::setVisibility(QtUml::VisibilityKind visibility)
 {
-    qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->setVisibility(visibility);
+    qmodelingelementproperty_cast<QUmlObjectFlow *>(this)->setVisibility(visibility);
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [RedefinableElement]
 
 void QUmlObjectFlowObject::setLeaf(bool isLeaf)
 {
-    qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->setLeaf(isLeaf);
+    qmodelingelementproperty_cast<QUmlObjectFlow *>(this)->setLeaf(isLeaf);
 }
 
 void QUmlObjectFlowObject::unsetLeaf()
 {
-    qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("leaf"));
+    Q_D(QModelingObject);
+    d->modifiedResettableProperties.removeAll(QStringLiteral("leaf"));
 }
 
 void QUmlObjectFlowObject::addRedefinedElement(QObject *redefinedElement)
 {
-    qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->addRedefinedElement(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefinedElement));
+    qmodelingelementproperty_cast<QUmlObjectFlow *>(this)->addRedefinedElement(qmodelingelementproperty_cast<QUmlRedefinableElement *>(redefinedElement));
 }
 
 void QUmlObjectFlowObject::removeRedefinedElement(QObject *redefinedElement)
 {
-    qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->removeRedefinedElement(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefinedElement));
+    qmodelingelementproperty_cast<QUmlObjectFlow *>(this)->removeRedefinedElement(qmodelingelementproperty_cast<QUmlRedefinableElement *>(redefinedElement));
 }
 
 void QUmlObjectFlowObject::addRedefinitionContext(QObject *redefinitionContext)
 {
-    qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->addRedefinitionContext(qmodelingobjectproperty_cast<QUmlClassifier *>(redefinitionContext));
+    qmodelingelementproperty_cast<QUmlObjectFlow *>(this)->addRedefinitionContext(qmodelingelementproperty_cast<QUmlClassifier *>(redefinitionContext));
 }
 
 void QUmlObjectFlowObject::removeRedefinitionContext(QObject *redefinitionContext)
 {
-    qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->removeRedefinitionContext(qmodelingobjectproperty_cast<QUmlClassifier *>(redefinitionContext));
+    qmodelingelementproperty_cast<QUmlObjectFlow *>(this)->removeRedefinitionContext(qmodelingelementproperty_cast<QUmlClassifier *>(redefinitionContext));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ActivityEdge]
 
 void QUmlObjectFlowObject::setActivity(QObject *activity)
 {
-    qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->setActivity(qmodelingobjectproperty_cast<QUmlActivity *>(activity));
+    qmodelingelementproperty_cast<QUmlObjectFlow *>(this)->setActivity(qmodelingelementproperty_cast<QUmlActivity *>(activity));
 }
 
 void QUmlObjectFlowObject::setGuard(QObject *guard)
 {
-    qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->setGuard(qmodelingobjectproperty_cast<QUmlValueSpecification *>(guard));
+    qmodelingelementproperty_cast<QUmlObjectFlow *>(this)->setGuard(qmodelingelementproperty_cast<QUmlValueSpecification *>(guard));
 }
 
 void QUmlObjectFlowObject::addInGroup(QObject *inGroup)
 {
-    qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->addInGroup(qmodelingobjectproperty_cast<QUmlActivityGroup *>(inGroup));
+    qmodelingelementproperty_cast<QUmlObjectFlow *>(this)->addInGroup(qmodelingelementproperty_cast<QUmlActivityGroup *>(inGroup));
 }
 
 void QUmlObjectFlowObject::removeInGroup(QObject *inGroup)
 {
-    qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->removeInGroup(qmodelingobjectproperty_cast<QUmlActivityGroup *>(inGroup));
+    qmodelingelementproperty_cast<QUmlObjectFlow *>(this)->removeInGroup(qmodelingelementproperty_cast<QUmlActivityGroup *>(inGroup));
 }
 
 void QUmlObjectFlowObject::addInPartition(QObject *inPartition)
 {
-    qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->addInPartition(qmodelingobjectproperty_cast<QUmlActivityPartition *>(inPartition));
+    qmodelingelementproperty_cast<QUmlObjectFlow *>(this)->addInPartition(qmodelingelementproperty_cast<QUmlActivityPartition *>(inPartition));
 }
 
 void QUmlObjectFlowObject::removeInPartition(QObject *inPartition)
 {
-    qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->removeInPartition(qmodelingobjectproperty_cast<QUmlActivityPartition *>(inPartition));
+    qmodelingelementproperty_cast<QUmlObjectFlow *>(this)->removeInPartition(qmodelingelementproperty_cast<QUmlActivityPartition *>(inPartition));
 }
 
 void QUmlObjectFlowObject::setInStructuredNode(QObject *inStructuredNode)
 {
-    qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->setInStructuredNode(qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(inStructuredNode));
+    qmodelingelementproperty_cast<QUmlObjectFlow *>(this)->setInStructuredNode(qmodelingelementproperty_cast<QUmlStructuredActivityNode *>(inStructuredNode));
 }
 
 void QUmlObjectFlowObject::setInterrupts(QObject *interrupts)
 {
-    qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->setInterrupts(qmodelingobjectproperty_cast<QUmlInterruptibleActivityRegion *>(interrupts));
+    qmodelingelementproperty_cast<QUmlObjectFlow *>(this)->setInterrupts(qmodelingelementproperty_cast<QUmlInterruptibleActivityRegion *>(interrupts));
 }
 
 void QUmlObjectFlowObject::addRedefinedEdge(QObject *redefinedEdge)
 {
-    qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->addRedefinedEdge(qmodelingobjectproperty_cast<QUmlActivityEdge *>(redefinedEdge));
+    qmodelingelementproperty_cast<QUmlObjectFlow *>(this)->addRedefinedEdge(qmodelingelementproperty_cast<QUmlActivityEdge *>(redefinedEdge));
 }
 
 void QUmlObjectFlowObject::removeRedefinedEdge(QObject *redefinedEdge)
 {
-    qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->removeRedefinedEdge(qmodelingobjectproperty_cast<QUmlActivityEdge *>(redefinedEdge));
+    qmodelingelementproperty_cast<QUmlObjectFlow *>(this)->removeRedefinedEdge(qmodelingelementproperty_cast<QUmlActivityEdge *>(redefinedEdge));
 }
 
 void QUmlObjectFlowObject::setSource(QObject *source)
 {
-    qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->setSource(qmodelingobjectproperty_cast<QUmlActivityNode *>(source));
+    qmodelingelementproperty_cast<QUmlObjectFlow *>(this)->setSource(qmodelingelementproperty_cast<QUmlActivityNode *>(source));
 }
 
 void QUmlObjectFlowObject::setTarget(QObject *target)
 {
-    qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->setTarget(qmodelingobjectproperty_cast<QUmlActivityNode *>(target));
+    qmodelingelementproperty_cast<QUmlObjectFlow *>(this)->setTarget(qmodelingelementproperty_cast<QUmlActivityNode *>(target));
 }
 
 void QUmlObjectFlowObject::setWeight(QObject *weight)
 {
-    qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->setWeight(qmodelingobjectproperty_cast<QUmlValueSpecification *>(weight));
+    qmodelingelementproperty_cast<QUmlObjectFlow *>(this)->setWeight(qmodelingelementproperty_cast<QUmlValueSpecification *>(weight));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ObjectFlow]
 
 void QUmlObjectFlowObject::setMulticast(bool isMulticast)
 {
-    qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->setMulticast(isMulticast);
+    qmodelingelementproperty_cast<QUmlObjectFlow *>(this)->setMulticast(isMulticast);
 }
 
 void QUmlObjectFlowObject::unsetMulticast()
 {
-    qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("multicast"));
+    Q_D(QModelingObject);
+    d->modifiedResettableProperties.removeAll(QStringLiteral("multicast"));
 }
 
 void QUmlObjectFlowObject::setMultireceive(bool isMultireceive)
 {
-    qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->setMultireceive(isMultireceive);
+    qmodelingelementproperty_cast<QUmlObjectFlow *>(this)->setMultireceive(isMultireceive);
 }
 
 void QUmlObjectFlowObject::unsetMultireceive()
 {
-    qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("multireceive"));
+    Q_D(QModelingObject);
+    d->modifiedResettableProperties.removeAll(QStringLiteral("multireceive"));
 }
 
 void QUmlObjectFlowObject::setSelection(QObject *selection)
 {
-    qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->setSelection(qmodelingobjectproperty_cast<QUmlBehavior *>(selection));
+    qmodelingelementproperty_cast<QUmlObjectFlow *>(this)->setSelection(qmodelingelementproperty_cast<QUmlBehavior *>(selection));
 }
 
 void QUmlObjectFlowObject::setTransformation(QObject *transformation)
 {
-    qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->setTransformation(qmodelingobjectproperty_cast<QUmlBehavior *>(transformation));
+    qmodelingelementproperty_cast<QUmlObjectFlow *>(this)->setTransformation(qmodelingelementproperty_cast<QUmlBehavior *>(transformation));
+}
+
+
+void QUmlObjectFlowObject::setGroupProperties()
+{
+    Q_D(QModelingObject);
+    const QMetaObject *metaObject = this->metaObject();
+
+    d->propertyGroups << QStringLiteral("QObject");
+    d->groupProperties.insert(QStringLiteral("QObject"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("objectName"))));
+
+    d->propertyGroups << QStringLiteral("QUmlElement");
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
+
+    d->propertyGroups << QStringLiteral("QUmlNamedElement");
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
+
+    d->propertyGroups << QStringLiteral("QUmlRedefinableElement");
+    d->groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isLeaf"))));
+    d->groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinedElements"))));
+    d->groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinitionContexts"))));
+
+    d->propertyGroups << QStringLiteral("QUmlActivityEdge");
+    d->groupProperties.insert(QStringLiteral("QUmlActivityEdge"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("activity"))));
+    d->groupProperties.insert(QStringLiteral("QUmlActivityEdge"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("guard"))));
+    d->groupProperties.insert(QStringLiteral("QUmlActivityEdge"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inGroups"))));
+    d->groupProperties.insert(QStringLiteral("QUmlActivityEdge"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inPartitions"))));
+    d->groupProperties.insert(QStringLiteral("QUmlActivityEdge"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inStructuredNode"))));
+    d->groupProperties.insert(QStringLiteral("QUmlActivityEdge"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("interrupts"))));
+    d->groupProperties.insert(QStringLiteral("QUmlActivityEdge"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinedEdges"))));
+    d->groupProperties.insert(QStringLiteral("QUmlActivityEdge"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("source"))));
+    d->groupProperties.insert(QStringLiteral("QUmlActivityEdge"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("target"))));
+    d->groupProperties.insert(QStringLiteral("QUmlActivityEdge"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("weight"))));
+
+    d->propertyGroups << QStringLiteral("QUmlObjectFlow");
+    d->groupProperties.insert(QStringLiteral("QUmlObjectFlow"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isMulticast"))));
+    d->groupProperties.insert(QStringLiteral("QUmlObjectFlow"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isMultireceive"))));
+    d->groupProperties.insert(QStringLiteral("QUmlObjectFlow"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("selection"))));
+    d->groupProperties.insert(QStringLiteral("QUmlObjectFlow"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("transformation"))));
+}
+
+void QUmlObjectFlowObject::setPropertyData()
+{
+    Q_DECLARE_METAPROPERTY_INFO(QUmlObjectFlow, isMulticast, AggregationRole, QStringLiteral("none"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlObjectFlow, isMulticast, PropertyClassRole, QStringLiteral("QUmlObjectFlow"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlObjectFlow, isMulticast, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlObjectFlow, isMulticast, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlObjectFlow, isMulticast, DocumentationRole, QStringLiteral("Tells whether the objects in the flow are passed by multicasting."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlObjectFlow, isMulticast, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlObjectFlow, isMulticast, SubsettedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlObjectFlow, isMulticast, OppositeEndRole, QStringLiteral(""));
+
+    Q_DECLARE_METAPROPERTY_INFO(QUmlObjectFlow, isMultireceive, AggregationRole, QStringLiteral("none"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlObjectFlow, isMultireceive, PropertyClassRole, QStringLiteral("QUmlObjectFlow"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlObjectFlow, isMultireceive, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlObjectFlow, isMultireceive, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlObjectFlow, isMultireceive, DocumentationRole, QStringLiteral("Tells whether the objects in the flow are gathered from respondents to multicasting."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlObjectFlow, isMultireceive, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlObjectFlow, isMultireceive, SubsettedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlObjectFlow, isMultireceive, OppositeEndRole, QStringLiteral(""));
+
+    Q_DECLARE_METAPROPERTY_INFO(QUmlObjectFlow, selection, AggregationRole, QStringLiteral("none"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlObjectFlow, selection, PropertyClassRole, QStringLiteral("QUmlObjectFlow"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlObjectFlow, selection, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlObjectFlow, selection, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlObjectFlow, selection, DocumentationRole, QStringLiteral("Selects tokens from a source object node."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlObjectFlow, selection, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlObjectFlow, selection, SubsettedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlObjectFlow, selection, OppositeEndRole, QStringLiteral(""));
+
+    Q_DECLARE_METAPROPERTY_INFO(QUmlObjectFlow, transformation, AggregationRole, QStringLiteral("none"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlObjectFlow, transformation, PropertyClassRole, QStringLiteral("QUmlObjectFlow"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlObjectFlow, transformation, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlObjectFlow, transformation, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlObjectFlow, transformation, DocumentationRole, QStringLiteral("Changes or replaces data tokens flowing along edge."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlObjectFlow, transformation, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlObjectFlow, transformation, SubsettedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlObjectFlow, transformation, OppositeEndRole, QStringLiteral(""));
+
 }
 
 QT_END_NAMESPACE

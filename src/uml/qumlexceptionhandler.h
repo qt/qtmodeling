@@ -45,7 +45,6 @@
 
 #include <QtUml/QUmlElement>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -59,10 +58,10 @@ class QUmlObjectNode;
 class Q_UML_EXPORT QUmlExceptionHandler : public QUmlElement
 {
 public:
-    explicit QUmlExceptionHandler(bool createQObject = true);
+    explicit QUmlExceptionHandler(bool createQModelingObject = true);
     virtual ~QUmlExceptionHandler();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
     QUmlObjectNode *exceptionInput() const;
@@ -80,9 +79,6 @@ protected:
     QSet<QUmlClassifier *> _exceptionTypes;
     QUmlExecutableNode *_handlerBody;
     QUmlExecutableNode *_protectedNode;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

@@ -47,7 +47,6 @@
 
 
 #include <QtUml/QtUmlNamespace>
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -62,10 +61,10 @@ class QUmlValueSpecification;
 class Q_UML_EXPORT QUmlMessage : public QUmlNamedElement
 {
 public:
-    explicit QUmlMessage(bool createQObject = true);
+    explicit QUmlMessage(bool createQModelingObject = true);
     virtual ~QUmlMessage();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
     const QList<QUmlValueSpecification *> arguments() const;
@@ -94,9 +93,6 @@ protected:
     QUmlMessageEnd *_receiveEvent;
     QUmlMessageEnd *_sendEvent;
     QUmlNamedElement *_signature;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

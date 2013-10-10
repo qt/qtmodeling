@@ -48,7 +48,6 @@
 
 
 #include <QtUml/QtUmlNamespace>
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -66,7 +65,7 @@ class Q_UML_EXPORT QUmlBehavioralFeature : public QUmlNamespace, public QUmlFeat
 public:
     virtual ~QUmlBehavioralFeature();
 
-    Q_DECL_HIDDEN QModelingObject *clone() const;
+    Q_DECL_HIDDEN virtual QModelingElement *clone() const;
 
     // Owned attributes
     QtUml::CallConcurrencyKind concurrency() const;
@@ -98,9 +97,6 @@ protected:
     QList<QUmlParameter *> _ownedParameters;
     QSet<QUmlParameterSet *> _ownedParameterSets;
     QSet<QUmlType *> _raisedExceptions;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

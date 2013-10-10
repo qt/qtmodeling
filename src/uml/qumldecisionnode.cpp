@@ -68,26 +68,24 @@
 
     \brief A decision node is a control node that chooses between outgoing flows.
  */
-QUmlDecisionNode::QUmlDecisionNode(bool createQObject) :
+QUmlDecisionNode::QUmlDecisionNode(bool createQModelingObject) :
     _decisionInput(0),
     _decisionInputFlow(0)
 {
-    if (createQObject)
-        _qObject = new QUmlDecisionNodeObject(this);
-    setGroupProperties();
-    setPropertyData();
+    if (createQModelingObject)
+        _qModelingObject = qobject_cast<QModelingObject *>(new QUmlDecisionNodeObject(this));
 }
 
 QUmlDecisionNode::~QUmlDecisionNode()
 {
-    if (!deletingFromQObject) {
-        if (_qObject)
-            _qObject->setProperty("deletingFromModelingObject", true);
-        delete _qObject;
+    if (!deletingFromQModelingObject) {
+        if (_qModelingObject)
+            _qModelingObject->setProperty("deletingFromModelingObject", true);
+        delete _qModelingObject;
     }
 }
 
-QModelingObject *QUmlDecisionNode::clone() const
+QModelingElement *QUmlDecisionNode::clone() const
 {
     QUmlDecisionNode *c = new QUmlDecisionNode;
     foreach (QUmlComment *element, ownedComments())
@@ -138,8 +136,8 @@ void QUmlDecisionNode::setDecisionInput(QUmlBehavior *decisionInput)
 
     if (_decisionInput != decisionInput) {
         _decisionInput = decisionInput;
-        if (decisionInput && decisionInput->asQObject() && this->asQObject())
-            QObject::connect(decisionInput->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setDecisionInput()));
+        if (decisionInput && decisionInput->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(decisionInput->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setDecisionInput()));
     }
 }
 
@@ -159,58 +157,8 @@ void QUmlDecisionNode::setDecisionInputFlow(QUmlObjectFlow *decisionInputFlow)
 
     if (_decisionInputFlow != decisionInputFlow) {
         _decisionInputFlow = decisionInputFlow;
-        if (decisionInputFlow && decisionInputFlow->asQObject() && this->asQObject())
-            QObject::connect(decisionInputFlow->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setDecisionInputFlow()));
+        if (decisionInputFlow && decisionInputFlow->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(decisionInputFlow->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setDecisionInputFlow()));
     }
-}
-
-void QUmlDecisionNode::setGroupProperties()
-{
-    const QMetaObject *metaObject = _qObject->metaObject();
-
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
-    _groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isLeaf"))));
-    _groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinitionContexts"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("activity"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inGroups"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inInterruptibleRegions"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inPartitions"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inStructuredNode"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("incomings"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("outgoings"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinedNodes"))));
-    _groupProperties.insert(QStringLiteral("QUmlDecisionNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("decisionInput"))));
-    _groupProperties.insert(QStringLiteral("QUmlDecisionNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("decisionInputFlow"))));
-}
-
-void QUmlDecisionNode::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDecisionNode")][QStringLiteral("decisionInput")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDecisionNode")][QStringLiteral("decisionInput")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlDecisionNode");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDecisionNode")][QStringLiteral("decisionInput")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDecisionNode")][QStringLiteral("decisionInput")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDecisionNode")][QStringLiteral("decisionInput")][QtModeling::DocumentationRole] = QStringLiteral("Provides input to guard specifications on edges outgoing from the decision node.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDecisionNode")][QStringLiteral("decisionInput")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDecisionNode")][QStringLiteral("decisionInput")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDecisionNode")][QStringLiteral("decisionInput")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDecisionNode")][QStringLiteral("decisionInputFlow")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDecisionNode")][QStringLiteral("decisionInputFlow")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlDecisionNode");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDecisionNode")][QStringLiteral("decisionInputFlow")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDecisionNode")][QStringLiteral("decisionInputFlow")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDecisionNode")][QStringLiteral("decisionInputFlow")][QtModeling::DocumentationRole] = QStringLiteral("An additional edge incoming to the decision node that provides a decision input value.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDecisionNode")][QStringLiteral("decisionInputFlow")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDecisionNode")][QStringLiteral("decisionInputFlow")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDecisionNode")][QStringLiteral("decisionInputFlow")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
 }
 

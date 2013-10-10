@@ -47,7 +47,6 @@
 
 
 #include <QtUml/QtUmlNamespace>
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -61,10 +60,10 @@ class QUmlConnectorEnd;
 class Q_UML_EXPORT QUmlConnector : public QUmlFeature
 {
 public:
-    explicit QUmlConnector(bool createQObject = true);
+    explicit QUmlConnector(bool createQModelingObject = true);
     virtual ~QUmlConnector();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
     const QSet<QUmlBehavior *> contracts() const;
@@ -86,9 +85,6 @@ protected:
     QList<QUmlConnectorEnd *> _ends;
     QSet<QUmlConnector *> _redefinedConnectors;
     QUmlAssociation *_type;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

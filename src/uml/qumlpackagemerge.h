@@ -45,7 +45,6 @@
 
 #include <QtUml/QUmlDirectedRelationship>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -57,10 +56,10 @@ class QUmlPackage;
 class Q_UML_EXPORT QUmlPackageMerge : public QUmlDirectedRelationship
 {
 public:
-    explicit QUmlPackageMerge(bool createQObject = true);
+    explicit QUmlPackageMerge(bool createQModelingObject = true);
     virtual ~QUmlPackageMerge();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
     QUmlPackage *mergedPackage() const;
@@ -71,9 +70,6 @@ public:
 protected:
     QUmlPackage *_mergedPackage;
     QUmlPackage *_receivingPackage;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

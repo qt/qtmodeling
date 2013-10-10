@@ -46,7 +46,6 @@
 #include <QtUml/QUmlExpression>
 #include <QtUml/QUmlTemplateableElement>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -56,10 +55,10 @@ QT_MODULE(QtUml)
 class Q_UML_EXPORT QUmlStringExpression : public QUmlExpression, public QUmlTemplateableElement
 {
 public:
-    explicit QUmlStringExpression(bool createQObject = true);
+    explicit QUmlStringExpression(bool createQModelingObject = true);
     virtual ~QUmlStringExpression();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
     QUmlStringExpression *owningExpression() const;
@@ -74,9 +73,6 @@ public:
 protected:
     QUmlStringExpression *_owningExpression;
     QSet<QUmlStringExpression *> _subExpressions;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

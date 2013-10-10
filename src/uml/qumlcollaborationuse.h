@@ -45,7 +45,6 @@
 
 #include <QtUml/QUmlNamedElement>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -58,10 +57,10 @@ class QUmlDependency;
 class Q_UML_EXPORT QUmlCollaborationUse : public QUmlNamedElement
 {
 public:
-    explicit QUmlCollaborationUse(bool createQObject = true);
+    explicit QUmlCollaborationUse(bool createQModelingObject = true);
     virtual ~QUmlCollaborationUse();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
     const QSet<QUmlDependency *> roleBindings() const;
@@ -73,9 +72,6 @@ public:
 protected:
     QSet<QUmlDependency *> _roleBindings;
     QUmlCollaboration *_type;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

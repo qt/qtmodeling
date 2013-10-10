@@ -61,25 +61,23 @@
 
     \brief An instance value is a value specification that identifies an instance.
  */
-QUmlInstanceValue::QUmlInstanceValue(bool createQObject) :
+QUmlInstanceValue::QUmlInstanceValue(bool createQModelingObject) :
     _instance(0)
 {
-    if (createQObject)
-        _qObject = new QUmlInstanceValueObject(this);
-    setGroupProperties();
-    setPropertyData();
+    if (createQModelingObject)
+        _qModelingObject = qobject_cast<QModelingObject *>(new QUmlInstanceValueObject(this));
 }
 
 QUmlInstanceValue::~QUmlInstanceValue()
 {
-    if (!deletingFromQObject) {
-        if (_qObject)
-            _qObject->setProperty("deletingFromModelingObject", true);
-        delete _qObject;
+    if (!deletingFromQModelingObject) {
+        if (_qModelingObject)
+            _qModelingObject->setProperty("deletingFromModelingObject", true);
+        delete _qModelingObject;
     }
 }
 
-QModelingObject *QUmlInstanceValue::clone() const
+QModelingElement *QUmlInstanceValue::clone() const
 {
     QUmlInstanceValue *c = new QUmlInstanceValue;
     foreach (QUmlComment *element, ownedComments())
@@ -119,40 +117,8 @@ void QUmlInstanceValue::setInstance(QUmlInstanceSpecification *instance)
 
     if (_instance != instance) {
         _instance = instance;
-        if (instance && instance->asQObject() && this->asQObject())
-            QObject::connect(instance->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setInstance()));
+        if (instance && instance->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(instance->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setInstance()));
     }
-}
-
-void QUmlInstanceValue::setGroupProperties()
-{
-    const QMetaObject *metaObject = _qObject->metaObject();
-
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
-    _groupProperties.insert(QStringLiteral("QUmlTypedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("type"))));
-    _groupProperties.insert(QStringLiteral("QUmlParameterableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owningTemplateParameter"))));
-    _groupProperties.insert(QStringLiteral("QUmlParameterableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("templateParameter"))));
-    _groupProperties.insert(QStringLiteral("QUmlPackageableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
-    _groupProperties.insert(QStringLiteral("QUmlInstanceValue"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("instance"))));
-}
-
-void QUmlInstanceValue::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInstanceValue")][QStringLiteral("instance")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInstanceValue")][QStringLiteral("instance")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInstanceValue");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInstanceValue")][QStringLiteral("instance")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInstanceValue")][QStringLiteral("instance")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInstanceValue")][QStringLiteral("instance")][QtModeling::DocumentationRole] = QStringLiteral("The instance that is the specified value.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInstanceValue")][QStringLiteral("instance")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInstanceValue")][QStringLiteral("instance")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInstanceValue")][QStringLiteral("instance")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
 }
 

@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlinterruptibleactivityregionobject_p.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlInterruptibleActivityRegion>
 #include <QtUml/QUmlActivity>
@@ -55,16 +56,18 @@
 
 QT_BEGIN_NAMESPACE
 
-QUmlInterruptibleActivityRegionObject::QUmlInterruptibleActivityRegionObject(QUmlInterruptibleActivityRegion *qModelingObject)
+QUmlInterruptibleActivityRegionObject::QUmlInterruptibleActivityRegionObject(QUmlInterruptibleActivityRegion *qModelingElement)
 {
-    setProperty("modelingObject", QVariant::fromValue(static_cast<QModelingObject *>(qModelingObject)));
+    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(qModelingElement)));
+    setGroupProperties();
+    setPropertyData();
 }
 
 QUmlInterruptibleActivityRegionObject::~QUmlInterruptibleActivityRegionObject()
 {
     if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingobjectproperty_cast<QUmlInterruptibleActivityRegion *>(this)->deletingFromQObject = true;
-        delete qmodelingobjectproperty_cast<QUmlComment *>(this);
+        qmodelingelementproperty_cast<QUmlInterruptibleActivityRegion *>(this)->deletingFromQModelingObject = true;
+        delete qmodelingelementproperty_cast<QUmlComment *>(this);
     }
 }
 
@@ -73,25 +76,25 @@ QUmlInterruptibleActivityRegionObject::~QUmlInterruptibleActivityRegionObject()
 const QSet<QObject *> QUmlInterruptibleActivityRegionObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlInterruptibleActivityRegion *>(this)->ownedComments())
-        set.insert(element->asQObject());
+    foreach (QUmlComment *element, qmodelingelementproperty_cast<QUmlInterruptibleActivityRegion *>(this)->ownedComments())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlInterruptibleActivityRegionObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlInterruptibleActivityRegion *>(this)->ownedElements())
-        set.insert(element->asQObject());
+    foreach (QUmlElement *element, qmodelingelementproperty_cast<QUmlInterruptibleActivityRegion *>(this)->ownedElements())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 QObject *QUmlInterruptibleActivityRegionObject::owner() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlInterruptibleActivityRegion *>(this)->owner())
+    if (!qmodelingelementproperty_cast<QUmlInterruptibleActivityRegion *>(this)->owner())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlInterruptibleActivityRegion *>(this)->owner()->asQObject();
+        return qmodelingelementproperty_cast<QUmlInterruptibleActivityRegion *>(this)->owner()->asQModelingObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -99,40 +102,40 @@ QObject *QUmlInterruptibleActivityRegionObject::owner() const
 const QSet<QObject *> QUmlInterruptibleActivityRegionObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlInterruptibleActivityRegion *>(this)->clientDependencies())
-        set.insert(element->asQObject());
+    foreach (QUmlDependency *element, qmodelingelementproperty_cast<QUmlInterruptibleActivityRegion *>(this)->clientDependencies())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 QString QUmlInterruptibleActivityRegionObject::name() const
 {
-    return qmodelingobjectproperty_cast<QUmlInterruptibleActivityRegion *>(this)->name();
+    return qmodelingelementproperty_cast<QUmlInterruptibleActivityRegion *>(this)->name();
 }
 
 QObject *QUmlInterruptibleActivityRegionObject::nameExpression() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlInterruptibleActivityRegion *>(this)->nameExpression())
+    if (!qmodelingelementproperty_cast<QUmlInterruptibleActivityRegion *>(this)->nameExpression())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlInterruptibleActivityRegion *>(this)->nameExpression()->asQObject();
+        return qmodelingelementproperty_cast<QUmlInterruptibleActivityRegion *>(this)->nameExpression()->asQModelingObject();
 }
 
 QObject *QUmlInterruptibleActivityRegionObject::namespace_() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlInterruptibleActivityRegion *>(this)->namespace_())
+    if (!qmodelingelementproperty_cast<QUmlInterruptibleActivityRegion *>(this)->namespace_())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlInterruptibleActivityRegion *>(this)->namespace_()->asQObject();
+        return qmodelingelementproperty_cast<QUmlInterruptibleActivityRegion *>(this)->namespace_()->asQModelingObject();
 }
 
 QString QUmlInterruptibleActivityRegionObject::qualifiedName() const
 {
-    return qmodelingobjectproperty_cast<QUmlInterruptibleActivityRegion *>(this)->qualifiedName();
+    return qmodelingelementproperty_cast<QUmlInterruptibleActivityRegion *>(this)->qualifiedName();
 }
 
 QtUml::VisibilityKind QUmlInterruptibleActivityRegionObject::visibility() const
 {
-    return qmodelingobjectproperty_cast<QUmlInterruptibleActivityRegion *>(this)->visibility();
+    return qmodelingelementproperty_cast<QUmlInterruptibleActivityRegion *>(this)->visibility();
 }
 
 // OWNED ATTRIBUTES [ActivityGroup]
@@ -140,41 +143,41 @@ QtUml::VisibilityKind QUmlInterruptibleActivityRegionObject::visibility() const
 const QSet<QObject *> QUmlInterruptibleActivityRegionObject::containedEdges() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlInterruptibleActivityRegion *>(this)->containedEdges())
-        set.insert(element->asQObject());
+    foreach (QUmlActivityEdge *element, qmodelingelementproperty_cast<QUmlInterruptibleActivityRegion *>(this)->containedEdges())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlInterruptibleActivityRegionObject::containedNodes() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityNode *element, qmodelingobjectproperty_cast<QUmlInterruptibleActivityRegion *>(this)->containedNodes())
-        set.insert(element->asQObject());
+    foreach (QUmlActivityNode *element, qmodelingelementproperty_cast<QUmlInterruptibleActivityRegion *>(this)->containedNodes())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 QObject *QUmlInterruptibleActivityRegionObject::inActivity() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlInterruptibleActivityRegion *>(this)->inActivity())
+    if (!qmodelingelementproperty_cast<QUmlInterruptibleActivityRegion *>(this)->inActivity())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlInterruptibleActivityRegion *>(this)->inActivity()->asQObject();
+        return qmodelingelementproperty_cast<QUmlInterruptibleActivityRegion *>(this)->inActivity()->asQModelingObject();
 }
 
 const QSet<QObject *> QUmlInterruptibleActivityRegionObject::subgroups() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityGroup *element, qmodelingobjectproperty_cast<QUmlInterruptibleActivityRegion *>(this)->subgroups())
-        set.insert(element->asQObject());
+    foreach (QUmlActivityGroup *element, qmodelingelementproperty_cast<QUmlInterruptibleActivityRegion *>(this)->subgroups())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 QObject *QUmlInterruptibleActivityRegionObject::superGroup() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlInterruptibleActivityRegion *>(this)->superGroup())
+    if (!qmodelingelementproperty_cast<QUmlInterruptibleActivityRegion *>(this)->superGroup())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlInterruptibleActivityRegion *>(this)->superGroup()->asQObject();
+        return qmodelingelementproperty_cast<QUmlInterruptibleActivityRegion *>(this)->superGroup()->asQModelingObject();
 }
 
 // OWNED ATTRIBUTES [InterruptibleActivityRegion]
@@ -182,16 +185,16 @@ QObject *QUmlInterruptibleActivityRegionObject::superGroup() const
 const QSet<QObject *> QUmlInterruptibleActivityRegionObject::interruptingEdges() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlInterruptibleActivityRegion *>(this)->interruptingEdges())
-        set.insert(element->asQObject());
+    foreach (QUmlActivityEdge *element, qmodelingelementproperty_cast<QUmlInterruptibleActivityRegion *>(this)->interruptingEdges())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlInterruptibleActivityRegionObject::nodes() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityNode *element, qmodelingobjectproperty_cast<QUmlInterruptibleActivityRegion *>(this)->nodes())
-        set.insert(element->asQObject());
+    foreach (QUmlActivityNode *element, qmodelingelementproperty_cast<QUmlInterruptibleActivityRegion *>(this)->nodes())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
@@ -200,14 +203,14 @@ const QSet<QObject *> QUmlInterruptibleActivityRegionObject::nodes() const
 QSet<QObject *> QUmlInterruptibleActivityRegionObject::allOwnedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlInterruptibleActivityRegion *>(this)->allOwnedElements())
-        set.insert(element->asQObject());
+    foreach (QUmlElement *element, qmodelingelementproperty_cast<QUmlInterruptibleActivityRegion *>(this)->allOwnedElements())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 bool QUmlInterruptibleActivityRegionObject::mustBeOwned() const
 {
-    return qmodelingobjectproperty_cast<QUmlInterruptibleActivityRegion *>(this)->mustBeOwned();
+    return qmodelingelementproperty_cast<QUmlInterruptibleActivityRegion *>(this)->mustBeOwned();
 }
 
 // OPERATIONS [NamedElement]
@@ -215,155 +218,211 @@ bool QUmlInterruptibleActivityRegionObject::mustBeOwned() const
 QList<QObject *> QUmlInterruptibleActivityRegionObject::allNamespaces() const
 {
     QList<QObject *> set;
-    foreach (QUmlNamespace *element, qmodelingobjectproperty_cast<QUmlInterruptibleActivityRegion *>(this)->allNamespaces())
-        set.append(element->asQObject());
+    foreach (QUmlNamespace *element, qmodelingelementproperty_cast<QUmlInterruptibleActivityRegion *>(this)->allNamespaces())
+        set.append(element->asQModelingObject());
     return set;
 }
 
 QSet<QObject *> QUmlInterruptibleActivityRegionObject::allOwningPackages() const
 {
     QSet<QObject *> set;
-    foreach (QUmlPackage *element, qmodelingobjectproperty_cast<QUmlInterruptibleActivityRegion *>(this)->allOwningPackages())
-        set.insert(element->asQObject());
+    foreach (QUmlPackage *element, qmodelingelementproperty_cast<QUmlInterruptibleActivityRegion *>(this)->allOwningPackages())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 bool QUmlInterruptibleActivityRegionObject::isDistinguishableFrom(QObject *n, QObject *ns) const
 {
-    return qmodelingobjectproperty_cast<QUmlInterruptibleActivityRegion *>(this)->isDistinguishableFrom(qmodelingobjectproperty_cast<QUmlNamedElement *>(n), qmodelingobjectproperty_cast<QUmlNamespace *>(ns));
+    return qmodelingelementproperty_cast<QUmlInterruptibleActivityRegion *>(this)->isDistinguishableFrom(qmodelingelementproperty_cast<QUmlNamedElement *>(n), qmodelingelementproperty_cast<QUmlNamespace *>(ns));
 }
 
 QString QUmlInterruptibleActivityRegionObject::separator() const
 {
-    return qmodelingobjectproperty_cast<QUmlInterruptibleActivityRegion *>(this)->separator();
+    return qmodelingelementproperty_cast<QUmlInterruptibleActivityRegion *>(this)->separator();
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Element]
 
 void QUmlInterruptibleActivityRegionObject::addOwnedComment(QObject *ownedComment)
 {
-    qmodelingobjectproperty_cast<QUmlInterruptibleActivityRegion *>(this)->addOwnedComment(qmodelingobjectproperty_cast<QUmlComment *>(ownedComment));
+    qmodelingelementproperty_cast<QUmlInterruptibleActivityRegion *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
 }
 
 void QUmlInterruptibleActivityRegionObject::removeOwnedComment(QObject *ownedComment)
 {
-    qmodelingobjectproperty_cast<QUmlInterruptibleActivityRegion *>(this)->removeOwnedComment(qmodelingobjectproperty_cast<QUmlComment *>(ownedComment));
+    qmodelingelementproperty_cast<QUmlInterruptibleActivityRegion *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
 }
 
 void QUmlInterruptibleActivityRegionObject::addOwnedElement(QObject *ownedElement)
 {
-    qmodelingobjectproperty_cast<QUmlInterruptibleActivityRegion *>(this)->addOwnedElement(qmodelingobjectproperty_cast<QUmlElement *>(ownedElement));
+    qmodelingelementproperty_cast<QUmlInterruptibleActivityRegion *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
 }
 
 void QUmlInterruptibleActivityRegionObject::removeOwnedElement(QObject *ownedElement)
 {
-    qmodelingobjectproperty_cast<QUmlInterruptibleActivityRegion *>(this)->removeOwnedElement(qmodelingobjectproperty_cast<QUmlElement *>(ownedElement));
+    qmodelingelementproperty_cast<QUmlInterruptibleActivityRegion *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
 }
 
 void QUmlInterruptibleActivityRegionObject::setOwner(QObject *owner)
 {
-    qmodelingobjectproperty_cast<QUmlInterruptibleActivityRegion *>(this)->setOwner(qmodelingobjectproperty_cast<QUmlElement *>(owner));
+    qmodelingelementproperty_cast<QUmlInterruptibleActivityRegion *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [NamedElement]
 
 void QUmlInterruptibleActivityRegionObject::addClientDependency(QObject *clientDependency)
 {
-    qmodelingobjectproperty_cast<QUmlInterruptibleActivityRegion *>(this)->addClientDependency(qmodelingobjectproperty_cast<QUmlDependency *>(clientDependency));
+    qmodelingelementproperty_cast<QUmlInterruptibleActivityRegion *>(this)->addClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
 }
 
 void QUmlInterruptibleActivityRegionObject::removeClientDependency(QObject *clientDependency)
 {
-    qmodelingobjectproperty_cast<QUmlInterruptibleActivityRegion *>(this)->removeClientDependency(qmodelingobjectproperty_cast<QUmlDependency *>(clientDependency));
+    qmodelingelementproperty_cast<QUmlInterruptibleActivityRegion *>(this)->removeClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
 }
 
 void QUmlInterruptibleActivityRegionObject::setName(QString name)
 {
-    qmodelingobjectproperty_cast<QUmlInterruptibleActivityRegion *>(this)->setName(name);
+    qmodelingelementproperty_cast<QUmlInterruptibleActivityRegion *>(this)->setName(name);
 }
 
 void QUmlInterruptibleActivityRegionObject::setNameExpression(QObject *nameExpression)
 {
-    qmodelingobjectproperty_cast<QUmlInterruptibleActivityRegion *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
+    qmodelingelementproperty_cast<QUmlInterruptibleActivityRegion *>(this)->setNameExpression(qmodelingelementproperty_cast<QUmlStringExpression *>(nameExpression));
 }
 
 void QUmlInterruptibleActivityRegionObject::setNamespace(QObject *namespace_)
 {
-    qmodelingobjectproperty_cast<QUmlInterruptibleActivityRegion *>(this)->setNamespace(qmodelingobjectproperty_cast<QUmlNamespace *>(namespace_));
+    qmodelingelementproperty_cast<QUmlInterruptibleActivityRegion *>(this)->setNamespace(qmodelingelementproperty_cast<QUmlNamespace *>(namespace_));
 }
 
 void QUmlInterruptibleActivityRegionObject::setQualifiedName(QString qualifiedName)
 {
-    qmodelingobjectproperty_cast<QUmlInterruptibleActivityRegion *>(this)->setQualifiedName(qualifiedName);
+    qmodelingelementproperty_cast<QUmlInterruptibleActivityRegion *>(this)->setQualifiedName(qualifiedName);
 }
 
 void QUmlInterruptibleActivityRegionObject::setVisibility(QtUml::VisibilityKind visibility)
 {
-    qmodelingobjectproperty_cast<QUmlInterruptibleActivityRegion *>(this)->setVisibility(visibility);
+    qmodelingelementproperty_cast<QUmlInterruptibleActivityRegion *>(this)->setVisibility(visibility);
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ActivityGroup]
 
 void QUmlInterruptibleActivityRegionObject::addContainedEdge(QObject *containedEdge)
 {
-    qmodelingobjectproperty_cast<QUmlInterruptibleActivityRegion *>(this)->addContainedEdge(qmodelingobjectproperty_cast<QUmlActivityEdge *>(containedEdge));
+    qmodelingelementproperty_cast<QUmlInterruptibleActivityRegion *>(this)->addContainedEdge(qmodelingelementproperty_cast<QUmlActivityEdge *>(containedEdge));
 }
 
 void QUmlInterruptibleActivityRegionObject::removeContainedEdge(QObject *containedEdge)
 {
-    qmodelingobjectproperty_cast<QUmlInterruptibleActivityRegion *>(this)->removeContainedEdge(qmodelingobjectproperty_cast<QUmlActivityEdge *>(containedEdge));
+    qmodelingelementproperty_cast<QUmlInterruptibleActivityRegion *>(this)->removeContainedEdge(qmodelingelementproperty_cast<QUmlActivityEdge *>(containedEdge));
 }
 
 void QUmlInterruptibleActivityRegionObject::addContainedNode(QObject *containedNode)
 {
-    qmodelingobjectproperty_cast<QUmlInterruptibleActivityRegion *>(this)->addContainedNode(qmodelingobjectproperty_cast<QUmlActivityNode *>(containedNode));
+    qmodelingelementproperty_cast<QUmlInterruptibleActivityRegion *>(this)->addContainedNode(qmodelingelementproperty_cast<QUmlActivityNode *>(containedNode));
 }
 
 void QUmlInterruptibleActivityRegionObject::removeContainedNode(QObject *containedNode)
 {
-    qmodelingobjectproperty_cast<QUmlInterruptibleActivityRegion *>(this)->removeContainedNode(qmodelingobjectproperty_cast<QUmlActivityNode *>(containedNode));
+    qmodelingelementproperty_cast<QUmlInterruptibleActivityRegion *>(this)->removeContainedNode(qmodelingelementproperty_cast<QUmlActivityNode *>(containedNode));
 }
 
 void QUmlInterruptibleActivityRegionObject::setInActivity(QObject *inActivity)
 {
-    qmodelingobjectproperty_cast<QUmlInterruptibleActivityRegion *>(this)->setInActivity(qmodelingobjectproperty_cast<QUmlActivity *>(inActivity));
+    qmodelingelementproperty_cast<QUmlInterruptibleActivityRegion *>(this)->setInActivity(qmodelingelementproperty_cast<QUmlActivity *>(inActivity));
 }
 
 void QUmlInterruptibleActivityRegionObject::addSubgroup(QObject *subgroup)
 {
-    qmodelingobjectproperty_cast<QUmlInterruptibleActivityRegion *>(this)->addSubgroup(qmodelingobjectproperty_cast<QUmlActivityGroup *>(subgroup));
+    qmodelingelementproperty_cast<QUmlInterruptibleActivityRegion *>(this)->addSubgroup(qmodelingelementproperty_cast<QUmlActivityGroup *>(subgroup));
 }
 
 void QUmlInterruptibleActivityRegionObject::removeSubgroup(QObject *subgroup)
 {
-    qmodelingobjectproperty_cast<QUmlInterruptibleActivityRegion *>(this)->removeSubgroup(qmodelingobjectproperty_cast<QUmlActivityGroup *>(subgroup));
+    qmodelingelementproperty_cast<QUmlInterruptibleActivityRegion *>(this)->removeSubgroup(qmodelingelementproperty_cast<QUmlActivityGroup *>(subgroup));
 }
 
 void QUmlInterruptibleActivityRegionObject::setSuperGroup(QObject *superGroup)
 {
-    qmodelingobjectproperty_cast<QUmlInterruptibleActivityRegion *>(this)->setSuperGroup(qmodelingobjectproperty_cast<QUmlActivityGroup *>(superGroup));
+    qmodelingelementproperty_cast<QUmlInterruptibleActivityRegion *>(this)->setSuperGroup(qmodelingelementproperty_cast<QUmlActivityGroup *>(superGroup));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [InterruptibleActivityRegion]
 
 void QUmlInterruptibleActivityRegionObject::addInterruptingEdge(QObject *interruptingEdge)
 {
-    qmodelingobjectproperty_cast<QUmlInterruptibleActivityRegion *>(this)->addInterruptingEdge(qmodelingobjectproperty_cast<QUmlActivityEdge *>(interruptingEdge));
+    qmodelingelementproperty_cast<QUmlInterruptibleActivityRegion *>(this)->addInterruptingEdge(qmodelingelementproperty_cast<QUmlActivityEdge *>(interruptingEdge));
 }
 
 void QUmlInterruptibleActivityRegionObject::removeInterruptingEdge(QObject *interruptingEdge)
 {
-    qmodelingobjectproperty_cast<QUmlInterruptibleActivityRegion *>(this)->removeInterruptingEdge(qmodelingobjectproperty_cast<QUmlActivityEdge *>(interruptingEdge));
+    qmodelingelementproperty_cast<QUmlInterruptibleActivityRegion *>(this)->removeInterruptingEdge(qmodelingelementproperty_cast<QUmlActivityEdge *>(interruptingEdge));
 }
 
 void QUmlInterruptibleActivityRegionObject::addNode(QObject *node)
 {
-    qmodelingobjectproperty_cast<QUmlInterruptibleActivityRegion *>(this)->addNode(qmodelingobjectproperty_cast<QUmlActivityNode *>(node));
+    qmodelingelementproperty_cast<QUmlInterruptibleActivityRegion *>(this)->addNode(qmodelingelementproperty_cast<QUmlActivityNode *>(node));
 }
 
 void QUmlInterruptibleActivityRegionObject::removeNode(QObject *node)
 {
-    qmodelingobjectproperty_cast<QUmlInterruptibleActivityRegion *>(this)->removeNode(qmodelingobjectproperty_cast<QUmlActivityNode *>(node));
+    qmodelingelementproperty_cast<QUmlInterruptibleActivityRegion *>(this)->removeNode(qmodelingelementproperty_cast<QUmlActivityNode *>(node));
+}
+
+
+void QUmlInterruptibleActivityRegionObject::setGroupProperties()
+{
+    Q_D(QModelingObject);
+    const QMetaObject *metaObject = this->metaObject();
+
+    d->propertyGroups << QStringLiteral("QObject");
+    d->groupProperties.insert(QStringLiteral("QObject"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("objectName"))));
+
+    d->propertyGroups << QStringLiteral("QUmlElement");
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
+
+    d->propertyGroups << QStringLiteral("QUmlNamedElement");
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
+
+    d->propertyGroups << QStringLiteral("QUmlActivityGroup");
+    d->groupProperties.insert(QStringLiteral("QUmlActivityGroup"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("containedEdges"))));
+    d->groupProperties.insert(QStringLiteral("QUmlActivityGroup"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("containedNodes"))));
+    d->groupProperties.insert(QStringLiteral("QUmlActivityGroup"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inActivity"))));
+    d->groupProperties.insert(QStringLiteral("QUmlActivityGroup"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("subgroups"))));
+    d->groupProperties.insert(QStringLiteral("QUmlActivityGroup"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("superGroup"))));
+
+    d->propertyGroups << QStringLiteral("QUmlInterruptibleActivityRegion");
+    d->groupProperties.insert(QStringLiteral("QUmlInterruptibleActivityRegion"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("interruptingEdges"))));
+    d->groupProperties.insert(QStringLiteral("QUmlInterruptibleActivityRegion"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nodes"))));
+}
+
+void QUmlInterruptibleActivityRegionObject::setPropertyData()
+{
+    Q_DECLARE_METAPROPERTY_INFO(QUmlInterruptibleActivityRegion, interruptingEdges, AggregationRole, QStringLiteral("none"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlInterruptibleActivityRegion, interruptingEdges, PropertyClassRole, QStringLiteral("QUmlInterruptibleActivityRegion"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlInterruptibleActivityRegion, interruptingEdges, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlInterruptibleActivityRegion, interruptingEdges, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlInterruptibleActivityRegion, interruptingEdges, DocumentationRole, QStringLiteral("The edges leaving the region that will abort other tokens flowing in the region."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlInterruptibleActivityRegion, interruptingEdges, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlInterruptibleActivityRegion, interruptingEdges, SubsettedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlInterruptibleActivityRegion, interruptingEdges, OppositeEndRole, QStringLiteral("ActivityEdge-interrupts"));
+
+    Q_DECLARE_METAPROPERTY_INFO(QUmlInterruptibleActivityRegion, nodes, AggregationRole, QStringLiteral("none"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlInterruptibleActivityRegion, nodes, PropertyClassRole, QStringLiteral("QUmlInterruptibleActivityRegion"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlInterruptibleActivityRegion, nodes, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlInterruptibleActivityRegion, nodes, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlInterruptibleActivityRegion, nodes, DocumentationRole, QStringLiteral("Nodes immediately contained in the group."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlInterruptibleActivityRegion, nodes, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlInterruptibleActivityRegion, nodes, SubsettedPropertiesRole, QStringLiteral("ActivityGroup-containedNode"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlInterruptibleActivityRegion, nodes, OppositeEndRole, QStringLiteral("ActivityNode-inInterruptibleRegion"));
+
 }
 
 QT_END_NAMESPACE

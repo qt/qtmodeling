@@ -53,26 +53,24 @@
 
     \brief Protocol state machines can be redefined into more specific protocol state machines, or into behavioral state machines. Protocol conformance declares that the specific protocol state machine specifies a protocol that conforms to the general state machine one, or that the specific behavioral state machine abide by the protocol of the general protocol state machine.
  */
-QUmlProtocolConformance::QUmlProtocolConformance(bool createQObject) :
+QUmlProtocolConformance::QUmlProtocolConformance(bool createQModelingObject) :
     _generalMachine(0),
     _specificMachine(0)
 {
-    if (createQObject)
-        _qObject = new QUmlProtocolConformanceObject(this);
-    setGroupProperties();
-    setPropertyData();
+    if (createQModelingObject)
+        _qModelingObject = qobject_cast<QModelingObject *>(new QUmlProtocolConformanceObject(this));
 }
 
 QUmlProtocolConformance::~QUmlProtocolConformance()
 {
-    if (!deletingFromQObject) {
-        if (_qObject)
-            _qObject->setProperty("deletingFromModelingObject", true);
-        delete _qObject;
+    if (!deletingFromQModelingObject) {
+        if (_qModelingObject)
+            _qModelingObject->setProperty("deletingFromModelingObject", true);
+        delete _qModelingObject;
     }
 }
 
-QModelingObject *QUmlProtocolConformance::clone() const
+QModelingElement *QUmlProtocolConformance::clone() const
 {
     QUmlProtocolConformance *c = new QUmlProtocolConformance;
     foreach (QUmlComment *element, ownedComments())
@@ -105,8 +103,8 @@ void QUmlProtocolConformance::setGeneralMachine(QUmlProtocolStateMachine *genera
         removeTarget(_generalMachine);
 
         _generalMachine = generalMachine;
-        if (generalMachine && generalMachine->asQObject() && this->asQObject())
-            QObject::connect(generalMachine->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setGeneralMachine()));
+        if (generalMachine && generalMachine->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(generalMachine->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setGeneralMachine()));
 
         // Adjust subsetted properties
         if (generalMachine) {
@@ -134,8 +132,8 @@ void QUmlProtocolConformance::setSpecificMachine(QUmlProtocolStateMachine *speci
         removeSource(_specificMachine);
 
         _specificMachine = specificMachine;
-        if (specificMachine && specificMachine->asQObject() && this->asQObject())
-            QObject::connect(specificMachine->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setSpecificMachine()));
+        if (specificMachine && specificMachine->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(specificMachine->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setSpecificMachine()));
 
         // Adjust subsetted properties
         setOwner(specificMachine);
@@ -143,41 +141,5 @@ void QUmlProtocolConformance::setSpecificMachine(QUmlProtocolStateMachine *speci
             addSource(specificMachine);
         }
     }
-}
-
-void QUmlProtocolConformance::setGroupProperties()
-{
-    const QMetaObject *metaObject = _qObject->metaObject();
-
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
-    _groupProperties.insert(QStringLiteral("QUmlRelationship"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("relatedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlDirectedRelationship"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("sources"))));
-    _groupProperties.insert(QStringLiteral("QUmlDirectedRelationship"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("targets"))));
-    _groupProperties.insert(QStringLiteral("QUmlProtocolConformance"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("generalMachine"))));
-    _groupProperties.insert(QStringLiteral("QUmlProtocolConformance"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("specificMachine"))));
-}
-
-void QUmlProtocolConformance::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProtocolConformance")][QStringLiteral("generalMachine")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProtocolConformance")][QStringLiteral("generalMachine")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlProtocolConformance");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProtocolConformance")][QStringLiteral("generalMachine")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProtocolConformance")][QStringLiteral("generalMachine")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProtocolConformance")][QStringLiteral("generalMachine")][QtModeling::DocumentationRole] = QStringLiteral("Specifies the protocol state machine to which the specific state machine conforms.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProtocolConformance")][QStringLiteral("generalMachine")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProtocolConformance")][QStringLiteral("generalMachine")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("DirectedRelationship-target");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProtocolConformance")][QStringLiteral("generalMachine")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProtocolConformance")][QStringLiteral("specificMachine")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProtocolConformance")][QStringLiteral("specificMachine")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlProtocolConformance");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProtocolConformance")][QStringLiteral("specificMachine")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProtocolConformance")][QStringLiteral("specificMachine")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProtocolConformance")][QStringLiteral("specificMachine")][QtModeling::DocumentationRole] = QStringLiteral("Specifies the state machine which conforms to the general state machine.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProtocolConformance")][QStringLiteral("specificMachine")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProtocolConformance")][QStringLiteral("specificMachine")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-owner DirectedRelationship-source");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProtocolConformance")][QStringLiteral("specificMachine")][QtModeling::OppositeEndRole] = QStringLiteral("ProtocolStateMachine-conformance");
-
 }
 

@@ -45,7 +45,6 @@
 
 #include <QtUml/QUmlCombinedFragment>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -57,10 +56,10 @@ class QUmlNamedElement;
 class Q_UML_EXPORT QUmlConsiderIgnoreFragment : public QUmlCombinedFragment
 {
 public:
-    explicit QUmlConsiderIgnoreFragment(bool createQObject = true);
+    explicit QUmlConsiderIgnoreFragment(bool createQModelingObject = true);
     virtual ~QUmlConsiderIgnoreFragment();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
     const QSet<QUmlNamedElement *> messages() const;
@@ -69,9 +68,6 @@ public:
 
 protected:
     QSet<QUmlNamedElement *> _messages;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

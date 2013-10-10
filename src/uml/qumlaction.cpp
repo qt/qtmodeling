@@ -71,15 +71,13 @@
 QUmlAction::QUmlAction() :
     _isLocallyReentrant(false)
 {
-    setGroupProperties();
-    setPropertyData();
 }
 
 QUmlAction::~QUmlAction()
 {
 }
 
-QModelingObject *QUmlAction::clone() const
+QModelingElement *QUmlAction::clone() const
 {
     QUmlAction *c = new QUmlAction;
     foreach (QUmlComment *element, ownedComments())
@@ -157,9 +155,9 @@ void QUmlAction::addInput(QUmlInputPin *input)
 
     if (!_inputs.contains(input)) {
         _inputs.append(input);
-        if (input && input->asQObject() && this->asQObject())
-            QObject::connect(input->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeInput(QObject *)));
-        input->asQObject()->setParent(this->asQObject());
+        if (input && input->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(input->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeInput(QObject *)));
+        input->asQModelingObject()->setParent(this->asQModelingObject());
 
         // Adjust subsetted properties
         addOwnedElement(input);
@@ -172,8 +170,8 @@ void QUmlAction::removeInput(QUmlInputPin *input)
 
     if (_inputs.contains(input)) {
         _inputs.removeAll(input);
-        if (input->asQObject())
-            input->asQObject()->setParent(0);
+        if (input->asQModelingObject())
+            input->asQModelingObject()->setParent(0);
 
         // Adjust subsetted properties
         removeOwnedElement(input);
@@ -196,7 +194,7 @@ void QUmlAction::setLocallyReentrant(bool isLocallyReentrant)
 
     if (_isLocallyReentrant != isLocallyReentrant) {
         _isLocallyReentrant = isLocallyReentrant;
-        _modifiedResettableProperties << QStringLiteral("isLocallyReentrant");
+        _qModelingObject->modifiedResettableProperties() << QStringLiteral("isLocallyReentrant");
     }
 }
 
@@ -216,9 +214,9 @@ void QUmlAction::addLocalPostcondition(QUmlConstraint *localPostcondition)
 
     if (!_localPostconditions.contains(localPostcondition)) {
         _localPostconditions.insert(localPostcondition);
-        if (localPostcondition && localPostcondition->asQObject() && this->asQObject())
-            QObject::connect(localPostcondition->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeLocalPostcondition(QObject *)));
-        localPostcondition->asQObject()->setParent(this->asQObject());
+        if (localPostcondition && localPostcondition->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(localPostcondition->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeLocalPostcondition(QObject *)));
+        localPostcondition->asQModelingObject()->setParent(this->asQModelingObject());
 
         // Adjust subsetted properties
         addOwnedElement(localPostcondition);
@@ -231,8 +229,8 @@ void QUmlAction::removeLocalPostcondition(QUmlConstraint *localPostcondition)
 
     if (_localPostconditions.contains(localPostcondition)) {
         _localPostconditions.remove(localPostcondition);
-        if (localPostcondition->asQObject())
-            localPostcondition->asQObject()->setParent(0);
+        if (localPostcondition->asQModelingObject())
+            localPostcondition->asQModelingObject()->setParent(0);
 
         // Adjust subsetted properties
         removeOwnedElement(localPostcondition);
@@ -255,9 +253,9 @@ void QUmlAction::addLocalPrecondition(QUmlConstraint *localPrecondition)
 
     if (!_localPreconditions.contains(localPrecondition)) {
         _localPreconditions.insert(localPrecondition);
-        if (localPrecondition && localPrecondition->asQObject() && this->asQObject())
-            QObject::connect(localPrecondition->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeLocalPrecondition(QObject *)));
-        localPrecondition->asQObject()->setParent(this->asQObject());
+        if (localPrecondition && localPrecondition->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(localPrecondition->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeLocalPrecondition(QObject *)));
+        localPrecondition->asQModelingObject()->setParent(this->asQModelingObject());
 
         // Adjust subsetted properties
         addOwnedElement(localPrecondition);
@@ -270,8 +268,8 @@ void QUmlAction::removeLocalPrecondition(QUmlConstraint *localPrecondition)
 
     if (_localPreconditions.contains(localPrecondition)) {
         _localPreconditions.remove(localPrecondition);
-        if (localPrecondition->asQObject())
-            localPrecondition->asQObject()->setParent(0);
+        if (localPrecondition->asQModelingObject())
+            localPrecondition->asQModelingObject()->setParent(0);
 
         // Adjust subsetted properties
         removeOwnedElement(localPrecondition);
@@ -294,9 +292,9 @@ void QUmlAction::addOutput(QUmlOutputPin *output)
 
     if (!_outputs.contains(output)) {
         _outputs.append(output);
-        if (output && output->asQObject() && this->asQObject())
-            QObject::connect(output->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeOutput(QObject *)));
-        output->asQObject()->setParent(this->asQObject());
+        if (output && output->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(output->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeOutput(QObject *)));
+        output->asQModelingObject()->setParent(this->asQModelingObject());
 
         // Adjust subsetted properties
         addOwnedElement(output);
@@ -309,102 +307,11 @@ void QUmlAction::removeOutput(QUmlOutputPin *output)
 
     if (_outputs.contains(output)) {
         _outputs.removeAll(output);
-        if (output->asQObject())
-            output->asQObject()->setParent(0);
+        if (output->asQModelingObject())
+            output->asQModelingObject()->setParent(0);
 
         // Adjust subsetted properties
         removeOwnedElement(output);
     }
-}
-
-void QUmlAction::setGroupProperties()
-{
-    const QMetaObject *metaObject = _qObject->metaObject();
-
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
-    _groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isLeaf"))));
-    _groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinitionContexts"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("activity"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inGroups"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inInterruptibleRegions"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inPartitions"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inStructuredNode"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("incomings"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("outgoings"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinedNodes"))));
-    _groupProperties.insert(QStringLiteral("QUmlExecutableNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("handlers"))));
-    _groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("context"))));
-    _groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inputs"))));
-    _groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isLocallyReentrant"))));
-    _groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("localPostconditions"))));
-    _groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("localPreconditions"))));
-    _groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("outputs"))));
-}
-
-void QUmlAction::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAction")][QStringLiteral("context")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAction")][QStringLiteral("context")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlAction");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAction")][QStringLiteral("context")][QtModeling::IsDerivedRole] = true;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAction")][QStringLiteral("context")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAction")][QStringLiteral("context")][QtModeling::DocumentationRole] = QStringLiteral("The classifier that owns the behavior of which this action is a part.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAction")][QStringLiteral("context")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAction")][QStringLiteral("context")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAction")][QStringLiteral("context")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAction")][QStringLiteral("inputs")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAction")][QStringLiteral("inputs")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlAction");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAction")][QStringLiteral("inputs")][QtModeling::IsDerivedRole] = true;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAction")][QStringLiteral("inputs")][QtModeling::IsDerivedUnionRole] = true;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAction")][QStringLiteral("inputs")][QtModeling::DocumentationRole] = QStringLiteral("The ordered set of input pins connected to the Action. These are among the total set of inputs.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAction")][QStringLiteral("inputs")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAction")][QStringLiteral("inputs")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAction")][QStringLiteral("inputs")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAction")][QStringLiteral("isLocallyReentrant")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAction")][QStringLiteral("isLocallyReentrant")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlAction");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAction")][QStringLiteral("isLocallyReentrant")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAction")][QStringLiteral("isLocallyReentrant")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAction")][QStringLiteral("isLocallyReentrant")][QtModeling::DocumentationRole] = QStringLiteral("If true, the action can begin a new, concurrent execution, even if there is already another execution of the action ongoing. If false, the action cannot begin a new execution until any previous execution has completed.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAction")][QStringLiteral("isLocallyReentrant")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAction")][QStringLiteral("isLocallyReentrant")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAction")][QStringLiteral("isLocallyReentrant")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAction")][QStringLiteral("localPostconditions")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAction")][QStringLiteral("localPostconditions")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlAction");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAction")][QStringLiteral("localPostconditions")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAction")][QStringLiteral("localPostconditions")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAction")][QStringLiteral("localPostconditions")][QtModeling::DocumentationRole] = QStringLiteral("Constraint that must be satisfied when executed is completed.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAction")][QStringLiteral("localPostconditions")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAction")][QStringLiteral("localPostconditions")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAction")][QStringLiteral("localPostconditions")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAction")][QStringLiteral("localPreconditions")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAction")][QStringLiteral("localPreconditions")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlAction");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAction")][QStringLiteral("localPreconditions")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAction")][QStringLiteral("localPreconditions")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAction")][QStringLiteral("localPreconditions")][QtModeling::DocumentationRole] = QStringLiteral("Constraint that must be satisfied when execution is started.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAction")][QStringLiteral("localPreconditions")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAction")][QStringLiteral("localPreconditions")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAction")][QStringLiteral("localPreconditions")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAction")][QStringLiteral("outputs")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAction")][QStringLiteral("outputs")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlAction");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAction")][QStringLiteral("outputs")][QtModeling::IsDerivedRole] = true;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAction")][QStringLiteral("outputs")][QtModeling::IsDerivedUnionRole] = true;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAction")][QStringLiteral("outputs")][QtModeling::DocumentationRole] = QStringLiteral("The ordered set of output pins connected to the Action. The action places its results onto pins in this set.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAction")][QStringLiteral("outputs")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAction")][QStringLiteral("outputs")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAction")][QStringLiteral("outputs")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
 }
 

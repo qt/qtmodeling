@@ -43,7 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtCore/QObject>
+#include <QtModeling/QModelingObject>
 
 #include <QtUml/QtUmlNamespace>
 
@@ -54,9 +54,12 @@ QT_BEGIN_NAMESPACE
 QT_MODULE(QtUml)
 
 class QUmlExpansionNode;
-class Q_UML_EXPORT QUmlExpansionNodeObject : public QObject
+class QModelingObjectPrivate;
+class Q_UML_EXPORT QUmlExpansionNodeObject : public QModelingObject
 {
     Q_OBJECT
+    Q_DISABLE_COPY(QUmlExpansionNodeObject)
+    Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [Element]
     Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
@@ -101,7 +104,7 @@ class Q_UML_EXPORT QUmlExpansionNodeObject : public QObject
     Q_PROPERTY(QObject * regionAsOutput READ regionAsOutput WRITE setRegionAsOutput)
 
 public:
-    Q_INVOKABLE explicit QUmlExpansionNodeObject(QUmlExpansionNode *qModelingObject);
+    Q_INVOKABLE explicit QUmlExpansionNodeObject(QUmlExpansionNode *qModelingElement);
     virtual ~QUmlExpansionNodeObject();
 
     // Owned attributes [Element]
@@ -218,6 +221,10 @@ public Q_SLOTS:
     // Slots for owned attributes [ExpansionNode]
     void setRegionAsInput(QObject *regionAsInput = 0);
     void setRegionAsOutput(QObject *regionAsOutput = 0);
+
+protected:
+    virtual void setGroupProperties();
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

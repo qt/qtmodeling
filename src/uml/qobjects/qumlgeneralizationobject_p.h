@@ -43,7 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtCore/QObject>
+#include <QtModeling/QModelingObject>
 
 QT_BEGIN_HEADER
 
@@ -52,9 +52,12 @@ QT_BEGIN_NAMESPACE
 QT_MODULE(QtUml)
 
 class QUmlGeneralization;
-class Q_UML_EXPORT QUmlGeneralizationObject : public QObject
+class QModelingObjectPrivate;
+class Q_UML_EXPORT QUmlGeneralizationObject : public QModelingObject
 {
     Q_OBJECT
+    Q_DISABLE_COPY(QUmlGeneralizationObject)
+    Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [Element]
     Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
@@ -75,7 +78,7 @@ class Q_UML_EXPORT QUmlGeneralizationObject : public QObject
     Q_PROPERTY(QObject * specific READ specific WRITE setSpecific)
 
 public:
-    Q_INVOKABLE explicit QUmlGeneralizationObject(QUmlGeneralization *qModelingObject);
+    Q_INVOKABLE explicit QUmlGeneralizationObject(QUmlGeneralization *qModelingElement);
     virtual ~QUmlGeneralizationObject();
 
     // Owned attributes [Element]
@@ -126,6 +129,10 @@ public Q_SLOTS:
     void setSubstitutable(bool isSubstitutable);
     void unsetSubstitutable();
     void setSpecific(QObject *specific = 0);
+
+protected:
+    virtual void setGroupProperties();
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

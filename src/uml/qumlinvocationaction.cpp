@@ -72,15 +72,13 @@
 QUmlInvocationAction::QUmlInvocationAction() :
     _onPort(0)
 {
-    setGroupProperties();
-    setPropertyData();
 }
 
 QUmlInvocationAction::~QUmlInvocationAction()
 {
 }
 
-QModelingObject *QUmlInvocationAction::clone() const
+QModelingElement *QUmlInvocationAction::clone() const
 {
     QUmlInvocationAction *c = new QUmlInvocationAction;
     foreach (QUmlComment *element, ownedComments())
@@ -138,9 +136,9 @@ void QUmlInvocationAction::addArgument(QUmlInputPin *argument)
 
     if (!_arguments.contains(argument)) {
         _arguments.append(argument);
-        if (argument && argument->asQObject() && this->asQObject())
-            QObject::connect(argument->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeArgument(QObject *)));
-        argument->asQObject()->setParent(this->asQObject());
+        if (argument && argument->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(argument->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeArgument(QObject *)));
+        argument->asQModelingObject()->setParent(this->asQModelingObject());
 
         // Adjust subsetted properties
         addInput(argument);
@@ -153,8 +151,8 @@ void QUmlInvocationAction::removeArgument(QUmlInputPin *argument)
 
     if (_arguments.contains(argument)) {
         _arguments.removeAll(argument);
-        if (argument->asQObject())
-            argument->asQObject()->setParent(0);
+        if (argument->asQModelingObject())
+            argument->asQModelingObject()->setParent(0);
 
         // Adjust subsetted properties
         removeInput(argument);
@@ -177,65 +175,8 @@ void QUmlInvocationAction::setOnPort(QUmlPort *onPort)
 
     if (_onPort != onPort) {
         _onPort = onPort;
-        if (onPort && onPort->asQObject() && this->asQObject())
-            QObject::connect(onPort->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setOnPort()));
+        if (onPort && onPort->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(onPort->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setOnPort()));
     }
-}
-
-void QUmlInvocationAction::setGroupProperties()
-{
-    const QMetaObject *metaObject = _qObject->metaObject();
-
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
-    _groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isLeaf"))));
-    _groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinitionContexts"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("activity"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inGroups"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inInterruptibleRegions"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inPartitions"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inStructuredNode"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("incomings"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("outgoings"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinedNodes"))));
-    _groupProperties.insert(QStringLiteral("QUmlExecutableNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("handlers"))));
-    _groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("context"))));
-    _groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inputs"))));
-    _groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isLocallyReentrant"))));
-    _groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("localPostconditions"))));
-    _groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("localPreconditions"))));
-    _groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("outputs"))));
-    _groupProperties.insert(QStringLiteral("QUmlInvocationAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("arguments"))));
-    _groupProperties.insert(QStringLiteral("QUmlInvocationAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("onPort"))));
-}
-
-void QUmlInvocationAction::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInvocationAction")][QStringLiteral("arguments")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInvocationAction")][QStringLiteral("arguments")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInvocationAction");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInvocationAction")][QStringLiteral("arguments")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInvocationAction")][QStringLiteral("arguments")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInvocationAction")][QStringLiteral("arguments")][QtModeling::DocumentationRole] = QStringLiteral("Specification of the ordered set of argument values that appears during execution.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInvocationAction")][QStringLiteral("arguments")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInvocationAction")][QStringLiteral("arguments")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Action-input");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInvocationAction")][QStringLiteral("arguments")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInvocationAction")][QStringLiteral("onPort")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInvocationAction")][QStringLiteral("onPort")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInvocationAction");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInvocationAction")][QStringLiteral("onPort")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInvocationAction")][QStringLiteral("onPort")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInvocationAction")][QStringLiteral("onPort")][QtModeling::DocumentationRole] = QStringLiteral("A optional port of the receiver object on which the behavioral feature is invoked.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInvocationAction")][QStringLiteral("onPort")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInvocationAction")][QStringLiteral("onPort")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInvocationAction")][QStringLiteral("onPort")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
 }
 

@@ -45,7 +45,6 @@
 
 #include <QtUml/QUmlAction>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -59,10 +58,10 @@ class QUmlProperty;
 class Q_UML_EXPORT QUmlReadLinkObjectEndQualifierAction : public QUmlAction
 {
 public:
-    explicit QUmlReadLinkObjectEndQualifierAction(bool createQObject = true);
+    explicit QUmlReadLinkObjectEndQualifierAction(bool createQModelingObject = true);
     virtual ~QUmlReadLinkObjectEndQualifierAction();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
     QUmlInputPin *object() const;
@@ -76,9 +75,6 @@ protected:
     QUmlInputPin *_object;
     QUmlProperty *_qualifier;
     QUmlOutputPin *_result;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

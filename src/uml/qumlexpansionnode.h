@@ -45,7 +45,6 @@
 
 #include <QtUml/QUmlObjectNode>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -57,10 +56,10 @@ class QUmlExpansionRegion;
 class Q_UML_EXPORT QUmlExpansionNode : public QUmlObjectNode
 {
 public:
-    explicit QUmlExpansionNode(bool createQObject = true);
+    explicit QUmlExpansionNode(bool createQModelingObject = true);
     virtual ~QUmlExpansionNode();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
     QUmlExpansionRegion *regionAsInput() const;
@@ -71,9 +70,6 @@ public:
 protected:
     QUmlExpansionRegion *_regionAsInput;
     QUmlExpansionRegion *_regionAsOutput;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

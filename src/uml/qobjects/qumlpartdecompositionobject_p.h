@@ -43,7 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtCore/QObject>
+#include <QtModeling/QModelingObject>
 
 #include <QtUml/QtUmlNamespace>
 
@@ -54,9 +54,12 @@ QT_BEGIN_NAMESPACE
 QT_MODULE(QtUml)
 
 class QUmlPartDecomposition;
-class Q_UML_EXPORT QUmlPartDecompositionObject : public QObject
+class QModelingObjectPrivate;
+class Q_UML_EXPORT QUmlPartDecompositionObject : public QModelingObject
 {
     Q_OBJECT
+    Q_DISABLE_COPY(QUmlPartDecompositionObject)
+    Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [Element]
     Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
@@ -85,7 +88,7 @@ class Q_UML_EXPORT QUmlPartDecompositionObject : public QObject
     Q_PROPERTY(QObject * returnValueRecipient READ returnValueRecipient WRITE setReturnValueRecipient)
 
 public:
-    Q_INVOKABLE explicit QUmlPartDecompositionObject(QUmlPartDecomposition *qModelingObject);
+    Q_INVOKABLE explicit QUmlPartDecompositionObject(QUmlPartDecomposition *qModelingElement);
     virtual ~QUmlPartDecompositionObject();
 
     // Owned attributes [Element]
@@ -158,6 +161,10 @@ public Q_SLOTS:
     void setRefersTo(QObject *refersTo = 0);
     void setReturnValue(QObject *returnValue = 0);
     void setReturnValueRecipient(QObject *returnValueRecipient = 0);
+
+protected:
+    virtual void setGroupProperties();
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

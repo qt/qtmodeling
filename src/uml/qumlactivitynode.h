@@ -45,7 +45,6 @@
 
 #include <QtUml/QUmlRedefinableElement>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -64,7 +63,7 @@ class Q_UML_EXPORT QUmlActivityNode : public QUmlRedefinableElement
 public:
     virtual ~QUmlActivityNode();
 
-    Q_DECL_HIDDEN QModelingObject *clone() const;
+    Q_DECL_HIDDEN virtual QModelingElement *clone() const;
 
     // Owned attributes
     QUmlActivity *activity() const;
@@ -101,9 +100,6 @@ protected:
     QSet<QUmlActivityEdge *> _incomings;
     QSet<QUmlActivityEdge *> _outgoings;
     QSet<QUmlActivityNode *> _redefinedNodes;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

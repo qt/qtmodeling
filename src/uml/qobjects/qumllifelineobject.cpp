@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumllifelineobject_p.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlLifeline>
 #include <QtUml/QUmlComment>
@@ -56,16 +57,18 @@
 
 QT_BEGIN_NAMESPACE
 
-QUmlLifelineObject::QUmlLifelineObject(QUmlLifeline *qModelingObject)
+QUmlLifelineObject::QUmlLifelineObject(QUmlLifeline *qModelingElement)
 {
-    setProperty("modelingObject", QVariant::fromValue(static_cast<QModelingObject *>(qModelingObject)));
+    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(qModelingElement)));
+    setGroupProperties();
+    setPropertyData();
 }
 
 QUmlLifelineObject::~QUmlLifelineObject()
 {
     if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingobjectproperty_cast<QUmlLifeline *>(this)->deletingFromQObject = true;
-        delete qmodelingobjectproperty_cast<QUmlComment *>(this);
+        qmodelingelementproperty_cast<QUmlLifeline *>(this)->deletingFromQModelingObject = true;
+        delete qmodelingelementproperty_cast<QUmlComment *>(this);
     }
 }
 
@@ -74,25 +77,25 @@ QUmlLifelineObject::~QUmlLifelineObject()
 const QSet<QObject *> QUmlLifelineObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlLifeline *>(this)->ownedComments())
-        set.insert(element->asQObject());
+    foreach (QUmlComment *element, qmodelingelementproperty_cast<QUmlLifeline *>(this)->ownedComments())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlLifelineObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlLifeline *>(this)->ownedElements())
-        set.insert(element->asQObject());
+    foreach (QUmlElement *element, qmodelingelementproperty_cast<QUmlLifeline *>(this)->ownedElements())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 QObject *QUmlLifelineObject::owner() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlLifeline *>(this)->owner())
+    if (!qmodelingelementproperty_cast<QUmlLifeline *>(this)->owner())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlLifeline *>(this)->owner()->asQObject();
+        return qmodelingelementproperty_cast<QUmlLifeline *>(this)->owner()->asQModelingObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -100,40 +103,40 @@ QObject *QUmlLifelineObject::owner() const
 const QSet<QObject *> QUmlLifelineObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlLifeline *>(this)->clientDependencies())
-        set.insert(element->asQObject());
+    foreach (QUmlDependency *element, qmodelingelementproperty_cast<QUmlLifeline *>(this)->clientDependencies())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 QString QUmlLifelineObject::name() const
 {
-    return qmodelingobjectproperty_cast<QUmlLifeline *>(this)->name();
+    return qmodelingelementproperty_cast<QUmlLifeline *>(this)->name();
 }
 
 QObject *QUmlLifelineObject::nameExpression() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlLifeline *>(this)->nameExpression())
+    if (!qmodelingelementproperty_cast<QUmlLifeline *>(this)->nameExpression())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlLifeline *>(this)->nameExpression()->asQObject();
+        return qmodelingelementproperty_cast<QUmlLifeline *>(this)->nameExpression()->asQModelingObject();
 }
 
 QObject *QUmlLifelineObject::namespace_() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlLifeline *>(this)->namespace_())
+    if (!qmodelingelementproperty_cast<QUmlLifeline *>(this)->namespace_())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlLifeline *>(this)->namespace_()->asQObject();
+        return qmodelingelementproperty_cast<QUmlLifeline *>(this)->namespace_()->asQModelingObject();
 }
 
 QString QUmlLifelineObject::qualifiedName() const
 {
-    return qmodelingobjectproperty_cast<QUmlLifeline *>(this)->qualifiedName();
+    return qmodelingelementproperty_cast<QUmlLifeline *>(this)->qualifiedName();
 }
 
 QtUml::VisibilityKind QUmlLifelineObject::visibility() const
 {
-    return qmodelingobjectproperty_cast<QUmlLifeline *>(this)->visibility();
+    return qmodelingelementproperty_cast<QUmlLifeline *>(this)->visibility();
 }
 
 // OWNED ATTRIBUTES [Lifeline]
@@ -141,41 +144,41 @@ QtUml::VisibilityKind QUmlLifelineObject::visibility() const
 const QSet<QObject *> QUmlLifelineObject::coveredBy() const
 {
     QSet<QObject *> set;
-    foreach (QUmlInteractionFragment *element, qmodelingobjectproperty_cast<QUmlLifeline *>(this)->coveredBy())
-        set.insert(element->asQObject());
+    foreach (QUmlInteractionFragment *element, qmodelingelementproperty_cast<QUmlLifeline *>(this)->coveredBy())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 QObject *QUmlLifelineObject::decomposedAs() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlLifeline *>(this)->decomposedAs())
+    if (!qmodelingelementproperty_cast<QUmlLifeline *>(this)->decomposedAs())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlLifeline *>(this)->decomposedAs()->asQObject();
+        return qmodelingelementproperty_cast<QUmlLifeline *>(this)->decomposedAs()->asQModelingObject();
 }
 
 QObject *QUmlLifelineObject::interaction() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlLifeline *>(this)->interaction())
+    if (!qmodelingelementproperty_cast<QUmlLifeline *>(this)->interaction())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlLifeline *>(this)->interaction()->asQObject();
+        return qmodelingelementproperty_cast<QUmlLifeline *>(this)->interaction()->asQModelingObject();
 }
 
 QObject *QUmlLifelineObject::represents() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlLifeline *>(this)->represents())
+    if (!qmodelingelementproperty_cast<QUmlLifeline *>(this)->represents())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlLifeline *>(this)->represents()->asQObject();
+        return qmodelingelementproperty_cast<QUmlLifeline *>(this)->represents()->asQModelingObject();
 }
 
 QObject *QUmlLifelineObject::selector() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlLifeline *>(this)->selector())
+    if (!qmodelingelementproperty_cast<QUmlLifeline *>(this)->selector())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlLifeline *>(this)->selector()->asQObject();
+        return qmodelingelementproperty_cast<QUmlLifeline *>(this)->selector()->asQModelingObject();
 }
 
 // OPERATIONS [Element]
@@ -183,14 +186,14 @@ QObject *QUmlLifelineObject::selector() const
 QSet<QObject *> QUmlLifelineObject::allOwnedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlLifeline *>(this)->allOwnedElements())
-        set.insert(element->asQObject());
+    foreach (QUmlElement *element, qmodelingelementproperty_cast<QUmlLifeline *>(this)->allOwnedElements())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 bool QUmlLifelineObject::mustBeOwned() const
 {
-    return qmodelingobjectproperty_cast<QUmlLifeline *>(this)->mustBeOwned();
+    return qmodelingelementproperty_cast<QUmlLifeline *>(this)->mustBeOwned();
 }
 
 // OPERATIONS [NamedElement]
@@ -198,123 +201,202 @@ bool QUmlLifelineObject::mustBeOwned() const
 QList<QObject *> QUmlLifelineObject::allNamespaces() const
 {
     QList<QObject *> set;
-    foreach (QUmlNamespace *element, qmodelingobjectproperty_cast<QUmlLifeline *>(this)->allNamespaces())
-        set.append(element->asQObject());
+    foreach (QUmlNamespace *element, qmodelingelementproperty_cast<QUmlLifeline *>(this)->allNamespaces())
+        set.append(element->asQModelingObject());
     return set;
 }
 
 QSet<QObject *> QUmlLifelineObject::allOwningPackages() const
 {
     QSet<QObject *> set;
-    foreach (QUmlPackage *element, qmodelingobjectproperty_cast<QUmlLifeline *>(this)->allOwningPackages())
-        set.insert(element->asQObject());
+    foreach (QUmlPackage *element, qmodelingelementproperty_cast<QUmlLifeline *>(this)->allOwningPackages())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 bool QUmlLifelineObject::isDistinguishableFrom(QObject *n, QObject *ns) const
 {
-    return qmodelingobjectproperty_cast<QUmlLifeline *>(this)->isDistinguishableFrom(qmodelingobjectproperty_cast<QUmlNamedElement *>(n), qmodelingobjectproperty_cast<QUmlNamespace *>(ns));
+    return qmodelingelementproperty_cast<QUmlLifeline *>(this)->isDistinguishableFrom(qmodelingelementproperty_cast<QUmlNamedElement *>(n), qmodelingelementproperty_cast<QUmlNamespace *>(ns));
 }
 
 QString QUmlLifelineObject::separator() const
 {
-    return qmodelingobjectproperty_cast<QUmlLifeline *>(this)->separator();
+    return qmodelingelementproperty_cast<QUmlLifeline *>(this)->separator();
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Element]
 
 void QUmlLifelineObject::addOwnedComment(QObject *ownedComment)
 {
-    qmodelingobjectproperty_cast<QUmlLifeline *>(this)->addOwnedComment(qmodelingobjectproperty_cast<QUmlComment *>(ownedComment));
+    qmodelingelementproperty_cast<QUmlLifeline *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
 }
 
 void QUmlLifelineObject::removeOwnedComment(QObject *ownedComment)
 {
-    qmodelingobjectproperty_cast<QUmlLifeline *>(this)->removeOwnedComment(qmodelingobjectproperty_cast<QUmlComment *>(ownedComment));
+    qmodelingelementproperty_cast<QUmlLifeline *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
 }
 
 void QUmlLifelineObject::addOwnedElement(QObject *ownedElement)
 {
-    qmodelingobjectproperty_cast<QUmlLifeline *>(this)->addOwnedElement(qmodelingobjectproperty_cast<QUmlElement *>(ownedElement));
+    qmodelingelementproperty_cast<QUmlLifeline *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
 }
 
 void QUmlLifelineObject::removeOwnedElement(QObject *ownedElement)
 {
-    qmodelingobjectproperty_cast<QUmlLifeline *>(this)->removeOwnedElement(qmodelingobjectproperty_cast<QUmlElement *>(ownedElement));
+    qmodelingelementproperty_cast<QUmlLifeline *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
 }
 
 void QUmlLifelineObject::setOwner(QObject *owner)
 {
-    qmodelingobjectproperty_cast<QUmlLifeline *>(this)->setOwner(qmodelingobjectproperty_cast<QUmlElement *>(owner));
+    qmodelingelementproperty_cast<QUmlLifeline *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [NamedElement]
 
 void QUmlLifelineObject::addClientDependency(QObject *clientDependency)
 {
-    qmodelingobjectproperty_cast<QUmlLifeline *>(this)->addClientDependency(qmodelingobjectproperty_cast<QUmlDependency *>(clientDependency));
+    qmodelingelementproperty_cast<QUmlLifeline *>(this)->addClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
 }
 
 void QUmlLifelineObject::removeClientDependency(QObject *clientDependency)
 {
-    qmodelingobjectproperty_cast<QUmlLifeline *>(this)->removeClientDependency(qmodelingobjectproperty_cast<QUmlDependency *>(clientDependency));
+    qmodelingelementproperty_cast<QUmlLifeline *>(this)->removeClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
 }
 
 void QUmlLifelineObject::setName(QString name)
 {
-    qmodelingobjectproperty_cast<QUmlLifeline *>(this)->setName(name);
+    qmodelingelementproperty_cast<QUmlLifeline *>(this)->setName(name);
 }
 
 void QUmlLifelineObject::setNameExpression(QObject *nameExpression)
 {
-    qmodelingobjectproperty_cast<QUmlLifeline *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
+    qmodelingelementproperty_cast<QUmlLifeline *>(this)->setNameExpression(qmodelingelementproperty_cast<QUmlStringExpression *>(nameExpression));
 }
 
 void QUmlLifelineObject::setNamespace(QObject *namespace_)
 {
-    qmodelingobjectproperty_cast<QUmlLifeline *>(this)->setNamespace(qmodelingobjectproperty_cast<QUmlNamespace *>(namespace_));
+    qmodelingelementproperty_cast<QUmlLifeline *>(this)->setNamespace(qmodelingelementproperty_cast<QUmlNamespace *>(namespace_));
 }
 
 void QUmlLifelineObject::setQualifiedName(QString qualifiedName)
 {
-    qmodelingobjectproperty_cast<QUmlLifeline *>(this)->setQualifiedName(qualifiedName);
+    qmodelingelementproperty_cast<QUmlLifeline *>(this)->setQualifiedName(qualifiedName);
 }
 
 void QUmlLifelineObject::setVisibility(QtUml::VisibilityKind visibility)
 {
-    qmodelingobjectproperty_cast<QUmlLifeline *>(this)->setVisibility(visibility);
+    qmodelingelementproperty_cast<QUmlLifeline *>(this)->setVisibility(visibility);
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Lifeline]
 
 void QUmlLifelineObject::addCoveredBy(QObject *coveredBy)
 {
-    qmodelingobjectproperty_cast<QUmlLifeline *>(this)->addCoveredBy(qmodelingobjectproperty_cast<QUmlInteractionFragment *>(coveredBy));
+    qmodelingelementproperty_cast<QUmlLifeline *>(this)->addCoveredBy(qmodelingelementproperty_cast<QUmlInteractionFragment *>(coveredBy));
 }
 
 void QUmlLifelineObject::removeCoveredBy(QObject *coveredBy)
 {
-    qmodelingobjectproperty_cast<QUmlLifeline *>(this)->removeCoveredBy(qmodelingobjectproperty_cast<QUmlInteractionFragment *>(coveredBy));
+    qmodelingelementproperty_cast<QUmlLifeline *>(this)->removeCoveredBy(qmodelingelementproperty_cast<QUmlInteractionFragment *>(coveredBy));
 }
 
 void QUmlLifelineObject::setDecomposedAs(QObject *decomposedAs)
 {
-    qmodelingobjectproperty_cast<QUmlLifeline *>(this)->setDecomposedAs(qmodelingobjectproperty_cast<QUmlPartDecomposition *>(decomposedAs));
+    qmodelingelementproperty_cast<QUmlLifeline *>(this)->setDecomposedAs(qmodelingelementproperty_cast<QUmlPartDecomposition *>(decomposedAs));
 }
 
 void QUmlLifelineObject::setInteraction(QObject *interaction)
 {
-    qmodelingobjectproperty_cast<QUmlLifeline *>(this)->setInteraction(qmodelingobjectproperty_cast<QUmlInteraction *>(interaction));
+    qmodelingelementproperty_cast<QUmlLifeline *>(this)->setInteraction(qmodelingelementproperty_cast<QUmlInteraction *>(interaction));
 }
 
 void QUmlLifelineObject::setRepresents(QObject *represents)
 {
-    qmodelingobjectproperty_cast<QUmlLifeline *>(this)->setRepresents(qmodelingobjectproperty_cast<QUmlConnectableElement *>(represents));
+    qmodelingelementproperty_cast<QUmlLifeline *>(this)->setRepresents(qmodelingelementproperty_cast<QUmlConnectableElement *>(represents));
 }
 
 void QUmlLifelineObject::setSelector(QObject *selector)
 {
-    qmodelingobjectproperty_cast<QUmlLifeline *>(this)->setSelector(qmodelingobjectproperty_cast<QUmlValueSpecification *>(selector));
+    qmodelingelementproperty_cast<QUmlLifeline *>(this)->setSelector(qmodelingelementproperty_cast<QUmlValueSpecification *>(selector));
+}
+
+
+void QUmlLifelineObject::setGroupProperties()
+{
+    Q_D(QModelingObject);
+    const QMetaObject *metaObject = this->metaObject();
+
+    d->propertyGroups << QStringLiteral("QObject");
+    d->groupProperties.insert(QStringLiteral("QObject"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("objectName"))));
+
+    d->propertyGroups << QStringLiteral("QUmlElement");
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
+
+    d->propertyGroups << QStringLiteral("QUmlNamedElement");
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
+
+    d->propertyGroups << QStringLiteral("QUmlLifeline");
+    d->groupProperties.insert(QStringLiteral("QUmlLifeline"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("coveredBy"))));
+    d->groupProperties.insert(QStringLiteral("QUmlLifeline"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("decomposedAs"))));
+    d->groupProperties.insert(QStringLiteral("QUmlLifeline"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("interaction"))));
+    d->groupProperties.insert(QStringLiteral("QUmlLifeline"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("represents"))));
+    d->groupProperties.insert(QStringLiteral("QUmlLifeline"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("selector"))));
+}
+
+void QUmlLifelineObject::setPropertyData()
+{
+    Q_DECLARE_METAPROPERTY_INFO(QUmlLifeline, coveredBy, AggregationRole, QStringLiteral("none"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlLifeline, coveredBy, PropertyClassRole, QStringLiteral("QUmlLifeline"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlLifeline, coveredBy, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlLifeline, coveredBy, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlLifeline, coveredBy, DocumentationRole, QStringLiteral("References the InteractionFragments in which this Lifeline takes part."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlLifeline, coveredBy, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlLifeline, coveredBy, SubsettedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlLifeline, coveredBy, OppositeEndRole, QStringLiteral("InteractionFragment-covered"));
+
+    Q_DECLARE_METAPROPERTY_INFO(QUmlLifeline, decomposedAs, AggregationRole, QStringLiteral("none"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlLifeline, decomposedAs, PropertyClassRole, QStringLiteral("QUmlLifeline"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlLifeline, decomposedAs, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlLifeline, decomposedAs, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlLifeline, decomposedAs, DocumentationRole, QStringLiteral("References the Interaction that represents the decomposition."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlLifeline, decomposedAs, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlLifeline, decomposedAs, SubsettedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlLifeline, decomposedAs, OppositeEndRole, QStringLiteral(""));
+
+    Q_DECLARE_METAPROPERTY_INFO(QUmlLifeline, interaction, AggregationRole, QStringLiteral("none"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlLifeline, interaction, PropertyClassRole, QStringLiteral("QUmlLifeline"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlLifeline, interaction, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlLifeline, interaction, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlLifeline, interaction, DocumentationRole, QStringLiteral("References the Interaction enclosing this Lifeline."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlLifeline, interaction, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlLifeline, interaction, SubsettedPropertiesRole, QStringLiteral("NamedElement-namespace"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlLifeline, interaction, OppositeEndRole, QStringLiteral("Interaction-lifeline"));
+
+    Q_DECLARE_METAPROPERTY_INFO(QUmlLifeline, represents, AggregationRole, QStringLiteral("none"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlLifeline, represents, PropertyClassRole, QStringLiteral("QUmlLifeline"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlLifeline, represents, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlLifeline, represents, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlLifeline, represents, DocumentationRole, QStringLiteral("References the ConnectableElement within the classifier that contains the enclosing interaction."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlLifeline, represents, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlLifeline, represents, SubsettedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlLifeline, represents, OppositeEndRole, QStringLiteral(""));
+
+    Q_DECLARE_METAPROPERTY_INFO(QUmlLifeline, selector, AggregationRole, QStringLiteral("composite"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlLifeline, selector, PropertyClassRole, QStringLiteral("QUmlLifeline"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlLifeline, selector, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlLifeline, selector, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlLifeline, selector, DocumentationRole, QStringLiteral("If the referenced ConnectableElement is multivalued, then this specifies the specific individual part within that set."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlLifeline, selector, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlLifeline, selector, SubsettedPropertiesRole, QStringLiteral("Element-ownedElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlLifeline, selector, OppositeEndRole, QStringLiteral(""));
+
 }
 
 QT_END_NAMESPACE

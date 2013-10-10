@@ -43,7 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtCore/QObject>
+#include <QtModeling/QModelingObject>
 
 #include <QtUml/QtUmlNamespace>
 
@@ -54,9 +54,12 @@ QT_BEGIN_NAMESPACE
 QT_MODULE(QtUml)
 
 class QUmlTestIdentityAction;
-class Q_UML_EXPORT QUmlTestIdentityActionObject : public QObject
+class QModelingObjectPrivate;
+class Q_UML_EXPORT QUmlTestIdentityActionObject : public QModelingObject
 {
     Q_OBJECT
+    Q_DISABLE_COPY(QUmlTestIdentityActionObject)
+    Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [Element]
     Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
@@ -103,7 +106,7 @@ class Q_UML_EXPORT QUmlTestIdentityActionObject : public QObject
     Q_PROPERTY(QObject * second READ second WRITE setSecond)
 
 public:
-    Q_INVOKABLE explicit QUmlTestIdentityActionObject(QUmlTestIdentityAction *qModelingObject);
+    Q_INVOKABLE explicit QUmlTestIdentityActionObject(QUmlTestIdentityAction *qModelingElement);
     virtual ~QUmlTestIdentityActionObject();
 
     // Owned attributes [Element]
@@ -227,6 +230,10 @@ public Q_SLOTS:
     void setFirst(QObject *first = 0);
     void setResult(QObject *result = 0);
     void setSecond(QObject *second = 0);
+
+protected:
+    virtual void setGroupProperties();
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

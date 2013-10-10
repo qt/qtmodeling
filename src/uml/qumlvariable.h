@@ -46,7 +46,6 @@
 #include <QtUml/QUmlMultiplicityElement>
 #include <QtUml/QUmlConnectableElement>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -60,10 +59,10 @@ class QUmlStructuredActivityNode;
 class Q_UML_EXPORT QUmlVariable : public QUmlMultiplicityElement, public QUmlConnectableElement
 {
 public:
-    explicit QUmlVariable(bool createQObject = true);
+    explicit QUmlVariable(bool createQModelingObject = true);
     virtual ~QUmlVariable();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
     QUmlActivity *activityScope() const;
@@ -77,9 +76,6 @@ public:
 protected:
     QUmlActivity *_activityScope;
     QUmlStructuredActivityNode *_scope;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

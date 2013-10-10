@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlprotocolconformanceobject_p.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlProtocolConformance>
 #include <QtUml/QUmlComment>
@@ -47,16 +48,18 @@
 
 QT_BEGIN_NAMESPACE
 
-QUmlProtocolConformanceObject::QUmlProtocolConformanceObject(QUmlProtocolConformance *qModelingObject)
+QUmlProtocolConformanceObject::QUmlProtocolConformanceObject(QUmlProtocolConformance *qModelingElement)
 {
-    setProperty("modelingObject", QVariant::fromValue(static_cast<QModelingObject *>(qModelingObject)));
+    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(qModelingElement)));
+    setGroupProperties();
+    setPropertyData();
 }
 
 QUmlProtocolConformanceObject::~QUmlProtocolConformanceObject()
 {
     if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingobjectproperty_cast<QUmlProtocolConformance *>(this)->deletingFromQObject = true;
-        delete qmodelingobjectproperty_cast<QUmlComment *>(this);
+        qmodelingelementproperty_cast<QUmlProtocolConformance *>(this)->deletingFromQModelingObject = true;
+        delete qmodelingelementproperty_cast<QUmlComment *>(this);
     }
 }
 
@@ -65,25 +68,25 @@ QUmlProtocolConformanceObject::~QUmlProtocolConformanceObject()
 const QSet<QObject *> QUmlProtocolConformanceObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlProtocolConformance *>(this)->ownedComments())
-        set.insert(element->asQObject());
+    foreach (QUmlComment *element, qmodelingelementproperty_cast<QUmlProtocolConformance *>(this)->ownedComments())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlProtocolConformanceObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlProtocolConformance *>(this)->ownedElements())
-        set.insert(element->asQObject());
+    foreach (QUmlElement *element, qmodelingelementproperty_cast<QUmlProtocolConformance *>(this)->ownedElements())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 QObject *QUmlProtocolConformanceObject::owner() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlProtocolConformance *>(this)->owner())
+    if (!qmodelingelementproperty_cast<QUmlProtocolConformance *>(this)->owner())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlProtocolConformance *>(this)->owner()->asQObject();
+        return qmodelingelementproperty_cast<QUmlProtocolConformance *>(this)->owner()->asQModelingObject();
 }
 
 // OWNED ATTRIBUTES [Relationship]
@@ -91,8 +94,8 @@ QObject *QUmlProtocolConformanceObject::owner() const
 const QSet<QObject *> QUmlProtocolConformanceObject::relatedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlProtocolConformance *>(this)->relatedElements())
-        set.insert(element->asQObject());
+    foreach (QUmlElement *element, qmodelingelementproperty_cast<QUmlProtocolConformance *>(this)->relatedElements())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
@@ -101,16 +104,16 @@ const QSet<QObject *> QUmlProtocolConformanceObject::relatedElements() const
 const QSet<QObject *> QUmlProtocolConformanceObject::sources() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlProtocolConformance *>(this)->sources())
-        set.insert(element->asQObject());
+    foreach (QUmlElement *element, qmodelingelementproperty_cast<QUmlProtocolConformance *>(this)->sources())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlProtocolConformanceObject::targets() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlProtocolConformance *>(this)->targets())
-        set.insert(element->asQObject());
+    foreach (QUmlElement *element, qmodelingelementproperty_cast<QUmlProtocolConformance *>(this)->targets())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
@@ -118,18 +121,18 @@ const QSet<QObject *> QUmlProtocolConformanceObject::targets() const
 
 QObject *QUmlProtocolConformanceObject::generalMachine() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlProtocolConformance *>(this)->generalMachine())
+    if (!qmodelingelementproperty_cast<QUmlProtocolConformance *>(this)->generalMachine())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlProtocolConformance *>(this)->generalMachine()->asQObject();
+        return qmodelingelementproperty_cast<QUmlProtocolConformance *>(this)->generalMachine()->asQModelingObject();
 }
 
 QObject *QUmlProtocolConformanceObject::specificMachine() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlProtocolConformance *>(this)->specificMachine())
+    if (!qmodelingelementproperty_cast<QUmlProtocolConformance *>(this)->specificMachine())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlProtocolConformance *>(this)->specificMachine()->asQObject();
+        return qmodelingelementproperty_cast<QUmlProtocolConformance *>(this)->specificMachine()->asQModelingObject();
 }
 
 // OPERATIONS [Element]
@@ -137,87 +140,135 @@ QObject *QUmlProtocolConformanceObject::specificMachine() const
 QSet<QObject *> QUmlProtocolConformanceObject::allOwnedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlProtocolConformance *>(this)->allOwnedElements())
-        set.insert(element->asQObject());
+    foreach (QUmlElement *element, qmodelingelementproperty_cast<QUmlProtocolConformance *>(this)->allOwnedElements())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 bool QUmlProtocolConformanceObject::mustBeOwned() const
 {
-    return qmodelingobjectproperty_cast<QUmlProtocolConformance *>(this)->mustBeOwned();
+    return qmodelingelementproperty_cast<QUmlProtocolConformance *>(this)->mustBeOwned();
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Element]
 
 void QUmlProtocolConformanceObject::addOwnedComment(QObject *ownedComment)
 {
-    qmodelingobjectproperty_cast<QUmlProtocolConformance *>(this)->addOwnedComment(qmodelingobjectproperty_cast<QUmlComment *>(ownedComment));
+    qmodelingelementproperty_cast<QUmlProtocolConformance *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
 }
 
 void QUmlProtocolConformanceObject::removeOwnedComment(QObject *ownedComment)
 {
-    qmodelingobjectproperty_cast<QUmlProtocolConformance *>(this)->removeOwnedComment(qmodelingobjectproperty_cast<QUmlComment *>(ownedComment));
+    qmodelingelementproperty_cast<QUmlProtocolConformance *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
 }
 
 void QUmlProtocolConformanceObject::addOwnedElement(QObject *ownedElement)
 {
-    qmodelingobjectproperty_cast<QUmlProtocolConformance *>(this)->addOwnedElement(qmodelingobjectproperty_cast<QUmlElement *>(ownedElement));
+    qmodelingelementproperty_cast<QUmlProtocolConformance *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
 }
 
 void QUmlProtocolConformanceObject::removeOwnedElement(QObject *ownedElement)
 {
-    qmodelingobjectproperty_cast<QUmlProtocolConformance *>(this)->removeOwnedElement(qmodelingobjectproperty_cast<QUmlElement *>(ownedElement));
+    qmodelingelementproperty_cast<QUmlProtocolConformance *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
 }
 
 void QUmlProtocolConformanceObject::setOwner(QObject *owner)
 {
-    qmodelingobjectproperty_cast<QUmlProtocolConformance *>(this)->setOwner(qmodelingobjectproperty_cast<QUmlElement *>(owner));
+    qmodelingelementproperty_cast<QUmlProtocolConformance *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Relationship]
 
 void QUmlProtocolConformanceObject::addRelatedElement(QObject *relatedElement)
 {
-    qmodelingobjectproperty_cast<QUmlProtocolConformance *>(this)->addRelatedElement(qmodelingobjectproperty_cast<QUmlElement *>(relatedElement));
+    qmodelingelementproperty_cast<QUmlProtocolConformance *>(this)->addRelatedElement(qmodelingelementproperty_cast<QUmlElement *>(relatedElement));
 }
 
 void QUmlProtocolConformanceObject::removeRelatedElement(QObject *relatedElement)
 {
-    qmodelingobjectproperty_cast<QUmlProtocolConformance *>(this)->removeRelatedElement(qmodelingobjectproperty_cast<QUmlElement *>(relatedElement));
+    qmodelingelementproperty_cast<QUmlProtocolConformance *>(this)->removeRelatedElement(qmodelingelementproperty_cast<QUmlElement *>(relatedElement));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [DirectedRelationship]
 
 void QUmlProtocolConformanceObject::addSource(QObject *source)
 {
-    qmodelingobjectproperty_cast<QUmlProtocolConformance *>(this)->addSource(qmodelingobjectproperty_cast<QUmlElement *>(source));
+    qmodelingelementproperty_cast<QUmlProtocolConformance *>(this)->addSource(qmodelingelementproperty_cast<QUmlElement *>(source));
 }
 
 void QUmlProtocolConformanceObject::removeSource(QObject *source)
 {
-    qmodelingobjectproperty_cast<QUmlProtocolConformance *>(this)->removeSource(qmodelingobjectproperty_cast<QUmlElement *>(source));
+    qmodelingelementproperty_cast<QUmlProtocolConformance *>(this)->removeSource(qmodelingelementproperty_cast<QUmlElement *>(source));
 }
 
 void QUmlProtocolConformanceObject::addTarget(QObject *target)
 {
-    qmodelingobjectproperty_cast<QUmlProtocolConformance *>(this)->addTarget(qmodelingobjectproperty_cast<QUmlElement *>(target));
+    qmodelingelementproperty_cast<QUmlProtocolConformance *>(this)->addTarget(qmodelingelementproperty_cast<QUmlElement *>(target));
 }
 
 void QUmlProtocolConformanceObject::removeTarget(QObject *target)
 {
-    qmodelingobjectproperty_cast<QUmlProtocolConformance *>(this)->removeTarget(qmodelingobjectproperty_cast<QUmlElement *>(target));
+    qmodelingelementproperty_cast<QUmlProtocolConformance *>(this)->removeTarget(qmodelingelementproperty_cast<QUmlElement *>(target));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ProtocolConformance]
 
 void QUmlProtocolConformanceObject::setGeneralMachine(QObject *generalMachine)
 {
-    qmodelingobjectproperty_cast<QUmlProtocolConformance *>(this)->setGeneralMachine(qmodelingobjectproperty_cast<QUmlProtocolStateMachine *>(generalMachine));
+    qmodelingelementproperty_cast<QUmlProtocolConformance *>(this)->setGeneralMachine(qmodelingelementproperty_cast<QUmlProtocolStateMachine *>(generalMachine));
 }
 
 void QUmlProtocolConformanceObject::setSpecificMachine(QObject *specificMachine)
 {
-    qmodelingobjectproperty_cast<QUmlProtocolConformance *>(this)->setSpecificMachine(qmodelingobjectproperty_cast<QUmlProtocolStateMachine *>(specificMachine));
+    qmodelingelementproperty_cast<QUmlProtocolConformance *>(this)->setSpecificMachine(qmodelingelementproperty_cast<QUmlProtocolStateMachine *>(specificMachine));
+}
+
+
+void QUmlProtocolConformanceObject::setGroupProperties()
+{
+    Q_D(QModelingObject);
+    const QMetaObject *metaObject = this->metaObject();
+
+    d->propertyGroups << QStringLiteral("QObject");
+    d->groupProperties.insert(QStringLiteral("QObject"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("objectName"))));
+
+    d->propertyGroups << QStringLiteral("QUmlElement");
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
+
+    d->propertyGroups << QStringLiteral("QUmlRelationship");
+    d->groupProperties.insert(QStringLiteral("QUmlRelationship"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("relatedElements"))));
+
+    d->propertyGroups << QStringLiteral("QUmlDirectedRelationship");
+    d->groupProperties.insert(QStringLiteral("QUmlDirectedRelationship"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("sources"))));
+    d->groupProperties.insert(QStringLiteral("QUmlDirectedRelationship"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("targets"))));
+
+    d->propertyGroups << QStringLiteral("QUmlProtocolConformance");
+    d->groupProperties.insert(QStringLiteral("QUmlProtocolConformance"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("generalMachine"))));
+    d->groupProperties.insert(QStringLiteral("QUmlProtocolConformance"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("specificMachine"))));
+}
+
+void QUmlProtocolConformanceObject::setPropertyData()
+{
+    Q_DECLARE_METAPROPERTY_INFO(QUmlProtocolConformance, generalMachine, AggregationRole, QStringLiteral("none"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlProtocolConformance, generalMachine, PropertyClassRole, QStringLiteral("QUmlProtocolConformance"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlProtocolConformance, generalMachine, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlProtocolConformance, generalMachine, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlProtocolConformance, generalMachine, DocumentationRole, QStringLiteral("Specifies the protocol state machine to which the specific state machine conforms."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlProtocolConformance, generalMachine, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlProtocolConformance, generalMachine, SubsettedPropertiesRole, QStringLiteral("DirectedRelationship-target"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlProtocolConformance, generalMachine, OppositeEndRole, QStringLiteral(""));
+
+    Q_DECLARE_METAPROPERTY_INFO(QUmlProtocolConformance, specificMachine, AggregationRole, QStringLiteral("none"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlProtocolConformance, specificMachine, PropertyClassRole, QStringLiteral("QUmlProtocolConformance"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlProtocolConformance, specificMachine, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlProtocolConformance, specificMachine, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlProtocolConformance, specificMachine, DocumentationRole, QStringLiteral("Specifies the state machine which conforms to the general state machine."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlProtocolConformance, specificMachine, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlProtocolConformance, specificMachine, SubsettedPropertiesRole, QStringLiteral("Element-owner DirectedRelationship-source"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlProtocolConformance, specificMachine, OppositeEndRole, QStringLiteral("ProtocolStateMachine-conformance"));
+
 }
 
 QT_END_NAMESPACE

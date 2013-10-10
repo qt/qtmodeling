@@ -43,7 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtCore/QObject>
+#include <QtModeling/QModelingObject>
 
 #include <QtUml/QtUmlNamespace>
 
@@ -54,9 +54,12 @@ QT_BEGIN_NAMESPACE
 QT_MODULE(QtUml)
 
 class QUmlPort;
-class Q_UML_EXPORT QUmlPortObject : public QObject
+class QModelingObjectPrivate;
+class Q_UML_EXPORT QUmlPortObject : public QModelingObject
 {
     Q_OBJECT
+    Q_DISABLE_COPY(QUmlPortObject)
+    Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [Element]
     Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
@@ -134,7 +137,7 @@ class Q_UML_EXPORT QUmlPortObject : public QObject
     Q_PROPERTY(QSet<QObject *> required READ required STORED false)
 
 public:
-    Q_INVOKABLE explicit QUmlPortObject(QUmlPort *qModelingObject);
+    Q_INVOKABLE explicit QUmlPortObject(QUmlPort *qModelingElement);
     virtual ~QUmlPortObject();
 
     // Owned attributes [Element]
@@ -350,6 +353,10 @@ public Q_SLOTS:
     void removeRedefinedPort(QObject *redefinedPort);
     void Q_DECL_HIDDEN addRequired(QObject *required);
     void Q_DECL_HIDDEN removeRequired(QObject *required);
+
+protected:
+    virtual void setGroupProperties();
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

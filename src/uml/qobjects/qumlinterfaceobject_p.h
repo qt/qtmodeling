@@ -43,7 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtCore/QObject>
+#include <QtModeling/QModelingObject>
 
 #include <QtUml/QtUmlNamespace>
 
@@ -54,9 +54,12 @@ QT_BEGIN_NAMESPACE
 QT_MODULE(QtUml)
 
 class QUmlInterface;
-class Q_UML_EXPORT QUmlInterfaceObject : public QObject
+class QModelingObjectPrivate;
+class Q_UML_EXPORT QUmlInterfaceObject : public QModelingObject
 {
     Q_OBJECT
+    Q_DISABLE_COPY(QUmlInterfaceObject)
+    Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [Element]
     Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
@@ -122,7 +125,7 @@ class Q_UML_EXPORT QUmlInterfaceObject : public QObject
     Q_PROPERTY(QSet<QObject *> redefinedInterfaces READ redefinedInterfaces)
 
 public:
-    Q_INVOKABLE explicit QUmlInterfaceObject(QUmlInterface *qModelingObject);
+    Q_INVOKABLE explicit QUmlInterfaceObject(QUmlInterface *qModelingElement);
     virtual ~QUmlInterfaceObject();
 
     // Owned attributes [Element]
@@ -324,6 +327,10 @@ public Q_SLOTS:
     void setProtocol(QObject *protocol = 0);
     void addRedefinedInterface(QObject *redefinedInterface);
     void removeRedefinedInterface(QObject *redefinedInterface);
+
+protected:
+    virtual void setGroupProperties();
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

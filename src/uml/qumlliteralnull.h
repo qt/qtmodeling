@@ -45,7 +45,6 @@
 
 #include <QtUml/QUmlLiteralSpecification>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -55,10 +54,10 @@ QT_MODULE(QtUml)
 class Q_UML_EXPORT QUmlLiteralNull : public QUmlLiteralSpecification
 {
 public:
-    explicit QUmlLiteralNull(bool createQObject = true);
+    explicit QUmlLiteralNull(bool createQModelingObject = true);
     virtual ~QUmlLiteralNull();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
 
     // Operations
@@ -66,9 +65,6 @@ public:
     bool isNull() const;
 
 protected:
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

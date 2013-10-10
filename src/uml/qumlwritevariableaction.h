@@ -45,7 +45,6 @@
 
 #include <QtUml/QUmlVariableAction>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -59,7 +58,7 @@ class Q_UML_EXPORT QUmlWriteVariableAction : public QUmlVariableAction
 public:
     virtual ~QUmlWriteVariableAction();
 
-    Q_DECL_HIDDEN QModelingObject *clone() const;
+    Q_DECL_HIDDEN virtual QModelingElement *clone() const;
 
     // Owned attributes
     QUmlInputPin *value() const;
@@ -69,9 +68,6 @@ protected:
     explicit QUmlWriteVariableAction();
 
     QUmlInputPin *_value;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

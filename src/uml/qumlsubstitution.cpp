@@ -61,27 +61,25 @@
 
     \brief A substitution is a relationship between two classifiers signifies that the substituting classifier complies with the contract specified by the contract classifier. This implies that instances of the substituting classifier are runtime substitutable where instances of the contract classifier are expected.
  */
-QUmlSubstitution::QUmlSubstitution(bool createQObject) :
+QUmlSubstitution::QUmlSubstitution(bool createQModelingObject) :
     QUmlRealization(false),
     _contract(0),
     _substitutingClassifier(0)
 {
-    if (createQObject)
-        _qObject = new QUmlSubstitutionObject(this);
-    setGroupProperties();
-    setPropertyData();
+    if (createQModelingObject)
+        _qModelingObject = qobject_cast<QModelingObject *>(new QUmlSubstitutionObject(this));
 }
 
 QUmlSubstitution::~QUmlSubstitution()
 {
-    if (!deletingFromQObject) {
-        if (_qObject)
-            _qObject->setProperty("deletingFromModelingObject", true);
-        delete _qObject;
+    if (!deletingFromQModelingObject) {
+        if (_qModelingObject)
+            _qModelingObject->setProperty("deletingFromModelingObject", true);
+        delete _qModelingObject;
     }
 }
 
-QModelingObject *QUmlSubstitution::clone() const
+QModelingElement *QUmlSubstitution::clone() const
 {
     QUmlSubstitution *c = new QUmlSubstitution;
     foreach (QUmlComment *element, ownedComments())
@@ -130,8 +128,8 @@ void QUmlSubstitution::setContract(QUmlClassifier *contract)
         removeSupplier(_contract);
 
         _contract = contract;
-        if (contract && contract->asQObject() && this->asQObject())
-            QObject::connect(contract->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setContract()));
+        if (contract && contract->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(contract->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setContract()));
 
         // Adjust subsetted properties
         if (contract) {
@@ -159,8 +157,8 @@ void QUmlSubstitution::setSubstitutingClassifier(QUmlClassifier *substitutingCla
         removeClient(_substitutingClassifier);
 
         _substitutingClassifier = substitutingClassifier;
-        if (substitutingClassifier && substitutingClassifier->asQObject() && this->asQObject())
-            QObject::connect(substitutingClassifier->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setSubstitutingClassifier()));
+        if (substitutingClassifier && substitutingClassifier->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(substitutingClassifier->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setSubstitutingClassifier()));
 
         // Adjust subsetted properties
         setOwner(substitutingClassifier);
@@ -168,52 +166,5 @@ void QUmlSubstitution::setSubstitutingClassifier(QUmlClassifier *substitutingCla
             addClient(substitutingClassifier);
         }
     }
-}
-
-void QUmlSubstitution::setGroupProperties()
-{
-    const QMetaObject *metaObject = _qObject->metaObject();
-
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
-    _groupProperties.insert(QStringLiteral("QUmlParameterableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owningTemplateParameter"))));
-    _groupProperties.insert(QStringLiteral("QUmlParameterableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("templateParameter"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
-    _groupProperties.insert(QStringLiteral("QUmlPackageableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
-    _groupProperties.insert(QStringLiteral("QUmlRelationship"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("relatedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlDirectedRelationship"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("sources"))));
-    _groupProperties.insert(QStringLiteral("QUmlDirectedRelationship"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("targets"))));
-    _groupProperties.insert(QStringLiteral("QUmlDependency"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clients"))));
-    _groupProperties.insert(QStringLiteral("QUmlDependency"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("suppliers"))));
-    _groupProperties.insert(QStringLiteral("QUmlAbstraction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("mapping"))));
-    _groupProperties.insert(QStringLiteral("QUmlSubstitution"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("contract"))));
-    _groupProperties.insert(QStringLiteral("QUmlSubstitution"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("substitutingClassifier"))));
-}
-
-void QUmlSubstitution::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlSubstitution")][QStringLiteral("contract")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlSubstitution")][QStringLiteral("contract")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlSubstitution");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlSubstitution")][QStringLiteral("contract")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlSubstitution")][QStringLiteral("contract")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlSubstitution")][QStringLiteral("contract")][QtModeling::DocumentationRole] = QStringLiteral("The contract with which the substituting classifier complies.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlSubstitution")][QStringLiteral("contract")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlSubstitution")][QStringLiteral("contract")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Dependency-supplier");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlSubstitution")][QStringLiteral("contract")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlSubstitution")][QStringLiteral("substitutingClassifier")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlSubstitution")][QStringLiteral("substitutingClassifier")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlSubstitution");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlSubstitution")][QStringLiteral("substitutingClassifier")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlSubstitution")][QStringLiteral("substitutingClassifier")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlSubstitution")][QStringLiteral("substitutingClassifier")][QtModeling::DocumentationRole] = QStringLiteral("Instances of the substituting classifier are runtime substitutable where instances of the contract classifier are expected.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlSubstitution")][QStringLiteral("substitutingClassifier")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlSubstitution")][QStringLiteral("substitutingClassifier")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-owner Dependency-client");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlSubstitution")][QStringLiteral("substitutingClassifier")][QtModeling::OppositeEndRole] = QStringLiteral("Classifier-substitution");
-
 }
 

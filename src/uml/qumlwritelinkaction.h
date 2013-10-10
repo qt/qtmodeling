@@ -45,7 +45,6 @@
 
 #include <QtUml/QUmlLinkAction>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -57,15 +56,12 @@ class Q_UML_EXPORT QUmlWriteLinkAction : public QUmlLinkAction
 public:
     virtual ~QUmlWriteLinkAction();
 
-    Q_DECL_HIDDEN QModelingObject *clone() const;
+    Q_DECL_HIDDEN virtual QModelingElement *clone() const;
 
 
 protected:
     explicit QUmlWriteLinkAction();
 
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

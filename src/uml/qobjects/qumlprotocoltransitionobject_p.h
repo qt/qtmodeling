@@ -43,7 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtCore/QObject>
+#include <QtModeling/QModelingObject>
 
 #include <QtUml/QtUmlNamespace>
 
@@ -54,9 +54,12 @@ QT_BEGIN_NAMESPACE
 QT_MODULE(QtUml)
 
 class QUmlProtocolTransition;
-class Q_UML_EXPORT QUmlProtocolTransitionObject : public QObject
+class QModelingObjectPrivate;
+class Q_UML_EXPORT QUmlProtocolTransitionObject : public QModelingObject
 {
     Q_OBJECT
+    Q_DISABLE_COPY(QUmlProtocolTransitionObject)
+    Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [Element]
     Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
@@ -100,7 +103,7 @@ class Q_UML_EXPORT QUmlProtocolTransitionObject : public QObject
     Q_PROPERTY(QSet<QObject *> referred READ referred STORED false)
 
 public:
-    Q_INVOKABLE explicit QUmlProtocolTransitionObject(QUmlProtocolTransition *qModelingObject);
+    Q_INVOKABLE explicit QUmlProtocolTransitionObject(QUmlProtocolTransition *qModelingElement);
     virtual ~QUmlProtocolTransitionObject();
 
     // Owned attributes [Element]
@@ -223,6 +226,10 @@ public Q_SLOTS:
     void setPreCondition(QObject *preCondition = 0);
     void Q_DECL_HIDDEN addReferred(QObject *referred);
     void Q_DECL_HIDDEN removeReferred(QObject *referred);
+
+protected:
+    virtual void setGroupProperties();
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

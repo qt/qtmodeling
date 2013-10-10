@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumltemplateparameterobject_p.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlTemplateParameter>
 #include <QtUml/QUmlComment>
@@ -48,16 +49,18 @@
 
 QT_BEGIN_NAMESPACE
 
-QUmlTemplateParameterObject::QUmlTemplateParameterObject(QUmlTemplateParameter *qModelingObject)
+QUmlTemplateParameterObject::QUmlTemplateParameterObject(QUmlTemplateParameter *qModelingElement)
 {
-    setProperty("modelingObject", QVariant::fromValue(static_cast<QModelingObject *>(qModelingObject)));
+    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(qModelingElement)));
+    setGroupProperties();
+    setPropertyData();
 }
 
 QUmlTemplateParameterObject::~QUmlTemplateParameterObject()
 {
     if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingobjectproperty_cast<QUmlTemplateParameter *>(this)->deletingFromQObject = true;
-        delete qmodelingobjectproperty_cast<QUmlComment *>(this);
+        qmodelingelementproperty_cast<QUmlTemplateParameter *>(this)->deletingFromQModelingObject = true;
+        delete qmodelingelementproperty_cast<QUmlComment *>(this);
     }
 }
 
@@ -66,67 +69,67 @@ QUmlTemplateParameterObject::~QUmlTemplateParameterObject()
 const QSet<QObject *> QUmlTemplateParameterObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlTemplateParameter *>(this)->ownedComments())
-        set.insert(element->asQObject());
+    foreach (QUmlComment *element, qmodelingelementproperty_cast<QUmlTemplateParameter *>(this)->ownedComments())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlTemplateParameterObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlTemplateParameter *>(this)->ownedElements())
-        set.insert(element->asQObject());
+    foreach (QUmlElement *element, qmodelingelementproperty_cast<QUmlTemplateParameter *>(this)->ownedElements())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 QObject *QUmlTemplateParameterObject::owner() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlTemplateParameter *>(this)->owner())
+    if (!qmodelingelementproperty_cast<QUmlTemplateParameter *>(this)->owner())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlTemplateParameter *>(this)->owner()->asQObject();
+        return qmodelingelementproperty_cast<QUmlTemplateParameter *>(this)->owner()->asQModelingObject();
 }
 
 // OWNED ATTRIBUTES [TemplateParameter]
 
 QObject *QUmlTemplateParameterObject::default_() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlTemplateParameter *>(this)->default_())
+    if (!qmodelingelementproperty_cast<QUmlTemplateParameter *>(this)->default_())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlTemplateParameter *>(this)->default_()->asQObject();
+        return qmodelingelementproperty_cast<QUmlTemplateParameter *>(this)->default_()->asQModelingObject();
 }
 
 QObject *QUmlTemplateParameterObject::ownedDefault() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlTemplateParameter *>(this)->ownedDefault())
+    if (!qmodelingelementproperty_cast<QUmlTemplateParameter *>(this)->ownedDefault())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlTemplateParameter *>(this)->ownedDefault()->asQObject();
+        return qmodelingelementproperty_cast<QUmlTemplateParameter *>(this)->ownedDefault()->asQModelingObject();
 }
 
 QObject *QUmlTemplateParameterObject::ownedParameteredElement() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlTemplateParameter *>(this)->ownedParameteredElement())
+    if (!qmodelingelementproperty_cast<QUmlTemplateParameter *>(this)->ownedParameteredElement())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlTemplateParameter *>(this)->ownedParameteredElement()->asQObject();
+        return qmodelingelementproperty_cast<QUmlTemplateParameter *>(this)->ownedParameteredElement()->asQModelingObject();
 }
 
 QObject *QUmlTemplateParameterObject::parameteredElement() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlTemplateParameter *>(this)->parameteredElement())
+    if (!qmodelingelementproperty_cast<QUmlTemplateParameter *>(this)->parameteredElement())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlTemplateParameter *>(this)->parameteredElement()->asQObject();
+        return qmodelingelementproperty_cast<QUmlTemplateParameter *>(this)->parameteredElement()->asQModelingObject();
 }
 
 QObject *QUmlTemplateParameterObject::signature() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlTemplateParameter *>(this)->signature())
+    if (!qmodelingelementproperty_cast<QUmlTemplateParameter *>(this)->signature())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlTemplateParameter *>(this)->signature()->asQObject();
+        return qmodelingelementproperty_cast<QUmlTemplateParameter *>(this)->signature()->asQModelingObject();
 }
 
 // OPERATIONS [Element]
@@ -134,68 +137,139 @@ QObject *QUmlTemplateParameterObject::signature() const
 QSet<QObject *> QUmlTemplateParameterObject::allOwnedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlTemplateParameter *>(this)->allOwnedElements())
-        set.insert(element->asQObject());
+    foreach (QUmlElement *element, qmodelingelementproperty_cast<QUmlTemplateParameter *>(this)->allOwnedElements())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 bool QUmlTemplateParameterObject::mustBeOwned() const
 {
-    return qmodelingobjectproperty_cast<QUmlTemplateParameter *>(this)->mustBeOwned();
+    return qmodelingelementproperty_cast<QUmlTemplateParameter *>(this)->mustBeOwned();
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Element]
 
 void QUmlTemplateParameterObject::addOwnedComment(QObject *ownedComment)
 {
-    qmodelingobjectproperty_cast<QUmlTemplateParameter *>(this)->addOwnedComment(qmodelingobjectproperty_cast<QUmlComment *>(ownedComment));
+    qmodelingelementproperty_cast<QUmlTemplateParameter *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
 }
 
 void QUmlTemplateParameterObject::removeOwnedComment(QObject *ownedComment)
 {
-    qmodelingobjectproperty_cast<QUmlTemplateParameter *>(this)->removeOwnedComment(qmodelingobjectproperty_cast<QUmlComment *>(ownedComment));
+    qmodelingelementproperty_cast<QUmlTemplateParameter *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
 }
 
 void QUmlTemplateParameterObject::addOwnedElement(QObject *ownedElement)
 {
-    qmodelingobjectproperty_cast<QUmlTemplateParameter *>(this)->addOwnedElement(qmodelingobjectproperty_cast<QUmlElement *>(ownedElement));
+    qmodelingelementproperty_cast<QUmlTemplateParameter *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
 }
 
 void QUmlTemplateParameterObject::removeOwnedElement(QObject *ownedElement)
 {
-    qmodelingobjectproperty_cast<QUmlTemplateParameter *>(this)->removeOwnedElement(qmodelingobjectproperty_cast<QUmlElement *>(ownedElement));
+    qmodelingelementproperty_cast<QUmlTemplateParameter *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
 }
 
 void QUmlTemplateParameterObject::setOwner(QObject *owner)
 {
-    qmodelingobjectproperty_cast<QUmlTemplateParameter *>(this)->setOwner(qmodelingobjectproperty_cast<QUmlElement *>(owner));
+    qmodelingelementproperty_cast<QUmlTemplateParameter *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [TemplateParameter]
 
 void QUmlTemplateParameterObject::setDefault(QObject *default_)
 {
-    qmodelingobjectproperty_cast<QUmlTemplateParameter *>(this)->setDefault(qmodelingobjectproperty_cast<QUmlParameterableElement *>(default_));
+    qmodelingelementproperty_cast<QUmlTemplateParameter *>(this)->setDefault(qmodelingelementproperty_cast<QUmlParameterableElement *>(default_));
 }
 
 void QUmlTemplateParameterObject::setOwnedDefault(QObject *ownedDefault)
 {
-    qmodelingobjectproperty_cast<QUmlTemplateParameter *>(this)->setOwnedDefault(qmodelingobjectproperty_cast<QUmlParameterableElement *>(ownedDefault));
+    qmodelingelementproperty_cast<QUmlTemplateParameter *>(this)->setOwnedDefault(qmodelingelementproperty_cast<QUmlParameterableElement *>(ownedDefault));
 }
 
 void QUmlTemplateParameterObject::setOwnedParameteredElement(QObject *ownedParameteredElement)
 {
-    qmodelingobjectproperty_cast<QUmlTemplateParameter *>(this)->setOwnedParameteredElement(qmodelingobjectproperty_cast<QUmlParameterableElement *>(ownedParameteredElement));
+    qmodelingelementproperty_cast<QUmlTemplateParameter *>(this)->setOwnedParameteredElement(qmodelingelementproperty_cast<QUmlParameterableElement *>(ownedParameteredElement));
 }
 
 void QUmlTemplateParameterObject::setParameteredElement(QObject *parameteredElement)
 {
-    qmodelingobjectproperty_cast<QUmlTemplateParameter *>(this)->setParameteredElement(qmodelingobjectproperty_cast<QUmlParameterableElement *>(parameteredElement));
+    qmodelingelementproperty_cast<QUmlTemplateParameter *>(this)->setParameteredElement(qmodelingelementproperty_cast<QUmlParameterableElement *>(parameteredElement));
 }
 
 void QUmlTemplateParameterObject::setSignature(QObject *signature)
 {
-    qmodelingobjectproperty_cast<QUmlTemplateParameter *>(this)->setSignature(qmodelingobjectproperty_cast<QUmlTemplateSignature *>(signature));
+    qmodelingelementproperty_cast<QUmlTemplateParameter *>(this)->setSignature(qmodelingelementproperty_cast<QUmlTemplateSignature *>(signature));
+}
+
+
+void QUmlTemplateParameterObject::setGroupProperties()
+{
+    Q_D(QModelingObject);
+    const QMetaObject *metaObject = this->metaObject();
+
+    d->propertyGroups << QStringLiteral("QObject");
+    d->groupProperties.insert(QStringLiteral("QObject"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("objectName"))));
+
+    d->propertyGroups << QStringLiteral("QUmlElement");
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
+
+    d->propertyGroups << QStringLiteral("QUmlTemplateParameter");
+    d->groupProperties.insert(QStringLiteral("QUmlTemplateParameter"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("default_"))));
+    d->groupProperties.insert(QStringLiteral("QUmlTemplateParameter"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedDefault"))));
+    d->groupProperties.insert(QStringLiteral("QUmlTemplateParameter"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedParameteredElement"))));
+    d->groupProperties.insert(QStringLiteral("QUmlTemplateParameter"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("parameteredElement"))));
+    d->groupProperties.insert(QStringLiteral("QUmlTemplateParameter"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("signature"))));
+}
+
+void QUmlTemplateParameterObject::setPropertyData()
+{
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateParameter, default_, AggregationRole, QStringLiteral("none"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateParameter, default_, PropertyClassRole, QStringLiteral("QUmlTemplateParameter"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateParameter, default_, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateParameter, default_, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateParameter, default_, DocumentationRole, QStringLiteral("The element that is the default for this formal template parameter."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateParameter, default_, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateParameter, default_, SubsettedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateParameter, default_, OppositeEndRole, QStringLiteral(""));
+
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateParameter, ownedDefault, AggregationRole, QStringLiteral("composite"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateParameter, ownedDefault, PropertyClassRole, QStringLiteral("QUmlTemplateParameter"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateParameter, ownedDefault, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateParameter, ownedDefault, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateParameter, ownedDefault, DocumentationRole, QStringLiteral("The element that is owned by this template parameter for the purpose of providing a default."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateParameter, ownedDefault, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateParameter, ownedDefault, SubsettedPropertiesRole, QStringLiteral("Element-ownedElement TemplateParameter-default"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateParameter, ownedDefault, OppositeEndRole, QStringLiteral(""));
+
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateParameter, ownedParameteredElement, AggregationRole, QStringLiteral("composite"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateParameter, ownedParameteredElement, PropertyClassRole, QStringLiteral("QUmlTemplateParameter"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateParameter, ownedParameteredElement, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateParameter, ownedParameteredElement, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateParameter, ownedParameteredElement, DocumentationRole, QStringLiteral("The element that is owned by this template parameter."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateParameter, ownedParameteredElement, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateParameter, ownedParameteredElement, SubsettedPropertiesRole, QStringLiteral("TemplateParameter-parameteredElement Element-ownedElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateParameter, ownedParameteredElement, OppositeEndRole, QStringLiteral("ParameterableElement-owningTemplateParameter"));
+
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateParameter, parameteredElement, AggregationRole, QStringLiteral("none"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateParameter, parameteredElement, PropertyClassRole, QStringLiteral("QUmlTemplateParameter"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateParameter, parameteredElement, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateParameter, parameteredElement, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateParameter, parameteredElement, DocumentationRole, QStringLiteral("The element exposed by this template parameter."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateParameter, parameteredElement, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateParameter, parameteredElement, SubsettedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateParameter, parameteredElement, OppositeEndRole, QStringLiteral("ParameterableElement-templateParameter"));
+
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateParameter, signature, AggregationRole, QStringLiteral("none"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateParameter, signature, PropertyClassRole, QStringLiteral("QUmlTemplateParameter"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateParameter, signature, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateParameter, signature, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateParameter, signature, DocumentationRole, QStringLiteral("The template signature that owns this template parameter."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateParameter, signature, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateParameter, signature, SubsettedPropertiesRole, QStringLiteral("Element-owner A_parameter_templateSignature-templateSignature"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateParameter, signature, OppositeEndRole, QStringLiteral("TemplateSignature-ownedParameter"));
+
 }
 
 QT_END_NAMESPACE

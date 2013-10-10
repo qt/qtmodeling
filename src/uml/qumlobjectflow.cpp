@@ -68,28 +68,26 @@
 
     \brief An object flow is an activity edge that can have objects or data passing along it.Object flows have support for multicast/receive, token selection from object nodes, and transformation of tokens.
  */
-QUmlObjectFlow::QUmlObjectFlow(bool createQObject) :
+QUmlObjectFlow::QUmlObjectFlow(bool createQModelingObject) :
     _isMulticast(false),
     _isMultireceive(false),
     _selection(0),
     _transformation(0)
 {
-    if (createQObject)
-        _qObject = new QUmlObjectFlowObject(this);
-    setGroupProperties();
-    setPropertyData();
+    if (createQModelingObject)
+        _qModelingObject = qobject_cast<QModelingObject *>(new QUmlObjectFlowObject(this));
 }
 
 QUmlObjectFlow::~QUmlObjectFlow()
 {
-    if (!deletingFromQObject) {
-        if (_qObject)
-            _qObject->setProperty("deletingFromModelingObject", true);
-        delete _qObject;
+    if (!deletingFromQModelingObject) {
+        if (_qModelingObject)
+            _qModelingObject->setProperty("deletingFromModelingObject", true);
+        delete _qModelingObject;
     }
 }
 
-QModelingObject *QUmlObjectFlow::clone() const
+QModelingElement *QUmlObjectFlow::clone() const
 {
     QUmlObjectFlow *c = new QUmlObjectFlow;
     foreach (QUmlComment *element, ownedComments())
@@ -146,7 +144,7 @@ void QUmlObjectFlow::setMulticast(bool isMulticast)
 
     if (_isMulticast != isMulticast) {
         _isMulticast = isMulticast;
-        _modifiedResettableProperties << QStringLiteral("isMulticast");
+        _qModelingObject->modifiedResettableProperties() << QStringLiteral("isMulticast");
     }
 }
 
@@ -166,7 +164,7 @@ void QUmlObjectFlow::setMultireceive(bool isMultireceive)
 
     if (_isMultireceive != isMultireceive) {
         _isMultireceive = isMultireceive;
-        _modifiedResettableProperties << QStringLiteral("isMultireceive");
+        _qModelingObject->modifiedResettableProperties() << QStringLiteral("isMultireceive");
     }
 }
 
@@ -186,8 +184,8 @@ void QUmlObjectFlow::setSelection(QUmlBehavior *selection)
 
     if (_selection != selection) {
         _selection = selection;
-        if (selection && selection->asQObject() && this->asQObject())
-            QObject::connect(selection->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setSelection()));
+        if (selection && selection->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(selection->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setSelection()));
     }
 }
 
@@ -207,80 +205,8 @@ void QUmlObjectFlow::setTransformation(QUmlBehavior *transformation)
 
     if (_transformation != transformation) {
         _transformation = transformation;
-        if (transformation && transformation->asQObject() && this->asQObject())
-            QObject::connect(transformation->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setTransformation()));
+        if (transformation && transformation->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(transformation->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setTransformation()));
     }
-}
-
-void QUmlObjectFlow::setGroupProperties()
-{
-    const QMetaObject *metaObject = _qObject->metaObject();
-
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
-    _groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isLeaf"))));
-    _groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinitionContexts"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityEdge"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("activity"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityEdge"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("guard"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityEdge"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inGroups"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityEdge"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inPartitions"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityEdge"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inStructuredNode"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityEdge"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("interrupts"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityEdge"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinedEdges"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityEdge"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("source"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityEdge"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("target"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityEdge"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("weight"))));
-    _groupProperties.insert(QStringLiteral("QUmlObjectFlow"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isMulticast"))));
-    _groupProperties.insert(QStringLiteral("QUmlObjectFlow"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isMultireceive"))));
-    _groupProperties.insert(QStringLiteral("QUmlObjectFlow"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("selection"))));
-    _groupProperties.insert(QStringLiteral("QUmlObjectFlow"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("transformation"))));
-}
-
-void QUmlObjectFlow::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlObjectFlow")][QStringLiteral("isMulticast")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlObjectFlow")][QStringLiteral("isMulticast")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlObjectFlow");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlObjectFlow")][QStringLiteral("isMulticast")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlObjectFlow")][QStringLiteral("isMulticast")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlObjectFlow")][QStringLiteral("isMulticast")][QtModeling::DocumentationRole] = QStringLiteral("Tells whether the objects in the flow are passed by multicasting.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlObjectFlow")][QStringLiteral("isMulticast")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlObjectFlow")][QStringLiteral("isMulticast")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlObjectFlow")][QStringLiteral("isMulticast")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlObjectFlow")][QStringLiteral("isMultireceive")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlObjectFlow")][QStringLiteral("isMultireceive")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlObjectFlow");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlObjectFlow")][QStringLiteral("isMultireceive")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlObjectFlow")][QStringLiteral("isMultireceive")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlObjectFlow")][QStringLiteral("isMultireceive")][QtModeling::DocumentationRole] = QStringLiteral("Tells whether the objects in the flow are gathered from respondents to multicasting.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlObjectFlow")][QStringLiteral("isMultireceive")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlObjectFlow")][QStringLiteral("isMultireceive")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlObjectFlow")][QStringLiteral("isMultireceive")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlObjectFlow")][QStringLiteral("selection")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlObjectFlow")][QStringLiteral("selection")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlObjectFlow");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlObjectFlow")][QStringLiteral("selection")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlObjectFlow")][QStringLiteral("selection")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlObjectFlow")][QStringLiteral("selection")][QtModeling::DocumentationRole] = QStringLiteral("Selects tokens from a source object node.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlObjectFlow")][QStringLiteral("selection")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlObjectFlow")][QStringLiteral("selection")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlObjectFlow")][QStringLiteral("selection")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlObjectFlow")][QStringLiteral("transformation")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlObjectFlow")][QStringLiteral("transformation")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlObjectFlow");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlObjectFlow")][QStringLiteral("transformation")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlObjectFlow")][QStringLiteral("transformation")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlObjectFlow")][QStringLiteral("transformation")][QtModeling::DocumentationRole] = QStringLiteral("Changes or replaces data tokens flowing along edge.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlObjectFlow")][QStringLiteral("transformation")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlObjectFlow")][QStringLiteral("transformation")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlObjectFlow")][QStringLiteral("transformation")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
 }
 

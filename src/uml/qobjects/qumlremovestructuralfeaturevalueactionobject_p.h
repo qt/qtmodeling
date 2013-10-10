@@ -43,7 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtCore/QObject>
+#include <QtModeling/QModelingObject>
 
 #include <QtUml/QtUmlNamespace>
 
@@ -54,9 +54,12 @@ QT_BEGIN_NAMESPACE
 QT_MODULE(QtUml)
 
 class QUmlRemoveStructuralFeatureValueAction;
-class Q_UML_EXPORT QUmlRemoveStructuralFeatureValueActionObject : public QObject
+class QModelingObjectPrivate;
+class Q_UML_EXPORT QUmlRemoveStructuralFeatureValueActionObject : public QModelingObject
 {
     Q_OBJECT
+    Q_DISABLE_COPY(QUmlRemoveStructuralFeatureValueActionObject)
+    Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [Element]
     Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
@@ -110,7 +113,7 @@ class Q_UML_EXPORT QUmlRemoveStructuralFeatureValueActionObject : public QObject
     Q_PROPERTY(QObject * removeAt READ removeAt WRITE setRemoveAt)
 
 public:
-    Q_INVOKABLE explicit QUmlRemoveStructuralFeatureValueActionObject(QUmlRemoveStructuralFeatureValueAction *qModelingObject);
+    Q_INVOKABLE explicit QUmlRemoveStructuralFeatureValueActionObject(QUmlRemoveStructuralFeatureValueAction *qModelingElement);
     virtual ~QUmlRemoveStructuralFeatureValueActionObject();
 
     // Owned attributes [Element]
@@ -249,6 +252,10 @@ public Q_SLOTS:
     void setRemoveDuplicates(bool isRemoveDuplicates);
     void unsetRemoveDuplicates();
     void setRemoveAt(QObject *removeAt = 0);
+
+protected:
+    virtual void setGroupProperties();
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

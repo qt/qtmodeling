@@ -62,26 +62,24 @@
 
     \brief A duration constraint is a constraint that refers to a duration interval.
  */
-QUmlDurationConstraint::QUmlDurationConstraint(bool createQObject) :
+QUmlDurationConstraint::QUmlDurationConstraint(bool createQModelingObject) :
     QUmlIntervalConstraint(false),
     _specification(0)
 {
-    if (createQObject)
-        _qObject = new QUmlDurationConstraintObject(this);
-    setGroupProperties();
-    setPropertyData();
+    if (createQModelingObject)
+        _qModelingObject = qobject_cast<QModelingObject *>(new QUmlDurationConstraintObject(this));
 }
 
 QUmlDurationConstraint::~QUmlDurationConstraint()
 {
-    if (!deletingFromQObject) {
-        if (_qObject)
-            _qObject->setProperty("deletingFromModelingObject", true);
-        delete _qObject;
+    if (!deletingFromQModelingObject) {
+        if (_qModelingObject)
+            _qModelingObject->setProperty("deletingFromModelingObject", true);
+        delete _qModelingObject;
     }
 }
 
-QModelingObject *QUmlDurationConstraint::clone() const
+QModelingElement *QUmlDurationConstraint::clone() const
 {
     QUmlDurationConstraint *c = new QUmlDurationConstraint;
     foreach (QUmlComment *element, ownedComments())
@@ -143,52 +141,9 @@ void QUmlDurationConstraint::setSpecification(QUmlDurationInterval *specificatio
 
     if (_specification != specification) {
         _specification = specification;
-        if (specification && specification->asQObject() && this->asQObject())
-            QObject::connect(specification->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setSpecification()));
-        specification->asQObject()->setParent(this->asQObject());
+        if (specification && specification->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(specification->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setSpecification()));
+        specification->asQModelingObject()->setParent(this->asQModelingObject());
     }
-}
-
-void QUmlDurationConstraint::setGroupProperties()
-{
-    const QMetaObject *metaObject = _qObject->metaObject();
-
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
-    _groupProperties.insert(QStringLiteral("QUmlParameterableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owningTemplateParameter"))));
-    _groupProperties.insert(QStringLiteral("QUmlParameterableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("templateParameter"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
-    _groupProperties.insert(QStringLiteral("QUmlPackageableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
-    _groupProperties.insert(QStringLiteral("QUmlConstraint"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("constrainedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlConstraint"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("context"))));
-    _groupProperties.insert(QStringLiteral("QUmlDurationConstraint"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("firstEvent"))));
-    _groupProperties.insert(QStringLiteral("QUmlDurationConstraint"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("specification"))));
-}
-
-void QUmlDurationConstraint::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDurationConstraint")][QStringLiteral("firstEvent")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDurationConstraint")][QStringLiteral("firstEvent")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlDurationConstraint");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDurationConstraint")][QStringLiteral("firstEvent")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDurationConstraint")][QStringLiteral("firstEvent")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDurationConstraint")][QStringLiteral("firstEvent")][QtModeling::DocumentationRole] = QStringLiteral("The value of firstEvent[i] is related to constrainedElement[i] (where i is 1 or 2). If firstEvent[i] is true, then the corresponding observation event is the first time instant the execution enters constrainedElement[i]. If firstEvent[i] is false, then the corresponding observation event is the last time instant the execution is within constrainedElement[i]. Default value is true applied when constrainedElement[i] refers an element that represents only one time instant.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDurationConstraint")][QStringLiteral("firstEvent")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDurationConstraint")][QStringLiteral("firstEvent")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDurationConstraint")][QStringLiteral("firstEvent")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDurationConstraint")][QStringLiteral("specification")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDurationConstraint")][QStringLiteral("specification")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlDurationConstraint");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDurationConstraint")][QStringLiteral("specification")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDurationConstraint")][QStringLiteral("specification")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDurationConstraint")][QStringLiteral("specification")][QtModeling::DocumentationRole] = QStringLiteral("The interval constraining the duration.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDurationConstraint")][QStringLiteral("specification")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("IntervalConstraint-specification");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDurationConstraint")][QStringLiteral("specification")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDurationConstraint")][QStringLiteral("specification")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
 }
 

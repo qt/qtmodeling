@@ -45,7 +45,6 @@
 
 #include <QtUml/QUmlControlNode>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -57,10 +56,10 @@ class QUmlValueSpecification;
 class Q_UML_EXPORT QUmlJoinNode : public QUmlControlNode
 {
 public:
-    explicit QUmlJoinNode(bool createQObject = true);
+    explicit QUmlJoinNode(bool createQModelingObject = true);
     virtual ~QUmlJoinNode();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
     bool isCombineDuplicate() const;
@@ -71,9 +70,6 @@ public:
 protected:
     bool _isCombineDuplicate;
     QUmlValueSpecification *_joinSpec;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

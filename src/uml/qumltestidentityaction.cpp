@@ -70,27 +70,25 @@
 
     \brief A test identity action is an action that tests if two values are identical objects.
  */
-QUmlTestIdentityAction::QUmlTestIdentityAction(bool createQObject) :
+QUmlTestIdentityAction::QUmlTestIdentityAction(bool createQModelingObject) :
     _first(0),
     _result(0),
     _second(0)
 {
-    if (createQObject)
-        _qObject = new QUmlTestIdentityActionObject(this);
-    setGroupProperties();
-    setPropertyData();
+    if (createQModelingObject)
+        _qModelingObject = qobject_cast<QModelingObject *>(new QUmlTestIdentityActionObject(this));
 }
 
 QUmlTestIdentityAction::~QUmlTestIdentityAction()
 {
-    if (!deletingFromQObject) {
-        if (_qObject)
-            _qObject->setProperty("deletingFromModelingObject", true);
-        delete _qObject;
+    if (!deletingFromQModelingObject) {
+        if (_qModelingObject)
+            _qModelingObject->setProperty("deletingFromModelingObject", true);
+        delete _qModelingObject;
     }
 }
 
-QModelingObject *QUmlTestIdentityAction::clone() const
+QModelingElement *QUmlTestIdentityAction::clone() const
 {
     QUmlTestIdentityAction *c = new QUmlTestIdentityAction;
     foreach (QUmlComment *element, ownedComments())
@@ -153,9 +151,9 @@ void QUmlTestIdentityAction::setFirst(QUmlInputPin *first)
         removeInput(_first);
 
         _first = first;
-        if (first && first->asQObject() && this->asQObject())
-            QObject::connect(first->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setFirst()));
-        first->asQObject()->setParent(this->asQObject());
+        if (first && first->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(first->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setFirst()));
+        first->asQModelingObject()->setParent(this->asQModelingObject());
 
         // Adjust subsetted properties
         if (first) {
@@ -183,9 +181,9 @@ void QUmlTestIdentityAction::setResult(QUmlOutputPin *result)
         removeOutput(_result);
 
         _result = result;
-        if (result && result->asQObject() && this->asQObject())
-            QObject::connect(result->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setResult()));
-        result->asQObject()->setParent(this->asQObject());
+        if (result && result->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(result->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setResult()));
+        result->asQModelingObject()->setParent(this->asQModelingObject());
 
         // Adjust subsetted properties
         if (result) {
@@ -213,81 +211,14 @@ void QUmlTestIdentityAction::setSecond(QUmlInputPin *second)
         removeInput(_second);
 
         _second = second;
-        if (second && second->asQObject() && this->asQObject())
-            QObject::connect(second->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setSecond()));
-        second->asQObject()->setParent(this->asQObject());
+        if (second && second->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(second->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setSecond()));
+        second->asQModelingObject()->setParent(this->asQModelingObject());
 
         // Adjust subsetted properties
         if (second) {
             addInput(second);
         }
     }
-}
-
-void QUmlTestIdentityAction::setGroupProperties()
-{
-    const QMetaObject *metaObject = _qObject->metaObject();
-
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
-    _groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isLeaf"))));
-    _groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinitionContexts"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("activity"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inGroups"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inInterruptibleRegions"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inPartitions"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inStructuredNode"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("incomings"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("outgoings"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinedNodes"))));
-    _groupProperties.insert(QStringLiteral("QUmlExecutableNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("handlers"))));
-    _groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("context"))));
-    _groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inputs"))));
-    _groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isLocallyReentrant"))));
-    _groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("localPostconditions"))));
-    _groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("localPreconditions"))));
-    _groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("outputs"))));
-    _groupProperties.insert(QStringLiteral("QUmlTestIdentityAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("first"))));
-    _groupProperties.insert(QStringLiteral("QUmlTestIdentityAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("result"))));
-    _groupProperties.insert(QStringLiteral("QUmlTestIdentityAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("second"))));
-}
-
-void QUmlTestIdentityAction::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTestIdentityAction")][QStringLiteral("first")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTestIdentityAction")][QStringLiteral("first")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlTestIdentityAction");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTestIdentityAction")][QStringLiteral("first")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTestIdentityAction")][QStringLiteral("first")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTestIdentityAction")][QStringLiteral("first")][QtModeling::DocumentationRole] = QStringLiteral("Gives the pin on which an object is placed.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTestIdentityAction")][QStringLiteral("first")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTestIdentityAction")][QStringLiteral("first")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Action-input");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTestIdentityAction")][QStringLiteral("first")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTestIdentityAction")][QStringLiteral("result")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTestIdentityAction")][QStringLiteral("result")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlTestIdentityAction");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTestIdentityAction")][QStringLiteral("result")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTestIdentityAction")][QStringLiteral("result")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTestIdentityAction")][QStringLiteral("result")][QtModeling::DocumentationRole] = QStringLiteral("Tells whether the two input objects are identical.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTestIdentityAction")][QStringLiteral("result")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTestIdentityAction")][QStringLiteral("result")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Action-output");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTestIdentityAction")][QStringLiteral("result")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTestIdentityAction")][QStringLiteral("second")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTestIdentityAction")][QStringLiteral("second")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlTestIdentityAction");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTestIdentityAction")][QStringLiteral("second")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTestIdentityAction")][QStringLiteral("second")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTestIdentityAction")][QStringLiteral("second")][QtModeling::DocumentationRole] = QStringLiteral("Gives the pin on which an object is placed.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTestIdentityAction")][QStringLiteral("second")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTestIdentityAction")][QStringLiteral("second")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Action-input");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTestIdentityAction")][QStringLiteral("second")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
 }
 

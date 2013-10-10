@@ -45,7 +45,6 @@
 
 #include <QtUml/QUmlLiteralSpecification>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -55,10 +54,10 @@ QT_MODULE(QtUml)
 class Q_UML_EXPORT QUmlLiteralString : public QUmlLiteralSpecification
 {
 public:
-    explicit QUmlLiteralString(bool createQObject = true);
+    explicit QUmlLiteralString(bool createQModelingObject = true);
     virtual ~QUmlLiteralString();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
     QString value() const;
@@ -70,9 +69,6 @@ public:
 
 protected:
     QString _value;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

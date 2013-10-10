@@ -64,25 +64,23 @@
 
     \brief An instance specification has the capability of being a deployment target in a deployment relationship, in the case that it is an instance of a node. It is also has the capability of being a deployed artifact, if it is an instance of an artifact.An instance specification is a model element that represents an instance in a modeled system.
  */
-QUmlInstanceSpecification::QUmlInstanceSpecification(bool createQObject) :
+QUmlInstanceSpecification::QUmlInstanceSpecification(bool createQModelingObject) :
     _specification(0)
 {
-    if (createQObject)
-        _qObject = new QUmlInstanceSpecificationObject(this);
-    setGroupProperties();
-    setPropertyData();
+    if (createQModelingObject)
+        _qModelingObject = qobject_cast<QModelingObject *>(new QUmlInstanceSpecificationObject(this));
 }
 
 QUmlInstanceSpecification::~QUmlInstanceSpecification()
 {
-    if (!deletingFromQObject) {
-        if (_qObject)
-            _qObject->setProperty("deletingFromModelingObject", true);
-        delete _qObject;
+    if (!deletingFromQModelingObject) {
+        if (_qModelingObject)
+            _qModelingObject->setProperty("deletingFromModelingObject", true);
+        delete _qModelingObject;
     }
 }
 
-QModelingObject *QUmlInstanceSpecification::clone() const
+QModelingElement *QUmlInstanceSpecification::clone() const
 {
     QUmlInstanceSpecification *c = new QUmlInstanceSpecification;
     foreach (QUmlComment *element, ownedComments())
@@ -126,8 +124,8 @@ void QUmlInstanceSpecification::addClassifier(QUmlClassifier *classifier)
 
     if (!_classifiers.contains(classifier)) {
         _classifiers.insert(classifier);
-        if (classifier && classifier->asQObject() && this->asQObject())
-            QObject::connect(classifier->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeClassifier(QObject *)));
+        if (classifier && classifier->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(classifier->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeClassifier(QObject *)));
     }
 }
 
@@ -156,9 +154,9 @@ void QUmlInstanceSpecification::addSlot(QUmlSlot *slot_)
 
     if (!_slots_.contains(slot_)) {
         _slots_.insert(slot_);
-        if (slot_ && slot_->asQObject() && this->asQObject())
-            QObject::connect(slot_->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeSlot(QObject *)));
-        slot_->asQObject()->setParent(this->asQObject());
+        if (slot_ && slot_->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(slot_->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeSlot(QObject *)));
+        slot_->asQModelingObject()->setParent(this->asQModelingObject());
 
         // Adjust subsetted properties
         addOwnedElement(slot_);
@@ -176,8 +174,8 @@ void QUmlInstanceSpecification::removeSlot(QUmlSlot *slot_)
 
     if (_slots_.contains(slot_)) {
         _slots_.remove(slot_);
-        if (slot_->asQObject())
-            slot_->asQObject()->setParent(0);
+        if (slot_->asQModelingObject())
+            slot_->asQModelingObject()->setParent(0);
 
         // Adjust subsetted properties
         removeOwnedElement(slot_);
@@ -208,67 +206,14 @@ void QUmlInstanceSpecification::setSpecification(QUmlValueSpecification *specifi
         removeOwnedElement(_specification);
 
         _specification = specification;
-        if (specification && specification->asQObject() && this->asQObject())
-            QObject::connect(specification->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setSpecification()));
-        specification->asQObject()->setParent(this->asQObject());
+        if (specification && specification->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(specification->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setSpecification()));
+        specification->asQModelingObject()->setParent(this->asQModelingObject());
 
         // Adjust subsetted properties
         if (specification) {
             addOwnedElement(specification);
         }
     }
-}
-
-void QUmlInstanceSpecification::setGroupProperties()
-{
-    const QMetaObject *metaObject = _qObject->metaObject();
-
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
-    _groupProperties.insert(QStringLiteral("QUmlParameterableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owningTemplateParameter"))));
-    _groupProperties.insert(QStringLiteral("QUmlParameterableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("templateParameter"))));
-    _groupProperties.insert(QStringLiteral("QUmlPackageableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
-    _groupProperties.insert(QStringLiteral("QUmlDeploymentTarget"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("deployedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlDeploymentTarget"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("deployments"))));
-    _groupProperties.insert(QStringLiteral("QUmlInstanceSpecification"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("classifiers"))));
-    _groupProperties.insert(QStringLiteral("QUmlInstanceSpecification"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("slots_"))));
-    _groupProperties.insert(QStringLiteral("QUmlInstanceSpecification"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("specification"))));
-}
-
-void QUmlInstanceSpecification::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInstanceSpecification")][QStringLiteral("classifiers")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInstanceSpecification")][QStringLiteral("classifiers")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInstanceSpecification");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInstanceSpecification")][QStringLiteral("classifiers")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInstanceSpecification")][QStringLiteral("classifiers")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInstanceSpecification")][QStringLiteral("classifiers")][QtModeling::DocumentationRole] = QStringLiteral("The classifier or classifiers of the represented instance. If multiple classifiers are specified, the instance is classified by all of them.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInstanceSpecification")][QStringLiteral("classifiers")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInstanceSpecification")][QStringLiteral("classifiers")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInstanceSpecification")][QStringLiteral("classifiers")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInstanceSpecification")][QStringLiteral("slots_")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInstanceSpecification")][QStringLiteral("slots_")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInstanceSpecification");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInstanceSpecification")][QStringLiteral("slots_")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInstanceSpecification")][QStringLiteral("slots_")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInstanceSpecification")][QStringLiteral("slots_")][QtModeling::DocumentationRole] = QStringLiteral("A slot giving the value or values of a structural feature of the instance. An instance specification can have one slot per structural feature of its classifiers, including inherited features. It is not necessary to model a slot for each structural feature, in which case the instance specification is a partial description.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInstanceSpecification")][QStringLiteral("slots_")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInstanceSpecification")][QStringLiteral("slots_")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInstanceSpecification")][QStringLiteral("slots_")][QtModeling::OppositeEndRole] = QStringLiteral("Slot-owningInstance");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInstanceSpecification")][QStringLiteral("specification")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInstanceSpecification")][QStringLiteral("specification")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInstanceSpecification");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInstanceSpecification")][QStringLiteral("specification")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInstanceSpecification")][QStringLiteral("specification")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInstanceSpecification")][QStringLiteral("specification")][QtModeling::DocumentationRole] = QStringLiteral("A specification of how to compute, derive, or construct the instance.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInstanceSpecification")][QStringLiteral("specification")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInstanceSpecification")][QStringLiteral("specification")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInstanceSpecification")][QStringLiteral("specification")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
 }
 

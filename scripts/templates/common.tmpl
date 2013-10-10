@@ -243,16 +243,16 @@ ${parameter.findvalue("@name")}
 {
     [%- IF qtType.match("QList|QSet") && !qtType.match("QString") %]
     ${qtType}[% IF qtType.match("QList") %]list[% ELSE %]set[% END %];
-    foreach (Q${originalQtType.remove("QList<").remove("QSet<").remove(">").trim.remove("^Q")}element, qmodelingobjectproperty_cast<Q${namespace}${originalClassName} *>(this)->${PLURALFORM(qtAttribute, attribute)}())
-        [% IF qtType.match("QList") %]list[% ELSE %]set[% END %].[% IF qtType.match("QList") %]append[% ELSE %]insert[% END %](element->asQObject());
+    foreach (Q${originalQtType.remove("QList<").remove("QSet<").remove(">").trim.remove("^Q")}element, qmodelingelementproperty_cast<Q${namespace}${originalClassName} *>(this)->${PLURALFORM(qtAttribute, attribute)}())
+        [% IF qtType.match("QList") %]list[% ELSE %]set[% END %].[% IF qtType.match("QList") %]append[% ELSE %]insert[% END %](element->asQModelingObject());
     return [% IF qtType.match("QList") %]list[% ELSE %]set[% END %];
     [%- ELSIF qtType.match('\*$') %]
-    if (!qmodelingobjectproperty_cast<Q${namespace}${originalClassName} *>(this)->${PLURALFORM(qtAttribute, attribute)}())
+    if (!qmodelingelementproperty_cast<Q${namespace}${originalClassName} *>(this)->${PLURALFORM(qtAttribute, attribute)}())
         return 0;
     else
-        return qmodelingobjectproperty_cast<Q${namespace}${originalClassName} *>(this)->${PLURALFORM(qtAttribute, attribute)}()->asQObject();
+        return qmodelingelementproperty_cast<Q${namespace}${originalClassName} *>(this)->${PLURALFORM(qtAttribute, attribute)}()->asQModelingObject();
     [%- ELSE %]
-    return qmodelingobjectproperty_cast<Q${namespace}${originalClassName} *>(this)->${PLURALFORM(qtAttribute, attribute)}();
+    return qmodelingelementproperty_cast<Q${namespace}${originalClassName} *>(this)->${PLURALFORM(qtAttribute, attribute)}();
     [%- END %]
 }
 
@@ -291,31 +291,31 @@ ${parameter.findvalue("@name")}
         [%- IF QT_TYPE(namespace, parameter, "true").match("QList|QSet") %]
     ${QT_TYPE(namespace, parameter, "true")}${parameter.findvalue("@name")}Converted;
     foreach (QObject *object, ${parameter.findvalue("@name")})
-        ${parameter.findvalue("@name")}Converted.[% IF QT_TYPE(namespace, parameter, "true").match("QList") %]append[% ELSE %]insert[% END %](qmodelingobjectproperty_cast<${QT_TYPE(namespace, parameter, "true").remove("QList<").remove("QSet<").remove(">").trim}>(object));
+        ${parameter.findvalue("@name")}Converted.[% IF QT_TYPE(namespace, parameter, "true").match("QList") %]append[% ELSE %]insert[% END %](qmodelingelementproperty_cast<${QT_TYPE(namespace, parameter, "true").remove("QList<").remove("QSet<").remove(">").trim}>(object));
         [%- END -%]
     [%- END -%]
     [%- IF return.match("QList|QSet") && return.match('\*') %]
     ${return}[% IF qtType.match("QList") %]list[% ELSE %]set[% END %];
-    foreach (${originalReturn.remove("QList<").remove("QSet<").remove(">").trim}element, qmodelingobjectproperty_cast<Q${namespace}${originalClassName} *>(this)->${operationName}(
+    foreach (${originalReturn.remove("QList<").remove("QSet<").remove(">").trim}element, qmodelingelementproperty_cast<Q${namespace}${originalClassName} *>(this)->${operationName}(
         [%- FOREACH parameter = operation.findnodes("ownedParameter[@direction!='return']") -%]
             [%- qtType = QT_TYPE(namespace, parameter, "true") -%]
         [%- IF qtType.match('QList|QSet') -%]
 ${parameter.findvalue("@name")}Converted
         [%- ELSIF qtType.match('\*$') -%]
-qmodelingobjectproperty_cast<${qtType.remove("QList<").remove("QSet<").remove(">")}>(${parameter.findvalue("@name")})
+qmodelingelementproperty_cast<${qtType.remove("QList<").remove("QSet<").remove(">")}>(${parameter.findvalue("@name")})
         [%- ELSE -%]
 ${parameter.findvalue("@name")}
         [%- END -%]
             [%- IF !loop.last %], [% END -%]
         [%- END -%]))
-        [% IF qtType.match("QList") %]list[% ELSE %]set[% END %].[% IF return.match("QList") %]append[% ELSE %]insert[% END %](element->asQObject());
+        [% IF qtType.match("QList") %]list[% ELSE %]set[% END %].[% IF return.match("QList") %]append[% ELSE %]insert[% END %](element->asQModelingObject());
     return [% IF qtType.match("QList") %]list[% ELSE %]set[% END %];
     [%- ELSIF !return.match("QList|QSet") && return.match('\*$') %]
-    if (!qmodelingobjectproperty_cast<Q${namespace}${originalClassName} *>(this)->${operationName}(
+    if (!qmodelingelementproperty_cast<Q${namespace}${originalClassName} *>(this)->${operationName}(
         [%- FOREACH parameter = operation.findnodes("ownedParameter[@direction!='return']") -%]
         [%- qtType = QT_TYPE(namespace, parameter, "true") -%]
         [%- IF qtType.match('\*$') -%]
-qmodelingobjectproperty_cast<${qtType.remove("QList<").remove("QSet<").remove(">")}>(${parameter.findvalue("@name")})
+qmodelingelementproperty_cast<${qtType.remove("QList<").remove("QSet<").remove(">")}>(${parameter.findvalue("@name")})
         [%- ELSE -%]
 ${parameter.findvalue("@name")}
         [%- END -%]
@@ -323,22 +323,22 @@ ${parameter.findvalue("@name")}
         [%- END -%]))
         return 0;
     else
-        return qmodelingobjectproperty_cast<Q${namespace}${originalClassName} *>(this)->${operationName}(
+        return qmodelingelementproperty_cast<Q${namespace}${originalClassName} *>(this)->${operationName}(
         [%- FOREACH parameter = operation.findnodes("ownedParameter[@direction!='return']") -%]
         [%- qtType = QT_TYPE(namespace, parameter, "true") -%]
         [%- IF qtType.match('\*$') -%]
-qmodelingobjectproperty_cast<${qtType.remove("QList<").remove("QSet<").remove(">")}>(${parameter.findvalue("@name")})
+qmodelingelementproperty_cast<${qtType.remove("QList<").remove("QSet<").remove(">")}>(${parameter.findvalue("@name")})
         [%- ELSE -%]
 ${parameter.findvalue("@name")}
         [%- END -%]
             [%- IF !loop.last %], [% END -%]
-        [%- END -%])->asQObject();
+        [%- END -%])->asQModelingObject();
     [%- ELSE %]
-    return qmodelingobjectproperty_cast<Q${namespace}${originalClassName} *>(this)->${operationName}(
+    return qmodelingelementproperty_cast<Q${namespace}${originalClassName} *>(this)->${operationName}(
         [%- FOREACH parameter = operation.findnodes("ownedParameter[@direction!='return']") -%]
             [%- qtType = QT_TYPE(namespace, parameter, "true") -%]
         [%- IF qtType.match('\*$') -%]
-qmodelingobjectproperty_cast<${qtType.remove("QList<").remove("QSet<").remove(">")}>(${parameter.findvalue("@name")})
+qmodelingelementproperty_cast<${qtType.remove("QList<").remove("QSet<").remove(">")}>(${parameter.findvalue("@name")})
         [%- ELSE -%]
 ${parameter.findvalue("@name")}
         [%- END -%]
@@ -380,9 +380,9 @@ void Q${namespace}${originalClassName}Object::add${attributeName}(${originalQtTy
         [%- END %]
 {
         [%- IF qtType.remove("QSet<").remove("QList<").match('\*') %]
-    qmodelingobjectproperty_cast<Q${namespace}${originalClassName} *>(this)->add${attributeName}(qmodelingobjectproperty_cast<${originalQtType.remove("QSet<").remove("QList<").replace(">", "").replace('\* $', '*')}>(${qtAttribute}));
+    qmodelingelementproperty_cast<Q${namespace}${originalClassName} *>(this)->add${attributeName}(qmodelingelementproperty_cast<${originalQtType.remove("QSet<").remove("QList<").replace(">", "").replace('\* $', '*')}>(${qtAttribute}));
         [%- ELSE %]
-    qmodelingobjectproperty_cast<Q${namespace}${originalClassName} *>(this)->add${attributeName}(${qtAttribute});
+    qmodelingelementproperty_cast<Q${namespace}${originalClassName} *>(this)->add${attributeName}(${qtAttribute});
         [%- END %]
 }
 
@@ -393,29 +393,30 @@ void Q${namespace}${originalClassName}Object::remove${attributeName}(${originalQ
         [%- END %]
 {
         [%- IF qtType.remove("QSet<").remove("QList<").match('\*') %]
-    qmodelingobjectproperty_cast<Q${namespace}${originalClassName} *>(this)->remove${attributeName}(qmodelingobjectproperty_cast<${originalQtType.remove("QSet<").remove("QList<").replace(">", "").replace('\* $', '*')}>(${qtAttribute}));
+    qmodelingelementproperty_cast<Q${namespace}${originalClassName} *>(this)->remove${attributeName}(qmodelingelementproperty_cast<${originalQtType.remove("QSet<").remove("QList<").replace(">", "").replace('\* $', '*')}>(${qtAttribute}));
         [%- ELSE %]
-    qmodelingobjectproperty_cast<Q${namespace}${originalClassName} *>(this)->remove${attributeName}(${qtAttribute});
+    qmodelingelementproperty_cast<Q${namespace}${originalClassName} *>(this)->remove${attributeName}(${qtAttribute});
         [%- END %]
 }
 
     [%- ELSIF qtType.match('\*$') %]
 void Q${namespace}${originalClassName}Object::set${attributeName}(${qtType}${qtAttribute})
 {
-    qmodelingobjectproperty_cast<Q${namespace}${originalClassName} *>(this)->set${attributeName}(qmodelingobjectproperty_cast<${originalQtType}>(${qtAttribute}));
+    qmodelingelementproperty_cast<Q${namespace}${originalClassName} *>(this)->set${attributeName}(qmodelingelementproperty_cast<${originalQtType}>(${qtAttribute}));
 }
 
     [%- ELSE %]
 void Q${namespace}${originalClassName}Object::set${attributeName.remove("^Is")}(${qtType}${qtAttribute})
 {
-    qmodelingobjectproperty_cast<Q${namespace}${originalClassName} *>(this)->set${attributeName.remove("^Is")}(${qtAttribute});
+    qmodelingelementproperty_cast<Q${namespace}${originalClassName} *>(this)->set${attributeName.remove("^Is")}(${qtAttribute});
 }
 
     [%- END -%]
     [%- IF attribute.findvalue("defaultValue/@xmi:type") != "" %]
 void Q${namespace}${originalClassName}Object::unset${qtAttribute.remove("^is").ucfirst}()
 {
-    qmodelingobjectproperty_cast<Q${namespace}${originalClassName} *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("${attributeName.remove("^Is").lcfirst}"));
+    Q_D(QModelingObject);
+    d->modifiedResettableProperties.removeAll(QStringLiteral("${attributeName.remove("^Is").lcfirst}"));
 }
 
     [%- END -%]
@@ -479,12 +480,12 @@ void Q${namespace}${originalClassName}Object::unset${qtAttribute.remove("^is").u
 [%- END -%]
 [%- SET className = class.findvalue("@name") %]
 
-    _propertyGroups << QStringLiteral("Q${namespace}${className}");
+    d->propertyGroups << QStringLiteral("Q${namespace}${className}");
 [%- FOREACH attribute = class.findnodes("ownedAttribute") -%]
     [%- SET qtType = QT_TYPE(namespace, attribute) -%]
     [%- SET attributeName = attribute.findvalue("@name") -%]
     [%- SET qtAttribute = QT_ATTRIBUTE(attribute) -%]
     [%- NEXT IF redefinedProperties.grep("^${className}-${qtAttribute}$").size > 0 %]
-    _groupProperties.insert(QStringLiteral("Q${namespace}${className}"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("${PLURALFORM(qtAttribute, attribute)}"))));
+    d->groupProperties.insert(QStringLiteral("Q${namespace}${className}"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("${PLURALFORM(qtAttribute, attribute)}"))));
 [%- END %]
 [%- END -%]

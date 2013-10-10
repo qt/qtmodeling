@@ -55,26 +55,24 @@
 
     \brief A connectable element template parameter exposes a connectable element as a formal parameter for a template.
  */
-QUmlConnectableElementTemplateParameter::QUmlConnectableElementTemplateParameter(bool createQObject) :
+QUmlConnectableElementTemplateParameter::QUmlConnectableElementTemplateParameter(bool createQModelingObject) :
     QUmlTemplateParameter(false),
     _parameteredElement(0)
 {
-    if (createQObject)
-        _qObject = new QUmlConnectableElementTemplateParameterObject(this);
-    setGroupProperties();
-    setPropertyData();
+    if (createQModelingObject)
+        _qModelingObject = qobject_cast<QModelingObject *>(new QUmlConnectableElementTemplateParameterObject(this));
 }
 
 QUmlConnectableElementTemplateParameter::~QUmlConnectableElementTemplateParameter()
 {
-    if (!deletingFromQObject) {
-        if (_qObject)
-            _qObject->setProperty("deletingFromModelingObject", true);
-        delete _qObject;
+    if (!deletingFromQModelingObject) {
+        if (_qModelingObject)
+            _qModelingObject->setProperty("deletingFromModelingObject", true);
+        delete _qModelingObject;
     }
 }
 
-QModelingObject *QUmlConnectableElementTemplateParameter::clone() const
+QModelingElement *QUmlConnectableElementTemplateParameter::clone() const
 {
     QUmlConnectableElementTemplateParameter *c = new QUmlConnectableElementTemplateParameter;
     foreach (QUmlComment *element, ownedComments())
@@ -110,35 +108,8 @@ void QUmlConnectableElementTemplateParameter::setParameteredElement(QUmlConnecta
 
     if (_parameteredElement != parameteredElement) {
         _parameteredElement = parameteredElement;
-        if (parameteredElement && parameteredElement->asQObject() && this->asQObject())
-            QObject::connect(parameteredElement->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setParameteredElement()));
+        if (parameteredElement && parameteredElement->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(parameteredElement->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setParameteredElement()));
     }
-}
-
-void QUmlConnectableElementTemplateParameter::setGroupProperties()
-{
-    const QMetaObject *metaObject = _qObject->metaObject();
-
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
-    _groupProperties.insert(QStringLiteral("QUmlTemplateParameter"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("default_"))));
-    _groupProperties.insert(QStringLiteral("QUmlTemplateParameter"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedDefault"))));
-    _groupProperties.insert(QStringLiteral("QUmlTemplateParameter"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedParameteredElement"))));
-    _groupProperties.insert(QStringLiteral("QUmlTemplateParameter"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("signature"))));
-    _groupProperties.insert(QStringLiteral("QUmlConnectableElementTemplateParameter"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("parameteredElement"))));
-}
-
-void QUmlConnectableElementTemplateParameter::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectableElementTemplateParameter")][QStringLiteral("parameteredElement")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectableElementTemplateParameter")][QStringLiteral("parameteredElement")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlConnectableElementTemplateParameter");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectableElementTemplateParameter")][QStringLiteral("parameteredElement")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectableElementTemplateParameter")][QStringLiteral("parameteredElement")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectableElementTemplateParameter")][QStringLiteral("parameteredElement")][QtModeling::DocumentationRole] = QStringLiteral("The ConnectableElement for this template parameter.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectableElementTemplateParameter")][QStringLiteral("parameteredElement")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("TemplateParameter-parameteredElement");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectableElementTemplateParameter")][QStringLiteral("parameteredElement")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectableElementTemplateParameter")][QStringLiteral("parameteredElement")][QtModeling::OppositeEndRole] = QStringLiteral("ConnectableElement-templateParameter");
-
 }
 

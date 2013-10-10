@@ -63,15 +63,13 @@
 QUmlStructuralFeature::QUmlStructuralFeature() :
     _isReadOnly(false)
 {
-    setGroupProperties();
-    setPropertyData();
 }
 
 QUmlStructuralFeature::~QUmlStructuralFeature()
 {
 }
 
-QModelingObject *QUmlStructuralFeature::clone() const
+QModelingElement *QUmlStructuralFeature::clone() const
 {
     QUmlStructuralFeature *c = new QUmlStructuralFeature;
     foreach (QUmlComment *element, ownedComments())
@@ -114,48 +112,7 @@ void QUmlStructuralFeature::setReadOnly(bool isReadOnly)
 
     if (_isReadOnly != isReadOnly) {
         _isReadOnly = isReadOnly;
-        _modifiedResettableProperties << QStringLiteral("isReadOnly");
+        _qModelingObject->modifiedResettableProperties() << QStringLiteral("isReadOnly");
     }
-}
-
-void QUmlStructuralFeature::setGroupProperties()
-{
-    const QMetaObject *metaObject = _qObject->metaObject();
-
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
-    _groupProperties.insert(QStringLiteral("QUmlTypedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("type"))));
-    _groupProperties.insert(QStringLiteral("QUmlMultiplicityElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isOrdered"))));
-    _groupProperties.insert(QStringLiteral("QUmlMultiplicityElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isUnique"))));
-    _groupProperties.insert(QStringLiteral("QUmlMultiplicityElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("lower"))));
-    _groupProperties.insert(QStringLiteral("QUmlMultiplicityElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("lowerValue"))));
-    _groupProperties.insert(QStringLiteral("QUmlMultiplicityElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("upper"))));
-    _groupProperties.insert(QStringLiteral("QUmlMultiplicityElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("upperValue"))));
-    _groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isLeaf"))));
-    _groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinitionContexts"))));
-    _groupProperties.insert(QStringLiteral("QUmlFeature"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("featuringClassifiers"))));
-    _groupProperties.insert(QStringLiteral("QUmlFeature"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isStatic"))));
-    _groupProperties.insert(QStringLiteral("QUmlStructuralFeature"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isReadOnly"))));
-}
-
-void QUmlStructuralFeature::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStructuralFeature")][QStringLiteral("isReadOnly")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStructuralFeature")][QStringLiteral("isReadOnly")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlStructuralFeature");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStructuralFeature")][QStringLiteral("isReadOnly")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStructuralFeature")][QStringLiteral("isReadOnly")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStructuralFeature")][QStringLiteral("isReadOnly")][QtModeling::DocumentationRole] = QStringLiteral("States whether the feature's value may be modified by a client.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStructuralFeature")][QStringLiteral("isReadOnly")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStructuralFeature")][QStringLiteral("isReadOnly")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStructuralFeature")][QStringLiteral("isReadOnly")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
 }
 

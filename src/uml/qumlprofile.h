@@ -45,7 +45,6 @@
 
 #include <QtUml/QUmlPackage>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -58,10 +57,10 @@ class QUmlPackageImport;
 class Q_UML_EXPORT QUmlProfile : public QUmlPackage
 {
 public:
-    explicit QUmlProfile(bool createQObject = true);
+    explicit QUmlProfile(bool createQModelingObject = true);
     virtual ~QUmlProfile();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
     const QSet<QUmlElementImport *> metaclassReferences() const;
@@ -74,9 +73,6 @@ public:
 protected:
     QSet<QUmlElementImport *> _metaclassReferences;
     QSet<QUmlPackageImport *> _metamodelReferences;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlremovevariablevalueactionobject_p.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlRemoveVariableValueAction>
 #include <QtUml/QUmlActivity>
@@ -65,16 +66,18 @@
 
 QT_BEGIN_NAMESPACE
 
-QUmlRemoveVariableValueActionObject::QUmlRemoveVariableValueActionObject(QUmlRemoveVariableValueAction *qModelingObject)
+QUmlRemoveVariableValueActionObject::QUmlRemoveVariableValueActionObject(QUmlRemoveVariableValueAction *qModelingElement)
 {
-    setProperty("modelingObject", QVariant::fromValue(static_cast<QModelingObject *>(qModelingObject)));
+    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(qModelingElement)));
+    setGroupProperties();
+    setPropertyData();
 }
 
 QUmlRemoveVariableValueActionObject::~QUmlRemoveVariableValueActionObject()
 {
     if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingobjectproperty_cast<QUmlRemoveVariableValueAction *>(this)->deletingFromQObject = true;
-        delete qmodelingobjectproperty_cast<QUmlComment *>(this);
+        qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->deletingFromQModelingObject = true;
+        delete qmodelingelementproperty_cast<QUmlComment *>(this);
     }
 }
 
@@ -83,25 +86,25 @@ QUmlRemoveVariableValueActionObject::~QUmlRemoveVariableValueActionObject()
 const QSet<QObject *> QUmlRemoveVariableValueActionObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlRemoveVariableValueAction *>(this)->ownedComments())
-        set.insert(element->asQObject());
+    foreach (QUmlComment *element, qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->ownedComments())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlRemoveVariableValueActionObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlRemoveVariableValueAction *>(this)->ownedElements())
-        set.insert(element->asQObject());
+    foreach (QUmlElement *element, qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->ownedElements())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 QObject *QUmlRemoveVariableValueActionObject::owner() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlRemoveVariableValueAction *>(this)->owner())
+    if (!qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->owner())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlRemoveVariableValueAction *>(this)->owner()->asQObject();
+        return qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->owner()->asQModelingObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -109,62 +112,62 @@ QObject *QUmlRemoveVariableValueActionObject::owner() const
 const QSet<QObject *> QUmlRemoveVariableValueActionObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlRemoveVariableValueAction *>(this)->clientDependencies())
-        set.insert(element->asQObject());
+    foreach (QUmlDependency *element, qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->clientDependencies())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 QString QUmlRemoveVariableValueActionObject::name() const
 {
-    return qmodelingobjectproperty_cast<QUmlRemoveVariableValueAction *>(this)->name();
+    return qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->name();
 }
 
 QObject *QUmlRemoveVariableValueActionObject::nameExpression() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlRemoveVariableValueAction *>(this)->nameExpression())
+    if (!qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->nameExpression())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlRemoveVariableValueAction *>(this)->nameExpression()->asQObject();
+        return qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->nameExpression()->asQModelingObject();
 }
 
 QObject *QUmlRemoveVariableValueActionObject::namespace_() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlRemoveVariableValueAction *>(this)->namespace_())
+    if (!qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->namespace_())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlRemoveVariableValueAction *>(this)->namespace_()->asQObject();
+        return qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->namespace_()->asQModelingObject();
 }
 
 QString QUmlRemoveVariableValueActionObject::qualifiedName() const
 {
-    return qmodelingobjectproperty_cast<QUmlRemoveVariableValueAction *>(this)->qualifiedName();
+    return qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->qualifiedName();
 }
 
 QtUml::VisibilityKind QUmlRemoveVariableValueActionObject::visibility() const
 {
-    return qmodelingobjectproperty_cast<QUmlRemoveVariableValueAction *>(this)->visibility();
+    return qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->visibility();
 }
 
 // OWNED ATTRIBUTES [RedefinableElement]
 
 bool QUmlRemoveVariableValueActionObject::isLeaf() const
 {
-    return qmodelingobjectproperty_cast<QUmlRemoveVariableValueAction *>(this)->isLeaf();
+    return qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->isLeaf();
 }
 
 const QSet<QObject *> QUmlRemoveVariableValueActionObject::redefinedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlRedefinableElement *element, qmodelingobjectproperty_cast<QUmlRemoveVariableValueAction *>(this)->redefinedElements())
-        set.insert(element->asQObject());
+    foreach (QUmlRedefinableElement *element, qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->redefinedElements())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlRemoveVariableValueActionObject::redefinitionContexts() const
 {
     QSet<QObject *> set;
-    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlRemoveVariableValueAction *>(this)->redefinitionContexts())
-        set.insert(element->asQObject());
+    foreach (QUmlClassifier *element, qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->redefinitionContexts())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
@@ -172,65 +175,65 @@ const QSet<QObject *> QUmlRemoveVariableValueActionObject::redefinitionContexts(
 
 QObject *QUmlRemoveVariableValueActionObject::activity() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlRemoveVariableValueAction *>(this)->activity())
+    if (!qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->activity())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlRemoveVariableValueAction *>(this)->activity()->asQObject();
+        return qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->activity()->asQModelingObject();
 }
 
 const QSet<QObject *> QUmlRemoveVariableValueActionObject::inGroups() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityGroup *element, qmodelingobjectproperty_cast<QUmlRemoveVariableValueAction *>(this)->inGroups())
-        set.insert(element->asQObject());
+    foreach (QUmlActivityGroup *element, qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->inGroups())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlRemoveVariableValueActionObject::inInterruptibleRegions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlInterruptibleActivityRegion *element, qmodelingobjectproperty_cast<QUmlRemoveVariableValueAction *>(this)->inInterruptibleRegions())
-        set.insert(element->asQObject());
+    foreach (QUmlInterruptibleActivityRegion *element, qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->inInterruptibleRegions())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlRemoveVariableValueActionObject::inPartitions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityPartition *element, qmodelingobjectproperty_cast<QUmlRemoveVariableValueAction *>(this)->inPartitions())
-        set.insert(element->asQObject());
+    foreach (QUmlActivityPartition *element, qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->inPartitions())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 QObject *QUmlRemoveVariableValueActionObject::inStructuredNode() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlRemoveVariableValueAction *>(this)->inStructuredNode())
+    if (!qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->inStructuredNode())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlRemoveVariableValueAction *>(this)->inStructuredNode()->asQObject();
+        return qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->inStructuredNode()->asQModelingObject();
 }
 
 const QSet<QObject *> QUmlRemoveVariableValueActionObject::incomings() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlRemoveVariableValueAction *>(this)->incomings())
-        set.insert(element->asQObject());
+    foreach (QUmlActivityEdge *element, qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->incomings())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlRemoveVariableValueActionObject::outgoings() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlRemoveVariableValueAction *>(this)->outgoings())
-        set.insert(element->asQObject());
+    foreach (QUmlActivityEdge *element, qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->outgoings())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlRemoveVariableValueActionObject::redefinedNodes() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityNode *element, qmodelingobjectproperty_cast<QUmlRemoveVariableValueAction *>(this)->redefinedNodes())
-        set.insert(element->asQObject());
+    foreach (QUmlActivityNode *element, qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->redefinedNodes())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
@@ -239,8 +242,8 @@ const QSet<QObject *> QUmlRemoveVariableValueActionObject::redefinedNodes() cons
 const QSet<QObject *> QUmlRemoveVariableValueActionObject::handlers() const
 {
     QSet<QObject *> set;
-    foreach (QUmlExceptionHandler *element, qmodelingobjectproperty_cast<QUmlRemoveVariableValueAction *>(this)->handlers())
-        set.insert(element->asQObject());
+    foreach (QUmlExceptionHandler *element, qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->handlers())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
@@ -248,46 +251,46 @@ const QSet<QObject *> QUmlRemoveVariableValueActionObject::handlers() const
 
 QObject *QUmlRemoveVariableValueActionObject::context() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlRemoveVariableValueAction *>(this)->context())
+    if (!qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->context())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlRemoveVariableValueAction *>(this)->context()->asQObject();
+        return qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->context()->asQModelingObject();
 }
 
 const QList<QObject *> QUmlRemoveVariableValueActionObject::inputs() const
 {
     QList<QObject *> list;
-    foreach (QUmlInputPin *element, qmodelingobjectproperty_cast<QUmlRemoveVariableValueAction *>(this)->inputs())
-        list.append(element->asQObject());
+    foreach (QUmlInputPin *element, qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->inputs())
+        list.append(element->asQModelingObject());
     return list;
 }
 
 bool QUmlRemoveVariableValueActionObject::isLocallyReentrant() const
 {
-    return qmodelingobjectproperty_cast<QUmlRemoveVariableValueAction *>(this)->isLocallyReentrant();
+    return qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->isLocallyReentrant();
 }
 
 const QSet<QObject *> QUmlRemoveVariableValueActionObject::localPostconditions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlRemoveVariableValueAction *>(this)->localPostconditions())
-        set.insert(element->asQObject());
+    foreach (QUmlConstraint *element, qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->localPostconditions())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlRemoveVariableValueActionObject::localPreconditions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlRemoveVariableValueAction *>(this)->localPreconditions())
-        set.insert(element->asQObject());
+    foreach (QUmlConstraint *element, qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->localPreconditions())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QList<QObject *> QUmlRemoveVariableValueActionObject::outputs() const
 {
     QList<QObject *> list;
-    foreach (QUmlOutputPin *element, qmodelingobjectproperty_cast<QUmlRemoveVariableValueAction *>(this)->outputs())
-        list.append(element->asQObject());
+    foreach (QUmlOutputPin *element, qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->outputs())
+        list.append(element->asQModelingObject());
     return list;
 }
 
@@ -295,35 +298,35 @@ const QList<QObject *> QUmlRemoveVariableValueActionObject::outputs() const
 
 QObject *QUmlRemoveVariableValueActionObject::variable() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlRemoveVariableValueAction *>(this)->variable())
+    if (!qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->variable())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlRemoveVariableValueAction *>(this)->variable()->asQObject();
+        return qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->variable()->asQModelingObject();
 }
 
 // OWNED ATTRIBUTES [WriteVariableAction]
 
 QObject *QUmlRemoveVariableValueActionObject::value() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlRemoveVariableValueAction *>(this)->value())
+    if (!qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->value())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlRemoveVariableValueAction *>(this)->value()->asQObject();
+        return qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->value()->asQModelingObject();
 }
 
 // OWNED ATTRIBUTES [RemoveVariableValueAction]
 
 bool QUmlRemoveVariableValueActionObject::isRemoveDuplicates() const
 {
-    return qmodelingobjectproperty_cast<QUmlRemoveVariableValueAction *>(this)->isRemoveDuplicates();
+    return qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->isRemoveDuplicates();
 }
 
 QObject *QUmlRemoveVariableValueActionObject::removeAt() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlRemoveVariableValueAction *>(this)->removeAt())
+    if (!qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->removeAt())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlRemoveVariableValueAction *>(this)->removeAt()->asQObject();
+        return qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->removeAt()->asQModelingObject();
 }
 
 // OPERATIONS [Element]
@@ -331,14 +334,14 @@ QObject *QUmlRemoveVariableValueActionObject::removeAt() const
 QSet<QObject *> QUmlRemoveVariableValueActionObject::allOwnedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlRemoveVariableValueAction *>(this)->allOwnedElements())
-        set.insert(element->asQObject());
+    foreach (QUmlElement *element, qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->allOwnedElements())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 bool QUmlRemoveVariableValueActionObject::mustBeOwned() const
 {
-    return qmodelingobjectproperty_cast<QUmlRemoveVariableValueAction *>(this)->mustBeOwned();
+    return qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->mustBeOwned();
 }
 
 // OPERATIONS [NamedElement]
@@ -346,307 +349,391 @@ bool QUmlRemoveVariableValueActionObject::mustBeOwned() const
 QList<QObject *> QUmlRemoveVariableValueActionObject::allNamespaces() const
 {
     QList<QObject *> set;
-    foreach (QUmlNamespace *element, qmodelingobjectproperty_cast<QUmlRemoveVariableValueAction *>(this)->allNamespaces())
-        set.append(element->asQObject());
+    foreach (QUmlNamespace *element, qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->allNamespaces())
+        set.append(element->asQModelingObject());
     return set;
 }
 
 QSet<QObject *> QUmlRemoveVariableValueActionObject::allOwningPackages() const
 {
     QSet<QObject *> set;
-    foreach (QUmlPackage *element, qmodelingobjectproperty_cast<QUmlRemoveVariableValueAction *>(this)->allOwningPackages())
-        set.insert(element->asQObject());
+    foreach (QUmlPackage *element, qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->allOwningPackages())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 bool QUmlRemoveVariableValueActionObject::isDistinguishableFrom(QObject *n, QObject *ns) const
 {
-    return qmodelingobjectproperty_cast<QUmlRemoveVariableValueAction *>(this)->isDistinguishableFrom(qmodelingobjectproperty_cast<QUmlNamedElement *>(n), qmodelingobjectproperty_cast<QUmlNamespace *>(ns));
+    return qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->isDistinguishableFrom(qmodelingelementproperty_cast<QUmlNamedElement *>(n), qmodelingelementproperty_cast<QUmlNamespace *>(ns));
 }
 
 QString QUmlRemoveVariableValueActionObject::separator() const
 {
-    return qmodelingobjectproperty_cast<QUmlRemoveVariableValueAction *>(this)->separator();
+    return qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->separator();
 }
 
 // OPERATIONS [RedefinableElement]
 
 bool QUmlRemoveVariableValueActionObject::isConsistentWith(QObject *redefinee) const
 {
-    return qmodelingobjectproperty_cast<QUmlRemoveVariableValueAction *>(this)->isConsistentWith(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefinee));
+    return qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->isConsistentWith(qmodelingelementproperty_cast<QUmlRedefinableElement *>(redefinee));
 }
 
 bool QUmlRemoveVariableValueActionObject::isRedefinitionContextValid(QObject *redefined) const
 {
-    return qmodelingobjectproperty_cast<QUmlRemoveVariableValueAction *>(this)->isRedefinitionContextValid(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefined));
+    return qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->isRedefinitionContextValid(qmodelingelementproperty_cast<QUmlRedefinableElement *>(redefined));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Element]
 
 void QUmlRemoveVariableValueActionObject::addOwnedComment(QObject *ownedComment)
 {
-    qmodelingobjectproperty_cast<QUmlRemoveVariableValueAction *>(this)->addOwnedComment(qmodelingobjectproperty_cast<QUmlComment *>(ownedComment));
+    qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
 }
 
 void QUmlRemoveVariableValueActionObject::removeOwnedComment(QObject *ownedComment)
 {
-    qmodelingobjectproperty_cast<QUmlRemoveVariableValueAction *>(this)->removeOwnedComment(qmodelingobjectproperty_cast<QUmlComment *>(ownedComment));
+    qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
 }
 
 void QUmlRemoveVariableValueActionObject::addOwnedElement(QObject *ownedElement)
 {
-    qmodelingobjectproperty_cast<QUmlRemoveVariableValueAction *>(this)->addOwnedElement(qmodelingobjectproperty_cast<QUmlElement *>(ownedElement));
+    qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
 }
 
 void QUmlRemoveVariableValueActionObject::removeOwnedElement(QObject *ownedElement)
 {
-    qmodelingobjectproperty_cast<QUmlRemoveVariableValueAction *>(this)->removeOwnedElement(qmodelingobjectproperty_cast<QUmlElement *>(ownedElement));
+    qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
 }
 
 void QUmlRemoveVariableValueActionObject::setOwner(QObject *owner)
 {
-    qmodelingobjectproperty_cast<QUmlRemoveVariableValueAction *>(this)->setOwner(qmodelingobjectproperty_cast<QUmlElement *>(owner));
+    qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [NamedElement]
 
 void QUmlRemoveVariableValueActionObject::addClientDependency(QObject *clientDependency)
 {
-    qmodelingobjectproperty_cast<QUmlRemoveVariableValueAction *>(this)->addClientDependency(qmodelingobjectproperty_cast<QUmlDependency *>(clientDependency));
+    qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->addClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
 }
 
 void QUmlRemoveVariableValueActionObject::removeClientDependency(QObject *clientDependency)
 {
-    qmodelingobjectproperty_cast<QUmlRemoveVariableValueAction *>(this)->removeClientDependency(qmodelingobjectproperty_cast<QUmlDependency *>(clientDependency));
+    qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->removeClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
 }
 
 void QUmlRemoveVariableValueActionObject::setName(QString name)
 {
-    qmodelingobjectproperty_cast<QUmlRemoveVariableValueAction *>(this)->setName(name);
+    qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->setName(name);
 }
 
 void QUmlRemoveVariableValueActionObject::setNameExpression(QObject *nameExpression)
 {
-    qmodelingobjectproperty_cast<QUmlRemoveVariableValueAction *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
+    qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->setNameExpression(qmodelingelementproperty_cast<QUmlStringExpression *>(nameExpression));
 }
 
 void QUmlRemoveVariableValueActionObject::setNamespace(QObject *namespace_)
 {
-    qmodelingobjectproperty_cast<QUmlRemoveVariableValueAction *>(this)->setNamespace(qmodelingobjectproperty_cast<QUmlNamespace *>(namespace_));
+    qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->setNamespace(qmodelingelementproperty_cast<QUmlNamespace *>(namespace_));
 }
 
 void QUmlRemoveVariableValueActionObject::setQualifiedName(QString qualifiedName)
 {
-    qmodelingobjectproperty_cast<QUmlRemoveVariableValueAction *>(this)->setQualifiedName(qualifiedName);
+    qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->setQualifiedName(qualifiedName);
 }
 
 void QUmlRemoveVariableValueActionObject::setVisibility(QtUml::VisibilityKind visibility)
 {
-    qmodelingobjectproperty_cast<QUmlRemoveVariableValueAction *>(this)->setVisibility(visibility);
+    qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->setVisibility(visibility);
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [RedefinableElement]
 
 void QUmlRemoveVariableValueActionObject::setLeaf(bool isLeaf)
 {
-    qmodelingobjectproperty_cast<QUmlRemoveVariableValueAction *>(this)->setLeaf(isLeaf);
+    qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->setLeaf(isLeaf);
 }
 
 void QUmlRemoveVariableValueActionObject::unsetLeaf()
 {
-    qmodelingobjectproperty_cast<QUmlRemoveVariableValueAction *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("leaf"));
+    Q_D(QModelingObject);
+    d->modifiedResettableProperties.removeAll(QStringLiteral("leaf"));
 }
 
 void QUmlRemoveVariableValueActionObject::addRedefinedElement(QObject *redefinedElement)
 {
-    qmodelingobjectproperty_cast<QUmlRemoveVariableValueAction *>(this)->addRedefinedElement(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefinedElement));
+    qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->addRedefinedElement(qmodelingelementproperty_cast<QUmlRedefinableElement *>(redefinedElement));
 }
 
 void QUmlRemoveVariableValueActionObject::removeRedefinedElement(QObject *redefinedElement)
 {
-    qmodelingobjectproperty_cast<QUmlRemoveVariableValueAction *>(this)->removeRedefinedElement(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefinedElement));
+    qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->removeRedefinedElement(qmodelingelementproperty_cast<QUmlRedefinableElement *>(redefinedElement));
 }
 
 void QUmlRemoveVariableValueActionObject::addRedefinitionContext(QObject *redefinitionContext)
 {
-    qmodelingobjectproperty_cast<QUmlRemoveVariableValueAction *>(this)->addRedefinitionContext(qmodelingobjectproperty_cast<QUmlClassifier *>(redefinitionContext));
+    qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->addRedefinitionContext(qmodelingelementproperty_cast<QUmlClassifier *>(redefinitionContext));
 }
 
 void QUmlRemoveVariableValueActionObject::removeRedefinitionContext(QObject *redefinitionContext)
 {
-    qmodelingobjectproperty_cast<QUmlRemoveVariableValueAction *>(this)->removeRedefinitionContext(qmodelingobjectproperty_cast<QUmlClassifier *>(redefinitionContext));
+    qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->removeRedefinitionContext(qmodelingelementproperty_cast<QUmlClassifier *>(redefinitionContext));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ActivityNode]
 
 void QUmlRemoveVariableValueActionObject::setActivity(QObject *activity)
 {
-    qmodelingobjectproperty_cast<QUmlRemoveVariableValueAction *>(this)->setActivity(qmodelingobjectproperty_cast<QUmlActivity *>(activity));
+    qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->setActivity(qmodelingelementproperty_cast<QUmlActivity *>(activity));
 }
 
 void QUmlRemoveVariableValueActionObject::addInGroup(QObject *inGroup)
 {
-    qmodelingobjectproperty_cast<QUmlRemoveVariableValueAction *>(this)->addInGroup(qmodelingobjectproperty_cast<QUmlActivityGroup *>(inGroup));
+    qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->addInGroup(qmodelingelementproperty_cast<QUmlActivityGroup *>(inGroup));
 }
 
 void QUmlRemoveVariableValueActionObject::removeInGroup(QObject *inGroup)
 {
-    qmodelingobjectproperty_cast<QUmlRemoveVariableValueAction *>(this)->removeInGroup(qmodelingobjectproperty_cast<QUmlActivityGroup *>(inGroup));
+    qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->removeInGroup(qmodelingelementproperty_cast<QUmlActivityGroup *>(inGroup));
 }
 
 void QUmlRemoveVariableValueActionObject::addInInterruptibleRegion(QObject *inInterruptibleRegion)
 {
-    qmodelingobjectproperty_cast<QUmlRemoveVariableValueAction *>(this)->addInInterruptibleRegion(qmodelingobjectproperty_cast<QUmlInterruptibleActivityRegion *>(inInterruptibleRegion));
+    qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->addInInterruptibleRegion(qmodelingelementproperty_cast<QUmlInterruptibleActivityRegion *>(inInterruptibleRegion));
 }
 
 void QUmlRemoveVariableValueActionObject::removeInInterruptibleRegion(QObject *inInterruptibleRegion)
 {
-    qmodelingobjectproperty_cast<QUmlRemoveVariableValueAction *>(this)->removeInInterruptibleRegion(qmodelingobjectproperty_cast<QUmlInterruptibleActivityRegion *>(inInterruptibleRegion));
+    qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->removeInInterruptibleRegion(qmodelingelementproperty_cast<QUmlInterruptibleActivityRegion *>(inInterruptibleRegion));
 }
 
 void QUmlRemoveVariableValueActionObject::addInPartition(QObject *inPartition)
 {
-    qmodelingobjectproperty_cast<QUmlRemoveVariableValueAction *>(this)->addInPartition(qmodelingobjectproperty_cast<QUmlActivityPartition *>(inPartition));
+    qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->addInPartition(qmodelingelementproperty_cast<QUmlActivityPartition *>(inPartition));
 }
 
 void QUmlRemoveVariableValueActionObject::removeInPartition(QObject *inPartition)
 {
-    qmodelingobjectproperty_cast<QUmlRemoveVariableValueAction *>(this)->removeInPartition(qmodelingobjectproperty_cast<QUmlActivityPartition *>(inPartition));
+    qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->removeInPartition(qmodelingelementproperty_cast<QUmlActivityPartition *>(inPartition));
 }
 
 void QUmlRemoveVariableValueActionObject::setInStructuredNode(QObject *inStructuredNode)
 {
-    qmodelingobjectproperty_cast<QUmlRemoveVariableValueAction *>(this)->setInStructuredNode(qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(inStructuredNode));
+    qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->setInStructuredNode(qmodelingelementproperty_cast<QUmlStructuredActivityNode *>(inStructuredNode));
 }
 
 void QUmlRemoveVariableValueActionObject::addIncoming(QObject *incoming)
 {
-    qmodelingobjectproperty_cast<QUmlRemoveVariableValueAction *>(this)->addIncoming(qmodelingobjectproperty_cast<QUmlActivityEdge *>(incoming));
+    qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->addIncoming(qmodelingelementproperty_cast<QUmlActivityEdge *>(incoming));
 }
 
 void QUmlRemoveVariableValueActionObject::removeIncoming(QObject *incoming)
 {
-    qmodelingobjectproperty_cast<QUmlRemoveVariableValueAction *>(this)->removeIncoming(qmodelingobjectproperty_cast<QUmlActivityEdge *>(incoming));
+    qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->removeIncoming(qmodelingelementproperty_cast<QUmlActivityEdge *>(incoming));
 }
 
 void QUmlRemoveVariableValueActionObject::addOutgoing(QObject *outgoing)
 {
-    qmodelingobjectproperty_cast<QUmlRemoveVariableValueAction *>(this)->addOutgoing(qmodelingobjectproperty_cast<QUmlActivityEdge *>(outgoing));
+    qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->addOutgoing(qmodelingelementproperty_cast<QUmlActivityEdge *>(outgoing));
 }
 
 void QUmlRemoveVariableValueActionObject::removeOutgoing(QObject *outgoing)
 {
-    qmodelingobjectproperty_cast<QUmlRemoveVariableValueAction *>(this)->removeOutgoing(qmodelingobjectproperty_cast<QUmlActivityEdge *>(outgoing));
+    qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->removeOutgoing(qmodelingelementproperty_cast<QUmlActivityEdge *>(outgoing));
 }
 
 void QUmlRemoveVariableValueActionObject::addRedefinedNode(QObject *redefinedNode)
 {
-    qmodelingobjectproperty_cast<QUmlRemoveVariableValueAction *>(this)->addRedefinedNode(qmodelingobjectproperty_cast<QUmlActivityNode *>(redefinedNode));
+    qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->addRedefinedNode(qmodelingelementproperty_cast<QUmlActivityNode *>(redefinedNode));
 }
 
 void QUmlRemoveVariableValueActionObject::removeRedefinedNode(QObject *redefinedNode)
 {
-    qmodelingobjectproperty_cast<QUmlRemoveVariableValueAction *>(this)->removeRedefinedNode(qmodelingobjectproperty_cast<QUmlActivityNode *>(redefinedNode));
+    qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->removeRedefinedNode(qmodelingelementproperty_cast<QUmlActivityNode *>(redefinedNode));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ExecutableNode]
 
 void QUmlRemoveVariableValueActionObject::addHandler(QObject *handler)
 {
-    qmodelingobjectproperty_cast<QUmlRemoveVariableValueAction *>(this)->addHandler(qmodelingobjectproperty_cast<QUmlExceptionHandler *>(handler));
+    qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->addHandler(qmodelingelementproperty_cast<QUmlExceptionHandler *>(handler));
 }
 
 void QUmlRemoveVariableValueActionObject::removeHandler(QObject *handler)
 {
-    qmodelingobjectproperty_cast<QUmlRemoveVariableValueAction *>(this)->removeHandler(qmodelingobjectproperty_cast<QUmlExceptionHandler *>(handler));
+    qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->removeHandler(qmodelingelementproperty_cast<QUmlExceptionHandler *>(handler));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Action]
 
 void QUmlRemoveVariableValueActionObject::setContext(QObject *context)
 {
-    qmodelingobjectproperty_cast<QUmlRemoveVariableValueAction *>(this)->setContext(qmodelingobjectproperty_cast<QUmlClassifier *>(context));
+    qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->setContext(qmodelingelementproperty_cast<QUmlClassifier *>(context));
 }
 
 void QUmlRemoveVariableValueActionObject::addInput(QObject *input)
 {
-    qmodelingobjectproperty_cast<QUmlRemoveVariableValueAction *>(this)->addInput(qmodelingobjectproperty_cast<QUmlInputPin *>(input));
+    qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->addInput(qmodelingelementproperty_cast<QUmlInputPin *>(input));
 }
 
 void QUmlRemoveVariableValueActionObject::removeInput(QObject *input)
 {
-    qmodelingobjectproperty_cast<QUmlRemoveVariableValueAction *>(this)->removeInput(qmodelingobjectproperty_cast<QUmlInputPin *>(input));
+    qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->removeInput(qmodelingelementproperty_cast<QUmlInputPin *>(input));
 }
 
 void QUmlRemoveVariableValueActionObject::setLocallyReentrant(bool isLocallyReentrant)
 {
-    qmodelingobjectproperty_cast<QUmlRemoveVariableValueAction *>(this)->setLocallyReentrant(isLocallyReentrant);
+    qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->setLocallyReentrant(isLocallyReentrant);
 }
 
 void QUmlRemoveVariableValueActionObject::unsetLocallyReentrant()
 {
-    qmodelingobjectproperty_cast<QUmlRemoveVariableValueAction *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("locallyReentrant"));
+    Q_D(QModelingObject);
+    d->modifiedResettableProperties.removeAll(QStringLiteral("locallyReentrant"));
 }
 
 void QUmlRemoveVariableValueActionObject::addLocalPostcondition(QObject *localPostcondition)
 {
-    qmodelingobjectproperty_cast<QUmlRemoveVariableValueAction *>(this)->addLocalPostcondition(qmodelingobjectproperty_cast<QUmlConstraint *>(localPostcondition));
+    qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->addLocalPostcondition(qmodelingelementproperty_cast<QUmlConstraint *>(localPostcondition));
 }
 
 void QUmlRemoveVariableValueActionObject::removeLocalPostcondition(QObject *localPostcondition)
 {
-    qmodelingobjectproperty_cast<QUmlRemoveVariableValueAction *>(this)->removeLocalPostcondition(qmodelingobjectproperty_cast<QUmlConstraint *>(localPostcondition));
+    qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->removeLocalPostcondition(qmodelingelementproperty_cast<QUmlConstraint *>(localPostcondition));
 }
 
 void QUmlRemoveVariableValueActionObject::addLocalPrecondition(QObject *localPrecondition)
 {
-    qmodelingobjectproperty_cast<QUmlRemoveVariableValueAction *>(this)->addLocalPrecondition(qmodelingobjectproperty_cast<QUmlConstraint *>(localPrecondition));
+    qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->addLocalPrecondition(qmodelingelementproperty_cast<QUmlConstraint *>(localPrecondition));
 }
 
 void QUmlRemoveVariableValueActionObject::removeLocalPrecondition(QObject *localPrecondition)
 {
-    qmodelingobjectproperty_cast<QUmlRemoveVariableValueAction *>(this)->removeLocalPrecondition(qmodelingobjectproperty_cast<QUmlConstraint *>(localPrecondition));
+    qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->removeLocalPrecondition(qmodelingelementproperty_cast<QUmlConstraint *>(localPrecondition));
 }
 
 void QUmlRemoveVariableValueActionObject::addOutput(QObject *output)
 {
-    qmodelingobjectproperty_cast<QUmlRemoveVariableValueAction *>(this)->addOutput(qmodelingobjectproperty_cast<QUmlOutputPin *>(output));
+    qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->addOutput(qmodelingelementproperty_cast<QUmlOutputPin *>(output));
 }
 
 void QUmlRemoveVariableValueActionObject::removeOutput(QObject *output)
 {
-    qmodelingobjectproperty_cast<QUmlRemoveVariableValueAction *>(this)->removeOutput(qmodelingobjectproperty_cast<QUmlOutputPin *>(output));
+    qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->removeOutput(qmodelingelementproperty_cast<QUmlOutputPin *>(output));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [VariableAction]
 
 void QUmlRemoveVariableValueActionObject::setVariable(QObject *variable)
 {
-    qmodelingobjectproperty_cast<QUmlRemoveVariableValueAction *>(this)->setVariable(qmodelingobjectproperty_cast<QUmlVariable *>(variable));
+    qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->setVariable(qmodelingelementproperty_cast<QUmlVariable *>(variable));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [WriteVariableAction]
 
 void QUmlRemoveVariableValueActionObject::setValue(QObject *value)
 {
-    qmodelingobjectproperty_cast<QUmlRemoveVariableValueAction *>(this)->setValue(qmodelingobjectproperty_cast<QUmlInputPin *>(value));
+    qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->setValue(qmodelingelementproperty_cast<QUmlInputPin *>(value));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [RemoveVariableValueAction]
 
 void QUmlRemoveVariableValueActionObject::setRemoveDuplicates(bool isRemoveDuplicates)
 {
-    qmodelingobjectproperty_cast<QUmlRemoveVariableValueAction *>(this)->setRemoveDuplicates(isRemoveDuplicates);
+    qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->setRemoveDuplicates(isRemoveDuplicates);
 }
 
 void QUmlRemoveVariableValueActionObject::unsetRemoveDuplicates()
 {
-    qmodelingobjectproperty_cast<QUmlRemoveVariableValueAction *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("removeDuplicates"));
+    Q_D(QModelingObject);
+    d->modifiedResettableProperties.removeAll(QStringLiteral("removeDuplicates"));
 }
 
 void QUmlRemoveVariableValueActionObject::setRemoveAt(QObject *removeAt)
 {
-    qmodelingobjectproperty_cast<QUmlRemoveVariableValueAction *>(this)->setRemoveAt(qmodelingobjectproperty_cast<QUmlInputPin *>(removeAt));
+    qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->setRemoveAt(qmodelingelementproperty_cast<QUmlInputPin *>(removeAt));
+}
+
+
+void QUmlRemoveVariableValueActionObject::setGroupProperties()
+{
+    Q_D(QModelingObject);
+    const QMetaObject *metaObject = this->metaObject();
+
+    d->propertyGroups << QStringLiteral("QObject");
+    d->groupProperties.insert(QStringLiteral("QObject"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("objectName"))));
+
+    d->propertyGroups << QStringLiteral("QUmlElement");
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
+
+    d->propertyGroups << QStringLiteral("QUmlNamedElement");
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
+
+    d->propertyGroups << QStringLiteral("QUmlRedefinableElement");
+    d->groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isLeaf"))));
+    d->groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinedElements"))));
+    d->groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinitionContexts"))));
+
+    d->propertyGroups << QStringLiteral("QUmlActivityNode");
+    d->groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("activity"))));
+    d->groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inGroups"))));
+    d->groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inInterruptibleRegions"))));
+    d->groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inPartitions"))));
+    d->groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inStructuredNode"))));
+    d->groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("incomings"))));
+    d->groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("outgoings"))));
+    d->groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinedNodes"))));
+
+    d->propertyGroups << QStringLiteral("QUmlExecutableNode");
+    d->groupProperties.insert(QStringLiteral("QUmlExecutableNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("handlers"))));
+
+    d->propertyGroups << QStringLiteral("QUmlAction");
+    d->groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("context"))));
+    d->groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inputs"))));
+    d->groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isLocallyReentrant"))));
+    d->groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("localPostconditions"))));
+    d->groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("localPreconditions"))));
+    d->groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("outputs"))));
+
+    d->propertyGroups << QStringLiteral("QUmlVariableAction");
+    d->groupProperties.insert(QStringLiteral("QUmlVariableAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("variable"))));
+
+    d->propertyGroups << QStringLiteral("QUmlWriteVariableAction");
+    d->groupProperties.insert(QStringLiteral("QUmlWriteVariableAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("value"))));
+
+    d->propertyGroups << QStringLiteral("QUmlRemoveVariableValueAction");
+    d->groupProperties.insert(QStringLiteral("QUmlRemoveVariableValueAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isRemoveDuplicates"))));
+    d->groupProperties.insert(QStringLiteral("QUmlRemoveVariableValueAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("removeAt"))));
+}
+
+void QUmlRemoveVariableValueActionObject::setPropertyData()
+{
+    Q_DECLARE_METAPROPERTY_INFO(QUmlRemoveVariableValueAction, isRemoveDuplicates, AggregationRole, QStringLiteral("none"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlRemoveVariableValueAction, isRemoveDuplicates, PropertyClassRole, QStringLiteral("QUmlRemoveVariableValueAction"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlRemoveVariableValueAction, isRemoveDuplicates, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlRemoveVariableValueAction, isRemoveDuplicates, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlRemoveVariableValueAction, isRemoveDuplicates, DocumentationRole, QStringLiteral("Specifies whether to remove duplicates of the value in nonunique variables."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlRemoveVariableValueAction, isRemoveDuplicates, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlRemoveVariableValueAction, isRemoveDuplicates, SubsettedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlRemoveVariableValueAction, isRemoveDuplicates, OppositeEndRole, QStringLiteral(""));
+
+    Q_DECLARE_METAPROPERTY_INFO(QUmlRemoveVariableValueAction, removeAt, AggregationRole, QStringLiteral("composite"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlRemoveVariableValueAction, removeAt, PropertyClassRole, QStringLiteral("QUmlRemoveVariableValueAction"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlRemoveVariableValueAction, removeAt, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlRemoveVariableValueAction, removeAt, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlRemoveVariableValueAction, removeAt, DocumentationRole, QStringLiteral("Specifies the position of an existing value to remove in ordered nonunique variables. The type of the pin is UnlimitedNatural, but the value cannot be zero or unlimited."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlRemoveVariableValueAction, removeAt, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlRemoveVariableValueAction, removeAt, SubsettedPropertiesRole, QStringLiteral("Action-input"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlRemoveVariableValueAction, removeAt, OppositeEndRole, QStringLiteral(""));
+
 }
 
 QT_END_NAMESPACE

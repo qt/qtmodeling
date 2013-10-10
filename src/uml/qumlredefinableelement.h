@@ -45,7 +45,6 @@
 
 #include <QtUml/QUmlNamedElement>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -59,7 +58,7 @@ class Q_UML_EXPORT QUmlRedefinableElement : public virtual QUmlNamedElement
 public:
     virtual ~QUmlRedefinableElement();
 
-    Q_DECL_HIDDEN QModelingObject *clone() const;
+    Q_DECL_HIDDEN virtual QModelingElement *clone() const;
 
     // Owned attributes
     bool isLeaf() const;
@@ -81,9 +80,6 @@ protected:
     bool _isLeaf;
     QSet<QUmlRedefinableElement *> _redefinedElements;
     QSet<QUmlClassifier *> _redefinitionContexts;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

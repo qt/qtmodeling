@@ -43,7 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtCore/QObject>
+#include <QtModeling/QModelingObject>
 
 #include <QtUml/QtUmlNamespace>
 
@@ -54,9 +54,12 @@ QT_BEGIN_NAMESPACE
 QT_MODULE(QtUml)
 
 class QUmlPseudostate;
-class Q_UML_EXPORT QUmlPseudostateObject : public QObject
+class QModelingObjectPrivate;
+class Q_UML_EXPORT QUmlPseudostateObject : public QModelingObject
 {
     Q_OBJECT
+    Q_DISABLE_COPY(QUmlPseudostateObject)
+    Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [Element]
     Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
@@ -82,7 +85,7 @@ class Q_UML_EXPORT QUmlPseudostateObject : public QObject
     Q_PROPERTY(QObject * stateMachine READ stateMachine WRITE setStateMachine)
 
 public:
-    Q_INVOKABLE explicit QUmlPseudostateObject(QUmlPseudostate *qModelingObject);
+    Q_INVOKABLE explicit QUmlPseudostateObject(QUmlPseudostate *qModelingElement);
     virtual ~QUmlPseudostateObject();
 
     // Owned attributes [Element]
@@ -151,6 +154,10 @@ public Q_SLOTS:
     void unsetKind();
     void setState(QObject *state = 0);
     void setStateMachine(QObject *stateMachine = 0);
+
+protected:
+    virtual void setGroupProperties();
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

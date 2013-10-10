@@ -45,7 +45,6 @@
 
 #include <QtUml/QUmlElement>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -55,10 +54,10 @@ QT_MODULE(QtUml)
 class Q_UML_EXPORT QUmlImage : public QUmlElement
 {
 public:
-    explicit QUmlImage(bool createQObject = true);
+    explicit QUmlImage(bool createQModelingObject = true);
     virtual ~QUmlImage();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
     QString content() const;
@@ -72,9 +71,6 @@ protected:
     QString _content;
     QString _format;
     QString _location;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

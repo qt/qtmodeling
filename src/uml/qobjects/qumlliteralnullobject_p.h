@@ -43,7 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtCore/QObject>
+#include <QtModeling/QModelingObject>
 
 #include <QtUml/QtUmlNamespace>
 
@@ -54,9 +54,12 @@ QT_BEGIN_NAMESPACE
 QT_MODULE(QtUml)
 
 class QUmlLiteralNull;
-class Q_UML_EXPORT QUmlLiteralNullObject : public QObject
+class QModelingObjectPrivate;
+class Q_UML_EXPORT QUmlLiteralNullObject : public QModelingObject
 {
     Q_OBJECT
+    Q_DISABLE_COPY(QUmlLiteralNullObject)
+    Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [Element]
     Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
@@ -81,7 +84,7 @@ class Q_UML_EXPORT QUmlLiteralNullObject : public QObject
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility RESET unsetVisibility)
 
 public:
-    Q_INVOKABLE explicit QUmlLiteralNullObject(QUmlLiteralNull *qModelingObject);
+    Q_INVOKABLE explicit QUmlLiteralNullObject(QUmlLiteralNull *qModelingElement);
     virtual ~QUmlLiteralNullObject();
 
     // Owned attributes [Element]
@@ -158,6 +161,10 @@ public Q_SLOTS:
     // Slots for owned attributes [PackageableElement]
     void setVisibility(QtUml::VisibilityKind visibility);
     void unsetVisibility();
+
+protected:
+    virtual void setGroupProperties();
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

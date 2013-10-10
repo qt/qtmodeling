@@ -43,7 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtCore/QObject>
+#include <QtModeling/QModelingObject>
 
 #include <QtUml/QtUmlNamespace>
 
@@ -54,9 +54,12 @@ QT_BEGIN_NAMESPACE
 QT_MODULE(QtUml)
 
 class QUmlOperation;
-class Q_UML_EXPORT QUmlOperationObject : public QObject
+class QModelingObjectPrivate;
+class Q_UML_EXPORT QUmlOperationObject : public QModelingObject
 {
     Q_OBJECT
+    Q_DISABLE_COPY(QUmlOperationObject)
+    Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [Element]
     Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
@@ -120,7 +123,7 @@ class Q_UML_EXPORT QUmlOperationObject : public QObject
     Q_PROPERTY(int upper READ upper RESET unsetUpper STORED false)
 
 public:
-    Q_INVOKABLE explicit QUmlOperationObject(QUmlOperation *qModelingObject);
+    Q_INVOKABLE explicit QUmlOperationObject(QUmlOperation *qModelingElement);
     virtual ~QUmlOperationObject();
 
     // Owned attributes [Element]
@@ -308,6 +311,10 @@ public Q_SLOTS:
     void Q_DECL_HIDDEN setType(QObject *type = 0);
     void Q_DECL_HIDDEN setUpper(int upper);
     void unsetUpper();
+
+protected:
+    virtual void setGroupProperties();
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

@@ -60,6 +60,7 @@
 #include <QtModeling/QXmiWriter>
 #include <QtModeling/QXmiReader>
 #include <QtModeling/QModelingObject>
+#include <QtModeling/QModelingElement>
 #include <QtModeling/QMetaModelPlugin>
 //#include <QtWrappedObjects/QMetaWrappedObject>
 #include <QtModelingWidgets/QModelingObjectModel>
@@ -228,7 +229,7 @@ void MainWindow::saveXmi(QModelingElement *rootElement)
         return;
     }
 
-    QXmiWriter writer(rootElement);
+    QXmiWriter writer(rootElement->asQModelingObject());
     setCursor(Qt::WaitCursor);
     if (!writer.writeFile(&file))
         QMessageBox::critical(this, tr("Save As"), tr("Error when writing XMI file !"));
@@ -261,11 +262,11 @@ QList<QModelingElement *> MainWindow::loadXmi(QString fileName)
 void MainWindow::setModelInspector(QList<QModelingElement *> modelingObjectList)
 {
     if (!modelingObjectList.isEmpty()) {
-        _engine.globalObject().setProperty(modelingObjectList.at(0)->asQObject()->objectName(), _engine.newQObject(modelingObjectList.at(0)->asQObject()));
+        _engine.globalObject().setProperty(modelingObjectList.at(0)->asQModelingObject()->objectName(), _engine.newQObject(modelingObjectList.at(0)->asQModelingObject()));
 
         QScriptValue array = _engine.newArray();
         foreach (QModelingElement *modelingObject, modelingObjectList)
-            array.property(QString::fromLatin1("push")).call(array, QScriptValueList() << _engine.newQObject(modelingObject->asQObject()));
+            array.property(QString::fromLatin1("push")).call(array, QScriptValueList() << _engine.newQObject(modelingObject->asQModelingObject()));
         _engine.globalObject().setProperty("input", array);
 
         ui->txeJavaScript->setText("self");
@@ -273,7 +274,7 @@ void MainWindow::setModelInspector(QList<QModelingElement *> modelingObjectList)
     }
     _modelingObjectModel->clear();
     foreach (QModelingElement *object, modelingObjectList)
-        _modelingObjectModel->addModelingObject(object->asQObject());
+        _modelingObjectModel->addModelingObject(object->asQModelingObject());
 }
 
 void MainWindow::on_actionFileOpenModel_triggered()
@@ -310,7 +311,7 @@ void MainWindow::on_actionFileNewDuseDesign_triggered()
                 }
                 QXmiReader reader(&_engine, true);
                 QList<QModelingElement *> modelingObjectList = reader.readFile(&file);
-                if (QString::fromLatin1(modelingObjectList.first()->asQObject()->metaObject()->className()) != QString::fromLatin1("QDuseDesignSpace")) {
+                if (QString::fromLatin1(modelingObjectList.first()->asQModelingObject()->metaObject()->className()) != QString::fromLatin1("QDuseDesignSpace")) {
                     QMessageBox::critical(this, tr("Create new DuSE design"), QString::fromLatin1("%1 is not a valid DuSE instance !").arg(QFileInfo(file).fileName()));
                     setCursor(Qt::ArrowCursor);
                     return;
@@ -329,20 +330,20 @@ void MainWindow::on_actionFileNewDuseDesign_triggered()
                                                        { \
                                                            var length = input[0].profileApplications.length; \
                                                            for (var i = 0; i < length; ++i) \
-                                                               if (input[0].profileApplications[0].appliedProfile.name == '" + modelingObjectList.first()->asQObject()->objectName() + "Profile') \
+                                                               if (input[0].profileApplications[0].appliedProfile.name == '" + modelingObjectList.first()->asQModelingObject()->objectName() + "Profile') \
                                                                    return true; \
                                                            return false; \
                                                        } \
                                                        checkProfile();");
                 if (!value.toBool()) {
-                    QMessageBox::critical(this, tr("Create new DuSE design"), QString::fromLatin1("Input model does not contain the required %1Profile profile application !").arg(modelingObjectList.first()->asQObject()->objectName()));
+                    QMessageBox::critical(this, tr("Create new DuSE design"), QString::fromLatin1("Input model does not contain the required %1Profile profile application !").arg(modelingObjectList.first()->asQModelingObject()->objectName()));
                     setCursor(Qt::ArrowCursor);
                     return;
                 }
 
                 //modelingObjectList.first()->setQmlContextProperties(_metricsQuickView->engine()->rootContext());
 
-                _engine.globalObject().setProperty("designspace", _engine.newQObject(modelingObjectList.at(0)->asQObject()));
+                _engine.globalObject().setProperty("designspace", _engine.newQObject(modelingObjectList.at(0)->asQModelingObject()));
                 _engine.evaluate("var dimensionsLength = designspace.designDimensions.length; \
                                  for (var dimensionCounter = 0; dimensionCounter < dimensionsLength; ++dimensionCounter) { \
                                      if (designspace.designDimensions[dimensionCounter].instanceSelectionRule) { \
@@ -406,7 +407,7 @@ void MainWindow::on_actionFileSaveAs_triggered()
     QString fileName = QFileDialog::getSaveFileName(this, tr("Save As"), QDir::currentPath(), "XMI files (*.xmi)");
     if (!fileName.isEmpty()) {
         _currentFileName = fileName;
-        saveXmi(qModelingObject(_modelingObjectModel->modelingObjects().at(0)));
+        saveXmi(qModelingElement(_modelingObjectModel->modelingObjects().at(0)));
     }
 }
 
@@ -415,7 +416,7 @@ void MainWindow::on_actionFileSave_triggered()
     if (_currentFileName.isEmpty())
         on_actionFileSaveAs_triggered();
     else
-        saveXmi(qModelingObject(_modelingObjectModel->modelingObjects().at(0)));
+        saveXmi(qModelingElement(_modelingObjectModel->modelingObjects().at(0)));
 }
 
 void MainWindow::on_actionHelpAboutPlugins_triggered()
@@ -510,7 +511,7 @@ void MainWindow::metaModelChanged(QString newMetaModel)
 
 void MainWindow::modelingObjectChanged(QModelingElement *modelingObject)
 {
-    _engine.globalObject().setProperty("self", _engine.newQObject(modelingObject->asQObject()));
+    _engine.globalObject().setProperty("self", _engine.newQObject(modelingObject->asQModelingObject()));
 }
 
 void MainWindow::addToView(QModelingElement *modelingObject, QQuickItem *parent)
@@ -520,7 +521,7 @@ void MainWindow::addToView(QModelingElement *modelingObject, QQuickItem *parent)
     _qmlComponent = new QQmlComponent(_modelQuickView->engine());
     int x = qrand() % 400;
     int y = qrand() % 400;
-    _qmlComponent->setData(QString("import QtQuick 2.0\nimport QtModeling.Uml 1.0\n\n%1 { x: %2; y: %3}").arg(QString(modelingObject->asQObject()->metaObject()->className()).remove(QRegularExpression("^Q"))).arg(x).arg(y).toLatin1(), QUrl());
+    _qmlComponent->setData(QString("import QtQuick 2.0\nimport QtModeling.Uml 1.0\n\n%1 { x: %2; y: %3}").arg(QString(modelingObject->asQModelingObject()->metaObject()->className()).remove(QRegularExpression("^Q"))).arg(x).arg(y).toLatin1(), QUrl());
 
     QQuickItem *item = 0;
     if (_qmlComponent->isError()) {
@@ -532,8 +533,8 @@ void MainWindow::addToView(QModelingElement *modelingObject, QQuickItem *parent)
         }
     }
 
-    foreach (QObject *child, modelingObject->asQObject()->children())
-        addToView(dynamic_cast<QModelingElement *>(qModelingObject(child)));
+    foreach (QObject *child, modelingObject->asQModelingObject()->children())
+        addToView(dynamic_cast<QModelingElement *>(qModelingElement(child)));
 
     _qmlComponent->deleteLater();
 }
@@ -545,7 +546,7 @@ void MainWindow::addToDesignSpaceView(QModelingElement *modelingObject, QQuickIt
     _qmlComponent = new QQmlComponent(_designSpaceQuickView->engine());
     int x = qrand() % 400;
     int y = qrand() % 400;
-    _qmlComponent->setData(QString("import QtQuick 2.0\nimport QtModeling.Uml 1.0\n\n%1 { x: %2; y: %3}").arg(QString(modelingObject->asQObject()->metaObject()->className()).remove(QRegularExpression("^Q"))).arg(x).arg(y).toLatin1(), QUrl());
+    _qmlComponent->setData(QString("import QtQuick 2.0\nimport QtModeling.Uml 1.0\n\n%1 { x: %2; y: %3}").arg(QString(modelingObject->asQModelingObject()->metaObject()->className()).remove(QRegularExpression("^Q"))).arg(x).arg(y).toLatin1(), QUrl());
 
     QQuickItem *item = 0;
     if (_qmlComponent->isError()) {
@@ -557,8 +558,8 @@ void MainWindow::addToDesignSpaceView(QModelingElement *modelingObject, QQuickIt
         }
     }
 
-    foreach (QObject *child, modelingObject->asQObject()->children())
-        addToDesignSpaceView(dynamic_cast<QModelingElement *>(qModelingObject(child)));
+    foreach (QObject *child, modelingObject->asQModelingObject()->children())
+        addToDesignSpaceView(dynamic_cast<QModelingElement *>(qModelingElement(child)));
 
     _qmlComponent->deleteLater();
 }
@@ -570,7 +571,7 @@ void MainWindow::addToPareto(QModelingElement *modelingObject, int pos)
     _qmlComponent = new QQmlComponent(_paretoFrontQuickView->engine());
     int x = qrand() % 400;
     int y = qrand() % 400;
-    _qmlComponent->setData(QString("import QtQuick 2.0\nimport QtModeling.Uml 1.0\n\n%1 { x: %2; y: %3}").arg(QString(modelingObject->asQObject()->metaObject()->className()).remove(QRegularExpression("^Q"))).arg(x).arg(y).toLatin1(), QUrl());
+    _qmlComponent->setData(QString("import QtQuick 2.0\nimport QtModeling.Uml 1.0\n\n%1 { x: %2; y: %3}").arg(QString(modelingObject->asQModelingObject()->metaObject()->className()).remove(QRegularExpression("^Q"))).arg(x).arg(y).toLatin1(), QUrl());
 
     QQuickItem *item = 0;
     if (_qmlComponent->isError()) {
@@ -582,8 +583,8 @@ void MainWindow::addToPareto(QModelingElement *modelingObject, int pos)
         }
     }
 
-    foreach (QObject *child, modelingObject->asQObject()->children())
-        addToPareto(dynamic_cast<QModelingElement *>(qModelingObject(child)), pos);
+    foreach (QObject *child, modelingObject->asQModelingObject()->children())
+        addToPareto(dynamic_cast<QModelingElement *>(qModelingElement(child)), pos);
 
     _qmlComponent->deleteLater();
 }

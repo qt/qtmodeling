@@ -45,7 +45,6 @@
 
 #include <QtUml/QUmlElement>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -58,10 +57,10 @@ class QUmlTemplateSignature;
 class Q_UML_EXPORT QUmlTemplateParameter : public QUmlElement
 {
 public:
-    explicit QUmlTemplateParameter(bool createQObject = true);
+    explicit QUmlTemplateParameter(bool createQModelingObject = true);
     virtual ~QUmlTemplateParameter();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
     QUmlParameterableElement *default_() const;
@@ -81,9 +80,6 @@ protected:
     QUmlParameterableElement *_ownedParameteredElement;
     QUmlParameterableElement *_parameteredElement;
     QUmlTemplateSignature *_signature;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

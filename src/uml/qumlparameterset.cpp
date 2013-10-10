@@ -59,24 +59,22 @@
 
     \brief A parameter set is an element that provides alternative sets of inputs or outputs that a behavior may use.
  */
-QUmlParameterSet::QUmlParameterSet(bool createQObject)
+QUmlParameterSet::QUmlParameterSet(bool createQModelingObject)
 {
-    if (createQObject)
-        _qObject = new QUmlParameterSetObject(this);
-    setGroupProperties();
-    setPropertyData();
+    if (createQModelingObject)
+        _qModelingObject = qobject_cast<QModelingObject *>(new QUmlParameterSetObject(this));
 }
 
 QUmlParameterSet::~QUmlParameterSet()
 {
-    if (!deletingFromQObject) {
-        if (_qObject)
-            _qObject->setProperty("deletingFromModelingObject", true);
-        delete _qObject;
+    if (!deletingFromQModelingObject) {
+        if (_qModelingObject)
+            _qModelingObject->setProperty("deletingFromModelingObject", true);
+        delete _qModelingObject;
     }
 }
 
-QModelingObject *QUmlParameterSet::clone() const
+QModelingElement *QUmlParameterSet::clone() const
 {
     QUmlParameterSet *c = new QUmlParameterSet;
     foreach (QUmlComment *element, ownedComments())
@@ -112,9 +110,9 @@ void QUmlParameterSet::addCondition(QUmlConstraint *condition)
 
     if (!_conditions.contains(condition)) {
         _conditions.insert(condition);
-        if (condition && condition->asQObject() && this->asQObject())
-            QObject::connect(condition->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeCondition(QObject *)));
-        condition->asQObject()->setParent(this->asQObject());
+        if (condition && condition->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(condition->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeCondition(QObject *)));
+        condition->asQModelingObject()->setParent(this->asQModelingObject());
 
         // Adjust subsetted properties
         addOwnedElement(condition);
@@ -127,8 +125,8 @@ void QUmlParameterSet::removeCondition(QUmlConstraint *condition)
 
     if (_conditions.contains(condition)) {
         _conditions.remove(condition);
-        if (condition->asQObject())
-            condition->asQObject()->setParent(0);
+        if (condition->asQModelingObject())
+            condition->asQModelingObject()->setParent(0);
 
         // Adjust subsetted properties
         removeOwnedElement(condition);
@@ -151,8 +149,8 @@ void QUmlParameterSet::addParameter(QUmlParameter *parameter)
 
     if (!_parameters.contains(parameter)) {
         _parameters.insert(parameter);
-        if (parameter && parameter->asQObject() && this->asQObject())
-            QObject::connect(parameter->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeParameter(QObject *)));
+        if (parameter && parameter->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(parameter->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeParameter(QObject *)));
 
         // Adjust opposite properties
         if (parameter) {
@@ -173,44 +171,5 @@ void QUmlParameterSet::removeParameter(QUmlParameter *parameter)
             parameter->removeParameterSet(this);
         }
     }
-}
-
-void QUmlParameterSet::setGroupProperties()
-{
-    const QMetaObject *metaObject = _qObject->metaObject();
-
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
-    _groupProperties.insert(QStringLiteral("QUmlParameterSet"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("conditions"))));
-    _groupProperties.insert(QStringLiteral("QUmlParameterSet"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("parameters"))));
-}
-
-void QUmlParameterSet::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameterSet")][QStringLiteral("conditions")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameterSet")][QStringLiteral("conditions")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlParameterSet");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameterSet")][QStringLiteral("conditions")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameterSet")][QStringLiteral("conditions")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameterSet")][QStringLiteral("conditions")][QtModeling::DocumentationRole] = QStringLiteral("Constraint that should be satisfied for the owner of the parameters in an input parameter set to start execution using the values provided for those parameters, or the owner of the parameters in an output parameter set to end execution providing the values for those parameters, if all preconditions and conditions on input parameter sets were satisfied.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameterSet")][QStringLiteral("conditions")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameterSet")][QStringLiteral("conditions")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameterSet")][QStringLiteral("conditions")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameterSet")][QStringLiteral("parameters")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameterSet")][QStringLiteral("parameters")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlParameterSet");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameterSet")][QStringLiteral("parameters")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameterSet")][QStringLiteral("parameters")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameterSet")][QStringLiteral("parameters")][QtModeling::DocumentationRole] = QStringLiteral("Parameters in the parameter set.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameterSet")][QStringLiteral("parameters")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameterSet")][QStringLiteral("parameters")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameterSet")][QStringLiteral("parameters")][QtModeling::OppositeEndRole] = QStringLiteral("Parameter-parameterSet");
-
 }
 

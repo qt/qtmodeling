@@ -45,7 +45,6 @@
 
 #include <QtUml/QUmlPin>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -55,16 +54,13 @@ QT_MODULE(QtUml)
 class Q_UML_EXPORT QUmlInputPin : public QUmlPin
 {
 public:
-    explicit QUmlInputPin(bool createQObject = true);
+    explicit QUmlInputPin(bool createQModelingObject = true);
     virtual ~QUmlInputPin();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
 
 protected:
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

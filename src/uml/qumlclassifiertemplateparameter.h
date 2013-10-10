@@ -45,7 +45,6 @@
 
 #include <QtUml/QUmlTemplateParameter>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -57,10 +56,10 @@ class QUmlClassifier;
 class Q_UML_EXPORT QUmlClassifierTemplateParameter : public QUmlTemplateParameter
 {
 public:
-    explicit QUmlClassifierTemplateParameter(bool createQObject = true);
+    explicit QUmlClassifierTemplateParameter(bool createQModelingObject = true);
     virtual ~QUmlClassifierTemplateParameter();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
     bool allowSubstitutable() const;
@@ -75,9 +74,6 @@ protected:
     bool _allowSubstitutable;
     QSet<QUmlClassifier *> _constrainingClassifiers;
     QUmlClassifier *_parameteredElement;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlconstraintobject_p.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlConstraint>
 #include <QtUml/QUmlComment>
@@ -54,16 +55,18 @@
 
 QT_BEGIN_NAMESPACE
 
-QUmlConstraintObject::QUmlConstraintObject(QUmlConstraint *qModelingObject)
+QUmlConstraintObject::QUmlConstraintObject(QUmlConstraint *qModelingElement)
 {
-    setProperty("modelingObject", QVariant::fromValue(static_cast<QModelingObject *>(qModelingObject)));
+    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(qModelingElement)));
+    setGroupProperties();
+    setPropertyData();
 }
 
 QUmlConstraintObject::~QUmlConstraintObject()
 {
     if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingobjectproperty_cast<QUmlConstraint *>(this)->deletingFromQObject = true;
-        delete qmodelingobjectproperty_cast<QUmlComment *>(this);
+        qmodelingelementproperty_cast<QUmlConstraint *>(this)->deletingFromQModelingObject = true;
+        delete qmodelingelementproperty_cast<QUmlComment *>(this);
     }
 }
 
@@ -72,43 +75,43 @@ QUmlConstraintObject::~QUmlConstraintObject()
 const QSet<QObject *> QUmlConstraintObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlConstraint *>(this)->ownedComments())
-        set.insert(element->asQObject());
+    foreach (QUmlComment *element, qmodelingelementproperty_cast<QUmlConstraint *>(this)->ownedComments())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlConstraintObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlConstraint *>(this)->ownedElements())
-        set.insert(element->asQObject());
+    foreach (QUmlElement *element, qmodelingelementproperty_cast<QUmlConstraint *>(this)->ownedElements())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 QObject *QUmlConstraintObject::owner() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlConstraint *>(this)->owner())
+    if (!qmodelingelementproperty_cast<QUmlConstraint *>(this)->owner())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlConstraint *>(this)->owner()->asQObject();
+        return qmodelingelementproperty_cast<QUmlConstraint *>(this)->owner()->asQModelingObject();
 }
 
 // OWNED ATTRIBUTES [ParameterableElement]
 
 QObject *QUmlConstraintObject::owningTemplateParameter() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlConstraint *>(this)->owningTemplateParameter())
+    if (!qmodelingelementproperty_cast<QUmlConstraint *>(this)->owningTemplateParameter())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlConstraint *>(this)->owningTemplateParameter()->asQObject();
+        return qmodelingelementproperty_cast<QUmlConstraint *>(this)->owningTemplateParameter()->asQModelingObject();
 }
 
 QObject *QUmlConstraintObject::templateParameter() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlConstraint *>(this)->templateParameter())
+    if (!qmodelingelementproperty_cast<QUmlConstraint *>(this)->templateParameter())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlConstraint *>(this)->templateParameter()->asQObject();
+        return qmodelingelementproperty_cast<QUmlConstraint *>(this)->templateParameter()->asQModelingObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -116,42 +119,42 @@ QObject *QUmlConstraintObject::templateParameter() const
 const QSet<QObject *> QUmlConstraintObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlConstraint *>(this)->clientDependencies())
-        set.insert(element->asQObject());
+    foreach (QUmlDependency *element, qmodelingelementproperty_cast<QUmlConstraint *>(this)->clientDependencies())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 QString QUmlConstraintObject::name() const
 {
-    return qmodelingobjectproperty_cast<QUmlConstraint *>(this)->name();
+    return qmodelingelementproperty_cast<QUmlConstraint *>(this)->name();
 }
 
 QObject *QUmlConstraintObject::nameExpression() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlConstraint *>(this)->nameExpression())
+    if (!qmodelingelementproperty_cast<QUmlConstraint *>(this)->nameExpression())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlConstraint *>(this)->nameExpression()->asQObject();
+        return qmodelingelementproperty_cast<QUmlConstraint *>(this)->nameExpression()->asQModelingObject();
 }
 
 QObject *QUmlConstraintObject::namespace_() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlConstraint *>(this)->namespace_())
+    if (!qmodelingelementproperty_cast<QUmlConstraint *>(this)->namespace_())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlConstraint *>(this)->namespace_()->asQObject();
+        return qmodelingelementproperty_cast<QUmlConstraint *>(this)->namespace_()->asQModelingObject();
 }
 
 QString QUmlConstraintObject::qualifiedName() const
 {
-    return qmodelingobjectproperty_cast<QUmlConstraint *>(this)->qualifiedName();
+    return qmodelingelementproperty_cast<QUmlConstraint *>(this)->qualifiedName();
 }
 
 // OWNED ATTRIBUTES [PackageableElement]
 
 QtUml::VisibilityKind QUmlConstraintObject::visibility() const
 {
-    return qmodelingobjectproperty_cast<QUmlConstraint *>(this)->visibility();
+    return qmodelingelementproperty_cast<QUmlConstraint *>(this)->visibility();
 }
 
 // OWNED ATTRIBUTES [Constraint]
@@ -159,25 +162,25 @@ QtUml::VisibilityKind QUmlConstraintObject::visibility() const
 const QList<QObject *> QUmlConstraintObject::constrainedElements() const
 {
     QList<QObject *> list;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlConstraint *>(this)->constrainedElements())
-        list.append(element->asQObject());
+    foreach (QUmlElement *element, qmodelingelementproperty_cast<QUmlConstraint *>(this)->constrainedElements())
+        list.append(element->asQModelingObject());
     return list;
 }
 
 QObject *QUmlConstraintObject::context() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlConstraint *>(this)->context())
+    if (!qmodelingelementproperty_cast<QUmlConstraint *>(this)->context())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlConstraint *>(this)->context()->asQObject();
+        return qmodelingelementproperty_cast<QUmlConstraint *>(this)->context()->asQModelingObject();
 }
 
 QObject *QUmlConstraintObject::specification() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlConstraint *>(this)->specification())
+    if (!qmodelingelementproperty_cast<QUmlConstraint *>(this)->specification())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlConstraint *>(this)->specification()->asQObject();
+        return qmodelingelementproperty_cast<QUmlConstraint *>(this)->specification()->asQModelingObject();
 }
 
 // OPERATIONS [Element]
@@ -185,26 +188,26 @@ QObject *QUmlConstraintObject::specification() const
 QSet<QObject *> QUmlConstraintObject::allOwnedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlConstraint *>(this)->allOwnedElements())
-        set.insert(element->asQObject());
+    foreach (QUmlElement *element, qmodelingelementproperty_cast<QUmlConstraint *>(this)->allOwnedElements())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 bool QUmlConstraintObject::mustBeOwned() const
 {
-    return qmodelingobjectproperty_cast<QUmlConstraint *>(this)->mustBeOwned();
+    return qmodelingelementproperty_cast<QUmlConstraint *>(this)->mustBeOwned();
 }
 
 // OPERATIONS [ParameterableElement]
 
 bool QUmlConstraintObject::isCompatibleWith(QObject *p) const
 {
-    return qmodelingobjectproperty_cast<QUmlConstraint *>(this)->isCompatibleWith(qmodelingobjectproperty_cast<QUmlParameterableElement *>(p));
+    return qmodelingelementproperty_cast<QUmlConstraint *>(this)->isCompatibleWith(qmodelingelementproperty_cast<QUmlParameterableElement *>(p));
 }
 
 bool QUmlConstraintObject::isTemplateParameter() const
 {
-    return qmodelingobjectproperty_cast<QUmlConstraint *>(this)->isTemplateParameter();
+    return qmodelingelementproperty_cast<QUmlConstraint *>(this)->isTemplateParameter();
 }
 
 // OPERATIONS [NamedElement]
@@ -212,131 +215,197 @@ bool QUmlConstraintObject::isTemplateParameter() const
 QList<QObject *> QUmlConstraintObject::allNamespaces() const
 {
     QList<QObject *> set;
-    foreach (QUmlNamespace *element, qmodelingobjectproperty_cast<QUmlConstraint *>(this)->allNamespaces())
-        set.append(element->asQObject());
+    foreach (QUmlNamespace *element, qmodelingelementproperty_cast<QUmlConstraint *>(this)->allNamespaces())
+        set.append(element->asQModelingObject());
     return set;
 }
 
 QSet<QObject *> QUmlConstraintObject::allOwningPackages() const
 {
     QSet<QObject *> set;
-    foreach (QUmlPackage *element, qmodelingobjectproperty_cast<QUmlConstraint *>(this)->allOwningPackages())
-        set.insert(element->asQObject());
+    foreach (QUmlPackage *element, qmodelingelementproperty_cast<QUmlConstraint *>(this)->allOwningPackages())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 bool QUmlConstraintObject::isDistinguishableFrom(QObject *n, QObject *ns) const
 {
-    return qmodelingobjectproperty_cast<QUmlConstraint *>(this)->isDistinguishableFrom(qmodelingobjectproperty_cast<QUmlNamedElement *>(n), qmodelingobjectproperty_cast<QUmlNamespace *>(ns));
+    return qmodelingelementproperty_cast<QUmlConstraint *>(this)->isDistinguishableFrom(qmodelingelementproperty_cast<QUmlNamedElement *>(n), qmodelingelementproperty_cast<QUmlNamespace *>(ns));
 }
 
 QString QUmlConstraintObject::separator() const
 {
-    return qmodelingobjectproperty_cast<QUmlConstraint *>(this)->separator();
+    return qmodelingelementproperty_cast<QUmlConstraint *>(this)->separator();
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Element]
 
 void QUmlConstraintObject::addOwnedComment(QObject *ownedComment)
 {
-    qmodelingobjectproperty_cast<QUmlConstraint *>(this)->addOwnedComment(qmodelingobjectproperty_cast<QUmlComment *>(ownedComment));
+    qmodelingelementproperty_cast<QUmlConstraint *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
 }
 
 void QUmlConstraintObject::removeOwnedComment(QObject *ownedComment)
 {
-    qmodelingobjectproperty_cast<QUmlConstraint *>(this)->removeOwnedComment(qmodelingobjectproperty_cast<QUmlComment *>(ownedComment));
+    qmodelingelementproperty_cast<QUmlConstraint *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
 }
 
 void QUmlConstraintObject::addOwnedElement(QObject *ownedElement)
 {
-    qmodelingobjectproperty_cast<QUmlConstraint *>(this)->addOwnedElement(qmodelingobjectproperty_cast<QUmlElement *>(ownedElement));
+    qmodelingelementproperty_cast<QUmlConstraint *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
 }
 
 void QUmlConstraintObject::removeOwnedElement(QObject *ownedElement)
 {
-    qmodelingobjectproperty_cast<QUmlConstraint *>(this)->removeOwnedElement(qmodelingobjectproperty_cast<QUmlElement *>(ownedElement));
+    qmodelingelementproperty_cast<QUmlConstraint *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
 }
 
 void QUmlConstraintObject::setOwner(QObject *owner)
 {
-    qmodelingobjectproperty_cast<QUmlConstraint *>(this)->setOwner(qmodelingobjectproperty_cast<QUmlElement *>(owner));
+    qmodelingelementproperty_cast<QUmlConstraint *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ParameterableElement]
 
 void QUmlConstraintObject::setOwningTemplateParameter(QObject *owningTemplateParameter)
 {
-    qmodelingobjectproperty_cast<QUmlConstraint *>(this)->setOwningTemplateParameter(qmodelingobjectproperty_cast<QUmlTemplateParameter *>(owningTemplateParameter));
+    qmodelingelementproperty_cast<QUmlConstraint *>(this)->setOwningTemplateParameter(qmodelingelementproperty_cast<QUmlTemplateParameter *>(owningTemplateParameter));
 }
 
 void QUmlConstraintObject::setTemplateParameter(QObject *templateParameter)
 {
-    qmodelingobjectproperty_cast<QUmlConstraint *>(this)->setTemplateParameter(qmodelingobjectproperty_cast<QUmlTemplateParameter *>(templateParameter));
+    qmodelingelementproperty_cast<QUmlConstraint *>(this)->setTemplateParameter(qmodelingelementproperty_cast<QUmlTemplateParameter *>(templateParameter));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [NamedElement]
 
 void QUmlConstraintObject::addClientDependency(QObject *clientDependency)
 {
-    qmodelingobjectproperty_cast<QUmlConstraint *>(this)->addClientDependency(qmodelingobjectproperty_cast<QUmlDependency *>(clientDependency));
+    qmodelingelementproperty_cast<QUmlConstraint *>(this)->addClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
 }
 
 void QUmlConstraintObject::removeClientDependency(QObject *clientDependency)
 {
-    qmodelingobjectproperty_cast<QUmlConstraint *>(this)->removeClientDependency(qmodelingobjectproperty_cast<QUmlDependency *>(clientDependency));
+    qmodelingelementproperty_cast<QUmlConstraint *>(this)->removeClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
 }
 
 void QUmlConstraintObject::setName(QString name)
 {
-    qmodelingobjectproperty_cast<QUmlConstraint *>(this)->setName(name);
+    qmodelingelementproperty_cast<QUmlConstraint *>(this)->setName(name);
 }
 
 void QUmlConstraintObject::setNameExpression(QObject *nameExpression)
 {
-    qmodelingobjectproperty_cast<QUmlConstraint *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
+    qmodelingelementproperty_cast<QUmlConstraint *>(this)->setNameExpression(qmodelingelementproperty_cast<QUmlStringExpression *>(nameExpression));
 }
 
 void QUmlConstraintObject::setNamespace(QObject *namespace_)
 {
-    qmodelingobjectproperty_cast<QUmlConstraint *>(this)->setNamespace(qmodelingobjectproperty_cast<QUmlNamespace *>(namespace_));
+    qmodelingelementproperty_cast<QUmlConstraint *>(this)->setNamespace(qmodelingelementproperty_cast<QUmlNamespace *>(namespace_));
 }
 
 void QUmlConstraintObject::setQualifiedName(QString qualifiedName)
 {
-    qmodelingobjectproperty_cast<QUmlConstraint *>(this)->setQualifiedName(qualifiedName);
+    qmodelingelementproperty_cast<QUmlConstraint *>(this)->setQualifiedName(qualifiedName);
 }
 // SLOTS FOR OWNED ATTRIBUTES [PackageableElement]
 
 void QUmlConstraintObject::setVisibility(QtUml::VisibilityKind visibility)
 {
-    qmodelingobjectproperty_cast<QUmlConstraint *>(this)->setVisibility(visibility);
+    qmodelingelementproperty_cast<QUmlConstraint *>(this)->setVisibility(visibility);
 }
 
 void QUmlConstraintObject::unsetVisibility()
 {
-    qmodelingobjectproperty_cast<QUmlConstraint *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("visibility"));
+    Q_D(QModelingObject);
+    d->modifiedResettableProperties.removeAll(QStringLiteral("visibility"));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Constraint]
 
 void QUmlConstraintObject::addConstrainedElement(QObject *constrainedElement)
 {
-    qmodelingobjectproperty_cast<QUmlConstraint *>(this)->addConstrainedElement(qmodelingobjectproperty_cast<QUmlElement *>(constrainedElement));
+    qmodelingelementproperty_cast<QUmlConstraint *>(this)->addConstrainedElement(qmodelingelementproperty_cast<QUmlElement *>(constrainedElement));
 }
 
 void QUmlConstraintObject::removeConstrainedElement(QObject *constrainedElement)
 {
-    qmodelingobjectproperty_cast<QUmlConstraint *>(this)->removeConstrainedElement(qmodelingobjectproperty_cast<QUmlElement *>(constrainedElement));
+    qmodelingelementproperty_cast<QUmlConstraint *>(this)->removeConstrainedElement(qmodelingelementproperty_cast<QUmlElement *>(constrainedElement));
 }
 
 void QUmlConstraintObject::setContext(QObject *context)
 {
-    qmodelingobjectproperty_cast<QUmlConstraint *>(this)->setContext(qmodelingobjectproperty_cast<QUmlNamespace *>(context));
+    qmodelingelementproperty_cast<QUmlConstraint *>(this)->setContext(qmodelingelementproperty_cast<QUmlNamespace *>(context));
 }
 
 void QUmlConstraintObject::setSpecification(QObject *specification)
 {
-    qmodelingobjectproperty_cast<QUmlConstraint *>(this)->setSpecification(qmodelingobjectproperty_cast<QUmlValueSpecification *>(specification));
+    qmodelingelementproperty_cast<QUmlConstraint *>(this)->setSpecification(qmodelingelementproperty_cast<QUmlValueSpecification *>(specification));
+}
+
+
+void QUmlConstraintObject::setGroupProperties()
+{
+    Q_D(QModelingObject);
+    const QMetaObject *metaObject = this->metaObject();
+
+    d->propertyGroups << QStringLiteral("QObject");
+    d->groupProperties.insert(QStringLiteral("QObject"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("objectName"))));
+
+    d->propertyGroups << QStringLiteral("QUmlElement");
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
+
+    d->propertyGroups << QStringLiteral("QUmlParameterableElement");
+    d->groupProperties.insert(QStringLiteral("QUmlParameterableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owningTemplateParameter"))));
+    d->groupProperties.insert(QStringLiteral("QUmlParameterableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("templateParameter"))));
+
+    d->propertyGroups << QStringLiteral("QUmlNamedElement");
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
+
+    d->propertyGroups << QStringLiteral("QUmlPackageableElement");
+    d->groupProperties.insert(QStringLiteral("QUmlPackageableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
+
+    d->propertyGroups << QStringLiteral("QUmlConstraint");
+    d->groupProperties.insert(QStringLiteral("QUmlConstraint"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("constrainedElements"))));
+    d->groupProperties.insert(QStringLiteral("QUmlConstraint"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("context"))));
+    d->groupProperties.insert(QStringLiteral("QUmlConstraint"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("specification"))));
+}
+
+void QUmlConstraintObject::setPropertyData()
+{
+    Q_DECLARE_METAPROPERTY_INFO(QUmlConstraint, constrainedElements, AggregationRole, QStringLiteral("none"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlConstraint, constrainedElements, PropertyClassRole, QStringLiteral("QUmlConstraint"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlConstraint, constrainedElements, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlConstraint, constrainedElements, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlConstraint, constrainedElements, DocumentationRole, QStringLiteral("The ordered set of Elements referenced by this Constraint."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlConstraint, constrainedElements, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlConstraint, constrainedElements, SubsettedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlConstraint, constrainedElements, OppositeEndRole, QStringLiteral(""));
+
+    Q_DECLARE_METAPROPERTY_INFO(QUmlConstraint, context, AggregationRole, QStringLiteral("none"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlConstraint, context, PropertyClassRole, QStringLiteral("QUmlConstraint"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlConstraint, context, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlConstraint, context, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlConstraint, context, DocumentationRole, QStringLiteral("Specifies the namespace that owns the NamedElement."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlConstraint, context, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlConstraint, context, SubsettedPropertiesRole, QStringLiteral("NamedElement-namespace"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlConstraint, context, OppositeEndRole, QStringLiteral("Namespace-ownedRule"));
+
+    Q_DECLARE_METAPROPERTY_INFO(QUmlConstraint, specification, AggregationRole, QStringLiteral("composite"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlConstraint, specification, PropertyClassRole, QStringLiteral("QUmlConstraint"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlConstraint, specification, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlConstraint, specification, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlConstraint, specification, DocumentationRole, QStringLiteral("A condition that must be true when evaluated in order for the constraint to be satisfied."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlConstraint, specification, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlConstraint, specification, SubsettedPropertiesRole, QStringLiteral("Element-ownedElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlConstraint, specification, OppositeEndRole, QStringLiteral(""));
+
 }
 
 QT_END_NAMESPACE

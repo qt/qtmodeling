@@ -43,7 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtCore/QObject>
+#include <QtModeling/QModelingObject>
 
 #include <QtUml/QtUmlNamespace>
 
@@ -54,9 +54,12 @@ QT_BEGIN_NAMESPACE
 QT_MODULE(QtUml)
 
 class QUmlSequenceNode;
-class Q_UML_EXPORT QUmlSequenceNodeObject : public QObject
+class QModelingObjectPrivate;
+class Q_UML_EXPORT QUmlSequenceNodeObject : public QModelingObject
 {
     Q_OBJECT
+    Q_DISABLE_COPY(QUmlSequenceNodeObject)
+    Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [Element]
     Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
@@ -122,7 +125,7 @@ class Q_UML_EXPORT QUmlSequenceNodeObject : public QObject
     Q_PROPERTY(QList<QObject *> executableNodes READ executableNodes)
 
 public:
-    Q_INVOKABLE explicit QUmlSequenceNodeObject(QUmlSequenceNode *qModelingObject);
+    Q_INVOKABLE explicit QUmlSequenceNodeObject(QUmlSequenceNode *qModelingElement);
     virtual ~QUmlSequenceNodeObject();
 
     // Owned attributes [Element]
@@ -305,6 +308,10 @@ public Q_SLOTS:
     // Slots for owned attributes [SequenceNode]
     void addExecutableNode(QObject *executableNode);
     void removeExecutableNode(QObject *executableNode);
+
+protected:
+    virtual void setGroupProperties();
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

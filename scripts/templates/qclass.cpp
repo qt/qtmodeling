@@ -67,7 +67,7 @@
 
     \brief ${class.findvalue("ownedComment/body/text()")}
  */
-Q${namespace}${className}::Q${namespace}${className}([%- IF class.findvalue("@isAbstract") != "true" %]bool createQObject[% END %])
+Q${namespace}${className}::Q${namespace}${className}([%- IF class.findvalue("@isAbstract") != "true" %]bool createQModelingObject[% END %])
 [%- SET found = "false" -%]
 [%- FOREACH superclass IN generalization -%]
 [%- SET superclassName = superclass.findvalue('@general') -%]
@@ -118,25 +118,23 @@ Q${namespace}${className}::Q${namespace}${className}([%- IF class.findvalue("@is
 [%- END %]
 {
 [%- IF class.findvalue("@isAbstract") != "true" %]
-    if (createQObject)
-        _qObject = new Q${namespace}${className}Object(this);
+    if (createQModelingObject)
+        _qModelingObject = qobject_cast<QModelingObject *>(new Q${namespace}${className}Object(this));
 [%- END %]
-    setGroupProperties();
-    setPropertyData();
 }
 
 Q${namespace}${className}::~Q${namespace}${className}()
 {
 [%- IF class.findvalue("@isAbstract") != "true" %]
-    if (!deletingFromQObject) {
-        if (_qObject)
-            _qObject->setProperty("deletingFromModelingObject", true);
-        delete _qObject;
+    if (!deletingFromQModelingObject) {
+        if (_qModelingObject)
+            _qModelingObject->setProperty("deletingFromModelingObject", true);
+        delete _qModelingObject;
     }
 [%- END %]
 }
 
-QModelingObject *Q${namespace}${className}::clone() const
+QModelingElement *Q${namespace}${className}::clone() const
 {
     Q${namespace}${className} *c = new Q${namespace}${className};
 [%- visitedClasses = [] -%]
@@ -197,10 +195,10 @@ void Q${namespace}${className}::add${attributeName}(${qtType.remove("QSet<").rem
     if (!_${PLURALFORM(qtAttribute, attribute)}.contains(${qtAttribute})) {
         _${PLURALFORM(qtAttribute, attribute)}.[% IF qtType.match("QList") %]append[% ELSE %]insert[% END %](${qtAttribute});
         [%- IF qtType.match('\*') %]
-        if (${qtAttribute} && ${qtAttribute}->asQObject() && this->asQObject())
-            QObject::connect(${qtAttribute}->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(remove${attributeName}(QObject *)));
+        if (${qtAttribute} && ${qtAttribute}->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(${qtAttribute}->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(remove${attributeName}(QObject *)));
             [%- IF attribute.findvalue("@aggregation") == "composite" %]
-        ${qtAttribute}->asQObject()->setParent(this->asQObject());
+        ${qtAttribute}->asQModelingObject()->setParent(this->asQModelingObject());
             [%- END -%]
         [%- END %]
     [%- END %]
@@ -258,8 +256,8 @@ void Q${namespace}${className}::remove${attributeName}(${qtType.remove("QSet<").
     if (_${PLURALFORM(qtAttribute, attribute)}.contains(${qtAttribute})) {
         _${PLURALFORM(qtAttribute, attribute)}.[% IF qtType.match("QList") %]removeAll[% ELSE %]remove[% END %](${qtAttribute});
         [%- IF attribute.findvalue("@aggregation") == "composite" %]
-        if (${qtAttribute}->asQObject())
-            ${qtAttribute}->asQObject()->setParent(0);
+        if (${qtAttribute}->asQModelingObject())
+            ${qtAttribute}->asQModelingObject()->setParent(0);
         [%- END -%]
     [%- END %]
         [%- found = "false" -%]
@@ -335,13 +333,13 @@ void Q${namespace}${className}::set${attributeName.remove("^Is")}([% IF !qtType.
         [%- ELSE %]
         _${PLURALFORM(qtAttribute, attribute)} = ${qtAttribute};
 [%- IF attribute.findvalue("defaultValue/@xmi:type") != "" %]
-        _modifiedResettableProperties << QStringLiteral("${attributeName.lcfirst}");
+        _qModelingObject->modifiedResettableProperties() << QStringLiteral("${attributeName.lcfirst}");
 [%- END %]
             [%- IF qtType.match('\*') %]
-        if (${qtAttribute} && ${qtAttribute}->asQObject() && this->asQObject())
-            QObject::connect(${qtAttribute}->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(set${attributeName}()));
+        if (${qtAttribute} && ${qtAttribute}->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(${qtAttribute}->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(set${attributeName}()));
                 [%- IF attribute.findvalue("@aggregation") == "composite" %]
-        ${qtAttribute}->asQObject()->setParent(this->asQObject());
+        ${qtAttribute}->asQModelingObject()->setParent(this->asQModelingObject());
                 [%- END -%]
             [%- END %]
         [%- END %]
@@ -403,43 +401,4 @@ ${parameter.findvalue("@name")}
     [%- END %]
 }
 [%- END %]
-
-void Q${namespace}${className}::setGroupProperties()
-{
-    const QMetaObject *metaObject = _qObject->metaObject();
-
-    _propertyGroups << QStringLiteral("QObject");
-    _groupProperties.insert(QStringLiteral("QObject"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("objectName"))));
-[%- visitedClasses = [] -%]
-[%- SET_GROUP_PROPERTIES(class, visitedClasses, redefinedProperties) %]
-}
-
-void Q${namespace}${className}::setPropertyData()
-{
-[%- FOREACH attribute = class.findnodes("ownedAttribute") -%]
-[%- SET qtAttribute = QT_ATTRIBUTE(attribute) -%]
-[%- SET association = attribute.findvalue("@association") -%]
-[%- IF attribute.findvalue("@aggregation") == "composite" %]
-    QModelingObject::propertyDataHash[QStringLiteral("Q${namespace}${className}")][QStringLiteral("${PLURALFORM(qtAttribute, attribute)}")][QtModeling::AggregationRole] = QStringLiteral("composite");
-[%- ELSE %]
-    QModelingObject::propertyDataHash[QStringLiteral("Q${namespace}${className}")][QStringLiteral("${PLURALFORM(qtAttribute, attribute)}")][QtModeling::AggregationRole] = QStringLiteral("none");
-[%- END %]
-    QModelingObject::propertyDataHash[QStringLiteral("Q${namespace}${className}")][QStringLiteral("${PLURALFORM(qtAttribute, attribute)}")][QtModeling::PropertyClassRole] = QStringLiteral("Q${namespace}${className}");
-    QModelingObject::propertyDataHash[QStringLiteral("Q${namespace}${className}")][QStringLiteral("${PLURALFORM(qtAttribute, attribute)}")][QtModeling::IsDerivedRole] = [% IF attribute.findvalue("@isDerived") == "true" %]true[% ELSE %]false[% END %];
-    QModelingObject::propertyDataHash[QStringLiteral("Q${namespace}${className}")][QStringLiteral("${PLURALFORM(qtAttribute, attribute)}")][QtModeling::IsDerivedUnionRole] = [% IF attribute.findvalue("@isDerivedUnion") == "true" %]true[% ELSE %]false[% END %];
-    QModelingObject::propertyDataHash[QStringLiteral("Q${namespace}${className}")][QStringLiteral("${PLURALFORM(qtAttribute, attribute)}")][QtModeling::DocumentationRole] = QStringLiteral("${attribute.findvalue("ownedComment/body/text()")}");
-    QModelingObject::propertyDataHash[QStringLiteral("Q${namespace}${className}")][QStringLiteral("${PLURALFORM(qtAttribute, attribute)}")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("${attribute.findvalue("@redefinedProperty")}");
-    QModelingObject::propertyDataHash[QStringLiteral("Q${namespace}${className}")][QStringLiteral("${PLURALFORM(qtAttribute, attribute)}")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("${attribute.findvalue("@subsettedProperty")}");
-    QModelingObject::propertyDataHash[QStringLiteral("Q${namespace}${className}")][QStringLiteral("${PLURALFORM(qtAttribute, attribute)}")][QtModeling::OppositeEndRole] = QStringLiteral("
-[%- IF association != "" -%]
-[%- FOREACH memberEnd = xmi.findvalue("//packagedElement[@xmi:type=\"uml:Association\" and @name=\"${association}\"]/@memberEnd").split(' ') -%]
-[%- NEXT IF memberEnd == className.replace('$', "-${attribute.findvalue(\"@name\")}") -%]
-[%- SET oppositeProperty = xmi.findnodes("//packagedElement[@xmi:type=\"uml:Class\" and @name=\"${memberEnd.split('-').0}\"]/ownedAttribute[@name=\"${memberEnd.split('-').1}\"]") -%]
-[%- IF oppositeProperty.findvalue("@name") != "" -%]${oppositeProperty.findvalue("@xmi:id")}[%- END -%]
-[%- END -%]
-[%- END -%]
-");
-
-[%- END %]
-}
 

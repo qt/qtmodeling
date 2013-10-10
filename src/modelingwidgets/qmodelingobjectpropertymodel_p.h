@@ -52,6 +52,7 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtModelingWidgets)
 
+class QModelingObject;
 class QMetaModelingObject;
 
 class Q_MODELINGWIDGETS_EXPORT QModelingObjectPropertyModelPrivate : public QAbstractItemModelPrivate
@@ -62,7 +63,7 @@ public:
     explicit QModelingObjectPropertyModelPrivate();
 
     QModelIndex modelingObjectIndex;
-    QObject *qObject;
+    QModelingObject *qObject;
     const QMetaObject *modelingMetaObject;
     QStringList propertyGroups;
     QMultiHash<QString, QString *> propertiesForGroup;

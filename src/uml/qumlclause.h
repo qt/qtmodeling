@@ -45,7 +45,6 @@
 
 #include <QtUml/QUmlElement>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -58,10 +57,10 @@ class QUmlOutputPin;
 class Q_UML_EXPORT QUmlClause : public QUmlElement
 {
 public:
-    explicit QUmlClause(bool createQObject = true);
+    explicit QUmlClause(bool createQModelingObject = true);
     virtual ~QUmlClause();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
     const QSet<QUmlExecutableNode *> bodies() const;
@@ -89,9 +88,6 @@ protected:
     QSet<QUmlClause *> _predecessorClauses;
     QSet<QUmlClause *> _successorClauses;
     QSet<QUmlExecutableNode *> _tests;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

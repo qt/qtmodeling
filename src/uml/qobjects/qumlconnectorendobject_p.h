@@ -43,7 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtCore/QObject>
+#include <QtModeling/QModelingObject>
 
 QT_BEGIN_HEADER
 
@@ -52,9 +52,12 @@ QT_BEGIN_NAMESPACE
 QT_MODULE(QtUml)
 
 class QUmlConnectorEnd;
-class Q_UML_EXPORT QUmlConnectorEndObject : public QObject
+class QModelingObjectPrivate;
+class Q_UML_EXPORT QUmlConnectorEndObject : public QModelingObject
 {
     Q_OBJECT
+    Q_DISABLE_COPY(QUmlConnectorEndObject)
+    Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [Element]
     Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
@@ -75,7 +78,7 @@ class Q_UML_EXPORT QUmlConnectorEndObject : public QObject
     Q_PROPERTY(QObject * role READ role WRITE setRole)
 
 public:
-    Q_INVOKABLE explicit QUmlConnectorEndObject(QUmlConnectorEnd *qModelingObject);
+    Q_INVOKABLE explicit QUmlConnectorEndObject(QUmlConnectorEnd *qModelingElement);
     virtual ~QUmlConnectorEndObject();
 
     // Owned attributes [Element]
@@ -134,6 +137,10 @@ public Q_SLOTS:
     void Q_DECL_HIDDEN setDefiningEnd(QObject *definingEnd = 0);
     void setPartWithPort(QObject *partWithPort = 0);
     void setRole(QObject *role = 0);
+
+protected:
+    virtual void setGroupProperties();
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

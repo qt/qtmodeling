@@ -48,7 +48,6 @@
 
 
 #include <QtUml/QtUmlNamespace>
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -64,7 +63,7 @@ class Q_UML_EXPORT QUmlObjectNode : public QUmlActivityNode, public QUmlTypedEle
 public:
     virtual ~QUmlObjectNode();
 
-    Q_DECL_HIDDEN QModelingObject *clone() const;
+    Q_DECL_HIDDEN virtual QModelingElement *clone() const;
 
     // Owned attributes
     const QSet<QUmlState *> inStates() const;
@@ -87,9 +86,6 @@ protected:
     QtUml::ObjectNodeOrderingKind _ordering;
     QUmlBehavior *_selection;
     QUmlValueSpecification *_upperBound;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

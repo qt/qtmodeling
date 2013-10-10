@@ -47,7 +47,6 @@
 #include <QtUml/QUmlBehavioralFeature>
 #include <QtUml/QUmlParameterableElement>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -66,10 +65,10 @@ class QUmlType;
 class Q_UML_EXPORT QUmlOperation : public QUmlTemplateableElement, public QUmlBehavioralFeature, public QUmlParameterableElement
 {
 public:
-    explicit QUmlOperation(bool createQObject = true);
+    explicit QUmlOperation(bool createQModelingObject = true);
     virtual ~QUmlOperation();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
     QUmlConstraint *bodyCondition() const;
@@ -126,9 +125,6 @@ protected:
     QSet<QUmlType *> _raisedExceptions;
     QSet<QUmlOperation *> _redefinedOperations;
     QUmlOperationTemplateParameter *_templateParameter;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

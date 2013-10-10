@@ -45,7 +45,6 @@
 
 #include <QtUml/QUmlAction>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -58,10 +57,10 @@ class QUmlTrigger;
 class Q_UML_EXPORT QUmlAcceptEventAction : public QUmlAction
 {
 public:
-    explicit QUmlAcceptEventAction(bool createQObject = true);
+    explicit QUmlAcceptEventAction(bool createQModelingObject = true);
     virtual ~QUmlAcceptEventAction();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
     bool isUnmarshall() const;
@@ -77,9 +76,6 @@ protected:
     bool _isUnmarshall;
     QSet<QUmlOutputPin *> _results;
     QSet<QUmlTrigger *> _triggers;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

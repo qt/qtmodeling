@@ -60,26 +60,24 @@
 
     \brief A constraint is a condition or restriction expressed in natural language text or in a machine readable language for the purpose of declaring some of the semantics of an element.
  */
-QUmlConstraint::QUmlConstraint(bool createQObject) :
+QUmlConstraint::QUmlConstraint(bool createQModelingObject) :
     _context(0),
     _specification(0)
 {
-    if (createQObject)
-        _qObject = new QUmlConstraintObject(this);
-    setGroupProperties();
-    setPropertyData();
+    if (createQModelingObject)
+        _qModelingObject = qobject_cast<QModelingObject *>(new QUmlConstraintObject(this));
 }
 
 QUmlConstraint::~QUmlConstraint()
 {
-    if (!deletingFromQObject) {
-        if (_qObject)
-            _qObject->setProperty("deletingFromModelingObject", true);
-        delete _qObject;
+    if (!deletingFromQModelingObject) {
+        if (_qModelingObject)
+            _qModelingObject->setProperty("deletingFromModelingObject", true);
+        delete _qModelingObject;
     }
 }
 
-QModelingObject *QUmlConstraint::clone() const
+QModelingElement *QUmlConstraint::clone() const
 {
     QUmlConstraint *c = new QUmlConstraint;
     foreach (QUmlComment *element, ownedComments())
@@ -121,8 +119,8 @@ void QUmlConstraint::addConstrainedElement(QUmlElement *constrainedElement)
 
     if (!_constrainedElements.contains(constrainedElement)) {
         _constrainedElements.append(constrainedElement);
-        if (constrainedElement && constrainedElement->asQObject() && this->asQObject())
-            QObject::connect(constrainedElement->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeConstrainedElement(QObject *)));
+        if (constrainedElement && constrainedElement->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(constrainedElement->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeConstrainedElement(QObject *)));
     }
 }
 
@@ -153,8 +151,8 @@ void QUmlConstraint::setContext(QUmlNamespace *context)
         // Adjust subsetted properties
 
         _context = context;
-        if (context && context->asQObject() && this->asQObject())
-            QObject::connect(context->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setContext()));
+        if (context && context->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(context->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setContext()));
 
         // Adjust subsetted properties
         setNamespace(context);
@@ -180,65 +178,14 @@ void QUmlConstraint::setSpecification(QUmlValueSpecification *specification)
         removeOwnedElement(_specification);
 
         _specification = specification;
-        if (specification && specification->asQObject() && this->asQObject())
-            QObject::connect(specification->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setSpecification()));
-        specification->asQObject()->setParent(this->asQObject());
+        if (specification && specification->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(specification->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setSpecification()));
+        specification->asQModelingObject()->setParent(this->asQModelingObject());
 
         // Adjust subsetted properties
         if (specification) {
             addOwnedElement(specification);
         }
     }
-}
-
-void QUmlConstraint::setGroupProperties()
-{
-    const QMetaObject *metaObject = _qObject->metaObject();
-
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
-    _groupProperties.insert(QStringLiteral("QUmlParameterableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owningTemplateParameter"))));
-    _groupProperties.insert(QStringLiteral("QUmlParameterableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("templateParameter"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
-    _groupProperties.insert(QStringLiteral("QUmlPackageableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
-    _groupProperties.insert(QStringLiteral("QUmlConstraint"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("constrainedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlConstraint"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("context"))));
-    _groupProperties.insert(QStringLiteral("QUmlConstraint"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("specification"))));
-}
-
-void QUmlConstraint::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConstraint")][QStringLiteral("constrainedElements")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConstraint")][QStringLiteral("constrainedElements")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlConstraint");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConstraint")][QStringLiteral("constrainedElements")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConstraint")][QStringLiteral("constrainedElements")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConstraint")][QStringLiteral("constrainedElements")][QtModeling::DocumentationRole] = QStringLiteral("The ordered set of Elements referenced by this Constraint.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConstraint")][QStringLiteral("constrainedElements")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConstraint")][QStringLiteral("constrainedElements")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConstraint")][QStringLiteral("constrainedElements")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConstraint")][QStringLiteral("context")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConstraint")][QStringLiteral("context")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlConstraint");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConstraint")][QStringLiteral("context")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConstraint")][QStringLiteral("context")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConstraint")][QStringLiteral("context")][QtModeling::DocumentationRole] = QStringLiteral("Specifies the namespace that owns the NamedElement.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConstraint")][QStringLiteral("context")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConstraint")][QStringLiteral("context")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("NamedElement-namespace");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConstraint")][QStringLiteral("context")][QtModeling::OppositeEndRole] = QStringLiteral("Namespace-ownedRule");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConstraint")][QStringLiteral("specification")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConstraint")][QStringLiteral("specification")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlConstraint");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConstraint")][QStringLiteral("specification")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConstraint")][QStringLiteral("specification")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConstraint")][QStringLiteral("specification")][QtModeling::DocumentationRole] = QStringLiteral("A condition that must be true when evaluated in order for the constraint to be satisfied.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConstraint")][QStringLiteral("specification")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConstraint")][QStringLiteral("specification")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConstraint")][QStringLiteral("specification")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
 }
 

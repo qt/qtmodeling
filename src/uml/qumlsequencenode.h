@@ -45,7 +45,6 @@
 
 #include <QtUml/QUmlStructuredActivityNode>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -57,10 +56,10 @@ class QUmlExecutableNode;
 class Q_UML_EXPORT QUmlSequenceNode : public QUmlStructuredActivityNode
 {
 public:
-    explicit QUmlSequenceNode(bool createQObject = true);
+    explicit QUmlSequenceNode(bool createQModelingObject = true);
     virtual ~QUmlSequenceNode();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
     const QList<QUmlExecutableNode *> executableNodes() const;
@@ -69,9 +68,6 @@ public:
 
 protected:
     QList<QUmlExecutableNode *> _executableNodes;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

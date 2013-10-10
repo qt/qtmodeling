@@ -46,7 +46,6 @@
 #include <QtUml/QUmlDirectedRelationship>
 #include <QtUml/QUmlPackageableElement>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -63,10 +62,10 @@ class QUmlRelationship;
 class Q_UML_EXPORT QUmlInformationFlow : public QUmlDirectedRelationship, public QUmlPackageableElement
 {
 public:
-    explicit QUmlInformationFlow(bool createQObject = true);
+    explicit QUmlInformationFlow(bool createQModelingObject = true);
     virtual ~QUmlInformationFlow();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
     const QSet<QUmlClassifier *> conveyed() const;
@@ -99,9 +98,6 @@ protected:
     QSet<QUmlActivityEdge *> _realizingActivityEdges;
     QSet<QUmlConnector *> _realizingConnectors;
     QSet<QUmlMessage *> _realizingMessages;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

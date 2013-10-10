@@ -43,7 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtCore/QObject>
+#include <QtModeling/QModelingObject>
 
 #include <QtUml/QtUmlNamespace>
 
@@ -54,9 +54,12 @@ QT_BEGIN_NAMESPACE
 QT_MODULE(QtUml)
 
 class QUmlDeploymentSpecification;
-class Q_UML_EXPORT QUmlDeploymentSpecificationObject : public QObject
+class QModelingObjectPrivate;
+class Q_UML_EXPORT QUmlDeploymentSpecificationObject : public QModelingObject
 {
     Q_OBJECT
+    Q_DISABLE_COPY(QUmlDeploymentSpecificationObject)
+    Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [Element]
     Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
@@ -126,7 +129,7 @@ class Q_UML_EXPORT QUmlDeploymentSpecificationObject : public QObject
     Q_PROPERTY(QString executionLocation READ executionLocation WRITE setExecutionLocation)
 
 public:
-    Q_INVOKABLE explicit QUmlDeploymentSpecificationObject(QUmlDeploymentSpecification *qModelingObject);
+    Q_INVOKABLE explicit QUmlDeploymentSpecificationObject(QUmlDeploymentSpecification *qModelingElement);
     virtual ~QUmlDeploymentSpecificationObject();
 
     // Owned attributes [Element]
@@ -335,6 +338,10 @@ public Q_SLOTS:
     void setDeployment(QObject *deployment = 0);
     void setDeploymentLocation(QString deploymentLocation);
     void setExecutionLocation(QString executionLocation);
+
+protected:
+    virtual void setGroupProperties();
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

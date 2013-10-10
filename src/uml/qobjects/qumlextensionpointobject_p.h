@@ -43,7 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtCore/QObject>
+#include <QtModeling/QModelingObject>
 
 #include <QtUml/QtUmlNamespace>
 
@@ -54,9 +54,12 @@ QT_BEGIN_NAMESPACE
 QT_MODULE(QtUml)
 
 class QUmlExtensionPoint;
-class Q_UML_EXPORT QUmlExtensionPointObject : public QObject
+class QModelingObjectPrivate;
+class Q_UML_EXPORT QUmlExtensionPointObject : public QModelingObject
 {
     Q_OBJECT
+    Q_DISABLE_COPY(QUmlExtensionPointObject)
+    Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [Element]
     Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
@@ -80,7 +83,7 @@ class Q_UML_EXPORT QUmlExtensionPointObject : public QObject
     Q_PROPERTY(QObject * useCase READ useCase WRITE setUseCase)
 
 public:
-    Q_INVOKABLE explicit QUmlExtensionPointObject(QUmlExtensionPoint *qModelingObject);
+    Q_INVOKABLE explicit QUmlExtensionPointObject(QUmlExtensionPoint *qModelingElement);
     virtual ~QUmlExtensionPointObject();
 
     // Owned attributes [Element]
@@ -146,6 +149,10 @@ public Q_SLOTS:
 
     // Slots for owned attributes [ExtensionPoint]
     void setUseCase(QObject *useCase = 0);
+
+protected:
+    virtual void setGroupProperties();
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

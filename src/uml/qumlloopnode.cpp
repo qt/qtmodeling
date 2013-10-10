@@ -75,27 +75,25 @@
 
     \brief A loop node is a structured activity node that represents a loop with setup, test, and body sections.
  */
-QUmlLoopNode::QUmlLoopNode(bool createQObject) :
+QUmlLoopNode::QUmlLoopNode(bool createQModelingObject) :
     QUmlStructuredActivityNode(false),
     _decider(0),
     _isTestedFirst(false)
 {
-    if (createQObject)
-        _qObject = new QUmlLoopNodeObject(this);
-    setGroupProperties();
-    setPropertyData();
+    if (createQModelingObject)
+        _qModelingObject = qobject_cast<QModelingObject *>(new QUmlLoopNodeObject(this));
 }
 
 QUmlLoopNode::~QUmlLoopNode()
 {
-    if (!deletingFromQObject) {
-        if (_qObject)
-            _qObject->setProperty("deletingFromModelingObject", true);
-        delete _qObject;
+    if (!deletingFromQModelingObject) {
+        if (_qModelingObject)
+            _qModelingObject->setProperty("deletingFromModelingObject", true);
+        delete _qModelingObject;
     }
 }
 
-QModelingObject *QUmlLoopNode::clone() const
+QModelingElement *QUmlLoopNode::clone() const
 {
     QUmlLoopNode *c = new QUmlLoopNode;
     foreach (QUmlComment *element, ownedComments())
@@ -179,8 +177,8 @@ void QUmlLoopNode::addBodyOutput(QUmlOutputPin *bodyOutput)
 
     if (!_bodyOutputs.contains(bodyOutput)) {
         _bodyOutputs.append(bodyOutput);
-        if (bodyOutput && bodyOutput->asQObject() && this->asQObject())
-            QObject::connect(bodyOutput->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeBodyOutput(QObject *)));
+        if (bodyOutput && bodyOutput->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(bodyOutput->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeBodyOutput(QObject *)));
     }
 }
 
@@ -209,8 +207,8 @@ void QUmlLoopNode::addBodyPart(QUmlExecutableNode *bodyPart)
 
     if (!_bodyParts.contains(bodyPart)) {
         _bodyParts.insert(bodyPart);
-        if (bodyPart && bodyPart->asQObject() && this->asQObject())
-            QObject::connect(bodyPart->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeBodyPart(QObject *)));
+        if (bodyPart && bodyPart->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(bodyPart->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeBodyPart(QObject *)));
     }
 }
 
@@ -239,8 +237,8 @@ void QUmlLoopNode::setDecider(QUmlOutputPin *decider)
 
     if (_decider != decider) {
         _decider = decider;
-        if (decider && decider->asQObject() && this->asQObject())
-            QObject::connect(decider->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setDecider()));
+        if (decider && decider->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(decider->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setDecider()));
     }
 }
 
@@ -260,7 +258,7 @@ void QUmlLoopNode::setTestedFirst(bool isTestedFirst)
 
     if (_isTestedFirst != isTestedFirst) {
         _isTestedFirst = isTestedFirst;
-        _modifiedResettableProperties << QStringLiteral("isTestedFirst");
+        _qModelingObject->modifiedResettableProperties() << QStringLiteral("isTestedFirst");
     }
 }
 
@@ -280,8 +278,8 @@ void QUmlLoopNode::addLoopVariable(QUmlOutputPin *loopVariable)
 
     if (!_loopVariables.contains(loopVariable)) {
         _loopVariables.append(loopVariable);
-        if (loopVariable && loopVariable->asQObject() && this->asQObject())
-            QObject::connect(loopVariable->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeLoopVariable(QObject *)));
+        if (loopVariable && loopVariable->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(loopVariable->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeLoopVariable(QObject *)));
     }
 }
 
@@ -310,9 +308,9 @@ void QUmlLoopNode::addLoopVariableInput(QUmlInputPin *loopVariableInput)
 
     if (!_loopVariableInputs.contains(loopVariableInput)) {
         _loopVariableInputs.append(loopVariableInput);
-        if (loopVariableInput && loopVariableInput->asQObject() && this->asQObject())
-            QObject::connect(loopVariableInput->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeLoopVariableInput(QObject *)));
-        loopVariableInput->asQObject()->setParent(this->asQObject());
+        if (loopVariableInput && loopVariableInput->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(loopVariableInput->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeLoopVariableInput(QObject *)));
+        loopVariableInput->asQModelingObject()->setParent(this->asQModelingObject());
     }
 }
 
@@ -322,8 +320,8 @@ void QUmlLoopNode::removeLoopVariableInput(QUmlInputPin *loopVariableInput)
 
     if (_loopVariableInputs.contains(loopVariableInput)) {
         _loopVariableInputs.removeAll(loopVariableInput);
-        if (loopVariableInput->asQObject())
-            loopVariableInput->asQObject()->setParent(0);
+        if (loopVariableInput->asQModelingObject())
+            loopVariableInput->asQModelingObject()->setParent(0);
     }
 }
 
@@ -343,9 +341,9 @@ void QUmlLoopNode::addResult(QUmlOutputPin *result)
 
     if (!_results.contains(result)) {
         _results.append(result);
-        if (result && result->asQObject() && this->asQObject())
-            QObject::connect(result->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeResult(QObject *)));
-        result->asQObject()->setParent(this->asQObject());
+        if (result && result->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(result->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeResult(QObject *)));
+        result->asQModelingObject()->setParent(this->asQModelingObject());
     }
 }
 
@@ -355,8 +353,8 @@ void QUmlLoopNode::removeResult(QUmlOutputPin *result)
 
     if (_results.contains(result)) {
         _results.removeAll(result);
-        if (result->asQObject())
-            result->asQObject()->setParent(0);
+        if (result->asQModelingObject())
+            result->asQModelingObject()->setParent(0);
     }
 }
 
@@ -376,8 +374,8 @@ void QUmlLoopNode::addSetupPart(QUmlExecutableNode *setupPart)
 
     if (!_setupParts.contains(setupPart)) {
         _setupParts.insert(setupPart);
-        if (setupPart && setupPart->asQObject() && this->asQObject())
-            QObject::connect(setupPart->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeSetupPart(QObject *)));
+        if (setupPart && setupPart->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(setupPart->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeSetupPart(QObject *)));
     }
 }
 
@@ -406,8 +404,8 @@ void QUmlLoopNode::addTest(QUmlExecutableNode *test)
 
     if (!_tests.contains(test)) {
         _tests.insert(test);
-        if (test && test->asQObject() && this->asQObject())
-            QObject::connect(test->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeTest(QObject *)));
+        if (test && test->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(test->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeTest(QObject *)));
     }
 }
 
@@ -418,146 +416,5 @@ void QUmlLoopNode::removeTest(QUmlExecutableNode *test)
     if (_tests.contains(test)) {
         _tests.remove(test);
     }
-}
-
-void QUmlLoopNode::setGroupProperties()
-{
-    const QMetaObject *metaObject = _qObject->metaObject();
-
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
-    _groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isLeaf"))));
-    _groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinitionContexts"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inGroups"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inInterruptibleRegions"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inPartitions"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inStructuredNode"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("incomings"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("outgoings"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinedNodes"))));
-    _groupProperties.insert(QStringLiteral("QUmlExecutableNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("handlers"))));
-    _groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("context"))));
-    _groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inputs"))));
-    _groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isLocallyReentrant"))));
-    _groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("localPostconditions"))));
-    _groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("localPreconditions"))));
-    _groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("outputs"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("elementImports"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("importedMembers"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("members"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedMembers"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedRules"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("packageImports"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityGroup"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("containedEdges"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityGroup"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("containedNodes"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityGroup"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("subgroups"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityGroup"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("superGroup"))));
-    _groupProperties.insert(QStringLiteral("QUmlStructuredActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("activity"))));
-    _groupProperties.insert(QStringLiteral("QUmlStructuredActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("edges"))));
-    _groupProperties.insert(QStringLiteral("QUmlStructuredActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("mustIsolate"))));
-    _groupProperties.insert(QStringLiteral("QUmlStructuredActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nodes"))));
-    _groupProperties.insert(QStringLiteral("QUmlStructuredActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("variables"))));
-    _groupProperties.insert(QStringLiteral("QUmlLoopNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("bodyOutputs"))));
-    _groupProperties.insert(QStringLiteral("QUmlLoopNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("bodyParts"))));
-    _groupProperties.insert(QStringLiteral("QUmlLoopNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("decider"))));
-    _groupProperties.insert(QStringLiteral("QUmlLoopNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isTestedFirst"))));
-    _groupProperties.insert(QStringLiteral("QUmlLoopNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("loopVariables"))));
-    _groupProperties.insert(QStringLiteral("QUmlLoopNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("loopVariableInputs"))));
-    _groupProperties.insert(QStringLiteral("QUmlLoopNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("results"))));
-    _groupProperties.insert(QStringLiteral("QUmlLoopNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("setupParts"))));
-    _groupProperties.insert(QStringLiteral("QUmlLoopNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("tests"))));
-}
-
-void QUmlLoopNode::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("bodyOutputs")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("bodyOutputs")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlLoopNode");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("bodyOutputs")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("bodyOutputs")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("bodyOutputs")][QtModeling::DocumentationRole] = QStringLiteral("A list of output pins within the body fragment the values of which are moved to the loop variable pins after completion of execution of the body, before the next iteration of the loop begins or before the loop exits.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("bodyOutputs")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("bodyOutputs")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("bodyOutputs")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("bodyParts")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("bodyParts")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlLoopNode");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("bodyParts")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("bodyParts")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("bodyParts")][QtModeling::DocumentationRole] = QStringLiteral("The set of nodes and edges that perform the repetitive computations of the loop. The body section is executed as long as the test section produces a true value.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("bodyParts")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("bodyParts")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("bodyParts")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("decider")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("decider")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlLoopNode");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("decider")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("decider")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("decider")][QtModeling::DocumentationRole] = QStringLiteral("An output pin within the test fragment the value of which is examined after execution of the test to determine whether to execute the loop body.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("decider")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("decider")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("decider")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("isTestedFirst")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("isTestedFirst")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlLoopNode");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("isTestedFirst")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("isTestedFirst")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("isTestedFirst")][QtModeling::DocumentationRole] = QStringLiteral("If true, the test is performed before the first execution of the body. If false, the body is executed once before the test is performed.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("isTestedFirst")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("isTestedFirst")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("isTestedFirst")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("loopVariables")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("loopVariables")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlLoopNode");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("loopVariables")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("loopVariables")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("loopVariables")][QtModeling::DocumentationRole] = QStringLiteral("A list of output pins that hold the values of the loop variables during an execution of the loop. When the test fails, the values are movied to the result pins of the loop.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("loopVariables")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("loopVariables")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("loopVariables")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("loopVariableInputs")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("loopVariableInputs")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlLoopNode");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("loopVariableInputs")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("loopVariableInputs")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("loopVariableInputs")][QtModeling::DocumentationRole] = QStringLiteral("A list of values that are moved into the loop variable pins before the first iteration of the loop.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("loopVariableInputs")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("StructuredActivityNode-structuredNodeInput");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("loopVariableInputs")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("loopVariableInputs")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("results")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("results")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlLoopNode");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("results")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("results")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("results")][QtModeling::DocumentationRole] = QStringLiteral("A list of output pins that constitute the data flow output of the entire loop.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("results")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("StructuredActivityNode-structuredNodeOutput");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("results")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("results")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("setupParts")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("setupParts")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlLoopNode");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("setupParts")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("setupParts")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("setupParts")][QtModeling::DocumentationRole] = QStringLiteral("The set of nodes and edges that initialize values or perform other setup computations for the loop.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("setupParts")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("setupParts")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("setupParts")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("tests")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("tests")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlLoopNode");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("tests")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("tests")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("tests")][QtModeling::DocumentationRole] = QStringLiteral("The set of nodes, edges, and designated value that compute a Boolean value to determine if another execution of the body will be performed.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("tests")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("tests")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("tests")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
 }
 

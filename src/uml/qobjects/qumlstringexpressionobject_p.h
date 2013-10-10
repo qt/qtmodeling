@@ -43,7 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtCore/QObject>
+#include <QtModeling/QModelingObject>
 
 #include <QtUml/QtUmlNamespace>
 
@@ -54,9 +54,12 @@ QT_BEGIN_NAMESPACE
 QT_MODULE(QtUml)
 
 class QUmlStringExpression;
-class Q_UML_EXPORT QUmlStringExpressionObject : public QObject
+class QModelingObjectPrivate;
+class Q_UML_EXPORT QUmlStringExpressionObject : public QModelingObject
 {
     Q_OBJECT
+    Q_DISABLE_COPY(QUmlStringExpressionObject)
+    Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [Element]
     Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
@@ -93,7 +96,7 @@ class Q_UML_EXPORT QUmlStringExpressionObject : public QObject
     Q_PROPERTY(QSet<QObject *> subExpressions READ subExpressions)
 
 public:
-    Q_INVOKABLE explicit QUmlStringExpressionObject(QUmlStringExpression *qModelingObject);
+    Q_INVOKABLE explicit QUmlStringExpressionObject(QUmlStringExpression *qModelingElement);
     virtual ~QUmlStringExpressionObject();
 
     // Owned attributes [Element]
@@ -201,6 +204,10 @@ public Q_SLOTS:
     void setOwningExpression(QObject *owningExpression = 0);
     void addSubExpression(QObject *subExpression);
     void removeSubExpression(QObject *subExpression);
+
+protected:
+    virtual void setGroupProperties();
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

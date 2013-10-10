@@ -45,7 +45,6 @@
 
 #include <QtUml/QUmlCallAction>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -57,10 +56,10 @@ class QUmlBehavior;
 class Q_UML_EXPORT QUmlCallBehaviorAction : public QUmlCallAction
 {
 public:
-    explicit QUmlCallBehaviorAction(bool createQObject = true);
+    explicit QUmlCallBehaviorAction(bool createQModelingObject = true);
     virtual ~QUmlCallBehaviorAction();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
     QUmlBehavior *behavior() const;
@@ -68,9 +67,6 @@ public:
 
 protected:
     QUmlBehavior *_behavior;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

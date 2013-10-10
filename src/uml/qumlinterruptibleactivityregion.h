@@ -45,7 +45,6 @@
 
 #include <QtUml/QUmlActivityGroup>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -58,10 +57,10 @@ class QUmlActivityNode;
 class Q_UML_EXPORT QUmlInterruptibleActivityRegion : public QUmlActivityGroup
 {
 public:
-    explicit QUmlInterruptibleActivityRegion(bool createQObject = true);
+    explicit QUmlInterruptibleActivityRegion(bool createQModelingObject = true);
     virtual ~QUmlInterruptibleActivityRegion();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
     const QSet<QUmlActivityEdge *> interruptingEdges() const;
@@ -74,9 +73,6 @@ public:
 protected:
     QSet<QUmlActivityEdge *> _interruptingEdges;
     QSet<QUmlActivityNode *> _nodes;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

@@ -45,7 +45,6 @@
 
 #include <QtUml/QUmlInstanceSpecification>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -57,10 +56,10 @@ class QUmlEnumeration;
 class Q_UML_EXPORT QUmlEnumerationLiteral : public QUmlInstanceSpecification
 {
 public:
-    explicit QUmlEnumerationLiteral(bool createQObject = true);
+    explicit QUmlEnumerationLiteral(bool createQModelingObject = true);
     virtual ~QUmlEnumerationLiteral();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
     QUmlEnumeration *classifier() const;
@@ -70,9 +69,6 @@ public:
 
 protected:
     QUmlEnumeration *_enumeration;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

@@ -62,25 +62,23 @@
 
     \brief A combined fragment defines an expression of interaction fragments. A combined fragment is defined by an interaction operator and corresponding interaction operands. Through the use of combined fragments the user will be able to describe a number of traces in a compact and concise manner.
  */
-QUmlCombinedFragment::QUmlCombinedFragment(bool createQObject) :
+QUmlCombinedFragment::QUmlCombinedFragment(bool createQModelingObject) :
     _interactionOperator(QtUml::InteractionOperatorKindSeq)
 {
-    if (createQObject)
-        _qObject = new QUmlCombinedFragmentObject(this);
-    setGroupProperties();
-    setPropertyData();
+    if (createQModelingObject)
+        _qModelingObject = qobject_cast<QModelingObject *>(new QUmlCombinedFragmentObject(this));
 }
 
 QUmlCombinedFragment::~QUmlCombinedFragment()
 {
-    if (!deletingFromQObject) {
-        if (_qObject)
-            _qObject->setProperty("deletingFromModelingObject", true);
-        delete _qObject;
+    if (!deletingFromQModelingObject) {
+        if (_qModelingObject)
+            _qModelingObject->setProperty("deletingFromModelingObject", true);
+        delete _qModelingObject;
     }
 }
 
-QModelingObject *QUmlCombinedFragment::clone() const
+QModelingElement *QUmlCombinedFragment::clone() const
 {
     QUmlCombinedFragment *c = new QUmlCombinedFragment;
     foreach (QUmlComment *element, ownedComments())
@@ -125,9 +123,9 @@ void QUmlCombinedFragment::addCfragmentGate(QUmlGate *cfragmentGate)
 
     if (!_cfragmentGates.contains(cfragmentGate)) {
         _cfragmentGates.insert(cfragmentGate);
-        if (cfragmentGate && cfragmentGate->asQObject() && this->asQObject())
-            QObject::connect(cfragmentGate->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeCfragmentGate(QObject *)));
-        cfragmentGate->asQObject()->setParent(this->asQObject());
+        if (cfragmentGate && cfragmentGate->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(cfragmentGate->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeCfragmentGate(QObject *)));
+        cfragmentGate->asQModelingObject()->setParent(this->asQModelingObject());
 
         // Adjust subsetted properties
         addOwnedElement(cfragmentGate);
@@ -140,8 +138,8 @@ void QUmlCombinedFragment::removeCfragmentGate(QUmlGate *cfragmentGate)
 
     if (_cfragmentGates.contains(cfragmentGate)) {
         _cfragmentGates.remove(cfragmentGate);
-        if (cfragmentGate->asQObject())
-            cfragmentGate->asQObject()->setParent(0);
+        if (cfragmentGate->asQModelingObject())
+            cfragmentGate->asQModelingObject()->setParent(0);
 
         // Adjust subsetted properties
         removeOwnedElement(cfragmentGate);
@@ -164,7 +162,7 @@ void QUmlCombinedFragment::setInteractionOperator(QtUml::InteractionOperatorKind
 
     if (_interactionOperator != interactionOperator) {
         _interactionOperator = interactionOperator;
-        _modifiedResettableProperties << QStringLiteral("interactionOperator");
+        _qModelingObject->modifiedResettableProperties() << QStringLiteral("interactionOperator");
     }
 }
 
@@ -184,9 +182,9 @@ void QUmlCombinedFragment::addOperand(QUmlInteractionOperand *operand)
 
     if (!_operands.contains(operand)) {
         _operands.append(operand);
-        if (operand && operand->asQObject() && this->asQObject())
-            QObject::connect(operand->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeOperand(QObject *)));
-        operand->asQObject()->setParent(this->asQObject());
+        if (operand && operand->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(operand->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeOperand(QObject *)));
+        operand->asQModelingObject()->setParent(this->asQModelingObject());
 
         // Adjust subsetted properties
         addOwnedElement(operand);
@@ -199,64 +197,11 @@ void QUmlCombinedFragment::removeOperand(QUmlInteractionOperand *operand)
 
     if (_operands.contains(operand)) {
         _operands.removeAll(operand);
-        if (operand->asQObject())
-            operand->asQObject()->setParent(0);
+        if (operand->asQModelingObject())
+            operand->asQModelingObject()->setParent(0);
 
         // Adjust subsetted properties
         removeOwnedElement(operand);
     }
-}
-
-void QUmlCombinedFragment::setGroupProperties()
-{
-    const QMetaObject *metaObject = _qObject->metaObject();
-
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
-    _groupProperties.insert(QStringLiteral("QUmlInteractionFragment"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("covered"))));
-    _groupProperties.insert(QStringLiteral("QUmlInteractionFragment"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("enclosingInteraction"))));
-    _groupProperties.insert(QStringLiteral("QUmlInteractionFragment"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("enclosingOperand"))));
-    _groupProperties.insert(QStringLiteral("QUmlInteractionFragment"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("generalOrderings"))));
-    _groupProperties.insert(QStringLiteral("QUmlCombinedFragment"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("cfragmentGates"))));
-    _groupProperties.insert(QStringLiteral("QUmlCombinedFragment"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("interactionOperator"))));
-    _groupProperties.insert(QStringLiteral("QUmlCombinedFragment"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("operands"))));
-}
-
-void QUmlCombinedFragment::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlCombinedFragment")][QStringLiteral("cfragmentGates")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlCombinedFragment")][QStringLiteral("cfragmentGates")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlCombinedFragment");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlCombinedFragment")][QStringLiteral("cfragmentGates")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlCombinedFragment")][QStringLiteral("cfragmentGates")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlCombinedFragment")][QStringLiteral("cfragmentGates")][QtModeling::DocumentationRole] = QStringLiteral("Specifies the gates that form the interface between this CombinedFragment and its surroundings");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlCombinedFragment")][QStringLiteral("cfragmentGates")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlCombinedFragment")][QStringLiteral("cfragmentGates")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlCombinedFragment")][QStringLiteral("cfragmentGates")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlCombinedFragment")][QStringLiteral("interactionOperator")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlCombinedFragment")][QStringLiteral("interactionOperator")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlCombinedFragment");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlCombinedFragment")][QStringLiteral("interactionOperator")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlCombinedFragment")][QStringLiteral("interactionOperator")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlCombinedFragment")][QStringLiteral("interactionOperator")][QtModeling::DocumentationRole] = QStringLiteral("Specifies the operation which defines the semantics of this combination of InteractionFragments.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlCombinedFragment")][QStringLiteral("interactionOperator")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlCombinedFragment")][QStringLiteral("interactionOperator")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlCombinedFragment")][QStringLiteral("interactionOperator")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlCombinedFragment")][QStringLiteral("operands")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlCombinedFragment")][QStringLiteral("operands")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlCombinedFragment");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlCombinedFragment")][QStringLiteral("operands")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlCombinedFragment")][QStringLiteral("operands")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlCombinedFragment")][QStringLiteral("operands")][QtModeling::DocumentationRole] = QStringLiteral("The set of operands of the combined fragment.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlCombinedFragment")][QStringLiteral("operands")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlCombinedFragment")][QStringLiteral("operands")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlCombinedFragment")][QStringLiteral("operands")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
 }
 

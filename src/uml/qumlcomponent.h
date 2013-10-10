@@ -45,7 +45,6 @@
 
 #include <QtUml/QUmlClass>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -60,10 +59,10 @@ class QUmlPackageableElement;
 class Q_UML_EXPORT QUmlComponent : public QUmlClass
 {
 public:
-    explicit QUmlComponent(bool createQObject = true);
+    explicit QUmlComponent(bool createQModelingObject = true);
     virtual ~QUmlComponent();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
     bool isIndirectlyInstantiated() const;
@@ -89,9 +88,6 @@ protected:
     bool _isIndirectlyInstantiated;
     QSet<QUmlPackageableElement *> _packagedElements;
     QSet<QUmlComponentRealization *> _realizations;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

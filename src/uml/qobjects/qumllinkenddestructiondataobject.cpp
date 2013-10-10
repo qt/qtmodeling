@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumllinkenddestructiondataobject_p.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlLinkEndDestructionData>
 #include <QtUml/QUmlComment>
@@ -49,16 +50,18 @@
 
 QT_BEGIN_NAMESPACE
 
-QUmlLinkEndDestructionDataObject::QUmlLinkEndDestructionDataObject(QUmlLinkEndDestructionData *qModelingObject)
+QUmlLinkEndDestructionDataObject::QUmlLinkEndDestructionDataObject(QUmlLinkEndDestructionData *qModelingElement)
 {
-    setProperty("modelingObject", QVariant::fromValue(static_cast<QModelingObject *>(qModelingObject)));
+    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(qModelingElement)));
+    setGroupProperties();
+    setPropertyData();
 }
 
 QUmlLinkEndDestructionDataObject::~QUmlLinkEndDestructionDataObject()
 {
     if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingobjectproperty_cast<QUmlLinkEndDestructionData *>(this)->deletingFromQObject = true;
-        delete qmodelingobjectproperty_cast<QUmlComment *>(this);
+        qmodelingelementproperty_cast<QUmlLinkEndDestructionData *>(this)->deletingFromQModelingObject = true;
+        delete qmodelingelementproperty_cast<QUmlComment *>(this);
     }
 }
 
@@ -67,66 +70,66 @@ QUmlLinkEndDestructionDataObject::~QUmlLinkEndDestructionDataObject()
 const QSet<QObject *> QUmlLinkEndDestructionDataObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlLinkEndDestructionData *>(this)->ownedComments())
-        set.insert(element->asQObject());
+    foreach (QUmlComment *element, qmodelingelementproperty_cast<QUmlLinkEndDestructionData *>(this)->ownedComments())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlLinkEndDestructionDataObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlLinkEndDestructionData *>(this)->ownedElements())
-        set.insert(element->asQObject());
+    foreach (QUmlElement *element, qmodelingelementproperty_cast<QUmlLinkEndDestructionData *>(this)->ownedElements())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 QObject *QUmlLinkEndDestructionDataObject::owner() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlLinkEndDestructionData *>(this)->owner())
+    if (!qmodelingelementproperty_cast<QUmlLinkEndDestructionData *>(this)->owner())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlLinkEndDestructionData *>(this)->owner()->asQObject();
+        return qmodelingelementproperty_cast<QUmlLinkEndDestructionData *>(this)->owner()->asQModelingObject();
 }
 
 // OWNED ATTRIBUTES [LinkEndData]
 
 QObject *QUmlLinkEndDestructionDataObject::end() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlLinkEndDestructionData *>(this)->end())
+    if (!qmodelingelementproperty_cast<QUmlLinkEndDestructionData *>(this)->end())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlLinkEndDestructionData *>(this)->end()->asQObject();
+        return qmodelingelementproperty_cast<QUmlLinkEndDestructionData *>(this)->end()->asQModelingObject();
 }
 
 const QSet<QObject *> QUmlLinkEndDestructionDataObject::qualifiers() const
 {
     QSet<QObject *> set;
-    foreach (QUmlQualifierValue *element, qmodelingobjectproperty_cast<QUmlLinkEndDestructionData *>(this)->qualifiers())
-        set.insert(element->asQObject());
+    foreach (QUmlQualifierValue *element, qmodelingelementproperty_cast<QUmlLinkEndDestructionData *>(this)->qualifiers())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 QObject *QUmlLinkEndDestructionDataObject::value() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlLinkEndDestructionData *>(this)->value())
+    if (!qmodelingelementproperty_cast<QUmlLinkEndDestructionData *>(this)->value())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlLinkEndDestructionData *>(this)->value()->asQObject();
+        return qmodelingelementproperty_cast<QUmlLinkEndDestructionData *>(this)->value()->asQModelingObject();
 }
 
 // OWNED ATTRIBUTES [LinkEndDestructionData]
 
 QObject *QUmlLinkEndDestructionDataObject::destroyAt() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlLinkEndDestructionData *>(this)->destroyAt())
+    if (!qmodelingelementproperty_cast<QUmlLinkEndDestructionData *>(this)->destroyAt())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlLinkEndDestructionData *>(this)->destroyAt()->asQObject();
+        return qmodelingelementproperty_cast<QUmlLinkEndDestructionData *>(this)->destroyAt()->asQModelingObject();
 }
 
 bool QUmlLinkEndDestructionDataObject::isDestroyDuplicates() const
 {
-    return qmodelingobjectproperty_cast<QUmlLinkEndDestructionData *>(this)->isDestroyDuplicates();
+    return qmodelingelementproperty_cast<QUmlLinkEndDestructionData *>(this)->isDestroyDuplicates();
 }
 
 // OPERATIONS [Element]
@@ -134,80 +137,127 @@ bool QUmlLinkEndDestructionDataObject::isDestroyDuplicates() const
 QSet<QObject *> QUmlLinkEndDestructionDataObject::allOwnedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlLinkEndDestructionData *>(this)->allOwnedElements())
-        set.insert(element->asQObject());
+    foreach (QUmlElement *element, qmodelingelementproperty_cast<QUmlLinkEndDestructionData *>(this)->allOwnedElements())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 bool QUmlLinkEndDestructionDataObject::mustBeOwned() const
 {
-    return qmodelingobjectproperty_cast<QUmlLinkEndDestructionData *>(this)->mustBeOwned();
+    return qmodelingelementproperty_cast<QUmlLinkEndDestructionData *>(this)->mustBeOwned();
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Element]
 
 void QUmlLinkEndDestructionDataObject::addOwnedComment(QObject *ownedComment)
 {
-    qmodelingobjectproperty_cast<QUmlLinkEndDestructionData *>(this)->addOwnedComment(qmodelingobjectproperty_cast<QUmlComment *>(ownedComment));
+    qmodelingelementproperty_cast<QUmlLinkEndDestructionData *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
 }
 
 void QUmlLinkEndDestructionDataObject::removeOwnedComment(QObject *ownedComment)
 {
-    qmodelingobjectproperty_cast<QUmlLinkEndDestructionData *>(this)->removeOwnedComment(qmodelingobjectproperty_cast<QUmlComment *>(ownedComment));
+    qmodelingelementproperty_cast<QUmlLinkEndDestructionData *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
 }
 
 void QUmlLinkEndDestructionDataObject::addOwnedElement(QObject *ownedElement)
 {
-    qmodelingobjectproperty_cast<QUmlLinkEndDestructionData *>(this)->addOwnedElement(qmodelingobjectproperty_cast<QUmlElement *>(ownedElement));
+    qmodelingelementproperty_cast<QUmlLinkEndDestructionData *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
 }
 
 void QUmlLinkEndDestructionDataObject::removeOwnedElement(QObject *ownedElement)
 {
-    qmodelingobjectproperty_cast<QUmlLinkEndDestructionData *>(this)->removeOwnedElement(qmodelingobjectproperty_cast<QUmlElement *>(ownedElement));
+    qmodelingelementproperty_cast<QUmlLinkEndDestructionData *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
 }
 
 void QUmlLinkEndDestructionDataObject::setOwner(QObject *owner)
 {
-    qmodelingobjectproperty_cast<QUmlLinkEndDestructionData *>(this)->setOwner(qmodelingobjectproperty_cast<QUmlElement *>(owner));
+    qmodelingelementproperty_cast<QUmlLinkEndDestructionData *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [LinkEndData]
 
 void QUmlLinkEndDestructionDataObject::setEnd(QObject *end)
 {
-    qmodelingobjectproperty_cast<QUmlLinkEndDestructionData *>(this)->setEnd(qmodelingobjectproperty_cast<QUmlProperty *>(end));
+    qmodelingelementproperty_cast<QUmlLinkEndDestructionData *>(this)->setEnd(qmodelingelementproperty_cast<QUmlProperty *>(end));
 }
 
 void QUmlLinkEndDestructionDataObject::addQualifier(QObject *qualifier)
 {
-    qmodelingobjectproperty_cast<QUmlLinkEndDestructionData *>(this)->addQualifier(qmodelingobjectproperty_cast<QUmlQualifierValue *>(qualifier));
+    qmodelingelementproperty_cast<QUmlLinkEndDestructionData *>(this)->addQualifier(qmodelingelementproperty_cast<QUmlQualifierValue *>(qualifier));
 }
 
 void QUmlLinkEndDestructionDataObject::removeQualifier(QObject *qualifier)
 {
-    qmodelingobjectproperty_cast<QUmlLinkEndDestructionData *>(this)->removeQualifier(qmodelingobjectproperty_cast<QUmlQualifierValue *>(qualifier));
+    qmodelingelementproperty_cast<QUmlLinkEndDestructionData *>(this)->removeQualifier(qmodelingelementproperty_cast<QUmlQualifierValue *>(qualifier));
 }
 
 void QUmlLinkEndDestructionDataObject::setValue(QObject *value)
 {
-    qmodelingobjectproperty_cast<QUmlLinkEndDestructionData *>(this)->setValue(qmodelingobjectproperty_cast<QUmlInputPin *>(value));
+    qmodelingelementproperty_cast<QUmlLinkEndDestructionData *>(this)->setValue(qmodelingelementproperty_cast<QUmlInputPin *>(value));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [LinkEndDestructionData]
 
 void QUmlLinkEndDestructionDataObject::setDestroyAt(QObject *destroyAt)
 {
-    qmodelingobjectproperty_cast<QUmlLinkEndDestructionData *>(this)->setDestroyAt(qmodelingobjectproperty_cast<QUmlInputPin *>(destroyAt));
+    qmodelingelementproperty_cast<QUmlLinkEndDestructionData *>(this)->setDestroyAt(qmodelingelementproperty_cast<QUmlInputPin *>(destroyAt));
 }
 
 void QUmlLinkEndDestructionDataObject::setDestroyDuplicates(bool isDestroyDuplicates)
 {
-    qmodelingobjectproperty_cast<QUmlLinkEndDestructionData *>(this)->setDestroyDuplicates(isDestroyDuplicates);
+    qmodelingelementproperty_cast<QUmlLinkEndDestructionData *>(this)->setDestroyDuplicates(isDestroyDuplicates);
 }
 
 void QUmlLinkEndDestructionDataObject::unsetDestroyDuplicates()
 {
-    qmodelingobjectproperty_cast<QUmlLinkEndDestructionData *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("destroyDuplicates"));
+    Q_D(QModelingObject);
+    d->modifiedResettableProperties.removeAll(QStringLiteral("destroyDuplicates"));
+}
+
+
+void QUmlLinkEndDestructionDataObject::setGroupProperties()
+{
+    Q_D(QModelingObject);
+    const QMetaObject *metaObject = this->metaObject();
+
+    d->propertyGroups << QStringLiteral("QObject");
+    d->groupProperties.insert(QStringLiteral("QObject"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("objectName"))));
+
+    d->propertyGroups << QStringLiteral("QUmlElement");
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
+
+    d->propertyGroups << QStringLiteral("QUmlLinkEndData");
+    d->groupProperties.insert(QStringLiteral("QUmlLinkEndData"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("end"))));
+    d->groupProperties.insert(QStringLiteral("QUmlLinkEndData"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiers"))));
+    d->groupProperties.insert(QStringLiteral("QUmlLinkEndData"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("value"))));
+
+    d->propertyGroups << QStringLiteral("QUmlLinkEndDestructionData");
+    d->groupProperties.insert(QStringLiteral("QUmlLinkEndDestructionData"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("destroyAt"))));
+    d->groupProperties.insert(QStringLiteral("QUmlLinkEndDestructionData"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isDestroyDuplicates"))));
+}
+
+void QUmlLinkEndDestructionDataObject::setPropertyData()
+{
+    Q_DECLARE_METAPROPERTY_INFO(QUmlLinkEndDestructionData, destroyAt, AggregationRole, QStringLiteral("none"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlLinkEndDestructionData, destroyAt, PropertyClassRole, QStringLiteral("QUmlLinkEndDestructionData"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlLinkEndDestructionData, destroyAt, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlLinkEndDestructionData, destroyAt, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlLinkEndDestructionData, destroyAt, DocumentationRole, QStringLiteral("Specifies the position of an existing link to be destroyed in ordered nonunique association ends. The type of the pin is UnlimitedNatural, but the value cannot be zero or unlimited."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlLinkEndDestructionData, destroyAt, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlLinkEndDestructionData, destroyAt, SubsettedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlLinkEndDestructionData, destroyAt, OppositeEndRole, QStringLiteral(""));
+
+    Q_DECLARE_METAPROPERTY_INFO(QUmlLinkEndDestructionData, isDestroyDuplicates, AggregationRole, QStringLiteral("none"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlLinkEndDestructionData, isDestroyDuplicates, PropertyClassRole, QStringLiteral("QUmlLinkEndDestructionData"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlLinkEndDestructionData, isDestroyDuplicates, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlLinkEndDestructionData, isDestroyDuplicates, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlLinkEndDestructionData, isDestroyDuplicates, DocumentationRole, QStringLiteral("Specifies whether to destroy duplicates of the value in nonunique association ends."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlLinkEndDestructionData, isDestroyDuplicates, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlLinkEndDestructionData, isDestroyDuplicates, SubsettedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlLinkEndDestructionData, isDestroyDuplicates, OppositeEndRole, QStringLiteral(""));
+
 }
 
 QT_END_NAMESPACE

@@ -46,7 +46,6 @@
 #include <QtUml/QUmlPackageableElement>
 #include <QtUml/QUmlDirectedRelationship>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -58,10 +57,10 @@ class QUmlNamedElement;
 class Q_UML_EXPORT QUmlDependency : public QUmlPackageableElement, public QUmlDirectedRelationship
 {
 public:
-    explicit QUmlDependency(bool createQObject = true);
+    explicit QUmlDependency(bool createQModelingObject = true);
     virtual ~QUmlDependency();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
     const QSet<QUmlNamedElement *> clients() const;
@@ -74,9 +73,6 @@ public:
 protected:
     QSet<QUmlNamedElement *> _clients;
     QSet<QUmlNamedElement *> _suppliers;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

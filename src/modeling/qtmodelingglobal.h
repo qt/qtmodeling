@@ -42,7 +42,6 @@
 #define QTMODELINGGLOBAL_H
 
 #include <QtCore/QtGlobal>
-#include <QtCore/QVariant>
 
 #include <QtScript/QScriptValue>
 #include <QtScript/QScriptEngine>

@@ -45,7 +45,6 @@
 
 #include <QtUml/QUmlControlNode>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -58,10 +57,10 @@ class QUmlObjectFlow;
 class Q_UML_EXPORT QUmlDecisionNode : public QUmlControlNode
 {
 public:
-    explicit QUmlDecisionNode(bool createQObject = true);
+    explicit QUmlDecisionNode(bool createQModelingObject = true);
     virtual ~QUmlDecisionNode();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
     QUmlBehavior *decisionInput() const;
@@ -72,9 +71,6 @@ public:
 protected:
     QUmlBehavior *_decisionInput;
     QUmlObjectFlow *_decisionInputFlow;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

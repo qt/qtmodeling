@@ -45,7 +45,6 @@
 
 #include <QtUml/QUmlDependency>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -59,10 +58,10 @@ class QUmlDeploymentTarget;
 class Q_UML_EXPORT QUmlDeployment : public QUmlDependency
 {
 public:
-    explicit QUmlDeployment(bool createQObject = true);
+    explicit QUmlDeployment(bool createQModelingObject = true);
     virtual ~QUmlDeployment();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
     const QSet<QUmlDeploymentSpecification *> configurations() const;
@@ -78,9 +77,6 @@ protected:
     QSet<QUmlDeploymentSpecification *> _configurations;
     QSet<QUmlDeployedArtifact *> _deployedArtifacts;
     QUmlDeploymentTarget *_location;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

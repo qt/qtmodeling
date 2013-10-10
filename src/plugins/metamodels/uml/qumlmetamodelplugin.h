@@ -44,7 +44,7 @@
 #include <QtModeling/QtModelingGlobal>
 #include <QtModeling/QMetaModelPlugin>
 
-class QModelingObject;
+class QModelingElement;
 
 class QUmlMetaModelPlugin : public QMetaModelPlugin
 {
@@ -55,7 +55,7 @@ public:
     QUmlMetaModelPlugin(QObject *parent = 0);
 
     virtual void initMetaModel(QScriptEngine *scriptEngine = 0);
-    virtual QModelingObject *createModelingObject(QString type);
+    virtual QModelingElement *createModelingElement(QString type);
 };
 
 #endif // QUMLMETAMODELPLUGIN_H

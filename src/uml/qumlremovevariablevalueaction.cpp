@@ -71,26 +71,24 @@
 
     \brief A remove variable value action is a write variable action that removes values from variables.
  */
-QUmlRemoveVariableValueAction::QUmlRemoveVariableValueAction(bool createQObject) :
+QUmlRemoveVariableValueAction::QUmlRemoveVariableValueAction(bool createQModelingObject) :
     _isRemoveDuplicates(false),
     _removeAt(0)
 {
-    if (createQObject)
-        _qObject = new QUmlRemoveVariableValueActionObject(this);
-    setGroupProperties();
-    setPropertyData();
+    if (createQModelingObject)
+        _qModelingObject = qobject_cast<QModelingObject *>(new QUmlRemoveVariableValueActionObject(this));
 }
 
 QUmlRemoveVariableValueAction::~QUmlRemoveVariableValueAction()
 {
-    if (!deletingFromQObject) {
-        if (_qObject)
-            _qObject->setProperty("deletingFromModelingObject", true);
-        delete _qObject;
+    if (!deletingFromQModelingObject) {
+        if (_qModelingObject)
+            _qModelingObject->setProperty("deletingFromModelingObject", true);
+        delete _qModelingObject;
     }
 }
 
-QModelingObject *QUmlRemoveVariableValueAction::clone() const
+QModelingElement *QUmlRemoveVariableValueAction::clone() const
 {
     QUmlRemoveVariableValueAction *c = new QUmlRemoveVariableValueAction;
     foreach (QUmlComment *element, ownedComments())
@@ -151,7 +149,7 @@ void QUmlRemoveVariableValueAction::setRemoveDuplicates(bool isRemoveDuplicates)
 
     if (_isRemoveDuplicates != isRemoveDuplicates) {
         _isRemoveDuplicates = isRemoveDuplicates;
-        _modifiedResettableProperties << QStringLiteral("isRemoveDuplicates");
+        _qModelingObject->modifiedResettableProperties() << QStringLiteral("isRemoveDuplicates");
     }
 }
 
@@ -174,73 +172,14 @@ void QUmlRemoveVariableValueAction::setRemoveAt(QUmlInputPin *removeAt)
         removeInput(_removeAt);
 
         _removeAt = removeAt;
-        if (removeAt && removeAt->asQObject() && this->asQObject())
-            QObject::connect(removeAt->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setRemoveAt()));
-        removeAt->asQObject()->setParent(this->asQObject());
+        if (removeAt && removeAt->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(removeAt->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setRemoveAt()));
+        removeAt->asQModelingObject()->setParent(this->asQModelingObject());
 
         // Adjust subsetted properties
         if (removeAt) {
             addInput(removeAt);
         }
     }
-}
-
-void QUmlRemoveVariableValueAction::setGroupProperties()
-{
-    const QMetaObject *metaObject = _qObject->metaObject();
-
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
-    _groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isLeaf"))));
-    _groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinitionContexts"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("activity"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inGroups"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inInterruptibleRegions"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inPartitions"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inStructuredNode"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("incomings"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("outgoings"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinedNodes"))));
-    _groupProperties.insert(QStringLiteral("QUmlExecutableNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("handlers"))));
-    _groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("context"))));
-    _groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inputs"))));
-    _groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isLocallyReentrant"))));
-    _groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("localPostconditions"))));
-    _groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("localPreconditions"))));
-    _groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("outputs"))));
-    _groupProperties.insert(QStringLiteral("QUmlVariableAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("variable"))));
-    _groupProperties.insert(QStringLiteral("QUmlWriteVariableAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("value"))));
-    _groupProperties.insert(QStringLiteral("QUmlRemoveVariableValueAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isRemoveDuplicates"))));
-    _groupProperties.insert(QStringLiteral("QUmlRemoveVariableValueAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("removeAt"))));
-}
-
-void QUmlRemoveVariableValueAction::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRemoveVariableValueAction")][QStringLiteral("isRemoveDuplicates")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRemoveVariableValueAction")][QStringLiteral("isRemoveDuplicates")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlRemoveVariableValueAction");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRemoveVariableValueAction")][QStringLiteral("isRemoveDuplicates")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRemoveVariableValueAction")][QStringLiteral("isRemoveDuplicates")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRemoveVariableValueAction")][QStringLiteral("isRemoveDuplicates")][QtModeling::DocumentationRole] = QStringLiteral("Specifies whether to remove duplicates of the value in nonunique variables.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRemoveVariableValueAction")][QStringLiteral("isRemoveDuplicates")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRemoveVariableValueAction")][QStringLiteral("isRemoveDuplicates")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRemoveVariableValueAction")][QStringLiteral("isRemoveDuplicates")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRemoveVariableValueAction")][QStringLiteral("removeAt")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRemoveVariableValueAction")][QStringLiteral("removeAt")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlRemoveVariableValueAction");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRemoveVariableValueAction")][QStringLiteral("removeAt")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRemoveVariableValueAction")][QStringLiteral("removeAt")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRemoveVariableValueAction")][QStringLiteral("removeAt")][QtModeling::DocumentationRole] = QStringLiteral("Specifies the position of an existing value to remove in ordered nonunique variables. The type of the pin is UnlimitedNatural, but the value cannot be zero or unlimited.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRemoveVariableValueAction")][QStringLiteral("removeAt")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRemoveVariableValueAction")][QStringLiteral("removeAt")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Action-input");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRemoveVariableValueAction")][QStringLiteral("removeAt")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
 }
 

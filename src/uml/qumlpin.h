@@ -46,7 +46,6 @@
 #include <QtUml/QUmlMultiplicityElement>
 #include <QtUml/QUmlObjectNode>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -58,7 +57,7 @@ class Q_UML_EXPORT QUmlPin : public QUmlMultiplicityElement, public QUmlObjectNo
 public:
     virtual ~QUmlPin();
 
-    Q_DECL_HIDDEN QModelingObject *clone() const;
+    Q_DECL_HIDDEN virtual QModelingElement *clone() const;
 
     // Owned attributes
     bool isControl() const;
@@ -68,9 +67,6 @@ protected:
     explicit QUmlPin();
 
     bool _isControl;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

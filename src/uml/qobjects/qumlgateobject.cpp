@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlgateobject_p.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlGate>
 #include <QtUml/QUmlComment>
@@ -52,16 +53,18 @@
 
 QT_BEGIN_NAMESPACE
 
-QUmlGateObject::QUmlGateObject(QUmlGate *qModelingObject)
+QUmlGateObject::QUmlGateObject(QUmlGate *qModelingElement)
 {
-    setProperty("modelingObject", QVariant::fromValue(static_cast<QModelingObject *>(qModelingObject)));
+    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(qModelingElement)));
+    setGroupProperties();
+    setPropertyData();
 }
 
 QUmlGateObject::~QUmlGateObject()
 {
     if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingobjectproperty_cast<QUmlGate *>(this)->deletingFromQObject = true;
-        delete qmodelingobjectproperty_cast<QUmlComment *>(this);
+        qmodelingelementproperty_cast<QUmlGate *>(this)->deletingFromQModelingObject = true;
+        delete qmodelingelementproperty_cast<QUmlComment *>(this);
     }
 }
 
@@ -70,25 +73,25 @@ QUmlGateObject::~QUmlGateObject()
 const QSet<QObject *> QUmlGateObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlGate *>(this)->ownedComments())
-        set.insert(element->asQObject());
+    foreach (QUmlComment *element, qmodelingelementproperty_cast<QUmlGate *>(this)->ownedComments())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlGateObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlGate *>(this)->ownedElements())
-        set.insert(element->asQObject());
+    foreach (QUmlElement *element, qmodelingelementproperty_cast<QUmlGate *>(this)->ownedElements())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 QObject *QUmlGateObject::owner() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlGate *>(this)->owner())
+    if (!qmodelingelementproperty_cast<QUmlGate *>(this)->owner())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlGate *>(this)->owner()->asQObject();
+        return qmodelingelementproperty_cast<QUmlGate *>(this)->owner()->asQModelingObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -96,50 +99,50 @@ QObject *QUmlGateObject::owner() const
 const QSet<QObject *> QUmlGateObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlGate *>(this)->clientDependencies())
-        set.insert(element->asQObject());
+    foreach (QUmlDependency *element, qmodelingelementproperty_cast<QUmlGate *>(this)->clientDependencies())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 QString QUmlGateObject::name() const
 {
-    return qmodelingobjectproperty_cast<QUmlGate *>(this)->name();
+    return qmodelingelementproperty_cast<QUmlGate *>(this)->name();
 }
 
 QObject *QUmlGateObject::nameExpression() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlGate *>(this)->nameExpression())
+    if (!qmodelingelementproperty_cast<QUmlGate *>(this)->nameExpression())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlGate *>(this)->nameExpression()->asQObject();
+        return qmodelingelementproperty_cast<QUmlGate *>(this)->nameExpression()->asQModelingObject();
 }
 
 QObject *QUmlGateObject::namespace_() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlGate *>(this)->namespace_())
+    if (!qmodelingelementproperty_cast<QUmlGate *>(this)->namespace_())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlGate *>(this)->namespace_()->asQObject();
+        return qmodelingelementproperty_cast<QUmlGate *>(this)->namespace_()->asQModelingObject();
 }
 
 QString QUmlGateObject::qualifiedName() const
 {
-    return qmodelingobjectproperty_cast<QUmlGate *>(this)->qualifiedName();
+    return qmodelingelementproperty_cast<QUmlGate *>(this)->qualifiedName();
 }
 
 QtUml::VisibilityKind QUmlGateObject::visibility() const
 {
-    return qmodelingobjectproperty_cast<QUmlGate *>(this)->visibility();
+    return qmodelingelementproperty_cast<QUmlGate *>(this)->visibility();
 }
 
 // OWNED ATTRIBUTES [MessageEnd]
 
 QObject *QUmlGateObject::message() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlGate *>(this)->message())
+    if (!qmodelingelementproperty_cast<QUmlGate *>(this)->message())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlGate *>(this)->message()->asQObject();
+        return qmodelingelementproperty_cast<QUmlGate *>(this)->message()->asQModelingObject();
 }
 
 // OPERATIONS [Element]
@@ -147,14 +150,14 @@ QObject *QUmlGateObject::message() const
 QSet<QObject *> QUmlGateObject::allOwnedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlGate *>(this)->allOwnedElements())
-        set.insert(element->asQObject());
+    foreach (QUmlElement *element, qmodelingelementproperty_cast<QUmlGate *>(this)->allOwnedElements())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 bool QUmlGateObject::mustBeOwned() const
 {
-    return qmodelingobjectproperty_cast<QUmlGate *>(this)->mustBeOwned();
+    return qmodelingelementproperty_cast<QUmlGate *>(this)->mustBeOwned();
 }
 
 // OPERATIONS [NamedElement]
@@ -162,98 +165,130 @@ bool QUmlGateObject::mustBeOwned() const
 QList<QObject *> QUmlGateObject::allNamespaces() const
 {
     QList<QObject *> set;
-    foreach (QUmlNamespace *element, qmodelingobjectproperty_cast<QUmlGate *>(this)->allNamespaces())
-        set.append(element->asQObject());
+    foreach (QUmlNamespace *element, qmodelingelementproperty_cast<QUmlGate *>(this)->allNamespaces())
+        set.append(element->asQModelingObject());
     return set;
 }
 
 QSet<QObject *> QUmlGateObject::allOwningPackages() const
 {
     QSet<QObject *> set;
-    foreach (QUmlPackage *element, qmodelingobjectproperty_cast<QUmlGate *>(this)->allOwningPackages())
-        set.insert(element->asQObject());
+    foreach (QUmlPackage *element, qmodelingelementproperty_cast<QUmlGate *>(this)->allOwningPackages())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 bool QUmlGateObject::isDistinguishableFrom(QObject *n, QObject *ns) const
 {
-    return qmodelingobjectproperty_cast<QUmlGate *>(this)->isDistinguishableFrom(qmodelingobjectproperty_cast<QUmlNamedElement *>(n), qmodelingobjectproperty_cast<QUmlNamespace *>(ns));
+    return qmodelingelementproperty_cast<QUmlGate *>(this)->isDistinguishableFrom(qmodelingelementproperty_cast<QUmlNamedElement *>(n), qmodelingelementproperty_cast<QUmlNamespace *>(ns));
 }
 
 QString QUmlGateObject::separator() const
 {
-    return qmodelingobjectproperty_cast<QUmlGate *>(this)->separator();
+    return qmodelingelementproperty_cast<QUmlGate *>(this)->separator();
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Element]
 
 void QUmlGateObject::addOwnedComment(QObject *ownedComment)
 {
-    qmodelingobjectproperty_cast<QUmlGate *>(this)->addOwnedComment(qmodelingobjectproperty_cast<QUmlComment *>(ownedComment));
+    qmodelingelementproperty_cast<QUmlGate *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
 }
 
 void QUmlGateObject::removeOwnedComment(QObject *ownedComment)
 {
-    qmodelingobjectproperty_cast<QUmlGate *>(this)->removeOwnedComment(qmodelingobjectproperty_cast<QUmlComment *>(ownedComment));
+    qmodelingelementproperty_cast<QUmlGate *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
 }
 
 void QUmlGateObject::addOwnedElement(QObject *ownedElement)
 {
-    qmodelingobjectproperty_cast<QUmlGate *>(this)->addOwnedElement(qmodelingobjectproperty_cast<QUmlElement *>(ownedElement));
+    qmodelingelementproperty_cast<QUmlGate *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
 }
 
 void QUmlGateObject::removeOwnedElement(QObject *ownedElement)
 {
-    qmodelingobjectproperty_cast<QUmlGate *>(this)->removeOwnedElement(qmodelingobjectproperty_cast<QUmlElement *>(ownedElement));
+    qmodelingelementproperty_cast<QUmlGate *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
 }
 
 void QUmlGateObject::setOwner(QObject *owner)
 {
-    qmodelingobjectproperty_cast<QUmlGate *>(this)->setOwner(qmodelingobjectproperty_cast<QUmlElement *>(owner));
+    qmodelingelementproperty_cast<QUmlGate *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [NamedElement]
 
 void QUmlGateObject::addClientDependency(QObject *clientDependency)
 {
-    qmodelingobjectproperty_cast<QUmlGate *>(this)->addClientDependency(qmodelingobjectproperty_cast<QUmlDependency *>(clientDependency));
+    qmodelingelementproperty_cast<QUmlGate *>(this)->addClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
 }
 
 void QUmlGateObject::removeClientDependency(QObject *clientDependency)
 {
-    qmodelingobjectproperty_cast<QUmlGate *>(this)->removeClientDependency(qmodelingobjectproperty_cast<QUmlDependency *>(clientDependency));
+    qmodelingelementproperty_cast<QUmlGate *>(this)->removeClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
 }
 
 void QUmlGateObject::setName(QString name)
 {
-    qmodelingobjectproperty_cast<QUmlGate *>(this)->setName(name);
+    qmodelingelementproperty_cast<QUmlGate *>(this)->setName(name);
 }
 
 void QUmlGateObject::setNameExpression(QObject *nameExpression)
 {
-    qmodelingobjectproperty_cast<QUmlGate *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
+    qmodelingelementproperty_cast<QUmlGate *>(this)->setNameExpression(qmodelingelementproperty_cast<QUmlStringExpression *>(nameExpression));
 }
 
 void QUmlGateObject::setNamespace(QObject *namespace_)
 {
-    qmodelingobjectproperty_cast<QUmlGate *>(this)->setNamespace(qmodelingobjectproperty_cast<QUmlNamespace *>(namespace_));
+    qmodelingelementproperty_cast<QUmlGate *>(this)->setNamespace(qmodelingelementproperty_cast<QUmlNamespace *>(namespace_));
 }
 
 void QUmlGateObject::setQualifiedName(QString qualifiedName)
 {
-    qmodelingobjectproperty_cast<QUmlGate *>(this)->setQualifiedName(qualifiedName);
+    qmodelingelementproperty_cast<QUmlGate *>(this)->setQualifiedName(qualifiedName);
 }
 
 void QUmlGateObject::setVisibility(QtUml::VisibilityKind visibility)
 {
-    qmodelingobjectproperty_cast<QUmlGate *>(this)->setVisibility(visibility);
+    qmodelingelementproperty_cast<QUmlGate *>(this)->setVisibility(visibility);
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [MessageEnd]
 
 void QUmlGateObject::setMessage(QObject *message)
 {
-    qmodelingobjectproperty_cast<QUmlGate *>(this)->setMessage(qmodelingobjectproperty_cast<QUmlMessage *>(message));
+    qmodelingelementproperty_cast<QUmlGate *>(this)->setMessage(qmodelingelementproperty_cast<QUmlMessage *>(message));
+}
+
+
+void QUmlGateObject::setGroupProperties()
+{
+    Q_D(QModelingObject);
+    const QMetaObject *metaObject = this->metaObject();
+
+    d->propertyGroups << QStringLiteral("QObject");
+    d->groupProperties.insert(QStringLiteral("QObject"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("objectName"))));
+
+    d->propertyGroups << QStringLiteral("QUmlElement");
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
+
+    d->propertyGroups << QStringLiteral("QUmlNamedElement");
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
+
+    d->propertyGroups << QStringLiteral("QUmlMessageEnd");
+    d->groupProperties.insert(QStringLiteral("QUmlMessageEnd"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("message"))));
+
+    d->propertyGroups << QStringLiteral("QUmlGate");
+}
+
+void QUmlGateObject::setPropertyData()
+{
 }
 
 QT_END_NAMESPACE

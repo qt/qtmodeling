@@ -45,7 +45,6 @@
 
 #include <QtUml/QUmlProperty>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -58,10 +57,10 @@ class QUmlProtocolStateMachine;
 class Q_UML_EXPORT QUmlPort : public QUmlProperty
 {
 public:
-    explicit QUmlPort(bool createQObject = true);
+    explicit QUmlPort(bool createQModelingObject = true);
     virtual ~QUmlPort();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
     bool isBehavior() const;
@@ -88,9 +87,6 @@ protected:
     bool _isService;
     QUmlProtocolStateMachine *_protocol;
     QSet<QUmlPort *> _redefinedPorts;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

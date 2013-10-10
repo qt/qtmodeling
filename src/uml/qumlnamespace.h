@@ -45,7 +45,6 @@
 
 #include <QtUml/QUmlNamedElement>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -62,7 +61,7 @@ class Q_UML_EXPORT QUmlNamespace : public virtual QUmlNamedElement
 public:
     virtual ~QUmlNamespace();
 
-    Q_DECL_HIDDEN QModelingObject *clone() const;
+    Q_DECL_HIDDEN virtual QModelingElement *clone() const;
 
     // Owned attributes
     const QSet<QUmlElementImport *> elementImports() const;
@@ -98,9 +97,6 @@ protected:
     QSet<QUmlNamedElement *> _ownedMembers;
     QSet<QUmlConstraint *> _ownedRules;
     QSet<QUmlPackageImport *> _packageImports;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

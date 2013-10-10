@@ -45,7 +45,6 @@
 
 #include <QtUml/QUmlBehavior>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -62,10 +61,10 @@ class QUmlVariable;
 class Q_UML_EXPORT QUmlActivity : public QUmlBehavior
 {
 public:
-    explicit QUmlActivity(bool createQObject = true);
+    explicit QUmlActivity(bool createQModelingObject = true);
     virtual ~QUmlActivity();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
     const QSet<QUmlActivityEdge *> edges() const;
@@ -100,9 +99,6 @@ protected:
     QSet<QUmlActivityPartition *> _partitions;
     QSet<QUmlStructuredActivityNode *> _structuredNodes;
     QSet<QUmlVariable *> _variables;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

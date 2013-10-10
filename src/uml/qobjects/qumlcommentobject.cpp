@@ -39,22 +39,25 @@
 **
 ****************************************************************************/
 #include "qumlcommentobject_p.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlComment>
 #include <QtUml/QUmlElement>
 
 QT_BEGIN_NAMESPACE
 
-QUmlCommentObject::QUmlCommentObject(QUmlComment *qModelingObject)
+QUmlCommentObject::QUmlCommentObject(QUmlComment *qModelingElement)
 {
-    setProperty("modelingObject", QVariant::fromValue(static_cast<QModelingObject *>(qModelingObject)));
+    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(qModelingElement)));
+    setGroupProperties();
+    setPropertyData();
 }
 
 QUmlCommentObject::~QUmlCommentObject()
 {
     if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingobjectproperty_cast<QUmlComment *>(this)->deletingFromQObject = true;
-        delete qmodelingobjectproperty_cast<QUmlComment *>(this);
+        qmodelingelementproperty_cast<QUmlComment *>(this)->deletingFromQModelingObject = true;
+        delete qmodelingelementproperty_cast<QUmlComment *>(this);
     }
 }
 
@@ -63,25 +66,25 @@ QUmlCommentObject::~QUmlCommentObject()
 const QSet<QObject *> QUmlCommentObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlComment *>(this)->ownedComments())
-        set.insert(element->asQObject());
+    foreach (QUmlComment *element, qmodelingelementproperty_cast<QUmlComment *>(this)->ownedComments())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlCommentObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlComment *>(this)->ownedElements())
-        set.insert(element->asQObject());
+    foreach (QUmlElement *element, qmodelingelementproperty_cast<QUmlComment *>(this)->ownedElements())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 QObject *QUmlCommentObject::owner() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlComment *>(this)->owner())
+    if (!qmodelingelementproperty_cast<QUmlComment *>(this)->owner())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlComment *>(this)->owner()->asQObject();
+        return qmodelingelementproperty_cast<QUmlComment *>(this)->owner()->asQModelingObject();
 }
 
 // OWNED ATTRIBUTES [Comment]
@@ -89,14 +92,14 @@ QObject *QUmlCommentObject::owner() const
 const QSet<QObject *> QUmlCommentObject::annotatedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlComment *>(this)->annotatedElements())
-        set.insert(element->asQObject());
+    foreach (QUmlElement *element, qmodelingelementproperty_cast<QUmlComment *>(this)->annotatedElements())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 QString QUmlCommentObject::body() const
 {
-    return qmodelingobjectproperty_cast<QUmlComment *>(this)->body();
+    return qmodelingelementproperty_cast<QUmlComment *>(this)->body();
 }
 
 // OPERATIONS [Element]
@@ -104,58 +107,101 @@ QString QUmlCommentObject::body() const
 QSet<QObject *> QUmlCommentObject::allOwnedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlComment *>(this)->allOwnedElements())
-        set.insert(element->asQObject());
+    foreach (QUmlElement *element, qmodelingelementproperty_cast<QUmlComment *>(this)->allOwnedElements())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 bool QUmlCommentObject::mustBeOwned() const
 {
-    return qmodelingobjectproperty_cast<QUmlComment *>(this)->mustBeOwned();
+    return qmodelingelementproperty_cast<QUmlComment *>(this)->mustBeOwned();
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Element]
 
 void QUmlCommentObject::addOwnedComment(QObject *ownedComment)
 {
-    qmodelingobjectproperty_cast<QUmlComment *>(this)->addOwnedComment(qmodelingobjectproperty_cast<QUmlComment *>(ownedComment));
+    qmodelingelementproperty_cast<QUmlComment *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
 }
 
 void QUmlCommentObject::removeOwnedComment(QObject *ownedComment)
 {
-    qmodelingobjectproperty_cast<QUmlComment *>(this)->removeOwnedComment(qmodelingobjectproperty_cast<QUmlComment *>(ownedComment));
+    qmodelingelementproperty_cast<QUmlComment *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
 }
 
 void QUmlCommentObject::addOwnedElement(QObject *ownedElement)
 {
-    qmodelingobjectproperty_cast<QUmlComment *>(this)->addOwnedElement(qmodelingobjectproperty_cast<QUmlElement *>(ownedElement));
+    qmodelingelementproperty_cast<QUmlComment *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
 }
 
 void QUmlCommentObject::removeOwnedElement(QObject *ownedElement)
 {
-    qmodelingobjectproperty_cast<QUmlComment *>(this)->removeOwnedElement(qmodelingobjectproperty_cast<QUmlElement *>(ownedElement));
+    qmodelingelementproperty_cast<QUmlComment *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
 }
 
 void QUmlCommentObject::setOwner(QObject *owner)
 {
-    qmodelingobjectproperty_cast<QUmlComment *>(this)->setOwner(qmodelingobjectproperty_cast<QUmlElement *>(owner));
+    qmodelingelementproperty_cast<QUmlComment *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Comment]
 
 void QUmlCommentObject::addAnnotatedElement(QObject *annotatedElement)
 {
-    qmodelingobjectproperty_cast<QUmlComment *>(this)->addAnnotatedElement(qmodelingobjectproperty_cast<QUmlElement *>(annotatedElement));
+    qmodelingelementproperty_cast<QUmlComment *>(this)->addAnnotatedElement(qmodelingelementproperty_cast<QUmlElement *>(annotatedElement));
 }
 
 void QUmlCommentObject::removeAnnotatedElement(QObject *annotatedElement)
 {
-    qmodelingobjectproperty_cast<QUmlComment *>(this)->removeAnnotatedElement(qmodelingobjectproperty_cast<QUmlElement *>(annotatedElement));
+    qmodelingelementproperty_cast<QUmlComment *>(this)->removeAnnotatedElement(qmodelingelementproperty_cast<QUmlElement *>(annotatedElement));
 }
 
 void QUmlCommentObject::setBody(QString body)
 {
-    qmodelingobjectproperty_cast<QUmlComment *>(this)->setBody(body);
+    qmodelingelementproperty_cast<QUmlComment *>(this)->setBody(body);
+}
+
+
+void QUmlCommentObject::setGroupProperties()
+{
+    Q_D(QModelingObject);
+    const QMetaObject *metaObject = this->metaObject();
+
+    QStringList propertyGroups;
+    propertyGroups << QStringLiteral("QObject");
+    d->propertyGroups << QStringLiteral("QObject");
+    d->groupProperties.insert(QStringLiteral("QObject"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("objectName"))));
+
+    d->propertyGroups << QStringLiteral("QUmlElement");
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
+
+    d->propertyGroups << QStringLiteral("QUmlComment");
+    d->groupProperties.insert(QStringLiteral("QUmlComment"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("annotatedElements"))));
+    d->groupProperties.insert(QStringLiteral("QUmlComment"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("body"))));
+}
+
+void QUmlCommentObject::setPropertyData()
+{
+    Q_DECLARE_METAPROPERTY_INFO(QUmlComment, annotatedElements, AggregationRole, QStringLiteral("none"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlComment, annotatedElements, PropertyClassRole, QStringLiteral("QUmlComment"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlComment, annotatedElements, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlComment, annotatedElements, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlComment, annotatedElements, DocumentationRole, QStringLiteral("References the Element(s) being commented."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlComment, annotatedElements, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlComment, annotatedElements, SubsettedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlComment, annotatedElements, OppositeEndRole, QStringLiteral(""));
+
+    Q_DECLARE_METAPROPERTY_INFO(QUmlComment, body, AggregationRole, QStringLiteral("none"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlComment, body, PropertyClassRole, QStringLiteral("QUmlComment"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlComment, body, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlComment, body, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlComment, body, DocumentationRole, QStringLiteral("Specifies a string that is the comment."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlComment, body, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlComment, body, SubsettedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlComment, body, OppositeEndRole, QStringLiteral(""));
+
 }
 
 QT_END_NAMESPACE

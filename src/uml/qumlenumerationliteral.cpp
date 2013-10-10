@@ -65,26 +65,24 @@
 
     \brief An enumeration literal is a user-defined data value for an enumeration.
  */
-QUmlEnumerationLiteral::QUmlEnumerationLiteral(bool createQObject) :
+QUmlEnumerationLiteral::QUmlEnumerationLiteral(bool createQModelingObject) :
     QUmlInstanceSpecification(false),
     _enumeration(0)
 {
-    if (createQObject)
-        _qObject = new QUmlEnumerationLiteralObject(this);
-    setGroupProperties();
-    setPropertyData();
+    if (createQModelingObject)
+        _qModelingObject = qobject_cast<QModelingObject *>(new QUmlEnumerationLiteralObject(this));
 }
 
 QUmlEnumerationLiteral::~QUmlEnumerationLiteral()
 {
-    if (!deletingFromQObject) {
-        if (_qObject)
-            _qObject->setProperty("deletingFromModelingObject", true);
-        delete _qObject;
+    if (!deletingFromQModelingObject) {
+        if (_qModelingObject)
+            _qModelingObject->setProperty("deletingFromModelingObject", true);
+        delete _qModelingObject;
     }
 }
 
-QModelingObject *QUmlEnumerationLiteral::clone() const
+QModelingElement *QUmlEnumerationLiteral::clone() const
 {
     QUmlEnumerationLiteral *c = new QUmlEnumerationLiteral;
     foreach (QUmlComment *element, ownedComments())
@@ -154,56 +152,11 @@ void QUmlEnumerationLiteral::setEnumeration(QUmlEnumeration *enumeration)
         // Adjust subsetted properties
 
         _enumeration = enumeration;
-        if (enumeration && enumeration->asQObject() && this->asQObject())
-            QObject::connect(enumeration->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setEnumeration()));
+        if (enumeration && enumeration->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(enumeration->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setEnumeration()));
 
         // Adjust subsetted properties
         setNamespace(enumeration);
     }
-}
-
-void QUmlEnumerationLiteral::setGroupProperties()
-{
-    const QMetaObject *metaObject = _qObject->metaObject();
-
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
-    _groupProperties.insert(QStringLiteral("QUmlParameterableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owningTemplateParameter"))));
-    _groupProperties.insert(QStringLiteral("QUmlParameterableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("templateParameter"))));
-    _groupProperties.insert(QStringLiteral("QUmlPackageableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
-    _groupProperties.insert(QStringLiteral("QUmlDeploymentTarget"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("deployedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlDeploymentTarget"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("deployments"))));
-    _groupProperties.insert(QStringLiteral("QUmlInstanceSpecification"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("slots_"))));
-    _groupProperties.insert(QStringLiteral("QUmlInstanceSpecification"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("specification"))));
-    _groupProperties.insert(QStringLiteral("QUmlEnumerationLiteral"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("classifier"))));
-    _groupProperties.insert(QStringLiteral("QUmlEnumerationLiteral"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("enumeration"))));
-}
-
-void QUmlEnumerationLiteral::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlEnumerationLiteral")][QStringLiteral("classifier")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlEnumerationLiteral")][QStringLiteral("classifier")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlEnumerationLiteral");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlEnumerationLiteral")][QStringLiteral("classifier")][QtModeling::IsDerivedRole] = true;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlEnumerationLiteral")][QStringLiteral("classifier")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlEnumerationLiteral")][QStringLiteral("classifier")][QtModeling::DocumentationRole] = QStringLiteral("The classifier of this EnumerationLiteral derived to be equal to its enumeration.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlEnumerationLiteral")][QStringLiteral("classifier")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("InstanceSpecification-classifier");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlEnumerationLiteral")][QStringLiteral("classifier")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlEnumerationLiteral")][QStringLiteral("classifier")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlEnumerationLiteral")][QStringLiteral("enumeration")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlEnumerationLiteral")][QStringLiteral("enumeration")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlEnumerationLiteral");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlEnumerationLiteral")][QStringLiteral("enumeration")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlEnumerationLiteral")][QStringLiteral("enumeration")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlEnumerationLiteral")][QStringLiteral("enumeration")][QtModeling::DocumentationRole] = QStringLiteral("The Enumeration that this EnumerationLiteral is a member of.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlEnumerationLiteral")][QStringLiteral("enumeration")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlEnumerationLiteral")][QStringLiteral("enumeration")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("NamedElement-namespace");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlEnumerationLiteral")][QStringLiteral("enumeration")][QtModeling::OppositeEndRole] = QStringLiteral("Enumeration-ownedLiteral");
-
 }
 

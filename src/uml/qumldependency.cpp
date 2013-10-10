@@ -58,24 +58,22 @@
 
     \brief A dependency is a relationship that signifies that a single or a set of model elements requires other model elements for their specification or implementation. This means that the complete semantics of the depending elements is either semantically or structurally dependent on the definition of the supplier element(s).
  */
-QUmlDependency::QUmlDependency(bool createQObject)
+QUmlDependency::QUmlDependency(bool createQModelingObject)
 {
-    if (createQObject)
-        _qObject = new QUmlDependencyObject(this);
-    setGroupProperties();
-    setPropertyData();
+    if (createQModelingObject)
+        _qModelingObject = qobject_cast<QModelingObject *>(new QUmlDependencyObject(this));
 }
 
 QUmlDependency::~QUmlDependency()
 {
-    if (!deletingFromQObject) {
-        if (_qObject)
-            _qObject->setProperty("deletingFromModelingObject", true);
-        delete _qObject;
+    if (!deletingFromQModelingObject) {
+        if (_qModelingObject)
+            _qModelingObject->setProperty("deletingFromModelingObject", true);
+        delete _qModelingObject;
     }
 }
 
-QModelingObject *QUmlDependency::clone() const
+QModelingElement *QUmlDependency::clone() const
 {
     QUmlDependency *c = new QUmlDependency;
     foreach (QUmlComment *element, ownedComments())
@@ -115,8 +113,8 @@ void QUmlDependency::addClient(QUmlNamedElement *client)
 
     if (!_clients.contains(client)) {
         _clients.insert(client);
-        if (client && client->asQObject() && this->asQObject())
-            QObject::connect(client->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeClient(QObject *)));
+        if (client && client->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(client->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeClient(QObject *)));
 
         // Adjust subsetted properties
         addSource(client);
@@ -161,8 +159,8 @@ void QUmlDependency::addSupplier(QUmlNamedElement *supplier)
 
     if (!_suppliers.contains(supplier)) {
         _suppliers.insert(supplier);
-        if (supplier && supplier->asQObject() && this->asQObject())
-            QObject::connect(supplier->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeSupplier(QObject *)));
+        if (supplier && supplier->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(supplier->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeSupplier(QObject *)));
 
         // Adjust subsetted properties
         addTarget(supplier);
@@ -179,49 +177,5 @@ void QUmlDependency::removeSupplier(QUmlNamedElement *supplier)
         // Adjust subsetted properties
         removeTarget(supplier);
     }
-}
-
-void QUmlDependency::setGroupProperties()
-{
-    const QMetaObject *metaObject = _qObject->metaObject();
-
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
-    _groupProperties.insert(QStringLiteral("QUmlParameterableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owningTemplateParameter"))));
-    _groupProperties.insert(QStringLiteral("QUmlParameterableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("templateParameter"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
-    _groupProperties.insert(QStringLiteral("QUmlPackageableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
-    _groupProperties.insert(QStringLiteral("QUmlRelationship"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("relatedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlDirectedRelationship"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("sources"))));
-    _groupProperties.insert(QStringLiteral("QUmlDirectedRelationship"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("targets"))));
-    _groupProperties.insert(QStringLiteral("QUmlDependency"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clients"))));
-    _groupProperties.insert(QStringLiteral("QUmlDependency"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("suppliers"))));
-}
-
-void QUmlDependency::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDependency")][QStringLiteral("clients")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDependency")][QStringLiteral("clients")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlDependency");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDependency")][QStringLiteral("clients")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDependency")][QStringLiteral("clients")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDependency")][QStringLiteral("clients")][QtModeling::DocumentationRole] = QStringLiteral("The element(s) dependent on the supplier element(s). In some cases (such as a Trace Abstraction) the assignment of direction (that is, the designation of the client element) is at the discretion of the modeler, and is a stipulation.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDependency")][QStringLiteral("clients")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDependency")][QStringLiteral("clients")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("DirectedRelationship-source");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDependency")][QStringLiteral("clients")][QtModeling::OppositeEndRole] = QStringLiteral("NamedElement-clientDependency");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDependency")][QStringLiteral("suppliers")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDependency")][QStringLiteral("suppliers")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlDependency");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDependency")][QStringLiteral("suppliers")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDependency")][QStringLiteral("suppliers")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDependency")][QStringLiteral("suppliers")][QtModeling::DocumentationRole] = QStringLiteral("The element(s) independent of the client element(s), in the same respect and the same dependency relationship. In some directed dependency relationships (such as Refinement Abstractions), a common convention in the domain of class-based OO software is to put the more abstract element in this role. Despite this convention, users of UML may stipulate a sense of dependency suitable for their domain, which makes a more abstract element dependent on that which is more specific.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDependency")][QStringLiteral("suppliers")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDependency")][QStringLiteral("suppliers")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("DirectedRelationship-target");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDependency")][QStringLiteral("suppliers")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
 }
 

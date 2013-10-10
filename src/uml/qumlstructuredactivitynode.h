@@ -47,7 +47,6 @@
 #include <QtUml/QUmlNamespace>
 #include <QtUml/QUmlActivityGroup>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -64,10 +63,10 @@ class QUmlVariable;
 class Q_UML_EXPORT QUmlStructuredActivityNode : public QUmlAction, public QUmlNamespace, public QUmlActivityGroup
 {
 public:
-    explicit QUmlStructuredActivityNode(bool createQObject = true);
+    explicit QUmlStructuredActivityNode(bool createQModelingObject = true);
     virtual ~QUmlStructuredActivityNode();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
     QUmlActivity *activity() const;
@@ -98,9 +97,6 @@ protected:
     QSet<QUmlInputPin *> _structuredNodeInputs;
     QSet<QUmlOutputPin *> _structuredNodeOutputs;
     QSet<QUmlVariable *> _variables;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

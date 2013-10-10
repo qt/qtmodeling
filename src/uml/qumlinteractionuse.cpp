@@ -64,27 +64,25 @@
 
     \brief An interaction use refers to an interaction. The interaction use is a shorthand for copying the contents of the referenced interaction where the interaction use is. To be accurate the copying must take into account substituting parameters with arguments and connect the formal gates with the actual ones.
  */
-QUmlInteractionUse::QUmlInteractionUse(bool createQObject) :
+QUmlInteractionUse::QUmlInteractionUse(bool createQModelingObject) :
     _refersTo(0),
     _returnValue(0),
     _returnValueRecipient(0)
 {
-    if (createQObject)
-        _qObject = new QUmlInteractionUseObject(this);
-    setGroupProperties();
-    setPropertyData();
+    if (createQModelingObject)
+        _qModelingObject = qobject_cast<QModelingObject *>(new QUmlInteractionUseObject(this));
 }
 
 QUmlInteractionUse::~QUmlInteractionUse()
 {
-    if (!deletingFromQObject) {
-        if (_qObject)
-            _qObject->setProperty("deletingFromModelingObject", true);
-        delete _qObject;
+    if (!deletingFromQModelingObject) {
+        if (_qModelingObject)
+            _qModelingObject->setProperty("deletingFromModelingObject", true);
+        delete _qModelingObject;
     }
 }
 
-QModelingObject *QUmlInteractionUse::clone() const
+QModelingElement *QUmlInteractionUse::clone() const
 {
     QUmlInteractionUse *c = new QUmlInteractionUse;
     foreach (QUmlComment *element, ownedComments())
@@ -134,9 +132,9 @@ void QUmlInteractionUse::addActualGate(QUmlGate *actualGate)
 
     if (!_actualGates.contains(actualGate)) {
         _actualGates.insert(actualGate);
-        if (actualGate && actualGate->asQObject() && this->asQObject())
-            QObject::connect(actualGate->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeActualGate(QObject *)));
-        actualGate->asQObject()->setParent(this->asQObject());
+        if (actualGate && actualGate->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(actualGate->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeActualGate(QObject *)));
+        actualGate->asQModelingObject()->setParent(this->asQModelingObject());
 
         // Adjust subsetted properties
         addOwnedElement(actualGate);
@@ -149,8 +147,8 @@ void QUmlInteractionUse::removeActualGate(QUmlGate *actualGate)
 
     if (_actualGates.contains(actualGate)) {
         _actualGates.remove(actualGate);
-        if (actualGate->asQObject())
-            actualGate->asQObject()->setParent(0);
+        if (actualGate->asQModelingObject())
+            actualGate->asQModelingObject()->setParent(0);
 
         // Adjust subsetted properties
         removeOwnedElement(actualGate);
@@ -173,9 +171,9 @@ void QUmlInteractionUse::addArgument(QUmlValueSpecification *argument)
 
     if (!_arguments.contains(argument)) {
         _arguments.append(argument);
-        if (argument && argument->asQObject() && this->asQObject())
-            QObject::connect(argument->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeArgument(QObject *)));
-        argument->asQObject()->setParent(this->asQObject());
+        if (argument && argument->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(argument->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeArgument(QObject *)));
+        argument->asQModelingObject()->setParent(this->asQModelingObject());
 
         // Adjust subsetted properties
         addOwnedElement(argument);
@@ -188,8 +186,8 @@ void QUmlInteractionUse::removeArgument(QUmlValueSpecification *argument)
 
     if (_arguments.contains(argument)) {
         _arguments.removeAll(argument);
-        if (argument->asQObject())
-            argument->asQObject()->setParent(0);
+        if (argument->asQModelingObject())
+            argument->asQModelingObject()->setParent(0);
 
         // Adjust subsetted properties
         removeOwnedElement(argument);
@@ -212,8 +210,8 @@ void QUmlInteractionUse::setRefersTo(QUmlInteraction *refersTo)
 
     if (_refersTo != refersTo) {
         _refersTo = refersTo;
-        if (refersTo && refersTo->asQObject() && this->asQObject())
-            QObject::connect(refersTo->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setRefersTo()));
+        if (refersTo && refersTo->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(refersTo->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setRefersTo()));
     }
 }
 
@@ -236,9 +234,9 @@ void QUmlInteractionUse::setReturnValue(QUmlValueSpecification *returnValue)
         removeOwnedElement(_returnValue);
 
         _returnValue = returnValue;
-        if (returnValue && returnValue->asQObject() && this->asQObject())
-            QObject::connect(returnValue->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setReturnValue()));
-        returnValue->asQObject()->setParent(this->asQObject());
+        if (returnValue && returnValue->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(returnValue->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setReturnValue()));
+        returnValue->asQModelingObject()->setParent(this->asQModelingObject());
 
         // Adjust subsetted properties
         if (returnValue) {
@@ -263,81 +261,8 @@ void QUmlInteractionUse::setReturnValueRecipient(QUmlProperty *returnValueRecipi
 
     if (_returnValueRecipient != returnValueRecipient) {
         _returnValueRecipient = returnValueRecipient;
-        if (returnValueRecipient && returnValueRecipient->asQObject() && this->asQObject())
-            QObject::connect(returnValueRecipient->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setReturnValueRecipient()));
+        if (returnValueRecipient && returnValueRecipient->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(returnValueRecipient->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setReturnValueRecipient()));
     }
-}
-
-void QUmlInteractionUse::setGroupProperties()
-{
-    const QMetaObject *metaObject = _qObject->metaObject();
-
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
-    _groupProperties.insert(QStringLiteral("QUmlInteractionFragment"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("covered"))));
-    _groupProperties.insert(QStringLiteral("QUmlInteractionFragment"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("enclosingInteraction"))));
-    _groupProperties.insert(QStringLiteral("QUmlInteractionFragment"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("enclosingOperand"))));
-    _groupProperties.insert(QStringLiteral("QUmlInteractionFragment"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("generalOrderings"))));
-    _groupProperties.insert(QStringLiteral("QUmlInteractionUse"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("actualGates"))));
-    _groupProperties.insert(QStringLiteral("QUmlInteractionUse"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("arguments"))));
-    _groupProperties.insert(QStringLiteral("QUmlInteractionUse"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("refersTo"))));
-    _groupProperties.insert(QStringLiteral("QUmlInteractionUse"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("returnValue"))));
-    _groupProperties.insert(QStringLiteral("QUmlInteractionUse"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("returnValueRecipient"))));
-}
-
-void QUmlInteractionUse::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionUse")][QStringLiteral("actualGates")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionUse")][QStringLiteral("actualGates")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInteractionUse");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionUse")][QStringLiteral("actualGates")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionUse")][QStringLiteral("actualGates")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionUse")][QStringLiteral("actualGates")][QtModeling::DocumentationRole] = QStringLiteral("The actual gates of the InteractionUse");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionUse")][QStringLiteral("actualGates")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionUse")][QStringLiteral("actualGates")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionUse")][QStringLiteral("actualGates")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionUse")][QStringLiteral("arguments")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionUse")][QStringLiteral("arguments")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInteractionUse");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionUse")][QStringLiteral("arguments")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionUse")][QStringLiteral("arguments")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionUse")][QStringLiteral("arguments")][QtModeling::DocumentationRole] = QStringLiteral("The actual arguments of the Interaction");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionUse")][QStringLiteral("arguments")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionUse")][QStringLiteral("arguments")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionUse")][QStringLiteral("arguments")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionUse")][QStringLiteral("refersTo")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionUse")][QStringLiteral("refersTo")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInteractionUse");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionUse")][QStringLiteral("refersTo")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionUse")][QStringLiteral("refersTo")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionUse")][QStringLiteral("refersTo")][QtModeling::DocumentationRole] = QStringLiteral("Refers to the Interaction that defines its meaning");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionUse")][QStringLiteral("refersTo")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionUse")][QStringLiteral("refersTo")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionUse")][QStringLiteral("refersTo")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionUse")][QStringLiteral("returnValue")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionUse")][QStringLiteral("returnValue")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInteractionUse");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionUse")][QStringLiteral("returnValue")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionUse")][QStringLiteral("returnValue")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionUse")][QStringLiteral("returnValue")][QtModeling::DocumentationRole] = QStringLiteral("The value of the executed Interaction.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionUse")][QStringLiteral("returnValue")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionUse")][QStringLiteral("returnValue")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionUse")][QStringLiteral("returnValue")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionUse")][QStringLiteral("returnValueRecipient")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionUse")][QStringLiteral("returnValueRecipient")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInteractionUse");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionUse")][QStringLiteral("returnValueRecipient")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionUse")][QStringLiteral("returnValueRecipient")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionUse")][QStringLiteral("returnValueRecipient")][QtModeling::DocumentationRole] = QStringLiteral("The recipient of the return value.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionUse")][QStringLiteral("returnValueRecipient")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionUse")][QStringLiteral("returnValueRecipient")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionUse")][QStringLiteral("returnValueRecipient")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
 }
 

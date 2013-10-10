@@ -43,7 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtCore/QObject>
+#include <QtModeling/QModelingObject>
 
 #include <QtUml/QtUmlNamespace>
 
@@ -54,9 +54,12 @@ QT_BEGIN_NAMESPACE
 QT_MODULE(QtUml)
 
 class QUmlCallBehaviorAction;
-class Q_UML_EXPORT QUmlCallBehaviorActionObject : public QObject
+class QModelingObjectPrivate;
+class Q_UML_EXPORT QUmlCallBehaviorActionObject : public QModelingObject
 {
     Q_OBJECT
+    Q_DISABLE_COPY(QUmlCallBehaviorActionObject)
+    Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [Element]
     Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
@@ -109,7 +112,7 @@ class Q_UML_EXPORT QUmlCallBehaviorActionObject : public QObject
     Q_PROPERTY(QObject * behavior READ behavior WRITE setBehavior)
 
 public:
-    Q_INVOKABLE explicit QUmlCallBehaviorActionObject(QUmlCallBehaviorAction *qModelingObject);
+    Q_INVOKABLE explicit QUmlCallBehaviorActionObject(QUmlCallBehaviorAction *qModelingElement);
     virtual ~QUmlCallBehaviorActionObject();
 
     // Owned attributes [Element]
@@ -248,6 +251,10 @@ public Q_SLOTS:
 
     // Slots for owned attributes [CallBehaviorAction]
     void setBehavior(QObject *behavior = 0);
+
+protected:
+    virtual void setGroupProperties();
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

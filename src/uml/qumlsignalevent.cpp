@@ -60,25 +60,23 @@
 
     \brief A signal event represents the receipt of an asynchronous signal instance. A signal event may, for example, cause a state machine to trigger a transition.
  */
-QUmlSignalEvent::QUmlSignalEvent(bool createQObject) :
+QUmlSignalEvent::QUmlSignalEvent(bool createQModelingObject) :
     _signal(0)
 {
-    if (createQObject)
-        _qObject = new QUmlSignalEventObject(this);
-    setGroupProperties();
-    setPropertyData();
+    if (createQModelingObject)
+        _qModelingObject = qobject_cast<QModelingObject *>(new QUmlSignalEventObject(this));
 }
 
 QUmlSignalEvent::~QUmlSignalEvent()
 {
-    if (!deletingFromQObject) {
-        if (_qObject)
-            _qObject->setProperty("deletingFromModelingObject", true);
-        delete _qObject;
+    if (!deletingFromQModelingObject) {
+        if (_qModelingObject)
+            _qModelingObject->setProperty("deletingFromModelingObject", true);
+        delete _qModelingObject;
     }
 }
 
-QModelingObject *QUmlSignalEvent::clone() const
+QModelingElement *QUmlSignalEvent::clone() const
 {
     QUmlSignalEvent *c = new QUmlSignalEvent;
     foreach (QUmlComment *element, ownedComments())
@@ -116,39 +114,8 @@ void QUmlSignalEvent::setSignal(QUmlSignal *signal)
 
     if (_signal != signal) {
         _signal = signal;
-        if (signal && signal->asQObject() && this->asQObject())
-            QObject::connect(signal->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setSignal()));
+        if (signal && signal->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(signal->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setSignal()));
     }
-}
-
-void QUmlSignalEvent::setGroupProperties()
-{
-    const QMetaObject *metaObject = _qObject->metaObject();
-
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
-    _groupProperties.insert(QStringLiteral("QUmlParameterableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owningTemplateParameter"))));
-    _groupProperties.insert(QStringLiteral("QUmlParameterableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("templateParameter"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
-    _groupProperties.insert(QStringLiteral("QUmlPackageableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
-    _groupProperties.insert(QStringLiteral("QUmlSignalEvent"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("signal"))));
-}
-
-void QUmlSignalEvent::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlSignalEvent")][QStringLiteral("signal")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlSignalEvent")][QStringLiteral("signal")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlSignalEvent");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlSignalEvent")][QStringLiteral("signal")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlSignalEvent")][QStringLiteral("signal")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlSignalEvent")][QStringLiteral("signal")][QtModeling::DocumentationRole] = QStringLiteral("The specific signal that is associated with this event.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlSignalEvent")][QStringLiteral("signal")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlSignalEvent")][QStringLiteral("signal")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlSignalEvent")][QStringLiteral("signal")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
 }
 

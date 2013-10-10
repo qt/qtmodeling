@@ -45,7 +45,6 @@
 
 #include <QtUml/QUmlStructuredActivityNode>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -58,10 +57,10 @@ class QUmlOutputPin;
 class Q_UML_EXPORT QUmlConditionalNode : public QUmlStructuredActivityNode
 {
 public:
-    explicit QUmlConditionalNode(bool createQObject = true);
+    explicit QUmlConditionalNode(bool createQModelingObject = true);
     virtual ~QUmlConditionalNode();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
     const QSet<QUmlClause *> clauses() const;
@@ -80,9 +79,6 @@ protected:
     bool _isAssured;
     bool _isDeterminate;
     QList<QUmlOutputPin *> _results;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

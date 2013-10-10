@@ -43,7 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtCore/QObject>
+#include <QtModeling/QModelingObject>
 
 #include <QtUml/QtUmlNamespace>
 
@@ -54,9 +54,12 @@ QT_BEGIN_NAMESPACE
 QT_MODULE(QtUml)
 
 class QUmlManifestation;
-class Q_UML_EXPORT QUmlManifestationObject : public QObject
+class QModelingObjectPrivate;
+class Q_UML_EXPORT QUmlManifestationObject : public QModelingObject
 {
     Q_OBJECT
+    Q_DISABLE_COPY(QUmlManifestationObject)
+    Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [Element]
     Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
@@ -95,7 +98,7 @@ class Q_UML_EXPORT QUmlManifestationObject : public QObject
     Q_PROPERTY(QObject * utilizedElement READ utilizedElement WRITE setUtilizedElement)
 
 public:
-    Q_INVOKABLE explicit QUmlManifestationObject(QUmlManifestation *qModelingObject);
+    Q_INVOKABLE explicit QUmlManifestationObject(QUmlManifestation *qModelingElement);
     virtual ~QUmlManifestationObject();
 
     // Owned attributes [Element]
@@ -194,6 +197,10 @@ public Q_SLOTS:
 
     // Slots for owned attributes [Manifestation]
     void setUtilizedElement(QObject *utilizedElement = 0);
+
+protected:
+    virtual void setGroupProperties();
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

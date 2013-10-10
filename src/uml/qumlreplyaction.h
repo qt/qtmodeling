@@ -45,7 +45,6 @@
 
 #include <QtUml/QUmlAction>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -58,10 +57,10 @@ class QUmlTrigger;
 class Q_UML_EXPORT QUmlReplyAction : public QUmlAction
 {
 public:
-    explicit QUmlReplyAction(bool createQObject = true);
+    explicit QUmlReplyAction(bool createQModelingObject = true);
     virtual ~QUmlReplyAction();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
     QUmlTrigger *replyToCall() const;
@@ -76,9 +75,6 @@ protected:
     QUmlTrigger *_replyToCall;
     QSet<QUmlInputPin *> _replyValues;
     QUmlInputPin *_returnInformation;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

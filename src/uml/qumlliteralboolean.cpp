@@ -60,25 +60,23 @@
 
     \brief A literal Boolean is a specification of a Boolean value.
  */
-QUmlLiteralBoolean::QUmlLiteralBoolean(bool createQObject) :
+QUmlLiteralBoolean::QUmlLiteralBoolean(bool createQModelingObject) :
     _value(false)
 {
-    if (createQObject)
-        _qObject = new QUmlLiteralBooleanObject(this);
-    setGroupProperties();
-    setPropertyData();
+    if (createQModelingObject)
+        _qModelingObject = qobject_cast<QModelingObject *>(new QUmlLiteralBooleanObject(this));
 }
 
 QUmlLiteralBoolean::~QUmlLiteralBoolean()
 {
-    if (!deletingFromQObject) {
-        if (_qObject)
-            _qObject->setProperty("deletingFromModelingObject", true);
-        delete _qObject;
+    if (!deletingFromQModelingObject) {
+        if (_qModelingObject)
+            _qModelingObject->setProperty("deletingFromModelingObject", true);
+        delete _qModelingObject;
     }
 }
 
-QModelingObject *QUmlLiteralBoolean::clone() const
+QModelingElement *QUmlLiteralBoolean::clone() const
 {
     QUmlLiteralBoolean *c = new QUmlLiteralBoolean;
     foreach (QUmlComment *element, ownedComments())
@@ -117,7 +115,7 @@ void QUmlLiteralBoolean::setValue(bool value)
 
     if (_value != value) {
         _value = value;
-        _modifiedResettableProperties << QStringLiteral("value");
+        _qModelingObject->modifiedResettableProperties() << QStringLiteral("value");
     }
 }
 
@@ -141,37 +139,5 @@ bool QUmlLiteralBoolean::isComputable() const
     qWarning("UmlLiteralBoolean::isComputable(): to be implemented (operation)");
 
     return bool ();
-}
-
-void QUmlLiteralBoolean::setGroupProperties()
-{
-    const QMetaObject *metaObject = _qObject->metaObject();
-
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
-    _groupProperties.insert(QStringLiteral("QUmlTypedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("type"))));
-    _groupProperties.insert(QStringLiteral("QUmlParameterableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owningTemplateParameter"))));
-    _groupProperties.insert(QStringLiteral("QUmlParameterableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("templateParameter"))));
-    _groupProperties.insert(QStringLiteral("QUmlPackageableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
-    _groupProperties.insert(QStringLiteral("QUmlLiteralBoolean"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("value"))));
-}
-
-void QUmlLiteralBoolean::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLiteralBoolean")][QStringLiteral("value")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLiteralBoolean")][QStringLiteral("value")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlLiteralBoolean");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLiteralBoolean")][QStringLiteral("value")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLiteralBoolean")][QStringLiteral("value")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLiteralBoolean")][QStringLiteral("value")][QtModeling::DocumentationRole] = QStringLiteral("The specified Boolean value.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLiteralBoolean")][QStringLiteral("value")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLiteralBoolean")][QStringLiteral("value")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLiteralBoolean")][QStringLiteral("value")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
 }
 

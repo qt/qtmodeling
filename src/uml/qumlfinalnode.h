@@ -45,7 +45,6 @@
 
 #include <QtUml/QUmlControlNode>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -57,15 +56,12 @@ class Q_UML_EXPORT QUmlFinalNode : public QUmlControlNode
 public:
     virtual ~QUmlFinalNode();
 
-    Q_DECL_HIDDEN QModelingObject *clone() const;
+    Q_DECL_HIDDEN virtual QModelingElement *clone() const;
 
 
 protected:
     explicit QUmlFinalNode();
 
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

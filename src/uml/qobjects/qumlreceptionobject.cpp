@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlreceptionobject_p.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlReception>
 #include <QtUml/QUmlBehavior>
@@ -62,16 +63,18 @@
 
 QT_BEGIN_NAMESPACE
 
-QUmlReceptionObject::QUmlReceptionObject(QUmlReception *qModelingObject)
+QUmlReceptionObject::QUmlReceptionObject(QUmlReception *qModelingElement)
 {
-    setProperty("modelingObject", QVariant::fromValue(static_cast<QModelingObject *>(qModelingObject)));
+    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(qModelingElement)));
+    setGroupProperties();
+    setPropertyData();
 }
 
 QUmlReceptionObject::~QUmlReceptionObject()
 {
     if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingobjectproperty_cast<QUmlReception *>(this)->deletingFromQObject = true;
-        delete qmodelingobjectproperty_cast<QUmlComment *>(this);
+        qmodelingelementproperty_cast<QUmlReception *>(this)->deletingFromQModelingObject = true;
+        delete qmodelingelementproperty_cast<QUmlComment *>(this);
     }
 }
 
@@ -80,25 +83,25 @@ QUmlReceptionObject::~QUmlReceptionObject()
 const QSet<QObject *> QUmlReceptionObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlReception *>(this)->ownedComments())
-        set.insert(element->asQObject());
+    foreach (QUmlComment *element, qmodelingelementproperty_cast<QUmlReception *>(this)->ownedComments())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlReceptionObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlReception *>(this)->ownedElements())
-        set.insert(element->asQObject());
+    foreach (QUmlElement *element, qmodelingelementproperty_cast<QUmlReception *>(this)->ownedElements())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 QObject *QUmlReceptionObject::owner() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlReception *>(this)->owner())
+    if (!qmodelingelementproperty_cast<QUmlReception *>(this)->owner())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlReception *>(this)->owner()->asQObject();
+        return qmodelingelementproperty_cast<QUmlReception *>(this)->owner()->asQModelingObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -106,40 +109,40 @@ QObject *QUmlReceptionObject::owner() const
 const QSet<QObject *> QUmlReceptionObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlReception *>(this)->clientDependencies())
-        set.insert(element->asQObject());
+    foreach (QUmlDependency *element, qmodelingelementproperty_cast<QUmlReception *>(this)->clientDependencies())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 QString QUmlReceptionObject::name() const
 {
-    return qmodelingobjectproperty_cast<QUmlReception *>(this)->name();
+    return qmodelingelementproperty_cast<QUmlReception *>(this)->name();
 }
 
 QObject *QUmlReceptionObject::nameExpression() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlReception *>(this)->nameExpression())
+    if (!qmodelingelementproperty_cast<QUmlReception *>(this)->nameExpression())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlReception *>(this)->nameExpression()->asQObject();
+        return qmodelingelementproperty_cast<QUmlReception *>(this)->nameExpression()->asQModelingObject();
 }
 
 QObject *QUmlReceptionObject::namespace_() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlReception *>(this)->namespace_())
+    if (!qmodelingelementproperty_cast<QUmlReception *>(this)->namespace_())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlReception *>(this)->namespace_()->asQObject();
+        return qmodelingelementproperty_cast<QUmlReception *>(this)->namespace_()->asQModelingObject();
 }
 
 QString QUmlReceptionObject::qualifiedName() const
 {
-    return qmodelingobjectproperty_cast<QUmlReception *>(this)->qualifiedName();
+    return qmodelingelementproperty_cast<QUmlReception *>(this)->qualifiedName();
 }
 
 QtUml::VisibilityKind QUmlReceptionObject::visibility() const
 {
-    return qmodelingobjectproperty_cast<QUmlReception *>(this)->visibility();
+    return qmodelingelementproperty_cast<QUmlReception *>(this)->visibility();
 }
 
 // OWNED ATTRIBUTES [Namespace]
@@ -147,48 +150,48 @@ QtUml::VisibilityKind QUmlReceptionObject::visibility() const
 const QSet<QObject *> QUmlReceptionObject::elementImports() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElementImport *element, qmodelingobjectproperty_cast<QUmlReception *>(this)->elementImports())
-        set.insert(element->asQObject());
+    foreach (QUmlElementImport *element, qmodelingelementproperty_cast<QUmlReception *>(this)->elementImports())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlReceptionObject::importedMembers() const
 {
     QSet<QObject *> set;
-    foreach (QUmlPackageableElement *element, qmodelingobjectproperty_cast<QUmlReception *>(this)->importedMembers())
-        set.insert(element->asQObject());
+    foreach (QUmlPackageableElement *element, qmodelingelementproperty_cast<QUmlReception *>(this)->importedMembers())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlReceptionObject::members() const
 {
     QSet<QObject *> set;
-    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlReception *>(this)->members())
-        set.insert(element->asQObject());
+    foreach (QUmlNamedElement *element, qmodelingelementproperty_cast<QUmlReception *>(this)->members())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlReceptionObject::ownedMembers() const
 {
     QSet<QObject *> set;
-    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlReception *>(this)->ownedMembers())
-        set.insert(element->asQObject());
+    foreach (QUmlNamedElement *element, qmodelingelementproperty_cast<QUmlReception *>(this)->ownedMembers())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlReceptionObject::ownedRules() const
 {
     QSet<QObject *> set;
-    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlReception *>(this)->ownedRules())
-        set.insert(element->asQObject());
+    foreach (QUmlConstraint *element, qmodelingelementproperty_cast<QUmlReception *>(this)->ownedRules())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlReceptionObject::packageImports() const
 {
     QSet<QObject *> set;
-    foreach (QUmlPackageImport *element, qmodelingobjectproperty_cast<QUmlReception *>(this)->packageImports())
-        set.insert(element->asQObject());
+    foreach (QUmlPackageImport *element, qmodelingelementproperty_cast<QUmlReception *>(this)->packageImports())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
@@ -196,22 +199,22 @@ const QSet<QObject *> QUmlReceptionObject::packageImports() const
 
 bool QUmlReceptionObject::isLeaf() const
 {
-    return qmodelingobjectproperty_cast<QUmlReception *>(this)->isLeaf();
+    return qmodelingelementproperty_cast<QUmlReception *>(this)->isLeaf();
 }
 
 const QSet<QObject *> QUmlReceptionObject::redefinedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlRedefinableElement *element, qmodelingobjectproperty_cast<QUmlReception *>(this)->redefinedElements())
-        set.insert(element->asQObject());
+    foreach (QUmlRedefinableElement *element, qmodelingelementproperty_cast<QUmlReception *>(this)->redefinedElements())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlReceptionObject::redefinitionContexts() const
 {
     QSet<QObject *> set;
-    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlReception *>(this)->redefinitionContexts())
-        set.insert(element->asQObject());
+    foreach (QUmlClassifier *element, qmodelingelementproperty_cast<QUmlReception *>(this)->redefinitionContexts())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
@@ -220,57 +223,57 @@ const QSet<QObject *> QUmlReceptionObject::redefinitionContexts() const
 const QSet<QObject *> QUmlReceptionObject::featuringClassifiers() const
 {
     QSet<QObject *> set;
-    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlReception *>(this)->featuringClassifiers())
-        set.insert(element->asQObject());
+    foreach (QUmlClassifier *element, qmodelingelementproperty_cast<QUmlReception *>(this)->featuringClassifiers())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 bool QUmlReceptionObject::isStatic() const
 {
-    return qmodelingobjectproperty_cast<QUmlReception *>(this)->isStatic();
+    return qmodelingelementproperty_cast<QUmlReception *>(this)->isStatic();
 }
 
 // OWNED ATTRIBUTES [BehavioralFeature]
 
 QtUml::CallConcurrencyKind QUmlReceptionObject::concurrency() const
 {
-    return qmodelingobjectproperty_cast<QUmlReception *>(this)->concurrency();
+    return qmodelingelementproperty_cast<QUmlReception *>(this)->concurrency();
 }
 
 bool QUmlReceptionObject::isAbstract() const
 {
-    return qmodelingobjectproperty_cast<QUmlReception *>(this)->isAbstract();
+    return qmodelingelementproperty_cast<QUmlReception *>(this)->isAbstract();
 }
 
 const QSet<QObject *> QUmlReceptionObject::methods() const
 {
     QSet<QObject *> set;
-    foreach (QUmlBehavior *element, qmodelingobjectproperty_cast<QUmlReception *>(this)->methods())
-        set.insert(element->asQObject());
+    foreach (QUmlBehavior *element, qmodelingelementproperty_cast<QUmlReception *>(this)->methods())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QList<QObject *> QUmlReceptionObject::ownedParameters() const
 {
     QList<QObject *> list;
-    foreach (QUmlParameter *element, qmodelingobjectproperty_cast<QUmlReception *>(this)->ownedParameters())
-        list.append(element->asQObject());
+    foreach (QUmlParameter *element, qmodelingelementproperty_cast<QUmlReception *>(this)->ownedParameters())
+        list.append(element->asQModelingObject());
     return list;
 }
 
 const QSet<QObject *> QUmlReceptionObject::ownedParameterSets() const
 {
     QSet<QObject *> set;
-    foreach (QUmlParameterSet *element, qmodelingobjectproperty_cast<QUmlReception *>(this)->ownedParameterSets())
-        set.insert(element->asQObject());
+    foreach (QUmlParameterSet *element, qmodelingelementproperty_cast<QUmlReception *>(this)->ownedParameterSets())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlReceptionObject::raisedExceptions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlType *element, qmodelingobjectproperty_cast<QUmlReception *>(this)->raisedExceptions())
-        set.insert(element->asQObject());
+    foreach (QUmlType *element, qmodelingelementproperty_cast<QUmlReception *>(this)->raisedExceptions())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
@@ -278,10 +281,10 @@ const QSet<QObject *> QUmlReceptionObject::raisedExceptions() const
 
 QObject *QUmlReceptionObject::signal() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlReception *>(this)->signal())
+    if (!qmodelingelementproperty_cast<QUmlReception *>(this)->signal())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlReception *>(this)->signal()->asQObject();
+        return qmodelingelementproperty_cast<QUmlReception *>(this)->signal()->asQModelingObject();
 }
 
 // OPERATIONS [Element]
@@ -289,14 +292,14 @@ QObject *QUmlReceptionObject::signal() const
 QSet<QObject *> QUmlReceptionObject::allOwnedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlReception *>(this)->allOwnedElements())
-        set.insert(element->asQObject());
+    foreach (QUmlElement *element, qmodelingelementproperty_cast<QUmlReception *>(this)->allOwnedElements())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 bool QUmlReceptionObject::mustBeOwned() const
 {
-    return qmodelingobjectproperty_cast<QUmlReception *>(this)->mustBeOwned();
+    return qmodelingelementproperty_cast<QUmlReception *>(this)->mustBeOwned();
 }
 
 // OPERATIONS [NamedElement]
@@ -304,22 +307,22 @@ bool QUmlReceptionObject::mustBeOwned() const
 QList<QObject *> QUmlReceptionObject::allNamespaces() const
 {
     QList<QObject *> set;
-    foreach (QUmlNamespace *element, qmodelingobjectproperty_cast<QUmlReception *>(this)->allNamespaces())
-        set.append(element->asQObject());
+    foreach (QUmlNamespace *element, qmodelingelementproperty_cast<QUmlReception *>(this)->allNamespaces())
+        set.append(element->asQModelingObject());
     return set;
 }
 
 QSet<QObject *> QUmlReceptionObject::allOwningPackages() const
 {
     QSet<QObject *> set;
-    foreach (QUmlPackage *element, qmodelingobjectproperty_cast<QUmlReception *>(this)->allOwningPackages())
-        set.insert(element->asQObject());
+    foreach (QUmlPackage *element, qmodelingelementproperty_cast<QUmlReception *>(this)->allOwningPackages())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 QString QUmlReceptionObject::separator() const
 {
-    return qmodelingobjectproperty_cast<QUmlReception *>(this)->separator();
+    return qmodelingelementproperty_cast<QUmlReception *>(this)->separator();
 }
 
 // OPERATIONS [Namespace]
@@ -328,300 +331,368 @@ QSet<QObject *> QUmlReceptionObject::excludeCollisions(QSet<QObject *> imps) con
 {
     QSet<QUmlPackageableElement *> impsConverted;
     foreach (QObject *object, imps)
-        impsConverted.insert(qmodelingobjectproperty_cast<QUmlPackageableElement *>(object));
+        impsConverted.insert(qmodelingelementproperty_cast<QUmlPackageableElement *>(object));
     QSet<QObject *> set;
-    foreach (QUmlPackageableElement *element, qmodelingobjectproperty_cast<QUmlReception *>(this)->excludeCollisions(impsConverted))
-        set.insert(element->asQObject());
+    foreach (QUmlPackageableElement *element, qmodelingelementproperty_cast<QUmlReception *>(this)->excludeCollisions(impsConverted))
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 QSet<QString> QUmlReceptionObject::getNamesOfMember(QObject *element) const
 {
-    return qmodelingobjectproperty_cast<QUmlReception *>(this)->getNamesOfMember(qmodelingobjectproperty_cast<QUmlNamedElement *>(element));
+    return qmodelingelementproperty_cast<QUmlReception *>(this)->getNamesOfMember(qmodelingelementproperty_cast<QUmlNamedElement *>(element));
 }
 
 QSet<QObject *> QUmlReceptionObject::importMembers(QSet<QObject *> imps) const
 {
     QSet<QUmlPackageableElement *> impsConverted;
     foreach (QObject *object, imps)
-        impsConverted.insert(qmodelingobjectproperty_cast<QUmlPackageableElement *>(object));
+        impsConverted.insert(qmodelingelementproperty_cast<QUmlPackageableElement *>(object));
     QSet<QObject *> set;
-    foreach (QUmlPackageableElement *element, qmodelingobjectproperty_cast<QUmlReception *>(this)->importMembers(impsConverted))
-        set.insert(element->asQObject());
+    foreach (QUmlPackageableElement *element, qmodelingelementproperty_cast<QUmlReception *>(this)->importMembers(impsConverted))
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 bool QUmlReceptionObject::membersAreDistinguishable() const
 {
-    return qmodelingobjectproperty_cast<QUmlReception *>(this)->membersAreDistinguishable();
+    return qmodelingelementproperty_cast<QUmlReception *>(this)->membersAreDistinguishable();
 }
 
 // OPERATIONS [RedefinableElement]
 
 bool QUmlReceptionObject::isConsistentWith(QObject *redefinee) const
 {
-    return qmodelingobjectproperty_cast<QUmlReception *>(this)->isConsistentWith(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefinee));
+    return qmodelingelementproperty_cast<QUmlReception *>(this)->isConsistentWith(qmodelingelementproperty_cast<QUmlRedefinableElement *>(redefinee));
 }
 
 bool QUmlReceptionObject::isRedefinitionContextValid(QObject *redefined) const
 {
-    return qmodelingobjectproperty_cast<QUmlReception *>(this)->isRedefinitionContextValid(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefined));
+    return qmodelingelementproperty_cast<QUmlReception *>(this)->isRedefinitionContextValid(qmodelingelementproperty_cast<QUmlRedefinableElement *>(redefined));
 }
 
 // OPERATIONS [BehavioralFeature]
 
 bool QUmlReceptionObject::isDistinguishableFrom(QObject *n, QObject *ns) const
 {
-    return qmodelingobjectproperty_cast<QUmlReception *>(this)->isDistinguishableFrom(qmodelingobjectproperty_cast<QUmlNamedElement *>(n), qmodelingobjectproperty_cast<QUmlNamespace *>(ns));
+    return qmodelingelementproperty_cast<QUmlReception *>(this)->isDistinguishableFrom(qmodelingelementproperty_cast<QUmlNamedElement *>(n), qmodelingelementproperty_cast<QUmlNamespace *>(ns));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Element]
 
 void QUmlReceptionObject::addOwnedComment(QObject *ownedComment)
 {
-    qmodelingobjectproperty_cast<QUmlReception *>(this)->addOwnedComment(qmodelingobjectproperty_cast<QUmlComment *>(ownedComment));
+    qmodelingelementproperty_cast<QUmlReception *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
 }
 
 void QUmlReceptionObject::removeOwnedComment(QObject *ownedComment)
 {
-    qmodelingobjectproperty_cast<QUmlReception *>(this)->removeOwnedComment(qmodelingobjectproperty_cast<QUmlComment *>(ownedComment));
+    qmodelingelementproperty_cast<QUmlReception *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
 }
 
 void QUmlReceptionObject::addOwnedElement(QObject *ownedElement)
 {
-    qmodelingobjectproperty_cast<QUmlReception *>(this)->addOwnedElement(qmodelingobjectproperty_cast<QUmlElement *>(ownedElement));
+    qmodelingelementproperty_cast<QUmlReception *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
 }
 
 void QUmlReceptionObject::removeOwnedElement(QObject *ownedElement)
 {
-    qmodelingobjectproperty_cast<QUmlReception *>(this)->removeOwnedElement(qmodelingobjectproperty_cast<QUmlElement *>(ownedElement));
+    qmodelingelementproperty_cast<QUmlReception *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
 }
 
 void QUmlReceptionObject::setOwner(QObject *owner)
 {
-    qmodelingobjectproperty_cast<QUmlReception *>(this)->setOwner(qmodelingobjectproperty_cast<QUmlElement *>(owner));
+    qmodelingelementproperty_cast<QUmlReception *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [NamedElement]
 
 void QUmlReceptionObject::addClientDependency(QObject *clientDependency)
 {
-    qmodelingobjectproperty_cast<QUmlReception *>(this)->addClientDependency(qmodelingobjectproperty_cast<QUmlDependency *>(clientDependency));
+    qmodelingelementproperty_cast<QUmlReception *>(this)->addClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
 }
 
 void QUmlReceptionObject::removeClientDependency(QObject *clientDependency)
 {
-    qmodelingobjectproperty_cast<QUmlReception *>(this)->removeClientDependency(qmodelingobjectproperty_cast<QUmlDependency *>(clientDependency));
+    qmodelingelementproperty_cast<QUmlReception *>(this)->removeClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
 }
 
 void QUmlReceptionObject::setName(QString name)
 {
-    qmodelingobjectproperty_cast<QUmlReception *>(this)->setName(name);
+    qmodelingelementproperty_cast<QUmlReception *>(this)->setName(name);
 }
 
 void QUmlReceptionObject::setNameExpression(QObject *nameExpression)
 {
-    qmodelingobjectproperty_cast<QUmlReception *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
+    qmodelingelementproperty_cast<QUmlReception *>(this)->setNameExpression(qmodelingelementproperty_cast<QUmlStringExpression *>(nameExpression));
 }
 
 void QUmlReceptionObject::setNamespace(QObject *namespace_)
 {
-    qmodelingobjectproperty_cast<QUmlReception *>(this)->setNamespace(qmodelingobjectproperty_cast<QUmlNamespace *>(namespace_));
+    qmodelingelementproperty_cast<QUmlReception *>(this)->setNamespace(qmodelingelementproperty_cast<QUmlNamespace *>(namespace_));
 }
 
 void QUmlReceptionObject::setQualifiedName(QString qualifiedName)
 {
-    qmodelingobjectproperty_cast<QUmlReception *>(this)->setQualifiedName(qualifiedName);
+    qmodelingelementproperty_cast<QUmlReception *>(this)->setQualifiedName(qualifiedName);
 }
 
 void QUmlReceptionObject::setVisibility(QtUml::VisibilityKind visibility)
 {
-    qmodelingobjectproperty_cast<QUmlReception *>(this)->setVisibility(visibility);
+    qmodelingelementproperty_cast<QUmlReception *>(this)->setVisibility(visibility);
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Namespace]
 
 void QUmlReceptionObject::addElementImport(QObject *elementImport)
 {
-    qmodelingobjectproperty_cast<QUmlReception *>(this)->addElementImport(qmodelingobjectproperty_cast<QUmlElementImport *>(elementImport));
+    qmodelingelementproperty_cast<QUmlReception *>(this)->addElementImport(qmodelingelementproperty_cast<QUmlElementImport *>(elementImport));
 }
 
 void QUmlReceptionObject::removeElementImport(QObject *elementImport)
 {
-    qmodelingobjectproperty_cast<QUmlReception *>(this)->removeElementImport(qmodelingobjectproperty_cast<QUmlElementImport *>(elementImport));
+    qmodelingelementproperty_cast<QUmlReception *>(this)->removeElementImport(qmodelingelementproperty_cast<QUmlElementImport *>(elementImport));
 }
 
 void QUmlReceptionObject::addImportedMember(QObject *importedMember)
 {
-    qmodelingobjectproperty_cast<QUmlReception *>(this)->addImportedMember(qmodelingobjectproperty_cast<QUmlPackageableElement *>(importedMember));
+    qmodelingelementproperty_cast<QUmlReception *>(this)->addImportedMember(qmodelingelementproperty_cast<QUmlPackageableElement *>(importedMember));
 }
 
 void QUmlReceptionObject::removeImportedMember(QObject *importedMember)
 {
-    qmodelingobjectproperty_cast<QUmlReception *>(this)->removeImportedMember(qmodelingobjectproperty_cast<QUmlPackageableElement *>(importedMember));
+    qmodelingelementproperty_cast<QUmlReception *>(this)->removeImportedMember(qmodelingelementproperty_cast<QUmlPackageableElement *>(importedMember));
 }
 
 void QUmlReceptionObject::addMember(QObject *member)
 {
-    qmodelingobjectproperty_cast<QUmlReception *>(this)->addMember(qmodelingobjectproperty_cast<QUmlNamedElement *>(member));
+    qmodelingelementproperty_cast<QUmlReception *>(this)->addMember(qmodelingelementproperty_cast<QUmlNamedElement *>(member));
 }
 
 void QUmlReceptionObject::removeMember(QObject *member)
 {
-    qmodelingobjectproperty_cast<QUmlReception *>(this)->removeMember(qmodelingobjectproperty_cast<QUmlNamedElement *>(member));
+    qmodelingelementproperty_cast<QUmlReception *>(this)->removeMember(qmodelingelementproperty_cast<QUmlNamedElement *>(member));
 }
 
 void QUmlReceptionObject::addOwnedMember(QObject *ownedMember)
 {
-    qmodelingobjectproperty_cast<QUmlReception *>(this)->addOwnedMember(qmodelingobjectproperty_cast<QUmlNamedElement *>(ownedMember));
+    qmodelingelementproperty_cast<QUmlReception *>(this)->addOwnedMember(qmodelingelementproperty_cast<QUmlNamedElement *>(ownedMember));
 }
 
 void QUmlReceptionObject::removeOwnedMember(QObject *ownedMember)
 {
-    qmodelingobjectproperty_cast<QUmlReception *>(this)->removeOwnedMember(qmodelingobjectproperty_cast<QUmlNamedElement *>(ownedMember));
+    qmodelingelementproperty_cast<QUmlReception *>(this)->removeOwnedMember(qmodelingelementproperty_cast<QUmlNamedElement *>(ownedMember));
 }
 
 void QUmlReceptionObject::addOwnedRule(QObject *ownedRule)
 {
-    qmodelingobjectproperty_cast<QUmlReception *>(this)->addOwnedRule(qmodelingobjectproperty_cast<QUmlConstraint *>(ownedRule));
+    qmodelingelementproperty_cast<QUmlReception *>(this)->addOwnedRule(qmodelingelementproperty_cast<QUmlConstraint *>(ownedRule));
 }
 
 void QUmlReceptionObject::removeOwnedRule(QObject *ownedRule)
 {
-    qmodelingobjectproperty_cast<QUmlReception *>(this)->removeOwnedRule(qmodelingobjectproperty_cast<QUmlConstraint *>(ownedRule));
+    qmodelingelementproperty_cast<QUmlReception *>(this)->removeOwnedRule(qmodelingelementproperty_cast<QUmlConstraint *>(ownedRule));
 }
 
 void QUmlReceptionObject::addPackageImport(QObject *packageImport)
 {
-    qmodelingobjectproperty_cast<QUmlReception *>(this)->addPackageImport(qmodelingobjectproperty_cast<QUmlPackageImport *>(packageImport));
+    qmodelingelementproperty_cast<QUmlReception *>(this)->addPackageImport(qmodelingelementproperty_cast<QUmlPackageImport *>(packageImport));
 }
 
 void QUmlReceptionObject::removePackageImport(QObject *packageImport)
 {
-    qmodelingobjectproperty_cast<QUmlReception *>(this)->removePackageImport(qmodelingobjectproperty_cast<QUmlPackageImport *>(packageImport));
+    qmodelingelementproperty_cast<QUmlReception *>(this)->removePackageImport(qmodelingelementproperty_cast<QUmlPackageImport *>(packageImport));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [RedefinableElement]
 
 void QUmlReceptionObject::setLeaf(bool isLeaf)
 {
-    qmodelingobjectproperty_cast<QUmlReception *>(this)->setLeaf(isLeaf);
+    qmodelingelementproperty_cast<QUmlReception *>(this)->setLeaf(isLeaf);
 }
 
 void QUmlReceptionObject::unsetLeaf()
 {
-    qmodelingobjectproperty_cast<QUmlReception *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("leaf"));
+    Q_D(QModelingObject);
+    d->modifiedResettableProperties.removeAll(QStringLiteral("leaf"));
 }
 
 void QUmlReceptionObject::addRedefinedElement(QObject *redefinedElement)
 {
-    qmodelingobjectproperty_cast<QUmlReception *>(this)->addRedefinedElement(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefinedElement));
+    qmodelingelementproperty_cast<QUmlReception *>(this)->addRedefinedElement(qmodelingelementproperty_cast<QUmlRedefinableElement *>(redefinedElement));
 }
 
 void QUmlReceptionObject::removeRedefinedElement(QObject *redefinedElement)
 {
-    qmodelingobjectproperty_cast<QUmlReception *>(this)->removeRedefinedElement(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefinedElement));
+    qmodelingelementproperty_cast<QUmlReception *>(this)->removeRedefinedElement(qmodelingelementproperty_cast<QUmlRedefinableElement *>(redefinedElement));
 }
 
 void QUmlReceptionObject::addRedefinitionContext(QObject *redefinitionContext)
 {
-    qmodelingobjectproperty_cast<QUmlReception *>(this)->addRedefinitionContext(qmodelingobjectproperty_cast<QUmlClassifier *>(redefinitionContext));
+    qmodelingelementproperty_cast<QUmlReception *>(this)->addRedefinitionContext(qmodelingelementproperty_cast<QUmlClassifier *>(redefinitionContext));
 }
 
 void QUmlReceptionObject::removeRedefinitionContext(QObject *redefinitionContext)
 {
-    qmodelingobjectproperty_cast<QUmlReception *>(this)->removeRedefinitionContext(qmodelingobjectproperty_cast<QUmlClassifier *>(redefinitionContext));
+    qmodelingelementproperty_cast<QUmlReception *>(this)->removeRedefinitionContext(qmodelingelementproperty_cast<QUmlClassifier *>(redefinitionContext));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Feature]
 
 void QUmlReceptionObject::addFeaturingClassifier(QObject *featuringClassifier)
 {
-    qmodelingobjectproperty_cast<QUmlReception *>(this)->addFeaturingClassifier(qmodelingobjectproperty_cast<QUmlClassifier *>(featuringClassifier));
+    qmodelingelementproperty_cast<QUmlReception *>(this)->addFeaturingClassifier(qmodelingelementproperty_cast<QUmlClassifier *>(featuringClassifier));
 }
 
 void QUmlReceptionObject::removeFeaturingClassifier(QObject *featuringClassifier)
 {
-    qmodelingobjectproperty_cast<QUmlReception *>(this)->removeFeaturingClassifier(qmodelingobjectproperty_cast<QUmlClassifier *>(featuringClassifier));
+    qmodelingelementproperty_cast<QUmlReception *>(this)->removeFeaturingClassifier(qmodelingelementproperty_cast<QUmlClassifier *>(featuringClassifier));
 }
 
 void QUmlReceptionObject::setStatic(bool isStatic)
 {
-    qmodelingobjectproperty_cast<QUmlReception *>(this)->setStatic(isStatic);
+    qmodelingelementproperty_cast<QUmlReception *>(this)->setStatic(isStatic);
 }
 
 void QUmlReceptionObject::unsetStatic()
 {
-    qmodelingobjectproperty_cast<QUmlReception *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("static"));
+    Q_D(QModelingObject);
+    d->modifiedResettableProperties.removeAll(QStringLiteral("static"));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [BehavioralFeature]
 
 void QUmlReceptionObject::setConcurrency(QtUml::CallConcurrencyKind concurrency)
 {
-    qmodelingobjectproperty_cast<QUmlReception *>(this)->setConcurrency(concurrency);
+    qmodelingelementproperty_cast<QUmlReception *>(this)->setConcurrency(concurrency);
 }
 
 void QUmlReceptionObject::unsetConcurrency()
 {
-    qmodelingobjectproperty_cast<QUmlReception *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("concurrency"));
+    Q_D(QModelingObject);
+    d->modifiedResettableProperties.removeAll(QStringLiteral("concurrency"));
 }
 
 void QUmlReceptionObject::setAbstract(bool isAbstract)
 {
-    qmodelingobjectproperty_cast<QUmlReception *>(this)->setAbstract(isAbstract);
+    qmodelingelementproperty_cast<QUmlReception *>(this)->setAbstract(isAbstract);
 }
 
 void QUmlReceptionObject::unsetAbstract()
 {
-    qmodelingobjectproperty_cast<QUmlReception *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("abstract"));
+    Q_D(QModelingObject);
+    d->modifiedResettableProperties.removeAll(QStringLiteral("abstract"));
 }
 
 void QUmlReceptionObject::addMethod(QObject *method)
 {
-    qmodelingobjectproperty_cast<QUmlReception *>(this)->addMethod(qmodelingobjectproperty_cast<QUmlBehavior *>(method));
+    qmodelingelementproperty_cast<QUmlReception *>(this)->addMethod(qmodelingelementproperty_cast<QUmlBehavior *>(method));
 }
 
 void QUmlReceptionObject::removeMethod(QObject *method)
 {
-    qmodelingobjectproperty_cast<QUmlReception *>(this)->removeMethod(qmodelingobjectproperty_cast<QUmlBehavior *>(method));
+    qmodelingelementproperty_cast<QUmlReception *>(this)->removeMethod(qmodelingelementproperty_cast<QUmlBehavior *>(method));
 }
 
 void QUmlReceptionObject::addOwnedParameter(QObject *ownedParameter)
 {
-    qmodelingobjectproperty_cast<QUmlReception *>(this)->addOwnedParameter(qmodelingobjectproperty_cast<QUmlParameter *>(ownedParameter));
+    qmodelingelementproperty_cast<QUmlReception *>(this)->addOwnedParameter(qmodelingelementproperty_cast<QUmlParameter *>(ownedParameter));
 }
 
 void QUmlReceptionObject::removeOwnedParameter(QObject *ownedParameter)
 {
-    qmodelingobjectproperty_cast<QUmlReception *>(this)->removeOwnedParameter(qmodelingobjectproperty_cast<QUmlParameter *>(ownedParameter));
+    qmodelingelementproperty_cast<QUmlReception *>(this)->removeOwnedParameter(qmodelingelementproperty_cast<QUmlParameter *>(ownedParameter));
 }
 
 void QUmlReceptionObject::addOwnedParameterSet(QObject *ownedParameterSet)
 {
-    qmodelingobjectproperty_cast<QUmlReception *>(this)->addOwnedParameterSet(qmodelingobjectproperty_cast<QUmlParameterSet *>(ownedParameterSet));
+    qmodelingelementproperty_cast<QUmlReception *>(this)->addOwnedParameterSet(qmodelingelementproperty_cast<QUmlParameterSet *>(ownedParameterSet));
 }
 
 void QUmlReceptionObject::removeOwnedParameterSet(QObject *ownedParameterSet)
 {
-    qmodelingobjectproperty_cast<QUmlReception *>(this)->removeOwnedParameterSet(qmodelingobjectproperty_cast<QUmlParameterSet *>(ownedParameterSet));
+    qmodelingelementproperty_cast<QUmlReception *>(this)->removeOwnedParameterSet(qmodelingelementproperty_cast<QUmlParameterSet *>(ownedParameterSet));
 }
 
 void QUmlReceptionObject::addRaisedException(QObject *raisedException)
 {
-    qmodelingobjectproperty_cast<QUmlReception *>(this)->addRaisedException(qmodelingobjectproperty_cast<QUmlType *>(raisedException));
+    qmodelingelementproperty_cast<QUmlReception *>(this)->addRaisedException(qmodelingelementproperty_cast<QUmlType *>(raisedException));
 }
 
 void QUmlReceptionObject::removeRaisedException(QObject *raisedException)
 {
-    qmodelingobjectproperty_cast<QUmlReception *>(this)->removeRaisedException(qmodelingobjectproperty_cast<QUmlType *>(raisedException));
+    qmodelingelementproperty_cast<QUmlReception *>(this)->removeRaisedException(qmodelingelementproperty_cast<QUmlType *>(raisedException));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Reception]
 
 void QUmlReceptionObject::setSignal(QObject *signal)
 {
-    qmodelingobjectproperty_cast<QUmlReception *>(this)->setSignal(qmodelingobjectproperty_cast<QUmlSignal *>(signal));
+    qmodelingelementproperty_cast<QUmlReception *>(this)->setSignal(qmodelingelementproperty_cast<QUmlSignal *>(signal));
+}
+
+
+void QUmlReceptionObject::setGroupProperties()
+{
+    Q_D(QModelingObject);
+    const QMetaObject *metaObject = this->metaObject();
+
+    d->propertyGroups << QStringLiteral("QObject");
+    d->groupProperties.insert(QStringLiteral("QObject"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("objectName"))));
+
+    d->propertyGroups << QStringLiteral("QUmlElement");
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
+
+    d->propertyGroups << QStringLiteral("QUmlNamedElement");
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
+
+    d->propertyGroups << QStringLiteral("QUmlNamespace");
+    d->groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("elementImports"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("importedMembers"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("members"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedMembers"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedRules"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("packageImports"))));
+
+    d->propertyGroups << QStringLiteral("QUmlRedefinableElement");
+    d->groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isLeaf"))));
+    d->groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinedElements"))));
+    d->groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinitionContexts"))));
+
+    d->propertyGroups << QStringLiteral("QUmlFeature");
+    d->groupProperties.insert(QStringLiteral("QUmlFeature"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("featuringClassifiers"))));
+    d->groupProperties.insert(QStringLiteral("QUmlFeature"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isStatic"))));
+
+    d->propertyGroups << QStringLiteral("QUmlBehavioralFeature");
+    d->groupProperties.insert(QStringLiteral("QUmlBehavioralFeature"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("concurrency"))));
+    d->groupProperties.insert(QStringLiteral("QUmlBehavioralFeature"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isAbstract"))));
+    d->groupProperties.insert(QStringLiteral("QUmlBehavioralFeature"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("methods"))));
+    d->groupProperties.insert(QStringLiteral("QUmlBehavioralFeature"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedParameters"))));
+    d->groupProperties.insert(QStringLiteral("QUmlBehavioralFeature"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedParameterSets"))));
+    d->groupProperties.insert(QStringLiteral("QUmlBehavioralFeature"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("raisedExceptions"))));
+
+    d->propertyGroups << QStringLiteral("QUmlReception");
+    d->groupProperties.insert(QStringLiteral("QUmlReception"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("signal"))));
+}
+
+void QUmlReceptionObject::setPropertyData()
+{
+    Q_DECLARE_METAPROPERTY_INFO(QUmlReception, signal, AggregationRole, QStringLiteral("none"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlReception, signal, PropertyClassRole, QStringLiteral("QUmlReception"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlReception, signal, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlReception, signal, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlReception, signal, DocumentationRole, QStringLiteral("The signal that this reception handles."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlReception, signal, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlReception, signal, SubsettedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlReception, signal, OppositeEndRole, QStringLiteral(""));
+
 }
 
 QT_END_NAMESPACE

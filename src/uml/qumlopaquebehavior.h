@@ -45,7 +45,6 @@
 
 #include <QtUml/QUmlBehavior>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -55,10 +54,10 @@ QT_MODULE(QtUml)
 class Q_UML_EXPORT QUmlOpaqueBehavior : public QUmlBehavior
 {
 public:
-    explicit QUmlOpaqueBehavior(bool createQObject = true);
+    explicit QUmlOpaqueBehavior(bool createQModelingObject = true);
     virtual ~QUmlOpaqueBehavior();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
     const QList<QString> bodies() const;
@@ -71,9 +70,6 @@ public:
 protected:
     QList<QString> _bodies;
     QList<QString> _languages;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

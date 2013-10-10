@@ -45,7 +45,6 @@
 
 #include <QtUml/QUmlInteractionUse>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -55,16 +54,13 @@ QT_MODULE(QtUml)
 class Q_UML_EXPORT QUmlPartDecomposition : public QUmlInteractionUse
 {
 public:
-    explicit QUmlPartDecomposition(bool createQObject = true);
+    explicit QUmlPartDecomposition(bool createQModelingObject = true);
     virtual ~QUmlPartDecomposition();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
 
 protected:
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

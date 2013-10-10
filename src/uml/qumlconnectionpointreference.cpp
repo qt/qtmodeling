@@ -62,25 +62,23 @@
 
     \brief A connection point reference represents a usage (as part of a submachine state) of an entry/exit point defined in the statemachine reference by the submachine state.
  */
-QUmlConnectionPointReference::QUmlConnectionPointReference(bool createQObject) :
+QUmlConnectionPointReference::QUmlConnectionPointReference(bool createQModelingObject) :
     _state(0)
 {
-    if (createQObject)
-        _qObject = new QUmlConnectionPointReferenceObject(this);
-    setGroupProperties();
-    setPropertyData();
+    if (createQModelingObject)
+        _qModelingObject = qobject_cast<QModelingObject *>(new QUmlConnectionPointReferenceObject(this));
 }
 
 QUmlConnectionPointReference::~QUmlConnectionPointReference()
 {
-    if (!deletingFromQObject) {
-        if (_qObject)
-            _qObject->setProperty("deletingFromModelingObject", true);
-        delete _qObject;
+    if (!deletingFromQModelingObject) {
+        if (_qModelingObject)
+            _qModelingObject->setProperty("deletingFromModelingObject", true);
+        delete _qModelingObject;
     }
 }
 
-QModelingObject *QUmlConnectionPointReference::clone() const
+QModelingElement *QUmlConnectionPointReference::clone() const
 {
     QUmlConnectionPointReference *c = new QUmlConnectionPointReference;
     foreach (QUmlComment *element, ownedComments())
@@ -120,8 +118,8 @@ void QUmlConnectionPointReference::addEntry(QUmlPseudostate *entry)
 
     if (!_entries.contains(entry)) {
         _entries.insert(entry);
-        if (entry && entry->asQObject() && this->asQObject())
-            QObject::connect(entry->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeEntry(QObject *)));
+        if (entry && entry->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(entry->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeEntry(QObject *)));
     }
 }
 
@@ -150,8 +148,8 @@ void QUmlConnectionPointReference::addExit(QUmlPseudostate *exit)
 
     if (!_exits.contains(exit)) {
         _exits.insert(exit);
-        if (exit && exit->asQObject() && this->asQObject())
-            QObject::connect(exit->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeExit(QObject *)));
+        if (exit && exit->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(exit->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeExit(QObject *)));
     }
 }
 
@@ -182,63 +180,11 @@ void QUmlConnectionPointReference::setState(QUmlState *state)
         // Adjust subsetted properties
 
         _state = state;
-        if (state && state->asQObject() && this->asQObject())
-            QObject::connect(state->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setState()));
+        if (state && state->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(state->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setState()));
 
         // Adjust subsetted properties
         setNamespace(state);
     }
-}
-
-void QUmlConnectionPointReference::setGroupProperties()
-{
-    const QMetaObject *metaObject = _qObject->metaObject();
-
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
-    _groupProperties.insert(QStringLiteral("QUmlVertex"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("container"))));
-    _groupProperties.insert(QStringLiteral("QUmlVertex"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("incomings"))));
-    _groupProperties.insert(QStringLiteral("QUmlVertex"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("outgoings"))));
-    _groupProperties.insert(QStringLiteral("QUmlConnectionPointReference"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("entries"))));
-    _groupProperties.insert(QStringLiteral("QUmlConnectionPointReference"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("exits"))));
-    _groupProperties.insert(QStringLiteral("QUmlConnectionPointReference"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("state"))));
-}
-
-void QUmlConnectionPointReference::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectionPointReference")][QStringLiteral("entries")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectionPointReference")][QStringLiteral("entries")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlConnectionPointReference");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectionPointReference")][QStringLiteral("entries")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectionPointReference")][QStringLiteral("entries")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectionPointReference")][QStringLiteral("entries")][QtModeling::DocumentationRole] = QStringLiteral("The entryPoint kind pseudo states corresponding to this connection point.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectionPointReference")][QStringLiteral("entries")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectionPointReference")][QStringLiteral("entries")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectionPointReference")][QStringLiteral("entries")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectionPointReference")][QStringLiteral("exits")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectionPointReference")][QStringLiteral("exits")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlConnectionPointReference");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectionPointReference")][QStringLiteral("exits")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectionPointReference")][QStringLiteral("exits")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectionPointReference")][QStringLiteral("exits")][QtModeling::DocumentationRole] = QStringLiteral("The exitPoints kind pseudo states corresponding to this connection point.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectionPointReference")][QStringLiteral("exits")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectionPointReference")][QStringLiteral("exits")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectionPointReference")][QStringLiteral("exits")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectionPointReference")][QStringLiteral("state")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectionPointReference")][QStringLiteral("state")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlConnectionPointReference");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectionPointReference")][QStringLiteral("state")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectionPointReference")][QStringLiteral("state")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectionPointReference")][QStringLiteral("state")][QtModeling::DocumentationRole] = QStringLiteral("The State in which the connection point refreshens are defined.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectionPointReference")][QStringLiteral("state")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectionPointReference")][QStringLiteral("state")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("NamedElement-namespace");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectionPointReference")][QStringLiteral("state")][QtModeling::OppositeEndRole] = QStringLiteral("State-connection");
-
 }
 

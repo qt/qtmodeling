@@ -45,7 +45,6 @@
 
 #include <QtUml/QUmlAction>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -59,10 +58,10 @@ class QUmlOutputPin;
 class Q_UML_EXPORT QUmlReduceAction : public QUmlAction
 {
 public:
-    explicit QUmlReduceAction(bool createQObject = true);
+    explicit QUmlReduceAction(bool createQModelingObject = true);
     virtual ~QUmlReduceAction();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
     QUmlInputPin *collection() const;
@@ -79,9 +78,6 @@ protected:
     bool _isOrdered;
     QUmlBehavior *_reducer;
     QUmlOutputPin *_result;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

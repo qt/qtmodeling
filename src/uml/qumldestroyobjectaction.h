@@ -45,7 +45,6 @@
 
 #include <QtUml/QUmlAction>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -57,10 +56,10 @@ class QUmlInputPin;
 class Q_UML_EXPORT QUmlDestroyObjectAction : public QUmlAction
 {
 public:
-    explicit QUmlDestroyObjectAction(bool createQObject = true);
+    explicit QUmlDestroyObjectAction(bool createQModelingObject = true);
     virtual ~QUmlDestroyObjectAction();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
     bool isDestroyLinks() const;
@@ -74,9 +73,6 @@ protected:
     bool _isDestroyLinks;
     bool _isDestroyOwnedObjects;
     QUmlInputPin *_target;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

@@ -51,24 +51,22 @@
 
     \brief A comment is a textual annotation that can be attached to a set of elements.
  */
-QUmlComment::QUmlComment(bool createQObject)
+QUmlComment::QUmlComment(bool createQModelingObject)
 {
-    if (createQObject)
-        _qObject = new QUmlCommentObject(this);
-    setGroupProperties();
-    setPropertyData();
+    if (createQModelingObject)
+        _qModelingObject = qobject_cast<QModelingObject *>(new QUmlCommentObject(this));
 }
 
 QUmlComment::~QUmlComment()
 {
-    if (!deletingFromQObject) {
-        if (_qObject)
-            _qObject->setProperty("deletingFromModelingObject", true);
-        delete _qObject;
+    if (!deletingFromQModelingObject) {
+        if (_qModelingObject)
+            _qModelingObject->setProperty("deletingFromModelingObject", true);
+        delete _qModelingObject;
     }
 }
 
-QModelingObject *QUmlComment::clone() const
+QModelingElement *QUmlComment::clone() const
 {
     QUmlComment *c = new QUmlComment;
     foreach (QUmlComment *element, ownedComments())
@@ -97,8 +95,8 @@ void QUmlComment::addAnnotatedElement(QUmlElement *annotatedElement)
 
     if (!_annotatedElements.contains(annotatedElement)) {
         _annotatedElements.insert(annotatedElement);
-        if (annotatedElement && annotatedElement->asQObject() && this->asQObject())
-            QObject::connect(annotatedElement->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeAnnotatedElement(QObject *)));
+        if (annotatedElement && annotatedElement->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(annotatedElement->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeAnnotatedElement(QObject *)));
     }
 }
 
@@ -128,38 +126,5 @@ void QUmlComment::setBody(QString body)
     if (_body != body) {
         _body = body;
     }
-}
-
-void QUmlComment::setGroupProperties()
-{
-    const QMetaObject *metaObject = _qObject->metaObject();
-
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
-    _groupProperties.insert(QStringLiteral("QUmlComment"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("annotatedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlComment"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("body"))));
-}
-
-void QUmlComment::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlComment")][QStringLiteral("annotatedElements")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlComment")][QStringLiteral("annotatedElements")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlComment");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlComment")][QStringLiteral("annotatedElements")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlComment")][QStringLiteral("annotatedElements")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlComment")][QStringLiteral("annotatedElements")][QtModeling::DocumentationRole] = QStringLiteral("References the Element(s) being commented.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlComment")][QStringLiteral("annotatedElements")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlComment")][QStringLiteral("annotatedElements")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlComment")][QStringLiteral("annotatedElements")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlComment")][QStringLiteral("body")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlComment")][QStringLiteral("body")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlComment");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlComment")][QStringLiteral("body")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlComment")][QStringLiteral("body")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlComment")][QStringLiteral("body")][QtModeling::DocumentationRole] = QStringLiteral("Specifies a string that is the comment.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlComment")][QStringLiteral("body")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlComment")][QStringLiteral("body")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlComment")][QStringLiteral("body")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
 }
 

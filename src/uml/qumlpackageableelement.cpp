@@ -60,15 +60,13 @@
 QUmlPackageableElement::QUmlPackageableElement() :
     _visibility(QtUml::VisibilityKindPublic)
 {
-    setGroupProperties();
-    setPropertyData();
 }
 
 QUmlPackageableElement::~QUmlPackageableElement()
 {
 }
 
-QModelingObject *QUmlPackageableElement::clone() const
+QModelingElement *QUmlPackageableElement::clone() const
 {
     QUmlPackageableElement *c = new QUmlPackageableElement;
     foreach (QUmlComment *element, ownedComments())
@@ -104,37 +102,7 @@ void QUmlPackageableElement::setVisibility(QtUml::VisibilityKind visibility)
 
     if (_visibility != visibility) {
         _visibility = visibility;
-        _modifiedResettableProperties << QStringLiteral("visibility");
+        _qModelingObject->modifiedResettableProperties() << QStringLiteral("visibility");
     }
-}
-
-void QUmlPackageableElement::setGroupProperties()
-{
-    const QMetaObject *metaObject = _qObject->metaObject();
-
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
-    _groupProperties.insert(QStringLiteral("QUmlParameterableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owningTemplateParameter"))));
-    _groupProperties.insert(QStringLiteral("QUmlParameterableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("templateParameter"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
-    _groupProperties.insert(QStringLiteral("QUmlPackageableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
-}
-
-void QUmlPackageableElement::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPackageableElement")][QStringLiteral("visibility")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPackageableElement")][QStringLiteral("visibility")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlPackageableElement");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPackageableElement")][QStringLiteral("visibility")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPackageableElement")][QStringLiteral("visibility")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPackageableElement")][QStringLiteral("visibility")][QtModeling::DocumentationRole] = QStringLiteral("Indicates that packageable elements must always have a visibility, i.e., visibility is not optional.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPackageableElement")][QStringLiteral("visibility")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("NamedElement-visibility");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPackageableElement")][QStringLiteral("visibility")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPackageableElement")][QStringLiteral("visibility")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
 }
 

@@ -45,7 +45,6 @@
 
 #include <QtUml/QUmlConstraint>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -57,10 +56,10 @@ class QUmlValueSpecification;
 class Q_UML_EXPORT QUmlInteractionConstraint : public QUmlConstraint
 {
 public:
-    explicit QUmlInteractionConstraint(bool createQObject = true);
+    explicit QUmlInteractionConstraint(bool createQModelingObject = true);
     virtual ~QUmlInteractionConstraint();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
     QUmlValueSpecification *maxint() const;
@@ -71,9 +70,6 @@ public:
 protected:
     QUmlValueSpecification *_maxint;
     QUmlValueSpecification *_minint;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

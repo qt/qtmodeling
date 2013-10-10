@@ -62,25 +62,23 @@
 
     \brief An opaque expression is an uninterpreted textual statement that denotes a (possibly empty) set of values when evaluated in a context.Provides a mechanism for precisely defining the behavior of an opaque expression. An opaque expression is defined by a behavior restricted to return one result.
  */
-QUmlOpaqueExpression::QUmlOpaqueExpression(bool createQObject) :
+QUmlOpaqueExpression::QUmlOpaqueExpression(bool createQModelingObject) :
     _behavior(0)
 {
-    if (createQObject)
-        _qObject = new QUmlOpaqueExpressionObject(this);
-    setGroupProperties();
-    setPropertyData();
+    if (createQModelingObject)
+        _qModelingObject = qobject_cast<QModelingObject *>(new QUmlOpaqueExpressionObject(this));
 }
 
 QUmlOpaqueExpression::~QUmlOpaqueExpression()
 {
-    if (!deletingFromQObject) {
-        if (_qObject)
-            _qObject->setProperty("deletingFromModelingObject", true);
-        delete _qObject;
+    if (!deletingFromQModelingObject) {
+        if (_qModelingObject)
+            _qModelingObject->setProperty("deletingFromModelingObject", true);
+        delete _qModelingObject;
     }
 }
 
-QModelingObject *QUmlOpaqueExpression::clone() const
+QModelingElement *QUmlOpaqueExpression::clone() const
 {
     QUmlOpaqueExpression *c = new QUmlOpaqueExpression;
     foreach (QUmlComment *element, ownedComments())
@@ -124,8 +122,8 @@ void QUmlOpaqueExpression::setBehavior(QUmlBehavior *behavior)
 
     if (_behavior != behavior) {
         _behavior = behavior;
-        if (behavior && behavior->asQObject() && this->asQObject())
-            QObject::connect(behavior->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setBehavior()));
+        if (behavior && behavior->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(behavior->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setBehavior()));
     }
 }
 
@@ -249,67 +247,5 @@ int QUmlOpaqueExpression::value() const
     qWarning("UmlOpaqueExpression::value(): to be implemented (operation)");
 
     return int ();
-}
-
-void QUmlOpaqueExpression::setGroupProperties()
-{
-    const QMetaObject *metaObject = _qObject->metaObject();
-
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
-    _groupProperties.insert(QStringLiteral("QUmlTypedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("type"))));
-    _groupProperties.insert(QStringLiteral("QUmlParameterableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owningTemplateParameter"))));
-    _groupProperties.insert(QStringLiteral("QUmlParameterableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("templateParameter"))));
-    _groupProperties.insert(QStringLiteral("QUmlPackageableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
-    _groupProperties.insert(QStringLiteral("QUmlOpaqueExpression"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("behavior"))));
-    _groupProperties.insert(QStringLiteral("QUmlOpaqueExpression"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("bodies"))));
-    _groupProperties.insert(QStringLiteral("QUmlOpaqueExpression"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("languages"))));
-    _groupProperties.insert(QStringLiteral("QUmlOpaqueExpression"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("result"))));
-}
-
-void QUmlOpaqueExpression::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueExpression")][QStringLiteral("behavior")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueExpression")][QStringLiteral("behavior")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlOpaqueExpression");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueExpression")][QStringLiteral("behavior")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueExpression")][QStringLiteral("behavior")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueExpression")][QStringLiteral("behavior")][QtModeling::DocumentationRole] = QStringLiteral("Specifies the behavior of the opaque expression.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueExpression")][QStringLiteral("behavior")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueExpression")][QStringLiteral("behavior")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueExpression")][QStringLiteral("behavior")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueExpression")][QStringLiteral("bodies")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueExpression")][QStringLiteral("bodies")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlOpaqueExpression");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueExpression")][QStringLiteral("bodies")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueExpression")][QStringLiteral("bodies")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueExpression")][QStringLiteral("bodies")][QtModeling::DocumentationRole] = QStringLiteral("The text of the expression, possibly in multiple languages.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueExpression")][QStringLiteral("bodies")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueExpression")][QStringLiteral("bodies")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueExpression")][QStringLiteral("bodies")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueExpression")][QStringLiteral("languages")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueExpression")][QStringLiteral("languages")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlOpaqueExpression");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueExpression")][QStringLiteral("languages")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueExpression")][QStringLiteral("languages")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueExpression")][QStringLiteral("languages")][QtModeling::DocumentationRole] = QStringLiteral("Specifies the languages in which the expression is stated. The interpretation of the expression body depends on the languages. If the languages are unspecified, they might be implicit from the expression body or the context. Languages are matched to body strings by order.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueExpression")][QStringLiteral("languages")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueExpression")][QStringLiteral("languages")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueExpression")][QStringLiteral("languages")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueExpression")][QStringLiteral("result")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueExpression")][QStringLiteral("result")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlOpaqueExpression");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueExpression")][QStringLiteral("result")][QtModeling::IsDerivedRole] = true;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueExpression")][QStringLiteral("result")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueExpression")][QStringLiteral("result")][QtModeling::DocumentationRole] = QStringLiteral("Restricts an opaque expression to return exactly one return result. When the invocation of the opaque expression completes, a single set of values is returned to its owner. This association is derived from the single return result parameter of the associated behavior.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueExpression")][QStringLiteral("result")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueExpression")][QStringLiteral("result")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueExpression")][QStringLiteral("result")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
 }
 

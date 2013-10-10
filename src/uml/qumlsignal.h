@@ -45,7 +45,6 @@
 
 #include <QtUml/QUmlClassifier>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -57,10 +56,10 @@ class QUmlProperty;
 class Q_UML_EXPORT QUmlSignal : public QUmlClassifier
 {
 public:
-    explicit QUmlSignal(bool createQObject = true);
+    explicit QUmlSignal(bool createQModelingObject = true);
     virtual ~QUmlSignal();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
     const QList<QUmlProperty *> ownedAttributes() const;
@@ -69,9 +68,6 @@ public:
 
 protected:
     QList<QUmlProperty *> _ownedAttributes;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

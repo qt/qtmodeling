@@ -45,7 +45,6 @@
 
 #include <QtUml/QUmlElement>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -59,10 +58,10 @@ class QUmlQualifierValue;
 class Q_UML_EXPORT QUmlLinkEndData : public QUmlElement
 {
 public:
-    explicit QUmlLinkEndData(bool createQObject = true);
+    explicit QUmlLinkEndData(bool createQModelingObject = true);
     virtual ~QUmlLinkEndData();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
     QUmlProperty *end() const;
@@ -77,9 +76,6 @@ protected:
     QUmlProperty *_end;
     QSet<QUmlQualifierValue *> _qualifiers;
     QUmlInputPin *_value;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

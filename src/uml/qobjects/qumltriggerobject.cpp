@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumltriggerobject_p.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlTrigger>
 #include <QtUml/QUmlComment>
@@ -53,16 +54,18 @@
 
 QT_BEGIN_NAMESPACE
 
-QUmlTriggerObject::QUmlTriggerObject(QUmlTrigger *qModelingObject)
+QUmlTriggerObject::QUmlTriggerObject(QUmlTrigger *qModelingElement)
 {
-    setProperty("modelingObject", QVariant::fromValue(static_cast<QModelingObject *>(qModelingObject)));
+    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(qModelingElement)));
+    setGroupProperties();
+    setPropertyData();
 }
 
 QUmlTriggerObject::~QUmlTriggerObject()
 {
     if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingobjectproperty_cast<QUmlTrigger *>(this)->deletingFromQObject = true;
-        delete qmodelingobjectproperty_cast<QUmlComment *>(this);
+        qmodelingelementproperty_cast<QUmlTrigger *>(this)->deletingFromQModelingObject = true;
+        delete qmodelingelementproperty_cast<QUmlComment *>(this);
     }
 }
 
@@ -71,25 +74,25 @@ QUmlTriggerObject::~QUmlTriggerObject()
 const QSet<QObject *> QUmlTriggerObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlTrigger *>(this)->ownedComments())
-        set.insert(element->asQObject());
+    foreach (QUmlComment *element, qmodelingelementproperty_cast<QUmlTrigger *>(this)->ownedComments())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlTriggerObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlTrigger *>(this)->ownedElements())
-        set.insert(element->asQObject());
+    foreach (QUmlElement *element, qmodelingelementproperty_cast<QUmlTrigger *>(this)->ownedElements())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 QObject *QUmlTriggerObject::owner() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlTrigger *>(this)->owner())
+    if (!qmodelingelementproperty_cast<QUmlTrigger *>(this)->owner())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlTrigger *>(this)->owner()->asQObject();
+        return qmodelingelementproperty_cast<QUmlTrigger *>(this)->owner()->asQModelingObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -97,57 +100,57 @@ QObject *QUmlTriggerObject::owner() const
 const QSet<QObject *> QUmlTriggerObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlTrigger *>(this)->clientDependencies())
-        set.insert(element->asQObject());
+    foreach (QUmlDependency *element, qmodelingelementproperty_cast<QUmlTrigger *>(this)->clientDependencies())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 QString QUmlTriggerObject::name() const
 {
-    return qmodelingobjectproperty_cast<QUmlTrigger *>(this)->name();
+    return qmodelingelementproperty_cast<QUmlTrigger *>(this)->name();
 }
 
 QObject *QUmlTriggerObject::nameExpression() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlTrigger *>(this)->nameExpression())
+    if (!qmodelingelementproperty_cast<QUmlTrigger *>(this)->nameExpression())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlTrigger *>(this)->nameExpression()->asQObject();
+        return qmodelingelementproperty_cast<QUmlTrigger *>(this)->nameExpression()->asQModelingObject();
 }
 
 QObject *QUmlTriggerObject::namespace_() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlTrigger *>(this)->namespace_())
+    if (!qmodelingelementproperty_cast<QUmlTrigger *>(this)->namespace_())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlTrigger *>(this)->namespace_()->asQObject();
+        return qmodelingelementproperty_cast<QUmlTrigger *>(this)->namespace_()->asQModelingObject();
 }
 
 QString QUmlTriggerObject::qualifiedName() const
 {
-    return qmodelingobjectproperty_cast<QUmlTrigger *>(this)->qualifiedName();
+    return qmodelingelementproperty_cast<QUmlTrigger *>(this)->qualifiedName();
 }
 
 QtUml::VisibilityKind QUmlTriggerObject::visibility() const
 {
-    return qmodelingobjectproperty_cast<QUmlTrigger *>(this)->visibility();
+    return qmodelingelementproperty_cast<QUmlTrigger *>(this)->visibility();
 }
 
 // OWNED ATTRIBUTES [Trigger]
 
 QObject *QUmlTriggerObject::event() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlTrigger *>(this)->event())
+    if (!qmodelingelementproperty_cast<QUmlTrigger *>(this)->event())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlTrigger *>(this)->event()->asQObject();
+        return qmodelingelementproperty_cast<QUmlTrigger *>(this)->event()->asQModelingObject();
 }
 
 const QSet<QObject *> QUmlTriggerObject::ports() const
 {
     QSet<QObject *> set;
-    foreach (QUmlPort *element, qmodelingobjectproperty_cast<QUmlTrigger *>(this)->ports())
-        set.insert(element->asQObject());
+    foreach (QUmlPort *element, qmodelingelementproperty_cast<QUmlTrigger *>(this)->ports())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
@@ -156,14 +159,14 @@ const QSet<QObject *> QUmlTriggerObject::ports() const
 QSet<QObject *> QUmlTriggerObject::allOwnedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlTrigger *>(this)->allOwnedElements())
-        set.insert(element->asQObject());
+    foreach (QUmlElement *element, qmodelingelementproperty_cast<QUmlTrigger *>(this)->allOwnedElements())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 bool QUmlTriggerObject::mustBeOwned() const
 {
-    return qmodelingobjectproperty_cast<QUmlTrigger *>(this)->mustBeOwned();
+    return qmodelingelementproperty_cast<QUmlTrigger *>(this)->mustBeOwned();
 }
 
 // OPERATIONS [NamedElement]
@@ -171,108 +174,157 @@ bool QUmlTriggerObject::mustBeOwned() const
 QList<QObject *> QUmlTriggerObject::allNamespaces() const
 {
     QList<QObject *> set;
-    foreach (QUmlNamespace *element, qmodelingobjectproperty_cast<QUmlTrigger *>(this)->allNamespaces())
-        set.append(element->asQObject());
+    foreach (QUmlNamespace *element, qmodelingelementproperty_cast<QUmlTrigger *>(this)->allNamespaces())
+        set.append(element->asQModelingObject());
     return set;
 }
 
 QSet<QObject *> QUmlTriggerObject::allOwningPackages() const
 {
     QSet<QObject *> set;
-    foreach (QUmlPackage *element, qmodelingobjectproperty_cast<QUmlTrigger *>(this)->allOwningPackages())
-        set.insert(element->asQObject());
+    foreach (QUmlPackage *element, qmodelingelementproperty_cast<QUmlTrigger *>(this)->allOwningPackages())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 bool QUmlTriggerObject::isDistinguishableFrom(QObject *n, QObject *ns) const
 {
-    return qmodelingobjectproperty_cast<QUmlTrigger *>(this)->isDistinguishableFrom(qmodelingobjectproperty_cast<QUmlNamedElement *>(n), qmodelingobjectproperty_cast<QUmlNamespace *>(ns));
+    return qmodelingelementproperty_cast<QUmlTrigger *>(this)->isDistinguishableFrom(qmodelingelementproperty_cast<QUmlNamedElement *>(n), qmodelingelementproperty_cast<QUmlNamespace *>(ns));
 }
 
 QString QUmlTriggerObject::separator() const
 {
-    return qmodelingobjectproperty_cast<QUmlTrigger *>(this)->separator();
+    return qmodelingelementproperty_cast<QUmlTrigger *>(this)->separator();
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Element]
 
 void QUmlTriggerObject::addOwnedComment(QObject *ownedComment)
 {
-    qmodelingobjectproperty_cast<QUmlTrigger *>(this)->addOwnedComment(qmodelingobjectproperty_cast<QUmlComment *>(ownedComment));
+    qmodelingelementproperty_cast<QUmlTrigger *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
 }
 
 void QUmlTriggerObject::removeOwnedComment(QObject *ownedComment)
 {
-    qmodelingobjectproperty_cast<QUmlTrigger *>(this)->removeOwnedComment(qmodelingobjectproperty_cast<QUmlComment *>(ownedComment));
+    qmodelingelementproperty_cast<QUmlTrigger *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
 }
 
 void QUmlTriggerObject::addOwnedElement(QObject *ownedElement)
 {
-    qmodelingobjectproperty_cast<QUmlTrigger *>(this)->addOwnedElement(qmodelingobjectproperty_cast<QUmlElement *>(ownedElement));
+    qmodelingelementproperty_cast<QUmlTrigger *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
 }
 
 void QUmlTriggerObject::removeOwnedElement(QObject *ownedElement)
 {
-    qmodelingobjectproperty_cast<QUmlTrigger *>(this)->removeOwnedElement(qmodelingobjectproperty_cast<QUmlElement *>(ownedElement));
+    qmodelingelementproperty_cast<QUmlTrigger *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
 }
 
 void QUmlTriggerObject::setOwner(QObject *owner)
 {
-    qmodelingobjectproperty_cast<QUmlTrigger *>(this)->setOwner(qmodelingobjectproperty_cast<QUmlElement *>(owner));
+    qmodelingelementproperty_cast<QUmlTrigger *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [NamedElement]
 
 void QUmlTriggerObject::addClientDependency(QObject *clientDependency)
 {
-    qmodelingobjectproperty_cast<QUmlTrigger *>(this)->addClientDependency(qmodelingobjectproperty_cast<QUmlDependency *>(clientDependency));
+    qmodelingelementproperty_cast<QUmlTrigger *>(this)->addClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
 }
 
 void QUmlTriggerObject::removeClientDependency(QObject *clientDependency)
 {
-    qmodelingobjectproperty_cast<QUmlTrigger *>(this)->removeClientDependency(qmodelingobjectproperty_cast<QUmlDependency *>(clientDependency));
+    qmodelingelementproperty_cast<QUmlTrigger *>(this)->removeClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
 }
 
 void QUmlTriggerObject::setName(QString name)
 {
-    qmodelingobjectproperty_cast<QUmlTrigger *>(this)->setName(name);
+    qmodelingelementproperty_cast<QUmlTrigger *>(this)->setName(name);
 }
 
 void QUmlTriggerObject::setNameExpression(QObject *nameExpression)
 {
-    qmodelingobjectproperty_cast<QUmlTrigger *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
+    qmodelingelementproperty_cast<QUmlTrigger *>(this)->setNameExpression(qmodelingelementproperty_cast<QUmlStringExpression *>(nameExpression));
 }
 
 void QUmlTriggerObject::setNamespace(QObject *namespace_)
 {
-    qmodelingobjectproperty_cast<QUmlTrigger *>(this)->setNamespace(qmodelingobjectproperty_cast<QUmlNamespace *>(namespace_));
+    qmodelingelementproperty_cast<QUmlTrigger *>(this)->setNamespace(qmodelingelementproperty_cast<QUmlNamespace *>(namespace_));
 }
 
 void QUmlTriggerObject::setQualifiedName(QString qualifiedName)
 {
-    qmodelingobjectproperty_cast<QUmlTrigger *>(this)->setQualifiedName(qualifiedName);
+    qmodelingelementproperty_cast<QUmlTrigger *>(this)->setQualifiedName(qualifiedName);
 }
 
 void QUmlTriggerObject::setVisibility(QtUml::VisibilityKind visibility)
 {
-    qmodelingobjectproperty_cast<QUmlTrigger *>(this)->setVisibility(visibility);
+    qmodelingelementproperty_cast<QUmlTrigger *>(this)->setVisibility(visibility);
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Trigger]
 
 void QUmlTriggerObject::setEvent(QObject *event)
 {
-    qmodelingobjectproperty_cast<QUmlTrigger *>(this)->setEvent(qmodelingobjectproperty_cast<QUmlEvent *>(event));
+    qmodelingelementproperty_cast<QUmlTrigger *>(this)->setEvent(qmodelingelementproperty_cast<QUmlEvent *>(event));
 }
 
 void QUmlTriggerObject::addPort(QObject *port)
 {
-    qmodelingobjectproperty_cast<QUmlTrigger *>(this)->addPort(qmodelingobjectproperty_cast<QUmlPort *>(port));
+    qmodelingelementproperty_cast<QUmlTrigger *>(this)->addPort(qmodelingelementproperty_cast<QUmlPort *>(port));
 }
 
 void QUmlTriggerObject::removePort(QObject *port)
 {
-    qmodelingobjectproperty_cast<QUmlTrigger *>(this)->removePort(qmodelingobjectproperty_cast<QUmlPort *>(port));
+    qmodelingelementproperty_cast<QUmlTrigger *>(this)->removePort(qmodelingelementproperty_cast<QUmlPort *>(port));
+}
+
+
+void QUmlTriggerObject::setGroupProperties()
+{
+    Q_D(QModelingObject);
+    const QMetaObject *metaObject = this->metaObject();
+
+    d->propertyGroups << QStringLiteral("QObject");
+    d->groupProperties.insert(QStringLiteral("QObject"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("objectName"))));
+
+    d->propertyGroups << QStringLiteral("QUmlElement");
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
+
+    d->propertyGroups << QStringLiteral("QUmlNamedElement");
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
+
+    d->propertyGroups << QStringLiteral("QUmlTrigger");
+    d->groupProperties.insert(QStringLiteral("QUmlTrigger"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("event"))));
+    d->groupProperties.insert(QStringLiteral("QUmlTrigger"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ports"))));
+}
+
+void QUmlTriggerObject::setPropertyData()
+{
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTrigger, event, AggregationRole, QStringLiteral("none"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTrigger, event, PropertyClassRole, QStringLiteral("QUmlTrigger"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTrigger, event, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTrigger, event, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTrigger, event, DocumentationRole, QStringLiteral("The event that causes the trigger."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTrigger, event, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTrigger, event, SubsettedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTrigger, event, OppositeEndRole, QStringLiteral(""));
+
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTrigger, ports, AggregationRole, QStringLiteral("none"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTrigger, ports, PropertyClassRole, QStringLiteral("QUmlTrigger"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTrigger, ports, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTrigger, ports, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTrigger, ports, DocumentationRole, QStringLiteral("A optional port of the receiver object on which the behavioral feature is invoked."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTrigger, ports, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTrigger, ports, SubsettedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTrigger, ports, OppositeEndRole, QStringLiteral(""));
+
 }
 
 QT_END_NAMESPACE

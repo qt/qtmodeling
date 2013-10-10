@@ -43,7 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtCore/QObject>
+#include <QtModeling/QModelingObject>
 
 #include <QtUml/QtUmlNamespace>
 
@@ -54,9 +54,12 @@ QT_BEGIN_NAMESPACE
 QT_MODULE(QtUml)
 
 class QUmlActivityPartition;
-class Q_UML_EXPORT QUmlActivityPartitionObject : public QObject
+class QModelingObjectPrivate;
+class Q_UML_EXPORT QUmlActivityPartitionObject : public QModelingObject
 {
     Q_OBJECT
+    Q_DISABLE_COPY(QUmlActivityPartitionObject)
+    Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [Element]
     Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
@@ -88,7 +91,7 @@ class Q_UML_EXPORT QUmlActivityPartitionObject : public QObject
     Q_PROPERTY(QObject * superPartition READ superPartition WRITE setSuperPartition)
 
 public:
-    Q_INVOKABLE explicit QUmlActivityPartitionObject(QUmlActivityPartition *qModelingObject);
+    Q_INVOKABLE explicit QUmlActivityPartitionObject(QUmlActivityPartition *qModelingElement);
     virtual ~QUmlActivityPartitionObject();
 
     // Owned attributes [Element]
@@ -171,6 +174,10 @@ public Q_SLOTS:
     void addSubpartition(QObject *subpartition);
     void removeSubpartition(QObject *subpartition);
     void setSuperPartition(QObject *superPartition = 0);
+
+protected:
+    virtual void setGroupProperties();
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

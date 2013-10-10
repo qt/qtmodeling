@@ -45,7 +45,6 @@
 
 #include <QtUml/QUmlConstraint>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -57,10 +56,10 @@ class QUmlInterval;
 class Q_UML_EXPORT QUmlIntervalConstraint : public QUmlConstraint
 {
 public:
-    explicit QUmlIntervalConstraint(bool createQObject = true);
+    explicit QUmlIntervalConstraint(bool createQModelingObject = true);
     virtual ~QUmlIntervalConstraint();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
     QUmlInterval *specification() const;
@@ -68,9 +67,6 @@ public:
 
 protected:
     QUmlInterval *_specification;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

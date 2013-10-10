@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumltimeobservationobject_p.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlTimeObservation>
 #include <QtUml/QUmlComment>
@@ -53,16 +54,18 @@
 
 QT_BEGIN_NAMESPACE
 
-QUmlTimeObservationObject::QUmlTimeObservationObject(QUmlTimeObservation *qModelingObject)
+QUmlTimeObservationObject::QUmlTimeObservationObject(QUmlTimeObservation *qModelingElement)
 {
-    setProperty("modelingObject", QVariant::fromValue(static_cast<QModelingObject *>(qModelingObject)));
+    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(qModelingElement)));
+    setGroupProperties();
+    setPropertyData();
 }
 
 QUmlTimeObservationObject::~QUmlTimeObservationObject()
 {
     if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingobjectproperty_cast<QUmlTimeObservation *>(this)->deletingFromQObject = true;
-        delete qmodelingobjectproperty_cast<QUmlComment *>(this);
+        qmodelingelementproperty_cast<QUmlTimeObservation *>(this)->deletingFromQModelingObject = true;
+        delete qmodelingelementproperty_cast<QUmlComment *>(this);
     }
 }
 
@@ -71,43 +74,43 @@ QUmlTimeObservationObject::~QUmlTimeObservationObject()
 const QSet<QObject *> QUmlTimeObservationObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlTimeObservation *>(this)->ownedComments())
-        set.insert(element->asQObject());
+    foreach (QUmlComment *element, qmodelingelementproperty_cast<QUmlTimeObservation *>(this)->ownedComments())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlTimeObservationObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlTimeObservation *>(this)->ownedElements())
-        set.insert(element->asQObject());
+    foreach (QUmlElement *element, qmodelingelementproperty_cast<QUmlTimeObservation *>(this)->ownedElements())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 QObject *QUmlTimeObservationObject::owner() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlTimeObservation *>(this)->owner())
+    if (!qmodelingelementproperty_cast<QUmlTimeObservation *>(this)->owner())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlTimeObservation *>(this)->owner()->asQObject();
+        return qmodelingelementproperty_cast<QUmlTimeObservation *>(this)->owner()->asQModelingObject();
 }
 
 // OWNED ATTRIBUTES [ParameterableElement]
 
 QObject *QUmlTimeObservationObject::owningTemplateParameter() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlTimeObservation *>(this)->owningTemplateParameter())
+    if (!qmodelingelementproperty_cast<QUmlTimeObservation *>(this)->owningTemplateParameter())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlTimeObservation *>(this)->owningTemplateParameter()->asQObject();
+        return qmodelingelementproperty_cast<QUmlTimeObservation *>(this)->owningTemplateParameter()->asQModelingObject();
 }
 
 QObject *QUmlTimeObservationObject::templateParameter() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlTimeObservation *>(this)->templateParameter())
+    if (!qmodelingelementproperty_cast<QUmlTimeObservation *>(this)->templateParameter())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlTimeObservation *>(this)->templateParameter()->asQObject();
+        return qmodelingelementproperty_cast<QUmlTimeObservation *>(this)->templateParameter()->asQModelingObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -115,57 +118,57 @@ QObject *QUmlTimeObservationObject::templateParameter() const
 const QSet<QObject *> QUmlTimeObservationObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlTimeObservation *>(this)->clientDependencies())
-        set.insert(element->asQObject());
+    foreach (QUmlDependency *element, qmodelingelementproperty_cast<QUmlTimeObservation *>(this)->clientDependencies())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 QString QUmlTimeObservationObject::name() const
 {
-    return qmodelingobjectproperty_cast<QUmlTimeObservation *>(this)->name();
+    return qmodelingelementproperty_cast<QUmlTimeObservation *>(this)->name();
 }
 
 QObject *QUmlTimeObservationObject::nameExpression() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlTimeObservation *>(this)->nameExpression())
+    if (!qmodelingelementproperty_cast<QUmlTimeObservation *>(this)->nameExpression())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlTimeObservation *>(this)->nameExpression()->asQObject();
+        return qmodelingelementproperty_cast<QUmlTimeObservation *>(this)->nameExpression()->asQModelingObject();
 }
 
 QObject *QUmlTimeObservationObject::namespace_() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlTimeObservation *>(this)->namespace_())
+    if (!qmodelingelementproperty_cast<QUmlTimeObservation *>(this)->namespace_())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlTimeObservation *>(this)->namespace_()->asQObject();
+        return qmodelingelementproperty_cast<QUmlTimeObservation *>(this)->namespace_()->asQModelingObject();
 }
 
 QString QUmlTimeObservationObject::qualifiedName() const
 {
-    return qmodelingobjectproperty_cast<QUmlTimeObservation *>(this)->qualifiedName();
+    return qmodelingelementproperty_cast<QUmlTimeObservation *>(this)->qualifiedName();
 }
 
 // OWNED ATTRIBUTES [PackageableElement]
 
 QtUml::VisibilityKind QUmlTimeObservationObject::visibility() const
 {
-    return qmodelingobjectproperty_cast<QUmlTimeObservation *>(this)->visibility();
+    return qmodelingelementproperty_cast<QUmlTimeObservation *>(this)->visibility();
 }
 
 // OWNED ATTRIBUTES [TimeObservation]
 
 QObject *QUmlTimeObservationObject::event() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlTimeObservation *>(this)->event())
+    if (!qmodelingelementproperty_cast<QUmlTimeObservation *>(this)->event())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlTimeObservation *>(this)->event()->asQObject();
+        return qmodelingelementproperty_cast<QUmlTimeObservation *>(this)->event()->asQModelingObject();
 }
 
 bool QUmlTimeObservationObject::firstEvent() const
 {
-    return qmodelingobjectproperty_cast<QUmlTimeObservation *>(this)->firstEvent();
+    return qmodelingelementproperty_cast<QUmlTimeObservation *>(this)->firstEvent();
 }
 
 // OPERATIONS [Element]
@@ -173,26 +176,26 @@ bool QUmlTimeObservationObject::firstEvent() const
 QSet<QObject *> QUmlTimeObservationObject::allOwnedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlTimeObservation *>(this)->allOwnedElements())
-        set.insert(element->asQObject());
+    foreach (QUmlElement *element, qmodelingelementproperty_cast<QUmlTimeObservation *>(this)->allOwnedElements())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 bool QUmlTimeObservationObject::mustBeOwned() const
 {
-    return qmodelingobjectproperty_cast<QUmlTimeObservation *>(this)->mustBeOwned();
+    return qmodelingelementproperty_cast<QUmlTimeObservation *>(this)->mustBeOwned();
 }
 
 // OPERATIONS [ParameterableElement]
 
 bool QUmlTimeObservationObject::isCompatibleWith(QObject *p) const
 {
-    return qmodelingobjectproperty_cast<QUmlTimeObservation *>(this)->isCompatibleWith(qmodelingobjectproperty_cast<QUmlParameterableElement *>(p));
+    return qmodelingelementproperty_cast<QUmlTimeObservation *>(this)->isCompatibleWith(qmodelingelementproperty_cast<QUmlParameterableElement *>(p));
 }
 
 bool QUmlTimeObservationObject::isTemplateParameter() const
 {
-    return qmodelingobjectproperty_cast<QUmlTimeObservation *>(this)->isTemplateParameter();
+    return qmodelingelementproperty_cast<QUmlTimeObservation *>(this)->isTemplateParameter();
 }
 
 // OPERATIONS [NamedElement]
@@ -200,126 +203,185 @@ bool QUmlTimeObservationObject::isTemplateParameter() const
 QList<QObject *> QUmlTimeObservationObject::allNamespaces() const
 {
     QList<QObject *> set;
-    foreach (QUmlNamespace *element, qmodelingobjectproperty_cast<QUmlTimeObservation *>(this)->allNamespaces())
-        set.append(element->asQObject());
+    foreach (QUmlNamespace *element, qmodelingelementproperty_cast<QUmlTimeObservation *>(this)->allNamespaces())
+        set.append(element->asQModelingObject());
     return set;
 }
 
 QSet<QObject *> QUmlTimeObservationObject::allOwningPackages() const
 {
     QSet<QObject *> set;
-    foreach (QUmlPackage *element, qmodelingobjectproperty_cast<QUmlTimeObservation *>(this)->allOwningPackages())
-        set.insert(element->asQObject());
+    foreach (QUmlPackage *element, qmodelingelementproperty_cast<QUmlTimeObservation *>(this)->allOwningPackages())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 bool QUmlTimeObservationObject::isDistinguishableFrom(QObject *n, QObject *ns) const
 {
-    return qmodelingobjectproperty_cast<QUmlTimeObservation *>(this)->isDistinguishableFrom(qmodelingobjectproperty_cast<QUmlNamedElement *>(n), qmodelingobjectproperty_cast<QUmlNamespace *>(ns));
+    return qmodelingelementproperty_cast<QUmlTimeObservation *>(this)->isDistinguishableFrom(qmodelingelementproperty_cast<QUmlNamedElement *>(n), qmodelingelementproperty_cast<QUmlNamespace *>(ns));
 }
 
 QString QUmlTimeObservationObject::separator() const
 {
-    return qmodelingobjectproperty_cast<QUmlTimeObservation *>(this)->separator();
+    return qmodelingelementproperty_cast<QUmlTimeObservation *>(this)->separator();
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Element]
 
 void QUmlTimeObservationObject::addOwnedComment(QObject *ownedComment)
 {
-    qmodelingobjectproperty_cast<QUmlTimeObservation *>(this)->addOwnedComment(qmodelingobjectproperty_cast<QUmlComment *>(ownedComment));
+    qmodelingelementproperty_cast<QUmlTimeObservation *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
 }
 
 void QUmlTimeObservationObject::removeOwnedComment(QObject *ownedComment)
 {
-    qmodelingobjectproperty_cast<QUmlTimeObservation *>(this)->removeOwnedComment(qmodelingobjectproperty_cast<QUmlComment *>(ownedComment));
+    qmodelingelementproperty_cast<QUmlTimeObservation *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
 }
 
 void QUmlTimeObservationObject::addOwnedElement(QObject *ownedElement)
 {
-    qmodelingobjectproperty_cast<QUmlTimeObservation *>(this)->addOwnedElement(qmodelingobjectproperty_cast<QUmlElement *>(ownedElement));
+    qmodelingelementproperty_cast<QUmlTimeObservation *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
 }
 
 void QUmlTimeObservationObject::removeOwnedElement(QObject *ownedElement)
 {
-    qmodelingobjectproperty_cast<QUmlTimeObservation *>(this)->removeOwnedElement(qmodelingobjectproperty_cast<QUmlElement *>(ownedElement));
+    qmodelingelementproperty_cast<QUmlTimeObservation *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
 }
 
 void QUmlTimeObservationObject::setOwner(QObject *owner)
 {
-    qmodelingobjectproperty_cast<QUmlTimeObservation *>(this)->setOwner(qmodelingobjectproperty_cast<QUmlElement *>(owner));
+    qmodelingelementproperty_cast<QUmlTimeObservation *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ParameterableElement]
 
 void QUmlTimeObservationObject::setOwningTemplateParameter(QObject *owningTemplateParameter)
 {
-    qmodelingobjectproperty_cast<QUmlTimeObservation *>(this)->setOwningTemplateParameter(qmodelingobjectproperty_cast<QUmlTemplateParameter *>(owningTemplateParameter));
+    qmodelingelementproperty_cast<QUmlTimeObservation *>(this)->setOwningTemplateParameter(qmodelingelementproperty_cast<QUmlTemplateParameter *>(owningTemplateParameter));
 }
 
 void QUmlTimeObservationObject::setTemplateParameter(QObject *templateParameter)
 {
-    qmodelingobjectproperty_cast<QUmlTimeObservation *>(this)->setTemplateParameter(qmodelingobjectproperty_cast<QUmlTemplateParameter *>(templateParameter));
+    qmodelingelementproperty_cast<QUmlTimeObservation *>(this)->setTemplateParameter(qmodelingelementproperty_cast<QUmlTemplateParameter *>(templateParameter));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [NamedElement]
 
 void QUmlTimeObservationObject::addClientDependency(QObject *clientDependency)
 {
-    qmodelingobjectproperty_cast<QUmlTimeObservation *>(this)->addClientDependency(qmodelingobjectproperty_cast<QUmlDependency *>(clientDependency));
+    qmodelingelementproperty_cast<QUmlTimeObservation *>(this)->addClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
 }
 
 void QUmlTimeObservationObject::removeClientDependency(QObject *clientDependency)
 {
-    qmodelingobjectproperty_cast<QUmlTimeObservation *>(this)->removeClientDependency(qmodelingobjectproperty_cast<QUmlDependency *>(clientDependency));
+    qmodelingelementproperty_cast<QUmlTimeObservation *>(this)->removeClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
 }
 
 void QUmlTimeObservationObject::setName(QString name)
 {
-    qmodelingobjectproperty_cast<QUmlTimeObservation *>(this)->setName(name);
+    qmodelingelementproperty_cast<QUmlTimeObservation *>(this)->setName(name);
 }
 
 void QUmlTimeObservationObject::setNameExpression(QObject *nameExpression)
 {
-    qmodelingobjectproperty_cast<QUmlTimeObservation *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
+    qmodelingelementproperty_cast<QUmlTimeObservation *>(this)->setNameExpression(qmodelingelementproperty_cast<QUmlStringExpression *>(nameExpression));
 }
 
 void QUmlTimeObservationObject::setNamespace(QObject *namespace_)
 {
-    qmodelingobjectproperty_cast<QUmlTimeObservation *>(this)->setNamespace(qmodelingobjectproperty_cast<QUmlNamespace *>(namespace_));
+    qmodelingelementproperty_cast<QUmlTimeObservation *>(this)->setNamespace(qmodelingelementproperty_cast<QUmlNamespace *>(namespace_));
 }
 
 void QUmlTimeObservationObject::setQualifiedName(QString qualifiedName)
 {
-    qmodelingobjectproperty_cast<QUmlTimeObservation *>(this)->setQualifiedName(qualifiedName);
+    qmodelingelementproperty_cast<QUmlTimeObservation *>(this)->setQualifiedName(qualifiedName);
 }
 // SLOTS FOR OWNED ATTRIBUTES [PackageableElement]
 
 void QUmlTimeObservationObject::setVisibility(QtUml::VisibilityKind visibility)
 {
-    qmodelingobjectproperty_cast<QUmlTimeObservation *>(this)->setVisibility(visibility);
+    qmodelingelementproperty_cast<QUmlTimeObservation *>(this)->setVisibility(visibility);
 }
 
 void QUmlTimeObservationObject::unsetVisibility()
 {
-    qmodelingobjectproperty_cast<QUmlTimeObservation *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("visibility"));
+    Q_D(QModelingObject);
+    d->modifiedResettableProperties.removeAll(QStringLiteral("visibility"));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [TimeObservation]
 
 void QUmlTimeObservationObject::setEvent(QObject *event)
 {
-    qmodelingobjectproperty_cast<QUmlTimeObservation *>(this)->setEvent(qmodelingobjectproperty_cast<QUmlNamedElement *>(event));
+    qmodelingelementproperty_cast<QUmlTimeObservation *>(this)->setEvent(qmodelingelementproperty_cast<QUmlNamedElement *>(event));
 }
 
 void QUmlTimeObservationObject::setFirstEvent(bool firstEvent)
 {
-    qmodelingobjectproperty_cast<QUmlTimeObservation *>(this)->setFirstEvent(firstEvent);
+    qmodelingelementproperty_cast<QUmlTimeObservation *>(this)->setFirstEvent(firstEvent);
 }
 
 void QUmlTimeObservationObject::unsetFirstEvent()
 {
-    qmodelingobjectproperty_cast<QUmlTimeObservation *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("firstEvent"));
+    Q_D(QModelingObject);
+    d->modifiedResettableProperties.removeAll(QStringLiteral("firstEvent"));
+}
+
+
+void QUmlTimeObservationObject::setGroupProperties()
+{
+    Q_D(QModelingObject);
+    const QMetaObject *metaObject = this->metaObject();
+
+    d->propertyGroups << QStringLiteral("QObject");
+    d->groupProperties.insert(QStringLiteral("QObject"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("objectName"))));
+
+    d->propertyGroups << QStringLiteral("QUmlElement");
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
+
+    d->propertyGroups << QStringLiteral("QUmlParameterableElement");
+    d->groupProperties.insert(QStringLiteral("QUmlParameterableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owningTemplateParameter"))));
+    d->groupProperties.insert(QStringLiteral("QUmlParameterableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("templateParameter"))));
+
+    d->propertyGroups << QStringLiteral("QUmlNamedElement");
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
+
+    d->propertyGroups << QStringLiteral("QUmlPackageableElement");
+    d->groupProperties.insert(QStringLiteral("QUmlPackageableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
+
+    d->propertyGroups << QStringLiteral("QUmlObservation");
+
+    d->propertyGroups << QStringLiteral("QUmlTimeObservation");
+    d->groupProperties.insert(QStringLiteral("QUmlTimeObservation"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("event"))));
+    d->groupProperties.insert(QStringLiteral("QUmlTimeObservation"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("firstEvent"))));
+}
+
+void QUmlTimeObservationObject::setPropertyData()
+{
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTimeObservation, event, AggregationRole, QStringLiteral("none"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTimeObservation, event, PropertyClassRole, QStringLiteral("QUmlTimeObservation"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTimeObservation, event, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTimeObservation, event, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTimeObservation, event, DocumentationRole, QStringLiteral("The observation is determined by the entering or exiting of the event element during execution."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTimeObservation, event, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTimeObservation, event, SubsettedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTimeObservation, event, OppositeEndRole, QStringLiteral(""));
+
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTimeObservation, firstEvent, AggregationRole, QStringLiteral("none"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTimeObservation, firstEvent, PropertyClassRole, QStringLiteral("QUmlTimeObservation"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTimeObservation, firstEvent, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTimeObservation, firstEvent, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTimeObservation, firstEvent, DocumentationRole, QStringLiteral("The value of firstEvent is related to event. If firstEvent is true, then the corresponding observation event is the first time instant the execution enters event. If firstEvent is false, then the corresponding observation event is the time instant the execution exits event."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTimeObservation, firstEvent, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTimeObservation, firstEvent, SubsettedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTimeObservation, firstEvent, OppositeEndRole, QStringLiteral(""));
+
 }
 
 QT_END_NAMESPACE

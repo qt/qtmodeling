@@ -43,7 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtCore/QObject>
+#include <QtModeling/QModelingObject>
 
 #include <QtUml/QtUmlNamespace>
 
@@ -54,9 +54,12 @@ QT_BEGIN_NAMESPACE
 QT_MODULE(QtUml)
 
 class QUmlLiteralString;
-class Q_UML_EXPORT QUmlLiteralStringObject : public QObject
+class QModelingObjectPrivate;
+class Q_UML_EXPORT QUmlLiteralStringObject : public QModelingObject
 {
     Q_OBJECT
+    Q_DISABLE_COPY(QUmlLiteralStringObject)
+    Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [Element]
     Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
@@ -84,7 +87,7 @@ class Q_UML_EXPORT QUmlLiteralStringObject : public QObject
     Q_PROPERTY(QString value READ value WRITE setValue)
 
 public:
-    Q_INVOKABLE explicit QUmlLiteralStringObject(QUmlLiteralString *qModelingObject);
+    Q_INVOKABLE explicit QUmlLiteralStringObject(QUmlLiteralString *qModelingElement);
     virtual ~QUmlLiteralStringObject();
 
     // Owned attributes [Element]
@@ -167,6 +170,10 @@ public Q_SLOTS:
 
     // Slots for owned attributes [LiteralString]
     void setValue(QString value);
+
+protected:
+    virtual void setGroupProperties();
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

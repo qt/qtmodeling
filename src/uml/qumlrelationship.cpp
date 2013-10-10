@@ -52,15 +52,13 @@
  */
 QUmlRelationship::QUmlRelationship()
 {
-    setGroupProperties();
-    setPropertyData();
 }
 
 QUmlRelationship::~QUmlRelationship()
 {
 }
 
-QModelingObject *QUmlRelationship::clone() const
+QModelingElement *QUmlRelationship::clone() const
 {
     QUmlRelationship *c = new QUmlRelationship;
     foreach (QUmlComment *element, ownedComments())
@@ -86,8 +84,8 @@ void QUmlRelationship::addRelatedElement(QUmlElement *relatedElement)
 
     if (!_relatedElements.contains(relatedElement)) {
         _relatedElements.insert(relatedElement);
-        if (relatedElement && relatedElement->asQObject() && this->asQObject())
-            QObject::connect(relatedElement->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeRelatedElement(QObject *)));
+        if (relatedElement && relatedElement->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(relatedElement->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeRelatedElement(QObject *)));
     }
 }
 
@@ -98,28 +96,5 @@ void QUmlRelationship::removeRelatedElement(QUmlElement *relatedElement)
     if (_relatedElements.contains(relatedElement)) {
         _relatedElements.remove(relatedElement);
     }
-}
-
-void QUmlRelationship::setGroupProperties()
-{
-    const QMetaObject *metaObject = _qObject->metaObject();
-
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
-    _groupProperties.insert(QStringLiteral("QUmlRelationship"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("relatedElements"))));
-}
-
-void QUmlRelationship::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRelationship")][QStringLiteral("relatedElements")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRelationship")][QStringLiteral("relatedElements")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlRelationship");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRelationship")][QStringLiteral("relatedElements")][QtModeling::IsDerivedRole] = true;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRelationship")][QStringLiteral("relatedElements")][QtModeling::IsDerivedUnionRole] = true;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRelationship")][QStringLiteral("relatedElements")][QtModeling::DocumentationRole] = QStringLiteral("Specifies the elements related by the Relationship.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRelationship")][QStringLiteral("relatedElements")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRelationship")][QStringLiteral("relatedElements")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRelationship")][QStringLiteral("relatedElements")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
 }
 

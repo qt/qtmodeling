@@ -93,24 +93,22 @@
 
     \brief State machines can be used to express the behavior of part of a system. Behavior is modeled as a traversal of a graph of state nodes interconnected by one or more joined transition arcs that are triggered by the dispatching of series of (event) occurrences. During this traversal, the state machine executes a series of activities associated with various elements of the state machine.
  */
-QUmlStateMachine::QUmlStateMachine(bool createQObject)
+QUmlStateMachine::QUmlStateMachine(bool createQModelingObject)
 {
-    if (createQObject)
-        _qObject = new QUmlStateMachineObject(this);
-    setGroupProperties();
-    setPropertyData();
+    if (createQModelingObject)
+        _qModelingObject = qobject_cast<QModelingObject *>(new QUmlStateMachineObject(this));
 }
 
 QUmlStateMachine::~QUmlStateMachine()
 {
-    if (!deletingFromQObject) {
-        if (_qObject)
-            _qObject->setProperty("deletingFromModelingObject", true);
-        delete _qObject;
+    if (!deletingFromQModelingObject) {
+        if (_qModelingObject)
+            _qModelingObject->setProperty("deletingFromModelingObject", true);
+        delete _qModelingObject;
     }
 }
 
-QModelingObject *QUmlStateMachine::clone() const
+QModelingElement *QUmlStateMachine::clone() const
 {
     QUmlStateMachine *c = new QUmlStateMachine;
     foreach (QUmlComment *element, ownedComments())
@@ -213,9 +211,9 @@ void QUmlStateMachine::addConnectionPoint(QUmlPseudostate *connectionPoint)
 
     if (!_connectionPoints.contains(connectionPoint)) {
         _connectionPoints.insert(connectionPoint);
-        if (connectionPoint && connectionPoint->asQObject() && this->asQObject())
-            QObject::connect(connectionPoint->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeConnectionPoint(QObject *)));
-        connectionPoint->asQObject()->setParent(this->asQObject());
+        if (connectionPoint && connectionPoint->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(connectionPoint->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeConnectionPoint(QObject *)));
+        connectionPoint->asQModelingObject()->setParent(this->asQModelingObject());
 
         // Adjust subsetted properties
         addOwnedMember(connectionPoint);
@@ -233,8 +231,8 @@ void QUmlStateMachine::removeConnectionPoint(QUmlPseudostate *connectionPoint)
 
     if (_connectionPoints.contains(connectionPoint)) {
         _connectionPoints.remove(connectionPoint);
-        if (connectionPoint->asQObject())
-            connectionPoint->asQObject()->setParent(0);
+        if (connectionPoint->asQModelingObject())
+            connectionPoint->asQModelingObject()->setParent(0);
 
         // Adjust subsetted properties
         removeOwnedMember(connectionPoint);
@@ -262,8 +260,8 @@ void QUmlStateMachine::addExtendedStateMachine(QUmlStateMachine *extendedStateMa
 
     if (!_extendedStateMachines.contains(extendedStateMachine)) {
         _extendedStateMachines.insert(extendedStateMachine);
-        if (extendedStateMachine && extendedStateMachine->asQObject() && this->asQObject())
-            QObject::connect(extendedStateMachine->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeExtendedStateMachine(QObject *)));
+        if (extendedStateMachine && extendedStateMachine->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(extendedStateMachine->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeExtendedStateMachine(QObject *)));
     }
 }
 
@@ -292,9 +290,9 @@ void QUmlStateMachine::addRegion(QUmlRegion *region)
 
     if (!_regions.contains(region)) {
         _regions.insert(region);
-        if (region && region->asQObject() && this->asQObject())
-            QObject::connect(region->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeRegion(QObject *)));
-        region->asQObject()->setParent(this->asQObject());
+        if (region && region->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(region->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeRegion(QObject *)));
+        region->asQModelingObject()->setParent(this->asQModelingObject());
 
         // Adjust subsetted properties
         addOwnedMember(region);
@@ -312,8 +310,8 @@ void QUmlStateMachine::removeRegion(QUmlRegion *region)
 
     if (_regions.contains(region)) {
         _regions.remove(region);
-        if (region->asQObject())
-            region->asQObject()->setParent(0);
+        if (region->asQModelingObject())
+            region->asQModelingObject()->setParent(0);
 
         // Adjust subsetted properties
         removeOwnedMember(region);
@@ -341,8 +339,8 @@ void QUmlStateMachine::addSubmachineState(QUmlState *submachineState)
 
     if (!_submachineStates.contains(submachineState)) {
         _submachineStates.insert(submachineState);
-        if (submachineState && submachineState->asQObject() && this->asQObject())
-            QObject::connect(submachineState->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeSubmachineState(QObject *)));
+        if (submachineState && submachineState->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(submachineState->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeSubmachineState(QObject *)));
 
         // Adjust opposite properties
         if (submachineState) {
@@ -411,112 +409,5 @@ bool QUmlStateMachine::isRedefinitionContextValid(QUmlStateMachine *redefined) c
 
     Q_UNUSED(redefined);
     return bool ();
-}
-
-void QUmlStateMachine::setGroupProperties()
-{
-    const QMetaObject *metaObject = _qObject->metaObject();
-
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("elementImports"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("importedMembers"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("members"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedMembers"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedRules"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("packageImports"))));
-    _groupProperties.insert(QStringLiteral("QUmlParameterableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owningTemplateParameter"))));
-    _groupProperties.insert(QStringLiteral("QUmlPackageableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
-    _groupProperties.insert(QStringLiteral("QUmlType"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("package"))));
-    _groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isLeaf"))));
-    _groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinitionContexts"))));
-    _groupProperties.insert(QStringLiteral("QUmlTemplateableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("templateBindings"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("attributes"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("collaborationUses"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("features"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("generalizations"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inheritedMembers"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isFinalSpecialization"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedTemplateSignature"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedUseCases"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("powertypeExtents"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinedClassifiers"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("representation"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("substitutions"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("templateParameter"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("useCases"))));
-    _groupProperties.insert(QStringLiteral("QUmlStructuredClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedConnectors"))));
-    _groupProperties.insert(QStringLiteral("QUmlStructuredClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("parts"))));
-    _groupProperties.insert(QStringLiteral("QUmlStructuredClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("roles"))));
-    _groupProperties.insert(QStringLiteral("QUmlEncapsulatedClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedPorts"))));
-    _groupProperties.insert(QStringLiteral("QUmlBehavioredClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("classifierBehavior"))));
-    _groupProperties.insert(QStringLiteral("QUmlBehavioredClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("interfaceRealizations"))));
-    _groupProperties.insert(QStringLiteral("QUmlBehavioredClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedBehaviors"))));
-    _groupProperties.insert(QStringLiteral("QUmlClass"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("extensions"))));
-    _groupProperties.insert(QStringLiteral("QUmlClass"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isAbstract"))));
-    _groupProperties.insert(QStringLiteral("QUmlClass"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isActive"))));
-    _groupProperties.insert(QStringLiteral("QUmlClass"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nestedClassifiers"))));
-    _groupProperties.insert(QStringLiteral("QUmlClass"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedAttributes"))));
-    _groupProperties.insert(QStringLiteral("QUmlClass"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedOperations"))));
-    _groupProperties.insert(QStringLiteral("QUmlClass"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedReceptions"))));
-    _groupProperties.insert(QStringLiteral("QUmlClass"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("superClasses"))));
-    _groupProperties.insert(QStringLiteral("QUmlBehavior"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("context"))));
-    _groupProperties.insert(QStringLiteral("QUmlBehavior"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isReentrant"))));
-    _groupProperties.insert(QStringLiteral("QUmlBehavior"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedParameters"))));
-    _groupProperties.insert(QStringLiteral("QUmlBehavior"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedParameterSets"))));
-    _groupProperties.insert(QStringLiteral("QUmlBehavior"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("postconditions"))));
-    _groupProperties.insert(QStringLiteral("QUmlBehavior"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("preconditions"))));
-    _groupProperties.insert(QStringLiteral("QUmlBehavior"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("specification"))));
-    _groupProperties.insert(QStringLiteral("QUmlStateMachine"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("connectionPoints"))));
-    _groupProperties.insert(QStringLiteral("QUmlStateMachine"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("extendedStateMachines"))));
-    _groupProperties.insert(QStringLiteral("QUmlStateMachine"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("regions"))));
-    _groupProperties.insert(QStringLiteral("QUmlStateMachine"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("submachineStates"))));
-}
-
-void QUmlStateMachine::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStateMachine")][QStringLiteral("connectionPoints")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStateMachine")][QStringLiteral("connectionPoints")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlStateMachine");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStateMachine")][QStringLiteral("connectionPoints")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStateMachine")][QStringLiteral("connectionPoints")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStateMachine")][QStringLiteral("connectionPoints")][QtModeling::DocumentationRole] = QStringLiteral("The connection points defined for this state machine. They represent the interface of the state machine when used as part of submachine state.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStateMachine")][QStringLiteral("connectionPoints")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStateMachine")][QStringLiteral("connectionPoints")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Namespace-ownedMember");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStateMachine")][QStringLiteral("connectionPoints")][QtModeling::OppositeEndRole] = QStringLiteral("Pseudostate-stateMachine");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStateMachine")][QStringLiteral("extendedStateMachines")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStateMachine")][QStringLiteral("extendedStateMachines")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlStateMachine");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStateMachine")][QStringLiteral("extendedStateMachines")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStateMachine")][QStringLiteral("extendedStateMachines")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStateMachine")][QStringLiteral("extendedStateMachines")][QtModeling::DocumentationRole] = QStringLiteral("The state machines of which this is an extension.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStateMachine")][QStringLiteral("extendedStateMachines")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("Behavior-redefinedBehavior");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStateMachine")][QStringLiteral("extendedStateMachines")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStateMachine")][QStringLiteral("extendedStateMachines")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStateMachine")][QStringLiteral("regions")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStateMachine")][QStringLiteral("regions")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlStateMachine");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStateMachine")][QStringLiteral("regions")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStateMachine")][QStringLiteral("regions")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStateMachine")][QStringLiteral("regions")][QtModeling::DocumentationRole] = QStringLiteral("The regions owned directly by the state machine.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStateMachine")][QStringLiteral("regions")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStateMachine")][QStringLiteral("regions")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Namespace-ownedMember");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStateMachine")][QStringLiteral("regions")][QtModeling::OppositeEndRole] = QStringLiteral("Region-stateMachine");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStateMachine")][QStringLiteral("submachineStates")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStateMachine")][QStringLiteral("submachineStates")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlStateMachine");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStateMachine")][QStringLiteral("submachineStates")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStateMachine")][QStringLiteral("submachineStates")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStateMachine")][QStringLiteral("submachineStates")][QtModeling::DocumentationRole] = QStringLiteral("References the submachine(s) in case of a submachine state. Multiple machines are referenced in case of a concurrent state.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStateMachine")][QStringLiteral("submachineStates")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStateMachine")][QStringLiteral("submachineStates")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStateMachine")][QStringLiteral("submachineStates")][QtModeling::OppositeEndRole] = QStringLiteral("State-submachine");
-
 }
 

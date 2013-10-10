@@ -43,7 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtCore/QObject>
+#include <QtModeling/QModelingObject>
 
 #include <QtUml/QtUmlNamespace>
 
@@ -54,9 +54,12 @@ QT_BEGIN_NAMESPACE
 QT_MODULE(QtUml)
 
 class QUmlGeneralOrdering;
-class Q_UML_EXPORT QUmlGeneralOrderingObject : public QObject
+class QModelingObjectPrivate;
+class Q_UML_EXPORT QUmlGeneralOrderingObject : public QModelingObject
 {
     Q_OBJECT
+    Q_DISABLE_COPY(QUmlGeneralOrderingObject)
+    Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [Element]
     Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
@@ -76,7 +79,7 @@ class Q_UML_EXPORT QUmlGeneralOrderingObject : public QObject
     Q_PROPERTY(QObject * before READ before WRITE setBefore)
 
 public:
-    Q_INVOKABLE explicit QUmlGeneralOrderingObject(QUmlGeneralOrdering *qModelingObject);
+    Q_INVOKABLE explicit QUmlGeneralOrderingObject(QUmlGeneralOrdering *qModelingElement);
     virtual ~QUmlGeneralOrderingObject();
 
     // Owned attributes [Element]
@@ -127,6 +130,10 @@ public Q_SLOTS:
     // Slots for owned attributes [GeneralOrdering]
     void setAfter(QObject *after = 0);
     void setBefore(QObject *before = 0);
+
+protected:
+    virtual void setGroupProperties();
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

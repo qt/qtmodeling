@@ -45,7 +45,6 @@
 
 #include <QtUml/QUmlNamedElement>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -61,7 +60,7 @@ class Q_UML_EXPORT QUmlVertex : public virtual QUmlNamedElement
 public:
     virtual ~QUmlVertex();
 
-    Q_DECL_HIDDEN QModelingObject *clone() const;
+    Q_DECL_HIDDEN virtual QModelingElement *clone() const;
 
     // Owned attributes
     QUmlRegion *container() const;
@@ -80,9 +79,6 @@ protected:
     explicit QUmlVertex();
 
     QUmlRegion *_container;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

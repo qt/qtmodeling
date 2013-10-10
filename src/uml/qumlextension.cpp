@@ -79,26 +79,24 @@
 
     \brief An extension is used to indicate that the properties of a metaclass are extended through a stereotype, and gives the ability to flexibly add (and later remove) stereotypes to classes.
  */
-QUmlExtension::QUmlExtension(bool createQObject) :
+QUmlExtension::QUmlExtension(bool createQModelingObject) :
     QUmlAssociation(false),
     _ownedEnd(0)
 {
-    if (createQObject)
-        _qObject = new QUmlExtensionObject(this);
-    setGroupProperties();
-    setPropertyData();
+    if (createQModelingObject)
+        _qModelingObject = qobject_cast<QModelingObject *>(new QUmlExtensionObject(this));
 }
 
 QUmlExtension::~QUmlExtension()
 {
-    if (!deletingFromQObject) {
-        if (_qObject)
-            _qObject->setProperty("deletingFromModelingObject", true);
-        delete _qObject;
+    if (!deletingFromQModelingObject) {
+        if (_qModelingObject)
+            _qModelingObject->setProperty("deletingFromModelingObject", true);
+        delete _qModelingObject;
     }
 }
 
-QModelingObject *QUmlExtension::clone() const
+QModelingElement *QUmlExtension::clone() const
 {
     QUmlExtension *c = new QUmlExtension;
     foreach (QUmlComment *element, ownedComments())
@@ -220,9 +218,9 @@ void QUmlExtension::setOwnedEnd(QUmlExtensionEnd *ownedEnd)
 
     if (_ownedEnd != ownedEnd) {
         _ownedEnd = ownedEnd;
-        if (ownedEnd && ownedEnd->asQObject() && this->asQObject())
-            QObject::connect(ownedEnd->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setOwnedEnd()));
-        ownedEnd->asQObject()->setParent(this->asQObject());
+        if (ownedEnd && ownedEnd->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(ownedEnd->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setOwnedEnd()));
+        ownedEnd->asQModelingObject()->setParent(this->asQModelingObject());
     }
 }
 
@@ -236,87 +234,5 @@ QUmlProperty *QUmlExtension::metaclassEnd() const
     qWarning("UmlExtension::metaclassEnd(): to be implemented (operation)");
 
     return 0;
-}
-
-void QUmlExtension::setGroupProperties()
-{
-    const QMetaObject *metaObject = _qObject->metaObject();
-
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("elementImports"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("importedMembers"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("members"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedMembers"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedRules"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("packageImports"))));
-    _groupProperties.insert(QStringLiteral("QUmlParameterableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owningTemplateParameter"))));
-    _groupProperties.insert(QStringLiteral("QUmlPackageableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
-    _groupProperties.insert(QStringLiteral("QUmlType"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("package"))));
-    _groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isLeaf"))));
-    _groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinitionContexts"))));
-    _groupProperties.insert(QStringLiteral("QUmlTemplateableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("templateBindings"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("attributes"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("collaborationUses"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("features"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("generals"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("generalizations"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inheritedMembers"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isAbstract"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isFinalSpecialization"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedTemplateSignature"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedUseCases"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("powertypeExtents"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinedClassifiers"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("representation"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("substitutions"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("templateParameter"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("useCases"))));
-    _groupProperties.insert(QStringLiteral("QUmlRelationship"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("relatedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlAssociation"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("endTypes"))));
-    _groupProperties.insert(QStringLiteral("QUmlAssociation"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isDerived"))));
-    _groupProperties.insert(QStringLiteral("QUmlAssociation"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("memberEnds"))));
-    _groupProperties.insert(QStringLiteral("QUmlAssociation"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("navigableOwnedEnds"))));
-    _groupProperties.insert(QStringLiteral("QUmlExtension"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isRequired"))));
-    _groupProperties.insert(QStringLiteral("QUmlExtension"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("metaclass"))));
-    _groupProperties.insert(QStringLiteral("QUmlExtension"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedEnd"))));
-}
-
-void QUmlExtension::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExtension")][QStringLiteral("isRequired")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExtension")][QStringLiteral("isRequired")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlExtension");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExtension")][QStringLiteral("isRequired")][QtModeling::IsDerivedRole] = true;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExtension")][QStringLiteral("isRequired")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExtension")][QStringLiteral("isRequired")][QtModeling::DocumentationRole] = QStringLiteral("Indicates whether an instance of the extending stereotype must be created when an instance of the extended class is created. The attribute value is derived from the value of the lower property of the ExtensionEnd referenced by Extension::ownedEnd; a lower value of 1 means that isRequired is true, but otherwise it is false. Since the default value of ExtensionEnd::lower is 0, the default value of isRequired is false.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExtension")][QStringLiteral("isRequired")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExtension")][QStringLiteral("isRequired")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExtension")][QStringLiteral("isRequired")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExtension")][QStringLiteral("metaclass")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExtension")][QStringLiteral("metaclass")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlExtension");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExtension")][QStringLiteral("metaclass")][QtModeling::IsDerivedRole] = true;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExtension")][QStringLiteral("metaclass")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExtension")][QStringLiteral("metaclass")][QtModeling::DocumentationRole] = QStringLiteral("References the Class that is extended through an Extension. The property is derived from the type of the memberEnd that is not the ownedEnd.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExtension")][QStringLiteral("metaclass")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExtension")][QStringLiteral("metaclass")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExtension")][QStringLiteral("metaclass")][QtModeling::OppositeEndRole] = QStringLiteral("Class-extension");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExtension")][QStringLiteral("ownedEnd")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExtension")][QStringLiteral("ownedEnd")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlExtension");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExtension")][QStringLiteral("ownedEnd")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExtension")][QStringLiteral("ownedEnd")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExtension")][QStringLiteral("ownedEnd")][QtModeling::DocumentationRole] = QStringLiteral("References the end of the extension that is typed by a Stereotype.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExtension")][QStringLiteral("ownedEnd")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("Association-ownedEnd");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExtension")][QStringLiteral("ownedEnd")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExtension")][QStringLiteral("ownedEnd")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
 }
 

@@ -46,7 +46,6 @@
 #include <QtUml/QUmlClass>
 #include <QtUml/QUmlDeploymentTarget>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -56,10 +55,10 @@ QT_MODULE(QtUml)
 class Q_UML_EXPORT QUmlNode : public QUmlClass, public QUmlDeploymentTarget
 {
 public:
-    explicit QUmlNode(bool createQObject = true);
+    explicit QUmlNode(bool createQModelingObject = true);
     virtual ~QUmlNode();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
     const QSet<QUmlNode *> nestedNodes() const;
@@ -68,9 +67,6 @@ public:
 
 protected:
     QSet<QUmlNode *> _nestedNodes;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

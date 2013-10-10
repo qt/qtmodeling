@@ -45,7 +45,6 @@
 
 #include <QtUml/QUmlWriteStructuralFeatureAction>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -57,10 +56,10 @@ class QUmlInputPin;
 class Q_UML_EXPORT QUmlRemoveStructuralFeatureValueAction : public QUmlWriteStructuralFeatureAction
 {
 public:
-    explicit QUmlRemoveStructuralFeatureValueAction(bool createQObject = true);
+    explicit QUmlRemoveStructuralFeatureValueAction(bool createQModelingObject = true);
     virtual ~QUmlRemoveStructuralFeatureValueAction();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
     bool isRemoveDuplicates() const;
@@ -71,9 +70,6 @@ public:
 protected:
     bool _isRemoveDuplicates;
     QUmlInputPin *_removeAt;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

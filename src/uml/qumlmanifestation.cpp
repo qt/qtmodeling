@@ -61,26 +61,24 @@
 
     \brief A manifestation is the concrete physical rendering of one or more model elements by an artifact.
  */
-QUmlManifestation::QUmlManifestation(bool createQObject) :
+QUmlManifestation::QUmlManifestation(bool createQModelingObject) :
     QUmlAbstraction(false),
     _utilizedElement(0)
 {
-    if (createQObject)
-        _qObject = new QUmlManifestationObject(this);
-    setGroupProperties();
-    setPropertyData();
+    if (createQModelingObject)
+        _qModelingObject = qobject_cast<QModelingObject *>(new QUmlManifestationObject(this));
 }
 
 QUmlManifestation::~QUmlManifestation()
 {
-    if (!deletingFromQObject) {
-        if (_qObject)
-            _qObject->setProperty("deletingFromModelingObject", true);
-        delete _qObject;
+    if (!deletingFromQModelingObject) {
+        if (_qModelingObject)
+            _qModelingObject->setProperty("deletingFromModelingObject", true);
+        delete _qModelingObject;
     }
 }
 
-QModelingObject *QUmlManifestation::clone() const
+QModelingElement *QUmlManifestation::clone() const
 {
     QUmlManifestation *c = new QUmlManifestation;
     foreach (QUmlComment *element, ownedComments())
@@ -127,50 +125,13 @@ void QUmlManifestation::setUtilizedElement(QUmlPackageableElement *utilizedEleme
         removeSupplier(_utilizedElement);
 
         _utilizedElement = utilizedElement;
-        if (utilizedElement && utilizedElement->asQObject() && this->asQObject())
-            QObject::connect(utilizedElement->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setUtilizedElement()));
+        if (utilizedElement && utilizedElement->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(utilizedElement->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setUtilizedElement()));
 
         // Adjust subsetted properties
         if (utilizedElement) {
             addSupplier(utilizedElement);
         }
     }
-}
-
-void QUmlManifestation::setGroupProperties()
-{
-    const QMetaObject *metaObject = _qObject->metaObject();
-
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
-    _groupProperties.insert(QStringLiteral("QUmlParameterableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owningTemplateParameter"))));
-    _groupProperties.insert(QStringLiteral("QUmlParameterableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("templateParameter"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
-    _groupProperties.insert(QStringLiteral("QUmlPackageableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
-    _groupProperties.insert(QStringLiteral("QUmlRelationship"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("relatedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlDirectedRelationship"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("sources"))));
-    _groupProperties.insert(QStringLiteral("QUmlDirectedRelationship"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("targets"))));
-    _groupProperties.insert(QStringLiteral("QUmlDependency"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clients"))));
-    _groupProperties.insert(QStringLiteral("QUmlDependency"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("suppliers"))));
-    _groupProperties.insert(QStringLiteral("QUmlAbstraction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("mapping"))));
-    _groupProperties.insert(QStringLiteral("QUmlManifestation"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("utilizedElement"))));
-}
-
-void QUmlManifestation::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlManifestation")][QStringLiteral("utilizedElement")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlManifestation")][QStringLiteral("utilizedElement")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlManifestation");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlManifestation")][QStringLiteral("utilizedElement")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlManifestation")][QStringLiteral("utilizedElement")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlManifestation")][QStringLiteral("utilizedElement")][QtModeling::DocumentationRole] = QStringLiteral("The model element that is utilized in the manifestation in an Artifact.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlManifestation")][QStringLiteral("utilizedElement")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlManifestation")][QStringLiteral("utilizedElement")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Dependency-supplier");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlManifestation")][QStringLiteral("utilizedElement")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
 }
 

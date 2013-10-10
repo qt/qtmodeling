@@ -60,27 +60,25 @@
 
     \brief An interaction constraint is a Boolean expression that guards an operand in a combined fragment.
  */
-QUmlInteractionConstraint::QUmlInteractionConstraint(bool createQObject) :
+QUmlInteractionConstraint::QUmlInteractionConstraint(bool createQModelingObject) :
     QUmlConstraint(false),
     _maxint(0),
     _minint(0)
 {
-    if (createQObject)
-        _qObject = new QUmlInteractionConstraintObject(this);
-    setGroupProperties();
-    setPropertyData();
+    if (createQModelingObject)
+        _qModelingObject = qobject_cast<QModelingObject *>(new QUmlInteractionConstraintObject(this));
 }
 
 QUmlInteractionConstraint::~QUmlInteractionConstraint()
 {
-    if (!deletingFromQObject) {
-        if (_qObject)
-            _qObject->setProperty("deletingFromModelingObject", true);
-        delete _qObject;
+    if (!deletingFromQModelingObject) {
+        if (_qModelingObject)
+            _qModelingObject->setProperty("deletingFromModelingObject", true);
+        delete _qModelingObject;
     }
 }
 
-QModelingObject *QUmlInteractionConstraint::clone() const
+QModelingElement *QUmlInteractionConstraint::clone() const
 {
     QUmlInteractionConstraint *c = new QUmlInteractionConstraint;
     foreach (QUmlComment *element, ownedComments())
@@ -129,9 +127,9 @@ void QUmlInteractionConstraint::setMaxint(QUmlValueSpecification *maxint)
         removeOwnedElement(_maxint);
 
         _maxint = maxint;
-        if (maxint && maxint->asQObject() && this->asQObject())
-            QObject::connect(maxint->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setMaxint()));
-        maxint->asQObject()->setParent(this->asQObject());
+        if (maxint && maxint->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(maxint->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setMaxint()));
+        maxint->asQModelingObject()->setParent(this->asQModelingObject());
 
         // Adjust subsetted properties
         if (maxint) {
@@ -159,58 +157,14 @@ void QUmlInteractionConstraint::setMinint(QUmlValueSpecification *minint)
         removeOwnedElement(_minint);
 
         _minint = minint;
-        if (minint && minint->asQObject() && this->asQObject())
-            QObject::connect(minint->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setMinint()));
-        minint->asQObject()->setParent(this->asQObject());
+        if (minint && minint->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(minint->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setMinint()));
+        minint->asQModelingObject()->setParent(this->asQModelingObject());
 
         // Adjust subsetted properties
         if (minint) {
             addOwnedElement(minint);
         }
     }
-}
-
-void QUmlInteractionConstraint::setGroupProperties()
-{
-    const QMetaObject *metaObject = _qObject->metaObject();
-
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
-    _groupProperties.insert(QStringLiteral("QUmlParameterableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owningTemplateParameter"))));
-    _groupProperties.insert(QStringLiteral("QUmlParameterableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("templateParameter"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
-    _groupProperties.insert(QStringLiteral("QUmlPackageableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
-    _groupProperties.insert(QStringLiteral("QUmlConstraint"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("constrainedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlConstraint"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("context"))));
-    _groupProperties.insert(QStringLiteral("QUmlConstraint"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("specification"))));
-    _groupProperties.insert(QStringLiteral("QUmlInteractionConstraint"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("maxint"))));
-    _groupProperties.insert(QStringLiteral("QUmlInteractionConstraint"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("minint"))));
-}
-
-void QUmlInteractionConstraint::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionConstraint")][QStringLiteral("maxint")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionConstraint")][QStringLiteral("maxint")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInteractionConstraint");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionConstraint")][QStringLiteral("maxint")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionConstraint")][QStringLiteral("maxint")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionConstraint")][QStringLiteral("maxint")][QtModeling::DocumentationRole] = QStringLiteral("The maximum number of iterations of a loop");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionConstraint")][QStringLiteral("maxint")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionConstraint")][QStringLiteral("maxint")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionConstraint")][QStringLiteral("maxint")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionConstraint")][QStringLiteral("minint")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionConstraint")][QStringLiteral("minint")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInteractionConstraint");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionConstraint")][QStringLiteral("minint")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionConstraint")][QStringLiteral("minint")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionConstraint")][QStringLiteral("minint")][QtModeling::DocumentationRole] = QStringLiteral("The minimum number of iterations of a loop");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionConstraint")][QStringLiteral("minint")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionConstraint")][QStringLiteral("minint")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionConstraint")][QStringLiteral("minint")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
 }
 

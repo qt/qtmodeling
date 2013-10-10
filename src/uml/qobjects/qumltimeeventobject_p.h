@@ -43,7 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtCore/QObject>
+#include <QtModeling/QModelingObject>
 
 #include <QtUml/QtUmlNamespace>
 
@@ -54,9 +54,12 @@ QT_BEGIN_NAMESPACE
 QT_MODULE(QtUml)
 
 class QUmlTimeEvent;
-class Q_UML_EXPORT QUmlTimeEventObject : public QObject
+class QModelingObjectPrivate;
+class Q_UML_EXPORT QUmlTimeEventObject : public QModelingObject
 {
     Q_OBJECT
+    Q_DISABLE_COPY(QUmlTimeEventObject)
+    Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [Element]
     Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
@@ -82,7 +85,7 @@ class Q_UML_EXPORT QUmlTimeEventObject : public QObject
     Q_PROPERTY(QObject * when READ when WRITE setWhen)
 
 public:
-    Q_INVOKABLE explicit QUmlTimeEventObject(QUmlTimeEvent *qModelingObject);
+    Q_INVOKABLE explicit QUmlTimeEventObject(QUmlTimeEvent *qModelingElement);
     virtual ~QUmlTimeEventObject();
 
     // Owned attributes [Element]
@@ -151,6 +154,10 @@ public Q_SLOTS:
     void setRelative(bool isRelative);
     void unsetRelative();
     void setWhen(QObject *when = 0);
+
+protected:
+    virtual void setGroupProperties();
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

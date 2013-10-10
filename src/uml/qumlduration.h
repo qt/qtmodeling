@@ -45,7 +45,6 @@
 
 #include <QtUml/QUmlValueSpecification>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -57,10 +56,10 @@ class QUmlObservation;
 class Q_UML_EXPORT QUmlDuration : public QUmlValueSpecification
 {
 public:
-    explicit QUmlDuration(bool createQObject = true);
+    explicit QUmlDuration(bool createQModelingObject = true);
     virtual ~QUmlDuration();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
     QUmlValueSpecification *expr() const;
@@ -72,9 +71,6 @@ public:
 protected:
     QUmlValueSpecification *_expr;
     QSet<QUmlObservation *> _observations;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

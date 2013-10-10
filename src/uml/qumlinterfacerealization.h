@@ -45,7 +45,6 @@
 
 #include <QtUml/QUmlRealization>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -58,10 +57,10 @@ class QUmlInterface;
 class Q_UML_EXPORT QUmlInterfaceRealization : public QUmlRealization
 {
 public:
-    explicit QUmlInterfaceRealization(bool createQObject = true);
+    explicit QUmlInterfaceRealization(bool createQModelingObject = true);
     virtual ~QUmlInterfaceRealization();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
     QUmlInterface *contract() const;
@@ -72,9 +71,6 @@ public:
 protected:
     QUmlInterface *_contract;
     QUmlBehavioredClassifier *_implementingClassifier;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

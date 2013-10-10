@@ -46,7 +46,6 @@
 #include <QtUml/QUmlStructuredClassifier>
 #include <QtUml/QUmlBehavioredClassifier>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -58,10 +57,10 @@ class QUmlConnectableElement;
 class Q_UML_EXPORT QUmlCollaboration : public QUmlStructuredClassifier, public QUmlBehavioredClassifier
 {
 public:
-    explicit QUmlCollaboration(bool createQObject = true);
+    explicit QUmlCollaboration(bool createQModelingObject = true);
     virtual ~QUmlCollaboration();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
     const QSet<QUmlConnectableElement *> collaborationRoles() const;
@@ -70,9 +69,6 @@ public:
 
 protected:
     QSet<QUmlConnectableElement *> _collaborationRoles;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

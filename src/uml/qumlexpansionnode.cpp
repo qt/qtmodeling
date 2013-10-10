@@ -71,26 +71,24 @@
 
     \brief An expansion node is an object node used to indicate a flow across the boundary of an expansion region. A flow into a region contains a collection that is broken into its individual elements inside the region, which is executed once per element. A flow out of a region combines individual elements into a collection for use outside the region.
  */
-QUmlExpansionNode::QUmlExpansionNode(bool createQObject) :
+QUmlExpansionNode::QUmlExpansionNode(bool createQModelingObject) :
     _regionAsInput(0),
     _regionAsOutput(0)
 {
-    if (createQObject)
-        _qObject = new QUmlExpansionNodeObject(this);
-    setGroupProperties();
-    setPropertyData();
+    if (createQModelingObject)
+        _qModelingObject = qobject_cast<QModelingObject *>(new QUmlExpansionNodeObject(this));
 }
 
 QUmlExpansionNode::~QUmlExpansionNode()
 {
-    if (!deletingFromQObject) {
-        if (_qObject)
-            _qObject->setProperty("deletingFromModelingObject", true);
-        delete _qObject;
+    if (!deletingFromQModelingObject) {
+        if (_qModelingObject)
+            _qModelingObject->setProperty("deletingFromModelingObject", true);
+        delete _qModelingObject;
     }
 }
 
-QModelingObject *QUmlExpansionNode::clone() const
+QModelingElement *QUmlExpansionNode::clone() const
 {
     QUmlExpansionNode *c = new QUmlExpansionNode;
     foreach (QUmlComment *element, ownedComments())
@@ -151,8 +149,8 @@ void QUmlExpansionNode::setRegionAsInput(QUmlExpansionRegion *regionAsInput)
 
     if (_regionAsInput != regionAsInput) {
         _regionAsInput = regionAsInput;
-        if (regionAsInput && regionAsInput->asQObject() && this->asQObject())
-            QObject::connect(regionAsInput->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setRegionAsInput()));
+        if (regionAsInput && regionAsInput->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(regionAsInput->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setRegionAsInput()));
     }
 }
 
@@ -172,64 +170,8 @@ void QUmlExpansionNode::setRegionAsOutput(QUmlExpansionRegion *regionAsOutput)
 
     if (_regionAsOutput != regionAsOutput) {
         _regionAsOutput = regionAsOutput;
-        if (regionAsOutput && regionAsOutput->asQObject() && this->asQObject())
-            QObject::connect(regionAsOutput->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setRegionAsOutput()));
+        if (regionAsOutput && regionAsOutput->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(regionAsOutput->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setRegionAsOutput()));
     }
-}
-
-void QUmlExpansionNode::setGroupProperties()
-{
-    const QMetaObject *metaObject = _qObject->metaObject();
-
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
-    _groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isLeaf"))));
-    _groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinitionContexts"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("activity"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inGroups"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inInterruptibleRegions"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inPartitions"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inStructuredNode"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("incomings"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("outgoings"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinedNodes"))));
-    _groupProperties.insert(QStringLiteral("QUmlTypedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("type"))));
-    _groupProperties.insert(QStringLiteral("QUmlObjectNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inStates"))));
-    _groupProperties.insert(QStringLiteral("QUmlObjectNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isControlType"))));
-    _groupProperties.insert(QStringLiteral("QUmlObjectNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ordering"))));
-    _groupProperties.insert(QStringLiteral("QUmlObjectNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("selection"))));
-    _groupProperties.insert(QStringLiteral("QUmlObjectNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("upperBound"))));
-    _groupProperties.insert(QStringLiteral("QUmlExpansionNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("regionAsInput"))));
-    _groupProperties.insert(QStringLiteral("QUmlExpansionNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("regionAsOutput"))));
-}
-
-void QUmlExpansionNode::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExpansionNode")][QStringLiteral("regionAsInput")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExpansionNode")][QStringLiteral("regionAsInput")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlExpansionNode");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExpansionNode")][QStringLiteral("regionAsInput")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExpansionNode")][QStringLiteral("regionAsInput")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExpansionNode")][QStringLiteral("regionAsInput")][QtModeling::DocumentationRole] = QStringLiteral("The expansion region for which the node is an input.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExpansionNode")][QStringLiteral("regionAsInput")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExpansionNode")][QStringLiteral("regionAsInput")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExpansionNode")][QStringLiteral("regionAsInput")][QtModeling::OppositeEndRole] = QStringLiteral("ExpansionRegion-inputElement");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExpansionNode")][QStringLiteral("regionAsOutput")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExpansionNode")][QStringLiteral("regionAsOutput")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlExpansionNode");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExpansionNode")][QStringLiteral("regionAsOutput")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExpansionNode")][QStringLiteral("regionAsOutput")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExpansionNode")][QStringLiteral("regionAsOutput")][QtModeling::DocumentationRole] = QStringLiteral("The expansion region for which the node is an output.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExpansionNode")][QStringLiteral("regionAsOutput")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExpansionNode")][QStringLiteral("regionAsOutput")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExpansionNode")][QStringLiteral("regionAsOutput")][QtModeling::OppositeEndRole] = QStringLiteral("ExpansionRegion-outputElement");
-
 }
 

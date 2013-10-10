@@ -45,7 +45,6 @@
 
 #include <QtUml/QUmlMultiplicityElement>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -58,10 +57,10 @@ class QUmlProperty;
 class Q_UML_EXPORT QUmlConnectorEnd : public QUmlMultiplicityElement
 {
 public:
-    explicit QUmlConnectorEnd(bool createQObject = true);
+    explicit QUmlConnectorEnd(bool createQModelingObject = true);
     virtual ~QUmlConnectorEnd();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
     QUmlProperty *definingEnd() const;
@@ -74,9 +73,6 @@ public:
 protected:
     QUmlProperty *_partWithPort;
     QUmlConnectableElement *_role;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

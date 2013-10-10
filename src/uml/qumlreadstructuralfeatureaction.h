@@ -45,7 +45,6 @@
 
 #include <QtUml/QUmlStructuralFeatureAction>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -57,10 +56,10 @@ class QUmlOutputPin;
 class Q_UML_EXPORT QUmlReadStructuralFeatureAction : public QUmlStructuralFeatureAction
 {
 public:
-    explicit QUmlReadStructuralFeatureAction(bool createQObject = true);
+    explicit QUmlReadStructuralFeatureAction(bool createQModelingObject = true);
     virtual ~QUmlReadStructuralFeatureAction();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
     QUmlOutputPin *result() const;
@@ -68,9 +67,6 @@ public:
 
 protected:
     QUmlOutputPin *_result;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

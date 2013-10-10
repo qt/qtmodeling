@@ -43,7 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtCore/QObject>
+#include <QtModeling/QModelingObject>
 
 #include <QtUml/QtUmlNamespace>
 
@@ -54,9 +54,12 @@ QT_BEGIN_NAMESPACE
 QT_MODULE(QtUml)
 
 class QUmlFunctionBehavior;
-class Q_UML_EXPORT QUmlFunctionBehaviorObject : public QObject
+class QModelingObjectPrivate;
+class Q_UML_EXPORT QUmlFunctionBehaviorObject : public QModelingObject
 {
     Q_OBJECT
+    Q_DISABLE_COPY(QUmlFunctionBehaviorObject)
+    Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [Element]
     Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
@@ -149,7 +152,7 @@ class Q_UML_EXPORT QUmlFunctionBehaviorObject : public QObject
     Q_PROPERTY(QList<QString> languages READ languages)
 
 public:
-    Q_INVOKABLE explicit QUmlFunctionBehaviorObject(QUmlFunctionBehavior *qModelingObject);
+    Q_INVOKABLE explicit QUmlFunctionBehaviorObject(QUmlFunctionBehavior *qModelingElement);
     virtual ~QUmlFunctionBehaviorObject();
 
     // Owned attributes [Element]
@@ -422,6 +425,10 @@ public Q_SLOTS:
     void removeBody(QString body);
     void addLanguage(QString language);
     void removeLanguage(QString language);
+
+protected:
+    virtual void setGroupProperties();
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

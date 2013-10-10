@@ -43,7 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtCore/QObject>
+#include <QtModeling/QModelingObject>
 
 #include <QtUml/QtUmlNamespace>
 
@@ -54,9 +54,12 @@ QT_BEGIN_NAMESPACE
 QT_MODULE(QtUml)
 
 class QUmlBroadcastSignalAction;
-class Q_UML_EXPORT QUmlBroadcastSignalActionObject : public QObject
+class QModelingObjectPrivate;
+class Q_UML_EXPORT QUmlBroadcastSignalActionObject : public QModelingObject
 {
     Q_OBJECT
+    Q_DISABLE_COPY(QUmlBroadcastSignalActionObject)
+    Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [Element]
     Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
@@ -105,7 +108,7 @@ class Q_UML_EXPORT QUmlBroadcastSignalActionObject : public QObject
     Q_PROPERTY(QObject * signal READ signal WRITE setSignal)
 
 public:
-    Q_INVOKABLE explicit QUmlBroadcastSignalActionObject(QUmlBroadcastSignalAction *qModelingObject);
+    Q_INVOKABLE explicit QUmlBroadcastSignalActionObject(QUmlBroadcastSignalAction *qModelingElement);
     virtual ~QUmlBroadcastSignalActionObject();
 
     // Owned attributes [Element]
@@ -234,6 +237,10 @@ public Q_SLOTS:
 
     // Slots for owned attributes [BroadcastSignalAction]
     void setSignal(QObject *signal = 0);
+
+protected:
+    virtual void setGroupProperties();
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

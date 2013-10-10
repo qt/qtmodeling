@@ -61,26 +61,24 @@
 
     \brief A redefinable template signature supports the addition of formal template parameters in a specialization of a template classifier.
  */
-QUmlRedefinableTemplateSignature::QUmlRedefinableTemplateSignature(bool createQObject) :
+QUmlRedefinableTemplateSignature::QUmlRedefinableTemplateSignature(bool createQModelingObject) :
     QUmlTemplateSignature(false),
     _classifier(0)
 {
-    if (createQObject)
-        _qObject = new QUmlRedefinableTemplateSignatureObject(this);
-    setGroupProperties();
-    setPropertyData();
+    if (createQModelingObject)
+        _qModelingObject = qobject_cast<QModelingObject *>(new QUmlRedefinableTemplateSignatureObject(this));
 }
 
 QUmlRedefinableTemplateSignature::~QUmlRedefinableTemplateSignature()
 {
-    if (!deletingFromQObject) {
-        if (_qObject)
-            _qObject->setProperty("deletingFromModelingObject", true);
-        delete _qObject;
+    if (!deletingFromQModelingObject) {
+        if (_qModelingObject)
+            _qModelingObject->setProperty("deletingFromModelingObject", true);
+        delete _qModelingObject;
     }
 }
 
-QModelingObject *QUmlRedefinableTemplateSignature::clone() const
+QModelingElement *QUmlRedefinableTemplateSignature::clone() const
 {
     QUmlRedefinableTemplateSignature *c = new QUmlRedefinableTemplateSignature;
     foreach (QUmlComment *element, ownedComments())
@@ -126,8 +124,8 @@ void QUmlRedefinableTemplateSignature::setClassifier(QUmlClassifier *classifier)
         removeRedefinitionContext(_classifier);
 
         _classifier = classifier;
-        if (classifier && classifier->asQObject() && this->asQObject())
-            QObject::connect(classifier->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setClassifier()));
+        if (classifier && classifier->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(classifier->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setClassifier()));
 
         // Adjust subsetted properties
         if (classifier) {
@@ -152,8 +150,8 @@ void QUmlRedefinableTemplateSignature::addExtendedSignature(QUmlRedefinableTempl
 
     if (!_extendedSignatures.contains(extendedSignature)) {
         _extendedSignatures.insert(extendedSignature);
-        if (extendedSignature && extendedSignature->asQObject() && this->asQObject())
-            QObject::connect(extendedSignature->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeExtendedSignature(QObject *)));
+        if (extendedSignature && extendedSignature->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(extendedSignature->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeExtendedSignature(QObject *)));
 
         // Adjust subsetted properties
         addRedefinedElement(extendedSignature);
@@ -225,60 +223,5 @@ bool QUmlRedefinableTemplateSignature::isConsistentWith(QUmlRedefinableElement *
 
     Q_UNUSED(redefinee);
     return bool ();
-}
-
-void QUmlRedefinableTemplateSignature::setGroupProperties()
-{
-    const QMetaObject *metaObject = _qObject->metaObject();
-
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
-    _groupProperties.insert(QStringLiteral("QUmlTemplateSignature"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedParameters"))));
-    _groupProperties.insert(QStringLiteral("QUmlTemplateSignature"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("parameters"))));
-    _groupProperties.insert(QStringLiteral("QUmlTemplateSignature"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("template_"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
-    _groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isLeaf"))));
-    _groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinitionContexts"))));
-    _groupProperties.insert(QStringLiteral("QUmlRedefinableTemplateSignature"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("classifier"))));
-    _groupProperties.insert(QStringLiteral("QUmlRedefinableTemplateSignature"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("extendedSignatures"))));
-    _groupProperties.insert(QStringLiteral("QUmlRedefinableTemplateSignature"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inheritedParameters"))));
-}
-
-void QUmlRedefinableTemplateSignature::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRedefinableTemplateSignature")][QStringLiteral("classifier")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRedefinableTemplateSignature")][QStringLiteral("classifier")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlRedefinableTemplateSignature");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRedefinableTemplateSignature")][QStringLiteral("classifier")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRedefinableTemplateSignature")][QStringLiteral("classifier")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRedefinableTemplateSignature")][QStringLiteral("classifier")][QtModeling::DocumentationRole] = QStringLiteral("The classifier that owns this template signature.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRedefinableTemplateSignature")][QStringLiteral("classifier")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("TemplateSignature-template");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRedefinableTemplateSignature")][QStringLiteral("classifier")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("RedefinableElement-redefinitionContext");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRedefinableTemplateSignature")][QStringLiteral("classifier")][QtModeling::OppositeEndRole] = QStringLiteral("Classifier-ownedTemplateSignature");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRedefinableTemplateSignature")][QStringLiteral("extendedSignatures")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRedefinableTemplateSignature")][QStringLiteral("extendedSignatures")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlRedefinableTemplateSignature");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRedefinableTemplateSignature")][QStringLiteral("extendedSignatures")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRedefinableTemplateSignature")][QStringLiteral("extendedSignatures")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRedefinableTemplateSignature")][QStringLiteral("extendedSignatures")][QtModeling::DocumentationRole] = QStringLiteral("The template signature that is extended by this template signature.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRedefinableTemplateSignature")][QStringLiteral("extendedSignatures")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRedefinableTemplateSignature")][QStringLiteral("extendedSignatures")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("RedefinableElement-redefinedElement");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRedefinableTemplateSignature")][QStringLiteral("extendedSignatures")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRedefinableTemplateSignature")][QStringLiteral("inheritedParameters")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRedefinableTemplateSignature")][QStringLiteral("inheritedParameters")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlRedefinableTemplateSignature");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRedefinableTemplateSignature")][QStringLiteral("inheritedParameters")][QtModeling::IsDerivedRole] = true;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRedefinableTemplateSignature")][QStringLiteral("inheritedParameters")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRedefinableTemplateSignature")][QStringLiteral("inheritedParameters")][QtModeling::DocumentationRole] = QStringLiteral("The formal template parameters of the extendedSignature.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRedefinableTemplateSignature")][QStringLiteral("inheritedParameters")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRedefinableTemplateSignature")][QStringLiteral("inheritedParameters")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("TemplateSignature-parameter");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRedefinableTemplateSignature")][QStringLiteral("inheritedParameters")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
 }
 

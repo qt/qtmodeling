@@ -55,28 +55,26 @@
 
     \brief A template parameter substitution relates the actual parameter to a formal template parameter as part of a template binding.
  */
-QUmlTemplateParameterSubstitution::QUmlTemplateParameterSubstitution(bool createQObject) :
+QUmlTemplateParameterSubstitution::QUmlTemplateParameterSubstitution(bool createQModelingObject) :
     _actual(0),
     _formal(0),
     _ownedActual(0),
     _templateBinding(0)
 {
-    if (createQObject)
-        _qObject = new QUmlTemplateParameterSubstitutionObject(this);
-    setGroupProperties();
-    setPropertyData();
+    if (createQModelingObject)
+        _qModelingObject = qobject_cast<QModelingObject *>(new QUmlTemplateParameterSubstitutionObject(this));
 }
 
 QUmlTemplateParameterSubstitution::~QUmlTemplateParameterSubstitution()
 {
-    if (!deletingFromQObject) {
-        if (_qObject)
-            _qObject->setProperty("deletingFromModelingObject", true);
-        delete _qObject;
+    if (!deletingFromQModelingObject) {
+        if (_qModelingObject)
+            _qModelingObject->setProperty("deletingFromModelingObject", true);
+        delete _qModelingObject;
     }
 }
 
-QModelingObject *QUmlTemplateParameterSubstitution::clone() const
+QModelingElement *QUmlTemplateParameterSubstitution::clone() const
 {
     QUmlTemplateParameterSubstitution *c = new QUmlTemplateParameterSubstitution;
     foreach (QUmlComment *element, ownedComments())
@@ -110,8 +108,8 @@ void QUmlTemplateParameterSubstitution::setActual(QUmlParameterableElement *actu
 
     if (_actual != actual) {
         _actual = actual;
-        if (actual && actual->asQObject() && this->asQObject())
-            QObject::connect(actual->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setActual()));
+        if (actual && actual->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(actual->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setActual()));
     }
 }
 
@@ -131,8 +129,8 @@ void QUmlTemplateParameterSubstitution::setFormal(QUmlTemplateParameter *formal)
 
     if (_formal != formal) {
         _formal = formal;
-        if (formal && formal->asQObject() && this->asQObject())
-            QObject::connect(formal->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setFormal()));
+        if (formal && formal->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(formal->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setFormal()));
     }
 }
 
@@ -155,9 +153,9 @@ void QUmlTemplateParameterSubstitution::setOwnedActual(QUmlParameterableElement 
         removeOwnedElement(_ownedActual);
 
         _ownedActual = ownedActual;
-        if (ownedActual && ownedActual->asQObject() && this->asQObject())
-            QObject::connect(ownedActual->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setOwnedActual()));
-        ownedActual->asQObject()->setParent(this->asQObject());
+        if (ownedActual && ownedActual->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(ownedActual->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setOwnedActual()));
+        ownedActual->asQModelingObject()->setParent(this->asQModelingObject());
 
         // Adjust subsetted properties
         if (ownedActual) {
@@ -185,64 +183,11 @@ void QUmlTemplateParameterSubstitution::setTemplateBinding(QUmlTemplateBinding *
         // Adjust subsetted properties
 
         _templateBinding = templateBinding;
-        if (templateBinding && templateBinding->asQObject() && this->asQObject())
-            QObject::connect(templateBinding->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setTemplateBinding()));
+        if (templateBinding && templateBinding->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(templateBinding->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setTemplateBinding()));
 
         // Adjust subsetted properties
         setOwner(templateBinding);
     }
-}
-
-void QUmlTemplateParameterSubstitution::setGroupProperties()
-{
-    const QMetaObject *metaObject = _qObject->metaObject();
-
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
-    _groupProperties.insert(QStringLiteral("QUmlTemplateParameterSubstitution"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("actual"))));
-    _groupProperties.insert(QStringLiteral("QUmlTemplateParameterSubstitution"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("formal"))));
-    _groupProperties.insert(QStringLiteral("QUmlTemplateParameterSubstitution"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedActual"))));
-    _groupProperties.insert(QStringLiteral("QUmlTemplateParameterSubstitution"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("templateBinding"))));
-}
-
-void QUmlTemplateParameterSubstitution::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTemplateParameterSubstitution")][QStringLiteral("actual")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTemplateParameterSubstitution")][QStringLiteral("actual")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlTemplateParameterSubstitution");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTemplateParameterSubstitution")][QStringLiteral("actual")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTemplateParameterSubstitution")][QStringLiteral("actual")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTemplateParameterSubstitution")][QStringLiteral("actual")][QtModeling::DocumentationRole] = QStringLiteral("The element that is the actual parameter for this substitution.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTemplateParameterSubstitution")][QStringLiteral("actual")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTemplateParameterSubstitution")][QStringLiteral("actual")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTemplateParameterSubstitution")][QStringLiteral("actual")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTemplateParameterSubstitution")][QStringLiteral("formal")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTemplateParameterSubstitution")][QStringLiteral("formal")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlTemplateParameterSubstitution");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTemplateParameterSubstitution")][QStringLiteral("formal")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTemplateParameterSubstitution")][QStringLiteral("formal")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTemplateParameterSubstitution")][QStringLiteral("formal")][QtModeling::DocumentationRole] = QStringLiteral("The formal template parameter that is associated with this substitution.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTemplateParameterSubstitution")][QStringLiteral("formal")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTemplateParameterSubstitution")][QStringLiteral("formal")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTemplateParameterSubstitution")][QStringLiteral("formal")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTemplateParameterSubstitution")][QStringLiteral("ownedActual")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTemplateParameterSubstitution")][QStringLiteral("ownedActual")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlTemplateParameterSubstitution");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTemplateParameterSubstitution")][QStringLiteral("ownedActual")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTemplateParameterSubstitution")][QStringLiteral("ownedActual")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTemplateParameterSubstitution")][QStringLiteral("ownedActual")][QtModeling::DocumentationRole] = QStringLiteral("The actual parameter that is owned by this substitution.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTemplateParameterSubstitution")][QStringLiteral("ownedActual")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTemplateParameterSubstitution")][QStringLiteral("ownedActual")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement TemplateParameterSubstitution-actual");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTemplateParameterSubstitution")][QStringLiteral("ownedActual")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTemplateParameterSubstitution")][QStringLiteral("templateBinding")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTemplateParameterSubstitution")][QStringLiteral("templateBinding")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlTemplateParameterSubstitution");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTemplateParameterSubstitution")][QStringLiteral("templateBinding")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTemplateParameterSubstitution")][QStringLiteral("templateBinding")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTemplateParameterSubstitution")][QStringLiteral("templateBinding")][QtModeling::DocumentationRole] = QStringLiteral("The optional bindings from this element to templates.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTemplateParameterSubstitution")][QStringLiteral("templateBinding")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTemplateParameterSubstitution")][QStringLiteral("templateBinding")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-owner");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTemplateParameterSubstitution")][QStringLiteral("templateBinding")][QtModeling::OppositeEndRole] = QStringLiteral("TemplateBinding-parameterSubstitution");
-
 }
 

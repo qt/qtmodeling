@@ -46,7 +46,6 @@
 #include <QtUml/QUmlRedefinableElement>
 #include <QtUml/QUmlNamespace>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -62,10 +61,10 @@ class QUmlVertex;
 class Q_UML_EXPORT QUmlRegion : public QUmlRedefinableElement, public QUmlNamespace
 {
 public:
-    explicit QUmlRegion(bool createQObject = true);
+    explicit QUmlRegion(bool createQModelingObject = true);
     virtual ~QUmlRegion();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
     QUmlRegion *extendedRegion() const;
@@ -95,9 +94,6 @@ protected:
     QUmlStateMachine *_stateMachine;
     QSet<QUmlVertex *> _subvertices;
     QSet<QUmlTransition *> _transitions;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

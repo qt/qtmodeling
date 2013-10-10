@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlstateobject_p.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlState>
 #include <QtUml/QUmlBehavior>
@@ -64,16 +65,18 @@
 
 QT_BEGIN_NAMESPACE
 
-QUmlStateObject::QUmlStateObject(QUmlState *qModelingObject)
+QUmlStateObject::QUmlStateObject(QUmlState *qModelingElement)
 {
-    setProperty("modelingObject", QVariant::fromValue(static_cast<QModelingObject *>(qModelingObject)));
+    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(qModelingElement)));
+    setGroupProperties();
+    setPropertyData();
 }
 
 QUmlStateObject::~QUmlStateObject()
 {
     if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingobjectproperty_cast<QUmlState *>(this)->deletingFromQObject = true;
-        delete qmodelingobjectproperty_cast<QUmlComment *>(this);
+        qmodelingelementproperty_cast<QUmlState *>(this)->deletingFromQModelingObject = true;
+        delete qmodelingelementproperty_cast<QUmlComment *>(this);
     }
 }
 
@@ -82,25 +85,25 @@ QUmlStateObject::~QUmlStateObject()
 const QSet<QObject *> QUmlStateObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlState *>(this)->ownedComments())
-        set.insert(element->asQObject());
+    foreach (QUmlComment *element, qmodelingelementproperty_cast<QUmlState *>(this)->ownedComments())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlStateObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlState *>(this)->ownedElements())
-        set.insert(element->asQObject());
+    foreach (QUmlElement *element, qmodelingelementproperty_cast<QUmlState *>(this)->ownedElements())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 QObject *QUmlStateObject::owner() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlState *>(this)->owner())
+    if (!qmodelingelementproperty_cast<QUmlState *>(this)->owner())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlState *>(this)->owner()->asQObject();
+        return qmodelingelementproperty_cast<QUmlState *>(this)->owner()->asQModelingObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -108,40 +111,40 @@ QObject *QUmlStateObject::owner() const
 const QSet<QObject *> QUmlStateObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlState *>(this)->clientDependencies())
-        set.insert(element->asQObject());
+    foreach (QUmlDependency *element, qmodelingelementproperty_cast<QUmlState *>(this)->clientDependencies())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 QString QUmlStateObject::name() const
 {
-    return qmodelingobjectproperty_cast<QUmlState *>(this)->name();
+    return qmodelingelementproperty_cast<QUmlState *>(this)->name();
 }
 
 QObject *QUmlStateObject::nameExpression() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlState *>(this)->nameExpression())
+    if (!qmodelingelementproperty_cast<QUmlState *>(this)->nameExpression())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlState *>(this)->nameExpression()->asQObject();
+        return qmodelingelementproperty_cast<QUmlState *>(this)->nameExpression()->asQModelingObject();
 }
 
 QObject *QUmlStateObject::namespace_() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlState *>(this)->namespace_())
+    if (!qmodelingelementproperty_cast<QUmlState *>(this)->namespace_())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlState *>(this)->namespace_()->asQObject();
+        return qmodelingelementproperty_cast<QUmlState *>(this)->namespace_()->asQModelingObject();
 }
 
 QString QUmlStateObject::qualifiedName() const
 {
-    return qmodelingobjectproperty_cast<QUmlState *>(this)->qualifiedName();
+    return qmodelingelementproperty_cast<QUmlState *>(this)->qualifiedName();
 }
 
 QtUml::VisibilityKind QUmlStateObject::visibility() const
 {
-    return qmodelingobjectproperty_cast<QUmlState *>(this)->visibility();
+    return qmodelingelementproperty_cast<QUmlState *>(this)->visibility();
 }
 
 // OWNED ATTRIBUTES [Namespace]
@@ -149,48 +152,48 @@ QtUml::VisibilityKind QUmlStateObject::visibility() const
 const QSet<QObject *> QUmlStateObject::elementImports() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElementImport *element, qmodelingobjectproperty_cast<QUmlState *>(this)->elementImports())
-        set.insert(element->asQObject());
+    foreach (QUmlElementImport *element, qmodelingelementproperty_cast<QUmlState *>(this)->elementImports())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlStateObject::importedMembers() const
 {
     QSet<QObject *> set;
-    foreach (QUmlPackageableElement *element, qmodelingobjectproperty_cast<QUmlState *>(this)->importedMembers())
-        set.insert(element->asQObject());
+    foreach (QUmlPackageableElement *element, qmodelingelementproperty_cast<QUmlState *>(this)->importedMembers())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlStateObject::members() const
 {
     QSet<QObject *> set;
-    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlState *>(this)->members())
-        set.insert(element->asQObject());
+    foreach (QUmlNamedElement *element, qmodelingelementproperty_cast<QUmlState *>(this)->members())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlStateObject::ownedMembers() const
 {
     QSet<QObject *> set;
-    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlState *>(this)->ownedMembers())
-        set.insert(element->asQObject());
+    foreach (QUmlNamedElement *element, qmodelingelementproperty_cast<QUmlState *>(this)->ownedMembers())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlStateObject::ownedRules() const
 {
     QSet<QObject *> set;
-    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlState *>(this)->ownedRules())
-        set.insert(element->asQObject());
+    foreach (QUmlConstraint *element, qmodelingelementproperty_cast<QUmlState *>(this)->ownedRules())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlStateObject::packageImports() const
 {
     QSet<QObject *> set;
-    foreach (QUmlPackageImport *element, qmodelingobjectproperty_cast<QUmlState *>(this)->packageImports())
-        set.insert(element->asQObject());
+    foreach (QUmlPackageImport *element, qmodelingelementproperty_cast<QUmlState *>(this)->packageImports())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
@@ -198,14 +201,14 @@ const QSet<QObject *> QUmlStateObject::packageImports() const
 
 bool QUmlStateObject::isLeaf() const
 {
-    return qmodelingobjectproperty_cast<QUmlState *>(this)->isLeaf();
+    return qmodelingelementproperty_cast<QUmlState *>(this)->isLeaf();
 }
 
 const QSet<QObject *> QUmlStateObject::redefinedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlRedefinableElement *element, qmodelingobjectproperty_cast<QUmlState *>(this)->redefinedElements())
-        set.insert(element->asQObject());
+    foreach (QUmlRedefinableElement *element, qmodelingelementproperty_cast<QUmlState *>(this)->redefinedElements())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
@@ -213,25 +216,25 @@ const QSet<QObject *> QUmlStateObject::redefinedElements() const
 
 QObject *QUmlStateObject::container() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlState *>(this)->container())
+    if (!qmodelingelementproperty_cast<QUmlState *>(this)->container())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlState *>(this)->container()->asQObject();
+        return qmodelingelementproperty_cast<QUmlState *>(this)->container()->asQModelingObject();
 }
 
 const QSet<QObject *> QUmlStateObject::incomings() const
 {
     QSet<QObject *> set;
-    foreach (QUmlTransition *element, qmodelingobjectproperty_cast<QUmlState *>(this)->incomings())
-        set.insert(element->asQObject());
+    foreach (QUmlTransition *element, qmodelingelementproperty_cast<QUmlState *>(this)->incomings())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlStateObject::outgoings() const
 {
     QSet<QObject *> set;
-    foreach (QUmlTransition *element, qmodelingobjectproperty_cast<QUmlState *>(this)->outgoings())
-        set.insert(element->asQObject());
+    foreach (QUmlTransition *element, qmodelingelementproperty_cast<QUmlState *>(this)->outgoings())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
@@ -240,109 +243,109 @@ const QSet<QObject *> QUmlStateObject::outgoings() const
 const QSet<QObject *> QUmlStateObject::connections() const
 {
     QSet<QObject *> set;
-    foreach (QUmlConnectionPointReference *element, qmodelingobjectproperty_cast<QUmlState *>(this)->connections())
-        set.insert(element->asQObject());
+    foreach (QUmlConnectionPointReference *element, qmodelingelementproperty_cast<QUmlState *>(this)->connections())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlStateObject::connectionPoints() const
 {
     QSet<QObject *> set;
-    foreach (QUmlPseudostate *element, qmodelingobjectproperty_cast<QUmlState *>(this)->connectionPoints())
-        set.insert(element->asQObject());
+    foreach (QUmlPseudostate *element, qmodelingelementproperty_cast<QUmlState *>(this)->connectionPoints())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlStateObject::deferrableTriggers() const
 {
     QSet<QObject *> set;
-    foreach (QUmlTrigger *element, qmodelingobjectproperty_cast<QUmlState *>(this)->deferrableTriggers())
-        set.insert(element->asQObject());
+    foreach (QUmlTrigger *element, qmodelingelementproperty_cast<QUmlState *>(this)->deferrableTriggers())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 QObject *QUmlStateObject::doActivity() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlState *>(this)->doActivity())
+    if (!qmodelingelementproperty_cast<QUmlState *>(this)->doActivity())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlState *>(this)->doActivity()->asQObject();
+        return qmodelingelementproperty_cast<QUmlState *>(this)->doActivity()->asQModelingObject();
 }
 
 QObject *QUmlStateObject::entry() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlState *>(this)->entry())
+    if (!qmodelingelementproperty_cast<QUmlState *>(this)->entry())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlState *>(this)->entry()->asQObject();
+        return qmodelingelementproperty_cast<QUmlState *>(this)->entry()->asQModelingObject();
 }
 
 QObject *QUmlStateObject::exit() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlState *>(this)->exit())
+    if (!qmodelingelementproperty_cast<QUmlState *>(this)->exit())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlState *>(this)->exit()->asQObject();
+        return qmodelingelementproperty_cast<QUmlState *>(this)->exit()->asQModelingObject();
 }
 
 bool QUmlStateObject::isComposite() const
 {
-    return qmodelingobjectproperty_cast<QUmlState *>(this)->isComposite();
+    return qmodelingelementproperty_cast<QUmlState *>(this)->isComposite();
 }
 
 bool QUmlStateObject::isOrthogonal() const
 {
-    return qmodelingobjectproperty_cast<QUmlState *>(this)->isOrthogonal();
+    return qmodelingelementproperty_cast<QUmlState *>(this)->isOrthogonal();
 }
 
 bool QUmlStateObject::isSimple() const
 {
-    return qmodelingobjectproperty_cast<QUmlState *>(this)->isSimple();
+    return qmodelingelementproperty_cast<QUmlState *>(this)->isSimple();
 }
 
 bool QUmlStateObject::isSubmachineState() const
 {
-    return qmodelingobjectproperty_cast<QUmlState *>(this)->isSubmachineState();
+    return qmodelingelementproperty_cast<QUmlState *>(this)->isSubmachineState();
 }
 
 QObject *QUmlStateObject::redefinedState() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlState *>(this)->redefinedState())
+    if (!qmodelingelementproperty_cast<QUmlState *>(this)->redefinedState())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlState *>(this)->redefinedState()->asQObject();
+        return qmodelingelementproperty_cast<QUmlState *>(this)->redefinedState()->asQModelingObject();
 }
 
 QObject *QUmlStateObject::redefinitionContext() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlState *>(this)->redefinitionContext())
+    if (!qmodelingelementproperty_cast<QUmlState *>(this)->redefinitionContext())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlState *>(this)->redefinitionContext()->asQObject();
+        return qmodelingelementproperty_cast<QUmlState *>(this)->redefinitionContext()->asQModelingObject();
 }
 
 const QSet<QObject *> QUmlStateObject::regions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlRegion *element, qmodelingobjectproperty_cast<QUmlState *>(this)->regions())
-        set.insert(element->asQObject());
+    foreach (QUmlRegion *element, qmodelingelementproperty_cast<QUmlState *>(this)->regions())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 QObject *QUmlStateObject::stateInvariant() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlState *>(this)->stateInvariant())
+    if (!qmodelingelementproperty_cast<QUmlState *>(this)->stateInvariant())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlState *>(this)->stateInvariant()->asQObject();
+        return qmodelingelementproperty_cast<QUmlState *>(this)->stateInvariant()->asQModelingObject();
 }
 
 QObject *QUmlStateObject::submachine() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlState *>(this)->submachine())
+    if (!qmodelingelementproperty_cast<QUmlState *>(this)->submachine())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlState *>(this)->submachine()->asQObject();
+        return qmodelingelementproperty_cast<QUmlState *>(this)->submachine()->asQModelingObject();
 }
 
 // OPERATIONS [Element]
@@ -350,14 +353,14 @@ QObject *QUmlStateObject::submachine() const
 QSet<QObject *> QUmlStateObject::allOwnedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlState *>(this)->allOwnedElements())
-        set.insert(element->asQObject());
+    foreach (QUmlElement *element, qmodelingelementproperty_cast<QUmlState *>(this)->allOwnedElements())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 bool QUmlStateObject::mustBeOwned() const
 {
-    return qmodelingobjectproperty_cast<QUmlState *>(this)->mustBeOwned();
+    return qmodelingelementproperty_cast<QUmlState *>(this)->mustBeOwned();
 }
 
 // OPERATIONS [NamedElement]
@@ -365,27 +368,27 @@ bool QUmlStateObject::mustBeOwned() const
 QList<QObject *> QUmlStateObject::allNamespaces() const
 {
     QList<QObject *> set;
-    foreach (QUmlNamespace *element, qmodelingobjectproperty_cast<QUmlState *>(this)->allNamespaces())
-        set.append(element->asQObject());
+    foreach (QUmlNamespace *element, qmodelingelementproperty_cast<QUmlState *>(this)->allNamespaces())
+        set.append(element->asQModelingObject());
     return set;
 }
 
 QSet<QObject *> QUmlStateObject::allOwningPackages() const
 {
     QSet<QObject *> set;
-    foreach (QUmlPackage *element, qmodelingobjectproperty_cast<QUmlState *>(this)->allOwningPackages())
-        set.insert(element->asQObject());
+    foreach (QUmlPackage *element, qmodelingelementproperty_cast<QUmlState *>(this)->allOwningPackages())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 bool QUmlStateObject::isDistinguishableFrom(QObject *n, QObject *ns) const
 {
-    return qmodelingobjectproperty_cast<QUmlState *>(this)->isDistinguishableFrom(qmodelingobjectproperty_cast<QUmlNamedElement *>(n), qmodelingobjectproperty_cast<QUmlNamespace *>(ns));
+    return qmodelingelementproperty_cast<QUmlState *>(this)->isDistinguishableFrom(qmodelingelementproperty_cast<QUmlNamedElement *>(n), qmodelingelementproperty_cast<QUmlNamespace *>(ns));
 }
 
 QString QUmlStateObject::separator() const
 {
-    return qmodelingobjectproperty_cast<QUmlState *>(this)->separator();
+    return qmodelingelementproperty_cast<QUmlState *>(this)->separator();
 }
 
 // OPERATIONS [Namespace]
@@ -394,32 +397,32 @@ QSet<QObject *> QUmlStateObject::excludeCollisions(QSet<QObject *> imps) const
 {
     QSet<QUmlPackageableElement *> impsConverted;
     foreach (QObject *object, imps)
-        impsConverted.insert(qmodelingobjectproperty_cast<QUmlPackageableElement *>(object));
+        impsConverted.insert(qmodelingelementproperty_cast<QUmlPackageableElement *>(object));
     QSet<QObject *> set;
-    foreach (QUmlPackageableElement *element, qmodelingobjectproperty_cast<QUmlState *>(this)->excludeCollisions(impsConverted))
-        set.insert(element->asQObject());
+    foreach (QUmlPackageableElement *element, qmodelingelementproperty_cast<QUmlState *>(this)->excludeCollisions(impsConverted))
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 QSet<QString> QUmlStateObject::getNamesOfMember(QObject *element) const
 {
-    return qmodelingobjectproperty_cast<QUmlState *>(this)->getNamesOfMember(qmodelingobjectproperty_cast<QUmlNamedElement *>(element));
+    return qmodelingelementproperty_cast<QUmlState *>(this)->getNamesOfMember(qmodelingelementproperty_cast<QUmlNamedElement *>(element));
 }
 
 QSet<QObject *> QUmlStateObject::importMembers(QSet<QObject *> imps) const
 {
     QSet<QUmlPackageableElement *> impsConverted;
     foreach (QObject *object, imps)
-        impsConverted.insert(qmodelingobjectproperty_cast<QUmlPackageableElement *>(object));
+        impsConverted.insert(qmodelingelementproperty_cast<QUmlPackageableElement *>(object));
     QSet<QObject *> set;
-    foreach (QUmlPackageableElement *element, qmodelingobjectproperty_cast<QUmlState *>(this)->importMembers(impsConverted))
-        set.insert(element->asQObject());
+    foreach (QUmlPackageableElement *element, qmodelingelementproperty_cast<QUmlState *>(this)->importMembers(impsConverted))
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 bool QUmlStateObject::membersAreDistinguishable() const
 {
-    return qmodelingobjectproperty_cast<QUmlState *>(this)->membersAreDistinguishable();
+    return qmodelingelementproperty_cast<QUmlState *>(this)->membersAreDistinguishable();
 }
 
 // OPERATIONS [RedefinableElement]
@@ -428,311 +431,512 @@ bool QUmlStateObject::membersAreDistinguishable() const
 
 QObject *QUmlStateObject::containingStateMachine() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlState *>(this)->containingStateMachine())
+    if (!qmodelingelementproperty_cast<QUmlState *>(this)->containingStateMachine())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlState *>(this)->containingStateMachine()->asQObject();
+        return qmodelingelementproperty_cast<QUmlState *>(this)->containingStateMachine()->asQModelingObject();
 }
 
 bool QUmlStateObject::isConsistentWith(QObject *redefinee) const
 {
-    return qmodelingobjectproperty_cast<QUmlState *>(this)->isConsistentWith(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefinee));
+    return qmodelingelementproperty_cast<QUmlState *>(this)->isConsistentWith(qmodelingelementproperty_cast<QUmlRedefinableElement *>(redefinee));
 }
 
 bool QUmlStateObject::isRedefinitionContextValid(QObject *redefined) const
 {
-    return qmodelingobjectproperty_cast<QUmlState *>(this)->isRedefinitionContextValid(qmodelingobjectproperty_cast<QUmlState *>(redefined));
+    return qmodelingelementproperty_cast<QUmlState *>(this)->isRedefinitionContextValid(qmodelingelementproperty_cast<QUmlState *>(redefined));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Element]
 
 void QUmlStateObject::addOwnedComment(QObject *ownedComment)
 {
-    qmodelingobjectproperty_cast<QUmlState *>(this)->addOwnedComment(qmodelingobjectproperty_cast<QUmlComment *>(ownedComment));
+    qmodelingelementproperty_cast<QUmlState *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
 }
 
 void QUmlStateObject::removeOwnedComment(QObject *ownedComment)
 {
-    qmodelingobjectproperty_cast<QUmlState *>(this)->removeOwnedComment(qmodelingobjectproperty_cast<QUmlComment *>(ownedComment));
+    qmodelingelementproperty_cast<QUmlState *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
 }
 
 void QUmlStateObject::addOwnedElement(QObject *ownedElement)
 {
-    qmodelingobjectproperty_cast<QUmlState *>(this)->addOwnedElement(qmodelingobjectproperty_cast<QUmlElement *>(ownedElement));
+    qmodelingelementproperty_cast<QUmlState *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
 }
 
 void QUmlStateObject::removeOwnedElement(QObject *ownedElement)
 {
-    qmodelingobjectproperty_cast<QUmlState *>(this)->removeOwnedElement(qmodelingobjectproperty_cast<QUmlElement *>(ownedElement));
+    qmodelingelementproperty_cast<QUmlState *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
 }
 
 void QUmlStateObject::setOwner(QObject *owner)
 {
-    qmodelingobjectproperty_cast<QUmlState *>(this)->setOwner(qmodelingobjectproperty_cast<QUmlElement *>(owner));
+    qmodelingelementproperty_cast<QUmlState *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [NamedElement]
 
 void QUmlStateObject::addClientDependency(QObject *clientDependency)
 {
-    qmodelingobjectproperty_cast<QUmlState *>(this)->addClientDependency(qmodelingobjectproperty_cast<QUmlDependency *>(clientDependency));
+    qmodelingelementproperty_cast<QUmlState *>(this)->addClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
 }
 
 void QUmlStateObject::removeClientDependency(QObject *clientDependency)
 {
-    qmodelingobjectproperty_cast<QUmlState *>(this)->removeClientDependency(qmodelingobjectproperty_cast<QUmlDependency *>(clientDependency));
+    qmodelingelementproperty_cast<QUmlState *>(this)->removeClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
 }
 
 void QUmlStateObject::setName(QString name)
 {
-    qmodelingobjectproperty_cast<QUmlState *>(this)->setName(name);
+    qmodelingelementproperty_cast<QUmlState *>(this)->setName(name);
 }
 
 void QUmlStateObject::setNameExpression(QObject *nameExpression)
 {
-    qmodelingobjectproperty_cast<QUmlState *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
+    qmodelingelementproperty_cast<QUmlState *>(this)->setNameExpression(qmodelingelementproperty_cast<QUmlStringExpression *>(nameExpression));
 }
 
 void QUmlStateObject::setNamespace(QObject *namespace_)
 {
-    qmodelingobjectproperty_cast<QUmlState *>(this)->setNamespace(qmodelingobjectproperty_cast<QUmlNamespace *>(namespace_));
+    qmodelingelementproperty_cast<QUmlState *>(this)->setNamespace(qmodelingelementproperty_cast<QUmlNamespace *>(namespace_));
 }
 
 void QUmlStateObject::setQualifiedName(QString qualifiedName)
 {
-    qmodelingobjectproperty_cast<QUmlState *>(this)->setQualifiedName(qualifiedName);
+    qmodelingelementproperty_cast<QUmlState *>(this)->setQualifiedName(qualifiedName);
 }
 
 void QUmlStateObject::setVisibility(QtUml::VisibilityKind visibility)
 {
-    qmodelingobjectproperty_cast<QUmlState *>(this)->setVisibility(visibility);
+    qmodelingelementproperty_cast<QUmlState *>(this)->setVisibility(visibility);
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Namespace]
 
 void QUmlStateObject::addElementImport(QObject *elementImport)
 {
-    qmodelingobjectproperty_cast<QUmlState *>(this)->addElementImport(qmodelingobjectproperty_cast<QUmlElementImport *>(elementImport));
+    qmodelingelementproperty_cast<QUmlState *>(this)->addElementImport(qmodelingelementproperty_cast<QUmlElementImport *>(elementImport));
 }
 
 void QUmlStateObject::removeElementImport(QObject *elementImport)
 {
-    qmodelingobjectproperty_cast<QUmlState *>(this)->removeElementImport(qmodelingobjectproperty_cast<QUmlElementImport *>(elementImport));
+    qmodelingelementproperty_cast<QUmlState *>(this)->removeElementImport(qmodelingelementproperty_cast<QUmlElementImport *>(elementImport));
 }
 
 void QUmlStateObject::addImportedMember(QObject *importedMember)
 {
-    qmodelingobjectproperty_cast<QUmlState *>(this)->addImportedMember(qmodelingobjectproperty_cast<QUmlPackageableElement *>(importedMember));
+    qmodelingelementproperty_cast<QUmlState *>(this)->addImportedMember(qmodelingelementproperty_cast<QUmlPackageableElement *>(importedMember));
 }
 
 void QUmlStateObject::removeImportedMember(QObject *importedMember)
 {
-    qmodelingobjectproperty_cast<QUmlState *>(this)->removeImportedMember(qmodelingobjectproperty_cast<QUmlPackageableElement *>(importedMember));
+    qmodelingelementproperty_cast<QUmlState *>(this)->removeImportedMember(qmodelingelementproperty_cast<QUmlPackageableElement *>(importedMember));
 }
 
 void QUmlStateObject::addMember(QObject *member)
 {
-    qmodelingobjectproperty_cast<QUmlState *>(this)->addMember(qmodelingobjectproperty_cast<QUmlNamedElement *>(member));
+    qmodelingelementproperty_cast<QUmlState *>(this)->addMember(qmodelingelementproperty_cast<QUmlNamedElement *>(member));
 }
 
 void QUmlStateObject::removeMember(QObject *member)
 {
-    qmodelingobjectproperty_cast<QUmlState *>(this)->removeMember(qmodelingobjectproperty_cast<QUmlNamedElement *>(member));
+    qmodelingelementproperty_cast<QUmlState *>(this)->removeMember(qmodelingelementproperty_cast<QUmlNamedElement *>(member));
 }
 
 void QUmlStateObject::addOwnedMember(QObject *ownedMember)
 {
-    qmodelingobjectproperty_cast<QUmlState *>(this)->addOwnedMember(qmodelingobjectproperty_cast<QUmlNamedElement *>(ownedMember));
+    qmodelingelementproperty_cast<QUmlState *>(this)->addOwnedMember(qmodelingelementproperty_cast<QUmlNamedElement *>(ownedMember));
 }
 
 void QUmlStateObject::removeOwnedMember(QObject *ownedMember)
 {
-    qmodelingobjectproperty_cast<QUmlState *>(this)->removeOwnedMember(qmodelingobjectproperty_cast<QUmlNamedElement *>(ownedMember));
+    qmodelingelementproperty_cast<QUmlState *>(this)->removeOwnedMember(qmodelingelementproperty_cast<QUmlNamedElement *>(ownedMember));
 }
 
 void QUmlStateObject::addOwnedRule(QObject *ownedRule)
 {
-    qmodelingobjectproperty_cast<QUmlState *>(this)->addOwnedRule(qmodelingobjectproperty_cast<QUmlConstraint *>(ownedRule));
+    qmodelingelementproperty_cast<QUmlState *>(this)->addOwnedRule(qmodelingelementproperty_cast<QUmlConstraint *>(ownedRule));
 }
 
 void QUmlStateObject::removeOwnedRule(QObject *ownedRule)
 {
-    qmodelingobjectproperty_cast<QUmlState *>(this)->removeOwnedRule(qmodelingobjectproperty_cast<QUmlConstraint *>(ownedRule));
+    qmodelingelementproperty_cast<QUmlState *>(this)->removeOwnedRule(qmodelingelementproperty_cast<QUmlConstraint *>(ownedRule));
 }
 
 void QUmlStateObject::addPackageImport(QObject *packageImport)
 {
-    qmodelingobjectproperty_cast<QUmlState *>(this)->addPackageImport(qmodelingobjectproperty_cast<QUmlPackageImport *>(packageImport));
+    qmodelingelementproperty_cast<QUmlState *>(this)->addPackageImport(qmodelingelementproperty_cast<QUmlPackageImport *>(packageImport));
 }
 
 void QUmlStateObject::removePackageImport(QObject *packageImport)
 {
-    qmodelingobjectproperty_cast<QUmlState *>(this)->removePackageImport(qmodelingobjectproperty_cast<QUmlPackageImport *>(packageImport));
+    qmodelingelementproperty_cast<QUmlState *>(this)->removePackageImport(qmodelingelementproperty_cast<QUmlPackageImport *>(packageImport));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [RedefinableElement]
 
 void QUmlStateObject::setLeaf(bool isLeaf)
 {
-    qmodelingobjectproperty_cast<QUmlState *>(this)->setLeaf(isLeaf);
+    qmodelingelementproperty_cast<QUmlState *>(this)->setLeaf(isLeaf);
 }
 
 void QUmlStateObject::unsetLeaf()
 {
-    qmodelingobjectproperty_cast<QUmlState *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("leaf"));
+    Q_D(QModelingObject);
+    d->modifiedResettableProperties.removeAll(QStringLiteral("leaf"));
 }
 
 void QUmlStateObject::addRedefinedElement(QObject *redefinedElement)
 {
-    qmodelingobjectproperty_cast<QUmlState *>(this)->addRedefinedElement(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefinedElement));
+    qmodelingelementproperty_cast<QUmlState *>(this)->addRedefinedElement(qmodelingelementproperty_cast<QUmlRedefinableElement *>(redefinedElement));
 }
 
 void QUmlStateObject::removeRedefinedElement(QObject *redefinedElement)
 {
-    qmodelingobjectproperty_cast<QUmlState *>(this)->removeRedefinedElement(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefinedElement));
+    qmodelingelementproperty_cast<QUmlState *>(this)->removeRedefinedElement(qmodelingelementproperty_cast<QUmlRedefinableElement *>(redefinedElement));
 }
 // SLOTS FOR OWNED ATTRIBUTES [Vertex]
 
 void QUmlStateObject::setContainer(QObject *container)
 {
-    qmodelingobjectproperty_cast<QUmlState *>(this)->setContainer(qmodelingobjectproperty_cast<QUmlRegion *>(container));
+    qmodelingelementproperty_cast<QUmlState *>(this)->setContainer(qmodelingelementproperty_cast<QUmlRegion *>(container));
 }
 
 void QUmlStateObject::addIncoming(QObject *incoming)
 {
-    qmodelingobjectproperty_cast<QUmlState *>(this)->addIncoming(qmodelingobjectproperty_cast<QUmlTransition *>(incoming));
+    qmodelingelementproperty_cast<QUmlState *>(this)->addIncoming(qmodelingelementproperty_cast<QUmlTransition *>(incoming));
 }
 
 void QUmlStateObject::removeIncoming(QObject *incoming)
 {
-    qmodelingobjectproperty_cast<QUmlState *>(this)->removeIncoming(qmodelingobjectproperty_cast<QUmlTransition *>(incoming));
+    qmodelingelementproperty_cast<QUmlState *>(this)->removeIncoming(qmodelingelementproperty_cast<QUmlTransition *>(incoming));
 }
 
 void QUmlStateObject::addOutgoing(QObject *outgoing)
 {
-    qmodelingobjectproperty_cast<QUmlState *>(this)->addOutgoing(qmodelingobjectproperty_cast<QUmlTransition *>(outgoing));
+    qmodelingelementproperty_cast<QUmlState *>(this)->addOutgoing(qmodelingelementproperty_cast<QUmlTransition *>(outgoing));
 }
 
 void QUmlStateObject::removeOutgoing(QObject *outgoing)
 {
-    qmodelingobjectproperty_cast<QUmlState *>(this)->removeOutgoing(qmodelingobjectproperty_cast<QUmlTransition *>(outgoing));
+    qmodelingelementproperty_cast<QUmlState *>(this)->removeOutgoing(qmodelingelementproperty_cast<QUmlTransition *>(outgoing));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [State]
 
 void QUmlStateObject::addConnection(QObject *connection)
 {
-    qmodelingobjectproperty_cast<QUmlState *>(this)->addConnection(qmodelingobjectproperty_cast<QUmlConnectionPointReference *>(connection));
+    qmodelingelementproperty_cast<QUmlState *>(this)->addConnection(qmodelingelementproperty_cast<QUmlConnectionPointReference *>(connection));
 }
 
 void QUmlStateObject::removeConnection(QObject *connection)
 {
-    qmodelingobjectproperty_cast<QUmlState *>(this)->removeConnection(qmodelingobjectproperty_cast<QUmlConnectionPointReference *>(connection));
+    qmodelingelementproperty_cast<QUmlState *>(this)->removeConnection(qmodelingelementproperty_cast<QUmlConnectionPointReference *>(connection));
 }
 
 void QUmlStateObject::addConnectionPoint(QObject *connectionPoint)
 {
-    qmodelingobjectproperty_cast<QUmlState *>(this)->addConnectionPoint(qmodelingobjectproperty_cast<QUmlPseudostate *>(connectionPoint));
+    qmodelingelementproperty_cast<QUmlState *>(this)->addConnectionPoint(qmodelingelementproperty_cast<QUmlPseudostate *>(connectionPoint));
 }
 
 void QUmlStateObject::removeConnectionPoint(QObject *connectionPoint)
 {
-    qmodelingobjectproperty_cast<QUmlState *>(this)->removeConnectionPoint(qmodelingobjectproperty_cast<QUmlPseudostate *>(connectionPoint));
+    qmodelingelementproperty_cast<QUmlState *>(this)->removeConnectionPoint(qmodelingelementproperty_cast<QUmlPseudostate *>(connectionPoint));
 }
 
 void QUmlStateObject::addDeferrableTrigger(QObject *deferrableTrigger)
 {
-    qmodelingobjectproperty_cast<QUmlState *>(this)->addDeferrableTrigger(qmodelingobjectproperty_cast<QUmlTrigger *>(deferrableTrigger));
+    qmodelingelementproperty_cast<QUmlState *>(this)->addDeferrableTrigger(qmodelingelementproperty_cast<QUmlTrigger *>(deferrableTrigger));
 }
 
 void QUmlStateObject::removeDeferrableTrigger(QObject *deferrableTrigger)
 {
-    qmodelingobjectproperty_cast<QUmlState *>(this)->removeDeferrableTrigger(qmodelingobjectproperty_cast<QUmlTrigger *>(deferrableTrigger));
+    qmodelingelementproperty_cast<QUmlState *>(this)->removeDeferrableTrigger(qmodelingelementproperty_cast<QUmlTrigger *>(deferrableTrigger));
 }
 
 void QUmlStateObject::setDoActivity(QObject *doActivity)
 {
-    qmodelingobjectproperty_cast<QUmlState *>(this)->setDoActivity(qmodelingobjectproperty_cast<QUmlBehavior *>(doActivity));
+    qmodelingelementproperty_cast<QUmlState *>(this)->setDoActivity(qmodelingelementproperty_cast<QUmlBehavior *>(doActivity));
 }
 
 void QUmlStateObject::setEntry(QObject *entry)
 {
-    qmodelingobjectproperty_cast<QUmlState *>(this)->setEntry(qmodelingobjectproperty_cast<QUmlBehavior *>(entry));
+    qmodelingelementproperty_cast<QUmlState *>(this)->setEntry(qmodelingelementproperty_cast<QUmlBehavior *>(entry));
 }
 
 void QUmlStateObject::setExit(QObject *exit)
 {
-    qmodelingobjectproperty_cast<QUmlState *>(this)->setExit(qmodelingobjectproperty_cast<QUmlBehavior *>(exit));
+    qmodelingelementproperty_cast<QUmlState *>(this)->setExit(qmodelingelementproperty_cast<QUmlBehavior *>(exit));
 }
 
 void QUmlStateObject::setComposite(bool isComposite)
 {
-    qmodelingobjectproperty_cast<QUmlState *>(this)->setComposite(isComposite);
+    qmodelingelementproperty_cast<QUmlState *>(this)->setComposite(isComposite);
 }
 
 void QUmlStateObject::unsetComposite()
 {
-    qmodelingobjectproperty_cast<QUmlState *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("composite"));
+    Q_D(QModelingObject);
+    d->modifiedResettableProperties.removeAll(QStringLiteral("composite"));
 }
 
 void QUmlStateObject::setOrthogonal(bool isOrthogonal)
 {
-    qmodelingobjectproperty_cast<QUmlState *>(this)->setOrthogonal(isOrthogonal);
+    qmodelingelementproperty_cast<QUmlState *>(this)->setOrthogonal(isOrthogonal);
 }
 
 void QUmlStateObject::unsetOrthogonal()
 {
-    qmodelingobjectproperty_cast<QUmlState *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("orthogonal"));
+    Q_D(QModelingObject);
+    d->modifiedResettableProperties.removeAll(QStringLiteral("orthogonal"));
 }
 
 void QUmlStateObject::setSimple(bool isSimple)
 {
-    qmodelingobjectproperty_cast<QUmlState *>(this)->setSimple(isSimple);
+    qmodelingelementproperty_cast<QUmlState *>(this)->setSimple(isSimple);
 }
 
 void QUmlStateObject::unsetSimple()
 {
-    qmodelingobjectproperty_cast<QUmlState *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("simple"));
+    Q_D(QModelingObject);
+    d->modifiedResettableProperties.removeAll(QStringLiteral("simple"));
 }
 
 void QUmlStateObject::setSubmachineState(bool isSubmachineState)
 {
-    qmodelingobjectproperty_cast<QUmlState *>(this)->setSubmachineState(isSubmachineState);
+    qmodelingelementproperty_cast<QUmlState *>(this)->setSubmachineState(isSubmachineState);
 }
 
 void QUmlStateObject::unsetSubmachineState()
 {
-    qmodelingobjectproperty_cast<QUmlState *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("submachineState"));
+    Q_D(QModelingObject);
+    d->modifiedResettableProperties.removeAll(QStringLiteral("submachineState"));
 }
 
 void QUmlStateObject::setRedefinedState(QObject *redefinedState)
 {
-    qmodelingobjectproperty_cast<QUmlState *>(this)->setRedefinedState(qmodelingobjectproperty_cast<QUmlState *>(redefinedState));
+    qmodelingelementproperty_cast<QUmlState *>(this)->setRedefinedState(qmodelingelementproperty_cast<QUmlState *>(redefinedState));
 }
 
 void QUmlStateObject::setRedefinitionContext(QObject *redefinitionContext)
 {
-    qmodelingobjectproperty_cast<QUmlState *>(this)->setRedefinitionContext(qmodelingobjectproperty_cast<QUmlClassifier *>(redefinitionContext));
+    qmodelingelementproperty_cast<QUmlState *>(this)->setRedefinitionContext(qmodelingelementproperty_cast<QUmlClassifier *>(redefinitionContext));
 }
 
 void QUmlStateObject::addRegion(QObject *region)
 {
-    qmodelingobjectproperty_cast<QUmlState *>(this)->addRegion(qmodelingobjectproperty_cast<QUmlRegion *>(region));
+    qmodelingelementproperty_cast<QUmlState *>(this)->addRegion(qmodelingelementproperty_cast<QUmlRegion *>(region));
 }
 
 void QUmlStateObject::removeRegion(QObject *region)
 {
-    qmodelingobjectproperty_cast<QUmlState *>(this)->removeRegion(qmodelingobjectproperty_cast<QUmlRegion *>(region));
+    qmodelingelementproperty_cast<QUmlState *>(this)->removeRegion(qmodelingelementproperty_cast<QUmlRegion *>(region));
 }
 
 void QUmlStateObject::setStateInvariant(QObject *stateInvariant)
 {
-    qmodelingobjectproperty_cast<QUmlState *>(this)->setStateInvariant(qmodelingobjectproperty_cast<QUmlConstraint *>(stateInvariant));
+    qmodelingelementproperty_cast<QUmlState *>(this)->setStateInvariant(qmodelingelementproperty_cast<QUmlConstraint *>(stateInvariant));
 }
 
 void QUmlStateObject::setSubmachine(QObject *submachine)
 {
-    qmodelingobjectproperty_cast<QUmlState *>(this)->setSubmachine(qmodelingobjectproperty_cast<QUmlStateMachine *>(submachine));
+    qmodelingelementproperty_cast<QUmlState *>(this)->setSubmachine(qmodelingelementproperty_cast<QUmlStateMachine *>(submachine));
+}
+
+
+void QUmlStateObject::setGroupProperties()
+{
+    Q_D(QModelingObject);
+    const QMetaObject *metaObject = this->metaObject();
+
+    d->propertyGroups << QStringLiteral("QObject");
+    d->groupProperties.insert(QStringLiteral("QObject"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("objectName"))));
+
+    d->propertyGroups << QStringLiteral("QUmlElement");
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
+
+    d->propertyGroups << QStringLiteral("QUmlNamedElement");
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
+
+    d->propertyGroups << QStringLiteral("QUmlNamespace");
+    d->groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("elementImports"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("importedMembers"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("members"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedMembers"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedRules"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("packageImports"))));
+
+    d->propertyGroups << QStringLiteral("QUmlRedefinableElement");
+    d->groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isLeaf"))));
+    d->groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinedElements"))));
+
+    d->propertyGroups << QStringLiteral("QUmlVertex");
+    d->groupProperties.insert(QStringLiteral("QUmlVertex"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("container"))));
+    d->groupProperties.insert(QStringLiteral("QUmlVertex"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("incomings"))));
+    d->groupProperties.insert(QStringLiteral("QUmlVertex"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("outgoings"))));
+
+    d->propertyGroups << QStringLiteral("QUmlState");
+    d->groupProperties.insert(QStringLiteral("QUmlState"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("connections"))));
+    d->groupProperties.insert(QStringLiteral("QUmlState"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("connectionPoints"))));
+    d->groupProperties.insert(QStringLiteral("QUmlState"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("deferrableTriggers"))));
+    d->groupProperties.insert(QStringLiteral("QUmlState"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("doActivity"))));
+    d->groupProperties.insert(QStringLiteral("QUmlState"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("entry"))));
+    d->groupProperties.insert(QStringLiteral("QUmlState"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("exit"))));
+    d->groupProperties.insert(QStringLiteral("QUmlState"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isComposite"))));
+    d->groupProperties.insert(QStringLiteral("QUmlState"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isOrthogonal"))));
+    d->groupProperties.insert(QStringLiteral("QUmlState"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isSimple"))));
+    d->groupProperties.insert(QStringLiteral("QUmlState"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isSubmachineState"))));
+    d->groupProperties.insert(QStringLiteral("QUmlState"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinedState"))));
+    d->groupProperties.insert(QStringLiteral("QUmlState"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinitionContext"))));
+    d->groupProperties.insert(QStringLiteral("QUmlState"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("regions"))));
+    d->groupProperties.insert(QStringLiteral("QUmlState"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("stateInvariant"))));
+    d->groupProperties.insert(QStringLiteral("QUmlState"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("submachine"))));
+}
+
+void QUmlStateObject::setPropertyData()
+{
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, connections, AggregationRole, QStringLiteral("composite"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, connections, PropertyClassRole, QStringLiteral("QUmlState"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, connections, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, connections, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, connections, DocumentationRole, QStringLiteral("The entry and exit connection points used in conjunction with this (submachine) state, i.e. as targets and sources, respectively, in the region with the submachine state. A connection point reference references the corresponding definition of a connection point pseudostate in the statemachine referenced by the submachinestate."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, connections, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, connections, SubsettedPropertiesRole, QStringLiteral("Namespace-ownedMember"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, connections, OppositeEndRole, QStringLiteral("ConnectionPointReference-state"));
+
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, connectionPoints, AggregationRole, QStringLiteral("composite"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, connectionPoints, PropertyClassRole, QStringLiteral("QUmlState"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, connectionPoints, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, connectionPoints, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, connectionPoints, DocumentationRole, QStringLiteral("The entry and exit pseudostates of a composite state. These can only be entry or exit Pseudostates, and they must have different names. They can only be defined for composite states."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, connectionPoints, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, connectionPoints, SubsettedPropertiesRole, QStringLiteral("Namespace-ownedMember"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, connectionPoints, OppositeEndRole, QStringLiteral("Pseudostate-state"));
+
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, deferrableTriggers, AggregationRole, QStringLiteral("composite"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, deferrableTriggers, PropertyClassRole, QStringLiteral("QUmlState"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, deferrableTriggers, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, deferrableTriggers, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, deferrableTriggers, DocumentationRole, QStringLiteral("A list of triggers that are candidates to be retained by the state machine if they trigger no transitions out of the state (not consumed). A deferred trigger is retained until the state machine reaches a state configuration where it is no longer deferred."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, deferrableTriggers, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, deferrableTriggers, SubsettedPropertiesRole, QStringLiteral("Element-ownedElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, deferrableTriggers, OppositeEndRole, QStringLiteral(""));
+
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, doActivity, AggregationRole, QStringLiteral("composite"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, doActivity, PropertyClassRole, QStringLiteral("QUmlState"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, doActivity, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, doActivity, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, doActivity, DocumentationRole, QStringLiteral("An optional behavior that is executed while being in the state. The execution starts when this state is entered, and stops either by itself, or when the state is exited, whichever comes first."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, doActivity, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, doActivity, SubsettedPropertiesRole, QStringLiteral("Element-ownedElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, doActivity, OppositeEndRole, QStringLiteral(""));
+
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, entry, AggregationRole, QStringLiteral("composite"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, entry, PropertyClassRole, QStringLiteral("QUmlState"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, entry, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, entry, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, entry, DocumentationRole, QStringLiteral("An optional behavior that is executed whenever this state is entered regardless of the transition taken to reach the state. If defined, entry actions are always executed to completion prior to any internal behavior or transitions performed within the state."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, entry, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, entry, SubsettedPropertiesRole, QStringLiteral("Element-ownedElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, entry, OppositeEndRole, QStringLiteral(""));
+
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, exit, AggregationRole, QStringLiteral("composite"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, exit, PropertyClassRole, QStringLiteral("QUmlState"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, exit, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, exit, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, exit, DocumentationRole, QStringLiteral("An optional behavior that is executed whenever this state is exited regardless of which transition was taken out of the state. If defined, exit actions are always executed to completion only after all internal activities and transition actions have completed execution."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, exit, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, exit, SubsettedPropertiesRole, QStringLiteral("Element-ownedElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, exit, OppositeEndRole, QStringLiteral(""));
+
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, isComposite, AggregationRole, QStringLiteral("none"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, isComposite, PropertyClassRole, QStringLiteral("QUmlState"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, isComposite, IsDerivedRole, true);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, isComposite, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, isComposite, DocumentationRole, QStringLiteral("A state with isComposite=true is said to be a composite state. A composite state is a state that contains at least one region."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, isComposite, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, isComposite, SubsettedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, isComposite, OppositeEndRole, QStringLiteral(""));
+
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, isOrthogonal, AggregationRole, QStringLiteral("none"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, isOrthogonal, PropertyClassRole, QStringLiteral("QUmlState"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, isOrthogonal, IsDerivedRole, true);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, isOrthogonal, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, isOrthogonal, DocumentationRole, QStringLiteral("A state with isOrthogonal=true is said to be an orthogonal composite state. An orthogonal composite state contains two or more regions."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, isOrthogonal, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, isOrthogonal, SubsettedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, isOrthogonal, OppositeEndRole, QStringLiteral(""));
+
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, isSimple, AggregationRole, QStringLiteral("none"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, isSimple, PropertyClassRole, QStringLiteral("QUmlState"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, isSimple, IsDerivedRole, true);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, isSimple, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, isSimple, DocumentationRole, QStringLiteral("A state with isSimple=true is said to be a simple state. A simple state does not have any regions and it does not refer to any submachine state machine."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, isSimple, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, isSimple, SubsettedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, isSimple, OppositeEndRole, QStringLiteral(""));
+
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, isSubmachineState, AggregationRole, QStringLiteral("none"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, isSubmachineState, PropertyClassRole, QStringLiteral("QUmlState"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, isSubmachineState, IsDerivedRole, true);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, isSubmachineState, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, isSubmachineState, DocumentationRole, QStringLiteral("A state with isSubmachineState=true is said to be a submachine state. Such a state refers to a state machine (submachine)."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, isSubmachineState, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, isSubmachineState, SubsettedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, isSubmachineState, OppositeEndRole, QStringLiteral(""));
+
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, redefinedState, AggregationRole, QStringLiteral("none"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, redefinedState, PropertyClassRole, QStringLiteral("QUmlState"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, redefinedState, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, redefinedState, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, redefinedState, DocumentationRole, QStringLiteral("The state of which this state is a redefinition."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, redefinedState, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, redefinedState, SubsettedPropertiesRole, QStringLiteral("RedefinableElement-redefinedElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, redefinedState, OppositeEndRole, QStringLiteral(""));
+
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, redefinitionContext, AggregationRole, QStringLiteral("none"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, redefinitionContext, PropertyClassRole, QStringLiteral("QUmlState"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, redefinitionContext, IsDerivedRole, true);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, redefinitionContext, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, redefinitionContext, DocumentationRole, QStringLiteral("References the classifier in which context this element may be redefined."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, redefinitionContext, RedefinedPropertiesRole, QStringLiteral("RedefinableElement-redefinitionContext"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, redefinitionContext, SubsettedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, redefinitionContext, OppositeEndRole, QStringLiteral(""));
+
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, regions, AggregationRole, QStringLiteral("composite"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, regions, PropertyClassRole, QStringLiteral("QUmlState"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, regions, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, regions, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, regions, DocumentationRole, QStringLiteral("The regions owned directly by the state."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, regions, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, regions, SubsettedPropertiesRole, QStringLiteral("Namespace-ownedMember"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, regions, OppositeEndRole, QStringLiteral("Region-state"));
+
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, stateInvariant, AggregationRole, QStringLiteral("composite"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, stateInvariant, PropertyClassRole, QStringLiteral("QUmlState"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, stateInvariant, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, stateInvariant, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, stateInvariant, DocumentationRole, QStringLiteral("Specifies conditions that are always true when this state is the current state. In protocol state machines, state invariants are additional conditions to the preconditions of the outgoing transitions, and to the postcondition of the incoming transitions."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, stateInvariant, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, stateInvariant, SubsettedPropertiesRole, QStringLiteral("Namespace-ownedRule"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, stateInvariant, OppositeEndRole, QStringLiteral(""));
+
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, submachine, AggregationRole, QStringLiteral("none"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, submachine, PropertyClassRole, QStringLiteral("QUmlState"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, submachine, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, submachine, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, submachine, DocumentationRole, QStringLiteral("The state machine that is to be inserted in place of the (submachine) state."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, submachine, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, submachine, SubsettedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, submachine, OppositeEndRole, QStringLiteral("StateMachine-submachineState"));
+
 }
 
 QT_END_NAMESPACE

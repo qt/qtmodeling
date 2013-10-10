@@ -71,27 +71,25 @@
 
     \brief A read link object end qualifier action is an action that retrieves a qualifier end value from a link object.
  */
-QUmlReadLinkObjectEndQualifierAction::QUmlReadLinkObjectEndQualifierAction(bool createQObject) :
+QUmlReadLinkObjectEndQualifierAction::QUmlReadLinkObjectEndQualifierAction(bool createQModelingObject) :
     _object(0),
     _qualifier(0),
     _result(0)
 {
-    if (createQObject)
-        _qObject = new QUmlReadLinkObjectEndQualifierActionObject(this);
-    setGroupProperties();
-    setPropertyData();
+    if (createQModelingObject)
+        _qModelingObject = qobject_cast<QModelingObject *>(new QUmlReadLinkObjectEndQualifierActionObject(this));
 }
 
 QUmlReadLinkObjectEndQualifierAction::~QUmlReadLinkObjectEndQualifierAction()
 {
-    if (!deletingFromQObject) {
-        if (_qObject)
-            _qObject->setProperty("deletingFromModelingObject", true);
-        delete _qObject;
+    if (!deletingFromQModelingObject) {
+        if (_qModelingObject)
+            _qModelingObject->setProperty("deletingFromModelingObject", true);
+        delete _qModelingObject;
     }
 }
 
-QModelingObject *QUmlReadLinkObjectEndQualifierAction::clone() const
+QModelingElement *QUmlReadLinkObjectEndQualifierAction::clone() const
 {
     QUmlReadLinkObjectEndQualifierAction *c = new QUmlReadLinkObjectEndQualifierAction;
     foreach (QUmlComment *element, ownedComments())
@@ -154,9 +152,9 @@ void QUmlReadLinkObjectEndQualifierAction::setObject(QUmlInputPin *object)
         removeInput(_object);
 
         _object = object;
-        if (object && object->asQObject() && this->asQObject())
-            QObject::connect(object->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setObject()));
-        object->asQObject()->setParent(this->asQObject());
+        if (object && object->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(object->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setObject()));
+        object->asQModelingObject()->setParent(this->asQModelingObject());
 
         // Adjust subsetted properties
         if (object) {
@@ -181,8 +179,8 @@ void QUmlReadLinkObjectEndQualifierAction::setQualifier(QUmlProperty *qualifier)
 
     if (_qualifier != qualifier) {
         _qualifier = qualifier;
-        if (qualifier && qualifier->asQObject() && this->asQObject())
-            QObject::connect(qualifier->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setQualifier()));
+        if (qualifier && qualifier->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(qualifier->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setQualifier()));
     }
 }
 
@@ -205,81 +203,14 @@ void QUmlReadLinkObjectEndQualifierAction::setResult(QUmlOutputPin *result)
         removeOutput(_result);
 
         _result = result;
-        if (result && result->asQObject() && this->asQObject())
-            QObject::connect(result->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setResult()));
-        result->asQObject()->setParent(this->asQObject());
+        if (result && result->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(result->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setResult()));
+        result->asQModelingObject()->setParent(this->asQModelingObject());
 
         // Adjust subsetted properties
         if (result) {
             addOutput(result);
         }
     }
-}
-
-void QUmlReadLinkObjectEndQualifierAction::setGroupProperties()
-{
-    const QMetaObject *metaObject = _qObject->metaObject();
-
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
-    _groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isLeaf"))));
-    _groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinitionContexts"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("activity"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inGroups"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inInterruptibleRegions"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inPartitions"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inStructuredNode"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("incomings"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("outgoings"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinedNodes"))));
-    _groupProperties.insert(QStringLiteral("QUmlExecutableNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("handlers"))));
-    _groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("context"))));
-    _groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inputs"))));
-    _groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isLocallyReentrant"))));
-    _groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("localPostconditions"))));
-    _groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("localPreconditions"))));
-    _groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("outputs"))));
-    _groupProperties.insert(QStringLiteral("QUmlReadLinkObjectEndQualifierAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("object"))));
-    _groupProperties.insert(QStringLiteral("QUmlReadLinkObjectEndQualifierAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifier"))));
-    _groupProperties.insert(QStringLiteral("QUmlReadLinkObjectEndQualifierAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("result"))));
-}
-
-void QUmlReadLinkObjectEndQualifierAction::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadLinkObjectEndQualifierAction")][QStringLiteral("object")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadLinkObjectEndQualifierAction")][QStringLiteral("object")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlReadLinkObjectEndQualifierAction");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadLinkObjectEndQualifierAction")][QStringLiteral("object")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadLinkObjectEndQualifierAction")][QStringLiteral("object")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadLinkObjectEndQualifierAction")][QStringLiteral("object")][QtModeling::DocumentationRole] = QStringLiteral("Gives the input pin from which the link object is obtained.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadLinkObjectEndQualifierAction")][QStringLiteral("object")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadLinkObjectEndQualifierAction")][QStringLiteral("object")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Action-input");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadLinkObjectEndQualifierAction")][QStringLiteral("object")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadLinkObjectEndQualifierAction")][QStringLiteral("qualifier")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadLinkObjectEndQualifierAction")][QStringLiteral("qualifier")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlReadLinkObjectEndQualifierAction");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadLinkObjectEndQualifierAction")][QStringLiteral("qualifier")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadLinkObjectEndQualifierAction")][QStringLiteral("qualifier")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadLinkObjectEndQualifierAction")][QStringLiteral("qualifier")][QtModeling::DocumentationRole] = QStringLiteral("The attribute representing the qualifier to be read.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadLinkObjectEndQualifierAction")][QStringLiteral("qualifier")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadLinkObjectEndQualifierAction")][QStringLiteral("qualifier")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadLinkObjectEndQualifierAction")][QStringLiteral("qualifier")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadLinkObjectEndQualifierAction")][QStringLiteral("result")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadLinkObjectEndQualifierAction")][QStringLiteral("result")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlReadLinkObjectEndQualifierAction");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadLinkObjectEndQualifierAction")][QStringLiteral("result")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadLinkObjectEndQualifierAction")][QStringLiteral("result")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadLinkObjectEndQualifierAction")][QStringLiteral("result")][QtModeling::DocumentationRole] = QStringLiteral("Pin where the result value is placed.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadLinkObjectEndQualifierAction")][QStringLiteral("result")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadLinkObjectEndQualifierAction")][QStringLiteral("result")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Action-output");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadLinkObjectEndQualifierAction")][QStringLiteral("result")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
 }
 

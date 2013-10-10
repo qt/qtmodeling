@@ -61,25 +61,23 @@
 
     \brief An occurrence specification is the basic semantic unit of interactions. The sequences of occurrences specified by them are the meanings of interactions.
  */
-QUmlOccurrenceSpecification::QUmlOccurrenceSpecification(bool createQObject) :
+QUmlOccurrenceSpecification::QUmlOccurrenceSpecification(bool createQModelingObject) :
     _covered(0)
 {
-    if (createQObject)
-        _qObject = new QUmlOccurrenceSpecificationObject(this);
-    setGroupProperties();
-    setPropertyData();
+    if (createQModelingObject)
+        _qModelingObject = qobject_cast<QModelingObject *>(new QUmlOccurrenceSpecificationObject(this));
 }
 
 QUmlOccurrenceSpecification::~QUmlOccurrenceSpecification()
 {
-    if (!deletingFromQObject) {
-        if (_qObject)
-            _qObject->setProperty("deletingFromModelingObject", true);
-        delete _qObject;
+    if (!deletingFromQModelingObject) {
+        if (_qModelingObject)
+            _qModelingObject->setProperty("deletingFromModelingObject", true);
+        delete _qModelingObject;
     }
 }
 
-QModelingObject *QUmlOccurrenceSpecification::clone() const
+QModelingElement *QUmlOccurrenceSpecification::clone() const
 {
     QUmlOccurrenceSpecification *c = new QUmlOccurrenceSpecification;
     foreach (QUmlComment *element, ownedComments())
@@ -123,8 +121,8 @@ void QUmlOccurrenceSpecification::setCovered(QUmlLifeline *covered)
 
     if (_covered != covered) {
         _covered = covered;
-        if (covered && covered->asQObject() && this->asQObject())
-            QObject::connect(covered->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setCovered()));
+        if (covered && covered->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(covered->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setCovered()));
     }
 }
 
@@ -144,8 +142,8 @@ void QUmlOccurrenceSpecification::addToAfter(QUmlGeneralOrdering *toAfter)
 
     if (!_toAfters.contains(toAfter)) {
         _toAfters.insert(toAfter);
-        if (toAfter && toAfter->asQObject() && this->asQObject())
-            QObject::connect(toAfter->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeToAfter(QObject *)));
+        if (toAfter && toAfter->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(toAfter->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeToAfter(QObject *)));
 
         // Adjust opposite properties
         if (toAfter) {
@@ -184,8 +182,8 @@ void QUmlOccurrenceSpecification::addToBefore(QUmlGeneralOrdering *toBefore)
 
     if (!_toBefores.contains(toBefore)) {
         _toBefores.insert(toBefore);
-        if (toBefore && toBefore->asQObject() && this->asQObject())
-            QObject::connect(toBefore->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeToBefore(QObject *)));
+        if (toBefore && toBefore->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(toBefore->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeToBefore(QObject *)));
 
         // Adjust opposite properties
         if (toBefore) {
@@ -206,57 +204,5 @@ void QUmlOccurrenceSpecification::removeToBefore(QUmlGeneralOrdering *toBefore)
             toBefore->setAfter(0);
         }
     }
-}
-
-void QUmlOccurrenceSpecification::setGroupProperties()
-{
-    const QMetaObject *metaObject = _qObject->metaObject();
-
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
-    _groupProperties.insert(QStringLiteral("QUmlInteractionFragment"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("enclosingInteraction"))));
-    _groupProperties.insert(QStringLiteral("QUmlInteractionFragment"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("enclosingOperand"))));
-    _groupProperties.insert(QStringLiteral("QUmlInteractionFragment"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("generalOrderings"))));
-    _groupProperties.insert(QStringLiteral("QUmlOccurrenceSpecification"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("covered"))));
-    _groupProperties.insert(QStringLiteral("QUmlOccurrenceSpecification"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("toAfters"))));
-    _groupProperties.insert(QStringLiteral("QUmlOccurrenceSpecification"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("toBefores"))));
-}
-
-void QUmlOccurrenceSpecification::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOccurrenceSpecification")][QStringLiteral("covered")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOccurrenceSpecification")][QStringLiteral("covered")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlOccurrenceSpecification");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOccurrenceSpecification")][QStringLiteral("covered")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOccurrenceSpecification")][QStringLiteral("covered")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOccurrenceSpecification")][QStringLiteral("covered")][QtModeling::DocumentationRole] = QStringLiteral("References the Lifeline on which the OccurrenceSpecification appears.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOccurrenceSpecification")][QStringLiteral("covered")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("InteractionFragment-covered");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOccurrenceSpecification")][QStringLiteral("covered")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOccurrenceSpecification")][QStringLiteral("covered")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOccurrenceSpecification")][QStringLiteral("toAfters")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOccurrenceSpecification")][QStringLiteral("toAfters")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlOccurrenceSpecification");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOccurrenceSpecification")][QStringLiteral("toAfters")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOccurrenceSpecification")][QStringLiteral("toAfters")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOccurrenceSpecification")][QStringLiteral("toAfters")][QtModeling::DocumentationRole] = QStringLiteral("References the GeneralOrderings that specify EventOcurrences that must occur after this OccurrenceSpecification");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOccurrenceSpecification")][QStringLiteral("toAfters")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOccurrenceSpecification")][QStringLiteral("toAfters")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOccurrenceSpecification")][QStringLiteral("toAfters")][QtModeling::OppositeEndRole] = QStringLiteral("GeneralOrdering-before");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOccurrenceSpecification")][QStringLiteral("toBefores")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOccurrenceSpecification")][QStringLiteral("toBefores")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlOccurrenceSpecification");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOccurrenceSpecification")][QStringLiteral("toBefores")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOccurrenceSpecification")][QStringLiteral("toBefores")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOccurrenceSpecification")][QStringLiteral("toBefores")][QtModeling::DocumentationRole] = QStringLiteral("References the GeneralOrderings that specify EventOcurrences that must occur before this OccurrenceSpecification");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOccurrenceSpecification")][QStringLiteral("toBefores")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOccurrenceSpecification")][QStringLiteral("toBefores")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOccurrenceSpecification")][QStringLiteral("toBefores")][QtModeling::OppositeEndRole] = QStringLiteral("GeneralOrdering-after");
-
 }
 

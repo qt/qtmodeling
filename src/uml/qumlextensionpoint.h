@@ -45,7 +45,6 @@
 
 #include <QtUml/QUmlRedefinableElement>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -57,10 +56,10 @@ class QUmlUseCase;
 class Q_UML_EXPORT QUmlExtensionPoint : public QUmlRedefinableElement
 {
 public:
-    explicit QUmlExtensionPoint(bool createQObject = true);
+    explicit QUmlExtensionPoint(bool createQModelingObject = true);
     virtual ~QUmlExtensionPoint();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
     QUmlUseCase *useCase() const;
@@ -68,9 +67,6 @@ public:
 
 protected:
     QUmlUseCase *_useCase;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

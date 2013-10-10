@@ -61,25 +61,23 @@
 
     \brief A continuation is a syntactic way to define continuations of different branches of an alternative combined fragment. Continuations is intuitively similar to labels representing intermediate points in a flow of control.
  */
-QUmlContinuation::QUmlContinuation(bool createQObject) :
+QUmlContinuation::QUmlContinuation(bool createQModelingObject) :
     _setting(true)
 {
-    if (createQObject)
-        _qObject = new QUmlContinuationObject(this);
-    setGroupProperties();
-    setPropertyData();
+    if (createQModelingObject)
+        _qModelingObject = qobject_cast<QModelingObject *>(new QUmlContinuationObject(this));
 }
 
 QUmlContinuation::~QUmlContinuation()
 {
-    if (!deletingFromQObject) {
-        if (_qObject)
-            _qObject->setProperty("deletingFromModelingObject", true);
-        delete _qObject;
+    if (!deletingFromQModelingObject) {
+        if (_qModelingObject)
+            _qModelingObject->setProperty("deletingFromModelingObject", true);
+        delete _qModelingObject;
     }
 }
 
-QModelingObject *QUmlContinuation::clone() const
+QModelingElement *QUmlContinuation::clone() const
 {
     QUmlContinuation *c = new QUmlContinuation;
     foreach (QUmlComment *element, ownedComments())
@@ -120,40 +118,7 @@ void QUmlContinuation::setSetting(bool setting)
 
     if (_setting != setting) {
         _setting = setting;
-        _modifiedResettableProperties << QStringLiteral("setting");
+        _qModelingObject->modifiedResettableProperties() << QStringLiteral("setting");
     }
-}
-
-void QUmlContinuation::setGroupProperties()
-{
-    const QMetaObject *metaObject = _qObject->metaObject();
-
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
-    _groupProperties.insert(QStringLiteral("QUmlInteractionFragment"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("covered"))));
-    _groupProperties.insert(QStringLiteral("QUmlInteractionFragment"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("enclosingInteraction"))));
-    _groupProperties.insert(QStringLiteral("QUmlInteractionFragment"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("enclosingOperand"))));
-    _groupProperties.insert(QStringLiteral("QUmlInteractionFragment"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("generalOrderings"))));
-    _groupProperties.insert(QStringLiteral("QUmlContinuation"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("setting"))));
-}
-
-void QUmlContinuation::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlContinuation")][QStringLiteral("setting")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlContinuation")][QStringLiteral("setting")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlContinuation");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlContinuation")][QStringLiteral("setting")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlContinuation")][QStringLiteral("setting")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlContinuation")][QStringLiteral("setting")][QtModeling::DocumentationRole] = QStringLiteral("True: when the Continuation is at the end of the enclosing InteractionFragment and False when it is in the beginning.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlContinuation")][QStringLiteral("setting")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlContinuation")][QStringLiteral("setting")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlContinuation")][QStringLiteral("setting")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
 }
 

@@ -60,26 +60,24 @@
 
     \brief A time event can be defined relative to entering the current state of the executing state machine.A time event specifies a point in time. At the specified time, the event occurs.
  */
-QUmlTimeEvent::QUmlTimeEvent(bool createQObject) :
+QUmlTimeEvent::QUmlTimeEvent(bool createQModelingObject) :
     _isRelative(false),
     _when(0)
 {
-    if (createQObject)
-        _qObject = new QUmlTimeEventObject(this);
-    setGroupProperties();
-    setPropertyData();
+    if (createQModelingObject)
+        _qModelingObject = qobject_cast<QModelingObject *>(new QUmlTimeEventObject(this));
 }
 
 QUmlTimeEvent::~QUmlTimeEvent()
 {
-    if (!deletingFromQObject) {
-        if (_qObject)
-            _qObject->setProperty("deletingFromModelingObject", true);
-        delete _qObject;
+    if (!deletingFromQModelingObject) {
+        if (_qModelingObject)
+            _qModelingObject->setProperty("deletingFromModelingObject", true);
+        delete _qModelingObject;
     }
 }
 
-QModelingObject *QUmlTimeEvent::clone() const
+QModelingElement *QUmlTimeEvent::clone() const
 {
     QUmlTimeEvent *c = new QUmlTimeEvent;
     foreach (QUmlComment *element, ownedComments())
@@ -118,7 +116,7 @@ void QUmlTimeEvent::setRelative(bool isRelative)
 
     if (_isRelative != isRelative) {
         _isRelative = isRelative;
-        _modifiedResettableProperties << QStringLiteral("isRelative");
+        _qModelingObject->modifiedResettableProperties() << QStringLiteral("isRelative");
     }
 }
 
@@ -141,55 +139,14 @@ void QUmlTimeEvent::setWhen(QUmlTimeExpression *when)
         removeOwnedElement(_when);
 
         _when = when;
-        if (when && when->asQObject() && this->asQObject())
-            QObject::connect(when->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setWhen()));
-        when->asQObject()->setParent(this->asQObject());
+        if (when && when->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(when->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setWhen()));
+        when->asQModelingObject()->setParent(this->asQModelingObject());
 
         // Adjust subsetted properties
         if (when) {
             addOwnedElement(when);
         }
     }
-}
-
-void QUmlTimeEvent::setGroupProperties()
-{
-    const QMetaObject *metaObject = _qObject->metaObject();
-
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
-    _groupProperties.insert(QStringLiteral("QUmlParameterableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owningTemplateParameter"))));
-    _groupProperties.insert(QStringLiteral("QUmlParameterableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("templateParameter"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
-    _groupProperties.insert(QStringLiteral("QUmlPackageableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
-    _groupProperties.insert(QStringLiteral("QUmlTimeEvent"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isRelative"))));
-    _groupProperties.insert(QStringLiteral("QUmlTimeEvent"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("when"))));
-}
-
-void QUmlTimeEvent::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTimeEvent")][QStringLiteral("isRelative")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTimeEvent")][QStringLiteral("isRelative")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlTimeEvent");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTimeEvent")][QStringLiteral("isRelative")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTimeEvent")][QStringLiteral("isRelative")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTimeEvent")][QStringLiteral("isRelative")][QtModeling::DocumentationRole] = QStringLiteral("Specifies whether it is relative or absolute time.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTimeEvent")][QStringLiteral("isRelative")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTimeEvent")][QStringLiteral("isRelative")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTimeEvent")][QStringLiteral("isRelative")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTimeEvent")][QStringLiteral("when")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTimeEvent")][QStringLiteral("when")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlTimeEvent");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTimeEvent")][QStringLiteral("when")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTimeEvent")][QStringLiteral("when")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTimeEvent")][QStringLiteral("when")][QtModeling::DocumentationRole] = QStringLiteral("Specifies the corresponding time deadline.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTimeEvent")][QStringLiteral("when")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTimeEvent")][QStringLiteral("when")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTimeEvent")][QStringLiteral("when")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
 }
 

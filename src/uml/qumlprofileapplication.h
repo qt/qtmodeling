@@ -45,7 +45,6 @@
 
 #include <QtUml/QUmlDirectedRelationship>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -58,10 +57,10 @@ class QUmlProfile;
 class Q_UML_EXPORT QUmlProfileApplication : public QUmlDirectedRelationship
 {
 public:
-    explicit QUmlProfileApplication(bool createQObject = true);
+    explicit QUmlProfileApplication(bool createQModelingObject = true);
     virtual ~QUmlProfileApplication();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
     QUmlProfile *appliedProfile() const;
@@ -75,9 +74,6 @@ protected:
     QUmlProfile *_appliedProfile;
     QUmlPackage *_applyingPackage;
     bool _isStrict;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

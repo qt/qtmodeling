@@ -45,7 +45,6 @@
 
 #include <QtUml/QUmlInteractionFragment>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -58,10 +57,10 @@ class QUmlLifeline;
 class Q_UML_EXPORT QUmlOccurrenceSpecification : public QUmlInteractionFragment
 {
 public:
-    explicit QUmlOccurrenceSpecification(bool createQObject = true);
+    explicit QUmlOccurrenceSpecification(bool createQModelingObject = true);
     virtual ~QUmlOccurrenceSpecification();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
     QUmlLifeline *covered() const;
@@ -77,9 +76,6 @@ protected:
     QUmlLifeline *_covered;
     QSet<QUmlGeneralOrdering *> _toAfters;
     QSet<QUmlGeneralOrdering *> _toBefores;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

@@ -43,8 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtModeling/QModelingObject>
-
+#include <QtModeling/QModelingElement>
 
 QT_BEGIN_HEADER
 
@@ -54,12 +53,12 @@ QT_MODULE(QtUml)
 
 class QUmlComment;
 
-class Q_UML_EXPORT QUmlElement : public QModelingObject
+class Q_UML_EXPORT QUmlElement : public QModelingElement
 {
 public:
     virtual ~QUmlElement();
 
-    Q_DECL_HIDDEN QModelingObject *clone() const;
+    Q_DECL_HIDDEN virtual QModelingElement *clone() const;
 
     // Owned attributes
     const QSet<QUmlComment *> ownedComments() const;
@@ -81,9 +80,6 @@ protected:
     QSet<QUmlComment *> _ownedComments;
     QSet<QUmlElement *> _ownedElements;
     QUmlElement *_owner;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 
 private:
     void allOwnedElements(QSet<QUmlElement *> &allOwnedElements_) const;

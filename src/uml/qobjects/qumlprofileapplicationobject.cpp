@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlprofileapplicationobject_p.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlProfileApplication>
 #include <QtUml/QUmlComment>
@@ -48,16 +49,18 @@
 
 QT_BEGIN_NAMESPACE
 
-QUmlProfileApplicationObject::QUmlProfileApplicationObject(QUmlProfileApplication *qModelingObject)
+QUmlProfileApplicationObject::QUmlProfileApplicationObject(QUmlProfileApplication *qModelingElement)
 {
-    setProperty("modelingObject", QVariant::fromValue(static_cast<QModelingObject *>(qModelingObject)));
+    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(qModelingElement)));
+    setGroupProperties();
+    setPropertyData();
 }
 
 QUmlProfileApplicationObject::~QUmlProfileApplicationObject()
 {
     if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingobjectproperty_cast<QUmlProfileApplication *>(this)->deletingFromQObject = true;
-        delete qmodelingobjectproperty_cast<QUmlComment *>(this);
+        qmodelingelementproperty_cast<QUmlProfileApplication *>(this)->deletingFromQModelingObject = true;
+        delete qmodelingelementproperty_cast<QUmlComment *>(this);
     }
 }
 
@@ -66,25 +69,25 @@ QUmlProfileApplicationObject::~QUmlProfileApplicationObject()
 const QSet<QObject *> QUmlProfileApplicationObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlProfileApplication *>(this)->ownedComments())
-        set.insert(element->asQObject());
+    foreach (QUmlComment *element, qmodelingelementproperty_cast<QUmlProfileApplication *>(this)->ownedComments())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlProfileApplicationObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlProfileApplication *>(this)->ownedElements())
-        set.insert(element->asQObject());
+    foreach (QUmlElement *element, qmodelingelementproperty_cast<QUmlProfileApplication *>(this)->ownedElements())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 QObject *QUmlProfileApplicationObject::owner() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlProfileApplication *>(this)->owner())
+    if (!qmodelingelementproperty_cast<QUmlProfileApplication *>(this)->owner())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlProfileApplication *>(this)->owner()->asQObject();
+        return qmodelingelementproperty_cast<QUmlProfileApplication *>(this)->owner()->asQModelingObject();
 }
 
 // OWNED ATTRIBUTES [Relationship]
@@ -92,8 +95,8 @@ QObject *QUmlProfileApplicationObject::owner() const
 const QSet<QObject *> QUmlProfileApplicationObject::relatedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlProfileApplication *>(this)->relatedElements())
-        set.insert(element->asQObject());
+    foreach (QUmlElement *element, qmodelingelementproperty_cast<QUmlProfileApplication *>(this)->relatedElements())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
@@ -102,16 +105,16 @@ const QSet<QObject *> QUmlProfileApplicationObject::relatedElements() const
 const QSet<QObject *> QUmlProfileApplicationObject::sources() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlProfileApplication *>(this)->sources())
-        set.insert(element->asQObject());
+    foreach (QUmlElement *element, qmodelingelementproperty_cast<QUmlProfileApplication *>(this)->sources())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlProfileApplicationObject::targets() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlProfileApplication *>(this)->targets())
-        set.insert(element->asQObject());
+    foreach (QUmlElement *element, qmodelingelementproperty_cast<QUmlProfileApplication *>(this)->targets())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
@@ -119,23 +122,23 @@ const QSet<QObject *> QUmlProfileApplicationObject::targets() const
 
 QObject *QUmlProfileApplicationObject::appliedProfile() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlProfileApplication *>(this)->appliedProfile())
+    if (!qmodelingelementproperty_cast<QUmlProfileApplication *>(this)->appliedProfile())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlProfileApplication *>(this)->appliedProfile()->asQObject();
+        return qmodelingelementproperty_cast<QUmlProfileApplication *>(this)->appliedProfile()->asQModelingObject();
 }
 
 QObject *QUmlProfileApplicationObject::applyingPackage() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlProfileApplication *>(this)->applyingPackage())
+    if (!qmodelingelementproperty_cast<QUmlProfileApplication *>(this)->applyingPackage())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlProfileApplication *>(this)->applyingPackage()->asQObject();
+        return qmodelingelementproperty_cast<QUmlProfileApplication *>(this)->applyingPackage()->asQModelingObject();
 }
 
 bool QUmlProfileApplicationObject::isStrict() const
 {
-    return qmodelingobjectproperty_cast<QUmlProfileApplication *>(this)->isStrict();
+    return qmodelingelementproperty_cast<QUmlProfileApplication *>(this)->isStrict();
 }
 
 // OPERATIONS [Element]
@@ -143,97 +146,156 @@ bool QUmlProfileApplicationObject::isStrict() const
 QSet<QObject *> QUmlProfileApplicationObject::allOwnedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlProfileApplication *>(this)->allOwnedElements())
-        set.insert(element->asQObject());
+    foreach (QUmlElement *element, qmodelingelementproperty_cast<QUmlProfileApplication *>(this)->allOwnedElements())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 bool QUmlProfileApplicationObject::mustBeOwned() const
 {
-    return qmodelingobjectproperty_cast<QUmlProfileApplication *>(this)->mustBeOwned();
+    return qmodelingelementproperty_cast<QUmlProfileApplication *>(this)->mustBeOwned();
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Element]
 
 void QUmlProfileApplicationObject::addOwnedComment(QObject *ownedComment)
 {
-    qmodelingobjectproperty_cast<QUmlProfileApplication *>(this)->addOwnedComment(qmodelingobjectproperty_cast<QUmlComment *>(ownedComment));
+    qmodelingelementproperty_cast<QUmlProfileApplication *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
 }
 
 void QUmlProfileApplicationObject::removeOwnedComment(QObject *ownedComment)
 {
-    qmodelingobjectproperty_cast<QUmlProfileApplication *>(this)->removeOwnedComment(qmodelingobjectproperty_cast<QUmlComment *>(ownedComment));
+    qmodelingelementproperty_cast<QUmlProfileApplication *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
 }
 
 void QUmlProfileApplicationObject::addOwnedElement(QObject *ownedElement)
 {
-    qmodelingobjectproperty_cast<QUmlProfileApplication *>(this)->addOwnedElement(qmodelingobjectproperty_cast<QUmlElement *>(ownedElement));
+    qmodelingelementproperty_cast<QUmlProfileApplication *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
 }
 
 void QUmlProfileApplicationObject::removeOwnedElement(QObject *ownedElement)
 {
-    qmodelingobjectproperty_cast<QUmlProfileApplication *>(this)->removeOwnedElement(qmodelingobjectproperty_cast<QUmlElement *>(ownedElement));
+    qmodelingelementproperty_cast<QUmlProfileApplication *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
 }
 
 void QUmlProfileApplicationObject::setOwner(QObject *owner)
 {
-    qmodelingobjectproperty_cast<QUmlProfileApplication *>(this)->setOwner(qmodelingobjectproperty_cast<QUmlElement *>(owner));
+    qmodelingelementproperty_cast<QUmlProfileApplication *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Relationship]
 
 void QUmlProfileApplicationObject::addRelatedElement(QObject *relatedElement)
 {
-    qmodelingobjectproperty_cast<QUmlProfileApplication *>(this)->addRelatedElement(qmodelingobjectproperty_cast<QUmlElement *>(relatedElement));
+    qmodelingelementproperty_cast<QUmlProfileApplication *>(this)->addRelatedElement(qmodelingelementproperty_cast<QUmlElement *>(relatedElement));
 }
 
 void QUmlProfileApplicationObject::removeRelatedElement(QObject *relatedElement)
 {
-    qmodelingobjectproperty_cast<QUmlProfileApplication *>(this)->removeRelatedElement(qmodelingobjectproperty_cast<QUmlElement *>(relatedElement));
+    qmodelingelementproperty_cast<QUmlProfileApplication *>(this)->removeRelatedElement(qmodelingelementproperty_cast<QUmlElement *>(relatedElement));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [DirectedRelationship]
 
 void QUmlProfileApplicationObject::addSource(QObject *source)
 {
-    qmodelingobjectproperty_cast<QUmlProfileApplication *>(this)->addSource(qmodelingobjectproperty_cast<QUmlElement *>(source));
+    qmodelingelementproperty_cast<QUmlProfileApplication *>(this)->addSource(qmodelingelementproperty_cast<QUmlElement *>(source));
 }
 
 void QUmlProfileApplicationObject::removeSource(QObject *source)
 {
-    qmodelingobjectproperty_cast<QUmlProfileApplication *>(this)->removeSource(qmodelingobjectproperty_cast<QUmlElement *>(source));
+    qmodelingelementproperty_cast<QUmlProfileApplication *>(this)->removeSource(qmodelingelementproperty_cast<QUmlElement *>(source));
 }
 
 void QUmlProfileApplicationObject::addTarget(QObject *target)
 {
-    qmodelingobjectproperty_cast<QUmlProfileApplication *>(this)->addTarget(qmodelingobjectproperty_cast<QUmlElement *>(target));
+    qmodelingelementproperty_cast<QUmlProfileApplication *>(this)->addTarget(qmodelingelementproperty_cast<QUmlElement *>(target));
 }
 
 void QUmlProfileApplicationObject::removeTarget(QObject *target)
 {
-    qmodelingobjectproperty_cast<QUmlProfileApplication *>(this)->removeTarget(qmodelingobjectproperty_cast<QUmlElement *>(target));
+    qmodelingelementproperty_cast<QUmlProfileApplication *>(this)->removeTarget(qmodelingelementproperty_cast<QUmlElement *>(target));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ProfileApplication]
 
 void QUmlProfileApplicationObject::setAppliedProfile(QObject *appliedProfile)
 {
-    qmodelingobjectproperty_cast<QUmlProfileApplication *>(this)->setAppliedProfile(qmodelingobjectproperty_cast<QUmlProfile *>(appliedProfile));
+    qmodelingelementproperty_cast<QUmlProfileApplication *>(this)->setAppliedProfile(qmodelingelementproperty_cast<QUmlProfile *>(appliedProfile));
 }
 
 void QUmlProfileApplicationObject::setApplyingPackage(QObject *applyingPackage)
 {
-    qmodelingobjectproperty_cast<QUmlProfileApplication *>(this)->setApplyingPackage(qmodelingobjectproperty_cast<QUmlPackage *>(applyingPackage));
+    qmodelingelementproperty_cast<QUmlProfileApplication *>(this)->setApplyingPackage(qmodelingelementproperty_cast<QUmlPackage *>(applyingPackage));
 }
 
 void QUmlProfileApplicationObject::setStrict(bool isStrict)
 {
-    qmodelingobjectproperty_cast<QUmlProfileApplication *>(this)->setStrict(isStrict);
+    qmodelingelementproperty_cast<QUmlProfileApplication *>(this)->setStrict(isStrict);
 }
 
 void QUmlProfileApplicationObject::unsetStrict()
 {
-    qmodelingobjectproperty_cast<QUmlProfileApplication *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("strict"));
+    Q_D(QModelingObject);
+    d->modifiedResettableProperties.removeAll(QStringLiteral("strict"));
+}
+
+
+void QUmlProfileApplicationObject::setGroupProperties()
+{
+    Q_D(QModelingObject);
+    const QMetaObject *metaObject = this->metaObject();
+
+    d->propertyGroups << QStringLiteral("QObject");
+    d->groupProperties.insert(QStringLiteral("QObject"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("objectName"))));
+
+    d->propertyGroups << QStringLiteral("QUmlElement");
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
+
+    d->propertyGroups << QStringLiteral("QUmlRelationship");
+    d->groupProperties.insert(QStringLiteral("QUmlRelationship"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("relatedElements"))));
+
+    d->propertyGroups << QStringLiteral("QUmlDirectedRelationship");
+    d->groupProperties.insert(QStringLiteral("QUmlDirectedRelationship"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("sources"))));
+    d->groupProperties.insert(QStringLiteral("QUmlDirectedRelationship"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("targets"))));
+
+    d->propertyGroups << QStringLiteral("QUmlProfileApplication");
+    d->groupProperties.insert(QStringLiteral("QUmlProfileApplication"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("appliedProfile"))));
+    d->groupProperties.insert(QStringLiteral("QUmlProfileApplication"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("applyingPackage"))));
+    d->groupProperties.insert(QStringLiteral("QUmlProfileApplication"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isStrict"))));
+}
+
+void QUmlProfileApplicationObject::setPropertyData()
+{
+    Q_DECLARE_METAPROPERTY_INFO(QUmlProfileApplication, appliedProfile, AggregationRole, QStringLiteral("none"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlProfileApplication, appliedProfile, PropertyClassRole, QStringLiteral("QUmlProfileApplication"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlProfileApplication, appliedProfile, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlProfileApplication, appliedProfile, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlProfileApplication, appliedProfile, DocumentationRole, QStringLiteral("References the Profiles that are applied to a Package through this ProfileApplication."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlProfileApplication, appliedProfile, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlProfileApplication, appliedProfile, SubsettedPropertiesRole, QStringLiteral("DirectedRelationship-target"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlProfileApplication, appliedProfile, OppositeEndRole, QStringLiteral(""));
+
+    Q_DECLARE_METAPROPERTY_INFO(QUmlProfileApplication, applyingPackage, AggregationRole, QStringLiteral("none"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlProfileApplication, applyingPackage, PropertyClassRole, QStringLiteral("QUmlProfileApplication"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlProfileApplication, applyingPackage, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlProfileApplication, applyingPackage, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlProfileApplication, applyingPackage, DocumentationRole, QStringLiteral("The package that owns the profile application."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlProfileApplication, applyingPackage, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlProfileApplication, applyingPackage, SubsettedPropertiesRole, QStringLiteral("Element-owner DirectedRelationship-source"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlProfileApplication, applyingPackage, OppositeEndRole, QStringLiteral("Package-profileApplication"));
+
+    Q_DECLARE_METAPROPERTY_INFO(QUmlProfileApplication, isStrict, AggregationRole, QStringLiteral("none"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlProfileApplication, isStrict, PropertyClassRole, QStringLiteral("QUmlProfileApplication"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlProfileApplication, isStrict, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlProfileApplication, isStrict, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlProfileApplication, isStrict, DocumentationRole, QStringLiteral("Specifies that the Profile filtering rules for the metaclasses of the referenced metamodel shall be strictly applied."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlProfileApplication, isStrict, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlProfileApplication, isStrict, SubsettedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlProfileApplication, isStrict, OppositeEndRole, QStringLiteral(""));
+
 }
 
 QT_END_NAMESPACE

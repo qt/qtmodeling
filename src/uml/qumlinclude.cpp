@@ -58,26 +58,24 @@
 
     \brief An include relationship defines that a use case contains the behavior defined in another use case.
  */
-QUmlInclude::QUmlInclude(bool createQObject) :
+QUmlInclude::QUmlInclude(bool createQModelingObject) :
     _addition(0),
     _includingCase(0)
 {
-    if (createQObject)
-        _qObject = new QUmlIncludeObject(this);
-    setGroupProperties();
-    setPropertyData();
+    if (createQModelingObject)
+        _qModelingObject = qobject_cast<QModelingObject *>(new QUmlIncludeObject(this));
 }
 
 QUmlInclude::~QUmlInclude()
 {
-    if (!deletingFromQObject) {
-        if (_qObject)
-            _qObject->setProperty("deletingFromModelingObject", true);
-        delete _qObject;
+    if (!deletingFromQModelingObject) {
+        if (_qModelingObject)
+            _qModelingObject->setProperty("deletingFromModelingObject", true);
+        delete _qModelingObject;
     }
 }
 
-QModelingObject *QUmlInclude::clone() const
+QModelingElement *QUmlInclude::clone() const
 {
     QUmlInclude *c = new QUmlInclude;
     foreach (QUmlComment *element, ownedComments())
@@ -116,8 +114,8 @@ void QUmlInclude::setAddition(QUmlUseCase *addition)
         removeTarget(_addition);
 
         _addition = addition;
-        if (addition && addition->asQObject() && this->asQObject())
-            QObject::connect(addition->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setAddition()));
+        if (addition && addition->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(addition->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setAddition()));
 
         // Adjust subsetted properties
         if (addition) {
@@ -145,8 +143,8 @@ void QUmlInclude::setIncludingCase(QUmlUseCase *includingCase)
         removeSource(_includingCase);
 
         _includingCase = includingCase;
-        if (includingCase && includingCase->asQObject() && this->asQObject())
-            QObject::connect(includingCase->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setIncludingCase()));
+        if (includingCase && includingCase->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(includingCase->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setIncludingCase()));
 
         // Adjust subsetted properties
         if (includingCase) {
@@ -154,47 +152,5 @@ void QUmlInclude::setIncludingCase(QUmlUseCase *includingCase)
         }
         setNamespace(includingCase);
     }
-}
-
-void QUmlInclude::setGroupProperties()
-{
-    const QMetaObject *metaObject = _qObject->metaObject();
-
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
-    _groupProperties.insert(QStringLiteral("QUmlRelationship"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("relatedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlDirectedRelationship"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("sources"))));
-    _groupProperties.insert(QStringLiteral("QUmlDirectedRelationship"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("targets"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
-    _groupProperties.insert(QStringLiteral("QUmlInclude"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("addition"))));
-    _groupProperties.insert(QStringLiteral("QUmlInclude"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("includingCase"))));
-}
-
-void QUmlInclude::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInclude")][QStringLiteral("addition")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInclude")][QStringLiteral("addition")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInclude");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInclude")][QStringLiteral("addition")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInclude")][QStringLiteral("addition")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInclude")][QStringLiteral("addition")][QtModeling::DocumentationRole] = QStringLiteral("References the use case that is to be included.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInclude")][QStringLiteral("addition")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInclude")][QStringLiteral("addition")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("DirectedRelationship-target");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInclude")][QStringLiteral("addition")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInclude")][QStringLiteral("includingCase")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInclude")][QStringLiteral("includingCase")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInclude");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInclude")][QStringLiteral("includingCase")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInclude")][QStringLiteral("includingCase")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInclude")][QStringLiteral("includingCase")][QtModeling::DocumentationRole] = QStringLiteral("References the use case which will include the addition and owns the include relationship.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInclude")][QStringLiteral("includingCase")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInclude")][QStringLiteral("includingCase")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("DirectedRelationship-source NamedElement-namespace");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInclude")][QStringLiteral("includingCase")][QtModeling::OppositeEndRole] = QStringLiteral("UseCase-include");
-
 }
 

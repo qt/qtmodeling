@@ -46,7 +46,6 @@
 #include <QtUml/QUmlBehavior>
 #include <QtUml/QUmlInteractionFragment>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -61,10 +60,10 @@ class QUmlMessage;
 class Q_UML_EXPORT QUmlInteraction : public QUmlBehavior, public QUmlInteractionFragment
 {
 public:
-    explicit QUmlInteraction(bool createQObject = true);
+    explicit QUmlInteraction(bool createQModelingObject = true);
     virtual ~QUmlInteraction();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
     const QSet<QUmlAction *> actions() const;
@@ -89,9 +88,6 @@ protected:
     QList<QUmlInteractionFragment *> _fragments;
     QSet<QUmlLifeline *> _lifelines;
     QSet<QUmlMessage *> _messages;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

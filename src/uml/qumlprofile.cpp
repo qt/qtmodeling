@@ -69,25 +69,23 @@
 
     \brief A profile defines limited extensions to a reference metamodel with the purpose of adapting the metamodel to a specific platform or domain.
  */
-QUmlProfile::QUmlProfile(bool createQObject) :
+QUmlProfile::QUmlProfile(bool createQModelingObject) :
     QUmlPackage(false)
 {
-    if (createQObject)
-        _qObject = new QUmlProfileObject(this);
-    setGroupProperties();
-    setPropertyData();
+    if (createQModelingObject)
+        _qModelingObject = qobject_cast<QModelingObject *>(new QUmlProfileObject(this));
 }
 
 QUmlProfile::~QUmlProfile()
 {
-    if (!deletingFromQObject) {
-        if (_qObject)
-            _qObject->setProperty("deletingFromModelingObject", true);
-        delete _qObject;
+    if (!deletingFromQModelingObject) {
+        if (_qModelingObject)
+            _qModelingObject->setProperty("deletingFromModelingObject", true);
+        delete _qModelingObject;
     }
 }
 
-QModelingObject *QUmlProfile::clone() const
+QModelingElement *QUmlProfile::clone() const
 {
     QUmlProfile *c = new QUmlProfile;
     foreach (QUmlComment *element, ownedComments())
@@ -146,9 +144,9 @@ void QUmlProfile::addMetaclassReference(QUmlElementImport *metaclassReference)
 
     if (!_metaclassReferences.contains(metaclassReference)) {
         _metaclassReferences.insert(metaclassReference);
-        if (metaclassReference && metaclassReference->asQObject() && this->asQObject())
-            QObject::connect(metaclassReference->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeMetaclassReference(QObject *)));
-        metaclassReference->asQObject()->setParent(this->asQObject());
+        if (metaclassReference && metaclassReference->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(metaclassReference->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeMetaclassReference(QObject *)));
+        metaclassReference->asQModelingObject()->setParent(this->asQModelingObject());
 
         // Adjust subsetted properties
         addElementImport(metaclassReference);
@@ -161,8 +159,8 @@ void QUmlProfile::removeMetaclassReference(QUmlElementImport *metaclassReference
 
     if (_metaclassReferences.contains(metaclassReference)) {
         _metaclassReferences.remove(metaclassReference);
-        if (metaclassReference->asQObject())
-            metaclassReference->asQObject()->setParent(0);
+        if (metaclassReference->asQModelingObject())
+            metaclassReference->asQModelingObject()->setParent(0);
 
         // Adjust subsetted properties
         removeElementImport(metaclassReference);
@@ -185,9 +183,9 @@ void QUmlProfile::addMetamodelReference(QUmlPackageImport *metamodelReference)
 
     if (!_metamodelReferences.contains(metamodelReference)) {
         _metamodelReferences.insert(metamodelReference);
-        if (metamodelReference && metamodelReference->asQObject() && this->asQObject())
-            QObject::connect(metamodelReference->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeMetamodelReference(QObject *)));
-        metamodelReference->asQObject()->setParent(this->asQObject());
+        if (metamodelReference && metamodelReference->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(metamodelReference->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeMetamodelReference(QObject *)));
+        metamodelReference->asQModelingObject()->setParent(this->asQModelingObject());
 
         // Adjust subsetted properties
         addPackageImport(metamodelReference);
@@ -200,68 +198,11 @@ void QUmlProfile::removeMetamodelReference(QUmlPackageImport *metamodelReference
 
     if (_metamodelReferences.contains(metamodelReference)) {
         _metamodelReferences.remove(metamodelReference);
-        if (metamodelReference->asQObject())
-            metamodelReference->asQObject()->setParent(0);
+        if (metamodelReference->asQModelingObject())
+            metamodelReference->asQModelingObject()->setParent(0);
 
         // Adjust subsetted properties
         removePackageImport(metamodelReference);
     }
-}
-
-void QUmlProfile::setGroupProperties()
-{
-    const QMetaObject *metaObject = _qObject->metaObject();
-
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("elementImports"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("importedMembers"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("members"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedMembers"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedRules"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("packageImports"))));
-    _groupProperties.insert(QStringLiteral("QUmlParameterableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owningTemplateParameter"))));
-    _groupProperties.insert(QStringLiteral("QUmlParameterableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("templateParameter"))));
-    _groupProperties.insert(QStringLiteral("QUmlPackageableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
-    _groupProperties.insert(QStringLiteral("QUmlTemplateableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedTemplateSignature"))));
-    _groupProperties.insert(QStringLiteral("QUmlTemplateableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("templateBindings"))));
-    _groupProperties.insert(QStringLiteral("QUmlPackage"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("URI"))));
-    _groupProperties.insert(QStringLiteral("QUmlPackage"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nestedPackages"))));
-    _groupProperties.insert(QStringLiteral("QUmlPackage"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nestingPackage"))));
-    _groupProperties.insert(QStringLiteral("QUmlPackage"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedStereotypes"))));
-    _groupProperties.insert(QStringLiteral("QUmlPackage"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedTypes"))));
-    _groupProperties.insert(QStringLiteral("QUmlPackage"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("packageMerges"))));
-    _groupProperties.insert(QStringLiteral("QUmlPackage"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("packagedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlPackage"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("profileApplications"))));
-    _groupProperties.insert(QStringLiteral("QUmlProfile"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("metaclassReferences"))));
-    _groupProperties.insert(QStringLiteral("QUmlProfile"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("metamodelReferences"))));
-}
-
-void QUmlProfile::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProfile")][QStringLiteral("metaclassReferences")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProfile")][QStringLiteral("metaclassReferences")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlProfile");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProfile")][QStringLiteral("metaclassReferences")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProfile")][QStringLiteral("metaclassReferences")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProfile")][QStringLiteral("metaclassReferences")][QtModeling::DocumentationRole] = QStringLiteral("References a metaclass that may be extended.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProfile")][QStringLiteral("metaclassReferences")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProfile")][QStringLiteral("metaclassReferences")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Namespace-elementImport");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProfile")][QStringLiteral("metaclassReferences")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProfile")][QStringLiteral("metamodelReferences")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProfile")][QStringLiteral("metamodelReferences")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlProfile");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProfile")][QStringLiteral("metamodelReferences")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProfile")][QStringLiteral("metamodelReferences")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProfile")][QStringLiteral("metamodelReferences")][QtModeling::DocumentationRole] = QStringLiteral("References a package containing (directly or indirectly) metaclasses that may be extended.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProfile")][QStringLiteral("metamodelReferences")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProfile")][QStringLiteral("metamodelReferences")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Namespace-packageImport");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProfile")][QStringLiteral("metamodelReferences")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
 }
 

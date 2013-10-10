@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlliteralintegerobject_p.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlLiteralInteger>
 #include <QtUml/QUmlComment>
@@ -54,16 +55,18 @@
 
 QT_BEGIN_NAMESPACE
 
-QUmlLiteralIntegerObject::QUmlLiteralIntegerObject(QUmlLiteralInteger *qModelingObject)
+QUmlLiteralIntegerObject::QUmlLiteralIntegerObject(QUmlLiteralInteger *qModelingElement)
 {
-    setProperty("modelingObject", QVariant::fromValue(static_cast<QModelingObject *>(qModelingObject)));
+    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(qModelingElement)));
+    setGroupProperties();
+    setPropertyData();
 }
 
 QUmlLiteralIntegerObject::~QUmlLiteralIntegerObject()
 {
     if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingobjectproperty_cast<QUmlLiteralInteger *>(this)->deletingFromQObject = true;
-        delete qmodelingobjectproperty_cast<QUmlComment *>(this);
+        qmodelingelementproperty_cast<QUmlLiteralInteger *>(this)->deletingFromQModelingObject = true;
+        delete qmodelingelementproperty_cast<QUmlComment *>(this);
     }
 }
 
@@ -72,25 +75,25 @@ QUmlLiteralIntegerObject::~QUmlLiteralIntegerObject()
 const QSet<QObject *> QUmlLiteralIntegerObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlLiteralInteger *>(this)->ownedComments())
-        set.insert(element->asQObject());
+    foreach (QUmlComment *element, qmodelingelementproperty_cast<QUmlLiteralInteger *>(this)->ownedComments())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlLiteralIntegerObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlLiteralInteger *>(this)->ownedElements())
-        set.insert(element->asQObject());
+    foreach (QUmlElement *element, qmodelingelementproperty_cast<QUmlLiteralInteger *>(this)->ownedElements())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 QObject *QUmlLiteralIntegerObject::owner() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlLiteralInteger *>(this)->owner())
+    if (!qmodelingelementproperty_cast<QUmlLiteralInteger *>(this)->owner())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlLiteralInteger *>(this)->owner()->asQObject();
+        return qmodelingelementproperty_cast<QUmlLiteralInteger *>(this)->owner()->asQModelingObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -98,77 +101,77 @@ QObject *QUmlLiteralIntegerObject::owner() const
 const QSet<QObject *> QUmlLiteralIntegerObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlLiteralInteger *>(this)->clientDependencies())
-        set.insert(element->asQObject());
+    foreach (QUmlDependency *element, qmodelingelementproperty_cast<QUmlLiteralInteger *>(this)->clientDependencies())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 QString QUmlLiteralIntegerObject::name() const
 {
-    return qmodelingobjectproperty_cast<QUmlLiteralInteger *>(this)->name();
+    return qmodelingelementproperty_cast<QUmlLiteralInteger *>(this)->name();
 }
 
 QObject *QUmlLiteralIntegerObject::nameExpression() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlLiteralInteger *>(this)->nameExpression())
+    if (!qmodelingelementproperty_cast<QUmlLiteralInteger *>(this)->nameExpression())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlLiteralInteger *>(this)->nameExpression()->asQObject();
+        return qmodelingelementproperty_cast<QUmlLiteralInteger *>(this)->nameExpression()->asQModelingObject();
 }
 
 QObject *QUmlLiteralIntegerObject::namespace_() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlLiteralInteger *>(this)->namespace_())
+    if (!qmodelingelementproperty_cast<QUmlLiteralInteger *>(this)->namespace_())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlLiteralInteger *>(this)->namespace_()->asQObject();
+        return qmodelingelementproperty_cast<QUmlLiteralInteger *>(this)->namespace_()->asQModelingObject();
 }
 
 QString QUmlLiteralIntegerObject::qualifiedName() const
 {
-    return qmodelingobjectproperty_cast<QUmlLiteralInteger *>(this)->qualifiedName();
+    return qmodelingelementproperty_cast<QUmlLiteralInteger *>(this)->qualifiedName();
 }
 
 // OWNED ATTRIBUTES [TypedElement]
 
 QObject *QUmlLiteralIntegerObject::type() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlLiteralInteger *>(this)->type())
+    if (!qmodelingelementproperty_cast<QUmlLiteralInteger *>(this)->type())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlLiteralInteger *>(this)->type()->asQObject();
+        return qmodelingelementproperty_cast<QUmlLiteralInteger *>(this)->type()->asQModelingObject();
 }
 
 // OWNED ATTRIBUTES [ParameterableElement]
 
 QObject *QUmlLiteralIntegerObject::owningTemplateParameter() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlLiteralInteger *>(this)->owningTemplateParameter())
+    if (!qmodelingelementproperty_cast<QUmlLiteralInteger *>(this)->owningTemplateParameter())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlLiteralInteger *>(this)->owningTemplateParameter()->asQObject();
+        return qmodelingelementproperty_cast<QUmlLiteralInteger *>(this)->owningTemplateParameter()->asQModelingObject();
 }
 
 QObject *QUmlLiteralIntegerObject::templateParameter() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlLiteralInteger *>(this)->templateParameter())
+    if (!qmodelingelementproperty_cast<QUmlLiteralInteger *>(this)->templateParameter())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlLiteralInteger *>(this)->templateParameter()->asQObject();
+        return qmodelingelementproperty_cast<QUmlLiteralInteger *>(this)->templateParameter()->asQModelingObject();
 }
 
 // OWNED ATTRIBUTES [PackageableElement]
 
 QtUml::VisibilityKind QUmlLiteralIntegerObject::visibility() const
 {
-    return qmodelingobjectproperty_cast<QUmlLiteralInteger *>(this)->visibility();
+    return qmodelingelementproperty_cast<QUmlLiteralInteger *>(this)->visibility();
 }
 
 // OWNED ATTRIBUTES [LiteralInteger]
 
 int QUmlLiteralIntegerObject::value() const
 {
-    return qmodelingobjectproperty_cast<QUmlLiteralInteger *>(this)->value();
+    return qmodelingelementproperty_cast<QUmlLiteralInteger *>(this)->value();
 }
 
 // OPERATIONS [Element]
@@ -176,14 +179,14 @@ int QUmlLiteralIntegerObject::value() const
 QSet<QObject *> QUmlLiteralIntegerObject::allOwnedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlLiteralInteger *>(this)->allOwnedElements())
-        set.insert(element->asQObject());
+    foreach (QUmlElement *element, qmodelingelementproperty_cast<QUmlLiteralInteger *>(this)->allOwnedElements())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 bool QUmlLiteralIntegerObject::mustBeOwned() const
 {
-    return qmodelingobjectproperty_cast<QUmlLiteralInteger *>(this)->mustBeOwned();
+    return qmodelingelementproperty_cast<QUmlLiteralInteger *>(this)->mustBeOwned();
 }
 
 // OPERATIONS [NamedElement]
@@ -191,179 +194,233 @@ bool QUmlLiteralIntegerObject::mustBeOwned() const
 QList<QObject *> QUmlLiteralIntegerObject::allNamespaces() const
 {
     QList<QObject *> set;
-    foreach (QUmlNamespace *element, qmodelingobjectproperty_cast<QUmlLiteralInteger *>(this)->allNamespaces())
-        set.append(element->asQObject());
+    foreach (QUmlNamespace *element, qmodelingelementproperty_cast<QUmlLiteralInteger *>(this)->allNamespaces())
+        set.append(element->asQModelingObject());
     return set;
 }
 
 QSet<QObject *> QUmlLiteralIntegerObject::allOwningPackages() const
 {
     QSet<QObject *> set;
-    foreach (QUmlPackage *element, qmodelingobjectproperty_cast<QUmlLiteralInteger *>(this)->allOwningPackages())
-        set.insert(element->asQObject());
+    foreach (QUmlPackage *element, qmodelingelementproperty_cast<QUmlLiteralInteger *>(this)->allOwningPackages())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 bool QUmlLiteralIntegerObject::isDistinguishableFrom(QObject *n, QObject *ns) const
 {
-    return qmodelingobjectproperty_cast<QUmlLiteralInteger *>(this)->isDistinguishableFrom(qmodelingobjectproperty_cast<QUmlNamedElement *>(n), qmodelingobjectproperty_cast<QUmlNamespace *>(ns));
+    return qmodelingelementproperty_cast<QUmlLiteralInteger *>(this)->isDistinguishableFrom(qmodelingelementproperty_cast<QUmlNamedElement *>(n), qmodelingelementproperty_cast<QUmlNamespace *>(ns));
 }
 
 QString QUmlLiteralIntegerObject::separator() const
 {
-    return qmodelingobjectproperty_cast<QUmlLiteralInteger *>(this)->separator();
+    return qmodelingelementproperty_cast<QUmlLiteralInteger *>(this)->separator();
 }
 
 // OPERATIONS [ParameterableElement]
 
 bool QUmlLiteralIntegerObject::isTemplateParameter() const
 {
-    return qmodelingobjectproperty_cast<QUmlLiteralInteger *>(this)->isTemplateParameter();
+    return qmodelingelementproperty_cast<QUmlLiteralInteger *>(this)->isTemplateParameter();
 }
 
 // OPERATIONS [ValueSpecification]
 
 bool QUmlLiteralIntegerObject::booleanValue() const
 {
-    return qmodelingobjectproperty_cast<QUmlLiteralInteger *>(this)->booleanValue();
+    return qmodelingelementproperty_cast<QUmlLiteralInteger *>(this)->booleanValue();
 }
 
 bool QUmlLiteralIntegerObject::isCompatibleWith(QObject *p) const
 {
-    return qmodelingobjectproperty_cast<QUmlLiteralInteger *>(this)->isCompatibleWith(qmodelingobjectproperty_cast<QUmlParameterableElement *>(p));
+    return qmodelingelementproperty_cast<QUmlLiteralInteger *>(this)->isCompatibleWith(qmodelingelementproperty_cast<QUmlParameterableElement *>(p));
 }
 
 bool QUmlLiteralIntegerObject::isNull() const
 {
-    return qmodelingobjectproperty_cast<QUmlLiteralInteger *>(this)->isNull();
+    return qmodelingelementproperty_cast<QUmlLiteralInteger *>(this)->isNull();
 }
 
 double QUmlLiteralIntegerObject::realValue() const
 {
-    return qmodelingobjectproperty_cast<QUmlLiteralInteger *>(this)->realValue();
+    return qmodelingelementproperty_cast<QUmlLiteralInteger *>(this)->realValue();
 }
 
 QString QUmlLiteralIntegerObject::stringValue() const
 {
-    return qmodelingobjectproperty_cast<QUmlLiteralInteger *>(this)->stringValue();
+    return qmodelingelementproperty_cast<QUmlLiteralInteger *>(this)->stringValue();
 }
 
 int QUmlLiteralIntegerObject::unlimitedValue() const
 {
-    return qmodelingobjectproperty_cast<QUmlLiteralInteger *>(this)->unlimitedValue();
+    return qmodelingelementproperty_cast<QUmlLiteralInteger *>(this)->unlimitedValue();
 }
 
 // OPERATIONS [LiteralInteger]
 
 int QUmlLiteralIntegerObject::integerValue() const
 {
-    return qmodelingobjectproperty_cast<QUmlLiteralInteger *>(this)->integerValue();
+    return qmodelingelementproperty_cast<QUmlLiteralInteger *>(this)->integerValue();
 }
 
 bool QUmlLiteralIntegerObject::isComputable() const
 {
-    return qmodelingobjectproperty_cast<QUmlLiteralInteger *>(this)->isComputable();
+    return qmodelingelementproperty_cast<QUmlLiteralInteger *>(this)->isComputable();
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Element]
 
 void QUmlLiteralIntegerObject::addOwnedComment(QObject *ownedComment)
 {
-    qmodelingobjectproperty_cast<QUmlLiteralInteger *>(this)->addOwnedComment(qmodelingobjectproperty_cast<QUmlComment *>(ownedComment));
+    qmodelingelementproperty_cast<QUmlLiteralInteger *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
 }
 
 void QUmlLiteralIntegerObject::removeOwnedComment(QObject *ownedComment)
 {
-    qmodelingobjectproperty_cast<QUmlLiteralInteger *>(this)->removeOwnedComment(qmodelingobjectproperty_cast<QUmlComment *>(ownedComment));
+    qmodelingelementproperty_cast<QUmlLiteralInteger *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
 }
 
 void QUmlLiteralIntegerObject::addOwnedElement(QObject *ownedElement)
 {
-    qmodelingobjectproperty_cast<QUmlLiteralInteger *>(this)->addOwnedElement(qmodelingobjectproperty_cast<QUmlElement *>(ownedElement));
+    qmodelingelementproperty_cast<QUmlLiteralInteger *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
 }
 
 void QUmlLiteralIntegerObject::removeOwnedElement(QObject *ownedElement)
 {
-    qmodelingobjectproperty_cast<QUmlLiteralInteger *>(this)->removeOwnedElement(qmodelingobjectproperty_cast<QUmlElement *>(ownedElement));
+    qmodelingelementproperty_cast<QUmlLiteralInteger *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
 }
 
 void QUmlLiteralIntegerObject::setOwner(QObject *owner)
 {
-    qmodelingobjectproperty_cast<QUmlLiteralInteger *>(this)->setOwner(qmodelingobjectproperty_cast<QUmlElement *>(owner));
+    qmodelingelementproperty_cast<QUmlLiteralInteger *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [NamedElement]
 
 void QUmlLiteralIntegerObject::addClientDependency(QObject *clientDependency)
 {
-    qmodelingobjectproperty_cast<QUmlLiteralInteger *>(this)->addClientDependency(qmodelingobjectproperty_cast<QUmlDependency *>(clientDependency));
+    qmodelingelementproperty_cast<QUmlLiteralInteger *>(this)->addClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
 }
 
 void QUmlLiteralIntegerObject::removeClientDependency(QObject *clientDependency)
 {
-    qmodelingobjectproperty_cast<QUmlLiteralInteger *>(this)->removeClientDependency(qmodelingobjectproperty_cast<QUmlDependency *>(clientDependency));
+    qmodelingelementproperty_cast<QUmlLiteralInteger *>(this)->removeClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
 }
 
 void QUmlLiteralIntegerObject::setName(QString name)
 {
-    qmodelingobjectproperty_cast<QUmlLiteralInteger *>(this)->setName(name);
+    qmodelingelementproperty_cast<QUmlLiteralInteger *>(this)->setName(name);
 }
 
 void QUmlLiteralIntegerObject::setNameExpression(QObject *nameExpression)
 {
-    qmodelingobjectproperty_cast<QUmlLiteralInteger *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
+    qmodelingelementproperty_cast<QUmlLiteralInteger *>(this)->setNameExpression(qmodelingelementproperty_cast<QUmlStringExpression *>(nameExpression));
 }
 
 void QUmlLiteralIntegerObject::setNamespace(QObject *namespace_)
 {
-    qmodelingobjectproperty_cast<QUmlLiteralInteger *>(this)->setNamespace(qmodelingobjectproperty_cast<QUmlNamespace *>(namespace_));
+    qmodelingelementproperty_cast<QUmlLiteralInteger *>(this)->setNamespace(qmodelingelementproperty_cast<QUmlNamespace *>(namespace_));
 }
 
 void QUmlLiteralIntegerObject::setQualifiedName(QString qualifiedName)
 {
-    qmodelingobjectproperty_cast<QUmlLiteralInteger *>(this)->setQualifiedName(qualifiedName);
+    qmodelingelementproperty_cast<QUmlLiteralInteger *>(this)->setQualifiedName(qualifiedName);
 }
 // SLOTS FOR OWNED ATTRIBUTES [TypedElement]
 
 void QUmlLiteralIntegerObject::setType(QObject *type)
 {
-    qmodelingobjectproperty_cast<QUmlLiteralInteger *>(this)->setType(qmodelingobjectproperty_cast<QUmlType *>(type));
+    qmodelingelementproperty_cast<QUmlLiteralInteger *>(this)->setType(qmodelingelementproperty_cast<QUmlType *>(type));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ParameterableElement]
 
 void QUmlLiteralIntegerObject::setOwningTemplateParameter(QObject *owningTemplateParameter)
 {
-    qmodelingobjectproperty_cast<QUmlLiteralInteger *>(this)->setOwningTemplateParameter(qmodelingobjectproperty_cast<QUmlTemplateParameter *>(owningTemplateParameter));
+    qmodelingelementproperty_cast<QUmlLiteralInteger *>(this)->setOwningTemplateParameter(qmodelingelementproperty_cast<QUmlTemplateParameter *>(owningTemplateParameter));
 }
 
 void QUmlLiteralIntegerObject::setTemplateParameter(QObject *templateParameter)
 {
-    qmodelingobjectproperty_cast<QUmlLiteralInteger *>(this)->setTemplateParameter(qmodelingobjectproperty_cast<QUmlTemplateParameter *>(templateParameter));
+    qmodelingelementproperty_cast<QUmlLiteralInteger *>(this)->setTemplateParameter(qmodelingelementproperty_cast<QUmlTemplateParameter *>(templateParameter));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [PackageableElement]
 
 void QUmlLiteralIntegerObject::setVisibility(QtUml::VisibilityKind visibility)
 {
-    qmodelingobjectproperty_cast<QUmlLiteralInteger *>(this)->setVisibility(visibility);
+    qmodelingelementproperty_cast<QUmlLiteralInteger *>(this)->setVisibility(visibility);
 }
 
 void QUmlLiteralIntegerObject::unsetVisibility()
 {
-    qmodelingobjectproperty_cast<QUmlLiteralInteger *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("visibility"));
+    Q_D(QModelingObject);
+    d->modifiedResettableProperties.removeAll(QStringLiteral("visibility"));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [LiteralInteger]
 
 void QUmlLiteralIntegerObject::setValue(int value)
 {
-    qmodelingobjectproperty_cast<QUmlLiteralInteger *>(this)->setValue(value);
+    qmodelingelementproperty_cast<QUmlLiteralInteger *>(this)->setValue(value);
 }
 
 void QUmlLiteralIntegerObject::unsetValue()
 {
-    qmodelingobjectproperty_cast<QUmlLiteralInteger *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("value"));
+    Q_D(QModelingObject);
+    d->modifiedResettableProperties.removeAll(QStringLiteral("value"));
+}
+
+
+void QUmlLiteralIntegerObject::setGroupProperties()
+{
+    Q_D(QModelingObject);
+    const QMetaObject *metaObject = this->metaObject();
+
+    d->propertyGroups << QStringLiteral("QObject");
+    d->groupProperties.insert(QStringLiteral("QObject"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("objectName"))));
+
+    d->propertyGroups << QStringLiteral("QUmlElement");
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
+
+    d->propertyGroups << QStringLiteral("QUmlNamedElement");
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
+
+    d->propertyGroups << QStringLiteral("QUmlTypedElement");
+    d->groupProperties.insert(QStringLiteral("QUmlTypedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("type"))));
+
+    d->propertyGroups << QStringLiteral("QUmlParameterableElement");
+    d->groupProperties.insert(QStringLiteral("QUmlParameterableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owningTemplateParameter"))));
+    d->groupProperties.insert(QStringLiteral("QUmlParameterableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("templateParameter"))));
+
+    d->propertyGroups << QStringLiteral("QUmlPackageableElement");
+    d->groupProperties.insert(QStringLiteral("QUmlPackageableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
+
+    d->propertyGroups << QStringLiteral("QUmlValueSpecification");
+
+    d->propertyGroups << QStringLiteral("QUmlLiteralSpecification");
+
+    d->propertyGroups << QStringLiteral("QUmlLiteralInteger");
+    d->groupProperties.insert(QStringLiteral("QUmlLiteralInteger"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("value"))));
+}
+
+void QUmlLiteralIntegerObject::setPropertyData()
+{
+    Q_DECLARE_METAPROPERTY_INFO(QUmlLiteralInteger, value, AggregationRole, QStringLiteral("none"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlLiteralInteger, value, PropertyClassRole, QStringLiteral("QUmlLiteralInteger"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlLiteralInteger, value, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlLiteralInteger, value, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlLiteralInteger, value, DocumentationRole, QStringLiteral("The specified Integer value."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlLiteralInteger, value, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlLiteralInteger, value, SubsettedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlLiteralInteger, value, OppositeEndRole, QStringLiteral(""));
+
 }
 
 QT_END_NAMESPACE

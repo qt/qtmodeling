@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlelementimportobject_p.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlElementImport>
 #include <QtUml/QUmlComment>
@@ -48,16 +49,18 @@
 
 QT_BEGIN_NAMESPACE
 
-QUmlElementImportObject::QUmlElementImportObject(QUmlElementImport *qModelingObject)
+QUmlElementImportObject::QUmlElementImportObject(QUmlElementImport *qModelingElement)
 {
-    setProperty("modelingObject", QVariant::fromValue(static_cast<QModelingObject *>(qModelingObject)));
+    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(qModelingElement)));
+    setGroupProperties();
+    setPropertyData();
 }
 
 QUmlElementImportObject::~QUmlElementImportObject()
 {
     if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingobjectproperty_cast<QUmlElementImport *>(this)->deletingFromQObject = true;
-        delete qmodelingobjectproperty_cast<QUmlComment *>(this);
+        qmodelingelementproperty_cast<QUmlElementImport *>(this)->deletingFromQModelingObject = true;
+        delete qmodelingelementproperty_cast<QUmlComment *>(this);
     }
 }
 
@@ -66,25 +69,25 @@ QUmlElementImportObject::~QUmlElementImportObject()
 const QSet<QObject *> QUmlElementImportObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlElementImport *>(this)->ownedComments())
-        set.insert(element->asQObject());
+    foreach (QUmlComment *element, qmodelingelementproperty_cast<QUmlElementImport *>(this)->ownedComments())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlElementImportObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlElementImport *>(this)->ownedElements())
-        set.insert(element->asQObject());
+    foreach (QUmlElement *element, qmodelingelementproperty_cast<QUmlElementImport *>(this)->ownedElements())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 QObject *QUmlElementImportObject::owner() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlElementImport *>(this)->owner())
+    if (!qmodelingelementproperty_cast<QUmlElementImport *>(this)->owner())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlElementImport *>(this)->owner()->asQObject();
+        return qmodelingelementproperty_cast<QUmlElementImport *>(this)->owner()->asQModelingObject();
 }
 
 // OWNED ATTRIBUTES [Relationship]
@@ -92,8 +95,8 @@ QObject *QUmlElementImportObject::owner() const
 const QSet<QObject *> QUmlElementImportObject::relatedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlElementImport *>(this)->relatedElements())
-        set.insert(element->asQObject());
+    foreach (QUmlElement *element, qmodelingelementproperty_cast<QUmlElementImport *>(this)->relatedElements())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
@@ -102,16 +105,16 @@ const QSet<QObject *> QUmlElementImportObject::relatedElements() const
 const QSet<QObject *> QUmlElementImportObject::sources() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlElementImport *>(this)->sources())
-        set.insert(element->asQObject());
+    foreach (QUmlElement *element, qmodelingelementproperty_cast<QUmlElementImport *>(this)->sources())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlElementImportObject::targets() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlElementImport *>(this)->targets())
-        set.insert(element->asQObject());
+    foreach (QUmlElement *element, qmodelingelementproperty_cast<QUmlElementImport *>(this)->targets())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
@@ -119,28 +122,28 @@ const QSet<QObject *> QUmlElementImportObject::targets() const
 
 QString QUmlElementImportObject::alias() const
 {
-    return qmodelingobjectproperty_cast<QUmlElementImport *>(this)->alias();
+    return qmodelingelementproperty_cast<QUmlElementImport *>(this)->alias();
 }
 
 QObject *QUmlElementImportObject::importedElement() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlElementImport *>(this)->importedElement())
+    if (!qmodelingelementproperty_cast<QUmlElementImport *>(this)->importedElement())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlElementImport *>(this)->importedElement()->asQObject();
+        return qmodelingelementproperty_cast<QUmlElementImport *>(this)->importedElement()->asQModelingObject();
 }
 
 QObject *QUmlElementImportObject::importingNamespace() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlElementImport *>(this)->importingNamespace())
+    if (!qmodelingelementproperty_cast<QUmlElementImport *>(this)->importingNamespace())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlElementImport *>(this)->importingNamespace()->asQObject();
+        return qmodelingelementproperty_cast<QUmlElementImport *>(this)->importingNamespace()->asQModelingObject();
 }
 
 QtUml::VisibilityKind QUmlElementImportObject::visibility() const
 {
-    return qmodelingobjectproperty_cast<QUmlElementImport *>(this)->visibility();
+    return qmodelingelementproperty_cast<QUmlElementImport *>(this)->visibility();
 }
 
 // OPERATIONS [Element]
@@ -148,109 +151,178 @@ QtUml::VisibilityKind QUmlElementImportObject::visibility() const
 QSet<QObject *> QUmlElementImportObject::allOwnedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlElementImport *>(this)->allOwnedElements())
-        set.insert(element->asQObject());
+    foreach (QUmlElement *element, qmodelingelementproperty_cast<QUmlElementImport *>(this)->allOwnedElements())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 bool QUmlElementImportObject::mustBeOwned() const
 {
-    return qmodelingobjectproperty_cast<QUmlElementImport *>(this)->mustBeOwned();
+    return qmodelingelementproperty_cast<QUmlElementImport *>(this)->mustBeOwned();
 }
 
 // OPERATIONS [ElementImport]
 
 QString QUmlElementImportObject::getName() const
 {
-    return qmodelingobjectproperty_cast<QUmlElementImport *>(this)->getName();
+    return qmodelingelementproperty_cast<QUmlElementImport *>(this)->getName();
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Element]
 
 void QUmlElementImportObject::addOwnedComment(QObject *ownedComment)
 {
-    qmodelingobjectproperty_cast<QUmlElementImport *>(this)->addOwnedComment(qmodelingobjectproperty_cast<QUmlComment *>(ownedComment));
+    qmodelingelementproperty_cast<QUmlElementImport *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
 }
 
 void QUmlElementImportObject::removeOwnedComment(QObject *ownedComment)
 {
-    qmodelingobjectproperty_cast<QUmlElementImport *>(this)->removeOwnedComment(qmodelingobjectproperty_cast<QUmlComment *>(ownedComment));
+    qmodelingelementproperty_cast<QUmlElementImport *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
 }
 
 void QUmlElementImportObject::addOwnedElement(QObject *ownedElement)
 {
-    qmodelingobjectproperty_cast<QUmlElementImport *>(this)->addOwnedElement(qmodelingobjectproperty_cast<QUmlElement *>(ownedElement));
+    qmodelingelementproperty_cast<QUmlElementImport *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
 }
 
 void QUmlElementImportObject::removeOwnedElement(QObject *ownedElement)
 {
-    qmodelingobjectproperty_cast<QUmlElementImport *>(this)->removeOwnedElement(qmodelingobjectproperty_cast<QUmlElement *>(ownedElement));
+    qmodelingelementproperty_cast<QUmlElementImport *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
 }
 
 void QUmlElementImportObject::setOwner(QObject *owner)
 {
-    qmodelingobjectproperty_cast<QUmlElementImport *>(this)->setOwner(qmodelingobjectproperty_cast<QUmlElement *>(owner));
+    qmodelingelementproperty_cast<QUmlElementImport *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Relationship]
 
 void QUmlElementImportObject::addRelatedElement(QObject *relatedElement)
 {
-    qmodelingobjectproperty_cast<QUmlElementImport *>(this)->addRelatedElement(qmodelingobjectproperty_cast<QUmlElement *>(relatedElement));
+    qmodelingelementproperty_cast<QUmlElementImport *>(this)->addRelatedElement(qmodelingelementproperty_cast<QUmlElement *>(relatedElement));
 }
 
 void QUmlElementImportObject::removeRelatedElement(QObject *relatedElement)
 {
-    qmodelingobjectproperty_cast<QUmlElementImport *>(this)->removeRelatedElement(qmodelingobjectproperty_cast<QUmlElement *>(relatedElement));
+    qmodelingelementproperty_cast<QUmlElementImport *>(this)->removeRelatedElement(qmodelingelementproperty_cast<QUmlElement *>(relatedElement));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [DirectedRelationship]
 
 void QUmlElementImportObject::addSource(QObject *source)
 {
-    qmodelingobjectproperty_cast<QUmlElementImport *>(this)->addSource(qmodelingobjectproperty_cast<QUmlElement *>(source));
+    qmodelingelementproperty_cast<QUmlElementImport *>(this)->addSource(qmodelingelementproperty_cast<QUmlElement *>(source));
 }
 
 void QUmlElementImportObject::removeSource(QObject *source)
 {
-    qmodelingobjectproperty_cast<QUmlElementImport *>(this)->removeSource(qmodelingobjectproperty_cast<QUmlElement *>(source));
+    qmodelingelementproperty_cast<QUmlElementImport *>(this)->removeSource(qmodelingelementproperty_cast<QUmlElement *>(source));
 }
 
 void QUmlElementImportObject::addTarget(QObject *target)
 {
-    qmodelingobjectproperty_cast<QUmlElementImport *>(this)->addTarget(qmodelingobjectproperty_cast<QUmlElement *>(target));
+    qmodelingelementproperty_cast<QUmlElementImport *>(this)->addTarget(qmodelingelementproperty_cast<QUmlElement *>(target));
 }
 
 void QUmlElementImportObject::removeTarget(QObject *target)
 {
-    qmodelingobjectproperty_cast<QUmlElementImport *>(this)->removeTarget(qmodelingobjectproperty_cast<QUmlElement *>(target));
+    qmodelingelementproperty_cast<QUmlElementImport *>(this)->removeTarget(qmodelingelementproperty_cast<QUmlElement *>(target));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ElementImport]
 
 void QUmlElementImportObject::setAlias(QString alias)
 {
-    qmodelingobjectproperty_cast<QUmlElementImport *>(this)->setAlias(alias);
+    qmodelingelementproperty_cast<QUmlElementImport *>(this)->setAlias(alias);
 }
 
 void QUmlElementImportObject::setImportedElement(QObject *importedElement)
 {
-    qmodelingobjectproperty_cast<QUmlElementImport *>(this)->setImportedElement(qmodelingobjectproperty_cast<QUmlPackageableElement *>(importedElement));
+    qmodelingelementproperty_cast<QUmlElementImport *>(this)->setImportedElement(qmodelingelementproperty_cast<QUmlPackageableElement *>(importedElement));
 }
 
 void QUmlElementImportObject::setImportingNamespace(QObject *importingNamespace)
 {
-    qmodelingobjectproperty_cast<QUmlElementImport *>(this)->setImportingNamespace(qmodelingobjectproperty_cast<QUmlNamespace *>(importingNamespace));
+    qmodelingelementproperty_cast<QUmlElementImport *>(this)->setImportingNamespace(qmodelingelementproperty_cast<QUmlNamespace *>(importingNamespace));
 }
 
 void QUmlElementImportObject::setVisibility(QtUml::VisibilityKind visibility)
 {
-    qmodelingobjectproperty_cast<QUmlElementImport *>(this)->setVisibility(visibility);
+    qmodelingelementproperty_cast<QUmlElementImport *>(this)->setVisibility(visibility);
 }
 
 void QUmlElementImportObject::unsetVisibility()
 {
-    qmodelingobjectproperty_cast<QUmlElementImport *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("visibility"));
+    Q_D(QModelingObject);
+    d->modifiedResettableProperties.removeAll(QStringLiteral("visibility"));
+}
+
+
+void QUmlElementImportObject::setGroupProperties()
+{
+    Q_D(QModelingObject);
+    const QMetaObject *metaObject = this->metaObject();
+
+    d->propertyGroups << QStringLiteral("QObject");
+    d->groupProperties.insert(QStringLiteral("QObject"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("objectName"))));
+
+    d->propertyGroups << QStringLiteral("QUmlElement");
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
+
+    d->propertyGroups << QStringLiteral("QUmlRelationship");
+    d->groupProperties.insert(QStringLiteral("QUmlRelationship"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("relatedElements"))));
+
+    d->propertyGroups << QStringLiteral("QUmlDirectedRelationship");
+    d->groupProperties.insert(QStringLiteral("QUmlDirectedRelationship"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("sources"))));
+    d->groupProperties.insert(QStringLiteral("QUmlDirectedRelationship"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("targets"))));
+
+    d->propertyGroups << QStringLiteral("QUmlElementImport");
+    d->groupProperties.insert(QStringLiteral("QUmlElementImport"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("alias"))));
+    d->groupProperties.insert(QStringLiteral("QUmlElementImport"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("importedElement"))));
+    d->groupProperties.insert(QStringLiteral("QUmlElementImport"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("importingNamespace"))));
+    d->groupProperties.insert(QStringLiteral("QUmlElementImport"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
+}
+
+void QUmlElementImportObject::setPropertyData()
+{
+    Q_DECLARE_METAPROPERTY_INFO(QUmlElementImport, alias, AggregationRole, QStringLiteral("none"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlElementImport, alias, PropertyClassRole, QStringLiteral("QUmlElementImport"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlElementImport, alias, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlElementImport, alias, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlElementImport, alias, DocumentationRole, QStringLiteral("Specifies the name that should be added to the namespace of the importing package in lieu of the name of the imported packagable element. The aliased name must not clash with any other member name in the importing package. By default, no alias is used."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlElementImport, alias, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlElementImport, alias, SubsettedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlElementImport, alias, OppositeEndRole, QStringLiteral(""));
+
+    Q_DECLARE_METAPROPERTY_INFO(QUmlElementImport, importedElement, AggregationRole, QStringLiteral("none"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlElementImport, importedElement, PropertyClassRole, QStringLiteral("QUmlElementImport"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlElementImport, importedElement, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlElementImport, importedElement, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlElementImport, importedElement, DocumentationRole, QStringLiteral("Specifies the PackageableElement whose name is to be added to a Namespace."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlElementImport, importedElement, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlElementImport, importedElement, SubsettedPropertiesRole, QStringLiteral("DirectedRelationship-target"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlElementImport, importedElement, OppositeEndRole, QStringLiteral(""));
+
+    Q_DECLARE_METAPROPERTY_INFO(QUmlElementImport, importingNamespace, AggregationRole, QStringLiteral("none"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlElementImport, importingNamespace, PropertyClassRole, QStringLiteral("QUmlElementImport"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlElementImport, importingNamespace, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlElementImport, importingNamespace, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlElementImport, importingNamespace, DocumentationRole, QStringLiteral("Specifies the Namespace that imports a PackageableElement from another Package."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlElementImport, importingNamespace, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlElementImport, importingNamespace, SubsettedPropertiesRole, QStringLiteral("Element-owner DirectedRelationship-source"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlElementImport, importingNamespace, OppositeEndRole, QStringLiteral("Namespace-elementImport"));
+
+    Q_DECLARE_METAPROPERTY_INFO(QUmlElementImport, visibility, AggregationRole, QStringLiteral("none"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlElementImport, visibility, PropertyClassRole, QStringLiteral("QUmlElementImport"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlElementImport, visibility, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlElementImport, visibility, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlElementImport, visibility, DocumentationRole, QStringLiteral("Specifies the visibility of the imported PackageableElement within the importing Package. The default visibility is the same as that of the imported element. If the imported element does not have a visibility, it is possible to add visibility to the element import."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlElementImport, visibility, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlElementImport, visibility, SubsettedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlElementImport, visibility, OppositeEndRole, QStringLiteral(""));
+
 }
 
 QT_END_NAMESPACE

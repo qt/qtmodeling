@@ -45,7 +45,6 @@
 
 #include <QtUml/QUmlObjectNode>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -57,10 +56,10 @@ class QUmlParameter;
 class Q_UML_EXPORT QUmlActivityParameterNode : public QUmlObjectNode
 {
 public:
-    explicit QUmlActivityParameterNode(bool createQObject = true);
+    explicit QUmlActivityParameterNode(bool createQModelingObject = true);
     virtual ~QUmlActivityParameterNode();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
     QUmlParameter *parameter() const;
@@ -68,9 +67,6 @@ public:
 
 protected:
     QUmlParameter *_parameter;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

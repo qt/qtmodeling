@@ -47,7 +47,6 @@
 #include <QtUml/QUmlPackageableElement>
 #include <QtUml/QUmlDeploymentTarget>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -61,10 +60,10 @@ class QUmlValueSpecification;
 class Q_UML_EXPORT QUmlInstanceSpecification : public QUmlDeployedArtifact, public QUmlPackageableElement, public QUmlDeploymentTarget
 {
 public:
-    explicit QUmlInstanceSpecification(bool createQObject = true);
+    explicit QUmlInstanceSpecification(bool createQModelingObject = true);
     virtual ~QUmlInstanceSpecification();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
     const QSet<QUmlClassifier *> classifiers() const;
@@ -80,9 +79,6 @@ protected:
     QSet<QUmlClassifier *> _classifiers;
     QSet<QUmlSlot *> _slots_;
     QUmlValueSpecification *_specification;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

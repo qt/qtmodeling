@@ -69,25 +69,23 @@
 
     \brief A package can have one or more profile applications to indicate which profiles have been applied. Because a profile is a package, it is possible to apply a profile not only to packages, but also to profiles.Package specializes TemplateableElement and PackageableElement specializes ParameterableElement to specify that a package can be used as a template and a PackageableElement as a template parameter.A package is used to group elements, and provides a namespace for the grouped elements.
  */
-QUmlPackage::QUmlPackage(bool createQObject) :
+QUmlPackage::QUmlPackage(bool createQModelingObject) :
     _nestingPackage(0)
 {
-    if (createQObject)
-        _qObject = new QUmlPackageObject(this);
-    setGroupProperties();
-    setPropertyData();
+    if (createQModelingObject)
+        _qModelingObject = qobject_cast<QModelingObject *>(new QUmlPackageObject(this));
 }
 
 QUmlPackage::~QUmlPackage()
 {
-    if (!deletingFromQObject) {
-        if (_qObject)
-            _qObject->setProperty("deletingFromModelingObject", true);
-        delete _qObject;
+    if (!deletingFromQModelingObject) {
+        if (_qModelingObject)
+            _qModelingObject->setProperty("deletingFromModelingObject", true);
+        delete _qModelingObject;
     }
 }
 
-QModelingObject *QUmlPackage::clone() const
+QModelingElement *QUmlPackage::clone() const
 {
     QUmlPackage *c = new QUmlPackage;
     foreach (QUmlComment *element, ownedComments())
@@ -201,8 +199,8 @@ void QUmlPackage::setNestingPackage(QUmlPackage *nestingPackage)
 
     if (_nestingPackage != nestingPackage) {
         _nestingPackage = nestingPackage;
-        if (nestingPackage && nestingPackage->asQObject() && this->asQObject())
-            QObject::connect(nestingPackage->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setNestingPackage()));
+        if (nestingPackage && nestingPackage->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(nestingPackage->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setNestingPackage()));
     }
 }
 
@@ -306,9 +304,9 @@ void QUmlPackage::addPackageMerge(QUmlPackageMerge *packageMerge)
 
     if (!_packageMerges.contains(packageMerge)) {
         _packageMerges.insert(packageMerge);
-        if (packageMerge && packageMerge->asQObject() && this->asQObject())
-            QObject::connect(packageMerge->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removePackageMerge(QObject *)));
-        packageMerge->asQObject()->setParent(this->asQObject());
+        if (packageMerge && packageMerge->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(packageMerge->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removePackageMerge(QObject *)));
+        packageMerge->asQModelingObject()->setParent(this->asQModelingObject());
 
         // Adjust subsetted properties
         addOwnedElement(packageMerge);
@@ -326,8 +324,8 @@ void QUmlPackage::removePackageMerge(QUmlPackageMerge *packageMerge)
 
     if (_packageMerges.contains(packageMerge)) {
         _packageMerges.remove(packageMerge);
-        if (packageMerge->asQObject())
-            packageMerge->asQObject()->setParent(0);
+        if (packageMerge->asQModelingObject())
+            packageMerge->asQModelingObject()->setParent(0);
 
         // Adjust subsetted properties
         removeOwnedElement(packageMerge);
@@ -355,9 +353,9 @@ void QUmlPackage::addPackagedElement(QUmlPackageableElement *packagedElement)
 
     if (!_packagedElements.contains(packagedElement)) {
         _packagedElements.insert(packagedElement);
-        if (packagedElement && packagedElement->asQObject() && this->asQObject())
-            QObject::connect(packagedElement->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removePackagedElement(QObject *)));
-        packagedElement->asQObject()->setParent(this->asQObject());
+        if (packagedElement && packagedElement->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(packagedElement->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removePackagedElement(QObject *)));
+        packagedElement->asQModelingObject()->setParent(this->asQModelingObject());
 
         // Adjust subsetted properties
         addOwnedMember(packagedElement);
@@ -370,8 +368,8 @@ void QUmlPackage::removePackagedElement(QUmlPackageableElement *packagedElement)
 
     if (_packagedElements.contains(packagedElement)) {
         _packagedElements.remove(packagedElement);
-        if (packagedElement->asQObject())
-            packagedElement->asQObject()->setParent(0);
+        if (packagedElement->asQModelingObject())
+            packagedElement->asQModelingObject()->setParent(0);
 
         // Adjust subsetted properties
         removeOwnedMember(packagedElement);
@@ -394,9 +392,9 @@ void QUmlPackage::addProfileApplication(QUmlProfileApplication *profileApplicati
 
     if (!_profileApplications.contains(profileApplication)) {
         _profileApplications.insert(profileApplication);
-        if (profileApplication && profileApplication->asQObject() && this->asQObject())
-            QObject::connect(profileApplication->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeProfileApplication(QObject *)));
-        profileApplication->asQObject()->setParent(this->asQObject());
+        if (profileApplication && profileApplication->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(profileApplication->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeProfileApplication(QObject *)));
+        profileApplication->asQModelingObject()->setParent(this->asQModelingObject());
 
         // Adjust subsetted properties
         addOwnedElement(profileApplication);
@@ -414,8 +412,8 @@ void QUmlPackage::removeProfileApplication(QUmlProfileApplication *profileApplic
 
     if (_profileApplications.contains(profileApplication)) {
         _profileApplications.remove(profileApplication);
-        if (profileApplication->asQObject())
-            profileApplication->asQObject()->setParent(0);
+        if (profileApplication->asQModelingObject())
+            profileApplication->asQModelingObject()->setParent(0);
 
         // Adjust subsetted properties
         removeOwnedElement(profileApplication);
@@ -478,115 +476,5 @@ QSet<QUmlPackageableElement *> QUmlPackage::visibleMembers() const
     qWarning("UmlPackage::visibleMembers(): to be implemented (operation)");
 
     return QSet<QUmlPackageableElement *> ();
-}
-
-void QUmlPackage::setGroupProperties()
-{
-    const QMetaObject *metaObject = _qObject->metaObject();
-
-    _groupProperties.insert(QStringLiteral("QObject"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("objectName"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("elementImports"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("importedMembers"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("members"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedMembers"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedRules"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("packageImports"))));
-    _groupProperties.insert(QStringLiteral("QUmlParameterableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owningTemplateParameter"))));
-    _groupProperties.insert(QStringLiteral("QUmlParameterableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("templateParameter"))));
-    _groupProperties.insert(QStringLiteral("QUmlPackageableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
-    _groupProperties.insert(QStringLiteral("QUmlTemplateableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedTemplateSignature"))));
-    _groupProperties.insert(QStringLiteral("QUmlTemplateableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("templateBindings"))));
-    _groupProperties.insert(QStringLiteral("QUmlPackage"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("URI"))));
-    _groupProperties.insert(QStringLiteral("QUmlPackage"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nestedPackages"))));
-    _groupProperties.insert(QStringLiteral("QUmlPackage"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nestingPackage"))));
-    _groupProperties.insert(QStringLiteral("QUmlPackage"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedStereotypes"))));
-    _groupProperties.insert(QStringLiteral("QUmlPackage"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedTypes"))));
-    _groupProperties.insert(QStringLiteral("QUmlPackage"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("packageMerges"))));
-    _groupProperties.insert(QStringLiteral("QUmlPackage"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("packagedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlPackage"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("profileApplications"))));
-}
-
-void QUmlPackage::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPackage")][QStringLiteral("URI")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPackage")][QStringLiteral("URI")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlPackage");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPackage")][QStringLiteral("URI")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPackage")][QStringLiteral("URI")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPackage")][QStringLiteral("URI")][QtModeling::DocumentationRole] = QStringLiteral("Provides an identifier for the package that can be used for many purposes. A URI is the universally unique identification of the package following the IETF URI specification, RFC 2396 http://www.ietf.org/rfc/rfc2396.txt and it must comply with those syntax rules.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPackage")][QStringLiteral("URI")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPackage")][QStringLiteral("URI")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPackage")][QStringLiteral("URI")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPackage")][QStringLiteral("nestedPackages")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPackage")][QStringLiteral("nestedPackages")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlPackage");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPackage")][QStringLiteral("nestedPackages")][QtModeling::IsDerivedRole] = true;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPackage")][QStringLiteral("nestedPackages")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPackage")][QStringLiteral("nestedPackages")][QtModeling::DocumentationRole] = QStringLiteral("References the packaged elements that are Packages.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPackage")][QStringLiteral("nestedPackages")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPackage")][QStringLiteral("nestedPackages")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Package-packagedElement");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPackage")][QStringLiteral("nestedPackages")][QtModeling::OppositeEndRole] = QStringLiteral("Package-nestingPackage");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPackage")][QStringLiteral("nestingPackage")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPackage")][QStringLiteral("nestingPackage")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlPackage");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPackage")][QStringLiteral("nestingPackage")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPackage")][QStringLiteral("nestingPackage")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPackage")][QStringLiteral("nestingPackage")][QtModeling::DocumentationRole] = QStringLiteral("References the Package that owns this Package.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPackage")][QStringLiteral("nestingPackage")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPackage")][QStringLiteral("nestingPackage")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("A_packagedElement_owningPackage-owningPackage");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPackage")][QStringLiteral("nestingPackage")][QtModeling::OppositeEndRole] = QStringLiteral("Package-nestedPackage");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPackage")][QStringLiteral("ownedStereotypes")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPackage")][QStringLiteral("ownedStereotypes")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlPackage");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPackage")][QStringLiteral("ownedStereotypes")][QtModeling::IsDerivedRole] = true;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPackage")][QStringLiteral("ownedStereotypes")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPackage")][QStringLiteral("ownedStereotypes")][QtModeling::DocumentationRole] = QStringLiteral("References the Stereotypes that are owned by the Package");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPackage")][QStringLiteral("ownedStereotypes")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPackage")][QStringLiteral("ownedStereotypes")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Package-packagedElement");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPackage")][QStringLiteral("ownedStereotypes")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPackage")][QStringLiteral("ownedTypes")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPackage")][QStringLiteral("ownedTypes")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlPackage");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPackage")][QStringLiteral("ownedTypes")][QtModeling::IsDerivedRole] = true;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPackage")][QStringLiteral("ownedTypes")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPackage")][QStringLiteral("ownedTypes")][QtModeling::DocumentationRole] = QStringLiteral("References the packaged elements that are Types.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPackage")][QStringLiteral("ownedTypes")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPackage")][QStringLiteral("ownedTypes")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Package-packagedElement");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPackage")][QStringLiteral("ownedTypes")][QtModeling::OppositeEndRole] = QStringLiteral("Type-package");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPackage")][QStringLiteral("packageMerges")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPackage")][QStringLiteral("packageMerges")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlPackage");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPackage")][QStringLiteral("packageMerges")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPackage")][QStringLiteral("packageMerges")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPackage")][QStringLiteral("packageMerges")][QtModeling::DocumentationRole] = QStringLiteral("References the PackageMerges that are owned by this Package.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPackage")][QStringLiteral("packageMerges")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPackage")][QStringLiteral("packageMerges")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("A_source_directedRelationship-directedRelationship Element-ownedElement");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPackage")][QStringLiteral("packageMerges")][QtModeling::OppositeEndRole] = QStringLiteral("PackageMerge-receivingPackage");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPackage")][QStringLiteral("packagedElements")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPackage")][QStringLiteral("packagedElements")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlPackage");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPackage")][QStringLiteral("packagedElements")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPackage")][QStringLiteral("packagedElements")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPackage")][QStringLiteral("packagedElements")][QtModeling::DocumentationRole] = QStringLiteral("Specifies the packageable elements that are owned by this Package.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPackage")][QStringLiteral("packagedElements")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPackage")][QStringLiteral("packagedElements")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Namespace-ownedMember");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPackage")][QStringLiteral("packagedElements")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPackage")][QStringLiteral("profileApplications")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPackage")][QStringLiteral("profileApplications")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlPackage");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPackage")][QStringLiteral("profileApplications")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPackage")][QStringLiteral("profileApplications")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPackage")][QStringLiteral("profileApplications")][QtModeling::DocumentationRole] = QStringLiteral("References the ProfileApplications that indicate which profiles have been applied to the Package.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPackage")][QStringLiteral("profileApplications")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPackage")][QStringLiteral("profileApplications")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("A_source_directedRelationship-directedRelationship Element-ownedElement");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPackage")][QStringLiteral("profileApplications")][QtModeling::OppositeEndRole] = QStringLiteral("ProfileApplication-applyingPackage");
-
 }
 

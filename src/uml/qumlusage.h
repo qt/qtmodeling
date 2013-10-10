@@ -45,7 +45,6 @@
 
 #include <QtUml/QUmlDependency>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -55,16 +54,13 @@ QT_MODULE(QtUml)
 class Q_UML_EXPORT QUmlUsage : public QUmlDependency
 {
 public:
-    explicit QUmlUsage(bool createQObject = true);
+    explicit QUmlUsage(bool createQModelingObject = true);
     virtual ~QUmlUsage();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
 
 protected:
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

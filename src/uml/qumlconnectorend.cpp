@@ -56,26 +56,24 @@
 
     \brief A connector end is an endpoint of a connector, which attaches the connector to a connectable element. Each connector end is part of one connector.
  */
-QUmlConnectorEnd::QUmlConnectorEnd(bool createQObject) :
+QUmlConnectorEnd::QUmlConnectorEnd(bool createQModelingObject) :
     _partWithPort(0),
     _role(0)
 {
-    if (createQObject)
-        _qObject = new QUmlConnectorEndObject(this);
-    setGroupProperties();
-    setPropertyData();
+    if (createQModelingObject)
+        _qModelingObject = qobject_cast<QModelingObject *>(new QUmlConnectorEndObject(this));
 }
 
 QUmlConnectorEnd::~QUmlConnectorEnd()
 {
-    if (!deletingFromQObject) {
-        if (_qObject)
-            _qObject->setProperty("deletingFromModelingObject", true);
-        delete _qObject;
+    if (!deletingFromQModelingObject) {
+        if (_qModelingObject)
+            _qModelingObject->setProperty("deletingFromModelingObject", true);
+        delete _qModelingObject;
     }
 }
 
-QModelingObject *QUmlConnectorEnd::clone() const
+QModelingElement *QUmlConnectorEnd::clone() const
 {
     QUmlConnectorEnd *c = new QUmlConnectorEnd;
     foreach (QUmlComment *element, ownedComments())
@@ -135,8 +133,8 @@ void QUmlConnectorEnd::setPartWithPort(QUmlProperty *partWithPort)
 
     if (_partWithPort != partWithPort) {
         _partWithPort = partWithPort;
-        if (partWithPort && partWithPort->asQObject() && this->asQObject())
-            QObject::connect(partWithPort->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setPartWithPort()));
+        if (partWithPort && partWithPort->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(partWithPort->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setPartWithPort()));
     }
 }
 
@@ -156,57 +154,8 @@ void QUmlConnectorEnd::setRole(QUmlConnectableElement *role)
 
     if (_role != role) {
         _role = role;
-        if (role && role->asQObject() && this->asQObject())
-            QObject::connect(role->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setRole()));
+        if (role && role->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(role->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setRole()));
     }
-}
-
-void QUmlConnectorEnd::setGroupProperties()
-{
-    const QMetaObject *metaObject = _qObject->metaObject();
-
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
-    _groupProperties.insert(QStringLiteral("QUmlMultiplicityElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isOrdered"))));
-    _groupProperties.insert(QStringLiteral("QUmlMultiplicityElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isUnique"))));
-    _groupProperties.insert(QStringLiteral("QUmlMultiplicityElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("lower"))));
-    _groupProperties.insert(QStringLiteral("QUmlMultiplicityElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("lowerValue"))));
-    _groupProperties.insert(QStringLiteral("QUmlMultiplicityElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("upper"))));
-    _groupProperties.insert(QStringLiteral("QUmlMultiplicityElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("upperValue"))));
-    _groupProperties.insert(QStringLiteral("QUmlConnectorEnd"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("definingEnd"))));
-    _groupProperties.insert(QStringLiteral("QUmlConnectorEnd"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("partWithPort"))));
-    _groupProperties.insert(QStringLiteral("QUmlConnectorEnd"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("role"))));
-}
-
-void QUmlConnectorEnd::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectorEnd")][QStringLiteral("definingEnd")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectorEnd")][QStringLiteral("definingEnd")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlConnectorEnd");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectorEnd")][QStringLiteral("definingEnd")][QtModeling::IsDerivedRole] = true;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectorEnd")][QStringLiteral("definingEnd")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectorEnd")][QStringLiteral("definingEnd")][QtModeling::DocumentationRole] = QStringLiteral("A derived association referencing the corresponding association end on the association which types the connector owing this connector end. This association is derived by selecting the association end at the same place in the ordering of association ends as this connector end.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectorEnd")][QStringLiteral("definingEnd")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectorEnd")][QStringLiteral("definingEnd")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectorEnd")][QStringLiteral("definingEnd")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectorEnd")][QStringLiteral("partWithPort")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectorEnd")][QStringLiteral("partWithPort")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlConnectorEnd");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectorEnd")][QStringLiteral("partWithPort")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectorEnd")][QStringLiteral("partWithPort")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectorEnd")][QStringLiteral("partWithPort")][QtModeling::DocumentationRole] = QStringLiteral("Indicates the role of the internal structure of a classifier with the port to which the connector end is attached.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectorEnd")][QStringLiteral("partWithPort")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectorEnd")][QStringLiteral("partWithPort")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectorEnd")][QStringLiteral("partWithPort")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectorEnd")][QStringLiteral("role")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectorEnd")][QStringLiteral("role")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlConnectorEnd");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectorEnd")][QStringLiteral("role")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectorEnd")][QStringLiteral("role")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectorEnd")][QStringLiteral("role")][QtModeling::DocumentationRole] = QStringLiteral("The connectable element attached at this connector end. When an instance of the containing classifier is created, a link may (depending on the multiplicities) be created to an instance of the classifier that types this connectable element.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectorEnd")][QStringLiteral("role")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectorEnd")][QStringLiteral("role")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectorEnd")][QStringLiteral("role")][QtModeling::OppositeEndRole] = QStringLiteral("ConnectableElement-end");
-
 }
 

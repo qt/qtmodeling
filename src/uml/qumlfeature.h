@@ -45,7 +45,6 @@
 
 #include <QtUml/QUmlRedefinableElement>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -59,7 +58,7 @@ class Q_UML_EXPORT QUmlFeature : public QUmlRedefinableElement
 public:
     virtual ~QUmlFeature();
 
-    Q_DECL_HIDDEN QModelingObject *clone() const;
+    Q_DECL_HIDDEN virtual QModelingElement *clone() const;
 
     // Owned attributes
     const QSet<QUmlClassifier *> featuringClassifiers() const;
@@ -73,9 +72,6 @@ protected:
 
     QSet<QUmlClassifier *> _featuringClassifiers;
     bool _isStatic;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

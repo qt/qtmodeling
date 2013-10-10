@@ -47,7 +47,6 @@
 
 
 #include <QtUml/QtUmlNamespace>
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -60,10 +59,10 @@ class QUmlInteractionOperand;
 class Q_UML_EXPORT QUmlCombinedFragment : public QUmlInteractionFragment
 {
 public:
-    explicit QUmlCombinedFragment(bool createQObject = true);
+    explicit QUmlCombinedFragment(bool createQModelingObject = true);
     virtual ~QUmlCombinedFragment();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
     const QSet<QUmlGate *> cfragmentGates() const;
@@ -79,9 +78,6 @@ protected:
     QSet<QUmlGate *> _cfragmentGates;
     QtUml::InteractionOperatorKind _interactionOperator;
     QList<QUmlInteractionOperand *> _operands;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

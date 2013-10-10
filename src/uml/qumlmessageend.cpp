@@ -59,15 +59,13 @@
 QUmlMessageEnd::QUmlMessageEnd() :
     _message(0)
 {
-    setGroupProperties();
-    setPropertyData();
 }
 
 QUmlMessageEnd::~QUmlMessageEnd()
 {
 }
 
-QModelingObject *QUmlMessageEnd::clone() const
+QModelingElement *QUmlMessageEnd::clone() const
 {
     QUmlMessageEnd *c = new QUmlMessageEnd;
     foreach (QUmlComment *element, ownedComments())
@@ -101,37 +99,8 @@ void QUmlMessageEnd::setMessage(QUmlMessage *message)
 
     if (_message != message) {
         _message = message;
-        if (message && message->asQObject() && this->asQObject())
-            QObject::connect(message->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setMessage()));
+        if (message && message->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(message->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setMessage()));
     }
-}
-
-void QUmlMessageEnd::setGroupProperties()
-{
-    const QMetaObject *metaObject = _qObject->metaObject();
-
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
-    _groupProperties.insert(QStringLiteral("QUmlMessageEnd"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("message"))));
-}
-
-void QUmlMessageEnd::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlMessageEnd")][QStringLiteral("message")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlMessageEnd")][QStringLiteral("message")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlMessageEnd");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlMessageEnd")][QStringLiteral("message")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlMessageEnd")][QStringLiteral("message")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlMessageEnd")][QStringLiteral("message")][QtModeling::DocumentationRole] = QStringLiteral("References a Message.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlMessageEnd")][QStringLiteral("message")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlMessageEnd")][QStringLiteral("message")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlMessageEnd")][QStringLiteral("message")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
 }
 

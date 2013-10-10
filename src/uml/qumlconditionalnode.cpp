@@ -75,27 +75,25 @@
 
     \brief A conditional node is a structured activity node that represents an exclusive choice among some number of alternatives.
  */
-QUmlConditionalNode::QUmlConditionalNode(bool createQObject) :
+QUmlConditionalNode::QUmlConditionalNode(bool createQModelingObject) :
     QUmlStructuredActivityNode(false),
     _isAssured(false),
     _isDeterminate(false)
 {
-    if (createQObject)
-        _qObject = new QUmlConditionalNodeObject(this);
-    setGroupProperties();
-    setPropertyData();
+    if (createQModelingObject)
+        _qModelingObject = qobject_cast<QModelingObject *>(new QUmlConditionalNodeObject(this));
 }
 
 QUmlConditionalNode::~QUmlConditionalNode()
 {
-    if (!deletingFromQObject) {
-        if (_qObject)
-            _qObject->setProperty("deletingFromModelingObject", true);
-        delete _qObject;
+    if (!deletingFromQModelingObject) {
+        if (_qModelingObject)
+            _qModelingObject->setProperty("deletingFromModelingObject", true);
+        delete _qModelingObject;
     }
 }
 
-QModelingObject *QUmlConditionalNode::clone() const
+QModelingElement *QUmlConditionalNode::clone() const
 {
     QUmlConditionalNode *c = new QUmlConditionalNode;
     foreach (QUmlComment *element, ownedComments())
@@ -170,9 +168,9 @@ void QUmlConditionalNode::addClause(QUmlClause *clause)
 
     if (!_clauses.contains(clause)) {
         _clauses.insert(clause);
-        if (clause && clause->asQObject() && this->asQObject())
-            QObject::connect(clause->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeClause(QObject *)));
-        clause->asQObject()->setParent(this->asQObject());
+        if (clause && clause->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(clause->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeClause(QObject *)));
+        clause->asQModelingObject()->setParent(this->asQModelingObject());
 
         // Adjust subsetted properties
         addOwnedElement(clause);
@@ -185,8 +183,8 @@ void QUmlConditionalNode::removeClause(QUmlClause *clause)
 
     if (_clauses.contains(clause)) {
         _clauses.remove(clause);
-        if (clause->asQObject())
-            clause->asQObject()->setParent(0);
+        if (clause->asQModelingObject())
+            clause->asQModelingObject()->setParent(0);
 
         // Adjust subsetted properties
         removeOwnedElement(clause);
@@ -209,7 +207,7 @@ void QUmlConditionalNode::setAssured(bool isAssured)
 
     if (_isAssured != isAssured) {
         _isAssured = isAssured;
-        _modifiedResettableProperties << QStringLiteral("isAssured");
+        _qModelingObject->modifiedResettableProperties() << QStringLiteral("isAssured");
     }
 }
 
@@ -229,7 +227,7 @@ void QUmlConditionalNode::setDeterminate(bool isDeterminate)
 
     if (_isDeterminate != isDeterminate) {
         _isDeterminate = isDeterminate;
-        _modifiedResettableProperties << QStringLiteral("isDeterminate");
+        _qModelingObject->modifiedResettableProperties() << QStringLiteral("isDeterminate");
     }
 }
 
@@ -249,9 +247,9 @@ void QUmlConditionalNode::addResult(QUmlOutputPin *result)
 
     if (!_results.contains(result)) {
         _results.append(result);
-        if (result && result->asQObject() && this->asQObject())
-            QObject::connect(result->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeResult(QObject *)));
-        result->asQObject()->setParent(this->asQObject());
+        if (result && result->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(result->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeResult(QObject *)));
+        result->asQModelingObject()->setParent(this->asQModelingObject());
     }
 }
 
@@ -261,100 +259,8 @@ void QUmlConditionalNode::removeResult(QUmlOutputPin *result)
 
     if (_results.contains(result)) {
         _results.removeAll(result);
-        if (result->asQObject())
-            result->asQObject()->setParent(0);
+        if (result->asQModelingObject())
+            result->asQModelingObject()->setParent(0);
     }
-}
-
-void QUmlConditionalNode::setGroupProperties()
-{
-    const QMetaObject *metaObject = _qObject->metaObject();
-
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
-    _groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isLeaf"))));
-    _groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinitionContexts"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inGroups"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inInterruptibleRegions"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inPartitions"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inStructuredNode"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("incomings"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("outgoings"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinedNodes"))));
-    _groupProperties.insert(QStringLiteral("QUmlExecutableNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("handlers"))));
-    _groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("context"))));
-    _groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inputs"))));
-    _groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isLocallyReentrant"))));
-    _groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("localPostconditions"))));
-    _groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("localPreconditions"))));
-    _groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("outputs"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("elementImports"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("importedMembers"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("members"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedMembers"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedRules"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("packageImports"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityGroup"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("containedEdges"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityGroup"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("containedNodes"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityGroup"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("subgroups"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityGroup"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("superGroup"))));
-    _groupProperties.insert(QStringLiteral("QUmlStructuredActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("activity"))));
-    _groupProperties.insert(QStringLiteral("QUmlStructuredActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("edges"))));
-    _groupProperties.insert(QStringLiteral("QUmlStructuredActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("mustIsolate"))));
-    _groupProperties.insert(QStringLiteral("QUmlStructuredActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nodes"))));
-    _groupProperties.insert(QStringLiteral("QUmlStructuredActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("structuredNodeInputs"))));
-    _groupProperties.insert(QStringLiteral("QUmlStructuredActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("variables"))));
-    _groupProperties.insert(QStringLiteral("QUmlConditionalNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clauses"))));
-    _groupProperties.insert(QStringLiteral("QUmlConditionalNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isAssured"))));
-    _groupProperties.insert(QStringLiteral("QUmlConditionalNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isDeterminate"))));
-    _groupProperties.insert(QStringLiteral("QUmlConditionalNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("results"))));
-}
-
-void QUmlConditionalNode::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConditionalNode")][QStringLiteral("clauses")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConditionalNode")][QStringLiteral("clauses")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlConditionalNode");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConditionalNode")][QStringLiteral("clauses")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConditionalNode")][QStringLiteral("clauses")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConditionalNode")][QStringLiteral("clauses")][QtModeling::DocumentationRole] = QStringLiteral("Set of clauses composing the conditional.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConditionalNode")][QStringLiteral("clauses")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConditionalNode")][QStringLiteral("clauses")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConditionalNode")][QStringLiteral("clauses")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConditionalNode")][QStringLiteral("isAssured")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConditionalNode")][QStringLiteral("isAssured")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlConditionalNode");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConditionalNode")][QStringLiteral("isAssured")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConditionalNode")][QStringLiteral("isAssured")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConditionalNode")][QStringLiteral("isAssured")][QtModeling::DocumentationRole] = QStringLiteral("If true, the modeler asserts that at least one test will succeed.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConditionalNode")][QStringLiteral("isAssured")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConditionalNode")][QStringLiteral("isAssured")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConditionalNode")][QStringLiteral("isAssured")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConditionalNode")][QStringLiteral("isDeterminate")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConditionalNode")][QStringLiteral("isDeterminate")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlConditionalNode");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConditionalNode")][QStringLiteral("isDeterminate")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConditionalNode")][QStringLiteral("isDeterminate")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConditionalNode")][QStringLiteral("isDeterminate")][QtModeling::DocumentationRole] = QStringLiteral("If true, the modeler asserts that at most one test will succeed.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConditionalNode")][QStringLiteral("isDeterminate")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConditionalNode")][QStringLiteral("isDeterminate")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConditionalNode")][QStringLiteral("isDeterminate")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConditionalNode")][QStringLiteral("results")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConditionalNode")][QStringLiteral("results")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlConditionalNode");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConditionalNode")][QStringLiteral("results")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConditionalNode")][QStringLiteral("results")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConditionalNode")][QStringLiteral("results")][QtModeling::DocumentationRole] = QStringLiteral("A list of output pins that constitute the data flow outputs of the conditional.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConditionalNode")][QStringLiteral("results")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("StructuredActivityNode-structuredNodeOutput");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConditionalNode")][QStringLiteral("results")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConditionalNode")][QStringLiteral("results")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
 }
 

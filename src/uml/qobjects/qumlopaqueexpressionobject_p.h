@@ -43,7 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtCore/QObject>
+#include <QtModeling/QModelingObject>
 
 #include <QtUml/QtUmlNamespace>
 
@@ -54,9 +54,12 @@ QT_BEGIN_NAMESPACE
 QT_MODULE(QtUml)
 
 class QUmlOpaqueExpression;
-class Q_UML_EXPORT QUmlOpaqueExpressionObject : public QObject
+class QModelingObjectPrivate;
+class Q_UML_EXPORT QUmlOpaqueExpressionObject : public QModelingObject
 {
     Q_OBJECT
+    Q_DISABLE_COPY(QUmlOpaqueExpressionObject)
+    Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [Element]
     Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
@@ -87,7 +90,7 @@ class Q_UML_EXPORT QUmlOpaqueExpressionObject : public QObject
     Q_PROPERTY(QObject * result READ result STORED false)
 
 public:
-    Q_INVOKABLE explicit QUmlOpaqueExpressionObject(QUmlOpaqueExpression *qModelingObject);
+    Q_INVOKABLE explicit QUmlOpaqueExpressionObject(QUmlOpaqueExpression *qModelingElement);
     virtual ~QUmlOpaqueExpressionObject();
 
     // Owned attributes [Element]
@@ -182,6 +185,10 @@ public Q_SLOTS:
     void addLanguage(QString language);
     void removeLanguage(QString language);
     void Q_DECL_HIDDEN setResult(QObject *result = 0);
+
+protected:
+    virtual void setGroupProperties();
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

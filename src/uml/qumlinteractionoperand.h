@@ -46,7 +46,6 @@
 #include <QtUml/QUmlInteractionFragment>
 #include <QtUml/QUmlNamespace>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -58,10 +57,10 @@ class QUmlInteractionConstraint;
 class Q_UML_EXPORT QUmlInteractionOperand : public QUmlInteractionFragment, public QUmlNamespace
 {
 public:
-    explicit QUmlInteractionOperand(bool createQObject = true);
+    explicit QUmlInteractionOperand(bool createQModelingObject = true);
     virtual ~QUmlInteractionOperand();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
     const QList<QUmlInteractionFragment *> fragments() const;
@@ -73,9 +72,6 @@ public:
 protected:
     QList<QUmlInteractionFragment *> _fragments;
     QUmlInteractionConstraint *_guard;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

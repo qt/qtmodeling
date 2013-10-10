@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlreplyactionobject_p.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlReplyAction>
 #include <QtUml/QUmlActivity>
@@ -65,16 +66,18 @@
 
 QT_BEGIN_NAMESPACE
 
-QUmlReplyActionObject::QUmlReplyActionObject(QUmlReplyAction *qModelingObject)
+QUmlReplyActionObject::QUmlReplyActionObject(QUmlReplyAction *qModelingElement)
 {
-    setProperty("modelingObject", QVariant::fromValue(static_cast<QModelingObject *>(qModelingObject)));
+    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(qModelingElement)));
+    setGroupProperties();
+    setPropertyData();
 }
 
 QUmlReplyActionObject::~QUmlReplyActionObject()
 {
     if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->deletingFromQObject = true;
-        delete qmodelingobjectproperty_cast<QUmlComment *>(this);
+        qmodelingelementproperty_cast<QUmlReplyAction *>(this)->deletingFromQModelingObject = true;
+        delete qmodelingelementproperty_cast<QUmlComment *>(this);
     }
 }
 
@@ -83,25 +86,25 @@ QUmlReplyActionObject::~QUmlReplyActionObject()
 const QSet<QObject *> QUmlReplyActionObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->ownedComments())
-        set.insert(element->asQObject());
+    foreach (QUmlComment *element, qmodelingelementproperty_cast<QUmlReplyAction *>(this)->ownedComments())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlReplyActionObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->ownedElements())
-        set.insert(element->asQObject());
+    foreach (QUmlElement *element, qmodelingelementproperty_cast<QUmlReplyAction *>(this)->ownedElements())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 QObject *QUmlReplyActionObject::owner() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->owner())
+    if (!qmodelingelementproperty_cast<QUmlReplyAction *>(this)->owner())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->owner()->asQObject();
+        return qmodelingelementproperty_cast<QUmlReplyAction *>(this)->owner()->asQModelingObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -109,62 +112,62 @@ QObject *QUmlReplyActionObject::owner() const
 const QSet<QObject *> QUmlReplyActionObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->clientDependencies())
-        set.insert(element->asQObject());
+    foreach (QUmlDependency *element, qmodelingelementproperty_cast<QUmlReplyAction *>(this)->clientDependencies())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 QString QUmlReplyActionObject::name() const
 {
-    return qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->name();
+    return qmodelingelementproperty_cast<QUmlReplyAction *>(this)->name();
 }
 
 QObject *QUmlReplyActionObject::nameExpression() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->nameExpression())
+    if (!qmodelingelementproperty_cast<QUmlReplyAction *>(this)->nameExpression())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->nameExpression()->asQObject();
+        return qmodelingelementproperty_cast<QUmlReplyAction *>(this)->nameExpression()->asQModelingObject();
 }
 
 QObject *QUmlReplyActionObject::namespace_() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->namespace_())
+    if (!qmodelingelementproperty_cast<QUmlReplyAction *>(this)->namespace_())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->namespace_()->asQObject();
+        return qmodelingelementproperty_cast<QUmlReplyAction *>(this)->namespace_()->asQModelingObject();
 }
 
 QString QUmlReplyActionObject::qualifiedName() const
 {
-    return qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->qualifiedName();
+    return qmodelingelementproperty_cast<QUmlReplyAction *>(this)->qualifiedName();
 }
 
 QtUml::VisibilityKind QUmlReplyActionObject::visibility() const
 {
-    return qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->visibility();
+    return qmodelingelementproperty_cast<QUmlReplyAction *>(this)->visibility();
 }
 
 // OWNED ATTRIBUTES [RedefinableElement]
 
 bool QUmlReplyActionObject::isLeaf() const
 {
-    return qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->isLeaf();
+    return qmodelingelementproperty_cast<QUmlReplyAction *>(this)->isLeaf();
 }
 
 const QSet<QObject *> QUmlReplyActionObject::redefinedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlRedefinableElement *element, qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->redefinedElements())
-        set.insert(element->asQObject());
+    foreach (QUmlRedefinableElement *element, qmodelingelementproperty_cast<QUmlReplyAction *>(this)->redefinedElements())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlReplyActionObject::redefinitionContexts() const
 {
     QSet<QObject *> set;
-    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->redefinitionContexts())
-        set.insert(element->asQObject());
+    foreach (QUmlClassifier *element, qmodelingelementproperty_cast<QUmlReplyAction *>(this)->redefinitionContexts())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
@@ -172,65 +175,65 @@ const QSet<QObject *> QUmlReplyActionObject::redefinitionContexts() const
 
 QObject *QUmlReplyActionObject::activity() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->activity())
+    if (!qmodelingelementproperty_cast<QUmlReplyAction *>(this)->activity())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->activity()->asQObject();
+        return qmodelingelementproperty_cast<QUmlReplyAction *>(this)->activity()->asQModelingObject();
 }
 
 const QSet<QObject *> QUmlReplyActionObject::inGroups() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityGroup *element, qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->inGroups())
-        set.insert(element->asQObject());
+    foreach (QUmlActivityGroup *element, qmodelingelementproperty_cast<QUmlReplyAction *>(this)->inGroups())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlReplyActionObject::inInterruptibleRegions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlInterruptibleActivityRegion *element, qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->inInterruptibleRegions())
-        set.insert(element->asQObject());
+    foreach (QUmlInterruptibleActivityRegion *element, qmodelingelementproperty_cast<QUmlReplyAction *>(this)->inInterruptibleRegions())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlReplyActionObject::inPartitions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityPartition *element, qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->inPartitions())
-        set.insert(element->asQObject());
+    foreach (QUmlActivityPartition *element, qmodelingelementproperty_cast<QUmlReplyAction *>(this)->inPartitions())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 QObject *QUmlReplyActionObject::inStructuredNode() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->inStructuredNode())
+    if (!qmodelingelementproperty_cast<QUmlReplyAction *>(this)->inStructuredNode())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->inStructuredNode()->asQObject();
+        return qmodelingelementproperty_cast<QUmlReplyAction *>(this)->inStructuredNode()->asQModelingObject();
 }
 
 const QSet<QObject *> QUmlReplyActionObject::incomings() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->incomings())
-        set.insert(element->asQObject());
+    foreach (QUmlActivityEdge *element, qmodelingelementproperty_cast<QUmlReplyAction *>(this)->incomings())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlReplyActionObject::outgoings() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->outgoings())
-        set.insert(element->asQObject());
+    foreach (QUmlActivityEdge *element, qmodelingelementproperty_cast<QUmlReplyAction *>(this)->outgoings())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlReplyActionObject::redefinedNodes() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityNode *element, qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->redefinedNodes())
-        set.insert(element->asQObject());
+    foreach (QUmlActivityNode *element, qmodelingelementproperty_cast<QUmlReplyAction *>(this)->redefinedNodes())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
@@ -239,8 +242,8 @@ const QSet<QObject *> QUmlReplyActionObject::redefinedNodes() const
 const QSet<QObject *> QUmlReplyActionObject::handlers() const
 {
     QSet<QObject *> set;
-    foreach (QUmlExceptionHandler *element, qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->handlers())
-        set.insert(element->asQObject());
+    foreach (QUmlExceptionHandler *element, qmodelingelementproperty_cast<QUmlReplyAction *>(this)->handlers())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
@@ -248,46 +251,46 @@ const QSet<QObject *> QUmlReplyActionObject::handlers() const
 
 QObject *QUmlReplyActionObject::context() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->context())
+    if (!qmodelingelementproperty_cast<QUmlReplyAction *>(this)->context())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->context()->asQObject();
+        return qmodelingelementproperty_cast<QUmlReplyAction *>(this)->context()->asQModelingObject();
 }
 
 const QList<QObject *> QUmlReplyActionObject::inputs() const
 {
     QList<QObject *> list;
-    foreach (QUmlInputPin *element, qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->inputs())
-        list.append(element->asQObject());
+    foreach (QUmlInputPin *element, qmodelingelementproperty_cast<QUmlReplyAction *>(this)->inputs())
+        list.append(element->asQModelingObject());
     return list;
 }
 
 bool QUmlReplyActionObject::isLocallyReentrant() const
 {
-    return qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->isLocallyReentrant();
+    return qmodelingelementproperty_cast<QUmlReplyAction *>(this)->isLocallyReentrant();
 }
 
 const QSet<QObject *> QUmlReplyActionObject::localPostconditions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->localPostconditions())
-        set.insert(element->asQObject());
+    foreach (QUmlConstraint *element, qmodelingelementproperty_cast<QUmlReplyAction *>(this)->localPostconditions())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlReplyActionObject::localPreconditions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->localPreconditions())
-        set.insert(element->asQObject());
+    foreach (QUmlConstraint *element, qmodelingelementproperty_cast<QUmlReplyAction *>(this)->localPreconditions())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QList<QObject *> QUmlReplyActionObject::outputs() const
 {
     QList<QObject *> list;
-    foreach (QUmlOutputPin *element, qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->outputs())
-        list.append(element->asQObject());
+    foreach (QUmlOutputPin *element, qmodelingelementproperty_cast<QUmlReplyAction *>(this)->outputs())
+        list.append(element->asQModelingObject());
     return list;
 }
 
@@ -295,26 +298,26 @@ const QList<QObject *> QUmlReplyActionObject::outputs() const
 
 QObject *QUmlReplyActionObject::replyToCall() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->replyToCall())
+    if (!qmodelingelementproperty_cast<QUmlReplyAction *>(this)->replyToCall())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->replyToCall()->asQObject();
+        return qmodelingelementproperty_cast<QUmlReplyAction *>(this)->replyToCall()->asQModelingObject();
 }
 
 const QSet<QObject *> QUmlReplyActionObject::replyValues() const
 {
     QSet<QObject *> set;
-    foreach (QUmlInputPin *element, qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->replyValues())
-        set.insert(element->asQObject());
+    foreach (QUmlInputPin *element, qmodelingelementproperty_cast<QUmlReplyAction *>(this)->replyValues())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 QObject *QUmlReplyActionObject::returnInformation() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->returnInformation())
+    if (!qmodelingelementproperty_cast<QUmlReplyAction *>(this)->returnInformation())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->returnInformation()->asQObject();
+        return qmodelingelementproperty_cast<QUmlReplyAction *>(this)->returnInformation()->asQModelingObject();
 }
 
 // OPERATIONS [Element]
@@ -322,14 +325,14 @@ QObject *QUmlReplyActionObject::returnInformation() const
 QSet<QObject *> QUmlReplyActionObject::allOwnedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->allOwnedElements())
-        set.insert(element->asQObject());
+    foreach (QUmlElement *element, qmodelingelementproperty_cast<QUmlReplyAction *>(this)->allOwnedElements())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 bool QUmlReplyActionObject::mustBeOwned() const
 {
-    return qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->mustBeOwned();
+    return qmodelingelementproperty_cast<QUmlReplyAction *>(this)->mustBeOwned();
 }
 
 // OPERATIONS [NamedElement]
@@ -337,298 +340,385 @@ bool QUmlReplyActionObject::mustBeOwned() const
 QList<QObject *> QUmlReplyActionObject::allNamespaces() const
 {
     QList<QObject *> set;
-    foreach (QUmlNamespace *element, qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->allNamespaces())
-        set.append(element->asQObject());
+    foreach (QUmlNamespace *element, qmodelingelementproperty_cast<QUmlReplyAction *>(this)->allNamespaces())
+        set.append(element->asQModelingObject());
     return set;
 }
 
 QSet<QObject *> QUmlReplyActionObject::allOwningPackages() const
 {
     QSet<QObject *> set;
-    foreach (QUmlPackage *element, qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->allOwningPackages())
-        set.insert(element->asQObject());
+    foreach (QUmlPackage *element, qmodelingelementproperty_cast<QUmlReplyAction *>(this)->allOwningPackages())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 bool QUmlReplyActionObject::isDistinguishableFrom(QObject *n, QObject *ns) const
 {
-    return qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->isDistinguishableFrom(qmodelingobjectproperty_cast<QUmlNamedElement *>(n), qmodelingobjectproperty_cast<QUmlNamespace *>(ns));
+    return qmodelingelementproperty_cast<QUmlReplyAction *>(this)->isDistinguishableFrom(qmodelingelementproperty_cast<QUmlNamedElement *>(n), qmodelingelementproperty_cast<QUmlNamespace *>(ns));
 }
 
 QString QUmlReplyActionObject::separator() const
 {
-    return qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->separator();
+    return qmodelingelementproperty_cast<QUmlReplyAction *>(this)->separator();
 }
 
 // OPERATIONS [RedefinableElement]
 
 bool QUmlReplyActionObject::isConsistentWith(QObject *redefinee) const
 {
-    return qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->isConsistentWith(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefinee));
+    return qmodelingelementproperty_cast<QUmlReplyAction *>(this)->isConsistentWith(qmodelingelementproperty_cast<QUmlRedefinableElement *>(redefinee));
 }
 
 bool QUmlReplyActionObject::isRedefinitionContextValid(QObject *redefined) const
 {
-    return qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->isRedefinitionContextValid(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefined));
+    return qmodelingelementproperty_cast<QUmlReplyAction *>(this)->isRedefinitionContextValid(qmodelingelementproperty_cast<QUmlRedefinableElement *>(redefined));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Element]
 
 void QUmlReplyActionObject::addOwnedComment(QObject *ownedComment)
 {
-    qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->addOwnedComment(qmodelingobjectproperty_cast<QUmlComment *>(ownedComment));
+    qmodelingelementproperty_cast<QUmlReplyAction *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
 }
 
 void QUmlReplyActionObject::removeOwnedComment(QObject *ownedComment)
 {
-    qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->removeOwnedComment(qmodelingobjectproperty_cast<QUmlComment *>(ownedComment));
+    qmodelingelementproperty_cast<QUmlReplyAction *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
 }
 
 void QUmlReplyActionObject::addOwnedElement(QObject *ownedElement)
 {
-    qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->addOwnedElement(qmodelingobjectproperty_cast<QUmlElement *>(ownedElement));
+    qmodelingelementproperty_cast<QUmlReplyAction *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
 }
 
 void QUmlReplyActionObject::removeOwnedElement(QObject *ownedElement)
 {
-    qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->removeOwnedElement(qmodelingobjectproperty_cast<QUmlElement *>(ownedElement));
+    qmodelingelementproperty_cast<QUmlReplyAction *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
 }
 
 void QUmlReplyActionObject::setOwner(QObject *owner)
 {
-    qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->setOwner(qmodelingobjectproperty_cast<QUmlElement *>(owner));
+    qmodelingelementproperty_cast<QUmlReplyAction *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [NamedElement]
 
 void QUmlReplyActionObject::addClientDependency(QObject *clientDependency)
 {
-    qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->addClientDependency(qmodelingobjectproperty_cast<QUmlDependency *>(clientDependency));
+    qmodelingelementproperty_cast<QUmlReplyAction *>(this)->addClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
 }
 
 void QUmlReplyActionObject::removeClientDependency(QObject *clientDependency)
 {
-    qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->removeClientDependency(qmodelingobjectproperty_cast<QUmlDependency *>(clientDependency));
+    qmodelingelementproperty_cast<QUmlReplyAction *>(this)->removeClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
 }
 
 void QUmlReplyActionObject::setName(QString name)
 {
-    qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->setName(name);
+    qmodelingelementproperty_cast<QUmlReplyAction *>(this)->setName(name);
 }
 
 void QUmlReplyActionObject::setNameExpression(QObject *nameExpression)
 {
-    qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
+    qmodelingelementproperty_cast<QUmlReplyAction *>(this)->setNameExpression(qmodelingelementproperty_cast<QUmlStringExpression *>(nameExpression));
 }
 
 void QUmlReplyActionObject::setNamespace(QObject *namespace_)
 {
-    qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->setNamespace(qmodelingobjectproperty_cast<QUmlNamespace *>(namespace_));
+    qmodelingelementproperty_cast<QUmlReplyAction *>(this)->setNamespace(qmodelingelementproperty_cast<QUmlNamespace *>(namespace_));
 }
 
 void QUmlReplyActionObject::setQualifiedName(QString qualifiedName)
 {
-    qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->setQualifiedName(qualifiedName);
+    qmodelingelementproperty_cast<QUmlReplyAction *>(this)->setQualifiedName(qualifiedName);
 }
 
 void QUmlReplyActionObject::setVisibility(QtUml::VisibilityKind visibility)
 {
-    qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->setVisibility(visibility);
+    qmodelingelementproperty_cast<QUmlReplyAction *>(this)->setVisibility(visibility);
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [RedefinableElement]
 
 void QUmlReplyActionObject::setLeaf(bool isLeaf)
 {
-    qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->setLeaf(isLeaf);
+    qmodelingelementproperty_cast<QUmlReplyAction *>(this)->setLeaf(isLeaf);
 }
 
 void QUmlReplyActionObject::unsetLeaf()
 {
-    qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("leaf"));
+    Q_D(QModelingObject);
+    d->modifiedResettableProperties.removeAll(QStringLiteral("leaf"));
 }
 
 void QUmlReplyActionObject::addRedefinedElement(QObject *redefinedElement)
 {
-    qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->addRedefinedElement(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefinedElement));
+    qmodelingelementproperty_cast<QUmlReplyAction *>(this)->addRedefinedElement(qmodelingelementproperty_cast<QUmlRedefinableElement *>(redefinedElement));
 }
 
 void QUmlReplyActionObject::removeRedefinedElement(QObject *redefinedElement)
 {
-    qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->removeRedefinedElement(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefinedElement));
+    qmodelingelementproperty_cast<QUmlReplyAction *>(this)->removeRedefinedElement(qmodelingelementproperty_cast<QUmlRedefinableElement *>(redefinedElement));
 }
 
 void QUmlReplyActionObject::addRedefinitionContext(QObject *redefinitionContext)
 {
-    qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->addRedefinitionContext(qmodelingobjectproperty_cast<QUmlClassifier *>(redefinitionContext));
+    qmodelingelementproperty_cast<QUmlReplyAction *>(this)->addRedefinitionContext(qmodelingelementproperty_cast<QUmlClassifier *>(redefinitionContext));
 }
 
 void QUmlReplyActionObject::removeRedefinitionContext(QObject *redefinitionContext)
 {
-    qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->removeRedefinitionContext(qmodelingobjectproperty_cast<QUmlClassifier *>(redefinitionContext));
+    qmodelingelementproperty_cast<QUmlReplyAction *>(this)->removeRedefinitionContext(qmodelingelementproperty_cast<QUmlClassifier *>(redefinitionContext));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ActivityNode]
 
 void QUmlReplyActionObject::setActivity(QObject *activity)
 {
-    qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->setActivity(qmodelingobjectproperty_cast<QUmlActivity *>(activity));
+    qmodelingelementproperty_cast<QUmlReplyAction *>(this)->setActivity(qmodelingelementproperty_cast<QUmlActivity *>(activity));
 }
 
 void QUmlReplyActionObject::addInGroup(QObject *inGroup)
 {
-    qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->addInGroup(qmodelingobjectproperty_cast<QUmlActivityGroup *>(inGroup));
+    qmodelingelementproperty_cast<QUmlReplyAction *>(this)->addInGroup(qmodelingelementproperty_cast<QUmlActivityGroup *>(inGroup));
 }
 
 void QUmlReplyActionObject::removeInGroup(QObject *inGroup)
 {
-    qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->removeInGroup(qmodelingobjectproperty_cast<QUmlActivityGroup *>(inGroup));
+    qmodelingelementproperty_cast<QUmlReplyAction *>(this)->removeInGroup(qmodelingelementproperty_cast<QUmlActivityGroup *>(inGroup));
 }
 
 void QUmlReplyActionObject::addInInterruptibleRegion(QObject *inInterruptibleRegion)
 {
-    qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->addInInterruptibleRegion(qmodelingobjectproperty_cast<QUmlInterruptibleActivityRegion *>(inInterruptibleRegion));
+    qmodelingelementproperty_cast<QUmlReplyAction *>(this)->addInInterruptibleRegion(qmodelingelementproperty_cast<QUmlInterruptibleActivityRegion *>(inInterruptibleRegion));
 }
 
 void QUmlReplyActionObject::removeInInterruptibleRegion(QObject *inInterruptibleRegion)
 {
-    qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->removeInInterruptibleRegion(qmodelingobjectproperty_cast<QUmlInterruptibleActivityRegion *>(inInterruptibleRegion));
+    qmodelingelementproperty_cast<QUmlReplyAction *>(this)->removeInInterruptibleRegion(qmodelingelementproperty_cast<QUmlInterruptibleActivityRegion *>(inInterruptibleRegion));
 }
 
 void QUmlReplyActionObject::addInPartition(QObject *inPartition)
 {
-    qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->addInPartition(qmodelingobjectproperty_cast<QUmlActivityPartition *>(inPartition));
+    qmodelingelementproperty_cast<QUmlReplyAction *>(this)->addInPartition(qmodelingelementproperty_cast<QUmlActivityPartition *>(inPartition));
 }
 
 void QUmlReplyActionObject::removeInPartition(QObject *inPartition)
 {
-    qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->removeInPartition(qmodelingobjectproperty_cast<QUmlActivityPartition *>(inPartition));
+    qmodelingelementproperty_cast<QUmlReplyAction *>(this)->removeInPartition(qmodelingelementproperty_cast<QUmlActivityPartition *>(inPartition));
 }
 
 void QUmlReplyActionObject::setInStructuredNode(QObject *inStructuredNode)
 {
-    qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->setInStructuredNode(qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(inStructuredNode));
+    qmodelingelementproperty_cast<QUmlReplyAction *>(this)->setInStructuredNode(qmodelingelementproperty_cast<QUmlStructuredActivityNode *>(inStructuredNode));
 }
 
 void QUmlReplyActionObject::addIncoming(QObject *incoming)
 {
-    qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->addIncoming(qmodelingobjectproperty_cast<QUmlActivityEdge *>(incoming));
+    qmodelingelementproperty_cast<QUmlReplyAction *>(this)->addIncoming(qmodelingelementproperty_cast<QUmlActivityEdge *>(incoming));
 }
 
 void QUmlReplyActionObject::removeIncoming(QObject *incoming)
 {
-    qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->removeIncoming(qmodelingobjectproperty_cast<QUmlActivityEdge *>(incoming));
+    qmodelingelementproperty_cast<QUmlReplyAction *>(this)->removeIncoming(qmodelingelementproperty_cast<QUmlActivityEdge *>(incoming));
 }
 
 void QUmlReplyActionObject::addOutgoing(QObject *outgoing)
 {
-    qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->addOutgoing(qmodelingobjectproperty_cast<QUmlActivityEdge *>(outgoing));
+    qmodelingelementproperty_cast<QUmlReplyAction *>(this)->addOutgoing(qmodelingelementproperty_cast<QUmlActivityEdge *>(outgoing));
 }
 
 void QUmlReplyActionObject::removeOutgoing(QObject *outgoing)
 {
-    qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->removeOutgoing(qmodelingobjectproperty_cast<QUmlActivityEdge *>(outgoing));
+    qmodelingelementproperty_cast<QUmlReplyAction *>(this)->removeOutgoing(qmodelingelementproperty_cast<QUmlActivityEdge *>(outgoing));
 }
 
 void QUmlReplyActionObject::addRedefinedNode(QObject *redefinedNode)
 {
-    qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->addRedefinedNode(qmodelingobjectproperty_cast<QUmlActivityNode *>(redefinedNode));
+    qmodelingelementproperty_cast<QUmlReplyAction *>(this)->addRedefinedNode(qmodelingelementproperty_cast<QUmlActivityNode *>(redefinedNode));
 }
 
 void QUmlReplyActionObject::removeRedefinedNode(QObject *redefinedNode)
 {
-    qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->removeRedefinedNode(qmodelingobjectproperty_cast<QUmlActivityNode *>(redefinedNode));
+    qmodelingelementproperty_cast<QUmlReplyAction *>(this)->removeRedefinedNode(qmodelingelementproperty_cast<QUmlActivityNode *>(redefinedNode));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ExecutableNode]
 
 void QUmlReplyActionObject::addHandler(QObject *handler)
 {
-    qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->addHandler(qmodelingobjectproperty_cast<QUmlExceptionHandler *>(handler));
+    qmodelingelementproperty_cast<QUmlReplyAction *>(this)->addHandler(qmodelingelementproperty_cast<QUmlExceptionHandler *>(handler));
 }
 
 void QUmlReplyActionObject::removeHandler(QObject *handler)
 {
-    qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->removeHandler(qmodelingobjectproperty_cast<QUmlExceptionHandler *>(handler));
+    qmodelingelementproperty_cast<QUmlReplyAction *>(this)->removeHandler(qmodelingelementproperty_cast<QUmlExceptionHandler *>(handler));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Action]
 
 void QUmlReplyActionObject::setContext(QObject *context)
 {
-    qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->setContext(qmodelingobjectproperty_cast<QUmlClassifier *>(context));
+    qmodelingelementproperty_cast<QUmlReplyAction *>(this)->setContext(qmodelingelementproperty_cast<QUmlClassifier *>(context));
 }
 
 void QUmlReplyActionObject::addInput(QObject *input)
 {
-    qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->addInput(qmodelingobjectproperty_cast<QUmlInputPin *>(input));
+    qmodelingelementproperty_cast<QUmlReplyAction *>(this)->addInput(qmodelingelementproperty_cast<QUmlInputPin *>(input));
 }
 
 void QUmlReplyActionObject::removeInput(QObject *input)
 {
-    qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->removeInput(qmodelingobjectproperty_cast<QUmlInputPin *>(input));
+    qmodelingelementproperty_cast<QUmlReplyAction *>(this)->removeInput(qmodelingelementproperty_cast<QUmlInputPin *>(input));
 }
 
 void QUmlReplyActionObject::setLocallyReentrant(bool isLocallyReentrant)
 {
-    qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->setLocallyReentrant(isLocallyReentrant);
+    qmodelingelementproperty_cast<QUmlReplyAction *>(this)->setLocallyReentrant(isLocallyReentrant);
 }
 
 void QUmlReplyActionObject::unsetLocallyReentrant()
 {
-    qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("locallyReentrant"));
+    Q_D(QModelingObject);
+    d->modifiedResettableProperties.removeAll(QStringLiteral("locallyReentrant"));
 }
 
 void QUmlReplyActionObject::addLocalPostcondition(QObject *localPostcondition)
 {
-    qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->addLocalPostcondition(qmodelingobjectproperty_cast<QUmlConstraint *>(localPostcondition));
+    qmodelingelementproperty_cast<QUmlReplyAction *>(this)->addLocalPostcondition(qmodelingelementproperty_cast<QUmlConstraint *>(localPostcondition));
 }
 
 void QUmlReplyActionObject::removeLocalPostcondition(QObject *localPostcondition)
 {
-    qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->removeLocalPostcondition(qmodelingobjectproperty_cast<QUmlConstraint *>(localPostcondition));
+    qmodelingelementproperty_cast<QUmlReplyAction *>(this)->removeLocalPostcondition(qmodelingelementproperty_cast<QUmlConstraint *>(localPostcondition));
 }
 
 void QUmlReplyActionObject::addLocalPrecondition(QObject *localPrecondition)
 {
-    qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->addLocalPrecondition(qmodelingobjectproperty_cast<QUmlConstraint *>(localPrecondition));
+    qmodelingelementproperty_cast<QUmlReplyAction *>(this)->addLocalPrecondition(qmodelingelementproperty_cast<QUmlConstraint *>(localPrecondition));
 }
 
 void QUmlReplyActionObject::removeLocalPrecondition(QObject *localPrecondition)
 {
-    qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->removeLocalPrecondition(qmodelingobjectproperty_cast<QUmlConstraint *>(localPrecondition));
+    qmodelingelementproperty_cast<QUmlReplyAction *>(this)->removeLocalPrecondition(qmodelingelementproperty_cast<QUmlConstraint *>(localPrecondition));
 }
 
 void QUmlReplyActionObject::addOutput(QObject *output)
 {
-    qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->addOutput(qmodelingobjectproperty_cast<QUmlOutputPin *>(output));
+    qmodelingelementproperty_cast<QUmlReplyAction *>(this)->addOutput(qmodelingelementproperty_cast<QUmlOutputPin *>(output));
 }
 
 void QUmlReplyActionObject::removeOutput(QObject *output)
 {
-    qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->removeOutput(qmodelingobjectproperty_cast<QUmlOutputPin *>(output));
+    qmodelingelementproperty_cast<QUmlReplyAction *>(this)->removeOutput(qmodelingelementproperty_cast<QUmlOutputPin *>(output));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ReplyAction]
 
 void QUmlReplyActionObject::setReplyToCall(QObject *replyToCall)
 {
-    qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->setReplyToCall(qmodelingobjectproperty_cast<QUmlTrigger *>(replyToCall));
+    qmodelingelementproperty_cast<QUmlReplyAction *>(this)->setReplyToCall(qmodelingelementproperty_cast<QUmlTrigger *>(replyToCall));
 }
 
 void QUmlReplyActionObject::addReplyValue(QObject *replyValue)
 {
-    qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->addReplyValue(qmodelingobjectproperty_cast<QUmlInputPin *>(replyValue));
+    qmodelingelementproperty_cast<QUmlReplyAction *>(this)->addReplyValue(qmodelingelementproperty_cast<QUmlInputPin *>(replyValue));
 }
 
 void QUmlReplyActionObject::removeReplyValue(QObject *replyValue)
 {
-    qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->removeReplyValue(qmodelingobjectproperty_cast<QUmlInputPin *>(replyValue));
+    qmodelingelementproperty_cast<QUmlReplyAction *>(this)->removeReplyValue(qmodelingelementproperty_cast<QUmlInputPin *>(replyValue));
 }
 
 void QUmlReplyActionObject::setReturnInformation(QObject *returnInformation)
 {
-    qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->setReturnInformation(qmodelingobjectproperty_cast<QUmlInputPin *>(returnInformation));
+    qmodelingelementproperty_cast<QUmlReplyAction *>(this)->setReturnInformation(qmodelingelementproperty_cast<QUmlInputPin *>(returnInformation));
+}
+
+
+void QUmlReplyActionObject::setGroupProperties()
+{
+    Q_D(QModelingObject);
+    const QMetaObject *metaObject = this->metaObject();
+
+    d->propertyGroups << QStringLiteral("QObject");
+    d->groupProperties.insert(QStringLiteral("QObject"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("objectName"))));
+
+    d->propertyGroups << QStringLiteral("QUmlElement");
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
+
+    d->propertyGroups << QStringLiteral("QUmlNamedElement");
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
+
+    d->propertyGroups << QStringLiteral("QUmlRedefinableElement");
+    d->groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isLeaf"))));
+    d->groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinedElements"))));
+    d->groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinitionContexts"))));
+
+    d->propertyGroups << QStringLiteral("QUmlActivityNode");
+    d->groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("activity"))));
+    d->groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inGroups"))));
+    d->groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inInterruptibleRegions"))));
+    d->groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inPartitions"))));
+    d->groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inStructuredNode"))));
+    d->groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("incomings"))));
+    d->groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("outgoings"))));
+    d->groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinedNodes"))));
+
+    d->propertyGroups << QStringLiteral("QUmlExecutableNode");
+    d->groupProperties.insert(QStringLiteral("QUmlExecutableNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("handlers"))));
+
+    d->propertyGroups << QStringLiteral("QUmlAction");
+    d->groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("context"))));
+    d->groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inputs"))));
+    d->groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isLocallyReentrant"))));
+    d->groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("localPostconditions"))));
+    d->groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("localPreconditions"))));
+    d->groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("outputs"))));
+
+    d->propertyGroups << QStringLiteral("QUmlReplyAction");
+    d->groupProperties.insert(QStringLiteral("QUmlReplyAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("replyToCall"))));
+    d->groupProperties.insert(QStringLiteral("QUmlReplyAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("replyValues"))));
+    d->groupProperties.insert(QStringLiteral("QUmlReplyAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("returnInformation"))));
+}
+
+void QUmlReplyActionObject::setPropertyData()
+{
+    Q_DECLARE_METAPROPERTY_INFO(QUmlReplyAction, replyToCall, AggregationRole, QStringLiteral("none"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlReplyAction, replyToCall, PropertyClassRole, QStringLiteral("QUmlReplyAction"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlReplyAction, replyToCall, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlReplyAction, replyToCall, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlReplyAction, replyToCall, DocumentationRole, QStringLiteral("The trigger specifying the operation whose call is being replied to."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlReplyAction, replyToCall, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlReplyAction, replyToCall, SubsettedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlReplyAction, replyToCall, OppositeEndRole, QStringLiteral(""));
+
+    Q_DECLARE_METAPROPERTY_INFO(QUmlReplyAction, replyValues, AggregationRole, QStringLiteral("composite"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlReplyAction, replyValues, PropertyClassRole, QStringLiteral("QUmlReplyAction"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlReplyAction, replyValues, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlReplyAction, replyValues, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlReplyAction, replyValues, DocumentationRole, QStringLiteral("A list of pins containing the reply values of the operation. These values are returned to the caller."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlReplyAction, replyValues, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlReplyAction, replyValues, SubsettedPropertiesRole, QStringLiteral("Action-input"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlReplyAction, replyValues, OppositeEndRole, QStringLiteral(""));
+
+    Q_DECLARE_METAPROPERTY_INFO(QUmlReplyAction, returnInformation, AggregationRole, QStringLiteral("composite"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlReplyAction, returnInformation, PropertyClassRole, QStringLiteral("QUmlReplyAction"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlReplyAction, returnInformation, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlReplyAction, returnInformation, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlReplyAction, returnInformation, DocumentationRole, QStringLiteral("A pin containing the return information value produced by an earlier AcceptCallAction."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlReplyAction, returnInformation, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlReplyAction, returnInformation, SubsettedPropertiesRole, QStringLiteral("Action-input"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlReplyAction, returnInformation, OppositeEndRole, QStringLiteral(""));
+
 }
 
 QT_END_NAMESPACE

@@ -46,7 +46,6 @@
 #include <QtUml/QUmlDirectedRelationship>
 #include <QtUml/QUmlNamedElement>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -58,10 +57,10 @@ class QUmlUseCase;
 class Q_UML_EXPORT QUmlInclude : public QUmlDirectedRelationship, public QUmlNamedElement
 {
 public:
-    explicit QUmlInclude(bool createQObject = true);
+    explicit QUmlInclude(bool createQModelingObject = true);
     virtual ~QUmlInclude();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
     QUmlUseCase *addition() const;
@@ -72,9 +71,6 @@ public:
 protected:
     QUmlUseCase *_addition;
     QUmlUseCase *_includingCase;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

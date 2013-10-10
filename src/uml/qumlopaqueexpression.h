@@ -45,7 +45,6 @@
 
 #include <QtUml/QUmlValueSpecification>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -58,10 +57,10 @@ class QUmlParameter;
 class Q_UML_EXPORT QUmlOpaqueExpression : public QUmlValueSpecification
 {
 public:
-    explicit QUmlOpaqueExpression(bool createQObject = true);
+    explicit QUmlOpaqueExpression(bool createQModelingObject = true);
     virtual ~QUmlOpaqueExpression();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
     QUmlBehavior *behavior() const;
@@ -85,9 +84,6 @@ protected:
     QUmlBehavior *_behavior;
     QList<QString> _bodies;
     QList<QString> _languages;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

@@ -45,7 +45,6 @@
 
 #include <QtUml/QUmlInteractionFragment>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -58,10 +57,10 @@ class QUmlLifeline;
 class Q_UML_EXPORT QUmlStateInvariant : public QUmlInteractionFragment
 {
 public:
-    explicit QUmlStateInvariant(bool createQObject = true);
+    explicit QUmlStateInvariant(bool createQModelingObject = true);
     virtual ~QUmlStateInvariant();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
     QUmlLifeline *covered() const;
@@ -72,9 +71,6 @@ public:
 protected:
     QUmlLifeline *_covered;
     QUmlConstraint *_invariant;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

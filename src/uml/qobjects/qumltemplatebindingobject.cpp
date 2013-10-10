@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumltemplatebindingobject_p.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlTemplateBinding>
 #include <QtUml/QUmlComment>
@@ -49,16 +50,18 @@
 
 QT_BEGIN_NAMESPACE
 
-QUmlTemplateBindingObject::QUmlTemplateBindingObject(QUmlTemplateBinding *qModelingObject)
+QUmlTemplateBindingObject::QUmlTemplateBindingObject(QUmlTemplateBinding *qModelingElement)
 {
-    setProperty("modelingObject", QVariant::fromValue(static_cast<QModelingObject *>(qModelingObject)));
+    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(qModelingElement)));
+    setGroupProperties();
+    setPropertyData();
 }
 
 QUmlTemplateBindingObject::~QUmlTemplateBindingObject()
 {
     if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingobjectproperty_cast<QUmlTemplateBinding *>(this)->deletingFromQObject = true;
-        delete qmodelingobjectproperty_cast<QUmlComment *>(this);
+        qmodelingelementproperty_cast<QUmlTemplateBinding *>(this)->deletingFromQModelingObject = true;
+        delete qmodelingelementproperty_cast<QUmlComment *>(this);
     }
 }
 
@@ -67,25 +70,25 @@ QUmlTemplateBindingObject::~QUmlTemplateBindingObject()
 const QSet<QObject *> QUmlTemplateBindingObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlTemplateBinding *>(this)->ownedComments())
-        set.insert(element->asQObject());
+    foreach (QUmlComment *element, qmodelingelementproperty_cast<QUmlTemplateBinding *>(this)->ownedComments())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlTemplateBindingObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlTemplateBinding *>(this)->ownedElements())
-        set.insert(element->asQObject());
+    foreach (QUmlElement *element, qmodelingelementproperty_cast<QUmlTemplateBinding *>(this)->ownedElements())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 QObject *QUmlTemplateBindingObject::owner() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlTemplateBinding *>(this)->owner())
+    if (!qmodelingelementproperty_cast<QUmlTemplateBinding *>(this)->owner())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlTemplateBinding *>(this)->owner()->asQObject();
+        return qmodelingelementproperty_cast<QUmlTemplateBinding *>(this)->owner()->asQModelingObject();
 }
 
 // OWNED ATTRIBUTES [Relationship]
@@ -93,8 +96,8 @@ QObject *QUmlTemplateBindingObject::owner() const
 const QSet<QObject *> QUmlTemplateBindingObject::relatedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlTemplateBinding *>(this)->relatedElements())
-        set.insert(element->asQObject());
+    foreach (QUmlElement *element, qmodelingelementproperty_cast<QUmlTemplateBinding *>(this)->relatedElements())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
@@ -103,16 +106,16 @@ const QSet<QObject *> QUmlTemplateBindingObject::relatedElements() const
 const QSet<QObject *> QUmlTemplateBindingObject::sources() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlTemplateBinding *>(this)->sources())
-        set.insert(element->asQObject());
+    foreach (QUmlElement *element, qmodelingelementproperty_cast<QUmlTemplateBinding *>(this)->sources())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlTemplateBindingObject::targets() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlTemplateBinding *>(this)->targets())
-        set.insert(element->asQObject());
+    foreach (QUmlElement *element, qmodelingelementproperty_cast<QUmlTemplateBinding *>(this)->targets())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
@@ -120,26 +123,26 @@ const QSet<QObject *> QUmlTemplateBindingObject::targets() const
 
 QObject *QUmlTemplateBindingObject::boundElement() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlTemplateBinding *>(this)->boundElement())
+    if (!qmodelingelementproperty_cast<QUmlTemplateBinding *>(this)->boundElement())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlTemplateBinding *>(this)->boundElement()->asQObject();
+        return qmodelingelementproperty_cast<QUmlTemplateBinding *>(this)->boundElement()->asQModelingObject();
 }
 
 const QSet<QObject *> QUmlTemplateBindingObject::parameterSubstitutions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlTemplateParameterSubstitution *element, qmodelingobjectproperty_cast<QUmlTemplateBinding *>(this)->parameterSubstitutions())
-        set.insert(element->asQObject());
+    foreach (QUmlTemplateParameterSubstitution *element, qmodelingelementproperty_cast<QUmlTemplateBinding *>(this)->parameterSubstitutions())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 QObject *QUmlTemplateBindingObject::signature() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlTemplateBinding *>(this)->signature())
+    if (!qmodelingelementproperty_cast<QUmlTemplateBinding *>(this)->signature())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlTemplateBinding *>(this)->signature()->asQObject();
+        return qmodelingelementproperty_cast<QUmlTemplateBinding *>(this)->signature()->asQModelingObject();
 }
 
 // OPERATIONS [Element]
@@ -147,97 +150,155 @@ QObject *QUmlTemplateBindingObject::signature() const
 QSet<QObject *> QUmlTemplateBindingObject::allOwnedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlTemplateBinding *>(this)->allOwnedElements())
-        set.insert(element->asQObject());
+    foreach (QUmlElement *element, qmodelingelementproperty_cast<QUmlTemplateBinding *>(this)->allOwnedElements())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 bool QUmlTemplateBindingObject::mustBeOwned() const
 {
-    return qmodelingobjectproperty_cast<QUmlTemplateBinding *>(this)->mustBeOwned();
+    return qmodelingelementproperty_cast<QUmlTemplateBinding *>(this)->mustBeOwned();
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Element]
 
 void QUmlTemplateBindingObject::addOwnedComment(QObject *ownedComment)
 {
-    qmodelingobjectproperty_cast<QUmlTemplateBinding *>(this)->addOwnedComment(qmodelingobjectproperty_cast<QUmlComment *>(ownedComment));
+    qmodelingelementproperty_cast<QUmlTemplateBinding *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
 }
 
 void QUmlTemplateBindingObject::removeOwnedComment(QObject *ownedComment)
 {
-    qmodelingobjectproperty_cast<QUmlTemplateBinding *>(this)->removeOwnedComment(qmodelingobjectproperty_cast<QUmlComment *>(ownedComment));
+    qmodelingelementproperty_cast<QUmlTemplateBinding *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
 }
 
 void QUmlTemplateBindingObject::addOwnedElement(QObject *ownedElement)
 {
-    qmodelingobjectproperty_cast<QUmlTemplateBinding *>(this)->addOwnedElement(qmodelingobjectproperty_cast<QUmlElement *>(ownedElement));
+    qmodelingelementproperty_cast<QUmlTemplateBinding *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
 }
 
 void QUmlTemplateBindingObject::removeOwnedElement(QObject *ownedElement)
 {
-    qmodelingobjectproperty_cast<QUmlTemplateBinding *>(this)->removeOwnedElement(qmodelingobjectproperty_cast<QUmlElement *>(ownedElement));
+    qmodelingelementproperty_cast<QUmlTemplateBinding *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
 }
 
 void QUmlTemplateBindingObject::setOwner(QObject *owner)
 {
-    qmodelingobjectproperty_cast<QUmlTemplateBinding *>(this)->setOwner(qmodelingobjectproperty_cast<QUmlElement *>(owner));
+    qmodelingelementproperty_cast<QUmlTemplateBinding *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Relationship]
 
 void QUmlTemplateBindingObject::addRelatedElement(QObject *relatedElement)
 {
-    qmodelingobjectproperty_cast<QUmlTemplateBinding *>(this)->addRelatedElement(qmodelingobjectproperty_cast<QUmlElement *>(relatedElement));
+    qmodelingelementproperty_cast<QUmlTemplateBinding *>(this)->addRelatedElement(qmodelingelementproperty_cast<QUmlElement *>(relatedElement));
 }
 
 void QUmlTemplateBindingObject::removeRelatedElement(QObject *relatedElement)
 {
-    qmodelingobjectproperty_cast<QUmlTemplateBinding *>(this)->removeRelatedElement(qmodelingobjectproperty_cast<QUmlElement *>(relatedElement));
+    qmodelingelementproperty_cast<QUmlTemplateBinding *>(this)->removeRelatedElement(qmodelingelementproperty_cast<QUmlElement *>(relatedElement));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [DirectedRelationship]
 
 void QUmlTemplateBindingObject::addSource(QObject *source)
 {
-    qmodelingobjectproperty_cast<QUmlTemplateBinding *>(this)->addSource(qmodelingobjectproperty_cast<QUmlElement *>(source));
+    qmodelingelementproperty_cast<QUmlTemplateBinding *>(this)->addSource(qmodelingelementproperty_cast<QUmlElement *>(source));
 }
 
 void QUmlTemplateBindingObject::removeSource(QObject *source)
 {
-    qmodelingobjectproperty_cast<QUmlTemplateBinding *>(this)->removeSource(qmodelingobjectproperty_cast<QUmlElement *>(source));
+    qmodelingelementproperty_cast<QUmlTemplateBinding *>(this)->removeSource(qmodelingelementproperty_cast<QUmlElement *>(source));
 }
 
 void QUmlTemplateBindingObject::addTarget(QObject *target)
 {
-    qmodelingobjectproperty_cast<QUmlTemplateBinding *>(this)->addTarget(qmodelingobjectproperty_cast<QUmlElement *>(target));
+    qmodelingelementproperty_cast<QUmlTemplateBinding *>(this)->addTarget(qmodelingelementproperty_cast<QUmlElement *>(target));
 }
 
 void QUmlTemplateBindingObject::removeTarget(QObject *target)
 {
-    qmodelingobjectproperty_cast<QUmlTemplateBinding *>(this)->removeTarget(qmodelingobjectproperty_cast<QUmlElement *>(target));
+    qmodelingelementproperty_cast<QUmlTemplateBinding *>(this)->removeTarget(qmodelingelementproperty_cast<QUmlElement *>(target));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [TemplateBinding]
 
 void QUmlTemplateBindingObject::setBoundElement(QObject *boundElement)
 {
-    qmodelingobjectproperty_cast<QUmlTemplateBinding *>(this)->setBoundElement(qmodelingobjectproperty_cast<QUmlTemplateableElement *>(boundElement));
+    qmodelingelementproperty_cast<QUmlTemplateBinding *>(this)->setBoundElement(qmodelingelementproperty_cast<QUmlTemplateableElement *>(boundElement));
 }
 
 void QUmlTemplateBindingObject::addParameterSubstitution(QObject *parameterSubstitution)
 {
-    qmodelingobjectproperty_cast<QUmlTemplateBinding *>(this)->addParameterSubstitution(qmodelingobjectproperty_cast<QUmlTemplateParameterSubstitution *>(parameterSubstitution));
+    qmodelingelementproperty_cast<QUmlTemplateBinding *>(this)->addParameterSubstitution(qmodelingelementproperty_cast<QUmlTemplateParameterSubstitution *>(parameterSubstitution));
 }
 
 void QUmlTemplateBindingObject::removeParameterSubstitution(QObject *parameterSubstitution)
 {
-    qmodelingobjectproperty_cast<QUmlTemplateBinding *>(this)->removeParameterSubstitution(qmodelingobjectproperty_cast<QUmlTemplateParameterSubstitution *>(parameterSubstitution));
+    qmodelingelementproperty_cast<QUmlTemplateBinding *>(this)->removeParameterSubstitution(qmodelingelementproperty_cast<QUmlTemplateParameterSubstitution *>(parameterSubstitution));
 }
 
 void QUmlTemplateBindingObject::setSignature(QObject *signature)
 {
-    qmodelingobjectproperty_cast<QUmlTemplateBinding *>(this)->setSignature(qmodelingobjectproperty_cast<QUmlTemplateSignature *>(signature));
+    qmodelingelementproperty_cast<QUmlTemplateBinding *>(this)->setSignature(qmodelingelementproperty_cast<QUmlTemplateSignature *>(signature));
+}
+
+
+void QUmlTemplateBindingObject::setGroupProperties()
+{
+    Q_D(QModelingObject);
+    const QMetaObject *metaObject = this->metaObject();
+
+    d->propertyGroups << QStringLiteral("QObject");
+    d->groupProperties.insert(QStringLiteral("QObject"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("objectName"))));
+
+    d->propertyGroups << QStringLiteral("QUmlElement");
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
+
+    d->propertyGroups << QStringLiteral("QUmlRelationship");
+    d->groupProperties.insert(QStringLiteral("QUmlRelationship"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("relatedElements"))));
+
+    d->propertyGroups << QStringLiteral("QUmlDirectedRelationship");
+    d->groupProperties.insert(QStringLiteral("QUmlDirectedRelationship"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("sources"))));
+    d->groupProperties.insert(QStringLiteral("QUmlDirectedRelationship"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("targets"))));
+
+    d->propertyGroups << QStringLiteral("QUmlTemplateBinding");
+    d->groupProperties.insert(QStringLiteral("QUmlTemplateBinding"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("boundElement"))));
+    d->groupProperties.insert(QStringLiteral("QUmlTemplateBinding"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("parameterSubstitutions"))));
+    d->groupProperties.insert(QStringLiteral("QUmlTemplateBinding"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("signature"))));
+}
+
+void QUmlTemplateBindingObject::setPropertyData()
+{
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateBinding, boundElement, AggregationRole, QStringLiteral("none"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateBinding, boundElement, PropertyClassRole, QStringLiteral("QUmlTemplateBinding"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateBinding, boundElement, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateBinding, boundElement, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateBinding, boundElement, DocumentationRole, QStringLiteral("The element that is bound by this binding."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateBinding, boundElement, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateBinding, boundElement, SubsettedPropertiesRole, QStringLiteral("Element-owner DirectedRelationship-source"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateBinding, boundElement, OppositeEndRole, QStringLiteral("TemplateableElement-templateBinding"));
+
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateBinding, parameterSubstitutions, AggregationRole, QStringLiteral("composite"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateBinding, parameterSubstitutions, PropertyClassRole, QStringLiteral("QUmlTemplateBinding"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateBinding, parameterSubstitutions, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateBinding, parameterSubstitutions, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateBinding, parameterSubstitutions, DocumentationRole, QStringLiteral("The parameter substitutions owned by this template binding."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateBinding, parameterSubstitutions, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateBinding, parameterSubstitutions, SubsettedPropertiesRole, QStringLiteral("Element-ownedElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateBinding, parameterSubstitutions, OppositeEndRole, QStringLiteral("TemplateParameterSubstitution-templateBinding"));
+
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateBinding, signature, AggregationRole, QStringLiteral("none"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateBinding, signature, PropertyClassRole, QStringLiteral("QUmlTemplateBinding"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateBinding, signature, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateBinding, signature, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateBinding, signature, DocumentationRole, QStringLiteral("The template signature for the template that is the target of the binding."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateBinding, signature, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateBinding, signature, SubsettedPropertiesRole, QStringLiteral("DirectedRelationship-target"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateBinding, signature, OppositeEndRole, QStringLiteral(""));
+
 }
 
 QT_END_NAMESPACE

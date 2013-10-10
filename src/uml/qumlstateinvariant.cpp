@@ -62,26 +62,24 @@
 
     \brief A state invariant is a runtime constraint on the participants of the interaction. It may be used to specify a variety of different kinds of constraints, such as values of attributes or variables, internal or external states, and so on. A state invariant is an interaction fragment and it is placed on a lifeline.
  */
-QUmlStateInvariant::QUmlStateInvariant(bool createQObject) :
+QUmlStateInvariant::QUmlStateInvariant(bool createQModelingObject) :
     _covered(0),
     _invariant(0)
 {
-    if (createQObject)
-        _qObject = new QUmlStateInvariantObject(this);
-    setGroupProperties();
-    setPropertyData();
+    if (createQModelingObject)
+        _qModelingObject = qobject_cast<QModelingObject *>(new QUmlStateInvariantObject(this));
 }
 
 QUmlStateInvariant::~QUmlStateInvariant()
 {
-    if (!deletingFromQObject) {
-        if (_qObject)
-            _qObject->setProperty("deletingFromModelingObject", true);
-        delete _qObject;
+    if (!deletingFromQModelingObject) {
+        if (_qModelingObject)
+            _qModelingObject->setProperty("deletingFromModelingObject", true);
+        delete _qModelingObject;
     }
 }
 
-QModelingObject *QUmlStateInvariant::clone() const
+QModelingElement *QUmlStateInvariant::clone() const
 {
     QUmlStateInvariant *c = new QUmlStateInvariant;
     foreach (QUmlComment *element, ownedComments())
@@ -123,8 +121,8 @@ void QUmlStateInvariant::setCovered(QUmlLifeline *covered)
 
     if (_covered != covered) {
         _covered = covered;
-        if (covered && covered->asQObject() && this->asQObject())
-            QObject::connect(covered->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setCovered()));
+        if (covered && covered->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(covered->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setCovered()));
     }
 }
 
@@ -147,56 +145,14 @@ void QUmlStateInvariant::setInvariant(QUmlConstraint *invariant)
         removeOwnedElement(_invariant);
 
         _invariant = invariant;
-        if (invariant && invariant->asQObject() && this->asQObject())
-            QObject::connect(invariant->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setInvariant()));
-        invariant->asQObject()->setParent(this->asQObject());
+        if (invariant && invariant->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(invariant->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setInvariant()));
+        invariant->asQModelingObject()->setParent(this->asQModelingObject());
 
         // Adjust subsetted properties
         if (invariant) {
             addOwnedElement(invariant);
         }
     }
-}
-
-void QUmlStateInvariant::setGroupProperties()
-{
-    const QMetaObject *metaObject = _qObject->metaObject();
-
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
-    _groupProperties.insert(QStringLiteral("QUmlInteractionFragment"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("enclosingInteraction"))));
-    _groupProperties.insert(QStringLiteral("QUmlInteractionFragment"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("enclosingOperand"))));
-    _groupProperties.insert(QStringLiteral("QUmlInteractionFragment"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("generalOrderings"))));
-    _groupProperties.insert(QStringLiteral("QUmlStateInvariant"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("covered"))));
-    _groupProperties.insert(QStringLiteral("QUmlStateInvariant"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("invariant"))));
-}
-
-void QUmlStateInvariant::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStateInvariant")][QStringLiteral("covered")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStateInvariant")][QStringLiteral("covered")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlStateInvariant");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStateInvariant")][QStringLiteral("covered")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStateInvariant")][QStringLiteral("covered")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStateInvariant")][QStringLiteral("covered")][QtModeling::DocumentationRole] = QStringLiteral("References the Lifeline on which the StateInvariant appears.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStateInvariant")][QStringLiteral("covered")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("InteractionFragment-covered");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStateInvariant")][QStringLiteral("covered")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStateInvariant")][QStringLiteral("covered")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStateInvariant")][QStringLiteral("invariant")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStateInvariant")][QStringLiteral("invariant")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlStateInvariant");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStateInvariant")][QStringLiteral("invariant")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStateInvariant")][QStringLiteral("invariant")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStateInvariant")][QStringLiteral("invariant")][QtModeling::DocumentationRole] = QStringLiteral("A Constraint that should hold at runtime for this StateInvariant");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStateInvariant")][QStringLiteral("invariant")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStateInvariant")][QStringLiteral("invariant")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStateInvariant")][QStringLiteral("invariant")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
 }
 

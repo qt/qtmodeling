@@ -96,26 +96,24 @@
 
     \brief An activity is the specification of parameterized behavior as the coordinated sequencing of subordinate units whose individual elements are actions.
  */
-QUmlActivity::QUmlActivity(bool createQObject) :
+QUmlActivity::QUmlActivity(bool createQModelingObject) :
     _isReadOnly(false),
     _isSingleExecution(false)
 {
-    if (createQObject)
-        _qObject = new QUmlActivityObject(this);
-    setGroupProperties();
-    setPropertyData();
+    if (createQModelingObject)
+        _qModelingObject = qobject_cast<QModelingObject *>(new QUmlActivityObject(this));
 }
 
 QUmlActivity::~QUmlActivity()
 {
-    if (!deletingFromQObject) {
-        if (_qObject)
-            _qObject->setProperty("deletingFromModelingObject", true);
-        delete _qObject;
+    if (!deletingFromQModelingObject) {
+        if (_qModelingObject)
+            _qModelingObject->setProperty("deletingFromModelingObject", true);
+        delete _qModelingObject;
     }
 }
 
-QModelingObject *QUmlActivity::clone() const
+QModelingElement *QUmlActivity::clone() const
 {
     QUmlActivity *c = new QUmlActivity;
     foreach (QUmlComment *element, ownedComments())
@@ -226,9 +224,9 @@ void QUmlActivity::addEdge(QUmlActivityEdge *edge)
 
     if (!_edges.contains(edge)) {
         _edges.insert(edge);
-        if (edge && edge->asQObject() && this->asQObject())
-            QObject::connect(edge->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeEdge(QObject *)));
-        edge->asQObject()->setParent(this->asQObject());
+        if (edge && edge->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(edge->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeEdge(QObject *)));
+        edge->asQModelingObject()->setParent(this->asQModelingObject());
 
         // Adjust subsetted properties
         addOwnedElement(edge);
@@ -246,8 +244,8 @@ void QUmlActivity::removeEdge(QUmlActivityEdge *edge)
 
     if (_edges.contains(edge)) {
         _edges.remove(edge);
-        if (edge->asQObject())
-            edge->asQObject()->setParent(0);
+        if (edge->asQModelingObject())
+            edge->asQModelingObject()->setParent(0);
 
         // Adjust subsetted properties
         removeOwnedElement(edge);
@@ -275,9 +273,9 @@ void QUmlActivity::addGroup(QUmlActivityGroup *group)
 
     if (!_groups.contains(group)) {
         _groups.insert(group);
-        if (group && group->asQObject() && this->asQObject())
-            QObject::connect(group->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeGroup(QObject *)));
-        group->asQObject()->setParent(this->asQObject());
+        if (group && group->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(group->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeGroup(QObject *)));
+        group->asQModelingObject()->setParent(this->asQModelingObject());
 
         // Adjust subsetted properties
         addOwnedElement(group);
@@ -295,8 +293,8 @@ void QUmlActivity::removeGroup(QUmlActivityGroup *group)
 
     if (_groups.contains(group)) {
         _groups.remove(group);
-        if (group->asQObject())
-            group->asQObject()->setParent(0);
+        if (group->asQModelingObject())
+            group->asQModelingObject()->setParent(0);
 
         // Adjust subsetted properties
         removeOwnedElement(group);
@@ -324,7 +322,7 @@ void QUmlActivity::setReadOnly(bool isReadOnly)
 
     if (_isReadOnly != isReadOnly) {
         _isReadOnly = isReadOnly;
-        _modifiedResettableProperties << QStringLiteral("isReadOnly");
+        _qModelingObject->modifiedResettableProperties() << QStringLiteral("isReadOnly");
     }
 }
 
@@ -344,7 +342,7 @@ void QUmlActivity::setSingleExecution(bool isSingleExecution)
 
     if (_isSingleExecution != isSingleExecution) {
         _isSingleExecution = isSingleExecution;
-        _modifiedResettableProperties << QStringLiteral("isSingleExecution");
+        _qModelingObject->modifiedResettableProperties() << QStringLiteral("isSingleExecution");
     }
 }
 
@@ -364,9 +362,9 @@ void QUmlActivity::addNode(QUmlActivityNode *node)
 
     if (!_nodes.contains(node)) {
         _nodes.insert(node);
-        if (node && node->asQObject() && this->asQObject())
-            QObject::connect(node->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeNode(QObject *)));
-        node->asQObject()->setParent(this->asQObject());
+        if (node && node->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(node->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeNode(QObject *)));
+        node->asQModelingObject()->setParent(this->asQModelingObject());
 
         // Adjust subsetted properties
         addOwnedElement(node);
@@ -384,8 +382,8 @@ void QUmlActivity::removeNode(QUmlActivityNode *node)
 
     if (_nodes.contains(node)) {
         _nodes.remove(node);
-        if (node->asQObject())
-            node->asQObject()->setParent(0);
+        if (node->asQModelingObject())
+            node->asQModelingObject()->setParent(0);
 
         // Adjust subsetted properties
         removeOwnedElement(node);
@@ -413,8 +411,8 @@ void QUmlActivity::addPartition(QUmlActivityPartition *partition)
 
     if (!_partitions.contains(partition)) {
         _partitions.insert(partition);
-        if (partition && partition->asQObject() && this->asQObject())
-            QObject::connect(partition->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removePartition(QObject *)));
+        if (partition && partition->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(partition->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removePartition(QObject *)));
 
         // Adjust subsetted properties
         addGroup(partition);
@@ -449,9 +447,9 @@ void QUmlActivity::addStructuredNode(QUmlStructuredActivityNode *structuredNode)
 
     if (!_structuredNodes.contains(structuredNode)) {
         _structuredNodes.insert(structuredNode);
-        if (structuredNode && structuredNode->asQObject() && this->asQObject())
-            QObject::connect(structuredNode->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeStructuredNode(QObject *)));
-        structuredNode->asQObject()->setParent(this->asQObject());
+        if (structuredNode && structuredNode->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(structuredNode->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeStructuredNode(QObject *)));
+        structuredNode->asQModelingObject()->setParent(this->asQModelingObject());
 
         // Adjust subsetted properties
         addGroup(structuredNode);
@@ -470,8 +468,8 @@ void QUmlActivity::removeStructuredNode(QUmlStructuredActivityNode *structuredNo
 
     if (_structuredNodes.contains(structuredNode)) {
         _structuredNodes.remove(structuredNode);
-        if (structuredNode->asQObject())
-            structuredNode->asQObject()->setParent(0);
+        if (structuredNode->asQModelingObject())
+            structuredNode->asQModelingObject()->setParent(0);
 
         // Adjust subsetted properties
         removeGroup(structuredNode);
@@ -500,9 +498,9 @@ void QUmlActivity::addVariable(QUmlVariable *variable)
 
     if (!_variables.contains(variable)) {
         _variables.insert(variable);
-        if (variable && variable->asQObject() && this->asQObject())
-            QObject::connect(variable->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeVariable(QObject *)));
-        variable->asQObject()->setParent(this->asQObject());
+        if (variable && variable->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(variable->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeVariable(QObject *)));
+        variable->asQModelingObject()->setParent(this->asQModelingObject());
 
         // Adjust subsetted properties
         addOwnedMember(variable);
@@ -520,8 +518,8 @@ void QUmlActivity::removeVariable(QUmlVariable *variable)
 
     if (_variables.contains(variable)) {
         _variables.remove(variable);
-        if (variable->asQObject())
-            variable->asQObject()->setParent(0);
+        if (variable->asQModelingObject())
+            variable->asQModelingObject()->setParent(0);
 
         // Adjust subsetted properties
         removeOwnedMember(variable);
@@ -531,153 +529,5 @@ void QUmlActivity::removeVariable(QUmlVariable *variable)
             variable->setActivityScope(0);
         }
     }
-}
-
-void QUmlActivity::setGroupProperties()
-{
-    const QMetaObject *metaObject = _qObject->metaObject();
-
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("elementImports"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("importedMembers"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("members"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedMembers"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedRules"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("packageImports"))));
-    _groupProperties.insert(QStringLiteral("QUmlParameterableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owningTemplateParameter"))));
-    _groupProperties.insert(QStringLiteral("QUmlPackageableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
-    _groupProperties.insert(QStringLiteral("QUmlType"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("package"))));
-    _groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isLeaf"))));
-    _groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinitionContexts"))));
-    _groupProperties.insert(QStringLiteral("QUmlTemplateableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("templateBindings"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("attributes"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("collaborationUses"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("features"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("generalizations"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inheritedMembers"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isFinalSpecialization"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedTemplateSignature"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedUseCases"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("powertypeExtents"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinedClassifiers"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("representation"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("substitutions"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("templateParameter"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("useCases"))));
-    _groupProperties.insert(QStringLiteral("QUmlStructuredClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedConnectors"))));
-    _groupProperties.insert(QStringLiteral("QUmlStructuredClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("parts"))));
-    _groupProperties.insert(QStringLiteral("QUmlStructuredClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("roles"))));
-    _groupProperties.insert(QStringLiteral("QUmlEncapsulatedClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedPorts"))));
-    _groupProperties.insert(QStringLiteral("QUmlBehavioredClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("classifierBehavior"))));
-    _groupProperties.insert(QStringLiteral("QUmlBehavioredClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("interfaceRealizations"))));
-    _groupProperties.insert(QStringLiteral("QUmlBehavioredClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedBehaviors"))));
-    _groupProperties.insert(QStringLiteral("QUmlClass"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("extensions"))));
-    _groupProperties.insert(QStringLiteral("QUmlClass"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isAbstract"))));
-    _groupProperties.insert(QStringLiteral("QUmlClass"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isActive"))));
-    _groupProperties.insert(QStringLiteral("QUmlClass"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nestedClassifiers"))));
-    _groupProperties.insert(QStringLiteral("QUmlClass"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedAttributes"))));
-    _groupProperties.insert(QStringLiteral("QUmlClass"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedOperations"))));
-    _groupProperties.insert(QStringLiteral("QUmlClass"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedReceptions"))));
-    _groupProperties.insert(QStringLiteral("QUmlClass"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("superClasses"))));
-    _groupProperties.insert(QStringLiteral("QUmlBehavior"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("context"))));
-    _groupProperties.insert(QStringLiteral("QUmlBehavior"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isReentrant"))));
-    _groupProperties.insert(QStringLiteral("QUmlBehavior"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedParameters"))));
-    _groupProperties.insert(QStringLiteral("QUmlBehavior"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedParameterSets"))));
-    _groupProperties.insert(QStringLiteral("QUmlBehavior"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("postconditions"))));
-    _groupProperties.insert(QStringLiteral("QUmlBehavior"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("preconditions"))));
-    _groupProperties.insert(QStringLiteral("QUmlBehavior"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinedBehaviors"))));
-    _groupProperties.insert(QStringLiteral("QUmlBehavior"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("specification"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivity"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("edges"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivity"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("groups"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivity"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isReadOnly"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivity"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isSingleExecution"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivity"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nodes"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivity"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("partitions"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivity"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("structuredNodes"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivity"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("variables"))));
-}
-
-void QUmlActivity::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("edges")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("edges")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlActivity");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("edges")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("edges")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("edges")][QtModeling::DocumentationRole] = QStringLiteral("Edges expressing flow between nodes of the activity.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("edges")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("edges")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("edges")][QtModeling::OppositeEndRole] = QStringLiteral("ActivityEdge-activity");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("groups")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("groups")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlActivity");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("groups")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("groups")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("groups")][QtModeling::DocumentationRole] = QStringLiteral("Top-level groups in the activity.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("groups")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("groups")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("groups")][QtModeling::OppositeEndRole] = QStringLiteral("ActivityGroup-inActivity");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("isReadOnly")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("isReadOnly")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlActivity");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("isReadOnly")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("isReadOnly")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("isReadOnly")][QtModeling::DocumentationRole] = QStringLiteral("If true, this activity must not make any changes to variables outside the activity or to objects. (This is an assertion, not an executable property. It may be used by an execution engine to optimize model execution. If the assertion is violated by the action, then the model is ill-formed.) The default is false (an activity may make nonlocal changes).");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("isReadOnly")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("isReadOnly")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("isReadOnly")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("isSingleExecution")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("isSingleExecution")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlActivity");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("isSingleExecution")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("isSingleExecution")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("isSingleExecution")][QtModeling::DocumentationRole] = QStringLiteral("If true, all invocations of the activity are handled by the same execution.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("isSingleExecution")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("isSingleExecution")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("isSingleExecution")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("nodes")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("nodes")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlActivity");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("nodes")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("nodes")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("nodes")][QtModeling::DocumentationRole] = QStringLiteral("Nodes coordinated by the activity.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("nodes")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("nodes")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("nodes")][QtModeling::OppositeEndRole] = QStringLiteral("ActivityNode-activity");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("partitions")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("partitions")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlActivity");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("partitions")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("partitions")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("partitions")][QtModeling::DocumentationRole] = QStringLiteral("Top-level partitions in the activity.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("partitions")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("partitions")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Activity-group");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("partitions")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("structuredNodes")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("structuredNodes")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlActivity");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("structuredNodes")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("structuredNodes")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("structuredNodes")][QtModeling::DocumentationRole] = QStringLiteral("Top-level structured nodes in the activity.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("structuredNodes")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("structuredNodes")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Activity-group Activity-node");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("structuredNodes")][QtModeling::OppositeEndRole] = QStringLiteral("StructuredActivityNode-activity");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("variables")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("variables")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlActivity");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("variables")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("variables")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("variables")][QtModeling::DocumentationRole] = QStringLiteral("Top-level variables in the activity.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("variables")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("variables")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Namespace-ownedMember");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("variables")][QtModeling::OppositeEndRole] = QStringLiteral("Variable-activityScope");
-
 }
 

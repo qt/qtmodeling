@@ -58,15 +58,13 @@ QUmlNamedElement::QUmlNamedElement() :
     _nameExpression(0),
     _namespace_(0)
 {
-    setGroupProperties();
-    setPropertyData();
 }
 
 QUmlNamedElement::~QUmlNamedElement()
 {
 }
 
-QModelingObject *QUmlNamedElement::clone() const
+QModelingElement *QUmlNamedElement::clone() const
 {
     QUmlNamedElement *c = new QUmlNamedElement;
     foreach (QUmlComment *element, ownedComments())
@@ -98,8 +96,8 @@ void QUmlNamedElement::addClientDependency(QUmlDependency *clientDependency)
 
     if (!_clientDependencies.contains(clientDependency)) {
         _clientDependencies.insert(clientDependency);
-        if (clientDependency && clientDependency->asQObject() && this->asQObject())
-            QObject::connect(clientDependency->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeClientDependency(QObject *)));
+        if (clientDependency && clientDependency->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(clientDependency->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeClientDependency(QObject *)));
 
         // Adjust opposite properties
         if (clientDependency) {
@@ -138,7 +136,7 @@ void QUmlNamedElement::setName(QString name)
 
     if (_name != name) {
         _name = name;
-        asQObject()->setObjectName(name);
+        asQModelingObject()->setObjectName(name);
     }
 }
 
@@ -161,9 +159,9 @@ void QUmlNamedElement::setNameExpression(QUmlStringExpression *nameExpression)
         removeOwnedElement(_nameExpression);
 
         _nameExpression = nameExpression;
-        if (nameExpression && nameExpression->asQObject() && this->asQObject())
-            QObject::connect(nameExpression->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setNameExpression()));
-        nameExpression->asQObject()->setParent(this->asQObject());
+        if (nameExpression && nameExpression->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(nameExpression->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setNameExpression()));
+        nameExpression->asQModelingObject()->setParent(this->asQModelingObject());
 
         // Adjust subsetted properties
         if (nameExpression) {
@@ -190,8 +188,8 @@ void QUmlNamedElement::setNamespace(QUmlNamespace *namespace_)
         // Adjust subsetted properties
 
         _namespace_ = namespace_;
-        if (namespace_ && namespace_->asQObject() && this->asQObject())
-            QObject::connect(namespace_->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setNamespace()));
+        if (namespace_ && namespace_->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(namespace_->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setNamespace()));
 
         // Adjust subsetted properties
         setOwner(namespace_);
@@ -297,78 +295,5 @@ bool QUmlNamedElement::isDistinguishableFrom(QUmlNamedElement *n, QUmlNamespace 
 QString QUmlNamedElement::separator() const
 {
     return QStringLiteral("::");
-}
-
-void QUmlNamedElement::setGroupProperties()
-{
-    const QMetaObject *metaObject = _qObject->metaObject();
-
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
-}
-
-void QUmlNamedElement::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamedElement")][QStringLiteral("clientDependencies")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamedElement")][QStringLiteral("clientDependencies")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlNamedElement");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamedElement")][QStringLiteral("clientDependencies")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamedElement")][QStringLiteral("clientDependencies")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamedElement")][QStringLiteral("clientDependencies")][QtModeling::DocumentationRole] = QStringLiteral("Indicates the dependencies that reference the client.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamedElement")][QStringLiteral("clientDependencies")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamedElement")][QStringLiteral("clientDependencies")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("A_source_directedRelationship-directedRelationship");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamedElement")][QStringLiteral("clientDependencies")][QtModeling::OppositeEndRole] = QStringLiteral("Dependency-client");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamedElement")][QStringLiteral("name")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamedElement")][QStringLiteral("name")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlNamedElement");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamedElement")][QStringLiteral("name")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamedElement")][QStringLiteral("name")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamedElement")][QStringLiteral("name")][QtModeling::DocumentationRole] = QStringLiteral("The name of the NamedElement.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamedElement")][QStringLiteral("name")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamedElement")][QStringLiteral("name")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamedElement")][QStringLiteral("name")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamedElement")][QStringLiteral("nameExpression")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamedElement")][QStringLiteral("nameExpression")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlNamedElement");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamedElement")][QStringLiteral("nameExpression")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamedElement")][QStringLiteral("nameExpression")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamedElement")][QStringLiteral("nameExpression")][QtModeling::DocumentationRole] = QStringLiteral("The string expression used to define the name of this named element.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamedElement")][QStringLiteral("nameExpression")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamedElement")][QStringLiteral("nameExpression")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamedElement")][QStringLiteral("nameExpression")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamedElement")][QStringLiteral("namespace_")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamedElement")][QStringLiteral("namespace_")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlNamedElement");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamedElement")][QStringLiteral("namespace_")][QtModeling::IsDerivedRole] = true;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamedElement")][QStringLiteral("namespace_")][QtModeling::IsDerivedUnionRole] = true;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamedElement")][QStringLiteral("namespace_")][QtModeling::DocumentationRole] = QStringLiteral("Specifies the namespace that owns the NamedElement.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamedElement")][QStringLiteral("namespace_")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamedElement")][QStringLiteral("namespace_")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("A_member_memberNamespace-memberNamespace Element-owner");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamedElement")][QStringLiteral("namespace_")][QtModeling::OppositeEndRole] = QStringLiteral("Namespace-ownedMember");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamedElement")][QStringLiteral("qualifiedName")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamedElement")][QStringLiteral("qualifiedName")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlNamedElement");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamedElement")][QStringLiteral("qualifiedName")][QtModeling::IsDerivedRole] = true;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamedElement")][QStringLiteral("qualifiedName")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamedElement")][QStringLiteral("qualifiedName")][QtModeling::DocumentationRole] = QStringLiteral("A name which allows the NamedElement to be identified within a hierarchy of nested Namespaces. It is constructed from the names of the containing namespaces starting at the root of the hierarchy and ending with the name of the NamedElement itself.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamedElement")][QStringLiteral("qualifiedName")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamedElement")][QStringLiteral("qualifiedName")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamedElement")][QStringLiteral("qualifiedName")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamedElement")][QStringLiteral("visibility")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamedElement")][QStringLiteral("visibility")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlNamedElement");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamedElement")][QStringLiteral("visibility")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamedElement")][QStringLiteral("visibility")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamedElement")][QStringLiteral("visibility")][QtModeling::DocumentationRole] = QStringLiteral("Determines where the NamedElement appears within different Namespaces within the overall model, and its accessibility.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamedElement")][QStringLiteral("visibility")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamedElement")][QStringLiteral("visibility")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamedElement")][QStringLiteral("visibility")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
 }
 

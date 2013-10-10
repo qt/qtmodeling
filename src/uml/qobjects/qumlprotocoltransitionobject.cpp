@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlprotocoltransitionobject_p.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlProtocolTransition>
 #include <QtUml/QUmlBehavior>
@@ -64,16 +65,18 @@
 
 QT_BEGIN_NAMESPACE
 
-QUmlProtocolTransitionObject::QUmlProtocolTransitionObject(QUmlProtocolTransition *qModelingObject)
+QUmlProtocolTransitionObject::QUmlProtocolTransitionObject(QUmlProtocolTransition *qModelingElement)
 {
-    setProperty("modelingObject", QVariant::fromValue(static_cast<QModelingObject *>(qModelingObject)));
+    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(qModelingElement)));
+    setGroupProperties();
+    setPropertyData();
 }
 
 QUmlProtocolTransitionObject::~QUmlProtocolTransitionObject()
 {
     if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->deletingFromQObject = true;
-        delete qmodelingobjectproperty_cast<QUmlComment *>(this);
+        qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->deletingFromQModelingObject = true;
+        delete qmodelingelementproperty_cast<QUmlComment *>(this);
     }
 }
 
@@ -82,25 +85,25 @@ QUmlProtocolTransitionObject::~QUmlProtocolTransitionObject()
 const QSet<QObject *> QUmlProtocolTransitionObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->ownedComments())
-        set.insert(element->asQObject());
+    foreach (QUmlComment *element, qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->ownedComments())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlProtocolTransitionObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->ownedElements())
-        set.insert(element->asQObject());
+    foreach (QUmlElement *element, qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->ownedElements())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 QObject *QUmlProtocolTransitionObject::owner() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->owner())
+    if (!qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->owner())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->owner()->asQObject();
+        return qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->owner()->asQModelingObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -108,54 +111,54 @@ QObject *QUmlProtocolTransitionObject::owner() const
 const QSet<QObject *> QUmlProtocolTransitionObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->clientDependencies())
-        set.insert(element->asQObject());
+    foreach (QUmlDependency *element, qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->clientDependencies())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 QString QUmlProtocolTransitionObject::name() const
 {
-    return qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->name();
+    return qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->name();
 }
 
 QObject *QUmlProtocolTransitionObject::nameExpression() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->nameExpression())
+    if (!qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->nameExpression())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->nameExpression()->asQObject();
+        return qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->nameExpression()->asQModelingObject();
 }
 
 QObject *QUmlProtocolTransitionObject::namespace_() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->namespace_())
+    if (!qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->namespace_())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->namespace_()->asQObject();
+        return qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->namespace_()->asQModelingObject();
 }
 
 QString QUmlProtocolTransitionObject::qualifiedName() const
 {
-    return qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->qualifiedName();
+    return qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->qualifiedName();
 }
 
 QtUml::VisibilityKind QUmlProtocolTransitionObject::visibility() const
 {
-    return qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->visibility();
+    return qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->visibility();
 }
 
 // OWNED ATTRIBUTES [RedefinableElement]
 
 bool QUmlProtocolTransitionObject::isLeaf() const
 {
-    return qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->isLeaf();
+    return qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->isLeaf();
 }
 
 const QSet<QObject *> QUmlProtocolTransitionObject::redefinedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlRedefinableElement *element, qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->redefinedElements())
-        set.insert(element->asQObject());
+    foreach (QUmlRedefinableElement *element, qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->redefinedElements())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
@@ -164,48 +167,48 @@ const QSet<QObject *> QUmlProtocolTransitionObject::redefinedElements() const
 const QSet<QObject *> QUmlProtocolTransitionObject::elementImports() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElementImport *element, qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->elementImports())
-        set.insert(element->asQObject());
+    foreach (QUmlElementImport *element, qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->elementImports())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlProtocolTransitionObject::importedMembers() const
 {
     QSet<QObject *> set;
-    foreach (QUmlPackageableElement *element, qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->importedMembers())
-        set.insert(element->asQObject());
+    foreach (QUmlPackageableElement *element, qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->importedMembers())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlProtocolTransitionObject::members() const
 {
     QSet<QObject *> set;
-    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->members())
-        set.insert(element->asQObject());
+    foreach (QUmlNamedElement *element, qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->members())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlProtocolTransitionObject::ownedMembers() const
 {
     QSet<QObject *> set;
-    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->ownedMembers())
-        set.insert(element->asQObject());
+    foreach (QUmlNamedElement *element, qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->ownedMembers())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlProtocolTransitionObject::ownedRules() const
 {
     QSet<QObject *> set;
-    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->ownedRules())
-        set.insert(element->asQObject());
+    foreach (QUmlConstraint *element, qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->ownedRules())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlProtocolTransitionObject::packageImports() const
 {
     QSet<QObject *> set;
-    foreach (QUmlPackageImport *element, qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->packageImports())
-        set.insert(element->asQObject());
+    foreach (QUmlPackageImport *element, qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->packageImports())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
@@ -213,70 +216,70 @@ const QSet<QObject *> QUmlProtocolTransitionObject::packageImports() const
 
 QObject *QUmlProtocolTransitionObject::container() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->container())
+    if (!qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->container())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->container()->asQObject();
+        return qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->container()->asQModelingObject();
 }
 
 QObject *QUmlProtocolTransitionObject::effect() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->effect())
+    if (!qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->effect())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->effect()->asQObject();
+        return qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->effect()->asQModelingObject();
 }
 
 QObject *QUmlProtocolTransitionObject::guard() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->guard())
+    if (!qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->guard())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->guard()->asQObject();
+        return qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->guard()->asQModelingObject();
 }
 
 QtUml::TransitionKind QUmlProtocolTransitionObject::kind() const
 {
-    return qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->kind();
+    return qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->kind();
 }
 
 QObject *QUmlProtocolTransitionObject::redefinedTransition() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->redefinedTransition())
+    if (!qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->redefinedTransition())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->redefinedTransition()->asQObject();
+        return qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->redefinedTransition()->asQModelingObject();
 }
 
 QObject *QUmlProtocolTransitionObject::redefinitionContext() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->redefinitionContext())
+    if (!qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->redefinitionContext())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->redefinitionContext()->asQObject();
+        return qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->redefinitionContext()->asQModelingObject();
 }
 
 QObject *QUmlProtocolTransitionObject::source() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->source())
+    if (!qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->source())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->source()->asQObject();
+        return qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->source()->asQModelingObject();
 }
 
 QObject *QUmlProtocolTransitionObject::target() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->target())
+    if (!qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->target())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->target()->asQObject();
+        return qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->target()->asQModelingObject();
 }
 
 const QSet<QObject *> QUmlProtocolTransitionObject::triggers() const
 {
     QSet<QObject *> set;
-    foreach (QUmlTrigger *element, qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->triggers())
-        set.insert(element->asQObject());
+    foreach (QUmlTrigger *element, qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->triggers())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
@@ -284,25 +287,25 @@ const QSet<QObject *> QUmlProtocolTransitionObject::triggers() const
 
 QObject *QUmlProtocolTransitionObject::postCondition() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->postCondition())
+    if (!qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->postCondition())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->postCondition()->asQObject();
+        return qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->postCondition()->asQModelingObject();
 }
 
 QObject *QUmlProtocolTransitionObject::preCondition() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->preCondition())
+    if (!qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->preCondition())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->preCondition()->asQObject();
+        return qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->preCondition()->asQModelingObject();
 }
 
 const QSet<QObject *> QUmlProtocolTransitionObject::referred() const
 {
     QSet<QObject *> set;
-    foreach (QUmlOperation *element, qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->referred())
-        set.insert(element->asQObject());
+    foreach (QUmlOperation *element, qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->referred())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
@@ -311,14 +314,14 @@ const QSet<QObject *> QUmlProtocolTransitionObject::referred() const
 QSet<QObject *> QUmlProtocolTransitionObject::allOwnedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->allOwnedElements())
-        set.insert(element->asQObject());
+    foreach (QUmlElement *element, qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->allOwnedElements())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 bool QUmlProtocolTransitionObject::mustBeOwned() const
 {
-    return qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->mustBeOwned();
+    return qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->mustBeOwned();
 }
 
 // OPERATIONS [NamedElement]
@@ -326,34 +329,34 @@ bool QUmlProtocolTransitionObject::mustBeOwned() const
 QList<QObject *> QUmlProtocolTransitionObject::allNamespaces() const
 {
     QList<QObject *> set;
-    foreach (QUmlNamespace *element, qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->allNamespaces())
-        set.append(element->asQObject());
+    foreach (QUmlNamespace *element, qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->allNamespaces())
+        set.append(element->asQModelingObject());
     return set;
 }
 
 QSet<QObject *> QUmlProtocolTransitionObject::allOwningPackages() const
 {
     QSet<QObject *> set;
-    foreach (QUmlPackage *element, qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->allOwningPackages())
-        set.insert(element->asQObject());
+    foreach (QUmlPackage *element, qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->allOwningPackages())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 bool QUmlProtocolTransitionObject::isDistinguishableFrom(QObject *n, QObject *ns) const
 {
-    return qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->isDistinguishableFrom(qmodelingobjectproperty_cast<QUmlNamedElement *>(n), qmodelingobjectproperty_cast<QUmlNamespace *>(ns));
+    return qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->isDistinguishableFrom(qmodelingelementproperty_cast<QUmlNamedElement *>(n), qmodelingelementproperty_cast<QUmlNamespace *>(ns));
 }
 
 QString QUmlProtocolTransitionObject::separator() const
 {
-    return qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->separator();
+    return qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->separator();
 }
 
 // OPERATIONS [RedefinableElement]
 
 bool QUmlProtocolTransitionObject::isRedefinitionContextValid(QObject *redefined) const
 {
-    return qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->isRedefinitionContextValid(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefined));
+    return qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->isRedefinitionContextValid(qmodelingelementproperty_cast<QUmlRedefinableElement *>(redefined));
 }
 
 // OPERATIONS [Namespace]
@@ -362,273 +365,357 @@ QSet<QObject *> QUmlProtocolTransitionObject::excludeCollisions(QSet<QObject *> 
 {
     QSet<QUmlPackageableElement *> impsConverted;
     foreach (QObject *object, imps)
-        impsConverted.insert(qmodelingobjectproperty_cast<QUmlPackageableElement *>(object));
+        impsConverted.insert(qmodelingelementproperty_cast<QUmlPackageableElement *>(object));
     QSet<QObject *> set;
-    foreach (QUmlPackageableElement *element, qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->excludeCollisions(impsConverted))
-        set.insert(element->asQObject());
+    foreach (QUmlPackageableElement *element, qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->excludeCollisions(impsConverted))
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 QSet<QString> QUmlProtocolTransitionObject::getNamesOfMember(QObject *element) const
 {
-    return qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->getNamesOfMember(qmodelingobjectproperty_cast<QUmlNamedElement *>(element));
+    return qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->getNamesOfMember(qmodelingelementproperty_cast<QUmlNamedElement *>(element));
 }
 
 QSet<QObject *> QUmlProtocolTransitionObject::importMembers(QSet<QObject *> imps) const
 {
     QSet<QUmlPackageableElement *> impsConverted;
     foreach (QObject *object, imps)
-        impsConverted.insert(qmodelingobjectproperty_cast<QUmlPackageableElement *>(object));
+        impsConverted.insert(qmodelingelementproperty_cast<QUmlPackageableElement *>(object));
     QSet<QObject *> set;
-    foreach (QUmlPackageableElement *element, qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->importMembers(impsConverted))
-        set.insert(element->asQObject());
+    foreach (QUmlPackageableElement *element, qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->importMembers(impsConverted))
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 bool QUmlProtocolTransitionObject::membersAreDistinguishable() const
 {
-    return qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->membersAreDistinguishable();
+    return qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->membersAreDistinguishable();
 }
 
 // OPERATIONS [Transition]
 
 QObject *QUmlProtocolTransitionObject::containingStateMachine() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->containingStateMachine())
+    if (!qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->containingStateMachine())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->containingStateMachine()->asQObject();
+        return qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->containingStateMachine()->asQModelingObject();
 }
 
 bool QUmlProtocolTransitionObject::isConsistentWith(QObject *redefinee) const
 {
-    return qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->isConsistentWith(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefinee));
+    return qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->isConsistentWith(qmodelingelementproperty_cast<QUmlRedefinableElement *>(redefinee));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Element]
 
 void QUmlProtocolTransitionObject::addOwnedComment(QObject *ownedComment)
 {
-    qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->addOwnedComment(qmodelingobjectproperty_cast<QUmlComment *>(ownedComment));
+    qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
 }
 
 void QUmlProtocolTransitionObject::removeOwnedComment(QObject *ownedComment)
 {
-    qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->removeOwnedComment(qmodelingobjectproperty_cast<QUmlComment *>(ownedComment));
+    qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
 }
 
 void QUmlProtocolTransitionObject::addOwnedElement(QObject *ownedElement)
 {
-    qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->addOwnedElement(qmodelingobjectproperty_cast<QUmlElement *>(ownedElement));
+    qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
 }
 
 void QUmlProtocolTransitionObject::removeOwnedElement(QObject *ownedElement)
 {
-    qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->removeOwnedElement(qmodelingobjectproperty_cast<QUmlElement *>(ownedElement));
+    qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
 }
 
 void QUmlProtocolTransitionObject::setOwner(QObject *owner)
 {
-    qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->setOwner(qmodelingobjectproperty_cast<QUmlElement *>(owner));
+    qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [NamedElement]
 
 void QUmlProtocolTransitionObject::addClientDependency(QObject *clientDependency)
 {
-    qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->addClientDependency(qmodelingobjectproperty_cast<QUmlDependency *>(clientDependency));
+    qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->addClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
 }
 
 void QUmlProtocolTransitionObject::removeClientDependency(QObject *clientDependency)
 {
-    qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->removeClientDependency(qmodelingobjectproperty_cast<QUmlDependency *>(clientDependency));
+    qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->removeClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
 }
 
 void QUmlProtocolTransitionObject::setName(QString name)
 {
-    qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->setName(name);
+    qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->setName(name);
 }
 
 void QUmlProtocolTransitionObject::setNameExpression(QObject *nameExpression)
 {
-    qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
+    qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->setNameExpression(qmodelingelementproperty_cast<QUmlStringExpression *>(nameExpression));
 }
 
 void QUmlProtocolTransitionObject::setNamespace(QObject *namespace_)
 {
-    qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->setNamespace(qmodelingobjectproperty_cast<QUmlNamespace *>(namespace_));
+    qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->setNamespace(qmodelingelementproperty_cast<QUmlNamespace *>(namespace_));
 }
 
 void QUmlProtocolTransitionObject::setQualifiedName(QString qualifiedName)
 {
-    qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->setQualifiedName(qualifiedName);
+    qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->setQualifiedName(qualifiedName);
 }
 
 void QUmlProtocolTransitionObject::setVisibility(QtUml::VisibilityKind visibility)
 {
-    qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->setVisibility(visibility);
+    qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->setVisibility(visibility);
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [RedefinableElement]
 
 void QUmlProtocolTransitionObject::setLeaf(bool isLeaf)
 {
-    qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->setLeaf(isLeaf);
+    qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->setLeaf(isLeaf);
 }
 
 void QUmlProtocolTransitionObject::unsetLeaf()
 {
-    qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("leaf"));
+    Q_D(QModelingObject);
+    d->modifiedResettableProperties.removeAll(QStringLiteral("leaf"));
 }
 
 void QUmlProtocolTransitionObject::addRedefinedElement(QObject *redefinedElement)
 {
-    qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->addRedefinedElement(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefinedElement));
+    qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->addRedefinedElement(qmodelingelementproperty_cast<QUmlRedefinableElement *>(redefinedElement));
 }
 
 void QUmlProtocolTransitionObject::removeRedefinedElement(QObject *redefinedElement)
 {
-    qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->removeRedefinedElement(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefinedElement));
+    qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->removeRedefinedElement(qmodelingelementproperty_cast<QUmlRedefinableElement *>(redefinedElement));
 }
 // SLOTS FOR OWNED ATTRIBUTES [Namespace]
 
 void QUmlProtocolTransitionObject::addElementImport(QObject *elementImport)
 {
-    qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->addElementImport(qmodelingobjectproperty_cast<QUmlElementImport *>(elementImport));
+    qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->addElementImport(qmodelingelementproperty_cast<QUmlElementImport *>(elementImport));
 }
 
 void QUmlProtocolTransitionObject::removeElementImport(QObject *elementImport)
 {
-    qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->removeElementImport(qmodelingobjectproperty_cast<QUmlElementImport *>(elementImport));
+    qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->removeElementImport(qmodelingelementproperty_cast<QUmlElementImport *>(elementImport));
 }
 
 void QUmlProtocolTransitionObject::addImportedMember(QObject *importedMember)
 {
-    qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->addImportedMember(qmodelingobjectproperty_cast<QUmlPackageableElement *>(importedMember));
+    qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->addImportedMember(qmodelingelementproperty_cast<QUmlPackageableElement *>(importedMember));
 }
 
 void QUmlProtocolTransitionObject::removeImportedMember(QObject *importedMember)
 {
-    qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->removeImportedMember(qmodelingobjectproperty_cast<QUmlPackageableElement *>(importedMember));
+    qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->removeImportedMember(qmodelingelementproperty_cast<QUmlPackageableElement *>(importedMember));
 }
 
 void QUmlProtocolTransitionObject::addMember(QObject *member)
 {
-    qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->addMember(qmodelingobjectproperty_cast<QUmlNamedElement *>(member));
+    qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->addMember(qmodelingelementproperty_cast<QUmlNamedElement *>(member));
 }
 
 void QUmlProtocolTransitionObject::removeMember(QObject *member)
 {
-    qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->removeMember(qmodelingobjectproperty_cast<QUmlNamedElement *>(member));
+    qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->removeMember(qmodelingelementproperty_cast<QUmlNamedElement *>(member));
 }
 
 void QUmlProtocolTransitionObject::addOwnedMember(QObject *ownedMember)
 {
-    qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->addOwnedMember(qmodelingobjectproperty_cast<QUmlNamedElement *>(ownedMember));
+    qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->addOwnedMember(qmodelingelementproperty_cast<QUmlNamedElement *>(ownedMember));
 }
 
 void QUmlProtocolTransitionObject::removeOwnedMember(QObject *ownedMember)
 {
-    qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->removeOwnedMember(qmodelingobjectproperty_cast<QUmlNamedElement *>(ownedMember));
+    qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->removeOwnedMember(qmodelingelementproperty_cast<QUmlNamedElement *>(ownedMember));
 }
 
 void QUmlProtocolTransitionObject::addOwnedRule(QObject *ownedRule)
 {
-    qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->addOwnedRule(qmodelingobjectproperty_cast<QUmlConstraint *>(ownedRule));
+    qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->addOwnedRule(qmodelingelementproperty_cast<QUmlConstraint *>(ownedRule));
 }
 
 void QUmlProtocolTransitionObject::removeOwnedRule(QObject *ownedRule)
 {
-    qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->removeOwnedRule(qmodelingobjectproperty_cast<QUmlConstraint *>(ownedRule));
+    qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->removeOwnedRule(qmodelingelementproperty_cast<QUmlConstraint *>(ownedRule));
 }
 
 void QUmlProtocolTransitionObject::addPackageImport(QObject *packageImport)
 {
-    qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->addPackageImport(qmodelingobjectproperty_cast<QUmlPackageImport *>(packageImport));
+    qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->addPackageImport(qmodelingelementproperty_cast<QUmlPackageImport *>(packageImport));
 }
 
 void QUmlProtocolTransitionObject::removePackageImport(QObject *packageImport)
 {
-    qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->removePackageImport(qmodelingobjectproperty_cast<QUmlPackageImport *>(packageImport));
+    qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->removePackageImport(qmodelingelementproperty_cast<QUmlPackageImport *>(packageImport));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Transition]
 
 void QUmlProtocolTransitionObject::setContainer(QObject *container)
 {
-    qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->setContainer(qmodelingobjectproperty_cast<QUmlRegion *>(container));
+    qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->setContainer(qmodelingelementproperty_cast<QUmlRegion *>(container));
 }
 
 void QUmlProtocolTransitionObject::setEffect(QObject *effect)
 {
-    qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->setEffect(qmodelingobjectproperty_cast<QUmlBehavior *>(effect));
+    qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->setEffect(qmodelingelementproperty_cast<QUmlBehavior *>(effect));
 }
 
 void QUmlProtocolTransitionObject::setGuard(QObject *guard)
 {
-    qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->setGuard(qmodelingobjectproperty_cast<QUmlConstraint *>(guard));
+    qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->setGuard(qmodelingelementproperty_cast<QUmlConstraint *>(guard));
 }
 
 void QUmlProtocolTransitionObject::setKind(QtUml::TransitionKind kind)
 {
-    qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->setKind(kind);
+    qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->setKind(kind);
 }
 
 void QUmlProtocolTransitionObject::unsetKind()
 {
-    qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("kind"));
+    Q_D(QModelingObject);
+    d->modifiedResettableProperties.removeAll(QStringLiteral("kind"));
 }
 
 void QUmlProtocolTransitionObject::setRedefinedTransition(QObject *redefinedTransition)
 {
-    qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->setRedefinedTransition(qmodelingobjectproperty_cast<QUmlTransition *>(redefinedTransition));
+    qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->setRedefinedTransition(qmodelingelementproperty_cast<QUmlTransition *>(redefinedTransition));
 }
 
 void QUmlProtocolTransitionObject::setRedefinitionContext(QObject *redefinitionContext)
 {
-    qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->setRedefinitionContext(qmodelingobjectproperty_cast<QUmlClassifier *>(redefinitionContext));
+    qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->setRedefinitionContext(qmodelingelementproperty_cast<QUmlClassifier *>(redefinitionContext));
 }
 
 void QUmlProtocolTransitionObject::setSource(QObject *source)
 {
-    qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->setSource(qmodelingobjectproperty_cast<QUmlVertex *>(source));
+    qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->setSource(qmodelingelementproperty_cast<QUmlVertex *>(source));
 }
 
 void QUmlProtocolTransitionObject::setTarget(QObject *target)
 {
-    qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->setTarget(qmodelingobjectproperty_cast<QUmlVertex *>(target));
+    qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->setTarget(qmodelingelementproperty_cast<QUmlVertex *>(target));
 }
 
 void QUmlProtocolTransitionObject::addTrigger(QObject *trigger)
 {
-    qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->addTrigger(qmodelingobjectproperty_cast<QUmlTrigger *>(trigger));
+    qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->addTrigger(qmodelingelementproperty_cast<QUmlTrigger *>(trigger));
 }
 
 void QUmlProtocolTransitionObject::removeTrigger(QObject *trigger)
 {
-    qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->removeTrigger(qmodelingobjectproperty_cast<QUmlTrigger *>(trigger));
+    qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->removeTrigger(qmodelingelementproperty_cast<QUmlTrigger *>(trigger));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ProtocolTransition]
 
 void QUmlProtocolTransitionObject::setPostCondition(QObject *postCondition)
 {
-    qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->setPostCondition(qmodelingobjectproperty_cast<QUmlConstraint *>(postCondition));
+    qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->setPostCondition(qmodelingelementproperty_cast<QUmlConstraint *>(postCondition));
 }
 
 void QUmlProtocolTransitionObject::setPreCondition(QObject *preCondition)
 {
-    qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->setPreCondition(qmodelingobjectproperty_cast<QUmlConstraint *>(preCondition));
+    qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->setPreCondition(qmodelingelementproperty_cast<QUmlConstraint *>(preCondition));
 }
 
 void QUmlProtocolTransitionObject::addReferred(QObject *referred)
 {
-    qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->addReferred(qmodelingobjectproperty_cast<QUmlOperation *>(referred));
+    qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->addReferred(qmodelingelementproperty_cast<QUmlOperation *>(referred));
 }
 
 void QUmlProtocolTransitionObject::removeReferred(QObject *referred)
 {
-    qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->removeReferred(qmodelingobjectproperty_cast<QUmlOperation *>(referred));
+    qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->removeReferred(qmodelingelementproperty_cast<QUmlOperation *>(referred));
+}
+
+
+void QUmlProtocolTransitionObject::setGroupProperties()
+{
+    Q_D(QModelingObject);
+    const QMetaObject *metaObject = this->metaObject();
+
+    d->propertyGroups << QStringLiteral("QObject");
+    d->groupProperties.insert(QStringLiteral("QObject"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("objectName"))));
+
+    d->propertyGroups << QStringLiteral("QUmlElement");
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
+
+    d->propertyGroups << QStringLiteral("QUmlNamedElement");
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
+
+    d->propertyGroups << QStringLiteral("QUmlRedefinableElement");
+    d->groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isLeaf"))));
+    d->groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinedElements"))));
+
+    d->propertyGroups << QStringLiteral("QUmlNamespace");
+    d->groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("elementImports"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("importedMembers"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("members"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedMembers"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedRules"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("packageImports"))));
+
+    d->propertyGroups << QStringLiteral("QUmlTransition");
+    d->groupProperties.insert(QStringLiteral("QUmlTransition"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("container"))));
+    d->groupProperties.insert(QStringLiteral("QUmlTransition"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("effect"))));
+    d->groupProperties.insert(QStringLiteral("QUmlTransition"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("guard"))));
+    d->groupProperties.insert(QStringLiteral("QUmlTransition"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("kind"))));
+    d->groupProperties.insert(QStringLiteral("QUmlTransition"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinedTransition"))));
+    d->groupProperties.insert(QStringLiteral("QUmlTransition"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinitionContext"))));
+    d->groupProperties.insert(QStringLiteral("QUmlTransition"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("source"))));
+    d->groupProperties.insert(QStringLiteral("QUmlTransition"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("target"))));
+    d->groupProperties.insert(QStringLiteral("QUmlTransition"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("triggers"))));
+
+    d->propertyGroups << QStringLiteral("QUmlProtocolTransition");
+    d->groupProperties.insert(QStringLiteral("QUmlProtocolTransition"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("postCondition"))));
+    d->groupProperties.insert(QStringLiteral("QUmlProtocolTransition"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("preCondition"))));
+    d->groupProperties.insert(QStringLiteral("QUmlProtocolTransition"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("referred"))));
+}
+
+void QUmlProtocolTransitionObject::setPropertyData()
+{
+    Q_DECLARE_METAPROPERTY_INFO(QUmlProtocolTransition, postCondition, AggregationRole, QStringLiteral("composite"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlProtocolTransition, postCondition, PropertyClassRole, QStringLiteral("QUmlProtocolTransition"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlProtocolTransition, postCondition, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlProtocolTransition, postCondition, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlProtocolTransition, postCondition, DocumentationRole, QStringLiteral("Specifies the post condition of the transition which is the condition that should be obtained once the transition is triggered. This post condition is part of the post condition of the operation connected to the transition."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlProtocolTransition, postCondition, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlProtocolTransition, postCondition, SubsettedPropertiesRole, QStringLiteral("Namespace-ownedRule"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlProtocolTransition, postCondition, OppositeEndRole, QStringLiteral(""));
+
+    Q_DECLARE_METAPROPERTY_INFO(QUmlProtocolTransition, preCondition, AggregationRole, QStringLiteral("composite"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlProtocolTransition, preCondition, PropertyClassRole, QStringLiteral("QUmlProtocolTransition"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlProtocolTransition, preCondition, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlProtocolTransition, preCondition, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlProtocolTransition, preCondition, DocumentationRole, QStringLiteral("Specifies the precondition of the transition. It specifies the condition that should be verified before triggering the transition. This guard condition added to the source state will be evaluated as part of the precondition of the operation referred by the transition if any."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlProtocolTransition, preCondition, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlProtocolTransition, preCondition, SubsettedPropertiesRole, QStringLiteral("Transition-guard"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlProtocolTransition, preCondition, OppositeEndRole, QStringLiteral(""));
+
+    Q_DECLARE_METAPROPERTY_INFO(QUmlProtocolTransition, referred, AggregationRole, QStringLiteral("none"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlProtocolTransition, referred, PropertyClassRole, QStringLiteral("QUmlProtocolTransition"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlProtocolTransition, referred, IsDerivedRole, true);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlProtocolTransition, referred, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlProtocolTransition, referred, DocumentationRole, QStringLiteral("This association refers to the associated operation. It is derived from the operation of the call trigger when applicable."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlProtocolTransition, referred, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlProtocolTransition, referred, SubsettedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlProtocolTransition, referred, OppositeEndRole, QStringLiteral(""));
+
 }
 
 QT_END_NAMESPACE

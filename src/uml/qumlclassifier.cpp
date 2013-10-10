@@ -81,15 +81,13 @@ QUmlClassifier::QUmlClassifier() :
     _representation(0),
     _templateParameter(0)
 {
-    setGroupProperties();
-    setPropertyData();
 }
 
 QUmlClassifier::~QUmlClassifier()
 {
 }
 
-QModelingObject *QUmlClassifier::clone() const
+QModelingElement *QUmlClassifier::clone() const
 {
     QUmlClassifier *c = new QUmlClassifier;
     foreach (QUmlComment *element, ownedComments())
@@ -156,8 +154,8 @@ void QUmlClassifier::addAttribute(QUmlProperty *attribute)
 
     if (!_attributes.contains(attribute)) {
         _attributes.insert(attribute);
-        if (attribute && attribute->asQObject() && this->asQObject())
-            QObject::connect(attribute->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeAttribute(QObject *)));
+        if (attribute && attribute->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(attribute->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeAttribute(QObject *)));
 
         // Adjust subsetted properties
         addFeature(attribute);
@@ -192,9 +190,9 @@ void QUmlClassifier::addCollaborationUse(QUmlCollaborationUse *collaborationUse)
 
     if (!_collaborationUses.contains(collaborationUse)) {
         _collaborationUses.insert(collaborationUse);
-        if (collaborationUse && collaborationUse->asQObject() && this->asQObject())
-            QObject::connect(collaborationUse->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeCollaborationUse(QObject *)));
-        collaborationUse->asQObject()->setParent(this->asQObject());
+        if (collaborationUse && collaborationUse->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(collaborationUse->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeCollaborationUse(QObject *)));
+        collaborationUse->asQModelingObject()->setParent(this->asQModelingObject());
 
         // Adjust subsetted properties
         addOwnedElement(collaborationUse);
@@ -207,8 +205,8 @@ void QUmlClassifier::removeCollaborationUse(QUmlCollaborationUse *collaborationU
 
     if (_collaborationUses.contains(collaborationUse)) {
         _collaborationUses.remove(collaborationUse);
-        if (collaborationUse->asQObject())
-            collaborationUse->asQObject()->setParent(0);
+        if (collaborationUse->asQModelingObject())
+            collaborationUse->asQModelingObject()->setParent(0);
 
         // Adjust subsetted properties
         removeOwnedElement(collaborationUse);
@@ -231,8 +229,8 @@ void QUmlClassifier::addFeature(QUmlFeature *feature)
 
     if (!_features.contains(feature)) {
         _features.insert(feature);
-        if (feature && feature->asQObject() && this->asQObject())
-            QObject::connect(feature->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeFeature(QObject *)));
+        if (feature && feature->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(feature->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeFeature(QObject *)));
 
         // Adjust subsetted properties
         addMember(feature);
@@ -313,9 +311,9 @@ void QUmlClassifier::addGeneralization(QUmlGeneralization *generalization)
 
     if (!_generalizations.contains(generalization)) {
         _generalizations.insert(generalization);
-        if (generalization && generalization->asQObject() && this->asQObject())
-            QObject::connect(generalization->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeGeneralization(QObject *)));
-        generalization->asQObject()->setParent(this->asQObject());
+        if (generalization && generalization->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(generalization->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeGeneralization(QObject *)));
+        generalization->asQModelingObject()->setParent(this->asQModelingObject());
 
         // Adjust subsetted properties
         addOwnedElement(generalization);
@@ -333,8 +331,8 @@ void QUmlClassifier::removeGeneralization(QUmlGeneralization *generalization)
 
     if (_generalizations.contains(generalization)) {
         _generalizations.remove(generalization);
-        if (generalization->asQObject())
-            generalization->asQObject()->setParent(0);
+        if (generalization->asQModelingObject())
+            generalization->asQModelingObject()->setParent(0);
 
         // Adjust subsetted properties
         removeOwnedElement(generalization);
@@ -404,7 +402,7 @@ void QUmlClassifier::setAbstract(bool isAbstract)
 
     if (_isAbstract != isAbstract) {
         _isAbstract = isAbstract;
-        _modifiedResettableProperties << QStringLiteral("isAbstract");
+        _qModelingObject->modifiedResettableProperties() << QStringLiteral("isAbstract");
     }
 }
 
@@ -424,7 +422,7 @@ void QUmlClassifier::setFinalSpecialization(bool isFinalSpecialization)
 
     if (_isFinalSpecialization != isFinalSpecialization) {
         _isFinalSpecialization = isFinalSpecialization;
-        _modifiedResettableProperties << QStringLiteral("isFinalSpecialization");
+        _qModelingObject->modifiedResettableProperties() << QStringLiteral("isFinalSpecialization");
     }
 }
 
@@ -444,9 +442,9 @@ void QUmlClassifier::setOwnedTemplateSignature(QUmlRedefinableTemplateSignature 
 
     if (_ownedTemplateSignature != ownedTemplateSignature) {
         _ownedTemplateSignature = ownedTemplateSignature;
-        if (ownedTemplateSignature && ownedTemplateSignature->asQObject() && this->asQObject())
-            QObject::connect(ownedTemplateSignature->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setOwnedTemplateSignature()));
-        ownedTemplateSignature->asQObject()->setParent(this->asQObject());
+        if (ownedTemplateSignature && ownedTemplateSignature->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(ownedTemplateSignature->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setOwnedTemplateSignature()));
+        ownedTemplateSignature->asQModelingObject()->setParent(this->asQModelingObject());
     }
 }
 
@@ -466,9 +464,9 @@ void QUmlClassifier::addOwnedUseCase(QUmlUseCase *ownedUseCase)
 
     if (!_ownedUseCases.contains(ownedUseCase)) {
         _ownedUseCases.insert(ownedUseCase);
-        if (ownedUseCase && ownedUseCase->asQObject() && this->asQObject())
-            QObject::connect(ownedUseCase->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeOwnedUseCase(QObject *)));
-        ownedUseCase->asQObject()->setParent(this->asQObject());
+        if (ownedUseCase && ownedUseCase->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(ownedUseCase->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeOwnedUseCase(QObject *)));
+        ownedUseCase->asQModelingObject()->setParent(this->asQModelingObject());
 
         // Adjust subsetted properties
         addOwnedMember(ownedUseCase);
@@ -481,8 +479,8 @@ void QUmlClassifier::removeOwnedUseCase(QUmlUseCase *ownedUseCase)
 
     if (_ownedUseCases.contains(ownedUseCase)) {
         _ownedUseCases.remove(ownedUseCase);
-        if (ownedUseCase->asQObject())
-            ownedUseCase->asQObject()->setParent(0);
+        if (ownedUseCase->asQModelingObject())
+            ownedUseCase->asQModelingObject()->setParent(0);
 
         // Adjust subsetted properties
         removeOwnedMember(ownedUseCase);
@@ -505,8 +503,8 @@ void QUmlClassifier::addPowertypeExtent(QUmlGeneralizationSet *powertypeExtent)
 
     if (!_powertypeExtents.contains(powertypeExtent)) {
         _powertypeExtents.insert(powertypeExtent);
-        if (powertypeExtent && powertypeExtent->asQObject() && this->asQObject())
-            QObject::connect(powertypeExtent->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removePowertypeExtent(QObject *)));
+        if (powertypeExtent && powertypeExtent->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(powertypeExtent->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removePowertypeExtent(QObject *)));
 
         // Adjust opposite properties
         if (powertypeExtent) {
@@ -545,8 +543,8 @@ void QUmlClassifier::addRedefinedClassifier(QUmlClassifier *redefinedClassifier)
 
     if (!_redefinedClassifiers.contains(redefinedClassifier)) {
         _redefinedClassifiers.insert(redefinedClassifier);
-        if (redefinedClassifier && redefinedClassifier->asQObject() && this->asQObject())
-            QObject::connect(redefinedClassifier->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeRedefinedClassifier(QObject *)));
+        if (redefinedClassifier && redefinedClassifier->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(redefinedClassifier->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeRedefinedClassifier(QObject *)));
 
         // Adjust subsetted properties
         addRedefinedElement(redefinedClassifier);
@@ -584,8 +582,8 @@ void QUmlClassifier::setRepresentation(QUmlCollaborationUse *representation)
         removeCollaborationUse(_representation);
 
         _representation = representation;
-        if (representation && representation->asQObject() && this->asQObject())
-            QObject::connect(representation->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setRepresentation()));
+        if (representation && representation->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(representation->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setRepresentation()));
 
         // Adjust subsetted properties
         if (representation) {
@@ -610,9 +608,9 @@ void QUmlClassifier::addSubstitution(QUmlSubstitution *substitution)
 
     if (!_substitutions.contains(substitution)) {
         _substitutions.insert(substitution);
-        if (substitution && substitution->asQObject() && this->asQObject())
-            QObject::connect(substitution->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeSubstitution(QObject *)));
-        substitution->asQObject()->setParent(this->asQObject());
+        if (substitution && substitution->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(substitution->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeSubstitution(QObject *)));
+        substitution->asQModelingObject()->setParent(this->asQModelingObject());
 
         // Adjust subsetted properties
         addOwnedElement(substitution);
@@ -631,8 +629,8 @@ void QUmlClassifier::removeSubstitution(QUmlSubstitution *substitution)
 
     if (_substitutions.contains(substitution)) {
         _substitutions.remove(substitution);
-        if (substitution->asQObject())
-            substitution->asQObject()->setParent(0);
+        if (substitution->asQModelingObject())
+            substitution->asQModelingObject()->setParent(0);
 
         // Adjust subsetted properties
         removeOwnedElement(substitution);
@@ -661,8 +659,8 @@ void QUmlClassifier::setTemplateParameter(QUmlClassifierTemplateParameter *templ
 
     if (_templateParameter != templateParameter) {
         _templateParameter = templateParameter;
-        if (templateParameter && templateParameter->asQObject() && this->asQObject())
-            QObject::connect(templateParameter->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setTemplateParameter()));
+        if (templateParameter && templateParameter->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(templateParameter->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setTemplateParameter()));
     }
 }
 
@@ -682,8 +680,8 @@ void QUmlClassifier::addUseCase(QUmlUseCase *useCase)
 
     if (!_useCases.contains(useCase)) {
         _useCases.insert(useCase);
-        if (useCase && useCase->asQObject() && this->asQObject())
-            QObject::connect(useCase->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeUseCase(QObject *)));
+        if (useCase && useCase->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(useCase->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeUseCase(QObject *)));
 
         // Adjust opposite properties
         if (useCase) {
@@ -801,196 +799,5 @@ QSet<QUmlClassifier *> QUmlClassifier::parents() const
     qWarning("UmlClassifier::parents(): to be implemented (operation)");
 
     return QSet<QUmlClassifier *> ();
-}
-
-void QUmlClassifier::setGroupProperties()
-{
-    const QMetaObject *metaObject = _qObject->metaObject();
-
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("elementImports"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("importedMembers"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("members"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedMembers"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedRules"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("packageImports"))));
-    _groupProperties.insert(QStringLiteral("QUmlParameterableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owningTemplateParameter"))));
-    _groupProperties.insert(QStringLiteral("QUmlPackageableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
-    _groupProperties.insert(QStringLiteral("QUmlType"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("package"))));
-    _groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isLeaf"))));
-    _groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinitionContexts"))));
-    _groupProperties.insert(QStringLiteral("QUmlTemplateableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("templateBindings"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("attributes"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("collaborationUses"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("features"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("generals"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("generalizations"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inheritedMembers"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isAbstract"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isFinalSpecialization"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedTemplateSignature"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedUseCases"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("powertypeExtents"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinedClassifiers"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("representation"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("substitutions"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("templateParameter"))));
-    _groupProperties.insert(QStringLiteral("QUmlClassifier"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("useCases"))));
-}
-
-void QUmlClassifier::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("attributes")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("attributes")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlClassifier");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("attributes")][QtModeling::IsDerivedRole] = true;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("attributes")][QtModeling::IsDerivedUnionRole] = true;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("attributes")][QtModeling::DocumentationRole] = QStringLiteral("Refers to all of the Properties that are direct (i.e. not inherited or imported) attributes of the classifier.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("attributes")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("attributes")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Classifier-feature A_redefinitionContext_redefinableElement-redefinableElement");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("attributes")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("collaborationUses")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("collaborationUses")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlClassifier");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("collaborationUses")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("collaborationUses")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("collaborationUses")][QtModeling::DocumentationRole] = QStringLiteral("References the collaboration uses owned by the classifier.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("collaborationUses")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("collaborationUses")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("collaborationUses")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("features")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("features")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlClassifier");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("features")][QtModeling::IsDerivedRole] = true;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("features")][QtModeling::IsDerivedUnionRole] = true;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("features")][QtModeling::DocumentationRole] = QStringLiteral("Specifies each feature defined in the classifier.Note that there may be members of the Classifier that are of the type Feature but are not included in this association, e.g. inherited features.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("features")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("features")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Namespace-member");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("features")][QtModeling::OppositeEndRole] = QStringLiteral("Feature-featuringClassifier");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("generals")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("generals")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlClassifier");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("generals")][QtModeling::IsDerivedRole] = true;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("generals")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("generals")][QtModeling::DocumentationRole] = QStringLiteral("Specifies the general Classifiers for this Classifier.References the general classifier in the Generalization relationship.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("generals")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("generals")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("generals")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("generalizations")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("generalizations")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlClassifier");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("generalizations")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("generalizations")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("generalizations")][QtModeling::DocumentationRole] = QStringLiteral("Specifies the Generalization relationships for this Classifier. These Generalizations navigaten to more general classifiers in the generalization hierarchy.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("generalizations")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("generalizations")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("A_source_directedRelationship-directedRelationship Element-ownedElement");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("generalizations")][QtModeling::OppositeEndRole] = QStringLiteral("Generalization-specific");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("inheritedMembers")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("inheritedMembers")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlClassifier");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("inheritedMembers")][QtModeling::IsDerivedRole] = true;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("inheritedMembers")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("inheritedMembers")][QtModeling::DocumentationRole] = QStringLiteral("Specifies all elements inherited by this classifier from the general classifiers.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("inheritedMembers")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("inheritedMembers")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Namespace-member");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("inheritedMembers")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("isAbstract")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("isAbstract")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlClassifier");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("isAbstract")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("isAbstract")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("isAbstract")][QtModeling::DocumentationRole] = QStringLiteral("If true, the Classifier does not provide a complete declaration and can typically not be instantiated. An abstract classifier is intended to be used by other classifiers e.g. as the target of general metarelationships or generalization relationships.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("isAbstract")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("isAbstract")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("isAbstract")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("isFinalSpecialization")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("isFinalSpecialization")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlClassifier");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("isFinalSpecialization")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("isFinalSpecialization")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("isFinalSpecialization")][QtModeling::DocumentationRole] = QStringLiteral("If true, the Classifier cannot be specialized by generalization. Note that this property is preserved through package merge operations; that is, the capability to specialize a Classifier (i.e., isFinalSpecialization =false) must be preserved in the resulting Classifier of a package merge operation where a Classifier with isFinalSpecialization =false is merged with a matching Classifier with isFinalSpecialization =true: the resulting Classifier will have isFinalSpecialization =false.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("isFinalSpecialization")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("isFinalSpecialization")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("isFinalSpecialization")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("ownedTemplateSignature")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("ownedTemplateSignature")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlClassifier");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("ownedTemplateSignature")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("ownedTemplateSignature")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("ownedTemplateSignature")][QtModeling::DocumentationRole] = QStringLiteral("The optional template signature specifying the formal template parameters.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("ownedTemplateSignature")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("TemplateableElement-ownedTemplateSignature");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("ownedTemplateSignature")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("A_redefinitionContext_redefinableElement-redefinableElement");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("ownedTemplateSignature")][QtModeling::OppositeEndRole] = QStringLiteral("RedefinableTemplateSignature-classifier");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("ownedUseCases")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("ownedUseCases")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlClassifier");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("ownedUseCases")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("ownedUseCases")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("ownedUseCases")][QtModeling::DocumentationRole] = QStringLiteral("References the use cases owned by this classifier.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("ownedUseCases")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("ownedUseCases")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Namespace-ownedMember");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("ownedUseCases")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("powertypeExtents")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("powertypeExtents")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlClassifier");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("powertypeExtents")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("powertypeExtents")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("powertypeExtents")][QtModeling::DocumentationRole] = QStringLiteral("Designates the GeneralizationSet of which the associated Classifier is a power type.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("powertypeExtents")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("powertypeExtents")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("powertypeExtents")][QtModeling::OppositeEndRole] = QStringLiteral("GeneralizationSet-powertype");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("redefinedClassifiers")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("redefinedClassifiers")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlClassifier");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("redefinedClassifiers")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("redefinedClassifiers")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("redefinedClassifiers")][QtModeling::DocumentationRole] = QStringLiteral("References the Classifiers that are redefined by this Classifier.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("redefinedClassifiers")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("redefinedClassifiers")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("RedefinableElement-redefinedElement");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("redefinedClassifiers")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("representation")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("representation")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlClassifier");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("representation")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("representation")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("representation")][QtModeling::DocumentationRole] = QStringLiteral("References a collaboration use which indicates the collaboration that represents this classifier.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("representation")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("representation")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Classifier-collaborationUse");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("representation")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("substitutions")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("substitutions")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlClassifier");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("substitutions")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("substitutions")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("substitutions")][QtModeling::DocumentationRole] = QStringLiteral("References the substitutions that are owned by this Classifier.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("substitutions")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("substitutions")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement NamedElement-clientDependency");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("substitutions")][QtModeling::OppositeEndRole] = QStringLiteral("Substitution-substitutingClassifier");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("templateParameter")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("templateParameter")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlClassifier");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("templateParameter")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("templateParameter")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("templateParameter")][QtModeling::DocumentationRole] = QStringLiteral("The template parameter that exposes this element as a formal parameter.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("templateParameter")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("ParameterableElement-templateParameter");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("templateParameter")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("templateParameter")][QtModeling::OppositeEndRole] = QStringLiteral("ClassifierTemplateParameter-parameteredElement");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("useCases")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("useCases")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlClassifier");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("useCases")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("useCases")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("useCases")][QtModeling::DocumentationRole] = QStringLiteral("The set of use cases for which this Classifier is the subject.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("useCases")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("useCases")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClassifier")][QStringLiteral("useCases")][QtModeling::OppositeEndRole] = QStringLiteral("UseCase-subject");
-
 }
 

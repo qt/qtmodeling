@@ -45,7 +45,6 @@
 
 #include <QtUml/QUmlNamedElement>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -57,10 +56,10 @@ class QUmlOccurrenceSpecification;
 class Q_UML_EXPORT QUmlGeneralOrdering : public QUmlNamedElement
 {
 public:
-    explicit QUmlGeneralOrdering(bool createQObject = true);
+    explicit QUmlGeneralOrdering(bool createQModelingObject = true);
     virtual ~QUmlGeneralOrdering();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
     QUmlOccurrenceSpecification *after() const;
@@ -71,9 +70,6 @@ public:
 protected:
     QUmlOccurrenceSpecification *_after;
     QUmlOccurrenceSpecification *_before;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

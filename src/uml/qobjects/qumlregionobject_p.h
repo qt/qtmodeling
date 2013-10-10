@@ -43,7 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtCore/QObject>
+#include <QtModeling/QModelingObject>
 
 #include <QtUml/QtUmlNamespace>
 
@@ -54,9 +54,12 @@ QT_BEGIN_NAMESPACE
 QT_MODULE(QtUml)
 
 class QUmlRegion;
-class Q_UML_EXPORT QUmlRegionObject : public QObject
+class QModelingObjectPrivate;
+class Q_UML_EXPORT QUmlRegionObject : public QModelingObject
 {
     Q_OBJECT
+    Q_DISABLE_COPY(QUmlRegionObject)
+    Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [Element]
     Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
@@ -92,7 +95,7 @@ class Q_UML_EXPORT QUmlRegionObject : public QObject
     Q_PROPERTY(QSet<QObject *> transitions READ transitions)
 
 public:
-    Q_INVOKABLE explicit QUmlRegionObject(QUmlRegion *qModelingObject);
+    Q_INVOKABLE explicit QUmlRegionObject(QUmlRegion *qModelingElement);
     virtual ~QUmlRegionObject();
 
     // Owned attributes [Element]
@@ -199,6 +202,10 @@ public Q_SLOTS:
     void removeSubvertex(QObject *subvertex);
     void addTransition(QObject *transition);
     void removeTransition(QObject *transition);
+
+protected:
+    virtual void setGroupProperties();
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

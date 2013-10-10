@@ -45,7 +45,6 @@
 
 #include <QtUml/QUmlNamedElement>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -58,10 +57,10 @@ class QUmlPort;
 class Q_UML_EXPORT QUmlTrigger : public QUmlNamedElement
 {
 public:
-    explicit QUmlTrigger(bool createQObject = true);
+    explicit QUmlTrigger(bool createQModelingObject = true);
     virtual ~QUmlTrigger();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
     QUmlEvent *event() const;
@@ -73,9 +72,6 @@ public:
 protected:
     QUmlEvent *_event;
     QSet<QUmlPort *> _ports;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

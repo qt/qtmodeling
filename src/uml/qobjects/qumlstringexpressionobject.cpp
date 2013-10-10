@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlstringexpressionobject_p.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlComment>
@@ -56,16 +57,18 @@
 
 QT_BEGIN_NAMESPACE
 
-QUmlStringExpressionObject::QUmlStringExpressionObject(QUmlStringExpression *qModelingObject)
+QUmlStringExpressionObject::QUmlStringExpressionObject(QUmlStringExpression *qModelingElement)
 {
-    setProperty("modelingObject", QVariant::fromValue(static_cast<QModelingObject *>(qModelingObject)));
+    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(qModelingElement)));
+    setGroupProperties();
+    setPropertyData();
 }
 
 QUmlStringExpressionObject::~QUmlStringExpressionObject()
 {
     if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->deletingFromQObject = true;
-        delete qmodelingobjectproperty_cast<QUmlComment *>(this);
+        qmodelingelementproperty_cast<QUmlStringExpression *>(this)->deletingFromQModelingObject = true;
+        delete qmodelingelementproperty_cast<QUmlComment *>(this);
     }
 }
 
@@ -74,25 +77,25 @@ QUmlStringExpressionObject::~QUmlStringExpressionObject()
 const QSet<QObject *> QUmlStringExpressionObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->ownedComments())
-        set.insert(element->asQObject());
+    foreach (QUmlComment *element, qmodelingelementproperty_cast<QUmlStringExpression *>(this)->ownedComments())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlStringExpressionObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->ownedElements())
-        set.insert(element->asQObject());
+    foreach (QUmlElement *element, qmodelingelementproperty_cast<QUmlStringExpression *>(this)->ownedElements())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 QObject *QUmlStringExpressionObject::owner() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->owner())
+    if (!qmodelingelementproperty_cast<QUmlStringExpression *>(this)->owner())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->owner()->asQObject();
+        return qmodelingelementproperty_cast<QUmlStringExpression *>(this)->owner()->asQModelingObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -100,70 +103,70 @@ QObject *QUmlStringExpressionObject::owner() const
 const QSet<QObject *> QUmlStringExpressionObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->clientDependencies())
-        set.insert(element->asQObject());
+    foreach (QUmlDependency *element, qmodelingelementproperty_cast<QUmlStringExpression *>(this)->clientDependencies())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 QString QUmlStringExpressionObject::name() const
 {
-    return qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->name();
+    return qmodelingelementproperty_cast<QUmlStringExpression *>(this)->name();
 }
 
 QObject *QUmlStringExpressionObject::nameExpression() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->nameExpression())
+    if (!qmodelingelementproperty_cast<QUmlStringExpression *>(this)->nameExpression())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->nameExpression()->asQObject();
+        return qmodelingelementproperty_cast<QUmlStringExpression *>(this)->nameExpression()->asQModelingObject();
 }
 
 QObject *QUmlStringExpressionObject::namespace_() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->namespace_())
+    if (!qmodelingelementproperty_cast<QUmlStringExpression *>(this)->namespace_())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->namespace_()->asQObject();
+        return qmodelingelementproperty_cast<QUmlStringExpression *>(this)->namespace_()->asQModelingObject();
 }
 
 QString QUmlStringExpressionObject::qualifiedName() const
 {
-    return qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->qualifiedName();
+    return qmodelingelementproperty_cast<QUmlStringExpression *>(this)->qualifiedName();
 }
 
 // OWNED ATTRIBUTES [TypedElement]
 
 QObject *QUmlStringExpressionObject::type() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->type())
+    if (!qmodelingelementproperty_cast<QUmlStringExpression *>(this)->type())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->type()->asQObject();
+        return qmodelingelementproperty_cast<QUmlStringExpression *>(this)->type()->asQModelingObject();
 }
 
 // OWNED ATTRIBUTES [ParameterableElement]
 
 QObject *QUmlStringExpressionObject::owningTemplateParameter() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->owningTemplateParameter())
+    if (!qmodelingelementproperty_cast<QUmlStringExpression *>(this)->owningTemplateParameter())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->owningTemplateParameter()->asQObject();
+        return qmodelingelementproperty_cast<QUmlStringExpression *>(this)->owningTemplateParameter()->asQModelingObject();
 }
 
 QObject *QUmlStringExpressionObject::templateParameter() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->templateParameter())
+    if (!qmodelingelementproperty_cast<QUmlStringExpression *>(this)->templateParameter())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->templateParameter()->asQObject();
+        return qmodelingelementproperty_cast<QUmlStringExpression *>(this)->templateParameter()->asQModelingObject();
 }
 
 // OWNED ATTRIBUTES [PackageableElement]
 
 QtUml::VisibilityKind QUmlStringExpressionObject::visibility() const
 {
-    return qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->visibility();
+    return qmodelingelementproperty_cast<QUmlStringExpression *>(this)->visibility();
 }
 
 // OWNED ATTRIBUTES [Expression]
@@ -171,31 +174,31 @@ QtUml::VisibilityKind QUmlStringExpressionObject::visibility() const
 const QList<QObject *> QUmlStringExpressionObject::operands() const
 {
     QList<QObject *> list;
-    foreach (QUmlValueSpecification *element, qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->operands())
-        list.append(element->asQObject());
+    foreach (QUmlValueSpecification *element, qmodelingelementproperty_cast<QUmlStringExpression *>(this)->operands())
+        list.append(element->asQModelingObject());
     return list;
 }
 
 QString QUmlStringExpressionObject::symbol() const
 {
-    return qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->symbol();
+    return qmodelingelementproperty_cast<QUmlStringExpression *>(this)->symbol();
 }
 
 // OWNED ATTRIBUTES [TemplateableElement]
 
 QObject *QUmlStringExpressionObject::ownedTemplateSignature() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->ownedTemplateSignature())
+    if (!qmodelingelementproperty_cast<QUmlStringExpression *>(this)->ownedTemplateSignature())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->ownedTemplateSignature()->asQObject();
+        return qmodelingelementproperty_cast<QUmlStringExpression *>(this)->ownedTemplateSignature()->asQModelingObject();
 }
 
 const QSet<QObject *> QUmlStringExpressionObject::templateBindings() const
 {
     QSet<QObject *> set;
-    foreach (QUmlTemplateBinding *element, qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->templateBindings())
-        set.insert(element->asQObject());
+    foreach (QUmlTemplateBinding *element, qmodelingelementproperty_cast<QUmlStringExpression *>(this)->templateBindings())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
@@ -203,17 +206,17 @@ const QSet<QObject *> QUmlStringExpressionObject::templateBindings() const
 
 QObject *QUmlStringExpressionObject::owningExpression() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->owningExpression())
+    if (!qmodelingelementproperty_cast<QUmlStringExpression *>(this)->owningExpression())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->owningExpression()->asQObject();
+        return qmodelingelementproperty_cast<QUmlStringExpression *>(this)->owningExpression()->asQModelingObject();
 }
 
 const QSet<QObject *> QUmlStringExpressionObject::subExpressions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlStringExpression *element, qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->subExpressions())
-        set.insert(element->asQObject());
+    foreach (QUmlStringExpression *element, qmodelingelementproperty_cast<QUmlStringExpression *>(this)->subExpressions())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
@@ -222,14 +225,14 @@ const QSet<QObject *> QUmlStringExpressionObject::subExpressions() const
 QSet<QObject *> QUmlStringExpressionObject::allOwnedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->allOwnedElements())
-        set.insert(element->asQObject());
+    foreach (QUmlElement *element, qmodelingelementproperty_cast<QUmlStringExpression *>(this)->allOwnedElements())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 bool QUmlStringExpressionObject::mustBeOwned() const
 {
-    return qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->mustBeOwned();
+    return qmodelingelementproperty_cast<QUmlStringExpression *>(this)->mustBeOwned();
 }
 
 // OPERATIONS [NamedElement]
@@ -237,85 +240,85 @@ bool QUmlStringExpressionObject::mustBeOwned() const
 QList<QObject *> QUmlStringExpressionObject::allNamespaces() const
 {
     QList<QObject *> set;
-    foreach (QUmlNamespace *element, qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->allNamespaces())
-        set.append(element->asQObject());
+    foreach (QUmlNamespace *element, qmodelingelementproperty_cast<QUmlStringExpression *>(this)->allNamespaces())
+        set.append(element->asQModelingObject());
     return set;
 }
 
 QSet<QObject *> QUmlStringExpressionObject::allOwningPackages() const
 {
     QSet<QObject *> set;
-    foreach (QUmlPackage *element, qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->allOwningPackages())
-        set.insert(element->asQObject());
+    foreach (QUmlPackage *element, qmodelingelementproperty_cast<QUmlStringExpression *>(this)->allOwningPackages())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 bool QUmlStringExpressionObject::isDistinguishableFrom(QObject *n, QObject *ns) const
 {
-    return qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->isDistinguishableFrom(qmodelingobjectproperty_cast<QUmlNamedElement *>(n), qmodelingobjectproperty_cast<QUmlNamespace *>(ns));
+    return qmodelingelementproperty_cast<QUmlStringExpression *>(this)->isDistinguishableFrom(qmodelingelementproperty_cast<QUmlNamedElement *>(n), qmodelingelementproperty_cast<QUmlNamespace *>(ns));
 }
 
 QString QUmlStringExpressionObject::separator() const
 {
-    return qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->separator();
+    return qmodelingelementproperty_cast<QUmlStringExpression *>(this)->separator();
 }
 
 // OPERATIONS [ParameterableElement]
 
 bool QUmlStringExpressionObject::isTemplateParameter() const
 {
-    return qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->isTemplateParameter();
+    return qmodelingelementproperty_cast<QUmlStringExpression *>(this)->isTemplateParameter();
 }
 
 // OPERATIONS [ValueSpecification]
 
 bool QUmlStringExpressionObject::booleanValue() const
 {
-    return qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->booleanValue();
+    return qmodelingelementproperty_cast<QUmlStringExpression *>(this)->booleanValue();
 }
 
 int QUmlStringExpressionObject::integerValue() const
 {
-    return qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->integerValue();
+    return qmodelingelementproperty_cast<QUmlStringExpression *>(this)->integerValue();
 }
 
 bool QUmlStringExpressionObject::isCompatibleWith(QObject *p) const
 {
-    return qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->isCompatibleWith(qmodelingobjectproperty_cast<QUmlParameterableElement *>(p));
+    return qmodelingelementproperty_cast<QUmlStringExpression *>(this)->isCompatibleWith(qmodelingelementproperty_cast<QUmlParameterableElement *>(p));
 }
 
 bool QUmlStringExpressionObject::isComputable() const
 {
-    return qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->isComputable();
+    return qmodelingelementproperty_cast<QUmlStringExpression *>(this)->isComputable();
 }
 
 bool QUmlStringExpressionObject::isNull() const
 {
-    return qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->isNull();
+    return qmodelingelementproperty_cast<QUmlStringExpression *>(this)->isNull();
 }
 
 double QUmlStringExpressionObject::realValue() const
 {
-    return qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->realValue();
+    return qmodelingelementproperty_cast<QUmlStringExpression *>(this)->realValue();
 }
 
 int QUmlStringExpressionObject::unlimitedValue() const
 {
-    return qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->unlimitedValue();
+    return qmodelingelementproperty_cast<QUmlStringExpression *>(this)->unlimitedValue();
 }
 
 // OPERATIONS [TemplateableElement]
 
 bool QUmlStringExpressionObject::isTemplate() const
 {
-    return qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->isTemplate();
+    return qmodelingelementproperty_cast<QUmlStringExpression *>(this)->isTemplate();
 }
 
 QSet<QObject *> QUmlStringExpressionObject::parameterableElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlParameterableElement *element, qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->parameterableElements())
-        set.insert(element->asQObject());
+    foreach (QUmlParameterableElement *element, qmodelingelementproperty_cast<QUmlStringExpression *>(this)->parameterableElements())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
@@ -323,147 +326,216 @@ QSet<QObject *> QUmlStringExpressionObject::parameterableElements() const
 
 QString QUmlStringExpressionObject::stringValue() const
 {
-    return qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->stringValue();
+    return qmodelingelementproperty_cast<QUmlStringExpression *>(this)->stringValue();
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Element]
 
 void QUmlStringExpressionObject::addOwnedComment(QObject *ownedComment)
 {
-    qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->addOwnedComment(qmodelingobjectproperty_cast<QUmlComment *>(ownedComment));
+    qmodelingelementproperty_cast<QUmlStringExpression *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
 }
 
 void QUmlStringExpressionObject::removeOwnedComment(QObject *ownedComment)
 {
-    qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->removeOwnedComment(qmodelingobjectproperty_cast<QUmlComment *>(ownedComment));
+    qmodelingelementproperty_cast<QUmlStringExpression *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
 }
 
 void QUmlStringExpressionObject::addOwnedElement(QObject *ownedElement)
 {
-    qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->addOwnedElement(qmodelingobjectproperty_cast<QUmlElement *>(ownedElement));
+    qmodelingelementproperty_cast<QUmlStringExpression *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
 }
 
 void QUmlStringExpressionObject::removeOwnedElement(QObject *ownedElement)
 {
-    qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->removeOwnedElement(qmodelingobjectproperty_cast<QUmlElement *>(ownedElement));
+    qmodelingelementproperty_cast<QUmlStringExpression *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
 }
 
 void QUmlStringExpressionObject::setOwner(QObject *owner)
 {
-    qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->setOwner(qmodelingobjectproperty_cast<QUmlElement *>(owner));
+    qmodelingelementproperty_cast<QUmlStringExpression *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [NamedElement]
 
 void QUmlStringExpressionObject::addClientDependency(QObject *clientDependency)
 {
-    qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->addClientDependency(qmodelingobjectproperty_cast<QUmlDependency *>(clientDependency));
+    qmodelingelementproperty_cast<QUmlStringExpression *>(this)->addClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
 }
 
 void QUmlStringExpressionObject::removeClientDependency(QObject *clientDependency)
 {
-    qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->removeClientDependency(qmodelingobjectproperty_cast<QUmlDependency *>(clientDependency));
+    qmodelingelementproperty_cast<QUmlStringExpression *>(this)->removeClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
 }
 
 void QUmlStringExpressionObject::setName(QString name)
 {
-    qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->setName(name);
+    qmodelingelementproperty_cast<QUmlStringExpression *>(this)->setName(name);
 }
 
 void QUmlStringExpressionObject::setNameExpression(QObject *nameExpression)
 {
-    qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
+    qmodelingelementproperty_cast<QUmlStringExpression *>(this)->setNameExpression(qmodelingelementproperty_cast<QUmlStringExpression *>(nameExpression));
 }
 
 void QUmlStringExpressionObject::setNamespace(QObject *namespace_)
 {
-    qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->setNamespace(qmodelingobjectproperty_cast<QUmlNamespace *>(namespace_));
+    qmodelingelementproperty_cast<QUmlStringExpression *>(this)->setNamespace(qmodelingelementproperty_cast<QUmlNamespace *>(namespace_));
 }
 
 void QUmlStringExpressionObject::setQualifiedName(QString qualifiedName)
 {
-    qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->setQualifiedName(qualifiedName);
+    qmodelingelementproperty_cast<QUmlStringExpression *>(this)->setQualifiedName(qualifiedName);
 }
 // SLOTS FOR OWNED ATTRIBUTES [TypedElement]
 
 void QUmlStringExpressionObject::setType(QObject *type)
 {
-    qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->setType(qmodelingobjectproperty_cast<QUmlType *>(type));
+    qmodelingelementproperty_cast<QUmlStringExpression *>(this)->setType(qmodelingelementproperty_cast<QUmlType *>(type));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ParameterableElement]
 
 void QUmlStringExpressionObject::setOwningTemplateParameter(QObject *owningTemplateParameter)
 {
-    qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->setOwningTemplateParameter(qmodelingobjectproperty_cast<QUmlTemplateParameter *>(owningTemplateParameter));
+    qmodelingelementproperty_cast<QUmlStringExpression *>(this)->setOwningTemplateParameter(qmodelingelementproperty_cast<QUmlTemplateParameter *>(owningTemplateParameter));
 }
 
 void QUmlStringExpressionObject::setTemplateParameter(QObject *templateParameter)
 {
-    qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->setTemplateParameter(qmodelingobjectproperty_cast<QUmlTemplateParameter *>(templateParameter));
+    qmodelingelementproperty_cast<QUmlStringExpression *>(this)->setTemplateParameter(qmodelingelementproperty_cast<QUmlTemplateParameter *>(templateParameter));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [PackageableElement]
 
 void QUmlStringExpressionObject::setVisibility(QtUml::VisibilityKind visibility)
 {
-    qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->setVisibility(visibility);
+    qmodelingelementproperty_cast<QUmlStringExpression *>(this)->setVisibility(visibility);
 }
 
 void QUmlStringExpressionObject::unsetVisibility()
 {
-    qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("visibility"));
+    Q_D(QModelingObject);
+    d->modifiedResettableProperties.removeAll(QStringLiteral("visibility"));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Expression]
 
 void QUmlStringExpressionObject::addOperand(QObject *operand)
 {
-    qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->addOperand(qmodelingobjectproperty_cast<QUmlValueSpecification *>(operand));
+    qmodelingelementproperty_cast<QUmlStringExpression *>(this)->addOperand(qmodelingelementproperty_cast<QUmlValueSpecification *>(operand));
 }
 
 void QUmlStringExpressionObject::removeOperand(QObject *operand)
 {
-    qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->removeOperand(qmodelingobjectproperty_cast<QUmlValueSpecification *>(operand));
+    qmodelingelementproperty_cast<QUmlStringExpression *>(this)->removeOperand(qmodelingelementproperty_cast<QUmlValueSpecification *>(operand));
 }
 
 void QUmlStringExpressionObject::setSymbol(QString symbol)
 {
-    qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->setSymbol(symbol);
+    qmodelingelementproperty_cast<QUmlStringExpression *>(this)->setSymbol(symbol);
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [TemplateableElement]
 
 void QUmlStringExpressionObject::setOwnedTemplateSignature(QObject *ownedTemplateSignature)
 {
-    qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->setOwnedTemplateSignature(qmodelingobjectproperty_cast<QUmlTemplateSignature *>(ownedTemplateSignature));
+    qmodelingelementproperty_cast<QUmlStringExpression *>(this)->setOwnedTemplateSignature(qmodelingelementproperty_cast<QUmlTemplateSignature *>(ownedTemplateSignature));
 }
 
 void QUmlStringExpressionObject::addTemplateBinding(QObject *templateBinding)
 {
-    qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->addTemplateBinding(qmodelingobjectproperty_cast<QUmlTemplateBinding *>(templateBinding));
+    qmodelingelementproperty_cast<QUmlStringExpression *>(this)->addTemplateBinding(qmodelingelementproperty_cast<QUmlTemplateBinding *>(templateBinding));
 }
 
 void QUmlStringExpressionObject::removeTemplateBinding(QObject *templateBinding)
 {
-    qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->removeTemplateBinding(qmodelingobjectproperty_cast<QUmlTemplateBinding *>(templateBinding));
+    qmodelingelementproperty_cast<QUmlStringExpression *>(this)->removeTemplateBinding(qmodelingelementproperty_cast<QUmlTemplateBinding *>(templateBinding));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [StringExpression]
 
 void QUmlStringExpressionObject::setOwningExpression(QObject *owningExpression)
 {
-    qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->setOwningExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(owningExpression));
+    qmodelingelementproperty_cast<QUmlStringExpression *>(this)->setOwningExpression(qmodelingelementproperty_cast<QUmlStringExpression *>(owningExpression));
 }
 
 void QUmlStringExpressionObject::addSubExpression(QObject *subExpression)
 {
-    qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->addSubExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(subExpression));
+    qmodelingelementproperty_cast<QUmlStringExpression *>(this)->addSubExpression(qmodelingelementproperty_cast<QUmlStringExpression *>(subExpression));
 }
 
 void QUmlStringExpressionObject::removeSubExpression(QObject *subExpression)
 {
-    qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->removeSubExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(subExpression));
+    qmodelingelementproperty_cast<QUmlStringExpression *>(this)->removeSubExpression(qmodelingelementproperty_cast<QUmlStringExpression *>(subExpression));
+}
+
+
+void QUmlStringExpressionObject::setGroupProperties()
+{
+    Q_D(QModelingObject);
+    const QMetaObject *metaObject = this->metaObject();
+
+    d->propertyGroups << QStringLiteral("QObject");
+    d->groupProperties.insert(QStringLiteral("QObject"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("objectName"))));
+
+    d->propertyGroups << QStringLiteral("QUmlElement");
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
+
+    d->propertyGroups << QStringLiteral("QUmlNamedElement");
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
+
+    d->propertyGroups << QStringLiteral("QUmlTypedElement");
+    d->groupProperties.insert(QStringLiteral("QUmlTypedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("type"))));
+
+    d->propertyGroups << QStringLiteral("QUmlParameterableElement");
+    d->groupProperties.insert(QStringLiteral("QUmlParameterableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owningTemplateParameter"))));
+    d->groupProperties.insert(QStringLiteral("QUmlParameterableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("templateParameter"))));
+
+    d->propertyGroups << QStringLiteral("QUmlPackageableElement");
+    d->groupProperties.insert(QStringLiteral("QUmlPackageableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
+
+    d->propertyGroups << QStringLiteral("QUmlValueSpecification");
+
+    d->propertyGroups << QStringLiteral("QUmlExpression");
+    d->groupProperties.insert(QStringLiteral("QUmlExpression"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("operands"))));
+    d->groupProperties.insert(QStringLiteral("QUmlExpression"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("symbol"))));
+
+    d->propertyGroups << QStringLiteral("QUmlTemplateableElement");
+    d->groupProperties.insert(QStringLiteral("QUmlTemplateableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedTemplateSignature"))));
+    d->groupProperties.insert(QStringLiteral("QUmlTemplateableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("templateBindings"))));
+
+    d->propertyGroups << QStringLiteral("QUmlStringExpression");
+    d->groupProperties.insert(QStringLiteral("QUmlStringExpression"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owningExpression"))));
+    d->groupProperties.insert(QStringLiteral("QUmlStringExpression"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("subExpressions"))));
+}
+
+void QUmlStringExpressionObject::setPropertyData()
+{
+    Q_DECLARE_METAPROPERTY_INFO(QUmlStringExpression, owningExpression, AggregationRole, QStringLiteral("none"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlStringExpression, owningExpression, PropertyClassRole, QStringLiteral("QUmlStringExpression"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlStringExpression, owningExpression, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlStringExpression, owningExpression, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlStringExpression, owningExpression, DocumentationRole, QStringLiteral("The string expression of which this expression is a substring."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlStringExpression, owningExpression, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlStringExpression, owningExpression, SubsettedPropertiesRole, QStringLiteral("Element-owner"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlStringExpression, owningExpression, OppositeEndRole, QStringLiteral("StringExpression-subExpression"));
+
+    Q_DECLARE_METAPROPERTY_INFO(QUmlStringExpression, subExpressions, AggregationRole, QStringLiteral("composite"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlStringExpression, subExpressions, PropertyClassRole, QStringLiteral("QUmlStringExpression"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlStringExpression, subExpressions, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlStringExpression, subExpressions, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlStringExpression, subExpressions, DocumentationRole, QStringLiteral("The StringExpressions that constitute this StringExpression."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlStringExpression, subExpressions, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlStringExpression, subExpressions, SubsettedPropertiesRole, QStringLiteral("Element-ownedElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlStringExpression, subExpressions, OppositeEndRole, QStringLiteral("StringExpression-owningExpression"));
+
 }
 
 QT_END_NAMESPACE

@@ -42,6 +42,7 @@
 #include "qmodelingobjectpropertymodel_p.h"
 
 #include <QtModeling/QModelingObject>
+#include <QtModeling/QModelingElement>
 
 #include <QtGui/QFontMetrics>
 
@@ -66,19 +67,19 @@ void QModelingObjectPropertyModel::setModelingObject(QModelingElement *modelingO
 {
     Q_D(QModelingObjectPropertyModel);
 
-    QObject *qObject = modelingObject->asQObject();
+    QModelingObject *qObject = modelingObject->asQModelingObject();
     if (qObject && d->modelingMetaObject != qObject->metaObject()) {
         beginResetModel();
         d->qObject = qObject;
         d->modelingMetaObject = d->qObject->metaObject();
         d->modelingObjectIndex = index;
         int propertyCount = d->modelingMetaObject->propertyCount();
-        QModelingElement *modelingObject = qModelingObject(qObject);
+        QModelingElement *modelingObject = qModelingElement(qObject);
         qDeleteAll(d->propertiesForGroup);
         d->propertyGroups.clear();
         QString currentGroup;
         for (int i = 0; i < propertyCount; ++i) {
-            QString group = modelingObject->propertyGroups().at(modelingObject->propertyGroupIndex(d->modelingMetaObject->property(i)));
+            QString group = qObject->propertyGroups().at(qObject->propertyGroupIndex(d->modelingMetaObject->property(i)));
             if (group != currentGroup) {
                 d->propertyGroups << group;
                 currentGroup = group;
@@ -130,7 +131,7 @@ QModelIndex QModelingObjectPropertyModel::parent(const QModelIndex &child) const
     QMetaProperty metaProperty = d->modelingMetaObject->property(d->modelingMetaObject->indexOfProperty(
                                                                      d->propertiesForGroup.values(d->propertyGroups.at(groupIndex)).at(child.row())->toLatin1())
                                                                  );
-    return createIndex(qModelingObject(d->qObject)->propertyGroupIndex(metaProperty), 0);
+    return createIndex(d->qObject->propertyGroupIndex(metaProperty), 0);
 }
 
 int QModelingObjectPropertyModel::rowCount(const QModelIndex &parent) const
@@ -260,9 +261,9 @@ QVariant QModelingObjectPropertyModel::data(const QModelIndex &index, int role) 
                                                                              d->propertiesForGroup.values(d->propertyGroups.at(groupIndex)).at(index.row())->toLatin1())
                                                                          );
             if (metaProperty.isValid() && index.column() == 0 && metaProperty.isResettable())
-                font.setBold(qModelingObject(d->qObject)->isPropertyModified(metaProperty));
+                font.setBold(d->qObject->isPropertyModified(metaProperty));
             if (metaProperty.isValid() && index.column() == 0)
-                font.setItalic(QModelingElement::propertyData(QString::fromLatin1(d->modelingMetaObject->className()), metaProperty, QtModeling::AggregationRole).toString() == QString::fromLatin1("composite"));
+                font.setItalic(QModelingObject::propertyData(QString::fromLatin1(d->modelingMetaObject->className()), metaProperty, QtModeling::AggregationRole).toString() == QString::fromLatin1("composite"));
             return font;
         }
         case Qt::ToolTipRole: {
@@ -278,8 +279,8 @@ QVariant QModelingObjectPropertyModel::data(const QModelIndex &index, int role) 
                                                                              d->propertiesForGroup.values(d->propertyGroups.at(groupIndex)).at(index.row())->toLatin1())
                                                                          );
             if (metaProperty.isValid()) {
-                QString toolTip = QModelingElement::propertyData(QString::fromLatin1(d->modelingMetaObject->className()), metaProperty, QtModeling::DocumentationRole).toString().remove(QRegularExpression(QString::fromLatin1(".$"))).append(QString::fromLatin1("."));
-                if (QModelingElement::propertyData(QString::fromLatin1(d->modelingMetaObject->className()), metaProperty, QtModeling::IsDerivedUnionRole).toBool())
+                QString toolTip = QModelingObject::propertyData(QString::fromLatin1(d->modelingMetaObject->className()), metaProperty, QtModeling::DocumentationRole).toString().remove(QRegularExpression(QString::fromLatin1(".$"))).append(QString::fromLatin1("."));
+                if (QModelingObject::propertyData(QString::fromLatin1(d->modelingMetaObject->className()), metaProperty, QtModeling::IsDerivedUnionRole).toBool())
                     toolTip += QString::fromLatin1(" This is a derived union property.");
                 else if (!metaProperty.isStored())
                     toolTip += QString::fromLatin1(" This is a derived property.");
@@ -291,16 +292,16 @@ QVariant QModelingObjectPropertyModel::data(const QModelIndex &index, int role) 
                 if (!toolTip.isEmpty())
                     toolTip += QString::fromLatin1("\n\n");
                 toolTip += QString::fromLatin1("Type: %1").arg(QString::fromLatin1(metaProperty.typeName()));
-                QVariant variant = QModelingElement::propertyData(QString::fromLatin1(d->modelingMetaObject->className()), metaProperty, QtModeling::AggregationRole);
+                QVariant variant = QModelingObject::propertyData(QString::fromLatin1(d->modelingMetaObject->className()), metaProperty, QtModeling::AggregationRole);
                 if (variant.isValid() && variant.toString() != QString::fromLatin1("none"))
                     toolTip += QString::fromLatin1("\nAggregation: %1").arg(variant.toString());
-                QString redefinedProperties = QModelingElement::propertyData(QString::fromLatin1(d->modelingMetaObject->className()), metaProperty, QtModeling::RedefinedPropertiesRole).toString();
+                QString redefinedProperties = QModelingObject::propertyData(QString::fromLatin1(d->modelingMetaObject->className()), metaProperty, QtModeling::RedefinedPropertiesRole).toString();
                 if (!redefinedProperties.isEmpty())
                     toolTip += QString::fromLatin1("\nRedefines: %1").arg(redefinedProperties);
-                QString subsettedProperties = QModelingElement::propertyData(QString::fromLatin1(d->modelingMetaObject->className()), metaProperty, QtModeling::SubsettedPropertiesRole).toString();
+                QString subsettedProperties = QModelingObject::propertyData(QString::fromLatin1(d->modelingMetaObject->className()), metaProperty, QtModeling::SubsettedPropertiesRole).toString();
                 if (!subsettedProperties.isEmpty())
                     toolTip += QString::fromLatin1("\nSubsets: %1").arg(subsettedProperties);
-                QString oppositeEnd = QModelingElement::propertyData(QString::fromLatin1(d->modelingMetaObject->className()), metaProperty, QtModeling::OppositeEndRole).toString();
+                QString oppositeEnd = QModelingObject::propertyData(QString::fromLatin1(d->modelingMetaObject->className()), metaProperty, QtModeling::OppositeEndRole).toString();
                 if (!oppositeEnd.isEmpty())
                     toolTip += QString::fromLatin1("\nOpposite end: %1").arg(oppositeEnd);
                 return toolTip;

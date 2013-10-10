@@ -45,7 +45,6 @@
 
 #include <QtUml/QUmlNode>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -55,16 +54,13 @@ QT_MODULE(QtUml)
 class Q_UML_EXPORT QUmlExecutionEnvironment : public QUmlNode
 {
 public:
-    explicit QUmlExecutionEnvironment(bool createQObject = true);
+    explicit QUmlExecutionEnvironment(bool createQModelingObject = true);
     virtual ~QUmlExecutionEnvironment();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
 
 protected:
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

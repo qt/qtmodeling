@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlexceptionhandlerobject_p.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlExceptionHandler>
 #include <QtUml/QUmlClassifier>
@@ -49,16 +50,18 @@
 
 QT_BEGIN_NAMESPACE
 
-QUmlExceptionHandlerObject::QUmlExceptionHandlerObject(QUmlExceptionHandler *qModelingObject)
+QUmlExceptionHandlerObject::QUmlExceptionHandlerObject(QUmlExceptionHandler *qModelingElement)
 {
-    setProperty("modelingObject", QVariant::fromValue(static_cast<QModelingObject *>(qModelingObject)));
+    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(qModelingElement)));
+    setGroupProperties();
+    setPropertyData();
 }
 
 QUmlExceptionHandlerObject::~QUmlExceptionHandlerObject()
 {
     if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingobjectproperty_cast<QUmlExceptionHandler *>(this)->deletingFromQObject = true;
-        delete qmodelingobjectproperty_cast<QUmlComment *>(this);
+        qmodelingelementproperty_cast<QUmlExceptionHandler *>(this)->deletingFromQModelingObject = true;
+        delete qmodelingelementproperty_cast<QUmlComment *>(this);
     }
 }
 
@@ -67,59 +70,59 @@ QUmlExceptionHandlerObject::~QUmlExceptionHandlerObject()
 const QSet<QObject *> QUmlExceptionHandlerObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlExceptionHandler *>(this)->ownedComments())
-        set.insert(element->asQObject());
+    foreach (QUmlComment *element, qmodelingelementproperty_cast<QUmlExceptionHandler *>(this)->ownedComments())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlExceptionHandlerObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlExceptionHandler *>(this)->ownedElements())
-        set.insert(element->asQObject());
+    foreach (QUmlElement *element, qmodelingelementproperty_cast<QUmlExceptionHandler *>(this)->ownedElements())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 QObject *QUmlExceptionHandlerObject::owner() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlExceptionHandler *>(this)->owner())
+    if (!qmodelingelementproperty_cast<QUmlExceptionHandler *>(this)->owner())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlExceptionHandler *>(this)->owner()->asQObject();
+        return qmodelingelementproperty_cast<QUmlExceptionHandler *>(this)->owner()->asQModelingObject();
 }
 
 // OWNED ATTRIBUTES [ExceptionHandler]
 
 QObject *QUmlExceptionHandlerObject::exceptionInput() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlExceptionHandler *>(this)->exceptionInput())
+    if (!qmodelingelementproperty_cast<QUmlExceptionHandler *>(this)->exceptionInput())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlExceptionHandler *>(this)->exceptionInput()->asQObject();
+        return qmodelingelementproperty_cast<QUmlExceptionHandler *>(this)->exceptionInput()->asQModelingObject();
 }
 
 const QSet<QObject *> QUmlExceptionHandlerObject::exceptionTypes() const
 {
     QSet<QObject *> set;
-    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlExceptionHandler *>(this)->exceptionTypes())
-        set.insert(element->asQObject());
+    foreach (QUmlClassifier *element, qmodelingelementproperty_cast<QUmlExceptionHandler *>(this)->exceptionTypes())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 QObject *QUmlExceptionHandlerObject::handlerBody() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlExceptionHandler *>(this)->handlerBody())
+    if (!qmodelingelementproperty_cast<QUmlExceptionHandler *>(this)->handlerBody())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlExceptionHandler *>(this)->handlerBody()->asQObject();
+        return qmodelingelementproperty_cast<QUmlExceptionHandler *>(this)->handlerBody()->asQModelingObject();
 }
 
 QObject *QUmlExceptionHandlerObject::protectedNode() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlExceptionHandler *>(this)->protectedNode())
+    if (!qmodelingelementproperty_cast<QUmlExceptionHandler *>(this)->protectedNode())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlExceptionHandler *>(this)->protectedNode()->asQObject();
+        return qmodelingelementproperty_cast<QUmlExceptionHandler *>(this)->protectedNode()->asQModelingObject();
 }
 
 // OPERATIONS [Element]
@@ -127,68 +130,129 @@ QObject *QUmlExceptionHandlerObject::protectedNode() const
 QSet<QObject *> QUmlExceptionHandlerObject::allOwnedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlExceptionHandler *>(this)->allOwnedElements())
-        set.insert(element->asQObject());
+    foreach (QUmlElement *element, qmodelingelementproperty_cast<QUmlExceptionHandler *>(this)->allOwnedElements())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 bool QUmlExceptionHandlerObject::mustBeOwned() const
 {
-    return qmodelingobjectproperty_cast<QUmlExceptionHandler *>(this)->mustBeOwned();
+    return qmodelingelementproperty_cast<QUmlExceptionHandler *>(this)->mustBeOwned();
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Element]
 
 void QUmlExceptionHandlerObject::addOwnedComment(QObject *ownedComment)
 {
-    qmodelingobjectproperty_cast<QUmlExceptionHandler *>(this)->addOwnedComment(qmodelingobjectproperty_cast<QUmlComment *>(ownedComment));
+    qmodelingelementproperty_cast<QUmlExceptionHandler *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
 }
 
 void QUmlExceptionHandlerObject::removeOwnedComment(QObject *ownedComment)
 {
-    qmodelingobjectproperty_cast<QUmlExceptionHandler *>(this)->removeOwnedComment(qmodelingobjectproperty_cast<QUmlComment *>(ownedComment));
+    qmodelingelementproperty_cast<QUmlExceptionHandler *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
 }
 
 void QUmlExceptionHandlerObject::addOwnedElement(QObject *ownedElement)
 {
-    qmodelingobjectproperty_cast<QUmlExceptionHandler *>(this)->addOwnedElement(qmodelingobjectproperty_cast<QUmlElement *>(ownedElement));
+    qmodelingelementproperty_cast<QUmlExceptionHandler *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
 }
 
 void QUmlExceptionHandlerObject::removeOwnedElement(QObject *ownedElement)
 {
-    qmodelingobjectproperty_cast<QUmlExceptionHandler *>(this)->removeOwnedElement(qmodelingobjectproperty_cast<QUmlElement *>(ownedElement));
+    qmodelingelementproperty_cast<QUmlExceptionHandler *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
 }
 
 void QUmlExceptionHandlerObject::setOwner(QObject *owner)
 {
-    qmodelingobjectproperty_cast<QUmlExceptionHandler *>(this)->setOwner(qmodelingobjectproperty_cast<QUmlElement *>(owner));
+    qmodelingelementproperty_cast<QUmlExceptionHandler *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ExceptionHandler]
 
 void QUmlExceptionHandlerObject::setExceptionInput(QObject *exceptionInput)
 {
-    qmodelingobjectproperty_cast<QUmlExceptionHandler *>(this)->setExceptionInput(qmodelingobjectproperty_cast<QUmlObjectNode *>(exceptionInput));
+    qmodelingelementproperty_cast<QUmlExceptionHandler *>(this)->setExceptionInput(qmodelingelementproperty_cast<QUmlObjectNode *>(exceptionInput));
 }
 
 void QUmlExceptionHandlerObject::addExceptionType(QObject *exceptionType)
 {
-    qmodelingobjectproperty_cast<QUmlExceptionHandler *>(this)->addExceptionType(qmodelingobjectproperty_cast<QUmlClassifier *>(exceptionType));
+    qmodelingelementproperty_cast<QUmlExceptionHandler *>(this)->addExceptionType(qmodelingelementproperty_cast<QUmlClassifier *>(exceptionType));
 }
 
 void QUmlExceptionHandlerObject::removeExceptionType(QObject *exceptionType)
 {
-    qmodelingobjectproperty_cast<QUmlExceptionHandler *>(this)->removeExceptionType(qmodelingobjectproperty_cast<QUmlClassifier *>(exceptionType));
+    qmodelingelementproperty_cast<QUmlExceptionHandler *>(this)->removeExceptionType(qmodelingelementproperty_cast<QUmlClassifier *>(exceptionType));
 }
 
 void QUmlExceptionHandlerObject::setHandlerBody(QObject *handlerBody)
 {
-    qmodelingobjectproperty_cast<QUmlExceptionHandler *>(this)->setHandlerBody(qmodelingobjectproperty_cast<QUmlExecutableNode *>(handlerBody));
+    qmodelingelementproperty_cast<QUmlExceptionHandler *>(this)->setHandlerBody(qmodelingelementproperty_cast<QUmlExecutableNode *>(handlerBody));
 }
 
 void QUmlExceptionHandlerObject::setProtectedNode(QObject *protectedNode)
 {
-    qmodelingobjectproperty_cast<QUmlExceptionHandler *>(this)->setProtectedNode(qmodelingobjectproperty_cast<QUmlExecutableNode *>(protectedNode));
+    qmodelingelementproperty_cast<QUmlExceptionHandler *>(this)->setProtectedNode(qmodelingelementproperty_cast<QUmlExecutableNode *>(protectedNode));
+}
+
+
+void QUmlExceptionHandlerObject::setGroupProperties()
+{
+    Q_D(QModelingObject);
+    const QMetaObject *metaObject = this->metaObject();
+
+    d->propertyGroups << QStringLiteral("QObject");
+    d->groupProperties.insert(QStringLiteral("QObject"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("objectName"))));
+
+    d->propertyGroups << QStringLiteral("QUmlElement");
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
+
+    d->propertyGroups << QStringLiteral("QUmlExceptionHandler");
+    d->groupProperties.insert(QStringLiteral("QUmlExceptionHandler"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("exceptionInput"))));
+    d->groupProperties.insert(QStringLiteral("QUmlExceptionHandler"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("exceptionTypes"))));
+    d->groupProperties.insert(QStringLiteral("QUmlExceptionHandler"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("handlerBody"))));
+    d->groupProperties.insert(QStringLiteral("QUmlExceptionHandler"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("protectedNode"))));
+}
+
+void QUmlExceptionHandlerObject::setPropertyData()
+{
+    Q_DECLARE_METAPROPERTY_INFO(QUmlExceptionHandler, exceptionInput, AggregationRole, QStringLiteral("none"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlExceptionHandler, exceptionInput, PropertyClassRole, QStringLiteral("QUmlExceptionHandler"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlExceptionHandler, exceptionInput, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlExceptionHandler, exceptionInput, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlExceptionHandler, exceptionInput, DocumentationRole, QStringLiteral("An object node within the handler body. When the handler catches an exception, the exception token is placed in this node, causing the body to execute."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlExceptionHandler, exceptionInput, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlExceptionHandler, exceptionInput, SubsettedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlExceptionHandler, exceptionInput, OppositeEndRole, QStringLiteral(""));
+
+    Q_DECLARE_METAPROPERTY_INFO(QUmlExceptionHandler, exceptionTypes, AggregationRole, QStringLiteral("none"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlExceptionHandler, exceptionTypes, PropertyClassRole, QStringLiteral("QUmlExceptionHandler"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlExceptionHandler, exceptionTypes, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlExceptionHandler, exceptionTypes, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlExceptionHandler, exceptionTypes, DocumentationRole, QStringLiteral("The kind of instances that the handler catches. If an exception occurs whose type is any of the classifiers in the set, the handler catches the exception and executes its body."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlExceptionHandler, exceptionTypes, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlExceptionHandler, exceptionTypes, SubsettedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlExceptionHandler, exceptionTypes, OppositeEndRole, QStringLiteral(""));
+
+    Q_DECLARE_METAPROPERTY_INFO(QUmlExceptionHandler, handlerBody, AggregationRole, QStringLiteral("none"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlExceptionHandler, handlerBody, PropertyClassRole, QStringLiteral("QUmlExceptionHandler"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlExceptionHandler, handlerBody, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlExceptionHandler, handlerBody, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlExceptionHandler, handlerBody, DocumentationRole, QStringLiteral("A node that is executed if the handler satisfies an uncaught exception."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlExceptionHandler, handlerBody, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlExceptionHandler, handlerBody, SubsettedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlExceptionHandler, handlerBody, OppositeEndRole, QStringLiteral(""));
+
+    Q_DECLARE_METAPROPERTY_INFO(QUmlExceptionHandler, protectedNode, AggregationRole, QStringLiteral("none"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlExceptionHandler, protectedNode, PropertyClassRole, QStringLiteral("QUmlExceptionHandler"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlExceptionHandler, protectedNode, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlExceptionHandler, protectedNode, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlExceptionHandler, protectedNode, DocumentationRole, QStringLiteral("The node protected by the handler. The handler is examined if an exception propagates to the outside of the node."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlExceptionHandler, protectedNode, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlExceptionHandler, protectedNode, SubsettedPropertiesRole, QStringLiteral("Element-owner"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlExceptionHandler, protectedNode, OppositeEndRole, QStringLiteral("ExecutableNode-handler"));
+
 }
 
 QT_END_NAMESPACE

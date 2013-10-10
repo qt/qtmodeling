@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumllinkendcreationdataobject_p.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlLinkEndCreationData>
 #include <QtUml/QUmlComment>
@@ -49,16 +50,18 @@
 
 QT_BEGIN_NAMESPACE
 
-QUmlLinkEndCreationDataObject::QUmlLinkEndCreationDataObject(QUmlLinkEndCreationData *qModelingObject)
+QUmlLinkEndCreationDataObject::QUmlLinkEndCreationDataObject(QUmlLinkEndCreationData *qModelingElement)
 {
-    setProperty("modelingObject", QVariant::fromValue(static_cast<QModelingObject *>(qModelingObject)));
+    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(qModelingElement)));
+    setGroupProperties();
+    setPropertyData();
 }
 
 QUmlLinkEndCreationDataObject::~QUmlLinkEndCreationDataObject()
 {
     if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingobjectproperty_cast<QUmlLinkEndCreationData *>(this)->deletingFromQObject = true;
-        delete qmodelingobjectproperty_cast<QUmlComment *>(this);
+        qmodelingelementproperty_cast<QUmlLinkEndCreationData *>(this)->deletingFromQModelingObject = true;
+        delete qmodelingelementproperty_cast<QUmlComment *>(this);
     }
 }
 
@@ -67,66 +70,66 @@ QUmlLinkEndCreationDataObject::~QUmlLinkEndCreationDataObject()
 const QSet<QObject *> QUmlLinkEndCreationDataObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlLinkEndCreationData *>(this)->ownedComments())
-        set.insert(element->asQObject());
+    foreach (QUmlComment *element, qmodelingelementproperty_cast<QUmlLinkEndCreationData *>(this)->ownedComments())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlLinkEndCreationDataObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlLinkEndCreationData *>(this)->ownedElements())
-        set.insert(element->asQObject());
+    foreach (QUmlElement *element, qmodelingelementproperty_cast<QUmlLinkEndCreationData *>(this)->ownedElements())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 QObject *QUmlLinkEndCreationDataObject::owner() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlLinkEndCreationData *>(this)->owner())
+    if (!qmodelingelementproperty_cast<QUmlLinkEndCreationData *>(this)->owner())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlLinkEndCreationData *>(this)->owner()->asQObject();
+        return qmodelingelementproperty_cast<QUmlLinkEndCreationData *>(this)->owner()->asQModelingObject();
 }
 
 // OWNED ATTRIBUTES [LinkEndData]
 
 QObject *QUmlLinkEndCreationDataObject::end() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlLinkEndCreationData *>(this)->end())
+    if (!qmodelingelementproperty_cast<QUmlLinkEndCreationData *>(this)->end())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlLinkEndCreationData *>(this)->end()->asQObject();
+        return qmodelingelementproperty_cast<QUmlLinkEndCreationData *>(this)->end()->asQModelingObject();
 }
 
 const QSet<QObject *> QUmlLinkEndCreationDataObject::qualifiers() const
 {
     QSet<QObject *> set;
-    foreach (QUmlQualifierValue *element, qmodelingobjectproperty_cast<QUmlLinkEndCreationData *>(this)->qualifiers())
-        set.insert(element->asQObject());
+    foreach (QUmlQualifierValue *element, qmodelingelementproperty_cast<QUmlLinkEndCreationData *>(this)->qualifiers())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 QObject *QUmlLinkEndCreationDataObject::value() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlLinkEndCreationData *>(this)->value())
+    if (!qmodelingelementproperty_cast<QUmlLinkEndCreationData *>(this)->value())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlLinkEndCreationData *>(this)->value()->asQObject();
+        return qmodelingelementproperty_cast<QUmlLinkEndCreationData *>(this)->value()->asQModelingObject();
 }
 
 // OWNED ATTRIBUTES [LinkEndCreationData]
 
 QObject *QUmlLinkEndCreationDataObject::insertAt() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlLinkEndCreationData *>(this)->insertAt())
+    if (!qmodelingelementproperty_cast<QUmlLinkEndCreationData *>(this)->insertAt())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlLinkEndCreationData *>(this)->insertAt()->asQObject();
+        return qmodelingelementproperty_cast<QUmlLinkEndCreationData *>(this)->insertAt()->asQModelingObject();
 }
 
 bool QUmlLinkEndCreationDataObject::isReplaceAll() const
 {
-    return qmodelingobjectproperty_cast<QUmlLinkEndCreationData *>(this)->isReplaceAll();
+    return qmodelingelementproperty_cast<QUmlLinkEndCreationData *>(this)->isReplaceAll();
 }
 
 // OPERATIONS [Element]
@@ -134,80 +137,127 @@ bool QUmlLinkEndCreationDataObject::isReplaceAll() const
 QSet<QObject *> QUmlLinkEndCreationDataObject::allOwnedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlLinkEndCreationData *>(this)->allOwnedElements())
-        set.insert(element->asQObject());
+    foreach (QUmlElement *element, qmodelingelementproperty_cast<QUmlLinkEndCreationData *>(this)->allOwnedElements())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 bool QUmlLinkEndCreationDataObject::mustBeOwned() const
 {
-    return qmodelingobjectproperty_cast<QUmlLinkEndCreationData *>(this)->mustBeOwned();
+    return qmodelingelementproperty_cast<QUmlLinkEndCreationData *>(this)->mustBeOwned();
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Element]
 
 void QUmlLinkEndCreationDataObject::addOwnedComment(QObject *ownedComment)
 {
-    qmodelingobjectproperty_cast<QUmlLinkEndCreationData *>(this)->addOwnedComment(qmodelingobjectproperty_cast<QUmlComment *>(ownedComment));
+    qmodelingelementproperty_cast<QUmlLinkEndCreationData *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
 }
 
 void QUmlLinkEndCreationDataObject::removeOwnedComment(QObject *ownedComment)
 {
-    qmodelingobjectproperty_cast<QUmlLinkEndCreationData *>(this)->removeOwnedComment(qmodelingobjectproperty_cast<QUmlComment *>(ownedComment));
+    qmodelingelementproperty_cast<QUmlLinkEndCreationData *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
 }
 
 void QUmlLinkEndCreationDataObject::addOwnedElement(QObject *ownedElement)
 {
-    qmodelingobjectproperty_cast<QUmlLinkEndCreationData *>(this)->addOwnedElement(qmodelingobjectproperty_cast<QUmlElement *>(ownedElement));
+    qmodelingelementproperty_cast<QUmlLinkEndCreationData *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
 }
 
 void QUmlLinkEndCreationDataObject::removeOwnedElement(QObject *ownedElement)
 {
-    qmodelingobjectproperty_cast<QUmlLinkEndCreationData *>(this)->removeOwnedElement(qmodelingobjectproperty_cast<QUmlElement *>(ownedElement));
+    qmodelingelementproperty_cast<QUmlLinkEndCreationData *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
 }
 
 void QUmlLinkEndCreationDataObject::setOwner(QObject *owner)
 {
-    qmodelingobjectproperty_cast<QUmlLinkEndCreationData *>(this)->setOwner(qmodelingobjectproperty_cast<QUmlElement *>(owner));
+    qmodelingelementproperty_cast<QUmlLinkEndCreationData *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [LinkEndData]
 
 void QUmlLinkEndCreationDataObject::setEnd(QObject *end)
 {
-    qmodelingobjectproperty_cast<QUmlLinkEndCreationData *>(this)->setEnd(qmodelingobjectproperty_cast<QUmlProperty *>(end));
+    qmodelingelementproperty_cast<QUmlLinkEndCreationData *>(this)->setEnd(qmodelingelementproperty_cast<QUmlProperty *>(end));
 }
 
 void QUmlLinkEndCreationDataObject::addQualifier(QObject *qualifier)
 {
-    qmodelingobjectproperty_cast<QUmlLinkEndCreationData *>(this)->addQualifier(qmodelingobjectproperty_cast<QUmlQualifierValue *>(qualifier));
+    qmodelingelementproperty_cast<QUmlLinkEndCreationData *>(this)->addQualifier(qmodelingelementproperty_cast<QUmlQualifierValue *>(qualifier));
 }
 
 void QUmlLinkEndCreationDataObject::removeQualifier(QObject *qualifier)
 {
-    qmodelingobjectproperty_cast<QUmlLinkEndCreationData *>(this)->removeQualifier(qmodelingobjectproperty_cast<QUmlQualifierValue *>(qualifier));
+    qmodelingelementproperty_cast<QUmlLinkEndCreationData *>(this)->removeQualifier(qmodelingelementproperty_cast<QUmlQualifierValue *>(qualifier));
 }
 
 void QUmlLinkEndCreationDataObject::setValue(QObject *value)
 {
-    qmodelingobjectproperty_cast<QUmlLinkEndCreationData *>(this)->setValue(qmodelingobjectproperty_cast<QUmlInputPin *>(value));
+    qmodelingelementproperty_cast<QUmlLinkEndCreationData *>(this)->setValue(qmodelingelementproperty_cast<QUmlInputPin *>(value));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [LinkEndCreationData]
 
 void QUmlLinkEndCreationDataObject::setInsertAt(QObject *insertAt)
 {
-    qmodelingobjectproperty_cast<QUmlLinkEndCreationData *>(this)->setInsertAt(qmodelingobjectproperty_cast<QUmlInputPin *>(insertAt));
+    qmodelingelementproperty_cast<QUmlLinkEndCreationData *>(this)->setInsertAt(qmodelingelementproperty_cast<QUmlInputPin *>(insertAt));
 }
 
 void QUmlLinkEndCreationDataObject::setReplaceAll(bool isReplaceAll)
 {
-    qmodelingobjectproperty_cast<QUmlLinkEndCreationData *>(this)->setReplaceAll(isReplaceAll);
+    qmodelingelementproperty_cast<QUmlLinkEndCreationData *>(this)->setReplaceAll(isReplaceAll);
 }
 
 void QUmlLinkEndCreationDataObject::unsetReplaceAll()
 {
-    qmodelingobjectproperty_cast<QUmlLinkEndCreationData *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("replaceAll"));
+    Q_D(QModelingObject);
+    d->modifiedResettableProperties.removeAll(QStringLiteral("replaceAll"));
+}
+
+
+void QUmlLinkEndCreationDataObject::setGroupProperties()
+{
+    Q_D(QModelingObject);
+    const QMetaObject *metaObject = this->metaObject();
+
+    d->propertyGroups << QStringLiteral("QObject");
+    d->groupProperties.insert(QStringLiteral("QObject"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("objectName"))));
+
+    d->propertyGroups << QStringLiteral("QUmlElement");
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
+
+    d->propertyGroups << QStringLiteral("QUmlLinkEndData");
+    d->groupProperties.insert(QStringLiteral("QUmlLinkEndData"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("end"))));
+    d->groupProperties.insert(QStringLiteral("QUmlLinkEndData"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiers"))));
+    d->groupProperties.insert(QStringLiteral("QUmlLinkEndData"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("value"))));
+
+    d->propertyGroups << QStringLiteral("QUmlLinkEndCreationData");
+    d->groupProperties.insert(QStringLiteral("QUmlLinkEndCreationData"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("insertAt"))));
+    d->groupProperties.insert(QStringLiteral("QUmlLinkEndCreationData"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isReplaceAll"))));
+}
+
+void QUmlLinkEndCreationDataObject::setPropertyData()
+{
+    Q_DECLARE_METAPROPERTY_INFO(QUmlLinkEndCreationData, insertAt, AggregationRole, QStringLiteral("none"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlLinkEndCreationData, insertAt, PropertyClassRole, QStringLiteral("QUmlLinkEndCreationData"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlLinkEndCreationData, insertAt, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlLinkEndCreationData, insertAt, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlLinkEndCreationData, insertAt, DocumentationRole, QStringLiteral("Specifies where the new link should be inserted for ordered association ends, or where an existing link should be moved to. The type of the input is UnlimitedNatural, but the input cannot be zero. This pin is omitted for association ends that are not ordered."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlLinkEndCreationData, insertAt, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlLinkEndCreationData, insertAt, SubsettedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlLinkEndCreationData, insertAt, OppositeEndRole, QStringLiteral(""));
+
+    Q_DECLARE_METAPROPERTY_INFO(QUmlLinkEndCreationData, isReplaceAll, AggregationRole, QStringLiteral("none"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlLinkEndCreationData, isReplaceAll, PropertyClassRole, QStringLiteral("QUmlLinkEndCreationData"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlLinkEndCreationData, isReplaceAll, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlLinkEndCreationData, isReplaceAll, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlLinkEndCreationData, isReplaceAll, DocumentationRole, QStringLiteral("Specifies whether the existing links emanating from the object on this end should be destroyed before creating a new link."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlLinkEndCreationData, isReplaceAll, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlLinkEndCreationData, isReplaceAll, SubsettedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlLinkEndCreationData, isReplaceAll, OppositeEndRole, QStringLiteral(""));
+
 }
 
 QT_END_NAMESPACE

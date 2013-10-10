@@ -44,6 +44,10 @@
 #include "qtmodelingglobal.h"
 #include "private/qobject_p.h"
 
+#include "QtModeling/QModelingObject"
+
+#define Q_DECLARE_METAPROPERTY_INFO(clazz, property, role, value) QModelingObject::propertyDataHash[QStringLiteral(#clazz)][QStringLiteral(#property)][QtModeling::role] = value;
+
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -63,7 +67,6 @@ public:
     QStringList modifiedResettableProperties;
     QStringList propertyGroups;
     QMultiHash<QString, QMetaProperty *> groupProperties;
-    static QHash< QString, QHash< QString, QHash<QtModeling::MetaPropertyDataRole, QVariant> > > propertyDataHash;
 };
 
 QT_END_NAMESPACE

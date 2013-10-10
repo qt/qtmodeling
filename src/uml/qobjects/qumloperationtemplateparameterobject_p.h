@@ -43,7 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtCore/QObject>
+#include <QtModeling/QModelingObject>
 
 QT_BEGIN_HEADER
 
@@ -52,9 +52,12 @@ QT_BEGIN_NAMESPACE
 QT_MODULE(QtUml)
 
 class QUmlOperationTemplateParameter;
-class Q_UML_EXPORT QUmlOperationTemplateParameterObject : public QObject
+class QModelingObjectPrivate;
+class Q_UML_EXPORT QUmlOperationTemplateParameterObject : public QModelingObject
 {
     Q_OBJECT
+    Q_DISABLE_COPY(QUmlOperationTemplateParameterObject)
+    Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [Element]
     Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
@@ -71,7 +74,7 @@ class Q_UML_EXPORT QUmlOperationTemplateParameterObject : public QObject
     Q_PROPERTY(QObject * parameteredElement READ parameteredElement WRITE setParameteredElement)
 
 public:
-    Q_INVOKABLE explicit QUmlOperationTemplateParameterObject(QUmlOperationTemplateParameter *qModelingObject);
+    Q_INVOKABLE explicit QUmlOperationTemplateParameterObject(QUmlOperationTemplateParameter *qModelingElement);
     virtual ~QUmlOperationTemplateParameterObject();
 
     // Owned attributes [Element]
@@ -109,6 +112,10 @@ public Q_SLOTS:
 
     // Slots for owned attributes [OperationTemplateParameter]
     void setParameteredElement(QObject *parameteredElement = 0);
+
+protected:
+    virtual void setGroupProperties();
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

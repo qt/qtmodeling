@@ -45,7 +45,6 @@
 
 #include <QtUml/QUmlVertex>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -58,10 +57,10 @@ class QUmlState;
 class Q_UML_EXPORT QUmlConnectionPointReference : public QUmlVertex
 {
 public:
-    explicit QUmlConnectionPointReference(bool createQObject = true);
+    explicit QUmlConnectionPointReference(bool createQModelingObject = true);
     virtual ~QUmlConnectionPointReference();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
     const QSet<QUmlPseudostate *> entries() const;
@@ -77,9 +76,6 @@ protected:
     QSet<QUmlPseudostate *> _entries;
     QSet<QUmlPseudostate *> _exits;
     QUmlState *_state;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

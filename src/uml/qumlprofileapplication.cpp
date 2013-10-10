@@ -54,27 +54,25 @@
 
     \brief A profile application is used to show which profiles have been applied to a package.
  */
-QUmlProfileApplication::QUmlProfileApplication(bool createQObject) :
+QUmlProfileApplication::QUmlProfileApplication(bool createQModelingObject) :
     _appliedProfile(0),
     _applyingPackage(0),
     _isStrict(false)
 {
-    if (createQObject)
-        _qObject = new QUmlProfileApplicationObject(this);
-    setGroupProperties();
-    setPropertyData();
+    if (createQModelingObject)
+        _qModelingObject = qobject_cast<QModelingObject *>(new QUmlProfileApplicationObject(this));
 }
 
 QUmlProfileApplication::~QUmlProfileApplication()
 {
-    if (!deletingFromQObject) {
-        if (_qObject)
-            _qObject->setProperty("deletingFromModelingObject", true);
-        delete _qObject;
+    if (!deletingFromQModelingObject) {
+        if (_qModelingObject)
+            _qModelingObject->setProperty("deletingFromModelingObject", true);
+        delete _qModelingObject;
     }
 }
 
-QModelingObject *QUmlProfileApplication::clone() const
+QModelingElement *QUmlProfileApplication::clone() const
 {
     QUmlProfileApplication *c = new QUmlProfileApplication;
     foreach (QUmlComment *element, ownedComments())
@@ -108,8 +106,8 @@ void QUmlProfileApplication::setAppliedProfile(QUmlProfile *appliedProfile)
         removeTarget(_appliedProfile);
 
         _appliedProfile = appliedProfile;
-        if (appliedProfile && appliedProfile->asQObject() && this->asQObject())
-            QObject::connect(appliedProfile->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setAppliedProfile()));
+        if (appliedProfile && appliedProfile->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(appliedProfile->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setAppliedProfile()));
 
         // Adjust subsetted properties
         if (appliedProfile) {
@@ -137,8 +135,8 @@ void QUmlProfileApplication::setApplyingPackage(QUmlPackage *applyingPackage)
         removeSource(_applyingPackage);
 
         _applyingPackage = applyingPackage;
-        if (applyingPackage && applyingPackage->asQObject() && this->asQObject())
-            QObject::connect(applyingPackage->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setApplyingPackage()));
+        if (applyingPackage && applyingPackage->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(applyingPackage->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setApplyingPackage()));
 
         // Adjust subsetted properties
         setOwner(applyingPackage);
@@ -164,53 +162,7 @@ void QUmlProfileApplication::setStrict(bool isStrict)
 
     if (_isStrict != isStrict) {
         _isStrict = isStrict;
-        _modifiedResettableProperties << QStringLiteral("isStrict");
+        _qModelingObject->modifiedResettableProperties() << QStringLiteral("isStrict");
     }
-}
-
-void QUmlProfileApplication::setGroupProperties()
-{
-    const QMetaObject *metaObject = _qObject->metaObject();
-
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
-    _groupProperties.insert(QStringLiteral("QUmlRelationship"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("relatedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlDirectedRelationship"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("sources"))));
-    _groupProperties.insert(QStringLiteral("QUmlDirectedRelationship"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("targets"))));
-    _groupProperties.insert(QStringLiteral("QUmlProfileApplication"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("appliedProfile"))));
-    _groupProperties.insert(QStringLiteral("QUmlProfileApplication"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("applyingPackage"))));
-    _groupProperties.insert(QStringLiteral("QUmlProfileApplication"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isStrict"))));
-}
-
-void QUmlProfileApplication::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProfileApplication")][QStringLiteral("appliedProfile")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProfileApplication")][QStringLiteral("appliedProfile")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlProfileApplication");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProfileApplication")][QStringLiteral("appliedProfile")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProfileApplication")][QStringLiteral("appliedProfile")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProfileApplication")][QStringLiteral("appliedProfile")][QtModeling::DocumentationRole] = QStringLiteral("References the Profiles that are applied to a Package through this ProfileApplication.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProfileApplication")][QStringLiteral("appliedProfile")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProfileApplication")][QStringLiteral("appliedProfile")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("DirectedRelationship-target");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProfileApplication")][QStringLiteral("appliedProfile")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProfileApplication")][QStringLiteral("applyingPackage")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProfileApplication")][QStringLiteral("applyingPackage")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlProfileApplication");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProfileApplication")][QStringLiteral("applyingPackage")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProfileApplication")][QStringLiteral("applyingPackage")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProfileApplication")][QStringLiteral("applyingPackage")][QtModeling::DocumentationRole] = QStringLiteral("The package that owns the profile application.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProfileApplication")][QStringLiteral("applyingPackage")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProfileApplication")][QStringLiteral("applyingPackage")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-owner DirectedRelationship-source");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProfileApplication")][QStringLiteral("applyingPackage")][QtModeling::OppositeEndRole] = QStringLiteral("Package-profileApplication");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProfileApplication")][QStringLiteral("isStrict")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProfileApplication")][QStringLiteral("isStrict")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlProfileApplication");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProfileApplication")][QStringLiteral("isStrict")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProfileApplication")][QStringLiteral("isStrict")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProfileApplication")][QStringLiteral("isStrict")][QtModeling::DocumentationRole] = QStringLiteral("Specifies that the Profile filtering rules for the metaclasses of the referenced metamodel shall be strictly applied.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProfileApplication")][QStringLiteral("isStrict")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProfileApplication")][QStringLiteral("isStrict")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProfileApplication")][QStringLiteral("isStrict")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
 }
 

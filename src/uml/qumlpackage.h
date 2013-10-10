@@ -47,7 +47,6 @@
 #include <QtUml/QUmlPackageableElement>
 #include <QtUml/QUmlTemplateableElement>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -64,10 +63,10 @@ class QUmlType;
 class Q_UML_EXPORT QUmlPackage : public QUmlNamespace, public QUmlPackageableElement, public QUmlTemplateableElement
 {
 public:
-    explicit QUmlPackage(bool createQObject = true);
+    explicit QUmlPackage(bool createQModelingObject = true);
     virtual ~QUmlPackage();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
     QString URI() const;
@@ -106,9 +105,6 @@ protected:
     QSet<QUmlPackageMerge *> _packageMerges;
     QSet<QUmlPackageableElement *> _packagedElements;
     QSet<QUmlProfileApplication *> _profileApplications;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

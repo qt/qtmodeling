@@ -45,7 +45,6 @@
 
 #include <QtUml/QUmlExecutionSpecification>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -57,10 +56,10 @@ class QUmlBehavior;
 class Q_UML_EXPORT QUmlBehaviorExecutionSpecification : public QUmlExecutionSpecification
 {
 public:
-    explicit QUmlBehaviorExecutionSpecification(bool createQObject = true);
+    explicit QUmlBehaviorExecutionSpecification(bool createQModelingObject = true);
     virtual ~QUmlBehaviorExecutionSpecification();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
     QUmlBehavior *behavior() const;
@@ -68,9 +67,6 @@ public:
 
 protected:
     QUmlBehavior *_behavior;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

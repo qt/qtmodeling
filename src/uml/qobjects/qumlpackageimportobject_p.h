@@ -43,7 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtCore/QObject>
+#include <QtModeling/QModelingObject>
 
 #include <QtUml/QtUmlNamespace>
 
@@ -54,9 +54,12 @@ QT_BEGIN_NAMESPACE
 QT_MODULE(QtUml)
 
 class QUmlPackageImport;
-class Q_UML_EXPORT QUmlPackageImportObject : public QObject
+class QModelingObjectPrivate;
+class Q_UML_EXPORT QUmlPackageImportObject : public QModelingObject
 {
     Q_OBJECT
+    Q_DISABLE_COPY(QUmlPackageImportObject)
+    Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [Element]
     Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
@@ -76,7 +79,7 @@ class Q_UML_EXPORT QUmlPackageImportObject : public QObject
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility RESET unsetVisibility)
 
 public:
-    Q_INVOKABLE explicit QUmlPackageImportObject(QUmlPackageImport *qModelingObject);
+    Q_INVOKABLE explicit QUmlPackageImportObject(QUmlPackageImport *qModelingElement);
     virtual ~QUmlPackageImportObject();
 
     // Owned attributes [Element]
@@ -124,6 +127,10 @@ public Q_SLOTS:
     void setImportingNamespace(QObject *importingNamespace = 0);
     void setVisibility(QtUml::VisibilityKind visibility);
     void unsetVisibility();
+
+protected:
+    virtual void setGroupProperties();
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

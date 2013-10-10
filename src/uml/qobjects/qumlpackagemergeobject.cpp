@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlpackagemergeobject_p.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlPackageMerge>
 #include <QtUml/QUmlComment>
@@ -47,16 +48,18 @@
 
 QT_BEGIN_NAMESPACE
 
-QUmlPackageMergeObject::QUmlPackageMergeObject(QUmlPackageMerge *qModelingObject)
+QUmlPackageMergeObject::QUmlPackageMergeObject(QUmlPackageMerge *qModelingElement)
 {
-    setProperty("modelingObject", QVariant::fromValue(static_cast<QModelingObject *>(qModelingObject)));
+    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(qModelingElement)));
+    setGroupProperties();
+    setPropertyData();
 }
 
 QUmlPackageMergeObject::~QUmlPackageMergeObject()
 {
     if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingobjectproperty_cast<QUmlPackageMerge *>(this)->deletingFromQObject = true;
-        delete qmodelingobjectproperty_cast<QUmlComment *>(this);
+        qmodelingelementproperty_cast<QUmlPackageMerge *>(this)->deletingFromQModelingObject = true;
+        delete qmodelingelementproperty_cast<QUmlComment *>(this);
     }
 }
 
@@ -65,25 +68,25 @@ QUmlPackageMergeObject::~QUmlPackageMergeObject()
 const QSet<QObject *> QUmlPackageMergeObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlPackageMerge *>(this)->ownedComments())
-        set.insert(element->asQObject());
+    foreach (QUmlComment *element, qmodelingelementproperty_cast<QUmlPackageMerge *>(this)->ownedComments())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlPackageMergeObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlPackageMerge *>(this)->ownedElements())
-        set.insert(element->asQObject());
+    foreach (QUmlElement *element, qmodelingelementproperty_cast<QUmlPackageMerge *>(this)->ownedElements())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 QObject *QUmlPackageMergeObject::owner() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlPackageMerge *>(this)->owner())
+    if (!qmodelingelementproperty_cast<QUmlPackageMerge *>(this)->owner())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlPackageMerge *>(this)->owner()->asQObject();
+        return qmodelingelementproperty_cast<QUmlPackageMerge *>(this)->owner()->asQModelingObject();
 }
 
 // OWNED ATTRIBUTES [Relationship]
@@ -91,8 +94,8 @@ QObject *QUmlPackageMergeObject::owner() const
 const QSet<QObject *> QUmlPackageMergeObject::relatedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlPackageMerge *>(this)->relatedElements())
-        set.insert(element->asQObject());
+    foreach (QUmlElement *element, qmodelingelementproperty_cast<QUmlPackageMerge *>(this)->relatedElements())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
@@ -101,16 +104,16 @@ const QSet<QObject *> QUmlPackageMergeObject::relatedElements() const
 const QSet<QObject *> QUmlPackageMergeObject::sources() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlPackageMerge *>(this)->sources())
-        set.insert(element->asQObject());
+    foreach (QUmlElement *element, qmodelingelementproperty_cast<QUmlPackageMerge *>(this)->sources())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlPackageMergeObject::targets() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlPackageMerge *>(this)->targets())
-        set.insert(element->asQObject());
+    foreach (QUmlElement *element, qmodelingelementproperty_cast<QUmlPackageMerge *>(this)->targets())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
@@ -118,18 +121,18 @@ const QSet<QObject *> QUmlPackageMergeObject::targets() const
 
 QObject *QUmlPackageMergeObject::mergedPackage() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlPackageMerge *>(this)->mergedPackage())
+    if (!qmodelingelementproperty_cast<QUmlPackageMerge *>(this)->mergedPackage())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlPackageMerge *>(this)->mergedPackage()->asQObject();
+        return qmodelingelementproperty_cast<QUmlPackageMerge *>(this)->mergedPackage()->asQModelingObject();
 }
 
 QObject *QUmlPackageMergeObject::receivingPackage() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlPackageMerge *>(this)->receivingPackage())
+    if (!qmodelingelementproperty_cast<QUmlPackageMerge *>(this)->receivingPackage())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlPackageMerge *>(this)->receivingPackage()->asQObject();
+        return qmodelingelementproperty_cast<QUmlPackageMerge *>(this)->receivingPackage()->asQModelingObject();
 }
 
 // OPERATIONS [Element]
@@ -137,87 +140,135 @@ QObject *QUmlPackageMergeObject::receivingPackage() const
 QSet<QObject *> QUmlPackageMergeObject::allOwnedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlPackageMerge *>(this)->allOwnedElements())
-        set.insert(element->asQObject());
+    foreach (QUmlElement *element, qmodelingelementproperty_cast<QUmlPackageMerge *>(this)->allOwnedElements())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 bool QUmlPackageMergeObject::mustBeOwned() const
 {
-    return qmodelingobjectproperty_cast<QUmlPackageMerge *>(this)->mustBeOwned();
+    return qmodelingelementproperty_cast<QUmlPackageMerge *>(this)->mustBeOwned();
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Element]
 
 void QUmlPackageMergeObject::addOwnedComment(QObject *ownedComment)
 {
-    qmodelingobjectproperty_cast<QUmlPackageMerge *>(this)->addOwnedComment(qmodelingobjectproperty_cast<QUmlComment *>(ownedComment));
+    qmodelingelementproperty_cast<QUmlPackageMerge *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
 }
 
 void QUmlPackageMergeObject::removeOwnedComment(QObject *ownedComment)
 {
-    qmodelingobjectproperty_cast<QUmlPackageMerge *>(this)->removeOwnedComment(qmodelingobjectproperty_cast<QUmlComment *>(ownedComment));
+    qmodelingelementproperty_cast<QUmlPackageMerge *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
 }
 
 void QUmlPackageMergeObject::addOwnedElement(QObject *ownedElement)
 {
-    qmodelingobjectproperty_cast<QUmlPackageMerge *>(this)->addOwnedElement(qmodelingobjectproperty_cast<QUmlElement *>(ownedElement));
+    qmodelingelementproperty_cast<QUmlPackageMerge *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
 }
 
 void QUmlPackageMergeObject::removeOwnedElement(QObject *ownedElement)
 {
-    qmodelingobjectproperty_cast<QUmlPackageMerge *>(this)->removeOwnedElement(qmodelingobjectproperty_cast<QUmlElement *>(ownedElement));
+    qmodelingelementproperty_cast<QUmlPackageMerge *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
 }
 
 void QUmlPackageMergeObject::setOwner(QObject *owner)
 {
-    qmodelingobjectproperty_cast<QUmlPackageMerge *>(this)->setOwner(qmodelingobjectproperty_cast<QUmlElement *>(owner));
+    qmodelingelementproperty_cast<QUmlPackageMerge *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Relationship]
 
 void QUmlPackageMergeObject::addRelatedElement(QObject *relatedElement)
 {
-    qmodelingobjectproperty_cast<QUmlPackageMerge *>(this)->addRelatedElement(qmodelingobjectproperty_cast<QUmlElement *>(relatedElement));
+    qmodelingelementproperty_cast<QUmlPackageMerge *>(this)->addRelatedElement(qmodelingelementproperty_cast<QUmlElement *>(relatedElement));
 }
 
 void QUmlPackageMergeObject::removeRelatedElement(QObject *relatedElement)
 {
-    qmodelingobjectproperty_cast<QUmlPackageMerge *>(this)->removeRelatedElement(qmodelingobjectproperty_cast<QUmlElement *>(relatedElement));
+    qmodelingelementproperty_cast<QUmlPackageMerge *>(this)->removeRelatedElement(qmodelingelementproperty_cast<QUmlElement *>(relatedElement));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [DirectedRelationship]
 
 void QUmlPackageMergeObject::addSource(QObject *source)
 {
-    qmodelingobjectproperty_cast<QUmlPackageMerge *>(this)->addSource(qmodelingobjectproperty_cast<QUmlElement *>(source));
+    qmodelingelementproperty_cast<QUmlPackageMerge *>(this)->addSource(qmodelingelementproperty_cast<QUmlElement *>(source));
 }
 
 void QUmlPackageMergeObject::removeSource(QObject *source)
 {
-    qmodelingobjectproperty_cast<QUmlPackageMerge *>(this)->removeSource(qmodelingobjectproperty_cast<QUmlElement *>(source));
+    qmodelingelementproperty_cast<QUmlPackageMerge *>(this)->removeSource(qmodelingelementproperty_cast<QUmlElement *>(source));
 }
 
 void QUmlPackageMergeObject::addTarget(QObject *target)
 {
-    qmodelingobjectproperty_cast<QUmlPackageMerge *>(this)->addTarget(qmodelingobjectproperty_cast<QUmlElement *>(target));
+    qmodelingelementproperty_cast<QUmlPackageMerge *>(this)->addTarget(qmodelingelementproperty_cast<QUmlElement *>(target));
 }
 
 void QUmlPackageMergeObject::removeTarget(QObject *target)
 {
-    qmodelingobjectproperty_cast<QUmlPackageMerge *>(this)->removeTarget(qmodelingobjectproperty_cast<QUmlElement *>(target));
+    qmodelingelementproperty_cast<QUmlPackageMerge *>(this)->removeTarget(qmodelingelementproperty_cast<QUmlElement *>(target));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [PackageMerge]
 
 void QUmlPackageMergeObject::setMergedPackage(QObject *mergedPackage)
 {
-    qmodelingobjectproperty_cast<QUmlPackageMerge *>(this)->setMergedPackage(qmodelingobjectproperty_cast<QUmlPackage *>(mergedPackage));
+    qmodelingelementproperty_cast<QUmlPackageMerge *>(this)->setMergedPackage(qmodelingelementproperty_cast<QUmlPackage *>(mergedPackage));
 }
 
 void QUmlPackageMergeObject::setReceivingPackage(QObject *receivingPackage)
 {
-    qmodelingobjectproperty_cast<QUmlPackageMerge *>(this)->setReceivingPackage(qmodelingobjectproperty_cast<QUmlPackage *>(receivingPackage));
+    qmodelingelementproperty_cast<QUmlPackageMerge *>(this)->setReceivingPackage(qmodelingelementproperty_cast<QUmlPackage *>(receivingPackage));
+}
+
+
+void QUmlPackageMergeObject::setGroupProperties()
+{
+    Q_D(QModelingObject);
+    const QMetaObject *metaObject = this->metaObject();
+
+    d->propertyGroups << QStringLiteral("QObject");
+    d->groupProperties.insert(QStringLiteral("QObject"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("objectName"))));
+
+    d->propertyGroups << QStringLiteral("QUmlElement");
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
+
+    d->propertyGroups << QStringLiteral("QUmlRelationship");
+    d->groupProperties.insert(QStringLiteral("QUmlRelationship"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("relatedElements"))));
+
+    d->propertyGroups << QStringLiteral("QUmlDirectedRelationship");
+    d->groupProperties.insert(QStringLiteral("QUmlDirectedRelationship"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("sources"))));
+    d->groupProperties.insert(QStringLiteral("QUmlDirectedRelationship"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("targets"))));
+
+    d->propertyGroups << QStringLiteral("QUmlPackageMerge");
+    d->groupProperties.insert(QStringLiteral("QUmlPackageMerge"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("mergedPackage"))));
+    d->groupProperties.insert(QStringLiteral("QUmlPackageMerge"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("receivingPackage"))));
+}
+
+void QUmlPackageMergeObject::setPropertyData()
+{
+    Q_DECLARE_METAPROPERTY_INFO(QUmlPackageMerge, mergedPackage, AggregationRole, QStringLiteral("none"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlPackageMerge, mergedPackage, PropertyClassRole, QStringLiteral("QUmlPackageMerge"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlPackageMerge, mergedPackage, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlPackageMerge, mergedPackage, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlPackageMerge, mergedPackage, DocumentationRole, QStringLiteral("References the Package that is to be merged with the receiving package of the PackageMerge."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlPackageMerge, mergedPackage, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlPackageMerge, mergedPackage, SubsettedPropertiesRole, QStringLiteral("DirectedRelationship-target"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlPackageMerge, mergedPackage, OppositeEndRole, QStringLiteral(""));
+
+    Q_DECLARE_METAPROPERTY_INFO(QUmlPackageMerge, receivingPackage, AggregationRole, QStringLiteral("none"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlPackageMerge, receivingPackage, PropertyClassRole, QStringLiteral("QUmlPackageMerge"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlPackageMerge, receivingPackage, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlPackageMerge, receivingPackage, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlPackageMerge, receivingPackage, DocumentationRole, QStringLiteral("References the Package that is being extended with the contents of the merged package of the PackageMerge."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlPackageMerge, receivingPackage, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlPackageMerge, receivingPackage, SubsettedPropertiesRole, QStringLiteral("Element-owner DirectedRelationship-source"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlPackageMerge, receivingPackage, OppositeEndRole, QStringLiteral("Package-packageMerge"));
+
 }
 
 QT_END_NAMESPACE

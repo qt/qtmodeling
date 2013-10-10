@@ -43,7 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtCore/QObject>
+#include <QtModeling/QModelingObject>
 
 #include <QtUml/QtUmlNamespace>
 
@@ -54,9 +54,12 @@ QT_BEGIN_NAMESPACE
 QT_MODULE(QtUml)
 
 class QUmlExtend;
-class Q_UML_EXPORT QUmlExtendObject : public QObject
+class QModelingObjectPrivate;
+class Q_UML_EXPORT QUmlExtendObject : public QModelingObject
 {
     Q_OBJECT
+    Q_DISABLE_COPY(QUmlExtendObject)
+    Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [Element]
     Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
@@ -85,7 +88,7 @@ class Q_UML_EXPORT QUmlExtendObject : public QObject
     Q_PROPERTY(QList<QObject *> extensionLocations READ extensionLocations)
 
 public:
-    Q_INVOKABLE explicit QUmlExtendObject(QUmlExtend *qModelingObject);
+    Q_INVOKABLE explicit QUmlExtendObject(QUmlExtend *qModelingElement);
     virtual ~QUmlExtendObject();
 
     // Owned attributes [Element]
@@ -158,6 +161,10 @@ public Q_SLOTS:
     void setExtension(QObject *extension = 0);
     void addExtensionLocation(QObject *extensionLocation);
     void removeExtensionLocation(QObject *extensionLocation);
+
+protected:
+    virtual void setGroupProperties();
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

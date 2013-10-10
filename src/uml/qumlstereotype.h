@@ -45,7 +45,6 @@
 
 #include <QtUml/QUmlClass>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -58,10 +57,10 @@ class QUmlProfile;
 class Q_UML_EXPORT QUmlStereotype : public QUmlClass
 {
 public:
-    explicit QUmlStereotype(bool createQObject = true);
+    explicit QUmlStereotype(bool createQModelingObject = true);
     virtual ~QUmlStereotype();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
     const QSet<QUmlImage *> icons() const;
@@ -75,9 +74,6 @@ public:
 
 protected:
     QSet<QUmlImage *> _icons;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

@@ -45,7 +45,6 @@
 
 #include <QtUml/QUmlClassifier>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -61,7 +60,7 @@ class Q_UML_EXPORT QUmlStructuredClassifier : public virtual QUmlClassifier
 public:
     virtual ~QUmlStructuredClassifier();
 
-    Q_DECL_HIDDEN QModelingObject *clone() const;
+    Q_DECL_HIDDEN virtual QModelingElement *clone() const;
 
     // Owned attributes
     const QList<QUmlProperty *> ownedAttributes() const;
@@ -83,9 +82,6 @@ protected:
     QList<QUmlProperty *> _ownedAttributes;
     QSet<QUmlConnector *> _ownedConnectors;
     QSet<QUmlConnectableElement *> _roles;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

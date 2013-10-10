@@ -45,7 +45,6 @@
 
 #include <QtUml/QUmlAbstraction>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -55,16 +54,13 @@ QT_MODULE(QtUml)
 class Q_UML_EXPORT QUmlRealization : public QUmlAbstraction
 {
 public:
-    explicit QUmlRealization(bool createQObject = true);
+    explicit QUmlRealization(bool createQModelingObject = true);
     virtual ~QUmlRealization();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
 
 protected:
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

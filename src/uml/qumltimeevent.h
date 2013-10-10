@@ -45,7 +45,6 @@
 
 #include <QtUml/QUmlEvent>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -57,10 +56,10 @@ class QUmlTimeExpression;
 class Q_UML_EXPORT QUmlTimeEvent : public QUmlEvent
 {
 public:
-    explicit QUmlTimeEvent(bool createQObject = true);
+    explicit QUmlTimeEvent(bool createQModelingObject = true);
     virtual ~QUmlTimeEvent();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
     bool isRelative() const;
@@ -71,9 +70,6 @@ public:
 protected:
     bool _isRelative;
     QUmlTimeExpression *_when;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

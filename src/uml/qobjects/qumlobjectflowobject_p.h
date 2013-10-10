@@ -43,7 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtCore/QObject>
+#include <QtModeling/QModelingObject>
 
 #include <QtUml/QtUmlNamespace>
 
@@ -54,9 +54,12 @@ QT_BEGIN_NAMESPACE
 QT_MODULE(QtUml)
 
 class QUmlObjectFlow;
-class Q_UML_EXPORT QUmlObjectFlowObject : public QObject
+class QModelingObjectPrivate;
+class Q_UML_EXPORT QUmlObjectFlowObject : public QModelingObject
 {
     Q_OBJECT
+    Q_DISABLE_COPY(QUmlObjectFlowObject)
+    Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [Element]
     Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
@@ -95,7 +98,7 @@ class Q_UML_EXPORT QUmlObjectFlowObject : public QObject
     Q_PROPERTY(QObject * transformation READ transformation WRITE setTransformation)
 
 public:
-    Q_INVOKABLE explicit QUmlObjectFlowObject(QUmlObjectFlow *qModelingObject);
+    Q_INVOKABLE explicit QUmlObjectFlowObject(QUmlObjectFlow *qModelingElement);
     virtual ~QUmlObjectFlowObject();
 
     // Owned attributes [Element]
@@ -196,6 +199,10 @@ public Q_SLOTS:
     void unsetMultireceive();
     void setSelection(QObject *selection = 0);
     void setTransformation(QObject *transformation = 0);
+
+protected:
+    virtual void setGroupProperties();
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

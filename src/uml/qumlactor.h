@@ -45,7 +45,6 @@
 
 #include <QtUml/QUmlBehavioredClassifier>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -55,16 +54,13 @@ QT_MODULE(QtUml)
 class Q_UML_EXPORT QUmlActor : public QUmlBehavioredClassifier
 {
 public:
-    explicit QUmlActor(bool createQObject = true);
+    explicit QUmlActor(bool createQModelingObject = true);
     virtual ~QUmlActor();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
 
 protected:
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

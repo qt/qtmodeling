@@ -43,7 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtCore/QObject>
+#include <QtModeling/QModelingObject>
 
 #include <QtUml/QtUmlNamespace>
 
@@ -54,9 +54,12 @@ QT_BEGIN_NAMESPACE
 QT_MODULE(QtUml)
 
 class QUmlDeployment;
-class Q_UML_EXPORT QUmlDeploymentObject : public QObject
+class QModelingObjectPrivate;
+class Q_UML_EXPORT QUmlDeploymentObject : public QModelingObject
 {
     Q_OBJECT
+    Q_DISABLE_COPY(QUmlDeploymentObject)
+    Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [Element]
     Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
@@ -94,7 +97,7 @@ class Q_UML_EXPORT QUmlDeploymentObject : public QObject
     Q_PROPERTY(QObject * location READ location WRITE setLocation)
 
 public:
-    Q_INVOKABLE explicit QUmlDeploymentObject(QUmlDeployment *qModelingObject);
+    Q_INVOKABLE explicit QUmlDeploymentObject(QUmlDeployment *qModelingElement);
     virtual ~QUmlDeploymentObject();
 
     // Owned attributes [Element]
@@ -193,6 +196,10 @@ public Q_SLOTS:
     void addDeployedArtifact(QObject *deployedArtifact);
     void removeDeployedArtifact(QObject *deployedArtifact);
     void setLocation(QObject *location = 0);
+
+protected:
+    virtual void setGroupProperties();
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

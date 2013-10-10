@@ -45,7 +45,6 @@
 
 #include <QtUml/QUmlPackageableElement>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -58,10 +57,10 @@ class QUmlGeneralization;
 class Q_UML_EXPORT QUmlGeneralizationSet : public QUmlPackageableElement
 {
 public:
-    explicit QUmlGeneralizationSet(bool createQObject = true);
+    explicit QUmlGeneralizationSet(bool createQModelingObject = true);
     virtual ~QUmlGeneralizationSet();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
     const QSet<QUmlGeneralization *> generalizations() const;
@@ -79,9 +78,6 @@ protected:
     bool _isCovering;
     bool _isDisjoint;
     QUmlClassifier *_powertype;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

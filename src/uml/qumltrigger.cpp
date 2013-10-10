@@ -59,25 +59,23 @@
 
     \brief A trigger specification may be qualified by the port on which the event occurred.A trigger relates an event to a behavior that may affect an instance of the classifier.
  */
-QUmlTrigger::QUmlTrigger(bool createQObject) :
+QUmlTrigger::QUmlTrigger(bool createQModelingObject) :
     _event(0)
 {
-    if (createQObject)
-        _qObject = new QUmlTriggerObject(this);
-    setGroupProperties();
-    setPropertyData();
+    if (createQModelingObject)
+        _qModelingObject = qobject_cast<QModelingObject *>(new QUmlTriggerObject(this));
 }
 
 QUmlTrigger::~QUmlTrigger()
 {
-    if (!deletingFromQObject) {
-        if (_qObject)
-            _qObject->setProperty("deletingFromModelingObject", true);
-        delete _qObject;
+    if (!deletingFromQModelingObject) {
+        if (_qModelingObject)
+            _qModelingObject->setProperty("deletingFromModelingObject", true);
+        delete _qModelingObject;
     }
 }
 
-QModelingObject *QUmlTrigger::clone() const
+QModelingElement *QUmlTrigger::clone() const
 {
     QUmlTrigger *c = new QUmlTrigger;
     foreach (QUmlComment *element, ownedComments())
@@ -113,8 +111,8 @@ void QUmlTrigger::setEvent(QUmlEvent *event)
 
     if (_event != event) {
         _event = event;
-        if (event && event->asQObject() && this->asQObject())
-            QObject::connect(event->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setEvent()));
+        if (event && event->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(event->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setEvent()));
     }
 }
 
@@ -134,8 +132,8 @@ void QUmlTrigger::addPort(QUmlPort *port)
 
     if (!_ports.contains(port)) {
         _ports.insert(port);
-        if (port && port->asQObject() && this->asQObject())
-            QObject::connect(port->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removePort(QObject *)));
+        if (port && port->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(port->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removePort(QObject *)));
     }
 }
 
@@ -146,44 +144,5 @@ void QUmlTrigger::removePort(QUmlPort *port)
     if (_ports.contains(port)) {
         _ports.remove(port);
     }
-}
-
-void QUmlTrigger::setGroupProperties()
-{
-    const QMetaObject *metaObject = _qObject->metaObject();
-
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
-    _groupProperties.insert(QStringLiteral("QUmlTrigger"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("event"))));
-    _groupProperties.insert(QStringLiteral("QUmlTrigger"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ports"))));
-}
-
-void QUmlTrigger::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTrigger")][QStringLiteral("event")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTrigger")][QStringLiteral("event")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlTrigger");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTrigger")][QStringLiteral("event")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTrigger")][QStringLiteral("event")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTrigger")][QStringLiteral("event")][QtModeling::DocumentationRole] = QStringLiteral("The event that causes the trigger.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTrigger")][QStringLiteral("event")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTrigger")][QStringLiteral("event")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTrigger")][QStringLiteral("event")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTrigger")][QStringLiteral("ports")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTrigger")][QStringLiteral("ports")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlTrigger");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTrigger")][QStringLiteral("ports")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTrigger")][QStringLiteral("ports")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTrigger")][QStringLiteral("ports")][QtModeling::DocumentationRole] = QStringLiteral("A optional port of the receiver object on which the behavioral feature is invoked.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTrigger")][QStringLiteral("ports")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTrigger")][QStringLiteral("ports")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTrigger")][QStringLiteral("ports")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
 }
 

@@ -43,7 +43,7 @@
 
 QT_BEGIN_NAMESPACE
 
-QHash< QString, QHash< QString, QHash<QtModeling::MetaPropertyDataRole, QVariant> > > QModelingObjectPrivate::propertyDataHash;
+QHash< QString, QHash< QString, QHash<QtModeling::MetaPropertyDataRole, QVariant> > > QModelingObject::propertyDataHash;
 
 QModelingObjectPrivate::QModelingObjectPrivate()
 {
@@ -66,7 +66,7 @@ bool QModelingObject::isPropertyModified(QMetaProperty metaProperty) const
 
 QVariant QModelingObject::propertyData(QString className, QMetaProperty metaProperty, QtModeling::MetaPropertyDataRole role)
 {
-    return QModelingObjectPrivate::propertyDataHash[className][QString::fromLatin1(metaProperty.name())][role];
+    return QModelingObject::propertyDataHash[className][QString::fromLatin1(metaProperty.name())][role];
 }
 
 int QModelingObject::propertyGroupIndex(QMetaProperty metaProperty) const
@@ -88,12 +88,14 @@ const QStringList &QModelingObject::propertyGroups() const
     return d->propertyGroups;
 }
 
-const QStringList &QModelingObject::modifiedResettableProperties() const
+QStringList &QModelingObject::modifiedResettableProperties()
 {
-    Q_D(const QModelingObject);
+    Q_D(QModelingObject);
     return d->modifiedResettableProperties;
 }
 
 QModelingObject::QModelingObject()
+    : QObject(*new QModelingObjectPrivate)
 {
 }
+

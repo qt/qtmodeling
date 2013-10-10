@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlpartdecompositionobject_p.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlPartDecomposition>
 #include <QtUml/QUmlComment>
@@ -58,16 +59,18 @@
 
 QT_BEGIN_NAMESPACE
 
-QUmlPartDecompositionObject::QUmlPartDecompositionObject(QUmlPartDecomposition *qModelingObject)
+QUmlPartDecompositionObject::QUmlPartDecompositionObject(QUmlPartDecomposition *qModelingElement)
 {
-    setProperty("modelingObject", QVariant::fromValue(static_cast<QModelingObject *>(qModelingObject)));
+    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(qModelingElement)));
+    setGroupProperties();
+    setPropertyData();
 }
 
 QUmlPartDecompositionObject::~QUmlPartDecompositionObject()
 {
     if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingobjectproperty_cast<QUmlPartDecomposition *>(this)->deletingFromQObject = true;
-        delete qmodelingobjectproperty_cast<QUmlComment *>(this);
+        qmodelingelementproperty_cast<QUmlPartDecomposition *>(this)->deletingFromQModelingObject = true;
+        delete qmodelingelementproperty_cast<QUmlComment *>(this);
     }
 }
 
@@ -76,25 +79,25 @@ QUmlPartDecompositionObject::~QUmlPartDecompositionObject()
 const QSet<QObject *> QUmlPartDecompositionObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlPartDecomposition *>(this)->ownedComments())
-        set.insert(element->asQObject());
+    foreach (QUmlComment *element, qmodelingelementproperty_cast<QUmlPartDecomposition *>(this)->ownedComments())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlPartDecompositionObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlPartDecomposition *>(this)->ownedElements())
-        set.insert(element->asQObject());
+    foreach (QUmlElement *element, qmodelingelementproperty_cast<QUmlPartDecomposition *>(this)->ownedElements())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 QObject *QUmlPartDecompositionObject::owner() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlPartDecomposition *>(this)->owner())
+    if (!qmodelingelementproperty_cast<QUmlPartDecomposition *>(this)->owner())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlPartDecomposition *>(this)->owner()->asQObject();
+        return qmodelingelementproperty_cast<QUmlPartDecomposition *>(this)->owner()->asQModelingObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -102,40 +105,40 @@ QObject *QUmlPartDecompositionObject::owner() const
 const QSet<QObject *> QUmlPartDecompositionObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlPartDecomposition *>(this)->clientDependencies())
-        set.insert(element->asQObject());
+    foreach (QUmlDependency *element, qmodelingelementproperty_cast<QUmlPartDecomposition *>(this)->clientDependencies())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 QString QUmlPartDecompositionObject::name() const
 {
-    return qmodelingobjectproperty_cast<QUmlPartDecomposition *>(this)->name();
+    return qmodelingelementproperty_cast<QUmlPartDecomposition *>(this)->name();
 }
 
 QObject *QUmlPartDecompositionObject::nameExpression() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlPartDecomposition *>(this)->nameExpression())
+    if (!qmodelingelementproperty_cast<QUmlPartDecomposition *>(this)->nameExpression())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlPartDecomposition *>(this)->nameExpression()->asQObject();
+        return qmodelingelementproperty_cast<QUmlPartDecomposition *>(this)->nameExpression()->asQModelingObject();
 }
 
 QObject *QUmlPartDecompositionObject::namespace_() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlPartDecomposition *>(this)->namespace_())
+    if (!qmodelingelementproperty_cast<QUmlPartDecomposition *>(this)->namespace_())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlPartDecomposition *>(this)->namespace_()->asQObject();
+        return qmodelingelementproperty_cast<QUmlPartDecomposition *>(this)->namespace_()->asQModelingObject();
 }
 
 QString QUmlPartDecompositionObject::qualifiedName() const
 {
-    return qmodelingobjectproperty_cast<QUmlPartDecomposition *>(this)->qualifiedName();
+    return qmodelingelementproperty_cast<QUmlPartDecomposition *>(this)->qualifiedName();
 }
 
 QtUml::VisibilityKind QUmlPartDecompositionObject::visibility() const
 {
-    return qmodelingobjectproperty_cast<QUmlPartDecomposition *>(this)->visibility();
+    return qmodelingelementproperty_cast<QUmlPartDecomposition *>(this)->visibility();
 }
 
 // OWNED ATTRIBUTES [InteractionFragment]
@@ -143,32 +146,32 @@ QtUml::VisibilityKind QUmlPartDecompositionObject::visibility() const
 const QSet<QObject *> QUmlPartDecompositionObject::covered() const
 {
     QSet<QObject *> set;
-    foreach (QUmlLifeline *element, qmodelingobjectproperty_cast<QUmlPartDecomposition *>(this)->covered())
-        set.insert(element->asQObject());
+    foreach (QUmlLifeline *element, qmodelingelementproperty_cast<QUmlPartDecomposition *>(this)->covered())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 QObject *QUmlPartDecompositionObject::enclosingInteraction() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlPartDecomposition *>(this)->enclosingInteraction())
+    if (!qmodelingelementproperty_cast<QUmlPartDecomposition *>(this)->enclosingInteraction())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlPartDecomposition *>(this)->enclosingInteraction()->asQObject();
+        return qmodelingelementproperty_cast<QUmlPartDecomposition *>(this)->enclosingInteraction()->asQModelingObject();
 }
 
 QObject *QUmlPartDecompositionObject::enclosingOperand() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlPartDecomposition *>(this)->enclosingOperand())
+    if (!qmodelingelementproperty_cast<QUmlPartDecomposition *>(this)->enclosingOperand())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlPartDecomposition *>(this)->enclosingOperand()->asQObject();
+        return qmodelingelementproperty_cast<QUmlPartDecomposition *>(this)->enclosingOperand()->asQModelingObject();
 }
 
 const QSet<QObject *> QUmlPartDecompositionObject::generalOrderings() const
 {
     QSet<QObject *> set;
-    foreach (QUmlGeneralOrdering *element, qmodelingobjectproperty_cast<QUmlPartDecomposition *>(this)->generalOrderings())
-        set.insert(element->asQObject());
+    foreach (QUmlGeneralOrdering *element, qmodelingelementproperty_cast<QUmlPartDecomposition *>(this)->generalOrderings())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
@@ -177,41 +180,41 @@ const QSet<QObject *> QUmlPartDecompositionObject::generalOrderings() const
 const QSet<QObject *> QUmlPartDecompositionObject::actualGates() const
 {
     QSet<QObject *> set;
-    foreach (QUmlGate *element, qmodelingobjectproperty_cast<QUmlPartDecomposition *>(this)->actualGates())
-        set.insert(element->asQObject());
+    foreach (QUmlGate *element, qmodelingelementproperty_cast<QUmlPartDecomposition *>(this)->actualGates())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QList<QObject *> QUmlPartDecompositionObject::arguments() const
 {
     QList<QObject *> list;
-    foreach (QUmlValueSpecification *element, qmodelingobjectproperty_cast<QUmlPartDecomposition *>(this)->arguments())
-        list.append(element->asQObject());
+    foreach (QUmlValueSpecification *element, qmodelingelementproperty_cast<QUmlPartDecomposition *>(this)->arguments())
+        list.append(element->asQModelingObject());
     return list;
 }
 
 QObject *QUmlPartDecompositionObject::refersTo() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlPartDecomposition *>(this)->refersTo())
+    if (!qmodelingelementproperty_cast<QUmlPartDecomposition *>(this)->refersTo())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlPartDecomposition *>(this)->refersTo()->asQObject();
+        return qmodelingelementproperty_cast<QUmlPartDecomposition *>(this)->refersTo()->asQModelingObject();
 }
 
 QObject *QUmlPartDecompositionObject::returnValue() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlPartDecomposition *>(this)->returnValue())
+    if (!qmodelingelementproperty_cast<QUmlPartDecomposition *>(this)->returnValue())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlPartDecomposition *>(this)->returnValue()->asQObject();
+        return qmodelingelementproperty_cast<QUmlPartDecomposition *>(this)->returnValue()->asQModelingObject();
 }
 
 QObject *QUmlPartDecompositionObject::returnValueRecipient() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlPartDecomposition *>(this)->returnValueRecipient())
+    if (!qmodelingelementproperty_cast<QUmlPartDecomposition *>(this)->returnValueRecipient())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlPartDecomposition *>(this)->returnValueRecipient()->asQObject();
+        return qmodelingelementproperty_cast<QUmlPartDecomposition *>(this)->returnValueRecipient()->asQModelingObject();
 }
 
 // OPERATIONS [Element]
@@ -219,14 +222,14 @@ QObject *QUmlPartDecompositionObject::returnValueRecipient() const
 QSet<QObject *> QUmlPartDecompositionObject::allOwnedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlPartDecomposition *>(this)->allOwnedElements())
-        set.insert(element->asQObject());
+    foreach (QUmlElement *element, qmodelingelementproperty_cast<QUmlPartDecomposition *>(this)->allOwnedElements())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 bool QUmlPartDecompositionObject::mustBeOwned() const
 {
-    return qmodelingobjectproperty_cast<QUmlPartDecomposition *>(this)->mustBeOwned();
+    return qmodelingelementproperty_cast<QUmlPartDecomposition *>(this)->mustBeOwned();
 }
 
 // OPERATIONS [NamedElement]
@@ -234,160 +237,202 @@ bool QUmlPartDecompositionObject::mustBeOwned() const
 QList<QObject *> QUmlPartDecompositionObject::allNamespaces() const
 {
     QList<QObject *> set;
-    foreach (QUmlNamespace *element, qmodelingobjectproperty_cast<QUmlPartDecomposition *>(this)->allNamespaces())
-        set.append(element->asQObject());
+    foreach (QUmlNamespace *element, qmodelingelementproperty_cast<QUmlPartDecomposition *>(this)->allNamespaces())
+        set.append(element->asQModelingObject());
     return set;
 }
 
 QSet<QObject *> QUmlPartDecompositionObject::allOwningPackages() const
 {
     QSet<QObject *> set;
-    foreach (QUmlPackage *element, qmodelingobjectproperty_cast<QUmlPartDecomposition *>(this)->allOwningPackages())
-        set.insert(element->asQObject());
+    foreach (QUmlPackage *element, qmodelingelementproperty_cast<QUmlPartDecomposition *>(this)->allOwningPackages())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 bool QUmlPartDecompositionObject::isDistinguishableFrom(QObject *n, QObject *ns) const
 {
-    return qmodelingobjectproperty_cast<QUmlPartDecomposition *>(this)->isDistinguishableFrom(qmodelingobjectproperty_cast<QUmlNamedElement *>(n), qmodelingobjectproperty_cast<QUmlNamespace *>(ns));
+    return qmodelingelementproperty_cast<QUmlPartDecomposition *>(this)->isDistinguishableFrom(qmodelingelementproperty_cast<QUmlNamedElement *>(n), qmodelingelementproperty_cast<QUmlNamespace *>(ns));
 }
 
 QString QUmlPartDecompositionObject::separator() const
 {
-    return qmodelingobjectproperty_cast<QUmlPartDecomposition *>(this)->separator();
+    return qmodelingelementproperty_cast<QUmlPartDecomposition *>(this)->separator();
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Element]
 
 void QUmlPartDecompositionObject::addOwnedComment(QObject *ownedComment)
 {
-    qmodelingobjectproperty_cast<QUmlPartDecomposition *>(this)->addOwnedComment(qmodelingobjectproperty_cast<QUmlComment *>(ownedComment));
+    qmodelingelementproperty_cast<QUmlPartDecomposition *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
 }
 
 void QUmlPartDecompositionObject::removeOwnedComment(QObject *ownedComment)
 {
-    qmodelingobjectproperty_cast<QUmlPartDecomposition *>(this)->removeOwnedComment(qmodelingobjectproperty_cast<QUmlComment *>(ownedComment));
+    qmodelingelementproperty_cast<QUmlPartDecomposition *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
 }
 
 void QUmlPartDecompositionObject::addOwnedElement(QObject *ownedElement)
 {
-    qmodelingobjectproperty_cast<QUmlPartDecomposition *>(this)->addOwnedElement(qmodelingobjectproperty_cast<QUmlElement *>(ownedElement));
+    qmodelingelementproperty_cast<QUmlPartDecomposition *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
 }
 
 void QUmlPartDecompositionObject::removeOwnedElement(QObject *ownedElement)
 {
-    qmodelingobjectproperty_cast<QUmlPartDecomposition *>(this)->removeOwnedElement(qmodelingobjectproperty_cast<QUmlElement *>(ownedElement));
+    qmodelingelementproperty_cast<QUmlPartDecomposition *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
 }
 
 void QUmlPartDecompositionObject::setOwner(QObject *owner)
 {
-    qmodelingobjectproperty_cast<QUmlPartDecomposition *>(this)->setOwner(qmodelingobjectproperty_cast<QUmlElement *>(owner));
+    qmodelingelementproperty_cast<QUmlPartDecomposition *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [NamedElement]
 
 void QUmlPartDecompositionObject::addClientDependency(QObject *clientDependency)
 {
-    qmodelingobjectproperty_cast<QUmlPartDecomposition *>(this)->addClientDependency(qmodelingobjectproperty_cast<QUmlDependency *>(clientDependency));
+    qmodelingelementproperty_cast<QUmlPartDecomposition *>(this)->addClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
 }
 
 void QUmlPartDecompositionObject::removeClientDependency(QObject *clientDependency)
 {
-    qmodelingobjectproperty_cast<QUmlPartDecomposition *>(this)->removeClientDependency(qmodelingobjectproperty_cast<QUmlDependency *>(clientDependency));
+    qmodelingelementproperty_cast<QUmlPartDecomposition *>(this)->removeClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
 }
 
 void QUmlPartDecompositionObject::setName(QString name)
 {
-    qmodelingobjectproperty_cast<QUmlPartDecomposition *>(this)->setName(name);
+    qmodelingelementproperty_cast<QUmlPartDecomposition *>(this)->setName(name);
 }
 
 void QUmlPartDecompositionObject::setNameExpression(QObject *nameExpression)
 {
-    qmodelingobjectproperty_cast<QUmlPartDecomposition *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
+    qmodelingelementproperty_cast<QUmlPartDecomposition *>(this)->setNameExpression(qmodelingelementproperty_cast<QUmlStringExpression *>(nameExpression));
 }
 
 void QUmlPartDecompositionObject::setNamespace(QObject *namespace_)
 {
-    qmodelingobjectproperty_cast<QUmlPartDecomposition *>(this)->setNamespace(qmodelingobjectproperty_cast<QUmlNamespace *>(namespace_));
+    qmodelingelementproperty_cast<QUmlPartDecomposition *>(this)->setNamespace(qmodelingelementproperty_cast<QUmlNamespace *>(namespace_));
 }
 
 void QUmlPartDecompositionObject::setQualifiedName(QString qualifiedName)
 {
-    qmodelingobjectproperty_cast<QUmlPartDecomposition *>(this)->setQualifiedName(qualifiedName);
+    qmodelingelementproperty_cast<QUmlPartDecomposition *>(this)->setQualifiedName(qualifiedName);
 }
 
 void QUmlPartDecompositionObject::setVisibility(QtUml::VisibilityKind visibility)
 {
-    qmodelingobjectproperty_cast<QUmlPartDecomposition *>(this)->setVisibility(visibility);
+    qmodelingelementproperty_cast<QUmlPartDecomposition *>(this)->setVisibility(visibility);
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [InteractionFragment]
 
 void QUmlPartDecompositionObject::addCovered(QObject *covered)
 {
-    qmodelingobjectproperty_cast<QUmlPartDecomposition *>(this)->addCovered(qmodelingobjectproperty_cast<QUmlLifeline *>(covered));
+    qmodelingelementproperty_cast<QUmlPartDecomposition *>(this)->addCovered(qmodelingelementproperty_cast<QUmlLifeline *>(covered));
 }
 
 void QUmlPartDecompositionObject::removeCovered(QObject *covered)
 {
-    qmodelingobjectproperty_cast<QUmlPartDecomposition *>(this)->removeCovered(qmodelingobjectproperty_cast<QUmlLifeline *>(covered));
+    qmodelingelementproperty_cast<QUmlPartDecomposition *>(this)->removeCovered(qmodelingelementproperty_cast<QUmlLifeline *>(covered));
 }
 
 void QUmlPartDecompositionObject::setEnclosingInteraction(QObject *enclosingInteraction)
 {
-    qmodelingobjectproperty_cast<QUmlPartDecomposition *>(this)->setEnclosingInteraction(qmodelingobjectproperty_cast<QUmlInteraction *>(enclosingInteraction));
+    qmodelingelementproperty_cast<QUmlPartDecomposition *>(this)->setEnclosingInteraction(qmodelingelementproperty_cast<QUmlInteraction *>(enclosingInteraction));
 }
 
 void QUmlPartDecompositionObject::setEnclosingOperand(QObject *enclosingOperand)
 {
-    qmodelingobjectproperty_cast<QUmlPartDecomposition *>(this)->setEnclosingOperand(qmodelingobjectproperty_cast<QUmlInteractionOperand *>(enclosingOperand));
+    qmodelingelementproperty_cast<QUmlPartDecomposition *>(this)->setEnclosingOperand(qmodelingelementproperty_cast<QUmlInteractionOperand *>(enclosingOperand));
 }
 
 void QUmlPartDecompositionObject::addGeneralOrdering(QObject *generalOrdering)
 {
-    qmodelingobjectproperty_cast<QUmlPartDecomposition *>(this)->addGeneralOrdering(qmodelingobjectproperty_cast<QUmlGeneralOrdering *>(generalOrdering));
+    qmodelingelementproperty_cast<QUmlPartDecomposition *>(this)->addGeneralOrdering(qmodelingelementproperty_cast<QUmlGeneralOrdering *>(generalOrdering));
 }
 
 void QUmlPartDecompositionObject::removeGeneralOrdering(QObject *generalOrdering)
 {
-    qmodelingobjectproperty_cast<QUmlPartDecomposition *>(this)->removeGeneralOrdering(qmodelingobjectproperty_cast<QUmlGeneralOrdering *>(generalOrdering));
+    qmodelingelementproperty_cast<QUmlPartDecomposition *>(this)->removeGeneralOrdering(qmodelingelementproperty_cast<QUmlGeneralOrdering *>(generalOrdering));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [InteractionUse]
 
 void QUmlPartDecompositionObject::addActualGate(QObject *actualGate)
 {
-    qmodelingobjectproperty_cast<QUmlPartDecomposition *>(this)->addActualGate(qmodelingobjectproperty_cast<QUmlGate *>(actualGate));
+    qmodelingelementproperty_cast<QUmlPartDecomposition *>(this)->addActualGate(qmodelingelementproperty_cast<QUmlGate *>(actualGate));
 }
 
 void QUmlPartDecompositionObject::removeActualGate(QObject *actualGate)
 {
-    qmodelingobjectproperty_cast<QUmlPartDecomposition *>(this)->removeActualGate(qmodelingobjectproperty_cast<QUmlGate *>(actualGate));
+    qmodelingelementproperty_cast<QUmlPartDecomposition *>(this)->removeActualGate(qmodelingelementproperty_cast<QUmlGate *>(actualGate));
 }
 
 void QUmlPartDecompositionObject::addArgument(QObject *argument)
 {
-    qmodelingobjectproperty_cast<QUmlPartDecomposition *>(this)->addArgument(qmodelingobjectproperty_cast<QUmlValueSpecification *>(argument));
+    qmodelingelementproperty_cast<QUmlPartDecomposition *>(this)->addArgument(qmodelingelementproperty_cast<QUmlValueSpecification *>(argument));
 }
 
 void QUmlPartDecompositionObject::removeArgument(QObject *argument)
 {
-    qmodelingobjectproperty_cast<QUmlPartDecomposition *>(this)->removeArgument(qmodelingobjectproperty_cast<QUmlValueSpecification *>(argument));
+    qmodelingelementproperty_cast<QUmlPartDecomposition *>(this)->removeArgument(qmodelingelementproperty_cast<QUmlValueSpecification *>(argument));
 }
 
 void QUmlPartDecompositionObject::setRefersTo(QObject *refersTo)
 {
-    qmodelingobjectproperty_cast<QUmlPartDecomposition *>(this)->setRefersTo(qmodelingobjectproperty_cast<QUmlInteraction *>(refersTo));
+    qmodelingelementproperty_cast<QUmlPartDecomposition *>(this)->setRefersTo(qmodelingelementproperty_cast<QUmlInteraction *>(refersTo));
 }
 
 void QUmlPartDecompositionObject::setReturnValue(QObject *returnValue)
 {
-    qmodelingobjectproperty_cast<QUmlPartDecomposition *>(this)->setReturnValue(qmodelingobjectproperty_cast<QUmlValueSpecification *>(returnValue));
+    qmodelingelementproperty_cast<QUmlPartDecomposition *>(this)->setReturnValue(qmodelingelementproperty_cast<QUmlValueSpecification *>(returnValue));
 }
 
 void QUmlPartDecompositionObject::setReturnValueRecipient(QObject *returnValueRecipient)
 {
-    qmodelingobjectproperty_cast<QUmlPartDecomposition *>(this)->setReturnValueRecipient(qmodelingobjectproperty_cast<QUmlProperty *>(returnValueRecipient));
+    qmodelingelementproperty_cast<QUmlPartDecomposition *>(this)->setReturnValueRecipient(qmodelingelementproperty_cast<QUmlProperty *>(returnValueRecipient));
+}
+
+
+void QUmlPartDecompositionObject::setGroupProperties()
+{
+    Q_D(QModelingObject);
+    const QMetaObject *metaObject = this->metaObject();
+
+    d->propertyGroups << QStringLiteral("QObject");
+    d->groupProperties.insert(QStringLiteral("QObject"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("objectName"))));
+
+    d->propertyGroups << QStringLiteral("QUmlElement");
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
+
+    d->propertyGroups << QStringLiteral("QUmlNamedElement");
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
+
+    d->propertyGroups << QStringLiteral("QUmlInteractionFragment");
+    d->groupProperties.insert(QStringLiteral("QUmlInteractionFragment"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("covered"))));
+    d->groupProperties.insert(QStringLiteral("QUmlInteractionFragment"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("enclosingInteraction"))));
+    d->groupProperties.insert(QStringLiteral("QUmlInteractionFragment"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("enclosingOperand"))));
+    d->groupProperties.insert(QStringLiteral("QUmlInteractionFragment"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("generalOrderings"))));
+
+    d->propertyGroups << QStringLiteral("QUmlInteractionUse");
+    d->groupProperties.insert(QStringLiteral("QUmlInteractionUse"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("actualGates"))));
+    d->groupProperties.insert(QStringLiteral("QUmlInteractionUse"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("arguments"))));
+    d->groupProperties.insert(QStringLiteral("QUmlInteractionUse"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("refersTo"))));
+    d->groupProperties.insert(QStringLiteral("QUmlInteractionUse"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("returnValue"))));
+    d->groupProperties.insert(QStringLiteral("QUmlInteractionUse"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("returnValueRecipient"))));
+
+    d->propertyGroups << QStringLiteral("QUmlPartDecomposition");
+}
+
+void QUmlPartDecompositionObject::setPropertyData()
+{
 }
 
 QT_END_NAMESPACE

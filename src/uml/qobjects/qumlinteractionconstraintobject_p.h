@@ -43,7 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtCore/QObject>
+#include <QtModeling/QModelingObject>
 
 #include <QtUml/QtUmlNamespace>
 
@@ -54,9 +54,12 @@ QT_BEGIN_NAMESPACE
 QT_MODULE(QtUml)
 
 class QUmlInteractionConstraint;
-class Q_UML_EXPORT QUmlInteractionConstraintObject : public QObject
+class QModelingObjectPrivate;
+class Q_UML_EXPORT QUmlInteractionConstraintObject : public QModelingObject
 {
     Q_OBJECT
+    Q_DISABLE_COPY(QUmlInteractionConstraintObject)
+    Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [Element]
     Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
@@ -87,7 +90,7 @@ class Q_UML_EXPORT QUmlInteractionConstraintObject : public QObject
     Q_PROPERTY(QObject * minint READ minint WRITE setMinint)
 
 public:
-    Q_INVOKABLE explicit QUmlInteractionConstraintObject(QUmlInteractionConstraint *qModelingObject);
+    Q_INVOKABLE explicit QUmlInteractionConstraintObject(QUmlInteractionConstraint *qModelingElement);
     virtual ~QUmlInteractionConstraintObject();
 
     // Owned attributes [Element]
@@ -166,6 +169,10 @@ public Q_SLOTS:
     // Slots for owned attributes [InteractionConstraint]
     void setMaxint(QObject *maxint = 0);
     void setMinint(QObject *minint = 0);
+
+protected:
+    virtual void setGroupProperties();
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

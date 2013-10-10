@@ -43,7 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtCore/QObject>
+#include <QtModeling/QModelingObject>
 
 #include <QtUml/QtUmlNamespace>
 
@@ -54,9 +54,12 @@ QT_BEGIN_NAMESPACE
 QT_MODULE(QtUml)
 
 class QUmlCallOperationAction;
-class Q_UML_EXPORT QUmlCallOperationActionObject : public QObject
+class QModelingObjectPrivate;
+class Q_UML_EXPORT QUmlCallOperationActionObject : public QModelingObject
 {
     Q_OBJECT
+    Q_DISABLE_COPY(QUmlCallOperationActionObject)
+    Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [Element]
     Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
@@ -110,7 +113,7 @@ class Q_UML_EXPORT QUmlCallOperationActionObject : public QObject
     Q_PROPERTY(QObject * target READ target WRITE setTarget)
 
 public:
-    Q_INVOKABLE explicit QUmlCallOperationActionObject(QUmlCallOperationAction *qModelingObject);
+    Q_INVOKABLE explicit QUmlCallOperationActionObject(QUmlCallOperationAction *qModelingElement);
     virtual ~QUmlCallOperationActionObject();
 
     // Owned attributes [Element]
@@ -251,6 +254,10 @@ public Q_SLOTS:
     // Slots for owned attributes [CallOperationAction]
     void setOperation(QObject *operation = 0);
     void setTarget(QObject *target = 0);
+
+protected:
+    virtual void setGroupProperties();
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

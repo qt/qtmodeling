@@ -43,8 +43,6 @@
 
 #include <QtModeling/QtModelingGlobal>
 
-#include <QtCore/QObject>
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -62,7 +60,7 @@ public:
     explicit QMetaModelPlugin(QObject *parent = 0);
 
     virtual void initMetaModel(QScriptEngine *scriptEngine = 0) = 0;
-    virtual QModelingElement *createModelingObject(QString type) = 0;
+    virtual QModelingElement *createModelingElement(QString type) = 0;
 };
 
 QT_END_NAMESPACE

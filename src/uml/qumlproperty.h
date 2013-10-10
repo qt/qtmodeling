@@ -49,7 +49,6 @@
 
 
 #include <QtUml/QtUmlNamespace>
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -68,10 +67,10 @@ class QUmlValueSpecification;
 class Q_UML_EXPORT QUmlProperty : public QUmlStructuralFeature, public QUmlConnectableElement, public QUmlDeploymentTarget
 {
 public:
-    explicit QUmlProperty(bool createQObject = true);
+    explicit QUmlProperty(bool createQModelingObject = true);
     virtual ~QUmlProperty();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
     QtUml::AggregationKind aggregation() const;
@@ -137,9 +136,6 @@ protected:
     QList<QUmlProperty *> _qualifiers;
     QSet<QUmlProperty *> _redefinedProperties;
     QSet<QUmlProperty *> _subsettedProperties;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

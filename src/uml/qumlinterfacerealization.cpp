@@ -62,27 +62,25 @@
 
     \brief An interface realization is a specialized realization relationship between a classifier and an interface. This relationship signifies that the realizing classifier conforms to the contract specified by the interface.
  */
-QUmlInterfaceRealization::QUmlInterfaceRealization(bool createQObject) :
+QUmlInterfaceRealization::QUmlInterfaceRealization(bool createQModelingObject) :
     QUmlRealization(false),
     _contract(0),
     _implementingClassifier(0)
 {
-    if (createQObject)
-        _qObject = new QUmlInterfaceRealizationObject(this);
-    setGroupProperties();
-    setPropertyData();
+    if (createQModelingObject)
+        _qModelingObject = qobject_cast<QModelingObject *>(new QUmlInterfaceRealizationObject(this));
 }
 
 QUmlInterfaceRealization::~QUmlInterfaceRealization()
 {
-    if (!deletingFromQObject) {
-        if (_qObject)
-            _qObject->setProperty("deletingFromModelingObject", true);
-        delete _qObject;
+    if (!deletingFromQModelingObject) {
+        if (_qModelingObject)
+            _qModelingObject->setProperty("deletingFromModelingObject", true);
+        delete _qModelingObject;
     }
 }
 
-QModelingObject *QUmlInterfaceRealization::clone() const
+QModelingElement *QUmlInterfaceRealization::clone() const
 {
     QUmlInterfaceRealization *c = new QUmlInterfaceRealization;
     foreach (QUmlComment *element, ownedComments())
@@ -131,8 +129,8 @@ void QUmlInterfaceRealization::setContract(QUmlInterface *contract)
         removeSupplier(_contract);
 
         _contract = contract;
-        if (contract && contract->asQObject() && this->asQObject())
-            QObject::connect(contract->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setContract()));
+        if (contract && contract->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(contract->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setContract()));
 
         // Adjust subsetted properties
         if (contract) {
@@ -160,8 +158,8 @@ void QUmlInterfaceRealization::setImplementingClassifier(QUmlBehavioredClassifie
         removeClient(_implementingClassifier);
 
         _implementingClassifier = implementingClassifier;
-        if (implementingClassifier && implementingClassifier->asQObject() && this->asQObject())
-            QObject::connect(implementingClassifier->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setImplementingClassifier()));
+        if (implementingClassifier && implementingClassifier->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(implementingClassifier->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setImplementingClassifier()));
 
         // Adjust subsetted properties
         setOwner(implementingClassifier);
@@ -169,52 +167,5 @@ void QUmlInterfaceRealization::setImplementingClassifier(QUmlBehavioredClassifie
             addClient(implementingClassifier);
         }
     }
-}
-
-void QUmlInterfaceRealization::setGroupProperties()
-{
-    const QMetaObject *metaObject = _qObject->metaObject();
-
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
-    _groupProperties.insert(QStringLiteral("QUmlParameterableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owningTemplateParameter"))));
-    _groupProperties.insert(QStringLiteral("QUmlParameterableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("templateParameter"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
-    _groupProperties.insert(QStringLiteral("QUmlPackageableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
-    _groupProperties.insert(QStringLiteral("QUmlRelationship"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("relatedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlDirectedRelationship"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("sources"))));
-    _groupProperties.insert(QStringLiteral("QUmlDirectedRelationship"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("targets"))));
-    _groupProperties.insert(QStringLiteral("QUmlDependency"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clients"))));
-    _groupProperties.insert(QStringLiteral("QUmlDependency"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("suppliers"))));
-    _groupProperties.insert(QStringLiteral("QUmlAbstraction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("mapping"))));
-    _groupProperties.insert(QStringLiteral("QUmlInterfaceRealization"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("contract"))));
-    _groupProperties.insert(QStringLiteral("QUmlInterfaceRealization"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("implementingClassifier"))));
-}
-
-void QUmlInterfaceRealization::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterfaceRealization")][QStringLiteral("contract")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterfaceRealization")][QStringLiteral("contract")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInterfaceRealization");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterfaceRealization")][QStringLiteral("contract")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterfaceRealization")][QStringLiteral("contract")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterfaceRealization")][QStringLiteral("contract")][QtModeling::DocumentationRole] = QStringLiteral("References the Interface specifying the conformance contract.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterfaceRealization")][QStringLiteral("contract")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterfaceRealization")][QStringLiteral("contract")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Dependency-supplier");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterfaceRealization")][QStringLiteral("contract")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterfaceRealization")][QStringLiteral("implementingClassifier")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterfaceRealization")][QStringLiteral("implementingClassifier")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInterfaceRealization");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterfaceRealization")][QStringLiteral("implementingClassifier")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterfaceRealization")][QStringLiteral("implementingClassifier")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterfaceRealization")][QStringLiteral("implementingClassifier")][QtModeling::DocumentationRole] = QStringLiteral("References the BehavioredClassifier that owns this Interfacerealization (i.e., the classifier that realizes the Interface to which it points).");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterfaceRealization")][QStringLiteral("implementingClassifier")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterfaceRealization")][QStringLiteral("implementingClassifier")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-owner Dependency-client");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterfaceRealization")][QStringLiteral("implementingClassifier")][QtModeling::OppositeEndRole] = QStringLiteral("BehavioredClassifier-interfaceRealization");
-
 }
 

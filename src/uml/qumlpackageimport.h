@@ -47,7 +47,6 @@
 
 
 #include <QtUml/QtUmlNamespace>
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -60,10 +59,10 @@ class QUmlPackage;
 class Q_UML_EXPORT QUmlPackageImport : public QUmlDirectedRelationship
 {
 public:
-    explicit QUmlPackageImport(bool createQObject = true);
+    explicit QUmlPackageImport(bool createQModelingObject = true);
     virtual ~QUmlPackageImport();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
     QUmlPackage *importedPackage() const;
@@ -77,9 +76,6 @@ protected:
     QUmlPackage *_importedPackage;
     QUmlNamespace *_importingNamespace;
     QtUml::VisibilityKind _visibility;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

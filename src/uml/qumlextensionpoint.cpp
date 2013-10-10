@@ -60,25 +60,23 @@
 
     \brief An extension point identifies a point in the behavior of a use case where that behavior can be extended by the behavior of some other (extending) use case, as specified by an extend relationship.
  */
-QUmlExtensionPoint::QUmlExtensionPoint(bool createQObject) :
+QUmlExtensionPoint::QUmlExtensionPoint(bool createQModelingObject) :
     _useCase(0)
 {
-    if (createQObject)
-        _qObject = new QUmlExtensionPointObject(this);
-    setGroupProperties();
-    setPropertyData();
+    if (createQModelingObject)
+        _qModelingObject = qobject_cast<QModelingObject *>(new QUmlExtensionPointObject(this));
 }
 
 QUmlExtensionPoint::~QUmlExtensionPoint()
 {
-    if (!deletingFromQObject) {
-        if (_qObject)
-            _qObject->setProperty("deletingFromModelingObject", true);
-        delete _qObject;
+    if (!deletingFromQModelingObject) {
+        if (_qModelingObject)
+            _qModelingObject->setProperty("deletingFromModelingObject", true);
+        delete _qModelingObject;
     }
 }
 
-QModelingObject *QUmlExtensionPoint::clone() const
+QModelingElement *QUmlExtensionPoint::clone() const
 {
     QUmlExtensionPoint *c = new QUmlExtensionPoint;
     foreach (QUmlComment *element, ownedComments())
@@ -115,43 +113,11 @@ void QUmlExtensionPoint::setUseCase(QUmlUseCase *useCase)
         // Adjust subsetted properties
 
         _useCase = useCase;
-        if (useCase && useCase->asQObject() && this->asQObject())
-            QObject::connect(useCase->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setUseCase()));
+        if (useCase && useCase->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(useCase->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setUseCase()));
 
         // Adjust subsetted properties
         setNamespace(useCase);
     }
-}
-
-void QUmlExtensionPoint::setGroupProperties()
-{
-    const QMetaObject *metaObject = _qObject->metaObject();
-
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
-    _groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isLeaf"))));
-    _groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinitionContexts"))));
-    _groupProperties.insert(QStringLiteral("QUmlExtensionPoint"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("useCase"))));
-}
-
-void QUmlExtensionPoint::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExtensionPoint")][QStringLiteral("useCase")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExtensionPoint")][QStringLiteral("useCase")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlExtensionPoint");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExtensionPoint")][QStringLiteral("useCase")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExtensionPoint")][QStringLiteral("useCase")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExtensionPoint")][QStringLiteral("useCase")][QtModeling::DocumentationRole] = QStringLiteral("References the use case that owns this extension point.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExtensionPoint")][QStringLiteral("useCase")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExtensionPoint")][QStringLiteral("useCase")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("NamedElement-namespace");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExtensionPoint")][QStringLiteral("useCase")][QtModeling::OppositeEndRole] = QStringLiteral("UseCase-extensionPoint");
-
 }
 

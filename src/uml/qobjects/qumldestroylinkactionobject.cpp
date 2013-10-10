@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumldestroylinkactionobject_p.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlDestroyLinkAction>
 #include <QtUml/QUmlActivity>
@@ -67,16 +68,18 @@
 
 QT_BEGIN_NAMESPACE
 
-QUmlDestroyLinkActionObject::QUmlDestroyLinkActionObject(QUmlDestroyLinkAction *qModelingObject)
+QUmlDestroyLinkActionObject::QUmlDestroyLinkActionObject(QUmlDestroyLinkAction *qModelingElement)
 {
-    setProperty("modelingObject", QVariant::fromValue(static_cast<QModelingObject *>(qModelingObject)));
+    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(qModelingElement)));
+    setGroupProperties();
+    setPropertyData();
 }
 
 QUmlDestroyLinkActionObject::~QUmlDestroyLinkActionObject()
 {
     if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingobjectproperty_cast<QUmlDestroyLinkAction *>(this)->deletingFromQObject = true;
-        delete qmodelingobjectproperty_cast<QUmlComment *>(this);
+        qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->deletingFromQModelingObject = true;
+        delete qmodelingelementproperty_cast<QUmlComment *>(this);
     }
 }
 
@@ -85,25 +88,25 @@ QUmlDestroyLinkActionObject::~QUmlDestroyLinkActionObject()
 const QSet<QObject *> QUmlDestroyLinkActionObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlDestroyLinkAction *>(this)->ownedComments())
-        set.insert(element->asQObject());
+    foreach (QUmlComment *element, qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->ownedComments())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlDestroyLinkActionObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlDestroyLinkAction *>(this)->ownedElements())
-        set.insert(element->asQObject());
+    foreach (QUmlElement *element, qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->ownedElements())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 QObject *QUmlDestroyLinkActionObject::owner() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlDestroyLinkAction *>(this)->owner())
+    if (!qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->owner())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlDestroyLinkAction *>(this)->owner()->asQObject();
+        return qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->owner()->asQModelingObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -111,62 +114,62 @@ QObject *QUmlDestroyLinkActionObject::owner() const
 const QSet<QObject *> QUmlDestroyLinkActionObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlDestroyLinkAction *>(this)->clientDependencies())
-        set.insert(element->asQObject());
+    foreach (QUmlDependency *element, qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->clientDependencies())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 QString QUmlDestroyLinkActionObject::name() const
 {
-    return qmodelingobjectproperty_cast<QUmlDestroyLinkAction *>(this)->name();
+    return qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->name();
 }
 
 QObject *QUmlDestroyLinkActionObject::nameExpression() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlDestroyLinkAction *>(this)->nameExpression())
+    if (!qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->nameExpression())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlDestroyLinkAction *>(this)->nameExpression()->asQObject();
+        return qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->nameExpression()->asQModelingObject();
 }
 
 QObject *QUmlDestroyLinkActionObject::namespace_() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlDestroyLinkAction *>(this)->namespace_())
+    if (!qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->namespace_())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlDestroyLinkAction *>(this)->namespace_()->asQObject();
+        return qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->namespace_()->asQModelingObject();
 }
 
 QString QUmlDestroyLinkActionObject::qualifiedName() const
 {
-    return qmodelingobjectproperty_cast<QUmlDestroyLinkAction *>(this)->qualifiedName();
+    return qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->qualifiedName();
 }
 
 QtUml::VisibilityKind QUmlDestroyLinkActionObject::visibility() const
 {
-    return qmodelingobjectproperty_cast<QUmlDestroyLinkAction *>(this)->visibility();
+    return qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->visibility();
 }
 
 // OWNED ATTRIBUTES [RedefinableElement]
 
 bool QUmlDestroyLinkActionObject::isLeaf() const
 {
-    return qmodelingobjectproperty_cast<QUmlDestroyLinkAction *>(this)->isLeaf();
+    return qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->isLeaf();
 }
 
 const QSet<QObject *> QUmlDestroyLinkActionObject::redefinedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlRedefinableElement *element, qmodelingobjectproperty_cast<QUmlDestroyLinkAction *>(this)->redefinedElements())
-        set.insert(element->asQObject());
+    foreach (QUmlRedefinableElement *element, qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->redefinedElements())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlDestroyLinkActionObject::redefinitionContexts() const
 {
     QSet<QObject *> set;
-    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlDestroyLinkAction *>(this)->redefinitionContexts())
-        set.insert(element->asQObject());
+    foreach (QUmlClassifier *element, qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->redefinitionContexts())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
@@ -174,65 +177,65 @@ const QSet<QObject *> QUmlDestroyLinkActionObject::redefinitionContexts() const
 
 QObject *QUmlDestroyLinkActionObject::activity() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlDestroyLinkAction *>(this)->activity())
+    if (!qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->activity())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlDestroyLinkAction *>(this)->activity()->asQObject();
+        return qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->activity()->asQModelingObject();
 }
 
 const QSet<QObject *> QUmlDestroyLinkActionObject::inGroups() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityGroup *element, qmodelingobjectproperty_cast<QUmlDestroyLinkAction *>(this)->inGroups())
-        set.insert(element->asQObject());
+    foreach (QUmlActivityGroup *element, qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->inGroups())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlDestroyLinkActionObject::inInterruptibleRegions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlInterruptibleActivityRegion *element, qmodelingobjectproperty_cast<QUmlDestroyLinkAction *>(this)->inInterruptibleRegions())
-        set.insert(element->asQObject());
+    foreach (QUmlInterruptibleActivityRegion *element, qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->inInterruptibleRegions())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlDestroyLinkActionObject::inPartitions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityPartition *element, qmodelingobjectproperty_cast<QUmlDestroyLinkAction *>(this)->inPartitions())
-        set.insert(element->asQObject());
+    foreach (QUmlActivityPartition *element, qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->inPartitions())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 QObject *QUmlDestroyLinkActionObject::inStructuredNode() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlDestroyLinkAction *>(this)->inStructuredNode())
+    if (!qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->inStructuredNode())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlDestroyLinkAction *>(this)->inStructuredNode()->asQObject();
+        return qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->inStructuredNode()->asQModelingObject();
 }
 
 const QSet<QObject *> QUmlDestroyLinkActionObject::incomings() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlDestroyLinkAction *>(this)->incomings())
-        set.insert(element->asQObject());
+    foreach (QUmlActivityEdge *element, qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->incomings())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlDestroyLinkActionObject::outgoings() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlDestroyLinkAction *>(this)->outgoings())
-        set.insert(element->asQObject());
+    foreach (QUmlActivityEdge *element, qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->outgoings())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlDestroyLinkActionObject::redefinedNodes() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityNode *element, qmodelingobjectproperty_cast<QUmlDestroyLinkAction *>(this)->redefinedNodes())
-        set.insert(element->asQObject());
+    foreach (QUmlActivityNode *element, qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->redefinedNodes())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
@@ -241,8 +244,8 @@ const QSet<QObject *> QUmlDestroyLinkActionObject::redefinedNodes() const
 const QSet<QObject *> QUmlDestroyLinkActionObject::handlers() const
 {
     QSet<QObject *> set;
-    foreach (QUmlExceptionHandler *element, qmodelingobjectproperty_cast<QUmlDestroyLinkAction *>(this)->handlers())
-        set.insert(element->asQObject());
+    foreach (QUmlExceptionHandler *element, qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->handlers())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
@@ -250,46 +253,46 @@ const QSet<QObject *> QUmlDestroyLinkActionObject::handlers() const
 
 QObject *QUmlDestroyLinkActionObject::context() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlDestroyLinkAction *>(this)->context())
+    if (!qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->context())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlDestroyLinkAction *>(this)->context()->asQObject();
+        return qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->context()->asQModelingObject();
 }
 
 const QList<QObject *> QUmlDestroyLinkActionObject::inputs() const
 {
     QList<QObject *> list;
-    foreach (QUmlInputPin *element, qmodelingobjectproperty_cast<QUmlDestroyLinkAction *>(this)->inputs())
-        list.append(element->asQObject());
+    foreach (QUmlInputPin *element, qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->inputs())
+        list.append(element->asQModelingObject());
     return list;
 }
 
 bool QUmlDestroyLinkActionObject::isLocallyReentrant() const
 {
-    return qmodelingobjectproperty_cast<QUmlDestroyLinkAction *>(this)->isLocallyReentrant();
+    return qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->isLocallyReentrant();
 }
 
 const QSet<QObject *> QUmlDestroyLinkActionObject::localPostconditions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlDestroyLinkAction *>(this)->localPostconditions())
-        set.insert(element->asQObject());
+    foreach (QUmlConstraint *element, qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->localPostconditions())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlDestroyLinkActionObject::localPreconditions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlDestroyLinkAction *>(this)->localPreconditions())
-        set.insert(element->asQObject());
+    foreach (QUmlConstraint *element, qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->localPreconditions())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QList<QObject *> QUmlDestroyLinkActionObject::outputs() const
 {
     QList<QObject *> list;
-    foreach (QUmlOutputPin *element, qmodelingobjectproperty_cast<QUmlDestroyLinkAction *>(this)->outputs())
-        list.append(element->asQObject());
+    foreach (QUmlOutputPin *element, qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->outputs())
+        list.append(element->asQModelingObject());
     return list;
 }
 
@@ -298,8 +301,8 @@ const QList<QObject *> QUmlDestroyLinkActionObject::outputs() const
 const QSet<QObject *> QUmlDestroyLinkActionObject::inputValues() const
 {
     QSet<QObject *> set;
-    foreach (QUmlInputPin *element, qmodelingobjectproperty_cast<QUmlDestroyLinkAction *>(this)->inputValues())
-        set.insert(element->asQObject());
+    foreach (QUmlInputPin *element, qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->inputValues())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
@@ -308,8 +311,8 @@ const QSet<QObject *> QUmlDestroyLinkActionObject::inputValues() const
 const QSet<QObject *> QUmlDestroyLinkActionObject::endData() const
 {
     QSet<QObject *> set;
-    foreach (QUmlLinkEndDestructionData *element, qmodelingobjectproperty_cast<QUmlDestroyLinkAction *>(this)->endData())
-        set.insert(element->asQObject());
+    foreach (QUmlLinkEndDestructionData *element, qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->endData())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
@@ -318,14 +321,14 @@ const QSet<QObject *> QUmlDestroyLinkActionObject::endData() const
 QSet<QObject *> QUmlDestroyLinkActionObject::allOwnedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlDestroyLinkAction *>(this)->allOwnedElements())
-        set.insert(element->asQObject());
+    foreach (QUmlElement *element, qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->allOwnedElements())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 bool QUmlDestroyLinkActionObject::mustBeOwned() const
 {
-    return qmodelingobjectproperty_cast<QUmlDestroyLinkAction *>(this)->mustBeOwned();
+    return qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->mustBeOwned();
 }
 
 // OPERATIONS [NamedElement]
@@ -333,310 +336,382 @@ bool QUmlDestroyLinkActionObject::mustBeOwned() const
 QList<QObject *> QUmlDestroyLinkActionObject::allNamespaces() const
 {
     QList<QObject *> set;
-    foreach (QUmlNamespace *element, qmodelingobjectproperty_cast<QUmlDestroyLinkAction *>(this)->allNamespaces())
-        set.append(element->asQObject());
+    foreach (QUmlNamespace *element, qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->allNamespaces())
+        set.append(element->asQModelingObject());
     return set;
 }
 
 QSet<QObject *> QUmlDestroyLinkActionObject::allOwningPackages() const
 {
     QSet<QObject *> set;
-    foreach (QUmlPackage *element, qmodelingobjectproperty_cast<QUmlDestroyLinkAction *>(this)->allOwningPackages())
-        set.insert(element->asQObject());
+    foreach (QUmlPackage *element, qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->allOwningPackages())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 bool QUmlDestroyLinkActionObject::isDistinguishableFrom(QObject *n, QObject *ns) const
 {
-    return qmodelingobjectproperty_cast<QUmlDestroyLinkAction *>(this)->isDistinguishableFrom(qmodelingobjectproperty_cast<QUmlNamedElement *>(n), qmodelingobjectproperty_cast<QUmlNamespace *>(ns));
+    return qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->isDistinguishableFrom(qmodelingelementproperty_cast<QUmlNamedElement *>(n), qmodelingelementproperty_cast<QUmlNamespace *>(ns));
 }
 
 QString QUmlDestroyLinkActionObject::separator() const
 {
-    return qmodelingobjectproperty_cast<QUmlDestroyLinkAction *>(this)->separator();
+    return qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->separator();
 }
 
 // OPERATIONS [RedefinableElement]
 
 bool QUmlDestroyLinkActionObject::isConsistentWith(QObject *redefinee) const
 {
-    return qmodelingobjectproperty_cast<QUmlDestroyLinkAction *>(this)->isConsistentWith(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefinee));
+    return qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->isConsistentWith(qmodelingelementproperty_cast<QUmlRedefinableElement *>(redefinee));
 }
 
 bool QUmlDestroyLinkActionObject::isRedefinitionContextValid(QObject *redefined) const
 {
-    return qmodelingobjectproperty_cast<QUmlDestroyLinkAction *>(this)->isRedefinitionContextValid(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefined));
+    return qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->isRedefinitionContextValid(qmodelingelementproperty_cast<QUmlRedefinableElement *>(redefined));
 }
 
 // OPERATIONS [LinkAction]
 
 QObject *QUmlDestroyLinkActionObject::association() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlDestroyLinkAction *>(this)->association())
+    if (!qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->association())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlDestroyLinkAction *>(this)->association()->asQObject();
+        return qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->association()->asQModelingObject();
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Element]
 
 void QUmlDestroyLinkActionObject::addOwnedComment(QObject *ownedComment)
 {
-    qmodelingobjectproperty_cast<QUmlDestroyLinkAction *>(this)->addOwnedComment(qmodelingobjectproperty_cast<QUmlComment *>(ownedComment));
+    qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
 }
 
 void QUmlDestroyLinkActionObject::removeOwnedComment(QObject *ownedComment)
 {
-    qmodelingobjectproperty_cast<QUmlDestroyLinkAction *>(this)->removeOwnedComment(qmodelingobjectproperty_cast<QUmlComment *>(ownedComment));
+    qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
 }
 
 void QUmlDestroyLinkActionObject::addOwnedElement(QObject *ownedElement)
 {
-    qmodelingobjectproperty_cast<QUmlDestroyLinkAction *>(this)->addOwnedElement(qmodelingobjectproperty_cast<QUmlElement *>(ownedElement));
+    qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
 }
 
 void QUmlDestroyLinkActionObject::removeOwnedElement(QObject *ownedElement)
 {
-    qmodelingobjectproperty_cast<QUmlDestroyLinkAction *>(this)->removeOwnedElement(qmodelingobjectproperty_cast<QUmlElement *>(ownedElement));
+    qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
 }
 
 void QUmlDestroyLinkActionObject::setOwner(QObject *owner)
 {
-    qmodelingobjectproperty_cast<QUmlDestroyLinkAction *>(this)->setOwner(qmodelingobjectproperty_cast<QUmlElement *>(owner));
+    qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [NamedElement]
 
 void QUmlDestroyLinkActionObject::addClientDependency(QObject *clientDependency)
 {
-    qmodelingobjectproperty_cast<QUmlDestroyLinkAction *>(this)->addClientDependency(qmodelingobjectproperty_cast<QUmlDependency *>(clientDependency));
+    qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->addClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
 }
 
 void QUmlDestroyLinkActionObject::removeClientDependency(QObject *clientDependency)
 {
-    qmodelingobjectproperty_cast<QUmlDestroyLinkAction *>(this)->removeClientDependency(qmodelingobjectproperty_cast<QUmlDependency *>(clientDependency));
+    qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->removeClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
 }
 
 void QUmlDestroyLinkActionObject::setName(QString name)
 {
-    qmodelingobjectproperty_cast<QUmlDestroyLinkAction *>(this)->setName(name);
+    qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->setName(name);
 }
 
 void QUmlDestroyLinkActionObject::setNameExpression(QObject *nameExpression)
 {
-    qmodelingobjectproperty_cast<QUmlDestroyLinkAction *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
+    qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->setNameExpression(qmodelingelementproperty_cast<QUmlStringExpression *>(nameExpression));
 }
 
 void QUmlDestroyLinkActionObject::setNamespace(QObject *namespace_)
 {
-    qmodelingobjectproperty_cast<QUmlDestroyLinkAction *>(this)->setNamespace(qmodelingobjectproperty_cast<QUmlNamespace *>(namespace_));
+    qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->setNamespace(qmodelingelementproperty_cast<QUmlNamespace *>(namespace_));
 }
 
 void QUmlDestroyLinkActionObject::setQualifiedName(QString qualifiedName)
 {
-    qmodelingobjectproperty_cast<QUmlDestroyLinkAction *>(this)->setQualifiedName(qualifiedName);
+    qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->setQualifiedName(qualifiedName);
 }
 
 void QUmlDestroyLinkActionObject::setVisibility(QtUml::VisibilityKind visibility)
 {
-    qmodelingobjectproperty_cast<QUmlDestroyLinkAction *>(this)->setVisibility(visibility);
+    qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->setVisibility(visibility);
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [RedefinableElement]
 
 void QUmlDestroyLinkActionObject::setLeaf(bool isLeaf)
 {
-    qmodelingobjectproperty_cast<QUmlDestroyLinkAction *>(this)->setLeaf(isLeaf);
+    qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->setLeaf(isLeaf);
 }
 
 void QUmlDestroyLinkActionObject::unsetLeaf()
 {
-    qmodelingobjectproperty_cast<QUmlDestroyLinkAction *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("leaf"));
+    Q_D(QModelingObject);
+    d->modifiedResettableProperties.removeAll(QStringLiteral("leaf"));
 }
 
 void QUmlDestroyLinkActionObject::addRedefinedElement(QObject *redefinedElement)
 {
-    qmodelingobjectproperty_cast<QUmlDestroyLinkAction *>(this)->addRedefinedElement(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefinedElement));
+    qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->addRedefinedElement(qmodelingelementproperty_cast<QUmlRedefinableElement *>(redefinedElement));
 }
 
 void QUmlDestroyLinkActionObject::removeRedefinedElement(QObject *redefinedElement)
 {
-    qmodelingobjectproperty_cast<QUmlDestroyLinkAction *>(this)->removeRedefinedElement(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefinedElement));
+    qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->removeRedefinedElement(qmodelingelementproperty_cast<QUmlRedefinableElement *>(redefinedElement));
 }
 
 void QUmlDestroyLinkActionObject::addRedefinitionContext(QObject *redefinitionContext)
 {
-    qmodelingobjectproperty_cast<QUmlDestroyLinkAction *>(this)->addRedefinitionContext(qmodelingobjectproperty_cast<QUmlClassifier *>(redefinitionContext));
+    qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->addRedefinitionContext(qmodelingelementproperty_cast<QUmlClassifier *>(redefinitionContext));
 }
 
 void QUmlDestroyLinkActionObject::removeRedefinitionContext(QObject *redefinitionContext)
 {
-    qmodelingobjectproperty_cast<QUmlDestroyLinkAction *>(this)->removeRedefinitionContext(qmodelingobjectproperty_cast<QUmlClassifier *>(redefinitionContext));
+    qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->removeRedefinitionContext(qmodelingelementproperty_cast<QUmlClassifier *>(redefinitionContext));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ActivityNode]
 
 void QUmlDestroyLinkActionObject::setActivity(QObject *activity)
 {
-    qmodelingobjectproperty_cast<QUmlDestroyLinkAction *>(this)->setActivity(qmodelingobjectproperty_cast<QUmlActivity *>(activity));
+    qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->setActivity(qmodelingelementproperty_cast<QUmlActivity *>(activity));
 }
 
 void QUmlDestroyLinkActionObject::addInGroup(QObject *inGroup)
 {
-    qmodelingobjectproperty_cast<QUmlDestroyLinkAction *>(this)->addInGroup(qmodelingobjectproperty_cast<QUmlActivityGroup *>(inGroup));
+    qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->addInGroup(qmodelingelementproperty_cast<QUmlActivityGroup *>(inGroup));
 }
 
 void QUmlDestroyLinkActionObject::removeInGroup(QObject *inGroup)
 {
-    qmodelingobjectproperty_cast<QUmlDestroyLinkAction *>(this)->removeInGroup(qmodelingobjectproperty_cast<QUmlActivityGroup *>(inGroup));
+    qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->removeInGroup(qmodelingelementproperty_cast<QUmlActivityGroup *>(inGroup));
 }
 
 void QUmlDestroyLinkActionObject::addInInterruptibleRegion(QObject *inInterruptibleRegion)
 {
-    qmodelingobjectproperty_cast<QUmlDestroyLinkAction *>(this)->addInInterruptibleRegion(qmodelingobjectproperty_cast<QUmlInterruptibleActivityRegion *>(inInterruptibleRegion));
+    qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->addInInterruptibleRegion(qmodelingelementproperty_cast<QUmlInterruptibleActivityRegion *>(inInterruptibleRegion));
 }
 
 void QUmlDestroyLinkActionObject::removeInInterruptibleRegion(QObject *inInterruptibleRegion)
 {
-    qmodelingobjectproperty_cast<QUmlDestroyLinkAction *>(this)->removeInInterruptibleRegion(qmodelingobjectproperty_cast<QUmlInterruptibleActivityRegion *>(inInterruptibleRegion));
+    qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->removeInInterruptibleRegion(qmodelingelementproperty_cast<QUmlInterruptibleActivityRegion *>(inInterruptibleRegion));
 }
 
 void QUmlDestroyLinkActionObject::addInPartition(QObject *inPartition)
 {
-    qmodelingobjectproperty_cast<QUmlDestroyLinkAction *>(this)->addInPartition(qmodelingobjectproperty_cast<QUmlActivityPartition *>(inPartition));
+    qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->addInPartition(qmodelingelementproperty_cast<QUmlActivityPartition *>(inPartition));
 }
 
 void QUmlDestroyLinkActionObject::removeInPartition(QObject *inPartition)
 {
-    qmodelingobjectproperty_cast<QUmlDestroyLinkAction *>(this)->removeInPartition(qmodelingobjectproperty_cast<QUmlActivityPartition *>(inPartition));
+    qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->removeInPartition(qmodelingelementproperty_cast<QUmlActivityPartition *>(inPartition));
 }
 
 void QUmlDestroyLinkActionObject::setInStructuredNode(QObject *inStructuredNode)
 {
-    qmodelingobjectproperty_cast<QUmlDestroyLinkAction *>(this)->setInStructuredNode(qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(inStructuredNode));
+    qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->setInStructuredNode(qmodelingelementproperty_cast<QUmlStructuredActivityNode *>(inStructuredNode));
 }
 
 void QUmlDestroyLinkActionObject::addIncoming(QObject *incoming)
 {
-    qmodelingobjectproperty_cast<QUmlDestroyLinkAction *>(this)->addIncoming(qmodelingobjectproperty_cast<QUmlActivityEdge *>(incoming));
+    qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->addIncoming(qmodelingelementproperty_cast<QUmlActivityEdge *>(incoming));
 }
 
 void QUmlDestroyLinkActionObject::removeIncoming(QObject *incoming)
 {
-    qmodelingobjectproperty_cast<QUmlDestroyLinkAction *>(this)->removeIncoming(qmodelingobjectproperty_cast<QUmlActivityEdge *>(incoming));
+    qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->removeIncoming(qmodelingelementproperty_cast<QUmlActivityEdge *>(incoming));
 }
 
 void QUmlDestroyLinkActionObject::addOutgoing(QObject *outgoing)
 {
-    qmodelingobjectproperty_cast<QUmlDestroyLinkAction *>(this)->addOutgoing(qmodelingobjectproperty_cast<QUmlActivityEdge *>(outgoing));
+    qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->addOutgoing(qmodelingelementproperty_cast<QUmlActivityEdge *>(outgoing));
 }
 
 void QUmlDestroyLinkActionObject::removeOutgoing(QObject *outgoing)
 {
-    qmodelingobjectproperty_cast<QUmlDestroyLinkAction *>(this)->removeOutgoing(qmodelingobjectproperty_cast<QUmlActivityEdge *>(outgoing));
+    qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->removeOutgoing(qmodelingelementproperty_cast<QUmlActivityEdge *>(outgoing));
 }
 
 void QUmlDestroyLinkActionObject::addRedefinedNode(QObject *redefinedNode)
 {
-    qmodelingobjectproperty_cast<QUmlDestroyLinkAction *>(this)->addRedefinedNode(qmodelingobjectproperty_cast<QUmlActivityNode *>(redefinedNode));
+    qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->addRedefinedNode(qmodelingelementproperty_cast<QUmlActivityNode *>(redefinedNode));
 }
 
 void QUmlDestroyLinkActionObject::removeRedefinedNode(QObject *redefinedNode)
 {
-    qmodelingobjectproperty_cast<QUmlDestroyLinkAction *>(this)->removeRedefinedNode(qmodelingobjectproperty_cast<QUmlActivityNode *>(redefinedNode));
+    qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->removeRedefinedNode(qmodelingelementproperty_cast<QUmlActivityNode *>(redefinedNode));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ExecutableNode]
 
 void QUmlDestroyLinkActionObject::addHandler(QObject *handler)
 {
-    qmodelingobjectproperty_cast<QUmlDestroyLinkAction *>(this)->addHandler(qmodelingobjectproperty_cast<QUmlExceptionHandler *>(handler));
+    qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->addHandler(qmodelingelementproperty_cast<QUmlExceptionHandler *>(handler));
 }
 
 void QUmlDestroyLinkActionObject::removeHandler(QObject *handler)
 {
-    qmodelingobjectproperty_cast<QUmlDestroyLinkAction *>(this)->removeHandler(qmodelingobjectproperty_cast<QUmlExceptionHandler *>(handler));
+    qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->removeHandler(qmodelingelementproperty_cast<QUmlExceptionHandler *>(handler));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Action]
 
 void QUmlDestroyLinkActionObject::setContext(QObject *context)
 {
-    qmodelingobjectproperty_cast<QUmlDestroyLinkAction *>(this)->setContext(qmodelingobjectproperty_cast<QUmlClassifier *>(context));
+    qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->setContext(qmodelingelementproperty_cast<QUmlClassifier *>(context));
 }
 
 void QUmlDestroyLinkActionObject::addInput(QObject *input)
 {
-    qmodelingobjectproperty_cast<QUmlDestroyLinkAction *>(this)->addInput(qmodelingobjectproperty_cast<QUmlInputPin *>(input));
+    qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->addInput(qmodelingelementproperty_cast<QUmlInputPin *>(input));
 }
 
 void QUmlDestroyLinkActionObject::removeInput(QObject *input)
 {
-    qmodelingobjectproperty_cast<QUmlDestroyLinkAction *>(this)->removeInput(qmodelingobjectproperty_cast<QUmlInputPin *>(input));
+    qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->removeInput(qmodelingelementproperty_cast<QUmlInputPin *>(input));
 }
 
 void QUmlDestroyLinkActionObject::setLocallyReentrant(bool isLocallyReentrant)
 {
-    qmodelingobjectproperty_cast<QUmlDestroyLinkAction *>(this)->setLocallyReentrant(isLocallyReentrant);
+    qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->setLocallyReentrant(isLocallyReentrant);
 }
 
 void QUmlDestroyLinkActionObject::unsetLocallyReentrant()
 {
-    qmodelingobjectproperty_cast<QUmlDestroyLinkAction *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("locallyReentrant"));
+    Q_D(QModelingObject);
+    d->modifiedResettableProperties.removeAll(QStringLiteral("locallyReentrant"));
 }
 
 void QUmlDestroyLinkActionObject::addLocalPostcondition(QObject *localPostcondition)
 {
-    qmodelingobjectproperty_cast<QUmlDestroyLinkAction *>(this)->addLocalPostcondition(qmodelingobjectproperty_cast<QUmlConstraint *>(localPostcondition));
+    qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->addLocalPostcondition(qmodelingelementproperty_cast<QUmlConstraint *>(localPostcondition));
 }
 
 void QUmlDestroyLinkActionObject::removeLocalPostcondition(QObject *localPostcondition)
 {
-    qmodelingobjectproperty_cast<QUmlDestroyLinkAction *>(this)->removeLocalPostcondition(qmodelingobjectproperty_cast<QUmlConstraint *>(localPostcondition));
+    qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->removeLocalPostcondition(qmodelingelementproperty_cast<QUmlConstraint *>(localPostcondition));
 }
 
 void QUmlDestroyLinkActionObject::addLocalPrecondition(QObject *localPrecondition)
 {
-    qmodelingobjectproperty_cast<QUmlDestroyLinkAction *>(this)->addLocalPrecondition(qmodelingobjectproperty_cast<QUmlConstraint *>(localPrecondition));
+    qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->addLocalPrecondition(qmodelingelementproperty_cast<QUmlConstraint *>(localPrecondition));
 }
 
 void QUmlDestroyLinkActionObject::removeLocalPrecondition(QObject *localPrecondition)
 {
-    qmodelingobjectproperty_cast<QUmlDestroyLinkAction *>(this)->removeLocalPrecondition(qmodelingobjectproperty_cast<QUmlConstraint *>(localPrecondition));
+    qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->removeLocalPrecondition(qmodelingelementproperty_cast<QUmlConstraint *>(localPrecondition));
 }
 
 void QUmlDestroyLinkActionObject::addOutput(QObject *output)
 {
-    qmodelingobjectproperty_cast<QUmlDestroyLinkAction *>(this)->addOutput(qmodelingobjectproperty_cast<QUmlOutputPin *>(output));
+    qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->addOutput(qmodelingelementproperty_cast<QUmlOutputPin *>(output));
 }
 
 void QUmlDestroyLinkActionObject::removeOutput(QObject *output)
 {
-    qmodelingobjectproperty_cast<QUmlDestroyLinkAction *>(this)->removeOutput(qmodelingobjectproperty_cast<QUmlOutputPin *>(output));
+    qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->removeOutput(qmodelingelementproperty_cast<QUmlOutputPin *>(output));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [LinkAction]
 
 void QUmlDestroyLinkActionObject::addInputValue(QObject *inputValue)
 {
-    qmodelingobjectproperty_cast<QUmlDestroyLinkAction *>(this)->addInputValue(qmodelingobjectproperty_cast<QUmlInputPin *>(inputValue));
+    qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->addInputValue(qmodelingelementproperty_cast<QUmlInputPin *>(inputValue));
 }
 
 void QUmlDestroyLinkActionObject::removeInputValue(QObject *inputValue)
 {
-    qmodelingobjectproperty_cast<QUmlDestroyLinkAction *>(this)->removeInputValue(qmodelingobjectproperty_cast<QUmlInputPin *>(inputValue));
+    qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->removeInputValue(qmodelingelementproperty_cast<QUmlInputPin *>(inputValue));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [DestroyLinkAction]
 
 void QUmlDestroyLinkActionObject::addEndData(QObject *endData)
 {
-    qmodelingobjectproperty_cast<QUmlDestroyLinkAction *>(this)->addEndData(qmodelingobjectproperty_cast<QUmlLinkEndDestructionData *>(endData));
+    qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->addEndData(qmodelingelementproperty_cast<QUmlLinkEndDestructionData *>(endData));
 }
 
 void QUmlDestroyLinkActionObject::removeEndData(QObject *endData)
 {
-    qmodelingobjectproperty_cast<QUmlDestroyLinkAction *>(this)->removeEndData(qmodelingobjectproperty_cast<QUmlLinkEndDestructionData *>(endData));
+    qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->removeEndData(qmodelingelementproperty_cast<QUmlLinkEndDestructionData *>(endData));
+}
+
+
+void QUmlDestroyLinkActionObject::setGroupProperties()
+{
+    Q_D(QModelingObject);
+    const QMetaObject *metaObject = this->metaObject();
+
+    d->propertyGroups << QStringLiteral("QObject");
+    d->groupProperties.insert(QStringLiteral("QObject"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("objectName"))));
+
+    d->propertyGroups << QStringLiteral("QUmlElement");
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
+
+    d->propertyGroups << QStringLiteral("QUmlNamedElement");
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
+
+    d->propertyGroups << QStringLiteral("QUmlRedefinableElement");
+    d->groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isLeaf"))));
+    d->groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinedElements"))));
+    d->groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinitionContexts"))));
+
+    d->propertyGroups << QStringLiteral("QUmlActivityNode");
+    d->groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("activity"))));
+    d->groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inGroups"))));
+    d->groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inInterruptibleRegions"))));
+    d->groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inPartitions"))));
+    d->groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inStructuredNode"))));
+    d->groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("incomings"))));
+    d->groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("outgoings"))));
+    d->groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinedNodes"))));
+
+    d->propertyGroups << QStringLiteral("QUmlExecutableNode");
+    d->groupProperties.insert(QStringLiteral("QUmlExecutableNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("handlers"))));
+
+    d->propertyGroups << QStringLiteral("QUmlAction");
+    d->groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("context"))));
+    d->groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inputs"))));
+    d->groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isLocallyReentrant"))));
+    d->groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("localPostconditions"))));
+    d->groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("localPreconditions"))));
+    d->groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("outputs"))));
+
+    d->propertyGroups << QStringLiteral("QUmlLinkAction");
+    d->groupProperties.insert(QStringLiteral("QUmlLinkAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inputValues"))));
+
+    d->propertyGroups << QStringLiteral("QUmlWriteLinkAction");
+
+    d->propertyGroups << QStringLiteral("QUmlDestroyLinkAction");
+    d->groupProperties.insert(QStringLiteral("QUmlDestroyLinkAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("endData"))));
+}
+
+void QUmlDestroyLinkActionObject::setPropertyData()
+{
+    Q_DECLARE_METAPROPERTY_INFO(QUmlDestroyLinkAction, endData, AggregationRole, QStringLiteral("composite"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlDestroyLinkAction, endData, PropertyClassRole, QStringLiteral("QUmlDestroyLinkAction"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlDestroyLinkAction, endData, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlDestroyLinkAction, endData, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlDestroyLinkAction, endData, DocumentationRole, QStringLiteral("Specifies ends of association and inputs."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlDestroyLinkAction, endData, RedefinedPropertiesRole, QStringLiteral("LinkAction-endData"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlDestroyLinkAction, endData, SubsettedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlDestroyLinkAction, endData, OppositeEndRole, QStringLiteral(""));
+
 }
 
 QT_END_NAMESPACE

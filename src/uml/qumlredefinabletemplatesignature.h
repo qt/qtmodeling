@@ -46,7 +46,6 @@
 #include <QtUml/QUmlTemplateSignature>
 #include <QtUml/QUmlRedefinableElement>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -59,10 +58,10 @@ class QUmlTemplateParameter;
 class Q_UML_EXPORT QUmlRedefinableTemplateSignature : public QUmlTemplateSignature, public QUmlRedefinableElement
 {
 public:
-    explicit QUmlRedefinableTemplateSignature(bool createQObject = true);
+    explicit QUmlRedefinableTemplateSignature(bool createQModelingObject = true);
     virtual ~QUmlRedefinableTemplateSignature();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
     QUmlClassifier *classifier() const;
@@ -80,9 +79,6 @@ public:
 protected:
     QUmlClassifier *_classifier;
     QSet<QUmlRedefinableTemplateSignature *> _extendedSignatures;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

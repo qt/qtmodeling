@@ -45,7 +45,6 @@
 
 #include <QtUml/QUmlInterval>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -57,10 +56,10 @@ class QUmlDuration;
 class Q_UML_EXPORT QUmlDurationInterval : public QUmlInterval
 {
 public:
-    explicit QUmlDurationInterval(bool createQObject = true);
+    explicit QUmlDurationInterval(bool createQModelingObject = true);
     virtual ~QUmlDurationInterval();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
     QUmlDuration *max() const;
@@ -71,9 +70,6 @@ public:
 protected:
     QUmlDuration *_max;
     QUmlDuration *_min;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

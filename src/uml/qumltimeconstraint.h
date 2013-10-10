@@ -45,7 +45,6 @@
 
 #include <QtUml/QUmlIntervalConstraint>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -57,10 +56,10 @@ class QUmlTimeInterval;
 class Q_UML_EXPORT QUmlTimeConstraint : public QUmlIntervalConstraint
 {
 public:
-    explicit QUmlTimeConstraint(bool createQObject = true);
+    explicit QUmlTimeConstraint(bool createQModelingObject = true);
     virtual ~QUmlTimeConstraint();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
     bool firstEvent() const;
@@ -71,9 +70,6 @@ public:
 protected:
     bool _firstEvent;
     QUmlTimeInterval *_specification;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

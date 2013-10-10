@@ -62,25 +62,23 @@
 
     \brief Duration defines a value specification that specifies the temporal distance between two time instants.
  */
-QUmlDuration::QUmlDuration(bool createQObject) :
+QUmlDuration::QUmlDuration(bool createQModelingObject) :
     _expr(0)
 {
-    if (createQObject)
-        _qObject = new QUmlDurationObject(this);
-    setGroupProperties();
-    setPropertyData();
+    if (createQModelingObject)
+        _qModelingObject = qobject_cast<QModelingObject *>(new QUmlDurationObject(this));
 }
 
 QUmlDuration::~QUmlDuration()
 {
-    if (!deletingFromQObject) {
-        if (_qObject)
-            _qObject->setProperty("deletingFromModelingObject", true);
-        delete _qObject;
+    if (!deletingFromQModelingObject) {
+        if (_qModelingObject)
+            _qModelingObject->setProperty("deletingFromModelingObject", true);
+        delete _qModelingObject;
     }
 }
 
-QModelingObject *QUmlDuration::clone() const
+QModelingElement *QUmlDuration::clone() const
 {
     QUmlDuration *c = new QUmlDuration;
     foreach (QUmlComment *element, ownedComments())
@@ -125,9 +123,9 @@ void QUmlDuration::setExpr(QUmlValueSpecification *expr)
         removeOwnedElement(_expr);
 
         _expr = expr;
-        if (expr && expr->asQObject() && this->asQObject())
-            QObject::connect(expr->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setExpr()));
-        expr->asQObject()->setParent(this->asQObject());
+        if (expr && expr->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(expr->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setExpr()));
+        expr->asQModelingObject()->setParent(this->asQModelingObject());
 
         // Adjust subsetted properties
         if (expr) {
@@ -152,8 +150,8 @@ void QUmlDuration::addObservation(QUmlObservation *observation)
 
     if (!_observations.contains(observation)) {
         _observations.insert(observation);
-        if (observation && observation->asQObject() && this->asQObject())
-            QObject::connect(observation->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeObservation(QObject *)));
+        if (observation && observation->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(observation->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeObservation(QObject *)));
     }
 }
 
@@ -164,47 +162,5 @@ void QUmlDuration::removeObservation(QUmlObservation *observation)
     if (_observations.contains(observation)) {
         _observations.remove(observation);
     }
-}
-
-void QUmlDuration::setGroupProperties()
-{
-    const QMetaObject *metaObject = _qObject->metaObject();
-
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
-    _groupProperties.insert(QStringLiteral("QUmlTypedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("type"))));
-    _groupProperties.insert(QStringLiteral("QUmlParameterableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owningTemplateParameter"))));
-    _groupProperties.insert(QStringLiteral("QUmlParameterableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("templateParameter"))));
-    _groupProperties.insert(QStringLiteral("QUmlPackageableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
-    _groupProperties.insert(QStringLiteral("QUmlDuration"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("expr"))));
-    _groupProperties.insert(QStringLiteral("QUmlDuration"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("observations"))));
-}
-
-void QUmlDuration::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDuration")][QStringLiteral("expr")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDuration")][QStringLiteral("expr")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlDuration");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDuration")][QStringLiteral("expr")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDuration")][QStringLiteral("expr")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDuration")][QStringLiteral("expr")][QtModeling::DocumentationRole] = QStringLiteral("The value of the Duration.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDuration")][QStringLiteral("expr")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDuration")][QStringLiteral("expr")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDuration")][QStringLiteral("expr")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDuration")][QStringLiteral("observations")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDuration")][QStringLiteral("observations")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlDuration");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDuration")][QStringLiteral("observations")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDuration")][QStringLiteral("observations")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDuration")][QStringLiteral("observations")][QtModeling::DocumentationRole] = QStringLiteral("Refers to the time and duration observations that are involved in expr.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDuration")][QStringLiteral("observations")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDuration")][QStringLiteral("observations")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDuration")][QStringLiteral("observations")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
 }
 

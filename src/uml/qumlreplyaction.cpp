@@ -71,26 +71,24 @@
 
     \brief A reply action is an action that accepts a set of return values and a value containing return information produced by a previous accept call action. The reply action returns the values to the caller of the previous call, completing execution of the call.
  */
-QUmlReplyAction::QUmlReplyAction(bool createQObject) :
+QUmlReplyAction::QUmlReplyAction(bool createQModelingObject) :
     _replyToCall(0),
     _returnInformation(0)
 {
-    if (createQObject)
-        _qObject = new QUmlReplyActionObject(this);
-    setGroupProperties();
-    setPropertyData();
+    if (createQModelingObject)
+        _qModelingObject = qobject_cast<QModelingObject *>(new QUmlReplyActionObject(this));
 }
 
 QUmlReplyAction::~QUmlReplyAction()
 {
-    if (!deletingFromQObject) {
-        if (_qObject)
-            _qObject->setProperty("deletingFromModelingObject", true);
-        delete _qObject;
+    if (!deletingFromQModelingObject) {
+        if (_qModelingObject)
+            _qModelingObject->setProperty("deletingFromModelingObject", true);
+        delete _qModelingObject;
     }
 }
 
-QModelingObject *QUmlReplyAction::clone() const
+QModelingElement *QUmlReplyAction::clone() const
 {
     QUmlReplyAction *c = new QUmlReplyAction;
     foreach (QUmlComment *element, ownedComments())
@@ -150,8 +148,8 @@ void QUmlReplyAction::setReplyToCall(QUmlTrigger *replyToCall)
 
     if (_replyToCall != replyToCall) {
         _replyToCall = replyToCall;
-        if (replyToCall && replyToCall->asQObject() && this->asQObject())
-            QObject::connect(replyToCall->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setReplyToCall()));
+        if (replyToCall && replyToCall->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(replyToCall->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setReplyToCall()));
     }
 }
 
@@ -171,9 +169,9 @@ void QUmlReplyAction::addReplyValue(QUmlInputPin *replyValue)
 
     if (!_replyValues.contains(replyValue)) {
         _replyValues.insert(replyValue);
-        if (replyValue && replyValue->asQObject() && this->asQObject())
-            QObject::connect(replyValue->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeReplyValue(QObject *)));
-        replyValue->asQObject()->setParent(this->asQObject());
+        if (replyValue && replyValue->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(replyValue->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeReplyValue(QObject *)));
+        replyValue->asQModelingObject()->setParent(this->asQModelingObject());
 
         // Adjust subsetted properties
         addInput(replyValue);
@@ -186,8 +184,8 @@ void QUmlReplyAction::removeReplyValue(QUmlInputPin *replyValue)
 
     if (_replyValues.contains(replyValue)) {
         _replyValues.remove(replyValue);
-        if (replyValue->asQObject())
-            replyValue->asQObject()->setParent(0);
+        if (replyValue->asQModelingObject())
+            replyValue->asQModelingObject()->setParent(0);
 
         // Adjust subsetted properties
         removeInput(replyValue);
@@ -213,81 +211,14 @@ void QUmlReplyAction::setReturnInformation(QUmlInputPin *returnInformation)
         removeInput(_returnInformation);
 
         _returnInformation = returnInformation;
-        if (returnInformation && returnInformation->asQObject() && this->asQObject())
-            QObject::connect(returnInformation->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setReturnInformation()));
-        returnInformation->asQObject()->setParent(this->asQObject());
+        if (returnInformation && returnInformation->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(returnInformation->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setReturnInformation()));
+        returnInformation->asQModelingObject()->setParent(this->asQModelingObject());
 
         // Adjust subsetted properties
         if (returnInformation) {
             addInput(returnInformation);
         }
     }
-}
-
-void QUmlReplyAction::setGroupProperties()
-{
-    const QMetaObject *metaObject = _qObject->metaObject();
-
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
-    _groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isLeaf"))));
-    _groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinitionContexts"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("activity"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inGroups"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inInterruptibleRegions"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inPartitions"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inStructuredNode"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("incomings"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("outgoings"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinedNodes"))));
-    _groupProperties.insert(QStringLiteral("QUmlExecutableNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("handlers"))));
-    _groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("context"))));
-    _groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inputs"))));
-    _groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isLocallyReentrant"))));
-    _groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("localPostconditions"))));
-    _groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("localPreconditions"))));
-    _groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("outputs"))));
-    _groupProperties.insert(QStringLiteral("QUmlReplyAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("replyToCall"))));
-    _groupProperties.insert(QStringLiteral("QUmlReplyAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("replyValues"))));
-    _groupProperties.insert(QStringLiteral("QUmlReplyAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("returnInformation"))));
-}
-
-void QUmlReplyAction::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReplyAction")][QStringLiteral("replyToCall")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReplyAction")][QStringLiteral("replyToCall")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlReplyAction");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReplyAction")][QStringLiteral("replyToCall")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReplyAction")][QStringLiteral("replyToCall")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReplyAction")][QStringLiteral("replyToCall")][QtModeling::DocumentationRole] = QStringLiteral("The trigger specifying the operation whose call is being replied to.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReplyAction")][QStringLiteral("replyToCall")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReplyAction")][QStringLiteral("replyToCall")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReplyAction")][QStringLiteral("replyToCall")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReplyAction")][QStringLiteral("replyValues")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReplyAction")][QStringLiteral("replyValues")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlReplyAction");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReplyAction")][QStringLiteral("replyValues")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReplyAction")][QStringLiteral("replyValues")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReplyAction")][QStringLiteral("replyValues")][QtModeling::DocumentationRole] = QStringLiteral("A list of pins containing the reply values of the operation. These values are returned to the caller.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReplyAction")][QStringLiteral("replyValues")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReplyAction")][QStringLiteral("replyValues")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Action-input");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReplyAction")][QStringLiteral("replyValues")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReplyAction")][QStringLiteral("returnInformation")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReplyAction")][QStringLiteral("returnInformation")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlReplyAction");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReplyAction")][QStringLiteral("returnInformation")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReplyAction")][QStringLiteral("returnInformation")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReplyAction")][QStringLiteral("returnInformation")][QtModeling::DocumentationRole] = QStringLiteral("A pin containing the return information value produced by an earlier AcceptCallAction.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReplyAction")][QStringLiteral("returnInformation")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReplyAction")][QStringLiteral("returnInformation")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Action-input");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReplyAction")][QStringLiteral("returnInformation")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
 }
 

@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlextensionpointobject_p.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlExtensionPoint>
 #include <QtUml/QUmlClassifier>
@@ -54,16 +55,18 @@
 
 QT_BEGIN_NAMESPACE
 
-QUmlExtensionPointObject::QUmlExtensionPointObject(QUmlExtensionPoint *qModelingObject)
+QUmlExtensionPointObject::QUmlExtensionPointObject(QUmlExtensionPoint *qModelingElement)
 {
-    setProperty("modelingObject", QVariant::fromValue(static_cast<QModelingObject *>(qModelingObject)));
+    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(qModelingElement)));
+    setGroupProperties();
+    setPropertyData();
 }
 
 QUmlExtensionPointObject::~QUmlExtensionPointObject()
 {
     if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingobjectproperty_cast<QUmlExtensionPoint *>(this)->deletingFromQObject = true;
-        delete qmodelingobjectproperty_cast<QUmlComment *>(this);
+        qmodelingelementproperty_cast<QUmlExtensionPoint *>(this)->deletingFromQModelingObject = true;
+        delete qmodelingelementproperty_cast<QUmlComment *>(this);
     }
 }
 
@@ -72,25 +75,25 @@ QUmlExtensionPointObject::~QUmlExtensionPointObject()
 const QSet<QObject *> QUmlExtensionPointObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlExtensionPoint *>(this)->ownedComments())
-        set.insert(element->asQObject());
+    foreach (QUmlComment *element, qmodelingelementproperty_cast<QUmlExtensionPoint *>(this)->ownedComments())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlExtensionPointObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlExtensionPoint *>(this)->ownedElements())
-        set.insert(element->asQObject());
+    foreach (QUmlElement *element, qmodelingelementproperty_cast<QUmlExtensionPoint *>(this)->ownedElements())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 QObject *QUmlExtensionPointObject::owner() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlExtensionPoint *>(this)->owner())
+    if (!qmodelingelementproperty_cast<QUmlExtensionPoint *>(this)->owner())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlExtensionPoint *>(this)->owner()->asQObject();
+        return qmodelingelementproperty_cast<QUmlExtensionPoint *>(this)->owner()->asQModelingObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -98,62 +101,62 @@ QObject *QUmlExtensionPointObject::owner() const
 const QSet<QObject *> QUmlExtensionPointObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlExtensionPoint *>(this)->clientDependencies())
-        set.insert(element->asQObject());
+    foreach (QUmlDependency *element, qmodelingelementproperty_cast<QUmlExtensionPoint *>(this)->clientDependencies())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 QString QUmlExtensionPointObject::name() const
 {
-    return qmodelingobjectproperty_cast<QUmlExtensionPoint *>(this)->name();
+    return qmodelingelementproperty_cast<QUmlExtensionPoint *>(this)->name();
 }
 
 QObject *QUmlExtensionPointObject::nameExpression() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlExtensionPoint *>(this)->nameExpression())
+    if (!qmodelingelementproperty_cast<QUmlExtensionPoint *>(this)->nameExpression())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlExtensionPoint *>(this)->nameExpression()->asQObject();
+        return qmodelingelementproperty_cast<QUmlExtensionPoint *>(this)->nameExpression()->asQModelingObject();
 }
 
 QObject *QUmlExtensionPointObject::namespace_() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlExtensionPoint *>(this)->namespace_())
+    if (!qmodelingelementproperty_cast<QUmlExtensionPoint *>(this)->namespace_())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlExtensionPoint *>(this)->namespace_()->asQObject();
+        return qmodelingelementproperty_cast<QUmlExtensionPoint *>(this)->namespace_()->asQModelingObject();
 }
 
 QString QUmlExtensionPointObject::qualifiedName() const
 {
-    return qmodelingobjectproperty_cast<QUmlExtensionPoint *>(this)->qualifiedName();
+    return qmodelingelementproperty_cast<QUmlExtensionPoint *>(this)->qualifiedName();
 }
 
 QtUml::VisibilityKind QUmlExtensionPointObject::visibility() const
 {
-    return qmodelingobjectproperty_cast<QUmlExtensionPoint *>(this)->visibility();
+    return qmodelingelementproperty_cast<QUmlExtensionPoint *>(this)->visibility();
 }
 
 // OWNED ATTRIBUTES [RedefinableElement]
 
 bool QUmlExtensionPointObject::isLeaf() const
 {
-    return qmodelingobjectproperty_cast<QUmlExtensionPoint *>(this)->isLeaf();
+    return qmodelingelementproperty_cast<QUmlExtensionPoint *>(this)->isLeaf();
 }
 
 const QSet<QObject *> QUmlExtensionPointObject::redefinedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlRedefinableElement *element, qmodelingobjectproperty_cast<QUmlExtensionPoint *>(this)->redefinedElements())
-        set.insert(element->asQObject());
+    foreach (QUmlRedefinableElement *element, qmodelingelementproperty_cast<QUmlExtensionPoint *>(this)->redefinedElements())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlExtensionPointObject::redefinitionContexts() const
 {
     QSet<QObject *> set;
-    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlExtensionPoint *>(this)->redefinitionContexts())
-        set.insert(element->asQObject());
+    foreach (QUmlClassifier *element, qmodelingelementproperty_cast<QUmlExtensionPoint *>(this)->redefinitionContexts())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
@@ -161,10 +164,10 @@ const QSet<QObject *> QUmlExtensionPointObject::redefinitionContexts() const
 
 QObject *QUmlExtensionPointObject::useCase() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlExtensionPoint *>(this)->useCase())
+    if (!qmodelingelementproperty_cast<QUmlExtensionPoint *>(this)->useCase())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlExtensionPoint *>(this)->useCase()->asQObject();
+        return qmodelingelementproperty_cast<QUmlExtensionPoint *>(this)->useCase()->asQModelingObject();
 }
 
 // OPERATIONS [Element]
@@ -172,14 +175,14 @@ QObject *QUmlExtensionPointObject::useCase() const
 QSet<QObject *> QUmlExtensionPointObject::allOwnedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlExtensionPoint *>(this)->allOwnedElements())
-        set.insert(element->asQObject());
+    foreach (QUmlElement *element, qmodelingelementproperty_cast<QUmlExtensionPoint *>(this)->allOwnedElements())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 bool QUmlExtensionPointObject::mustBeOwned() const
 {
-    return qmodelingobjectproperty_cast<QUmlExtensionPoint *>(this)->mustBeOwned();
+    return qmodelingelementproperty_cast<QUmlExtensionPoint *>(this)->mustBeOwned();
 }
 
 // OPERATIONS [NamedElement]
@@ -187,142 +190,187 @@ bool QUmlExtensionPointObject::mustBeOwned() const
 QList<QObject *> QUmlExtensionPointObject::allNamespaces() const
 {
     QList<QObject *> set;
-    foreach (QUmlNamespace *element, qmodelingobjectproperty_cast<QUmlExtensionPoint *>(this)->allNamespaces())
-        set.append(element->asQObject());
+    foreach (QUmlNamespace *element, qmodelingelementproperty_cast<QUmlExtensionPoint *>(this)->allNamespaces())
+        set.append(element->asQModelingObject());
     return set;
 }
 
 QSet<QObject *> QUmlExtensionPointObject::allOwningPackages() const
 {
     QSet<QObject *> set;
-    foreach (QUmlPackage *element, qmodelingobjectproperty_cast<QUmlExtensionPoint *>(this)->allOwningPackages())
-        set.insert(element->asQObject());
+    foreach (QUmlPackage *element, qmodelingelementproperty_cast<QUmlExtensionPoint *>(this)->allOwningPackages())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 bool QUmlExtensionPointObject::isDistinguishableFrom(QObject *n, QObject *ns) const
 {
-    return qmodelingobjectproperty_cast<QUmlExtensionPoint *>(this)->isDistinguishableFrom(qmodelingobjectproperty_cast<QUmlNamedElement *>(n), qmodelingobjectproperty_cast<QUmlNamespace *>(ns));
+    return qmodelingelementproperty_cast<QUmlExtensionPoint *>(this)->isDistinguishableFrom(qmodelingelementproperty_cast<QUmlNamedElement *>(n), qmodelingelementproperty_cast<QUmlNamespace *>(ns));
 }
 
 QString QUmlExtensionPointObject::separator() const
 {
-    return qmodelingobjectproperty_cast<QUmlExtensionPoint *>(this)->separator();
+    return qmodelingelementproperty_cast<QUmlExtensionPoint *>(this)->separator();
 }
 
 // OPERATIONS [RedefinableElement]
 
 bool QUmlExtensionPointObject::isConsistentWith(QObject *redefinee) const
 {
-    return qmodelingobjectproperty_cast<QUmlExtensionPoint *>(this)->isConsistentWith(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefinee));
+    return qmodelingelementproperty_cast<QUmlExtensionPoint *>(this)->isConsistentWith(qmodelingelementproperty_cast<QUmlRedefinableElement *>(redefinee));
 }
 
 bool QUmlExtensionPointObject::isRedefinitionContextValid(QObject *redefined) const
 {
-    return qmodelingobjectproperty_cast<QUmlExtensionPoint *>(this)->isRedefinitionContextValid(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefined));
+    return qmodelingelementproperty_cast<QUmlExtensionPoint *>(this)->isRedefinitionContextValid(qmodelingelementproperty_cast<QUmlRedefinableElement *>(redefined));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Element]
 
 void QUmlExtensionPointObject::addOwnedComment(QObject *ownedComment)
 {
-    qmodelingobjectproperty_cast<QUmlExtensionPoint *>(this)->addOwnedComment(qmodelingobjectproperty_cast<QUmlComment *>(ownedComment));
+    qmodelingelementproperty_cast<QUmlExtensionPoint *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
 }
 
 void QUmlExtensionPointObject::removeOwnedComment(QObject *ownedComment)
 {
-    qmodelingobjectproperty_cast<QUmlExtensionPoint *>(this)->removeOwnedComment(qmodelingobjectproperty_cast<QUmlComment *>(ownedComment));
+    qmodelingelementproperty_cast<QUmlExtensionPoint *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
 }
 
 void QUmlExtensionPointObject::addOwnedElement(QObject *ownedElement)
 {
-    qmodelingobjectproperty_cast<QUmlExtensionPoint *>(this)->addOwnedElement(qmodelingobjectproperty_cast<QUmlElement *>(ownedElement));
+    qmodelingelementproperty_cast<QUmlExtensionPoint *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
 }
 
 void QUmlExtensionPointObject::removeOwnedElement(QObject *ownedElement)
 {
-    qmodelingobjectproperty_cast<QUmlExtensionPoint *>(this)->removeOwnedElement(qmodelingobjectproperty_cast<QUmlElement *>(ownedElement));
+    qmodelingelementproperty_cast<QUmlExtensionPoint *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
 }
 
 void QUmlExtensionPointObject::setOwner(QObject *owner)
 {
-    qmodelingobjectproperty_cast<QUmlExtensionPoint *>(this)->setOwner(qmodelingobjectproperty_cast<QUmlElement *>(owner));
+    qmodelingelementproperty_cast<QUmlExtensionPoint *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [NamedElement]
 
 void QUmlExtensionPointObject::addClientDependency(QObject *clientDependency)
 {
-    qmodelingobjectproperty_cast<QUmlExtensionPoint *>(this)->addClientDependency(qmodelingobjectproperty_cast<QUmlDependency *>(clientDependency));
+    qmodelingelementproperty_cast<QUmlExtensionPoint *>(this)->addClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
 }
 
 void QUmlExtensionPointObject::removeClientDependency(QObject *clientDependency)
 {
-    qmodelingobjectproperty_cast<QUmlExtensionPoint *>(this)->removeClientDependency(qmodelingobjectproperty_cast<QUmlDependency *>(clientDependency));
+    qmodelingelementproperty_cast<QUmlExtensionPoint *>(this)->removeClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
 }
 
 void QUmlExtensionPointObject::setName(QString name)
 {
-    qmodelingobjectproperty_cast<QUmlExtensionPoint *>(this)->setName(name);
+    qmodelingelementproperty_cast<QUmlExtensionPoint *>(this)->setName(name);
 }
 
 void QUmlExtensionPointObject::setNameExpression(QObject *nameExpression)
 {
-    qmodelingobjectproperty_cast<QUmlExtensionPoint *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
+    qmodelingelementproperty_cast<QUmlExtensionPoint *>(this)->setNameExpression(qmodelingelementproperty_cast<QUmlStringExpression *>(nameExpression));
 }
 
 void QUmlExtensionPointObject::setNamespace(QObject *namespace_)
 {
-    qmodelingobjectproperty_cast<QUmlExtensionPoint *>(this)->setNamespace(qmodelingobjectproperty_cast<QUmlNamespace *>(namespace_));
+    qmodelingelementproperty_cast<QUmlExtensionPoint *>(this)->setNamespace(qmodelingelementproperty_cast<QUmlNamespace *>(namespace_));
 }
 
 void QUmlExtensionPointObject::setQualifiedName(QString qualifiedName)
 {
-    qmodelingobjectproperty_cast<QUmlExtensionPoint *>(this)->setQualifiedName(qualifiedName);
+    qmodelingelementproperty_cast<QUmlExtensionPoint *>(this)->setQualifiedName(qualifiedName);
 }
 
 void QUmlExtensionPointObject::setVisibility(QtUml::VisibilityKind visibility)
 {
-    qmodelingobjectproperty_cast<QUmlExtensionPoint *>(this)->setVisibility(visibility);
+    qmodelingelementproperty_cast<QUmlExtensionPoint *>(this)->setVisibility(visibility);
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [RedefinableElement]
 
 void QUmlExtensionPointObject::setLeaf(bool isLeaf)
 {
-    qmodelingobjectproperty_cast<QUmlExtensionPoint *>(this)->setLeaf(isLeaf);
+    qmodelingelementproperty_cast<QUmlExtensionPoint *>(this)->setLeaf(isLeaf);
 }
 
 void QUmlExtensionPointObject::unsetLeaf()
 {
-    qmodelingobjectproperty_cast<QUmlExtensionPoint *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("leaf"));
+    Q_D(QModelingObject);
+    d->modifiedResettableProperties.removeAll(QStringLiteral("leaf"));
 }
 
 void QUmlExtensionPointObject::addRedefinedElement(QObject *redefinedElement)
 {
-    qmodelingobjectproperty_cast<QUmlExtensionPoint *>(this)->addRedefinedElement(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefinedElement));
+    qmodelingelementproperty_cast<QUmlExtensionPoint *>(this)->addRedefinedElement(qmodelingelementproperty_cast<QUmlRedefinableElement *>(redefinedElement));
 }
 
 void QUmlExtensionPointObject::removeRedefinedElement(QObject *redefinedElement)
 {
-    qmodelingobjectproperty_cast<QUmlExtensionPoint *>(this)->removeRedefinedElement(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefinedElement));
+    qmodelingelementproperty_cast<QUmlExtensionPoint *>(this)->removeRedefinedElement(qmodelingelementproperty_cast<QUmlRedefinableElement *>(redefinedElement));
 }
 
 void QUmlExtensionPointObject::addRedefinitionContext(QObject *redefinitionContext)
 {
-    qmodelingobjectproperty_cast<QUmlExtensionPoint *>(this)->addRedefinitionContext(qmodelingobjectproperty_cast<QUmlClassifier *>(redefinitionContext));
+    qmodelingelementproperty_cast<QUmlExtensionPoint *>(this)->addRedefinitionContext(qmodelingelementproperty_cast<QUmlClassifier *>(redefinitionContext));
 }
 
 void QUmlExtensionPointObject::removeRedefinitionContext(QObject *redefinitionContext)
 {
-    qmodelingobjectproperty_cast<QUmlExtensionPoint *>(this)->removeRedefinitionContext(qmodelingobjectproperty_cast<QUmlClassifier *>(redefinitionContext));
+    qmodelingelementproperty_cast<QUmlExtensionPoint *>(this)->removeRedefinitionContext(qmodelingelementproperty_cast<QUmlClassifier *>(redefinitionContext));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ExtensionPoint]
 
 void QUmlExtensionPointObject::setUseCase(QObject *useCase)
 {
-    qmodelingobjectproperty_cast<QUmlExtensionPoint *>(this)->setUseCase(qmodelingobjectproperty_cast<QUmlUseCase *>(useCase));
+    qmodelingelementproperty_cast<QUmlExtensionPoint *>(this)->setUseCase(qmodelingelementproperty_cast<QUmlUseCase *>(useCase));
+}
+
+
+void QUmlExtensionPointObject::setGroupProperties()
+{
+    Q_D(QModelingObject);
+    const QMetaObject *metaObject = this->metaObject();
+
+    d->propertyGroups << QStringLiteral("QObject");
+    d->groupProperties.insert(QStringLiteral("QObject"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("objectName"))));
+
+    d->propertyGroups << QStringLiteral("QUmlElement");
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
+
+    d->propertyGroups << QStringLiteral("QUmlNamedElement");
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
+
+    d->propertyGroups << QStringLiteral("QUmlRedefinableElement");
+    d->groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isLeaf"))));
+    d->groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinedElements"))));
+    d->groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinitionContexts"))));
+
+    d->propertyGroups << QStringLiteral("QUmlExtensionPoint");
+    d->groupProperties.insert(QStringLiteral("QUmlExtensionPoint"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("useCase"))));
+}
+
+void QUmlExtensionPointObject::setPropertyData()
+{
+    Q_DECLARE_METAPROPERTY_INFO(QUmlExtensionPoint, useCase, AggregationRole, QStringLiteral("none"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlExtensionPoint, useCase, PropertyClassRole, QStringLiteral("QUmlExtensionPoint"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlExtensionPoint, useCase, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlExtensionPoint, useCase, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlExtensionPoint, useCase, DocumentationRole, QStringLiteral("References the use case that owns this extension point."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlExtensionPoint, useCase, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlExtensionPoint, useCase, SubsettedPropertiesRole, QStringLiteral("NamedElement-namespace"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlExtensionPoint, useCase, OppositeEndRole, QStringLiteral("UseCase-extensionPoint"));
+
 }
 
 QT_END_NAMESPACE

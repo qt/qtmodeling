@@ -45,7 +45,6 @@
 
 #include <QtUml/QUmlAcceptEventAction>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -57,10 +56,10 @@ class QUmlOutputPin;
 class Q_UML_EXPORT QUmlAcceptCallAction : public QUmlAcceptEventAction
 {
 public:
-    explicit QUmlAcceptCallAction(bool createQObject = true);
+    explicit QUmlAcceptCallAction(bool createQModelingObject = true);
     virtual ~QUmlAcceptCallAction();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
     QUmlOutputPin *returnInformation() const;
@@ -68,9 +67,6 @@ public:
 
 protected:
     QUmlOutputPin *_returnInformation;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

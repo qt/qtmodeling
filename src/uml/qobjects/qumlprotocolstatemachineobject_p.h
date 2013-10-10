@@ -43,7 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtCore/QObject>
+#include <QtModeling/QModelingObject>
 
 #include <QtUml/QtUmlNamespace>
 
@@ -54,9 +54,12 @@ QT_BEGIN_NAMESPACE
 QT_MODULE(QtUml)
 
 class QUmlProtocolStateMachine;
-class Q_UML_EXPORT QUmlProtocolStateMachineObject : public QObject
+class QModelingObjectPrivate;
+class Q_UML_EXPORT QUmlProtocolStateMachineObject : public QModelingObject
 {
     Q_OBJECT
+    Q_DISABLE_COPY(QUmlProtocolStateMachineObject)
+    Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [Element]
     Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
@@ -153,7 +156,7 @@ class Q_UML_EXPORT QUmlProtocolStateMachineObject : public QObject
     Q_PROPERTY(QSet<QObject *> conformance READ conformance)
 
 public:
-    Q_INVOKABLE explicit QUmlProtocolStateMachineObject(QUmlProtocolStateMachine *qModelingObject);
+    Q_INVOKABLE explicit QUmlProtocolStateMachineObject(QUmlProtocolStateMachine *qModelingElement);
     virtual ~QUmlProtocolStateMachineObject();
 
     // Owned attributes [Element]
@@ -440,6 +443,10 @@ public Q_SLOTS:
     // Slots for owned attributes [ProtocolStateMachine]
     void addConformance(QObject *conformance);
     void removeConformance(QObject *conformance);
+
+protected:
+    virtual void setGroupProperties();
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

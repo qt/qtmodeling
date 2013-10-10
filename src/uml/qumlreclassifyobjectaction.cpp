@@ -70,26 +70,24 @@
 
     \brief A reclassify object action is an action that changes which classifiers classify an object.
  */
-QUmlReclassifyObjectAction::QUmlReclassifyObjectAction(bool createQObject) :
+QUmlReclassifyObjectAction::QUmlReclassifyObjectAction(bool createQModelingObject) :
     _isReplaceAll(false),
     _object(0)
 {
-    if (createQObject)
-        _qObject = new QUmlReclassifyObjectActionObject(this);
-    setGroupProperties();
-    setPropertyData();
+    if (createQModelingObject)
+        _qModelingObject = qobject_cast<QModelingObject *>(new QUmlReclassifyObjectActionObject(this));
 }
 
 QUmlReclassifyObjectAction::~QUmlReclassifyObjectAction()
 {
-    if (!deletingFromQObject) {
-        if (_qObject)
-            _qObject->setProperty("deletingFromModelingObject", true);
-        delete _qObject;
+    if (!deletingFromQModelingObject) {
+        if (_qModelingObject)
+            _qModelingObject->setProperty("deletingFromModelingObject", true);
+        delete _qModelingObject;
     }
 }
 
-QModelingObject *QUmlReclassifyObjectAction::clone() const
+QModelingElement *QUmlReclassifyObjectAction::clone() const
 {
     QUmlReclassifyObjectAction *c = new QUmlReclassifyObjectAction;
     foreach (QUmlComment *element, ownedComments())
@@ -150,7 +148,7 @@ void QUmlReclassifyObjectAction::setReplaceAll(bool isReplaceAll)
 
     if (_isReplaceAll != isReplaceAll) {
         _isReplaceAll = isReplaceAll;
-        _modifiedResettableProperties << QStringLiteral("isReplaceAll");
+        _qModelingObject->modifiedResettableProperties() << QStringLiteral("isReplaceAll");
     }
 }
 
@@ -170,8 +168,8 @@ void QUmlReclassifyObjectAction::addNewClassifier(QUmlClassifier *newClassifier)
 
     if (!_newClassifiers.contains(newClassifier)) {
         _newClassifiers.insert(newClassifier);
-        if (newClassifier && newClassifier->asQObject() && this->asQObject())
-            QObject::connect(newClassifier->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeNewClassifier(QObject *)));
+        if (newClassifier && newClassifier->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(newClassifier->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeNewClassifier(QObject *)));
     }
 }
 
@@ -203,9 +201,9 @@ void QUmlReclassifyObjectAction::setObject(QUmlInputPin *object)
         removeInput(_object);
 
         _object = object;
-        if (object && object->asQObject() && this->asQObject())
-            QObject::connect(object->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setObject()));
-        object->asQObject()->setParent(this->asQObject());
+        if (object && object->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(object->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setObject()));
+        object->asQModelingObject()->setParent(this->asQModelingObject());
 
         // Adjust subsetted properties
         if (object) {
@@ -230,8 +228,8 @@ void QUmlReclassifyObjectAction::addOldClassifier(QUmlClassifier *oldClassifier)
 
     if (!_oldClassifiers.contains(oldClassifier)) {
         _oldClassifiers.insert(oldClassifier);
-        if (oldClassifier && oldClassifier->asQObject() && this->asQObject())
-            QObject::connect(oldClassifier->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeOldClassifier(QObject *)));
+        if (oldClassifier && oldClassifier->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(oldClassifier->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeOldClassifier(QObject *)));
     }
 }
 
@@ -242,82 +240,5 @@ void QUmlReclassifyObjectAction::removeOldClassifier(QUmlClassifier *oldClassifi
     if (_oldClassifiers.contains(oldClassifier)) {
         _oldClassifiers.remove(oldClassifier);
     }
-}
-
-void QUmlReclassifyObjectAction::setGroupProperties()
-{
-    const QMetaObject *metaObject = _qObject->metaObject();
-
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
-    _groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isLeaf"))));
-    _groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinitionContexts"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("activity"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inGroups"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inInterruptibleRegions"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inPartitions"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inStructuredNode"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("incomings"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("outgoings"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinedNodes"))));
-    _groupProperties.insert(QStringLiteral("QUmlExecutableNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("handlers"))));
-    _groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("context"))));
-    _groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inputs"))));
-    _groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isLocallyReentrant"))));
-    _groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("localPostconditions"))));
-    _groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("localPreconditions"))));
-    _groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("outputs"))));
-    _groupProperties.insert(QStringLiteral("QUmlReclassifyObjectAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isReplaceAll"))));
-    _groupProperties.insert(QStringLiteral("QUmlReclassifyObjectAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("newClassifiers"))));
-    _groupProperties.insert(QStringLiteral("QUmlReclassifyObjectAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("object"))));
-    _groupProperties.insert(QStringLiteral("QUmlReclassifyObjectAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("oldClassifiers"))));
-}
-
-void QUmlReclassifyObjectAction::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReclassifyObjectAction")][QStringLiteral("isReplaceAll")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReclassifyObjectAction")][QStringLiteral("isReplaceAll")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlReclassifyObjectAction");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReclassifyObjectAction")][QStringLiteral("isReplaceAll")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReclassifyObjectAction")][QStringLiteral("isReplaceAll")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReclassifyObjectAction")][QStringLiteral("isReplaceAll")][QtModeling::DocumentationRole] = QStringLiteral("Specifies whether existing classifiers should be removed before adding the new classifiers.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReclassifyObjectAction")][QStringLiteral("isReplaceAll")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReclassifyObjectAction")][QStringLiteral("isReplaceAll")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReclassifyObjectAction")][QStringLiteral("isReplaceAll")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReclassifyObjectAction")][QStringLiteral("newClassifiers")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReclassifyObjectAction")][QStringLiteral("newClassifiers")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlReclassifyObjectAction");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReclassifyObjectAction")][QStringLiteral("newClassifiers")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReclassifyObjectAction")][QStringLiteral("newClassifiers")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReclassifyObjectAction")][QStringLiteral("newClassifiers")][QtModeling::DocumentationRole] = QStringLiteral("A set of classifiers to be added to the classifiers of the object.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReclassifyObjectAction")][QStringLiteral("newClassifiers")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReclassifyObjectAction")][QStringLiteral("newClassifiers")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReclassifyObjectAction")][QStringLiteral("newClassifiers")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReclassifyObjectAction")][QStringLiteral("object")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReclassifyObjectAction")][QStringLiteral("object")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlReclassifyObjectAction");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReclassifyObjectAction")][QStringLiteral("object")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReclassifyObjectAction")][QStringLiteral("object")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReclassifyObjectAction")][QStringLiteral("object")][QtModeling::DocumentationRole] = QStringLiteral("Holds the object to be reclassified.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReclassifyObjectAction")][QStringLiteral("object")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReclassifyObjectAction")][QStringLiteral("object")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Action-input");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReclassifyObjectAction")][QStringLiteral("object")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReclassifyObjectAction")][QStringLiteral("oldClassifiers")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReclassifyObjectAction")][QStringLiteral("oldClassifiers")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlReclassifyObjectAction");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReclassifyObjectAction")][QStringLiteral("oldClassifiers")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReclassifyObjectAction")][QStringLiteral("oldClassifiers")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReclassifyObjectAction")][QStringLiteral("oldClassifiers")][QtModeling::DocumentationRole] = QStringLiteral("A set of classifiers to be removed from the classifiers of the object.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReclassifyObjectAction")][QStringLiteral("oldClassifiers")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReclassifyObjectAction")][QStringLiteral("oldClassifiers")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReclassifyObjectAction")][QStringLiteral("oldClassifiers")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
 }
 

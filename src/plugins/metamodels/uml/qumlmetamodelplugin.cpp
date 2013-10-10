@@ -54,7 +54,7 @@ void QUmlMetaModelPlugin::initMetaModel(QScriptEngine *scriptEngine)
     QUmlMetaModel::init(scriptEngine);
 }
 
-QModelingObject *QUmlMetaModelPlugin::createModelingObject(QString type)
+QModelingElement *QUmlMetaModelPlugin::createModelingElement(QString type)
 {
     if (type == "QUmlAbstraction") return new QUmlAbstraction;
     else if (type == "QUmlAcceptCallAction") return new QUmlAcceptCallAction;
@@ -250,7 +250,7 @@ QModelingObject *QUmlMetaModelPlugin::createModelingObject(QString type)
     else if (type == "QUmlValueSpecificationAction") return new QUmlValueSpecificationAction;
     else if (type == "QUmlVariable") return new QUmlVariable;
     Q_ASSERT_X(true,
-               "QUmlMetaModelPlugin::createModelingObject",
+               "QUmlMetaModelPlugin::createModelingElement",
                QStringLiteral("QUmlMetaModelPlugin does not know how to create instances of '%1' type !").arg(type).toLatin1());
     return 0;
 }

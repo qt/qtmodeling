@@ -60,15 +60,13 @@
 QUmlType::QUmlType() :
     _package(0)
 {
-    setGroupProperties();
-    setPropertyData();
 }
 
 QUmlType::~QUmlType()
 {
 }
 
-QModelingObject *QUmlType::clone() const
+QModelingElement *QUmlType::clone() const
 {
     QUmlType *c = new QUmlType;
     foreach (QUmlComment *element, ownedComments())
@@ -106,8 +104,8 @@ void QUmlType::setPackage(QUmlPackage *package)
 
     if (_package != package) {
         _package = package;
-        if (package && package->asQObject() && this->asQObject())
-            QObject::connect(package->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setPackage()));
+        if (package && package->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(package->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setPackage()));
     }
 }
 
@@ -122,36 +120,5 @@ bool QUmlType::conformsTo(QUmlType *other) const
 
     Q_UNUSED(other);
     return bool ();
-}
-
-void QUmlType::setGroupProperties()
-{
-    const QMetaObject *metaObject = _qObject->metaObject();
-
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
-    _groupProperties.insert(QStringLiteral("QUmlParameterableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owningTemplateParameter"))));
-    _groupProperties.insert(QStringLiteral("QUmlParameterableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("templateParameter"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
-    _groupProperties.insert(QStringLiteral("QUmlPackageableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
-    _groupProperties.insert(QStringLiteral("QUmlType"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("package"))));
-}
-
-void QUmlType::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlType")][QStringLiteral("package")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlType")][QStringLiteral("package")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlType");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlType")][QStringLiteral("package")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlType")][QStringLiteral("package")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlType")][QStringLiteral("package")][QtModeling::DocumentationRole] = QStringLiteral("Specifies the owning package of this classifier, if any.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlType")][QStringLiteral("package")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlType")][QStringLiteral("package")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("A_packagedElement_owningPackage-owningPackage");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlType")][QStringLiteral("package")][QtModeling::OppositeEndRole] = QStringLiteral("Package-ownedType");
-
 }
 

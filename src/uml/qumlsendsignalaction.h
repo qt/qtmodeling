@@ -45,7 +45,6 @@
 
 #include <QtUml/QUmlInvocationAction>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -58,10 +57,10 @@ class QUmlSignal;
 class Q_UML_EXPORT QUmlSendSignalAction : public QUmlInvocationAction
 {
 public:
-    explicit QUmlSendSignalAction(bool createQObject = true);
+    explicit QUmlSendSignalAction(bool createQModelingObject = true);
     virtual ~QUmlSendSignalAction();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
     QUmlSignal *signal() const;
@@ -72,9 +71,6 @@ public:
 protected:
     QUmlSignal *_signal;
     QUmlInputPin *_target;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

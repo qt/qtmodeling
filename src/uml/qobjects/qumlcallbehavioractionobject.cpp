@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlcallbehavioractionobject_p.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlCallBehaviorAction>
 #include <QtUml/QUmlActivity>
@@ -66,16 +67,18 @@
 
 QT_BEGIN_NAMESPACE
 
-QUmlCallBehaviorActionObject::QUmlCallBehaviorActionObject(QUmlCallBehaviorAction *qModelingObject)
+QUmlCallBehaviorActionObject::QUmlCallBehaviorActionObject(QUmlCallBehaviorAction *qModelingElement)
 {
-    setProperty("modelingObject", QVariant::fromValue(static_cast<QModelingObject *>(qModelingObject)));
+    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(qModelingElement)));
+    setGroupProperties();
+    setPropertyData();
 }
 
 QUmlCallBehaviorActionObject::~QUmlCallBehaviorActionObject()
 {
     if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingobjectproperty_cast<QUmlCallBehaviorAction *>(this)->deletingFromQObject = true;
-        delete qmodelingobjectproperty_cast<QUmlComment *>(this);
+        qmodelingelementproperty_cast<QUmlCallBehaviorAction *>(this)->deletingFromQModelingObject = true;
+        delete qmodelingelementproperty_cast<QUmlComment *>(this);
     }
 }
 
@@ -84,25 +87,25 @@ QUmlCallBehaviorActionObject::~QUmlCallBehaviorActionObject()
 const QSet<QObject *> QUmlCallBehaviorActionObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlCallBehaviorAction *>(this)->ownedComments())
-        set.insert(element->asQObject());
+    foreach (QUmlComment *element, qmodelingelementproperty_cast<QUmlCallBehaviorAction *>(this)->ownedComments())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlCallBehaviorActionObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlCallBehaviorAction *>(this)->ownedElements())
-        set.insert(element->asQObject());
+    foreach (QUmlElement *element, qmodelingelementproperty_cast<QUmlCallBehaviorAction *>(this)->ownedElements())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 QObject *QUmlCallBehaviorActionObject::owner() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlCallBehaviorAction *>(this)->owner())
+    if (!qmodelingelementproperty_cast<QUmlCallBehaviorAction *>(this)->owner())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlCallBehaviorAction *>(this)->owner()->asQObject();
+        return qmodelingelementproperty_cast<QUmlCallBehaviorAction *>(this)->owner()->asQModelingObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -110,62 +113,62 @@ QObject *QUmlCallBehaviorActionObject::owner() const
 const QSet<QObject *> QUmlCallBehaviorActionObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlCallBehaviorAction *>(this)->clientDependencies())
-        set.insert(element->asQObject());
+    foreach (QUmlDependency *element, qmodelingelementproperty_cast<QUmlCallBehaviorAction *>(this)->clientDependencies())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 QString QUmlCallBehaviorActionObject::name() const
 {
-    return qmodelingobjectproperty_cast<QUmlCallBehaviorAction *>(this)->name();
+    return qmodelingelementproperty_cast<QUmlCallBehaviorAction *>(this)->name();
 }
 
 QObject *QUmlCallBehaviorActionObject::nameExpression() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlCallBehaviorAction *>(this)->nameExpression())
+    if (!qmodelingelementproperty_cast<QUmlCallBehaviorAction *>(this)->nameExpression())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlCallBehaviorAction *>(this)->nameExpression()->asQObject();
+        return qmodelingelementproperty_cast<QUmlCallBehaviorAction *>(this)->nameExpression()->asQModelingObject();
 }
 
 QObject *QUmlCallBehaviorActionObject::namespace_() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlCallBehaviorAction *>(this)->namespace_())
+    if (!qmodelingelementproperty_cast<QUmlCallBehaviorAction *>(this)->namespace_())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlCallBehaviorAction *>(this)->namespace_()->asQObject();
+        return qmodelingelementproperty_cast<QUmlCallBehaviorAction *>(this)->namespace_()->asQModelingObject();
 }
 
 QString QUmlCallBehaviorActionObject::qualifiedName() const
 {
-    return qmodelingobjectproperty_cast<QUmlCallBehaviorAction *>(this)->qualifiedName();
+    return qmodelingelementproperty_cast<QUmlCallBehaviorAction *>(this)->qualifiedName();
 }
 
 QtUml::VisibilityKind QUmlCallBehaviorActionObject::visibility() const
 {
-    return qmodelingobjectproperty_cast<QUmlCallBehaviorAction *>(this)->visibility();
+    return qmodelingelementproperty_cast<QUmlCallBehaviorAction *>(this)->visibility();
 }
 
 // OWNED ATTRIBUTES [RedefinableElement]
 
 bool QUmlCallBehaviorActionObject::isLeaf() const
 {
-    return qmodelingobjectproperty_cast<QUmlCallBehaviorAction *>(this)->isLeaf();
+    return qmodelingelementproperty_cast<QUmlCallBehaviorAction *>(this)->isLeaf();
 }
 
 const QSet<QObject *> QUmlCallBehaviorActionObject::redefinedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlRedefinableElement *element, qmodelingobjectproperty_cast<QUmlCallBehaviorAction *>(this)->redefinedElements())
-        set.insert(element->asQObject());
+    foreach (QUmlRedefinableElement *element, qmodelingelementproperty_cast<QUmlCallBehaviorAction *>(this)->redefinedElements())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlCallBehaviorActionObject::redefinitionContexts() const
 {
     QSet<QObject *> set;
-    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlCallBehaviorAction *>(this)->redefinitionContexts())
-        set.insert(element->asQObject());
+    foreach (QUmlClassifier *element, qmodelingelementproperty_cast<QUmlCallBehaviorAction *>(this)->redefinitionContexts())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
@@ -173,65 +176,65 @@ const QSet<QObject *> QUmlCallBehaviorActionObject::redefinitionContexts() const
 
 QObject *QUmlCallBehaviorActionObject::activity() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlCallBehaviorAction *>(this)->activity())
+    if (!qmodelingelementproperty_cast<QUmlCallBehaviorAction *>(this)->activity())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlCallBehaviorAction *>(this)->activity()->asQObject();
+        return qmodelingelementproperty_cast<QUmlCallBehaviorAction *>(this)->activity()->asQModelingObject();
 }
 
 const QSet<QObject *> QUmlCallBehaviorActionObject::inGroups() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityGroup *element, qmodelingobjectproperty_cast<QUmlCallBehaviorAction *>(this)->inGroups())
-        set.insert(element->asQObject());
+    foreach (QUmlActivityGroup *element, qmodelingelementproperty_cast<QUmlCallBehaviorAction *>(this)->inGroups())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlCallBehaviorActionObject::inInterruptibleRegions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlInterruptibleActivityRegion *element, qmodelingobjectproperty_cast<QUmlCallBehaviorAction *>(this)->inInterruptibleRegions())
-        set.insert(element->asQObject());
+    foreach (QUmlInterruptibleActivityRegion *element, qmodelingelementproperty_cast<QUmlCallBehaviorAction *>(this)->inInterruptibleRegions())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlCallBehaviorActionObject::inPartitions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityPartition *element, qmodelingobjectproperty_cast<QUmlCallBehaviorAction *>(this)->inPartitions())
-        set.insert(element->asQObject());
+    foreach (QUmlActivityPartition *element, qmodelingelementproperty_cast<QUmlCallBehaviorAction *>(this)->inPartitions())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 QObject *QUmlCallBehaviorActionObject::inStructuredNode() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlCallBehaviorAction *>(this)->inStructuredNode())
+    if (!qmodelingelementproperty_cast<QUmlCallBehaviorAction *>(this)->inStructuredNode())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlCallBehaviorAction *>(this)->inStructuredNode()->asQObject();
+        return qmodelingelementproperty_cast<QUmlCallBehaviorAction *>(this)->inStructuredNode()->asQModelingObject();
 }
 
 const QSet<QObject *> QUmlCallBehaviorActionObject::incomings() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlCallBehaviorAction *>(this)->incomings())
-        set.insert(element->asQObject());
+    foreach (QUmlActivityEdge *element, qmodelingelementproperty_cast<QUmlCallBehaviorAction *>(this)->incomings())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlCallBehaviorActionObject::outgoings() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlCallBehaviorAction *>(this)->outgoings())
-        set.insert(element->asQObject());
+    foreach (QUmlActivityEdge *element, qmodelingelementproperty_cast<QUmlCallBehaviorAction *>(this)->outgoings())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlCallBehaviorActionObject::redefinedNodes() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityNode *element, qmodelingobjectproperty_cast<QUmlCallBehaviorAction *>(this)->redefinedNodes())
-        set.insert(element->asQObject());
+    foreach (QUmlActivityNode *element, qmodelingelementproperty_cast<QUmlCallBehaviorAction *>(this)->redefinedNodes())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
@@ -240,8 +243,8 @@ const QSet<QObject *> QUmlCallBehaviorActionObject::redefinedNodes() const
 const QSet<QObject *> QUmlCallBehaviorActionObject::handlers() const
 {
     QSet<QObject *> set;
-    foreach (QUmlExceptionHandler *element, qmodelingobjectproperty_cast<QUmlCallBehaviorAction *>(this)->handlers())
-        set.insert(element->asQObject());
+    foreach (QUmlExceptionHandler *element, qmodelingelementproperty_cast<QUmlCallBehaviorAction *>(this)->handlers())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
@@ -249,46 +252,46 @@ const QSet<QObject *> QUmlCallBehaviorActionObject::handlers() const
 
 QObject *QUmlCallBehaviorActionObject::context() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlCallBehaviorAction *>(this)->context())
+    if (!qmodelingelementproperty_cast<QUmlCallBehaviorAction *>(this)->context())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlCallBehaviorAction *>(this)->context()->asQObject();
+        return qmodelingelementproperty_cast<QUmlCallBehaviorAction *>(this)->context()->asQModelingObject();
 }
 
 const QList<QObject *> QUmlCallBehaviorActionObject::inputs() const
 {
     QList<QObject *> list;
-    foreach (QUmlInputPin *element, qmodelingobjectproperty_cast<QUmlCallBehaviorAction *>(this)->inputs())
-        list.append(element->asQObject());
+    foreach (QUmlInputPin *element, qmodelingelementproperty_cast<QUmlCallBehaviorAction *>(this)->inputs())
+        list.append(element->asQModelingObject());
     return list;
 }
 
 bool QUmlCallBehaviorActionObject::isLocallyReentrant() const
 {
-    return qmodelingobjectproperty_cast<QUmlCallBehaviorAction *>(this)->isLocallyReentrant();
+    return qmodelingelementproperty_cast<QUmlCallBehaviorAction *>(this)->isLocallyReentrant();
 }
 
 const QSet<QObject *> QUmlCallBehaviorActionObject::localPostconditions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlCallBehaviorAction *>(this)->localPostconditions())
-        set.insert(element->asQObject());
+    foreach (QUmlConstraint *element, qmodelingelementproperty_cast<QUmlCallBehaviorAction *>(this)->localPostconditions())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlCallBehaviorActionObject::localPreconditions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlCallBehaviorAction *>(this)->localPreconditions())
-        set.insert(element->asQObject());
+    foreach (QUmlConstraint *element, qmodelingelementproperty_cast<QUmlCallBehaviorAction *>(this)->localPreconditions())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QList<QObject *> QUmlCallBehaviorActionObject::outputs() const
 {
     QList<QObject *> list;
-    foreach (QUmlOutputPin *element, qmodelingobjectproperty_cast<QUmlCallBehaviorAction *>(this)->outputs())
-        list.append(element->asQObject());
+    foreach (QUmlOutputPin *element, qmodelingelementproperty_cast<QUmlCallBehaviorAction *>(this)->outputs())
+        list.append(element->asQModelingObject());
     return list;
 }
 
@@ -297,31 +300,31 @@ const QList<QObject *> QUmlCallBehaviorActionObject::outputs() const
 const QList<QObject *> QUmlCallBehaviorActionObject::arguments() const
 {
     QList<QObject *> list;
-    foreach (QUmlInputPin *element, qmodelingobjectproperty_cast<QUmlCallBehaviorAction *>(this)->arguments())
-        list.append(element->asQObject());
+    foreach (QUmlInputPin *element, qmodelingelementproperty_cast<QUmlCallBehaviorAction *>(this)->arguments())
+        list.append(element->asQModelingObject());
     return list;
 }
 
 QObject *QUmlCallBehaviorActionObject::onPort() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlCallBehaviorAction *>(this)->onPort())
+    if (!qmodelingelementproperty_cast<QUmlCallBehaviorAction *>(this)->onPort())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlCallBehaviorAction *>(this)->onPort()->asQObject();
+        return qmodelingelementproperty_cast<QUmlCallBehaviorAction *>(this)->onPort()->asQModelingObject();
 }
 
 // OWNED ATTRIBUTES [CallAction]
 
 bool QUmlCallBehaviorActionObject::isSynchronous() const
 {
-    return qmodelingobjectproperty_cast<QUmlCallBehaviorAction *>(this)->isSynchronous();
+    return qmodelingelementproperty_cast<QUmlCallBehaviorAction *>(this)->isSynchronous();
 }
 
 const QList<QObject *> QUmlCallBehaviorActionObject::results() const
 {
     QList<QObject *> list;
-    foreach (QUmlOutputPin *element, qmodelingobjectproperty_cast<QUmlCallBehaviorAction *>(this)->results())
-        list.append(element->asQObject());
+    foreach (QUmlOutputPin *element, qmodelingelementproperty_cast<QUmlCallBehaviorAction *>(this)->results())
+        list.append(element->asQModelingObject());
     return list;
 }
 
@@ -329,10 +332,10 @@ const QList<QObject *> QUmlCallBehaviorActionObject::results() const
 
 QObject *QUmlCallBehaviorActionObject::behavior() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlCallBehaviorAction *>(this)->behavior())
+    if (!qmodelingelementproperty_cast<QUmlCallBehaviorAction *>(this)->behavior())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlCallBehaviorAction *>(this)->behavior()->asQObject();
+        return qmodelingelementproperty_cast<QUmlCallBehaviorAction *>(this)->behavior()->asQModelingObject();
 }
 
 // OPERATIONS [Element]
@@ -340,14 +343,14 @@ QObject *QUmlCallBehaviorActionObject::behavior() const
 QSet<QObject *> QUmlCallBehaviorActionObject::allOwnedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlCallBehaviorAction *>(this)->allOwnedElements())
-        set.insert(element->asQObject());
+    foreach (QUmlElement *element, qmodelingelementproperty_cast<QUmlCallBehaviorAction *>(this)->allOwnedElements())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 bool QUmlCallBehaviorActionObject::mustBeOwned() const
 {
-    return qmodelingobjectproperty_cast<QUmlCallBehaviorAction *>(this)->mustBeOwned();
+    return qmodelingelementproperty_cast<QUmlCallBehaviorAction *>(this)->mustBeOwned();
 }
 
 // OPERATIONS [NamedElement]
@@ -355,322 +358,398 @@ bool QUmlCallBehaviorActionObject::mustBeOwned() const
 QList<QObject *> QUmlCallBehaviorActionObject::allNamespaces() const
 {
     QList<QObject *> set;
-    foreach (QUmlNamespace *element, qmodelingobjectproperty_cast<QUmlCallBehaviorAction *>(this)->allNamespaces())
-        set.append(element->asQObject());
+    foreach (QUmlNamespace *element, qmodelingelementproperty_cast<QUmlCallBehaviorAction *>(this)->allNamespaces())
+        set.append(element->asQModelingObject());
     return set;
 }
 
 QSet<QObject *> QUmlCallBehaviorActionObject::allOwningPackages() const
 {
     QSet<QObject *> set;
-    foreach (QUmlPackage *element, qmodelingobjectproperty_cast<QUmlCallBehaviorAction *>(this)->allOwningPackages())
-        set.insert(element->asQObject());
+    foreach (QUmlPackage *element, qmodelingelementproperty_cast<QUmlCallBehaviorAction *>(this)->allOwningPackages())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 bool QUmlCallBehaviorActionObject::isDistinguishableFrom(QObject *n, QObject *ns) const
 {
-    return qmodelingobjectproperty_cast<QUmlCallBehaviorAction *>(this)->isDistinguishableFrom(qmodelingobjectproperty_cast<QUmlNamedElement *>(n), qmodelingobjectproperty_cast<QUmlNamespace *>(ns));
+    return qmodelingelementproperty_cast<QUmlCallBehaviorAction *>(this)->isDistinguishableFrom(qmodelingelementproperty_cast<QUmlNamedElement *>(n), qmodelingelementproperty_cast<QUmlNamespace *>(ns));
 }
 
 QString QUmlCallBehaviorActionObject::separator() const
 {
-    return qmodelingobjectproperty_cast<QUmlCallBehaviorAction *>(this)->separator();
+    return qmodelingelementproperty_cast<QUmlCallBehaviorAction *>(this)->separator();
 }
 
 // OPERATIONS [RedefinableElement]
 
 bool QUmlCallBehaviorActionObject::isConsistentWith(QObject *redefinee) const
 {
-    return qmodelingobjectproperty_cast<QUmlCallBehaviorAction *>(this)->isConsistentWith(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefinee));
+    return qmodelingelementproperty_cast<QUmlCallBehaviorAction *>(this)->isConsistentWith(qmodelingelementproperty_cast<QUmlRedefinableElement *>(redefinee));
 }
 
 bool QUmlCallBehaviorActionObject::isRedefinitionContextValid(QObject *redefined) const
 {
-    return qmodelingobjectproperty_cast<QUmlCallBehaviorAction *>(this)->isRedefinitionContextValid(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefined));
+    return qmodelingelementproperty_cast<QUmlCallBehaviorAction *>(this)->isRedefinitionContextValid(qmodelingelementproperty_cast<QUmlRedefinableElement *>(redefined));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Element]
 
 void QUmlCallBehaviorActionObject::addOwnedComment(QObject *ownedComment)
 {
-    qmodelingobjectproperty_cast<QUmlCallBehaviorAction *>(this)->addOwnedComment(qmodelingobjectproperty_cast<QUmlComment *>(ownedComment));
+    qmodelingelementproperty_cast<QUmlCallBehaviorAction *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
 }
 
 void QUmlCallBehaviorActionObject::removeOwnedComment(QObject *ownedComment)
 {
-    qmodelingobjectproperty_cast<QUmlCallBehaviorAction *>(this)->removeOwnedComment(qmodelingobjectproperty_cast<QUmlComment *>(ownedComment));
+    qmodelingelementproperty_cast<QUmlCallBehaviorAction *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
 }
 
 void QUmlCallBehaviorActionObject::addOwnedElement(QObject *ownedElement)
 {
-    qmodelingobjectproperty_cast<QUmlCallBehaviorAction *>(this)->addOwnedElement(qmodelingobjectproperty_cast<QUmlElement *>(ownedElement));
+    qmodelingelementproperty_cast<QUmlCallBehaviorAction *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
 }
 
 void QUmlCallBehaviorActionObject::removeOwnedElement(QObject *ownedElement)
 {
-    qmodelingobjectproperty_cast<QUmlCallBehaviorAction *>(this)->removeOwnedElement(qmodelingobjectproperty_cast<QUmlElement *>(ownedElement));
+    qmodelingelementproperty_cast<QUmlCallBehaviorAction *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
 }
 
 void QUmlCallBehaviorActionObject::setOwner(QObject *owner)
 {
-    qmodelingobjectproperty_cast<QUmlCallBehaviorAction *>(this)->setOwner(qmodelingobjectproperty_cast<QUmlElement *>(owner));
+    qmodelingelementproperty_cast<QUmlCallBehaviorAction *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [NamedElement]
 
 void QUmlCallBehaviorActionObject::addClientDependency(QObject *clientDependency)
 {
-    qmodelingobjectproperty_cast<QUmlCallBehaviorAction *>(this)->addClientDependency(qmodelingobjectproperty_cast<QUmlDependency *>(clientDependency));
+    qmodelingelementproperty_cast<QUmlCallBehaviorAction *>(this)->addClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
 }
 
 void QUmlCallBehaviorActionObject::removeClientDependency(QObject *clientDependency)
 {
-    qmodelingobjectproperty_cast<QUmlCallBehaviorAction *>(this)->removeClientDependency(qmodelingobjectproperty_cast<QUmlDependency *>(clientDependency));
+    qmodelingelementproperty_cast<QUmlCallBehaviorAction *>(this)->removeClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
 }
 
 void QUmlCallBehaviorActionObject::setName(QString name)
 {
-    qmodelingobjectproperty_cast<QUmlCallBehaviorAction *>(this)->setName(name);
+    qmodelingelementproperty_cast<QUmlCallBehaviorAction *>(this)->setName(name);
 }
 
 void QUmlCallBehaviorActionObject::setNameExpression(QObject *nameExpression)
 {
-    qmodelingobjectproperty_cast<QUmlCallBehaviorAction *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
+    qmodelingelementproperty_cast<QUmlCallBehaviorAction *>(this)->setNameExpression(qmodelingelementproperty_cast<QUmlStringExpression *>(nameExpression));
 }
 
 void QUmlCallBehaviorActionObject::setNamespace(QObject *namespace_)
 {
-    qmodelingobjectproperty_cast<QUmlCallBehaviorAction *>(this)->setNamespace(qmodelingobjectproperty_cast<QUmlNamespace *>(namespace_));
+    qmodelingelementproperty_cast<QUmlCallBehaviorAction *>(this)->setNamespace(qmodelingelementproperty_cast<QUmlNamespace *>(namespace_));
 }
 
 void QUmlCallBehaviorActionObject::setQualifiedName(QString qualifiedName)
 {
-    qmodelingobjectproperty_cast<QUmlCallBehaviorAction *>(this)->setQualifiedName(qualifiedName);
+    qmodelingelementproperty_cast<QUmlCallBehaviorAction *>(this)->setQualifiedName(qualifiedName);
 }
 
 void QUmlCallBehaviorActionObject::setVisibility(QtUml::VisibilityKind visibility)
 {
-    qmodelingobjectproperty_cast<QUmlCallBehaviorAction *>(this)->setVisibility(visibility);
+    qmodelingelementproperty_cast<QUmlCallBehaviorAction *>(this)->setVisibility(visibility);
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [RedefinableElement]
 
 void QUmlCallBehaviorActionObject::setLeaf(bool isLeaf)
 {
-    qmodelingobjectproperty_cast<QUmlCallBehaviorAction *>(this)->setLeaf(isLeaf);
+    qmodelingelementproperty_cast<QUmlCallBehaviorAction *>(this)->setLeaf(isLeaf);
 }
 
 void QUmlCallBehaviorActionObject::unsetLeaf()
 {
-    qmodelingobjectproperty_cast<QUmlCallBehaviorAction *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("leaf"));
+    Q_D(QModelingObject);
+    d->modifiedResettableProperties.removeAll(QStringLiteral("leaf"));
 }
 
 void QUmlCallBehaviorActionObject::addRedefinedElement(QObject *redefinedElement)
 {
-    qmodelingobjectproperty_cast<QUmlCallBehaviorAction *>(this)->addRedefinedElement(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefinedElement));
+    qmodelingelementproperty_cast<QUmlCallBehaviorAction *>(this)->addRedefinedElement(qmodelingelementproperty_cast<QUmlRedefinableElement *>(redefinedElement));
 }
 
 void QUmlCallBehaviorActionObject::removeRedefinedElement(QObject *redefinedElement)
 {
-    qmodelingobjectproperty_cast<QUmlCallBehaviorAction *>(this)->removeRedefinedElement(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefinedElement));
+    qmodelingelementproperty_cast<QUmlCallBehaviorAction *>(this)->removeRedefinedElement(qmodelingelementproperty_cast<QUmlRedefinableElement *>(redefinedElement));
 }
 
 void QUmlCallBehaviorActionObject::addRedefinitionContext(QObject *redefinitionContext)
 {
-    qmodelingobjectproperty_cast<QUmlCallBehaviorAction *>(this)->addRedefinitionContext(qmodelingobjectproperty_cast<QUmlClassifier *>(redefinitionContext));
+    qmodelingelementproperty_cast<QUmlCallBehaviorAction *>(this)->addRedefinitionContext(qmodelingelementproperty_cast<QUmlClassifier *>(redefinitionContext));
 }
 
 void QUmlCallBehaviorActionObject::removeRedefinitionContext(QObject *redefinitionContext)
 {
-    qmodelingobjectproperty_cast<QUmlCallBehaviorAction *>(this)->removeRedefinitionContext(qmodelingobjectproperty_cast<QUmlClassifier *>(redefinitionContext));
+    qmodelingelementproperty_cast<QUmlCallBehaviorAction *>(this)->removeRedefinitionContext(qmodelingelementproperty_cast<QUmlClassifier *>(redefinitionContext));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ActivityNode]
 
 void QUmlCallBehaviorActionObject::setActivity(QObject *activity)
 {
-    qmodelingobjectproperty_cast<QUmlCallBehaviorAction *>(this)->setActivity(qmodelingobjectproperty_cast<QUmlActivity *>(activity));
+    qmodelingelementproperty_cast<QUmlCallBehaviorAction *>(this)->setActivity(qmodelingelementproperty_cast<QUmlActivity *>(activity));
 }
 
 void QUmlCallBehaviorActionObject::addInGroup(QObject *inGroup)
 {
-    qmodelingobjectproperty_cast<QUmlCallBehaviorAction *>(this)->addInGroup(qmodelingobjectproperty_cast<QUmlActivityGroup *>(inGroup));
+    qmodelingelementproperty_cast<QUmlCallBehaviorAction *>(this)->addInGroup(qmodelingelementproperty_cast<QUmlActivityGroup *>(inGroup));
 }
 
 void QUmlCallBehaviorActionObject::removeInGroup(QObject *inGroup)
 {
-    qmodelingobjectproperty_cast<QUmlCallBehaviorAction *>(this)->removeInGroup(qmodelingobjectproperty_cast<QUmlActivityGroup *>(inGroup));
+    qmodelingelementproperty_cast<QUmlCallBehaviorAction *>(this)->removeInGroup(qmodelingelementproperty_cast<QUmlActivityGroup *>(inGroup));
 }
 
 void QUmlCallBehaviorActionObject::addInInterruptibleRegion(QObject *inInterruptibleRegion)
 {
-    qmodelingobjectproperty_cast<QUmlCallBehaviorAction *>(this)->addInInterruptibleRegion(qmodelingobjectproperty_cast<QUmlInterruptibleActivityRegion *>(inInterruptibleRegion));
+    qmodelingelementproperty_cast<QUmlCallBehaviorAction *>(this)->addInInterruptibleRegion(qmodelingelementproperty_cast<QUmlInterruptibleActivityRegion *>(inInterruptibleRegion));
 }
 
 void QUmlCallBehaviorActionObject::removeInInterruptibleRegion(QObject *inInterruptibleRegion)
 {
-    qmodelingobjectproperty_cast<QUmlCallBehaviorAction *>(this)->removeInInterruptibleRegion(qmodelingobjectproperty_cast<QUmlInterruptibleActivityRegion *>(inInterruptibleRegion));
+    qmodelingelementproperty_cast<QUmlCallBehaviorAction *>(this)->removeInInterruptibleRegion(qmodelingelementproperty_cast<QUmlInterruptibleActivityRegion *>(inInterruptibleRegion));
 }
 
 void QUmlCallBehaviorActionObject::addInPartition(QObject *inPartition)
 {
-    qmodelingobjectproperty_cast<QUmlCallBehaviorAction *>(this)->addInPartition(qmodelingobjectproperty_cast<QUmlActivityPartition *>(inPartition));
+    qmodelingelementproperty_cast<QUmlCallBehaviorAction *>(this)->addInPartition(qmodelingelementproperty_cast<QUmlActivityPartition *>(inPartition));
 }
 
 void QUmlCallBehaviorActionObject::removeInPartition(QObject *inPartition)
 {
-    qmodelingobjectproperty_cast<QUmlCallBehaviorAction *>(this)->removeInPartition(qmodelingobjectproperty_cast<QUmlActivityPartition *>(inPartition));
+    qmodelingelementproperty_cast<QUmlCallBehaviorAction *>(this)->removeInPartition(qmodelingelementproperty_cast<QUmlActivityPartition *>(inPartition));
 }
 
 void QUmlCallBehaviorActionObject::setInStructuredNode(QObject *inStructuredNode)
 {
-    qmodelingobjectproperty_cast<QUmlCallBehaviorAction *>(this)->setInStructuredNode(qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(inStructuredNode));
+    qmodelingelementproperty_cast<QUmlCallBehaviorAction *>(this)->setInStructuredNode(qmodelingelementproperty_cast<QUmlStructuredActivityNode *>(inStructuredNode));
 }
 
 void QUmlCallBehaviorActionObject::addIncoming(QObject *incoming)
 {
-    qmodelingobjectproperty_cast<QUmlCallBehaviorAction *>(this)->addIncoming(qmodelingobjectproperty_cast<QUmlActivityEdge *>(incoming));
+    qmodelingelementproperty_cast<QUmlCallBehaviorAction *>(this)->addIncoming(qmodelingelementproperty_cast<QUmlActivityEdge *>(incoming));
 }
 
 void QUmlCallBehaviorActionObject::removeIncoming(QObject *incoming)
 {
-    qmodelingobjectproperty_cast<QUmlCallBehaviorAction *>(this)->removeIncoming(qmodelingobjectproperty_cast<QUmlActivityEdge *>(incoming));
+    qmodelingelementproperty_cast<QUmlCallBehaviorAction *>(this)->removeIncoming(qmodelingelementproperty_cast<QUmlActivityEdge *>(incoming));
 }
 
 void QUmlCallBehaviorActionObject::addOutgoing(QObject *outgoing)
 {
-    qmodelingobjectproperty_cast<QUmlCallBehaviorAction *>(this)->addOutgoing(qmodelingobjectproperty_cast<QUmlActivityEdge *>(outgoing));
+    qmodelingelementproperty_cast<QUmlCallBehaviorAction *>(this)->addOutgoing(qmodelingelementproperty_cast<QUmlActivityEdge *>(outgoing));
 }
 
 void QUmlCallBehaviorActionObject::removeOutgoing(QObject *outgoing)
 {
-    qmodelingobjectproperty_cast<QUmlCallBehaviorAction *>(this)->removeOutgoing(qmodelingobjectproperty_cast<QUmlActivityEdge *>(outgoing));
+    qmodelingelementproperty_cast<QUmlCallBehaviorAction *>(this)->removeOutgoing(qmodelingelementproperty_cast<QUmlActivityEdge *>(outgoing));
 }
 
 void QUmlCallBehaviorActionObject::addRedefinedNode(QObject *redefinedNode)
 {
-    qmodelingobjectproperty_cast<QUmlCallBehaviorAction *>(this)->addRedefinedNode(qmodelingobjectproperty_cast<QUmlActivityNode *>(redefinedNode));
+    qmodelingelementproperty_cast<QUmlCallBehaviorAction *>(this)->addRedefinedNode(qmodelingelementproperty_cast<QUmlActivityNode *>(redefinedNode));
 }
 
 void QUmlCallBehaviorActionObject::removeRedefinedNode(QObject *redefinedNode)
 {
-    qmodelingobjectproperty_cast<QUmlCallBehaviorAction *>(this)->removeRedefinedNode(qmodelingobjectproperty_cast<QUmlActivityNode *>(redefinedNode));
+    qmodelingelementproperty_cast<QUmlCallBehaviorAction *>(this)->removeRedefinedNode(qmodelingelementproperty_cast<QUmlActivityNode *>(redefinedNode));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ExecutableNode]
 
 void QUmlCallBehaviorActionObject::addHandler(QObject *handler)
 {
-    qmodelingobjectproperty_cast<QUmlCallBehaviorAction *>(this)->addHandler(qmodelingobjectproperty_cast<QUmlExceptionHandler *>(handler));
+    qmodelingelementproperty_cast<QUmlCallBehaviorAction *>(this)->addHandler(qmodelingelementproperty_cast<QUmlExceptionHandler *>(handler));
 }
 
 void QUmlCallBehaviorActionObject::removeHandler(QObject *handler)
 {
-    qmodelingobjectproperty_cast<QUmlCallBehaviorAction *>(this)->removeHandler(qmodelingobjectproperty_cast<QUmlExceptionHandler *>(handler));
+    qmodelingelementproperty_cast<QUmlCallBehaviorAction *>(this)->removeHandler(qmodelingelementproperty_cast<QUmlExceptionHandler *>(handler));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Action]
 
 void QUmlCallBehaviorActionObject::setContext(QObject *context)
 {
-    qmodelingobjectproperty_cast<QUmlCallBehaviorAction *>(this)->setContext(qmodelingobjectproperty_cast<QUmlClassifier *>(context));
+    qmodelingelementproperty_cast<QUmlCallBehaviorAction *>(this)->setContext(qmodelingelementproperty_cast<QUmlClassifier *>(context));
 }
 
 void QUmlCallBehaviorActionObject::addInput(QObject *input)
 {
-    qmodelingobjectproperty_cast<QUmlCallBehaviorAction *>(this)->addInput(qmodelingobjectproperty_cast<QUmlInputPin *>(input));
+    qmodelingelementproperty_cast<QUmlCallBehaviorAction *>(this)->addInput(qmodelingelementproperty_cast<QUmlInputPin *>(input));
 }
 
 void QUmlCallBehaviorActionObject::removeInput(QObject *input)
 {
-    qmodelingobjectproperty_cast<QUmlCallBehaviorAction *>(this)->removeInput(qmodelingobjectproperty_cast<QUmlInputPin *>(input));
+    qmodelingelementproperty_cast<QUmlCallBehaviorAction *>(this)->removeInput(qmodelingelementproperty_cast<QUmlInputPin *>(input));
 }
 
 void QUmlCallBehaviorActionObject::setLocallyReentrant(bool isLocallyReentrant)
 {
-    qmodelingobjectproperty_cast<QUmlCallBehaviorAction *>(this)->setLocallyReentrant(isLocallyReentrant);
+    qmodelingelementproperty_cast<QUmlCallBehaviorAction *>(this)->setLocallyReentrant(isLocallyReentrant);
 }
 
 void QUmlCallBehaviorActionObject::unsetLocallyReentrant()
 {
-    qmodelingobjectproperty_cast<QUmlCallBehaviorAction *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("locallyReentrant"));
+    Q_D(QModelingObject);
+    d->modifiedResettableProperties.removeAll(QStringLiteral("locallyReentrant"));
 }
 
 void QUmlCallBehaviorActionObject::addLocalPostcondition(QObject *localPostcondition)
 {
-    qmodelingobjectproperty_cast<QUmlCallBehaviorAction *>(this)->addLocalPostcondition(qmodelingobjectproperty_cast<QUmlConstraint *>(localPostcondition));
+    qmodelingelementproperty_cast<QUmlCallBehaviorAction *>(this)->addLocalPostcondition(qmodelingelementproperty_cast<QUmlConstraint *>(localPostcondition));
 }
 
 void QUmlCallBehaviorActionObject::removeLocalPostcondition(QObject *localPostcondition)
 {
-    qmodelingobjectproperty_cast<QUmlCallBehaviorAction *>(this)->removeLocalPostcondition(qmodelingobjectproperty_cast<QUmlConstraint *>(localPostcondition));
+    qmodelingelementproperty_cast<QUmlCallBehaviorAction *>(this)->removeLocalPostcondition(qmodelingelementproperty_cast<QUmlConstraint *>(localPostcondition));
 }
 
 void QUmlCallBehaviorActionObject::addLocalPrecondition(QObject *localPrecondition)
 {
-    qmodelingobjectproperty_cast<QUmlCallBehaviorAction *>(this)->addLocalPrecondition(qmodelingobjectproperty_cast<QUmlConstraint *>(localPrecondition));
+    qmodelingelementproperty_cast<QUmlCallBehaviorAction *>(this)->addLocalPrecondition(qmodelingelementproperty_cast<QUmlConstraint *>(localPrecondition));
 }
 
 void QUmlCallBehaviorActionObject::removeLocalPrecondition(QObject *localPrecondition)
 {
-    qmodelingobjectproperty_cast<QUmlCallBehaviorAction *>(this)->removeLocalPrecondition(qmodelingobjectproperty_cast<QUmlConstraint *>(localPrecondition));
+    qmodelingelementproperty_cast<QUmlCallBehaviorAction *>(this)->removeLocalPrecondition(qmodelingelementproperty_cast<QUmlConstraint *>(localPrecondition));
 }
 
 void QUmlCallBehaviorActionObject::addOutput(QObject *output)
 {
-    qmodelingobjectproperty_cast<QUmlCallBehaviorAction *>(this)->addOutput(qmodelingobjectproperty_cast<QUmlOutputPin *>(output));
+    qmodelingelementproperty_cast<QUmlCallBehaviorAction *>(this)->addOutput(qmodelingelementproperty_cast<QUmlOutputPin *>(output));
 }
 
 void QUmlCallBehaviorActionObject::removeOutput(QObject *output)
 {
-    qmodelingobjectproperty_cast<QUmlCallBehaviorAction *>(this)->removeOutput(qmodelingobjectproperty_cast<QUmlOutputPin *>(output));
+    qmodelingelementproperty_cast<QUmlCallBehaviorAction *>(this)->removeOutput(qmodelingelementproperty_cast<QUmlOutputPin *>(output));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [InvocationAction]
 
 void QUmlCallBehaviorActionObject::addArgument(QObject *argument)
 {
-    qmodelingobjectproperty_cast<QUmlCallBehaviorAction *>(this)->addArgument(qmodelingobjectproperty_cast<QUmlInputPin *>(argument));
+    qmodelingelementproperty_cast<QUmlCallBehaviorAction *>(this)->addArgument(qmodelingelementproperty_cast<QUmlInputPin *>(argument));
 }
 
 void QUmlCallBehaviorActionObject::removeArgument(QObject *argument)
 {
-    qmodelingobjectproperty_cast<QUmlCallBehaviorAction *>(this)->removeArgument(qmodelingobjectproperty_cast<QUmlInputPin *>(argument));
+    qmodelingelementproperty_cast<QUmlCallBehaviorAction *>(this)->removeArgument(qmodelingelementproperty_cast<QUmlInputPin *>(argument));
 }
 
 void QUmlCallBehaviorActionObject::setOnPort(QObject *onPort)
 {
-    qmodelingobjectproperty_cast<QUmlCallBehaviorAction *>(this)->setOnPort(qmodelingobjectproperty_cast<QUmlPort *>(onPort));
+    qmodelingelementproperty_cast<QUmlCallBehaviorAction *>(this)->setOnPort(qmodelingelementproperty_cast<QUmlPort *>(onPort));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [CallAction]
 
 void QUmlCallBehaviorActionObject::setSynchronous(bool isSynchronous)
 {
-    qmodelingobjectproperty_cast<QUmlCallBehaviorAction *>(this)->setSynchronous(isSynchronous);
+    qmodelingelementproperty_cast<QUmlCallBehaviorAction *>(this)->setSynchronous(isSynchronous);
 }
 
 void QUmlCallBehaviorActionObject::unsetSynchronous()
 {
-    qmodelingobjectproperty_cast<QUmlCallBehaviorAction *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("synchronous"));
+    Q_D(QModelingObject);
+    d->modifiedResettableProperties.removeAll(QStringLiteral("synchronous"));
 }
 
 void QUmlCallBehaviorActionObject::addResult(QObject *result)
 {
-    qmodelingobjectproperty_cast<QUmlCallBehaviorAction *>(this)->addResult(qmodelingobjectproperty_cast<QUmlOutputPin *>(result));
+    qmodelingelementproperty_cast<QUmlCallBehaviorAction *>(this)->addResult(qmodelingelementproperty_cast<QUmlOutputPin *>(result));
 }
 
 void QUmlCallBehaviorActionObject::removeResult(QObject *result)
 {
-    qmodelingobjectproperty_cast<QUmlCallBehaviorAction *>(this)->removeResult(qmodelingobjectproperty_cast<QUmlOutputPin *>(result));
+    qmodelingelementproperty_cast<QUmlCallBehaviorAction *>(this)->removeResult(qmodelingelementproperty_cast<QUmlOutputPin *>(result));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [CallBehaviorAction]
 
 void QUmlCallBehaviorActionObject::setBehavior(QObject *behavior)
 {
-    qmodelingobjectproperty_cast<QUmlCallBehaviorAction *>(this)->setBehavior(qmodelingobjectproperty_cast<QUmlBehavior *>(behavior));
+    qmodelingelementproperty_cast<QUmlCallBehaviorAction *>(this)->setBehavior(qmodelingelementproperty_cast<QUmlBehavior *>(behavior));
+}
+
+
+void QUmlCallBehaviorActionObject::setGroupProperties()
+{
+    Q_D(QModelingObject);
+    const QMetaObject *metaObject = this->metaObject();
+
+    d->propertyGroups << QStringLiteral("QObject");
+    d->groupProperties.insert(QStringLiteral("QObject"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("objectName"))));
+
+    d->propertyGroups << QStringLiteral("QUmlElement");
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
+
+    d->propertyGroups << QStringLiteral("QUmlNamedElement");
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
+
+    d->propertyGroups << QStringLiteral("QUmlRedefinableElement");
+    d->groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isLeaf"))));
+    d->groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinedElements"))));
+    d->groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinitionContexts"))));
+
+    d->propertyGroups << QStringLiteral("QUmlActivityNode");
+    d->groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("activity"))));
+    d->groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inGroups"))));
+    d->groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inInterruptibleRegions"))));
+    d->groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inPartitions"))));
+    d->groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inStructuredNode"))));
+    d->groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("incomings"))));
+    d->groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("outgoings"))));
+    d->groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinedNodes"))));
+
+    d->propertyGroups << QStringLiteral("QUmlExecutableNode");
+    d->groupProperties.insert(QStringLiteral("QUmlExecutableNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("handlers"))));
+
+    d->propertyGroups << QStringLiteral("QUmlAction");
+    d->groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("context"))));
+    d->groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inputs"))));
+    d->groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isLocallyReentrant"))));
+    d->groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("localPostconditions"))));
+    d->groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("localPreconditions"))));
+    d->groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("outputs"))));
+
+    d->propertyGroups << QStringLiteral("QUmlInvocationAction");
+    d->groupProperties.insert(QStringLiteral("QUmlInvocationAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("arguments"))));
+    d->groupProperties.insert(QStringLiteral("QUmlInvocationAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("onPort"))));
+
+    d->propertyGroups << QStringLiteral("QUmlCallAction");
+    d->groupProperties.insert(QStringLiteral("QUmlCallAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isSynchronous"))));
+    d->groupProperties.insert(QStringLiteral("QUmlCallAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("results"))));
+
+    d->propertyGroups << QStringLiteral("QUmlCallBehaviorAction");
+    d->groupProperties.insert(QStringLiteral("QUmlCallBehaviorAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("behavior"))));
+}
+
+void QUmlCallBehaviorActionObject::setPropertyData()
+{
+    Q_DECLARE_METAPROPERTY_INFO(QUmlCallBehaviorAction, behavior, AggregationRole, QStringLiteral("none"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlCallBehaviorAction, behavior, PropertyClassRole, QStringLiteral("QUmlCallBehaviorAction"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlCallBehaviorAction, behavior, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlCallBehaviorAction, behavior, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlCallBehaviorAction, behavior, DocumentationRole, QStringLiteral("The invoked behavior. It must be capable of accepting and returning control."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlCallBehaviorAction, behavior, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlCallBehaviorAction, behavior, SubsettedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlCallBehaviorAction, behavior, OppositeEndRole, QStringLiteral(""));
+
 }
 
 QT_END_NAMESPACE

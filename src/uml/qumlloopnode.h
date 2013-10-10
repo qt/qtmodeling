@@ -45,7 +45,6 @@
 
 #include <QtUml/QUmlStructuredActivityNode>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -59,10 +58,10 @@ class QUmlOutputPin;
 class Q_UML_EXPORT QUmlLoopNode : public QUmlStructuredActivityNode
 {
 public:
-    explicit QUmlLoopNode(bool createQObject = true);
+    explicit QUmlLoopNode(bool createQModelingObject = true);
     virtual ~QUmlLoopNode();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
     const QList<QUmlOutputPin *> bodyOutputs() const;
@@ -101,9 +100,6 @@ protected:
     QList<QUmlOutputPin *> _results;
     QSet<QUmlExecutableNode *> _setupParts;
     QSet<QUmlExecutableNode *> _tests;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

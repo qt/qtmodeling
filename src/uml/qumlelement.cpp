@@ -52,15 +52,13 @@
 QUmlElement::QUmlElement() :
     _owner(0)
 {
-    setGroupProperties();
-    setPropertyData();
 }
 
 QUmlElement::~QUmlElement()
 {
 }
 
-QModelingObject *QUmlElement::clone() const
+QModelingElement *QUmlElement::clone() const
 {
     QUmlElement *c = new QUmlElement;
     foreach (QUmlComment *element, ownedComments())
@@ -86,9 +84,9 @@ void QUmlElement::addOwnedComment(QUmlComment *ownedComment)
 
     if (!_ownedComments.contains(ownedComment)) {
         _ownedComments.insert(ownedComment);
-        if (ownedComment && ownedComment->asQObject() && this->asQObject())
-            QObject::connect(ownedComment->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeOwnedComment(QObject *)));
-        ownedComment->asQObject()->setParent(this->asQObject());
+        if (ownedComment && ownedComment->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(ownedComment->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeOwnedComment(QObject *)));
+        ownedComment->asQModelingObject()->setParent(this->asQModelingObject());
 
         // Adjust subsetted properties
         addOwnedElement(ownedComment);
@@ -101,8 +99,8 @@ void QUmlElement::removeOwnedComment(QUmlComment *ownedComment)
 
     if (_ownedComments.contains(ownedComment)) {
         _ownedComments.remove(ownedComment);
-        if (ownedComment->asQObject())
-            ownedComment->asQObject()->setParent(0);
+        if (ownedComment->asQModelingObject())
+            ownedComment->asQModelingObject()->setParent(0);
 
         // Adjust subsetted properties
         removeOwnedElement(ownedComment);
@@ -125,9 +123,9 @@ void QUmlElement::addOwnedElement(QUmlElement *ownedElement)
 
     if (!_ownedElements.contains(ownedElement)) {
         _ownedElements.insert(ownedElement);
-        if (ownedElement && ownedElement->asQObject() && this->asQObject())
-            QObject::connect(ownedElement->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeOwnedElement(QObject *)));
-        ownedElement->asQObject()->setParent(this->asQObject());
+        if (ownedElement && ownedElement->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(ownedElement->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeOwnedElement(QObject *)));
+        ownedElement->asQModelingObject()->setParent(this->asQModelingObject());
     }
 }
 
@@ -137,8 +135,8 @@ void QUmlElement::removeOwnedElement(QUmlElement *ownedElement)
 
     if (_ownedElements.contains(ownedElement)) {
         _ownedElements.remove(ownedElement);
-        if (ownedElement->asQObject())
-            ownedElement->asQObject()->setParent(0);
+        if (ownedElement->asQModelingObject())
+            ownedElement->asQModelingObject()->setParent(0);
     }
 }
 
@@ -158,8 +156,8 @@ void QUmlElement::setOwner(QUmlElement *owner)
 
     if (_owner != owner) {
         _owner = owner;
-        if (owner && owner->asQObject() && this->asQObject())
-            QObject::connect(owner->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setOwner()));
+        if (owner && owner->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(owner->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setOwner()));
     }
 }
 
@@ -181,46 +179,6 @@ QSet<QUmlElement *> QUmlElement::allOwnedElements() const
 bool QUmlElement::mustBeOwned() const
 {
     return true;
-}
-
-void QUmlElement::setGroupProperties()
-{
-    const QMetaObject *metaObject = _qObject->metaObject();
-
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
-}
-
-void QUmlElement::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlElement")][QStringLiteral("ownedComments")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlElement")][QStringLiteral("ownedComments")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlElement");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlElement")][QStringLiteral("ownedComments")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlElement")][QStringLiteral("ownedComments")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlElement")][QStringLiteral("ownedComments")][QtModeling::DocumentationRole] = QStringLiteral("The Comments owned by this element.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlElement")][QStringLiteral("ownedComments")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlElement")][QStringLiteral("ownedComments")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlElement")][QStringLiteral("ownedComments")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlElement")][QStringLiteral("ownedElements")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlElement")][QStringLiteral("ownedElements")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlElement");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlElement")][QStringLiteral("ownedElements")][QtModeling::IsDerivedRole] = true;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlElement")][QStringLiteral("ownedElements")][QtModeling::IsDerivedUnionRole] = true;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlElement")][QStringLiteral("ownedElements")][QtModeling::DocumentationRole] = QStringLiteral("The Elements owned by this element.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlElement")][QStringLiteral("ownedElements")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlElement")][QStringLiteral("ownedElements")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlElement")][QStringLiteral("ownedElements")][QtModeling::OppositeEndRole] = QStringLiteral("Element-owner");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlElement")][QStringLiteral("owner")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlElement")][QStringLiteral("owner")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlElement");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlElement")][QStringLiteral("owner")][QtModeling::IsDerivedRole] = true;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlElement")][QStringLiteral("owner")][QtModeling::IsDerivedUnionRole] = true;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlElement")][QStringLiteral("owner")][QtModeling::DocumentationRole] = QStringLiteral("The Element that owns this element.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlElement")][QStringLiteral("owner")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlElement")][QStringLiteral("owner")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlElement")][QStringLiteral("owner")][QtModeling::OppositeEndRole] = QStringLiteral("Element-ownedElement");
-
 }
 
 void QUmlElement::allOwnedElements(QSet<QUmlElement *> &allOwnedElements_) const

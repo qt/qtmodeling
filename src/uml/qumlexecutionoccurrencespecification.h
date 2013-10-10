@@ -45,7 +45,6 @@
 
 #include <QtUml/QUmlOccurrenceSpecification>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -57,10 +56,10 @@ class QUmlExecutionSpecification;
 class Q_UML_EXPORT QUmlExecutionOccurrenceSpecification : public QUmlOccurrenceSpecification
 {
 public:
-    explicit QUmlExecutionOccurrenceSpecification(bool createQObject = true);
+    explicit QUmlExecutionOccurrenceSpecification(bool createQModelingObject = true);
     virtual ~QUmlExecutionOccurrenceSpecification();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
     QUmlExecutionSpecification *execution() const;
@@ -68,9 +67,6 @@ public:
 
 protected:
     QUmlExecutionSpecification *_execution;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

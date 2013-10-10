@@ -45,7 +45,6 @@
 
 #include <QtUml/QUmlAction>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -58,10 +57,10 @@ class QUmlInputPin;
 class Q_UML_EXPORT QUmlClearAssociationAction : public QUmlAction
 {
 public:
-    explicit QUmlClearAssociationAction(bool createQObject = true);
+    explicit QUmlClearAssociationAction(bool createQModelingObject = true);
     virtual ~QUmlClearAssociationAction();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
     QUmlAssociation *association() const;
@@ -72,9 +71,6 @@ public:
 protected:
     QUmlAssociation *_association;
     QUmlInputPin *_object;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

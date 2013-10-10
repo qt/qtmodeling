@@ -44,7 +44,7 @@
 
 #include <Qt${namespace}/Qt${namespace}Global>
 
-#include <QtCore/QObject>
+#include <QtModeling/QModelingObject>
 [% useNamespace = [] -%]
 [%- forwards = [] -%]
 [%- visitedClasses = [] -%]
@@ -60,9 +60,12 @@ QT_BEGIN_NAMESPACE
 QT_MODULE(Qt${namespace})
 
 class Q${namespace}${className};
-class Q_${namespace.upper}_EXPORT Q${namespace}${className}Object : public QObject
+class QModelingObjectPrivate;
+class Q_${namespace.upper}_EXPORT Q${namespace}${className}Object : public QModelingObject
 {
     Q_OBJECT
+    Q_DISABLE_COPY(Q${namespace}${className}Object)
+    Q_DECLARE_PRIVATE(QModelingObject)
     [%- visitedClasses = [] -%]
     [%- redefinedProperties = [] -%]
     [%- POPULATE_REDEFINED_PROPERTIES(class, visitedClasses, redefinedProperties) -%]
@@ -70,7 +73,7 @@ class Q_${namespace.upper}_EXPORT Q${namespace}${className}Object : public QObje
     [%- GENERATE_QPROPERTIES(class, visitedClasses, redefinedProperties) %]
 
 public:
-    [% IF class.findvalue("@isAbstract") == "true" %]Q_DECL_HIDDEN [% ELSE %]Q_INVOKABLE [% END %]explicit Q${namespace}${className}Object(Q${namespace}${className} *qModelingObject);
+    [% IF class.findvalue("@isAbstract") == "true" %]Q_DECL_HIDDEN [% ELSE %]Q_INVOKABLE [% END %]explicit Q${namespace}${className}Object(Q${namespace}${className} *modelingElement);
     [%- IF class.findvalue("@isAbstract") != "true" %]
     virtual ~Q${namespace}${className}Object();
     [%- END %]
@@ -84,6 +87,10 @@ public:
 [%- visitedClasses = [] %]
 
 public Q_SLOTS:[%- GENERATE_SLOTS(class, visitedClasses, redefinedProperties) %]
+
+protected:
+    virtual void setGroupProperties();
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

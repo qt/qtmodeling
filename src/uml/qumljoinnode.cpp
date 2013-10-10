@@ -67,26 +67,24 @@
 
     \brief A join node is a control node that synchronizes multiple flows.Join nodes have a Boolean value specification using the names of the incoming edges to specify the conditions under which the join will emit a token.
  */
-QUmlJoinNode::QUmlJoinNode(bool createQObject) :
+QUmlJoinNode::QUmlJoinNode(bool createQModelingObject) :
     _isCombineDuplicate(true),
     _joinSpec(0)
 {
-    if (createQObject)
-        _qObject = new QUmlJoinNodeObject(this);
-    setGroupProperties();
-    setPropertyData();
+    if (createQModelingObject)
+        _qModelingObject = qobject_cast<QModelingObject *>(new QUmlJoinNodeObject(this));
 }
 
 QUmlJoinNode::~QUmlJoinNode()
 {
-    if (!deletingFromQObject) {
-        if (_qObject)
-            _qObject->setProperty("deletingFromModelingObject", true);
-        delete _qObject;
+    if (!deletingFromQModelingObject) {
+        if (_qModelingObject)
+            _qModelingObject->setProperty("deletingFromModelingObject", true);
+        delete _qModelingObject;
     }
 }
 
-QModelingObject *QUmlJoinNode::clone() const
+QModelingElement *QUmlJoinNode::clone() const
 {
     QUmlJoinNode *c = new QUmlJoinNode;
     foreach (QUmlComment *element, ownedComments())
@@ -136,7 +134,7 @@ void QUmlJoinNode::setCombineDuplicate(bool isCombineDuplicate)
 
     if (_isCombineDuplicate != isCombineDuplicate) {
         _isCombineDuplicate = isCombineDuplicate;
-        _modifiedResettableProperties << QStringLiteral("isCombineDuplicate");
+        _qModelingObject->modifiedResettableProperties() << QStringLiteral("isCombineDuplicate");
     }
 }
 
@@ -159,64 +157,14 @@ void QUmlJoinNode::setJoinSpec(QUmlValueSpecification *joinSpec)
         removeOwnedElement(_joinSpec);
 
         _joinSpec = joinSpec;
-        if (joinSpec && joinSpec->asQObject() && this->asQObject())
-            QObject::connect(joinSpec->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setJoinSpec()));
-        joinSpec->asQObject()->setParent(this->asQObject());
+        if (joinSpec && joinSpec->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(joinSpec->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setJoinSpec()));
+        joinSpec->asQModelingObject()->setParent(this->asQModelingObject());
 
         // Adjust subsetted properties
         if (joinSpec) {
             addOwnedElement(joinSpec);
         }
     }
-}
-
-void QUmlJoinNode::setGroupProperties()
-{
-    const QMetaObject *metaObject = _qObject->metaObject();
-
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
-    _groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isLeaf"))));
-    _groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinitionContexts"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("activity"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inGroups"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inInterruptibleRegions"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inPartitions"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inStructuredNode"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("incomings"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("outgoings"))));
-    _groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinedNodes"))));
-    _groupProperties.insert(QStringLiteral("QUmlJoinNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isCombineDuplicate"))));
-    _groupProperties.insert(QStringLiteral("QUmlJoinNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("joinSpec"))));
-}
-
-void QUmlJoinNode::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlJoinNode")][QStringLiteral("isCombineDuplicate")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlJoinNode")][QStringLiteral("isCombineDuplicate")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlJoinNode");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlJoinNode")][QStringLiteral("isCombineDuplicate")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlJoinNode")][QStringLiteral("isCombineDuplicate")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlJoinNode")][QStringLiteral("isCombineDuplicate")][QtModeling::DocumentationRole] = QStringLiteral("Tells whether tokens having objects with the same identity are combined into one by the join.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlJoinNode")][QStringLiteral("isCombineDuplicate")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlJoinNode")][QStringLiteral("isCombineDuplicate")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlJoinNode")][QStringLiteral("isCombineDuplicate")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlJoinNode")][QStringLiteral("joinSpec")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlJoinNode")][QStringLiteral("joinSpec")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlJoinNode");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlJoinNode")][QStringLiteral("joinSpec")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlJoinNode")][QStringLiteral("joinSpec")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlJoinNode")][QStringLiteral("joinSpec")][QtModeling::DocumentationRole] = QStringLiteral("A specification giving the conditions under which the join with emit a token. Default is 'and'.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlJoinNode")][QStringLiteral("joinSpec")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlJoinNode")][QStringLiteral("joinSpec")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlJoinNode")][QStringLiteral("joinSpec")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
 }
 

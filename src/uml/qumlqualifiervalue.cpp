@@ -54,26 +54,24 @@
 
     \brief A qualifier value is not an action. It is an element that identifies links. It gives a single qualifier within a link end data specification.
  */
-QUmlQualifierValue::QUmlQualifierValue(bool createQObject) :
+QUmlQualifierValue::QUmlQualifierValue(bool createQModelingObject) :
     _qualifier(0),
     _value(0)
 {
-    if (createQObject)
-        _qObject = new QUmlQualifierValueObject(this);
-    setGroupProperties();
-    setPropertyData();
+    if (createQModelingObject)
+        _qModelingObject = qobject_cast<QModelingObject *>(new QUmlQualifierValueObject(this));
 }
 
 QUmlQualifierValue::~QUmlQualifierValue()
 {
-    if (!deletingFromQObject) {
-        if (_qObject)
-            _qObject->setProperty("deletingFromModelingObject", true);
-        delete _qObject;
+    if (!deletingFromQModelingObject) {
+        if (_qModelingObject)
+            _qModelingObject->setProperty("deletingFromModelingObject", true);
+        delete _qModelingObject;
     }
 }
 
-QModelingObject *QUmlQualifierValue::clone() const
+QModelingElement *QUmlQualifierValue::clone() const
 {
     QUmlQualifierValue *c = new QUmlQualifierValue;
     foreach (QUmlComment *element, ownedComments())
@@ -103,8 +101,8 @@ void QUmlQualifierValue::setQualifier(QUmlProperty *qualifier)
 
     if (_qualifier != qualifier) {
         _qualifier = qualifier;
-        if (qualifier && qualifier->asQObject() && this->asQObject())
-            QObject::connect(qualifier->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setQualifier()));
+        if (qualifier && qualifier->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(qualifier->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setQualifier()));
     }
 }
 
@@ -124,41 +122,8 @@ void QUmlQualifierValue::setValue(QUmlInputPin *value)
 
     if (_value != value) {
         _value = value;
-        if (value && value->asQObject() && this->asQObject())
-            QObject::connect(value->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setValue()));
+        if (value && value->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(value->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setValue()));
     }
-}
-
-void QUmlQualifierValue::setGroupProperties()
-{
-    const QMetaObject *metaObject = _qObject->metaObject();
-
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
-    _groupProperties.insert(QStringLiteral("QUmlQualifierValue"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifier"))));
-    _groupProperties.insert(QStringLiteral("QUmlQualifierValue"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("value"))));
-}
-
-void QUmlQualifierValue::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlQualifierValue")][QStringLiteral("qualifier")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlQualifierValue")][QStringLiteral("qualifier")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlQualifierValue");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlQualifierValue")][QStringLiteral("qualifier")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlQualifierValue")][QStringLiteral("qualifier")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlQualifierValue")][QStringLiteral("qualifier")][QtModeling::DocumentationRole] = QStringLiteral("Attribute representing the qualifier for which the value is to be specified.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlQualifierValue")][QStringLiteral("qualifier")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlQualifierValue")][QStringLiteral("qualifier")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlQualifierValue")][QStringLiteral("qualifier")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlQualifierValue")][QStringLiteral("value")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlQualifierValue")][QStringLiteral("value")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlQualifierValue");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlQualifierValue")][QStringLiteral("value")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlQualifierValue")][QStringLiteral("value")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlQualifierValue")][QStringLiteral("value")][QtModeling::DocumentationRole] = QStringLiteral("Input pin from which the specified value for the qualifier is taken.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlQualifierValue")][QStringLiteral("value")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlQualifierValue")][QStringLiteral("value")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlQualifierValue")][QStringLiteral("value")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
 }
 

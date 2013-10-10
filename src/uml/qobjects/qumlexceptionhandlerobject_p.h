@@ -43,7 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtCore/QObject>
+#include <QtModeling/QModelingObject>
 
 QT_BEGIN_HEADER
 
@@ -52,9 +52,12 @@ QT_BEGIN_NAMESPACE
 QT_MODULE(QtUml)
 
 class QUmlExceptionHandler;
-class Q_UML_EXPORT QUmlExceptionHandlerObject : public QObject
+class QModelingObjectPrivate;
+class Q_UML_EXPORT QUmlExceptionHandlerObject : public QModelingObject
 {
     Q_OBJECT
+    Q_DISABLE_COPY(QUmlExceptionHandlerObject)
+    Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [Element]
     Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
@@ -68,7 +71,7 @@ class Q_UML_EXPORT QUmlExceptionHandlerObject : public QObject
     Q_PROPERTY(QObject * protectedNode READ protectedNode WRITE setProtectedNode)
 
 public:
-    Q_INVOKABLE explicit QUmlExceptionHandlerObject(QUmlExceptionHandler *qModelingObject);
+    Q_INVOKABLE explicit QUmlExceptionHandlerObject(QUmlExceptionHandler *qModelingElement);
     virtual ~QUmlExceptionHandlerObject();
 
     // Owned attributes [Element]
@@ -101,6 +104,10 @@ public Q_SLOTS:
     void removeExceptionType(QObject *exceptionType);
     void setHandlerBody(QObject *handlerBody = 0);
     void setProtectedNode(QObject *protectedNode = 0);
+
+protected:
+    virtual void setGroupProperties();
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

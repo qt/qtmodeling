@@ -45,7 +45,6 @@
 
 #include <QtUml/QUmlTransition>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -58,10 +57,10 @@ class QUmlOperation;
 class Q_UML_EXPORT QUmlProtocolTransition : public QUmlTransition
 {
 public:
-    explicit QUmlProtocolTransition(bool createQObject = true);
+    explicit QUmlProtocolTransition(bool createQModelingObject = true);
     virtual ~QUmlProtocolTransition();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
     QUmlConstraint *postCondition() const;
@@ -75,9 +74,6 @@ public:
 protected:
     QUmlConstraint *_postCondition;
     QUmlConstraint *_preCondition;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

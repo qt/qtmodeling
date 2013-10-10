@@ -44,19 +44,19 @@
 int main ()
 {
     QUmlComment *c1 = new QUmlComment;
-    c1->asQObject()->setObjectName("c1");
+    c1->asQModelingObject()->setObjectName("c1");
     QUmlComment *c2 = new QUmlComment;
-    c2->asQObject()->setObjectName("c2");
+    c2->asQModelingObject()->setObjectName("c2");
     QUmlComment *c3 = new QUmlComment;
-    c3->asQObject()->setObjectName("c3");
+    c3->asQModelingObject()->setObjectName("c3");
     c3->setBody("c3 body");
 
     c1->setBody("c1 body");
     c2->setBody("c2 body");
     c1->addOwnedComment(c2);
     c1->addOwnedComment(c3);
-    qDebug() << "c2's parent:" << c2->asQObject()->parent()->objectName();
-    qDebug() << "c3's parent:" << c3->asQObject()->parent()->objectName();
+    qDebug() << "c2's parent:" << c2->asQModelingObject()->parent()->objectName();
+    qDebug() << "c3's parent:" << c3->asQModelingObject()->parent()->objectName();
 
     QUmlComment *c4 = dynamic_cast<QUmlComment *>(c1->clone());
     qDebug() << "c1 body:" << c4->body();
@@ -67,16 +67,16 @@ int main ()
         qDebug() << "c4 owned comment body:" << comment->body();
 
     //c1->removeOwnedComment(c3);
-    qDebug() << "c3's parent:" << c3->asQObject()->parent();
+    qDebug() << "c3's parent:" << c3->asQModelingObject()->parent();
 
     qDebug() << "Comment size:" << c1->ownedComments().size();
     delete c2;
     //c1->removeOwnedComment(c2);
     qDebug() << "Comment size:" << c1->ownedComments().size();
-    foreach(QObject *c, c1->asQObject()->property("ownedComment").value< QSet<QObject *> >())
+    foreach (QObject *c, c1->asQModelingObject()->property("ownedComment").value< QSet<QObject *> >())
         qDebug() << c->objectName();
 
-    foreach(QObject *c, c1->asQObject()->property("ownedElement").value< QSet<QObject *> >())
+    foreach (QObject *c, c1->asQModelingObject()->property("ownedElement").value< QSet<QObject *> >())
         qDebug() << c->objectName();
 
     delete c1;

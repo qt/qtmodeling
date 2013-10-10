@@ -45,7 +45,6 @@
 
 #include <QtUml/QUmlInteractionFragment>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -59,7 +58,7 @@ class Q_UML_EXPORT QUmlExecutionSpecification : public QUmlInteractionFragment
 public:
     virtual ~QUmlExecutionSpecification();
 
-    Q_DECL_HIDDEN QModelingObject *clone() const;
+    Q_DECL_HIDDEN virtual QModelingElement *clone() const;
 
     // Owned attributes
     QUmlOccurrenceSpecification *finish() const;
@@ -72,9 +71,6 @@ protected:
 
     QUmlOccurrenceSpecification *_finish;
     QUmlOccurrenceSpecification *_start;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

@@ -43,7 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtCore/QObject>
+#include <QtModeling/QModelingObject>
 
 #include <QtUml/QtUmlNamespace>
 
@@ -54,9 +54,12 @@ QT_BEGIN_NAMESPACE
 QT_MODULE(QtUml)
 
 class QUmlStateInvariant;
-class Q_UML_EXPORT QUmlStateInvariantObject : public QObject
+class QModelingObjectPrivate;
+class Q_UML_EXPORT QUmlStateInvariantObject : public QModelingObject
 {
     Q_OBJECT
+    Q_DISABLE_COPY(QUmlStateInvariantObject)
+    Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [Element]
     Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
@@ -81,7 +84,7 @@ class Q_UML_EXPORT QUmlStateInvariantObject : public QObject
     Q_PROPERTY(QObject * invariant READ invariant WRITE setInvariant)
 
 public:
-    Q_INVOKABLE explicit QUmlStateInvariantObject(QUmlStateInvariant *qModelingObject);
+    Q_INVOKABLE explicit QUmlStateInvariantObject(QUmlStateInvariant *qModelingElement);
     virtual ~QUmlStateInvariantObject();
 
     // Owned attributes [Element]
@@ -143,6 +146,10 @@ public Q_SLOTS:
     // Slots for owned attributes [StateInvariant]
     void setCovered(QObject *covered = 0);
     void setInvariant(QObject *invariant = 0);
+
+protected:
+    virtual void setGroupProperties();
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

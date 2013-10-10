@@ -60,26 +60,24 @@
 
     \brief An abstraction is a relationship that relates two elements or sets of elements that represent the same concept at different levels of abstraction or from different viewpoints.
  */
-QUmlAbstraction::QUmlAbstraction(bool createQObject) :
+QUmlAbstraction::QUmlAbstraction(bool createQModelingObject) :
     QUmlDependency(false),
     _mapping(0)
 {
-    if (createQObject)
-        _qObject = new QUmlAbstractionObject(this);
-    setGroupProperties();
-    setPropertyData();
+    if (createQModelingObject)
+        _qModelingObject = qobject_cast<QModelingObject *>(new QUmlAbstractionObject(this));
 }
 
 QUmlAbstraction::~QUmlAbstraction()
 {
-    if (!deletingFromQObject) {
-        if (_qObject)
-            _qObject->setProperty("deletingFromModelingObject", true);
-        delete _qObject;
+    if (!deletingFromQModelingObject) {
+        if (_qModelingObject)
+            _qModelingObject->setProperty("deletingFromModelingObject", true);
+        delete _qModelingObject;
     }
 }
 
-QModelingObject *QUmlAbstraction::clone() const
+QModelingElement *QUmlAbstraction::clone() const
 {
     QUmlAbstraction *c = new QUmlAbstraction;
     foreach (QUmlComment *element, ownedComments())
@@ -124,68 +122,14 @@ void QUmlAbstraction::setMapping(QUmlOpaqueExpression *mapping)
         removeOwnedElement(_mapping);
 
         _mapping = mapping;
-        if (mapping && mapping->asQObject() && this->asQObject())
-            QObject::connect(mapping->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setMapping()));
-        mapping->asQObject()->setParent(this->asQObject());
+        if (mapping && mapping->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(mapping->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setMapping()));
+        mapping->asQModelingObject()->setParent(this->asQModelingObject());
 
         // Adjust subsetted properties
         if (mapping) {
             addOwnedElement(mapping);
         }
     }
-}
-
-void QUmlAbstraction::setGroupProperties()
-{
-    const QMetaObject *metaObject = _qObject->metaObject();
-
-    _propertyGroups << QStringLiteral("QObject");
-    _groupProperties.insert(QStringLiteral("QObject"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("objectName"))));
-
-    _propertyGroups << QStringLiteral("QUmlElement");
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
-
-    _propertyGroups << QStringLiteral("QUmlParameterableElement");
-    _groupProperties.insert(QStringLiteral("QUmlParameterableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owningTemplateParameter"))));
-    _groupProperties.insert(QStringLiteral("QUmlParameterableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("templateParameter"))));
-
-    _propertyGroups << QStringLiteral("QUmlNamedElement");
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
-
-    _propertyGroups << QStringLiteral("QUmlPackageableElement");
-    _groupProperties.insert(QStringLiteral("QUmlPackageableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
-
-    _propertyGroups << QStringLiteral("QUmlRelationship");
-    _groupProperties.insert(QStringLiteral("QUmlRelationship"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("relatedElements"))));
-
-    _propertyGroups << QStringLiteral("QUmlDirectedRelationship");
-    _groupProperties.insert(QStringLiteral("QUmlDirectedRelationship"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("sources"))));
-    _groupProperties.insert(QStringLiteral("QUmlDirectedRelationship"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("targets"))));
-
-    _propertyGroups << QStringLiteral("QUmlDependency");
-    _groupProperties.insert(QStringLiteral("QUmlDependency"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clients"))));
-    _groupProperties.insert(QStringLiteral("QUmlDependency"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("suppliers"))));
-
-    _propertyGroups << QStringLiteral("QUmlAbstraction");
-    _groupProperties.insert(QStringLiteral("QUmlAbstraction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("mapping"))));
-}
-
-void QUmlAbstraction::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAbstraction")][QStringLiteral("mapping")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAbstraction")][QStringLiteral("mapping")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlAbstraction");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAbstraction")][QStringLiteral("mapping")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAbstraction")][QStringLiteral("mapping")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAbstraction")][QStringLiteral("mapping")][QtModeling::DocumentationRole] = QStringLiteral("An composition of an Expression that states the abstraction relationship between the supplier and the client. In some cases, such as Derivation, it is usually formal and unidirectional; in other cases, such as Trace, it is usually informal and bidirectional. The mapping expression is optional and may be omitted if the precise relationship between the elements is not specified.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAbstraction")][QStringLiteral("mapping")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAbstraction")][QStringLiteral("mapping")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAbstraction")][QStringLiteral("mapping")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
 }
 

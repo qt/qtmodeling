@@ -43,7 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtCore/QObject>
+#include <QtModeling/QModelingObject>
 
 #include <QtUml/QtUmlNamespace>
 
@@ -54,9 +54,12 @@ QT_BEGIN_NAMESPACE
 QT_MODULE(QtUml)
 
 class QUmlSendSignalAction;
-class Q_UML_EXPORT QUmlSendSignalActionObject : public QObject
+class QModelingObjectPrivate;
+class Q_UML_EXPORT QUmlSendSignalActionObject : public QModelingObject
 {
     Q_OBJECT
+    Q_DISABLE_COPY(QUmlSendSignalActionObject)
+    Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [Element]
     Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
@@ -106,7 +109,7 @@ class Q_UML_EXPORT QUmlSendSignalActionObject : public QObject
     Q_PROPERTY(QObject * target READ target WRITE setTarget)
 
 public:
-    Q_INVOKABLE explicit QUmlSendSignalActionObject(QUmlSendSignalAction *qModelingObject);
+    Q_INVOKABLE explicit QUmlSendSignalActionObject(QUmlSendSignalAction *qModelingElement);
     virtual ~QUmlSendSignalActionObject();
 
     // Owned attributes [Element]
@@ -237,6 +240,10 @@ public Q_SLOTS:
     // Slots for owned attributes [SendSignalAction]
     void setSignal(QObject *signal = 0);
     void setTarget(QObject *target = 0);
+
+protected:
+    virtual void setGroupProperties();
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

@@ -43,7 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtCore/QObject>
+#include <QtModeling/QModelingObject>
 
 #include <QtUml/QtUmlNamespace>
 
@@ -54,9 +54,12 @@ QT_BEGIN_NAMESPACE
 QT_MODULE(QtUml)
 
 class QUmlAddVariableValueAction;
-class Q_UML_EXPORT QUmlAddVariableValueActionObject : public QObject
+class QModelingObjectPrivate;
+class Q_UML_EXPORT QUmlAddVariableValueActionObject : public QModelingObject
 {
     Q_OBJECT
+    Q_DISABLE_COPY(QUmlAddVariableValueActionObject)
+    Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [Element]
     Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
@@ -108,7 +111,7 @@ class Q_UML_EXPORT QUmlAddVariableValueActionObject : public QObject
     Q_PROPERTY(bool isReplaceAll READ isReplaceAll WRITE setReplaceAll RESET unsetReplaceAll)
 
 public:
-    Q_INVOKABLE explicit QUmlAddVariableValueActionObject(QUmlAddVariableValueAction *qModelingObject);
+    Q_INVOKABLE explicit QUmlAddVariableValueActionObject(QUmlAddVariableValueAction *qModelingElement);
     virtual ~QUmlAddVariableValueActionObject();
 
     // Owned attributes [Element]
@@ -243,6 +246,10 @@ public Q_SLOTS:
     void setInsertAt(QObject *insertAt = 0);
     void setReplaceAll(bool isReplaceAll);
     void unsetReplaceAll();
+
+protected:
+    virtual void setGroupProperties();
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

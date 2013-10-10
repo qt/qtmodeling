@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumlsequencenodeobject_p.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlSequenceNode>
 #include <QtUml/QUmlActivity>
@@ -69,16 +70,18 @@
 
 QT_BEGIN_NAMESPACE
 
-QUmlSequenceNodeObject::QUmlSequenceNodeObject(QUmlSequenceNode *qModelingObject)
+QUmlSequenceNodeObject::QUmlSequenceNodeObject(QUmlSequenceNode *qModelingElement)
 {
-    setProperty("modelingObject", QVariant::fromValue(static_cast<QModelingObject *>(qModelingObject)));
+    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(qModelingElement)));
+    setGroupProperties();
+    setPropertyData();
 }
 
 QUmlSequenceNodeObject::~QUmlSequenceNodeObject()
 {
     if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->deletingFromQObject = true;
-        delete qmodelingobjectproperty_cast<QUmlComment *>(this);
+        qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->deletingFromQModelingObject = true;
+        delete qmodelingelementproperty_cast<QUmlComment *>(this);
     }
 }
 
@@ -87,25 +90,25 @@ QUmlSequenceNodeObject::~QUmlSequenceNodeObject()
 const QSet<QObject *> QUmlSequenceNodeObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->ownedComments())
-        set.insert(element->asQObject());
+    foreach (QUmlComment *element, qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->ownedComments())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlSequenceNodeObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->ownedElements())
-        set.insert(element->asQObject());
+    foreach (QUmlElement *element, qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->ownedElements())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 QObject *QUmlSequenceNodeObject::owner() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->owner())
+    if (!qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->owner())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->owner()->asQObject();
+        return qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->owner()->asQModelingObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -113,62 +116,62 @@ QObject *QUmlSequenceNodeObject::owner() const
 const QSet<QObject *> QUmlSequenceNodeObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->clientDependencies())
-        set.insert(element->asQObject());
+    foreach (QUmlDependency *element, qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->clientDependencies())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 QString QUmlSequenceNodeObject::name() const
 {
-    return qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->name();
+    return qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->name();
 }
 
 QObject *QUmlSequenceNodeObject::nameExpression() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->nameExpression())
+    if (!qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->nameExpression())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->nameExpression()->asQObject();
+        return qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->nameExpression()->asQModelingObject();
 }
 
 QObject *QUmlSequenceNodeObject::namespace_() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->namespace_())
+    if (!qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->namespace_())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->namespace_()->asQObject();
+        return qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->namespace_()->asQModelingObject();
 }
 
 QString QUmlSequenceNodeObject::qualifiedName() const
 {
-    return qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->qualifiedName();
+    return qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->qualifiedName();
 }
 
 QtUml::VisibilityKind QUmlSequenceNodeObject::visibility() const
 {
-    return qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->visibility();
+    return qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->visibility();
 }
 
 // OWNED ATTRIBUTES [RedefinableElement]
 
 bool QUmlSequenceNodeObject::isLeaf() const
 {
-    return qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->isLeaf();
+    return qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->isLeaf();
 }
 
 const QSet<QObject *> QUmlSequenceNodeObject::redefinedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlRedefinableElement *element, qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->redefinedElements())
-        set.insert(element->asQObject());
+    foreach (QUmlRedefinableElement *element, qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->redefinedElements())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlSequenceNodeObject::redefinitionContexts() const
 {
     QSet<QObject *> set;
-    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->redefinitionContexts())
-        set.insert(element->asQObject());
+    foreach (QUmlClassifier *element, qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->redefinitionContexts())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
@@ -177,56 +180,56 @@ const QSet<QObject *> QUmlSequenceNodeObject::redefinitionContexts() const
 const QSet<QObject *> QUmlSequenceNodeObject::inGroups() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityGroup *element, qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->inGroups())
-        set.insert(element->asQObject());
+    foreach (QUmlActivityGroup *element, qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->inGroups())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlSequenceNodeObject::inInterruptibleRegions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlInterruptibleActivityRegion *element, qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->inInterruptibleRegions())
-        set.insert(element->asQObject());
+    foreach (QUmlInterruptibleActivityRegion *element, qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->inInterruptibleRegions())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlSequenceNodeObject::inPartitions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityPartition *element, qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->inPartitions())
-        set.insert(element->asQObject());
+    foreach (QUmlActivityPartition *element, qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->inPartitions())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 QObject *QUmlSequenceNodeObject::inStructuredNode() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->inStructuredNode())
+    if (!qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->inStructuredNode())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->inStructuredNode()->asQObject();
+        return qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->inStructuredNode()->asQModelingObject();
 }
 
 const QSet<QObject *> QUmlSequenceNodeObject::incomings() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->incomings())
-        set.insert(element->asQObject());
+    foreach (QUmlActivityEdge *element, qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->incomings())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlSequenceNodeObject::outgoings() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->outgoings())
-        set.insert(element->asQObject());
+    foreach (QUmlActivityEdge *element, qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->outgoings())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlSequenceNodeObject::redefinedNodes() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityNode *element, qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->redefinedNodes())
-        set.insert(element->asQObject());
+    foreach (QUmlActivityNode *element, qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->redefinedNodes())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
@@ -235,8 +238,8 @@ const QSet<QObject *> QUmlSequenceNodeObject::redefinedNodes() const
 const QSet<QObject *> QUmlSequenceNodeObject::handlers() const
 {
     QSet<QObject *> set;
-    foreach (QUmlExceptionHandler *element, qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->handlers())
-        set.insert(element->asQObject());
+    foreach (QUmlExceptionHandler *element, qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->handlers())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
@@ -244,46 +247,46 @@ const QSet<QObject *> QUmlSequenceNodeObject::handlers() const
 
 QObject *QUmlSequenceNodeObject::context() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->context())
+    if (!qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->context())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->context()->asQObject();
+        return qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->context()->asQModelingObject();
 }
 
 const QList<QObject *> QUmlSequenceNodeObject::inputs() const
 {
     QList<QObject *> list;
-    foreach (QUmlInputPin *element, qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->inputs())
-        list.append(element->asQObject());
+    foreach (QUmlInputPin *element, qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->inputs())
+        list.append(element->asQModelingObject());
     return list;
 }
 
 bool QUmlSequenceNodeObject::isLocallyReentrant() const
 {
-    return qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->isLocallyReentrant();
+    return qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->isLocallyReentrant();
 }
 
 const QSet<QObject *> QUmlSequenceNodeObject::localPostconditions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->localPostconditions())
-        set.insert(element->asQObject());
+    foreach (QUmlConstraint *element, qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->localPostconditions())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlSequenceNodeObject::localPreconditions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->localPreconditions())
-        set.insert(element->asQObject());
+    foreach (QUmlConstraint *element, qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->localPreconditions())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QList<QObject *> QUmlSequenceNodeObject::outputs() const
 {
     QList<QObject *> list;
-    foreach (QUmlOutputPin *element, qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->outputs())
-        list.append(element->asQObject());
+    foreach (QUmlOutputPin *element, qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->outputs())
+        list.append(element->asQModelingObject());
     return list;
 }
 
@@ -292,48 +295,48 @@ const QList<QObject *> QUmlSequenceNodeObject::outputs() const
 const QSet<QObject *> QUmlSequenceNodeObject::elementImports() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElementImport *element, qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->elementImports())
-        set.insert(element->asQObject());
+    foreach (QUmlElementImport *element, qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->elementImports())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlSequenceNodeObject::importedMembers() const
 {
     QSet<QObject *> set;
-    foreach (QUmlPackageableElement *element, qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->importedMembers())
-        set.insert(element->asQObject());
+    foreach (QUmlPackageableElement *element, qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->importedMembers())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlSequenceNodeObject::members() const
 {
     QSet<QObject *> set;
-    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->members())
-        set.insert(element->asQObject());
+    foreach (QUmlNamedElement *element, qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->members())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlSequenceNodeObject::ownedMembers() const
 {
     QSet<QObject *> set;
-    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->ownedMembers())
-        set.insert(element->asQObject());
+    foreach (QUmlNamedElement *element, qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->ownedMembers())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlSequenceNodeObject::ownedRules() const
 {
     QSet<QObject *> set;
-    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->ownedRules())
-        set.insert(element->asQObject());
+    foreach (QUmlConstraint *element, qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->ownedRules())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlSequenceNodeObject::packageImports() const
 {
     QSet<QObject *> set;
-    foreach (QUmlPackageImport *element, qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->packageImports())
-        set.insert(element->asQObject());
+    foreach (QUmlPackageImport *element, qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->packageImports())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
@@ -342,79 +345,79 @@ const QSet<QObject *> QUmlSequenceNodeObject::packageImports() const
 const QSet<QObject *> QUmlSequenceNodeObject::containedEdges() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->containedEdges())
-        set.insert(element->asQObject());
+    foreach (QUmlActivityEdge *element, qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->containedEdges())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlSequenceNodeObject::containedNodes() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityNode *element, qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->containedNodes())
-        set.insert(element->asQObject());
+    foreach (QUmlActivityNode *element, qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->containedNodes())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlSequenceNodeObject::subgroups() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityGroup *element, qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->subgroups())
-        set.insert(element->asQObject());
+    foreach (QUmlActivityGroup *element, qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->subgroups())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 QObject *QUmlSequenceNodeObject::superGroup() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->superGroup())
+    if (!qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->superGroup())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->superGroup()->asQObject();
+        return qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->superGroup()->asQModelingObject();
 }
 
 // OWNED ATTRIBUTES [StructuredActivityNode]
 
 QObject *QUmlSequenceNodeObject::activity() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->activity())
+    if (!qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->activity())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->activity()->asQObject();
+        return qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->activity()->asQModelingObject();
 }
 
 const QSet<QObject *> QUmlSequenceNodeObject::edges() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->edges())
-        set.insert(element->asQObject());
+    foreach (QUmlActivityEdge *element, qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->edges())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 bool QUmlSequenceNodeObject::mustIsolate() const
 {
-    return qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->mustIsolate();
+    return qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->mustIsolate();
 }
 
 const QSet<QObject *> QUmlSequenceNodeObject::structuredNodeInputs() const
 {
     QSet<QObject *> set;
-    foreach (QUmlInputPin *element, qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->structuredNodeInputs())
-        set.insert(element->asQObject());
+    foreach (QUmlInputPin *element, qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->structuredNodeInputs())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlSequenceNodeObject::structuredNodeOutputs() const
 {
     QSet<QObject *> set;
-    foreach (QUmlOutputPin *element, qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->structuredNodeOutputs())
-        set.insert(element->asQObject());
+    foreach (QUmlOutputPin *element, qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->structuredNodeOutputs())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlSequenceNodeObject::variables() const
 {
     QSet<QObject *> set;
-    foreach (QUmlVariable *element, qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->variables())
-        set.insert(element->asQObject());
+    foreach (QUmlVariable *element, qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->variables())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
@@ -423,8 +426,8 @@ const QSet<QObject *> QUmlSequenceNodeObject::variables() const
 const QList<QObject *> QUmlSequenceNodeObject::executableNodes() const
 {
     QList<QObject *> list;
-    foreach (QUmlExecutableNode *element, qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->executableNodes())
-        list.append(element->asQObject());
+    foreach (QUmlExecutableNode *element, qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->executableNodes())
+        list.append(element->asQModelingObject());
     return list;
 }
 
@@ -433,14 +436,14 @@ const QList<QObject *> QUmlSequenceNodeObject::executableNodes() const
 QSet<QObject *> QUmlSequenceNodeObject::allOwnedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->allOwnedElements())
-        set.insert(element->asQObject());
+    foreach (QUmlElement *element, qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->allOwnedElements())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 bool QUmlSequenceNodeObject::mustBeOwned() const
 {
-    return qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->mustBeOwned();
+    return qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->mustBeOwned();
 }
 
 // OPERATIONS [NamedElement]
@@ -448,39 +451,39 @@ bool QUmlSequenceNodeObject::mustBeOwned() const
 QList<QObject *> QUmlSequenceNodeObject::allNamespaces() const
 {
     QList<QObject *> set;
-    foreach (QUmlNamespace *element, qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->allNamespaces())
-        set.append(element->asQObject());
+    foreach (QUmlNamespace *element, qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->allNamespaces())
+        set.append(element->asQModelingObject());
     return set;
 }
 
 QSet<QObject *> QUmlSequenceNodeObject::allOwningPackages() const
 {
     QSet<QObject *> set;
-    foreach (QUmlPackage *element, qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->allOwningPackages())
-        set.insert(element->asQObject());
+    foreach (QUmlPackage *element, qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->allOwningPackages())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 bool QUmlSequenceNodeObject::isDistinguishableFrom(QObject *n, QObject *ns) const
 {
-    return qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->isDistinguishableFrom(qmodelingobjectproperty_cast<QUmlNamedElement *>(n), qmodelingobjectproperty_cast<QUmlNamespace *>(ns));
+    return qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->isDistinguishableFrom(qmodelingelementproperty_cast<QUmlNamedElement *>(n), qmodelingelementproperty_cast<QUmlNamespace *>(ns));
 }
 
 QString QUmlSequenceNodeObject::separator() const
 {
-    return qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->separator();
+    return qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->separator();
 }
 
 // OPERATIONS [RedefinableElement]
 
 bool QUmlSequenceNodeObject::isConsistentWith(QObject *redefinee) const
 {
-    return qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->isConsistentWith(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefinee));
+    return qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->isConsistentWith(qmodelingelementproperty_cast<QUmlRedefinableElement *>(redefinee));
 }
 
 bool QUmlSequenceNodeObject::isRedefinitionContextValid(QObject *redefined) const
 {
-    return qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->isRedefinitionContextValid(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefined));
+    return qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->isRedefinitionContextValid(qmodelingelementproperty_cast<QUmlRedefinableElement *>(redefined));
 }
 
 // OPERATIONS [Namespace]
@@ -489,432 +492,521 @@ QSet<QObject *> QUmlSequenceNodeObject::excludeCollisions(QSet<QObject *> imps) 
 {
     QSet<QUmlPackageableElement *> impsConverted;
     foreach (QObject *object, imps)
-        impsConverted.insert(qmodelingobjectproperty_cast<QUmlPackageableElement *>(object));
+        impsConverted.insert(qmodelingelementproperty_cast<QUmlPackageableElement *>(object));
     QSet<QObject *> set;
-    foreach (QUmlPackageableElement *element, qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->excludeCollisions(impsConverted))
-        set.insert(element->asQObject());
+    foreach (QUmlPackageableElement *element, qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->excludeCollisions(impsConverted))
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 QSet<QString> QUmlSequenceNodeObject::getNamesOfMember(QObject *element) const
 {
-    return qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->getNamesOfMember(qmodelingobjectproperty_cast<QUmlNamedElement *>(element));
+    return qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->getNamesOfMember(qmodelingelementproperty_cast<QUmlNamedElement *>(element));
 }
 
 QSet<QObject *> QUmlSequenceNodeObject::importMembers(QSet<QObject *> imps) const
 {
     QSet<QUmlPackageableElement *> impsConverted;
     foreach (QObject *object, imps)
-        impsConverted.insert(qmodelingobjectproperty_cast<QUmlPackageableElement *>(object));
+        impsConverted.insert(qmodelingelementproperty_cast<QUmlPackageableElement *>(object));
     QSet<QObject *> set;
-    foreach (QUmlPackageableElement *element, qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->importMembers(impsConverted))
-        set.insert(element->asQObject());
+    foreach (QUmlPackageableElement *element, qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->importMembers(impsConverted))
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 bool QUmlSequenceNodeObject::membersAreDistinguishable() const
 {
-    return qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->membersAreDistinguishable();
+    return qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->membersAreDistinguishable();
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Element]
 
 void QUmlSequenceNodeObject::addOwnedComment(QObject *ownedComment)
 {
-    qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->addOwnedComment(qmodelingobjectproperty_cast<QUmlComment *>(ownedComment));
+    qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
 }
 
 void QUmlSequenceNodeObject::removeOwnedComment(QObject *ownedComment)
 {
-    qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->removeOwnedComment(qmodelingobjectproperty_cast<QUmlComment *>(ownedComment));
+    qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
 }
 
 void QUmlSequenceNodeObject::addOwnedElement(QObject *ownedElement)
 {
-    qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->addOwnedElement(qmodelingobjectproperty_cast<QUmlElement *>(ownedElement));
+    qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
 }
 
 void QUmlSequenceNodeObject::removeOwnedElement(QObject *ownedElement)
 {
-    qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->removeOwnedElement(qmodelingobjectproperty_cast<QUmlElement *>(ownedElement));
+    qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
 }
 
 void QUmlSequenceNodeObject::setOwner(QObject *owner)
 {
-    qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->setOwner(qmodelingobjectproperty_cast<QUmlElement *>(owner));
+    qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [NamedElement]
 
 void QUmlSequenceNodeObject::addClientDependency(QObject *clientDependency)
 {
-    qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->addClientDependency(qmodelingobjectproperty_cast<QUmlDependency *>(clientDependency));
+    qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->addClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
 }
 
 void QUmlSequenceNodeObject::removeClientDependency(QObject *clientDependency)
 {
-    qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->removeClientDependency(qmodelingobjectproperty_cast<QUmlDependency *>(clientDependency));
+    qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->removeClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
 }
 
 void QUmlSequenceNodeObject::setName(QString name)
 {
-    qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->setName(name);
+    qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->setName(name);
 }
 
 void QUmlSequenceNodeObject::setNameExpression(QObject *nameExpression)
 {
-    qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
+    qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->setNameExpression(qmodelingelementproperty_cast<QUmlStringExpression *>(nameExpression));
 }
 
 void QUmlSequenceNodeObject::setNamespace(QObject *namespace_)
 {
-    qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->setNamespace(qmodelingobjectproperty_cast<QUmlNamespace *>(namespace_));
+    qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->setNamespace(qmodelingelementproperty_cast<QUmlNamespace *>(namespace_));
 }
 
 void QUmlSequenceNodeObject::setQualifiedName(QString qualifiedName)
 {
-    qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->setQualifiedName(qualifiedName);
+    qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->setQualifiedName(qualifiedName);
 }
 
 void QUmlSequenceNodeObject::setVisibility(QtUml::VisibilityKind visibility)
 {
-    qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->setVisibility(visibility);
+    qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->setVisibility(visibility);
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [RedefinableElement]
 
 void QUmlSequenceNodeObject::setLeaf(bool isLeaf)
 {
-    qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->setLeaf(isLeaf);
+    qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->setLeaf(isLeaf);
 }
 
 void QUmlSequenceNodeObject::unsetLeaf()
 {
-    qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("leaf"));
+    Q_D(QModelingObject);
+    d->modifiedResettableProperties.removeAll(QStringLiteral("leaf"));
 }
 
 void QUmlSequenceNodeObject::addRedefinedElement(QObject *redefinedElement)
 {
-    qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->addRedefinedElement(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefinedElement));
+    qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->addRedefinedElement(qmodelingelementproperty_cast<QUmlRedefinableElement *>(redefinedElement));
 }
 
 void QUmlSequenceNodeObject::removeRedefinedElement(QObject *redefinedElement)
 {
-    qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->removeRedefinedElement(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefinedElement));
+    qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->removeRedefinedElement(qmodelingelementproperty_cast<QUmlRedefinableElement *>(redefinedElement));
 }
 
 void QUmlSequenceNodeObject::addRedefinitionContext(QObject *redefinitionContext)
 {
-    qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->addRedefinitionContext(qmodelingobjectproperty_cast<QUmlClassifier *>(redefinitionContext));
+    qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->addRedefinitionContext(qmodelingelementproperty_cast<QUmlClassifier *>(redefinitionContext));
 }
 
 void QUmlSequenceNodeObject::removeRedefinitionContext(QObject *redefinitionContext)
 {
-    qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->removeRedefinitionContext(qmodelingobjectproperty_cast<QUmlClassifier *>(redefinitionContext));
+    qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->removeRedefinitionContext(qmodelingelementproperty_cast<QUmlClassifier *>(redefinitionContext));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ActivityNode]
 
 void QUmlSequenceNodeObject::addInGroup(QObject *inGroup)
 {
-    qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->addInGroup(qmodelingobjectproperty_cast<QUmlActivityGroup *>(inGroup));
+    qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->addInGroup(qmodelingelementproperty_cast<QUmlActivityGroup *>(inGroup));
 }
 
 void QUmlSequenceNodeObject::removeInGroup(QObject *inGroup)
 {
-    qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->removeInGroup(qmodelingobjectproperty_cast<QUmlActivityGroup *>(inGroup));
+    qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->removeInGroup(qmodelingelementproperty_cast<QUmlActivityGroup *>(inGroup));
 }
 
 void QUmlSequenceNodeObject::addInInterruptibleRegion(QObject *inInterruptibleRegion)
 {
-    qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->addInInterruptibleRegion(qmodelingobjectproperty_cast<QUmlInterruptibleActivityRegion *>(inInterruptibleRegion));
+    qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->addInInterruptibleRegion(qmodelingelementproperty_cast<QUmlInterruptibleActivityRegion *>(inInterruptibleRegion));
 }
 
 void QUmlSequenceNodeObject::removeInInterruptibleRegion(QObject *inInterruptibleRegion)
 {
-    qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->removeInInterruptibleRegion(qmodelingobjectproperty_cast<QUmlInterruptibleActivityRegion *>(inInterruptibleRegion));
+    qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->removeInInterruptibleRegion(qmodelingelementproperty_cast<QUmlInterruptibleActivityRegion *>(inInterruptibleRegion));
 }
 
 void QUmlSequenceNodeObject::addInPartition(QObject *inPartition)
 {
-    qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->addInPartition(qmodelingobjectproperty_cast<QUmlActivityPartition *>(inPartition));
+    qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->addInPartition(qmodelingelementproperty_cast<QUmlActivityPartition *>(inPartition));
 }
 
 void QUmlSequenceNodeObject::removeInPartition(QObject *inPartition)
 {
-    qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->removeInPartition(qmodelingobjectproperty_cast<QUmlActivityPartition *>(inPartition));
+    qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->removeInPartition(qmodelingelementproperty_cast<QUmlActivityPartition *>(inPartition));
 }
 
 void QUmlSequenceNodeObject::setInStructuredNode(QObject *inStructuredNode)
 {
-    qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->setInStructuredNode(qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(inStructuredNode));
+    qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->setInStructuredNode(qmodelingelementproperty_cast<QUmlStructuredActivityNode *>(inStructuredNode));
 }
 
 void QUmlSequenceNodeObject::addIncoming(QObject *incoming)
 {
-    qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->addIncoming(qmodelingobjectproperty_cast<QUmlActivityEdge *>(incoming));
+    qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->addIncoming(qmodelingelementproperty_cast<QUmlActivityEdge *>(incoming));
 }
 
 void QUmlSequenceNodeObject::removeIncoming(QObject *incoming)
 {
-    qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->removeIncoming(qmodelingobjectproperty_cast<QUmlActivityEdge *>(incoming));
+    qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->removeIncoming(qmodelingelementproperty_cast<QUmlActivityEdge *>(incoming));
 }
 
 void QUmlSequenceNodeObject::addOutgoing(QObject *outgoing)
 {
-    qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->addOutgoing(qmodelingobjectproperty_cast<QUmlActivityEdge *>(outgoing));
+    qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->addOutgoing(qmodelingelementproperty_cast<QUmlActivityEdge *>(outgoing));
 }
 
 void QUmlSequenceNodeObject::removeOutgoing(QObject *outgoing)
 {
-    qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->removeOutgoing(qmodelingobjectproperty_cast<QUmlActivityEdge *>(outgoing));
+    qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->removeOutgoing(qmodelingelementproperty_cast<QUmlActivityEdge *>(outgoing));
 }
 
 void QUmlSequenceNodeObject::addRedefinedNode(QObject *redefinedNode)
 {
-    qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->addRedefinedNode(qmodelingobjectproperty_cast<QUmlActivityNode *>(redefinedNode));
+    qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->addRedefinedNode(qmodelingelementproperty_cast<QUmlActivityNode *>(redefinedNode));
 }
 
 void QUmlSequenceNodeObject::removeRedefinedNode(QObject *redefinedNode)
 {
-    qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->removeRedefinedNode(qmodelingobjectproperty_cast<QUmlActivityNode *>(redefinedNode));
+    qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->removeRedefinedNode(qmodelingelementproperty_cast<QUmlActivityNode *>(redefinedNode));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ExecutableNode]
 
 void QUmlSequenceNodeObject::addHandler(QObject *handler)
 {
-    qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->addHandler(qmodelingobjectproperty_cast<QUmlExceptionHandler *>(handler));
+    qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->addHandler(qmodelingelementproperty_cast<QUmlExceptionHandler *>(handler));
 }
 
 void QUmlSequenceNodeObject::removeHandler(QObject *handler)
 {
-    qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->removeHandler(qmodelingobjectproperty_cast<QUmlExceptionHandler *>(handler));
+    qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->removeHandler(qmodelingelementproperty_cast<QUmlExceptionHandler *>(handler));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Action]
 
 void QUmlSequenceNodeObject::setContext(QObject *context)
 {
-    qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->setContext(qmodelingobjectproperty_cast<QUmlClassifier *>(context));
+    qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->setContext(qmodelingelementproperty_cast<QUmlClassifier *>(context));
 }
 
 void QUmlSequenceNodeObject::addInput(QObject *input)
 {
-    qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->addInput(qmodelingobjectproperty_cast<QUmlInputPin *>(input));
+    qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->addInput(qmodelingelementproperty_cast<QUmlInputPin *>(input));
 }
 
 void QUmlSequenceNodeObject::removeInput(QObject *input)
 {
-    qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->removeInput(qmodelingobjectproperty_cast<QUmlInputPin *>(input));
+    qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->removeInput(qmodelingelementproperty_cast<QUmlInputPin *>(input));
 }
 
 void QUmlSequenceNodeObject::setLocallyReentrant(bool isLocallyReentrant)
 {
-    qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->setLocallyReentrant(isLocallyReentrant);
+    qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->setLocallyReentrant(isLocallyReentrant);
 }
 
 void QUmlSequenceNodeObject::unsetLocallyReentrant()
 {
-    qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("locallyReentrant"));
+    Q_D(QModelingObject);
+    d->modifiedResettableProperties.removeAll(QStringLiteral("locallyReentrant"));
 }
 
 void QUmlSequenceNodeObject::addLocalPostcondition(QObject *localPostcondition)
 {
-    qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->addLocalPostcondition(qmodelingobjectproperty_cast<QUmlConstraint *>(localPostcondition));
+    qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->addLocalPostcondition(qmodelingelementproperty_cast<QUmlConstraint *>(localPostcondition));
 }
 
 void QUmlSequenceNodeObject::removeLocalPostcondition(QObject *localPostcondition)
 {
-    qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->removeLocalPostcondition(qmodelingobjectproperty_cast<QUmlConstraint *>(localPostcondition));
+    qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->removeLocalPostcondition(qmodelingelementproperty_cast<QUmlConstraint *>(localPostcondition));
 }
 
 void QUmlSequenceNodeObject::addLocalPrecondition(QObject *localPrecondition)
 {
-    qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->addLocalPrecondition(qmodelingobjectproperty_cast<QUmlConstraint *>(localPrecondition));
+    qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->addLocalPrecondition(qmodelingelementproperty_cast<QUmlConstraint *>(localPrecondition));
 }
 
 void QUmlSequenceNodeObject::removeLocalPrecondition(QObject *localPrecondition)
 {
-    qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->removeLocalPrecondition(qmodelingobjectproperty_cast<QUmlConstraint *>(localPrecondition));
+    qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->removeLocalPrecondition(qmodelingelementproperty_cast<QUmlConstraint *>(localPrecondition));
 }
 
 void QUmlSequenceNodeObject::addOutput(QObject *output)
 {
-    qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->addOutput(qmodelingobjectproperty_cast<QUmlOutputPin *>(output));
+    qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->addOutput(qmodelingelementproperty_cast<QUmlOutputPin *>(output));
 }
 
 void QUmlSequenceNodeObject::removeOutput(QObject *output)
 {
-    qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->removeOutput(qmodelingobjectproperty_cast<QUmlOutputPin *>(output));
+    qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->removeOutput(qmodelingelementproperty_cast<QUmlOutputPin *>(output));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Namespace]
 
 void QUmlSequenceNodeObject::addElementImport(QObject *elementImport)
 {
-    qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->addElementImport(qmodelingobjectproperty_cast<QUmlElementImport *>(elementImport));
+    qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->addElementImport(qmodelingelementproperty_cast<QUmlElementImport *>(elementImport));
 }
 
 void QUmlSequenceNodeObject::removeElementImport(QObject *elementImport)
 {
-    qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->removeElementImport(qmodelingobjectproperty_cast<QUmlElementImport *>(elementImport));
+    qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->removeElementImport(qmodelingelementproperty_cast<QUmlElementImport *>(elementImport));
 }
 
 void QUmlSequenceNodeObject::addImportedMember(QObject *importedMember)
 {
-    qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->addImportedMember(qmodelingobjectproperty_cast<QUmlPackageableElement *>(importedMember));
+    qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->addImportedMember(qmodelingelementproperty_cast<QUmlPackageableElement *>(importedMember));
 }
 
 void QUmlSequenceNodeObject::removeImportedMember(QObject *importedMember)
 {
-    qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->removeImportedMember(qmodelingobjectproperty_cast<QUmlPackageableElement *>(importedMember));
+    qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->removeImportedMember(qmodelingelementproperty_cast<QUmlPackageableElement *>(importedMember));
 }
 
 void QUmlSequenceNodeObject::addMember(QObject *member)
 {
-    qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->addMember(qmodelingobjectproperty_cast<QUmlNamedElement *>(member));
+    qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->addMember(qmodelingelementproperty_cast<QUmlNamedElement *>(member));
 }
 
 void QUmlSequenceNodeObject::removeMember(QObject *member)
 {
-    qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->removeMember(qmodelingobjectproperty_cast<QUmlNamedElement *>(member));
+    qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->removeMember(qmodelingelementproperty_cast<QUmlNamedElement *>(member));
 }
 
 void QUmlSequenceNodeObject::addOwnedMember(QObject *ownedMember)
 {
-    qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->addOwnedMember(qmodelingobjectproperty_cast<QUmlNamedElement *>(ownedMember));
+    qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->addOwnedMember(qmodelingelementproperty_cast<QUmlNamedElement *>(ownedMember));
 }
 
 void QUmlSequenceNodeObject::removeOwnedMember(QObject *ownedMember)
 {
-    qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->removeOwnedMember(qmodelingobjectproperty_cast<QUmlNamedElement *>(ownedMember));
+    qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->removeOwnedMember(qmodelingelementproperty_cast<QUmlNamedElement *>(ownedMember));
 }
 
 void QUmlSequenceNodeObject::addOwnedRule(QObject *ownedRule)
 {
-    qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->addOwnedRule(qmodelingobjectproperty_cast<QUmlConstraint *>(ownedRule));
+    qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->addOwnedRule(qmodelingelementproperty_cast<QUmlConstraint *>(ownedRule));
 }
 
 void QUmlSequenceNodeObject::removeOwnedRule(QObject *ownedRule)
 {
-    qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->removeOwnedRule(qmodelingobjectproperty_cast<QUmlConstraint *>(ownedRule));
+    qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->removeOwnedRule(qmodelingelementproperty_cast<QUmlConstraint *>(ownedRule));
 }
 
 void QUmlSequenceNodeObject::addPackageImport(QObject *packageImport)
 {
-    qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->addPackageImport(qmodelingobjectproperty_cast<QUmlPackageImport *>(packageImport));
+    qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->addPackageImport(qmodelingelementproperty_cast<QUmlPackageImport *>(packageImport));
 }
 
 void QUmlSequenceNodeObject::removePackageImport(QObject *packageImport)
 {
-    qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->removePackageImport(qmodelingobjectproperty_cast<QUmlPackageImport *>(packageImport));
+    qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->removePackageImport(qmodelingelementproperty_cast<QUmlPackageImport *>(packageImport));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ActivityGroup]
 
 void QUmlSequenceNodeObject::addContainedEdge(QObject *containedEdge)
 {
-    qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->addContainedEdge(qmodelingobjectproperty_cast<QUmlActivityEdge *>(containedEdge));
+    qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->addContainedEdge(qmodelingelementproperty_cast<QUmlActivityEdge *>(containedEdge));
 }
 
 void QUmlSequenceNodeObject::removeContainedEdge(QObject *containedEdge)
 {
-    qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->removeContainedEdge(qmodelingobjectproperty_cast<QUmlActivityEdge *>(containedEdge));
+    qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->removeContainedEdge(qmodelingelementproperty_cast<QUmlActivityEdge *>(containedEdge));
 }
 
 void QUmlSequenceNodeObject::addContainedNode(QObject *containedNode)
 {
-    qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->addContainedNode(qmodelingobjectproperty_cast<QUmlActivityNode *>(containedNode));
+    qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->addContainedNode(qmodelingelementproperty_cast<QUmlActivityNode *>(containedNode));
 }
 
 void QUmlSequenceNodeObject::removeContainedNode(QObject *containedNode)
 {
-    qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->removeContainedNode(qmodelingobjectproperty_cast<QUmlActivityNode *>(containedNode));
+    qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->removeContainedNode(qmodelingelementproperty_cast<QUmlActivityNode *>(containedNode));
 }
 
 void QUmlSequenceNodeObject::addSubgroup(QObject *subgroup)
 {
-    qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->addSubgroup(qmodelingobjectproperty_cast<QUmlActivityGroup *>(subgroup));
+    qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->addSubgroup(qmodelingelementproperty_cast<QUmlActivityGroup *>(subgroup));
 }
 
 void QUmlSequenceNodeObject::removeSubgroup(QObject *subgroup)
 {
-    qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->removeSubgroup(qmodelingobjectproperty_cast<QUmlActivityGroup *>(subgroup));
+    qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->removeSubgroup(qmodelingelementproperty_cast<QUmlActivityGroup *>(subgroup));
 }
 
 void QUmlSequenceNodeObject::setSuperGroup(QObject *superGroup)
 {
-    qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->setSuperGroup(qmodelingobjectproperty_cast<QUmlActivityGroup *>(superGroup));
+    qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->setSuperGroup(qmodelingelementproperty_cast<QUmlActivityGroup *>(superGroup));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [StructuredActivityNode]
 
 void QUmlSequenceNodeObject::setActivity(QObject *activity)
 {
-    qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->setActivity(qmodelingobjectproperty_cast<QUmlActivity *>(activity));
+    qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->setActivity(qmodelingelementproperty_cast<QUmlActivity *>(activity));
 }
 
 void QUmlSequenceNodeObject::addEdge(QObject *edge)
 {
-    qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->addEdge(qmodelingobjectproperty_cast<QUmlActivityEdge *>(edge));
+    qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->addEdge(qmodelingelementproperty_cast<QUmlActivityEdge *>(edge));
 }
 
 void QUmlSequenceNodeObject::removeEdge(QObject *edge)
 {
-    qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->removeEdge(qmodelingobjectproperty_cast<QUmlActivityEdge *>(edge));
+    qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->removeEdge(qmodelingelementproperty_cast<QUmlActivityEdge *>(edge));
 }
 
 void QUmlSequenceNodeObject::setMustIsolate(bool mustIsolate)
 {
-    qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->setMustIsolate(mustIsolate);
+    qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->setMustIsolate(mustIsolate);
 }
 
 void QUmlSequenceNodeObject::unsetMustIsolate()
 {
-    qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("mustIsolate"));
+    Q_D(QModelingObject);
+    d->modifiedResettableProperties.removeAll(QStringLiteral("mustIsolate"));
 }
 
 void QUmlSequenceNodeObject::addStructuredNodeInput(QObject *structuredNodeInput)
 {
-    qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->addStructuredNodeInput(qmodelingobjectproperty_cast<QUmlInputPin *>(structuredNodeInput));
+    qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->addStructuredNodeInput(qmodelingelementproperty_cast<QUmlInputPin *>(structuredNodeInput));
 }
 
 void QUmlSequenceNodeObject::removeStructuredNodeInput(QObject *structuredNodeInput)
 {
-    qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->removeStructuredNodeInput(qmodelingobjectproperty_cast<QUmlInputPin *>(structuredNodeInput));
+    qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->removeStructuredNodeInput(qmodelingelementproperty_cast<QUmlInputPin *>(structuredNodeInput));
 }
 
 void QUmlSequenceNodeObject::addStructuredNodeOutput(QObject *structuredNodeOutput)
 {
-    qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->addStructuredNodeOutput(qmodelingobjectproperty_cast<QUmlOutputPin *>(structuredNodeOutput));
+    qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->addStructuredNodeOutput(qmodelingelementproperty_cast<QUmlOutputPin *>(structuredNodeOutput));
 }
 
 void QUmlSequenceNodeObject::removeStructuredNodeOutput(QObject *structuredNodeOutput)
 {
-    qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->removeStructuredNodeOutput(qmodelingobjectproperty_cast<QUmlOutputPin *>(structuredNodeOutput));
+    qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->removeStructuredNodeOutput(qmodelingelementproperty_cast<QUmlOutputPin *>(structuredNodeOutput));
 }
 
 void QUmlSequenceNodeObject::addVariable(QObject *variable)
 {
-    qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->addVariable(qmodelingobjectproperty_cast<QUmlVariable *>(variable));
+    qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->addVariable(qmodelingelementproperty_cast<QUmlVariable *>(variable));
 }
 
 void QUmlSequenceNodeObject::removeVariable(QObject *variable)
 {
-    qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->removeVariable(qmodelingobjectproperty_cast<QUmlVariable *>(variable));
+    qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->removeVariable(qmodelingelementproperty_cast<QUmlVariable *>(variable));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [SequenceNode]
 
 void QUmlSequenceNodeObject::addExecutableNode(QObject *executableNode)
 {
-    qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->addExecutableNode(qmodelingobjectproperty_cast<QUmlExecutableNode *>(executableNode));
+    qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->addExecutableNode(qmodelingelementproperty_cast<QUmlExecutableNode *>(executableNode));
 }
 
 void QUmlSequenceNodeObject::removeExecutableNode(QObject *executableNode)
 {
-    qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->removeExecutableNode(qmodelingobjectproperty_cast<QUmlExecutableNode *>(executableNode));
+    qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->removeExecutableNode(qmodelingelementproperty_cast<QUmlExecutableNode *>(executableNode));
+}
+
+
+void QUmlSequenceNodeObject::setGroupProperties()
+{
+    Q_D(QModelingObject);
+    const QMetaObject *metaObject = this->metaObject();
+
+    d->propertyGroups << QStringLiteral("QObject");
+    d->groupProperties.insert(QStringLiteral("QObject"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("objectName"))));
+
+    d->propertyGroups << QStringLiteral("QUmlElement");
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
+
+    d->propertyGroups << QStringLiteral("QUmlNamedElement");
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
+
+    d->propertyGroups << QStringLiteral("QUmlRedefinableElement");
+    d->groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isLeaf"))));
+    d->groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinedElements"))));
+    d->groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinitionContexts"))));
+
+    d->propertyGroups << QStringLiteral("QUmlActivityNode");
+    d->groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inGroups"))));
+    d->groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inInterruptibleRegions"))));
+    d->groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inPartitions"))));
+    d->groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inStructuredNode"))));
+    d->groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("incomings"))));
+    d->groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("outgoings"))));
+    d->groupProperties.insert(QStringLiteral("QUmlActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinedNodes"))));
+
+    d->propertyGroups << QStringLiteral("QUmlExecutableNode");
+    d->groupProperties.insert(QStringLiteral("QUmlExecutableNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("handlers"))));
+
+    d->propertyGroups << QStringLiteral("QUmlAction");
+    d->groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("context"))));
+    d->groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inputs"))));
+    d->groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isLocallyReentrant"))));
+    d->groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("localPostconditions"))));
+    d->groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("localPreconditions"))));
+    d->groupProperties.insert(QStringLiteral("QUmlAction"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("outputs"))));
+
+    d->propertyGroups << QStringLiteral("QUmlNamespace");
+    d->groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("elementImports"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("importedMembers"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("members"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedMembers"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedRules"))));
+    d->groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("packageImports"))));
+
+    d->propertyGroups << QStringLiteral("QUmlActivityGroup");
+    d->groupProperties.insert(QStringLiteral("QUmlActivityGroup"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("containedEdges"))));
+    d->groupProperties.insert(QStringLiteral("QUmlActivityGroup"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("containedNodes"))));
+    d->groupProperties.insert(QStringLiteral("QUmlActivityGroup"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("subgroups"))));
+    d->groupProperties.insert(QStringLiteral("QUmlActivityGroup"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("superGroup"))));
+
+    d->propertyGroups << QStringLiteral("QUmlStructuredActivityNode");
+    d->groupProperties.insert(QStringLiteral("QUmlStructuredActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("activity"))));
+    d->groupProperties.insert(QStringLiteral("QUmlStructuredActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("edges"))));
+    d->groupProperties.insert(QStringLiteral("QUmlStructuredActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("mustIsolate"))));
+    d->groupProperties.insert(QStringLiteral("QUmlStructuredActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("structuredNodeInputs"))));
+    d->groupProperties.insert(QStringLiteral("QUmlStructuredActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("structuredNodeOutputs"))));
+    d->groupProperties.insert(QStringLiteral("QUmlStructuredActivityNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("variables"))));
+
+    d->propertyGroups << QStringLiteral("QUmlSequenceNode");
+    d->groupProperties.insert(QStringLiteral("QUmlSequenceNode"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("executableNodes"))));
+}
+
+void QUmlSequenceNodeObject::setPropertyData()
+{
+    Q_DECLARE_METAPROPERTY_INFO(QUmlSequenceNode, executableNodes, AggregationRole, QStringLiteral("composite"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlSequenceNode, executableNodes, PropertyClassRole, QStringLiteral("QUmlSequenceNode"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlSequenceNode, executableNodes, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlSequenceNode, executableNodes, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlSequenceNode, executableNodes, DocumentationRole, QStringLiteral("An ordered set of executable nodes."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlSequenceNode, executableNodes, RedefinedPropertiesRole, QStringLiteral("StructuredActivityNode-node"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlSequenceNode, executableNodes, SubsettedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlSequenceNode, executableNodes, OppositeEndRole, QStringLiteral(""));
+
 }
 
 QT_END_NAMESPACE

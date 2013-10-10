@@ -61,24 +61,22 @@
 
     \brief An expression is a structured tree of symbols that denotes a (possibly empty) set of values when evaluated in a context.An expression represents a node in an expression tree, which may be non-terminal or terminal. It defines a symbol, and has a possibly empty sequence of operands which are value specifications.
  */
-QUmlExpression::QUmlExpression(bool createQObject)
+QUmlExpression::QUmlExpression(bool createQModelingObject)
 {
-    if (createQObject)
-        _qObject = new QUmlExpressionObject(this);
-    setGroupProperties();
-    setPropertyData();
+    if (createQModelingObject)
+        _qModelingObject = qobject_cast<QModelingObject *>(new QUmlExpressionObject(this));
 }
 
 QUmlExpression::~QUmlExpression()
 {
-    if (!deletingFromQObject) {
-        if (_qObject)
-            _qObject->setProperty("deletingFromModelingObject", true);
-        delete _qObject;
+    if (!deletingFromQModelingObject) {
+        if (_qModelingObject)
+            _qModelingObject->setProperty("deletingFromModelingObject", true);
+        delete _qModelingObject;
     }
 }
 
-QModelingObject *QUmlExpression::clone() const
+QModelingElement *QUmlExpression::clone() const
 {
     QUmlExpression *c = new QUmlExpression;
     foreach (QUmlComment *element, ownedComments())
@@ -119,9 +117,9 @@ void QUmlExpression::addOperand(QUmlValueSpecification *operand)
 
     if (!_operands.contains(operand)) {
         _operands.append(operand);
-        if (operand && operand->asQObject() && this->asQObject())
-            QObject::connect(operand->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeOperand(QObject *)));
-        operand->asQObject()->setParent(this->asQObject());
+        if (operand && operand->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(operand->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeOperand(QObject *)));
+        operand->asQModelingObject()->setParent(this->asQModelingObject());
 
         // Adjust subsetted properties
         addOwnedElement(operand);
@@ -134,8 +132,8 @@ void QUmlExpression::removeOperand(QUmlValueSpecification *operand)
 
     if (_operands.contains(operand)) {
         _operands.removeAll(operand);
-        if (operand->asQObject())
-            operand->asQObject()->setParent(0);
+        if (operand->asQModelingObject())
+            operand->asQModelingObject()->setParent(0);
 
         // Adjust subsetted properties
         removeOwnedElement(operand);
@@ -159,47 +157,5 @@ void QUmlExpression::setSymbol(QString symbol)
     if (_symbol != symbol) {
         _symbol = symbol;
     }
-}
-
-void QUmlExpression::setGroupProperties()
-{
-    const QMetaObject *metaObject = _qObject->metaObject();
-
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
-    _groupProperties.insert(QStringLiteral("QUmlTypedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("type"))));
-    _groupProperties.insert(QStringLiteral("QUmlParameterableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owningTemplateParameter"))));
-    _groupProperties.insert(QStringLiteral("QUmlParameterableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("templateParameter"))));
-    _groupProperties.insert(QStringLiteral("QUmlPackageableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
-    _groupProperties.insert(QStringLiteral("QUmlExpression"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("operands"))));
-    _groupProperties.insert(QStringLiteral("QUmlExpression"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("symbol"))));
-}
-
-void QUmlExpression::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExpression")][QStringLiteral("operands")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExpression")][QStringLiteral("operands")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlExpression");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExpression")][QStringLiteral("operands")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExpression")][QStringLiteral("operands")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExpression")][QStringLiteral("operands")][QtModeling::DocumentationRole] = QStringLiteral("Specifies a sequence of operands.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExpression")][QStringLiteral("operands")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExpression")][QStringLiteral("operands")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExpression")][QStringLiteral("operands")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExpression")][QStringLiteral("symbol")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExpression")][QStringLiteral("symbol")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlExpression");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExpression")][QStringLiteral("symbol")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExpression")][QStringLiteral("symbol")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExpression")][QStringLiteral("symbol")][QtModeling::DocumentationRole] = QStringLiteral("The symbol associated with the node in the expression tree.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExpression")][QStringLiteral("symbol")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExpression")][QStringLiteral("symbol")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExpression")][QStringLiteral("symbol")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
 }
 

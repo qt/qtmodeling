@@ -75,7 +75,7 @@
 
     \brief An operation is a behavioral feature of a classifier that specifies the name, type, parameters, and constraints for invoking an associated behavior.An operation may invoke both the execution of method behaviors as well as other behavioral responses.Operation specializes TemplateableElement in order to support specification of template operations and bound operations. Operation specializes ParameterableElement to specify that an operation can be exposed as a formal template parameter, and provided as an actual parameter in a binding of a template.
  */
-QUmlOperation::QUmlOperation(bool createQObject) :
+QUmlOperation::QUmlOperation(bool createQModelingObject) :
     _bodyCondition(0),
     _class_(0),
     _datatype(0),
@@ -83,22 +83,20 @@ QUmlOperation::QUmlOperation(bool createQObject) :
     _isQuery(false),
     _templateParameter(0)
 {
-    if (createQObject)
-        _qObject = new QUmlOperationObject(this);
-    setGroupProperties();
-    setPropertyData();
+    if (createQModelingObject)
+        _qModelingObject = qobject_cast<QModelingObject *>(new QUmlOperationObject(this));
 }
 
 QUmlOperation::~QUmlOperation()
 {
-    if (!deletingFromQObject) {
-        if (_qObject)
-            _qObject->setProperty("deletingFromModelingObject", true);
-        delete _qObject;
+    if (!deletingFromQModelingObject) {
+        if (_qModelingObject)
+            _qModelingObject->setProperty("deletingFromModelingObject", true);
+        delete _qModelingObject;
     }
 }
 
-QModelingObject *QUmlOperation::clone() const
+QModelingElement *QUmlOperation::clone() const
 {
     QUmlOperation *c = new QUmlOperation;
     foreach (QUmlComment *element, ownedComments())
@@ -174,9 +172,9 @@ void QUmlOperation::setBodyCondition(QUmlConstraint *bodyCondition)
         removeOwnedRule(_bodyCondition);
 
         _bodyCondition = bodyCondition;
-        if (bodyCondition && bodyCondition->asQObject() && this->asQObject())
-            QObject::connect(bodyCondition->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setBodyCondition()));
-        bodyCondition->asQObject()->setParent(this->asQObject());
+        if (bodyCondition && bodyCondition->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(bodyCondition->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setBodyCondition()));
+        bodyCondition->asQModelingObject()->setParent(this->asQModelingObject());
 
         // Adjust subsetted properties
         if (bodyCondition) {
@@ -205,8 +203,8 @@ void QUmlOperation::setClass(QUmlClass *class_)
         removeRedefinitionContext(_class_);
 
         _class_ = class_;
-        if (class_ && class_->asQObject() && this->asQObject())
-            QObject::connect(class_->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setClass()));
+        if (class_ && class_->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(class_->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setClass()));
 
         // Adjust subsetted properties
         if (class_) {
@@ -239,8 +237,8 @@ void QUmlOperation::setDatatype(QUmlDataType *datatype)
         removeRedefinitionContext(_datatype);
 
         _datatype = datatype;
-        if (datatype && datatype->asQObject() && this->asQObject())
-            QObject::connect(datatype->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setDatatype()));
+        if (datatype && datatype->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(datatype->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setDatatype()));
 
         // Adjust subsetted properties
         if (datatype) {
@@ -273,8 +271,8 @@ void QUmlOperation::setInterface(QUmlInterface *interface_)
         removeRedefinitionContext(_interface_);
 
         _interface_ = interface_;
-        if (interface_ && interface_->asQObject() && this->asQObject())
-            QObject::connect(interface_->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setInterface()));
+        if (interface_ && interface_->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(interface_->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setInterface()));
 
         // Adjust subsetted properties
         if (interface_) {
@@ -327,7 +325,7 @@ void QUmlOperation::setQuery(bool isQuery)
 
     if (_isQuery != isQuery) {
         _isQuery = isQuery;
-        _modifiedResettableProperties << QStringLiteral("isQuery");
+        _qModelingObject->modifiedResettableProperties() << QStringLiteral("isQuery");
     }
 }
 
@@ -395,9 +393,9 @@ void QUmlOperation::addOwnedParameter(QUmlParameter *ownedParameter)
 
     if (!_ownedParameters.contains(ownedParameter)) {
         _ownedParameters.append(ownedParameter);
-        if (ownedParameter && ownedParameter->asQObject() && this->asQObject())
-            QObject::connect(ownedParameter->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeOwnedParameter(QObject *)));
-        ownedParameter->asQObject()->setParent(this->asQObject());
+        if (ownedParameter && ownedParameter->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(ownedParameter->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeOwnedParameter(QObject *)));
+        ownedParameter->asQModelingObject()->setParent(this->asQModelingObject());
 
         // Adjust opposite properties
         if (ownedParameter) {
@@ -412,8 +410,8 @@ void QUmlOperation::removeOwnedParameter(QUmlParameter *ownedParameter)
 
     if (_ownedParameters.contains(ownedParameter)) {
         _ownedParameters.removeAll(ownedParameter);
-        if (ownedParameter->asQObject())
-            ownedParameter->asQObject()->setParent(0);
+        if (ownedParameter->asQModelingObject())
+            ownedParameter->asQModelingObject()->setParent(0);
 
         // Adjust opposite properties
         if (ownedParameter) {
@@ -438,9 +436,9 @@ void QUmlOperation::addPostcondition(QUmlConstraint *postcondition)
 
     if (!_postconditions.contains(postcondition)) {
         _postconditions.insert(postcondition);
-        if (postcondition && postcondition->asQObject() && this->asQObject())
-            QObject::connect(postcondition->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removePostcondition(QObject *)));
-        postcondition->asQObject()->setParent(this->asQObject());
+        if (postcondition && postcondition->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(postcondition->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removePostcondition(QObject *)));
+        postcondition->asQModelingObject()->setParent(this->asQModelingObject());
 
         // Adjust subsetted properties
         addOwnedRule(postcondition);
@@ -453,8 +451,8 @@ void QUmlOperation::removePostcondition(QUmlConstraint *postcondition)
 
     if (_postconditions.contains(postcondition)) {
         _postconditions.remove(postcondition);
-        if (postcondition->asQObject())
-            postcondition->asQObject()->setParent(0);
+        if (postcondition->asQModelingObject())
+            postcondition->asQModelingObject()->setParent(0);
 
         // Adjust subsetted properties
         removeOwnedRule(postcondition);
@@ -477,9 +475,9 @@ void QUmlOperation::addPrecondition(QUmlConstraint *precondition)
 
     if (!_preconditions.contains(precondition)) {
         _preconditions.insert(precondition);
-        if (precondition && precondition->asQObject() && this->asQObject())
-            QObject::connect(precondition->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removePrecondition(QObject *)));
-        precondition->asQObject()->setParent(this->asQObject());
+        if (precondition && precondition->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(precondition->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removePrecondition(QObject *)));
+        precondition->asQModelingObject()->setParent(this->asQModelingObject());
 
         // Adjust subsetted properties
         addOwnedRule(precondition);
@@ -492,8 +490,8 @@ void QUmlOperation::removePrecondition(QUmlConstraint *precondition)
 
     if (_preconditions.contains(precondition)) {
         _preconditions.remove(precondition);
-        if (precondition->asQObject())
-            precondition->asQObject()->setParent(0);
+        if (precondition->asQModelingObject())
+            precondition->asQModelingObject()->setParent(0);
 
         // Adjust subsetted properties
         removeOwnedRule(precondition);
@@ -516,8 +514,8 @@ void QUmlOperation::addRaisedException(QUmlType *raisedException)
 
     if (!_raisedExceptions.contains(raisedException)) {
         _raisedExceptions.insert(raisedException);
-        if (raisedException && raisedException->asQObject() && this->asQObject())
-            QObject::connect(raisedException->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeRaisedException(QObject *)));
+        if (raisedException && raisedException->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(raisedException->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeRaisedException(QObject *)));
     }
 }
 
@@ -546,8 +544,8 @@ void QUmlOperation::addRedefinedOperation(QUmlOperation *redefinedOperation)
 
     if (!_redefinedOperations.contains(redefinedOperation)) {
         _redefinedOperations.insert(redefinedOperation);
-        if (redefinedOperation && redefinedOperation->asQObject() && this->asQObject())
-            QObject::connect(redefinedOperation->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeRedefinedOperation(QObject *)));
+        if (redefinedOperation && redefinedOperation->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(redefinedOperation->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeRedefinedOperation(QObject *)));
 
         // Adjust subsetted properties
         addRedefinedElement(redefinedOperation);
@@ -582,8 +580,8 @@ void QUmlOperation::setTemplateParameter(QUmlOperationTemplateParameter *templat
 
     if (_templateParameter != templateParameter) {
         _templateParameter = templateParameter;
-        if (templateParameter && templateParameter->asQObject() && this->asQObject())
-            QObject::connect(templateParameter->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setTemplateParameter()));
+        if (templateParameter && templateParameter->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(templateParameter->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setTemplateParameter()));
     }
 }
 
@@ -656,202 +654,5 @@ QSet<QUmlParameter *> QUmlOperation::returnResult() const
     qWarning("UmlOperation::returnResult(): to be implemented (operation)");
 
     return QSet<QUmlParameter *> ();
-}
-
-void QUmlOperation::setGroupProperties()
-{
-    const QMetaObject *metaObject = _qObject->metaObject();
-
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
-    _groupProperties.insert(QStringLiteral("QUmlTemplateableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedTemplateSignature"))));
-    _groupProperties.insert(QStringLiteral("QUmlTemplateableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("templateBindings"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("elementImports"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("importedMembers"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("members"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedMembers"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedRules"))));
-    _groupProperties.insert(QStringLiteral("QUmlNamespace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("packageImports"))));
-    _groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isLeaf"))));
-    _groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinedElements"))));
-    _groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinitionContexts"))));
-    _groupProperties.insert(QStringLiteral("QUmlFeature"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("featuringClassifiers"))));
-    _groupProperties.insert(QStringLiteral("QUmlFeature"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isStatic"))));
-    _groupProperties.insert(QStringLiteral("QUmlBehavioralFeature"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("concurrency"))));
-    _groupProperties.insert(QStringLiteral("QUmlBehavioralFeature"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isAbstract"))));
-    _groupProperties.insert(QStringLiteral("QUmlBehavioralFeature"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("methods"))));
-    _groupProperties.insert(QStringLiteral("QUmlBehavioralFeature"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedParameterSets"))));
-    _groupProperties.insert(QStringLiteral("QUmlParameterableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owningTemplateParameter"))));
-    _groupProperties.insert(QStringLiteral("QUmlOperation"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("bodyCondition"))));
-    _groupProperties.insert(QStringLiteral("QUmlOperation"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("class_"))));
-    _groupProperties.insert(QStringLiteral("QUmlOperation"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("datatype"))));
-    _groupProperties.insert(QStringLiteral("QUmlOperation"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("interface_"))));
-    _groupProperties.insert(QStringLiteral("QUmlOperation"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isOrdered"))));
-    _groupProperties.insert(QStringLiteral("QUmlOperation"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isQuery"))));
-    _groupProperties.insert(QStringLiteral("QUmlOperation"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isUnique"))));
-    _groupProperties.insert(QStringLiteral("QUmlOperation"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("lower"))));
-    _groupProperties.insert(QStringLiteral("QUmlOperation"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedParameters"))));
-    _groupProperties.insert(QStringLiteral("QUmlOperation"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("postconditions"))));
-    _groupProperties.insert(QStringLiteral("QUmlOperation"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("preconditions"))));
-    _groupProperties.insert(QStringLiteral("QUmlOperation"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("raisedExceptions"))));
-    _groupProperties.insert(QStringLiteral("QUmlOperation"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinedOperations"))));
-    _groupProperties.insert(QStringLiteral("QUmlOperation"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("templateParameter"))));
-    _groupProperties.insert(QStringLiteral("QUmlOperation"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("type"))));
-    _groupProperties.insert(QStringLiteral("QUmlOperation"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("upper"))));
-}
-
-void QUmlOperation::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("bodyCondition")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("bodyCondition")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlOperation");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("bodyCondition")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("bodyCondition")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("bodyCondition")][QtModeling::DocumentationRole] = QStringLiteral("An optional Constraint on the result values of an invocation of this Operation.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("bodyCondition")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("bodyCondition")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Namespace-ownedRule");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("bodyCondition")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("class_")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("class_")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlOperation");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("class_")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("class_")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("class_")][QtModeling::DocumentationRole] = QStringLiteral("The class that owns the operation.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("class_")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("class_")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Feature-featuringClassifier RedefinableElement-redefinitionContext NamedElement-namespace");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("class_")][QtModeling::OppositeEndRole] = QStringLiteral("Class-ownedOperation");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("datatype")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("datatype")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlOperation");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("datatype")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("datatype")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("datatype")][QtModeling::DocumentationRole] = QStringLiteral("The DataType that owns this Operation.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("datatype")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("datatype")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Feature-featuringClassifier RedefinableElement-redefinitionContext NamedElement-namespace");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("datatype")][QtModeling::OppositeEndRole] = QStringLiteral("DataType-ownedOperation");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("interface_")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("interface_")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlOperation");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("interface_")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("interface_")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("interface_")][QtModeling::DocumentationRole] = QStringLiteral("The Interface that owns this Operation.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("interface_")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("interface_")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Feature-featuringClassifier RedefinableElement-redefinitionContext NamedElement-namespace");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("interface_")][QtModeling::OppositeEndRole] = QStringLiteral("Interface-ownedOperation");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("isOrdered")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("isOrdered")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlOperation");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("isOrdered")][QtModeling::IsDerivedRole] = true;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("isOrdered")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("isOrdered")][QtModeling::DocumentationRole] = QStringLiteral("This information is derived from the return result for this Operation.Specifies whether the return parameter is ordered or not, if present.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("isOrdered")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("isOrdered")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("isOrdered")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("isQuery")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("isQuery")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlOperation");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("isQuery")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("isQuery")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("isQuery")][QtModeling::DocumentationRole] = QStringLiteral("Specifies whether an execution of the BehavioralFeature leaves the state of the system unchanged (isQuery=true) or whether side effects may occur (isQuery=false).");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("isQuery")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("isQuery")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("isQuery")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("isUnique")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("isUnique")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlOperation");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("isUnique")][QtModeling::IsDerivedRole] = true;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("isUnique")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("isUnique")][QtModeling::DocumentationRole] = QStringLiteral("Specifies whether the return parameter is unique or not, if present.This information is derived from the return result for this Operation.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("isUnique")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("isUnique")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("isUnique")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("lower")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("lower")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlOperation");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("lower")][QtModeling::IsDerivedRole] = true;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("lower")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("lower")][QtModeling::DocumentationRole] = QStringLiteral("This information is derived from the return result for this Operation.Specifies the lower multiplicity of the return parameter, if present.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("lower")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("lower")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("lower")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("ownedParameters")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("ownedParameters")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlOperation");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("ownedParameters")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("ownedParameters")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("ownedParameters")][QtModeling::DocumentationRole] = QStringLiteral("Specifies the ordered set of formal parameters of this BehavioralFeature.Specifies the parameters owned by this Operation.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("ownedParameters")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("BehavioralFeature-ownedParameter");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("ownedParameters")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("ownedParameters")][QtModeling::OppositeEndRole] = QStringLiteral("Parameter-operation");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("postconditions")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("postconditions")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlOperation");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("postconditions")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("postconditions")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("postconditions")][QtModeling::DocumentationRole] = QStringLiteral("An optional set of Constraints specifying the state of the system when the Operation is completed.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("postconditions")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("postconditions")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Namespace-ownedRule");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("postconditions")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("preconditions")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("preconditions")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlOperation");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("preconditions")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("preconditions")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("preconditions")][QtModeling::DocumentationRole] = QStringLiteral("An optional set of Constraints on the state of the system when the Operation is invoked.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("preconditions")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("preconditions")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Namespace-ownedRule");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("preconditions")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("raisedExceptions")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("raisedExceptions")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlOperation");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("raisedExceptions")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("raisedExceptions")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("raisedExceptions")][QtModeling::DocumentationRole] = QStringLiteral("References the Types representing exceptions that may be raised during an invocation of this operation.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("raisedExceptions")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("BehavioralFeature-raisedException");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("raisedExceptions")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("raisedExceptions")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("redefinedOperations")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("redefinedOperations")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlOperation");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("redefinedOperations")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("redefinedOperations")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("redefinedOperations")][QtModeling::DocumentationRole] = QStringLiteral("References the Operations that are redefined by this Operation.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("redefinedOperations")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("redefinedOperations")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("RedefinableElement-redefinedElement");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("redefinedOperations")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("templateParameter")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("templateParameter")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlOperation");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("templateParameter")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("templateParameter")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("templateParameter")][QtModeling::DocumentationRole] = QStringLiteral("The template parameter that exposes this element as a formal parameter.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("templateParameter")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("ParameterableElement-templateParameter");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("templateParameter")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("templateParameter")][QtModeling::OppositeEndRole] = QStringLiteral("OperationTemplateParameter-parameteredElement");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("type")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("type")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlOperation");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("type")][QtModeling::IsDerivedRole] = true;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("type")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("type")][QtModeling::DocumentationRole] = QStringLiteral("This information is derived from the return result for this Operation.Specifies the return result of the operation, if present.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("type")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("type")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("type")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("upper")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("upper")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlOperation");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("upper")][QtModeling::IsDerivedRole] = true;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("upper")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("upper")][QtModeling::DocumentationRole] = QStringLiteral("This information is derived from the return result for this Operation.Specifies the upper multiplicity of the return parameter, if present.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("upper")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("upper")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("upper")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
 }
 

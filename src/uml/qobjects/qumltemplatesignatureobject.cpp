@@ -39,6 +39,7 @@
 **
 ****************************************************************************/
 #include "qumltemplatesignatureobject_p.h"
+#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlTemplateSignature>
 #include <QtUml/QUmlComment>
@@ -48,16 +49,18 @@
 
 QT_BEGIN_NAMESPACE
 
-QUmlTemplateSignatureObject::QUmlTemplateSignatureObject(QUmlTemplateSignature *qModelingObject)
+QUmlTemplateSignatureObject::QUmlTemplateSignatureObject(QUmlTemplateSignature *qModelingElement)
 {
-    setProperty("modelingObject", QVariant::fromValue(static_cast<QModelingObject *>(qModelingObject)));
+    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(qModelingElement)));
+    setGroupProperties();
+    setPropertyData();
 }
 
 QUmlTemplateSignatureObject::~QUmlTemplateSignatureObject()
 {
     if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingobjectproperty_cast<QUmlTemplateSignature *>(this)->deletingFromQObject = true;
-        delete qmodelingobjectproperty_cast<QUmlComment *>(this);
+        qmodelingelementproperty_cast<QUmlTemplateSignature *>(this)->deletingFromQModelingObject = true;
+        delete qmodelingelementproperty_cast<QUmlComment *>(this);
     }
 }
 
@@ -66,25 +69,25 @@ QUmlTemplateSignatureObject::~QUmlTemplateSignatureObject()
 const QSet<QObject *> QUmlTemplateSignatureObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlTemplateSignature *>(this)->ownedComments())
-        set.insert(element->asQObject());
+    foreach (QUmlComment *element, qmodelingelementproperty_cast<QUmlTemplateSignature *>(this)->ownedComments())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 const QSet<QObject *> QUmlTemplateSignatureObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlTemplateSignature *>(this)->ownedElements())
-        set.insert(element->asQObject());
+    foreach (QUmlElement *element, qmodelingelementproperty_cast<QUmlTemplateSignature *>(this)->ownedElements())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 QObject *QUmlTemplateSignatureObject::owner() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlTemplateSignature *>(this)->owner())
+    if (!qmodelingelementproperty_cast<QUmlTemplateSignature *>(this)->owner())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlTemplateSignature *>(this)->owner()->asQObject();
+        return qmodelingelementproperty_cast<QUmlTemplateSignature *>(this)->owner()->asQModelingObject();
 }
 
 // OWNED ATTRIBUTES [TemplateSignature]
@@ -92,25 +95,25 @@ QObject *QUmlTemplateSignatureObject::owner() const
 const QList<QObject *> QUmlTemplateSignatureObject::ownedParameters() const
 {
     QList<QObject *> list;
-    foreach (QUmlTemplateParameter *element, qmodelingobjectproperty_cast<QUmlTemplateSignature *>(this)->ownedParameters())
-        list.append(element->asQObject());
+    foreach (QUmlTemplateParameter *element, qmodelingelementproperty_cast<QUmlTemplateSignature *>(this)->ownedParameters())
+        list.append(element->asQModelingObject());
     return list;
 }
 
 const QList<QObject *> QUmlTemplateSignatureObject::parameters() const
 {
     QList<QObject *> list;
-    foreach (QUmlTemplateParameter *element, qmodelingobjectproperty_cast<QUmlTemplateSignature *>(this)->parameters())
-        list.append(element->asQObject());
+    foreach (QUmlTemplateParameter *element, qmodelingelementproperty_cast<QUmlTemplateSignature *>(this)->parameters())
+        list.append(element->asQModelingObject());
     return list;
 }
 
 QObject *QUmlTemplateSignatureObject::template_() const
 {
-    if (!qmodelingobjectproperty_cast<QUmlTemplateSignature *>(this)->template_())
+    if (!qmodelingelementproperty_cast<QUmlTemplateSignature *>(this)->template_())
         return 0;
     else
-        return qmodelingobjectproperty_cast<QUmlTemplateSignature *>(this)->template_()->asQObject();
+        return qmodelingelementproperty_cast<QUmlTemplateSignature *>(this)->template_()->asQModelingObject();
 }
 
 // OPERATIONS [Element]
@@ -118,68 +121,119 @@ QObject *QUmlTemplateSignatureObject::template_() const
 QSet<QObject *> QUmlTemplateSignatureObject::allOwnedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlTemplateSignature *>(this)->allOwnedElements())
-        set.insert(element->asQObject());
+    foreach (QUmlElement *element, qmodelingelementproperty_cast<QUmlTemplateSignature *>(this)->allOwnedElements())
+        set.insert(element->asQModelingObject());
     return set;
 }
 
 bool QUmlTemplateSignatureObject::mustBeOwned() const
 {
-    return qmodelingobjectproperty_cast<QUmlTemplateSignature *>(this)->mustBeOwned();
+    return qmodelingelementproperty_cast<QUmlTemplateSignature *>(this)->mustBeOwned();
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Element]
 
 void QUmlTemplateSignatureObject::addOwnedComment(QObject *ownedComment)
 {
-    qmodelingobjectproperty_cast<QUmlTemplateSignature *>(this)->addOwnedComment(qmodelingobjectproperty_cast<QUmlComment *>(ownedComment));
+    qmodelingelementproperty_cast<QUmlTemplateSignature *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
 }
 
 void QUmlTemplateSignatureObject::removeOwnedComment(QObject *ownedComment)
 {
-    qmodelingobjectproperty_cast<QUmlTemplateSignature *>(this)->removeOwnedComment(qmodelingobjectproperty_cast<QUmlComment *>(ownedComment));
+    qmodelingelementproperty_cast<QUmlTemplateSignature *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
 }
 
 void QUmlTemplateSignatureObject::addOwnedElement(QObject *ownedElement)
 {
-    qmodelingobjectproperty_cast<QUmlTemplateSignature *>(this)->addOwnedElement(qmodelingobjectproperty_cast<QUmlElement *>(ownedElement));
+    qmodelingelementproperty_cast<QUmlTemplateSignature *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
 }
 
 void QUmlTemplateSignatureObject::removeOwnedElement(QObject *ownedElement)
 {
-    qmodelingobjectproperty_cast<QUmlTemplateSignature *>(this)->removeOwnedElement(qmodelingobjectproperty_cast<QUmlElement *>(ownedElement));
+    qmodelingelementproperty_cast<QUmlTemplateSignature *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
 }
 
 void QUmlTemplateSignatureObject::setOwner(QObject *owner)
 {
-    qmodelingobjectproperty_cast<QUmlTemplateSignature *>(this)->setOwner(qmodelingobjectproperty_cast<QUmlElement *>(owner));
+    qmodelingelementproperty_cast<QUmlTemplateSignature *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [TemplateSignature]
 
 void QUmlTemplateSignatureObject::addOwnedParameter(QObject *ownedParameter)
 {
-    qmodelingobjectproperty_cast<QUmlTemplateSignature *>(this)->addOwnedParameter(qmodelingobjectproperty_cast<QUmlTemplateParameter *>(ownedParameter));
+    qmodelingelementproperty_cast<QUmlTemplateSignature *>(this)->addOwnedParameter(qmodelingelementproperty_cast<QUmlTemplateParameter *>(ownedParameter));
 }
 
 void QUmlTemplateSignatureObject::removeOwnedParameter(QObject *ownedParameter)
 {
-    qmodelingobjectproperty_cast<QUmlTemplateSignature *>(this)->removeOwnedParameter(qmodelingobjectproperty_cast<QUmlTemplateParameter *>(ownedParameter));
+    qmodelingelementproperty_cast<QUmlTemplateSignature *>(this)->removeOwnedParameter(qmodelingelementproperty_cast<QUmlTemplateParameter *>(ownedParameter));
 }
 
 void QUmlTemplateSignatureObject::addParameter(QObject *parameter)
 {
-    qmodelingobjectproperty_cast<QUmlTemplateSignature *>(this)->addParameter(qmodelingobjectproperty_cast<QUmlTemplateParameter *>(parameter));
+    qmodelingelementproperty_cast<QUmlTemplateSignature *>(this)->addParameter(qmodelingelementproperty_cast<QUmlTemplateParameter *>(parameter));
 }
 
 void QUmlTemplateSignatureObject::removeParameter(QObject *parameter)
 {
-    qmodelingobjectproperty_cast<QUmlTemplateSignature *>(this)->removeParameter(qmodelingobjectproperty_cast<QUmlTemplateParameter *>(parameter));
+    qmodelingelementproperty_cast<QUmlTemplateSignature *>(this)->removeParameter(qmodelingelementproperty_cast<QUmlTemplateParameter *>(parameter));
 }
 
 void QUmlTemplateSignatureObject::setTemplate(QObject *template_)
 {
-    qmodelingobjectproperty_cast<QUmlTemplateSignature *>(this)->setTemplate(qmodelingobjectproperty_cast<QUmlTemplateableElement *>(template_));
+    qmodelingelementproperty_cast<QUmlTemplateSignature *>(this)->setTemplate(qmodelingelementproperty_cast<QUmlTemplateableElement *>(template_));
+}
+
+
+void QUmlTemplateSignatureObject::setGroupProperties()
+{
+    Q_D(QModelingObject);
+    const QMetaObject *metaObject = this->metaObject();
+
+    d->propertyGroups << QStringLiteral("QObject");
+    d->groupProperties.insert(QStringLiteral("QObject"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("objectName"))));
+
+    d->propertyGroups << QStringLiteral("QUmlElement");
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
+    d->groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
+
+    d->propertyGroups << QStringLiteral("QUmlTemplateSignature");
+    d->groupProperties.insert(QStringLiteral("QUmlTemplateSignature"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedParameters"))));
+    d->groupProperties.insert(QStringLiteral("QUmlTemplateSignature"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("parameters"))));
+    d->groupProperties.insert(QStringLiteral("QUmlTemplateSignature"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("template_"))));
+}
+
+void QUmlTemplateSignatureObject::setPropertyData()
+{
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateSignature, ownedParameters, AggregationRole, QStringLiteral("composite"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateSignature, ownedParameters, PropertyClassRole, QStringLiteral("QUmlTemplateSignature"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateSignature, ownedParameters, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateSignature, ownedParameters, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateSignature, ownedParameters, DocumentationRole, QStringLiteral("The formal template parameters that are owned by this template signature."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateSignature, ownedParameters, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateSignature, ownedParameters, SubsettedPropertiesRole, QStringLiteral("TemplateSignature-parameter Element-ownedElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateSignature, ownedParameters, OppositeEndRole, QStringLiteral("TemplateParameter-signature"));
+
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateSignature, parameters, AggregationRole, QStringLiteral("none"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateSignature, parameters, PropertyClassRole, QStringLiteral("QUmlTemplateSignature"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateSignature, parameters, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateSignature, parameters, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateSignature, parameters, DocumentationRole, QStringLiteral("The ordered set of all formal template parameters for this template signature."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateSignature, parameters, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateSignature, parameters, SubsettedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateSignature, parameters, OppositeEndRole, QStringLiteral(""));
+
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateSignature, template_, AggregationRole, QStringLiteral("none"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateSignature, template_, PropertyClassRole, QStringLiteral("QUmlTemplateSignature"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateSignature, template_, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateSignature, template_, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateSignature, template_, DocumentationRole, QStringLiteral("The element that owns this template signature."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateSignature, template_, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateSignature, template_, SubsettedPropertiesRole, QStringLiteral("Element-owner"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateSignature, template_, OppositeEndRole, QStringLiteral("TemplateableElement-ownedTemplateSignature"));
+
 }
 
 QT_END_NAMESPACE

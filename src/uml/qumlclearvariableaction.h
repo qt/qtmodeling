@@ -45,7 +45,6 @@
 
 #include <QtUml/QUmlVariableAction>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -55,16 +54,13 @@ QT_MODULE(QtUml)
 class Q_UML_EXPORT QUmlClearVariableAction : public QUmlVariableAction
 {
 public:
-    explicit QUmlClearVariableAction(bool createQObject = true);
+    explicit QUmlClearVariableAction(bool createQModelingObject = true);
     virtual ~QUmlClearVariableAction();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
 
 protected:
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

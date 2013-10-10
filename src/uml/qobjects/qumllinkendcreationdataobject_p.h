@@ -43,7 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtCore/QObject>
+#include <QtModeling/QModelingObject>
 
 QT_BEGIN_HEADER
 
@@ -52,9 +52,12 @@ QT_BEGIN_NAMESPACE
 QT_MODULE(QtUml)
 
 class QUmlLinkEndCreationData;
-class Q_UML_EXPORT QUmlLinkEndCreationDataObject : public QObject
+class QModelingObjectPrivate;
+class Q_UML_EXPORT QUmlLinkEndCreationDataObject : public QModelingObject
 {
     Q_OBJECT
+    Q_DISABLE_COPY(QUmlLinkEndCreationDataObject)
+    Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [Element]
     Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
@@ -71,7 +74,7 @@ class Q_UML_EXPORT QUmlLinkEndCreationDataObject : public QObject
     Q_PROPERTY(bool isReplaceAll READ isReplaceAll WRITE setReplaceAll RESET unsetReplaceAll)
 
 public:
-    Q_INVOKABLE explicit QUmlLinkEndCreationDataObject(QUmlLinkEndCreationData *qModelingObject);
+    Q_INVOKABLE explicit QUmlLinkEndCreationDataObject(QUmlLinkEndCreationData *qModelingElement);
     virtual ~QUmlLinkEndCreationDataObject();
 
     // Owned attributes [Element]
@@ -111,6 +114,10 @@ public Q_SLOTS:
     void setInsertAt(QObject *insertAt = 0);
     void setReplaceAll(bool isReplaceAll);
     void unsetReplaceAll();
+
+protected:
+    virtual void setGroupProperties();
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

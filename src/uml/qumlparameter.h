@@ -48,7 +48,6 @@
 
 
 #include <QtUml/QtUmlNamespace>
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -62,10 +61,10 @@ class QUmlValueSpecification;
 class Q_UML_EXPORT QUmlParameter : public QUmlMultiplicityElement, public QUmlConnectableElement
 {
 public:
-    explicit QUmlParameter(bool createQObject = true);
+    explicit QUmlParameter(bool createQModelingObject = true);
     virtual ~QUmlParameter();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
     QString default_() const;
@@ -94,9 +93,6 @@ protected:
     bool _isStream;
     QUmlOperation *_operation;
     QSet<QUmlParameterSet *> _parameterSets;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

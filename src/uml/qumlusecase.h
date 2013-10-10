@@ -45,7 +45,6 @@
 
 #include <QtUml/QUmlBehavioredClassifier>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -60,10 +59,10 @@ class QUmlInclude;
 class Q_UML_EXPORT QUmlUseCase : public QUmlBehavioredClassifier
 {
 public:
-    explicit QUmlUseCase(bool createQObject = true);
+    explicit QUmlUseCase(bool createQModelingObject = true);
     virtual ~QUmlUseCase();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
     const QSet<QUmlExtend *> extends() const;
@@ -87,9 +86,6 @@ protected:
     QSet<QUmlExtensionPoint *> _extensionPoints;
     QSet<QUmlInclude *> _includes;
     QSet<QUmlClassifier *> _subjects;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

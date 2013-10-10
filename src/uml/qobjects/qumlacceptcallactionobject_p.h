@@ -43,7 +43,7 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtCore/QObject>
+#include <QtModeling/QModelingObject>
 
 #include <QtUml/QtUmlNamespace>
 
@@ -54,9 +54,12 @@ QT_BEGIN_NAMESPACE
 QT_MODULE(QtUml)
 
 class QUmlAcceptCallAction;
-class Q_UML_EXPORT QUmlAcceptCallActionObject : public QObject
+class QModelingObjectPrivate;
+class Q_UML_EXPORT QUmlAcceptCallActionObject : public QModelingObject
 {
     Q_OBJECT
+    Q_DISABLE_COPY(QUmlAcceptCallActionObject)
+    Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [Element]
     Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
@@ -106,7 +109,7 @@ class Q_UML_EXPORT QUmlAcceptCallActionObject : public QObject
     Q_PROPERTY(QObject * returnInformation READ returnInformation WRITE setReturnInformation)
 
 public:
-    Q_INVOKABLE explicit QUmlAcceptCallActionObject(QUmlAcceptCallAction *qModelingObject);
+    Q_INVOKABLE explicit QUmlAcceptCallActionObject(QUmlAcceptCallAction *qModelingElement);
     virtual ~QUmlAcceptCallActionObject();
 
     // Owned attributes [Element]
@@ -239,6 +242,10 @@ public Q_SLOTS:
 
     // Slots for owned attributes [AcceptCallAction]
     void setReturnInformation(QObject *returnInformation = 0);
+
+protected:
+    virtual void setGroupProperties();
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

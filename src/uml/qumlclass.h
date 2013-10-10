@@ -46,7 +46,6 @@
 #include <QtUml/QUmlEncapsulatedClassifier>
 #include <QtUml/QUmlBehavioredClassifier>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -63,10 +62,10 @@ class QUmlReception;
 class Q_UML_EXPORT QUmlClass : public QUmlEncapsulatedClassifier, public QUmlBehavioredClassifier
 {
 public:
-    explicit QUmlClass(bool createQObject = true);
+    explicit QUmlClass(bool createQModelingObject = true);
     virtual ~QUmlClass();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
     const QSet<QUmlExtension *> extensions() const;
@@ -102,9 +101,6 @@ protected:
     QList<QUmlProperty *> _ownedAttributes;
     QList<QUmlOperation *> _ownedOperations;
     QSet<QUmlReception *> _ownedReceptions;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

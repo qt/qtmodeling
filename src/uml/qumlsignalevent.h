@@ -45,7 +45,6 @@
 
 #include <QtUml/QUmlMessageEvent>
 
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -57,10 +56,10 @@ class QUmlSignal;
 class Q_UML_EXPORT QUmlSignalEvent : public QUmlMessageEvent
 {
 public:
-    explicit QUmlSignalEvent(bool createQObject = true);
+    explicit QUmlSignalEvent(bool createQModelingObject = true);
     virtual ~QUmlSignalEvent();
 
-    QModelingObject *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
     QUmlSignal *signal() const;
@@ -68,9 +67,6 @@ public:
 
 protected:
     QUmlSignal *_signal;
-
-    virtual void setGroupProperties();
-    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE
