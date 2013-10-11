@@ -51,8 +51,9 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtModelingWidgets)
 
-class QModelingObjectModelPrivate;
+class QModelingObject;
 
+class QModelingObjectModelPrivate;
 class Q_MODELINGWIDGETS_EXPORT QModelingObjectModel : public QAbstractItemModel
 {
     Q_OBJECT
@@ -63,7 +64,7 @@ class Q_MODELINGWIDGETS_EXPORT QModelingObjectModel : public QAbstractItemModel
 public:
     explicit QModelingObjectModel(QObject *parent = 0);
 
-    QList<QObject *> modelingObjects() const;
+    QList<QModelingObject *> modelingObjects() const;
 
     virtual QModelIndex index(int row, int column, const QModelIndex &parent = QModelIndex()) const;
     virtual QModelIndex parent(const QModelIndex &child) const;
@@ -75,7 +76,7 @@ public:
     Qt::ItemFlags flags(const QModelIndex &index) const;
 
 public Q_SLOTS:
-    void addModelingObject(QObject *qObject);
+    void addModelingObject(QModelingObject *modelingObject);
     void updateIndex(const QModelIndex &index);
     void clear();
 };

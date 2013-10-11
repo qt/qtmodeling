@@ -57,7 +57,7 @@ class Q_MODELINGWIDGETS_EXPORT QModelingObjectModelPrivate : public QAbstractIte
 public:
     explicit QModelingObjectModelPrivate();
 
-    QObjectList modelingObjects;
+    QList<QModelingObject *> modelingObjects;
 };
 
 QT_END_NAMESPACE

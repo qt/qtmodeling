@@ -84,8 +84,8 @@ private:
 
 QT_END_NAMESPACE
 
-Q_DECLARE_METATYPE (QT_PREPEND_NAMESPACE(QtModeling::MetaPropertyDataRole))
-Q_DECLARE_METATYPE (QT_PREPEND_NAMESPACE(QtModeling::ModelingObjectRole))
+Q_DECLARE_METATYPE (QtModeling::MetaPropertyDataRole)
+Q_DECLARE_METATYPE (QtModeling::ModelingObjectRole)
 
 QT_END_HEADER
 

@@ -111,12 +111,12 @@ MainWindow::MainWindow(QWidget *parent) :
     QModelingObjectPropertyModel *modelingObjectPropertyModel = new QModelingObjectPropertyModel(_modelingObjectModel);
     ui->propertyEditor->setModel(modelingObjectPropertyModel);
 
-    connect(ui->modelingObjectView, &QModelingObjectView::modelingObjectChanged,
-            modelingObjectPropertyModel, &QModelingObjectPropertyModel::setModelingObject);
-    //connect(ui->modelingObjectView, &QModelingObjectView::addToView, this, &MainWindow::addToView);
-    connect(ui->modelingObjectView, SIGNAL(modelingObjectChanged(QModelingElement*)), SLOT(modelingObjectChanged(QModelingElement*)));
-    connect(modelingObjectPropertyModel, &QModelingObjectPropertyModel::indexChanged,
-            _modelingObjectModel, &QModelingObjectModel::updateIndex);
+//    connect(ui->modelingObjectView, &QModelingObjectView::modelingObjectChanged,
+//            modelingObjectPropertyModel, &QModelingObjectPropertyModel::setModelingObject);
+//    connect(ui->modelingObjectView, &QModelingObjectView::addToView, this, &MainWindow::addToView);
+//    connect(ui->modelingObjectView, SIGNAL(modelingObjectChanged(QModelingElement*)), SLOT(modelingObjectChanged(QModelingElement*)));
+//    connect(modelingObjectPropertyModel, &QModelingObjectPropertyModel::indexChanged,
+//            _modelingObjectModel, &QModelingObjectModel::updateIndex);
 
     loadPlugins();
 

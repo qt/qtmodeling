@@ -84,12 +84,12 @@ void QXmiReader::loadPlugins()
     QMetaModelPlugin *metaModelPlugin = 0;
     foreach (QString pluginPath, QCoreApplication::libraryPaths()) {
         QDir pluginsDir(pluginPath);
-        pluginsDir.cd(QString::fromLatin1("metamodels"));
+        pluginsDir.cd(QStringLiteral("metamodels"));
         foreach (QString fileName, pluginsDir.entryList(QDir::Files)) {
             QPluginLoader loader(pluginsDir.absoluteFilePath(fileName));
             QObject *plugin = loader.instance();
             if (plugin && (metaModelPlugin = qobject_cast<QMetaModelPlugin *>(plugin)))
-                d->metaModelPlugins.insert(loader.metaData().value(QString::fromLatin1("MetaData")).toObject().value(QString::fromLatin1("MetaModelNamespaceUri")).toString(), QPair<QMetaModelPlugin *, QJsonObject>(metaModelPlugin, loader.metaData().value(QString::fromLatin1("MetaData")).toObject()));
+                d->metaModelPlugins.insert(loader.metaData().value(QStringLiteral("MetaData")).toObject().value(QStringLiteral("MetaModelNamespaceUri")).toString(), QPair<QMetaModelPlugin *, QJsonObject>(metaModelPlugin, loader.metaData().value(QStringLiteral("MetaData")).toObject()));
         }
     }
 }
@@ -118,7 +118,7 @@ QList<QModelingElement *> QXmiReader::readFile(QIODevice *device, QString import
         if (!reader.namespaceUri().toString().isEmpty())
             currentNamespaceUri = reader.namespaceUri().toString();
 
-        if (!importedId.isEmpty() && !importedIdFound && reader.attributes().value(QString::fromLatin1("xmi:id")).toString() != importedId)
+        if (!importedId.isEmpty() && !importedIdFound && reader.attributes().value(QStringLiteral("xmi:id")).toString() != importedId)
             continue;
 
         if (!importedId.isEmpty() && !importedIdFound)
@@ -127,18 +127,18 @@ QList<QModelingElement *> QXmiReader::readFile(QIODevice *device, QString import
         if (reader.isStartElement()) {
             idStack.push(reader.name().toString());
             QString elementName = reader.name().toString();
-            if (elementName == QString::fromLatin1("importedPackage") || elementName == QString::fromLatin1("importedElement") || elementName == QString::fromLatin1("appliedProfile")) {
-                QFile importFile(reader.attributes().value(QString::fromLatin1("href")).toString().split(QString::fromLatin1("#")).first());
+            if (elementName == QStringLiteral("importedPackage") || elementName == QStringLiteral("importedElement") || elementName == QStringLiteral("appliedProfile")) {
+                QFile importFile(reader.attributes().value(QStringLiteral("href")).toString().split('#').first());
                 if (!importFile.open(QFile::ReadOnly | QFile::Text))
-                    d->errors << QString::fromLatin1("Could not open imported file '%1'").arg(importFile.fileName());
-                QList<QModelingElement *> importList = readFile(&importFile, reader.attributes().value(QString::fromLatin1("href")).toString().split(QString::fromLatin1("#")).last());
+                    d->errors << QStringLiteral("Could not open imported file '%1'").arg(importFile.fileName());
+                QList<QModelingElement *> importList = readFile(&importFile, reader.attributes().value(QStringLiteral("href")).toString().split('#').last());
                 if (importList.count() > 0) {
-                    if (elementName == QString::fromLatin1("importedPackage"))
-                        importList.first()->asQModelingObject()->setProperty("role", QtModeling::ImportedPackageRole);
-                    else if (elementName == QString::fromLatin1("importedElement"))
-                        importList.first()->asQModelingObject()->setProperty("role", QtModeling::ImportedElementRole);
-                    else if (elementName == QString::fromLatin1("appliedProfile"))
-                        importList.first()->asQModelingObject()->setProperty("role", QtModeling::AppliedProfileRole);
+                    if (elementName == QStringLiteral("importedPackage"))
+                        importList.first()->asQModelingObject()->setProperty("role", QVariant::fromValue(QtModeling::ImportedPackageRole));
+                    else if (elementName == QStringLiteral("importedElement"))
+                        importList.first()->asQModelingObject()->setProperty("role", QVariant::fromValue(QtModeling::ImportedElementRole));
+                    else if (elementName == QStringLiteral("appliedProfile"))
+                        importList.first()->asQModelingObject()->setProperty("role", QVariant::fromValue(QtModeling::AppliedProfileRole));
                 }
                 foreach (QModelingElement *importedObject, importList) {
                     modelingObjectList.append(importedObject);
@@ -150,31 +150,31 @@ QList<QModelingElement *> QXmiReader::readFile(QIODevice *device, QString import
                 if (metaModelPlugin) {
                     if (d->initMetaModel)
                        metaModelPlugin->initMetaModel(d->scriptEngine);
-                    d->xmlNamespaceToImplementationNamespace.insert(namespaceDeclaration.prefix().toString(), d->metaModelPlugins.value(namespaceDeclaration.namespaceUri().toString()).second.value(QString::fromLatin1("MetaModelPrefix")).toString());
+                    d->xmlNamespaceToImplementationNamespace.insert(namespaceDeclaration.prefix().toString(), d->metaModelPlugins.value(namespaceDeclaration.namespaceUri().toString()).second.value(QStringLiteral("MetaModelPrefix")).toString());
                 }
                 else {
-                    d->errors << QString::fromLatin1("Could not find metamodel for namespace URI '%1'").arg(namespaceDeclaration.namespaceUri().toString());
+                    d->errors << QStringLiteral("Could not find metamodel for namespace URI '%1'").arg(namespaceDeclaration.namespaceUri().toString());
                 }
             }
-            QString xmiType = reader.attributes().value(QString::fromLatin1("xmi:type")).toString();
+            QString xmiType = reader.attributes().value(QStringLiteral("xmi:type")).toString();
             if (xmiType.isEmpty() && reader.qualifiedName() != reader.name())
                 xmiType = reader.qualifiedName().toString();
             if (xmiType.isEmpty() || d->xmlNamespaceToImplementationNamespace[xmiType.split(':').first()].isEmpty())
                 continue;
-            xmiType = QString::fromLatin1("%1%2").arg(d->xmlNamespaceToImplementationNamespace[xmiType.split(':').first()]).arg(xmiType.split(':').last());
-            QString instanceName = reader.attributes().value(QString::fromLatin1("name")).toString();
+            xmiType = QStringLiteral("%1%2").arg(d->xmlNamespaceToImplementationNamespace[xmiType.split(':').first()]).arg(xmiType.split(':').last());
+            QString instanceName = reader.attributes().value(QStringLiteral("name")).toString();
             if (instanceName.isEmpty())
-                instanceName = reader.attributes().value(QString::fromLatin1("xmi:id")).toString();
+                instanceName = reader.attributes().value(QStringLiteral("xmi:id")).toString();
             QModelingElement *modelingObject = createInstance(currentNamespaceUri, xmiType, instanceName);
             if (modelingObject) {
-                d->idMap.insert(reader.attributes().value(QString::fromLatin1("xmi:id")).toString(), modelingObject);
+                d->idMap.insert(reader.attributes().value(QStringLiteral("xmi:id")).toString(), modelingObject);
                 if (!rootElement) {
                     rootElement = modelingObject;
                     modelingObjectList.insert(insertPosition, rootElement);
                 }
             }
             else
-                d->errors << QString::fromLatin1("Could not create instance with id '%1' and type '%2'. Corresponding metamodel loaded ?").arg(instanceName).arg(xmiType);
+                d->errors << QStringLiteral("Could not create instance with id '%1' and type '%2'. Corresponding metamodel loaded ?").arg(instanceName).arg(xmiType);
         }
         else if (reader.isEndElement()) {
             idStack.pop();
@@ -197,18 +197,18 @@ QList<QModelingElement *> QXmiReader::readFile(QIODevice *device, QString import
     while (!reader.atEnd()) {
         reader.readNext();
 
-        if (!importedId.isEmpty() && !importedIdFound && reader.attributes().value(QString::fromLatin1("xmi:id")).toString() != importedId)
+        if (!importedId.isEmpty() && !importedIdFound && reader.attributes().value(QStringLiteral("xmi:id")).toString() != importedId)
             continue;
 
         if (!importedId.isEmpty() && !importedIdFound)
             importedIdFound = true;
 
         if (reader.isStartElement()) {
-            QString id = reader.attributes().value(QString::fromLatin1("xmi:id")).toString();
+            QString id = reader.attributes().value(QStringLiteral("xmi:id")).toString();
             if (id.isEmpty())
-                id = reader.attributes().value(QString::fromLatin1("xmi:idref")).toString();
+                id = reader.attributes().value(QStringLiteral("xmi:idref")).toString();
             if (id.isEmpty())
-                id = reader.attributes().value(QString::fromLatin1("href")).toString().split(QString::fromLatin1("#")).last();
+                id = reader.attributes().value(QStringLiteral("href")).toString().split('#').last();
             if (id.isEmpty() && !stack.isEmpty())
                 continue;
 
@@ -221,8 +221,8 @@ QList<QModelingElement *> QXmiReader::readFile(QIODevice *device, QString import
                     if ((propertyIndex = metaObject->indexOfProperty(attribute.name().toString().toLatin1())) != -1) {
                         QMetaProperty metaProperty = metaObject->property(propertyIndex);
                         if (metaProperty.type() == QVariant::Bool) {
-                            if (!modelingObject->asQModelingObject()->setProperty(attribute.name().toString().toLatin1(), attribute.value().toString() == QString::fromLatin1("true") ? true:false))
-                                d->errors << QString::fromLatin1("Error when setting property '%1' of object with id '%2'.").arg(attribute.name().toString()).arg(id);
+                            if (!modelingObject->asQModelingObject()->setProperty(attribute.name().toString().toLatin1(), attribute.value().toString() == QStringLiteral("true") ? true:false))
+                                d->errors << QStringLiteral("Error when setting property '%1' of object with id '%2'.").arg(attribute.name().toString()).arg(id);
                         }
                         else if (metaProperty.isEnumType()) {
                             QString enumName = attribute.value().toString();
@@ -230,11 +230,11 @@ QList<QModelingElement *> QXmiReader::readFile(QIODevice *device, QString import
                             QString propertyName = QString::fromLatin1(metaProperty.name());
                             enumName.prepend(propertyName.left(1).toUpper() + propertyName.mid(1));
                             if (!modelingObject->asQModelingObject()->setProperty(attribute.name().toString().toLatin1(), enumName))
-                                d->errors << QString::fromLatin1("Error when setting property '%1' of object with id '%2'.").arg(attribute.name().toString()).arg(id);
+                                d->errors << QStringLiteral("Error when setting property '%1' of object with id '%2'.").arg(attribute.name().toString()).arg(id);
                         }
                         else if (metaProperty.type() == QVariant::String) {
                             if (!modelingObject->asQModelingObject()->setProperty(attribute.name().toString().toLatin1(), attribute.value().toString()))
-                                d->errors << QString::fromLatin1("Error when setting property '%1' of object with id '%2'.").arg(attribute.name().toString()).arg(id);
+                                d->errors << QStringLiteral("Error when setting property '%1' of object with id '%2'.").arg(attribute.name().toString()).arg(id);
                         }
                         else if (metaProperty.type() == QVariant::UserType) {
                             QModelingElement *propertyObject = d->idMap.value(attribute.value().toString());
@@ -245,20 +245,20 @@ QList<QModelingElement *> QXmiReader::readFile(QIODevice *device, QString import
                                 int i;
                                 for (i = 0; i < methodCount; ++i) {
                                     QMetaMethod metaMethod = modelingObject->asQModelingObject()->metaObject()->method(i);
-                                    if (QString::fromLatin1(metaMethod.name()) == QString::fromLatin1("set%1").arg(elementName)) {
+                                    if (QString::fromLatin1(metaMethod.name()) == QStringLiteral("set%1").arg(elementName)) {
                                         if (!metaMethod.invoke(modelingObject->asQModelingObject(), ::Q_ARG(QObject *, propertyObject->asQModelingObject())))
-                                            d->errors << QString::fromLatin1("Error when invoking metamethod '%1' on object '%2'.").arg(QString::fromLatin1(metaMethod.name())).arg(propertyObject->asQModelingObject()->objectName());
+                                            d->errors << QStringLiteral("Error when invoking metamethod '%1' on object '%2'.").arg(QString::fromLatin1(metaMethod.name())).arg(propertyObject->asQModelingObject()->objectName());
                                         break;
                                     }
                                 }
                                 if (i == methodCount)
-                                    d->errors << QString::fromLatin1("Metamethod add/set'%1' not found on object '%2'.").arg(elementName).arg(propertyObject->asQModelingObject()->objectName());
+                                    d->errors << QStringLiteral("Metamethod add/set'%1' not found on object '%2'.").arg(elementName).arg(propertyObject->asQModelingObject()->objectName());
 
                             }
                         }
                     }
                     else
-                        d->errors << QString::fromLatin1("Property '%1' not found in object of type '%2'. Corresponding metamodel loaded ?").arg(attribute.name().toString()).arg(QString::fromLatin1(modelingObject->asQModelingObject()->metaObject()->className()));
+                        d->errors << QStringLiteral("Property '%1' not found in object of type '%2'. Corresponding metamodel loaded ?").arg(attribute.name().toString()).arg(QString::fromLatin1(modelingObject->asQModelingObject()->metaObject()->className()));
                 }
                 if (!stack.isEmpty()) {
                     QModelingElement *containerObject = stack.top().second;
@@ -268,20 +268,20 @@ QList<QModelingElement *> QXmiReader::readFile(QIODevice *device, QString import
                     int i;
                     for (i = 0; i < methodCount; ++i) {
                         QMetaMethod metaMethod = containerObject->asQModelingObject()->metaObject()->method(i);
-                        if (QString::fromLatin1(metaMethod.name()) == QString::fromLatin1("add%1").arg(elementName) ||
-                            QString::fromLatin1(metaMethod.name()) == QString::fromLatin1("set%1").arg(elementName)) {
+                        if (QString::fromLatin1(metaMethod.name()) == QStringLiteral("add%1").arg(elementName) ||
+                            QString::fromLatin1(metaMethod.name()) == QStringLiteral("set%1").arg(elementName)) {
                             if (!metaMethod.invoke(containerObject->asQModelingObject(), ::Q_ARG(QObject *, modelingObject->asQModelingObject())))
-                                d->errors << QString::fromLatin1("Error when invoking metamethod '%1' on object '%2'.").arg(QString::fromLatin1(metaMethod.name())).arg(containerObject->asQModelingObject()->objectName());
+                                d->errors << QStringLiteral("Error when invoking metamethod '%1' on object '%2'.").arg(QString::fromLatin1(metaMethod.name())).arg(containerObject->asQModelingObject()->objectName());
                             break;
                         }
                     }
                     if (i == methodCount)
-                        d->errors << QString::fromLatin1("Metamethod add/set'%1' not found on object '%2'.").arg(elementName).arg(containerObject->asQModelingObject()->objectName());
+                        d->errors << QStringLiteral("Metamethod add/set'%1' not found on object '%2'.").arg(elementName).arg(containerObject->asQModelingObject()->objectName());
                 }
                 stack.push(QPair<QString, QModelingElement *>(reader.name().toString(), modelingObject));
             }
             else
-                d->errors << QString::fromLatin1("Could not cross reference instance with id '%1' in element '%2'. Bad formed XMI file ?").arg(id).arg(reader.name().toString());
+                d->errors << QStringLiteral("Could not cross reference instance with id '%1' in element '%2'. Bad formed XMI file ?").arg(id).arg(reader.name().toString());
         }
         else if (reader.isEndElement() && !stack.isEmpty() && stack.top().first == reader.name()) {
             stack.pop();

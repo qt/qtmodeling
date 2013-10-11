@@ -58,8 +58,8 @@ class QItemSelection;
 class QQuickItem;
 
 class QModelingElement;
-class QModelingObjectViewPrivate;
 
+class QModelingObjectViewPrivate;
 class Q_MODELINGWIDGETS_EXPORT QModelingObjectView : public QWidget
 {
     Q_OBJECT

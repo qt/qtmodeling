@@ -54,7 +54,6 @@ QT_MODULE(QtModelingWidgets)
 class QModelingObjectPropertyModel;
 
 class QModelingObjectPropertyEditorPrivate;
-
 class Q_MODELINGWIDGETS_EXPORT QModelingObjectPropertyEditor : public QWidget
 {
     Q_OBJECT

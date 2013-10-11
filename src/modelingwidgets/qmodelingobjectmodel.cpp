@@ -44,6 +44,7 @@
 #include <QtGui/QFont>
 #include <QtWidgets/QApplication>
 
+#include <QtModeling/QModelingObject>
 #include <QtModeling/QtModelingNamespace>
 
 QT_BEGIN_NAMESPACE
@@ -57,18 +58,18 @@ QModelingObjectModel::QModelingObjectModel(QObject *parent) :
 {
 }
 
-void QModelingObjectModel::addModelingObject(QObject *qObject)
+void QModelingObjectModel::addModelingObject(QModelingObject *modelingObject)
 {
     Q_D(QModelingObjectModel);
 
-    if (qObject && !d->modelingObjects.contains(qObject)) {
+    if (modelingObject && !d->modelingObjects.contains(modelingObject)) {
         beginResetModel();
-        d->modelingObjects.append(qObject);
+        d->modelingObjects.append(modelingObject);
         endResetModel();
     }
 }
 
-QObjectList QModelingObjectModel::modelingObjects() const
+QList<QModelingObject *> QModelingObjectModel::modelingObjects() const
 {
     Q_D(const QModelingObjectModel);
 
@@ -85,7 +86,7 @@ QModelIndex QModelingObjectModel::index(int row, int column, const QModelIndex &
     if (!parent.isValid())
         return createIndex(row, column, static_cast<void *>(d->modelingObjects.at(row)));
 
-    QObject *modelingObject = static_cast<QObject *>(parent.internalPointer());
+    QModelingObject *modelingObject = static_cast<QModelingObject *>(parent.internalPointer());
     if (!modelingObject)
         return QModelIndex();
 
@@ -96,15 +97,15 @@ QModelIndex QModelingObjectModel::parent(const QModelIndex &child) const
 {
     Q_D(const QModelingObjectModel);
 
-    QObject *modelingObject = static_cast<QObject *>(child.internalPointer());
+    QModelingObject *modelingObject = static_cast<QModelingObject *>(child.internalPointer());
     if (d->modelingObjects.isEmpty() || !child.isValid() || !modelingObject)
         return QModelIndex();
 
-    QObject *parentModelingObject = dynamic_cast<QObject *>(modelingObject->parent());
+    QModelingObject *parentModelingObject = dynamic_cast<QModelingObject *>(modelingObject->parent());
     if (!parentModelingObject)
         return QModelIndex();
 
-    QObject *grandParentModelingObject = dynamic_cast<QObject *>(parentModelingObject->parent());
+    QModelingObject *grandParentModelingObject = dynamic_cast<QModelingObject *>(parentModelingObject->parent());
     if (!grandParentModelingObject)
         return createIndex(0, 0, parentModelingObject);
 
@@ -121,7 +122,7 @@ int QModelingObjectModel::rowCount(const QModelIndex &parent) const
     if (parent.row() == -1)
         return d->modelingObjects.count();
 
-    QObject *modelingObject = static_cast<QObject *>(parent.internalPointer());
+    QModelingObject *modelingObject = static_cast<QModelingObject *>(parent.internalPointer());
     if (!modelingObject)
         return 0;
 
@@ -144,25 +145,25 @@ QVariant QModelingObjectModel::data(const QModelIndex &index, int role) const
     switch (role) {
         case Qt::DisplayRole:
         case Qt::EditRole: {
-            QObject *modelingObject = static_cast<QObject *>(index.internalPointer());
-            QString elementRole = QString::fromLatin1("");
+            QModelingObject *modelingObject = static_cast<QModelingObject *>(index.internalPointer());
+            QString elementRole = QStringLiteral("");
             if (modelingObject->property("role").value<QtModeling::ModelingObjectRole>() == QtModeling::ImportedElementRole)
-                elementRole = QString::fromLatin1(" (imported element)");
+                elementRole = QStringLiteral(" (imported element)");
             else if (modelingObject->property("role").value<QtModeling::ModelingObjectRole>() == QtModeling::ImportedPackageRole)
-                elementRole = QString::fromLatin1(" (imported package)");
+                elementRole = QStringLiteral(" (imported package)");
             else if (modelingObject->property("role").value<QtModeling::ModelingObjectRole>() == QtModeling::AppliedProfileRole)
-                elementRole = QString::fromLatin1(" (applied profile)");
-            return index.column() == 0 ? modelingObject->objectName()+elementRole:QString::fromLatin1(modelingObject->metaObject()->className());
+                elementRole = QStringLiteral(" (applied profile)");
+            return index.column() == 0 ? modelingObject->objectName() + elementRole:QString::fromLatin1(modelingObject->metaObject()->className());
         }
         case Qt::FontRole: {
             QFont font = QApplication::font();
-            QObject *modelingObject = static_cast<QObject *>(index.internalPointer());
+            QModelingObject *modelingObject = static_cast<QModelingObject *>(index.internalPointer());
             if (index.parent().row() == -1 && modelingObject->property("role").value<QtModeling::ModelingObjectRole>() == QtModeling::ModelElementRole)
                 font.setBold(true);
             return font;
         }
         case Qt::UserRole: {
-            return qVariantFromValue(static_cast<QObject *>(index.internalPointer()));
+            return qVariantFromValue(static_cast<QModelingObject *>(index.internalPointer()));
         }
     }
     return QVariant();
@@ -189,7 +190,7 @@ void QModelingObjectModel::updateIndex(const QModelIndex &index)
 {
     if (!index.isValid()) {
         beginResetModel();
-        //emit layoutChanged();
+        emit layoutChanged();
         endResetModel();
     }
     else
@@ -200,8 +201,7 @@ void QModelingObjectModel::clear()
 {
     Q_D(QModelingObjectModel);
 
-    foreach (QObject *object, d->modelingObjects)
-        delete object;
+    qDeleteAll(d->modelingObjects);
     d->modelingObjects.clear();
 }
 
