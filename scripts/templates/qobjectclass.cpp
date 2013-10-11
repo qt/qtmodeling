@@ -98,31 +98,8 @@ void Q${namespace}${className}Object::setGroupProperties()
 
 void Q${namespace}${className}Object::setPropertyData()
 {
-[%- FOREACH attribute = class.findnodes("ownedAttribute") -%]
-[%- SET qtAttribute = QT_ATTRIBUTE(attribute) -%]
-[%- SET association = attribute.findvalue("@association") -%]
-[%- IF attribute.findvalue("@aggregation") == "composite" %]
-    Q_DECLARE_METAPROPERTY_INFO(Q${namespace}${className}, ${PLURALFORM(qtAttribute, attribute)}, AggregationRole, QStringLiteral("composite"));
-[%- ELSE %]
-    Q_DECLARE_METAPROPERTY_INFO(Q${namespace}${className}, ${PLURALFORM(qtAttribute, attribute)}, AggregationRole, QStringLiteral("none"));
-[%- END %]
-    Q_DECLARE_METAPROPERTY_INFO(Q${namespace}${className}, ${PLURALFORM(qtAttribute, attribute)}, PropertyClassRole, QStringLiteral("Q${namespace}${className}"));
-    Q_DECLARE_METAPROPERTY_INFO(Q${namespace}${className}, ${PLURALFORM(qtAttribute, attribute)}, IsDerivedRole, [% IF attribute.findvalue("@isDerived") == "true" %]true[% ELSE %]false[% END %]);
-    Q_DECLARE_METAPROPERTY_INFO(Q${namespace}${className}, ${PLURALFORM(qtAttribute, attribute)}, IsDerivedUnionRole, [% IF attribute.findvalue("@isDerivedUnion") == "true" %]true[% ELSE %]false[% END %]);
-    Q_DECLARE_METAPROPERTY_INFO(Q${namespace}${className}, ${PLURALFORM(qtAttribute, attribute)}, DocumentationRole, QStringLiteral("${attribute.findvalue("ownedComment/body/text()")}"));
-    Q_DECLARE_METAPROPERTY_INFO(Q${namespace}${className}, ${PLURALFORM(qtAttribute, attribute)}, RedefinedPropertiesRole, QStringLiteral("${attribute.findvalue("@redefinedProperty")}"));
-    Q_DECLARE_METAPROPERTY_INFO(Q${namespace}${className}, ${PLURALFORM(qtAttribute, attribute)}, SubsettedPropertiesRole, QStringLiteral("${attribute.findvalue("@subsettedProperty")}"));
-    Q_DECLARE_METAPROPERTY_INFO(Q${namespace}${className}, ${PLURALFORM(qtAttribute, attribute)}, OppositeEndRole, QStringLiteral("
-[%- IF association != "" -%]
-[%- FOREACH memberEnd = xmi.findvalue("//packagedElement[@xmi:type=\"uml:Association\" and @name=\"${association}\"]/@memberEnd").split(' ') -%]
-[%- NEXT IF memberEnd == className.replace('$', "-${attribute.findvalue(\"@name\")}") -%]
-[%- SET oppositeProperty = xmi.findnodes("//packagedElement[@xmi:type=\"uml:Class\" and @name=\"${memberEnd.split('-').0}\"]/ownedAttribute[@name=\"${memberEnd.split('-').1}\"]") -%]
-[%- IF oppositeProperty.findvalue("@name") != "" -%]${oppositeProperty.findvalue("@xmi:id")}[%- END -%]
-[%- END -%]
-[%- END -%]
-"));
-
-[%- END %]
+[%- visitedClasses = [] -%]
+[%- SET_PROPERTY_DATA(class, visitedClasses, redefinedProperties) %]
 }
 
 QT_END_NAMESPACE

@@ -240,6 +240,60 @@ void QUmlLinkEndCreationDataObject::setGroupProperties()
 
 void QUmlLinkEndCreationDataObject::setPropertyData()
 {
+    Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedComments, AggregationRole, QStringLiteral("composite"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedComments, PropertyClassRole, QStringLiteral("QUmlElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedComments, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedComments, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedComments, DocumentationRole, QStringLiteral("The Comments owned by this element."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedComments, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedComments, SubsettedPropertiesRole, QStringLiteral("Element-ownedElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedComments, OppositeEndRole, QStringLiteral(""));
+
+    Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedElements, AggregationRole, QStringLiteral("composite"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedElements, PropertyClassRole, QStringLiteral("QUmlElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedElements, IsDerivedRole, true);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedElements, IsDerivedUnionRole, true);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedElements, DocumentationRole, QStringLiteral("The Elements owned by this element."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedElements, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedElements, SubsettedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedElements, OppositeEndRole, QStringLiteral("Element-owner"));
+
+    Q_DECLARE_METAPROPERTY_INFO(QUmlElement, owner, AggregationRole, QStringLiteral("none"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlElement, owner, PropertyClassRole, QStringLiteral("QUmlElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlElement, owner, IsDerivedRole, true);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlElement, owner, IsDerivedUnionRole, true);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlElement, owner, DocumentationRole, QStringLiteral("The Element that owns this element."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlElement, owner, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlElement, owner, SubsettedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlElement, owner, OppositeEndRole, QStringLiteral("Element-ownedElement"));
+
+    Q_DECLARE_METAPROPERTY_INFO(QUmlLinkEndData, end, AggregationRole, QStringLiteral("none"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlLinkEndData, end, PropertyClassRole, QStringLiteral("QUmlLinkEndData"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlLinkEndData, end, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlLinkEndData, end, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlLinkEndData, end, DocumentationRole, QStringLiteral("Association end for which this link-end data specifies values."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlLinkEndData, end, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlLinkEndData, end, SubsettedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlLinkEndData, end, OppositeEndRole, QStringLiteral(""));
+
+    Q_DECLARE_METAPROPERTY_INFO(QUmlLinkEndData, qualifiers, AggregationRole, QStringLiteral("composite"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlLinkEndData, qualifiers, PropertyClassRole, QStringLiteral("QUmlLinkEndData"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlLinkEndData, qualifiers, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlLinkEndData, qualifiers, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlLinkEndData, qualifiers, DocumentationRole, QStringLiteral("List of qualifier values"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlLinkEndData, qualifiers, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlLinkEndData, qualifiers, SubsettedPropertiesRole, QStringLiteral("Element-ownedElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlLinkEndData, qualifiers, OppositeEndRole, QStringLiteral(""));
+
+    Q_DECLARE_METAPROPERTY_INFO(QUmlLinkEndData, value, AggregationRole, QStringLiteral("none"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlLinkEndData, value, PropertyClassRole, QStringLiteral("QUmlLinkEndData"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlLinkEndData, value, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlLinkEndData, value, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlLinkEndData, value, DocumentationRole, QStringLiteral("Input pin that provides the specified object for the given end. This pin is omitted if the link-end data specifies an 'open' end for reading."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlLinkEndData, value, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlLinkEndData, value, SubsettedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlLinkEndData, value, OppositeEndRole, QStringLiteral(""));
+
     Q_DECLARE_METAPROPERTY_INFO(QUmlLinkEndCreationData, insertAt, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlLinkEndCreationData, insertAt, PropertyClassRole, QStringLiteral("QUmlLinkEndCreationData"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlLinkEndCreationData, insertAt, IsDerivedRole, false);
