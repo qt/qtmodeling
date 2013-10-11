@@ -44,6 +44,8 @@
 #include "qtmodelingglobal.h"
 #include "private/qobject_p.h"
 
+#include <QtCore/QStringList>
+
 #include "QtModeling/QModelingObject"
 
 #define Q_DECLARE_METAPROPERTY_INFO(clazz, property, role, value) QModelingObject::propertyDataHash[QStringLiteral(#clazz)][QStringLiteral(#property)][QtModeling::role] = value;
