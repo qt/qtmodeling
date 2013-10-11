@@ -88,6 +88,12 @@ const QStringList &QModelingObject::propertyGroups() const
     return d->propertyGroups;
 }
 
+const QMultiHash<QString, QMetaProperty *> &QModelingObject::groupProperties() const
+{
+    Q_D(const QModelingObject);
+    return d->groupProperties;
+}
+
 QStringList &QModelingObject::modifiedResettableProperties()
 {
     Q_D(QModelingObject);

@@ -62,7 +62,6 @@
 #include <QtModeling/QModelingObject>
 #include <QtModeling/QModelingElement>
 #include <QtModeling/QMetaModelPlugin>
-//#include <QtWrappedObjects/QMetaWrappedObject>
 #include <QtModelingWidgets/QModelingObjectModel>
 #include <QtModelingWidgets/QModelingObjectView>
 #include <QtModelingWidgets/QModelingObjectPropertyModel>
@@ -111,12 +110,12 @@ MainWindow::MainWindow(QWidget *parent) :
     QModelingObjectPropertyModel *modelingObjectPropertyModel = new QModelingObjectPropertyModel(_modelingObjectModel);
     ui->propertyEditor->setModel(modelingObjectPropertyModel);
 
-//    connect(ui->modelingObjectView, &QModelingObjectView::modelingObjectChanged,
-//            modelingObjectPropertyModel, &QModelingObjectPropertyModel::setModelingObject);
+    connect(ui->modelingObjectView, &QModelingObjectView::modelingObjectChanged,
+            modelingObjectPropertyModel, &QModelingObjectPropertyModel::setModelingObject);
 //    connect(ui->modelingObjectView, &QModelingObjectView::addToView, this, &MainWindow::addToView);
-//    connect(ui->modelingObjectView, SIGNAL(modelingObjectChanged(QModelingElement*)), SLOT(modelingObjectChanged(QModelingElement*)));
-//    connect(modelingObjectPropertyModel, &QModelingObjectPropertyModel::indexChanged,
-//            _modelingObjectModel, &QModelingObjectModel::updateIndex);
+    connect(ui->modelingObjectView, &QModelingObjectView::modelingObjectChanged, this, &MainWindow::modelingObjectChanged);
+    connect(modelingObjectPropertyModel, &QModelingObjectPropertyModel::indexChanged,
+            _modelingObjectModel, &QModelingObjectModel::updateIndex);
 
     loadPlugins();
 
@@ -509,9 +508,9 @@ void MainWindow::metaModelChanged(QString newMetaModel)
     _newModel->lstTopLevelContainers->setCurrentRow(0);
 }
 
-void MainWindow::modelingObjectChanged(QModelingElement *modelingObject)
+void MainWindow::modelingObjectChanged(QModelingObject *modelingObject)
 {
-    _engine.globalObject().setProperty("self", _engine.newQObject(modelingObject->asQModelingObject()));
+    _engine.globalObject().setProperty("self", _engine.newQObject(modelingObject));
 }
 
 void MainWindow::addToView(QModelingElement *modelingObject, QQuickItem *parent)

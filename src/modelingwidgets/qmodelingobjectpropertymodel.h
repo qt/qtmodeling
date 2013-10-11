@@ -51,7 +51,7 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtModelingWidgets)
 
-class QModelingElement;
+class QModelingObject;
 
 class QModelingObjectPropertyModelPrivate;
 class Q_MODELINGWIDGETS_EXPORT QModelingObjectPropertyModel : public QAbstractItemModel
@@ -73,16 +73,13 @@ public:
     QVariant headerData(int section, Qt::Orientation orientation, int role = Qt::DisplayRole) const;
     Qt::ItemFlags flags(const QModelIndex & index) const;
 
-    QObject *modelingObject() const;
+    QModelingObject *modelingObject() const;
 
 public Q_SLOTS:
-    void setModelingObject(QModelingElement *modelingObject, QModelIndex index);
+    void setModelingObject(QModelingObject *modelingObject, QModelIndex index);
 
 Q_SIGNALS:
     void indexChanged(const QModelIndex &modelingObjectIndex);
-
-private:
-    int propertyGroupIndex(QString *property) const;
 };
 
 QT_END_NAMESPACE

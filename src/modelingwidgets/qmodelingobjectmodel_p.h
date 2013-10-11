@@ -50,6 +50,7 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtModelingWidgets)
 
+class QModelingObject;
 class Q_MODELINGWIDGETS_EXPORT QModelingObjectModelPrivate : public QAbstractItemModelPrivate
 {
     Q_DECLARE_PUBLIC(QModelingObjectModel)

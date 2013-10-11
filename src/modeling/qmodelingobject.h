@@ -68,6 +68,7 @@ public:
     static QVariant propertyData(QString className, QMetaProperty metaProperty, QtModeling::MetaPropertyDataRole role);
     int propertyGroupIndex(QMetaProperty metaProperty) const;
     const QStringList &propertyGroups() const;
+    const QMultiHash<QString, QMetaProperty *> &groupProperties() const;
     QStringList &modifiedResettableProperties();
 
     static QHash< QString, QHash< QString, QHash<QtModeling::MetaPropertyDataRole, QVariant> > > propertyDataHash;

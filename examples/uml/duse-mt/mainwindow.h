@@ -62,6 +62,7 @@ namespace Ui {
 }
 
 class QModelingElement;
+class QModelingObject;
 class QMetaModelPlugin;
 class QModelingObjectModel;
 class QProgressDialog;
@@ -96,7 +97,7 @@ private Q_SLOTS:
     void setModelInspector(QList<QModelingElement *> modelingObjectList);
 
     void metaModelChanged(QString newMetaModel);
-    void modelingObjectChanged(QModelingElement *modelingObject);
+    void modelingObjectChanged(QModelingObject *modelingObject);
     void addToView(QModelingElement *modelingObject, QQuickItem *parent = 0);
     void addToDesignSpaceView(QModelingElement *modelingObject, QQuickItem *parent = 0);
     void addToPareto(QModelingElement *modelingObject, int pos);

@@ -63,10 +63,8 @@ public:
     explicit QModelingObjectPropertyModelPrivate();
 
     QModelIndex modelingObjectIndex;
-    QModelingObject *qObject;
+    QModelingObject *modelingObject;
     const QMetaObject *modelingMetaObject;
-    QStringList propertyGroups;
-    QMultiHash<QString, QString *> propertiesForGroup;
 };
 
 QT_END_NAMESPACE
