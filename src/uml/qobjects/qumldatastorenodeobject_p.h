@@ -100,7 +100,7 @@ class Q_UML_EXPORT QUmlDataStoreNodeObject : public QModelingObject
     Q_PROPERTY(QObject * upperBound READ upperBound WRITE setUpperBound)
 
 public:
-    Q_INVOKABLE explicit QUmlDataStoreNodeObject(QUmlDataStoreNode *qModelingElement);
+    Q_INVOKABLE explicit QUmlDataStoreNodeObject(QUmlDataStoreNode *modelingElement);
     virtual ~QUmlDataStoreNodeObject();
 
     // Owned attributes [Element]

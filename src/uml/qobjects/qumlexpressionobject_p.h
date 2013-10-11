@@ -88,7 +88,7 @@ class Q_UML_EXPORT QUmlExpressionObject : public QModelingObject
     Q_PROPERTY(QString symbol READ symbol WRITE setSymbol)
 
 public:
-    Q_INVOKABLE explicit QUmlExpressionObject(QUmlExpression *qModelingElement);
+    Q_INVOKABLE explicit QUmlExpressionObject(QUmlExpression *modelingElement);
     virtual ~QUmlExpressionObject();
 
     // Owned attributes [Element]

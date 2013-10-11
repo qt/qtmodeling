@@ -88,7 +88,7 @@ class Q_UML_EXPORT QUmlMessageOccurrenceSpecificationObject : public QModelingOb
     Q_PROPERTY(QObject * message READ message WRITE setMessage)
 
 public:
-    Q_INVOKABLE explicit QUmlMessageOccurrenceSpecificationObject(QUmlMessageOccurrenceSpecification *qModelingElement);
+    Q_INVOKABLE explicit QUmlMessageOccurrenceSpecificationObject(QUmlMessageOccurrenceSpecification *modelingElement);
     virtual ~QUmlMessageOccurrenceSpecificationObject();
 
     // Owned attributes [Element]

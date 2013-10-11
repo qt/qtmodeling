@@ -69,7 +69,7 @@ class Q_UML_EXPORT QUmlQualifierValueObject : public QModelingObject
     Q_PROPERTY(QObject * value READ value WRITE setValue)
 
 public:
-    Q_INVOKABLE explicit QUmlQualifierValueObject(QUmlQualifierValue *qModelingElement);
+    Q_INVOKABLE explicit QUmlQualifierValueObject(QUmlQualifierValue *modelingElement);
     virtual ~QUmlQualifierValueObject();
 
     // Owned attributes [Element]

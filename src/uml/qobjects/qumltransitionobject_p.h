@@ -98,7 +98,7 @@ class Q_UML_EXPORT QUmlTransitionObject : public QModelingObject
     Q_PROPERTY(QSet<QObject *> triggers READ triggers)
 
 public:
-    Q_INVOKABLE explicit QUmlTransitionObject(QUmlTransition *qModelingElement);
+    Q_INVOKABLE explicit QUmlTransitionObject(QUmlTransition *modelingElement);
     virtual ~QUmlTransitionObject();
 
     // Owned attributes [Element]

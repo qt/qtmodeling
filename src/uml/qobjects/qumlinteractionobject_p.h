@@ -161,7 +161,7 @@ class Q_UML_EXPORT QUmlInteractionObject : public QModelingObject
     Q_PROPERTY(QSet<QObject *> messages READ messages)
 
 public:
-    Q_INVOKABLE explicit QUmlInteractionObject(QUmlInteraction *qModelingElement);
+    Q_INVOKABLE explicit QUmlInteractionObject(QUmlInteraction *modelingElement);
     virtual ~QUmlInteractionObject();
 
     // Owned attributes [Element]

@@ -66,9 +66,9 @@
 
 QT_BEGIN_NAMESPACE
 
-QUmlReadLinkObjectEndActionObject::QUmlReadLinkObjectEndActionObject(QUmlReadLinkObjectEndAction *qModelingElement)
+QUmlReadLinkObjectEndActionObject::QUmlReadLinkObjectEndActionObject(QUmlReadLinkObjectEndAction *modelingElement)
 {
-    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(qModelingElement)));
+    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(modelingElement)));
     setGroupProperties();
     setPropertyData();
 }

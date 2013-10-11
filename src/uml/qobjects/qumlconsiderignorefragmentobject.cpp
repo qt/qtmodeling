@@ -57,9 +57,9 @@
 
 QT_BEGIN_NAMESPACE
 
-QUmlConsiderIgnoreFragmentObject::QUmlConsiderIgnoreFragmentObject(QUmlConsiderIgnoreFragment *qModelingElement)
+QUmlConsiderIgnoreFragmentObject::QUmlConsiderIgnoreFragmentObject(QUmlConsiderIgnoreFragment *modelingElement)
 {
-    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(qModelingElement)));
+    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(modelingElement)));
     setGroupProperties();
     setPropertyData();
 }

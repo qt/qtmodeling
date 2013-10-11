@@ -74,7 +74,7 @@ class Q_UML_EXPORT QUmlConnectableElementTemplateParameterObject : public QModel
     Q_PROPERTY(QObject * parameteredElement READ parameteredElement WRITE setParameteredElement)
 
 public:
-    Q_INVOKABLE explicit QUmlConnectableElementTemplateParameterObject(QUmlConnectableElementTemplateParameter *qModelingElement);
+    Q_INVOKABLE explicit QUmlConnectableElementTemplateParameterObject(QUmlConnectableElementTemplateParameter *modelingElement);
     virtual ~QUmlConnectableElementTemplateParameterObject();
 
     // Owned attributes [Element]

@@ -57,9 +57,9 @@
 
 QT_BEGIN_NAMESPACE
 
-QUmlStringExpressionObject::QUmlStringExpressionObject(QUmlStringExpression *qModelingElement)
+QUmlStringExpressionObject::QUmlStringExpressionObject(QUmlStringExpression *modelingElement)
 {
-    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(qModelingElement)));
+    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(modelingElement)));
     setGroupProperties();
     setPropertyData();
 }

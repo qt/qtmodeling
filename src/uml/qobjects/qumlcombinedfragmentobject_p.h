@@ -86,7 +86,7 @@ class Q_UML_EXPORT QUmlCombinedFragmentObject : public QModelingObject
     Q_PROPERTY(QList<QObject *> operands READ operands)
 
 public:
-    Q_INVOKABLE explicit QUmlCombinedFragmentObject(QUmlCombinedFragment *qModelingElement);
+    Q_INVOKABLE explicit QUmlCombinedFragmentObject(QUmlCombinedFragment *modelingElement);
     virtual ~QUmlCombinedFragmentObject();
 
     // Owned attributes [Element]

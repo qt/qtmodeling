@@ -108,7 +108,7 @@ class Q_UML_EXPORT QUmlSendObjectActionObject : public QModelingObject
     Q_PROPERTY(QObject * target READ target WRITE setTarget)
 
 public:
-    Q_INVOKABLE explicit QUmlSendObjectActionObject(QUmlSendObjectAction *qModelingElement);
+    Q_INVOKABLE explicit QUmlSendObjectActionObject(QUmlSendObjectAction *modelingElement);
     virtual ~QUmlSendObjectActionObject();
 
     // Owned attributes [Element]

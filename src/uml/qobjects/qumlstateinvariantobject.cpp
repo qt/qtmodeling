@@ -57,9 +57,9 @@
 
 QT_BEGIN_NAMESPACE
 
-QUmlStateInvariantObject::QUmlStateInvariantObject(QUmlStateInvariant *qModelingElement)
+QUmlStateInvariantObject::QUmlStateInvariantObject(QUmlStateInvariant *modelingElement)
 {
-    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(qModelingElement)));
+    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(modelingElement)));
     setGroupProperties();
     setPropertyData();
 }

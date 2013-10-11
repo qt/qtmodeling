@@ -97,7 +97,7 @@ class Q_UML_EXPORT QUmlInformationFlowObject : public QModelingObject
     Q_PROPERTY(QSet<QObject *> realizingMessages READ realizingMessages)
 
 public:
-    Q_INVOKABLE explicit QUmlInformationFlowObject(QUmlInformationFlow *qModelingElement);
+    Q_INVOKABLE explicit QUmlInformationFlowObject(QUmlInformationFlow *modelingElement);
     virtual ~QUmlInformationFlowObject();
 
     // Owned attributes [Element]

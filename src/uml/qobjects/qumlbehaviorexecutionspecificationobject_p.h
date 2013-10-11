@@ -88,7 +88,7 @@ class Q_UML_EXPORT QUmlBehaviorExecutionSpecificationObject : public QModelingOb
     Q_PROPERTY(QObject * behavior READ behavior WRITE setBehavior)
 
 public:
-    Q_INVOKABLE explicit QUmlBehaviorExecutionSpecificationObject(QUmlBehaviorExecutionSpecification *qModelingElement);
+    Q_INVOKABLE explicit QUmlBehaviorExecutionSpecificationObject(QUmlBehaviorExecutionSpecification *modelingElement);
     virtual ~QUmlBehaviorExecutionSpecificationObject();
 
     // Owned attributes [Element]

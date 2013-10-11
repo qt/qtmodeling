@@ -85,7 +85,7 @@ class Q_UML_EXPORT QUmlPseudostateObject : public QModelingObject
     Q_PROPERTY(QObject * stateMachine READ stateMachine WRITE setStateMachine)
 
 public:
-    Q_INVOKABLE explicit QUmlPseudostateObject(QUmlPseudostate *qModelingElement);
+    Q_INVOKABLE explicit QUmlPseudostateObject(QUmlPseudostate *modelingElement);
     virtual ~QUmlPseudostateObject();
 
     // Owned attributes [Element]

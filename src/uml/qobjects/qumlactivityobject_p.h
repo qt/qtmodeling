@@ -158,7 +158,7 @@ class Q_UML_EXPORT QUmlActivityObject : public QModelingObject
     Q_PROPERTY(QSet<QObject *> variables READ variables)
 
 public:
-    Q_INVOKABLE explicit QUmlActivityObject(QUmlActivity *qModelingElement);
+    Q_INVOKABLE explicit QUmlActivityObject(QUmlActivity *modelingElement);
     virtual ~QUmlActivityObject();
 
     // Owned attributes [Element]

@@ -90,7 +90,7 @@ class Q_UML_EXPORT QUmlFlowFinalNodeObject : public QModelingObject
     Q_PROPERTY(QSet<QObject *> redefinedNodes READ redefinedNodes)
 
 public:
-    Q_INVOKABLE explicit QUmlFlowFinalNodeObject(QUmlFlowFinalNode *qModelingElement);
+    Q_INVOKABLE explicit QUmlFlowFinalNodeObject(QUmlFlowFinalNode *modelingElement);
     virtual ~QUmlFlowFinalNodeObject();
 
     // Owned attributes [Element]

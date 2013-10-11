@@ -67,9 +67,9 @@
 
 QT_BEGIN_NAMESPACE
 
-QUmlSendSignalActionObject::QUmlSendSignalActionObject(QUmlSendSignalAction *qModelingElement)
+QUmlSendSignalActionObject::QUmlSendSignalActionObject(QUmlSendSignalAction *modelingElement)
 {
-    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(qModelingElement)));
+    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(modelingElement)));
     setGroupProperties();
     setPropertyData();
 }

@@ -55,9 +55,9 @@
 
 QT_BEGIN_NAMESPACE
 
-QUmlChangeEventObject::QUmlChangeEventObject(QUmlChangeEvent *qModelingElement)
+QUmlChangeEventObject::QUmlChangeEventObject(QUmlChangeEvent *modelingElement)
 {
-    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(qModelingElement)));
+    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(modelingElement)));
     setGroupProperties();
     setPropertyData();
 }

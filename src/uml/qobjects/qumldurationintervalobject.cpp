@@ -57,9 +57,9 @@
 
 QT_BEGIN_NAMESPACE
 
-QUmlDurationIntervalObject::QUmlDurationIntervalObject(QUmlDurationInterval *qModelingElement)
+QUmlDurationIntervalObject::QUmlDurationIntervalObject(QUmlDurationInterval *modelingElement)
 {
-    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(qModelingElement)));
+    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(modelingElement)));
     setGroupProperties();
     setPropertyData();
 }

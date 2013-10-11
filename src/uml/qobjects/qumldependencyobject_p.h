@@ -92,7 +92,7 @@ class Q_UML_EXPORT QUmlDependencyObject : public QModelingObject
     Q_PROPERTY(QSet<QObject *> suppliers READ suppliers)
 
 public:
-    Q_INVOKABLE explicit QUmlDependencyObject(QUmlDependency *qModelingElement);
+    Q_INVOKABLE explicit QUmlDependencyObject(QUmlDependency *modelingElement);
     virtual ~QUmlDependencyObject();
 
     // Owned attributes [Element]

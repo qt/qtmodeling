@@ -66,9 +66,9 @@
 
 QT_BEGIN_NAMESPACE
 
-QUmlClearAssociationActionObject::QUmlClearAssociationActionObject(QUmlClearAssociationAction *qModelingElement)
+QUmlClearAssociationActionObject::QUmlClearAssociationActionObject(QUmlClearAssociationAction *modelingElement)
 {
-    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(qModelingElement)));
+    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(modelingElement)));
     setGroupProperties();
     setPropertyData();
 }

@@ -65,9 +65,9 @@
 
 QT_BEGIN_NAMESPACE
 
-QUmlTestIdentityActionObject::QUmlTestIdentityActionObject(QUmlTestIdentityAction *qModelingElement)
+QUmlTestIdentityActionObject::QUmlTestIdentityActionObject(QUmlTestIdentityAction *modelingElement)
 {
-    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(qModelingElement)));
+    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(modelingElement)));
     setGroupProperties();
     setPropertyData();
 }

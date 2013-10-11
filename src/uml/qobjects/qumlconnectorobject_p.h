@@ -91,7 +91,7 @@ class Q_UML_EXPORT QUmlConnectorObject : public QModelingObject
     Q_PROPERTY(QObject * type READ type WRITE setType)
 
 public:
-    Q_INVOKABLE explicit QUmlConnectorObject(QUmlConnector *qModelingElement);
+    Q_INVOKABLE explicit QUmlConnectorObject(QUmlConnector *modelingElement);
     virtual ~QUmlConnectorObject();
 
     // Owned attributes [Element]

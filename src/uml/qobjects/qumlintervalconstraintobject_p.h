@@ -88,7 +88,7 @@ class Q_UML_EXPORT QUmlIntervalConstraintObject : public QModelingObject
     Q_PROPERTY(QObject * specification READ specification WRITE setSpecification)
 
 public:
-    Q_INVOKABLE explicit QUmlIntervalConstraintObject(QUmlIntervalConstraint *qModelingElement);
+    Q_INVOKABLE explicit QUmlIntervalConstraintObject(QUmlIntervalConstraint *modelingElement);
     virtual ~QUmlIntervalConstraintObject();
 
     // Owned attributes [Element]

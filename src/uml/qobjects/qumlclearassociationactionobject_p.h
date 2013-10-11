@@ -105,7 +105,7 @@ class Q_UML_EXPORT QUmlClearAssociationActionObject : public QModelingObject
     Q_PROPERTY(QObject * object READ object WRITE setObject)
 
 public:
-    Q_INVOKABLE explicit QUmlClearAssociationActionObject(QUmlClearAssociationAction *qModelingElement);
+    Q_INVOKABLE explicit QUmlClearAssociationActionObject(QUmlClearAssociationAction *modelingElement);
     virtual ~QUmlClearAssociationActionObject();
 
     // Owned attributes [Element]

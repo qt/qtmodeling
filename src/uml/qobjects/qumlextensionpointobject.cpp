@@ -55,9 +55,9 @@
 
 QT_BEGIN_NAMESPACE
 
-QUmlExtensionPointObject::QUmlExtensionPointObject(QUmlExtensionPoint *qModelingElement)
+QUmlExtensionPointObject::QUmlExtensionPointObject(QUmlExtensionPoint *modelingElement)
 {
-    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(qModelingElement)));
+    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(modelingElement)));
     setGroupProperties();
     setPropertyData();
 }

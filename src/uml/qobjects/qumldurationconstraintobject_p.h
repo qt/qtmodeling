@@ -91,7 +91,7 @@ class Q_UML_EXPORT QUmlDurationConstraintObject : public QModelingObject
     Q_PROPERTY(QObject * specification READ specification WRITE setSpecification)
 
 public:
-    Q_INVOKABLE explicit QUmlDurationConstraintObject(QUmlDurationConstraint *qModelingElement);
+    Q_INVOKABLE explicit QUmlDurationConstraintObject(QUmlDurationConstraint *modelingElement);
     virtual ~QUmlDurationConstraintObject();
 
     // Owned attributes [Element]

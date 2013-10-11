@@ -138,7 +138,7 @@ class Q_UML_EXPORT QUmlClassObject : public QModelingObject
     Q_PROPERTY(QSet<QObject *> superClasses READ superClasses STORED false)
 
 public:
-    Q_INVOKABLE explicit QUmlClassObject(QUmlClass *qModelingElement);
+    Q_INVOKABLE explicit QUmlClassObject(QUmlClass *modelingElement);
     virtual ~QUmlClassObject();
 
     // Owned attributes [Element]

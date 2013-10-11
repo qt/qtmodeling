@@ -120,7 +120,7 @@ class Q_UML_EXPORT QUmlInformationItemObject : public QModelingObject
     Q_PROPERTY(QSet<QObject *> represented READ represented)
 
 public:
-    Q_INVOKABLE explicit QUmlInformationItemObject(QUmlInformationItem *qModelingElement);
+    Q_INVOKABLE explicit QUmlInformationItemObject(QUmlInformationItem *modelingElement);
     virtual ~QUmlInformationItemObject();
 
     // Owned attributes [Element]

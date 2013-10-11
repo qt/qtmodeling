@@ -120,7 +120,7 @@ class Q_UML_EXPORT QUmlSignalObject : public QModelingObject
     Q_PROPERTY(QList<QObject *> ownedAttributes READ ownedAttributes)
 
 public:
-    Q_INVOKABLE explicit QUmlSignalObject(QUmlSignal *qModelingElement);
+    Q_INVOKABLE explicit QUmlSignalObject(QUmlSignal *modelingElement);
     virtual ~QUmlSignalObject();
 
     // Owned attributes [Element]

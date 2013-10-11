@@ -77,7 +77,7 @@ class Q_UML_EXPORT QUmlProfileApplicationObject : public QModelingObject
     Q_PROPERTY(bool isStrict READ isStrict WRITE setStrict RESET unsetStrict)
 
 public:
-    Q_INVOKABLE explicit QUmlProfileApplicationObject(QUmlProfileApplication *qModelingElement);
+    Q_INVOKABLE explicit QUmlProfileApplicationObject(QUmlProfileApplication *modelingElement);
     virtual ~QUmlProfileApplicationObject();
 
     // Owned attributes [Element]

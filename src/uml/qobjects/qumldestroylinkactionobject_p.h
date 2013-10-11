@@ -107,7 +107,7 @@ class Q_UML_EXPORT QUmlDestroyLinkActionObject : public QModelingObject
     Q_PROPERTY(QSet<QObject *> endData READ endData)
 
 public:
-    Q_INVOKABLE explicit QUmlDestroyLinkActionObject(QUmlDestroyLinkAction *qModelingElement);
+    Q_INVOKABLE explicit QUmlDestroyLinkActionObject(QUmlDestroyLinkAction *modelingElement);
     virtual ~QUmlDestroyLinkActionObject();
 
     // Owned attributes [Element]

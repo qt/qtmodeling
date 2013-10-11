@@ -73,7 +73,7 @@ class Q_UML_EXPORT QUmlClauseObject : public QModelingObject
     Q_PROPERTY(QSet<QObject *> tests READ tests)
 
 public:
-    Q_INVOKABLE explicit QUmlClauseObject(QUmlClause *qModelingElement);
+    Q_INVOKABLE explicit QUmlClauseObject(QUmlClause *modelingElement);
     virtual ~QUmlClauseObject();
 
     // Owned attributes [Element]

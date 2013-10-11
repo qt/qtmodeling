@@ -106,7 +106,7 @@ class Q_UML_EXPORT QUmlTestIdentityActionObject : public QModelingObject
     Q_PROPERTY(QObject * second READ second WRITE setSecond)
 
 public:
-    Q_INVOKABLE explicit QUmlTestIdentityActionObject(QUmlTestIdentityAction *qModelingElement);
+    Q_INVOKABLE explicit QUmlTestIdentityActionObject(QUmlTestIdentityAction *modelingElement);
     virtual ~QUmlTestIdentityActionObject();
 
     // Owned attributes [Element]

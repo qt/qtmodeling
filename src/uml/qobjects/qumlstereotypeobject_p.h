@@ -142,7 +142,7 @@ class Q_UML_EXPORT QUmlStereotypeObject : public QModelingObject
     Q_PROPERTY(QObject * profile READ profile STORED false)
 
 public:
-    Q_INVOKABLE explicit QUmlStereotypeObject(QUmlStereotype *qModelingElement);
+    Q_INVOKABLE explicit QUmlStereotypeObject(QUmlStereotype *modelingElement);
     virtual ~QUmlStereotypeObject();
 
     // Owned attributes [Element]

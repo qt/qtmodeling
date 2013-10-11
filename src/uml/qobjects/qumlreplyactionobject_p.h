@@ -106,7 +106,7 @@ class Q_UML_EXPORT QUmlReplyActionObject : public QModelingObject
     Q_PROPERTY(QObject * returnInformation READ returnInformation WRITE setReturnInformation)
 
 public:
-    Q_INVOKABLE explicit QUmlReplyActionObject(QUmlReplyAction *qModelingElement);
+    Q_INVOKABLE explicit QUmlReplyActionObject(QUmlReplyAction *modelingElement);
     virtual ~QUmlReplyActionObject();
 
     // Owned attributes [Element]

@@ -106,7 +106,7 @@ class Q_UML_EXPORT QUmlAcceptEventActionObject : public QModelingObject
     Q_PROPERTY(QSet<QObject *> triggers READ triggers)
 
 public:
-    Q_INVOKABLE explicit QUmlAcceptEventActionObject(QUmlAcceptEventAction *qModelingElement);
+    Q_INVOKABLE explicit QUmlAcceptEventActionObject(QUmlAcceptEventAction *modelingElement);
     virtual ~QUmlAcceptEventActionObject();
 
     // Owned attributes [Element]

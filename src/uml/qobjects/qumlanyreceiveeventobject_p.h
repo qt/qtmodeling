@@ -81,7 +81,7 @@ class Q_UML_EXPORT QUmlAnyReceiveEventObject : public QModelingObject
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility RESET unsetVisibility)
 
 public:
-    Q_INVOKABLE explicit QUmlAnyReceiveEventObject(QUmlAnyReceiveEvent *qModelingElement);
+    Q_INVOKABLE explicit QUmlAnyReceiveEventObject(QUmlAnyReceiveEvent *modelingElement);
     virtual ~QUmlAnyReceiveEventObject();
 
     // Owned attributes [Element]

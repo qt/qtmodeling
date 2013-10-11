@@ -107,7 +107,7 @@ class Q_UML_EXPORT QUmlCreateLinkActionObject : public QModelingObject
     Q_PROPERTY(QSet<QObject *> endData READ endData)
 
 public:
-    Q_INVOKABLE explicit QUmlCreateLinkActionObject(QUmlCreateLinkAction *qModelingElement);
+    Q_INVOKABLE explicit QUmlCreateLinkActionObject(QUmlCreateLinkAction *modelingElement);
     virtual ~QUmlCreateLinkActionObject();
 
     // Owned attributes [Element]

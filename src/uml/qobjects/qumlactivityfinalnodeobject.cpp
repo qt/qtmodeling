@@ -61,9 +61,9 @@
 
 QT_BEGIN_NAMESPACE
 
-QUmlActivityFinalNodeObject::QUmlActivityFinalNodeObject(QUmlActivityFinalNode *qModelingElement)
+QUmlActivityFinalNodeObject::QUmlActivityFinalNodeObject(QUmlActivityFinalNode *modelingElement)
 {
-    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(qModelingElement)));
+    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(modelingElement)));
     setGroupProperties();
     setPropertyData();
 }

@@ -82,7 +82,7 @@ class Q_UML_EXPORT QUmlLifelineObject : public QModelingObject
     Q_PROPERTY(QObject * selector READ selector WRITE setSelector)
 
 public:
-    Q_INVOKABLE explicit QUmlLifelineObject(QUmlLifeline *qModelingElement);
+    Q_INVOKABLE explicit QUmlLifelineObject(QUmlLifeline *modelingElement);
     virtual ~QUmlLifelineObject();
 
     // Owned attributes [Element]

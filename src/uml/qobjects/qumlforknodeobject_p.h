@@ -90,7 +90,7 @@ class Q_UML_EXPORT QUmlForkNodeObject : public QModelingObject
     Q_PROPERTY(QSet<QObject *> redefinedNodes READ redefinedNodes)
 
 public:
-    Q_INVOKABLE explicit QUmlForkNodeObject(QUmlForkNode *qModelingElement);
+    Q_INVOKABLE explicit QUmlForkNodeObject(QUmlForkNode *modelingElement);
     virtual ~QUmlForkNodeObject();
 
     // Owned attributes [Element]

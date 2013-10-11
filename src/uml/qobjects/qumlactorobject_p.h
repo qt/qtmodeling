@@ -122,7 +122,7 @@ class Q_UML_EXPORT QUmlActorObject : public QModelingObject
     Q_PROPERTY(QSet<QObject *> ownedBehaviors READ ownedBehaviors)
 
 public:
-    Q_INVOKABLE explicit QUmlActorObject(QUmlActor *qModelingElement);
+    Q_INVOKABLE explicit QUmlActorObject(QUmlActor *modelingElement);
     virtual ~QUmlActorObject();
 
     // Owned attributes [Element]

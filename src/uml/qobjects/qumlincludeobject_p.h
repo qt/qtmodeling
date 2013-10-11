@@ -86,7 +86,7 @@ class Q_UML_EXPORT QUmlIncludeObject : public QModelingObject
     Q_PROPERTY(QObject * includingCase READ includingCase WRITE setIncludingCase)
 
 public:
-    Q_INVOKABLE explicit QUmlIncludeObject(QUmlInclude *qModelingElement);
+    Q_INVOKABLE explicit QUmlIncludeObject(QUmlInclude *modelingElement);
     virtual ~QUmlIncludeObject();
 
     // Owned attributes [Element]

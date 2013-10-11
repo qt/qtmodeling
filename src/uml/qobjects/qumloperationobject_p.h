@@ -123,7 +123,7 @@ class Q_UML_EXPORT QUmlOperationObject : public QModelingObject
     Q_PROPERTY(int upper READ upper RESET unsetUpper STORED false)
 
 public:
-    Q_INVOKABLE explicit QUmlOperationObject(QUmlOperation *qModelingElement);
+    Q_INVOKABLE explicit QUmlOperationObject(QUmlOperation *modelingElement);
     virtual ~QUmlOperationObject();
 
     // Owned attributes [Element]

@@ -65,9 +65,9 @@
 
 QT_BEGIN_NAMESPACE
 
-QUmlModelObject::QUmlModelObject(QUmlModel *qModelingElement)
+QUmlModelObject::QUmlModelObject(QUmlModel *modelingElement)
 {
-    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(qModelingElement)));
+    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(modelingElement)));
     setGroupProperties();
     setPropertyData();
 }
@@ -686,7 +686,7 @@ void QUmlModelObject::setGroupProperties()
     Q_D(QModelingObject);
     const QMetaObject *metaObject = this->metaObject();
 
-    //d->propertyGroups << QStringLiteral("QObject");
+    d->propertyGroups << QStringLiteral("QObject");
     d->groupProperties.insert(QStringLiteral("QObject"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("objectName"))));
 
     d->propertyGroups << QStringLiteral("QUmlElement");

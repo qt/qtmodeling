@@ -131,7 +131,7 @@ class Q_UML_EXPORT QUmlCollaborationObject : public QModelingObject
     Q_PROPERTY(QSet<QObject *> collaborationRoles READ collaborationRoles)
 
 public:
-    Q_INVOKABLE explicit QUmlCollaborationObject(QUmlCollaboration *qModelingElement);
+    Q_INVOKABLE explicit QUmlCollaborationObject(QUmlCollaboration *modelingElement);
     virtual ~QUmlCollaborationObject();
 
     // Owned attributes [Element]

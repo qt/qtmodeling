@@ -71,7 +71,7 @@ class Q_UML_EXPORT QUmlExceptionHandlerObject : public QModelingObject
     Q_PROPERTY(QObject * protectedNode READ protectedNode WRITE setProtectedNode)
 
 public:
-    Q_INVOKABLE explicit QUmlExceptionHandlerObject(QUmlExceptionHandler *qModelingElement);
+    Q_INVOKABLE explicit QUmlExceptionHandlerObject(QUmlExceptionHandler *modelingElement);
     virtual ~QUmlExceptionHandlerObject();
 
     // Owned attributes [Element]

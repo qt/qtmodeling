@@ -86,7 +86,7 @@ class Q_UML_EXPORT QUmlConstraintObject : public QModelingObject
     Q_PROPERTY(QObject * specification READ specification WRITE setSpecification)
 
 public:
-    Q_INVOKABLE explicit QUmlConstraintObject(QUmlConstraint *qModelingElement);
+    Q_INVOKABLE explicit QUmlConstraintObject(QUmlConstraint *modelingElement);
     virtual ~QUmlConstraintObject();
 
     // Owned attributes [Element]

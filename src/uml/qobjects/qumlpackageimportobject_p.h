@@ -79,7 +79,7 @@ class Q_UML_EXPORT QUmlPackageImportObject : public QModelingObject
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility RESET unsetVisibility)
 
 public:
-    Q_INVOKABLE explicit QUmlPackageImportObject(QUmlPackageImport *qModelingElement);
+    Q_INVOKABLE explicit QUmlPackageImportObject(QUmlPackageImport *modelingElement);
     virtual ~QUmlPackageImportObject();
 
     // Owned attributes [Element]

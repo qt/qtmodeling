@@ -66,9 +66,9 @@
 
 QT_BEGIN_NAMESPACE
 
-QUmlAcceptCallActionObject::QUmlAcceptCallActionObject(QUmlAcceptCallAction *qModelingElement)
+QUmlAcceptCallActionObject::QUmlAcceptCallActionObject(QUmlAcceptCallAction *modelingElement)
 {
-    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(qModelingElement)));
+    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(modelingElement)));
     setGroupProperties();
     setPropertyData();
 }

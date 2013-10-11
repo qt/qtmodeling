@@ -88,7 +88,7 @@ class Q_UML_EXPORT QUmlPartDecompositionObject : public QModelingObject
     Q_PROPERTY(QObject * returnValueRecipient READ returnValueRecipient WRITE setReturnValueRecipient)
 
 public:
-    Q_INVOKABLE explicit QUmlPartDecompositionObject(QUmlPartDecomposition *qModelingElement);
+    Q_INVOKABLE explicit QUmlPartDecompositionObject(QUmlPartDecomposition *modelingElement);
     virtual ~QUmlPartDecompositionObject();
 
     // Owned attributes [Element]

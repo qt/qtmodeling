@@ -88,9 +88,9 @@
 
 QT_BEGIN_NAMESPACE
 
-QUmlStateMachineObject::QUmlStateMachineObject(QUmlStateMachine *qModelingElement)
+QUmlStateMachineObject::QUmlStateMachineObject(QUmlStateMachine *modelingElement)
 {
-    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(qModelingElement)));
+    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(modelingElement)));
     setGroupProperties();
     setPropertyData();
 }

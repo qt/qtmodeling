@@ -104,7 +104,7 @@ class Q_UML_EXPORT QUmlClearVariableActionObject : public QModelingObject
     Q_PROPERTY(QObject * variable READ variable WRITE setVariable)
 
 public:
-    Q_INVOKABLE explicit QUmlClearVariableActionObject(QUmlClearVariableAction *qModelingElement);
+    Q_INVOKABLE explicit QUmlClearVariableActionObject(QUmlClearVariableAction *modelingElement);
     virtual ~QUmlClearVariableActionObject();
 
     // Owned attributes [Element]

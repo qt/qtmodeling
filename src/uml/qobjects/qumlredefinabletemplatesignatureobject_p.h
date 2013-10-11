@@ -90,7 +90,7 @@ class Q_UML_EXPORT QUmlRedefinableTemplateSignatureObject : public QModelingObje
     Q_PROPERTY(QSet<QObject *> inheritedParameters READ inheritedParameters STORED false)
 
 public:
-    Q_INVOKABLE explicit QUmlRedefinableTemplateSignatureObject(QUmlRedefinableTemplateSignature *qModelingElement);
+    Q_INVOKABLE explicit QUmlRedefinableTemplateSignatureObject(QUmlRedefinableTemplateSignature *modelingElement);
     virtual ~QUmlRedefinableTemplateSignatureObject();
 
     // Owned attributes [Element]

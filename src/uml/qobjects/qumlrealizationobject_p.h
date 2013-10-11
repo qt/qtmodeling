@@ -95,7 +95,7 @@ class Q_UML_EXPORT QUmlRealizationObject : public QModelingObject
     Q_PROPERTY(QObject * mapping READ mapping WRITE setMapping)
 
 public:
-    Q_INVOKABLE explicit QUmlRealizationObject(QUmlRealization *qModelingElement);
+    Q_INVOKABLE explicit QUmlRealizationObject(QUmlRealization *modelingElement);
     virtual ~QUmlRealizationObject();
 
     // Owned attributes [Element]

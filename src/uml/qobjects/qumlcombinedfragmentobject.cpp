@@ -57,9 +57,9 @@
 
 QT_BEGIN_NAMESPACE
 
-QUmlCombinedFragmentObject::QUmlCombinedFragmentObject(QUmlCombinedFragment *qModelingElement)
+QUmlCombinedFragmentObject::QUmlCombinedFragmentObject(QUmlCombinedFragment *modelingElement)
 {
-    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(qModelingElement)));
+    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(modelingElement)));
     setGroupProperties();
     setPropertyData();
 }

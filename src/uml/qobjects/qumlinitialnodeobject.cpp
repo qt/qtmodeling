@@ -61,9 +61,9 @@
 
 QT_BEGIN_NAMESPACE
 
-QUmlInitialNodeObject::QUmlInitialNodeObject(QUmlInitialNode *qModelingElement)
+QUmlInitialNodeObject::QUmlInitialNodeObject(QUmlInitialNode *modelingElement)
 {
-    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(qModelingElement)));
+    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(modelingElement)));
     setGroupProperties();
     setPropertyData();
 }

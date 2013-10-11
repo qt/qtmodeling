@@ -62,9 +62,9 @@
 
 QT_BEGIN_NAMESPACE
 
-QUmlJoinNodeObject::QUmlJoinNodeObject(QUmlJoinNode *qModelingElement)
+QUmlJoinNodeObject::QUmlJoinNodeObject(QUmlJoinNode *modelingElement)
 {
-    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(qModelingElement)));
+    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(modelingElement)));
     setGroupProperties();
     setPropertyData();
 }

@@ -85,7 +85,7 @@ class Q_UML_EXPORT QUmlConnectionPointReferenceObject : public QModelingObject
     Q_PROPERTY(QObject * state READ state WRITE setState)
 
 public:
-    Q_INVOKABLE explicit QUmlConnectionPointReferenceObject(QUmlConnectionPointReference *qModelingElement);
+    Q_INVOKABLE explicit QUmlConnectionPointReferenceObject(QUmlConnectionPointReference *modelingElement);
     virtual ~QUmlConnectionPointReferenceObject();
 
     // Owned attributes [Element]

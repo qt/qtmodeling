@@ -107,7 +107,7 @@ class Q_UML_EXPORT QUmlReadIsClassifiedObjectActionObject : public QModelingObje
     Q_PROPERTY(QObject * result READ result WRITE setResult)
 
 public:
-    Q_INVOKABLE explicit QUmlReadIsClassifiedObjectActionObject(QUmlReadIsClassifiedObjectAction *qModelingElement);
+    Q_INVOKABLE explicit QUmlReadIsClassifiedObjectActionObject(QUmlReadIsClassifiedObjectAction *modelingElement);
     virtual ~QUmlReadIsClassifiedObjectActionObject();
 
     // Owned attributes [Element]

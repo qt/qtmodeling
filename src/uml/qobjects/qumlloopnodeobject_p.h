@@ -132,7 +132,7 @@ class Q_UML_EXPORT QUmlLoopNodeObject : public QModelingObject
     Q_PROPERTY(QSet<QObject *> tests READ tests)
 
 public:
-    Q_INVOKABLE explicit QUmlLoopNodeObject(QUmlLoopNode *qModelingElement);
+    Q_INVOKABLE explicit QUmlLoopNodeObject(QUmlLoopNode *modelingElement);
     virtual ~QUmlLoopNodeObject();
 
     // Owned attributes [Element]

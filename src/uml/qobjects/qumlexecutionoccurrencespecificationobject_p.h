@@ -88,7 +88,7 @@ class Q_UML_EXPORT QUmlExecutionOccurrenceSpecificationObject : public QModeling
     Q_PROPERTY(QObject * execution READ execution WRITE setExecution)
 
 public:
-    Q_INVOKABLE explicit QUmlExecutionOccurrenceSpecificationObject(QUmlExecutionOccurrenceSpecification *qModelingElement);
+    Q_INVOKABLE explicit QUmlExecutionOccurrenceSpecificationObject(QUmlExecutionOccurrenceSpecification *modelingElement);
     virtual ~QUmlExecutionOccurrenceSpecificationObject();
 
     // Owned attributes [Element]

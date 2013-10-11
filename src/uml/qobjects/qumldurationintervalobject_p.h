@@ -90,7 +90,7 @@ class Q_UML_EXPORT QUmlDurationIntervalObject : public QModelingObject
     Q_PROPERTY(QObject * min READ min WRITE setMin)
 
 public:
-    Q_INVOKABLE explicit QUmlDurationIntervalObject(QUmlDurationInterval *qModelingElement);
+    Q_INVOKABLE explicit QUmlDurationIntervalObject(QUmlDurationInterval *modelingElement);
     virtual ~QUmlDurationIntervalObject();
 
     // Owned attributes [Element]

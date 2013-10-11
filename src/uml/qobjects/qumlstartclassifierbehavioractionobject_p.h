@@ -104,7 +104,7 @@ class Q_UML_EXPORT QUmlStartClassifierBehaviorActionObject : public QModelingObj
     Q_PROPERTY(QObject * object READ object WRITE setObject)
 
 public:
-    Q_INVOKABLE explicit QUmlStartClassifierBehaviorActionObject(QUmlStartClassifierBehaviorAction *qModelingElement);
+    Q_INVOKABLE explicit QUmlStartClassifierBehaviorActionObject(QUmlStartClassifierBehaviorAction *modelingElement);
     virtual ~QUmlStartClassifierBehaviorActionObject();
 
     // Owned attributes [Element]

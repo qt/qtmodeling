@@ -90,7 +90,7 @@ class Q_UML_EXPORT QUmlInitialNodeObject : public QModelingObject
     Q_PROPERTY(QSet<QObject *> redefinedNodes READ redefinedNodes)
 
 public:
-    Q_INVOKABLE explicit QUmlInitialNodeObject(QUmlInitialNode *qModelingElement);
+    Q_INVOKABLE explicit QUmlInitialNodeObject(QUmlInitialNode *modelingElement);
     virtual ~QUmlInitialNodeObject();
 
     // Owned attributes [Element]

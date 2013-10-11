@@ -90,7 +90,7 @@ class Q_UML_EXPORT QUmlInstanceSpecificationObject : public QModelingObject
     Q_PROPERTY(QObject * specification READ specification WRITE setSpecification)
 
 public:
-    Q_INVOKABLE explicit QUmlInstanceSpecificationObject(QUmlInstanceSpecification *qModelingElement);
+    Q_INVOKABLE explicit QUmlInstanceSpecificationObject(QUmlInstanceSpecification *modelingElement);
     virtual ~QUmlInstanceSpecificationObject();
 
     // Owned attributes [Element]

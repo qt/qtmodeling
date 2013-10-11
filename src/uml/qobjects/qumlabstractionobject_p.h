@@ -95,7 +95,7 @@ class Q_UML_EXPORT QUmlAbstractionObject : public QModelingObject
     Q_PROPERTY(QObject * mapping READ mapping WRITE setMapping)
 
 public:
-    Q_INVOKABLE explicit QUmlAbstractionObject(QUmlAbstraction *qModelingElement);
+    Q_INVOKABLE explicit QUmlAbstractionObject(QUmlAbstraction *modelingElement);
     virtual ~QUmlAbstractionObject();
 
     // Owned attributes [Element]

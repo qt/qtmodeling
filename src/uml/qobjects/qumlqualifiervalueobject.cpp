@@ -49,9 +49,9 @@
 
 QT_BEGIN_NAMESPACE
 
-QUmlQualifierValueObject::QUmlQualifierValueObject(QUmlQualifierValue *qModelingElement)
+QUmlQualifierValueObject::QUmlQualifierValueObject(QUmlQualifierValue *modelingElement)
 {
-    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(qModelingElement)));
+    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(modelingElement)));
     setGroupProperties();
     setPropertyData();
 }

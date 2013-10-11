@@ -54,9 +54,9 @@
 
 QT_BEGIN_NAMESPACE
 
-QUmlTimeObservationObject::QUmlTimeObservationObject(QUmlTimeObservation *qModelingElement)
+QUmlTimeObservationObject::QUmlTimeObservationObject(QUmlTimeObservation *modelingElement)
 {
-    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(qModelingElement)));
+    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(modelingElement)));
     setGroupProperties();
     setPropertyData();
 }

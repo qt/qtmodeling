@@ -113,7 +113,7 @@ class Q_UML_EXPORT QUmlRemoveStructuralFeatureValueActionObject : public QModeli
     Q_PROPERTY(QObject * removeAt READ removeAt WRITE setRemoveAt)
 
 public:
-    Q_INVOKABLE explicit QUmlRemoveStructuralFeatureValueActionObject(QUmlRemoveStructuralFeatureValueAction *qModelingElement);
+    Q_INVOKABLE explicit QUmlRemoveStructuralFeatureValueActionObject(QUmlRemoveStructuralFeatureValueAction *modelingElement);
     virtual ~QUmlRemoveStructuralFeatureValueActionObject();
 
     // Owned attributes [Element]

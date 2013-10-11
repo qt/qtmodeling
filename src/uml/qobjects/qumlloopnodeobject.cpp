@@ -70,9 +70,9 @@
 
 QT_BEGIN_NAMESPACE
 
-QUmlLoopNodeObject::QUmlLoopNodeObject(QUmlLoopNode *qModelingElement)
+QUmlLoopNodeObject::QUmlLoopNodeObject(QUmlLoopNode *modelingElement)
 {
-    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(qModelingElement)));
+    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(modelingElement)));
     setGroupProperties();
     setPropertyData();
 }

@@ -128,7 +128,7 @@ class Q_UML_EXPORT QUmlUseCaseObject : public QModelingObject
     Q_PROPERTY(QSet<QObject *> subjects READ subjects)
 
 public:
-    Q_INVOKABLE explicit QUmlUseCaseObject(QUmlUseCase *qModelingElement);
+    Q_INVOKABLE explicit QUmlUseCaseObject(QUmlUseCase *modelingElement);
     virtual ~QUmlUseCaseObject();
 
     // Owned attributes [Element]

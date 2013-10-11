@@ -103,7 +103,7 @@ class Q_UML_EXPORT QUmlPackageObject : public QModelingObject
     Q_PROPERTY(QSet<QObject *> profileApplications READ profileApplications)
 
 public:
-    Q_INVOKABLE explicit QUmlPackageObject(QUmlPackage *qModelingElement);
+    Q_INVOKABLE explicit QUmlPackageObject(QUmlPackage *modelingElement);
     virtual ~QUmlPackageObject();
 
     // Owned attributes [Element]

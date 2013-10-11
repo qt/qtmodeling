@@ -85,9 +85,9 @@
 
 QT_BEGIN_NAMESPACE
 
-QUmlFunctionBehaviorObject::QUmlFunctionBehaviorObject(QUmlFunctionBehavior *qModelingElement)
+QUmlFunctionBehaviorObject::QUmlFunctionBehaviorObject(QUmlFunctionBehavior *modelingElement)
 {
-    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(qModelingElement)));
+    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(modelingElement)));
     setGroupProperties();
     setPropertyData();
 }

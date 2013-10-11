@@ -57,9 +57,9 @@
 
 QT_BEGIN_NAMESPACE
 
-QUmlOpaqueExpressionObject::QUmlOpaqueExpressionObject(QUmlOpaqueExpression *qModelingElement)
+QUmlOpaqueExpressionObject::QUmlOpaqueExpressionObject(QUmlOpaqueExpression *modelingElement)
 {
-    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(qModelingElement)));
+    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(modelingElement)));
     setGroupProperties();
     setPropertyData();
 }

@@ -94,7 +94,7 @@ class Q_UML_EXPORT QUmlJoinNodeObject : public QModelingObject
     Q_PROPERTY(QObject * joinSpec READ joinSpec WRITE setJoinSpec)
 
 public:
-    Q_INVOKABLE explicit QUmlJoinNodeObject(QUmlJoinNode *qModelingElement);
+    Q_INVOKABLE explicit QUmlJoinNodeObject(QUmlJoinNode *modelingElement);
     virtual ~QUmlJoinNodeObject();
 
     // Owned attributes [Element]

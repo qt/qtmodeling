@@ -71,7 +71,7 @@ class Q_UML_EXPORT QUmlTemplateParameterSubstitutionObject : public QModelingObj
     Q_PROPERTY(QObject * templateBinding READ templateBinding WRITE setTemplateBinding)
 
 public:
-    Q_INVOKABLE explicit QUmlTemplateParameterSubstitutionObject(QUmlTemplateParameterSubstitution *qModelingElement);
+    Q_INVOKABLE explicit QUmlTemplateParameterSubstitutionObject(QUmlTemplateParameterSubstitution *modelingElement);
     virtual ~QUmlTemplateParameterSubstitutionObject();
 
     // Owned attributes [Element]

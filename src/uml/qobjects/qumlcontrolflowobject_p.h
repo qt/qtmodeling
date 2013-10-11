@@ -92,7 +92,7 @@ class Q_UML_EXPORT QUmlControlFlowObject : public QModelingObject
     Q_PROPERTY(QObject * weight READ weight WRITE setWeight)
 
 public:
-    Q_INVOKABLE explicit QUmlControlFlowObject(QUmlControlFlow *qModelingElement);
+    Q_INVOKABLE explicit QUmlControlFlowObject(QUmlControlFlow *modelingElement);
     virtual ~QUmlControlFlowObject();
 
     // Owned attributes [Element]

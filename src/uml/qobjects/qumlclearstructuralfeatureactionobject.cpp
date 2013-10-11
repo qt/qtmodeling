@@ -66,9 +66,9 @@
 
 QT_BEGIN_NAMESPACE
 
-QUmlClearStructuralFeatureActionObject::QUmlClearStructuralFeatureActionObject(QUmlClearStructuralFeatureAction *qModelingElement)
+QUmlClearStructuralFeatureActionObject::QUmlClearStructuralFeatureActionObject(QUmlClearStructuralFeatureAction *modelingElement)
 {
-    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(qModelingElement)));
+    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(modelingElement)));
     setGroupProperties();
     setPropertyData();
 }

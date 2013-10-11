@@ -69,7 +69,7 @@ class Q_UML_EXPORT QUmlCommentObject : public QModelingObject
     Q_PROPERTY(QString body READ body WRITE setBody)
 
 public:
-    Q_INVOKABLE explicit QUmlCommentObject(QUmlComment *qModelingElement);
+    Q_INVOKABLE explicit QUmlCommentObject(QUmlComment *modelingElement);
     virtual ~QUmlCommentObject();
 
     // Owned attributes [Element]

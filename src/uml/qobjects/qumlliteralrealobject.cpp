@@ -55,9 +55,9 @@
 
 QT_BEGIN_NAMESPACE
 
-QUmlLiteralRealObject::QUmlLiteralRealObject(QUmlLiteralReal *qModelingElement)
+QUmlLiteralRealObject::QUmlLiteralRealObject(QUmlLiteralReal *modelingElement)
 {
-    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(qModelingElement)));
+    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(modelingElement)));
     setGroupProperties();
     setPropertyData();
 }

@@ -108,7 +108,7 @@ class Q_UML_EXPORT QUmlBroadcastSignalActionObject : public QModelingObject
     Q_PROPERTY(QObject * signal READ signal WRITE setSignal)
 
 public:
-    Q_INVOKABLE explicit QUmlBroadcastSignalActionObject(QUmlBroadcastSignalAction *qModelingElement);
+    Q_INVOKABLE explicit QUmlBroadcastSignalActionObject(QUmlBroadcastSignalAction *modelingElement);
     virtual ~QUmlBroadcastSignalActionObject();
 
     // Owned attributes [Element]

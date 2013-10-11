@@ -100,7 +100,7 @@ class Q_UML_EXPORT QUmlCentralBufferNodeObject : public QModelingObject
     Q_PROPERTY(QObject * upperBound READ upperBound WRITE setUpperBound)
 
 public:
-    Q_INVOKABLE explicit QUmlCentralBufferNodeObject(QUmlCentralBufferNode *qModelingElement);
+    Q_INVOKABLE explicit QUmlCentralBufferNodeObject(QUmlCentralBufferNode *modelingElement);
     virtual ~QUmlCentralBufferNodeObject();
 
     // Owned attributes [Element]

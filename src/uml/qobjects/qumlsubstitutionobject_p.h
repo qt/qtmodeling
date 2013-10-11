@@ -99,7 +99,7 @@ class Q_UML_EXPORT QUmlSubstitutionObject : public QModelingObject
     Q_PROPERTY(QObject * substitutingClassifier READ substitutingClassifier WRITE setSubstitutingClassifier)
 
 public:
-    Q_INVOKABLE explicit QUmlSubstitutionObject(QUmlSubstitution *qModelingElement);
+    Q_INVOKABLE explicit QUmlSubstitutionObject(QUmlSubstitution *modelingElement);
     virtual ~QUmlSubstitutionObject();
 
     // Owned attributes [Element]

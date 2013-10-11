@@ -105,7 +105,7 @@ class Q_UML_EXPORT QUmlReadExtentActionObject : public QModelingObject
     Q_PROPERTY(QObject * result READ result WRITE setResult)
 
 public:
-    Q_INVOKABLE explicit QUmlReadExtentActionObject(QUmlReadExtentAction *qModelingElement);
+    Q_INVOKABLE explicit QUmlReadExtentActionObject(QUmlReadExtentAction *modelingElement);
     virtual ~QUmlReadExtentActionObject();
 
     // Owned attributes [Element]

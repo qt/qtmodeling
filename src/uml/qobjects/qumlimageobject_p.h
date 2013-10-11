@@ -70,7 +70,7 @@ class Q_UML_EXPORT QUmlImageObject : public QModelingObject
     Q_PROPERTY(QString location READ location WRITE setLocation)
 
 public:
-    Q_INVOKABLE explicit QUmlImageObject(QUmlImage *qModelingElement);
+    Q_INVOKABLE explicit QUmlImageObject(QUmlImage *modelingElement);
     virtual ~QUmlImageObject();
 
     // Owned attributes [Element]

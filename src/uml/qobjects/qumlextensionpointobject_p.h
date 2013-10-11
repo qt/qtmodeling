@@ -83,7 +83,7 @@ class Q_UML_EXPORT QUmlExtensionPointObject : public QModelingObject
     Q_PROPERTY(QObject * useCase READ useCase WRITE setUseCase)
 
 public:
-    Q_INVOKABLE explicit QUmlExtensionPointObject(QUmlExtensionPoint *qModelingElement);
+    Q_INVOKABLE explicit QUmlExtensionPointObject(QUmlExtensionPoint *modelingElement);
     virtual ~QUmlExtensionPointObject();
 
     // Owned attributes [Element]

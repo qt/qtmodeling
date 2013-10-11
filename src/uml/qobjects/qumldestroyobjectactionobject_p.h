@@ -106,7 +106,7 @@ class Q_UML_EXPORT QUmlDestroyObjectActionObject : public QModelingObject
     Q_PROPERTY(QObject * target READ target WRITE setTarget)
 
 public:
-    Q_INVOKABLE explicit QUmlDestroyObjectActionObject(QUmlDestroyObjectAction *qModelingElement);
+    Q_INVOKABLE explicit QUmlDestroyObjectActionObject(QUmlDestroyObjectAction *modelingElement);
     virtual ~QUmlDestroyObjectActionObject();
 
     // Owned attributes [Element]

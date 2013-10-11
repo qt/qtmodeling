@@ -87,7 +87,7 @@ class Q_UML_EXPORT QUmlLiteralRealObject : public QModelingObject
     Q_PROPERTY(double value READ value WRITE setValue)
 
 public:
-    Q_INVOKABLE explicit QUmlLiteralRealObject(QUmlLiteralReal *qModelingElement);
+    Q_INVOKABLE explicit QUmlLiteralRealObject(QUmlLiteralReal *modelingElement);
     virtual ~QUmlLiteralRealObject();
 
     // Owned attributes [Element]

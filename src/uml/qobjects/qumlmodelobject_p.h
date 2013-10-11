@@ -106,7 +106,7 @@ class Q_UML_EXPORT QUmlModelObject : public QModelingObject
     Q_PROPERTY(QString viewpoint READ viewpoint WRITE setViewpoint)
 
 public:
-    Q_INVOKABLE explicit QUmlModelObject(QUmlModel *qModelingElement);
+    Q_INVOKABLE explicit QUmlModelObject(QUmlModel *modelingElement);
     virtual ~QUmlModelObject();
 
     // Owned attributes [Element]

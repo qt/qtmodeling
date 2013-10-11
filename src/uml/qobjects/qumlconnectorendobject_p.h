@@ -78,7 +78,7 @@ class Q_UML_EXPORT QUmlConnectorEndObject : public QModelingObject
     Q_PROPERTY(QObject * role READ role WRITE setRole)
 
 public:
-    Q_INVOKABLE explicit QUmlConnectorEndObject(QUmlConnectorEnd *qModelingElement);
+    Q_INVOKABLE explicit QUmlConnectorEndObject(QUmlConnectorEnd *modelingElement);
     virtual ~QUmlConnectorEndObject();
 
     // Owned attributes [Element]

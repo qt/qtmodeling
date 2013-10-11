@@ -130,7 +130,7 @@ class Q_UML_EXPORT QUmlExtensionEndObject : public QModelingObject
     Q_PROPERTY(QObject * type READ type WRITE setType)
 
 public:
-    Q_INVOKABLE explicit QUmlExtensionEndObject(QUmlExtensionEnd *qModelingElement);
+    Q_INVOKABLE explicit QUmlExtensionEndObject(QUmlExtensionEnd *modelingElement);
     virtual ~QUmlExtensionEndObject();
 
     // Owned attributes [Element]

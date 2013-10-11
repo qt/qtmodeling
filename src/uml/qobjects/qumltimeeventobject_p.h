@@ -85,7 +85,7 @@ class Q_UML_EXPORT QUmlTimeEventObject : public QModelingObject
     Q_PROPERTY(QObject * when READ when WRITE setWhen)
 
 public:
-    Q_INVOKABLE explicit QUmlTimeEventObject(QUmlTimeEvent *qModelingElement);
+    Q_INVOKABLE explicit QUmlTimeEventObject(QUmlTimeEvent *modelingElement);
     virtual ~QUmlTimeEventObject();
 
     // Owned attributes [Element]

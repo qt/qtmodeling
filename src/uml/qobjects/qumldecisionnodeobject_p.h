@@ -94,7 +94,7 @@ class Q_UML_EXPORT QUmlDecisionNodeObject : public QModelingObject
     Q_PROPERTY(QObject * decisionInputFlow READ decisionInputFlow WRITE setDecisionInputFlow)
 
 public:
-    Q_INVOKABLE explicit QUmlDecisionNodeObject(QUmlDecisionNode *qModelingElement);
+    Q_INVOKABLE explicit QUmlDecisionNodeObject(QUmlDecisionNode *modelingElement);
     virtual ~QUmlDecisionNodeObject();
 
     // Owned attributes [Element]

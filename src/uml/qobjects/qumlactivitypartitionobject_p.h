@@ -91,7 +91,7 @@ class Q_UML_EXPORT QUmlActivityPartitionObject : public QModelingObject
     Q_PROPERTY(QObject * superPartition READ superPartition WRITE setSuperPartition)
 
 public:
-    Q_INVOKABLE explicit QUmlActivityPartitionObject(QUmlActivityPartition *qModelingElement);
+    Q_INVOKABLE explicit QUmlActivityPartitionObject(QUmlActivityPartition *modelingElement);
     virtual ~QUmlActivityPartitionObject();
 
     // Owned attributes [Element]

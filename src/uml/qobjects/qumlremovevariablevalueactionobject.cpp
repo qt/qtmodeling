@@ -66,9 +66,9 @@
 
 QT_BEGIN_NAMESPACE
 
-QUmlRemoveVariableValueActionObject::QUmlRemoveVariableValueActionObject(QUmlRemoveVariableValueAction *qModelingElement)
+QUmlRemoveVariableValueActionObject::QUmlRemoveVariableValueActionObject(QUmlRemoveVariableValueAction *modelingElement)
 {
-    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(qModelingElement)));
+    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(modelingElement)));
     setGroupProperties();
     setPropertyData();
 }

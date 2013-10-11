@@ -127,7 +127,7 @@ class Q_UML_EXPORT QUmlCommunicationPathObject : public QModelingObject
     Q_PROPERTY(QList<QObject *> ownedEnds READ ownedEnds)
 
 public:
-    Q_INVOKABLE explicit QUmlCommunicationPathObject(QUmlCommunicationPath *qModelingElement);
+    Q_INVOKABLE explicit QUmlCommunicationPathObject(QUmlCommunicationPath *modelingElement);
     virtual ~QUmlCommunicationPathObject();
 
     // Owned attributes [Element]

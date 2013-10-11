@@ -93,7 +93,7 @@ class Q_UML_EXPORT QUmlEnumerationLiteralObject : public QModelingObject
     Q_PROPERTY(QObject * enumeration READ enumeration WRITE setEnumeration)
 
 public:
-    Q_INVOKABLE explicit QUmlEnumerationLiteralObject(QUmlEnumerationLiteral *qModelingElement);
+    Q_INVOKABLE explicit QUmlEnumerationLiteralObject(QUmlEnumerationLiteral *modelingElement);
     virtual ~QUmlEnumerationLiteralObject();
 
     // Owned attributes [Element]

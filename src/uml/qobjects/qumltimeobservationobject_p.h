@@ -85,7 +85,7 @@ class Q_UML_EXPORT QUmlTimeObservationObject : public QModelingObject
     Q_PROPERTY(bool firstEvent READ firstEvent WRITE setFirstEvent RESET unsetFirstEvent)
 
 public:
-    Q_INVOKABLE explicit QUmlTimeObservationObject(QUmlTimeObservation *qModelingElement);
+    Q_INVOKABLE explicit QUmlTimeObservationObject(QUmlTimeObservation *modelingElement);
     virtual ~QUmlTimeObservationObject();
 
     // Owned attributes [Element]

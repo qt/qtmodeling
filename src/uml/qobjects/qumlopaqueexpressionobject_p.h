@@ -90,7 +90,7 @@ class Q_UML_EXPORT QUmlOpaqueExpressionObject : public QModelingObject
     Q_PROPERTY(QObject * result READ result STORED false)
 
 public:
-    Q_INVOKABLE explicit QUmlOpaqueExpressionObject(QUmlOpaqueExpression *qModelingElement);
+    Q_INVOKABLE explicit QUmlOpaqueExpressionObject(QUmlOpaqueExpression *modelingElement);
     virtual ~QUmlOpaqueExpressionObject();
 
     // Owned attributes [Element]

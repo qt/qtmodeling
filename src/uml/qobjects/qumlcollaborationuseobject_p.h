@@ -79,7 +79,7 @@ class Q_UML_EXPORT QUmlCollaborationUseObject : public QModelingObject
     Q_PROPERTY(QObject * type READ type WRITE setType)
 
 public:
-    Q_INVOKABLE explicit QUmlCollaborationUseObject(QUmlCollaborationUse *qModelingElement);
+    Q_INVOKABLE explicit QUmlCollaborationUseObject(QUmlCollaborationUse *modelingElement);
     virtual ~QUmlCollaborationUseObject();
 
     // Owned attributes [Element]

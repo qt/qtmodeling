@@ -79,7 +79,7 @@ class Q_UML_EXPORT QUmlGeneralOrderingObject : public QModelingObject
     Q_PROPERTY(QObject * before READ before WRITE setBefore)
 
 public:
-    Q_INVOKABLE explicit QUmlGeneralOrderingObject(QUmlGeneralOrdering *qModelingElement);
+    Q_INVOKABLE explicit QUmlGeneralOrderingObject(QUmlGeneralOrdering *modelingElement);
     virtual ~QUmlGeneralOrderingObject();
 
     // Owned attributes [Element]

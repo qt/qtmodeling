@@ -85,7 +85,7 @@ class Q_UML_EXPORT QUmlOccurrenceSpecificationObject : public QModelingObject
     Q_PROPERTY(QSet<QObject *> toBefores READ toBefores)
 
 public:
-    Q_INVOKABLE explicit QUmlOccurrenceSpecificationObject(QUmlOccurrenceSpecification *qModelingElement);
+    Q_INVOKABLE explicit QUmlOccurrenceSpecificationObject(QUmlOccurrenceSpecification *modelingElement);
     virtual ~QUmlOccurrenceSpecificationObject();
 
     // Owned attributes [Element]

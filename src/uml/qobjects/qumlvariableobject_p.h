@@ -97,7 +97,7 @@ class Q_UML_EXPORT QUmlVariableObject : public QModelingObject
     Q_PROPERTY(QObject * scope READ scope WRITE setScope)
 
 public:
-    Q_INVOKABLE explicit QUmlVariableObject(QUmlVariable *qModelingElement);
+    Q_INVOKABLE explicit QUmlVariableObject(QUmlVariable *modelingElement);
     virtual ~QUmlVariableObject();
 
     // Owned attributes [Element]

@@ -107,7 +107,7 @@ class Q_UML_EXPORT QUmlReduceActionObject : public QModelingObject
     Q_PROPERTY(QObject * result READ result WRITE setResult)
 
 public:
-    Q_INVOKABLE explicit QUmlReduceActionObject(QUmlReduceAction *qModelingElement);
+    Q_INVOKABLE explicit QUmlReduceActionObject(QUmlReduceAction *modelingElement);
     virtual ~QUmlReduceActionObject();
 
     // Owned attributes [Element]

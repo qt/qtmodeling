@@ -113,7 +113,7 @@ class Q_UML_EXPORT QUmlCallOperationActionObject : public QModelingObject
     Q_PROPERTY(QObject * target READ target WRITE setTarget)
 
 public:
-    Q_INVOKABLE explicit QUmlCallOperationActionObject(QUmlCallOperationAction *qModelingElement);
+    Q_INVOKABLE explicit QUmlCallOperationActionObject(QUmlCallOperationAction *modelingElement);
     virtual ~QUmlCallOperationActionObject();
 
     // Owned attributes [Element]

@@ -53,9 +53,9 @@
 
 QT_BEGIN_NAMESPACE
 
-QUmlIncludeObject::QUmlIncludeObject(QUmlInclude *qModelingElement)
+QUmlIncludeObject::QUmlIncludeObject(QUmlInclude *modelingElement)
 {
-    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(qModelingElement)));
+    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(modelingElement)));
     setGroupProperties();
     setPropertyData();
 }

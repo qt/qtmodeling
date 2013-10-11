@@ -108,7 +108,7 @@ class Q_UML_EXPORT QUmlReadLinkActionObject : public QModelingObject
     Q_PROPERTY(QObject * result READ result WRITE setResult)
 
 public:
-    Q_INVOKABLE explicit QUmlReadLinkActionObject(QUmlReadLinkAction *qModelingElement);
+    Q_INVOKABLE explicit QUmlReadLinkActionObject(QUmlReadLinkAction *modelingElement);
     virtual ~QUmlReadLinkActionObject();
 
     // Owned attributes [Element]

@@ -107,7 +107,7 @@ class Q_UML_EXPORT QUmlReclassifyObjectActionObject : public QModelingObject
     Q_PROPERTY(QSet<QObject *> oldClassifiers READ oldClassifiers)
 
 public:
-    Q_INVOKABLE explicit QUmlReclassifyObjectActionObject(QUmlReclassifyObjectAction *qModelingElement);
+    Q_INVOKABLE explicit QUmlReclassifyObjectActionObject(QUmlReclassifyObjectAction *modelingElement);
     virtual ~QUmlReclassifyObjectActionObject();
 
     // Owned attributes [Element]

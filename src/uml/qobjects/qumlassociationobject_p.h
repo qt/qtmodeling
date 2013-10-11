@@ -127,7 +127,7 @@ class Q_UML_EXPORT QUmlAssociationObject : public QModelingObject
     Q_PROPERTY(QList<QObject *> ownedEnds READ ownedEnds)
 
 public:
-    Q_INVOKABLE explicit QUmlAssociationObject(QUmlAssociation *qModelingElement);
+    Q_INVOKABLE explicit QUmlAssociationObject(QUmlAssociation *modelingElement);
     virtual ~QUmlAssociationObject();
 
     // Owned attributes [Element]

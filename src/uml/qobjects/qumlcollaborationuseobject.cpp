@@ -53,9 +53,9 @@
 
 QT_BEGIN_NAMESPACE
 
-QUmlCollaborationUseObject::QUmlCollaborationUseObject(QUmlCollaborationUse *qModelingElement)
+QUmlCollaborationUseObject::QUmlCollaborationUseObject(QUmlCollaborationUse *modelingElement)
 {
-    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(qModelingElement)));
+    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(modelingElement)));
     setGroupProperties();
     setPropertyData();
 }

@@ -156,7 +156,7 @@ class Q_UML_EXPORT QUmlProtocolStateMachineObject : public QModelingObject
     Q_PROPERTY(QSet<QObject *> conformance READ conformance)
 
 public:
-    Q_INVOKABLE explicit QUmlProtocolStateMachineObject(QUmlProtocolStateMachine *qModelingElement);
+    Q_INVOKABLE explicit QUmlProtocolStateMachineObject(QUmlProtocolStateMachine *modelingElement);
     virtual ~QUmlProtocolStateMachineObject();
 
     // Owned attributes [Element]

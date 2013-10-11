@@ -84,7 +84,7 @@ class Q_UML_EXPORT QUmlLiteralNullObject : public QModelingObject
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility RESET unsetVisibility)
 
 public:
-    Q_INVOKABLE explicit QUmlLiteralNullObject(QUmlLiteralNull *qModelingElement);
+    Q_INVOKABLE explicit QUmlLiteralNullObject(QUmlLiteralNull *modelingElement);
     virtual ~QUmlLiteralNullObject();
 
     // Owned attributes [Element]

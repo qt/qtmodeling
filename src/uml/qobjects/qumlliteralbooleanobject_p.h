@@ -87,7 +87,7 @@ class Q_UML_EXPORT QUmlLiteralBooleanObject : public QModelingObject
     Q_PROPERTY(bool value READ value WRITE setValue RESET unsetValue)
 
 public:
-    Q_INVOKABLE explicit QUmlLiteralBooleanObject(QUmlLiteralBoolean *qModelingElement);
+    Q_INVOKABLE explicit QUmlLiteralBooleanObject(QUmlLiteralBoolean *modelingElement);
     virtual ~QUmlLiteralBooleanObject();
 
     // Owned attributes [Element]

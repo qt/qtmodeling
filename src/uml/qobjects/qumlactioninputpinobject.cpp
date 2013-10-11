@@ -67,9 +67,9 @@
 
 QT_BEGIN_NAMESPACE
 
-QUmlActionInputPinObject::QUmlActionInputPinObject(QUmlActionInputPin *qModelingElement)
+QUmlActionInputPinObject::QUmlActionInputPinObject(QUmlActionInputPin *modelingElement)
 {
-    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(qModelingElement)));
+    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(modelingElement)));
     setGroupProperties();
     setPropertyData();
 }

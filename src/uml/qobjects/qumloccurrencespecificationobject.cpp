@@ -56,9 +56,9 @@
 
 QT_BEGIN_NAMESPACE
 
-QUmlOccurrenceSpecificationObject::QUmlOccurrenceSpecificationObject(QUmlOccurrenceSpecification *qModelingElement)
+QUmlOccurrenceSpecificationObject::QUmlOccurrenceSpecificationObject(QUmlOccurrenceSpecification *modelingElement)
 {
-    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(qModelingElement)));
+    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(modelingElement)));
     setGroupProperties();
     setPropertyData();
 }

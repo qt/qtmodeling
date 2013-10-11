@@ -108,7 +108,7 @@ class Q_UML_EXPORT QUmlClearStructuralFeatureActionObject : public QModelingObje
     Q_PROPERTY(QObject * result READ result WRITE setResult)
 
 public:
-    Q_INVOKABLE explicit QUmlClearStructuralFeatureActionObject(QUmlClearStructuralFeatureAction *qModelingElement);
+    Q_INVOKABLE explicit QUmlClearStructuralFeatureActionObject(QUmlClearStructuralFeatureAction *modelingElement);
     virtual ~QUmlClearStructuralFeatureActionObject();
 
     // Owned attributes [Element]

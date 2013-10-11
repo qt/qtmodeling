@@ -128,7 +128,7 @@ class Q_UML_EXPORT QUmlPropertyObject : public QModelingObject
     Q_PROPERTY(QSet<QObject *> subsettedProperties READ subsettedProperties)
 
 public:
-    Q_INVOKABLE explicit QUmlPropertyObject(QUmlProperty *qModelingElement);
+    Q_INVOKABLE explicit QUmlPropertyObject(QUmlProperty *modelingElement);
     virtual ~QUmlPropertyObject();
 
     // Owned attributes [Element]

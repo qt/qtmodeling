@@ -93,7 +93,7 @@ class Q_UML_EXPORT QUmlInteractionOperandObject : public QModelingObject
     Q_PROPERTY(QObject * guard READ guard WRITE setGuard)
 
 public:
-    Q_INVOKABLE explicit QUmlInteractionOperandObject(QUmlInteractionOperand *qModelingElement);
+    Q_INVOKABLE explicit QUmlInteractionOperandObject(QUmlInteractionOperand *modelingElement);
     virtual ~QUmlInteractionOperandObject();
 
     // Owned attributes [Element]

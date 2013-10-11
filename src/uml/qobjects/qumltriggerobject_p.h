@@ -79,7 +79,7 @@ class Q_UML_EXPORT QUmlTriggerObject : public QModelingObject
     Q_PROPERTY(QSet<QObject *> ports READ ports)
 
 public:
-    Q_INVOKABLE explicit QUmlTriggerObject(QUmlTrigger *qModelingElement);
+    Q_INVOKABLE explicit QUmlTriggerObject(QUmlTrigger *modelingElement);
     virtual ~QUmlTriggerObject();
 
     // Owned attributes [Element]

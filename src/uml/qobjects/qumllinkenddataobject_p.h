@@ -70,7 +70,7 @@ class Q_UML_EXPORT QUmlLinkEndDataObject : public QModelingObject
     Q_PROPERTY(QObject * value READ value WRITE setValue)
 
 public:
-    Q_INVOKABLE explicit QUmlLinkEndDataObject(QUmlLinkEndData *qModelingElement);
+    Q_INVOKABLE explicit QUmlLinkEndDataObject(QUmlLinkEndData *modelingElement);
     virtual ~QUmlLinkEndDataObject();
 
     // Owned attributes [Element]

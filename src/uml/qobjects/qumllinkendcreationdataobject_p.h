@@ -74,7 +74,7 @@ class Q_UML_EXPORT QUmlLinkEndCreationDataObject : public QModelingObject
     Q_PROPERTY(bool isReplaceAll READ isReplaceAll WRITE setReplaceAll RESET unsetReplaceAll)
 
 public:
-    Q_INVOKABLE explicit QUmlLinkEndCreationDataObject(QUmlLinkEndCreationData *qModelingElement);
+    Q_INVOKABLE explicit QUmlLinkEndCreationDataObject(QUmlLinkEndCreationData *modelingElement);
     virtual ~QUmlLinkEndCreationDataObject();
 
     // Owned attributes [Element]

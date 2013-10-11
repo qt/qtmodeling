@@ -114,7 +114,7 @@ class Q_UML_EXPORT QUmlValuePinObject : public QModelingObject
     Q_PROPERTY(QObject * value READ value WRITE setValue)
 
 public:
-    Q_INVOKABLE explicit QUmlValuePinObject(QUmlValuePin *qModelingElement);
+    Q_INVOKABLE explicit QUmlValuePinObject(QUmlValuePin *modelingElement);
     virtual ~QUmlValuePinObject();
 
     // Owned attributes [Element]

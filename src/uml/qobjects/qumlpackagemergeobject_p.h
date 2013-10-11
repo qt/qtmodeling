@@ -76,7 +76,7 @@ class Q_UML_EXPORT QUmlPackageMergeObject : public QModelingObject
     Q_PROPERTY(QObject * receivingPackage READ receivingPackage WRITE setReceivingPackage)
 
 public:
-    Q_INVOKABLE explicit QUmlPackageMergeObject(QUmlPackageMerge *qModelingElement);
+    Q_INVOKABLE explicit QUmlPackageMergeObject(QUmlPackageMerge *modelingElement);
     virtual ~QUmlPackageMergeObject();
 
     // Owned attributes [Element]

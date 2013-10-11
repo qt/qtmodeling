@@ -95,7 +95,7 @@ class Q_UML_EXPORT QUmlRegionObject : public QModelingObject
     Q_PROPERTY(QSet<QObject *> transitions READ transitions)
 
 public:
-    Q_INVOKABLE explicit QUmlRegionObject(QUmlRegion *qModelingElement);
+    Q_INVOKABLE explicit QUmlRegionObject(QUmlRegion *modelingElement);
     virtual ~QUmlRegionObject();
 
     // Owned attributes [Element]

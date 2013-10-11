@@ -92,7 +92,7 @@ class Q_UML_EXPORT QUmlUsageObject : public QModelingObject
     Q_PROPERTY(QSet<QObject *> suppliers READ suppliers)
 
 public:
-    Q_INVOKABLE explicit QUmlUsageObject(QUmlUsage *qModelingElement);
+    Q_INVOKABLE explicit QUmlUsageObject(QUmlUsage *modelingElement);
     virtual ~QUmlUsageObject();
 
     // Owned attributes [Element]

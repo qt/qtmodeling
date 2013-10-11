@@ -124,7 +124,7 @@ class Q_UML_EXPORT QUmlArtifactObject : public QModelingObject
     Q_PROPERTY(QList<QObject *> ownedOperations READ ownedOperations)
 
 public:
-    Q_INVOKABLE explicit QUmlArtifactObject(QUmlArtifact *qModelingElement);
+    Q_INVOKABLE explicit QUmlArtifactObject(QUmlArtifact *modelingElement);
     virtual ~QUmlArtifactObject();
 
     // Owned attributes [Element]

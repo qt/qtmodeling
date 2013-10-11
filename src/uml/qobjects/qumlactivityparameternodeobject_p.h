@@ -103,7 +103,7 @@ class Q_UML_EXPORT QUmlActivityParameterNodeObject : public QModelingObject
     Q_PROPERTY(QObject * parameter READ parameter WRITE setParameter)
 
 public:
-    Q_INVOKABLE explicit QUmlActivityParameterNodeObject(QUmlActivityParameterNode *qModelingElement);
+    Q_INVOKABLE explicit QUmlActivityParameterNodeObject(QUmlActivityParameterNode *modelingElement);
     virtual ~QUmlActivityParameterNodeObject();
 
     // Owned attributes [Element]

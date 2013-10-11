@@ -145,7 +145,7 @@ class Q_UML_EXPORT QUmlDeviceObject : public QModelingObject
     Q_PROPERTY(QSet<QObject *> nestedNodes READ nestedNodes)
 
 public:
-    Q_INVOKABLE explicit QUmlDeviceObject(QUmlDevice *qModelingElement);
+    Q_INVOKABLE explicit QUmlDeviceObject(QUmlDevice *modelingElement);
     virtual ~QUmlDeviceObject();
 
     // Owned attributes [Element]

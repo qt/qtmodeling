@@ -68,9 +68,9 @@
 
 QT_BEGIN_NAMESPACE
 
-QUmlCreateLinkObjectActionObject::QUmlCreateLinkObjectActionObject(QUmlCreateLinkObjectAction *qModelingElement)
+QUmlCreateLinkObjectActionObject::QUmlCreateLinkObjectActionObject(QUmlCreateLinkObjectAction *modelingElement)
 {
-    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(qModelingElement)));
+    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(modelingElement)));
     setGroupProperties();
     setPropertyData();
 }

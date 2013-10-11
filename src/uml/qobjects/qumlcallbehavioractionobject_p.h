@@ -112,7 +112,7 @@ class Q_UML_EXPORT QUmlCallBehaviorActionObject : public QModelingObject
     Q_PROPERTY(QObject * behavior READ behavior WRITE setBehavior)
 
 public:
-    Q_INVOKABLE explicit QUmlCallBehaviorActionObject(QUmlCallBehaviorAction *qModelingElement);
+    Q_INVOKABLE explicit QUmlCallBehaviorActionObject(QUmlCallBehaviorAction *modelingElement);
     virtual ~QUmlCallBehaviorActionObject();
 
     // Owned attributes [Element]

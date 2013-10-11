@@ -104,7 +104,7 @@ class Q_UML_EXPORT QUmlRaiseExceptionActionObject : public QModelingObject
     Q_PROPERTY(QObject * exception READ exception WRITE setException)
 
 public:
-    Q_INVOKABLE explicit QUmlRaiseExceptionActionObject(QUmlRaiseExceptionAction *qModelingElement);
+    Q_INVOKABLE explicit QUmlRaiseExceptionActionObject(QUmlRaiseExceptionAction *modelingElement);
     virtual ~QUmlRaiseExceptionActionObject();
 
     // Owned attributes [Element]

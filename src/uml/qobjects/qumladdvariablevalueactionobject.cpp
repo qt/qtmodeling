@@ -66,9 +66,9 @@
 
 QT_BEGIN_NAMESPACE
 
-QUmlAddVariableValueActionObject::QUmlAddVariableValueActionObject(QUmlAddVariableValueAction *qModelingElement)
+QUmlAddVariableValueActionObject::QUmlAddVariableValueActionObject(QUmlAddVariableValueAction *modelingElement)
 {
-    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(qModelingElement)));
+    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(modelingElement)));
     setGroupProperties();
     setPropertyData();
 }

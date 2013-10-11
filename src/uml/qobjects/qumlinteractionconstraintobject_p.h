@@ -90,7 +90,7 @@ class Q_UML_EXPORT QUmlInteractionConstraintObject : public QModelingObject
     Q_PROPERTY(QObject * minint READ minint WRITE setMinint)
 
 public:
-    Q_INVOKABLE explicit QUmlInteractionConstraintObject(QUmlInteractionConstraint *qModelingElement);
+    Q_INVOKABLE explicit QUmlInteractionConstraintObject(QUmlInteractionConstraint *modelingElement);
     virtual ~QUmlInteractionConstraintObject();
 
     // Owned attributes [Element]

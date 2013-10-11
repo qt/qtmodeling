@@ -74,7 +74,7 @@ class Q_UML_EXPORT QUmlOperationTemplateParameterObject : public QModelingObject
     Q_PROPERTY(QObject * parameteredElement READ parameteredElement WRITE setParameteredElement)
 
 public:
-    Q_INVOKABLE explicit QUmlOperationTemplateParameterObject(QUmlOperationTemplateParameter *qModelingElement);
+    Q_INVOKABLE explicit QUmlOperationTemplateParameterObject(QUmlOperationTemplateParameter *modelingElement);
     virtual ~QUmlOperationTemplateParameterObject();
 
     // Owned attributes [Element]

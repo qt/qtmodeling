@@ -152,7 +152,7 @@ class Q_UML_EXPORT QUmlFunctionBehaviorObject : public QModelingObject
     Q_PROPERTY(QList<QString> languages READ languages)
 
 public:
-    Q_INVOKABLE explicit QUmlFunctionBehaviorObject(QUmlFunctionBehavior *qModelingElement);
+    Q_INVOKABLE explicit QUmlFunctionBehaviorObject(QUmlFunctionBehavior *modelingElement);
     virtual ~QUmlFunctionBehaviorObject();
 
     // Owned attributes [Element]

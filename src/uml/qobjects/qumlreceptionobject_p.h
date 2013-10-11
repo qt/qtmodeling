@@ -103,7 +103,7 @@ class Q_UML_EXPORT QUmlReceptionObject : public QModelingObject
     Q_PROPERTY(QObject * signal READ signal WRITE setSignal)
 
 public:
-    Q_INVOKABLE explicit QUmlReceptionObject(QUmlReception *qModelingElement);
+    Q_INVOKABLE explicit QUmlReceptionObject(QUmlReception *modelingElement);
     virtual ~QUmlReceptionObject();
 
     // Owned attributes [Element]

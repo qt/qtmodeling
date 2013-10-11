@@ -63,9 +63,9 @@
 
 QT_BEGIN_NAMESPACE
 
-QUmlDecisionNodeObject::QUmlDecisionNodeObject(QUmlDecisionNode *qModelingElement)
+QUmlDecisionNodeObject::QUmlDecisionNodeObject(QUmlDecisionNode *modelingElement)
 {
-    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(qModelingElement)));
+    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(modelingElement)));
     setGroupProperties();
     setPropertyData();
 }

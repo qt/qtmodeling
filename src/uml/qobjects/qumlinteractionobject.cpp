@@ -92,9 +92,9 @@
 
 QT_BEGIN_NAMESPACE
 
-QUmlInteractionObject::QUmlInteractionObject(QUmlInteraction *qModelingElement)
+QUmlInteractionObject::QUmlInteractionObject(QUmlInteraction *modelingElement)
 {
-    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(qModelingElement)));
+    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(modelingElement)));
     setGroupProperties();
     setPropertyData();
 }

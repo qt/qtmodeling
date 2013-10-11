@@ -111,7 +111,7 @@ class Q_UML_EXPORT QUmlOutputPinObject : public QModelingObject
     Q_PROPERTY(bool isControl READ isControl WRITE setControl RESET unsetControl)
 
 public:
-    Q_INVOKABLE explicit QUmlOutputPinObject(QUmlOutputPin *qModelingElement);
+    Q_INVOKABLE explicit QUmlOutputPinObject(QUmlOutputPin *modelingElement);
     virtual ~QUmlOutputPinObject();
 
     // Owned attributes [Element]

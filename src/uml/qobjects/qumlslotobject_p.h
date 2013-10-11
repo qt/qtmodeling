@@ -70,7 +70,7 @@ class Q_UML_EXPORT QUmlSlotObject : public QModelingObject
     Q_PROPERTY(QList<QObject *> values READ values)
 
 public:
-    Q_INVOKABLE explicit QUmlSlotObject(QUmlSlot *qModelingElement);
+    Q_INVOKABLE explicit QUmlSlotObject(QUmlSlot *modelingElement);
     virtual ~QUmlSlotObject();
 
     // Owned attributes [Element]

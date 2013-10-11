@@ -129,7 +129,7 @@ class Q_UML_EXPORT QUmlDeploymentSpecificationObject : public QModelingObject
     Q_PROPERTY(QString executionLocation READ executionLocation WRITE setExecutionLocation)
 
 public:
-    Q_INVOKABLE explicit QUmlDeploymentSpecificationObject(QUmlDeploymentSpecification *qModelingElement);
+    Q_INVOKABLE explicit QUmlDeploymentSpecificationObject(QUmlDeploymentSpecification *modelingElement);
     virtual ~QUmlDeploymentSpecificationObject();
 
     // Owned attributes [Element]

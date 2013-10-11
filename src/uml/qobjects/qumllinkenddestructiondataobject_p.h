@@ -74,7 +74,7 @@ class Q_UML_EXPORT QUmlLinkEndDestructionDataObject : public QModelingObject
     Q_PROPERTY(bool isDestroyDuplicates READ isDestroyDuplicates WRITE setDestroyDuplicates RESET unsetDestroyDuplicates)
 
 public:
-    Q_INVOKABLE explicit QUmlLinkEndDestructionDataObject(QUmlLinkEndDestructionData *qModelingElement);
+    Q_INVOKABLE explicit QUmlLinkEndDestructionDataObject(QUmlLinkEndDestructionData *modelingElement);
     virtual ~QUmlLinkEndDestructionDataObject();
 
     // Owned attributes [Element]

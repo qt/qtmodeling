@@ -84,7 +84,7 @@ class Q_UML_EXPORT QUmlChangeEventObject : public QModelingObject
     Q_PROPERTY(QObject * changeExpression READ changeExpression WRITE setChangeExpression)
 
 public:
-    Q_INVOKABLE explicit QUmlChangeEventObject(QUmlChangeEvent *qModelingElement);
+    Q_INVOKABLE explicit QUmlChangeEventObject(QUmlChangeEvent *modelingElement);
     virtual ~QUmlChangeEventObject();
 
     // Owned attributes [Element]

@@ -98,7 +98,7 @@ class Q_UML_EXPORT QUmlObjectFlowObject : public QModelingObject
     Q_PROPERTY(QObject * transformation READ transformation WRITE setTransformation)
 
 public:
-    Q_INVOKABLE explicit QUmlObjectFlowObject(QUmlObjectFlow *qModelingElement);
+    Q_INVOKABLE explicit QUmlObjectFlowObject(QUmlObjectFlow *modelingElement);
     virtual ~QUmlObjectFlowObject();
 
     // Owned attributes [Element]

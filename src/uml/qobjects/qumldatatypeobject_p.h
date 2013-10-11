@@ -121,7 +121,7 @@ class Q_UML_EXPORT QUmlDataTypeObject : public QModelingObject
     Q_PROPERTY(QList<QObject *> ownedOperations READ ownedOperations)
 
 public:
-    Q_INVOKABLE explicit QUmlDataTypeObject(QUmlDataType *qModelingElement);
+    Q_INVOKABLE explicit QUmlDataTypeObject(QUmlDataType *modelingElement);
     virtual ~QUmlDataTypeObject();
 
     // Owned attributes [Element]

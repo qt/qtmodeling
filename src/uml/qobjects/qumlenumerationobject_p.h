@@ -124,7 +124,7 @@ class Q_UML_EXPORT QUmlEnumerationObject : public QModelingObject
     Q_PROPERTY(QList<QObject *> ownedLiterals READ ownedLiterals)
 
 public:
-    Q_INVOKABLE explicit QUmlEnumerationObject(QUmlEnumeration *qModelingElement);
+    Q_INVOKABLE explicit QUmlEnumerationObject(QUmlEnumeration *modelingElement);
     virtual ~QUmlEnumerationObject();
 
     // Owned attributes [Element]

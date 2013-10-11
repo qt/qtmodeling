@@ -111,7 +111,7 @@ class Q_UML_EXPORT QUmlRemoveVariableValueActionObject : public QModelingObject
     Q_PROPERTY(QObject * removeAt READ removeAt WRITE setRemoveAt)
 
 public:
-    Q_INVOKABLE explicit QUmlRemoveVariableValueActionObject(QUmlRemoveVariableValueAction *qModelingElement);
+    Q_INVOKABLE explicit QUmlRemoveVariableValueActionObject(QUmlRemoveVariableValueAction *modelingElement);
     virtual ~QUmlRemoveVariableValueActionObject();
 
     // Owned attributes [Element]

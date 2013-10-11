@@ -121,7 +121,7 @@ class Q_UML_EXPORT QUmlPrimitiveTypeObject : public QModelingObject
     Q_PROPERTY(QList<QObject *> ownedOperations READ ownedOperations)
 
 public:
-    Q_INVOKABLE explicit QUmlPrimitiveTypeObject(QUmlPrimitiveType *qModelingElement);
+    Q_INVOKABLE explicit QUmlPrimitiveTypeObject(QUmlPrimitiveType *modelingElement);
     virtual ~QUmlPrimitiveTypeObject();
 
     // Owned attributes [Element]

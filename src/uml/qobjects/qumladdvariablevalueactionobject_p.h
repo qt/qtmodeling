@@ -111,7 +111,7 @@ class Q_UML_EXPORT QUmlAddVariableValueActionObject : public QModelingObject
     Q_PROPERTY(bool isReplaceAll READ isReplaceAll WRITE setReplaceAll RESET unsetReplaceAll)
 
 public:
-    Q_INVOKABLE explicit QUmlAddVariableValueActionObject(QUmlAddVariableValueAction *qModelingElement);
+    Q_INVOKABLE explicit QUmlAddVariableValueActionObject(QUmlAddVariableValueAction *modelingElement);
     virtual ~QUmlAddVariableValueActionObject();
 
     // Owned attributes [Element]

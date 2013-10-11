@@ -106,7 +106,7 @@ class Q_UML_EXPORT QUmlUnmarshallActionObject : public QModelingObject
     Q_PROPERTY(QObject * unmarshallType READ unmarshallType WRITE setUnmarshallType)
 
 public:
-    Q_INVOKABLE explicit QUmlUnmarshallActionObject(QUmlUnmarshallAction *qModelingElement);
+    Q_INVOKABLE explicit QUmlUnmarshallActionObject(QUmlUnmarshallAction *modelingElement);
     virtual ~QUmlUnmarshallActionObject();
 
     // Owned attributes [Element]

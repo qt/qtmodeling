@@ -84,7 +84,7 @@ class Q_UML_EXPORT QUmlContinuationObject : public QModelingObject
     Q_PROPERTY(bool setting READ setting WRITE setSetting RESET unsetSetting)
 
 public:
-    Q_INVOKABLE explicit QUmlContinuationObject(QUmlContinuation *qModelingElement);
+    Q_INVOKABLE explicit QUmlContinuationObject(QUmlContinuation *modelingElement);
     virtual ~QUmlContinuationObject();
 
     // Owned attributes [Element]

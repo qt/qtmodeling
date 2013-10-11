@@ -103,7 +103,7 @@ class Q_UML_EXPORT QUmlParameterObject : public QModelingObject
     Q_PROPERTY(QSet<QObject *> parameterSets READ parameterSets)
 
 public:
-    Q_INVOKABLE explicit QUmlParameterObject(QUmlParameter *qModelingElement);
+    Q_INVOKABLE explicit QUmlParameterObject(QUmlParameter *modelingElement);
     virtual ~QUmlParameterObject();
 
     // Owned attributes [Element]

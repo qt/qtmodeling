@@ -88,7 +88,7 @@ class Q_UML_EXPORT QUmlInteractionUseObject : public QModelingObject
     Q_PROPERTY(QObject * returnValueRecipient READ returnValueRecipient WRITE setReturnValueRecipient)
 
 public:
-    Q_INVOKABLE explicit QUmlInteractionUseObject(QUmlInteractionUse *qModelingElement);
+    Q_INVOKABLE explicit QUmlInteractionUseObject(QUmlInteractionUse *modelingElement);
     virtual ~QUmlInteractionUseObject();
 
     // Owned attributes [Element]

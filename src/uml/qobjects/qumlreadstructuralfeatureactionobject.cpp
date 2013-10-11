@@ -66,9 +66,9 @@
 
 QT_BEGIN_NAMESPACE
 
-QUmlReadStructuralFeatureActionObject::QUmlReadStructuralFeatureActionObject(QUmlReadStructuralFeatureAction *qModelingElement)
+QUmlReadStructuralFeatureActionObject::QUmlReadStructuralFeatureActionObject(QUmlReadStructuralFeatureAction *modelingElement)
 {
-    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(qModelingElement)));
+    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(modelingElement)));
     setGroupProperties();
     setPropertyData();
 }

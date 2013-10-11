@@ -78,7 +78,7 @@ class Q_UML_EXPORT QUmlGateObject : public QModelingObject
     Q_PROPERTY(QObject * message READ message WRITE setMessage)
 
 public:
-    Q_INVOKABLE explicit QUmlGateObject(QUmlGate *qModelingElement);
+    Q_INVOKABLE explicit QUmlGateObject(QUmlGate *modelingElement);
     virtual ~QUmlGateObject();
 
     // Owned attributes [Element]

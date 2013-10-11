@@ -145,7 +145,7 @@ class Q_UML_EXPORT QUmlExecutionEnvironmentObject : public QModelingObject
     Q_PROPERTY(QSet<QObject *> nestedNodes READ nestedNodes)
 
 public:
-    Q_INVOKABLE explicit QUmlExecutionEnvironmentObject(QUmlExecutionEnvironment *qModelingElement);
+    Q_INVOKABLE explicit QUmlExecutionEnvironmentObject(QUmlExecutionEnvironment *modelingElement);
     virtual ~QUmlExecutionEnvironmentObject();
 
     // Owned attributes [Element]

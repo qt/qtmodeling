@@ -84,7 +84,7 @@ class Q_UML_EXPORT QUmlStateInvariantObject : public QModelingObject
     Q_PROPERTY(QObject * invariant READ invariant WRITE setInvariant)
 
 public:
-    Q_INVOKABLE explicit QUmlStateInvariantObject(QUmlStateInvariant *qModelingElement);
+    Q_INVOKABLE explicit QUmlStateInvariantObject(QUmlStateInvariant *modelingElement);
     virtual ~QUmlStateInvariantObject();
 
     // Owned attributes [Element]

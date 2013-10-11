@@ -89,7 +89,7 @@ class Q_UML_EXPORT QUmlConsiderIgnoreFragmentObject : public QModelingObject
     Q_PROPERTY(QSet<QObject *> messages READ messages)
 
 public:
-    Q_INVOKABLE explicit QUmlConsiderIgnoreFragmentObject(QUmlConsiderIgnoreFragment *qModelingElement);
+    Q_INVOKABLE explicit QUmlConsiderIgnoreFragmentObject(QUmlConsiderIgnoreFragment *modelingElement);
     virtual ~QUmlConsiderIgnoreFragmentObject();
 
     // Owned attributes [Element]

@@ -96,7 +96,7 @@ class Q_UML_EXPORT QUmlStringExpressionObject : public QModelingObject
     Q_PROPERTY(QSet<QObject *> subExpressions READ subExpressions)
 
 public:
-    Q_INVOKABLE explicit QUmlStringExpressionObject(QUmlStringExpression *qModelingElement);
+    Q_INVOKABLE explicit QUmlStringExpressionObject(QUmlStringExpression *modelingElement);
     virtual ~QUmlStringExpressionObject();
 
     // Owned attributes [Element]

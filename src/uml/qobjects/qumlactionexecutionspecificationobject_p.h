@@ -88,7 +88,7 @@ class Q_UML_EXPORT QUmlActionExecutionSpecificationObject : public QModelingObje
     Q_PROPERTY(QObject * action READ action WRITE setAction)
 
 public:
-    Q_INVOKABLE explicit QUmlActionExecutionSpecificationObject(QUmlActionExecutionSpecification *qModelingElement);
+    Q_INVOKABLE explicit QUmlActionExecutionSpecificationObject(QUmlActionExecutionSpecification *modelingElement);
     virtual ~QUmlActionExecutionSpecificationObject();
 
     // Owned attributes [Element]

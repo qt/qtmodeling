@@ -97,7 +97,7 @@ class Q_UML_EXPORT QUmlDeploymentObject : public QModelingObject
     Q_PROPERTY(QObject * location READ location WRITE setLocation)
 
 public:
-    Q_INVOKABLE explicit QUmlDeploymentObject(QUmlDeployment *qModelingElement);
+    Q_INVOKABLE explicit QUmlDeploymentObject(QUmlDeployment *modelingElement);
     virtual ~QUmlDeploymentObject();
 
     // Owned attributes [Element]

@@ -123,7 +123,7 @@ class Q_UML_EXPORT QUmlStructuredActivityNodeObject : public QModelingObject
     Q_PROPERTY(QSet<QObject *> variables READ variables)
 
 public:
-    Q_INVOKABLE explicit QUmlStructuredActivityNodeObject(QUmlStructuredActivityNode *qModelingElement);
+    Q_INVOKABLE explicit QUmlStructuredActivityNodeObject(QUmlStructuredActivityNode *modelingElement);
     virtual ~QUmlStructuredActivityNodeObject();
 
     // Owned attributes [Element]

@@ -125,7 +125,7 @@ class Q_UML_EXPORT QUmlInterfaceObject : public QModelingObject
     Q_PROPERTY(QSet<QObject *> redefinedInterfaces READ redefinedInterfaces)
 
 public:
-    Q_INVOKABLE explicit QUmlInterfaceObject(QUmlInterface *qModelingElement);
+    Q_INVOKABLE explicit QUmlInterfaceObject(QUmlInterface *modelingElement);
     virtual ~QUmlInterfaceObject();
 
     // Owned attributes [Element]

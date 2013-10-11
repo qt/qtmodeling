@@ -88,7 +88,7 @@ class Q_UML_EXPORT QUmlDurationObject : public QModelingObject
     Q_PROPERTY(QSet<QObject *> observations READ observations)
 
 public:
-    Q_INVOKABLE explicit QUmlDurationObject(QUmlDuration *qModelingElement);
+    Q_INVOKABLE explicit QUmlDurationObject(QUmlDuration *modelingElement);
     virtual ~QUmlDurationObject();
 
     // Owned attributes [Element]

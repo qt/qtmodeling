@@ -63,9 +63,9 @@
 
 QT_BEGIN_NAMESPACE
 
-QUmlObjectFlowObject::QUmlObjectFlowObject(QUmlObjectFlow *qModelingElement)
+QUmlObjectFlowObject::QUmlObjectFlowObject(QUmlObjectFlow *modelingElement)
 {
-    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(qModelingElement)));
+    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(modelingElement)));
     setGroupProperties();
     setPropertyData();
 }

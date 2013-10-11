@@ -62,9 +62,9 @@
 
 QT_BEGIN_NAMESPACE
 
-QUmlRegionObject::QUmlRegionObject(QUmlRegion *qModelingElement)
+QUmlRegionObject::QUmlRegionObject(QUmlRegion *modelingElement)
 {
-    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(qModelingElement)));
+    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(modelingElement)));
     setGroupProperties();
     setPropertyData();
 }

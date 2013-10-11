@@ -86,7 +86,7 @@ class Q_UML_EXPORT QUmlInterruptibleActivityRegionObject : public QModelingObjec
     Q_PROPERTY(QSet<QObject *> nodes READ nodes)
 
 public:
-    Q_INVOKABLE explicit QUmlInterruptibleActivityRegionObject(QUmlInterruptibleActivityRegion *qModelingElement);
+    Q_INVOKABLE explicit QUmlInterruptibleActivityRegionObject(QUmlInterruptibleActivityRegion *modelingElement);
     virtual ~QUmlInterruptibleActivityRegionObject();
 
     // Owned attributes [Element]

@@ -88,7 +88,7 @@ class Q_UML_EXPORT QUmlTimeExpressionObject : public QModelingObject
     Q_PROPERTY(QSet<QObject *> observations READ observations)
 
 public:
-    Q_INVOKABLE explicit QUmlTimeExpressionObject(QUmlTimeExpression *qModelingElement);
+    Q_INVOKABLE explicit QUmlTimeExpressionObject(QUmlTimeExpression *modelingElement);
     virtual ~QUmlTimeExpressionObject();
 
     // Owned attributes [Element]

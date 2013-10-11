@@ -128,7 +128,7 @@ class Q_UML_EXPORT QUmlExpansionRegionObject : public QModelingObject
     Q_PROPERTY(QSet<QObject *> outputElements READ outputElements)
 
 public:
-    Q_INVOKABLE explicit QUmlExpansionRegionObject(QUmlExpansionRegion *qModelingElement);
+    Q_INVOKABLE explicit QUmlExpansionRegionObject(QUmlExpansionRegion *modelingElement);
     virtual ~QUmlExpansionRegionObject();
 
     // Owned attributes [Element]

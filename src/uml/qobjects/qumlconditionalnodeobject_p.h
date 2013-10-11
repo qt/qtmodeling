@@ -128,7 +128,7 @@ class Q_UML_EXPORT QUmlConditionalNodeObject : public QModelingObject
     Q_PROPERTY(QList<QObject *> results READ results)
 
 public:
-    Q_INVOKABLE explicit QUmlConditionalNodeObject(QUmlConditionalNode *qModelingElement);
+    Q_INVOKABLE explicit QUmlConditionalNodeObject(QUmlConditionalNode *modelingElement);
     virtual ~QUmlConditionalNodeObject();
 
     // Owned attributes [Element]

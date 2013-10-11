@@ -60,9 +60,9 @@
 
 QT_BEGIN_NAMESPACE
 
-QUmlEnumerationLiteralObject::QUmlEnumerationLiteralObject(QUmlEnumerationLiteral *qModelingElement)
+QUmlEnumerationLiteralObject::QUmlEnumerationLiteralObject(QUmlEnumerationLiteral *modelingElement)
 {
-    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(qModelingElement)));
+    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(modelingElement)));
     setGroupProperties();
     setPropertyData();
 }

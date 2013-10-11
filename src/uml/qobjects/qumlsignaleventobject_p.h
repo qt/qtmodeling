@@ -84,7 +84,7 @@ class Q_UML_EXPORT QUmlSignalEventObject : public QModelingObject
     Q_PROPERTY(QObject * signal READ signal WRITE setSignal)
 
 public:
-    Q_INVOKABLE explicit QUmlSignalEventObject(QUmlSignalEvent *qModelingElement);
+    Q_INVOKABLE explicit QUmlSignalEventObject(QUmlSignalEvent *modelingElement);
     virtual ~QUmlSignalEventObject();
 
     // Owned attributes [Element]

@@ -49,9 +49,9 @@
 
 QT_BEGIN_NAMESPACE
 
-QUmlTemplateSignatureObject::QUmlTemplateSignatureObject(QUmlTemplateSignature *qModelingElement)
+QUmlTemplateSignatureObject::QUmlTemplateSignatureObject(QUmlTemplateSignature *modelingElement)
 {
-    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(qModelingElement)));
+    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(modelingElement)));
     setGroupProperties();
     setPropertyData();
 }

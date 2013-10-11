@@ -114,7 +114,7 @@ class Q_UML_EXPORT QUmlActionInputPinObject : public QModelingObject
     Q_PROPERTY(QObject * fromAction READ fromAction WRITE setFromAction)
 
 public:
-    Q_INVOKABLE explicit QUmlActionInputPinObject(QUmlActionInputPin *qModelingElement);
+    Q_INVOKABLE explicit QUmlActionInputPinObject(QUmlActionInputPin *modelingElement);
     virtual ~QUmlActionInputPinObject();
 
     // Owned attributes [Element]

@@ -98,7 +98,7 @@ class Q_UML_EXPORT QUmlManifestationObject : public QModelingObject
     Q_PROPERTY(QObject * utilizedElement READ utilizedElement WRITE setUtilizedElement)
 
 public:
-    Q_INVOKABLE explicit QUmlManifestationObject(QUmlManifestation *qModelingElement);
+    Q_INVOKABLE explicit QUmlManifestationObject(QUmlManifestation *modelingElement);
     virtual ~QUmlManifestationObject();
 
     // Owned attributes [Element]

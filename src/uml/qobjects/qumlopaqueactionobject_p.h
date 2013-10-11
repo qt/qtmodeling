@@ -107,7 +107,7 @@ class Q_UML_EXPORT QUmlOpaqueActionObject : public QModelingObject
     Q_PROPERTY(QSet<QObject *> outputValues READ outputValues)
 
 public:
-    Q_INVOKABLE explicit QUmlOpaqueActionObject(QUmlOpaqueAction *qModelingElement);
+    Q_INVOKABLE explicit QUmlOpaqueActionObject(QUmlOpaqueAction *modelingElement);
     virtual ~QUmlOpaqueActionObject();
 
     // Owned attributes [Element]

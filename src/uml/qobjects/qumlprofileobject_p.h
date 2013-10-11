@@ -107,7 +107,7 @@ class Q_UML_EXPORT QUmlProfileObject : public QModelingObject
     Q_PROPERTY(QSet<QObject *> metamodelReferences READ metamodelReferences)
 
 public:
-    Q_INVOKABLE explicit QUmlProfileObject(QUmlProfile *qModelingElement);
+    Q_INVOKABLE explicit QUmlProfileObject(QUmlProfile *modelingElement);
     virtual ~QUmlProfileObject();
 
     // Owned attributes [Element]

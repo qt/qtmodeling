@@ -88,7 +88,7 @@ class Q_UML_EXPORT QUmlExtendObject : public QModelingObject
     Q_PROPERTY(QList<QObject *> extensionLocations READ extensionLocations)
 
 public:
-    Q_INVOKABLE explicit QUmlExtendObject(QUmlExtend *qModelingElement);
+    Q_INVOKABLE explicit QUmlExtendObject(QUmlExtend *modelingElement);
     virtual ~QUmlExtendObject();
 
     // Owned attributes [Element]

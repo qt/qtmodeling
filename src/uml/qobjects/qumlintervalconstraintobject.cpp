@@ -56,9 +56,9 @@
 
 QT_BEGIN_NAMESPACE
 
-QUmlIntervalConstraintObject::QUmlIntervalConstraintObject(QUmlIntervalConstraint *qModelingElement)
+QUmlIntervalConstraintObject::QUmlIntervalConstraintObject(QUmlIntervalConstraint *modelingElement)
 {
-    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(qModelingElement)));
+    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(modelingElement)));
     setGroupProperties();
     setPropertyData();
 }

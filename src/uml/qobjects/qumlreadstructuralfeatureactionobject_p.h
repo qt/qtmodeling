@@ -108,7 +108,7 @@ class Q_UML_EXPORT QUmlReadStructuralFeatureActionObject : public QModelingObjec
     Q_PROPERTY(QObject * result READ result WRITE setResult)
 
 public:
-    Q_INVOKABLE explicit QUmlReadStructuralFeatureActionObject(QUmlReadStructuralFeatureAction *qModelingElement);
+    Q_INVOKABLE explicit QUmlReadStructuralFeatureActionObject(QUmlReadStructuralFeatureAction *modelingElement);
     virtual ~QUmlReadStructuralFeatureActionObject();
 
     // Owned attributes [Element]

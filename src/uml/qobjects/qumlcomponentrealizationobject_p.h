@@ -99,7 +99,7 @@ class Q_UML_EXPORT QUmlComponentRealizationObject : public QModelingObject
     Q_PROPERTY(QSet<QObject *> realizingClassifiers READ realizingClassifiers)
 
 public:
-    Q_INVOKABLE explicit QUmlComponentRealizationObject(QUmlComponentRealization *qModelingElement);
+    Q_INVOKABLE explicit QUmlComponentRealizationObject(QUmlComponentRealization *modelingElement);
     virtual ~QUmlComponentRealizationObject();
 
     // Owned attributes [Element]

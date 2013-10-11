@@ -109,7 +109,7 @@ class Q_UML_EXPORT QUmlAcceptCallActionObject : public QModelingObject
     Q_PROPERTY(QObject * returnInformation READ returnInformation WRITE setReturnInformation)
 
 public:
-    Q_INVOKABLE explicit QUmlAcceptCallActionObject(QUmlAcceptCallAction *qModelingElement);
+    Q_INVOKABLE explicit QUmlAcceptCallActionObject(QUmlAcceptCallAction *modelingElement);
     virtual ~QUmlAcceptCallActionObject();
 
     // Owned attributes [Element]

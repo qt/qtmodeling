@@ -85,7 +85,7 @@ class Q_UML_EXPORT QUmlMessageObject : public QModelingObject
     Q_PROPERTY(QObject * signature READ signature WRITE setSignature)
 
 public:
-    Q_INVOKABLE explicit QUmlMessageObject(QUmlMessage *qModelingElement);
+    Q_INVOKABLE explicit QUmlMessageObject(QUmlMessage *modelingElement);
     virtual ~QUmlMessageObject();
 
     // Owned attributes [Element]

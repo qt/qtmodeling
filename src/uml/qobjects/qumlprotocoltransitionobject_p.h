@@ -103,7 +103,7 @@ class Q_UML_EXPORT QUmlProtocolTransitionObject : public QModelingObject
     Q_PROPERTY(QSet<QObject *> referred READ referred STORED false)
 
 public:
-    Q_INVOKABLE explicit QUmlProtocolTransitionObject(QUmlProtocolTransition *qModelingElement);
+    Q_INVOKABLE explicit QUmlProtocolTransitionObject(QUmlProtocolTransition *modelingElement);
     virtual ~QUmlProtocolTransitionObject();
 
     // Owned attributes [Element]

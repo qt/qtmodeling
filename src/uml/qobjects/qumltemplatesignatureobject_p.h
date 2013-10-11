@@ -70,7 +70,7 @@ class Q_UML_EXPORT QUmlTemplateSignatureObject : public QModelingObject
     Q_PROPERTY(QObject * template_ READ template_ WRITE setTemplate)
 
 public:
-    Q_INVOKABLE explicit QUmlTemplateSignatureObject(QUmlTemplateSignature *qModelingElement);
+    Q_INVOKABLE explicit QUmlTemplateSignatureObject(QUmlTemplateSignature *modelingElement);
     virtual ~QUmlTemplateSignatureObject();
 
     // Owned attributes [Element]

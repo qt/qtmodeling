@@ -87,7 +87,7 @@ class Q_UML_EXPORT QUmlLiteralUnlimitedNaturalObject : public QModelingObject
     Q_PROPERTY(int value READ value WRITE setValue RESET unsetValue)
 
 public:
-    Q_INVOKABLE explicit QUmlLiteralUnlimitedNaturalObject(QUmlLiteralUnlimitedNatural *qModelingElement);
+    Q_INVOKABLE explicit QUmlLiteralUnlimitedNaturalObject(QUmlLiteralUnlimitedNatural *modelingElement);
     virtual ~QUmlLiteralUnlimitedNaturalObject();
 
     // Owned attributes [Element]

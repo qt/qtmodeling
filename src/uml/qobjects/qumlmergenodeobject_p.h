@@ -90,7 +90,7 @@ class Q_UML_EXPORT QUmlMergeNodeObject : public QModelingObject
     Q_PROPERTY(QSet<QObject *> redefinedNodes READ redefinedNodes)
 
 public:
-    Q_INVOKABLE explicit QUmlMergeNodeObject(QUmlMergeNode *qModelingElement);
+    Q_INVOKABLE explicit QUmlMergeNodeObject(QUmlMergeNode *modelingElement);
     virtual ~QUmlMergeNodeObject();
 
     // Owned attributes [Element]

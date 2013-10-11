@@ -152,7 +152,7 @@ class Q_UML_EXPORT QUmlOpaqueBehaviorObject : public QModelingObject
     Q_PROPERTY(QList<QString> languages READ languages)
 
 public:
-    Q_INVOKABLE explicit QUmlOpaqueBehaviorObject(QUmlOpaqueBehavior *qModelingElement);
+    Q_INVOKABLE explicit QUmlOpaqueBehaviorObject(QUmlOpaqueBehavior *modelingElement);
     virtual ~QUmlOpaqueBehaviorObject();
 
     // Owned attributes [Element]

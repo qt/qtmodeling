@@ -76,7 +76,7 @@ class Q_UML_EXPORT QUmlClassifierTemplateParameterObject : public QModelingObjec
     Q_PROPERTY(QObject * parameteredElement READ parameteredElement WRITE setParameteredElement)
 
 public:
-    Q_INVOKABLE explicit QUmlClassifierTemplateParameterObject(QUmlClassifierTemplateParameter *qModelingElement);
+    Q_INVOKABLE explicit QUmlClassifierTemplateParameterObject(QUmlClassifierTemplateParameter *modelingElement);
     virtual ~QUmlClassifierTemplateParameterObject();
 
     // Owned attributes [Element]

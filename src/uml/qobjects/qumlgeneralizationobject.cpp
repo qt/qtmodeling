@@ -49,9 +49,9 @@
 
 QT_BEGIN_NAMESPACE
 
-QUmlGeneralizationObject::QUmlGeneralizationObject(QUmlGeneralization *qModelingElement)
+QUmlGeneralizationObject::QUmlGeneralizationObject(QUmlGeneralization *modelingElement)
 {
-    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(qModelingElement)));
+    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(modelingElement)));
     setGroupProperties();
     setPropertyData();
 }

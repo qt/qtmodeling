@@ -109,7 +109,7 @@ class Q_UML_EXPORT QUmlStateObject : public QModelingObject
     Q_PROPERTY(QObject * submachine READ submachine WRITE setSubmachine)
 
 public:
-    Q_INVOKABLE explicit QUmlStateObject(QUmlState *qModelingElement);
+    Q_INVOKABLE explicit QUmlStateObject(QUmlState *modelingElement);
     virtual ~QUmlStateObject();
 
     // Owned attributes [Element]

@@ -56,9 +56,9 @@
 
 QT_BEGIN_NAMESPACE
 
-QUmlActivityPartitionObject::QUmlActivityPartitionObject(QUmlActivityPartition *qModelingElement)
+QUmlActivityPartitionObject::QUmlActivityPartitionObject(QUmlActivityPartition *modelingElement)
 {
-    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(qModelingElement)));
+    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(modelingElement)));
     setGroupProperties();
     setPropertyData();
 }

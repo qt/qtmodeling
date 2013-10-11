@@ -76,7 +76,7 @@ class Q_UML_EXPORT QUmlProtocolConformanceObject : public QModelingObject
     Q_PROPERTY(QObject * specificMachine READ specificMachine WRITE setSpecificMachine)
 
 public:
-    Q_INVOKABLE explicit QUmlProtocolConformanceObject(QUmlProtocolConformance *qModelingElement);
+    Q_INVOKABLE explicit QUmlProtocolConformanceObject(QUmlProtocolConformance *modelingElement);
     virtual ~QUmlProtocolConformanceObject();
 
     // Owned attributes [Element]

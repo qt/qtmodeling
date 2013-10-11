@@ -78,7 +78,7 @@ class Q_UML_EXPORT QUmlGeneralizationObject : public QModelingObject
     Q_PROPERTY(QObject * specific READ specific WRITE setSpecific)
 
 public:
-    Q_INVOKABLE explicit QUmlGeneralizationObject(QUmlGeneralization *qModelingElement);
+    Q_INVOKABLE explicit QUmlGeneralizationObject(QUmlGeneralization *modelingElement);
     virtual ~QUmlGeneralizationObject();
 
     // Owned attributes [Element]

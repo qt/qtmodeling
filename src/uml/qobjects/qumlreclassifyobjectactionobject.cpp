@@ -65,9 +65,9 @@
 
 QT_BEGIN_NAMESPACE
 
-QUmlReclassifyObjectActionObject::QUmlReclassifyObjectActionObject(QUmlReclassifyObjectAction *qModelingElement)
+QUmlReclassifyObjectActionObject::QUmlReclassifyObjectActionObject(QUmlReclassifyObjectAction *modelingElement)
 {
-    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(qModelingElement)));
+    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(modelingElement)));
     setGroupProperties();
     setPropertyData();
 }

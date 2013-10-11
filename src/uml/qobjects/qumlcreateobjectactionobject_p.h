@@ -105,7 +105,7 @@ class Q_UML_EXPORT QUmlCreateObjectActionObject : public QModelingObject
     Q_PROPERTY(QObject * result READ result WRITE setResult)
 
 public:
-    Q_INVOKABLE explicit QUmlCreateObjectActionObject(QUmlCreateObjectAction *qModelingElement);
+    Q_INVOKABLE explicit QUmlCreateObjectActionObject(QUmlCreateObjectAction *modelingElement);
     virtual ~QUmlCreateObjectActionObject();
 
     // Owned attributes [Element]

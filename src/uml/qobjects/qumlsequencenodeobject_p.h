@@ -125,7 +125,7 @@ class Q_UML_EXPORT QUmlSequenceNodeObject : public QModelingObject
     Q_PROPERTY(QList<QObject *> executableNodes READ executableNodes)
 
 public:
-    Q_INVOKABLE explicit QUmlSequenceNodeObject(QUmlSequenceNode *qModelingElement);
+    Q_INVOKABLE explicit QUmlSequenceNodeObject(QUmlSequenceNode *modelingElement);
     virtual ~QUmlSequenceNodeObject();
 
     // Owned attributes [Element]

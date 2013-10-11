@@ -50,9 +50,9 @@
 
 QT_BEGIN_NAMESPACE
 
-QUmlLinkEndDataObject::QUmlLinkEndDataObject(QUmlLinkEndData *qModelingElement)
+QUmlLinkEndDataObject::QUmlLinkEndDataObject(QUmlLinkEndData *modelingElement)
 {
-    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(qModelingElement)));
+    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(modelingElement)));
     setGroupProperties();
     setPropertyData();
 }
