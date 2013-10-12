@@ -43,6 +43,7 @@
 #include "qmetamodelplugin.h"
 
 #include <QtModeling/QModelingObject>
+#include <QtModeling/QtModelingNamespace>
 
 #include <QtCore/QSet>
 #include <QtCore/QDir>
@@ -120,11 +121,15 @@ bool QXmiWriter::writeFile(QList<QModelingObject *> modelingObjects, QIODevice *
     d->blacklistedOppositeEnds.clear();
 
     d->visitedObjects.clear();
-    foreach (QModelingObject *modelingObject, modelingObjects)
-        populateIdMap(modelingObject);
+    foreach (QModelingObject *modelingObject, modelingObjects) {
+        if (modelingObject->property("role").value<QtModeling::ModelingObjectRole>() != QtModeling::ImportedElementRole)
+            populateIdMap(modelingObject);
+    }
     d->visitedObjects.clear();
-    foreach (QModelingObject *modelingObject, modelingObjects)
-        writeObject(modelingObject);
+    foreach (QModelingObject *modelingObject, modelingObjects) {
+        if (modelingObject->property("role").value<QtModeling::ModelingObjectRole>() != QtModeling::ImportedElementRole)
+            writeObject(modelingObject);
+    }
 
     d->writer.writeEndDocument();
     return true;
