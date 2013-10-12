@@ -70,7 +70,10 @@ int main ()
         qDebug() << "Cannot write file !";
         return 1;
     }
-    QXmiWriter writer(rootElements.first()->asQModelingObject());
-    writer.writeFile(&file2);
+    QXmiWriter writer;
+    QList<QModelingObject *> list;
+    foreach (QModelingElement *modelingElement, rootElements)
+        list << modelingElement->asQModelingObject();
+    writer.writeFile(list, &file2);
 }
 

@@ -44,8 +44,6 @@
 #include "qtmodelingglobal.h"
 #include "private/qobject_p.h"
 
-#include <QtModeling/QModelingObject>
-
 #include <QtCore/QStringList>
 #include <QtCore/QXmlStreamWriter>
 
@@ -55,6 +53,7 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtModeling)
 
+class QModelingObject;
 class QMetaModelPlugin;
 
 class Q_MODELING_EXPORT QXmiWriterPrivate : public QObjectPrivate
@@ -62,14 +61,13 @@ class Q_MODELING_EXPORT QXmiWriterPrivate : public QObjectPrivate
     Q_DECLARE_PUBLIC(QXmiWriter)
 
 public:
-    explicit QXmiWriterPrivate(QModelingObject *modelingObject);
+    explicit QXmiWriterPrivate();
     virtual ~QXmiWriterPrivate();
 
-    QModelingObject *modelingObject;
     QXmlStreamWriter writer;
     QHash< QString, QPair<QMetaModelPlugin *, QJsonObject> > metaModelPlugins;
-    QObjectList visitedObjects;
-    QHash<QObject *, QString> idMap;
+    QList<QModelingObject *> visitedObjects;
+    QHash<QModelingObject *, QString> idMap;
     QStringList idStack;
     QString metaModelPrefix;
     QString metaModelXmlNamespace;

@@ -40,9 +40,7 @@
 ****************************************************************************/
 import QtQuick 2.0
 
-Image {
-    fillMode: Image.Pad
-    source: "welcome-background.jpg"
+Rectangle {
     Row {
         anchors { left: parent.left; right: parent.right; top: parent.top; margins: 20 }
         spacing: 10

@@ -110,7 +110,7 @@ protected:
 
 private:
     void loadPlugins();
-    void saveXmi(QModelingElement *rootElement);
+    void saveXmi(QList<QModelingObject *> modelObjects);
     QList<QModelingElement *> loadXmi(QString fileName = 0);
     void populateDesignSpaceView(QModelingElement *modelingObject);
 

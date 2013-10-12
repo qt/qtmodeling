@@ -64,10 +64,10 @@ class Q_MODELING_EXPORT QXmiWriter : public QObject
     Q_DECLARE_PRIVATE(QXmiWriter)
 
 public:
-    explicit QXmiWriter(QModelingObject *modelingObject, QObject *parent = 0);
+    explicit QXmiWriter(QObject *parent = 0);
     virtual ~QXmiWriter();
 
-    bool writeFile(QIODevice *device);
+    bool writeFile(QList<QModelingObject *> modelingObjects, QIODevice *device);
 
 protected:
     void loadPlugins();

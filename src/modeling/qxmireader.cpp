@@ -227,8 +227,7 @@ QList<QModelingElement *> QXmiReader::readFile(QIODevice *device, QString import
                         else if (metaProperty.isEnumType()) {
                             QString enumName = attribute.value().toString();
                             enumName = enumName.left(1).toUpper() + enumName.mid(1);
-                            QString propertyName = QString::fromLatin1(metaProperty.name());
-                            enumName.prepend(propertyName.left(1).toUpper() + propertyName.mid(1));
+                            enumName.prepend(QString::fromLatin1(metaProperty.typeName()).split(':').last());
                             if (!modelingObject->asQModelingObject()->setProperty(attribute.name().toString().toLatin1(), enumName))
                                 d->errors << QStringLiteral("Error when setting property '%1' of object with id '%2'.").arg(attribute.name().toString()).arg(id);
                         }

@@ -54,8 +54,7 @@
 
 QT_BEGIN_NAMESPACE
 
-QXmiWriterPrivate::QXmiWriterPrivate(QModelingObject *modelingElement)
-    : modelingObject(modelingElement)
+QXmiWriterPrivate::QXmiWriterPrivate()
 {
     writer.setAutoFormatting(true);
     writer.setAutoFormattingIndent(2);
@@ -65,8 +64,8 @@ QXmiWriterPrivate::~QXmiWriterPrivate()
 {
 }
 
-QXmiWriter::QXmiWriter(QModelingObject *modelingObject, QObject *parent) :
-    QObject(*new QXmiWriterPrivate(modelingObject), parent)
+QXmiWriter::QXmiWriter(QObject *parent) :
+    QObject(*new QXmiWriterPrivate, parent)
 {
     loadPlugins();
 }
@@ -93,7 +92,7 @@ void QXmiWriter::loadPlugins()
     }
 }
 
-bool QXmiWriter::writeFile(QIODevice *device)
+bool QXmiWriter::writeFile(QList<QModelingObject *> modelingObjects, QIODevice *device)
 {
     Q_D(QXmiWriter);
     d->writer.setDevice(device);
@@ -102,7 +101,7 @@ bool QXmiWriter::writeFile(QIODevice *device)
     d->writer.writeStartElement(QStringLiteral("xmi:XMI"));
     d->writer.writeNamespace(QStringLiteral("http://www.omg.org/spec/XMI/20110701"), QStringLiteral("xmi"));
 
-    QString metaModelClassName = QString::fromLatin1(d->modelingObject->metaObject()->className());
+    QString metaModelClassName = QString::fromLatin1(modelingObjects.first()->metaObject()->className());
     int pos = 2;
     while (metaModelClassName[pos] == metaModelClassName[pos].toLower()) pos++;
     QString metaModelImplementationNamespace = metaModelClassName.left(pos);
@@ -121,9 +120,11 @@ bool QXmiWriter::writeFile(QIODevice *device)
     d->blacklistedOppositeEnds.clear();
 
     d->visitedObjects.clear();
-    populateIdMap(d->modelingObject);
+    foreach (QModelingObject *modelingObject, modelingObjects)
+        populateIdMap(modelingObject);
     d->visitedObjects.clear();
-    writeObject(d->modelingObject);
+    foreach (QModelingObject *modelingObject, modelingObjects)
+        writeObject(modelingObject);
 
     d->writer.writeEndDocument();
     return true;
@@ -190,7 +191,7 @@ void QXmiWriter::writeObject(QModelingObject *modelingObject, QString elementNam
 
     d->visitedObjects.append(modelingObject);
 
-    d->writer.writeStartElement(elementName.isEmpty() ? QString::fromLatin1(d->modelingObject->metaObject()->className()).remove(d->metaModelPrefix).remove(QRegExp(QStringLiteral("Object$"))).prepend(QStringLiteral("%1:").arg(d->metaModelXmlNamespace))
+    d->writer.writeStartElement(elementName.isEmpty() ? QString::fromLatin1(modelingObject->metaObject()->className()).remove(d->metaModelPrefix).remove(QRegExp(QStringLiteral("Object$"))).prepend(QStringLiteral("%1:").arg(d->metaModelXmlNamespace))
                                                       :
                                                         elementName);
     if (!elementName.isEmpty())
@@ -218,8 +219,8 @@ void QXmiWriter::writeObject(QModelingObject *modelingObject, QString elementNam
         else if (metaProperty.isEnumType()) {
             if (!metaProperty.isResettable() || (metaProperty.isResettable() && modelingObject && modelingObject->isPropertyModified(metaProperty))) {
                 QMetaEnum metaEnum = metaProperty.enumerator();
-                if (!QString::fromLatin1(metaEnum.key(variant.toInt())).isEmpty())
-                    d->writer.writeAttribute(QString::fromLatin1(metaProperty.name()), QString::fromLatin1(metaEnum.key(variant.toInt())).toLower().remove(QString::fromLatin1(metaProperty.name())));
+                if (variant.toInt() != 0 && !QString::fromLatin1(metaEnum.key(variant.toInt())).isEmpty())
+                    d->writer.writeAttribute(QString::fromLatin1(metaProperty.name()), QString::fromLatin1(metaEnum.key(variant.toInt())).remove(QString::fromLatin1(metaProperty.typeName()).split(':').last()).toLower());
             }
         }
     }

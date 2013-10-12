@@ -220,7 +220,7 @@ void MainWindow::on_actionFileNewModel_triggered()
 //    }
 }
 
-void MainWindow::saveXmi(QModelingElement *rootElement)
+void MainWindow::saveXmi(QList<QModelingObject *> modelObjects)
 {
     QFile file(_currentFileName);
     if (!file.open(QFile::WriteOnly | QFile::Text)) {
@@ -228,9 +228,9 @@ void MainWindow::saveXmi(QModelingElement *rootElement)
         return;
     }
 
-    QXmiWriter writer(rootElement->asQModelingObject());
+    QXmiWriter writer;
     setCursor(Qt::WaitCursor);
-    if (!writer.writeFile(&file))
+    if (!writer.writeFile(modelObjects, &file))
         QMessageBox::critical(this, tr("Save As"), tr("Error when writing XMI file !"));
     else {
         statusBar()->showMessage("XMI file successfully saved !", 3000);
@@ -406,7 +406,7 @@ void MainWindow::on_actionFileSaveAs_triggered()
     QString fileName = QFileDialog::getSaveFileName(this, tr("Save As"), QDir::currentPath(), "XMI files (*.xmi)");
     if (!fileName.isEmpty()) {
         _currentFileName = fileName;
-        saveXmi(qModelingElement(_modelingObjectModel->modelingObjects().at(0)));
+        saveXmi(_modelingObjectModel->modelingObjects());
     }
 }
 
@@ -415,7 +415,7 @@ void MainWindow::on_actionFileSave_triggered()
     if (_currentFileName.isEmpty())
         on_actionFileSaveAs_triggered();
     else
-        saveXmi(qModelingElement(_modelingObjectModel->modelingObjects().at(0)));
+        saveXmi(_modelingObjectModel->modelingObjects());
 }
 
 void MainWindow::on_actionHelpAboutPlugins_triggered()
@@ -615,44 +615,44 @@ void MainWindow::designSpaceChanged()
 
 bool MainWindow::eventFilter(QObject *obj, QEvent *event)
 {
-//    if (event->type() == QEvent::KeyPress && obj == ui->txeJavaScript) {
-//        QKeyEvent *keyEvent = static_cast<QKeyEvent *>(event);
-//        if (keyEvent->key() == 46) {
-//            QModelingObject *modelingObject = qwrappedobject_cast<QWrappedObject *>(dynamic_cast<QWrappedObject *>(_engine.evaluate(ui->txeJavaScript->toPlainText()).toQObject()));
-//            if (modelingObject) {
-//                const QMetaWrappedObject *metaWrappedObject = modelingObject->metaWrappedObject();
-//                int propertyCount = metaWrappedObject->propertyCount();
-//                QStringList propertyList;
-//                for (int i = 0; i < propertyCount; ++i)
-//                    propertyList << metaWrappedObject->property(i).metaProperty.name();
-//                _codeCompletionView->setModel(new QStringListModel(propertyList));
-//                QFont font;
-//                QFontMetrics fm(font);
-//                _codeCompletionView->setGeometry(ui->txeJavaScript->cursorRect().x(), ui->txeJavaScript->cursorRect().y()+fm.height(), 200, 100);
-//                _codeCompletionView->show();
-//                _codeCompletionView->setFocus();
-//            }
-//        }
-//        return QObject::eventFilter(obj, event);
-//    } else if (event->type() == QEvent::KeyPress && obj == _codeCompletionView) {
-//        QKeyEvent *keyEvent = static_cast<QKeyEvent *>(event);
-//         if (keyEvent->key() == 16777220 || keyEvent->key() == 32) { // spacebar or enter
-//            ui->txeJavaScript->insertPlainText(_codeCompletionView->model()->data(_codeCompletionView->selectionModel()->selectedIndexes().first()).toString());
-//            _codeCompletionView->hide();
-//            ui->txeJavaScript->setFocus();
-//            return true;
-//        }
-//        else if (keyEvent->key() == 16777235 || keyEvent->key() == 16777237 || keyEvent->key() == 16777239 || keyEvent->key() == 16777238) { // uparrow and downarrow, pageup, pagedown
-//            return QObject::eventFilter(obj, event);
-//        }
-//        else {
-//            _codeCompletionView->hide();
-//            ui->txeJavaScript->setFocus();
-//            return true;
-//        }
-//    }
-//    // standard event processing
-//    return QObject::eventFilter(obj, event);
+    if (event->type() == QEvent::KeyPress && obj == ui->txeJavaScript) {
+        QKeyEvent *keyEvent = static_cast<QKeyEvent *>(event);
+        if (keyEvent->key() == 46) {
+            QModelingObject *modelingObject = dynamic_cast<QModelingObject *>(_engine.evaluate(ui->txeJavaScript->toPlainText()).toQObject());
+            if (modelingObject) {
+                const QMetaObject *metaObject = modelingObject->metaObject();
+                int propertyCount = metaObject->propertyCount();
+                QStringList propertyList;
+                for (int i = 0; i < propertyCount; ++i)
+                    propertyList << metaObject->property(i).name();
+                _codeCompletionView->setModel(new QStringListModel(propertyList));
+                QFont font;
+                QFontMetrics fm(font);
+                _codeCompletionView->setGeometry(ui->txeJavaScript->cursorRect().x(), ui->txeJavaScript->cursorRect().y()+fm.height(), 200, 100);
+                _codeCompletionView->show();
+                _codeCompletionView->setFocus();
+            }
+        }
+        return QObject::eventFilter(obj, event);
+    } else if (event->type() == QEvent::KeyPress && obj == _codeCompletionView) {
+        QKeyEvent *keyEvent = static_cast<QKeyEvent *>(event);
+         if (keyEvent->key() == 16777220 || keyEvent->key() == 32) { // spacebar or enter
+            ui->txeJavaScript->insertPlainText(_codeCompletionView->model()->data(_codeCompletionView->selectionModel()->selectedIndexes().first()).toString());
+            _codeCompletionView->hide();
+            ui->txeJavaScript->setFocus();
+            return true;
+        }
+        else if (keyEvent->key() == 16777235 || keyEvent->key() == 16777237 || keyEvent->key() == 16777239 || keyEvent->key() == 16777238) { // uparrow and downarrow, pageup, pagedown
+            return QObject::eventFilter(obj, event);
+        }
+        else {
+            _codeCompletionView->hide();
+            ui->txeJavaScript->setFocus();
+            return true;
+        }
+    }
+    // standard event processing
+    return QObject::eventFilter(obj, event);
 }
 
 void MainWindow::loadPlugins()

@@ -92,8 +92,10 @@ int main ()
         return 1;
     }
 
-    QXmiWriter writer(model->asQModelingObject());
-    if (writer.writeFile(&file))
+    QXmiWriter writer;
+    QList<QModelingObject *> list;
+    list << model->asQModelingObject();
+    if (writer.writeFile(list, &file))
         qDebug() << "XMI file saved !";
     else
         qDebug() << "Error when writing XMI file !";
