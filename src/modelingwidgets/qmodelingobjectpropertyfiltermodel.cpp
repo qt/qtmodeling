@@ -62,7 +62,7 @@ bool QModelingObjectPropertyFilterModel::filterAcceptsRow(int sourceRow, const Q
     }
 }
 
-#include "moc_qmodelingobjectpropertyfiltermodel.cpp"
+//#include "moc_qmodelingobjectpropertyfiltermodel.cpp"
 
 QT_END_NAMESPACE
 

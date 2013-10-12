@@ -130,7 +130,7 @@ void QModelingObjectPropertyEditor::modelReset()
     d->treeView->resizeColumnToContents(1);
 }
 
-#include "moc_qmodelingobjectpropertyeditor.cpp"
+//#include "moc_qmodelingobjectpropertyeditor.cpp"
 
 QT_END_NAMESPACE
 

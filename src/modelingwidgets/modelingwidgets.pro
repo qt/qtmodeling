@@ -8,9 +8,9 @@ QMAKE_DOCS = $$PWD/doc/qtmodelingwidgets.qdocconf
 load(qt_module)
 
 PUBLIC_HEADERS += \
+    qtmodelingwidgetsglobal.h \
     qmodelingobjectview.h \
     qmodelingobjectmodel.h \
-#    qtmodelingwidgetsglobal.h \
     qmodelingobjectpropertymodel.h \
     qmodelingobjectpropertyeditor.h \
     qmodelingobjectpropertyfiltermodel.h

@@ -83,7 +83,6 @@ inline T qmodelingelementproperty_cast(const QObject * const modelingObject)
 QT_END_NAMESPACE
 
 Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE(QModelingElement) *)
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE(QMetaProperty) *)
 
 QT_END_HEADER
 

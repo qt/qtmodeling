@@ -49,9 +49,9 @@ QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
 
-struct QMetaPropertyInfo;
-
 QT_MODULE(QtWrappedObjectsWidgets)
+
+class QModelingObject;
 
 class Q_MODELINGWIDGETS_EXPORT PropertyEditor : public QWidget
 {
@@ -59,7 +59,7 @@ class Q_MODELINGWIDGETS_EXPORT PropertyEditor : public QWidget
     Q_PROPERTY(int value READ value WRITE setValue USER true)
 
 public:
-    explicit PropertyEditor(QWidget *widget, QMetaPropertyInfo *metaPropertyInfo, QWidget *parent = 0);
+    explicit PropertyEditor(QWidget *widget, QModelingObject *modelingObject, QMetaProperty *metaProperty, QWidget *parent = 0);
 
     int value() const;
     QWidget *widget() const;
@@ -77,7 +77,8 @@ private Q_SLOTS:
 
 private:
     QWidget *_widget;
-    QMetaPropertyInfo *_metaPropertyInfo;
+    QModelingObject *_modelingObject;
+    QMetaProperty *_metaProperty;
 };
 
 QT_END_NAMESPACE

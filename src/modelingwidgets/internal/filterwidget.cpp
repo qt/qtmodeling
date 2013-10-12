@@ -248,6 +248,6 @@ void FilterWidget::setRefuseFocus(bool v)
     m_editor->setRefuseFocus(v);
 }
 
-#include "moc_filterwidget_p.cpp"
+//#include "moc_filterwidget_p.cpp"
 
 QT_END_NAMESPACE

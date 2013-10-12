@@ -205,7 +205,7 @@ void QModelingObjectModel::clear()
     d->modelingObjects.clear();
 }
 
-#include "moc_qmodelingobjectmodel.cpp"
+//#include "moc_qmodelingobjectmodel.cpp"
 
 QT_END_NAMESPACE
 

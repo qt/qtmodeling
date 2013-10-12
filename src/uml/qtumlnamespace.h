@@ -186,20 +186,6 @@ public:
 
 QT_END_NAMESPACE
 
-Q_DECLARE_METATYPE(QtUml::AggregationKind)
-Q_DECLARE_METATYPE(QtUml::CallConcurrencyKind)
-Q_DECLARE_METATYPE(QtUml::ConnectorKind)
-Q_DECLARE_METATYPE(QtUml::ExpansionKind)
-Q_DECLARE_METATYPE(QtUml::InteractionOperatorKind)
-Q_DECLARE_METATYPE(QtUml::MessageKind)
-Q_DECLARE_METATYPE(QtUml::MessageSort)
-Q_DECLARE_METATYPE(QtUml::ObjectNodeOrderingKind)
-Q_DECLARE_METATYPE(QtUml::ParameterDirectionKind)
-Q_DECLARE_METATYPE(QtUml::ParameterEffectKind)
-Q_DECLARE_METATYPE(QtUml::PseudostateKind)
-Q_DECLARE_METATYPE(QtUml::TransitionKind)
-Q_DECLARE_METATYPE(QtUml::VisibilityKind)
-
 QT_END_HEADER
 
 #endif // QTUMLNAMESPACE_H

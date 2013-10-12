@@ -271,7 +271,8 @@ void QUmlPackage::addOwnedType(QUmlType *ownedType)
         (dynamic_cast<QUmlPackage *>(this))->addPackagedElement(dynamic_cast<QUmlPackageableElement *>(ownedType));
 
         // Adjust opposite property
-        ownedType->setPackage(this);
+        if (ownedType)
+            ownedType->setPackage(this);
     }
 }
 
@@ -284,7 +285,8 @@ void QUmlPackage::removeOwnedType(QUmlType *ownedType)
         (dynamic_cast<QUmlPackage *>(this))->removePackagedElement(dynamic_cast<QUmlPackageableElement *>(ownedType));
 
         // Adjust opposite property
-        ownedType->setPackage(0);
+        if (ownedType)
+            ownedType->setPackage(0);
     }
 }
 
