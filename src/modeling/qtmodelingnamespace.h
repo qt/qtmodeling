@@ -43,6 +43,8 @@
 
 #include <QtModeling/QtModelingGlobal>
 
+#include <QtCore/QObject>
+
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE

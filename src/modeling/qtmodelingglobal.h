@@ -43,10 +43,6 @@
 
 #include <QtCore/QtGlobal>
 
-#include <QtScript/QScriptValue>
-#include <QtScript/QScriptEngine>
-#include <QtScript/QScriptValueIterator>
-
 QT_BEGIN_NAMESPACE
 
 #ifndef QT_STATIC
@@ -60,44 +56,6 @@ QT_BEGIN_NAMESPACE
 #endif
 
 QT_END_NAMESPACE
-
-template <class T>
-QScriptValue qSetToScriptValue(QScriptEngine *engine, const QSet<T *> &elements)
-{
-    QScriptValue array = engine->newArray();
-    foreach (T *element, elements)
-        array.property(QString::fromLatin1("push")).call(array, QScriptValueList() << engine->newQObject(element));
-    return array;
-}
-
-template <class T>
-void scriptValueToQSet(const QScriptValue &obj, QSet<T *> &elements)
-{
-    QScriptValueIterator it(obj);
-    while (it.hasNext()) {
-        it.next();
-        elements.insert(qobject_cast<T *>(it.value().toQObject()));
-    }
-}
-
-template <class T>
-QScriptValue qListToScriptValue(QScriptEngine *engine, const QList<T *> &elements)
-{
-    QScriptValue array = engine->newArray();
-    foreach (T *element, elements)
-        array.property(QString::fromLatin1("push")).call(array, QScriptValueList() << engine->newQObject(element));
-    return array;
-}
-
-template <class T>
-void scriptValueToQList(const QScriptValue &obj, QList<T *> &elements)
-{
-    QScriptValueIterator it(obj);
-    while (it.hasNext()) {
-        it.next();
-        elements.append(qobject_cast<T *>(it.value().toQObject()));
-    }
-}
 
 #endif // QTMODELINGGLOBAL_H
 

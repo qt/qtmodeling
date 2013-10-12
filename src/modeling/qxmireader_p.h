@@ -68,8 +68,6 @@ public:
     QHash< QString, QPair<QMetaModelPlugin *, QJsonObject> > metaModelPlugins;
     QHash<QString, QString> xmlNamespaceToImplementationNamespace;
     QStringList errors;
-    QScriptEngine *scriptEngine;
-    bool initMetaModel;
 };
 
 QT_END_NAMESPACE

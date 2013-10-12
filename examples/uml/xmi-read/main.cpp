@@ -54,7 +54,7 @@ int main ()
         return 1;
     }
 
-    QXmiReader reader(0, true);
+    QXmiReader reader;
     QList<QModelingElement *> rootElements = reader.readFile(&file);
     if (!rootElements.isEmpty())
         qDebug() << "Successfully read object with name" << rootElements.first()->asQModelingObject()->objectName();

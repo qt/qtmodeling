@@ -40,18 +40,11 @@
 ****************************************************************************/
 #include "qumlmetamodelplugin.h"
 
-#include "qumlmetamodel.h"
-
 #include <QtUml/QtUml>
 
 QUmlMetaModelPlugin::QUmlMetaModelPlugin(QObject *parent)
     : QMetaModelPlugin(parent)
 {
-}
-
-void QUmlMetaModelPlugin::initMetaModel(QScriptEngine *scriptEngine)
-{
-    QUmlMetaModel::init(scriptEngine);
 }
 
 QModelingElement *QUmlMetaModelPlugin::createModelingElement(QString type)

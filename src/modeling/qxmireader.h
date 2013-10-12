@@ -67,7 +67,7 @@ class Q_MODELING_EXPORT QXmiReader : public QObject
     Q_DECLARE_PRIVATE(QXmiReader)
 
 public:
-    explicit QXmiReader(QScriptEngine *scriptEngine = 0, bool initMetaModel = false, QObject *parent = 0);
+    explicit QXmiReader(QObject *parent = 0);
     virtual ~QXmiReader();
 
     QList<QModelingElement *> readFile(QIODevice *device, QString importedId = QString::fromLatin1(""));

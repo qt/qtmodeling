@@ -54,7 +54,6 @@ class QUmlMetaModelPlugin : public QMetaModelPlugin
 public:
     QUmlMetaModelPlugin(QObject *parent = 0);
 
-    virtual void initMetaModel(QScriptEngine *scriptEngine = 0);
     virtual QModelingElement *createModelingElement(QString type);
 };
 

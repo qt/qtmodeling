@@ -43,6 +43,8 @@
 
 #include <QtModeling/QtModelingGlobal>
 
+#include <QtCore/QObject>
+
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -59,7 +61,6 @@ class Q_MODELING_EXPORT QMetaModelPlugin : public QObject
 public:
     explicit QMetaModelPlugin(QObject *parent = 0);
 
-    virtual void initMetaModel(QScriptEngine *scriptEngine = 0) = 0;
     virtual QModelingElement *createModelingElement(QString type) = 0;
 };
 

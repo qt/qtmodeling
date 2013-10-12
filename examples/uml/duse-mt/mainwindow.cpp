@@ -57,6 +57,10 @@
 
 #include <QtGui/QKeyEvent>
 
+#include <QtScript/QScriptValue>
+#include <QtScript/QScriptEngine>
+#include <QtScript/QScriptValueIterator>
+
 #include <QtModeling/QXmiWriter>
 #include <QtModeling/QXmiReader>
 #include <QtModeling/QModelingObject>
@@ -77,6 +81,44 @@
 //#include <QtDuse/QtDuse>
 
 #include "newdusedesign.h"
+
+template <class T>
+QScriptValue qSetToScriptValue(QScriptEngine *engine, const QSet<T *> &elements)
+{
+    QScriptValue array = engine->newArray();
+    foreach (T *element, elements)
+        array.property(QString::fromLatin1("push")).call(array, QScriptValueList() << engine->newQObject(element));
+    return array;
+}
+
+template <class T>
+void scriptValueToQSet(const QScriptValue &obj, QSet<T *> &elements)
+{
+    QScriptValueIterator it(obj);
+    while (it.hasNext()) {
+        it.next();
+        elements.insert(qobject_cast<T *>(it.value().toQObject()));
+    }
+}
+
+template <class T>
+QScriptValue qListToScriptValue(QScriptEngine *engine, const QList<T *> &elements)
+{
+    QScriptValue array = engine->newArray();
+    foreach (T *element, elements)
+        array.property(QString::fromLatin1("push")).call(array, QScriptValueList() << engine->newQObject(element));
+    return array;
+}
+
+template <class T>
+void scriptValueToQList(const QScriptValue &obj, QList<T *> &elements)
+{
+    QScriptValueIterator it(obj);
+    while (it.hasNext()) {
+        it.next();
+        elements.append(qobject_cast<T *>(it.value().toQObject()));
+    }
+}
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -118,6 +160,9 @@ MainWindow::MainWindow(QWidget *parent) :
             _modelingObjectModel, &QModelingObjectModel::updateIndex);
 
     loadPlugins();
+
+    qScriptRegisterMetaType(&_engine, qSetToScriptValue<QObject>, scriptValueToQSet<QObject>);
+    qScriptRegisterMetaType(&_engine, qListToScriptValue<QObject>, scriptValueToQList<QObject>);
 
     QPalette modelPallete = ui->txeIssues->palette();
     modelPallete.setColor(QPalette::Active, QPalette::Base, QColor(255, 255, 255));
@@ -247,7 +292,7 @@ QList<QModelingElement *> MainWindow::loadXmi(QString fileName)
         return QList<QModelingElement *>();
     }
 
-    QXmiReader reader(&_engine, true);
+    QXmiReader reader;
     if (fileName.contains("duse-mt"))
         setWindowTitle(QFileInfo(file).fileName() + " - DuSE-MT");
     QList<QModelingElement *> modelingObjectList = reader.readFile(&file);
@@ -308,7 +353,7 @@ void MainWindow::on_actionFileNewDuseDesign_triggered()
                     setCursor(Qt::ArrowCursor);
                     return;
                 }
-                QXmiReader reader(&_engine, true);
+                QXmiReader reader;
                 QList<QModelingElement *> modelingObjectList = reader.readFile(&file);
                 if (QString::fromLatin1(modelingObjectList.first()->asQModelingObject()->metaObject()->className()) != QString::fromLatin1("QDuseDesignSpace")) {
                     QMessageBox::critical(this, tr("Create new DuSE design"), QString::fromLatin1("%1 is not a valid DuSE instance !").arg(QFileInfo(file).fileName()));

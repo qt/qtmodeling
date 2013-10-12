@@ -6,10 +6,8 @@ load(qt_plugin)
 
 QT += qml script uml
 
-HEADERS = qumlmetamodelplugin.h \
-          qumlmetamodel.h
+HEADERS = qumlmetamodelplugin.h
 
-SOURCES = qumlmetamodelplugin.cpp \
-          qumlmetamodel.cpp
+SOURCES = qumlmetamodelplugin.cpp
 
 OTHER_FILES += uml.json
