@@ -43,7 +43,6 @@
 
 #include <QtMof/QtMofGlobal>
 
-// Base class includes
 #include <QtMof/QMofLiteralSpecification>
 
 QT_BEGIN_HEADER
@@ -52,38 +51,28 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtMof)
 
-class QMofLiteralBooleanPrivate;
-
 class Q_MOF_EXPORT QMofLiteralBoolean : public QMofLiteralSpecification
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QMof")
-
-    Q_PROPERTY(bool value READ value WRITE setValue RESET unsetValue)
-
-    Q_DISABLE_COPY(QMofLiteralBoolean)
-    Q_DECLARE_PRIVATE(QMofLiteralBoolean)
-
 public:
-    Q_INVOKABLE explicit QMofLiteralBoolean(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QMofLiteralBoolean();
+    explicit QMofLiteralBoolean(bool createQModelingObject = true);
 
-    // Attributes from QMofLiteralBoolean
-    Q_INVOKABLE bool value() const;
-    Q_INVOKABLE void setValue(bool value);
-    Q_INVOKABLE void unsetValue();
+    virtual QModelingElement *clone() const;
+
+    // Owned attributes
+    bool value() const;
+    void setValue(bool value);
 
     // Operations
-    Q_INVOKABLE bool booleanValue() const;
-    Q_INVOKABLE bool isComputable() const;
-
-    virtual void setPropertyData();
+    bool booleanValue() const;
+    bool isComputable() const;
 
 protected:
-    explicit QMofLiteralBoolean(QMofLiteralBooleanPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    bool _value;
 };
 
 QT_END_NAMESPACE
+
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE(QMofLiteralBoolean) *)
 
 QT_END_HEADER
 

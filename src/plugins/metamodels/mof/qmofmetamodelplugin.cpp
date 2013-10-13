@@ -40,15 +40,55 @@
 ****************************************************************************/
 #include "qmofmetamodelplugin.h"
 
-#include "qmofmetamodel.h"
+#include <QtMof/QtMof>
 
 QMofMetaModelPlugin::QMofMetaModelPlugin(QObject *parent)
     : QMetaModelPlugin(parent)
 {
 }
 
-void QMofMetaModelPlugin::initMetaModel(QScriptEngine *scriptEngine)
+QModelingElement *QMofMetaModelPlugin::createModelingElement(QString type)
 {
-    QMofMetaModel::init(scriptEngine);
+    if (type == "QMofArgument") return new QMofArgument;
+    else if (type == "QMofAssociation") return new QMofAssociation;
+    else if (type == "QMofClass") return new QMofClass;
+    else if (type == "QMofComment") return new QMofComment;
+    else if (type == "QMofConstraint") return new QMofConstraint;
+    else if (type == "QMofDataType") return new QMofDataType;
+    else if (type == "QMofElementImport") return new QMofElementImport;
+    else if (type == "QMofEnumerationLiteral") return new QMofEnumerationLiteral;
+    else if (type == "QMofEnumeration") return new QMofEnumeration;
+    else if (type == "QMofException") return new QMofException;
+    else if (type == "QMofExpression") return new QMofExpression;
+    else if (type == "QMofExtent") return new QMofExtent;
+    else if (type == "QMofFactory") return new QMofFactory;
+    else if (type == "QMofGeneralization") return new QMofGeneralization;
+    else if (type == "QMofInstanceSpecification") return new QMofInstanceSpecification;
+    else if (type == "QMofInstanceValue") return new QMofInstanceValue;
+    else if (type == "QMofLink") return new QMofLink;
+    else if (type == "QMofLiteralBoolean") return new QMofLiteralBoolean;
+    else if (type == "QMofLiteralInteger") return new QMofLiteralInteger;
+    else if (type == "QMofLiteralNull") return new QMofLiteralNull;
+    else if (type == "QMofLiteralReal") return new QMofLiteralReal;
+    else if (type == "QMofLiteralString") return new QMofLiteralString;
+    else if (type == "QMofLiteralUnlimitedNatural") return new QMofLiteralUnlimitedNatural;
+    else if (type == "QMofObject") return new QMofObject;
+    else if (type == "QMofOpaqueExpression") return new QMofOpaqueExpression;
+    else if (type == "QMofOperation") return new QMofOperation;
+    else if (type == "QMofPackageImport") return new QMofPackageImport;
+    else if (type == "QMofPackageMerge") return new QMofPackageMerge;
+    else if (type == "QMofPackage") return new QMofPackage;
+    else if (type == "QMofParameter") return new QMofParameter;
+    else if (type == "QMofPrimitiveType") return new QMofPrimitiveType;
+    else if (type == "QMofProperty") return new QMofProperty;
+    else if (type == "QMofReflectiveCollection") return new QMofReflectiveCollection;
+    else if (type == "QMofReflectiveSequence") return new QMofReflectiveSequence;
+    else if (type == "QMofSlot") return new QMofSlot;
+    else if (type == "QMofTag") return new QMofTag;
+    else if (type == "QMofURIExtent") return new QMofURIExtent;
+    Q_ASSERT_X(true,
+               "QMofMetaModelPlugin::createModelingElement",
+               QStringLiteral("QMofMetaModelPlugin does not know how to create instances of '%1' type !").arg(type).toLatin1());
+    return 0;
 }
 

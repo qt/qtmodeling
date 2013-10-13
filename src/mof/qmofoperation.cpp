@@ -39,30 +39,23 @@
 **
 ****************************************************************************/
 #include "qmofoperation.h"
-#include "qmofoperation_p.h"
 
-#include <QtMof/QMofType>
-#include <QtMof/QMofRedefinableElement>
-#include <QtMof/QMofParameter>
+#include "private/qmofoperationobject_p.h"
+
 #include <QtMof/QMofClass>
+#include <QtMof/QMofClassifier>
+#include <QtMof/QMofComment>
 #include <QtMof/QMofConstraint>
 #include <QtMof/QMofDataType>
-
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
-QT_BEGIN_NAMESPACE
-
-QMofOperationPrivate::QMofOperationPrivate() :
-    isQuery(false),
-    bodyCondition(0),
-    datatype(0),
-    class_(0)
-{
-}
-
-QMofOperationPrivate::~QMofOperationPrivate()
-{
-}
+#include <QtMof/QMofElement>
+#include <QtMof/QMofElementImport>
+#include <QtMof/QMofNamedElement>
+#include <QtMof/QMofNamespace>
+#include <QtMof/QMofPackageableElement>
+#include <QtMof/QMofPackageImport>
+#include <QtMof/QMofParameter>
+#include <QtMof/QMofRedefinableElement>
+#include <QtMof/QMofType>
 
 /*!
     \class QMofOperation
@@ -71,152 +64,52 @@ QMofOperationPrivate::~QMofOperationPrivate()
 
     \brief An operation is a behavioral feature of a classifier that specifies the name, type, parameters, and constraints for invoking an associated behavior.
  */
-
-QMofOperation::QMofOperation(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QMofBehavioralFeature(*new QMofOperationPrivate, wrapper, parent)
+QMofOperation::QMofOperation(bool createQModelingObject) :
+    _bodyCondition(0),
+    _class_(0),
+    _datatype(0),
+    _isQuery(false)
 {
-    setPropertyData();
+    if (createQModelingObject)
+        _qModelingObject = qobject_cast<QModelingObject *>(new QMofOperationObject(this));
 }
 
-QMofOperation::QMofOperation(QMofOperationPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QMofBehavioralFeature(dd, wrapper, parent)
+QModelingElement *QMofOperation::clone() const
 {
-    setPropertyData();
+    QMofOperation *c = new QMofOperation;
+    foreach (QMofComment *element, ownedComments())
+        c->addOwnedComment(dynamic_cast<QMofComment *>(element->clone()));
+    c->setName(name());
+    c->setVisibility(visibility());
+    c->setLeaf(isLeaf());
+    c->setStatic(isStatic());
+    foreach (QMofElementImport *element, elementImports())
+        c->addElementImport(dynamic_cast<QMofElementImport *>(element->clone()));
+    foreach (QMofConstraint *element, ownedRules())
+        c->addOwnedRule(dynamic_cast<QMofConstraint *>(element->clone()));
+    foreach (QMofPackageImport *element, packageImports())
+        c->addPackageImport(dynamic_cast<QMofPackageImport *>(element->clone()));
+    if (bodyCondition())
+        c->setBodyCondition(dynamic_cast<QMofConstraint *>(bodyCondition()->clone()));
+    if (class_())
+        c->setClass(dynamic_cast<QMofClass *>(class_()->clone()));
+    if (datatype())
+        c->setDatatype(dynamic_cast<QMofDataType *>(datatype()->clone()));
+    c->setQuery(isQuery());
+    foreach (QMofParameter *element, ownedParameters())
+        c->addOwnedParameter(dynamic_cast<QMofParameter *>(element->clone()));
+    foreach (QMofConstraint *element, postconditions())
+        c->addPostcondition(dynamic_cast<QMofConstraint *>(element->clone()));
+    foreach (QMofConstraint *element, preconditions())
+        c->addPrecondition(dynamic_cast<QMofConstraint *>(element->clone()));
+    foreach (QMofType *element, raisedExceptions())
+        c->addRaisedException(dynamic_cast<QMofType *>(element->clone()));
+    foreach (QMofOperation *element, redefinedOperations())
+        c->addRedefinedOperation(dynamic_cast<QMofOperation *>(element->clone()));
+    return c;
 }
 
-QMofOperation::~QMofOperation()
-{
-}
-
-// ---------------------------------------------------------------
-// ATTRIBUTES FROM QMofOperation
-// ---------------------------------------------------------------
-
-/*!
-    Specifies the lower multiplicity of the return parameter, if present.
- */
-qint32 QMofOperation::lower() const
-{
-    // This is a read-only derived attribute
-
-    qWarning("QMofOperation::lower: to be implemented (this is a derived attribute)");
-
-    return qint32(); // change here to your derived return
-}
-
-/*!
-    Specifies whether an execution of the BehavioralFeature leaves the state of the system unchanged (isQuery=true) or whether side effects may occur (isQuery=false).
- */
-bool QMofOperation::isQuery() const
-{
-    // This is a read-write attribute
-
-    Q_D(const QMofOperation);
-    return d->isQuery;
-}
-
-void QMofOperation::setQuery(bool isQuery)
-{
-    // This is a read-write attribute
-
-    Q_D(QMofOperation);
-    if (d->isQuery != isQuery) {
-        d->isQuery = isQuery;
-    }
-    d->modifiedResettableProperties << QString::fromLatin1("isQuery");
-}
-
-void QMofOperation::unsetQuery()
-{
-    setQuery(false);
-    Q_D(QMofOperation);
-    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isQuery"));
-}
-
-/*!
-    Specifies whether the return parameter is unique or not, if present.
- */
-bool QMofOperation::isUnique() const
-{
-    // This is a read-only derived attribute
-
-    qWarning("QMofOperation::isUnique: to be implemented (this is a derived attribute)");
-
-    return bool(); // change here to your derived return
-}
-
-/*!
-    Specifies the upper multiplicity of the return parameter, if present.
- */
-qint32 QMofOperation::upper() const
-{
-    // This is a read-only derived attribute
-
-    qWarning("QMofOperation::upper: to be implemented (this is a derived attribute)");
-
-    return qint32(); // change here to your derived return
-}
-
-/*!
-    Specifies whether the return parameter is ordered or not, if present.
- */
-bool QMofOperation::isOrdered() const
-{
-    // This is a read-only derived attribute
-
-    qWarning("QMofOperation::isOrdered: to be implemented (this is a derived attribute)");
-
-    return bool(); // change here to your derived return
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QMofOperation
-// ---------------------------------------------------------------
-
-/*!
-    Specifies the parameters owned by this Operation.
- */
-QList<QMofParameter *> QMofOperation::ownedParameters() const
-{
-    // This is a read-write association end
-
-    Q_D(const QMofOperation);
-    return d->ownedParameters;
-}
-
-void QMofOperation::addOwnedParameter(QMofParameter *ownedParameter)
-{
-    // This is a read-write association end
-
-    Q_D(QMofOperation);
-    if (!d->ownedParameters.contains(ownedParameter)) {
-        d->ownedParameters.append(ownedParameter);
-        qTopLevelWrapper(ownedParameter)->setParent(qTopLevelWrapper(this));
-
-        // Adjust redefined property(ies)
-        (qwrappedobject_cast<QMofBehavioralFeature *>(this))->addOwnedParameter(qwrappedobject_cast<QMofParameter *>(ownedParameter));
-
-        // Adjust opposite property
-        ownedParameter->setOperation(this);
-    }
-}
-
-void QMofOperation::removeOwnedParameter(QMofParameter *ownedParameter)
-{
-    // This is a read-write association end
-
-    Q_D(QMofOperation);
-    if (d->ownedParameters.contains(ownedParameter)) {
-        d->ownedParameters.removeAll(ownedParameter);
-        qTopLevelWrapper(ownedParameter)->setParent(0);
-
-        // Adjust redefined property(ies)
-        (qwrappedobject_cast<QMofBehavioralFeature *>(this))->removeOwnedParameter(qwrappedobject_cast<QMofParameter *>(ownedParameter));
-
-        // Adjust opposite property
-        ownedParameter->setOperation(0);
-    }
-}
+// OWNED ATTRIBUTES
 
 /*!
     An optional Constraint on the result values of an invocation of this Operation.
@@ -225,190 +118,26 @@ QMofConstraint *QMofOperation::bodyCondition() const
 {
     // This is a read-write association end
 
-    Q_D(const QMofOperation);
-    return d->bodyCondition;
+    return _bodyCondition;
 }
 
 void QMofOperation::setBodyCondition(QMofConstraint *bodyCondition)
 {
     // This is a read-write association end
 
-    Q_D(QMofOperation);
-    if (d->bodyCondition != bodyCondition) {
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QMofNamespace *>(this))->removeOwnedRule(qwrappedobject_cast<QMofConstraint *>(d->bodyCondition));
+    if (_bodyCondition != bodyCondition) {
+        // Adjust subsetted properties
+        removeOwnedRule(_bodyCondition);
 
-        d->bodyCondition = bodyCondition;
+        _bodyCondition = bodyCondition;
+        if (bodyCondition && bodyCondition->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(bodyCondition->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setBodyCondition()));
+        bodyCondition->asQModelingObject()->setParent(this->asQModelingObject());
 
-        // Adjust subsetted property(ies)
+        // Adjust subsetted properties
         if (bodyCondition) {
-            (qwrappedobject_cast<QMofNamespace *>(this))->addOwnedRule(qwrappedobject_cast<QMofConstraint *>(bodyCondition));
+            addOwnedRule(bodyCondition);
         }
-    }
-}
-
-/*!
-    References the Operations that are redefined by this Operation.
- */
-QSet<QMofOperation *> QMofOperation::redefinedOperations() const
-{
-    // This is a read-write association end
-
-    Q_D(const QMofOperation);
-    return d->redefinedOperations;
-}
-
-void QMofOperation::addRedefinedOperation(QMofOperation *redefinedOperation)
-{
-    // This is a read-write association end
-
-    Q_D(QMofOperation);
-    if (!d->redefinedOperations.contains(redefinedOperation)) {
-        d->redefinedOperations.insert(redefinedOperation);
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QMofRedefinableElementPrivate *>(d))->addRedefinedElement(qwrappedobject_cast<QMofRedefinableElement *>(redefinedOperation));
-    }
-}
-
-void QMofOperation::removeRedefinedOperation(QMofOperation *redefinedOperation)
-{
-    // This is a read-write association end
-
-    Q_D(QMofOperation);
-    if (d->redefinedOperations.contains(redefinedOperation)) {
-        d->redefinedOperations.remove(redefinedOperation);
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QMofRedefinableElementPrivate *>(d))->removeRedefinedElement(qwrappedobject_cast<QMofRedefinableElement *>(redefinedOperation));
-    }
-}
-
-/*!
-    An optional set of Constraints specifying the state of the system when the Operation is completed.
- */
-QSet<QMofConstraint *> QMofOperation::postconditions() const
-{
-    // This is a read-write association end
-
-    Q_D(const QMofOperation);
-    return d->postconditions;
-}
-
-void QMofOperation::addPostcondition(QMofConstraint *postcondition)
-{
-    // This is a read-write association end
-
-    Q_D(QMofOperation);
-    if (!d->postconditions.contains(postcondition)) {
-        d->postconditions.insert(postcondition);
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QMofNamespace *>(this))->addOwnedRule(qwrappedobject_cast<QMofConstraint *>(postcondition));
-    }
-}
-
-void QMofOperation::removePostcondition(QMofConstraint *postcondition)
-{
-    // This is a read-write association end
-
-    Q_D(QMofOperation);
-    if (d->postconditions.contains(postcondition)) {
-        d->postconditions.remove(postcondition);
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QMofNamespace *>(this))->removeOwnedRule(qwrappedobject_cast<QMofConstraint *>(postcondition));
-    }
-}
-
-/*!
-    The DataType that owns this Operation.
- */
-QMofDataType *QMofOperation::datatype() const
-{
-    // This is a read-write association end
-
-    Q_D(const QMofOperation);
-    return d->datatype;
-}
-
-void QMofOperation::setDatatype(QMofDataType *datatype)
-{
-    // This is a read-write association end
-
-    Q_D(QMofOperation);
-    if (d->datatype != datatype) {
-        // Adjust opposite property
-        if (d->datatype)
-            d->datatype->removeOwnedOperation(this);
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QMofFeaturePrivate *>(d))->removeFeaturingClassifier(qwrappedobject_cast<QMofClassifier *>(d->datatype));
-        (qwrappedobject_cast<QMofRedefinableElementPrivate *>(d))->removeRedefinitionContext(qwrappedobject_cast<QMofClassifier *>(d->datatype));
-
-        d->datatype = datatype;
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QMofNamedElementPrivate *>(d))->setNamespace_(qwrappedobject_cast<QMofNamespace *>(datatype));
-        if (datatype) {
-            (qwrappedobject_cast<QMofFeaturePrivate *>(d))->addFeaturingClassifier(qwrappedobject_cast<QMofClassifier *>(datatype));
-        }
-        if (datatype) {
-            (qwrappedobject_cast<QMofRedefinableElementPrivate *>(d))->addRedefinitionContext(qwrappedobject_cast<QMofClassifier *>(datatype));
-        }
-
-        // Adjust opposite property
-        if (datatype)
-            datatype->addOwnedOperation(this);
-    }
-}
-
-/*!
-    Specifies the return result of the operation, if present.
- */
-QMofType *QMofOperation::type() const
-{
-    // This is a read-only derived association end
-
-    qWarning("QMofOperation::type: to be implemented (this is a derived associationend)");
-
-    return 0; // change here to your derived return
-}
-
-/*!
-    An optional set of Constraints on the state of the system when the Operation is invoked.
- */
-QSet<QMofConstraint *> QMofOperation::preconditions() const
-{
-    // This is a read-write association end
-
-    Q_D(const QMofOperation);
-    return d->preconditions;
-}
-
-void QMofOperation::addPrecondition(QMofConstraint *precondition)
-{
-    // This is a read-write association end
-
-    Q_D(QMofOperation);
-    if (!d->preconditions.contains(precondition)) {
-        d->preconditions.insert(precondition);
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QMofNamespace *>(this))->addOwnedRule(qwrappedobject_cast<QMofConstraint *>(precondition));
-    }
-}
-
-void QMofOperation::removePrecondition(QMofConstraint *precondition)
-{
-    // This is a read-write association end
-
-    Q_D(QMofOperation);
-    if (d->preconditions.contains(precondition)) {
-        d->preconditions.remove(precondition);
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QMofNamespace *>(this))->removeOwnedRule(qwrappedobject_cast<QMofConstraint *>(precondition));
     }
 }
 
@@ -419,62 +148,298 @@ QMofClass *QMofOperation::class_() const
 {
     // This is a read-write association end
 
-    Q_D(const QMofOperation);
-    return d->class_;
+    return _class_;
 }
 
-void QMofOperation::setClass_(QMofClass *class_)
+void QMofOperation::setClass(QMofClass *class_)
 {
     // This is a read-write association end
 
-    Q_D(QMofOperation);
-    if (d->class_ != class_) {
-        // Adjust opposite property
-        if (d->class_)
-            d->class_->removeOwnedOperation(this);
+    if (_class_ != class_) {
+        // Adjust subsetted properties
+        removeFeaturingClassifier(_class_);
+        removeRedefinitionContext(_class_);
 
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QMofFeaturePrivate *>(d))->removeFeaturingClassifier(qwrappedobject_cast<QMofClassifier *>(d->class_));
-        (qwrappedobject_cast<QMofRedefinableElementPrivate *>(d))->removeRedefinitionContext(qwrappedobject_cast<QMofClassifier *>(d->class_));
+        _class_ = class_;
+        if (class_ && class_->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(class_->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setClass()));
 
-        d->class_ = class_;
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QMofNamedElementPrivate *>(d))->setNamespace_(qwrappedobject_cast<QMofNamespace *>(class_));
+        // Adjust subsetted properties
+        setNamespace(class_);
         if (class_) {
-            (qwrappedobject_cast<QMofFeaturePrivate *>(d))->addFeaturingClassifier(qwrappedobject_cast<QMofClassifier *>(class_));
+            addFeaturingClassifier(class_);
         }
         if (class_) {
-            (qwrappedobject_cast<QMofRedefinableElementPrivate *>(d))->addRedefinitionContext(qwrappedobject_cast<QMofClassifier *>(class_));
+            addRedefinitionContext(class_);
         }
+    }
+}
 
-        // Adjust opposite property
-        if (class_)
-            class_->addOwnedOperation(this);
+/*!
+    The DataType that owns this Operation.
+ */
+QMofDataType *QMofOperation::datatype() const
+{
+    // This is a read-write association end
+
+    return _datatype;
+}
+
+void QMofOperation::setDatatype(QMofDataType *datatype)
+{
+    // This is a read-write association end
+
+    if (_datatype != datatype) {
+        // Adjust subsetted properties
+        removeFeaturingClassifier(_datatype);
+        removeRedefinitionContext(_datatype);
+
+        _datatype = datatype;
+        if (datatype && datatype->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(datatype->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setDatatype()));
+
+        // Adjust subsetted properties
+        setNamespace(datatype);
+        if (datatype) {
+            addFeaturingClassifier(datatype);
+        }
+        if (datatype) {
+            addRedefinitionContext(datatype);
+        }
+    }
+}
+
+/*!
+    Specifies whether the return parameter is ordered or not, if present.
+ */
+bool QMofOperation::isOrdered() const
+{
+    // This is a read-only derived property
+
+    qWarning("MofOperation::isOrdered(): to be implemented (this is a derived property)");
+
+    return bool();
+}
+
+void QMofOperation::setOrdered(bool isOrdered)
+{
+    // This is a read-only derived property
+
+    qWarning("MofOperation::setOrdered(): to be implemented (this is a derived property)");
+    Q_UNUSED(isOrdered);
+
+    if (false /* <derivedexclusion-criteria> */) {
+        // <derived-code>
+    }
+}
+
+/*!
+    Specifies whether an execution of the BehavioralFeature leaves the state of the system unchanged (isQuery=true) or whether side effects may occur (isQuery=false).
+ */
+bool QMofOperation::isQuery() const
+{
+    // This is a read-write property
+
+    return _isQuery;
+}
+
+void QMofOperation::setQuery(bool isQuery)
+{
+    // This is a read-write property
+
+    if (_isQuery != isQuery) {
+        _isQuery = isQuery;
+        _qModelingObject->modifiedResettableProperties() << QStringLiteral("isQuery");
+    }
+}
+
+/*!
+    Specifies whether the return parameter is unique or not, if present.
+ */
+bool QMofOperation::isUnique() const
+{
+    // This is a read-only derived property
+
+    qWarning("MofOperation::isUnique(): to be implemented (this is a derived property)");
+
+    return bool();
+}
+
+void QMofOperation::setUnique(bool isUnique)
+{
+    // This is a read-only derived property
+
+    qWarning("MofOperation::setUnique(): to be implemented (this is a derived property)");
+    Q_UNUSED(isUnique);
+
+    if (false /* <derivedexclusion-criteria> */) {
+        // <derived-code>
+    }
+}
+
+/*!
+    Specifies the lower multiplicity of the return parameter, if present.
+ */
+int QMofOperation::lower() const
+{
+    // This is a read-only derived property
+
+    qWarning("MofOperation::lower(): to be implemented (this is a derived property)");
+
+    return int();
+}
+
+void QMofOperation::setLower(int lower)
+{
+    // This is a read-only derived property
+
+    qWarning("MofOperation::setLower(): to be implemented (this is a derived property)");
+    Q_UNUSED(lower);
+
+    if (false /* <derivedexclusion-criteria> */) {
+        // <derived-code>
+    }
+}
+
+/*!
+    Specifies the parameters owned by this Operation.
+ */
+const QList<QMofParameter *> QMofOperation::ownedParameters() const
+{
+    // This is a read-write association end
+
+    return _ownedParameters;
+}
+
+void QMofOperation::addOwnedParameter(QMofParameter *ownedParameter)
+{
+    // This is a read-write association end
+
+    if (!_ownedParameters.contains(ownedParameter)) {
+        _ownedParameters.append(ownedParameter);
+        if (ownedParameter && ownedParameter->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(ownedParameter->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeOwnedParameter(QObject *)));
+        ownedParameter->asQModelingObject()->setParent(this->asQModelingObject());
+
+        // Adjust opposite properties
+        if (ownedParameter) {
+            ownedParameter->setOperation(this);
+        }
+    }
+}
+
+void QMofOperation::removeOwnedParameter(QMofParameter *ownedParameter)
+{
+    // This is a read-write association end
+
+    if (_ownedParameters.contains(ownedParameter)) {
+        _ownedParameters.removeAll(ownedParameter);
+        if (ownedParameter->asQModelingObject())
+            ownedParameter->asQModelingObject()->setParent(0);
+
+        // Adjust opposite properties
+        if (ownedParameter) {
+            ownedParameter->setOperation(0);
+        }
+    }
+}
+
+/*!
+    An optional set of Constraints specifying the state of the system when the Operation is completed.
+ */
+const QSet<QMofConstraint *> QMofOperation::postconditions() const
+{
+    // This is a read-write association end
+
+    return _postconditions;
+}
+
+void QMofOperation::addPostcondition(QMofConstraint *postcondition)
+{
+    // This is a read-write association end
+
+    if (!_postconditions.contains(postcondition)) {
+        _postconditions.insert(postcondition);
+        if (postcondition && postcondition->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(postcondition->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removePostcondition(QObject *)));
+        postcondition->asQModelingObject()->setParent(this->asQModelingObject());
+
+        // Adjust subsetted properties
+        addOwnedRule(postcondition);
+    }
+}
+
+void QMofOperation::removePostcondition(QMofConstraint *postcondition)
+{
+    // This is a read-write association end
+
+    if (_postconditions.contains(postcondition)) {
+        _postconditions.remove(postcondition);
+        if (postcondition->asQModelingObject())
+            postcondition->asQModelingObject()->setParent(0);
+
+        // Adjust subsetted properties
+        removeOwnedRule(postcondition);
+    }
+}
+
+/*!
+    An optional set of Constraints on the state of the system when the Operation is invoked.
+ */
+const QSet<QMofConstraint *> QMofOperation::preconditions() const
+{
+    // This is a read-write association end
+
+    return _preconditions;
+}
+
+void QMofOperation::addPrecondition(QMofConstraint *precondition)
+{
+    // This is a read-write association end
+
+    if (!_preconditions.contains(precondition)) {
+        _preconditions.insert(precondition);
+        if (precondition && precondition->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(precondition->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removePrecondition(QObject *)));
+        precondition->asQModelingObject()->setParent(this->asQModelingObject());
+
+        // Adjust subsetted properties
+        addOwnedRule(precondition);
+    }
+}
+
+void QMofOperation::removePrecondition(QMofConstraint *precondition)
+{
+    // This is a read-write association end
+
+    if (_preconditions.contains(precondition)) {
+        _preconditions.remove(precondition);
+        if (precondition->asQModelingObject())
+            precondition->asQModelingObject()->setParent(0);
+
+        // Adjust subsetted properties
+        removeOwnedRule(precondition);
     }
 }
 
 /*!
     References the Types representing exceptions that may be raised during an invocation of this operation.
  */
-QSet<QMofType *> QMofOperation::raisedExceptions() const
+const QSet<QMofType *> QMofOperation::raisedExceptions() const
 {
     // This is a read-write association end
 
-    Q_D(const QMofOperation);
-    return d->raisedExceptions;
+    return _raisedExceptions;
 }
 
 void QMofOperation::addRaisedException(QMofType *raisedException)
 {
     // This is a read-write association end
 
-    Q_D(QMofOperation);
-    if (!d->raisedExceptions.contains(raisedException)) {
-        d->raisedExceptions.insert(raisedException);
-
-        // Adjust redefined property(ies)
-        (qwrappedobject_cast<QMofBehavioralFeature *>(this))->addRaisedException(qwrappedobject_cast<QMofType *>(raisedException));
+    if (!_raisedExceptions.contains(raisedException)) {
+        _raisedExceptions.insert(raisedException);
+        if (raisedException && raisedException->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(raisedException->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeRaisedException(QObject *)));
     }
 }
 
@@ -482,24 +447,106 @@ void QMofOperation::removeRaisedException(QMofType *raisedException)
 {
     // This is a read-write association end
 
-    Q_D(QMofOperation);
-    if (d->raisedExceptions.contains(raisedException)) {
-        d->raisedExceptions.remove(raisedException);
-
-        // Adjust redefined property(ies)
-        (qwrappedobject_cast<QMofBehavioralFeature *>(this))->removeRaisedException(qwrappedobject_cast<QMofType *>(raisedException));
+    if (_raisedExceptions.contains(raisedException)) {
+        _raisedExceptions.remove(raisedException);
     }
 }
 
 /*!
+    References the Operations that are redefined by this Operation.
+ */
+const QSet<QMofOperation *> QMofOperation::redefinedOperations() const
+{
+    // This is a read-write association end
+
+    return _redefinedOperations;
+}
+
+void QMofOperation::addRedefinedOperation(QMofOperation *redefinedOperation)
+{
+    // This is a read-write association end
+
+    if (!_redefinedOperations.contains(redefinedOperation)) {
+        _redefinedOperations.insert(redefinedOperation);
+        if (redefinedOperation && redefinedOperation->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(redefinedOperation->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeRedefinedOperation(QObject *)));
+
+        // Adjust subsetted properties
+        addRedefinedElement(redefinedOperation);
+    }
+}
+
+void QMofOperation::removeRedefinedOperation(QMofOperation *redefinedOperation)
+{
+    // This is a read-write association end
+
+    if (_redefinedOperations.contains(redefinedOperation)) {
+        _redefinedOperations.remove(redefinedOperation);
+
+        // Adjust subsetted properties
+        removeRedefinedElement(redefinedOperation);
+    }
+}
+
+/*!
+    Specifies the return result of the operation, if present.
+ */
+QMofType *QMofOperation::type() const
+{
+    // This is a read-only derived association end
+
+    qWarning("MofOperation::type(): to be implemented (this is a derived association end)");
+
+    return 0;
+}
+
+void QMofOperation::setType(QMofType *type)
+{
+    // This is a read-only derived association end
+
+    qWarning("MofOperation::setType(): to be implemented (this is a derived association end)");
+    Q_UNUSED(type);
+
+    if (false /* <derivedexclusion-criteria> */) {
+        // <derived-code>
+    }
+}
+
+/*!
+    Specifies the upper multiplicity of the return parameter, if present.
+ */
+int QMofOperation::upper() const
+{
+    // This is a read-only derived property
+
+    qWarning("MofOperation::upper(): to be implemented (this is a derived property)");
+
+    return int();
+}
+
+void QMofOperation::setUpper(int upper)
+{
+    // This is a read-only derived property
+
+    qWarning("MofOperation::setUpper(): to be implemented (this is a derived property)");
+    Q_UNUSED(upper);
+
+    if (false /* <derivedexclusion-criteria> */) {
+        // <derived-code>
+    }
+}
+
+// OPERATIONS
+
+/*!
     A redefining operation is consistent with a redefined operation if it has the same number of owned parameters, and the type of each owned parameter conforms to the type of the corresponding redefined parameter.
  */
-bool QMofOperation::isConsistentWith(const QMofRedefinableElement *redefinee) const
+bool QMofOperation::isConsistentWith(QMofRedefinableElement *redefinee) const
 {
-    qWarning("QMofOperation::isConsistentWith: operation to be implemented");
-    Q_UNUSED(redefinee);
+    qWarning("MofOperation::isConsistentWith(): to be implemented (operation)");
 
-    return bool(); // change here to your derived return
+    Q_UNUSED(redefinee);
+    return bool ();
 }
 
 /*!
@@ -507,115 +554,8 @@ bool QMofOperation::isConsistentWith(const QMofRedefinableElement *redefinee) co
  */
 QSet<QMofParameter *> QMofOperation::returnResult() const
 {
-    qWarning("QMofOperation::returnResult: operation to be implemented");
+    qWarning("MofOperation::returnResult(): to be implemented (operation)");
 
-    return QSet<QMofParameter *>(); // change here to your derived return
+    return QSet<QMofParameter *> ();
 }
-
-void QMofOperation::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("lower")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("lower")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("lower")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the lower multiplicity of the return parameter, if present.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("lower")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("lower")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("lower")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("isQuery")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("isQuery")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("isQuery")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies whether an execution of the BehavioralFeature leaves the state of the system unchanged (isQuery=true) or whether side effects may occur (isQuery=false).");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("isQuery")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("isQuery")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("isQuery")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("isUnique")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("isUnique")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("isUnique")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies whether the return parameter is unique or not, if present.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("isUnique")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("isUnique")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("isUnique")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("upper")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("upper")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("upper")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the upper multiplicity of the return parameter, if present.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("upper")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("upper")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("upper")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("isOrdered")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("isOrdered")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("isOrdered")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies whether the return parameter is ordered or not, if present.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("isOrdered")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("isOrdered")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("isOrdered")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("ownedParameters")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("ownedParameters")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("ownedParameters")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the parameters owned by this Operation.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("ownedParameters")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("QMofBehavioralFeature::ownedParameters");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("ownedParameters")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("ownedParameters")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QMofParameter::operation");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("bodyCondition")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("bodyCondition")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("bodyCondition")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("An optional Constraint on the result values of an invocation of this Operation.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("bodyCondition")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("bodyCondition")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QMofNamespace::ownedRules");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("bodyCondition")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QMof");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("redefinedOperations")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("redefinedOperations")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("redefinedOperations")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the Operations that are redefined by this Operation.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("redefinedOperations")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("redefinedOperations")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QMofRedefinableElement::redefinedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("redefinedOperations")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QMof");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("postconditions")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("postconditions")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("postconditions")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("An optional set of Constraints specifying the state of the system when the Operation is completed.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("postconditions")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("postconditions")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QMofNamespace::ownedRules");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("postconditions")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QMof");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("datatype")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("datatype")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("datatype")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The DataType that owns this Operation.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("datatype")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("datatype")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QMofNamedElement::namespace QMofFeature::featuringClassifiers QMofRedefinableElement::redefinitionContexts");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("datatype")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QMofDataType::ownedOperation");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("type")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("type")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("type")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the return result of the operation, if present.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("type")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("type")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("type")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QMof");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("preconditions")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("preconditions")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("preconditions")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("An optional set of Constraints on the state of the system when the Operation is invoked.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("preconditions")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("preconditions")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QMofNamespace::ownedRules");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("preconditions")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QMof");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("class_")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("class_")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("class_")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The class that owns the operation.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("class_")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("class_")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QMofNamedElement::namespace QMofFeature::featuringClassifiers QMofRedefinableElement::redefinitionContexts");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("class_")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QMofClass::ownedOperation");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("raisedExceptions")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("raisedExceptions")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("raisedExceptions")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the Types representing exceptions that may be raised during an invocation of this operation.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("raisedExceptions")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("QMofBehavioralFeature::raisedExceptions");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("raisedExceptions")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOperation")][QString::fromLatin1("raisedExceptions")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QMof");
-
-    QMofBehavioralFeature::setPropertyData();
-}
-
-QT_END_NAMESPACE
-
-#include "moc_qmofoperation.cpp"
 

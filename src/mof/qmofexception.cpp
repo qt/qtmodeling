@@ -39,126 +39,91 @@
 **
 ****************************************************************************/
 #include "qmofexception.h"
-#include "qmofexception_p.h"
+
+#include "private/qmofexceptionobject_p.h"
 
 #include <QtMof/QMofElement>
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
+/*!
+    \class QMofException
 
-QT_BEGIN_NAMESPACE
+    \inmodule QtMof
 
-QMofExceptionPrivate::QMofExceptionPrivate() :
-    elementInError(0),
-    objectInError(0)
+    \brief
+ */
+QMofException::QMofException(bool createQModelingObject) :
+    _objectInError(0),
+    _elementInError(0)
 {
+    if (createQModelingObject)
+        _qModelingObject = qobject_cast<QModelingObject *>(new QMofExceptionObject(this));
 }
 
-QMofExceptionPrivate::~QMofExceptionPrivate()
+QModelingElement *QMofException::clone() const
 {
+    QMofException *c = new QMofException;
+    if (objectInError())
+        c->setObjectInError(dynamic_cast<QMofElement *>(objectInError()->clone()));
+    if (elementInError())
+        c->setElementInError(dynamic_cast<QMofElement *>(elementInError()->clone()));
+    c->setDescription(description());
+    return c;
 }
 
+// OWNED ATTRIBUTES
 
-QMofException::QMofException(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QWrappedObject(*new QMofExceptionPrivate, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QMofException::QMofException(QMofExceptionPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QWrappedObject(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QMofException::~QMofException()
-{
-}
-
-// ---------------------------------------------------------------
-// ATTRIBUTES FROM QMofException
-// ---------------------------------------------------------------
-
-QString QMofException::description() const
-{
-    // This is a read-write attribute
-
-    Q_D(const QMofException);
-    return d->description;
-}
-
-void QMofException::setDescription(QString description)
-{
-    // This is a read-write attribute
-
-    Q_D(QMofException);
-    if (d->description != description) {
-        d->description = description;
-    }
-}
-
-QMofElement *QMofException::elementInError() const
-{
-    // This is a read-write attribute
-
-    Q_D(const QMofException);
-    return d->elementInError;
-}
-
-void QMofException::setElementInError(QMofElement *elementInError)
-{
-    // This is a read-write attribute
-
-    Q_D(QMofException);
-    if (d->elementInError != elementInError) {
-        d->elementInError = elementInError;
-    }
-}
 
 QMofElement *QMofException::objectInError() const
 {
-    // This is a read-write attribute
+    // This is a read-write property
 
-    Q_D(const QMofException);
-    return d->objectInError;
+    return _objectInError;
 }
 
 void QMofException::setObjectInError(QMofElement *objectInError)
 {
-    // This is a read-write attribute
+    // This is a read-write property
 
-    Q_D(QMofException);
-    if (d->objectInError != objectInError) {
-        d->objectInError = objectInError;
+    if (_objectInError != objectInError) {
+        _objectInError = objectInError;
+        if (objectInError && objectInError->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(objectInError->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setObjectInError()));
     }
 }
 
-void QMofException::setPropertyData()
+
+QMofElement *QMofException::elementInError() const
 {
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofException")][QString::fromLatin1("description")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofException")][QString::fromLatin1("description")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofException")][QString::fromLatin1("description")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofException")][QString::fromLatin1("description")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofException")][QString::fromLatin1("description")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofException")][QString::fromLatin1("description")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    // This is a read-write property
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofException")][QString::fromLatin1("elementInError")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofException")][QString::fromLatin1("elementInError")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofException")][QString::fromLatin1("elementInError")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofException")][QString::fromLatin1("elementInError")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofException")][QString::fromLatin1("elementInError")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofException")][QString::fromLatin1("elementInError")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofException")][QString::fromLatin1("objectInError")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofException")][QString::fromLatin1("objectInError")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofException")][QString::fromLatin1("objectInError")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofException")][QString::fromLatin1("objectInError")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofException")][QString::fromLatin1("objectInError")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofException")][QString::fromLatin1("objectInError")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
-
-    QWrappedObject::setPropertyData();
+    return _elementInError;
 }
 
-QT_END_NAMESPACE
+void QMofException::setElementInError(QMofElement *elementInError)
+{
+    // This is a read-write property
 
-#include "moc_qmofexception.cpp"
+    if (_elementInError != elementInError) {
+        _elementInError = elementInError;
+        if (elementInError && elementInError->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(elementInError->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setElementInError()));
+    }
+}
+
+
+QString QMofException::description() const
+{
+    // This is a read-write property
+
+    return _description;
+}
+
+void QMofException::setDescription(QString description)
+{
+    // This is a read-write property
+
+    if (_description != description) {
+        _description = description;
+    }
+}
 

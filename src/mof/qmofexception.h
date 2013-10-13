@@ -43,11 +43,7 @@
 
 #include <QtMof/QtMofGlobal>
 
-// Base class includes
-#include <QtWrappedObjects/QWrappedObject>
-
-// Qt includes
-#include <QtCore/QString>
+#include <QtModeling/QModelingElement>
 
 QT_BEGIN_HEADER
 
@@ -55,42 +51,32 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtMof)
 
-// Forward decls for function parameters
 class QMofElement;
 
-class QMofExceptionPrivate;
-
-class Q_MOF_EXPORT QMofException : public QWrappedObject
+class Q_MOF_EXPORT QMofException : public QModelingElement
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QMof")
-
-    Q_PROPERTY(QString description READ description WRITE setDescription)
-    Q_PROPERTY(QMofElement * elementInError READ elementInError WRITE setElementInError)
-    Q_PROPERTY(QMofElement * objectInError READ objectInError WRITE setObjectInError)
-
-    Q_DISABLE_COPY(QMofException)
-    Q_DECLARE_PRIVATE(QMofException)
-
 public:
-    Q_INVOKABLE explicit QMofException(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QMofException();
+    explicit QMofException(bool createQModelingObject = true);
 
-    // Attributes from QMofException
-    Q_INVOKABLE QString description() const;
-    Q_INVOKABLE void setDescription(QString description);
-    Q_INVOKABLE QMofElement *elementInError() const;
-    Q_INVOKABLE void setElementInError(QMofElement *elementInError);
-    Q_INVOKABLE QMofElement *objectInError() const;
-    Q_INVOKABLE void setObjectInError(QMofElement *objectInError);
+    virtual QModelingElement *clone() const;
 
-    virtual void setPropertyData();
+    // Owned attributes
+    QMofElement *objectInError() const;
+    void setObjectInError(QMofElement *objectInError);
+    QMofElement *elementInError() const;
+    void setElementInError(QMofElement *elementInError);
+    QString description() const;
+    void setDescription(QString description);
 
 protected:
-    explicit QMofException(QMofExceptionPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    QMofElement *_objectInError;
+    QMofElement *_elementInError;
+    QString _description;
 };
 
 QT_END_NAMESPACE
+
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE(QMofException) *)
 
 QT_END_HEADER
 

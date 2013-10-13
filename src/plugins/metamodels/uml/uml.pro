@@ -4,7 +4,7 @@ PLUGIN_TYPE = metamodels
 PLUGIN_CLASS_NAME = QUmlMetaModelPlugin
 load(qt_plugin)
 
-QT += qml script uml
+QT += uml
 
 HEADERS = qumlmetamodelplugin.h
 

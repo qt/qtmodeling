@@ -1,7 +1,7 @@
 load(qt_build_config)
 
 TARGET = QtMof
-QT = wrappedobjects-private core-private
+QT = core-private modeling-private
 
 QMAKE_DOCS = $$PWD/doc/qtmof.qdocconf
 

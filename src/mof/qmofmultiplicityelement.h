@@ -43,7 +43,6 @@
 
 #include <QtMof/QtMofGlobal>
 
-// Base class includes
 #include <QtMof/QMofElement>
 
 QT_BEGIN_HEADER
@@ -52,64 +51,46 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtMof)
 
-// Forward decls for function parameters
 class QMofValueSpecification;
-class QMofMultiplicityElement;
 
-class QMofMultiplicityElementPrivate;
-
-class Q_MOF_EXPORT QMofMultiplicityElement : public QMofElement
+class Q_MOF_EXPORT QMofMultiplicityElement : public virtual QMofElement
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QMof")
-
-    Q_PROPERTY(qint32 upper READ upper WRITE setUpper RESET unsetUpper STORED false)
-    Q_PROPERTY(bool isUnique READ isUnique WRITE setUnique RESET unsetUnique)
-    Q_PROPERTY(bool isOrdered READ isOrdered WRITE setOrdered RESET unsetOrdered)
-    Q_PROPERTY(qint32 lower READ lower WRITE setLower STORED false)
-    Q_PROPERTY(QMofValueSpecification * upperValue READ upperValue WRITE setUpperValue)
-    Q_PROPERTY(QMofValueSpecification * lowerValue READ lowerValue WRITE setLowerValue)
-
-    Q_DISABLE_COPY(QMofMultiplicityElement)
-    Q_DECLARE_PRIVATE(QMofMultiplicityElement)
-
 public:
-    Q_INVOKABLE explicit QMofMultiplicityElement(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QMofMultiplicityElement();
+    Q_DECL_HIDDEN virtual QModelingElement *clone() const;
 
-    // Attributes from QMofMultiplicityElement
-    Q_INVOKABLE qint32 upper() const;
-    Q_INVOKABLE void setUpper(qint32 upper);
-    Q_INVOKABLE void unsetUpper();
-    Q_INVOKABLE bool isUnique() const;
-    Q_INVOKABLE void setUnique(bool isUnique);
-    Q_INVOKABLE void unsetUnique();
-    Q_INVOKABLE bool isOrdered() const;
-    Q_INVOKABLE void setOrdered(bool isOrdered);
-    Q_INVOKABLE void unsetOrdered();
-    Q_INVOKABLE qint32 lower() const;
-    Q_INVOKABLE void setLower(qint32 lower);
-
-    // Association ends from QMofMultiplicityElement
-    Q_INVOKABLE QMofValueSpecification *upperValue() const;
-    Q_INVOKABLE void setUpperValue(QMofValueSpecification *upperValue);
-    Q_INVOKABLE QMofValueSpecification *lowerValue() const;
-    Q_INVOKABLE void setLowerValue(QMofValueSpecification *lowerValue);
+    // Owned attributes
+    bool isOrdered() const;
+    void setOrdered(bool isOrdered);
+    bool isUnique() const;
+    void setUnique(bool isUnique);
+    int lower() const;
+    void setLower(int lower);
+    QMofValueSpecification *lowerValue() const;
+    void setLowerValue(QMofValueSpecification *lowerValue);
+    int upper() const;
+    void setUpper(int upper);
+    QMofValueSpecification *upperValue() const;
+    void setUpperValue(QMofValueSpecification *upperValue);
 
     // Operations
-    Q_INVOKABLE bool includesCardinality(qint32 C) const;
-    Q_INVOKABLE bool includesMultiplicity(const QMofMultiplicityElement *M) const;
-    Q_INVOKABLE bool isMultivalued() const;
-    Q_INVOKABLE qint32 lowerBound() const;
-    Q_INVOKABLE qint32 upperBound() const;
-
-    virtual void setPropertyData();
+    bool includesCardinality(int C) const;
+    bool includesMultiplicity(QMofMultiplicityElement *M) const;
+    bool isMultivalued() const;
+    int lowerBound() const;
+    int upperBound() const;
 
 protected:
-    explicit QMofMultiplicityElement(QMofMultiplicityElementPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    explicit QMofMultiplicityElement();
+
+    bool _isOrdered;
+    bool _isUnique;
+    QMofValueSpecification *_lowerValue;
+    QMofValueSpecification *_upperValue;
 };
 
 QT_END_NAMESPACE
+
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE(QMofMultiplicityElement) *)
 
 QT_END_HEADER
 

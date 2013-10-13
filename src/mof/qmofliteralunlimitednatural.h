@@ -43,7 +43,6 @@
 
 #include <QtMof/QtMofGlobal>
 
-// Base class includes
 #include <QtMof/QMofLiteralSpecification>
 
 QT_BEGIN_HEADER
@@ -52,38 +51,28 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtMof)
 
-class QMofLiteralUnlimitedNaturalPrivate;
-
 class Q_MOF_EXPORT QMofLiteralUnlimitedNatural : public QMofLiteralSpecification
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QMof")
-
-    Q_PROPERTY(qint32 value READ value WRITE setValue RESET unsetValue)
-
-    Q_DISABLE_COPY(QMofLiteralUnlimitedNatural)
-    Q_DECLARE_PRIVATE(QMofLiteralUnlimitedNatural)
-
 public:
-    Q_INVOKABLE explicit QMofLiteralUnlimitedNatural(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QMofLiteralUnlimitedNatural();
+    explicit QMofLiteralUnlimitedNatural(bool createQModelingObject = true);
 
-    // Attributes from QMofLiteralUnlimitedNatural
-    Q_INVOKABLE qint32 value() const;
-    Q_INVOKABLE void setValue(qint32 value);
-    Q_INVOKABLE void unsetValue();
+    virtual QModelingElement *clone() const;
+
+    // Owned attributes
+    int value() const;
+    void setValue(int value);
 
     // Operations
-    Q_INVOKABLE bool isComputable() const;
-    Q_INVOKABLE qint32 unlimitedValue() const;
-
-    virtual void setPropertyData();
+    bool isComputable() const;
+    int unlimitedValue() const;
 
 protected:
-    explicit QMofLiteralUnlimitedNatural(QMofLiteralUnlimitedNaturalPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    int _value;
 };
 
 QT_END_NAMESPACE
+
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE(QMofLiteralUnlimitedNatural) *)
 
 QT_END_HEADER
 

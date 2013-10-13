@@ -43,11 +43,7 @@
 
 #include <QtMof/QtMofGlobal>
 
-// Base class includes
 #include <QtMof/QMofElement>
-
-// Qt includes
-#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
 
@@ -55,32 +51,25 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtMof)
 
-class QMofRelationshipPrivate;
-
-class Q_MOF_EXPORT QMofRelationship : public QMofElement
+class Q_MOF_EXPORT QMofRelationship : public virtual QMofElement
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QMof")
-
-    Q_PROPERTY(QSet<QMofElement *> relatedElements READ relatedElements)
-
-    Q_DISABLE_COPY(QMofRelationship)
-    Q_DECLARE_PRIVATE(QMofRelationship)
-
 public:
-    Q_INVOKABLE explicit QMofRelationship(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QMofRelationship();
+    Q_DECL_HIDDEN virtual QModelingElement *clone() const;
 
-    // Association ends from QMofRelationship
-    Q_INVOKABLE QSet<QMofElement *> relatedElements() const;
-
-    virtual void setPropertyData();
+    // Owned attributes
+    const QSet<QMofElement *> relatedElements() const;
+    Q_DECL_HIDDEN void addRelatedElement(QMofElement *relatedElement);
+    Q_DECL_HIDDEN void removeRelatedElement(QMofElement *relatedElement);
 
 protected:
-    explicit QMofRelationship(QMofRelationshipPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    explicit QMofRelationship();
+
+    QSet<QMofElement *> _relatedElements;
 };
 
 QT_END_NAMESPACE
+
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE(QMofRelationship) *)
 
 QT_END_HEADER
 

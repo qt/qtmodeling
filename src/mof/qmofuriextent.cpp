@@ -39,68 +39,53 @@
 **
 ****************************************************************************/
 #include "qmofuriextent.h"
-#include "qmofuriextent_p.h"
+
+#include "private/qmofuriextentobject_p.h"
 
 #include <QtMof/QMofElement>
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
+/*!
+    \class QMofURIExtent
 
-QT_BEGIN_NAMESPACE
+    \inmodule QtMof
 
-QMofURIExtentPrivate::QMofURIExtentPrivate()
+    \brief
+ */
+QMofURIExtent::QMofURIExtent(bool createQModelingObject) :
+    QMofExtent(false)
 {
+    if (createQModelingObject)
+        _qModelingObject = qobject_cast<QModelingObject *>(new QMofURIExtentObject(this));
 }
 
-QMofURIExtentPrivate::~QMofURIExtentPrivate()
+QModelingElement *QMofURIExtent::clone() const
 {
+    QMofURIExtent *c = new QMofURIExtent;
+    return c;
 }
 
-
-QMofURIExtent::QMofURIExtent(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QMofExtent(*new QMofURIExtentPrivate, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QMofURIExtent::QMofURIExtent(QMofURIExtentPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QMofExtent(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QMofURIExtent::~QMofURIExtent()
-{
-}
+// OPERATIONS
 
 QString QMofURIExtent::contextURI() const
 {
-    qWarning("QMofURIExtent::contextURI: operation to be implemented");
+    qWarning("MofURIExtent::contextURI(): to be implemented (operation)");
 
-    return QString(); // change here to your derived return
+    return QString ();
 }
 
-QString QMofURIExtent::uri(const QMofElement *object) const
+QString QMofURIExtent::uri(QMofElement *object) const
 {
-    qWarning("QMofURIExtent::uri: operation to be implemented");
-    Q_UNUSED(object);
+    qWarning("MofURIExtent::uri(): to be implemented (operation)");
 
-    return QString(); // change here to your derived return
+    Q_UNUSED(object);
+    return QString ();
 }
 
 QMofElement *QMofURIExtent::element(QString uri) const
 {
-    qWarning("QMofURIExtent::element: operation to be implemented");
+    qWarning("MofURIExtent::element(): to be implemented (operation)");
+
     Q_UNUSED(uri);
-
-    return 0; // change here to your derived return
+    return 0;
 }
-
-void QMofURIExtent::setPropertyData()
-{
-    QMofExtent::setPropertyData();
-}
-
-QT_END_NAMESPACE
-
-#include "moc_qmofuriextent.cpp"
 

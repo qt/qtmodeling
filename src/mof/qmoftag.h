@@ -43,12 +43,7 @@
 
 #include <QtMof/QtMofGlobal>
 
-// Base class includes
 #include <QtMof/QMofElement>
-
-// Qt includes
-#include <QtCore/QString>
-#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
 
@@ -56,43 +51,34 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtMof)
 
-class QMofTagPrivate;
-
 class Q_MOF_EXPORT QMofTag : public QMofElement
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QMof")
-
-    Q_PROPERTY(QSet<QMofElement *> elements READ elements)
-    Q_PROPERTY(QString value READ value WRITE setValue)
-    Q_PROPERTY(QString name READ name WRITE setName)
-    Q_PROPERTY(QMofElement * tagOwner READ tagOwner WRITE setTagOwner)
-
-    Q_DISABLE_COPY(QMofTag)
-    Q_DECLARE_PRIVATE(QMofTag)
-
 public:
-    Q_INVOKABLE explicit QMofTag(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QMofTag();
+    explicit QMofTag(bool createQModelingObject = true);
 
-    // Attributes from QMofTag
-    Q_INVOKABLE QSet<QMofElement *> elements() const;
-    Q_INVOKABLE void addElement(QMofElement *element);
-    Q_INVOKABLE void removeElement(QMofElement *element);
-    Q_INVOKABLE QString value() const;
-    Q_INVOKABLE void setValue(QString value);
-    Q_INVOKABLE QString name() const;
-    Q_INVOKABLE void setName(QString name);
-    Q_INVOKABLE QMofElement *tagOwner() const;
-    Q_INVOKABLE void setTagOwner(QMofElement *tagOwner);
+    virtual QModelingElement *clone() const;
 
-    virtual void setPropertyData();
+    // Owned attributes
+    QString name() const;
+    void setName(QString name);
+    QString value() const;
+    void setValue(QString value);
+    const QSet<QMofElement *> elements() const;
+    void addElement(QMofElement *element);
+    void removeElement(QMofElement *element);
+    QMofElement *tagOwner() const;
+    void setTagOwner(QMofElement *tagOwner);
 
 protected:
-    explicit QMofTag(QMofTagPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    QString _name;
+    QString _value;
+    QSet<QMofElement *> _elements;
+    QMofElement *_tagOwner;
 };
 
 QT_END_NAMESPACE
+
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE(QMofTag) *)
 
 QT_END_HEADER
 

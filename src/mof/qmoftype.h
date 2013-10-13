@@ -43,7 +43,6 @@
 
 #include <QtMof/QtMofGlobal>
 
-// Base class includes
 #include <QtMof/QMofPackageableElement>
 
 QT_BEGIN_HEADER
@@ -52,42 +51,31 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtMof)
 
-// Forward decls for function parameters
-class QMofPackage;
-class QMofType;
 class QMofObject;
-
-class QMofTypePrivate;
+class QMofPackage;
 
 class Q_MOF_EXPORT QMofType : public QMofPackageableElement
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QMof")
-
-    Q_PROPERTY(QMofPackage * package READ package WRITE setPackage)
-
-    Q_DISABLE_COPY(QMofType)
-    Q_DECLARE_PRIVATE(QMofType)
-
 public:
-    Q_INVOKABLE explicit QMofType(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QMofType();
+    Q_DECL_HIDDEN virtual QModelingElement *clone() const;
 
-    // Association ends from QMofType
-    Q_INVOKABLE QMofPackage *package() const;
-    Q_INVOKABLE void setPackage(QMofPackage *package);
+    // Owned attributes
+    QMofPackage *package() const;
+    void setPackage(QMofPackage *package);
 
     // Operations
-    Q_INVOKABLE bool conformsTo(const QMofType *other) const;
-    Q_INVOKABLE bool isInstance(const QMofObject *object) const;
-
-    virtual void setPropertyData();
+    bool conformsTo(QMofType *other) const;
+    bool isInstance(QMofObject *object) const;
 
 protected:
-    explicit QMofType(QMofTypePrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    explicit QMofType();
+
+    QMofPackage *_package;
 };
 
 QT_END_NAMESPACE
+
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE(QMofType) *)
 
 QT_END_HEADER
 

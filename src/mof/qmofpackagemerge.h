@@ -43,7 +43,6 @@
 
 #include <QtMof/QtMofGlobal>
 
-// Base class includes
 #include <QtMof/QMofDirectedRelationship>
 
 QT_BEGIN_HEADER
@@ -52,39 +51,29 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtMof)
 
-// Forward decls for function parameters
 class QMofPackage;
-
-class QMofPackageMergePrivate;
 
 class Q_MOF_EXPORT QMofPackageMerge : public QMofDirectedRelationship
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QMof")
-
-    Q_PROPERTY(QMofPackage * mergedPackage READ mergedPackage WRITE setMergedPackage)
-    Q_PROPERTY(QMofPackage * receivingPackage READ receivingPackage WRITE setReceivingPackage)
-
-    Q_DISABLE_COPY(QMofPackageMerge)
-    Q_DECLARE_PRIVATE(QMofPackageMerge)
-
 public:
-    Q_INVOKABLE explicit QMofPackageMerge(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QMofPackageMerge();
+    explicit QMofPackageMerge(bool createQModelingObject = true);
 
-    // Association ends from QMofPackageMerge
-    Q_INVOKABLE QMofPackage *mergedPackage() const;
-    Q_INVOKABLE void setMergedPackage(QMofPackage *mergedPackage);
-    Q_INVOKABLE QMofPackage *receivingPackage() const;
-    Q_INVOKABLE void setReceivingPackage(QMofPackage *receivingPackage);
+    virtual QModelingElement *clone() const;
 
-    virtual void setPropertyData();
+    // Owned attributes
+    QMofPackage *mergedPackage() const;
+    void setMergedPackage(QMofPackage *mergedPackage);
+    QMofPackage *receivingPackage() const;
+    void setReceivingPackage(QMofPackage *receivingPackage);
 
 protected:
-    explicit QMofPackageMerge(QMofPackageMergePrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    QMofPackage *_mergedPackage;
+    QMofPackage *_receivingPackage;
 };
 
 QT_END_NAMESPACE
+
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE(QMofPackageMerge) *)
 
 QT_END_HEADER
 

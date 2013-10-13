@@ -43,11 +43,7 @@
 
 #include <QtMof/QtMofGlobal>
 
-// Base class includes
 #include <QtMof/QMofObject>
-
-// Qt includes
-#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
 
@@ -55,42 +51,34 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtMof)
 
-// Forward decls for function parameters
-class QMofLink;
 class QMofAssociation;
 class QMofClass;
-class QMofReflectiveSequence;
 class QMofElement;
-
-class QMofExtentPrivate;
+class QMofLink;
+class QMofReflectiveSequence;
 
 class Q_MOF_EXPORT QMofExtent : public QMofObject
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QMof")
-
-    Q_DISABLE_COPY(QMofExtent)
-    Q_DECLARE_PRIVATE(QMofExtent)
-
 public:
-    Q_INVOKABLE explicit QMofExtent(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QMofExtent();
+    explicit QMofExtent(bool createQModelingObject = true);
+
+    virtual QModelingElement *clone() const;
+
 
     // Operations
-    Q_INVOKABLE bool useContainment() const;
-    Q_INVOKABLE QMofReflectiveSequence *elements() const;
-    Q_INVOKABLE QSet<QMofElement *> elementsOfType(const QMofClass *type, bool includesSubtypes) const;
-    Q_INVOKABLE QSet<QMofLink *> linksOfType(const QMofAssociation *type) const;
-    Q_INVOKABLE QSet<QMofElement *> linkedElements(const QMofAssociation *association, const QMofElement *endElement, bool end1ToEnd2Direction) const;
-    Q_INVOKABLE bool linkExists(const QMofAssociation *association, const QMofElement *firstElement, const QMofElement *secondElement) const;
-
-    virtual void setPropertyData();
+    bool useContainment() const;
+    QMofReflectiveSequence *elements() const;
+    QSet<QMofElement *> elementsOfType(QMofClass *type, bool includesSubtypes) const;
+    QSet<QMofLink *> linksOfType(QMofAssociation *type) const;
+    QSet<QMofElement *> linkedElements(QMofAssociation *association, QMofElement *endElement, bool end1ToEnd2Direction) const;
+    bool linkExists(QMofAssociation *association, QMofElement *firstElement, QMofElement *secondElement) const;
 
 protected:
-    explicit QMofExtent(QMofExtentPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
 QT_END_NAMESPACE
+
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE(QMofExtent) *)
 
 QT_END_HEADER
 

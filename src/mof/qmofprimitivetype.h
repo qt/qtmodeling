@@ -43,7 +43,6 @@
 
 #include <QtMof/QtMofGlobal>
 
-// Base class includes
 #include <QtMof/QMofDataType>
 
 QT_BEGIN_HEADER
@@ -52,27 +51,20 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtMof)
 
-class QMofPrimitiveTypePrivate;
-
 class Q_MOF_EXPORT QMofPrimitiveType : public QMofDataType
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QMof")
-
-    Q_DISABLE_COPY(QMofPrimitiveType)
-    Q_DECLARE_PRIVATE(QMofPrimitiveType)
-
 public:
-    Q_INVOKABLE explicit QMofPrimitiveType(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QMofPrimitiveType();
+    explicit QMofPrimitiveType(bool createQModelingObject = true);
 
-    virtual void setPropertyData();
+    virtual QModelingElement *clone() const;
+
 
 protected:
-    explicit QMofPrimitiveType(QMofPrimitiveTypePrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
 QT_END_NAMESPACE
+
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE(QMofPrimitiveType) *)
 
 QT_END_HEADER
 

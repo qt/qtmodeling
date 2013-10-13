@@ -39,45 +39,10 @@
 **
 ****************************************************************************/
 #include "qmofnamedelement.h"
-#include "qmofnamedelement_p.h"
 
-#include "qmofnamespace_p.h"
-
+#include <QtMof/QMofClass>
+#include <QtMof/QMofComment>
 #include <QtMof/QMofNamespace>
-
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
-QT_BEGIN_NAMESPACE
-
-QMofNamedElementPrivate::QMofNamedElementPrivate() :
-    namespace_(0)
-{
-}
-
-QMofNamedElementPrivate::~QMofNamedElementPrivate()
-{
-}
-
-void QMofNamedElementPrivate::setNamespace_(QMofNamespace *namespace_)
-{
-    // This is a read-only derived-union association end
-
-    if (this->namespace_ != namespace_) {
-        Q_Q(QMofNamedElement);
-        // Adjust opposite property
-        if (this->namespace_)
-            (qwrappedobject_cast<QMofNamespacePrivate *>(this->namespace_->d_func()))->removeOwnedMember(q);
-
-        this->namespace_ = namespace_;
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QMofElementPrivate *>(this))->setOwner(qwrappedobject_cast<QMofElement *>(namespace_));
-
-        // Adjust opposite property
-        if (namespace_)
-            (qwrappedobject_cast<QMofNamespacePrivate *>(namespace_->d_func()))->addOwnedMember(q);
-    }
-}
 
 /*!
     \class QMofNamedElement
@@ -86,70 +51,66 @@ void QMofNamedElementPrivate::setNamespace_(QMofNamespace *namespace_)
 
     \brief A named element is an element in a model that may have a name.
  */
-
-QMofNamedElement::QMofNamedElement(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QMofElement(*new QMofNamedElementPrivate, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QMofNamedElement::QMofNamedElement(QMofNamedElementPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QMofElement(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QMofNamedElement::~QMofNamedElement()
+QMofNamedElement::QMofNamedElement() :
+    _namespace_(0)
 {
 }
 
-// ---------------------------------------------------------------
-// ATTRIBUTES FROM QMofNamedElement
-// ---------------------------------------------------------------
+QModelingElement *QMofNamedElement::clone() const
+{
+    QMofNamedElement *c = new QMofNamedElement;
+    foreach (QMofComment *element, ownedComments())
+        c->addOwnedComment(dynamic_cast<QMofComment *>(element->clone()));
+    c->setName(name());
+    c->setVisibility(visibility());
+    return c;
+}
+
+// OWNED ATTRIBUTES
 
 /*!
     The name of the NamedElement.
  */
 QString QMofNamedElement::name() const
 {
-    // This is a read-write attribute
+    // This is a read-write property
 
-    Q_D(const QMofNamedElement);
-    return d->name;
+    return _name;
 }
 
 void QMofNamedElement::setName(QString name)
 {
-    // This is a read-write attribute
+    // This is a read-write property
 
-    Q_D(QMofNamedElement);
-    if (d->name != name) {
-        d->name = name;
-        QWrappedObject *wrappedObject = this;
-        while (wrappedObject->wrapper())
-            wrappedObject = wrappedObject->wrapper();
-        wrappedObject->setObjectName(name);
+    if (_name != name) {
+        _name = name;
+        asQModelingObject()->setObjectName(name);
     }
 }
 
 /*!
-    Determines where the NamedElement appears within different Namespaces within the overall model, and its accessibility.
+    Specifies the namespace that owns the NamedElement.
  */
-QtMof::VisibilityKind QMofNamedElement::visibility() const
+QMofNamespace *QMofNamedElement::namespace_() const
 {
-    // This is a read-write attribute
+    // This is a read-only derived union association end
 
-    Q_D(const QMofNamedElement);
-    return d->visibility;
+    return _namespace_;
 }
 
-void QMofNamedElement::setVisibility(QtMof::VisibilityKind visibility)
+void QMofNamedElement::setNamespace(QMofNamespace *namespace_)
 {
-    // This is a read-write attribute
+    // This is a read-only derived union association end
 
-    Q_D(QMofNamedElement);
-    if (d->visibility != visibility) {
-        d->visibility = visibility;
+    if (_namespace_ != namespace_) {
+        // Adjust subsetted properties
+
+        _namespace_ = namespace_;
+        if (namespace_ && namespace_->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(namespace_->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setNamespace()));
+
+        // Adjust subsetted properties
+        setOwner(namespace_);
     }
 }
 
@@ -158,11 +119,10 @@ void QMofNamedElement::setVisibility(QtMof::VisibilityKind visibility)
  */
 QString QMofNamedElement::qualifiedName() const
 {
-    // This is a read-only derived attribute
+    // This is a read-only derived property
 
-    Q_D(const QMofNamedElement);
-    if (d->name.isEmpty()) return QString();
-    QString qualifiedName_(d->name);
+    if (_name.isEmpty()) return QString();
+    QString qualifiedName_(_name);
     QList<QMofNamespace *> allNamespaces_ = allNamespaces();
     QString separator_ = separator();
     foreach (QMofNamespace *namespace_, allNamespaces_) {
@@ -173,28 +133,45 @@ QString QMofNamedElement::qualifiedName() const
     return qualifiedName_;
 }
 
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QMofNamedElement
-// ---------------------------------------------------------------
+void QMofNamedElement::setQualifiedName(QString qualifiedName)
+{
+    // This is a read-only derived property
+
+    qWarning("MofNamedElement::setQualifiedName(): to be implemented (this is a derived property)");
+    Q_UNUSED(qualifiedName);
+
+    if (false /* <derivedexclusion-criteria> */) {
+        // <derived-code>
+    }
+}
 
 /*!
-    Specifies the namespace that owns the NamedElement.
+    Determines where the NamedElement appears within different Namespaces within the overall model, and its accessibility.
  */
-QMofNamespace *QMofNamedElement::namespace_() const
+QtMof::VisibilityKind QMofNamedElement::visibility() const
 {
-    // This is a read-only derived-union association end
+    // This is a read-write property
 
-    Q_D(const QMofNamedElement);
-    return d->namespace_;
+    return _visibility;
 }
+
+void QMofNamedElement::setVisibility(QtMof::VisibilityKind visibility)
+{
+    // This is a read-write property
+
+    if (_visibility != visibility) {
+        _visibility = visibility;
+    }
+}
+
+// OPERATIONS
 
 /*!
     The query allNamespaces() gives the sequence of namespaces in which the NamedElement is nested, working outwards.
  */
 QList<QMofNamespace *> QMofNamedElement::allNamespaces() const
 {
-    Q_D(const QMofNamedElement);
-    if (!d->namespace_) {
+    if (!_namespace_) {
         return QList<QMofNamespace *>();
     }
     else {
@@ -211,13 +188,13 @@ QList<QMofNamespace *> QMofNamedElement::allNamespaces() const
 /*!
     The query isDistinguishableFrom() determines whether two NamedElements may logically co-exist within a Namespace. By default, two named elements are distinguishable if (a) they have unrelated types or (b) they have related types but different names.
  */
-bool QMofNamedElement::isDistinguishableFrom(const QMofNamedElement *n, const QMofNamespace *ns) const
+bool QMofNamedElement::isDistinguishableFrom(QMofNamedElement *n, QMofNamespace *ns) const
 {
-    qWarning("QMofNamedElement::isDistinguishableFrom: operation to be implemented");
+    qWarning("MofNamedElement::isDistinguishableFrom(): to be implemented (operation)");
+
     Q_UNUSED(n);
     Q_UNUSED(ns);
-
-    return bool(); // change here to your derived return
+    return bool ();
 }
 
 /*!
@@ -227,41 +204,4 @@ QString QMofNamedElement::separator() const
 {
     return QStringLiteral("::");
 }
-
-void QMofNamedElement::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofNamedElement")][QString::fromLatin1("name")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofNamedElement")][QString::fromLatin1("name")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofNamedElement")][QString::fromLatin1("name")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The name of the NamedElement.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofNamedElement")][QString::fromLatin1("name")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofNamedElement")][QString::fromLatin1("name")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofNamedElement")][QString::fromLatin1("name")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofNamedElement")][QString::fromLatin1("visibility")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofNamedElement")][QString::fromLatin1("visibility")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofNamedElement")][QString::fromLatin1("visibility")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Determines where the NamedElement appears within different Namespaces within the overall model, and its accessibility.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofNamedElement")][QString::fromLatin1("visibility")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofNamedElement")][QString::fromLatin1("visibility")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofNamedElement")][QString::fromLatin1("visibility")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofNamedElement")][QString::fromLatin1("qualifiedName")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofNamedElement")][QString::fromLatin1("qualifiedName")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofNamedElement")][QString::fromLatin1("qualifiedName")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A name which allows the NamedElement to be identified within a hierarchy of nested Namespaces. It is constructed from the names of the containing namespaces starting at the root of the hierarchy and ending with the name of the NamedElement itself.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofNamedElement")][QString::fromLatin1("qualifiedName")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofNamedElement")][QString::fromLatin1("qualifiedName")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofNamedElement")][QString::fromLatin1("qualifiedName")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofNamedElement")][QString::fromLatin1("namespace_")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofNamedElement")][QString::fromLatin1("namespace_")][QtWrappedObjects::IsDerivedUnionRole] = true;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofNamedElement")][QString::fromLatin1("namespace_")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the namespace that owns the NamedElement.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofNamedElement")][QString::fromLatin1("namespace_")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofNamedElement")][QString::fromLatin1("namespace_")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QMofElement::owner");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofNamedElement")][QString::fromLatin1("namespace_")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QMofNamespace::ownedMember");
-
-    QMofElement::setPropertyData();
-}
-
-QT_END_NAMESPACE
-
-#include "moc_qmofnamedelement.cpp"
 

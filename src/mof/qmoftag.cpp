@@ -39,158 +39,115 @@
 **
 ****************************************************************************/
 #include "qmoftag.h"
-#include "qmoftag_p.h"
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
+#include "private/qmoftagobject_p.h"
 
-QT_BEGIN_NAMESPACE
+/*!
+    \class QMofTag
 
-QMofTagPrivate::QMofTagPrivate() :
-    tagOwner(0)
+    \inmodule QtMof
+
+    \brief
+ */
+QMofTag::QMofTag(bool createQModelingObject) :
+    _tagOwner(0)
 {
+    if (createQModelingObject)
+        _qModelingObject = qobject_cast<QModelingObject *>(new QMofTagObject(this));
 }
 
-QMofTagPrivate::~QMofTagPrivate()
+QModelingElement *QMofTag::clone() const
 {
+    QMofTag *c = new QMofTag;
+    c->setName(name());
+    c->setValue(value());
+    foreach (QMofElement *element, elements())
+        c->addElement(dynamic_cast<QMofElement *>(element->clone()));
+    if (tagOwner())
+        c->setTagOwner(dynamic_cast<QMofElement *>(tagOwner()->clone()));
+    return c;
+}
+
+// OWNED ATTRIBUTES
+
+
+QString QMofTag::name() const
+{
+    // This is a read-write property
+
+    return _name;
+}
+
+void QMofTag::setName(QString name)
+{
+    // This is a read-write property
+
+    if (_name != name) {
+        _name = name;
+    }
 }
 
 
-QMofTag::QMofTag(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QMofElement(*new QMofTagPrivate, wrapper, parent)
+QString QMofTag::value() const
 {
-    setPropertyData();
+    // This is a read-write property
+
+    return _value;
 }
 
-QMofTag::QMofTag(QMofTagPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QMofElement(dd, wrapper, parent)
+void QMofTag::setValue(QString value)
 {
-    setPropertyData();
+    // This is a read-write property
+
+    if (_value != value) {
+        _value = value;
+    }
 }
 
-QMofTag::~QMofTag()
+
+const QSet<QMofElement *> QMofTag::elements() const
 {
-}
+    // This is a read-write property
 
-// ---------------------------------------------------------------
-// ATTRIBUTES FROM QMofTag
-// ---------------------------------------------------------------
-
-QSet<QMofElement *> QMofTag::elements() const
-{
-    // This is a read-write attribute
-
-    Q_D(const QMofTag);
-    return d->elements;
+    return _elements;
 }
 
 void QMofTag::addElement(QMofElement *element)
 {
-    // This is a read-write attribute
+    // This is a read-write property
 
-    Q_D(QMofTag);
-    if (!d->elements.contains(element)) {
-        d->elements.insert(element);
+    if (!_elements.contains(element)) {
+        _elements.insert(element);
+        if (element && element->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(element->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeElement(QObject *)));
     }
 }
 
 void QMofTag::removeElement(QMofElement *element)
 {
-    // This is a read-write attribute
+    // This is a read-write property
 
-    Q_D(QMofTag);
-    if (d->elements.contains(element)) {
-        d->elements.remove(element);
+    if (_elements.contains(element)) {
+        _elements.remove(element);
     }
 }
 
-QString QMofTag::value() const
-{
-    // This is a read-write attribute
-
-    Q_D(const QMofTag);
-    return d->value;
-}
-
-void QMofTag::setValue(QString value)
-{
-    // This is a read-write attribute
-
-    Q_D(QMofTag);
-    if (d->value != value) {
-        d->value = value;
-    }
-}
-
-QString QMofTag::name() const
-{
-    // This is a read-write attribute
-
-    Q_D(const QMofTag);
-    return d->name;
-}
-
-void QMofTag::setName(QString name)
-{
-    // This is a read-write attribute
-
-    Q_D(QMofTag);
-    if (d->name != name) {
-        d->name = name;
-    }
-}
 
 QMofElement *QMofTag::tagOwner() const
 {
-    // This is a read-write attribute
+    // This is a read-write property
 
-    Q_D(const QMofTag);
-    return d->tagOwner;
+    return _tagOwner;
 }
 
 void QMofTag::setTagOwner(QMofElement *tagOwner)
 {
-    // This is a read-write attribute
+    // This is a read-write property
 
-    Q_D(QMofTag);
-    if (d->tagOwner != tagOwner) {
-        d->tagOwner = tagOwner;
+    if (_tagOwner != tagOwner) {
+        _tagOwner = tagOwner;
+        if (tagOwner && tagOwner->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(tagOwner->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setTagOwner()));
     }
 }
-
-void QMofTag::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofTag")][QString::fromLatin1("elements")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofTag")][QString::fromLatin1("elements")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofTag")][QString::fromLatin1("elements")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofTag")][QString::fromLatin1("elements")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofTag")][QString::fromLatin1("elements")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofTag")][QString::fromLatin1("elements")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofTag")][QString::fromLatin1("value")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofTag")][QString::fromLatin1("value")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofTag")][QString::fromLatin1("value")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofTag")][QString::fromLatin1("value")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofTag")][QString::fromLatin1("value")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofTag")][QString::fromLatin1("value")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofTag")][QString::fromLatin1("name")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofTag")][QString::fromLatin1("name")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofTag")][QString::fromLatin1("name")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofTag")][QString::fromLatin1("name")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofTag")][QString::fromLatin1("name")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofTag")][QString::fromLatin1("name")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofTag")][QString::fromLatin1("tagOwner")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofTag")][QString::fromLatin1("tagOwner")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofTag")][QString::fromLatin1("tagOwner")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofTag")][QString::fromLatin1("tagOwner")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofTag")][QString::fromLatin1("tagOwner")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofTag")][QString::fromLatin1("tagOwner")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
-
-    QMofElement::setPropertyData();
-}
-
-QT_END_NAMESPACE
-
-#include "moc_qmoftag.cpp"
 

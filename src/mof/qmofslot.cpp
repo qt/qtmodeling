@@ -39,25 +39,14 @@
 **
 ****************************************************************************/
 #include "qmofslot.h"
-#include "qmofslot_p.h"
 
-#include <QtMof/QMofStructuralFeature>
+#include "private/qmofslotobject_p.h"
+
+#include <QtMof/QMofClass>
+#include <QtMof/QMofComment>
 #include <QtMof/QMofInstanceSpecification>
+#include <QtMof/QMofStructuralFeature>
 #include <QtMof/QMofValueSpecification>
-
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
-QT_BEGIN_NAMESPACE
-
-QMofSlotPrivate::QMofSlotPrivate() :
-    definingFeature(0),
-    owningInstance(0)
-{
-}
-
-QMofSlotPrivate::~QMofSlotPrivate()
-{
-}
 
 /*!
     \class QMofSlot
@@ -66,63 +55,29 @@ QMofSlotPrivate::~QMofSlotPrivate()
 
     \brief A slot specifies that an entity modeled by an instance specification has a value or values for a specific structural feature.
  */
-
-QMofSlot::QMofSlot(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QMofElement(*new QMofSlotPrivate, wrapper, parent)
+QMofSlot::QMofSlot(bool createQModelingObject) :
+    _definingFeature(0),
+    _owningInstance(0)
 {
-    setPropertyData();
+    if (createQModelingObject)
+        _qModelingObject = qobject_cast<QModelingObject *>(new QMofSlotObject(this));
 }
 
-QMofSlot::QMofSlot(QMofSlotPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QMofElement(dd, wrapper, parent)
+QModelingElement *QMofSlot::clone() const
 {
-    setPropertyData();
+    QMofSlot *c = new QMofSlot;
+    foreach (QMofComment *element, ownedComments())
+        c->addOwnedComment(dynamic_cast<QMofComment *>(element->clone()));
+    if (definingFeature())
+        c->setDefiningFeature(dynamic_cast<QMofStructuralFeature *>(definingFeature()->clone()));
+    if (owningInstance())
+        c->setOwningInstance(dynamic_cast<QMofInstanceSpecification *>(owningInstance()->clone()));
+    foreach (QMofValueSpecification *element, values())
+        c->addValue(dynamic_cast<QMofValueSpecification *>(element->clone()));
+    return c;
 }
 
-QMofSlot::~QMofSlot()
-{
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QMofSlot
-// ---------------------------------------------------------------
-
-/*!
-    The value or values corresponding to the defining feature for the owning instance specification.
- */
-QList<QMofValueSpecification *> QMofSlot::values() const
-{
-    // This is a read-write association end
-
-    Q_D(const QMofSlot);
-    return d->values;
-}
-
-void QMofSlot::addValue(QMofValueSpecification *value)
-{
-    // This is a read-write association end
-
-    Q_D(QMofSlot);
-    if (!d->values.contains(value)) {
-        d->values.append(value);
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QMofElementPrivate *>(d))->addOwnedElement(qwrappedobject_cast<QMofElement *>(value));
-    }
-}
-
-void QMofSlot::removeValue(QMofValueSpecification *value)
-{
-    // This is a read-write association end
-
-    Q_D(QMofSlot);
-    if (d->values.contains(value)) {
-        d->values.removeAll(value);
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QMofElementPrivate *>(d))->removeOwnedElement(qwrappedobject_cast<QMofElement *>(value));
-    }
-}
+// OWNED ATTRIBUTES
 
 /*!
     The structural feature that specifies the values that may be held by the slot.
@@ -131,17 +86,17 @@ QMofStructuralFeature *QMofSlot::definingFeature() const
 {
     // This is a read-write association end
 
-    Q_D(const QMofSlot);
-    return d->definingFeature;
+    return _definingFeature;
 }
 
 void QMofSlot::setDefiningFeature(QMofStructuralFeature *definingFeature)
 {
     // This is a read-write association end
 
-    Q_D(QMofSlot);
-    if (d->definingFeature != definingFeature) {
-        d->definingFeature = definingFeature;
+    if (_definingFeature != definingFeature) {
+        _definingFeature = definingFeature;
+        if (definingFeature && definingFeature->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(definingFeature->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setDefiningFeature()));
     }
 }
 
@@ -152,58 +107,61 @@ QMofInstanceSpecification *QMofSlot::owningInstance() const
 {
     // This is a read-write association end
 
-    Q_D(const QMofSlot);
-    return d->owningInstance;
+    return _owningInstance;
 }
 
 void QMofSlot::setOwningInstance(QMofInstanceSpecification *owningInstance)
 {
     // This is a read-write association end
 
-    Q_D(QMofSlot);
-    if (d->owningInstance != owningInstance) {
-        // Adjust opposite property
-        if (d->owningInstance)
-            d->owningInstance->removeSlot_(this);
+    if (_owningInstance != owningInstance) {
+        // Adjust subsetted properties
 
-        d->owningInstance = owningInstance;
+        _owningInstance = owningInstance;
+        if (owningInstance && owningInstance->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(owningInstance->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setOwningInstance()));
 
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QMofElementPrivate *>(d))->setOwner(qwrappedobject_cast<QMofElement *>(owningInstance));
-
-        // Adjust opposite property
-        if (owningInstance)
-            owningInstance->addSlot_(this);
+        // Adjust subsetted properties
+        setOwner(owningInstance);
     }
 }
 
-void QMofSlot::setPropertyData()
+/*!
+    The value or values corresponding to the defining feature for the owning instance specification.
+ */
+const QList<QMofValueSpecification *> QMofSlot::values() const
 {
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofSlot")][QString::fromLatin1("values")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofSlot")][QString::fromLatin1("values")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofSlot")][QString::fromLatin1("values")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The value or values corresponding to the defining feature for the owning instance specification.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofSlot")][QString::fromLatin1("values")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofSlot")][QString::fromLatin1("values")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QMofElement::ownedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofSlot")][QString::fromLatin1("values")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QMof");
+    // This is a read-write association end
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofSlot")][QString::fromLatin1("definingFeature")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofSlot")][QString::fromLatin1("definingFeature")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofSlot")][QString::fromLatin1("definingFeature")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The structural feature that specifies the values that may be held by the slot.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofSlot")][QString::fromLatin1("definingFeature")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofSlot")][QString::fromLatin1("definingFeature")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofSlot")][QString::fromLatin1("definingFeature")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QMof");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofSlot")][QString::fromLatin1("owningInstance")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofSlot")][QString::fromLatin1("owningInstance")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofSlot")][QString::fromLatin1("owningInstance")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The instance specification that owns this slot.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofSlot")][QString::fromLatin1("owningInstance")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofSlot")][QString::fromLatin1("owningInstance")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QMofElement::owner");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofSlot")][QString::fromLatin1("owningInstance")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QMofInstanceSpecification::slot");
-
-    QMofElement::setPropertyData();
+    return _values;
 }
 
-QT_END_NAMESPACE
+void QMofSlot::addValue(QMofValueSpecification *value)
+{
+    // This is a read-write association end
 
-#include "moc_qmofslot.cpp"
+    if (!_values.contains(value)) {
+        _values.append(value);
+        if (value && value->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(value->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeValue(QObject *)));
+        value->asQModelingObject()->setParent(this->asQModelingObject());
+
+        // Adjust subsetted properties
+        addOwnedElement(value);
+    }
+}
+
+void QMofSlot::removeValue(QMofValueSpecification *value)
+{
+    // This is a read-write association end
+
+    if (_values.contains(value)) {
+        _values.removeAll(value);
+        if (value->asQModelingObject())
+            value->asQModelingObject()->setParent(0);
+
+        // Adjust subsetted properties
+        removeOwnedElement(value);
+    }
+}
 

@@ -53,8 +53,8 @@ private Q_SLOTS:
 private:
     void check(QString package1Name, QString package2Name, int package1Size, int package2Size);
 
-    QWrappedObjectPointer<QMofPackage> _package1;
-    QWrappedObjectPointer<QMofPackage> _package2;
+    QMofPackage *_package1;
+    QMofPackage *_package2;
 };
 
 void TestQtMofContainment::check(QString package1Name, QString package2Name, int package1Size, int package2Size)
@@ -99,15 +99,15 @@ void TestQtMofContainment::qtmofcontainment()
     _package1->removeNestedPackage(_package2);
     check("Package1", "Package2", 0, 0);
 
-    QWrappedObjectPointer<QMofComment> comment = new QMofComment;
+    QMofComment *comment = new QMofComment;
     _package1->addOwnedComment(comment);
     QCOMPARE(_package1->members().size(), 0);
     QCOMPARE(_package1->ownedMembers().size(), 0);
     QCOMPARE(_package1->ownedElements().size(), 1);
     QCOMPARE(_package1->ownedComments().size(), 1);
 
-    delete _package1.data();
-    delete _package2.data();
+    delete _package1;
+    delete _package2;
 }
 
 QTEST_MAIN(TestQtMofContainment)

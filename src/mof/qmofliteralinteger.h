@@ -43,7 +43,6 @@
 
 #include <QtMof/QtMofGlobal>
 
-// Base class includes
 #include <QtMof/QMofLiteralSpecification>
 
 QT_BEGIN_HEADER
@@ -52,37 +51,28 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtMof)
 
-class QMofLiteralIntegerPrivate;
-
 class Q_MOF_EXPORT QMofLiteralInteger : public QMofLiteralSpecification
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QMof")
-
-    Q_PROPERTY(qint32 value READ value WRITE setValue)
-
-    Q_DISABLE_COPY(QMofLiteralInteger)
-    Q_DECLARE_PRIVATE(QMofLiteralInteger)
-
 public:
-    Q_INVOKABLE explicit QMofLiteralInteger(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QMofLiteralInteger();
+    explicit QMofLiteralInteger(bool createQModelingObject = true);
 
-    // Attributes from QMofLiteralInteger
-    Q_INVOKABLE qint32 value() const;
-    Q_INVOKABLE void setValue(qint32 value);
+    virtual QModelingElement *clone() const;
+
+    // Owned attributes
+    int value() const;
+    void setValue(int value);
 
     // Operations
-    Q_INVOKABLE qint32 integerValue() const;
-    Q_INVOKABLE bool isComputable() const;
-
-    virtual void setPropertyData();
+    int integerValue() const;
+    bool isComputable() const;
 
 protected:
-    explicit QMofLiteralInteger(QMofLiteralIntegerPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    int _value;
 };
 
 QT_END_NAMESPACE
+
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE(QMofLiteralInteger) *)
 
 QT_END_HEADER
 

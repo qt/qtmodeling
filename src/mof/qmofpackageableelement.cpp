@@ -39,20 +39,11 @@
 **
 ****************************************************************************/
 #include "qmofpackageableelement.h"
-#include "qmofpackageableelement_p.h"
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
-QT_BEGIN_NAMESPACE
-
-QMofPackageableElementPrivate::QMofPackageableElementPrivate() :
-    visibility(QtMof::VisibilityPublic)
-{
-}
-
-QMofPackageableElementPrivate::~QMofPackageableElementPrivate()
-{
-}
+#include <QtMof/QMofClass>
+#include <QtMof/QMofComment>
+#include <QtMof/QMofElement>
+#include <QtMof/QMofNamespace>
 
 /*!
     \class QMofPackageableElement
@@ -61,72 +52,40 @@ QMofPackageableElementPrivate::~QMofPackageableElementPrivate()
 
     \brief A packageable element indicates a named element that may be owned directly by a package.
  */
-
-QMofPackageableElement::QMofPackageableElement(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QMofNamedElement(*new QMofPackageableElementPrivate, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QMofPackageableElement::QMofPackageableElement(QMofPackageableElementPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QMofNamedElement(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QMofPackageableElement::~QMofPackageableElement()
+QMofPackageableElement::QMofPackageableElement() :
+    _visibility(QtMof::VisibilityKindPublic)
 {
 }
 
-// ---------------------------------------------------------------
-// ATTRIBUTES FROM QMofPackageableElement
-// ---------------------------------------------------------------
+QModelingElement *QMofPackageableElement::clone() const
+{
+    QMofPackageableElement *c = new QMofPackageableElement;
+    foreach (QMofComment *element, ownedComments())
+        c->addOwnedComment(dynamic_cast<QMofComment *>(element->clone()));
+    c->setName(name());
+    c->setVisibility(visibility());
+    return c;
+}
+
+// OWNED ATTRIBUTES
 
 /*!
     Indicates that packageable elements must always have a visibility, i.e., visibility is not optional.
  */
 QtMof::VisibilityKind QMofPackageableElement::visibility() const
 {
-    // This is a read-write attribute
+    // This is a read-write property
 
-    Q_D(const QMofPackageableElement);
-    return d->visibility;
+    return _visibility;
 }
 
 void QMofPackageableElement::setVisibility(QtMof::VisibilityKind visibility)
 {
-    // This is a read-write attribute
+    // This is a read-write property
 
-    Q_D(QMofPackageableElement);
-    if (d->visibility != visibility) {
-        d->visibility = visibility;
-
-        // Adjust redefined property(ies)
-        (qwrappedobject_cast<QMofNamedElement *>(this))->setVisibility(visibility);
+    if (_visibility != visibility) {
+        _visibility = visibility;
+        _qModelingObject->modifiedResettableProperties() << QStringLiteral("visibility");
     }
-    d->modifiedResettableProperties << QString::fromLatin1("visibility");
 }
-
-void QMofPackageableElement::unsetVisibility()
-{
-    setVisibility(QtMof::VisibilityPublic);
-    Q_D(QMofPackageableElement);
-    d->modifiedResettableProperties.removeAll(QString::fromLatin1("visibility"));
-}
-
-void QMofPackageableElement::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofPackageableElement")][QString::fromLatin1("visibility")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofPackageableElement")][QString::fromLatin1("visibility")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofPackageableElement")][QString::fromLatin1("visibility")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Indicates that packageable elements must always have a visibility, i.e., visibility is not optional.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofPackageableElement")][QString::fromLatin1("visibility")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("QMofNamedElement::visibility");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofPackageableElement")][QString::fromLatin1("visibility")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofPackageableElement")][QString::fromLatin1("visibility")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
-
-    QMofNamedElement::setPropertyData();
-}
-
-QT_END_NAMESPACE
-
-#include "moc_qmofpackageableelement.cpp"
 

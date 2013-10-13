@@ -39,20 +39,15 @@
 **
 ****************************************************************************/
 #include "qmofliteralunlimitednatural.h"
-#include "qmofliteralunlimitednatural_p.h"
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
+#include "private/qmofliteralunlimitednaturalobject_p.h"
 
-QT_BEGIN_NAMESPACE
-
-QMofLiteralUnlimitedNaturalPrivate::QMofLiteralUnlimitedNaturalPrivate() :
-    value(0)
-{
-}
-
-QMofLiteralUnlimitedNaturalPrivate::~QMofLiteralUnlimitedNaturalPrivate()
-{
-}
+#include <QtMof/QMofClass>
+#include <QtMof/QMofComment>
+#include <QtMof/QMofElement>
+#include <QtMof/QMofNamedElement>
+#include <QtMof/QMofNamespace>
+#include <QtMof/QMofType>
 
 /*!
     \class QMofLiteralUnlimitedNatural
@@ -61,89 +56,67 @@ QMofLiteralUnlimitedNaturalPrivate::~QMofLiteralUnlimitedNaturalPrivate()
 
     \brief A literal unlimited natural is a specification of an unlimited natural number.
  */
-
-QMofLiteralUnlimitedNatural::QMofLiteralUnlimitedNatural(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QMofLiteralSpecification(*new QMofLiteralUnlimitedNaturalPrivate, wrapper, parent)
+QMofLiteralUnlimitedNatural::QMofLiteralUnlimitedNatural(bool createQModelingObject) :
+    _value(0)
 {
-    setPropertyData();
+    if (createQModelingObject)
+        _qModelingObject = qobject_cast<QModelingObject *>(new QMofLiteralUnlimitedNaturalObject(this));
 }
 
-QMofLiteralUnlimitedNatural::QMofLiteralUnlimitedNatural(QMofLiteralUnlimitedNaturalPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QMofLiteralSpecification(dd, wrapper, parent)
+QModelingElement *QMofLiteralUnlimitedNatural::clone() const
 {
-    setPropertyData();
+    QMofLiteralUnlimitedNatural *c = new QMofLiteralUnlimitedNatural;
+    foreach (QMofComment *element, ownedComments())
+        c->addOwnedComment(dynamic_cast<QMofComment *>(element->clone()));
+    c->setName(name());
+    c->setVisibility(visibility());
+    if (type())
+        c->setType(dynamic_cast<QMofType *>(type()->clone()));
+    c->setValue(value());
+    return c;
 }
 
-QMofLiteralUnlimitedNatural::~QMofLiteralUnlimitedNatural()
-{
-}
-
-// ---------------------------------------------------------------
-// ATTRIBUTES FROM QMofLiteralUnlimitedNatural
-// ---------------------------------------------------------------
+// OWNED ATTRIBUTES
 
 /*!
     The specified UnlimitedNatural value.
  */
-qint32 QMofLiteralUnlimitedNatural::value() const
+int QMofLiteralUnlimitedNatural::value() const
 {
-    // This is a read-write attribute
+    // This is a read-write property
 
-    Q_D(const QMofLiteralUnlimitedNatural);
-    return d->value;
+    return _value;
 }
 
-void QMofLiteralUnlimitedNatural::setValue(qint32 value)
+void QMofLiteralUnlimitedNatural::setValue(int value)
 {
-    // This is a read-write attribute
+    // This is a read-write property
 
-    Q_D(QMofLiteralUnlimitedNatural);
-    if (d->value != value) {
-        d->value = value;
+    if (_value != value) {
+        _value = value;
+        _qModelingObject->modifiedResettableProperties() << QStringLiteral("value");
     }
-    d->modifiedResettableProperties << QString::fromLatin1("value");
 }
 
-void QMofLiteralUnlimitedNatural::unsetValue()
-{
-    setValue(0);
-    Q_D(QMofLiteralUnlimitedNatural);
-    d->modifiedResettableProperties.removeAll(QString::fromLatin1("value"));
-}
+// OPERATIONS
 
 /*!
     The query isComputable() is redefined to be true.
  */
 bool QMofLiteralUnlimitedNatural::isComputable() const
 {
-    qWarning("QMofLiteralUnlimitedNatural::isComputable: operation to be implemented");
+    qWarning("MofLiteralUnlimitedNatural::isComputable(): to be implemented (operation)");
 
-    return bool(); // change here to your derived return
+    return bool ();
 }
 
 /*!
     The query unlimitedValue() gives the value.
  */
-qint32 QMofLiteralUnlimitedNatural::unlimitedValue() const
+int QMofLiteralUnlimitedNatural::unlimitedValue() const
 {
-    qWarning("QMofLiteralUnlimitedNatural::unlimitedValue: operation to be implemented");
+    qWarning("MofLiteralUnlimitedNatural::unlimitedValue(): to be implemented (operation)");
 
-    return qint32(); // change here to your derived return
+    return int ();
 }
-
-void QMofLiteralUnlimitedNatural::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofLiteralUnlimitedNatural")][QString::fromLatin1("value")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofLiteralUnlimitedNatural")][QString::fromLatin1("value")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofLiteralUnlimitedNatural")][QString::fromLatin1("value")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The specified UnlimitedNatural value.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofLiteralUnlimitedNatural")][QString::fromLatin1("value")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofLiteralUnlimitedNatural")][QString::fromLatin1("value")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofLiteralUnlimitedNatural")][QString::fromLatin1("value")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
-
-    QMofLiteralSpecification::setPropertyData();
-}
-
-QT_END_NAMESPACE
-
-#include "moc_qmofliteralunlimitednatural.cpp"
 

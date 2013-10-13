@@ -43,12 +43,7 @@
 
 #include <QtMof/QtMofGlobal>
 
-// Base class includes
 #include <QtMof/QMofClassifier>
-
-// Qt includes
-#include <QtCore/QList>
-#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
 
@@ -56,46 +51,36 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtMof)
 
-// Forward decls for function parameters
-class QMofProperty;
-class QMofOperation;
 class QMofNamedElement;
-
-class QMofDataTypePrivate;
+class QMofOperation;
+class QMofProperty;
 
 class Q_MOF_EXPORT QMofDataType : public QMofClassifier
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QMof")
-
-    Q_PROPERTY(QList<QMofOperation *> ownedOperations READ ownedOperations)
-    Q_PROPERTY(QList<QMofProperty *> ownedAttributes READ ownedAttributes)
-
-    Q_DISABLE_COPY(QMofDataType)
-    Q_DECLARE_PRIVATE(QMofDataType)
-
 public:
-    Q_INVOKABLE explicit QMofDataType(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QMofDataType();
+    explicit QMofDataType(bool createQModelingObject = true);
 
-    // Association ends from QMofDataType
-    Q_INVOKABLE QList<QMofOperation *> ownedOperations() const;
-    Q_INVOKABLE void addOwnedOperation(QMofOperation *ownedOperation);
-    Q_INVOKABLE void removeOwnedOperation(QMofOperation *ownedOperation);
-    Q_INVOKABLE QList<QMofProperty *> ownedAttributes() const;
-    Q_INVOKABLE void addOwnedAttribute(QMofProperty *ownedAttribute);
-    Q_INVOKABLE void removeOwnedAttribute(QMofProperty *ownedAttribute);
+    virtual QModelingElement *clone() const;
+
+    // Owned attributes
+    const QList<QMofProperty *> ownedAttributes() const;
+    void addOwnedAttribute(QMofProperty *ownedAttribute);
+    void removeOwnedAttribute(QMofProperty *ownedAttribute);
+    const QList<QMofOperation *> ownedOperations() const;
+    void addOwnedOperation(QMofOperation *ownedOperation);
+    void removeOwnedOperation(QMofOperation *ownedOperation);
 
     // Operations
-    Q_INVOKABLE QSet<QMofNamedElement *> inherit(QSet<QMofNamedElement *> inhs) const;
-
-    virtual void setPropertyData();
+    QSet<QMofNamedElement *> inherit(QSet<QMofNamedElement *> inhs) const;
 
 protected:
-    explicit QMofDataType(QMofDataTypePrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    QList<QMofProperty *> _ownedAttributes;
+    QList<QMofOperation *> _ownedOperations;
 };
 
 QT_END_NAMESPACE
+
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE(QMofDataType) *)
 
 QT_END_HEADER
 

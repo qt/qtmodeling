@@ -39,77 +39,63 @@
 **
 ****************************************************************************/
 #include "qmofreflectivesequence.h"
-#include "qmofreflectivesequence_p.h"
+
+#include "private/qmofreflectivesequenceobject_p.h"
 
 #include <QtMof/QMofObject>
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
+/*!
+    \class QMofReflectiveSequence
 
-QT_BEGIN_NAMESPACE
+    \inmodule QtMof
 
-QMofReflectiveSequencePrivate::QMofReflectiveSequencePrivate()
+    \brief
+ */
+QMofReflectiveSequence::QMofReflectiveSequence(bool createQModelingObject) :
+    QMofReflectiveCollection(false)
 {
+    if (createQModelingObject)
+        _qModelingObject = qobject_cast<QModelingObject *>(new QMofReflectiveSequenceObject(this));
 }
 
-QMofReflectiveSequencePrivate::~QMofReflectiveSequencePrivate()
+QModelingElement *QMofReflectiveSequence::clone() const
 {
+    QMofReflectiveSequence *c = new QMofReflectiveSequence;
+    return c;
 }
 
+// OPERATIONS
 
-QMofReflectiveSequence::QMofReflectiveSequence(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QMofReflectiveCollection(*new QMofReflectiveSequencePrivate, wrapper, parent)
+void QMofReflectiveSequence::add(int index, QMofObject *object)
 {
-    setPropertyData();
-}
+    qWarning("MofReflectiveSequence::add(): to be implemented (operation)");
 
-QMofReflectiveSequence::QMofReflectiveSequence(QMofReflectiveSequencePrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QMofReflectiveCollection(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QMofReflectiveSequence::~QMofReflectiveSequence()
-{
-}
-
-void QMofReflectiveSequence::add(qint32 index, const QMofObject *object)
-{
-    qWarning("QMofReflectiveSequence::add: operation to be implemented");
     Q_UNUSED(index);
     Q_UNUSED(object);
 }
 
-QMofObject *QMofReflectiveSequence::get(qint32 index) const
+QMofObject *QMofReflectiveSequence::get(int index) const
 {
-    qWarning("QMofReflectiveSequence::get: operation to be implemented");
-    Q_UNUSED(index);
+    qWarning("MofReflectiveSequence::get(): to be implemented (operation)");
 
-    return 0; // change here to your derived return
+    Q_UNUSED(index);
+    return 0;
 }
 
-QMofObject *QMofReflectiveSequence::remove(qint32 index)
+QMofObject *QMofReflectiveSequence::remove(int index)
 {
-    qWarning("QMofReflectiveSequence::remove: operation to be implemented");
-    Q_UNUSED(index);
+    qWarning("MofReflectiveSequence::remove(): to be implemented (operation)");
 
-    return 0; // change here to your derived return
+    Q_UNUSED(index);
+    return 0;
 }
 
-QMofObject *QMofReflectiveSequence::set(qint32 index, const QMofObject *object)
+QMofObject *QMofReflectiveSequence::set(int index, QMofObject *object)
 {
-    qWarning("QMofReflectiveSequence::set: operation to be implemented");
+    qWarning("MofReflectiveSequence::set(): to be implemented (operation)");
+
     Q_UNUSED(index);
     Q_UNUSED(object);
-
-    return 0; // change here to your derived return
+    return 0;
 }
-
-void QMofReflectiveSequence::setPropertyData()
-{
-    QMofReflectiveCollection::setPropertyData();
-}
-
-QT_END_NAMESPACE
-
-#include "moc_qmofreflectivesequence.cpp"
 

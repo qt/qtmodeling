@@ -43,15 +43,9 @@
 
 #include <QtMof/QtMofGlobal>
 
-// Base class includes
 #include <QtMof/QMofElement>
 
-// QtMof includes
 #include <QtMof/QtMofNamespace>
-
-// Qt includes
-#include <QtCore/QString>
-#include <QtCore/QList>
 
 QT_BEGIN_HEADER
 
@@ -59,54 +53,39 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtMof)
 
-// Forward decls for function parameters
 class QMofNamespace;
-class QMofNamedElement;
 
-class QMofNamedElementPrivate;
-
-class Q_MOF_EXPORT QMofNamedElement : public QMofElement
+class Q_MOF_EXPORT QMofNamedElement : public virtual QMofElement
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QMof")
-
-    Q_PROPERTY(QString name READ name WRITE setName)
-    Q_PROPERTY(QtMof::VisibilityKind visibility READ visibility WRITE setVisibility)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
-    Q_PROPERTY(QMofNamespace * namespace_ READ namespace_)
-
-    Q_DISABLE_COPY(QMofNamedElement)
-    Q_DECLARE_PRIVATE(QMofNamedElement)
-
 public:
-    Q_INVOKABLE explicit QMofNamedElement(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QMofNamedElement();
+    Q_DECL_HIDDEN virtual QModelingElement *clone() const;
 
-    // Attributes from QMofNamedElement
-    Q_INVOKABLE QString name() const;
-    Q_INVOKABLE void setName(QString name);
-    Q_INVOKABLE QtMof::VisibilityKind visibility() const;
-    Q_INVOKABLE void setVisibility(QtMof::VisibilityKind visibility);
-    Q_INVOKABLE QString qualifiedName() const;
-
-    // Association ends from QMofNamedElement
-    Q_INVOKABLE QMofNamespace *namespace_() const;
+    // Owned attributes
+    QString name() const;
+    void setName(QString name);
+    QMofNamespace *namespace_() const;
+    Q_DECL_HIDDEN void setNamespace(QMofNamespace *namespace_);
+    QString qualifiedName() const;
+    Q_DECL_HIDDEN void setQualifiedName(QString qualifiedName);
+    QtMof::VisibilityKind visibility() const;
+    void setVisibility(QtMof::VisibilityKind visibility);
 
     // Operations
-    Q_INVOKABLE QList<QMofNamespace *> allNamespaces() const;
-    Q_INVOKABLE bool isDistinguishableFrom(const QMofNamedElement *n, const QMofNamespace *ns) const;
-    Q_INVOKABLE QString separator() const;
-
-    virtual void setPropertyData();
-
-    // Classes which access read-only opposite properties should be friend
-    friend class QMofNamespacePrivate;
+    QList<QMofNamespace *> allNamespaces() const;
+    bool isDistinguishableFrom(QMofNamedElement *n, QMofNamespace *ns) const;
+    QString separator() const;
 
 protected:
-    explicit QMofNamedElement(QMofNamedElementPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    explicit QMofNamedElement();
+
+    QString _name;
+    QMofNamespace *_namespace_;
+    QtMof::VisibilityKind _visibility;
 };
 
 QT_END_NAMESPACE
+
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE(QMofNamedElement) *)
 
 QT_END_HEADER
 

@@ -43,7 +43,6 @@
 
 #include <QtMof/QtMofGlobal>
 
-// Base class includes
 #include <QtMof/QMofDirectedRelationship>
 
 QT_BEGIN_HEADER
@@ -52,45 +51,32 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtMof)
 
-// Forward decls for function parameters
 class QMofClassifier;
-
-class QMofGeneralizationPrivate;
 
 class Q_MOF_EXPORT QMofGeneralization : public QMofDirectedRelationship
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QMof")
-
-    Q_PROPERTY(bool isSubstitutable READ isSubstitutable WRITE setSubstitutable RESET unsetSubstitutable)
-    Q_PROPERTY(QMofClassifier * specific READ specific WRITE setSpecific)
-    Q_PROPERTY(QMofClassifier * general READ general WRITE setGeneral)
-
-    Q_DISABLE_COPY(QMofGeneralization)
-    Q_DECLARE_PRIVATE(QMofGeneralization)
-
 public:
-    Q_INVOKABLE explicit QMofGeneralization(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QMofGeneralization();
+    explicit QMofGeneralization(bool createQModelingObject = true);
 
-    // Attributes from QMofGeneralization
-    Q_INVOKABLE bool isSubstitutable() const;
-    Q_INVOKABLE void setSubstitutable(bool isSubstitutable);
-    Q_INVOKABLE void unsetSubstitutable();
+    virtual QModelingElement *clone() const;
 
-    // Association ends from QMofGeneralization
-    Q_INVOKABLE QMofClassifier *specific() const;
-    Q_INVOKABLE void setSpecific(QMofClassifier *specific);
-    Q_INVOKABLE QMofClassifier *general() const;
-    Q_INVOKABLE void setGeneral(QMofClassifier *general);
-
-    virtual void setPropertyData();
+    // Owned attributes
+    QMofClassifier *general() const;
+    void setGeneral(QMofClassifier *general);
+    bool isSubstitutable() const;
+    void setSubstitutable(bool isSubstitutable);
+    QMofClassifier *specific() const;
+    void setSpecific(QMofClassifier *specific);
 
 protected:
-    explicit QMofGeneralization(QMofGeneralizationPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    QMofClassifier *_general;
+    bool _isSubstitutable;
+    QMofClassifier *_specific;
 };
 
 QT_END_NAMESPACE
+
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE(QMofGeneralization) *)
 
 QT_END_HEADER
 

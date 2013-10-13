@@ -43,7 +43,6 @@
 
 #include <QtMof/QtMofGlobal>
 
-// Base class includes
 #include <QtMof/QMofNamedElement>
 
 QT_BEGIN_HEADER
@@ -52,36 +51,26 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtMof)
 
-// Forward decls for function parameters
 class QMofType;
 
-class QMofTypedElementPrivate;
-
-class Q_MOF_EXPORT QMofTypedElement : public QMofNamedElement
+class Q_MOF_EXPORT QMofTypedElement : public virtual QMofNamedElement
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QMof")
-
-    Q_PROPERTY(QMofType * type READ type WRITE setType)
-
-    Q_DISABLE_COPY(QMofTypedElement)
-    Q_DECLARE_PRIVATE(QMofTypedElement)
-
 public:
-    Q_INVOKABLE explicit QMofTypedElement(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QMofTypedElement();
+    Q_DECL_HIDDEN virtual QModelingElement *clone() const;
 
-    // Association ends from QMofTypedElement
-    Q_INVOKABLE QMofType *type() const;
-    Q_INVOKABLE void setType(QMofType *type);
-
-    virtual void setPropertyData();
+    // Owned attributes
+    QMofType *type() const;
+    void setType(QMofType *type);
 
 protected:
-    explicit QMofTypedElement(QMofTypedElementPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    explicit QMofTypedElement();
+
+    QMofType *_type;
 };
 
 QT_END_NAMESPACE
+
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE(QMofTypedElement) *)
 
 QT_END_HEADER
 

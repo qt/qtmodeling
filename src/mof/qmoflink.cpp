@@ -39,141 +39,113 @@
 **
 ****************************************************************************/
 #include "qmoflink.h"
-#include "qmoflink_p.h"
 
-#include <QtMof/QMofElement>
+#include "private/qmoflinkobject_p.h"
+
 #include <QtMof/QMofAssociation>
+#include <QtMof/QMofElement>
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
+/*!
+    \class QMofLink
 
-QT_BEGIN_NAMESPACE
+    \inmodule QtMof
 
-QMofLinkPrivate::QMofLinkPrivate() :
-    association(0),
-    secondElement(0),
-    firstElement(0)
+    \brief
+ */
+QMofLink::QMofLink(bool createQModelingObject) :
+    QMofObject(false),
+    _firstElement(0),
+    _secondElement(0),
+    _association(0)
 {
+    if (createQModelingObject)
+        _qModelingObject = qobject_cast<QModelingObject *>(new QMofLinkObject(this));
 }
 
-QMofLinkPrivate::~QMofLinkPrivate()
+QModelingElement *QMofLink::clone() const
 {
+    QMofLink *c = new QMofLink;
+    if (firstElement())
+        c->setFirstElement(dynamic_cast<QMofElement *>(firstElement()->clone()));
+    if (secondElement())
+        c->setSecondElement(dynamic_cast<QMofElement *>(secondElement()->clone()));
+    if (association())
+        c->setAssociation(dynamic_cast<QMofAssociation *>(association()->clone()));
+    return c;
 }
 
+// OWNED ATTRIBUTES
 
-QMofLink::QMofLink(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QMofObject(*new QMofLinkPrivate, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QMofLink::QMofLink(QMofLinkPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QMofObject(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QMofLink::~QMofLink()
-{
-}
-
-// ---------------------------------------------------------------
-// ATTRIBUTES FROM QMofLink
-// ---------------------------------------------------------------
-
-QMofAssociation *QMofLink::association() const
-{
-    // This is a read-write attribute
-
-    Q_D(const QMofLink);
-    return d->association;
-}
-
-void QMofLink::setAssociation(QMofAssociation *association)
-{
-    // This is a read-write attribute
-
-    Q_D(QMofLink);
-    if (d->association != association) {
-        d->association = association;
-    }
-}
-
-QMofElement *QMofLink::secondElement() const
-{
-    // This is a read-write attribute
-
-    Q_D(const QMofLink);
-    return d->secondElement;
-}
-
-void QMofLink::setSecondElement(QMofElement *secondElement)
-{
-    // This is a read-write attribute
-
-    Q_D(QMofLink);
-    if (d->secondElement != secondElement) {
-        d->secondElement = secondElement;
-    }
-}
 
 QMofElement *QMofLink::firstElement() const
 {
-    // This is a read-write attribute
+    // This is a read-write property
 
-    Q_D(const QMofLink);
-    return d->firstElement;
+    return _firstElement;
 }
 
 void QMofLink::setFirstElement(QMofElement *firstElement)
 {
-    // This is a read-write attribute
+    // This is a read-write property
 
-    Q_D(QMofLink);
-    if (d->firstElement != firstElement) {
-        d->firstElement = firstElement;
+    if (_firstElement != firstElement) {
+        _firstElement = firstElement;
+        if (firstElement && firstElement->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(firstElement->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setFirstElement()));
     }
 }
 
-bool QMofLink::equals(const QMofLink *otherLink) const
-{
-    qWarning("QMofLink::equals: operation to be implemented");
-    Q_UNUSED(otherLink);
 
-    return bool(); // change here to your derived return
+QMofElement *QMofLink::secondElement() const
+{
+    // This is a read-write property
+
+    return _secondElement;
+}
+
+void QMofLink::setSecondElement(QMofElement *secondElement)
+{
+    // This is a read-write property
+
+    if (_secondElement != secondElement) {
+        _secondElement = secondElement;
+        if (secondElement && secondElement->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(secondElement->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setSecondElement()));
+    }
+}
+
+
+QMofAssociation *QMofLink::association() const
+{
+    // This is a read-write property
+
+    return _association;
+}
+
+void QMofLink::setAssociation(QMofAssociation *association)
+{
+    // This is a read-write property
+
+    if (_association != association) {
+        _association = association;
+        if (association && association->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(association->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setAssociation()));
+    }
+}
+
+// OPERATIONS
+
+bool QMofLink::equals(QMofLink *otherLink) const
+{
+    qWarning("MofLink::equals(): to be implemented (operation)");
+
+    Q_UNUSED(otherLink);
+    return bool ();
 }
 
 void QMofLink::delete_()
 {
-    qWarning("QMofLink::delete_: operation to be implemented");
+    qWarning("MofLink::delete(): to be implemented (operation)");
+
 }
-
-void QMofLink::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofLink")][QString::fromLatin1("association")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofLink")][QString::fromLatin1("association")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofLink")][QString::fromLatin1("association")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofLink")][QString::fromLatin1("association")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofLink")][QString::fromLatin1("association")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofLink")][QString::fromLatin1("association")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofLink")][QString::fromLatin1("secondElement")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofLink")][QString::fromLatin1("secondElement")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofLink")][QString::fromLatin1("secondElement")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofLink")][QString::fromLatin1("secondElement")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofLink")][QString::fromLatin1("secondElement")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofLink")][QString::fromLatin1("secondElement")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofLink")][QString::fromLatin1("firstElement")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofLink")][QString::fromLatin1("firstElement")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofLink")][QString::fromLatin1("firstElement")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofLink")][QString::fromLatin1("firstElement")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofLink")][QString::fromLatin1("firstElement")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofLink")][QString::fromLatin1("firstElement")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
-
-    QMofObject::setPropertyData();
-}
-
-QT_END_NAMESPACE
-
-#include "moc_qmoflink.cpp"
 

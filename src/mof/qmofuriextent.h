@@ -43,11 +43,7 @@
 
 #include <QtMof/QtMofGlobal>
 
-// Base class includes
 #include <QtMof/QMofExtent>
-
-// Qt includes
-#include <QtCore/QString>
 
 QT_BEGIN_HEADER
 
@@ -55,35 +51,27 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtMof)
 
-// Forward decls for function parameters
 class QMofElement;
-
-class QMofURIExtentPrivate;
 
 class Q_MOF_EXPORT QMofURIExtent : public QMofExtent
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QMof")
-
-    Q_DISABLE_COPY(QMofURIExtent)
-    Q_DECLARE_PRIVATE(QMofURIExtent)
-
 public:
-    Q_INVOKABLE explicit QMofURIExtent(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QMofURIExtent();
+    explicit QMofURIExtent(bool createQModelingObject = true);
+
+    virtual QModelingElement *clone() const;
+
 
     // Operations
-    Q_INVOKABLE QString contextURI() const;
-    Q_INVOKABLE QString uri(const QMofElement *object) const;
-    Q_INVOKABLE QMofElement *element(QString uri) const;
-
-    virtual void setPropertyData();
+    QString contextURI() const;
+    QString uri(QMofElement *object) const;
+    QMofElement *element(QString uri) const;
 
 protected:
-    explicit QMofURIExtent(QMofURIExtentPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
 QT_END_NAMESPACE
+
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE(QMofURIExtent) *)
 
 QT_END_HEADER
 

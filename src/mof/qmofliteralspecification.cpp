@@ -39,19 +39,13 @@
 **
 ****************************************************************************/
 #include "qmofliteralspecification.h"
-#include "qmofliteralspecification_p.h"
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
-QT_BEGIN_NAMESPACE
-
-QMofLiteralSpecificationPrivate::QMofLiteralSpecificationPrivate()
-{
-}
-
-QMofLiteralSpecificationPrivate::~QMofLiteralSpecificationPrivate()
-{
-}
+#include <QtMof/QMofClass>
+#include <QtMof/QMofComment>
+#include <QtMof/QMofElement>
+#include <QtMof/QMofNamedElement>
+#include <QtMof/QMofNamespace>
+#include <QtMof/QMofType>
 
 /*!
     \class QMofLiteralSpecification
@@ -60,29 +54,19 @@ QMofLiteralSpecificationPrivate::~QMofLiteralSpecificationPrivate()
 
     \brief A literal specification identifies a literal constant being modeled.
  */
-
-QMofLiteralSpecification::QMofLiteralSpecification(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QMofValueSpecification(*new QMofLiteralSpecificationPrivate, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QMofLiteralSpecification::QMofLiteralSpecification(QMofLiteralSpecificationPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QMofValueSpecification(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QMofLiteralSpecification::~QMofLiteralSpecification()
+QMofLiteralSpecification::QMofLiteralSpecification()
 {
 }
 
-void QMofLiteralSpecification::setPropertyData()
+QModelingElement *QMofLiteralSpecification::clone() const
 {
-    QMofValueSpecification::setPropertyData();
+    QMofLiteralSpecification *c = new QMofLiteralSpecification;
+    foreach (QMofComment *element, ownedComments())
+        c->addOwnedComment(dynamic_cast<QMofComment *>(element->clone()));
+    c->setName(name());
+    c->setVisibility(visibility());
+    if (type())
+        c->setType(dynamic_cast<QMofType *>(type()->clone()));
+    return c;
 }
-
-QT_END_NAMESPACE
-
-#include "moc_qmofliteralspecification.cpp"
 

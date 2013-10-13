@@ -43,12 +43,7 @@
 
 #include <QtMof/QtMofGlobal>
 
-// Base class includes
 #include <QtMof/QMofBehavioralFeature>
-
-// Qt includes
-#include <QtCore/QList>
-#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
 
@@ -56,88 +51,74 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtMof)
 
-// Forward decls for function parameters
-class QMofOperation;
-class QMofType;
-class QMofRedefinableElement;
-class QMofParameter;
 class QMofClass;
 class QMofConstraint;
 class QMofDataType;
-
-class QMofOperationPrivate;
+class QMofParameter;
+class QMofRedefinableElement;
+class QMofType;
 
 class Q_MOF_EXPORT QMofOperation : public QMofBehavioralFeature
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QMof")
-
-    Q_PROPERTY(qint32 lower READ lower STORED false)
-    Q_PROPERTY(bool isQuery READ isQuery WRITE setQuery RESET unsetQuery)
-    Q_PROPERTY(bool isUnique READ isUnique STORED false)
-    Q_PROPERTY(qint32 upper READ upper STORED false)
-    Q_PROPERTY(bool isOrdered READ isOrdered STORED false)
-    Q_PROPERTY(QList<QMofParameter *> ownedParameters READ ownedParameters)
-    Q_PROPERTY(QMofConstraint * bodyCondition READ bodyCondition WRITE setBodyCondition)
-    Q_PROPERTY(QSet<QMofOperation *> redefinedOperations READ redefinedOperations)
-    Q_PROPERTY(QSet<QMofConstraint *> postconditions READ postconditions)
-    Q_PROPERTY(QMofDataType * datatype READ datatype WRITE setDatatype)
-    Q_PROPERTY(QMofType * type READ type STORED false)
-    Q_PROPERTY(QSet<QMofConstraint *> preconditions READ preconditions)
-    Q_PROPERTY(QMofClass * class_ READ class_ WRITE setClass_)
-    Q_PROPERTY(QSet<QMofType *> raisedExceptions READ raisedExceptions)
-
-    Q_DISABLE_COPY(QMofOperation)
-    Q_DECLARE_PRIVATE(QMofOperation)
-
 public:
-    Q_INVOKABLE explicit QMofOperation(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QMofOperation();
+    explicit QMofOperation(bool createQModelingObject = true);
 
-    // Attributes from QMofOperation
-    Q_INVOKABLE qint32 lower() const;
-    Q_INVOKABLE bool isQuery() const;
-    Q_INVOKABLE void setQuery(bool isQuery);
-    Q_INVOKABLE void unsetQuery();
-    Q_INVOKABLE bool isUnique() const;
-    Q_INVOKABLE qint32 upper() const;
-    Q_INVOKABLE bool isOrdered() const;
+    virtual QModelingElement *clone() const;
 
-    // Association ends from QMofOperation
-    Q_INVOKABLE QList<QMofParameter *> ownedParameters() const;
-    Q_INVOKABLE void addOwnedParameter(QMofParameter *ownedParameter);
-    Q_INVOKABLE void removeOwnedParameter(QMofParameter *ownedParameter);
-    Q_INVOKABLE QMofConstraint *bodyCondition() const;
-    Q_INVOKABLE void setBodyCondition(QMofConstraint *bodyCondition);
-    Q_INVOKABLE QSet<QMofOperation *> redefinedOperations() const;
-    Q_INVOKABLE void addRedefinedOperation(QMofOperation *redefinedOperation);
-    Q_INVOKABLE void removeRedefinedOperation(QMofOperation *redefinedOperation);
-    Q_INVOKABLE QSet<QMofConstraint *> postconditions() const;
-    Q_INVOKABLE void addPostcondition(QMofConstraint *postcondition);
-    Q_INVOKABLE void removePostcondition(QMofConstraint *postcondition);
-    Q_INVOKABLE QMofDataType *datatype() const;
-    Q_INVOKABLE void setDatatype(QMofDataType *datatype);
-    Q_INVOKABLE QMofType *type() const;
-    Q_INVOKABLE QSet<QMofConstraint *> preconditions() const;
-    Q_INVOKABLE void addPrecondition(QMofConstraint *precondition);
-    Q_INVOKABLE void removePrecondition(QMofConstraint *precondition);
-    Q_INVOKABLE QMofClass *class_() const;
-    Q_INVOKABLE void setClass_(QMofClass *class_);
-    Q_INVOKABLE QSet<QMofType *> raisedExceptions() const;
-    Q_INVOKABLE void addRaisedException(QMofType *raisedException);
-    Q_INVOKABLE void removeRaisedException(QMofType *raisedException);
+    // Owned attributes
+    QMofConstraint *bodyCondition() const;
+    void setBodyCondition(QMofConstraint *bodyCondition);
+    QMofClass *class_() const;
+    void setClass(QMofClass *class_);
+    QMofDataType *datatype() const;
+    void setDatatype(QMofDataType *datatype);
+    bool isOrdered() const;
+    Q_DECL_HIDDEN void setOrdered(bool isOrdered);
+    bool isQuery() const;
+    void setQuery(bool isQuery);
+    bool isUnique() const;
+    Q_DECL_HIDDEN void setUnique(bool isUnique);
+    int lower() const;
+    Q_DECL_HIDDEN void setLower(int lower);
+    const QList<QMofParameter *> ownedParameters() const;
+    void addOwnedParameter(QMofParameter *ownedParameter);
+    void removeOwnedParameter(QMofParameter *ownedParameter);
+    const QSet<QMofConstraint *> postconditions() const;
+    void addPostcondition(QMofConstraint *postcondition);
+    void removePostcondition(QMofConstraint *postcondition);
+    const QSet<QMofConstraint *> preconditions() const;
+    void addPrecondition(QMofConstraint *precondition);
+    void removePrecondition(QMofConstraint *precondition);
+    const QSet<QMofType *> raisedExceptions() const;
+    void addRaisedException(QMofType *raisedException);
+    void removeRaisedException(QMofType *raisedException);
+    const QSet<QMofOperation *> redefinedOperations() const;
+    void addRedefinedOperation(QMofOperation *redefinedOperation);
+    void removeRedefinedOperation(QMofOperation *redefinedOperation);
+    QMofType *type() const;
+    Q_DECL_HIDDEN void setType(QMofType *type);
+    int upper() const;
+    Q_DECL_HIDDEN void setUpper(int upper);
 
     // Operations
-    Q_INVOKABLE bool isConsistentWith(const QMofRedefinableElement *redefinee) const;
-    Q_INVOKABLE QSet<QMofParameter *> returnResult() const;
-
-    virtual void setPropertyData();
+    bool isConsistentWith(QMofRedefinableElement *redefinee) const;
+    QSet<QMofParameter *> returnResult() const;
 
 protected:
-    explicit QMofOperation(QMofOperationPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    QMofConstraint *_bodyCondition;
+    QMofClass *_class_;
+    QMofDataType *_datatype;
+    bool _isQuery;
+    QList<QMofParameter *> _ownedParameters;
+    QSet<QMofConstraint *> _postconditions;
+    QSet<QMofConstraint *> _preconditions;
+    QSet<QMofType *> _raisedExceptions;
+    QSet<QMofOperation *> _redefinedOperations;
 };
 
 QT_END_NAMESPACE
+
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE(QMofOperation) *)
 
 QT_END_HEADER
 

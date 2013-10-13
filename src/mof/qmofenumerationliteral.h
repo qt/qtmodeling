@@ -43,7 +43,6 @@
 
 #include <QtMof/QtMofGlobal>
 
-// Base class includes
 #include <QtMof/QMofInstanceSpecification>
 
 QT_BEGIN_HEADER
@@ -52,38 +51,28 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtMof)
 
-// Forward decls for function parameters
 class QMofEnumeration;
-
-class QMofEnumerationLiteralPrivate;
 
 class Q_MOF_EXPORT QMofEnumerationLiteral : public QMofInstanceSpecification
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QMof")
-
-    Q_PROPERTY(QMofEnumeration * classifier READ classifier STORED false)
-    Q_PROPERTY(QMofEnumeration * enumeration READ enumeration WRITE setEnumeration)
-
-    Q_DISABLE_COPY(QMofEnumerationLiteral)
-    Q_DECLARE_PRIVATE(QMofEnumerationLiteral)
-
 public:
-    Q_INVOKABLE explicit QMofEnumerationLiteral(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QMofEnumerationLiteral();
+    explicit QMofEnumerationLiteral(bool createQModelingObject = true);
 
-    // Association ends from QMofEnumerationLiteral
-    Q_INVOKABLE QMofEnumeration *classifier() const;
-    Q_INVOKABLE QMofEnumeration *enumeration() const;
-    Q_INVOKABLE void setEnumeration(QMofEnumeration *enumeration);
+    virtual QModelingElement *clone() const;
 
-    virtual void setPropertyData();
+    // Owned attributes
+    QMofEnumeration *classifier() const;
+    Q_DECL_HIDDEN void setClassifier(QMofEnumeration *classifier);
+    QMofEnumeration *enumeration() const;
+    void setEnumeration(QMofEnumeration *enumeration);
 
 protected:
-    explicit QMofEnumerationLiteral(QMofEnumerationLiteralPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    QMofEnumeration *_enumeration;
 };
 
 QT_END_NAMESPACE
+
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE(QMofEnumerationLiteral) *)
 
 QT_END_HEADER
 

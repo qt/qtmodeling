@@ -39,19 +39,15 @@
 **
 ****************************************************************************/
 #include "qmofliteralstring.h"
-#include "qmofliteralstring_p.h"
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
+#include "private/qmofliteralstringobject_p.h"
 
-QT_BEGIN_NAMESPACE
-
-QMofLiteralStringPrivate::QMofLiteralStringPrivate()
-{
-}
-
-QMofLiteralStringPrivate::~QMofLiteralStringPrivate()
-{
-}
+#include <QtMof/QMofClass>
+#include <QtMof/QMofComment>
+#include <QtMof/QMofElement>
+#include <QtMof/QMofNamedElement>
+#include <QtMof/QMofNamespace>
+#include <QtMof/QMofType>
 
 /*!
     \class QMofLiteralString
@@ -60,56 +56,56 @@ QMofLiteralStringPrivate::~QMofLiteralStringPrivate()
 
     \brief A literal string is a specification of a string value.
  */
-
-QMofLiteralString::QMofLiteralString(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QMofLiteralSpecification(*new QMofLiteralStringPrivate, wrapper, parent)
+QMofLiteralString::QMofLiteralString(bool createQModelingObject)
 {
-    setPropertyData();
+    if (createQModelingObject)
+        _qModelingObject = qobject_cast<QModelingObject *>(new QMofLiteralStringObject(this));
 }
 
-QMofLiteralString::QMofLiteralString(QMofLiteralStringPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QMofLiteralSpecification(dd, wrapper, parent)
+QModelingElement *QMofLiteralString::clone() const
 {
-    setPropertyData();
+    QMofLiteralString *c = new QMofLiteralString;
+    foreach (QMofComment *element, ownedComments())
+        c->addOwnedComment(dynamic_cast<QMofComment *>(element->clone()));
+    c->setName(name());
+    c->setVisibility(visibility());
+    if (type())
+        c->setType(dynamic_cast<QMofType *>(type()->clone()));
+    c->setValue(value());
+    return c;
 }
 
-QMofLiteralString::~QMofLiteralString()
-{
-}
-
-// ---------------------------------------------------------------
-// ATTRIBUTES FROM QMofLiteralString
-// ---------------------------------------------------------------
+// OWNED ATTRIBUTES
 
 /*!
     The specified String value.
  */
 QString QMofLiteralString::value() const
 {
-    // This is a read-write attribute
+    // This is a read-write property
 
-    Q_D(const QMofLiteralString);
-    return d->value;
+    return _value;
 }
 
 void QMofLiteralString::setValue(QString value)
 {
-    // This is a read-write attribute
+    // This is a read-write property
 
-    Q_D(QMofLiteralString);
-    if (d->value != value) {
-        d->value = value;
+    if (_value != value) {
+        _value = value;
     }
 }
+
+// OPERATIONS
 
 /*!
     The query isComputable() is redefined to be true.
  */
 bool QMofLiteralString::isComputable() const
 {
-    qWarning("QMofLiteralString::isComputable: operation to be implemented");
+    qWarning("MofLiteralString::isComputable(): to be implemented (operation)");
 
-    return bool(); // change here to your derived return
+    return bool ();
 }
 
 /*!
@@ -117,24 +113,8 @@ bool QMofLiteralString::isComputable() const
  */
 QString QMofLiteralString::stringValue() const
 {
-    qWarning("QMofLiteralString::stringValue: operation to be implemented");
+    qWarning("MofLiteralString::stringValue(): to be implemented (operation)");
 
-    return QString(); // change here to your derived return
+    return QString ();
 }
-
-void QMofLiteralString::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofLiteralString")][QString::fromLatin1("value")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofLiteralString")][QString::fromLatin1("value")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofLiteralString")][QString::fromLatin1("value")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The specified String value.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofLiteralString")][QString::fromLatin1("value")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofLiteralString")][QString::fromLatin1("value")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofLiteralString")][QString::fromLatin1("value")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
-
-    QMofLiteralSpecification::setPropertyData();
-}
-
-QT_END_NAMESPACE
-
-#include "moc_qmofliteralstring.cpp"
 

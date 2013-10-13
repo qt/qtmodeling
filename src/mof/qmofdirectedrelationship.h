@@ -43,11 +43,7 @@
 
 #include <QtMof/QtMofGlobal>
 
-// Base class includes
 #include <QtMof/QMofRelationship>
-
-// Qt includes
-#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
 
@@ -55,37 +51,31 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtMof)
 
-// Forward decls for function parameters
 class QMofElement;
-
-class QMofDirectedRelationshipPrivate;
 
 class Q_MOF_EXPORT QMofDirectedRelationship : public QMofRelationship
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QMof")
-
-    Q_PROPERTY(QSet<QMofElement *> sources READ sources)
-    Q_PROPERTY(QSet<QMofElement *> targets READ targets)
-
-    Q_DISABLE_COPY(QMofDirectedRelationship)
-    Q_DECLARE_PRIVATE(QMofDirectedRelationship)
-
 public:
-    Q_INVOKABLE explicit QMofDirectedRelationship(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QMofDirectedRelationship();
+    Q_DECL_HIDDEN virtual QModelingElement *clone() const;
 
-    // Association ends from QMofDirectedRelationship
-    Q_INVOKABLE QSet<QMofElement *> sources() const;
-    Q_INVOKABLE QSet<QMofElement *> targets() const;
-
-    virtual void setPropertyData();
+    // Owned attributes
+    const QSet<QMofElement *> sources() const;
+    Q_DECL_HIDDEN void addSource(QMofElement *source);
+    Q_DECL_HIDDEN void removeSource(QMofElement *source);
+    const QSet<QMofElement *> targets() const;
+    Q_DECL_HIDDEN void addTarget(QMofElement *target);
+    Q_DECL_HIDDEN void removeTarget(QMofElement *target);
 
 protected:
-    explicit QMofDirectedRelationship(QMofDirectedRelationshipPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    explicit QMofDirectedRelationship();
+
+    QSet<QMofElement *> _sources;
+    QSet<QMofElement *> _targets;
 };
 
 QT_END_NAMESPACE
+
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE(QMofDirectedRelationship) *)
 
 QT_END_HEADER
 

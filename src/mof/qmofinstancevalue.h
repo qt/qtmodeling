@@ -43,7 +43,6 @@
 
 #include <QtMof/QtMofGlobal>
 
-// Base class includes
 #include <QtMof/QMofValueSpecification>
 
 QT_BEGIN_HEADER
@@ -52,36 +51,26 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtMof)
 
-// Forward decls for function parameters
 class QMofInstanceSpecification;
-
-class QMofInstanceValuePrivate;
 
 class Q_MOF_EXPORT QMofInstanceValue : public QMofValueSpecification
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QMof")
-
-    Q_PROPERTY(QMofInstanceSpecification * instance READ instance WRITE setInstance)
-
-    Q_DISABLE_COPY(QMofInstanceValue)
-    Q_DECLARE_PRIVATE(QMofInstanceValue)
-
 public:
-    Q_INVOKABLE explicit QMofInstanceValue(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QMofInstanceValue();
+    explicit QMofInstanceValue(bool createQModelingObject = true);
 
-    // Association ends from QMofInstanceValue
-    Q_INVOKABLE QMofInstanceSpecification *instance() const;
-    Q_INVOKABLE void setInstance(QMofInstanceSpecification *instance);
+    virtual QModelingElement *clone() const;
 
-    virtual void setPropertyData();
+    // Owned attributes
+    QMofInstanceSpecification *instance() const;
+    void setInstance(QMofInstanceSpecification *instance);
 
 protected:
-    explicit QMofInstanceValue(QMofInstanceValuePrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    QMofInstanceSpecification *_instance;
 };
 
 QT_END_NAMESPACE
+
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE(QMofInstanceValue) *)
 
 QT_END_HEADER
 

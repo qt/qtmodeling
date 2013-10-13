@@ -41,7 +41,7 @@
 #ifndef QMOFMETAMODELPLUGIN_H
 #define QMOFMETAMODELPLUGIN_H
 
-#include <QtWrappedObjects/QMetaModelPlugin>
+#include <QtModeling/QMetaModelPlugin>
 
 class QMofMetaModelPlugin : public QMetaModelPlugin
 {
@@ -51,7 +51,7 @@ class QMofMetaModelPlugin : public QMetaModelPlugin
 public:
     QMofMetaModelPlugin(QObject *parent = 0);
 
-    void initMetaModel(QScriptEngine *scriptEngine = 0);
+    virtual QModelingElement *createModelingElement(QString type);
 };
 
 #endif // QMOFMETAMODELPLUGIN_H

@@ -39,22 +39,12 @@
 **
 ****************************************************************************/
 #include "qmoftypedelement.h"
-#include "qmoftypedelement_p.h"
 
+#include <QtMof/QMofClass>
+#include <QtMof/QMofComment>
+#include <QtMof/QMofElement>
+#include <QtMof/QMofNamespace>
 #include <QtMof/QMofType>
-
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
-QT_BEGIN_NAMESPACE
-
-QMofTypedElementPrivate::QMofTypedElementPrivate() :
-    type(0)
-{
-}
-
-QMofTypedElementPrivate::~QMofTypedElementPrivate()
-{
-}
 
 /*!
     \class QMofTypedElement
@@ -63,26 +53,24 @@ QMofTypedElementPrivate::~QMofTypedElementPrivate()
 
     \brief A typed element has a type.
  */
-
-QMofTypedElement::QMofTypedElement(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QMofNamedElement(*new QMofTypedElementPrivate, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QMofTypedElement::QMofTypedElement(QMofTypedElementPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QMofNamedElement(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QMofTypedElement::~QMofTypedElement()
+QMofTypedElement::QMofTypedElement() :
+    _type(0)
 {
 }
 
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QMofTypedElement
-// ---------------------------------------------------------------
+QModelingElement *QMofTypedElement::clone() const
+{
+    QMofTypedElement *c = new QMofTypedElement;
+    foreach (QMofComment *element, ownedComments())
+        c->addOwnedComment(dynamic_cast<QMofComment *>(element->clone()));
+    c->setName(name());
+    c->setVisibility(visibility());
+    if (type())
+        c->setType(dynamic_cast<QMofType *>(type()->clone()));
+    return c;
+}
+
+// OWNED ATTRIBUTES
 
 /*!
     The type of the TypedElement.
@@ -91,33 +79,17 @@ QMofType *QMofTypedElement::type() const
 {
     // This is a read-write association end
 
-    Q_D(const QMofTypedElement);
-    return d->type;
+    return _type;
 }
 
 void QMofTypedElement::setType(QMofType *type)
 {
     // This is a read-write association end
 
-    Q_D(QMofTypedElement);
-    if (d->type != type) {
-        d->type = type;
+    if (_type != type) {
+        _type = type;
+        if (type && type->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(type->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setType()));
     }
 }
-
-void QMofTypedElement::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofTypedElement")][QString::fromLatin1("type")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofTypedElement")][QString::fromLatin1("type")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofTypedElement")][QString::fromLatin1("type")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The type of the TypedElement.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofTypedElement")][QString::fromLatin1("type")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofTypedElement")][QString::fromLatin1("type")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofTypedElement")][QString::fromLatin1("type")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QMof");
-
-    QMofNamedElement::setPropertyData();
-}
-
-QT_END_NAMESPACE
-
-#include "moc_qmoftypedelement.cpp"
 

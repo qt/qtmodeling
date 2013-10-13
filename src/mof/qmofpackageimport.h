@@ -43,10 +43,8 @@
 
 #include <QtMof/QtMofGlobal>
 
-// Base class includes
 #include <QtMof/QMofDirectedRelationship>
 
-// QtMof includes
 #include <QtMof/QtMofNamespace>
 
 QT_BEGIN_HEADER
@@ -55,46 +53,33 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtMof)
 
-// Forward decls for function parameters
-class QMofPackage;
 class QMofNamespace;
-
-class QMofPackageImportPrivate;
+class QMofPackage;
 
 class Q_MOF_EXPORT QMofPackageImport : public QMofDirectedRelationship
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QMof")
-
-    Q_PROPERTY(QtMof::VisibilityKind visibility READ visibility WRITE setVisibility RESET unsetVisibility)
-    Q_PROPERTY(QMofNamespace * importingNamespace READ importingNamespace WRITE setImportingNamespace)
-    Q_PROPERTY(QMofPackage * importedPackage READ importedPackage WRITE setImportedPackage)
-
-    Q_DISABLE_COPY(QMofPackageImport)
-    Q_DECLARE_PRIVATE(QMofPackageImport)
-
 public:
-    Q_INVOKABLE explicit QMofPackageImport(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QMofPackageImport();
+    explicit QMofPackageImport(bool createQModelingObject = true);
 
-    // Attributes from QMofPackageImport
-    Q_INVOKABLE QtMof::VisibilityKind visibility() const;
-    Q_INVOKABLE void setVisibility(QtMof::VisibilityKind visibility);
-    Q_INVOKABLE void unsetVisibility();
+    virtual QModelingElement *clone() const;
 
-    // Association ends from QMofPackageImport
-    Q_INVOKABLE QMofNamespace *importingNamespace() const;
-    Q_INVOKABLE void setImportingNamespace(QMofNamespace *importingNamespace);
-    Q_INVOKABLE QMofPackage *importedPackage() const;
-    Q_INVOKABLE void setImportedPackage(QMofPackage *importedPackage);
-
-    virtual void setPropertyData();
+    // Owned attributes
+    QMofPackage *importedPackage() const;
+    void setImportedPackage(QMofPackage *importedPackage);
+    QMofNamespace *importingNamespace() const;
+    void setImportingNamespace(QMofNamespace *importingNamespace);
+    QtMof::VisibilityKind visibility() const;
+    void setVisibility(QtMof::VisibilityKind visibility);
 
 protected:
-    explicit QMofPackageImport(QMofPackageImportPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    QMofPackage *_importedPackage;
+    QMofNamespace *_importingNamespace;
+    QtMof::VisibilityKind _visibility;
 };
 
 QT_END_NAMESPACE
+
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE(QMofPackageImport) *)
 
 QT_END_HEADER
 

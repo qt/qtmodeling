@@ -43,7 +43,6 @@
 
 #include <QtMof/QtMofGlobal>
 
-// Base class includes
 #include <QtMof/QMofValueSpecification>
 
 QT_BEGIN_HEADER
@@ -52,27 +51,20 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtMof)
 
-class QMofLiteralSpecificationPrivate;
-
 class Q_MOF_EXPORT QMofLiteralSpecification : public QMofValueSpecification
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QMof")
-
-    Q_DISABLE_COPY(QMofLiteralSpecification)
-    Q_DECLARE_PRIVATE(QMofLiteralSpecification)
-
 public:
-    Q_INVOKABLE explicit QMofLiteralSpecification(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QMofLiteralSpecification();
+    Q_DECL_HIDDEN virtual QModelingElement *clone() const;
 
-    virtual void setPropertyData();
 
 protected:
-    explicit QMofLiteralSpecification(QMofLiteralSpecificationPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    explicit QMofLiteralSpecification();
+
 };
 
 QT_END_NAMESPACE
+
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE(QMofLiteralSpecification) *)
 
 QT_END_HEADER
 

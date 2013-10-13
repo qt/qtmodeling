@@ -43,16 +43,10 @@
 
 #include <QtMof/QtMofGlobal>
 
-// Base class includes
-#include <QtWrappedObjects/QWrappedObject>
 #include <QtMof/QMofTypedElement>
 #include <QtMof/QMofMultiplicityElement>
 
-// QtMof includes
 #include <QtMof/QtMofNamespace>
-
-// Qt includes
-#include <QtCore/QString>
 
 QT_BEGIN_HEADER
 
@@ -60,110 +54,35 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtMof)
 
-// Forward decls for function parameters
-class QMofValueSpecification;
 class QMofOperation;
+class QMofValueSpecification;
 
-class QMofParameterPrivate;
-
-class Q_MOF_EXPORT QMofParameter : public QWrappedObject
+class Q_MOF_EXPORT QMofParameter : public QMofTypedElement, public QMofMultiplicityElement
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QMof")
-
-    Q_PROPERTY(QSet<QMofElement *> ownedElements READ ownedElements)
-    Q_PROPERTY(QMofElement * owner READ owner)
-    Q_PROPERTY(QSet<QMofComment *> ownedComments READ ownedComments)
-
-    Q_PROPERTY(QString name READ name WRITE setName)
-    Q_PROPERTY(QtMof::VisibilityKind visibility READ visibility WRITE setVisibility)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
-    Q_PROPERTY(QMofNamespace * namespace_ READ namespace_)
-
-    Q_PROPERTY(QMofType * type READ type WRITE setType)
-
-    Q_PROPERTY(qint32 upper READ upper WRITE setUpper RESET unsetUpper STORED false)
-    Q_PROPERTY(bool isUnique READ isUnique WRITE setUnique RESET unsetUnique)
-    Q_PROPERTY(bool isOrdered READ isOrdered WRITE setOrdered RESET unsetOrdered)
-    Q_PROPERTY(qint32 lower READ lower WRITE setLower STORED false)
-    Q_PROPERTY(QMofValueSpecification * upperValue READ upperValue WRITE setUpperValue)
-    Q_PROPERTY(QMofValueSpecification * lowerValue READ lowerValue WRITE setLowerValue)
-
-    Q_PROPERTY(QString default_ READ default_ STORED false)
-    Q_PROPERTY(QtMof::ParameterDirectionKind direction READ direction WRITE setDirection RESET unsetDirection)
-    Q_PROPERTY(QMofOperation * operation READ operation WRITE setOperation)
-    Q_PROPERTY(QMofValueSpecification * defaultValue READ defaultValue WRITE setDefaultValue)
-
-    Q_DISABLE_COPY(QMofParameter)
-    Q_DECLARE_PRIVATE(QMofParameter)
-
 public:
-    Q_INVOKABLE explicit QMofParameter(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QMofParameter();
+    explicit QMofParameter(bool createQModelingObject = true);
 
-    // Association ends from aggregated QMofElement
-    Q_INVOKABLE QSet<QMofElement *> ownedElements() const;
-    Q_INVOKABLE QMofElement *owner() const;
-    Q_INVOKABLE QSet<QMofComment *> ownedComments() const;
-    Q_INVOKABLE void addOwnedComment(QMofComment *ownedComment);
-    Q_INVOKABLE void removeOwnedComment(QMofComment *ownedComment);
+    virtual QModelingElement *clone() const;
 
-    // Attributes from aggregated QMofNamedElement
-    Q_INVOKABLE QString name() const;
-    Q_INVOKABLE void setName(QString name);
-    Q_INVOKABLE QtMof::VisibilityKind visibility() const;
-    Q_INVOKABLE void setVisibility(QtMof::VisibilityKind visibility);
-    Q_INVOKABLE QString qualifiedName() const;
-
-    // Association ends from aggregated QMofNamedElement
-    Q_INVOKABLE QMofNamespace *namespace_() const;
-
-    // Association ends from aggregated QMofTypedElement
-    Q_INVOKABLE QMofType *type() const;
-    Q_INVOKABLE void setType(QMofType *type);
-
-    // Attributes from aggregated QMofMultiplicityElement
-    Q_INVOKABLE qint32 upper() const;
-    Q_INVOKABLE void setUpper(qint32 upper);
-    Q_INVOKABLE void unsetUpper();
-    Q_INVOKABLE bool isUnique() const;
-    Q_INVOKABLE void setUnique(bool isUnique);
-    Q_INVOKABLE void unsetUnique();
-    Q_INVOKABLE bool isOrdered() const;
-    Q_INVOKABLE void setOrdered(bool isOrdered);
-    Q_INVOKABLE void unsetOrdered();
-    Q_INVOKABLE qint32 lower() const;
-    Q_INVOKABLE void setLower(qint32 lower);
-
-    // Association ends from aggregated QMofMultiplicityElement
-    Q_INVOKABLE QMofValueSpecification *upperValue() const;
-    Q_INVOKABLE void setUpperValue(QMofValueSpecification *upperValue);
-    Q_INVOKABLE QMofValueSpecification *lowerValue() const;
-    Q_INVOKABLE void setLowerValue(QMofValueSpecification *lowerValue);
-
-    // Attributes from QMofParameter
-    Q_INVOKABLE QString default_() const;
-    Q_INVOKABLE QtMof::ParameterDirectionKind direction() const;
-    Q_INVOKABLE void setDirection(QtMof::ParameterDirectionKind direction);
-    Q_INVOKABLE void unsetDirection();
-
-    // Association ends from QMofParameter
-    Q_INVOKABLE QMofOperation *operation() const;
-    Q_INVOKABLE void setOperation(QMofOperation *operation);
-    Q_INVOKABLE QMofValueSpecification *defaultValue() const;
-    Q_INVOKABLE void setDefaultValue(QMofValueSpecification *defaultValue);
-
-    virtual void setPropertyData();
+    // Owned attributes
+    QString default_() const;
+    Q_DECL_HIDDEN void setDefault(QString default_);
+    QMofValueSpecification *defaultValue() const;
+    void setDefaultValue(QMofValueSpecification *defaultValue);
+    QtMof::ParameterDirectionKind direction() const;
+    void setDirection(QtMof::ParameterDirectionKind direction);
+    QMofOperation *operation() const;
+    void setOperation(QMofOperation *operation);
 
 protected:
-    explicit QMofParameter(QMofParameterPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-
-private:
-    QMofTypedElement *_wrappedMofTypedElement;
-    QMofMultiplicityElement *_wrappedMofMultiplicityElement;
+    QMofValueSpecification *_defaultValue;
+    QtMof::ParameterDirectionKind _direction;
+    QMofOperation *_operation;
 };
 
 QT_END_NAMESPACE
+
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE(QMofParameter) *)
 
 QT_END_HEADER
 

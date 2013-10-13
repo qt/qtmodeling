@@ -41,7 +41,6 @@
 #ifndef QUMLMETAMODELPLUGIN_H
 #define QUMLMETAMODELPLUGIN_H
 
-#include <QtModeling/QtModelingGlobal>
 #include <QtModeling/QMetaModelPlugin>
 
 class QModelingElement;

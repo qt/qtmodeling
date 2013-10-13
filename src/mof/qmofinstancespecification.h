@@ -43,11 +43,7 @@
 
 #include <QtMof/QtMofGlobal>
 
-// Base class includes
 #include <QtMof/QMofPackageableElement>
-
-// Qt includes
-#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
 
@@ -55,46 +51,36 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtMof)
 
-// Forward decls for function parameters
 class QMofClassifier;
 class QMofSlot;
 class QMofValueSpecification;
 
-class QMofInstanceSpecificationPrivate;
-
 class Q_MOF_EXPORT QMofInstanceSpecification : public QMofPackageableElement
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QMof")
-
-    Q_PROPERTY(QSet<QMofClassifier *> classifiers READ classifiers)
-    Q_PROPERTY(QMofValueSpecification * specification READ specification WRITE setSpecification)
-    Q_PROPERTY(QSet<QMofSlot *> slots_ READ slots_)
-
-    Q_DISABLE_COPY(QMofInstanceSpecification)
-    Q_DECLARE_PRIVATE(QMofInstanceSpecification)
-
 public:
-    Q_INVOKABLE explicit QMofInstanceSpecification(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QMofInstanceSpecification();
+    explicit QMofInstanceSpecification(bool createQModelingObject = true);
 
-    // Association ends from QMofInstanceSpecification
-    Q_INVOKABLE QSet<QMofClassifier *> classifiers() const;
-    Q_INVOKABLE void addClassifier(QMofClassifier *classifier);
-    Q_INVOKABLE void removeClassifier(QMofClassifier *classifier);
-    Q_INVOKABLE QMofValueSpecification *specification() const;
-    Q_INVOKABLE void setSpecification(QMofValueSpecification *specification);
-    Q_INVOKABLE QSet<QMofSlot *> slots_() const;
-    Q_INVOKABLE void addSlot_(QMofSlot *slot_);
-    Q_INVOKABLE void removeSlot_(QMofSlot *slot_);
+    virtual QModelingElement *clone() const;
 
-    virtual void setPropertyData();
+    // Owned attributes
+    const QSet<QMofClassifier *> classifiers() const;
+    void addClassifier(QMofClassifier *classifier);
+    void removeClassifier(QMofClassifier *classifier);
+    const QSet<QMofSlot *> slots_() const;
+    void addSlot(QMofSlot *slot_);
+    void removeSlot(QMofSlot *slot_);
+    QMofValueSpecification *specification() const;
+    void setSpecification(QMofValueSpecification *specification);
 
 protected:
-    explicit QMofInstanceSpecification(QMofInstanceSpecificationPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    QSet<QMofClassifier *> _classifiers;
+    QSet<QMofSlot *> _slots_;
+    QMofValueSpecification *_specification;
 };
 
 QT_END_NAMESPACE
+
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE(QMofInstanceSpecification) *)
 
 QT_END_HEADER
 

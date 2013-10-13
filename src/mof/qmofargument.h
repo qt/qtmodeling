@@ -43,11 +43,7 @@
 
 #include <QtMof/QtMofGlobal>
 
-// Base class includes
-#include <QtWrappedObjects/QWrappedObject>
-
-// Qt includes
-#include <QtCore/QString>
+#include <QtModeling/QModelingElement>
 
 QT_BEGIN_HEADER
 
@@ -55,39 +51,29 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtMof)
 
-// Forward decls for function parameters
 class QMofObject;
 
-class QMofArgumentPrivate;
-
-class Q_MOF_EXPORT QMofArgument : public QWrappedObject
+class Q_MOF_EXPORT QMofArgument : public QModelingElement
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QMof")
-
-    Q_PROPERTY(QString name READ name WRITE setName)
-    Q_PROPERTY(QMofObject * value READ value WRITE setValue)
-
-    Q_DISABLE_COPY(QMofArgument)
-    Q_DECLARE_PRIVATE(QMofArgument)
-
 public:
-    Q_INVOKABLE explicit QMofArgument(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QMofArgument();
+    explicit QMofArgument(bool createQModelingObject = true);
 
-    // Attributes from QMofArgument
-    Q_INVOKABLE QString name() const;
-    Q_INVOKABLE void setName(QString name);
-    Q_INVOKABLE QMofObject *value() const;
-    Q_INVOKABLE void setValue(QMofObject *value);
+    virtual QModelingElement *clone() const;
 
-    virtual void setPropertyData();
+    // Owned attributes
+    QString name() const;
+    void setName(QString name);
+    QMofObject *value() const;
+    void setValue(QMofObject *value);
 
 protected:
-    explicit QMofArgument(QMofArgumentPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    QString _name;
+    QMofObject *_value;
 };
 
 QT_END_NAMESPACE
+
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE(QMofArgument) *)
 
 QT_END_HEADER
 

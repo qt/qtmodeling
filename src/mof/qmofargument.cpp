@@ -39,100 +39,69 @@
 **
 ****************************************************************************/
 #include "qmofargument.h"
-#include "qmofargument_p.h"
+
+#include "private/qmofargumentobject_p.h"
 
 #include <QtMof/QMofObject>
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
+/*!
+    \class QMofArgument
 
-QT_BEGIN_NAMESPACE
+    \inmodule QtMof
 
-QMofArgumentPrivate::QMofArgumentPrivate() :
-    value(0)
+    \brief
+ */
+QMofArgument::QMofArgument(bool createQModelingObject) :
+    _value(0)
 {
+    if (createQModelingObject)
+        _qModelingObject = qobject_cast<QModelingObject *>(new QMofArgumentObject(this));
 }
 
-QMofArgumentPrivate::~QMofArgumentPrivate()
+QModelingElement *QMofArgument::clone() const
 {
+    QMofArgument *c = new QMofArgument;
+    c->setName(name());
+    if (value())
+        c->setValue(dynamic_cast<QMofObject *>(value()->clone()));
+    return c;
 }
 
+// OWNED ATTRIBUTES
 
-QMofArgument::QMofArgument(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QWrappedObject(*new QMofArgumentPrivate, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QMofArgument::QMofArgument(QMofArgumentPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QWrappedObject(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QMofArgument::~QMofArgument()
-{
-}
-
-// ---------------------------------------------------------------
-// ATTRIBUTES FROM QMofArgument
-// ---------------------------------------------------------------
 
 QString QMofArgument::name() const
 {
-    // This is a read-write attribute
+    // This is a read-write property
 
-    Q_D(const QMofArgument);
-    return d->name;
+    return _name;
 }
 
 void QMofArgument::setName(QString name)
 {
-    // This is a read-write attribute
+    // This is a read-write property
 
-    Q_D(QMofArgument);
-    if (d->name != name) {
-        d->name = name;
+    if (_name != name) {
+        _name = name;
     }
 }
 
+
 QMofObject *QMofArgument::value() const
 {
-    // This is a read-write attribute
+    // This is a read-write property
 
-    Q_D(const QMofArgument);
-    return d->value;
+    return _value;
 }
 
 void QMofArgument::setValue(QMofObject *value)
 {
-    // This is a read-write attribute
+    // This is a read-write property
 
-    Q_D(QMofArgument);
-    if (d->value != value) {
-        d->value = value;
+    if (_value != value) {
+        _value = value;
+        if (value && value->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(value->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setValue()));
     }
 }
-
-void QMofArgument::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofArgument")][QString::fromLatin1("name")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofArgument")][QString::fromLatin1("name")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofArgument")][QString::fromLatin1("name")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofArgument")][QString::fromLatin1("name")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofArgument")][QString::fromLatin1("name")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofArgument")][QString::fromLatin1("name")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofArgument")][QString::fromLatin1("value")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofArgument")][QString::fromLatin1("value")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofArgument")][QString::fromLatin1("value")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofArgument")][QString::fromLatin1("value")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofArgument")][QString::fromLatin1("value")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofArgument")][QString::fromLatin1("value")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
-
-    QWrappedObject::setPropertyData();
-}
-
-QT_END_NAMESPACE
-
-#include "moc_qmofargument.cpp"
 

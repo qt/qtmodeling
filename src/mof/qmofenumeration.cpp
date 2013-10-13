@@ -39,21 +39,28 @@
 **
 ****************************************************************************/
 #include "qmofenumeration.h"
-#include "qmofenumeration_p.h"
 
+#include "private/qmofenumerationobject_p.h"
+
+#include <QtMof/QMofClass>
+#include <QtMof/QMofClassifier>
+#include <QtMof/QMofComment>
+#include <QtMof/QMofConstraint>
+#include <QtMof/QMofElement>
+#include <QtMof/QMofElementImport>
 #include <QtMof/QMofEnumerationLiteral>
-
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
-QT_BEGIN_NAMESPACE
-
-QMofEnumerationPrivate::QMofEnumerationPrivate()
-{
-}
-
-QMofEnumerationPrivate::~QMofEnumerationPrivate()
-{
-}
+#include <QtMof/QMofFeature>
+#include <QtMof/QMofGeneralization>
+#include <QtMof/QMofNamedElement>
+#include <QtMof/QMofNamespace>
+#include <QtMof/QMofObject>
+#include <QtMof/QMofOperation>
+#include <QtMof/QMofPackage>
+#include <QtMof/QMofPackageableElement>
+#include <QtMof/QMofPackageImport>
+#include <QtMof/QMofProperty>
+#include <QtMof/QMofRedefinableElement>
+#include <QtMof/QMofType>
 
 /*!
     \class QMofEnumeration
@@ -62,51 +69,73 @@ QMofEnumerationPrivate::~QMofEnumerationPrivate()
 
     \brief An enumeration is a data type whose values are enumerated in the model as enumeration literals.
  */
-
-QMofEnumeration::QMofEnumeration(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QMofDataType(*new QMofEnumerationPrivate, wrapper, parent)
+QMofEnumeration::QMofEnumeration(bool createQModelingObject) :
+    QMofDataType(false)
 {
-    setPropertyData();
+    if (createQModelingObject)
+        _qModelingObject = qobject_cast<QModelingObject *>(new QMofEnumerationObject(this));
 }
 
-QMofEnumeration::QMofEnumeration(QMofEnumerationPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QMofDataType(dd, wrapper, parent)
+QModelingElement *QMofEnumeration::clone() const
 {
-    setPropertyData();
+    QMofEnumeration *c = new QMofEnumeration;
+    foreach (QMofComment *element, ownedComments())
+        c->addOwnedComment(dynamic_cast<QMofComment *>(element->clone()));
+    c->setName(name());
+    c->setVisibility(visibility());
+    if (package())
+        c->setPackage(dynamic_cast<QMofPackage *>(package()->clone()));
+    c->setLeaf(isLeaf());
+    foreach (QMofElementImport *element, elementImports())
+        c->addElementImport(dynamic_cast<QMofElementImport *>(element->clone()));
+    foreach (QMofConstraint *element, ownedRules())
+        c->addOwnedRule(dynamic_cast<QMofConstraint *>(element->clone()));
+    foreach (QMofPackageImport *element, packageImports())
+        c->addPackageImport(dynamic_cast<QMofPackageImport *>(element->clone()));
+    foreach (QMofGeneralization *element, generalizations())
+        c->addGeneralization(dynamic_cast<QMofGeneralization *>(element->clone()));
+    c->setAbstract(isAbstract());
+    c->setFinalSpecialization(isFinalSpecialization());
+    foreach (QMofClassifier *element, redefinedClassifiers())
+        c->addRedefinedClassifier(dynamic_cast<QMofClassifier *>(element->clone()));
+    foreach (QMofProperty *element, ownedAttributes())
+        c->addOwnedAttribute(dynamic_cast<QMofProperty *>(element->clone()));
+    foreach (QMofOperation *element, ownedOperations())
+        c->addOwnedOperation(dynamic_cast<QMofOperation *>(element->clone()));
+    foreach (QMofEnumerationLiteral *element, ownedLiterals())
+        c->addOwnedLiteral(dynamic_cast<QMofEnumerationLiteral *>(element->clone()));
+    return c;
 }
 
-QMofEnumeration::~QMofEnumeration()
-{
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QMofEnumeration
-// ---------------------------------------------------------------
+// OWNED ATTRIBUTES
 
 /*!
     The ordered set of literals for this Enumeration.
  */
-QList<QMofEnumerationLiteral *> QMofEnumeration::ownedLiterals() const
+const QList<QMofEnumerationLiteral *> QMofEnumeration::ownedLiterals() const
 {
     // This is a read-write association end
 
-    Q_D(const QMofEnumeration);
-    return d->ownedLiterals;
+    return _ownedLiterals;
 }
 
 void QMofEnumeration::addOwnedLiteral(QMofEnumerationLiteral *ownedLiteral)
 {
     // This is a read-write association end
 
-    Q_D(QMofEnumeration);
-    if (!d->ownedLiterals.contains(ownedLiteral)) {
-        d->ownedLiterals.append(ownedLiteral);
+    if (!_ownedLiterals.contains(ownedLiteral)) {
+        _ownedLiterals.append(ownedLiteral);
+        if (ownedLiteral && ownedLiteral->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(ownedLiteral->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeOwnedLiteral(QObject *)));
+        ownedLiteral->asQModelingObject()->setParent(this->asQModelingObject());
 
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QMofNamespacePrivate *>(d))->addOwnedMember(qwrappedobject_cast<QMofNamedElement *>(ownedLiteral));
+        // Adjust subsetted properties
+        addOwnedMember(ownedLiteral);
 
-        // Adjust opposite property
-        ownedLiteral->setEnumeration(this);
+        // Adjust opposite properties
+        if (ownedLiteral) {
+            ownedLiteral->setEnumeration(this);
+        }
     }
 }
 
@@ -114,31 +143,18 @@ void QMofEnumeration::removeOwnedLiteral(QMofEnumerationLiteral *ownedLiteral)
 {
     // This is a read-write association end
 
-    Q_D(QMofEnumeration);
-    if (d->ownedLiterals.contains(ownedLiteral)) {
-        d->ownedLiterals.removeAll(ownedLiteral);
+    if (_ownedLiterals.contains(ownedLiteral)) {
+        _ownedLiterals.removeAll(ownedLiteral);
+        if (ownedLiteral->asQModelingObject())
+            ownedLiteral->asQModelingObject()->setParent(0);
 
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QMofNamespacePrivate *>(d))->removeOwnedMember(qwrappedobject_cast<QMofNamedElement *>(ownedLiteral));
+        // Adjust subsetted properties
+        removeOwnedMember(ownedLiteral);
 
-        // Adjust opposite property
-        ownedLiteral->setEnumeration(0);
+        // Adjust opposite properties
+        if (ownedLiteral) {
+            ownedLiteral->setEnumeration(0);
+        }
     }
 }
-
-void QMofEnumeration::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofEnumeration")][QString::fromLatin1("ownedLiterals")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofEnumeration")][QString::fromLatin1("ownedLiterals")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofEnumeration")][QString::fromLatin1("ownedLiterals")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The ordered set of literals for this Enumeration.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofEnumeration")][QString::fromLatin1("ownedLiterals")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofEnumeration")][QString::fromLatin1("ownedLiterals")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QMofNamespace::ownedMembers");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofEnumeration")][QString::fromLatin1("ownedLiterals")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QMofEnumerationLiteral::enumeration");
-
-    QMofDataType::setPropertyData();
-}
-
-QT_END_NAMESPACE
-
-#include "moc_qmofenumeration.cpp"
 

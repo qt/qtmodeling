@@ -39,69 +39,10 @@
 **
 ****************************************************************************/
 #include "qmofdirectedrelationship.h"
-#include "qmofdirectedrelationship_p.h"
 
+#include <QtMof/QMofClass>
+#include <QtMof/QMofComment>
 #include <QtMof/QMofElement>
-
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
-QT_BEGIN_NAMESPACE
-
-QMofDirectedRelationshipPrivate::QMofDirectedRelationshipPrivate()
-{
-}
-
-QMofDirectedRelationshipPrivate::~QMofDirectedRelationshipPrivate()
-{
-}
-
-void QMofDirectedRelationshipPrivate::addSource(QMofElement *source)
-{
-    // This is a read-only derived-union association end
-
-    if (!this->sources.contains(source)) {
-        this->sources.insert(source);
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QMofRelationshipPrivate *>(this))->addRelatedElement(qwrappedobject_cast<QMofElement *>(source));
-    }
-}
-
-void QMofDirectedRelationshipPrivate::removeSource(QMofElement *source)
-{
-    // This is a read-only derived-union association end
-
-    if (this->sources.contains(source)) {
-        this->sources.remove(source);
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QMofRelationshipPrivate *>(this))->removeRelatedElement(qwrappedobject_cast<QMofElement *>(source));
-    }
-}
-
-void QMofDirectedRelationshipPrivate::addTarget(QMofElement *target)
-{
-    // This is a read-only derived-union association end
-
-    if (!this->targets.contains(target)) {
-        this->targets.insert(target);
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QMofRelationshipPrivate *>(this))->addRelatedElement(qwrappedobject_cast<QMofElement *>(target));
-    }
-}
-
-void QMofDirectedRelationshipPrivate::removeTarget(QMofElement *target)
-{
-    // This is a read-only derived-union association end
-
-    if (this->targets.contains(target)) {
-        this->targets.remove(target);
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QMofRelationshipPrivate *>(this))->removeRelatedElement(qwrappedobject_cast<QMofElement *>(target));
-    }
-}
 
 /*!
     \class QMofDirectedRelationship
@@ -110,69 +51,89 @@ void QMofDirectedRelationshipPrivate::removeTarget(QMofElement *target)
 
     \brief A directed relationship represents a relationship between a collection of source model elements and a collection of target model elements.
  */
-
-QMofDirectedRelationship::QMofDirectedRelationship(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QMofRelationship(*new QMofDirectedRelationshipPrivate, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QMofDirectedRelationship::QMofDirectedRelationship(QMofDirectedRelationshipPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QMofRelationship(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QMofDirectedRelationship::~QMofDirectedRelationship()
+QMofDirectedRelationship::QMofDirectedRelationship()
 {
 }
 
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QMofDirectedRelationship
-// ---------------------------------------------------------------
+QModelingElement *QMofDirectedRelationship::clone() const
+{
+    QMofDirectedRelationship *c = new QMofDirectedRelationship;
+    foreach (QMofComment *element, ownedComments())
+        c->addOwnedComment(dynamic_cast<QMofComment *>(element->clone()));
+    return c;
+}
+
+// OWNED ATTRIBUTES
 
 /*!
     Specifies the sources of the DirectedRelationship.
  */
-QSet<QMofElement *> QMofDirectedRelationship::sources() const
+const QSet<QMofElement *> QMofDirectedRelationship::sources() const
 {
-    // This is a read-only derived-union association end
+    // This is a read-only derived union association end
 
-    Q_D(const QMofDirectedRelationship);
-    return d->sources;
+    return _sources;
+}
+
+void QMofDirectedRelationship::addSource(QMofElement *source)
+{
+    // This is a read-only derived union association end
+
+    if (!_sources.contains(source)) {
+        _sources.insert(source);
+        if (source && source->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(source->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeSource(QObject *)));
+
+        // Adjust subsetted properties
+        addRelatedElement(source);
+    }
+}
+
+void QMofDirectedRelationship::removeSource(QMofElement *source)
+{
+    // This is a read-only derived union association end
+
+    if (_sources.contains(source)) {
+        _sources.remove(source);
+
+        // Adjust subsetted properties
+        removeRelatedElement(source);
+    }
 }
 
 /*!
     Specifies the targets of the DirectedRelationship.
  */
-QSet<QMofElement *> QMofDirectedRelationship::targets() const
+const QSet<QMofElement *> QMofDirectedRelationship::targets() const
 {
-    // This is a read-only derived-union association end
+    // This is a read-only derived union association end
 
-    Q_D(const QMofDirectedRelationship);
-    return d->targets;
+    return _targets;
 }
 
-void QMofDirectedRelationship::setPropertyData()
+void QMofDirectedRelationship::addTarget(QMofElement *target)
 {
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofDirectedRelationship")][QString::fromLatin1("sources")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofDirectedRelationship")][QString::fromLatin1("sources")][QtWrappedObjects::IsDerivedUnionRole] = true;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofDirectedRelationship")][QString::fromLatin1("sources")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the sources of the DirectedRelationship.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofDirectedRelationship")][QString::fromLatin1("sources")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofDirectedRelationship")][QString::fromLatin1("sources")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QMofRelationship::relatedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofDirectedRelationship")][QString::fromLatin1("sources")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QMof");
+    // This is a read-only derived union association end
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofDirectedRelationship")][QString::fromLatin1("targets")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofDirectedRelationship")][QString::fromLatin1("targets")][QtWrappedObjects::IsDerivedUnionRole] = true;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofDirectedRelationship")][QString::fromLatin1("targets")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the targets of the DirectedRelationship.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofDirectedRelationship")][QString::fromLatin1("targets")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofDirectedRelationship")][QString::fromLatin1("targets")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QMofRelationship::relatedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofDirectedRelationship")][QString::fromLatin1("targets")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QMof");
+    if (!_targets.contains(target)) {
+        _targets.insert(target);
+        if (target && target->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(target->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeTarget(QObject *)));
 
-    QMofRelationship::setPropertyData();
+        // Adjust subsetted properties
+        addRelatedElement(target);
+    }
 }
 
-QT_END_NAMESPACE
+void QMofDirectedRelationship::removeTarget(QMofElement *target)
+{
+    // This is a read-only derived union association end
 
-#include "moc_qmofdirectedrelationship.cpp"
+    if (_targets.contains(target)) {
+        _targets.remove(target);
+
+        // Adjust subsetted properties
+        removeRelatedElement(target);
+    }
+}
 

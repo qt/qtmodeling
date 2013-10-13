@@ -54,7 +54,6 @@ QT_MODULE(QtMof)
 class Q_MOF_EXPORT QtMof : public QObject
 {
     Q_OBJECT
-
     Q_ENUMS(AggregationKind)
     Q_ENUMS(ParameterDirectionKind)
     Q_ENUMS(VisibilityKind)
@@ -62,28 +61,33 @@ class Q_MOF_EXPORT QtMof : public QObject
 public:
     enum AggregationKind
     {
-        AggregationNone = 0,
-        AggregationShared,
-        AggregationComposite
+        AggregationKindNone = 0,
+        AggregationKindShared,
+        AggregationKindComposite
     };
     enum ParameterDirectionKind
     {
-        ParameterDirectionIn = 0,
-        ParameterDirectionInout,
-        ParameterDirectionOut,
-        ParameterDirectionReturn
+        ParameterDirectionKindNone = 0,
+        ParameterDirectionKindIn,
+        ParameterDirectionKindInout,
+        ParameterDirectionKindOut,
+        ParameterDirectionKindReturn
     };
     enum VisibilityKind
     {
-        VisibilityPublic = 0,
-        VisibilityPrivate,
-        VisibilityProtected,
-        VisibilityPackage
+        VisibilityKindNone = 0,
+        VisibilityKindPublic,
+        VisibilityKindPrivate,
+        VisibilityKindProtected,
+        VisibilityKindPackage
     };
-
 };
 
 QT_END_NAMESPACE
+
+Q_DECLARE_METATYPE(QtMof::AggregationKind)
+Q_DECLARE_METATYPE(QtMof::ParameterDirectionKind)
+Q_DECLARE_METATYPE(QtMof::VisibilityKind)
 
 QT_END_HEADER
 

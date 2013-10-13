@@ -43,12 +43,7 @@
 
 #include <QtMof/QtMofGlobal>
 
-// Base class includes
 #include <QtMof/QMofNamedElement>
-
-// Qt includes
-#include <QtCore/QString>
-#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
 
@@ -56,63 +51,55 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtMof)
 
-// Forward decls for function parameters
-class QMofPackageImport;
 class QMofConstraint;
 class QMofElementImport;
 class QMofPackageableElement;
+class QMofPackageImport;
 
-class QMofNamespacePrivate;
-
-class Q_MOF_EXPORT QMofNamespace : public QMofNamedElement
+class Q_MOF_EXPORT QMofNamespace : public virtual QMofNamedElement
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QMof")
-
-    Q_PROPERTY(QSet<QMofPackageImport *> packageImports READ packageImports)
-    Q_PROPERTY(QSet<QMofNamedElement *> members READ members)
-    Q_PROPERTY(QSet<QMofPackageableElement *> importedMembers READ importedMembers STORED false)
-    Q_PROPERTY(QSet<QMofElementImport *> elementImports READ elementImports)
-    Q_PROPERTY(QSet<QMofConstraint *> ownedRules READ ownedRules)
-    Q_PROPERTY(QSet<QMofNamedElement *> ownedMembers READ ownedMembers)
-
-    Q_DISABLE_COPY(QMofNamespace)
-    Q_DECLARE_PRIVATE(QMofNamespace)
-
 public:
-    Q_INVOKABLE explicit QMofNamespace(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QMofNamespace();
+    Q_DECL_HIDDEN virtual QModelingElement *clone() const;
 
-    // Association ends from QMofNamespace
-    Q_INVOKABLE QSet<QMofPackageImport *> packageImports() const;
-    Q_INVOKABLE void addPackageImport(QMofPackageImport *packageImport);
-    Q_INVOKABLE void removePackageImport(QMofPackageImport *packageImport);
-    Q_INVOKABLE QSet<QMofNamedElement *> members() const;
-    Q_INVOKABLE QSet<QMofPackageableElement *> importedMembers() const;
-    Q_INVOKABLE QSet<QMofElementImport *> elementImports() const;
-    Q_INVOKABLE void addElementImport(QMofElementImport *elementImport);
-    Q_INVOKABLE void removeElementImport(QMofElementImport *elementImport);
-    Q_INVOKABLE QSet<QMofConstraint *> ownedRules() const;
-    Q_INVOKABLE void addOwnedRule(QMofConstraint *ownedRule);
-    Q_INVOKABLE void removeOwnedRule(QMofConstraint *ownedRule);
-    Q_INVOKABLE QSet<QMofNamedElement *> ownedMembers() const;
+    // Owned attributes
+    const QSet<QMofElementImport *> elementImports() const;
+    void addElementImport(QMofElementImport *elementImport);
+    void removeElementImport(QMofElementImport *elementImport);
+    const QSet<QMofPackageableElement *> importedMembers() const;
+    Q_DECL_HIDDEN void addImportedMember(QMofPackageableElement *importedMember);
+    Q_DECL_HIDDEN void removeImportedMember(QMofPackageableElement *importedMember);
+    const QSet<QMofNamedElement *> members() const;
+    Q_DECL_HIDDEN void addMember(QMofNamedElement *member);
+    Q_DECL_HIDDEN void removeMember(QMofNamedElement *member);
+    const QSet<QMofNamedElement *> ownedMembers() const;
+    Q_DECL_HIDDEN void addOwnedMember(QMofNamedElement *ownedMember);
+    Q_DECL_HIDDEN void removeOwnedMember(QMofNamedElement *ownedMember);
+    const QSet<QMofConstraint *> ownedRules() const;
+    void addOwnedRule(QMofConstraint *ownedRule);
+    void removeOwnedRule(QMofConstraint *ownedRule);
+    const QSet<QMofPackageImport *> packageImports() const;
+    void addPackageImport(QMofPackageImport *packageImport);
+    void removePackageImport(QMofPackageImport *packageImport);
 
     // Operations
-    Q_INVOKABLE QSet<QMofPackageableElement *> excludeCollisions(const QMofPackageableElement *imps) const;
-    Q_INVOKABLE QSet<QString> getNamesOfMember(const QMofNamedElement *element) const;
-    Q_INVOKABLE QSet<QMofPackageableElement *> importMembers(const QMofPackageableElement *imps) const;
-    Q_INVOKABLE bool membersAreDistinguishable() const;
-
-    virtual void setPropertyData();
-
-    // Classes which access read-only opposite properties should be friend
-    friend class QMofNamedElementPrivate;
+    QSet<QMofPackageableElement *> excludeCollisions(QMofPackageableElement *imps) const;
+    QSet<QString> getNamesOfMember(QMofNamedElement *element) const;
+    QSet<QMofPackageableElement *> importMembers(QMofPackageableElement *imps) const;
+    bool membersAreDistinguishable() const;
 
 protected:
-    explicit QMofNamespace(QMofNamespacePrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    explicit QMofNamespace();
+
+    QSet<QMofElementImport *> _elementImports;
+    QSet<QMofNamedElement *> _members;
+    QSet<QMofNamedElement *> _ownedMembers;
+    QSet<QMofConstraint *> _ownedRules;
+    QSet<QMofPackageImport *> _packageImports;
 };
 
 QT_END_NAMESPACE
+
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE(QMofNamespace) *)
 
 QT_END_HEADER
 

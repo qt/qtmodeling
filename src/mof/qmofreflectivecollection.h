@@ -43,7 +43,6 @@
 
 #include <QtMof/QtMofGlobal>
 
-// Base class includes
 #include <QtMof/QMofObject>
 
 QT_BEGIN_HEADER
@@ -52,37 +51,27 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtMof)
 
-// Forward decls for function parameters
-class QMofReflectiveCollection;
-
-class QMofReflectiveCollectionPrivate;
-
 class Q_MOF_EXPORT QMofReflectiveCollection : public QMofObject
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QMof")
-
-    Q_DISABLE_COPY(QMofReflectiveCollection)
-    Q_DECLARE_PRIVATE(QMofReflectiveCollection)
-
 public:
-    Q_INVOKABLE explicit QMofReflectiveCollection(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QMofReflectiveCollection();
+    explicit QMofReflectiveCollection(bool createQModelingObject = true);
+
+    virtual QModelingElement *clone() const;
+
 
     // Operations
-    Q_INVOKABLE bool add(const QMofObject *object);
-    Q_INVOKABLE bool addAll(const QMofReflectiveCollection *objects);
-    Q_INVOKABLE void clear();
-    Q_INVOKABLE bool remove(const QMofObject *object);
-    Q_INVOKABLE qint32 size() const;
-
-    virtual void setPropertyData();
+    bool add(QMofObject *object);
+    bool addAll(QMofReflectiveCollection *objects);
+    void clear();
+    bool remove(QMofObject *object);
+    int size() const;
 
 protected:
-    explicit QMofReflectiveCollection(QMofReflectiveCollectionPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
 QT_END_NAMESPACE
+
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE(QMofReflectiveCollection) *)
 
 QT_END_HEADER
 

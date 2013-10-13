@@ -39,20 +39,15 @@
 **
 ****************************************************************************/
 #include "qmofliteralboolean.h"
-#include "qmofliteralboolean_p.h"
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
+#include "private/qmofliteralbooleanobject_p.h"
 
-QT_BEGIN_NAMESPACE
-
-QMofLiteralBooleanPrivate::QMofLiteralBooleanPrivate() :
-    value(false)
-{
-}
-
-QMofLiteralBooleanPrivate::~QMofLiteralBooleanPrivate()
-{
-}
+#include <QtMof/QMofClass>
+#include <QtMof/QMofComment>
+#include <QtMof/QMofElement>
+#include <QtMof/QMofNamedElement>
+#include <QtMof/QMofNamespace>
+#include <QtMof/QMofType>
 
 /*!
     \class QMofLiteralBoolean
@@ -61,64 +56,58 @@ QMofLiteralBooleanPrivate::~QMofLiteralBooleanPrivate()
 
     \brief A literal Boolean is a specification of a Boolean value.
  */
-
-QMofLiteralBoolean::QMofLiteralBoolean(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QMofLiteralSpecification(*new QMofLiteralBooleanPrivate, wrapper, parent)
+QMofLiteralBoolean::QMofLiteralBoolean(bool createQModelingObject) :
+    _value(false)
 {
-    setPropertyData();
+    if (createQModelingObject)
+        _qModelingObject = qobject_cast<QModelingObject *>(new QMofLiteralBooleanObject(this));
 }
 
-QMofLiteralBoolean::QMofLiteralBoolean(QMofLiteralBooleanPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QMofLiteralSpecification(dd, wrapper, parent)
+QModelingElement *QMofLiteralBoolean::clone() const
 {
-    setPropertyData();
+    QMofLiteralBoolean *c = new QMofLiteralBoolean;
+    foreach (QMofComment *element, ownedComments())
+        c->addOwnedComment(dynamic_cast<QMofComment *>(element->clone()));
+    c->setName(name());
+    c->setVisibility(visibility());
+    if (type())
+        c->setType(dynamic_cast<QMofType *>(type()->clone()));
+    c->setValue(value());
+    return c;
 }
 
-QMofLiteralBoolean::~QMofLiteralBoolean()
-{
-}
-
-// ---------------------------------------------------------------
-// ATTRIBUTES FROM QMofLiteralBoolean
-// ---------------------------------------------------------------
+// OWNED ATTRIBUTES
 
 /*!
     The specified Boolean value.
  */
 bool QMofLiteralBoolean::value() const
 {
-    // This is a read-write attribute
+    // This is a read-write property
 
-    Q_D(const QMofLiteralBoolean);
-    return d->value;
+    return _value;
 }
 
 void QMofLiteralBoolean::setValue(bool value)
 {
-    // This is a read-write attribute
+    // This is a read-write property
 
-    Q_D(QMofLiteralBoolean);
-    if (d->value != value) {
-        d->value = value;
+    if (_value != value) {
+        _value = value;
+        _qModelingObject->modifiedResettableProperties() << QStringLiteral("value");
     }
-    d->modifiedResettableProperties << QString::fromLatin1("value");
 }
 
-void QMofLiteralBoolean::unsetValue()
-{
-    setValue(false);
-    Q_D(QMofLiteralBoolean);
-    d->modifiedResettableProperties.removeAll(QString::fromLatin1("value"));
-}
+// OPERATIONS
 
 /*!
     The query booleanValue() gives the value.
  */
 bool QMofLiteralBoolean::booleanValue() const
 {
-    qWarning("QMofLiteralBoolean::booleanValue: operation to be implemented");
+    qWarning("MofLiteralBoolean::booleanValue(): to be implemented (operation)");
 
-    return bool(); // change here to your derived return
+    return bool ();
 }
 
 /*!
@@ -126,24 +115,8 @@ bool QMofLiteralBoolean::booleanValue() const
  */
 bool QMofLiteralBoolean::isComputable() const
 {
-    qWarning("QMofLiteralBoolean::isComputable: operation to be implemented");
+    qWarning("MofLiteralBoolean::isComputable(): to be implemented (operation)");
 
-    return bool(); // change here to your derived return
+    return bool ();
 }
-
-void QMofLiteralBoolean::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofLiteralBoolean")][QString::fromLatin1("value")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofLiteralBoolean")][QString::fromLatin1("value")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofLiteralBoolean")][QString::fromLatin1("value")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The specified Boolean value.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofLiteralBoolean")][QString::fromLatin1("value")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofLiteralBoolean")][QString::fromLatin1("value")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofLiteralBoolean")][QString::fromLatin1("value")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
-
-    QMofLiteralSpecification::setPropertyData();
-}
-
-QT_END_NAMESPACE
-
-#include "moc_qmofliteralboolean.cpp"
 

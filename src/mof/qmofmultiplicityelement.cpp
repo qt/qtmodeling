@@ -39,25 +39,10 @@
 **
 ****************************************************************************/
 #include "qmofmultiplicityelement.h"
-#include "qmofmultiplicityelement_p.h"
 
+#include <QtMof/QMofClass>
+#include <QtMof/QMofComment>
 #include <QtMof/QMofValueSpecification>
-
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
-QT_BEGIN_NAMESPACE
-
-QMofMultiplicityElementPrivate::QMofMultiplicityElementPrivate() :
-    isUnique(true),
-    isOrdered(false),
-    upperValue(0),
-    lowerValue(0)
-{
-}
-
-QMofMultiplicityElementPrivate::~QMofMultiplicityElementPrivate()
-{
-}
 
 /*!
     \class QMofMultiplicityElement
@@ -66,56 +51,48 @@ QMofMultiplicityElementPrivate::~QMofMultiplicityElementPrivate()
 
     \brief A multiplicity is a definition of an inclusive interval of non-negative integers beginning with a lower bound and ending with a (possibly infinite) upper bound. A multiplicity element embeds this information to specify the allowable cardinalities for an instantiation of this element.
  */
-
-QMofMultiplicityElement::QMofMultiplicityElement(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QMofElement(*new QMofMultiplicityElementPrivate, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QMofMultiplicityElement::QMofMultiplicityElement(QMofMultiplicityElementPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QMofElement(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QMofMultiplicityElement::~QMofMultiplicityElement()
+QMofMultiplicityElement::QMofMultiplicityElement() :
+    _isOrdered(false),
+    _isUnique(true),
+    _lowerValue(0),
+    _upperValue(0)
 {
 }
 
-// ---------------------------------------------------------------
-// ATTRIBUTES FROM QMofMultiplicityElement
-// ---------------------------------------------------------------
+QModelingElement *QMofMultiplicityElement::clone() const
+{
+    QMofMultiplicityElement *c = new QMofMultiplicityElement;
+    foreach (QMofComment *element, ownedComments())
+        c->addOwnedComment(dynamic_cast<QMofComment *>(element->clone()));
+    c->setOrdered(isOrdered());
+    c->setUnique(isUnique());
+    if (lowerValue())
+        c->setLowerValue(dynamic_cast<QMofValueSpecification *>(lowerValue()->clone()));
+    if (upperValue())
+        c->setUpperValue(dynamic_cast<QMofValueSpecification *>(upperValue()->clone()));
+    return c;
+}
+
+// OWNED ATTRIBUTES
 
 /*!
-    Specifies the upper bound of the multiplicity interval.
+    For a multivalued multiplicity, this attribute specifies whether the values in an instantiation of this element are sequentially ordered.
  */
-qint32 QMofMultiplicityElement::upper() const
+bool QMofMultiplicityElement::isOrdered() const
 {
-    // This is a read-write derived attribute
+    // This is a read-write property
 
-    qWarning("QMofMultiplicityElement::upper: to be implemented (this is a derived attribute)");
-
-    return qint32(); // change here to your derived return
+    return _isOrdered;
 }
 
-void QMofMultiplicityElement::setUpper(qint32 upper)
+void QMofMultiplicityElement::setOrdered(bool isOrdered)
 {
-    // This is a read-write derived attribute
+    // This is a read-write property
 
-    qWarning("QMofMultiplicityElement::setUpper: to be implemented (this is a derived attribute)");
-    Q_UNUSED(upper);
-
-    if (false) { // change to your derived change criteria
-        // change to your derived code
+    if (_isOrdered != isOrdered) {
+        _isOrdered = isOrdered;
+        _qModelingObject->modifiedResettableProperties() << QStringLiteral("isOrdered");
     }
-}
-
-void QMofMultiplicityElement::unsetUpper()
-{
-    setUpper(1);
-    Q_D(QMofMultiplicityElement);
-    d->modifiedResettableProperties.removeAll(QString::fromLatin1("upper"));
 }
 
 /*!
@@ -123,113 +100,42 @@ void QMofMultiplicityElement::unsetUpper()
  */
 bool QMofMultiplicityElement::isUnique() const
 {
-    // This is a read-write attribute
+    // This is a read-write property
 
-    Q_D(const QMofMultiplicityElement);
-    return d->isUnique;
+    return _isUnique;
 }
 
 void QMofMultiplicityElement::setUnique(bool isUnique)
 {
-    // This is a read-write attribute
+    // This is a read-write property
 
-    Q_D(QMofMultiplicityElement);
-    if (d->isUnique != isUnique) {
-        d->isUnique = isUnique;
+    if (_isUnique != isUnique) {
+        _isUnique = isUnique;
+        _qModelingObject->modifiedResettableProperties() << QStringLiteral("isUnique");
     }
-    d->modifiedResettableProperties << QString::fromLatin1("isUnique");
-}
-
-void QMofMultiplicityElement::unsetUnique()
-{
-    setUnique(true);
-    Q_D(QMofMultiplicityElement);
-    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isUnique"));
-}
-
-/*!
-    For a multivalued multiplicity, this attribute specifies whether the values in an instantiation of this element are sequentially ordered.
- */
-bool QMofMultiplicityElement::isOrdered() const
-{
-    // This is a read-write attribute
-
-    Q_D(const QMofMultiplicityElement);
-    return d->isOrdered;
-}
-
-void QMofMultiplicityElement::setOrdered(bool isOrdered)
-{
-    // This is a read-write attribute
-
-    Q_D(QMofMultiplicityElement);
-    if (d->isOrdered != isOrdered) {
-        d->isOrdered = isOrdered;
-    }
-    d->modifiedResettableProperties << QString::fromLatin1("isOrdered");
-}
-
-void QMofMultiplicityElement::unsetOrdered()
-{
-    setOrdered(false);
-    Q_D(QMofMultiplicityElement);
-    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isOrdered"));
 }
 
 /*!
     Specifies the lower bound of the multiplicity interval.
  */
-qint32 QMofMultiplicityElement::lower() const
+int QMofMultiplicityElement::lower() const
 {
-    // This is a read-write derived attribute
+    // This is a read-write derived property
 
-    qWarning("QMofMultiplicityElement::lower: to be implemented (this is a derived attribute)");
+    qWarning("MofMultiplicityElement::lower(): to be implemented (this is a derived property)");
 
-    return qint32(); // change here to your derived return
+    return int();
 }
 
-void QMofMultiplicityElement::setLower(qint32 lower)
+void QMofMultiplicityElement::setLower(int lower)
 {
-    // This is a read-write derived attribute
+    // This is a read-write derived property
 
-    qWarning("QMofMultiplicityElement::setLower: to be implemented (this is a derived attribute)");
+    qWarning("MofMultiplicityElement::setLower(): to be implemented (this is a derived property)");
     Q_UNUSED(lower);
 
-    if (false) { // change to your derived change criteria
-        // change to your derived code
-    }
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QMofMultiplicityElement
-// ---------------------------------------------------------------
-
-/*!
-    The specification of the upper bound for this multiplicity.
- */
-QMofValueSpecification *QMofMultiplicityElement::upperValue() const
-{
-    // This is a read-write association end
-
-    Q_D(const QMofMultiplicityElement);
-    return d->upperValue;
-}
-
-void QMofMultiplicityElement::setUpperValue(QMofValueSpecification *upperValue)
-{
-    // This is a read-write association end
-
-    Q_D(QMofMultiplicityElement);
-    if (d->upperValue != upperValue) {
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QMofElementPrivate *>(d))->removeOwnedElement(qwrappedobject_cast<QMofElement *>(d->upperValue));
-
-        d->upperValue = upperValue;
-
-        // Adjust subsetted property(ies)
-        if (upperValue) {
-            (qwrappedobject_cast<QMofElementPrivate *>(d))->addOwnedElement(qwrappedobject_cast<QMofElement *>(upperValue));
-        }
+    if (false /* <derivedexclusion-criteria> */) {
+        // <derived-code>
     }
 }
 
@@ -240,48 +146,105 @@ QMofValueSpecification *QMofMultiplicityElement::lowerValue() const
 {
     // This is a read-write association end
 
-    Q_D(const QMofMultiplicityElement);
-    return d->lowerValue;
+    return _lowerValue;
 }
 
 void QMofMultiplicityElement::setLowerValue(QMofValueSpecification *lowerValue)
 {
     // This is a read-write association end
 
-    Q_D(QMofMultiplicityElement);
-    if (d->lowerValue != lowerValue) {
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QMofElementPrivate *>(d))->removeOwnedElement(qwrappedobject_cast<QMofElement *>(d->lowerValue));
+    if (_lowerValue != lowerValue) {
+        // Adjust subsetted properties
+        removeOwnedElement(_lowerValue);
 
-        d->lowerValue = lowerValue;
+        _lowerValue = lowerValue;
+        if (lowerValue && lowerValue->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(lowerValue->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setLowerValue()));
+        lowerValue->asQModelingObject()->setParent(this->asQModelingObject());
 
-        // Adjust subsetted property(ies)
+        // Adjust subsetted properties
         if (lowerValue) {
-            (qwrappedobject_cast<QMofElementPrivate *>(d))->addOwnedElement(qwrappedobject_cast<QMofElement *>(lowerValue));
+            addOwnedElement(lowerValue);
         }
     }
 }
 
 /*!
+    Specifies the upper bound of the multiplicity interval.
+ */
+int QMofMultiplicityElement::upper() const
+{
+    // This is a read-write derived property
+
+    qWarning("MofMultiplicityElement::upper(): to be implemented (this is a derived property)");
+
+    return int();
+}
+
+void QMofMultiplicityElement::setUpper(int upper)
+{
+    // This is a read-write derived property
+
+    qWarning("MofMultiplicityElement::setUpper(): to be implemented (this is a derived property)");
+    Q_UNUSED(upper);
+
+    if (false /* <derivedexclusion-criteria> */) {
+        // <derived-code>
+    }
+}
+
+/*!
+    The specification of the upper bound for this multiplicity.
+ */
+QMofValueSpecification *QMofMultiplicityElement::upperValue() const
+{
+    // This is a read-write association end
+
+    return _upperValue;
+}
+
+void QMofMultiplicityElement::setUpperValue(QMofValueSpecification *upperValue)
+{
+    // This is a read-write association end
+
+    if (_upperValue != upperValue) {
+        // Adjust subsetted properties
+        removeOwnedElement(_upperValue);
+
+        _upperValue = upperValue;
+        if (upperValue && upperValue->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(upperValue->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setUpperValue()));
+        upperValue->asQModelingObject()->setParent(this->asQModelingObject());
+
+        // Adjust subsetted properties
+        if (upperValue) {
+            addOwnedElement(upperValue);
+        }
+    }
+}
+
+// OPERATIONS
+
+/*!
     The query includesCardinality() checks whether the specified cardinality is valid for this multiplicity.
  */
-bool QMofMultiplicityElement::includesCardinality(qint32 C) const
+bool QMofMultiplicityElement::includesCardinality(int C) const
 {
-    qWarning("QMofMultiplicityElement::includesCardinality: operation to be implemented");
-    Q_UNUSED(C);
+    qWarning("MofMultiplicityElement::includesCardinality(): to be implemented (operation)");
 
-    return bool(); // change here to your derived return
+    Q_UNUSED(C);
+    return bool ();
 }
 
 /*!
     The query includesMultiplicity() checks whether this multiplicity includes all the cardinalities allowed by the specified multiplicity.
  */
-bool QMofMultiplicityElement::includesMultiplicity(const QMofMultiplicityElement *M) const
+bool QMofMultiplicityElement::includesMultiplicity(QMofMultiplicityElement *M) const
 {
-    qWarning("QMofMultiplicityElement::includesMultiplicity: operation to be implemented");
-    Q_UNUSED(M);
+    qWarning("MofMultiplicityElement::includesMultiplicity(): to be implemented (operation)");
 
-    return bool(); // change here to your derived return
+    Q_UNUSED(M);
+    return bool ();
 }
 
 /*!
@@ -289,79 +252,28 @@ bool QMofMultiplicityElement::includesMultiplicity(const QMofMultiplicityElement
  */
 bool QMofMultiplicityElement::isMultivalued() const
 {
-    qWarning("QMofMultiplicityElement::isMultivalued: operation to be implemented");
+    qWarning("MofMultiplicityElement::isMultivalued(): to be implemented (operation)");
 
-    return bool(); // change here to your derived return
+    return bool ();
 }
 
 /*!
     The query lowerBound() returns the lower bound of the multiplicity as an integer.
  */
-qint32 QMofMultiplicityElement::lowerBound() const
+int QMofMultiplicityElement::lowerBound() const
 {
-    qWarning("QMofMultiplicityElement::lowerBound: operation to be implemented");
+    qWarning("MofMultiplicityElement::lowerBound(): to be implemented (operation)");
 
-    return qint32(); // change here to your derived return
+    return int ();
 }
 
 /*!
     The query upperBound() returns the upper bound of the multiplicity for a bounded multiplicity as an unlimited natural.
  */
-qint32 QMofMultiplicityElement::upperBound() const
+int QMofMultiplicityElement::upperBound() const
 {
-    qWarning("QMofMultiplicityElement::upperBound: operation to be implemented");
+    qWarning("MofMultiplicityElement::upperBound(): to be implemented (operation)");
 
-    return qint32(); // change here to your derived return
+    return int ();
 }
-
-void QMofMultiplicityElement::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofMultiplicityElement")][QString::fromLatin1("upper")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofMultiplicityElement")][QString::fromLatin1("upper")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofMultiplicityElement")][QString::fromLatin1("upper")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the upper bound of the multiplicity interval.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofMultiplicityElement")][QString::fromLatin1("upper")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofMultiplicityElement")][QString::fromLatin1("upper")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofMultiplicityElement")][QString::fromLatin1("upper")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofMultiplicityElement")][QString::fromLatin1("isUnique")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofMultiplicityElement")][QString::fromLatin1("isUnique")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofMultiplicityElement")][QString::fromLatin1("isUnique")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("For a multivalued multiplicity, this attributes specifies whether the values in an instantiation of this element are unique.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofMultiplicityElement")][QString::fromLatin1("isUnique")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofMultiplicityElement")][QString::fromLatin1("isUnique")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofMultiplicityElement")][QString::fromLatin1("isUnique")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofMultiplicityElement")][QString::fromLatin1("isOrdered")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofMultiplicityElement")][QString::fromLatin1("isOrdered")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofMultiplicityElement")][QString::fromLatin1("isOrdered")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("For a multivalued multiplicity, this attribute specifies whether the values in an instantiation of this element are sequentially ordered.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofMultiplicityElement")][QString::fromLatin1("isOrdered")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofMultiplicityElement")][QString::fromLatin1("isOrdered")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofMultiplicityElement")][QString::fromLatin1("isOrdered")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofMultiplicityElement")][QString::fromLatin1("lower")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofMultiplicityElement")][QString::fromLatin1("lower")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofMultiplicityElement")][QString::fromLatin1("lower")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the lower bound of the multiplicity interval.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofMultiplicityElement")][QString::fromLatin1("lower")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofMultiplicityElement")][QString::fromLatin1("lower")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofMultiplicityElement")][QString::fromLatin1("lower")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofMultiplicityElement")][QString::fromLatin1("upperValue")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofMultiplicityElement")][QString::fromLatin1("upperValue")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofMultiplicityElement")][QString::fromLatin1("upperValue")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The specification of the upper bound for this multiplicity.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofMultiplicityElement")][QString::fromLatin1("upperValue")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofMultiplicityElement")][QString::fromLatin1("upperValue")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QMofElement::ownedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofMultiplicityElement")][QString::fromLatin1("upperValue")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QMof");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofMultiplicityElement")][QString::fromLatin1("lowerValue")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofMultiplicityElement")][QString::fromLatin1("lowerValue")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofMultiplicityElement")][QString::fromLatin1("lowerValue")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The specification of the lower bound for this multiplicity.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofMultiplicityElement")][QString::fromLatin1("lowerValue")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofMultiplicityElement")][QString::fromLatin1("lowerValue")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QMofElement::ownedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofMultiplicityElement")][QString::fromLatin1("lowerValue")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QMof");
-
-    QMofElement::setPropertyData();
-}
-
-QT_END_NAMESPACE
-
-#include "moc_qmofmultiplicityelement.cpp"
 

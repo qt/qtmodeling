@@ -43,12 +43,7 @@
 
 #include <QtMof/QtMofGlobal>
 
-// Base class includes
 #include <QtMof/QMofElement>
-
-// Qt includes
-#include <QtCore/QString>
-#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
 
@@ -56,39 +51,28 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtMof)
 
-class QMofCommentPrivate;
-
 class Q_MOF_EXPORT QMofComment : public QMofElement
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QMof")
-
-    Q_PROPERTY(QString body READ body WRITE setBody)
-    Q_PROPERTY(QSet<QMofElement *> annotatedElements READ annotatedElements)
-
-    Q_DISABLE_COPY(QMofComment)
-    Q_DECLARE_PRIVATE(QMofComment)
-
 public:
-    Q_INVOKABLE explicit QMofComment(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QMofComment();
+    explicit QMofComment(bool createQModelingObject = true);
 
-    // Attributes from QMofComment
-    Q_INVOKABLE QString body() const;
-    Q_INVOKABLE void setBody(QString body);
+    virtual QModelingElement *clone() const;
 
-    // Association ends from QMofComment
-    Q_INVOKABLE QSet<QMofElement *> annotatedElements() const;
-    Q_INVOKABLE void addAnnotatedElement(QMofElement *annotatedElement);
-    Q_INVOKABLE void removeAnnotatedElement(QMofElement *annotatedElement);
-
-    virtual void setPropertyData();
+    // Owned attributes
+    const QSet<QMofElement *> annotatedElements() const;
+    void addAnnotatedElement(QMofElement *annotatedElement);
+    void removeAnnotatedElement(QMofElement *annotatedElement);
+    QString body() const;
+    void setBody(QString body);
 
 protected:
-    explicit QMofComment(QMofCommentPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    QSet<QMofElement *> _annotatedElements;
+    QString _body;
 };
 
 QT_END_NAMESPACE
+
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE(QMofComment) *)
 
 QT_END_HEADER
 

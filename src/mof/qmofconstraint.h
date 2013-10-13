@@ -43,11 +43,7 @@
 
 #include <QtMof/QtMofGlobal>
 
-// Base class includes
 #include <QtMof/QMofPackageableElement>
-
-// Qt includes
-#include <QtCore/QList>
 
 QT_BEGIN_HEADER
 
@@ -55,45 +51,35 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtMof)
 
-// Forward decls for function parameters
 class QMofElement;
 class QMofNamespace;
 class QMofValueSpecification;
 
-class QMofConstraintPrivate;
-
 class Q_MOF_EXPORT QMofConstraint : public QMofPackageableElement
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QMof")
-
-    Q_PROPERTY(QMofNamespace * context READ context WRITE setContext)
-    Q_PROPERTY(QMofValueSpecification * specification READ specification WRITE setSpecification)
-    Q_PROPERTY(QList<QMofElement *> constrainedElements READ constrainedElements)
-
-    Q_DISABLE_COPY(QMofConstraint)
-    Q_DECLARE_PRIVATE(QMofConstraint)
-
 public:
-    Q_INVOKABLE explicit QMofConstraint(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QMofConstraint();
+    explicit QMofConstraint(bool createQModelingObject = true);
 
-    // Association ends from QMofConstraint
-    Q_INVOKABLE QMofNamespace *context() const;
-    Q_INVOKABLE void setContext(QMofNamespace *context);
-    Q_INVOKABLE QMofValueSpecification *specification() const;
-    Q_INVOKABLE void setSpecification(QMofValueSpecification *specification);
-    Q_INVOKABLE QList<QMofElement *> constrainedElements() const;
-    Q_INVOKABLE void addConstrainedElement(QMofElement *constrainedElement);
-    Q_INVOKABLE void removeConstrainedElement(QMofElement *constrainedElement);
+    virtual QModelingElement *clone() const;
 
-    virtual void setPropertyData();
+    // Owned attributes
+    const QList<QMofElement *> constrainedElements() const;
+    void addConstrainedElement(QMofElement *constrainedElement);
+    void removeConstrainedElement(QMofElement *constrainedElement);
+    QMofNamespace *context() const;
+    void setContext(QMofNamespace *context);
+    QMofValueSpecification *specification() const;
+    void setSpecification(QMofValueSpecification *specification);
 
 protected:
-    explicit QMofConstraint(QMofConstraintPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    QList<QMofElement *> _constrainedElements;
+    QMofNamespace *_context;
+    QMofValueSpecification *_specification;
 };
 
 QT_END_NAMESPACE
+
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE(QMofConstraint) *)
 
 QT_END_HEADER
 

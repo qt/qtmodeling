@@ -39,37 +39,9 @@
 **
 ****************************************************************************/
 #include "qmofrelationship.h"
-#include "qmofrelationship_p.h"
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
-QT_BEGIN_NAMESPACE
-
-QMofRelationshipPrivate::QMofRelationshipPrivate()
-{
-}
-
-QMofRelationshipPrivate::~QMofRelationshipPrivate()
-{
-}
-
-void QMofRelationshipPrivate::addRelatedElement(QMofElement *relatedElement)
-{
-    // This is a read-only derived-union association end
-
-    if (!this->relatedElements.contains(relatedElement)) {
-        this->relatedElements.insert(relatedElement);
-    }
-}
-
-void QMofRelationshipPrivate::removeRelatedElement(QMofElement *relatedElement)
-{
-    // This is a read-only derived-union association end
-
-    if (this->relatedElements.contains(relatedElement)) {
-        this->relatedElements.remove(relatedElement);
-    }
-}
+#include <QtMof/QMofClass>
+#include <QtMof/QMofComment>
 
 /*!
     \class QMofRelationship
@@ -78,51 +50,47 @@ void QMofRelationshipPrivate::removeRelatedElement(QMofElement *relatedElement)
 
     \brief Relationship is an abstract concept that specifies some kind of relationship between elements.
  */
-
-QMofRelationship::QMofRelationship(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QMofElement(*new QMofRelationshipPrivate, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QMofRelationship::QMofRelationship(QMofRelationshipPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QMofElement(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QMofRelationship::~QMofRelationship()
+QMofRelationship::QMofRelationship()
 {
 }
 
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QMofRelationship
-// ---------------------------------------------------------------
+QModelingElement *QMofRelationship::clone() const
+{
+    QMofRelationship *c = new QMofRelationship;
+    foreach (QMofComment *element, ownedComments())
+        c->addOwnedComment(dynamic_cast<QMofComment *>(element->clone()));
+    return c;
+}
+
+// OWNED ATTRIBUTES
 
 /*!
     Specifies the elements related by the Relationship.
  */
-QSet<QMofElement *> QMofRelationship::relatedElements() const
+const QSet<QMofElement *> QMofRelationship::relatedElements() const
 {
-    // This is a read-only derived-union association end
+    // This is a read-only derived union association end
 
-    Q_D(const QMofRelationship);
-    return d->relatedElements;
+    return _relatedElements;
 }
 
-void QMofRelationship::setPropertyData()
+void QMofRelationship::addRelatedElement(QMofElement *relatedElement)
 {
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofRelationship")][QString::fromLatin1("relatedElements")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofRelationship")][QString::fromLatin1("relatedElements")][QtWrappedObjects::IsDerivedUnionRole] = true;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofRelationship")][QString::fromLatin1("relatedElements")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the elements related by the Relationship.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofRelationship")][QString::fromLatin1("relatedElements")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofRelationship")][QString::fromLatin1("relatedElements")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofRelationship")][QString::fromLatin1("relatedElements")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QMof");
+    // This is a read-only derived union association end
 
-    QMofElement::setPropertyData();
+    if (!_relatedElements.contains(relatedElement)) {
+        _relatedElements.insert(relatedElement);
+        if (relatedElement && relatedElement->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(relatedElement->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeRelatedElement(QObject *)));
+    }
 }
 
-QT_END_NAMESPACE
+void QMofRelationship::removeRelatedElement(QMofElement *relatedElement)
+{
+    // This is a read-only derived union association end
 
-#include "moc_qmofrelationship.cpp"
+    if (_relatedElements.contains(relatedElement)) {
+        _relatedElements.remove(relatedElement);
+    }
+}
 

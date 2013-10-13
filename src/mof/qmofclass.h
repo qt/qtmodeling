@@ -43,12 +43,7 @@
 
 #include <QtMof/QtMofGlobal>
 
-// Base class includes
 #include <QtMof/QMofClassifier>
-
-// Qt includes
-#include <QtCore/QList>
-#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
 
@@ -56,61 +51,46 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtMof)
 
-// Forward decls for function parameters
 class QMofNamedElement;
-class QMofClass;
-class QMofProperty;
 class QMofOperation;
-
-class QMofClassPrivate;
+class QMofProperty;
 
 class Q_MOF_EXPORT QMofClass : public QMofClassifier
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QMof")
-
-    Q_PROPERTY(bool isAbstract READ isAbstract WRITE setAbstract RESET unsetAbstract)
-    Q_PROPERTY(QList<QMofClassifier *> nestedClassifiers READ nestedClassifiers)
-    Q_PROPERTY(QList<QMofOperation *> ownedOperations READ ownedOperations)
-    Q_PROPERTY(QList<QMofProperty *> ownedAttributes READ ownedAttributes)
-    Q_PROPERTY(QSet<QMofClass *> superClasses READ superClasses STORED false)
-
-    Q_DISABLE_COPY(QMofClass)
-    Q_DECLARE_PRIVATE(QMofClass)
-
 public:
-    Q_INVOKABLE explicit QMofClass(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QMofClass();
+    explicit QMofClass(bool createQModelingObject = true);
 
-    // Attributes from QMofClass
-    Q_INVOKABLE bool isAbstract() const;
-    Q_INVOKABLE void setAbstract(bool isAbstract);
-    Q_INVOKABLE void unsetAbstract();
+    virtual QModelingElement *clone() const;
 
-    // Association ends from QMofClass
-    Q_INVOKABLE QList<QMofClassifier *> nestedClassifiers() const;
-    Q_INVOKABLE void addNestedClassifier(QMofClassifier *nestedClassifier);
-    Q_INVOKABLE void removeNestedClassifier(QMofClassifier *nestedClassifier);
-    Q_INVOKABLE QList<QMofOperation *> ownedOperations() const;
-    Q_INVOKABLE void addOwnedOperation(QMofOperation *ownedOperation);
-    Q_INVOKABLE void removeOwnedOperation(QMofOperation *ownedOperation);
-    Q_INVOKABLE QList<QMofProperty *> ownedAttributes() const;
-    Q_INVOKABLE void addOwnedAttribute(QMofProperty *ownedAttribute);
-    Q_INVOKABLE void removeOwnedAttribute(QMofProperty *ownedAttribute);
-    Q_INVOKABLE QSet<QMofClass *> superClasses() const;
-    Q_INVOKABLE void addSuperClass(QMofClass *superClass);
-    Q_INVOKABLE void removeSuperClass(QMofClass *superClass);
+    // Owned attributes
+    bool isAbstract() const;
+    void setAbstract(bool isAbstract);
+    const QList<QMofClassifier *> nestedClassifiers() const;
+    void addNestedClassifier(QMofClassifier *nestedClassifier);
+    void removeNestedClassifier(QMofClassifier *nestedClassifier);
+    const QList<QMofProperty *> ownedAttributes() const;
+    void addOwnedAttribute(QMofProperty *ownedAttribute);
+    void removeOwnedAttribute(QMofProperty *ownedAttribute);
+    const QList<QMofOperation *> ownedOperations() const;
+    void addOwnedOperation(QMofOperation *ownedOperation);
+    void removeOwnedOperation(QMofOperation *ownedOperation);
+    const QSet<QMofClass *> superClasses() const;
+    void addSuperClass(QMofClass *superClass);
+    void removeSuperClass(QMofClass *superClass);
 
     // Operations
-    Q_INVOKABLE QSet<QMofNamedElement *> inherit(QSet<QMofNamedElement *> inhs) const;
-
-    virtual void setPropertyData();
+    QSet<QMofNamedElement *> inherit(QSet<QMofNamedElement *> inhs) const;
 
 protected:
-    explicit QMofClass(QMofClassPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    bool _isAbstract;
+    QList<QMofClassifier *> _nestedClassifiers;
+    QList<QMofProperty *> _ownedAttributes;
+    QList<QMofOperation *> _ownedOperations;
 };
 
 QT_END_NAMESPACE
+
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE(QMofClass) *)
 
 QT_END_HEADER
 

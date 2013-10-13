@@ -43,7 +43,6 @@
 
 #include <QtMof/QtMofGlobal>
 
-// Base class includes
 #include <QtMof/QMofObject>
 
 QT_BEGIN_HEADER
@@ -52,48 +51,37 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtMof)
 
-// Forward decls for function parameters
-class QMofElement;
 class QMofAssociation;
-class QMofLink;
-
-class QMofLinkPrivate;
+class QMofElement;
 
 class Q_MOF_EXPORT QMofLink : public QMofObject
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QMof")
-
-    Q_PROPERTY(QMofAssociation * association READ association WRITE setAssociation)
-    Q_PROPERTY(QMofElement * secondElement READ secondElement WRITE setSecondElement)
-    Q_PROPERTY(QMofElement * firstElement READ firstElement WRITE setFirstElement)
-
-    Q_DISABLE_COPY(QMofLink)
-    Q_DECLARE_PRIVATE(QMofLink)
-
 public:
-    Q_INVOKABLE explicit QMofLink(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QMofLink();
+    explicit QMofLink(bool createQModelingObject = true);
 
-    // Attributes from QMofLink
-    Q_INVOKABLE QMofAssociation *association() const;
-    Q_INVOKABLE void setAssociation(QMofAssociation *association);
-    Q_INVOKABLE QMofElement *secondElement() const;
-    Q_INVOKABLE void setSecondElement(QMofElement *secondElement);
-    Q_INVOKABLE QMofElement *firstElement() const;
-    Q_INVOKABLE void setFirstElement(QMofElement *firstElement);
+    virtual QModelingElement *clone() const;
+
+    // Owned attributes
+    QMofElement *firstElement() const;
+    void setFirstElement(QMofElement *firstElement);
+    QMofElement *secondElement() const;
+    void setSecondElement(QMofElement *secondElement);
+    QMofAssociation *association() const;
+    void setAssociation(QMofAssociation *association);
 
     // Operations
-    Q_INVOKABLE bool equals(const QMofLink *otherLink) const;
-    Q_INVOKABLE void delete_();
-
-    virtual void setPropertyData();
+    bool equals(QMofLink *otherLink) const;
+    void delete_();
 
 protected:
-    explicit QMofLink(QMofLinkPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    QMofElement *_firstElement;
+    QMofElement *_secondElement;
+    QMofAssociation *_association;
 };
 
 QT_END_NAMESPACE
+
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE(QMofLink) *)
 
 QT_END_HEADER
 

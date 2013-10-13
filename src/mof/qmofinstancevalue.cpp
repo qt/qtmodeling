@@ -39,22 +39,16 @@
 **
 ****************************************************************************/
 #include "qmofinstancevalue.h"
-#include "qmofinstancevalue_p.h"
 
+#include "private/qmofinstancevalueobject_p.h"
+
+#include <QtMof/QMofClass>
+#include <QtMof/QMofComment>
+#include <QtMof/QMofElement>
 #include <QtMof/QMofInstanceSpecification>
-
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
-QT_BEGIN_NAMESPACE
-
-QMofInstanceValuePrivate::QMofInstanceValuePrivate() :
-    instance(0)
-{
-}
-
-QMofInstanceValuePrivate::~QMofInstanceValuePrivate()
-{
-}
+#include <QtMof/QMofNamedElement>
+#include <QtMof/QMofNamespace>
+#include <QtMof/QMofType>
 
 /*!
     \class QMofInstanceValue
@@ -63,26 +57,28 @@ QMofInstanceValuePrivate::~QMofInstanceValuePrivate()
 
     \brief An instance value is a value specification that identifies an instance.
  */
-
-QMofInstanceValue::QMofInstanceValue(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QMofValueSpecification(*new QMofInstanceValuePrivate, wrapper, parent)
+QMofInstanceValue::QMofInstanceValue(bool createQModelingObject) :
+    _instance(0)
 {
-    setPropertyData();
+    if (createQModelingObject)
+        _qModelingObject = qobject_cast<QModelingObject *>(new QMofInstanceValueObject(this));
 }
 
-QMofInstanceValue::QMofInstanceValue(QMofInstanceValuePrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QMofValueSpecification(dd, wrapper, parent)
+QModelingElement *QMofInstanceValue::clone() const
 {
-    setPropertyData();
+    QMofInstanceValue *c = new QMofInstanceValue;
+    foreach (QMofComment *element, ownedComments())
+        c->addOwnedComment(dynamic_cast<QMofComment *>(element->clone()));
+    c->setName(name());
+    c->setVisibility(visibility());
+    if (type())
+        c->setType(dynamic_cast<QMofType *>(type()->clone()));
+    if (instance())
+        c->setInstance(dynamic_cast<QMofInstanceSpecification *>(instance()->clone()));
+    return c;
 }
 
-QMofInstanceValue::~QMofInstanceValue()
-{
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QMofInstanceValue
-// ---------------------------------------------------------------
+// OWNED ATTRIBUTES
 
 /*!
     The instance that is the specified value.
@@ -91,33 +87,17 @@ QMofInstanceSpecification *QMofInstanceValue::instance() const
 {
     // This is a read-write association end
 
-    Q_D(const QMofInstanceValue);
-    return d->instance;
+    return _instance;
 }
 
 void QMofInstanceValue::setInstance(QMofInstanceSpecification *instance)
 {
     // This is a read-write association end
 
-    Q_D(QMofInstanceValue);
-    if (d->instance != instance) {
-        d->instance = instance;
+    if (_instance != instance) {
+        _instance = instance;
+        if (instance && instance->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(instance->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setInstance()));
     }
 }
-
-void QMofInstanceValue::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofInstanceValue")][QString::fromLatin1("instance")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofInstanceValue")][QString::fromLatin1("instance")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofInstanceValue")][QString::fromLatin1("instance")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The instance that is the specified value.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofInstanceValue")][QString::fromLatin1("instance")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofInstanceValue")][QString::fromLatin1("instance")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofInstanceValue")][QString::fromLatin1("instance")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QMof");
-
-    QMofValueSpecification::setPropertyData();
-}
-
-QT_END_NAMESPACE
-
-#include "moc_qmofinstancevalue.cpp"
 

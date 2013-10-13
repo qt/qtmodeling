@@ -43,12 +43,7 @@
 
 #include <QtMof/QtMofGlobal>
 
-// Base class includes
 #include <QtMof/QMofValueSpecification>
-
-// Qt includes
-#include <QtCore/QString>
-#include <QtCore/QList>
 
 QT_BEGIN_HEADER
 
@@ -56,39 +51,28 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtMof)
 
-class QMofExpressionPrivate;
-
 class Q_MOF_EXPORT QMofExpression : public QMofValueSpecification
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QMof")
-
-    Q_PROPERTY(QString symbol READ symbol WRITE setSymbol)
-    Q_PROPERTY(QList<QMofValueSpecification *> operands READ operands)
-
-    Q_DISABLE_COPY(QMofExpression)
-    Q_DECLARE_PRIVATE(QMofExpression)
-
 public:
-    Q_INVOKABLE explicit QMofExpression(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QMofExpression();
+    explicit QMofExpression(bool createQModelingObject = true);
 
-    // Attributes from QMofExpression
-    Q_INVOKABLE QString symbol() const;
-    Q_INVOKABLE void setSymbol(QString symbol);
+    virtual QModelingElement *clone() const;
 
-    // Association ends from QMofExpression
-    Q_INVOKABLE QList<QMofValueSpecification *> operands() const;
-    Q_INVOKABLE void addOperand(QMofValueSpecification *operand);
-    Q_INVOKABLE void removeOperand(QMofValueSpecification *operand);
-
-    virtual void setPropertyData();
+    // Owned attributes
+    const QList<QMofValueSpecification *> operands() const;
+    void addOperand(QMofValueSpecification *operand);
+    void removeOperand(QMofValueSpecification *operand);
+    QString symbol() const;
+    void setSymbol(QString symbol);
 
 protected:
-    explicit QMofExpression(QMofExpressionPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    QList<QMofValueSpecification *> _operands;
+    QString _symbol;
 };
 
 QT_END_NAMESPACE
+
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE(QMofExpression) *)
 
 QT_END_HEADER
 

@@ -4,12 +4,10 @@ PLUGIN_TYPE = metamodels
 PLUGIN_CLASS_NAME = QMofMetaModelPlugin
 load(qt_plugin)
 
-QT += qml script mof
+QT += mof
 
-HEADERS = qmofmetamodelplugin.h \
-          qmofmetamodel.h
+HEADERS = qmofmetamodelplugin.h
 
-SOURCES = qmofmetamodelplugin.cpp \
-          qmofmetamodel.cpp
+SOURCES = qmofmetamodelplugin.cpp
 
 OTHER_FILES += mof.json

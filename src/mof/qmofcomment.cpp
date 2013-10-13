@@ -39,19 +39,10 @@
 **
 ****************************************************************************/
 #include "qmofcomment.h"
-#include "qmofcomment_p.h"
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
+#include "private/qmofcommentobject_p.h"
 
-QT_BEGIN_NAMESPACE
-
-QMofCommentPrivate::QMofCommentPrivate()
-{
-}
-
-QMofCommentPrivate::~QMofCommentPrivate()
-{
-}
+#include <QtMof/QMofClass>
 
 /*!
     \class QMofComment
@@ -60,70 +51,43 @@ QMofCommentPrivate::~QMofCommentPrivate()
 
     \brief A comment is a textual annotation that can be attached to a set of elements.
  */
-
-QMofComment::QMofComment(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QMofElement(*new QMofCommentPrivate, wrapper, parent)
+QMofComment::QMofComment(bool createQModelingObject)
 {
-    setPropertyData();
+    if (createQModelingObject)
+        _qModelingObject = qobject_cast<QModelingObject *>(new QMofCommentObject(this));
 }
 
-QMofComment::QMofComment(QMofCommentPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QMofElement(dd, wrapper, parent)
+QModelingElement *QMofComment::clone() const
 {
-    setPropertyData();
+    QMofComment *c = new QMofComment;
+    foreach (QMofComment *element, ownedComments())
+        c->addOwnedComment(dynamic_cast<QMofComment *>(element->clone()));
+    foreach (QMofElement *element, annotatedElements())
+        c->addAnnotatedElement(dynamic_cast<QMofElement *>(element->clone()));
+    c->setBody(body());
+    return c;
 }
 
-QMofComment::~QMofComment()
-{
-}
-
-// ---------------------------------------------------------------
-// ATTRIBUTES FROM QMofComment
-// ---------------------------------------------------------------
-
-/*!
-    Specifies a string that is the comment.
- */
-QString QMofComment::body() const
-{
-    // This is a read-write attribute
-
-    Q_D(const QMofComment);
-    return d->body;
-}
-
-void QMofComment::setBody(QString body)
-{
-    // This is a read-write attribute
-
-    Q_D(QMofComment);
-    if (d->body != body) {
-        d->body = body;
-    }
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QMofComment
-// ---------------------------------------------------------------
+// OWNED ATTRIBUTES
 
 /*!
     References the Element(s) being commented.
  */
-QSet<QMofElement *> QMofComment::annotatedElements() const
+const QSet<QMofElement *> QMofComment::annotatedElements() const
 {
     // This is a read-write association end
 
-    Q_D(const QMofComment);
-    return d->annotatedElements;
+    return _annotatedElements;
 }
 
 void QMofComment::addAnnotatedElement(QMofElement *annotatedElement)
 {
     // This is a read-write association end
 
-    Q_D(QMofComment);
-    if (!d->annotatedElements.contains(annotatedElement)) {
-        d->annotatedElements.insert(annotatedElement);
+    if (!_annotatedElements.contains(annotatedElement)) {
+        _annotatedElements.insert(annotatedElement);
+        if (annotatedElement && annotatedElement->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(annotatedElement->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeAnnotatedElement(QObject *)));
     }
 }
 
@@ -131,32 +95,27 @@ void QMofComment::removeAnnotatedElement(QMofElement *annotatedElement)
 {
     // This is a read-write association end
 
-    Q_D(QMofComment);
-    if (d->annotatedElements.contains(annotatedElement)) {
-        d->annotatedElements.remove(annotatedElement);
+    if (_annotatedElements.contains(annotatedElement)) {
+        _annotatedElements.remove(annotatedElement);
     }
 }
 
-void QMofComment::setPropertyData()
+/*!
+    Specifies a string that is the comment.
+ */
+QString QMofComment::body() const
 {
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofComment")][QString::fromLatin1("body")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofComment")][QString::fromLatin1("body")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofComment")][QString::fromLatin1("body")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies a string that is the comment.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofComment")][QString::fromLatin1("body")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofComment")][QString::fromLatin1("body")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofComment")][QString::fromLatin1("body")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    // This is a read-write property
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofComment")][QString::fromLatin1("annotatedElements")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofComment")][QString::fromLatin1("annotatedElements")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofComment")][QString::fromLatin1("annotatedElements")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the Element(s) being commented.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofComment")][QString::fromLatin1("annotatedElements")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofComment")][QString::fromLatin1("annotatedElements")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofComment")][QString::fromLatin1("annotatedElements")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QMof");
-
-    QMofElement::setPropertyData();
+    return _body;
 }
 
-QT_END_NAMESPACE
+void QMofComment::setBody(QString body)
+{
+    // This is a read-write property
 
-#include "moc_qmofcomment.cpp"
+    if (_body != body) {
+        _body = body;
+    }
+}
 

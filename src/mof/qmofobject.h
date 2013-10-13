@@ -43,11 +43,7 @@
 
 #include <QtMof/QtMofGlobal>
 
-// Base class includes
-#include <QtWrappedObjects/QWrappedObject>
-
-// Qt includes
-#include <QtCore/QSet>
+#include <QtModeling/QModelingElement>
 
 QT_BEGIN_HEADER
 
@@ -55,41 +51,32 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtMof)
 
-// Forward decls for function parameters
 class QMofArgument;
 class QMofOperation;
-class QMofObject;
 class QMofProperty;
 
-class QMofObjectPrivate;
-
-class Q_MOF_EXPORT QMofObject : public QWrappedObject
+class Q_MOF_EXPORT QMofObject : public QModelingElement
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QMof")
-
-    Q_DISABLE_COPY(QMofObject)
-    Q_DECLARE_PRIVATE(QMofObject)
-
 public:
-    Q_INVOKABLE explicit QMofObject(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QMofObject();
+    explicit QMofObject(bool createQModelingObject = true);
+
+    virtual QModelingElement *clone() const;
+
 
     // Operations
-    Q_INVOKABLE QMofObject *get(const QMofProperty *property) const;
-    Q_INVOKABLE bool equals(const QMofObject *element) const;
-    Q_INVOKABLE void set(const QMofProperty *property, const QMofObject *value);
-    Q_INVOKABLE bool isSet(const QMofProperty *property) const;
-    Q_INVOKABLE void unset(const QMofProperty *property);
-    Q_INVOKABLE QMofObject *invoke(const QMofOperation *op, QSet<QMofArgument *> arguments);
-
-    virtual void setPropertyData();
+    QMofObject *get(QMofProperty *property) const;
+    bool equals(QMofObject *element) const;
+    void set(QMofProperty *property, QMofObject *value);
+    bool isSet(QMofProperty *property) const;
+    void unset(QMofProperty *property);
+    QMofObject *invoke(QMofOperation *op, QSet<QMofArgument *> arguments);
 
 protected:
-    explicit QMofObject(QMofObjectPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
 QT_END_NAMESPACE
+
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE(QMofObject) *)
 
 QT_END_HEADER
 

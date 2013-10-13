@@ -39,19 +39,15 @@
 **
 ****************************************************************************/
 #include "qmofliteralinteger.h"
-#include "qmofliteralinteger_p.h"
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
+#include "private/qmofliteralintegerobject_p.h"
 
-QT_BEGIN_NAMESPACE
-
-QMofLiteralIntegerPrivate::QMofLiteralIntegerPrivate()
-{
-}
-
-QMofLiteralIntegerPrivate::~QMofLiteralIntegerPrivate()
-{
-}
+#include <QtMof/QMofClass>
+#include <QtMof/QMofComment>
+#include <QtMof/QMofElement>
+#include <QtMof/QMofNamedElement>
+#include <QtMof/QMofNamespace>
+#include <QtMof/QMofType>
 
 /*!
     \class QMofLiteralInteger
@@ -60,56 +56,58 @@ QMofLiteralIntegerPrivate::~QMofLiteralIntegerPrivate()
 
     \brief A literal integer is a specification of an integer value.
  */
-
-QMofLiteralInteger::QMofLiteralInteger(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QMofLiteralSpecification(*new QMofLiteralIntegerPrivate, wrapper, parent)
+QMofLiteralInteger::QMofLiteralInteger(bool createQModelingObject) :
+    _value(0)
 {
-    setPropertyData();
+    if (createQModelingObject)
+        _qModelingObject = qobject_cast<QModelingObject *>(new QMofLiteralIntegerObject(this));
 }
 
-QMofLiteralInteger::QMofLiteralInteger(QMofLiteralIntegerPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QMofLiteralSpecification(dd, wrapper, parent)
+QModelingElement *QMofLiteralInteger::clone() const
 {
-    setPropertyData();
+    QMofLiteralInteger *c = new QMofLiteralInteger;
+    foreach (QMofComment *element, ownedComments())
+        c->addOwnedComment(dynamic_cast<QMofComment *>(element->clone()));
+    c->setName(name());
+    c->setVisibility(visibility());
+    if (type())
+        c->setType(dynamic_cast<QMofType *>(type()->clone()));
+    c->setValue(value());
+    return c;
 }
 
-QMofLiteralInteger::~QMofLiteralInteger()
-{
-}
-
-// ---------------------------------------------------------------
-// ATTRIBUTES FROM QMofLiteralInteger
-// ---------------------------------------------------------------
+// OWNED ATTRIBUTES
 
 /*!
     The specified Integer value.
  */
-qint32 QMofLiteralInteger::value() const
+int QMofLiteralInteger::value() const
 {
-    // This is a read-write attribute
+    // This is a read-write property
 
-    Q_D(const QMofLiteralInteger);
-    return d->value;
+    return _value;
 }
 
-void QMofLiteralInteger::setValue(qint32 value)
+void QMofLiteralInteger::setValue(int value)
 {
-    // This is a read-write attribute
+    // This is a read-write property
 
-    Q_D(QMofLiteralInteger);
-    if (d->value != value) {
-        d->value = value;
+    if (_value != value) {
+        _value = value;
+        _qModelingObject->modifiedResettableProperties() << QStringLiteral("value");
     }
 }
+
+// OPERATIONS
 
 /*!
     The query integerValue() gives the value.
  */
-qint32 QMofLiteralInteger::integerValue() const
+int QMofLiteralInteger::integerValue() const
 {
-    qWarning("QMofLiteralInteger::integerValue: operation to be implemented");
+    qWarning("MofLiteralInteger::integerValue(): to be implemented (operation)");
 
-    return qint32(); // change here to your derived return
+    return int ();
 }
 
 /*!
@@ -117,24 +115,8 @@ qint32 QMofLiteralInteger::integerValue() const
  */
 bool QMofLiteralInteger::isComputable() const
 {
-    qWarning("QMofLiteralInteger::isComputable: operation to be implemented");
+    qWarning("MofLiteralInteger::isComputable(): to be implemented (operation)");
 
-    return bool(); // change here to your derived return
+    return bool ();
 }
-
-void QMofLiteralInteger::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofLiteralInteger")][QString::fromLatin1("value")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofLiteralInteger")][QString::fromLatin1("value")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofLiteralInteger")][QString::fromLatin1("value")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The specified Integer value.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofLiteralInteger")][QString::fromLatin1("value")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofLiteralInteger")][QString::fromLatin1("value")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofLiteralInteger")][QString::fromLatin1("value")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
-
-    QMofLiteralSpecification::setPropertyData();
-}
-
-QT_END_NAMESPACE
-
-#include "moc_qmofliteralinteger.cpp"
 

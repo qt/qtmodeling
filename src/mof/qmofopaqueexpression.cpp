@@ -39,19 +39,15 @@
 **
 ****************************************************************************/
 #include "qmofopaqueexpression.h"
-#include "qmofopaqueexpression_p.h"
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
+#include "private/qmofopaqueexpressionobject_p.h"
 
-QT_BEGIN_NAMESPACE
-
-QMofOpaqueExpressionPrivate::QMofOpaqueExpressionPrivate()
-{
-}
-
-QMofOpaqueExpressionPrivate::~QMofOpaqueExpressionPrivate()
-{
-}
+#include <QtMof/QMofClass>
+#include <QtMof/QMofComment>
+#include <QtMof/QMofElement>
+#include <QtMof/QMofNamedElement>
+#include <QtMof/QMofNamespace>
+#include <QtMof/QMofType>
 
 /*!
     \class QMofOpaqueExpression
@@ -60,97 +56,96 @@ QMofOpaqueExpressionPrivate::~QMofOpaqueExpressionPrivate()
 
     \brief An opaque expression is an uninterpreted textual statement that denotes a (possibly empty) set of values when evaluated in a context.
  */
-
-QMofOpaqueExpression::QMofOpaqueExpression(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QMofValueSpecification(*new QMofOpaqueExpressionPrivate, wrapper, parent)
+QMofOpaqueExpression::QMofOpaqueExpression(bool createQModelingObject)
 {
-    setPropertyData();
+    if (createQModelingObject)
+        _qModelingObject = qobject_cast<QModelingObject *>(new QMofOpaqueExpressionObject(this));
 }
 
-QMofOpaqueExpression::QMofOpaqueExpression(QMofOpaqueExpressionPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QMofValueSpecification(dd, wrapper, parent)
+QModelingElement *QMofOpaqueExpression::clone() const
 {
-    setPropertyData();
+    QMofOpaqueExpression *c = new QMofOpaqueExpression;
+    foreach (QMofComment *element, ownedComments())
+        c->addOwnedComment(dynamic_cast<QMofComment *>(element->clone()));
+    c->setName(name());
+    c->setVisibility(visibility());
+    if (type())
+        c->setType(dynamic_cast<QMofType *>(type()->clone()));
+    foreach (QString element, bodies())
+        c->addBody(element);
+    foreach (QString element, languages())
+        c->addLanguage(element);
+    return c;
 }
 
-QMofOpaqueExpression::~QMofOpaqueExpression()
-{
-}
-
-// ---------------------------------------------------------------
-// ATTRIBUTES FROM QMofOpaqueExpression
-// ---------------------------------------------------------------
+// OWNED ATTRIBUTES
 
 /*!
     The text of the expression, possibly in multiple languages.
  */
-QList<QString> QMofOpaqueExpression::bodies() const
+const QList<QString> QMofOpaqueExpression::bodies() const
 {
-    // This is a read-write attribute
+    // This is a read-write property
 
-    Q_D(const QMofOpaqueExpression);
-    return d->bodies;
+    return _bodies;
 }
 
 void QMofOpaqueExpression::addBody(QString body)
 {
-    // This is a read-write attribute
+    // This is a read-write property
 
-    Q_D(QMofOpaqueExpression);
-    if (!d->bodies.contains(body)) {
-        d->bodies.append(body);
+    if (!_bodies.contains(body)) {
+        _bodies.append(body);
     }
 }
 
 void QMofOpaqueExpression::removeBody(QString body)
 {
-    // This is a read-write attribute
+    // This is a read-write property
 
-    Q_D(QMofOpaqueExpression);
-    if (d->bodies.contains(body)) {
-        d->bodies.removeAll(body);
+    if (_bodies.contains(body)) {
+        _bodies.removeAll(body);
     }
 }
 
 /*!
     Specifies the languages in which the expression is stated. The interpretation of the expression body depends on the languages. If the languages are unspecified, they might be implicit from the expression body or the context. Languages are matched to body strings by order.
  */
-QList<QString> QMofOpaqueExpression::languages() const
+const QList<QString> QMofOpaqueExpression::languages() const
 {
-    // This is a read-write attribute
+    // This is a read-write property
 
-    Q_D(const QMofOpaqueExpression);
-    return d->languages;
+    return _languages;
 }
 
 void QMofOpaqueExpression::addLanguage(QString language)
 {
-    // This is a read-write attribute
+    // This is a read-write property
 
-    Q_D(QMofOpaqueExpression);
-    if (!d->languages.contains(language)) {
-        d->languages.append(language);
+    if (!_languages.contains(language)) {
+        _languages.append(language);
     }
 }
 
 void QMofOpaqueExpression::removeLanguage(QString language)
 {
-    // This is a read-write attribute
+    // This is a read-write property
 
-    Q_D(QMofOpaqueExpression);
-    if (d->languages.contains(language)) {
-        d->languages.removeAll(language);
+    if (_languages.contains(language)) {
+        _languages.removeAll(language);
     }
 }
+
+// OPERATIONS
 
 /*!
     The query isIntegral() tells whether an expression is intended to produce an integer.
  */
 bool QMofOpaqueExpression::isIntegral() const
 {
-    qWarning("QMofOpaqueExpression::isIntegral: operation to be implemented");
+    qWarning("MofOpaqueExpression::isIntegral(): to be implemented (operation)");
 
-    return bool(); // change here to your derived return
+    return bool ();
 }
 
 /*!
@@ -158,9 +153,9 @@ bool QMofOpaqueExpression::isIntegral() const
  */
 bool QMofOpaqueExpression::isNonNegative() const
 {
-    qWarning("QMofOpaqueExpression::isNonNegative: operation to be implemented");
+    qWarning("MofOpaqueExpression::isNonNegative(): to be implemented (operation)");
 
-    return bool(); // change here to your derived return
+    return bool ();
 }
 
 /*!
@@ -168,41 +163,18 @@ bool QMofOpaqueExpression::isNonNegative() const
  */
 bool QMofOpaqueExpression::isPositive() const
 {
-    qWarning("QMofOpaqueExpression::isPositive: operation to be implemented");
+    qWarning("MofOpaqueExpression::isPositive(): to be implemented (operation)");
 
-    return bool(); // change here to your derived return
+    return bool ();
 }
 
 /*!
     The query value() gives an integer value for an expression intended to produce one.
  */
-qint32 QMofOpaqueExpression::value() const
+int QMofOpaqueExpression::value() const
 {
-    qWarning("QMofOpaqueExpression::value: operation to be implemented");
+    qWarning("MofOpaqueExpression::value(): to be implemented (operation)");
 
-    return qint32(); // change here to your derived return
+    return int ();
 }
-
-void QMofOpaqueExpression::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOpaqueExpression")][QString::fromLatin1("bodies")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOpaqueExpression")][QString::fromLatin1("bodies")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOpaqueExpression")][QString::fromLatin1("bodies")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The text of the expression, possibly in multiple languages.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOpaqueExpression")][QString::fromLatin1("bodies")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOpaqueExpression")][QString::fromLatin1("bodies")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOpaqueExpression")][QString::fromLatin1("bodies")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOpaqueExpression")][QString::fromLatin1("languages")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOpaqueExpression")][QString::fromLatin1("languages")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOpaqueExpression")][QString::fromLatin1("languages")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the languages in which the expression is stated. The interpretation of the expression body depends on the languages. If the languages are unspecified, they might be implicit from the expression body or the context. Languages are matched to body strings by order.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOpaqueExpression")][QString::fromLatin1("languages")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOpaqueExpression")][QString::fromLatin1("languages")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofOpaqueExpression")][QString::fromLatin1("languages")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
-
-    QMofValueSpecification::setPropertyData();
-}
-
-QT_END_NAMESPACE
-
-#include "moc_qmofopaqueexpression.cpp"
 

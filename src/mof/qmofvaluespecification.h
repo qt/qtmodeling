@@ -43,13 +43,8 @@
 
 #include <QtMof/QtMofGlobal>
 
-// Base class includes
-#include <QtWrappedObjects/QWrappedObject>
 #include <QtMof/QMofPackageableElement>
 #include <QtMof/QMofTypedElement>
-
-// Qt includes
-#include <QtCore/QString>
 
 QT_BEGIN_HEADER
 
@@ -57,76 +52,29 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtMof)
 
-class QMofValueSpecificationPrivate;
-
-class Q_MOF_EXPORT QMofValueSpecification : public QWrappedObject
+class Q_MOF_EXPORT QMofValueSpecification : public QMofPackageableElement, public QMofTypedElement
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QMof")
-
-    Q_PROPERTY(QSet<QMofElement *> ownedElements READ ownedElements)
-    Q_PROPERTY(QMofElement * owner READ owner)
-    Q_PROPERTY(QSet<QMofComment *> ownedComments READ ownedComments)
-
-    Q_PROPERTY(QString name READ name WRITE setName)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
-    Q_PROPERTY(QMofNamespace * namespace_ READ namespace_)
-
-    Q_PROPERTY(QtMof::VisibilityKind visibility READ visibility WRITE setVisibility RESET unsetVisibility)
-
-    Q_PROPERTY(QMofType * type READ type WRITE setType)
-
-    Q_DISABLE_COPY(QMofValueSpecification)
-    Q_DECLARE_PRIVATE(QMofValueSpecification)
-
 public:
-    Q_INVOKABLE explicit QMofValueSpecification(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QMofValueSpecification();
+    Q_DECL_HIDDEN virtual QModelingElement *clone() const;
 
-    // Association ends from aggregated QMofElement
-    Q_INVOKABLE QSet<QMofElement *> ownedElements() const;
-    Q_INVOKABLE QMofElement *owner() const;
-    Q_INVOKABLE QSet<QMofComment *> ownedComments() const;
-    Q_INVOKABLE void addOwnedComment(QMofComment *ownedComment);
-    Q_INVOKABLE void removeOwnedComment(QMofComment *ownedComment);
-
-    // Attributes from aggregated QMofNamedElement
-    Q_INVOKABLE QString name() const;
-    Q_INVOKABLE void setName(QString name);
-    Q_INVOKABLE QString qualifiedName() const;
-
-    // Association ends from aggregated QMofNamedElement
-    Q_INVOKABLE QMofNamespace *namespace_() const;
-
-    // Attributes from aggregated QMofPackageableElement
-    Q_INVOKABLE QtMof::VisibilityKind visibility() const;
-    Q_INVOKABLE void setVisibility(QtMof::VisibilityKind visibility);
-    Q_INVOKABLE void unsetVisibility();
-
-    // Association ends from aggregated QMofTypedElement
-    Q_INVOKABLE QMofType *type() const;
-    Q_INVOKABLE void setType(QMofType *type);
 
     // Operations
-    Q_INVOKABLE bool booleanValue() const;
-    Q_INVOKABLE qint32 integerValue() const;
-    Q_INVOKABLE bool isComputable() const;
-    Q_INVOKABLE bool isNull() const;
-    Q_INVOKABLE qreal realValue();
-    Q_INVOKABLE QString stringValue() const;
-    Q_INVOKABLE qint32 unlimitedValue() const;
-
-    virtual void setPropertyData();
+    bool booleanValue() const;
+    int integerValue() const;
+    bool isComputable() const;
+    bool isNull() const;
+    double realValue();
+    QString stringValue() const;
+    int unlimitedValue() const;
 
 protected:
-    explicit QMofValueSpecification(QMofValueSpecificationPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    explicit QMofValueSpecification();
 
-private:
-    QMofPackageableElement *_wrappedMofPackageableElement;
-    QMofTypedElement *_wrappedMofTypedElement;
 };
 
 QT_END_NAMESPACE
+
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE(QMofValueSpecification) *)
 
 QT_END_HEADER
 

@@ -39,79 +39,65 @@
 **
 ****************************************************************************/
 #include "qmofreflectivecollection.h"
-#include "qmofreflectivecollection_p.h"
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
+#include "private/qmofreflectivecollectionobject_p.h"
 
-QT_BEGIN_NAMESPACE
+/*!
+    \class QMofReflectiveCollection
 
-QMofReflectiveCollectionPrivate::QMofReflectiveCollectionPrivate()
+    \inmodule QtMof
+
+    \brief
+ */
+QMofReflectiveCollection::QMofReflectiveCollection(bool createQModelingObject) :
+    QMofObject(false)
 {
+    if (createQModelingObject)
+        _qModelingObject = qobject_cast<QModelingObject *>(new QMofReflectiveCollectionObject(this));
 }
 
-QMofReflectiveCollectionPrivate::~QMofReflectiveCollectionPrivate()
+QModelingElement *QMofReflectiveCollection::clone() const
 {
+    QMofReflectiveCollection *c = new QMofReflectiveCollection;
+    return c;
 }
 
+// OPERATIONS
 
-QMofReflectiveCollection::QMofReflectiveCollection(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QMofObject(*new QMofReflectiveCollectionPrivate, wrapper, parent)
+bool QMofReflectiveCollection::add(QMofObject *object)
 {
-    setPropertyData();
-}
+    qWarning("MofReflectiveCollection::add(): to be implemented (operation)");
 
-QMofReflectiveCollection::QMofReflectiveCollection(QMofReflectiveCollectionPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QMofObject(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QMofReflectiveCollection::~QMofReflectiveCollection()
-{
-}
-
-bool QMofReflectiveCollection::add(const QMofObject *object)
-{
-    qWarning("QMofReflectiveCollection::add: operation to be implemented");
     Q_UNUSED(object);
-
-    return bool(); // change here to your derived return
+    return bool ();
 }
 
-bool QMofReflectiveCollection::addAll(const QMofReflectiveCollection *objects)
+bool QMofReflectiveCollection::addAll(QMofReflectiveCollection *objects)
 {
-    qWarning("QMofReflectiveCollection::addAll: operation to be implemented");
-    Q_UNUSED(objects);
+    qWarning("MofReflectiveCollection::addAll(): to be implemented (operation)");
 
-    return bool(); // change here to your derived return
+    Q_UNUSED(objects);
+    return bool ();
 }
 
 void QMofReflectiveCollection::clear()
 {
-    qWarning("QMofReflectiveCollection::clear: operation to be implemented");
+    qWarning("MofReflectiveCollection::clear(): to be implemented (operation)");
+
 }
 
-bool QMofReflectiveCollection::remove(const QMofObject *object)
+bool QMofReflectiveCollection::remove(QMofObject *object)
 {
-    qWarning("QMofReflectiveCollection::remove: operation to be implemented");
+    qWarning("MofReflectiveCollection::remove(): to be implemented (operation)");
+
     Q_UNUSED(object);
-
-    return bool(); // change here to your derived return
+    return bool ();
 }
 
-qint32 QMofReflectiveCollection::size() const
+int QMofReflectiveCollection::size() const
 {
-    qWarning("QMofReflectiveCollection::size: operation to be implemented");
+    qWarning("MofReflectiveCollection::size(): to be implemented (operation)");
 
-    return qint32(); // change here to your derived return
+    return int ();
 }
-
-void QMofReflectiveCollection::setPropertyData()
-{
-    QMofObject::setPropertyData();
-}
-
-QT_END_NAMESPACE
-
-#include "moc_qmofreflectivecollection.cpp"
 

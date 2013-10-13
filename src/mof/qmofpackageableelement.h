@@ -43,10 +43,8 @@
 
 #include <QtMof/QtMofGlobal>
 
-// Base class includes
 #include <QtMof/QMofNamedElement>
 
-// QtMof includes
 #include <QtMof/QtMofNamespace>
 
 QT_BEGIN_HEADER
@@ -55,34 +53,24 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtMof)
 
-class QMofPackageableElementPrivate;
-
-class Q_MOF_EXPORT QMofPackageableElement : public QMofNamedElement
+class Q_MOF_EXPORT QMofPackageableElement : public virtual QMofNamedElement
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QMof")
-
-    Q_PROPERTY(QtMof::VisibilityKind visibility READ visibility WRITE setVisibility RESET unsetVisibility)
-
-    Q_DISABLE_COPY(QMofPackageableElement)
-    Q_DECLARE_PRIVATE(QMofPackageableElement)
-
 public:
-    Q_INVOKABLE explicit QMofPackageableElement(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QMofPackageableElement();
+    Q_DECL_HIDDEN virtual QModelingElement *clone() const;
 
-    // Attributes from QMofPackageableElement
-    Q_INVOKABLE QtMof::VisibilityKind visibility() const;
-    Q_INVOKABLE void setVisibility(QtMof::VisibilityKind visibility);
-    Q_INVOKABLE void unsetVisibility();
-
-    virtual void setPropertyData();
+    // Owned attributes
+    QtMof::VisibilityKind visibility() const;
+    void setVisibility(QtMof::VisibilityKind visibility);
 
 protected:
-    explicit QMofPackageableElement(QMofPackageableElementPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    explicit QMofPackageableElement();
+
+    QtMof::VisibilityKind _visibility;
 };
 
 QT_END_NAMESPACE
+
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE(QMofPackageableElement) *)
 
 QT_END_HEADER
 

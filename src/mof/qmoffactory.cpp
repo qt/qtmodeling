@@ -39,126 +39,104 @@
 **
 ****************************************************************************/
 #include "qmoffactory.h"
-#include "qmoffactory_p.h"
 
-#include <QtMof/QMofLink>
+#include "private/qmoffactoryobject_p.h"
+
 #include <QtMof/QMofArgument>
 #include <QtMof/QMofAssociation>
 #include <QtMof/QMofClass>
+#include <QtMof/QMofDataType>
+#include <QtMof/QMofLink>
 #include <QtMof/QMofObject>
 #include <QtMof/QMofPackage>
-#include <QtMof/QMofDataType>
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
+/*!
+    \class QMofFactory
 
-QT_BEGIN_NAMESPACE
+    \inmodule QtMof
 
-QMofFactoryPrivate::QMofFactoryPrivate() :
-    package(0)
+    \brief
+ */
+QMofFactory::QMofFactory(bool createQModelingObject) :
+    _package(0)
 {
+    if (createQModelingObject)
+        _qModelingObject = qobject_cast<QModelingObject *>(new QMofFactoryObject(this));
 }
 
-QMofFactoryPrivate::~QMofFactoryPrivate()
+QModelingElement *QMofFactory::clone() const
 {
+    QMofFactory *c = new QMofFactory;
+    if (package())
+        c->setPackage(dynamic_cast<QMofPackage *>(package()->clone()));
+    return c;
 }
 
+// OWNED ATTRIBUTES
 
-QMofFactory::QMofFactory(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QMofElement(*new QMofFactoryPrivate, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QMofFactory::QMofFactory(QMofFactoryPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QMofElement(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QMofFactory::~QMofFactory()
-{
-}
-
-// ---------------------------------------------------------------
-// ATTRIBUTES FROM QMofFactory
-// ---------------------------------------------------------------
 
 QMofPackage *QMofFactory::package() const
 {
-    // This is a read-write attribute
+    // This is a read-write property
 
-    Q_D(const QMofFactory);
-    return d->package;
+    return _package;
 }
 
 void QMofFactory::setPackage(QMofPackage *package)
 {
-    // This is a read-write attribute
+    // This is a read-write property
 
-    Q_D(QMofFactory);
-    if (d->package != package) {
-        d->package = package;
+    if (_package != package) {
+        _package = package;
+        if (package && package->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(package->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setPackage()));
     }
 }
 
-QMofObject *QMofFactory::createFromString(const QMofDataType *dataType, QString string)
+// OPERATIONS
+
+QMofObject *QMofFactory::createFromString(QMofDataType *dataType, QString string)
 {
-    qWarning("QMofFactory::createFromString: operation to be implemented");
+    qWarning("MofFactory::createFromString(): to be implemented (operation)");
+
     Q_UNUSED(dataType);
     Q_UNUSED(string);
-
-    return 0; // change here to your derived return
+    return 0;
 }
 
-QString QMofFactory::convertToString(const QMofDataType *dataType, const QMofObject *object)
+QString QMofFactory::convertToString(QMofDataType *dataType, QMofObject *object)
 {
-    qWarning("QMofFactory::convertToString: operation to be implemented");
+    qWarning("MofFactory::convertToString(): to be implemented (operation)");
+
     Q_UNUSED(dataType);
     Q_UNUSED(object);
-
-    return QString(); // change here to your derived return
+    return QString ();
 }
 
-QMofElement *QMofFactory::create(const QMofClass *metaClass)
+QMofElement *QMofFactory::create(QMofClass *metaClass)
 {
-    qWarning("QMofFactory::create: operation to be implemented");
+    qWarning("MofFactory::create(): to be implemented (operation)");
+
     Q_UNUSED(metaClass);
-
-    return 0; // change here to your derived return
+    return 0;
 }
 
-QMofElement *QMofFactory::createElement(const QMofClass *class_, QSet<QMofArgument *> arguments)
+QMofElement *QMofFactory::createElement(QMofClass *class_, QSet<QMofArgument *> arguments)
 {
-    qWarning("QMofFactory::createElement: operation to be implemented");
+    qWarning("MofFactory::createElement(): to be implemented (operation)");
+
     Q_UNUSED(class_);
     Q_UNUSED(arguments);
-
-    return 0; // change here to your derived return
+    return 0;
 }
 
-QMofLink *QMofFactory::createLink(const QMofAssociation *association, const QMofElement *firstElement, const QMofElement *secondElement)
+QMofLink *QMofFactory::createLink(QMofAssociation *association, QMofElement *firstElement, QMofElement *secondElement)
 {
-    qWarning("QMofFactory::createLink: operation to be implemented");
+    qWarning("MofFactory::createLink(): to be implemented (operation)");
+
     Q_UNUSED(association);
     Q_UNUSED(firstElement);
     Q_UNUSED(secondElement);
-
-    return 0; // change here to your derived return
+    return 0;
 }
-
-void QMofFactory::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofFactory")][QString::fromLatin1("package")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofFactory")][QString::fromLatin1("package")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofFactory")][QString::fromLatin1("package")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofFactory")][QString::fromLatin1("package")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofFactory")][QString::fromLatin1("package")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofFactory")][QString::fromLatin1("package")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
-
-    QMofElement::setPropertyData();
-}
-
-QT_END_NAMESPACE
-
-#include "moc_qmoffactory.cpp"
 

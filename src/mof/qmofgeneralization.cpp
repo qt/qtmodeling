@@ -39,24 +39,13 @@
 **
 ****************************************************************************/
 #include "qmofgeneralization.h"
-#include "qmofgeneralization_p.h"
 
+#include "private/qmofgeneralizationobject_p.h"
+
+#include <QtMof/QMofClass>
 #include <QtMof/QMofClassifier>
-
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
-QT_BEGIN_NAMESPACE
-
-QMofGeneralizationPrivate::QMofGeneralizationPrivate() :
-    isSubstitutable(true),
-    specific(0),
-    general(0)
-{
-}
-
-QMofGeneralizationPrivate::~QMofGeneralizationPrivate()
-{
-}
+#include <QtMof/QMofComment>
+#include <QtMof/QMofElement>
 
 /*!
     \class QMofGeneralization
@@ -65,97 +54,29 @@ QMofGeneralizationPrivate::~QMofGeneralizationPrivate()
 
     \brief A generalization is a taxonomic relationship between a more general classifier and a more specific classifier. Each instance of the specific classifier is also an indirect instance of the general classifier. Thus, the specific classifier inherits the features of the more general classifier.
  */
-
-QMofGeneralization::QMofGeneralization(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QMofDirectedRelationship(*new QMofGeneralizationPrivate, wrapper, parent)
+QMofGeneralization::QMofGeneralization(bool createQModelingObject) :
+    _general(0),
+    _isSubstitutable(true),
+    _specific(0)
 {
-    setPropertyData();
+    if (createQModelingObject)
+        _qModelingObject = qobject_cast<QModelingObject *>(new QMofGeneralizationObject(this));
 }
 
-QMofGeneralization::QMofGeneralization(QMofGeneralizationPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QMofDirectedRelationship(dd, wrapper, parent)
+QModelingElement *QMofGeneralization::clone() const
 {
-    setPropertyData();
+    QMofGeneralization *c = new QMofGeneralization;
+    foreach (QMofComment *element, ownedComments())
+        c->addOwnedComment(dynamic_cast<QMofComment *>(element->clone()));
+    if (general())
+        c->setGeneral(dynamic_cast<QMofClassifier *>(general()->clone()));
+    c->setSubstitutable(isSubstitutable());
+    if (specific())
+        c->setSpecific(dynamic_cast<QMofClassifier *>(specific()->clone()));
+    return c;
 }
 
-QMofGeneralization::~QMofGeneralization()
-{
-}
-
-// ---------------------------------------------------------------
-// ATTRIBUTES FROM QMofGeneralization
-// ---------------------------------------------------------------
-
-/*!
-    Indicates whether the specific classifier can be used wherever the general classifier can be used. If true, the execution traces of the specific classifier will be a superset of the execution traces of the general classifier.
- */
-bool QMofGeneralization::isSubstitutable() const
-{
-    // This is a read-write attribute
-
-    Q_D(const QMofGeneralization);
-    return d->isSubstitutable;
-}
-
-void QMofGeneralization::setSubstitutable(bool isSubstitutable)
-{
-    // This is a read-write attribute
-
-    Q_D(QMofGeneralization);
-    if (d->isSubstitutable != isSubstitutable) {
-        d->isSubstitutable = isSubstitutable;
-    }
-    d->modifiedResettableProperties << QString::fromLatin1("isSubstitutable");
-}
-
-void QMofGeneralization::unsetSubstitutable()
-{
-    setSubstitutable(true);
-    Q_D(QMofGeneralization);
-    d->modifiedResettableProperties.removeAll(QString::fromLatin1("isSubstitutable"));
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QMofGeneralization
-// ---------------------------------------------------------------
-
-/*!
-    References the specializing classifier in the Generalization relationship.
- */
-QMofClassifier *QMofGeneralization::specific() const
-{
-    // This is a read-write association end
-
-    Q_D(const QMofGeneralization);
-    return d->specific;
-}
-
-void QMofGeneralization::setSpecific(QMofClassifier *specific)
-{
-    // This is a read-write association end
-
-    Q_D(QMofGeneralization);
-    if (d->specific != specific) {
-        // Adjust opposite property
-        if (d->specific)
-            d->specific->removeGeneralization(this);
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QMofDirectedRelationshipPrivate *>(d))->removeSource(qwrappedobject_cast<QMofElement *>(d->specific));
-
-        d->specific = specific;
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QMofElementPrivate *>(d))->setOwner(qwrappedobject_cast<QMofElement *>(specific));
-        if (specific) {
-            (qwrappedobject_cast<QMofDirectedRelationshipPrivate *>(d))->addSource(qwrappedobject_cast<QMofElement *>(specific));
-        }
-
-        // Adjust opposite property
-        if (specific)
-            specific->addGeneralization(this);
-    }
-}
+// OWNED ATTRIBUTES
 
 /*!
     References the general classifier in the Generalization relationship.
@@ -164,55 +85,75 @@ QMofClassifier *QMofGeneralization::general() const
 {
     // This is a read-write association end
 
-    Q_D(const QMofGeneralization);
-    return d->general;
+    return _general;
 }
 
 void QMofGeneralization::setGeneral(QMofClassifier *general)
 {
     // This is a read-write association end
 
-    Q_D(QMofGeneralization);
-    if (d->general != general) {
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QMofDirectedRelationshipPrivate *>(d))->removeTarget(qwrappedobject_cast<QMofElement *>(d->general));
+    if (_general != general) {
+        // Adjust subsetted properties
+        removeTarget(_general);
 
-        d->general = general;
+        _general = general;
+        if (general && general->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(general->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setGeneral()));
 
-        // Adjust subsetted property(ies)
+        // Adjust subsetted properties
         if (general) {
-            (qwrappedobject_cast<QMofDirectedRelationshipPrivate *>(d))->addTarget(qwrappedobject_cast<QMofElement *>(general));
+            addTarget(general);
         }
     }
 }
 
-void QMofGeneralization::setPropertyData()
+/*!
+    Indicates whether the specific classifier can be used wherever the general classifier can be used. If true, the execution traces of the specific classifier will be a superset of the execution traces of the general classifier.
+ */
+bool QMofGeneralization::isSubstitutable() const
 {
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofGeneralization")][QString::fromLatin1("isSubstitutable")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofGeneralization")][QString::fromLatin1("isSubstitutable")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofGeneralization")][QString::fromLatin1("isSubstitutable")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Indicates whether the specific classifier can be used wherever the general classifier can be used. If true, the execution traces of the specific classifier will be a superset of the execution traces of the general classifier.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofGeneralization")][QString::fromLatin1("isSubstitutable")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofGeneralization")][QString::fromLatin1("isSubstitutable")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofGeneralization")][QString::fromLatin1("isSubstitutable")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    // This is a read-write property
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofGeneralization")][QString::fromLatin1("specific")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofGeneralization")][QString::fromLatin1("specific")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofGeneralization")][QString::fromLatin1("specific")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the specializing classifier in the Generalization relationship.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofGeneralization")][QString::fromLatin1("specific")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofGeneralization")][QString::fromLatin1("specific")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QMofElement::owner QMofDirectedRelationship::sources");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofGeneralization")][QString::fromLatin1("specific")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QMofClassifier::generalization");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofGeneralization")][QString::fromLatin1("general")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofGeneralization")][QString::fromLatin1("general")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofGeneralization")][QString::fromLatin1("general")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("References the general classifier in the Generalization relationship.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofGeneralization")][QString::fromLatin1("general")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofGeneralization")][QString::fromLatin1("general")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QMofDirectedRelationship::targets");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofGeneralization")][QString::fromLatin1("general")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QMof");
-
-    QMofDirectedRelationship::setPropertyData();
+    return _isSubstitutable;
 }
 
-QT_END_NAMESPACE
+void QMofGeneralization::setSubstitutable(bool isSubstitutable)
+{
+    // This is a read-write property
 
-#include "moc_qmofgeneralization.cpp"
+    if (_isSubstitutable != isSubstitutable) {
+        _isSubstitutable = isSubstitutable;
+        _qModelingObject->modifiedResettableProperties() << QStringLiteral("isSubstitutable");
+    }
+}
+
+/*!
+    References the specializing classifier in the Generalization relationship.
+ */
+QMofClassifier *QMofGeneralization::specific() const
+{
+    // This is a read-write association end
+
+    return _specific;
+}
+
+void QMofGeneralization::setSpecific(QMofClassifier *specific)
+{
+    // This is a read-write association end
+
+    if (_specific != specific) {
+        // Adjust subsetted properties
+        removeSource(_specific);
+
+        _specific = specific;
+        if (specific && specific->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(specific->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setSpecific()));
+
+        // Adjust subsetted properties
+        setOwner(specific);
+        if (specific) {
+            addSource(specific);
+        }
+    }
+}
 

@@ -43,11 +43,7 @@
 
 #include <QtMof/QtMofGlobal>
 
-// Base class includes
 #include <QtMof/QMofObject>
-
-// Qt includes
-#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
 
@@ -55,54 +51,46 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtMof)
 
-// Forward decls for function parameters
-class QMofComment;
-class QMofElement;
 class QMofClass;
-
-class QMofElementPrivate;
+class QMofComment;
 
 class Q_MOF_EXPORT QMofElement : public QMofObject
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QMof")
-
-    Q_PROPERTY(QSet<QMofElement *> ownedElements READ ownedElements)
-    Q_PROPERTY(QMofElement * owner READ owner)
-    Q_PROPERTY(QSet<QMofComment *> ownedComments READ ownedComments)
-
-    Q_DISABLE_COPY(QMofElement)
-    Q_DECLARE_PRIVATE(QMofElement)
-
 public:
-    Q_INVOKABLE explicit QMofElement(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QMofElement();
+    Q_DECL_HIDDEN virtual QModelingElement *clone() const;
 
-    // Association ends from QMofElement
-    Q_INVOKABLE QSet<QMofElement *> ownedElements() const;
-    Q_INVOKABLE QMofElement *owner() const;
-    Q_INVOKABLE QSet<QMofComment *> ownedComments() const;
-    Q_INVOKABLE void addOwnedComment(QMofComment *ownedComment);
-    Q_INVOKABLE void removeOwnedComment(QMofComment *ownedComment);
+    // Owned attributes
+    const QSet<QMofComment *> ownedComments() const;
+    void addOwnedComment(QMofComment *ownedComment);
+    void removeOwnedComment(QMofComment *ownedComment);
+    const QSet<QMofElement *> ownedElements() const;
+    Q_DECL_HIDDEN void addOwnedElement(QMofElement *ownedElement);
+    Q_DECL_HIDDEN void removeOwnedElement(QMofElement *ownedElement);
+    QMofElement *owner() const;
+    Q_DECL_HIDDEN void setOwner(QMofElement *owner);
 
     // Operations
-    Q_INVOKABLE QSet<QMofElement *> allOwnedElements() const;
-    Q_INVOKABLE bool mustBeOwned() const;
-    Q_INVOKABLE QMofClass *getMetaClass() const;
-    Q_INVOKABLE QMofElement *container() const;
-    Q_INVOKABLE bool isInstanceOfType(const QMofClass *type, bool includesSubtypes) const;
-    Q_INVOKABLE void delete_();
-
-    virtual void setPropertyData();
+    QSet<QMofElement *> allOwnedElements() const;
+    bool mustBeOwned() const;
+    QMofClass *getMetaClass() const;
+    QMofElement *container() const;
+    bool isInstanceOfType(QMofClass *type, bool includesSubtypes) const;
+    void delete_();
 
 protected:
-    explicit QMofElement(QMofElementPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    explicit QMofElement();
+
+    QSet<QMofComment *> _ownedComments;
+    QSet<QMofElement *> _ownedElements;
+    QMofElement *_owner;
 
 private:
     void allOwnedElements(QSet<QMofElement *> &allOwnedElements_) const;
 };
 
 QT_END_NAMESPACE
+
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE(QMofElement) *)
 
 QT_END_HEADER
 

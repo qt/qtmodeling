@@ -66,8 +66,10 @@
     \class Q${namespace}${className}
 
     \inmodule Qt${namespace}
+[%- IF class.findvalue("ownedComment/body/text() != "" %]
 
     \brief ${class.findvalue("ownedComment/body/text()")}
+[%- END %]
  */
 Q${namespace}${className}::Q${namespace}${className}([%- IF class.findvalue("@isAbstract") != "true" %]bool createQModelingObject[% END %])
 [%- SET found = "false" -%]
@@ -160,7 +162,7 @@ QModelingElement *Q${namespace}${className}::clone() const
     // This is a [% IF readOnly == "" || readOnly == "false" %]read-write[% ELSE %]read-only[% END %][% IF derived == "true" %] derived[% END %][% IF derivedUnion == "true" %] union[% END %] [% IF association != "" %]association end[% ELSE %]property[% END %]
 
     [%- IF derived == "true" && (derivedUnion == "false" || derivedUnion == "") %]
-    qWarning("${namespace}${className}::${PLURALFORM(qtAttribute, attribute)}(): to be implemented (this is a derived [% IF association != "" %]association end[% ELSE %]property[% END %])");
+    qWarning("Q${namespace}${className}::${PLURALFORM(qtAttribute, attribute)}(): to be implemented (this is a derived [% IF association != "" %]association end[% ELSE %]property[% END %])");
 
     [%- IF qtType.match('\*$') %]
     return 0;
@@ -179,7 +181,7 @@ void Q${namespace}${className}::add${attributeName}(${qtType.remove("QSet<").rem
     // This is a [% IF readOnly == "" || readOnly == "false" %]read-write[% ELSE %]read-only[% END %][% IF derived == "true" %] derived[% END %][% IF derivedUnion == "true" %] union[% END %] [% IF association != "" %]association end[% ELSE %]property[% END %]
 
     [%- IF derived == "true" && (derivedUnion == "false" || derivedUnion == "") %]
-    qWarning("${namespace}${className}::add${attributeName}(): to be implemented (this is a derived [% IF association != "" %]association end[% ELSE %]property[% END %])");
+    qWarning("Q${namespace}${className}::add${attributeName}(): to be implemented (this is a derived [% IF association != "" %]association end[% ELSE %]property[% END %])");
     Q_UNUSED(${qtAttribute});
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -240,7 +242,7 @@ void Q${namespace}${className}::remove${attributeName}(${qtType.remove("QSet<").
     // This is a [% IF readOnly == "" || readOnly == "false" %]read-write[% ELSE %]read-only[% END %][% IF derived == "true" %] derived[% END %][% IF derivedUnion == "true" %] union[% END %] [% IF association != "" %]association end[% ELSE %]property[% END %]
 
     [%- IF derived == "true" && (derivedUnion == "false" || derivedUnion == "") %]
-    qWarning("${namespace}${className}::remove${attributeName}(): to be implemented (this is a derived [% IF association != "" %]association end[% ELSE %]property[% END %])");
+    qWarning("Q${namespace}${className}::remove${attributeName}(): to be implemented (this is a derived [% IF association != "" %]association end[% ELSE %]property[% END %])");
     Q_UNUSED(${qtAttribute});
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -299,7 +301,7 @@ void Q${namespace}${className}::set${attributeName.remove("^Is")}([% IF !qtType.
     // This is a [% IF readOnly == "" || readOnly == "false" %]read-write[% ELSE %]read-only[% END %][% IF derived == "true" %] derived[% END %][% IF derivedUnion == "true" %] union[% END %] [% IF association != "" %]association end[% ELSE %]property[% END %]
 
     [%- IF derived == "true" && (derivedUnion == "false" || derivedUnion == "") %]
-    qWarning("${namespace}${className}::set${attributeName.remove("^Is")}(): to be implemented (this is a derived [% IF association != "" %]association end[% ELSE %]property[% END %])");
+    qWarning("Q${namespace}${className}::set${attributeName.remove("^Is")}(): to be implemented (this is a derived [% IF association != "" %]association end[% ELSE %]property[% END %])");
     Q_UNUSED(${qtAttribute});
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -384,7 +386,7 @@ void Q${namespace}${className}::set${attributeName.remove("^Is")}([% IF !qtType.
     [%- END -%]
 )[% IF operation.findvalue("@isQuery") == "true" %] const[% END %]
 {
-    qWarning("${namespace}${className}::${operationName}(): to be implemented (operation)");
+    qWarning("Q${namespace}${className}::${operationName}(): to be implemented (operation)");
 
     [%- FOREACH parameter = parameters -%]
     [%- SET parameterName = parameter.findvalue("@name") -%]

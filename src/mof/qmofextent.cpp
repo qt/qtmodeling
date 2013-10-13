@@ -39,100 +39,85 @@
 **
 ****************************************************************************/
 #include "qmofextent.h"
-#include "qmofextent_p.h"
 
-#include <QtMof/QMofLink>
+#include "private/qmofextentobject_p.h"
+
 #include <QtMof/QMofAssociation>
 #include <QtMof/QMofClass>
-#include <QtMof/QMofReflectiveSequence>
 #include <QtMof/QMofElement>
+#include <QtMof/QMofLink>
+#include <QtMof/QMofReflectiveSequence>
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
+/*!
+    \class QMofExtent
 
-QT_BEGIN_NAMESPACE
+    \inmodule QtMof
 
-QMofExtentPrivate::QMofExtentPrivate()
+    \brief
+ */
+QMofExtent::QMofExtent(bool createQModelingObject) :
+    QMofObject(false)
 {
+    if (createQModelingObject)
+        _qModelingObject = qobject_cast<QModelingObject *>(new QMofExtentObject(this));
 }
 
-QMofExtentPrivate::~QMofExtentPrivate()
+QModelingElement *QMofExtent::clone() const
 {
+    QMofExtent *c = new QMofExtent;
+    return c;
 }
 
-
-QMofExtent::QMofExtent(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QMofObject(*new QMofExtentPrivate, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QMofExtent::QMofExtent(QMofExtentPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QMofObject(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QMofExtent::~QMofExtent()
-{
-}
+// OPERATIONS
 
 bool QMofExtent::useContainment() const
 {
-    qWarning("QMofExtent::useContainment: operation to be implemented");
+    qWarning("MofExtent::useContainment(): to be implemented (operation)");
 
-    return bool(); // change here to your derived return
+    return bool ();
 }
 
 QMofReflectiveSequence *QMofExtent::elements() const
 {
-    qWarning("QMofExtent::elements: operation to be implemented");
+    qWarning("MofExtent::elements(): to be implemented (operation)");
 
-    return 0; // change here to your derived return
+    return 0;
 }
 
-QSet<QMofElement *> QMofExtent::elementsOfType(const QMofClass *type, bool includesSubtypes) const
+QSet<QMofElement *> QMofExtent::elementsOfType(QMofClass *type, bool includesSubtypes) const
 {
-    qWarning("QMofExtent::elementsOfType: operation to be implemented");
+    qWarning("MofExtent::elementsOfType(): to be implemented (operation)");
+
     Q_UNUSED(type);
     Q_UNUSED(includesSubtypes);
-
-    return QSet<QMofElement *>(); // change here to your derived return
+    return QSet<QMofElement *> ();
 }
 
-QSet<QMofLink *> QMofExtent::linksOfType(const QMofAssociation *type) const
+QSet<QMofLink *> QMofExtent::linksOfType(QMofAssociation *type) const
 {
-    qWarning("QMofExtent::linksOfType: operation to be implemented");
+    qWarning("MofExtent::linksOfType(): to be implemented (operation)");
+
     Q_UNUSED(type);
-
-    return QSet<QMofLink *>(); // change here to your derived return
+    return QSet<QMofLink *> ();
 }
 
-QSet<QMofElement *> QMofExtent::linkedElements(const QMofAssociation *association, const QMofElement *endElement, bool end1ToEnd2Direction) const
+QSet<QMofElement *> QMofExtent::linkedElements(QMofAssociation *association, QMofElement *endElement, bool end1ToEnd2Direction) const
 {
-    qWarning("QMofExtent::linkedElements: operation to be implemented");
+    qWarning("MofExtent::linkedElements(): to be implemented (operation)");
+
     Q_UNUSED(association);
     Q_UNUSED(endElement);
     Q_UNUSED(end1ToEnd2Direction);
-
-    return QSet<QMofElement *>(); // change here to your derived return
+    return QSet<QMofElement *> ();
 }
 
-bool QMofExtent::linkExists(const QMofAssociation *association, const QMofElement *firstElement, const QMofElement *secondElement) const
+bool QMofExtent::linkExists(QMofAssociation *association, QMofElement *firstElement, QMofElement *secondElement) const
 {
-    qWarning("QMofExtent::linkExists: operation to be implemented");
+    qWarning("MofExtent::linkExists(): to be implemented (operation)");
+
     Q_UNUSED(association);
     Q_UNUSED(firstElement);
     Q_UNUSED(secondElement);
-
-    return bool(); // change here to your derived return
+    return bool ();
 }
-
-void QMofExtent::setPropertyData()
-{
-    QMofObject::setPropertyData();
-}
-
-QT_END_NAMESPACE
-
-#include "moc_qmofextent.cpp"
 

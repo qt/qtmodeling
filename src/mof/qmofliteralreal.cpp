@@ -39,19 +39,15 @@
 **
 ****************************************************************************/
 #include "qmofliteralreal.h"
-#include "qmofliteralreal_p.h"
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
+#include "private/qmofliteralrealobject_p.h"
 
-QT_BEGIN_NAMESPACE
-
-QMofLiteralRealPrivate::QMofLiteralRealPrivate()
-{
-}
-
-QMofLiteralRealPrivate::~QMofLiteralRealPrivate()
-{
-}
+#include <QtMof/QMofClass>
+#include <QtMof/QMofComment>
+#include <QtMof/QMofElement>
+#include <QtMof/QMofNamedElement>
+#include <QtMof/QMofNamespace>
+#include <QtMof/QMofType>
 
 /*!
     \class QMofLiteralReal
@@ -60,78 +56,63 @@ QMofLiteralRealPrivate::~QMofLiteralRealPrivate()
 
     \brief A literal real is a specification of a real value.
  */
-
-QMofLiteralReal::QMofLiteralReal(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QMofLiteralSpecification(*new QMofLiteralRealPrivate, wrapper, parent)
+QMofLiteralReal::QMofLiteralReal(bool createQModelingObject)
 {
-    setPropertyData();
+    if (createQModelingObject)
+        _qModelingObject = qobject_cast<QModelingObject *>(new QMofLiteralRealObject(this));
 }
 
-QMofLiteralReal::QMofLiteralReal(QMofLiteralRealPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QMofLiteralSpecification(dd, wrapper, parent)
+QModelingElement *QMofLiteralReal::clone() const
 {
-    setPropertyData();
+    QMofLiteralReal *c = new QMofLiteralReal;
+    foreach (QMofComment *element, ownedComments())
+        c->addOwnedComment(dynamic_cast<QMofComment *>(element->clone()));
+    c->setName(name());
+    c->setVisibility(visibility());
+    if (type())
+        c->setType(dynamic_cast<QMofType *>(type()->clone()));
+    c->setValue(value());
+    return c;
 }
 
-QMofLiteralReal::~QMofLiteralReal()
+// OWNED ATTRIBUTES
+
+
+double QMofLiteralReal::value() const
 {
+    // This is a read-write property
+
+    return _value;
 }
 
-// ---------------------------------------------------------------
-// ATTRIBUTES FROM QMofLiteralReal
-// ---------------------------------------------------------------
-
-qreal QMofLiteralReal::value() const
+void QMofLiteralReal::setValue(double value)
 {
-    // This is a read-write attribute
+    // This is a read-write property
 
-    Q_D(const QMofLiteralReal);
-    return d->value;
-}
-
-void QMofLiteralReal::setValue(qreal value)
-{
-    // This is a read-write attribute
-
-    Q_D(QMofLiteralReal);
-    if (d->value != value) {
-        d->value = value;
+    if (_value != value) {
+        _value = value;
     }
 }
+
+// OPERATIONS
 
 /*!
     The query isComputable() is redefined to be true.
  */
 bool QMofLiteralReal::isComputable() const
 {
-    qWarning("QMofLiteralReal::isComputable: operation to be implemented");
+    qWarning("MofLiteralReal::isComputable(): to be implemented (operation)");
 
-    return bool(); // change here to your derived return
+    return bool ();
 }
 
 /*!
     The query realValue() gives the value.
  */
-qreal QMofLiteralReal::realValue() const
+double QMofLiteralReal::realValue() const
 {
-    qWarning("QMofLiteralReal::realValue: operation to be implemented");
+    qWarning("MofLiteralReal::realValue(): to be implemented (operation)");
 
-    return qreal(); // change here to your derived return
+    return double ();
 }
-
-void QMofLiteralReal::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofLiteralReal")][QString::fromLatin1("value")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofLiteralReal")][QString::fromLatin1("value")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofLiteralReal")][QString::fromLatin1("value")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofLiteralReal")][QString::fromLatin1("value")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofLiteralReal")][QString::fromLatin1("value")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofLiteralReal")][QString::fromLatin1("value")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
-
-    QMofLiteralSpecification::setPropertyData();
-}
-
-QT_END_NAMESPACE
-
-#include "moc_qmofliteralreal.cpp"
 

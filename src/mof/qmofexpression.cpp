@@ -39,19 +39,15 @@
 **
 ****************************************************************************/
 #include "qmofexpression.h"
-#include "qmofexpression_p.h"
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
+#include "private/qmofexpressionobject_p.h"
 
-QT_BEGIN_NAMESPACE
-
-QMofExpressionPrivate::QMofExpressionPrivate()
-{
-}
-
-QMofExpressionPrivate::~QMofExpressionPrivate()
-{
-}
+#include <QtMof/QMofClass>
+#include <QtMof/QMofComment>
+#include <QtMof/QMofElement>
+#include <QtMof/QMofNamedElement>
+#include <QtMof/QMofNamespace>
+#include <QtMof/QMofType>
 
 /*!
     \class QMofExpression
@@ -60,73 +56,51 @@ QMofExpressionPrivate::~QMofExpressionPrivate()
 
     \brief An expression represents a node in an expression tree, which may be non-terminal or terminal. It defines a symbol, and has a possibly empty sequence of operands which are value specifications.
  */
-
-QMofExpression::QMofExpression(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QMofValueSpecification(*new QMofExpressionPrivate, wrapper, parent)
+QMofExpression::QMofExpression(bool createQModelingObject)
 {
-    setPropertyData();
+    if (createQModelingObject)
+        _qModelingObject = qobject_cast<QModelingObject *>(new QMofExpressionObject(this));
 }
 
-QMofExpression::QMofExpression(QMofExpressionPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QMofValueSpecification(dd, wrapper, parent)
+QModelingElement *QMofExpression::clone() const
 {
-    setPropertyData();
+    QMofExpression *c = new QMofExpression;
+    foreach (QMofComment *element, ownedComments())
+        c->addOwnedComment(dynamic_cast<QMofComment *>(element->clone()));
+    c->setName(name());
+    c->setVisibility(visibility());
+    if (type())
+        c->setType(dynamic_cast<QMofType *>(type()->clone()));
+    foreach (QMofValueSpecification *element, operands())
+        c->addOperand(dynamic_cast<QMofValueSpecification *>(element->clone()));
+    c->setSymbol(symbol());
+    return c;
 }
 
-QMofExpression::~QMofExpression()
-{
-}
-
-// ---------------------------------------------------------------
-// ATTRIBUTES FROM QMofExpression
-// ---------------------------------------------------------------
-
-/*!
-    The symbol associated with the node in the expression tree.
- */
-QString QMofExpression::symbol() const
-{
-    // This is a read-write attribute
-
-    Q_D(const QMofExpression);
-    return d->symbol;
-}
-
-void QMofExpression::setSymbol(QString symbol)
-{
-    // This is a read-write attribute
-
-    Q_D(QMofExpression);
-    if (d->symbol != symbol) {
-        d->symbol = symbol;
-    }
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QMofExpression
-// ---------------------------------------------------------------
+// OWNED ATTRIBUTES
 
 /*!
     Specifies a sequence of operands.
  */
-QList<QMofValueSpecification *> QMofExpression::operands() const
+const QList<QMofValueSpecification *> QMofExpression::operands() const
 {
     // This is a read-write association end
 
-    Q_D(const QMofExpression);
-    return d->operands;
+    return _operands;
 }
 
 void QMofExpression::addOperand(QMofValueSpecification *operand)
 {
     // This is a read-write association end
 
-    Q_D(QMofExpression);
-    if (!d->operands.contains(operand)) {
-        d->operands.append(operand);
+    if (!_operands.contains(operand)) {
+        _operands.append(operand);
+        if (operand && operand->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(operand->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeOperand(QObject *)));
+        operand->asQModelingObject()->setParent(this->asQModelingObject());
 
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QMofElementPrivate *>(d))->addOwnedElement(qwrappedobject_cast<QMofElement *>(operand));
+        // Adjust subsetted properties
+        addOwnedElement(operand);
     }
 }
 
@@ -134,35 +108,32 @@ void QMofExpression::removeOperand(QMofValueSpecification *operand)
 {
     // This is a read-write association end
 
-    Q_D(QMofExpression);
-    if (d->operands.contains(operand)) {
-        d->operands.removeAll(operand);
+    if (_operands.contains(operand)) {
+        _operands.removeAll(operand);
+        if (operand->asQModelingObject())
+            operand->asQModelingObject()->setParent(0);
 
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QMofElementPrivate *>(d))->removeOwnedElement(qwrappedobject_cast<QMofElement *>(operand));
+        // Adjust subsetted properties
+        removeOwnedElement(operand);
     }
 }
 
-void QMofExpression::setPropertyData()
+/*!
+    The symbol associated with the node in the expression tree.
+ */
+QString QMofExpression::symbol() const
 {
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofExpression")][QString::fromLatin1("symbol")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofExpression")][QString::fromLatin1("symbol")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofExpression")][QString::fromLatin1("symbol")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The symbol associated with the node in the expression tree.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofExpression")][QString::fromLatin1("symbol")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofExpression")][QString::fromLatin1("symbol")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofExpression")][QString::fromLatin1("symbol")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    // This is a read-write property
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofExpression")][QString::fromLatin1("operands")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofExpression")][QString::fromLatin1("operands")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofExpression")][QString::fromLatin1("operands")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies a sequence of operands.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofExpression")][QString::fromLatin1("operands")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofExpression")][QString::fromLatin1("operands")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QMofElement::ownedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofExpression")][QString::fromLatin1("operands")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QMof");
-
-    QMofValueSpecification::setPropertyData();
+    return _symbol;
 }
 
-QT_END_NAMESPACE
+void QMofExpression::setSymbol(QString symbol)
+{
+    // This is a read-write property
 
-#include "moc_qmofexpression.cpp"
+    if (_symbol != symbol) {
+        _symbol = symbol;
+    }
+}
 

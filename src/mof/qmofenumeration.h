@@ -43,11 +43,7 @@
 
 #include <QtMof/QtMofGlobal>
 
-// Base class includes
 #include <QtMof/QMofDataType>
-
-// Qt includes
-#include <QtCore/QList>
 
 QT_BEGIN_HEADER
 
@@ -55,37 +51,27 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtMof)
 
-// Forward decls for function parameters
 class QMofEnumerationLiteral;
-
-class QMofEnumerationPrivate;
 
 class Q_MOF_EXPORT QMofEnumeration : public QMofDataType
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QMof")
-
-    Q_PROPERTY(QList<QMofEnumerationLiteral *> ownedLiterals READ ownedLiterals)
-
-    Q_DISABLE_COPY(QMofEnumeration)
-    Q_DECLARE_PRIVATE(QMofEnumeration)
-
 public:
-    Q_INVOKABLE explicit QMofEnumeration(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QMofEnumeration();
+    explicit QMofEnumeration(bool createQModelingObject = true);
 
-    // Association ends from QMofEnumeration
-    Q_INVOKABLE QList<QMofEnumerationLiteral *> ownedLiterals() const;
-    Q_INVOKABLE void addOwnedLiteral(QMofEnumerationLiteral *ownedLiteral);
-    Q_INVOKABLE void removeOwnedLiteral(QMofEnumerationLiteral *ownedLiteral);
+    virtual QModelingElement *clone() const;
 
-    virtual void setPropertyData();
+    // Owned attributes
+    const QList<QMofEnumerationLiteral *> ownedLiterals() const;
+    void addOwnedLiteral(QMofEnumerationLiteral *ownedLiteral);
+    void removeOwnedLiteral(QMofEnumerationLiteral *ownedLiteral);
 
 protected:
-    explicit QMofEnumeration(QMofEnumerationPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    QList<QMofEnumerationLiteral *> _ownedLiterals;
 };
 
 QT_END_NAMESPACE
+
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE(QMofEnumeration) *)
 
 QT_END_HEADER
 

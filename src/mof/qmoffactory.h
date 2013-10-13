@@ -43,12 +43,7 @@
 
 #include <QtMof/QtMofGlobal>
 
-// Base class includes
 #include <QtMof/QMofElement>
-
-// Qt includes
-#include <QtCore/QString>
-#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
 
@@ -56,49 +51,39 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtMof)
 
-// Forward decls for function parameters
-class QMofLink;
 class QMofArgument;
 class QMofAssociation;
 class QMofClass;
+class QMofDataType;
+class QMofLink;
 class QMofObject;
 class QMofPackage;
-class QMofDataType;
-
-class QMofFactoryPrivate;
 
 class Q_MOF_EXPORT QMofFactory : public QMofElement
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QMof")
-
-    Q_PROPERTY(QMofPackage * package READ package WRITE setPackage)
-
-    Q_DISABLE_COPY(QMofFactory)
-    Q_DECLARE_PRIVATE(QMofFactory)
-
 public:
-    Q_INVOKABLE explicit QMofFactory(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QMofFactory();
+    explicit QMofFactory(bool createQModelingObject = true);
 
-    // Attributes from QMofFactory
-    Q_INVOKABLE QMofPackage *package() const;
-    Q_INVOKABLE void setPackage(QMofPackage *package);
+    virtual QModelingElement *clone() const;
+
+    // Owned attributes
+    QMofPackage *package() const;
+    void setPackage(QMofPackage *package);
 
     // Operations
-    Q_INVOKABLE QMofObject *createFromString(const QMofDataType *dataType, QString string);
-    Q_INVOKABLE QString convertToString(const QMofDataType *dataType, const QMofObject *object);
-    Q_INVOKABLE QMofElement *create(const QMofClass *metaClass);
-    Q_INVOKABLE QMofElement *createElement(const QMofClass *class_, QSet<QMofArgument *> arguments);
-    Q_INVOKABLE QMofLink *createLink(const QMofAssociation *association, const QMofElement *firstElement, const QMofElement *secondElement);
-
-    virtual void setPropertyData();
+    QMofObject *createFromString(QMofDataType *dataType, QString string);
+    QString convertToString(QMofDataType *dataType, QMofObject *object);
+    QMofElement *create(QMofClass *metaClass);
+    QMofElement *createElement(QMofClass *class_, QSet<QMofArgument *> arguments);
+    QMofLink *createLink(QMofAssociation *association, QMofElement *firstElement, QMofElement *secondElement);
 
 protected:
-    explicit QMofFactory(QMofFactoryPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    QMofPackage *_package;
 };
 
 QT_END_NAMESPACE
+
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE(QMofFactory) *)
 
 QT_END_HEADER
 

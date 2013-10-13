@@ -39,23 +39,26 @@
 **
 ****************************************************************************/
 #include "qmofdatatype.h"
-#include "qmofdatatype_p.h"
 
-#include <QtMof/QMofProperty>
-#include <QtMof/QMofOperation>
+#include "private/qmofdatatypeobject_p.h"
+
+#include <QtMof/QMofClass>
+#include <QtMof/QMofComment>
+#include <QtMof/QMofConstraint>
+#include <QtMof/QMofElement>
+#include <QtMof/QMofElementImport>
+#include <QtMof/QMofFeature>
+#include <QtMof/QMofGeneralization>
 #include <QtMof/QMofNamedElement>
-
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
-QT_BEGIN_NAMESPACE
-
-QMofDataTypePrivate::QMofDataTypePrivate()
-{
-}
-
-QMofDataTypePrivate::~QMofDataTypePrivate()
-{
-}
+#include <QtMof/QMofNamespace>
+#include <QtMof/QMofObject>
+#include <QtMof/QMofOperation>
+#include <QtMof/QMofPackage>
+#include <QtMof/QMofPackageableElement>
+#include <QtMof/QMofPackageImport>
+#include <QtMof/QMofProperty>
+#include <QtMof/QMofRedefinableElement>
+#include <QtMof/QMofType>
 
 /*!
     \class QMofDataType
@@ -64,97 +67,71 @@ QMofDataTypePrivate::~QMofDataTypePrivate()
 
     \brief A data type is a type whose instances are identified only by their value. A data type may contain attributes to support the modeling of structured data types.
  */
-
-QMofDataType::QMofDataType(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QMofClassifier(*new QMofDataTypePrivate, wrapper, parent)
+QMofDataType::QMofDataType(bool createQModelingObject)
 {
-    setPropertyData();
+    if (createQModelingObject)
+        _qModelingObject = qobject_cast<QModelingObject *>(new QMofDataTypeObject(this));
 }
 
-QMofDataType::QMofDataType(QMofDataTypePrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QMofClassifier(dd, wrapper, parent)
+QModelingElement *QMofDataType::clone() const
 {
-    setPropertyData();
+    QMofDataType *c = new QMofDataType;
+    foreach (QMofComment *element, ownedComments())
+        c->addOwnedComment(dynamic_cast<QMofComment *>(element->clone()));
+    c->setName(name());
+    c->setVisibility(visibility());
+    if (package())
+        c->setPackage(dynamic_cast<QMofPackage *>(package()->clone()));
+    c->setLeaf(isLeaf());
+    foreach (QMofElementImport *element, elementImports())
+        c->addElementImport(dynamic_cast<QMofElementImport *>(element->clone()));
+    foreach (QMofConstraint *element, ownedRules())
+        c->addOwnedRule(dynamic_cast<QMofConstraint *>(element->clone()));
+    foreach (QMofPackageImport *element, packageImports())
+        c->addPackageImport(dynamic_cast<QMofPackageImport *>(element->clone()));
+    foreach (QMofGeneralization *element, generalizations())
+        c->addGeneralization(dynamic_cast<QMofGeneralization *>(element->clone()));
+    c->setAbstract(isAbstract());
+    c->setFinalSpecialization(isFinalSpecialization());
+    foreach (QMofClassifier *element, redefinedClassifiers())
+        c->addRedefinedClassifier(dynamic_cast<QMofClassifier *>(element->clone()));
+    foreach (QMofProperty *element, ownedAttributes())
+        c->addOwnedAttribute(dynamic_cast<QMofProperty *>(element->clone()));
+    foreach (QMofOperation *element, ownedOperations())
+        c->addOwnedOperation(dynamic_cast<QMofOperation *>(element->clone()));
+    return c;
 }
 
-QMofDataType::~QMofDataType()
-{
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QMofDataType
-// ---------------------------------------------------------------
-
-/*!
-    The Operations owned by the DataType.
- */
-QList<QMofOperation *> QMofDataType::ownedOperations() const
-{
-    // This is a read-write association end
-
-    Q_D(const QMofDataType);
-    return d->ownedOperations;
-}
-
-void QMofDataType::addOwnedOperation(QMofOperation *ownedOperation)
-{
-    // This is a read-write association end
-
-    Q_D(QMofDataType);
-    if (!d->ownedOperations.contains(ownedOperation)) {
-        d->ownedOperations.append(ownedOperation);
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QMofClassifierPrivate *>(d))->addFeature(qwrappedobject_cast<QMofFeature *>(ownedOperation));
-        (qwrappedobject_cast<QMofNamespacePrivate *>(d))->addOwnedMember(qwrappedobject_cast<QMofNamedElement *>(ownedOperation));
-
-        // Adjust opposite property
-        ownedOperation->setDatatype(this);
-    }
-}
-
-void QMofDataType::removeOwnedOperation(QMofOperation *ownedOperation)
-{
-    // This is a read-write association end
-
-    Q_D(QMofDataType);
-    if (d->ownedOperations.contains(ownedOperation)) {
-        d->ownedOperations.removeAll(ownedOperation);
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QMofClassifierPrivate *>(d))->removeFeature(qwrappedobject_cast<QMofFeature *>(ownedOperation));
-        (qwrappedobject_cast<QMofNamespacePrivate *>(d))->removeOwnedMember(qwrappedobject_cast<QMofNamedElement *>(ownedOperation));
-
-        // Adjust opposite property
-        ownedOperation->setDatatype(0);
-    }
-}
+// OWNED ATTRIBUTES
 
 /*!
     The Attributes owned by the DataType.
  */
-QList<QMofProperty *> QMofDataType::ownedAttributes() const
+const QList<QMofProperty *> QMofDataType::ownedAttributes() const
 {
     // This is a read-write association end
 
-    Q_D(const QMofDataType);
-    return d->ownedAttributes;
+    return _ownedAttributes;
 }
 
 void QMofDataType::addOwnedAttribute(QMofProperty *ownedAttribute)
 {
     // This is a read-write association end
 
-    Q_D(QMofDataType);
-    if (!d->ownedAttributes.contains(ownedAttribute)) {
-        d->ownedAttributes.append(ownedAttribute);
+    if (!_ownedAttributes.contains(ownedAttribute)) {
+        _ownedAttributes.append(ownedAttribute);
+        if (ownedAttribute && ownedAttribute->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(ownedAttribute->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeOwnedAttribute(QObject *)));
+        ownedAttribute->asQModelingObject()->setParent(this->asQModelingObject());
 
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QMofClassifierPrivate *>(d))->addAttribute(qwrappedobject_cast<QMofProperty *>(ownedAttribute));
-        (qwrappedobject_cast<QMofNamespacePrivate *>(d))->addOwnedMember(qwrappedobject_cast<QMofNamedElement *>(ownedAttribute));
+        // Adjust subsetted properties
+        addAttribute(ownedAttribute);
+        addOwnedMember(ownedAttribute);
 
-        // Adjust opposite property
-        ownedAttribute->setDatatype(this);
+        // Adjust opposite properties
+        if (ownedAttribute) {
+            ownedAttribute->setDatatype(this);
+        }
     }
 }
 
@@ -162,50 +139,83 @@ void QMofDataType::removeOwnedAttribute(QMofProperty *ownedAttribute)
 {
     // This is a read-write association end
 
-    Q_D(QMofDataType);
-    if (d->ownedAttributes.contains(ownedAttribute)) {
-        d->ownedAttributes.removeAll(ownedAttribute);
+    if (_ownedAttributes.contains(ownedAttribute)) {
+        _ownedAttributes.removeAll(ownedAttribute);
+        if (ownedAttribute->asQModelingObject())
+            ownedAttribute->asQModelingObject()->setParent(0);
 
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QMofClassifierPrivate *>(d))->removeAttribute(qwrappedobject_cast<QMofProperty *>(ownedAttribute));
-        (qwrappedobject_cast<QMofNamespacePrivate *>(d))->removeOwnedMember(qwrappedobject_cast<QMofNamedElement *>(ownedAttribute));
+        // Adjust subsetted properties
+        removeAttribute(ownedAttribute);
+        removeOwnedMember(ownedAttribute);
 
-        // Adjust opposite property
-        ownedAttribute->setDatatype(0);
+        // Adjust opposite properties
+        if (ownedAttribute) {
+            ownedAttribute->setDatatype(0);
+        }
     }
 }
+
+/*!
+    The Operations owned by the DataType.
+ */
+const QList<QMofOperation *> QMofDataType::ownedOperations() const
+{
+    // This is a read-write association end
+
+    return _ownedOperations;
+}
+
+void QMofDataType::addOwnedOperation(QMofOperation *ownedOperation)
+{
+    // This is a read-write association end
+
+    if (!_ownedOperations.contains(ownedOperation)) {
+        _ownedOperations.append(ownedOperation);
+        if (ownedOperation && ownedOperation->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(ownedOperation->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeOwnedOperation(QObject *)));
+        ownedOperation->asQModelingObject()->setParent(this->asQModelingObject());
+
+        // Adjust subsetted properties
+        addFeature(ownedOperation);
+        addOwnedMember(ownedOperation);
+
+        // Adjust opposite properties
+        if (ownedOperation) {
+            ownedOperation->setDatatype(this);
+        }
+    }
+}
+
+void QMofDataType::removeOwnedOperation(QMofOperation *ownedOperation)
+{
+    // This is a read-write association end
+
+    if (_ownedOperations.contains(ownedOperation)) {
+        _ownedOperations.removeAll(ownedOperation);
+        if (ownedOperation->asQModelingObject())
+            ownedOperation->asQModelingObject()->setParent(0);
+
+        // Adjust subsetted properties
+        removeFeature(ownedOperation);
+        removeOwnedMember(ownedOperation);
+
+        // Adjust opposite properties
+        if (ownedOperation) {
+            ownedOperation->setDatatype(0);
+        }
+    }
+}
+
+// OPERATIONS
 
 /*!
     The inherit operation is overridden to exclude redefined properties.
  */
 QSet<QMofNamedElement *> QMofDataType::inherit(QSet<QMofNamedElement *> inhs) const
 {
-    qWarning("QMofDataType::inherit: operation to be implemented");
+    qWarning("MofDataType::inherit(): to be implemented (operation)");
+
     Q_UNUSED(inhs);
-
-    return QSet<QMofNamedElement *>(); // change here to your derived return
+    return QSet<QMofNamedElement *> ();
 }
-
-void QMofDataType::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofDataType")][QString::fromLatin1("ownedOperations")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofDataType")][QString::fromLatin1("ownedOperations")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofDataType")][QString::fromLatin1("ownedOperations")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The Operations owned by the DataType.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofDataType")][QString::fromLatin1("ownedOperations")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofDataType")][QString::fromLatin1("ownedOperations")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QMofClassifier::features QMofNamespace::ownedMembers");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofDataType")][QString::fromLatin1("ownedOperations")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QMofOperation::datatype");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofDataType")][QString::fromLatin1("ownedAttributes")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofDataType")][QString::fromLatin1("ownedAttributes")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofDataType")][QString::fromLatin1("ownedAttributes")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The Attributes owned by the DataType.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofDataType")][QString::fromLatin1("ownedAttributes")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofDataType")][QString::fromLatin1("ownedAttributes")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QMofClassifier::attributes QMofNamespace::ownedMembers");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofDataType")][QString::fromLatin1("ownedAttributes")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QMofProperty::datatype");
-
-    QMofClassifier::setPropertyData();
-}
-
-QT_END_NAMESPACE
-
-#include "moc_qmofdatatype.cpp"
 

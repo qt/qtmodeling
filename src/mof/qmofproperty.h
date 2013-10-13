@@ -43,15 +43,9 @@
 
 #include <QtMof/QtMofGlobal>
 
-// Base class includes
 #include <QtMof/QMofStructuralFeature>
 
-// QtMof includes
 #include <QtMof/QtMofNamespace>
-
-// Qt includes
-#include <QtCore/QString>
-#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
 
@@ -59,99 +53,78 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtMof)
 
-// Forward decls for function parameters
+class QMofAssociation;
+class QMofClass;
+class QMofDataType;
 class QMofRedefinableElement;
-class QMofProperty;
 class QMofType;
 class QMofValueSpecification;
-class QMofClass;
-class QMofAssociation;
-class QMofDataType;
-
-class QMofPropertyPrivate;
 
 class Q_MOF_EXPORT QMofProperty : public QMofStructuralFeature
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QMof")
-
-    Q_PROPERTY(bool isDerived READ isDerived WRITE setDerived RESET unsetDerived)
-    Q_PROPERTY(QString default_ READ default_ WRITE setDefault_ STORED false)
-    Q_PROPERTY(bool isComposite READ isComposite WRITE setComposite STORED false)
-    Q_PROPERTY(bool isReadOnly READ isReadOnly WRITE setReadOnly RESET unsetReadOnly)
-    Q_PROPERTY(bool isID READ isID WRITE setID RESET unsetID)
-    Q_PROPERTY(bool isDerivedUnion READ isDerivedUnion WRITE setDerivedUnion RESET unsetDerivedUnion)
-    Q_PROPERTY(QtMof::AggregationKind aggregation READ aggregation WRITE setAggregation RESET unsetAggregation)
-    Q_PROPERTY(QSet<QMofProperty *> subsettedProperties READ subsettedProperties)
-    Q_PROPERTY(QMofAssociation * owningAssociation READ owningAssociation WRITE setOwningAssociation)
-    Q_PROPERTY(QMofValueSpecification * defaultValue READ defaultValue WRITE setDefaultValue)
-    Q_PROPERTY(QMofClass * class_ READ class_ WRITE setClass_)
-    Q_PROPERTY(QMofProperty * opposite READ opposite WRITE setOpposite STORED false)
-    Q_PROPERTY(QMofDataType * datatype READ datatype WRITE setDatatype)
-    Q_PROPERTY(QSet<QMofProperty *> redefinedProperties READ redefinedProperties)
-    Q_PROPERTY(QMofAssociation * association READ association WRITE setAssociation)
-
-    Q_DISABLE_COPY(QMofProperty)
-    Q_DECLARE_PRIVATE(QMofProperty)
-
 public:
-    Q_INVOKABLE explicit QMofProperty(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QMofProperty();
+    explicit QMofProperty(bool createQModelingObject = true);
 
-    // Attributes from QMofProperty
-    Q_INVOKABLE bool isDerived() const;
-    Q_INVOKABLE void setDerived(bool isDerived);
-    Q_INVOKABLE void unsetDerived();
-    Q_INVOKABLE QString default_() const;
-    Q_INVOKABLE void setDefault_(QString default_);
-    Q_INVOKABLE bool isComposite() const;
-    Q_INVOKABLE void setComposite(bool isComposite);
-    Q_INVOKABLE bool isReadOnly() const;
-    Q_INVOKABLE void setReadOnly(bool isReadOnly);
-    Q_INVOKABLE void unsetReadOnly();
-    Q_INVOKABLE bool isID() const;
-    Q_INVOKABLE void setID(bool isID);
-    Q_INVOKABLE void unsetID();
-    Q_INVOKABLE bool isDerivedUnion() const;
-    Q_INVOKABLE void setDerivedUnion(bool isDerivedUnion);
-    Q_INVOKABLE void unsetDerivedUnion();
-    Q_INVOKABLE QtMof::AggregationKind aggregation() const;
-    Q_INVOKABLE void setAggregation(QtMof::AggregationKind aggregation);
-    Q_INVOKABLE void unsetAggregation();
+    virtual QModelingElement *clone() const;
 
-    // Association ends from QMofProperty
-    Q_INVOKABLE QSet<QMofProperty *> subsettedProperties() const;
-    Q_INVOKABLE void addSubsettedProperty(QMofProperty *subsettedProperty);
-    Q_INVOKABLE void removeSubsettedProperty(QMofProperty *subsettedProperty);
-    Q_INVOKABLE QMofAssociation *owningAssociation() const;
-    Q_INVOKABLE void setOwningAssociation(QMofAssociation *owningAssociation);
-    Q_INVOKABLE QMofValueSpecification *defaultValue() const;
-    Q_INVOKABLE void setDefaultValue(QMofValueSpecification *defaultValue);
-    Q_INVOKABLE QMofClass *class_() const;
-    Q_INVOKABLE void setClass_(QMofClass *class_);
-    Q_INVOKABLE QMofProperty *opposite() const;
-    Q_INVOKABLE void setOpposite(QMofProperty *opposite);
-    Q_INVOKABLE QMofDataType *datatype() const;
-    Q_INVOKABLE void setDatatype(QMofDataType *datatype);
-    Q_INVOKABLE QSet<QMofProperty *> redefinedProperties() const;
-    Q_INVOKABLE void addRedefinedProperty(QMofProperty *redefinedProperty);
-    Q_INVOKABLE void removeRedefinedProperty(QMofProperty *redefinedProperty);
-    Q_INVOKABLE QMofAssociation *association() const;
-    Q_INVOKABLE void setAssociation(QMofAssociation *association);
+    // Owned attributes
+    QtMof::AggregationKind aggregation() const;
+    void setAggregation(QtMof::AggregationKind aggregation);
+    QMofAssociation *association() const;
+    void setAssociation(QMofAssociation *association);
+    QMofClass *class_() const;
+    void setClass(QMofClass *class_);
+    QMofDataType *datatype() const;
+    void setDatatype(QMofDataType *datatype);
+    QString default_() const;
+    void setDefault(QString default_);
+    QMofValueSpecification *defaultValue() const;
+    void setDefaultValue(QMofValueSpecification *defaultValue);
+    bool isComposite() const;
+    void setComposite(bool isComposite);
+    bool isDerived() const;
+    void setDerived(bool isDerived);
+    bool isDerivedUnion() const;
+    void setDerivedUnion(bool isDerivedUnion);
+    bool isID() const;
+    void setID(bool isID);
+    bool isReadOnly() const;
+    void setReadOnly(bool isReadOnly);
+    QMofProperty *opposite() const;
+    void setOpposite(QMofProperty *opposite);
+    QMofAssociation *owningAssociation() const;
+    void setOwningAssociation(QMofAssociation *owningAssociation);
+    const QSet<QMofProperty *> redefinedProperties() const;
+    void addRedefinedProperty(QMofProperty *redefinedProperty);
+    void removeRedefinedProperty(QMofProperty *redefinedProperty);
+    const QSet<QMofProperty *> subsettedProperties() const;
+    void addSubsettedProperty(QMofProperty *subsettedProperty);
+    void removeSubsettedProperty(QMofProperty *subsettedProperty);
 
     // Operations
-    Q_INVOKABLE bool isAttribute(const QMofProperty *p) const;
-    Q_INVOKABLE bool isConsistentWith(const QMofRedefinableElement *redefinee) const;
-    Q_INVOKABLE bool isNavigable() const;
-    Q_INVOKABLE QSet<QMofType *> subsettingContext() const;
-
-    virtual void setPropertyData();
+    bool isAttribute(QMofProperty *p) const;
+    bool isConsistentWith(QMofRedefinableElement *redefinee) const;
+    bool isNavigable() const;
+    QSet<QMofType *> subsettingContext() const;
 
 protected:
-    explicit QMofProperty(QMofPropertyPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    QtMof::AggregationKind _aggregation;
+    QMofAssociation *_association;
+    QMofClass *_class_;
+    QMofDataType *_datatype;
+    QMofValueSpecification *_defaultValue;
+    bool _isDerived;
+    bool _isDerivedUnion;
+    bool _isID;
+    bool _isReadOnly;
+    QMofAssociation *_owningAssociation;
+    QSet<QMofProperty *> _redefinedProperties;
+    QSet<QMofProperty *> _subsettedProperties;
 };
 
 QT_END_NAMESPACE
+
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE(QMofProperty) *)
 
 QT_END_HEADER
 

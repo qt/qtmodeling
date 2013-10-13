@@ -39,19 +39,27 @@
 **
 ****************************************************************************/
 #include "qmofprimitivetype.h"
-#include "qmofprimitivetype_p.h"
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
+#include "private/qmofprimitivetypeobject_p.h"
 
-QT_BEGIN_NAMESPACE
-
-QMofPrimitiveTypePrivate::QMofPrimitiveTypePrivate()
-{
-}
-
-QMofPrimitiveTypePrivate::~QMofPrimitiveTypePrivate()
-{
-}
+#include <QtMof/QMofClass>
+#include <QtMof/QMofClassifier>
+#include <QtMof/QMofComment>
+#include <QtMof/QMofConstraint>
+#include <QtMof/QMofElement>
+#include <QtMof/QMofElementImport>
+#include <QtMof/QMofFeature>
+#include <QtMof/QMofGeneralization>
+#include <QtMof/QMofNamedElement>
+#include <QtMof/QMofNamespace>
+#include <QtMof/QMofObject>
+#include <QtMof/QMofOperation>
+#include <QtMof/QMofPackage>
+#include <QtMof/QMofPackageableElement>
+#include <QtMof/QMofPackageImport>
+#include <QtMof/QMofProperty>
+#include <QtMof/QMofRedefinableElement>
+#include <QtMof/QMofType>
 
 /*!
     \class QMofPrimitiveType
@@ -60,29 +68,39 @@ QMofPrimitiveTypePrivate::~QMofPrimitiveTypePrivate()
 
     \brief A primitive type defines a predefined data type, without any relevant substructure (i.e., it has no parts in the context of UML). A primitive datatype may have an algebra and operations defined outside of UML, for example, mathematically.
  */
-
-QMofPrimitiveType::QMofPrimitiveType(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QMofDataType(*new QMofPrimitiveTypePrivate, wrapper, parent)
+QMofPrimitiveType::QMofPrimitiveType(bool createQModelingObject) :
+    QMofDataType(false)
 {
-    setPropertyData();
+    if (createQModelingObject)
+        _qModelingObject = qobject_cast<QModelingObject *>(new QMofPrimitiveTypeObject(this));
 }
 
-QMofPrimitiveType::QMofPrimitiveType(QMofPrimitiveTypePrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QMofDataType(dd, wrapper, parent)
+QModelingElement *QMofPrimitiveType::clone() const
 {
-    setPropertyData();
+    QMofPrimitiveType *c = new QMofPrimitiveType;
+    foreach (QMofComment *element, ownedComments())
+        c->addOwnedComment(dynamic_cast<QMofComment *>(element->clone()));
+    c->setName(name());
+    c->setVisibility(visibility());
+    if (package())
+        c->setPackage(dynamic_cast<QMofPackage *>(package()->clone()));
+    c->setLeaf(isLeaf());
+    foreach (QMofElementImport *element, elementImports())
+        c->addElementImport(dynamic_cast<QMofElementImport *>(element->clone()));
+    foreach (QMofConstraint *element, ownedRules())
+        c->addOwnedRule(dynamic_cast<QMofConstraint *>(element->clone()));
+    foreach (QMofPackageImport *element, packageImports())
+        c->addPackageImport(dynamic_cast<QMofPackageImport *>(element->clone()));
+    foreach (QMofGeneralization *element, generalizations())
+        c->addGeneralization(dynamic_cast<QMofGeneralization *>(element->clone()));
+    c->setAbstract(isAbstract());
+    c->setFinalSpecialization(isFinalSpecialization());
+    foreach (QMofClassifier *element, redefinedClassifiers())
+        c->addRedefinedClassifier(dynamic_cast<QMofClassifier *>(element->clone()));
+    foreach (QMofProperty *element, ownedAttributes())
+        c->addOwnedAttribute(dynamic_cast<QMofProperty *>(element->clone()));
+    foreach (QMofOperation *element, ownedOperations())
+        c->addOwnedOperation(dynamic_cast<QMofOperation *>(element->clone()));
+    return c;
 }
-
-QMofPrimitiveType::~QMofPrimitiveType()
-{
-}
-
-void QMofPrimitiveType::setPropertyData()
-{
-    QMofDataType::setPropertyData();
-}
-
-QT_END_NAMESPACE
-
-#include "moc_qmofprimitivetype.cpp"
 

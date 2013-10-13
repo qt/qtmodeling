@@ -39,19 +39,15 @@
 **
 ****************************************************************************/
 #include "qmofliteralnull.h"
-#include "qmofliteralnull_p.h"
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
+#include "private/qmofliteralnullobject_p.h"
 
-QT_BEGIN_NAMESPACE
-
-QMofLiteralNullPrivate::QMofLiteralNullPrivate()
-{
-}
-
-QMofLiteralNullPrivate::~QMofLiteralNullPrivate()
-{
-}
+#include <QtMof/QMofClass>
+#include <QtMof/QMofComment>
+#include <QtMof/QMofElement>
+#include <QtMof/QMofNamedElement>
+#include <QtMof/QMofNamespace>
+#include <QtMof/QMofType>
 
 /*!
     \class QMofLiteralNull
@@ -60,31 +56,34 @@ QMofLiteralNullPrivate::~QMofLiteralNullPrivate()
 
     \brief A literal null specifies the lack of a value.
  */
-
-QMofLiteralNull::QMofLiteralNull(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QMofLiteralSpecification(*new QMofLiteralNullPrivate, wrapper, parent)
+QMofLiteralNull::QMofLiteralNull(bool createQModelingObject)
 {
-    setPropertyData();
+    if (createQModelingObject)
+        _qModelingObject = qobject_cast<QModelingObject *>(new QMofLiteralNullObject(this));
 }
 
-QMofLiteralNull::QMofLiteralNull(QMofLiteralNullPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QMofLiteralSpecification(dd, wrapper, parent)
+QModelingElement *QMofLiteralNull::clone() const
 {
-    setPropertyData();
+    QMofLiteralNull *c = new QMofLiteralNull;
+    foreach (QMofComment *element, ownedComments())
+        c->addOwnedComment(dynamic_cast<QMofComment *>(element->clone()));
+    c->setName(name());
+    c->setVisibility(visibility());
+    if (type())
+        c->setType(dynamic_cast<QMofType *>(type()->clone()));
+    return c;
 }
 
-QMofLiteralNull::~QMofLiteralNull()
-{
-}
+// OPERATIONS
 
 /*!
     The query isComputable() is redefined to be true.
  */
 bool QMofLiteralNull::isComputable() const
 {
-    qWarning("QMofLiteralNull::isComputable: operation to be implemented");
+    qWarning("MofLiteralNull::isComputable(): to be implemented (operation)");
 
-    return bool(); // change here to your derived return
+    return bool ();
 }
 
 /*!
@@ -92,17 +91,8 @@ bool QMofLiteralNull::isComputable() const
  */
 bool QMofLiteralNull::isNull() const
 {
-    qWarning("QMofLiteralNull::isNull: operation to be implemented");
+    qWarning("MofLiteralNull::isNull(): to be implemented (operation)");
 
-    return bool(); // change here to your derived return
+    return bool ();
 }
-
-void QMofLiteralNull::setPropertyData()
-{
-    QMofLiteralSpecification::setPropertyData();
-}
-
-QT_END_NAMESPACE
-
-#include "moc_qmofliteralnull.cpp"
 

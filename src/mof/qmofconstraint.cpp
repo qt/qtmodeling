@@ -39,25 +39,15 @@
 **
 ****************************************************************************/
 #include "qmofconstraint.h"
-#include "qmofconstraint_p.h"
 
+#include "private/qmofconstraintobject_p.h"
+
+#include <QtMof/QMofClass>
+#include <QtMof/QMofComment>
 #include <QtMof/QMofElement>
+#include <QtMof/QMofNamedElement>
 #include <QtMof/QMofNamespace>
 #include <QtMof/QMofValueSpecification>
-
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
-QT_BEGIN_NAMESPACE
-
-QMofConstraintPrivate::QMofConstraintPrivate() :
-    context(0),
-    specification(0)
-{
-}
-
-QMofConstraintPrivate::~QMofConstraintPrivate()
-{
-}
 
 /*!
     \class QMofConstraint
@@ -66,26 +56,61 @@ QMofConstraintPrivate::~QMofConstraintPrivate()
 
     \brief A constraint is a condition or restriction expressed in natural language text or in a machine readable language for the purpose of declaring some of the semantics of an element.
  */
-
-QMofConstraint::QMofConstraint(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QMofPackageableElement(*new QMofConstraintPrivate, wrapper, parent)
+QMofConstraint::QMofConstraint(bool createQModelingObject) :
+    _context(0),
+    _specification(0)
 {
-    setPropertyData();
+    if (createQModelingObject)
+        _qModelingObject = qobject_cast<QModelingObject *>(new QMofConstraintObject(this));
 }
 
-QMofConstraint::QMofConstraint(QMofConstraintPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QMofPackageableElement(dd, wrapper, parent)
+QModelingElement *QMofConstraint::clone() const
 {
-    setPropertyData();
+    QMofConstraint *c = new QMofConstraint;
+    foreach (QMofComment *element, ownedComments())
+        c->addOwnedComment(dynamic_cast<QMofComment *>(element->clone()));
+    c->setName(name());
+    c->setVisibility(visibility());
+    foreach (QMofElement *element, constrainedElements())
+        c->addConstrainedElement(dynamic_cast<QMofElement *>(element->clone()));
+    if (context())
+        c->setContext(dynamic_cast<QMofNamespace *>(context()->clone()));
+    if (specification())
+        c->setSpecification(dynamic_cast<QMofValueSpecification *>(specification()->clone()));
+    return c;
 }
 
-QMofConstraint::~QMofConstraint()
+// OWNED ATTRIBUTES
+
+/*!
+    The ordered set of Elements referenced by this Constraint.
+ */
+const QList<QMofElement *> QMofConstraint::constrainedElements() const
 {
+    // This is a read-write association end
+
+    return _constrainedElements;
 }
 
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QMofConstraint
-// ---------------------------------------------------------------
+void QMofConstraint::addConstrainedElement(QMofElement *constrainedElement)
+{
+    // This is a read-write association end
+
+    if (!_constrainedElements.contains(constrainedElement)) {
+        _constrainedElements.append(constrainedElement);
+        if (constrainedElement && constrainedElement->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(constrainedElement->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeConstrainedElement(QObject *)));
+    }
+}
+
+void QMofConstraint::removeConstrainedElement(QMofElement *constrainedElement)
+{
+    // This is a read-write association end
+
+    if (_constrainedElements.contains(constrainedElement)) {
+        _constrainedElements.removeAll(constrainedElement);
+    }
+}
 
 /*!
     Specifies the namespace that owns the NamedElement.
@@ -94,28 +119,22 @@ QMofNamespace *QMofConstraint::context() const
 {
     // This is a read-write association end
 
-    Q_D(const QMofConstraint);
-    return d->context;
+    return _context;
 }
 
 void QMofConstraint::setContext(QMofNamespace *context)
 {
     // This is a read-write association end
 
-    Q_D(QMofConstraint);
-    if (d->context != context) {
-        // Adjust opposite property
-        if (d->context)
-            d->context->removeOwnedRule(this);
+    if (_context != context) {
+        // Adjust subsetted properties
 
-        d->context = context;
+        _context = context;
+        if (context && context->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(context->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setContext()));
 
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QMofNamedElementPrivate *>(d))->setNamespace_(qwrappedobject_cast<QMofNamespace *>(context));
-
-        // Adjust opposite property
-        if (context)
-            context->addOwnedRule(this);
+        // Adjust subsetted properties
+        setNamespace(context);
     }
 }
 
@@ -126,86 +145,26 @@ QMofValueSpecification *QMofConstraint::specification() const
 {
     // This is a read-write association end
 
-    Q_D(const QMofConstraint);
-    return d->specification;
+    return _specification;
 }
 
 void QMofConstraint::setSpecification(QMofValueSpecification *specification)
 {
     // This is a read-write association end
 
-    Q_D(QMofConstraint);
-    if (d->specification != specification) {
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QMofElementPrivate *>(d))->removeOwnedElement(qwrappedobject_cast<QMofElement *>(d->specification));
+    if (_specification != specification) {
+        // Adjust subsetted properties
+        removeOwnedElement(_specification);
 
-        d->specification = specification;
+        _specification = specification;
+        if (specification && specification->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(specification->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setSpecification()));
+        specification->asQModelingObject()->setParent(this->asQModelingObject());
 
-        // Adjust subsetted property(ies)
+        // Adjust subsetted properties
         if (specification) {
-            (qwrappedobject_cast<QMofElementPrivate *>(d))->addOwnedElement(qwrappedobject_cast<QMofElement *>(specification));
+            addOwnedElement(specification);
         }
     }
 }
-
-/*!
-    The ordered set of Elements referenced by this Constraint.
- */
-QList<QMofElement *> QMofConstraint::constrainedElements() const
-{
-    // This is a read-write association end
-
-    Q_D(const QMofConstraint);
-    return d->constrainedElements;
-}
-
-void QMofConstraint::addConstrainedElement(QMofElement *constrainedElement)
-{
-    // This is a read-write association end
-
-    Q_D(QMofConstraint);
-    if (!d->constrainedElements.contains(constrainedElement)) {
-        d->constrainedElements.append(constrainedElement);
-    }
-}
-
-void QMofConstraint::removeConstrainedElement(QMofElement *constrainedElement)
-{
-    // This is a read-write association end
-
-    Q_D(QMofConstraint);
-    if (d->constrainedElements.contains(constrainedElement)) {
-        d->constrainedElements.removeAll(constrainedElement);
-    }
-}
-
-void QMofConstraint::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofConstraint")][QString::fromLatin1("context")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofConstraint")][QString::fromLatin1("context")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofConstraint")][QString::fromLatin1("context")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the namespace that owns the NamedElement.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofConstraint")][QString::fromLatin1("context")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofConstraint")][QString::fromLatin1("context")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QMofNamedElement::namespace");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofConstraint")][QString::fromLatin1("context")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QMofNamespace::ownedRule");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofConstraint")][QString::fromLatin1("specification")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofConstraint")][QString::fromLatin1("specification")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofConstraint")][QString::fromLatin1("specification")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A condition that must be true when evaluated in order for the constraint to be satisfied.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofConstraint")][QString::fromLatin1("specification")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofConstraint")][QString::fromLatin1("specification")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QMofElement::ownedElements");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofConstraint")][QString::fromLatin1("specification")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QMof");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofConstraint")][QString::fromLatin1("constrainedElements")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofConstraint")][QString::fromLatin1("constrainedElements")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofConstraint")][QString::fromLatin1("constrainedElements")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The ordered set of Elements referenced by this Constraint.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofConstraint")][QString::fromLatin1("constrainedElements")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofConstraint")][QString::fromLatin1("constrainedElements")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofConstraint")][QString::fromLatin1("constrainedElements")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QMof");
-
-    QMofPackageableElement::setPropertyData();
-}
-
-QT_END_NAMESPACE
-
-#include "moc_qmofconstraint.cpp"
 

@@ -39,93 +39,79 @@
 **
 ****************************************************************************/
 #include "qmofobject.h"
-#include "qmofobject_p.h"
+
+#include "private/qmofobjectobject_p.h"
 
 #include <QtMof/QMofArgument>
 #include <QtMof/QMofOperation>
 #include <QtMof/QMofProperty>
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
+/*!
+    \class QMofObject
 
-QT_BEGIN_NAMESPACE
+    \inmodule QtMof
 
-QMofObjectPrivate::QMofObjectPrivate()
+    \brief
+ */
+QMofObject::QMofObject(bool createQModelingObject)
 {
+    if (createQModelingObject)
+        _qModelingObject = qobject_cast<QModelingObject *>(new QMofObjectObject(this));
 }
 
-QMofObjectPrivate::~QMofObjectPrivate()
+QModelingElement *QMofObject::clone() const
 {
+    QMofObject *c = new QMofObject;
+    return c;
 }
 
+// OPERATIONS
 
-QMofObject::QMofObject(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QWrappedObject(*new QMofObjectPrivate, wrapper, parent)
+QMofObject *QMofObject::get(QMofProperty *property) const
 {
-    setPropertyData();
-}
+    qWarning("MofObject::get(): to be implemented (operation)");
 
-QMofObject::QMofObject(QMofObjectPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QWrappedObject(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QMofObject::~QMofObject()
-{
-}
-
-QMofObject *QMofObject::get(const QMofProperty *property) const
-{
-    qWarning("QMofObject::get: operation to be implemented");
     Q_UNUSED(property);
-
-    return 0; // change here to your derived return
+    return 0;
 }
 
-bool QMofObject::equals(const QMofObject *element) const
+bool QMofObject::equals(QMofObject *element) const
 {
-    qWarning("QMofObject::equals: operation to be implemented");
+    qWarning("MofObject::equals(): to be implemented (operation)");
+
     Q_UNUSED(element);
-
-    return bool(); // change here to your derived return
+    return bool ();
 }
 
-void QMofObject::set(const QMofProperty *property, const QMofObject *value)
+void QMofObject::set(QMofProperty *property, QMofObject *value)
 {
-    qWarning("QMofObject::set: operation to be implemented");
+    qWarning("MofObject::set(): to be implemented (operation)");
+
     Q_UNUSED(property);
     Q_UNUSED(value);
 }
 
-bool QMofObject::isSet(const QMofProperty *property) const
+bool QMofObject::isSet(QMofProperty *property) const
 {
-    qWarning("QMofObject::isSet: operation to be implemented");
-    Q_UNUSED(property);
+    qWarning("MofObject::isSet(): to be implemented (operation)");
 
-    return bool(); // change here to your derived return
+    Q_UNUSED(property);
+    return bool ();
 }
 
-void QMofObject::unset(const QMofProperty *property)
+void QMofObject::unset(QMofProperty *property)
 {
-    qWarning("QMofObject::unset: operation to be implemented");
+    qWarning("MofObject::unset(): to be implemented (operation)");
+
     Q_UNUSED(property);
 }
 
-QMofObject *QMofObject::invoke(const QMofOperation *op, QSet<QMofArgument *> arguments)
+QMofObject *QMofObject::invoke(QMofOperation *op, QSet<QMofArgument *> arguments)
 {
-    qWarning("QMofObject::invoke: operation to be implemented");
+    qWarning("MofObject::invoke(): to be implemented (operation)");
+
     Q_UNUSED(op);
     Q_UNUSED(arguments);
-
-    return 0; // change here to your derived return
+    return 0;
 }
-
-void QMofObject::setPropertyData()
-{
-    QWrappedObject::setPropertyData();
-}
-
-QT_END_NAMESPACE
-
-#include "moc_qmofobject.cpp"
 

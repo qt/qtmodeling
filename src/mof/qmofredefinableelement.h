@@ -43,11 +43,7 @@
 
 #include <QtMof/QtMofGlobal>
 
-// Base class includes
 #include <QtMof/QMofNamedElement>
-
-// Qt includes
-#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
 
@@ -55,48 +51,38 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtMof)
 
-// Forward decls for function parameters
-class QMofRedefinableElement;
 class QMofClassifier;
 
-class QMofRedefinableElementPrivate;
-
-class Q_MOF_EXPORT QMofRedefinableElement : public QMofNamedElement
+class Q_MOF_EXPORT QMofRedefinableElement : public virtual QMofNamedElement
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QMof")
-
-    Q_PROPERTY(bool isLeaf READ isLeaf WRITE setLeaf RESET unsetLeaf)
-    Q_PROPERTY(QSet<QMofRedefinableElement *> redefinedElements READ redefinedElements)
-    Q_PROPERTY(QSet<QMofClassifier *> redefinitionContexts READ redefinitionContexts)
-
-    Q_DISABLE_COPY(QMofRedefinableElement)
-    Q_DECLARE_PRIVATE(QMofRedefinableElement)
-
 public:
-    Q_INVOKABLE explicit QMofRedefinableElement(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QMofRedefinableElement();
+    Q_DECL_HIDDEN virtual QModelingElement *clone() const;
 
-    // Attributes from QMofRedefinableElement
-    Q_INVOKABLE bool isLeaf() const;
-    Q_INVOKABLE void setLeaf(bool isLeaf);
-    Q_INVOKABLE void unsetLeaf();
-
-    // Association ends from QMofRedefinableElement
-    Q_INVOKABLE QSet<QMofRedefinableElement *> redefinedElements() const;
-    Q_INVOKABLE QSet<QMofClassifier *> redefinitionContexts() const;
+    // Owned attributes
+    bool isLeaf() const;
+    void setLeaf(bool isLeaf);
+    const QSet<QMofRedefinableElement *> redefinedElements() const;
+    Q_DECL_HIDDEN void addRedefinedElement(QMofRedefinableElement *redefinedElement);
+    Q_DECL_HIDDEN void removeRedefinedElement(QMofRedefinableElement *redefinedElement);
+    const QSet<QMofClassifier *> redefinitionContexts() const;
+    Q_DECL_HIDDEN void addRedefinitionContext(QMofClassifier *redefinitionContext);
+    Q_DECL_HIDDEN void removeRedefinitionContext(QMofClassifier *redefinitionContext);
 
     // Operations
-    Q_INVOKABLE bool isConsistentWith(const QMofRedefinableElement *redefinee) const;
-    Q_INVOKABLE bool isRedefinitionContextValid(const QMofRedefinableElement *redefined) const;
-
-    virtual void setPropertyData();
+    bool isConsistentWith(QMofRedefinableElement *redefinee) const;
+    bool isRedefinitionContextValid(QMofRedefinableElement *redefined) const;
 
 protected:
-    explicit QMofRedefinableElement(QMofRedefinableElementPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    explicit QMofRedefinableElement();
+
+    bool _isLeaf;
+    QSet<QMofRedefinableElement *> _redefinedElements;
+    QSet<QMofClassifier *> _redefinitionContexts;
 };
 
 QT_END_NAMESPACE
+
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE(QMofRedefinableElement) *)
 
 QT_END_HEADER
 

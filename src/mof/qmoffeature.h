@@ -43,11 +43,7 @@
 
 #include <QtMof/QtMofGlobal>
 
-// Base class includes
 #include <QtMof/QMofRedefinableElement>
-
-// Qt includes
-#include <QtCore/QSet>
 
 QT_BEGIN_HEADER
 
@@ -55,44 +51,30 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtMof)
 
-// Forward decls for function parameters
 class QMofClassifier;
-
-class QMofFeaturePrivate;
 
 class Q_MOF_EXPORT QMofFeature : public QMofRedefinableElement
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QMof")
-
-    Q_PROPERTY(bool isStatic READ isStatic WRITE setStatic RESET unsetStatic)
-    Q_PROPERTY(QSet<QMofClassifier *> featuringClassifiers READ featuringClassifiers)
-
-    Q_DISABLE_COPY(QMofFeature)
-    Q_DECLARE_PRIVATE(QMofFeature)
-
 public:
-    Q_INVOKABLE explicit QMofFeature(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QMofFeature();
+    Q_DECL_HIDDEN virtual QModelingElement *clone() const;
 
-    // Attributes from QMofFeature
-    Q_INVOKABLE bool isStatic() const;
-    Q_INVOKABLE void setStatic(bool isStatic);
-    Q_INVOKABLE void unsetStatic();
-
-    // Association ends from QMofFeature
-    Q_INVOKABLE QSet<QMofClassifier *> featuringClassifiers() const;
-
-    virtual void setPropertyData();
-
-    // Classes which access read-only opposite properties should be friend
-    friend class QMofClassifierPrivate;
+    // Owned attributes
+    const QSet<QMofClassifier *> featuringClassifiers() const;
+    Q_DECL_HIDDEN void addFeaturingClassifier(QMofClassifier *featuringClassifier);
+    Q_DECL_HIDDEN void removeFeaturingClassifier(QMofClassifier *featuringClassifier);
+    bool isStatic() const;
+    void setStatic(bool isStatic);
 
 protected:
-    explicit QMofFeature(QMofFeaturePrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    explicit QMofFeature();
+
+    QSet<QMofClassifier *> _featuringClassifiers;
+    bool _isStatic;
 };
 
 QT_END_NAMESPACE
+
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE(QMofFeature) *)
 
 QT_END_HEADER
 

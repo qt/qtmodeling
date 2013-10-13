@@ -39,23 +39,14 @@
 **
 ****************************************************************************/
 #include "qmoftype.h"
-#include "qmoftype_p.h"
 
-#include <QtMof/QMofPackage>
+#include <QtMof/QMofClass>
+#include <QtMof/QMofComment>
+#include <QtMof/QMofElement>
+#include <QtMof/QMofNamedElement>
+#include <QtMof/QMofNamespace>
 #include <QtMof/QMofObject>
-
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
-QT_BEGIN_NAMESPACE
-
-QMofTypePrivate::QMofTypePrivate() :
-    package(0)
-{
-}
-
-QMofTypePrivate::~QMofTypePrivate()
-{
-}
+#include <QtMof/QMofPackage>
 
 /*!
     \class QMofType
@@ -64,26 +55,24 @@ QMofTypePrivate::~QMofTypePrivate()
 
     \brief A type constrains the values represented by a typed element.
  */
-
-QMofType::QMofType(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QMofPackageableElement(*new QMofTypePrivate, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QMofType::QMofType(QMofTypePrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QMofPackageableElement(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QMofType::~QMofType()
+QMofType::QMofType() :
+    _package(0)
 {
 }
 
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QMofType
-// ---------------------------------------------------------------
+QModelingElement *QMofType::clone() const
+{
+    QMofType *c = new QMofType;
+    foreach (QMofComment *element, ownedComments())
+        c->addOwnedComment(dynamic_cast<QMofComment *>(element->clone()));
+    c->setName(name());
+    c->setVisibility(visibility());
+    if (package())
+        c->setPackage(dynamic_cast<QMofPackage *>(package()->clone()));
+    return c;
+}
+
+// OWNED ATTRIBUTES
 
 /*!
     Specifies the owning package of this classifier, if any.
@@ -92,63 +81,38 @@ QMofPackage *QMofType::package() const
 {
     // This is a read-write association end
 
-    Q_D(const QMofType);
-    return d->package;
+    return _package;
 }
 
 void QMofType::setPackage(QMofPackage *package)
 {
     // This is a read-write association end
 
-    Q_D(QMofType);
-    if (d->package != package) {
-        // Adjust opposite property
-        if (d->package)
-            d->package->removeOwnedType(this);
-
-        d->package = package;
-
-        // Adjust subsetted property(ies)
-        (qwrappedobject_cast<QMofNamedElementPrivate *>(d))->setNamespace_(qwrappedobject_cast<QMofNamespace *>(package));
-
-        // Adjust opposite property
-        if (package)
-            package->addOwnedType(this);
+    if (_package != package) {
+        _package = package;
+        if (package && package->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(package->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setPackage()));
     }
 }
+
+// OPERATIONS
 
 /*!
     The query conformsTo() gives true for a type that conforms to another. By default, two types do not conform to each other. This query is intended to be redefined for specific conformance situations.
  */
-bool QMofType::conformsTo(const QMofType *other) const
+bool QMofType::conformsTo(QMofType *other) const
 {
-    qWarning("QMofType::conformsTo: operation to be implemented");
+    qWarning("MofType::conformsTo(): to be implemented (operation)");
+
     Q_UNUSED(other);
-
-    return bool(); // change here to your derived return
+    return bool ();
 }
 
-bool QMofType::isInstance(const QMofObject *object) const
+bool QMofType::isInstance(QMofObject *object) const
 {
-    qWarning("QMofType::isInstance: operation to be implemented");
+    qWarning("MofType::isInstance(): to be implemented (operation)");
+
     Q_UNUSED(object);
-
-    return bool(); // change here to your derived return
+    return bool ();
 }
-
-void QMofType::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofType")][QString::fromLatin1("package")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofType")][QString::fromLatin1("package")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofType")][QString::fromLatin1("package")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("Specifies the owning package of this classifier, if any.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofType")][QString::fromLatin1("package")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofType")][QString::fromLatin1("package")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("QMofNamedElement::namespace");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QMofType")][QString::fromLatin1("package")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QMofPackage::ownedType");
-
-    QMofPackageableElement::setPropertyData();
-}
-
-QT_END_NAMESPACE
-
-#include "moc_qmoftype.cpp"
 
