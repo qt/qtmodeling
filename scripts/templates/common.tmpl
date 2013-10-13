@@ -169,10 +169,11 @@ ${attributeName}
 [%- SET qtType = QT_TYPE(namespace, operation.findnodes("ownedParameter[@direction='return']"), "false") -%]
 
     Q_INVOKABLE [%- IF qtType != " " -%]${qtType}[%- ELSE -%]void [%- END -%]
-${operationName}(
+[%- IF uml2qt_attribute.item(operationName) != "" -%]${uml2qt_attribute.item(operationName)}[%- ELSE -%]${operationName}[%- END -%](
     [%- FOREACH parameter = operation.findnodes("ownedParameter[@direction!='return']") -%]
         [%- QT_TYPE(namespace, parameter, "false") -%]
-${parameter.findvalue("@name")}
+[%- SET parameterName = parameter.findvalue("@name") -%]
+[%- IF uml2qt_attribute.item(parameterName) != "" -%]${uml2qt_attribute.item(parameterName)}[%- ELSE -%]${parameterName}[%- END -%]
         [%- IF !loop.last %], [% END -%]
     [%- END -%]
 )[% IF operation.findvalue("@isQuery") == "true" %] const[% END %];
@@ -280,6 +281,7 @@ ${parameter.findvalue("@name")}
 [% SET found = "true" -%]
 [% END -%]
 [% SET operationName = operation.findvalue("@name") -%]
+[%- IF uml2qt_attribute.item(operationName) != "" -%][% SET operationName = uml2qt_attribute.item(operationName) -%][%- END -%]
 [%- NEXT IF redefinedOperations.grep("^${className}-${operationName}$").size > 0 -%]
 [%- SET return = QT_TYPE(namespace, operation.findnodes("ownedParameter[@direction='return']"), "false") %]
 [%- SET originalReturn = QT_TYPE(namespace, operation.findnodes("ownedParameter[@direction='return']"), "true") %]
@@ -287,7 +289,9 @@ ${parameter.findvalue("@name")}
 Q${namespace}${originalClassName}Object::${operationName}(
     [%- FOREACH parameter = operation.findnodes("ownedParameter[@direction!='return']") -%]
         [%- QT_TYPE(namespace, parameter, "false") -%]
-${parameter.findvalue("@name")}
+[%- SET parameterName = parameter.findvalue("@name") -%]
+[%- IF uml2qt_attribute.item(parameterName) != "" -%][%- SET parameterName = uml2qt_attribute.item(parameterName) -%][%- END -%]
+${parameterName}
         [%- IF !loop.last %], [% END -%]
     [%- END -%]
 )[% IF operation.findvalue("@isQuery") == "true" %] const[% END %]
@@ -303,13 +307,15 @@ ${parameter.findvalue("@name")}
     ${return}[% IF qtType.match("QList") %]list[% ELSE %]set[% END %];
     foreach (${originalReturn.remove("QList<").remove("QSet<").remove(">").trim}element, qmodelingelementproperty_cast<Q${namespace}${originalClassName} *>(this)->${operationName}(
         [%- FOREACH parameter = operation.findnodes("ownedParameter[@direction!='return']") -%]
+            [%- SET parameterName = parameter.findvalue("@name") -%]
+            [%- IF uml2qt_attribute.item(parameterName) != "" -%][%- SET parameterName = uml2qt_attribute.item(parameterName) -%][%- END -%]
             [%- qtType = QT_TYPE(namespace, parameter, "true") -%]
         [%- IF qtType.match('QList|QSet') -%]
-${parameter.findvalue("@name")}Converted
+${parameterName}Converted
         [%- ELSIF qtType.match('\*$') -%]
 qmodelingelementproperty_cast<${qtType.remove("QList<").remove("QSet<").remove(">")}>(${parameter.findvalue("@name")})
         [%- ELSE -%]
-${parameter.findvalue("@name")}
+${parameterName}
         [%- END -%]
             [%- IF !loop.last %], [% END -%]
         [%- END -%]))
@@ -318,11 +324,15 @@ ${parameter.findvalue("@name")}
     [%- ELSIF !return.match("QList|QSet") && return.match('\*$') %]
     if (!qmodelingelementproperty_cast<Q${namespace}${originalClassName} *>(this)->${operationName}(
         [%- FOREACH parameter = operation.findnodes("ownedParameter[@direction!='return']") -%]
+        [%- SET parameterName = parameter.findvalue("@name") -%]
+        [%- IF uml2qt_attribute.item(parameterName) != "" -%][%- SET parameterName = uml2qt_attribute.item(parameterName) -%][%- END -%]
         [%- qtType = QT_TYPE(namespace, parameter, "true") -%]
         [%- IF qtType.match('\*$') -%]
-qmodelingelementproperty_cast<${qtType.remove("QList<").remove("QSet<").remove(">")}>(${parameter.findvalue("@name")})
+[%- SET parameterName = parameter.findvalue("@name") -%]
+[%- IF uml2qt_attribute.item(parameterName) != "" -%][%- SET parameterName = uml2qt_attribute.item(parameterName) -%][%- END -%]
+qmodelingelementproperty_cast<${qtType.remove("QList<").remove("QSet<").remove(">")}>(${parameterName})
         [%- ELSE -%]
-${parameter.findvalue("@name")}
+${parameterName}[%- IF QT_TYPE(namespace, parameter, "true").match("QList|QSet") %]Converted[%- END -%]
         [%- END -%]
             [%- IF !loop.last %], [% END -%]
         [%- END -%]))
@@ -330,22 +340,26 @@ ${parameter.findvalue("@name")}
     else
         return qmodelingelementproperty_cast<Q${namespace}${originalClassName} *>(this)->${operationName}(
         [%- FOREACH parameter = operation.findnodes("ownedParameter[@direction!='return']") -%]
+        [%- SET parameterName = parameter.findvalue("@name") -%]
+        [%- IF uml2qt_attribute.item(parameterName) != "" -%][%- SET parameterName = uml2qt_attribute.item(parameterName) -%][%- END -%]
         [%- qtType = QT_TYPE(namespace, parameter, "true") -%]
         [%- IF qtType.match('\*$') -%]
-qmodelingelementproperty_cast<${qtType.remove("QList<").remove("QSet<").remove(">")}>(${parameter.findvalue("@name")})
+qmodelingelementproperty_cast<${qtType.remove("QList<").remove("QSet<").remove(">")}>(${parameterName})
         [%- ELSE -%]
-${parameter.findvalue("@name")}
+${parameterName}[%- IF QT_TYPE(namespace, parameter, "true").match("QList|QSet") %]Converted[%- END -%]
         [%- END -%]
             [%- IF !loop.last %], [% END -%]
         [%- END -%])->asQModelingObject();
     [%- ELSE %]
     return qmodelingelementproperty_cast<Q${namespace}${originalClassName} *>(this)->${operationName}(
         [%- FOREACH parameter = operation.findnodes("ownedParameter[@direction!='return']") -%]
+            [%- SET parameterName = parameter.findvalue("@name") -%]
+            [%- IF uml2qt_attribute.item(parameterName) != "" -%][%- SET parameterName = uml2qt_attribute.item(parameterName) -%][%- END -%]
             [%- qtType = QT_TYPE(namespace, parameter, "true") -%]
         [%- IF qtType.match('\*$') -%]
-qmodelingelementproperty_cast<${qtType.remove("QList<").remove("QSet<").remove(">")}>(${parameter.findvalue("@name")})
+qmodelingelementproperty_cast<${qtType.remove("QList<").remove("QSet<").remove(">")}>(${parameterName})
         [%- ELSE -%]
-${parameter.findvalue("@name")}
+${parameterName}
         [%- END -%]
             [%- IF !loop.last %], [% END -%]
         [%- END -%]);
@@ -433,7 +447,7 @@ void Q${namespace}${originalClassName}Object::unset${qtAttribute.remove("^is").u
     [%- SET parentName = parent.findvalue("@general") -%]
     [%- IF visitedClasses.grep("^${parentName}$").size == 0 -%]
         [%- visitedClasses.push("${parentName}") -%]
-        [%- GENERATE_FWD_DECLARATIONS(xmi.findnodes("//packagedElement[@xmi:type=\"uml:Class\" and @name=\"${parentName}\"]"), visitedClasses, forwards, useNamespace, superclasses) -%]
+        [%- GENERATE_FWD_DECLARATIONS(xmi.findnodes("//packagedElement[@xmi:type=\"uml:Class\" and @name=\"${parentName}\"]"), visitedClasses, forwards, useNamespace, superclasses, recursive) -%]
     [%- END -%]
 [%- END -%]
 [%- END -%]

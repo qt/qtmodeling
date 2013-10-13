@@ -48,6 +48,7 @@
 [%- SET generalization = class.findnodes("generalization") -%]
 [%- FOREACH superclass IN generalization -%]
 [%- SET superclassName = superclass.findvalue("@general") -%]
+[%- IF superclassName == "" -%][%- SET superclassName = superclass.findnodes("general").findvalue("@xmi:idref") -%][%- END -%]
 #include <Qt${namespace}/Q${namespace}${superclassName}>
 [% superclasses.push("${namespace}${superclassName}") -%]
 [%- IF loop.last %]
@@ -57,12 +58,13 @@
 #include <QtModeling/QModelingElement>
 
 [% END -%]
-[% SET useNamespace = 'false' -%]
+[% useNamespace = [] -%]
 [%- forwards = [] -%]
 [%- visitedClasses = [] -%]
 [%- GENERATE_FWD_DECLARATIONS(class, visitedClasses, forwards, useNamespace, superclasses, "false") -%]
-[%- IF useNamespace == 'true' %]
+[%- IF useNamespace.size > 0 -%]
 #include <Qt${namespace}/Qt${namespace}Namespace>
+
 [% END -%]
 QT_BEGIN_HEADER
 
@@ -78,7 +80,9 @@ class ${forward};
 
 class Q_${namespace.upper}_EXPORT Q${namespace}${className} : 
 [%- FOREACH superclass IN generalization -%]
-public Q${namespace}${superclass.findvalue("@general")}
+[%- SET superclassName = superclass.findvalue("@general") -%]
+[%- IF superclassName == "" -%][%- SET superclassName = superclass.findnodes("general").findvalue("@xmi:idref") -%][%- END -%]
+public Q${namespace}${superclassName}
 [%- IF !loop.last %], [% END -%]
 [%- END -%]
 [%- IF superclasses.size == 0 -%]
@@ -121,14 +125,15 @@ public:
 [%- ELSE -%]
     void 
 [%- END -%]
-${operationName}(
+[%- IF uml2qt_attribute.item(operationName) != "" -%]${uml2qt_attribute.item(operationName)}[%- ELSE -%]${operationName}[%- END -%](
     [%- FOREACH parameter = operation.findnodes("ownedParameter[@direction!='return']") -%]
         [%- SET qtType = QT_TYPE(namespace, parameter) -%]
         [%- IF qtType != " " -%]
         [%- qtType -%]
         [%- ELSE -%]
         [%- END -%]
-${parameter.findvalue("@name")}
+[%- SET parameterName = parameter.findvalue("@name") -%]
+[%- IF uml2qt_attribute.item(parameterName) != "" -%]${uml2qt_attribute.item(parameterName)}[%- ELSE -%]${parameterName}[%- END -%]
         [%- IF !loop.last %], [% END -%]
     [%- END -%]
 )[% IF operation.findvalue("@isQuery") == "true" %] const[% END %];

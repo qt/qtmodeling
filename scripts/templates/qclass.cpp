@@ -48,9 +48,11 @@
 [%- superclasses = [] -%]
 [%- SET generalization = class.findnodes("generalization") -%]
 [%- FOREACH superclass IN generalization -%]
-[%- superclasses.push("${namespace}${superclass.findvalue('@general')}") -%]
+[%- SET superclassName = superclass.findvalue("@general") -%]
+[%- IF superclassName == "" -%][%- SET superclassName = superclass.findnodes("general").findvalue("@xmi:idref") -%][%- END -%]
+[%- superclasses.push("${namespace}${superclassName}") -%]
 [%- END %]
-[% SET useNamespace = 'false' -%]
+[% useNamespace = [] -%]
 [%- forwards = [] -%]
 [%- visitedClasses = [] -%]
 [%- GENERATE_FWD_DECLARATIONS(class, visitedClasses, forwards, useNamespace, superclasses) -%]
@@ -70,7 +72,8 @@
 Q${namespace}${className}::Q${namespace}${className}([%- IF class.findvalue("@isAbstract") != "true" %]bool createQModelingObject[% END %])
 [%- SET found = "false" -%]
 [%- FOREACH superclass IN generalization -%]
-[%- SET superclassName = superclass.findvalue('@general') -%]
+[%- SET superclassName = superclass.findvalue("@general") -%]
+[%- IF superclassName == "" -%][%- SET superclassName = superclass.findnodes("general").findvalue("@xmi:idref") -%][%- END -%]
 [%- IF xmi.findvalue("//packagedElement[@xmi:type=\"uml:Class\" and @name=\"${superclassName}\"]/@isAbstract") != "true" -%]
         [%- IF found == "false" %] :
 [% SET found = "true" -%]
@@ -133,9 +136,9 @@ QModelingElement *Q${namespace}${className}::clone() const
 [%- GENERATE_CLONE(class, visitedClasses, redefinedProperties) %]
     return c;
 }
+
 [%- FOREACH attribute = class.findnodes("ownedAttribute") %]
 [%- IF loop.first %]
-
 // OWNED ATTRIBUTES
 
 [%- END %]
@@ -371,19 +374,22 @@ void Q${namespace}${className}::set${attributeName.remove("^Is")}([% IF !qtType.
     ${documentation}
  */
 [% END %]
-[%- IF returnType != " " -%]${returnType}[%- ELSE -%]void [%- END -%]Q${namespace}${className}::${operationName}(
+[%- IF returnType != " " -%]${returnType}[%- ELSE -%]void [%- END -%]Q${namespace}${className}::[%- IF uml2qt_attribute.item(operationName) != "" -%]${uml2qt_attribute.item(operationName)}[%- ELSE -%]${operationName}[%- END -%](
     [%- SET parameters = operation.findnodes("ownedParameter[@direction!='return']") -%]
     [%- FOREACH parameter = parameters -%]
         [%- QT_TYPE(namespace, parameter) -%]
-${parameter.findvalue("@name")}
+[%- SET parameterName = parameter.findvalue("@name") -%]
+[%- IF uml2qt_attribute.item(parameterName) != "" -%]${uml2qt_attribute.item(parameterName)}[%- ELSE -%]${parameterName}[%- END -%]
         [%- IF !loop.last %], [% END -%]
     [%- END -%]
 )[% IF operation.findvalue("@isQuery") == "true" %] const[% END %]
 {
     qWarning("${namespace}${className}::${operationName}(): to be implemented (operation)");
 
-    [%- FOREACH parameter = parameters %]
-    Q_UNUSED(${parameter.findvalue("@name")});
+    [%- FOREACH parameter = parameters -%]
+    [%- SET parameterName = parameter.findvalue("@name") -%]
+    [%- IF uml2qt_attribute.item(parameterName) != "" -%][%- SET parameterName = uml2qt_attribute.item(parameterName) -%][%- END %]
+    Q_UNUSED(${parameterName});
     [%- END %]
     [%- IF returnType != " " -%]
     [%- IF returnType.match('\*$') %]

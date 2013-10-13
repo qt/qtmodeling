@@ -44,7 +44,7 @@
 
 #include <Qt${namespace}/Q${namespace}${className}>
 [%- superclasses = [] %]
-[% SET useNamespace = 'false' -%]
+[% useNamespace = [] -%]
 [%- forwards = [] -%]
 [%- visitedClasses = [] -%]
 [%- GENERATE_FWD_DECLARATIONS(class, visitedClasses, forwards, useNamespace, superclasses) -%]
