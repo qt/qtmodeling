@@ -128,9 +128,9 @@ void QMofPackage::addNestedPackage(QMofPackage *nestedPackage)
 {
     // This is a read-write derived association end
 
-    if (!_packagedElements.contains(dynamic_cast<QMofPackageableElement *>(nestedPackage))) {
+    if (!_packagedElements.contains(nestedPackage)) {
         // Adjust subsetted property(ies)
-        (dynamic_cast<QMofPackage *>(this))->addPackagedElement(dynamic_cast<QMofPackageableElement *>(nestedPackage));
+        addPackagedElement(nestedPackage);
 
         // Adjust opposite property
         nestedPackage->setNestingPackage(this);
@@ -141,9 +141,9 @@ void QMofPackage::removeNestedPackage(QMofPackage *nestedPackage)
 {
     // This is a read-write derived association end
 
-    if (_packagedElements.contains(dynamic_cast<QMofPackageableElement *>(nestedPackage))) {
+    if (_packagedElements.contains(nestedPackage)) {
         // Adjust subsetted property(ies)
-        (dynamic_cast<QMofPackage *>(this))->removePackagedElement(dynamic_cast<QMofPackageableElement *>(nestedPackage));
+        removePackagedElement(nestedPackage);
 
         // Adjust opposite property
         nestedPackage->setNestingPackage(0);

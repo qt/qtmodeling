@@ -152,9 +152,9 @@ void QUmlPackage::addNestedPackage(QUmlPackage *nestedPackage)
 {
     // This is a read-write derived association end
 
-    if (!_packagedElements.contains(dynamic_cast<QUmlPackageableElement *>(nestedPackage))) {
+    if (!_packagedElements.contains(nestedPackage)) {
         // Adjust subsetted property(ies)
-        (dynamic_cast<QUmlPackage *>(this))->addPackagedElement(dynamic_cast<QUmlPackageableElement *>(nestedPackage));
+        addPackagedElement(nestedPackage);
 
         // Adjust opposite property
         nestedPackage->setNestingPackage(this);
@@ -165,9 +165,9 @@ void QUmlPackage::removeNestedPackage(QUmlPackage *nestedPackage)
 {
     // This is a read-write derived association end
 
-    if (_packagedElements.contains(dynamic_cast<QUmlPackageableElement *>(nestedPackage))) {
+    if (_packagedElements.contains(nestedPackage)) {
         // Adjust subsetted property(ies)
-        (dynamic_cast<QUmlPackage *>(this))->removePackagedElement(dynamic_cast<QUmlPackageableElement *>(nestedPackage));
+        removePackagedElement(nestedPackage);
 
         // Adjust opposite property
         nestedPackage->setNestingPackage(0);
@@ -259,7 +259,7 @@ void QUmlPackage::addOwnedType(QUmlType *ownedType)
 
     if (!_packagedElements.contains(ownedType)) {
         // Adjust subsetted property(ies)
-        (dynamic_cast<QUmlPackage *>(this))->addPackagedElement(dynamic_cast<QUmlPackageableElement *>(ownedType));
+        addPackagedElement(ownedType);
 
         // Adjust opposite property
         if (ownedType)
@@ -273,7 +273,7 @@ void QUmlPackage::removeOwnedType(QUmlType *ownedType)
 
     if (_packagedElements.contains(ownedType)) {
         // Adjust subsetted property(ies)
-        (dynamic_cast<QUmlPackage *>(this))->removePackagedElement(dynamic_cast<QUmlPackageableElement *>(ownedType));
+        removePackagedElement(ownedType);
 
         // Adjust opposite property
         if (ownedType)
