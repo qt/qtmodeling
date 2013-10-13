@@ -68,14 +68,6 @@ QUmlForkNodeObject::QUmlForkNodeObject(QUmlForkNode *modelingElement)
     setPropertyData();
 }
 
-QUmlForkNodeObject::~QUmlForkNodeObject()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<QUmlForkNode *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
 // OWNED ATTRIBUTES [Element]
 
 const QSet<QObject *> QUmlForkNodeObject::ownedComments() const

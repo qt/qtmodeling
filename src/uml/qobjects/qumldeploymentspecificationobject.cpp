@@ -83,14 +83,6 @@ QUmlDeploymentSpecificationObject::QUmlDeploymentSpecificationObject(QUmlDeploym
     setPropertyData();
 }
 
-QUmlDeploymentSpecificationObject::~QUmlDeploymentSpecificationObject()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<QUmlDeploymentSpecification *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
 // OWNED ATTRIBUTES [Element]
 
 const QSet<QObject *> QUmlDeploymentSpecificationObject::ownedComments() const

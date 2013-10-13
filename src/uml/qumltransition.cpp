@@ -81,15 +81,6 @@ QUmlTransition::QUmlTransition(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlTransitionObject(this));
 }
 
-QUmlTransition::~QUmlTransition()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlTransition::clone() const
 {
     QUmlTransition *c = new QUmlTransition;

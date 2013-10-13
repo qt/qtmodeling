@@ -57,7 +57,6 @@ class Q_UML_EXPORT QUmlExtensionPoint : public QUmlRedefinableElement
 {
 public:
     explicit QUmlExtensionPoint(bool createQModelingObject = true);
-    virtual ~QUmlExtensionPoint();
 
     virtual QModelingElement *clone() const;
 

@@ -63,14 +63,6 @@ QUmlRedefinableTemplateSignatureObject::QUmlRedefinableTemplateSignatureObject(Q
     setPropertyData();
 }
 
-QUmlRedefinableTemplateSignatureObject::~QUmlRedefinableTemplateSignatureObject()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<QUmlRedefinableTemplateSignature *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
 // OWNED ATTRIBUTES [Element]
 
 const QSet<QObject *> QUmlRedefinableTemplateSignatureObject::ownedComments() const

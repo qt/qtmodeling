@@ -79,15 +79,6 @@ QUmlClearAssociationAction::QUmlClearAssociationAction(bool createQModelingObjec
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlClearAssociationActionObject(this));
 }
 
-QUmlClearAssociationAction::~QUmlClearAssociationAction()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlClearAssociationAction::clone() const
 {
     QUmlClearAssociationAction *c = new QUmlClearAssociationAction;

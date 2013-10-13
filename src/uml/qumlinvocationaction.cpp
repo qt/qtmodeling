@@ -74,10 +74,6 @@ QUmlInvocationAction::QUmlInvocationAction() :
 {
 }
 
-QUmlInvocationAction::~QUmlInvocationAction()
-{
-}
-
 QModelingElement *QUmlInvocationAction::clone() const
 {
     QUmlInvocationAction *c = new QUmlInvocationAction;

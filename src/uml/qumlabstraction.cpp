@@ -68,15 +68,6 @@ QUmlAbstraction::QUmlAbstraction(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlAbstractionObject(this));
 }
 
-QUmlAbstraction::~QUmlAbstraction()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlAbstraction::clone() const
 {
     QUmlAbstraction *c = new QUmlAbstraction;

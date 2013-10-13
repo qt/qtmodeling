@@ -57,7 +57,6 @@ class Q_UML_EXPORT QUmlSequenceNode : public QUmlStructuredActivityNode
 {
 public:
     explicit QUmlSequenceNode(bool createQModelingObject = true);
-    virtual ~QUmlSequenceNode();
 
     virtual QModelingElement *clone() const;
 

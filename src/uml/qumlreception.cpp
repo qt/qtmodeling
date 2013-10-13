@@ -75,15 +75,6 @@ QUmlReception::QUmlReception(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlReceptionObject(this));
 }
 
-QUmlReception::~QUmlReception()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlReception::clone() const
 {
     QUmlReception *c = new QUmlReception;

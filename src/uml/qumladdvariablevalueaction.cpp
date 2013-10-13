@@ -79,15 +79,6 @@ QUmlAddVariableValueAction::QUmlAddVariableValueAction(bool createQModelingObjec
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlAddVariableValueActionObject(this));
 }
 
-QUmlAddVariableValueAction::~QUmlAddVariableValueAction()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlAddVariableValueAction::clone() const
 {
     QUmlAddVariableValueAction *c = new QUmlAddVariableValueAction;

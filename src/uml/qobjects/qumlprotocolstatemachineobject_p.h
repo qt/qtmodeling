@@ -157,7 +157,6 @@ class Q_UML_EXPORT QUmlProtocolStateMachineObject : public QModelingObject
 
 public:
     Q_INVOKABLE explicit QUmlProtocolStateMachineObject(QUmlProtocolStateMachine *modelingElement);
-    virtual ~QUmlProtocolStateMachineObject();
 
     // Owned attributes [Element]
     Q_INVOKABLE const QSet<QObject *> ownedComments() const;

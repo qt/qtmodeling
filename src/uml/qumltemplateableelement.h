@@ -58,7 +58,6 @@ class QUmlTemplateSignature;
 class Q_UML_EXPORT QUmlTemplateableElement : public virtual QUmlElement
 {
 public:
-    virtual ~QUmlTemplateableElement();
 
     Q_DECL_HIDDEN virtual QModelingElement *clone() const;
 

@@ -63,7 +63,6 @@ class Q_UML_EXPORT QUmlClass : public QUmlEncapsulatedClassifier, public QUmlBeh
 {
 public:
     explicit QUmlClass(bool createQModelingObject = true);
-    virtual ~QUmlClass();
 
     virtual QModelingElement *clone() const;
 

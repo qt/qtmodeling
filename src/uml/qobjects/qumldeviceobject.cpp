@@ -90,14 +90,6 @@ QUmlDeviceObject::QUmlDeviceObject(QUmlDevice *modelingElement)
     setPropertyData();
 }
 
-QUmlDeviceObject::~QUmlDeviceObject()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<QUmlDevice *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
 // OWNED ATTRIBUTES [Element]
 
 const QSet<QObject *> QUmlDeviceObject::ownedComments() const

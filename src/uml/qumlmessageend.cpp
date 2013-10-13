@@ -61,10 +61,6 @@ QUmlMessageEnd::QUmlMessageEnd() :
 {
 }
 
-QUmlMessageEnd::~QUmlMessageEnd()
-{
-}
-
 QModelingElement *QUmlMessageEnd::clone() const
 {
     QUmlMessageEnd *c = new QUmlMessageEnd;

@@ -70,15 +70,6 @@ QUmlDurationConstraint::QUmlDurationConstraint(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlDurationConstraintObject(this));
 }
 
-QUmlDurationConstraint::~QUmlDurationConstraint()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlDurationConstraint::clone() const
 {
     QUmlDurationConstraint *c = new QUmlDurationConstraint;

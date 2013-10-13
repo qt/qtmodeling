@@ -107,7 +107,6 @@ class Q_UML_EXPORT QUmlReadLinkObjectEndActionObject : public QModelingObject
 
 public:
     Q_INVOKABLE explicit QUmlReadLinkObjectEndActionObject(QUmlReadLinkObjectEndAction *modelingElement);
-    virtual ~QUmlReadLinkObjectEndActionObject();
 
     // Owned attributes [Element]
     Q_INVOKABLE const QSet<QObject *> ownedComments() const;

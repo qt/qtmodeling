@@ -66,15 +66,6 @@ QUmlInclude::QUmlInclude(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlIncludeObject(this));
 }
 
-QUmlInclude::~QUmlInclude()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlInclude::clone() const
 {
     QUmlInclude *c = new QUmlInclude;

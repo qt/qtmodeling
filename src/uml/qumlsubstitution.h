@@ -57,7 +57,6 @@ class Q_UML_EXPORT QUmlSubstitution : public QUmlRealization
 {
 public:
     explicit QUmlSubstitution(bool createQModelingObject = true);
-    virtual ~QUmlSubstitution();
 
     virtual QModelingElement *clone() const;
 

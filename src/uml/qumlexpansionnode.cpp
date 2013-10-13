@@ -79,15 +79,6 @@ QUmlExpansionNode::QUmlExpansionNode(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlExpansionNodeObject(this));
 }
 
-QUmlExpansionNode::~QUmlExpansionNode()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlExpansionNode::clone() const
 {
     QUmlExpansionNode *c = new QUmlExpansionNode;

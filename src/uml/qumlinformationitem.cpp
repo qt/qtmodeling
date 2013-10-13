@@ -83,15 +83,6 @@ QUmlInformationItem::QUmlInformationItem(bool createQModelingObject)
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlInformationItemObject(this));
 }
 
-QUmlInformationItem::~QUmlInformationItem()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlInformationItem::clone() const
 {
     QUmlInformationItem *c = new QUmlInformationItem;

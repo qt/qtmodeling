@@ -64,14 +64,6 @@ QUmlLifelineObject::QUmlLifelineObject(QUmlLifeline *modelingElement)
     setPropertyData();
 }
 
-QUmlLifelineObject::~QUmlLifelineObject()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<QUmlLifeline *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
 // OWNED ATTRIBUTES [Element]
 
 const QSet<QObject *> QUmlLifelineObject::ownedComments() const

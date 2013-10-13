@@ -108,7 +108,6 @@ class Q_UML_EXPORT QUmlOpaqueActionObject : public QModelingObject
 
 public:
     Q_INVOKABLE explicit QUmlOpaqueActionObject(QUmlOpaqueAction *modelingElement);
-    virtual ~QUmlOpaqueActionObject();
 
     // Owned attributes [Element]
     Q_INVOKABLE const QSet<QObject *> ownedComments() const;

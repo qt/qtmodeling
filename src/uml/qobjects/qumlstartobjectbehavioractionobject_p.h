@@ -113,7 +113,6 @@ class Q_UML_EXPORT QUmlStartObjectBehaviorActionObject : public QModelingObject
 
 public:
     Q_INVOKABLE explicit QUmlStartObjectBehaviorActionObject(QUmlStartObjectBehaviorAction *modelingElement);
-    virtual ~QUmlStartObjectBehaviorActionObject();
 
     // Owned attributes [Element]
     Q_INVOKABLE const QSet<QObject *> ownedComments() const;

@@ -66,14 +66,6 @@ QUmlInstanceSpecificationObject::QUmlInstanceSpecificationObject(QUmlInstanceSpe
     setPropertyData();
 }
 
-QUmlInstanceSpecificationObject::~QUmlInstanceSpecificationObject()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<QUmlInstanceSpecification *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
 // OWNED ATTRIBUTES [Element]
 
 const QSet<QObject *> QUmlInstanceSpecificationObject::ownedComments() const

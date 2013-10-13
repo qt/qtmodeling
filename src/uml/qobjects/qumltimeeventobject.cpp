@@ -62,14 +62,6 @@ QUmlTimeEventObject::QUmlTimeEventObject(QUmlTimeEvent *modelingElement)
     setPropertyData();
 }
 
-QUmlTimeEventObject::~QUmlTimeEventObject()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<QUmlTimeEvent *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
 // OWNED ATTRIBUTES [Element]
 
 const QSet<QObject *> QUmlTimeEventObject::ownedComments() const

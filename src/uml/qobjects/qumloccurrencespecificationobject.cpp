@@ -63,14 +63,6 @@ QUmlOccurrenceSpecificationObject::QUmlOccurrenceSpecificationObject(QUmlOccurre
     setPropertyData();
 }
 
-QUmlOccurrenceSpecificationObject::~QUmlOccurrenceSpecificationObject()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<QUmlOccurrenceSpecification *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
 // OWNED ATTRIBUTES [Element]
 
 const QSet<QObject *> QUmlOccurrenceSpecificationObject::ownedComments() const

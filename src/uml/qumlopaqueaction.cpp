@@ -76,15 +76,6 @@ QUmlOpaqueAction::QUmlOpaqueAction(bool createQModelingObject)
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlOpaqueActionObject(this));
 }
 
-QUmlOpaqueAction::~QUmlOpaqueAction()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlOpaqueAction::clone() const
 {
     QUmlOpaqueAction *c = new QUmlOpaqueAction;

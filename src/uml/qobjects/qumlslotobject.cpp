@@ -57,14 +57,6 @@ QUmlSlotObject::QUmlSlotObject(QUmlSlot *modelingElement)
     setPropertyData();
 }
 
-QUmlSlotObject::~QUmlSlotObject()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<QUmlSlot *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
 // OWNED ATTRIBUTES [Element]
 
 const QSet<QObject *> QUmlSlotObject::ownedComments() const

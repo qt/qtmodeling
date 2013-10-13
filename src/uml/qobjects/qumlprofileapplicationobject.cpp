@@ -56,14 +56,6 @@ QUmlProfileApplicationObject::QUmlProfileApplicationObject(QUmlProfileApplicatio
     setPropertyData();
 }
 
-QUmlProfileApplicationObject::~QUmlProfileApplicationObject()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<QUmlProfileApplication *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
 // OWNED ATTRIBUTES [Element]
 
 const QSet<QObject *> QUmlProfileApplicationObject::ownedComments() const

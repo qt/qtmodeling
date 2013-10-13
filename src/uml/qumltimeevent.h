@@ -57,7 +57,6 @@ class Q_UML_EXPORT QUmlTimeEvent : public QUmlEvent
 {
 public:
     explicit QUmlTimeEvent(bool createQModelingObject = true);
-    virtual ~QUmlTimeEvent();
 
     virtual QModelingElement *clone() const;
 

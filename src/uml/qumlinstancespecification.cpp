@@ -71,15 +71,6 @@ QUmlInstanceSpecification::QUmlInstanceSpecification(bool createQModelingObject)
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlInstanceSpecificationObject(this));
 }
 
-QUmlInstanceSpecification::~QUmlInstanceSpecification()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlInstanceSpecification::clone() const
 {
     QUmlInstanceSpecification *c = new QUmlInstanceSpecification;

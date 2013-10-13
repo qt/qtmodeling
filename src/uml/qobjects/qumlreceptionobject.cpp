@@ -70,14 +70,6 @@ QUmlReceptionObject::QUmlReceptionObject(QUmlReception *modelingElement)
     setPropertyData();
 }
 
-QUmlReceptionObject::~QUmlReceptionObject()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<QUmlReception *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
 // OWNED ATTRIBUTES [Element]
 
 const QSet<QObject *> QUmlReceptionObject::ownedComments() const

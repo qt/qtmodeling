@@ -57,7 +57,6 @@ class QUmlParameterableElement;
 class Q_UML_EXPORT QUmlValueSpecification : public QUmlTypedElement, public QUmlPackageableElement
 {
 public:
-    virtual ~QUmlValueSpecification();
 
     Q_DECL_HIDDEN virtual QModelingElement *clone() const;
 

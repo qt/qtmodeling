@@ -57,10 +57,6 @@ QUmlParameterableElement::QUmlParameterableElement() :
 {
 }
 
-QUmlParameterableElement::~QUmlParameterableElement()
-{
-}
-
 QModelingElement *QUmlParameterableElement::clone() const
 {
     QUmlParameterableElement *c = new QUmlParameterableElement;

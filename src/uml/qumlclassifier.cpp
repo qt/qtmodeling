@@ -83,10 +83,6 @@ QUmlClassifier::QUmlClassifier() :
 {
 }
 
-QUmlClassifier::~QUmlClassifier()
-{
-}
-
 QModelingElement *QUmlClassifier::clone() const
 {
     QUmlClassifier *c = new QUmlClassifier;

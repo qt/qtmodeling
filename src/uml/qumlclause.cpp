@@ -61,15 +61,6 @@ QUmlClause::QUmlClause(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlClauseObject(this));
 }
 
-QUmlClause::~QUmlClause()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlClause::clone() const
 {
     QUmlClause *c = new QUmlClause;

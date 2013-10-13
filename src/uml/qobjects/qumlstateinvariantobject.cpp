@@ -64,14 +64,6 @@ QUmlStateInvariantObject::QUmlStateInvariantObject(QUmlStateInvariant *modelingE
     setPropertyData();
 }
 
-QUmlStateInvariantObject::~QUmlStateInvariantObject()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<QUmlStateInvariant *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
 // OWNED ATTRIBUTES [Element]
 
 const QSet<QObject *> QUmlStateInvariantObject::ownedComments() const

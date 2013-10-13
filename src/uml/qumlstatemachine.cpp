@@ -99,15 +99,6 @@ QUmlStateMachine::QUmlStateMachine(bool createQModelingObject)
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlStateMachineObject(this));
 }
 
-QUmlStateMachine::~QUmlStateMachine()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlStateMachine::clone() const
 {
     QUmlStateMachine *c = new QUmlStateMachine;

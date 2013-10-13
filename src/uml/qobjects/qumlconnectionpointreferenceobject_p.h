@@ -86,7 +86,6 @@ class Q_UML_EXPORT QUmlConnectionPointReferenceObject : public QModelingObject
 
 public:
     Q_INVOKABLE explicit QUmlConnectionPointReferenceObject(QUmlConnectionPointReference *modelingElement);
-    virtual ~QUmlConnectionPointReferenceObject();
 
     // Owned attributes [Element]
     Q_INVOKABLE const QSet<QObject *> ownedComments() const;

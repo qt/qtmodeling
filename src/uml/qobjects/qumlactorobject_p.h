@@ -123,7 +123,6 @@ class Q_UML_EXPORT QUmlActorObject : public QModelingObject
 
 public:
     Q_INVOKABLE explicit QUmlActorObject(QUmlActor *modelingElement);
-    virtual ~QUmlActorObject();
 
     // Owned attributes [Element]
     Q_INVOKABLE const QSet<QObject *> ownedComments() const;

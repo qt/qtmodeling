@@ -75,5 +75,7 @@ int main ()
     foreach (QModelingElement *modelingElement, rootElements)
         list << modelingElement->asQModelingObject();
     writer.writeFile(list, &file2);
+
+    qDeleteAll(rootElements);
 }
 

@@ -73,15 +73,6 @@ QUmlEnumerationLiteral::QUmlEnumerationLiteral(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlEnumerationLiteralObject(this));
 }
 
-QUmlEnumerationLiteral::~QUmlEnumerationLiteral()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlEnumerationLiteral::clone() const
 {
     QUmlEnumerationLiteral *c = new QUmlEnumerationLiteral;

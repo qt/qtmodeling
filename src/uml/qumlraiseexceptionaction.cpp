@@ -77,15 +77,6 @@ QUmlRaiseExceptionAction::QUmlRaiseExceptionAction(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlRaiseExceptionActionObject(this));
 }
 
-QUmlRaiseExceptionAction::~QUmlRaiseExceptionAction()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlRaiseExceptionAction::clone() const
 {
     QUmlRaiseExceptionAction *c = new QUmlRaiseExceptionAction;

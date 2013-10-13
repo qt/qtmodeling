@@ -128,7 +128,6 @@ class Q_UML_EXPORT QUmlCommunicationPathObject : public QModelingObject
 
 public:
     Q_INVOKABLE explicit QUmlCommunicationPathObject(QUmlCommunicationPath *modelingElement);
-    virtual ~QUmlCommunicationPathObject();
 
     // Owned attributes [Element]
     Q_INVOKABLE const QSet<QObject *> ownedComments() const;

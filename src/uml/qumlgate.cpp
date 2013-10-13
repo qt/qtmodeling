@@ -64,15 +64,6 @@ QUmlGate::QUmlGate(bool createQModelingObject)
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlGateObject(this));
 }
 
-QUmlGate::~QUmlGate()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlGate::clone() const
 {
     QUmlGate *c = new QUmlGate;

@@ -57,7 +57,6 @@ class Q_UML_EXPORT QUmlSignal : public QUmlClassifier
 {
 public:
     explicit QUmlSignal(bool createQModelingObject = true);
-    virtual ~QUmlSignal();
 
     virtual QModelingElement *clone() const;
 

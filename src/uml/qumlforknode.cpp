@@ -72,15 +72,6 @@ QUmlForkNode::QUmlForkNode(bool createQModelingObject)
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlForkNodeObject(this));
 }
 
-QUmlForkNode::~QUmlForkNode()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlForkNode::clone() const
 {
     QUmlForkNode *c = new QUmlForkNode;

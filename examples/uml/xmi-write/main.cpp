@@ -101,6 +101,6 @@ int main ()
         qDebug() << "Error when writing XMI file !";
     file.close();
 
-    delete package;
+    delete model;
 }
 

@@ -66,15 +66,6 @@ QUmlLiteralString::QUmlLiteralString(bool createQModelingObject)
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlLiteralStringObject(this));
 }
 
-QUmlLiteralString::~QUmlLiteralString()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlLiteralString::clone() const
 {
     QUmlLiteralString *c = new QUmlLiteralString;

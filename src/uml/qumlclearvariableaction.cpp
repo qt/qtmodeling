@@ -77,15 +77,6 @@ QUmlClearVariableAction::QUmlClearVariableAction(bool createQModelingObject)
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlClearVariableActionObject(this));
 }
 
-QUmlClearVariableAction::~QUmlClearVariableAction()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlClearVariableAction::clone() const
 {
     QUmlClearVariableAction *c = new QUmlClearVariableAction;

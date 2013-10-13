@@ -70,15 +70,6 @@ QUmlPseudostate::QUmlPseudostate(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlPseudostateObject(this));
 }
 
-QUmlPseudostate::~QUmlPseudostate()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlPseudostate::clone() const
 {
     QUmlPseudostate *c = new QUmlPseudostate;

@@ -126,7 +126,6 @@ class Q_UML_EXPORT QUmlSequenceNodeObject : public QModelingObject
 
 public:
     Q_INVOKABLE explicit QUmlSequenceNodeObject(QUmlSequenceNode *modelingElement);
-    virtual ~QUmlSequenceNodeObject();
 
     // Owned attributes [Element]
     Q_INVOKABLE const QSet<QObject *> ownedComments() const;

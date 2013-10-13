@@ -62,10 +62,6 @@ QUmlNamespace::QUmlNamespace()
 {
 }
 
-QUmlNamespace::~QUmlNamespace()
-{
-}
-
 QModelingElement *QUmlNamespace::clone() const
 {
     QUmlNamespace *c = new QUmlNamespace;

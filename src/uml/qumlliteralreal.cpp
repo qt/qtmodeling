@@ -66,15 +66,6 @@ QUmlLiteralReal::QUmlLiteralReal(bool createQModelingObject)
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlLiteralRealObject(this));
 }
 
-QUmlLiteralReal::~QUmlLiteralReal()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlLiteralReal::clone() const
 {
     QUmlLiteralReal *c = new QUmlLiteralReal;

@@ -68,15 +68,6 @@ QUmlContinuation::QUmlContinuation(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlContinuationObject(this));
 }
 
-QUmlContinuation::~QUmlContinuation()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlContinuation::clone() const
 {
     QUmlContinuation *c = new QUmlContinuation;

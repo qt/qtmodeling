@@ -77,15 +77,6 @@ QUmlInputPin::QUmlInputPin(bool createQModelingObject)
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlInputPinObject(this));
 }
 
-QUmlInputPin::~QUmlInputPin()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlInputPin::clone() const
 {
     QUmlInputPin *c = new QUmlInputPin;

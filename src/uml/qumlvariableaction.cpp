@@ -74,10 +74,6 @@ QUmlVariableAction::QUmlVariableAction() :
 {
 }
 
-QUmlVariableAction::~QUmlVariableAction()
-{
-}
-
 QModelingElement *QUmlVariableAction::clone() const
 {
     QUmlVariableAction *c = new QUmlVariableAction;

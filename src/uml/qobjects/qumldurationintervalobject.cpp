@@ -64,14 +64,6 @@ QUmlDurationIntervalObject::QUmlDurationIntervalObject(QUmlDurationInterval *mod
     setPropertyData();
 }
 
-QUmlDurationIntervalObject::~QUmlDurationIntervalObject()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<QUmlDurationInterval *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
 // OWNED ATTRIBUTES [Element]
 
 const QSet<QObject *> QUmlDurationIntervalObject::ownedComments() const

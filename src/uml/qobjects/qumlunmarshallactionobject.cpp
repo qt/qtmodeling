@@ -72,14 +72,6 @@ QUmlUnmarshallActionObject::QUmlUnmarshallActionObject(QUmlUnmarshallAction *mod
     setPropertyData();
 }
 
-QUmlUnmarshallActionObject::~QUmlUnmarshallActionObject()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<QUmlUnmarshallAction *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
 // OWNED ATTRIBUTES [Element]
 
 const QSet<QObject *> QUmlUnmarshallActionObject::ownedComments() const

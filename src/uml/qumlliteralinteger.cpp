@@ -67,15 +67,6 @@ QUmlLiteralInteger::QUmlLiteralInteger(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlLiteralIntegerObject(this));
 }
 
-QUmlLiteralInteger::~QUmlLiteralInteger()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlLiteralInteger::clone() const
 {
     QUmlLiteralInteger *c = new QUmlLiteralInteger;

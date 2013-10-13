@@ -73,14 +73,6 @@ QUmlReadLinkObjectEndQualifierActionObject::QUmlReadLinkObjectEndQualifierAction
     setPropertyData();
 }
 
-QUmlReadLinkObjectEndQualifierActionObject::~QUmlReadLinkObjectEndQualifierActionObject()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<QUmlReadLinkObjectEndQualifierAction *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
 // OWNED ATTRIBUTES [Element]
 
 const QSet<QObject *> QUmlReadLinkObjectEndQualifierActionObject::ownedComments() const

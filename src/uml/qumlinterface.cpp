@@ -87,15 +87,6 @@ QUmlInterface::QUmlInterface(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlInterfaceObject(this));
 }
 
-QUmlInterface::~QUmlInterface()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlInterface::clone() const
 {
     QUmlInterface *c = new QUmlInterface;

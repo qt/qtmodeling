@@ -81,14 +81,6 @@ QUmlEnumerationObject::QUmlEnumerationObject(QUmlEnumeration *modelingElement)
     setPropertyData();
 }
 
-QUmlEnumerationObject::~QUmlEnumerationObject()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<QUmlEnumeration *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
 // OWNED ATTRIBUTES [Element]
 
 const QSet<QObject *> QUmlEnumerationObject::ownedComments() const

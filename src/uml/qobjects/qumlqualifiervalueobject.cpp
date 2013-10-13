@@ -56,14 +56,6 @@ QUmlQualifierValueObject::QUmlQualifierValueObject(QUmlQualifierValue *modelingE
     setPropertyData();
 }
 
-QUmlQualifierValueObject::~QUmlQualifierValueObject()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<QUmlQualifierValue *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
 // OWNED ATTRIBUTES [Element]
 
 const QSet<QObject *> QUmlQualifierValueObject::ownedComments() const

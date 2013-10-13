@@ -65,15 +65,6 @@ QUmlParameterSet::QUmlParameterSet(bool createQModelingObject)
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlParameterSetObject(this));
 }
 
-QUmlParameterSet::~QUmlParameterSet()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlParameterSet::clone() const
 {
     QUmlParameterSet *c = new QUmlParameterSet;

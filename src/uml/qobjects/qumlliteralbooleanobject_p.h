@@ -88,7 +88,6 @@ class Q_UML_EXPORT QUmlLiteralBooleanObject : public QModelingObject
 
 public:
     Q_INVOKABLE explicit QUmlLiteralBooleanObject(QUmlLiteralBoolean *modelingElement);
-    virtual ~QUmlLiteralBooleanObject();
 
     // Owned attributes [Element]
     Q_INVOKABLE const QSet<QObject *> ownedComments() const;

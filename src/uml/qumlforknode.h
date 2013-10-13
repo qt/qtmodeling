@@ -55,7 +55,6 @@ class Q_UML_EXPORT QUmlForkNode : public QUmlControlNode
 {
 public:
     explicit QUmlForkNode(bool createQModelingObject = true);
-    virtual ~QUmlForkNode();
 
     virtual QModelingElement *clone() const;
 

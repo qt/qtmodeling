@@ -77,14 +77,6 @@ QUmlConditionalNodeObject::QUmlConditionalNodeObject(QUmlConditionalNode *modeli
     setPropertyData();
 }
 
-QUmlConditionalNodeObject::~QUmlConditionalNodeObject()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<QUmlConditionalNode *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
 // OWNED ATTRIBUTES [Element]
 
 const QSet<QObject *> QUmlConditionalNodeObject::ownedComments() const

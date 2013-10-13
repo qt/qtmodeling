@@ -61,10 +61,6 @@ QUmlTypedElement::QUmlTypedElement() :
 {
 }
 
-QUmlTypedElement::~QUmlTypedElement()
-{
-}
-
 QModelingElement *QUmlTypedElement::clone() const
 {
     QUmlTypedElement *c = new QUmlTypedElement;

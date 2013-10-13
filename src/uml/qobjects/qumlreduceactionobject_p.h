@@ -108,7 +108,6 @@ class Q_UML_EXPORT QUmlReduceActionObject : public QModelingObject
 
 public:
     Q_INVOKABLE explicit QUmlReduceActionObject(QUmlReduceAction *modelingElement);
-    virtual ~QUmlReduceActionObject();
 
     // Owned attributes [Element]
     Q_INVOKABLE const QSet<QObject *> ownedComments() const;

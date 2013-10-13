@@ -64,14 +64,6 @@ QUmlTimeExpressionObject::QUmlTimeExpressionObject(QUmlTimeExpression *modelingE
     setPropertyData();
 }
 
-QUmlTimeExpressionObject::~QUmlTimeExpressionObject()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<QUmlTimeExpression *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
 // OWNED ATTRIBUTES [Element]
 
 const QSet<QObject *> QUmlTimeExpressionObject::ownedComments() const

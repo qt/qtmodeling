@@ -75,15 +75,6 @@ QUmlJoinNode::QUmlJoinNode(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlJoinNodeObject(this));
 }
 
-QUmlJoinNode::~QUmlJoinNode()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlJoinNode::clone() const
 {
     QUmlJoinNode *c = new QUmlJoinNode;

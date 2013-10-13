@@ -63,15 +63,6 @@ QUmlPackageImport::QUmlPackageImport(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlPackageImportObject(this));
 }
 
-QUmlPackageImport::~QUmlPackageImport()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlPackageImport::clone() const
 {
     QUmlPackageImport *c = new QUmlPackageImport;

@@ -78,15 +78,6 @@ QUmlUnmarshallAction::QUmlUnmarshallAction(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlUnmarshallActionObject(this));
 }
 
-QUmlUnmarshallAction::~QUmlUnmarshallAction()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlUnmarshallAction::clone() const
 {
     QUmlUnmarshallAction *c = new QUmlUnmarshallAction;

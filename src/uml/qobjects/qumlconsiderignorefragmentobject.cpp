@@ -64,14 +64,6 @@ QUmlConsiderIgnoreFragmentObject::QUmlConsiderIgnoreFragmentObject(QUmlConsiderI
     setPropertyData();
 }
 
-QUmlConsiderIgnoreFragmentObject::~QUmlConsiderIgnoreFragmentObject()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<QUmlConsiderIgnoreFragment *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
 // OWNED ATTRIBUTES [Element]
 
 const QSet<QObject *> QUmlConsiderIgnoreFragmentObject::ownedComments() const

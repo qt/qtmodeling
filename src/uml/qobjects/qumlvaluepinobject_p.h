@@ -115,7 +115,6 @@ class Q_UML_EXPORT QUmlValuePinObject : public QModelingObject
 
 public:
     Q_INVOKABLE explicit QUmlValuePinObject(QUmlValuePin *modelingElement);
-    virtual ~QUmlValuePinObject();
 
     // Owned attributes [Element]
     Q_INVOKABLE const QSet<QObject *> ownedComments() const;

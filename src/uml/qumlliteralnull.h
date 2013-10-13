@@ -55,7 +55,6 @@ class Q_UML_EXPORT QUmlLiteralNull : public QUmlLiteralSpecification
 {
 public:
     explicit QUmlLiteralNull(bool createQModelingObject = true);
-    virtual ~QUmlLiteralNull();
 
     virtual QModelingElement *clone() const;
 

@@ -55,7 +55,6 @@ class Q_UML_EXPORT QUmlDestructionOccurrenceSpecification : public QUmlMessageOc
 {
 public:
     explicit QUmlDestructionOccurrenceSpecification(bool createQModelingObject = true);
-    virtual ~QUmlDestructionOccurrenceSpecification();
 
     virtual QModelingElement *clone() const;
 

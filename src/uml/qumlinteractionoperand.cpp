@@ -73,15 +73,6 @@ QUmlInteractionOperand::QUmlInteractionOperand(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlInteractionOperandObject(this));
 }
 
-QUmlInteractionOperand::~QUmlInteractionOperand()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlInteractionOperand::clone() const
 {
     QUmlInteractionOperand *c = new QUmlInteractionOperand;

@@ -75,7 +75,6 @@ class Q_UML_EXPORT QUmlLinkEndDestructionDataObject : public QModelingObject
 
 public:
     Q_INVOKABLE explicit QUmlLinkEndDestructionDataObject(QUmlLinkEndDestructionData *modelingElement);
-    virtual ~QUmlLinkEndDestructionDataObject();
 
     // Owned attributes [Element]
     Q_INVOKABLE const QSet<QObject *> ownedComments() const;

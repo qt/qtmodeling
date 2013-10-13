@@ -71,15 +71,6 @@ QUmlDurationInterval::QUmlDurationInterval(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlDurationIntervalObject(this));
 }
 
-QUmlDurationInterval::~QUmlDurationInterval()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlDurationInterval::clone() const
 {
     QUmlDurationInterval *c = new QUmlDurationInterval;

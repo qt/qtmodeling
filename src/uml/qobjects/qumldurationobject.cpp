@@ -64,14 +64,6 @@ QUmlDurationObject::QUmlDurationObject(QUmlDuration *modelingElement)
     setPropertyData();
 }
 
-QUmlDurationObject::~QUmlDurationObject()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<QUmlDuration *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
 // OWNED ATTRIBUTES [Element]
 
 const QSet<QObject *> QUmlDurationObject::ownedComments() const

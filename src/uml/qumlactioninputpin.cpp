@@ -80,15 +80,6 @@ QUmlActionInputPin::QUmlActionInputPin(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlActionInputPinObject(this));
 }
 
-QUmlActionInputPin::~QUmlActionInputPin()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlActionInputPin::clone() const
 {
     QUmlActionInputPin *c = new QUmlActionInputPin;

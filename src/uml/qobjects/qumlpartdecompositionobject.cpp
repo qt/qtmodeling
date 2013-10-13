@@ -66,14 +66,6 @@ QUmlPartDecompositionObject::QUmlPartDecompositionObject(QUmlPartDecomposition *
     setPropertyData();
 }
 
-QUmlPartDecompositionObject::~QUmlPartDecompositionObject()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<QUmlPartDecomposition *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
 // OWNED ATTRIBUTES [Element]
 
 const QSet<QObject *> QUmlPartDecompositionObject::ownedComments() const

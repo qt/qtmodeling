@@ -55,7 +55,6 @@ class Q_UML_EXPORT QUmlExpression : public QUmlValueSpecification
 {
 public:
     explicit QUmlExpression(bool createQModelingObject = true);
-    virtual ~QUmlExpression();
 
     virtual QModelingElement *clone() const;
 

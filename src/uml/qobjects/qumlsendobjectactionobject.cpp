@@ -73,14 +73,6 @@ QUmlSendObjectActionObject::QUmlSendObjectActionObject(QUmlSendObjectAction *mod
     setPropertyData();
 }
 
-QUmlSendObjectActionObject::~QUmlSendObjectActionObject()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<QUmlSendObjectAction *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
 // OWNED ATTRIBUTES [Element]
 
 const QSet<QObject *> QUmlSendObjectActionObject::ownedComments() const

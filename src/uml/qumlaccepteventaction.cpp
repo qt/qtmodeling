@@ -78,15 +78,6 @@ QUmlAcceptEventAction::QUmlAcceptEventAction(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlAcceptEventActionObject(this));
 }
 
-QUmlAcceptEventAction::~QUmlAcceptEventAction()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlAcceptEventAction::clone() const
 {
     QUmlAcceptEventAction *c = new QUmlAcceptEventAction;

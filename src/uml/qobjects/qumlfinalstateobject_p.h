@@ -110,7 +110,6 @@ class Q_UML_EXPORT QUmlFinalStateObject : public QModelingObject
 
 public:
     Q_INVOKABLE explicit QUmlFinalStateObject(QUmlFinalState *modelingElement);
-    virtual ~QUmlFinalStateObject();
 
     // Owned attributes [Element]
     Q_INVOKABLE const QSet<QObject *> ownedComments() const;

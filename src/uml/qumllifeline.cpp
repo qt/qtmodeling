@@ -72,15 +72,6 @@ QUmlLifeline::QUmlLifeline(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlLifelineObject(this));
 }
 
-QUmlLifeline::~QUmlLifeline()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlLifeline::clone() const
 {
     QUmlLifeline *c = new QUmlLifeline;

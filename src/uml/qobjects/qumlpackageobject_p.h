@@ -104,7 +104,6 @@ class Q_UML_EXPORT QUmlPackageObject : public QModelingObject
 
 public:
     Q_INVOKABLE explicit QUmlPackageObject(QUmlPackage *modelingElement);
-    virtual ~QUmlPackageObject();
 
     // Owned attributes [Element]
     Q_INVOKABLE const QSet<QObject *> ownedComments() const;

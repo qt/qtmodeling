@@ -82,15 +82,6 @@ QUmlState::QUmlState(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlStateObject(this));
 }
 
-QUmlState::~QUmlState()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlState::clone() const
 {
     QUmlState *c = new QUmlState;

@@ -109,7 +109,6 @@ class Q_UML_EXPORT QUmlReadStructuralFeatureActionObject : public QModelingObjec
 
 public:
     Q_INVOKABLE explicit QUmlReadStructuralFeatureActionObject(QUmlReadStructuralFeatureAction *modelingElement);
-    virtual ~QUmlReadStructuralFeatureActionObject();
 
     // Owned attributes [Element]
     Q_INVOKABLE const QSet<QObject *> ownedComments() const;

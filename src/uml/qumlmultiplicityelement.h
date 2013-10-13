@@ -56,7 +56,6 @@ class QUmlValueSpecification;
 class Q_UML_EXPORT QUmlMultiplicityElement : public virtual QUmlElement
 {
 public:
-    virtual ~QUmlMultiplicityElement();
 
     Q_DECL_HIDDEN virtual QModelingElement *clone() const;
 

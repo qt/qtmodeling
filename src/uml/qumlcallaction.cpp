@@ -74,10 +74,6 @@ QUmlCallAction::QUmlCallAction() :
 {
 }
 
-QUmlCallAction::~QUmlCallAction()
-{
-}
-
 QModelingElement *QUmlCallAction::clone() const
 {
     QUmlCallAction *c = new QUmlCallAction;

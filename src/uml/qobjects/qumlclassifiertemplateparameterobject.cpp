@@ -57,14 +57,6 @@ QUmlClassifierTemplateParameterObject::QUmlClassifierTemplateParameterObject(QUm
     setPropertyData();
 }
 
-QUmlClassifierTemplateParameterObject::~QUmlClassifierTemplateParameterObject()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<QUmlClassifierTemplateParameter *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
 // OWNED ATTRIBUTES [Element]
 
 const QSet<QObject *> QUmlClassifierTemplateParameterObject::ownedComments() const

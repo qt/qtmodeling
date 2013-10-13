@@ -69,10 +69,6 @@ QUmlActivityNode::QUmlActivityNode() :
 {
 }
 
-QUmlActivityNode::~QUmlActivityNode()
-{
-}
-
 QModelingElement *QUmlActivityNode::clone() const
 {
     QUmlActivityNode *c = new QUmlActivityNode;

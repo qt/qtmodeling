@@ -81,15 +81,6 @@ QUmlReduceAction::QUmlReduceAction(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlReduceActionObject(this));
 }
 
-QUmlReduceAction::~QUmlReduceAction()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlReduceAction::clone() const
 {
     QUmlReduceAction *c = new QUmlReduceAction;

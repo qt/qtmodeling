@@ -73,14 +73,6 @@ QUmlReduceActionObject::QUmlReduceActionObject(QUmlReduceAction *modelingElement
     setPropertyData();
 }
 
-QUmlReduceActionObject::~QUmlReduceActionObject()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<QUmlReduceAction *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
 // OWNED ATTRIBUTES [Element]
 
 const QSet<QObject *> QUmlReduceActionObject::ownedComments() const

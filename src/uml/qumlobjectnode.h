@@ -61,7 +61,6 @@ class QUmlValueSpecification;
 class Q_UML_EXPORT QUmlObjectNode : public QUmlActivityNode, public QUmlTypedElement
 {
 public:
-    virtual ~QUmlObjectNode();
 
     Q_DECL_HIDDEN virtual QModelingElement *clone() const;
 

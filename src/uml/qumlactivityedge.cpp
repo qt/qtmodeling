@@ -75,10 +75,6 @@ QUmlActivityEdge::QUmlActivityEdge() :
 {
 }
 
-QUmlActivityEdge::~QUmlActivityEdge()
-{
-}
-
 QModelingElement *QUmlActivityEdge::clone() const
 {
     QUmlActivityEdge *c = new QUmlActivityEdge;

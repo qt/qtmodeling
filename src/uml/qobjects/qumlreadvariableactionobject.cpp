@@ -73,14 +73,6 @@ QUmlReadVariableActionObject::QUmlReadVariableActionObject(QUmlReadVariableActio
     setPropertyData();
 }
 
-QUmlReadVariableActionObject::~QUmlReadVariableActionObject()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<QUmlReadVariableAction *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
 // OWNED ATTRIBUTES [Element]
 
 const QSet<QObject *> QUmlReadVariableActionObject::ownedComments() const

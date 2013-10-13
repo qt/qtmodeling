@@ -74,14 +74,6 @@ QUmlActionInputPinObject::QUmlActionInputPinObject(QUmlActionInputPin *modelingE
     setPropertyData();
 }
 
-QUmlActionInputPinObject::~QUmlActionInputPinObject()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<QUmlActionInputPin *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
 // OWNED ATTRIBUTES [Element]
 
 const QSet<QObject *> QUmlActionInputPinObject::ownedComments() const

@@ -58,7 +58,6 @@ class Q_UML_EXPORT QUmlInteractionOperand : public QUmlInteractionFragment, publ
 {
 public:
     explicit QUmlInteractionOperand(bool createQModelingObject = true);
-    virtual ~QUmlInteractionOperand();
 
     virtual QModelingElement *clone() const;
 

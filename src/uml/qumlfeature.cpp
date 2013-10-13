@@ -62,10 +62,6 @@ QUmlFeature::QUmlFeature() :
 {
 }
 
-QUmlFeature::~QUmlFeature()
-{
-}
-
 QModelingElement *QUmlFeature::clone() const
 {
     QUmlFeature *c = new QUmlFeature;

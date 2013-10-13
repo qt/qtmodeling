@@ -146,7 +146,6 @@ class Q_UML_EXPORT QUmlExecutionEnvironmentObject : public QModelingObject
 
 public:
     Q_INVOKABLE explicit QUmlExecutionEnvironmentObject(QUmlExecutionEnvironment *modelingElement);
-    virtual ~QUmlExecutionEnvironmentObject();
 
     // Owned attributes [Element]
     Q_INVOKABLE const QSet<QObject *> ownedComments() const;

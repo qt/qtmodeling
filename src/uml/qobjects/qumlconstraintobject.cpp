@@ -62,14 +62,6 @@ QUmlConstraintObject::QUmlConstraintObject(QUmlConstraint *modelingElement)
     setPropertyData();
 }
 
-QUmlConstraintObject::~QUmlConstraintObject()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<QUmlConstraint *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
 // OWNED ATTRIBUTES [Element]
 
 const QSet<QObject *> QUmlConstraintObject::ownedComments() const

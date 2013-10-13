@@ -55,7 +55,6 @@ class Q_UML_EXPORT QUmlPrimitiveType : public QUmlDataType
 {
 public:
     explicit QUmlPrimitiveType(bool createQModelingObject = true);
-    virtual ~QUmlPrimitiveType();
 
     virtual QModelingElement *clone() const;
 

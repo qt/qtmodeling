@@ -77,15 +77,6 @@ QUmlReadSelfAction::QUmlReadSelfAction(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlReadSelfActionObject(this));
 }
 
-QUmlReadSelfAction::~QUmlReadSelfAction()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlReadSelfAction::clone() const
 {
     QUmlReadSelfAction *c = new QUmlReadSelfAction;

@@ -73,14 +73,6 @@ QUmlReplyActionObject::QUmlReplyActionObject(QUmlReplyAction *modelingElement)
     setPropertyData();
 }
 
-QUmlReplyActionObject::~QUmlReplyActionObject()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<QUmlReplyAction *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
 // OWNED ATTRIBUTES [Element]
 
 const QSet<QObject *> QUmlReplyActionObject::ownedComments() const

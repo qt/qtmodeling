@@ -85,15 +85,6 @@ QUmlActor::QUmlActor(bool createQModelingObject)
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlActorObject(this));
 }
 
-QUmlActor::~QUmlActor()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlActor::clone() const
 {
     QUmlActor *c = new QUmlActor;

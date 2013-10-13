@@ -73,14 +73,6 @@ QUmlAcceptCallActionObject::QUmlAcceptCallActionObject(QUmlAcceptCallAction *mod
     setPropertyData();
 }
 
-QUmlAcceptCallActionObject::~QUmlAcceptCallActionObject()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<QUmlAcceptCallAction *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
 // OWNED ATTRIBUTES [Element]
 
 const QSet<QObject *> QUmlAcceptCallActionObject::ownedComments() const

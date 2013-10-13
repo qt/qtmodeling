@@ -58,7 +58,6 @@ class Q_UML_EXPORT QUmlStereotype : public QUmlClass
 {
 public:
     explicit QUmlStereotype(bool createQModelingObject = true);
-    virtual ~QUmlStereotype();
 
     virtual QModelingElement *clone() const;
 

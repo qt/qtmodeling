@@ -129,7 +129,6 @@ class Q_UML_EXPORT QUmlUseCaseObject : public QModelingObject
 
 public:
     Q_INVOKABLE explicit QUmlUseCaseObject(QUmlUseCase *modelingElement);
-    virtual ~QUmlUseCaseObject();
 
     // Owned attributes [Element]
     Q_INVOKABLE const QSet<QObject *> ownedComments() const;

@@ -60,14 +60,6 @@ QUmlCollaborationUseObject::QUmlCollaborationUseObject(QUmlCollaborationUse *mod
     setPropertyData();
 }
 
-QUmlCollaborationUseObject::~QUmlCollaborationUseObject()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<QUmlCollaborationUse *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
 // OWNED ATTRIBUTES [Element]
 
 const QSet<QObject *> QUmlCollaborationUseObject::ownedComments() const

@@ -62,14 +62,6 @@ QUmlAbstractionObject::QUmlAbstractionObject(QUmlAbstraction *modelingElement)
     setPropertyData();
 }
 
-QUmlAbstractionObject::~QUmlAbstractionObject()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<QUmlAbstraction *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
 // OWNED ATTRIBUTES [Element]
 
 const QSet<QObject *> QUmlAbstractionObject::ownedComments() const

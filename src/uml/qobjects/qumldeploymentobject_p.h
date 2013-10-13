@@ -98,7 +98,6 @@ class Q_UML_EXPORT QUmlDeploymentObject : public QModelingObject
 
 public:
     Q_INVOKABLE explicit QUmlDeploymentObject(QUmlDeployment *modelingElement);
-    virtual ~QUmlDeploymentObject();
 
     // Owned attributes [Element]
     Q_INVOKABLE const QSet<QObject *> ownedComments() const;

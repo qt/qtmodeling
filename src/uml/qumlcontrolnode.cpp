@@ -68,10 +68,6 @@ QUmlControlNode::QUmlControlNode()
 {
 }
 
-QUmlControlNode::~QUmlControlNode()
-{
-}
-
 QModelingElement *QUmlControlNode::clone() const
 {
     QUmlControlNode *c = new QUmlControlNode;

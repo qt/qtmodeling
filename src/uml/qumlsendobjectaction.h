@@ -57,7 +57,6 @@ class Q_UML_EXPORT QUmlSendObjectAction : public QUmlInvocationAction
 {
 public:
     explicit QUmlSendObjectAction(bool createQModelingObject = true);
-    virtual ~QUmlSendObjectAction();
 
     virtual QModelingElement *clone() const;
 

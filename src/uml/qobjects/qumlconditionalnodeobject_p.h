@@ -129,7 +129,6 @@ class Q_UML_EXPORT QUmlConditionalNodeObject : public QModelingObject
 
 public:
     Q_INVOKABLE explicit QUmlConditionalNodeObject(QUmlConditionalNode *modelingElement);
-    virtual ~QUmlConditionalNodeObject();
 
     // Owned attributes [Element]
     Q_INVOKABLE const QSet<QObject *> ownedComments() const;

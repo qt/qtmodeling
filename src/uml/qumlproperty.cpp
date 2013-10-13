@@ -90,15 +90,6 @@ QUmlProperty::QUmlProperty(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlPropertyObject(this));
 }
 
-QUmlProperty::~QUmlProperty()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlProperty::clone() const
 {
     QUmlProperty *c = new QUmlProperty;

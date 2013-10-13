@@ -60,7 +60,6 @@ class Q_UML_EXPORT QUmlPackageImport : public QUmlDirectedRelationship
 {
 public:
     explicit QUmlPackageImport(bool createQModelingObject = true);
-    virtual ~QUmlPackageImport();
 
     virtual QModelingElement *clone() const;
 

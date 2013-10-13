@@ -101,7 +101,6 @@ class Q_UML_EXPORT QUmlDataStoreNodeObject : public QModelingObject
 
 public:
     Q_INVOKABLE explicit QUmlDataStoreNodeObject(QUmlDataStoreNode *modelingElement);
-    virtual ~QUmlDataStoreNodeObject();
 
     // Owned attributes [Element]
     Q_INVOKABLE const QSet<QObject *> ownedComments() const;

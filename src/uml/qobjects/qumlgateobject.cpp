@@ -60,14 +60,6 @@ QUmlGateObject::QUmlGateObject(QUmlGate *modelingElement)
     setPropertyData();
 }
 
-QUmlGateObject::~QUmlGateObject()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<QUmlGate *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
 // OWNED ATTRIBUTES [Element]
 
 const QSet<QObject *> QUmlGateObject::ownedComments() const

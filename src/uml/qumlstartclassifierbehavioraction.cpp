@@ -77,15 +77,6 @@ QUmlStartClassifierBehaviorAction::QUmlStartClassifierBehaviorAction(bool create
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlStartClassifierBehaviorActionObject(this));
 }
 
-QUmlStartClassifierBehaviorAction::~QUmlStartClassifierBehaviorAction()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlStartClassifierBehaviorAction::clone() const
 {
     QUmlStartClassifierBehaviorAction *c = new QUmlStartClassifierBehaviorAction;

@@ -59,7 +59,6 @@ class Q_UML_EXPORT QUmlUnmarshallAction : public QUmlAction
 {
 public:
     explicit QUmlUnmarshallAction(bool createQModelingObject = true);
-    virtual ~QUmlUnmarshallAction();
 
     virtual QModelingElement *clone() const;
 

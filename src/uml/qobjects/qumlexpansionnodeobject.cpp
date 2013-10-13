@@ -73,14 +73,6 @@ QUmlExpansionNodeObject::QUmlExpansionNodeObject(QUmlExpansionNode *modelingElem
     setPropertyData();
 }
 
-QUmlExpansionNodeObject::~QUmlExpansionNodeObject()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<QUmlExpansionNode *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
 // OWNED ATTRIBUTES [Element]
 
 const QSet<QObject *> QUmlExpansionNodeObject::ownedComments() const

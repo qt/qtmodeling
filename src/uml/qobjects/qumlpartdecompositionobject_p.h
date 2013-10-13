@@ -89,7 +89,6 @@ class Q_UML_EXPORT QUmlPartDecompositionObject : public QModelingObject
 
 public:
     Q_INVOKABLE explicit QUmlPartDecompositionObject(QUmlPartDecomposition *modelingElement);
-    virtual ~QUmlPartDecompositionObject();
 
     // Owned attributes [Element]
     Q_INVOKABLE const QSet<QObject *> ownedComments() const;

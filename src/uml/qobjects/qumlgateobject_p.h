@@ -79,7 +79,6 @@ class Q_UML_EXPORT QUmlGateObject : public QModelingObject
 
 public:
     Q_INVOKABLE explicit QUmlGateObject(QUmlGate *modelingElement);
-    virtual ~QUmlGateObject();
 
     // Owned attributes [Element]
     Q_INVOKABLE const QSet<QObject *> ownedComments() const;

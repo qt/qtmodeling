@@ -76,14 +76,6 @@ QUmlPortObject::QUmlPortObject(QUmlPort *modelingElement)
     setPropertyData();
 }
 
-QUmlPortObject::~QUmlPortObject()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<QUmlPort *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
 // OWNED ATTRIBUTES [Element]
 
 const QSet<QObject *> QUmlPortObject::ownedComments() const

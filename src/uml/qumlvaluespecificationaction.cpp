@@ -79,15 +79,6 @@ QUmlValueSpecificationAction::QUmlValueSpecificationAction(bool createQModelingO
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlValueSpecificationActionObject(this));
 }
 
-QUmlValueSpecificationAction::~QUmlValueSpecificationAction()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlValueSpecificationAction::clone() const
 {
     QUmlValueSpecificationAction *c = new QUmlValueSpecificationAction;

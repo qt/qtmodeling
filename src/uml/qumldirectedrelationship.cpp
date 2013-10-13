@@ -54,10 +54,6 @@ QUmlDirectedRelationship::QUmlDirectedRelationship()
 {
 }
 
-QUmlDirectedRelationship::~QUmlDirectedRelationship()
-{
-}
-
 QModelingElement *QUmlDirectedRelationship::clone() const
 {
     QUmlDirectedRelationship *c = new QUmlDirectedRelationship;

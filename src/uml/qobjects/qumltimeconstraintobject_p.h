@@ -92,7 +92,6 @@ class Q_UML_EXPORT QUmlTimeConstraintObject : public QModelingObject
 
 public:
     Q_INVOKABLE explicit QUmlTimeConstraintObject(QUmlTimeConstraint *modelingElement);
-    virtual ~QUmlTimeConstraintObject();
 
     // Owned attributes [Element]
     Q_INVOKABLE const QSet<QObject *> ownedComments() const;

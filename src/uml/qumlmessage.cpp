@@ -73,15 +73,6 @@ QUmlMessage::QUmlMessage(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlMessageObject(this));
 }
 
-QUmlMessage::~QUmlMessage()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlMessage::clone() const
 {
     QUmlMessage *c = new QUmlMessage;

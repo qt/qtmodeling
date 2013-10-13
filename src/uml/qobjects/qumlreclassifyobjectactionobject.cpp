@@ -72,14 +72,6 @@ QUmlReclassifyObjectActionObject::QUmlReclassifyObjectActionObject(QUmlReclassif
     setPropertyData();
 }
 
-QUmlReclassifyObjectActionObject::~QUmlReclassifyObjectActionObject()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<QUmlReclassifyObjectAction *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
 // OWNED ATTRIBUTES [Element]
 
 const QSet<QObject *> QUmlReclassifyObjectActionObject::ownedComments() const

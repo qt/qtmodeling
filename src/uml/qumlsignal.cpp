@@ -83,15 +83,6 @@ QUmlSignal::QUmlSignal(bool createQModelingObject)
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlSignalObject(this));
 }
 
-QUmlSignal::~QUmlSignal()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlSignal::clone() const
 {
     QUmlSignal *c = new QUmlSignal;

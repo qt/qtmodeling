@@ -73,14 +73,6 @@ QUmlReadLinkObjectEndActionObject::QUmlReadLinkObjectEndActionObject(QUmlReadLin
     setPropertyData();
 }
 
-QUmlReadLinkObjectEndActionObject::~QUmlReadLinkObjectEndActionObject()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<QUmlReadLinkObjectEndAction *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
 // OWNED ATTRIBUTES [Element]
 
 const QSet<QObject *> QUmlReadLinkObjectEndActionObject::ownedComments() const

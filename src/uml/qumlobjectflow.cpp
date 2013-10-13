@@ -78,15 +78,6 @@ QUmlObjectFlow::QUmlObjectFlow(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlObjectFlowObject(this));
 }
 
-QUmlObjectFlow::~QUmlObjectFlow()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlObjectFlow::clone() const
 {
     QUmlObjectFlow *c = new QUmlObjectFlow;

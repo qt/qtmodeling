@@ -94,10 +94,6 @@ QUmlBehavior::QUmlBehavior() :
 {
 }
 
-QUmlBehavior::~QUmlBehavior()
-{
-}
-
 QModelingElement *QUmlBehavior::clone() const
 {
     QUmlBehavior *c = new QUmlBehavior;

@@ -57,7 +57,6 @@ class Q_UML_EXPORT QUmlReadStructuralFeatureAction : public QUmlStructuralFeatur
 {
 public:
     explicit QUmlReadStructuralFeatureAction(bool createQModelingObject = true);
-    virtual ~QUmlReadStructuralFeatureAction();
 
     virtual QModelingElement *clone() const;
 

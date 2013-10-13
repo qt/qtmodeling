@@ -69,15 +69,6 @@ QUmlTimeExpression::QUmlTimeExpression(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlTimeExpressionObject(this));
 }
 
-QUmlTimeExpression::~QUmlTimeExpression()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlTimeExpression::clone() const
 {
     QUmlTimeExpression *c = new QUmlTimeExpression;

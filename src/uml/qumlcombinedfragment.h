@@ -60,7 +60,6 @@ class Q_UML_EXPORT QUmlCombinedFragment : public QUmlInteractionFragment
 {
 public:
     explicit QUmlCombinedFragment(bool createQModelingObject = true);
-    virtual ~QUmlCombinedFragment();
 
     virtual QModelingElement *clone() const;
 

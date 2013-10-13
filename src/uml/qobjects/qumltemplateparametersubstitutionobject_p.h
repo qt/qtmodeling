@@ -72,7 +72,6 @@ class Q_UML_EXPORT QUmlTemplateParameterSubstitutionObject : public QModelingObj
 
 public:
     Q_INVOKABLE explicit QUmlTemplateParameterSubstitutionObject(QUmlTemplateParameterSubstitution *modelingElement);
-    virtual ~QUmlTemplateParameterSubstitutionObject();
 
     // Owned attributes [Element]
     Q_INVOKABLE const QSet<QObject *> ownedComments() const;

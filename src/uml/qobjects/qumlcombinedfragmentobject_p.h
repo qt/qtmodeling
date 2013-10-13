@@ -87,7 +87,6 @@ class Q_UML_EXPORT QUmlCombinedFragmentObject : public QModelingObject
 
 public:
     Q_INVOKABLE explicit QUmlCombinedFragmentObject(QUmlCombinedFragment *modelingElement);
-    virtual ~QUmlCombinedFragmentObject();
 
     // Owned attributes [Element]
     Q_INVOKABLE const QSet<QObject *> ownedComments() const;

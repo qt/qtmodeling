@@ -69,15 +69,6 @@ QUmlConnector::QUmlConnector(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlConnectorObject(this));
 }
 
-QUmlConnector::~QUmlConnector()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlConnector::clone() const
 {
     QUmlConnector *c = new QUmlConnector;

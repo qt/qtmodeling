@@ -57,14 +57,6 @@ QUmlConnectableElementTemplateParameterObject::QUmlConnectableElementTemplatePar
     setPropertyData();
 }
 
-QUmlConnectableElementTemplateParameterObject::~QUmlConnectableElementTemplateParameterObject()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<QUmlConnectableElementTemplateParameter *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
 // OWNED ATTRIBUTES [Element]
 
 const QSet<QObject *> QUmlConnectableElementTemplateParameterObject::ownedComments() const

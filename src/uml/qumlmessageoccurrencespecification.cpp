@@ -69,15 +69,6 @@ QUmlMessageOccurrenceSpecification::QUmlMessageOccurrenceSpecification(bool crea
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlMessageOccurrenceSpecificationObject(this));
 }
 
-QUmlMessageOccurrenceSpecification::~QUmlMessageOccurrenceSpecification()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlMessageOccurrenceSpecification::clone() const
 {
     QUmlMessageOccurrenceSpecification *c = new QUmlMessageOccurrenceSpecification;

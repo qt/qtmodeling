@@ -79,15 +79,6 @@ QUmlSendObjectAction::QUmlSendObjectAction(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlSendObjectActionObject(this));
 }
 
-QUmlSendObjectAction::~QUmlSendObjectAction()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlSendObjectAction::clone() const
 {
     QUmlSendObjectAction *c = new QUmlSendObjectAction;

@@ -77,7 +77,6 @@ class Q_UML_EXPORT QUmlClassifierTemplateParameterObject : public QModelingObjec
 
 public:
     Q_INVOKABLE explicit QUmlClassifierTemplateParameterObject(QUmlClassifierTemplateParameter *modelingElement);
-    virtual ~QUmlClassifierTemplateParameterObject();
 
     // Owned attributes [Element]
     Q_INVOKABLE const QSet<QObject *> ownedComments() const;

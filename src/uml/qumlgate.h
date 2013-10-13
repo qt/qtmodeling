@@ -55,7 +55,6 @@ class Q_UML_EXPORT QUmlGate : public QUmlMessageEnd
 {
 public:
     explicit QUmlGate(bool createQModelingObject = true);
-    virtual ~QUmlGate();
 
     virtual QModelingElement *clone() const;
 

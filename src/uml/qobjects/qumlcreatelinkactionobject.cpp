@@ -75,14 +75,6 @@ QUmlCreateLinkActionObject::QUmlCreateLinkActionObject(QUmlCreateLinkAction *mod
     setPropertyData();
 }
 
-QUmlCreateLinkActionObject::~QUmlCreateLinkActionObject()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<QUmlCreateLinkAction *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
 // OWNED ATTRIBUTES [Element]
 
 const QSet<QObject *> QUmlCreateLinkActionObject::ownedComments() const

@@ -79,15 +79,6 @@ QUmlRemoveStructuralFeatureValueAction::QUmlRemoveStructuralFeatureValueAction(b
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlRemoveStructuralFeatureValueActionObject(this));
 }
 
-QUmlRemoveStructuralFeatureValueAction::~QUmlRemoveStructuralFeatureValueAction()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlRemoveStructuralFeatureValueAction::clone() const
 {
     QUmlRemoveStructuralFeatureValueAction *c = new QUmlRemoveStructuralFeatureValueAction;

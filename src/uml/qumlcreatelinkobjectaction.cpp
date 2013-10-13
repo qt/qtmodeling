@@ -81,15 +81,6 @@ QUmlCreateLinkObjectAction::QUmlCreateLinkObjectAction(bool createQModelingObjec
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlCreateLinkObjectActionObject(this));
 }
 
-QUmlCreateLinkObjectAction::~QUmlCreateLinkObjectAction()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlCreateLinkObjectAction::clone() const
 {
     QUmlCreateLinkObjectAction *c = new QUmlCreateLinkObjectAction;

@@ -73,14 +73,6 @@ QUmlActivityParameterNodeObject::QUmlActivityParameterNodeObject(QUmlActivityPar
     setPropertyData();
 }
 
-QUmlActivityParameterNodeObject::~QUmlActivityParameterNodeObject()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<QUmlActivityParameterNode *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
 // OWNED ATTRIBUTES [Element]
 
 const QSet<QObject *> QUmlActivityParameterNodeObject::ownedComments() const

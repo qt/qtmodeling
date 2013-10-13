@@ -73,10 +73,6 @@ QUmlAction::QUmlAction() :
 {
 }
 
-QUmlAction::~QUmlAction()
-{
-}
-
 QModelingElement *QUmlAction::clone() const
 {
     QUmlAction *c = new QUmlAction;

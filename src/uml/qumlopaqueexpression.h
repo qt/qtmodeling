@@ -58,7 +58,6 @@ class Q_UML_EXPORT QUmlOpaqueExpression : public QUmlValueSpecification
 {
 public:
     explicit QUmlOpaqueExpression(bool createQModelingObject = true);
-    virtual ~QUmlOpaqueExpression();
 
     virtual QModelingElement *clone() const;
 

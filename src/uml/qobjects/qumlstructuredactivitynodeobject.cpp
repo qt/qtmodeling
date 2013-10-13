@@ -75,14 +75,6 @@ QUmlStructuredActivityNodeObject::QUmlStructuredActivityNodeObject(QUmlStructure
     setPropertyData();
 }
 
-QUmlStructuredActivityNodeObject::~QUmlStructuredActivityNodeObject()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<QUmlStructuredActivityNode *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
 // OWNED ATTRIBUTES [Element]
 
 const QSet<QObject *> QUmlStructuredActivityNodeObject::ownedComments() const

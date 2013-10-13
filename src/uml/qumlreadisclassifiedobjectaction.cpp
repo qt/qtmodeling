@@ -80,15 +80,6 @@ QUmlReadIsClassifiedObjectAction::QUmlReadIsClassifiedObjectAction(bool createQM
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlReadIsClassifiedObjectActionObject(this));
 }
 
-QUmlReadIsClassifiedObjectAction::~QUmlReadIsClassifiedObjectAction()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlReadIsClassifiedObjectAction::clone() const
 {
     QUmlReadIsClassifiedObjectAction *c = new QUmlReadIsClassifiedObjectAction;

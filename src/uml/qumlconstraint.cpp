@@ -68,15 +68,6 @@ QUmlConstraint::QUmlConstraint(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlConstraintObject(this));
 }
 
-QUmlConstraint::~QUmlConstraint()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlConstraint::clone() const
 {
     QUmlConstraint *c = new QUmlConstraint;

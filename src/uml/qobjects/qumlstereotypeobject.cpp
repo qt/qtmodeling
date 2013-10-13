@@ -90,14 +90,6 @@ QUmlStereotypeObject::QUmlStereotypeObject(QUmlStereotype *modelingElement)
     setPropertyData();
 }
 
-QUmlStereotypeObject::~QUmlStereotypeObject()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<QUmlStereotype *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
 // OWNED ATTRIBUTES [Element]
 
 const QSet<QObject *> QUmlStereotypeObject::ownedComments() const

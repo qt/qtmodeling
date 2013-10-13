@@ -55,7 +55,6 @@ class Q_UML_EXPORT QUmlInterval : public QUmlValueSpecification
 {
 public:
     explicit QUmlInterval(bool createQModelingObject = true);
-    virtual ~QUmlInterval();
 
     virtual QModelingElement *clone() const;
 

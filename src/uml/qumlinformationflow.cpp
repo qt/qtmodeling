@@ -70,15 +70,6 @@ QUmlInformationFlow::QUmlInformationFlow(bool createQModelingObject)
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlInformationFlowObject(this));
 }
 
-QUmlInformationFlow::~QUmlInformationFlow()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlInformationFlow::clone() const
 {
     QUmlInformationFlow *c = new QUmlInformationFlow;

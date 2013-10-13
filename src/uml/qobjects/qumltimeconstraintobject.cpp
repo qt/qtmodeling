@@ -64,14 +64,6 @@ QUmlTimeConstraintObject::QUmlTimeConstraintObject(QUmlTimeConstraint *modelingE
     setPropertyData();
 }
 
-QUmlTimeConstraintObject::~QUmlTimeConstraintObject()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<QUmlTimeConstraint *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
 // OWNED ATTRIBUTES [Element]
 
 const QSet<QObject *> QUmlTimeConstraintObject::ownedComments() const

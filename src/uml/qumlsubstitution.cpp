@@ -70,15 +70,6 @@ QUmlSubstitution::QUmlSubstitution(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlSubstitutionObject(this));
 }
 
-QUmlSubstitution::~QUmlSubstitution()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlSubstitution::clone() const
 {
     QUmlSubstitution *c = new QUmlSubstitution;

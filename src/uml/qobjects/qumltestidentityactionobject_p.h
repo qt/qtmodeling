@@ -107,7 +107,6 @@ class Q_UML_EXPORT QUmlTestIdentityActionObject : public QModelingObject
 
 public:
     Q_INVOKABLE explicit QUmlTestIdentityActionObject(QUmlTestIdentityAction *modelingElement);
-    virtual ~QUmlTestIdentityActionObject();
 
     // Owned attributes [Element]
     Q_INVOKABLE const QSet<QObject *> ownedComments() const;

@@ -70,14 +70,6 @@ QUmlDecisionNodeObject::QUmlDecisionNodeObject(QUmlDecisionNode *modelingElement
     setPropertyData();
 }
 
-QUmlDecisionNodeObject::~QUmlDecisionNodeObject()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<QUmlDecisionNode *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
 // OWNED ATTRIBUTES [Element]
 
 const QSet<QObject *> QUmlDecisionNodeObject::ownedComments() const

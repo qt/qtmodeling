@@ -74,10 +74,6 @@ QUmlLinkAction::QUmlLinkAction()
 {
 }
 
-QUmlLinkAction::~QUmlLinkAction()
-{
-}
-
 QModelingElement *QUmlLinkAction::clone() const
 {
     QUmlLinkAction *c = new QUmlLinkAction;

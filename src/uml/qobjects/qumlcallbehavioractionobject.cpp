@@ -74,14 +74,6 @@ QUmlCallBehaviorActionObject::QUmlCallBehaviorActionObject(QUmlCallBehaviorActio
     setPropertyData();
 }
 
-QUmlCallBehaviorActionObject::~QUmlCallBehaviorActionObject()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<QUmlCallBehaviorAction *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
 // OWNED ATTRIBUTES [Element]
 
 const QSet<QObject *> QUmlCallBehaviorActionObject::ownedComments() const

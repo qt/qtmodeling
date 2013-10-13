@@ -59,7 +59,6 @@ class Q_UML_EXPORT QUmlSlot : public QUmlElement
 {
 public:
     explicit QUmlSlot(bool createQModelingObject = true);
-    virtual ~QUmlSlot();
 
     virtual QModelingElement *clone() const;
 

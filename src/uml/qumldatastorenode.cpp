@@ -77,15 +77,6 @@ QUmlDataStoreNode::QUmlDataStoreNode(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlDataStoreNodeObject(this));
 }
 
-QUmlDataStoreNode::~QUmlDataStoreNode()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlDataStoreNode::clone() const
 {
     QUmlDataStoreNode *c = new QUmlDataStoreNode;

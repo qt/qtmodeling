@@ -99,7 +99,6 @@ class Q_UML_EXPORT QUmlTransitionObject : public QModelingObject
 
 public:
     Q_INVOKABLE explicit QUmlTransitionObject(QUmlTransition *modelingElement);
-    virtual ~QUmlTransitionObject();
 
     // Owned attributes [Element]
     Q_INVOKABLE const QSet<QObject *> ownedComments() const;

@@ -61,14 +61,6 @@ QUmlParameterSetObject::QUmlParameterSetObject(QUmlParameterSet *modelingElement
     setPropertyData();
 }
 
-QUmlParameterSetObject::~QUmlParameterSetObject()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<QUmlParameterSet *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
 // OWNED ATTRIBUTES [Element]
 
 const QSet<QObject *> QUmlParameterSetObject::ownedComments() const

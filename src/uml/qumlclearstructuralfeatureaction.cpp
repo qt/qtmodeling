@@ -78,15 +78,6 @@ QUmlClearStructuralFeatureAction::QUmlClearStructuralFeatureAction(bool createQM
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlClearStructuralFeatureActionObject(this));
 }
 
-QUmlClearStructuralFeatureAction::~QUmlClearStructuralFeatureAction()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlClearStructuralFeatureAction::clone() const
 {
     QUmlClearStructuralFeatureAction *c = new QUmlClearStructuralFeatureAction;

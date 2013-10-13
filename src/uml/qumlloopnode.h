@@ -59,7 +59,6 @@ class Q_UML_EXPORT QUmlLoopNode : public QUmlStructuredActivityNode
 {
 public:
     explicit QUmlLoopNode(bool createQModelingObject = true);
-    virtual ~QUmlLoopNode();
 
     virtual QModelingElement *clone() const;
 

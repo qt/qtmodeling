@@ -105,7 +105,6 @@ class Q_UML_EXPORT QUmlReadSelfActionObject : public QModelingObject
 
 public:
     Q_INVOKABLE explicit QUmlReadSelfActionObject(QUmlReadSelfAction *modelingElement);
-    virtual ~QUmlReadSelfActionObject();
 
     // Owned attributes [Element]
     Q_INVOKABLE const QSet<QObject *> ownedComments() const;

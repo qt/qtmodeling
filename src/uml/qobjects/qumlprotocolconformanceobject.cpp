@@ -55,14 +55,6 @@ QUmlProtocolConformanceObject::QUmlProtocolConformanceObject(QUmlProtocolConform
     setPropertyData();
 }
 
-QUmlProtocolConformanceObject::~QUmlProtocolConformanceObject()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<QUmlProtocolConformance *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
 // OWNED ATTRIBUTES [Element]
 
 const QSet<QObject *> QUmlProtocolConformanceObject::ownedComments() const

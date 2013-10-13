@@ -57,7 +57,6 @@ class Q_UML_EXPORT QUmlActionExecutionSpecification : public QUmlExecutionSpecif
 {
 public:
     explicit QUmlActionExecutionSpecification(bool createQModelingObject = true);
-    virtual ~QUmlActionExecutionSpecification();
 
     virtual QModelingElement *clone() const;
 

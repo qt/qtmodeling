@@ -91,7 +91,6 @@ class Q_UML_EXPORT QUmlRedefinableTemplateSignatureObject : public QModelingObje
 
 public:
     Q_INVOKABLE explicit QUmlRedefinableTemplateSignatureObject(QUmlRedefinableTemplateSignature *modelingElement);
-    virtual ~QUmlRedefinableTemplateSignatureObject();
 
     // Owned attributes [Element]
     Q_INVOKABLE const QSet<QObject *> ownedComments() const;

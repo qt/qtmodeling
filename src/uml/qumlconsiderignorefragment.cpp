@@ -69,15 +69,6 @@ QUmlConsiderIgnoreFragment::QUmlConsiderIgnoreFragment(bool createQModelingObjec
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlConsiderIgnoreFragmentObject(this));
 }
 
-QUmlConsiderIgnoreFragment::~QUmlConsiderIgnoreFragment()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlConsiderIgnoreFragment::clone() const
 {
     QUmlConsiderIgnoreFragment *c = new QUmlConsiderIgnoreFragment;

@@ -143,7 +143,6 @@ class Q_UML_EXPORT QUmlStereotypeObject : public QModelingObject
 
 public:
     Q_INVOKABLE explicit QUmlStereotypeObject(QUmlStereotype *modelingElement);
-    virtual ~QUmlStereotypeObject();
 
     // Owned attributes [Element]
     Q_INVOKABLE const QSet<QObject *> ownedComments() const;

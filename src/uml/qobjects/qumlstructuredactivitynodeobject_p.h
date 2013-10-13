@@ -124,7 +124,6 @@ class Q_UML_EXPORT QUmlStructuredActivityNodeObject : public QModelingObject
 
 public:
     Q_INVOKABLE explicit QUmlStructuredActivityNodeObject(QUmlStructuredActivityNode *modelingElement);
-    virtual ~QUmlStructuredActivityNodeObject();
 
     // Owned attributes [Element]
     Q_INVOKABLE const QSet<QObject *> ownedComments() const;

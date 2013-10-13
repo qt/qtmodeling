@@ -79,7 +79,6 @@ class Q_UML_EXPORT QUmlGeneralizationObject : public QModelingObject
 
 public:
     Q_INVOKABLE explicit QUmlGeneralizationObject(QUmlGeneralization *modelingElement);
-    virtual ~QUmlGeneralizationObject();
 
     // Owned attributes [Element]
     Q_INVOKABLE const QSet<QObject *> ownedComments() const;

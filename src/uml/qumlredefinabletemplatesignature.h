@@ -59,7 +59,6 @@ class Q_UML_EXPORT QUmlRedefinableTemplateSignature : public QUmlTemplateSignatu
 {
 public:
     explicit QUmlRedefinableTemplateSignature(bool createQModelingObject = true);
-    virtual ~QUmlRedefinableTemplateSignature();
 
     virtual QModelingElement *clone() const;
 

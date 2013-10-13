@@ -62,14 +62,6 @@ QUmlLiteralRealObject::QUmlLiteralRealObject(QUmlLiteralReal *modelingElement)
     setPropertyData();
 }
 
-QUmlLiteralRealObject::~QUmlLiteralRealObject()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<QUmlLiteralReal *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
 // OWNED ATTRIBUTES [Element]
 
 const QSet<QObject *> QUmlLiteralRealObject::ownedComments() const

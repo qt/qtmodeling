@@ -69,15 +69,6 @@ QUmlCombinedFragment::QUmlCombinedFragment(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlCombinedFragmentObject(this));
 }
 
-QUmlCombinedFragment::~QUmlCombinedFragment()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlCombinedFragment::clone() const
 {
     QUmlCombinedFragment *c = new QUmlCombinedFragment;

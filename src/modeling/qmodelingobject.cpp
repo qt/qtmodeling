@@ -41,6 +41,8 @@
 #include "qmodelingobject.h"
 #include "qmodelingobject_p.h"
 
+#include <QtModeling/QModelingElement>
+
 QT_BEGIN_NAMESPACE
 
 QHash< QString, QHash< QString, QHash<QtModeling::MetaPropertyDataRole, QVariant> > > QModelingObject::propertyDataHash;
@@ -56,6 +58,10 @@ QModelingObjectPrivate::~QModelingObjectPrivate()
 
 QModelingObject::~QModelingObject()
 {
+    if (!property("deletingFromModelingObject").isValid()) {
+        qmodelingelementproperty_cast<QModelingElement *>(this)->deletingFromQModelingObject = true;
+        delete qmodelingelementproperty_cast<QModelingElement *>(this);
+    }
 }
 
 bool QModelingObject::isPropertyModified(QMetaProperty metaProperty) const

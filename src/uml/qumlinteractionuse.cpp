@@ -73,15 +73,6 @@ QUmlInteractionUse::QUmlInteractionUse(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlInteractionUseObject(this));
 }
 
-QUmlInteractionUse::~QUmlInteractionUse()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlInteractionUse::clone() const
 {
     QUmlInteractionUse *c = new QUmlInteractionUse;

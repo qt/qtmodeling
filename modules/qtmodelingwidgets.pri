@@ -1,7 +1,7 @@
-QT.modelingwidgets.VERSION = 5.1.1
+QT.modelingwidgets.VERSION = 5.2.0
 QT.modelingwidgets.MAJOR_VERSION = 5
-QT.modelingwidgets.MINOR_VERSION = 1
-QT.modelingwidgets.PATCH_VERSION = 1
+QT.modelingwidgets.MINOR_VERSION = 2
+QT.modelingwidgets.PATCH_VERSION = 0
 
 QT.modelingwidgets.name = QtModelingWidgets
 QT.modelingwidgets.bins = $$QT_MODULE_BIN_BASE

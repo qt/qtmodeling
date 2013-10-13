@@ -62,14 +62,6 @@ QUmlSignalEventObject::QUmlSignalEventObject(QUmlSignalEvent *modelingElement)
     setPropertyData();
 }
 
-QUmlSignalEventObject::~QUmlSignalEventObject()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<QUmlSignalEvent *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
 // OWNED ATTRIBUTES [Element]
 
 const QSet<QObject *> QUmlSignalEventObject::ownedComments() const

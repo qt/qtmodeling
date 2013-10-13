@@ -104,7 +104,6 @@ class Q_UML_EXPORT QUmlReceptionObject : public QModelingObject
 
 public:
     Q_INVOKABLE explicit QUmlReceptionObject(QUmlReception *modelingElement);
-    virtual ~QUmlReceptionObject();
 
     // Owned attributes [Element]
     Q_INVOKABLE const QSet<QObject *> ownedComments() const;

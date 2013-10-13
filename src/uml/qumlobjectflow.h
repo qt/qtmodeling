@@ -57,7 +57,6 @@ class Q_UML_EXPORT QUmlObjectFlow : public QUmlActivityEdge
 {
 public:
     explicit QUmlObjectFlow(bool createQModelingObject = true);
-    virtual ~QUmlObjectFlow();
 
     virtual QModelingElement *clone() const;
 

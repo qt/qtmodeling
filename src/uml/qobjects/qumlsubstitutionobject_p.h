@@ -100,7 +100,6 @@ class Q_UML_EXPORT QUmlSubstitutionObject : public QModelingObject
 
 public:
     Q_INVOKABLE explicit QUmlSubstitutionObject(QUmlSubstitution *modelingElement);
-    virtual ~QUmlSubstitutionObject();
 
     // Owned attributes [Element]
     Q_INVOKABLE const QSet<QObject *> ownedComments() const;

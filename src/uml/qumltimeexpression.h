@@ -57,7 +57,6 @@ class Q_UML_EXPORT QUmlTimeExpression : public QUmlValueSpecification
 {
 public:
     explicit QUmlTimeExpression(bool createQModelingObject = true);
-    virtual ~QUmlTimeExpression();
 
     virtual QModelingElement *clone() const;
 

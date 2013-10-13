@@ -87,7 +87,6 @@ class Q_UML_EXPORT QUmlInterruptibleActivityRegionObject : public QModelingObjec
 
 public:
     Q_INVOKABLE explicit QUmlInterruptibleActivityRegionObject(QUmlInterruptibleActivityRegion *modelingElement);
-    virtual ~QUmlInterruptibleActivityRegionObject();
 
     // Owned attributes [Element]
     Q_INVOKABLE const QSet<QObject *> ownedComments() const;

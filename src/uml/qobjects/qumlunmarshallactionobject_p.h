@@ -107,7 +107,6 @@ class Q_UML_EXPORT QUmlUnmarshallActionObject : public QModelingObject
 
 public:
     Q_INVOKABLE explicit QUmlUnmarshallActionObject(QUmlUnmarshallAction *modelingElement);
-    virtual ~QUmlUnmarshallActionObject();
 
     // Owned attributes [Element]
     Q_INVOKABLE const QSet<QObject *> ownedComments() const;

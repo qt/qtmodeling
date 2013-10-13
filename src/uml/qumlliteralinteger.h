@@ -55,7 +55,6 @@ class Q_UML_EXPORT QUmlLiteralInteger : public QUmlLiteralSpecification
 {
 public:
     explicit QUmlLiteralInteger(bool createQModelingObject = true);
-    virtual ~QUmlLiteralInteger();
 
     virtual QModelingElement *clone() const;
 

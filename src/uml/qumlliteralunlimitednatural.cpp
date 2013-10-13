@@ -67,15 +67,6 @@ QUmlLiteralUnlimitedNatural::QUmlLiteralUnlimitedNatural(bool createQModelingObj
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlLiteralUnlimitedNaturalObject(this));
 }
 
-QUmlLiteralUnlimitedNatural::~QUmlLiteralUnlimitedNatural()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlLiteralUnlimitedNatural::clone() const
 {
     QUmlLiteralUnlimitedNatural *c = new QUmlLiteralUnlimitedNatural;

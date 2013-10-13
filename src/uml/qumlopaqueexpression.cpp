@@ -69,15 +69,6 @@ QUmlOpaqueExpression::QUmlOpaqueExpression(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlOpaqueExpressionObject(this));
 }
 
-QUmlOpaqueExpression::~QUmlOpaqueExpression()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlOpaqueExpression::clone() const
 {
     QUmlOpaqueExpression *c = new QUmlOpaqueExpression;

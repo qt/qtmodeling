@@ -58,7 +58,6 @@ class Q_UML_EXPORT QUmlGeneralizationSet : public QUmlPackageableElement
 {
 public:
     explicit QUmlGeneralizationSet(bool createQModelingObject = true);
-    virtual ~QUmlGeneralizationSet();
 
     virtual QModelingElement *clone() const;
 

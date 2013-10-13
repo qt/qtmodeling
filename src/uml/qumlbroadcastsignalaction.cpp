@@ -79,15 +79,6 @@ QUmlBroadcastSignalAction::QUmlBroadcastSignalAction(bool createQModelingObject)
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlBroadcastSignalActionObject(this));
 }
 
-QUmlBroadcastSignalAction::~QUmlBroadcastSignalAction()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlBroadcastSignalAction::clone() const
 {
     QUmlBroadcastSignalAction *c = new QUmlBroadcastSignalAction;

@@ -57,7 +57,6 @@ class Q_UML_EXPORT QUmlReception : public QUmlBehavioralFeature
 {
 public:
     explicit QUmlReception(bool createQModelingObject = true);
-    virtual ~QUmlReception();
 
     virtual QModelingElement *clone() const;
 

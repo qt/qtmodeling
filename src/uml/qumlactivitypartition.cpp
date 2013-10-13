@@ -71,15 +71,6 @@ QUmlActivityPartition::QUmlActivityPartition(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlActivityPartitionObject(this));
 }
 
-QUmlActivityPartition::~QUmlActivityPartition()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlActivityPartition::clone() const
 {
     QUmlActivityPartition *c = new QUmlActivityPartition;

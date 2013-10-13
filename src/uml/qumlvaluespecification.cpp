@@ -62,10 +62,6 @@ QUmlValueSpecification::QUmlValueSpecification()
 {
 }
 
-QUmlValueSpecification::~QUmlValueSpecification()
-{
-}
-
 QModelingElement *QUmlValueSpecification::clone() const
 {
     QUmlValueSpecification *c = new QUmlValueSpecification;

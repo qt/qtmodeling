@@ -58,7 +58,6 @@ class Q_UML_EXPORT QUmlStateInvariant : public QUmlInteractionFragment
 {
 public:
     explicit QUmlStateInvariant(bool createQModelingObject = true);
-    virtual ~QUmlStateInvariant();
 
     virtual QModelingElement *clone() const;
 

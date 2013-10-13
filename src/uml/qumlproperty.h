@@ -68,7 +68,6 @@ class Q_UML_EXPORT QUmlProperty : public QUmlStructuralFeature, public QUmlConne
 {
 public:
     explicit QUmlProperty(bool createQModelingObject = true);
-    virtual ~QUmlProperty();
 
     virtual QModelingElement *clone() const;
 

@@ -102,15 +102,6 @@ QUmlProtocolStateMachine::QUmlProtocolStateMachine(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlProtocolStateMachineObject(this));
 }
 
-QUmlProtocolStateMachine::~QUmlProtocolStateMachine()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlProtocolStateMachine::clone() const
 {
     QUmlProtocolStateMachine *c = new QUmlProtocolStateMachine;

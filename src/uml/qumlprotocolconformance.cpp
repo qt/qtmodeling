@@ -61,15 +61,6 @@ QUmlProtocolConformance::QUmlProtocolConformance(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlProtocolConformanceObject(this));
 }
 
-QUmlProtocolConformance::~QUmlProtocolConformance()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlProtocolConformance::clone() const
 {
     QUmlProtocolConformance *c = new QUmlProtocolConformance;

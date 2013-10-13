@@ -54,10 +54,6 @@ QUmlRelationship::QUmlRelationship()
 {
 }
 
-QUmlRelationship::~QUmlRelationship()
-{
-}
-
 QModelingElement *QUmlRelationship::clone() const
 {
     QUmlRelationship *c = new QUmlRelationship;

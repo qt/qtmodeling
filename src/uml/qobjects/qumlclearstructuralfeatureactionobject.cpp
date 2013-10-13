@@ -73,14 +73,6 @@ QUmlClearStructuralFeatureActionObject::QUmlClearStructuralFeatureActionObject(Q
     setPropertyData();
 }
 
-QUmlClearStructuralFeatureActionObject::~QUmlClearStructuralFeatureActionObject()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<QUmlClearStructuralFeatureAction *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
 // OWNED ATTRIBUTES [Element]
 
 const QSet<QObject *> QUmlClearStructuralFeatureActionObject::ownedComments() const

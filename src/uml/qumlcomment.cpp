@@ -57,15 +57,6 @@ QUmlComment::QUmlComment(bool createQModelingObject)
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlCommentObject(this));
 }
 
-QUmlComment::~QUmlComment()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlComment::clone() const
 {
     QUmlComment *c = new QUmlComment;

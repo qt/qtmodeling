@@ -78,15 +78,6 @@ QUmlReadVariableAction::QUmlReadVariableAction(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlReadVariableActionObject(this));
 }
 
-QUmlReadVariableAction::~QUmlReadVariableAction()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlReadVariableAction::clone() const
 {
     QUmlReadVariableAction *c = new QUmlReadVariableAction;

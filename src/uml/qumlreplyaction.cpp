@@ -79,15 +79,6 @@ QUmlReplyAction::QUmlReplyAction(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlReplyActionObject(this));
 }
 
-QUmlReplyAction::~QUmlReplyAction()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlReplyAction::clone() const
 {
     QUmlReplyAction *c = new QUmlReplyAction;

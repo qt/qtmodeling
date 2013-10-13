@@ -62,14 +62,6 @@ QUmlLiteralIntegerObject::QUmlLiteralIntegerObject(QUmlLiteralInteger *modelingE
     setPropertyData();
 }
 
-QUmlLiteralIntegerObject::~QUmlLiteralIntegerObject()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<QUmlLiteralInteger *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
 // OWNED ATTRIBUTES [Element]
 
 const QSet<QObject *> QUmlLiteralIntegerObject::ownedComments() const

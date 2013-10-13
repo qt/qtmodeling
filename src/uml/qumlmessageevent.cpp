@@ -61,10 +61,6 @@ QUmlMessageEvent::QUmlMessageEvent()
 {
 }
 
-QUmlMessageEvent::~QUmlMessageEvent()
-{
-}
-
 QModelingElement *QUmlMessageEvent::clone() const
 {
     QUmlMessageEvent *c = new QUmlMessageEvent;

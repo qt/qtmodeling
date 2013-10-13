@@ -70,15 +70,6 @@ QUmlStringExpression::QUmlStringExpression(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlStringExpressionObject(this));
 }
 
-QUmlStringExpression::~QUmlStringExpression()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlStringExpression::clone() const
 {
     QUmlStringExpression *c = new QUmlStringExpression;

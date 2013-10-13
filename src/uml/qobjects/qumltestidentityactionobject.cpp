@@ -72,14 +72,6 @@ QUmlTestIdentityActionObject::QUmlTestIdentityActionObject(QUmlTestIdentityActio
     setPropertyData();
 }
 
-QUmlTestIdentityActionObject::~QUmlTestIdentityActionObject()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<QUmlTestIdentityAction *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
 // OWNED ATTRIBUTES [Element]
 
 const QSet<QObject *> QUmlTestIdentityActionObject::ownedComments() const

@@ -57,7 +57,6 @@ class QUmlStructuralFeature;
 class Q_UML_EXPORT QUmlStructuralFeatureAction : public QUmlAction
 {
 public:
-    virtual ~QUmlStructuralFeatureAction();
 
     Q_DECL_HIDDEN virtual QModelingElement *clone() const;
 

@@ -95,14 +95,6 @@ QUmlStateMachineObject::QUmlStateMachineObject(QUmlStateMachine *modelingElement
     setPropertyData();
 }
 
-QUmlStateMachineObject::~QUmlStateMachineObject()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<QUmlStateMachine *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
 // OWNED ATTRIBUTES [Element]
 
 const QSet<QObject *> QUmlStateMachineObject::ownedComments() const

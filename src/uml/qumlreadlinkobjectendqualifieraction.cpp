@@ -80,15 +80,6 @@ QUmlReadLinkObjectEndQualifierAction::QUmlReadLinkObjectEndQualifierAction(bool 
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlReadLinkObjectEndQualifierActionObject(this));
 }
 
-QUmlReadLinkObjectEndQualifierAction::~QUmlReadLinkObjectEndQualifierAction()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlReadLinkObjectEndQualifierAction::clone() const
 {
     QUmlReadLinkObjectEndQualifierAction *c = new QUmlReadLinkObjectEndQualifierAction;

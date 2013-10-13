@@ -82,15 +82,6 @@ QUmlSequenceNode::QUmlSequenceNode(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlSequenceNodeObject(this));
 }
 
-QUmlSequenceNode::~QUmlSequenceNode()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlSequenceNode::clone() const
 {
     QUmlSequenceNode *c = new QUmlSequenceNode;

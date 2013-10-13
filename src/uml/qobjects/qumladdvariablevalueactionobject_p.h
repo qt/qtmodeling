@@ -112,7 +112,6 @@ class Q_UML_EXPORT QUmlAddVariableValueActionObject : public QModelingObject
 
 public:
     Q_INVOKABLE explicit QUmlAddVariableValueActionObject(QUmlAddVariableValueAction *modelingElement);
-    virtual ~QUmlAddVariableValueActionObject();
 
     // Owned attributes [Element]
     Q_INVOKABLE const QSet<QObject *> ownedComments() const;

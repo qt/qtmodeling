@@ -108,7 +108,6 @@ class Q_UML_EXPORT QUmlReclassifyObjectActionObject : public QModelingObject
 
 public:
     Q_INVOKABLE explicit QUmlReclassifyObjectActionObject(QUmlReclassifyObjectAction *modelingElement);
-    virtual ~QUmlReclassifyObjectActionObject();
 
     // Owned attributes [Element]
     Q_INVOKABLE const QSet<QObject *> ownedComments() const;

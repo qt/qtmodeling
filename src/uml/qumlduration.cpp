@@ -69,15 +69,6 @@ QUmlDuration::QUmlDuration(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlDurationObject(this));
 }
 
-QUmlDuration::~QUmlDuration()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlDuration::clone() const
 {
     QUmlDuration *c = new QUmlDuration;

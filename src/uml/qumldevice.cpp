@@ -95,15 +95,6 @@ QUmlDevice::QUmlDevice(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlDeviceObject(this));
 }
 
-QUmlDevice::~QUmlDevice()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlDevice::clone() const
 {
     QUmlDevice *c = new QUmlDevice;

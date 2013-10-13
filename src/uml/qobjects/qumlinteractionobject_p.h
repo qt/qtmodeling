@@ -162,7 +162,6 @@ class Q_UML_EXPORT QUmlInteractionObject : public QModelingObject
 
 public:
     Q_INVOKABLE explicit QUmlInteractionObject(QUmlInteraction *modelingElement);
-    virtual ~QUmlInteractionObject();
 
     // Owned attributes [Element]
     Q_INVOKABLE const QSet<QObject *> ownedComments() const;

@@ -74,14 +74,6 @@ QUmlBroadcastSignalActionObject::QUmlBroadcastSignalActionObject(QUmlBroadcastSi
     setPropertyData();
 }
 
-QUmlBroadcastSignalActionObject::~QUmlBroadcastSignalActionObject()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<QUmlBroadcastSignalAction *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
 // OWNED ATTRIBUTES [Element]
 
 const QSet<QObject *> QUmlBroadcastSignalActionObject::ownedComments() const

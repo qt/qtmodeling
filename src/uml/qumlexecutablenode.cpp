@@ -69,10 +69,6 @@ QUmlExecutableNode::QUmlExecutableNode()
 {
 }
 
-QUmlExecutableNode::~QUmlExecutableNode()
-{
-}
-
 QModelingElement *QUmlExecutableNode::clone() const
 {
     QUmlExecutableNode *c = new QUmlExecutableNode;

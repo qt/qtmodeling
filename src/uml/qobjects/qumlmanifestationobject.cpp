@@ -63,14 +63,6 @@ QUmlManifestationObject::QUmlManifestationObject(QUmlManifestation *modelingElem
     setPropertyData();
 }
 
-QUmlManifestationObject::~QUmlManifestationObject()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<QUmlManifestation *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
 // OWNED ATTRIBUTES [Element]
 
 const QSet<QObject *> QUmlManifestationObject::ownedComments() const

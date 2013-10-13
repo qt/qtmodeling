@@ -77,15 +77,6 @@ QUmlOutputPin::QUmlOutputPin(bool createQModelingObject)
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlOutputPinObject(this));
 }
 
-QUmlOutputPin::~QUmlOutputPin()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlOutputPin::clone() const
 {
     QUmlOutputPin *c = new QUmlOutputPin;

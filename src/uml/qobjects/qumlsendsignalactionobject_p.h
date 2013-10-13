@@ -110,7 +110,6 @@ class Q_UML_EXPORT QUmlSendSignalActionObject : public QModelingObject
 
 public:
     Q_INVOKABLE explicit QUmlSendSignalActionObject(QUmlSendSignalAction *modelingElement);
-    virtual ~QUmlSendSignalActionObject();
 
     // Owned attributes [Element]
     Q_INVOKABLE const QSet<QObject *> ownedComments() const;

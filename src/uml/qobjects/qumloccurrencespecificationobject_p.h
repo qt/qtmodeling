@@ -86,7 +86,6 @@ class Q_UML_EXPORT QUmlOccurrenceSpecificationObject : public QModelingObject
 
 public:
     Q_INVOKABLE explicit QUmlOccurrenceSpecificationObject(QUmlOccurrenceSpecification *modelingElement);
-    virtual ~QUmlOccurrenceSpecificationObject();
 
     // Owned attributes [Element]
     Q_INVOKABLE const QSet<QObject *> ownedComments() const;

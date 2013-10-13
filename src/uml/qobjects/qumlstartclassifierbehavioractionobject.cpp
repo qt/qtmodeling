@@ -72,14 +72,6 @@ QUmlStartClassifierBehaviorActionObject::QUmlStartClassifierBehaviorActionObject
     setPropertyData();
 }
 
-QUmlStartClassifierBehaviorActionObject::~QUmlStartClassifierBehaviorActionObject()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<QUmlStartClassifierBehaviorAction *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
 // OWNED ATTRIBUTES [Element]
 
 const QSet<QObject *> QUmlStartClassifierBehaviorActionObject::ownedComments() const

@@ -54,7 +54,6 @@ QT_MODULE(QtUml)
 class Q_UML_EXPORT QUmlMessageEvent : public QUmlEvent
 {
 public:
-    virtual ~QUmlMessageEvent();
 
     Q_DECL_HIDDEN virtual QModelingElement *clone() const;
 

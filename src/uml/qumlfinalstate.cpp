@@ -78,15 +78,6 @@ QUmlFinalState::QUmlFinalState(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlFinalStateObject(this));
 }
 
-QUmlFinalState::~QUmlFinalState()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlFinalState::clone() const
 {
     QUmlFinalState *c = new QUmlFinalState;

@@ -72,7 +72,6 @@ class Q_UML_EXPORT QUmlExceptionHandlerObject : public QModelingObject
 
 public:
     Q_INVOKABLE explicit QUmlExceptionHandlerObject(QUmlExceptionHandler *modelingElement);
-    virtual ~QUmlExceptionHandlerObject();
 
     // Owned attributes [Element]
     Q_INVOKABLE const QSet<QObject *> ownedComments() const;

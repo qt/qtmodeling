@@ -91,7 +91,6 @@ class Q_UML_EXPORT QUmlDurationIntervalObject : public QModelingObject
 
 public:
     Q_INVOKABLE explicit QUmlDurationIntervalObject(QUmlDurationInterval *modelingElement);
-    virtual ~QUmlDurationIntervalObject();
 
     // Owned attributes [Element]
     Q_INVOKABLE const QSet<QObject *> ownedComments() const;

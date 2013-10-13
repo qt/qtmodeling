@@ -57,7 +57,6 @@ class Q_UML_EXPORT QUmlEnumerationLiteral : public QUmlInstanceSpecification
 {
 public:
     explicit QUmlEnumerationLiteral(bool createQModelingObject = true);
-    virtual ~QUmlEnumerationLiteral();
 
     virtual QModelingElement *clone() const;
 

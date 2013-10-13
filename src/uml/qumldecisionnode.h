@@ -58,7 +58,6 @@ class Q_UML_EXPORT QUmlDecisionNode : public QUmlControlNode
 {
 public:
     explicit QUmlDecisionNode(bool createQModelingObject = true);
-    virtual ~QUmlDecisionNode();
 
     virtual QModelingElement *clone() const;
 

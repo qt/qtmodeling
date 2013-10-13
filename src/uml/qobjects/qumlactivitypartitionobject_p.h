@@ -92,7 +92,6 @@ class Q_UML_EXPORT QUmlActivityPartitionObject : public QModelingObject
 
 public:
     Q_INVOKABLE explicit QUmlActivityPartitionObject(QUmlActivityPartition *modelingElement);
-    virtual ~QUmlActivityPartitionObject();
 
     // Owned attributes [Element]
     Q_INVOKABLE const QSet<QObject *> ownedComments() const;

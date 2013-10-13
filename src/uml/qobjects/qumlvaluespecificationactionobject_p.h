@@ -106,7 +106,6 @@ class Q_UML_EXPORT QUmlValueSpecificationActionObject : public QModelingObject
 
 public:
     Q_INVOKABLE explicit QUmlValueSpecificationActionObject(QUmlValueSpecificationAction *modelingElement);
-    virtual ~QUmlValueSpecificationActionObject();
 
     // Owned attributes [Element]
     Q_INVOKABLE const QSet<QObject *> ownedComments() const;

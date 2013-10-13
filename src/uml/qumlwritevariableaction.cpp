@@ -74,10 +74,6 @@ QUmlWriteVariableAction::QUmlWriteVariableAction() :
 {
 }
 
-QUmlWriteVariableAction::~QUmlWriteVariableAction()
-{
-}
-
 QModelingElement *QUmlWriteVariableAction::clone() const
 {
     QUmlWriteVariableAction *c = new QUmlWriteVariableAction;

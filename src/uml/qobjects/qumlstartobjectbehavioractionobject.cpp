@@ -73,14 +73,6 @@ QUmlStartObjectBehaviorActionObject::QUmlStartObjectBehaviorActionObject(QUmlSta
     setPropertyData();
 }
 
-QUmlStartObjectBehaviorActionObject::~QUmlStartObjectBehaviorActionObject()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<QUmlStartObjectBehaviorAction *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
 // OWNED ATTRIBUTES [Element]
 
 const QSet<QObject *> QUmlStartObjectBehaviorActionObject::ownedComments() const

@@ -62,14 +62,6 @@ QUmlExtensionPointObject::QUmlExtensionPointObject(QUmlExtensionPoint *modelingE
     setPropertyData();
 }
 
-QUmlExtensionPointObject::~QUmlExtensionPointObject()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<QUmlExtensionPoint *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
 // OWNED ATTRIBUTES [Element]
 
 const QSet<QObject *> QUmlExtensionPointObject::ownedComments() const

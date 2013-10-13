@@ -79,15 +79,6 @@ QUmlDestroyObjectAction::QUmlDestroyObjectAction(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlDestroyObjectActionObject(this));
 }
 
-QUmlDestroyObjectAction::~QUmlDestroyObjectAction()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlDestroyObjectAction::clone() const
 {
     QUmlDestroyObjectAction *c = new QUmlDestroyObjectAction;

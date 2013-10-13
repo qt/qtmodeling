@@ -73,14 +73,6 @@ QUmlFinalStateObject::QUmlFinalStateObject(QUmlFinalState *modelingElement)
     setPropertyData();
 }
 
-QUmlFinalStateObject::~QUmlFinalStateObject()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<QUmlFinalState *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
 // OWNED ATTRIBUTES [Element]
 
 const QSet<QObject *> QUmlFinalStateObject::ownedComments() const

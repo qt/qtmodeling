@@ -57,7 +57,6 @@ class Q_UML_EXPORT QUmlTimeObservation : public QUmlObservation
 {
 public:
     explicit QUmlTimeObservation(bool createQModelingObject = true);
-    virtual ~QUmlTimeObservation();
 
     virtual QModelingElement *clone() const;
 

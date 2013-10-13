@@ -84,7 +84,6 @@ class Q_UML_EXPORT QUmlExtensionPointObject : public QModelingObject
 
 public:
     Q_INVOKABLE explicit QUmlExtensionPointObject(QUmlExtensionPoint *modelingElement);
-    virtual ~QUmlExtensionPointObject();
 
     // Owned attributes [Element]
     Q_INVOKABLE const QSet<QObject *> ownedComments() const;

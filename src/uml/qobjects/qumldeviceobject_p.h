@@ -146,7 +146,6 @@ class Q_UML_EXPORT QUmlDeviceObject : public QModelingObject
 
 public:
     Q_INVOKABLE explicit QUmlDeviceObject(QUmlDevice *modelingElement);
-    virtual ~QUmlDeviceObject();
 
     // Owned attributes [Element]
     Q_INVOKABLE const QSet<QObject *> ownedComments() const;

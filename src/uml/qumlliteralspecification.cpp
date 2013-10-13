@@ -62,10 +62,6 @@ QUmlLiteralSpecification::QUmlLiteralSpecification()
 {
 }
 
-QUmlLiteralSpecification::~QUmlLiteralSpecification()
-{
-}
-
 QModelingElement *QUmlLiteralSpecification::clone() const
 {
     QUmlLiteralSpecification *c = new QUmlLiteralSpecification;

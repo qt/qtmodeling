@@ -109,7 +109,6 @@ class Q_UML_EXPORT QUmlClearStructuralFeatureActionObject : public QModelingObje
 
 public:
     Q_INVOKABLE explicit QUmlClearStructuralFeatureActionObject(QUmlClearStructuralFeatureAction *modelingElement);
-    virtual ~QUmlClearStructuralFeatureActionObject();
 
     // Owned attributes [Element]
     Q_INVOKABLE const QSet<QObject *> ownedComments() const;

@@ -55,7 +55,6 @@ class Q_UML_EXPORT QUmlImage : public QUmlElement
 {
 public:
     explicit QUmlImage(bool createQModelingObject = true);
-    virtual ~QUmlImage();
 
     virtual QModelingElement *clone() const;
 

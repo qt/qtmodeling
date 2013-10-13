@@ -68,14 +68,6 @@ QUmlFlowFinalNodeObject::QUmlFlowFinalNodeObject(QUmlFlowFinalNode *modelingElem
     setPropertyData();
 }
 
-QUmlFlowFinalNodeObject::~QUmlFlowFinalNodeObject()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<QUmlFlowFinalNode *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
 // OWNED ATTRIBUTES [Element]
 
 const QSet<QObject *> QUmlFlowFinalNodeObject::ownedComments() const

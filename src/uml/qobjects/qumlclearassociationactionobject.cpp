@@ -73,14 +73,6 @@ QUmlClearAssociationActionObject::QUmlClearAssociationActionObject(QUmlClearAsso
     setPropertyData();
 }
 
-QUmlClearAssociationActionObject::~QUmlClearAssociationActionObject()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<QUmlClearAssociationAction *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
 // OWNED ATTRIBUTES [Element]
 
 const QSet<QObject *> QUmlClearAssociationActionObject::ownedComments() const

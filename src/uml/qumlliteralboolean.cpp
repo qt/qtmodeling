@@ -67,15 +67,6 @@ QUmlLiteralBoolean::QUmlLiteralBoolean(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlLiteralBooleanObject(this));
 }
 
-QUmlLiteralBoolean::~QUmlLiteralBoolean()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlLiteralBoolean::clone() const
 {
     QUmlLiteralBoolean *c = new QUmlLiteralBoolean;

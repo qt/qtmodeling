@@ -61,16 +61,6 @@ Q${namespace}${className}Object::Q${namespace}${className}Object(Q${namespace}${
     setPropertyData();
 }
 
-[%- IF class.findvalue("@isAbstract") != "true" %]
-Q${namespace}${className}Object::~Q${namespace}${className}Object()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<Q${namespace}${className} *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
-[%- END %]
 [%- SET originalClassName = class.findvalue("@name") -%]
 [%- visitedClasses = [] -%]
 [%- redefinedProperties = [] -%]

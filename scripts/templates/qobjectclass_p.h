@@ -74,9 +74,6 @@ class Q_${namespace.upper}_EXPORT Q${namespace}${className}Object : public QMode
 
 public:
     [% IF class.findvalue("@isAbstract") == "true" %]Q_DECL_HIDDEN [% ELSE %]Q_INVOKABLE [% END %]explicit Q${namespace}${className}Object(Q${namespace}${className} *modelingElement);
-    [%- IF class.findvalue("@isAbstract") != "true" %]
-    virtual ~Q${namespace}${className}Object();
-    [%- END %]
 [%- visitedClasses = [] -%]
 [%- GENERATE_ATTRIBUTES(class, visitedClasses, redefinedProperties) -%]
 [%- visitedClasses = [] -%]

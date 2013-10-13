@@ -67,15 +67,6 @@ QUmlInterruptibleActivityRegion::QUmlInterruptibleActivityRegion(bool createQMod
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlInterruptibleActivityRegionObject(this));
 }
 
-QUmlInterruptibleActivityRegion::~QUmlInterruptibleActivityRegion()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlInterruptibleActivityRegion::clone() const
 {
     QUmlInterruptibleActivityRegion *c = new QUmlInterruptibleActivityRegion;

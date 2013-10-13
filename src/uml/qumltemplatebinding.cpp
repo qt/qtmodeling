@@ -63,15 +63,6 @@ QUmlTemplateBinding::QUmlTemplateBinding(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlTemplateBindingObject(this));
 }
 
-QUmlTemplateBinding::~QUmlTemplateBinding()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlTemplateBinding::clone() const
 {
     QUmlTemplateBinding *c = new QUmlTemplateBinding;

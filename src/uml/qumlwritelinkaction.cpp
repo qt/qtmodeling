@@ -74,10 +74,6 @@ QUmlWriteLinkAction::QUmlWriteLinkAction()
 {
 }
 
-QUmlWriteLinkAction::~QUmlWriteLinkAction()
-{
-}
-
 QModelingElement *QUmlWriteLinkAction::clone() const
 {
     QUmlWriteLinkAction *c = new QUmlWriteLinkAction;

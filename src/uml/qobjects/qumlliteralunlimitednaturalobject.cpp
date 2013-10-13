@@ -62,14 +62,6 @@ QUmlLiteralUnlimitedNaturalObject::QUmlLiteralUnlimitedNaturalObject(QUmlLiteral
     setPropertyData();
 }
 
-QUmlLiteralUnlimitedNaturalObject::~QUmlLiteralUnlimitedNaturalObject()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<QUmlLiteralUnlimitedNatural *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
 // OWNED ATTRIBUTES [Element]
 
 const QSet<QObject *> QUmlLiteralUnlimitedNaturalObject::ownedComments() const

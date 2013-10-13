@@ -81,15 +81,6 @@ QUmlStructuredActivityNode::QUmlStructuredActivityNode(bool createQModelingObjec
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlStructuredActivityNodeObject(this));
 }
 
-QUmlStructuredActivityNode::~QUmlStructuredActivityNode()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlStructuredActivityNode::clone() const
 {
     QUmlStructuredActivityNode *c = new QUmlStructuredActivityNode;

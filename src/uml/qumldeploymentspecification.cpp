@@ -89,15 +89,6 @@ QUmlDeploymentSpecification::QUmlDeploymentSpecification(bool createQModelingObj
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlDeploymentSpecificationObject(this));
 }
 
-QUmlDeploymentSpecification::~QUmlDeploymentSpecification()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlDeploymentSpecification::clone() const
 {
     QUmlDeploymentSpecification *c = new QUmlDeploymentSpecification;

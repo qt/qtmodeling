@@ -56,14 +56,6 @@ QUmlGeneralizationObject::QUmlGeneralizationObject(QUmlGeneralization *modelingE
     setPropertyData();
 }
 
-QUmlGeneralizationObject::~QUmlGeneralizationObject()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<QUmlGeneralization *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
 // OWNED ATTRIBUTES [Element]
 
 const QSet<QObject *> QUmlGeneralizationObject::ownedComments() const

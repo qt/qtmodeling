@@ -73,14 +73,6 @@ QUmlValuePinObject::QUmlValuePinObject(QUmlValuePin *modelingElement)
     setPropertyData();
 }
 
-QUmlValuePinObject::~QUmlValuePinObject()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<QUmlValuePin *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
 // OWNED ATTRIBUTES [Element]
 
 const QSet<QObject *> QUmlValuePinObject::ownedComments() const

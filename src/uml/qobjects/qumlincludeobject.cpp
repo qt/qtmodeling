@@ -60,14 +60,6 @@ QUmlIncludeObject::QUmlIncludeObject(QUmlInclude *modelingElement)
     setPropertyData();
 }
 
-QUmlIncludeObject::~QUmlIncludeObject()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<QUmlInclude *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
 // OWNED ATTRIBUTES [Element]
 
 const QSet<QObject *> QUmlIncludeObject::ownedComments() const

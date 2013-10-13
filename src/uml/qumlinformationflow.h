@@ -63,7 +63,6 @@ class Q_UML_EXPORT QUmlInformationFlow : public QUmlDirectedRelationship, public
 {
 public:
     explicit QUmlInformationFlow(bool createQModelingObject = true);
-    virtual ~QUmlInformationFlow();
 
     virtual QModelingElement *clone() const;
 

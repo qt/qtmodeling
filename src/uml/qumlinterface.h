@@ -60,7 +60,6 @@ class Q_UML_EXPORT QUmlInterface : public QUmlClassifier
 {
 public:
     explicit QUmlInterface(bool createQModelingObject = true);
-    virtual ~QUmlInterface();
 
     virtual QModelingElement *clone() const;
 

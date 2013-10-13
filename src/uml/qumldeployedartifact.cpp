@@ -59,10 +59,6 @@ QUmlDeployedArtifact::QUmlDeployedArtifact()
 {
 }
 
-QUmlDeployedArtifact::~QUmlDeployedArtifact()
-{
-}
-
 QModelingElement *QUmlDeployedArtifact::clone() const
 {
     QUmlDeployedArtifact *c = new QUmlDeployedArtifact;

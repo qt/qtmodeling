@@ -78,15 +78,6 @@ QUmlReadExtentAction::QUmlReadExtentAction(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlReadExtentActionObject(this));
 }
 
-QUmlReadExtentAction::~QUmlReadExtentAction()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlReadExtentAction::clone() const
 {
     QUmlReadExtentAction *c = new QUmlReadExtentAction;

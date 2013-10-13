@@ -72,15 +72,6 @@ QUmlActivityFinalNode::QUmlActivityFinalNode(bool createQModelingObject)
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlActivityFinalNodeObject(this));
 }
 
-QUmlActivityFinalNode::~QUmlActivityFinalNode()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlActivityFinalNode::clone() const
 {
     QUmlActivityFinalNode *c = new QUmlActivityFinalNode;

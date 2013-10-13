@@ -78,15 +78,6 @@ QUmlReclassifyObjectAction::QUmlReclassifyObjectAction(bool createQModelingObjec
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlReclassifyObjectActionObject(this));
 }
 
-QUmlReclassifyObjectAction::~QUmlReclassifyObjectAction()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlReclassifyObjectAction::clone() const
 {
     QUmlReclassifyObjectAction *c = new QUmlReclassifyObjectAction;

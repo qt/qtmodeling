@@ -84,15 +84,6 @@ QUmlConditionalNode::QUmlConditionalNode(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlConditionalNodeObject(this));
 }
 
-QUmlConditionalNode::~QUmlConditionalNode()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlConditionalNode::clone() const
 {
     QUmlConditionalNode *c = new QUmlConditionalNode;

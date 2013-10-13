@@ -79,15 +79,6 @@ QUmlProtocolTransition::QUmlProtocolTransition(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlProtocolTransitionObject(this));
 }
 
-QUmlProtocolTransition::~QUmlProtocolTransition()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlProtocolTransition::clone() const
 {
     QUmlProtocolTransition *c = new QUmlProtocolTransition;

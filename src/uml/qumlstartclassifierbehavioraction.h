@@ -57,7 +57,6 @@ class Q_UML_EXPORT QUmlStartClassifierBehaviorAction : public QUmlAction
 {
 public:
     explicit QUmlStartClassifierBehaviorAction(bool createQModelingObject = true);
-    virtual ~QUmlStartClassifierBehaviorAction();
 
     virtual QModelingElement *clone() const;
 

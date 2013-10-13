@@ -63,14 +63,6 @@ QUmlInterruptibleActivityRegionObject::QUmlInterruptibleActivityRegionObject(QUm
     setPropertyData();
 }
 
-QUmlInterruptibleActivityRegionObject::~QUmlInterruptibleActivityRegionObject()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<QUmlInterruptibleActivityRegion *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
 // OWNED ATTRIBUTES [Element]
 
 const QSet<QObject *> QUmlInterruptibleActivityRegionObject::ownedComments() const

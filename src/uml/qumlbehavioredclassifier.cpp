@@ -82,10 +82,6 @@ QUmlBehavioredClassifier::QUmlBehavioredClassifier() :
 {
 }
 
-QUmlBehavioredClassifier::~QUmlBehavioredClassifier()
-{
-}
-
 QModelingElement *QUmlBehavioredClassifier::clone() const
 {
     QUmlBehavioredClassifier *c = new QUmlBehavioredClassifier;

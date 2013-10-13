@@ -58,7 +58,6 @@ class Q_UML_EXPORT QUmlOccurrenceSpecification : public QUmlInteractionFragment
 {
 public:
     explicit QUmlOccurrenceSpecification(bool createQModelingObject = true);
-    virtual ~QUmlOccurrenceSpecification();
 
     virtual QModelingElement *clone() const;
 

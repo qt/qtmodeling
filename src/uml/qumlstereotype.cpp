@@ -95,15 +95,6 @@ QUmlStereotype::QUmlStereotype(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlStereotypeObject(this));
 }
 
-QUmlStereotype::~QUmlStereotype()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlStereotype::clone() const
 {
     QUmlStereotype *c = new QUmlStereotype;

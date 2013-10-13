@@ -58,10 +58,6 @@ QUmlTemplateableElement::QUmlTemplateableElement() :
 {
 }
 
-QUmlTemplateableElement::~QUmlTemplateableElement()
-{
-}
-
 QModelingElement *QUmlTemplateableElement::clone() const
 {
     QUmlTemplateableElement *c = new QUmlTemplateableElement;

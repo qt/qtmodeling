@@ -89,7 +89,6 @@ class Q_UML_EXPORT QUmlDestructionOccurrenceSpecificationObject : public QModeli
 
 public:
     Q_INVOKABLE explicit QUmlDestructionOccurrenceSpecificationObject(QUmlDestructionOccurrenceSpecification *modelingElement);
-    virtual ~QUmlDestructionOccurrenceSpecificationObject();
 
     // Owned attributes [Element]
     Q_INVOKABLE const QSet<QObject *> ownedComments() const;

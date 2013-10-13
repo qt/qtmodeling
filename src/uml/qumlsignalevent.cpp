@@ -67,15 +67,6 @@ QUmlSignalEvent::QUmlSignalEvent(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlSignalEventObject(this));
 }
 
-QUmlSignalEvent::~QUmlSignalEvent()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlSignalEvent::clone() const
 {
     QUmlSignalEvent *c = new QUmlSignalEvent;

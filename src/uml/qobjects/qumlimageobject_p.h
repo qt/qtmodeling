@@ -71,7 +71,6 @@ class Q_UML_EXPORT QUmlImageObject : public QModelingObject
 
 public:
     Q_INVOKABLE explicit QUmlImageObject(QUmlImage *modelingElement);
-    virtual ~QUmlImageObject();
 
     // Owned attributes [Element]
     Q_INVOKABLE const QSet<QObject *> ownedComments() const;

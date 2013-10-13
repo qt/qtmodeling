@@ -61,15 +61,6 @@ QUmlPackageMerge::QUmlPackageMerge(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlPackageMergeObject(this));
 }
 
-QUmlPackageMerge::~QUmlPackageMerge()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlPackageMerge::clone() const
 {
     QUmlPackageMerge *c = new QUmlPackageMerge;

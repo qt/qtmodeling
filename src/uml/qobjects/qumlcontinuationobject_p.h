@@ -85,7 +85,6 @@ class Q_UML_EXPORT QUmlContinuationObject : public QModelingObject
 
 public:
     Q_INVOKABLE explicit QUmlContinuationObject(QUmlContinuation *modelingElement);
-    virtual ~QUmlContinuationObject();
 
     // Owned attributes [Element]
     Q_INVOKABLE const QSet<QObject *> ownedComments() const;

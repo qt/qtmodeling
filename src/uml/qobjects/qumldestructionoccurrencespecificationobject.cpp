@@ -64,14 +64,6 @@ QUmlDestructionOccurrenceSpecificationObject::QUmlDestructionOccurrenceSpecifica
     setPropertyData();
 }
 
-QUmlDestructionOccurrenceSpecificationObject::~QUmlDestructionOccurrenceSpecificationObject()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<QUmlDestructionOccurrenceSpecification *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
 // OWNED ATTRIBUTES [Element]
 
 const QSet<QObject *> QUmlDestructionOccurrenceSpecificationObject::ownedComments() const

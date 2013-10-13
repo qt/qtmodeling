@@ -57,7 +57,6 @@ class Q_UML_EXPORT QUmlConsiderIgnoreFragment : public QUmlCombinedFragment
 {
 public:
     explicit QUmlConsiderIgnoreFragment(bool createQModelingObject = true);
-    virtual ~QUmlConsiderIgnoreFragment();
 
     virtual QModelingElement *clone() const;
 

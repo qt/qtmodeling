@@ -59,7 +59,6 @@ class Q_UML_EXPORT QUmlExceptionHandler : public QUmlElement
 {
 public:
     explicit QUmlExceptionHandler(bool createQModelingObject = true);
-    virtual ~QUmlExceptionHandler();
 
     virtual QModelingElement *clone() const;
 

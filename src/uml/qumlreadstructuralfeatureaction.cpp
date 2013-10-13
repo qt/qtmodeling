@@ -78,15 +78,6 @@ QUmlReadStructuralFeatureAction::QUmlReadStructuralFeatureAction(bool createQMod
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlReadStructuralFeatureActionObject(this));
 }
 
-QUmlReadStructuralFeatureAction::~QUmlReadStructuralFeatureAction()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlReadStructuralFeatureAction::clone() const
 {
     QUmlReadStructuralFeatureAction *c = new QUmlReadStructuralFeatureAction;

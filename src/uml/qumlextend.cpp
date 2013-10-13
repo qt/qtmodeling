@@ -69,15 +69,6 @@ QUmlExtend::QUmlExtend(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlExtendObject(this));
 }
 
-QUmlExtend::~QUmlExtend()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlExtend::clone() const
 {
     QUmlExtend *c = new QUmlExtend;

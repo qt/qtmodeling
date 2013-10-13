@@ -58,7 +58,6 @@ class Q_UML_EXPORT QUmlTestIdentityAction : public QUmlAction
 {
 public:
     explicit QUmlTestIdentityAction(bool createQModelingObject = true);
-    virtual ~QUmlTestIdentityAction();
 
     virtual QModelingElement *clone() const;
 

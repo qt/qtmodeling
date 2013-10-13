@@ -95,7 +95,6 @@ class Q_UML_EXPORT QUmlDecisionNodeObject : public QModelingObject
 
 public:
     Q_INVOKABLE explicit QUmlDecisionNodeObject(QUmlDecisionNode *modelingElement);
-    virtual ~QUmlDecisionNodeObject();
 
     // Owned attributes [Element]
     Q_INVOKABLE const QSet<QObject *> ownedComments() const;

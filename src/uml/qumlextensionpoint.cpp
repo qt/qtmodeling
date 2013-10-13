@@ -67,15 +67,6 @@ QUmlExtensionPoint::QUmlExtensionPoint(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlExtensionPointObject(this));
 }
 
-QUmlExtensionPoint::~QUmlExtensionPoint()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlExtensionPoint::clone() const
 {
     QUmlExtensionPoint *c = new QUmlExtensionPoint;

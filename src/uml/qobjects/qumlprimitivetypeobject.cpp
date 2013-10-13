@@ -80,14 +80,6 @@ QUmlPrimitiveTypeObject::QUmlPrimitiveTypeObject(QUmlPrimitiveType *modelingElem
     setPropertyData();
 }
 
-QUmlPrimitiveTypeObject::~QUmlPrimitiveTypeObject()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<QUmlPrimitiveType *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
 // OWNED ATTRIBUTES [Element]
 
 const QSet<QObject *> QUmlPrimitiveTypeObject::ownedComments() const

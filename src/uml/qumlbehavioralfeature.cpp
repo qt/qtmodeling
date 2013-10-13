@@ -71,10 +71,6 @@ QUmlBehavioralFeature::QUmlBehavioralFeature() :
 {
 }
 
-QUmlBehavioralFeature::~QUmlBehavioralFeature()
-{
-}
-
 QModelingElement *QUmlBehavioralFeature::clone() const
 {
     QUmlBehavioralFeature *c = new QUmlBehavioralFeature;

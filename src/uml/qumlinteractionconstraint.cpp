@@ -69,15 +69,6 @@ QUmlInteractionConstraint::QUmlInteractionConstraint(bool createQModelingObject)
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlInteractionConstraintObject(this));
 }
 
-QUmlInteractionConstraint::~QUmlInteractionConstraint()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlInteractionConstraint::clone() const
 {
     QUmlInteractionConstraint *c = new QUmlInteractionConstraint;

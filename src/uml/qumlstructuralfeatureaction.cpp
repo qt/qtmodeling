@@ -75,10 +75,6 @@ QUmlStructuralFeatureAction::QUmlStructuralFeatureAction() :
 {
 }
 
-QUmlStructuralFeatureAction::~QUmlStructuralFeatureAction()
-{
-}
-
 QModelingElement *QUmlStructuralFeatureAction::clone() const
 {
     QUmlStructuralFeatureAction *c = new QUmlStructuralFeatureAction;

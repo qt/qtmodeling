@@ -83,7 +83,6 @@ class Q_UML_EXPORT QUmlLifelineObject : public QModelingObject
 
 public:
     Q_INVOKABLE explicit QUmlLifelineObject(QUmlLifeline *modelingElement);
-    virtual ~QUmlLifelineObject();
 
     // Owned attributes [Element]
     Q_INVOKABLE const QSet<QObject *> ownedComments() const;

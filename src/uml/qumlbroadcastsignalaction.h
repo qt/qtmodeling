@@ -57,7 +57,6 @@ class Q_UML_EXPORT QUmlBroadcastSignalAction : public QUmlInvocationAction
 {
 public:
     explicit QUmlBroadcastSignalAction(bool createQModelingObject = true);
-    virtual ~QUmlBroadcastSignalAction();
 
     virtual QModelingElement *clone() const;
 

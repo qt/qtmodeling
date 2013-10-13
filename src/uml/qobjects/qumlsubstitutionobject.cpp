@@ -63,14 +63,6 @@ QUmlSubstitutionObject::QUmlSubstitutionObject(QUmlSubstitution *modelingElement
     setPropertyData();
 }
 
-QUmlSubstitutionObject::~QUmlSubstitutionObject()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<QUmlSubstitution *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
 // OWNED ATTRIBUTES [Element]
 
 const QSet<QObject *> QUmlSubstitutionObject::ownedComments() const

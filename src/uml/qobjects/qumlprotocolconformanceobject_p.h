@@ -77,7 +77,6 @@ class Q_UML_EXPORT QUmlProtocolConformanceObject : public QModelingObject
 
 public:
     Q_INVOKABLE explicit QUmlProtocolConformanceObject(QUmlProtocolConformance *modelingElement);
-    virtual ~QUmlProtocolConformanceObject();
 
     // Owned attributes [Element]
     Q_INVOKABLE const QSet<QObject *> ownedComments() const;

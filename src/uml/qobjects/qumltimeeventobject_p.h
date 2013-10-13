@@ -86,7 +86,6 @@ class Q_UML_EXPORT QUmlTimeEventObject : public QModelingObject
 
 public:
     Q_INVOKABLE explicit QUmlTimeEventObject(QUmlTimeEvent *modelingElement);
-    virtual ~QUmlTimeEventObject();
 
     // Owned attributes [Element]
     Q_INVOKABLE const QSet<QObject *> ownedComments() const;

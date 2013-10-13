@@ -78,15 +78,6 @@ QUmlStartObjectBehaviorAction::QUmlStartObjectBehaviorAction(bool createQModelin
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlStartObjectBehaviorActionObject(this));
 }
 
-QUmlStartObjectBehaviorAction::~QUmlStartObjectBehaviorAction()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlStartObjectBehaviorAction::clone() const
 {
     QUmlStartObjectBehaviorAction *c = new QUmlStartObjectBehaviorAction;

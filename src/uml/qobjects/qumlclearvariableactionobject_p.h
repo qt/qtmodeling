@@ -105,7 +105,6 @@ class Q_UML_EXPORT QUmlClearVariableActionObject : public QModelingObject
 
 public:
     Q_INVOKABLE explicit QUmlClearVariableActionObject(QUmlClearVariableAction *modelingElement);
-    virtual ~QUmlClearVariableActionObject();
 
     // Owned attributes [Element]
     Q_INVOKABLE const QSet<QObject *> ownedComments() const;

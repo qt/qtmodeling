@@ -59,10 +59,6 @@ QUmlMultiplicityElement::QUmlMultiplicityElement() :
 {
 }
 
-QUmlMultiplicityElement::~QUmlMultiplicityElement()
-{
-}
-
 QModelingElement *QUmlMultiplicityElement::clone() const
 {
     QUmlMultiplicityElement *c = new QUmlMultiplicityElement;

@@ -79,15 +79,6 @@ QUmlAcceptCallAction::QUmlAcceptCallAction(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlAcceptCallActionObject(this));
 }
 
-QUmlAcceptCallAction::~QUmlAcceptCallAction()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlAcceptCallAction::clone() const
 {
     QUmlAcceptCallAction *c = new QUmlAcceptCallAction;

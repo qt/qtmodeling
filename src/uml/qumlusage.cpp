@@ -66,15 +66,6 @@ QUmlUsage::QUmlUsage(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlUsageObject(this));
 }
 
-QUmlUsage::~QUmlUsage()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlUsage::clone() const
 {
     QUmlUsage *c = new QUmlUsage;

@@ -94,15 +94,6 @@ QUmlAssociationClass::QUmlAssociationClass(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlAssociationClassObject(this));
 }
 
-QUmlAssociationClass::~QUmlAssociationClass()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlAssociationClass::clone() const
 {
     QUmlAssociationClass *c = new QUmlAssociationClass;

@@ -72,14 +72,6 @@ QUmlReadIsClassifiedObjectActionObject::QUmlReadIsClassifiedObjectActionObject(Q
     setPropertyData();
 }
 
-QUmlReadIsClassifiedObjectActionObject::~QUmlReadIsClassifiedObjectActionObject()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<QUmlReadIsClassifiedObjectAction *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
 // OWNED ATTRIBUTES [Element]
 
 const QSet<QObject *> QUmlReadIsClassifiedObjectActionObject::ownedComments() const

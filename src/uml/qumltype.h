@@ -56,7 +56,6 @@ class QUmlPackage;
 class Q_UML_EXPORT QUmlType : public QUmlPackageableElement
 {
 public:
-    virtual ~QUmlType();
 
     Q_DECL_HIDDEN virtual QModelingElement *clone() const;
 

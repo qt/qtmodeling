@@ -115,7 +115,6 @@ class Q_UML_EXPORT QUmlActionInputPinObject : public QModelingObject
 
 public:
     Q_INVOKABLE explicit QUmlActionInputPinObject(QUmlActionInputPin *modelingElement);
-    virtual ~QUmlActionInputPinObject();
 
     // Owned attributes [Element]
     Q_INVOKABLE const QSet<QObject *> ownedComments() const;

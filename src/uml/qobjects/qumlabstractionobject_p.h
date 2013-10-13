@@ -96,7 +96,6 @@ class Q_UML_EXPORT QUmlAbstractionObject : public QModelingObject
 
 public:
     Q_INVOKABLE explicit QUmlAbstractionObject(QUmlAbstraction *modelingElement);
-    virtual ~QUmlAbstractionObject();
 
     // Owned attributes [Element]
     Q_INVOKABLE const QSet<QObject *> ownedComments() const;

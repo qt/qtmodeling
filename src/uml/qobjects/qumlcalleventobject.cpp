@@ -62,14 +62,6 @@ QUmlCallEventObject::QUmlCallEventObject(QUmlCallEvent *modelingElement)
     setPropertyData();
 }
 
-QUmlCallEventObject::~QUmlCallEventObject()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<QUmlCallEvent *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
 // OWNED ATTRIBUTES [Element]
 
 const QSet<QObject *> QUmlCallEventObject::ownedComments() const

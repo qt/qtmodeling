@@ -78,15 +78,6 @@ QUmlActivityParameterNode::QUmlActivityParameterNode(bool createQModelingObject)
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlActivityParameterNodeObject(this));
 }
 
-QUmlActivityParameterNode::~QUmlActivityParameterNode()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlActivityParameterNode::clone() const
 {
     QUmlActivityParameterNode *c = new QUmlActivityParameterNode;

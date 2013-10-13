@@ -64,10 +64,6 @@ QUmlActivityGroup::QUmlActivityGroup() :
 {
 }
 
-QUmlActivityGroup::~QUmlActivityGroup()
-{
-}
-
 QModelingElement *QUmlActivityGroup::clone() const
 {
     QUmlActivityGroup *c = new QUmlActivityGroup;

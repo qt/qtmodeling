@@ -80,15 +80,6 @@ QUmlSendSignalAction::QUmlSendSignalAction(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlSendSignalActionObject(this));
 }
 
-QUmlSendSignalAction::~QUmlSendSignalAction()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlSendSignalAction::clone() const
 {
     QUmlSendSignalAction *c = new QUmlSendSignalAction;

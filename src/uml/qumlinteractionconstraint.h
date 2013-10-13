@@ -57,7 +57,6 @@ class Q_UML_EXPORT QUmlInteractionConstraint : public QUmlConstraint
 {
 public:
     explicit QUmlInteractionConstraint(bool createQModelingObject = true);
-    virtual ~QUmlInteractionConstraint();
 
     virtual QModelingElement *clone() const;
 

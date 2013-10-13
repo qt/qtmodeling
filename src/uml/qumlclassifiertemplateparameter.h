@@ -57,7 +57,6 @@ class Q_UML_EXPORT QUmlClassifierTemplateParameter : public QUmlTemplateParamete
 {
 public:
     explicit QUmlClassifierTemplateParameter(bool createQModelingObject = true);
-    virtual ~QUmlClassifierTemplateParameter();
 
     virtual QModelingElement *clone() const;
 

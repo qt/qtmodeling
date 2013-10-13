@@ -125,7 +125,6 @@ class Q_UML_EXPORT QUmlEnumerationObject : public QModelingObject
 
 public:
     Q_INVOKABLE explicit QUmlEnumerationObject(QUmlEnumeration *modelingElement);
-    virtual ~QUmlEnumerationObject();
 
     // Owned attributes [Element]
     Q_INVOKABLE const QSet<QObject *> ownedComments() const;

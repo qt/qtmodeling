@@ -66,10 +66,6 @@ QUmlExecutionSpecification::QUmlExecutionSpecification() :
 {
 }
 
-QUmlExecutionSpecification::~QUmlExecutionSpecification()
-{
-}
-
 QModelingElement *QUmlExecutionSpecification::clone() const
 {
     QUmlExecutionSpecification *c = new QUmlExecutionSpecification;

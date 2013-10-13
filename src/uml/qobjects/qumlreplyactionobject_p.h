@@ -107,7 +107,6 @@ class Q_UML_EXPORT QUmlReplyActionObject : public QModelingObject
 
 public:
     Q_INVOKABLE explicit QUmlReplyActionObject(QUmlReplyAction *modelingElement);
-    virtual ~QUmlReplyActionObject();
 
     // Owned attributes [Element]
     Q_INVOKABLE const QSet<QObject *> ownedComments() const;

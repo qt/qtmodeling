@@ -75,7 +75,6 @@ class Q_UML_EXPORT QUmlOperationTemplateParameterObject : public QModelingObject
 
 public:
     Q_INVOKABLE explicit QUmlOperationTemplateParameterObject(QUmlOperationTemplateParameter *modelingElement);
-    virtual ~QUmlOperationTemplateParameterObject();
 
     // Owned attributes [Element]
     Q_INVOKABLE const QSet<QObject *> ownedComments() const;

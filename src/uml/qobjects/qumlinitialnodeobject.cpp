@@ -68,14 +68,6 @@ QUmlInitialNodeObject::QUmlInitialNodeObject(QUmlInitialNode *modelingElement)
     setPropertyData();
 }
 
-QUmlInitialNodeObject::~QUmlInitialNodeObject()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<QUmlInitialNode *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
 // OWNED ATTRIBUTES [Element]
 
 const QSet<QObject *> QUmlInitialNodeObject::ownedComments() const

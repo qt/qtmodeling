@@ -71,15 +71,6 @@ QUmlPartDecomposition::QUmlPartDecomposition(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlPartDecompositionObject(this));
 }
 
-QUmlPartDecomposition::~QUmlPartDecomposition()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlPartDecomposition::clone() const
 {
     QUmlPartDecomposition *c = new QUmlPartDecomposition;

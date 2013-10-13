@@ -65,14 +65,6 @@ QUmlBehaviorExecutionSpecificationObject::QUmlBehaviorExecutionSpecificationObje
     setPropertyData();
 }
 
-QUmlBehaviorExecutionSpecificationObject::~QUmlBehaviorExecutionSpecificationObject()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<QUmlBehaviorExecutionSpecification *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
 // OWNED ATTRIBUTES [Element]
 
 const QSet<QObject *> QUmlBehaviorExecutionSpecificationObject::ownedComments() const

@@ -59,7 +59,6 @@ class Q_UML_EXPORT QUmlConstraint : public QUmlPackageableElement
 {
 public:
     explicit QUmlConstraint(bool createQModelingObject = true);
-    virtual ~QUmlConstraint();
 
     virtual QModelingElement *clone() const;
 

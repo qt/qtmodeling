@@ -75,7 +75,6 @@ class Q_UML_EXPORT QUmlConnectableElementTemplateParameterObject : public QModel
 
 public:
     Q_INVOKABLE explicit QUmlConnectableElementTemplateParameterObject(QUmlConnectableElementTemplateParameter *modelingElement);
-    virtual ~QUmlConnectableElementTemplateParameterObject();
 
     // Owned attributes [Element]
     Q_INVOKABLE const QSet<QObject *> ownedComments() const;

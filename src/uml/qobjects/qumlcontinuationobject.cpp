@@ -63,14 +63,6 @@ QUmlContinuationObject::QUmlContinuationObject(QUmlContinuation *modelingElement
     setPropertyData();
 }
 
-QUmlContinuationObject::~QUmlContinuationObject()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<QUmlContinuation *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
 // OWNED ATTRIBUTES [Element]
 
 const QSet<QObject *> QUmlContinuationObject::ownedComments() const

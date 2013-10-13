@@ -85,15 +85,6 @@ QUmlArtifact::QUmlArtifact(bool createQModelingObject)
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlArtifactObject(this));
 }
 
-QUmlArtifact::~QUmlArtifact()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlArtifact::clone() const
 {
     QUmlArtifact *c = new QUmlArtifact;

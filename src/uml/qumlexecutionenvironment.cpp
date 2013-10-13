@@ -95,15 +95,6 @@ QUmlExecutionEnvironment::QUmlExecutionEnvironment(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlExecutionEnvironmentObject(this));
 }
 
-QUmlExecutionEnvironment::~QUmlExecutionEnvironment()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlExecutionEnvironment::clone() const
 {
     QUmlExecutionEnvironment *c = new QUmlExecutionEnvironment;

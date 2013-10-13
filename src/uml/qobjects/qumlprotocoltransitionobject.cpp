@@ -72,14 +72,6 @@ QUmlProtocolTransitionObject::QUmlProtocolTransitionObject(QUmlProtocolTransitio
     setPropertyData();
 }
 
-QUmlProtocolTransitionObject::~QUmlProtocolTransitionObject()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
 // OWNED ATTRIBUTES [Element]
 
 const QSet<QObject *> QUmlProtocolTransitionObject::ownedComments() const

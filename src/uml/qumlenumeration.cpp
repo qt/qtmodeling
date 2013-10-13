@@ -86,15 +86,6 @@ QUmlEnumeration::QUmlEnumeration(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlEnumerationObject(this));
 }
 
-QUmlEnumeration::~QUmlEnumeration()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlEnumeration::clone() const
 {
     QUmlEnumeration *c = new QUmlEnumeration;

@@ -69,14 +69,6 @@ QUmlRegionObject::QUmlRegionObject(QUmlRegion *modelingElement)
     setPropertyData();
 }
 
-QUmlRegionObject::~QUmlRegionObject()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<QUmlRegion *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
 // OWNED ATTRIBUTES [Element]
 
 const QSet<QObject *> QUmlRegionObject::ownedComments() const

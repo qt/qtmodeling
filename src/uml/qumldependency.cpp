@@ -64,15 +64,6 @@ QUmlDependency::QUmlDependency(bool createQModelingObject)
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlDependencyObject(this));
 }
 
-QUmlDependency::~QUmlDependency()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlDependency::clone() const
 {
     QUmlDependency *c = new QUmlDependency;

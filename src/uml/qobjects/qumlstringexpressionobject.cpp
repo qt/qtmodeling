@@ -64,14 +64,6 @@ QUmlStringExpressionObject::QUmlStringExpressionObject(QUmlStringExpression *mod
     setPropertyData();
 }
 
-QUmlStringExpressionObject::~QUmlStringExpressionObject()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<QUmlStringExpression *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
 // OWNED ATTRIBUTES [Element]
 
 const QSet<QObject *> QUmlStringExpressionObject::ownedComments() const

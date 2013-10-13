@@ -57,14 +57,6 @@ QUmlExceptionHandlerObject::QUmlExceptionHandlerObject(QUmlExceptionHandler *mod
     setPropertyData();
 }
 
-QUmlExceptionHandlerObject::~QUmlExceptionHandlerObject()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<QUmlExceptionHandler *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
 // OWNED ATTRIBUTES [Element]
 
 const QSet<QObject *> QUmlExceptionHandlerObject::ownedComments() const

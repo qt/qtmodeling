@@ -61,10 +61,6 @@ QUmlObservation::QUmlObservation()
 {
 }
 
-QUmlObservation::~QUmlObservation()
-{
-}
-
 QModelingElement *QUmlObservation::clone() const
 {
     QUmlObservation *c = new QUmlObservation;

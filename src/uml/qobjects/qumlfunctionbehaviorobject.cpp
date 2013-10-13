@@ -92,14 +92,6 @@ QUmlFunctionBehaviorObject::QUmlFunctionBehaviorObject(QUmlFunctionBehavior *mod
     setPropertyData();
 }
 
-QUmlFunctionBehaviorObject::~QUmlFunctionBehaviorObject()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<QUmlFunctionBehavior *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
 // OWNED ATTRIBUTES [Element]
 
 const QSet<QObject *> QUmlFunctionBehaviorObject::ownedComments() const

@@ -59,7 +59,6 @@ class Q_UML_EXPORT QUmlTemplateBinding : public QUmlDirectedRelationship
 {
 public:
     explicit QUmlTemplateBinding(bool createQModelingObject = true);
-    virtual ~QUmlTemplateBinding();
 
     virtual QModelingElement *clone() const;
 

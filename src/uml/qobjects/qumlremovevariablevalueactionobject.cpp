@@ -73,14 +73,6 @@ QUmlRemoveVariableValueActionObject::QUmlRemoveVariableValueActionObject(QUmlRem
     setPropertyData();
 }
 
-QUmlRemoveVariableValueActionObject::~QUmlRemoveVariableValueActionObject()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
 // OWNED ATTRIBUTES [Element]
 
 const QSet<QObject *> QUmlRemoveVariableValueActionObject::ownedComments() const

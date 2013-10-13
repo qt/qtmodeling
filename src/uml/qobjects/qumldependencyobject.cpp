@@ -60,14 +60,6 @@ QUmlDependencyObject::QUmlDependencyObject(QUmlDependency *modelingElement)
     setPropertyData();
 }
 
-QUmlDependencyObject::~QUmlDependencyObject()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<QUmlDependency *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
 // OWNED ATTRIBUTES [Element]
 
 const QSet<QObject *> QUmlDependencyObject::ownedComments() const

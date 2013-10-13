@@ -83,15 +83,6 @@ QUmlExpansionRegion::QUmlExpansionRegion(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlExpansionRegionObject(this));
 }
 
-QUmlExpansionRegion::~QUmlExpansionRegion()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlExpansionRegion::clone() const
 {
     QUmlExpansionRegion *c = new QUmlExpansionRegion;

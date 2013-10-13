@@ -94,15 +94,6 @@ QUmlNode::QUmlNode(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlNodeObject(this));
 }
 
-QUmlNode::~QUmlNode()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlNode::clone() const
 {
     QUmlNode *c = new QUmlNode;

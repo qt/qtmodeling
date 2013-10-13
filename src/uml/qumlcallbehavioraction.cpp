@@ -79,15 +79,6 @@ QUmlCallBehaviorAction::QUmlCallBehaviorAction(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlCallBehaviorActionObject(this));
 }
 
-QUmlCallBehaviorAction::~QUmlCallBehaviorAction()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlCallBehaviorAction::clone() const
 {
     QUmlCallBehaviorAction *c = new QUmlCallBehaviorAction;

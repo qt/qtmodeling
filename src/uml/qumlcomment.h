@@ -55,7 +55,6 @@ class Q_UML_EXPORT QUmlComment : public QUmlElement
 {
 public:
     explicit QUmlComment(bool createQModelingObject = true);
-    virtual ~QUmlComment();
 
     virtual QModelingElement *clone() const;
 

@@ -55,7 +55,6 @@ class Q_UML_EXPORT QUmlPartDecomposition : public QUmlInteractionUse
 {
 public:
     explicit QUmlPartDecomposition(bool createQModelingObject = true);
-    virtual ~QUmlPartDecomposition();
 
     virtual QModelingElement *clone() const;
 

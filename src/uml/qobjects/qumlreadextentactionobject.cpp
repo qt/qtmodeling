@@ -72,14 +72,6 @@ QUmlReadExtentActionObject::QUmlReadExtentActionObject(QUmlReadExtentAction *mod
     setPropertyData();
 }
 
-QUmlReadExtentActionObject::~QUmlReadExtentActionObject()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<QUmlReadExtentAction *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
 // OWNED ATTRIBUTES [Element]
 
 const QSet<QObject *> QUmlReadExtentActionObject::ownedComments() const

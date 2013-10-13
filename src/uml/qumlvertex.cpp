@@ -63,10 +63,6 @@ QUmlVertex::QUmlVertex() :
 {
 }
 
-QUmlVertex::~QUmlVertex()
-{
-}
-
 QModelingElement *QUmlVertex::clone() const
 {
     QUmlVertex *c = new QUmlVertex;

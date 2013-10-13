@@ -65,15 +65,6 @@ QUmlTemplateParameterSubstitution::QUmlTemplateParameterSubstitution(bool create
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlTemplateParameterSubstitutionObject(this));
 }
 
-QUmlTemplateParameterSubstitution::~QUmlTemplateParameterSubstitution()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlTemplateParameterSubstitution::clone() const
 {
     QUmlTemplateParameterSubstitution *c = new QUmlTemplateParameterSubstitution;

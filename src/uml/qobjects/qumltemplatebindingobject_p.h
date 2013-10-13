@@ -78,7 +78,6 @@ class Q_UML_EXPORT QUmlTemplateBindingObject : public QModelingObject
 
 public:
     Q_INVOKABLE explicit QUmlTemplateBindingObject(QUmlTemplateBinding *modelingElement);
-    virtual ~QUmlTemplateBindingObject();
 
     // Owned attributes [Element]
     Q_INVOKABLE const QSet<QObject *> ownedComments() const;

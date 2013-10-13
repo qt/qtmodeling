@@ -71,7 +71,6 @@ class Q_UML_EXPORT QUmlLinkEndDataObject : public QModelingObject
 
 public:
     Q_INVOKABLE explicit QUmlLinkEndDataObject(QUmlLinkEndData *modelingElement);
-    virtual ~QUmlLinkEndDataObject();
 
     // Owned attributes [Element]
     Q_INVOKABLE const QSet<QObject *> ownedComments() const;

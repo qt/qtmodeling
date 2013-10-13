@@ -72,14 +72,6 @@ QUmlDestroyObjectActionObject::QUmlDestroyObjectActionObject(QUmlDestroyObjectAc
     setPropertyData();
 }
 
-QUmlDestroyObjectActionObject::~QUmlDestroyObjectActionObject()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<QUmlDestroyObjectAction *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
 // OWNED ATTRIBUTES [Element]
 
 const QSet<QObject *> QUmlDestroyObjectActionObject::ownedComments() const

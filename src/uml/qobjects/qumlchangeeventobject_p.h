@@ -85,7 +85,6 @@ class Q_UML_EXPORT QUmlChangeEventObject : public QModelingObject
 
 public:
     Q_INVOKABLE explicit QUmlChangeEventObject(QUmlChangeEvent *modelingElement);
-    virtual ~QUmlChangeEventObject();
 
     // Owned attributes [Element]
     Q_INVOKABLE const QSet<QObject *> ownedComments() const;

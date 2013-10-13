@@ -65,15 +65,6 @@ QUmlAnyReceiveEvent::QUmlAnyReceiveEvent(bool createQModelingObject)
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlAnyReceiveEventObject(this));
 }
 
-QUmlAnyReceiveEvent::~QUmlAnyReceiveEvent()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlAnyReceiveEvent::clone() const
 {
     QUmlAnyReceiveEvent *c = new QUmlAnyReceiveEvent;

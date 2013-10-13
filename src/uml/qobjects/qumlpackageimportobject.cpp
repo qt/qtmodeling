@@ -56,14 +56,6 @@ QUmlPackageImportObject::QUmlPackageImportObject(QUmlPackageImport *modelingElem
     setPropertyData();
 }
 
-QUmlPackageImportObject::~QUmlPackageImportObject()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<QUmlPackageImport *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
 // OWNED ATTRIBUTES [Element]
 
 const QSet<QObject *> QUmlPackageImportObject::ownedComments() const

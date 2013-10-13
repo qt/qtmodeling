@@ -58,15 +58,6 @@ QUmlImage::QUmlImage(bool createQModelingObject)
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlImageObject(this));
 }
 
-QUmlImage::~QUmlImage()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlImage::clone() const
 {
     QUmlImage *c = new QUmlImage;

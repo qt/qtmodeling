@@ -1,7 +1,7 @@
-QT.saduseprofile.VERSION = 5.1.1
+QT.saduseprofile.VERSION = 5.2.0
 QT.saduseprofile.MAJOR_VERSION = 5
-QT.saduseprofile.MINOR_VERSION = 1
-QT.saduseprofile.PATCH_VERSION = 1
+QT.saduseprofile.MINOR_VERSION = 2
+QT.saduseprofile.PATCH_VERSION = 0
 
 QT.saduseprofile.name = QtSADuseProfile
 QT.saduseprofile.bins = $$QT_MODULE_BIN_BASE

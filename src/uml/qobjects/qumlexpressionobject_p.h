@@ -89,7 +89,6 @@ class Q_UML_EXPORT QUmlExpressionObject : public QModelingObject
 
 public:
     Q_INVOKABLE explicit QUmlExpressionObject(QUmlExpression *modelingElement);
-    virtual ~QUmlExpressionObject();
 
     // Owned attributes [Element]
     Q_INVOKABLE const QSet<QObject *> ownedComments() const;

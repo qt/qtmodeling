@@ -60,7 +60,6 @@ class Q_UML_EXPORT QUmlPseudostate : public QUmlVertex
 {
 public:
     explicit QUmlPseudostate(bool createQModelingObject = true);
-    virtual ~QUmlPseudostate();
 
     virtual QModelingElement *clone() const;
 

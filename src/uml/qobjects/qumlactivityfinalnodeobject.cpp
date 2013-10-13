@@ -68,14 +68,6 @@ QUmlActivityFinalNodeObject::QUmlActivityFinalNodeObject(QUmlActivityFinalNode *
     setPropertyData();
 }
 
-QUmlActivityFinalNodeObject::~QUmlActivityFinalNodeObject()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<QUmlActivityFinalNode *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
 // OWNED ATTRIBUTES [Element]
 
 const QSet<QObject *> QUmlActivityFinalNodeObject::ownedComments() const

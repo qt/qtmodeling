@@ -60,7 +60,6 @@ class Q_UML_EXPORT QUmlVariable : public QUmlMultiplicityElement, public QUmlCon
 {
 public:
     explicit QUmlVariable(bool createQModelingObject = true);
-    virtual ~QUmlVariable();
 
     virtual QModelingElement *clone() const;
 

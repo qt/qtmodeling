@@ -57,7 +57,6 @@ class Q_UML_EXPORT QUmlAddStructuralFeatureValueAction : public QUmlWriteStructu
 {
 public:
     explicit QUmlAddStructuralFeatureValueAction(bool createQModelingObject = true);
-    virtual ~QUmlAddStructuralFeatureValueAction();
 
     virtual QModelingElement *clone() const;
 

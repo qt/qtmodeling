@@ -57,14 +57,6 @@ QUmlTemplateBindingObject::QUmlTemplateBindingObject(QUmlTemplateBinding *modeli
     setPropertyData();
 }
 
-QUmlTemplateBindingObject::~QUmlTemplateBindingObject()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<QUmlTemplateBinding *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
 // OWNED ATTRIBUTES [Element]
 
 const QSet<QObject *> QUmlTemplateBindingObject::ownedComments() const

@@ -64,7 +64,6 @@ class Q_UML_EXPORT QUmlPackage : public QUmlNamespace, public QUmlPackageableEle
 {
 public:
     explicit QUmlPackage(bool createQModelingObject = true);
-    virtual ~QUmlPackage();
 
     virtual QModelingElement *clone() const;
 

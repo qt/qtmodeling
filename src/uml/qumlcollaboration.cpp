@@ -87,15 +87,6 @@ QUmlCollaboration::QUmlCollaboration(bool createQModelingObject)
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlCollaborationObject(this));
 }
 
-QUmlCollaboration::~QUmlCollaboration()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlCollaboration::clone() const
 {
     QUmlCollaboration *c = new QUmlCollaboration;

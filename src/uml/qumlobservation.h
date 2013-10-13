@@ -54,7 +54,6 @@ QT_MODULE(QtUml)
 class Q_UML_EXPORT QUmlObservation : public QUmlPackageableElement
 {
 public:
-    virtual ~QUmlObservation();
 
     Q_DECL_HIDDEN virtual QModelingElement *clone() const;
 

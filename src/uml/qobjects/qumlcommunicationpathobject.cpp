@@ -79,14 +79,6 @@ QUmlCommunicationPathObject::QUmlCommunicationPathObject(QUmlCommunicationPath *
     setPropertyData();
 }
 
-QUmlCommunicationPathObject::~QUmlCommunicationPathObject()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<QUmlCommunicationPath *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
 // OWNED ATTRIBUTES [Element]
 
 const QSet<QObject *> QUmlCommunicationPathObject::ownedComments() const

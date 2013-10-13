@@ -79,15 +79,6 @@ QUmlValuePin::QUmlValuePin(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlValuePinObject(this));
 }
 
-QUmlValuePin::~QUmlValuePin()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlValuePin::clone() const
 {
     QUmlValuePin *c = new QUmlValuePin;

@@ -55,7 +55,6 @@ class Q_UML_EXPORT QUmlFinalState : public QUmlState
 {
 public:
     explicit QUmlFinalState(bool createQModelingObject = true);
-    virtual ~QUmlFinalState();
 
     virtual QModelingElement *clone() const;
 

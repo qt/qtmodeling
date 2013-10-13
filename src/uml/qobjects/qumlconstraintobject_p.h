@@ -87,7 +87,6 @@ class Q_UML_EXPORT QUmlConstraintObject : public QModelingObject
 
 public:
     Q_INVOKABLE explicit QUmlConstraintObject(QUmlConstraint *modelingElement);
-    virtual ~QUmlConstraintObject();
 
     // Owned attributes [Element]
     Q_INVOKABLE const QSet<QObject *> ownedComments() const;

@@ -59,7 +59,6 @@ class Q_UML_EXPORT QUmlDataType : public QUmlClassifier
 {
 public:
     explicit QUmlDataType(bool createQModelingObject = true);
-    virtual ~QUmlDataType();
 
     virtual QModelingElement *clone() const;
 

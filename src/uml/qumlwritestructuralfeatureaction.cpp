@@ -75,10 +75,6 @@ QUmlWriteStructuralFeatureAction::QUmlWriteStructuralFeatureAction() :
 {
 }
 
-QUmlWriteStructuralFeatureAction::~QUmlWriteStructuralFeatureAction()
-{
-}
-
 QModelingElement *QUmlWriteStructuralFeatureAction::clone() const
 {
     QUmlWriteStructuralFeatureAction *c = new QUmlWriteStructuralFeatureAction;

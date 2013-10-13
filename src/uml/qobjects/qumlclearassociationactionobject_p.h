@@ -106,7 +106,6 @@ class Q_UML_EXPORT QUmlClearAssociationActionObject : public QModelingObject
 
 public:
     Q_INVOKABLE explicit QUmlClearAssociationActionObject(QUmlClearAssociationAction *modelingElement);
-    virtual ~QUmlClearAssociationActionObject();
 
     // Owned attributes [Element]
     Q_INVOKABLE const QSet<QObject *> ownedComments() const;

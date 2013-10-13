@@ -123,17 +123,6 @@ Q${namespace}${className}::Q${namespace}${className}([%- IF class.findvalue("@is
 [%- END %]
 }
 
-Q${namespace}${className}::~Q${namespace}${className}()
-{
-[%- IF class.findvalue("@isAbstract") != "true" %]
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-[%- END %]
-}
-
 QModelingElement *Q${namespace}${className}::clone() const
 {
     Q${namespace}${className} *c = new Q${namespace}${className};

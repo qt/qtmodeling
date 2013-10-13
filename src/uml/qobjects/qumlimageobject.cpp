@@ -54,14 +54,6 @@ QUmlImageObject::QUmlImageObject(QUmlImage *modelingElement)
     setPropertyData();
 }
 
-QUmlImageObject::~QUmlImageObject()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<QUmlImage *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
 // OWNED ATTRIBUTES [Element]
 
 const QSet<QObject *> QUmlImageObject::ownedComments() const

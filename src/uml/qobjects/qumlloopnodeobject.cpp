@@ -77,14 +77,6 @@ QUmlLoopNodeObject::QUmlLoopNodeObject(QUmlLoopNode *modelingElement)
     setPropertyData();
 }
 
-QUmlLoopNodeObject::~QUmlLoopNodeObject()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<QUmlLoopNode *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
 // OWNED ATTRIBUTES [Element]
 
 const QSet<QObject *> QUmlLoopNodeObject::ownedComments() const

@@ -61,7 +61,6 @@ class Q_UML_EXPORT QUmlLifeline : public QUmlNamedElement
 {
 public:
     explicit QUmlLifeline(bool createQModelingObject = true);
-    virtual ~QUmlLifeline();
 
     virtual QModelingElement *clone() const;
 

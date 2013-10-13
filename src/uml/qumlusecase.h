@@ -60,7 +60,6 @@ class Q_UML_EXPORT QUmlUseCase : public QUmlBehavioredClassifier
 {
 public:
     explicit QUmlUseCase(bool createQModelingObject = true);
-    virtual ~QUmlUseCase();
 
     virtual QModelingElement *clone() const;
 

@@ -69,15 +69,6 @@ QUmlConnectionPointReference::QUmlConnectionPointReference(bool createQModelingO
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlConnectionPointReferenceObject(this));
 }
 
-QUmlConnectionPointReference::~QUmlConnectionPointReference()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlConnectionPointReference::clone() const
 {
     QUmlConnectionPointReference *c = new QUmlConnectionPointReference;

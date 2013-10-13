@@ -96,7 +96,6 @@ class Q_UML_EXPORT QUmlRegionObject : public QModelingObject
 
 public:
     Q_INVOKABLE explicit QUmlRegionObject(QUmlRegion *modelingElement);
-    virtual ~QUmlRegionObject();
 
     // Owned attributes [Element]
     Q_INVOKABLE const QSet<QObject *> ownedComments() const;

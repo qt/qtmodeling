@@ -58,7 +58,6 @@ class Q_UML_EXPORT QUmlConnectorEnd : public QUmlMultiplicityElement
 {
 public:
     explicit QUmlConnectorEnd(bool createQModelingObject = true);
-    virtual ~QUmlConnectorEnd();
 
     virtual QModelingElement *clone() const;
 

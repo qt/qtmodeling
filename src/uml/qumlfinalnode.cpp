@@ -68,10 +68,6 @@ QUmlFinalNode::QUmlFinalNode()
 {
 }
 
-QUmlFinalNode::~QUmlFinalNode()
-{
-}
-
 QModelingElement *QUmlFinalNode::clone() const
 {
     QUmlFinalNode *c = new QUmlFinalNode;

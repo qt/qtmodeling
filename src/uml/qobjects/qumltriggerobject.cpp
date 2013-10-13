@@ -61,14 +61,6 @@ QUmlTriggerObject::QUmlTriggerObject(QUmlTrigger *modelingElement)
     setPropertyData();
 }
 
-QUmlTriggerObject::~QUmlTriggerObject()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<QUmlTrigger *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
 // OWNED ATTRIBUTES [Element]
 
 const QSet<QObject *> QUmlTriggerObject::ownedComments() const

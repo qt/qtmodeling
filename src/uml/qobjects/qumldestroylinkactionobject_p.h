@@ -108,7 +108,6 @@ class Q_UML_EXPORT QUmlDestroyLinkActionObject : public QModelingObject
 
 public:
     Q_INVOKABLE explicit QUmlDestroyLinkActionObject(QUmlDestroyLinkAction *modelingElement);
-    virtual ~QUmlDestroyLinkActionObject();
 
     // Owned attributes [Element]
     Q_INVOKABLE const QSet<QObject *> ownedComments() const;

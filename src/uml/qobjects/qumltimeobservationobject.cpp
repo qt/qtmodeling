@@ -61,14 +61,6 @@ QUmlTimeObservationObject::QUmlTimeObservationObject(QUmlTimeObservation *modeli
     setPropertyData();
 }
 
-QUmlTimeObservationObject::~QUmlTimeObservationObject()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<QUmlTimeObservation *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
 // OWNED ATTRIBUTES [Element]
 
 const QSet<QObject *> QUmlTimeObservationObject::ownedComments() const

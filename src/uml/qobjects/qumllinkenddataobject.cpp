@@ -57,14 +57,6 @@ QUmlLinkEndDataObject::QUmlLinkEndDataObject(QUmlLinkEndData *modelingElement)
     setPropertyData();
 }
 
-QUmlLinkEndDataObject::~QUmlLinkEndDataObject()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<QUmlLinkEndData *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
 // OWNED ATTRIBUTES [Element]
 
 const QSet<QObject *> QUmlLinkEndDataObject::ownedComments() const

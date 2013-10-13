@@ -58,7 +58,6 @@ class Q_UML_EXPORT QUmlCollaboration : public QUmlStructuredClassifier, public Q
 {
 public:
     explicit QUmlCollaboration(bool createQModelingObject = true);
-    virtual ~QUmlCollaboration();
 
     virtual QModelingElement *clone() const;
 

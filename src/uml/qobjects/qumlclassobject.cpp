@@ -87,14 +87,6 @@ QUmlClassObject::QUmlClassObject(QUmlClass *modelingElement)
     setPropertyData();
 }
 
-QUmlClassObject::~QUmlClassObject()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<QUmlClass *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
 // OWNED ATTRIBUTES [Element]
 
 const QSet<QObject *> QUmlClassObject::ownedComments() const

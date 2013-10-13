@@ -72,14 +72,6 @@ QUmlRaiseExceptionActionObject::QUmlRaiseExceptionActionObject(QUmlRaiseExceptio
     setPropertyData();
 }
 
-QUmlRaiseExceptionActionObject::~QUmlRaiseExceptionActionObject()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<QUmlRaiseExceptionAction *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
 // OWNED ATTRIBUTES [Element]
 
 const QSet<QObject *> QUmlRaiseExceptionActionObject::ownedComments() const

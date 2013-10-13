@@ -70,14 +70,6 @@ QUmlObjectFlowObject::QUmlObjectFlowObject(QUmlObjectFlow *modelingElement)
     setPropertyData();
 }
 
-QUmlObjectFlowObject::~QUmlObjectFlowObject()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<QUmlObjectFlow *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
 // OWNED ATTRIBUTES [Element]
 
 const QSet<QObject *> QUmlObjectFlowObject::ownedComments() const

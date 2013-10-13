@@ -73,14 +73,6 @@ QUmlReadStructuralFeatureActionObject::QUmlReadStructuralFeatureActionObject(QUm
     setPropertyData();
 }
 
-QUmlReadStructuralFeatureActionObject::~QUmlReadStructuralFeatureActionObject()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<QUmlReadStructuralFeatureAction *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
 // OWNED ATTRIBUTES [Element]
 
 const QSet<QObject *> QUmlReadStructuralFeatureActionObject::ownedComments() const

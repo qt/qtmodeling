@@ -90,7 +90,6 @@ class Q_UML_EXPORT QUmlConsiderIgnoreFragmentObject : public QModelingObject
 
 public:
     Q_INVOKABLE explicit QUmlConsiderIgnoreFragmentObject(QUmlConsiderIgnoreFragment *modelingElement);
-    virtual ~QUmlConsiderIgnoreFragmentObject();
 
     // Owned attributes [Element]
     Q_INVOKABLE const QSet<QObject *> ownedComments() const;

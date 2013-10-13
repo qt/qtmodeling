@@ -66,15 +66,6 @@ QUmlGeneralOrdering::QUmlGeneralOrdering(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlGeneralOrderingObject(this));
 }
 
-QUmlGeneralOrdering::~QUmlGeneralOrdering()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlGeneralOrdering::clone() const
 {
     QUmlGeneralOrdering *c = new QUmlGeneralOrdering;

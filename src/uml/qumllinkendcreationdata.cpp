@@ -64,15 +64,6 @@ QUmlLinkEndCreationData::QUmlLinkEndCreationData(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlLinkEndCreationDataObject(this));
 }
 
-QUmlLinkEndCreationData::~QUmlLinkEndCreationData()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlLinkEndCreationData::clone() const
 {
     QUmlLinkEndCreationData *c = new QUmlLinkEndCreationData;

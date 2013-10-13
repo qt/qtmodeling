@@ -82,15 +82,6 @@ QUmlExtensionEnd::QUmlExtensionEnd(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlExtensionEndObject(this));
 }
 
-QUmlExtensionEnd::~QUmlExtensionEnd()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlExtensionEnd::clone() const
 {
     QUmlExtensionEnd *c = new QUmlExtensionEnd;

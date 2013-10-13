@@ -91,7 +91,6 @@ class Q_UML_EXPORT QUmlMergeNodeObject : public QModelingObject
 
 public:
     Q_INVOKABLE explicit QUmlMergeNodeObject(QUmlMergeNode *modelingElement);
-    virtual ~QUmlMergeNodeObject();
 
     // Owned attributes [Element]
     Q_INVOKABLE const QSet<QObject *> ownedComments() const;

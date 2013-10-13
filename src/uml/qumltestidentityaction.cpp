@@ -79,15 +79,6 @@ QUmlTestIdentityAction::QUmlTestIdentityAction(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlTestIdentityActionObject(this));
 }
 
-QUmlTestIdentityAction::~QUmlTestIdentityAction()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlTestIdentityAction::clone() const
 {
     QUmlTestIdentityAction *c = new QUmlTestIdentityAction;

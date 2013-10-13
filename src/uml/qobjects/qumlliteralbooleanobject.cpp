@@ -62,14 +62,6 @@ QUmlLiteralBooleanObject::QUmlLiteralBooleanObject(QUmlLiteralBoolean *modelingE
     setPropertyData();
 }
 
-QUmlLiteralBooleanObject::~QUmlLiteralBooleanObject()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<QUmlLiteralBoolean *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
 // OWNED ATTRIBUTES [Element]
 
 const QSet<QObject *> QUmlLiteralBooleanObject::ownedComments() const

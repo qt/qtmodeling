@@ -85,15 +85,6 @@ QUmlPort::QUmlPort(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlPortObject(this));
 }
 
-QUmlPort::~QUmlPort()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlPort::clone() const
 {
     QUmlPort *c = new QUmlPort;

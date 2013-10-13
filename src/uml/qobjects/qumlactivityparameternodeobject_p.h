@@ -104,7 +104,6 @@ class Q_UML_EXPORT QUmlActivityParameterNodeObject : public QModelingObject
 
 public:
     Q_INVOKABLE explicit QUmlActivityParameterNodeObject(QUmlActivityParameterNode *modelingElement);
-    virtual ~QUmlActivityParameterNodeObject();
 
     // Owned attributes [Element]
     Q_INVOKABLE const QSet<QObject *> ownedComments() const;

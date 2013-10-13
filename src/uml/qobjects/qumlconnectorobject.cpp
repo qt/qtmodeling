@@ -64,14 +64,6 @@ QUmlConnectorObject::QUmlConnectorObject(QUmlConnector *modelingElement)
     setPropertyData();
 }
 
-QUmlConnectorObject::~QUmlConnectorObject()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<QUmlConnector *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
 // OWNED ATTRIBUTES [Element]
 
 const QSet<QObject *> QUmlConnectorObject::ownedComments() const

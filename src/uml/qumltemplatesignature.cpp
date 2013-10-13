@@ -61,15 +61,6 @@ QUmlTemplateSignature::QUmlTemplateSignature(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlTemplateSignatureObject(this));
 }
 
-QUmlTemplateSignature::~QUmlTemplateSignature()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlTemplateSignature::clone() const
 {
     QUmlTemplateSignature *c = new QUmlTemplateSignature;

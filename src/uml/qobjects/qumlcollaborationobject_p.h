@@ -132,7 +132,6 @@ class Q_UML_EXPORT QUmlCollaborationObject : public QModelingObject
 
 public:
     Q_INVOKABLE explicit QUmlCollaborationObject(QUmlCollaboration *modelingElement);
-    virtual ~QUmlCollaborationObject();
 
     // Owned attributes [Element]
     Q_INVOKABLE const QSet<QObject *> ownedComments() const;

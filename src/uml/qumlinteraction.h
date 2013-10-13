@@ -61,7 +61,6 @@ class Q_UML_EXPORT QUmlInteraction : public QUmlBehavior, public QUmlInteraction
 {
 public:
     explicit QUmlInteraction(bool createQModelingObject = true);
-    virtual ~QUmlInteraction();
 
     virtual QModelingElement *clone() const;
 

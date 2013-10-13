@@ -72,14 +72,6 @@ QUmlReadSelfActionObject::QUmlReadSelfActionObject(QUmlReadSelfAction *modelingE
     setPropertyData();
 }
 
-QUmlReadSelfActionObject::~QUmlReadSelfActionObject()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<QUmlReadSelfAction *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
 // OWNED ATTRIBUTES [Element]
 
 const QSet<QObject *> QUmlReadSelfActionObject::ownedComments() const

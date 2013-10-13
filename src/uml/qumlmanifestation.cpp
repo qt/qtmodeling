@@ -69,15 +69,6 @@ QUmlManifestation::QUmlManifestation(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlManifestationObject(this));
 }
 
-QUmlManifestation::~QUmlManifestation()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlManifestation::clone() const
 {
     QUmlManifestation *c = new QUmlManifestation;

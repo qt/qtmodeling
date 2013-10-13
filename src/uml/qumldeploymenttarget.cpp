@@ -61,10 +61,6 @@ QUmlDeploymentTarget::QUmlDeploymentTarget()
 {
 }
 
-QUmlDeploymentTarget::~QUmlDeploymentTarget()
-{
-}
-
 QModelingElement *QUmlDeploymentTarget::clone() const
 {
     QUmlDeploymentTarget *c = new QUmlDeploymentTarget;

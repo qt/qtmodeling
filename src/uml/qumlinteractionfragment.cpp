@@ -65,10 +65,6 @@ QUmlInteractionFragment::QUmlInteractionFragment() :
 {
 }
 
-QUmlInteractionFragment::~QUmlInteractionFragment()
-{
-}
-
 QModelingElement *QUmlInteractionFragment::clone() const
 {
     QUmlInteractionFragment *c = new QUmlInteractionFragment;

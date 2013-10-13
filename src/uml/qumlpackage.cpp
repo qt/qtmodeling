@@ -76,15 +76,6 @@ QUmlPackage::QUmlPackage(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlPackageObject(this));
 }
 
-QUmlPackage::~QUmlPackage()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlPackage::clone() const
 {
     QUmlPackage *c = new QUmlPackage;

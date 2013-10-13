@@ -64,14 +64,6 @@ QUmlOpaqueExpressionObject::QUmlOpaqueExpressionObject(QUmlOpaqueExpression *mod
     setPropertyData();
 }
 
-QUmlOpaqueExpressionObject::~QUmlOpaqueExpressionObject()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<QUmlOpaqueExpression *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
 // OWNED ATTRIBUTES [Element]
 
 const QSet<QObject *> QUmlOpaqueExpressionObject::ownedComments() const

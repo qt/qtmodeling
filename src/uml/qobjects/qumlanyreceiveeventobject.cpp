@@ -61,14 +61,6 @@ QUmlAnyReceiveEventObject::QUmlAnyReceiveEventObject(QUmlAnyReceiveEvent *modeli
     setPropertyData();
 }
 
-QUmlAnyReceiveEventObject::~QUmlAnyReceiveEventObject()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<QUmlAnyReceiveEvent *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
 // OWNED ATTRIBUTES [Element]
 
 const QSet<QObject *> QUmlAnyReceiveEventObject::ownedComments() const

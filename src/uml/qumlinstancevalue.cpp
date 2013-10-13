@@ -68,15 +68,6 @@ QUmlInstanceValue::QUmlInstanceValue(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlInstanceValueObject(this));
 }
 
-QUmlInstanceValue::~QUmlInstanceValue()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlInstanceValue::clone() const
 {
     QUmlInstanceValue *c = new QUmlInstanceValue;

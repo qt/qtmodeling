@@ -106,7 +106,6 @@ class Q_UML_EXPORT QUmlReadExtentActionObject : public QModelingObject
 
 public:
     Q_INVOKABLE explicit QUmlReadExtentActionObject(QUmlReadExtentAction *modelingElement);
-    virtual ~QUmlReadExtentActionObject();
 
     // Owned attributes [Element]
     Q_INVOKABLE const QSet<QObject *> ownedComments() const;

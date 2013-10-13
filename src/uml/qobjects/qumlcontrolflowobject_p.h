@@ -93,7 +93,6 @@ class Q_UML_EXPORT QUmlControlFlowObject : public QModelingObject
 
 public:
     Q_INVOKABLE explicit QUmlControlFlowObject(QUmlControlFlow *modelingElement);
-    virtual ~QUmlControlFlowObject();
 
     // Owned attributes [Element]
     Q_INVOKABLE const QSet<QObject *> ownedComments() const;

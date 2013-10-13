@@ -61,10 +61,6 @@ QUmlRedefinableElement::QUmlRedefinableElement() :
 {
 }
 
-QUmlRedefinableElement::~QUmlRedefinableElement()
-{
-}
-
 QModelingElement *QUmlRedefinableElement::clone() const
 {
     QUmlRedefinableElement *c = new QUmlRedefinableElement;

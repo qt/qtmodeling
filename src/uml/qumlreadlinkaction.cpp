@@ -79,15 +79,6 @@ QUmlReadLinkAction::QUmlReadLinkAction(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlReadLinkActionObject(this));
 }
 
-QUmlReadLinkAction::~QUmlReadLinkAction()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlReadLinkAction::clone() const
 {
     QUmlReadLinkAction *c = new QUmlReadLinkAction;

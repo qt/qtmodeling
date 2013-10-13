@@ -63,15 +63,6 @@ QUmlOperationTemplateParameter::QUmlOperationTemplateParameter(bool createQModel
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlOperationTemplateParameterObject(this));
 }
 
-QUmlOperationTemplateParameter::~QUmlOperationTemplateParameter()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlOperationTemplateParameter::clone() const
 {
     QUmlOperationTemplateParameter *c = new QUmlOperationTemplateParameter;

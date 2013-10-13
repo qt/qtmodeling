@@ -55,14 +55,6 @@ QUmlPackageMergeObject::QUmlPackageMergeObject(QUmlPackageMerge *modelingElement
     setPropertyData();
 }
 
-QUmlPackageMergeObject::~QUmlPackageMergeObject()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<QUmlPackageMerge *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
 // OWNED ATTRIBUTES [Element]
 
 const QSet<QObject *> QUmlPackageMergeObject::ownedComments() const

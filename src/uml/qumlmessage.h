@@ -62,7 +62,6 @@ class Q_UML_EXPORT QUmlMessage : public QUmlNamedElement
 {
 public:
     explicit QUmlMessage(bool createQModelingObject = true);
-    virtual ~QUmlMessage();
 
     virtual QModelingElement *clone() const;
 

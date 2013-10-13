@@ -76,15 +76,6 @@ QUmlDecisionNode::QUmlDecisionNode(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlDecisionNodeObject(this));
 }
 
-QUmlDecisionNode::~QUmlDecisionNode()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlDecisionNode::clone() const
 {
     QUmlDecisionNode *c = new QUmlDecisionNode;

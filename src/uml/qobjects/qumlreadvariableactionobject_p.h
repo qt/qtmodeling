@@ -108,7 +108,6 @@ class Q_UML_EXPORT QUmlReadVariableActionObject : public QModelingObject
 
 public:
     Q_INVOKABLE explicit QUmlReadVariableActionObject(QUmlReadVariableAction *modelingElement);
-    virtual ~QUmlReadVariableActionObject();
 
     // Owned attributes [Element]
     Q_INVOKABLE const QSet<QObject *> ownedComments() const;

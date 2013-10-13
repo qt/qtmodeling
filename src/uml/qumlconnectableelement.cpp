@@ -65,10 +65,6 @@ QUmlConnectableElement::QUmlConnectableElement() :
 {
 }
 
-QUmlConnectableElement::~QUmlConnectableElement()
-{
-}
-
 QModelingElement *QUmlConnectableElement::clone() const
 {
     QUmlConnectableElement *c = new QUmlConnectableElement;

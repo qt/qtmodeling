@@ -59,7 +59,6 @@ class Q_UML_EXPORT QUmlAssociation : public virtual QUmlClassifier, public QUmlR
 {
 public:
     explicit QUmlAssociation(bool createQModelingObject = true);
-    virtual ~QUmlAssociation();
 
     virtual QModelingElement *clone() const;
 

@@ -60,10 +60,6 @@ QUmlNamedElement::QUmlNamedElement() :
 {
 }
 
-QUmlNamedElement::~QUmlNamedElement()
-{
-}
-
 QModelingElement *QUmlNamedElement::clone() const
 {
     QUmlNamedElement *c = new QUmlNamedElement;

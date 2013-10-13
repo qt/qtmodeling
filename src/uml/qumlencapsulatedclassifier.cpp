@@ -82,10 +82,6 @@ QUmlEncapsulatedClassifier::QUmlEncapsulatedClassifier()
 {
 }
 
-QUmlEncapsulatedClassifier::~QUmlEncapsulatedClassifier()
-{
-}
-
 QModelingElement *QUmlEncapsulatedClassifier::clone() const
 {
     QUmlEncapsulatedClassifier *c = new QUmlEncapsulatedClassifier;

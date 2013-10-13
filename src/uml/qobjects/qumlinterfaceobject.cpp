@@ -82,14 +82,6 @@ QUmlInterfaceObject::QUmlInterfaceObject(QUmlInterface *modelingElement)
     setPropertyData();
 }
 
-QUmlInterfaceObject::~QUmlInterfaceObject()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<QUmlInterface *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
 // OWNED ATTRIBUTES [Element]
 
 const QSet<QObject *> QUmlInterfaceObject::ownedComments() const

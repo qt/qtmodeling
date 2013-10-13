@@ -96,15 +96,6 @@ QUmlOpaqueBehavior::QUmlOpaqueBehavior(bool createQModelingObject)
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlOpaqueBehaviorObject(this));
 }
 
-QUmlOpaqueBehavior::~QUmlOpaqueBehavior()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlOpaqueBehavior::clone() const
 {
     QUmlOpaqueBehavior *c = new QUmlOpaqueBehavior;

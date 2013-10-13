@@ -74,10 +74,6 @@ QUmlPin::QUmlPin() :
 {
 }
 
-QUmlPin::~QUmlPin()
-{
-}
-
 QModelingElement *QUmlPin::clone() const
 {
     QUmlPin *c = new QUmlPin;

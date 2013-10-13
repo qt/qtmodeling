@@ -74,14 +74,6 @@ QUmlReadLinkActionObject::QUmlReadLinkActionObject(QUmlReadLinkAction *modelingE
     setPropertyData();
 }
 
-QUmlReadLinkActionObject::~QUmlReadLinkActionObject()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<QUmlReadLinkAction *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
 // OWNED ATTRIBUTES [Element]
 
 const QSet<QObject *> QUmlReadLinkActionObject::ownedComments() const

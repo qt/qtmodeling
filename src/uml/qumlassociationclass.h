@@ -56,7 +56,6 @@ class Q_UML_EXPORT QUmlAssociationClass : public QUmlClass, public QUmlAssociati
 {
 public:
     explicit QUmlAssociationClass(bool createQModelingObject = true);
-    virtual ~QUmlAssociationClass();
 
     virtual QModelingElement *clone() const;
 

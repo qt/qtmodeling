@@ -71,15 +71,6 @@ QUmlTimeConstraint::QUmlTimeConstraint(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlTimeConstraintObject(this));
 }
 
-QUmlTimeConstraint::~QUmlTimeConstraint()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlTimeConstraint::clone() const
 {
     QUmlTimeConstraint *c = new QUmlTimeConstraint;

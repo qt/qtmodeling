@@ -82,7 +82,6 @@ class Q_UML_EXPORT QUmlAnyReceiveEventObject : public QModelingObject
 
 public:
     Q_INVOKABLE explicit QUmlAnyReceiveEventObject(QUmlAnyReceiveEvent *modelingElement);
-    virtual ~QUmlAnyReceiveEventObject();
 
     // Owned attributes [Element]
     Q_INVOKABLE const QSet<QObject *> ownedComments() const;

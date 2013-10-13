@@ -76,15 +76,6 @@ QUmlRegion::QUmlRegion(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlRegionObject(this));
 }
 
-QUmlRegion::~QUmlRegion()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlRegion::clone() const
 {
     QUmlRegion *c = new QUmlRegion;

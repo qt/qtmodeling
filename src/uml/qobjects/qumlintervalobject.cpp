@@ -63,14 +63,6 @@ QUmlIntervalObject::QUmlIntervalObject(QUmlInterval *modelingElement)
     setPropertyData();
 }
 
-QUmlIntervalObject::~QUmlIntervalObject()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<QUmlInterval *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
 // OWNED ATTRIBUTES [Element]
 
 const QSet<QObject *> QUmlIntervalObject::ownedComments() const

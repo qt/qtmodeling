@@ -81,10 +81,6 @@ QUmlStructuredClassifier::QUmlStructuredClassifier()
 {
 }
 
-QUmlStructuredClassifier::~QUmlStructuredClassifier()
-{
-}
-
 QModelingElement *QUmlStructuredClassifier::clone() const
 {
     QUmlStructuredClassifier *c = new QUmlStructuredClassifier;

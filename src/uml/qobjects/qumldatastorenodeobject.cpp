@@ -72,14 +72,6 @@ QUmlDataStoreNodeObject::QUmlDataStoreNodeObject(QUmlDataStoreNode *modelingElem
     setPropertyData();
 }
 
-QUmlDataStoreNodeObject::~QUmlDataStoreNodeObject()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<QUmlDataStoreNode *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
 // OWNED ATTRIBUTES [Element]
 
 const QSet<QObject *> QUmlDataStoreNodeObject::ownedComments() const

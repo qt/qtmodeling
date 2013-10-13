@@ -97,15 +97,6 @@ QUmlFunctionBehavior::QUmlFunctionBehavior(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlFunctionBehaviorObject(this));
 }
 
-QUmlFunctionBehavior::~QUmlFunctionBehavior()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlFunctionBehavior::clone() const
 {
     QUmlFunctionBehavior *c = new QUmlFunctionBehavior;

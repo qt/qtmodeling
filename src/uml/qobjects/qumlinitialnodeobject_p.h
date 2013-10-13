@@ -91,7 +91,6 @@ class Q_UML_EXPORT QUmlInitialNodeObject : public QModelingObject
 
 public:
     Q_INVOKABLE explicit QUmlInitialNodeObject(QUmlInitialNode *modelingElement);
-    virtual ~QUmlInitialNodeObject();
 
     // Owned attributes [Element]
     Q_INVOKABLE const QSet<QObject *> ownedComments() const;

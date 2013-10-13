@@ -70,15 +70,6 @@ QUmlActionExecutionSpecification::QUmlActionExecutionSpecification(bool createQM
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlActionExecutionSpecificationObject(this));
 }
 
-QUmlActionExecutionSpecification::~QUmlActionExecutionSpecification()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlActionExecutionSpecification::clone() const
 {
     QUmlActionExecutionSpecification *c = new QUmlActionExecutionSpecification;

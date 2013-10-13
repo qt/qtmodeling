@@ -67,15 +67,6 @@ QUmlTimeObservation::QUmlTimeObservation(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlTimeObservationObject(this));
 }
 
-QUmlTimeObservation::~QUmlTimeObservation()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlTimeObservation::clone() const
 {
     QUmlTimeObservation *c = new QUmlTimeObservation;

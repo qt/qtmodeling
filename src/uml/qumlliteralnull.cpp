@@ -66,15 +66,6 @@ QUmlLiteralNull::QUmlLiteralNull(bool createQModelingObject)
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlLiteralNullObject(this));
 }
 
-QUmlLiteralNull::~QUmlLiteralNull()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlLiteralNull::clone() const
 {
     QUmlLiteralNull *c = new QUmlLiteralNull;

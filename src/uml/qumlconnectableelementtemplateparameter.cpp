@@ -63,15 +63,6 @@ QUmlConnectableElementTemplateParameter::QUmlConnectableElementTemplateParameter
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlConnectableElementTemplateParameterObject(this));
 }
 
-QUmlConnectableElementTemplateParameter::~QUmlConnectableElementTemplateParameter()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlConnectableElementTemplateParameter::clone() const
 {
     QUmlConnectableElementTemplateParameter *c = new QUmlConnectableElementTemplateParameter;

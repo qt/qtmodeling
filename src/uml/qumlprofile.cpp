@@ -76,15 +76,6 @@ QUmlProfile::QUmlProfile(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlProfileObject(this));
 }
 
-QUmlProfile::~QUmlProfile()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlProfile::clone() const
 {
     QUmlProfile *c = new QUmlProfile;

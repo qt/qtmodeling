@@ -57,7 +57,15 @@ QT_MODULE(QtModeling)
 class Q_MODELING_EXPORT QModelingElement
 {
 public:
-    virtual ~QModelingElement() {}
+    virtual ~QModelingElement()
+    {
+        if (!deletingFromQModelingObject) {
+            if (_qModelingObject)
+                _qModelingObject->setProperty("deletingFromModelingObject", true);
+            delete _qModelingObject;
+        }
+    }
+
     inline QModelingObject *asQModelingObject() { return _qModelingObject; }
 
     bool deletingFromQModelingObject;

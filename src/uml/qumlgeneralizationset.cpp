@@ -70,15 +70,6 @@ QUmlGeneralizationSet::QUmlGeneralizationSet(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlGeneralizationSetObject(this));
 }
 
-QUmlGeneralizationSet::~QUmlGeneralizationSet()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlGeneralizationSet::clone() const
 {
     QUmlGeneralizationSet *c = new QUmlGeneralizationSet;

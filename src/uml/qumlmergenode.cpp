@@ -72,15 +72,6 @@ QUmlMergeNode::QUmlMergeNode(bool createQModelingObject)
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlMergeNodeObject(this));
 }
 
-QUmlMergeNode::~QUmlMergeNode()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlMergeNode::clone() const
 {
     QUmlMergeNode *c = new QUmlMergeNode;

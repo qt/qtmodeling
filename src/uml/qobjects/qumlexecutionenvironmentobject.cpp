@@ -90,14 +90,6 @@ QUmlExecutionEnvironmentObject::QUmlExecutionEnvironmentObject(QUmlExecutionEnvi
     setPropertyData();
 }
 
-QUmlExecutionEnvironmentObject::~QUmlExecutionEnvironmentObject()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<QUmlExecutionEnvironment *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
 // OWNED ATTRIBUTES [Element]
 
 const QSet<QObject *> QUmlExecutionEnvironmentObject::ownedComments() const

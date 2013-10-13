@@ -56,14 +56,6 @@ QUmlClauseObject::QUmlClauseObject(QUmlClause *modelingElement)
     setPropertyData();
 }
 
-QUmlClauseObject::~QUmlClauseObject()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<QUmlClause *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
 // OWNED ATTRIBUTES [Element]
 
 const QSet<QObject *> QUmlClauseObject::ownedComments() const

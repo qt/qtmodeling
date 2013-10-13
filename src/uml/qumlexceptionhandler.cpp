@@ -64,15 +64,6 @@ QUmlExceptionHandler::QUmlExceptionHandler(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlExceptionHandlerObject(this));
 }
 
-QUmlExceptionHandler::~QUmlExceptionHandler()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlExceptionHandler::clone() const
 {
     QUmlExceptionHandler *c = new QUmlExceptionHandler;

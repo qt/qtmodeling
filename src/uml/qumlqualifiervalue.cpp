@@ -62,15 +62,6 @@ QUmlQualifierValue::QUmlQualifierValue(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlQualifierValueObject(this));
 }
 
-QUmlQualifierValue::~QUmlQualifierValue()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlQualifierValue::clone() const
 {
     QUmlQualifierValue *c = new QUmlQualifierValue;

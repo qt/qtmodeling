@@ -72,14 +72,6 @@ QUmlCentralBufferNodeObject::QUmlCentralBufferNodeObject(QUmlCentralBufferNode *
     setPropertyData();
 }
 
-QUmlCentralBufferNodeObject::~QUmlCentralBufferNodeObject()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<QUmlCentralBufferNode *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
 // OWNED ATTRIBUTES [Element]
 
 const QSet<QObject *> QUmlCentralBufferNodeObject::ownedComments() const

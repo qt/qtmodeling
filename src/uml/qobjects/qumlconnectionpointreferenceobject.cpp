@@ -64,14 +64,6 @@ QUmlConnectionPointReferenceObject::QUmlConnectionPointReferenceObject(QUmlConne
     setPropertyData();
 }
 
-QUmlConnectionPointReferenceObject::~QUmlConnectionPointReferenceObject()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<QUmlConnectionPointReference *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
 // OWNED ATTRIBUTES [Element]
 
 const QSet<QObject *> QUmlConnectionPointReferenceObject::ownedComments() const

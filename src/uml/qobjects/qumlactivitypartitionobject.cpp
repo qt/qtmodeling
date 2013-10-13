@@ -63,14 +63,6 @@ QUmlActivityPartitionObject::QUmlActivityPartitionObject(QUmlActivityPartition *
     setPropertyData();
 }
 
-QUmlActivityPartitionObject::~QUmlActivityPartitionObject()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<QUmlActivityPartition *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
 // OWNED ATTRIBUTES [Element]
 
 const QSet<QObject *> QUmlActivityPartitionObject::ownedComments() const

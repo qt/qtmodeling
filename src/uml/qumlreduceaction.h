@@ -59,7 +59,6 @@ class Q_UML_EXPORT QUmlReduceAction : public QUmlAction
 {
 public:
     explicit QUmlReduceAction(bool createQModelingObject = true);
-    virtual ~QUmlReduceAction();
 
     virtual QModelingElement *clone() const;
 

@@ -57,7 +57,6 @@ class Q_UML_EXPORT QUmlActionInputPin : public QUmlInputPin
 {
 public:
     explicit QUmlActionInputPin(bool createQModelingObject = true);
-    virtual ~QUmlActionInputPin();
 
     virtual QModelingElement *clone() const;
 

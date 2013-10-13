@@ -62,14 +62,6 @@ QUmlInteractionConstraintObject::QUmlInteractionConstraintObject(QUmlInteraction
     setPropertyData();
 }
 
-QUmlInteractionConstraintObject::~QUmlInteractionConstraintObject()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<QUmlInteractionConstraint *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
 // OWNED ATTRIBUTES [Element]
 
 const QSet<QObject *> QUmlInteractionConstraintObject::ownedComments() const

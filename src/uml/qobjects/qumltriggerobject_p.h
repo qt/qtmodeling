@@ -80,7 +80,6 @@ class Q_UML_EXPORT QUmlTriggerObject : public QModelingObject
 
 public:
     Q_INVOKABLE explicit QUmlTriggerObject(QUmlTrigger *modelingElement);
-    virtual ~QUmlTriggerObject();
 
     // Owned attributes [Element]
     Q_INVOKABLE const QSet<QObject *> ownedComments() const;

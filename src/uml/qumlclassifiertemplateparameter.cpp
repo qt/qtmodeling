@@ -64,15 +64,6 @@ QUmlClassifierTemplateParameter::QUmlClassifierTemplateParameter(bool createQMod
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlClassifierTemplateParameterObject(this));
 }
 
-QUmlClassifierTemplateParameter::~QUmlClassifierTemplateParameter()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlClassifierTemplateParameter::clone() const
 {
     QUmlClassifierTemplateParameter *c = new QUmlClassifierTemplateParameter;

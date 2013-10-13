@@ -58,7 +58,6 @@ class Q_UML_EXPORT QUmlCollaborationUse : public QUmlNamedElement
 {
 public:
     explicit QUmlCollaborationUse(bool createQModelingObject = true);
-    virtual ~QUmlCollaborationUse();
 
     virtual QModelingElement *clone() const;
 

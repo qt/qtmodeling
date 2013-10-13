@@ -55,7 +55,6 @@ class Q_UML_EXPORT QUmlAnyReceiveEvent : public QUmlMessageEvent
 {
 public:
     explicit QUmlAnyReceiveEvent(bool createQModelingObject = true);
-    virtual ~QUmlAnyReceiveEvent();
 
     virtual QModelingElement *clone() const;
 

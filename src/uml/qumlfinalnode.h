@@ -54,7 +54,6 @@ QT_MODULE(QtUml)
 class Q_UML_EXPORT QUmlFinalNode : public QUmlControlNode
 {
 public:
-    virtual ~QUmlFinalNode();
 
     Q_DECL_HIDDEN virtual QModelingElement *clone() const;
 

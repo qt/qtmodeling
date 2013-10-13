@@ -76,15 +76,6 @@ QUmlCentralBufferNode::QUmlCentralBufferNode(bool createQModelingObject)
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlCentralBufferNodeObject(this));
 }
 
-QUmlCentralBufferNode::~QUmlCentralBufferNode()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlCentralBufferNode::clone() const
 {
     QUmlCentralBufferNode *c = new QUmlCentralBufferNode;

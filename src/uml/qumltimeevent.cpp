@@ -68,15 +68,6 @@ QUmlTimeEvent::QUmlTimeEvent(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlTimeEventObject(this));
 }
 
-QUmlTimeEvent::~QUmlTimeEvent()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlTimeEvent::clone() const
 {
     QUmlTimeEvent *c = new QUmlTimeEvent;

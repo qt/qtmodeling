@@ -72,15 +72,6 @@ QUmlFlowFinalNode::QUmlFlowFinalNode(bool createQModelingObject)
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlFlowFinalNodeObject(this));
 }
 
-QUmlFlowFinalNode::~QUmlFlowFinalNode()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlFlowFinalNode::clone() const
 {
     QUmlFlowFinalNode *c = new QUmlFlowFinalNode;

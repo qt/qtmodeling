@@ -97,14 +97,6 @@ QUmlProtocolStateMachineObject::QUmlProtocolStateMachineObject(QUmlProtocolState
     setPropertyData();
 }
 
-QUmlProtocolStateMachineObject::~QUmlProtocolStateMachineObject()
-{
-    if (!property("deletingFromModelingObject").isValid()) {
-        qmodelingelementproperty_cast<QUmlProtocolStateMachine *>(this)->deletingFromQModelingObject = true;
-        delete qmodelingelementproperty_cast<QUmlComment *>(this);
-    }
-}
-
 // OWNED ATTRIBUTES [Element]
 
 const QSet<QObject *> QUmlProtocolStateMachineObject::ownedComments() const

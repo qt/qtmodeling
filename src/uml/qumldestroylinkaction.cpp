@@ -79,15 +79,6 @@ QUmlDestroyLinkAction::QUmlDestroyLinkAction(bool createQModelingObject)
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlDestroyLinkActionObject(this));
 }
 
-QUmlDestroyLinkAction::~QUmlDestroyLinkAction()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlDestroyLinkAction::clone() const
 {
     QUmlDestroyLinkAction *c = new QUmlDestroyLinkAction;

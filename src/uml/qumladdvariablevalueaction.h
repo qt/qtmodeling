@@ -57,7 +57,6 @@ class Q_UML_EXPORT QUmlAddVariableValueAction : public QUmlWriteVariableAction
 {
 public:
     explicit QUmlAddVariableValueAction(bool createQModelingObject = true);
-    virtual ~QUmlAddVariableValueAction();
 
     virtual QModelingElement *clone() const;
 

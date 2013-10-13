@@ -62,10 +62,6 @@ QUmlPackageableElement::QUmlPackageableElement() :
 {
 }
 
-QUmlPackageableElement::~QUmlPackageableElement()
-{
-}
-
 QModelingElement *QUmlPackageableElement::clone() const
 {
     QUmlPackageableElement *c = new QUmlPackageableElement;

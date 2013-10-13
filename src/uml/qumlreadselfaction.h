@@ -57,7 +57,6 @@ class Q_UML_EXPORT QUmlReadSelfAction : public QUmlAction
 {
 public:
     explicit QUmlReadSelfAction(bool createQModelingObject = true);
-    virtual ~QUmlReadSelfAction();
 
     virtual QModelingElement *clone() const;
 

@@ -72,15 +72,6 @@ QUmlInitialNode::QUmlInitialNode(bool createQModelingObject)
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlInitialNodeObject(this));
 }
 
-QUmlInitialNode::~QUmlInitialNode()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlInitialNode::clone() const
 {
     QUmlInitialNode *c = new QUmlInitialNode;

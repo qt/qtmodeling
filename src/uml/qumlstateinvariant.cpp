@@ -70,15 +70,6 @@ QUmlStateInvariant::QUmlStateInvariant(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlStateInvariantObject(this));
 }
 
-QUmlStateInvariant::~QUmlStateInvariant()
-{
-    if (!deletingFromQModelingObject) {
-        if (_qModelingObject)
-            _qModelingObject->setProperty("deletingFromModelingObject", true);
-        delete _qModelingObject;
-    }
-}
-
 QModelingElement *QUmlStateInvariant::clone() const
 {
     QUmlStateInvariant *c = new QUmlStateInvariant;

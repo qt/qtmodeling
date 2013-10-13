@@ -88,7 +88,6 @@ class Q_UML_EXPORT QUmlLiteralIntegerObject : public QModelingObject
 
 public:
     Q_INVOKABLE explicit QUmlLiteralIntegerObject(QUmlLiteralInteger *modelingElement);
-    virtual ~QUmlLiteralIntegerObject();
 
     // Owned attributes [Element]
     Q_INVOKABLE const QSet<QObject *> ownedComments() const;

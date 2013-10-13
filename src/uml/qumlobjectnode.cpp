@@ -76,10 +76,6 @@ QUmlObjectNode::QUmlObjectNode() :
 {
 }
 
-QUmlObjectNode::~QUmlObjectNode()
-{
-}
-
 QModelingElement *QUmlObjectNode::clone() const
 {
     QUmlObjectNode *c = new QUmlObjectNode;
