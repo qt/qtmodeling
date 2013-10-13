@@ -164,7 +164,7 @@ void QMofBehavioralFeature::removeRaisedException(QMofType *raisedException)
  */
 bool QMofBehavioralFeature::isDistinguishableFrom(QMofNamedElement *n, QMofNamespace *ns) const
 {
-    qWarning("MofBehavioralFeature::isDistinguishableFrom(): to be implemented (operation)");
+    qWarning("QMofBehavioralFeature::isDistinguishableFrom(): to be implemented (operation)");
 
     Q_UNUSED(n);
     Q_UNUSED(ns);

@@ -49,8 +49,6 @@
     \class QMofLink
 
     \inmodule QtMof
-
-    \brief
  */
 QMofLink::QMofLink(bool createQModelingObject) :
     QMofObject(false),
@@ -137,7 +135,7 @@ void QMofLink::setAssociation(QMofAssociation *association)
 
 bool QMofLink::equals(QMofLink *otherLink) const
 {
-    qWarning("MofLink::equals(): to be implemented (operation)");
+    qWarning("QMofLink::equals(): to be implemented (operation)");
 
     Q_UNUSED(otherLink);
     return bool ();
@@ -145,7 +143,7 @@ bool QMofLink::equals(QMofLink *otherLink) const
 
 void QMofLink::delete_()
 {
-    qWarning("MofLink::delete(): to be implemented (operation)");
+    qWarning("QMofLink::delete(): to be implemented (operation)");
 
 }
 

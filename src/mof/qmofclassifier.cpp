@@ -183,7 +183,7 @@ const QSet<QMofClassifier *> QMofClassifier::generals() const
 {
     // This is a read-write derived association end
 
-    qWarning("MofClassifier::generals(): to be implemented (this is a derived association end)");
+    qWarning("QMofClassifier::generals(): to be implemented (this is a derived association end)");
 
     return QSet<QMofClassifier *>();
 }
@@ -192,7 +192,7 @@ void QMofClassifier::addGeneral(QMofClassifier *general)
 {
     // This is a read-write derived association end
 
-    qWarning("MofClassifier::addGeneral(): to be implemented (this is a derived association end)");
+    qWarning("QMofClassifier::addGeneral(): to be implemented (this is a derived association end)");
     Q_UNUSED(general);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -204,7 +204,7 @@ void QMofClassifier::removeGeneral(QMofClassifier *general)
 {
     // This is a read-write derived association end
 
-    qWarning("MofClassifier::removeGeneral(): to be implemented (this is a derived association end)");
+    qWarning("QMofClassifier::removeGeneral(): to be implemented (this is a derived association end)");
     Q_UNUSED(general);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -268,7 +268,7 @@ const QSet<QMofNamedElement *> QMofClassifier::inheritedMembers() const
 {
     // This is a read-only derived association end
 
-    qWarning("MofClassifier::inheritedMembers(): to be implemented (this is a derived association end)");
+    qWarning("QMofClassifier::inheritedMembers(): to be implemented (this is a derived association end)");
 
     return QSet<QMofNamedElement *>();
 }
@@ -277,7 +277,7 @@ void QMofClassifier::addInheritedMember(QMofNamedElement *inheritedMember)
 {
     // This is a read-only derived association end
 
-    qWarning("MofClassifier::addInheritedMember(): to be implemented (this is a derived association end)");
+    qWarning("QMofClassifier::addInheritedMember(): to be implemented (this is a derived association end)");
     Q_UNUSED(inheritedMember);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -292,7 +292,7 @@ void QMofClassifier::removeInheritedMember(QMofNamedElement *inheritedMember)
 {
     // This is a read-only derived association end
 
-    qWarning("MofClassifier::removeInheritedMember(): to be implemented (this is a derived association end)");
+    qWarning("QMofClassifier::removeInheritedMember(): to be implemented (this is a derived association end)");
     Q_UNUSED(inheritedMember);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -386,7 +386,7 @@ void QMofClassifier::removeRedefinedClassifier(QMofClassifier *redefinedClassifi
  */
 QSet<QMofFeature *> QMofClassifier::allFeatures() const
 {
-    qWarning("MofClassifier::allFeatures(): to be implemented (operation)");
+    qWarning("QMofClassifier::allFeatures(): to be implemented (operation)");
 
     return QSet<QMofFeature *> ();
 }
@@ -396,7 +396,7 @@ QSet<QMofFeature *> QMofClassifier::allFeatures() const
  */
 QSet<QMofClassifier *> QMofClassifier::allParents() const
 {
-    qWarning("MofClassifier::allParents(): to be implemented (operation)");
+    qWarning("QMofClassifier::allParents(): to be implemented (operation)");
 
     return QSet<QMofClassifier *> ();
 }
@@ -406,7 +406,7 @@ QSet<QMofClassifier *> QMofClassifier::allParents() const
  */
 bool QMofClassifier::conformsTo(QMofClassifier *other) const
 {
-    qWarning("MofClassifier::conformsTo(): to be implemented (operation)");
+    qWarning("QMofClassifier::conformsTo(): to be implemented (operation)");
 
     Q_UNUSED(other);
     return bool ();
@@ -417,7 +417,7 @@ bool QMofClassifier::conformsTo(QMofClassifier *other) const
  */
 bool QMofClassifier::hasVisibilityOf(QMofNamedElement *n) const
 {
-    qWarning("MofClassifier::hasVisibilityOf(): to be implemented (operation)");
+    qWarning("QMofClassifier::hasVisibilityOf(): to be implemented (operation)");
 
     Q_UNUSED(n);
     return bool ();
@@ -428,7 +428,7 @@ bool QMofClassifier::hasVisibilityOf(QMofNamedElement *n) const
  */
 QSet<QMofNamedElement *> QMofClassifier::inherit(QSet<QMofNamedElement *> inhs) const
 {
-    qWarning("MofClassifier::inherit(): to be implemented (operation)");
+    qWarning("QMofClassifier::inherit(): to be implemented (operation)");
 
     Q_UNUSED(inhs);
     return QSet<QMofNamedElement *> ();
@@ -439,7 +439,7 @@ QSet<QMofNamedElement *> QMofClassifier::inherit(QSet<QMofNamedElement *> inhs) 
  */
 QSet<QMofNamedElement *> QMofClassifier::inheritableMembers(QMofClassifier *c) const
 {
-    qWarning("MofClassifier::inheritableMembers(): to be implemented (operation)");
+    qWarning("QMofClassifier::inheritableMembers(): to be implemented (operation)");
 
     Q_UNUSED(c);
     return QSet<QMofNamedElement *> ();
@@ -450,7 +450,7 @@ QSet<QMofNamedElement *> QMofClassifier::inheritableMembers(QMofClassifier *c) c
  */
 bool QMofClassifier::maySpecializeType(QMofClassifier *c) const
 {
-    qWarning("MofClassifier::maySpecializeType(): to be implemented (operation)");
+    qWarning("QMofClassifier::maySpecializeType(): to be implemented (operation)");
 
     Q_UNUSED(c);
     return bool ();
@@ -461,7 +461,7 @@ bool QMofClassifier::maySpecializeType(QMofClassifier *c) const
  */
 QSet<QMofClassifier *> QMofClassifier::parents() const
 {
-    qWarning("MofClassifier::parents(): to be implemented (operation)");
+    qWarning("QMofClassifier::parents(): to be implemented (operation)");
 
     return QSet<QMofClassifier *> ();
 }

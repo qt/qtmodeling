@@ -92,7 +92,7 @@ QMofEnumeration *QMofEnumerationLiteral::classifier() const
 {
     // This is a read-only derived association end
 
-    qWarning("MofEnumerationLiteral::classifier(): to be implemented (this is a derived association end)");
+    qWarning("QMofEnumerationLiteral::classifier(): to be implemented (this is a derived association end)");
 
     return 0;
 }
@@ -101,7 +101,7 @@ void QMofEnumerationLiteral::setClassifier(QMofEnumeration *classifier)
 {
     // This is a read-only derived association end
 
-    qWarning("MofEnumerationLiteral::setClassifier(): to be implemented (this is a derived association end)");
+    qWarning("QMofEnumerationLiteral::setClassifier(): to be implemented (this is a derived association end)");
     Q_UNUSED(classifier);
 
     if (false /* <derivedexclusion-criteria> */) {

@@ -143,7 +143,7 @@ void QMofOpaqueExpression::removeLanguage(QString language)
  */
 bool QMofOpaqueExpression::isIntegral() const
 {
-    qWarning("MofOpaqueExpression::isIntegral(): to be implemented (operation)");
+    qWarning("QMofOpaqueExpression::isIntegral(): to be implemented (operation)");
 
     return bool ();
 }
@@ -153,7 +153,7 @@ bool QMofOpaqueExpression::isIntegral() const
  */
 bool QMofOpaqueExpression::isNonNegative() const
 {
-    qWarning("MofOpaqueExpression::isNonNegative(): to be implemented (operation)");
+    qWarning("QMofOpaqueExpression::isNonNegative(): to be implemented (operation)");
 
     return bool ();
 }
@@ -163,7 +163,7 @@ bool QMofOpaqueExpression::isNonNegative() const
  */
 bool QMofOpaqueExpression::isPositive() const
 {
-    qWarning("MofOpaqueExpression::isPositive(): to be implemented (operation)");
+    qWarning("QMofOpaqueExpression::isPositive(): to be implemented (operation)");
 
     return bool ();
 }
@@ -173,7 +173,7 @@ bool QMofOpaqueExpression::isPositive() const
  */
 int QMofOpaqueExpression::value() const
 {
-    qWarning("MofOpaqueExpression::value(): to be implemented (operation)");
+    qWarning("QMofOpaqueExpression::value(): to be implemented (operation)");
 
     return int ();
 }

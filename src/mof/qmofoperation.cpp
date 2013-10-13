@@ -216,7 +216,7 @@ bool QMofOperation::isOrdered() const
 {
     // This is a read-only derived property
 
-    qWarning("MofOperation::isOrdered(): to be implemented (this is a derived property)");
+    qWarning("QMofOperation::isOrdered(): to be implemented (this is a derived property)");
 
     return bool();
 }
@@ -225,7 +225,7 @@ void QMofOperation::setOrdered(bool isOrdered)
 {
     // This is a read-only derived property
 
-    qWarning("MofOperation::setOrdered(): to be implemented (this is a derived property)");
+    qWarning("QMofOperation::setOrdered(): to be implemented (this is a derived property)");
     Q_UNUSED(isOrdered);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -260,7 +260,7 @@ bool QMofOperation::isUnique() const
 {
     // This is a read-only derived property
 
-    qWarning("MofOperation::isUnique(): to be implemented (this is a derived property)");
+    qWarning("QMofOperation::isUnique(): to be implemented (this is a derived property)");
 
     return bool();
 }
@@ -269,7 +269,7 @@ void QMofOperation::setUnique(bool isUnique)
 {
     // This is a read-only derived property
 
-    qWarning("MofOperation::setUnique(): to be implemented (this is a derived property)");
+    qWarning("QMofOperation::setUnique(): to be implemented (this is a derived property)");
     Q_UNUSED(isUnique);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -284,7 +284,7 @@ int QMofOperation::lower() const
 {
     // This is a read-only derived property
 
-    qWarning("MofOperation::lower(): to be implemented (this is a derived property)");
+    qWarning("QMofOperation::lower(): to be implemented (this is a derived property)");
 
     return int();
 }
@@ -293,7 +293,7 @@ void QMofOperation::setLower(int lower)
 {
     // This is a read-only derived property
 
-    qWarning("MofOperation::setLower(): to be implemented (this is a derived property)");
+    qWarning("QMofOperation::setLower(): to be implemented (this is a derived property)");
     Q_UNUSED(lower);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -495,7 +495,7 @@ QMofType *QMofOperation::type() const
 {
     // This is a read-only derived association end
 
-    qWarning("MofOperation::type(): to be implemented (this is a derived association end)");
+    qWarning("QMofOperation::type(): to be implemented (this is a derived association end)");
 
     return 0;
 }
@@ -504,7 +504,7 @@ void QMofOperation::setType(QMofType *type)
 {
     // This is a read-only derived association end
 
-    qWarning("MofOperation::setType(): to be implemented (this is a derived association end)");
+    qWarning("QMofOperation::setType(): to be implemented (this is a derived association end)");
     Q_UNUSED(type);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -519,7 +519,7 @@ int QMofOperation::upper() const
 {
     // This is a read-only derived property
 
-    qWarning("MofOperation::upper(): to be implemented (this is a derived property)");
+    qWarning("QMofOperation::upper(): to be implemented (this is a derived property)");
 
     return int();
 }
@@ -528,7 +528,7 @@ void QMofOperation::setUpper(int upper)
 {
     // This is a read-only derived property
 
-    qWarning("MofOperation::setUpper(): to be implemented (this is a derived property)");
+    qWarning("QMofOperation::setUpper(): to be implemented (this is a derived property)");
     Q_UNUSED(upper);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -543,7 +543,7 @@ void QMofOperation::setUpper(int upper)
  */
 bool QMofOperation::isConsistentWith(QMofRedefinableElement *redefinee) const
 {
-    qWarning("MofOperation::isConsistentWith(): to be implemented (operation)");
+    qWarning("QMofOperation::isConsistentWith(): to be implemented (operation)");
 
     Q_UNUSED(redefinee);
     return bool ();
@@ -554,7 +554,7 @@ bool QMofOperation::isConsistentWith(QMofRedefinableElement *redefinee) const
  */
 QSet<QMofParameter *> QMofOperation::returnResult() const
 {
-    qWarning("MofOperation::returnResult(): to be implemented (operation)");
+    qWarning("QMofOperation::returnResult(): to be implemented (operation)");
 
     return QSet<QMofParameter *> ();
 }

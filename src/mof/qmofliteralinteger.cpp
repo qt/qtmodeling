@@ -105,7 +105,7 @@ void QMofLiteralInteger::setValue(int value)
  */
 int QMofLiteralInteger::integerValue() const
 {
-    qWarning("MofLiteralInteger::integerValue(): to be implemented (operation)");
+    qWarning("QMofLiteralInteger::integerValue(): to be implemented (operation)");
 
     return int ();
 }
@@ -115,7 +115,7 @@ int QMofLiteralInteger::integerValue() const
  */
 bool QMofLiteralInteger::isComputable() const
 {
-    qWarning("MofLiteralInteger::isComputable(): to be implemented (operation)");
+    qWarning("QMofLiteralInteger::isComputable(): to be implemented (operation)");
 
     return bool ();
 }

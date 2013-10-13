@@ -48,8 +48,6 @@
     \class QMofReflectiveSequence
 
     \inmodule QtMof
-
-    \brief
  */
 QMofReflectiveSequence::QMofReflectiveSequence(bool createQModelingObject) :
     QMofReflectiveCollection(false)
@@ -68,7 +66,7 @@ QModelingElement *QMofReflectiveSequence::clone() const
 
 void QMofReflectiveSequence::add(int index, QMofObject *object)
 {
-    qWarning("MofReflectiveSequence::add(): to be implemented (operation)");
+    qWarning("QMofReflectiveSequence::add(): to be implemented (operation)");
 
     Q_UNUSED(index);
     Q_UNUSED(object);
@@ -76,7 +74,7 @@ void QMofReflectiveSequence::add(int index, QMofObject *object)
 
 QMofObject *QMofReflectiveSequence::get(int index) const
 {
-    qWarning("MofReflectiveSequence::get(): to be implemented (operation)");
+    qWarning("QMofReflectiveSequence::get(): to be implemented (operation)");
 
     Q_UNUSED(index);
     return 0;
@@ -84,7 +82,7 @@ QMofObject *QMofReflectiveSequence::get(int index) const
 
 QMofObject *QMofReflectiveSequence::remove(int index)
 {
-    qWarning("MofReflectiveSequence::remove(): to be implemented (operation)");
+    qWarning("QMofReflectiveSequence::remove(): to be implemented (operation)");
 
     Q_UNUSED(index);
     return 0;
@@ -92,7 +90,7 @@ QMofObject *QMofReflectiveSequence::remove(int index)
 
 QMofObject *QMofReflectiveSequence::set(int index, QMofObject *object)
 {
-    qWarning("MofReflectiveSequence::set(): to be implemented (operation)");
+    qWarning("QMofReflectiveSequence::set(): to be implemented (operation)");
 
     Q_UNUSED(index);
     Q_UNUSED(object);

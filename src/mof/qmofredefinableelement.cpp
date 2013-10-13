@@ -158,7 +158,7 @@ void QMofRedefinableElement::removeRedefinitionContext(QMofClassifier *redefinit
  */
 bool QMofRedefinableElement::isConsistentWith(QMofRedefinableElement *redefinee) const
 {
-    qWarning("MofRedefinableElement::isConsistentWith(): to be implemented (operation)");
+    qWarning("QMofRedefinableElement::isConsistentWith(): to be implemented (operation)");
 
     Q_UNUSED(redefinee);
     return bool ();
@@ -169,7 +169,7 @@ bool QMofRedefinableElement::isConsistentWith(QMofRedefinableElement *redefinee)
  */
 bool QMofRedefinableElement::isRedefinitionContextValid(QMofRedefinableElement *redefined) const
 {
-    qWarning("MofRedefinableElement::isRedefinitionContextValid(): to be implemented (operation)");
+    qWarning("QMofRedefinableElement::isRedefinitionContextValid(): to be implemented (operation)");
 
     Q_UNUSED(redefined);
     return bool ();

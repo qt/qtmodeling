@@ -99,7 +99,7 @@ QString QMofParameter::default_() const
 {
     // This is a read-only derived property
 
-    qWarning("MofParameter::default_(): to be implemented (this is a derived property)");
+    qWarning("QMofParameter::default_(): to be implemented (this is a derived property)");
 
     return QString();
 }
@@ -108,7 +108,7 @@ void QMofParameter::setDefault(QString default_)
 {
     // This is a read-only derived property
 
-    qWarning("MofParameter::setDefault(): to be implemented (this is a derived property)");
+    qWarning("QMofParameter::setDefault(): to be implemented (this is a derived property)");
     Q_UNUSED(default_);
 
     if (false /* <derivedexclusion-criteria> */) {

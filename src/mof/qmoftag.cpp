@@ -46,8 +46,6 @@
     \class QMofTag
 
     \inmodule QtMof
-
-    \brief
  */
 QMofTag::QMofTag(bool createQModelingObject) :
     _tagOwner(0)

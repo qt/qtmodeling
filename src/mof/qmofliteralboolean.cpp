@@ -105,7 +105,7 @@ void QMofLiteralBoolean::setValue(bool value)
  */
 bool QMofLiteralBoolean::booleanValue() const
 {
-    qWarning("MofLiteralBoolean::booleanValue(): to be implemented (operation)");
+    qWarning("QMofLiteralBoolean::booleanValue(): to be implemented (operation)");
 
     return bool ();
 }
@@ -115,7 +115,7 @@ bool QMofLiteralBoolean::booleanValue() const
  */
 bool QMofLiteralBoolean::isComputable() const
 {
-    qWarning("MofLiteralBoolean::isComputable(): to be implemented (operation)");
+    qWarning("QMofLiteralBoolean::isComputable(): to be implemented (operation)");
 
     return bool ();
 }

@@ -148,7 +148,7 @@ void QMofNamespace::addImportedMember(QMofPackageableElement *importedMember)
 {
     // This is a read-only derived association end
 
-    qWarning("MofNamespace::addImportedMember(): to be implemented (this is a derived association end)");
+    qWarning("QMofNamespace::addImportedMember(): to be implemented (this is a derived association end)");
     Q_UNUSED(importedMember);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -163,7 +163,7 @@ void QMofNamespace::removeImportedMember(QMofPackageableElement *importedMember)
 {
     // This is a read-only derived association end
 
-    qWarning("MofNamespace::removeImportedMember(): to be implemented (this is a derived association end)");
+    qWarning("QMofNamespace::removeImportedMember(): to be implemented (this is a derived association end)");
     Q_UNUSED(importedMember);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -360,7 +360,7 @@ void QMofNamespace::removePackageImport(QMofPackageImport *packageImport)
  */
 QSet<QMofPackageableElement *> QMofNamespace::excludeCollisions(QMofPackageableElement *imps) const
 {
-    qWarning("MofNamespace::excludeCollisions(): to be implemented (operation)");
+    qWarning("QMofNamespace::excludeCollisions(): to be implemented (operation)");
 
     Q_UNUSED(imps);
     return QSet<QMofPackageableElement *> ();
@@ -371,7 +371,7 @@ QSet<QMofPackageableElement *> QMofNamespace::excludeCollisions(QMofPackageableE
  */
 QSet<QString> QMofNamespace::getNamesOfMember(QMofNamedElement *element) const
 {
-    qWarning("MofNamespace::getNamesOfMember(): to be implemented (operation)");
+    qWarning("QMofNamespace::getNamesOfMember(): to be implemented (operation)");
 
     Q_UNUSED(element);
     return QSet<QString> ();
@@ -382,7 +382,7 @@ QSet<QString> QMofNamespace::getNamesOfMember(QMofNamedElement *element) const
  */
 QSet<QMofPackageableElement *> QMofNamespace::importMembers(QMofPackageableElement *imps) const
 {
-    qWarning("MofNamespace::importMembers(): to be implemented (operation)");
+    qWarning("QMofNamespace::importMembers(): to be implemented (operation)");
 
     Q_UNUSED(imps);
     return QSet<QMofPackageableElement *> ();
@@ -393,7 +393,7 @@ QSet<QMofPackageableElement *> QMofNamespace::importMembers(QMofPackageableEleme
  */
 bool QMofNamespace::membersAreDistinguishable() const
 {
-    qWarning("MofNamespace::membersAreDistinguishable(): to be implemented (operation)");
+    qWarning("QMofNamespace::membersAreDistinguishable(): to be implemented (operation)");
 
     return bool ();
 }

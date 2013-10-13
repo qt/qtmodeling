@@ -274,7 +274,7 @@ const QSet<QMofClass *> QMofClass::superClasses() const
 {
     // This is a read-write derived association end
 
-    qWarning("MofClass::superClasses(): to be implemented (this is a derived association end)");
+    qWarning("QMofClass::superClasses(): to be implemented (this is a derived association end)");
 
     return QSet<QMofClass *>();
 }
@@ -283,7 +283,7 @@ void QMofClass::addSuperClass(QMofClass *superClass)
 {
     // This is a read-write derived association end
 
-    qWarning("MofClass::addSuperClass(): to be implemented (this is a derived association end)");
+    qWarning("QMofClass::addSuperClass(): to be implemented (this is a derived association end)");
     Q_UNUSED(superClass);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -295,7 +295,7 @@ void QMofClass::removeSuperClass(QMofClass *superClass)
 {
     // This is a read-write derived association end
 
-    qWarning("MofClass::removeSuperClass(): to be implemented (this is a derived association end)");
+    qWarning("QMofClass::removeSuperClass(): to be implemented (this is a derived association end)");
     Q_UNUSED(superClass);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -310,7 +310,7 @@ void QMofClass::removeSuperClass(QMofClass *superClass)
  */
 QSet<QMofNamedElement *> QMofClass::inherit(QSet<QMofNamedElement *> inhs) const
 {
-    qWarning("MofClass::inherit(): to be implemented (operation)");
+    qWarning("QMofClass::inherit(): to be implemented (operation)");
 
     Q_UNUSED(inhs);
     return QSet<QMofNamedElement *> ();

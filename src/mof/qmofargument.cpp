@@ -48,8 +48,6 @@
     \class QMofArgument
 
     \inmodule QtMof
-
-    \brief
  */
 QMofArgument::QMofArgument(bool createQModelingObject) :
     _value(0)

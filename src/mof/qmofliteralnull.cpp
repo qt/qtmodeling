@@ -81,7 +81,7 @@ QModelingElement *QMofLiteralNull::clone() const
  */
 bool QMofLiteralNull::isComputable() const
 {
-    qWarning("MofLiteralNull::isComputable(): to be implemented (operation)");
+    qWarning("QMofLiteralNull::isComputable(): to be implemented (operation)");
 
     return bool ();
 }
@@ -91,7 +91,7 @@ bool QMofLiteralNull::isComputable() const
  */
 bool QMofLiteralNull::isNull() const
 {
-    qWarning("MofLiteralNull::isNull(): to be implemented (operation)");
+    qWarning("QMofLiteralNull::isNull(): to be implemented (operation)");
 
     return bool ();
 }

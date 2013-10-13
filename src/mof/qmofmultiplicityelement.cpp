@@ -122,7 +122,7 @@ int QMofMultiplicityElement::lower() const
 {
     // This is a read-write derived property
 
-    qWarning("MofMultiplicityElement::lower(): to be implemented (this is a derived property)");
+    qWarning("QMofMultiplicityElement::lower(): to be implemented (this is a derived property)");
 
     return int();
 }
@@ -131,7 +131,7 @@ void QMofMultiplicityElement::setLower(int lower)
 {
     // This is a read-write derived property
 
-    qWarning("MofMultiplicityElement::setLower(): to be implemented (this is a derived property)");
+    qWarning("QMofMultiplicityElement::setLower(): to be implemented (this is a derived property)");
     Q_UNUSED(lower);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -176,7 +176,7 @@ int QMofMultiplicityElement::upper() const
 {
     // This is a read-write derived property
 
-    qWarning("MofMultiplicityElement::upper(): to be implemented (this is a derived property)");
+    qWarning("QMofMultiplicityElement::upper(): to be implemented (this is a derived property)");
 
     return int();
 }
@@ -185,7 +185,7 @@ void QMofMultiplicityElement::setUpper(int upper)
 {
     // This is a read-write derived property
 
-    qWarning("MofMultiplicityElement::setUpper(): to be implemented (this is a derived property)");
+    qWarning("QMofMultiplicityElement::setUpper(): to be implemented (this is a derived property)");
     Q_UNUSED(upper);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -230,7 +230,7 @@ void QMofMultiplicityElement::setUpperValue(QMofValueSpecification *upperValue)
  */
 bool QMofMultiplicityElement::includesCardinality(int C) const
 {
-    qWarning("MofMultiplicityElement::includesCardinality(): to be implemented (operation)");
+    qWarning("QMofMultiplicityElement::includesCardinality(): to be implemented (operation)");
 
     Q_UNUSED(C);
     return bool ();
@@ -241,7 +241,7 @@ bool QMofMultiplicityElement::includesCardinality(int C) const
  */
 bool QMofMultiplicityElement::includesMultiplicity(QMofMultiplicityElement *M) const
 {
-    qWarning("MofMultiplicityElement::includesMultiplicity(): to be implemented (operation)");
+    qWarning("QMofMultiplicityElement::includesMultiplicity(): to be implemented (operation)");
 
     Q_UNUSED(M);
     return bool ();
@@ -252,7 +252,7 @@ bool QMofMultiplicityElement::includesMultiplicity(QMofMultiplicityElement *M) c
  */
 bool QMofMultiplicityElement::isMultivalued() const
 {
-    qWarning("MofMultiplicityElement::isMultivalued(): to be implemented (operation)");
+    qWarning("QMofMultiplicityElement::isMultivalued(): to be implemented (operation)");
 
     return bool ();
 }
@@ -262,7 +262,7 @@ bool QMofMultiplicityElement::isMultivalued() const
  */
 int QMofMultiplicityElement::lowerBound() const
 {
-    qWarning("MofMultiplicityElement::lowerBound(): to be implemented (operation)");
+    qWarning("QMofMultiplicityElement::lowerBound(): to be implemented (operation)");
 
     return int ();
 }
@@ -272,7 +272,7 @@ int QMofMultiplicityElement::lowerBound() const
  */
 int QMofMultiplicityElement::upperBound() const
 {
-    qWarning("MofMultiplicityElement::upperBound(): to be implemented (operation)");
+    qWarning("QMofMultiplicityElement::upperBound(): to be implemented (operation)");
 
     return int ();
 }

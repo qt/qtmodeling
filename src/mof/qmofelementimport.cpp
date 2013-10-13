@@ -185,7 +185,7 @@ void QMofElementImport::setVisibility(QtMof::VisibilityKind visibility)
  */
 QString QMofElementImport::getName() const
 {
-    qWarning("MofElementImport::getName(): to be implemented (operation)");
+    qWarning("QMofElementImport::getName(): to be implemented (operation)");
 
     return QString ();
 }

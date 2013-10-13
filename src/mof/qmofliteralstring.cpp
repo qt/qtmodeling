@@ -103,7 +103,7 @@ void QMofLiteralString::setValue(QString value)
  */
 bool QMofLiteralString::isComputable() const
 {
-    qWarning("MofLiteralString::isComputable(): to be implemented (operation)");
+    qWarning("QMofLiteralString::isComputable(): to be implemented (operation)");
 
     return bool ();
 }
@@ -113,7 +113,7 @@ bool QMofLiteralString::isComputable() const
  */
 QString QMofLiteralString::stringValue() const
 {
-    qWarning("MofLiteralString::stringValue(): to be implemented (operation)");
+    qWarning("QMofLiteralString::stringValue(): to be implemented (operation)");
 
     return QString ();
 }

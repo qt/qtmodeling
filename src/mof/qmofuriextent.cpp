@@ -48,8 +48,6 @@
     \class QMofURIExtent
 
     \inmodule QtMof
-
-    \brief
  */
 QMofURIExtent::QMofURIExtent(bool createQModelingObject) :
     QMofExtent(false)
@@ -68,14 +66,14 @@ QModelingElement *QMofURIExtent::clone() const
 
 QString QMofURIExtent::contextURI() const
 {
-    qWarning("MofURIExtent::contextURI(): to be implemented (operation)");
+    qWarning("QMofURIExtent::contextURI(): to be implemented (operation)");
 
     return QString ();
 }
 
 QString QMofURIExtent::uri(QMofElement *object) const
 {
-    qWarning("MofURIExtent::uri(): to be implemented (operation)");
+    qWarning("QMofURIExtent::uri(): to be implemented (operation)");
 
     Q_UNUSED(object);
     return QString ();
@@ -83,7 +81,7 @@ QString QMofURIExtent::uri(QMofElement *object) const
 
 QMofElement *QMofURIExtent::element(QString uri) const
 {
-    qWarning("MofURIExtent::element(): to be implemented (operation)");
+    qWarning("QMofURIExtent::element(): to be implemented (operation)");
 
     Q_UNUSED(uri);
     return 0;

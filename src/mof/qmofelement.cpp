@@ -181,21 +181,21 @@ bool QMofElement::mustBeOwned() const
 
 QMofClass *QMofElement::getMetaClass() const
 {
-    qWarning("MofElement::getMetaClass(): to be implemented (operation)");
+    qWarning("QMofElement::getMetaClass(): to be implemented (operation)");
 
     return 0;
 }
 
 QMofElement *QMofElement::container() const
 {
-    qWarning("MofElement::container(): to be implemented (operation)");
+    qWarning("QMofElement::container(): to be implemented (operation)");
 
     return 0;
 }
 
 bool QMofElement::isInstanceOfType(QMofClass *type, bool includesSubtypes) const
 {
-    qWarning("MofElement::isInstanceOfType(): to be implemented (operation)");
+    qWarning("QMofElement::isInstanceOfType(): to be implemented (operation)");
 
     Q_UNUSED(type);
     Q_UNUSED(includesSubtypes);
@@ -204,7 +204,7 @@ bool QMofElement::isInstanceOfType(QMofClass *type, bool includesSubtypes) const
 
 void QMofElement::delete_()
 {
-    qWarning("MofElement::delete(): to be implemented (operation)");
+    qWarning("QMofElement::delete(): to be implemented (operation)");
 
 }
 

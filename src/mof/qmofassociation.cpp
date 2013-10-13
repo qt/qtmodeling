@@ -114,7 +114,7 @@ const QList<QMofType *> QMofAssociation::endTypes() const
 {
     // This is a read-only derived association end
 
-    qWarning("MofAssociation::endTypes(): to be implemented (this is a derived association end)");
+    qWarning("QMofAssociation::endTypes(): to be implemented (this is a derived association end)");
 
     return QList<QMofType *>();
 }
@@ -123,7 +123,7 @@ void QMofAssociation::addEndType(QMofType *endType)
 {
     // This is a read-only derived association end
 
-    qWarning("MofAssociation::addEndType(): to be implemented (this is a derived association end)");
+    qWarning("QMofAssociation::addEndType(): to be implemented (this is a derived association end)");
     Q_UNUSED(endType);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -138,7 +138,7 @@ void QMofAssociation::removeEndType(QMofType *endType)
 {
     // This is a read-only derived association end
 
-    qWarning("MofAssociation::removeEndType(): to be implemented (this is a derived association end)");
+    qWarning("QMofAssociation::removeEndType(): to be implemented (this is a derived association end)");
     Q_UNUSED(endType);
 
     if (false /* <derivedexclusion-criteria> */) {

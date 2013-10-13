@@ -219,7 +219,7 @@ QString QMofProperty::default_() const
 {
     // This is a read-write derived property
 
-    qWarning("MofProperty::default_(): to be implemented (this is a derived property)");
+    qWarning("QMofProperty::default_(): to be implemented (this is a derived property)");
 
     return QString();
 }
@@ -228,7 +228,7 @@ void QMofProperty::setDefault(QString default_)
 {
     // This is a read-write derived property
 
-    qWarning("MofProperty::setDefault(): to be implemented (this is a derived property)");
+    qWarning("QMofProperty::setDefault(): to be implemented (this is a derived property)");
     Q_UNUSED(default_);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -273,7 +273,7 @@ bool QMofProperty::isComposite() const
 {
     // This is a read-write derived property
 
-    qWarning("MofProperty::isComposite(): to be implemented (this is a derived property)");
+    qWarning("QMofProperty::isComposite(): to be implemented (this is a derived property)");
 
     return bool();
 }
@@ -282,7 +282,7 @@ void QMofProperty::setComposite(bool isComposite)
 {
     // This is a read-write derived property
 
-    qWarning("MofProperty::setComposite(): to be implemented (this is a derived property)");
+    qWarning("QMofProperty::setComposite(): to be implemented (this is a derived property)");
     Q_UNUSED(isComposite);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -377,7 +377,7 @@ QMofProperty *QMofProperty::opposite() const
 {
     // This is a read-write derived association end
 
-    qWarning("MofProperty::opposite(): to be implemented (this is a derived association end)");
+    qWarning("QMofProperty::opposite(): to be implemented (this is a derived association end)");
 
     return 0;
 }
@@ -386,7 +386,7 @@ void QMofProperty::setOpposite(QMofProperty *opposite)
 {
     // This is a read-write derived association end
 
-    qWarning("MofProperty::setOpposite(): to be implemented (this is a derived association end)");
+    qWarning("QMofProperty::setOpposite(): to be implemented (this is a derived association end)");
     Q_UNUSED(opposite);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -502,7 +502,7 @@ void QMofProperty::removeSubsettedProperty(QMofProperty *subsettedProperty)
  */
 bool QMofProperty::isAttribute(QMofProperty *p) const
 {
-    qWarning("MofProperty::isAttribute(): to be implemented (operation)");
+    qWarning("QMofProperty::isAttribute(): to be implemented (operation)");
 
     Q_UNUSED(p);
     return bool ();
@@ -513,7 +513,7 @@ bool QMofProperty::isAttribute(QMofProperty *p) const
  */
 bool QMofProperty::isConsistentWith(QMofRedefinableElement *redefinee) const
 {
-    qWarning("MofProperty::isConsistentWith(): to be implemented (operation)");
+    qWarning("QMofProperty::isConsistentWith(): to be implemented (operation)");
 
     Q_UNUSED(redefinee);
     return bool ();
@@ -524,7 +524,7 @@ bool QMofProperty::isConsistentWith(QMofRedefinableElement *redefinee) const
  */
 bool QMofProperty::isNavigable() const
 {
-    qWarning("MofProperty::isNavigable(): to be implemented (operation)");
+    qWarning("QMofProperty::isNavigable(): to be implemented (operation)");
 
     return bool ();
 }
@@ -534,7 +534,7 @@ bool QMofProperty::isNavigable() const
  */
 QSet<QMofType *> QMofProperty::subsettingContext() const
 {
-    qWarning("MofProperty::subsettingContext(): to be implemented (operation)");
+    qWarning("QMofProperty::subsettingContext(): to be implemented (operation)");
 
     return QSet<QMofType *> ();
 }

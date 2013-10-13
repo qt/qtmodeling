@@ -102,7 +102,7 @@ void QMofType::setPackage(QMofPackage *package)
  */
 bool QMofType::conformsTo(QMofType *other) const
 {
-    qWarning("MofType::conformsTo(): to be implemented (operation)");
+    qWarning("QMofType::conformsTo(): to be implemented (operation)");
 
     Q_UNUSED(other);
     return bool ();
@@ -110,7 +110,7 @@ bool QMofType::conformsTo(QMofType *other) const
 
 bool QMofType::isInstance(QMofObject *object) const
 {
-    qWarning("MofType::isInstance(): to be implemented (operation)");
+    qWarning("QMofType::isInstance(): to be implemented (operation)");
 
     Q_UNUSED(object);
     return bool ();

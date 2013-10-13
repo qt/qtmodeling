@@ -48,11 +48,8 @@ QT_BEGIN_NAMESPACE
     AggregationKind is an enumeration type that specifies the literals for defining the kind of aggregation of a property.
 
     \value AggregationKindNone Indicates that the property has no aggregation.
-
     \value AggregationKindShared Indicates that the property has a shared aggregation.
-
-    \value AggregationKindComposite Indicates that the property is aggregated compositely, i.e., the composite object has responsibility for the existence and storage of the composed objects (parts).
- */
+    \value AggregationKindComposite Indicates that the property is aggregated compositely, i.e., the composite object has responsibility for the existence and storage of the composed objects (parts). */
 
 /*!
     \enum QtMof::ParameterDirectionKind
@@ -60,26 +57,13 @@ QT_BEGIN_NAMESPACE
     Parameter direction kind is an enumeration type that defines literals used to specify direction of parameters.
 
     \value ParameterDirectionKindIn Indicates that parameter values are passed into the behavioral element by the caller.
-
     \value ParameterDirectionKindInout Indicates that parameter values are passed into a behavioral element by the caller and then back out to the caller from the behavioral element.
-
-    \value ParameterDirectionKindOut
-
-    \value ParameterDirectionKindReturn Indicates that parameter values are passed as return values from a behavioral element back to the caller.
- */
+    \value ParameterDirectionKindReturn Indicates that parameter values are passed as return values from a behavioral element back to the caller. */
 
 /*!
     \enum QtMof::VisibilityKind
 
     VisibilityKind is an enumeration type that defines literals to determine the visibility of elements in a model.
-
-    \value VisibilityKindPublic
-
-    \value VisibilityKindPrivate
-
-    \value VisibilityKindProtected
-
-    \value VisibilityKindPackage
  */
 QT_END_NAMESPACE
 

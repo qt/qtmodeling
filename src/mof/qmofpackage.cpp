@@ -308,7 +308,7 @@ void QMofPackage::removePackagedElement(QMofPackageableElement *packagedElement)
  */
 bool QMofPackage::makesVisible(QMofNamedElement *el) const
 {
-    qWarning("MofPackage::makesVisible(): to be implemented (operation)");
+    qWarning("QMofPackage::makesVisible(): to be implemented (operation)");
 
     Q_UNUSED(el);
     return bool ();
@@ -319,7 +319,7 @@ bool QMofPackage::makesVisible(QMofNamedElement *el) const
  */
 bool QMofPackage::mustBeOwned() const
 {
-    qWarning("MofPackage::mustBeOwned(): to be implemented (operation)");
+    qWarning("QMofPackage::mustBeOwned(): to be implemented (operation)");
 
     return bool ();
 }
@@ -329,7 +329,7 @@ bool QMofPackage::mustBeOwned() const
  */
 QSet<QMofPackageableElement *> QMofPackage::visibleMembers() const
 {
-    qWarning("MofPackage::visibleMembers(): to be implemented (operation)");
+    qWarning("QMofPackage::visibleMembers(): to be implemented (operation)");
 
     return QSet<QMofPackageableElement *> ();
 }

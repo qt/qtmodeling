@@ -77,7 +77,7 @@ QModelingElement *QMofValueSpecification::clone() const
  */
 bool QMofValueSpecification::booleanValue() const
 {
-    qWarning("MofValueSpecification::booleanValue(): to be implemented (operation)");
+    qWarning("QMofValueSpecification::booleanValue(): to be implemented (operation)");
 
     return bool ();
 }
@@ -87,7 +87,7 @@ bool QMofValueSpecification::booleanValue() const
  */
 int QMofValueSpecification::integerValue() const
 {
-    qWarning("MofValueSpecification::integerValue(): to be implemented (operation)");
+    qWarning("QMofValueSpecification::integerValue(): to be implemented (operation)");
 
     return int ();
 }
@@ -97,7 +97,7 @@ int QMofValueSpecification::integerValue() const
  */
 bool QMofValueSpecification::isComputable() const
 {
-    qWarning("MofValueSpecification::isComputable(): to be implemented (operation)");
+    qWarning("QMofValueSpecification::isComputable(): to be implemented (operation)");
 
     return bool ();
 }
@@ -107,7 +107,7 @@ bool QMofValueSpecification::isComputable() const
  */
 bool QMofValueSpecification::isNull() const
 {
-    qWarning("MofValueSpecification::isNull(): to be implemented (operation)");
+    qWarning("QMofValueSpecification::isNull(): to be implemented (operation)");
 
     return bool ();
 }
@@ -117,7 +117,7 @@ bool QMofValueSpecification::isNull() const
  */
 double QMofValueSpecification::realValue()
 {
-    qWarning("MofValueSpecification::realValue(): to be implemented (operation)");
+    qWarning("QMofValueSpecification::realValue(): to be implemented (operation)");
 
     return double ();
 }
@@ -127,7 +127,7 @@ double QMofValueSpecification::realValue()
  */
 QString QMofValueSpecification::stringValue() const
 {
-    qWarning("MofValueSpecification::stringValue(): to be implemented (operation)");
+    qWarning("QMofValueSpecification::stringValue(): to be implemented (operation)");
 
     return QString ();
 }
@@ -137,7 +137,7 @@ QString QMofValueSpecification::stringValue() const
  */
 int QMofValueSpecification::unlimitedValue() const
 {
-    qWarning("MofValueSpecification::unlimitedValue(): to be implemented (operation)");
+    qWarning("QMofValueSpecification::unlimitedValue(): to be implemented (operation)");
 
     return int ();
 }

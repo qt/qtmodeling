@@ -213,7 +213,7 @@ void QMofDataType::removeOwnedOperation(QMofOperation *ownedOperation)
  */
 QSet<QMofNamedElement *> QMofDataType::inherit(QSet<QMofNamedElement *> inhs) const
 {
-    qWarning("MofDataType::inherit(): to be implemented (operation)");
+    qWarning("QMofDataType::inherit(): to be implemented (operation)");
 
     Q_UNUSED(inhs);
     return QSet<QMofNamedElement *> ();

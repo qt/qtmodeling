@@ -50,8 +50,6 @@
     \class QMofObject
 
     \inmodule QtMof
-
-    \brief
  */
 QMofObject::QMofObject(bool createQModelingObject)
 {
@@ -69,7 +67,7 @@ QModelingElement *QMofObject::clone() const
 
 QMofObject *QMofObject::get(QMofProperty *property) const
 {
-    qWarning("MofObject::get(): to be implemented (operation)");
+    qWarning("QMofObject::get(): to be implemented (operation)");
 
     Q_UNUSED(property);
     return 0;
@@ -77,7 +75,7 @@ QMofObject *QMofObject::get(QMofProperty *property) const
 
 bool QMofObject::equals(QMofObject *element) const
 {
-    qWarning("MofObject::equals(): to be implemented (operation)");
+    qWarning("QMofObject::equals(): to be implemented (operation)");
 
     Q_UNUSED(element);
     return bool ();
@@ -85,7 +83,7 @@ bool QMofObject::equals(QMofObject *element) const
 
 void QMofObject::set(QMofProperty *property, QMofObject *value)
 {
-    qWarning("MofObject::set(): to be implemented (operation)");
+    qWarning("QMofObject::set(): to be implemented (operation)");
 
     Q_UNUSED(property);
     Q_UNUSED(value);
@@ -93,7 +91,7 @@ void QMofObject::set(QMofProperty *property, QMofObject *value)
 
 bool QMofObject::isSet(QMofProperty *property) const
 {
-    qWarning("MofObject::isSet(): to be implemented (operation)");
+    qWarning("QMofObject::isSet(): to be implemented (operation)");
 
     Q_UNUSED(property);
     return bool ();
@@ -101,14 +99,14 @@ bool QMofObject::isSet(QMofProperty *property) const
 
 void QMofObject::unset(QMofProperty *property)
 {
-    qWarning("MofObject::unset(): to be implemented (operation)");
+    qWarning("QMofObject::unset(): to be implemented (operation)");
 
     Q_UNUSED(property);
 }
 
 QMofObject *QMofObject::invoke(QMofOperation *op, QSet<QMofArgument *> arguments)
 {
-    qWarning("MofObject::invoke(): to be implemented (operation)");
+    qWarning("QMofObject::invoke(): to be implemented (operation)");
 
     Q_UNUSED(op);
     Q_UNUSED(arguments);

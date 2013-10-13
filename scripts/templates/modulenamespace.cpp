@@ -51,8 +51,10 @@ QT_BEGIN_NAMESPACE
 
     ${enumeration.findvalue("ownedComment/body/text()")}
 
-    [%- FOREACH literal IN enumeration.findnodes("ownedLiteral") %]
+    [%- FOREACH literal IN enumeration.findnodes("ownedLiteral") -%]
+[%- IF literal.findvalue("ownedComment/body/text()") != "" %]
     \value ${enumerationName}${literal.findvalue("@name").ucfirst} ${literal.findvalue("ownedComment/body/text()")}
+[%- END -%]
 [% END -%]
  */
 [% END -%]

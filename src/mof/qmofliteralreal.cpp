@@ -101,7 +101,7 @@ void QMofLiteralReal::setValue(double value)
  */
 bool QMofLiteralReal::isComputable() const
 {
-    qWarning("MofLiteralReal::isComputable(): to be implemented (operation)");
+    qWarning("QMofLiteralReal::isComputable(): to be implemented (operation)");
 
     return bool ();
 }
@@ -111,7 +111,7 @@ bool QMofLiteralReal::isComputable() const
  */
 double QMofLiteralReal::realValue() const
 {
-    qWarning("MofLiteralReal::realValue(): to be implemented (operation)");
+    qWarning("QMofLiteralReal::realValue(): to be implemented (operation)");
 
     return double ();
 }

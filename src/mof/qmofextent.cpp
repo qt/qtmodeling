@@ -52,8 +52,6 @@
     \class QMofExtent
 
     \inmodule QtMof
-
-    \brief
  */
 QMofExtent::QMofExtent(bool createQModelingObject) :
     QMofObject(false)
@@ -72,21 +70,21 @@ QModelingElement *QMofExtent::clone() const
 
 bool QMofExtent::useContainment() const
 {
-    qWarning("MofExtent::useContainment(): to be implemented (operation)");
+    qWarning("QMofExtent::useContainment(): to be implemented (operation)");
 
     return bool ();
 }
 
 QMofReflectiveSequence *QMofExtent::elements() const
 {
-    qWarning("MofExtent::elements(): to be implemented (operation)");
+    qWarning("QMofExtent::elements(): to be implemented (operation)");
 
     return 0;
 }
 
 QSet<QMofElement *> QMofExtent::elementsOfType(QMofClass *type, bool includesSubtypes) const
 {
-    qWarning("MofExtent::elementsOfType(): to be implemented (operation)");
+    qWarning("QMofExtent::elementsOfType(): to be implemented (operation)");
 
     Q_UNUSED(type);
     Q_UNUSED(includesSubtypes);
@@ -95,7 +93,7 @@ QSet<QMofElement *> QMofExtent::elementsOfType(QMofClass *type, bool includesSub
 
 QSet<QMofLink *> QMofExtent::linksOfType(QMofAssociation *type) const
 {
-    qWarning("MofExtent::linksOfType(): to be implemented (operation)");
+    qWarning("QMofExtent::linksOfType(): to be implemented (operation)");
 
     Q_UNUSED(type);
     return QSet<QMofLink *> ();
@@ -103,7 +101,7 @@ QSet<QMofLink *> QMofExtent::linksOfType(QMofAssociation *type) const
 
 QSet<QMofElement *> QMofExtent::linkedElements(QMofAssociation *association, QMofElement *endElement, bool end1ToEnd2Direction) const
 {
-    qWarning("MofExtent::linkedElements(): to be implemented (operation)");
+    qWarning("QMofExtent::linkedElements(): to be implemented (operation)");
 
     Q_UNUSED(association);
     Q_UNUSED(endElement);
@@ -113,7 +111,7 @@ QSet<QMofElement *> QMofExtent::linkedElements(QMofAssociation *association, QMo
 
 bool QMofExtent::linkExists(QMofAssociation *association, QMofElement *firstElement, QMofElement *secondElement) const
 {
-    qWarning("MofExtent::linkExists(): to be implemented (operation)");
+    qWarning("QMofExtent::linkExists(): to be implemented (operation)");
 
     Q_UNUSED(association);
     Q_UNUSED(firstElement);

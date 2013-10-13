@@ -48,8 +48,6 @@
     \class QMofException
 
     \inmodule QtMof
-
-    \brief
  */
 QMofException::QMofException(bool createQModelingObject) :
     _objectInError(0),

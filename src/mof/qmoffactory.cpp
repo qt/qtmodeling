@@ -54,8 +54,6 @@
     \class QMofFactory
 
     \inmodule QtMof
-
-    \brief
  */
 QMofFactory::QMofFactory(bool createQModelingObject) :
     _package(0)
@@ -97,7 +95,7 @@ void QMofFactory::setPackage(QMofPackage *package)
 
 QMofObject *QMofFactory::createFromString(QMofDataType *dataType, QString string)
 {
-    qWarning("MofFactory::createFromString(): to be implemented (operation)");
+    qWarning("QMofFactory::createFromString(): to be implemented (operation)");
 
     Q_UNUSED(dataType);
     Q_UNUSED(string);
@@ -106,7 +104,7 @@ QMofObject *QMofFactory::createFromString(QMofDataType *dataType, QString string
 
 QString QMofFactory::convertToString(QMofDataType *dataType, QMofObject *object)
 {
-    qWarning("MofFactory::convertToString(): to be implemented (operation)");
+    qWarning("QMofFactory::convertToString(): to be implemented (operation)");
 
     Q_UNUSED(dataType);
     Q_UNUSED(object);
@@ -115,7 +113,7 @@ QString QMofFactory::convertToString(QMofDataType *dataType, QMofObject *object)
 
 QMofElement *QMofFactory::create(QMofClass *metaClass)
 {
-    qWarning("MofFactory::create(): to be implemented (operation)");
+    qWarning("QMofFactory::create(): to be implemented (operation)");
 
     Q_UNUSED(metaClass);
     return 0;
@@ -123,7 +121,7 @@ QMofElement *QMofFactory::create(QMofClass *metaClass)
 
 QMofElement *QMofFactory::createElement(QMofClass *class_, QSet<QMofArgument *> arguments)
 {
-    qWarning("MofFactory::createElement(): to be implemented (operation)");
+    qWarning("QMofFactory::createElement(): to be implemented (operation)");
 
     Q_UNUSED(class_);
     Q_UNUSED(arguments);
@@ -132,7 +130,7 @@ QMofElement *QMofFactory::createElement(QMofClass *class_, QSet<QMofArgument *> 
 
 QMofLink *QMofFactory::createLink(QMofAssociation *association, QMofElement *firstElement, QMofElement *secondElement)
 {
-    qWarning("MofFactory::createLink(): to be implemented (operation)");
+    qWarning("QMofFactory::createLink(): to be implemented (operation)");
 
     Q_UNUSED(association);
     Q_UNUSED(firstElement);

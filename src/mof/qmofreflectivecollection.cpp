@@ -46,8 +46,6 @@
     \class QMofReflectiveCollection
 
     \inmodule QtMof
-
-    \brief
  */
 QMofReflectiveCollection::QMofReflectiveCollection(bool createQModelingObject) :
     QMofObject(false)
@@ -66,7 +64,7 @@ QModelingElement *QMofReflectiveCollection::clone() const
 
 bool QMofReflectiveCollection::add(QMofObject *object)
 {
-    qWarning("MofReflectiveCollection::add(): to be implemented (operation)");
+    qWarning("QMofReflectiveCollection::add(): to be implemented (operation)");
 
     Q_UNUSED(object);
     return bool ();
@@ -74,7 +72,7 @@ bool QMofReflectiveCollection::add(QMofObject *object)
 
 bool QMofReflectiveCollection::addAll(QMofReflectiveCollection *objects)
 {
-    qWarning("MofReflectiveCollection::addAll(): to be implemented (operation)");
+    qWarning("QMofReflectiveCollection::addAll(): to be implemented (operation)");
 
     Q_UNUSED(objects);
     return bool ();
@@ -82,13 +80,13 @@ bool QMofReflectiveCollection::addAll(QMofReflectiveCollection *objects)
 
 void QMofReflectiveCollection::clear()
 {
-    qWarning("MofReflectiveCollection::clear(): to be implemented (operation)");
+    qWarning("QMofReflectiveCollection::clear(): to be implemented (operation)");
 
 }
 
 bool QMofReflectiveCollection::remove(QMofObject *object)
 {
-    qWarning("MofReflectiveCollection::remove(): to be implemented (operation)");
+    qWarning("QMofReflectiveCollection::remove(): to be implemented (operation)");
 
     Q_UNUSED(object);
     return bool ();
@@ -96,7 +94,7 @@ bool QMofReflectiveCollection::remove(QMofObject *object)
 
 int QMofReflectiveCollection::size() const
 {
-    qWarning("MofReflectiveCollection::size(): to be implemented (operation)");
+    qWarning("QMofReflectiveCollection::size(): to be implemented (operation)");
 
     return int ();
 }

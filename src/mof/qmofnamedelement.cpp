@@ -137,7 +137,7 @@ void QMofNamedElement::setQualifiedName(QString qualifiedName)
 {
     // This is a read-only derived property
 
-    qWarning("MofNamedElement::setQualifiedName(): to be implemented (this is a derived property)");
+    qWarning("QMofNamedElement::setQualifiedName(): to be implemented (this is a derived property)");
     Q_UNUSED(qualifiedName);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -190,7 +190,7 @@ QList<QMofNamespace *> QMofNamedElement::allNamespaces() const
  */
 bool QMofNamedElement::isDistinguishableFrom(QMofNamedElement *n, QMofNamespace *ns) const
 {
-    qWarning("MofNamedElement::isDistinguishableFrom(): to be implemented (operation)");
+    qWarning("QMofNamedElement::isDistinguishableFrom(): to be implemented (operation)");
 
     Q_UNUSED(n);
     Q_UNUSED(ns);

@@ -66,7 +66,7 @@
     \class Q${namespace}${className}
 
     \inmodule Qt${namespace}
-[%- IF class.findvalue("ownedComment/body/text() != "" %]
+[%- IF class.findvalue("ownedComment/body/text()") != "" %]
 
     \brief ${class.findvalue("ownedComment/body/text()")}
 [%- END %]
