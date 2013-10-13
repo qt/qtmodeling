@@ -43,10 +43,11 @@
 #include "private/qmodelingobject_p.h"
 
 #include <Qt${namespace}/Q${namespace}${className}>
+[%- superclasses = [] %]
 [% SET useNamespace = 'false' -%]
 [%- forwards = [] -%]
 [%- visitedClasses = [] -%]
-[%- GENERATE_FWD_DECLARATIONS(class, visitedClasses, forwards, useNamespace) -%]
+[%- GENERATE_FWD_DECLARATIONS(class, visitedClasses, forwards, useNamespace, superclasses) -%]
 [%- FOREACH forward = forwards.unique.sort -%]
 #include <Qt${namespace}/${forward}>
 [% IF loop.last %]

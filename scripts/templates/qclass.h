@@ -57,16 +57,10 @@
 #include <QtModeling/QModelingElement>
 
 [% END -%]
-[%- SET useNamespace = 'false' -%]
+[% SET useNamespace = 'false' -%]
 [%- forwards = [] -%]
-[%- FOREACH forward = class.findnodes("ownedAttribute[@type] | ownedOperation/ownedParameter[@type]") -%]
-[%- SET forwardName = forward.findvalue('@type') -%]
-[%- IF xmi.findnodes("//packagedElement[@xmi:type='uml:Enumeration' and @name='$forwardName']").findvalue("@name") != "" -%]
-    [%- SET useNamespace = 'true' -%]
-[%- ELSE -%]
-[%- IF forwardName != className && superclasses.grep("^${namespace}${forwardName}\$").size == 0 -%][%- forwards.push("${namespace}${forwardName}") -%][%- END -%]
-[%- END -%]
-[%- END -%]
+[%- visitedClasses = [] -%]
+[%- GENERATE_FWD_DECLARATIONS(class, visitedClasses, forwards, useNamespace, superclasses, "false") -%]
 [%- IF useNamespace == 'true' %]
 #include <Qt${namespace}/Qt${namespace}Namespace>
 [% END -%]
@@ -77,7 +71,7 @@ QT_BEGIN_NAMESPACE
 QT_MODULE(Qt${namespace})
 
 [%- FOREACH forward = forwards.unique.sort %]
-class Q${forward};
+class ${forward};
 [%- IF loop.last %]
 [% END %]
 [%- END -%]
@@ -121,10 +115,19 @@ public:
     // Operations
 [%- END %]
 [% SET operationName = operation.findvalue("@name") -%]
-    [% QT_TYPE(namespace, operation.findnodes("ownedParameter[@direction='return']")) -%]
+[%- SET qtType = QT_TYPE(namespace, operation.findnodes("ownedParameter[@direction='return']")) -%]
+[%- IF qtType != " " -%]
+    ${qtType}
+[%- ELSE -%]
+    void 
+[%- END -%]
 ${operationName}(
     [%- FOREACH parameter = operation.findnodes("ownedParameter[@direction!='return']") -%]
-        [%- QT_TYPE(namespace, parameter) -%]
+        [%- SET qtType = QT_TYPE(namespace, parameter) -%]
+        [%- IF qtType != " " -%]
+        [%- qtType -%]
+        [%- ELSE -%]
+        [%- END -%]
 ${parameter.findvalue("@name")}
         [%- IF !loop.last %], [% END -%]
     [%- END -%]

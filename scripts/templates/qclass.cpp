@@ -53,7 +53,7 @@
 [% SET useNamespace = 'false' -%]
 [%- forwards = [] -%]
 [%- visitedClasses = [] -%]
-[%- GENERATE_FWD_DECLARATIONS(class, visitedClasses, forwards, useNamespace) -%]
+[%- GENERATE_FWD_DECLARATIONS(class, visitedClasses, forwards, useNamespace, superclasses) -%]
 [%- FOREACH forward = forwards.unique.sort %]
 #include <Qt${namespace}/${forward}>
 [%- IF loop.last %]
@@ -137,6 +137,7 @@ QModelingElement *Q${namespace}${className}::clone() const
 [%- IF loop.first %]
 
 // OWNED ATTRIBUTES
+
 [%- END %]
 
 [%- SET qtAttribute = QT_ATTRIBUTE(attribute) -%]
@@ -146,7 +147,7 @@ QModelingElement *Q${namespace}${className}::clone() const
 [%- SET derivedUnion = attribute.findvalue("@isDerivedUnion") -%]
 [%- SET association = attribute.findvalue("@association") -%]
 [%- SET documentation = attribute.findvalue("ownedComment/body/text()") -%]
-[%- IF documentation != "" %]
+[%- IF documentation != "" -%]
 /*!
     ${documentation}
  */
@@ -167,9 +168,9 @@ QModelingElement *Q${namespace}${className}::clone() const
     return _${PLURALFORM(qtAttribute, attribute)};
     [%- END %]
 }
+
     [%- SET attributeName = attribute.findvalue("@name").ucfirst %]
         [%- IF attribute.findnodes("upperValue").findvalue("@value") == "*" %]
-
 void Q${namespace}${className}::add${attributeName}(${qtType.remove("QSet<").remove("QList<").replace(">", "").replace('\* $', '*')}${qtAttribute})
 {
     // This is a [% IF readOnly == "" || readOnly == "false" %]read-write[% ELSE %]read-only[% END %][% IF derived == "true" %] derived[% END %][% IF derivedUnion == "true" %] union[% END %] [% IF association != "" %]association end[% ELSE %]property[% END %]
@@ -288,8 +289,8 @@ void Q${namespace}${className}::remove${attributeName}(${qtType.remove("QSet<").
         [%- END %]
     }
 }
-        [%- ELSE %]
 
+        [%- ELSE %]
 void Q${namespace}${className}::set${attributeName.remove("^Is")}([% IF !qtType.match('\*$') %]${qtType.trim} [% ELSE %]${qtType}[% END %]${qtAttribute})
 {
     // This is a [% IF readOnly == "" || readOnly == "false" %]read-write[% ELSE %]read-only[% END %][% IF derived == "true" %] derived[% END %][% IF derivedUnion == "true" %] union[% END %] [% IF association != "" %]association end[% ELSE %]property[% END %]
@@ -352,24 +353,25 @@ void Q${namespace}${className}::set${attributeName.remove("^Is")}([% IF !qtType.
         [%- END %]
     }
 }
+
     [%- END %]
 [%- END %]
 [%- FOREACH operation = class.findnodes("ownedOperation[@name != ../ownedAttribute[@isDerived='true']/@name]") -%]
 [%- IF loop.first %]
-
 // OPERATIONS
+
 [%- END %]
 [%- SET operationName = operation.findvalue("@name") -%]
 
 [%- SET returnType = QT_TYPE(namespace, operation.findnodes("ownedParameter[@direction='return']")) %]
 
 [%- SET documentation = operation.findvalue("ownedComment/body/text()") -%]
-[%- IF documentation != "" %]
+[%- IF documentation != "" -%]
 /*!
     ${documentation}
  */
-[%- END %]
-${returnType}Q${namespace}${className}::${operationName}(
+[% END %]
+[%- IF returnType != " " -%]${returnType}[%- ELSE -%]void [%- END -%]Q${namespace}${className}::${operationName}(
     [%- SET parameters = operation.findnodes("ownedParameter[@direction!='return']") -%]
     [%- FOREACH parameter = parameters -%]
         [%- QT_TYPE(namespace, parameter) -%]
@@ -383,11 +385,13 @@ ${parameter.findvalue("@name")}
     [%- FOREACH parameter = parameters %]
     Q_UNUSED(${parameter.findvalue("@name")});
     [%- END %]
+    [%- IF returnType != " " -%]
     [%- IF returnType.match('\*$') %]
     return 0;
     [%- ELSE %]
     return ${returnType}();
+    [%- END -%]
     [%- END %]
 }
-[%- END %]
 
+[%- END %]
