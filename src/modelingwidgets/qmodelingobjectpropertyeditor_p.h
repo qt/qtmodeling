@@ -44,10 +44,6 @@
 #include "qtmodelingwidgetsglobal.h"
 #include "private/qwidget_p.h"
 
-#include <QtModeling/QModelingObject>
-
-#include <QtWidgets/QHBoxLayout>
-
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE

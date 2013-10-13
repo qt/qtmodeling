@@ -44,7 +44,6 @@
 #include "qtmodelingglobal.h"
 #include "private/qobject_p.h"
 
-#include <QtCore/QStringList>
 #include <QtCore/QXmlStreamReader>
 
 QT_BEGIN_HEADER

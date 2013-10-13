@@ -43,13 +43,10 @@
 #include "qmetamodelplugin.h"
 
 #include <QtModeling/QModelingObject>
-#include <QtModeling/QtModelingNamespace>
 
 #include <QtCore/QSet>
 #include <QtCore/QDir>
-#include <QtCore/QJsonObject>
 #include <QtCore/QPluginLoader>
-#include <QtCore/QMetaClassInfo>
 #include <QtCore/QCoreApplication>
 #include <QtCore/QRegularExpression>
 
@@ -154,14 +151,22 @@ void QXmiWriter::populateIdMap(QModelingObject *modelingObject, int index)
         QMetaProperty metaProperty = metaObject->property(i);
         QString typeName = QString::fromLatin1(metaProperty.typeName());
         QVariant variant = metaProperty.read(modelingObject);
-        QString aggregationRole = QModelingObject::propertyData(modelingObject->propertyGroups().at(modelingObject->propertyGroupIndex(metaProperty)), metaProperty, QtModeling::AggregationRole).toString();
+        QString aggregationRole = QModelingObject::propertyData(modelingObject->propertyGroups().at(modelingObject->propertyGroupIndex(metaProperty)),
+                                                                metaProperty,
+                                                                QtModeling::AggregationRole).toString();
 
         if (aggregationRole == QStringLiteral("composite"))
-            if (!QModelingObject::propertyData(modelingObject->propertyGroups().at(modelingObject->propertyGroupIndex(metaProperty)), metaProperty, QtModeling::OppositeEndRole).toString().isEmpty()) {
-                d->blacklistedOppositeEnds << QModelingObject::propertyData(modelingObject->propertyGroups().at(modelingObject->propertyGroupIndex(metaProperty)), metaProperty, QtModeling::OppositeEndRole).toString().split('-').last();
+            if (!QModelingObject::propertyData(modelingObject->propertyGroups().at(modelingObject->propertyGroupIndex(metaProperty)),
+                                               metaProperty,
+                                               QtModeling::OppositeEndRole).toString().isEmpty()) {
+                d->blacklistedOppositeEnds << QModelingObject::propertyData(modelingObject->propertyGroups().at(modelingObject->propertyGroupIndex(metaProperty)),
+                                                                            metaProperty,
+                                                                            QtModeling::OppositeEndRole).toString().split('-').last();
             }
 
-        if (QModelingObject::propertyData(modelingObject->propertyGroups().at(modelingObject->propertyGroupIndex(metaProperty)), metaProperty, QtModeling::AggregationRole).toString() != QStringLiteral("composite"))
+        if (QModelingObject::propertyData(modelingObject->propertyGroups().at(modelingObject->propertyGroupIndex(metaProperty)),
+                                          metaProperty,
+                                          QtModeling::AggregationRole).toString() != QStringLiteral("composite"))
             continue;
 
         if (typeName.endsWith('*') && qvariant_cast<QModelingObject *>(variant))
@@ -196,11 +201,11 @@ void QXmiWriter::writeObject(QModelingObject *modelingObject, QString elementNam
 
     d->visitedObjects.append(modelingObject);
 
-    d->writer.writeStartElement(elementName.isEmpty() ? QString::fromLatin1(modelingObject->metaObject()->className()).remove(d->metaModelPrefix).remove(QRegExp(QStringLiteral("Object$"))).prepend(QStringLiteral("%1:").arg(d->metaModelXmlNamespace))
+    d->writer.writeStartElement(elementName.isEmpty() ? QString::fromLatin1(modelingObject->metaObject()->className()).remove(d->metaModelPrefix).remove(QRegularExpression(QStringLiteral("Object$"))).prepend(QStringLiteral("%1:").arg(d->metaModelXmlNamespace))
                                                       :
                                                         elementName);
     if (!elementName.isEmpty())
-        d->writer.writeAttribute(QStringLiteral("xmi:type"), QString::fromLatin1(modelingObject->metaObject()->className()).remove(d->metaModelPrefix).remove(QRegExp(QStringLiteral("Object$"))).prepend(d->metaModelXmlNamespace + QStringLiteral(":")));
+        d->writer.writeAttribute(QStringLiteral("xmi:type"), QString::fromLatin1(modelingObject->metaObject()->className()).remove(d->metaModelPrefix).remove(QRegularExpression(QStringLiteral("Object$"))).prepend(d->metaModelXmlNamespace + QStringLiteral(":")));
 
     const QMetaObject *metaObject = modelingObject->metaObject();
     int propertyCount = metaObject->propertyCount();
@@ -209,7 +214,10 @@ void QXmiWriter::writeObject(QModelingObject *modelingObject, QString elementNam
         QMetaProperty metaProperty = metaObject->property(i);
         QVariant variant = metaProperty.read(modelingObject);
 
-        if (!metaProperty.isStored() || QString::fromLatin1(metaProperty.name()) == QStringLiteral("objectName") || QModelingObject::propertyData(modelingObject->propertyGroups().at(modelingObject->propertyGroupIndex(metaProperty)), metaProperty, QtModeling::IsDerivedUnionRole).toBool())
+        if (!metaProperty.isStored() || QString::fromLatin1(metaProperty.name()) == QStringLiteral("objectName") ||
+            QModelingObject::propertyData(modelingObject->propertyGroups().at(modelingObject->propertyGroupIndex(metaProperty)),
+                                          metaProperty,
+                                          QtModeling::IsDerivedUnionRole).toBool())
             continue;
 
         if (metaProperty.type() == QVariant::String) {
@@ -240,9 +248,13 @@ void QXmiWriter::writeObject(QModelingObject *modelingObject, QString elementNam
         QString modifiedPropertyName = QString::fromLatin1(metaProperty.name()).remove(QRegularExpression(QStringLiteral("_$"))).remove(QRegularExpression(QStringLiteral("s$"))).replace(QRegularExpression(QStringLiteral("ie$")), QStringLiteral("y")).replace(QRegularExpression(QStringLiteral("sse$")), QStringLiteral("ss")).replace(QRegularExpression(QStringLiteral("ice$")), QStringLiteral("ex")).replace(QRegularExpression(QStringLiteral("ce$")), QStringLiteral("x"));
         QString typeName = QString::fromLatin1(metaProperty.typeName());
         QVariant variant = metaProperty.read(modelingObject);
-        QString aggregationRole = QModelingObject::propertyData(modelingObject->propertyGroups().at(modelingObject->propertyGroupIndex(metaProperty)), metaProperty, QtModeling::AggregationRole).toString();
+        QString aggregationRole = QModelingObject::propertyData(modelingObject->propertyGroups().at(modelingObject->propertyGroupIndex(metaProperty)),
+                                                                metaProperty,
+                                                                QtModeling::AggregationRole).toString();
 
-        if (!metaProperty.isStored() || QModelingObject::propertyData(modelingObject->propertyGroups().at(modelingObject->propertyGroupIndex(metaProperty)), metaProperty, QtModeling::IsDerivedUnionRole).toBool())
+        if (!metaProperty.isStored() || QModelingObject::propertyData(modelingObject->propertyGroups().at(modelingObject->propertyGroupIndex(metaProperty)),
+                                                                      metaProperty,
+                                                                      QtModeling::IsDerivedUnionRole).toBool())
             continue;
 
         if (typeName.endsWith('*') && qvariant_cast<QModelingObject *>(variant)) {

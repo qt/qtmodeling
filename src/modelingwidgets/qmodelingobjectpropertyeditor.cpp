@@ -45,8 +45,11 @@
 #include "internal/filterwidget_p.h"
 #include "internal/propertyeditoritemdelegate_p.h"
 
+#include <QtModeling/QModelingObject>
+
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QTreeView>
+#include <QtWidgets/QHBoxLayout>
 
 QT_BEGIN_NAMESPACE
 
@@ -99,9 +102,8 @@ void QModelingObjectPropertyEditor::setModel(QModelingObjectPropertyModel *prope
         disconnect(d->propertyModel, 0, this, 0);
     d->propertyModel = propertyModel;
     d->proxyModel->setSourceModel(d->propertyModel);
-    if (propertyModel) {
+    if (propertyModel)
         connect(propertyModel, &QAbstractItemModel::modelReset, this, &QModelingObjectPropertyEditor::modelReset);
-    }
 }
 
 QModelingObjectPropertyModel *QModelingObjectPropertyEditor::model() const
@@ -129,8 +131,6 @@ void QModelingObjectPropertyEditor::modelReset()
     d->treeView->resizeColumnToContents(0);
     d->treeView->resizeColumnToContents(1);
 }
-
-//#include "moc_qmodelingobjectpropertyeditor.cpp"
 
 QT_END_NAMESPACE
 

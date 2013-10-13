@@ -47,8 +47,6 @@
 #include <QtWidgets/QComboBox>
 #include <QtWidgets/QCheckBox>
 
-#include <QtCore/QMetaProperty>
-
 QT_BEGIN_NAMESPACE
 
 PropertyEditor::PropertyEditor(QWidget *widget, QModelingObject *modelingObject, QMetaProperty *metaProperty, QWidget *parent) :
@@ -114,7 +112,5 @@ void PropertyEditor::currentIndexChanged()
 {
     emit commitData(this);
 }
-
-//#include "moc_propertyeditor_p.cpp"
 
 QT_END_NAMESPACE

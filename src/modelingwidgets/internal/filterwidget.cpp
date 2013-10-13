@@ -138,7 +138,6 @@ void HintLineEdit::focusInEvent(QFocusEvent *e)
     QLineEdit::focusInEvent(e);
 }
 
-// ------------------- FilterWidget
 FilterWidget::FilterWidget(QWidget *parent, LayoutMode lm)  :
     QWidget(parent),
     m_editor(new HintLineEdit(this)),
@@ -247,7 +246,5 @@ void FilterWidget::setRefuseFocus(bool v)
 {
     m_editor->setRefuseFocus(v);
 }
-
-//#include "moc_filterwidget_p.cpp"
 
 QT_END_NAMESPACE

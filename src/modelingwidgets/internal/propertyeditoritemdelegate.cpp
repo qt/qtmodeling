@@ -43,8 +43,8 @@
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QCheckBox>
 #include <QtWidgets/QComboBox>
-#include <QtWidgets/QApplication>
 #include <QtWidgets/QTreeView>
+#include <QtWidgets/QApplication>
 
 #include <QtModeling/QModelingObject>
 
@@ -216,7 +216,5 @@ bool PropertyEditorItemDelegate::eventFilter(QObject *object, QEvent *event)
     else
         return QStyledItemDelegate::eventFilter(object, event);
 }
-
-//#include "moc_propertyeditoritemdelegate_p.cpp"
 
 QT_END_NAMESPACE

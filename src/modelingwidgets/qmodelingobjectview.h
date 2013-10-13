@@ -41,11 +41,11 @@
 #ifndef QMODELINGOBJECTVIEW_H
 #define QMODELINGOBJECTVIEW_H
 
-#include <QtCore/QModelIndex>
-
 #include <QtModelingWidgets/QtModelingWidgetsGlobal>
 
 #include <QtWidgets/QWidget>
+
+#include <QtCore/QModelIndex>
 
 QT_BEGIN_HEADER
 

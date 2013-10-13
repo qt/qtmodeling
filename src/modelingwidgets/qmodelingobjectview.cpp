@@ -42,11 +42,7 @@
 #include "qmodelingobjectview_p.h"
 #include "qmodelingobjectmodel.h"
 
-#include <QtModeling/QModelingObject>
 #include <QtModeling/QModelingElement>
-
-#include <QtCore/QMetaProperty>
-#include <QtCore/QRegularExpression>
 
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QTreeView>

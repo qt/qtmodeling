@@ -43,14 +43,10 @@
 #include "qmetamodelplugin.h"
 
 #include <QtModeling/QModelingElement>
-#include <QtModeling/QtModelingNamespace>
 
 #include <QtCore/QDir>
-#include <QtCore/QUrl>
 #include <QtCore/QStack>
-#include <QtCore/QJsonObject>
 #include <QtCore/QPluginLoader>
-#include <QtCore/QMetaProperty>
 #include <QtCore/QCoreApplication>
 
 QT_BEGIN_NAMESPACE

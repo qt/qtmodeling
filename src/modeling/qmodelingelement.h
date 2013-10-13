@@ -46,7 +46,6 @@
 #include <QtModeling/QModelingObject>
 
 #include <QtCore/QPointer>
-#include <QtCore/QStringList>
 
 QT_BEGIN_HEADER
 

@@ -42,10 +42,10 @@
 #include "qmodelingobjectmodel_p.h"
 
 #include <QtGui/QFont>
+
 #include <QtWidgets/QApplication>
 
 #include <QtModeling/QModelingObject>
-#include <QtModeling/QtModelingNamespace>
 
 QT_BEGIN_NAMESPACE
 
@@ -146,13 +146,21 @@ QVariant QModelingObjectModel::data(const QModelIndex &index, int role) const
         case Qt::DisplayRole:
         case Qt::EditRole: {
             QModelingObject *modelingObject = static_cast<QModelingObject *>(index.internalPointer());
-            QString elementRole = QStringLiteral("");
-            if (modelingObject->property("role").value<QtModeling::ModelingObjectRole>() == QtModeling::ImportedElementRole)
+            QString elementRole;
+            switch (modelingObject->property("role").value<QtModeling::ModelingObjectRole>()) {
+            case QtModeling::ModelElementRole:
+                elementRole = QStringLiteral("");
+                break;
+            case QtModeling::ImportedElementRole:
                 elementRole = QStringLiteral(" (imported element)");
-            else if (modelingObject->property("role").value<QtModeling::ModelingObjectRole>() == QtModeling::ImportedPackageRole)
+                break;
+            case QtModeling::ImportedPackageRole:
                 elementRole = QStringLiteral(" (imported package)");
-            else if (modelingObject->property("role").value<QtModeling::ModelingObjectRole>() == QtModeling::AppliedProfileRole)
+                break;
+            case QtModeling::AppliedProfileRole:
                 elementRole = QStringLiteral(" (applied profile)");
+                break;
+            }
             return index.column() == 0 ? modelingObject->objectName() + elementRole:QString::fromLatin1(modelingObject->metaObject()->className());
         }
         case Qt::FontRole: {
@@ -204,8 +212,6 @@ void QModelingObjectModel::clear()
     qDeleteAll(d->modelingObjects);
     d->modelingObjects.clear();
 }
-
-//#include "moc_qmodelingobjectmodel.cpp"
 
 QT_END_NAMESPACE
 
