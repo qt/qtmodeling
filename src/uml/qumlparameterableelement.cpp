@@ -41,7 +41,6 @@
 #include "qumlparameterableelement.h"
 
 #include <QtUml/QUmlComment>
-#include <QtUml/QUmlElement>
 #include <QtUml/QUmlTemplateParameter>
 
 /*!
@@ -126,7 +125,7 @@ void QUmlParameterableElement::setTemplateParameter(QUmlTemplateParameter *templ
  */
 bool QUmlParameterableElement::isCompatibleWith(QUmlParameterableElement *p) const
 {
-    qWarning("UmlParameterableElement::isCompatibleWith(): to be implemented (operation)");
+    qWarning("QUmlParameterableElement::isCompatibleWith(): to be implemented (operation)");
 
     Q_UNUSED(p);
     return bool ();
@@ -137,7 +136,7 @@ bool QUmlParameterableElement::isCompatibleWith(QUmlParameterableElement *p) con
  */
 bool QUmlParameterableElement::isTemplateParameter() const
 {
-    qWarning("UmlParameterableElement::isTemplateParameter(): to be implemented (operation)");
+    qWarning("QUmlParameterableElement::isTemplateParameter(): to be implemented (operation)");
 
     return bool ();
 }

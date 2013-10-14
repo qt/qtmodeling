@@ -46,7 +46,6 @@
 #include <QtUml/QUmlActivityGroup>
 #include <QtUml/QUmlActivityNode>
 #include <QtUml/QUmlActivityPartition>
-#include <QtUml/QUmlBehavior>
 #include <QtUml/QUmlBehavioralFeature>
 #include <QtUml/QUmlBehavioredClassifier>
 #include <QtUml/QUmlClass>

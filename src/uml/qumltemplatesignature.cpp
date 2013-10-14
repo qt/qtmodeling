@@ -43,7 +43,6 @@
 #include "private/qumltemplatesignatureobject_p.h"
 
 #include <QtUml/QUmlComment>
-#include <QtUml/QUmlElement>
 #include <QtUml/QUmlTemplateableElement>
 #include <QtUml/QUmlTemplateParameter>
 

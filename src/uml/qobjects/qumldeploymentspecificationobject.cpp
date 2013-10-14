@@ -528,6 +528,7 @@ bool QUmlDeploymentSpecificationObject::isTemplateParameter() const
 }
 
 // OPERATIONS [Type]
+
 // OPERATIONS [RedefinableElement]
 
 bool QUmlDeploymentSpecificationObject::isConsistentWith(QObject *redefinee) const

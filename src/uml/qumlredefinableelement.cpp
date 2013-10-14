@@ -44,7 +44,6 @@
 #include <QtUml/QUmlComment>
 #include <QtUml/QUmlDependency>
 #include <QtUml/QUmlElement>
-#include <QtUml/QUmlNamedElement>
 #include <QtUml/QUmlNamespace>
 #include <QtUml/QUmlPackage>
 #include <QtUml/QUmlStringExpression>
@@ -165,7 +164,7 @@ void QUmlRedefinableElement::removeRedefinitionContext(QUmlClassifier *redefinit
  */
 bool QUmlRedefinableElement::isConsistentWith(QUmlRedefinableElement *redefinee) const
 {
-    qWarning("UmlRedefinableElement::isConsistentWith(): to be implemented (operation)");
+    qWarning("QUmlRedefinableElement::isConsistentWith(): to be implemented (operation)");
 
     Q_UNUSED(redefinee);
     return bool ();
@@ -176,7 +175,7 @@ bool QUmlRedefinableElement::isConsistentWith(QUmlRedefinableElement *redefinee)
  */
 bool QUmlRedefinableElement::isRedefinitionContextValid(QUmlRedefinableElement *redefined) const
 {
-    qWarning("UmlRedefinableElement::isRedefinitionContextValid(): to be implemented (operation)");
+    qWarning("QUmlRedefinableElement::isRedefinitionContextValid(): to be implemented (operation)");
 
     Q_UNUSED(redefined);
     return bool ();

@@ -49,7 +49,6 @@
 #include <QtUml/QUmlNamedElement>
 #include <QtUml/QUmlNamespace>
 #include <QtUml/QUmlPackage>
-#include <QtUml/QUmlRedefinableElement>
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlTemplateableElement>
 #include <QtUml/QUmlTemplateParameter>
@@ -168,7 +167,7 @@ const QSet<QUmlTemplateParameter *> QUmlRedefinableTemplateSignature::inheritedP
 {
     // This is a read-only derived association end
 
-    qWarning("UmlRedefinableTemplateSignature::inheritedParameters(): to be implemented (this is a derived association end)");
+    qWarning("QUmlRedefinableTemplateSignature::inheritedParameters(): to be implemented (this is a derived association end)");
 
     return QSet<QUmlTemplateParameter *>();
 }
@@ -177,7 +176,7 @@ void QUmlRedefinableTemplateSignature::addInheritedParameter(QUmlTemplateParamet
 {
     // This is a read-only derived association end
 
-    qWarning("UmlRedefinableTemplateSignature::addInheritedParameter(): to be implemented (this is a derived association end)");
+    qWarning("QUmlRedefinableTemplateSignature::addInheritedParameter(): to be implemented (this is a derived association end)");
     Q_UNUSED(inheritedParameter);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -192,7 +191,7 @@ void QUmlRedefinableTemplateSignature::removeInheritedParameter(QUmlTemplatePara
 {
     // This is a read-only derived association end
 
-    qWarning("UmlRedefinableTemplateSignature::removeInheritedParameter(): to be implemented (this is a derived association end)");
+    qWarning("QUmlRedefinableTemplateSignature::removeInheritedParameter(): to be implemented (this is a derived association end)");
     Q_UNUSED(inheritedParameter);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -210,7 +209,7 @@ void QUmlRedefinableTemplateSignature::removeInheritedParameter(QUmlTemplatePara
  */
 bool QUmlRedefinableTemplateSignature::isConsistentWith(QUmlRedefinableElement *redefinee) const
 {
-    qWarning("UmlRedefinableTemplateSignature::isConsistentWith(): to be implemented (operation)");
+    qWarning("QUmlRedefinableTemplateSignature::isConsistentWith(): to be implemented (operation)");
 
     Q_UNUSED(redefinee);
     return bool ();

@@ -181,7 +181,7 @@ QUmlParameter *QUmlOpaqueExpression::result() const
 {
     // This is a read-only derived association end
 
-    qWarning("UmlOpaqueExpression::result(): to be implemented (this is a derived association end)");
+    qWarning("QUmlOpaqueExpression::result(): to be implemented (this is a derived association end)");
 
     return 0;
 }
@@ -190,7 +190,7 @@ void QUmlOpaqueExpression::setResult(QUmlParameter *result)
 {
     // This is a read-only derived association end
 
-    qWarning("UmlOpaqueExpression::setResult(): to be implemented (this is a derived association end)");
+    qWarning("QUmlOpaqueExpression::setResult(): to be implemented (this is a derived association end)");
     Q_UNUSED(result);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -205,7 +205,7 @@ void QUmlOpaqueExpression::setResult(QUmlParameter *result)
  */
 bool QUmlOpaqueExpression::isIntegral() const
 {
-    qWarning("UmlOpaqueExpression::isIntegral(): to be implemented (operation)");
+    qWarning("QUmlOpaqueExpression::isIntegral(): to be implemented (operation)");
 
     return bool ();
 }
@@ -215,7 +215,7 @@ bool QUmlOpaqueExpression::isIntegral() const
  */
 bool QUmlOpaqueExpression::isNonNegative() const
 {
-    qWarning("UmlOpaqueExpression::isNonNegative(): to be implemented (operation)");
+    qWarning("QUmlOpaqueExpression::isNonNegative(): to be implemented (operation)");
 
     return bool ();
 }
@@ -225,7 +225,7 @@ bool QUmlOpaqueExpression::isNonNegative() const
  */
 bool QUmlOpaqueExpression::isPositive() const
 {
-    qWarning("UmlOpaqueExpression::isPositive(): to be implemented (operation)");
+    qWarning("QUmlOpaqueExpression::isPositive(): to be implemented (operation)");
 
     return bool ();
 }
@@ -235,7 +235,7 @@ bool QUmlOpaqueExpression::isPositive() const
  */
 int QUmlOpaqueExpression::value() const
 {
-    qWarning("UmlOpaqueExpression::value(): to be implemented (operation)");
+    qWarning("QUmlOpaqueExpression::value(): to be implemented (operation)");
 
     return int ();
 }

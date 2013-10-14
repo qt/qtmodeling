@@ -41,7 +41,6 @@
 #include "qumlmultiplicityelement.h"
 
 #include <QtUml/QUmlComment>
-#include <QtUml/QUmlElement>
 #include <QtUml/QUmlValueSpecification>
 
 /*!
@@ -122,7 +121,7 @@ int QUmlMultiplicityElement::lower() const
 {
     // This is a read-write derived property
 
-    qWarning("UmlMultiplicityElement::lower(): to be implemented (this is a derived property)");
+    qWarning("QUmlMultiplicityElement::lower(): to be implemented (this is a derived property)");
 
     return int();
 }
@@ -131,7 +130,7 @@ void QUmlMultiplicityElement::setLower(int lower)
 {
     // This is a read-write derived property
 
-    qWarning("UmlMultiplicityElement::setLower(): to be implemented (this is a derived property)");
+    qWarning("QUmlMultiplicityElement::setLower(): to be implemented (this is a derived property)");
     Q_UNUSED(lower);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -176,7 +175,7 @@ int QUmlMultiplicityElement::upper() const
 {
     // This is a read-write derived property
 
-    qWarning("UmlMultiplicityElement::upper(): to be implemented (this is a derived property)");
+    qWarning("QUmlMultiplicityElement::upper(): to be implemented (this is a derived property)");
 
     return int();
 }
@@ -185,7 +184,7 @@ void QUmlMultiplicityElement::setUpper(int upper)
 {
     // This is a read-write derived property
 
-    qWarning("UmlMultiplicityElement::setUpper(): to be implemented (this is a derived property)");
+    qWarning("QUmlMultiplicityElement::setUpper(): to be implemented (this is a derived property)");
     Q_UNUSED(upper);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -230,7 +229,7 @@ void QUmlMultiplicityElement::setUpperValue(QUmlValueSpecification *upperValue)
  */
 bool QUmlMultiplicityElement::compatibleWith(QUmlMultiplicityElement *other) const
 {
-    qWarning("UmlMultiplicityElement::compatibleWith(): to be implemented (operation)");
+    qWarning("QUmlMultiplicityElement::compatibleWith(): to be implemented (operation)");
 
     Q_UNUSED(other);
     return bool ();
@@ -241,7 +240,7 @@ bool QUmlMultiplicityElement::compatibleWith(QUmlMultiplicityElement *other) con
  */
 bool QUmlMultiplicityElement::includesCardinality(int C) const
 {
-    qWarning("UmlMultiplicityElement::includesCardinality(): to be implemented (operation)");
+    qWarning("QUmlMultiplicityElement::includesCardinality(): to be implemented (operation)");
 
     Q_UNUSED(C);
     return bool ();
@@ -252,7 +251,7 @@ bool QUmlMultiplicityElement::includesCardinality(int C) const
  */
 bool QUmlMultiplicityElement::includesMultiplicity(QUmlMultiplicityElement *M) const
 {
-    qWarning("UmlMultiplicityElement::includesMultiplicity(): to be implemented (operation)");
+    qWarning("QUmlMultiplicityElement::includesMultiplicity(): to be implemented (operation)");
 
     Q_UNUSED(M);
     return bool ();
@@ -263,7 +262,7 @@ bool QUmlMultiplicityElement::includesMultiplicity(QUmlMultiplicityElement *M) c
  */
 bool QUmlMultiplicityElement::is(int lowerbound, int upperbound) const
 {
-    qWarning("UmlMultiplicityElement::is(): to be implemented (operation)");
+    qWarning("QUmlMultiplicityElement::is(): to be implemented (operation)");
 
     Q_UNUSED(lowerbound);
     Q_UNUSED(upperbound);
@@ -275,7 +274,7 @@ bool QUmlMultiplicityElement::is(int lowerbound, int upperbound) const
  */
 bool QUmlMultiplicityElement::isMultivalued() const
 {
-    qWarning("UmlMultiplicityElement::isMultivalued(): to be implemented (operation)");
+    qWarning("QUmlMultiplicityElement::isMultivalued(): to be implemented (operation)");
 
     return bool ();
 }
@@ -285,7 +284,7 @@ bool QUmlMultiplicityElement::isMultivalued() const
  */
 int QUmlMultiplicityElement::lowerBound() const
 {
-    qWarning("UmlMultiplicityElement::lowerBound(): to be implemented (operation)");
+    qWarning("QUmlMultiplicityElement::lowerBound(): to be implemented (operation)");
 
     return int ();
 }
@@ -295,7 +294,7 @@ int QUmlMultiplicityElement::lowerBound() const
  */
 //int QUmlMultiplicityElement::upperBound() const
 //{
-//    qWarning("UmlMultiplicityElement::upperBound(): to be implemented (operation)");
+//    qWarning("QUmlMultiplicityElement::upperBound(): to be implemented (operation)");
 //
 //    return int ();
 //}

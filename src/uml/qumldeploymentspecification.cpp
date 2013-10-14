@@ -42,7 +42,6 @@
 
 #include "private/qumldeploymentspecificationobject_p.h"
 
-#include <QtUml/QUmlArtifact>
 #include <QtUml/QUmlClassifier>
 #include <QtUml/QUmlClassifierTemplateParameter>
 #include <QtUml/QUmlCollaborationUse>

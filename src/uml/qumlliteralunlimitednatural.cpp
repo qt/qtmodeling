@@ -117,7 +117,7 @@ void QUmlLiteralUnlimitedNatural::setValue(int value)
  */
 bool QUmlLiteralUnlimitedNatural::isComputable() const
 {
-    qWarning("UmlLiteralUnlimitedNatural::isComputable(): to be implemented (operation)");
+    qWarning("QUmlLiteralUnlimitedNatural::isComputable(): to be implemented (operation)");
 
     return bool ();
 }
@@ -127,7 +127,7 @@ bool QUmlLiteralUnlimitedNatural::isComputable() const
  */
 int QUmlLiteralUnlimitedNatural::unlimitedValue() const
 {
-    qWarning("UmlLiteralUnlimitedNatural::unlimitedValue(): to be implemented (operation)");
+    qWarning("QUmlLiteralUnlimitedNatural::unlimitedValue(): to be implemented (operation)");
 
     return int ();
 }

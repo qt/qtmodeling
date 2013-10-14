@@ -58,7 +58,6 @@
 #include <QtUml/QUmlPseudostate>
 #include <QtUml/QUmlRedefinableElement>
 #include <QtUml/QUmlRegion>
-#include <QtUml/QUmlState>
 #include <QtUml/QUmlStateMachine>
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlTransition>

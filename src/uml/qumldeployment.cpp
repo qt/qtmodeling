@@ -43,7 +43,6 @@
 #include "private/qumldeploymentobject_p.h"
 
 #include <QtUml/QUmlComment>
-#include <QtUml/QUmlDependency>
 #include <QtUml/QUmlDeployedArtifact>
 #include <QtUml/QUmlDeploymentSpecification>
 #include <QtUml/QUmlDeploymentTarget>

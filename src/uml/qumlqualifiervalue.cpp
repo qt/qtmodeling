@@ -43,7 +43,6 @@
 #include "private/qumlqualifiervalueobject_p.h"
 
 #include <QtUml/QUmlComment>
-#include <QtUml/QUmlElement>
 #include <QtUml/QUmlInputPin>
 #include <QtUml/QUmlProperty>
 

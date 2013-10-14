@@ -51,12 +51,10 @@
 #include <QtUml/QUmlElement>
 #include <QtUml/QUmlElementImport>
 #include <QtUml/QUmlNamedElement>
-#include <QtUml/QUmlNamespace>
 #include <QtUml/QUmlPackage>
 #include <QtUml/QUmlPackageableElement>
 #include <QtUml/QUmlPackageImport>
 #include <QtUml/QUmlPseudostate>
-#include <QtUml/QUmlRedefinableElement>
 #include <QtUml/QUmlRegion>
 #include <QtUml/QUmlStateMachine>
 #include <QtUml/QUmlStringExpression>
@@ -361,7 +359,7 @@ bool QUmlState::isComposite() const
 {
     // This is a read-only derived property
 
-    qWarning("UmlState::isComposite(): to be implemented (this is a derived property)");
+    qWarning("QUmlState::isComposite(): to be implemented (this is a derived property)");
 
     return bool();
 }
@@ -370,7 +368,7 @@ void QUmlState::setComposite(bool isComposite)
 {
     // This is a read-only derived property
 
-    qWarning("UmlState::setComposite(): to be implemented (this is a derived property)");
+    qWarning("QUmlState::setComposite(): to be implemented (this is a derived property)");
     Q_UNUSED(isComposite);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -385,7 +383,7 @@ bool QUmlState::isOrthogonal() const
 {
     // This is a read-only derived property
 
-    qWarning("UmlState::isOrthogonal(): to be implemented (this is a derived property)");
+    qWarning("QUmlState::isOrthogonal(): to be implemented (this is a derived property)");
 
     return bool();
 }
@@ -394,7 +392,7 @@ void QUmlState::setOrthogonal(bool isOrthogonal)
 {
     // This is a read-only derived property
 
-    qWarning("UmlState::setOrthogonal(): to be implemented (this is a derived property)");
+    qWarning("QUmlState::setOrthogonal(): to be implemented (this is a derived property)");
     Q_UNUSED(isOrthogonal);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -409,7 +407,7 @@ bool QUmlState::isSimple() const
 {
     // This is a read-only derived property
 
-    qWarning("UmlState::isSimple(): to be implemented (this is a derived property)");
+    qWarning("QUmlState::isSimple(): to be implemented (this is a derived property)");
 
     return bool();
 }
@@ -418,7 +416,7 @@ void QUmlState::setSimple(bool isSimple)
 {
     // This is a read-only derived property
 
-    qWarning("UmlState::setSimple(): to be implemented (this is a derived property)");
+    qWarning("QUmlState::setSimple(): to be implemented (this is a derived property)");
     Q_UNUSED(isSimple);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -433,7 +431,7 @@ bool QUmlState::isSubmachineState() const
 {
     // This is a read-only derived property
 
-    qWarning("UmlState::isSubmachineState(): to be implemented (this is a derived property)");
+    qWarning("QUmlState::isSubmachineState(): to be implemented (this is a derived property)");
 
     return bool();
 }
@@ -442,7 +440,7 @@ void QUmlState::setSubmachineState(bool isSubmachineState)
 {
     // This is a read-only derived property
 
-    qWarning("UmlState::setSubmachineState(): to be implemented (this is a derived property)");
+    qWarning("QUmlState::setSubmachineState(): to be implemented (this is a derived property)");
     Q_UNUSED(isSubmachineState);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -486,7 +484,7 @@ QUmlClassifier *QUmlState::redefinitionContext() const
 {
     // This is a read-only derived association end
 
-    qWarning("UmlState::redefinitionContext(): to be implemented (this is a derived association end)");
+    qWarning("QUmlState::redefinitionContext(): to be implemented (this is a derived association end)");
 
     return 0;
 }
@@ -495,7 +493,7 @@ void QUmlState::setRedefinitionContext(QUmlClassifier *redefinitionContext)
 {
     // This is a read-only derived association end
 
-    qWarning("UmlState::setRedefinitionContext(): to be implemented (this is a derived association end)");
+    qWarning("QUmlState::setRedefinitionContext(): to be implemented (this is a derived association end)");
     Q_UNUSED(redefinitionContext);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -610,7 +608,7 @@ void QUmlState::setSubmachine(QUmlStateMachine *submachine)
  */
 QUmlStateMachine *QUmlState::containingStateMachine() const
 {
-    qWarning("UmlState::containingStateMachine(): to be implemented (operation)");
+    qWarning("QUmlState::containingStateMachine(): to be implemented (operation)");
 
     return 0;
 }
@@ -620,7 +618,7 @@ QUmlStateMachine *QUmlState::containingStateMachine() const
  */
 bool QUmlState::isConsistentWith(QUmlRedefinableElement *redefinee) const
 {
-    qWarning("UmlState::isConsistentWith(): to be implemented (operation)");
+    qWarning("QUmlState::isConsistentWith(): to be implemented (operation)");
 
     Q_UNUSED(redefinee);
     return bool ();
@@ -631,7 +629,7 @@ bool QUmlState::isConsistentWith(QUmlRedefinableElement *redefinee) const
  */
 bool QUmlState::isRedefinitionContextValid(QUmlState *redefined) const
 {
-    qWarning("UmlState::isRedefinitionContextValid(): to be implemented (operation)");
+    qWarning("QUmlState::isRedefinitionContextValid(): to be implemented (operation)");
 
     Q_UNUSED(redefined);
     return bool ();

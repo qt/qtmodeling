@@ -201,7 +201,7 @@ void QUmlLinkAction::removeInputValue(QUmlInputPin *inputValue)
  */
 QUmlAssociation *QUmlLinkAction::association() const
 {
-    qWarning("UmlLinkAction::association(): to be implemented (operation)");
+    qWarning("QUmlLinkAction::association(): to be implemented (operation)");
 
     return 0;
 }

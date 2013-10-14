@@ -493,6 +493,7 @@ bool QUmlActorObject::isTemplateParameter() const
 }
 
 // OPERATIONS [Type]
+
 // OPERATIONS [RedefinableElement]
 
 bool QUmlActorObject::isConsistentWith(QObject *redefinee) const

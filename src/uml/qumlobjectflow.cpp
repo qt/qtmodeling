@@ -43,7 +43,6 @@
 #include "private/qumlobjectflowobject_p.h"
 
 #include <QtUml/QUmlActivity>
-#include <QtUml/QUmlActivityEdge>
 #include <QtUml/QUmlActivityGroup>
 #include <QtUml/QUmlActivityNode>
 #include <QtUml/QUmlActivityPartition>

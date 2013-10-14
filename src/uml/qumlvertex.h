@@ -58,7 +58,6 @@ class QUmlTransition;
 class Q_UML_EXPORT QUmlVertex : public virtual QUmlNamedElement
 {
 public:
-
     Q_DECL_HIDDEN virtual QModelingElement *clone() const;
 
     // Owned attributes

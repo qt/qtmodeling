@@ -56,7 +56,6 @@ class QUmlInputPin;
 class Q_UML_EXPORT QUmlWriteVariableAction : public QUmlVariableAction
 {
 public:
-
     Q_DECL_HIDDEN virtual QModelingElement *clone() const;
 
     // Owned attributes

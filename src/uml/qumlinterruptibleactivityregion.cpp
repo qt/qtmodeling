@@ -44,7 +44,6 @@
 
 #include <QtUml/QUmlActivity>
 #include <QtUml/QUmlActivityEdge>
-#include <QtUml/QUmlActivityGroup>
 #include <QtUml/QUmlActivityNode>
 #include <QtUml/QUmlComment>
 #include <QtUml/QUmlDependency>

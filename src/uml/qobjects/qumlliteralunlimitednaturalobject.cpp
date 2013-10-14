@@ -247,6 +247,7 @@ QString QUmlLiteralUnlimitedNaturalObject::stringValue() const
 {
     return qmodelingelementproperty_cast<QUmlLiteralUnlimitedNatural *>(this)->stringValue();
 }
+
 // OPERATIONS [LiteralUnlimitedNatural]
 
 bool QUmlLiteralUnlimitedNaturalObject::isComputable() const

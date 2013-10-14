@@ -531,6 +531,7 @@ bool QUmlExtensionObject::isTemplateParameter() const
 }
 
 // OPERATIONS [Type]
+
 // OPERATIONS [RedefinableElement]
 
 bool QUmlExtensionObject::isConsistentWith(QObject *redefinee) const

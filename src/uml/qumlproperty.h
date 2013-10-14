@@ -47,8 +47,8 @@
 #include <QtUml/QUmlConnectableElement>
 #include <QtUml/QUmlDeploymentTarget>
 
-
 #include <QtUml/QtUmlNamespace>
+
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE

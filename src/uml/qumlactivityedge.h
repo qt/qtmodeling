@@ -62,7 +62,6 @@ class QUmlValueSpecification;
 class Q_UML_EXPORT QUmlActivityEdge : public QUmlRedefinableElement
 {
 public:
-
     Q_DECL_HIDDEN virtual QModelingElement *clone() const;
 
     // Owned attributes

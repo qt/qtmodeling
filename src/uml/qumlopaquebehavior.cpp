@@ -42,7 +42,6 @@
 
 #include "private/qumlopaquebehaviorobject_p.h"
 
-#include <QtUml/QUmlBehavior>
 #include <QtUml/QUmlBehavioralFeature>
 #include <QtUml/QUmlBehavioredClassifier>
 #include <QtUml/QUmlClass>

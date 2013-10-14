@@ -662,6 +662,7 @@ bool QUmlOpaqueBehaviorObject::isTemplateParameter() const
 }
 
 // OPERATIONS [Type]
+
 // OPERATIONS [RedefinableElement]
 
 bool QUmlOpaqueBehaviorObject::isConsistentWith(QObject *redefinee) const

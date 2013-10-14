@@ -59,7 +59,6 @@
 #include <QtUml/QUmlPackage>
 #include <QtUml/QUmlPackageableElement>
 #include <QtUml/QUmlParameterableElement>
-#include <QtUml/QUmlProperty>
 #include <QtUml/QUmlProtocolStateMachine>
 #include <QtUml/QUmlRedefinableElement>
 #include <QtUml/QUmlStringExpression>
@@ -237,7 +236,7 @@ const QSet<QUmlInterface *> QUmlPort::provided() const
 {
     // This is a read-only derived association end
 
-    qWarning("UmlPort::provided(): to be implemented (this is a derived association end)");
+    qWarning("QUmlPort::provided(): to be implemented (this is a derived association end)");
 
     return QSet<QUmlInterface *>();
 }
@@ -246,7 +245,7 @@ void QUmlPort::addProvided(QUmlInterface *provided)
 {
     // This is a read-only derived association end
 
-    qWarning("UmlPort::addProvided(): to be implemented (this is a derived association end)");
+    qWarning("QUmlPort::addProvided(): to be implemented (this is a derived association end)");
     Q_UNUSED(provided);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -258,7 +257,7 @@ void QUmlPort::removeProvided(QUmlInterface *provided)
 {
     // This is a read-only derived association end
 
-    qWarning("UmlPort::removeProvided(): to be implemented (this is a derived association end)");
+    qWarning("QUmlPort::removeProvided(): to be implemented (this is a derived association end)");
     Q_UNUSED(provided);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -309,7 +308,7 @@ const QSet<QUmlInterface *> QUmlPort::required() const
 {
     // This is a read-only derived association end
 
-    qWarning("UmlPort::required(): to be implemented (this is a derived association end)");
+    qWarning("QUmlPort::required(): to be implemented (this is a derived association end)");
 
     return QSet<QUmlInterface *>();
 }
@@ -318,7 +317,7 @@ void QUmlPort::addRequired(QUmlInterface *required)
 {
     // This is a read-only derived association end
 
-    qWarning("UmlPort::addRequired(): to be implemented (this is a derived association end)");
+    qWarning("QUmlPort::addRequired(): to be implemented (this is a derived association end)");
     Q_UNUSED(required);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -330,7 +329,7 @@ void QUmlPort::removeRequired(QUmlInterface *required)
 {
     // This is a read-only derived association end
 
-    qWarning("UmlPort::removeRequired(): to be implemented (this is a derived association end)");
+    qWarning("QUmlPort::removeRequired(): to be implemented (this is a derived association end)");
     Q_UNUSED(required);
 
     if (false /* <derivedexclusion-criteria> */) {

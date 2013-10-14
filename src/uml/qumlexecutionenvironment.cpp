@@ -62,7 +62,6 @@
 #include <QtUml/QUmlInterfaceRealization>
 #include <QtUml/QUmlNamedElement>
 #include <QtUml/QUmlNamespace>
-#include <QtUml/QUmlNode>
 #include <QtUml/QUmlOperation>
 #include <QtUml/QUmlPackage>
 #include <QtUml/QUmlPackageableElement>

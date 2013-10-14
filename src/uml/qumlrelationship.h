@@ -54,7 +54,6 @@ QT_MODULE(QtUml)
 class Q_UML_EXPORT QUmlRelationship : public virtual QUmlElement
 {
 public:
-
     Q_DECL_HIDDEN virtual QModelingElement *clone() const;
 
     // Owned attributes

@@ -47,7 +47,6 @@
 #include <QtUml/QUmlInteraction>
 #include <QtUml/QUmlInteractionOperand>
 #include <QtUml/QUmlLifeline>
-#include <QtUml/QUmlNamedElement>
 #include <QtUml/QUmlNamespace>
 #include <QtUml/QUmlPackage>
 #include <QtUml/QUmlStringExpression>

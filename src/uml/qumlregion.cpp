@@ -49,11 +49,9 @@
 #include <QtUml/QUmlElement>
 #include <QtUml/QUmlElementImport>
 #include <QtUml/QUmlNamedElement>
-#include <QtUml/QUmlNamespace>
 #include <QtUml/QUmlPackage>
 #include <QtUml/QUmlPackageableElement>
 #include <QtUml/QUmlPackageImport>
-#include <QtUml/QUmlRedefinableElement>
 #include <QtUml/QUmlState>
 #include <QtUml/QUmlStateMachine>
 #include <QtUml/QUmlStringExpression>
@@ -145,7 +143,7 @@ QUmlClassifier *QUmlRegion::redefinitionContext() const
 {
     // This is a read-only derived association end
 
-    qWarning("UmlRegion::redefinitionContext(): to be implemented (this is a derived association end)");
+    qWarning("QUmlRegion::redefinitionContext(): to be implemented (this is a derived association end)");
 
     return 0;
 }
@@ -154,7 +152,7 @@ void QUmlRegion::setRedefinitionContext(QUmlClassifier *redefinitionContext)
 {
     // This is a read-only derived association end
 
-    qWarning("UmlRegion::setRedefinitionContext(): to be implemented (this is a derived association end)");
+    qWarning("QUmlRegion::setRedefinitionContext(): to be implemented (this is a derived association end)");
     Q_UNUSED(redefinitionContext);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -319,7 +317,7 @@ void QUmlRegion::removeTransition(QUmlTransition *transition)
  */
 bool QUmlRegion::belongsToPSM() const
 {
-    qWarning("UmlRegion::belongsToPSM(): to be implemented (operation)");
+    qWarning("QUmlRegion::belongsToPSM(): to be implemented (operation)");
 
     return bool ();
 }
@@ -329,7 +327,7 @@ bool QUmlRegion::belongsToPSM() const
  */
 QUmlStateMachine *QUmlRegion::containingStateMachine() const
 {
-    qWarning("UmlRegion::containingStateMachine(): to be implemented (operation)");
+    qWarning("QUmlRegion::containingStateMachine(): to be implemented (operation)");
 
     return 0;
 }
@@ -339,7 +337,7 @@ QUmlStateMachine *QUmlRegion::containingStateMachine() const
  */
 bool QUmlRegion::isConsistentWith(QUmlRedefinableElement *redefinee) const
 {
-    qWarning("UmlRegion::isConsistentWith(): to be implemented (operation)");
+    qWarning("QUmlRegion::isConsistentWith(): to be implemented (operation)");
 
     Q_UNUSED(redefinee);
     return bool ();
@@ -350,7 +348,7 @@ bool QUmlRegion::isConsistentWith(QUmlRedefinableElement *redefinee) const
  */
 bool QUmlRegion::isRedefinitionContextValid(QUmlRegion *redefined) const
 {
-    qWarning("UmlRegion::isRedefinitionContextValid(): to be implemented (operation)");
+    qWarning("QUmlRegion::isRedefinitionContextValid(): to be implemented (operation)");
 
     Q_UNUSED(redefined);
     return bool ();

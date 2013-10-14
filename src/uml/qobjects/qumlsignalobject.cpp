@@ -475,6 +475,7 @@ bool QUmlSignalObject::isTemplateParameter() const
 }
 
 // OPERATIONS [Type]
+
 // OPERATIONS [RedefinableElement]
 
 bool QUmlSignalObject::isConsistentWith(QObject *redefinee) const

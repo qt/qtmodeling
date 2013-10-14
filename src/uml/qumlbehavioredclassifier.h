@@ -57,7 +57,6 @@ class QUmlInterfaceRealization;
 class Q_UML_EXPORT QUmlBehavioredClassifier : public virtual QUmlClassifier
 {
 public:
-
     Q_DECL_HIDDEN virtual QModelingElement *clone() const;
 
     // Owned attributes

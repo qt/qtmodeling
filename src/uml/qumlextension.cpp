@@ -152,7 +152,7 @@ bool QUmlExtension::isRequired() const
 {
     // This is a read-only derived property
 
-    qWarning("UmlExtension::isRequired(): to be implemented (this is a derived property)");
+    qWarning("QUmlExtension::isRequired(): to be implemented (this is a derived property)");
 
     return bool();
 }
@@ -161,7 +161,7 @@ void QUmlExtension::setRequired(bool isRequired)
 {
     // This is a read-only derived property
 
-    qWarning("UmlExtension::setRequired(): to be implemented (this is a derived property)");
+    qWarning("QUmlExtension::setRequired(): to be implemented (this is a derived property)");
     Q_UNUSED(isRequired);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -176,7 +176,7 @@ QUmlClass *QUmlExtension::metaclass() const
 {
     // This is a read-only derived association end
 
-    qWarning("UmlExtension::metaclass(): to be implemented (this is a derived association end)");
+    qWarning("QUmlExtension::metaclass(): to be implemented (this is a derived association end)");
 
     return 0;
 }
@@ -185,7 +185,7 @@ void QUmlExtension::setMetaclass(QUmlClass *metaclass)
 {
     // This is a read-only derived association end
 
-    qWarning("UmlExtension::setMetaclass(): to be implemented (this is a derived association end)");
+    qWarning("QUmlExtension::setMetaclass(): to be implemented (this is a derived association end)");
     Q_UNUSED(metaclass);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -222,7 +222,7 @@ void QUmlExtension::setOwnedEnd(QUmlExtensionEnd *ownedEnd)
  */
 QUmlProperty *QUmlExtension::metaclassEnd() const
 {
-    qWarning("UmlExtension::metaclassEnd(): to be implemented (operation)");
+    qWarning("QUmlExtension::metaclassEnd(): to be implemented (operation)");
 
     return 0;
 }

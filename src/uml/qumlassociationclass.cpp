@@ -43,7 +43,6 @@
 #include "private/qumlassociationclassobject_p.h"
 
 #include <QtUml/QUmlBehavior>
-#include <QtUml/QUmlClass>
 #include <QtUml/QUmlClassifier>
 #include <QtUml/QUmlClassifierTemplateParameter>
 #include <QtUml/QUmlCollaborationUse>

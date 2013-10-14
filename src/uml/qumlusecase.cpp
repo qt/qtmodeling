@@ -346,7 +346,7 @@ void QUmlUseCase::removeSubject(QUmlClassifier *subject)
  */
 QSet<QUmlUseCase *> QUmlUseCase::allIncludedUseCases() const
 {
-    qWarning("UmlUseCase::allIncludedUseCases(): to be implemented (operation)");
+    qWarning("QUmlUseCase::allIncludedUseCases(): to be implemented (operation)");
 
     return QSet<QUmlUseCase *> ();
 }

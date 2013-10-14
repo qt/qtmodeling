@@ -632,6 +632,7 @@ bool QUmlAssociationClassObject::isTemplateParameter() const
 }
 
 // OPERATIONS [Type]
+
 // OPERATIONS [RedefinableElement]
 
 bool QUmlAssociationClassObject::isConsistentWith(QObject *redefinee) const

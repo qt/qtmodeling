@@ -45,8 +45,8 @@
 
 #include <QtUml/QUmlVertex>
 
-
 #include <QtUml/QtUmlNamespace>
+
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE

@@ -43,7 +43,6 @@
 #include "private/qumltemplateparametersubstitutionobject_p.h"
 
 #include <QtUml/QUmlComment>
-#include <QtUml/QUmlElement>
 #include <QtUml/QUmlParameterableElement>
 #include <QtUml/QUmlTemplateBinding>
 #include <QtUml/QUmlTemplateParameter>

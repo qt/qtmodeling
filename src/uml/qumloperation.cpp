@@ -59,7 +59,6 @@
 #include <QtUml/QUmlPackageableElement>
 #include <QtUml/QUmlPackageImport>
 #include <QtUml/QUmlParameter>
-#include <QtUml/QUmlParameterableElement>
 #include <QtUml/QUmlParameterSet>
 #include <QtUml/QUmlRedefinableElement>
 #include <QtUml/QUmlStringExpression>
@@ -283,7 +282,7 @@ bool QUmlOperation::isOrdered() const
 {
     // This is a read-only derived property
 
-    qWarning("UmlOperation::isOrdered(): to be implemented (this is a derived property)");
+    qWarning("QUmlOperation::isOrdered(): to be implemented (this is a derived property)");
 
     return bool();
 }
@@ -292,7 +291,7 @@ void QUmlOperation::setOrdered(bool isOrdered)
 {
     // This is a read-only derived property
 
-    qWarning("UmlOperation::setOrdered(): to be implemented (this is a derived property)");
+    qWarning("QUmlOperation::setOrdered(): to be implemented (this is a derived property)");
     Q_UNUSED(isOrdered);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -327,7 +326,7 @@ bool QUmlOperation::isUnique() const
 {
     // This is a read-only derived property
 
-    qWarning("UmlOperation::isUnique(): to be implemented (this is a derived property)");
+    qWarning("QUmlOperation::isUnique(): to be implemented (this is a derived property)");
 
     return bool();
 }
@@ -336,7 +335,7 @@ void QUmlOperation::setUnique(bool isUnique)
 {
     // This is a read-only derived property
 
-    qWarning("UmlOperation::setUnique(): to be implemented (this is a derived property)");
+    qWarning("QUmlOperation::setUnique(): to be implemented (this is a derived property)");
     Q_UNUSED(isUnique);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -351,7 +350,7 @@ int QUmlOperation::lower() const
 {
     // This is a read-only derived property
 
-    qWarning("UmlOperation::lower(): to be implemented (this is a derived property)");
+    qWarning("QUmlOperation::lower(): to be implemented (this is a derived property)");
 
     return int();
 }
@@ -360,7 +359,7 @@ void QUmlOperation::setLower(int lower)
 {
     // This is a read-only derived property
 
-    qWarning("UmlOperation::setLower(): to be implemented (this is a derived property)");
+    qWarning("QUmlOperation::setLower(): to be implemented (this is a derived property)");
     Q_UNUSED(lower);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -583,7 +582,7 @@ QUmlType *QUmlOperation::type() const
 {
     // This is a read-only derived association end
 
-    qWarning("UmlOperation::type(): to be implemented (this is a derived association end)");
+    qWarning("QUmlOperation::type(): to be implemented (this is a derived association end)");
 
     return 0;
 }
@@ -592,7 +591,7 @@ void QUmlOperation::setType(QUmlType *type)
 {
     // This is a read-only derived association end
 
-    qWarning("UmlOperation::setType(): to be implemented (this is a derived association end)");
+    qWarning("QUmlOperation::setType(): to be implemented (this is a derived association end)");
     Q_UNUSED(type);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -607,7 +606,7 @@ int QUmlOperation::upper() const
 {
     // This is a read-only derived property
 
-    qWarning("UmlOperation::upper(): to be implemented (this is a derived property)");
+    qWarning("QUmlOperation::upper(): to be implemented (this is a derived property)");
 
     return int();
 }
@@ -616,7 +615,7 @@ void QUmlOperation::setUpper(int upper)
 {
     // This is a read-only derived property
 
-    qWarning("UmlOperation::setUpper(): to be implemented (this is a derived property)");
+    qWarning("QUmlOperation::setUpper(): to be implemented (this is a derived property)");
     Q_UNUSED(upper);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -631,7 +630,7 @@ void QUmlOperation::setUpper(int upper)
  */
 bool QUmlOperation::isConsistentWith(QUmlRedefinableElement *redefinee) const
 {
-    qWarning("UmlOperation::isConsistentWith(): to be implemented (operation)");
+    qWarning("QUmlOperation::isConsistentWith(): to be implemented (operation)");
 
     Q_UNUSED(redefinee);
     return bool ();
@@ -642,7 +641,7 @@ bool QUmlOperation::isConsistentWith(QUmlRedefinableElement *redefinee) const
  */
 QSet<QUmlParameter *> QUmlOperation::returnResult() const
 {
-    qWarning("UmlOperation::returnResult(): to be implemented (operation)");
+    qWarning("QUmlOperation::returnResult(): to be implemented (operation)");
 
     return QSet<QUmlParameter *> ();
 }

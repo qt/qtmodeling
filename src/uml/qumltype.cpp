@@ -112,7 +112,7 @@ void QUmlType::setPackage(QUmlPackage *package)
  */
 bool QUmlType::conformsTo(QUmlType *other) const
 {
-    qWarning("UmlType::conformsTo(): to be implemented (operation)");
+    qWarning("QUmlType::conformsTo(): to be implemented (operation)");
 
     Q_UNUSED(other);
     return bool ();

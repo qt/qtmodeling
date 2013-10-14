@@ -47,7 +47,6 @@
 #include <QtUml/QUmlConnectorEnd>
 #include <QtUml/QUmlDependency>
 #include <QtUml/QUmlElement>
-#include <QtUml/QUmlMultiplicityElement>
 #include <QtUml/QUmlNamedElement>
 #include <QtUml/QUmlNamespace>
 #include <QtUml/QUmlOperation>
@@ -122,7 +121,7 @@ QString QUmlParameter::default_() const
 {
     // This is a read-write derived property
 
-    qWarning("UmlParameter::default_(): to be implemented (this is a derived property)");
+    qWarning("QUmlParameter::default_(): to be implemented (this is a derived property)");
 
     return QString();
 }
@@ -131,7 +130,7 @@ void QUmlParameter::setDefault(QString default_)
 {
     // This is a read-write derived property
 
-    qWarning("UmlParameter::setDefault(): to be implemented (this is a derived property)");
+    qWarning("QUmlParameter::setDefault(): to be implemented (this is a derived property)");
     Q_UNUSED(default_);
 
     if (false /* <derivedexclusion-criteria> */) {

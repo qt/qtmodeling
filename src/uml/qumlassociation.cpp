@@ -42,7 +42,6 @@
 
 #include "private/qumlassociationobject_p.h"
 
-#include <QtUml/QUmlClassifier>
 #include <QtUml/QUmlClassifierTemplateParameter>
 #include <QtUml/QUmlCollaborationUse>
 #include <QtUml/QUmlComment>
@@ -149,7 +148,7 @@ const QList<QUmlType *> QUmlAssociation::endTypes() const
 {
     // This is a read-only derived association end
 
-    qWarning("UmlAssociation::endTypes(): to be implemented (this is a derived association end)");
+    qWarning("QUmlAssociation::endTypes(): to be implemented (this is a derived association end)");
 
     return QList<QUmlType *>();
 }
@@ -158,7 +157,7 @@ void QUmlAssociation::addEndType(QUmlType *endType)
 {
     // This is a read-only derived association end
 
-    qWarning("UmlAssociation::addEndType(): to be implemented (this is a derived association end)");
+    qWarning("QUmlAssociation::addEndType(): to be implemented (this is a derived association end)");
     Q_UNUSED(endType);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -173,7 +172,7 @@ void QUmlAssociation::removeEndType(QUmlType *endType)
 {
     // This is a read-only derived association end
 
-    qWarning("UmlAssociation::removeEndType(): to be implemented (this is a derived association end)");
+    qWarning("QUmlAssociation::removeEndType(): to be implemented (this is a derived association end)");
     Q_UNUSED(endType);
 
     if (false /* <derivedexclusion-criteria> */) {

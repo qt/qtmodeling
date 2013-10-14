@@ -46,8 +46,8 @@
 #include <QtUml/QUmlParameterableElement>
 #include <QtUml/QUmlNamedElement>
 
-
 #include <QtUml/QtUmlNamespace>
+
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -57,7 +57,6 @@ QT_MODULE(QtUml)
 class Q_UML_EXPORT QUmlPackageableElement : public QUmlParameterableElement, public virtual QUmlNamedElement
 {
 public:
-
     Q_DECL_HIDDEN virtual QModelingElement *clone() const;
 
     // Owned attributes

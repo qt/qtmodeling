@@ -79,7 +79,6 @@
 #include <QtUml/QUmlRedefinableTemplateSignature>
 #include <QtUml/QUmlRegion>
 #include <QtUml/QUmlState>
-#include <QtUml/QUmlStateMachine>
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlSubstitution>
 #include <QtUml/QUmlTemplateBinding>

@@ -495,6 +495,7 @@ bool QUmlEnumerationObject::isTemplateParameter() const
 }
 
 // OPERATIONS [Type]
+
 // OPERATIONS [RedefinableElement]
 
 bool QUmlEnumerationObject::isConsistentWith(QObject *redefinee) const

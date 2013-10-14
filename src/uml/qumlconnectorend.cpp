@@ -45,7 +45,6 @@
 #include <QtUml/QUmlComment>
 #include <QtUml/QUmlConnectableElement>
 #include <QtUml/QUmlElement>
-#include <QtUml/QUmlMultiplicityElement>
 #include <QtUml/QUmlProperty>
 #include <QtUml/QUmlValueSpecification>
 
@@ -91,7 +90,7 @@ QUmlProperty *QUmlConnectorEnd::definingEnd() const
 {
     // This is a read-only derived association end
 
-    qWarning("UmlConnectorEnd::definingEnd(): to be implemented (this is a derived association end)");
+    qWarning("QUmlConnectorEnd::definingEnd(): to be implemented (this is a derived association end)");
 
     return 0;
 }
@@ -100,7 +99,7 @@ void QUmlConnectorEnd::setDefiningEnd(QUmlProperty *definingEnd)
 {
     // This is a read-only derived association end
 
-    qWarning("UmlConnectorEnd::setDefiningEnd(): to be implemented (this is a derived association end)");
+    qWarning("QUmlConnectorEnd::setDefiningEnd(): to be implemented (this is a derived association end)");
     Q_UNUSED(definingEnd);
 
     if (false /* <derivedexclusion-criteria> */) {

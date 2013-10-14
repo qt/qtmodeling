@@ -43,7 +43,6 @@
 #include "private/qumlcomponentobject_p.h"
 
 #include <QtUml/QUmlBehavior>
-#include <QtUml/QUmlClass>
 #include <QtUml/QUmlClassifier>
 #include <QtUml/QUmlClassifierTemplateParameter>
 #include <QtUml/QUmlCollaborationUse>
@@ -235,7 +234,7 @@ const QSet<QUmlInterface *> QUmlComponent::provided() const
 {
     // This is a read-only derived association end
 
-    qWarning("UmlComponent::provided(): to be implemented (this is a derived association end)");
+    qWarning("QUmlComponent::provided(): to be implemented (this is a derived association end)");
 
     return QSet<QUmlInterface *>();
 }
@@ -244,7 +243,7 @@ void QUmlComponent::addProvided(QUmlInterface *provided)
 {
     // This is a read-only derived association end
 
-    qWarning("UmlComponent::addProvided(): to be implemented (this is a derived association end)");
+    qWarning("QUmlComponent::addProvided(): to be implemented (this is a derived association end)");
     Q_UNUSED(provided);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -256,7 +255,7 @@ void QUmlComponent::removeProvided(QUmlInterface *provided)
 {
     // This is a read-only derived association end
 
-    qWarning("UmlComponent::removeProvided(): to be implemented (this is a derived association end)");
+    qWarning("QUmlComponent::removeProvided(): to be implemented (this is a derived association end)");
     Q_UNUSED(provided);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -320,7 +319,7 @@ const QSet<QUmlInterface *> QUmlComponent::required() const
 {
     // This is a read-only derived association end
 
-    qWarning("UmlComponent::required(): to be implemented (this is a derived association end)");
+    qWarning("QUmlComponent::required(): to be implemented (this is a derived association end)");
 
     return QSet<QUmlInterface *>();
 }
@@ -329,7 +328,7 @@ void QUmlComponent::addRequired(QUmlInterface *required)
 {
     // This is a read-only derived association end
 
-    qWarning("UmlComponent::addRequired(): to be implemented (this is a derived association end)");
+    qWarning("QUmlComponent::addRequired(): to be implemented (this is a derived association end)");
     Q_UNUSED(required);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -341,7 +340,7 @@ void QUmlComponent::removeRequired(QUmlInterface *required)
 {
     // This is a read-only derived association end
 
-    qWarning("UmlComponent::removeRequired(): to be implemented (this is a derived association end)");
+    qWarning("QUmlComponent::removeRequired(): to be implemented (this is a derived association end)");
     Q_UNUSED(required);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -356,7 +355,7 @@ void QUmlComponent::removeRequired(QUmlInterface *required)
  */
 QSet<QUmlInterface *> QUmlComponent::realizedInterfaces(QUmlClassifier *classifier) const
 {
-    qWarning("UmlComponent::realizedInterfaces(): to be implemented (operation)");
+    qWarning("QUmlComponent::realizedInterfaces(): to be implemented (operation)");
 
     Q_UNUSED(classifier);
     return QSet<QUmlInterface *> ();
@@ -367,7 +366,7 @@ QSet<QUmlInterface *> QUmlComponent::realizedInterfaces(QUmlClassifier *classifi
  */
 QSet<QUmlInterface *> QUmlComponent::usedInterfaces(QUmlClassifier *classifier) const
 {
-    qWarning("UmlComponent::usedInterfaces(): to be implemented (operation)");
+    qWarning("QUmlComponent::usedInterfaces(): to be implemented (operation)");
 
     Q_UNUSED(classifier);
     return QSet<QUmlInterface *> ();

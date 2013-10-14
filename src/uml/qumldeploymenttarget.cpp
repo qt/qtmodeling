@@ -44,7 +44,6 @@
 #include <QtUml/QUmlDependency>
 #include <QtUml/QUmlDeployment>
 #include <QtUml/QUmlElement>
-#include <QtUml/QUmlNamedElement>
 #include <QtUml/QUmlNamespace>
 #include <QtUml/QUmlPackage>
 #include <QtUml/QUmlPackageableElement>
@@ -86,7 +85,7 @@ const QSet<QUmlPackageableElement *> QUmlDeploymentTarget::deployedElements() co
 {
     // This is a read-only derived association end
 
-    qWarning("UmlDeploymentTarget::deployedElements(): to be implemented (this is a derived association end)");
+    qWarning("QUmlDeploymentTarget::deployedElements(): to be implemented (this is a derived association end)");
 
     return QSet<QUmlPackageableElement *>();
 }
@@ -95,7 +94,7 @@ void QUmlDeploymentTarget::addDeployedElement(QUmlPackageableElement *deployedEl
 {
     // This is a read-only derived association end
 
-    qWarning("UmlDeploymentTarget::addDeployedElement(): to be implemented (this is a derived association end)");
+    qWarning("QUmlDeploymentTarget::addDeployedElement(): to be implemented (this is a derived association end)");
     Q_UNUSED(deployedElement);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -107,7 +106,7 @@ void QUmlDeploymentTarget::removeDeployedElement(QUmlPackageableElement *deploye
 {
     // This is a read-only derived association end
 
-    qWarning("UmlDeploymentTarget::removeDeployedElement(): to be implemented (this is a derived association end)");
+    qWarning("QUmlDeploymentTarget::removeDeployedElement(): to be implemented (this is a derived association end)");
     Q_UNUSED(deployedElement);
 
     if (false /* <derivedexclusion-criteria> */) {

@@ -733,6 +733,7 @@ bool QUmlInteractionObject::isTemplateParameter() const
 }
 
 // OPERATIONS [Type]
+
 // OPERATIONS [RedefinableElement]
 
 bool QUmlInteractionObject::isConsistentWith(QObject *redefinee) const

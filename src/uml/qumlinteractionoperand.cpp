@@ -50,10 +50,8 @@
 #include <QtUml/QUmlGeneralOrdering>
 #include <QtUml/QUmlInteraction>
 #include <QtUml/QUmlInteractionConstraint>
-#include <QtUml/QUmlInteractionFragment>
 #include <QtUml/QUmlLifeline>
 #include <QtUml/QUmlNamedElement>
-#include <QtUml/QUmlNamespace>
 #include <QtUml/QUmlPackage>
 #include <QtUml/QUmlPackageableElement>
 #include <QtUml/QUmlPackageImport>

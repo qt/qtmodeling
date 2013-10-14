@@ -613,6 +613,7 @@ bool QUmlDeviceObject::isTemplateParameter() const
 }
 
 // OPERATIONS [Type]
+
 // OPERATIONS [RedefinableElement]
 
 bool QUmlDeviceObject::isConsistentWith(QObject *redefinee) const

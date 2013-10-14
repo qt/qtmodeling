@@ -40,7 +40,6 @@
 ****************************************************************************/
 #include "qumlstructuredclassifier.h"
 
-#include <QtUml/QUmlClassifier>
 #include <QtUml/QUmlClassifierTemplateParameter>
 #include <QtUml/QUmlCollaborationUse>
 #include <QtUml/QUmlComment>
@@ -227,7 +226,7 @@ const QSet<QUmlProperty *> QUmlStructuredClassifier::parts() const
 {
     // This is a read-only derived association end
 
-    qWarning("UmlStructuredClassifier::parts(): to be implemented (this is a derived association end)");
+    qWarning("QUmlStructuredClassifier::parts(): to be implemented (this is a derived association end)");
 
     return QSet<QUmlProperty *>();
 }
@@ -236,7 +235,7 @@ void QUmlStructuredClassifier::addPart(QUmlProperty *part)
 {
     // This is a read-only derived association end
 
-    qWarning("UmlStructuredClassifier::addPart(): to be implemented (this is a derived association end)");
+    qWarning("QUmlStructuredClassifier::addPart(): to be implemented (this is a derived association end)");
     Q_UNUSED(part);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -248,7 +247,7 @@ void QUmlStructuredClassifier::removePart(QUmlProperty *part)
 {
     // This is a read-only derived association end
 
-    qWarning("UmlStructuredClassifier::removePart(): to be implemented (this is a derived association end)");
+    qWarning("QUmlStructuredClassifier::removePart(): to be implemented (this is a derived association end)");
     Q_UNUSED(part);
 
     if (false /* <derivedexclusion-criteria> */) {

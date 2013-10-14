@@ -43,7 +43,6 @@
 #include "private/qumlinteractionobject_p.h"
 
 #include <QtUml/QUmlAction>
-#include <QtUml/QUmlBehavior>
 #include <QtUml/QUmlBehavioralFeature>
 #include <QtUml/QUmlBehavioredClassifier>
 #include <QtUml/QUmlClass>
@@ -63,7 +62,6 @@
 #include <QtUml/QUmlGeneralization>
 #include <QtUml/QUmlGeneralizationSet>
 #include <QtUml/QUmlGeneralOrdering>
-#include <QtUml/QUmlInteractionFragment>
 #include <QtUml/QUmlInteractionOperand>
 #include <QtUml/QUmlInterfaceRealization>
 #include <QtUml/QUmlLifeline>

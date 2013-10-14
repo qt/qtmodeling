@@ -60,7 +60,6 @@ class QUmlParameterSet;
 class Q_UML_EXPORT QUmlBehavior : public QUmlClass
 {
 public:
-
     Q_DECL_HIDDEN virtual QModelingElement *clone() const;
 
     // Owned attributes

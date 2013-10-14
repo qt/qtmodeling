@@ -175,7 +175,7 @@ void QUmlStringExpression::removeSubExpression(QUmlStringExpression *subExpressi
  */
 QString QUmlStringExpression::stringValue() const
 {
-    qWarning("UmlStringExpression::stringValue(): to be implemented (operation)");
+    qWarning("QUmlStringExpression::stringValue(): to be implemented (operation)");
 
     return QString ();
 }

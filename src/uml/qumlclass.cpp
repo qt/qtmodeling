@@ -168,7 +168,7 @@ const QSet<QUmlExtension *> QUmlClass::extensions() const
 {
     // This is a read-only derived association end
 
-    qWarning("UmlClass::extensions(): to be implemented (this is a derived association end)");
+    qWarning("QUmlClass::extensions(): to be implemented (this is a derived association end)");
 
     return QSet<QUmlExtension *>();
 }
@@ -177,7 +177,7 @@ void QUmlClass::addExtension(QUmlExtension *extension)
 {
     // This is a read-only derived association end
 
-    qWarning("UmlClass::addExtension(): to be implemented (this is a derived association end)");
+    qWarning("QUmlClass::addExtension(): to be implemented (this is a derived association end)");
     Q_UNUSED(extension);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -194,7 +194,7 @@ void QUmlClass::removeExtension(QUmlExtension *extension)
 {
     // This is a read-only derived association end
 
-    qWarning("UmlClass::removeExtension(): to be implemented (this is a derived association end)");
+    qWarning("QUmlClass::removeExtension(): to be implemented (this is a derived association end)");
     Q_UNUSED(extension);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -436,7 +436,7 @@ const QSet<QUmlClass *> QUmlClass::superClasses() const
 {
     // This is a read-write derived association end
 
-    qWarning("UmlClass::superClasses(): to be implemented (this is a derived association end)");
+    qWarning("QUmlClass::superClasses(): to be implemented (this is a derived association end)");
 
     return QSet<QUmlClass *>();
 }
@@ -445,7 +445,7 @@ void QUmlClass::addSuperClass(QUmlClass *superClass)
 {
     // This is a read-write derived association end
 
-    qWarning("UmlClass::addSuperClass(): to be implemented (this is a derived association end)");
+    qWarning("QUmlClass::addSuperClass(): to be implemented (this is a derived association end)");
     Q_UNUSED(superClass);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -457,7 +457,7 @@ void QUmlClass::removeSuperClass(QUmlClass *superClass)
 {
     // This is a read-write derived association end
 
-    qWarning("UmlClass::removeSuperClass(): to be implemented (this is a derived association end)");
+    qWarning("QUmlClass::removeSuperClass(): to be implemented (this is a derived association end)");
     Q_UNUSED(superClass);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -472,7 +472,7 @@ void QUmlClass::removeSuperClass(QUmlClass *superClass)
  */
 QSet<QUmlNamedElement *> QUmlClass::inherit(QSet<QUmlNamedElement *> inhs) const
 {
-    qWarning("UmlClass::inherit(): to be implemented (operation)");
+    qWarning("QUmlClass::inherit(): to be implemented (operation)");
 
     Q_UNUSED(inhs);
     return QSet<QUmlNamedElement *> ();

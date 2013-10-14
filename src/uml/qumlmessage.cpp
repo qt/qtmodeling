@@ -48,7 +48,6 @@
 #include <QtUml/QUmlElement>
 #include <QtUml/QUmlInteraction>
 #include <QtUml/QUmlMessageEnd>
-#include <QtUml/QUmlNamedElement>
 #include <QtUml/QUmlNamespace>
 #include <QtUml/QUmlPackage>
 #include <QtUml/QUmlStringExpression>
@@ -195,7 +194,7 @@ QtUml::MessageKind QUmlMessage::messageKind() const
 {
     // This is a read-only derived property
 
-    qWarning("UmlMessage::messageKind(): to be implemented (this is a derived property)");
+    qWarning("QUmlMessage::messageKind(): to be implemented (this is a derived property)");
 
     return QtUml::MessageKind();
 }
@@ -204,7 +203,7 @@ void QUmlMessage::setMessageKind(QtUml::MessageKind messageKind)
 {
     // This is a read-only derived property
 
-    qWarning("UmlMessage::setMessageKind(): to be implemented (this is a derived property)");
+    qWarning("QUmlMessage::setMessageKind(): to be implemented (this is a derived property)");
     Q_UNUSED(messageKind);
 
     if (false /* <derivedexclusion-criteria> */) {

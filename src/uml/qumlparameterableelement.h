@@ -56,7 +56,6 @@ class QUmlTemplateParameter;
 class Q_UML_EXPORT QUmlParameterableElement : public virtual QUmlElement
 {
 public:
-
     Q_DECL_HIDDEN virtual QModelingElement *clone() const;
 
     // Owned attributes

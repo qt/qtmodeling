@@ -45,8 +45,8 @@
 
 #include <QtUml/QUmlElement>
 
-
 #include <QtUml/QtUmlNamespace>
+
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -61,7 +61,6 @@ class QUmlStringExpression;
 class Q_UML_EXPORT QUmlNamedElement : public virtual QUmlElement
 {
 public:
-
     Q_DECL_HIDDEN virtual QModelingElement *clone() const;
 
     // Owned attributes

@@ -49,7 +49,6 @@
 #include <QtUml/QUmlNamedElement>
 #include <QtUml/QUmlNamespace>
 #include <QtUml/QUmlPackage>
-#include <QtUml/QUmlRedefinableElement>
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlUseCase>
 

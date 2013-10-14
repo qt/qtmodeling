@@ -56,7 +56,6 @@ QT_MODULE(QtUml)
 class Q_UML_EXPORT QUmlStructuralFeature : public virtual QUmlTypedElement, public QUmlMultiplicityElement, public QUmlFeature
 {
 public:
-
     Q_DECL_HIDDEN virtual QModelingElement *clone() const;
 
     // Owned attributes

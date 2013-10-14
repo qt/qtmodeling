@@ -46,6 +46,7 @@
 
 #include <QtCore/QDir>
 #include <QtCore/QStack>
+#include <QtCore/QJsonObject>
 #include <QtCore/QPluginLoader>
 #include <QtCore/QCoreApplication>
 

@@ -475,6 +475,7 @@ bool QUmlInformationItemObject::isTemplateParameter() const
 }
 
 // OPERATIONS [Type]
+
 // OPERATIONS [RedefinableElement]
 
 bool QUmlInformationItemObject::isConsistentWith(QObject *redefinee) const

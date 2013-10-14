@@ -42,7 +42,6 @@
 
 #include "private/qumldatatypeobject_p.h"
 
-#include <QtUml/QUmlClassifier>
 #include <QtUml/QUmlClassifierTemplateParameter>
 #include <QtUml/QUmlCollaborationUse>
 #include <QtUml/QUmlComment>
@@ -248,7 +247,7 @@ void QUmlDataType::removeOwnedOperation(QUmlOperation *ownedOperation)
  */
 QSet<QUmlNamedElement *> QUmlDataType::inherit(QSet<QUmlNamedElement *> inhs) const
 {
-    qWarning("UmlDataType::inherit(): to be implemented (operation)");
+    qWarning("QUmlDataType::inherit(): to be implemented (operation)");
 
     Q_UNUSED(inhs);
     return QSet<QUmlNamedElement *> ();

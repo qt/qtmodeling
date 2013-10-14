@@ -51,7 +51,6 @@
 #include <QtUml/QUmlDependency>
 #include <QtUml/QUmlElement>
 #include <QtUml/QUmlInterruptibleActivityRegion>
-#include <QtUml/QUmlMultiplicityElement>
 #include <QtUml/QUmlNamedElement>
 #include <QtUml/QUmlNamespace>
 #include <QtUml/QUmlPackage>

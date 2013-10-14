@@ -59,7 +59,6 @@
 #include <QtUml/QUmlPackage>
 #include <QtUml/QUmlPackageableElement>
 #include <QtUml/QUmlParameterableElement>
-#include <QtUml/QUmlProperty>
 #include <QtUml/QUmlRedefinableElement>
 #include <QtUml/QUmlStereotype>
 #include <QtUml/QUmlStringExpression>
@@ -146,7 +145,7 @@ int QUmlExtensionEnd::lower() const
 {
     // This is a read-write derived property
 
-    qWarning("UmlExtensionEnd::lower(): to be implemented (this is a derived property)");
+    qWarning("QUmlExtensionEnd::lower(): to be implemented (this is a derived property)");
 
     return int();
 }
@@ -155,7 +154,7 @@ void QUmlExtensionEnd::setLower(int lower)
 {
     // This is a read-write derived property
 
-    qWarning("UmlExtensionEnd::setLower(): to be implemented (this is a derived property)");
+    qWarning("QUmlExtensionEnd::setLower(): to be implemented (this is a derived property)");
     Q_UNUSED(lower);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -191,7 +190,7 @@ void QUmlExtensionEnd::setType(QUmlStereotype *type)
  */
 int QUmlExtensionEnd::lowerBound() const
 {
-    qWarning("UmlExtensionEnd::lowerBound(): to be implemented (operation)");
+    qWarning("QUmlExtensionEnd::lowerBound(): to be implemented (operation)");
 
     return int ();
 }

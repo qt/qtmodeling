@@ -42,7 +42,6 @@
 
 #include <QtUml/QUmlComment>
 #include <QtUml/QUmlDependency>
-#include <QtUml/QUmlElement>
 #include <QtUml/QUmlNamespace>
 #include <QtUml/QUmlPackage>
 #include <QtUml/QUmlStringExpression>
@@ -215,7 +214,7 @@ void QUmlNamedElement::setQualifiedName(QString qualifiedName)
 {
     // This is a read-only derived property
 
-    qWarning("UmlNamedElement::setQualifiedName(): to be implemented (this is a derived property)");
+    qWarning("QUmlNamedElement::setQualifiedName(): to be implemented (this is a derived property)");
     Q_UNUSED(qualifiedName);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -268,7 +267,7 @@ QList<QUmlNamespace *> QUmlNamedElement::allNamespaces() const
  */
 QSet<QUmlPackage *> QUmlNamedElement::allOwningPackages() const
 {
-    qWarning("UmlNamedElement::allOwningPackages(): to be implemented (operation)");
+    qWarning("QUmlNamedElement::allOwningPackages(): to be implemented (operation)");
 
     return QSet<QUmlPackage *> ();
 }
@@ -278,7 +277,7 @@ QSet<QUmlPackage *> QUmlNamedElement::allOwningPackages() const
  */
 bool QUmlNamedElement::isDistinguishableFrom(QUmlNamedElement *n, QUmlNamespace *ns) const
 {
-    qWarning("UmlNamedElement::isDistinguishableFrom(): to be implemented (operation)");
+    qWarning("QUmlNamedElement::isDistinguishableFrom(): to be implemented (operation)");
 
     Q_UNUSED(n);
     Q_UNUSED(ns);

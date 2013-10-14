@@ -56,7 +56,6 @@ class QUmlExceptionHandler;
 class Q_UML_EXPORT QUmlExecutableNode : public QUmlActivityNode
 {
 public:
-
     Q_DECL_HIDDEN virtual QModelingElement *clone() const;
 
     // Owned attributes

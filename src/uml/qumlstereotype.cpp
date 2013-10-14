@@ -43,7 +43,6 @@
 #include "private/qumlstereotypeobject_p.h"
 
 #include <QtUml/QUmlBehavior>
-#include <QtUml/QUmlClass>
 #include <QtUml/QUmlClassifier>
 #include <QtUml/QUmlClassifierTemplateParameter>
 #include <QtUml/QUmlCollaborationUse>
@@ -211,7 +210,7 @@ QUmlProfile *QUmlStereotype::profile() const
 {
     // This is a read-only derived association end
 
-    qWarning("UmlStereotype::profile(): to be implemented (this is a derived association end)");
+    qWarning("QUmlStereotype::profile(): to be implemented (this is a derived association end)");
 
     return 0;
 }
@@ -220,7 +219,7 @@ void QUmlStereotype::setProfile(QUmlProfile *profile)
 {
     // This is a read-only derived association end
 
-    qWarning("UmlStereotype::setProfile(): to be implemented (this is a derived association end)");
+    qWarning("QUmlStereotype::setProfile(): to be implemented (this is a derived association end)");
     Q_UNUSED(profile);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -235,7 +234,7 @@ void QUmlStereotype::setProfile(QUmlProfile *profile)
  */
 QUmlProfile *QUmlStereotype::containingProfile() const
 {
-    qWarning("UmlStereotype::containingProfile(): to be implemented (operation)");
+    qWarning("QUmlStereotype::containingProfile(): to be implemented (operation)");
 
     return 0;
 }

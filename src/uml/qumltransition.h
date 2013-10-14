@@ -46,8 +46,8 @@
 #include <QtUml/QUmlRedefinableElement>
 #include <QtUml/QUmlNamespace>
 
-
 #include <QtUml/QtUmlNamespace>
+
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE

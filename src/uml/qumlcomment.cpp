@@ -42,8 +42,6 @@
 
 #include "private/qumlcommentobject_p.h"
 
-#include <QtUml/QUmlElement>
-
 /*!
     \class QUmlComment
 

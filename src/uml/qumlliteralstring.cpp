@@ -115,7 +115,7 @@ void QUmlLiteralString::setValue(QString value)
  */
 bool QUmlLiteralString::isComputable() const
 {
-    qWarning("UmlLiteralString::isComputable(): to be implemented (operation)");
+    qWarning("QUmlLiteralString::isComputable(): to be implemented (operation)");
 
     return bool ();
 }
@@ -125,7 +125,7 @@ bool QUmlLiteralString::isComputable() const
  */
 QString QUmlLiteralString::stringValue() const
 {
-    qWarning("UmlLiteralString::stringValue(): to be implemented (operation)");
+    qWarning("QUmlLiteralString::stringValue(): to be implemented (operation)");
 
     return QString ();
 }

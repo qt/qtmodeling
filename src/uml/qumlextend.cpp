@@ -47,7 +47,6 @@
 #include <QtUml/QUmlDependency>
 #include <QtUml/QUmlElement>
 #include <QtUml/QUmlExtensionPoint>
-#include <QtUml/QUmlNamedElement>
 #include <QtUml/QUmlNamespace>
 #include <QtUml/QUmlPackage>
 #include <QtUml/QUmlStringExpression>

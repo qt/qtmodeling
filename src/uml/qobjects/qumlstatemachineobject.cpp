@@ -679,7 +679,9 @@ bool QUmlStateMachineObject::isTemplateParameter() const
 }
 
 // OPERATIONS [Type]
+
 // OPERATIONS [RedefinableElement]
+
 // OPERATIONS [TemplateableElement]
 
 QSet<QObject *> QUmlStateMachineObject::parameterableElements() const

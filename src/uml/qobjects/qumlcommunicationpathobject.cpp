@@ -514,6 +514,7 @@ bool QUmlCommunicationPathObject::isTemplateParameter() const
 }
 
 // OPERATIONS [Type]
+
 // OPERATIONS [RedefinableElement]
 
 bool QUmlCommunicationPathObject::isConsistentWith(QObject *redefinee) const

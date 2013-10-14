@@ -117,7 +117,7 @@ void QUmlLiteralBoolean::setValue(bool value)
  */
 bool QUmlLiteralBoolean::booleanValue() const
 {
-    qWarning("UmlLiteralBoolean::booleanValue(): to be implemented (operation)");
+    qWarning("QUmlLiteralBoolean::booleanValue(): to be implemented (operation)");
 
     return bool ();
 }
@@ -127,7 +127,7 @@ bool QUmlLiteralBoolean::booleanValue() const
  */
 bool QUmlLiteralBoolean::isComputable() const
 {
-    qWarning("UmlLiteralBoolean::isComputable(): to be implemented (operation)");
+    qWarning("QUmlLiteralBoolean::isComputable(): to be implemented (operation)");
 
     return bool ();
 }

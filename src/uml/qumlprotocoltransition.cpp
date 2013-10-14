@@ -59,7 +59,6 @@
 #include <QtUml/QUmlRegion>
 #include <QtUml/QUmlStateMachine>
 #include <QtUml/QUmlStringExpression>
-#include <QtUml/QUmlTransition>
 #include <QtUml/QUmlTrigger>
 #include <QtUml/QUmlVertex>
 
@@ -185,7 +184,7 @@ const QSet<QUmlOperation *> QUmlProtocolTransition::referred() const
 {
     // This is a read-only derived association end
 
-    qWarning("UmlProtocolTransition::referred(): to be implemented (this is a derived association end)");
+    qWarning("QUmlProtocolTransition::referred(): to be implemented (this is a derived association end)");
 
     return QSet<QUmlOperation *>();
 }
@@ -194,7 +193,7 @@ void QUmlProtocolTransition::addReferred(QUmlOperation *referred)
 {
     // This is a read-only derived association end
 
-    qWarning("UmlProtocolTransition::addReferred(): to be implemented (this is a derived association end)");
+    qWarning("QUmlProtocolTransition::addReferred(): to be implemented (this is a derived association end)");
     Q_UNUSED(referred);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -206,7 +205,7 @@ void QUmlProtocolTransition::removeReferred(QUmlOperation *referred)
 {
     // This is a read-only derived association end
 
-    qWarning("UmlProtocolTransition::removeReferred(): to be implemented (this is a derived association end)");
+    qWarning("QUmlProtocolTransition::removeReferred(): to be implemented (this is a derived association end)");
     Q_UNUSED(referred);
 
     if (false /* <derivedexclusion-criteria> */) {

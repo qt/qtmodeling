@@ -43,7 +43,6 @@
 #include "private/qumlimageobject_p.h"
 
 #include <QtUml/QUmlComment>
-#include <QtUml/QUmlElement>
 
 /*!
     \class QUmlImage

@@ -118,7 +118,7 @@ QUmlClassifier *QUmlAction::context() const
 {
     // This is a read-only derived association end
 
-    qWarning("UmlAction::context(): to be implemented (this is a derived association end)");
+    qWarning("QUmlAction::context(): to be implemented (this is a derived association end)");
 
     return 0;
 }
@@ -127,7 +127,7 @@ void QUmlAction::setContext(QUmlClassifier *context)
 {
     // This is a read-only derived association end
 
-    qWarning("UmlAction::setContext(): to be implemented (this is a derived association end)");
+    qWarning("QUmlAction::setContext(): to be implemented (this is a derived association end)");
     Q_UNUSED(context);
 
     if (false /* <derivedexclusion-criteria> */) {

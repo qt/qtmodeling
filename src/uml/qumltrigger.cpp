@@ -46,7 +46,6 @@
 #include <QtUml/QUmlDependency>
 #include <QtUml/QUmlElement>
 #include <QtUml/QUmlEvent>
-#include <QtUml/QUmlNamedElement>
 #include <QtUml/QUmlNamespace>
 #include <QtUml/QUmlPackage>
 #include <QtUml/QUmlPort>

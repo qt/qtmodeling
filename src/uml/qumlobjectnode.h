@@ -46,8 +46,8 @@
 #include <QtUml/QUmlActivityNode>
 #include <QtUml/QUmlTypedElement>
 
-
 #include <QtUml/QtUmlNamespace>
+
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -61,7 +61,6 @@ class QUmlValueSpecification;
 class Q_UML_EXPORT QUmlObjectNode : public QUmlActivityNode, public QUmlTypedElement
 {
 public:
-
     Q_DECL_HIDDEN virtual QModelingElement *clone() const;
 
     // Owned attributes

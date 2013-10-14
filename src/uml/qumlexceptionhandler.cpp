@@ -44,7 +44,6 @@
 
 #include <QtUml/QUmlClassifier>
 #include <QtUml/QUmlComment>
-#include <QtUml/QUmlElement>
 #include <QtUml/QUmlExecutableNode>
 #include <QtUml/QUmlObjectNode>
 

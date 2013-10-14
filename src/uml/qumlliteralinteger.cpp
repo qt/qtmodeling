@@ -117,7 +117,7 @@ void QUmlLiteralInteger::setValue(int value)
  */
 int QUmlLiteralInteger::integerValue() const
 {
-    qWarning("UmlLiteralInteger::integerValue(): to be implemented (operation)");
+    qWarning("QUmlLiteralInteger::integerValue(): to be implemented (operation)");
 
     return int ();
 }
@@ -127,7 +127,7 @@ int QUmlLiteralInteger::integerValue() const
  */
 bool QUmlLiteralInteger::isComputable() const
 {
-    qWarning("UmlLiteralInteger::isComputable(): to be implemented (operation)");
+    qWarning("QUmlLiteralInteger::isComputable(): to be implemented (operation)");
 
     return bool ();
 }

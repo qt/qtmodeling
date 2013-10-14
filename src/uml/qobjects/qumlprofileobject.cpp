@@ -316,6 +316,7 @@ QSet<QObject *> QUmlProfileObject::allOwnedElements() const
         set.insert(element->asQModelingObject());
     return set;
 }
+
 // OPERATIONS [NamedElement]
 
 QList<QObject *> QUmlProfileObject::allNamespaces() const

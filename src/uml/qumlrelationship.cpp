@@ -41,7 +41,6 @@
 #include "qumlrelationship.h"
 
 #include <QtUml/QUmlComment>
-#include <QtUml/QUmlElement>
 
 /*!
     \class QUmlRelationship

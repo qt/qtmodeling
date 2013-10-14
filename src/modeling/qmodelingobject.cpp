@@ -111,3 +111,5 @@ QModelingObject::QModelingObject()
 {
 }
 
+QT_END_NAMESPACE
+

@@ -273,7 +273,7 @@ QString QUmlProperty::default_() const
 {
     // This is a read-write derived property
 
-    qWarning("UmlProperty::default_(): to be implemented (this is a derived property)");
+    qWarning("QUmlProperty::default_(): to be implemented (this is a derived property)");
 
     return QString();
 }
@@ -282,7 +282,7 @@ void QUmlProperty::setDefault(QString default_)
 {
     // This is a read-write derived property
 
-    qWarning("UmlProperty::setDefault(): to be implemented (this is a derived property)");
+    qWarning("QUmlProperty::setDefault(): to be implemented (this is a derived property)");
     Q_UNUSED(default_);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -353,7 +353,7 @@ bool QUmlProperty::isComposite() const
 {
     // This is a read-write derived property
 
-    qWarning("UmlProperty::isComposite(): to be implemented (this is a derived property)");
+    qWarning("QUmlProperty::isComposite(): to be implemented (this is a derived property)");
 
     return bool();
 }
@@ -362,7 +362,7 @@ void QUmlProperty::setComposite(bool isComposite)
 {
     // This is a read-write derived property
 
-    qWarning("UmlProperty::setComposite(): to be implemented (this is a derived property)");
+    qWarning("QUmlProperty::setComposite(): to be implemented (this is a derived property)");
     Q_UNUSED(isComposite);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -457,7 +457,7 @@ QUmlProperty *QUmlProperty::opposite() const
 {
     // This is a read-write derived association end
 
-    qWarning("UmlProperty::opposite(): to be implemented (this is a derived association end)");
+    qWarning("QUmlProperty::opposite(): to be implemented (this is a derived association end)");
 
     return 0;
 }
@@ -466,7 +466,7 @@ void QUmlProperty::setOpposite(QUmlProperty *opposite)
 {
     // This is a read-write derived association end
 
-    qWarning("UmlProperty::setOpposite(): to be implemented (this is a derived association end)");
+    qWarning("QUmlProperty::setOpposite(): to be implemented (this is a derived association end)");
     Q_UNUSED(opposite);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -621,7 +621,7 @@ void QUmlProperty::removeSubsettedProperty(QUmlProperty *subsettedProperty)
  */
 bool QUmlProperty::isAttribute(QUmlProperty *p) const
 {
-    qWarning("UmlProperty::isAttribute(): to be implemented (operation)");
+    qWarning("QUmlProperty::isAttribute(): to be implemented (operation)");
 
     Q_UNUSED(p);
     return bool ();
@@ -632,7 +632,7 @@ bool QUmlProperty::isAttribute(QUmlProperty *p) const
  */
 bool QUmlProperty::isCompatibleWith(QUmlParameterableElement *p) const
 {
-    qWarning("UmlProperty::isCompatibleWith(): to be implemented (operation)");
+    qWarning("QUmlProperty::isCompatibleWith(): to be implemented (operation)");
 
     Q_UNUSED(p);
     return bool ();
@@ -643,7 +643,7 @@ bool QUmlProperty::isCompatibleWith(QUmlParameterableElement *p) const
  */
 bool QUmlProperty::isConsistentWith(QUmlRedefinableElement *redefinee) const
 {
-    qWarning("UmlProperty::isConsistentWith(): to be implemented (operation)");
+    qWarning("QUmlProperty::isConsistentWith(): to be implemented (operation)");
 
     Q_UNUSED(redefinee);
     return bool ();
@@ -654,7 +654,7 @@ bool QUmlProperty::isConsistentWith(QUmlRedefinableElement *redefinee) const
  */
 bool QUmlProperty::isNavigable() const
 {
-    qWarning("UmlProperty::isNavigable(): to be implemented (operation)");
+    qWarning("QUmlProperty::isNavigable(): to be implemented (operation)");
 
     return bool ();
 }
@@ -664,7 +664,7 @@ bool QUmlProperty::isNavigable() const
  */
 QSet<QUmlType *> QUmlProperty::subsettingContext() const
 {
-    qWarning("UmlProperty::subsettingContext(): to be implemented (operation)");
+    qWarning("QUmlProperty::subsettingContext(): to be implemented (operation)");
 
     return QSet<QUmlType *> ();
 }

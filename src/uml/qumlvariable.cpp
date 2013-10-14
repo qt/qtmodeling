@@ -49,7 +49,6 @@
 #include <QtUml/QUmlConnectorEnd>
 #include <QtUml/QUmlDependency>
 #include <QtUml/QUmlElement>
-#include <QtUml/QUmlMultiplicityElement>
 #include <QtUml/QUmlNamedElement>
 #include <QtUml/QUmlNamespace>
 #include <QtUml/QUmlPackage>
@@ -166,7 +165,7 @@ void QUmlVariable::setScope(QUmlStructuredActivityNode *scope)
  */
 bool QUmlVariable::isAccessibleBy(QUmlAction *a) const
 {
-    qWarning("UmlVariable::isAccessibleBy(): to be implemented (operation)");
+    qWarning("QUmlVariable::isAccessibleBy(): to be implemented (operation)");
 
     Q_UNUSED(a);
     return bool ();

@@ -184,7 +184,7 @@ void QUmlElementImport::setVisibility(QtUml::VisibilityKind visibility)
  */
 QString QUmlElementImport::getName() const
 {
-    qWarning("UmlElementImport::getName(): to be implemented (operation)");
+    qWarning("QUmlElementImport::getName(): to be implemented (operation)");
 
     return QString ();
 }

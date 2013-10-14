@@ -171,7 +171,7 @@ QtUml::ConnectorKind QUmlConnector::kind() const
 {
     // This is a read-only derived property
 
-    qWarning("UmlConnector::kind(): to be implemented (this is a derived property)");
+    qWarning("QUmlConnector::kind(): to be implemented (this is a derived property)");
 
     return QtUml::ConnectorKind();
 }
@@ -180,7 +180,7 @@ void QUmlConnector::setKind(QtUml::ConnectorKind kind)
 {
     // This is a read-only derived property
 
-    qWarning("UmlConnector::setKind(): to be implemented (this is a derived property)");
+    qWarning("QUmlConnector::setKind(): to be implemented (this is a derived property)");
     Q_UNUSED(kind);
 
     if (false /* <derivedexclusion-criteria> */) {

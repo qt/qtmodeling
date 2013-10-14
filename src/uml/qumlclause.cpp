@@ -43,7 +43,6 @@
 #include "private/qumlclauseobject_p.h"
 
 #include <QtUml/QUmlComment>
-#include <QtUml/QUmlElement>
 #include <QtUml/QUmlExecutableNode>
 #include <QtUml/QUmlOutputPin>
 

@@ -295,6 +295,7 @@ QString QUmlRegionObject::separator() const
 }
 
 // OPERATIONS [RedefinableElement]
+
 // OPERATIONS [Namespace]
 
 QSet<QObject *> QUmlRegionObject::excludeCollisions(QSet<QObject *> imps) const

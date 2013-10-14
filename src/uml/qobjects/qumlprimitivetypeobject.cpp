@@ -484,6 +484,7 @@ bool QUmlPrimitiveTypeObject::isTemplateParameter() const
 }
 
 // OPERATIONS [Type]
+
 // OPERATIONS [RedefinableElement]
 
 bool QUmlPrimitiveTypeObject::isConsistentWith(QObject *redefinee) const

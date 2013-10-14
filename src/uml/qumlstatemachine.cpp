@@ -42,7 +42,6 @@
 
 #include "private/qumlstatemachineobject_p.h"
 
-#include <QtUml/QUmlBehavior>
 #include <QtUml/QUmlBehavioralFeature>
 #include <QtUml/QUmlBehavioredClassifier>
 #include <QtUml/QUmlClass>
@@ -361,7 +360,7 @@ void QUmlStateMachine::removeSubmachineState(QUmlState *submachineState)
  */
 QUmlNamespace *QUmlStateMachine::LCA(QUmlState *s1, QUmlState *s2) const
 {
-    qWarning("UmlStateMachine::LCA(): to be implemented (operation)");
+    qWarning("QUmlStateMachine::LCA(): to be implemented (operation)");
 
     Q_UNUSED(s1);
     Q_UNUSED(s2);
@@ -373,7 +372,7 @@ QUmlNamespace *QUmlStateMachine::LCA(QUmlState *s1, QUmlState *s2) const
  */
 bool QUmlStateMachine::ancestor(QUmlState *s1, QUmlState *s2) const
 {
-    qWarning("UmlStateMachine::ancestor(): to be implemented (operation)");
+    qWarning("QUmlStateMachine::ancestor(): to be implemented (operation)");
 
     Q_UNUSED(s1);
     Q_UNUSED(s2);
@@ -385,7 +384,7 @@ bool QUmlStateMachine::ancestor(QUmlState *s1, QUmlState *s2) const
  */
 bool QUmlStateMachine::isConsistentWith(QUmlRedefinableElement *redefinee) const
 {
-    qWarning("UmlStateMachine::isConsistentWith(): to be implemented (operation)");
+    qWarning("QUmlStateMachine::isConsistentWith(): to be implemented (operation)");
 
     Q_UNUSED(redefinee);
     return bool ();
@@ -396,7 +395,7 @@ bool QUmlStateMachine::isConsistentWith(QUmlRedefinableElement *redefinee) const
  */
 bool QUmlStateMachine::isRedefinitionContextValid(QUmlStateMachine *redefined) const
 {
-    qWarning("UmlStateMachine::isRedefinitionContextValid(): to be implemented (operation)");
+    qWarning("QUmlStateMachine::isRedefinitionContextValid(): to be implemented (operation)");
 
     Q_UNUSED(redefined);
     return bool ();

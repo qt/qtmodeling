@@ -506,6 +506,7 @@ bool QUmlArtifactObject::isTemplateParameter() const
 }
 
 // OPERATIONS [Type]
+
 // OPERATIONS [RedefinableElement]
 
 bool QUmlArtifactObject::isConsistentWith(QObject *redefinee) const

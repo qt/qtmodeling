@@ -45,7 +45,6 @@
 #include <QtUml/QUmlComment>
 #include <QtUml/QUmlDependency>
 #include <QtUml/QUmlElement>
-#include <QtUml/QUmlNamedElement>
 #include <QtUml/QUmlNamespace>
 #include <QtUml/QUmlOccurrenceSpecification>
 #include <QtUml/QUmlPackage>

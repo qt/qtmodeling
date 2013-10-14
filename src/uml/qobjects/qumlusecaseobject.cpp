@@ -529,6 +529,7 @@ bool QUmlUseCaseObject::isTemplateParameter() const
 }
 
 // OPERATIONS [Type]
+
 // OPERATIONS [RedefinableElement]
 
 bool QUmlUseCaseObject::isConsistentWith(QObject *redefinee) const

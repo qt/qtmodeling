@@ -691,7 +691,9 @@ bool QUmlProtocolStateMachineObject::isTemplateParameter() const
 }
 
 // OPERATIONS [Type]
+
 // OPERATIONS [RedefinableElement]
+
 // OPERATIONS [TemplateableElement]
 
 QSet<QObject *> QUmlProtocolStateMachineObject::parameterableElements() const

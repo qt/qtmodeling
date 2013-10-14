@@ -46,8 +46,8 @@
 #include <QtUml/QUmlNamespace>
 #include <QtUml/QUmlFeature>
 
-
 #include <QtUml/QtUmlNamespace>
+
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -63,7 +63,6 @@ class QUmlType;
 class Q_UML_EXPORT QUmlBehavioralFeature : public QUmlNamespace, public QUmlFeature
 {
 public:
-
     Q_DECL_HIDDEN virtual QModelingElement *clone() const;
 
     // Owned attributes

@@ -41,7 +41,6 @@
 #include "qumlbehavioredclassifier.h"
 
 #include <QtUml/QUmlBehavior>
-#include <QtUml/QUmlClassifier>
 #include <QtUml/QUmlClassifierTemplateParameter>
 #include <QtUml/QUmlCollaborationUse>
 #include <QtUml/QUmlComment>

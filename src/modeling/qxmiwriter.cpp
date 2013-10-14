@@ -46,6 +46,7 @@
 
 #include <QtCore/QSet>
 #include <QtCore/QDir>
+#include <QtCore/QJsonObject>
 #include <QtCore/QPluginLoader>
 #include <QtCore/QCoreApplication>
 #include <QtCore/QRegularExpression>

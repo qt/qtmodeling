@@ -419,7 +419,9 @@ bool QUmlFinalStateObject::membersAreDistinguishable() const
 }
 
 // OPERATIONS [RedefinableElement]
+
 // OPERATIONS [Vertex]
+
 // OPERATIONS [State]
 
 QObject *QUmlFinalStateObject::containingStateMachine() const

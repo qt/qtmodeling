@@ -41,7 +41,6 @@
 #include "qumltemplateableelement.h"
 
 #include <QtUml/QUmlComment>
-#include <QtUml/QUmlElement>
 #include <QtUml/QUmlParameterableElement>
 #include <QtUml/QUmlTemplateBinding>
 #include <QtUml/QUmlTemplateSignature>
@@ -158,7 +157,7 @@ void QUmlTemplateableElement::removeTemplateBinding(QUmlTemplateBinding *templat
  */
 bool QUmlTemplateableElement::isTemplate() const
 {
-    qWarning("UmlTemplateableElement::isTemplate(): to be implemented (operation)");
+    qWarning("QUmlTemplateableElement::isTemplate(): to be implemented (operation)");
 
     return bool ();
 }
@@ -168,7 +167,7 @@ bool QUmlTemplateableElement::isTemplate() const
  */
 QSet<QUmlParameterableElement *> QUmlTemplateableElement::parameterableElements() const
 {
-    qWarning("UmlTemplateableElement::parameterableElements(): to be implemented (operation)");
+    qWarning("QUmlTemplateableElement::parameterableElements(): to be implemented (operation)");
 
     return QSet<QUmlParameterableElement *> ();
 }

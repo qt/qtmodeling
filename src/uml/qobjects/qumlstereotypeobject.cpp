@@ -603,6 +603,7 @@ bool QUmlStereotypeObject::isTemplateParameter() const
 }
 
 // OPERATIONS [Type]
+
 // OPERATIONS [RedefinableElement]
 
 bool QUmlStereotypeObject::isConsistentWith(QObject *redefinee) const

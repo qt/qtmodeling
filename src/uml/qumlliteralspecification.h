@@ -54,7 +54,6 @@ QT_MODULE(QtUml)
 class Q_UML_EXPORT QUmlLiteralSpecification : public QUmlValueSpecification
 {
 public:
-
     Q_DECL_HIDDEN virtual QModelingElement *clone() const;
 
 

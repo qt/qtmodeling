@@ -43,7 +43,6 @@
 #include "private/qumlslotobject_p.h"
 
 #include <QtUml/QUmlComment>
-#include <QtUml/QUmlElement>
 #include <QtUml/QUmlInstanceSpecification>
 #include <QtUml/QUmlStructuralFeature>
 #include <QtUml/QUmlValueSpecification>

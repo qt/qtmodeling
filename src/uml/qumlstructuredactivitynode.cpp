@@ -44,7 +44,6 @@
 
 #include <QtUml/QUmlActivity>
 #include <QtUml/QUmlActivityEdge>
-#include <QtUml/QUmlActivityGroup>
 #include <QtUml/QUmlActivityNode>
 #include <QtUml/QUmlActivityPartition>
 #include <QtUml/QUmlClassifier>
@@ -57,7 +56,6 @@
 #include <QtUml/QUmlInputPin>
 #include <QtUml/QUmlInterruptibleActivityRegion>
 #include <QtUml/QUmlNamedElement>
-#include <QtUml/QUmlNamespace>
 #include <QtUml/QUmlOutputPin>
 #include <QtUml/QUmlPackage>
 #include <QtUml/QUmlPackageableElement>
@@ -279,6 +277,7 @@ void QUmlStructuredActivityNode::removeNode(QUmlActivityNode *node)
     }
 }
 
+
 const QSet<QUmlInputPin *> QUmlStructuredActivityNode::structuredNodeInputs() const
 {
     // This is a read-write association end
@@ -314,6 +313,7 @@ void QUmlStructuredActivityNode::removeStructuredNodeInput(QUmlInputPin *structu
         removeInput(structuredNodeInput);
     }
 }
+
 
 const QSet<QUmlOutputPin *> QUmlStructuredActivityNode::structuredNodeOutputs() const
 {

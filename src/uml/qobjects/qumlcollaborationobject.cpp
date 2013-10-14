@@ -539,6 +539,7 @@ bool QUmlCollaborationObject::isTemplateParameter() const
 }
 
 // OPERATIONS [Type]
+
 // OPERATIONS [RedefinableElement]
 
 bool QUmlCollaborationObject::isConsistentWith(QObject *redefinee) const

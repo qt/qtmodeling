@@ -48,7 +48,6 @@
 #include <QtUml/QUmlNamedElement>
 #include <QtUml/QUmlNamespace>
 #include <QtUml/QUmlPackage>
-#include <QtUml/QUmlParameterableElement>
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlTemplateParameter>
 #include <QtUml/QUmlType>
@@ -94,7 +93,7 @@ const QList<QUmlConnectorEnd *> QUmlConnectableElement::ends() const
 {
     // This is a read-only derived association end
 
-    qWarning("UmlConnectableElement::ends(): to be implemented (this is a derived association end)");
+    qWarning("QUmlConnectableElement::ends(): to be implemented (this is a derived association end)");
 
     return QList<QUmlConnectorEnd *>();
 }
@@ -103,7 +102,7 @@ void QUmlConnectableElement::addEnd(QUmlConnectorEnd *end)
 {
     // This is a read-only derived association end
 
-    qWarning("UmlConnectableElement::addEnd(): to be implemented (this is a derived association end)");
+    qWarning("QUmlConnectableElement::addEnd(): to be implemented (this is a derived association end)");
     Q_UNUSED(end);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -120,7 +119,7 @@ void QUmlConnectableElement::removeEnd(QUmlConnectorEnd *end)
 {
     // This is a read-only derived association end
 
-    qWarning("UmlConnectableElement::removeEnd(): to be implemented (this is a derived association end)");
+    qWarning("QUmlConnectableElement::removeEnd(): to be implemented (this is a derived association end)");
     Q_UNUSED(end);
 
     if (false /* <derivedexclusion-criteria> */) {

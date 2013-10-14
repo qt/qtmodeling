@@ -49,7 +49,6 @@
 #include <QtUml/QUmlElementImport>
 #include <QtUml/QUmlNamedElement>
 #include <QtUml/QUmlNamespace>
-#include <QtUml/QUmlPackage>
 #include <QtUml/QUmlPackageableElement>
 #include <QtUml/QUmlPackageImport>
 #include <QtUml/QUmlPackageMerge>

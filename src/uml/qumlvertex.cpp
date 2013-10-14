@@ -43,7 +43,6 @@
 #include <QtUml/QUmlComment>
 #include <QtUml/QUmlDependency>
 #include <QtUml/QUmlElement>
-#include <QtUml/QUmlNamedElement>
 #include <QtUml/QUmlNamespace>
 #include <QtUml/QUmlPackage>
 #include <QtUml/QUmlRegion>
@@ -114,7 +113,7 @@ const QSet<QUmlTransition *> QUmlVertex::incomings() const
 {
     // This is a read-only derived association end
 
-    qWarning("UmlVertex::incomings(): to be implemented (this is a derived association end)");
+    qWarning("QUmlVertex::incomings(): to be implemented (this is a derived association end)");
 
     return QSet<QUmlTransition *>();
 }
@@ -123,7 +122,7 @@ void QUmlVertex::addIncoming(QUmlTransition *incoming)
 {
     // This is a read-only derived association end
 
-    qWarning("UmlVertex::addIncoming(): to be implemented (this is a derived association end)");
+    qWarning("QUmlVertex::addIncoming(): to be implemented (this is a derived association end)");
     Q_UNUSED(incoming);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -140,7 +139,7 @@ void QUmlVertex::removeIncoming(QUmlTransition *incoming)
 {
     // This is a read-only derived association end
 
-    qWarning("UmlVertex::removeIncoming(): to be implemented (this is a derived association end)");
+    qWarning("QUmlVertex::removeIncoming(): to be implemented (this is a derived association end)");
     Q_UNUSED(incoming);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -160,7 +159,7 @@ const QSet<QUmlTransition *> QUmlVertex::outgoings() const
 {
     // This is a read-only derived association end
 
-    qWarning("UmlVertex::outgoings(): to be implemented (this is a derived association end)");
+    qWarning("QUmlVertex::outgoings(): to be implemented (this is a derived association end)");
 
     return QSet<QUmlTransition *>();
 }
@@ -169,7 +168,7 @@ void QUmlVertex::addOutgoing(QUmlTransition *outgoing)
 {
     // This is a read-only derived association end
 
-    qWarning("UmlVertex::addOutgoing(): to be implemented (this is a derived association end)");
+    qWarning("QUmlVertex::addOutgoing(): to be implemented (this is a derived association end)");
     Q_UNUSED(outgoing);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -186,7 +185,7 @@ void QUmlVertex::removeOutgoing(QUmlTransition *outgoing)
 {
     // This is a read-only derived association end
 
-    qWarning("UmlVertex::removeOutgoing(): to be implemented (this is a derived association end)");
+    qWarning("QUmlVertex::removeOutgoing(): to be implemented (this is a derived association end)");
     Q_UNUSED(outgoing);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -206,7 +205,7 @@ void QUmlVertex::removeOutgoing(QUmlTransition *outgoing)
  */
 QUmlStateMachine *QUmlVertex::containingStateMachine() const
 {
-    qWarning("UmlVertex::containingStateMachine(): to be implemented (operation)");
+    qWarning("QUmlVertex::containingStateMachine(): to be implemented (operation)");
 
     return 0;
 }

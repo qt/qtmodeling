@@ -42,7 +42,6 @@
 
 #include "private/qumlsignalobject_p.h"
 
-#include <QtUml/QUmlClassifier>
 #include <QtUml/QUmlClassifierTemplateParameter>
 #include <QtUml/QUmlCollaborationUse>
 #include <QtUml/QUmlComment>

@@ -45,7 +45,6 @@
 #include <QtUml/QUmlDependency>
 #include <QtUml/QUmlElement>
 #include <QtUml/QUmlElementImport>
-#include <QtUml/QUmlNamedElement>
 #include <QtUml/QUmlPackage>
 #include <QtUml/QUmlPackageableElement>
 #include <QtUml/QUmlPackageImport>
@@ -153,7 +152,7 @@ void QUmlNamespace::addImportedMember(QUmlPackageableElement *importedMember)
 {
     // This is a read-only derived association end
 
-    qWarning("UmlNamespace::addImportedMember(): to be implemented (this is a derived association end)");
+    qWarning("QUmlNamespace::addImportedMember(): to be implemented (this is a derived association end)");
     Q_UNUSED(importedMember);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -168,7 +167,7 @@ void QUmlNamespace::removeImportedMember(QUmlPackageableElement *importedMember)
 {
     // This is a read-only derived association end
 
-    qWarning("UmlNamespace::removeImportedMember(): to be implemented (this is a derived association end)");
+    qWarning("QUmlNamespace::removeImportedMember(): to be implemented (this is a derived association end)");
     Q_UNUSED(importedMember);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -365,7 +364,7 @@ void QUmlNamespace::removePackageImport(QUmlPackageImport *packageImport)
  */
 QSet<QUmlPackageableElement *> QUmlNamespace::excludeCollisions(QSet<QUmlPackageableElement *> imps) const
 {
-    qWarning("UmlNamespace::excludeCollisions(): to be implemented (operation)");
+    qWarning("QUmlNamespace::excludeCollisions(): to be implemented (operation)");
 
     Q_UNUSED(imps);
     return QSet<QUmlPackageableElement *> ();
@@ -376,7 +375,7 @@ QSet<QUmlPackageableElement *> QUmlNamespace::excludeCollisions(QSet<QUmlPackage
  */
 QSet<QString> QUmlNamespace::getNamesOfMember(QUmlNamedElement *element) const
 {
-    qWarning("UmlNamespace::getNamesOfMember(): to be implemented (operation)");
+    qWarning("QUmlNamespace::getNamesOfMember(): to be implemented (operation)");
 
     Q_UNUSED(element);
     return QSet<QString> ();
@@ -387,7 +386,7 @@ QSet<QString> QUmlNamespace::getNamesOfMember(QUmlNamedElement *element) const
  */
 QSet<QUmlPackageableElement *> QUmlNamespace::importMembers(QSet<QUmlPackageableElement *> imps) const
 {
-    qWarning("UmlNamespace::importMembers(): to be implemented (operation)");
+    qWarning("QUmlNamespace::importMembers(): to be implemented (operation)");
 
     Q_UNUSED(imps);
     return QSet<QUmlPackageableElement *> ();
@@ -398,7 +397,7 @@ QSet<QUmlPackageableElement *> QUmlNamespace::importMembers(QSet<QUmlPackageable
  */
 bool QUmlNamespace::membersAreDistinguishable() const
 {
-    qWarning("UmlNamespace::membersAreDistinguishable(): to be implemented (operation)");
+    qWarning("QUmlNamespace::membersAreDistinguishable(): to be implemented (operation)");
 
     return bool ();
 }

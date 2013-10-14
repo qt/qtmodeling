@@ -48,7 +48,6 @@
 #include <QtUml/QUmlElement>
 #include <QtUml/QUmlElementImport>
 #include <QtUml/QUmlNamedElement>
-#include <QtUml/QUmlNamespace>
 #include <QtUml/QUmlPackage>
 #include <QtUml/QUmlPackageableElement>
 #include <QtUml/QUmlPackageImport>
@@ -300,7 +299,7 @@ void QUmlBehavioralFeature::removeRaisedException(QUmlType *raisedException)
  */
 bool QUmlBehavioralFeature::isDistinguishableFrom(QUmlNamedElement *n, QUmlNamespace *ns) const
 {
-    qWarning("UmlBehavioralFeature::isDistinguishableFrom(): to be implemented (operation)");
+    qWarning("QUmlBehavioralFeature::isDistinguishableFrom(): to be implemented (operation)");
 
     Q_UNUSED(n);
     Q_UNUSED(ns);

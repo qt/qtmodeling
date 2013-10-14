@@ -52,7 +52,6 @@
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlTemplateParameter>
 #include <QtUml/QUmlType>
-#include <QtUml/QUmlValueSpecification>
 
 /*!
     \class QUmlExpression

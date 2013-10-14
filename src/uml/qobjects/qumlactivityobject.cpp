@@ -716,6 +716,7 @@ bool QUmlActivityObject::isTemplateParameter() const
 }
 
 // OPERATIONS [Type]
+
 // OPERATIONS [RedefinableElement]
 
 bool QUmlActivityObject::isConsistentWith(QObject *redefinee) const

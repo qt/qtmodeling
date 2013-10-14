@@ -108,7 +108,7 @@ QUmlEnumeration *QUmlEnumerationLiteral::classifier() const
 {
     // This is a read-only derived association end
 
-    qWarning("UmlEnumerationLiteral::classifier(): to be implemented (this is a derived association end)");
+    qWarning("QUmlEnumerationLiteral::classifier(): to be implemented (this is a derived association end)");
 
     return 0;
 }
@@ -117,7 +117,7 @@ void QUmlEnumerationLiteral::setClassifier(QUmlEnumeration *classifier)
 {
     // This is a read-only derived association end
 
-    qWarning("UmlEnumerationLiteral::setClassifier(): to be implemented (this is a derived association end)");
+    qWarning("QUmlEnumerationLiteral::setClassifier(): to be implemented (this is a derived association end)");
     Q_UNUSED(classifier);
 
     if (false /* <derivedexclusion-criteria> */) {

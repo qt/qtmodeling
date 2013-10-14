@@ -78,10 +78,6 @@ public:
 
 QT_END_NAMESPACE
 
-[%- FOREACH enumeration IN enumerations %]
-Q_DECLARE_METATYPE(Qt${namespace}::${enumeration.findvalue("@name")})
-[%- END %]
-
 QT_END_HEADER
 
 #endif // QT${namespace.upper}NAMESPACE_H

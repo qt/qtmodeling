@@ -56,7 +56,6 @@ class QUmlOccurrenceSpecification;
 class Q_UML_EXPORT QUmlExecutionSpecification : public QUmlInteractionFragment
 {
 public:
-
     Q_DECL_HIDDEN virtual QModelingElement *clone() const;
 
     // Owned attributes

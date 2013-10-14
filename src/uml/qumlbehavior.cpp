@@ -42,7 +42,6 @@
 
 #include <QtUml/QUmlBehavioralFeature>
 #include <QtUml/QUmlBehavioredClassifier>
-#include <QtUml/QUmlClass>
 #include <QtUml/QUmlClassifier>
 #include <QtUml/QUmlClassifierTemplateParameter>
 #include <QtUml/QUmlCollaborationUse>
@@ -182,7 +181,7 @@ QUmlBehavioredClassifier *QUmlBehavior::context() const
 {
     // This is a read-only derived association end
 
-    qWarning("UmlBehavior::context(): to be implemented (this is a derived association end)");
+    qWarning("QUmlBehavior::context(): to be implemented (this is a derived association end)");
 
     return 0;
 }
@@ -191,7 +190,7 @@ void QUmlBehavior::setContext(QUmlBehavioredClassifier *context)
 {
     // This is a read-only derived association end
 
-    qWarning("UmlBehavior::setContext(): to be implemented (this is a derived association end)");
+    qWarning("QUmlBehavior::setContext(): to be implemented (this is a derived association end)");
     Q_UNUSED(context);
 
     if (false /* <derivedexclusion-criteria> */) {

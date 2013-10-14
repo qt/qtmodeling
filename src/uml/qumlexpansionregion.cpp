@@ -65,7 +65,6 @@
 #include <QtUml/QUmlPackageImport>
 #include <QtUml/QUmlRedefinableElement>
 #include <QtUml/QUmlStringExpression>
-#include <QtUml/QUmlStructuredActivityNode>
 #include <QtUml/QUmlVariable>
 
 /*!

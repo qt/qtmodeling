@@ -43,7 +43,6 @@
 #include "private/qumlabstractionobject_p.h"
 
 #include <QtUml/QUmlComment>
-#include <QtUml/QUmlDependency>
 #include <QtUml/QUmlElement>
 #include <QtUml/QUmlNamedElement>
 #include <QtUml/QUmlNamespace>

@@ -51,20 +51,17 @@
 #include <QtUml/QUmlGeneralization>
 #include <QtUml/QUmlGeneralizationSet>
 #include <QtUml/QUmlNamedElement>
-#include <QtUml/QUmlNamespace>
 #include <QtUml/QUmlPackage>
 #include <QtUml/QUmlPackageableElement>
 #include <QtUml/QUmlPackageImport>
 #include <QtUml/QUmlParameterableElement>
 #include <QtUml/QUmlProperty>
-#include <QtUml/QUmlRedefinableElement>
 #include <QtUml/QUmlRedefinableTemplateSignature>
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlSubstitution>
 #include <QtUml/QUmlTemplateBinding>
 #include <QtUml/QUmlTemplateParameter>
 #include <QtUml/QUmlTemplateSignature>
-#include <QtUml/QUmlType>
 #include <QtUml/QUmlUseCase>
 
 /*!
@@ -262,7 +259,7 @@ const QSet<QUmlClassifier *> QUmlClassifier::generals() const
 {
     // This is a read-write derived association end
 
-    qWarning("UmlClassifier::generals(): to be implemented (this is a derived association end)");
+    qWarning("QUmlClassifier::generals(): to be implemented (this is a derived association end)");
 
     return QSet<QUmlClassifier *>();
 }
@@ -271,7 +268,7 @@ void QUmlClassifier::addGeneral(QUmlClassifier *general)
 {
     // This is a read-write derived association end
 
-    qWarning("UmlClassifier::addGeneral(): to be implemented (this is a derived association end)");
+    qWarning("QUmlClassifier::addGeneral(): to be implemented (this is a derived association end)");
     Q_UNUSED(general);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -283,7 +280,7 @@ void QUmlClassifier::removeGeneral(QUmlClassifier *general)
 {
     // This is a read-write derived association end
 
-    qWarning("UmlClassifier::removeGeneral(): to be implemented (this is a derived association end)");
+    qWarning("QUmlClassifier::removeGeneral(): to be implemented (this is a derived association end)");
     Q_UNUSED(general);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -347,7 +344,7 @@ const QSet<QUmlNamedElement *> QUmlClassifier::inheritedMembers() const
 {
     // This is a read-only derived association end
 
-    qWarning("UmlClassifier::inheritedMembers(): to be implemented (this is a derived association end)");
+    qWarning("QUmlClassifier::inheritedMembers(): to be implemented (this is a derived association end)");
 
     return QSet<QUmlNamedElement *>();
 }
@@ -356,7 +353,7 @@ void QUmlClassifier::addInheritedMember(QUmlNamedElement *inheritedMember)
 {
     // This is a read-only derived association end
 
-    qWarning("UmlClassifier::addInheritedMember(): to be implemented (this is a derived association end)");
+    qWarning("QUmlClassifier::addInheritedMember(): to be implemented (this is a derived association end)");
     Q_UNUSED(inheritedMember);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -371,7 +368,7 @@ void QUmlClassifier::removeInheritedMember(QUmlNamedElement *inheritedMember)
 {
     // This is a read-only derived association end
 
-    qWarning("UmlClassifier::removeInheritedMember(): to be implemented (this is a derived association end)");
+    qWarning("QUmlClassifier::removeInheritedMember(): to be implemented (this is a derived association end)");
     Q_UNUSED(inheritedMember);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -707,7 +704,7 @@ void QUmlClassifier::removeUseCase(QUmlUseCase *useCase)
  */
 QSet<QUmlFeature *> QUmlClassifier::allFeatures() const
 {
-    qWarning("UmlClassifier::allFeatures(): to be implemented (operation)");
+    qWarning("QUmlClassifier::allFeatures(): to be implemented (operation)");
 
     return QSet<QUmlFeature *> ();
 }
@@ -717,7 +714,7 @@ QSet<QUmlFeature *> QUmlClassifier::allFeatures() const
  */
 QSet<QUmlClassifier *> QUmlClassifier::allParents() const
 {
-    qWarning("UmlClassifier::allParents(): to be implemented (operation)");
+    qWarning("QUmlClassifier::allParents(): to be implemented (operation)");
 
     return QSet<QUmlClassifier *> ();
 }
@@ -727,7 +724,7 @@ QSet<QUmlClassifier *> QUmlClassifier::allParents() const
  */
 bool QUmlClassifier::conformsTo(QUmlClassifier *other) const
 {
-    qWarning("UmlClassifier::conformsTo(): to be implemented (operation)");
+    qWarning("QUmlClassifier::conformsTo(): to be implemented (operation)");
 
     Q_UNUSED(other);
     return bool ();
@@ -738,7 +735,7 @@ bool QUmlClassifier::conformsTo(QUmlClassifier *other) const
  */
 bool QUmlClassifier::hasVisibilityOf(QUmlNamedElement *n) const
 {
-    qWarning("UmlClassifier::hasVisibilityOf(): to be implemented (operation)");
+    qWarning("QUmlClassifier::hasVisibilityOf(): to be implemented (operation)");
 
     Q_UNUSED(n);
     return bool ();
@@ -749,7 +746,7 @@ bool QUmlClassifier::hasVisibilityOf(QUmlNamedElement *n) const
  */
 QSet<QUmlNamedElement *> QUmlClassifier::inherit(QSet<QUmlNamedElement *> inhs) const
 {
-    qWarning("UmlClassifier::inherit(): to be implemented (operation)");
+    qWarning("QUmlClassifier::inherit(): to be implemented (operation)");
 
     Q_UNUSED(inhs);
     return QSet<QUmlNamedElement *> ();
@@ -760,7 +757,7 @@ QSet<QUmlNamedElement *> QUmlClassifier::inherit(QSet<QUmlNamedElement *> inhs) 
  */
 QSet<QUmlNamedElement *> QUmlClassifier::inheritableMembers(QUmlClassifier *c) const
 {
-    qWarning("UmlClassifier::inheritableMembers(): to be implemented (operation)");
+    qWarning("QUmlClassifier::inheritableMembers(): to be implemented (operation)");
 
     Q_UNUSED(c);
     return QSet<QUmlNamedElement *> ();
@@ -771,7 +768,7 @@ QSet<QUmlNamedElement *> QUmlClassifier::inheritableMembers(QUmlClassifier *c) c
  */
 bool QUmlClassifier::isTemplate() const
 {
-    qWarning("UmlClassifier::isTemplate(): to be implemented (operation)");
+    qWarning("QUmlClassifier::isTemplate(): to be implemented (operation)");
 
     return bool ();
 }
@@ -781,7 +778,7 @@ bool QUmlClassifier::isTemplate() const
  */
 bool QUmlClassifier::maySpecializeType(QUmlClassifier *c) const
 {
-    qWarning("UmlClassifier::maySpecializeType(): to be implemented (operation)");
+    qWarning("QUmlClassifier::maySpecializeType(): to be implemented (operation)");
 
     Q_UNUSED(c);
     return bool ();
@@ -792,7 +789,7 @@ bool QUmlClassifier::maySpecializeType(QUmlClassifier *c) const
  */
 QSet<QUmlClassifier *> QUmlClassifier::parents() const
 {
-    qWarning("UmlClassifier::parents(): to be implemented (operation)");
+    qWarning("QUmlClassifier::parents(): to be implemented (operation)");
 
     return QSet<QUmlClassifier *> ();
 }

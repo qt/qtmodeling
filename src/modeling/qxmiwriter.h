@@ -72,7 +72,7 @@ public:
 protected:
     void loadPlugins();
     void populateIdMap(QModelingObject *modelingObject, int index = -1);
-    void writeObject(QModelingObject *modelingObject, QString elementName = QStringLiteral(""));
+    void writeObject(QModelingObject *modelingObject, QString elementName = QString());
 };
 
 QT_END_NAMESPACE

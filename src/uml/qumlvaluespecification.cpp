@@ -89,7 +89,7 @@ QModelingElement *QUmlValueSpecification::clone() const
  */
 bool QUmlValueSpecification::booleanValue() const
 {
-    qWarning("UmlValueSpecification::booleanValue(): to be implemented (operation)");
+    qWarning("QUmlValueSpecification::booleanValue(): to be implemented (operation)");
 
     return bool ();
 }
@@ -99,7 +99,7 @@ bool QUmlValueSpecification::booleanValue() const
  */
 int QUmlValueSpecification::integerValue() const
 {
-    qWarning("UmlValueSpecification::integerValue(): to be implemented (operation)");
+    qWarning("QUmlValueSpecification::integerValue(): to be implemented (operation)");
 
     return int ();
 }
@@ -109,7 +109,7 @@ int QUmlValueSpecification::integerValue() const
  */
 bool QUmlValueSpecification::isCompatibleWith(QUmlParameterableElement *p) const
 {
-    qWarning("UmlValueSpecification::isCompatibleWith(): to be implemented (operation)");
+    qWarning("QUmlValueSpecification::isCompatibleWith(): to be implemented (operation)");
 
     Q_UNUSED(p);
     return bool ();
@@ -120,7 +120,7 @@ bool QUmlValueSpecification::isCompatibleWith(QUmlParameterableElement *p) const
  */
 bool QUmlValueSpecification::isComputable() const
 {
-    qWarning("UmlValueSpecification::isComputable(): to be implemented (operation)");
+    qWarning("QUmlValueSpecification::isComputable(): to be implemented (operation)");
 
     return bool ();
 }
@@ -130,7 +130,7 @@ bool QUmlValueSpecification::isComputable() const
  */
 bool QUmlValueSpecification::isNull() const
 {
-    qWarning("UmlValueSpecification::isNull(): to be implemented (operation)");
+    qWarning("QUmlValueSpecification::isNull(): to be implemented (operation)");
 
     return bool ();
 }
@@ -140,7 +140,7 @@ bool QUmlValueSpecification::isNull() const
  */
 double QUmlValueSpecification::realValue() const
 {
-    qWarning("UmlValueSpecification::realValue(): to be implemented (operation)");
+    qWarning("QUmlValueSpecification::realValue(): to be implemented (operation)");
 
     return double ();
 }
@@ -150,7 +150,7 @@ double QUmlValueSpecification::realValue() const
  */
 QString QUmlValueSpecification::stringValue() const
 {
-    qWarning("UmlValueSpecification::stringValue(): to be implemented (operation)");
+    qWarning("QUmlValueSpecification::stringValue(): to be implemented (operation)");
 
     return QString ();
 }
@@ -160,7 +160,7 @@ QString QUmlValueSpecification::stringValue() const
  */
 int QUmlValueSpecification::unlimitedValue() const
 {
-    qWarning("UmlValueSpecification::unlimitedValue(): to be implemented (operation)");
+    qWarning("QUmlValueSpecification::unlimitedValue(): to be implemented (operation)");
 
     return int ();
 }

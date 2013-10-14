@@ -50,11 +50,9 @@
 #include <QtUml/QUmlElement>
 #include <QtUml/QUmlElementImport>
 #include <QtUml/QUmlNamedElement>
-#include <QtUml/QUmlNamespace>
 #include <QtUml/QUmlPackage>
 #include <QtUml/QUmlPackageableElement>
 #include <QtUml/QUmlPackageImport>
-#include <QtUml/QUmlRedefinableElement>
 #include <QtUml/QUmlRegion>
 #include <QtUml/QUmlStateMachine>
 #include <QtUml/QUmlStringExpression>
@@ -261,7 +259,7 @@ QUmlClassifier *QUmlTransition::redefinitionContext() const
 {
     // This is a read-only derived association end
 
-    qWarning("UmlTransition::redefinitionContext(): to be implemented (this is a derived association end)");
+    qWarning("QUmlTransition::redefinitionContext(): to be implemented (this is a derived association end)");
 
     return 0;
 }
@@ -270,7 +268,7 @@ void QUmlTransition::setRedefinitionContext(QUmlClassifier *redefinitionContext)
 {
     // This is a read-only derived association end
 
-    qWarning("UmlTransition::setRedefinitionContext(): to be implemented (this is a derived association end)");
+    qWarning("QUmlTransition::setRedefinitionContext(): to be implemented (this is a derived association end)");
     Q_UNUSED(redefinitionContext);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -366,7 +364,7 @@ void QUmlTransition::removeTrigger(QUmlTrigger *trigger)
  */
 QUmlStateMachine *QUmlTransition::containingStateMachine() const
 {
-    qWarning("UmlTransition::containingStateMachine(): to be implemented (operation)");
+    qWarning("QUmlTransition::containingStateMachine(): to be implemented (operation)");
 
     return 0;
 }
@@ -376,7 +374,7 @@ QUmlStateMachine *QUmlTransition::containingStateMachine() const
  */
 bool QUmlTransition::isConsistentWith(QUmlRedefinableElement *redefinee) const
 {
-    qWarning("UmlTransition::isConsistentWith(): to be implemented (operation)");
+    qWarning("QUmlTransition::isConsistentWith(): to be implemented (operation)");
 
     Q_UNUSED(redefinee);
     return bool ();

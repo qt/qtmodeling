@@ -48,7 +48,6 @@
 #include <QtUml/QUmlElement>
 #include <QtUml/QUmlInteraction>
 #include <QtUml/QUmlInteractionFragment>
-#include <QtUml/QUmlNamedElement>
 #include <QtUml/QUmlNamespace>
 #include <QtUml/QUmlPackage>
 #include <QtUml/QUmlPartDecomposition>

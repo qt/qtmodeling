@@ -50,7 +50,6 @@
 #include <QtUml/QUmlNamedElement>
 #include <QtUml/QUmlNamespace>
 #include <QtUml/QUmlPackage>
-#include <QtUml/QUmlPackageableElement>
 #include <QtUml/QUmlParameterableElement>
 #include <QtUml/QUmlSlot>
 #include <QtUml/QUmlStringExpression>

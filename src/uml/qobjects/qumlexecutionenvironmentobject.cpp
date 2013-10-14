@@ -613,6 +613,7 @@ bool QUmlExecutionEnvironmentObject::isTemplateParameter() const
 }
 
 // OPERATIONS [Type]
+
 // OPERATIONS [RedefinableElement]
 
 bool QUmlExecutionEnvironmentObject::isConsistentWith(QObject *redefinee) const

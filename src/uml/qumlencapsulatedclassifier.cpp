@@ -144,7 +144,7 @@ const QSet<QUmlPort *> QUmlEncapsulatedClassifier::ownedPorts() const
 {
     // This is a read-only derived association end
 
-    qWarning("UmlEncapsulatedClassifier::ownedPorts(): to be implemented (this is a derived association end)");
+    qWarning("QUmlEncapsulatedClassifier::ownedPorts(): to be implemented (this is a derived association end)");
 
     return QSet<QUmlPort *>();
 }
@@ -153,7 +153,7 @@ void QUmlEncapsulatedClassifier::addOwnedPort(QUmlPort *ownedPort)
 {
     // This is a read-only derived association end
 
-    qWarning("UmlEncapsulatedClassifier::addOwnedPort(): to be implemented (this is a derived association end)");
+    qWarning("QUmlEncapsulatedClassifier::addOwnedPort(): to be implemented (this is a derived association end)");
     Q_UNUSED(ownedPort);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -168,7 +168,7 @@ void QUmlEncapsulatedClassifier::removeOwnedPort(QUmlPort *ownedPort)
 {
     // This is a read-only derived association end
 
-    qWarning("UmlEncapsulatedClassifier::removeOwnedPort(): to be implemented (this is a derived association end)");
+    qWarning("QUmlEncapsulatedClassifier::removeOwnedPort(): to be implemented (this is a derived association end)");
     Q_UNUSED(ownedPort);
 
     if (false /* <derivedexclusion-criteria> */) {

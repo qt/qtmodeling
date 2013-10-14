@@ -48,8 +48,6 @@
 #include <QtUml/QUmlElement>
 #include <QtUml/QUmlElementImport>
 #include <QtUml/QUmlNamedElement>
-#include <QtUml/QUmlNamespace>
-#include <QtUml/QUmlPackageableElement>
 #include <QtUml/QUmlPackageImport>
 #include <QtUml/QUmlPackageMerge>
 #include <QtUml/QUmlParameterableElement>
@@ -213,7 +211,7 @@ void QUmlPackage::addOwnedStereotype(QUmlStereotype *ownedStereotype)
 {
     // This is a read-only derived association end
 
-    qWarning("UmlPackage::addOwnedStereotype(): to be implemented (this is a derived association end)");
+    qWarning("QUmlPackage::addOwnedStereotype(): to be implemented (this is a derived association end)");
     Q_UNUSED(ownedStereotype);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -228,7 +226,7 @@ void QUmlPackage::removeOwnedStereotype(QUmlStereotype *ownedStereotype)
 {
     // This is a read-only derived association end
 
-    qWarning("UmlPackage::removeOwnedStereotype(): to be implemented (this is a derived association end)");
+    qWarning("QUmlPackage::removeOwnedStereotype(): to be implemented (this is a derived association end)");
     Q_UNUSED(ownedStereotype);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -425,7 +423,7 @@ void QUmlPackage::removeProfileApplication(QUmlProfileApplication *profileApplic
  */
 QSet<QUmlStereotype *> QUmlPackage::allApplicableStereotypes() const
 {
-    qWarning("UmlPackage::allApplicableStereotypes(): to be implemented (operation)");
+    qWarning("QUmlPackage::allApplicableStereotypes(): to be implemented (operation)");
 
     return QSet<QUmlStereotype *> ();
 }
@@ -435,7 +433,7 @@ QSet<QUmlStereotype *> QUmlPackage::allApplicableStereotypes() const
  */
 QUmlProfile *QUmlPackage::containingProfile() const
 {
-    qWarning("UmlPackage::containingProfile(): to be implemented (operation)");
+    qWarning("QUmlPackage::containingProfile(): to be implemented (operation)");
 
     return 0;
 }
@@ -445,7 +443,7 @@ QUmlProfile *QUmlPackage::containingProfile() const
  */
 bool QUmlPackage::makesVisible(QUmlNamedElement *el) const
 {
-    qWarning("UmlPackage::makesVisible(): to be implemented (operation)");
+    qWarning("QUmlPackage::makesVisible(): to be implemented (operation)");
 
     Q_UNUSED(el);
     return bool ();
@@ -456,7 +454,7 @@ bool QUmlPackage::makesVisible(QUmlNamedElement *el) const
  */
 bool QUmlPackage::mustBeOwned() const
 {
-    qWarning("UmlPackage::mustBeOwned(): to be implemented (operation)");
+    qWarning("QUmlPackage::mustBeOwned(): to be implemented (operation)");
 
     return bool ();
 }
@@ -466,7 +464,7 @@ bool QUmlPackage::mustBeOwned() const
  */
 QSet<QUmlPackageableElement *> QUmlPackage::visibleMembers() const
 {
-    qWarning("UmlPackage::visibleMembers(): to be implemented (operation)");
+    qWarning("QUmlPackage::visibleMembers(): to be implemented (operation)");
 
     return QSet<QUmlPackageableElement *> ();
 }

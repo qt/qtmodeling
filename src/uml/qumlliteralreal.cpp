@@ -89,6 +89,7 @@ QModelingElement *QUmlLiteralReal::clone() const
 
 // OWNED ATTRIBUTES
 
+
 double QUmlLiteralReal::value() const
 {
     // This is a read-write property
@@ -112,7 +113,7 @@ void QUmlLiteralReal::setValue(double value)
  */
 bool QUmlLiteralReal::isComputable() const
 {
-    qWarning("UmlLiteralReal::isComputable(): to be implemented (operation)");
+    qWarning("QUmlLiteralReal::isComputable(): to be implemented (operation)");
 
     return bool ();
 }
@@ -122,7 +123,7 @@ bool QUmlLiteralReal::isComputable() const
  */
 double QUmlLiteralReal::realValue() const
 {
-    qWarning("UmlLiteralReal::realValue(): to be implemented (operation)");
+    qWarning("QUmlLiteralReal::realValue(): to be implemented (operation)");
 
     return double ();
 }
