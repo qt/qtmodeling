@@ -38,15 +38,15 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#include "shell/core.h"
-#include <QtWidgets/QApplication>
+#ifndef DUSEINTERFACES_GLOBAL_H
+#define DUSEINTERFACES_GLOBAL_H
 
-int main(int argc, char *argv[])
-{
-    QApplication a(argc, argv);
-    DuSE::Core::initialize();
+#include <QtCore/qglobal.h>
 
-    int r = a.exec();
-    delete DuSE::Core::self();
-    return r;
-}
+#if defined(DUSEINTERFACES_LIBRARY)
+#  define DUSEINTERFACESSHARED_EXPORT Q_DECL_EXPORT
+#else
+#  define DUSEINTERFACESSHARED_EXPORT Q_DECL_IMPORT
+#endif
+
+#endif // DUSEINTERFACES_GLOBAL_H

@@ -38,15 +38,18 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#include "shell/core.h"
-#include <QtWidgets/QApplication>
+#include "iplugin.h"
 
-int main(int argc, char *argv[])
+namespace DuSE
 {
-    QApplication a(argc, argv);
-    DuSE::Core::initialize();
 
-    int r = a.exec();
-    delete DuSE::Core::self();
-    return r;
+IPlugin::IPlugin(QObject *parent) :
+    QObject(parent)
+{
+}
+
+IPlugin::~IPlugin()
+{
+}
+
 }

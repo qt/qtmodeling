@@ -38,15 +38,29 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#include "shell/core.h"
-#include <QtWidgets/QApplication>
+#ifndef ICORE_H
+#define ICORE_H
 
-int main(int argc, char *argv[])
+#include "duseinterfaces_global.h"
+
+namespace DuSE
 {
-    QApplication a(argc, argv);
-    DuSE::Core::initialize();
 
-    int r = a.exec();
-    delete DuSE::Core::self();
-    return r;
+class IUiController;
+
+class DUSEINTERFACESSHARED_EXPORT ICore
+{
+public:
+    virtual ~ICore();
+    static ICore *self();
+
+    virtual IUiController *uiController() = 0;
+
+protected:
+    ICore();
+    static ICore *_self;
+};
+
 }
+
+#endif // ICORE_H

@@ -38,15 +38,20 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#include "shell/core.h"
-#include <QtWidgets/QApplication>
+#ifndef MODELINSPECTORPLUGIN_H
+#define MODELINSPECTORPLUGIN_H
 
-int main(int argc, char *argv[])
+#include "../../interfaces/iplugin.h"
+
+class ModelInspectorPlugin : public DuSE::IPlugin
 {
-    QApplication a(argc, argv);
-    DuSE::Core::initialize();
+    Q_OBJECT
+    Q_PLUGIN_METADATA(IID "org.liveblue.DuSE.IPlugin" FILE "modelinspector.json")
 
-    int r = a.exec();
-    delete DuSE::Core::self();
-    return r;
-}
+public:
+    ModelInspectorPlugin(QObject *parent = 0);
+
+    virtual bool initialize(DuSE::ICore *core);
+};
+
+#endif // MODELINSPECTORPLUGIN_H

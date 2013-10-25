@@ -38,15 +38,29 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#include "shell/core.h"
-#include <QtWidgets/QApplication>
+#ifndef IPLUGIN_H
+#define IPLUGIN_H
 
-int main(int argc, char *argv[])
+#include "duseinterfaces_global.h"
+
+#include "icore.h"
+
+#include <QtCore/QObject>
+
+namespace DuSE
 {
-    QApplication a(argc, argv);
-    DuSE::Core::initialize();
 
-    int r = a.exec();
-    delete DuSE::Core::self();
-    return r;
+class DUSEINTERFACESSHARED_EXPORT IPlugin : public QObject
+{
+    Q_OBJECT
+
+public:
+    IPlugin(QObject *parent = 0);
+    virtual ~IPlugin();
+
+    virtual bool initialize(ICore *core) = 0;
+};
+
 }
+
+#endif // IPLUGIN_H

@@ -38,15 +38,39 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#include "shell/core.h"
-#include <QtWidgets/QApplication>
+#include "uicontroller.h"
 
-int main(int argc, char *argv[])
+#include <QtWidgets/QDockWidget>
+#include <QtWidgets/QGridLayout>
+
+namespace DuSE
 {
-    QApplication a(argc, argv);
-    DuSE::Core::initialize();
 
-    int r = a.exec();
-    delete DuSE::Core::self();
-    return r;
+UiController::UiController()
+{
+}
+
+UiController::~UiController()
+{
+}
+
+bool UiController::initialize()
+{
+    _mainWindow.loadPlugins();
+    _mainWindow.showMaximized();
+}
+
+void UiController::addDockWidget(Qt::DockWidgetArea area, QString name, QWidget *widget)
+{
+    QDockWidget *dockWidget = new QDockWidget;
+    dockWidget->setWindowTitle(name);
+    dockWidget->setObjectName(name);
+    dockWidget->setWidget(widget);
+    _mainWindow.addDockWidget(area, dockWidget);
+}
+
+void UiController::removeDockWidget(QString name)
+{
+}
+
 }

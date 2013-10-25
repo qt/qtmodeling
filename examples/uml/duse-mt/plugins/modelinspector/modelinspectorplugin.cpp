@@ -38,15 +38,20 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#include "shell/core.h"
-#include <QtWidgets/QApplication>
+#include "modelinspectorplugin.h"
 
-int main(int argc, char *argv[])
+#include "../../interfaces/iuicontroller.h"
+
+#include <QtWidgets/QPushButton>
+
+ModelInspectorPlugin::ModelInspectorPlugin(QObject *parent) :
+    DuSE::IPlugin(parent)
 {
-    QApplication a(argc, argv);
-    DuSE::Core::initialize();
+}
 
-    int r = a.exec();
-    delete DuSE::Core::self();
-    return r;
+bool ModelInspectorPlugin::initialize(DuSE::ICore *core)
+{
+    core->uiController()->addDockWidget(Qt::LeftDockWidgetArea, "Teste", new QPushButton("Teste"));
+
+    return true;
 }

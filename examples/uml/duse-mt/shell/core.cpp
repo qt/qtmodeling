@@ -38,15 +38,47 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#include "shell/core.h"
-#include <QtWidgets/QApplication>
+#include "core.h"
 
-int main(int argc, char *argv[])
+#include "uicontroller.h"
+
+namespace DuSE
 {
-    QApplication a(argc, argv);
-    DuSE::Core::initialize();
 
-    int r = a.exec();
-    delete DuSE::Core::self();
-    return r;
+Core::~Core()
+{
+    delete _uiController;
+}
+
+bool Core::initialize()
+{
+    if (_self)
+        return true;
+
+    _self = new Core();
+
+    return true;
+}
+
+IUiController *Core::uiController()
+{
+    return _uiController;
+}
+
+Core::Core() :
+    _uiController(0)
+{
+    initializeInternal();
+}
+
+bool Core::initializeInternal()
+{
+    if (!_uiController) {
+        _uiController = new UiController;
+        _uiController->initialize();
+    }
+
+    return true;
+}
+
 }

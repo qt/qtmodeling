@@ -80,6 +80,9 @@
 
 //#include <QtDuse/QtDuse>
 
+#include <interfaces/iplugin.h>
+#include <shell/core.h>
+
 #include "newdusedesign.h"
 
 template <class T>
@@ -159,8 +162,6 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(modelingObjectPropertyModel, &QModelingObjectPropertyModel::indexChanged,
             _modelingObjectModel, &QModelingObjectModel::updateIndex);
 
-    loadPlugins();
-
     qScriptRegisterMetaType(&_engine, qSetToScriptValue<QObject>, scriptValueToQSet<QObject>);
     qScriptRegisterMetaType(&_engine, qListToScriptValue<QObject>, scriptValueToQList<QObject>);
 
@@ -222,6 +223,9 @@ MainWindow::MainWindow(QWidget *parent) :
 MainWindow::~MainWindow()
 {
     delete ui;
+    delete _aboutPlugins;
+    delete _newModel;
+    delete _aboutDuSEMT;
 }
 
 void MainWindow::readSettings()
@@ -703,6 +707,8 @@ bool MainWindow::eventFilter(QObject *obj, QEvent *event)
 void MainWindow::loadPlugins()
 {
     QMetaModelPlugin *metaModelPlugin = 0;
+    DuSE::ICore *core = DuSE::Core::self();
+    DuSE::IPlugin *dusePlugin;
     foreach (QString pluginPath, QCoreApplication::libraryPaths()) {
         QDir pluginsDir(pluginPath);
         pluginsDir.cd("metamodels");
@@ -711,6 +717,14 @@ void MainWindow::loadPlugins()
             QObject *plugin = loader.instance();
             if (plugin && (metaModelPlugin = qobject_cast<QMetaModelPlugin *>(plugin)))
                 _loadedPlugins.insert(loader.metaData().value(QString::fromLatin1("MetaData")).toObject().value(QString::fromLatin1("MetaModelNamespaceUri")).toString(), QPair<QMetaModelPlugin *, QJsonObject>(metaModelPlugin, loader.metaData().value(QString::fromLatin1("MetaData")).toObject()));
+        }
+        QDir dusePluginsDir(pluginPath);
+        dusePluginsDir.cd("plugins");
+        foreach (QString fileName, dusePluginsDir.entryList(QDir::Files)) {
+            QPluginLoader loader(dusePluginsDir.absoluteFilePath(fileName));
+            QObject *plugin = loader.instance();
+            if (plugin && (dusePlugin = qobject_cast<DuSE::IPlugin *>(plugin)))
+                dusePlugin->initialize(core);
         }
     }
 }

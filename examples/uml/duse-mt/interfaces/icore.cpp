@@ -38,15 +38,27 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#include "shell/core.h"
-#include <QtWidgets/QApplication>
+#include "icore.h"
 
-int main(int argc, char *argv[])
+namespace DuSE
 {
-    QApplication a(argc, argv);
-    DuSE::Core::initialize();
 
-    int r = a.exec();
-    delete DuSE::Core::self();
-    return r;
+ICore *ICore::_self = 0;
+
+ICore::~ICore()
+{
+    _self = 0;
+}
+
+ICore *ICore::self()
+{
+    return _self;
+}
+
+ICore::ICore()
+{
+    Q_ASSERT(_self == 0);
+    _self = this;
+}
+
 }

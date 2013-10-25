@@ -17,12 +17,20 @@ xmi.files = example.xmi
 
 INSTALLS += target xmi
 
-SOURCES += main.cpp \
-        mainwindow.cpp \
-    newdusedesign.cpp
+INCLUDEPATH += /usr/include/DuSE
+LIBS += -lduseinterfaces
 
-HEADERS  += mainwindow.h \
-    newdusedesign.h
+SOURCES += main.cpp \
+    newdusedesign.cpp \
+    shell/core.cpp \
+    shell/uicontroller.cpp \
+    shell/mainwindow.cpp
+
+HEADERS  += \
+    newdusedesign.h \
+    shell/core.h \
+    shell/uicontroller.h \
+    shell/mainwindow.h
 
 FORMS    += mainwindow.ui \
             aboutplugins.ui \

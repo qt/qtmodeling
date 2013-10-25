@@ -79,6 +79,7 @@ public:
 
     void closeEvent(QCloseEvent *event);
     void readSettings();
+    void loadPlugins();
 
 private Q_SLOTS:
     void update();
@@ -109,7 +110,6 @@ protected:
     bool eventFilter(QObject *obj, QEvent *event);
 
 private:
-    void loadPlugins();
     void saveXmi(QList<QModelingObject *> modelObjects);
     QList<QModelingElement *> loadXmi(QString fileName = 0);
     void populateDesignSpaceView(QModelingElement *modelingObject);

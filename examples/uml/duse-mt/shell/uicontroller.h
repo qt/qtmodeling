@@ -38,15 +38,31 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#include "shell/core.h"
-#include <QtWidgets/QApplication>
+#ifndef UICONTROLLER_H
+#define UICONTROLLER_H
 
-int main(int argc, char *argv[])
+#include <interfaces/iuicontroller.h>
+
+#include "mainwindow.h"
+
+namespace DuSE
 {
-    QApplication a(argc, argv);
-    DuSE::Core::initialize();
 
-    int r = a.exec();
-    delete DuSE::Core::self();
-    return r;
+class UiController : public IUiController
+{
+public:
+    UiController();
+    virtual ~UiController();
+
+    virtual bool initialize();
+
+    virtual void addDockWidget(Qt::DockWidgetArea area, QString name, QWidget *widget);
+    virtual void removeDockWidget(QString name);
+
+protected:
+    MainWindow _mainWindow;
+};
+
 }
+
+#endif // UICONTROLLER_H
