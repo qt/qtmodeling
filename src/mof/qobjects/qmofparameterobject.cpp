@@ -342,6 +342,7 @@ void QMofParameterObject::setOrdered(bool isOrdered)
 void QMofParameterObject::unsetOrdered()
 {
     Q_D(QModelingObject);
+    setOrdered(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("ordered"));
 }
 
@@ -353,6 +354,8 @@ void QMofParameterObject::setUnique(bool isUnique)
 void QMofParameterObject::unsetUnique()
 {
     Q_D(QModelingObject);
+
+    setUnique(true);
     d->modifiedResettableProperties.removeAll(QStringLiteral("unique"));
 }
 
@@ -364,6 +367,7 @@ void QMofParameterObject::setLower(int lower)
 void QMofParameterObject::unsetLower()
 {
     Q_D(QModelingObject);
+    setLower(1);
     d->modifiedResettableProperties.removeAll(QStringLiteral("lower"));
 }
 
@@ -380,6 +384,7 @@ void QMofParameterObject::setUpper(int upper)
 void QMofParameterObject::unsetUpper()
 {
     Q_D(QModelingObject);
+    setUpper(1);
     d->modifiedResettableProperties.removeAll(QStringLiteral("upper"));
 }
 
@@ -408,6 +413,7 @@ void QMofParameterObject::setDirection(QtMof::ParameterDirectionKind direction)
 void QMofParameterObject::unsetDirection()
 {
     Q_D(QModelingObject);
+    setDirection(QtMof::ParameterDirectionKindIn);
     d->modifiedResettableProperties.removeAll(QStringLiteral("direction"));
 }
 

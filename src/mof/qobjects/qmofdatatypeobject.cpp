@@ -507,6 +507,7 @@ void QMofDataTypeObject::setVisibility(QtMof::VisibilityKind visibility)
 void QMofDataTypeObject::unsetVisibility()
 {
     Q_D(QModelingObject);
+    setVisibility(QtMof::VisibilityKindPublic);
     d->modifiedResettableProperties.removeAll(QStringLiteral("visibility"));
 }
 
@@ -527,6 +528,7 @@ void QMofDataTypeObject::setLeaf(bool isLeaf)
 void QMofDataTypeObject::unsetLeaf()
 {
     Q_D(QModelingObject);
+    setLeaf(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("leaf"));
 }
 
@@ -672,6 +674,7 @@ void QMofDataTypeObject::setAbstract(bool isAbstract)
 void QMofDataTypeObject::unsetAbstract()
 {
     Q_D(QModelingObject);
+    setAbstract(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("abstract"));
 }
 
@@ -683,6 +686,7 @@ void QMofDataTypeObject::setFinalSpecialization(bool isFinalSpecialization)
 void QMofDataTypeObject::unsetFinalSpecialization()
 {
     Q_D(QModelingObject);
+    setFinalSpecialization(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("finalSpecialization"));
 }
 

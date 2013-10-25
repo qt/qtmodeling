@@ -256,6 +256,7 @@ void QMofPackageImportObject::setVisibility(QtMof::VisibilityKind visibility)
 void QMofPackageImportObject::unsetVisibility()
 {
     Q_D(QModelingObject);
+    setVisibility(QtMof::VisibilityKindPublic);
     d->modifiedResettableProperties.removeAll(QStringLiteral("visibility"));
 }
 

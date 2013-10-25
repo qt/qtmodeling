@@ -53,7 +53,7 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtMof)
 
-class Q_MOF_EXPORT QMofStructuralFeature : public QMofFeature, public virtual QMofTypedElement, public virtual QMofMultiplicityElement
+class Q_MOF_EXPORT QMofStructuralFeature : public QMofFeature, public virtual QMofTypedElement, public QMofMultiplicityElement
 {
 public:
     Q_DECL_HIDDEN virtual QModelingElement *clone() const;

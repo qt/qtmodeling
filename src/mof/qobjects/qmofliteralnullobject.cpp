@@ -274,6 +274,7 @@ void QMofLiteralNullObject::setVisibility(QtMof::VisibilityKind visibility)
 void QMofLiteralNullObject::unsetVisibility()
 {
     Q_D(QModelingObject);
+    setVisibility(QtMof::VisibilityKindPublic);
     d->modifiedResettableProperties.removeAll(QStringLiteral("visibility"));
 }
 

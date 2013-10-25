@@ -306,6 +306,7 @@ void QMofOpaqueExpressionObject::setVisibility(QtMof::VisibilityKind visibility)
 void QMofOpaqueExpressionObject::unsetVisibility()
 {
     Q_D(QModelingObject);
+    setVisibility(QtMof::VisibilityKindPublic);
     d->modifiedResettableProperties.removeAll(QStringLiteral("visibility"));
 }
 

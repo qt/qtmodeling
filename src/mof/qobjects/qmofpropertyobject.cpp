@@ -481,6 +481,7 @@ void QMofPropertyObject::setLeaf(bool isLeaf)
 void QMofPropertyObject::unsetLeaf()
 {
     Q_D(QModelingObject);
+    setLeaf(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("leaf"));
 }
 
@@ -524,6 +525,7 @@ void QMofPropertyObject::setStatic(bool isStatic)
 void QMofPropertyObject::unsetStatic()
 {
     Q_D(QModelingObject);
+    setStatic(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("static"));
 }
 
@@ -544,6 +546,7 @@ void QMofPropertyObject::setOrdered(bool isOrdered)
 void QMofPropertyObject::unsetOrdered()
 {
     Q_D(QModelingObject);
+    setOrdered(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("ordered"));
 }
 
@@ -555,6 +558,8 @@ void QMofPropertyObject::setUnique(bool isUnique)
 void QMofPropertyObject::unsetUnique()
 {
     Q_D(QModelingObject);
+
+    setUnique(true);
     d->modifiedResettableProperties.removeAll(QStringLiteral("unique"));
 }
 
@@ -566,6 +571,7 @@ void QMofPropertyObject::setLower(int lower)
 void QMofPropertyObject::unsetLower()
 {
     Q_D(QModelingObject);
+    setLower(1);
     d->modifiedResettableProperties.removeAll(QStringLiteral("lower"));
 }
 
@@ -582,6 +588,7 @@ void QMofPropertyObject::setUpper(int upper)
 void QMofPropertyObject::unsetUpper()
 {
     Q_D(QModelingObject);
+    setUpper(1);
     d->modifiedResettableProperties.removeAll(QStringLiteral("upper"));
 }
 
@@ -600,6 +607,7 @@ void QMofPropertyObject::setAggregation(QtMof::AggregationKind aggregation)
 void QMofPropertyObject::unsetAggregation()
 {
     Q_D(QModelingObject);
+    setAggregation(QtMof::AggregationKindNone);
     d->modifiedResettableProperties.removeAll(QStringLiteral("aggregation"));
 }
 
@@ -641,6 +649,7 @@ void QMofPropertyObject::setDerived(bool isDerived)
 void QMofPropertyObject::unsetDerived()
 {
     Q_D(QModelingObject);
+    setDerived(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("derived"));
 }
 
@@ -652,6 +661,7 @@ void QMofPropertyObject::setDerivedUnion(bool isDerivedUnion)
 void QMofPropertyObject::unsetDerivedUnion()
 {
     Q_D(QModelingObject);
+    setDerivedUnion(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("derivedUnion"));
 }
 
@@ -663,6 +673,7 @@ void QMofPropertyObject::setID(bool isID)
 void QMofPropertyObject::unsetID()
 {
     Q_D(QModelingObject);
+    setID(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("iD"));
 }
 
@@ -674,6 +685,7 @@ void QMofPropertyObject::setReadOnly(bool isReadOnly)
 void QMofPropertyObject::unsetReadOnly()
 {
     Q_D(QModelingObject);
+    setReadOnly(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("readOnly"));
 }
 

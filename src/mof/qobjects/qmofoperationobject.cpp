@@ -476,6 +476,7 @@ void QMofOperationObject::setLeaf(bool isLeaf)
 void QMofOperationObject::unsetLeaf()
 {
     Q_D(QModelingObject);
+    setLeaf(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("leaf"));
 }
 
@@ -519,6 +520,7 @@ void QMofOperationObject::setStatic(bool isStatic)
 void QMofOperationObject::unsetStatic()
 {
     Q_D(QModelingObject);
+    setStatic(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("static"));
 }
 
@@ -609,6 +611,7 @@ void QMofOperationObject::setOrdered(bool isOrdered)
 void QMofOperationObject::unsetOrdered()
 {
     Q_D(QModelingObject);
+    setOrdered(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("ordered"));
 }
 
@@ -620,6 +623,7 @@ void QMofOperationObject::setQuery(bool isQuery)
 void QMofOperationObject::unsetQuery()
 {
     Q_D(QModelingObject);
+    setQuery(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("query"));
 }
 
@@ -631,6 +635,8 @@ void QMofOperationObject::setUnique(bool isUnique)
 void QMofOperationObject::unsetUnique()
 {
     Q_D(QModelingObject);
+
+    setUnique(true);
     d->modifiedResettableProperties.removeAll(QStringLiteral("unique"));
 }
 
@@ -642,6 +648,7 @@ void QMofOperationObject::setLower(int lower)
 void QMofOperationObject::unsetLower()
 {
     Q_D(QModelingObject);
+    setLower(1);
     d->modifiedResettableProperties.removeAll(QStringLiteral("lower"));
 }
 
@@ -708,6 +715,7 @@ void QMofOperationObject::setUpper(int upper)
 void QMofOperationObject::unsetUpper()
 {
     Q_D(QModelingObject);
+    setUpper(1);
     d->modifiedResettableProperties.removeAll(QStringLiteral("upper"));
 }
 

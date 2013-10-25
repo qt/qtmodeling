@@ -281,6 +281,7 @@ void QMofLiteralBooleanObject::setVisibility(QtMof::VisibilityKind visibility)
 void QMofLiteralBooleanObject::unsetVisibility()
 {
     Q_D(QModelingObject);
+    setVisibility(QtMof::VisibilityKindPublic);
     d->modifiedResettableProperties.removeAll(QStringLiteral("visibility"));
 }
 
@@ -301,6 +302,7 @@ void QMofLiteralBooleanObject::setValue(bool value)
 void QMofLiteralBooleanObject::unsetValue()
 {
     Q_D(QModelingObject);
+    setValue(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("value"));
 }
 

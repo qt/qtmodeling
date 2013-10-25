@@ -85,10 +85,6 @@ public:
 
 QT_END_NAMESPACE
 
-Q_DECLARE_METATYPE(QtMof::AggregationKind)
-Q_DECLARE_METATYPE(QtMof::ParameterDirectionKind)
-Q_DECLARE_METATYPE(QtMof::VisibilityKind)
-
 QT_END_HEADER
 
 #endif // QTMOFNAMESPACE_H

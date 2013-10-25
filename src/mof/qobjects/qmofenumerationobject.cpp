@@ -518,6 +518,7 @@ void QMofEnumerationObject::setVisibility(QtMof::VisibilityKind visibility)
 void QMofEnumerationObject::unsetVisibility()
 {
     Q_D(QModelingObject);
+    setVisibility(QtMof::VisibilityKindPublic);
     d->modifiedResettableProperties.removeAll(QStringLiteral("visibility"));
 }
 
@@ -538,6 +539,7 @@ void QMofEnumerationObject::setLeaf(bool isLeaf)
 void QMofEnumerationObject::unsetLeaf()
 {
     Q_D(QModelingObject);
+    setLeaf(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("leaf"));
 }
 
@@ -683,6 +685,7 @@ void QMofEnumerationObject::setAbstract(bool isAbstract)
 void QMofEnumerationObject::unsetAbstract()
 {
     Q_D(QModelingObject);
+    setAbstract(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("abstract"));
 }
 
@@ -694,6 +697,7 @@ void QMofEnumerationObject::setFinalSpecialization(bool isFinalSpecialization)
 void QMofEnumerationObject::unsetFinalSpecialization()
 {
     Q_D(QModelingObject);
+    setFinalSpecialization(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("finalSpecialization"));
 }
 

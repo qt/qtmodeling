@@ -281,6 +281,7 @@ void QMofLiteralUnlimitedNaturalObject::setVisibility(QtMof::VisibilityKind visi
 void QMofLiteralUnlimitedNaturalObject::unsetVisibility()
 {
     Q_D(QModelingObject);
+    setVisibility(QtMof::VisibilityKindPublic);
     d->modifiedResettableProperties.removeAll(QStringLiteral("visibility"));
 }
 
@@ -301,6 +302,7 @@ void QMofLiteralUnlimitedNaturalObject::setValue(int value)
 void QMofLiteralUnlimitedNaturalObject::unsetValue()
 {
     Q_D(QModelingObject);
+    setValue(0);
     d->modifiedResettableProperties.removeAll(QStringLiteral("value"));
 }
 

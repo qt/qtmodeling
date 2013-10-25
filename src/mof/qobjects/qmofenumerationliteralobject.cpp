@@ -264,6 +264,7 @@ void QMofEnumerationLiteralObject::setVisibility(QtMof::VisibilityKind visibilit
 void QMofEnumerationLiteralObject::unsetVisibility()
 {
     Q_D(QModelingObject);
+    setVisibility(QtMof::VisibilityKindPublic);
     d->modifiedResettableProperties.removeAll(QStringLiteral("visibility"));
 }
 

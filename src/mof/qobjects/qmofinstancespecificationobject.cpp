@@ -253,6 +253,7 @@ void QMofInstanceSpecificationObject::setVisibility(QtMof::VisibilityKind visibi
 void QMofInstanceSpecificationObject::unsetVisibility()
 {
     Q_D(QModelingObject);
+    setVisibility(QtMof::VisibilityKindPublic);
     d->modifiedResettableProperties.removeAll(QStringLiteral("visibility"));
 }
 
