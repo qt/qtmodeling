@@ -313,6 +313,7 @@ void QUmlIntervalConstraintObject::setVisibility(QtUml::VisibilityKind visibilit
 void QUmlIntervalConstraintObject::unsetVisibility()
 {
     Q_D(QModelingObject);
+    setVisibility(QtUml::VisibilityKindPublic);
     d->modifiedResettableProperties.removeAll(QStringLiteral("visibility"));
 }
 

@@ -607,6 +607,7 @@ void QUmlExpansionRegionObject::setLeaf(bool isLeaf)
 void QUmlExpansionRegionObject::unsetLeaf()
 {
     Q_D(QModelingObject);
+    setLeaf(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("leaf"));
 }
 
@@ -734,6 +735,7 @@ void QUmlExpansionRegionObject::setLocallyReentrant(bool isLocallyReentrant)
 void QUmlExpansionRegionObject::unsetLocallyReentrant()
 {
     Q_D(QModelingObject);
+    setLocallyReentrant(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("locallyReentrant"));
 }
 
@@ -891,6 +893,7 @@ void QUmlExpansionRegionObject::setMustIsolate(bool mustIsolate)
 void QUmlExpansionRegionObject::unsetMustIsolate()
 {
     Q_D(QModelingObject);
+    setMustIsolate(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("mustIsolate"));
 }
 
@@ -954,6 +957,7 @@ void QUmlExpansionRegionObject::setMode(QtUml::ExpansionKind mode)
 void QUmlExpansionRegionObject::unsetMode()
 {
     Q_D(QModelingObject);
+    setMode(QtUml::ExpansionKindIterative);
     d->modifiedResettableProperties.removeAll(QStringLiteral("mode"));
 }
 

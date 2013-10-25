@@ -506,6 +506,7 @@ void QUmlReceptionObject::setLeaf(bool isLeaf)
 void QUmlReceptionObject::unsetLeaf()
 {
     Q_D(QModelingObject);
+    setLeaf(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("leaf"));
 }
 
@@ -549,6 +550,7 @@ void QUmlReceptionObject::setStatic(bool isStatic)
 void QUmlReceptionObject::unsetStatic()
 {
     Q_D(QModelingObject);
+    setStatic(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("static"));
 }
 
@@ -562,6 +564,7 @@ void QUmlReceptionObject::setConcurrency(QtUml::CallConcurrencyKind concurrency)
 void QUmlReceptionObject::unsetConcurrency()
 {
     Q_D(QModelingObject);
+    setConcurrency(QtUml::CallConcurrencyKindSequential);
     d->modifiedResettableProperties.removeAll(QStringLiteral("concurrency"));
 }
 
@@ -573,6 +576,7 @@ void QUmlReceptionObject::setAbstract(bool isAbstract)
 void QUmlReceptionObject::unsetAbstract()
 {
     Q_D(QModelingObject);
+    setAbstract(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("abstract"));
 }
 

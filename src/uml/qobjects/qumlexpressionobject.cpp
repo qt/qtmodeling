@@ -354,6 +354,7 @@ void QUmlExpressionObject::setVisibility(QtUml::VisibilityKind visibility)
 void QUmlExpressionObject::unsetVisibility()
 {
     Q_D(QModelingObject);
+    setVisibility(QtUml::VisibilityKindPublic);
     d->modifiedResettableProperties.removeAll(QStringLiteral("visibility"));
 }
 

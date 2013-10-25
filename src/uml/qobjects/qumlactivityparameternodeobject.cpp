@@ -414,6 +414,7 @@ void QUmlActivityParameterNodeObject::setLeaf(bool isLeaf)
 void QUmlActivityParameterNodeObject::unsetLeaf()
 {
     Q_D(QModelingObject);
+    setLeaf(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("leaf"));
 }
 
@@ -536,6 +537,7 @@ void QUmlActivityParameterNodeObject::setControlType(bool isControlType)
 void QUmlActivityParameterNodeObject::unsetControlType()
 {
     Q_D(QModelingObject);
+    setControlType(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("controlType"));
 }
 
@@ -547,6 +549,7 @@ void QUmlActivityParameterNodeObject::setOrdering(QtUml::ObjectNodeOrderingKind 
 void QUmlActivityParameterNodeObject::unsetOrdering()
 {
     Q_D(QModelingObject);
+    setOrdering(QtUml::ObjectNodeOrderingKindFIFO);
     d->modifiedResettableProperties.removeAll(QStringLiteral("ordering"));
 }
 

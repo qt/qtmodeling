@@ -717,6 +717,7 @@ void QUmlActorObject::setVisibility(QtUml::VisibilityKind visibility)
 void QUmlActorObject::unsetVisibility()
 {
     Q_D(QModelingObject);
+    setVisibility(QtUml::VisibilityKindPublic);
     d->modifiedResettableProperties.removeAll(QStringLiteral("visibility"));
 }
 
@@ -737,6 +738,7 @@ void QUmlActorObject::setLeaf(bool isLeaf)
 void QUmlActorObject::unsetLeaf()
 {
     Q_D(QModelingObject);
+    setLeaf(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("leaf"));
 }
 
@@ -842,6 +844,7 @@ void QUmlActorObject::setAbstract(bool isAbstract)
 void QUmlActorObject::unsetAbstract()
 {
     Q_D(QModelingObject);
+    setAbstract(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("abstract"));
 }
 
@@ -853,6 +856,7 @@ void QUmlActorObject::setFinalSpecialization(bool isFinalSpecialization)
 void QUmlActorObject::unsetFinalSpecialization()
 {
     Q_D(QModelingObject);
+    setFinalSpecialization(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("finalSpecialization"));
 }
 

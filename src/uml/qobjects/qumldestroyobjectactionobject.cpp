@@ -434,6 +434,7 @@ void QUmlDestroyObjectActionObject::setLeaf(bool isLeaf)
 void QUmlDestroyObjectActionObject::unsetLeaf()
 {
     Q_D(QModelingObject);
+    setLeaf(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("leaf"));
 }
 
@@ -566,6 +567,7 @@ void QUmlDestroyObjectActionObject::setLocallyReentrant(bool isLocallyReentrant)
 void QUmlDestroyObjectActionObject::unsetLocallyReentrant()
 {
     Q_D(QModelingObject);
+    setLocallyReentrant(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("locallyReentrant"));
 }
 
@@ -609,6 +611,7 @@ void QUmlDestroyObjectActionObject::setDestroyLinks(bool isDestroyLinks)
 void QUmlDestroyObjectActionObject::unsetDestroyLinks()
 {
     Q_D(QModelingObject);
+    setDestroyLinks(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("destroyLinks"));
 }
 
@@ -620,6 +623,7 @@ void QUmlDestroyObjectActionObject::setDestroyOwnedObjects(bool isDestroyOwnedOb
 void QUmlDestroyObjectActionObject::unsetDestroyOwnedObjects()
 {
     Q_D(QModelingObject);
+    setDestroyOwnedObjects(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("destroyOwnedObjects"));
 }
 

@@ -366,6 +366,7 @@ void QUmlVariableObject::setOrdered(bool isOrdered)
 void QUmlVariableObject::unsetOrdered()
 {
     Q_D(QModelingObject);
+    setOrdered(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("ordered"));
 }
 
@@ -377,6 +378,8 @@ void QUmlVariableObject::setUnique(bool isUnique)
 void QUmlVariableObject::unsetUnique()
 {
     Q_D(QModelingObject);
+
+    setUnique(true);
     d->modifiedResettableProperties.removeAll(QStringLiteral("unique"));
 }
 
@@ -388,6 +391,7 @@ void QUmlVariableObject::setLower(int lower)
 void QUmlVariableObject::unsetLower()
 {
     Q_D(QModelingObject);
+    setLower(1);
     d->modifiedResettableProperties.removeAll(QStringLiteral("lower"));
 }
 
@@ -404,6 +408,7 @@ void QUmlVariableObject::setUpper(int upper)
 void QUmlVariableObject::unsetUpper()
 {
     Q_D(QModelingObject);
+    setUpper(1);
     d->modifiedResettableProperties.removeAll(QStringLiteral("upper"));
 }
 

@@ -932,6 +932,7 @@ void QUmlProtocolStateMachineObject::setVisibility(QtUml::VisibilityKind visibil
 void QUmlProtocolStateMachineObject::unsetVisibility()
 {
     Q_D(QModelingObject);
+    setVisibility(QtUml::VisibilityKindPublic);
     d->modifiedResettableProperties.removeAll(QStringLiteral("visibility"));
 }
 
@@ -952,6 +953,7 @@ void QUmlProtocolStateMachineObject::setLeaf(bool isLeaf)
 void QUmlProtocolStateMachineObject::unsetLeaf()
 {
     Q_D(QModelingObject);
+    setLeaf(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("leaf"));
 }
 
@@ -1047,6 +1049,7 @@ void QUmlProtocolStateMachineObject::setFinalSpecialization(bool isFinalSpeciali
 void QUmlProtocolStateMachineObject::unsetFinalSpecialization()
 {
     Q_D(QModelingObject);
+    setFinalSpecialization(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("finalSpecialization"));
 }
 
@@ -1206,6 +1209,7 @@ void QUmlProtocolStateMachineObject::setAbstract(bool isAbstract)
 void QUmlProtocolStateMachineObject::unsetAbstract()
 {
     Q_D(QModelingObject);
+    setAbstract(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("abstract"));
 }
 
@@ -1217,6 +1221,7 @@ void QUmlProtocolStateMachineObject::setActive(bool isActive)
 void QUmlProtocolStateMachineObject::unsetActive()
 {
     Q_D(QModelingObject);
+    setActive(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("active"));
 }
 
@@ -1285,6 +1290,8 @@ void QUmlProtocolStateMachineObject::setReentrant(bool isReentrant)
 void QUmlProtocolStateMachineObject::unsetReentrant()
 {
     Q_D(QModelingObject);
+
+    setReentrant(true);
     d->modifiedResettableProperties.removeAll(QStringLiteral("reentrant"));
 }
 

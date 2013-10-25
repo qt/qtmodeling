@@ -460,6 +460,7 @@ void QUmlActionInputPinObject::setOrdered(bool isOrdered)
 void QUmlActionInputPinObject::unsetOrdered()
 {
     Q_D(QModelingObject);
+    setOrdered(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("ordered"));
 }
 
@@ -471,6 +472,8 @@ void QUmlActionInputPinObject::setUnique(bool isUnique)
 void QUmlActionInputPinObject::unsetUnique()
 {
     Q_D(QModelingObject);
+
+    setUnique(true);
     d->modifiedResettableProperties.removeAll(QStringLiteral("unique"));
 }
 
@@ -482,6 +485,7 @@ void QUmlActionInputPinObject::setLower(int lower)
 void QUmlActionInputPinObject::unsetLower()
 {
     Q_D(QModelingObject);
+    setLower(1);
     d->modifiedResettableProperties.removeAll(QStringLiteral("lower"));
 }
 
@@ -498,6 +502,7 @@ void QUmlActionInputPinObject::setUpper(int upper)
 void QUmlActionInputPinObject::unsetUpper()
 {
     Q_D(QModelingObject);
+    setUpper(1);
     d->modifiedResettableProperties.removeAll(QStringLiteral("upper"));
 }
 
@@ -553,6 +558,7 @@ void QUmlActionInputPinObject::setLeaf(bool isLeaf)
 void QUmlActionInputPinObject::unsetLeaf()
 {
     Q_D(QModelingObject);
+    setLeaf(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("leaf"));
 }
 
@@ -675,6 +681,7 @@ void QUmlActionInputPinObject::setControlType(bool isControlType)
 void QUmlActionInputPinObject::unsetControlType()
 {
     Q_D(QModelingObject);
+    setControlType(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("controlType"));
 }
 
@@ -686,6 +693,7 @@ void QUmlActionInputPinObject::setOrdering(QtUml::ObjectNodeOrderingKind orderin
 void QUmlActionInputPinObject::unsetOrdering()
 {
     Q_D(QModelingObject);
+    setOrdering(QtUml::ObjectNodeOrderingKindFIFO);
     d->modifiedResettableProperties.removeAll(QStringLiteral("ordering"));
 }
 
@@ -709,6 +717,7 @@ void QUmlActionInputPinObject::setControl(bool isControl)
 void QUmlActionInputPinObject::unsetControl()
 {
     Q_D(QModelingObject);
+    setControl(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("control"));
 }
 

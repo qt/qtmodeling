@@ -474,6 +474,7 @@ void QUmlProtocolTransitionObject::setLeaf(bool isLeaf)
 void QUmlProtocolTransitionObject::unsetLeaf()
 {
     Q_D(QModelingObject);
+    setLeaf(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("leaf"));
 }
 
@@ -573,6 +574,7 @@ void QUmlProtocolTransitionObject::setKind(QtUml::TransitionKind kind)
 void QUmlProtocolTransitionObject::unsetKind()
 {
     Q_D(QModelingObject);
+    setKind(QtUml::TransitionKindExternal);
     d->modifiedResettableProperties.removeAll(QStringLiteral("kind"));
 }
 

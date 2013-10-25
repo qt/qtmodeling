@@ -424,6 +424,7 @@ void QUmlStartClassifierBehaviorActionObject::setLeaf(bool isLeaf)
 void QUmlStartClassifierBehaviorActionObject::unsetLeaf()
 {
     Q_D(QModelingObject);
+    setLeaf(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("leaf"));
 }
 
@@ -556,6 +557,7 @@ void QUmlStartClassifierBehaviorActionObject::setLocallyReentrant(bool isLocally
 void QUmlStartClassifierBehaviorActionObject::unsetLocallyReentrant()
 {
     Q_D(QModelingObject);
+    setLocallyReentrant(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("locallyReentrant"));
 }
 

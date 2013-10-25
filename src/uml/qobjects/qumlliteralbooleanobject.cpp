@@ -347,6 +347,7 @@ void QUmlLiteralBooleanObject::setVisibility(QtUml::VisibilityKind visibility)
 void QUmlLiteralBooleanObject::unsetVisibility()
 {
     Q_D(QModelingObject);
+    setVisibility(QtUml::VisibilityKindPublic);
     d->modifiedResettableProperties.removeAll(QStringLiteral("visibility"));
 }
 
@@ -360,6 +361,7 @@ void QUmlLiteralBooleanObject::setValue(bool value)
 void QUmlLiteralBooleanObject::unsetValue()
 {
     Q_D(QModelingObject);
+    setValue(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("value"));
 }
 

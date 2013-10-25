@@ -449,6 +449,7 @@ void QUmlOutputPinObject::setOrdered(bool isOrdered)
 void QUmlOutputPinObject::unsetOrdered()
 {
     Q_D(QModelingObject);
+    setOrdered(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("ordered"));
 }
 
@@ -460,6 +461,8 @@ void QUmlOutputPinObject::setUnique(bool isUnique)
 void QUmlOutputPinObject::unsetUnique()
 {
     Q_D(QModelingObject);
+
+    setUnique(true);
     d->modifiedResettableProperties.removeAll(QStringLiteral("unique"));
 }
 
@@ -471,6 +474,7 @@ void QUmlOutputPinObject::setLower(int lower)
 void QUmlOutputPinObject::unsetLower()
 {
     Q_D(QModelingObject);
+    setLower(1);
     d->modifiedResettableProperties.removeAll(QStringLiteral("lower"));
 }
 
@@ -487,6 +491,7 @@ void QUmlOutputPinObject::setUpper(int upper)
 void QUmlOutputPinObject::unsetUpper()
 {
     Q_D(QModelingObject);
+    setUpper(1);
     d->modifiedResettableProperties.removeAll(QStringLiteral("upper"));
 }
 
@@ -542,6 +547,7 @@ void QUmlOutputPinObject::setLeaf(bool isLeaf)
 void QUmlOutputPinObject::unsetLeaf()
 {
     Q_D(QModelingObject);
+    setLeaf(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("leaf"));
 }
 
@@ -664,6 +670,7 @@ void QUmlOutputPinObject::setControlType(bool isControlType)
 void QUmlOutputPinObject::unsetControlType()
 {
     Q_D(QModelingObject);
+    setControlType(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("controlType"));
 }
 
@@ -675,6 +682,7 @@ void QUmlOutputPinObject::setOrdering(QtUml::ObjectNodeOrderingKind ordering)
 void QUmlOutputPinObject::unsetOrdering()
 {
     Q_D(QModelingObject);
+    setOrdering(QtUml::ObjectNodeOrderingKindFIFO);
     d->modifiedResettableProperties.removeAll(QStringLiteral("ordering"));
 }
 
@@ -698,6 +706,7 @@ void QUmlOutputPinObject::setControl(bool isControl)
 void QUmlOutputPinObject::unsetControl()
 {
     Q_D(QModelingObject);
+    setControl(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("control"));
 }
 

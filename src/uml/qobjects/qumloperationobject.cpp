@@ -684,6 +684,7 @@ void QUmlOperationObject::setLeaf(bool isLeaf)
 void QUmlOperationObject::unsetLeaf()
 {
     Q_D(QModelingObject);
+    setLeaf(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("leaf"));
 }
 
@@ -727,6 +728,7 @@ void QUmlOperationObject::setStatic(bool isStatic)
 void QUmlOperationObject::unsetStatic()
 {
     Q_D(QModelingObject);
+    setStatic(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("static"));
 }
 
@@ -740,6 +742,7 @@ void QUmlOperationObject::setConcurrency(QtUml::CallConcurrencyKind concurrency)
 void QUmlOperationObject::unsetConcurrency()
 {
     Q_D(QModelingObject);
+    setConcurrency(QtUml::CallConcurrencyKindSequential);
     d->modifiedResettableProperties.removeAll(QStringLiteral("concurrency"));
 }
 
@@ -751,6 +754,7 @@ void QUmlOperationObject::setAbstract(bool isAbstract)
 void QUmlOperationObject::unsetAbstract()
 {
     Q_D(QModelingObject);
+    setAbstract(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("abstract"));
 }
 
@@ -809,6 +813,7 @@ void QUmlOperationObject::setOrdered(bool isOrdered)
 void QUmlOperationObject::unsetOrdered()
 {
     Q_D(QModelingObject);
+    setOrdered(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("ordered"));
 }
 
@@ -820,6 +825,7 @@ void QUmlOperationObject::setQuery(bool isQuery)
 void QUmlOperationObject::unsetQuery()
 {
     Q_D(QModelingObject);
+    setQuery(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("query"));
 }
 
@@ -831,6 +837,8 @@ void QUmlOperationObject::setUnique(bool isUnique)
 void QUmlOperationObject::unsetUnique()
 {
     Q_D(QModelingObject);
+
+    setUnique(true);
     d->modifiedResettableProperties.removeAll(QStringLiteral("unique"));
 }
 
@@ -842,6 +850,7 @@ void QUmlOperationObject::setLower(int lower)
 void QUmlOperationObject::unsetLower()
 {
     Q_D(QModelingObject);
+    setLower(1);
     d->modifiedResettableProperties.removeAll(QStringLiteral("lower"));
 }
 
@@ -913,6 +922,7 @@ void QUmlOperationObject::setUpper(int upper)
 void QUmlOperationObject::unsetUpper()
 {
     Q_D(QModelingObject);
+    setUpper(1);
     d->modifiedResettableProperties.removeAll(QStringLiteral("upper"));
 }
 

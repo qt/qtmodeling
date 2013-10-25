@@ -440,6 +440,7 @@ void QUmlTestIdentityActionObject::setLeaf(bool isLeaf)
 void QUmlTestIdentityActionObject::unsetLeaf()
 {
     Q_D(QModelingObject);
+    setLeaf(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("leaf"));
 }
 
@@ -572,6 +573,7 @@ void QUmlTestIdentityActionObject::setLocallyReentrant(bool isLocallyReentrant)
 void QUmlTestIdentityActionObject::unsetLocallyReentrant()
 {
     Q_D(QModelingObject);
+    setLocallyReentrant(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("locallyReentrant"));
 }
 

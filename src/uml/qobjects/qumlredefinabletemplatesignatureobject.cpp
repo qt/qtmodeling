@@ -363,6 +363,7 @@ void QUmlRedefinableTemplateSignatureObject::setLeaf(bool isLeaf)
 void QUmlRedefinableTemplateSignatureObject::unsetLeaf()
 {
     Q_D(QModelingObject);
+    setLeaf(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("leaf"));
 }
 

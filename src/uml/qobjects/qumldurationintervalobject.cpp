@@ -358,6 +358,7 @@ void QUmlDurationIntervalObject::setVisibility(QtUml::VisibilityKind visibility)
 void QUmlDurationIntervalObject::unsetVisibility()
 {
     Q_D(QModelingObject);
+    setVisibility(QtUml::VisibilityKindPublic);
     d->modifiedResettableProperties.removeAll(QStringLiteral("visibility"));
 }
 

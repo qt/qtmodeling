@@ -319,6 +319,7 @@ void QUmlTimeConstraintObject::setVisibility(QtUml::VisibilityKind visibility)
 void QUmlTimeConstraintObject::unsetVisibility()
 {
     Q_D(QModelingObject);
+    setVisibility(QtUml::VisibilityKindPublic);
     d->modifiedResettableProperties.removeAll(QStringLiteral("visibility"));
 }
 
@@ -348,6 +349,8 @@ void QUmlTimeConstraintObject::setFirstEvent(bool firstEvent)
 void QUmlTimeConstraintObject::unsetFirstEvent()
 {
     Q_D(QModelingObject);
+
+    setFirstEvent(true);
     d->modifiedResettableProperties.removeAll(QStringLiteral("firstEvent"));
 }
 

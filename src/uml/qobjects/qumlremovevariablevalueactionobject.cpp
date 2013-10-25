@@ -450,6 +450,7 @@ void QUmlRemoveVariableValueActionObject::setLeaf(bool isLeaf)
 void QUmlRemoveVariableValueActionObject::unsetLeaf()
 {
     Q_D(QModelingObject);
+    setLeaf(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("leaf"));
 }
 
@@ -582,6 +583,7 @@ void QUmlRemoveVariableValueActionObject::setLocallyReentrant(bool isLocallyReen
 void QUmlRemoveVariableValueActionObject::unsetLocallyReentrant()
 {
     Q_D(QModelingObject);
+    setLocallyReentrant(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("locallyReentrant"));
 }
 
@@ -639,6 +641,7 @@ void QUmlRemoveVariableValueActionObject::setRemoveDuplicates(bool isRemoveDupli
 void QUmlRemoveVariableValueActionObject::unsetRemoveDuplicates()
 {
     Q_D(QModelingObject);
+    setRemoveDuplicates(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("removeDuplicates"));
 }
 

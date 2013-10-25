@@ -347,6 +347,7 @@ void QUmlCombinedFragmentObject::setInteractionOperator(QtUml::InteractionOperat
 void QUmlCombinedFragmentObject::unsetInteractionOperator()
 {
     Q_D(QModelingObject);
+    setInteractionOperator(QtUml::InteractionOperatorKindSeq);
     d->modifiedResettableProperties.removeAll(QStringLiteral("interactionOperator"));
 }
 

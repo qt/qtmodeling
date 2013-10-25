@@ -443,6 +443,7 @@ void QUmlSendObjectActionObject::setLeaf(bool isLeaf)
 void QUmlSendObjectActionObject::unsetLeaf()
 {
     Q_D(QModelingObject);
+    setLeaf(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("leaf"));
 }
 
@@ -575,6 +576,7 @@ void QUmlSendObjectActionObject::setLocallyReentrant(bool isLocallyReentrant)
 void QUmlSendObjectActionObject::unsetLocallyReentrant()
 {
     Q_D(QModelingObject);
+    setLocallyReentrant(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("locallyReentrant"));
 }
 

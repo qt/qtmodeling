@@ -327,6 +327,7 @@ void QUmlMessageObject::setMessageKind(QtUml::MessageKind messageKind)
 void QUmlMessageObject::unsetMessageKind()
 {
     Q_D(QModelingObject);
+    setMessageKind(QtUml::MessageKindUnknown);
     d->modifiedResettableProperties.removeAll(QStringLiteral("messageKind"));
 }
 
@@ -338,6 +339,7 @@ void QUmlMessageObject::setMessageSort(QtUml::MessageSort messageSort)
 void QUmlMessageObject::unsetMessageSort()
 {
     Q_D(QModelingObject);
+    setMessageSort(QtUml::MessageSortSynchCall);
     d->modifiedResettableProperties.removeAll(QStringLiteral("messageSort"));
 }
 

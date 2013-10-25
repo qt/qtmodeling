@@ -337,6 +337,7 @@ void QUmlConnectorObject::setLeaf(bool isLeaf)
 void QUmlConnectorObject::unsetLeaf()
 {
     Q_D(QModelingObject);
+    setLeaf(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("leaf"));
 }
 
@@ -380,6 +381,7 @@ void QUmlConnectorObject::setStatic(bool isStatic)
 void QUmlConnectorObject::unsetStatic()
 {
     Q_D(QModelingObject);
+    setStatic(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("static"));
 }
 

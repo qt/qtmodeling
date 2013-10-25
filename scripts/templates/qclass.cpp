@@ -92,33 +92,39 @@ Q${namespace}${className}::Q${namespace}${className}([%- IF class.findvalue("@is
 [% SET found = "true" -%]
         [%- ELSE %],
 [% END -%]
-    [%- IF defaultType == "uml:LiteralBoolean" -%]
-        [%- SET defaultValue = attribute.findvalue("defaultValue/@value") -%]
-        [%- IF defaultValue != "" -%]
+        [%- IF defaultType == "uml:LiteralBoolean" -%]
+            [%- SET defaultValue = attribute.findvalue("defaultValue/@value") -%]
+            [%- IF defaultValue != "" -%]
     _[% QT_ATTRIBUTE(attribute) %](${defaultValue})
-        [%- ELSE -%]
+            [%- ELSE -%]
     _[% QT_ATTRIBUTE(attribute) %](false)
-        [%- END -%]
-    [%- ELSIF defaultType == "uml:InstanceValue" -%]
-        [%- SET defaultInstance = attribute.findvalue("defaultValue/@instance") -%]
+            [%- END -%]
+        [%- ELSIF defaultType == "uml:InstanceValue" -%]
+            [%- SET defaultInstance = attribute.findvalue("defaultValue/@instance") -%]
     _[% QT_ATTRIBUTE(attribute) %](Qt${namespace}::${defaultInstance.split("-").0}${defaultInstance.split("-").1.ucfirst})
-    [%- ELSIF defaultType == "uml:LiteralInteger" -%]
-        [%- SET defaultValue = attribute.findvalue("defaultValue/@value") -%]
-        [%- IF defaultValue != "" -%]
+        [%- ELSIF defaultType == "uml:LiteralInteger" -%]
+            [%- SET defaultValue = attribute.findvalue("defaultValue/@value") -%]
+            [%- IF defaultValue != "" -%]
     _[% QT_ATTRIBUTE(attribute) %](${defaultValue})
-        [%- ELSE -%]
+            [%- ELSE -%]
+    _[% QT_ATTRIBUTE(attribute) %](0)
+            [%- END -%]
+        [%- ELSIF defaultType == "uml:LiteralUnlimitedNatural" -%]
+            [%- SET defaultValue = attribute.findvalue("defaultValue/@value") -%]
+            [%- IF defaultValue != "" -%]
+    _[% QT_ATTRIBUTE(attribute) %](${defaultValue})
+            [%- ELSE -%]
+    _[% QT_ATTRIBUTE(attribute) %](0)
+            [%- END -%]
+        [%- ELSIF type.match('\*$') -%]
     _[% QT_ATTRIBUTE(attribute) %](0)
         [%- END -%]
-    [%- ELSIF defaultType == "uml:LiteralUnlimitedNatural" -%]
-        [%- SET defaultValue = attribute.findvalue("defaultValue/@value") -%]
-        [%- IF defaultValue != "" -%]
-    _[% QT_ATTRIBUTE(attribute) %](${defaultValue})
-        [%- ELSE -%]
-    _[% QT_ATTRIBUTE(attribute) %](0)
-        [%- END -%]
-    [%- ELSIF type.match('\*$') -%]
-    _[% QT_ATTRIBUTE(attribute) %](0)
-    [%- END -%]
+    [%- ELSIF xmi.findvalue("//packagedElement[@xmi:id=\"${type}\"]/xmi:type") == "uml:Enumeration" -%]
+        [%- IF found == "false" %] :
+[% SET found = "true" -%]
+        [%- ELSE %],
+[% END -%]
+    _[% QT_ATTRIBUTE(attribute) %](Qt${namespace}::${type}None)
     [%- END -%]
 [%- END %]
 {

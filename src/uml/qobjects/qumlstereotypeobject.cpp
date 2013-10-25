@@ -839,6 +839,7 @@ void QUmlStereotypeObject::setVisibility(QtUml::VisibilityKind visibility)
 void QUmlStereotypeObject::unsetVisibility()
 {
     Q_D(QModelingObject);
+    setVisibility(QtUml::VisibilityKindPublic);
     d->modifiedResettableProperties.removeAll(QStringLiteral("visibility"));
 }
 
@@ -859,6 +860,7 @@ void QUmlStereotypeObject::setLeaf(bool isLeaf)
 void QUmlStereotypeObject::unsetLeaf()
 {
     Q_D(QModelingObject);
+    setLeaf(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("leaf"));
 }
 
@@ -954,6 +956,7 @@ void QUmlStereotypeObject::setFinalSpecialization(bool isFinalSpecialization)
 void QUmlStereotypeObject::unsetFinalSpecialization()
 {
     Q_D(QModelingObject);
+    setFinalSpecialization(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("finalSpecialization"));
 }
 
@@ -1113,6 +1116,7 @@ void QUmlStereotypeObject::setAbstract(bool isAbstract)
 void QUmlStereotypeObject::unsetAbstract()
 {
     Q_D(QModelingObject);
+    setAbstract(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("abstract"));
 }
 
@@ -1124,6 +1128,7 @@ void QUmlStereotypeObject::setActive(bool isActive)
 void QUmlStereotypeObject::unsetActive()
 {
     Q_D(QModelingObject);
+    setActive(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("active"));
 }
 

@@ -393,6 +393,7 @@ void QUmlActivityPartitionObject::setDimension(bool isDimension)
 void QUmlActivityPartitionObject::unsetDimension()
 {
     Q_D(QModelingObject);
+    setDimension(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("dimension"));
 }
 
@@ -404,6 +405,7 @@ void QUmlActivityPartitionObject::setExternal(bool isExternal)
 void QUmlActivityPartitionObject::unsetExternal()
 {
     Q_D(QModelingObject);
+    setExternal(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("external"));
 }
 

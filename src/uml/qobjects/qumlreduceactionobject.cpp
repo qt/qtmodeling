@@ -446,6 +446,7 @@ void QUmlReduceActionObject::setLeaf(bool isLeaf)
 void QUmlReduceActionObject::unsetLeaf()
 {
     Q_D(QModelingObject);
+    setLeaf(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("leaf"));
 }
 
@@ -578,6 +579,7 @@ void QUmlReduceActionObject::setLocallyReentrant(bool isLocallyReentrant)
 void QUmlReduceActionObject::unsetLocallyReentrant()
 {
     Q_D(QModelingObject);
+    setLocallyReentrant(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("locallyReentrant"));
 }
 
@@ -626,6 +628,7 @@ void QUmlReduceActionObject::setOrdered(bool isOrdered)
 void QUmlReduceActionObject::unsetOrdered()
 {
     Q_D(QModelingObject);
+    setOrdered(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("ordered"));
 }
 

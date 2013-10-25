@@ -403,6 +403,7 @@ void QUmlDataStoreNodeObject::setLeaf(bool isLeaf)
 void QUmlDataStoreNodeObject::unsetLeaf()
 {
     Q_D(QModelingObject);
+    setLeaf(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("leaf"));
 }
 
@@ -525,6 +526,7 @@ void QUmlDataStoreNodeObject::setControlType(bool isControlType)
 void QUmlDataStoreNodeObject::unsetControlType()
 {
     Q_D(QModelingObject);
+    setControlType(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("controlType"));
 }
 
@@ -536,6 +538,7 @@ void QUmlDataStoreNodeObject::setOrdering(QtUml::ObjectNodeOrderingKind ordering
 void QUmlDataStoreNodeObject::unsetOrdering()
 {
     Q_D(QModelingObject);
+    setOrdering(QtUml::ObjectNodeOrderingKindFIFO);
     d->modifiedResettableProperties.removeAll(QStringLiteral("ordering"));
 }
 

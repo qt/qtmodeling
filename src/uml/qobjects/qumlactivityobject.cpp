@@ -942,6 +942,7 @@ void QUmlActivityObject::setVisibility(QtUml::VisibilityKind visibility)
 void QUmlActivityObject::unsetVisibility()
 {
     Q_D(QModelingObject);
+    setVisibility(QtUml::VisibilityKindPublic);
     d->modifiedResettableProperties.removeAll(QStringLiteral("visibility"));
 }
 
@@ -962,6 +963,7 @@ void QUmlActivityObject::setLeaf(bool isLeaf)
 void QUmlActivityObject::unsetLeaf()
 {
     Q_D(QModelingObject);
+    setLeaf(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("leaf"));
 }
 
@@ -1057,6 +1059,7 @@ void QUmlActivityObject::setFinalSpecialization(bool isFinalSpecialization)
 void QUmlActivityObject::unsetFinalSpecialization()
 {
     Q_D(QModelingObject);
+    setFinalSpecialization(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("finalSpecialization"));
 }
 
@@ -1216,6 +1219,7 @@ void QUmlActivityObject::setAbstract(bool isAbstract)
 void QUmlActivityObject::unsetAbstract()
 {
     Q_D(QModelingObject);
+    setAbstract(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("abstract"));
 }
 
@@ -1227,6 +1231,7 @@ void QUmlActivityObject::setActive(bool isActive)
 void QUmlActivityObject::unsetActive()
 {
     Q_D(QModelingObject);
+    setActive(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("active"));
 }
 
@@ -1295,6 +1300,8 @@ void QUmlActivityObject::setReentrant(bool isReentrant)
 void QUmlActivityObject::unsetReentrant()
 {
     Q_D(QModelingObject);
+
+    setReentrant(true);
     d->modifiedResettableProperties.removeAll(QStringLiteral("reentrant"));
 }
 
@@ -1383,6 +1390,7 @@ void QUmlActivityObject::setReadOnly(bool isReadOnly)
 void QUmlActivityObject::unsetReadOnly()
 {
     Q_D(QModelingObject);
+    setReadOnly(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("readOnly"));
 }
 
@@ -1394,6 +1402,7 @@ void QUmlActivityObject::setSingleExecution(bool isSingleExecution)
 void QUmlActivityObject::unsetSingleExecution()
 {
     Q_D(QModelingObject);
+    setSingleExecution(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("singleExecution"));
 }
 

@@ -438,6 +438,7 @@ void QUmlAcceptEventActionObject::setLeaf(bool isLeaf)
 void QUmlAcceptEventActionObject::unsetLeaf()
 {
     Q_D(QModelingObject);
+    setLeaf(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("leaf"));
 }
 
@@ -570,6 +571,7 @@ void QUmlAcceptEventActionObject::setLocallyReentrant(bool isLocallyReentrant)
 void QUmlAcceptEventActionObject::unsetLocallyReentrant()
 {
     Q_D(QModelingObject);
+    setLocallyReentrant(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("locallyReentrant"));
 }
 
@@ -613,6 +615,7 @@ void QUmlAcceptEventActionObject::setUnmarshall(bool isUnmarshall)
 void QUmlAcceptEventActionObject::unsetUnmarshall()
 {
     Q_D(QModelingObject);
+    setUnmarshall(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("unmarshall"));
 }
 

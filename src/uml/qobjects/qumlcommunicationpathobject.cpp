@@ -738,6 +738,7 @@ void QUmlCommunicationPathObject::setVisibility(QtUml::VisibilityKind visibility
 void QUmlCommunicationPathObject::unsetVisibility()
 {
     Q_D(QModelingObject);
+    setVisibility(QtUml::VisibilityKindPublic);
     d->modifiedResettableProperties.removeAll(QStringLiteral("visibility"));
 }
 
@@ -758,6 +759,7 @@ void QUmlCommunicationPathObject::setLeaf(bool isLeaf)
 void QUmlCommunicationPathObject::unsetLeaf()
 {
     Q_D(QModelingObject);
+    setLeaf(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("leaf"));
 }
 
@@ -863,6 +865,7 @@ void QUmlCommunicationPathObject::setAbstract(bool isAbstract)
 void QUmlCommunicationPathObject::unsetAbstract()
 {
     Q_D(QModelingObject);
+    setAbstract(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("abstract"));
 }
 
@@ -874,6 +877,7 @@ void QUmlCommunicationPathObject::setFinalSpecialization(bool isFinalSpecializat
 void QUmlCommunicationPathObject::unsetFinalSpecialization()
 {
     Q_D(QModelingObject);
+    setFinalSpecialization(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("finalSpecialization"));
 }
 
@@ -974,6 +978,7 @@ void QUmlCommunicationPathObject::setDerived(bool isDerived)
 void QUmlCommunicationPathObject::unsetDerived()
 {
     Q_D(QModelingObject);
+    setDerived(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("derived"));
 }
 

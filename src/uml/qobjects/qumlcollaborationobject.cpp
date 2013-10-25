@@ -763,6 +763,7 @@ void QUmlCollaborationObject::setVisibility(QtUml::VisibilityKind visibility)
 void QUmlCollaborationObject::unsetVisibility()
 {
     Q_D(QModelingObject);
+    setVisibility(QtUml::VisibilityKindPublic);
     d->modifiedResettableProperties.removeAll(QStringLiteral("visibility"));
 }
 
@@ -783,6 +784,7 @@ void QUmlCollaborationObject::setLeaf(bool isLeaf)
 void QUmlCollaborationObject::unsetLeaf()
 {
     Q_D(QModelingObject);
+    setLeaf(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("leaf"));
 }
 
@@ -888,6 +890,7 @@ void QUmlCollaborationObject::setAbstract(bool isAbstract)
 void QUmlCollaborationObject::unsetAbstract()
 {
     Q_D(QModelingObject);
+    setAbstract(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("abstract"));
 }
 
@@ -899,6 +902,7 @@ void QUmlCollaborationObject::setFinalSpecialization(bool isFinalSpecialization)
 void QUmlCollaborationObject::unsetFinalSpecialization()
 {
     Q_D(QModelingObject);
+    setFinalSpecialization(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("finalSpecialization"));
 }
 

@@ -370,6 +370,7 @@ void QUmlControlFlowObject::setLeaf(bool isLeaf)
 void QUmlControlFlowObject::unsetLeaf()
 {
     Q_D(QModelingObject);
+    setLeaf(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("leaf"));
 }
 

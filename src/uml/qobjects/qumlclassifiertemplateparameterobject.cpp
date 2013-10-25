@@ -214,6 +214,8 @@ void QUmlClassifierTemplateParameterObject::setAllowSubstitutable(bool allowSubs
 void QUmlClassifierTemplateParameterObject::unsetAllowSubstitutable()
 {
     Q_D(QModelingObject);
+
+    setAllowSubstitutable(true);
     d->modifiedResettableProperties.removeAll(QStringLiteral("allowSubstitutable"));
 }
 

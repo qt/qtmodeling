@@ -444,6 +444,7 @@ void QUmlBroadcastSignalActionObject::setLeaf(bool isLeaf)
 void QUmlBroadcastSignalActionObject::unsetLeaf()
 {
     Q_D(QModelingObject);
+    setLeaf(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("leaf"));
 }
 
@@ -576,6 +577,7 @@ void QUmlBroadcastSignalActionObject::setLocallyReentrant(bool isLocallyReentran
 void QUmlBroadcastSignalActionObject::unsetLocallyReentrant()
 {
     Q_D(QModelingObject);
+    setLocallyReentrant(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("locallyReentrant"));
 }
 

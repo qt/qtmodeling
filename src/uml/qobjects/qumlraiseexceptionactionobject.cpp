@@ -424,6 +424,7 @@ void QUmlRaiseExceptionActionObject::setLeaf(bool isLeaf)
 void QUmlRaiseExceptionActionObject::unsetLeaf()
 {
     Q_D(QModelingObject);
+    setLeaf(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("leaf"));
 }
 
@@ -556,6 +557,7 @@ void QUmlRaiseExceptionActionObject::setLocallyReentrant(bool isLocallyReentrant
 void QUmlRaiseExceptionActionObject::unsetLocallyReentrant()
 {
     Q_D(QModelingObject);
+    setLocallyReentrant(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("locallyReentrant"));
 }
 

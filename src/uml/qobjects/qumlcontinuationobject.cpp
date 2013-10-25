@@ -320,6 +320,8 @@ void QUmlContinuationObject::setSetting(bool setting)
 void QUmlContinuationObject::unsetSetting()
 {
     Q_D(QModelingObject);
+
+    setSetting(true);
     d->modifiedResettableProperties.removeAll(QStringLiteral("setting"));
 }
 

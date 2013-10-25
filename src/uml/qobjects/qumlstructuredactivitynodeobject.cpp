@@ -582,6 +582,7 @@ void QUmlStructuredActivityNodeObject::setLeaf(bool isLeaf)
 void QUmlStructuredActivityNodeObject::unsetLeaf()
 {
     Q_D(QModelingObject);
+    setLeaf(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("leaf"));
 }
 
@@ -709,6 +710,7 @@ void QUmlStructuredActivityNodeObject::setLocallyReentrant(bool isLocallyReentra
 void QUmlStructuredActivityNodeObject::unsetLocallyReentrant()
 {
     Q_D(QModelingObject);
+    setLocallyReentrant(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("locallyReentrant"));
 }
 
@@ -866,6 +868,7 @@ void QUmlStructuredActivityNodeObject::setMustIsolate(bool mustIsolate)
 void QUmlStructuredActivityNodeObject::unsetMustIsolate()
 {
     Q_D(QModelingObject);
+    setMustIsolate(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("mustIsolate"));
 }
 

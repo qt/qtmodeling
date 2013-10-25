@@ -433,6 +433,39 @@ void Q${namespace}${originalClassName}Object::set${attributeName.remove("^Is")}(
 void Q${namespace}${originalClassName}Object::unset${qtAttribute.remove("^is").ucfirst}()
 {
     Q_D(QModelingObject);
+[% SET defaultType = attribute.findvalue("defaultValue/@xmi:type") -%]
+    [%- SET type = QT_TYPE(namespace, attribute) -%]
+    [%- IF defaultType == "uml:LiteralBoolean" || defaultType == "uml:InstanceValue" || defaultType == "uml:LiteralInteger" || defaultType == "uml:LiteralUnlimitedNatural" || type.match('\*$') -%]
+        [%- IF defaultType == "uml:LiteralBoolean" -%]
+            [%- SET defaultValue = attribute.findvalue("defaultValue/@value") -%]
+            [%- IF defaultValue != "" %]
+    set${qtAttribute.remove("^is").ucfirst}(${defaultValue});
+            [%- ELSE -%]
+    set${qtAttribute.remove("^is").ucfirst}(false);
+            [%- END -%]
+        [%- ELSIF defaultType == "uml:InstanceValue" -%]
+            [%- SET defaultInstance = attribute.findvalue("defaultValue/@instance") -%]
+    set${qtAttribute.remove("^is").ucfirst}(Qt${namespace}::${defaultInstance.split("-").0}${defaultInstance.split("-").1.ucfirst});
+        [%- ELSIF defaultType == "uml:LiteralInteger" -%]
+            [%- SET defaultValue = attribute.findvalue("defaultValue/@value") -%]
+            [%- IF defaultValue != "" -%]
+    set${qtAttribute.remove("^is").ucfirst}(${defaultValue});
+            [%- ELSE -%]
+    set${qtAttribute.remove("^is").ucfirst}(0);
+            [%- END -%]
+        [%- ELSIF defaultType == "uml:LiteralUnlimitedNatural" -%]
+            [%- SET defaultValue = attribute.findvalue("defaultValue/@value") -%]
+            [%- IF defaultValue != "" -%]
+    set${qtAttribute.remove("^is").ucfirst}(${defaultValue});
+            [%- ELSE -%]
+    set${qtAttribute.remove("^is").ucfirst}(0);
+            [%- END -%]
+        [%- ELSIF type.match('\*$') -%]
+    set${qtAttribute.remove("^is").ucfirst}(0);
+        [%- END -%]
+    [%- ELSIF xmi.findvalue("//packagedElement[@xmi:id=\"${type}\"]/xmi:type") == "uml:Enumeration" -%]
+    set${qtAttribute.remove("^is").ucfirst}(Qt${namespace}::${type}None);
+    [%- END %]
     d->modifiedResettableProperties.removeAll(QStringLiteral("${attributeName.remove("^Is").lcfirst}"));
 }
 

@@ -888,6 +888,7 @@ void QUmlFunctionBehaviorObject::setVisibility(QtUml::VisibilityKind visibility)
 void QUmlFunctionBehaviorObject::unsetVisibility()
 {
     Q_D(QModelingObject);
+    setVisibility(QtUml::VisibilityKindPublic);
     d->modifiedResettableProperties.removeAll(QStringLiteral("visibility"));
 }
 
@@ -908,6 +909,7 @@ void QUmlFunctionBehaviorObject::setLeaf(bool isLeaf)
 void QUmlFunctionBehaviorObject::unsetLeaf()
 {
     Q_D(QModelingObject);
+    setLeaf(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("leaf"));
 }
 
@@ -1003,6 +1005,7 @@ void QUmlFunctionBehaviorObject::setFinalSpecialization(bool isFinalSpecializati
 void QUmlFunctionBehaviorObject::unsetFinalSpecialization()
 {
     Q_D(QModelingObject);
+    setFinalSpecialization(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("finalSpecialization"));
 }
 
@@ -1162,6 +1165,7 @@ void QUmlFunctionBehaviorObject::setAbstract(bool isAbstract)
 void QUmlFunctionBehaviorObject::unsetAbstract()
 {
     Q_D(QModelingObject);
+    setAbstract(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("abstract"));
 }
 
@@ -1173,6 +1177,7 @@ void QUmlFunctionBehaviorObject::setActive(bool isActive)
 void QUmlFunctionBehaviorObject::unsetActive()
 {
     Q_D(QModelingObject);
+    setActive(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("active"));
 }
 
@@ -1241,6 +1246,8 @@ void QUmlFunctionBehaviorObject::setReentrant(bool isReentrant)
 void QUmlFunctionBehaviorObject::unsetReentrant()
 {
     Q_D(QModelingObject);
+
+    setReentrant(true);
     d->modifiedResettableProperties.removeAll(QStringLiteral("reentrant"));
 }
 

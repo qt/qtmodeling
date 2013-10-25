@@ -443,6 +443,7 @@ void QUmlReadStructuralFeatureActionObject::setLeaf(bool isLeaf)
 void QUmlReadStructuralFeatureActionObject::unsetLeaf()
 {
     Q_D(QModelingObject);
+    setLeaf(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("leaf"));
 }
 
@@ -575,6 +576,7 @@ void QUmlReadStructuralFeatureActionObject::setLocallyReentrant(bool isLocallyRe
 void QUmlReadStructuralFeatureActionObject::unsetLocallyReentrant()
 {
     Q_D(QModelingObject);
+    setLocallyReentrant(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("locallyReentrant"));
 }
 

@@ -333,6 +333,7 @@ void QUmlPseudostateObject::setKind(QtUml::PseudostateKind kind)
 void QUmlPseudostateObject::unsetKind()
 {
     Q_D(QModelingObject);
+    setKind(QtUml::PseudostateKindInitial);
     d->modifiedResettableProperties.removeAll(QStringLiteral("kind"));
 }
 

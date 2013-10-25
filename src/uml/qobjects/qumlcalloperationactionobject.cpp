@@ -467,6 +467,7 @@ void QUmlCallOperationActionObject::setLeaf(bool isLeaf)
 void QUmlCallOperationActionObject::unsetLeaf()
 {
     Q_D(QModelingObject);
+    setLeaf(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("leaf"));
 }
 
@@ -599,6 +600,7 @@ void QUmlCallOperationActionObject::setLocallyReentrant(bool isLocallyReentrant)
 void QUmlCallOperationActionObject::unsetLocallyReentrant()
 {
     Q_D(QModelingObject);
+    setLocallyReentrant(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("locallyReentrant"));
 }
 
@@ -659,6 +661,8 @@ void QUmlCallOperationActionObject::setSynchronous(bool isSynchronous)
 void QUmlCallOperationActionObject::unsetSynchronous()
 {
     Q_D(QModelingObject);
+
+    setSynchronous(true);
     d->modifiedResettableProperties.removeAll(QStringLiteral("synchronous"));
 }
 

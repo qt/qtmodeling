@@ -639,6 +639,7 @@ void QUmlLoopNodeObject::setLeaf(bool isLeaf)
 void QUmlLoopNodeObject::unsetLeaf()
 {
     Q_D(QModelingObject);
+    setLeaf(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("leaf"));
 }
 
@@ -766,6 +767,7 @@ void QUmlLoopNodeObject::setLocallyReentrant(bool isLocallyReentrant)
 void QUmlLoopNodeObject::unsetLocallyReentrant()
 {
     Q_D(QModelingObject);
+    setLocallyReentrant(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("locallyReentrant"));
 }
 
@@ -923,6 +925,7 @@ void QUmlLoopNodeObject::setMustIsolate(bool mustIsolate)
 void QUmlLoopNodeObject::unsetMustIsolate()
 {
     Q_D(QModelingObject);
+    setMustIsolate(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("mustIsolate"));
 }
 
@@ -981,6 +984,7 @@ void QUmlLoopNodeObject::setTestedFirst(bool isTestedFirst)
 void QUmlLoopNodeObject::unsetTestedFirst()
 {
     Q_D(QModelingObject);
+    setTestedFirst(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("testedFirst"));
 }
 

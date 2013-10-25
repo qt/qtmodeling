@@ -237,6 +237,7 @@ void QUmlConnectorEndObject::setOrdered(bool isOrdered)
 void QUmlConnectorEndObject::unsetOrdered()
 {
     Q_D(QModelingObject);
+    setOrdered(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("ordered"));
 }
 
@@ -248,6 +249,8 @@ void QUmlConnectorEndObject::setUnique(bool isUnique)
 void QUmlConnectorEndObject::unsetUnique()
 {
     Q_D(QModelingObject);
+
+    setUnique(true);
     d->modifiedResettableProperties.removeAll(QStringLiteral("unique"));
 }
 
@@ -259,6 +262,7 @@ void QUmlConnectorEndObject::setLower(int lower)
 void QUmlConnectorEndObject::unsetLower()
 {
     Q_D(QModelingObject);
+    setLower(1);
     d->modifiedResettableProperties.removeAll(QStringLiteral("lower"));
 }
 
@@ -275,6 +279,7 @@ void QUmlConnectorEndObject::setUpper(int upper)
 void QUmlConnectorEndObject::unsetUpper()
 {
     Q_D(QModelingObject);
+    setUpper(1);
     d->modifiedResettableProperties.removeAll(QStringLiteral("upper"));
 }
 

@@ -604,6 +604,7 @@ void QUmlConditionalNodeObject::setLeaf(bool isLeaf)
 void QUmlConditionalNodeObject::unsetLeaf()
 {
     Q_D(QModelingObject);
+    setLeaf(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("leaf"));
 }
 
@@ -731,6 +732,7 @@ void QUmlConditionalNodeObject::setLocallyReentrant(bool isLocallyReentrant)
 void QUmlConditionalNodeObject::unsetLocallyReentrant()
 {
     Q_D(QModelingObject);
+    setLocallyReentrant(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("locallyReentrant"));
 }
 
@@ -888,6 +890,7 @@ void QUmlConditionalNodeObject::setMustIsolate(bool mustIsolate)
 void QUmlConditionalNodeObject::unsetMustIsolate()
 {
     Q_D(QModelingObject);
+    setMustIsolate(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("mustIsolate"));
 }
 
@@ -941,6 +944,7 @@ void QUmlConditionalNodeObject::setAssured(bool isAssured)
 void QUmlConditionalNodeObject::unsetAssured()
 {
     Q_D(QModelingObject);
+    setAssured(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("assured"));
 }
 
@@ -952,6 +956,7 @@ void QUmlConditionalNodeObject::setDeterminate(bool isDeterminate)
 void QUmlConditionalNodeObject::unsetDeterminate()
 {
     Q_D(QModelingObject);
+    setDeterminate(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("determinate"));
 }
 

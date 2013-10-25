@@ -433,6 +433,7 @@ void QUmlClearAssociationActionObject::setLeaf(bool isLeaf)
 void QUmlClearAssociationActionObject::unsetLeaf()
 {
     Q_D(QModelingObject);
+    setLeaf(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("leaf"));
 }
 
@@ -565,6 +566,7 @@ void QUmlClearAssociationActionObject::setLocallyReentrant(bool isLocallyReentra
 void QUmlClearAssociationActionObject::unsetLocallyReentrant()
 {
     Q_D(QModelingObject);
+    setLocallyReentrant(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("locallyReentrant"));
 }
 

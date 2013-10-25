@@ -445,6 +445,7 @@ void QUmlReclassifyObjectActionObject::setLeaf(bool isLeaf)
 void QUmlReclassifyObjectActionObject::unsetLeaf()
 {
     Q_D(QModelingObject);
+    setLeaf(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("leaf"));
 }
 
@@ -577,6 +578,7 @@ void QUmlReclassifyObjectActionObject::setLocallyReentrant(bool isLocallyReentra
 void QUmlReclassifyObjectActionObject::unsetLocallyReentrant()
 {
     Q_D(QModelingObject);
+    setLocallyReentrant(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("locallyReentrant"));
 }
 
@@ -620,6 +622,7 @@ void QUmlReclassifyObjectActionObject::setReplaceAll(bool isReplaceAll)
 void QUmlReclassifyObjectActionObject::unsetReplaceAll()
 {
     Q_D(QModelingObject);
+    setReplaceAll(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("replaceAll"));
 }
 

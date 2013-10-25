@@ -600,6 +600,7 @@ void QUmlExtensionEndObject::setOrdered(bool isOrdered)
 void QUmlExtensionEndObject::unsetOrdered()
 {
     Q_D(QModelingObject);
+    setOrdered(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("ordered"));
 }
 
@@ -611,6 +612,8 @@ void QUmlExtensionEndObject::setUnique(bool isUnique)
 void QUmlExtensionEndObject::unsetUnique()
 {
     Q_D(QModelingObject);
+
+    setUnique(true);
     d->modifiedResettableProperties.removeAll(QStringLiteral("unique"));
 }
 
@@ -627,6 +630,7 @@ void QUmlExtensionEndObject::setUpper(int upper)
 void QUmlExtensionEndObject::unsetUpper()
 {
     Q_D(QModelingObject);
+    setUpper(1);
     d->modifiedResettableProperties.removeAll(QStringLiteral("upper"));
 }
 
@@ -645,6 +649,7 @@ void QUmlExtensionEndObject::setLeaf(bool isLeaf)
 void QUmlExtensionEndObject::unsetLeaf()
 {
     Q_D(QModelingObject);
+    setLeaf(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("leaf"));
 }
 
@@ -688,6 +693,7 @@ void QUmlExtensionEndObject::setStatic(bool isStatic)
 void QUmlExtensionEndObject::unsetStatic()
 {
     Q_D(QModelingObject);
+    setStatic(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("static"));
 }
 
@@ -746,6 +752,7 @@ void QUmlExtensionEndObject::setAggregation(QtUml::AggregationKind aggregation)
 void QUmlExtensionEndObject::unsetAggregation()
 {
     Q_D(QModelingObject);
+    setAggregation(QtUml::AggregationKindNone);
     d->modifiedResettableProperties.removeAll(QStringLiteral("aggregation"));
 }
 
@@ -792,6 +799,7 @@ void QUmlExtensionEndObject::setComposite(bool isComposite)
 void QUmlExtensionEndObject::unsetComposite()
 {
     Q_D(QModelingObject);
+    setComposite(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("composite"));
 }
 
@@ -803,6 +811,7 @@ void QUmlExtensionEndObject::setDerived(bool isDerived)
 void QUmlExtensionEndObject::unsetDerived()
 {
     Q_D(QModelingObject);
+    setDerived(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("derived"));
 }
 
@@ -814,6 +823,7 @@ void QUmlExtensionEndObject::setDerivedUnion(bool isDerivedUnion)
 void QUmlExtensionEndObject::unsetDerivedUnion()
 {
     Q_D(QModelingObject);
+    setDerivedUnion(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("derivedUnion"));
 }
 
@@ -825,6 +835,7 @@ void QUmlExtensionEndObject::setID(bool isID)
 void QUmlExtensionEndObject::unsetID()
 {
     Q_D(QModelingObject);
+    setID(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("iD"));
 }
 
@@ -836,6 +847,7 @@ void QUmlExtensionEndObject::setReadOnly(bool isReadOnly)
 void QUmlExtensionEndObject::unsetReadOnly()
 {
     Q_D(QModelingObject);
+    setReadOnly(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("readOnly"));
 }
 
@@ -889,6 +901,7 @@ void QUmlExtensionEndObject::setLower(int lower)
 void QUmlExtensionEndObject::unsetLower()
 {
     Q_D(QModelingObject);
+    setLower(0);
     d->modifiedResettableProperties.removeAll(QStringLiteral("lower"));
 }
 

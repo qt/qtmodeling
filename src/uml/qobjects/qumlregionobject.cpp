@@ -429,6 +429,7 @@ void QUmlRegionObject::setLeaf(bool isLeaf)
 void QUmlRegionObject::unsetLeaf()
 {
     Q_D(QModelingObject);
+    setLeaf(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("leaf"));
 }
 

@@ -391,6 +391,7 @@ void QUmlParameterObject::setOrdered(bool isOrdered)
 void QUmlParameterObject::unsetOrdered()
 {
     Q_D(QModelingObject);
+    setOrdered(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("ordered"));
 }
 
@@ -402,6 +403,8 @@ void QUmlParameterObject::setUnique(bool isUnique)
 void QUmlParameterObject::unsetUnique()
 {
     Q_D(QModelingObject);
+
+    setUnique(true);
     d->modifiedResettableProperties.removeAll(QStringLiteral("unique"));
 }
 
@@ -413,6 +416,7 @@ void QUmlParameterObject::setLower(int lower)
 void QUmlParameterObject::unsetLower()
 {
     Q_D(QModelingObject);
+    setLower(1);
     d->modifiedResettableProperties.removeAll(QStringLiteral("lower"));
 }
 
@@ -429,6 +433,7 @@ void QUmlParameterObject::setUpper(int upper)
 void QUmlParameterObject::unsetUpper()
 {
     Q_D(QModelingObject);
+    setUpper(1);
     d->modifiedResettableProperties.removeAll(QStringLiteral("upper"));
 }
 
@@ -524,6 +529,7 @@ void QUmlParameterObject::setDirection(QtUml::ParameterDirectionKind direction)
 void QUmlParameterObject::unsetDirection()
 {
     Q_D(QModelingObject);
+    setDirection(QtUml::ParameterDirectionKindIn);
     d->modifiedResettableProperties.removeAll(QStringLiteral("direction"));
 }
 
@@ -540,6 +546,7 @@ void QUmlParameterObject::setException(bool isException)
 void QUmlParameterObject::unsetException()
 {
     Q_D(QModelingObject);
+    setException(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("exception"));
 }
 
@@ -551,6 +558,7 @@ void QUmlParameterObject::setStream(bool isStream)
 void QUmlParameterObject::unsetStream()
 {
     Q_D(QModelingObject);
+    setStream(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("stream"));
 }
 

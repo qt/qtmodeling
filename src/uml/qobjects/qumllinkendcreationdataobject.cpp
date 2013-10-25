@@ -203,6 +203,7 @@ void QUmlLinkEndCreationDataObject::setReplaceAll(bool isReplaceAll)
 void QUmlLinkEndCreationDataObject::unsetReplaceAll()
 {
     Q_D(QModelingObject);
+    setReplaceAll(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("replaceAll"));
 }
 

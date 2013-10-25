@@ -959,6 +959,7 @@ void QUmlInteractionObject::setVisibility(QtUml::VisibilityKind visibility)
 void QUmlInteractionObject::unsetVisibility()
 {
     Q_D(QModelingObject);
+    setVisibility(QtUml::VisibilityKindPublic);
     d->modifiedResettableProperties.removeAll(QStringLiteral("visibility"));
 }
 
@@ -979,6 +980,7 @@ void QUmlInteractionObject::setLeaf(bool isLeaf)
 void QUmlInteractionObject::unsetLeaf()
 {
     Q_D(QModelingObject);
+    setLeaf(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("leaf"));
 }
 
@@ -1074,6 +1076,7 @@ void QUmlInteractionObject::setFinalSpecialization(bool isFinalSpecialization)
 void QUmlInteractionObject::unsetFinalSpecialization()
 {
     Q_D(QModelingObject);
+    setFinalSpecialization(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("finalSpecialization"));
 }
 
@@ -1233,6 +1236,7 @@ void QUmlInteractionObject::setAbstract(bool isAbstract)
 void QUmlInteractionObject::unsetAbstract()
 {
     Q_D(QModelingObject);
+    setAbstract(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("abstract"));
 }
 
@@ -1244,6 +1248,7 @@ void QUmlInteractionObject::setActive(bool isActive)
 void QUmlInteractionObject::unsetActive()
 {
     Q_D(QModelingObject);
+    setActive(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("active"));
 }
 
@@ -1312,6 +1317,8 @@ void QUmlInteractionObject::setReentrant(bool isReentrant)
 void QUmlInteractionObject::unsetReentrant()
 {
     Q_D(QModelingObject);
+
+    setReentrant(true);
     d->modifiedResettableProperties.removeAll(QStringLiteral("reentrant"));
 }
 

@@ -299,6 +299,7 @@ void QUmlTimeEventObject::setVisibility(QtUml::VisibilityKind visibility)
 void QUmlTimeEventObject::unsetVisibility()
 {
     Q_D(QModelingObject);
+    setVisibility(QtUml::VisibilityKindPublic);
     d->modifiedResettableProperties.removeAll(QStringLiteral("visibility"));
 }
 
@@ -312,6 +313,7 @@ void QUmlTimeEventObject::setRelative(bool isRelative)
 void QUmlTimeEventObject::unsetRelative()
 {
     Q_D(QModelingObject);
+    setRelative(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("relative"));
 }
 

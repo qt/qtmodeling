@@ -313,6 +313,7 @@ void QUmlGeneralizationSetObject::setVisibility(QtUml::VisibilityKind visibility
 void QUmlGeneralizationSetObject::unsetVisibility()
 {
     Q_D(QModelingObject);
+    setVisibility(QtUml::VisibilityKindPublic);
     d->modifiedResettableProperties.removeAll(QStringLiteral("visibility"));
 }
 
@@ -336,6 +337,7 @@ void QUmlGeneralizationSetObject::setCovering(bool isCovering)
 void QUmlGeneralizationSetObject::unsetCovering()
 {
     Q_D(QModelingObject);
+    setCovering(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("covering"));
 }
 
@@ -347,6 +349,7 @@ void QUmlGeneralizationSetObject::setDisjoint(bool isDisjoint)
 void QUmlGeneralizationSetObject::unsetDisjoint()
 {
     Q_D(QModelingObject);
+    setDisjoint(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("disjoint"));
 }
 

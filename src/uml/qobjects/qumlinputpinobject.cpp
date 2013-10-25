@@ -449,6 +449,7 @@ void QUmlInputPinObject::setOrdered(bool isOrdered)
 void QUmlInputPinObject::unsetOrdered()
 {
     Q_D(QModelingObject);
+    setOrdered(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("ordered"));
 }
 
@@ -460,6 +461,8 @@ void QUmlInputPinObject::setUnique(bool isUnique)
 void QUmlInputPinObject::unsetUnique()
 {
     Q_D(QModelingObject);
+
+    setUnique(true);
     d->modifiedResettableProperties.removeAll(QStringLiteral("unique"));
 }
 
@@ -471,6 +474,7 @@ void QUmlInputPinObject::setLower(int lower)
 void QUmlInputPinObject::unsetLower()
 {
     Q_D(QModelingObject);
+    setLower(1);
     d->modifiedResettableProperties.removeAll(QStringLiteral("lower"));
 }
 
@@ -487,6 +491,7 @@ void QUmlInputPinObject::setUpper(int upper)
 void QUmlInputPinObject::unsetUpper()
 {
     Q_D(QModelingObject);
+    setUpper(1);
     d->modifiedResettableProperties.removeAll(QStringLiteral("upper"));
 }
 
@@ -542,6 +547,7 @@ void QUmlInputPinObject::setLeaf(bool isLeaf)
 void QUmlInputPinObject::unsetLeaf()
 {
     Q_D(QModelingObject);
+    setLeaf(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("leaf"));
 }
 
@@ -664,6 +670,7 @@ void QUmlInputPinObject::setControlType(bool isControlType)
 void QUmlInputPinObject::unsetControlType()
 {
     Q_D(QModelingObject);
+    setControlType(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("controlType"));
 }
 
@@ -675,6 +682,7 @@ void QUmlInputPinObject::setOrdering(QtUml::ObjectNodeOrderingKind ordering)
 void QUmlInputPinObject::unsetOrdering()
 {
     Q_D(QModelingObject);
+    setOrdering(QtUml::ObjectNodeOrderingKindFIFO);
     d->modifiedResettableProperties.removeAll(QStringLiteral("ordering"));
 }
 
@@ -698,6 +706,7 @@ void QUmlInputPinObject::setControl(bool isControl)
 void QUmlInputPinObject::unsetControl()
 {
     Q_D(QModelingObject);
+    setControl(false);
     d->modifiedResettableProperties.removeAll(QStringLiteral("control"));
 }
 
