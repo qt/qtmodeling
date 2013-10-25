@@ -126,7 +126,7 @@ void QModelingObjectPropertyEditor::modelReset()
 {
     Q_D(QModelingObjectPropertyEditor);
 
-    d->label->setText(QString::fromLatin1("%1: %2").arg(d->propertyModel->modelingObject()->objectName()).arg(QString::fromLatin1(d->propertyModel->modelingObject()->metaObject()->className())));
+    d->label->setText(QString::fromLatin1("%1: %2").arg(d->propertyModel->modelingObject()->objectName()).arg(QString::fromLatin1(d->propertyModel->modelingObject()->metaObject()->className()).remove(QRegularExpression(QStringLiteral("Object$")))));
     d->treeView->expandAll();
     d->treeView->resizeColumnToContents(0);
     d->treeView->resizeColumnToContents(1);

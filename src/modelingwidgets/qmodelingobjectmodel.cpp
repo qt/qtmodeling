@@ -41,6 +41,8 @@
 #include "qmodelingobjectmodel.h"
 #include "qmodelingobjectmodel_p.h"
 
+#include <QtCore/QRegularExpression>
+
 #include <QtGui/QFont>
 
 #include <QtWidgets/QApplication>
@@ -161,7 +163,7 @@ QVariant QModelingObjectModel::data(const QModelIndex &index, int role) const
                 elementRole = QStringLiteral(" (applied profile)");
                 break;
             }
-            return index.column() == 0 ? modelingObject->objectName() + elementRole:QString::fromLatin1(modelingObject->metaObject()->className());
+            return index.column() == 0 ? modelingObject->objectName() + elementRole:QString::fromLatin1(modelingObject->metaObject()->className()).remove(QRegularExpression(QStringLiteral("Object$")));
         }
         case Qt::FontRole: {
             QFont font = QApplication::font();
