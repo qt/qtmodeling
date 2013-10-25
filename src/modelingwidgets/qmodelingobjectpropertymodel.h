@@ -63,6 +63,7 @@ class Q_MODELINGWIDGETS_EXPORT QModelingObjectPropertyModel : public QAbstractIt
 
 public:
     explicit QModelingObjectPropertyModel(QObject *parent = 0);
+    virtual ~QModelingObjectPropertyModel();
 
     virtual QModelIndex index(int row, int column, const QModelIndex &parent = QModelIndex()) const;
     virtual QModelIndex parent(const QModelIndex &child) const;

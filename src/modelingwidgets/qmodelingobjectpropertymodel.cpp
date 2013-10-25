@@ -61,6 +61,10 @@ QModelingObjectPropertyModel::QModelingObjectPropertyModel(QObject *parent) :
 {
 }
 
+QModelingObjectPropertyModel::~QModelingObjectPropertyModel()
+{
+}
+
 void QModelingObjectPropertyModel::setModelingObject(QModelingObject *modelingObject, QModelIndex index)
 {
     Q_D(QModelingObjectPropertyModel);

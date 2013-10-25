@@ -62,6 +62,11 @@ QModelingObjectPropertyEditorPrivate::QModelingObjectPropertyEditorPrivate() :
 {
 }
 
+QModelingObjectPropertyEditorPrivate::~QModelingObjectPropertyEditorPrivate()
+{
+    delete proxyModel;
+}
+
 QModelingObjectPropertyEditor::QModelingObjectPropertyEditor(QWidget *parent, Qt::WindowFlags f) :
     QWidget(*new QModelingObjectPropertyEditorPrivate, parent, f)
 {
@@ -94,12 +99,18 @@ QModelingObjectPropertyEditor::QModelingObjectPropertyEditor(QWidget *parent, Qt
     connect(d->filter, &FilterWidget::filterChanged, this, &QModelingObjectPropertyEditor::filterChanged);
 }
 
+QModelingObjectPropertyEditor::~QModelingObjectPropertyEditor()
+{
+}
+
 void QModelingObjectPropertyEditor::setModel(QModelingObjectPropertyModel *propertyModel)
 {
     Q_D(QModelingObjectPropertyEditor);
 
-    if (d->propertyModel)
+    if (d->propertyModel) {
         disconnect(d->propertyModel, 0, this, 0);
+        delete d->propertyModel;
+    }
     d->propertyModel = propertyModel;
     d->proxyModel->setSourceModel(d->propertyModel);
     if (propertyModel)

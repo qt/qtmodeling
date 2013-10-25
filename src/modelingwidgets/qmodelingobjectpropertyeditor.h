@@ -63,6 +63,7 @@ class Q_MODELINGWIDGETS_EXPORT QModelingObjectPropertyEditor : public QWidget
 
 public:
     explicit QModelingObjectPropertyEditor(QWidget *parent = 0, Qt::WindowFlags f = 0);
+    virtual ~QModelingObjectPropertyEditor();
 
     QModelingObjectPropertyModel *model() const;
 

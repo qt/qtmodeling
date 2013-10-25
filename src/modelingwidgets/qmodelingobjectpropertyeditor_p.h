@@ -63,6 +63,7 @@ class Q_MODELINGWIDGETS_EXPORT QModelingObjectPropertyEditorPrivate : public QWi
 
 public:
     explicit QModelingObjectPropertyEditorPrivate();
+    virtual ~QModelingObjectPropertyEditorPrivate();
 
     QLabel *label;
     QTreeView *treeView;
