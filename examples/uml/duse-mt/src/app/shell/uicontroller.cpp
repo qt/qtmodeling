@@ -58,6 +58,8 @@ bool UiController::initialize()
 {
     _mainWindow.loadPlugins();
     _mainWindow.showMaximized();
+
+    return true;
 }
 
 void UiController::addDockWidget(Qt::DockWidgetArea area, QString name, QWidget *widget)
@@ -71,6 +73,10 @@ void UiController::addDockWidget(Qt::DockWidgetArea area, QString name, QWidget 
 
 void UiController::removeDockWidget(QString name)
 {
+    foreach (QObject *child, _mainWindow.children()) {
+        if (child->objectName() == name && qobject_cast<QDockWidget *>(child) != 0)
+            delete child;
+    }
 }
 
 }
