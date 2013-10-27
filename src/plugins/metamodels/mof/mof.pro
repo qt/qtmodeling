@@ -4,7 +4,7 @@ PLUGIN_TYPE = metamodels
 PLUGIN_CLASS_NAME = QMofMetaModelPlugin
 load(qt_plugin)
 
-QT += mof
+QT += modeling mof
 
 HEADERS = qmofmetamodelplugin.h
 

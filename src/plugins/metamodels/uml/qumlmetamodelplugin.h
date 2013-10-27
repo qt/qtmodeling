@@ -43,6 +43,10 @@
 
 #include <QtModeling/QMetaModelPlugin>
 
+QT_BEGIN_HEADER
+
+QT_BEGIN_NAMESPACE
+
 class QModelingElement;
 
 class QUmlMetaModelPlugin : public QMetaModelPlugin
@@ -55,6 +59,10 @@ public:
 
     virtual QModelingElement *createModelingElement(QString type);
 };
+
+QT_END_NAMESPACE
+
+QT_END_HEADER
 
 #endif // QUMLMETAMODELPLUGIN_H
 

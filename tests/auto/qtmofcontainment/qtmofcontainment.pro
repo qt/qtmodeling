@@ -1,4 +1,4 @@
-CONFIG += testcase c++11
+CONFIG += testcase
 TARGET = tst_qtmofcontainment
 
 QT = mof testlib
