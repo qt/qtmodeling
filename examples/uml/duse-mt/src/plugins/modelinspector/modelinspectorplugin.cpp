@@ -40,7 +40,7 @@
 ****************************************************************************/
 #include "modelinspectorplugin.h"
 
-#include "../../interfaces/iuicontroller.h"
+#include <interfaces/iuicontroller.h>
 
 #include <QtWidgets/QPushButton>
 

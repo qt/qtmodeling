@@ -41,7 +41,7 @@
 #ifndef MODELINSPECTORPLUGIN_H
 #define MODELINSPECTORPLUGIN_H
 
-#include "../../interfaces/iplugin.h"
+#include <interfaces/iplugin.h>
 
 class ModelInspectorPlugin : public DuSE::IPlugin
 {

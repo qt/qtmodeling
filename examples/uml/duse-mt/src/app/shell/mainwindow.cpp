@@ -719,13 +719,19 @@ void MainWindow::loadPlugins()
             if (plugin && (metaModelPlugin = qobject_cast<QMetaModelPlugin *>(plugin)))
                 _loadedPlugins.insert(loader.metaData().value(QString::fromLatin1("MetaData")).toObject().value(QString::fromLatin1("MetaModelNamespaceUri")).toString(), QPair<QMetaModelPlugin *, QJsonObject>(metaModelPlugin, loader.metaData().value(QString::fromLatin1("MetaData")).toObject()));
         }
-        QDir dusePluginsDir(pluginPath);
-        dusePluginsDir.cd("plugins");
-        foreach (QString fileName, dusePluginsDir.entryList(QDir::Files)) {
-            QPluginLoader loader(dusePluginsDir.absoluteFilePath(fileName));
+    }
+    QDir dusePluginsDir(QCoreApplication::applicationDirPath());
+    dusePluginsDir.cd("../lib/duse-mt/plugins");
+    const QFileInfoList subdirs = dusePluginsDir.entryInfoList(QDir::Dirs|QDir::NoDotAndDotDot);
+    foreach (const QFileInfo &subdir, subdirs) {
+        QDir dusePluginSubDir(subdir.absoluteFilePath());
+        foreach (QString fileName, dusePluginSubDir.entryList(QDir::Files)) {
+            QPluginLoader loader(dusePluginSubDir.absoluteFilePath(fileName));
             QObject *plugin = loader.instance();
-            if (plugin && (dusePlugin = qobject_cast<DuSE::IPlugin *>(plugin)))
+            if (plugin && (dusePlugin = qobject_cast<DuSE::IPlugin *>(plugin))) {
+                qDebug() << "Achei duse-mt plugin:" << dusePluginsDir.absoluteFilePath(fileName);
                 dusePlugin->initialize(core);
+            }
         }
     }
 }
