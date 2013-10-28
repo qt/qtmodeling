@@ -44,6 +44,8 @@
 #include <QtMof/QMofComment>
 #include <QtMof/QMofValueSpecification>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QMofMultiplicityElement
 
@@ -276,4 +278,6 @@ int QMofMultiplicityElement::upperBound() const
 
     return int ();
 }
+
+QT_END_NAMESPACE
 

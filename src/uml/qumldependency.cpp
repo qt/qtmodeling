@@ -51,6 +51,8 @@
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlTemplateParameter>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlDependency
 
@@ -169,4 +171,6 @@ void QUmlDependency::removeSupplier(QUmlNamedElement *supplier)
         removeTarget(supplier);
     }
 }
+
+QT_END_NAMESPACE
 

@@ -66,6 +66,8 @@
 #include <QtUml/QUmlType>
 #include <QtUml/QUmlValueSpecification>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlExtensionEnd
 
@@ -194,4 +196,6 @@ int QUmlExtensionEnd::lowerBound() const
 
     return int ();
 }
+
+QT_END_NAMESPACE
 

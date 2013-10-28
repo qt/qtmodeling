@@ -60,6 +60,8 @@
 #include <QtUml/QUmlType>
 #include <QtUml/QUmlValueSpecification>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlObjectNode
 
@@ -236,4 +238,6 @@ void QUmlObjectNode::setUpperBound(QUmlValueSpecification *upperBound)
         }
     }
 }
+
+QT_END_NAMESPACE
 

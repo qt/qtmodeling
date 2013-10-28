@@ -53,6 +53,8 @@
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlTemplateParameter>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlRealization
 
@@ -90,4 +92,6 @@ QModelingElement *QUmlRealization::clone() const
         c->setMapping(dynamic_cast<QUmlOpaqueExpression *>(mapping()->clone()));
     return c;
 }
+
+QT_END_NAMESPACE
 

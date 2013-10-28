@@ -50,6 +50,8 @@
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlTransition>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlVertex
 
@@ -209,4 +211,6 @@ QUmlStateMachine *QUmlVertex::containingStateMachine() const
 
     return 0;
 }
+
+QT_END_NAMESPACE
 

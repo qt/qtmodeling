@@ -55,6 +55,8 @@
 #include <QtMof/QMofType>
 #include <QtMof/QMofValueSpecification>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QMofProperty
 
@@ -538,4 +540,6 @@ QSet<QMofType *> QMofProperty::subsettingContext() const
 
     return QSet<QMofType *> ();
 }
+
+QT_END_NAMESPACE
 

@@ -49,6 +49,8 @@
 #include <QtMof/QMofNamespace>
 #include <QtMof/QMofType>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QMofOpaqueExpression
 
@@ -177,4 +179,6 @@ int QMofOpaqueExpression::value() const
 
     return int ();
 }
+
+QT_END_NAMESPACE
 

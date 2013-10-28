@@ -78,6 +78,8 @@
 #include <QtUml/QUmlType>
 #include <QtUml/QUmlUseCase>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlClass
 
@@ -477,4 +479,6 @@ QSet<QUmlNamedElement *> QUmlClass::inherit(QSet<QUmlNamedElement *> inhs) const
     Q_UNUSED(inhs);
     return QSet<QUmlNamedElement *> ();
 }
+
+QT_END_NAMESPACE
 

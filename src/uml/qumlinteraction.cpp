@@ -88,6 +88,8 @@
 #include <QtUml/QUmlType>
 #include <QtUml/QUmlUseCase>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlInteraction
 
@@ -424,4 +426,6 @@ void QUmlInteraction::removeMessage(QUmlMessage *message)
         }
     }
 }
+
+QT_END_NAMESPACE
 

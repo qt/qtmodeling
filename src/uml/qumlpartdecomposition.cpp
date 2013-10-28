@@ -57,6 +57,8 @@
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlValueSpecification>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlPartDecomposition
 
@@ -102,4 +104,6 @@ QModelingElement *QUmlPartDecomposition::clone() const
         c->setReturnValueRecipient(dynamic_cast<QUmlProperty *>(returnValueRecipient()->clone()));
     return c;
 }
+
+QT_END_NAMESPACE
 

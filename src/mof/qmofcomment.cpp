@@ -44,6 +44,8 @@
 
 #include <QtMof/QMofClass>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QMofComment
 
@@ -118,4 +120,6 @@ void QMofComment::setBody(QString body)
         _body = body;
     }
 }
+
+QT_END_NAMESPACE
 

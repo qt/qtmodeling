@@ -63,6 +63,8 @@
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlStructuredActivityNode>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlReadExtentAction
 
@@ -170,4 +172,6 @@ void QUmlReadExtentAction::setResult(QUmlOutputPin *result)
         }
     }
 }
+
+QT_END_NAMESPACE
 

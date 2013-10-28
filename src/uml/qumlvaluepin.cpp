@@ -64,6 +64,8 @@
 #include <QtUml/QUmlType>
 #include <QtUml/QUmlValueSpecification>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlValuePin
 
@@ -158,4 +160,6 @@ void QUmlValuePin::setValue(QUmlValueSpecification *value)
         }
     }
 }
+
+QT_END_NAMESPACE
 

@@ -58,6 +58,8 @@
 #include <QtUml/QUmlTemplateParameter>
 #include <QtUml/QUmlValueSpecification>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlEnumerationLiteral
 
@@ -150,4 +152,6 @@ void QUmlEnumerationLiteral::setEnumeration(QUmlEnumeration *enumeration)
         setNamespace(enumeration);
     }
 }
+
+QT_END_NAMESPACE
 

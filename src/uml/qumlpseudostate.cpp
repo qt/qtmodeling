@@ -54,6 +54,8 @@
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlTransition>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlPseudostate
 
@@ -164,4 +166,6 @@ void QUmlPseudostate::setStateMachine(QUmlStateMachine *stateMachine)
         setNamespace(stateMachine);
     }
 }
+
+QT_END_NAMESPACE
 

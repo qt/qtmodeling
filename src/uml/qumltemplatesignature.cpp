@@ -46,6 +46,8 @@
 #include <QtUml/QUmlTemplateableElement>
 #include <QtUml/QUmlTemplateParameter>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlTemplateSignature
 
@@ -182,4 +184,6 @@ void QUmlTemplateSignature::setTemplate(QUmlTemplateableElement *template_)
         setOwner(template_);
     }
 }
+
+QT_END_NAMESPACE
 

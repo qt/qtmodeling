@@ -66,6 +66,8 @@
 #include <QtUml/QUmlType>
 #include <QtUml/QUmlValueSpecification>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlPort
 
@@ -336,4 +338,6 @@ void QUmlPort::removeRequired(QUmlInterface *required)
         // <derived-code>
     }
 }
+
+QT_END_NAMESPACE
 

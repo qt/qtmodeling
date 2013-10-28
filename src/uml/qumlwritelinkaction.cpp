@@ -63,6 +63,8 @@
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlStructuredActivityNode>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlWriteLinkAction
 
@@ -113,4 +115,6 @@ QModelingElement *QUmlWriteLinkAction::clone() const
         c->addInputValue(dynamic_cast<QUmlInputPin *>(element->clone()));
     return c;
 }
+
+QT_END_NAMESPACE
 

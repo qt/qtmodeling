@@ -64,6 +64,8 @@
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlStructuredActivityNode>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlClearAssociationAction
 
@@ -171,4 +173,6 @@ void QUmlClearAssociationAction::setObject(QUmlInputPin *object)
         }
     }
 }
+
+QT_END_NAMESPACE
 

@@ -51,6 +51,8 @@
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlTemplateParameter>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlUsage
 
@@ -86,4 +88,6 @@ QModelingElement *QUmlUsage::clone() const
         c->addSupplier(dynamic_cast<QUmlNamedElement *>(element->clone()));
     return c;
 }
+
+QT_END_NAMESPACE
 

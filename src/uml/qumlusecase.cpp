@@ -74,6 +74,8 @@
 #include <QtUml/QUmlTemplateSignature>
 #include <QtUml/QUmlType>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlUseCase
 
@@ -350,4 +352,6 @@ QSet<QUmlUseCase *> QUmlUseCase::allIncludedUseCases() const
 
     return QSet<QUmlUseCase *> ();
 }
+
+QT_END_NAMESPACE
 

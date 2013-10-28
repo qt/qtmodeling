@@ -73,6 +73,8 @@
 #include <QtUml/QUmlType>
 #include <QtUml/QUmlUseCase>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlDeploymentSpecification
 
@@ -215,4 +217,6 @@ void QUmlDeploymentSpecification::setExecutionLocation(QString executionLocation
         _executionLocation = executionLocation;
     }
 }
+
+QT_END_NAMESPACE
 

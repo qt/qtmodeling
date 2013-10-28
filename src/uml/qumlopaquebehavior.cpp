@@ -82,6 +82,8 @@
 #include <QtUml/QUmlType>
 #include <QtUml/QUmlUseCase>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlOpaqueBehavior
 
@@ -235,4 +237,6 @@ void QUmlOpaqueBehavior::removeLanguage(QString language)
         _languages.removeAll(language);
     }
 }
+
+QT_END_NAMESPACE
 

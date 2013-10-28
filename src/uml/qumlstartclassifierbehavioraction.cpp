@@ -63,6 +63,8 @@
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlStructuredActivityNode>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlStartClassifierBehaviorAction
 
@@ -146,4 +148,6 @@ void QUmlStartClassifierBehaviorAction::setObject(QUmlInputPin *object)
         }
     }
 }
+
+QT_END_NAMESPACE
 

@@ -64,6 +64,8 @@
 #include <QtUml/QUmlStructuredActivityNode>
 #include <QtUml/QUmlVariable>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlRemoveVariableValueAction
 
@@ -173,4 +175,6 @@ void QUmlRemoveVariableValueAction::setRemoveAt(QUmlInputPin *removeAt)
         }
     }
 }
+
+QT_END_NAMESPACE
 

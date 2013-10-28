@@ -85,6 +85,8 @@
 #include <QtUml/QUmlType>
 #include <QtUml/QUmlUseCase>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlStateMachine
 
@@ -400,4 +402,6 @@ bool QUmlStateMachine::isRedefinitionContextValid(QUmlStateMachine *redefined) c
     Q_UNUSED(redefined);
     return bool ();
 }
+
+QT_END_NAMESPACE
 

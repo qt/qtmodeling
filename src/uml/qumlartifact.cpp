@@ -71,6 +71,8 @@
 #include <QtUml/QUmlType>
 #include <QtUml/QUmlUseCase>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlArtifact
 
@@ -324,4 +326,6 @@ void QUmlArtifact::removeOwnedOperation(QUmlOperation *ownedOperation)
         removeOwnedMember(ownedOperation);
     }
 }
+
+QT_END_NAMESPACE
 

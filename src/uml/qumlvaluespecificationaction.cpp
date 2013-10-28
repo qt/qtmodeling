@@ -64,6 +64,8 @@
 #include <QtUml/QUmlStructuredActivityNode>
 #include <QtUml/QUmlValueSpecification>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlValueSpecificationAction
 
@@ -180,4 +182,6 @@ void QUmlValueSpecificationAction::setValue(QUmlValueSpecification *value)
         }
     }
 }
+
+QT_END_NAMESPACE
 

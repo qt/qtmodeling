@@ -87,6 +87,8 @@
 #include <QtUml/QUmlType>
 #include <QtUml/QUmlUseCase>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlProtocolStateMachine
 
@@ -238,4 +240,6 @@ void QUmlProtocolStateMachine::removeConformance(QUmlProtocolConformance *confor
         }
     }
 }
+
+QT_END_NAMESPACE
 

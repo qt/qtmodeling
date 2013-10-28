@@ -62,6 +62,8 @@
 #include <QtMof/QMofRedefinableElement>
 #include <QtMof/QMofType>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QMofEnumeration
 
@@ -157,4 +159,6 @@ void QMofEnumeration::removeOwnedLiteral(QMofEnumerationLiteral *ownedLiteral)
         }
     }
 }
+
+QT_END_NAMESPACE
 

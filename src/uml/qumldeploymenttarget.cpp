@@ -49,6 +49,8 @@
 #include <QtUml/QUmlPackageableElement>
 #include <QtUml/QUmlStringExpression>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlDeploymentTarget
 
@@ -164,4 +166,6 @@ void QUmlDeploymentTarget::removeDeployment(QUmlDeployment *deployment)
         }
     }
 }
+
+QT_END_NAMESPACE
 

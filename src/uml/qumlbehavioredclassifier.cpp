@@ -69,6 +69,8 @@
 #include <QtUml/QUmlType>
 #include <QtUml/QUmlUseCase>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlBehavioredClassifier
 
@@ -256,4 +258,6 @@ void QUmlBehavioredClassifier::removeOwnedBehavior(QUmlBehavior *ownedBehavior)
         removeOwnedMember(ownedBehavior);
     }
 }
+
+QT_END_NAMESPACE
 

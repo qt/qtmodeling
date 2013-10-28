@@ -55,6 +55,8 @@
 #include <QtUml/QUmlType>
 #include <QtUml/QUmlValueSpecification>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlStringExpression
 
@@ -179,4 +181,6 @@ QString QUmlStringExpression::stringValue() const
 
     return QString ();
 }
+
+QT_END_NAMESPACE
 

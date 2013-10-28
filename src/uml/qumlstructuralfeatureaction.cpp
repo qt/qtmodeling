@@ -62,6 +62,8 @@
 #include <QtUml/QUmlStructuralFeature>
 #include <QtUml/QUmlStructuredActivityNode>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlStructuralFeatureAction
 
@@ -167,4 +169,6 @@ void QUmlStructuralFeatureAction::setStructuralFeature(QUmlStructuralFeature *st
             QObject::connect(structuralFeature->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setStructuralFeature()));
     }
 }
+
+QT_END_NAMESPACE
 

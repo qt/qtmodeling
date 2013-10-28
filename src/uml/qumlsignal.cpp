@@ -69,6 +69,8 @@
 #include <QtUml/QUmlType>
 #include <QtUml/QUmlUseCase>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlSignal
 
@@ -175,4 +177,6 @@ void QUmlSignal::removeOwnedAttribute(QUmlProperty *ownedAttribute)
         removeAttribute(ownedAttribute);
     }
 }
+
+QT_END_NAMESPACE
 

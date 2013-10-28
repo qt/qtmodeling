@@ -51,6 +51,8 @@
 #include <QtUml/QUmlTemplateParameter>
 #include <QtUml/QUmlType>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlValueSpecification
 
@@ -164,4 +166,6 @@ int QUmlValueSpecification::unlimitedValue() const
 
     return int ();
 }
+
+QT_END_NAMESPACE
 

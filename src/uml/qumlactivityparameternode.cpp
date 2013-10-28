@@ -64,6 +64,8 @@
 #include <QtUml/QUmlType>
 #include <QtUml/QUmlValueSpecification>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlActivityParameterNode
 
@@ -141,4 +143,6 @@ void QUmlActivityParameterNode::setParameter(QUmlParameter *parameter)
             QObject::connect(parameter->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setParameter()));
     }
 }
+
+QT_END_NAMESPACE
 

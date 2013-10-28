@@ -44,6 +44,8 @@
 #include <QtMof/QMofComment>
 #include <QtMof/QMofElement>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QMofDirectedRelationship
 
@@ -136,4 +138,6 @@ void QMofDirectedRelationship::removeTarget(QMofElement *target)
         removeRelatedElement(target);
     }
 }
+
+QT_END_NAMESPACE
 

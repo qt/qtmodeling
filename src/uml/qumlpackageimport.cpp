@@ -47,6 +47,8 @@
 #include <QtUml/QUmlNamespace>
 #include <QtUml/QUmlPackage>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlPackageImport
 
@@ -156,4 +158,6 @@ void QUmlPackageImport::setVisibility(QtUml::VisibilityKind visibility)
         _qModelingObject->modifiedResettableProperties() << QStringLiteral("visibility");
     }
 }
+
+QT_END_NAMESPACE
 

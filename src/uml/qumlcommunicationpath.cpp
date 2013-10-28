@@ -70,6 +70,8 @@
 #include <QtUml/QUmlType>
 #include <QtUml/QUmlUseCase>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlCommunicationPath
 
@@ -139,4 +141,6 @@ QModelingElement *QUmlCommunicationPath::clone() const
         c->addOwnedEnd(dynamic_cast<QUmlProperty *>(element->clone()));
     return c;
 }
+
+QT_END_NAMESPACE
 

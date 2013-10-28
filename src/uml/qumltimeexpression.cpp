@@ -54,6 +54,8 @@
 #include <QtUml/QUmlTemplateParameter>
 #include <QtUml/QUmlType>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlTimeExpression
 
@@ -153,4 +155,6 @@ void QUmlTimeExpression::removeObservation(QUmlObservation *observation)
         _observations.remove(observation);
     }
 }
+
+QT_END_NAMESPACE
 

@@ -52,6 +52,8 @@
 #include <QtMof/QMofPackageMerge>
 #include <QtMof/QMofType>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QMofPackage
 
@@ -333,4 +335,6 @@ QSet<QMofPackageableElement *> QMofPackage::visibleMembers() const
 
     return QSet<QMofPackageableElement *> ();
 }
+
+QT_END_NAMESPACE
 

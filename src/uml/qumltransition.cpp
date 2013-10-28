@@ -59,6 +59,8 @@
 #include <QtUml/QUmlTrigger>
 #include <QtUml/QUmlVertex>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlTransition
 
@@ -379,4 +381,6 @@ bool QUmlTransition::isConsistentWith(QUmlRedefinableElement *redefinee) const
     Q_UNUSED(redefinee);
     return bool ();
 }
+
+QT_END_NAMESPACE
 

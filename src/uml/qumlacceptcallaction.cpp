@@ -64,6 +64,8 @@
 #include <QtUml/QUmlStructuredActivityNode>
 #include <QtUml/QUmlTrigger>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlAcceptCallAction
 
@@ -153,4 +155,6 @@ void QUmlAcceptCallAction::setReturnInformation(QUmlOutputPin *returnInformation
         }
     }
 }
+
+QT_END_NAMESPACE
 

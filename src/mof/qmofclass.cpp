@@ -59,6 +59,8 @@
 #include <QtMof/QMofRedefinableElement>
 #include <QtMof/QMofType>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QMofClass
 
@@ -315,4 +317,6 @@ QSet<QMofNamedElement *> QMofClass::inherit(QSet<QMofNamedElement *> inhs) const
     Q_UNUSED(inhs);
     return QSet<QMofNamedElement *> ();
 }
+
+QT_END_NAMESPACE
 

@@ -60,6 +60,8 @@
 #include <QtUml/QUmlTemplateSignature>
 #include <QtUml/QUmlType>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlPackage
 
@@ -468,4 +470,6 @@ QSet<QUmlPackageableElement *> QUmlPackage::visibleMembers() const
 
     return QSet<QUmlPackageableElement *> ();
 }
+
+QT_END_NAMESPACE
 

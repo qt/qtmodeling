@@ -52,6 +52,8 @@
 #include <QtUml/QUmlTemplateParameter>
 #include <QtUml/QUmlType>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlConnectableElement
 
@@ -152,4 +154,6 @@ void QUmlConnectableElement::setTemplateParameter(QUmlConnectableElementTemplate
             QObject::connect(templateParameter->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setTemplateParameter()));
     }
 }
+
+QT_END_NAMESPACE
 

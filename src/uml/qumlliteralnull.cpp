@@ -53,6 +53,8 @@
 #include <QtUml/QUmlTemplateParameter>
 #include <QtUml/QUmlType>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlLiteralNull
 
@@ -107,4 +109,6 @@ bool QUmlLiteralNull::isNull() const
 
     return bool ();
 }
+
+QT_END_NAMESPACE
 

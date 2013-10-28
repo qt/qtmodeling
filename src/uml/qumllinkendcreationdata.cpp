@@ -48,6 +48,8 @@
 #include <QtUml/QUmlProperty>
 #include <QtUml/QUmlQualifierValue>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlLinkEndCreationData
 
@@ -123,4 +125,6 @@ void QUmlLinkEndCreationData::setReplaceAll(bool isReplaceAll)
         _qModelingObject->modifiedResettableProperties() << QStringLiteral("isReplaceAll");
     }
 }
+
+QT_END_NAMESPACE
 

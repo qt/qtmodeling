@@ -80,6 +80,8 @@
 #include <QtUml/QUmlType>
 #include <QtUml/QUmlUseCase>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlComponent
 
@@ -371,4 +373,6 @@ QSet<QUmlInterface *> QUmlComponent::usedInterfaces(QUmlClassifier *classifier) 
     Q_UNUSED(classifier);
     return QSet<QUmlInterface *> ();
 }
+
+QT_END_NAMESPACE
 

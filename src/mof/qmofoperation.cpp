@@ -57,6 +57,8 @@
 #include <QtMof/QMofRedefinableElement>
 #include <QtMof/QMofType>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QMofOperation
 
@@ -558,4 +560,6 @@ QSet<QMofParameter *> QMofOperation::returnResult() const
 
     return QSet<QMofParameter *> ();
 }
+
+QT_END_NAMESPACE
 

@@ -83,6 +83,8 @@
 #include <QtUml/QUmlType>
 #include <QtUml/QUmlUseCase>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlFunctionBehavior
 
@@ -179,4 +181,6 @@ QModelingElement *QUmlFunctionBehavior::clone() const
         c->addLanguage(element);
     return c;
 }
+
+QT_END_NAMESPACE
 

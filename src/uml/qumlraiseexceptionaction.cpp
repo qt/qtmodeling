@@ -63,6 +63,8 @@
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlStructuredActivityNode>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlRaiseExceptionAction
 
@@ -146,4 +148,6 @@ void QUmlRaiseExceptionAction::setException(QUmlInputPin *exception)
         }
     }
 }
+
+QT_END_NAMESPACE
 

@@ -50,6 +50,8 @@
 #include <QtMof/QMofNamespace>
 #include <QtMof/QMofType>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QMofInstanceValue
 
@@ -100,4 +102,6 @@ void QMofInstanceValue::setInstance(QMofInstanceSpecification *instance)
             QObject::connect(instance->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setInstance()));
     }
 }
+
+QT_END_NAMESPACE
 

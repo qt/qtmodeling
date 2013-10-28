@@ -42,6 +42,8 @@
 
 #include "private/qmoftagobject_p.h"
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QMofTag
 
@@ -148,4 +150,6 @@ void QMofTag::setTagOwner(QMofElement *tagOwner)
             QObject::connect(tagOwner->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setTagOwner()));
     }
 }
+
+QT_END_NAMESPACE
 

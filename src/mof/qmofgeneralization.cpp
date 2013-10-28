@@ -47,6 +47,8 @@
 #include <QtMof/QMofComment>
 #include <QtMof/QMofElement>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QMofGeneralization
 
@@ -156,4 +158,6 @@ void QMofGeneralization::setSpecific(QMofClassifier *specific)
         }
     }
 }
+
+QT_END_NAMESPACE
 

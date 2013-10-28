@@ -54,6 +54,8 @@
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlTemplateParameter>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlGeneralizationSet
 
@@ -196,4 +198,6 @@ void QUmlGeneralizationSet::setPowertype(QUmlClassifier *powertype)
             QObject::connect(powertype->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setPowertype()));
     }
 }
+
+QT_END_NAMESPACE
 

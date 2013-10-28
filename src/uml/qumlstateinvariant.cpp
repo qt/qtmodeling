@@ -55,6 +55,8 @@
 #include <QtUml/QUmlPackage>
 #include <QtUml/QUmlStringExpression>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlStateInvariant
 
@@ -146,4 +148,6 @@ void QUmlStateInvariant::setInvariant(QUmlConstraint *invariant)
         }
     }
 }
+
+QT_END_NAMESPACE
 

@@ -55,6 +55,8 @@
 #include <QtUml/QUmlPackage>
 #include <QtUml/QUmlStringExpression>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlCombinedFragment
 
@@ -195,4 +197,6 @@ void QUmlCombinedFragment::removeOperand(QUmlInteractionOperand *operand)
         removeOwnedElement(operand);
     }
 }
+
+QT_END_NAMESPACE
 

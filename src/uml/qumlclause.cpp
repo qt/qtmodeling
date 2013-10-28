@@ -46,6 +46,8 @@
 #include <QtUml/QUmlExecutableNode>
 #include <QtUml/QUmlOutputPin>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlClause
 
@@ -252,4 +254,6 @@ void QUmlClause::removeTest(QUmlExecutableNode *test)
         _tests.remove(test);
     }
 }
+
+QT_END_NAMESPACE
 

@@ -50,6 +50,8 @@
 
 #include <QtMof/QMofPackage>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QMofNamespace
 
@@ -397,4 +399,6 @@ bool QMofNamespace::membersAreDistinguishable() const
 
     return bool ();
 }
+
+QT_END_NAMESPACE
 

@@ -49,6 +49,8 @@
 #include <QtMof/QMofNamespace>
 #include <QtMof/QMofType>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QMofLiteralBoolean
 
@@ -119,4 +121,6 @@ bool QMofLiteralBoolean::isComputable() const
 
     return bool ();
 }
+
+QT_END_NAMESPACE
 

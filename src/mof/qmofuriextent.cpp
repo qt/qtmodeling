@@ -44,6 +44,8 @@
 
 #include <QtMof/QMofElement>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QMofURIExtent
 
@@ -86,4 +88,6 @@ QMofElement *QMofURIExtent::element(QString uri) const
     Q_UNUSED(uri);
     return 0;
 }
+
+QT_END_NAMESPACE
 

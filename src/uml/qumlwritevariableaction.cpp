@@ -62,6 +62,8 @@
 #include <QtUml/QUmlStructuredActivityNode>
 #include <QtUml/QUmlVariable>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlWriteVariableAction
 
@@ -145,4 +147,6 @@ void QUmlWriteVariableAction::setValue(QUmlInputPin *value)
         }
     }
 }
+
+QT_END_NAMESPACE
 

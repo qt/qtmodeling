@@ -47,6 +47,8 @@
 #include <QtUml/QUmlPackage>
 #include <QtUml/QUmlProfile>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlProfileApplication
 
@@ -156,4 +158,6 @@ void QUmlProfileApplication::setStrict(bool isStrict)
         _qModelingObject->modifiedResettableProperties() << QStringLiteral("isStrict");
     }
 }
+
+QT_END_NAMESPACE
 

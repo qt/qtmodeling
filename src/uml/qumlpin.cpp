@@ -61,6 +61,8 @@
 #include <QtUml/QUmlType>
 #include <QtUml/QUmlValueSpecification>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlPin
 
@@ -140,4 +142,6 @@ void QUmlPin::setControl(bool isControl)
         _qModelingObject->modifiedResettableProperties() << QStringLiteral("isControl");
     }
 }
+
+QT_END_NAMESPACE
 

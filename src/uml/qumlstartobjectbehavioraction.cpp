@@ -64,6 +64,8 @@
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlStructuredActivityNode>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlStartObjectBehaviorAction
 
@@ -154,4 +156,6 @@ void QUmlStartObjectBehaviorAction::setObject(QUmlInputPin *object)
         }
     }
 }
+
+QT_END_NAMESPACE
 

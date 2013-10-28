@@ -60,6 +60,8 @@
 #include <QtUml/QUmlStructuredActivityNode>
 #include <QtUml/QUmlValueSpecification>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlJoinNode
 
@@ -158,4 +160,6 @@ void QUmlJoinNode::setJoinSpec(QUmlValueSpecification *joinSpec)
         }
     }
 }
+
+QT_END_NAMESPACE
 

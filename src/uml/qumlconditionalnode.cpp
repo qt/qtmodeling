@@ -67,6 +67,8 @@
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlVariable>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlConditionalNode
 
@@ -253,4 +255,6 @@ void QUmlConditionalNode::removeResult(QUmlOutputPin *result)
             result->asQModelingObject()->setParent(0);
     }
 }
+
+QT_END_NAMESPACE
 

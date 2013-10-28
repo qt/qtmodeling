@@ -51,6 +51,8 @@
 #include <QtMof/QMofType>
 #include <QtMof/QMofValueSpecification>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QMofParameter
 
@@ -186,4 +188,6 @@ void QMofParameter::setOperation(QMofOperation *operation)
             QObject::connect(operation->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setOperation()));
     }
 }
+
+QT_END_NAMESPACE
 

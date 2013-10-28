@@ -64,6 +64,8 @@
 #include <QtUml/QUmlStructuredActivityNode>
 #include <QtUml/QUmlTrigger>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlAcceptEventAction
 
@@ -218,4 +220,6 @@ void QUmlAcceptEventAction::removeTrigger(QUmlTrigger *trigger)
         removeOwnedElement(trigger);
     }
 }
+
+QT_END_NAMESPACE
 

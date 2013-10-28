@@ -66,6 +66,8 @@
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlStructuredActivityNode>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlCreateLinkObjectAction
 
@@ -154,4 +156,6 @@ void QUmlCreateLinkObjectAction::setResult(QUmlOutputPin *result)
         }
     }
 }
+
+QT_END_NAMESPACE
 

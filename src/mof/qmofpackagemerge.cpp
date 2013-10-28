@@ -47,6 +47,8 @@
 #include <QtMof/QMofElement>
 #include <QtMof/QMofPackage>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QMofPackageMerge
 
@@ -134,4 +136,6 @@ void QMofPackageMerge::setReceivingPackage(QMofPackage *receivingPackage)
         }
     }
 }
+
+QT_END_NAMESPACE
 

@@ -78,6 +78,8 @@
 #include <QtUml/QUmlType>
 #include <QtUml/QUmlUseCase>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlAssociationClass
 
@@ -165,4 +167,6 @@ QModelingElement *QUmlAssociationClass::clone() const
         c->addOwnedEnd(dynamic_cast<QUmlProperty *>(element->clone()));
     return c;
 }
+
+QT_END_NAMESPACE
 

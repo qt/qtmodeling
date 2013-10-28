@@ -47,6 +47,8 @@
 #include <QtUml/QUmlElement>
 #include <QtUml/QUmlGeneralizationSet>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlGeneralization
 
@@ -198,4 +200,6 @@ void QUmlGeneralization::setSpecific(QUmlClassifier *specific)
         }
     }
 }
+
+QT_END_NAMESPACE
 

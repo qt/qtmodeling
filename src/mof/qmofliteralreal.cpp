@@ -49,6 +49,8 @@
 #include <QtMof/QMofNamespace>
 #include <QtMof/QMofType>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QMofLiteralReal
 
@@ -115,4 +117,6 @@ double QMofLiteralReal::realValue() const
 
     return double ();
 }
+
+QT_END_NAMESPACE
 

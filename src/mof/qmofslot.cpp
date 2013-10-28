@@ -48,6 +48,8 @@
 #include <QtMof/QMofStructuralFeature>
 #include <QtMof/QMofValueSpecification>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QMofSlot
 
@@ -164,4 +166,6 @@ void QMofSlot::removeValue(QMofValueSpecification *value)
         removeOwnedElement(value);
     }
 }
+
+QT_END_NAMESPACE
 

@@ -47,6 +47,8 @@
 #include <QtUml/QUmlTemplateBinding>
 #include <QtUml/QUmlTemplateParameter>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlTemplateParameterSubstitution
 
@@ -180,4 +182,6 @@ void QUmlTemplateParameterSubstitution::setTemplateBinding(QUmlTemplateBinding *
         setOwner(templateBinding);
     }
 }
+
+QT_END_NAMESPACE
 

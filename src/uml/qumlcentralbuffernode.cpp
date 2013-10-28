@@ -63,6 +63,8 @@
 #include <QtUml/QUmlType>
 #include <QtUml/QUmlValueSpecification>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlCentralBufferNode
 
@@ -114,4 +116,6 @@ QModelingElement *QUmlCentralBufferNode::clone() const
         c->setUpperBound(dynamic_cast<QUmlValueSpecification *>(upperBound()->clone()));
     return c;
 }
+
+QT_END_NAMESPACE
 

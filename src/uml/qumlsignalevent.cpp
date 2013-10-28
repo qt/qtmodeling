@@ -53,6 +53,8 @@
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlTemplateParameter>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlSignalEvent
 
@@ -109,4 +111,6 @@ void QUmlSignalEvent::setSignal(QUmlSignal *signal)
             QObject::connect(signal->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setSignal()));
     }
 }
+
+QT_END_NAMESPACE
 

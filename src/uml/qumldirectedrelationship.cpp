@@ -43,6 +43,8 @@
 #include <QtUml/QUmlComment>
 #include <QtUml/QUmlElement>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlDirectedRelationship
 
@@ -135,4 +137,6 @@ void QUmlDirectedRelationship::removeTarget(QUmlElement *target)
         removeRelatedElement(target);
     }
 }
+
+QT_END_NAMESPACE
 

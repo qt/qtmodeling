@@ -50,6 +50,8 @@
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlTemplateParameter>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlEvent
 
@@ -78,4 +80,6 @@ QModelingElement *QUmlEvent::clone() const
     c->setVisibility(visibility());
     return c;
 }
+
+QT_END_NAMESPACE
 

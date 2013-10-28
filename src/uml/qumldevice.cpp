@@ -80,6 +80,8 @@
 #include <QtUml/QUmlType>
 #include <QtUml/QUmlUseCase>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlDevice
 
@@ -163,4 +165,6 @@ QModelingElement *QUmlDevice::clone() const
         c->addNestedNode(dynamic_cast<QUmlNode *>(element->clone()));
     return c;
 }
+
+QT_END_NAMESPACE
 

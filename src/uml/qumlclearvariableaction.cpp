@@ -64,6 +64,8 @@
 #include <QtUml/QUmlStructuredActivityNode>
 #include <QtUml/QUmlVariable>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlClearVariableAction
 
@@ -114,4 +116,6 @@ QModelingElement *QUmlClearVariableAction::clone() const
         c->setVariable(dynamic_cast<QUmlVariable *>(variable()->clone()));
     return c;
 }
+
+QT_END_NAMESPACE
 

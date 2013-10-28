@@ -64,6 +64,8 @@
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlVariable>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlStructuredActivityNode
 
@@ -399,4 +401,6 @@ void QUmlStructuredActivityNode::removeVariable(QUmlVariable *variable)
         }
     }
 }
+
+QT_END_NAMESPACE
 

@@ -44,6 +44,8 @@
 
 #include <QtMof/QMofObject>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QMofReflectiveSequence
 
@@ -96,4 +98,6 @@ QMofObject *QMofReflectiveSequence::set(int index, QMofObject *object)
     Q_UNUSED(object);
     return 0;
 }
+
+QT_END_NAMESPACE
 

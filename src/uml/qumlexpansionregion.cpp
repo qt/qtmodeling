@@ -67,6 +67,8 @@
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlVariable>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlExpansionRegion
 
@@ -241,4 +243,6 @@ void QUmlExpansionRegion::removeOutputElement(QUmlExpansionNode *outputElement)
         }
     }
 }
+
+QT_END_NAMESPACE
 

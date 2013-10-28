@@ -69,6 +69,8 @@
 #include <QtUml/QUmlType>
 #include <QtUml/QUmlUseCase>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlStructuredClassifier
 
@@ -290,4 +292,6 @@ void QUmlStructuredClassifier::removeRole(QUmlConnectableElement *role)
         removeMember(role);
     }
 }
+
+QT_END_NAMESPACE
 

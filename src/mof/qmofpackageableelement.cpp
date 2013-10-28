@@ -45,6 +45,8 @@
 #include <QtMof/QMofElement>
 #include <QtMof/QMofNamespace>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QMofPackageableElement
 
@@ -88,4 +90,6 @@ void QMofPackageableElement::setVisibility(QtMof::VisibilityKind visibility)
         _qModelingObject->modifiedResettableProperties() << QStringLiteral("visibility");
     }
 }
+
+QT_END_NAMESPACE
 

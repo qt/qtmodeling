@@ -63,6 +63,8 @@
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlStructuredActivityNode>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlTestIdentityAction
 
@@ -212,4 +214,6 @@ void QUmlTestIdentityAction::setSecond(QUmlInputPin *second)
         }
     }
 }
+
+QT_END_NAMESPACE
 

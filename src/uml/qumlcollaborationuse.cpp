@@ -50,6 +50,8 @@
 #include <QtUml/QUmlPackage>
 #include <QtUml/QUmlStringExpression>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlCollaborationUse
 
@@ -143,4 +145,6 @@ void QUmlCollaborationUse::setType(QUmlCollaboration *type)
             QObject::connect(type->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setType()));
     }
 }
+
+QT_END_NAMESPACE
 

@@ -61,6 +61,8 @@
 #include <QtUml/QUmlTransition>
 #include <QtUml/QUmlTrigger>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlState
 
@@ -634,4 +636,6 @@ bool QUmlState::isRedefinitionContextValid(QUmlState *redefined) const
     Q_UNUSED(redefined);
     return bool ();
 }
+
+QT_END_NAMESPACE
 

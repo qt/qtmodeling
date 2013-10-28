@@ -49,6 +49,8 @@
 #include <QtUml/QUmlPackage>
 #include <QtUml/QUmlStringExpression>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlFeature
 
@@ -138,4 +140,6 @@ void QUmlFeature::setStatic(bool isStatic)
         _qModelingObject->modifiedResettableProperties() << QStringLiteral("isStatic");
     }
 }
+
+QT_END_NAMESPACE
 

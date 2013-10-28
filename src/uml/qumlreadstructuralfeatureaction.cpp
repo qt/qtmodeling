@@ -64,6 +64,8 @@
 #include <QtUml/QUmlStructuralFeature>
 #include <QtUml/QUmlStructuredActivityNode>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlReadStructuralFeatureAction
 
@@ -151,4 +153,6 @@ void QUmlReadStructuralFeatureAction::setResult(QUmlOutputPin *result)
         }
     }
 }
+
+QT_END_NAMESPACE
 

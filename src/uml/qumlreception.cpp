@@ -61,6 +61,8 @@
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlType>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlReception
 
@@ -131,4 +133,6 @@ void QUmlReception::setSignal(QUmlSignal *signal)
             QObject::connect(signal->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setSignal()));
     }
 }
+
+QT_END_NAMESPACE
 

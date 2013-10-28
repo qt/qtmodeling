@@ -53,6 +53,8 @@
 #include <QtUml/QUmlTemplateParameter>
 #include <QtUml/QUmlType>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlLiteralUnlimitedNatural
 
@@ -131,4 +133,6 @@ int QUmlLiteralUnlimitedNatural::unlimitedValue() const
 
     return int ();
 }
+
+QT_END_NAMESPACE
 

@@ -47,6 +47,8 @@
 #include <QtMof/QMofNamespace>
 #include <QtMof/QMofType>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QMofLiteralSpecification
 
@@ -69,4 +71,6 @@ QModelingElement *QMofLiteralSpecification::clone() const
         c->setType(dynamic_cast<QMofType *>(type()->clone()));
     return c;
 }
+
+QT_END_NAMESPACE
 

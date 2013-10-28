@@ -42,6 +42,8 @@
 
 #include "private/qmofreflectivecollectionobject_p.h"
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QMofReflectiveCollection
 
@@ -98,4 +100,6 @@ int QMofReflectiveCollection::size() const
 
     return int ();
 }
+
+QT_END_NAMESPACE
 

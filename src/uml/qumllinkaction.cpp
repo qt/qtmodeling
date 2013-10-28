@@ -63,6 +63,8 @@
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlStructuredActivityNode>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlLinkAction
 
@@ -205,4 +207,6 @@ QUmlAssociation *QUmlLinkAction::association() const
 
     return 0;
 }
+
+QT_END_NAMESPACE
 

@@ -69,6 +69,8 @@
 #include <QtUml/QUmlType>
 #include <QtUml/QUmlUseCase>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlAssociation
 
@@ -337,4 +339,6 @@ void QUmlAssociation::removeOwnedEnd(QUmlProperty *ownedEnd)
         }
     }
 }
+
+QT_END_NAMESPACE
 

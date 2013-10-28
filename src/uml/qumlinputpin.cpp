@@ -64,6 +64,8 @@
 #include <QtUml/QUmlType>
 #include <QtUml/QUmlValueSpecification>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlInputPin
 
@@ -122,4 +124,6 @@ QModelingElement *QUmlInputPin::clone() const
     c->setControl(isControl());
     return c;
 }
+
+QT_END_NAMESPACE
 

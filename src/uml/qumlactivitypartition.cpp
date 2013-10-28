@@ -53,6 +53,8 @@
 #include <QtUml/QUmlPackage>
 #include <QtUml/QUmlStringExpression>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlActivityPartition
 
@@ -317,4 +319,6 @@ void QUmlActivityPartition::setSuperPartition(QUmlActivityPartition *superPartit
         setSuperGroup(superPartition);
     }
 }
+
+QT_END_NAMESPACE
 

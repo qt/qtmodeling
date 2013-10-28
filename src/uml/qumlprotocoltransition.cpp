@@ -62,6 +62,8 @@
 #include <QtUml/QUmlTrigger>
 #include <QtUml/QUmlVertex>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlProtocolTransition
 
@@ -212,4 +214,6 @@ void QUmlProtocolTransition::removeReferred(QUmlOperation *referred)
         // <derived-code>
     }
 }
+
+QT_END_NAMESPACE
 

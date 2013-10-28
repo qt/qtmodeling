@@ -46,6 +46,8 @@
 #include <QtUml/QUmlElement>
 #include <QtUml/QUmlProtocolStateMachine>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlProtocolConformance
 
@@ -133,4 +135,6 @@ void QUmlProtocolConformance::setSpecificMachine(QUmlProtocolStateMachine *speci
         }
     }
 }
+
+QT_END_NAMESPACE
 

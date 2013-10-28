@@ -54,6 +54,8 @@
 #include <QtUml/QUmlTemplateParameter>
 #include <QtUml/QUmlType>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlInstanceValue
 
@@ -112,4 +114,6 @@ void QUmlInstanceValue::setInstance(QUmlInstanceSpecification *instance)
             QObject::connect(instance->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setInstance()));
     }
 }
+
+QT_END_NAMESPACE
 

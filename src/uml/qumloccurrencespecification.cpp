@@ -54,6 +54,8 @@
 #include <QtUml/QUmlPackage>
 #include <QtUml/QUmlStringExpression>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlOccurrenceSpecification
 
@@ -196,4 +198,6 @@ void QUmlOccurrenceSpecification::removeToBefore(QUmlGeneralOrdering *toBefore)
         }
     }
 }
+
+QT_END_NAMESPACE
 

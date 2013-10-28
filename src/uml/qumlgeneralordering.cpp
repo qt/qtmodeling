@@ -50,6 +50,8 @@
 #include <QtUml/QUmlPackage>
 #include <QtUml/QUmlStringExpression>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlGeneralOrdering
 
@@ -126,4 +128,6 @@ void QUmlGeneralOrdering::setBefore(QUmlOccurrenceSpecification *before)
             QObject::connect(before->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setBefore()));
     }
 }
+
+QT_END_NAMESPACE
 

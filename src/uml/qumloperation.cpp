@@ -67,6 +67,8 @@
 #include <QtUml/QUmlTemplateSignature>
 #include <QtUml/QUmlType>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlOperation
 
@@ -645,4 +647,6 @@ QSet<QUmlParameter *> QUmlOperation::returnResult() const
 
     return QSet<QUmlParameter *> ();
 }
+
+QT_END_NAMESPACE
 

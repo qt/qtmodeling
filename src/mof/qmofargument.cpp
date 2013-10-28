@@ -44,6 +44,8 @@
 
 #include <QtMof/QMofObject>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QMofArgument
 
@@ -102,4 +104,6 @@ void QMofArgument::setValue(QMofObject *value)
             QObject::connect(value->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setValue()));
     }
 }
+
+QT_END_NAMESPACE
 

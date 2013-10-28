@@ -56,6 +56,8 @@
 #include <QtUml/QUmlStructuredActivityNode>
 #include <QtUml/QUmlValueSpecification>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlActivityEdge
 
@@ -409,4 +411,6 @@ void QUmlActivityEdge::setWeight(QUmlValueSpecification *weight)
         }
     }
 }
+
+QT_END_NAMESPACE
 

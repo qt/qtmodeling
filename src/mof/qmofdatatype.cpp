@@ -60,6 +60,8 @@
 #include <QtMof/QMofRedefinableElement>
 #include <QtMof/QMofType>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QMofDataType
 
@@ -218,4 +220,6 @@ QSet<QMofNamedElement *> QMofDataType::inherit(QSet<QMofNamedElement *> inhs) co
     Q_UNUSED(inhs);
     return QSet<QMofNamedElement *> ();
 }
+
+QT_END_NAMESPACE
 

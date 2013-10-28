@@ -67,6 +67,8 @@
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlVariable>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlSequenceNode
 
@@ -168,4 +170,6 @@ void QUmlSequenceNode::removeExecutableNode(QUmlExecutableNode *executableNode)
             executableNode->asQModelingObject()->setParent(0);
     }
 }
+
+QT_END_NAMESPACE
 

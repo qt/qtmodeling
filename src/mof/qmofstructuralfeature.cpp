@@ -50,6 +50,8 @@
 #include <QtMof/QMofType>
 #include <QtMof/QMofValueSpecification>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QMofStructuralFeature
 
@@ -104,4 +106,6 @@ void QMofStructuralFeature::setReadOnly(bool isReadOnly)
         _qModelingObject->modifiedResettableProperties() << QStringLiteral("isReadOnly");
     }
 }
+
+QT_END_NAMESPACE
 

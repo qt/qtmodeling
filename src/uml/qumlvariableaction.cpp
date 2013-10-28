@@ -62,6 +62,8 @@
 #include <QtUml/QUmlStructuredActivityNode>
 #include <QtUml/QUmlVariable>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlVariableAction
 
@@ -134,4 +136,6 @@ void QUmlVariableAction::setVariable(QUmlVariable *variable)
             QObject::connect(variable->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setVariable()));
     }
 }
+
+QT_END_NAMESPACE
 

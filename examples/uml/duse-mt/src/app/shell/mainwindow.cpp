@@ -426,6 +426,7 @@ void MainWindow::evaluateQualityMetrics()
 
 void MainWindow::populateDesignSpaceView(QModelingElement *modelingObject)
 {
+    Q_UNUSED(modelingObject);
 //    QDuseDesignSpace *designSpace = qobject_cast<QDuseDesignSpace *>(modelingObject);
 //    ui->tblDesignSpace->setRowCount(0);
 //    int row = 0;

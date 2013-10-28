@@ -51,6 +51,8 @@
 #include <QtUml/QUmlPort>
 #include <QtUml/QUmlStringExpression>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlTrigger
 
@@ -135,4 +137,6 @@ void QUmlTrigger::removePort(QUmlPort *port)
         _ports.remove(port);
     }
 }
+
+QT_END_NAMESPACE
 

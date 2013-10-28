@@ -48,6 +48,8 @@
 #include <QtMof/QMofLink>
 #include <QtMof/QMofReflectiveSequence>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QMofExtent
 
@@ -118,4 +120,6 @@ bool QMofExtent::linkExists(QMofAssociation *association, QMofElement *firstElem
     Q_UNUSED(secondElement);
     return bool ();
 }
+
+QT_END_NAMESPACE
 

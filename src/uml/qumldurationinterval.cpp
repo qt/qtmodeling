@@ -55,6 +55,8 @@
 #include <QtUml/QUmlType>
 #include <QtUml/QUmlValueSpecification>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlDurationInterval
 
@@ -138,4 +140,6 @@ void QUmlDurationInterval::setMin(QUmlDuration *min)
             QObject::connect(min->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setMin()));
     }
 }
+
+QT_END_NAMESPACE
 

@@ -57,6 +57,8 @@
 #include <QtUml/QUmlPackageImport>
 #include <QtUml/QUmlStringExpression>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlInteractionOperand
 
@@ -183,4 +185,6 @@ void QUmlInteractionOperand::setGuard(QUmlInteractionConstraint *guard)
         }
     }
 }
+
+QT_END_NAMESPACE
 

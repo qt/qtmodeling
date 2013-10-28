@@ -46,6 +46,8 @@
 #include <QtMof/QMofElement>
 #include <QtMof/QMofNamespace>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QMofRedefinableElement
 
@@ -174,4 +176,6 @@ bool QMofRedefinableElement::isRedefinitionContextValid(QMofRedefinableElement *
     Q_UNUSED(redefined);
     return bool ();
 }
+
+QT_END_NAMESPACE
 

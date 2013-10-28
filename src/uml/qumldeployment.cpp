@@ -54,6 +54,8 @@
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlTemplateParameter>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlDeployment
 
@@ -213,4 +215,6 @@ void QUmlDeployment::setLocation(QUmlDeploymentTarget *location)
         }
     }
 }
+
+QT_END_NAMESPACE
 

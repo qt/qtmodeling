@@ -45,6 +45,8 @@
 #include <QtMof/QMofAssociation>
 #include <QtMof/QMofElement>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QMofLink
 
@@ -146,4 +148,6 @@ void QMofLink::delete_()
     qWarning("QMofLink::delete(): to be implemented (operation)");
 
 }
+
+QT_END_NAMESPACE
 

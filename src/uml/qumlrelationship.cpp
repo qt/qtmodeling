@@ -42,6 +42,8 @@
 
 #include <QtUml/QUmlComment>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlRelationship
 
@@ -92,4 +94,6 @@ void QUmlRelationship::removeRelatedElement(QUmlElement *relatedElement)
         _relatedElements.remove(relatedElement);
     }
 }
+
+QT_END_NAMESPACE
 

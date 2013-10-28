@@ -48,6 +48,8 @@
 #include <QtUml/QUmlTemplateParameterSubstitution>
 #include <QtUml/QUmlTemplateSignature>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlTemplateBinding
 
@@ -186,4 +188,6 @@ void QUmlTemplateBinding::setSignature(QUmlTemplateSignature *signature)
         }
     }
 }
+
+QT_END_NAMESPACE
 

@@ -43,6 +43,8 @@
 #include <QtUml/QUmlComment>
 #include <QtUml/QUmlValueSpecification>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlMultiplicityElement
 
@@ -298,4 +300,6 @@ int QUmlMultiplicityElement::lowerBound() const
 //
 //    return int ();
 //}
+
+QT_END_NAMESPACE
 

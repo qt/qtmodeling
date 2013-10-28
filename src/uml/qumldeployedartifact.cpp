@@ -47,6 +47,8 @@
 #include <QtUml/QUmlPackage>
 #include <QtUml/QUmlStringExpression>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlDeployedArtifact
 
@@ -71,4 +73,6 @@ QModelingElement *QUmlDeployedArtifact::clone() const
     c->setVisibility(visibility());
     return c;
 }
+
+QT_END_NAMESPACE
 

@@ -53,6 +53,8 @@
 #include <QtMof/QMofRedefinableElement>
 #include <QtMof/QMofType>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QMofBehavioralFeature
 
@@ -170,4 +172,6 @@ bool QMofBehavioralFeature::isDistinguishableFrom(QMofNamedElement *n, QMofNames
     Q_UNUSED(ns);
     return bool ();
 }
+
+QT_END_NAMESPACE
 

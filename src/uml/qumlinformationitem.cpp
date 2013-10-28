@@ -69,6 +69,8 @@
 #include <QtUml/QUmlType>
 #include <QtUml/QUmlUseCase>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlInformationItem
 
@@ -164,4 +166,6 @@ void QUmlInformationItem::removeRepresented(QUmlClassifier *represented)
         _represented.remove(represented);
     }
 }
+
+QT_END_NAMESPACE
 

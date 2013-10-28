@@ -63,6 +63,8 @@
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlStructuredActivityNode>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlReadIsClassifiedObjectAction
 
@@ -225,4 +227,6 @@ void QUmlReadIsClassifiedObjectAction::setResult(QUmlOutputPin *result)
         }
     }
 }
+
+QT_END_NAMESPACE
 

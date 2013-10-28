@@ -50,6 +50,8 @@
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlTemplateParameter>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlType
 
@@ -117,4 +119,6 @@ bool QUmlType::conformsTo(QUmlType *other) const
     Q_UNUSED(other);
     return bool ();
 }
+
+QT_END_NAMESPACE
 

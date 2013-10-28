@@ -53,6 +53,8 @@
 #include <QtUml/QUmlTemplateParameter>
 #include <QtUml/QUmlValueSpecification>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlInteractionConstraint
 
@@ -158,4 +160,6 @@ void QUmlInteractionConstraint::setMinint(QUmlValueSpecification *minint)
         }
     }
 }
+
+QT_END_NAMESPACE
 

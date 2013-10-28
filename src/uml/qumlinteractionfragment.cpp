@@ -51,6 +51,8 @@
 #include <QtUml/QUmlPackage>
 #include <QtUml/QUmlStringExpression>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlInteractionFragment
 
@@ -218,4 +220,6 @@ void QUmlInteractionFragment::removeGeneralOrdering(QUmlGeneralOrdering *general
         removeOwnedElement(generalOrdering);
     }
 }
+
+QT_END_NAMESPACE
 

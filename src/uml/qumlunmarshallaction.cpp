@@ -63,6 +63,8 @@
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlStructuredActivityNode>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlUnmarshallAction
 
@@ -211,4 +213,6 @@ void QUmlUnmarshallAction::setUnmarshallType(QUmlClassifier *unmarshallType)
             QObject::connect(unmarshallType->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setUnmarshallType()));
     }
 }
+
+QT_END_NAMESPACE
 

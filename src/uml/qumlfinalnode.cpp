@@ -57,6 +57,8 @@
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlStructuredActivityNode>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlFinalNode
 
@@ -96,4 +98,6 @@ QModelingElement *QUmlFinalNode::clone() const
         c->addRedefinedNode(dynamic_cast<QUmlActivityNode *>(element->clone()));
     return c;
 }
+
+QT_END_NAMESPACE
 

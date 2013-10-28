@@ -52,6 +52,8 @@
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlTemplateParameter>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlTimeObservation
 
@@ -130,4 +132,6 @@ void QUmlTimeObservation::setFirstEvent(bool firstEvent)
         _qModelingObject->modifiedResettableProperties() << QStringLiteral("firstEvent");
     }
 }
+
+QT_END_NAMESPACE
 

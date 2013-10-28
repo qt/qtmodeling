@@ -50,6 +50,8 @@
 #include <QtUml/QUmlPackage>
 #include <QtUml/QUmlStringExpression>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlActivityGroup
 
@@ -251,4 +253,6 @@ void QUmlActivityGroup::setSuperGroup(QUmlActivityGroup *superGroup)
         setOwner(superGroup);
     }
 }
+
+QT_END_NAMESPACE
 

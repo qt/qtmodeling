@@ -62,6 +62,8 @@
 [% END -%]
 [%- END -%]
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class Q${namespace}${className}
 
@@ -409,3 +411,5 @@ void Q${namespace}${className}::set${attributeName.remove("^Is")}([% IF !qtType.
 }
 
 [%- END %]
+QT_END_NAMESPACE
+

@@ -64,6 +64,8 @@
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlStructuredActivityNode>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlReadLinkObjectEndQualifierAction
 
@@ -204,4 +206,6 @@ void QUmlReadLinkObjectEndQualifierAction::setResult(QUmlOutputPin *result)
         }
     }
 }
+
+QT_END_NAMESPACE
 

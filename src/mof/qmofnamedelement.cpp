@@ -44,6 +44,8 @@
 #include <QtMof/QMofComment>
 #include <QtMof/QMofNamespace>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QMofNamedElement
 
@@ -204,4 +206,6 @@ QString QMofNamedElement::separator() const
 {
     return QStringLiteral("::");
 }
+
+QT_END_NAMESPACE
 

@@ -48,6 +48,8 @@
 #include <QtMof/QMofObject>
 #include <QtMof/QMofPackage>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QMofType
 
@@ -115,4 +117,6 @@ bool QMofType::isInstance(QMofObject *object) const
     Q_UNUSED(object);
     return bool ();
 }
+
+QT_END_NAMESPACE
 

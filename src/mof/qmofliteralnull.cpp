@@ -49,6 +49,8 @@
 #include <QtMof/QMofNamespace>
 #include <QtMof/QMofType>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QMofLiteralNull
 
@@ -95,4 +97,6 @@ bool QMofLiteralNull::isNull() const
 
     return bool ();
 }
+
+QT_END_NAMESPACE
 

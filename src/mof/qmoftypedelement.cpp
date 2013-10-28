@@ -46,6 +46,8 @@
 #include <QtMof/QMofNamespace>
 #include <QtMof/QMofType>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QMofTypedElement
 
@@ -92,4 +94,6 @@ void QMofTypedElement::setType(QMofType *type)
             QObject::connect(type->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setType()));
     }
 }
+
+QT_END_NAMESPACE
 

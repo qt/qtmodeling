@@ -55,6 +55,8 @@
 #include <QtUml/QUmlPackage>
 #include <QtUml/QUmlStringExpression>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlConsiderIgnoreFragment
 
@@ -129,4 +131,6 @@ void QUmlConsiderIgnoreFragment::removeMessage(QUmlNamedElement *message)
         _messages.remove(message);
     }
 }
+
+QT_END_NAMESPACE
 

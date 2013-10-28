@@ -54,6 +54,8 @@
 #include <QtMof/QMofPackageImport>
 #include <QtMof/QMofProperty>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QMofClassifier
 
@@ -465,4 +467,6 @@ QSet<QMofClassifier *> QMofClassifier::parents() const
 
     return QSet<QMofClassifier *> ();
 }
+
+QT_END_NAMESPACE
 

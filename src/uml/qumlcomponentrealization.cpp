@@ -55,6 +55,8 @@
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlTemplateParameter>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlComponentRealization
 
@@ -165,4 +167,6 @@ void QUmlComponentRealization::removeRealizingClassifier(QUmlClassifier *realizi
         removeClient(realizingClassifier);
     }
 }
+
+QT_END_NAMESPACE
 

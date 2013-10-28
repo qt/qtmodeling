@@ -44,6 +44,8 @@
 
 #include <QtUml/QUmlComment>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlImage
 
@@ -126,4 +128,6 @@ void QUmlImage::setLocation(QString location)
         _location = location;
     }
 }
+
+QT_END_NAMESPACE
 

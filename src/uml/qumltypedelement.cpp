@@ -48,6 +48,8 @@
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlType>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlTypedElement
 
@@ -98,4 +100,6 @@ void QUmlTypedElement::setType(QUmlType *type)
             QObject::connect(type->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setType()));
     }
 }
+
+QT_END_NAMESPACE
 

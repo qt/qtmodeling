@@ -61,6 +61,8 @@
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlStructuredActivityNode>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlDecisionNode
 
@@ -152,4 +154,6 @@ void QUmlDecisionNode::setDecisionInputFlow(QUmlObjectFlow *decisionInputFlow)
             QObject::connect(decisionInputFlow->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setDecisionInputFlow()));
     }
 }
+
+QT_END_NAMESPACE
 

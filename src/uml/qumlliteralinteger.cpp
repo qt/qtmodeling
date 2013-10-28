@@ -53,6 +53,8 @@
 #include <QtUml/QUmlTemplateParameter>
 #include <QtUml/QUmlType>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlLiteralInteger
 
@@ -131,4 +133,6 @@ bool QUmlLiteralInteger::isComputable() const
 
     return bool ();
 }
+
+QT_END_NAMESPACE
 

@@ -64,6 +64,8 @@
 #include <QtUml/QUmlStructuredActivityNode>
 #include <QtUml/QUmlTrigger>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlReplyAction
 
@@ -212,4 +214,6 @@ void QUmlReplyAction::setReturnInformation(QUmlInputPin *returnInformation)
         }
     }
 }
+
+QT_END_NAMESPACE
 

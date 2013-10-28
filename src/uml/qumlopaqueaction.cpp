@@ -63,6 +63,8 @@
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlStructuredActivityNode>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlOpaqueAction
 
@@ -255,4 +257,6 @@ void QUmlOpaqueAction::removeOutputValue(QUmlOutputPin *outputValue)
         removeOutput(outputValue);
     }
 }
+
+QT_END_NAMESPACE
 

@@ -48,6 +48,8 @@
 #include <QtUml/QUmlPackage>
 #include <QtUml/QUmlStringExpression>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlMessageEnd
 
@@ -98,4 +100,6 @@ void QUmlMessageEnd::setMessage(QUmlMessage *message)
             QObject::connect(message->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setMessage()));
     }
 }
+
+QT_END_NAMESPACE
 

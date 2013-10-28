@@ -66,6 +66,8 @@
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlStructuredActivityNode>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlCreateLinkAction
 
@@ -153,4 +155,6 @@ void QUmlCreateLinkAction::removeEndData(QUmlLinkEndCreationData *endData)
             endData->asQModelingObject()->setParent(0);
     }
 }
+
+QT_END_NAMESPACE
 

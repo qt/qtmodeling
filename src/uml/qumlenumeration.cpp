@@ -72,6 +72,8 @@
 #include <QtUml/QUmlType>
 #include <QtUml/QUmlUseCase>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlEnumeration
 
@@ -191,4 +193,6 @@ void QUmlEnumeration::removeOwnedLiteral(QUmlEnumerationLiteral *ownedLiteral)
         }
     }
 }
+
+QT_END_NAMESPACE
 

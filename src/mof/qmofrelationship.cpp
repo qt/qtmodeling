@@ -43,6 +43,8 @@
 #include <QtMof/QMofClass>
 #include <QtMof/QMofComment>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QMofRelationship
 
@@ -93,4 +95,6 @@ void QMofRelationship::removeRelatedElement(QMofElement *relatedElement)
         _relatedElements.remove(relatedElement);
     }
 }
+
+QT_END_NAMESPACE
 

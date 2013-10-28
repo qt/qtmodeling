@@ -50,6 +50,8 @@
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlUseCase>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlInclude
 
@@ -143,4 +145,6 @@ void QUmlInclude::setIncludingCase(QUmlUseCase *includingCase)
         setNamespace(includingCase);
     }
 }
+
+QT_END_NAMESPACE
 

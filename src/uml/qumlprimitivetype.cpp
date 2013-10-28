@@ -71,6 +71,8 @@
 #include <QtUml/QUmlType>
 #include <QtUml/QUmlUseCase>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlPrimitiveType
 
@@ -137,4 +139,6 @@ QModelingElement *QUmlPrimitiveType::clone() const
         c->addOwnedOperation(dynamic_cast<QUmlOperation *>(element->clone()));
     return c;
 }
+
+QT_END_NAMESPACE
 

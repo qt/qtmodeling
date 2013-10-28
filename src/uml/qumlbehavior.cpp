@@ -79,6 +79,8 @@
 #include <QtUml/QUmlType>
 #include <QtUml/QUmlUseCase>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlBehavior
 
@@ -438,4 +440,6 @@ void QUmlBehavior::setSpecification(QUmlBehavioralFeature *specification)
             QObject::connect(specification->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setSpecification()));
     }
 }
+
+QT_END_NAMESPACE
 

@@ -53,6 +53,8 @@
 #include <QtUml/QUmlTemplateableElement>
 #include <QtUml/QUmlTemplateParameter>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlRedefinableTemplateSignature
 
@@ -214,4 +216,6 @@ bool QUmlRedefinableTemplateSignature::isConsistentWith(QUmlRedefinableElement *
     Q_UNUSED(redefinee);
     return bool ();
 }
+
+QT_END_NAMESPACE
 

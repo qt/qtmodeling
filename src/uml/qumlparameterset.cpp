@@ -51,6 +51,8 @@
 #include <QtUml/QUmlParameter>
 #include <QtUml/QUmlStringExpression>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlParameterSet
 
@@ -162,4 +164,6 @@ void QUmlParameterSet::removeParameter(QUmlParameter *parameter)
         }
     }
 }
+
+QT_END_NAMESPACE
 

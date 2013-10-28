@@ -88,6 +88,8 @@
 #include <QtUml/QUmlUseCase>
 #include <QtUml/QUmlVariable>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlActivity
 
@@ -520,4 +522,6 @@ void QUmlActivity::removeVariable(QUmlVariable *variable)
         }
     }
 }
+
+QT_END_NAMESPACE
 

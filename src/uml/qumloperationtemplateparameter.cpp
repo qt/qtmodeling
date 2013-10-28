@@ -48,6 +48,8 @@
 #include <QtUml/QUmlParameterableElement>
 #include <QtUml/QUmlTemplateSignature>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlOperationTemplateParameter
 
@@ -103,4 +105,6 @@ void QUmlOperationTemplateParameter::setParameteredElement(QUmlOperation *parame
             QObject::connect(parameteredElement->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setParameteredElement()));
     }
 }
+
+QT_END_NAMESPACE
 

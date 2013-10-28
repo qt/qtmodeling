@@ -55,6 +55,8 @@
 #include <QtUml/QUmlPackage>
 #include <QtUml/QUmlStringExpression>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlExecutionOccurrenceSpecification
 
@@ -120,4 +122,6 @@ void QUmlExecutionOccurrenceSpecification::setExecution(QUmlExecutionSpecificati
             QObject::connect(execution->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setExecution()));
     }
 }
+
+QT_END_NAMESPACE
 

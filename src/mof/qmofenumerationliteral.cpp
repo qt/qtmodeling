@@ -52,6 +52,8 @@
 #include <QtMof/QMofSlot>
 #include <QtMof/QMofValueSpecification>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QMofEnumerationLiteral
 
@@ -134,4 +136,6 @@ void QMofEnumerationLiteral::setEnumeration(QMofEnumeration *enumeration)
         setNamespace(enumeration);
     }
 }
+
+QT_END_NAMESPACE
 

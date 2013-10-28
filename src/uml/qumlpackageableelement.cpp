@@ -48,6 +48,8 @@
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlTemplateParameter>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlPackageableElement
 
@@ -99,4 +101,6 @@ void QUmlPackageableElement::setVisibility(QtUml::VisibilityKind visibility)
         _qModelingObject->modifiedResettableProperties() << QStringLiteral("visibility");
     }
 }
+
+QT_END_NAMESPACE
 

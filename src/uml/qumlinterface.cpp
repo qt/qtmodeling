@@ -72,6 +72,8 @@
 #include <QtUml/QUmlType>
 #include <QtUml/QUmlUseCase>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlInterface
 
@@ -396,4 +398,6 @@ void QUmlInterface::removeRedefinedInterface(QUmlInterface *redefinedInterface)
         removeRedefinedClassifier(redefinedInterface);
     }
 }
+
+QT_END_NAMESPACE
 

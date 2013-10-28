@@ -65,6 +65,8 @@
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlStructuredActivityNode>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlBroadcastSignalAction
 
@@ -143,4 +145,6 @@ void QUmlBroadcastSignalAction::setSignal(QUmlSignal *signal)
             QObject::connect(signal->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setSignal()));
     }
 }
+
+QT_END_NAMESPACE
 

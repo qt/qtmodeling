@@ -62,6 +62,8 @@
 #include <QtUml/QUmlTemplateSignature>
 #include <QtUml/QUmlType>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlModel
 
@@ -134,4 +136,6 @@ void QUmlModel::setViewpoint(QString viewpoint)
         _viewpoint = viewpoint;
     }
 }
+
+QT_END_NAMESPACE
 

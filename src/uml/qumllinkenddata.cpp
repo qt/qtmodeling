@@ -47,6 +47,8 @@
 #include <QtUml/QUmlProperty>
 #include <QtUml/QUmlQualifierValue>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlLinkEndData
 
@@ -158,4 +160,6 @@ void QUmlLinkEndData::setValue(QUmlInputPin *value)
             QObject::connect(value->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setValue()));
     }
 }
+
+QT_END_NAMESPACE
 

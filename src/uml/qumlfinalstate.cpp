@@ -63,6 +63,8 @@
 #include <QtUml/QUmlTransition>
 #include <QtUml/QUmlTrigger>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlFinalState
 
@@ -119,4 +121,6 @@ QModelingElement *QUmlFinalState::clone() const
         c->setSubmachine(dynamic_cast<QUmlStateMachine *>(submachine()->clone()));
     return c;
 }
+
+QT_END_NAMESPACE
 

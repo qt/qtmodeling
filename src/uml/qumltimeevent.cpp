@@ -53,6 +53,8 @@
 #include <QtUml/QUmlTemplateParameter>
 #include <QtUml/QUmlTimeExpression>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlTimeEvent
 
@@ -140,4 +142,6 @@ void QUmlTimeEvent::setWhen(QUmlTimeExpression *when)
         }
     }
 }
+
+QT_END_NAMESPACE
 

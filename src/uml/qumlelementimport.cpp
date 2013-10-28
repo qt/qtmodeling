@@ -47,6 +47,8 @@
 #include <QtUml/QUmlNamespace>
 #include <QtUml/QUmlPackageableElement>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlElementImport
 
@@ -188,4 +190,6 @@ QString QUmlElementImport::getName() const
 
     return QString ();
 }
+
+QT_END_NAMESPACE
 

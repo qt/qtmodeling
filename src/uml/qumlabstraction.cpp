@@ -52,6 +52,8 @@
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlTemplateParameter>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlAbstraction
 
@@ -122,4 +124,6 @@ void QUmlAbstraction::setMapping(QUmlOpaqueExpression *mapping)
         }
     }
 }
+
+QT_END_NAMESPACE
 

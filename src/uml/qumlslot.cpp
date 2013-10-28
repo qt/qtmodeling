@@ -47,6 +47,8 @@
 #include <QtUml/QUmlStructuralFeature>
 #include <QtUml/QUmlValueSpecification>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlSlot
 
@@ -163,4 +165,6 @@ void QUmlSlot::removeValue(QUmlValueSpecification *value)
         removeOwnedElement(value);
     }
 }
+
+QT_END_NAMESPACE
 

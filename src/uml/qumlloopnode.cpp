@@ -67,6 +67,8 @@
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlVariable>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlLoopNode
 
@@ -407,4 +409,6 @@ void QUmlLoopNode::removeTest(QUmlExecutableNode *test)
         _tests.remove(test);
     }
 }
+
+QT_END_NAMESPACE
 

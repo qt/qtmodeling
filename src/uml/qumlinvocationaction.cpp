@@ -62,6 +62,8 @@
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlStructuredActivityNode>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlInvocationAction
 
@@ -175,4 +177,6 @@ void QUmlInvocationAction::setOnPort(QUmlPort *onPort)
             QObject::connect(onPort->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setOnPort()));
     }
 }
+
+QT_END_NAMESPACE
 

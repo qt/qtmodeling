@@ -53,6 +53,8 @@
 #include <QtUml/QUmlTemplateParameter>
 #include <QtUml/QUmlType>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlExpression
 
@@ -148,4 +150,6 @@ void QUmlExpression::setSymbol(QString symbol)
         _symbol = symbol;
     }
 }
+
+QT_END_NAMESPACE
 

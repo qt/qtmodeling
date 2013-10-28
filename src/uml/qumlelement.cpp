@@ -42,6 +42,8 @@
 
 #include <QtUml/QUmlComment>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlElement
 
@@ -183,4 +185,6 @@ void QUmlElement::allOwnedElements(QSet<QUmlElement *> &allOwnedElements_) const
     foreach (QUmlElement *element, _ownedElements)
         element->allOwnedElements(allOwnedElements_);
 }
+
+QT_END_NAMESPACE
 

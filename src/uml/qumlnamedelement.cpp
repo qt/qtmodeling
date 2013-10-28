@@ -46,6 +46,8 @@
 #include <QtUml/QUmlPackage>
 #include <QtUml/QUmlStringExpression>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlNamedElement
 
@@ -291,4 +293,6 @@ QString QUmlNamedElement::separator() const
 {
     return QStringLiteral("::");
 }
+
+QT_END_NAMESPACE
 

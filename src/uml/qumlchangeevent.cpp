@@ -53,6 +53,8 @@
 #include <QtUml/QUmlTemplateParameter>
 #include <QtUml/QUmlValueSpecification>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlChangeEvent
 
@@ -118,4 +120,6 @@ void QUmlChangeEvent::setChangeExpression(QUmlValueSpecification *changeExpressi
         }
     }
 }
+
+QT_END_NAMESPACE
 

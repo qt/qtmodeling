@@ -60,6 +60,8 @@
 #include <QtUml/QUmlStructuredActivityNode>
 #include <QtUml/QUmlValueSpecification>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlObjectFlow
 
@@ -199,4 +201,6 @@ void QUmlObjectFlow::setTransformation(QUmlBehavior *transformation)
             QObject::connect(transformation->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setTransformation()));
     }
 }
+
+QT_END_NAMESPACE
 

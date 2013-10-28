@@ -42,6 +42,8 @@
 
 #include "private/qumlcommentobject_p.h"
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlComment
 
@@ -116,4 +118,6 @@ void QUmlComment::setBody(QString body)
         _body = body;
     }
 }
+
+QT_END_NAMESPACE
 

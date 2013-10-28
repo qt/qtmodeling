@@ -55,6 +55,8 @@
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlStructuredActivityNode>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlActivityNode
 
@@ -402,4 +404,6 @@ void QUmlActivityNode::removeRedefinedNode(QUmlActivityNode *redefinedNode)
         removeRedefinedElement(redefinedNode);
     }
 }
+
+QT_END_NAMESPACE
 

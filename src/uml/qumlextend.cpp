@@ -52,6 +52,8 @@
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlUseCase>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlExtend
 
@@ -210,4 +212,6 @@ void QUmlExtend::removeExtensionLocation(QUmlExtensionPoint *extensionLocation)
         _extensionLocations.removeAll(extensionLocation);
     }
 }
+
+QT_END_NAMESPACE
 

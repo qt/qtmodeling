@@ -54,6 +54,8 @@
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlTemplateParameter>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlManifestation
 
@@ -125,4 +127,6 @@ void QUmlManifestation::setUtilizedElement(QUmlPackageableElement *utilizedEleme
         }
     }
 }
+
+QT_END_NAMESPACE
 

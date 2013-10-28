@@ -54,6 +54,8 @@
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlValueSpecification>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlLifeline
 
@@ -234,4 +236,6 @@ void QUmlLifeline::setSelector(QUmlValueSpecification *selector)
         }
     }
 }
+
+QT_END_NAMESPACE
 

@@ -51,6 +51,8 @@
 #include <QtMof/QMofSlot>
 #include <QtMof/QMofValueSpecification>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QMofInstanceSpecification
 
@@ -191,4 +193,6 @@ void QMofInstanceSpecification::setSpecification(QMofValueSpecification *specifi
         }
     }
 }
+
+QT_END_NAMESPACE
 

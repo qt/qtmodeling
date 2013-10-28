@@ -57,6 +57,8 @@
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlType>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlBehavioralFeature
 
@@ -305,4 +307,6 @@ bool QUmlBehavioralFeature::isDistinguishableFrom(QUmlNamedElement *n, QUmlNames
     Q_UNUSED(ns);
     return bool ();
 }
+
+QT_END_NAMESPACE
 

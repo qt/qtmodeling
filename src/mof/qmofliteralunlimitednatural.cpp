@@ -49,6 +49,8 @@
 #include <QtMof/QMofNamespace>
 #include <QtMof/QMofType>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QMofLiteralUnlimitedNatural
 
@@ -119,4 +121,6 @@ int QMofLiteralUnlimitedNatural::unlimitedValue() const
 
     return int ();
 }
+
+QT_END_NAMESPACE
 

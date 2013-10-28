@@ -64,6 +64,8 @@
 #include <QtUml/QUmlStructuredActivityNode>
 #include <QtUml/QUmlVariable>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlAddVariableValueAction
 
@@ -173,4 +175,6 @@ void QUmlAddVariableValueAction::setReplaceAll(bool isReplaceAll)
         _qModelingObject->modifiedResettableProperties() << QStringLiteral("isReplaceAll");
     }
 }
+
+QT_END_NAMESPACE
 

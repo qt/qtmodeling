@@ -55,6 +55,8 @@
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlTransition>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlConnectionPointReference
 
@@ -178,4 +180,6 @@ void QUmlConnectionPointReference::setState(QUmlState *state)
         setNamespace(state);
     }
 }
+
+QT_END_NAMESPACE
 

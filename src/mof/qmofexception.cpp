@@ -44,6 +44,8 @@
 
 #include <QtMof/QMofElement>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QMofException
 
@@ -124,4 +126,6 @@ void QMofException::setDescription(QString description)
         _description = description;
     }
 }
+
+QT_END_NAMESPACE
 

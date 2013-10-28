@@ -62,6 +62,8 @@
 #include <QtUml/QUmlStructuralFeature>
 #include <QtUml/QUmlStructuredActivityNode>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlWriteStructuralFeatureAction
 
@@ -180,4 +182,6 @@ void QUmlWriteStructuralFeatureAction::setValue(QUmlInputPin *value)
         }
     }
 }
+
+QT_END_NAMESPACE
 

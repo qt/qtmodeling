@@ -61,6 +61,8 @@
 #include <QtMof/QMofRedefinableElement>
 #include <QtMof/QMofType>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QMofPrimitiveType
 
@@ -103,4 +105,6 @@ QModelingElement *QMofPrimitiveType::clone() const
         c->addOwnedOperation(dynamic_cast<QMofOperation *>(element->clone()));
     return c;
 }
+
+QT_END_NAMESPACE
 

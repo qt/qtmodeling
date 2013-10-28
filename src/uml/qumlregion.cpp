@@ -58,6 +58,8 @@
 #include <QtUml/QUmlTransition>
 #include <QtUml/QUmlVertex>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlRegion
 
@@ -353,4 +355,6 @@ bool QUmlRegion::isRedefinitionContextValid(QUmlRegion *redefined) const
     Q_UNUSED(redefined);
     return bool ();
 }
+
+QT_END_NAMESPACE
 

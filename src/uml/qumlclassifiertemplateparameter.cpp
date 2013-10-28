@@ -48,6 +48,8 @@
 #include <QtUml/QUmlParameterableElement>
 #include <QtUml/QUmlTemplateSignature>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlClassifierTemplateParameter
 
@@ -157,4 +159,6 @@ void QUmlClassifierTemplateParameter::setParameteredElement(QUmlClassifier *para
             QObject::connect(parameteredElement->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setParameteredElement()));
     }
 }
+
+QT_END_NAMESPACE
 

@@ -56,6 +56,8 @@
 #include <QtUml/QUmlPackage>
 #include <QtUml/QUmlStringExpression>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlActionExecutionSpecification
 
@@ -120,4 +122,6 @@ void QUmlActionExecutionSpecification::setAction(QUmlAction *action)
             QObject::connect(action->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setAction()));
     }
 }
+
+QT_END_NAMESPACE
 

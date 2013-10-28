@@ -51,6 +51,8 @@
 #include <QtUml/QUmlPackage>
 #include <QtUml/QUmlStringExpression>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlGate
 
@@ -79,4 +81,6 @@ QModelingElement *QUmlGate::clone() const
         c->setMessage(dynamic_cast<QUmlMessage *>(message()->clone()));
     return c;
 }
+
+QT_END_NAMESPACE
 

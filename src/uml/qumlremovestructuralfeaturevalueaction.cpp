@@ -64,6 +64,8 @@
 #include <QtUml/QUmlStructuralFeature>
 #include <QtUml/QUmlStructuredActivityNode>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlRemoveStructuralFeatureValueAction
 
@@ -177,4 +179,6 @@ void QUmlRemoveStructuralFeatureValueAction::setRemoveAt(QUmlInputPin *removeAt)
         }
     }
 }
+
+QT_END_NAMESPACE
 

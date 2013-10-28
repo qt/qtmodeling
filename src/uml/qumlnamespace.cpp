@@ -50,6 +50,8 @@
 #include <QtUml/QUmlPackageImport>
 #include <QtUml/QUmlStringExpression>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlNamespace
 
@@ -401,4 +403,6 @@ bool QUmlNamespace::membersAreDistinguishable() const
 
     return bool ();
 }
+
+QT_END_NAMESPACE
 

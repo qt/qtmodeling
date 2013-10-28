@@ -53,6 +53,8 @@
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlTemplateParameter>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlCallEvent
 
@@ -109,4 +111,6 @@ void QUmlCallEvent::setOperation(QUmlOperation *operation)
             QObject::connect(operation->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setOperation()));
     }
 }
+
+QT_END_NAMESPACE
 

@@ -72,6 +72,8 @@
 #include <QtUml/QUmlType>
 #include <QtUml/QUmlUseCase>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlActor
 
@@ -139,4 +141,6 @@ QModelingElement *QUmlActor::clone() const
         c->addOwnedBehavior(dynamic_cast<QUmlBehavior *>(element->clone()));
     return c;
 }
+
+QT_END_NAMESPACE
 

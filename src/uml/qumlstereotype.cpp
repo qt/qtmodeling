@@ -80,6 +80,8 @@
 #include <QtUml/QUmlType>
 #include <QtUml/QUmlUseCase>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlStereotype
 
@@ -238,4 +240,6 @@ QUmlProfile *QUmlStereotype::containingProfile() const
 
     return 0;
 }
+
+QT_END_NAMESPACE
 

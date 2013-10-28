@@ -49,6 +49,8 @@
 #include <QtMof/QMofNamespace>
 #include <QtMof/QMofType>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QMofLiteralString
 
@@ -117,4 +119,6 @@ QString QMofLiteralString::stringValue() const
 
     return QString ();
 }
+
+QT_END_NAMESPACE
 

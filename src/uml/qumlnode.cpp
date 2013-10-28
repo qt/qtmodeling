@@ -79,6 +79,8 @@
 #include <QtUml/QUmlType>
 #include <QtUml/QUmlUseCase>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlNode
 
@@ -203,4 +205,6 @@ void QUmlNode::removeNestedNode(QUmlNode *nestedNode)
         removeOwnedMember(nestedNode);
     }
 }
+
+QT_END_NAMESPACE
 

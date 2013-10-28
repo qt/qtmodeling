@@ -48,6 +48,8 @@
 #include <QtUml/QUmlPackage>
 #include <QtUml/QUmlStringExpression>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlRedefinableElement
 
@@ -180,4 +182,6 @@ bool QUmlRedefinableElement::isRedefinitionContextValid(QUmlRedefinableElement *
     Q_UNUSED(redefined);
     return bool ();
 }
+
+QT_END_NAMESPACE
 

@@ -53,6 +53,8 @@
 #include <QtUml/QUmlTemplateParameter>
 #include <QtUml/QUmlValueSpecification>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlConstraint
 
@@ -179,4 +181,6 @@ void QUmlConstraint::setSpecification(QUmlValueSpecification *specification)
         }
     }
 }
+
+QT_END_NAMESPACE
 

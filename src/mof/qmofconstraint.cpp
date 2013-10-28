@@ -49,6 +49,8 @@
 #include <QtMof/QMofNamespace>
 #include <QtMof/QMofValueSpecification>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QMofConstraint
 
@@ -167,4 +169,6 @@ void QMofConstraint::setSpecification(QMofValueSpecification *specification)
         }
     }
 }
+
+QT_END_NAMESPACE
 

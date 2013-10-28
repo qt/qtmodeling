@@ -65,6 +65,8 @@
 #include <QtUml/QUmlType>
 #include <QtUml/QUmlValueSpecification>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlProperty
 
@@ -668,4 +670,6 @@ QSet<QUmlType *> QUmlProperty::subsettingContext() const
 
     return QSet<QUmlType *> ();
 }
+
+QT_END_NAMESPACE
 

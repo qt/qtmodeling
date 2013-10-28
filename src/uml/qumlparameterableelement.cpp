@@ -43,6 +43,8 @@
 #include <QtUml/QUmlComment>
 #include <QtUml/QUmlTemplateParameter>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlParameterableElement
 
@@ -140,4 +142,6 @@ bool QUmlParameterableElement::isTemplateParameter() const
 
     return bool ();
 }
+
+QT_END_NAMESPACE
 

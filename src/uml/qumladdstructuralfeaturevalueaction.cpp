@@ -64,6 +64,8 @@
 #include <QtUml/QUmlStructuralFeature>
 #include <QtUml/QUmlStructuredActivityNode>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlAddStructuralFeatureValueAction
 
@@ -177,4 +179,6 @@ void QUmlAddStructuralFeatureValueAction::setReplaceAll(bool isReplaceAll)
         _qModelingObject->modifiedResettableProperties() << QStringLiteral("isReplaceAll");
     }
 }
+
+QT_END_NAMESPACE
 

@@ -59,6 +59,8 @@
 #include <QtUml/QUmlType>
 #include <QtUml/QUmlValueSpecification>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlVariable
 
@@ -170,4 +172,6 @@ bool QUmlVariable::isAccessibleBy(QUmlAction *a) const
     Q_UNUSED(a);
     return bool ();
 }
+
+QT_END_NAMESPACE
 

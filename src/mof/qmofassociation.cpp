@@ -59,6 +59,8 @@
 #include <QtMof/QMofRedefinableElement>
 #include <QtMof/QMofType>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QMofAssociation
 
@@ -303,4 +305,6 @@ void QMofAssociation::removeOwnedEnd(QMofProperty *ownedEnd)
         }
     }
 }
+
+QT_END_NAMESPACE
 

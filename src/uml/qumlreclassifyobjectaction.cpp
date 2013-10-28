@@ -63,6 +63,8 @@
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlStructuredActivityNode>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlReclassifyObjectAction
 
@@ -232,4 +234,6 @@ void QUmlReclassifyObjectAction::removeOldClassifier(QUmlClassifier *oldClassifi
         _oldClassifiers.remove(oldClassifier);
     }
 }
+
+QT_END_NAMESPACE
 

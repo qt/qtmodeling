@@ -48,6 +48,8 @@
 #include <QtUml/QUmlProperty>
 #include <QtUml/QUmlQualifierValue>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlLinkEndDestructionData
 
@@ -123,4 +125,6 @@ void QUmlLinkEndDestructionData::setDestroyDuplicates(bool isDestroyDuplicates)
         _qModelingObject->modifiedResettableProperties() << QStringLiteral("isDestroyDuplicates");
     }
 }
+
+QT_END_NAMESPACE
 

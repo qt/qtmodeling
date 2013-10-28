@@ -52,6 +52,8 @@
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlTemplateParameter>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlAnyReceiveEvent
 
@@ -82,4 +84,6 @@ QModelingElement *QUmlAnyReceiveEvent::clone() const
     c->setVisibility(visibility());
     return c;
 }
+
+QT_END_NAMESPACE
 

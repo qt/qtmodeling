@@ -54,6 +54,8 @@
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlTemplateParameter>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlSubstitution
 
@@ -158,4 +160,6 @@ void QUmlSubstitution::setSubstitutingClassifier(QUmlClassifier *substitutingCla
         }
     }
 }
+
+QT_END_NAMESPACE
 

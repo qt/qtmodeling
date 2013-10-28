@@ -53,6 +53,8 @@
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlValueSpecification>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlMessage
 
@@ -293,4 +295,6 @@ void QUmlMessage::setSignature(QUmlNamedElement *signature)
             QObject::connect(signature->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setSignature()));
     }
 }
+
+QT_END_NAMESPACE
 

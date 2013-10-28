@@ -50,6 +50,8 @@
 #include <QtMof/QMofObject>
 #include <QtMof/QMofPackage>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QMofFactory
 
@@ -137,4 +139,6 @@ QMofLink *QMofFactory::createLink(QMofAssociation *association, QMofElement *fir
     Q_UNUSED(secondElement);
     return 0;
 }
+
+QT_END_NAMESPACE
 

@@ -52,6 +52,8 @@
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlUseCase>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlExtensionPoint
 
@@ -110,4 +112,6 @@ void QUmlExtensionPoint::setUseCase(QUmlUseCase *useCase)
         setNamespace(useCase);
     }
 }
+
+QT_END_NAMESPACE
 

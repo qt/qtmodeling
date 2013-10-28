@@ -55,6 +55,8 @@
 #include <QtUml/QUmlTimeInterval>
 #include <QtUml/QUmlValueSpecification>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlTimeConstraint
 
@@ -139,4 +141,6 @@ void QUmlTimeConstraint::setSpecification(QUmlTimeInterval *specification)
         specification->asQModelingObject()->setParent(this->asQModelingObject());
     }
 }
+
+QT_END_NAMESPACE
 

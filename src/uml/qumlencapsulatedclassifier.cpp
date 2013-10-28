@@ -71,6 +71,8 @@
 #include <QtUml/QUmlType>
 #include <QtUml/QUmlUseCase>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlEncapsulatedClassifier
 
@@ -178,4 +180,6 @@ void QUmlEncapsulatedClassifier::removeOwnedPort(QUmlPort *ownedPort)
         removeOwnedAttribute(ownedPort);
     }
 }
+
+QT_END_NAMESPACE
 

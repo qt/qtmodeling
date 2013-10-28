@@ -48,6 +48,8 @@
 #include <QtMof/QMofNamespace>
 #include <QtMof/QMofPackage>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QMofPackageImport
 
@@ -157,4 +159,6 @@ void QMofPackageImport::setVisibility(QtMof::VisibilityKind visibility)
         _qModelingObject->modifiedResettableProperties() << QStringLiteral("visibility");
     }
 }
+
+QT_END_NAMESPACE
 

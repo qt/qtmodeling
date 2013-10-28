@@ -55,6 +55,8 @@
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlTemplateParameter>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlInterfaceRealization
 
@@ -159,4 +161,6 @@ void QUmlInterfaceRealization::setImplementingClassifier(QUmlBehavioredClassifie
         }
     }
 }
+
+QT_END_NAMESPACE
 

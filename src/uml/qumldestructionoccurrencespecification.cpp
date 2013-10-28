@@ -55,6 +55,8 @@
 #include <QtUml/QUmlPackage>
 #include <QtUml/QUmlStringExpression>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlDestructionOccurrenceSpecification
 
@@ -96,4 +98,6 @@ QModelingElement *QUmlDestructionOccurrenceSpecification::clone() const
         c->setMessage(dynamic_cast<QUmlMessage *>(message()->clone()));
     return c;
 }
+
+QT_END_NAMESPACE
 

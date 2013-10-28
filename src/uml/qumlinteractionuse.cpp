@@ -57,6 +57,8 @@
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlValueSpecification>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlInteractionUse
 
@@ -256,4 +258,6 @@ void QUmlInteractionUse::setReturnValueRecipient(QUmlProperty *returnValueRecipi
             QObject::connect(returnValueRecipient->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setReturnValueRecipient()));
     }
 }
+
+QT_END_NAMESPACE
 

@@ -52,6 +52,8 @@
 #include <QtUml/QUmlType>
 #include <QtUml/QUmlValueSpecification>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlStructuralFeature
 
@@ -110,4 +112,6 @@ void QUmlStructuralFeature::setReadOnly(bool isReadOnly)
         _qModelingObject->modifiedResettableProperties() << QStringLiteral("isReadOnly");
     }
 }
+
+QT_END_NAMESPACE
 

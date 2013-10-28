@@ -48,6 +48,8 @@
 #include <QtMof/QMofNamespace>
 #include <QtMof/QMofPackageableElement>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QMofElementImport
 
@@ -189,4 +191,6 @@ QString QMofElementImport::getName() const
 
     return QString ();
 }
+
+QT_END_NAMESPACE
 

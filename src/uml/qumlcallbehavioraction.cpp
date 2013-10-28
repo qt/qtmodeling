@@ -65,6 +65,8 @@
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlStructuredActivityNode>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlCallBehaviorAction
 
@@ -146,4 +148,6 @@ void QUmlCallBehaviorAction::setBehavior(QUmlBehavior *behavior)
             QObject::connect(behavior->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setBehavior()));
     }
 }
+
+QT_END_NAMESPACE
 

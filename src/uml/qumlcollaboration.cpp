@@ -74,6 +74,8 @@
 #include <QtUml/QUmlType>
 #include <QtUml/QUmlUseCase>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlCollaboration
 
@@ -185,4 +187,6 @@ void QUmlCollaboration::removeCollaborationRole(QUmlConnectableElement *collabor
         removeRole(collaborationRole);
     }
 }
+
+QT_END_NAMESPACE
 

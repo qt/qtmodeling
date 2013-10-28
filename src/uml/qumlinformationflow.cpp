@@ -57,6 +57,8 @@
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlTemplateParameter>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlInformationFlow
 
@@ -325,4 +327,6 @@ void QUmlInformationFlow::removeRealizingMessage(QUmlMessage *realizingMessage)
         _realizingMessages.remove(realizingMessage);
     }
 }
+
+QT_END_NAMESPACE
 

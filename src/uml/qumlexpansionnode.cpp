@@ -64,6 +64,8 @@
 #include <QtUml/QUmlType>
 #include <QtUml/QUmlValueSpecification>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlExpansionNode
 
@@ -165,4 +167,6 @@ void QUmlExpansionNode::setRegionAsOutput(QUmlExpansionRegion *regionAsOutput)
             QObject::connect(regionAsOutput->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setRegionAsOutput()));
     }
 }
+
+QT_END_NAMESPACE
 

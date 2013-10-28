@@ -59,6 +59,8 @@
 #include <QtUml/QUmlStructuredActivityNode>
 #include <QtUml/QUmlValueSpecification>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlControlFlow
 
@@ -104,4 +106,6 @@ QModelingElement *QUmlControlFlow::clone() const
         c->setWeight(dynamic_cast<QUmlValueSpecification *>(weight()->clone()));
     return c;
 }
+
+QT_END_NAMESPACE
 

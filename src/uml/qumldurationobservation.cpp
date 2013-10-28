@@ -52,6 +52,8 @@
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlTemplateParameter>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlDurationObservation
 
@@ -128,4 +130,6 @@ void QUmlDurationObservation::setFirstEvent(bool firstEvent)
         _firstEvent = firstEvent;
     }
 }
+
+QT_END_NAMESPACE
 

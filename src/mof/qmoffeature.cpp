@@ -47,6 +47,8 @@
 #include <QtMof/QMofNamedElement>
 #include <QtMof/QMofNamespace>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QMofFeature
 
@@ -132,4 +134,6 @@ void QMofFeature::setStatic(bool isStatic)
         _qModelingObject->modifiedResettableProperties() << QStringLiteral("isStatic");
     }
 }
+
+QT_END_NAMESPACE
 

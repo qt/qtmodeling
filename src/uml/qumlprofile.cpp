@@ -61,6 +61,8 @@
 #include <QtUml/QUmlTemplateSignature>
 #include <QtUml/QUmlType>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlProfile
 
@@ -195,4 +197,6 @@ void QUmlProfile::removeMetamodelReference(QUmlPackageImport *metamodelReference
         removePackageImport(metamodelReference);
     }
 }
+
+QT_END_NAMESPACE
 

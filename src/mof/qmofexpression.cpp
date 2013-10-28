@@ -49,6 +49,8 @@
 #include <QtMof/QMofNamespace>
 #include <QtMof/QMofType>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QMofExpression
 
@@ -136,4 +138,6 @@ void QMofExpression::setSymbol(QString symbol)
         _symbol = symbol;
     }
 }
+
+QT_END_NAMESPACE
 

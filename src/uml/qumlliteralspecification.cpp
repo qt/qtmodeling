@@ -51,6 +51,8 @@
 #include <QtUml/QUmlTemplateParameter>
 #include <QtUml/QUmlType>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlLiteralSpecification
 
@@ -81,4 +83,6 @@ QModelingElement *QUmlLiteralSpecification::clone() const
     c->setVisibility(visibility());
     return c;
 }
+
+QT_END_NAMESPACE
 

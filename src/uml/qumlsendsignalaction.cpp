@@ -65,6 +65,8 @@
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlStructuredActivityNode>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlSendSignalAction
 
@@ -176,4 +178,6 @@ void QUmlSendSignalAction::setTarget(QUmlInputPin *target)
         }
     }
 }
+
+QT_END_NAMESPACE
 

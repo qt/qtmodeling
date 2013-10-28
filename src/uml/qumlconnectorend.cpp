@@ -48,6 +48,8 @@
 #include <QtUml/QUmlProperty>
 #include <QtUml/QUmlValueSpecification>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlConnectorEnd
 
@@ -148,4 +150,6 @@ void QUmlConnectorEnd::setRole(QUmlConnectableElement *role)
             QObject::connect(role->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setRole()));
     }
 }
+
+QT_END_NAMESPACE
 

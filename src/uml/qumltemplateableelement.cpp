@@ -45,6 +45,8 @@
 #include <QtUml/QUmlTemplateBinding>
 #include <QtUml/QUmlTemplateSignature>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlTemplateableElement
 
@@ -171,4 +173,6 @@ QSet<QUmlParameterableElement *> QUmlTemplateableElement::parameterableElements(
 
     return QSet<QUmlParameterableElement *> ();
 }
+
+QT_END_NAMESPACE
 

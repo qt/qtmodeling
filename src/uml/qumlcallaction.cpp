@@ -62,6 +62,8 @@
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlStructuredActivityNode>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlCallAction
 
@@ -177,4 +179,6 @@ void QUmlCallAction::removeResult(QUmlOutputPin *result)
         removeOutput(result);
     }
 }
+
+QT_END_NAMESPACE
 

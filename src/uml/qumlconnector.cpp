@@ -55,6 +55,8 @@
 #include <QtUml/QUmlRedefinableElement>
 #include <QtUml/QUmlStringExpression>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlConnector
 
@@ -244,4 +246,6 @@ void QUmlConnector::setType(QUmlAssociation *type)
             QObject::connect(type->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setType()));
     }
 }
+
+QT_END_NAMESPACE
 

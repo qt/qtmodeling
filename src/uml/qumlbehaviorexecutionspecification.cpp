@@ -56,6 +56,8 @@
 #include <QtUml/QUmlPackage>
 #include <QtUml/QUmlStringExpression>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlBehaviorExecutionSpecification
 
@@ -120,4 +122,6 @@ void QUmlBehaviorExecutionSpecification::setBehavior(QUmlBehavior *behavior)
             QObject::connect(behavior->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setBehavior()));
     }
 }
+
+QT_END_NAMESPACE
 

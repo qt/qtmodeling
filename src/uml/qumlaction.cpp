@@ -61,6 +61,8 @@
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlStructuredActivityNode>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlAction
 
@@ -310,4 +312,6 @@ void QUmlAction::removeOutput(QUmlOutputPin *output)
         removeOwnedElement(output);
     }
 }
+
+QT_END_NAMESPACE
 

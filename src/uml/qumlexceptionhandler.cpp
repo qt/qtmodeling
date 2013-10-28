@@ -47,6 +47,8 @@
 #include <QtUml/QUmlExecutableNode>
 #include <QtUml/QUmlObjectNode>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlExceptionHandler
 
@@ -178,4 +180,6 @@ void QUmlExceptionHandler::setProtectedNode(QUmlExecutableNode *protectedNode)
         setOwner(protectedNode);
     }
 }
+
+QT_END_NAMESPACE
 

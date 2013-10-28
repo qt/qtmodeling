@@ -57,6 +57,8 @@
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlStructuredActivityNode>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlExecutableNode
 
@@ -149,4 +151,6 @@ void QUmlExecutableNode::removeHandler(QUmlExceptionHandler *handler)
         }
     }
 }
+
+QT_END_NAMESPACE
 

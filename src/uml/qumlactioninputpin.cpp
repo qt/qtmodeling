@@ -65,6 +65,8 @@
 #include <QtUml/QUmlType>
 #include <QtUml/QUmlValueSpecification>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlActionInputPin
 
@@ -159,4 +161,6 @@ void QUmlActionInputPin::setFromAction(QUmlAction *fromAction)
         }
     }
 }
+
+QT_END_NAMESPACE
 

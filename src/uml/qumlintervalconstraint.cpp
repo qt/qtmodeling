@@ -54,6 +54,8 @@
 #include <QtUml/QUmlTemplateParameter>
 #include <QtUml/QUmlValueSpecification>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlIntervalConstraint
 
@@ -116,4 +118,6 @@ void QUmlIntervalConstraint::setSpecification(QUmlInterval *specification)
         specification->asQModelingObject()->setParent(this->asQModelingObject());
     }
 }
+
+QT_END_NAMESPACE
 

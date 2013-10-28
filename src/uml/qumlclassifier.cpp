@@ -64,6 +64,8 @@
 #include <QtUml/QUmlTemplateSignature>
 #include <QtUml/QUmlUseCase>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlClassifier
 
@@ -793,4 +795,6 @@ QSet<QUmlClassifier *> QUmlClassifier::parents() const
 
     return QSet<QUmlClassifier *> ();
 }
+
+QT_END_NAMESPACE
 

@@ -46,6 +46,8 @@
 #include <QtUml/QUmlElement>
 #include <QtUml/QUmlPackage>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlPackageMerge
 
@@ -133,4 +135,6 @@ void QUmlPackageMerge::setReceivingPackage(QUmlPackage *receivingPackage)
         }
     }
 }
+
+QT_END_NAMESPACE
 

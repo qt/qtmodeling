@@ -46,6 +46,8 @@
 #include <QtMof/QMofOperation>
 #include <QtMof/QMofProperty>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QMofObject
 
@@ -112,4 +114,6 @@ QMofObject *QMofObject::invoke(QMofOperation *op, QSet<QMofArgument *> arguments
     Q_UNUSED(arguments);
     return 0;
 }
+
+QT_END_NAMESPACE
 

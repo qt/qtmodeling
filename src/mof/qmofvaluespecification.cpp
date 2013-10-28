@@ -47,6 +47,8 @@
 #include <QtMof/QMofNamespace>
 #include <QtMof/QMofType>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QMofValueSpecification
 
@@ -141,4 +143,6 @@ int QMofValueSpecification::unlimitedValue() const
 
     return int ();
 }
+
+QT_END_NAMESPACE
 

@@ -43,6 +43,8 @@
 #include <QtMof/QMofClass>
 #include <QtMof/QMofComment>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QMofElement
 
@@ -214,4 +216,6 @@ void QMofElement::allOwnedElements(QSet<QMofElement *> &allOwnedElements_) const
     foreach (QMofElement *element, _ownedElements)
         element->allOwnedElements(allOwnedElements_);
 }
+
+QT_END_NAMESPACE
 

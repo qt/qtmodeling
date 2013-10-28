@@ -56,6 +56,8 @@
 #include <QtUml/QUmlTemplateParameter>
 #include <QtUml/QUmlValueSpecification>
 
+QT_BEGIN_NAMESPACE
+
 /*!
     \class QUmlInstanceSpecification
 
@@ -206,4 +208,6 @@ void QUmlInstanceSpecification::setSpecification(QUmlValueSpecification *specifi
         }
     }
 }
+
+QT_END_NAMESPACE
 
