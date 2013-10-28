@@ -150,12 +150,12 @@ QtUml::VisibilityKind QUmlTimeObservationObject::visibility() const
 
 // OWNED ATTRIBUTES [TimeObservation]
 
-QObject *QUmlTimeObservationObject::event() const
+QObject *QUmlTimeObservationObject::event_() const
 {
-    if (!qmodelingelementproperty_cast<QUmlTimeObservation *>(this)->event())
+    if (!qmodelingelementproperty_cast<QUmlTimeObservation *>(this)->event_())
         return 0;
     else
-        return qmodelingelementproperty_cast<QUmlTimeObservation *>(this)->event()->asQModelingObject();
+        return qmodelingelementproperty_cast<QUmlTimeObservation *>(this)->event_()->asQModelingObject();
 }
 
 bool QUmlTimeObservationObject::firstEvent() const
@@ -304,9 +304,9 @@ void QUmlTimeObservationObject::unsetVisibility()
 
 // SLOTS FOR OWNED ATTRIBUTES [TimeObservation]
 
-void QUmlTimeObservationObject::setEvent(QObject *event)
+void QUmlTimeObservationObject::setEvent(QObject *event_)
 {
-    qmodelingelementproperty_cast<QUmlTimeObservation *>(this)->setEvent(qmodelingelementproperty_cast<QUmlNamedElement *>(event));
+    qmodelingelementproperty_cast<QUmlTimeObservation *>(this)->setEvent(qmodelingelementproperty_cast<QUmlNamedElement *>(event_));
 }
 
 void QUmlTimeObservationObject::setFirstEvent(bool firstEvent)
@@ -353,7 +353,7 @@ void QUmlTimeObservationObject::setGroupProperties()
     d->propertyGroups << QStringLiteral("QUmlObservation");
 
     d->propertyGroups << QStringLiteral("QUmlTimeObservation");
-    d->groupProperties.insert(QStringLiteral("QUmlTimeObservation"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("event"))));
+    d->groupProperties.insert(QStringLiteral("QUmlTimeObservation"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("event_"))));
     d->groupProperties.insert(QStringLiteral("QUmlTimeObservation"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("firstEvent"))));
 }
 
@@ -467,14 +467,14 @@ void QUmlTimeObservationObject::setPropertyData()
     Q_DECLARE_METAPROPERTY_INFO(QUmlPackageableElement, visibility, SubsettedPropertiesRole, QStringLiteral(""));
     Q_DECLARE_METAPROPERTY_INFO(QUmlPackageableElement, visibility, OppositeEndRole, QStringLiteral(""));
 
-    Q_DECLARE_METAPROPERTY_INFO(QUmlTimeObservation, event, AggregationRole, QStringLiteral("none"));
-    Q_DECLARE_METAPROPERTY_INFO(QUmlTimeObservation, event, PropertyClassRole, QStringLiteral("QUmlTimeObservation"));
-    Q_DECLARE_METAPROPERTY_INFO(QUmlTimeObservation, event, IsDerivedRole, false);
-    Q_DECLARE_METAPROPERTY_INFO(QUmlTimeObservation, event, IsDerivedUnionRole, false);
-    Q_DECLARE_METAPROPERTY_INFO(QUmlTimeObservation, event, DocumentationRole, QStringLiteral("The observation is determined by the entering or exiting of the event element during execution."));
-    Q_DECLARE_METAPROPERTY_INFO(QUmlTimeObservation, event, RedefinedPropertiesRole, QStringLiteral(""));
-    Q_DECLARE_METAPROPERTY_INFO(QUmlTimeObservation, event, SubsettedPropertiesRole, QStringLiteral(""));
-    Q_DECLARE_METAPROPERTY_INFO(QUmlTimeObservation, event, OppositeEndRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTimeObservation, event_, AggregationRole, QStringLiteral("none"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTimeObservation, event_, PropertyClassRole, QStringLiteral("QUmlTimeObservation"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTimeObservation, event_, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTimeObservation, event_, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTimeObservation, event_, DocumentationRole, QStringLiteral("The observation is determined by the entering or exiting of the event element during execution."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTimeObservation, event_, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTimeObservation, event_, SubsettedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTimeObservation, event_, OppositeEndRole, QStringLiteral(""));
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlTimeObservation, firstEvent, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlTimeObservation, firstEvent, PropertyClassRole, QStringLiteral("QUmlTimeObservation"));

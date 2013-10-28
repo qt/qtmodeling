@@ -62,7 +62,7 @@ QT_BEGIN_NAMESPACE
     \brief A time observation is a reference to a time instant during an execution. It points out the element in the model to observe and whether the observation is when this model element is entered or when it is exited.
  */
 QUmlTimeObservation::QUmlTimeObservation(bool createQModelingObject) :
-    _event(0),
+    _event_(0),
     _firstEvent(true)
 {
     if (createQModelingObject)
@@ -84,8 +84,8 @@ QModelingElement *QUmlTimeObservation::clone() const
     if (nameExpression())
         c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
     c->setVisibility(visibility());
-    if (event())
-        c->setEvent(dynamic_cast<QUmlNamedElement *>(event()->clone()));
+    if (event_())
+        c->setEvent(dynamic_cast<QUmlNamedElement *>(event_()->clone()));
     c->setFirstEvent(firstEvent());
     return c;
 }
@@ -95,21 +95,21 @@ QModelingElement *QUmlTimeObservation::clone() const
 /*!
     The observation is determined by the entering or exiting of the event element during execution.
  */
-QUmlNamedElement *QUmlTimeObservation::event() const
+QUmlNamedElement *QUmlTimeObservation::event_() const
 {
     // This is a read-write association end
 
-    return _event;
+    return _event_;
 }
 
-void QUmlTimeObservation::setEvent(QUmlNamedElement *event)
+void QUmlTimeObservation::setEvent(QUmlNamedElement *event_)
 {
     // This is a read-write association end
 
-    if (_event != event) {
-        _event = event;
-        if (event && event->asQModelingObject() && this->asQModelingObject())
-            QObject::connect(event->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setEvent()));
+    if (_event_ != event_) {
+        _event_ = event_;
+        if (event_ && event_->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(event_->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setEvent()));
     }
 }
 

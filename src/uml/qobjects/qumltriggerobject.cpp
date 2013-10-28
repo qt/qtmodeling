@@ -130,12 +130,12 @@ QtUml::VisibilityKind QUmlTriggerObject::visibility() const
 
 // OWNED ATTRIBUTES [Trigger]
 
-QObject *QUmlTriggerObject::event() const
+QObject *QUmlTriggerObject::event_() const
 {
-    if (!qmodelingelementproperty_cast<QUmlTrigger *>(this)->event())
+    if (!qmodelingelementproperty_cast<QUmlTrigger *>(this)->event_())
         return 0;
     else
-        return qmodelingelementproperty_cast<QUmlTrigger *>(this)->event()->asQModelingObject();
+        return qmodelingelementproperty_cast<QUmlTrigger *>(this)->event_()->asQModelingObject();
 }
 
 const QSet<QObject *> QUmlTriggerObject::ports() const
@@ -255,9 +255,9 @@ void QUmlTriggerObject::setVisibility(QtUml::VisibilityKind visibility)
 
 // SLOTS FOR OWNED ATTRIBUTES [Trigger]
 
-void QUmlTriggerObject::setEvent(QObject *event)
+void QUmlTriggerObject::setEvent(QObject *event_)
 {
-    qmodelingelementproperty_cast<QUmlTrigger *>(this)->setEvent(qmodelingelementproperty_cast<QUmlEvent *>(event));
+    qmodelingelementproperty_cast<QUmlTrigger *>(this)->setEvent(qmodelingelementproperty_cast<QUmlEvent *>(event_));
 }
 
 void QUmlTriggerObject::addPort(QObject *port)
@@ -293,7 +293,7 @@ void QUmlTriggerObject::setGroupProperties()
     d->groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
 
     d->propertyGroups << QStringLiteral("QUmlTrigger");
-    d->groupProperties.insert(QStringLiteral("QUmlTrigger"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("event"))));
+    d->groupProperties.insert(QStringLiteral("QUmlTrigger"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("event_"))));
     d->groupProperties.insert(QStringLiteral("QUmlTrigger"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ports"))));
 }
 
@@ -380,14 +380,14 @@ void QUmlTriggerObject::setPropertyData()
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, visibility, SubsettedPropertiesRole, QStringLiteral(""));
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, visibility, OppositeEndRole, QStringLiteral(""));
 
-    Q_DECLARE_METAPROPERTY_INFO(QUmlTrigger, event, AggregationRole, QStringLiteral("none"));
-    Q_DECLARE_METAPROPERTY_INFO(QUmlTrigger, event, PropertyClassRole, QStringLiteral("QUmlTrigger"));
-    Q_DECLARE_METAPROPERTY_INFO(QUmlTrigger, event, IsDerivedRole, false);
-    Q_DECLARE_METAPROPERTY_INFO(QUmlTrigger, event, IsDerivedUnionRole, false);
-    Q_DECLARE_METAPROPERTY_INFO(QUmlTrigger, event, DocumentationRole, QStringLiteral("The event that causes the trigger."));
-    Q_DECLARE_METAPROPERTY_INFO(QUmlTrigger, event, RedefinedPropertiesRole, QStringLiteral(""));
-    Q_DECLARE_METAPROPERTY_INFO(QUmlTrigger, event, SubsettedPropertiesRole, QStringLiteral(""));
-    Q_DECLARE_METAPROPERTY_INFO(QUmlTrigger, event, OppositeEndRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTrigger, event_, AggregationRole, QStringLiteral("none"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTrigger, event_, PropertyClassRole, QStringLiteral("QUmlTrigger"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTrigger, event_, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTrigger, event_, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTrigger, event_, DocumentationRole, QStringLiteral("The event that causes the trigger."));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTrigger, event_, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTrigger, event_, SubsettedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTrigger, event_, OppositeEndRole, QStringLiteral(""));
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlTrigger, ports, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlTrigger, ports, PropertyClassRole, QStringLiteral("QUmlTrigger"));

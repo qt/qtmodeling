@@ -61,7 +61,7 @@ QT_BEGIN_NAMESPACE
     \brief A trigger specification may be qualified by the port on which the event occurred.A trigger relates an event to a behavior that may affect an instance of the classifier.
  */
 QUmlTrigger::QUmlTrigger(bool createQModelingObject) :
-    _event(0)
+    _event_(0)
 {
     if (createQModelingObject)
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlTriggerObject(this));
@@ -78,8 +78,8 @@ QModelingElement *QUmlTrigger::clone() const
     if (nameExpression())
         c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
     c->setVisibility(visibility());
-    if (event())
-        c->setEvent(dynamic_cast<QUmlEvent *>(event()->clone()));
+    if (event_())
+        c->setEvent(dynamic_cast<QUmlEvent *>(event_()->clone()));
     foreach (QUmlPort *element, ports())
         c->addPort(dynamic_cast<QUmlPort *>(element->clone()));
     return c;
@@ -90,21 +90,21 @@ QModelingElement *QUmlTrigger::clone() const
 /*!
     The event that causes the trigger.
  */
-QUmlEvent *QUmlTrigger::event() const
+QUmlEvent *QUmlTrigger::event_() const
 {
     // This is a read-write association end
 
-    return _event;
+    return _event_;
 }
 
-void QUmlTrigger::setEvent(QUmlEvent *event)
+void QUmlTrigger::setEvent(QUmlEvent *event_)
 {
     // This is a read-write association end
 
-    if (_event != event) {
-        _event = event;
-        if (event && event->asQModelingObject() && this->asQModelingObject())
-            QObject::connect(event->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setEvent()));
+    if (_event_ != event_) {
+        _event_ = event_;
+        if (event_ && event_->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(event_->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setEvent()));
     }
 }
 

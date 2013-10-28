@@ -62,14 +62,14 @@ public:
     virtual QModelingElement *clone() const;
 
     // Owned attributes
-    QUmlEvent *event() const;
-    void setEvent(QUmlEvent *event);
+    QUmlEvent *event_() const;
+    void setEvent(QUmlEvent *event_);
     const QSet<QUmlPort *> ports() const;
     void addPort(QUmlPort *port);
     void removePort(QUmlPort *port);
 
 protected:
-    QUmlEvent *_event;
+    QUmlEvent *_event_;
     QSet<QUmlPort *> _ports;
 };
 

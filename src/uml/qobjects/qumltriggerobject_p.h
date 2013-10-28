@@ -75,7 +75,7 @@ class Q_UML_EXPORT QUmlTriggerObject : public QModelingObject
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
 
     // Properties [Trigger]
-    Q_PROPERTY(QObject * event READ event WRITE setEvent)
+    Q_PROPERTY(QObject * event_ READ event_ WRITE setEvent)
     Q_PROPERTY(QSet<QObject *> ports READ ports)
 
 public:
@@ -95,7 +95,7 @@ public:
     Q_INVOKABLE QtUml::VisibilityKind visibility() const;
 
     // Owned attributes [Trigger]
-    Q_INVOKABLE QObject *event() const;
+    Q_INVOKABLE QObject *event_() const;
     Q_INVOKABLE const QSet<QObject *> ports() const;
 
     // Operations [Element]
@@ -127,7 +127,7 @@ public Q_SLOTS:
     void setVisibility(QtUml::VisibilityKind visibility);
 
     // Slots for owned attributes [Trigger]
-    void setEvent(QObject *event = 0);
+    void setEvent(QObject *event_ = 0);
     void addPort(QObject *port);
     void removePort(QObject *port);
 

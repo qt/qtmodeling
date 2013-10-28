@@ -81,7 +81,7 @@ class Q_UML_EXPORT QUmlTimeObservationObject : public QModelingObject
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility RESET unsetVisibility)
 
     // Properties [TimeObservation]
-    Q_PROPERTY(QObject * event READ event WRITE setEvent)
+    Q_PROPERTY(QObject * event_ READ event_ WRITE setEvent)
     Q_PROPERTY(bool firstEvent READ firstEvent WRITE setFirstEvent RESET unsetFirstEvent)
 
 public:
@@ -107,7 +107,7 @@ public:
     Q_INVOKABLE QtUml::VisibilityKind visibility() const;
 
     // Owned attributes [TimeObservation]
-    Q_INVOKABLE QObject *event() const;
+    Q_INVOKABLE QObject *event_() const;
     Q_INVOKABLE bool firstEvent() const;
 
     // Operations [Element]
@@ -150,7 +150,7 @@ public Q_SLOTS:
     void unsetVisibility();
 
     // Slots for owned attributes [TimeObservation]
-    void setEvent(QObject *event = 0);
+    void setEvent(QObject *event_ = 0);
     void setFirstEvent(bool firstEvent);
     void unsetFirstEvent();
 

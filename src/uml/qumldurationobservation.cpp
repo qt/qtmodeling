@@ -62,7 +62,7 @@ QT_BEGIN_NAMESPACE
     \brief A duration observation is a reference to a duration during an execution. It points out the element(s) in the model to observe and whether the observations are when this model element is entered or when it is exited.
  */
 QUmlDurationObservation::QUmlDurationObservation(bool createQModelingObject) :
-    _event(0)
+    _event_(0)
 {
     if (createQModelingObject)
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlDurationObservationObject(this));
@@ -83,8 +83,8 @@ QModelingElement *QUmlDurationObservation::clone() const
     if (nameExpression())
         c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
     c->setVisibility(visibility());
-    if (event())
-        c->setEvent(dynamic_cast<QUmlNamedElement *>(event()->clone()));
+    if (event_())
+        c->setEvent(dynamic_cast<QUmlNamedElement *>(event_()->clone()));
     c->setFirstEvent(firstEvent());
     return c;
 }
@@ -94,21 +94,21 @@ QModelingElement *QUmlDurationObservation::clone() const
 /*!
     The observation is determined by the entering or exiting of the event element during execution.
  */
-QUmlNamedElement *QUmlDurationObservation::event() const
+QUmlNamedElement *QUmlDurationObservation::event_() const
 {
     // This is a read-write association end
 
-    return _event;
+    return _event_;
 }
 
-void QUmlDurationObservation::setEvent(QUmlNamedElement *event)
+void QUmlDurationObservation::setEvent(QUmlNamedElement *event_)
 {
     // This is a read-write association end
 
-    if (_event != event) {
-        _event = event;
-        if (event && event->asQModelingObject() && this->asQModelingObject())
-            QObject::connect(event->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setEvent()));
+    if (_event_ != event_) {
+        _event_ = event_;
+        if (event_ && event_->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(event_->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setEvent()));
     }
 }
 

@@ -61,13 +61,13 @@ public:
     virtual QModelingElement *clone() const;
 
     // Owned attributes
-    QUmlNamedElement *event() const;
-    void setEvent(QUmlNamedElement *event);
+    QUmlNamedElement *event_() const;
+    void setEvent(QUmlNamedElement *event_);
     bool firstEvent() const;
     void setFirstEvent(bool firstEvent);
 
 protected:
-    QUmlNamedElement *_event;
+    QUmlNamedElement *_event_;
     bool _firstEvent;
 };
 
