@@ -153,91 +153,24 @@ void MainWindow::readSettings()
 
 void MainWindow::on_actionFileNewModel_triggered()
 {
-//    _newModel->lneModel->clear();
-//    _newModel->cboMetamodel->clear();
-//    int i = 0;
-//    typedef QPair<QMetaModelPlugin *, QJsonObject> PluginData;
-//    foreach (const PluginData &pair, _loadedPlugins.values()) {
-//        _newModel->cboMetamodel->addItem(pair.first->metaObject()->className());
-//        ++i;
-//    }
-//    int type;
-//    _newModel->lneModel->setFocus();
-//    if (_newModelDialog->exec() == QDialog::Accepted) {
-//        foreach (const PluginData &pair, _loadedPlugins.values()) {
-//            if (pair.first->metaObject()->className() == _newModel->cboMetamodel->currentText())
-//                pair.first->initMetaModel(&_engine);
-//        }
-//        if ((type = QMetaType::type(_newModel->lstTopLevelContainers->currentItem()->text().append("*").toLatin1())) != QMetaType::UnknownType) {
-//            const QMetaObject *metaObject = QMetaType::metaObjectForType(type);
-//            if (metaObject) {
-//                QWrappedObject *topLevelElement = dynamic_cast<QWrappedObject *>(metaObject->newInstance());
-//                if (topLevelElement) {
-//                    topLevelElement->setObjectName(_newModel->lneModel->text());
-//                    _modelingObjectModel->clear();
-//                    _modelingObjectModel->addWrappedObject(topLevelElement);
-//                    setWindowTitle("DuSE-MT");
-//                    ui->txeJavaScript->setText("self");
-//                    QTimer::singleShot(0, this, SLOT(on_psbJSEvaluate_clicked()));
-//                }
-//            }
-//        }
-//    }
-}
-
-void MainWindow::saveXmi(QList<QModelingObject *> modelObjects)
-{
-    QFile file(_currentFileName);
-    if (!file.open(QFile::WriteOnly | QFile::Text)) {
-        QMessageBox::critical(this, tr("Save As"), tr("Cannot write file !"));
-        return;
+    _newModel->lneModel->clear();
+    _newModel->cboMetamodel->clear();
+    int i = 0;
+    typedef QPair<QMetaModelPlugin *, QJsonObject> PluginData;
+    foreach (const PluginData &pair, _metamodelPlugins.values()) {
+        _newModel->cboMetamodel->addItem(pair.first->metaObject()->className());
+        ++i;
     }
-
-    QXmiWriter writer;
-    setCursor(Qt::WaitCursor);
-    if (!writer.writeFile(modelObjects, &file))
-        QMessageBox::critical(this, tr("Save As"), tr("Error when writing XMI file !"));
-    else {
-        statusBar()->showMessage("XMI file successfully saved !", 3000);
-        setWindowTitle(QFileInfo(file).fileName() + " - DuSE-MT");
+    _newModel->lneModel->setFocus();
+    if (_newModelDialog->exec() == QDialog::Accepted) {
+        QMetaModelPlugin *metamodelPlugin;
+        foreach (const PluginData &pair, _metamodelPlugins.values()) {
+            if (pair.first->metaObject()->className() == _newModel->cboMetamodel->currentText())
+                metamodelPlugin = pair.first;
+        }
+        if (ICore::self()->projectController()->createModel(_newModel->lneModel->text(), metamodelPlugin, _newModel->lstTopLevelContainers->currentItem()->text()))
+            setWindowTitle(ICore::self()->projectController()->currentModelFileName() + " - DuSE-MT");
     }
-    setCursor(Qt::ArrowCursor);
-}
-
-QList<QModelingElement *> MainWindow::loadXmi(QString fileName)
-{
-    QFile file(fileName);
-    if (!file.open(QFile::ReadOnly | QFile::Text)) {
-        QMessageBox::critical(this, tr("Open"), tr("Cannot read file !"));
-        return QList<QModelingElement *>();
-    }
-
-    QXmiReader reader;
-    if (fileName.contains("duse-mt"))
-        setWindowTitle(QFileInfo(file).fileName() + " - DuSE-MT");
-    QList<QModelingElement *> modelingObjectList = reader.readFile(&file);
-
-    setModelInspector(modelingObjectList);
-
-    return modelingObjectList;
-}
-
-void MainWindow::setModelInspector(QList<QModelingElement *> modelingObjectList)
-{
-    if (!modelingObjectList.isEmpty()) {
-//        _engine.globalObject().setProperty(modelingObjectList.at(0)->asQModelingObject()->objectName(), _engine.newQObject(modelingObjectList.at(0)->asQModelingObject()));
-
-//        QScriptValue array = _engine.newArray();
-//        foreach (QModelingElement *modelingObject, modelingObjectList)
-//            array.property(QString::fromLatin1("push")).call(array, QScriptValueList() << _engine.newQObject(modelingObject->asQModelingObject()));
-//        _engine.globalObject().setProperty("input", array);
-
-//        ui->txeJavaScript->setText("self");
-        QTimer::singleShot(0, this, SLOT(on_psbJSEvaluate_clicked()));
-    }
-//    _modelingObjectModel->clear();
-//    foreach (QModelingElement *object, modelingObjectList)
-//        _modelingObjectModel->addModelingObject(object->asQModelingObject());
 }
 
 void MainWindow::on_actionFileOpenModel_triggered()
@@ -248,7 +181,7 @@ void MainWindow::on_actionFileOpenModel_triggered()
         bool ret = ICore::self()->projectController()->openModel(fileName);
         setCursor(Qt::ArrowCursor);
         if (!ret) {
-            QMessageBox::critical(this, tr("Open Model"), ICore::self()->projectController()->errorStrings().first());
+            QMessageBox::critical(this, tr("Open model"), ICore::self()->projectController()->errorStrings().first());
             return;
         }
         setWindowTitle(QFileInfo(QFile(fileName)).fileName() + " - DuSE-MT");
@@ -287,10 +220,10 @@ void MainWindow::on_actionFileNewDuseDesign_triggered()
                     return;
                 }
 
-                _currentFileName = _newDuseDesign->_inputModelFileName;
+//                _currentFileName = _newDuseDesign->_inputModelFileName;
 //                foreach (QWrappedObject *object, _inputModel)
 //                    delete object;
-                _inputModel = loadXmi(_currentFileName);
+//                _inputModel = loadXmi(_currentFileName);
 
                 _modelQuickView->setClearBeforeRendering(true);
                 _modelQuickView->setSource(QUrl("qrc:/qml/modelview.qml"));
@@ -376,18 +309,36 @@ void MainWindow::on_actionFileOpenDuseDesign_triggered()
 void MainWindow::on_actionFileSaveAs_triggered()
 {
     QString fileName = QFileDialog::getSaveFileName(this, tr("Save As"), QDir::currentPath(), "XMI files (*.xmi)");
-    if (!fileName.isEmpty()) {
-        _currentFileName = fileName;
-//        saveXmi(_modelingObjectModel->modelingObjects());
-    }
+    if (!fileName.isEmpty())
+        saveXmi(fileName);
 }
 
 void MainWindow::on_actionFileSave_triggered()
 {
-    if (_currentFileName.isEmpty())
+    if (ICore::self()->projectController()->currentModelFileName().isEmpty())
         on_actionFileSaveAs_triggered();
-//    else
-//        saveXmi(_modelingObjectModel->modelingObjects());
+    else
+        saveXmi();
+}
+
+void MainWindow::saveXmi(QString fileName)
+{
+    IProjectController *projectController = ICore::self()->projectController();
+    setCursor(Qt::WaitCursor);
+    bool ret;
+    if (fileName.isEmpty())
+        ret = projectController->saveModel();
+    else
+        ret = projectController->saveModelAs(fileName);
+    setCursor(Qt::ArrowCursor);
+    if (!ret) {
+        QMessageBox::critical(this, tr("Save model%1").arg(fileName.isEmpty() ? "":" as"), projectController->errorStrings().first());
+        return;
+    }
+    else {
+        statusBar()->showMessage("XMI file successfully saved !", 3000);
+        setWindowTitle(projectController->currentModelFileName() + " - DuSE-MT");
+    }
 }
 
 void MainWindow::on_actionHelpAboutPlugins_triggered()
@@ -402,18 +353,18 @@ void MainWindow::on_actionHelpAboutDuSEMT_triggered()
 
 void MainWindow::on_centralWidget_currentChanged(int)
 {
-    if (_currentFileName.isEmpty())
-        return;
+//    if (_currentFileName.isEmpty())
+//        return;
     if (ui->centralWidget->currentIndex() == 1) {
 //        foreach (QWrappedObject *object, _inputModel)
 //            delete object;
-        _inputModel = loadXmi(_currentFileName);
+//        _inputModel = loadXmi(_currentFileName);
         evaluateQualityMetrics();
     }
     else if (ui->centralWidget->currentIndex() == 2) {
 //        foreach (QWrappedObject *object, _designSpaceLocation)
 //            delete object;
-        _designSpaceLocation = loadXmi("/data/devel/qtmodeling/examples/uml/r1.xmi");
+//        _designSpaceLocation = loadXmi("/data/devel/qtmodeling/examples/uml/r1.xmi");
         addToDesignSpaceView(_designSpaceLocation.first());
         evaluateQualityMetrics();
     }
@@ -438,12 +389,12 @@ void MainWindow::update()
     if (progress->value() == 99) {
         timer->stop();
         progress->hide();
-        _designSpaceLocation = loadXmi(QString::fromLatin1("/data/devel/qtmodeling/examples/uml/r%1.xmi").arg(qrand() % 11));
-        addToPareto(_designSpaceLocation.first(), 0);
-        _designSpaceLocation = loadXmi(QString::fromLatin1("/data/devel/qtmodeling/examples/uml/r%1.xmi").arg(qrand() % 11));
-        addToPareto(_designSpaceLocation.first(), 1);
-        _designSpaceLocation = loadXmi(QString::fromLatin1("/data/devel/qtmodeling/examples/uml/r%1.xmi").arg(qrand() % 11));
-        addToPareto(_designSpaceLocation.first(), 2);
+//        _designSpaceLocation = loadXmi(QString::fromLatin1("/data/devel/qtmodeling/examples/uml/r%1.xmi").arg(qrand() % 11));
+//        addToPareto(_designSpaceLocation.first(), 0);
+//        _designSpaceLocation = loadXmi(QString::fromLatin1("/data/devel/qtmodeling/examples/uml/r%1.xmi").arg(qrand() % 11));
+//        addToPareto(_designSpaceLocation.first(), 1);
+//        _designSpaceLocation = loadXmi(QString::fromLatin1("/data/devel/qtmodeling/examples/uml/r%1.xmi").arg(qrand() % 11));
+//        addToPareto(_designSpaceLocation.first(), 2);
         evaluateQualityMetrics();
     }
 }
@@ -545,7 +496,7 @@ void MainWindow::designSpaceChanged()
 //    foreach (QWrappedObject *object, _designSpaceLocation)
 //        delete object;
 
-    _designSpaceLocation = loadXmi(QString::fromLatin1("/data/devel/qtmodeling/examples/uml/r%1.xmi").arg(qrand() % 11));
+//    _designSpaceLocation = loadXmi(QString::fromLatin1("/data/devel/qtmodeling/examples/uml/r%1.xmi").arg(qrand() % 11));
     addToDesignSpaceView(_designSpaceLocation.first());
     evaluateQualityMetrics();
 }

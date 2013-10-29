@@ -44,6 +44,8 @@
 #include <QtWidgets/QMessageBox>
 
 #include <QtModeling/QXmiReader>
+#include <QtModeling/QXmiWriter>
+#include <QtModeling/QMetaModelPlugin>
 #include <QtModeling/QModelingElement>
 
 namespace DuSE
@@ -67,13 +69,17 @@ QStringList ProjectController::errorStrings() const
     return _errorStrings;
 }
 
+QString ProjectController::currentModelFileName() const
+{
+    return _currentModelFileName;
+}
+
 bool ProjectController::openModel(const QString &fileName)
 {
-    qDeleteAll(_currentModel);
-    _currentModel.clear();
+    qDeleteAll(_currentModelElements);
+    _currentModelElements.clear();
+    _currentModelObjects.clear();
     _errorStrings.clear();
-
-    _currentModelFileName = fileName;
 
     QFile file(fileName);
     if (!file.open(QFile::ReadOnly | QFile::Text)) {
@@ -81,19 +87,63 @@ bool ProjectController::openModel(const QString &fileName)
         return false;
     }
 
+    _currentModelFileName = fileName;
+
     QXmiReader reader;
-    _currentModel = reader.readFile(&file);
+    _currentModelElements = reader.readFile(&file);
     _errorStrings << reader.errorStrings();
 
-//    ui->txeIssues->setModel(new QStringListModel(reader.errorStrings()));
-//    setModelInspector(modelingObjectList);
-    QList<QModelingObject *> modelObjects;
-    foreach (QModelingElement *element, _currentModel)
-        modelObjects << element->asQModelingObject();
+    foreach (QModelingElement *element, _currentModelElements)
+        _currentModelObjects << element->asQModelingObject();
 
-    emit modelOpened(modelObjects);
+    emit modelOpened(_currentModelObjects);
 
     return true;
+}
+
+bool ProjectController::saveModel()
+{
+    Q_ASSERT(!_currentModelFileName.isEmpty());
+    _errorStrings.clear();
+
+    QFile file(_currentModelFileName);
+    if (!file.open(QFile::WriteOnly | QFile::Text)) {
+         _errorStrings << QObject::tr("Cannot write file %1").arg(_currentModelFileName);
+        return false;
+    }
+
+    QXmiWriter writer;
+    if (!writer.writeFile(_currentModelObjects, &file)) {
+        _errorStrings << QObject::tr("Error when writing XMI file %1").arg(_currentModelFileName);
+        return false;
+    }
+    return true;
+}
+
+bool ProjectController::saveModelAs(const QString &fileName)
+{
+    _currentModelFileName = fileName;
+    return saveModel();
+}
+
+bool ProjectController::createModel(const QString &modelFileName, QMetaModelPlugin *metamodelPlugin, const QString &topLevelType)
+{
+    QModelingElement *topLevelElement = metamodelPlugin->createModelingElement(topLevelType);
+    if (topLevelElement) {
+        topLevelElement->asQModelingObject()->setObjectName(topLevelType);
+        qDeleteAll(_currentModelElements);
+        _currentModelElements.clear();
+        _currentModelObjects.clear();
+
+        _currentModelElements << topLevelElement;
+        _currentModelObjects << topLevelElement->asQModelingObject();
+
+        emit modelOpened(_currentModelObjects);
+
+        return saveModelAs(modelFileName);
+    }
+    else
+        return false;
 }
 
 }

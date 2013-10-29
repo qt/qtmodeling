@@ -100,7 +100,6 @@ private Q_SLOTS:
     void on_centralWidget_currentChanged(int);
     void on_btnOptimize_clicked();
     void evaluateQualityMetrics();
-    void setModelInspector(QList<QModelingElement *> modelingObjectList);
 
     void metaModelChanged(QString newMetaModel);
     void addToView(QModelingElement *modelingObject, QQuickItem *parent = 0);
@@ -112,14 +111,11 @@ private Q_SLOTS:
 private:
     Ui::MainWindow *ui;
 
-    void saveXmi(QList<QModelingObject *> modelObjects);
-    QList<QModelingElement *> loadXmi(QString fileName = 0);
     void populateDesignSpaceView(QModelingElement *modelingObject);
 
     QList<QModelingElement *> _inputModel;
     QList<QModelingElement *> _designSpaceLocation;
 
-    QString _currentFileName;
     QHash< QString, QPair<QMetaModelPlugin *, QJsonObject> > _metamodelPlugins;
     QList< QPair<DuSE::IPlugin *, QJsonObject> > _dusemtPlugins;
     QDialog *_aboutPluginsDialog;
@@ -145,6 +141,7 @@ private:
     QTreeWidgetItem *itemForCategory(const QString &category);
 
     friend class UiController;
+    void saveXmi(QString fileName = QString());
 };
 
 }

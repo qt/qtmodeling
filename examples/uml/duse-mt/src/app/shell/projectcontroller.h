@@ -56,13 +56,18 @@ public:
 
     virtual bool initialize();
     virtual QStringList errorStrings() const;
+    virtual QString currentModelFileName() const;
 
 public Q_SLOTS:
     virtual bool openModel(const QString &fileName);
+    virtual bool saveModel();
+    virtual bool saveModelAs(const QString &fileName);
+    virtual bool createModel(const QString &modelFileName, QMetaModelPlugin *metamodelPlugin, const QString &topLevelType);
 
 private:
     QString _currentModelFileName;
-    QList<QModelingElement *> _currentModel;
+    QList<QModelingElement *> _currentModelElements;
+    QList<QModelingObject *> _currentModelObjects;
     QStringList _errorStrings;
 };
 

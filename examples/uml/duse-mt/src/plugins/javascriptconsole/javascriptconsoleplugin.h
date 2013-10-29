@@ -73,6 +73,7 @@ protected:
 
 public Q_SLOTS:
     void setSelfProperty(QModelingObject *modelingObject);
+    void setRootAndInputProperties(QList<QModelingObject *> modelingObjects);
 
 private Q_SLOTS:
     void evaluate();

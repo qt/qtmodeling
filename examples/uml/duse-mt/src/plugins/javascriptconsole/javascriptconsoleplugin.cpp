@@ -53,6 +53,7 @@
 
 #include <QtWidgets/QListView>
 
+#include <QtCore/QTimer>
 #include <QtCore/QStringListModel>
 
 template <class T>
@@ -117,6 +118,7 @@ bool JavaScriptConsolePlugin::initialize(DuSE::ICore *core)
     connect(_javaScriptConsole->psbJSEvaluate, &QPushButton::clicked, this, &JavaScriptConsolePlugin::evaluate);
     connect(_javaScriptConsole->psbJSEvaluate, SIGNAL(clicked()), core->uiController(), SIGNAL(updateCurrentModelingObject()));
     connect(core->uiController(), &DuSE::IUiController::currentModelingObjectChanged, this, &JavaScriptConsolePlugin::setSelfProperty);
+    connect(core->projectController(), SIGNAL(modelOpened(QList<QModelingObject*>)), this, SLOT(setRootAndInputProperties(QList<QModelingObject*>)));
 
     qScriptRegisterMetaType(&_engine, qSetToScriptValue<QObject>, scriptValueToQSet<QObject>);
     qScriptRegisterMetaType(&_engine, qListToScriptValue<QObject>, scriptValueToQList<QObject>);
@@ -127,6 +129,20 @@ bool JavaScriptConsolePlugin::initialize(DuSE::ICore *core)
 void JavaScriptConsolePlugin::setSelfProperty(QModelingObject *modelingObject)
 {
     _engine.globalObject().setProperty("self", _engine.newQObject(modelingObject));
+}
+
+void JavaScriptConsolePlugin::setRootAndInputProperties(QList<QModelingObject *> modelingObjects)
+{
+    QModelingObject *modelingObject = modelingObjects.at(0);
+    _engine.globalObject().setProperty(modelingObject->objectName(), _engine.newQObject(modelingObject));
+
+    QScriptValue array = _engine.newArray();
+    foreach (QModelingObject *modelingObject, modelingObjects)
+        array.property(QString::fromLatin1("push")).call(array, QScriptValueList() << _engine.newQObject(modelingObject));
+    _engine.globalObject().setProperty("input", array);
+
+    _javaScriptConsole->txeJavaScript->setText("self");
+    QTimer::singleShot(0, this, SLOT(evaluate()));
 }
 
 bool JavaScriptConsolePlugin::eventFilter(QObject *obj, QEvent *event)
