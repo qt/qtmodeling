@@ -60,7 +60,7 @@ UiController::~UiController()
 
 bool UiController::initialize()
 {
-    _mainWindow.loadPlugins();
+    _mainWindow.populatePluginDialog();
     _mainWindow.showMaximized();
 
     return true;

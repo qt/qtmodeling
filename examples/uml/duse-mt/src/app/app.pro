@@ -22,6 +22,7 @@ SOURCES += main.cpp \
     shell/core.cpp \
     shell/uicontroller.cpp \
     shell/projectcontroller.cpp \
+    shell/plugincontroller.cpp \
     shell/mainwindow.cpp
 
 HEADERS  += \
@@ -29,6 +30,7 @@ HEADERS  += \
     shell/core.h \
     shell/uicontroller.h \
     shell/projectcontroller.h \
+    shell/plugincontroller.h \
     shell/mainwindow.h
 
 FORMS    += mainwindow.ui \

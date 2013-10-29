@@ -46,6 +46,7 @@
 namespace DuSE
 {
 
+class IPluginController;
 class IProjectController;
 class IUiController;
 
@@ -55,6 +56,7 @@ public:
     virtual ~ICore();
     static ICore *self();
 
+    virtual IPluginController *pluginController() = 0;
     virtual IProjectController *projectController() = 0;
     virtual IUiController *uiController() = 0;
 

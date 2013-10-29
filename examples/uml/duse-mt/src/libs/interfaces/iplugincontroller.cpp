@@ -38,40 +38,17 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef PROJECTCONTROLLER_H
-#define PROJECTCONTROLLER_H
-
-#include <interfaces/iprojectcontroller.h>
-
-#include "mainwindow.h"
+#include "iplugincontroller.h"
 
 namespace DuSE
 {
 
-class ProjectController : public IProjectController
+IPluginController::~IPluginController()
 {
-public:
-    ProjectController();
-    virtual ~ProjectController();
-
-    virtual bool initialize();
-
-    virtual QStringList errorStrings() const;
-    virtual QString currentModelFileName() const;
-
-public Q_SLOTS:
-    virtual bool openModel(const QString &fileName);
-    virtual bool saveModel();
-    virtual bool saveModelAs(const QString &fileName);
-    virtual bool createModel(const QString &modelFileName, QMetaModelPlugin *metamodelPlugin, const QString &topLevelType);
-
-private:
-    QString _currentModelFileName;
-    QList<QModelingElement *> _currentModelElements;
-    QList<QModelingObject *> _currentModelObjects;
-    QStringList _errorStrings;
-};
-
 }
 
-#endif // PROJECTCONTROLLER_H
+IPluginController::IPluginController()
+{
+}
+
+}

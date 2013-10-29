@@ -38,40 +38,41 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef PROJECTCONTROLLER_H
-#define PROJECTCONTROLLER_H
+#ifndef PLUGINCONTROLLER_H
+#define PLUGINCONTROLLER_H
 
-#include <interfaces/iprojectcontroller.h>
+#include <interfaces/iplugincontroller.h>
 
-#include "mainwindow.h"
+#include <QtCore/QHash>
+#include <QtCore/QStringList>
+
+class QMetaModelPlugin;
+
+class QTreeWidgetItem;
 
 namespace DuSE
 {
 
-class ProjectController : public IProjectController
+class IPlugin;
+
+class PluginController : public IPluginController
 {
 public:
-    ProjectController();
-    virtual ~ProjectController();
+    PluginController();
+    virtual ~PluginController();
 
     virtual bool initialize();
 
+    virtual const QHash< QString, QPair<QMetaModelPlugin *, QJsonObject> > &metamodelPlugins() const;
+    virtual const QList< QPair<DuSE::IPlugin *, QJsonObject> > &dusemtPlugins() const;
     virtual QStringList errorStrings() const;
-    virtual QString currentModelFileName() const;
-
-public Q_SLOTS:
-    virtual bool openModel(const QString &fileName);
-    virtual bool saveModel();
-    virtual bool saveModelAs(const QString &fileName);
-    virtual bool createModel(const QString &modelFileName, QMetaModelPlugin *metamodelPlugin, const QString &topLevelType);
 
 private:
-    QString _currentModelFileName;
-    QList<QModelingElement *> _currentModelElements;
-    QList<QModelingObject *> _currentModelObjects;
+    QHash< QString, QPair<QMetaModelPlugin *, QJsonObject> > _metamodelPlugins;
+    QList< QPair<DuSE::IPlugin *, QJsonObject> > _dusemtPlugins;
     QStringList _errorStrings;
 };
 
 }
 
-#endif // PROJECTCONTROLLER_H
+#endif // PLUGINCONTROLLER_H

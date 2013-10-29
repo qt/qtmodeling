@@ -61,6 +61,7 @@ public:
     virtual ~IProjectController();
 
     virtual bool initialize() = 0;
+
     virtual QStringList errorStrings() const = 0;
     virtual QString currentModelFileName() const = 0;
 

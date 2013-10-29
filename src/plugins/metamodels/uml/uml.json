@@ -3,5 +3,5 @@
     "Vendor": "Qt Project",
     "MetaModelNamespaceUri": "http://www.omg.org/spec/UML/20110701",
     "MetaModelPrefix": "QUml",
-    "MetaModelTopLevelClasses": [ "QUmlModel", "QUmlPackage", "QUmlProfile" ]
+    "MetaModelTopLevelTypes": [ "QUmlModel", "QUmlPackage", "QUmlProfile" ]
 }

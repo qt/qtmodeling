@@ -46,6 +46,7 @@
 namespace DuSE
 {
 
+class PluginController;
 class ProjectController;
 class UiController;
 
@@ -56,12 +57,14 @@ public:
 
     static bool initialize();
 
+    virtual IPluginController *pluginController();
     virtual IProjectController *projectController();
     virtual IUiController *uiController();
 protected:
     Core();
     bool initializeInternal();
 
+    PluginController *_pluginController;
     ProjectController *_projectController;
     UiController *_uiController;
 };

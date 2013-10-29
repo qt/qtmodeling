@@ -85,7 +85,7 @@ public:
 
     void closeEvent(QCloseEvent *event);
     void readSettings();
-    void loadPlugins();
+    void populatePluginDialog();
 
 private Q_SLOTS:
     void update();
@@ -116,8 +116,8 @@ private:
     QList<QModelingElement *> _inputModel;
     QList<QModelingElement *> _designSpaceLocation;
 
-    QHash< QString, QPair<QMetaModelPlugin *, QJsonObject> > _metamodelPlugins;
-    QList< QPair<DuSE::IPlugin *, QJsonObject> > _dusemtPlugins;
+//    QHash< QString, QPair<QMetaModelPlugin *, QJsonObject> > _metamodelPlugins;
+//    QList< QPair<DuSE::IPlugin *, QJsonObject> > _dusemtPlugins;
     QDialog *_aboutPluginsDialog;
     Ui::AboutPlugins *_aboutPlugins;
     QDialog *_aboutDuSEMTDialog;

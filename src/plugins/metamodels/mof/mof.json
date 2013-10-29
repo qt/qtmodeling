@@ -3,5 +3,5 @@
     "Vendor": "Qt Project",
     "MetaModelNamespaceUri": "http://www.omg.org/spec/MOF/20110701",
     "MetaModelPrefix": "QMof",
-    "MetaModelTopLevelClasses": [ "QMofPackage" ]
+    "MetaModelTopLevelTypes": [ "QMofPackage" ]
 }

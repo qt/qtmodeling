@@ -38,40 +38,35 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef PROJECTCONTROLLER_H
-#define PROJECTCONTROLLER_H
+#ifndef IPLUGINCONTROLLER_H
+#define IPLUGINCONTROLLER_H
 
-#include <interfaces/iprojectcontroller.h>
+#include <QtCore/QObject>
 
-#include "mainwindow.h"
+class QMetaModelPlugin;
 
 namespace DuSE
 {
 
-class ProjectController : public IProjectController
+class IPlugin;
+
+class IPluginController : public QObject
 {
+    Q_OBJECT
+
 public:
-    ProjectController();
-    virtual ~ProjectController();
+    virtual ~IPluginController();
 
-    virtual bool initialize();
+    virtual bool initialize() = 0;
 
-    virtual QStringList errorStrings() const;
-    virtual QString currentModelFileName() const;
+    virtual const QHash< QString, QPair<QMetaModelPlugin *, QJsonObject> > &metamodelPlugins() const = 0;
+    virtual const QList< QPair<DuSE::IPlugin *, QJsonObject> > &dusemtPlugins() const = 0;
+    virtual QStringList errorStrings() const = 0;
 
-public Q_SLOTS:
-    virtual bool openModel(const QString &fileName);
-    virtual bool saveModel();
-    virtual bool saveModelAs(const QString &fileName);
-    virtual bool createModel(const QString &modelFileName, QMetaModelPlugin *metamodelPlugin, const QString &topLevelType);
-
-private:
-    QString _currentModelFileName;
-    QList<QModelingElement *> _currentModelElements;
-    QList<QModelingObject *> _currentModelObjects;
-    QStringList _errorStrings;
+protected:
+    IPluginController();
 };
 
 }
 
-#endif // PROJECTCONTROLLER_H
+#endif // IPLUGINCONTROLLER_H
