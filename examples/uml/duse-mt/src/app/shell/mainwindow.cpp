@@ -59,7 +59,7 @@
 
 #include <QtScript/QScriptValue>
 #include <QtScript/QScriptEngine>
-#include <QtScript/QScriptValueIterator>
+//#include <QtScript/QScriptValueIterator>
 
 #include <QtModeling/QXmiWriter>
 #include <QtModeling/QXmiReader>
@@ -86,43 +86,43 @@
 
 #include "newdusedesign.h"
 
-template <class T>
-QScriptValue qSetToScriptValue(QScriptEngine *engine, const QSet<T *> &elements)
-{
-    QScriptValue array = engine->newArray();
-    foreach (T *element, elements)
-        array.property(QString::fromLatin1("push")).call(array, QScriptValueList() << engine->newQObject(element));
-    return array;
-}
+//template <class T>
+//QScriptValue qSetToScriptValue(QScriptEngine *engine, const QSet<T *> &elements)
+//{
+//    QScriptValue array = engine->newArray();
+//    foreach (T *element, elements)
+//        array.property(QString::fromLatin1("push")).call(array, QScriptValueList() << engine->newQObject(element));
+//    return array;
+//}
 
-template <class T>
-void scriptValueToQSet(const QScriptValue &obj, QSet<T *> &elements)
-{
-    QScriptValueIterator it(obj);
-    while (it.hasNext()) {
-        it.next();
-        elements.insert(qobject_cast<T *>(it.value().toQObject()));
-    }
-}
+//template <class T>
+//void scriptValueToQSet(const QScriptValue &obj, QSet<T *> &elements)
+//{
+//    QScriptValueIterator it(obj);
+//    while (it.hasNext()) {
+//        it.next();
+//        elements.insert(qobject_cast<T *>(it.value().toQObject()));
+//    }
+//}
 
-template <class T>
-QScriptValue qListToScriptValue(QScriptEngine *engine, const QList<T *> &elements)
-{
-    QScriptValue array = engine->newArray();
-    foreach (T *element, elements)
-        array.property(QString::fromLatin1("push")).call(array, QScriptValueList() << engine->newQObject(element));
-    return array;
-}
+//template <class T>
+//QScriptValue qListToScriptValue(QScriptEngine *engine, const QList<T *> &elements)
+//{
+//    QScriptValue array = engine->newArray();
+//    foreach (T *element, elements)
+//        array.property(QString::fromLatin1("push")).call(array, QScriptValueList() << engine->newQObject(element));
+//    return array;
+//}
 
-template <class T>
-void scriptValueToQList(const QScriptValue &obj, QList<T *> &elements)
-{
-    QScriptValueIterator it(obj);
-    while (it.hasNext()) {
-        it.next();
-        elements.append(qobject_cast<T *>(it.value().toQObject()));
-    }
-}
+//template <class T>
+//void scriptValueToQList(const QScriptValue &obj, QList<T *> &elements)
+//{
+//    QScriptValueIterator it(obj);
+//    while (it.hasNext()) {
+//        it.next();
+//        elements.append(qobject_cast<T *>(it.value().toQObject()));
+//    }
+//}
 
 namespace DuSE
 {
@@ -137,7 +137,7 @@ MainWindow::MainWindow(QWidget *parent) :
     _newModelDialog(new QDialog(this)),
     _newModel(new Ui::NewModel),
     _newDuseDesign(new NewDuseDesign(this)),
-    _codeCompletionView(new QListView),
+//    _codeCompletionView(new QListView),
     _welcomeQuickView(new QQuickView),
     _modelQuickView(new QQuickView),
     _designSpaceQuickView(new QQuickView),
@@ -145,8 +145,8 @@ MainWindow::MainWindow(QWidget *parent) :
     _paretoFrontQuickView(new QQuickView)
 {
     ui->setupUi(this);
-    _codeCompletionView->setParent(ui->txeJavaScript);
-    _codeCompletionView->hide();
+//    _codeCompletionView->setParent(ui->txeJavaScript);
+//    _codeCompletionView->hide();
 
     _newModel->setupUi(_newModelDialog);
     connect(_newModel->cboMetamodel, SIGNAL(currentIndexChanged(QString)), SLOT(metaModelChanged(QString)));
@@ -156,12 +156,12 @@ MainWindow::MainWindow(QWidget *parent) :
 //    connect(ui->modelingObjectView, &QModelingObjectView::addToView, this, &MainWindow::addToView);
 //    connect(ui->modelingObjectView, &QModelingObjectView::modelingObjectChanged, this, &MainWindow::modelingObjectChanged);
 
-    qScriptRegisterMetaType(&_engine, qSetToScriptValue<QObject>, scriptValueToQSet<QObject>);
-    qScriptRegisterMetaType(&_engine, qListToScriptValue<QObject>, scriptValueToQList<QObject>);
+//    qScriptRegisterMetaType(&_engine, qSetToScriptValue<QObject>, scriptValueToQSet<QObject>);
+//    qScriptRegisterMetaType(&_engine, qListToScriptValue<QObject>, scriptValueToQList<QObject>);
 
 //    tabifyDockWidget(ui->dckIssues, ui->dckXPath);
     tabifyDockWidget(ui->dckXPath, ui->dckOcl);
-    tabifyDockWidget(ui->dckOcl, ui->dckJavaScript);
+//    tabifyDockWidget(ui->dckOcl, ui->dckJavaScript);
 //    ui->dckIssues->raise();
 //    tabifyDockWidget(ui->dckInspector, ui->dckMetrics);
 //    ui->dckInspector->raise();
@@ -170,9 +170,6 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->tblDesignSpace->resizeColumnToContents(0);
     ui->tblDesignSpace->resizeColumnToContents(1);
     ui->tblDesignSpace->resizeColumnToContents(2);
-
-    ui->txeJavaScript->installEventFilter(this);
-    _codeCompletionView->installEventFilter(this);
 
     _modelQuickView->setSource(QUrl("qrc:/qml/modelview.qml"));
     ui->gridLayout_11->addWidget(QWidget::createWindowContainer(_modelQuickView, ui->modelViewWidget), 0, 0, 1, 1);
@@ -297,14 +294,14 @@ QList<QModelingElement *> MainWindow::loadXmi(QString fileName)
 void MainWindow::setModelInspector(QList<QModelingElement *> modelingObjectList)
 {
     if (!modelingObjectList.isEmpty()) {
-        _engine.globalObject().setProperty(modelingObjectList.at(0)->asQModelingObject()->objectName(), _engine.newQObject(modelingObjectList.at(0)->asQModelingObject()));
+//        _engine.globalObject().setProperty(modelingObjectList.at(0)->asQModelingObject()->objectName(), _engine.newQObject(modelingObjectList.at(0)->asQModelingObject()));
 
-        QScriptValue array = _engine.newArray();
-        foreach (QModelingElement *modelingObject, modelingObjectList)
-            array.property(QString::fromLatin1("push")).call(array, QScriptValueList() << _engine.newQObject(modelingObject->asQModelingObject()));
-        _engine.globalObject().setProperty("input", array);
+//        QScriptValue array = _engine.newArray();
+//        foreach (QModelingElement *modelingObject, modelingObjectList)
+//            array.property(QString::fromLatin1("push")).call(array, QScriptValueList() << _engine.newQObject(modelingObject->asQModelingObject()));
+//        _engine.globalObject().setProperty("input", array);
 
-        ui->txeJavaScript->setText("self");
+//        ui->txeJavaScript->setText("self");
         QTimer::singleShot(0, this, SLOT(on_psbJSEvaluate_clicked()));
     }
 //    _modelingObjectModel->clear();
@@ -368,36 +365,36 @@ void MainWindow::on_actionFileNewDuseDesign_triggered()
                 _modelQuickView->setSource(QUrl("qrc:/qml/modelview.qml"));
                 addToView(_inputModel[0]);
 
-                QScriptValue value = _engine.evaluate("function checkProfile() \
-                                                       { \
-                                                           var length = input[0].profileApplications.length; \
-                                                           for (var i = 0; i < length; ++i) \
-                                                               if (input[0].profileApplications[0].appliedProfile.name == '" + modelingObjectList.first()->asQModelingObject()->objectName() + "Profile') \
-                                                                   return true; \
-                                                           return false; \
-                                                       } \
-                                                       checkProfile();");
-                if (!value.toBool()) {
-                    QMessageBox::critical(this, tr("Create new DuSE design"), QString::fromLatin1("Input model does not contain the required %1Profile profile application !").arg(modelingObjectList.first()->asQModelingObject()->objectName()));
-                    setCursor(Qt::ArrowCursor);
-                    return;
-                }
+//                QScriptValue value = _engine.evaluate("function checkProfile() \
+//                                                       { \
+//                                                           var length = input[0].profileApplications.length; \
+//                                                           for (var i = 0; i < length; ++i) \
+//                                                               if (input[0].profileApplications[0].appliedProfile.name == '" + modelingObjectList.first()->asQModelingObject()->objectName() + "Profile') \
+//                                                                   return true; \
+//                                                           return false; \
+//                                                       } \
+//                                                       checkProfile();");
+//                if (!value.toBool()) {
+//                    QMessageBox::critical(this, tr("Create new DuSE design"), QString::fromLatin1("Input model does not contain the required %1Profile profile application !").arg(modelingObjectList.first()->asQModelingObject()->objectName()));
+//                    setCursor(Qt::ArrowCursor);
+//                    return;
+//                }
 
                 //modelingObjectList.first()->setQmlContextProperties(_metricsQuickView->engine()->rootContext());
 
-                _engine.globalObject().setProperty("designspace", _engine.newQObject(modelingObjectList.at(0)->asQModelingObject()));
-                _engine.evaluate("var dimensionsLength = designspace.designDimensions.length; \
-                                 for (var dimensionCounter = 0; dimensionCounter < dimensionsLength; ++dimensionCounter) { \
-                                     if (designspace.designDimensions[dimensionCounter].instanceSelectionRule) { \
-                                         var selected = eval(designspace.designDimensions[dimensionCounter].instanceSelectionRule); \
-                                         var selectedLength = selected.length; \
-                                         for (var selectedCounter = 0; selectedCounter < selectedLength; ++selectedCounter) { \
-                                             var dimensionInstance = new QDuseDesignDimensionInstance(); \
-                                             dimensionInstance.objectName = selected[selectedCounter].name; \
-                                             designspace.designDimensions[dimensionCounter].addDesignDimensionInstance(dimensionInstance); \
-                                         } \
-                                     } \
-                                 }");
+//                _engine.globalObject().setProperty("designspace", _engine.newQObject(modelingObjectList.at(0)->asQModelingObject()));
+//                _engine.evaluate("var dimensionsLength = designspace.designDimensions.length; \
+//                                 for (var dimensionCounter = 0; dimensionCounter < dimensionsLength; ++dimensionCounter) { \
+//                                     if (designspace.designDimensions[dimensionCounter].instanceSelectionRule) { \
+//                                         var selected = eval(designspace.designDimensions[dimensionCounter].instanceSelectionRule); \
+//                                         var selectedLength = selected.length; \
+//                                         for (var selectedCounter = 0; selectedCounter < selectedLength; ++selectedCounter) { \
+//                                             var dimensionInstance = new QDuseDesignDimensionInstance(); \
+//                                             dimensionInstance.objectName = selected[selectedCounter].name; \
+//                                             designspace.designDimensions[dimensionCounter].addDesignDimensionInstance(dimensionInstance); \
+//                                         } \
+//                                     } \
+//                                 }");
 
 
                 evaluateQualityMetrics();
@@ -413,9 +410,9 @@ void MainWindow::on_actionFileNewDuseDesign_triggered()
 
 void MainWindow::evaluateQualityMetrics()
 {
-    _engine.evaluate("var m = designspace.qualityMetrics.length; \
-                      for (var j = 0; j < m; ++j) \
-                          designspace.qualityMetrics[j].value = Math.random()*60+eval(designspace.qualityMetrics[j].expression)");
+//    _engine.evaluate("var m = designspace.qualityMetrics.length; \
+//                      for (var j = 0; j < m; ++j) \
+//                          designspace.qualityMetrics[j].value = Math.random()*60+eval(designspace.qualityMetrics[j].expression)");
 }
 
 void MainWindow::populateDesignSpaceView(QModelingElement *modelingObject)
@@ -472,11 +469,11 @@ void MainWindow::on_actionHelpAboutDuSEMT_triggered()
     _aboutDuSEMTDialog->exec();
 }
 
-void MainWindow::on_psbJSEvaluate_clicked()
-{
-    ui->txeJavaScriptEvaluation->setText(_engine.evaluate(ui->txeJavaScript->toPlainText()).toString());
-//    ui->modelingObjectView->updateSelected();
-}
+//void MainWindow::on_psbJSEvaluate_clicked()
+//{
+//    ui->txeJavaScriptEvaluation->setText(_engine.evaluate(ui->txeJavaScript->toPlainText()).toString());
+////    ui->modelingObjectView->updateSelected();
+//}
 
 void MainWindow::on_centralWidget_currentChanged(int)
 {
@@ -542,7 +539,7 @@ void MainWindow::metaModelChanged(QString newMetaModel)
 
 void MainWindow::modelingObjectChanged(QModelingObject *modelingObject)
 {
-    _engine.globalObject().setProperty("self", _engine.newQObject(modelingObject));
+//    _engine.globalObject().setProperty("self", _engine.newQObject(modelingObject));
 }
 
 void MainWindow::addToView(QModelingElement *modelingObject, QQuickItem *parent)
@@ -645,47 +642,47 @@ void MainWindow::designSpaceChanged()
     evaluateQualityMetrics();
 }
 
-bool MainWindow::eventFilter(QObject *obj, QEvent *event)
-{
-    if (event->type() == QEvent::KeyPress && obj == ui->txeJavaScript) {
-        QKeyEvent *keyEvent = static_cast<QKeyEvent *>(event);
-        if (keyEvent->key() == 46) {
-            QModelingObject *modelingObject = dynamic_cast<QModelingObject *>(_engine.evaluate(ui->txeJavaScript->toPlainText()).toQObject());
-            if (modelingObject) {
-                const QMetaObject *metaObject = modelingObject->metaObject();
-                int propertyCount = metaObject->propertyCount();
-                QStringList propertyList;
-                for (int i = 0; i < propertyCount; ++i)
-                    propertyList << metaObject->property(i).name();
-                _codeCompletionView->setModel(new QStringListModel(propertyList));
-                QFont font;
-                QFontMetrics fm(font);
-                _codeCompletionView->setGeometry(ui->txeJavaScript->cursorRect().x(), ui->txeJavaScript->cursorRect().y()+fm.height(), 200, 100);
-                _codeCompletionView->show();
-                _codeCompletionView->setFocus();
-            }
-        }
-        return QObject::eventFilter(obj, event);
-    } else if (event->type() == QEvent::KeyPress && obj == _codeCompletionView) {
-        QKeyEvent *keyEvent = static_cast<QKeyEvent *>(event);
-         if (keyEvent->key() == 16777220 || keyEvent->key() == 32) { // spacebar or enter
-            ui->txeJavaScript->insertPlainText(_codeCompletionView->model()->data(_codeCompletionView->selectionModel()->selectedIndexes().first()).toString());
-            _codeCompletionView->hide();
-            ui->txeJavaScript->setFocus();
-            return true;
-        }
-        else if (keyEvent->key() == 16777235 || keyEvent->key() == 16777237 || keyEvent->key() == 16777239 || keyEvent->key() == 16777238) { // uparrow and downarrow, pageup, pagedown
-            return QObject::eventFilter(obj, event);
-        }
-        else {
-            _codeCompletionView->hide();
-            ui->txeJavaScript->setFocus();
-            return true;
-        }
-    }
-    // standard event processing
-    return QObject::eventFilter(obj, event);
-}
+//bool MainWindow::eventFilter(QObject *obj, QEvent *event)
+//{
+//    if (event->type() == QEvent::KeyPress && obj == ui->txeJavaScript) {
+//        QKeyEvent *keyEvent = static_cast<QKeyEvent *>(event);
+//        if (keyEvent->key() == 46) {
+//            QModelingObject *modelingObject = dynamic_cast<QModelingObject *>(_engine.evaluate(ui->txeJavaScript->toPlainText()).toQObject());
+//            if (modelingObject) {
+//                const QMetaObject *metaObject = modelingObject->metaObject();
+//                int propertyCount = metaObject->propertyCount();
+//                QStringList propertyList;
+//                for (int i = 0; i < propertyCount; ++i)
+//                    propertyList << metaObject->property(i).name();
+//                _codeCompletionView->setModel(new QStringListModel(propertyList));
+//                QFont font;
+//                QFontMetrics fm(font);
+//                _codeCompletionView->setGeometry(ui->txeJavaScript->cursorRect().x(), ui->txeJavaScript->cursorRect().y()+fm.height(), 200, 100);
+//                _codeCompletionView->show();
+//                _codeCompletionView->setFocus();
+//            }
+//        }
+//        return QObject::eventFilter(obj, event);
+//    } else if (event->type() == QEvent::KeyPress && obj == _codeCompletionView) {
+//        QKeyEvent *keyEvent = static_cast<QKeyEvent *>(event);
+//         if (keyEvent->key() == 16777220 || keyEvent->key() == 32) { // spacebar or enter
+//            ui->txeJavaScript->insertPlainText(_codeCompletionView->model()->data(_codeCompletionView->selectionModel()->selectedIndexes().first()).toString());
+//            _codeCompletionView->hide();
+//            ui->txeJavaScript->setFocus();
+//            return true;
+//        }
+//        else if (keyEvent->key() == 16777235 || keyEvent->key() == 16777237 || keyEvent->key() == 16777239 || keyEvent->key() == 16777238) { // uparrow and downarrow, pageup, pagedown
+//            return QObject::eventFilter(obj, event);
+//        }
+//        else {
+//            _codeCompletionView->hide();
+//            ui->txeJavaScript->setFocus();
+//            return true;
+//        }
+//    }
+//    // standard event processing
+//    return QObject::eventFilter(obj, event);
+//}
 
 QTreeWidgetItem *MainWindow::itemForCategory(const QString &category)
 {

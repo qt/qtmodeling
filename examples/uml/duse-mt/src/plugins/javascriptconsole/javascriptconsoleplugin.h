@@ -38,10 +38,12 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef MODELINSPECTORPLUGIN_H
-#define MODELINSPECTORPLUGIN_H
+#ifndef JAVASCRIPTCONSOLEPLUGIN_H
+#define JAVASCRIPTCONSOLEPLUGIN_H
 
 #include <interfaces/iplugin.h>
+
+#include <QtScript/QScriptEngine>
 
 class QListView;
 
@@ -50,26 +52,30 @@ class QModelingObjectModel;
 class QModelingObjectPropertyEditor;
 class QModelingObjectPropertyModel;
 
-class ModelInspectorPlugin : public DuSE::IPlugin
+namespace Ui {
+    class JavaScriptConsole;
+}
+
+class JavaScriptConsolePlugin : public DuSE::IPlugin
 {
     Q_OBJECT
-    Q_PLUGIN_METADATA(IID "org.liveblue.DuSE.IPlugin" FILE "modelinspector.json")
+    Q_PLUGIN_METADATA(IID "org.liveblue.DuSE.IPlugin" FILE "javascriptconsole.json")
 
 public:
-    ModelInspectorPlugin(QObject *parent = 0);
+    JavaScriptConsolePlugin(QObject *parent = 0);
 
     virtual bool initialize(DuSE::ICore *core);
 
+//protected:
+//    bool eventFilter(QObject *obj, QEvent *event);
+
 private Q_SLOTS:
-    void populateOutputIssues();
+    void evaluate();
 
 private:
-    QModelingObjectView *_modelingObjectView;
-    QModelingObjectModel *_modelingObjectModel;
-    QModelingObjectPropertyEditor *_propertyEditor;
-    QModelingObjectPropertyModel *_propertyModel;
-    QListView *_outputIssues;
+    Ui::JavaScriptConsole *_javaScriptConsole;
+    QListView *_codeCompletionView;
+    QScriptEngine _engine;
 };
 
-#endif // MODELINSPECTORPLUGIN_H
-
+#endif // JAVASCRIPTCONSOLEPLUGIN_H

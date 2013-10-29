@@ -97,7 +97,7 @@ private Q_SLOTS:
     void on_actionFileSave_triggered();
     void on_actionHelpAboutPlugins_triggered();
     void on_actionHelpAboutDuSEMT_triggered();
-    void on_psbJSEvaluate_clicked();
+//    void on_psbJSEvaluate_clicked();
     void on_centralWidget_currentChanged(int);
     void on_btnOptimize_clicked();
     void evaluateQualityMetrics();
@@ -112,8 +112,8 @@ private Q_SLOTS:
     void dckMetricsVisibilityChanged(bool visible);
     void designSpaceChanged();
 
-protected:
-    bool eventFilter(QObject *obj, QEvent *event);
+//protected:
+//    bool eventFilter(QObject *obj, QEvent *event);
 
 private:
     Ui::MainWindow *ui;
@@ -136,8 +136,8 @@ private:
     Ui::NewModel *_newModel;
     NewDuseDesign *_newDuseDesign;
 
-    QScriptEngine _engine;
-    QListView *_codeCompletionView;
+//    QScriptEngine _engine;
+//    QListView *_codeCompletionView;
     QQmlComponent *_qmlComponent;
     QQuickView *_welcomeQuickView;
     QQuickView *_modelQuickView;

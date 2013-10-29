@@ -41,21 +41,18 @@
 #include "modelinspectorplugin.h"
 
 #include <interfaces/iuicontroller.h>
-
-#include <QtCore/QStringListModel>
-
-#include <QtWidgets/QListView>
-#include <QtWidgets/QPushButton>
-
-#include <QtModeling/QModelingObject>
+#include <interfaces/iprojectcontroller.h>
 
 #include <QtModelingWidgets/QModelingObjectView>
 #include <QtModelingWidgets/QModelingObjectModel>
 #include <QtModelingWidgets/QModelingObjectPropertyEditor>
 #include <QtModelingWidgets/QModelingObjectPropertyModel>
 
-#include <interfaces/icore.h>
-#include <interfaces/iprojectcontroller.h>
+#include <QtModeling/QModelingObject>
+
+#include <QtWidgets/QListView>
+
+#include <QtCore/QStringListModel>
 
 ModelInspectorPlugin::ModelInspectorPlugin(QObject *parent) :
     DuSE::IPlugin(parent),
@@ -75,11 +72,6 @@ ModelInspectorPlugin::ModelInspectorPlugin(QObject *parent) :
     outputIssuesPallete.setColor(QPalette::Active, QPalette::AlternateBase, QColor(225, 225, 225));
     outputIssuesPallete.setColor(QPalette::Inactive, QPalette::AlternateBase, QColor(225, 225, 225));
     _outputIssues->setPalette(outputIssuesPallete);
-
-    connect(DuSE::ICore::self()->projectController(), SIGNAL(modelOpened(QList<QModelingObject*>)), _modelingObjectModel, SLOT(setModelingObjects(QList<QModelingObject*>)));
-    connect(DuSE::ICore::self()->projectController(), SIGNAL(modelOpened(QList<QModelingObject*>)), this, SLOT(populateOutputIssues()));
-    connect(_modelingObjectView, &QModelingObjectView::modelingObjectChanged, _propertyModel, &QModelingObjectPropertyModel::setModelingObject);
-    connect(_propertyModel, &QModelingObjectPropertyModel::indexChanged, _modelingObjectModel, &QModelingObjectModel::updateIndex);
 }
 
 bool ModelInspectorPlugin::initialize(DuSE::ICore *core)
@@ -88,6 +80,11 @@ bool ModelInspectorPlugin::initialize(DuSE::ICore *core)
     core->uiController()->addDockWidget(Qt::RightDockWidgetArea, tr("Property Editor"), _propertyEditor);
     core->uiController()->addDockWidget(Qt::BottomDockWidgetArea, tr("Issues"), _outputIssues);
 
+    connect(core->projectController(), SIGNAL(modelOpened(QList<QModelingObject*>)), _modelingObjectModel, SLOT(setModelingObjects(QList<QModelingObject*>)));
+    connect(core->projectController(), SIGNAL(modelOpened(QList<QModelingObject*>)), this, SLOT(populateOutputIssues()));
+    connect(_modelingObjectView, &QModelingObjectView::modelingObjectChanged, _propertyModel, &QModelingObjectPropertyModel::setModelingObject);
+    connect(_propertyModel, &QModelingObjectPropertyModel::indexChanged, _modelingObjectModel, &QModelingObjectModel::updateIndex);
+
     return true;
 }
 
@@ -95,3 +92,4 @@ void ModelInspectorPlugin::populateOutputIssues()
 {
     _outputIssues->setModel(new QStringListModel(DuSE::ICore::self()->projectController()->errorStrings()));
 }
+
