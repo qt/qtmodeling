@@ -45,6 +45,8 @@
 
 #include <QtCore/QString>
 
+class QModelingObject;
+
 class QWidget;
 
 namespace DuSE
@@ -61,6 +63,10 @@ public:
 
     virtual void addDockWidget(Qt::DockWidgetArea area, QString name, QWidget *widget) = 0;
     virtual void removeDockWidget(QString name) = 0;
+
+Q_SIGNALS:
+    void currentModelingObjectChanged(QModelingObject *currentModelingObject);
+    void updateCurrentModelingObject();
 
 protected:
     IUiController();

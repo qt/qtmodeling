@@ -97,23 +97,17 @@ private Q_SLOTS:
     void on_actionFileSave_triggered();
     void on_actionHelpAboutPlugins_triggered();
     void on_actionHelpAboutDuSEMT_triggered();
-//    void on_psbJSEvaluate_clicked();
     void on_centralWidget_currentChanged(int);
     void on_btnOptimize_clicked();
     void evaluateQualityMetrics();
     void setModelInspector(QList<QModelingElement *> modelingObjectList);
 
     void metaModelChanged(QString newMetaModel);
-    void modelingObjectChanged(QModelingObject *modelingObject);
     void addToView(QModelingElement *modelingObject, QQuickItem *parent = 0);
     void addToDesignSpaceView(QModelingElement *modelingObject, QQuickItem *parent = 0);
     void addToPareto(QModelingElement *modelingObject, int pos);
 
-    void dckMetricsVisibilityChanged(bool visible);
     void designSpaceChanged();
-
-//protected:
-//    bool eventFilter(QObject *obj, QEvent *event);
 
 private:
     Ui::MainWindow *ui;

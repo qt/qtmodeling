@@ -47,6 +47,8 @@
 
 class QListView;
 
+class QModelingObject;
+
 class QModelingObjectView;
 class QModelingObjectModel;
 class QModelingObjectPropertyEditor;
@@ -66,8 +68,11 @@ public:
 
     virtual bool initialize(DuSE::ICore *core);
 
-//protected:
-//    bool eventFilter(QObject *obj, QEvent *event);
+protected:
+    bool eventFilter(QObject *obj, QEvent *event);
+
+public Q_SLOTS:
+    void setSelfProperty(QModelingObject *modelingObject);
 
 private Q_SLOTS:
     void evaluate();

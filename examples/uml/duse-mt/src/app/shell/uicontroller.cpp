@@ -49,7 +49,8 @@
 namespace DuSE
 {
 
-UiController::UiController()
+UiController::UiController() :
+    _lastBottomDockWidgetAdded(0)
 {
 }
 
@@ -71,15 +72,20 @@ void UiController::addDockWidget(Qt::DockWidgetArea area, QString name, QWidget 
     dockWidget->setWindowTitle(name);
     dockWidget->setObjectName(name);
     dockWidget->setWidget(widget);
+
     _mainWindow.addDockWidget(area, dockWidget);
+    if (area == Qt::BottomDockWidgetArea) {
+        if (_lastBottomDockWidgetAdded)
+            _mainWindow.tabifyDockWidget(_lastBottomDockWidgetAdded, dockWidget);
+        _lastBottomDockWidgetAdded = dockWidget;
+    }
 }
 
 void UiController::removeDockWidget(QString name)
 {
-    foreach (QObject *child, _mainWindow.children()) {
+    foreach (QObject *child, _mainWindow.children())
         if (child->objectName() == name && qobject_cast<QDockWidget *>(child) != 0)
             delete child;
-    }
 }
 
 }

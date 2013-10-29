@@ -81,14 +81,13 @@ Core::Core() :
 
 bool Core::initializeInternal()
 {
-    if (!_projectController) {
+    if (!_projectController)
         _projectController = new ProjectController;
-        _projectController->initialize();
-    }
-    if (!_uiController) {
+    if (!_uiController)
         _uiController = new UiController;
-        _uiController->initialize();
-    }
+
+    _projectController->initialize();
+    _uiController->initialize();
 
     return true;
 }

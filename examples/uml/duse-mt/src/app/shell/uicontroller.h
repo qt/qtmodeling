@@ -61,6 +61,7 @@ public:
 
 protected:
     MainWindow _mainWindow;
+    QDockWidget *_lastBottomDockWidgetAdded;
 };
 
 }

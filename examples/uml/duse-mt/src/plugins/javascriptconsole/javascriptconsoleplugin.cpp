@@ -43,6 +43,7 @@
 #include "ui_javascriptconsole.h"
 
 #include <interfaces/iuicontroller.h>
+#include <interfaces/iprojectcontroller.h>
 
 #include <QtModeling/QModelingObject>
 
@@ -105,13 +106,17 @@ bool JavaScriptConsolePlugin::initialize(DuSE::ICore *core)
     _javaScriptConsole->setupUi(javaScriptConsoleWidget);
     core->uiController()->addDockWidget(Qt::BottomDockWidgetArea, tr("JavaScript Console"), javaScriptConsoleWidget);
 
-//    javaScriptConsoleWidget->installEventFilter(this);
-//    _codeCompletionView->installEventFilter(this);
+    _javaScriptConsole->txeJavaScript->installEventFilter(this);
+    _codeCompletionView->installEventFilter(this);
 
     _javaScriptConsole->txeJavaScript->setText("self");
 
-//    _codeCompletionView->setParent(_javaScriptConsole->txeJavaScript);
+    _codeCompletionView->setParent(_javaScriptConsole->txeJavaScript);
+    _codeCompletionView->hide();
+
     connect(_javaScriptConsole->psbJSEvaluate, &QPushButton::clicked, this, &JavaScriptConsolePlugin::evaluate);
+    connect(_javaScriptConsole->psbJSEvaluate, SIGNAL(clicked()), core->uiController(), SIGNAL(updateCurrentModelingObject()));
+    connect(core->uiController(), &DuSE::IUiController::currentModelingObjectChanged, this, &JavaScriptConsolePlugin::setSelfProperty);
 
     qScriptRegisterMetaType(&_engine, qSetToScriptValue<QObject>, scriptValueToQSet<QObject>);
     qScriptRegisterMetaType(&_engine, qListToScriptValue<QObject>, scriptValueToQList<QObject>);
@@ -119,47 +124,52 @@ bool JavaScriptConsolePlugin::initialize(DuSE::ICore *core)
     return true;
 }
 
-//bool JavaScriptConsolePlugin::eventFilter(QObject *obj, QEvent *event)
-//{
-//    if (event->type() == QEvent::KeyPress && obj == _javaScriptConsole->txeJavaScript) {
-//        QKeyEvent *keyEvent = static_cast<QKeyEvent *>(event);
-//        if (keyEvent->key() == 46) {
-//            QModelingObject *modelingObject = dynamic_cast<QModelingObject *>(_engine.evaluate(_javaScriptConsole->txeJavaScript->toPlainText()).toQObject());
-//            if (modelingObject) {
-//                const QMetaObject *metaObject = modelingObject->metaObject();
-//                int propertyCount = metaObject->propertyCount();
-//                QStringList propertyList;
-//                for (int i = 0; i < propertyCount; ++i)
-//                    propertyList << metaObject->property(i).name();
-//                _codeCompletionView->setModel(new QStringListModel(propertyList));
-//                QFont font;
-//                QFontMetrics fm(font);
-//                _codeCompletionView->setGeometry(_javaScriptConsole->txeJavaScript->cursorRect().x(), _javaScriptConsole->txeJavaScript->cursorRect().y()+fm.height(), 200, 100);
-//                _codeCompletionView->show();
-//                _codeCompletionView->setFocus();
-//            }
-//        }
-//        return QObject::eventFilter(obj, event);
-//    } else if (event->type() == QEvent::KeyPress && obj == _codeCompletionView) {
-//        QKeyEvent *keyEvent = static_cast<QKeyEvent *>(event);
-//         if (keyEvent->key() == 16777220 || keyEvent->key() == 32) { // spacebar or enter
-//            _javaScriptConsole->txeJavaScript->insertPlainText(_codeCompletionView->model()->data(_codeCompletionView->selectionModel()->selectedIndexes().first()).toString());
-//            _codeCompletionView->hide();
-//            _javaScriptConsole->txeJavaScript->setFocus();
-//            return true;
-//        }
-//        else if (keyEvent->key() == 16777235 || keyEvent->key() == 16777237 || keyEvent->key() == 16777239 || keyEvent->key() == 16777238) { // uparrow and downarrow, pageup, pagedown
-//            return QObject::eventFilter(obj, event);
-//        }
-//        else {
-//            _codeCompletionView->hide();
-//            _javaScriptConsole->txeJavaScript->setFocus();
-//            return true;
-//        }
-//    }
-//    // standard event processing
-//    return QObject::eventFilter(obj, event);
-//}
+void JavaScriptConsolePlugin::setSelfProperty(QModelingObject *modelingObject)
+{
+    _engine.globalObject().setProperty("self", _engine.newQObject(modelingObject));
+}
+
+bool JavaScriptConsolePlugin::eventFilter(QObject *obj, QEvent *event)
+{
+    if (event->type() == QEvent::KeyPress && obj == _javaScriptConsole->txeJavaScript) {
+        QKeyEvent *keyEvent = static_cast<QKeyEvent *>(event);
+        if (keyEvent->key() == 46) {
+            QModelingObject *modelingObject = dynamic_cast<QModelingObject *>(_engine.evaluate(_javaScriptConsole->txeJavaScript->toPlainText()).toQObject());
+            if (modelingObject) {
+                const QMetaObject *metaObject = modelingObject->metaObject();
+                int propertyCount = metaObject->propertyCount();
+                QStringList propertyList;
+                for (int i = 0; i < propertyCount; ++i)
+                    propertyList << metaObject->property(i).name();
+                _codeCompletionView->setModel(new QStringListModel(propertyList));
+                QFont font;
+                QFontMetrics fm(font);
+                _codeCompletionView->setGeometry(_javaScriptConsole->txeJavaScript->cursorRect().x(), _javaScriptConsole->txeJavaScript->cursorRect().y()+fm.height(), 200, 100);
+                _codeCompletionView->show();
+                _codeCompletionView->setFocus();
+            }
+        }
+        return QObject::eventFilter(obj, event);
+    } else if (event->type() == QEvent::KeyPress && obj == _codeCompletionView) {
+        QKeyEvent *keyEvent = static_cast<QKeyEvent *>(event);
+         if (keyEvent->key() == 16777220 || keyEvent->key() == 32) { // spacebar or enter
+            _javaScriptConsole->txeJavaScript->insertPlainText(_codeCompletionView->model()->data(_codeCompletionView->selectionModel()->selectedIndexes().first()).toString());
+            _codeCompletionView->hide();
+            _javaScriptConsole->txeJavaScript->setFocus();
+            return true;
+        }
+        else if (keyEvent->key() == 16777235 || keyEvent->key() == 16777237 || keyEvent->key() == 16777239 || keyEvent->key() == 16777238) { // uparrow and downarrow, pageup, pagedown
+            return QObject::eventFilter(obj, event);
+        }
+        else {
+            _codeCompletionView->hide();
+            _javaScriptConsole->txeJavaScript->setFocus();
+            return true;
+        }
+    }
+    // standard event processing
+    return QObject::eventFilter(obj, event);
+}
 
 void JavaScriptConsolePlugin::evaluate()
 {

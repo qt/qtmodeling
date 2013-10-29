@@ -57,10 +57,6 @@
 
 #include <QtGui/QKeyEvent>
 
-#include <QtScript/QScriptValue>
-#include <QtScript/QScriptEngine>
-//#include <QtScript/QScriptValueIterator>
-
 #include <QtModeling/QXmiWriter>
 #include <QtModeling/QXmiReader>
 #include <QtModeling/QModelingObject>
@@ -78,51 +74,11 @@
 #include <QtQuick/QQuickItem>
 #include "QtQuick/private/qquickflickable_p.h"
 
-//#include <QtDuse/QtDuse>
-
 #include <interfaces/icore.h>
 #include <interfaces/iplugin.h>
 #include <interfaces/iprojectcontroller.h>
 
 #include "newdusedesign.h"
-
-//template <class T>
-//QScriptValue qSetToScriptValue(QScriptEngine *engine, const QSet<T *> &elements)
-//{
-//    QScriptValue array = engine->newArray();
-//    foreach (T *element, elements)
-//        array.property(QString::fromLatin1("push")).call(array, QScriptValueList() << engine->newQObject(element));
-//    return array;
-//}
-
-//template <class T>
-//void scriptValueToQSet(const QScriptValue &obj, QSet<T *> &elements)
-//{
-//    QScriptValueIterator it(obj);
-//    while (it.hasNext()) {
-//        it.next();
-//        elements.insert(qobject_cast<T *>(it.value().toQObject()));
-//    }
-//}
-
-//template <class T>
-//QScriptValue qListToScriptValue(QScriptEngine *engine, const QList<T *> &elements)
-//{
-//    QScriptValue array = engine->newArray();
-//    foreach (T *element, elements)
-//        array.property(QString::fromLatin1("push")).call(array, QScriptValueList() << engine->newQObject(element));
-//    return array;
-//}
-
-//template <class T>
-//void scriptValueToQList(const QScriptValue &obj, QList<T *> &elements)
-//{
-//    QScriptValueIterator it(obj);
-//    while (it.hasNext()) {
-//        it.next();
-//        elements.append(qobject_cast<T *>(it.value().toQObject()));
-//    }
-//}
 
 namespace DuSE
 {
@@ -137,7 +93,6 @@ MainWindow::MainWindow(QWidget *parent) :
     _newModelDialog(new QDialog(this)),
     _newModel(new Ui::NewModel),
     _newDuseDesign(new NewDuseDesign(this)),
-//    _codeCompletionView(new QListView),
     _welcomeQuickView(new QQuickView),
     _modelQuickView(new QQuickView),
     _designSpaceQuickView(new QQuickView),
@@ -145,8 +100,6 @@ MainWindow::MainWindow(QWidget *parent) :
     _paretoFrontQuickView(new QQuickView)
 {
     ui->setupUi(this);
-//    _codeCompletionView->setParent(ui->txeJavaScript);
-//    _codeCompletionView->hide();
 
     _newModel->setupUi(_newModelDialog);
     connect(_newModel->cboMetamodel, SIGNAL(currentIndexChanged(QString)), SLOT(metaModelChanged(QString)));
@@ -154,19 +107,7 @@ MainWindow::MainWindow(QWidget *parent) :
     _aboutDuSEMT->setupUi(_aboutDuSEMTDialog);
 
 //    connect(ui->modelingObjectView, &QModelingObjectView::addToView, this, &MainWindow::addToView);
-//    connect(ui->modelingObjectView, &QModelingObjectView::modelingObjectChanged, this, &MainWindow::modelingObjectChanged);
 
-//    qScriptRegisterMetaType(&_engine, qSetToScriptValue<QObject>, scriptValueToQSet<QObject>);
-//    qScriptRegisterMetaType(&_engine, qListToScriptValue<QObject>, scriptValueToQList<QObject>);
-
-//    tabifyDockWidget(ui->dckIssues, ui->dckXPath);
-    tabifyDockWidget(ui->dckXPath, ui->dckOcl);
-//    tabifyDockWidget(ui->dckOcl, ui->dckJavaScript);
-//    ui->dckIssues->raise();
-//    tabifyDockWidget(ui->dckInspector, ui->dckMetrics);
-//    ui->dckInspector->raise();
-//    tabifyDockWidget(ui->dckPropertyEditor, ui->dckDesignSpace);
-//    ui->dckPropertyEditor->raise();
     ui->tblDesignSpace->resizeColumnToContents(0);
     ui->tblDesignSpace->resizeColumnToContents(1);
     ui->tblDesignSpace->resizeColumnToContents(2);
@@ -192,15 +133,6 @@ MainWindow::MainWindow(QWidget *parent) :
     _paretoFrontQuickView->setResizeMode(QQuickView::SizeRootObjectToView);
     _welcomeQuickView->setResizeMode(QQuickView::SizeRootObjectToView);
 
-    foreach (QDockWidget *dockWidget, findChildren<QDockWidget *>())
-        ui->menu_Window->addAction(dockWidget->toggleViewAction());
-    ui->menu_Window->addSeparator();
-    foreach (QToolBar *toolbar, findChildren<QToolBar *>())
-        ui->menu_Window->addAction(toolbar->toggleViewAction());
-
-    // Next line is needed because of bug in xcb: xcb_conn.c:186: write_vec: Assertion `!c->out.queue_len' failed.
-    connect(ui->dckMetrics, SIGNAL(visibilityChanged(bool)), SLOT(dckMetricsVisibilityChanged(bool)));
-
     readSettings();
 }
 
@@ -214,7 +146,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::readSettings()
 {
-    QSettings settings("LiveBlue", "DuSE-MT");
+    QSettings settings("QtProject", "duse-mt");
     restoreGeometry(settings.value("geometry").toByteArray());
     restoreState(settings.value("windowState").toByteArray());
 }
@@ -285,7 +217,6 @@ QList<QModelingElement *> MainWindow::loadXmi(QString fileName)
         setWindowTitle(QFileInfo(file).fileName() + " - DuSE-MT");
     QList<QModelingElement *> modelingObjectList = reader.readFile(&file);
 
-//    ui->txeIssues->setModel(new QStringListModel(reader.errorStrings()));
     setModelInspector(modelingObjectList);
 
     return modelingObjectList;
@@ -469,12 +400,6 @@ void MainWindow::on_actionHelpAboutDuSEMT_triggered()
     _aboutDuSEMTDialog->exec();
 }
 
-//void MainWindow::on_psbJSEvaluate_clicked()
-//{
-//    ui->txeJavaScriptEvaluation->setText(_engine.evaluate(ui->txeJavaScript->toPlainText()).toString());
-////    ui->modelingObjectView->updateSelected();
-//}
-
 void MainWindow::on_centralWidget_currentChanged(int)
 {
     if (_currentFileName.isEmpty())
@@ -535,11 +460,6 @@ void MainWindow::metaModelChanged(QString newMetaModel)
     foreach (QVariant variant, list)
         _newModel->lstTopLevelContainers->addItem(variant.toString());
     _newModel->lstTopLevelContainers->setCurrentRow(0);
-}
-
-void MainWindow::modelingObjectChanged(QModelingObject *modelingObject)
-{
-//    _engine.globalObject().setProperty("self", _engine.newQObject(modelingObject));
 }
 
 void MainWindow::addToView(QModelingElement *modelingObject, QQuickItem *parent)
@@ -617,18 +537,6 @@ void MainWindow::addToPareto(QModelingElement *modelingObject, int pos)
     _qmlComponent->deleteLater();
 }
 
-void MainWindow::dckMetricsVisibilityChanged(bool visible)
-{
-    if (visible) {
-        ui->dckMetrics->setMaximumSize(ui->dckMetrics->size());
-        ui->dckMetrics->setMinimumSize(ui->dckMetrics->size());
-    }
-    else {
-        ui->dckMetrics->setMaximumSize(QSize(524287, 524287));
-        ui->dckMetrics->setMinimumSize(QSize(180, 42));
-    }
-}
-
 void MainWindow::designSpaceChanged()
 {
     _designSpaceQuickView->setSource(QUrl("qrc:/qml/designspaceview.qml"));
@@ -641,48 +549,6 @@ void MainWindow::designSpaceChanged()
     addToDesignSpaceView(_designSpaceLocation.first());
     evaluateQualityMetrics();
 }
-
-//bool MainWindow::eventFilter(QObject *obj, QEvent *event)
-//{
-//    if (event->type() == QEvent::KeyPress && obj == ui->txeJavaScript) {
-//        QKeyEvent *keyEvent = static_cast<QKeyEvent *>(event);
-//        if (keyEvent->key() == 46) {
-//            QModelingObject *modelingObject = dynamic_cast<QModelingObject *>(_engine.evaluate(ui->txeJavaScript->toPlainText()).toQObject());
-//            if (modelingObject) {
-//                const QMetaObject *metaObject = modelingObject->metaObject();
-//                int propertyCount = metaObject->propertyCount();
-//                QStringList propertyList;
-//                for (int i = 0; i < propertyCount; ++i)
-//                    propertyList << metaObject->property(i).name();
-//                _codeCompletionView->setModel(new QStringListModel(propertyList));
-//                QFont font;
-//                QFontMetrics fm(font);
-//                _codeCompletionView->setGeometry(ui->txeJavaScript->cursorRect().x(), ui->txeJavaScript->cursorRect().y()+fm.height(), 200, 100);
-//                _codeCompletionView->show();
-//                _codeCompletionView->setFocus();
-//            }
-//        }
-//        return QObject::eventFilter(obj, event);
-//    } else if (event->type() == QEvent::KeyPress && obj == _codeCompletionView) {
-//        QKeyEvent *keyEvent = static_cast<QKeyEvent *>(event);
-//         if (keyEvent->key() == 16777220 || keyEvent->key() == 32) { // spacebar or enter
-//            ui->txeJavaScript->insertPlainText(_codeCompletionView->model()->data(_codeCompletionView->selectionModel()->selectedIndexes().first()).toString());
-//            _codeCompletionView->hide();
-//            ui->txeJavaScript->setFocus();
-//            return true;
-//        }
-//        else if (keyEvent->key() == 16777235 || keyEvent->key() == 16777237 || keyEvent->key() == 16777239 || keyEvent->key() == 16777238) { // uparrow and downarrow, pageup, pagedown
-//            return QObject::eventFilter(obj, event);
-//        }
-//        else {
-//            _codeCompletionView->hide();
-//            ui->txeJavaScript->setFocus();
-//            return true;
-//        }
-//    }
-//    // standard event processing
-//    return QObject::eventFilter(obj, event);
-//}
 
 QTreeWidgetItem *MainWindow::itemForCategory(const QString &category)
 {
@@ -697,20 +563,9 @@ QTreeWidgetItem *MainWindow::itemForCategory(const QString &category)
 
 void MainWindow::loadPlugins()
 {
-    _aboutPlugins->loadedPlugins->clear();
     _aboutPlugins->loadedPlugins->setColumnWidth(1, 40);
     _aboutPlugins->loadedPlugins->header()->setSectionResizeMode(0, QHeaderView::ResizeToContents);
     _aboutPlugins->loadedPlugins->header()->setSectionResizeMode(2, QHeaderView::ResizeToContents);
-//    _aboutPlugins->loadedPlugins->setRowCount(_metamodelPlugins.size());
-//    int i = 0;
-//    typedef QPair<QMetaModelPlugin *, QJsonObject> PluginData;
-//    foreach (const PluginData &pair, _metamodelPlugins.values()) {
-//        _aboutPlugins->loadedPlugins->setItem(i, 0, new QTableWidgetItem(pair.first->metaObject()->className()));
-//        _aboutPlugins->loadedPlugins->setItem(i, 1, new QTableWidgetItem(pair.second.value("Version").toString()));
-//        _aboutPlugins->loadedPlugins->setItem(i, 2, new QTableWidgetItem(pair.second.value("Vendor").toString()));
-//        _aboutPlugins->loadedPlugins->setRowHeight(i, 22);
-//        ++i;
-//    }
 
     DuSE::ICore *core = DuSE::ICore::self();
     DuSE::IPlugin *dusePlugin;
