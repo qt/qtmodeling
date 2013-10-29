@@ -62,27 +62,28 @@ bool ProjectController::initialize()
     return true;
 }
 
-QString ProjectController::errorString() const
+QStringList ProjectController::errorStrings() const
 {
-    return _errorString;
+    return _errorStrings;
 }
 
 bool ProjectController::openModel(const QString &fileName)
 {
     qDeleteAll(_currentModel);
     _currentModel.clear();
-    _errorString.clear();
+    _errorStrings.clear();
 
     _currentModelFileName = fileName;
 
     QFile file(fileName);
     if (!file.open(QFile::ReadOnly | QFile::Text)) {
-        _errorString = QObject::tr("Cannot read file %1").arg(fileName);
+        _errorStrings << QObject::tr("Cannot read file %1").arg(fileName);
         return false;
     }
 
     QXmiReader reader;
     _currentModel = reader.readFile(&file);
+    _errorStrings << reader.errorStrings();
 
 //    ui->txeIssues->setModel(new QStringListModel(reader.errorStrings()));
 //    setModelInspector(modelingObjectList);

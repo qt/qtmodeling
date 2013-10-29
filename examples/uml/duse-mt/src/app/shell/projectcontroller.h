@@ -55,7 +55,7 @@ public:
     virtual ~ProjectController();
 
     virtual bool initialize();
-    virtual QString errorString() const;
+    virtual QStringList errorStrings() const;
 
 public Q_SLOTS:
     virtual bool openModel(const QString &fileName);
@@ -63,7 +63,7 @@ public Q_SLOTS:
 private:
     QString _currentModelFileName;
     QList<QModelingElement *> _currentModel;
-    QString _errorString;
+    QStringList _errorStrings;
 };
 
 }

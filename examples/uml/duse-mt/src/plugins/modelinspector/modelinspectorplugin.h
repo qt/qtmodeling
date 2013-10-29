@@ -60,6 +60,9 @@ public:
 
     virtual bool initialize(DuSE::ICore *core);
 
+private Q_SLOTS:
+    void populateOutputIssues();
+
 private:
     QModelingObjectView *_modelingObjectView;
     QModelingObjectModel *_modelingObjectModel;

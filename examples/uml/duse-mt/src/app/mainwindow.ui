@@ -197,34 +197,6 @@
    <addaction name="actionFileQuit"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
-  <widget class="QDockWidget" name="dckIssues">
-   <property name="windowTitle">
-    <string>Issues</string>
-   </property>
-   <attribute name="dockWidgetArea">
-    <number>8</number>
-   </attribute>
-   <widget class="QWidget" name="dockWidgetContents">
-    <layout class="QGridLayout" name="gridLayout_4">
-     <property name="leftMargin">
-      <number>4</number>
-     </property>
-     <property name="rightMargin">
-      <number>4</number>
-     </property>
-     <property name="bottomMargin">
-      <number>4</number>
-     </property>
-     <item row="0" column="0">
-      <widget class="QListView" name="txeIssues">
-       <property name="alternatingRowColors">
-        <bool>true</bool>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </widget>
-  </widget>
   <widget class="QDockWidget" name="dckXPath">
    <property name="windowTitle">
     <string>XPath Browser</string>

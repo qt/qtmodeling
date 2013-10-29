@@ -159,17 +159,10 @@ MainWindow::MainWindow(QWidget *parent) :
     qScriptRegisterMetaType(&_engine, qSetToScriptValue<QObject>, scriptValueToQSet<QObject>);
     qScriptRegisterMetaType(&_engine, qListToScriptValue<QObject>, scriptValueToQList<QObject>);
 
-    QPalette modelPallete = ui->txeIssues->palette();
-    modelPallete.setColor(QPalette::Active, QPalette::Base, QColor(255, 255, 255));
-    modelPallete.setColor(QPalette::Inactive, QPalette::Base, QColor(255, 255, 255));
-    modelPallete.setColor(QPalette::Active, QPalette::AlternateBase, QColor(248, 247, 246));
-    modelPallete.setColor(QPalette::Inactive, QPalette::AlternateBase, QColor(248, 247, 246));
-    ui->txeIssues->setPalette(modelPallete);
-
-    tabifyDockWidget(ui->dckIssues, ui->dckXPath);
+//    tabifyDockWidget(ui->dckIssues, ui->dckXPath);
     tabifyDockWidget(ui->dckXPath, ui->dckOcl);
     tabifyDockWidget(ui->dckOcl, ui->dckJavaScript);
-    ui->dckIssues->raise();
+//    ui->dckIssues->raise();
 //    tabifyDockWidget(ui->dckInspector, ui->dckMetrics);
 //    ui->dckInspector->raise();
 //    tabifyDockWidget(ui->dckPropertyEditor, ui->dckDesignSpace);
@@ -295,7 +288,7 @@ QList<QModelingElement *> MainWindow::loadXmi(QString fileName)
         setWindowTitle(QFileInfo(file).fileName() + " - DuSE-MT");
     QList<QModelingElement *> modelingObjectList = reader.readFile(&file);
 
-    ui->txeIssues->setModel(new QStringListModel(reader.errorStrings()));
+//    ui->txeIssues->setModel(new QStringListModel(reader.errorStrings()));
     setModelInspector(modelingObjectList);
 
     return modelingObjectList;
@@ -327,7 +320,7 @@ void MainWindow::on_actionFileOpenModel_triggered()
         bool ret = ICore::self()->projectController()->openModel(fileName);
         setCursor(Qt::ArrowCursor);
         if (!ret) {
-            QMessageBox::critical(this, tr("Open Model"), ICore::self()->projectController()->errorString());
+            QMessageBox::critical(this, tr("Open Model"), ICore::self()->projectController()->errorStrings().first());
             return;
         }
         setWindowTitle(QFileInfo(QFile(fileName)).fileName() + " - DuSE-MT");

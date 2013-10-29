@@ -60,7 +60,7 @@ public:
     virtual ~IProjectController();
 
     virtual bool initialize() = 0;
-    virtual QString errorString() const = 0;
+    virtual QStringList errorStrings() const = 0;
 
 public Q_SLOTS:
     virtual bool openModel(const QString &fileName) = 0;

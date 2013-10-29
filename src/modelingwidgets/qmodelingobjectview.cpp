@@ -113,8 +113,8 @@ QModelingObjectView::QModelingObjectView(QWidget *parent, Qt::WindowFlags f) :
     QPalette modelPallete = d->treeView->palette();
     modelPallete.setColor(QPalette::Active, QPalette::Base, QColor(255, 255, 255));
     modelPallete.setColor(QPalette::Inactive, QPalette::Base, QColor(255, 255, 255));
-    modelPallete.setColor(QPalette::Active, QPalette::AlternateBase, QColor(248, 247, 246));
-    modelPallete.setColor(QPalette::Inactive, QPalette::AlternateBase, QColor(248, 247, 246));
+    modelPallete.setColor(QPalette::Active, QPalette::AlternateBase, QColor(225, 225, 225));
+    modelPallete.setColor(QPalette::Inactive, QPalette::AlternateBase, QColor(225, 225, 225));
     d->treeView->setPalette(modelPallete);
     d->treeView->setUniformRowHeights(true);
 
