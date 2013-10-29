@@ -942,7 +942,7 @@ void QUmlStateMachineObject::unsetLeaf()
 {
     Q_D(QModelingObject);
     setLeaf(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("leaf"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isLeaf"));
 }
 
 void QUmlStateMachineObject::addRedefinedElement(QObject *redefinedElement)
@@ -1038,7 +1038,7 @@ void QUmlStateMachineObject::unsetFinalSpecialization()
 {
     Q_D(QModelingObject);
     setFinalSpecialization(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("finalSpecialization"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isFinalSpecialization"));
 }
 
 void QUmlStateMachineObject::setOwnedTemplateSignature(QObject *ownedTemplateSignature)
@@ -1198,7 +1198,7 @@ void QUmlStateMachineObject::unsetAbstract()
 {
     Q_D(QModelingObject);
     setAbstract(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("abstract"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isAbstract"));
 }
 
 void QUmlStateMachineObject::setActive(bool isActive)
@@ -1210,7 +1210,7 @@ void QUmlStateMachineObject::unsetActive()
 {
     Q_D(QModelingObject);
     setActive(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("active"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isActive"));
 }
 
 void QUmlStateMachineObject::addNestedClassifier(QObject *nestedClassifier)
@@ -1280,7 +1280,7 @@ void QUmlStateMachineObject::unsetReentrant()
     Q_D(QModelingObject);
 
     setReentrant(true);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("reentrant"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isReentrant"));
 }
 
 void QUmlStateMachineObject::addOwnedParameter(QObject *ownedParameter)

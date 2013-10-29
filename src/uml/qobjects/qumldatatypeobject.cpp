@@ -732,7 +732,7 @@ void QUmlDataTypeObject::unsetLeaf()
 {
     Q_D(QModelingObject);
     setLeaf(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("leaf"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isLeaf"));
 }
 
 void QUmlDataTypeObject::addRedefinedElement(QObject *redefinedElement)
@@ -838,7 +838,7 @@ void QUmlDataTypeObject::unsetAbstract()
 {
     Q_D(QModelingObject);
     setAbstract(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("abstract"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isAbstract"));
 }
 
 void QUmlDataTypeObject::setFinalSpecialization(bool isFinalSpecialization)
@@ -850,7 +850,7 @@ void QUmlDataTypeObject::unsetFinalSpecialization()
 {
     Q_D(QModelingObject);
     setFinalSpecialization(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("finalSpecialization"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isFinalSpecialization"));
 }
 
 void QUmlDataTypeObject::setOwnedTemplateSignature(QObject *ownedTemplateSignature)

@@ -787,7 +787,7 @@ void QUmlExtensionObject::unsetLeaf()
 {
     Q_D(QModelingObject);
     setLeaf(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("leaf"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isLeaf"));
 }
 
 void QUmlExtensionObject::addRedefinedElement(QObject *redefinedElement)
@@ -893,7 +893,7 @@ void QUmlExtensionObject::unsetAbstract()
 {
     Q_D(QModelingObject);
     setAbstract(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("abstract"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isAbstract"));
 }
 
 void QUmlExtensionObject::setFinalSpecialization(bool isFinalSpecialization)
@@ -905,7 +905,7 @@ void QUmlExtensionObject::unsetFinalSpecialization()
 {
     Q_D(QModelingObject);
     setFinalSpecialization(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("finalSpecialization"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isFinalSpecialization"));
 }
 
 void QUmlExtensionObject::setOwnedTemplateSignature(QObject *ownedTemplateSignature)
@@ -1006,7 +1006,7 @@ void QUmlExtensionObject::unsetDerived()
 {
     Q_D(QModelingObject);
     setDerived(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("derived"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isDerived"));
 }
 
 void QUmlExtensionObject::addMemberEnd(QObject *memberEnd)
@@ -1039,7 +1039,7 @@ void QUmlExtensionObject::unsetRequired()
 {
     Q_D(QModelingObject);
     setRequired(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("required"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isRequired"));
 }
 
 void QUmlExtensionObject::setMetaclass(QObject *metaclass)

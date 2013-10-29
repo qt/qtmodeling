@@ -292,7 +292,7 @@ void QUmlExtensionPointObject::unsetLeaf()
 {
     Q_D(QModelingObject);
     setLeaf(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("leaf"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isLeaf"));
 }
 
 void QUmlExtensionPointObject::addRedefinedElement(QObject *redefinedElement)

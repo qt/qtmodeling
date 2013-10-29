@@ -447,7 +447,7 @@ void QUmlReduceActionObject::unsetLeaf()
 {
     Q_D(QModelingObject);
     setLeaf(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("leaf"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isLeaf"));
 }
 
 void QUmlReduceActionObject::addRedefinedElement(QObject *redefinedElement)
@@ -580,7 +580,7 @@ void QUmlReduceActionObject::unsetLocallyReentrant()
 {
     Q_D(QModelingObject);
     setLocallyReentrant(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("locallyReentrant"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isLocallyReentrant"));
 }
 
 void QUmlReduceActionObject::addLocalPostcondition(QObject *localPostcondition)
@@ -629,7 +629,7 @@ void QUmlReduceActionObject::unsetOrdered()
 {
     Q_D(QModelingObject);
     setOrdered(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("ordered"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isOrdered"));
 }
 
 void QUmlReduceActionObject::setReducer(QObject *reducer)

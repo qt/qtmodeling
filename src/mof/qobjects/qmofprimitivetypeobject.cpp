@@ -529,7 +529,7 @@ void QMofPrimitiveTypeObject::unsetLeaf()
 {
     Q_D(QModelingObject);
     setLeaf(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("leaf"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isLeaf"));
 }
 
 void QMofPrimitiveTypeObject::addRedefinedElement(QObject *redefinedElement)
@@ -675,7 +675,7 @@ void QMofPrimitiveTypeObject::unsetAbstract()
 {
     Q_D(QModelingObject);
     setAbstract(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("abstract"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isAbstract"));
 }
 
 void QMofPrimitiveTypeObject::setFinalSpecialization(bool isFinalSpecialization)
@@ -687,7 +687,7 @@ void QMofPrimitiveTypeObject::unsetFinalSpecialization()
 {
     Q_D(QModelingObject);
     setFinalSpecialization(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("finalSpecialization"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isFinalSpecialization"));
 }
 
 void QMofPrimitiveTypeObject::addRedefinedClassifier(QObject *redefinedClassifier)

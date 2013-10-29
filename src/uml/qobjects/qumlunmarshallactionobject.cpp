@@ -441,7 +441,7 @@ void QUmlUnmarshallActionObject::unsetLeaf()
 {
     Q_D(QModelingObject);
     setLeaf(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("leaf"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isLeaf"));
 }
 
 void QUmlUnmarshallActionObject::addRedefinedElement(QObject *redefinedElement)
@@ -574,7 +574,7 @@ void QUmlUnmarshallActionObject::unsetLocallyReentrant()
 {
     Q_D(QModelingObject);
     setLocallyReentrant(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("locallyReentrant"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isLocallyReentrant"));
 }
 
 void QUmlUnmarshallActionObject::addLocalPostcondition(QObject *localPostcondition)

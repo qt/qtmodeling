@@ -954,7 +954,7 @@ void QUmlProtocolStateMachineObject::unsetLeaf()
 {
     Q_D(QModelingObject);
     setLeaf(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("leaf"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isLeaf"));
 }
 
 void QUmlProtocolStateMachineObject::addRedefinedElement(QObject *redefinedElement)
@@ -1050,7 +1050,7 @@ void QUmlProtocolStateMachineObject::unsetFinalSpecialization()
 {
     Q_D(QModelingObject);
     setFinalSpecialization(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("finalSpecialization"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isFinalSpecialization"));
 }
 
 void QUmlProtocolStateMachineObject::setOwnedTemplateSignature(QObject *ownedTemplateSignature)
@@ -1210,7 +1210,7 @@ void QUmlProtocolStateMachineObject::unsetAbstract()
 {
     Q_D(QModelingObject);
     setAbstract(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("abstract"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isAbstract"));
 }
 
 void QUmlProtocolStateMachineObject::setActive(bool isActive)
@@ -1222,7 +1222,7 @@ void QUmlProtocolStateMachineObject::unsetActive()
 {
     Q_D(QModelingObject);
     setActive(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("active"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isActive"));
 }
 
 void QUmlProtocolStateMachineObject::addNestedClassifier(QObject *nestedClassifier)
@@ -1292,7 +1292,7 @@ void QUmlProtocolStateMachineObject::unsetReentrant()
     Q_D(QModelingObject);
 
     setReentrant(true);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("reentrant"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isReentrant"));
 }
 
 void QUmlProtocolStateMachineObject::addOwnedParameter(QObject *ownedParameter)

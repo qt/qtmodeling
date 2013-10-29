@@ -981,7 +981,7 @@ void QUmlInteractionObject::unsetLeaf()
 {
     Q_D(QModelingObject);
     setLeaf(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("leaf"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isLeaf"));
 }
 
 void QUmlInteractionObject::addRedefinedElement(QObject *redefinedElement)
@@ -1077,7 +1077,7 @@ void QUmlInteractionObject::unsetFinalSpecialization()
 {
     Q_D(QModelingObject);
     setFinalSpecialization(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("finalSpecialization"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isFinalSpecialization"));
 }
 
 void QUmlInteractionObject::setOwnedTemplateSignature(QObject *ownedTemplateSignature)
@@ -1237,7 +1237,7 @@ void QUmlInteractionObject::unsetAbstract()
 {
     Q_D(QModelingObject);
     setAbstract(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("abstract"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isAbstract"));
 }
 
 void QUmlInteractionObject::setActive(bool isActive)
@@ -1249,7 +1249,7 @@ void QUmlInteractionObject::unsetActive()
 {
     Q_D(QModelingObject);
     setActive(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("active"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isActive"));
 }
 
 void QUmlInteractionObject::addNestedClassifier(QObject *nestedClassifier)
@@ -1319,7 +1319,7 @@ void QUmlInteractionObject::unsetReentrant()
     Q_D(QModelingObject);
 
     setReentrant(true);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("reentrant"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isReentrant"));
 }
 
 void QUmlInteractionObject::addOwnedParameter(QObject *ownedParameter)

@@ -482,7 +482,7 @@ void QMofPropertyObject::unsetLeaf()
 {
     Q_D(QModelingObject);
     setLeaf(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("leaf"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isLeaf"));
 }
 
 void QMofPropertyObject::addRedefinedElement(QObject *redefinedElement)
@@ -526,7 +526,7 @@ void QMofPropertyObject::unsetStatic()
 {
     Q_D(QModelingObject);
     setStatic(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("static"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isStatic"));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [TypedElement]
@@ -547,7 +547,7 @@ void QMofPropertyObject::unsetOrdered()
 {
     Q_D(QModelingObject);
     setOrdered(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("ordered"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isOrdered"));
 }
 
 void QMofPropertyObject::setUnique(bool isUnique)
@@ -560,7 +560,7 @@ void QMofPropertyObject::unsetUnique()
     Q_D(QModelingObject);
 
     setUnique(true);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("unique"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isUnique"));
 }
 
 void QMofPropertyObject::setLower(int lower)
@@ -650,7 +650,7 @@ void QMofPropertyObject::unsetDerived()
 {
     Q_D(QModelingObject);
     setDerived(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("derived"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isDerived"));
 }
 
 void QMofPropertyObject::setDerivedUnion(bool isDerivedUnion)
@@ -662,7 +662,7 @@ void QMofPropertyObject::unsetDerivedUnion()
 {
     Q_D(QModelingObject);
     setDerivedUnion(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("derivedUnion"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isDerivedUnion"));
 }
 
 void QMofPropertyObject::setID(bool isID)
@@ -674,7 +674,7 @@ void QMofPropertyObject::unsetID()
 {
     Q_D(QModelingObject);
     setID(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("iD"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isID"));
 }
 
 void QMofPropertyObject::setReadOnly(bool isReadOnly)
@@ -686,7 +686,7 @@ void QMofPropertyObject::unsetReadOnly()
 {
     Q_D(QModelingObject);
     setReadOnly(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("readOnly"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isReadOnly"));
 }
 
 void QMofPropertyObject::setOpposite(QObject *opposite)

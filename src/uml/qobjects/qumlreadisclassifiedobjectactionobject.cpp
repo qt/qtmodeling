@@ -446,7 +446,7 @@ void QUmlReadIsClassifiedObjectActionObject::unsetLeaf()
 {
     Q_D(QModelingObject);
     setLeaf(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("leaf"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isLeaf"));
 }
 
 void QUmlReadIsClassifiedObjectActionObject::addRedefinedElement(QObject *redefinedElement)
@@ -579,7 +579,7 @@ void QUmlReadIsClassifiedObjectActionObject::unsetLocallyReentrant()
 {
     Q_D(QModelingObject);
     setLocallyReentrant(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("locallyReentrant"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isLocallyReentrant"));
 }
 
 void QUmlReadIsClassifiedObjectActionObject::addLocalPostcondition(QObject *localPostcondition)
@@ -628,7 +628,7 @@ void QUmlReadIsClassifiedObjectActionObject::unsetDirect()
 {
     Q_D(QModelingObject);
     setDirect(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("direct"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isDirect"));
 }
 
 void QUmlReadIsClassifiedObjectActionObject::setObject(QObject *object)

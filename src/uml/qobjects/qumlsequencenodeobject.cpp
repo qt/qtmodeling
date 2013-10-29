@@ -587,7 +587,7 @@ void QUmlSequenceNodeObject::unsetLeaf()
 {
     Q_D(QModelingObject);
     setLeaf(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("leaf"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isLeaf"));
 }
 
 void QUmlSequenceNodeObject::addRedefinedElement(QObject *redefinedElement)
@@ -715,7 +715,7 @@ void QUmlSequenceNodeObject::unsetLocallyReentrant()
 {
     Q_D(QModelingObject);
     setLocallyReentrant(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("locallyReentrant"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isLocallyReentrant"));
 }
 
 void QUmlSequenceNodeObject::addLocalPostcondition(QObject *localPostcondition)

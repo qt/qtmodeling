@@ -370,7 +370,7 @@ void QUmlJoinNodeObject::unsetLeaf()
 {
     Q_D(QModelingObject);
     setLeaf(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("leaf"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isLeaf"));
 }
 
 void QUmlJoinNodeObject::addRedefinedElement(QObject *redefinedElement)
@@ -477,7 +477,7 @@ void QUmlJoinNodeObject::unsetCombineDuplicate()
     Q_D(QModelingObject);
 
     setCombineDuplicate(true);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("combineDuplicate"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isCombineDuplicate"));
 }
 
 void QUmlJoinNodeObject::setJoinSpec(QObject *joinSpec)

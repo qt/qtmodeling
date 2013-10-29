@@ -338,7 +338,7 @@ void QUmlGeneralizationSetObject::unsetCovering()
 {
     Q_D(QModelingObject);
     setCovering(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("covering"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isCovering"));
 }
 
 void QUmlGeneralizationSetObject::setDisjoint(bool isDisjoint)
@@ -350,7 +350,7 @@ void QUmlGeneralizationSetObject::unsetDisjoint()
 {
     Q_D(QModelingObject);
     setDisjoint(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("disjoint"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isDisjoint"));
 }
 
 void QUmlGeneralizationSetObject::setPowertype(QObject *powertype)

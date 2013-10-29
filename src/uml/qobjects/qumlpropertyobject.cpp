@@ -604,7 +604,7 @@ void QUmlPropertyObject::unsetOrdered()
 {
     Q_D(QModelingObject);
     setOrdered(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("ordered"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isOrdered"));
 }
 
 void QUmlPropertyObject::setUnique(bool isUnique)
@@ -617,7 +617,7 @@ void QUmlPropertyObject::unsetUnique()
     Q_D(QModelingObject);
 
     setUnique(true);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("unique"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isUnique"));
 }
 
 void QUmlPropertyObject::setLower(int lower)
@@ -665,7 +665,7 @@ void QUmlPropertyObject::unsetLeaf()
 {
     Q_D(QModelingObject);
     setLeaf(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("leaf"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isLeaf"));
 }
 
 void QUmlPropertyObject::addRedefinedElement(QObject *redefinedElement)
@@ -709,7 +709,7 @@ void QUmlPropertyObject::unsetStatic()
 {
     Q_D(QModelingObject);
     setStatic(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("static"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isStatic"));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ParameterableElement]
@@ -815,7 +815,7 @@ void QUmlPropertyObject::unsetComposite()
 {
     Q_D(QModelingObject);
     setComposite(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("composite"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isComposite"));
 }
 
 void QUmlPropertyObject::setDerived(bool isDerived)
@@ -827,7 +827,7 @@ void QUmlPropertyObject::unsetDerived()
 {
     Q_D(QModelingObject);
     setDerived(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("derived"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isDerived"));
 }
 
 void QUmlPropertyObject::setDerivedUnion(bool isDerivedUnion)
@@ -839,7 +839,7 @@ void QUmlPropertyObject::unsetDerivedUnion()
 {
     Q_D(QModelingObject);
     setDerivedUnion(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("derivedUnion"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isDerivedUnion"));
 }
 
 void QUmlPropertyObject::setID(bool isID)
@@ -851,7 +851,7 @@ void QUmlPropertyObject::unsetID()
 {
     Q_D(QModelingObject);
     setID(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("iD"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isID"));
 }
 
 void QUmlPropertyObject::setReadOnly(bool isReadOnly)
@@ -863,7 +863,7 @@ void QUmlPropertyObject::unsetReadOnly()
 {
     Q_D(QModelingObject);
     setReadOnly(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("readOnly"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isReadOnly"));
 }
 
 void QUmlPropertyObject::setOpposite(QObject *opposite)

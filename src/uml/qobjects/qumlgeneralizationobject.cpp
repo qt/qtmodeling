@@ -244,7 +244,7 @@ void QUmlGeneralizationObject::unsetSubstitutable()
     Q_D(QModelingObject);
 
     setSubstitutable(true);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("substitutable"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isSubstitutable"));
 }
 
 void QUmlGeneralizationObject::setSpecific(QObject *specific)

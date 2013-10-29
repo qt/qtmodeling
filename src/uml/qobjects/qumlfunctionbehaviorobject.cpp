@@ -910,7 +910,7 @@ void QUmlFunctionBehaviorObject::unsetLeaf()
 {
     Q_D(QModelingObject);
     setLeaf(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("leaf"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isLeaf"));
 }
 
 void QUmlFunctionBehaviorObject::addRedefinedElement(QObject *redefinedElement)
@@ -1006,7 +1006,7 @@ void QUmlFunctionBehaviorObject::unsetFinalSpecialization()
 {
     Q_D(QModelingObject);
     setFinalSpecialization(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("finalSpecialization"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isFinalSpecialization"));
 }
 
 void QUmlFunctionBehaviorObject::setOwnedTemplateSignature(QObject *ownedTemplateSignature)
@@ -1166,7 +1166,7 @@ void QUmlFunctionBehaviorObject::unsetAbstract()
 {
     Q_D(QModelingObject);
     setAbstract(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("abstract"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isAbstract"));
 }
 
 void QUmlFunctionBehaviorObject::setActive(bool isActive)
@@ -1178,7 +1178,7 @@ void QUmlFunctionBehaviorObject::unsetActive()
 {
     Q_D(QModelingObject);
     setActive(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("active"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isActive"));
 }
 
 void QUmlFunctionBehaviorObject::addNestedClassifier(QObject *nestedClassifier)
@@ -1248,7 +1248,7 @@ void QUmlFunctionBehaviorObject::unsetReentrant()
     Q_D(QModelingObject);
 
     setReentrant(true);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("reentrant"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isReentrant"));
 }
 
 void QUmlFunctionBehaviorObject::addOwnedParameter(QObject *ownedParameter)

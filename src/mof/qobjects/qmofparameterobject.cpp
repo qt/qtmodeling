@@ -343,7 +343,7 @@ void QMofParameterObject::unsetOrdered()
 {
     Q_D(QModelingObject);
     setOrdered(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("ordered"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isOrdered"));
 }
 
 void QMofParameterObject::setUnique(bool isUnique)
@@ -356,7 +356,7 @@ void QMofParameterObject::unsetUnique()
     Q_D(QModelingObject);
 
     setUnique(true);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("unique"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isUnique"));
 }
 
 void QMofParameterObject::setLower(int lower)

@@ -238,7 +238,7 @@ void QUmlConnectorEndObject::unsetOrdered()
 {
     Q_D(QModelingObject);
     setOrdered(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("ordered"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isOrdered"));
 }
 
 void QUmlConnectorEndObject::setUnique(bool isUnique)
@@ -251,7 +251,7 @@ void QUmlConnectorEndObject::unsetUnique()
     Q_D(QModelingObject);
 
     setUnique(true);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("unique"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isUnique"));
 }
 
 void QUmlConnectorEndObject::setLower(int lower)

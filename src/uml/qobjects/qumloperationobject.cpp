@@ -685,7 +685,7 @@ void QUmlOperationObject::unsetLeaf()
 {
     Q_D(QModelingObject);
     setLeaf(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("leaf"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isLeaf"));
 }
 
 void QUmlOperationObject::addRedefinedElement(QObject *redefinedElement)
@@ -729,7 +729,7 @@ void QUmlOperationObject::unsetStatic()
 {
     Q_D(QModelingObject);
     setStatic(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("static"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isStatic"));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [BehavioralFeature]
@@ -755,7 +755,7 @@ void QUmlOperationObject::unsetAbstract()
 {
     Q_D(QModelingObject);
     setAbstract(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("abstract"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isAbstract"));
 }
 
 void QUmlOperationObject::addMethod(QObject *method)
@@ -814,7 +814,7 @@ void QUmlOperationObject::unsetOrdered()
 {
     Q_D(QModelingObject);
     setOrdered(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("ordered"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isOrdered"));
 }
 
 void QUmlOperationObject::setQuery(bool isQuery)
@@ -826,7 +826,7 @@ void QUmlOperationObject::unsetQuery()
 {
     Q_D(QModelingObject);
     setQuery(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("query"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isQuery"));
 }
 
 void QUmlOperationObject::setUnique(bool isUnique)
@@ -839,7 +839,7 @@ void QUmlOperationObject::unsetUnique()
     Q_D(QModelingObject);
 
     setUnique(true);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("unique"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isUnique"));
 }
 
 void QUmlOperationObject::setLower(int lower)

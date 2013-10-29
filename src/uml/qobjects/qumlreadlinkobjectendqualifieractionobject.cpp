@@ -442,7 +442,7 @@ void QUmlReadLinkObjectEndQualifierActionObject::unsetLeaf()
 {
     Q_D(QModelingObject);
     setLeaf(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("leaf"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isLeaf"));
 }
 
 void QUmlReadLinkObjectEndQualifierActionObject::addRedefinedElement(QObject *redefinedElement)
@@ -575,7 +575,7 @@ void QUmlReadLinkObjectEndQualifierActionObject::unsetLocallyReentrant()
 {
     Q_D(QModelingObject);
     setLocallyReentrant(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("locallyReentrant"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isLocallyReentrant"));
 }
 
 void QUmlReadLinkObjectEndQualifierActionObject::addLocalPostcondition(QObject *localPostcondition)

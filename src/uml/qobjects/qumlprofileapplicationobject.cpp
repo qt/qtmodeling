@@ -230,7 +230,7 @@ void QUmlProfileApplicationObject::unsetStrict()
 {
     Q_D(QModelingObject);
     setStrict(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("strict"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isStrict"));
 }
 
 

@@ -569,7 +569,7 @@ void QMofAssociationObject::unsetLeaf()
 {
     Q_D(QModelingObject);
     setLeaf(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("leaf"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isLeaf"));
 }
 
 void QMofAssociationObject::addRedefinedElement(QObject *redefinedElement)
@@ -715,7 +715,7 @@ void QMofAssociationObject::unsetAbstract()
 {
     Q_D(QModelingObject);
     setAbstract(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("abstract"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isAbstract"));
 }
 
 void QMofAssociationObject::setFinalSpecialization(bool isFinalSpecialization)
@@ -727,7 +727,7 @@ void QMofAssociationObject::unsetFinalSpecialization()
 {
     Q_D(QModelingObject);
     setFinalSpecialization(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("finalSpecialization"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isFinalSpecialization"));
 }
 
 void QMofAssociationObject::addRedefinedClassifier(QObject *redefinedClassifier)
@@ -761,7 +761,7 @@ void QMofAssociationObject::unsetDerived()
 {
     Q_D(QModelingObject);
     setDerived(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("derived"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isDerived"));
 }
 
 void QMofAssociationObject::addMemberEnd(QObject *memberEnd)

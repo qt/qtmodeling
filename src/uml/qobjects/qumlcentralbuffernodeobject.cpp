@@ -404,7 +404,7 @@ void QUmlCentralBufferNodeObject::unsetLeaf()
 {
     Q_D(QModelingObject);
     setLeaf(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("leaf"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isLeaf"));
 }
 
 void QUmlCentralBufferNodeObject::addRedefinedElement(QObject *redefinedElement)
@@ -527,7 +527,7 @@ void QUmlCentralBufferNodeObject::unsetControlType()
 {
     Q_D(QModelingObject);
     setControlType(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("controlType"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isControlType"));
 }
 
 void QUmlCentralBufferNodeObject::setOrdering(QtUml::ObjectNodeOrderingKind ordering)

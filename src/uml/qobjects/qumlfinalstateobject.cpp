@@ -579,7 +579,7 @@ void QUmlFinalStateObject::unsetLeaf()
 {
     Q_D(QModelingObject);
     setLeaf(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("leaf"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isLeaf"));
 }
 
 void QUmlFinalStateObject::addRedefinedElement(QObject *redefinedElement)
@@ -674,7 +674,7 @@ void QUmlFinalStateObject::unsetComposite()
 {
     Q_D(QModelingObject);
     setComposite(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("composite"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isComposite"));
 }
 
 void QUmlFinalStateObject::setOrthogonal(bool isOrthogonal)
@@ -686,7 +686,7 @@ void QUmlFinalStateObject::unsetOrthogonal()
 {
     Q_D(QModelingObject);
     setOrthogonal(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("orthogonal"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isOrthogonal"));
 }
 
 void QUmlFinalStateObject::setSimple(bool isSimple)
@@ -699,7 +699,7 @@ void QUmlFinalStateObject::unsetSimple()
     Q_D(QModelingObject);
 
     setSimple(true);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("simple"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isSimple"));
 }
 
 void QUmlFinalStateObject::setSubmachineState(bool isSubmachineState)
@@ -711,7 +711,7 @@ void QUmlFinalStateObject::unsetSubmachineState()
 {
     Q_D(QModelingObject);
     setSubmachineState(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("submachineState"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isSubmachineState"));
 }
 
 void QUmlFinalStateObject::setRedefinedState(QObject *redefinedState)

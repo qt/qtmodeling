@@ -392,7 +392,7 @@ void QUmlParameterObject::unsetOrdered()
 {
     Q_D(QModelingObject);
     setOrdered(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("ordered"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isOrdered"));
 }
 
 void QUmlParameterObject::setUnique(bool isUnique)
@@ -405,7 +405,7 @@ void QUmlParameterObject::unsetUnique()
     Q_D(QModelingObject);
 
     setUnique(true);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("unique"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isUnique"));
 }
 
 void QUmlParameterObject::setLower(int lower)
@@ -547,7 +547,7 @@ void QUmlParameterObject::unsetException()
 {
     Q_D(QModelingObject);
     setException(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("exception"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isException"));
 }
 
 void QUmlParameterObject::setStream(bool isStream)
@@ -559,7 +559,7 @@ void QUmlParameterObject::unsetStream()
 {
     Q_D(QModelingObject);
     setStream(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("stream"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isStream"));
 }
 
 void QUmlParameterObject::setOperation(QObject *operation)

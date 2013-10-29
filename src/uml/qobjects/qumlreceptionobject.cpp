@@ -507,7 +507,7 @@ void QUmlReceptionObject::unsetLeaf()
 {
     Q_D(QModelingObject);
     setLeaf(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("leaf"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isLeaf"));
 }
 
 void QUmlReceptionObject::addRedefinedElement(QObject *redefinedElement)
@@ -551,7 +551,7 @@ void QUmlReceptionObject::unsetStatic()
 {
     Q_D(QModelingObject);
     setStatic(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("static"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isStatic"));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [BehavioralFeature]
@@ -577,7 +577,7 @@ void QUmlReceptionObject::unsetAbstract()
 {
     Q_D(QModelingObject);
     setAbstract(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("abstract"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isAbstract"));
 }
 
 void QUmlReceptionObject::addMethod(QObject *method)

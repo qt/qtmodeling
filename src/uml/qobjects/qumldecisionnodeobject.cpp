@@ -374,7 +374,7 @@ void QUmlDecisionNodeObject::unsetLeaf()
 {
     Q_D(QModelingObject);
     setLeaf(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("leaf"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isLeaf"));
 }
 
 void QUmlDecisionNodeObject::addRedefinedElement(QObject *redefinedElement)

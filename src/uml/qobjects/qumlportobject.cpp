@@ -655,7 +655,7 @@ void QUmlPortObject::unsetOrdered()
 {
     Q_D(QModelingObject);
     setOrdered(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("ordered"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isOrdered"));
 }
 
 void QUmlPortObject::setUnique(bool isUnique)
@@ -668,7 +668,7 @@ void QUmlPortObject::unsetUnique()
     Q_D(QModelingObject);
 
     setUnique(true);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("unique"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isUnique"));
 }
 
 void QUmlPortObject::setLower(int lower)
@@ -716,7 +716,7 @@ void QUmlPortObject::unsetLeaf()
 {
     Q_D(QModelingObject);
     setLeaf(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("leaf"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isLeaf"));
 }
 
 void QUmlPortObject::addRedefinedElement(QObject *redefinedElement)
@@ -760,7 +760,7 @@ void QUmlPortObject::unsetStatic()
 {
     Q_D(QModelingObject);
     setStatic(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("static"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isStatic"));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ParameterableElement]
@@ -866,7 +866,7 @@ void QUmlPortObject::unsetComposite()
 {
     Q_D(QModelingObject);
     setComposite(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("composite"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isComposite"));
 }
 
 void QUmlPortObject::setDerived(bool isDerived)
@@ -878,7 +878,7 @@ void QUmlPortObject::unsetDerived()
 {
     Q_D(QModelingObject);
     setDerived(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("derived"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isDerived"));
 }
 
 void QUmlPortObject::setDerivedUnion(bool isDerivedUnion)
@@ -890,7 +890,7 @@ void QUmlPortObject::unsetDerivedUnion()
 {
     Q_D(QModelingObject);
     setDerivedUnion(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("derivedUnion"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isDerivedUnion"));
 }
 
 void QUmlPortObject::setID(bool isID)
@@ -902,7 +902,7 @@ void QUmlPortObject::unsetID()
 {
     Q_D(QModelingObject);
     setID(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("iD"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isID"));
 }
 
 void QUmlPortObject::setReadOnly(bool isReadOnly)
@@ -914,7 +914,7 @@ void QUmlPortObject::unsetReadOnly()
 {
     Q_D(QModelingObject);
     setReadOnly(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("readOnly"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isReadOnly"));
 }
 
 void QUmlPortObject::setOpposite(QObject *opposite)
@@ -968,7 +968,7 @@ void QUmlPortObject::unsetBehavior()
 {
     Q_D(QModelingObject);
     setBehavior(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("behavior"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isBehavior"));
 }
 
 void QUmlPortObject::setConjugated(bool isConjugated)
@@ -980,7 +980,7 @@ void QUmlPortObject::unsetConjugated()
 {
     Q_D(QModelingObject);
     setConjugated(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("conjugated"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isConjugated"));
 }
 
 void QUmlPortObject::setService(bool isService)
@@ -993,7 +993,7 @@ void QUmlPortObject::unsetService()
     Q_D(QModelingObject);
 
     setService(true);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("service"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isService"));
 }
 
 void QUmlPortObject::setProtocol(QObject *protocol)

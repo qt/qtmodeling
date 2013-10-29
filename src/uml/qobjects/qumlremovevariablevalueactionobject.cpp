@@ -451,7 +451,7 @@ void QUmlRemoveVariableValueActionObject::unsetLeaf()
 {
     Q_D(QModelingObject);
     setLeaf(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("leaf"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isLeaf"));
 }
 
 void QUmlRemoveVariableValueActionObject::addRedefinedElement(QObject *redefinedElement)
@@ -584,7 +584,7 @@ void QUmlRemoveVariableValueActionObject::unsetLocallyReentrant()
 {
     Q_D(QModelingObject);
     setLocallyReentrant(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("locallyReentrant"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isLocallyReentrant"));
 }
 
 void QUmlRemoveVariableValueActionObject::addLocalPostcondition(QObject *localPostcondition)
@@ -642,7 +642,7 @@ void QUmlRemoveVariableValueActionObject::unsetRemoveDuplicates()
 {
     Q_D(QModelingObject);
     setRemoveDuplicates(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("removeDuplicates"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isRemoveDuplicates"));
 }
 
 void QUmlRemoveVariableValueActionObject::setRemoveAt(QObject *removeAt)

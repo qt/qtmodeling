@@ -400,7 +400,7 @@ void QUmlObjectFlowObject::unsetLeaf()
 {
     Q_D(QModelingObject);
     setLeaf(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("leaf"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isLeaf"));
 }
 
 void QUmlObjectFlowObject::addRedefinedElement(QObject *redefinedElement)
@@ -501,7 +501,7 @@ void QUmlObjectFlowObject::unsetMulticast()
 {
     Q_D(QModelingObject);
     setMulticast(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("multicast"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isMulticast"));
 }
 
 void QUmlObjectFlowObject::setMultireceive(bool isMultireceive)
@@ -513,7 +513,7 @@ void QUmlObjectFlowObject::unsetMultireceive()
 {
     Q_D(QModelingObject);
     setMultireceive(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("multireceive"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isMultireceive"));
 }
 
 void QUmlObjectFlowObject::setSelection(QObject *selection)

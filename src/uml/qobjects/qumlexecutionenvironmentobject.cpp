@@ -861,7 +861,7 @@ void QUmlExecutionEnvironmentObject::unsetLeaf()
 {
     Q_D(QModelingObject);
     setLeaf(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("leaf"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isLeaf"));
 }
 
 void QUmlExecutionEnvironmentObject::addRedefinedElement(QObject *redefinedElement)
@@ -957,7 +957,7 @@ void QUmlExecutionEnvironmentObject::unsetFinalSpecialization()
 {
     Q_D(QModelingObject);
     setFinalSpecialization(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("finalSpecialization"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isFinalSpecialization"));
 }
 
 void QUmlExecutionEnvironmentObject::setOwnedTemplateSignature(QObject *ownedTemplateSignature)
@@ -1117,7 +1117,7 @@ void QUmlExecutionEnvironmentObject::unsetAbstract()
 {
     Q_D(QModelingObject);
     setAbstract(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("abstract"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isAbstract"));
 }
 
 void QUmlExecutionEnvironmentObject::setActive(bool isActive)
@@ -1129,7 +1129,7 @@ void QUmlExecutionEnvironmentObject::unsetActive()
 {
     Q_D(QModelingObject);
     setActive(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("active"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isActive"));
 }
 
 void QUmlExecutionEnvironmentObject::addNestedClassifier(QObject *nestedClassifier)

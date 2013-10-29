@@ -423,7 +423,7 @@ void QUmlExpansionNodeObject::unsetLeaf()
 {
     Q_D(QModelingObject);
     setLeaf(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("leaf"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isLeaf"));
 }
 
 void QUmlExpansionNodeObject::addRedefinedElement(QObject *redefinedElement)
@@ -546,7 +546,7 @@ void QUmlExpansionNodeObject::unsetControlType()
 {
     Q_D(QModelingObject);
     setControlType(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("controlType"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isControlType"));
 }
 
 void QUmlExpansionNodeObject::setOrdering(QtUml::ObjectNodeOrderingKind ordering)

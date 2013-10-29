@@ -425,7 +425,7 @@ void QUmlReadSelfActionObject::unsetLeaf()
 {
     Q_D(QModelingObject);
     setLeaf(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("leaf"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isLeaf"));
 }
 
 void QUmlReadSelfActionObject::addRedefinedElement(QObject *redefinedElement)
@@ -558,7 +558,7 @@ void QUmlReadSelfActionObject::unsetLocallyReentrant()
 {
     Q_D(QModelingObject);
     setLocallyReentrant(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("locallyReentrant"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isLocallyReentrant"));
 }
 
 void QUmlReadSelfActionObject::addLocalPostcondition(QObject *localPostcondition)

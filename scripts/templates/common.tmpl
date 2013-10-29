@@ -467,7 +467,7 @@ void Q${namespace}${originalClassName}Object::unset${qtAttribute.remove("^is").u
     [%- ELSIF xmi.findvalue("//packagedElement[@xmi:id=\"${type}\"]/xmi:type") == "uml:Enumeration" -%]
     set${qtAttribute.remove("^is").ucfirst}(Qt${namespace}::${type}None);
     [%- END %]
-    d->modifiedResettableProperties.removeAll(QStringLiteral("${attributeName.remove("^Is").lcfirst}"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("${attributeName.lcfirst}"));
 }
 
     [%- END -%]

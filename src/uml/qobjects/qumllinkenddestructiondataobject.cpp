@@ -204,7 +204,7 @@ void QUmlLinkEndDestructionDataObject::unsetDestroyDuplicates()
 {
     Q_D(QModelingObject);
     setDestroyDuplicates(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("destroyDuplicates"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isDestroyDuplicates"));
 }
 
 

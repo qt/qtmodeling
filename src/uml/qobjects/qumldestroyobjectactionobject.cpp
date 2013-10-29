@@ -435,7 +435,7 @@ void QUmlDestroyObjectActionObject::unsetLeaf()
 {
     Q_D(QModelingObject);
     setLeaf(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("leaf"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isLeaf"));
 }
 
 void QUmlDestroyObjectActionObject::addRedefinedElement(QObject *redefinedElement)
@@ -568,7 +568,7 @@ void QUmlDestroyObjectActionObject::unsetLocallyReentrant()
 {
     Q_D(QModelingObject);
     setLocallyReentrant(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("locallyReentrant"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isLocallyReentrant"));
 }
 
 void QUmlDestroyObjectActionObject::addLocalPostcondition(QObject *localPostcondition)
@@ -612,7 +612,7 @@ void QUmlDestroyObjectActionObject::unsetDestroyLinks()
 {
     Q_D(QModelingObject);
     setDestroyLinks(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("destroyLinks"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isDestroyLinks"));
 }
 
 void QUmlDestroyObjectActionObject::setDestroyOwnedObjects(bool isDestroyOwnedObjects)
@@ -624,7 +624,7 @@ void QUmlDestroyObjectActionObject::unsetDestroyOwnedObjects()
 {
     Q_D(QModelingObject);
     setDestroyOwnedObjects(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("destroyOwnedObjects"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isDestroyOwnedObjects"));
 }
 
 void QUmlDestroyObjectActionObject::setTarget(QObject *target)

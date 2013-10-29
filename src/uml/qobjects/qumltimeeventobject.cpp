@@ -314,7 +314,7 @@ void QUmlTimeEventObject::unsetRelative()
 {
     Q_D(QModelingObject);
     setRelative(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("relative"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isRelative"));
 }
 
 void QUmlTimeEventObject::setWhen(QObject *when)

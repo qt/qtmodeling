@@ -964,7 +964,7 @@ void QUmlActivityObject::unsetLeaf()
 {
     Q_D(QModelingObject);
     setLeaf(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("leaf"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isLeaf"));
 }
 
 void QUmlActivityObject::addRedefinedElement(QObject *redefinedElement)
@@ -1060,7 +1060,7 @@ void QUmlActivityObject::unsetFinalSpecialization()
 {
     Q_D(QModelingObject);
     setFinalSpecialization(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("finalSpecialization"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isFinalSpecialization"));
 }
 
 void QUmlActivityObject::setOwnedTemplateSignature(QObject *ownedTemplateSignature)
@@ -1220,7 +1220,7 @@ void QUmlActivityObject::unsetAbstract()
 {
     Q_D(QModelingObject);
     setAbstract(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("abstract"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isAbstract"));
 }
 
 void QUmlActivityObject::setActive(bool isActive)
@@ -1232,7 +1232,7 @@ void QUmlActivityObject::unsetActive()
 {
     Q_D(QModelingObject);
     setActive(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("active"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isActive"));
 }
 
 void QUmlActivityObject::addNestedClassifier(QObject *nestedClassifier)
@@ -1302,7 +1302,7 @@ void QUmlActivityObject::unsetReentrant()
     Q_D(QModelingObject);
 
     setReentrant(true);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("reentrant"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isReentrant"));
 }
 
 void QUmlActivityObject::addOwnedParameter(QObject *ownedParameter)
@@ -1391,7 +1391,7 @@ void QUmlActivityObject::unsetReadOnly()
 {
     Q_D(QModelingObject);
     setReadOnly(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("readOnly"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isReadOnly"));
 }
 
 void QUmlActivityObject::setSingleExecution(bool isSingleExecution)
@@ -1403,7 +1403,7 @@ void QUmlActivityObject::unsetSingleExecution()
 {
     Q_D(QModelingObject);
     setSingleExecution(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("singleExecution"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isSingleExecution"));
 }
 
 void QUmlActivityObject::addNode(QObject *node)

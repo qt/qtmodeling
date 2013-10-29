@@ -477,7 +477,7 @@ void QMofOperationObject::unsetLeaf()
 {
     Q_D(QModelingObject);
     setLeaf(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("leaf"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isLeaf"));
 }
 
 void QMofOperationObject::addRedefinedElement(QObject *redefinedElement)
@@ -521,7 +521,7 @@ void QMofOperationObject::unsetStatic()
 {
     Q_D(QModelingObject);
     setStatic(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("static"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isStatic"));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Namespace]
@@ -612,7 +612,7 @@ void QMofOperationObject::unsetOrdered()
 {
     Q_D(QModelingObject);
     setOrdered(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("ordered"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isOrdered"));
 }
 
 void QMofOperationObject::setQuery(bool isQuery)
@@ -624,7 +624,7 @@ void QMofOperationObject::unsetQuery()
 {
     Q_D(QModelingObject);
     setQuery(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("query"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isQuery"));
 }
 
 void QMofOperationObject::setUnique(bool isUnique)
@@ -637,7 +637,7 @@ void QMofOperationObject::unsetUnique()
     Q_D(QModelingObject);
 
     setUnique(true);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("unique"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isUnique"));
 }
 
 void QMofOperationObject::setLower(int lower)

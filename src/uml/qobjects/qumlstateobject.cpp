@@ -578,7 +578,7 @@ void QUmlStateObject::unsetLeaf()
 {
     Q_D(QModelingObject);
     setLeaf(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("leaf"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isLeaf"));
 }
 
 void QUmlStateObject::addRedefinedElement(QObject *redefinedElement)
@@ -673,7 +673,7 @@ void QUmlStateObject::unsetComposite()
 {
     Q_D(QModelingObject);
     setComposite(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("composite"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isComposite"));
 }
 
 void QUmlStateObject::setOrthogonal(bool isOrthogonal)
@@ -685,7 +685,7 @@ void QUmlStateObject::unsetOrthogonal()
 {
     Q_D(QModelingObject);
     setOrthogonal(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("orthogonal"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isOrthogonal"));
 }
 
 void QUmlStateObject::setSimple(bool isSimple)
@@ -698,7 +698,7 @@ void QUmlStateObject::unsetSimple()
     Q_D(QModelingObject);
 
     setSimple(true);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("simple"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isSimple"));
 }
 
 void QUmlStateObject::setSubmachineState(bool isSubmachineState)
@@ -710,7 +710,7 @@ void QUmlStateObject::unsetSubmachineState()
 {
     Q_D(QModelingObject);
     setSubmachineState(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("submachineState"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isSubmachineState"));
 }
 
 void QUmlStateObject::setRedefinedState(QObject *redefinedState)

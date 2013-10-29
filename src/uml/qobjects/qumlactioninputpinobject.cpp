@@ -461,7 +461,7 @@ void QUmlActionInputPinObject::unsetOrdered()
 {
     Q_D(QModelingObject);
     setOrdered(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("ordered"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isOrdered"));
 }
 
 void QUmlActionInputPinObject::setUnique(bool isUnique)
@@ -474,7 +474,7 @@ void QUmlActionInputPinObject::unsetUnique()
     Q_D(QModelingObject);
 
     setUnique(true);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("unique"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isUnique"));
 }
 
 void QUmlActionInputPinObject::setLower(int lower)
@@ -559,7 +559,7 @@ void QUmlActionInputPinObject::unsetLeaf()
 {
     Q_D(QModelingObject);
     setLeaf(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("leaf"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isLeaf"));
 }
 
 void QUmlActionInputPinObject::addRedefinedElement(QObject *redefinedElement)
@@ -682,7 +682,7 @@ void QUmlActionInputPinObject::unsetControlType()
 {
     Q_D(QModelingObject);
     setControlType(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("controlType"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isControlType"));
 }
 
 void QUmlActionInputPinObject::setOrdering(QtUml::ObjectNodeOrderingKind ordering)
@@ -718,7 +718,7 @@ void QUmlActionInputPinObject::unsetControl()
 {
     Q_D(QModelingObject);
     setControl(false);
-    d->modifiedResettableProperties.removeAll(QStringLiteral("control"));
+    d->modifiedResettableProperties.removeAll(QStringLiteral("isControl"));
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ActionInputPin]
