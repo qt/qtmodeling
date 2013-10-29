@@ -470,18 +470,6 @@ void MainWindow::on_actionFileSave_triggered()
 
 void MainWindow::on_actionHelpAboutPlugins_triggered()
 {
-    _aboutPlugins->loadedPlugins->clearContents();
-    _aboutPlugins->loadedPlugins->setRowCount(_loadedPlugins.size());
-    int i = 0;
-    typedef QPair<QMetaModelPlugin *, QJsonObject> PluginData;
-    foreach (const PluginData &pair, _loadedPlugins.values()) {
-        _aboutPlugins->loadedPlugins->setItem(i, 0, new QTableWidgetItem(pair.first->metaObject()->className()));
-        _aboutPlugins->loadedPlugins->setItem(i, 1, new QTableWidgetItem(pair.second.value("Version").toString()));
-        _aboutPlugins->loadedPlugins->setItem(i, 2, new QTableWidgetItem(pair.second.value("Vendor").toString()));
-        _aboutPlugins->loadedPlugins->setRowHeight(i, 22);
-        ++i;
-    }
-    _aboutPlugins->loadedPlugins->resizeColumnsToContents();
     _aboutPluginsDialog->exec();
 }
 
@@ -549,7 +537,7 @@ void MainWindow::metaModelChanged(QString newMetaModel)
     _newModel->lstTopLevelContainers->clear();
     QVariantList list;
     typedef QPair<QMetaModelPlugin *, QJsonObject> PluginData;
-    foreach (const PluginData &pair, _loadedPlugins.values()) {
+    foreach (const PluginData &pair, _metamodelPlugins.values()) {
         if (pair.first->metaObject()->className() == newMetaModel)
             list = pair.second.value("MetaModelTopLevelClasses").toArray().toVariantList();
     }
@@ -705,9 +693,34 @@ bool MainWindow::eventFilter(QObject *obj, QEvent *event)
     return QObject::eventFilter(obj, event);
 }
 
+QTreeWidgetItem *MainWindow::itemForCategory(const QString &category)
+{
+    int topLevelItemCount = _aboutPlugins->loadedPlugins->topLevelItemCount();
+    for (int i = 0; i < topLevelItemCount; ++i)
+        if (_aboutPlugins->loadedPlugins->topLevelItem(i)->text(0) == category)
+            return _aboutPlugins->loadedPlugins->topLevelItem(i);
+    QTreeWidgetItem *topLevelItem = new QTreeWidgetItem(_aboutPlugins->loadedPlugins, QStringList() << category);
+    topLevelItem->setData(1, Qt::CheckStateRole, QVariant(Qt::Checked));
+    return topLevelItem;
+}
+
 void MainWindow::loadPlugins()
 {
-    QMetaModelPlugin *metaModelPlugin = 0;
+    _aboutPlugins->loadedPlugins->clear();
+    _aboutPlugins->loadedPlugins->setColumnWidth(1, 40);
+    _aboutPlugins->loadedPlugins->header()->setSectionResizeMode(0, QHeaderView::ResizeToContents);
+    _aboutPlugins->loadedPlugins->header()->setSectionResizeMode(2, QHeaderView::ResizeToContents);
+//    _aboutPlugins->loadedPlugins->setRowCount(_metamodelPlugins.size());
+//    int i = 0;
+//    typedef QPair<QMetaModelPlugin *, QJsonObject> PluginData;
+//    foreach (const PluginData &pair, _metamodelPlugins.values()) {
+//        _aboutPlugins->loadedPlugins->setItem(i, 0, new QTableWidgetItem(pair.first->metaObject()->className()));
+//        _aboutPlugins->loadedPlugins->setItem(i, 1, new QTableWidgetItem(pair.second.value("Version").toString()));
+//        _aboutPlugins->loadedPlugins->setItem(i, 2, new QTableWidgetItem(pair.second.value("Vendor").toString()));
+//        _aboutPlugins->loadedPlugins->setRowHeight(i, 22);
+//        ++i;
+//    }
+
     DuSE::ICore *core = DuSE::Core::self();
     DuSE::IPlugin *dusePlugin;
     foreach (QString pluginPath, QCoreApplication::libraryPaths()) {
@@ -716,8 +729,17 @@ void MainWindow::loadPlugins()
         foreach (QString fileName, pluginsDir.entryList(QDir::Files)) {
             QPluginLoader loader(pluginsDir.absoluteFilePath(fileName));
             QObject *plugin = loader.instance();
-            if (plugin && (metaModelPlugin = qobject_cast<QMetaModelPlugin *>(plugin)))
-                _loadedPlugins.insert(loader.metaData().value(QString::fromLatin1("MetaData")).toObject().value(QString::fromLatin1("MetaModelNamespaceUri")).toString(), QPair<QMetaModelPlugin *, QJsonObject>(metaModelPlugin, loader.metaData().value(QString::fromLatin1("MetaData")).toObject()));
+            QMetaModelPlugin *metaModelPlugin = 0;
+            if (plugin && (metaModelPlugin = qobject_cast<QMetaModelPlugin *>(plugin))) {
+                QJsonObject jsonObject = loader.metaData().value(QString::fromLatin1("MetaData")).toObject();
+                _metamodelPlugins.insert(jsonObject.value(QString::fromLatin1("MetaModelNamespaceUri")).toString(), QPair<QMetaModelPlugin *, QJsonObject>(metaModelPlugin, jsonObject));
+                QTreeWidgetItem *metamodelItem = new QTreeWidgetItem(itemForCategory("Metamodels"),
+                                                                     QStringList() << metaModelPlugin->metaObject()->className()
+                                                                                   << QString()
+                                                                                   << jsonObject.value("Version").toString()
+                                                                                   << jsonObject.value("Vendor").toString());
+                metamodelItem->setData(1, Qt::CheckStateRole, QVariant(Qt::Checked));
+            }
         }
     }
     QDir dusePluginsDir(QCoreApplication::applicationDirPath());
@@ -729,16 +751,27 @@ void MainWindow::loadPlugins()
             QPluginLoader loader(dusePluginSubDir.absoluteFilePath(fileName));
             QObject *plugin = loader.instance();
             if (plugin && (dusePlugin = qobject_cast<DuSE::IPlugin *>(plugin))) {
-                qDebug() << "Achei duse-mt plugin:" << dusePluginsDir.absoluteFilePath(fileName);
                 dusePlugin->initialize(core);
+                QJsonObject jsonObject = loader.metaData().value(QString::fromLatin1("MetaData")).toObject();
+                _dusemtPlugins << QPair<DuSE::IPlugin *, QJsonObject>(dusePlugin, jsonObject);
+                QTreeWidgetItem *dusePluginItem = new QTreeWidgetItem(itemForCategory(jsonObject.value("Category").toString()),
+                                                                     QStringList() << dusePlugin->metaObject()->className()
+                                                                                   << QString()
+                                                                                   << jsonObject.value("Version").toString()
+                                                                                   << jsonObject.value("Vendor").toString());
+                dusePluginItem->setData(1, Qt::CheckStateRole, QVariant(Qt::Checked));
             }
+            else
+                qDebug() << "Error when loading plugin" << fileName << ":" << loader.errorString();
         }
     }
+
+    _aboutPlugins->loadedPlugins->expandAll();
 }
 
 void MainWindow::closeEvent(QCloseEvent *event)
 {
-    QSettings settings("LiveBlue", "DuSE-MT");
+    QSettings settings("QtProject", "duse-mt");
     settings.setValue("geometry", saveGeometry());
     settings.setValue("windowState", saveState());
     QMainWindow::closeEvent(event);

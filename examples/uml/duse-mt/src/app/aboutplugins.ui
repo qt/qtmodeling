@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
+    <width>613</width>
     <height>300</height>
    </rect>
   </property>
@@ -14,17 +14,38 @@
    <string>Installed Plugins</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
+   <item row="1" column="0">
+    <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Close</set>
+     </property>
+    </widget>
+   </item>
    <item row="0" column="0">
-    <widget class="QTableWidget" name="loadedPlugins">
-     <attribute name="horizontalHeaderStretchLastSection">
+    <widget class="QTreeWidget" name="loadedPlugins">
+     <property name="alternatingRowColors">
       <bool>true</bool>
+     </property>
+     <property name="sortingEnabled">
+      <bool>true</bool>
+     </property>
+     <attribute name="headerDefaultSectionSize">
+      <number>120</number>
      </attribute>
-     <attribute name="verticalHeaderVisible">
-      <bool>false</bool>
+     <attribute name="headerMinimumSectionSize">
+      <number>35</number>
      </attribute>
      <column>
       <property name="text">
        <string>Name</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Load</string>
       </property>
      </column>
      <column>
@@ -37,16 +58,6 @@
        <string>Vendor</string>
       </property>
      </column>
-    </widget>
-   </item>
-   <item row="1" column="0">
-    <widget class="QDialogButtonBox" name="buttonBox">
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-     <property name="standardButtons">
-      <set>QDialogButtonBox::Close</set>
-     </property>
     </widget>
    </item>
   </layout>

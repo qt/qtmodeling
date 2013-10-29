@@ -53,12 +53,17 @@ class QListView;
 class QQuickView;
 class QQuickItem;
 class QQmlComponent;
+class QTreeWidgetItem;
 
 namespace Ui {
     class MainWindow;
     class AboutPlugins;
     class AboutDuSEMT;
     class NewModel;
+}
+
+namespace DuSE {
+    class IPlugin;
 }
 
 class QModelingElement;
@@ -120,7 +125,8 @@ private:
     QList<QModelingElement *> _designSpaceLocation;
 
     QString _currentFileName;
-    QHash< QString, QPair<QMetaModelPlugin *, QJsonObject> > _loadedPlugins;
+    QHash< QString, QPair<QMetaModelPlugin *, QJsonObject> > _metamodelPlugins;
+    QList< QPair<DuSE::IPlugin *, QJsonObject> > _dusemtPlugins;
     QDialog *_aboutPluginsDialog;
     Ui::AboutPlugins *_aboutPlugins;
     QDialog *_aboutDuSEMTDialog;
@@ -140,6 +146,8 @@ private:
 
     QProgressDialog *progress;
     QTimer *timer;
+
+    QTreeWidgetItem *itemForCategory(const QString &category);
 };
 
 #endif // MAINWINDOW_H
