@@ -46,6 +46,7 @@
 namespace DuSE
 {
 
+class IProjectController;
 class IUiController;
 
 class DUSEINTERFACESSHARED_EXPORT ICore
@@ -54,6 +55,7 @@ public:
     virtual ~ICore();
     static ICore *self();
 
+    virtual IProjectController *projectController() = 0;
     virtual IUiController *uiController() = 0;
 
 protected:

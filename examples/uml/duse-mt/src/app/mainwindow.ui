@@ -197,54 +197,6 @@
    <addaction name="actionFileQuit"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
-  <widget class="QDockWidget" name="dckInspector">
-   <property name="windowTitle">
-    <string>Model Inspector</string>
-   </property>
-   <attribute name="dockWidgetArea">
-    <number>1</number>
-   </attribute>
-   <widget class="QWidget" name="dckInspectorLayout">
-    <layout class="QGridLayout" name="gridLayout">
-     <property name="leftMargin">
-      <number>4</number>
-     </property>
-     <property name="rightMargin">
-      <number>0</number>
-     </property>
-     <property name="bottomMargin">
-      <number>0</number>
-     </property>
-     <item row="0" column="0">
-      <widget class="QModelingObjectView" name="modelingObjectView" native="true"/>
-     </item>
-    </layout>
-   </widget>
-  </widget>
-  <widget class="QDockWidget" name="dckPropertyEditor">
-   <property name="windowTitle">
-    <string>Property Editor</string>
-   </property>
-   <attribute name="dockWidgetArea">
-    <number>2</number>
-   </attribute>
-   <widget class="QWidget" name="dckPropertyEditorLayout">
-    <layout class="QGridLayout" name="gridLayout_2">
-     <property name="leftMargin">
-      <number>0</number>
-     </property>
-     <property name="rightMargin">
-      <number>4</number>
-     </property>
-     <property name="bottomMargin">
-      <number>0</number>
-     </property>
-     <item row="0" column="0">
-      <widget class="QModelingObjectPropertyEditor" name="propertyEditor" native="true"/>
-     </item>
-    </layout>
-   </widget>
-  </widget>
   <widget class="QDockWidget" name="dckIssues">
    <property name="windowTitle">
     <string>Issues</string>
@@ -609,20 +561,6 @@
   </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <customwidgets>
-  <customwidget>
-   <class>QModelingObjectPropertyEditor</class>
-   <extends>QWidget</extends>
-   <header>qmodelingobjectpropertyeditor.h</header>
-   <container>1</container>
-  </customwidget>
-  <customwidget>
-   <class>QModelingObjectView</class>
-   <extends>QWidget</extends>
-   <header>qmodelingobjectview.h</header>
-   <container>1</container>
-  </customwidget>
- </customwidgets>
  <resources>
   <include location="duse-mt.qrc"/>
  </resources>

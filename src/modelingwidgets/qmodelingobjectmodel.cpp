@@ -60,15 +60,13 @@ QModelingObjectModel::QModelingObjectModel(QObject *parent) :
 {
 }
 
-void QModelingObjectModel::addModelingObject(QModelingObject *modelingObject)
+void QModelingObjectModel::setModelingObjects(QList<QModelingObject *> modelingObjects)
 {
     Q_D(QModelingObjectModel);
 
-    if (modelingObject && !d->modelingObjects.contains(modelingObject)) {
-        beginResetModel();
-        d->modelingObjects.append(modelingObject);
-        endResetModel();
-    }
+    beginResetModel();
+    d->modelingObjects = modelingObjects;
+    endResetModel();
 }
 
 QList<QModelingObject *> QModelingObjectModel::modelingObjects() const

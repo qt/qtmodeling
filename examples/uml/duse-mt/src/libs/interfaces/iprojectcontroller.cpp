@@ -3,7 +3,7 @@
 ** Copyright (C) 2013 Sandro S. Andrade <sandroandrade@kde.org>
 ** Contact: http://www.qt-project.org/legal
 **
-** This file is part of the QtModelingWidgets module of the Qt Toolkit.
+** This file is part of the QtUml module of the Qt Toolkit.
 **
 ** $QT_BEGIN_LICENSE:LGPL$
 ** Commercial License Usage
@@ -38,52 +38,17 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef QMODELINGOBJECTMODEL_H
-#define QMODELINGOBJECTMODEL_H
+#include "iprojectcontroller.h"
 
-#include <QtModelingWidgets/QtModelingWidgetsGlobal>
-
-#include <QtCore/QAbstractItemModel>
-
-QT_BEGIN_HEADER
-
-QT_BEGIN_NAMESPACE
-
-QT_MODULE(QtModelingWidgets)
-
-class QModelingObject;
-
-class QModelingObjectModelPrivate;
-class Q_MODELINGWIDGETS_EXPORT QModelingObjectModel : public QAbstractItemModel
+namespace DuSE
 {
-    Q_OBJECT
 
-    Q_DISABLE_COPY(QModelingObjectModel)
-    Q_DECLARE_PRIVATE(QModelingObjectModel)
+IProjectController::~IProjectController()
+{
+}
 
-public:
-    explicit QModelingObjectModel(QObject *parent = 0);
+IProjectController::IProjectController()
+{
+}
 
-    QList<QModelingObject *> modelingObjects() const;
-
-    virtual QModelIndex index(int row, int column, const QModelIndex &parent = QModelIndex()) const;
-    virtual QModelIndex parent(const QModelIndex &child) const;
-    virtual int rowCount(const QModelIndex &parent = QModelIndex()) const;
-    virtual int columnCount(const QModelIndex &parent = QModelIndex()) const;
-    virtual QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const;
-    bool setData(const QModelIndex &index, const QVariant &value, int role = Qt::EditRole);
-    QVariant headerData(int section, Qt::Orientation orientation, int role = Qt::DisplayRole) const;
-    Qt::ItemFlags flags(const QModelIndex &index) const;
-
-public Q_SLOTS:
-    void setModelingObjects(QList<QModelingObject *> modelingObjects);
-    void updateIndex(const QModelIndex &index);
-    void clear();
-};
-
-QT_END_NAMESPACE
-
-QT_END_HEADER
-
-#endif // QMODELINGOBJECTMODEL_H
-
+}

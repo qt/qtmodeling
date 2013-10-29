@@ -80,8 +80,9 @@
 
 //#include <QtDuse/QtDuse>
 
+#include <interfaces/icore.h>
 #include <interfaces/iplugin.h>
-#include <shell/core.h>
+#include <interfaces/iprojectcontroller.h>
 
 #include "newdusedesign.h"
 
@@ -123,10 +124,12 @@ void scriptValueToQList(const QScriptValue &obj, QList<T *> &elements)
     }
 }
 
+namespace DuSE
+{
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow),
-    _modelingObjectModel(new QModelingObjectModel(this)),
     _aboutPluginsDialog(new QDialog(this)),
     _aboutPlugins(new Ui::AboutPlugins),
     _aboutDuSEMTDialog(new QDialog(this)),
@@ -145,22 +148,13 @@ MainWindow::MainWindow(QWidget *parent) :
     _codeCompletionView->setParent(ui->txeJavaScript);
     _codeCompletionView->hide();
 
-    ui->modelingObjectView->setModel(_modelingObjectModel);
-
     _newModel->setupUi(_newModelDialog);
     connect(_newModel->cboMetamodel, SIGNAL(currentIndexChanged(QString)), SLOT(metaModelChanged(QString)));
     _aboutPlugins->setupUi(_aboutPluginsDialog);
     _aboutDuSEMT->setupUi(_aboutDuSEMTDialog);
 
-    QModelingObjectPropertyModel *modelingObjectPropertyModel = new QModelingObjectPropertyModel(_modelingObjectModel);
-    ui->propertyEditor->setModel(modelingObjectPropertyModel);
-
-    connect(ui->modelingObjectView, &QModelingObjectView::modelingObjectChanged,
-            modelingObjectPropertyModel, &QModelingObjectPropertyModel::setModelingObject);
 //    connect(ui->modelingObjectView, &QModelingObjectView::addToView, this, &MainWindow::addToView);
-    connect(ui->modelingObjectView, &QModelingObjectView::modelingObjectChanged, this, &MainWindow::modelingObjectChanged);
-    connect(modelingObjectPropertyModel, &QModelingObjectPropertyModel::indexChanged,
-            _modelingObjectModel, &QModelingObjectModel::updateIndex);
+//    connect(ui->modelingObjectView, &QModelingObjectView::modelingObjectChanged, this, &MainWindow::modelingObjectChanged);
 
     qScriptRegisterMetaType(&_engine, qSetToScriptValue<QObject>, scriptValueToQSet<QObject>);
     qScriptRegisterMetaType(&_engine, qListToScriptValue<QObject>, scriptValueToQList<QObject>);
@@ -176,10 +170,10 @@ MainWindow::MainWindow(QWidget *parent) :
     tabifyDockWidget(ui->dckXPath, ui->dckOcl);
     tabifyDockWidget(ui->dckOcl, ui->dckJavaScript);
     ui->dckIssues->raise();
-    tabifyDockWidget(ui->dckInspector, ui->dckMetrics);
-    ui->dckInspector->raise();
-    tabifyDockWidget(ui->dckPropertyEditor, ui->dckDesignSpace);
-    ui->dckPropertyEditor->raise();
+//    tabifyDockWidget(ui->dckInspector, ui->dckMetrics);
+//    ui->dckInspector->raise();
+//    tabifyDockWidget(ui->dckPropertyEditor, ui->dckDesignSpace);
+//    ui->dckPropertyEditor->raise();
     ui->tblDesignSpace->resizeColumnToContents(0);
     ui->tblDesignSpace->resizeColumnToContents(1);
     ui->tblDesignSpace->resizeColumnToContents(2);
@@ -320,24 +314,31 @@ void MainWindow::setModelInspector(QList<QModelingElement *> modelingObjectList)
         ui->txeJavaScript->setText("self");
         QTimer::singleShot(0, this, SLOT(on_psbJSEvaluate_clicked()));
     }
-    _modelingObjectModel->clear();
-    foreach (QModelingElement *object, modelingObjectList)
-        _modelingObjectModel->addModelingObject(object->asQModelingObject());
+//    _modelingObjectModel->clear();
+//    foreach (QModelingElement *object, modelingObjectList)
+//        _modelingObjectModel->addModelingObject(object->asQModelingObject());
 }
 
 void MainWindow::on_actionFileOpenModel_triggered()
 {
     QString fileName = QFileDialog::getOpenFileName(this, tr("Open"), QDir::currentPath(), "XMI files (*.xmi)");
     if (!fileName.isEmpty()) {
-        _currentFileName = fileName;
         setCursor(Qt::WaitCursor);
-//        foreach (QWrappedObject *object, _inputModel)
-//            delete object;
-        _inputModel = loadXmi(_currentFileName);
-        _modelQuickView->setClearBeforeRendering(true);
-        _modelQuickView->setSource(QUrl("qrc:/qml/modelview.qml"));
-        addToView(_inputModel[0]);
+        bool ret = ICore::self()->projectController()->openModel(fileName);
         setCursor(Qt::ArrowCursor);
+        if (!ret) {
+            QMessageBox::critical(this, tr("Open Model"), ICore::self()->projectController()->errorString());
+            return;
+        }
+        setWindowTitle(QFileInfo(QFile(fileName)).fileName() + " - DuSE-MT");
+
+//        _currentFileName = fileName;
+////        foreach (QWrappedObject *object, _inputModel)
+////            delete object;
+//        _inputModel = loadXmi(_currentFileName);
+//        _modelQuickView->setClearBeforeRendering(true);
+//        _modelQuickView->setSource(QUrl("qrc:/qml/modelview.qml"));
+//        addToView(_inputModel[0]);
     }
 }
 
@@ -456,7 +457,7 @@ void MainWindow::on_actionFileSaveAs_triggered()
     QString fileName = QFileDialog::getSaveFileName(this, tr("Save As"), QDir::currentPath(), "XMI files (*.xmi)");
     if (!fileName.isEmpty()) {
         _currentFileName = fileName;
-        saveXmi(_modelingObjectModel->modelingObjects());
+//        saveXmi(_modelingObjectModel->modelingObjects());
     }
 }
 
@@ -464,8 +465,8 @@ void MainWindow::on_actionFileSave_triggered()
 {
     if (_currentFileName.isEmpty())
         on_actionFileSaveAs_triggered();
-    else
-        saveXmi(_modelingObjectModel->modelingObjects());
+//    else
+//        saveXmi(_modelingObjectModel->modelingObjects());
 }
 
 void MainWindow::on_actionHelpAboutPlugins_triggered()
@@ -481,7 +482,7 @@ void MainWindow::on_actionHelpAboutDuSEMT_triggered()
 void MainWindow::on_psbJSEvaluate_clicked()
 {
     ui->txeJavaScriptEvaluation->setText(_engine.evaluate(ui->txeJavaScript->toPlainText()).toString());
-    ui->modelingObjectView->updateSelected();
+//    ui->modelingObjectView->updateSelected();
 }
 
 void MainWindow::on_centralWidget_currentChanged(int)
@@ -721,7 +722,7 @@ void MainWindow::loadPlugins()
 //        ++i;
 //    }
 
-    DuSE::ICore *core = DuSE::Core::self();
+    DuSE::ICore *core = DuSE::ICore::self();
     DuSE::IPlugin *dusePlugin;
     foreach (QString pluginPath, QCoreApplication::libraryPaths()) {
         QDir pluginsDir(pluginPath);
@@ -775,4 +776,6 @@ void MainWindow::closeEvent(QCloseEvent *event)
     settings.setValue("geometry", saveGeometry());
     settings.setValue("windowState", saveState());
     QMainWindow::closeEvent(event);
+}
+
 }

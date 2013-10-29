@@ -46,6 +46,7 @@
 namespace DuSE
 {
 
+class ProjectController;
 class UiController;
 
 class Core : public ICore
@@ -54,11 +55,14 @@ public:
     virtual ~Core();
 
     static bool initialize();
+
+    virtual IProjectController *projectController();
     virtual IUiController *uiController();
 protected:
     Core();
     bool initializeInternal();
 
+    ProjectController *_projectController;
     UiController *_uiController;
 };
 

@@ -41,6 +41,8 @@
 #ifndef IUICONTROLLER_H
 #define IUICONTROLLER_H
 
+#include <QtCore/QObject>
+
 #include <QtCore/QString>
 
 class QWidget;
@@ -48,8 +50,10 @@ class QWidget;
 namespace DuSE
 {
 
-class IUiController
+class IUiController : public QObject
 {
+    Q_OBJECT
+
 public:
     virtual ~IUiController();
 

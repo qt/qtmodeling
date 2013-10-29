@@ -40,8 +40,11 @@
 ****************************************************************************/
 #include "uicontroller.h"
 
+#include <QtWidgets/QAction>
 #include <QtWidgets/QDockWidget>
 #include <QtWidgets/QGridLayout>
+
+#include "ui_mainwindow.h"
 
 namespace DuSE
 {

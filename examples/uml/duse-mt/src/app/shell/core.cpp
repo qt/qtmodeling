@@ -40,6 +40,7 @@
 ****************************************************************************/
 #include "core.h"
 
+#include "projectcontroller.h"
 #include "uicontroller.h"
 
 namespace DuSE
@@ -47,6 +48,7 @@ namespace DuSE
 
 Core::~Core()
 {
+    delete _projectController;
     delete _uiController;
 }
 
@@ -60,12 +62,18 @@ bool Core::initialize()
     return true;
 }
 
+IProjectController *Core::projectController()
+{
+    return _projectController;
+}
+
 IUiController *Core::uiController()
 {
     return _uiController;
 }
 
 Core::Core() :
+    _projectController(0),
     _uiController(0)
 {
     initializeInternal();
@@ -73,6 +81,10 @@ Core::Core() :
 
 bool Core::initializeInternal()
 {
+    if (!_projectController) {
+        _projectController = new ProjectController;
+        _projectController->initialize();
+    }
     if (!_uiController) {
         _uiController = new UiController;
         _uiController->initialize();

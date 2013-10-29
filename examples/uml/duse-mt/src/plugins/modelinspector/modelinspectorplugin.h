@@ -43,6 +43,13 @@
 
 #include <interfaces/iplugin.h>
 
+class QListView;
+
+class QModelingObjectView;
+class QModelingObjectModel;
+class QModelingObjectPropertyEditor;
+class QModelingObjectPropertyModel;
+
 class ModelInspectorPlugin : public DuSE::IPlugin
 {
     Q_OBJECT
@@ -52,6 +59,13 @@ public:
     ModelInspectorPlugin(QObject *parent = 0);
 
     virtual bool initialize(DuSE::ICore *core);
+
+private:
+    QModelingObjectView *_modelingObjectView;
+    QModelingObjectModel *_modelingObjectModel;
+    QModelingObjectPropertyEditor *_propertyEditor;
+    QModelingObjectPropertyModel *_propertyModel;
+    QListView *_outputIssues;
 };
 
 #endif // MODELINSPECTORPLUGIN_H

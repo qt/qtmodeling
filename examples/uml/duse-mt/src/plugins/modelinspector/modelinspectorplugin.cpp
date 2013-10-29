@@ -42,16 +42,40 @@
 
 #include <interfaces/iuicontroller.h>
 
+#include <QtWidgets/QListView>
 #include <QtWidgets/QPushButton>
 
+#include <QtModeling/QModelingObject>
+
+#include <QtModelingWidgets/QModelingObjectView>
+#include <QtModelingWidgets/QModelingObjectModel>
+#include <QtModelingWidgets/QModelingObjectPropertyEditor>
+#include <QtModelingWidgets/QModelingObjectPropertyModel>
+
+#include <interfaces/icore.h>
+#include <interfaces/iprojectcontroller.h>
+
 ModelInspectorPlugin::ModelInspectorPlugin(QObject *parent) :
-    DuSE::IPlugin(parent)
+    DuSE::IPlugin(parent),
+    _modelingObjectView(new QModelingObjectView),
+    _modelingObjectModel(new QModelingObjectModel),
+    _propertyEditor(new QModelingObjectPropertyEditor),
+    _propertyModel(new QModelingObjectPropertyModel(_modelingObjectModel)),
+    _outputIssues(new QListView)
 {
+    _modelingObjectView->setModel(_modelingObjectModel);
+    _propertyEditor->setModel(_propertyModel);
+
+    connect(DuSE::ICore::self()->projectController(), SIGNAL(modelOpened(QList<QModelingObject*>)), _modelingObjectModel, SLOT(setModelingObjects(QList<QModelingObject*>)));
+    connect(_modelingObjectView, &QModelingObjectView::modelingObjectChanged, _propertyModel, &QModelingObjectPropertyModel::setModelingObject);
+    connect(_propertyModel, &QModelingObjectPropertyModel::indexChanged, _modelingObjectModel, &QModelingObjectModel::updateIndex);
 }
 
 bool ModelInspectorPlugin::initialize(DuSE::ICore *core)
 {
-    core->uiController()->addDockWidget(Qt::LeftDockWidgetArea, "Teste", new QPushButton("Teste"));
+    core->uiController()->addDockWidget(Qt::LeftDockWidgetArea, tr("Model Inspector"), _modelingObjectView);
+    core->uiController()->addDockWidget(Qt::RightDockWidgetArea, tr("Property Editor"), _propertyEditor);
+    core->uiController()->addDockWidget(Qt::BottomDockWidgetArea, tr("Issues"), _outputIssues);
 
     return true;
 }

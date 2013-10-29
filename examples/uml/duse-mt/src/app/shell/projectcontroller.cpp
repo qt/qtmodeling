@@ -3,7 +3,7 @@
 ** Copyright (C) 2013 Sandro S. Andrade <sandroandrade@kde.org>
 ** Contact: http://www.qt-project.org/legal
 **
-** This file is part of the QtModelingWidgets module of the Qt Toolkit.
+** This file is part of the QtUml module of the Qt Toolkit.
 **
 ** $QT_BEGIN_LICENSE:LGPL$
 ** Commercial License Usage
@@ -38,52 +38,61 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef QMODELINGOBJECTMODEL_H
-#define QMODELINGOBJECTMODEL_H
+#include "projectcontroller.h"
 
-#include <QtModelingWidgets/QtModelingWidgetsGlobal>
+#include <QtWidgets/QFileDialog>
+#include <QtWidgets/QMessageBox>
 
-#include <QtCore/QAbstractItemModel>
+#include <QtModeling/QXmiReader>
+#include <QtModeling/QModelingElement>
 
-QT_BEGIN_HEADER
-
-QT_BEGIN_NAMESPACE
-
-QT_MODULE(QtModelingWidgets)
-
-class QModelingObject;
-
-class QModelingObjectModelPrivate;
-class Q_MODELINGWIDGETS_EXPORT QModelingObjectModel : public QAbstractItemModel
+namespace DuSE
 {
-    Q_OBJECT
 
-    Q_DISABLE_COPY(QModelingObjectModel)
-    Q_DECLARE_PRIVATE(QModelingObjectModel)
+ProjectController::ProjectController()
+{
+}
 
-public:
-    explicit QModelingObjectModel(QObject *parent = 0);
+ProjectController::~ProjectController()
+{
+}
 
-    QList<QModelingObject *> modelingObjects() const;
+bool ProjectController::initialize()
+{
+    return true;
+}
 
-    virtual QModelIndex index(int row, int column, const QModelIndex &parent = QModelIndex()) const;
-    virtual QModelIndex parent(const QModelIndex &child) const;
-    virtual int rowCount(const QModelIndex &parent = QModelIndex()) const;
-    virtual int columnCount(const QModelIndex &parent = QModelIndex()) const;
-    virtual QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const;
-    bool setData(const QModelIndex &index, const QVariant &value, int role = Qt::EditRole);
-    QVariant headerData(int section, Qt::Orientation orientation, int role = Qt::DisplayRole) const;
-    Qt::ItemFlags flags(const QModelIndex &index) const;
+QString ProjectController::errorString() const
+{
+    return _errorString;
+}
 
-public Q_SLOTS:
-    void setModelingObjects(QList<QModelingObject *> modelingObjects);
-    void updateIndex(const QModelIndex &index);
-    void clear();
-};
+bool ProjectController::openModel(const QString &fileName)
+{
+    qDeleteAll(_currentModel);
+    _currentModel.clear();
+    _errorString.clear();
 
-QT_END_NAMESPACE
+    _currentModelFileName = fileName;
 
-QT_END_HEADER
+    QFile file(fileName);
+    if (!file.open(QFile::ReadOnly | QFile::Text)) {
+        _errorString = QObject::tr("Cannot read file %1").arg(fileName);
+        return false;
+    }
 
-#endif // QMODELINGOBJECTMODEL_H
+    QXmiReader reader;
+    _currentModel = reader.readFile(&file);
 
+//    ui->txeIssues->setModel(new QStringListModel(reader.errorStrings()));
+//    setModelInspector(modelingObjectList);
+    QList<QModelingObject *> modelObjects;
+    foreach (QModelingElement *element, _currentModel)
+        modelObjects << element->asQModelingObject();
+
+    emit modelOpened(modelObjects);
+
+    return true;
+}
+
+}

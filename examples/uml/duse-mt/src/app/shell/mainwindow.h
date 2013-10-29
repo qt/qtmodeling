@@ -62,10 +62,6 @@ namespace Ui {
     class NewModel;
 }
 
-namespace DuSE {
-    class IPlugin;
-}
-
 class QModelingElement;
 class QModelingObject;
 class QMetaModelPlugin;
@@ -73,6 +69,11 @@ class QModelingObjectModel;
 class QProgressDialog;
 
 class NewDuseDesign;
+
+namespace DuSE
+{
+
+class IPlugin;
 
 class MainWindow : public QMainWindow
 {
@@ -115,12 +116,12 @@ protected:
     bool eventFilter(QObject *obj, QEvent *event);
 
 private:
+    Ui::MainWindow *ui;
+
     void saveXmi(QList<QModelingObject *> modelObjects);
     QList<QModelingElement *> loadXmi(QString fileName = 0);
     void populateDesignSpaceView(QModelingElement *modelingObject);
 
-    Ui::MainWindow *ui;
-    QModelingObjectModel *_modelingObjectModel;
     QList<QModelingElement *> _inputModel;
     QList<QModelingElement *> _designSpaceLocation;
 
@@ -148,6 +149,10 @@ private:
     QTimer *timer;
 
     QTreeWidgetItem *itemForCategory(const QString &category);
+
+    friend class UiController;
 };
+
+}
 
 #endif // MAINWINDOW_H

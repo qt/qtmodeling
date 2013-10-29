@@ -21,12 +21,14 @@ SOURCES += main.cpp \
     newdusedesign.cpp \
     shell/core.cpp \
     shell/uicontroller.cpp \
+    shell/projectcontroller.cpp \
     shell/mainwindow.cpp
 
 HEADERS  += \
     newdusedesign.h \
     shell/core.h \
     shell/uicontroller.h \
+    shell/projectcontroller.h \
     shell/mainwindow.h
 
 FORMS    += mainwindow.ui \
