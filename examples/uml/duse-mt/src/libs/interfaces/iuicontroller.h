@@ -45,6 +45,8 @@
 
 #include <QtCore/QString>
 
+#include <QtGui/QIcon>
+
 class QModelingObject;
 
 class QWidget;
@@ -62,7 +64,10 @@ public:
     virtual bool initialize() = 0;
 
     virtual void addDockWidget(Qt::DockWidgetArea area, QString name, QWidget *widget) = 0;
-    virtual void removeDockWidget(QString name) = 0;
+    virtual void removeDockWidget(const QString &name) = 0;
+
+    virtual void addCentralWidgetTab(QWidget *widget, const QString &label, const QIcon &icon = QIcon()) = 0;
+    virtual void removeCentralWidgetTab(const QString &name) = 0;
 
 Q_SIGNALS:
     void currentModelingObjectChanged(QModelingObject *currentModelingObject);

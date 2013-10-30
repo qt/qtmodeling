@@ -38,38 +38,26 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef CORE_H
-#define CORE_H
+#ifndef WELCOMEDASHBOARDPLUGIN_H
+#define WELCOMEDASHBOARDPLUGIN_H
 
-#include <interfaces/icore.h>
+#include <interfaces/iplugin.h>
 
-namespace DuSE
+class QQuickView;
+
+class WelcomeDashboardPlugin : public DuSE::IPlugin
 {
+    Q_OBJECT
+    Q_PLUGIN_METADATA(IID "org.liveblue.DuSE.IPlugin" FILE "welcomedashboard.json")
 
-class PluginController;
-class ProjectController;
-class UiController;
-
-class Core : public ICore
-{
 public:
-    virtual ~Core();
+    WelcomeDashboardPlugin(QObject *parent = 0);
 
-    static bool initialize();
+    virtual bool initialize(DuSE::ICore *core);
 
-    virtual IPluginController *pluginController();
-    virtual IProjectController *projectController();
-    virtual IUiController *uiController();
-
-protected:
-    Core();
-    bool initializeInternal();
-
-    PluginController *_pluginController;
-    ProjectController *_projectController;
-    UiController *_uiController;
+private:
+    QQuickView *_welcomeQuickView;
 };
 
-}
+#endif // WELCOMEDASHBOARDPLUGIN_H
 
-#endif // CORE_H

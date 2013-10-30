@@ -46,7 +46,7 @@ Rectangle {
         spacing: 10
         Image {
             id: duseIcon
-            source: "qrc:/icons/duse-mt-64x64.png"
+            source: "duse-mt-64x64.png"
         }
         Text {
             text: "Welcome to DuSE-MT !"

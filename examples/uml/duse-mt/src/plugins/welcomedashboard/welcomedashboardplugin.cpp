@@ -38,38 +38,26 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef CORE_H
-#define CORE_H
+#include "welcomedashboardplugin.h"
 
-#include <interfaces/icore.h>
+#include <interfaces/iuicontroller.h>
 
-namespace DuSE
+#include <QtQuick/QQuickView>
+
+#include <QtWidgets/QWidget>
+
+WelcomeDashboardPlugin::WelcomeDashboardPlugin(QObject *parent) :
+    DuSE::IPlugin(parent),
+    _welcomeQuickView(new QQuickView)
 {
-
-class PluginController;
-class ProjectController;
-class UiController;
-
-class Core : public ICore
-{
-public:
-    virtual ~Core();
-
-    static bool initialize();
-
-    virtual IPluginController *pluginController();
-    virtual IProjectController *projectController();
-    virtual IUiController *uiController();
-
-protected:
-    Core();
-    bool initializeInternal();
-
-    PluginController *_pluginController;
-    ProjectController *_projectController;
-    UiController *_uiController;
-};
-
 }
 
-#endif // CORE_H
+bool WelcomeDashboardPlugin::initialize(DuSE::ICore *core)
+{
+    _welcomeQuickView->setSource(QUrl("qrc:/welcomedashboard/welcomedashboard.qml"));
+    _welcomeQuickView->setResizeMode(QQuickView::SizeRootObjectToView);
+
+    core->uiController()->addCentralWidgetTab(QWidget::createWindowContainer(_welcomeQuickView), "Welcome");
+
+    return true;
+}

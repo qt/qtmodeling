@@ -20,7 +20,6 @@
         <file>metamodels/PrimitiveTypes.xmi</file>
         <file>metamodels/UML.xmi</file>
         <file>metamodels/SADuSEProfile.xmi</file>
-        <file>qml/welcomeview.qml</file>
         <file>qml/designspaceview.qml</file>
     </qresource>
 </RCC>

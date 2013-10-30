@@ -116,8 +116,6 @@ private:
     QList<QModelingElement *> _inputModel;
     QList<QModelingElement *> _designSpaceLocation;
 
-//    QHash< QString, QPair<QMetaModelPlugin *, QJsonObject> > _metamodelPlugins;
-//    QList< QPair<DuSE::IPlugin *, QJsonObject> > _dusemtPlugins;
     QDialog *_aboutPluginsDialog;
     Ui::AboutPlugins *_aboutPlugins;
     QDialog *_aboutDuSEMTDialog;
@@ -126,10 +124,8 @@ private:
     Ui::NewModel *_newModel;
     NewDuseDesign *_newDuseDesign;
 
-//    QScriptEngine _engine;
-//    QListView *_codeCompletionView;
     QQmlComponent *_qmlComponent;
-    QQuickView *_welcomeQuickView;
+//    QQuickView *_welcomeQuickView;
     QQuickView *_modelQuickView;
     QQuickView *_designSpaceQuickView;
     QQuickView *_metricsQuickView;

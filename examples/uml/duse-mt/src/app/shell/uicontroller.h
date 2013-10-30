@@ -57,7 +57,10 @@ public:
     virtual bool initialize();
 
     virtual void addDockWidget(Qt::DockWidgetArea area, QString name, QWidget *widget);
-    virtual void removeDockWidget(QString name);
+    virtual void removeDockWidget(const QString &name);
+
+    virtual void addCentralWidgetTab(QWidget *widget, const QString &label, const QIcon &icon = QIcon());
+    virtual void removeCentralWidgetTab(const QString &name);
 
 protected:
     MainWindow _mainWindow;

@@ -3,4 +3,5 @@ CONFIG   += ordered
 
 SUBDIRS = \
     modelinspector \
-    javascriptconsole
+    javascriptconsole \
+    welcomedashboard

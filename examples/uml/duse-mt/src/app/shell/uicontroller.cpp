@@ -81,11 +81,27 @@ void UiController::addDockWidget(Qt::DockWidgetArea area, QString name, QWidget 
     }
 }
 
-void UiController::removeDockWidget(QString name)
+void UiController::removeDockWidget(const QString &name)
 {
     foreach (QObject *child, _mainWindow.children())
         if (child->objectName() == name && qobject_cast<QDockWidget *>(child) != 0)
             delete child;
+}
+
+void UiController::addCentralWidgetTab(QWidget *widget, const QString &label, const QIcon &icon)
+{
+    _mainWindow.ui->centralWidget->addTab(widget, icon, label);
+    widget->setObjectName(label);
+}
+
+void UiController::removeCentralWidgetTab(const QString &name)
+{
+    int tabCount = _mainWindow.ui->centralWidget->count();
+    for (int i = 0; i < tabCount; ++i)
+        if (_mainWindow.ui->centralWidget->widget(i)->objectName() == name) {
+            _mainWindow.ui->centralWidget->removeTab(i);
+            break;
+        }
 }
 
 }

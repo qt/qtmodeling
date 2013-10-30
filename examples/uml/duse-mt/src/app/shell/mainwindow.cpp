@@ -94,7 +94,7 @@ MainWindow::MainWindow(QWidget *parent) :
     _newModelDialog(new QDialog(this)),
     _newModel(new Ui::NewModel),
     _newDuseDesign(new NewDuseDesign(this)),
-    _welcomeQuickView(new QQuickView),
+//    _welcomeQuickView(new QQuickView),
     _modelQuickView(new QQuickView),
     _designSpaceQuickView(new QQuickView),
     _metricsQuickView(new QQuickView),
@@ -122,8 +122,8 @@ MainWindow::MainWindow(QWidget *parent) :
     _paretoFrontQuickView->setSource(QUrl("qrc:/qml/paretofrontview.qml"));
     ui->gridLayout_12->addWidget(QWidget::createWindowContainer(_paretoFrontQuickView, ui->paretoFrontViewWidget), 0, 0, 1, 1);
 
-    _welcomeQuickView->setSource(QUrl("qrc:/qml/welcomeview.qml"));
-    ui->gridLayout_13->addWidget(QWidget::createWindowContainer(_welcomeQuickView, ui->welcomeViewWidget), 0, 0, 1, 1);
+//    _welcomeQuickView->setSource(QUrl("qrc:/qml/welcomeview.qml"));
+//    ui->gridLayout_13->addWidget(QWidget::createWindowContainer(_welcomeQuickView, ui->welcomeViewWidget), 0, 0, 1, 1);
 
     _designSpaceQuickView->setSource(QUrl("qrc:/qml/designspaceview.qml"));
     ui->gridLayout_15->addWidget(QWidget::createWindowContainer(_designSpaceQuickView, ui->designSpaceLocationViewWidget), 0, 0, 1, 1);
@@ -132,7 +132,7 @@ MainWindow::MainWindow(QWidget *parent) :
     _designSpaceQuickView->setResizeMode(QQuickView::SizeRootObjectToView);
     _metricsQuickView->setResizeMode(QQuickView::SizeRootObjectToView);
     _paretoFrontQuickView->setResizeMode(QQuickView::SizeRootObjectToView);
-    _welcomeQuickView->setResizeMode(QQuickView::SizeRootObjectToView);
+//    _welcomeQuickView->setResizeMode(QQuickView::SizeRootObjectToView);
 
     readSettings();
 }
