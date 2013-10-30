@@ -36,28 +36,6 @@
       <property name="currentIndex">
        <number>0</number>
       </property>
-      <widget class="QWidget" name="tabDesignSpaceLocationView">
-       <attribute name="title">
-        <string>Current Design Space Location</string>
-       </attribute>
-       <layout class="QGridLayout" name="gridLayout_15">
-        <property name="leftMargin">
-         <number>0</number>
-        </property>
-        <property name="topMargin">
-         <number>0</number>
-        </property>
-        <property name="rightMargin">
-         <number>0</number>
-        </property>
-        <property name="bottomMargin">
-         <number>0</number>
-        </property>
-        <item row="0" column="0">
-         <widget class="QWidget" name="designSpaceLocationViewWidget" native="true"/>
-        </item>
-       </layout>
-      </widget>
       <widget class="QWidget" name="tabParetoFront">
        <attribute name="title">
         <string>Pareto Front</string>
@@ -101,95 +79,6 @@
    <addaction name="actionFileQuit"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
-  <widget class="QDockWidget" name="dckMetrics">
-   <property name="minimumSize">
-    <size>
-     <width>180</width>
-     <height>42</height>
-    </size>
-   </property>
-   <property name="windowTitle">
-    <string>Quality Metrics</string>
-   </property>
-   <attribute name="dockWidgetArea">
-    <number>1</number>
-   </attribute>
-   <widget class="QWidget" name="dockWidgetContents_5">
-    <layout class="QGridLayout" name="gridLayout_10">
-     <property name="leftMargin">
-      <number>4</number>
-     </property>
-     <property name="rightMargin">
-      <number>4</number>
-     </property>
-     <property name="bottomMargin">
-      <number>4</number>
-     </property>
-     <item row="0" column="0">
-      <widget class="QWidget" name="metricsLayout" native="true"/>
-     </item>
-    </layout>
-   </widget>
-  </widget>
-  <widget class="QDockWidget" name="dckDesignSpace">
-   <property name="windowTitle">
-    <string>Design Space</string>
-   </property>
-   <attribute name="dockWidgetArea">
-    <number>2</number>
-   </attribute>
-   <widget class="QWidget" name="dockWidgetContents_6">
-    <layout class="QGridLayout" name="gridLayout_14">
-     <property name="leftMargin">
-      <number>0</number>
-     </property>
-     <property name="rightMargin">
-      <number>4</number>
-     </property>
-     <property name="bottomMargin">
-      <number>4</number>
-     </property>
-     <property name="verticalSpacing">
-      <number>4</number>
-     </property>
-     <item row="0" column="0">
-      <widget class="QTableWidget" name="tblDesignSpace">
-       <property name="alternatingRowColors">
-        <bool>true</bool>
-       </property>
-       <attribute name="horizontalHeaderStretchLastSection">
-        <bool>true</bool>
-       </attribute>
-       <attribute name="verticalHeaderVisible">
-        <bool>false</bool>
-       </attribute>
-       <column>
-        <property name="text">
-         <string>Design Dimension</string>
-        </property>
-       </column>
-       <column>
-        <property name="text">
-         <string>Dimension Instance Target</string>
-        </property>
-       </column>
-       <column>
-        <property name="text">
-         <string>Variation Point</string>
-        </property>
-       </column>
-      </widget>
-     </item>
-     <item row="1" column="0">
-      <widget class="QPushButton" name="btnOptimize">
-       <property name="text">
-        <string>&amp;Optimize</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </widget>
-  </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>

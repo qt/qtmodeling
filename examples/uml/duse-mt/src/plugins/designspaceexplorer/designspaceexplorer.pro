@@ -6,8 +6,10 @@
 
 include(../../duse-mt-plugin.pri)
 
-SOURCES += modelinspectorplugin.cpp
+SOURCES += designspaceexplorerplugin.cpp
 
-HEADERS += modelinspectorplugin.h
+HEADERS += designspaceexplorerplugin.h
 
-OTHER_FILES += modelinspector.json
+RESOURCES += qml/designspaceexplorer.qrc
+
+OTHER_FILES += designspaceexplorer.json

@@ -38,71 +38,29 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#include "uicontroller.h"
+#ifndef DESIGNSPACEEXPLORERPLUGIN_H
+#define DESIGNSPACEEXPLORERPLUGIN_H
 
-#include <QtWidgets/QAction>
-#include <QtWidgets/QDockWidget>
-#include <QtWidgets/QGridLayout>
+#include <interfaces/iplugin.h>
 
-#include "ui_mainwindow.h"
+class QQuickView;
+class QTableWidget;
 
-namespace DuSE
+class DesignSpaceExplorerPlugin : public DuSE::IPlugin
 {
+    Q_OBJECT
+    Q_PLUGIN_METADATA(IID "org.liveblue.DuSE.IPlugin" FILE "designspaceexplorer.json")
 
-UiController::UiController() :
-    _lastBottomDockWidgetAdded(0)
-{
-}
+public:
+    DesignSpaceExplorerPlugin(QObject *parent = 0);
 
-UiController::~UiController()
-{
-}
+    virtual bool initialize(DuSE::ICore *core);
 
-bool UiController::initialize()
-{
-    _mainWindow.populatePluginDialog();
-    _mainWindow.showMaximized();
-    _mainWindow.readSettings();
+private:
+    QQuickView *_currentDesignSpaceLocationQuickView;
+    QQuickView *_metricsQuickView;
+    QTableWidget *_designSpaceExplorer;
+};
 
-    return true;
-}
+#endif // DESIGNSPACEEXPLORERPLUGIN_H
 
-void UiController::addDockWidget(Qt::DockWidgetArea area, QString name, QWidget *widget)
-{
-    QDockWidget *dockWidget = new QDockWidget;
-    dockWidget->setWindowTitle(name);
-    dockWidget->setObjectName(name);
-    dockWidget->setWidget(widget);
-
-    _mainWindow.addDockWidget(area, dockWidget);
-    if (area == Qt::BottomDockWidgetArea) {
-        if (_lastBottomDockWidgetAdded)
-            _mainWindow.tabifyDockWidget(_lastBottomDockWidgetAdded, dockWidget);
-        _lastBottomDockWidgetAdded = dockWidget;
-    }
-}
-
-void UiController::removeDockWidget(const QString &name)
-{
-    foreach (QObject *child, _mainWindow.children())
-        if (child->objectName() == name && qobject_cast<QDockWidget *>(child) != 0)
-            delete child;
-}
-
-void UiController::addCentralWidgetTab(QWidget *widget, const QString &label, const QIcon &icon)
-{
-    _mainWindow.ui->centralWidget->addTab(widget, icon, label);
-    widget->setObjectName(label);
-}
-
-void UiController::removeCentralWidgetTab(const QString &name)
-{
-    int tabCount = _mainWindow.ui->centralWidget->count();
-    for (int i = 0; i < tabCount; ++i)
-        if (_mainWindow.ui->centralWidget->widget(i)->objectName() == name) {
-            _mainWindow.ui->centralWidget->removeTab(i);
-            break;
-        }
-}
-
-}

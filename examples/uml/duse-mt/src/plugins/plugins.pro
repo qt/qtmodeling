@@ -5,4 +5,5 @@ SUBDIRS = \
     modelinspector \
     javascriptconsole \
     welcomedashboard \
-    concretesyntaxview
+    concretesyntaxview \
+    designspaceexplorer
