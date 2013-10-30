@@ -14,8 +14,6 @@
         <file>icons/duse-mt-48x48.png</file>
         <file>icons/duse-mt-64x64.png</file>
         <file>icons/duse-mt-128x128.png</file>
-        <file>qml/grid.png</file>
-        <file>qml/paretofrontview.qml</file>
         <file>metamodels/PrimitiveTypes.xmi</file>
         <file>metamodels/UML.xmi</file>
         <file>metamodels/SADuSEProfile.xmi</file>

@@ -98,7 +98,7 @@ private Q_SLOTS:
     void on_actionHelpAboutPlugins_triggered();
     void on_actionHelpAboutDuSEMT_triggered();
     void on_centralWidget_currentChanged(int);
-    void on_btnOptimize_clicked();
+//    void on_btnOptimize_clicked();
     void evaluateQualityMetrics();
 
     void metaModelChanged(QString newMetaModel);
@@ -125,9 +125,6 @@ private:
     NewDuseDesign *_newDuseDesign;
 
     QQmlComponent *_qmlComponent;
-//    QQuickView *_designSpaceQuickView;
-//    QQuickView *_metricsQuickView;
-    QQuickView *_paretoFrontQuickView;
 
     QProgressDialog *progress;
     QTimer *timer;

@@ -93,8 +93,7 @@ MainWindow::MainWindow(QWidget *parent) :
     _aboutDuSEMT(new Ui::AboutDuSEMT),
     _newModelDialog(new QDialog(this)),
     _newModel(new Ui::NewModel),
-    _newDuseDesign(new NewDuseDesign(this)),
-    _paretoFrontQuickView(new QQuickView)
+    _newDuseDesign(new NewDuseDesign(this))
 {
     ui->setupUi(this);
 
@@ -105,10 +104,6 @@ MainWindow::MainWindow(QWidget *parent) :
 
 //    connect(ui->modelingObjectView, &QModelingObjectView::addToView, this, &MainWindow::addToView);
 
-    _paretoFrontQuickView->setSource(QUrl("qrc:/qml/paretofrontview.qml"));
-    ui->gridLayout_12->addWidget(QWidget::createWindowContainer(_paretoFrontQuickView, ui->paretoFrontViewWidget), 0, 0, 1, 1);
-
-    _paretoFrontQuickView->setResizeMode(QQuickView::SizeRootObjectToView);
 }
 
 MainWindow::~MainWindow()
@@ -344,15 +339,15 @@ void MainWindow::on_centralWidget_currentChanged(int)
 //    }
 }
 
-void MainWindow::on_btnOptimize_clicked()
-{
-    progress = new QProgressDialog("Optimizing architecture", "Abort", 0, 100, this);
-    progress->setWindowModality(Qt::WindowModal);
-    timer = new QTimer(this);
-    connect(progress, SIGNAL(finished(int)), timer, SLOT(stop()));
-    connect(timer, SIGNAL(timeout()), this, SLOT(update()));
-    timer->start(1000);
-}
+//void MainWindow::on_btnOptimize_clicked()
+//{
+//    progress = new QProgressDialog("Optimizing architecture", "Abort", 0, 100, this);
+//    progress->setWindowModality(Qt::WindowModal);
+//    timer = new QTimer(this);
+//    connect(progress, SIGNAL(finished(int)), timer, SLOT(stop()));
+//    connect(timer, SIGNAL(timeout()), this, SLOT(update()));
+//    timer->start(1000);
+//}
 
 void MainWindow::update()
 {
@@ -436,27 +431,27 @@ void MainWindow::addToDesignSpaceView(QModelingElement *modelingObject, QQuickIt
 
 void MainWindow::addToPareto(QModelingElement *modelingObject, int pos)
 {
-    QQmlContext *context = _paretoFrontQuickView->engine()->rootContext();
-    //modelingObject->setQmlContextProperties(context);
-    _qmlComponent = new QQmlComponent(_paretoFrontQuickView->engine());
-    int x = qrand() % 400;
-    int y = qrand() % 400;
-    _qmlComponent->setData(QString("import QtQuick 2.0\nimport QtModeling.Uml 1.0\n\n%1 { x: %2; y: %3}").arg(QString(modelingObject->asQModelingObject()->metaObject()->className()).remove(QRegularExpression("^Q"))).arg(x).arg(y).toLatin1(), QUrl());
+//    QQmlContext *context = _paretoFrontQuickView->engine()->rootContext();
+//    //modelingObject->setQmlContextProperties(context);
+//    _qmlComponent = new QQmlComponent(_paretoFrontQuickView->engine());
+//    int x = qrand() % 400;
+//    int y = qrand() % 400;
+//    _qmlComponent->setData(QString("import QtQuick 2.0\nimport QtModeling.Uml 1.0\n\n%1 { x: %2; y: %3}").arg(QString(modelingObject->asQModelingObject()->metaObject()->className()).remove(QRegularExpression("^Q"))).arg(x).arg(y).toLatin1(), QUrl());
 
-    QQuickItem *item = 0;
-    if (_qmlComponent->isError()) {
-        qWarning() << _qmlComponent->errors();
-    } else {
-        item = qobject_cast<QQuickItem *>(_qmlComponent->create(context));
-        if (item) {
-            item->setParentItem(_paretoFrontQuickView->rootObject()->childItems().first()->childItems().first()->childItems().at(pos));
-        }
-    }
+//    QQuickItem *item = 0;
+//    if (_qmlComponent->isError()) {
+//        qWarning() << _qmlComponent->errors();
+//    } else {
+//        item = qobject_cast<QQuickItem *>(_qmlComponent->create(context));
+//        if (item) {
+//            item->setParentItem(_paretoFrontQuickView->rootObject()->childItems().first()->childItems().first()->childItems().at(pos));
+//        }
+//    }
 
-    foreach (QObject *child, modelingObject->asQModelingObject()->children())
-        addToPareto(dynamic_cast<QModelingElement *>(qModelingElement(child)), pos);
+//    foreach (QObject *child, modelingObject->asQModelingObject()->children())
+//        addToPareto(dynamic_cast<QModelingElement *>(qModelingElement(child)), pos);
 
-    _qmlComponent->deleteLater();
+//    _qmlComponent->deleteLater();
 }
 
 void MainWindow::designSpaceChanged()

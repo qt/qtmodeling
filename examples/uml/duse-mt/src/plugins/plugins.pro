@@ -6,4 +6,5 @@ SUBDIRS = \
     javascriptconsole \
     welcomedashboard \
     concretesyntaxview \
-    designspaceexplorer
+    designspaceexplorer \
+    designoptimizer

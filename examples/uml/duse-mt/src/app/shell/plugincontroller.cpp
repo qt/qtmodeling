@@ -77,12 +77,6 @@ bool PluginController::initialize()
             if (plugin && (metaModelPlugin = qobject_cast<QMetaModelPlugin *>(plugin))) {
                 QJsonObject jsonObject = loader.metaData().value(QString::fromLatin1("MetaData")).toObject();
                 _metamodelPlugins.insert(jsonObject.value(QString::fromLatin1("MetaModelNamespaceUri")).toString(), QPair<QMetaModelPlugin *, QJsonObject>(metaModelPlugin, jsonObject));
-//                QTreeWidgetItem *metamodelItem = new QTreeWidgetItem(itemForCategory("Metamodels"),
-//                                                                     QStringList() << metaModelPlugin->metaObject()->className()
-//                                                                                   << QString()
-//                                                                                   << jsonObject.value("Version").toString()
-//                                                                                   << jsonObject.value("Vendor").toString());
-//                metamodelItem->setData(1, Qt::CheckStateRole, QVariant(Qt::Checked));
             }
         }
     }
@@ -98,12 +92,6 @@ bool PluginController::initialize()
                 dusePlugin->initialize(core);
                 QJsonObject jsonObject = loader.metaData().value(QString::fromLatin1("MetaData")).toObject();
                 _dusemtPlugins << QPair<DuSE::IPlugin *, QJsonObject>(dusePlugin, jsonObject);
-//                QTreeWidgetItem *dusePluginItem = new QTreeWidgetItem(itemForCategory(jsonObject.value("Category").toString()),
-//                                                                     QStringList() << dusePlugin->metaObject()->className()
-//                                                                                   << QString()
-//                                                                                   << jsonObject.value("Version").toString()
-//                                                                                   << jsonObject.value("Vendor").toString());
-//                dusePluginItem->setData(1, Qt::CheckStateRole, QVariant(Qt::Checked));
             }
             else
                 _errorStrings << "Error when loading plugin" << fileName << ":" << loader.errorString();

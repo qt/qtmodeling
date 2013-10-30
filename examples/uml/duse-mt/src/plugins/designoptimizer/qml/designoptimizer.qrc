@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/designoptimizer">
+        <file>paretofront.qml</file>
+    </qresource>
+</RCC>
