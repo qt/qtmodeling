@@ -38,30 +38,30 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#include "newdusedesign.h"
-#include "ui_newdusedesign.h"
+#include "newdusedesigndialog.h"
+#include "ui_newdusedesigndialog.h"
 
 #include <QtWidgets/QFileDialog>
 
-NewDuseDesign::NewDuseDesign(QWidget *parent) :
+NewDuseDesignDialog::NewDuseDesignDialog(QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::NewDuseDesign)
+    ui(new Ui::NewDuseDesignDialog)
 {
     ui->setupUi(this);
 }
 
-NewDuseDesign::~NewDuseDesign()
+NewDuseDesignDialog::~NewDuseDesignDialog()
 {
     delete ui;
 }
 
-void NewDuseDesign::on_tbtInputModel_clicked()
+void NewDuseDesignDialog::on_tbtInputModel_clicked()
 {
     _inputModelFileName = QFileDialog::getOpenFileName(this, tr("Open input model"), QDir::currentPath(), "XMI files (*.xmi)");
     ui->lneInputModel->setText(_inputModelFileName);
 }
 
-void NewDuseDesign::on_tbtDuseInstanceModel_clicked()
+void NewDuseDesignDialog::on_tbtDuseInstanceModel_clicked()
 {
     _duseInstanceModelFileName = QFileDialog::getOpenFileName(this, tr("Open DuSE instance model"), QDir::currentPath(), "XMI files (*.xmi)");
     ui->lneDuseInstanceModel->setText(_duseInstanceModelFileName);

@@ -4,11 +4,17 @@
 #
 #-------------------------------------------------
 
+QT += widgets
+
 include(../../duse-mt-plugin.pri)
 
-SOURCES += designspaceexplorerplugin.cpp
+SOURCES += designspaceexplorerplugin.cpp \
+           newdusedesigndialog.cpp
 
-HEADERS += designspaceexplorerplugin.h
+HEADERS += designspaceexplorerplugin.h \
+           newdusedesigndialog.h
+
+FORMS += newdusedesigndialog.ui
 
 RESOURCES += qml/designspaceexplorer.qrc
 

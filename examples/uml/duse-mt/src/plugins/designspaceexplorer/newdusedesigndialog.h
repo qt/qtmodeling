@@ -38,22 +38,22 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef NEWDUSEDESIGN_H
-#define NEWDUSEDESIGN_H
+#ifndef NEWDUSEDESIGNDIALOG_H
+#define NEWDUSEDESIGNDIALOG_H
 
-#include <QDialog>
+#include <QtWidgets/QDialog>
 
 namespace Ui {
-class NewDuseDesign;
+class NewDuseDesignDialog;
 }
 
-class NewDuseDesign : public QDialog
+class NewDuseDesignDialog : public QDialog
 {
     Q_OBJECT
 
 public:
-    explicit NewDuseDesign(QWidget *parent = 0);
-    ~NewDuseDesign();
+    explicit NewDuseDesignDialog(QWidget *parent = 0);
+    ~NewDuseDesignDialog();
 
     QString _inputModelFileName;
     QString _duseInstanceModelFileName;
@@ -62,7 +62,7 @@ private Q_SLOTS:
     void on_tbtDuseInstanceModel_clicked();
 
 private:
-    Ui::NewDuseDesign *ui;
+    Ui::NewDuseDesignDialog *ui;
 };
 
-#endif // NEWDUSEDESIGN_H
+#endif // NEWDUSEDESIGNDIALOG_H

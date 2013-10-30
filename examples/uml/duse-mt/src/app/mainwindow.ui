@@ -73,9 +73,6 @@
     <addaction name="actionFileNewModel"/>
     <addaction name="actionFileOpenModel"/>
     <addaction name="separator"/>
-    <addaction name="actionFileNewDuseDesign"/>
-    <addaction name="actionFileOpenDuseDesign"/>
-    <addaction name="separator"/>
     <addaction name="actionFileSave"/>
     <addaction name="actionFileSaveAs"/>
     <addaction name="separator"/>
@@ -185,32 +182,6 @@
    </property>
    <property name="toolTip">
     <string>About DuSE-MT</string>
-   </property>
-  </action>
-  <action name="actionFileNewDuseDesign">
-   <property name="icon">
-    <iconset theme="document-new">
-     <normaloff/>
-    </iconset>
-   </property>
-   <property name="text">
-    <string>New &amp;DuSE Design ...</string>
-   </property>
-   <property name="shortcut">
-    <string>Ctrl+D</string>
-   </property>
-  </action>
-  <action name="actionFileOpenDuseDesign">
-   <property name="icon">
-    <iconset theme="document-open">
-     <normaloff/>
-    </iconset>
-   </property>
-   <property name="text">
-    <string>Open DuSE Design ...</string>
-   </property>
-   <property name="shortcut">
-    <string>Ctrl+U</string>
    </property>
   </action>
  </widget>

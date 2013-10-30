@@ -18,7 +18,6 @@ include(../rpath.pri)
 LIBS *= -lduseinterfaces
 
 SOURCES += main.cpp \
-    newdusedesign.cpp \
     shell/core.cpp \
     shell/uicontroller.cpp \
     shell/projectcontroller.cpp \
@@ -26,7 +25,6 @@ SOURCES += main.cpp \
     shell/mainwindow.cpp
 
 HEADERS  += \
-    newdusedesign.h \
     shell/core.h \
     shell/uicontroller.h \
     shell/projectcontroller.h \
@@ -36,8 +34,7 @@ HEADERS  += \
 FORMS    += mainwindow.ui \
             aboutplugins.ui \
     newmodel.ui \
-    aboutdusemt.ui \
-    newdusedesign.ui
+    aboutdusemt.ui
 
 RESOURCES += \
     duse-mt.qrc

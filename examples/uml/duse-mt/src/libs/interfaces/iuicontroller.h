@@ -49,7 +49,9 @@
 
 class QModelingObject;
 
+class QAction;
 class QWidget;
+class QMainWindow;
 
 namespace DuSE
 {
@@ -68,6 +70,8 @@ public:
 
     virtual void addCentralWidgetTab(QWidget *widget, const QString &label, const QIcon &icon = QIcon()) = 0;
     virtual void removeCentralWidgetTab(const QString &name) = 0;
+
+    virtual void addAction(QAction *action, const QString &menuTitle, const QString &toolbarName = QString()) = 0;
 
 Q_SIGNALS:
     void currentModelingObjectChanged(QModelingObject *currentModelingObject);

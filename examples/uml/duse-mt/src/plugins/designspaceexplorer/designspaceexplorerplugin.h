@@ -43,6 +43,8 @@
 
 #include <interfaces/iplugin.h>
 
+class NewDuseDesignDialog;
+
 class QQuickView;
 class QTableWidget;
 
@@ -53,13 +55,20 @@ class DesignSpaceExplorerPlugin : public DuSE::IPlugin
 
 public:
     DesignSpaceExplorerPlugin(QObject *parent = 0);
+    virtual ~DesignSpaceExplorerPlugin();
 
     virtual bool initialize(DuSE::ICore *core);
+
+private Q_SLOTS:
+    void newDuseDesign();
+    void openDuseDesign();
 
 private:
     QQuickView *_currentDesignSpaceLocationQuickView;
     QQuickView *_metricsQuickView;
     QTableWidget *_designSpaceExplorer;
+
+    NewDuseDesignDialog *_newDuseDesignDialog;
 };
 
 #endif // DESIGNSPACEEXPLORERPLUGIN_H

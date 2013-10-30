@@ -79,8 +79,6 @@
 #include <interfaces/iplugincontroller.h>
 #include <interfaces/iprojectcontroller.h>
 
-#include "newdusedesign.h"
-
 namespace DuSE
 {
 
@@ -92,8 +90,7 @@ MainWindow::MainWindow(QWidget *parent) :
     _aboutDuSEMTDialog(new QDialog(this)),
     _aboutDuSEMT(new Ui::AboutDuSEMT),
     _newModelDialog(new QDialog(this)),
-    _newModel(new Ui::NewModel),
-    _newDuseDesign(new NewDuseDesign(this))
+    _newModel(new Ui::NewModel)
 {
     ui->setupUi(this);
 
@@ -163,80 +160,6 @@ void MainWindow::on_actionFileOpenModel_triggered()
     }
 }
 
-void MainWindow::on_actionFileNewDuseDesign_triggered()
-{
-    do {
-        if (_newDuseDesign->exec() == QDialog::Accepted) {
-            if (_newDuseDesign->_inputModelFileName.isEmpty() || _newDuseDesign->_duseInstanceModelFileName.isEmpty()) {
-                QMessageBox::critical(this, tr("Create new DuSE design"), tr("You should select an input model and a DuSE instance model !"));
-            }
-            else {
-                setCursor(Qt::WaitCursor);
-
-                QFile file(_newDuseDesign->_duseInstanceModelFileName);
-                if (!file.open(QFile::ReadOnly | QFile::Text)) {
-                    QMessageBox::critical(this, tr("Create new DuSE design"), tr("Cannot read DuSE instance file !"));
-                    setCursor(Qt::ArrowCursor);
-                    return;
-                }
-                QXmiReader reader;
-                QList<QModelingElement *> modelingObjectList = reader.readFile(&file);
-                if (QString::fromLatin1(modelingObjectList.first()->asQModelingObject()->metaObject()->className()) != QString::fromLatin1("QDuseDesignSpace")) {
-                    QMessageBox::critical(this, tr("Create new DuSE design"), QString::fromLatin1("%1 is not a valid DuSE instance !").arg(QFileInfo(file).fileName()));
-                    setCursor(Qt::ArrowCursor);
-                    return;
-                }
-
-//                _currentFileName = _newDuseDesign->_inputModelFileName;
-//                foreach (QWrappedObject *object, _inputModel)
-//                    delete object;
-//                _inputModel = loadXmi(_currentFileName);
-
-                addToView(_inputModel[0]);
-
-//                QScriptValue value = _engine.evaluate("function checkProfile() \
-//                                                       { \
-//                                                           var length = input[0].profileApplications.length; \
-//                                                           for (var i = 0; i < length; ++i) \
-//                                                               if (input[0].profileApplications[0].appliedProfile.name == '" + modelingObjectList.first()->asQModelingObject()->objectName() + "Profile') \
-//                                                                   return true; \
-//                                                           return false; \
-//                                                       } \
-//                                                       checkProfile();");
-//                if (!value.toBool()) {
-//                    QMessageBox::critical(this, tr("Create new DuSE design"), QString::fromLatin1("Input model does not contain the required %1Profile profile application !").arg(modelingObjectList.first()->asQModelingObject()->objectName()));
-//                    setCursor(Qt::ArrowCursor);
-//                    return;
-//                }
-
-                //modelingObjectList.first()->setQmlContextProperties(_metricsQuickView->engine()->rootContext());
-
-//                _engine.globalObject().setProperty("designspace", _engine.newQObject(modelingObjectList.at(0)->asQModelingObject()));
-//                _engine.evaluate("var dimensionsLength = designspace.designDimensions.length; \
-//                                 for (var dimensionCounter = 0; dimensionCounter < dimensionsLength; ++dimensionCounter) { \
-//                                     if (designspace.designDimensions[dimensionCounter].instanceSelectionRule) { \
-//                                         var selected = eval(designspace.designDimensions[dimensionCounter].instanceSelectionRule); \
-//                                         var selectedLength = selected.length; \
-//                                         for (var selectedCounter = 0; selectedCounter < selectedLength; ++selectedCounter) { \
-//                                             var dimensionInstance = new QDuseDesignDimensionInstance(); \
-//                                             dimensionInstance.objectName = selected[selectedCounter].name; \
-//                                             designspace.designDimensions[dimensionCounter].addDesignDimensionInstance(dimensionInstance); \
-//                                         } \
-//                                     } \
-//                                 }");
-
-
-                evaluateQualityMetrics();
-                populateDesignSpaceView(modelingObjectList.at(0));
-
-                setCursor(Qt::ArrowCursor);
-            }
-        }
-        else
-            return;
-    } while (_newDuseDesign->_inputModelFileName.isEmpty() || _newDuseDesign->_duseInstanceModelFileName.isEmpty());
-}
-
 void MainWindow::evaluateQualityMetrics()
 {
 //    _engine.evaluate("var m = designspace.qualityMetrics.length; \
@@ -265,10 +188,6 @@ void MainWindow::populateDesignSpaceView(QModelingElement *modelingObject)
 //        }
 //    }
 //    ui->tblDesignSpace->resizeRowsToContents();
-}
-
-void MainWindow::on_actionFileOpenDuseDesign_triggered()
-{
 }
 
 void MainWindow::on_actionFileSaveAs_triggered()

@@ -105,4 +105,14 @@ void UiController::removeCentralWidgetTab(const QString &name)
         }
 }
 
+void UiController::addAction(QAction *action, const QString &menuTitle, const QString &toolbarName)
+{
+    foreach (QMenu *menu, _mainWindow.ui->menuBar->findChildren<QMenu *>())
+        if (menu->objectName() == menuTitle)
+            menu->addAction(action);
+    foreach (QToolBar *toolbar, _mainWindow.findChildren<QToolBar *>())
+        if (toolbar->objectName() == toolbarName)
+            toolbar->addAction(action);
+}
+
 }

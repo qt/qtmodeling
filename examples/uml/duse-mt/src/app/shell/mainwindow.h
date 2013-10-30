@@ -43,14 +43,6 @@
 
 #include <QtWidgets/QMainWindow>
 
-#include <QtCore/QPair>
-#include <QtCore/QJsonObject>
-
-#include <QtScript/QScriptEngine>
-
-class QDialog;
-class QListView;
-class QQuickView;
 class QQuickItem;
 class QQmlComponent;
 class QTreeWidgetItem;
@@ -63,12 +55,12 @@ namespace Ui {
 }
 
 class QModelingElement;
-class QModelingObject;
+//class QModelingObject;
 class QMetaModelPlugin;
 class QModelingObjectModel;
 class QProgressDialog;
 
-class NewDuseDesign;
+class NewDuseDesignDialog;
 
 namespace DuSE
 {
@@ -81,18 +73,18 @@ class MainWindow : public QMainWindow
 
 public:
     explicit MainWindow(QWidget *parent = 0);
-    ~MainWindow();
+    virtual ~MainWindow();
 
-    void closeEvent(QCloseEvent *event);
     void readSettings();
     void populatePluginDialog();
+
+protected:
+    void closeEvent(QCloseEvent *event);
 
 private Q_SLOTS:
     void update();
     void on_actionFileNewModel_triggered();
     void on_actionFileOpenModel_triggered();
-    void on_actionFileNewDuseDesign_triggered();
-    void on_actionFileOpenDuseDesign_triggered();
     void on_actionFileSaveAs_triggered();
     void on_actionFileSave_triggered();
     void on_actionHelpAboutPlugins_triggered();
@@ -122,7 +114,7 @@ private:
     Ui::AboutDuSEMT *_aboutDuSEMT;
     QDialog *_newModelDialog;
     Ui::NewModel *_newModel;
-    NewDuseDesign *_newDuseDesign;
+    NewDuseDesignDialog *_newDuseDesign;
 
     QQmlComponent *_qmlComponent;
 

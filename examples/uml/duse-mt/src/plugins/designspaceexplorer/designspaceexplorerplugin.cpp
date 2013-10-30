@@ -44,16 +44,32 @@
 
 #include <QtQuick/QQuickView>
 
+#include <QtWidgets/QAction>
 #include <QtWidgets/QWidget>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QTableWidget>
+#include <QtWidgets/QApplication>
+#include <QtWidgets/QMessageBox>
+
+#include <QtCore/QFileInfo>
+
+#include <QtModeling/QXmiReader>
+#include <QtModeling/QModelingElement>
+
+#include "newdusedesigndialog.h"
 
 DesignSpaceExplorerPlugin::DesignSpaceExplorerPlugin(QObject *parent) :
     DuSE::IPlugin(parent),
     _currentDesignSpaceLocationQuickView(new QQuickView),
     _metricsQuickView(new QQuickView),
-    _designSpaceExplorer(new QTableWidget)
+    _designSpaceExplorer(new QTableWidget),
+    _newDuseDesignDialog(new NewDuseDesignDialog)
 {
+}
+
+DesignSpaceExplorerPlugin::~DesignSpaceExplorerPlugin()
+{
+    delete _newDuseDesignDialog;
 }
 
 bool DesignSpaceExplorerPlugin::initialize(DuSE::ICore *core)
@@ -81,6 +97,116 @@ bool DesignSpaceExplorerPlugin::initialize(DuSE::ICore *core)
 
     core->uiController()->addDockWidget(Qt::RightDockWidgetArea, "Design Space Explorer", _designSpaceExplorer);
 
+    QString iconThemeName;
+
+    QAction *_actionFileNewDuseDesign = new QAction(0);
+    _actionFileNewDuseDesign->setText(QApplication::translate("MainWindow", "New &DuSE Design ...", 0));
+    _actionFileNewDuseDesign->setShortcut(QApplication::translate("MainWindow", "Ctrl+D", 0));
+    _actionFileNewDuseDesign->setObjectName(QStringLiteral("actionFileNewDuseDesign"));
+    QIcon icon8;
+    iconThemeName = QStringLiteral("document-new");
+    if (QIcon::hasThemeIcon(iconThemeName)) {
+        icon8 = QIcon::fromTheme(iconThemeName);
+    } else {
+        icon8.addFile(QStringLiteral(""), QSize(), QIcon::Normal, QIcon::Off);
+    }
+    _actionFileNewDuseDesign->setIcon(icon8);
+    connect(_actionFileNewDuseDesign, &QAction::triggered, this, &DesignSpaceExplorerPlugin::newDuseDesign);
+    core->uiController()->addAction(_actionFileNewDuseDesign, "menu_File");
+
+    QAction *_actionFileOpenDuseDesign = new QAction(0);
+    _actionFileOpenDuseDesign->setText(QApplication::translate("MainWindow", "Open DuSE Design ...", 0));
+    _actionFileOpenDuseDesign->setShortcut(QApplication::translate("MainWindow", "Ctrl+U", 0));
+    _actionFileOpenDuseDesign->setObjectName(QStringLiteral("actionFileOpenDuseDesign"));
+    QIcon icon9;
+    iconThemeName = QStringLiteral("document-open");
+    if (QIcon::hasThemeIcon(iconThemeName)) {
+        icon9 = QIcon::fromTheme(iconThemeName);
+    } else {
+        icon9.addFile(QStringLiteral(""), QSize(), QIcon::Normal, QIcon::Off);
+    }
+    _actionFileOpenDuseDesign->setIcon(icon9);
+    connect(_actionFileOpenDuseDesign, &QAction::triggered, this, &DesignSpaceExplorerPlugin::openDuseDesign);
+    core->uiController()->addAction(_actionFileOpenDuseDesign, "menu_File");
+
     return true;
+}
+
+void DesignSpaceExplorerPlugin::newDuseDesign()
+{
+    do {
+        if (_newDuseDesignDialog->exec() == QDialog::Accepted) {
+            if (_newDuseDesignDialog->_inputModelFileName.isEmpty() || _newDuseDesignDialog->_duseInstanceModelFileName.isEmpty()) {
+                QMessageBox::critical(0, tr("Create new DuSE design"), tr("You should select an input model and a DuSE instance model !"));
+            }
+            else {
+//                setCursor(Qt::WaitCursor);
+
+                QFile file(_newDuseDesignDialog->_duseInstanceModelFileName);
+                if (!file.open(QFile::ReadOnly | QFile::Text)) {
+                    QMessageBox::critical(0, tr("Create new DuSE design"), tr("Cannot read DuSE instance file !"));
+//                    setCursor(Qt::ArrowCursor);
+                    return;
+                }
+                QXmiReader reader;
+                QList<QModelingElement *> modelingObjectList = reader.readFile(&file);
+                if (QString::fromLatin1(modelingObjectList.first()->asQModelingObject()->metaObject()->className()) != QString::fromLatin1("QDuseDesignSpace")) {
+                    QMessageBox::critical(0, tr("Create new DuSE design"), QString::fromLatin1("%1 is not a valid DuSE instance !").arg(QFileInfo(file).fileName()));
+//                    setCursor(Qt::ArrowCursor);
+                    return;
+                }
+
+//                _currentFileName = _newDuseDesign->_inputModelFileName;
+//                foreach (QWrappedObject *object, _inputModel)
+//                    delete object;
+//                _inputModel = loadXmi(_currentFileName);
+
+//                addToView(_inputModel[0]);
+
+//                QScriptValue value = _engine.evaluate("function checkProfile() \
+//                                                       { \
+//                                                           var length = input[0].profileApplications.length; \
+//                                                           for (var i = 0; i < length; ++i) \
+//                                                               if (input[0].profileApplications[0].appliedProfile.name == '" + modelingObjectList.first()->asQModelingObject()->objectName() + "Profile') \
+//                                                                   return true; \
+//                                                           return false; \
+//                                                       } \
+//                                                       checkProfile();");
+//                if (!value.toBool()) {
+//                    QMessageBox::critical(this, tr("Create new DuSE design"), QString::fromLatin1("Input model does not contain the required %1Profile profile application !").arg(modelingObjectList.first()->asQModelingObject()->objectName()));
+//                    setCursor(Qt::ArrowCursor);
+//                    return;
+//                }
+
+                //modelingObjectList.first()->setQmlContextProperties(_metricsQuickView->engine()->rootContext());
+
+//                _engine.globalObject().setProperty("designspace", _engine.newQObject(modelingObjectList.at(0)->asQModelingObject()));
+//                _engine.evaluate("var dimensionsLength = designspace.designDimensions.length; \
+//                                 for (var dimensionCounter = 0; dimensionCounter < dimensionsLength; ++dimensionCounter) { \
+//                                     if (designspace.designDimensions[dimensionCounter].instanceSelectionRule) { \
+//                                         var selected = eval(designspace.designDimensions[dimensionCounter].instanceSelectionRule); \
+//                                         var selectedLength = selected.length; \
+//                                         for (var selectedCounter = 0; selectedCounter < selectedLength; ++selectedCounter) { \
+//                                             var dimensionInstance = new QDuseDesignDimensionInstance(); \
+//                                             dimensionInstance.objectName = selected[selectedCounter].name; \
+//                                             designspace.designDimensions[dimensionCounter].addDesignDimensionInstance(dimensionInstance); \
+//                                         } \
+//                                     } \
+//                                 }");
+
+
+//                evaluateQualityMetrics();
+//                populateDesignSpaceView(modelingObjectList.at(0));
+
+//                setCursor(Qt::ArrowCursor);
+            }
+        }
+        else
+            return;
+    } while (_newDuseDesignDialog->_inputModelFileName.isEmpty() || _newDuseDesignDialog->_duseInstanceModelFileName.isEmpty());
+}
+
+void DesignSpaceExplorerPlugin::openDuseDesign()
+{
 }
 

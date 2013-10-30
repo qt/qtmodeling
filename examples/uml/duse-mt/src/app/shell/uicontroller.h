@@ -62,6 +62,8 @@ public:
     virtual void addCentralWidgetTab(QWidget *widget, const QString &label, const QIcon &icon = QIcon());
     virtual void removeCentralWidgetTab(const QString &name);
 
+    virtual void addAction(QAction *action, const QString &menuTitle, const QString &toolbarName = QString());
+
 protected:
     MainWindow _mainWindow;
     QDockWidget *_lastBottomDockWidgetAdded;
