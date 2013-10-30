@@ -94,8 +94,6 @@ MainWindow::MainWindow(QWidget *parent) :
     _newModelDialog(new QDialog(this)),
     _newModel(new Ui::NewModel),
     _newDuseDesign(new NewDuseDesign(this)),
-//    _welcomeQuickView(new QQuickView),
-    _modelQuickView(new QQuickView),
     _designSpaceQuickView(new QQuickView),
     _metricsQuickView(new QQuickView),
     _paretoFrontQuickView(new QQuickView)
@@ -113,26 +111,18 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->tblDesignSpace->resizeColumnToContents(1);
     ui->tblDesignSpace->resizeColumnToContents(2);
 
-    _modelQuickView->setSource(QUrl("qrc:/qml/modelview.qml"));
-    ui->gridLayout_11->addWidget(QWidget::createWindowContainer(_modelQuickView, ui->modelViewWidget), 0, 0, 1, 1);
-
     _metricsQuickView->setSource(QUrl("qml/dialcontrol/dialcontrol.qml"));
     ui->gridLayout_10->addWidget(QWidget::createWindowContainer(_metricsQuickView, ui->metricsLayout), 0, 0, 1, 1);
 
     _paretoFrontQuickView->setSource(QUrl("qrc:/qml/paretofrontview.qml"));
     ui->gridLayout_12->addWidget(QWidget::createWindowContainer(_paretoFrontQuickView, ui->paretoFrontViewWidget), 0, 0, 1, 1);
 
-//    _welcomeQuickView->setSource(QUrl("qrc:/qml/welcomeview.qml"));
-//    ui->gridLayout_13->addWidget(QWidget::createWindowContainer(_welcomeQuickView, ui->welcomeViewWidget), 0, 0, 1, 1);
-
     _designSpaceQuickView->setSource(QUrl("qrc:/qml/designspaceview.qml"));
     ui->gridLayout_15->addWidget(QWidget::createWindowContainer(_designSpaceQuickView, ui->designSpaceLocationViewWidget), 0, 0, 1, 1);
 
-    _modelQuickView->setResizeMode(QQuickView::SizeRootObjectToView);
     _designSpaceQuickView->setResizeMode(QQuickView::SizeRootObjectToView);
     _metricsQuickView->setResizeMode(QQuickView::SizeRootObjectToView);
     _paretoFrontQuickView->setResizeMode(QQuickView::SizeRootObjectToView);
-//    _welcomeQuickView->setResizeMode(QQuickView::SizeRootObjectToView);
 
     readSettings();
 }
@@ -223,8 +213,6 @@ void MainWindow::on_actionFileNewDuseDesign_triggered()
 //                    delete object;
 //                _inputModel = loadXmi(_currentFileName);
 
-                _modelQuickView->setClearBeforeRendering(true);
-                _modelQuickView->setSource(QUrl("qrc:/qml/modelview.qml"));
                 addToView(_inputModel[0]);
 
 //                QScriptValue value = _engine.evaluate("function checkProfile() \
@@ -353,24 +341,25 @@ void MainWindow::on_centralWidget_currentChanged(int)
 {
 //    if (_currentFileName.isEmpty())
 //        return;
-    if (ui->centralWidget->currentIndex() == 1) {
+//    if (ui->centralWidget->currentIndex() == 1) {
 //        foreach (QWrappedObject *object, _inputModel)
 //            delete object;
 //        _inputModel = loadXmi(_currentFileName);
-        evaluateQualityMetrics();
-    }
-    else if (ui->centralWidget->currentIndex() == 2) {
+//        evaluateQualityMetrics();
+//    }
+//    else if (ui->centralWidget->currentIndex() == 2) {
 //        foreach (QWrappedObject *object, _designSpaceLocation)
 //            delete object;
 //        _designSpaceLocation = loadXmi("/data/devel/qtmodeling/examples/uml/r1.xmi");
-        addToDesignSpaceView(_designSpaceLocation.first());
-        evaluateQualityMetrics();
-    }
-    else if (ui->centralWidget->currentIndex() == 3) {
+//        addToDesignSpaceView(_designSpaceLocation.first());
+//        evaluateQualityMetrics();
+//    }
+//    else if (ui->centralWidget->currentIndex() == 3) {
 //        foreach (QWrappedObject *object, _designSpaceLocation)
 //            delete object;
-    }
+//    }
 }
+
 void MainWindow::on_btnOptimize_clicked()
 {
     progress = new QProgressDialog("Optimizing architecture", "Abort", 0, 100, this);
@@ -413,27 +402,27 @@ void MainWindow::metaModelChanged(QString newMetaModel)
 
 void MainWindow::addToView(QModelingElement *modelingObject, QQuickItem *parent)
 {
-    QQmlContext *context = new QQmlContext(_modelQuickView->engine()->rootContext());
-    //modelingObject->setQmlContextProperties(context);
-    _qmlComponent = new QQmlComponent(_modelQuickView->engine());
-    int x = qrand() % 400;
-    int y = qrand() % 400;
-    _qmlComponent->setData(QString("import QtQuick 2.0\nimport QtModeling.Uml 1.0\n\n%1 { x: %2; y: %3}").arg(QString(modelingObject->asQModelingObject()->metaObject()->className()).remove(QRegularExpression("^Q"))).arg(x).arg(y).toLatin1(), QUrl());
+//    QQmlContext *context = new QQmlContext(_modelQuickView->engine()->rootContext());
+//    //modelingObject->setQmlContextProperties(context);
+//    _qmlComponent = new QQmlComponent(_modelQuickView->engine());
+//    int x = qrand() % 400;
+//    int y = qrand() % 400;
+//    _qmlComponent->setData(QString("import QtQuick 2.0\nimport QtModeling.Uml 1.0\n\n%1 { x: %2; y: %3}").arg(QString(modelingObject->asQModelingObject()->metaObject()->className()).remove(QRegularExpression("^Q"))).arg(x).arg(y).toLatin1(), QUrl());
 
-    QQuickItem *item = 0;
-    if (_qmlComponent->isError()) {
-        qWarning() << _qmlComponent->errors();
-    } else {
-        item = qobject_cast<QQuickItem *>(_qmlComponent->create(context));
-        if (item) {
-            item->setParentItem(parent ? parent:(qobject_cast<QQuickFlickable *>(_modelQuickView->rootObject()))->contentItem());
-        }
-    }
+//    QQuickItem *item = 0;
+//    if (_qmlComponent->isError()) {
+//        qWarning() << _qmlComponent->errors();
+//    } else {
+//        item = qobject_cast<QQuickItem *>(_qmlComponent->create(context));
+//        if (item) {
+//            item->setParentItem(parent ? parent:(qobject_cast<QQuickFlickable *>(_modelQuickView->rootObject()))->contentItem());
+//        }
+//    }
 
-    foreach (QObject *child, modelingObject->asQModelingObject()->children())
-        addToView(dynamic_cast<QModelingElement *>(qModelingElement(child)));
+//    foreach (QObject *child, modelingObject->asQModelingObject()->children())
+//        addToView(dynamic_cast<QModelingElement *>(qModelingElement(child)));
 
-    _qmlComponent->deleteLater();
+//    _qmlComponent->deleteLater();
 }
 
 void MainWindow::addToDesignSpaceView(QModelingElement *modelingObject, QQuickItem *parent)

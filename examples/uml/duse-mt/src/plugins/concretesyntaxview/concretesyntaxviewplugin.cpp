@@ -38,7 +38,7 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#include "welcomedashboardplugin.h"
+#include "concretesyntaxviewplugin.h"
 
 #include <interfaces/iuicontroller.h>
 
@@ -46,18 +46,18 @@
 
 #include <QtWidgets/QWidget>
 
-WelcomeDashboardPlugin::WelcomeDashboardPlugin(QObject *parent) :
+ConcreteSyntaxViewPlugin::ConcreteSyntaxViewPlugin(QObject *parent) :
     DuSE::IPlugin(parent),
-    _welcomeQuickView(new QQuickView)
+    _concreteSyntaxQuickView(new QQuickView)
 {
 }
 
-bool WelcomeDashboardPlugin::initialize(DuSE::ICore *core)
+bool ConcreteSyntaxViewPlugin::initialize(DuSE::ICore *core)
 {
-    _welcomeQuickView->setSource(QUrl("qrc:/welcomedashboard/welcomedashboard.qml"));
-    _welcomeQuickView->setResizeMode(QQuickView::SizeRootObjectToView);
+    _concreteSyntaxQuickView->setSource(QUrl("qrc:/concretesyntaxview/concretesyntaxview.qml"));
+    _concreteSyntaxQuickView->setResizeMode(QQuickView::SizeRootObjectToView);
 
-    core->uiController()->addCentralWidgetTab(QWidget::createWindowContainer(_welcomeQuickView), "Welcome");
+    core->uiController()->addCentralWidgetTab(QWidget::createWindowContainer(_concreteSyntaxQuickView), "Concrete Syntax");
 
     return true;
 }

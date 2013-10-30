@@ -4,4 +4,5 @@ CONFIG   += ordered
 SUBDIRS = \
     modelinspector \
     javascriptconsole \
-    welcomedashboard
+    welcomedashboard \
+    concretesyntaxview

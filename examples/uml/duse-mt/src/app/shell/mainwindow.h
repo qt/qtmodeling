@@ -125,8 +125,6 @@ private:
     NewDuseDesign *_newDuseDesign;
 
     QQmlComponent *_qmlComponent;
-//    QQuickView *_welcomeQuickView;
-    QQuickView *_modelQuickView;
     QQuickView *_designSpaceQuickView;
     QQuickView *_metricsQuickView;
     QQuickView *_paretoFrontQuickView;
