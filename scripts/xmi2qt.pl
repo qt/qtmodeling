@@ -56,6 +56,10 @@ my $tt = Template->new(INTERPOLATE  => 1, INCLUDE_PATH => 'templates/');
 my $xmi = XML::XPath->new(filename => $options{i});
 my $namespace = $xmi->findvalue('//uml:Package/@name');
 
+if ($namespace eq "") {
+    $namespace = $xmi->findvalue('//uml:Profile/@name');
+}
+
 make_path($options{o}."/".$namespace."/"."qobjects");
 
 {
@@ -98,6 +102,9 @@ close STDOUT;
 }
 
 my $classset = $xmi->find('//packagedElement[@xmi:type=\'uml:Class\']');
+if ($classset->size() == 0) {
+    $classset = $xmi->find('//packagedElement[@xmi:type=\'uml:Stereotype\']');
+}
 foreach my $class ($classset->get_nodelist) {
     my $className = $class->findvalue('@name');
     die "could not fork" unless defined(my $pid = fork);

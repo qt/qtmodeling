@@ -79,10 +79,17 @@ int main ()
     // Adding attribute to stereotype
     QUmlPrimitiveType *booleanPrimitiveType = new QUmlPrimitiveType;
     booleanPrimitiveType->setName("boolean");
+
     QUmlProperty *property = new QUmlProperty;
     property->setName("isTransient");
     property->setType(booleanPrimitiveType);
     stereotype->addOwnedAttribute(property);
+
+    // Adding stereotype attribute that play the role of extension end
+    QUmlProperty *stereotypeProperty = new QUmlProperty;
+    stereotypeProperty->setName("base_class");
+    stereotypeProperty->setType(class_);
+    stereotype->addOwnedAttribute(stereotypeProperty);
 
     // Create UML meta-model element import
     QUmlElementImport *elementImport = new QUmlElementImport;
@@ -106,10 +113,6 @@ int main ()
     // Create extension
     QUmlExtension *extension = new QUmlExtension;
     extension->setName("class_stereotype");
-
-    QUmlProperty *stereotypeProperty = new QUmlProperty;
-    stereotypeProperty->setName("base_class");
-    stereotypeProperty->setType(class_);
 
     QUmlExtensionEnd *extensionEnd = new QUmlExtensionEnd;
     extensionEnd->setName("extension_stereotype");
