@@ -6,7 +6,7 @@
 
 include(../../duse-mt-plugin.pri)
 
-QT += widgets
+QT += widgets script
 
 SOURCES += javascriptconsoleplugin.cpp
 

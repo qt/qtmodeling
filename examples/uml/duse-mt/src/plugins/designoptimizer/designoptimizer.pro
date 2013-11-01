@@ -4,6 +4,8 @@
 #
 #-------------------------------------------------
 
+QT += quick
+
 include(../../duse-mt-plugin.pri)
 
 SOURCES += designoptimizerplugin.cpp

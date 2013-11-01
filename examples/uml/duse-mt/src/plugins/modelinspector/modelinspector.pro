@@ -4,6 +4,8 @@
 #
 #-------------------------------------------------
 
+QT += widgets modelingwidgets
+
 include(../../duse-mt-plugin.pri)
 
 SOURCES += modelinspectorplugin.cpp

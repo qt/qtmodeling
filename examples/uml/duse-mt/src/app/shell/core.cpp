@@ -44,6 +44,8 @@
 #include "projectcontroller.h"
 #include "uicontroller.h"
 
+#include <QtCore/QDebug>
+
 namespace DuSE
 {
 
@@ -96,9 +98,21 @@ bool Core::initializeInternal()
     if (!_uiController)
         _uiController = new UiController;
 
-    _pluginController->initialize();
-    _projectController->initialize();
-    _uiController->initialize();
+    if (!_pluginController->initialize()) {
+        qDebug() << "Error when initializing plugin controller:";
+        qDebug();
+        qDebug() << _pluginController->errorStrings();
+        qDebug();
+    }
+    if (!_projectController->initialize()) {
+        qDebug() << "Error when initializing project controller:";
+        qDebug();
+        qDebug() << _projectController->errorStrings();
+        qDebug();
+    }
+    if (!_uiController->initialize()) {
+        qDebug() << "Error when initializing UI controller:";
+    }
 
     return true;
 }

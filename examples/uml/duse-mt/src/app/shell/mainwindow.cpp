@@ -72,7 +72,7 @@
 
 #include <QtQuick/QQuickView>
 #include <QtQuick/QQuickItem>
-#include "QtQuick/private/qquickflickable_p.h"
+//#include "QtQuick/private/qquickflickable_p.h"
 
 #include <interfaces/icore.h>
 #include <interfaces/iplugin.h>

@@ -4,8 +4,7 @@
 #
 #-------------------------------------------------
 
-#QT = modelingwidgets script quick quick-private qml duse
-QT = widgets modelingwidgets script quick quick-private qml
+QT += widgets modeling
 
 include(../../duse-mt.pri)
 
