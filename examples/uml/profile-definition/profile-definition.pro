@@ -1,5 +1,5 @@
 TEMPLATE = app
-TARGET = profiles
+TARGET = profile-definition
 DEPENDPATH += .
 INCLUDEPATH += .
 
