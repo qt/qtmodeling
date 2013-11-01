@@ -133,6 +133,9 @@ void JavaScriptConsolePlugin::setSelfProperty(QModelingObject *modelingObject)
 
 void JavaScriptConsolePlugin::setRootAndInputProperties(QList<QModelingObject *> modelingObjects)
 {
+    if (modelingObjects.size() == 0)
+        return;
+
     QModelingObject *modelingObject = modelingObjects.at(0);
     _engine.globalObject().setProperty(modelingObject->objectName(), _engine.newQObject(modelingObject));
 
