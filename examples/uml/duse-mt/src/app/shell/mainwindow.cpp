@@ -47,6 +47,7 @@
 #include <QtCore/QTimer>
 #include <QtCore/QSettings>
 #include <QtCore/QJsonArray>
+#include <QtCore/QJsonObject>
 #include <QtCore/QPluginLoader>
 #include <QtCore/QStringListModel>
 

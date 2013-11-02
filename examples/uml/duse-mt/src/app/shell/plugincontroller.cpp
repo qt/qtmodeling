@@ -49,6 +49,7 @@
 
 #include <QtCore/QDir>
 #include <QtCore/QStringList>
+#include <QtCore/QJsonObject>
 #include <QtCore/QPluginLoader>
 #include <QtCore/QCoreApplication>
 
