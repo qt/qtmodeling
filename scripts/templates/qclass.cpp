@@ -89,6 +89,7 @@ Q${namespace}${className}::Q${namespace}${className}([%- IF class.findvalue("@is
 [%- FOREACH attribute = class.findnodes("ownedAttribute[(@isDerived=\"false\" or not(@isDerived)) or (@isDerivedUnion and @isDerivedUnion=\"true\")]") -%]
     [%- SET defaultType = attribute.findvalue("defaultValue/@xmi:type") -%]
     [%- SET type = QT_TYPE(namespace, attribute) -%]
+    [%- SET originalType = attribute.findvalue("@type") -%]
     [%- IF defaultType == "uml:LiteralBoolean" || defaultType == "uml:InstanceValue" || defaultType == "uml:LiteralInteger" || defaultType == "uml:LiteralUnlimitedNatural" || type.match('\*$') -%]
         [%- IF found == "false" %] :
 [% SET found = "true" -%]
@@ -121,12 +122,12 @@ Q${namespace}${className}::Q${namespace}${className}([%- IF class.findvalue("@is
         [%- ELSIF type.match('\*$') -%]
     _[% QT_ATTRIBUTE(attribute) %](0)
         [%- END -%]
-    [%- ELSIF xmi.findvalue("//packagedElement[@xmi:id=\"${type}\"]/xmi:type") == "uml:Enumeration" -%]
+    [%- ELSIF xmi.findvalue("//packagedElement[@xmi:id=\"${originalType}\"]/@xmi:type") == "uml:Enumeration" -%]
         [%- IF found == "false" %] :
 [% SET found = "true" -%]
         [%- ELSE %],
 [% END -%]
-    _[% QT_ATTRIBUTE(attribute) %](Qt${namespace}::${type}None)
+    _[% QT_ATTRIBUTE(attribute) %](Qt${namespace}::${originalType}None)
     [%- END -%]
 [%- END %]
 {
