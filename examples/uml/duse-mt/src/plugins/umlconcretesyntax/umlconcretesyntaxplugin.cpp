@@ -38,30 +38,16 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef CONCRETESYNTAXVIEWPLUGIN_H
-#define CONCRETESYNTAXVIEWPLUGIN_H
+#include "umlconcretesyntaxplugin.h"
 
-#include <interfaces/iplugin.h>
-
-class QQuickView;
-class QQuickItem;
-
-class ConcreteSyntaxViewPlugin : public DuSE::IPlugin
+UmlConcreteSyntaxPlugin::UmlConcreteSyntaxPlugin(QObject *parent) :
+    DuSE::IPlugin(parent)
 {
-    Q_OBJECT
-    Q_PLUGIN_METADATA(IID "org.liveblue.DuSE.IPlugin" FILE "concretesyntaxview.json")
+}
 
-public:
-    ConcreteSyntaxViewPlugin(QObject *parent = 0);
-
-    virtual bool initialize(DuSE::ICore *core);
-
-private Q_SLOTS:
-    void addToView(QObject *selectedModelingObject, QQuickItem *parent = 0);
-
-private:
-    QQuickView *_concreteSyntaxQuickView;
-};
-
-#endif // CONCRETESYNTAXVIEWPLUGIN_H
+bool UmlConcreteSyntaxPlugin::initialize(DuSE::ICore *core)
+{
+    Q_UNUSED(core);
+    return true;
+}
 

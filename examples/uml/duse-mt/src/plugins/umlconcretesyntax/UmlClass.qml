@@ -38,30 +38,50 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef CONCRETESYNTAXVIEWPLUGIN_H
-#define CONCRETESYNTAXVIEWPLUGIN_H
+import QtQuick 2.0
 
-#include <interfaces/iplugin.h>
-
-class QQuickView;
-class QQuickItem;
-
-class ConcreteSyntaxViewPlugin : public DuSE::IPlugin
-{
-    Q_OBJECT
-    Q_PLUGIN_METADATA(IID "org.liveblue.DuSE.IPlugin" FILE "concretesyntaxview.json")
-
-public:
-    ConcreteSyntaxViewPlugin(QObject *parent = 0);
-
-    virtual bool initialize(DuSE::ICore *core);
-
-private Q_SLOTS:
-    void addToView(QObject *selectedModelingObject, QQuickItem *parent = 0);
-
-private:
-    QQuickView *_concreteSyntaxQuickView;
-};
-
-#endif // CONCRETESYNTAXVIEWPLUGIN_H
-
+UmlElement {
+    UmlSlot {
+        id: nameSlot
+        anchors.top: parent.top
+        Text {
+            id: label
+            text: element.name
+            anchors.centerIn: parent
+            font { family: "Korolev"; italic: element.isAbstract }
+        }
+    }
+    UmlSlot {
+        id: attributeSlot
+        anchors { top: nameSlot.bottom; topMargin: -1 }
+        height: (parent.height - nameSlot.height)/2
+        ListView {
+            model: element.ownedAttributes
+            anchors { fill: parent; margins: 4 }
+            delegate: Text {
+                text: visibility(modelData.visibility) + modelData.name + ": " + (modelData.type ? modelData.type.name:"<no type>")
+                font { family: "Korolev" }
+            }
+        }
+    }
+    UmlSlot {
+        anchors { top: attributeSlot.bottom; topMargin: -1; bottom: parent.bottom }
+        ListView {
+            model: element.ownedOperations
+            anchors { fill: parent; margins: 4 }
+            delegate: Text {
+                text: visibility(modelData.visibility) + modelData.name
+                font { family: "Korolev" }
+            }
+        }
+    }
+    function visibility(visibilityEnum)
+    {
+        switch (visibilityEnum) {
+        case 0: return "+"
+        case 1: return "-"
+        case 2: return "#"
+        case 3: return "~"
+        }
+    }
+}

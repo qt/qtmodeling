@@ -38,30 +38,38 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef CONCRETESYNTAXVIEWPLUGIN_H
-#define CONCRETESYNTAXVIEWPLUGIN_H
+import QtQuick 2.0
 
-#include <interfaces/iplugin.h>
-
-class QQuickView;
-class QQuickItem;
-
-class ConcreteSyntaxViewPlugin : public DuSE::IPlugin
-{
-    Q_OBJECT
-    Q_PLUGIN_METADATA(IID "org.liveblue.DuSE.IPlugin" FILE "concretesyntaxview.json")
-
-public:
-    ConcreteSyntaxViewPlugin(QObject *parent = 0);
-
-    virtual bool initialize(DuSE::ICore *core);
-
-private Q_SLOTS:
-    void addToView(QObject *selectedModelingObject, QQuickItem *parent = 0);
-
-private:
-    QQuickView *_concreteSyntaxQuickView;
-};
-
-#endif // CONCRETESYNTAXVIEWPLUGIN_H
-
+UmlElement {
+    width: 60
+    height: 40
+    property alias name: label.text
+    property alias portsLength: repeater.model
+    UmlSlot {
+        anchors { top: parent.top; bottom: parent.bottom }
+        Text {
+            id: label
+            anchors.centerIn: parent
+            font { family: "Korolev"; italic: element.isAbstract }
+        }
+        Rectangle {
+            border.width: 1
+            width: 18; height: 18
+            anchors { right: parent.right; rightMargin: 6; verticalCenter: parent.verticalCenter }
+            Rectangle { border.width: 1; width: 12; height: 5; x: -6; y: 3 }
+            Rectangle { border.width: 1; width: 12; height: 5; x: -6; y: 10 }
+        }
+    }
+    Row {
+        width: parent.width
+        spacing: (parent.width - 14*ports.length)/(ports.length-1)
+        anchors { bottom: parent.bottom; bottomMargin: -7 }
+        Repeater {
+            id: repeater
+            Rectangle {
+                border.width: 1
+                width: 14; height: 14
+            }
+        }
+    }
+}

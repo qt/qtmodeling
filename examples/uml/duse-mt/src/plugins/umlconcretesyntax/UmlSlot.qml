@@ -38,30 +38,12 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef CONCRETESYNTAXVIEWPLUGIN_H
-#define CONCRETESYNTAXVIEWPLUGIN_H
+import QtQuick 2.0
 
-#include <interfaces/iplugin.h>
-
-class QQuickView;
-class QQuickItem;
-
-class ConcreteSyntaxViewPlugin : public DuSE::IPlugin
-{
-    Q_OBJECT
-    Q_PLUGIN_METADATA(IID "org.liveblue.DuSE.IPlugin" FILE "concretesyntaxview.json")
-
-public:
-    ConcreteSyntaxViewPlugin(QObject *parent = 0);
-
-    virtual bool initialize(DuSE::ICore *core);
-
-private Q_SLOTS:
-    void addToView(QObject *selectedModelingObject, QQuickItem *parent = 0);
-
-private:
-    QQuickView *_concreteSyntaxQuickView;
-};
-
-#endif // CONCRETESYNTAXVIEWPLUGIN_H
-
+Rectangle {
+    width: parent.width
+    height: childrenRect.height + 10
+    border { width: 1; color: "black" }
+    clip: true
+    color: "transparent"
+}

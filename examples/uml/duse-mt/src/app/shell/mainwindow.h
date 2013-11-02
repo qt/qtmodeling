@@ -94,7 +94,6 @@ private Q_SLOTS:
     void evaluateQualityMetrics();
 
     void metaModelChanged(QString newMetaModel);
-    void addToView(QModelingElement *modelingObject, QQuickItem *parent = 0);
     void addToDesignSpaceView(QModelingElement *modelingObject, QQuickItem *parent = 0);
     void addToPareto(QModelingElement *modelingObject, int pos);
 

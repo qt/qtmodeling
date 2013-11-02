@@ -43,8 +43,16 @@
 #include <interfaces/iuicontroller.h>
 
 #include <QtQuick/QQuickView>
+#include <QtQuick/QQuickItem>
+
+#include "private/qquickflickable_p.h"
+
+#include <QtQml/QQmlEngine>
+#include <QtQml/QQmlContext>
 
 #include <QtWidgets/QWidget>
+
+#include <QtCore/QRegularExpression>
 
 ConcreteSyntaxViewPlugin::ConcreteSyntaxViewPlugin(QObject *parent) :
     DuSE::IPlugin(parent),
@@ -58,7 +66,30 @@ bool ConcreteSyntaxViewPlugin::initialize(DuSE::ICore *core)
     _concreteSyntaxQuickView->setResizeMode(QQuickView::SizeRootObjectToView);
 
     core->uiController()->addCentralWidgetTab(QWidget::createWindowContainer(_concreteSyntaxQuickView), "Concrete Syntax");
+    connect(core->uiController(), &DuSE::IUiController::addToView, this, &ConcreteSyntaxViewPlugin::addToView);
 
     return true;
+}
+
+void ConcreteSyntaxViewPlugin::addToView(QObject *selectedModelingObject, QQuickItem *parent)
+{
+    QQmlContext *context = new QQmlContext(_concreteSyntaxQuickView->engine()->rootContext());
+    context->setContextProperty(QStringLiteral("element"), selectedModelingObject);
+    QQmlComponent *qmlComponent = new QQmlComponent(_concreteSyntaxQuickView->engine());
+    int x = qrand() % 400;
+    int y = qrand() % 400;
+    qmlComponent->setData(QString("import QtQuick 2.0\nimport QtModeling.Uml 1.0\n\n%1 { x: %2; y: %3}").arg(QString(selectedModelingObject->metaObject()->className()).remove(QRegularExpression("^Q")).remove(QRegularExpression("Object$"))).arg(x).arg(y).toLatin1(), QUrl());
+
+    QQuickItem *item = 0;
+    if (qmlComponent->isError()) {
+        qWarning() << qmlComponent->errors();
+    } else {
+        item = qobject_cast<QQuickItem *>(qmlComponent->create(context));
+        if (item) {
+            item->setParentItem(parent ? parent:(qobject_cast<QQuickFlickable *>(_concreteSyntaxQuickView->rootObject()))->contentItem());
+        }
+    }
+
+    qmlComponent->deleteLater();
 }
 

@@ -51,6 +51,7 @@ class QModelingObject;
 
 class QAction;
 class QWidget;
+class QQuickItem;
 class QMainWindow;
 
 namespace DuSE
@@ -76,6 +77,7 @@ public:
 Q_SIGNALS:
     void currentModelingObjectChanged(QModelingObject *currentModelingObject);
     void updateCurrentModelingObject();
+    void addToView(QObject *selectedModelingObject, QQuickItem *parent = 0);
 
 protected:
     IUiController();

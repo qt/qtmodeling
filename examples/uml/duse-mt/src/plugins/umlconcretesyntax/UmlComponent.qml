@@ -38,30 +38,48 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef CONCRETESYNTAXVIEWPLUGIN_H
-#define CONCRETESYNTAXVIEWPLUGIN_H
+import QtQuick 2.0
 
-#include <interfaces/iplugin.h>
-
-class QQuickView;
-class QQuickItem;
-
-class ConcreteSyntaxViewPlugin : public DuSE::IPlugin
-{
-    Q_OBJECT
-    Q_PLUGIN_METADATA(IID "org.liveblue.DuSE.IPlugin" FILE "concretesyntaxview.json")
-
-public:
-    ConcreteSyntaxViewPlugin(QObject *parent = 0);
-
-    virtual bool initialize(DuSE::ICore *core);
-
-private Q_SLOTS:
-    void addToView(QObject *selectedModelingObject, QQuickItem *parent = 0);
-
-private:
-    QQuickView *_concreteSyntaxQuickView;
-};
-
-#endif // CONCRETESYNTAXVIEWPLUGIN_H
-
+UmlElement {
+    UmlSlot {
+        id: nameSlot
+        anchors.top: parent.top
+        Text {
+            text: element.name
+            anchors.centerIn: parent
+            font { family: "Korolev"; italic: element.isAbstract }
+        }
+        Rectangle {
+            border.width: 1
+            width: 18; height: 18
+            anchors { right: parent.right; rightMargin: 6; verticalCenter: parent.verticalCenter }
+            Rectangle { border.width: 1; width: 12; height: 5; x: -6; y: 3 }
+            Rectangle { border.width: 1; width: 12; height: 5; x: -6; y: 10 }
+        }
+    }
+    UmlSlot {
+        id: partSlot
+        anchors { top: nameSlot.bottom; topMargin: -1; bottom: parent.bottom }
+    }
+    Row {
+        width: parent.width
+        spacing: (parent.width - 14*ports.length)/(ports.length-1)
+        anchors { bottom: parent.bottom; bottomMargin: -7 }
+        Repeater {
+            model: ports.length
+            Rectangle {
+                border.width: 1
+                width: 14; height: 14
+            }
+        }
+    }
+    Component.onCompleted: {
+        var component = Qt.createComponent("UmlProperty.qml")
+        if (component.status == Component.Ready) {
+            var partLength = parts.length
+            for (var i = 0; i < partLength; ++i) {
+                component.createObject(partSlot, { name: parts[i].name + ":" + parts[i].type.name })
+            }
+        }
+    }
+}

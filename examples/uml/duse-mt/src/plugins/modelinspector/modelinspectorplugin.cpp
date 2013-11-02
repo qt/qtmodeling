@@ -86,6 +86,7 @@ bool ModelInspectorPlugin::initialize(DuSE::ICore *core)
     connect(_modelingObjectView, SIGNAL(modelingObjectChanged(QModelingObject*)), core->uiController(), SIGNAL(currentModelingObjectChanged(QModelingObject*)));
     connect(_propertyModel, &QModelingObjectPropertyModel::indexChanged, _modelingObjectModel, &QModelingObjectModel::updateIndex);
     connect(core->uiController(), SIGNAL(updateCurrentModelingObject()), this, SLOT(updateCurrentModelingObject()));
+    connect(_modelingObjectView, SIGNAL(addToView(QObject*,QQuickItem*)), core->uiController(), SIGNAL(addToView(QObject*,QQuickItem*)));
 
     return true;
 }

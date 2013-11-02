@@ -298,31 +298,6 @@ void MainWindow::metaModelChanged(QString newMetaModel)
     _newModel->lstTopLevelContainers->setCurrentRow(0);
 }
 
-void MainWindow::addToView(QModelingElement *modelingObject, QQuickItem *parent)
-{
-//    QQmlContext *context = new QQmlContext(_modelQuickView->engine()->rootContext());
-//    //modelingObject->setQmlContextProperties(context);
-//    _qmlComponent = new QQmlComponent(_modelQuickView->engine());
-//    int x = qrand() % 400;
-//    int y = qrand() % 400;
-//    _qmlComponent->setData(QString("import QtQuick 2.0\nimport QtModeling.Uml 1.0\n\n%1 { x: %2; y: %3}").arg(QString(modelingObject->asQModelingObject()->metaObject()->className()).remove(QRegularExpression("^Q"))).arg(x).arg(y).toLatin1(), QUrl());
-
-//    QQuickItem *item = 0;
-//    if (_qmlComponent->isError()) {
-//        qWarning() << _qmlComponent->errors();
-//    } else {
-//        item = qobject_cast<QQuickItem *>(_qmlComponent->create(context));
-//        if (item) {
-//            item->setParentItem(parent ? parent:(qobject_cast<QQuickFlickable *>(_modelQuickView->rootObject()))->contentItem());
-//        }
-//    }
-
-//    foreach (QObject *child, modelingObject->asQModelingObject()->children())
-//        addToView(dynamic_cast<QModelingElement *>(qModelingElement(child)));
-
-//    _qmlComponent->deleteLater();
-}
-
 void MainWindow::addToDesignSpaceView(QModelingElement *modelingObject, QQuickItem *parent)
 {
 //    QQmlContext *context = new QQmlContext(_designSpaceQuickView->engine()->rootContext());
