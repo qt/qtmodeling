@@ -57,7 +57,7 @@ bool WelcomeDashboardPlugin::initialize(DuSE::ICore *core)
     _welcomeQuickView->setSource(QUrl("qrc:/welcomedashboard/welcomedashboard.qml"));
     _welcomeQuickView->setResizeMode(QQuickView::SizeRootObjectToView);
 
-    core->uiController()->addCentralWidgetTab(QWidget::createWindowContainer(_welcomeQuickView), "Welcome");
+    core->uiController()->addCentralWidgetTab(QWidget::createWindowContainer(_welcomeQuickView), "Welcome", 0);
 
     return true;
 }

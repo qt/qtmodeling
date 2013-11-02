@@ -59,7 +59,7 @@ public:
     virtual void addDockWidget(Qt::DockWidgetArea area, QString name, QWidget *widget);
     virtual void removeDockWidget(const QString &name);
 
-    virtual void addCentralWidgetTab(QWidget *widget, const QString &label, const QIcon &icon = QIcon());
+    virtual void addCentralWidgetTab(QWidget *widget, const QString &label, int position = -1, const QIcon &icon = QIcon());
     virtual void removeCentralWidgetTab(const QString &name);
 
     virtual void addAction(QAction *action, const QString &menuTitle, const QString &toolbarName = QString());

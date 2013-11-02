@@ -63,6 +63,7 @@ bool UiController::initialize()
     _mainWindow.populatePluginDialog();
     _mainWindow.showMaximized();
     _mainWindow.readSettings();
+    _mainWindow.ui->centralWidget->setCurrentIndex(0);
 
     return true;
 }
@@ -89,9 +90,12 @@ void UiController::removeDockWidget(const QString &name)
             delete child;
 }
 
-void UiController::addCentralWidgetTab(QWidget *widget, const QString &label, const QIcon &icon)
+void UiController::addCentralWidgetTab(QWidget *widget, const QString &label, int position, const QIcon &icon)
 {
-    _mainWindow.ui->centralWidget->addTab(widget, icon, label);
+    if (position == -1)
+        _mainWindow.ui->centralWidget->addTab(widget, icon, label);
+    else
+        _mainWindow.ui->centralWidget->insertTab(position, widget, icon, label);
     widget->setObjectName(label);
 }
 
