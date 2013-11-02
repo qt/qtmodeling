@@ -1,15 +1,13 @@
 TARGET = qsaduseprofilemetamodel
 
 PLUGIN_TYPE = metamodels
-PLUGIN_CLASS_NAME = QSADuseMetaModelPlugin
+PLUGIN_CLASS_NAME = QSADuseProfileMetaModelPlugin
 load(qt_plugin)
 
-QT += qml script saduseprofile
+QT += modeling saduseprofile
 
-HEADERS = qsaduseprofilemetamodelplugin.h \
-          qsaduseprofilemetamodel.h
+HEADERS = qsaduseprofilemetamodelplugin.h
 
-SOURCES = qsaduseprofilemetamodelplugin.cpp \
-          qsaduseprofilemetamodel.cpp
+SOURCES = qsaduseprofilemetamodelplugin.cpp
 
 OTHER_FILES += saduseprofile.json

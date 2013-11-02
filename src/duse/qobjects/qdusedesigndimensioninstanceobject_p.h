@@ -38,34 +38,40 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef QDUSEDESIGNDIMENSIONINSTANCE_P_H
-#define QDUSEDESIGNDIMENSIONINSTANCE_P_H
+#ifndef QDUSEDESIGNDIMENSIONINSTANCEOBJECT_H
+#define QDUSEDESIGNDIMENSIONINSTANCEOBJECT_H
 
-// Base class includes
-#include "private/qwrappedobject_p.h"
+#include <QtDuse/QtDuseGlobal>
 
-#include "QtDuse/QDuseDesignDimensionInstance"
+#include <QtModeling/QModelingObject>
 
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtDuse)
-class QDuseDesignDimensionInstance;
 
-class Q_DUSE_EXPORT QDuseDesignDimensionInstancePrivate : public QWrappedObjectPrivate
+class QDuseDesignDimensionInstance;
+class QModelingObjectPrivate;
+class Q_DUSE_EXPORT QDuseDesignDimensionInstanceObject : public QModelingObject
 {
-    Q_DECLARE_PUBLIC(QDuseDesignDimensionInstance)
+    Q_OBJECT
+    Q_DISABLE_COPY(QDuseDesignDimensionInstanceObject)
+    Q_DECLARE_PRIVATE(QModelingObject)
 
 public:
-    explicit QDuseDesignDimensionInstancePrivate();
-    virtual ~QDuseDesignDimensionInstancePrivate();
+    Q_INVOKABLE explicit QDuseDesignDimensionInstanceObject(QDuseDesignDimensionInstance *modelingElement);
 
+public Q_SLOTS:
+
+protected:
+    virtual void setGroupProperties();
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE
 
 QT_END_HEADER
 
-#endif // QDUSEDESIGNDIMENSIONINSTANCE_P_H
+#endif // QDUSEDESIGNDIMENSIONINSTANCEOBJECT_H
 

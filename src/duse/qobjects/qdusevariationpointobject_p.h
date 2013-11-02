@@ -3,7 +3,7 @@
 ** Copyright (C) 2013 Sandro S. Andrade <sandroandrade@kde.org>
 ** Contact: http://www.qt-project.org/legal
 **
-** This file is part of the QtSADuseProfile module of the Qt Toolkit.
+** This file is part of the QtDuse module of the Qt Toolkit.
 **
 ** $QT_BEGIN_LICENSE:LGPL$
 ** Commercial License Usage
@@ -38,35 +38,58 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#include "qsaduseprofilemetamodel.h"
+#ifndef QDUSEVARIATIONPOINTOBJECT_H
+#define QDUSEVARIATIONPOINTOBJECT_H
 
-#include <QtQml/QtQml>
+#include <QtDuse/QtDuseGlobal>
+
+#include <QtModeling/QModelingObject>
+
+QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
 
-QScriptValue dummyFunction(QScriptContext *context, QScriptEngine *engine)
+QT_MODULE(QtDuse)
+
+class QDuseVariationPoint;
+class QModelingObjectPrivate;
+class Q_DUSE_EXPORT QDuseVariationPointObject : public QModelingObject
 {
-    Q_UNUSED(context);
-    Q_UNUSED(engine);
-    return QScriptValue();
-}
+    Q_OBJECT
+    Q_DISABLE_COPY(QDuseVariationPointObject)
+    Q_DECLARE_PRIVATE(QModelingObject)
 
-void QSADuseProfileMetaModel::init(QScriptEngine *scriptEngine)
-{
-    qRegisterMetaType<QSADuseProfileProcessComponent *>();
-    qRegisterMetaType< QList<QSADuseProfileProcessComponent *> >();
-    qRegisterMetaType< QSet<QSADuseProfileProcessComponent *> >();
+    // Properties [VariationPoint]
+    Q_PROPERTY(QString name READ name WRITE setName)
+    Q_PROPERTY(QString rationale READ rationale WRITE setRationale)
+    Q_PROPERTY(QString preChangeValidationRule READ preChangeValidationRule WRITE setPreChangeValidationRule)
+    Q_PROPERTY(QString modelChange READ modelChange WRITE setModelChange)
 
-    qmlRegisterType<QSADuseProfileProcessComponent>();
+public:
+    Q_INVOKABLE explicit QDuseVariationPointObject(QDuseVariationPoint *modelingElement);
 
-    if (scriptEngine) {
-        QScriptValue prototype = scriptEngine->newQObject(new QSADuseProfileProcessComponent);
-        scriptEngine->setDefaultPrototype(qMetaTypeId<QSADuseProfileProcessComponent *>(), prototype);
-        qScriptRegisterMetaType(scriptEngine, qSetToScriptValue<QSADuseProfileProcessComponent>, scriptValueToQSet<QSADuseProfileProcessComponent>, prototype);
-        qScriptRegisterMetaType(scriptEngine, qListToScriptValue<QSADuseProfileProcessComponent>, scriptValueToQList<QSADuseProfileProcessComponent>, prototype);
+    // Owned attributes [VariationPoint]
+    Q_INVOKABLE QString name() const;
+    Q_INVOKABLE QString rationale() const;
+    Q_INVOKABLE QString preChangeValidationRule() const;
+    Q_INVOKABLE QString modelChange() const;
 
-        scriptEngine->globalObject().setProperty("QSADuseProfileProcessComponent", scriptEngine->newFunction(dummyFunction, prototype));
-    }
-}
+public Q_SLOTS:
+
+    // Slots for owned attributes [VariationPoint]
+    void setName(QString name);
+    void setRationale(QString rationale);
+    void setPreChangeValidationRule(QString preChangeValidationRule);
+    void setModelChange(QString modelChange);
+
+protected:
+    virtual void setGroupProperties();
+    virtual void setPropertyData();
+};
 
 QT_END_NAMESPACE
+
+QT_END_HEADER
+
+#endif // QDUSEVARIATIONPOINTOBJECT_H
+

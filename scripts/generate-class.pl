@@ -54,14 +54,8 @@ getopt("oic",\%options);
 my $tt = Template->new(INTERPOLATE  => 1, INCLUDE_PATH => 'templates/');
 
 my $xmi = XML::XPath->new(filename => $options{i});
-my $namespace = $xmi->findvalue('//uml:Package/@name');
-if ($namespace eq "") {
-    $namespace = $xmi->findvalue('//uml:Profile/@name');
-}
-my $classset = $xmi->findnodes('//packagedElement[@xmi:type=\'uml:Class\' and @name=\'' . $options{c} . '\']');
-if ($classset->size() == 0) {
-    $classset = $xmi->findnodes('//packagedElement[@xmi:type=\'uml:Stereotype\' and @name=\'' . $options{c} . '\']');
-}
+my $namespace = $xmi->findvalue('//uml:Package/@name | //uml:Profile/@name');
+my $classset = $xmi->findnodes('//packagedElement[(@xmi:type=\'uml:Class\' or @xmi:type=\'uml:Stereotype\') and @name=\'' . $options{c} . '\']');
 
 binmode STDOUT, ':utf8';
 

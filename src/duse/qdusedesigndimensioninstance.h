@@ -43,8 +43,7 @@
 
 #include <QtDuse/QtDuseGlobal>
 
-// Base class includes
-#include <QtWrappedObjects/QWrappedObject>
+#include <QtModeling/QModelingElement>
 
 QT_BEGIN_HEADER
 
@@ -52,27 +51,20 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtDuse)
 
-class QDuseDesignDimensionInstancePrivate;
-
-class Q_DUSE_EXPORT QDuseDesignDimensionInstance : public QWrappedObject
+class Q_DUSE_EXPORT QDuseDesignDimensionInstance : public QModelingElement
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QDuse")
-
-    Q_DISABLE_COPY(QDuseDesignDimensionInstance)
-    Q_DECLARE_PRIVATE(QDuseDesignDimensionInstance)
-
 public:
-    Q_INVOKABLE explicit QDuseDesignDimensionInstance(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QDuseDesignDimensionInstance();
+    explicit QDuseDesignDimensionInstance(bool createQModelingObject = true);
 
-    virtual void setPropertyData();
+    virtual QModelingElement *clone() const;
+
 
 protected:
-    explicit QDuseDesignDimensionInstance(QDuseDesignDimensionInstancePrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
 };
 
 QT_END_NAMESPACE
+
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE(QDuseDesignDimensionInstance) *)
 
 QT_END_HEADER
 

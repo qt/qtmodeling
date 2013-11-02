@@ -39,22 +39,13 @@
 **
 ****************************************************************************/
 #include "qdusedesigndimension.h"
-#include "qdusedesigndimension_p.h"
 
-#include <QtDuse/QDuseVariationPoint>
+#include "private/qdusedesigndimensionobject_p.h"
+
 #include <QtDuse/QDuseDesignDimensionInstance>
-
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
+#include <QtDuse/QDuseVariationPoint>
 
 QT_BEGIN_NAMESPACE
-
-QDuseDesignDimensionPrivate::QDuseDesignDimensionPrivate()
-{
-}
-
-QDuseDesignDimensionPrivate::~QDuseDesignDimensionPrivate()
-{
-}
 
 /*!
     \class QDuseDesignDimension
@@ -63,212 +54,161 @@ QDuseDesignDimensionPrivate::~QDuseDesignDimensionPrivate()
 
     \brief A design dimension captures a specific degree of freedom when designing architectures in the given application domain. A design dimension entails a set of variation points which denote alternative solutions for such degree of freedom. Optionally, a variation point may define validation rules which should return a true value if that variation point is to be considered valid for the corresponding input model. A variation point may also specify a set of other variation points which should be previously evaluated, defining a sort of design dimension dependency.
  */
-
-QDuseDesignDimension::QDuseDesignDimension(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QWrappedObject(*new QDuseDesignDimensionPrivate, wrapper, parent)
+QDuseDesignDimension::QDuseDesignDimension(bool createQModelingObject)
 {
-    setPropertyData();
+    if (createQModelingObject)
+        _qModelingObject = qobject_cast<QModelingObject *>(new QDuseDesignDimensionObject(this));
 }
 
-QDuseDesignDimension::QDuseDesignDimension(QDuseDesignDimensionPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QWrappedObject(dd, wrapper, parent)
+QModelingElement *QDuseDesignDimension::clone() const
 {
-    setPropertyData();
+    QDuseDesignDimension *c = new QDuseDesignDimension;
+    c->setName(name());
+    c->setInstanceSelectionRule(instanceSelectionRule());
+    foreach (QDuseDesignDimension *element, requiredPreviousEvaluations())
+        c->addRequiredPreviousEvaluation(dynamic_cast<QDuseDesignDimension *>(element->clone()));
+    foreach (QDuseVariationPoint *element, variationPoints())
+        c->addVariationPoint(dynamic_cast<QDuseVariationPoint *>(element->clone()));
+    foreach (QDuseDesignDimensionInstance *element, designDimensionInstances())
+        c->addDesignDimensionInstance(dynamic_cast<QDuseDesignDimensionInstance *>(element->clone()));
+    return c;
 }
 
-QDuseDesignDimension::~QDuseDesignDimension()
-{
-}
-
-// ---------------------------------------------------------------
-// ATTRIBUTES FROM QDuseDesignDimension
-// ---------------------------------------------------------------
-
-/*!
-    The rule for detecting a specific locus of architectural decision related to this design dimension. Such rule relies on the accompanying UML profile for the specific application domain, in order to identify the decision loci.
- */
-QString QDuseDesignDimension::instanceSelectionRule() const
-{
-    // This is a read-write attribute
-
-    Q_D(const QDuseDesignDimension);
-    return d->instanceSelectionRule;
-}
-
-void QDuseDesignDimension::setInstanceSelectionRule(QString instanceSelectionRule)
-{
-    // This is a read-write attribute
-
-    Q_D(QDuseDesignDimension);
-    if (d->instanceSelectionRule != instanceSelectionRule) {
-        d->instanceSelectionRule = instanceSelectionRule;
-    }
-}
-
-/*!
-    The design dimension's variation points (alternative solutions for the design dimension's concern).
- */
-QSet<QDuseVariationPoint *> QDuseDesignDimension::variationPoints() const
-{
-    // This is a read-write attribute
-
-    Q_D(const QDuseDesignDimension);
-    return d->variationPoints;
-}
-
-void QDuseDesignDimension::addVariationPoint(QDuseVariationPoint *variationPoint)
-{
-    // This is a read-write attribute
-
-    Q_D(QDuseDesignDimension);
-    if (!d->variationPoints.contains(variationPoint)) {
-        d->variationPoints.insert(variationPoint);
-        qTopLevelWrapper(variationPoint)->setParent(qTopLevelWrapper(this));
-    }
-}
-
-void QDuseDesignDimension::removeVariationPoint(QDuseVariationPoint *variationPoint)
-{
-    // This is a read-write attribute
-
-    Q_D(QDuseDesignDimension);
-    if (d->variationPoints.contains(variationPoint)) {
-        d->variationPoints.remove(variationPoint);
-        qTopLevelWrapper(variationPoint)->setParent(0);
-    }
-}
-
-/*!
-    A specific design dimension instance created for a identified locus of architectural decision.
- */
-QSet<QDuseDesignDimensionInstance *> QDuseDesignDimension::designDimensionInstances() const
-{
-    // This is a read-write attribute
-
-    Q_D(const QDuseDesignDimension);
-    return d->designDimensionInstances;
-}
-
-void QDuseDesignDimension::addDesignDimensionInstance(QDuseDesignDimensionInstance *designDimensionInstance)
-{
-    // This is a read-write attribute
-
-    Q_D(QDuseDesignDimension);
-    if (!d->designDimensionInstances.contains(designDimensionInstance)) {
-        d->designDimensionInstances.insert(designDimensionInstance);
-        qTopLevelWrapper(designDimensionInstance)->setParent(qTopLevelWrapper(this));
-    }
-}
-
-void QDuseDesignDimension::removeDesignDimensionInstance(QDuseDesignDimensionInstance *designDimensionInstance)
-{
-    // This is a read-write attribute
-
-    Q_D(QDuseDesignDimension);
-    if (d->designDimensionInstances.contains(designDimensionInstance)) {
-        d->designDimensionInstances.remove(designDimensionInstance);
-        qTopLevelWrapper(designDimensionInstance)->setParent(0);
-    }
-}
-
-/*!
-    The design dimensions that must be previously evaluated before this design dimension. Such dependency may be required in order to tackle dependent design dimensions and identify invalid design space locations.
- */
-QSet<QDuseDesignDimension *> QDuseDesignDimension::requiredPreviousEvaluations() const
-{
-    // This is a read-write attribute
-
-    Q_D(const QDuseDesignDimension);
-    return d->requiredPreviousEvaluations;
-}
-
-void QDuseDesignDimension::addRequiredPreviousEvaluation(QDuseDesignDimension *requiredPreviousEvaluation)
-{
-    // This is a read-write attribute
-
-    Q_D(QDuseDesignDimension);
-    if (!d->requiredPreviousEvaluations.contains(requiredPreviousEvaluation)) {
-        d->requiredPreviousEvaluations.insert(requiredPreviousEvaluation);
-    }
-}
-
-void QDuseDesignDimension::removeRequiredPreviousEvaluation(QDuseDesignDimension *requiredPreviousEvaluation)
-{
-    // This is a read-write attribute
-
-    Q_D(QDuseDesignDimension);
-    if (d->requiredPreviousEvaluations.contains(requiredPreviousEvaluation)) {
-        d->requiredPreviousEvaluations.remove(requiredPreviousEvaluation);
-    }
-}
+// OWNED ATTRIBUTES
 
 /*!
     The design dimension's name.
  */
 QString QDuseDesignDimension::name() const
 {
-    // This is a read-write attribute
+    // This is a read-write property
 
-    Q_D(const QDuseDesignDimension);
-    return d->name;
+    return _name;
 }
 
 void QDuseDesignDimension::setName(QString name)
 {
-    // This is a read-write attribute
+    // This is a read-write property
 
-    Q_D(QDuseDesignDimension);
-    if (d->name != name) {
-        d->name = name;
-
-        QWrappedObject *wrappedObject = this;
-        while (wrappedObject->wrapper())
-            wrappedObject = wrappedObject->wrapper();
-        wrappedObject->setObjectName(name);
+    if (_name != name) {
+        _name = name;
     }
 }
 
-void QDuseDesignDimension::setPropertyData()
+/*!
+    The rule for detecting a specific locus of architectural decision related to this design dimension. Such rule relies on the accompanying UML profile for the specific application domain, in order to identify the decision loci.
+ */
+QString QDuseDesignDimension::instanceSelectionRule() const
 {
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDuseDesignDimension")][QString::fromLatin1("instanceSelectionRule")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDuseDesignDimension")][QString::fromLatin1("instanceSelectionRule")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDuseDesignDimension")][QString::fromLatin1("instanceSelectionRule")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The rule for detecting a specific locus of architectural decision related to this design dimension. Such rule relies on the accompanying UML profile for the specific application domain, in order to identify the decision loci.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDuseDesignDimension")][QString::fromLatin1("instanceSelectionRule")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDuseDesignDimension")][QString::fromLatin1("instanceSelectionRule")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDuseDesignDimension")][QString::fromLatin1("instanceSelectionRule")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    // This is a read-write property
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDuseDesignDimension")][QString::fromLatin1("variationPoints")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDuseDesignDimension")][QString::fromLatin1("variationPoints")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDuseDesignDimension")][QString::fromLatin1("variationPoints")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The design dimension's variation points (alternative solutions for the design dimension's concern).");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDuseDesignDimension")][QString::fromLatin1("variationPoints")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDuseDesignDimension")][QString::fromLatin1("variationPoints")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDuseDesignDimension")][QString::fromLatin1("variationPoints")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    return _instanceSelectionRule;
+}
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDuseDesignDimension")][QString::fromLatin1("designDimensionInstances")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("composite");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDuseDesignDimension")][QString::fromLatin1("designDimensionInstances")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDuseDesignDimension")][QString::fromLatin1("designDimensionInstances")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A specific design dimension instance created for a identified locus of architectural decision.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDuseDesignDimension")][QString::fromLatin1("designDimensionInstances")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDuseDesignDimension")][QString::fromLatin1("designDimensionInstances")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDuseDesignDimension")][QString::fromLatin1("designDimensionInstances")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+void QDuseDesignDimension::setInstanceSelectionRule(QString instanceSelectionRule)
+{
+    // This is a read-write property
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDuseDesignDimension")][QString::fromLatin1("requiredPreviousEvaluations")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDuseDesignDimension")][QString::fromLatin1("requiredPreviousEvaluations")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDuseDesignDimension")][QString::fromLatin1("requiredPreviousEvaluations")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The design dimensions that must be previously evaluated before this design dimension. Such dependency may be required in order to tackle dependent design dimensions and identify invalid design space locations.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDuseDesignDimension")][QString::fromLatin1("requiredPreviousEvaluations")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDuseDesignDimension")][QString::fromLatin1("requiredPreviousEvaluations")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDuseDesignDimension")][QString::fromLatin1("requiredPreviousEvaluations")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    if (_instanceSelectionRule != instanceSelectionRule) {
+        _instanceSelectionRule = instanceSelectionRule;
+    }
+}
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDuseDesignDimension")][QString::fromLatin1("name")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDuseDesignDimension")][QString::fromLatin1("name")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDuseDesignDimension")][QString::fromLatin1("name")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The design dimension's name.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDuseDesignDimension")][QString::fromLatin1("name")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDuseDesignDimension")][QString::fromLatin1("name")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDuseDesignDimension")][QString::fromLatin1("name")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+/*!
+    The design dimensions that must be previously evaluated before this design dimension. Such dependency may be required in order to tackle dependent design dimensions and identify invalid design space locations.
+ */
+const QSet<QDuseDesignDimension *> QDuseDesignDimension::requiredPreviousEvaluations() const
+{
+    // This is a read-write property
 
-    QWrappedObject::setPropertyData();
+    return _requiredPreviousEvaluations;
+}
+
+void QDuseDesignDimension::addRequiredPreviousEvaluation(QDuseDesignDimension *requiredPreviousEvaluation)
+{
+    // This is a read-write property
+
+    if (!_requiredPreviousEvaluations.contains(requiredPreviousEvaluation)) {
+        _requiredPreviousEvaluations.insert(requiredPreviousEvaluation);
+        if (requiredPreviousEvaluation && requiredPreviousEvaluation->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(requiredPreviousEvaluation->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeRequiredPreviousEvaluation(QObject *)));
+    }
+}
+
+void QDuseDesignDimension::removeRequiredPreviousEvaluation(QDuseDesignDimension *requiredPreviousEvaluation)
+{
+    // This is a read-write property
+
+    if (_requiredPreviousEvaluations.contains(requiredPreviousEvaluation)) {
+        _requiredPreviousEvaluations.remove(requiredPreviousEvaluation);
+    }
+}
+
+/*!
+    The design dimension's variation points (alternative solutions for the design dimension's concern).
+ */
+const QSet<QDuseVariationPoint *> QDuseDesignDimension::variationPoints() const
+{
+    // This is a read-write property
+
+    return _variationPoints;
+}
+
+void QDuseDesignDimension::addVariationPoint(QDuseVariationPoint *variationPoint)
+{
+    // This is a read-write property
+
+    if (!_variationPoints.contains(variationPoint)) {
+        _variationPoints.insert(variationPoint);
+        if (variationPoint && variationPoint->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(variationPoint->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeVariationPoint(QObject *)));
+        variationPoint->asQModelingObject()->setParent(this->asQModelingObject());
+    }
+}
+
+void QDuseDesignDimension::removeVariationPoint(QDuseVariationPoint *variationPoint)
+{
+    // This is a read-write property
+
+    if (_variationPoints.contains(variationPoint)) {
+        _variationPoints.remove(variationPoint);
+        if (variationPoint->asQModelingObject())
+            variationPoint->asQModelingObject()->setParent(0);
+    }
+}
+
+/*!
+    A specific design dimension instance created for a identified locus of architectural decision.
+ */
+const QSet<QDuseDesignDimensionInstance *> QDuseDesignDimension::designDimensionInstances() const
+{
+    // This is a read-write property
+
+    return _designDimensionInstances;
+}
+
+void QDuseDesignDimension::addDesignDimensionInstance(QDuseDesignDimensionInstance *designDimensionInstance)
+{
+    // This is a read-write property
+
+    if (!_designDimensionInstances.contains(designDimensionInstance)) {
+        _designDimensionInstances.insert(designDimensionInstance);
+        if (designDimensionInstance && designDimensionInstance->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(designDimensionInstance->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeDesignDimensionInstance(QObject *)));
+        designDimensionInstance->asQModelingObject()->setParent(this->asQModelingObject());
+    }
+}
+
+void QDuseDesignDimension::removeDesignDimensionInstance(QDuseDesignDimensionInstance *designDimensionInstance)
+{
+    // This is a read-write property
+
+    if (_designDimensionInstances.contains(designDimensionInstance)) {
+        _designDimensionInstances.remove(designDimensionInstance);
+        if (designDimensionInstance->asQModelingObject())
+            designDimensionInstance->asQModelingObject()->setParent(0);
+    }
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qdusedesigndimension.cpp"
 

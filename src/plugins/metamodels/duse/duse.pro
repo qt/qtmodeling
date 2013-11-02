@@ -4,12 +4,10 @@ PLUGIN_TYPE = metamodels
 PLUGIN_CLASS_NAME = QDuseMetaModelPlugin
 load(qt_plugin)
 
-QT += qml script duse
+QT += modeling duse
 
-HEADERS = qdusemetamodelplugin.h \
-          qdusemetamodel.h
+HEADERS = qdusemetamodelplugin.h
 
-SOURCES = qdusemetamodelplugin.cpp \
-          qdusemetamodel.cpp
+SOURCES = qdusemetamodelplugin.cpp
 
 OTHER_FILES += duse.json

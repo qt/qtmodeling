@@ -43,12 +43,7 @@
 
 #include <QtDuse/QtDuseGlobal>
 
-// Base class includes
-#include <QtWrappedObjects/QWrappedObject>
-
-// Qt includes
-#include <QtCore/QString>
-#include <QtCore/QSet>
+#include <QtModeling/QModelingElement>
 
 QT_BEGIN_HEADER
 
@@ -56,53 +51,42 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtDuse)
 
-// Forward decls for function parameters
-class QDuseDesignDimension;
-class QDuseVariationPoint;
 class QDuseDesignDimensionInstance;
+class QDuseVariationPoint;
 
-class QDuseDesignDimensionPrivate;
-
-class Q_DUSE_EXPORT QDuseDesignDimension : public QWrappedObject
+class Q_DUSE_EXPORT QDuseDesignDimension : public QModelingElement
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QDuse")
-
-    Q_PROPERTY(QString instanceSelectionRule READ instanceSelectionRule WRITE setInstanceSelectionRule)
-    Q_PROPERTY(QSet<QDuseVariationPoint *> variationPoints READ variationPoints)
-    Q_PROPERTY(QSet<QDuseDesignDimensionInstance *> designDimensionInstances READ designDimensionInstances)
-    Q_PROPERTY(QSet<QDuseDesignDimension *> requiredPreviousEvaluations READ requiredPreviousEvaluations)
-    Q_PROPERTY(QString name READ name WRITE setName)
-
-    Q_DISABLE_COPY(QDuseDesignDimension)
-    Q_DECLARE_PRIVATE(QDuseDesignDimension)
-
 public:
-    Q_INVOKABLE explicit QDuseDesignDimension(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QDuseDesignDimension();
+    explicit QDuseDesignDimension(bool createQModelingObject = true);
 
-    // Attributes from QDuseDesignDimension
-    Q_INVOKABLE QString instanceSelectionRule() const;
-    Q_INVOKABLE void setInstanceSelectionRule(QString instanceSelectionRule);
-    Q_INVOKABLE QSet<QDuseVariationPoint *> variationPoints() const;
-    Q_INVOKABLE void addVariationPoint(QDuseVariationPoint *variationPoint);
-    Q_INVOKABLE void removeVariationPoint(QDuseVariationPoint *variationPoint);
-    Q_INVOKABLE QSet<QDuseDesignDimensionInstance *> designDimensionInstances() const;
-    Q_INVOKABLE void addDesignDimensionInstance(QDuseDesignDimensionInstance *designDimensionInstance);
-    Q_INVOKABLE void removeDesignDimensionInstance(QDuseDesignDimensionInstance *designDimensionInstance);
-    Q_INVOKABLE QSet<QDuseDesignDimension *> requiredPreviousEvaluations() const;
-    Q_INVOKABLE void addRequiredPreviousEvaluation(QDuseDesignDimension *requiredPreviousEvaluation);
-    Q_INVOKABLE void removeRequiredPreviousEvaluation(QDuseDesignDimension *requiredPreviousEvaluation);
-    Q_INVOKABLE QString name() const;
-    Q_INVOKABLE void setName(QString name);
+    virtual QModelingElement *clone() const;
 
-    virtual void setPropertyData();
+    // Owned attributes
+    QString name() const;
+    void setName(QString name);
+    QString instanceSelectionRule() const;
+    void setInstanceSelectionRule(QString instanceSelectionRule);
+    const QSet<QDuseDesignDimension *> requiredPreviousEvaluations() const;
+    void addRequiredPreviousEvaluation(QDuseDesignDimension *requiredPreviousEvaluation);
+    void removeRequiredPreviousEvaluation(QDuseDesignDimension *requiredPreviousEvaluation);
+    const QSet<QDuseVariationPoint *> variationPoints() const;
+    void addVariationPoint(QDuseVariationPoint *variationPoint);
+    void removeVariationPoint(QDuseVariationPoint *variationPoint);
+    const QSet<QDuseDesignDimensionInstance *> designDimensionInstances() const;
+    void addDesignDimensionInstance(QDuseDesignDimensionInstance *designDimensionInstance);
+    void removeDesignDimensionInstance(QDuseDesignDimensionInstance *designDimensionInstance);
 
 protected:
-    explicit QDuseDesignDimension(QDuseDesignDimensionPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    QString _name;
+    QString _instanceSelectionRule;
+    QSet<QDuseDesignDimension *> _requiredPreviousEvaluations;
+    QSet<QDuseVariationPoint *> _variationPoints;
+    QSet<QDuseDesignDimensionInstance *> _designDimensionInstances;
 };
 
 QT_END_NAMESPACE
+
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE(QDuseDesignDimension) *)
 
 QT_END_HEADER
 

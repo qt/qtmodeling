@@ -1,7 +1,7 @@
 load(qt_build_config)
 
 TARGET = QtSADuseProfile
-QT = wrappedobjects-private core-private uml
+QT = core-private modeling-private uml
 
 QMAKE_DOCS = $$PWD/doc/qtsaduseprofile.qdocconf
 

@@ -3,7 +3,7 @@
 ** Copyright (C) 2013 Sandro S. Andrade <sandroandrade@kde.org>
 ** Contact: http://www.qt-project.org/legal
 **
-** This file is part of the QtDuse module of the Qt Toolkit.
+** This file is part of the QtSADuseProfile module of the Qt Toolkit.
 **
 ** $QT_BEGIN_LICENSE:LGPL$
 ** Commercial License Usage
@@ -38,40 +38,49 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef QDUSEQUALITYMETRIC_P_H
-#define QDUSEQUALITYMETRIC_P_H
+#ifndef QSADUSEPROFILEPROCESSCOMPONENTOBJECT_H
+#define QSADUSEPROFILEPROCESSCOMPONENTOBJECT_H
 
-// Base class includes
-#include "private/qwrappedobject_p.h"
+#include <QtSADuseProfile/QtSADuseProfileGlobal>
 
-#include "QtDuse/QDuseQualityMetric"
-
-// Qt includes
-#include "QtCore/QString"
+#include <QtModeling/QModelingObject>
 
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
 
-QT_MODULE(QtDuse)
-class QDuseQualityMetric;
+QT_MODULE(QtSADuseProfile)
 
-class Q_DUSE_EXPORT QDuseQualityMetricPrivate : public QWrappedObjectPrivate
+class QSADuseProfileProcessComponent;
+class QModelingObjectPrivate;
+class Q_SADUSEPROFILE_EXPORT QSADuseProfileProcessComponentObject : public QModelingObject
 {
-    Q_DECLARE_PUBLIC(QDuseQualityMetric)
+    Q_OBJECT
+    Q_DISABLE_COPY(QSADuseProfileProcessComponentObject)
+    Q_DECLARE_PRIVATE(QModelingObject)
+
+    // Properties [ProcessComponent]
+    Q_PROPERTY(QObject * base_Component READ base_Component WRITE setBase_Component)
 
 public:
-    explicit QDuseQualityMetricPrivate();
-    virtual ~QDuseQualityMetricPrivate();
+    Q_INVOKABLE explicit QSADuseProfileProcessComponentObject(QSADuseProfileProcessComponent *modelingElement);
 
-    QString expression;
-    QString name;
-    qreal value;
+    // Owned attributes [ProcessComponent]
+    Q_INVOKABLE QObject *base_Component() const;
+
+public Q_SLOTS:
+
+    // Slots for owned attributes [ProcessComponent]
+    void setBase_Component(QObject *base_Component = 0);
+
+protected:
+    virtual void setGroupProperties();
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE
 
 QT_END_HEADER
 
-#endif // QDUSEQUALITYMETRIC_P_H
+#endif // QSADUSEPROFILEPROCESSCOMPONENTOBJECT_H
 

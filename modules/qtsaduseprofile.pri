@@ -11,7 +11,7 @@ QT.saduseprofile.sources = $$QT_MODULE_BASE/src/saduseprofile
 QT.saduseprofile.libs = $$QT_MODULE_LIB_BASE
 QT.saduseprofile.plugins = $$QT_MODULE_PLUGIN_BASE
 QT.saduseprofile.imports = $$QT_MODULE_IMPORT_BASE
-QT.saduseprofile.depends = core wrappedobjects
+QT.saduseprofile.depends = core modeling uml
 
-QT.saduseprofile.DEFINES = QT_MOF_LIB
+QT.saduseprofile.DEFINES = QT_SADUSEPROFILE_LIB
 QT_CONFIG += saduseprofile

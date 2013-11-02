@@ -3,7 +3,7 @@
 ** Copyright (C) 2013 Sandro S. Andrade <sandroandrade@kde.org>
 ** Contact: http://www.qt-project.org/legal
 **
-** This file is part of the QtSADuseProfile module of the Qt Toolkit.
+** This file is part of the QtDuse module of the Qt Toolkit.
 **
 ** $QT_BEGIN_LICENSE:LGPL$
 ** Commercial License Usage
@@ -38,24 +38,57 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef QSADUSEPROFILEMETAMODEL_H
-#define QSADUSEPROFILEMETAMODEL_H
+#ifndef QDUSEDESIGNSPACEOBJECT_H
+#define QDUSEDESIGNSPACEOBJECT_H
 
-#include <QtSADuseProfile/QtSADuseProfile>
+#include <QtDuse/QtDuseGlobal>
+
+#include <QtModeling/QModelingObject>
 
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
 
-class QSADuseProfileMetaModel
+QT_MODULE(QtDuse)
+
+class QDuseDesignSpace;
+class QModelingObjectPrivate;
+class Q_DUSE_EXPORT QDuseDesignSpaceObject : public QModelingObject
 {
+    Q_OBJECT
+    Q_DISABLE_COPY(QDuseDesignSpaceObject)
+    Q_DECLARE_PRIVATE(QModelingObject)
+
+    // Properties [DesignSpace]
+    Q_PROPERTY(QString name READ name WRITE setName)
+    Q_PROPERTY(QList<QObject *> designDimensions READ designDimensions)
+    Q_PROPERTY(QSet<QObject *> qualityMetrics READ qualityMetrics)
+
 public:
-    static void init(QScriptEngine *scriptEngine = 0);
+    Q_INVOKABLE explicit QDuseDesignSpaceObject(QDuseDesignSpace *modelingElement);
+
+    // Owned attributes [DesignSpace]
+    Q_INVOKABLE QString name() const;
+    Q_INVOKABLE const QList<QObject *> designDimensions() const;
+    Q_INVOKABLE const QSet<QObject *> qualityMetrics() const;
+
+public Q_SLOTS:
+
+    // Slots for owned attributes [DesignSpace]
+    void setName(QString name);
+    void addDesignDimension(QObject *designDimension);
+    void removeDesignDimension(QObject *designDimension);
+    void addQualityMetric(QObject *qualityMetric);
+    void removeQualityMetric(QObject *qualityMetric);
+
+protected:
+    virtual void setGroupProperties();
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE
 
 QT_END_HEADER
 
-#endif // QSADUSEPROFILEMETAMODEL_H
+#endif // QDUSEDESIGNSPACEOBJECT_H
 

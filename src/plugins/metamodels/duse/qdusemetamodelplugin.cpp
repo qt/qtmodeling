@@ -40,15 +40,25 @@
 ****************************************************************************/
 #include "qdusemetamodelplugin.h"
 
-#include "qdusemetamodel.h"
+#include <QtModeling/QModelingElement>
+
+#include <QtDuse/QtDuse>
 
 QDuseMetaModelPlugin::QDuseMetaModelPlugin(QObject *parent)
     : QMetaModelPlugin(parent)
 {
 }
 
-void QDuseMetaModelPlugin::initMetaModel(QScriptEngine *scriptEngine)
+QModelingElement *QDuseMetaModelPlugin::createModelingElement(QString type)
 {
-    QDuseMetaModel::init(scriptEngine);
+    if (type == "QDuseDesignSpace") return new QDuseDesignSpace;
+    if (type == "QDuseDesignDimension") return new QDuseDesignDimension;
+    if (type == "QDuseDesignDimensionInstance") return new QDuseDesignDimensionInstance;
+    if (type == "QDuseVariationPoint") return new QDuseVariationPoint;
+    if (type == "QDuseQualityMetric") return new QDuseQualityMetric;
+    Q_ASSERT_X(true,
+               "QDuseMetaModelPlugin::createModelingElement",
+               QStringLiteral("QDuseMetaModelPlugin does not know how to create instances of '%1' type !").arg(type).toLatin1());
+    return 0;
 }
 

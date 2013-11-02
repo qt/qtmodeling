@@ -39,19 +39,10 @@
 **
 ****************************************************************************/
 #include "qdusedesigndimensioninstance.h"
-#include "qdusedesigndimensioninstance_p.h"
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
+#include "private/qdusedesigndimensioninstanceobject_p.h"
 
 QT_BEGIN_NAMESPACE
-
-QDuseDesignDimensionInstancePrivate::QDuseDesignDimensionInstancePrivate()
-{
-}
-
-QDuseDesignDimensionInstancePrivate::~QDuseDesignDimensionInstancePrivate()
-{
-}
 
 /*!
     \class QDuseDesignDimensionInstance
@@ -60,29 +51,17 @@ QDuseDesignDimensionInstancePrivate::~QDuseDesignDimensionInstancePrivate()
 
     \brief A specific design dimenstion instance created to tackle a particular locus of architectural decision in the input model.
  */
-
-QDuseDesignDimensionInstance::QDuseDesignDimensionInstance(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QWrappedObject(*new QDuseDesignDimensionInstancePrivate, wrapper, parent)
+QDuseDesignDimensionInstance::QDuseDesignDimensionInstance(bool createQModelingObject)
 {
-    setPropertyData();
+    if (createQModelingObject)
+        _qModelingObject = qobject_cast<QModelingObject *>(new QDuseDesignDimensionInstanceObject(this));
 }
 
-QDuseDesignDimensionInstance::QDuseDesignDimensionInstance(QDuseDesignDimensionInstancePrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QWrappedObject(dd, wrapper, parent)
+QModelingElement *QDuseDesignDimensionInstance::clone() const
 {
-    setPropertyData();
-}
-
-QDuseDesignDimensionInstance::~QDuseDesignDimensionInstance()
-{
-}
-
-void QDuseDesignDimensionInstance::setPropertyData()
-{
-    QWrappedObject::setPropertyData();
+    QDuseDesignDimensionInstance *c = new QDuseDesignDimensionInstance;
+    return c;
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qdusedesigndimensioninstance.cpp"
 

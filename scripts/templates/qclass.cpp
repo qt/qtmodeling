@@ -57,7 +57,7 @@
 [%- visitedClasses = [] -%]
 [%- GENERATE_FWD_DECLARATIONS(class, visitedClasses, forwards, useNamespace, superclasses) -%]
 [%- FOREACH forward = forwards.unique.sort %]
-#include <Qt${namespace}/${forward}>
+#include <${forward}>
 [%- IF loop.last %]
 [% END -%]
 [%- END -%]
@@ -78,7 +78,7 @@ Q${namespace}${className}::Q${namespace}${className}([%- IF class.findvalue("@is
 [%- FOREACH superclass IN generalization -%]
 [%- SET superclassName = superclass.findvalue("@general") -%]
 [%- IF superclassName == "" -%][%- SET superclassName = superclass.findnodes("general").findvalue("@xmi:idref") -%][%- END -%]
-[%- IF xmi.findvalue("//packagedElement[@xmi:type=\"uml:Class\" and @name=\"${superclassName}\"]/@isAbstract") != "true" -%]
+[%- IF xmi.findvalue("//packagedElement[(@xmi:type=\"uml:Class\" or @xmi:type=\"uml:Stereotype\") and @name=\"${superclassName}\"]/@isAbstract") != "true" -%]
         [%- IF found == "false" %] :
 [% SET found = "true" -%]
         [%- ELSE %],
@@ -208,7 +208,7 @@ void Q${namespace}${className}::add${attributeName}(${qtType.remove("QSet<").rem
     [%- END %]
         [%- found = "false" -%]
         [%- FOREACH subsettedPropertyName = attribute.findvalue("@subsettedProperty").split(" ") -%]
-            [%- SET subsettedProperty = xmi.findnodes("//packagedElement[@xmi:type=\"uml:Class\" and @name=\"${subsettedPropertyName.split('-').0}\"]/ownedAttribute[@name=\"${subsettedPropertyName.split('-').1}\"]") -%]
+            [%- SET subsettedProperty = xmi.findnodes("//packagedElement[(@xmi:type=\"uml:Class\" or @xmi:type=\"uml:Stereotype\") and @name=\"${subsettedPropertyName.split('-').0}\"]/ownedAttribute[@name=\"${subsettedPropertyName.split('-').1}\"]") -%]
             [%- IF subsettedProperty.findvalue("@name") != "" -%]
                 [%- IF found == "false" %]
 
@@ -224,9 +224,9 @@ void Q${namespace}${className}::add${attributeName}(${qtType.remove("QSet<").rem
         [%- END %]
         [%- IF association != "" -%]
         [%- found = "false" -%]
-        [%- FOREACH memberEnd = xmi.findvalue("//packagedElement[@xmi:type=\"uml:Association\" and @name=\"${association}\"]/@memberEnd").split(' ') -%]
+        [%- FOREACH memberEnd = xmi.findvalue("//packagedElement[(@xmi:type=\"uml:Association\" or @xmi:type=\"uml:Extension\") and @name=\"${association}\"]/@memberEnd").split(' ') -%]
             [%- NEXT IF memberEnd.split('-').0 == className -%]
-            [%- SET oppositeProperty = xmi.findnodes("//packagedElement[@xmi:type=\"uml:Class\" and @name=\"${memberEnd.split('-').0}\"]/ownedAttribute[@name=\"${memberEnd.split('-').1}\"]") -%]
+            [%- SET oppositeProperty = xmi.findnodes("//packagedElement[(@xmi:type=\"uml:Class\" or @xmi:type=\"uml:Stereotype\") and @name=\"${memberEnd.split('-').0}\"]/ownedAttribute[@name=\"${memberEnd.split('-').1}\"]") -%]
             [%- IF oppositeProperty.findvalue("@name") != "" -%]
                 [%- IF found == "false" %]
 
@@ -266,7 +266,7 @@ void Q${namespace}${className}::remove${attributeName}(${qtType.remove("QSet<").
     [%- END %]
         [%- found = "false" -%]
         [%- FOREACH subsettedPropertyName = attribute.findvalue("@subsettedProperty").split(" ") -%]
-            [%- SET subsettedProperty = xmi.findnodes("//packagedElement[@xmi:type=\"uml:Class\" and @name=\"${subsettedPropertyName.split('-').0}\"]/ownedAttribute[@name=\"${subsettedPropertyName.split('-').1}\"]") -%]
+            [%- SET subsettedProperty = xmi.findnodes("//packagedElement[(@xmi:type=\"uml:Class\" or @xmi:type=\"uml:Stereotype\") and @name=\"${subsettedPropertyName.split('-').0}\"]/ownedAttribute[@name=\"${subsettedPropertyName.split('-').1}\"]") -%]
             [%- IF subsettedProperty.findvalue("@name") != "" -%]
                 [%- IF found == "false" %]
 
@@ -282,9 +282,9 @@ void Q${namespace}${className}::remove${attributeName}(${qtType.remove("QSet<").
         [%- END %]
         [%- IF association != "" -%]
         [%- found = "false" -%]
-        [%- FOREACH memberEnd = xmi.findvalue("//packagedElement[@xmi:type=\"uml:Association\" and @name=\"${association}\"]/@memberEnd").split(' ') -%]
+        [%- FOREACH memberEnd = xmi.findvalue("//packagedElement[(@xmi:type=\"uml:Association\" or @xmi:type=\"uml:Extension\") and @name=\"${association}\"]/@memberEnd").split(' ') -%]
             [%- NEXT IF memberEnd.split('-').0 == className -%]
-            [%- SET oppositeProperty = xmi.findnodes("//packagedElement[@xmi:type=\"uml:Class\" and @name=\"${memberEnd.split('-').0}\"]/ownedAttribute[@name=\"${memberEnd.split('-').1}\"]") -%]
+            [%- SET oppositeProperty = xmi.findnodes("//packagedElement[(@xmi:type=\"uml:Class\" or @xmi:type=\"uml:Stereotype\") and @name=\"${memberEnd.split('-').0}\"]/ownedAttribute[@name=\"${memberEnd.split('-').1}\"]") -%]
             [%- IF oppositeProperty.findvalue("@name") != "" -%]
                 [%- IF found == "false" %]
 
@@ -319,7 +319,7 @@ void Q${namespace}${className}::set${attributeName.remove("^Is")}([% IF !qtType.
     [%- END %]
         [%- found = "false" -%]
         [%- FOREACH subsettedPropertyName = attribute.findvalue("@subsettedProperty").split(" ") -%]
-            [%- SET subsettedProperty = xmi.findnodes("//packagedElement[@xmi:type=\"uml:Class\" and @name=\"${subsettedPropertyName.split('-').0}\"]/ownedAttribute[@name=\"${subsettedPropertyName.split('-').1}\"]") -%]
+            [%- SET subsettedProperty = xmi.findnodes("//packagedElement[(@xmi:type=\"uml:Class\" or @xmi:type=\"uml:Stereotype\") and @name=\"${subsettedPropertyName.split('-').0}\"]/ownedAttribute[@name=\"${subsettedPropertyName.split('-').1}\"]") -%]
             [%- IF subsettedProperty.findvalue("@name") != "" -%]
                 [%- IF found == "false" %]
         // Adjust subsetted properties
@@ -349,7 +349,7 @@ void Q${namespace}${className}::set${attributeName.remove("^Is")}([% IF !qtType.
         [%- END %]
         [%- found = "false" -%]
         [%- FOREACH subsettedPropertyName = attribute.findvalue("@subsettedProperty").split(" ") -%]
-            [%- SET subsettedProperty = xmi.findnodes("//packagedElement[@xmi:type=\"uml:Class\" and @name=\"${subsettedPropertyName.split('-').0}\"]/ownedAttribute[@name=\"${subsettedPropertyName.split('-').1}\"]") -%]
+            [%- SET subsettedProperty = xmi.findnodes("//packagedElement[(@xmi:type=\"uml:Class\" or @xmi:type=\"uml:Stereotype\") and @name=\"${subsettedPropertyName.split('-').0}\"]/ownedAttribute[@name=\"${subsettedPropertyName.split('-').1}\"]") -%]
             [%- IF subsettedProperty.findvalue("@name") != "" -%]
                 [%- IF found == "false" %]
 

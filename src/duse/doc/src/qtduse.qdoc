@@ -26,17 +26,17 @@
 ****************************************************************************/
 /*!
     \page qtduse-index.html
-    \title Qt DuSE
-    \brief Implements the DuSE metamodel for domain-independent design spaces representation.
+    \title Qt Duse
+    \brief Implements the Duse metamodel for domain-independent design spaces representation.
 
     Qt Duse is an add-on module which implements a metamodel for domain-independent design spaces representation.
 
     \section1 Getting Started
-    To enable Qt DuSE in a project, add this directive into the C++ files:
+    To enable Qt Duse in a project, add this directive into the C++ files:
     \code
     #include <QtDuse>
     \endcode
-    To link against the Qt DuSE module, add this line to the project file:
+    To link against the Qt Duse module, add this line to the project file:
     \code
     QT += duse
     \endcode
@@ -44,15 +44,15 @@
     \section1 Reference
     These are links to the API reference materials.
     \list
-    \li \l{Qt DuSE Module C++ Classes}{C++ classes}
+    \li \l{Qt Duse Module C++ Classes}{C++ classes}
     \endlist
 */
 
 /*!
     \module QtDuse
-    \title Qt DuSE Module C++ Classes
+    \title Qt Duse Module C++ Classes
     \ingroup modules
-    \brief Implements the DuSE metamodel for domain-independent design spaces representation.
+    \brief Implements the Duse metamodel for domain-independent design spaces representation.
 
     To include the definitions of the module's classes, use the
     following directive:

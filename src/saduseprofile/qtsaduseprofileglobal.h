@@ -41,7 +41,12 @@
 #ifndef QTSADUSEPROFILEGLOBAL_H
 #define QTSADUSEPROFILEGLOBAL_H
 
-#include <QtCore/qglobal.h>
+#include <QtCore/QtGlobal>
+
+#include <QtCore/QMetaType>
+#include <QtCore/QList>
+#include <QtCore/QSet>
+#include <QtCore/QString>
 
 QT_BEGIN_NAMESPACE
 

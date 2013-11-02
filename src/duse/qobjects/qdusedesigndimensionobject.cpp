@@ -1,0 +1,202 @@
+/****************************************************************************
+**
+** Copyright (C) 2013 Sandro S. Andrade <sandroandrade@kde.org>
+** Contact: http://www.qt-project.org/legal
+**
+** This file is part of the QtDuse module of the Qt Toolkit.
+**
+** $QT_BEGIN_LICENSE:LGPL$
+** Commercial License Usage
+** Licensees holding valid commercial Qt licenses may use this file in
+** accordance with the commercial license agreement provided with the
+** Software or, alternatively, in accordance with the terms contained in
+** a written agreement between you and Digia.  For licensing terms and
+** conditions see http://qt.digia.com/licensing.  For further information
+** use the contact form at http://qt.digia.com/contact-us.
+**
+** GNU Lesser General Public License Usage
+** Alternatively, this file may be used under the terms of the GNU Lesser
+** General Public License version 2.1 as published by the Free Software
+** Foundation and appearing in the file LICENSE.LGPL included in the
+** packaging of this file.  Please review the following information to
+** ensure the GNU Lesser General Public License version 2.1 requirements
+** will be met: http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html.
+**
+** In addition, as a special exception, Digia gives you certain additional
+** rights.  These rights are described in the Digia Qt LGPL Exception
+** version 1.1, included in the file LGPL_EXCEPTION.txt in this package.
+**
+** GNU General Public License Usage
+** Alternatively, this file may be used under the terms of the GNU
+** General Public License version 3.0 as published by the Free Software
+** Foundation and appearing in the file LICENSE.GPL included in the
+** packaging of this file.  Please review the following information to
+** ensure the GNU General Public License version 3.0 requirements will be
+** met: http://www.gnu.org/copyleft/gpl.html.
+**
+**
+** $QT_END_LICENSE$
+**
+****************************************************************************/
+#include "qdusedesigndimensionobject_p.h"
+#include "private/qmodelingobject_p.h"
+
+#include <QtDuse/QDuseDesignDimension>
+#include <QtDuse/QDuseDesignDimensionInstance>
+#include <QtDuse/QDuseVariationPoint>
+
+QT_BEGIN_NAMESPACE
+
+QDuseDesignDimensionObject::QDuseDesignDimensionObject(QDuseDesignDimension *modelingElement)
+{
+    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(modelingElement)));
+    setGroupProperties();
+    setPropertyData();
+}
+
+// OWNED ATTRIBUTES [DesignDimension]
+
+QString QDuseDesignDimensionObject::name() const
+{
+    return qmodelingelementproperty_cast<QDuseDesignDimension *>(this)->name();
+}
+
+QString QDuseDesignDimensionObject::instanceSelectionRule() const
+{
+    return qmodelingelementproperty_cast<QDuseDesignDimension *>(this)->instanceSelectionRule();
+}
+
+const QSet<QObject *> QDuseDesignDimensionObject::requiredPreviousEvaluations() const
+{
+    QSet<QObject *> set;
+    foreach (QDuseDesignDimension *element, qmodelingelementproperty_cast<QDuseDesignDimension *>(this)->requiredPreviousEvaluations())
+        set.insert(element->asQModelingObject());
+    return set;
+}
+
+const QSet<QObject *> QDuseDesignDimensionObject::variationPoints() const
+{
+    QSet<QObject *> set;
+    foreach (QDuseVariationPoint *element, qmodelingelementproperty_cast<QDuseDesignDimension *>(this)->variationPoints())
+        set.insert(element->asQModelingObject());
+    return set;
+}
+
+const QSet<QObject *> QDuseDesignDimensionObject::designDimensionInstances() const
+{
+    QSet<QObject *> set;
+    foreach (QDuseDesignDimensionInstance *element, qmodelingelementproperty_cast<QDuseDesignDimension *>(this)->designDimensionInstances())
+        set.insert(element->asQModelingObject());
+    return set;
+}
+
+// SLOTS FOR OWNED ATTRIBUTES [DesignDimension]
+
+void QDuseDesignDimensionObject::setName(QString name)
+{
+    qmodelingelementproperty_cast<QDuseDesignDimension *>(this)->setName(name);
+}
+
+void QDuseDesignDimensionObject::setInstanceSelectionRule(QString instanceSelectionRule)
+{
+    qmodelingelementproperty_cast<QDuseDesignDimension *>(this)->setInstanceSelectionRule(instanceSelectionRule);
+}
+
+void QDuseDesignDimensionObject::addRequiredPreviousEvaluation(QObject *requiredPreviousEvaluation)
+{
+    qmodelingelementproperty_cast<QDuseDesignDimension *>(this)->addRequiredPreviousEvaluation(qmodelingelementproperty_cast<QDuseDesignDimension *>(requiredPreviousEvaluation));
+}
+
+void QDuseDesignDimensionObject::removeRequiredPreviousEvaluation(QObject *requiredPreviousEvaluation)
+{
+    qmodelingelementproperty_cast<QDuseDesignDimension *>(this)->removeRequiredPreviousEvaluation(qmodelingelementproperty_cast<QDuseDesignDimension *>(requiredPreviousEvaluation));
+}
+
+void QDuseDesignDimensionObject::addVariationPoint(QObject *variationPoint)
+{
+    qmodelingelementproperty_cast<QDuseDesignDimension *>(this)->addVariationPoint(qmodelingelementproperty_cast<QDuseVariationPoint *>(variationPoint));
+}
+
+void QDuseDesignDimensionObject::removeVariationPoint(QObject *variationPoint)
+{
+    qmodelingelementproperty_cast<QDuseDesignDimension *>(this)->removeVariationPoint(qmodelingelementproperty_cast<QDuseVariationPoint *>(variationPoint));
+}
+
+void QDuseDesignDimensionObject::addDesignDimensionInstance(QObject *designDimensionInstance)
+{
+    qmodelingelementproperty_cast<QDuseDesignDimension *>(this)->addDesignDimensionInstance(qmodelingelementproperty_cast<QDuseDesignDimensionInstance *>(designDimensionInstance));
+}
+
+void QDuseDesignDimensionObject::removeDesignDimensionInstance(QObject *designDimensionInstance)
+{
+    qmodelingelementproperty_cast<QDuseDesignDimension *>(this)->removeDesignDimensionInstance(qmodelingelementproperty_cast<QDuseDesignDimensionInstance *>(designDimensionInstance));
+}
+
+
+void QDuseDesignDimensionObject::setGroupProperties()
+{
+    Q_D(QModelingObject);
+    const QMetaObject *metaObject = this->metaObject();
+
+    d->propertyGroups << QStringLiteral("QObject");
+    d->groupProperties.insert(QStringLiteral("QObject"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("objectName"))));
+
+    d->propertyGroups << QStringLiteral("QDuseDesignDimension");
+    d->groupProperties.insert(QStringLiteral("QDuseDesignDimension"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
+    d->groupProperties.insert(QStringLiteral("QDuseDesignDimension"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("instanceSelectionRule"))));
+    d->groupProperties.insert(QStringLiteral("QDuseDesignDimension"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("requiredPreviousEvaluations"))));
+    d->groupProperties.insert(QStringLiteral("QDuseDesignDimension"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("variationPoints"))));
+    d->groupProperties.insert(QStringLiteral("QDuseDesignDimension"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("designDimensionInstances"))));
+}
+
+void QDuseDesignDimensionObject::setPropertyData()
+{
+    Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimension, name, AggregationRole, QStringLiteral("none"));
+    Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimension, name, PropertyClassRole, QStringLiteral("QDuseDesignDimension"));
+    Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimension, name, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimension, name, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimension, name, DocumentationRole, QStringLiteral("The design dimension's name."));
+    Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimension, name, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimension, name, SubsettedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimension, name, OppositeEndRole, QStringLiteral(""));
+
+    Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimension, instanceSelectionRule, AggregationRole, QStringLiteral("none"));
+    Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimension, instanceSelectionRule, PropertyClassRole, QStringLiteral("QDuseDesignDimension"));
+    Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimension, instanceSelectionRule, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimension, instanceSelectionRule, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimension, instanceSelectionRule, DocumentationRole, QStringLiteral("The rule for detecting a specific locus of architectural decision related to this design dimension. Such rule relies on the accompanying UML profile for the specific application domain, in order to identify the decision loci."));
+    Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimension, instanceSelectionRule, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimension, instanceSelectionRule, SubsettedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimension, instanceSelectionRule, OppositeEndRole, QStringLiteral(""));
+
+    Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimension, requiredPreviousEvaluations, AggregationRole, QStringLiteral("none"));
+    Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimension, requiredPreviousEvaluations, PropertyClassRole, QStringLiteral("QDuseDesignDimension"));
+    Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimension, requiredPreviousEvaluations, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimension, requiredPreviousEvaluations, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimension, requiredPreviousEvaluations, DocumentationRole, QStringLiteral("The design dimensions that must be previously evaluated before this design dimension. Such dependency may be required in order to tackle dependent design dimensions and identify invalid design space locations."));
+    Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimension, requiredPreviousEvaluations, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimension, requiredPreviousEvaluations, SubsettedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimension, requiredPreviousEvaluations, OppositeEndRole, QStringLiteral(""));
+
+    Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimension, variationPoints, AggregationRole, QStringLiteral("composite"));
+    Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimension, variationPoints, PropertyClassRole, QStringLiteral("QDuseDesignDimension"));
+    Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimension, variationPoints, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimension, variationPoints, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimension, variationPoints, DocumentationRole, QStringLiteral("The design dimension's variation points (alternative solutions for the design dimension's concern)."));
+    Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimension, variationPoints, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimension, variationPoints, SubsettedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimension, variationPoints, OppositeEndRole, QStringLiteral(""));
+
+    Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimension, designDimensionInstances, AggregationRole, QStringLiteral("composite"));
+    Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimension, designDimensionInstances, PropertyClassRole, QStringLiteral("QDuseDesignDimension"));
+    Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimension, designDimensionInstances, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimension, designDimensionInstances, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimension, designDimensionInstances, DocumentationRole, QStringLiteral("A specific design dimension instance created for a identified locus of architectural decision."));
+    Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimension, designDimensionInstances, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimension, designDimensionInstances, SubsettedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimension, designDimensionInstances, OppositeEndRole, QStringLiteral(""));
+
+}
+
+QT_END_NAMESPACE
+

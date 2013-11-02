@@ -1,3 +1,3 @@
 TEMPLATE = subdirs
 
-SUBDIRS = mof uml
+SUBDIRS = mof uml saduseprofile duse

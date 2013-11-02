@@ -39,75 +39,53 @@
 **
 ****************************************************************************/
 #include "qsaduseprofileprocesscomponent.h"
-#include "qsaduseprofileprocesscomponent_p.h"
+
+#include "private/qsaduseprofileprocesscomponentobject_p.h"
 
 #include <QtUml/QUmlComponent>
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
-
 QT_BEGIN_NAMESPACE
 
-QSADuseProfileProcessComponentPrivate::QSADuseProfileProcessComponentPrivate() :
-    base_Component(0)
+/*!
+    \class QSADuseProfileProcessComponent
+
+    \inmodule QtSADuseProfile
+ */
+QSADuseProfileProcessComponent::QSADuseProfileProcessComponent(bool createQModelingObject) :
+    _base_Component(0)
 {
+    if (createQModelingObject)
+        _qModelingObject = qobject_cast<QModelingObject *>(new QSADuseProfileProcessComponentObject(this));
 }
 
-QSADuseProfileProcessComponentPrivate::~QSADuseProfileProcessComponentPrivate()
+QModelingElement *QSADuseProfileProcessComponent::clone() const
 {
+    QSADuseProfileProcessComponent *c = new QSADuseProfileProcessComponent;
+    if (base_Component())
+        c->setBase_Component(dynamic_cast<QUmlComponent *>(base_Component()->clone()));
+    return c;
 }
 
+// OWNED ATTRIBUTES
 
-QSADuseProfileProcessComponent::QSADuseProfileProcessComponent(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QWrappedObject(*new QSADuseProfileProcessComponentPrivate, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QSADuseProfileProcessComponent::QSADuseProfileProcessComponent(QSADuseProfileProcessComponentPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QWrappedObject(dd, wrapper, parent)
-{
-    setPropertyData();
-}
-
-QSADuseProfileProcessComponent::~QSADuseProfileProcessComponent()
-{
-}
-
-// ---------------------------------------------------------------
-// ASSOCIATION ENDS FROM QSADuseProfileProcessComponent
-// ---------------------------------------------------------------
 
 QUmlComponent *QSADuseProfileProcessComponent::base_Component() const
 {
     // This is a read-write association end
 
-    Q_D(const QSADuseProfileProcessComponent);
-    return d->base_Component;
+    return _base_Component;
 }
 
 void QSADuseProfileProcessComponent::setBase_Component(QUmlComponent *base_Component)
 {
     // This is a read-write association end
 
-    Q_D(QSADuseProfileProcessComponent);
-    if (d->base_Component != base_Component) {
-        d->base_Component = base_Component;
+    if (_base_Component != base_Component) {
+        _base_Component = base_Component;
+        if (base_Component && base_Component->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(base_Component->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setBase_Component()));
     }
 }
 
-void QSADuseProfileProcessComponent::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QSADuseProfileProcessComponent")][QString::fromLatin1("base_Component")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QSADuseProfileProcessComponent")][QString::fromLatin1("base_Component")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QSADuseProfileProcessComponent")][QString::fromLatin1("base_Component")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QSADuseProfileProcessComponent")][QString::fromLatin1("base_Component")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QSADuseProfileProcessComponent")][QString::fromLatin1("base_Component")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QSADuseProfileProcessComponent")][QString::fromLatin1("base_Component")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("QSADuseProfile");
-
-    QWrappedObject::setPropertyData();
-}
-
 QT_END_NAMESPACE
-
-#include "moc_qsaduseprofileprocesscomponent.cpp"
 

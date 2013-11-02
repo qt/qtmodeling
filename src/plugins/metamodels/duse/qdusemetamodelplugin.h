@@ -41,7 +41,13 @@
 #ifndef QDUSEMETAMODELPLUGIN_H
 #define QDUSEMETAMODELPLUGIN_H
 
-#include <QtWrappedObjects/QMetaModelPlugin>
+#include <QtModeling/QMetaModelPlugin>
+
+QT_BEGIN_HEADER
+
+QT_BEGIN_NAMESPACE
+
+class QModelingElement;
 
 class QDuseMetaModelPlugin : public QMetaModelPlugin
 {
@@ -51,8 +57,12 @@ class QDuseMetaModelPlugin : public QMetaModelPlugin
 public:
     QDuseMetaModelPlugin(QObject *parent = 0);
 
-    void initMetaModel(QScriptEngine *scriptEngine = 0);
+    virtual QModelingElement *createModelingElement(QString type);
 };
+
+QT_END_NAMESPACE
+
+QT_END_HEADER
 
 #endif // QDUSEMETAMODELPLUGIN_H
 

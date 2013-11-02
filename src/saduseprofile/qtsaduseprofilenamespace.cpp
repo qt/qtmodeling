@@ -38,35 +38,8 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef QSADUSEPROFILEPROCESSCOMPONENT_P_H
-#define QSADUSEPROFILEPROCESSCOMPONENT_P_H
-
-// Base class includes
-#include "private/qwrappedobject_p.h"
-
-#include "QtSADuseProfile/QSADuseProfileProcessComponent"
-
-QT_BEGIN_HEADER
+#include "qtsaduseprofilenamespace.h"
 
 QT_BEGIN_NAMESPACE
-
-QT_MODULE(QtSADuseProfile)
-class QSADuseProfileProcessComponent;
-
-class Q_SADUSEPROFILE_EXPORT QSADuseProfileProcessComponentPrivate : public QWrappedObjectPrivate
-{
-    Q_DECLARE_PUBLIC(QSADuseProfileProcessComponent)
-
-public:
-    explicit QSADuseProfileProcessComponentPrivate();
-    virtual ~QSADuseProfileProcessComponentPrivate();
-
-    QUmlComponent *base_Component;
-};
-
 QT_END_NAMESPACE
-
-QT_END_HEADER
-
-#endif // QSADUSEPROFILEPROCESSCOMPONENT_P_H
 

@@ -38,18 +38,12 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef QDUSEDESIGNSPACE_P_H
-#define QDUSEDESIGNSPACE_P_H
+#ifndef QDUSEQUALITYMETRICOBJECT_H
+#define QDUSEQUALITYMETRICOBJECT_H
 
-// Base class includes
-#include "private/qwrappedobject_p.h"
+#include <QtDuse/QtDuseGlobal>
 
-#include "QtDuse/QDuseDesignSpace"
-
-// Qt includes
-#include "QtCore/QString"
-#include "QtCore/QList"
-#include "QtCore/QSet"
+#include <QtModeling/QModelingObject>
 
 QT_BEGIN_HEADER
 
@@ -57,27 +51,42 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtDuse)
 
-// Forward decls for function parameters
-class QDuseDesignDimension;
 class QDuseQualityMetric;
-class QDuseDesignSpace;
-
-class Q_DUSE_EXPORT QDuseDesignSpacePrivate : public QWrappedObjectPrivate
+class QModelingObjectPrivate;
+class Q_DUSE_EXPORT QDuseQualityMetricObject : public QModelingObject
 {
-    Q_DECLARE_PUBLIC(QDuseDesignSpace)
+    Q_OBJECT
+    Q_DISABLE_COPY(QDuseQualityMetricObject)
+    Q_DECLARE_PRIVATE(QModelingObject)
+
+    // Properties [QualityMetric]
+    Q_PROPERTY(QString name READ name WRITE setName)
+    Q_PROPERTY(double value READ value WRITE setValue)
+    Q_PROPERTY(QString expression READ expression WRITE setExpression)
 
 public:
-    explicit QDuseDesignSpacePrivate();
-    virtual ~QDuseDesignSpacePrivate();
+    Q_INVOKABLE explicit QDuseQualityMetricObject(QDuseQualityMetric *modelingElement);
 
-    QList<QDuseDesignDimension *> designDimensions;
-    QString name;
-    QList<QDuseQualityMetric *> qualityMetrics;
+    // Owned attributes [QualityMetric]
+    Q_INVOKABLE QString name() const;
+    Q_INVOKABLE double value() const;
+    Q_INVOKABLE QString expression() const;
+
+public Q_SLOTS:
+
+    // Slots for owned attributes [QualityMetric]
+    void setName(QString name);
+    void setValue(double value);
+    void setExpression(QString expression);
+
+protected:
+    virtual void setGroupProperties();
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE
 
 QT_END_HEADER
 
-#endif // QDUSEDESIGNSPACE_P_H
+#endif // QDUSEQUALITYMETRICOBJECT_H
 

@@ -26,17 +26,17 @@
 ****************************************************************************/
 /*!
     \page qtsaduseprofile-index.html
-    \title Qt SADuSEProfile
+    \title Qt SADuseProfile
     \brief Implements the DuSE profile for self-adaptive systems design spaces representation.
 
     Qt SADuseProfile is an add-on module which implements a profile for self-adaptive systems design spaces representation.
 
     \section1 Getting Started
-    To enable Qt SADuSEProfile in a project, add this directive into the C++ files:
+    To enable Qt SADuseProfile in a project, add this directive into the C++ files:
     \code
     #include <QtSADuseProfile>
     \endcode
-    To link against the Qt SADuSEProfile module, add this line to the project file:
+    To link against the Qt SADuseProfile module, add this line to the project file:
     \code
     QT += saduseprofile
     \endcode
@@ -44,13 +44,13 @@
     \section1 Reference
     These are links to the API reference materials.
     \list
-    \li \l{Qt SADuSEProfile Module C++ Classes}{C++ classes}
+    \li \l{Qt SADuseProfile Module C++ Classes}{C++ classes}
     \endlist
 */
 
 /*!
     \module QtSADuseProfile
-    \title Qt SADuSEProfile Module C++ Classes
+    \title Qt SADuseProfile Module C++ Classes
     \ingroup modules
     \brief Implements the DuSE profile for self-adaptive systems design spaces representation.
 

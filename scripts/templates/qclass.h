@@ -73,7 +73,7 @@ QT_BEGIN_NAMESPACE
 QT_MODULE(Qt${namespace})
 
 [%- FOREACH forward = forwards.unique.sort %]
-class ${forward};
+class ${forward.split('/').last};
 [%- IF loop.last %]
 [% END %]
 [%- END -%]

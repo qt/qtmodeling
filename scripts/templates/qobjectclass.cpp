@@ -49,7 +49,7 @@
 [%- visitedClasses = [] -%]
 [%- GENERATE_FWD_DECLARATIONS(class, visitedClasses, forwards, useNamespace, superclasses) -%]
 [%- FOREACH forward = forwards.unique.sort -%]
-#include <Qt${namespace}/${forward}>
+#include <${forward}>
 [% IF loop.last %]
 [% END -%]
 [%- END -%]

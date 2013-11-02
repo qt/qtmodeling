@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <xmi:XMI xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:uml="http://www.omg.org/spec/UML/20110701">
-  <uml:Package xmi:type="uml:Package" xmi:id="" name="DuSE" URI="http://liveblue.wordpress.com">
+  <uml:Package xmi:type="uml:Package" xmi:id="Duse" name="Duse" URI="http://liveblue.wordpress.com/Duse">
     <packageImport xmi:type="uml:PackageImport" xmi:id="PackageImport.0">
       <importedPackage href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#_0"/>
     </packageImport>

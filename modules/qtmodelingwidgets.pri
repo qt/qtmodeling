@@ -11,7 +11,7 @@ QT.modelingwidgets.sources = $$QT_MODULE_BASE/src/modelingwidgets
 QT.modelingwidgets.libs = $$QT_MODULE_LIB_BASE
 QT.modelingwidgets.plugins = $$QT_MODULE_PLUGIN_BASE
 QT.modelingwidgets.imports = $$QT_MODULE_IMPORT_BASE
-QT.modelingwidgets.depends = core wrappedobjects
+QT.modelingwidgets.depends = core modeling
 
 QT.modelingwidgets.DEFINES = QT_MODELINGWIDGETS_LIB
 QT_CONFIG += modelingwidgets

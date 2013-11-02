@@ -43,11 +43,7 @@
 
 #include <QtDuse/QtDuseGlobal>
 
-// Base class includes
-#include <QtWrappedObjects/QWrappedObject>
-
-// Qt includes
-#include <QtCore/QString>
+#include <QtModeling/QModelingElement>
 
 QT_BEGIN_HEADER
 
@@ -55,42 +51,33 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtDuse)
 
-class QDuseVariationPointPrivate;
-
-class Q_DUSE_EXPORT QDuseVariationPoint : public QWrappedObject
+class Q_DUSE_EXPORT QDuseVariationPoint : public QModelingElement
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QDuse")
-
-    Q_PROPERTY(QString name READ name WRITE setName)
-    Q_PROPERTY(QString rationale READ rationale WRITE setRationale)
-    Q_PROPERTY(QString preChangeValidationRule READ preChangeValidationRule WRITE setPreChangeValidationRule)
-    Q_PROPERTY(QString modelChange READ modelChange WRITE setModelChange)
-
-    Q_DISABLE_COPY(QDuseVariationPoint)
-    Q_DECLARE_PRIVATE(QDuseVariationPoint)
-
 public:
-    Q_INVOKABLE explicit QDuseVariationPoint(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QDuseVariationPoint();
+    explicit QDuseVariationPoint(bool createQModelingObject = true);
 
-    // Attributes from QDuseVariationPoint
-    Q_INVOKABLE QString name() const;
-    Q_INVOKABLE void setName(QString name);
-    Q_INVOKABLE QString rationale() const;
-    Q_INVOKABLE void setRationale(QString rationale);
-    Q_INVOKABLE QString preChangeValidationRule() const;
-    Q_INVOKABLE void setPreChangeValidationRule(QString preChangeValidationRule);
-    Q_INVOKABLE QString modelChange() const;
-    Q_INVOKABLE void setModelChange(QString modelChange);
+    virtual QModelingElement *clone() const;
 
-    virtual void setPropertyData();
+    // Owned attributes
+    QString name() const;
+    void setName(QString name);
+    QString rationale() const;
+    void setRationale(QString rationale);
+    QString preChangeValidationRule() const;
+    void setPreChangeValidationRule(QString preChangeValidationRule);
+    QString modelChange() const;
+    void setModelChange(QString modelChange);
 
 protected:
-    explicit QDuseVariationPoint(QDuseVariationPointPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    QString _name;
+    QString _rationale;
+    QString _preChangeValidationRule;
+    QString _modelChange;
 };
 
 QT_END_NAMESPACE
+
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE(QDuseVariationPoint) *)
 
 QT_END_HEADER
 

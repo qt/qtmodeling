@@ -43,11 +43,7 @@
 
 #include <QtDuse/QtDuseGlobal>
 
-// Base class includes
-#include <QtWrappedObjects/QWrappedObject>
-
-// Qt includes
-#include <QtCore/QString>
+#include <QtModeling/QModelingElement>
 
 QT_BEGIN_HEADER
 
@@ -55,42 +51,30 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtDuse)
 
-class QDuseQualityMetricPrivate;
-
-class Q_DUSE_EXPORT QDuseQualityMetric : public QWrappedObject
+class Q_DUSE_EXPORT QDuseQualityMetric : public QModelingElement
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QDuse")
-
-    Q_PROPERTY(QString expression READ expression WRITE setExpression)
-    Q_PROPERTY(QString name READ name WRITE setName)
-    Q_PROPERTY(qreal value READ value WRITE setValue NOTIFY valueChanged)
-
-    Q_DISABLE_COPY(QDuseQualityMetric)
-    Q_DECLARE_PRIVATE(QDuseQualityMetric)
-
 public:
-    Q_INVOKABLE explicit QDuseQualityMetric(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QDuseQualityMetric();
+    explicit QDuseQualityMetric(bool createQModelingObject = true);
 
-    // Attributes from QDuseQualityMetric
-    Q_INVOKABLE QString expression() const;
-    Q_INVOKABLE void setExpression(QString expression);
-    Q_INVOKABLE QString name() const;
-    Q_INVOKABLE void setName(QString name);
-    Q_INVOKABLE qreal value() const;
-    Q_INVOKABLE void setValue(qreal value);
+    virtual QModelingElement *clone() const;
 
-    virtual void setPropertyData();
-
-Q_SIGNALS:
-    void valueChanged(qreal value);
+    // Owned attributes
+    QString name() const;
+    void setName(QString name);
+    double value() const;
+    void setValue(double value);
+    QString expression() const;
+    void setExpression(QString expression);
 
 protected:
-    explicit QDuseQualityMetric(QDuseQualityMetricPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    QString _name;
+    double _value;
+    QString _expression;
 };
 
 QT_END_NAMESPACE
+
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE(QDuseQualityMetric) *)
 
 QT_END_HEADER
 

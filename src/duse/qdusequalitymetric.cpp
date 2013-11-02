@@ -39,19 +39,10 @@
 **
 ****************************************************************************/
 #include "qdusequalitymetric.h"
-#include "qdusequalitymetric_p.h"
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
+#include "private/qdusequalitymetricobject_p.h"
 
 QT_BEGIN_NAMESPACE
-
-QDuseQualityMetricPrivate::QDuseQualityMetricPrivate() : value(0)
-{
-}
-
-QDuseQualityMetricPrivate::~QDuseQualityMetricPrivate()
-{
-}
 
 /*!
     \class QDuseQualityMetric
@@ -60,123 +51,79 @@ QDuseQualityMetricPrivate::~QDuseQualityMetricPrivate()
 
     \brief A quality metric defined for the corresponding design space.
  */
-
-QDuseQualityMetric::QDuseQualityMetric(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QWrappedObject(*new QDuseQualityMetricPrivate, wrapper, parent)
+QDuseQualityMetric::QDuseQualityMetric(bool createQModelingObject)
 {
-    setPropertyData();
+    if (createQModelingObject)
+        _qModelingObject = qobject_cast<QModelingObject *>(new QDuseQualityMetricObject(this));
 }
 
-QDuseQualityMetric::QDuseQualityMetric(QDuseQualityMetricPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QWrappedObject(dd, wrapper, parent)
+QModelingElement *QDuseQualityMetric::clone() const
 {
-    setPropertyData();
+    QDuseQualityMetric *c = new QDuseQualityMetric;
+    c->setName(name());
+    c->setValue(value());
+    c->setExpression(expression());
+    return c;
 }
 
-QDuseQualityMetric::~QDuseQualityMetric()
-{
-}
-
-// ---------------------------------------------------------------
-// ATTRIBUTES FROM QDuseQualityMetric
-// ---------------------------------------------------------------
-
-/*!
-    The quality metric's evaluation expression.
- */
-QString QDuseQualityMetric::expression() const
-{
-    // This is a read-write attribute
-
-    Q_D(const QDuseQualityMetric);
-    return d->expression;
-}
-
-void QDuseQualityMetric::setExpression(QString expression)
-{
-    // This is a read-write attribute
-
-    Q_D(QDuseQualityMetric);
-    if (d->expression != expression) {
-        d->expression = expression;
-    }
-}
+// OWNED ATTRIBUTES
 
 /*!
     The quality metric's name.
  */
 QString QDuseQualityMetric::name() const
 {
-    // This is a read-write attribute
+    // This is a read-write property
 
-    Q_D(const QDuseQualityMetric);
-    return d->name;
+    return _name;
 }
 
 void QDuseQualityMetric::setName(QString name)
 {
-    // This is a read-write attribute
+    // This is a read-write property
 
-    Q_D(QDuseQualityMetric);
-    if (d->name != name) {
-        d->name = name;
-
-        QWrappedObject *wrappedObject = this;
-        while (wrappedObject->wrapper())
-            wrappedObject = wrappedObject->wrapper();
-        wrappedObject->setObjectName(name);
+    if (_name != name) {
+        _name = name;
     }
 }
 
 /*!
     The quality metric's value.
  */
-qreal QDuseQualityMetric::value() const
+double QDuseQualityMetric::value() const
 {
-    // This is a read-write attribute
+    // This is a read-write property
 
-    Q_D(const QDuseQualityMetric);
-    return d->value;
+    return _value;
 }
 
-void QDuseQualityMetric::setValue(qreal value)
+void QDuseQualityMetric::setValue(double value)
 {
-    // This is a read-write attribute
+    // This is a read-write property
 
-    Q_D(QDuseQualityMetric);
-    if (d->value != value) {
-        d->value = value;
-        emit valueChanged(value);
+    if (_value != value) {
+        _value = value;
     }
 }
 
-void QDuseQualityMetric::setPropertyData()
+/*!
+    The quality metric's evaluation expression.
+ */
+QString QDuseQualityMetric::expression() const
 {
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDuseQualityMetric")][QString::fromLatin1("expression")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDuseQualityMetric")][QString::fromLatin1("expression")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDuseQualityMetric")][QString::fromLatin1("expression")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The quality metric's evaluation expression.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDuseQualityMetric")][QString::fromLatin1("expression")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDuseQualityMetric")][QString::fromLatin1("expression")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDuseQualityMetric")][QString::fromLatin1("expression")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    // This is a read-write property
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDuseQualityMetric")][QString::fromLatin1("name")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDuseQualityMetric")][QString::fromLatin1("name")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDuseQualityMetric")][QString::fromLatin1("name")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The quality metric's name.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDuseQualityMetric")][QString::fromLatin1("name")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDuseQualityMetric")][QString::fromLatin1("name")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDuseQualityMetric")][QString::fromLatin1("name")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+    return _expression;
+}
 
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDuseQualityMetric")][QString::fromLatin1("value")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDuseQualityMetric")][QString::fromLatin1("value")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDuseQualityMetric")][QString::fromLatin1("value")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The quality metric's value.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDuseQualityMetric")][QString::fromLatin1("value")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDuseQualityMetric")][QString::fromLatin1("value")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDuseQualityMetric")][QString::fromLatin1("value")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
+void QDuseQualityMetric::setExpression(QString expression)
+{
+    // This is a read-write property
 
-    QWrappedObject::setPropertyData();
+    if (_expression != expression) {
+        _expression = expression;
+    }
 }
 
 QT_END_NAMESPACE
-
-#include "moc_qdusequalitymetric.cpp"
 

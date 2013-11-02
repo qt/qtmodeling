@@ -40,15 +40,21 @@
 ****************************************************************************/
 #include "qsaduseprofilemetamodelplugin.h"
 
-#include "qsaduseprofilemetamodel.h"
+#include <QtModeling/QModelingElement>
+
+#include <QtSADuseProfile/QtSADuseProfile>
 
 QSADuseProfileMetaModelPlugin::QSADuseProfileMetaModelPlugin(QObject *parent)
     : QMetaModelPlugin(parent)
 {
 }
 
-void QSADuseProfileMetaModelPlugin::initMetaModel(QScriptEngine *scriptEngine)
+QModelingElement *QSADuseProfileMetaModelPlugin::createModelingElement(QString type)
 {
-    QSADuseProfileMetaModel::init(scriptEngine);
+    if (type == "QSADuseProfileProcessComponent") return new QSADuseProfileProcessComponent;
+    Q_ASSERT_X(true,
+               "QSADuseProfileMetaModelPlugin::createModelingElement",
+               QStringLiteral("QSADuseProfileMetaModelPlugin does not know how to create instances of '%1' type !").arg(type).toLatin1());
+    return 0;
 }
 

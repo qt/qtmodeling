@@ -39,19 +39,10 @@
 **
 ****************************************************************************/
 #include "qdusevariationpoint.h"
-#include "qdusevariationpoint_p.h"
 
-#include <QtWrappedObjects/QtWrappedObjectsNamespace>
+#include "private/qdusevariationpointobject_p.h"
 
 QT_BEGIN_NAMESPACE
-
-QDuseVariationPointPrivate::QDuseVariationPointPrivate()
-{
-}
-
-QDuseVariationPointPrivate::~QDuseVariationPointPrivate()
-{
-}
 
 /*!
     \class QDuseVariationPoint
@@ -60,50 +51,40 @@ QDuseVariationPointPrivate::~QDuseVariationPointPrivate()
 
     \brief A variation point represents a specific solution for a given design dimension. A variation point entails validation rules which check for valid combinations of variation points and a script which defines the architectural changes to be enacted from such solution.
  */
-
-QDuseVariationPoint::QDuseVariationPoint(QWrappedObject *wrapper, QWrappedObject *parent) :
-    QWrappedObject(*new QDuseVariationPointPrivate, wrapper, parent)
+QDuseVariationPoint::QDuseVariationPoint(bool createQModelingObject)
 {
-    setPropertyData();
+    if (createQModelingObject)
+        _qModelingObject = qobject_cast<QModelingObject *>(new QDuseVariationPointObject(this));
 }
 
-QDuseVariationPoint::QDuseVariationPoint(QDuseVariationPointPrivate &dd, QWrappedObject *wrapper, QWrappedObject *parent) :
-    QWrappedObject(dd, wrapper, parent)
+QModelingElement *QDuseVariationPoint::clone() const
 {
-    setPropertyData();
+    QDuseVariationPoint *c = new QDuseVariationPoint;
+    c->setName(name());
+    c->setRationale(rationale());
+    c->setPreChangeValidationRule(preChangeValidationRule());
+    c->setModelChange(modelChange());
+    return c;
 }
 
-QDuseVariationPoint::~QDuseVariationPoint()
-{
-}
-
-// ---------------------------------------------------------------
-// ATTRIBUTES FROM QDuseVariationPoint
-// ---------------------------------------------------------------
+// OWNED ATTRIBUTES
 
 /*!
     The variation point's name.
  */
 QString QDuseVariationPoint::name() const
 {
-    // This is a read-write attribute
+    // This is a read-write property
 
-    Q_D(const QDuseVariationPoint);
-    return d->name;
+    return _name;
 }
 
 void QDuseVariationPoint::setName(QString name)
 {
-    // This is a read-write attribute
+    // This is a read-write property
 
-    Q_D(QDuseVariationPoint);
-    if (d->name != name) {
-        d->name = name;
-
-        QWrappedObject *wrappedObject = this;
-        while (wrappedObject->wrapper())
-            wrappedObject = wrappedObject->wrapper();
-        wrappedObject->setObjectName(name);
+    if (_name != name) {
+        _name = name;
     }
 }
 
@@ -112,19 +93,17 @@ void QDuseVariationPoint::setName(QString name)
  */
 QString QDuseVariationPoint::rationale() const
 {
-    // This is a read-write attribute
+    // This is a read-write property
 
-    Q_D(const QDuseVariationPoint);
-    return d->rationale;
+    return _rationale;
 }
 
 void QDuseVariationPoint::setRationale(QString rationale)
 {
-    // This is a read-write attribute
+    // This is a read-write property
 
-    Q_D(QDuseVariationPoint);
-    if (d->rationale != rationale) {
-        d->rationale = rationale;
+    if (_rationale != rationale) {
+        _rationale = rationale;
     }
 }
 
@@ -133,19 +112,17 @@ void QDuseVariationPoint::setRationale(QString rationale)
  */
 QString QDuseVariationPoint::preChangeValidationRule() const
 {
-    // This is a read-write attribute
+    // This is a read-write property
 
-    Q_D(const QDuseVariationPoint);
-    return d->preChangeValidationRule;
+    return _preChangeValidationRule;
 }
 
 void QDuseVariationPoint::setPreChangeValidationRule(QString preChangeValidationRule)
 {
-    // This is a read-write attribute
+    // This is a read-write property
 
-    Q_D(QDuseVariationPoint);
-    if (d->preChangeValidationRule != preChangeValidationRule) {
-        d->preChangeValidationRule = preChangeValidationRule;
+    if (_preChangeValidationRule != preChangeValidationRule) {
+        _preChangeValidationRule = preChangeValidationRule;
     }
 }
 
@@ -154,56 +131,19 @@ void QDuseVariationPoint::setPreChangeValidationRule(QString preChangeValidation
  */
 QString QDuseVariationPoint::modelChange() const
 {
-    // This is a read-write attribute
+    // This is a read-write property
 
-    Q_D(const QDuseVariationPoint);
-    return d->modelChange;
+    return _modelChange;
 }
 
 void QDuseVariationPoint::setModelChange(QString modelChange)
 {
-    // This is a read-write attribute
+    // This is a read-write property
 
-    Q_D(QDuseVariationPoint);
-    if (d->modelChange != modelChange) {
-        d->modelChange = modelChange;
+    if (_modelChange != modelChange) {
+        _modelChange = modelChange;
     }
 }
 
-void QDuseVariationPoint::setPropertyData()
-{
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDuseVariationPoint")][QString::fromLatin1("name")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDuseVariationPoint")][QString::fromLatin1("name")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDuseVariationPoint")][QString::fromLatin1("name")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The variation point's name.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDuseVariationPoint")][QString::fromLatin1("name")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDuseVariationPoint")][QString::fromLatin1("name")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDuseVariationPoint")][QString::fromLatin1("name")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDuseVariationPoint")][QString::fromLatin1("rationale")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDuseVariationPoint")][QString::fromLatin1("rationale")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDuseVariationPoint")][QString::fromLatin1("rationale")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The variation point's rationale.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDuseVariationPoint")][QString::fromLatin1("rationale")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDuseVariationPoint")][QString::fromLatin1("rationale")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDuseVariationPoint")][QString::fromLatin1("rationale")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDuseVariationPoint")][QString::fromLatin1("preChangeValidationRule")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDuseVariationPoint")][QString::fromLatin1("preChangeValidationRule")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDuseVariationPoint")][QString::fromLatin1("preChangeValidationRule")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("A set of rules which should be evaluated as true if design space locations containing such variation point are to be considered as valid ones.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDuseVariationPoint")][QString::fromLatin1("preChangeValidationRule")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDuseVariationPoint")][QString::fromLatin1("preChangeValidationRule")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDuseVariationPoint")][QString::fromLatin1("preChangeValidationRule")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
-
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDuseVariationPoint")][QString::fromLatin1("modelChange")][QtWrappedObjects::AggregationRole] = QString::fromLatin1("none");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDuseVariationPoint")][QString::fromLatin1("modelChange")][QtWrappedObjects::IsDerivedUnionRole] = false;
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDuseVariationPoint")][QString::fromLatin1("modelChange")][QtWrappedObjects::DocumentationRole] = QString::fromLatin1("The architectural changes to be enacted as contributions arosen from this variation point. The complete set of architectural changes is the merge of architectural contributions from all involved variation points.");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDuseVariationPoint")][QString::fromLatin1("modelChange")][QtWrappedObjects::RedefinedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDuseVariationPoint")][QString::fromLatin1("modelChange")][QtWrappedObjects::SubsettedPropertiesRole] = QString::fromLatin1("");
-    QWrappedObject::propertyDataHash[QString::fromLatin1("QDuseVariationPoint")][QString::fromLatin1("modelChange")][QtWrappedObjects::OppositeEndRole] = QString::fromLatin1("");
-
-    QWrappedObject::setPropertyData();
-}
-
 QT_END_NAMESPACE
-
-#include "moc_qdusevariationpoint.cpp"
 

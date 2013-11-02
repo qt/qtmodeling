@@ -41,7 +41,13 @@
 #ifndef QSADUSEPROFILEMETAMODELPLUGIN_H
 #define QSADUSEPROFILEMETAMODELPLUGIN_H
 
-#include <QtWrappedObjects/QMetaModelPlugin>
+#include <QtModeling/QMetaModelPlugin>
+
+QT_BEGIN_HEADER
+
+QT_BEGIN_NAMESPACE
+
+class QModelingElement;
 
 class QSADuseProfileMetaModelPlugin : public QMetaModelPlugin
 {
@@ -51,8 +57,12 @@ class QSADuseProfileMetaModelPlugin : public QMetaModelPlugin
 public:
     QSADuseProfileMetaModelPlugin(QObject *parent = 0);
 
-    void initMetaModel(QScriptEngine *scriptEngine = 0);
+    virtual QModelingElement *createModelingElement(QString type);
 };
+
+QT_END_NAMESPACE
+
+QT_END_HEADER
 
 #endif // QSADUSEPROFILEMETAMODELPLUGIN_H
 

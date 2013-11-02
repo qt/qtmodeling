@@ -43,8 +43,7 @@
 
 #include <QtSADuseProfile/QtSADuseProfileGlobal>
 
-// Base class includes
-#include <QtWrappedObjects/QWrappedObject>
+#include <QtModeling/QModelingElement>
 
 QT_BEGIN_HEADER
 
@@ -53,33 +52,25 @@ QT_BEGIN_NAMESPACE
 QT_MODULE(QtSADuseProfile)
 
 class QUmlComponent;
-class QSADuseProfileProcessComponentPrivate;
 
-class Q_SADUSEPROFILE_EXPORT QSADuseProfileProcessComponent : public QWrappedObject
+class Q_SADUSEPROFILE_EXPORT QSADuseProfileProcessComponent : public QModelingElement
 {
-    Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "QSADuseProfile")
-
-    Q_PROPERTY(QUmlComponent * base_Component READ base_Component WRITE setBase_Component)
-
-    Q_DISABLE_COPY(QSADuseProfileProcessComponent)
-    Q_DECLARE_PRIVATE(QSADuseProfileProcessComponent)
-
 public:
-    Q_INVOKABLE explicit QSADuseProfileProcessComponent(QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
-    virtual ~QSADuseProfileProcessComponent();
+    explicit QSADuseProfileProcessComponent(bool createQModelingObject = true);
 
-    // Association ends from QSADuseProfileProcessComponent
-    Q_INVOKABLE QUmlComponent *base_Component() const;
-    Q_INVOKABLE void setBase_Component(QUmlComponent *base_Component);
+    virtual QModelingElement *clone() const;
 
-    virtual void setPropertyData();
+    // Owned attributes
+    QUmlComponent *base_Component() const;
+    void setBase_Component(QUmlComponent *base_Component);
 
 protected:
-    explicit QSADuseProfileProcessComponent(QSADuseProfileProcessComponentPrivate &dd, QWrappedObject *wrapper = 0, QWrappedObject *parent = 0);
+    QUmlComponent *_base_Component;
 };
 
 QT_END_NAMESPACE
+
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE(QSADuseProfileProcessComponent) *)
 
 QT_END_HEADER
 

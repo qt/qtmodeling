@@ -38,41 +38,34 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef QDUSEVARIATIONPOINT_P_H
-#define QDUSEVARIATIONPOINT_P_H
+#include "qdusedesigndimensioninstanceobject_p.h"
+#include "private/qmodelingobject_p.h"
 
-// Base class includes
-#include "private/qwrappedobject_p.h"
-
-#include "QtDuse/QDuseVariationPoint"
-
-// Qt includes
-#include "QtCore/QString"
-
-QT_BEGIN_HEADER
-
+#include <QtDuse/QDuseDesignDimensionInstance>
 QT_BEGIN_NAMESPACE
 
-QT_MODULE(QtDuse)
-class QDuseVariationPoint;
-
-class Q_DUSE_EXPORT QDuseVariationPointPrivate : public QWrappedObjectPrivate
+QDuseDesignDimensionInstanceObject::QDuseDesignDimensionInstanceObject(QDuseDesignDimensionInstance *modelingElement)
 {
-    Q_DECLARE_PUBLIC(QDuseVariationPoint)
+    setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(modelingElement)));
+    setGroupProperties();
+    setPropertyData();
+}
 
-public:
-    explicit QDuseVariationPointPrivate();
-    virtual ~QDuseVariationPointPrivate();
 
-    QString name;
-    QString rationale;
-    QString preChangeValidationRule;
-    QString modelChange;
-};
+void QDuseDesignDimensionInstanceObject::setGroupProperties()
+{
+    Q_D(QModelingObject);
+    const QMetaObject *metaObject = this->metaObject();
+
+    d->propertyGroups << QStringLiteral("QObject");
+    d->groupProperties.insert(QStringLiteral("QObject"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("objectName"))));
+
+    d->propertyGroups << QStringLiteral("QDuseDesignDimensionInstance");
+}
+
+void QDuseDesignDimensionInstanceObject::setPropertyData()
+{
+}
 
 QT_END_NAMESPACE
-
-QT_END_HEADER
-
-#endif // QDUSEVARIATIONPOINT_P_H
 

@@ -55,9 +55,7 @@ class Q_DUSE_EXPORT QtDuse : public QObject
 {
     Q_OBJECT
 
-
 public:
-
 };
 
 QT_END_NAMESPACE

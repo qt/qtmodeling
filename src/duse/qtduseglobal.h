@@ -41,7 +41,15 @@
 #ifndef QTDUSEGLOBAL_H
 #define QTDUSEGLOBAL_H
 
-#include <QtCore/qglobal.h>
+#include <QtCore/QtGlobal>
+
+#include <QtCore/QMetaType>
+#include <QtCore/QList>
+#include <QtCore/QSet>
+#include <QtCore/QString>
+
+Q_DECLARE_METATYPE(QList<QString> *)
+Q_DECLARE_METATYPE(QSet<QString> *)
 
 QT_BEGIN_NAMESPACE
 

@@ -1,7 +1,7 @@
 include($QT_INSTALL_DOCS/global/qt-module-defaults.qdocconf)
 
 project                 = QtDuse
-description             = Qt DuSE Reference Documentation
+description             = Qt Duse Reference Documentation
 url                     = http://qt-project.org/doc/qtduse
 version                 = 5.0.0
 
@@ -12,7 +12,7 @@ qhp.projects            = QtDuse
 qhp.QtDuse.file            = qtduse.qhp
 qhp.QtDuse.namespace           = org.qt-project.qtduse.500
 qhp.QtDuse.virtualFolder       = qtduse
-qhp.QtDuse.indexTitle          = Qt DuSE
+qhp.QtDuse.indexTitle          = Qt Duse
 qhp.QtDuse.indexRoot           =
 
 qhp.QtDuse.filterAttributes    = qtduse 5.0.0 qtrefdoc
@@ -21,7 +21,7 @@ qhp.QtDuse.customFilters.Qt.filterAttributes = qtduse 5.0.0
 
 qhp.QtDuse.subprojects         = classes
 qhp.QtDuse.subprojects.classes.title = C++ Classes
-qhp.QtDuse.subprojects.classes.indexTitle = Qt DuSE C++ Classes
+qhp.QtDuse.subprojects.classes.indexTitle = Qt Duse C++ Classes
 qhp.QtDuse.subprojects.classes.selectors = class fake:headerfile
 qhp.QtDuse.subprojects.classes.sortPages = true
 tagfile                 = ../../../doc/qtduse/qtduse.tags
