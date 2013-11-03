@@ -38,51 +38,17 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-import QtQuick 2.0
-
-UmlElement {
-    UmlSlot {
-        id: nameSlot
-        anchors.top: parent.top
-        Text {
-            id: label
-            text: element.name
-            anchors.centerIn: parent
-            font { family: "Korolev"; italic: element.isAbstract }
-        }
+function findElement(owner, elementName) {
+    console.log("Procurando " + elementName + " in " + owner.name);
+    console.log(owner.ownedElements);
+    var ret;
+    for (var i = 0; i < owner.ownedElements.length; ++i) {
+        console.log("Analyzing " + owner.ownedElements[i].name);
+        ret = findElement(owner.ownedElements[i], elementName);
+        if (ret != null)
+            break;
     }
-    UmlSlot {
-        id: attributeSlot
-        anchors { top: nameSlot.bottom; topMargin: -1 }
-        height: (parent.height - nameSlot.height)/2
-        ListView {
-            model: element.ownedAttributes
-            anchors { fill: parent; margins: 4 }
-            delegate: Text {
-                text: visibility(modelData.visibility) + modelData.name + ": " + (modelData.type ? modelData.type.name:"<no type>")
-                font { family: "Korolev" }
-            }
-        }
-    }
-    UmlSlot {
-        anchors { top: attributeSlot.bottom; topMargin: -1; bottom: parent.bottom }
-        ListView {
-            model: element.ownedOperations
-            anchors { fill: parent; margins: 4 }
-            delegate: Text {
-                text: visibility(modelData.visibility) + modelData.name
-                font { family: "Korolev" }
-            }
-        }
-    }
-    function visibility(visibilityEnum)
-    {
-        switch (visibilityEnum) {
-        case 0: return " "
-        case 1: return "+"
-        case 2: return "-"
-        case 3: return "#"
-        case 4: return "~"
-        }
-    }
+    if (ret == null && owner.objectName == elementName)
+        ret = owner;
+    return ret;
 }
