@@ -85,6 +85,9 @@ public:
 
 public Q_SLOTS:[%- GENERATE_SLOTS(class, visitedClasses, redefinedProperties) %]
 
+[%- visitedClasses = [] %]
+Q_SIGNALS:[%- GENERATE_SIGNALS(class, visitedClasses, redefinedProperties) %]
+
 protected:
     virtual void setGroupProperties();
     virtual void setPropertyData();

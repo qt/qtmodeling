@@ -119,7 +119,7 @@ ${attributeName}
     [%- SET qtAttribute = QT_ATTRIBUTE(attribute) -%]
     [%- NEXT IF redefinedProperties.grep("^${className}-${qtAttribute}$").size > 0 -%]
     [%- SET qtType = QT_TYPE(namespace, attribute, "false") %]
-    Q_PROPERTY(${qtType.trim} ${PLURALFORM(qtAttribute, attribute)} READ ${PLURALFORM(qtAttribute, attribute)}[% IF attribute.findvalue("@isReadOnly") != "true" and !(attribute.findnodes("upperValue").findvalue("@value") == "*")%] WRITE set${qtAttribute.remove("^is").ucfirst.remove('_$')}[% END %][% IF attribute.findvalue("defaultValue/@xmi:type") != "" %] RESET unset${qtAttribute.remove("^is").ucfirst}[% END %][% IF attribute.findvalue("@isDerived") == "true" and attribute.findvalue("@isDerivedUnion") != "true" %] STORED false[% END %])
+    Q_PROPERTY(${qtType.trim} ${PLURALFORM(qtAttribute, attribute)} READ ${PLURALFORM(qtAttribute, attribute)}[% IF attribute.findvalue("@isReadOnly") != "true" and !(attribute.findnodes("upperValue").findvalue("@value") == "*")%] WRITE set${qtAttribute.remove("^is").ucfirst.remove('_$')}[% END %] NOTIFY ${PLURALFORM(qtAttribute, attribute).remove('_$')}Changed[% IF attribute.findvalue("defaultValue/@xmi:type") != "" %] RESET unset${qtAttribute.remove("^is").ucfirst}[% END %][% IF attribute.findvalue("@isDerived") == "true" and attribute.findvalue("@isDerivedUnion") != "true" %] STORED false[% END %])
 [%- END %]
 [%- END -%]
 [%- MACRO GENERATE_ATTRIBUTES(class, visitedClasses, redefinedProperties) BLOCK -%]
@@ -406,6 +406,7 @@ void Q${namespace}${originalClassName}Object::add${attributeName}(${originalQtTy
         [%- ELSE %]
     qmodelingelementproperty_cast<Q${namespace}${originalClassName} *>(this)->add${attributeName}(${qtAttribute});
         [%- END %]
+    emit ${PLURALFORM(qtAttribute, attribute)}Changed(this->${PLURALFORM(qtAttribute, attribute)}());
 }
 
         [%- IF qtType.remove("QSet<").remove("QList<").match('\*') %]
@@ -419,18 +420,21 @@ void Q${namespace}${originalClassName}Object::remove${attributeName}(${originalQ
         [%- ELSE %]
     qmodelingelementproperty_cast<Q${namespace}${originalClassName} *>(this)->remove${attributeName}(${qtAttribute});
         [%- END %]
+    emit ${PLURALFORM(qtAttribute, attribute)}Changed(this->${PLURALFORM(qtAttribute, attribute)}());
 }
 
     [%- ELSIF qtType.match('\*$') %]
 void Q${namespace}${originalClassName}Object::set${attributeName}(${qtType}${qtAttribute})
 {
     qmodelingelementproperty_cast<Q${namespace}${originalClassName} *>(this)->set${attributeName}(qmodelingelementproperty_cast<${originalQtType}>(${qtAttribute}));
+    emit ${qtAttribute}Changed(this->${qtAttribute}());
 }
 
     [%- ELSE %]
 void Q${namespace}${originalClassName}Object::set${attributeName.remove("^Is")}(${qtType}${qtAttribute})
 {
     qmodelingelementproperty_cast<Q${namespace}${originalClassName} *>(this)->set${attributeName.remove("^Is")}(${qtAttribute});
+    emit ${attributeName.lcfirst}Changed(this->${attributeName.lcfirst}());
 }
 
     [%- END -%]
@@ -586,5 +590,29 @@ void Q${namespace}${originalClassName}Object::unset${qtAttribute.remove("^is").u
 [%- END -%]
 "));
 
+[%- END %]
+[%- END -%]
+[%- MACRO GENERATE_SIGNALS(class, visitedClasses, redefinedProperties) BLOCK -%]
+[%- FOREACH parent IN class.findnodes("generalization") -%]
+    [%- SET parentName = parent.findvalue("@general") -%]
+    [%- IF visitedClasses.grep("^${parentName}$").size == 0 -%]
+    [%- visitedClasses.push("${parentName}") -%]
+    [%- GENERATE_SIGNALS(xmi.findnodes("//packagedElement[(@xmi:type=\"uml:Class\" or @xmi:type=\"uml:Stereotype\") and @name=\"${parentName}\"]"), visitedClasses, redefinedProperties) -%]
+    [%- END -%]
+[%- END -%]
+[%- SET found = "false" -%]
+[%- SET className = class.findvalue("@name") -%]
+[%- FOREACH attribute IN class.findnodes("ownedAttribute") -%]
+[%- IF found == "false" %]
+
+    // Signals for owned attributes [${className}]
+[%- SET found = "true" -%]
+[%- END %]
+    [%- SET qtAttribute = QT_ATTRIBUTE(attribute) %]
+    [%- NEXT IF redefinedProperties.grep("^${className}-${qtAttribute}$").size > 0 -%]
+    [%- SET qtType = QT_TYPE(namespace, attribute, "false") -%]
+    [%- SET readOnly = attribute.findvalue("@isReadOnly") -%]
+    [%- SET attributeName = attribute.findvalue("@name").ucfirst %]
+    void ${PLURALFORM(qtAttribute, attribute).remove('_$')}Changed(${qtType}${PLURALFORM(qtAttribute, attribute)});
 [%- END %]
 [%- END -%]
