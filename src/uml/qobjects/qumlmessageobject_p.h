@@ -62,27 +62,27 @@ class Q_UML_EXPORT QUmlMessageObject : public QModelingObject
     Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [Element]
-    Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
-    Q_PROPERTY(QSet<QObject *> ownedElements READ ownedElements)
-    Q_PROPERTY(QObject * owner READ owner)
+    Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments NOTIFY ownedCommentsChanged)
+    Q_PROPERTY(QSet<QObject *> ownedElements READ ownedElements NOTIFY ownedElementsChanged)
+    Q_PROPERTY(QObject * owner READ owner NOTIFY ownerChanged)
 
     // Properties [NamedElement]
-    Q_PROPERTY(QSet<QObject *> clientDependencies READ clientDependencies)
-    Q_PROPERTY(QString name READ name WRITE setName)
-    Q_PROPERTY(QObject * nameExpression READ nameExpression WRITE setNameExpression)
-    Q_PROPERTY(QObject * namespace_ READ namespace_)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
+    Q_PROPERTY(QSet<QObject *> clientDependencies READ clientDependencies NOTIFY clientDependenciesChanged)
+    Q_PROPERTY(QString name READ name WRITE setName NOTIFY nameChanged)
+    Q_PROPERTY(QObject * nameExpression READ nameExpression WRITE setNameExpression NOTIFY nameExpressionChanged)
+    Q_PROPERTY(QObject * namespace_ READ namespace_ NOTIFY namespaceChanged)
+    Q_PROPERTY(QString qualifiedName READ qualifiedName NOTIFY qualifiedNameChanged STORED false)
+    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility NOTIFY visibilityChanged)
 
     // Properties [Message]
-    Q_PROPERTY(QList<QObject *> arguments READ arguments)
-    Q_PROPERTY(QObject * connector READ connector WRITE setConnector)
-    Q_PROPERTY(QObject * interaction READ interaction WRITE setInteraction)
-    Q_PROPERTY(QtUml::MessageKind messageKind READ messageKind RESET unsetMessageKind STORED false)
-    Q_PROPERTY(QtUml::MessageSort messageSort READ messageSort WRITE setMessageSort RESET unsetMessageSort)
-    Q_PROPERTY(QObject * receiveEvent READ receiveEvent WRITE setReceiveEvent)
-    Q_PROPERTY(QObject * sendEvent READ sendEvent WRITE setSendEvent)
-    Q_PROPERTY(QObject * signature READ signature WRITE setSignature)
+    Q_PROPERTY(QList<QObject *> arguments READ arguments NOTIFY argumentsChanged)
+    Q_PROPERTY(QObject * connector READ connector WRITE setConnector NOTIFY connectorChanged)
+    Q_PROPERTY(QObject * interaction READ interaction WRITE setInteraction NOTIFY interactionChanged)
+    Q_PROPERTY(QtUml::MessageKind messageKind READ messageKind NOTIFY messageKindChanged RESET unsetMessageKind STORED false)
+    Q_PROPERTY(QtUml::MessageSort messageSort READ messageSort WRITE setMessageSort NOTIFY messageSortChanged RESET unsetMessageSort)
+    Q_PROPERTY(QObject * receiveEvent READ receiveEvent WRITE setReceiveEvent NOTIFY receiveEventChanged)
+    Q_PROPERTY(QObject * sendEvent READ sendEvent WRITE setSendEvent NOTIFY sendEventChanged)
+    Q_PROPERTY(QObject * signature READ signature WRITE setSignature NOTIFY signatureChanged)
 
 public:
     Q_INVOKABLE explicit QUmlMessageObject(QUmlMessage *modelingElement);
@@ -150,6 +150,31 @@ public Q_SLOTS:
     void setReceiveEvent(QObject *receiveEvent = 0);
     void setSendEvent(QObject *sendEvent = 0);
     void setSignature(QObject *signature = 0);
+
+Q_SIGNALS:
+
+    // Signals for owned attributes [Element]
+    void ownedCommentsChanged(QSet<QObject *> ownedComments);
+    void ownedElementsChanged(QSet<QObject *> ownedElements);
+    void ownerChanged(QObject *owner);
+
+    // Signals for owned attributes [NamedElement]
+    void clientDependenciesChanged(QSet<QObject *> clientDependencies);
+    void nameChanged(QString name);
+    void nameExpressionChanged(QObject *nameExpression);
+    void namespaceChanged(QObject *namespace_);
+    void qualifiedNameChanged(QString qualifiedName);
+    void visibilityChanged(QtUml::VisibilityKind visibility);
+
+    // Signals for owned attributes [Message]
+    void argumentsChanged(QList<QObject *> arguments);
+    void connectorChanged(QObject *connector);
+    void interactionChanged(QObject *interaction);
+    void messageKindChanged(QtUml::MessageKind messageKind);
+    void messageSortChanged(QtUml::MessageSort messageSort);
+    void receiveEventChanged(QObject *receiveEvent);
+    void sendEventChanged(QObject *sendEvent);
+    void signatureChanged(QObject *signature);
 
 protected:
     virtual void setGroupProperties();

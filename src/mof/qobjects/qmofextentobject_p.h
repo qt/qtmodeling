@@ -72,6 +72,8 @@ public:
 
 public Q_SLOTS:
 
+Q_SIGNALS:
+
 protected:
     virtual void setGroupProperties();
     virtual void setPropertyData();

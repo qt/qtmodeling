@@ -224,26 +224,31 @@ QString QUmlTimeEventObject::separator() const
 void QUmlTimeEventObject::addOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlTimeEvent *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlTimeEventObject::removeOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlTimeEvent *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlTimeEventObject::addOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlTimeEvent *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlTimeEventObject::removeOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlTimeEvent *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlTimeEventObject::setOwner(QObject *owner)
 {
     qmodelingelementproperty_cast<QUmlTimeEvent *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
+    emit ownerChanged(this->owner());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ParameterableElement]
@@ -251,11 +256,13 @@ void QUmlTimeEventObject::setOwner(QObject *owner)
 void QUmlTimeEventObject::setOwningTemplateParameter(QObject *owningTemplateParameter)
 {
     qmodelingelementproperty_cast<QUmlTimeEvent *>(this)->setOwningTemplateParameter(qmodelingelementproperty_cast<QUmlTemplateParameter *>(owningTemplateParameter));
+    emit owningTemplateParameterChanged(this->owningTemplateParameter());
 }
 
 void QUmlTimeEventObject::setTemplateParameter(QObject *templateParameter)
 {
     qmodelingelementproperty_cast<QUmlTimeEvent *>(this)->setTemplateParameter(qmodelingelementproperty_cast<QUmlTemplateParameter *>(templateParameter));
+    emit templateParameterChanged(this->templateParameter());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [NamedElement]
@@ -263,37 +270,44 @@ void QUmlTimeEventObject::setTemplateParameter(QObject *templateParameter)
 void QUmlTimeEventObject::addClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlTimeEvent *>(this)->addClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlTimeEventObject::removeClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlTimeEvent *>(this)->removeClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlTimeEventObject::setName(QString name)
 {
     qmodelingelementproperty_cast<QUmlTimeEvent *>(this)->setName(name);
+    emit nameChanged(this->name());
 }
 
 void QUmlTimeEventObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingelementproperty_cast<QUmlTimeEvent *>(this)->setNameExpression(qmodelingelementproperty_cast<QUmlStringExpression *>(nameExpression));
+    emit nameExpressionChanged(this->nameExpression());
 }
 
 void QUmlTimeEventObject::setNamespace(QObject *namespace_)
 {
     qmodelingelementproperty_cast<QUmlTimeEvent *>(this)->setNamespace(qmodelingelementproperty_cast<QUmlNamespace *>(namespace_));
+    emit namespaceChanged(this->namespace_());
 }
 
 void QUmlTimeEventObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingelementproperty_cast<QUmlTimeEvent *>(this)->setQualifiedName(qualifiedName);
+    emit qualifiedNameChanged(this->qualifiedName());
 }
 // SLOTS FOR OWNED ATTRIBUTES [PackageableElement]
 
 void QUmlTimeEventObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingelementproperty_cast<QUmlTimeEvent *>(this)->setVisibility(visibility);
+    emit visibilityChanged(this->visibility());
 }
 
 void QUmlTimeEventObject::unsetVisibility()
@@ -308,6 +322,7 @@ void QUmlTimeEventObject::unsetVisibility()
 void QUmlTimeEventObject::setRelative(bool isRelative)
 {
     qmodelingelementproperty_cast<QUmlTimeEvent *>(this)->setRelative(isRelative);
+    emit isRelativeChanged(this->isRelative());
 }
 
 void QUmlTimeEventObject::unsetRelative()
@@ -320,6 +335,7 @@ void QUmlTimeEventObject::unsetRelative()
 void QUmlTimeEventObject::setWhen(QObject *when)
 {
     qmodelingelementproperty_cast<QUmlTimeEvent *>(this)->setWhen(qmodelingelementproperty_cast<QUmlTimeExpression *>(when));
+    emit whenChanged(this->when());
 }
 
 

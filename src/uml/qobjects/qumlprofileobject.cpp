@@ -447,26 +447,31 @@ QSet<QObject *> QUmlProfileObject::visibleMembers() const
 void QUmlProfileObject::addOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlProfile *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlProfileObject::removeOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlProfile *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlProfileObject::addOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlProfile *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlProfileObject::removeOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlProfile *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlProfileObject::setOwner(QObject *owner)
 {
     qmodelingelementproperty_cast<QUmlProfile *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
+    emit ownerChanged(this->owner());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [NamedElement]
@@ -474,92 +479,110 @@ void QUmlProfileObject::setOwner(QObject *owner)
 void QUmlProfileObject::addClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlProfile *>(this)->addClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlProfileObject::removeClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlProfile *>(this)->removeClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlProfileObject::setName(QString name)
 {
     qmodelingelementproperty_cast<QUmlProfile *>(this)->setName(name);
+    emit nameChanged(this->name());
 }
 
 void QUmlProfileObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingelementproperty_cast<QUmlProfile *>(this)->setNameExpression(qmodelingelementproperty_cast<QUmlStringExpression *>(nameExpression));
+    emit nameExpressionChanged(this->nameExpression());
 }
 
 void QUmlProfileObject::setNamespace(QObject *namespace_)
 {
     qmodelingelementproperty_cast<QUmlProfile *>(this)->setNamespace(qmodelingelementproperty_cast<QUmlNamespace *>(namespace_));
+    emit namespaceChanged(this->namespace_());
 }
 
 void QUmlProfileObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingelementproperty_cast<QUmlProfile *>(this)->setQualifiedName(qualifiedName);
+    emit qualifiedNameChanged(this->qualifiedName());
 }
 // SLOTS FOR OWNED ATTRIBUTES [Namespace]
 
 void QUmlProfileObject::addElementImport(QObject *elementImport)
 {
     qmodelingelementproperty_cast<QUmlProfile *>(this)->addElementImport(qmodelingelementproperty_cast<QUmlElementImport *>(elementImport));
+    emit elementImportsChanged(this->elementImports());
 }
 
 void QUmlProfileObject::removeElementImport(QObject *elementImport)
 {
     qmodelingelementproperty_cast<QUmlProfile *>(this)->removeElementImport(qmodelingelementproperty_cast<QUmlElementImport *>(elementImport));
+    emit elementImportsChanged(this->elementImports());
 }
 
 void QUmlProfileObject::addImportedMember(QObject *importedMember)
 {
     qmodelingelementproperty_cast<QUmlProfile *>(this)->addImportedMember(qmodelingelementproperty_cast<QUmlPackageableElement *>(importedMember));
+    emit importedMembersChanged(this->importedMembers());
 }
 
 void QUmlProfileObject::removeImportedMember(QObject *importedMember)
 {
     qmodelingelementproperty_cast<QUmlProfile *>(this)->removeImportedMember(qmodelingelementproperty_cast<QUmlPackageableElement *>(importedMember));
+    emit importedMembersChanged(this->importedMembers());
 }
 
 void QUmlProfileObject::addMember(QObject *member)
 {
     qmodelingelementproperty_cast<QUmlProfile *>(this)->addMember(qmodelingelementproperty_cast<QUmlNamedElement *>(member));
+    emit membersChanged(this->members());
 }
 
 void QUmlProfileObject::removeMember(QObject *member)
 {
     qmodelingelementproperty_cast<QUmlProfile *>(this)->removeMember(qmodelingelementproperty_cast<QUmlNamedElement *>(member));
+    emit membersChanged(this->members());
 }
 
 void QUmlProfileObject::addOwnedMember(QObject *ownedMember)
 {
     qmodelingelementproperty_cast<QUmlProfile *>(this)->addOwnedMember(qmodelingelementproperty_cast<QUmlNamedElement *>(ownedMember));
+    emit ownedMembersChanged(this->ownedMembers());
 }
 
 void QUmlProfileObject::removeOwnedMember(QObject *ownedMember)
 {
     qmodelingelementproperty_cast<QUmlProfile *>(this)->removeOwnedMember(qmodelingelementproperty_cast<QUmlNamedElement *>(ownedMember));
+    emit ownedMembersChanged(this->ownedMembers());
 }
 
 void QUmlProfileObject::addOwnedRule(QObject *ownedRule)
 {
     qmodelingelementproperty_cast<QUmlProfile *>(this)->addOwnedRule(qmodelingelementproperty_cast<QUmlConstraint *>(ownedRule));
+    emit ownedRulesChanged(this->ownedRules());
 }
 
 void QUmlProfileObject::removeOwnedRule(QObject *ownedRule)
 {
     qmodelingelementproperty_cast<QUmlProfile *>(this)->removeOwnedRule(qmodelingelementproperty_cast<QUmlConstraint *>(ownedRule));
+    emit ownedRulesChanged(this->ownedRules());
 }
 
 void QUmlProfileObject::addPackageImport(QObject *packageImport)
 {
     qmodelingelementproperty_cast<QUmlProfile *>(this)->addPackageImport(qmodelingelementproperty_cast<QUmlPackageImport *>(packageImport));
+    emit packageImportsChanged(this->packageImports());
 }
 
 void QUmlProfileObject::removePackageImport(QObject *packageImport)
 {
     qmodelingelementproperty_cast<QUmlProfile *>(this)->removePackageImport(qmodelingelementproperty_cast<QUmlPackageImport *>(packageImport));
+    emit packageImportsChanged(this->packageImports());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ParameterableElement]
@@ -567,11 +590,13 @@ void QUmlProfileObject::removePackageImport(QObject *packageImport)
 void QUmlProfileObject::setOwningTemplateParameter(QObject *owningTemplateParameter)
 {
     qmodelingelementproperty_cast<QUmlProfile *>(this)->setOwningTemplateParameter(qmodelingelementproperty_cast<QUmlTemplateParameter *>(owningTemplateParameter));
+    emit owningTemplateParameterChanged(this->owningTemplateParameter());
 }
 
 void QUmlProfileObject::setTemplateParameter(QObject *templateParameter)
 {
     qmodelingelementproperty_cast<QUmlProfile *>(this)->setTemplateParameter(qmodelingelementproperty_cast<QUmlTemplateParameter *>(templateParameter));
+    emit templateParameterChanged(this->templateParameter());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [PackageableElement]
@@ -579,6 +604,7 @@ void QUmlProfileObject::setTemplateParameter(QObject *templateParameter)
 void QUmlProfileObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingelementproperty_cast<QUmlProfile *>(this)->setVisibility(visibility);
+    emit visibilityChanged(this->visibility());
 }
 
 void QUmlProfileObject::unsetVisibility()
@@ -593,16 +619,19 @@ void QUmlProfileObject::unsetVisibility()
 void QUmlProfileObject::setOwnedTemplateSignature(QObject *ownedTemplateSignature)
 {
     qmodelingelementproperty_cast<QUmlProfile *>(this)->setOwnedTemplateSignature(qmodelingelementproperty_cast<QUmlTemplateSignature *>(ownedTemplateSignature));
+    emit ownedTemplateSignatureChanged(this->ownedTemplateSignature());
 }
 
 void QUmlProfileObject::addTemplateBinding(QObject *templateBinding)
 {
     qmodelingelementproperty_cast<QUmlProfile *>(this)->addTemplateBinding(qmodelingelementproperty_cast<QUmlTemplateBinding *>(templateBinding));
+    emit templateBindingsChanged(this->templateBindings());
 }
 
 void QUmlProfileObject::removeTemplateBinding(QObject *templateBinding)
 {
     qmodelingelementproperty_cast<QUmlProfile *>(this)->removeTemplateBinding(qmodelingelementproperty_cast<QUmlTemplateBinding *>(templateBinding));
+    emit templateBindingsChanged(this->templateBindings());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Package]
@@ -610,71 +639,85 @@ void QUmlProfileObject::removeTemplateBinding(QObject *templateBinding)
 void QUmlProfileObject::setURI(QString URI)
 {
     qmodelingelementproperty_cast<QUmlProfile *>(this)->setURI(URI);
+    emit URIChanged(this->URI());
 }
 
 void QUmlProfileObject::addNestedPackage(QObject *nestedPackage)
 {
     qmodelingelementproperty_cast<QUmlProfile *>(this)->addNestedPackage(qmodelingelementproperty_cast<QUmlPackage *>(nestedPackage));
+    emit nestedPackagesChanged(this->nestedPackages());
 }
 
 void QUmlProfileObject::removeNestedPackage(QObject *nestedPackage)
 {
     qmodelingelementproperty_cast<QUmlProfile *>(this)->removeNestedPackage(qmodelingelementproperty_cast<QUmlPackage *>(nestedPackage));
+    emit nestedPackagesChanged(this->nestedPackages());
 }
 
 void QUmlProfileObject::setNestingPackage(QObject *nestingPackage)
 {
     qmodelingelementproperty_cast<QUmlProfile *>(this)->setNestingPackage(qmodelingelementproperty_cast<QUmlPackage *>(nestingPackage));
+    emit nestingPackageChanged(this->nestingPackage());
 }
 
 void QUmlProfileObject::addOwnedStereotype(QObject *ownedStereotype)
 {
     qmodelingelementproperty_cast<QUmlProfile *>(this)->addOwnedStereotype(qmodelingelementproperty_cast<QUmlStereotype *>(ownedStereotype));
+    emit ownedStereotypesChanged(this->ownedStereotypes());
 }
 
 void QUmlProfileObject::removeOwnedStereotype(QObject *ownedStereotype)
 {
     qmodelingelementproperty_cast<QUmlProfile *>(this)->removeOwnedStereotype(qmodelingelementproperty_cast<QUmlStereotype *>(ownedStereotype));
+    emit ownedStereotypesChanged(this->ownedStereotypes());
 }
 
 void QUmlProfileObject::addOwnedType(QObject *ownedType)
 {
     qmodelingelementproperty_cast<QUmlProfile *>(this)->addOwnedType(qmodelingelementproperty_cast<QUmlType *>(ownedType));
+    emit ownedTypesChanged(this->ownedTypes());
 }
 
 void QUmlProfileObject::removeOwnedType(QObject *ownedType)
 {
     qmodelingelementproperty_cast<QUmlProfile *>(this)->removeOwnedType(qmodelingelementproperty_cast<QUmlType *>(ownedType));
+    emit ownedTypesChanged(this->ownedTypes());
 }
 
 void QUmlProfileObject::addPackageMerge(QObject *packageMerge)
 {
     qmodelingelementproperty_cast<QUmlProfile *>(this)->addPackageMerge(qmodelingelementproperty_cast<QUmlPackageMerge *>(packageMerge));
+    emit packageMergesChanged(this->packageMerges());
 }
 
 void QUmlProfileObject::removePackageMerge(QObject *packageMerge)
 {
     qmodelingelementproperty_cast<QUmlProfile *>(this)->removePackageMerge(qmodelingelementproperty_cast<QUmlPackageMerge *>(packageMerge));
+    emit packageMergesChanged(this->packageMerges());
 }
 
 void QUmlProfileObject::addPackagedElement(QObject *packagedElement)
 {
     qmodelingelementproperty_cast<QUmlProfile *>(this)->addPackagedElement(qmodelingelementproperty_cast<QUmlPackageableElement *>(packagedElement));
+    emit packagedElementsChanged(this->packagedElements());
 }
 
 void QUmlProfileObject::removePackagedElement(QObject *packagedElement)
 {
     qmodelingelementproperty_cast<QUmlProfile *>(this)->removePackagedElement(qmodelingelementproperty_cast<QUmlPackageableElement *>(packagedElement));
+    emit packagedElementsChanged(this->packagedElements());
 }
 
 void QUmlProfileObject::addProfileApplication(QObject *profileApplication)
 {
     qmodelingelementproperty_cast<QUmlProfile *>(this)->addProfileApplication(qmodelingelementproperty_cast<QUmlProfileApplication *>(profileApplication));
+    emit profileApplicationsChanged(this->profileApplications());
 }
 
 void QUmlProfileObject::removeProfileApplication(QObject *profileApplication)
 {
     qmodelingelementproperty_cast<QUmlProfile *>(this)->removeProfileApplication(qmodelingelementproperty_cast<QUmlProfileApplication *>(profileApplication));
+    emit profileApplicationsChanged(this->profileApplications());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Profile]
@@ -682,21 +725,25 @@ void QUmlProfileObject::removeProfileApplication(QObject *profileApplication)
 void QUmlProfileObject::addMetaclassReference(QObject *metaclassReference)
 {
     qmodelingelementproperty_cast<QUmlProfile *>(this)->addMetaclassReference(qmodelingelementproperty_cast<QUmlElementImport *>(metaclassReference));
+    emit metaclassReferencesChanged(this->metaclassReferences());
 }
 
 void QUmlProfileObject::removeMetaclassReference(QObject *metaclassReference)
 {
     qmodelingelementproperty_cast<QUmlProfile *>(this)->removeMetaclassReference(qmodelingelementproperty_cast<QUmlElementImport *>(metaclassReference));
+    emit metaclassReferencesChanged(this->metaclassReferences());
 }
 
 void QUmlProfileObject::addMetamodelReference(QObject *metamodelReference)
 {
     qmodelingelementproperty_cast<QUmlProfile *>(this)->addMetamodelReference(qmodelingelementproperty_cast<QUmlPackageImport *>(metamodelReference));
+    emit metamodelReferencesChanged(this->metamodelReferences());
 }
 
 void QUmlProfileObject::removeMetamodelReference(QObject *metamodelReference)
 {
     qmodelingelementproperty_cast<QUmlProfile *>(this)->removeMetamodelReference(qmodelingelementproperty_cast<QUmlPackageImport *>(metamodelReference));
+    emit metamodelReferencesChanged(this->metamodelReferences());
 }
 
 

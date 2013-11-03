@@ -174,26 +174,31 @@ void QMofPackageMergeObject::delete_()
 void QMofPackageMergeObject::addOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QMofPackageMerge *>(this)->addOwnedComment(qmodelingelementproperty_cast<QMofComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QMofPackageMergeObject::removeOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QMofPackageMerge *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QMofComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QMofPackageMergeObject::addOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QMofPackageMerge *>(this)->addOwnedElement(qmodelingelementproperty_cast<QMofElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QMofPackageMergeObject::removeOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QMofPackageMerge *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QMofElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QMofPackageMergeObject::setOwner(QObject *owner)
 {
     qmodelingelementproperty_cast<QMofPackageMerge *>(this)->setOwner(qmodelingelementproperty_cast<QMofElement *>(owner));
+    emit ownerChanged(this->owner());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Relationship]
@@ -201,11 +206,13 @@ void QMofPackageMergeObject::setOwner(QObject *owner)
 void QMofPackageMergeObject::addRelatedElement(QObject *relatedElement)
 {
     qmodelingelementproperty_cast<QMofPackageMerge *>(this)->addRelatedElement(qmodelingelementproperty_cast<QMofElement *>(relatedElement));
+    emit relatedElementsChanged(this->relatedElements());
 }
 
 void QMofPackageMergeObject::removeRelatedElement(QObject *relatedElement)
 {
     qmodelingelementproperty_cast<QMofPackageMerge *>(this)->removeRelatedElement(qmodelingelementproperty_cast<QMofElement *>(relatedElement));
+    emit relatedElementsChanged(this->relatedElements());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [DirectedRelationship]
@@ -213,21 +220,25 @@ void QMofPackageMergeObject::removeRelatedElement(QObject *relatedElement)
 void QMofPackageMergeObject::addSource(QObject *source)
 {
     qmodelingelementproperty_cast<QMofPackageMerge *>(this)->addSource(qmodelingelementproperty_cast<QMofElement *>(source));
+    emit sourcesChanged(this->sources());
 }
 
 void QMofPackageMergeObject::removeSource(QObject *source)
 {
     qmodelingelementproperty_cast<QMofPackageMerge *>(this)->removeSource(qmodelingelementproperty_cast<QMofElement *>(source));
+    emit sourcesChanged(this->sources());
 }
 
 void QMofPackageMergeObject::addTarget(QObject *target)
 {
     qmodelingelementproperty_cast<QMofPackageMerge *>(this)->addTarget(qmodelingelementproperty_cast<QMofElement *>(target));
+    emit targetsChanged(this->targets());
 }
 
 void QMofPackageMergeObject::removeTarget(QObject *target)
 {
     qmodelingelementproperty_cast<QMofPackageMerge *>(this)->removeTarget(qmodelingelementproperty_cast<QMofElement *>(target));
+    emit targetsChanged(this->targets());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [PackageMerge]
@@ -235,11 +246,13 @@ void QMofPackageMergeObject::removeTarget(QObject *target)
 void QMofPackageMergeObject::setMergedPackage(QObject *mergedPackage)
 {
     qmodelingelementproperty_cast<QMofPackageMerge *>(this)->setMergedPackage(qmodelingelementproperty_cast<QMofPackage *>(mergedPackage));
+    emit mergedPackageChanged(this->mergedPackage());
 }
 
 void QMofPackageMergeObject::setReceivingPackage(QObject *receivingPackage)
 {
     qmodelingelementproperty_cast<QMofPackageMerge *>(this)->setReceivingPackage(qmodelingelementproperty_cast<QMofPackage *>(receivingPackage));
+    emit receivingPackageChanged(this->receivingPackage());
 }
 
 

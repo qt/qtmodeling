@@ -60,21 +60,21 @@ class Q_UML_EXPORT QUmlTemplateBindingObject : public QModelingObject
     Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [Element]
-    Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
-    Q_PROPERTY(QSet<QObject *> ownedElements READ ownedElements)
-    Q_PROPERTY(QObject * owner READ owner)
+    Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments NOTIFY ownedCommentsChanged)
+    Q_PROPERTY(QSet<QObject *> ownedElements READ ownedElements NOTIFY ownedElementsChanged)
+    Q_PROPERTY(QObject * owner READ owner NOTIFY ownerChanged)
 
     // Properties [Relationship]
-    Q_PROPERTY(QSet<QObject *> relatedElements READ relatedElements)
+    Q_PROPERTY(QSet<QObject *> relatedElements READ relatedElements NOTIFY relatedElementsChanged)
 
     // Properties [DirectedRelationship]
-    Q_PROPERTY(QSet<QObject *> sources READ sources)
-    Q_PROPERTY(QSet<QObject *> targets READ targets)
+    Q_PROPERTY(QSet<QObject *> sources READ sources NOTIFY sourcesChanged)
+    Q_PROPERTY(QSet<QObject *> targets READ targets NOTIFY targetsChanged)
 
     // Properties [TemplateBinding]
-    Q_PROPERTY(QObject * boundElement READ boundElement WRITE setBoundElement)
-    Q_PROPERTY(QSet<QObject *> parameterSubstitutions READ parameterSubstitutions)
-    Q_PROPERTY(QObject * signature READ signature WRITE setSignature)
+    Q_PROPERTY(QObject * boundElement READ boundElement WRITE setBoundElement NOTIFY boundElementChanged)
+    Q_PROPERTY(QSet<QObject *> parameterSubstitutions READ parameterSubstitutions NOTIFY parameterSubstitutionsChanged)
+    Q_PROPERTY(QObject * signature READ signature WRITE setSignature NOTIFY signatureChanged)
 
 public:
     Q_INVOKABLE explicit QUmlTemplateBindingObject(QUmlTemplateBinding *modelingElement);
@@ -124,6 +124,25 @@ public Q_SLOTS:
     void addParameterSubstitution(QObject *parameterSubstitution);
     void removeParameterSubstitution(QObject *parameterSubstitution);
     void setSignature(QObject *signature = 0);
+
+Q_SIGNALS:
+
+    // Signals for owned attributes [Element]
+    void ownedCommentsChanged(QSet<QObject *> ownedComments);
+    void ownedElementsChanged(QSet<QObject *> ownedElements);
+    void ownerChanged(QObject *owner);
+
+    // Signals for owned attributes [Relationship]
+    void relatedElementsChanged(QSet<QObject *> relatedElements);
+
+    // Signals for owned attributes [DirectedRelationship]
+    void sourcesChanged(QSet<QObject *> sources);
+    void targetsChanged(QSet<QObject *> targets);
+
+    // Signals for owned attributes [TemplateBinding]
+    void boundElementChanged(QObject *boundElement);
+    void parameterSubstitutionsChanged(QSet<QObject *> parameterSubstitutions);
+    void signatureChanged(QObject *signature);
 
 protected:
     virtual void setGroupProperties();

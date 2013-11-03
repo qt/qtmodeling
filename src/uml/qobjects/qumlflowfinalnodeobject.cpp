@@ -284,26 +284,31 @@ bool QUmlFlowFinalNodeObject::isRedefinitionContextValid(QObject *redefined) con
 void QUmlFlowFinalNodeObject::addOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlFlowFinalNode *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlFlowFinalNodeObject::removeOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlFlowFinalNode *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlFlowFinalNodeObject::addOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlFlowFinalNode *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlFlowFinalNodeObject::removeOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlFlowFinalNode *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlFlowFinalNodeObject::setOwner(QObject *owner)
 {
     qmodelingelementproperty_cast<QUmlFlowFinalNode *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
+    emit ownerChanged(this->owner());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [NamedElement]
@@ -311,36 +316,43 @@ void QUmlFlowFinalNodeObject::setOwner(QObject *owner)
 void QUmlFlowFinalNodeObject::addClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlFlowFinalNode *>(this)->addClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlFlowFinalNodeObject::removeClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlFlowFinalNode *>(this)->removeClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlFlowFinalNodeObject::setName(QString name)
 {
     qmodelingelementproperty_cast<QUmlFlowFinalNode *>(this)->setName(name);
+    emit nameChanged(this->name());
 }
 
 void QUmlFlowFinalNodeObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingelementproperty_cast<QUmlFlowFinalNode *>(this)->setNameExpression(qmodelingelementproperty_cast<QUmlStringExpression *>(nameExpression));
+    emit nameExpressionChanged(this->nameExpression());
 }
 
 void QUmlFlowFinalNodeObject::setNamespace(QObject *namespace_)
 {
     qmodelingelementproperty_cast<QUmlFlowFinalNode *>(this)->setNamespace(qmodelingelementproperty_cast<QUmlNamespace *>(namespace_));
+    emit namespaceChanged(this->namespace_());
 }
 
 void QUmlFlowFinalNodeObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingelementproperty_cast<QUmlFlowFinalNode *>(this)->setQualifiedName(qualifiedName);
+    emit qualifiedNameChanged(this->qualifiedName());
 }
 
 void QUmlFlowFinalNodeObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingelementproperty_cast<QUmlFlowFinalNode *>(this)->setVisibility(visibility);
+    emit visibilityChanged(this->visibility());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [RedefinableElement]
@@ -348,6 +360,7 @@ void QUmlFlowFinalNodeObject::setVisibility(QtUml::VisibilityKind visibility)
 void QUmlFlowFinalNodeObject::setLeaf(bool isLeaf)
 {
     qmodelingelementproperty_cast<QUmlFlowFinalNode *>(this)->setLeaf(isLeaf);
+    emit isLeafChanged(this->isLeaf());
 }
 
 void QUmlFlowFinalNodeObject::unsetLeaf()
@@ -360,21 +373,25 @@ void QUmlFlowFinalNodeObject::unsetLeaf()
 void QUmlFlowFinalNodeObject::addRedefinedElement(QObject *redefinedElement)
 {
     qmodelingelementproperty_cast<QUmlFlowFinalNode *>(this)->addRedefinedElement(qmodelingelementproperty_cast<QUmlRedefinableElement *>(redefinedElement));
+    emit redefinedElementsChanged(this->redefinedElements());
 }
 
 void QUmlFlowFinalNodeObject::removeRedefinedElement(QObject *redefinedElement)
 {
     qmodelingelementproperty_cast<QUmlFlowFinalNode *>(this)->removeRedefinedElement(qmodelingelementproperty_cast<QUmlRedefinableElement *>(redefinedElement));
+    emit redefinedElementsChanged(this->redefinedElements());
 }
 
 void QUmlFlowFinalNodeObject::addRedefinitionContext(QObject *redefinitionContext)
 {
     qmodelingelementproperty_cast<QUmlFlowFinalNode *>(this)->addRedefinitionContext(qmodelingelementproperty_cast<QUmlClassifier *>(redefinitionContext));
+    emit redefinitionContextsChanged(this->redefinitionContexts());
 }
 
 void QUmlFlowFinalNodeObject::removeRedefinitionContext(QObject *redefinitionContext)
 {
     qmodelingelementproperty_cast<QUmlFlowFinalNode *>(this)->removeRedefinitionContext(qmodelingelementproperty_cast<QUmlClassifier *>(redefinitionContext));
+    emit redefinitionContextsChanged(this->redefinitionContexts());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ActivityNode]
@@ -382,71 +399,85 @@ void QUmlFlowFinalNodeObject::removeRedefinitionContext(QObject *redefinitionCon
 void QUmlFlowFinalNodeObject::setActivity(QObject *activity)
 {
     qmodelingelementproperty_cast<QUmlFlowFinalNode *>(this)->setActivity(qmodelingelementproperty_cast<QUmlActivity *>(activity));
+    emit activityChanged(this->activity());
 }
 
 void QUmlFlowFinalNodeObject::addInGroup(QObject *inGroup)
 {
     qmodelingelementproperty_cast<QUmlFlowFinalNode *>(this)->addInGroup(qmodelingelementproperty_cast<QUmlActivityGroup *>(inGroup));
+    emit inGroupsChanged(this->inGroups());
 }
 
 void QUmlFlowFinalNodeObject::removeInGroup(QObject *inGroup)
 {
     qmodelingelementproperty_cast<QUmlFlowFinalNode *>(this)->removeInGroup(qmodelingelementproperty_cast<QUmlActivityGroup *>(inGroup));
+    emit inGroupsChanged(this->inGroups());
 }
 
 void QUmlFlowFinalNodeObject::addInInterruptibleRegion(QObject *inInterruptibleRegion)
 {
     qmodelingelementproperty_cast<QUmlFlowFinalNode *>(this)->addInInterruptibleRegion(qmodelingelementproperty_cast<QUmlInterruptibleActivityRegion *>(inInterruptibleRegion));
+    emit inInterruptibleRegionsChanged(this->inInterruptibleRegions());
 }
 
 void QUmlFlowFinalNodeObject::removeInInterruptibleRegion(QObject *inInterruptibleRegion)
 {
     qmodelingelementproperty_cast<QUmlFlowFinalNode *>(this)->removeInInterruptibleRegion(qmodelingelementproperty_cast<QUmlInterruptibleActivityRegion *>(inInterruptibleRegion));
+    emit inInterruptibleRegionsChanged(this->inInterruptibleRegions());
 }
 
 void QUmlFlowFinalNodeObject::addInPartition(QObject *inPartition)
 {
     qmodelingelementproperty_cast<QUmlFlowFinalNode *>(this)->addInPartition(qmodelingelementproperty_cast<QUmlActivityPartition *>(inPartition));
+    emit inPartitionsChanged(this->inPartitions());
 }
 
 void QUmlFlowFinalNodeObject::removeInPartition(QObject *inPartition)
 {
     qmodelingelementproperty_cast<QUmlFlowFinalNode *>(this)->removeInPartition(qmodelingelementproperty_cast<QUmlActivityPartition *>(inPartition));
+    emit inPartitionsChanged(this->inPartitions());
 }
 
 void QUmlFlowFinalNodeObject::setInStructuredNode(QObject *inStructuredNode)
 {
     qmodelingelementproperty_cast<QUmlFlowFinalNode *>(this)->setInStructuredNode(qmodelingelementproperty_cast<QUmlStructuredActivityNode *>(inStructuredNode));
+    emit inStructuredNodeChanged(this->inStructuredNode());
 }
 
 void QUmlFlowFinalNodeObject::addIncoming(QObject *incoming)
 {
     qmodelingelementproperty_cast<QUmlFlowFinalNode *>(this)->addIncoming(qmodelingelementproperty_cast<QUmlActivityEdge *>(incoming));
+    emit incomingsChanged(this->incomings());
 }
 
 void QUmlFlowFinalNodeObject::removeIncoming(QObject *incoming)
 {
     qmodelingelementproperty_cast<QUmlFlowFinalNode *>(this)->removeIncoming(qmodelingelementproperty_cast<QUmlActivityEdge *>(incoming));
+    emit incomingsChanged(this->incomings());
 }
 
 void QUmlFlowFinalNodeObject::addOutgoing(QObject *outgoing)
 {
     qmodelingelementproperty_cast<QUmlFlowFinalNode *>(this)->addOutgoing(qmodelingelementproperty_cast<QUmlActivityEdge *>(outgoing));
+    emit outgoingsChanged(this->outgoings());
 }
 
 void QUmlFlowFinalNodeObject::removeOutgoing(QObject *outgoing)
 {
     qmodelingelementproperty_cast<QUmlFlowFinalNode *>(this)->removeOutgoing(qmodelingelementproperty_cast<QUmlActivityEdge *>(outgoing));
+    emit outgoingsChanged(this->outgoings());
 }
 
 void QUmlFlowFinalNodeObject::addRedefinedNode(QObject *redefinedNode)
 {
     qmodelingelementproperty_cast<QUmlFlowFinalNode *>(this)->addRedefinedNode(qmodelingelementproperty_cast<QUmlActivityNode *>(redefinedNode));
+    emit redefinedNodesChanged(this->redefinedNodes());
 }
 
 void QUmlFlowFinalNodeObject::removeRedefinedNode(QObject *redefinedNode)
 {
     qmodelingelementproperty_cast<QUmlFlowFinalNode *>(this)->removeRedefinedNode(qmodelingelementproperty_cast<QUmlActivityNode *>(redefinedNode));
+    emit redefinedNodesChanged(this->redefinedNodes());
 }
 
 

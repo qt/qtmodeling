@@ -364,26 +364,31 @@ bool QUmlValueSpecificationActionObject::isRedefinitionContextValid(QObject *red
 void QUmlValueSpecificationActionObject::addOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlValueSpecificationAction *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlValueSpecificationActionObject::removeOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlValueSpecificationAction *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlValueSpecificationActionObject::addOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlValueSpecificationAction *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlValueSpecificationActionObject::removeOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlValueSpecificationAction *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlValueSpecificationActionObject::setOwner(QObject *owner)
 {
     qmodelingelementproperty_cast<QUmlValueSpecificationAction *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
+    emit ownerChanged(this->owner());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [NamedElement]
@@ -391,36 +396,43 @@ void QUmlValueSpecificationActionObject::setOwner(QObject *owner)
 void QUmlValueSpecificationActionObject::addClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlValueSpecificationAction *>(this)->addClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlValueSpecificationActionObject::removeClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlValueSpecificationAction *>(this)->removeClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlValueSpecificationActionObject::setName(QString name)
 {
     qmodelingelementproperty_cast<QUmlValueSpecificationAction *>(this)->setName(name);
+    emit nameChanged(this->name());
 }
 
 void QUmlValueSpecificationActionObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingelementproperty_cast<QUmlValueSpecificationAction *>(this)->setNameExpression(qmodelingelementproperty_cast<QUmlStringExpression *>(nameExpression));
+    emit nameExpressionChanged(this->nameExpression());
 }
 
 void QUmlValueSpecificationActionObject::setNamespace(QObject *namespace_)
 {
     qmodelingelementproperty_cast<QUmlValueSpecificationAction *>(this)->setNamespace(qmodelingelementproperty_cast<QUmlNamespace *>(namespace_));
+    emit namespaceChanged(this->namespace_());
 }
 
 void QUmlValueSpecificationActionObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingelementproperty_cast<QUmlValueSpecificationAction *>(this)->setQualifiedName(qualifiedName);
+    emit qualifiedNameChanged(this->qualifiedName());
 }
 
 void QUmlValueSpecificationActionObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingelementproperty_cast<QUmlValueSpecificationAction *>(this)->setVisibility(visibility);
+    emit visibilityChanged(this->visibility());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [RedefinableElement]
@@ -428,6 +440,7 @@ void QUmlValueSpecificationActionObject::setVisibility(QtUml::VisibilityKind vis
 void QUmlValueSpecificationActionObject::setLeaf(bool isLeaf)
 {
     qmodelingelementproperty_cast<QUmlValueSpecificationAction *>(this)->setLeaf(isLeaf);
+    emit isLeafChanged(this->isLeaf());
 }
 
 void QUmlValueSpecificationActionObject::unsetLeaf()
@@ -440,21 +453,25 @@ void QUmlValueSpecificationActionObject::unsetLeaf()
 void QUmlValueSpecificationActionObject::addRedefinedElement(QObject *redefinedElement)
 {
     qmodelingelementproperty_cast<QUmlValueSpecificationAction *>(this)->addRedefinedElement(qmodelingelementproperty_cast<QUmlRedefinableElement *>(redefinedElement));
+    emit redefinedElementsChanged(this->redefinedElements());
 }
 
 void QUmlValueSpecificationActionObject::removeRedefinedElement(QObject *redefinedElement)
 {
     qmodelingelementproperty_cast<QUmlValueSpecificationAction *>(this)->removeRedefinedElement(qmodelingelementproperty_cast<QUmlRedefinableElement *>(redefinedElement));
+    emit redefinedElementsChanged(this->redefinedElements());
 }
 
 void QUmlValueSpecificationActionObject::addRedefinitionContext(QObject *redefinitionContext)
 {
     qmodelingelementproperty_cast<QUmlValueSpecificationAction *>(this)->addRedefinitionContext(qmodelingelementproperty_cast<QUmlClassifier *>(redefinitionContext));
+    emit redefinitionContextsChanged(this->redefinitionContexts());
 }
 
 void QUmlValueSpecificationActionObject::removeRedefinitionContext(QObject *redefinitionContext)
 {
     qmodelingelementproperty_cast<QUmlValueSpecificationAction *>(this)->removeRedefinitionContext(qmodelingelementproperty_cast<QUmlClassifier *>(redefinitionContext));
+    emit redefinitionContextsChanged(this->redefinitionContexts());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ActivityNode]
@@ -462,71 +479,85 @@ void QUmlValueSpecificationActionObject::removeRedefinitionContext(QObject *rede
 void QUmlValueSpecificationActionObject::setActivity(QObject *activity)
 {
     qmodelingelementproperty_cast<QUmlValueSpecificationAction *>(this)->setActivity(qmodelingelementproperty_cast<QUmlActivity *>(activity));
+    emit activityChanged(this->activity());
 }
 
 void QUmlValueSpecificationActionObject::addInGroup(QObject *inGroup)
 {
     qmodelingelementproperty_cast<QUmlValueSpecificationAction *>(this)->addInGroup(qmodelingelementproperty_cast<QUmlActivityGroup *>(inGroup));
+    emit inGroupsChanged(this->inGroups());
 }
 
 void QUmlValueSpecificationActionObject::removeInGroup(QObject *inGroup)
 {
     qmodelingelementproperty_cast<QUmlValueSpecificationAction *>(this)->removeInGroup(qmodelingelementproperty_cast<QUmlActivityGroup *>(inGroup));
+    emit inGroupsChanged(this->inGroups());
 }
 
 void QUmlValueSpecificationActionObject::addInInterruptibleRegion(QObject *inInterruptibleRegion)
 {
     qmodelingelementproperty_cast<QUmlValueSpecificationAction *>(this)->addInInterruptibleRegion(qmodelingelementproperty_cast<QUmlInterruptibleActivityRegion *>(inInterruptibleRegion));
+    emit inInterruptibleRegionsChanged(this->inInterruptibleRegions());
 }
 
 void QUmlValueSpecificationActionObject::removeInInterruptibleRegion(QObject *inInterruptibleRegion)
 {
     qmodelingelementproperty_cast<QUmlValueSpecificationAction *>(this)->removeInInterruptibleRegion(qmodelingelementproperty_cast<QUmlInterruptibleActivityRegion *>(inInterruptibleRegion));
+    emit inInterruptibleRegionsChanged(this->inInterruptibleRegions());
 }
 
 void QUmlValueSpecificationActionObject::addInPartition(QObject *inPartition)
 {
     qmodelingelementproperty_cast<QUmlValueSpecificationAction *>(this)->addInPartition(qmodelingelementproperty_cast<QUmlActivityPartition *>(inPartition));
+    emit inPartitionsChanged(this->inPartitions());
 }
 
 void QUmlValueSpecificationActionObject::removeInPartition(QObject *inPartition)
 {
     qmodelingelementproperty_cast<QUmlValueSpecificationAction *>(this)->removeInPartition(qmodelingelementproperty_cast<QUmlActivityPartition *>(inPartition));
+    emit inPartitionsChanged(this->inPartitions());
 }
 
 void QUmlValueSpecificationActionObject::setInStructuredNode(QObject *inStructuredNode)
 {
     qmodelingelementproperty_cast<QUmlValueSpecificationAction *>(this)->setInStructuredNode(qmodelingelementproperty_cast<QUmlStructuredActivityNode *>(inStructuredNode));
+    emit inStructuredNodeChanged(this->inStructuredNode());
 }
 
 void QUmlValueSpecificationActionObject::addIncoming(QObject *incoming)
 {
     qmodelingelementproperty_cast<QUmlValueSpecificationAction *>(this)->addIncoming(qmodelingelementproperty_cast<QUmlActivityEdge *>(incoming));
+    emit incomingsChanged(this->incomings());
 }
 
 void QUmlValueSpecificationActionObject::removeIncoming(QObject *incoming)
 {
     qmodelingelementproperty_cast<QUmlValueSpecificationAction *>(this)->removeIncoming(qmodelingelementproperty_cast<QUmlActivityEdge *>(incoming));
+    emit incomingsChanged(this->incomings());
 }
 
 void QUmlValueSpecificationActionObject::addOutgoing(QObject *outgoing)
 {
     qmodelingelementproperty_cast<QUmlValueSpecificationAction *>(this)->addOutgoing(qmodelingelementproperty_cast<QUmlActivityEdge *>(outgoing));
+    emit outgoingsChanged(this->outgoings());
 }
 
 void QUmlValueSpecificationActionObject::removeOutgoing(QObject *outgoing)
 {
     qmodelingelementproperty_cast<QUmlValueSpecificationAction *>(this)->removeOutgoing(qmodelingelementproperty_cast<QUmlActivityEdge *>(outgoing));
+    emit outgoingsChanged(this->outgoings());
 }
 
 void QUmlValueSpecificationActionObject::addRedefinedNode(QObject *redefinedNode)
 {
     qmodelingelementproperty_cast<QUmlValueSpecificationAction *>(this)->addRedefinedNode(qmodelingelementproperty_cast<QUmlActivityNode *>(redefinedNode));
+    emit redefinedNodesChanged(this->redefinedNodes());
 }
 
 void QUmlValueSpecificationActionObject::removeRedefinedNode(QObject *redefinedNode)
 {
     qmodelingelementproperty_cast<QUmlValueSpecificationAction *>(this)->removeRedefinedNode(qmodelingelementproperty_cast<QUmlActivityNode *>(redefinedNode));
+    emit redefinedNodesChanged(this->redefinedNodes());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ExecutableNode]
@@ -534,11 +565,13 @@ void QUmlValueSpecificationActionObject::removeRedefinedNode(QObject *redefinedN
 void QUmlValueSpecificationActionObject::addHandler(QObject *handler)
 {
     qmodelingelementproperty_cast<QUmlValueSpecificationAction *>(this)->addHandler(qmodelingelementproperty_cast<QUmlExceptionHandler *>(handler));
+    emit handlersChanged(this->handlers());
 }
 
 void QUmlValueSpecificationActionObject::removeHandler(QObject *handler)
 {
     qmodelingelementproperty_cast<QUmlValueSpecificationAction *>(this)->removeHandler(qmodelingelementproperty_cast<QUmlExceptionHandler *>(handler));
+    emit handlersChanged(this->handlers());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Action]
@@ -546,21 +579,25 @@ void QUmlValueSpecificationActionObject::removeHandler(QObject *handler)
 void QUmlValueSpecificationActionObject::setContext(QObject *context)
 {
     qmodelingelementproperty_cast<QUmlValueSpecificationAction *>(this)->setContext(qmodelingelementproperty_cast<QUmlClassifier *>(context));
+    emit contextChanged(this->context());
 }
 
 void QUmlValueSpecificationActionObject::addInput(QObject *input)
 {
     qmodelingelementproperty_cast<QUmlValueSpecificationAction *>(this)->addInput(qmodelingelementproperty_cast<QUmlInputPin *>(input));
+    emit inputsChanged(this->inputs());
 }
 
 void QUmlValueSpecificationActionObject::removeInput(QObject *input)
 {
     qmodelingelementproperty_cast<QUmlValueSpecificationAction *>(this)->removeInput(qmodelingelementproperty_cast<QUmlInputPin *>(input));
+    emit inputsChanged(this->inputs());
 }
 
 void QUmlValueSpecificationActionObject::setLocallyReentrant(bool isLocallyReentrant)
 {
     qmodelingelementproperty_cast<QUmlValueSpecificationAction *>(this)->setLocallyReentrant(isLocallyReentrant);
+    emit isLocallyReentrantChanged(this->isLocallyReentrant());
 }
 
 void QUmlValueSpecificationActionObject::unsetLocallyReentrant()
@@ -573,31 +610,37 @@ void QUmlValueSpecificationActionObject::unsetLocallyReentrant()
 void QUmlValueSpecificationActionObject::addLocalPostcondition(QObject *localPostcondition)
 {
     qmodelingelementproperty_cast<QUmlValueSpecificationAction *>(this)->addLocalPostcondition(qmodelingelementproperty_cast<QUmlConstraint *>(localPostcondition));
+    emit localPostconditionsChanged(this->localPostconditions());
 }
 
 void QUmlValueSpecificationActionObject::removeLocalPostcondition(QObject *localPostcondition)
 {
     qmodelingelementproperty_cast<QUmlValueSpecificationAction *>(this)->removeLocalPostcondition(qmodelingelementproperty_cast<QUmlConstraint *>(localPostcondition));
+    emit localPostconditionsChanged(this->localPostconditions());
 }
 
 void QUmlValueSpecificationActionObject::addLocalPrecondition(QObject *localPrecondition)
 {
     qmodelingelementproperty_cast<QUmlValueSpecificationAction *>(this)->addLocalPrecondition(qmodelingelementproperty_cast<QUmlConstraint *>(localPrecondition));
+    emit localPreconditionsChanged(this->localPreconditions());
 }
 
 void QUmlValueSpecificationActionObject::removeLocalPrecondition(QObject *localPrecondition)
 {
     qmodelingelementproperty_cast<QUmlValueSpecificationAction *>(this)->removeLocalPrecondition(qmodelingelementproperty_cast<QUmlConstraint *>(localPrecondition));
+    emit localPreconditionsChanged(this->localPreconditions());
 }
 
 void QUmlValueSpecificationActionObject::addOutput(QObject *output)
 {
     qmodelingelementproperty_cast<QUmlValueSpecificationAction *>(this)->addOutput(qmodelingelementproperty_cast<QUmlOutputPin *>(output));
+    emit outputsChanged(this->outputs());
 }
 
 void QUmlValueSpecificationActionObject::removeOutput(QObject *output)
 {
     qmodelingelementproperty_cast<QUmlValueSpecificationAction *>(this)->removeOutput(qmodelingelementproperty_cast<QUmlOutputPin *>(output));
+    emit outputsChanged(this->outputs());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ValueSpecificationAction]
@@ -605,11 +648,13 @@ void QUmlValueSpecificationActionObject::removeOutput(QObject *output)
 void QUmlValueSpecificationActionObject::setResult(QObject *result)
 {
     qmodelingelementproperty_cast<QUmlValueSpecificationAction *>(this)->setResult(qmodelingelementproperty_cast<QUmlOutputPin *>(result));
+    emit resultChanged(this->result());
 }
 
 void QUmlValueSpecificationActionObject::setValue(QObject *value)
 {
     qmodelingelementproperty_cast<QUmlValueSpecificationAction *>(this)->setValue(qmodelingelementproperty_cast<QUmlValueSpecification *>(value));
+    emit valueChanged(this->value());
 }
 
 

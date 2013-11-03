@@ -221,26 +221,31 @@ QString QUmlLifelineObject::separator() const
 void QUmlLifelineObject::addOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlLifeline *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlLifelineObject::removeOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlLifeline *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlLifelineObject::addOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlLifeline *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlLifelineObject::removeOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlLifeline *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlLifelineObject::setOwner(QObject *owner)
 {
     qmodelingelementproperty_cast<QUmlLifeline *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
+    emit ownerChanged(this->owner());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [NamedElement]
@@ -248,36 +253,43 @@ void QUmlLifelineObject::setOwner(QObject *owner)
 void QUmlLifelineObject::addClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlLifeline *>(this)->addClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlLifelineObject::removeClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlLifeline *>(this)->removeClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlLifelineObject::setName(QString name)
 {
     qmodelingelementproperty_cast<QUmlLifeline *>(this)->setName(name);
+    emit nameChanged(this->name());
 }
 
 void QUmlLifelineObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingelementproperty_cast<QUmlLifeline *>(this)->setNameExpression(qmodelingelementproperty_cast<QUmlStringExpression *>(nameExpression));
+    emit nameExpressionChanged(this->nameExpression());
 }
 
 void QUmlLifelineObject::setNamespace(QObject *namespace_)
 {
     qmodelingelementproperty_cast<QUmlLifeline *>(this)->setNamespace(qmodelingelementproperty_cast<QUmlNamespace *>(namespace_));
+    emit namespaceChanged(this->namespace_());
 }
 
 void QUmlLifelineObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingelementproperty_cast<QUmlLifeline *>(this)->setQualifiedName(qualifiedName);
+    emit qualifiedNameChanged(this->qualifiedName());
 }
 
 void QUmlLifelineObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingelementproperty_cast<QUmlLifeline *>(this)->setVisibility(visibility);
+    emit visibilityChanged(this->visibility());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Lifeline]
@@ -285,31 +297,37 @@ void QUmlLifelineObject::setVisibility(QtUml::VisibilityKind visibility)
 void QUmlLifelineObject::addCoveredBy(QObject *coveredBy)
 {
     qmodelingelementproperty_cast<QUmlLifeline *>(this)->addCoveredBy(qmodelingelementproperty_cast<QUmlInteractionFragment *>(coveredBy));
+    emit coveredByChanged(this->coveredBy());
 }
 
 void QUmlLifelineObject::removeCoveredBy(QObject *coveredBy)
 {
     qmodelingelementproperty_cast<QUmlLifeline *>(this)->removeCoveredBy(qmodelingelementproperty_cast<QUmlInteractionFragment *>(coveredBy));
+    emit coveredByChanged(this->coveredBy());
 }
 
 void QUmlLifelineObject::setDecomposedAs(QObject *decomposedAs)
 {
     qmodelingelementproperty_cast<QUmlLifeline *>(this)->setDecomposedAs(qmodelingelementproperty_cast<QUmlPartDecomposition *>(decomposedAs));
+    emit decomposedAsChanged(this->decomposedAs());
 }
 
 void QUmlLifelineObject::setInteraction(QObject *interaction)
 {
     qmodelingelementproperty_cast<QUmlLifeline *>(this)->setInteraction(qmodelingelementproperty_cast<QUmlInteraction *>(interaction));
+    emit interactionChanged(this->interaction());
 }
 
 void QUmlLifelineObject::setRepresents(QObject *represents)
 {
     qmodelingelementproperty_cast<QUmlLifeline *>(this)->setRepresents(qmodelingelementproperty_cast<QUmlConnectableElement *>(represents));
+    emit representsChanged(this->represents());
 }
 
 void QUmlLifelineObject::setSelector(QObject *selector)
 {
     qmodelingelementproperty_cast<QUmlLifeline *>(this)->setSelector(qmodelingelementproperty_cast<QUmlValueSpecification *>(selector));
+    emit selectorChanged(this->selector());
 }
 
 

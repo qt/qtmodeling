@@ -590,26 +590,31 @@ QSet<QObject *> QUmlEnumerationObject::inherit(QSet<QObject *> inhs) const
 void QUmlEnumerationObject::addOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlEnumeration *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlEnumerationObject::removeOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlEnumeration *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlEnumerationObject::addOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlEnumeration *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlEnumerationObject::removeOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlEnumeration *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlEnumerationObject::setOwner(QObject *owner)
 {
     qmodelingelementproperty_cast<QUmlEnumeration *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
+    emit ownerChanged(this->owner());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [NamedElement]
@@ -617,92 +622,110 @@ void QUmlEnumerationObject::setOwner(QObject *owner)
 void QUmlEnumerationObject::addClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlEnumeration *>(this)->addClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlEnumerationObject::removeClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlEnumeration *>(this)->removeClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlEnumerationObject::setName(QString name)
 {
     qmodelingelementproperty_cast<QUmlEnumeration *>(this)->setName(name);
+    emit nameChanged(this->name());
 }
 
 void QUmlEnumerationObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingelementproperty_cast<QUmlEnumeration *>(this)->setNameExpression(qmodelingelementproperty_cast<QUmlStringExpression *>(nameExpression));
+    emit nameExpressionChanged(this->nameExpression());
 }
 
 void QUmlEnumerationObject::setNamespace(QObject *namespace_)
 {
     qmodelingelementproperty_cast<QUmlEnumeration *>(this)->setNamespace(qmodelingelementproperty_cast<QUmlNamespace *>(namespace_));
+    emit namespaceChanged(this->namespace_());
 }
 
 void QUmlEnumerationObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingelementproperty_cast<QUmlEnumeration *>(this)->setQualifiedName(qualifiedName);
+    emit qualifiedNameChanged(this->qualifiedName());
 }
 // SLOTS FOR OWNED ATTRIBUTES [Namespace]
 
 void QUmlEnumerationObject::addElementImport(QObject *elementImport)
 {
     qmodelingelementproperty_cast<QUmlEnumeration *>(this)->addElementImport(qmodelingelementproperty_cast<QUmlElementImport *>(elementImport));
+    emit elementImportsChanged(this->elementImports());
 }
 
 void QUmlEnumerationObject::removeElementImport(QObject *elementImport)
 {
     qmodelingelementproperty_cast<QUmlEnumeration *>(this)->removeElementImport(qmodelingelementproperty_cast<QUmlElementImport *>(elementImport));
+    emit elementImportsChanged(this->elementImports());
 }
 
 void QUmlEnumerationObject::addImportedMember(QObject *importedMember)
 {
     qmodelingelementproperty_cast<QUmlEnumeration *>(this)->addImportedMember(qmodelingelementproperty_cast<QUmlPackageableElement *>(importedMember));
+    emit importedMembersChanged(this->importedMembers());
 }
 
 void QUmlEnumerationObject::removeImportedMember(QObject *importedMember)
 {
     qmodelingelementproperty_cast<QUmlEnumeration *>(this)->removeImportedMember(qmodelingelementproperty_cast<QUmlPackageableElement *>(importedMember));
+    emit importedMembersChanged(this->importedMembers());
 }
 
 void QUmlEnumerationObject::addMember(QObject *member)
 {
     qmodelingelementproperty_cast<QUmlEnumeration *>(this)->addMember(qmodelingelementproperty_cast<QUmlNamedElement *>(member));
+    emit membersChanged(this->members());
 }
 
 void QUmlEnumerationObject::removeMember(QObject *member)
 {
     qmodelingelementproperty_cast<QUmlEnumeration *>(this)->removeMember(qmodelingelementproperty_cast<QUmlNamedElement *>(member));
+    emit membersChanged(this->members());
 }
 
 void QUmlEnumerationObject::addOwnedMember(QObject *ownedMember)
 {
     qmodelingelementproperty_cast<QUmlEnumeration *>(this)->addOwnedMember(qmodelingelementproperty_cast<QUmlNamedElement *>(ownedMember));
+    emit ownedMembersChanged(this->ownedMembers());
 }
 
 void QUmlEnumerationObject::removeOwnedMember(QObject *ownedMember)
 {
     qmodelingelementproperty_cast<QUmlEnumeration *>(this)->removeOwnedMember(qmodelingelementproperty_cast<QUmlNamedElement *>(ownedMember));
+    emit ownedMembersChanged(this->ownedMembers());
 }
 
 void QUmlEnumerationObject::addOwnedRule(QObject *ownedRule)
 {
     qmodelingelementproperty_cast<QUmlEnumeration *>(this)->addOwnedRule(qmodelingelementproperty_cast<QUmlConstraint *>(ownedRule));
+    emit ownedRulesChanged(this->ownedRules());
 }
 
 void QUmlEnumerationObject::removeOwnedRule(QObject *ownedRule)
 {
     qmodelingelementproperty_cast<QUmlEnumeration *>(this)->removeOwnedRule(qmodelingelementproperty_cast<QUmlConstraint *>(ownedRule));
+    emit ownedRulesChanged(this->ownedRules());
 }
 
 void QUmlEnumerationObject::addPackageImport(QObject *packageImport)
 {
     qmodelingelementproperty_cast<QUmlEnumeration *>(this)->addPackageImport(qmodelingelementproperty_cast<QUmlPackageImport *>(packageImport));
+    emit packageImportsChanged(this->packageImports());
 }
 
 void QUmlEnumerationObject::removePackageImport(QObject *packageImport)
 {
     qmodelingelementproperty_cast<QUmlEnumeration *>(this)->removePackageImport(qmodelingelementproperty_cast<QUmlPackageImport *>(packageImport));
+    emit packageImportsChanged(this->packageImports());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ParameterableElement]
@@ -710,12 +733,14 @@ void QUmlEnumerationObject::removePackageImport(QObject *packageImport)
 void QUmlEnumerationObject::setOwningTemplateParameter(QObject *owningTemplateParameter)
 {
     qmodelingelementproperty_cast<QUmlEnumeration *>(this)->setOwningTemplateParameter(qmodelingelementproperty_cast<QUmlTemplateParameter *>(owningTemplateParameter));
+    emit owningTemplateParameterChanged(this->owningTemplateParameter());
 }
 // SLOTS FOR OWNED ATTRIBUTES [PackageableElement]
 
 void QUmlEnumerationObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingelementproperty_cast<QUmlEnumeration *>(this)->setVisibility(visibility);
+    emit visibilityChanged(this->visibility());
 }
 
 void QUmlEnumerationObject::unsetVisibility()
@@ -730,6 +755,7 @@ void QUmlEnumerationObject::unsetVisibility()
 void QUmlEnumerationObject::setPackage(QObject *package)
 {
     qmodelingelementproperty_cast<QUmlEnumeration *>(this)->setPackage(qmodelingelementproperty_cast<QUmlPackage *>(package));
+    emit packageChanged(this->package());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [RedefinableElement]
@@ -737,6 +763,7 @@ void QUmlEnumerationObject::setPackage(QObject *package)
 void QUmlEnumerationObject::setLeaf(bool isLeaf)
 {
     qmodelingelementproperty_cast<QUmlEnumeration *>(this)->setLeaf(isLeaf);
+    emit isLeafChanged(this->isLeaf());
 }
 
 void QUmlEnumerationObject::unsetLeaf()
@@ -749,21 +776,25 @@ void QUmlEnumerationObject::unsetLeaf()
 void QUmlEnumerationObject::addRedefinedElement(QObject *redefinedElement)
 {
     qmodelingelementproperty_cast<QUmlEnumeration *>(this)->addRedefinedElement(qmodelingelementproperty_cast<QUmlRedefinableElement *>(redefinedElement));
+    emit redefinedElementsChanged(this->redefinedElements());
 }
 
 void QUmlEnumerationObject::removeRedefinedElement(QObject *redefinedElement)
 {
     qmodelingelementproperty_cast<QUmlEnumeration *>(this)->removeRedefinedElement(qmodelingelementproperty_cast<QUmlRedefinableElement *>(redefinedElement));
+    emit redefinedElementsChanged(this->redefinedElements());
 }
 
 void QUmlEnumerationObject::addRedefinitionContext(QObject *redefinitionContext)
 {
     qmodelingelementproperty_cast<QUmlEnumeration *>(this)->addRedefinitionContext(qmodelingelementproperty_cast<QUmlClassifier *>(redefinitionContext));
+    emit redefinitionContextsChanged(this->redefinitionContexts());
 }
 
 void QUmlEnumerationObject::removeRedefinitionContext(QObject *redefinitionContext)
 {
     qmodelingelementproperty_cast<QUmlEnumeration *>(this)->removeRedefinitionContext(qmodelingelementproperty_cast<QUmlClassifier *>(redefinitionContext));
+    emit redefinitionContextsChanged(this->redefinitionContexts());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [TemplateableElement]
@@ -771,11 +802,13 @@ void QUmlEnumerationObject::removeRedefinitionContext(QObject *redefinitionConte
 void QUmlEnumerationObject::addTemplateBinding(QObject *templateBinding)
 {
     qmodelingelementproperty_cast<QUmlEnumeration *>(this)->addTemplateBinding(qmodelingelementproperty_cast<QUmlTemplateBinding *>(templateBinding));
+    emit templateBindingsChanged(this->templateBindings());
 }
 
 void QUmlEnumerationObject::removeTemplateBinding(QObject *templateBinding)
 {
     qmodelingelementproperty_cast<QUmlEnumeration *>(this)->removeTemplateBinding(qmodelingelementproperty_cast<QUmlTemplateBinding *>(templateBinding));
+    emit templateBindingsChanged(this->templateBindings());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Classifier]
@@ -783,66 +816,79 @@ void QUmlEnumerationObject::removeTemplateBinding(QObject *templateBinding)
 void QUmlEnumerationObject::addAttribute(QObject *attribute)
 {
     qmodelingelementproperty_cast<QUmlEnumeration *>(this)->addAttribute(qmodelingelementproperty_cast<QUmlProperty *>(attribute));
+    emit attributesChanged(this->attributes());
 }
 
 void QUmlEnumerationObject::removeAttribute(QObject *attribute)
 {
     qmodelingelementproperty_cast<QUmlEnumeration *>(this)->removeAttribute(qmodelingelementproperty_cast<QUmlProperty *>(attribute));
+    emit attributesChanged(this->attributes());
 }
 
 void QUmlEnumerationObject::addCollaborationUse(QObject *collaborationUse)
 {
     qmodelingelementproperty_cast<QUmlEnumeration *>(this)->addCollaborationUse(qmodelingelementproperty_cast<QUmlCollaborationUse *>(collaborationUse));
+    emit collaborationUsesChanged(this->collaborationUses());
 }
 
 void QUmlEnumerationObject::removeCollaborationUse(QObject *collaborationUse)
 {
     qmodelingelementproperty_cast<QUmlEnumeration *>(this)->removeCollaborationUse(qmodelingelementproperty_cast<QUmlCollaborationUse *>(collaborationUse));
+    emit collaborationUsesChanged(this->collaborationUses());
 }
 
 void QUmlEnumerationObject::addFeature(QObject *feature)
 {
     qmodelingelementproperty_cast<QUmlEnumeration *>(this)->addFeature(qmodelingelementproperty_cast<QUmlFeature *>(feature));
+    emit featuresChanged(this->features());
 }
 
 void QUmlEnumerationObject::removeFeature(QObject *feature)
 {
     qmodelingelementproperty_cast<QUmlEnumeration *>(this)->removeFeature(qmodelingelementproperty_cast<QUmlFeature *>(feature));
+    emit featuresChanged(this->features());
 }
 
 void QUmlEnumerationObject::addGeneral(QObject *general)
 {
     qmodelingelementproperty_cast<QUmlEnumeration *>(this)->addGeneral(qmodelingelementproperty_cast<QUmlClassifier *>(general));
+    emit generalsChanged(this->generals());
 }
 
 void QUmlEnumerationObject::removeGeneral(QObject *general)
 {
     qmodelingelementproperty_cast<QUmlEnumeration *>(this)->removeGeneral(qmodelingelementproperty_cast<QUmlClassifier *>(general));
+    emit generalsChanged(this->generals());
 }
 
 void QUmlEnumerationObject::addGeneralization(QObject *generalization)
 {
     qmodelingelementproperty_cast<QUmlEnumeration *>(this)->addGeneralization(qmodelingelementproperty_cast<QUmlGeneralization *>(generalization));
+    emit generalizationsChanged(this->generalizations());
 }
 
 void QUmlEnumerationObject::removeGeneralization(QObject *generalization)
 {
     qmodelingelementproperty_cast<QUmlEnumeration *>(this)->removeGeneralization(qmodelingelementproperty_cast<QUmlGeneralization *>(generalization));
+    emit generalizationsChanged(this->generalizations());
 }
 
 void QUmlEnumerationObject::addInheritedMember(QObject *inheritedMember)
 {
     qmodelingelementproperty_cast<QUmlEnumeration *>(this)->addInheritedMember(qmodelingelementproperty_cast<QUmlNamedElement *>(inheritedMember));
+    emit inheritedMembersChanged(this->inheritedMembers());
 }
 
 void QUmlEnumerationObject::removeInheritedMember(QObject *inheritedMember)
 {
     qmodelingelementproperty_cast<QUmlEnumeration *>(this)->removeInheritedMember(qmodelingelementproperty_cast<QUmlNamedElement *>(inheritedMember));
+    emit inheritedMembersChanged(this->inheritedMembers());
 }
 
 void QUmlEnumerationObject::setAbstract(bool isAbstract)
 {
     qmodelingelementproperty_cast<QUmlEnumeration *>(this)->setAbstract(isAbstract);
+    emit isAbstractChanged(this->isAbstract());
 }
 
 void QUmlEnumerationObject::unsetAbstract()
@@ -855,6 +901,7 @@ void QUmlEnumerationObject::unsetAbstract()
 void QUmlEnumerationObject::setFinalSpecialization(bool isFinalSpecialization)
 {
     qmodelingelementproperty_cast<QUmlEnumeration *>(this)->setFinalSpecialization(isFinalSpecialization);
+    emit isFinalSpecializationChanged(this->isFinalSpecialization());
 }
 
 void QUmlEnumerationObject::unsetFinalSpecialization()
@@ -867,66 +914,79 @@ void QUmlEnumerationObject::unsetFinalSpecialization()
 void QUmlEnumerationObject::setOwnedTemplateSignature(QObject *ownedTemplateSignature)
 {
     qmodelingelementproperty_cast<QUmlEnumeration *>(this)->setOwnedTemplateSignature(qmodelingelementproperty_cast<QUmlRedefinableTemplateSignature *>(ownedTemplateSignature));
+    emit ownedTemplateSignatureChanged(this->ownedTemplateSignature());
 }
 
 void QUmlEnumerationObject::addOwnedUseCase(QObject *ownedUseCase)
 {
     qmodelingelementproperty_cast<QUmlEnumeration *>(this)->addOwnedUseCase(qmodelingelementproperty_cast<QUmlUseCase *>(ownedUseCase));
+    emit ownedUseCasesChanged(this->ownedUseCases());
 }
 
 void QUmlEnumerationObject::removeOwnedUseCase(QObject *ownedUseCase)
 {
     qmodelingelementproperty_cast<QUmlEnumeration *>(this)->removeOwnedUseCase(qmodelingelementproperty_cast<QUmlUseCase *>(ownedUseCase));
+    emit ownedUseCasesChanged(this->ownedUseCases());
 }
 
 void QUmlEnumerationObject::addPowertypeExtent(QObject *powertypeExtent)
 {
     qmodelingelementproperty_cast<QUmlEnumeration *>(this)->addPowertypeExtent(qmodelingelementproperty_cast<QUmlGeneralizationSet *>(powertypeExtent));
+    emit powertypeExtentsChanged(this->powertypeExtents());
 }
 
 void QUmlEnumerationObject::removePowertypeExtent(QObject *powertypeExtent)
 {
     qmodelingelementproperty_cast<QUmlEnumeration *>(this)->removePowertypeExtent(qmodelingelementproperty_cast<QUmlGeneralizationSet *>(powertypeExtent));
+    emit powertypeExtentsChanged(this->powertypeExtents());
 }
 
 void QUmlEnumerationObject::addRedefinedClassifier(QObject *redefinedClassifier)
 {
     qmodelingelementproperty_cast<QUmlEnumeration *>(this)->addRedefinedClassifier(qmodelingelementproperty_cast<QUmlClassifier *>(redefinedClassifier));
+    emit redefinedClassifiersChanged(this->redefinedClassifiers());
 }
 
 void QUmlEnumerationObject::removeRedefinedClassifier(QObject *redefinedClassifier)
 {
     qmodelingelementproperty_cast<QUmlEnumeration *>(this)->removeRedefinedClassifier(qmodelingelementproperty_cast<QUmlClassifier *>(redefinedClassifier));
+    emit redefinedClassifiersChanged(this->redefinedClassifiers());
 }
 
 void QUmlEnumerationObject::setRepresentation(QObject *representation)
 {
     qmodelingelementproperty_cast<QUmlEnumeration *>(this)->setRepresentation(qmodelingelementproperty_cast<QUmlCollaborationUse *>(representation));
+    emit representationChanged(this->representation());
 }
 
 void QUmlEnumerationObject::addSubstitution(QObject *substitution)
 {
     qmodelingelementproperty_cast<QUmlEnumeration *>(this)->addSubstitution(qmodelingelementproperty_cast<QUmlSubstitution *>(substitution));
+    emit substitutionsChanged(this->substitutions());
 }
 
 void QUmlEnumerationObject::removeSubstitution(QObject *substitution)
 {
     qmodelingelementproperty_cast<QUmlEnumeration *>(this)->removeSubstitution(qmodelingelementproperty_cast<QUmlSubstitution *>(substitution));
+    emit substitutionsChanged(this->substitutions());
 }
 
 void QUmlEnumerationObject::setTemplateParameter(QObject *templateParameter)
 {
     qmodelingelementproperty_cast<QUmlEnumeration *>(this)->setTemplateParameter(qmodelingelementproperty_cast<QUmlClassifierTemplateParameter *>(templateParameter));
+    emit templateParameterChanged(this->templateParameter());
 }
 
 void QUmlEnumerationObject::addUseCase(QObject *useCase)
 {
     qmodelingelementproperty_cast<QUmlEnumeration *>(this)->addUseCase(qmodelingelementproperty_cast<QUmlUseCase *>(useCase));
+    emit useCasesChanged(this->useCases());
 }
 
 void QUmlEnumerationObject::removeUseCase(QObject *useCase)
 {
     qmodelingelementproperty_cast<QUmlEnumeration *>(this)->removeUseCase(qmodelingelementproperty_cast<QUmlUseCase *>(useCase));
+    emit useCasesChanged(this->useCases());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [DataType]
@@ -934,21 +994,25 @@ void QUmlEnumerationObject::removeUseCase(QObject *useCase)
 void QUmlEnumerationObject::addOwnedAttribute(QObject *ownedAttribute)
 {
     qmodelingelementproperty_cast<QUmlEnumeration *>(this)->addOwnedAttribute(qmodelingelementproperty_cast<QUmlProperty *>(ownedAttribute));
+    emit ownedAttributesChanged(this->ownedAttributes());
 }
 
 void QUmlEnumerationObject::removeOwnedAttribute(QObject *ownedAttribute)
 {
     qmodelingelementproperty_cast<QUmlEnumeration *>(this)->removeOwnedAttribute(qmodelingelementproperty_cast<QUmlProperty *>(ownedAttribute));
+    emit ownedAttributesChanged(this->ownedAttributes());
 }
 
 void QUmlEnumerationObject::addOwnedOperation(QObject *ownedOperation)
 {
     qmodelingelementproperty_cast<QUmlEnumeration *>(this)->addOwnedOperation(qmodelingelementproperty_cast<QUmlOperation *>(ownedOperation));
+    emit ownedOperationsChanged(this->ownedOperations());
 }
 
 void QUmlEnumerationObject::removeOwnedOperation(QObject *ownedOperation)
 {
     qmodelingelementproperty_cast<QUmlEnumeration *>(this)->removeOwnedOperation(qmodelingelementproperty_cast<QUmlOperation *>(ownedOperation));
+    emit ownedOperationsChanged(this->ownedOperations());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Enumeration]
@@ -956,11 +1020,13 @@ void QUmlEnumerationObject::removeOwnedOperation(QObject *ownedOperation)
 void QUmlEnumerationObject::addOwnedLiteral(QObject *ownedLiteral)
 {
     qmodelingelementproperty_cast<QUmlEnumeration *>(this)->addOwnedLiteral(qmodelingelementproperty_cast<QUmlEnumerationLiteral *>(ownedLiteral));
+    emit ownedLiteralsChanged(this->ownedLiterals());
 }
 
 void QUmlEnumerationObject::removeOwnedLiteral(QObject *ownedLiteral)
 {
     qmodelingelementproperty_cast<QUmlEnumeration *>(this)->removeOwnedLiteral(qmodelingelementproperty_cast<QUmlEnumerationLiteral *>(ownedLiteral));
+    emit ownedLiteralsChanged(this->ownedLiterals());
 }
 
 

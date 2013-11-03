@@ -208,26 +208,31 @@ QString QUmlAnyReceiveEventObject::separator() const
 void QUmlAnyReceiveEventObject::addOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlAnyReceiveEvent *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlAnyReceiveEventObject::removeOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlAnyReceiveEvent *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlAnyReceiveEventObject::addOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlAnyReceiveEvent *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlAnyReceiveEventObject::removeOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlAnyReceiveEvent *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlAnyReceiveEventObject::setOwner(QObject *owner)
 {
     qmodelingelementproperty_cast<QUmlAnyReceiveEvent *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
+    emit ownerChanged(this->owner());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ParameterableElement]
@@ -235,11 +240,13 @@ void QUmlAnyReceiveEventObject::setOwner(QObject *owner)
 void QUmlAnyReceiveEventObject::setOwningTemplateParameter(QObject *owningTemplateParameter)
 {
     qmodelingelementproperty_cast<QUmlAnyReceiveEvent *>(this)->setOwningTemplateParameter(qmodelingelementproperty_cast<QUmlTemplateParameter *>(owningTemplateParameter));
+    emit owningTemplateParameterChanged(this->owningTemplateParameter());
 }
 
 void QUmlAnyReceiveEventObject::setTemplateParameter(QObject *templateParameter)
 {
     qmodelingelementproperty_cast<QUmlAnyReceiveEvent *>(this)->setTemplateParameter(qmodelingelementproperty_cast<QUmlTemplateParameter *>(templateParameter));
+    emit templateParameterChanged(this->templateParameter());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [NamedElement]
@@ -247,37 +254,44 @@ void QUmlAnyReceiveEventObject::setTemplateParameter(QObject *templateParameter)
 void QUmlAnyReceiveEventObject::addClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlAnyReceiveEvent *>(this)->addClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlAnyReceiveEventObject::removeClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlAnyReceiveEvent *>(this)->removeClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlAnyReceiveEventObject::setName(QString name)
 {
     qmodelingelementproperty_cast<QUmlAnyReceiveEvent *>(this)->setName(name);
+    emit nameChanged(this->name());
 }
 
 void QUmlAnyReceiveEventObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingelementproperty_cast<QUmlAnyReceiveEvent *>(this)->setNameExpression(qmodelingelementproperty_cast<QUmlStringExpression *>(nameExpression));
+    emit nameExpressionChanged(this->nameExpression());
 }
 
 void QUmlAnyReceiveEventObject::setNamespace(QObject *namespace_)
 {
     qmodelingelementproperty_cast<QUmlAnyReceiveEvent *>(this)->setNamespace(qmodelingelementproperty_cast<QUmlNamespace *>(namespace_));
+    emit namespaceChanged(this->namespace_());
 }
 
 void QUmlAnyReceiveEventObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingelementproperty_cast<QUmlAnyReceiveEvent *>(this)->setQualifiedName(qualifiedName);
+    emit qualifiedNameChanged(this->qualifiedName());
 }
 // SLOTS FOR OWNED ATTRIBUTES [PackageableElement]
 
 void QUmlAnyReceiveEventObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingelementproperty_cast<QUmlAnyReceiveEvent *>(this)->setVisibility(visibility);
+    emit visibilityChanged(this->visibility());
 }
 
 void QUmlAnyReceiveEventObject::unsetVisibility()

@@ -397,26 +397,31 @@ bool QUmlRemoveStructuralFeatureValueActionObject::isRedefinitionContextValid(QO
 void QUmlRemoveStructuralFeatureValueActionObject::addOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlRemoveStructuralFeatureValueAction *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlRemoveStructuralFeatureValueActionObject::removeOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlRemoveStructuralFeatureValueAction *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlRemoveStructuralFeatureValueActionObject::addOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlRemoveStructuralFeatureValueAction *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlRemoveStructuralFeatureValueActionObject::removeOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlRemoveStructuralFeatureValueAction *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlRemoveStructuralFeatureValueActionObject::setOwner(QObject *owner)
 {
     qmodelingelementproperty_cast<QUmlRemoveStructuralFeatureValueAction *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
+    emit ownerChanged(this->owner());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [NamedElement]
@@ -424,36 +429,43 @@ void QUmlRemoveStructuralFeatureValueActionObject::setOwner(QObject *owner)
 void QUmlRemoveStructuralFeatureValueActionObject::addClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlRemoveStructuralFeatureValueAction *>(this)->addClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlRemoveStructuralFeatureValueActionObject::removeClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlRemoveStructuralFeatureValueAction *>(this)->removeClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlRemoveStructuralFeatureValueActionObject::setName(QString name)
 {
     qmodelingelementproperty_cast<QUmlRemoveStructuralFeatureValueAction *>(this)->setName(name);
+    emit nameChanged(this->name());
 }
 
 void QUmlRemoveStructuralFeatureValueActionObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingelementproperty_cast<QUmlRemoveStructuralFeatureValueAction *>(this)->setNameExpression(qmodelingelementproperty_cast<QUmlStringExpression *>(nameExpression));
+    emit nameExpressionChanged(this->nameExpression());
 }
 
 void QUmlRemoveStructuralFeatureValueActionObject::setNamespace(QObject *namespace_)
 {
     qmodelingelementproperty_cast<QUmlRemoveStructuralFeatureValueAction *>(this)->setNamespace(qmodelingelementproperty_cast<QUmlNamespace *>(namespace_));
+    emit namespaceChanged(this->namespace_());
 }
 
 void QUmlRemoveStructuralFeatureValueActionObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingelementproperty_cast<QUmlRemoveStructuralFeatureValueAction *>(this)->setQualifiedName(qualifiedName);
+    emit qualifiedNameChanged(this->qualifiedName());
 }
 
 void QUmlRemoveStructuralFeatureValueActionObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingelementproperty_cast<QUmlRemoveStructuralFeatureValueAction *>(this)->setVisibility(visibility);
+    emit visibilityChanged(this->visibility());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [RedefinableElement]
@@ -461,6 +473,7 @@ void QUmlRemoveStructuralFeatureValueActionObject::setVisibility(QtUml::Visibili
 void QUmlRemoveStructuralFeatureValueActionObject::setLeaf(bool isLeaf)
 {
     qmodelingelementproperty_cast<QUmlRemoveStructuralFeatureValueAction *>(this)->setLeaf(isLeaf);
+    emit isLeafChanged(this->isLeaf());
 }
 
 void QUmlRemoveStructuralFeatureValueActionObject::unsetLeaf()
@@ -473,21 +486,25 @@ void QUmlRemoveStructuralFeatureValueActionObject::unsetLeaf()
 void QUmlRemoveStructuralFeatureValueActionObject::addRedefinedElement(QObject *redefinedElement)
 {
     qmodelingelementproperty_cast<QUmlRemoveStructuralFeatureValueAction *>(this)->addRedefinedElement(qmodelingelementproperty_cast<QUmlRedefinableElement *>(redefinedElement));
+    emit redefinedElementsChanged(this->redefinedElements());
 }
 
 void QUmlRemoveStructuralFeatureValueActionObject::removeRedefinedElement(QObject *redefinedElement)
 {
     qmodelingelementproperty_cast<QUmlRemoveStructuralFeatureValueAction *>(this)->removeRedefinedElement(qmodelingelementproperty_cast<QUmlRedefinableElement *>(redefinedElement));
+    emit redefinedElementsChanged(this->redefinedElements());
 }
 
 void QUmlRemoveStructuralFeatureValueActionObject::addRedefinitionContext(QObject *redefinitionContext)
 {
     qmodelingelementproperty_cast<QUmlRemoveStructuralFeatureValueAction *>(this)->addRedefinitionContext(qmodelingelementproperty_cast<QUmlClassifier *>(redefinitionContext));
+    emit redefinitionContextsChanged(this->redefinitionContexts());
 }
 
 void QUmlRemoveStructuralFeatureValueActionObject::removeRedefinitionContext(QObject *redefinitionContext)
 {
     qmodelingelementproperty_cast<QUmlRemoveStructuralFeatureValueAction *>(this)->removeRedefinitionContext(qmodelingelementproperty_cast<QUmlClassifier *>(redefinitionContext));
+    emit redefinitionContextsChanged(this->redefinitionContexts());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ActivityNode]
@@ -495,71 +512,85 @@ void QUmlRemoveStructuralFeatureValueActionObject::removeRedefinitionContext(QOb
 void QUmlRemoveStructuralFeatureValueActionObject::setActivity(QObject *activity)
 {
     qmodelingelementproperty_cast<QUmlRemoveStructuralFeatureValueAction *>(this)->setActivity(qmodelingelementproperty_cast<QUmlActivity *>(activity));
+    emit activityChanged(this->activity());
 }
 
 void QUmlRemoveStructuralFeatureValueActionObject::addInGroup(QObject *inGroup)
 {
     qmodelingelementproperty_cast<QUmlRemoveStructuralFeatureValueAction *>(this)->addInGroup(qmodelingelementproperty_cast<QUmlActivityGroup *>(inGroup));
+    emit inGroupsChanged(this->inGroups());
 }
 
 void QUmlRemoveStructuralFeatureValueActionObject::removeInGroup(QObject *inGroup)
 {
     qmodelingelementproperty_cast<QUmlRemoveStructuralFeatureValueAction *>(this)->removeInGroup(qmodelingelementproperty_cast<QUmlActivityGroup *>(inGroup));
+    emit inGroupsChanged(this->inGroups());
 }
 
 void QUmlRemoveStructuralFeatureValueActionObject::addInInterruptibleRegion(QObject *inInterruptibleRegion)
 {
     qmodelingelementproperty_cast<QUmlRemoveStructuralFeatureValueAction *>(this)->addInInterruptibleRegion(qmodelingelementproperty_cast<QUmlInterruptibleActivityRegion *>(inInterruptibleRegion));
+    emit inInterruptibleRegionsChanged(this->inInterruptibleRegions());
 }
 
 void QUmlRemoveStructuralFeatureValueActionObject::removeInInterruptibleRegion(QObject *inInterruptibleRegion)
 {
     qmodelingelementproperty_cast<QUmlRemoveStructuralFeatureValueAction *>(this)->removeInInterruptibleRegion(qmodelingelementproperty_cast<QUmlInterruptibleActivityRegion *>(inInterruptibleRegion));
+    emit inInterruptibleRegionsChanged(this->inInterruptibleRegions());
 }
 
 void QUmlRemoveStructuralFeatureValueActionObject::addInPartition(QObject *inPartition)
 {
     qmodelingelementproperty_cast<QUmlRemoveStructuralFeatureValueAction *>(this)->addInPartition(qmodelingelementproperty_cast<QUmlActivityPartition *>(inPartition));
+    emit inPartitionsChanged(this->inPartitions());
 }
 
 void QUmlRemoveStructuralFeatureValueActionObject::removeInPartition(QObject *inPartition)
 {
     qmodelingelementproperty_cast<QUmlRemoveStructuralFeatureValueAction *>(this)->removeInPartition(qmodelingelementproperty_cast<QUmlActivityPartition *>(inPartition));
+    emit inPartitionsChanged(this->inPartitions());
 }
 
 void QUmlRemoveStructuralFeatureValueActionObject::setInStructuredNode(QObject *inStructuredNode)
 {
     qmodelingelementproperty_cast<QUmlRemoveStructuralFeatureValueAction *>(this)->setInStructuredNode(qmodelingelementproperty_cast<QUmlStructuredActivityNode *>(inStructuredNode));
+    emit inStructuredNodeChanged(this->inStructuredNode());
 }
 
 void QUmlRemoveStructuralFeatureValueActionObject::addIncoming(QObject *incoming)
 {
     qmodelingelementproperty_cast<QUmlRemoveStructuralFeatureValueAction *>(this)->addIncoming(qmodelingelementproperty_cast<QUmlActivityEdge *>(incoming));
+    emit incomingsChanged(this->incomings());
 }
 
 void QUmlRemoveStructuralFeatureValueActionObject::removeIncoming(QObject *incoming)
 {
     qmodelingelementproperty_cast<QUmlRemoveStructuralFeatureValueAction *>(this)->removeIncoming(qmodelingelementproperty_cast<QUmlActivityEdge *>(incoming));
+    emit incomingsChanged(this->incomings());
 }
 
 void QUmlRemoveStructuralFeatureValueActionObject::addOutgoing(QObject *outgoing)
 {
     qmodelingelementproperty_cast<QUmlRemoveStructuralFeatureValueAction *>(this)->addOutgoing(qmodelingelementproperty_cast<QUmlActivityEdge *>(outgoing));
+    emit outgoingsChanged(this->outgoings());
 }
 
 void QUmlRemoveStructuralFeatureValueActionObject::removeOutgoing(QObject *outgoing)
 {
     qmodelingelementproperty_cast<QUmlRemoveStructuralFeatureValueAction *>(this)->removeOutgoing(qmodelingelementproperty_cast<QUmlActivityEdge *>(outgoing));
+    emit outgoingsChanged(this->outgoings());
 }
 
 void QUmlRemoveStructuralFeatureValueActionObject::addRedefinedNode(QObject *redefinedNode)
 {
     qmodelingelementproperty_cast<QUmlRemoveStructuralFeatureValueAction *>(this)->addRedefinedNode(qmodelingelementproperty_cast<QUmlActivityNode *>(redefinedNode));
+    emit redefinedNodesChanged(this->redefinedNodes());
 }
 
 void QUmlRemoveStructuralFeatureValueActionObject::removeRedefinedNode(QObject *redefinedNode)
 {
     qmodelingelementproperty_cast<QUmlRemoveStructuralFeatureValueAction *>(this)->removeRedefinedNode(qmodelingelementproperty_cast<QUmlActivityNode *>(redefinedNode));
+    emit redefinedNodesChanged(this->redefinedNodes());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ExecutableNode]
@@ -567,11 +598,13 @@ void QUmlRemoveStructuralFeatureValueActionObject::removeRedefinedNode(QObject *
 void QUmlRemoveStructuralFeatureValueActionObject::addHandler(QObject *handler)
 {
     qmodelingelementproperty_cast<QUmlRemoveStructuralFeatureValueAction *>(this)->addHandler(qmodelingelementproperty_cast<QUmlExceptionHandler *>(handler));
+    emit handlersChanged(this->handlers());
 }
 
 void QUmlRemoveStructuralFeatureValueActionObject::removeHandler(QObject *handler)
 {
     qmodelingelementproperty_cast<QUmlRemoveStructuralFeatureValueAction *>(this)->removeHandler(qmodelingelementproperty_cast<QUmlExceptionHandler *>(handler));
+    emit handlersChanged(this->handlers());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Action]
@@ -579,21 +612,25 @@ void QUmlRemoveStructuralFeatureValueActionObject::removeHandler(QObject *handle
 void QUmlRemoveStructuralFeatureValueActionObject::setContext(QObject *context)
 {
     qmodelingelementproperty_cast<QUmlRemoveStructuralFeatureValueAction *>(this)->setContext(qmodelingelementproperty_cast<QUmlClassifier *>(context));
+    emit contextChanged(this->context());
 }
 
 void QUmlRemoveStructuralFeatureValueActionObject::addInput(QObject *input)
 {
     qmodelingelementproperty_cast<QUmlRemoveStructuralFeatureValueAction *>(this)->addInput(qmodelingelementproperty_cast<QUmlInputPin *>(input));
+    emit inputsChanged(this->inputs());
 }
 
 void QUmlRemoveStructuralFeatureValueActionObject::removeInput(QObject *input)
 {
     qmodelingelementproperty_cast<QUmlRemoveStructuralFeatureValueAction *>(this)->removeInput(qmodelingelementproperty_cast<QUmlInputPin *>(input));
+    emit inputsChanged(this->inputs());
 }
 
 void QUmlRemoveStructuralFeatureValueActionObject::setLocallyReentrant(bool isLocallyReentrant)
 {
     qmodelingelementproperty_cast<QUmlRemoveStructuralFeatureValueAction *>(this)->setLocallyReentrant(isLocallyReentrant);
+    emit isLocallyReentrantChanged(this->isLocallyReentrant());
 }
 
 void QUmlRemoveStructuralFeatureValueActionObject::unsetLocallyReentrant()
@@ -606,31 +643,37 @@ void QUmlRemoveStructuralFeatureValueActionObject::unsetLocallyReentrant()
 void QUmlRemoveStructuralFeatureValueActionObject::addLocalPostcondition(QObject *localPostcondition)
 {
     qmodelingelementproperty_cast<QUmlRemoveStructuralFeatureValueAction *>(this)->addLocalPostcondition(qmodelingelementproperty_cast<QUmlConstraint *>(localPostcondition));
+    emit localPostconditionsChanged(this->localPostconditions());
 }
 
 void QUmlRemoveStructuralFeatureValueActionObject::removeLocalPostcondition(QObject *localPostcondition)
 {
     qmodelingelementproperty_cast<QUmlRemoveStructuralFeatureValueAction *>(this)->removeLocalPostcondition(qmodelingelementproperty_cast<QUmlConstraint *>(localPostcondition));
+    emit localPostconditionsChanged(this->localPostconditions());
 }
 
 void QUmlRemoveStructuralFeatureValueActionObject::addLocalPrecondition(QObject *localPrecondition)
 {
     qmodelingelementproperty_cast<QUmlRemoveStructuralFeatureValueAction *>(this)->addLocalPrecondition(qmodelingelementproperty_cast<QUmlConstraint *>(localPrecondition));
+    emit localPreconditionsChanged(this->localPreconditions());
 }
 
 void QUmlRemoveStructuralFeatureValueActionObject::removeLocalPrecondition(QObject *localPrecondition)
 {
     qmodelingelementproperty_cast<QUmlRemoveStructuralFeatureValueAction *>(this)->removeLocalPrecondition(qmodelingelementproperty_cast<QUmlConstraint *>(localPrecondition));
+    emit localPreconditionsChanged(this->localPreconditions());
 }
 
 void QUmlRemoveStructuralFeatureValueActionObject::addOutput(QObject *output)
 {
     qmodelingelementproperty_cast<QUmlRemoveStructuralFeatureValueAction *>(this)->addOutput(qmodelingelementproperty_cast<QUmlOutputPin *>(output));
+    emit outputsChanged(this->outputs());
 }
 
 void QUmlRemoveStructuralFeatureValueActionObject::removeOutput(QObject *output)
 {
     qmodelingelementproperty_cast<QUmlRemoveStructuralFeatureValueAction *>(this)->removeOutput(qmodelingelementproperty_cast<QUmlOutputPin *>(output));
+    emit outputsChanged(this->outputs());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [StructuralFeatureAction]
@@ -638,11 +681,13 @@ void QUmlRemoveStructuralFeatureValueActionObject::removeOutput(QObject *output)
 void QUmlRemoveStructuralFeatureValueActionObject::setObject(QObject *object)
 {
     qmodelingelementproperty_cast<QUmlRemoveStructuralFeatureValueAction *>(this)->setObject(qmodelingelementproperty_cast<QUmlInputPin *>(object));
+    emit objectChanged(this->object());
 }
 
 void QUmlRemoveStructuralFeatureValueActionObject::setStructuralFeature(QObject *structuralFeature)
 {
     qmodelingelementproperty_cast<QUmlRemoveStructuralFeatureValueAction *>(this)->setStructuralFeature(qmodelingelementproperty_cast<QUmlStructuralFeature *>(structuralFeature));
+    emit structuralFeatureChanged(this->structuralFeature());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [WriteStructuralFeatureAction]
@@ -650,11 +695,13 @@ void QUmlRemoveStructuralFeatureValueActionObject::setStructuralFeature(QObject 
 void QUmlRemoveStructuralFeatureValueActionObject::setResult(QObject *result)
 {
     qmodelingelementproperty_cast<QUmlRemoveStructuralFeatureValueAction *>(this)->setResult(qmodelingelementproperty_cast<QUmlOutputPin *>(result));
+    emit resultChanged(this->result());
 }
 
 void QUmlRemoveStructuralFeatureValueActionObject::setValue(QObject *value)
 {
     qmodelingelementproperty_cast<QUmlRemoveStructuralFeatureValueAction *>(this)->setValue(qmodelingelementproperty_cast<QUmlInputPin *>(value));
+    emit valueChanged(this->value());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [RemoveStructuralFeatureValueAction]
@@ -662,6 +709,7 @@ void QUmlRemoveStructuralFeatureValueActionObject::setValue(QObject *value)
 void QUmlRemoveStructuralFeatureValueActionObject::setRemoveDuplicates(bool isRemoveDuplicates)
 {
     qmodelingelementproperty_cast<QUmlRemoveStructuralFeatureValueAction *>(this)->setRemoveDuplicates(isRemoveDuplicates);
+    emit isRemoveDuplicatesChanged(this->isRemoveDuplicates());
 }
 
 void QUmlRemoveStructuralFeatureValueActionObject::unsetRemoveDuplicates()
@@ -674,6 +722,7 @@ void QUmlRemoveStructuralFeatureValueActionObject::unsetRemoveDuplicates()
 void QUmlRemoveStructuralFeatureValueActionObject::setRemoveAt(QObject *removeAt)
 {
     qmodelingelementproperty_cast<QUmlRemoveStructuralFeatureValueAction *>(this)->setRemoveAt(qmodelingelementproperty_cast<QUmlInputPin *>(removeAt));
+    emit removeAtChanged(this->removeAt());
 }
 
 

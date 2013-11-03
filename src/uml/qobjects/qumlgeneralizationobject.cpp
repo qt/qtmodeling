@@ -161,26 +161,31 @@ bool QUmlGeneralizationObject::mustBeOwned() const
 void QUmlGeneralizationObject::addOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlGeneralization *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlGeneralizationObject::removeOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlGeneralization *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlGeneralizationObject::addOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlGeneralization *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlGeneralizationObject::removeOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlGeneralization *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlGeneralizationObject::setOwner(QObject *owner)
 {
     qmodelingelementproperty_cast<QUmlGeneralization *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
+    emit ownerChanged(this->owner());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Relationship]
@@ -188,11 +193,13 @@ void QUmlGeneralizationObject::setOwner(QObject *owner)
 void QUmlGeneralizationObject::addRelatedElement(QObject *relatedElement)
 {
     qmodelingelementproperty_cast<QUmlGeneralization *>(this)->addRelatedElement(qmodelingelementproperty_cast<QUmlElement *>(relatedElement));
+    emit relatedElementsChanged(this->relatedElements());
 }
 
 void QUmlGeneralizationObject::removeRelatedElement(QObject *relatedElement)
 {
     qmodelingelementproperty_cast<QUmlGeneralization *>(this)->removeRelatedElement(qmodelingelementproperty_cast<QUmlElement *>(relatedElement));
+    emit relatedElementsChanged(this->relatedElements());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [DirectedRelationship]
@@ -200,21 +207,25 @@ void QUmlGeneralizationObject::removeRelatedElement(QObject *relatedElement)
 void QUmlGeneralizationObject::addSource(QObject *source)
 {
     qmodelingelementproperty_cast<QUmlGeneralization *>(this)->addSource(qmodelingelementproperty_cast<QUmlElement *>(source));
+    emit sourcesChanged(this->sources());
 }
 
 void QUmlGeneralizationObject::removeSource(QObject *source)
 {
     qmodelingelementproperty_cast<QUmlGeneralization *>(this)->removeSource(qmodelingelementproperty_cast<QUmlElement *>(source));
+    emit sourcesChanged(this->sources());
 }
 
 void QUmlGeneralizationObject::addTarget(QObject *target)
 {
     qmodelingelementproperty_cast<QUmlGeneralization *>(this)->addTarget(qmodelingelementproperty_cast<QUmlElement *>(target));
+    emit targetsChanged(this->targets());
 }
 
 void QUmlGeneralizationObject::removeTarget(QObject *target)
 {
     qmodelingelementproperty_cast<QUmlGeneralization *>(this)->removeTarget(qmodelingelementproperty_cast<QUmlElement *>(target));
+    emit targetsChanged(this->targets());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Generalization]
@@ -222,21 +233,25 @@ void QUmlGeneralizationObject::removeTarget(QObject *target)
 void QUmlGeneralizationObject::setGeneral(QObject *general)
 {
     qmodelingelementproperty_cast<QUmlGeneralization *>(this)->setGeneral(qmodelingelementproperty_cast<QUmlClassifier *>(general));
+    emit generalChanged(this->general());
 }
 
 void QUmlGeneralizationObject::addGeneralizationSet(QObject *generalizationSet)
 {
     qmodelingelementproperty_cast<QUmlGeneralization *>(this)->addGeneralizationSet(qmodelingelementproperty_cast<QUmlGeneralizationSet *>(generalizationSet));
+    emit generalizationSetsChanged(this->generalizationSets());
 }
 
 void QUmlGeneralizationObject::removeGeneralizationSet(QObject *generalizationSet)
 {
     qmodelingelementproperty_cast<QUmlGeneralization *>(this)->removeGeneralizationSet(qmodelingelementproperty_cast<QUmlGeneralizationSet *>(generalizationSet));
+    emit generalizationSetsChanged(this->generalizationSets());
 }
 
 void QUmlGeneralizationObject::setSubstitutable(bool isSubstitutable)
 {
     qmodelingelementproperty_cast<QUmlGeneralization *>(this)->setSubstitutable(isSubstitutable);
+    emit isSubstitutableChanged(this->isSubstitutable());
 }
 
 void QUmlGeneralizationObject::unsetSubstitutable()
@@ -250,6 +265,7 @@ void QUmlGeneralizationObject::unsetSubstitutable()
 void QUmlGeneralizationObject::setSpecific(QObject *specific)
 {
     qmodelingelementproperty_cast<QUmlGeneralization *>(this)->setSpecific(qmodelingelementproperty_cast<QUmlClassifier *>(specific));
+    emit specificChanged(this->specific());
 }
 
 

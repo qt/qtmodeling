@@ -265,26 +265,31 @@ QString QUmlAbstractionObject::separator() const
 void QUmlAbstractionObject::addOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlAbstraction *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlAbstractionObject::removeOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlAbstraction *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlAbstractionObject::addOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlAbstraction *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlAbstractionObject::removeOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlAbstraction *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlAbstractionObject::setOwner(QObject *owner)
 {
     qmodelingelementproperty_cast<QUmlAbstraction *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
+    emit ownerChanged(this->owner());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ParameterableElement]
@@ -292,11 +297,13 @@ void QUmlAbstractionObject::setOwner(QObject *owner)
 void QUmlAbstractionObject::setOwningTemplateParameter(QObject *owningTemplateParameter)
 {
     qmodelingelementproperty_cast<QUmlAbstraction *>(this)->setOwningTemplateParameter(qmodelingelementproperty_cast<QUmlTemplateParameter *>(owningTemplateParameter));
+    emit owningTemplateParameterChanged(this->owningTemplateParameter());
 }
 
 void QUmlAbstractionObject::setTemplateParameter(QObject *templateParameter)
 {
     qmodelingelementproperty_cast<QUmlAbstraction *>(this)->setTemplateParameter(qmodelingelementproperty_cast<QUmlTemplateParameter *>(templateParameter));
+    emit templateParameterChanged(this->templateParameter());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [NamedElement]
@@ -304,37 +311,44 @@ void QUmlAbstractionObject::setTemplateParameter(QObject *templateParameter)
 void QUmlAbstractionObject::addClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlAbstraction *>(this)->addClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlAbstractionObject::removeClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlAbstraction *>(this)->removeClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlAbstractionObject::setName(QString name)
 {
     qmodelingelementproperty_cast<QUmlAbstraction *>(this)->setName(name);
+    emit nameChanged(this->name());
 }
 
 void QUmlAbstractionObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingelementproperty_cast<QUmlAbstraction *>(this)->setNameExpression(qmodelingelementproperty_cast<QUmlStringExpression *>(nameExpression));
+    emit nameExpressionChanged(this->nameExpression());
 }
 
 void QUmlAbstractionObject::setNamespace(QObject *namespace_)
 {
     qmodelingelementproperty_cast<QUmlAbstraction *>(this)->setNamespace(qmodelingelementproperty_cast<QUmlNamespace *>(namespace_));
+    emit namespaceChanged(this->namespace_());
 }
 
 void QUmlAbstractionObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingelementproperty_cast<QUmlAbstraction *>(this)->setQualifiedName(qualifiedName);
+    emit qualifiedNameChanged(this->qualifiedName());
 }
 // SLOTS FOR OWNED ATTRIBUTES [PackageableElement]
 
 void QUmlAbstractionObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingelementproperty_cast<QUmlAbstraction *>(this)->setVisibility(visibility);
+    emit visibilityChanged(this->visibility());
 }
 
 void QUmlAbstractionObject::unsetVisibility()
@@ -349,11 +363,13 @@ void QUmlAbstractionObject::unsetVisibility()
 void QUmlAbstractionObject::addRelatedElement(QObject *relatedElement)
 {
     qmodelingelementproperty_cast<QUmlAbstraction *>(this)->addRelatedElement(qmodelingelementproperty_cast<QUmlElement *>(relatedElement));
+    emit relatedElementsChanged(this->relatedElements());
 }
 
 void QUmlAbstractionObject::removeRelatedElement(QObject *relatedElement)
 {
     qmodelingelementproperty_cast<QUmlAbstraction *>(this)->removeRelatedElement(qmodelingelementproperty_cast<QUmlElement *>(relatedElement));
+    emit relatedElementsChanged(this->relatedElements());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [DirectedRelationship]
@@ -361,21 +377,25 @@ void QUmlAbstractionObject::removeRelatedElement(QObject *relatedElement)
 void QUmlAbstractionObject::addSource(QObject *source)
 {
     qmodelingelementproperty_cast<QUmlAbstraction *>(this)->addSource(qmodelingelementproperty_cast<QUmlElement *>(source));
+    emit sourcesChanged(this->sources());
 }
 
 void QUmlAbstractionObject::removeSource(QObject *source)
 {
     qmodelingelementproperty_cast<QUmlAbstraction *>(this)->removeSource(qmodelingelementproperty_cast<QUmlElement *>(source));
+    emit sourcesChanged(this->sources());
 }
 
 void QUmlAbstractionObject::addTarget(QObject *target)
 {
     qmodelingelementproperty_cast<QUmlAbstraction *>(this)->addTarget(qmodelingelementproperty_cast<QUmlElement *>(target));
+    emit targetsChanged(this->targets());
 }
 
 void QUmlAbstractionObject::removeTarget(QObject *target)
 {
     qmodelingelementproperty_cast<QUmlAbstraction *>(this)->removeTarget(qmodelingelementproperty_cast<QUmlElement *>(target));
+    emit targetsChanged(this->targets());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Dependency]
@@ -383,21 +403,25 @@ void QUmlAbstractionObject::removeTarget(QObject *target)
 void QUmlAbstractionObject::addClient(QObject *client)
 {
     qmodelingelementproperty_cast<QUmlAbstraction *>(this)->addClient(qmodelingelementproperty_cast<QUmlNamedElement *>(client));
+    emit clientsChanged(this->clients());
 }
 
 void QUmlAbstractionObject::removeClient(QObject *client)
 {
     qmodelingelementproperty_cast<QUmlAbstraction *>(this)->removeClient(qmodelingelementproperty_cast<QUmlNamedElement *>(client));
+    emit clientsChanged(this->clients());
 }
 
 void QUmlAbstractionObject::addSupplier(QObject *supplier)
 {
     qmodelingelementproperty_cast<QUmlAbstraction *>(this)->addSupplier(qmodelingelementproperty_cast<QUmlNamedElement *>(supplier));
+    emit suppliersChanged(this->suppliers());
 }
 
 void QUmlAbstractionObject::removeSupplier(QObject *supplier)
 {
     qmodelingelementproperty_cast<QUmlAbstraction *>(this)->removeSupplier(qmodelingelementproperty_cast<QUmlNamedElement *>(supplier));
+    emit suppliersChanged(this->suppliers());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Abstraction]
@@ -405,6 +429,7 @@ void QUmlAbstractionObject::removeSupplier(QObject *supplier)
 void QUmlAbstractionObject::setMapping(QObject *mapping)
 {
     qmodelingelementproperty_cast<QUmlAbstraction *>(this)->setMapping(qmodelingelementproperty_cast<QUmlOpaqueExpression *>(mapping));
+    emit mappingChanged(this->mapping());
 }
 
 

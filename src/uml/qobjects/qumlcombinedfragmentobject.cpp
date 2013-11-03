@@ -236,26 +236,31 @@ QString QUmlCombinedFragmentObject::separator() const
 void QUmlCombinedFragmentObject::addOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlCombinedFragment *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlCombinedFragmentObject::removeOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlCombinedFragment *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlCombinedFragmentObject::addOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlCombinedFragment *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlCombinedFragmentObject::removeOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlCombinedFragment *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlCombinedFragmentObject::setOwner(QObject *owner)
 {
     qmodelingelementproperty_cast<QUmlCombinedFragment *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
+    emit ownerChanged(this->owner());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [NamedElement]
@@ -263,36 +268,43 @@ void QUmlCombinedFragmentObject::setOwner(QObject *owner)
 void QUmlCombinedFragmentObject::addClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlCombinedFragment *>(this)->addClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlCombinedFragmentObject::removeClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlCombinedFragment *>(this)->removeClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlCombinedFragmentObject::setName(QString name)
 {
     qmodelingelementproperty_cast<QUmlCombinedFragment *>(this)->setName(name);
+    emit nameChanged(this->name());
 }
 
 void QUmlCombinedFragmentObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingelementproperty_cast<QUmlCombinedFragment *>(this)->setNameExpression(qmodelingelementproperty_cast<QUmlStringExpression *>(nameExpression));
+    emit nameExpressionChanged(this->nameExpression());
 }
 
 void QUmlCombinedFragmentObject::setNamespace(QObject *namespace_)
 {
     qmodelingelementproperty_cast<QUmlCombinedFragment *>(this)->setNamespace(qmodelingelementproperty_cast<QUmlNamespace *>(namespace_));
+    emit namespaceChanged(this->namespace_());
 }
 
 void QUmlCombinedFragmentObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingelementproperty_cast<QUmlCombinedFragment *>(this)->setQualifiedName(qualifiedName);
+    emit qualifiedNameChanged(this->qualifiedName());
 }
 
 void QUmlCombinedFragmentObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingelementproperty_cast<QUmlCombinedFragment *>(this)->setVisibility(visibility);
+    emit visibilityChanged(this->visibility());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [InteractionFragment]
@@ -300,31 +312,37 @@ void QUmlCombinedFragmentObject::setVisibility(QtUml::VisibilityKind visibility)
 void QUmlCombinedFragmentObject::addCovered(QObject *covered)
 {
     qmodelingelementproperty_cast<QUmlCombinedFragment *>(this)->addCovered(qmodelingelementproperty_cast<QUmlLifeline *>(covered));
+    emit coveredChanged(this->covered());
 }
 
 void QUmlCombinedFragmentObject::removeCovered(QObject *covered)
 {
     qmodelingelementproperty_cast<QUmlCombinedFragment *>(this)->removeCovered(qmodelingelementproperty_cast<QUmlLifeline *>(covered));
+    emit coveredChanged(this->covered());
 }
 
 void QUmlCombinedFragmentObject::setEnclosingInteraction(QObject *enclosingInteraction)
 {
     qmodelingelementproperty_cast<QUmlCombinedFragment *>(this)->setEnclosingInteraction(qmodelingelementproperty_cast<QUmlInteraction *>(enclosingInteraction));
+    emit enclosingInteractionChanged(this->enclosingInteraction());
 }
 
 void QUmlCombinedFragmentObject::setEnclosingOperand(QObject *enclosingOperand)
 {
     qmodelingelementproperty_cast<QUmlCombinedFragment *>(this)->setEnclosingOperand(qmodelingelementproperty_cast<QUmlInteractionOperand *>(enclosingOperand));
+    emit enclosingOperandChanged(this->enclosingOperand());
 }
 
 void QUmlCombinedFragmentObject::addGeneralOrdering(QObject *generalOrdering)
 {
     qmodelingelementproperty_cast<QUmlCombinedFragment *>(this)->addGeneralOrdering(qmodelingelementproperty_cast<QUmlGeneralOrdering *>(generalOrdering));
+    emit generalOrderingsChanged(this->generalOrderings());
 }
 
 void QUmlCombinedFragmentObject::removeGeneralOrdering(QObject *generalOrdering)
 {
     qmodelingelementproperty_cast<QUmlCombinedFragment *>(this)->removeGeneralOrdering(qmodelingelementproperty_cast<QUmlGeneralOrdering *>(generalOrdering));
+    emit generalOrderingsChanged(this->generalOrderings());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [CombinedFragment]
@@ -332,16 +350,19 @@ void QUmlCombinedFragmentObject::removeGeneralOrdering(QObject *generalOrdering)
 void QUmlCombinedFragmentObject::addCfragmentGate(QObject *cfragmentGate)
 {
     qmodelingelementproperty_cast<QUmlCombinedFragment *>(this)->addCfragmentGate(qmodelingelementproperty_cast<QUmlGate *>(cfragmentGate));
+    emit cfragmentGatesChanged(this->cfragmentGates());
 }
 
 void QUmlCombinedFragmentObject::removeCfragmentGate(QObject *cfragmentGate)
 {
     qmodelingelementproperty_cast<QUmlCombinedFragment *>(this)->removeCfragmentGate(qmodelingelementproperty_cast<QUmlGate *>(cfragmentGate));
+    emit cfragmentGatesChanged(this->cfragmentGates());
 }
 
 void QUmlCombinedFragmentObject::setInteractionOperator(QtUml::InteractionOperatorKind interactionOperator)
 {
     qmodelingelementproperty_cast<QUmlCombinedFragment *>(this)->setInteractionOperator(interactionOperator);
+    emit interactionOperatorChanged(this->interactionOperator());
 }
 
 void QUmlCombinedFragmentObject::unsetInteractionOperator()
@@ -354,11 +375,13 @@ void QUmlCombinedFragmentObject::unsetInteractionOperator()
 void QUmlCombinedFragmentObject::addOperand(QObject *operand)
 {
     qmodelingelementproperty_cast<QUmlCombinedFragment *>(this)->addOperand(qmodelingelementproperty_cast<QUmlInteractionOperand *>(operand));
+    emit operandsChanged(this->operands());
 }
 
 void QUmlCombinedFragmentObject::removeOperand(QObject *operand)
 {
     qmodelingelementproperty_cast<QUmlCombinedFragment *>(this)->removeOperand(qmodelingelementproperty_cast<QUmlInteractionOperand *>(operand));
+    emit operandsChanged(this->operands());
 }
 
 

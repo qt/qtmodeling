@@ -117,26 +117,31 @@ bool QUmlImageObject::mustBeOwned() const
 void QUmlImageObject::addOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlImage *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlImageObject::removeOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlImage *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlImageObject::addOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlImage *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlImageObject::removeOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlImage *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlImageObject::setOwner(QObject *owner)
 {
     qmodelingelementproperty_cast<QUmlImage *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
+    emit ownerChanged(this->owner());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Image]
@@ -144,16 +149,19 @@ void QUmlImageObject::setOwner(QObject *owner)
 void QUmlImageObject::setContent(QString content)
 {
     qmodelingelementproperty_cast<QUmlImage *>(this)->setContent(content);
+    emit contentChanged(this->content());
 }
 
 void QUmlImageObject::setFormat(QString format)
 {
     qmodelingelementproperty_cast<QUmlImage *>(this)->setFormat(format);
+    emit formatChanged(this->format());
 }
 
 void QUmlImageObject::setLocation(QString location)
 {
     qmodelingelementproperty_cast<QUmlImage *>(this)->setLocation(location);
+    emit locationChanged(this->location());
 }
 
 

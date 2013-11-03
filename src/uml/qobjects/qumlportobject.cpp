@@ -578,26 +578,31 @@ QSet<QObject *> QUmlPortObject::subsettingContext() const
 void QUmlPortObject::addOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlPort *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlPortObject::removeOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlPort *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlPortObject::addOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlPort *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlPortObject::removeOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlPort *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlPortObject::setOwner(QObject *owner)
 {
     qmodelingelementproperty_cast<QUmlPort *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
+    emit ownerChanged(this->owner());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [NamedElement]
@@ -605,36 +610,43 @@ void QUmlPortObject::setOwner(QObject *owner)
 void QUmlPortObject::addClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlPort *>(this)->addClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlPortObject::removeClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlPort *>(this)->removeClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlPortObject::setName(QString name)
 {
     qmodelingelementproperty_cast<QUmlPort *>(this)->setName(name);
+    emit nameChanged(this->name());
 }
 
 void QUmlPortObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingelementproperty_cast<QUmlPort *>(this)->setNameExpression(qmodelingelementproperty_cast<QUmlStringExpression *>(nameExpression));
+    emit nameExpressionChanged(this->nameExpression());
 }
 
 void QUmlPortObject::setNamespace(QObject *namespace_)
 {
     qmodelingelementproperty_cast<QUmlPort *>(this)->setNamespace(qmodelingelementproperty_cast<QUmlNamespace *>(namespace_));
+    emit namespaceChanged(this->namespace_());
 }
 
 void QUmlPortObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingelementproperty_cast<QUmlPort *>(this)->setQualifiedName(qualifiedName);
+    emit qualifiedNameChanged(this->qualifiedName());
 }
 
 void QUmlPortObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingelementproperty_cast<QUmlPort *>(this)->setVisibility(visibility);
+    emit visibilityChanged(this->visibility());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [TypedElement]
@@ -642,6 +654,7 @@ void QUmlPortObject::setVisibility(QtUml::VisibilityKind visibility)
 void QUmlPortObject::setType(QObject *type)
 {
     qmodelingelementproperty_cast<QUmlPort *>(this)->setType(qmodelingelementproperty_cast<QUmlType *>(type));
+    emit typeChanged(this->type());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [MultiplicityElement]
@@ -649,6 +662,7 @@ void QUmlPortObject::setType(QObject *type)
 void QUmlPortObject::setOrdered(bool isOrdered)
 {
     qmodelingelementproperty_cast<QUmlPort *>(this)->setOrdered(isOrdered);
+    emit isOrderedChanged(this->isOrdered());
 }
 
 void QUmlPortObject::unsetOrdered()
@@ -661,6 +675,7 @@ void QUmlPortObject::unsetOrdered()
 void QUmlPortObject::setUnique(bool isUnique)
 {
     qmodelingelementproperty_cast<QUmlPort *>(this)->setUnique(isUnique);
+    emit isUniqueChanged(this->isUnique());
 }
 
 void QUmlPortObject::unsetUnique()
@@ -674,6 +689,7 @@ void QUmlPortObject::unsetUnique()
 void QUmlPortObject::setLower(int lower)
 {
     qmodelingelementproperty_cast<QUmlPort *>(this)->setLower(lower);
+    emit lowerChanged(this->lower());
 }
 
 void QUmlPortObject::unsetLower()
@@ -686,11 +702,13 @@ void QUmlPortObject::unsetLower()
 void QUmlPortObject::setLowerValue(QObject *lowerValue)
 {
     qmodelingelementproperty_cast<QUmlPort *>(this)->setLowerValue(qmodelingelementproperty_cast<QUmlValueSpecification *>(lowerValue));
+    emit lowerValueChanged(this->lowerValue());
 }
 
 void QUmlPortObject::setUpper(int upper)
 {
     qmodelingelementproperty_cast<QUmlPort *>(this)->setUpper(upper);
+    emit upperChanged(this->upper());
 }
 
 void QUmlPortObject::unsetUpper()
@@ -703,6 +721,7 @@ void QUmlPortObject::unsetUpper()
 void QUmlPortObject::setUpperValue(QObject *upperValue)
 {
     qmodelingelementproperty_cast<QUmlPort *>(this)->setUpperValue(qmodelingelementproperty_cast<QUmlValueSpecification *>(upperValue));
+    emit upperValueChanged(this->upperValue());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [RedefinableElement]
@@ -710,6 +729,7 @@ void QUmlPortObject::setUpperValue(QObject *upperValue)
 void QUmlPortObject::setLeaf(bool isLeaf)
 {
     qmodelingelementproperty_cast<QUmlPort *>(this)->setLeaf(isLeaf);
+    emit isLeafChanged(this->isLeaf());
 }
 
 void QUmlPortObject::unsetLeaf()
@@ -722,21 +742,25 @@ void QUmlPortObject::unsetLeaf()
 void QUmlPortObject::addRedefinedElement(QObject *redefinedElement)
 {
     qmodelingelementproperty_cast<QUmlPort *>(this)->addRedefinedElement(qmodelingelementproperty_cast<QUmlRedefinableElement *>(redefinedElement));
+    emit redefinedElementsChanged(this->redefinedElements());
 }
 
 void QUmlPortObject::removeRedefinedElement(QObject *redefinedElement)
 {
     qmodelingelementproperty_cast<QUmlPort *>(this)->removeRedefinedElement(qmodelingelementproperty_cast<QUmlRedefinableElement *>(redefinedElement));
+    emit redefinedElementsChanged(this->redefinedElements());
 }
 
 void QUmlPortObject::addRedefinitionContext(QObject *redefinitionContext)
 {
     qmodelingelementproperty_cast<QUmlPort *>(this)->addRedefinitionContext(qmodelingelementproperty_cast<QUmlClassifier *>(redefinitionContext));
+    emit redefinitionContextsChanged(this->redefinitionContexts());
 }
 
 void QUmlPortObject::removeRedefinitionContext(QObject *redefinitionContext)
 {
     qmodelingelementproperty_cast<QUmlPort *>(this)->removeRedefinitionContext(qmodelingelementproperty_cast<QUmlClassifier *>(redefinitionContext));
+    emit redefinitionContextsChanged(this->redefinitionContexts());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Feature]
@@ -744,16 +768,19 @@ void QUmlPortObject::removeRedefinitionContext(QObject *redefinitionContext)
 void QUmlPortObject::addFeaturingClassifier(QObject *featuringClassifier)
 {
     qmodelingelementproperty_cast<QUmlPort *>(this)->addFeaturingClassifier(qmodelingelementproperty_cast<QUmlClassifier *>(featuringClassifier));
+    emit featuringClassifiersChanged(this->featuringClassifiers());
 }
 
 void QUmlPortObject::removeFeaturingClassifier(QObject *featuringClassifier)
 {
     qmodelingelementproperty_cast<QUmlPort *>(this)->removeFeaturingClassifier(qmodelingelementproperty_cast<QUmlClassifier *>(featuringClassifier));
+    emit featuringClassifiersChanged(this->featuringClassifiers());
 }
 
 void QUmlPortObject::setStatic(bool isStatic)
 {
     qmodelingelementproperty_cast<QUmlPort *>(this)->setStatic(isStatic);
+    emit isStaticChanged(this->isStatic());
 }
 
 void QUmlPortObject::unsetStatic()
@@ -768,22 +795,26 @@ void QUmlPortObject::unsetStatic()
 void QUmlPortObject::setOwningTemplateParameter(QObject *owningTemplateParameter)
 {
     qmodelingelementproperty_cast<QUmlPort *>(this)->setOwningTemplateParameter(qmodelingelementproperty_cast<QUmlTemplateParameter *>(owningTemplateParameter));
+    emit owningTemplateParameterChanged(this->owningTemplateParameter());
 }
 // SLOTS FOR OWNED ATTRIBUTES [ConnectableElement]
 
 void QUmlPortObject::addEnd(QObject *end)
 {
     qmodelingelementproperty_cast<QUmlPort *>(this)->addEnd(qmodelingelementproperty_cast<QUmlConnectorEnd *>(end));
+    emit endsChanged(this->ends());
 }
 
 void QUmlPortObject::removeEnd(QObject *end)
 {
     qmodelingelementproperty_cast<QUmlPort *>(this)->removeEnd(qmodelingelementproperty_cast<QUmlConnectorEnd *>(end));
+    emit endsChanged(this->ends());
 }
 
 void QUmlPortObject::setTemplateParameter(QObject *templateParameter)
 {
     qmodelingelementproperty_cast<QUmlPort *>(this)->setTemplateParameter(qmodelingelementproperty_cast<QUmlConnectableElementTemplateParameter *>(templateParameter));
+    emit templateParameterChanged(this->templateParameter());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [DeploymentTarget]
@@ -791,21 +822,25 @@ void QUmlPortObject::setTemplateParameter(QObject *templateParameter)
 void QUmlPortObject::addDeployedElement(QObject *deployedElement)
 {
     qmodelingelementproperty_cast<QUmlPort *>(this)->addDeployedElement(qmodelingelementproperty_cast<QUmlPackageableElement *>(deployedElement));
+    emit deployedElementsChanged(this->deployedElements());
 }
 
 void QUmlPortObject::removeDeployedElement(QObject *deployedElement)
 {
     qmodelingelementproperty_cast<QUmlPort *>(this)->removeDeployedElement(qmodelingelementproperty_cast<QUmlPackageableElement *>(deployedElement));
+    emit deployedElementsChanged(this->deployedElements());
 }
 
 void QUmlPortObject::addDeployment(QObject *deployment)
 {
     qmodelingelementproperty_cast<QUmlPort *>(this)->addDeployment(qmodelingelementproperty_cast<QUmlDeployment *>(deployment));
+    emit deploymentsChanged(this->deployments());
 }
 
 void QUmlPortObject::removeDeployment(QObject *deployment)
 {
     qmodelingelementproperty_cast<QUmlPort *>(this)->removeDeployment(qmodelingelementproperty_cast<QUmlDeployment *>(deployment));
+    emit deploymentsChanged(this->deployments());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Property]
@@ -813,6 +848,7 @@ void QUmlPortObject::removeDeployment(QObject *deployment)
 void QUmlPortObject::setAggregation(QtUml::AggregationKind aggregation)
 {
     qmodelingelementproperty_cast<QUmlPort *>(this)->setAggregation(aggregation);
+    emit aggregationChanged(this->aggregation());
 }
 
 void QUmlPortObject::unsetAggregation()
@@ -825,41 +861,49 @@ void QUmlPortObject::unsetAggregation()
 void QUmlPortObject::setAssociation(QObject *association)
 {
     qmodelingelementproperty_cast<QUmlPort *>(this)->setAssociation(qmodelingelementproperty_cast<QUmlAssociation *>(association));
+    emit associationChanged(this->association());
 }
 
 void QUmlPortObject::setAssociationEnd(QObject *associationEnd)
 {
     qmodelingelementproperty_cast<QUmlPort *>(this)->setAssociationEnd(qmodelingelementproperty_cast<QUmlProperty *>(associationEnd));
+    emit associationEndChanged(this->associationEnd());
 }
 
 void QUmlPortObject::setClass(QObject *class_)
 {
     qmodelingelementproperty_cast<QUmlPort *>(this)->setClass(qmodelingelementproperty_cast<QUmlClass *>(class_));
+    emit classChanged(this->class_());
 }
 
 void QUmlPortObject::setDatatype(QObject *datatype)
 {
     qmodelingelementproperty_cast<QUmlPort *>(this)->setDatatype(qmodelingelementproperty_cast<QUmlDataType *>(datatype));
+    emit datatypeChanged(this->datatype());
 }
 
 void QUmlPortObject::setDefault(QString default_)
 {
     qmodelingelementproperty_cast<QUmlPort *>(this)->setDefault(default_);
+    emit defaultChanged(this->default_());
 }
 
 void QUmlPortObject::setDefaultValue(QObject *defaultValue)
 {
     qmodelingelementproperty_cast<QUmlPort *>(this)->setDefaultValue(qmodelingelementproperty_cast<QUmlValueSpecification *>(defaultValue));
+    emit defaultValueChanged(this->defaultValue());
 }
 
 void QUmlPortObject::setInterface(QObject *interface_)
 {
     qmodelingelementproperty_cast<QUmlPort *>(this)->setInterface(qmodelingelementproperty_cast<QUmlInterface *>(interface_));
+    emit interfaceChanged(this->interface_());
 }
 
 void QUmlPortObject::setComposite(bool isComposite)
 {
     qmodelingelementproperty_cast<QUmlPort *>(this)->setComposite(isComposite);
+    emit isCompositeChanged(this->isComposite());
 }
 
 void QUmlPortObject::unsetComposite()
@@ -872,6 +916,7 @@ void QUmlPortObject::unsetComposite()
 void QUmlPortObject::setDerived(bool isDerived)
 {
     qmodelingelementproperty_cast<QUmlPort *>(this)->setDerived(isDerived);
+    emit isDerivedChanged(this->isDerived());
 }
 
 void QUmlPortObject::unsetDerived()
@@ -884,6 +929,7 @@ void QUmlPortObject::unsetDerived()
 void QUmlPortObject::setDerivedUnion(bool isDerivedUnion)
 {
     qmodelingelementproperty_cast<QUmlPort *>(this)->setDerivedUnion(isDerivedUnion);
+    emit isDerivedUnionChanged(this->isDerivedUnion());
 }
 
 void QUmlPortObject::unsetDerivedUnion()
@@ -896,6 +942,7 @@ void QUmlPortObject::unsetDerivedUnion()
 void QUmlPortObject::setID(bool isID)
 {
     qmodelingelementproperty_cast<QUmlPort *>(this)->setID(isID);
+    emit isIDChanged(this->isID());
 }
 
 void QUmlPortObject::unsetID()
@@ -908,6 +955,7 @@ void QUmlPortObject::unsetID()
 void QUmlPortObject::setReadOnly(bool isReadOnly)
 {
     qmodelingelementproperty_cast<QUmlPort *>(this)->setReadOnly(isReadOnly);
+    emit isReadOnlyChanged(this->isReadOnly());
 }
 
 void QUmlPortObject::unsetReadOnly()
@@ -920,41 +968,49 @@ void QUmlPortObject::unsetReadOnly()
 void QUmlPortObject::setOpposite(QObject *opposite)
 {
     qmodelingelementproperty_cast<QUmlPort *>(this)->setOpposite(qmodelingelementproperty_cast<QUmlProperty *>(opposite));
+    emit oppositeChanged(this->opposite());
 }
 
 void QUmlPortObject::setOwningAssociation(QObject *owningAssociation)
 {
     qmodelingelementproperty_cast<QUmlPort *>(this)->setOwningAssociation(qmodelingelementproperty_cast<QUmlAssociation *>(owningAssociation));
+    emit owningAssociationChanged(this->owningAssociation());
 }
 
 void QUmlPortObject::addQualifier(QObject *qualifier)
 {
     qmodelingelementproperty_cast<QUmlPort *>(this)->addQualifier(qmodelingelementproperty_cast<QUmlProperty *>(qualifier));
+    emit qualifiersChanged(this->qualifiers());
 }
 
 void QUmlPortObject::removeQualifier(QObject *qualifier)
 {
     qmodelingelementproperty_cast<QUmlPort *>(this)->removeQualifier(qmodelingelementproperty_cast<QUmlProperty *>(qualifier));
+    emit qualifiersChanged(this->qualifiers());
 }
 
 void QUmlPortObject::addRedefinedProperty(QObject *redefinedProperty)
 {
     qmodelingelementproperty_cast<QUmlPort *>(this)->addRedefinedProperty(qmodelingelementproperty_cast<QUmlProperty *>(redefinedProperty));
+    emit redefinedPropertiesChanged(this->redefinedProperties());
 }
 
 void QUmlPortObject::removeRedefinedProperty(QObject *redefinedProperty)
 {
     qmodelingelementproperty_cast<QUmlPort *>(this)->removeRedefinedProperty(qmodelingelementproperty_cast<QUmlProperty *>(redefinedProperty));
+    emit redefinedPropertiesChanged(this->redefinedProperties());
 }
 
 void QUmlPortObject::addSubsettedProperty(QObject *subsettedProperty)
 {
     qmodelingelementproperty_cast<QUmlPort *>(this)->addSubsettedProperty(qmodelingelementproperty_cast<QUmlProperty *>(subsettedProperty));
+    emit subsettedPropertiesChanged(this->subsettedProperties());
 }
 
 void QUmlPortObject::removeSubsettedProperty(QObject *subsettedProperty)
 {
     qmodelingelementproperty_cast<QUmlPort *>(this)->removeSubsettedProperty(qmodelingelementproperty_cast<QUmlProperty *>(subsettedProperty));
+    emit subsettedPropertiesChanged(this->subsettedProperties());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Port]
@@ -962,6 +1018,7 @@ void QUmlPortObject::removeSubsettedProperty(QObject *subsettedProperty)
 void QUmlPortObject::setBehavior(bool isBehavior)
 {
     qmodelingelementproperty_cast<QUmlPort *>(this)->setBehavior(isBehavior);
+    emit isBehaviorChanged(this->isBehavior());
 }
 
 void QUmlPortObject::unsetBehavior()
@@ -974,6 +1031,7 @@ void QUmlPortObject::unsetBehavior()
 void QUmlPortObject::setConjugated(bool isConjugated)
 {
     qmodelingelementproperty_cast<QUmlPort *>(this)->setConjugated(isConjugated);
+    emit isConjugatedChanged(this->isConjugated());
 }
 
 void QUmlPortObject::unsetConjugated()
@@ -986,6 +1044,7 @@ void QUmlPortObject::unsetConjugated()
 void QUmlPortObject::setService(bool isService)
 {
     qmodelingelementproperty_cast<QUmlPort *>(this)->setService(isService);
+    emit isServiceChanged(this->isService());
 }
 
 void QUmlPortObject::unsetService()
@@ -999,36 +1058,43 @@ void QUmlPortObject::unsetService()
 void QUmlPortObject::setProtocol(QObject *protocol)
 {
     qmodelingelementproperty_cast<QUmlPort *>(this)->setProtocol(qmodelingelementproperty_cast<QUmlProtocolStateMachine *>(protocol));
+    emit protocolChanged(this->protocol());
 }
 
 void QUmlPortObject::addProvided(QObject *provided)
 {
     qmodelingelementproperty_cast<QUmlPort *>(this)->addProvided(qmodelingelementproperty_cast<QUmlInterface *>(provided));
+    emit providedChanged(this->provided());
 }
 
 void QUmlPortObject::removeProvided(QObject *provided)
 {
     qmodelingelementproperty_cast<QUmlPort *>(this)->removeProvided(qmodelingelementproperty_cast<QUmlInterface *>(provided));
+    emit providedChanged(this->provided());
 }
 
 void QUmlPortObject::addRedefinedPort(QObject *redefinedPort)
 {
     qmodelingelementproperty_cast<QUmlPort *>(this)->addRedefinedPort(qmodelingelementproperty_cast<QUmlPort *>(redefinedPort));
+    emit redefinedPortsChanged(this->redefinedPorts());
 }
 
 void QUmlPortObject::removeRedefinedPort(QObject *redefinedPort)
 {
     qmodelingelementproperty_cast<QUmlPort *>(this)->removeRedefinedPort(qmodelingelementproperty_cast<QUmlPort *>(redefinedPort));
+    emit redefinedPortsChanged(this->redefinedPorts());
 }
 
 void QUmlPortObject::addRequired(QObject *required)
 {
     qmodelingelementproperty_cast<QUmlPort *>(this)->addRequired(qmodelingelementproperty_cast<QUmlInterface *>(required));
+    emit requiredChanged(this->required());
 }
 
 void QUmlPortObject::removeRequired(QObject *required)
 {
     qmodelingelementproperty_cast<QUmlPort *>(this)->removeRequired(qmodelingelementproperty_cast<QUmlInterface *>(required));
+    emit requiredChanged(this->required());
 }
 
 

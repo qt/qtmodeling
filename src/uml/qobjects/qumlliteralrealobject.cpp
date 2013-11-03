@@ -265,26 +265,31 @@ double QUmlLiteralRealObject::realValue() const
 void QUmlLiteralRealObject::addOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlLiteralReal *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlLiteralRealObject::removeOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlLiteralReal *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlLiteralRealObject::addOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlLiteralReal *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlLiteralRealObject::removeOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlLiteralReal *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlLiteralRealObject::setOwner(QObject *owner)
 {
     qmodelingelementproperty_cast<QUmlLiteralReal *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
+    emit ownerChanged(this->owner());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [NamedElement]
@@ -292,37 +297,44 @@ void QUmlLiteralRealObject::setOwner(QObject *owner)
 void QUmlLiteralRealObject::addClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlLiteralReal *>(this)->addClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlLiteralRealObject::removeClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlLiteralReal *>(this)->removeClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlLiteralRealObject::setName(QString name)
 {
     qmodelingelementproperty_cast<QUmlLiteralReal *>(this)->setName(name);
+    emit nameChanged(this->name());
 }
 
 void QUmlLiteralRealObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingelementproperty_cast<QUmlLiteralReal *>(this)->setNameExpression(qmodelingelementproperty_cast<QUmlStringExpression *>(nameExpression));
+    emit nameExpressionChanged(this->nameExpression());
 }
 
 void QUmlLiteralRealObject::setNamespace(QObject *namespace_)
 {
     qmodelingelementproperty_cast<QUmlLiteralReal *>(this)->setNamespace(qmodelingelementproperty_cast<QUmlNamespace *>(namespace_));
+    emit namespaceChanged(this->namespace_());
 }
 
 void QUmlLiteralRealObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingelementproperty_cast<QUmlLiteralReal *>(this)->setQualifiedName(qualifiedName);
+    emit qualifiedNameChanged(this->qualifiedName());
 }
 // SLOTS FOR OWNED ATTRIBUTES [TypedElement]
 
 void QUmlLiteralRealObject::setType(QObject *type)
 {
     qmodelingelementproperty_cast<QUmlLiteralReal *>(this)->setType(qmodelingelementproperty_cast<QUmlType *>(type));
+    emit typeChanged(this->type());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ParameterableElement]
@@ -330,11 +342,13 @@ void QUmlLiteralRealObject::setType(QObject *type)
 void QUmlLiteralRealObject::setOwningTemplateParameter(QObject *owningTemplateParameter)
 {
     qmodelingelementproperty_cast<QUmlLiteralReal *>(this)->setOwningTemplateParameter(qmodelingelementproperty_cast<QUmlTemplateParameter *>(owningTemplateParameter));
+    emit owningTemplateParameterChanged(this->owningTemplateParameter());
 }
 
 void QUmlLiteralRealObject::setTemplateParameter(QObject *templateParameter)
 {
     qmodelingelementproperty_cast<QUmlLiteralReal *>(this)->setTemplateParameter(qmodelingelementproperty_cast<QUmlTemplateParameter *>(templateParameter));
+    emit templateParameterChanged(this->templateParameter());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [PackageableElement]
@@ -342,6 +356,7 @@ void QUmlLiteralRealObject::setTemplateParameter(QObject *templateParameter)
 void QUmlLiteralRealObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingelementproperty_cast<QUmlLiteralReal *>(this)->setVisibility(visibility);
+    emit visibilityChanged(this->visibility());
 }
 
 void QUmlLiteralRealObject::unsetVisibility()
@@ -356,6 +371,7 @@ void QUmlLiteralRealObject::unsetVisibility()
 void QUmlLiteralRealObject::setValue(double value)
 {
     qmodelingelementproperty_cast<QUmlLiteralReal *>(this)->setValue(value);
+    emit valueChanged(this->value());
 }
 
 

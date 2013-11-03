@@ -60,7 +60,7 @@ class Q_MOF_EXPORT QMofFactoryObject : public QModelingObject
     Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [Factory]
-    Q_PROPERTY(QObject * package READ package WRITE setPackage)
+    Q_PROPERTY(QObject * package READ package WRITE setPackage NOTIFY packageChanged)
 
 public:
     Q_INVOKABLE explicit QMofFactoryObject(QMofFactory *modelingElement);
@@ -79,6 +79,11 @@ public Q_SLOTS:
 
     // Slots for owned attributes [Factory]
     void setPackage(QObject *package = 0);
+
+Q_SIGNALS:
+
+    // Signals for owned attributes [Factory]
+    void packageChanged(QObject *package);
 
 protected:
     virtual void setGroupProperties();

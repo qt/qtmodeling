@@ -153,26 +153,31 @@ bool QUmlPackageImportObject::mustBeOwned() const
 void QUmlPackageImportObject::addOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlPackageImport *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlPackageImportObject::removeOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlPackageImport *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlPackageImportObject::addOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlPackageImport *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlPackageImportObject::removeOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlPackageImport *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlPackageImportObject::setOwner(QObject *owner)
 {
     qmodelingelementproperty_cast<QUmlPackageImport *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
+    emit ownerChanged(this->owner());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Relationship]
@@ -180,11 +185,13 @@ void QUmlPackageImportObject::setOwner(QObject *owner)
 void QUmlPackageImportObject::addRelatedElement(QObject *relatedElement)
 {
     qmodelingelementproperty_cast<QUmlPackageImport *>(this)->addRelatedElement(qmodelingelementproperty_cast<QUmlElement *>(relatedElement));
+    emit relatedElementsChanged(this->relatedElements());
 }
 
 void QUmlPackageImportObject::removeRelatedElement(QObject *relatedElement)
 {
     qmodelingelementproperty_cast<QUmlPackageImport *>(this)->removeRelatedElement(qmodelingelementproperty_cast<QUmlElement *>(relatedElement));
+    emit relatedElementsChanged(this->relatedElements());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [DirectedRelationship]
@@ -192,21 +199,25 @@ void QUmlPackageImportObject::removeRelatedElement(QObject *relatedElement)
 void QUmlPackageImportObject::addSource(QObject *source)
 {
     qmodelingelementproperty_cast<QUmlPackageImport *>(this)->addSource(qmodelingelementproperty_cast<QUmlElement *>(source));
+    emit sourcesChanged(this->sources());
 }
 
 void QUmlPackageImportObject::removeSource(QObject *source)
 {
     qmodelingelementproperty_cast<QUmlPackageImport *>(this)->removeSource(qmodelingelementproperty_cast<QUmlElement *>(source));
+    emit sourcesChanged(this->sources());
 }
 
 void QUmlPackageImportObject::addTarget(QObject *target)
 {
     qmodelingelementproperty_cast<QUmlPackageImport *>(this)->addTarget(qmodelingelementproperty_cast<QUmlElement *>(target));
+    emit targetsChanged(this->targets());
 }
 
 void QUmlPackageImportObject::removeTarget(QObject *target)
 {
     qmodelingelementproperty_cast<QUmlPackageImport *>(this)->removeTarget(qmodelingelementproperty_cast<QUmlElement *>(target));
+    emit targetsChanged(this->targets());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [PackageImport]
@@ -214,16 +225,19 @@ void QUmlPackageImportObject::removeTarget(QObject *target)
 void QUmlPackageImportObject::setImportedPackage(QObject *importedPackage)
 {
     qmodelingelementproperty_cast<QUmlPackageImport *>(this)->setImportedPackage(qmodelingelementproperty_cast<QUmlPackage *>(importedPackage));
+    emit importedPackageChanged(this->importedPackage());
 }
 
 void QUmlPackageImportObject::setImportingNamespace(QObject *importingNamespace)
 {
     qmodelingelementproperty_cast<QUmlPackageImport *>(this)->setImportingNamespace(qmodelingelementproperty_cast<QUmlNamespace *>(importingNamespace));
+    emit importingNamespaceChanged(this->importingNamespace());
 }
 
 void QUmlPackageImportObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingelementproperty_cast<QUmlPackageImport *>(this)->setVisibility(visibility);
+    emit visibilityChanged(this->visibility());
 }
 
 void QUmlPackageImportObject::unsetVisibility()

@@ -73,11 +73,13 @@ QObject *QMofArgumentObject::value() const
 void QMofArgumentObject::setName(QString name)
 {
     qmodelingelementproperty_cast<QMofArgument *>(this)->setName(name);
+    emit nameChanged(this->name());
 }
 
 void QMofArgumentObject::setValue(QObject *value)
 {
     qmodelingelementproperty_cast<QMofArgument *>(this)->setValue(qmodelingelementproperty_cast<QMofObject *>(value));
+    emit valueChanged(this->value());
 }
 
 

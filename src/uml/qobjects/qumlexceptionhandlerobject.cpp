@@ -137,26 +137,31 @@ bool QUmlExceptionHandlerObject::mustBeOwned() const
 void QUmlExceptionHandlerObject::addOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlExceptionHandler *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlExceptionHandlerObject::removeOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlExceptionHandler *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlExceptionHandlerObject::addOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlExceptionHandler *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlExceptionHandlerObject::removeOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlExceptionHandler *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlExceptionHandlerObject::setOwner(QObject *owner)
 {
     qmodelingelementproperty_cast<QUmlExceptionHandler *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
+    emit ownerChanged(this->owner());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ExceptionHandler]
@@ -164,26 +169,31 @@ void QUmlExceptionHandlerObject::setOwner(QObject *owner)
 void QUmlExceptionHandlerObject::setExceptionInput(QObject *exceptionInput)
 {
     qmodelingelementproperty_cast<QUmlExceptionHandler *>(this)->setExceptionInput(qmodelingelementproperty_cast<QUmlObjectNode *>(exceptionInput));
+    emit exceptionInputChanged(this->exceptionInput());
 }
 
 void QUmlExceptionHandlerObject::addExceptionType(QObject *exceptionType)
 {
     qmodelingelementproperty_cast<QUmlExceptionHandler *>(this)->addExceptionType(qmodelingelementproperty_cast<QUmlClassifier *>(exceptionType));
+    emit exceptionTypesChanged(this->exceptionTypes());
 }
 
 void QUmlExceptionHandlerObject::removeExceptionType(QObject *exceptionType)
 {
     qmodelingelementproperty_cast<QUmlExceptionHandler *>(this)->removeExceptionType(qmodelingelementproperty_cast<QUmlClassifier *>(exceptionType));
+    emit exceptionTypesChanged(this->exceptionTypes());
 }
 
 void QUmlExceptionHandlerObject::setHandlerBody(QObject *handlerBody)
 {
     qmodelingelementproperty_cast<QUmlExceptionHandler *>(this)->setHandlerBody(qmodelingelementproperty_cast<QUmlExecutableNode *>(handlerBody));
+    emit handlerBodyChanged(this->handlerBody());
 }
 
 void QUmlExceptionHandlerObject::setProtectedNode(QObject *protectedNode)
 {
     qmodelingelementproperty_cast<QUmlExceptionHandler *>(this)->setProtectedNode(qmodelingelementproperty_cast<QUmlExecutableNode *>(protectedNode));
+    emit protectedNodeChanged(this->protectedNode());
 }
 
 

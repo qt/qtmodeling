@@ -60,14 +60,14 @@ class Q_UML_EXPORT QUmlTemplateSignatureObject : public QModelingObject
     Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [Element]
-    Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
-    Q_PROPERTY(QSet<QObject *> ownedElements READ ownedElements)
-    Q_PROPERTY(QObject * owner READ owner)
+    Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments NOTIFY ownedCommentsChanged)
+    Q_PROPERTY(QSet<QObject *> ownedElements READ ownedElements NOTIFY ownedElementsChanged)
+    Q_PROPERTY(QObject * owner READ owner NOTIFY ownerChanged)
 
     // Properties [TemplateSignature]
-    Q_PROPERTY(QList<QObject *> ownedParameters READ ownedParameters)
-    Q_PROPERTY(QList<QObject *> parameters READ parameters)
-    Q_PROPERTY(QObject * template_ READ template_ WRITE setTemplate)
+    Q_PROPERTY(QList<QObject *> ownedParameters READ ownedParameters NOTIFY ownedParametersChanged)
+    Q_PROPERTY(QList<QObject *> parameters READ parameters NOTIFY parametersChanged)
+    Q_PROPERTY(QObject * template_ READ template_ WRITE setTemplate NOTIFY templateChanged)
 
 public:
     Q_INVOKABLE explicit QUmlTemplateSignatureObject(QUmlTemplateSignature *modelingElement);
@@ -101,6 +101,18 @@ public Q_SLOTS:
     void addParameter(QObject *parameter);
     void removeParameter(QObject *parameter);
     void setTemplate(QObject *template_ = 0);
+
+Q_SIGNALS:
+
+    // Signals for owned attributes [Element]
+    void ownedCommentsChanged(QSet<QObject *> ownedComments);
+    void ownedElementsChanged(QSet<QObject *> ownedElements);
+    void ownerChanged(QObject *owner);
+
+    // Signals for owned attributes [TemplateSignature]
+    void ownedParametersChanged(QList<QObject *> ownedParameters);
+    void parametersChanged(QList<QObject *> parameters);
+    void templateChanged(QObject *template_);
 
 protected:
     virtual void setGroupProperties();

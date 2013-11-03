@@ -230,26 +230,31 @@ QString QUmlOccurrenceSpecificationObject::separator() const
 void QUmlOccurrenceSpecificationObject::addOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlOccurrenceSpecification *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlOccurrenceSpecificationObject::removeOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlOccurrenceSpecification *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlOccurrenceSpecificationObject::addOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlOccurrenceSpecification *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlOccurrenceSpecificationObject::removeOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlOccurrenceSpecification *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlOccurrenceSpecificationObject::setOwner(QObject *owner)
 {
     qmodelingelementproperty_cast<QUmlOccurrenceSpecification *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
+    emit ownerChanged(this->owner());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [NamedElement]
@@ -257,36 +262,43 @@ void QUmlOccurrenceSpecificationObject::setOwner(QObject *owner)
 void QUmlOccurrenceSpecificationObject::addClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlOccurrenceSpecification *>(this)->addClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlOccurrenceSpecificationObject::removeClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlOccurrenceSpecification *>(this)->removeClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlOccurrenceSpecificationObject::setName(QString name)
 {
     qmodelingelementproperty_cast<QUmlOccurrenceSpecification *>(this)->setName(name);
+    emit nameChanged(this->name());
 }
 
 void QUmlOccurrenceSpecificationObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingelementproperty_cast<QUmlOccurrenceSpecification *>(this)->setNameExpression(qmodelingelementproperty_cast<QUmlStringExpression *>(nameExpression));
+    emit nameExpressionChanged(this->nameExpression());
 }
 
 void QUmlOccurrenceSpecificationObject::setNamespace(QObject *namespace_)
 {
     qmodelingelementproperty_cast<QUmlOccurrenceSpecification *>(this)->setNamespace(qmodelingelementproperty_cast<QUmlNamespace *>(namespace_));
+    emit namespaceChanged(this->namespace_());
 }
 
 void QUmlOccurrenceSpecificationObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingelementproperty_cast<QUmlOccurrenceSpecification *>(this)->setQualifiedName(qualifiedName);
+    emit qualifiedNameChanged(this->qualifiedName());
 }
 
 void QUmlOccurrenceSpecificationObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingelementproperty_cast<QUmlOccurrenceSpecification *>(this)->setVisibility(visibility);
+    emit visibilityChanged(this->visibility());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [InteractionFragment]
@@ -294,21 +306,25 @@ void QUmlOccurrenceSpecificationObject::setVisibility(QtUml::VisibilityKind visi
 void QUmlOccurrenceSpecificationObject::setEnclosingInteraction(QObject *enclosingInteraction)
 {
     qmodelingelementproperty_cast<QUmlOccurrenceSpecification *>(this)->setEnclosingInteraction(qmodelingelementproperty_cast<QUmlInteraction *>(enclosingInteraction));
+    emit enclosingInteractionChanged(this->enclosingInteraction());
 }
 
 void QUmlOccurrenceSpecificationObject::setEnclosingOperand(QObject *enclosingOperand)
 {
     qmodelingelementproperty_cast<QUmlOccurrenceSpecification *>(this)->setEnclosingOperand(qmodelingelementproperty_cast<QUmlInteractionOperand *>(enclosingOperand));
+    emit enclosingOperandChanged(this->enclosingOperand());
 }
 
 void QUmlOccurrenceSpecificationObject::addGeneralOrdering(QObject *generalOrdering)
 {
     qmodelingelementproperty_cast<QUmlOccurrenceSpecification *>(this)->addGeneralOrdering(qmodelingelementproperty_cast<QUmlGeneralOrdering *>(generalOrdering));
+    emit generalOrderingsChanged(this->generalOrderings());
 }
 
 void QUmlOccurrenceSpecificationObject::removeGeneralOrdering(QObject *generalOrdering)
 {
     qmodelingelementproperty_cast<QUmlOccurrenceSpecification *>(this)->removeGeneralOrdering(qmodelingelementproperty_cast<QUmlGeneralOrdering *>(generalOrdering));
+    emit generalOrderingsChanged(this->generalOrderings());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [OccurrenceSpecification]
@@ -316,26 +332,31 @@ void QUmlOccurrenceSpecificationObject::removeGeneralOrdering(QObject *generalOr
 void QUmlOccurrenceSpecificationObject::setCovered(QObject *covered)
 {
     qmodelingelementproperty_cast<QUmlOccurrenceSpecification *>(this)->setCovered(qmodelingelementproperty_cast<QUmlLifeline *>(covered));
+    emit coveredChanged(this->covered());
 }
 
 void QUmlOccurrenceSpecificationObject::addToAfter(QObject *toAfter)
 {
     qmodelingelementproperty_cast<QUmlOccurrenceSpecification *>(this)->addToAfter(qmodelingelementproperty_cast<QUmlGeneralOrdering *>(toAfter));
+    emit toAftersChanged(this->toAfters());
 }
 
 void QUmlOccurrenceSpecificationObject::removeToAfter(QObject *toAfter)
 {
     qmodelingelementproperty_cast<QUmlOccurrenceSpecification *>(this)->removeToAfter(qmodelingelementproperty_cast<QUmlGeneralOrdering *>(toAfter));
+    emit toAftersChanged(this->toAfters());
 }
 
 void QUmlOccurrenceSpecificationObject::addToBefore(QObject *toBefore)
 {
     qmodelingelementproperty_cast<QUmlOccurrenceSpecification *>(this)->addToBefore(qmodelingelementproperty_cast<QUmlGeneralOrdering *>(toBefore));
+    emit toBeforesChanged(this->toBefores());
 }
 
 void QUmlOccurrenceSpecificationObject::removeToBefore(QObject *toBefore)
 {
     qmodelingelementproperty_cast<QUmlOccurrenceSpecification *>(this)->removeToBefore(qmodelingelementproperty_cast<QUmlGeneralOrdering *>(toBefore));
+    emit toBeforesChanged(this->toBefores());
 }
 
 

@@ -157,26 +157,31 @@ bool QUmlTemplateBindingObject::mustBeOwned() const
 void QUmlTemplateBindingObject::addOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlTemplateBinding *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlTemplateBindingObject::removeOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlTemplateBinding *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlTemplateBindingObject::addOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlTemplateBinding *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlTemplateBindingObject::removeOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlTemplateBinding *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlTemplateBindingObject::setOwner(QObject *owner)
 {
     qmodelingelementproperty_cast<QUmlTemplateBinding *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
+    emit ownerChanged(this->owner());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Relationship]
@@ -184,11 +189,13 @@ void QUmlTemplateBindingObject::setOwner(QObject *owner)
 void QUmlTemplateBindingObject::addRelatedElement(QObject *relatedElement)
 {
     qmodelingelementproperty_cast<QUmlTemplateBinding *>(this)->addRelatedElement(qmodelingelementproperty_cast<QUmlElement *>(relatedElement));
+    emit relatedElementsChanged(this->relatedElements());
 }
 
 void QUmlTemplateBindingObject::removeRelatedElement(QObject *relatedElement)
 {
     qmodelingelementproperty_cast<QUmlTemplateBinding *>(this)->removeRelatedElement(qmodelingelementproperty_cast<QUmlElement *>(relatedElement));
+    emit relatedElementsChanged(this->relatedElements());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [DirectedRelationship]
@@ -196,21 +203,25 @@ void QUmlTemplateBindingObject::removeRelatedElement(QObject *relatedElement)
 void QUmlTemplateBindingObject::addSource(QObject *source)
 {
     qmodelingelementproperty_cast<QUmlTemplateBinding *>(this)->addSource(qmodelingelementproperty_cast<QUmlElement *>(source));
+    emit sourcesChanged(this->sources());
 }
 
 void QUmlTemplateBindingObject::removeSource(QObject *source)
 {
     qmodelingelementproperty_cast<QUmlTemplateBinding *>(this)->removeSource(qmodelingelementproperty_cast<QUmlElement *>(source));
+    emit sourcesChanged(this->sources());
 }
 
 void QUmlTemplateBindingObject::addTarget(QObject *target)
 {
     qmodelingelementproperty_cast<QUmlTemplateBinding *>(this)->addTarget(qmodelingelementproperty_cast<QUmlElement *>(target));
+    emit targetsChanged(this->targets());
 }
 
 void QUmlTemplateBindingObject::removeTarget(QObject *target)
 {
     qmodelingelementproperty_cast<QUmlTemplateBinding *>(this)->removeTarget(qmodelingelementproperty_cast<QUmlElement *>(target));
+    emit targetsChanged(this->targets());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [TemplateBinding]
@@ -218,21 +229,25 @@ void QUmlTemplateBindingObject::removeTarget(QObject *target)
 void QUmlTemplateBindingObject::setBoundElement(QObject *boundElement)
 {
     qmodelingelementproperty_cast<QUmlTemplateBinding *>(this)->setBoundElement(qmodelingelementproperty_cast<QUmlTemplateableElement *>(boundElement));
+    emit boundElementChanged(this->boundElement());
 }
 
 void QUmlTemplateBindingObject::addParameterSubstitution(QObject *parameterSubstitution)
 {
     qmodelingelementproperty_cast<QUmlTemplateBinding *>(this)->addParameterSubstitution(qmodelingelementproperty_cast<QUmlTemplateParameterSubstitution *>(parameterSubstitution));
+    emit parameterSubstitutionsChanged(this->parameterSubstitutions());
 }
 
 void QUmlTemplateBindingObject::removeParameterSubstitution(QObject *parameterSubstitution)
 {
     qmodelingelementproperty_cast<QUmlTemplateBinding *>(this)->removeParameterSubstitution(qmodelingelementproperty_cast<QUmlTemplateParameterSubstitution *>(parameterSubstitution));
+    emit parameterSubstitutionsChanged(this->parameterSubstitutions());
 }
 
 void QUmlTemplateBindingObject::setSignature(QObject *signature)
 {
     qmodelingelementproperty_cast<QUmlTemplateBinding *>(this)->setSignature(qmodelingelementproperty_cast<QUmlTemplateSignature *>(signature));
+    emit signatureChanged(this->signature());
 }
 
 

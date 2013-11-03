@@ -378,26 +378,31 @@ QObject *QUmlDestroyLinkActionObject::association() const
 void QUmlDestroyLinkActionObject::addOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlDestroyLinkActionObject::removeOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlDestroyLinkActionObject::addOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlDestroyLinkActionObject::removeOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlDestroyLinkActionObject::setOwner(QObject *owner)
 {
     qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
+    emit ownerChanged(this->owner());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [NamedElement]
@@ -405,36 +410,43 @@ void QUmlDestroyLinkActionObject::setOwner(QObject *owner)
 void QUmlDestroyLinkActionObject::addClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->addClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlDestroyLinkActionObject::removeClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->removeClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlDestroyLinkActionObject::setName(QString name)
 {
     qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->setName(name);
+    emit nameChanged(this->name());
 }
 
 void QUmlDestroyLinkActionObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->setNameExpression(qmodelingelementproperty_cast<QUmlStringExpression *>(nameExpression));
+    emit nameExpressionChanged(this->nameExpression());
 }
 
 void QUmlDestroyLinkActionObject::setNamespace(QObject *namespace_)
 {
     qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->setNamespace(qmodelingelementproperty_cast<QUmlNamespace *>(namespace_));
+    emit namespaceChanged(this->namespace_());
 }
 
 void QUmlDestroyLinkActionObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->setQualifiedName(qualifiedName);
+    emit qualifiedNameChanged(this->qualifiedName());
 }
 
 void QUmlDestroyLinkActionObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->setVisibility(visibility);
+    emit visibilityChanged(this->visibility());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [RedefinableElement]
@@ -442,6 +454,7 @@ void QUmlDestroyLinkActionObject::setVisibility(QtUml::VisibilityKind visibility
 void QUmlDestroyLinkActionObject::setLeaf(bool isLeaf)
 {
     qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->setLeaf(isLeaf);
+    emit isLeafChanged(this->isLeaf());
 }
 
 void QUmlDestroyLinkActionObject::unsetLeaf()
@@ -454,21 +467,25 @@ void QUmlDestroyLinkActionObject::unsetLeaf()
 void QUmlDestroyLinkActionObject::addRedefinedElement(QObject *redefinedElement)
 {
     qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->addRedefinedElement(qmodelingelementproperty_cast<QUmlRedefinableElement *>(redefinedElement));
+    emit redefinedElementsChanged(this->redefinedElements());
 }
 
 void QUmlDestroyLinkActionObject::removeRedefinedElement(QObject *redefinedElement)
 {
     qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->removeRedefinedElement(qmodelingelementproperty_cast<QUmlRedefinableElement *>(redefinedElement));
+    emit redefinedElementsChanged(this->redefinedElements());
 }
 
 void QUmlDestroyLinkActionObject::addRedefinitionContext(QObject *redefinitionContext)
 {
     qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->addRedefinitionContext(qmodelingelementproperty_cast<QUmlClassifier *>(redefinitionContext));
+    emit redefinitionContextsChanged(this->redefinitionContexts());
 }
 
 void QUmlDestroyLinkActionObject::removeRedefinitionContext(QObject *redefinitionContext)
 {
     qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->removeRedefinitionContext(qmodelingelementproperty_cast<QUmlClassifier *>(redefinitionContext));
+    emit redefinitionContextsChanged(this->redefinitionContexts());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ActivityNode]
@@ -476,71 +493,85 @@ void QUmlDestroyLinkActionObject::removeRedefinitionContext(QObject *redefinitio
 void QUmlDestroyLinkActionObject::setActivity(QObject *activity)
 {
     qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->setActivity(qmodelingelementproperty_cast<QUmlActivity *>(activity));
+    emit activityChanged(this->activity());
 }
 
 void QUmlDestroyLinkActionObject::addInGroup(QObject *inGroup)
 {
     qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->addInGroup(qmodelingelementproperty_cast<QUmlActivityGroup *>(inGroup));
+    emit inGroupsChanged(this->inGroups());
 }
 
 void QUmlDestroyLinkActionObject::removeInGroup(QObject *inGroup)
 {
     qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->removeInGroup(qmodelingelementproperty_cast<QUmlActivityGroup *>(inGroup));
+    emit inGroupsChanged(this->inGroups());
 }
 
 void QUmlDestroyLinkActionObject::addInInterruptibleRegion(QObject *inInterruptibleRegion)
 {
     qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->addInInterruptibleRegion(qmodelingelementproperty_cast<QUmlInterruptibleActivityRegion *>(inInterruptibleRegion));
+    emit inInterruptibleRegionsChanged(this->inInterruptibleRegions());
 }
 
 void QUmlDestroyLinkActionObject::removeInInterruptibleRegion(QObject *inInterruptibleRegion)
 {
     qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->removeInInterruptibleRegion(qmodelingelementproperty_cast<QUmlInterruptibleActivityRegion *>(inInterruptibleRegion));
+    emit inInterruptibleRegionsChanged(this->inInterruptibleRegions());
 }
 
 void QUmlDestroyLinkActionObject::addInPartition(QObject *inPartition)
 {
     qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->addInPartition(qmodelingelementproperty_cast<QUmlActivityPartition *>(inPartition));
+    emit inPartitionsChanged(this->inPartitions());
 }
 
 void QUmlDestroyLinkActionObject::removeInPartition(QObject *inPartition)
 {
     qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->removeInPartition(qmodelingelementproperty_cast<QUmlActivityPartition *>(inPartition));
+    emit inPartitionsChanged(this->inPartitions());
 }
 
 void QUmlDestroyLinkActionObject::setInStructuredNode(QObject *inStructuredNode)
 {
     qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->setInStructuredNode(qmodelingelementproperty_cast<QUmlStructuredActivityNode *>(inStructuredNode));
+    emit inStructuredNodeChanged(this->inStructuredNode());
 }
 
 void QUmlDestroyLinkActionObject::addIncoming(QObject *incoming)
 {
     qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->addIncoming(qmodelingelementproperty_cast<QUmlActivityEdge *>(incoming));
+    emit incomingsChanged(this->incomings());
 }
 
 void QUmlDestroyLinkActionObject::removeIncoming(QObject *incoming)
 {
     qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->removeIncoming(qmodelingelementproperty_cast<QUmlActivityEdge *>(incoming));
+    emit incomingsChanged(this->incomings());
 }
 
 void QUmlDestroyLinkActionObject::addOutgoing(QObject *outgoing)
 {
     qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->addOutgoing(qmodelingelementproperty_cast<QUmlActivityEdge *>(outgoing));
+    emit outgoingsChanged(this->outgoings());
 }
 
 void QUmlDestroyLinkActionObject::removeOutgoing(QObject *outgoing)
 {
     qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->removeOutgoing(qmodelingelementproperty_cast<QUmlActivityEdge *>(outgoing));
+    emit outgoingsChanged(this->outgoings());
 }
 
 void QUmlDestroyLinkActionObject::addRedefinedNode(QObject *redefinedNode)
 {
     qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->addRedefinedNode(qmodelingelementproperty_cast<QUmlActivityNode *>(redefinedNode));
+    emit redefinedNodesChanged(this->redefinedNodes());
 }
 
 void QUmlDestroyLinkActionObject::removeRedefinedNode(QObject *redefinedNode)
 {
     qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->removeRedefinedNode(qmodelingelementproperty_cast<QUmlActivityNode *>(redefinedNode));
+    emit redefinedNodesChanged(this->redefinedNodes());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ExecutableNode]
@@ -548,11 +579,13 @@ void QUmlDestroyLinkActionObject::removeRedefinedNode(QObject *redefinedNode)
 void QUmlDestroyLinkActionObject::addHandler(QObject *handler)
 {
     qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->addHandler(qmodelingelementproperty_cast<QUmlExceptionHandler *>(handler));
+    emit handlersChanged(this->handlers());
 }
 
 void QUmlDestroyLinkActionObject::removeHandler(QObject *handler)
 {
     qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->removeHandler(qmodelingelementproperty_cast<QUmlExceptionHandler *>(handler));
+    emit handlersChanged(this->handlers());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Action]
@@ -560,21 +593,25 @@ void QUmlDestroyLinkActionObject::removeHandler(QObject *handler)
 void QUmlDestroyLinkActionObject::setContext(QObject *context)
 {
     qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->setContext(qmodelingelementproperty_cast<QUmlClassifier *>(context));
+    emit contextChanged(this->context());
 }
 
 void QUmlDestroyLinkActionObject::addInput(QObject *input)
 {
     qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->addInput(qmodelingelementproperty_cast<QUmlInputPin *>(input));
+    emit inputsChanged(this->inputs());
 }
 
 void QUmlDestroyLinkActionObject::removeInput(QObject *input)
 {
     qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->removeInput(qmodelingelementproperty_cast<QUmlInputPin *>(input));
+    emit inputsChanged(this->inputs());
 }
 
 void QUmlDestroyLinkActionObject::setLocallyReentrant(bool isLocallyReentrant)
 {
     qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->setLocallyReentrant(isLocallyReentrant);
+    emit isLocallyReentrantChanged(this->isLocallyReentrant());
 }
 
 void QUmlDestroyLinkActionObject::unsetLocallyReentrant()
@@ -587,31 +624,37 @@ void QUmlDestroyLinkActionObject::unsetLocallyReentrant()
 void QUmlDestroyLinkActionObject::addLocalPostcondition(QObject *localPostcondition)
 {
     qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->addLocalPostcondition(qmodelingelementproperty_cast<QUmlConstraint *>(localPostcondition));
+    emit localPostconditionsChanged(this->localPostconditions());
 }
 
 void QUmlDestroyLinkActionObject::removeLocalPostcondition(QObject *localPostcondition)
 {
     qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->removeLocalPostcondition(qmodelingelementproperty_cast<QUmlConstraint *>(localPostcondition));
+    emit localPostconditionsChanged(this->localPostconditions());
 }
 
 void QUmlDestroyLinkActionObject::addLocalPrecondition(QObject *localPrecondition)
 {
     qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->addLocalPrecondition(qmodelingelementproperty_cast<QUmlConstraint *>(localPrecondition));
+    emit localPreconditionsChanged(this->localPreconditions());
 }
 
 void QUmlDestroyLinkActionObject::removeLocalPrecondition(QObject *localPrecondition)
 {
     qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->removeLocalPrecondition(qmodelingelementproperty_cast<QUmlConstraint *>(localPrecondition));
+    emit localPreconditionsChanged(this->localPreconditions());
 }
 
 void QUmlDestroyLinkActionObject::addOutput(QObject *output)
 {
     qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->addOutput(qmodelingelementproperty_cast<QUmlOutputPin *>(output));
+    emit outputsChanged(this->outputs());
 }
 
 void QUmlDestroyLinkActionObject::removeOutput(QObject *output)
 {
     qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->removeOutput(qmodelingelementproperty_cast<QUmlOutputPin *>(output));
+    emit outputsChanged(this->outputs());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [LinkAction]
@@ -619,11 +662,13 @@ void QUmlDestroyLinkActionObject::removeOutput(QObject *output)
 void QUmlDestroyLinkActionObject::addInputValue(QObject *inputValue)
 {
     qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->addInputValue(qmodelingelementproperty_cast<QUmlInputPin *>(inputValue));
+    emit inputValuesChanged(this->inputValues());
 }
 
 void QUmlDestroyLinkActionObject::removeInputValue(QObject *inputValue)
 {
     qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->removeInputValue(qmodelingelementproperty_cast<QUmlInputPin *>(inputValue));
+    emit inputValuesChanged(this->inputValues());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [DestroyLinkAction]
@@ -631,11 +676,13 @@ void QUmlDestroyLinkActionObject::removeInputValue(QObject *inputValue)
 void QUmlDestroyLinkActionObject::addEndData(QObject *endData)
 {
     qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->addEndData(qmodelingelementproperty_cast<QUmlLinkEndDestructionData *>(endData));
+    emit endDataChanged(this->endData());
 }
 
 void QUmlDestroyLinkActionObject::removeEndData(QObject *endData)
 {
     qmodelingelementproperty_cast<QUmlDestroyLinkAction *>(this)->removeEndData(qmodelingelementproperty_cast<QUmlLinkEndDestructionData *>(endData));
+    emit endDataChanged(this->endData());
 }
 
 

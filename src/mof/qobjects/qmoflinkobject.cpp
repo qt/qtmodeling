@@ -97,16 +97,19 @@ void QMofLinkObject::delete_()
 void QMofLinkObject::setFirstElement(QObject *firstElement)
 {
     qmodelingelementproperty_cast<QMofLink *>(this)->setFirstElement(qmodelingelementproperty_cast<QMofElement *>(firstElement));
+    emit firstElementChanged(this->firstElement());
 }
 
 void QMofLinkObject::setSecondElement(QObject *secondElement)
 {
     qmodelingelementproperty_cast<QMofLink *>(this)->setSecondElement(qmodelingelementproperty_cast<QMofElement *>(secondElement));
+    emit secondElementChanged(this->secondElement());
 }
 
 void QMofLinkObject::setAssociation(QObject *association)
 {
     qmodelingelementproperty_cast<QMofLink *>(this)->setAssociation(qmodelingelementproperty_cast<QMofAssociation *>(association));
+    emit associationChanged(this->association());
 }
 
 

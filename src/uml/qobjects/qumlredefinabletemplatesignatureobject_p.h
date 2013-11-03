@@ -62,32 +62,32 @@ class Q_UML_EXPORT QUmlRedefinableTemplateSignatureObject : public QModelingObje
     Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [Element]
-    Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
-    Q_PROPERTY(QSet<QObject *> ownedElements READ ownedElements)
-    Q_PROPERTY(QObject * owner READ owner)
+    Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments NOTIFY ownedCommentsChanged)
+    Q_PROPERTY(QSet<QObject *> ownedElements READ ownedElements NOTIFY ownedElementsChanged)
+    Q_PROPERTY(QObject * owner READ owner NOTIFY ownerChanged)
 
     // Properties [TemplateSignature]
-    Q_PROPERTY(QList<QObject *> ownedParameters READ ownedParameters)
-    Q_PROPERTY(QList<QObject *> parameters READ parameters)
-    Q_PROPERTY(QObject * template_ READ template_ WRITE setTemplate)
+    Q_PROPERTY(QList<QObject *> ownedParameters READ ownedParameters NOTIFY ownedParametersChanged)
+    Q_PROPERTY(QList<QObject *> parameters READ parameters NOTIFY parametersChanged)
+    Q_PROPERTY(QObject * template_ READ template_ WRITE setTemplate NOTIFY templateChanged)
 
     // Properties [NamedElement]
-    Q_PROPERTY(QSet<QObject *> clientDependencies READ clientDependencies)
-    Q_PROPERTY(QString name READ name WRITE setName)
-    Q_PROPERTY(QObject * nameExpression READ nameExpression WRITE setNameExpression)
-    Q_PROPERTY(QObject * namespace_ READ namespace_)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
+    Q_PROPERTY(QSet<QObject *> clientDependencies READ clientDependencies NOTIFY clientDependenciesChanged)
+    Q_PROPERTY(QString name READ name WRITE setName NOTIFY nameChanged)
+    Q_PROPERTY(QObject * nameExpression READ nameExpression WRITE setNameExpression NOTIFY nameExpressionChanged)
+    Q_PROPERTY(QObject * namespace_ READ namespace_ NOTIFY namespaceChanged)
+    Q_PROPERTY(QString qualifiedName READ qualifiedName NOTIFY qualifiedNameChanged STORED false)
+    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility NOTIFY visibilityChanged)
 
     // Properties [RedefinableElement]
-    Q_PROPERTY(bool isLeaf READ isLeaf WRITE setLeaf RESET unsetLeaf)
-    Q_PROPERTY(QSet<QObject *> redefinedElements READ redefinedElements)
-    Q_PROPERTY(QSet<QObject *> redefinitionContexts READ redefinitionContexts)
+    Q_PROPERTY(bool isLeaf READ isLeaf WRITE setLeaf NOTIFY isLeafChanged RESET unsetLeaf)
+    Q_PROPERTY(QSet<QObject *> redefinedElements READ redefinedElements NOTIFY redefinedElementsChanged)
+    Q_PROPERTY(QSet<QObject *> redefinitionContexts READ redefinitionContexts NOTIFY redefinitionContextsChanged)
 
     // Properties [RedefinableTemplateSignature]
-    Q_PROPERTY(QObject * classifier READ classifier WRITE setClassifier)
-    Q_PROPERTY(QSet<QObject *> extendedSignatures READ extendedSignatures)
-    Q_PROPERTY(QSet<QObject *> inheritedParameters READ inheritedParameters STORED false)
+    Q_PROPERTY(QObject * classifier READ classifier WRITE setClassifier NOTIFY classifierChanged)
+    Q_PROPERTY(QSet<QObject *> extendedSignatures READ extendedSignatures NOTIFY extendedSignaturesChanged)
+    Q_PROPERTY(QSet<QObject *> inheritedParameters READ inheritedParameters NOTIFY inheritedParametersChanged STORED false)
 
 public:
     Q_INVOKABLE explicit QUmlRedefinableTemplateSignatureObject(QUmlRedefinableTemplateSignature *modelingElement);
@@ -175,6 +175,36 @@ public Q_SLOTS:
     void removeExtendedSignature(QObject *extendedSignature);
     void Q_DECL_HIDDEN addInheritedParameter(QObject *inheritedParameter);
     void Q_DECL_HIDDEN removeInheritedParameter(QObject *inheritedParameter);
+
+Q_SIGNALS:
+
+    // Signals for owned attributes [Element]
+    void ownedCommentsChanged(QSet<QObject *> ownedComments);
+    void ownedElementsChanged(QSet<QObject *> ownedElements);
+    void ownerChanged(QObject *owner);
+
+    // Signals for owned attributes [TemplateSignature]
+    void ownedParametersChanged(QList<QObject *> ownedParameters);
+    void parametersChanged(QList<QObject *> parameters);
+    void templateChanged(QObject *template_);
+
+    // Signals for owned attributes [NamedElement]
+    void clientDependenciesChanged(QSet<QObject *> clientDependencies);
+    void nameChanged(QString name);
+    void nameExpressionChanged(QObject *nameExpression);
+    void namespaceChanged(QObject *namespace_);
+    void qualifiedNameChanged(QString qualifiedName);
+    void visibilityChanged(QtUml::VisibilityKind visibility);
+
+    // Signals for owned attributes [RedefinableElement]
+    void isLeafChanged(bool isLeaf);
+    void redefinedElementsChanged(QSet<QObject *> redefinedElements);
+    void redefinitionContextsChanged(QSet<QObject *> redefinitionContexts);
+
+    // Signals for owned attributes [RedefinableTemplateSignature]
+    void classifierChanged(QObject *classifier);
+    void extendedSignaturesChanged(QSet<QObject *> extendedSignatures);
+    void inheritedParametersChanged(QSet<QObject *> inheritedParameters);
 
 protected:
     virtual void setGroupProperties();

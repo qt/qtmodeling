@@ -60,14 +60,14 @@ class Q_UML_EXPORT QUmlImageObject : public QModelingObject
     Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [Element]
-    Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
-    Q_PROPERTY(QSet<QObject *> ownedElements READ ownedElements)
-    Q_PROPERTY(QObject * owner READ owner)
+    Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments NOTIFY ownedCommentsChanged)
+    Q_PROPERTY(QSet<QObject *> ownedElements READ ownedElements NOTIFY ownedElementsChanged)
+    Q_PROPERTY(QObject * owner READ owner NOTIFY ownerChanged)
 
     // Properties [Image]
-    Q_PROPERTY(QString content READ content WRITE setContent)
-    Q_PROPERTY(QString format READ format WRITE setFormat)
-    Q_PROPERTY(QString location READ location WRITE setLocation)
+    Q_PROPERTY(QString content READ content WRITE setContent NOTIFY contentChanged)
+    Q_PROPERTY(QString format READ format WRITE setFormat NOTIFY formatChanged)
+    Q_PROPERTY(QString location READ location WRITE setLocation NOTIFY locationChanged)
 
 public:
     Q_INVOKABLE explicit QUmlImageObject(QUmlImage *modelingElement);
@@ -99,6 +99,18 @@ public Q_SLOTS:
     void setContent(QString content);
     void setFormat(QString format);
     void setLocation(QString location);
+
+Q_SIGNALS:
+
+    // Signals for owned attributes [Element]
+    void ownedCommentsChanged(QSet<QObject *> ownedComments);
+    void ownedElementsChanged(QSet<QObject *> ownedElements);
+    void ownerChanged(QObject *owner);
+
+    // Signals for owned attributes [Image]
+    void contentChanged(QString content);
+    void formatChanged(QString format);
+    void locationChanged(QString location);
 
 protected:
     virtual void setGroupProperties();

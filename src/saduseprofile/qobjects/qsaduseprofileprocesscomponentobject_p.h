@@ -60,7 +60,7 @@ class Q_SADUSEPROFILE_EXPORT QSADuseProfileProcessComponentObject : public QMode
     Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [ProcessComponent]
-    Q_PROPERTY(QObject * base_Component READ base_Component WRITE setBase_Component)
+    Q_PROPERTY(QObject * base_Component READ base_Component WRITE setBase_Component NOTIFY base_ComponentChanged)
 
 public:
     Q_INVOKABLE explicit QSADuseProfileProcessComponentObject(QSADuseProfileProcessComponent *modelingElement);
@@ -72,6 +72,11 @@ public Q_SLOTS:
 
     // Slots for owned attributes [ProcessComponent]
     void setBase_Component(QObject *base_Component = 0);
+
+Q_SIGNALS:
+
+    // Signals for owned attributes [ProcessComponent]
+    void base_ComponentChanged(QObject *base_Component);
 
 protected:
     virtual void setGroupProperties();

@@ -244,26 +244,31 @@ QString QUmlTimeConstraintObject::separator() const
 void QUmlTimeConstraintObject::addOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlTimeConstraint *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlTimeConstraintObject::removeOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlTimeConstraint *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlTimeConstraintObject::addOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlTimeConstraint *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlTimeConstraintObject::removeOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlTimeConstraint *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlTimeConstraintObject::setOwner(QObject *owner)
 {
     qmodelingelementproperty_cast<QUmlTimeConstraint *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
+    emit ownerChanged(this->owner());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ParameterableElement]
@@ -271,11 +276,13 @@ void QUmlTimeConstraintObject::setOwner(QObject *owner)
 void QUmlTimeConstraintObject::setOwningTemplateParameter(QObject *owningTemplateParameter)
 {
     qmodelingelementproperty_cast<QUmlTimeConstraint *>(this)->setOwningTemplateParameter(qmodelingelementproperty_cast<QUmlTemplateParameter *>(owningTemplateParameter));
+    emit owningTemplateParameterChanged(this->owningTemplateParameter());
 }
 
 void QUmlTimeConstraintObject::setTemplateParameter(QObject *templateParameter)
 {
     qmodelingelementproperty_cast<QUmlTimeConstraint *>(this)->setTemplateParameter(qmodelingelementproperty_cast<QUmlTemplateParameter *>(templateParameter));
+    emit templateParameterChanged(this->templateParameter());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [NamedElement]
@@ -283,37 +290,44 @@ void QUmlTimeConstraintObject::setTemplateParameter(QObject *templateParameter)
 void QUmlTimeConstraintObject::addClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlTimeConstraint *>(this)->addClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlTimeConstraintObject::removeClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlTimeConstraint *>(this)->removeClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlTimeConstraintObject::setName(QString name)
 {
     qmodelingelementproperty_cast<QUmlTimeConstraint *>(this)->setName(name);
+    emit nameChanged(this->name());
 }
 
 void QUmlTimeConstraintObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingelementproperty_cast<QUmlTimeConstraint *>(this)->setNameExpression(qmodelingelementproperty_cast<QUmlStringExpression *>(nameExpression));
+    emit nameExpressionChanged(this->nameExpression());
 }
 
 void QUmlTimeConstraintObject::setNamespace(QObject *namespace_)
 {
     qmodelingelementproperty_cast<QUmlTimeConstraint *>(this)->setNamespace(qmodelingelementproperty_cast<QUmlNamespace *>(namespace_));
+    emit namespaceChanged(this->namespace_());
 }
 
 void QUmlTimeConstraintObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingelementproperty_cast<QUmlTimeConstraint *>(this)->setQualifiedName(qualifiedName);
+    emit qualifiedNameChanged(this->qualifiedName());
 }
 // SLOTS FOR OWNED ATTRIBUTES [PackageableElement]
 
 void QUmlTimeConstraintObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingelementproperty_cast<QUmlTimeConstraint *>(this)->setVisibility(visibility);
+    emit visibilityChanged(this->visibility());
 }
 
 void QUmlTimeConstraintObject::unsetVisibility()
@@ -328,22 +342,26 @@ void QUmlTimeConstraintObject::unsetVisibility()
 void QUmlTimeConstraintObject::addConstrainedElement(QObject *constrainedElement)
 {
     qmodelingelementproperty_cast<QUmlTimeConstraint *>(this)->addConstrainedElement(qmodelingelementproperty_cast<QUmlElement *>(constrainedElement));
+    emit constrainedElementsChanged(this->constrainedElements());
 }
 
 void QUmlTimeConstraintObject::removeConstrainedElement(QObject *constrainedElement)
 {
     qmodelingelementproperty_cast<QUmlTimeConstraint *>(this)->removeConstrainedElement(qmodelingelementproperty_cast<QUmlElement *>(constrainedElement));
+    emit constrainedElementsChanged(this->constrainedElements());
 }
 
 void QUmlTimeConstraintObject::setContext(QObject *context)
 {
     qmodelingelementproperty_cast<QUmlTimeConstraint *>(this)->setContext(qmodelingelementproperty_cast<QUmlNamespace *>(context));
+    emit contextChanged(this->context());
 }
 // SLOTS FOR OWNED ATTRIBUTES [TimeConstraint]
 
 void QUmlTimeConstraintObject::setFirstEvent(bool firstEvent)
 {
     qmodelingelementproperty_cast<QUmlTimeConstraint *>(this)->setFirstEvent(firstEvent);
+    emit firstEventChanged(this->firstEvent());
 }
 
 void QUmlTimeConstraintObject::unsetFirstEvent()
@@ -357,6 +375,7 @@ void QUmlTimeConstraintObject::unsetFirstEvent()
 void QUmlTimeConstraintObject::setSpecification(QObject *specification)
 {
     qmodelingelementproperty_cast<QUmlTimeConstraint *>(this)->setSpecification(qmodelingelementproperty_cast<QUmlTimeInterval *>(specification));
+    emit specificationChanged(this->specification());
 }
 
 

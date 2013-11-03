@@ -428,26 +428,31 @@ bool QUmlActionInputPinObject::isRedefinitionContextValid(QObject *redefined) co
 void QUmlActionInputPinObject::addOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlActionInputPin *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlActionInputPinObject::removeOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlActionInputPin *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlActionInputPinObject::addOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlActionInputPin *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlActionInputPinObject::removeOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlActionInputPin *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlActionInputPinObject::setOwner(QObject *owner)
 {
     qmodelingelementproperty_cast<QUmlActionInputPin *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
+    emit ownerChanged(this->owner());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [MultiplicityElement]
@@ -455,6 +460,7 @@ void QUmlActionInputPinObject::setOwner(QObject *owner)
 void QUmlActionInputPinObject::setOrdered(bool isOrdered)
 {
     qmodelingelementproperty_cast<QUmlActionInputPin *>(this)->setOrdered(isOrdered);
+    emit isOrderedChanged(this->isOrdered());
 }
 
 void QUmlActionInputPinObject::unsetOrdered()
@@ -467,6 +473,7 @@ void QUmlActionInputPinObject::unsetOrdered()
 void QUmlActionInputPinObject::setUnique(bool isUnique)
 {
     qmodelingelementproperty_cast<QUmlActionInputPin *>(this)->setUnique(isUnique);
+    emit isUniqueChanged(this->isUnique());
 }
 
 void QUmlActionInputPinObject::unsetUnique()
@@ -480,6 +487,7 @@ void QUmlActionInputPinObject::unsetUnique()
 void QUmlActionInputPinObject::setLower(int lower)
 {
     qmodelingelementproperty_cast<QUmlActionInputPin *>(this)->setLower(lower);
+    emit lowerChanged(this->lower());
 }
 
 void QUmlActionInputPinObject::unsetLower()
@@ -492,11 +500,13 @@ void QUmlActionInputPinObject::unsetLower()
 void QUmlActionInputPinObject::setLowerValue(QObject *lowerValue)
 {
     qmodelingelementproperty_cast<QUmlActionInputPin *>(this)->setLowerValue(qmodelingelementproperty_cast<QUmlValueSpecification *>(lowerValue));
+    emit lowerValueChanged(this->lowerValue());
 }
 
 void QUmlActionInputPinObject::setUpper(int upper)
 {
     qmodelingelementproperty_cast<QUmlActionInputPin *>(this)->setUpper(upper);
+    emit upperChanged(this->upper());
 }
 
 void QUmlActionInputPinObject::unsetUpper()
@@ -509,6 +519,7 @@ void QUmlActionInputPinObject::unsetUpper()
 void QUmlActionInputPinObject::setUpperValue(QObject *upperValue)
 {
     qmodelingelementproperty_cast<QUmlActionInputPin *>(this)->setUpperValue(qmodelingelementproperty_cast<QUmlValueSpecification *>(upperValue));
+    emit upperValueChanged(this->upperValue());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [NamedElement]
@@ -516,36 +527,43 @@ void QUmlActionInputPinObject::setUpperValue(QObject *upperValue)
 void QUmlActionInputPinObject::addClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlActionInputPin *>(this)->addClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlActionInputPinObject::removeClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlActionInputPin *>(this)->removeClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlActionInputPinObject::setName(QString name)
 {
     qmodelingelementproperty_cast<QUmlActionInputPin *>(this)->setName(name);
+    emit nameChanged(this->name());
 }
 
 void QUmlActionInputPinObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingelementproperty_cast<QUmlActionInputPin *>(this)->setNameExpression(qmodelingelementproperty_cast<QUmlStringExpression *>(nameExpression));
+    emit nameExpressionChanged(this->nameExpression());
 }
 
 void QUmlActionInputPinObject::setNamespace(QObject *namespace_)
 {
     qmodelingelementproperty_cast<QUmlActionInputPin *>(this)->setNamespace(qmodelingelementproperty_cast<QUmlNamespace *>(namespace_));
+    emit namespaceChanged(this->namespace_());
 }
 
 void QUmlActionInputPinObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingelementproperty_cast<QUmlActionInputPin *>(this)->setQualifiedName(qualifiedName);
+    emit qualifiedNameChanged(this->qualifiedName());
 }
 
 void QUmlActionInputPinObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingelementproperty_cast<QUmlActionInputPin *>(this)->setVisibility(visibility);
+    emit visibilityChanged(this->visibility());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [RedefinableElement]
@@ -553,6 +571,7 @@ void QUmlActionInputPinObject::setVisibility(QtUml::VisibilityKind visibility)
 void QUmlActionInputPinObject::setLeaf(bool isLeaf)
 {
     qmodelingelementproperty_cast<QUmlActionInputPin *>(this)->setLeaf(isLeaf);
+    emit isLeafChanged(this->isLeaf());
 }
 
 void QUmlActionInputPinObject::unsetLeaf()
@@ -565,21 +584,25 @@ void QUmlActionInputPinObject::unsetLeaf()
 void QUmlActionInputPinObject::addRedefinedElement(QObject *redefinedElement)
 {
     qmodelingelementproperty_cast<QUmlActionInputPin *>(this)->addRedefinedElement(qmodelingelementproperty_cast<QUmlRedefinableElement *>(redefinedElement));
+    emit redefinedElementsChanged(this->redefinedElements());
 }
 
 void QUmlActionInputPinObject::removeRedefinedElement(QObject *redefinedElement)
 {
     qmodelingelementproperty_cast<QUmlActionInputPin *>(this)->removeRedefinedElement(qmodelingelementproperty_cast<QUmlRedefinableElement *>(redefinedElement));
+    emit redefinedElementsChanged(this->redefinedElements());
 }
 
 void QUmlActionInputPinObject::addRedefinitionContext(QObject *redefinitionContext)
 {
     qmodelingelementproperty_cast<QUmlActionInputPin *>(this)->addRedefinitionContext(qmodelingelementproperty_cast<QUmlClassifier *>(redefinitionContext));
+    emit redefinitionContextsChanged(this->redefinitionContexts());
 }
 
 void QUmlActionInputPinObject::removeRedefinitionContext(QObject *redefinitionContext)
 {
     qmodelingelementproperty_cast<QUmlActionInputPin *>(this)->removeRedefinitionContext(qmodelingelementproperty_cast<QUmlClassifier *>(redefinitionContext));
+    emit redefinitionContextsChanged(this->redefinitionContexts());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ActivityNode]
@@ -587,71 +610,85 @@ void QUmlActionInputPinObject::removeRedefinitionContext(QObject *redefinitionCo
 void QUmlActionInputPinObject::setActivity(QObject *activity)
 {
     qmodelingelementproperty_cast<QUmlActionInputPin *>(this)->setActivity(qmodelingelementproperty_cast<QUmlActivity *>(activity));
+    emit activityChanged(this->activity());
 }
 
 void QUmlActionInputPinObject::addInGroup(QObject *inGroup)
 {
     qmodelingelementproperty_cast<QUmlActionInputPin *>(this)->addInGroup(qmodelingelementproperty_cast<QUmlActivityGroup *>(inGroup));
+    emit inGroupsChanged(this->inGroups());
 }
 
 void QUmlActionInputPinObject::removeInGroup(QObject *inGroup)
 {
     qmodelingelementproperty_cast<QUmlActionInputPin *>(this)->removeInGroup(qmodelingelementproperty_cast<QUmlActivityGroup *>(inGroup));
+    emit inGroupsChanged(this->inGroups());
 }
 
 void QUmlActionInputPinObject::addInInterruptibleRegion(QObject *inInterruptibleRegion)
 {
     qmodelingelementproperty_cast<QUmlActionInputPin *>(this)->addInInterruptibleRegion(qmodelingelementproperty_cast<QUmlInterruptibleActivityRegion *>(inInterruptibleRegion));
+    emit inInterruptibleRegionsChanged(this->inInterruptibleRegions());
 }
 
 void QUmlActionInputPinObject::removeInInterruptibleRegion(QObject *inInterruptibleRegion)
 {
     qmodelingelementproperty_cast<QUmlActionInputPin *>(this)->removeInInterruptibleRegion(qmodelingelementproperty_cast<QUmlInterruptibleActivityRegion *>(inInterruptibleRegion));
+    emit inInterruptibleRegionsChanged(this->inInterruptibleRegions());
 }
 
 void QUmlActionInputPinObject::addInPartition(QObject *inPartition)
 {
     qmodelingelementproperty_cast<QUmlActionInputPin *>(this)->addInPartition(qmodelingelementproperty_cast<QUmlActivityPartition *>(inPartition));
+    emit inPartitionsChanged(this->inPartitions());
 }
 
 void QUmlActionInputPinObject::removeInPartition(QObject *inPartition)
 {
     qmodelingelementproperty_cast<QUmlActionInputPin *>(this)->removeInPartition(qmodelingelementproperty_cast<QUmlActivityPartition *>(inPartition));
+    emit inPartitionsChanged(this->inPartitions());
 }
 
 void QUmlActionInputPinObject::setInStructuredNode(QObject *inStructuredNode)
 {
     qmodelingelementproperty_cast<QUmlActionInputPin *>(this)->setInStructuredNode(qmodelingelementproperty_cast<QUmlStructuredActivityNode *>(inStructuredNode));
+    emit inStructuredNodeChanged(this->inStructuredNode());
 }
 
 void QUmlActionInputPinObject::addIncoming(QObject *incoming)
 {
     qmodelingelementproperty_cast<QUmlActionInputPin *>(this)->addIncoming(qmodelingelementproperty_cast<QUmlActivityEdge *>(incoming));
+    emit incomingsChanged(this->incomings());
 }
 
 void QUmlActionInputPinObject::removeIncoming(QObject *incoming)
 {
     qmodelingelementproperty_cast<QUmlActionInputPin *>(this)->removeIncoming(qmodelingelementproperty_cast<QUmlActivityEdge *>(incoming));
+    emit incomingsChanged(this->incomings());
 }
 
 void QUmlActionInputPinObject::addOutgoing(QObject *outgoing)
 {
     qmodelingelementproperty_cast<QUmlActionInputPin *>(this)->addOutgoing(qmodelingelementproperty_cast<QUmlActivityEdge *>(outgoing));
+    emit outgoingsChanged(this->outgoings());
 }
 
 void QUmlActionInputPinObject::removeOutgoing(QObject *outgoing)
 {
     qmodelingelementproperty_cast<QUmlActionInputPin *>(this)->removeOutgoing(qmodelingelementproperty_cast<QUmlActivityEdge *>(outgoing));
+    emit outgoingsChanged(this->outgoings());
 }
 
 void QUmlActionInputPinObject::addRedefinedNode(QObject *redefinedNode)
 {
     qmodelingelementproperty_cast<QUmlActionInputPin *>(this)->addRedefinedNode(qmodelingelementproperty_cast<QUmlActivityNode *>(redefinedNode));
+    emit redefinedNodesChanged(this->redefinedNodes());
 }
 
 void QUmlActionInputPinObject::removeRedefinedNode(QObject *redefinedNode)
 {
     qmodelingelementproperty_cast<QUmlActionInputPin *>(this)->removeRedefinedNode(qmodelingelementproperty_cast<QUmlActivityNode *>(redefinedNode));
+    emit redefinedNodesChanged(this->redefinedNodes());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [TypedElement]
@@ -659,6 +696,7 @@ void QUmlActionInputPinObject::removeRedefinedNode(QObject *redefinedNode)
 void QUmlActionInputPinObject::setType(QObject *type)
 {
     qmodelingelementproperty_cast<QUmlActionInputPin *>(this)->setType(qmodelingelementproperty_cast<QUmlType *>(type));
+    emit typeChanged(this->type());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ObjectNode]
@@ -666,16 +704,19 @@ void QUmlActionInputPinObject::setType(QObject *type)
 void QUmlActionInputPinObject::addInState(QObject *inState)
 {
     qmodelingelementproperty_cast<QUmlActionInputPin *>(this)->addInState(qmodelingelementproperty_cast<QUmlState *>(inState));
+    emit inStatesChanged(this->inStates());
 }
 
 void QUmlActionInputPinObject::removeInState(QObject *inState)
 {
     qmodelingelementproperty_cast<QUmlActionInputPin *>(this)->removeInState(qmodelingelementproperty_cast<QUmlState *>(inState));
+    emit inStatesChanged(this->inStates());
 }
 
 void QUmlActionInputPinObject::setControlType(bool isControlType)
 {
     qmodelingelementproperty_cast<QUmlActionInputPin *>(this)->setControlType(isControlType);
+    emit isControlTypeChanged(this->isControlType());
 }
 
 void QUmlActionInputPinObject::unsetControlType()
@@ -688,6 +729,7 @@ void QUmlActionInputPinObject::unsetControlType()
 void QUmlActionInputPinObject::setOrdering(QtUml::ObjectNodeOrderingKind ordering)
 {
     qmodelingelementproperty_cast<QUmlActionInputPin *>(this)->setOrdering(ordering);
+    emit orderingChanged(this->ordering());
 }
 
 void QUmlActionInputPinObject::unsetOrdering()
@@ -700,11 +742,13 @@ void QUmlActionInputPinObject::unsetOrdering()
 void QUmlActionInputPinObject::setSelection(QObject *selection)
 {
     qmodelingelementproperty_cast<QUmlActionInputPin *>(this)->setSelection(qmodelingelementproperty_cast<QUmlBehavior *>(selection));
+    emit selectionChanged(this->selection());
 }
 
 void QUmlActionInputPinObject::setUpperBound(QObject *upperBound)
 {
     qmodelingelementproperty_cast<QUmlActionInputPin *>(this)->setUpperBound(qmodelingelementproperty_cast<QUmlValueSpecification *>(upperBound));
+    emit upperBoundChanged(this->upperBound());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Pin]
@@ -712,6 +756,7 @@ void QUmlActionInputPinObject::setUpperBound(QObject *upperBound)
 void QUmlActionInputPinObject::setControl(bool isControl)
 {
     qmodelingelementproperty_cast<QUmlActionInputPin *>(this)->setControl(isControl);
+    emit isControlChanged(this->isControl());
 }
 
 void QUmlActionInputPinObject::unsetControl()
@@ -726,6 +771,7 @@ void QUmlActionInputPinObject::unsetControl()
 void QUmlActionInputPinObject::setFromAction(QObject *fromAction)
 {
     qmodelingelementproperty_cast<QUmlActionInputPin *>(this)->setFromAction(qmodelingelementproperty_cast<QUmlAction *>(fromAction));
+    emit fromActionChanged(this->fromAction());
 }
 
 

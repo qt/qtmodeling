@@ -60,20 +60,20 @@ class Q_UML_EXPORT QUmlProtocolConformanceObject : public QModelingObject
     Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [Element]
-    Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
-    Q_PROPERTY(QSet<QObject *> ownedElements READ ownedElements)
-    Q_PROPERTY(QObject * owner READ owner)
+    Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments NOTIFY ownedCommentsChanged)
+    Q_PROPERTY(QSet<QObject *> ownedElements READ ownedElements NOTIFY ownedElementsChanged)
+    Q_PROPERTY(QObject * owner READ owner NOTIFY ownerChanged)
 
     // Properties [Relationship]
-    Q_PROPERTY(QSet<QObject *> relatedElements READ relatedElements)
+    Q_PROPERTY(QSet<QObject *> relatedElements READ relatedElements NOTIFY relatedElementsChanged)
 
     // Properties [DirectedRelationship]
-    Q_PROPERTY(QSet<QObject *> sources READ sources)
-    Q_PROPERTY(QSet<QObject *> targets READ targets)
+    Q_PROPERTY(QSet<QObject *> sources READ sources NOTIFY sourcesChanged)
+    Q_PROPERTY(QSet<QObject *> targets READ targets NOTIFY targetsChanged)
 
     // Properties [ProtocolConformance]
-    Q_PROPERTY(QObject * generalMachine READ generalMachine WRITE setGeneralMachine)
-    Q_PROPERTY(QObject * specificMachine READ specificMachine WRITE setSpecificMachine)
+    Q_PROPERTY(QObject * generalMachine READ generalMachine WRITE setGeneralMachine NOTIFY generalMachineChanged)
+    Q_PROPERTY(QObject * specificMachine READ specificMachine WRITE setSpecificMachine NOTIFY specificMachineChanged)
 
 public:
     Q_INVOKABLE explicit QUmlProtocolConformanceObject(QUmlProtocolConformance *modelingElement);
@@ -120,6 +120,24 @@ public Q_SLOTS:
     // Slots for owned attributes [ProtocolConformance]
     void setGeneralMachine(QObject *generalMachine = 0);
     void setSpecificMachine(QObject *specificMachine = 0);
+
+Q_SIGNALS:
+
+    // Signals for owned attributes [Element]
+    void ownedCommentsChanged(QSet<QObject *> ownedComments);
+    void ownedElementsChanged(QSet<QObject *> ownedElements);
+    void ownerChanged(QObject *owner);
+
+    // Signals for owned attributes [Relationship]
+    void relatedElementsChanged(QSet<QObject *> relatedElements);
+
+    // Signals for owned attributes [DirectedRelationship]
+    void sourcesChanged(QSet<QObject *> sources);
+    void targetsChanged(QSet<QObject *> targets);
+
+    // Signals for owned attributes [ProtocolConformance]
+    void generalMachineChanged(QObject *generalMachine);
+    void specificMachineChanged(QObject *specificMachine);
 
 protected:
     virtual void setGroupProperties();

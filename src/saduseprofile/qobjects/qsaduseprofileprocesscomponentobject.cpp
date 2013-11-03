@@ -68,6 +68,7 @@ QObject *QSADuseProfileProcessComponentObject::base_Component() const
 void QSADuseProfileProcessComponentObject::setBase_Component(QObject *base_Component)
 {
     qmodelingelementproperty_cast<QSADuseProfileProcessComponent *>(this)->setBase_Component(qmodelingelementproperty_cast<QUmlComponent *>(base_Component));
+    emit base_ComponentChanged(this->base_Component());
 }
 
 

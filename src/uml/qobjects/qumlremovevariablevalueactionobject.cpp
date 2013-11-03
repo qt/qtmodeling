@@ -381,26 +381,31 @@ bool QUmlRemoveVariableValueActionObject::isRedefinitionContextValid(QObject *re
 void QUmlRemoveVariableValueActionObject::addOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlRemoveVariableValueActionObject::removeOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlRemoveVariableValueActionObject::addOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlRemoveVariableValueActionObject::removeOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlRemoveVariableValueActionObject::setOwner(QObject *owner)
 {
     qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
+    emit ownerChanged(this->owner());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [NamedElement]
@@ -408,36 +413,43 @@ void QUmlRemoveVariableValueActionObject::setOwner(QObject *owner)
 void QUmlRemoveVariableValueActionObject::addClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->addClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlRemoveVariableValueActionObject::removeClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->removeClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlRemoveVariableValueActionObject::setName(QString name)
 {
     qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->setName(name);
+    emit nameChanged(this->name());
 }
 
 void QUmlRemoveVariableValueActionObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->setNameExpression(qmodelingelementproperty_cast<QUmlStringExpression *>(nameExpression));
+    emit nameExpressionChanged(this->nameExpression());
 }
 
 void QUmlRemoveVariableValueActionObject::setNamespace(QObject *namespace_)
 {
     qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->setNamespace(qmodelingelementproperty_cast<QUmlNamespace *>(namespace_));
+    emit namespaceChanged(this->namespace_());
 }
 
 void QUmlRemoveVariableValueActionObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->setQualifiedName(qualifiedName);
+    emit qualifiedNameChanged(this->qualifiedName());
 }
 
 void QUmlRemoveVariableValueActionObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->setVisibility(visibility);
+    emit visibilityChanged(this->visibility());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [RedefinableElement]
@@ -445,6 +457,7 @@ void QUmlRemoveVariableValueActionObject::setVisibility(QtUml::VisibilityKind vi
 void QUmlRemoveVariableValueActionObject::setLeaf(bool isLeaf)
 {
     qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->setLeaf(isLeaf);
+    emit isLeafChanged(this->isLeaf());
 }
 
 void QUmlRemoveVariableValueActionObject::unsetLeaf()
@@ -457,21 +470,25 @@ void QUmlRemoveVariableValueActionObject::unsetLeaf()
 void QUmlRemoveVariableValueActionObject::addRedefinedElement(QObject *redefinedElement)
 {
     qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->addRedefinedElement(qmodelingelementproperty_cast<QUmlRedefinableElement *>(redefinedElement));
+    emit redefinedElementsChanged(this->redefinedElements());
 }
 
 void QUmlRemoveVariableValueActionObject::removeRedefinedElement(QObject *redefinedElement)
 {
     qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->removeRedefinedElement(qmodelingelementproperty_cast<QUmlRedefinableElement *>(redefinedElement));
+    emit redefinedElementsChanged(this->redefinedElements());
 }
 
 void QUmlRemoveVariableValueActionObject::addRedefinitionContext(QObject *redefinitionContext)
 {
     qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->addRedefinitionContext(qmodelingelementproperty_cast<QUmlClassifier *>(redefinitionContext));
+    emit redefinitionContextsChanged(this->redefinitionContexts());
 }
 
 void QUmlRemoveVariableValueActionObject::removeRedefinitionContext(QObject *redefinitionContext)
 {
     qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->removeRedefinitionContext(qmodelingelementproperty_cast<QUmlClassifier *>(redefinitionContext));
+    emit redefinitionContextsChanged(this->redefinitionContexts());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ActivityNode]
@@ -479,71 +496,85 @@ void QUmlRemoveVariableValueActionObject::removeRedefinitionContext(QObject *red
 void QUmlRemoveVariableValueActionObject::setActivity(QObject *activity)
 {
     qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->setActivity(qmodelingelementproperty_cast<QUmlActivity *>(activity));
+    emit activityChanged(this->activity());
 }
 
 void QUmlRemoveVariableValueActionObject::addInGroup(QObject *inGroup)
 {
     qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->addInGroup(qmodelingelementproperty_cast<QUmlActivityGroup *>(inGroup));
+    emit inGroupsChanged(this->inGroups());
 }
 
 void QUmlRemoveVariableValueActionObject::removeInGroup(QObject *inGroup)
 {
     qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->removeInGroup(qmodelingelementproperty_cast<QUmlActivityGroup *>(inGroup));
+    emit inGroupsChanged(this->inGroups());
 }
 
 void QUmlRemoveVariableValueActionObject::addInInterruptibleRegion(QObject *inInterruptibleRegion)
 {
     qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->addInInterruptibleRegion(qmodelingelementproperty_cast<QUmlInterruptibleActivityRegion *>(inInterruptibleRegion));
+    emit inInterruptibleRegionsChanged(this->inInterruptibleRegions());
 }
 
 void QUmlRemoveVariableValueActionObject::removeInInterruptibleRegion(QObject *inInterruptibleRegion)
 {
     qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->removeInInterruptibleRegion(qmodelingelementproperty_cast<QUmlInterruptibleActivityRegion *>(inInterruptibleRegion));
+    emit inInterruptibleRegionsChanged(this->inInterruptibleRegions());
 }
 
 void QUmlRemoveVariableValueActionObject::addInPartition(QObject *inPartition)
 {
     qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->addInPartition(qmodelingelementproperty_cast<QUmlActivityPartition *>(inPartition));
+    emit inPartitionsChanged(this->inPartitions());
 }
 
 void QUmlRemoveVariableValueActionObject::removeInPartition(QObject *inPartition)
 {
     qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->removeInPartition(qmodelingelementproperty_cast<QUmlActivityPartition *>(inPartition));
+    emit inPartitionsChanged(this->inPartitions());
 }
 
 void QUmlRemoveVariableValueActionObject::setInStructuredNode(QObject *inStructuredNode)
 {
     qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->setInStructuredNode(qmodelingelementproperty_cast<QUmlStructuredActivityNode *>(inStructuredNode));
+    emit inStructuredNodeChanged(this->inStructuredNode());
 }
 
 void QUmlRemoveVariableValueActionObject::addIncoming(QObject *incoming)
 {
     qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->addIncoming(qmodelingelementproperty_cast<QUmlActivityEdge *>(incoming));
+    emit incomingsChanged(this->incomings());
 }
 
 void QUmlRemoveVariableValueActionObject::removeIncoming(QObject *incoming)
 {
     qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->removeIncoming(qmodelingelementproperty_cast<QUmlActivityEdge *>(incoming));
+    emit incomingsChanged(this->incomings());
 }
 
 void QUmlRemoveVariableValueActionObject::addOutgoing(QObject *outgoing)
 {
     qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->addOutgoing(qmodelingelementproperty_cast<QUmlActivityEdge *>(outgoing));
+    emit outgoingsChanged(this->outgoings());
 }
 
 void QUmlRemoveVariableValueActionObject::removeOutgoing(QObject *outgoing)
 {
     qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->removeOutgoing(qmodelingelementproperty_cast<QUmlActivityEdge *>(outgoing));
+    emit outgoingsChanged(this->outgoings());
 }
 
 void QUmlRemoveVariableValueActionObject::addRedefinedNode(QObject *redefinedNode)
 {
     qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->addRedefinedNode(qmodelingelementproperty_cast<QUmlActivityNode *>(redefinedNode));
+    emit redefinedNodesChanged(this->redefinedNodes());
 }
 
 void QUmlRemoveVariableValueActionObject::removeRedefinedNode(QObject *redefinedNode)
 {
     qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->removeRedefinedNode(qmodelingelementproperty_cast<QUmlActivityNode *>(redefinedNode));
+    emit redefinedNodesChanged(this->redefinedNodes());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ExecutableNode]
@@ -551,11 +582,13 @@ void QUmlRemoveVariableValueActionObject::removeRedefinedNode(QObject *redefined
 void QUmlRemoveVariableValueActionObject::addHandler(QObject *handler)
 {
     qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->addHandler(qmodelingelementproperty_cast<QUmlExceptionHandler *>(handler));
+    emit handlersChanged(this->handlers());
 }
 
 void QUmlRemoveVariableValueActionObject::removeHandler(QObject *handler)
 {
     qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->removeHandler(qmodelingelementproperty_cast<QUmlExceptionHandler *>(handler));
+    emit handlersChanged(this->handlers());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Action]
@@ -563,21 +596,25 @@ void QUmlRemoveVariableValueActionObject::removeHandler(QObject *handler)
 void QUmlRemoveVariableValueActionObject::setContext(QObject *context)
 {
     qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->setContext(qmodelingelementproperty_cast<QUmlClassifier *>(context));
+    emit contextChanged(this->context());
 }
 
 void QUmlRemoveVariableValueActionObject::addInput(QObject *input)
 {
     qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->addInput(qmodelingelementproperty_cast<QUmlInputPin *>(input));
+    emit inputsChanged(this->inputs());
 }
 
 void QUmlRemoveVariableValueActionObject::removeInput(QObject *input)
 {
     qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->removeInput(qmodelingelementproperty_cast<QUmlInputPin *>(input));
+    emit inputsChanged(this->inputs());
 }
 
 void QUmlRemoveVariableValueActionObject::setLocallyReentrant(bool isLocallyReentrant)
 {
     qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->setLocallyReentrant(isLocallyReentrant);
+    emit isLocallyReentrantChanged(this->isLocallyReentrant());
 }
 
 void QUmlRemoveVariableValueActionObject::unsetLocallyReentrant()
@@ -590,31 +627,37 @@ void QUmlRemoveVariableValueActionObject::unsetLocallyReentrant()
 void QUmlRemoveVariableValueActionObject::addLocalPostcondition(QObject *localPostcondition)
 {
     qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->addLocalPostcondition(qmodelingelementproperty_cast<QUmlConstraint *>(localPostcondition));
+    emit localPostconditionsChanged(this->localPostconditions());
 }
 
 void QUmlRemoveVariableValueActionObject::removeLocalPostcondition(QObject *localPostcondition)
 {
     qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->removeLocalPostcondition(qmodelingelementproperty_cast<QUmlConstraint *>(localPostcondition));
+    emit localPostconditionsChanged(this->localPostconditions());
 }
 
 void QUmlRemoveVariableValueActionObject::addLocalPrecondition(QObject *localPrecondition)
 {
     qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->addLocalPrecondition(qmodelingelementproperty_cast<QUmlConstraint *>(localPrecondition));
+    emit localPreconditionsChanged(this->localPreconditions());
 }
 
 void QUmlRemoveVariableValueActionObject::removeLocalPrecondition(QObject *localPrecondition)
 {
     qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->removeLocalPrecondition(qmodelingelementproperty_cast<QUmlConstraint *>(localPrecondition));
+    emit localPreconditionsChanged(this->localPreconditions());
 }
 
 void QUmlRemoveVariableValueActionObject::addOutput(QObject *output)
 {
     qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->addOutput(qmodelingelementproperty_cast<QUmlOutputPin *>(output));
+    emit outputsChanged(this->outputs());
 }
 
 void QUmlRemoveVariableValueActionObject::removeOutput(QObject *output)
 {
     qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->removeOutput(qmodelingelementproperty_cast<QUmlOutputPin *>(output));
+    emit outputsChanged(this->outputs());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [VariableAction]
@@ -622,6 +665,7 @@ void QUmlRemoveVariableValueActionObject::removeOutput(QObject *output)
 void QUmlRemoveVariableValueActionObject::setVariable(QObject *variable)
 {
     qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->setVariable(qmodelingelementproperty_cast<QUmlVariable *>(variable));
+    emit variableChanged(this->variable());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [WriteVariableAction]
@@ -629,6 +673,7 @@ void QUmlRemoveVariableValueActionObject::setVariable(QObject *variable)
 void QUmlRemoveVariableValueActionObject::setValue(QObject *value)
 {
     qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->setValue(qmodelingelementproperty_cast<QUmlInputPin *>(value));
+    emit valueChanged(this->value());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [RemoveVariableValueAction]
@@ -636,6 +681,7 @@ void QUmlRemoveVariableValueActionObject::setValue(QObject *value)
 void QUmlRemoveVariableValueActionObject::setRemoveDuplicates(bool isRemoveDuplicates)
 {
     qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->setRemoveDuplicates(isRemoveDuplicates);
+    emit isRemoveDuplicatesChanged(this->isRemoveDuplicates());
 }
 
 void QUmlRemoveVariableValueActionObject::unsetRemoveDuplicates()
@@ -648,6 +694,7 @@ void QUmlRemoveVariableValueActionObject::unsetRemoveDuplicates()
 void QUmlRemoveVariableValueActionObject::setRemoveAt(QObject *removeAt)
 {
     qmodelingelementproperty_cast<QUmlRemoveVariableValueAction *>(this)->setRemoveAt(qmodelingelementproperty_cast<QUmlInputPin *>(removeAt));
+    emit removeAtChanged(this->removeAt());
 }
 
 

@@ -60,8 +60,8 @@ class Q_MOF_EXPORT QMofArgumentObject : public QModelingObject
     Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [Argument]
-    Q_PROPERTY(QString name READ name WRITE setName)
-    Q_PROPERTY(QObject * value READ value WRITE setValue)
+    Q_PROPERTY(QString name READ name WRITE setName NOTIFY nameChanged)
+    Q_PROPERTY(QObject * value READ value WRITE setValue NOTIFY valueChanged)
 
 public:
     Q_INVOKABLE explicit QMofArgumentObject(QMofArgument *modelingElement);
@@ -75,6 +75,12 @@ public Q_SLOTS:
     // Slots for owned attributes [Argument]
     void setName(QString name);
     void setValue(QObject *value = 0);
+
+Q_SIGNALS:
+
+    // Signals for owned attributes [Argument]
+    void nameChanged(QString name);
+    void valueChanged(QObject *value);
 
 protected:
     virtual void setGroupProperties();

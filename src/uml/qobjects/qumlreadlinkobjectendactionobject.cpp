@@ -372,26 +372,31 @@ bool QUmlReadLinkObjectEndActionObject::isRedefinitionContextValid(QObject *rede
 void QUmlReadLinkObjectEndActionObject::addOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlReadLinkObjectEndAction *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlReadLinkObjectEndActionObject::removeOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlReadLinkObjectEndAction *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlReadLinkObjectEndActionObject::addOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlReadLinkObjectEndAction *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlReadLinkObjectEndActionObject::removeOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlReadLinkObjectEndAction *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlReadLinkObjectEndActionObject::setOwner(QObject *owner)
 {
     qmodelingelementproperty_cast<QUmlReadLinkObjectEndAction *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
+    emit ownerChanged(this->owner());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [NamedElement]
@@ -399,36 +404,43 @@ void QUmlReadLinkObjectEndActionObject::setOwner(QObject *owner)
 void QUmlReadLinkObjectEndActionObject::addClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlReadLinkObjectEndAction *>(this)->addClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlReadLinkObjectEndActionObject::removeClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlReadLinkObjectEndAction *>(this)->removeClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlReadLinkObjectEndActionObject::setName(QString name)
 {
     qmodelingelementproperty_cast<QUmlReadLinkObjectEndAction *>(this)->setName(name);
+    emit nameChanged(this->name());
 }
 
 void QUmlReadLinkObjectEndActionObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingelementproperty_cast<QUmlReadLinkObjectEndAction *>(this)->setNameExpression(qmodelingelementproperty_cast<QUmlStringExpression *>(nameExpression));
+    emit nameExpressionChanged(this->nameExpression());
 }
 
 void QUmlReadLinkObjectEndActionObject::setNamespace(QObject *namespace_)
 {
     qmodelingelementproperty_cast<QUmlReadLinkObjectEndAction *>(this)->setNamespace(qmodelingelementproperty_cast<QUmlNamespace *>(namespace_));
+    emit namespaceChanged(this->namespace_());
 }
 
 void QUmlReadLinkObjectEndActionObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingelementproperty_cast<QUmlReadLinkObjectEndAction *>(this)->setQualifiedName(qualifiedName);
+    emit qualifiedNameChanged(this->qualifiedName());
 }
 
 void QUmlReadLinkObjectEndActionObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingelementproperty_cast<QUmlReadLinkObjectEndAction *>(this)->setVisibility(visibility);
+    emit visibilityChanged(this->visibility());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [RedefinableElement]
@@ -436,6 +448,7 @@ void QUmlReadLinkObjectEndActionObject::setVisibility(QtUml::VisibilityKind visi
 void QUmlReadLinkObjectEndActionObject::setLeaf(bool isLeaf)
 {
     qmodelingelementproperty_cast<QUmlReadLinkObjectEndAction *>(this)->setLeaf(isLeaf);
+    emit isLeafChanged(this->isLeaf());
 }
 
 void QUmlReadLinkObjectEndActionObject::unsetLeaf()
@@ -448,21 +461,25 @@ void QUmlReadLinkObjectEndActionObject::unsetLeaf()
 void QUmlReadLinkObjectEndActionObject::addRedefinedElement(QObject *redefinedElement)
 {
     qmodelingelementproperty_cast<QUmlReadLinkObjectEndAction *>(this)->addRedefinedElement(qmodelingelementproperty_cast<QUmlRedefinableElement *>(redefinedElement));
+    emit redefinedElementsChanged(this->redefinedElements());
 }
 
 void QUmlReadLinkObjectEndActionObject::removeRedefinedElement(QObject *redefinedElement)
 {
     qmodelingelementproperty_cast<QUmlReadLinkObjectEndAction *>(this)->removeRedefinedElement(qmodelingelementproperty_cast<QUmlRedefinableElement *>(redefinedElement));
+    emit redefinedElementsChanged(this->redefinedElements());
 }
 
 void QUmlReadLinkObjectEndActionObject::addRedefinitionContext(QObject *redefinitionContext)
 {
     qmodelingelementproperty_cast<QUmlReadLinkObjectEndAction *>(this)->addRedefinitionContext(qmodelingelementproperty_cast<QUmlClassifier *>(redefinitionContext));
+    emit redefinitionContextsChanged(this->redefinitionContexts());
 }
 
 void QUmlReadLinkObjectEndActionObject::removeRedefinitionContext(QObject *redefinitionContext)
 {
     qmodelingelementproperty_cast<QUmlReadLinkObjectEndAction *>(this)->removeRedefinitionContext(qmodelingelementproperty_cast<QUmlClassifier *>(redefinitionContext));
+    emit redefinitionContextsChanged(this->redefinitionContexts());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ActivityNode]
@@ -470,71 +487,85 @@ void QUmlReadLinkObjectEndActionObject::removeRedefinitionContext(QObject *redef
 void QUmlReadLinkObjectEndActionObject::setActivity(QObject *activity)
 {
     qmodelingelementproperty_cast<QUmlReadLinkObjectEndAction *>(this)->setActivity(qmodelingelementproperty_cast<QUmlActivity *>(activity));
+    emit activityChanged(this->activity());
 }
 
 void QUmlReadLinkObjectEndActionObject::addInGroup(QObject *inGroup)
 {
     qmodelingelementproperty_cast<QUmlReadLinkObjectEndAction *>(this)->addInGroup(qmodelingelementproperty_cast<QUmlActivityGroup *>(inGroup));
+    emit inGroupsChanged(this->inGroups());
 }
 
 void QUmlReadLinkObjectEndActionObject::removeInGroup(QObject *inGroup)
 {
     qmodelingelementproperty_cast<QUmlReadLinkObjectEndAction *>(this)->removeInGroup(qmodelingelementproperty_cast<QUmlActivityGroup *>(inGroup));
+    emit inGroupsChanged(this->inGroups());
 }
 
 void QUmlReadLinkObjectEndActionObject::addInInterruptibleRegion(QObject *inInterruptibleRegion)
 {
     qmodelingelementproperty_cast<QUmlReadLinkObjectEndAction *>(this)->addInInterruptibleRegion(qmodelingelementproperty_cast<QUmlInterruptibleActivityRegion *>(inInterruptibleRegion));
+    emit inInterruptibleRegionsChanged(this->inInterruptibleRegions());
 }
 
 void QUmlReadLinkObjectEndActionObject::removeInInterruptibleRegion(QObject *inInterruptibleRegion)
 {
     qmodelingelementproperty_cast<QUmlReadLinkObjectEndAction *>(this)->removeInInterruptibleRegion(qmodelingelementproperty_cast<QUmlInterruptibleActivityRegion *>(inInterruptibleRegion));
+    emit inInterruptibleRegionsChanged(this->inInterruptibleRegions());
 }
 
 void QUmlReadLinkObjectEndActionObject::addInPartition(QObject *inPartition)
 {
     qmodelingelementproperty_cast<QUmlReadLinkObjectEndAction *>(this)->addInPartition(qmodelingelementproperty_cast<QUmlActivityPartition *>(inPartition));
+    emit inPartitionsChanged(this->inPartitions());
 }
 
 void QUmlReadLinkObjectEndActionObject::removeInPartition(QObject *inPartition)
 {
     qmodelingelementproperty_cast<QUmlReadLinkObjectEndAction *>(this)->removeInPartition(qmodelingelementproperty_cast<QUmlActivityPartition *>(inPartition));
+    emit inPartitionsChanged(this->inPartitions());
 }
 
 void QUmlReadLinkObjectEndActionObject::setInStructuredNode(QObject *inStructuredNode)
 {
     qmodelingelementproperty_cast<QUmlReadLinkObjectEndAction *>(this)->setInStructuredNode(qmodelingelementproperty_cast<QUmlStructuredActivityNode *>(inStructuredNode));
+    emit inStructuredNodeChanged(this->inStructuredNode());
 }
 
 void QUmlReadLinkObjectEndActionObject::addIncoming(QObject *incoming)
 {
     qmodelingelementproperty_cast<QUmlReadLinkObjectEndAction *>(this)->addIncoming(qmodelingelementproperty_cast<QUmlActivityEdge *>(incoming));
+    emit incomingsChanged(this->incomings());
 }
 
 void QUmlReadLinkObjectEndActionObject::removeIncoming(QObject *incoming)
 {
     qmodelingelementproperty_cast<QUmlReadLinkObjectEndAction *>(this)->removeIncoming(qmodelingelementproperty_cast<QUmlActivityEdge *>(incoming));
+    emit incomingsChanged(this->incomings());
 }
 
 void QUmlReadLinkObjectEndActionObject::addOutgoing(QObject *outgoing)
 {
     qmodelingelementproperty_cast<QUmlReadLinkObjectEndAction *>(this)->addOutgoing(qmodelingelementproperty_cast<QUmlActivityEdge *>(outgoing));
+    emit outgoingsChanged(this->outgoings());
 }
 
 void QUmlReadLinkObjectEndActionObject::removeOutgoing(QObject *outgoing)
 {
     qmodelingelementproperty_cast<QUmlReadLinkObjectEndAction *>(this)->removeOutgoing(qmodelingelementproperty_cast<QUmlActivityEdge *>(outgoing));
+    emit outgoingsChanged(this->outgoings());
 }
 
 void QUmlReadLinkObjectEndActionObject::addRedefinedNode(QObject *redefinedNode)
 {
     qmodelingelementproperty_cast<QUmlReadLinkObjectEndAction *>(this)->addRedefinedNode(qmodelingelementproperty_cast<QUmlActivityNode *>(redefinedNode));
+    emit redefinedNodesChanged(this->redefinedNodes());
 }
 
 void QUmlReadLinkObjectEndActionObject::removeRedefinedNode(QObject *redefinedNode)
 {
     qmodelingelementproperty_cast<QUmlReadLinkObjectEndAction *>(this)->removeRedefinedNode(qmodelingelementproperty_cast<QUmlActivityNode *>(redefinedNode));
+    emit redefinedNodesChanged(this->redefinedNodes());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ExecutableNode]
@@ -542,11 +573,13 @@ void QUmlReadLinkObjectEndActionObject::removeRedefinedNode(QObject *redefinedNo
 void QUmlReadLinkObjectEndActionObject::addHandler(QObject *handler)
 {
     qmodelingelementproperty_cast<QUmlReadLinkObjectEndAction *>(this)->addHandler(qmodelingelementproperty_cast<QUmlExceptionHandler *>(handler));
+    emit handlersChanged(this->handlers());
 }
 
 void QUmlReadLinkObjectEndActionObject::removeHandler(QObject *handler)
 {
     qmodelingelementproperty_cast<QUmlReadLinkObjectEndAction *>(this)->removeHandler(qmodelingelementproperty_cast<QUmlExceptionHandler *>(handler));
+    emit handlersChanged(this->handlers());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Action]
@@ -554,21 +587,25 @@ void QUmlReadLinkObjectEndActionObject::removeHandler(QObject *handler)
 void QUmlReadLinkObjectEndActionObject::setContext(QObject *context)
 {
     qmodelingelementproperty_cast<QUmlReadLinkObjectEndAction *>(this)->setContext(qmodelingelementproperty_cast<QUmlClassifier *>(context));
+    emit contextChanged(this->context());
 }
 
 void QUmlReadLinkObjectEndActionObject::addInput(QObject *input)
 {
     qmodelingelementproperty_cast<QUmlReadLinkObjectEndAction *>(this)->addInput(qmodelingelementproperty_cast<QUmlInputPin *>(input));
+    emit inputsChanged(this->inputs());
 }
 
 void QUmlReadLinkObjectEndActionObject::removeInput(QObject *input)
 {
     qmodelingelementproperty_cast<QUmlReadLinkObjectEndAction *>(this)->removeInput(qmodelingelementproperty_cast<QUmlInputPin *>(input));
+    emit inputsChanged(this->inputs());
 }
 
 void QUmlReadLinkObjectEndActionObject::setLocallyReentrant(bool isLocallyReentrant)
 {
     qmodelingelementproperty_cast<QUmlReadLinkObjectEndAction *>(this)->setLocallyReentrant(isLocallyReentrant);
+    emit isLocallyReentrantChanged(this->isLocallyReentrant());
 }
 
 void QUmlReadLinkObjectEndActionObject::unsetLocallyReentrant()
@@ -581,31 +618,37 @@ void QUmlReadLinkObjectEndActionObject::unsetLocallyReentrant()
 void QUmlReadLinkObjectEndActionObject::addLocalPostcondition(QObject *localPostcondition)
 {
     qmodelingelementproperty_cast<QUmlReadLinkObjectEndAction *>(this)->addLocalPostcondition(qmodelingelementproperty_cast<QUmlConstraint *>(localPostcondition));
+    emit localPostconditionsChanged(this->localPostconditions());
 }
 
 void QUmlReadLinkObjectEndActionObject::removeLocalPostcondition(QObject *localPostcondition)
 {
     qmodelingelementproperty_cast<QUmlReadLinkObjectEndAction *>(this)->removeLocalPostcondition(qmodelingelementproperty_cast<QUmlConstraint *>(localPostcondition));
+    emit localPostconditionsChanged(this->localPostconditions());
 }
 
 void QUmlReadLinkObjectEndActionObject::addLocalPrecondition(QObject *localPrecondition)
 {
     qmodelingelementproperty_cast<QUmlReadLinkObjectEndAction *>(this)->addLocalPrecondition(qmodelingelementproperty_cast<QUmlConstraint *>(localPrecondition));
+    emit localPreconditionsChanged(this->localPreconditions());
 }
 
 void QUmlReadLinkObjectEndActionObject::removeLocalPrecondition(QObject *localPrecondition)
 {
     qmodelingelementproperty_cast<QUmlReadLinkObjectEndAction *>(this)->removeLocalPrecondition(qmodelingelementproperty_cast<QUmlConstraint *>(localPrecondition));
+    emit localPreconditionsChanged(this->localPreconditions());
 }
 
 void QUmlReadLinkObjectEndActionObject::addOutput(QObject *output)
 {
     qmodelingelementproperty_cast<QUmlReadLinkObjectEndAction *>(this)->addOutput(qmodelingelementproperty_cast<QUmlOutputPin *>(output));
+    emit outputsChanged(this->outputs());
 }
 
 void QUmlReadLinkObjectEndActionObject::removeOutput(QObject *output)
 {
     qmodelingelementproperty_cast<QUmlReadLinkObjectEndAction *>(this)->removeOutput(qmodelingelementproperty_cast<QUmlOutputPin *>(output));
+    emit outputsChanged(this->outputs());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ReadLinkObjectEndAction]
@@ -613,16 +656,19 @@ void QUmlReadLinkObjectEndActionObject::removeOutput(QObject *output)
 void QUmlReadLinkObjectEndActionObject::setEnd(QObject *end)
 {
     qmodelingelementproperty_cast<QUmlReadLinkObjectEndAction *>(this)->setEnd(qmodelingelementproperty_cast<QUmlProperty *>(end));
+    emit endChanged(this->end());
 }
 
 void QUmlReadLinkObjectEndActionObject::setObject(QObject *object)
 {
     qmodelingelementproperty_cast<QUmlReadLinkObjectEndAction *>(this)->setObject(qmodelingelementproperty_cast<QUmlInputPin *>(object));
+    emit objectChanged(this->object());
 }
 
 void QUmlReadLinkObjectEndActionObject::setResult(QObject *result)
 {
     qmodelingelementproperty_cast<QUmlReadLinkObjectEndAction *>(this)->setResult(qmodelingelementproperty_cast<QUmlOutputPin *>(result));
+    emit resultChanged(this->result());
 }
 
 

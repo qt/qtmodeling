@@ -222,26 +222,31 @@ bool QUmlExtensionPointObject::isRedefinitionContextValid(QObject *redefined) co
 void QUmlExtensionPointObject::addOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlExtensionPoint *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlExtensionPointObject::removeOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlExtensionPoint *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlExtensionPointObject::addOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlExtensionPoint *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlExtensionPointObject::removeOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlExtensionPoint *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlExtensionPointObject::setOwner(QObject *owner)
 {
     qmodelingelementproperty_cast<QUmlExtensionPoint *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
+    emit ownerChanged(this->owner());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [NamedElement]
@@ -249,36 +254,43 @@ void QUmlExtensionPointObject::setOwner(QObject *owner)
 void QUmlExtensionPointObject::addClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlExtensionPoint *>(this)->addClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlExtensionPointObject::removeClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlExtensionPoint *>(this)->removeClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlExtensionPointObject::setName(QString name)
 {
     qmodelingelementproperty_cast<QUmlExtensionPoint *>(this)->setName(name);
+    emit nameChanged(this->name());
 }
 
 void QUmlExtensionPointObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingelementproperty_cast<QUmlExtensionPoint *>(this)->setNameExpression(qmodelingelementproperty_cast<QUmlStringExpression *>(nameExpression));
+    emit nameExpressionChanged(this->nameExpression());
 }
 
 void QUmlExtensionPointObject::setNamespace(QObject *namespace_)
 {
     qmodelingelementproperty_cast<QUmlExtensionPoint *>(this)->setNamespace(qmodelingelementproperty_cast<QUmlNamespace *>(namespace_));
+    emit namespaceChanged(this->namespace_());
 }
 
 void QUmlExtensionPointObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingelementproperty_cast<QUmlExtensionPoint *>(this)->setQualifiedName(qualifiedName);
+    emit qualifiedNameChanged(this->qualifiedName());
 }
 
 void QUmlExtensionPointObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingelementproperty_cast<QUmlExtensionPoint *>(this)->setVisibility(visibility);
+    emit visibilityChanged(this->visibility());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [RedefinableElement]
@@ -286,6 +298,7 @@ void QUmlExtensionPointObject::setVisibility(QtUml::VisibilityKind visibility)
 void QUmlExtensionPointObject::setLeaf(bool isLeaf)
 {
     qmodelingelementproperty_cast<QUmlExtensionPoint *>(this)->setLeaf(isLeaf);
+    emit isLeafChanged(this->isLeaf());
 }
 
 void QUmlExtensionPointObject::unsetLeaf()
@@ -298,21 +311,25 @@ void QUmlExtensionPointObject::unsetLeaf()
 void QUmlExtensionPointObject::addRedefinedElement(QObject *redefinedElement)
 {
     qmodelingelementproperty_cast<QUmlExtensionPoint *>(this)->addRedefinedElement(qmodelingelementproperty_cast<QUmlRedefinableElement *>(redefinedElement));
+    emit redefinedElementsChanged(this->redefinedElements());
 }
 
 void QUmlExtensionPointObject::removeRedefinedElement(QObject *redefinedElement)
 {
     qmodelingelementproperty_cast<QUmlExtensionPoint *>(this)->removeRedefinedElement(qmodelingelementproperty_cast<QUmlRedefinableElement *>(redefinedElement));
+    emit redefinedElementsChanged(this->redefinedElements());
 }
 
 void QUmlExtensionPointObject::addRedefinitionContext(QObject *redefinitionContext)
 {
     qmodelingelementproperty_cast<QUmlExtensionPoint *>(this)->addRedefinitionContext(qmodelingelementproperty_cast<QUmlClassifier *>(redefinitionContext));
+    emit redefinitionContextsChanged(this->redefinitionContexts());
 }
 
 void QUmlExtensionPointObject::removeRedefinitionContext(QObject *redefinitionContext)
 {
     qmodelingelementproperty_cast<QUmlExtensionPoint *>(this)->removeRedefinitionContext(qmodelingelementproperty_cast<QUmlClassifier *>(redefinitionContext));
+    emit redefinitionContextsChanged(this->redefinitionContexts());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ExtensionPoint]
@@ -320,6 +337,7 @@ void QUmlExtensionPointObject::removeRedefinitionContext(QObject *redefinitionCo
 void QUmlExtensionPointObject::setUseCase(QObject *useCase)
 {
     qmodelingelementproperty_cast<QUmlExtensionPoint *>(this)->setUseCase(qmodelingelementproperty_cast<QUmlUseCase *>(useCase));
+    emit useCaseChanged(this->useCase());
 }
 
 

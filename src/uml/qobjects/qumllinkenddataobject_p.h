@@ -60,14 +60,14 @@ class Q_UML_EXPORT QUmlLinkEndDataObject : public QModelingObject
     Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [Element]
-    Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
-    Q_PROPERTY(QSet<QObject *> ownedElements READ ownedElements)
-    Q_PROPERTY(QObject * owner READ owner)
+    Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments NOTIFY ownedCommentsChanged)
+    Q_PROPERTY(QSet<QObject *> ownedElements READ ownedElements NOTIFY ownedElementsChanged)
+    Q_PROPERTY(QObject * owner READ owner NOTIFY ownerChanged)
 
     // Properties [LinkEndData]
-    Q_PROPERTY(QObject * end READ end WRITE setEnd)
-    Q_PROPERTY(QSet<QObject *> qualifiers READ qualifiers)
-    Q_PROPERTY(QObject * value READ value WRITE setValue)
+    Q_PROPERTY(QObject * end READ end WRITE setEnd NOTIFY endChanged)
+    Q_PROPERTY(QSet<QObject *> qualifiers READ qualifiers NOTIFY qualifiersChanged)
+    Q_PROPERTY(QObject * value READ value WRITE setValue NOTIFY valueChanged)
 
 public:
     Q_INVOKABLE explicit QUmlLinkEndDataObject(QUmlLinkEndData *modelingElement);
@@ -100,6 +100,18 @@ public Q_SLOTS:
     void addQualifier(QObject *qualifier);
     void removeQualifier(QObject *qualifier);
     void setValue(QObject *value = 0);
+
+Q_SIGNALS:
+
+    // Signals for owned attributes [Element]
+    void ownedCommentsChanged(QSet<QObject *> ownedComments);
+    void ownedElementsChanged(QSet<QObject *> ownedElements);
+    void ownerChanged(QObject *owner);
+
+    // Signals for owned attributes [LinkEndData]
+    void endChanged(QObject *end);
+    void qualifiersChanged(QSet<QObject *> qualifiers);
+    void valueChanged(QObject *value);
 
 protected:
     virtual void setGroupProperties();

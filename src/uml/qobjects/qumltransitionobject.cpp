@@ -377,26 +377,31 @@ bool QUmlTransitionObject::isConsistentWith(QObject *redefinee) const
 void QUmlTransitionObject::addOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlTransition *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlTransitionObject::removeOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlTransition *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlTransitionObject::addOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlTransition *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlTransitionObject::removeOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlTransition *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlTransitionObject::setOwner(QObject *owner)
 {
     qmodelingelementproperty_cast<QUmlTransition *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
+    emit ownerChanged(this->owner());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [NamedElement]
@@ -404,36 +409,43 @@ void QUmlTransitionObject::setOwner(QObject *owner)
 void QUmlTransitionObject::addClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlTransition *>(this)->addClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlTransitionObject::removeClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlTransition *>(this)->removeClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlTransitionObject::setName(QString name)
 {
     qmodelingelementproperty_cast<QUmlTransition *>(this)->setName(name);
+    emit nameChanged(this->name());
 }
 
 void QUmlTransitionObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingelementproperty_cast<QUmlTransition *>(this)->setNameExpression(qmodelingelementproperty_cast<QUmlStringExpression *>(nameExpression));
+    emit nameExpressionChanged(this->nameExpression());
 }
 
 void QUmlTransitionObject::setNamespace(QObject *namespace_)
 {
     qmodelingelementproperty_cast<QUmlTransition *>(this)->setNamespace(qmodelingelementproperty_cast<QUmlNamespace *>(namespace_));
+    emit namespaceChanged(this->namespace_());
 }
 
 void QUmlTransitionObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingelementproperty_cast<QUmlTransition *>(this)->setQualifiedName(qualifiedName);
+    emit qualifiedNameChanged(this->qualifiedName());
 }
 
 void QUmlTransitionObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingelementproperty_cast<QUmlTransition *>(this)->setVisibility(visibility);
+    emit visibilityChanged(this->visibility());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [RedefinableElement]
@@ -441,6 +453,7 @@ void QUmlTransitionObject::setVisibility(QtUml::VisibilityKind visibility)
 void QUmlTransitionObject::setLeaf(bool isLeaf)
 {
     qmodelingelementproperty_cast<QUmlTransition *>(this)->setLeaf(isLeaf);
+    emit isLeafChanged(this->isLeaf());
 }
 
 void QUmlTransitionObject::unsetLeaf()
@@ -453,72 +466,86 @@ void QUmlTransitionObject::unsetLeaf()
 void QUmlTransitionObject::addRedefinedElement(QObject *redefinedElement)
 {
     qmodelingelementproperty_cast<QUmlTransition *>(this)->addRedefinedElement(qmodelingelementproperty_cast<QUmlRedefinableElement *>(redefinedElement));
+    emit redefinedElementsChanged(this->redefinedElements());
 }
 
 void QUmlTransitionObject::removeRedefinedElement(QObject *redefinedElement)
 {
     qmodelingelementproperty_cast<QUmlTransition *>(this)->removeRedefinedElement(qmodelingelementproperty_cast<QUmlRedefinableElement *>(redefinedElement));
+    emit redefinedElementsChanged(this->redefinedElements());
 }
 // SLOTS FOR OWNED ATTRIBUTES [Namespace]
 
 void QUmlTransitionObject::addElementImport(QObject *elementImport)
 {
     qmodelingelementproperty_cast<QUmlTransition *>(this)->addElementImport(qmodelingelementproperty_cast<QUmlElementImport *>(elementImport));
+    emit elementImportsChanged(this->elementImports());
 }
 
 void QUmlTransitionObject::removeElementImport(QObject *elementImport)
 {
     qmodelingelementproperty_cast<QUmlTransition *>(this)->removeElementImport(qmodelingelementproperty_cast<QUmlElementImport *>(elementImport));
+    emit elementImportsChanged(this->elementImports());
 }
 
 void QUmlTransitionObject::addImportedMember(QObject *importedMember)
 {
     qmodelingelementproperty_cast<QUmlTransition *>(this)->addImportedMember(qmodelingelementproperty_cast<QUmlPackageableElement *>(importedMember));
+    emit importedMembersChanged(this->importedMembers());
 }
 
 void QUmlTransitionObject::removeImportedMember(QObject *importedMember)
 {
     qmodelingelementproperty_cast<QUmlTransition *>(this)->removeImportedMember(qmodelingelementproperty_cast<QUmlPackageableElement *>(importedMember));
+    emit importedMembersChanged(this->importedMembers());
 }
 
 void QUmlTransitionObject::addMember(QObject *member)
 {
     qmodelingelementproperty_cast<QUmlTransition *>(this)->addMember(qmodelingelementproperty_cast<QUmlNamedElement *>(member));
+    emit membersChanged(this->members());
 }
 
 void QUmlTransitionObject::removeMember(QObject *member)
 {
     qmodelingelementproperty_cast<QUmlTransition *>(this)->removeMember(qmodelingelementproperty_cast<QUmlNamedElement *>(member));
+    emit membersChanged(this->members());
 }
 
 void QUmlTransitionObject::addOwnedMember(QObject *ownedMember)
 {
     qmodelingelementproperty_cast<QUmlTransition *>(this)->addOwnedMember(qmodelingelementproperty_cast<QUmlNamedElement *>(ownedMember));
+    emit ownedMembersChanged(this->ownedMembers());
 }
 
 void QUmlTransitionObject::removeOwnedMember(QObject *ownedMember)
 {
     qmodelingelementproperty_cast<QUmlTransition *>(this)->removeOwnedMember(qmodelingelementproperty_cast<QUmlNamedElement *>(ownedMember));
+    emit ownedMembersChanged(this->ownedMembers());
 }
 
 void QUmlTransitionObject::addOwnedRule(QObject *ownedRule)
 {
     qmodelingelementproperty_cast<QUmlTransition *>(this)->addOwnedRule(qmodelingelementproperty_cast<QUmlConstraint *>(ownedRule));
+    emit ownedRulesChanged(this->ownedRules());
 }
 
 void QUmlTransitionObject::removeOwnedRule(QObject *ownedRule)
 {
     qmodelingelementproperty_cast<QUmlTransition *>(this)->removeOwnedRule(qmodelingelementproperty_cast<QUmlConstraint *>(ownedRule));
+    emit ownedRulesChanged(this->ownedRules());
 }
 
 void QUmlTransitionObject::addPackageImport(QObject *packageImport)
 {
     qmodelingelementproperty_cast<QUmlTransition *>(this)->addPackageImport(qmodelingelementproperty_cast<QUmlPackageImport *>(packageImport));
+    emit packageImportsChanged(this->packageImports());
 }
 
 void QUmlTransitionObject::removePackageImport(QObject *packageImport)
 {
     qmodelingelementproperty_cast<QUmlTransition *>(this)->removePackageImport(qmodelingelementproperty_cast<QUmlPackageImport *>(packageImport));
+    emit packageImportsChanged(this->packageImports());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Transition]
@@ -526,21 +553,25 @@ void QUmlTransitionObject::removePackageImport(QObject *packageImport)
 void QUmlTransitionObject::setContainer(QObject *container)
 {
     qmodelingelementproperty_cast<QUmlTransition *>(this)->setContainer(qmodelingelementproperty_cast<QUmlRegion *>(container));
+    emit containerChanged(this->container());
 }
 
 void QUmlTransitionObject::setEffect(QObject *effect)
 {
     qmodelingelementproperty_cast<QUmlTransition *>(this)->setEffect(qmodelingelementproperty_cast<QUmlBehavior *>(effect));
+    emit effectChanged(this->effect());
 }
 
 void QUmlTransitionObject::setGuard(QObject *guard)
 {
     qmodelingelementproperty_cast<QUmlTransition *>(this)->setGuard(qmodelingelementproperty_cast<QUmlConstraint *>(guard));
+    emit guardChanged(this->guard());
 }
 
 void QUmlTransitionObject::setKind(QtUml::TransitionKind kind)
 {
     qmodelingelementproperty_cast<QUmlTransition *>(this)->setKind(kind);
+    emit kindChanged(this->kind());
 }
 
 void QUmlTransitionObject::unsetKind()
@@ -553,31 +584,37 @@ void QUmlTransitionObject::unsetKind()
 void QUmlTransitionObject::setRedefinedTransition(QObject *redefinedTransition)
 {
     qmodelingelementproperty_cast<QUmlTransition *>(this)->setRedefinedTransition(qmodelingelementproperty_cast<QUmlTransition *>(redefinedTransition));
+    emit redefinedTransitionChanged(this->redefinedTransition());
 }
 
 void QUmlTransitionObject::setRedefinitionContext(QObject *redefinitionContext)
 {
     qmodelingelementproperty_cast<QUmlTransition *>(this)->setRedefinitionContext(qmodelingelementproperty_cast<QUmlClassifier *>(redefinitionContext));
+    emit redefinitionContextChanged(this->redefinitionContext());
 }
 
 void QUmlTransitionObject::setSource(QObject *source)
 {
     qmodelingelementproperty_cast<QUmlTransition *>(this)->setSource(qmodelingelementproperty_cast<QUmlVertex *>(source));
+    emit sourceChanged(this->source());
 }
 
 void QUmlTransitionObject::setTarget(QObject *target)
 {
     qmodelingelementproperty_cast<QUmlTransition *>(this)->setTarget(qmodelingelementproperty_cast<QUmlVertex *>(target));
+    emit targetChanged(this->target());
 }
 
 void QUmlTransitionObject::addTrigger(QObject *trigger)
 {
     qmodelingelementproperty_cast<QUmlTransition *>(this)->addTrigger(qmodelingelementproperty_cast<QUmlTrigger *>(trigger));
+    emit triggersChanged(this->triggers());
 }
 
 void QUmlTransitionObject::removeTrigger(QObject *trigger)
 {
     qmodelingelementproperty_cast<QUmlTransition *>(this)->removeTrigger(qmodelingelementproperty_cast<QUmlTrigger *>(trigger));
+    emit triggersChanged(this->triggers());
 }
 
 

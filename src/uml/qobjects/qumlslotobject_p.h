@@ -60,14 +60,14 @@ class Q_UML_EXPORT QUmlSlotObject : public QModelingObject
     Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [Element]
-    Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
-    Q_PROPERTY(QSet<QObject *> ownedElements READ ownedElements)
-    Q_PROPERTY(QObject * owner READ owner)
+    Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments NOTIFY ownedCommentsChanged)
+    Q_PROPERTY(QSet<QObject *> ownedElements READ ownedElements NOTIFY ownedElementsChanged)
+    Q_PROPERTY(QObject * owner READ owner NOTIFY ownerChanged)
 
     // Properties [Slot]
-    Q_PROPERTY(QObject * definingFeature READ definingFeature WRITE setDefiningFeature)
-    Q_PROPERTY(QObject * owningInstance READ owningInstance WRITE setOwningInstance)
-    Q_PROPERTY(QList<QObject *> values READ values)
+    Q_PROPERTY(QObject * definingFeature READ definingFeature WRITE setDefiningFeature NOTIFY definingFeatureChanged)
+    Q_PROPERTY(QObject * owningInstance READ owningInstance WRITE setOwningInstance NOTIFY owningInstanceChanged)
+    Q_PROPERTY(QList<QObject *> values READ values NOTIFY valuesChanged)
 
 public:
     Q_INVOKABLE explicit QUmlSlotObject(QUmlSlot *modelingElement);
@@ -100,6 +100,18 @@ public Q_SLOTS:
     void setOwningInstance(QObject *owningInstance = 0);
     void addValue(QObject *value);
     void removeValue(QObject *value);
+
+Q_SIGNALS:
+
+    // Signals for owned attributes [Element]
+    void ownedCommentsChanged(QSet<QObject *> ownedComments);
+    void ownedElementsChanged(QSet<QObject *> ownedElements);
+    void ownerChanged(QObject *owner);
+
+    // Signals for owned attributes [Slot]
+    void definingFeatureChanged(QObject *definingFeature);
+    void owningInstanceChanged(QObject *owningInstance);
+    void valuesChanged(QList<QObject *> values);
 
 protected:
     virtual void setGroupProperties();

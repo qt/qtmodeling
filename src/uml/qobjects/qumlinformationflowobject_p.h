@@ -62,39 +62,39 @@ class Q_UML_EXPORT QUmlInformationFlowObject : public QModelingObject
     Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [Element]
-    Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
-    Q_PROPERTY(QSet<QObject *> ownedElements READ ownedElements)
-    Q_PROPERTY(QObject * owner READ owner)
+    Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments NOTIFY ownedCommentsChanged)
+    Q_PROPERTY(QSet<QObject *> ownedElements READ ownedElements NOTIFY ownedElementsChanged)
+    Q_PROPERTY(QObject * owner READ owner NOTIFY ownerChanged)
 
     // Properties [Relationship]
-    Q_PROPERTY(QSet<QObject *> relatedElements READ relatedElements)
+    Q_PROPERTY(QSet<QObject *> relatedElements READ relatedElements NOTIFY relatedElementsChanged)
 
     // Properties [DirectedRelationship]
-    Q_PROPERTY(QSet<QObject *> sources READ sources)
-    Q_PROPERTY(QSet<QObject *> targets READ targets)
+    Q_PROPERTY(QSet<QObject *> sources READ sources NOTIFY sourcesChanged)
+    Q_PROPERTY(QSet<QObject *> targets READ targets NOTIFY targetsChanged)
 
     // Properties [ParameterableElement]
-    Q_PROPERTY(QObject * owningTemplateParameter READ owningTemplateParameter WRITE setOwningTemplateParameter)
-    Q_PROPERTY(QObject * templateParameter READ templateParameter WRITE setTemplateParameter)
+    Q_PROPERTY(QObject * owningTemplateParameter READ owningTemplateParameter WRITE setOwningTemplateParameter NOTIFY owningTemplateParameterChanged)
+    Q_PROPERTY(QObject * templateParameter READ templateParameter WRITE setTemplateParameter NOTIFY templateParameterChanged)
 
     // Properties [NamedElement]
-    Q_PROPERTY(QSet<QObject *> clientDependencies READ clientDependencies)
-    Q_PROPERTY(QString name READ name WRITE setName)
-    Q_PROPERTY(QObject * nameExpression READ nameExpression WRITE setNameExpression)
-    Q_PROPERTY(QObject * namespace_ READ namespace_)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
+    Q_PROPERTY(QSet<QObject *> clientDependencies READ clientDependencies NOTIFY clientDependenciesChanged)
+    Q_PROPERTY(QString name READ name WRITE setName NOTIFY nameChanged)
+    Q_PROPERTY(QObject * nameExpression READ nameExpression WRITE setNameExpression NOTIFY nameExpressionChanged)
+    Q_PROPERTY(QObject * namespace_ READ namespace_ NOTIFY namespaceChanged)
+    Q_PROPERTY(QString qualifiedName READ qualifiedName NOTIFY qualifiedNameChanged STORED false)
 
     // Properties [PackageableElement]
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility RESET unsetVisibility)
+    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility NOTIFY visibilityChanged RESET unsetVisibility)
 
     // Properties [InformationFlow]
-    Q_PROPERTY(QSet<QObject *> conveyed READ conveyed)
-    Q_PROPERTY(QSet<QObject *> informationSources READ informationSources)
-    Q_PROPERTY(QSet<QObject *> informationTargets READ informationTargets)
-    Q_PROPERTY(QSet<QObject *> realizations READ realizations)
-    Q_PROPERTY(QSet<QObject *> realizingActivityEdges READ realizingActivityEdges)
-    Q_PROPERTY(QSet<QObject *> realizingConnectors READ realizingConnectors)
-    Q_PROPERTY(QSet<QObject *> realizingMessages READ realizingMessages)
+    Q_PROPERTY(QSet<QObject *> conveyed READ conveyed NOTIFY conveyedChanged)
+    Q_PROPERTY(QSet<QObject *> informationSources READ informationSources NOTIFY informationSourcesChanged)
+    Q_PROPERTY(QSet<QObject *> informationTargets READ informationTargets NOTIFY informationTargetsChanged)
+    Q_PROPERTY(QSet<QObject *> realizations READ realizations NOTIFY realizationsChanged)
+    Q_PROPERTY(QSet<QObject *> realizingActivityEdges READ realizingActivityEdges NOTIFY realizingActivityEdgesChanged)
+    Q_PROPERTY(QSet<QObject *> realizingConnectors READ realizingConnectors NOTIFY realizingConnectorsChanged)
+    Q_PROPERTY(QSet<QObject *> realizingMessages READ realizingMessages NOTIFY realizingMessagesChanged)
 
 public:
     Q_INVOKABLE explicit QUmlInformationFlowObject(QUmlInformationFlow *modelingElement);
@@ -198,6 +198,43 @@ public Q_SLOTS:
     void removeRealizingConnector(QObject *realizingConnector);
     void addRealizingMessage(QObject *realizingMessage);
     void removeRealizingMessage(QObject *realizingMessage);
+
+Q_SIGNALS:
+
+    // Signals for owned attributes [Element]
+    void ownedCommentsChanged(QSet<QObject *> ownedComments);
+    void ownedElementsChanged(QSet<QObject *> ownedElements);
+    void ownerChanged(QObject *owner);
+
+    // Signals for owned attributes [Relationship]
+    void relatedElementsChanged(QSet<QObject *> relatedElements);
+
+    // Signals for owned attributes [DirectedRelationship]
+    void sourcesChanged(QSet<QObject *> sources);
+    void targetsChanged(QSet<QObject *> targets);
+
+    // Signals for owned attributes [ParameterableElement]
+    void owningTemplateParameterChanged(QObject *owningTemplateParameter);
+    void templateParameterChanged(QObject *templateParameter);
+
+    // Signals for owned attributes [NamedElement]
+    void clientDependenciesChanged(QSet<QObject *> clientDependencies);
+    void nameChanged(QString name);
+    void nameExpressionChanged(QObject *nameExpression);
+    void namespaceChanged(QObject *namespace_);
+    void qualifiedNameChanged(QString qualifiedName);
+
+    // Signals for owned attributes [PackageableElement]
+    void visibilityChanged(QtUml::VisibilityKind visibility);
+
+    // Signals for owned attributes [InformationFlow]
+    void conveyedChanged(QSet<QObject *> conveyed);
+    void informationSourcesChanged(QSet<QObject *> informationSources);
+    void informationTargetsChanged(QSet<QObject *> informationTargets);
+    void realizationsChanged(QSet<QObject *> realizations);
+    void realizingActivityEdgesChanged(QSet<QObject *> realizingActivityEdges);
+    void realizingConnectorsChanged(QSet<QObject *> realizingConnectors);
+    void realizingMessagesChanged(QSet<QObject *> realizingMessages);
 
 protected:
     virtual void setGroupProperties();

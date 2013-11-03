@@ -360,26 +360,31 @@ bool QUmlRegionObject::isRedefinitionContextValid(QObject *redefined) const
 void QUmlRegionObject::addOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlRegion *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlRegionObject::removeOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlRegion *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlRegionObject::addOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlRegion *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlRegionObject::removeOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlRegion *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlRegionObject::setOwner(QObject *owner)
 {
     qmodelingelementproperty_cast<QUmlRegion *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
+    emit ownerChanged(this->owner());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [NamedElement]
@@ -387,36 +392,43 @@ void QUmlRegionObject::setOwner(QObject *owner)
 void QUmlRegionObject::addClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlRegion *>(this)->addClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlRegionObject::removeClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlRegion *>(this)->removeClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlRegionObject::setName(QString name)
 {
     qmodelingelementproperty_cast<QUmlRegion *>(this)->setName(name);
+    emit nameChanged(this->name());
 }
 
 void QUmlRegionObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingelementproperty_cast<QUmlRegion *>(this)->setNameExpression(qmodelingelementproperty_cast<QUmlStringExpression *>(nameExpression));
+    emit nameExpressionChanged(this->nameExpression());
 }
 
 void QUmlRegionObject::setNamespace(QObject *namespace_)
 {
     qmodelingelementproperty_cast<QUmlRegion *>(this)->setNamespace(qmodelingelementproperty_cast<QUmlNamespace *>(namespace_));
+    emit namespaceChanged(this->namespace_());
 }
 
 void QUmlRegionObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingelementproperty_cast<QUmlRegion *>(this)->setQualifiedName(qualifiedName);
+    emit qualifiedNameChanged(this->qualifiedName());
 }
 
 void QUmlRegionObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingelementproperty_cast<QUmlRegion *>(this)->setVisibility(visibility);
+    emit visibilityChanged(this->visibility());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [RedefinableElement]
@@ -424,6 +436,7 @@ void QUmlRegionObject::setVisibility(QtUml::VisibilityKind visibility)
 void QUmlRegionObject::setLeaf(bool isLeaf)
 {
     qmodelingelementproperty_cast<QUmlRegion *>(this)->setLeaf(isLeaf);
+    emit isLeafChanged(this->isLeaf());
 }
 
 void QUmlRegionObject::unsetLeaf()
@@ -436,72 +449,86 @@ void QUmlRegionObject::unsetLeaf()
 void QUmlRegionObject::addRedefinedElement(QObject *redefinedElement)
 {
     qmodelingelementproperty_cast<QUmlRegion *>(this)->addRedefinedElement(qmodelingelementproperty_cast<QUmlRedefinableElement *>(redefinedElement));
+    emit redefinedElementsChanged(this->redefinedElements());
 }
 
 void QUmlRegionObject::removeRedefinedElement(QObject *redefinedElement)
 {
     qmodelingelementproperty_cast<QUmlRegion *>(this)->removeRedefinedElement(qmodelingelementproperty_cast<QUmlRedefinableElement *>(redefinedElement));
+    emit redefinedElementsChanged(this->redefinedElements());
 }
 // SLOTS FOR OWNED ATTRIBUTES [Namespace]
 
 void QUmlRegionObject::addElementImport(QObject *elementImport)
 {
     qmodelingelementproperty_cast<QUmlRegion *>(this)->addElementImport(qmodelingelementproperty_cast<QUmlElementImport *>(elementImport));
+    emit elementImportsChanged(this->elementImports());
 }
 
 void QUmlRegionObject::removeElementImport(QObject *elementImport)
 {
     qmodelingelementproperty_cast<QUmlRegion *>(this)->removeElementImport(qmodelingelementproperty_cast<QUmlElementImport *>(elementImport));
+    emit elementImportsChanged(this->elementImports());
 }
 
 void QUmlRegionObject::addImportedMember(QObject *importedMember)
 {
     qmodelingelementproperty_cast<QUmlRegion *>(this)->addImportedMember(qmodelingelementproperty_cast<QUmlPackageableElement *>(importedMember));
+    emit importedMembersChanged(this->importedMembers());
 }
 
 void QUmlRegionObject::removeImportedMember(QObject *importedMember)
 {
     qmodelingelementproperty_cast<QUmlRegion *>(this)->removeImportedMember(qmodelingelementproperty_cast<QUmlPackageableElement *>(importedMember));
+    emit importedMembersChanged(this->importedMembers());
 }
 
 void QUmlRegionObject::addMember(QObject *member)
 {
     qmodelingelementproperty_cast<QUmlRegion *>(this)->addMember(qmodelingelementproperty_cast<QUmlNamedElement *>(member));
+    emit membersChanged(this->members());
 }
 
 void QUmlRegionObject::removeMember(QObject *member)
 {
     qmodelingelementproperty_cast<QUmlRegion *>(this)->removeMember(qmodelingelementproperty_cast<QUmlNamedElement *>(member));
+    emit membersChanged(this->members());
 }
 
 void QUmlRegionObject::addOwnedMember(QObject *ownedMember)
 {
     qmodelingelementproperty_cast<QUmlRegion *>(this)->addOwnedMember(qmodelingelementproperty_cast<QUmlNamedElement *>(ownedMember));
+    emit ownedMembersChanged(this->ownedMembers());
 }
 
 void QUmlRegionObject::removeOwnedMember(QObject *ownedMember)
 {
     qmodelingelementproperty_cast<QUmlRegion *>(this)->removeOwnedMember(qmodelingelementproperty_cast<QUmlNamedElement *>(ownedMember));
+    emit ownedMembersChanged(this->ownedMembers());
 }
 
 void QUmlRegionObject::addOwnedRule(QObject *ownedRule)
 {
     qmodelingelementproperty_cast<QUmlRegion *>(this)->addOwnedRule(qmodelingelementproperty_cast<QUmlConstraint *>(ownedRule));
+    emit ownedRulesChanged(this->ownedRules());
 }
 
 void QUmlRegionObject::removeOwnedRule(QObject *ownedRule)
 {
     qmodelingelementproperty_cast<QUmlRegion *>(this)->removeOwnedRule(qmodelingelementproperty_cast<QUmlConstraint *>(ownedRule));
+    emit ownedRulesChanged(this->ownedRules());
 }
 
 void QUmlRegionObject::addPackageImport(QObject *packageImport)
 {
     qmodelingelementproperty_cast<QUmlRegion *>(this)->addPackageImport(qmodelingelementproperty_cast<QUmlPackageImport *>(packageImport));
+    emit packageImportsChanged(this->packageImports());
 }
 
 void QUmlRegionObject::removePackageImport(QObject *packageImport)
 {
     qmodelingelementproperty_cast<QUmlRegion *>(this)->removePackageImport(qmodelingelementproperty_cast<QUmlPackageImport *>(packageImport));
+    emit packageImportsChanged(this->packageImports());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Region]
@@ -509,41 +536,49 @@ void QUmlRegionObject::removePackageImport(QObject *packageImport)
 void QUmlRegionObject::setExtendedRegion(QObject *extendedRegion)
 {
     qmodelingelementproperty_cast<QUmlRegion *>(this)->setExtendedRegion(qmodelingelementproperty_cast<QUmlRegion *>(extendedRegion));
+    emit extendedRegionChanged(this->extendedRegion());
 }
 
 void QUmlRegionObject::setRedefinitionContext(QObject *redefinitionContext)
 {
     qmodelingelementproperty_cast<QUmlRegion *>(this)->setRedefinitionContext(qmodelingelementproperty_cast<QUmlClassifier *>(redefinitionContext));
+    emit redefinitionContextChanged(this->redefinitionContext());
 }
 
 void QUmlRegionObject::setState(QObject *state)
 {
     qmodelingelementproperty_cast<QUmlRegion *>(this)->setState(qmodelingelementproperty_cast<QUmlState *>(state));
+    emit stateChanged(this->state());
 }
 
 void QUmlRegionObject::setStateMachine(QObject *stateMachine)
 {
     qmodelingelementproperty_cast<QUmlRegion *>(this)->setStateMachine(qmodelingelementproperty_cast<QUmlStateMachine *>(stateMachine));
+    emit stateMachineChanged(this->stateMachine());
 }
 
 void QUmlRegionObject::addSubvertex(QObject *subvertex)
 {
     qmodelingelementproperty_cast<QUmlRegion *>(this)->addSubvertex(qmodelingelementproperty_cast<QUmlVertex *>(subvertex));
+    emit subverticesChanged(this->subvertices());
 }
 
 void QUmlRegionObject::removeSubvertex(QObject *subvertex)
 {
     qmodelingelementproperty_cast<QUmlRegion *>(this)->removeSubvertex(qmodelingelementproperty_cast<QUmlVertex *>(subvertex));
+    emit subverticesChanged(this->subvertices());
 }
 
 void QUmlRegionObject::addTransition(QObject *transition)
 {
     qmodelingelementproperty_cast<QUmlRegion *>(this)->addTransition(qmodelingelementproperty_cast<QUmlTransition *>(transition));
+    emit transitionsChanged(this->transitions());
 }
 
 void QUmlRegionObject::removeTransition(QObject *transition)
 {
     qmodelingelementproperty_cast<QUmlRegion *>(this)->removeTransition(qmodelingelementproperty_cast<QUmlTransition *>(transition));
+    emit transitionsChanged(this->transitions());
 }
 
 

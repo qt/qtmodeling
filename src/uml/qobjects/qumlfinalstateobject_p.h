@@ -62,51 +62,51 @@ class Q_UML_EXPORT QUmlFinalStateObject : public QModelingObject
     Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [Element]
-    Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
-    Q_PROPERTY(QSet<QObject *> ownedElements READ ownedElements)
-    Q_PROPERTY(QObject * owner READ owner)
+    Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments NOTIFY ownedCommentsChanged)
+    Q_PROPERTY(QSet<QObject *> ownedElements READ ownedElements NOTIFY ownedElementsChanged)
+    Q_PROPERTY(QObject * owner READ owner NOTIFY ownerChanged)
 
     // Properties [NamedElement]
-    Q_PROPERTY(QSet<QObject *> clientDependencies READ clientDependencies)
-    Q_PROPERTY(QString name READ name WRITE setName)
-    Q_PROPERTY(QObject * nameExpression READ nameExpression WRITE setNameExpression)
-    Q_PROPERTY(QObject * namespace_ READ namespace_)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
+    Q_PROPERTY(QSet<QObject *> clientDependencies READ clientDependencies NOTIFY clientDependenciesChanged)
+    Q_PROPERTY(QString name READ name WRITE setName NOTIFY nameChanged)
+    Q_PROPERTY(QObject * nameExpression READ nameExpression WRITE setNameExpression NOTIFY nameExpressionChanged)
+    Q_PROPERTY(QObject * namespace_ READ namespace_ NOTIFY namespaceChanged)
+    Q_PROPERTY(QString qualifiedName READ qualifiedName NOTIFY qualifiedNameChanged STORED false)
+    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility NOTIFY visibilityChanged)
 
     // Properties [Namespace]
-    Q_PROPERTY(QSet<QObject *> elementImports READ elementImports)
-    Q_PROPERTY(QSet<QObject *> importedMembers READ importedMembers STORED false)
-    Q_PROPERTY(QSet<QObject *> members READ members)
-    Q_PROPERTY(QSet<QObject *> ownedMembers READ ownedMembers)
-    Q_PROPERTY(QSet<QObject *> ownedRules READ ownedRules)
-    Q_PROPERTY(QSet<QObject *> packageImports READ packageImports)
+    Q_PROPERTY(QSet<QObject *> elementImports READ elementImports NOTIFY elementImportsChanged)
+    Q_PROPERTY(QSet<QObject *> importedMembers READ importedMembers NOTIFY importedMembersChanged STORED false)
+    Q_PROPERTY(QSet<QObject *> members READ members NOTIFY membersChanged)
+    Q_PROPERTY(QSet<QObject *> ownedMembers READ ownedMembers NOTIFY ownedMembersChanged)
+    Q_PROPERTY(QSet<QObject *> ownedRules READ ownedRules NOTIFY ownedRulesChanged)
+    Q_PROPERTY(QSet<QObject *> packageImports READ packageImports NOTIFY packageImportsChanged)
 
     // Properties [RedefinableElement]
-    Q_PROPERTY(bool isLeaf READ isLeaf WRITE setLeaf RESET unsetLeaf)
-    Q_PROPERTY(QSet<QObject *> redefinedElements READ redefinedElements)
+    Q_PROPERTY(bool isLeaf READ isLeaf WRITE setLeaf NOTIFY isLeafChanged RESET unsetLeaf)
+    Q_PROPERTY(QSet<QObject *> redefinedElements READ redefinedElements NOTIFY redefinedElementsChanged)
 
     // Properties [Vertex]
-    Q_PROPERTY(QObject * container READ container WRITE setContainer)
-    Q_PROPERTY(QSet<QObject *> incomings READ incomings STORED false)
-    Q_PROPERTY(QSet<QObject *> outgoings READ outgoings STORED false)
+    Q_PROPERTY(QObject * container READ container WRITE setContainer NOTIFY containerChanged)
+    Q_PROPERTY(QSet<QObject *> incomings READ incomings NOTIFY incomingsChanged STORED false)
+    Q_PROPERTY(QSet<QObject *> outgoings READ outgoings NOTIFY outgoingsChanged STORED false)
 
     // Properties [State]
-    Q_PROPERTY(QSet<QObject *> connections READ connections)
-    Q_PROPERTY(QSet<QObject *> connectionPoints READ connectionPoints)
-    Q_PROPERTY(QSet<QObject *> deferrableTriggers READ deferrableTriggers)
-    Q_PROPERTY(QObject * doActivity READ doActivity WRITE setDoActivity)
-    Q_PROPERTY(QObject * entry READ entry WRITE setEntry)
-    Q_PROPERTY(QObject * exit READ exit WRITE setExit)
-    Q_PROPERTY(bool isComposite READ isComposite RESET unsetComposite STORED false)
-    Q_PROPERTY(bool isOrthogonal READ isOrthogonal RESET unsetOrthogonal STORED false)
-    Q_PROPERTY(bool isSimple READ isSimple RESET unsetSimple STORED false)
-    Q_PROPERTY(bool isSubmachineState READ isSubmachineState RESET unsetSubmachineState STORED false)
-    Q_PROPERTY(QObject * redefinedState READ redefinedState WRITE setRedefinedState)
-    Q_PROPERTY(QObject * redefinitionContext READ redefinitionContext STORED false)
-    Q_PROPERTY(QSet<QObject *> regions READ regions)
-    Q_PROPERTY(QObject * stateInvariant READ stateInvariant WRITE setStateInvariant)
-    Q_PROPERTY(QObject * submachine READ submachine WRITE setSubmachine)
+    Q_PROPERTY(QSet<QObject *> connections READ connections NOTIFY connectionsChanged)
+    Q_PROPERTY(QSet<QObject *> connectionPoints READ connectionPoints NOTIFY connectionPointsChanged)
+    Q_PROPERTY(QSet<QObject *> deferrableTriggers READ deferrableTriggers NOTIFY deferrableTriggersChanged)
+    Q_PROPERTY(QObject * doActivity READ doActivity WRITE setDoActivity NOTIFY doActivityChanged)
+    Q_PROPERTY(QObject * entry READ entry WRITE setEntry NOTIFY entryChanged)
+    Q_PROPERTY(QObject * exit READ exit WRITE setExit NOTIFY exitChanged)
+    Q_PROPERTY(bool isComposite READ isComposite NOTIFY isCompositeChanged RESET unsetComposite STORED false)
+    Q_PROPERTY(bool isOrthogonal READ isOrthogonal NOTIFY isOrthogonalChanged RESET unsetOrthogonal STORED false)
+    Q_PROPERTY(bool isSimple READ isSimple NOTIFY isSimpleChanged RESET unsetSimple STORED false)
+    Q_PROPERTY(bool isSubmachineState READ isSubmachineState NOTIFY isSubmachineStateChanged RESET unsetSubmachineState STORED false)
+    Q_PROPERTY(QObject * redefinedState READ redefinedState WRITE setRedefinedState NOTIFY redefinedStateChanged)
+    Q_PROPERTY(QObject * redefinitionContext READ redefinitionContext NOTIFY redefinitionContextChanged STORED false)
+    Q_PROPERTY(QSet<QObject *> regions READ regions NOTIFY regionsChanged)
+    Q_PROPERTY(QObject * stateInvariant READ stateInvariant WRITE setStateInvariant NOTIFY stateInvariantChanged)
+    Q_PROPERTY(QObject * submachine READ submachine WRITE setSubmachine NOTIFY submachineChanged)
 
 public:
     Q_INVOKABLE explicit QUmlFinalStateObject(QUmlFinalState *modelingElement);
@@ -252,6 +252,55 @@ public Q_SLOTS:
     void removeRegion(QObject *region);
     void setStateInvariant(QObject *stateInvariant = 0);
     void setSubmachine(QObject *submachine = 0);
+
+Q_SIGNALS:
+
+    // Signals for owned attributes [Element]
+    void ownedCommentsChanged(QSet<QObject *> ownedComments);
+    void ownedElementsChanged(QSet<QObject *> ownedElements);
+    void ownerChanged(QObject *owner);
+
+    // Signals for owned attributes [NamedElement]
+    void clientDependenciesChanged(QSet<QObject *> clientDependencies);
+    void nameChanged(QString name);
+    void nameExpressionChanged(QObject *nameExpression);
+    void namespaceChanged(QObject *namespace_);
+    void qualifiedNameChanged(QString qualifiedName);
+    void visibilityChanged(QtUml::VisibilityKind visibility);
+
+    // Signals for owned attributes [Namespace]
+    void elementImportsChanged(QSet<QObject *> elementImports);
+    void importedMembersChanged(QSet<QObject *> importedMembers);
+    void membersChanged(QSet<QObject *> members);
+    void ownedMembersChanged(QSet<QObject *> ownedMembers);
+    void ownedRulesChanged(QSet<QObject *> ownedRules);
+    void packageImportsChanged(QSet<QObject *> packageImports);
+
+    // Signals for owned attributes [RedefinableElement]
+    void isLeafChanged(bool isLeaf);
+    void redefinedElementsChanged(QSet<QObject *> redefinedElements);
+
+    // Signals for owned attributes [Vertex]
+    void containerChanged(QObject *container);
+    void incomingsChanged(QSet<QObject *> incomings);
+    void outgoingsChanged(QSet<QObject *> outgoings);
+
+    // Signals for owned attributes [State]
+    void connectionsChanged(QSet<QObject *> connections);
+    void connectionPointsChanged(QSet<QObject *> connectionPoints);
+    void deferrableTriggersChanged(QSet<QObject *> deferrableTriggers);
+    void doActivityChanged(QObject *doActivity);
+    void entryChanged(QObject *entry);
+    void exitChanged(QObject *exit);
+    void isCompositeChanged(bool isComposite);
+    void isOrthogonalChanged(bool isOrthogonal);
+    void isSimpleChanged(bool isSimple);
+    void isSubmachineStateChanged(bool isSubmachineState);
+    void redefinedStateChanged(QObject *redefinedState);
+    void redefinitionContextChanged(QObject *redefinitionContext);
+    void regionsChanged(QSet<QObject *> regions);
+    void stateInvariantChanged(QObject *stateInvariant);
+    void submachineChanged(QObject *submachine);
 
 protected:
     virtual void setGroupProperties();

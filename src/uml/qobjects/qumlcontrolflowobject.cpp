@@ -301,26 +301,31 @@ bool QUmlControlFlowObject::isRedefinitionContextValid(QObject *redefined) const
 void QUmlControlFlowObject::addOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlControlFlow *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlControlFlowObject::removeOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlControlFlow *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlControlFlowObject::addOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlControlFlow *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlControlFlowObject::removeOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlControlFlow *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlControlFlowObject::setOwner(QObject *owner)
 {
     qmodelingelementproperty_cast<QUmlControlFlow *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
+    emit ownerChanged(this->owner());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [NamedElement]
@@ -328,36 +333,43 @@ void QUmlControlFlowObject::setOwner(QObject *owner)
 void QUmlControlFlowObject::addClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlControlFlow *>(this)->addClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlControlFlowObject::removeClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlControlFlow *>(this)->removeClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlControlFlowObject::setName(QString name)
 {
     qmodelingelementproperty_cast<QUmlControlFlow *>(this)->setName(name);
+    emit nameChanged(this->name());
 }
 
 void QUmlControlFlowObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingelementproperty_cast<QUmlControlFlow *>(this)->setNameExpression(qmodelingelementproperty_cast<QUmlStringExpression *>(nameExpression));
+    emit nameExpressionChanged(this->nameExpression());
 }
 
 void QUmlControlFlowObject::setNamespace(QObject *namespace_)
 {
     qmodelingelementproperty_cast<QUmlControlFlow *>(this)->setNamespace(qmodelingelementproperty_cast<QUmlNamespace *>(namespace_));
+    emit namespaceChanged(this->namespace_());
 }
 
 void QUmlControlFlowObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingelementproperty_cast<QUmlControlFlow *>(this)->setQualifiedName(qualifiedName);
+    emit qualifiedNameChanged(this->qualifiedName());
 }
 
 void QUmlControlFlowObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingelementproperty_cast<QUmlControlFlow *>(this)->setVisibility(visibility);
+    emit visibilityChanged(this->visibility());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [RedefinableElement]
@@ -365,6 +377,7 @@ void QUmlControlFlowObject::setVisibility(QtUml::VisibilityKind visibility)
 void QUmlControlFlowObject::setLeaf(bool isLeaf)
 {
     qmodelingelementproperty_cast<QUmlControlFlow *>(this)->setLeaf(isLeaf);
+    emit isLeafChanged(this->isLeaf());
 }
 
 void QUmlControlFlowObject::unsetLeaf()
@@ -377,21 +390,25 @@ void QUmlControlFlowObject::unsetLeaf()
 void QUmlControlFlowObject::addRedefinedElement(QObject *redefinedElement)
 {
     qmodelingelementproperty_cast<QUmlControlFlow *>(this)->addRedefinedElement(qmodelingelementproperty_cast<QUmlRedefinableElement *>(redefinedElement));
+    emit redefinedElementsChanged(this->redefinedElements());
 }
 
 void QUmlControlFlowObject::removeRedefinedElement(QObject *redefinedElement)
 {
     qmodelingelementproperty_cast<QUmlControlFlow *>(this)->removeRedefinedElement(qmodelingelementproperty_cast<QUmlRedefinableElement *>(redefinedElement));
+    emit redefinedElementsChanged(this->redefinedElements());
 }
 
 void QUmlControlFlowObject::addRedefinitionContext(QObject *redefinitionContext)
 {
     qmodelingelementproperty_cast<QUmlControlFlow *>(this)->addRedefinitionContext(qmodelingelementproperty_cast<QUmlClassifier *>(redefinitionContext));
+    emit redefinitionContextsChanged(this->redefinitionContexts());
 }
 
 void QUmlControlFlowObject::removeRedefinitionContext(QObject *redefinitionContext)
 {
     qmodelingelementproperty_cast<QUmlControlFlow *>(this)->removeRedefinitionContext(qmodelingelementproperty_cast<QUmlClassifier *>(redefinitionContext));
+    emit redefinitionContextsChanged(this->redefinitionContexts());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ActivityEdge]
@@ -399,66 +416,79 @@ void QUmlControlFlowObject::removeRedefinitionContext(QObject *redefinitionConte
 void QUmlControlFlowObject::setActivity(QObject *activity)
 {
     qmodelingelementproperty_cast<QUmlControlFlow *>(this)->setActivity(qmodelingelementproperty_cast<QUmlActivity *>(activity));
+    emit activityChanged(this->activity());
 }
 
 void QUmlControlFlowObject::setGuard(QObject *guard)
 {
     qmodelingelementproperty_cast<QUmlControlFlow *>(this)->setGuard(qmodelingelementproperty_cast<QUmlValueSpecification *>(guard));
+    emit guardChanged(this->guard());
 }
 
 void QUmlControlFlowObject::addInGroup(QObject *inGroup)
 {
     qmodelingelementproperty_cast<QUmlControlFlow *>(this)->addInGroup(qmodelingelementproperty_cast<QUmlActivityGroup *>(inGroup));
+    emit inGroupsChanged(this->inGroups());
 }
 
 void QUmlControlFlowObject::removeInGroup(QObject *inGroup)
 {
     qmodelingelementproperty_cast<QUmlControlFlow *>(this)->removeInGroup(qmodelingelementproperty_cast<QUmlActivityGroup *>(inGroup));
+    emit inGroupsChanged(this->inGroups());
 }
 
 void QUmlControlFlowObject::addInPartition(QObject *inPartition)
 {
     qmodelingelementproperty_cast<QUmlControlFlow *>(this)->addInPartition(qmodelingelementproperty_cast<QUmlActivityPartition *>(inPartition));
+    emit inPartitionsChanged(this->inPartitions());
 }
 
 void QUmlControlFlowObject::removeInPartition(QObject *inPartition)
 {
     qmodelingelementproperty_cast<QUmlControlFlow *>(this)->removeInPartition(qmodelingelementproperty_cast<QUmlActivityPartition *>(inPartition));
+    emit inPartitionsChanged(this->inPartitions());
 }
 
 void QUmlControlFlowObject::setInStructuredNode(QObject *inStructuredNode)
 {
     qmodelingelementproperty_cast<QUmlControlFlow *>(this)->setInStructuredNode(qmodelingelementproperty_cast<QUmlStructuredActivityNode *>(inStructuredNode));
+    emit inStructuredNodeChanged(this->inStructuredNode());
 }
 
 void QUmlControlFlowObject::setInterrupts(QObject *interrupts)
 {
     qmodelingelementproperty_cast<QUmlControlFlow *>(this)->setInterrupts(qmodelingelementproperty_cast<QUmlInterruptibleActivityRegion *>(interrupts));
+    emit interruptsChanged(this->interrupts());
 }
 
 void QUmlControlFlowObject::addRedefinedEdge(QObject *redefinedEdge)
 {
     qmodelingelementproperty_cast<QUmlControlFlow *>(this)->addRedefinedEdge(qmodelingelementproperty_cast<QUmlActivityEdge *>(redefinedEdge));
+    emit redefinedEdgesChanged(this->redefinedEdges());
 }
 
 void QUmlControlFlowObject::removeRedefinedEdge(QObject *redefinedEdge)
 {
     qmodelingelementproperty_cast<QUmlControlFlow *>(this)->removeRedefinedEdge(qmodelingelementproperty_cast<QUmlActivityEdge *>(redefinedEdge));
+    emit redefinedEdgesChanged(this->redefinedEdges());
 }
 
 void QUmlControlFlowObject::setSource(QObject *source)
 {
     qmodelingelementproperty_cast<QUmlControlFlow *>(this)->setSource(qmodelingelementproperty_cast<QUmlActivityNode *>(source));
+    emit sourceChanged(this->source());
 }
 
 void QUmlControlFlowObject::setTarget(QObject *target)
 {
     qmodelingelementproperty_cast<QUmlControlFlow *>(this)->setTarget(qmodelingelementproperty_cast<QUmlActivityNode *>(target));
+    emit targetChanged(this->target());
 }
 
 void QUmlControlFlowObject::setWeight(QObject *weight)
 {
     qmodelingelementproperty_cast<QUmlControlFlow *>(this)->setWeight(qmodelingelementproperty_cast<QUmlValueSpecification *>(weight));
+    emit weightChanged(this->weight());
 }
 
 

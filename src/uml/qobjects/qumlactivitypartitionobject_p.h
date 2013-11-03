@@ -62,33 +62,33 @@ class Q_UML_EXPORT QUmlActivityPartitionObject : public QModelingObject
     Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [Element]
-    Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
-    Q_PROPERTY(QSet<QObject *> ownedElements READ ownedElements)
-    Q_PROPERTY(QObject * owner READ owner)
+    Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments NOTIFY ownedCommentsChanged)
+    Q_PROPERTY(QSet<QObject *> ownedElements READ ownedElements NOTIFY ownedElementsChanged)
+    Q_PROPERTY(QObject * owner READ owner NOTIFY ownerChanged)
 
     // Properties [NamedElement]
-    Q_PROPERTY(QSet<QObject *> clientDependencies READ clientDependencies)
-    Q_PROPERTY(QString name READ name WRITE setName)
-    Q_PROPERTY(QObject * nameExpression READ nameExpression WRITE setNameExpression)
-    Q_PROPERTY(QObject * namespace_ READ namespace_)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
+    Q_PROPERTY(QSet<QObject *> clientDependencies READ clientDependencies NOTIFY clientDependenciesChanged)
+    Q_PROPERTY(QString name READ name WRITE setName NOTIFY nameChanged)
+    Q_PROPERTY(QObject * nameExpression READ nameExpression WRITE setNameExpression NOTIFY nameExpressionChanged)
+    Q_PROPERTY(QObject * namespace_ READ namespace_ NOTIFY namespaceChanged)
+    Q_PROPERTY(QString qualifiedName READ qualifiedName NOTIFY qualifiedNameChanged STORED false)
+    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility NOTIFY visibilityChanged)
 
     // Properties [ActivityGroup]
-    Q_PROPERTY(QSet<QObject *> containedEdges READ containedEdges)
-    Q_PROPERTY(QSet<QObject *> containedNodes READ containedNodes)
-    Q_PROPERTY(QObject * inActivity READ inActivity WRITE setInActivity)
-    Q_PROPERTY(QSet<QObject *> subgroups READ subgroups)
-    Q_PROPERTY(QObject * superGroup READ superGroup)
+    Q_PROPERTY(QSet<QObject *> containedEdges READ containedEdges NOTIFY containedEdgesChanged)
+    Q_PROPERTY(QSet<QObject *> containedNodes READ containedNodes NOTIFY containedNodesChanged)
+    Q_PROPERTY(QObject * inActivity READ inActivity WRITE setInActivity NOTIFY inActivityChanged)
+    Q_PROPERTY(QSet<QObject *> subgroups READ subgroups NOTIFY subgroupsChanged)
+    Q_PROPERTY(QObject * superGroup READ superGroup NOTIFY superGroupChanged)
 
     // Properties [ActivityPartition]
-    Q_PROPERTY(QSet<QObject *> edges READ edges)
-    Q_PROPERTY(bool isDimension READ isDimension WRITE setDimension RESET unsetDimension)
-    Q_PROPERTY(bool isExternal READ isExternal WRITE setExternal RESET unsetExternal)
-    Q_PROPERTY(QSet<QObject *> nodes READ nodes)
-    Q_PROPERTY(QObject * represents READ represents WRITE setRepresents)
-    Q_PROPERTY(QSet<QObject *> subpartitions READ subpartitions)
-    Q_PROPERTY(QObject * superPartition READ superPartition WRITE setSuperPartition)
+    Q_PROPERTY(QSet<QObject *> edges READ edges NOTIFY edgesChanged)
+    Q_PROPERTY(bool isDimension READ isDimension WRITE setDimension NOTIFY isDimensionChanged RESET unsetDimension)
+    Q_PROPERTY(bool isExternal READ isExternal WRITE setExternal NOTIFY isExternalChanged RESET unsetExternal)
+    Q_PROPERTY(QSet<QObject *> nodes READ nodes NOTIFY nodesChanged)
+    Q_PROPERTY(QObject * represents READ represents WRITE setRepresents NOTIFY representsChanged)
+    Q_PROPERTY(QSet<QObject *> subpartitions READ subpartitions NOTIFY subpartitionsChanged)
+    Q_PROPERTY(QObject * superPartition READ superPartition WRITE setSuperPartition NOTIFY superPartitionChanged)
 
 public:
     Q_INVOKABLE explicit QUmlActivityPartitionObject(QUmlActivityPartition *modelingElement);
@@ -173,6 +173,37 @@ public Q_SLOTS:
     void addSubpartition(QObject *subpartition);
     void removeSubpartition(QObject *subpartition);
     void setSuperPartition(QObject *superPartition = 0);
+
+Q_SIGNALS:
+
+    // Signals for owned attributes [Element]
+    void ownedCommentsChanged(QSet<QObject *> ownedComments);
+    void ownedElementsChanged(QSet<QObject *> ownedElements);
+    void ownerChanged(QObject *owner);
+
+    // Signals for owned attributes [NamedElement]
+    void clientDependenciesChanged(QSet<QObject *> clientDependencies);
+    void nameChanged(QString name);
+    void nameExpressionChanged(QObject *nameExpression);
+    void namespaceChanged(QObject *namespace_);
+    void qualifiedNameChanged(QString qualifiedName);
+    void visibilityChanged(QtUml::VisibilityKind visibility);
+
+    // Signals for owned attributes [ActivityGroup]
+    void containedEdgesChanged(QSet<QObject *> containedEdges);
+    void containedNodesChanged(QSet<QObject *> containedNodes);
+    void inActivityChanged(QObject *inActivity);
+    void subgroupsChanged(QSet<QObject *> subgroups);
+    void superGroupChanged(QObject *superGroup);
+
+    // Signals for owned attributes [ActivityPartition]
+    void edgesChanged(QSet<QObject *> edges);
+    void isDimensionChanged(bool isDimension);
+    void isExternalChanged(bool isExternal);
+    void nodesChanged(QSet<QObject *> nodes);
+    void representsChanged(QObject *represents);
+    void subpartitionsChanged(QSet<QObject *> subpartitions);
+    void superPartitionChanged(QObject *superPartition);
 
 protected:
     virtual void setGroupProperties();

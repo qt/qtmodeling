@@ -285,26 +285,31 @@ QString QUmlInterfaceRealizationObject::separator() const
 void QUmlInterfaceRealizationObject::addOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlInterfaceRealization *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlInterfaceRealizationObject::removeOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlInterfaceRealization *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlInterfaceRealizationObject::addOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlInterfaceRealization *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlInterfaceRealizationObject::removeOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlInterfaceRealization *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlInterfaceRealizationObject::setOwner(QObject *owner)
 {
     qmodelingelementproperty_cast<QUmlInterfaceRealization *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
+    emit ownerChanged(this->owner());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ParameterableElement]
@@ -312,11 +317,13 @@ void QUmlInterfaceRealizationObject::setOwner(QObject *owner)
 void QUmlInterfaceRealizationObject::setOwningTemplateParameter(QObject *owningTemplateParameter)
 {
     qmodelingelementproperty_cast<QUmlInterfaceRealization *>(this)->setOwningTemplateParameter(qmodelingelementproperty_cast<QUmlTemplateParameter *>(owningTemplateParameter));
+    emit owningTemplateParameterChanged(this->owningTemplateParameter());
 }
 
 void QUmlInterfaceRealizationObject::setTemplateParameter(QObject *templateParameter)
 {
     qmodelingelementproperty_cast<QUmlInterfaceRealization *>(this)->setTemplateParameter(qmodelingelementproperty_cast<QUmlTemplateParameter *>(templateParameter));
+    emit templateParameterChanged(this->templateParameter());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [NamedElement]
@@ -324,37 +331,44 @@ void QUmlInterfaceRealizationObject::setTemplateParameter(QObject *templateParam
 void QUmlInterfaceRealizationObject::addClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlInterfaceRealization *>(this)->addClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlInterfaceRealizationObject::removeClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlInterfaceRealization *>(this)->removeClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlInterfaceRealizationObject::setName(QString name)
 {
     qmodelingelementproperty_cast<QUmlInterfaceRealization *>(this)->setName(name);
+    emit nameChanged(this->name());
 }
 
 void QUmlInterfaceRealizationObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingelementproperty_cast<QUmlInterfaceRealization *>(this)->setNameExpression(qmodelingelementproperty_cast<QUmlStringExpression *>(nameExpression));
+    emit nameExpressionChanged(this->nameExpression());
 }
 
 void QUmlInterfaceRealizationObject::setNamespace(QObject *namespace_)
 {
     qmodelingelementproperty_cast<QUmlInterfaceRealization *>(this)->setNamespace(qmodelingelementproperty_cast<QUmlNamespace *>(namespace_));
+    emit namespaceChanged(this->namespace_());
 }
 
 void QUmlInterfaceRealizationObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingelementproperty_cast<QUmlInterfaceRealization *>(this)->setQualifiedName(qualifiedName);
+    emit qualifiedNameChanged(this->qualifiedName());
 }
 // SLOTS FOR OWNED ATTRIBUTES [PackageableElement]
 
 void QUmlInterfaceRealizationObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingelementproperty_cast<QUmlInterfaceRealization *>(this)->setVisibility(visibility);
+    emit visibilityChanged(this->visibility());
 }
 
 void QUmlInterfaceRealizationObject::unsetVisibility()
@@ -369,11 +383,13 @@ void QUmlInterfaceRealizationObject::unsetVisibility()
 void QUmlInterfaceRealizationObject::addRelatedElement(QObject *relatedElement)
 {
     qmodelingelementproperty_cast<QUmlInterfaceRealization *>(this)->addRelatedElement(qmodelingelementproperty_cast<QUmlElement *>(relatedElement));
+    emit relatedElementsChanged(this->relatedElements());
 }
 
 void QUmlInterfaceRealizationObject::removeRelatedElement(QObject *relatedElement)
 {
     qmodelingelementproperty_cast<QUmlInterfaceRealization *>(this)->removeRelatedElement(qmodelingelementproperty_cast<QUmlElement *>(relatedElement));
+    emit relatedElementsChanged(this->relatedElements());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [DirectedRelationship]
@@ -381,21 +397,25 @@ void QUmlInterfaceRealizationObject::removeRelatedElement(QObject *relatedElemen
 void QUmlInterfaceRealizationObject::addSource(QObject *source)
 {
     qmodelingelementproperty_cast<QUmlInterfaceRealization *>(this)->addSource(qmodelingelementproperty_cast<QUmlElement *>(source));
+    emit sourcesChanged(this->sources());
 }
 
 void QUmlInterfaceRealizationObject::removeSource(QObject *source)
 {
     qmodelingelementproperty_cast<QUmlInterfaceRealization *>(this)->removeSource(qmodelingelementproperty_cast<QUmlElement *>(source));
+    emit sourcesChanged(this->sources());
 }
 
 void QUmlInterfaceRealizationObject::addTarget(QObject *target)
 {
     qmodelingelementproperty_cast<QUmlInterfaceRealization *>(this)->addTarget(qmodelingelementproperty_cast<QUmlElement *>(target));
+    emit targetsChanged(this->targets());
 }
 
 void QUmlInterfaceRealizationObject::removeTarget(QObject *target)
 {
     qmodelingelementproperty_cast<QUmlInterfaceRealization *>(this)->removeTarget(qmodelingelementproperty_cast<QUmlElement *>(target));
+    emit targetsChanged(this->targets());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Dependency]
@@ -403,21 +423,25 @@ void QUmlInterfaceRealizationObject::removeTarget(QObject *target)
 void QUmlInterfaceRealizationObject::addClient(QObject *client)
 {
     qmodelingelementproperty_cast<QUmlInterfaceRealization *>(this)->addClient(qmodelingelementproperty_cast<QUmlNamedElement *>(client));
+    emit clientsChanged(this->clients());
 }
 
 void QUmlInterfaceRealizationObject::removeClient(QObject *client)
 {
     qmodelingelementproperty_cast<QUmlInterfaceRealization *>(this)->removeClient(qmodelingelementproperty_cast<QUmlNamedElement *>(client));
+    emit clientsChanged(this->clients());
 }
 
 void QUmlInterfaceRealizationObject::addSupplier(QObject *supplier)
 {
     qmodelingelementproperty_cast<QUmlInterfaceRealization *>(this)->addSupplier(qmodelingelementproperty_cast<QUmlNamedElement *>(supplier));
+    emit suppliersChanged(this->suppliers());
 }
 
 void QUmlInterfaceRealizationObject::removeSupplier(QObject *supplier)
 {
     qmodelingelementproperty_cast<QUmlInterfaceRealization *>(this)->removeSupplier(qmodelingelementproperty_cast<QUmlNamedElement *>(supplier));
+    emit suppliersChanged(this->suppliers());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Abstraction]
@@ -425,6 +449,7 @@ void QUmlInterfaceRealizationObject::removeSupplier(QObject *supplier)
 void QUmlInterfaceRealizationObject::setMapping(QObject *mapping)
 {
     qmodelingelementproperty_cast<QUmlInterfaceRealization *>(this)->setMapping(qmodelingelementproperty_cast<QUmlOpaqueExpression *>(mapping));
+    emit mappingChanged(this->mapping());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [InterfaceRealization]
@@ -432,11 +457,13 @@ void QUmlInterfaceRealizationObject::setMapping(QObject *mapping)
 void QUmlInterfaceRealizationObject::setContract(QObject *contract)
 {
     qmodelingelementproperty_cast<QUmlInterfaceRealization *>(this)->setContract(qmodelingelementproperty_cast<QUmlInterface *>(contract));
+    emit contractChanged(this->contract());
 }
 
 void QUmlInterfaceRealizationObject::setImplementingClassifier(QObject *implementingClassifier)
 {
     qmodelingelementproperty_cast<QUmlInterfaceRealization *>(this)->setImplementingClassifier(qmodelingelementproperty_cast<QUmlBehavioredClassifier *>(implementingClassifier));
+    emit implementingClassifierChanged(this->implementingClassifier());
 }
 
 

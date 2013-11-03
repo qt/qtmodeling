@@ -466,26 +466,31 @@ QSet<QObject *> QMofClassObject::inherit(QSet<QObject *> inhs) const
 void QMofClassObject::addOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QMofClass *>(this)->addOwnedComment(qmodelingelementproperty_cast<QMofComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QMofClassObject::removeOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QMofClass *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QMofComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QMofClassObject::addOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QMofClass *>(this)->addOwnedElement(qmodelingelementproperty_cast<QMofElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QMofClassObject::removeOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QMofClass *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QMofElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QMofClassObject::setOwner(QObject *owner)
 {
     qmodelingelementproperty_cast<QMofClass *>(this)->setOwner(qmodelingelementproperty_cast<QMofElement *>(owner));
+    emit ownerChanged(this->owner());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [NamedElement]
@@ -493,22 +498,26 @@ void QMofClassObject::setOwner(QObject *owner)
 void QMofClassObject::setName(QString name)
 {
     qmodelingelementproperty_cast<QMofClass *>(this)->setName(name);
+    emit nameChanged(this->name());
 }
 
 void QMofClassObject::setNamespace(QObject *namespace_)
 {
     qmodelingelementproperty_cast<QMofClass *>(this)->setNamespace(qmodelingelementproperty_cast<QMofNamespace *>(namespace_));
+    emit namespaceChanged(this->namespace_());
 }
 
 void QMofClassObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingelementproperty_cast<QMofClass *>(this)->setQualifiedName(qualifiedName);
+    emit qualifiedNameChanged(this->qualifiedName());
 }
 // SLOTS FOR OWNED ATTRIBUTES [PackageableElement]
 
 void QMofClassObject::setVisibility(QtMof::VisibilityKind visibility)
 {
     qmodelingelementproperty_cast<QMofClass *>(this)->setVisibility(visibility);
+    emit visibilityChanged(this->visibility());
 }
 
 void QMofClassObject::unsetVisibility()
@@ -523,6 +532,7 @@ void QMofClassObject::unsetVisibility()
 void QMofClassObject::setPackage(QObject *package)
 {
     qmodelingelementproperty_cast<QMofClass *>(this)->setPackage(qmodelingelementproperty_cast<QMofPackage *>(package));
+    emit packageChanged(this->package());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [RedefinableElement]
@@ -530,6 +540,7 @@ void QMofClassObject::setPackage(QObject *package)
 void QMofClassObject::setLeaf(bool isLeaf)
 {
     qmodelingelementproperty_cast<QMofClass *>(this)->setLeaf(isLeaf);
+    emit isLeafChanged(this->isLeaf());
 }
 
 void QMofClassObject::unsetLeaf()
@@ -542,21 +553,25 @@ void QMofClassObject::unsetLeaf()
 void QMofClassObject::addRedefinedElement(QObject *redefinedElement)
 {
     qmodelingelementproperty_cast<QMofClass *>(this)->addRedefinedElement(qmodelingelementproperty_cast<QMofRedefinableElement *>(redefinedElement));
+    emit redefinedElementsChanged(this->redefinedElements());
 }
 
 void QMofClassObject::removeRedefinedElement(QObject *redefinedElement)
 {
     qmodelingelementproperty_cast<QMofClass *>(this)->removeRedefinedElement(qmodelingelementproperty_cast<QMofRedefinableElement *>(redefinedElement));
+    emit redefinedElementsChanged(this->redefinedElements());
 }
 
 void QMofClassObject::addRedefinitionContext(QObject *redefinitionContext)
 {
     qmodelingelementproperty_cast<QMofClass *>(this)->addRedefinitionContext(qmodelingelementproperty_cast<QMofClassifier *>(redefinitionContext));
+    emit redefinitionContextsChanged(this->redefinitionContexts());
 }
 
 void QMofClassObject::removeRedefinitionContext(QObject *redefinitionContext)
 {
     qmodelingelementproperty_cast<QMofClass *>(this)->removeRedefinitionContext(qmodelingelementproperty_cast<QMofClassifier *>(redefinitionContext));
+    emit redefinitionContextsChanged(this->redefinitionContexts());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Namespace]
@@ -564,61 +579,73 @@ void QMofClassObject::removeRedefinitionContext(QObject *redefinitionContext)
 void QMofClassObject::addElementImport(QObject *elementImport)
 {
     qmodelingelementproperty_cast<QMofClass *>(this)->addElementImport(qmodelingelementproperty_cast<QMofElementImport *>(elementImport));
+    emit elementImportsChanged(this->elementImports());
 }
 
 void QMofClassObject::removeElementImport(QObject *elementImport)
 {
     qmodelingelementproperty_cast<QMofClass *>(this)->removeElementImport(qmodelingelementproperty_cast<QMofElementImport *>(elementImport));
+    emit elementImportsChanged(this->elementImports());
 }
 
 void QMofClassObject::addImportedMember(QObject *importedMember)
 {
     qmodelingelementproperty_cast<QMofClass *>(this)->addImportedMember(qmodelingelementproperty_cast<QMofPackageableElement *>(importedMember));
+    emit importedMembersChanged(this->importedMembers());
 }
 
 void QMofClassObject::removeImportedMember(QObject *importedMember)
 {
     qmodelingelementproperty_cast<QMofClass *>(this)->removeImportedMember(qmodelingelementproperty_cast<QMofPackageableElement *>(importedMember));
+    emit importedMembersChanged(this->importedMembers());
 }
 
 void QMofClassObject::addMember(QObject *member)
 {
     qmodelingelementproperty_cast<QMofClass *>(this)->addMember(qmodelingelementproperty_cast<QMofNamedElement *>(member));
+    emit membersChanged(this->members());
 }
 
 void QMofClassObject::removeMember(QObject *member)
 {
     qmodelingelementproperty_cast<QMofClass *>(this)->removeMember(qmodelingelementproperty_cast<QMofNamedElement *>(member));
+    emit membersChanged(this->members());
 }
 
 void QMofClassObject::addOwnedMember(QObject *ownedMember)
 {
     qmodelingelementproperty_cast<QMofClass *>(this)->addOwnedMember(qmodelingelementproperty_cast<QMofNamedElement *>(ownedMember));
+    emit ownedMembersChanged(this->ownedMembers());
 }
 
 void QMofClassObject::removeOwnedMember(QObject *ownedMember)
 {
     qmodelingelementproperty_cast<QMofClass *>(this)->removeOwnedMember(qmodelingelementproperty_cast<QMofNamedElement *>(ownedMember));
+    emit ownedMembersChanged(this->ownedMembers());
 }
 
 void QMofClassObject::addOwnedRule(QObject *ownedRule)
 {
     qmodelingelementproperty_cast<QMofClass *>(this)->addOwnedRule(qmodelingelementproperty_cast<QMofConstraint *>(ownedRule));
+    emit ownedRulesChanged(this->ownedRules());
 }
 
 void QMofClassObject::removeOwnedRule(QObject *ownedRule)
 {
     qmodelingelementproperty_cast<QMofClass *>(this)->removeOwnedRule(qmodelingelementproperty_cast<QMofConstraint *>(ownedRule));
+    emit ownedRulesChanged(this->ownedRules());
 }
 
 void QMofClassObject::addPackageImport(QObject *packageImport)
 {
     qmodelingelementproperty_cast<QMofClass *>(this)->addPackageImport(qmodelingelementproperty_cast<QMofPackageImport *>(packageImport));
+    emit packageImportsChanged(this->packageImports());
 }
 
 void QMofClassObject::removePackageImport(QObject *packageImport)
 {
     qmodelingelementproperty_cast<QMofClass *>(this)->removePackageImport(qmodelingelementproperty_cast<QMofPackageImport *>(packageImport));
+    emit packageImportsChanged(this->packageImports());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Classifier]
@@ -626,46 +653,55 @@ void QMofClassObject::removePackageImport(QObject *packageImport)
 void QMofClassObject::addAttribute(QObject *attribute)
 {
     qmodelingelementproperty_cast<QMofClass *>(this)->addAttribute(qmodelingelementproperty_cast<QMofProperty *>(attribute));
+    emit attributesChanged(this->attributes());
 }
 
 void QMofClassObject::removeAttribute(QObject *attribute)
 {
     qmodelingelementproperty_cast<QMofClass *>(this)->removeAttribute(qmodelingelementproperty_cast<QMofProperty *>(attribute));
+    emit attributesChanged(this->attributes());
 }
 
 void QMofClassObject::addFeature(QObject *feature)
 {
     qmodelingelementproperty_cast<QMofClass *>(this)->addFeature(qmodelingelementproperty_cast<QMofFeature *>(feature));
+    emit featuresChanged(this->features());
 }
 
 void QMofClassObject::removeFeature(QObject *feature)
 {
     qmodelingelementproperty_cast<QMofClass *>(this)->removeFeature(qmodelingelementproperty_cast<QMofFeature *>(feature));
+    emit featuresChanged(this->features());
 }
 
 void QMofClassObject::addGeneralization(QObject *generalization)
 {
     qmodelingelementproperty_cast<QMofClass *>(this)->addGeneralization(qmodelingelementproperty_cast<QMofGeneralization *>(generalization));
+    emit generalizationsChanged(this->generalizations());
 }
 
 void QMofClassObject::removeGeneralization(QObject *generalization)
 {
     qmodelingelementproperty_cast<QMofClass *>(this)->removeGeneralization(qmodelingelementproperty_cast<QMofGeneralization *>(generalization));
+    emit generalizationsChanged(this->generalizations());
 }
 
 void QMofClassObject::addInheritedMember(QObject *inheritedMember)
 {
     qmodelingelementproperty_cast<QMofClass *>(this)->addInheritedMember(qmodelingelementproperty_cast<QMofNamedElement *>(inheritedMember));
+    emit inheritedMembersChanged(this->inheritedMembers());
 }
 
 void QMofClassObject::removeInheritedMember(QObject *inheritedMember)
 {
     qmodelingelementproperty_cast<QMofClass *>(this)->removeInheritedMember(qmodelingelementproperty_cast<QMofNamedElement *>(inheritedMember));
+    emit inheritedMembersChanged(this->inheritedMembers());
 }
 
 void QMofClassObject::setFinalSpecialization(bool isFinalSpecialization)
 {
     qmodelingelementproperty_cast<QMofClass *>(this)->setFinalSpecialization(isFinalSpecialization);
+    emit isFinalSpecializationChanged(this->isFinalSpecialization());
 }
 
 void QMofClassObject::unsetFinalSpecialization()
@@ -678,11 +714,13 @@ void QMofClassObject::unsetFinalSpecialization()
 void QMofClassObject::addRedefinedClassifier(QObject *redefinedClassifier)
 {
     qmodelingelementproperty_cast<QMofClass *>(this)->addRedefinedClassifier(qmodelingelementproperty_cast<QMofClassifier *>(redefinedClassifier));
+    emit redefinedClassifiersChanged(this->redefinedClassifiers());
 }
 
 void QMofClassObject::removeRedefinedClassifier(QObject *redefinedClassifier)
 {
     qmodelingelementproperty_cast<QMofClass *>(this)->removeRedefinedClassifier(qmodelingelementproperty_cast<QMofClassifier *>(redefinedClassifier));
+    emit redefinedClassifiersChanged(this->redefinedClassifiers());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Class]
@@ -690,6 +728,7 @@ void QMofClassObject::removeRedefinedClassifier(QObject *redefinedClassifier)
 void QMofClassObject::setAbstract(bool isAbstract)
 {
     qmodelingelementproperty_cast<QMofClass *>(this)->setAbstract(isAbstract);
+    emit isAbstractChanged(this->isAbstract());
 }
 
 void QMofClassObject::unsetAbstract()
@@ -702,41 +741,49 @@ void QMofClassObject::unsetAbstract()
 void QMofClassObject::addNestedClassifier(QObject *nestedClassifier)
 {
     qmodelingelementproperty_cast<QMofClass *>(this)->addNestedClassifier(qmodelingelementproperty_cast<QMofClassifier *>(nestedClassifier));
+    emit nestedClassifiersChanged(this->nestedClassifiers());
 }
 
 void QMofClassObject::removeNestedClassifier(QObject *nestedClassifier)
 {
     qmodelingelementproperty_cast<QMofClass *>(this)->removeNestedClassifier(qmodelingelementproperty_cast<QMofClassifier *>(nestedClassifier));
+    emit nestedClassifiersChanged(this->nestedClassifiers());
 }
 
 void QMofClassObject::addOwnedAttribute(QObject *ownedAttribute)
 {
     qmodelingelementproperty_cast<QMofClass *>(this)->addOwnedAttribute(qmodelingelementproperty_cast<QMofProperty *>(ownedAttribute));
+    emit ownedAttributesChanged(this->ownedAttributes());
 }
 
 void QMofClassObject::removeOwnedAttribute(QObject *ownedAttribute)
 {
     qmodelingelementproperty_cast<QMofClass *>(this)->removeOwnedAttribute(qmodelingelementproperty_cast<QMofProperty *>(ownedAttribute));
+    emit ownedAttributesChanged(this->ownedAttributes());
 }
 
 void QMofClassObject::addOwnedOperation(QObject *ownedOperation)
 {
     qmodelingelementproperty_cast<QMofClass *>(this)->addOwnedOperation(qmodelingelementproperty_cast<QMofOperation *>(ownedOperation));
+    emit ownedOperationsChanged(this->ownedOperations());
 }
 
 void QMofClassObject::removeOwnedOperation(QObject *ownedOperation)
 {
     qmodelingelementproperty_cast<QMofClass *>(this)->removeOwnedOperation(qmodelingelementproperty_cast<QMofOperation *>(ownedOperation));
+    emit ownedOperationsChanged(this->ownedOperations());
 }
 
 void QMofClassObject::addSuperClass(QObject *superClass)
 {
     qmodelingelementproperty_cast<QMofClass *>(this)->addSuperClass(qmodelingelementproperty_cast<QMofClass *>(superClass));
+    emit superClassesChanged(this->superClasses());
 }
 
 void QMofClassObject::removeSuperClass(QObject *superClass)
 {
     qmodelingelementproperty_cast<QMofClass *>(this)->removeSuperClass(qmodelingelementproperty_cast<QMofClass *>(superClass));
+    emit superClassesChanged(this->superClasses());
 }
 
 

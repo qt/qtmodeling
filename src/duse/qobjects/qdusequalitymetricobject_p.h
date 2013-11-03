@@ -60,9 +60,9 @@ class Q_DUSE_EXPORT QDuseQualityMetricObject : public QModelingObject
     Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [QualityMetric]
-    Q_PROPERTY(QString name READ name WRITE setName)
-    Q_PROPERTY(double value READ value WRITE setValue)
-    Q_PROPERTY(QString expression READ expression WRITE setExpression)
+    Q_PROPERTY(QString name READ name WRITE setName NOTIFY nameChanged)
+    Q_PROPERTY(double value READ value WRITE setValue NOTIFY valueChanged)
+    Q_PROPERTY(QString expression READ expression WRITE setExpression NOTIFY expressionChanged)
 
 public:
     Q_INVOKABLE explicit QDuseQualityMetricObject(QDuseQualityMetric *modelingElement);
@@ -78,6 +78,13 @@ public Q_SLOTS:
     void setName(QString name);
     void setValue(double value);
     void setExpression(QString expression);
+
+Q_SIGNALS:
+
+    // Signals for owned attributes [QualityMetric]
+    void nameChanged(QString name);
+    void valueChanged(double value);
+    void expressionChanged(QString expression);
 
 protected:
     virtual void setGroupProperties();

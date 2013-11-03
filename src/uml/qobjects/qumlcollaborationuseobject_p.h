@@ -62,21 +62,21 @@ class Q_UML_EXPORT QUmlCollaborationUseObject : public QModelingObject
     Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [Element]
-    Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
-    Q_PROPERTY(QSet<QObject *> ownedElements READ ownedElements)
-    Q_PROPERTY(QObject * owner READ owner)
+    Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments NOTIFY ownedCommentsChanged)
+    Q_PROPERTY(QSet<QObject *> ownedElements READ ownedElements NOTIFY ownedElementsChanged)
+    Q_PROPERTY(QObject * owner READ owner NOTIFY ownerChanged)
 
     // Properties [NamedElement]
-    Q_PROPERTY(QSet<QObject *> clientDependencies READ clientDependencies)
-    Q_PROPERTY(QString name READ name WRITE setName)
-    Q_PROPERTY(QObject * nameExpression READ nameExpression WRITE setNameExpression)
-    Q_PROPERTY(QObject * namespace_ READ namespace_)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
+    Q_PROPERTY(QSet<QObject *> clientDependencies READ clientDependencies NOTIFY clientDependenciesChanged)
+    Q_PROPERTY(QString name READ name WRITE setName NOTIFY nameChanged)
+    Q_PROPERTY(QObject * nameExpression READ nameExpression WRITE setNameExpression NOTIFY nameExpressionChanged)
+    Q_PROPERTY(QObject * namespace_ READ namespace_ NOTIFY namespaceChanged)
+    Q_PROPERTY(QString qualifiedName READ qualifiedName NOTIFY qualifiedNameChanged STORED false)
+    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility NOTIFY visibilityChanged)
 
     // Properties [CollaborationUse]
-    Q_PROPERTY(QSet<QObject *> roleBindings READ roleBindings)
-    Q_PROPERTY(QObject * type READ type WRITE setType)
+    Q_PROPERTY(QSet<QObject *> roleBindings READ roleBindings NOTIFY roleBindingsChanged)
+    Q_PROPERTY(QObject * type READ type WRITE setType NOTIFY typeChanged)
 
 public:
     Q_INVOKABLE explicit QUmlCollaborationUseObject(QUmlCollaborationUse *modelingElement);
@@ -130,6 +130,25 @@ public Q_SLOTS:
     void addRoleBinding(QObject *roleBinding);
     void removeRoleBinding(QObject *roleBinding);
     void setType(QObject *type = 0);
+
+Q_SIGNALS:
+
+    // Signals for owned attributes [Element]
+    void ownedCommentsChanged(QSet<QObject *> ownedComments);
+    void ownedElementsChanged(QSet<QObject *> ownedElements);
+    void ownerChanged(QObject *owner);
+
+    // Signals for owned attributes [NamedElement]
+    void clientDependenciesChanged(QSet<QObject *> clientDependencies);
+    void nameChanged(QString name);
+    void nameExpressionChanged(QObject *nameExpression);
+    void namespaceChanged(QObject *namespace_);
+    void qualifiedNameChanged(QString qualifiedName);
+    void visibilityChanged(QtUml::VisibilityKind visibility);
+
+    // Signals for owned attributes [CollaborationUse]
+    void roleBindingsChanged(QSet<QObject *> roleBindings);
+    void typeChanged(QObject *type);
 
 protected:
     virtual void setGroupProperties();

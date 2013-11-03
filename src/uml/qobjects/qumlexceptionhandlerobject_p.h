@@ -60,15 +60,15 @@ class Q_UML_EXPORT QUmlExceptionHandlerObject : public QModelingObject
     Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [Element]
-    Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
-    Q_PROPERTY(QSet<QObject *> ownedElements READ ownedElements)
-    Q_PROPERTY(QObject * owner READ owner)
+    Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments NOTIFY ownedCommentsChanged)
+    Q_PROPERTY(QSet<QObject *> ownedElements READ ownedElements NOTIFY ownedElementsChanged)
+    Q_PROPERTY(QObject * owner READ owner NOTIFY ownerChanged)
 
     // Properties [ExceptionHandler]
-    Q_PROPERTY(QObject * exceptionInput READ exceptionInput WRITE setExceptionInput)
-    Q_PROPERTY(QSet<QObject *> exceptionTypes READ exceptionTypes)
-    Q_PROPERTY(QObject * handlerBody READ handlerBody WRITE setHandlerBody)
-    Q_PROPERTY(QObject * protectedNode READ protectedNode WRITE setProtectedNode)
+    Q_PROPERTY(QObject * exceptionInput READ exceptionInput WRITE setExceptionInput NOTIFY exceptionInputChanged)
+    Q_PROPERTY(QSet<QObject *> exceptionTypes READ exceptionTypes NOTIFY exceptionTypesChanged)
+    Q_PROPERTY(QObject * handlerBody READ handlerBody WRITE setHandlerBody NOTIFY handlerBodyChanged)
+    Q_PROPERTY(QObject * protectedNode READ protectedNode WRITE setProtectedNode NOTIFY protectedNodeChanged)
 
 public:
     Q_INVOKABLE explicit QUmlExceptionHandlerObject(QUmlExceptionHandler *modelingElement);
@@ -103,6 +103,19 @@ public Q_SLOTS:
     void removeExceptionType(QObject *exceptionType);
     void setHandlerBody(QObject *handlerBody = 0);
     void setProtectedNode(QObject *protectedNode = 0);
+
+Q_SIGNALS:
+
+    // Signals for owned attributes [Element]
+    void ownedCommentsChanged(QSet<QObject *> ownedComments);
+    void ownedElementsChanged(QSet<QObject *> ownedElements);
+    void ownerChanged(QObject *owner);
+
+    // Signals for owned attributes [ExceptionHandler]
+    void exceptionInputChanged(QObject *exceptionInput);
+    void exceptionTypesChanged(QSet<QObject *> exceptionTypes);
+    void handlerBodyChanged(QObject *handlerBody);
+    void protectedNodeChanged(QObject *protectedNode);
 
 protected:
     virtual void setGroupProperties();

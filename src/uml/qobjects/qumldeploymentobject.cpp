@@ -283,26 +283,31 @@ QString QUmlDeploymentObject::separator() const
 void QUmlDeploymentObject::addOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlDeployment *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlDeploymentObject::removeOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlDeployment *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlDeploymentObject::addOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlDeployment *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlDeploymentObject::removeOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlDeployment *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlDeploymentObject::setOwner(QObject *owner)
 {
     qmodelingelementproperty_cast<QUmlDeployment *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
+    emit ownerChanged(this->owner());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ParameterableElement]
@@ -310,11 +315,13 @@ void QUmlDeploymentObject::setOwner(QObject *owner)
 void QUmlDeploymentObject::setOwningTemplateParameter(QObject *owningTemplateParameter)
 {
     qmodelingelementproperty_cast<QUmlDeployment *>(this)->setOwningTemplateParameter(qmodelingelementproperty_cast<QUmlTemplateParameter *>(owningTemplateParameter));
+    emit owningTemplateParameterChanged(this->owningTemplateParameter());
 }
 
 void QUmlDeploymentObject::setTemplateParameter(QObject *templateParameter)
 {
     qmodelingelementproperty_cast<QUmlDeployment *>(this)->setTemplateParameter(qmodelingelementproperty_cast<QUmlTemplateParameter *>(templateParameter));
+    emit templateParameterChanged(this->templateParameter());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [NamedElement]
@@ -322,37 +329,44 @@ void QUmlDeploymentObject::setTemplateParameter(QObject *templateParameter)
 void QUmlDeploymentObject::addClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlDeployment *>(this)->addClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlDeploymentObject::removeClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlDeployment *>(this)->removeClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlDeploymentObject::setName(QString name)
 {
     qmodelingelementproperty_cast<QUmlDeployment *>(this)->setName(name);
+    emit nameChanged(this->name());
 }
 
 void QUmlDeploymentObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingelementproperty_cast<QUmlDeployment *>(this)->setNameExpression(qmodelingelementproperty_cast<QUmlStringExpression *>(nameExpression));
+    emit nameExpressionChanged(this->nameExpression());
 }
 
 void QUmlDeploymentObject::setNamespace(QObject *namespace_)
 {
     qmodelingelementproperty_cast<QUmlDeployment *>(this)->setNamespace(qmodelingelementproperty_cast<QUmlNamespace *>(namespace_));
+    emit namespaceChanged(this->namespace_());
 }
 
 void QUmlDeploymentObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingelementproperty_cast<QUmlDeployment *>(this)->setQualifiedName(qualifiedName);
+    emit qualifiedNameChanged(this->qualifiedName());
 }
 // SLOTS FOR OWNED ATTRIBUTES [PackageableElement]
 
 void QUmlDeploymentObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingelementproperty_cast<QUmlDeployment *>(this)->setVisibility(visibility);
+    emit visibilityChanged(this->visibility());
 }
 
 void QUmlDeploymentObject::unsetVisibility()
@@ -367,11 +381,13 @@ void QUmlDeploymentObject::unsetVisibility()
 void QUmlDeploymentObject::addRelatedElement(QObject *relatedElement)
 {
     qmodelingelementproperty_cast<QUmlDeployment *>(this)->addRelatedElement(qmodelingelementproperty_cast<QUmlElement *>(relatedElement));
+    emit relatedElementsChanged(this->relatedElements());
 }
 
 void QUmlDeploymentObject::removeRelatedElement(QObject *relatedElement)
 {
     qmodelingelementproperty_cast<QUmlDeployment *>(this)->removeRelatedElement(qmodelingelementproperty_cast<QUmlElement *>(relatedElement));
+    emit relatedElementsChanged(this->relatedElements());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [DirectedRelationship]
@@ -379,21 +395,25 @@ void QUmlDeploymentObject::removeRelatedElement(QObject *relatedElement)
 void QUmlDeploymentObject::addSource(QObject *source)
 {
     qmodelingelementproperty_cast<QUmlDeployment *>(this)->addSource(qmodelingelementproperty_cast<QUmlElement *>(source));
+    emit sourcesChanged(this->sources());
 }
 
 void QUmlDeploymentObject::removeSource(QObject *source)
 {
     qmodelingelementproperty_cast<QUmlDeployment *>(this)->removeSource(qmodelingelementproperty_cast<QUmlElement *>(source));
+    emit sourcesChanged(this->sources());
 }
 
 void QUmlDeploymentObject::addTarget(QObject *target)
 {
     qmodelingelementproperty_cast<QUmlDeployment *>(this)->addTarget(qmodelingelementproperty_cast<QUmlElement *>(target));
+    emit targetsChanged(this->targets());
 }
 
 void QUmlDeploymentObject::removeTarget(QObject *target)
 {
     qmodelingelementproperty_cast<QUmlDeployment *>(this)->removeTarget(qmodelingelementproperty_cast<QUmlElement *>(target));
+    emit targetsChanged(this->targets());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Dependency]
@@ -401,21 +421,25 @@ void QUmlDeploymentObject::removeTarget(QObject *target)
 void QUmlDeploymentObject::addClient(QObject *client)
 {
     qmodelingelementproperty_cast<QUmlDeployment *>(this)->addClient(qmodelingelementproperty_cast<QUmlNamedElement *>(client));
+    emit clientsChanged(this->clients());
 }
 
 void QUmlDeploymentObject::removeClient(QObject *client)
 {
     qmodelingelementproperty_cast<QUmlDeployment *>(this)->removeClient(qmodelingelementproperty_cast<QUmlNamedElement *>(client));
+    emit clientsChanged(this->clients());
 }
 
 void QUmlDeploymentObject::addSupplier(QObject *supplier)
 {
     qmodelingelementproperty_cast<QUmlDeployment *>(this)->addSupplier(qmodelingelementproperty_cast<QUmlNamedElement *>(supplier));
+    emit suppliersChanged(this->suppliers());
 }
 
 void QUmlDeploymentObject::removeSupplier(QObject *supplier)
 {
     qmodelingelementproperty_cast<QUmlDeployment *>(this)->removeSupplier(qmodelingelementproperty_cast<QUmlNamedElement *>(supplier));
+    emit suppliersChanged(this->suppliers());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Deployment]
@@ -423,26 +447,31 @@ void QUmlDeploymentObject::removeSupplier(QObject *supplier)
 void QUmlDeploymentObject::addConfiguration(QObject *configuration)
 {
     qmodelingelementproperty_cast<QUmlDeployment *>(this)->addConfiguration(qmodelingelementproperty_cast<QUmlDeploymentSpecification *>(configuration));
+    emit configurationsChanged(this->configurations());
 }
 
 void QUmlDeploymentObject::removeConfiguration(QObject *configuration)
 {
     qmodelingelementproperty_cast<QUmlDeployment *>(this)->removeConfiguration(qmodelingelementproperty_cast<QUmlDeploymentSpecification *>(configuration));
+    emit configurationsChanged(this->configurations());
 }
 
 void QUmlDeploymentObject::addDeployedArtifact(QObject *deployedArtifact)
 {
     qmodelingelementproperty_cast<QUmlDeployment *>(this)->addDeployedArtifact(qmodelingelementproperty_cast<QUmlDeployedArtifact *>(deployedArtifact));
+    emit deployedArtifactsChanged(this->deployedArtifacts());
 }
 
 void QUmlDeploymentObject::removeDeployedArtifact(QObject *deployedArtifact)
 {
     qmodelingelementproperty_cast<QUmlDeployment *>(this)->removeDeployedArtifact(qmodelingelementproperty_cast<QUmlDeployedArtifact *>(deployedArtifact));
+    emit deployedArtifactsChanged(this->deployedArtifacts());
 }
 
 void QUmlDeploymentObject::setLocation(QObject *location)
 {
     qmodelingelementproperty_cast<QUmlDeployment *>(this)->setLocation(qmodelingelementproperty_cast<QUmlDeploymentTarget *>(location));
+    emit locationChanged(this->location());
 }
 
 

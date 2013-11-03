@@ -281,26 +281,31 @@ int QMofParameterObject::upperBound() const
 void QMofParameterObject::addOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QMofParameter *>(this)->addOwnedComment(qmodelingelementproperty_cast<QMofComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QMofParameterObject::removeOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QMofParameter *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QMofComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QMofParameterObject::addOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QMofParameter *>(this)->addOwnedElement(qmodelingelementproperty_cast<QMofElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QMofParameterObject::removeOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QMofParameter *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QMofElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QMofParameterObject::setOwner(QObject *owner)
 {
     qmodelingelementproperty_cast<QMofParameter *>(this)->setOwner(qmodelingelementproperty_cast<QMofElement *>(owner));
+    emit ownerChanged(this->owner());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [NamedElement]
@@ -308,21 +313,25 @@ void QMofParameterObject::setOwner(QObject *owner)
 void QMofParameterObject::setName(QString name)
 {
     qmodelingelementproperty_cast<QMofParameter *>(this)->setName(name);
+    emit nameChanged(this->name());
 }
 
 void QMofParameterObject::setNamespace(QObject *namespace_)
 {
     qmodelingelementproperty_cast<QMofParameter *>(this)->setNamespace(qmodelingelementproperty_cast<QMofNamespace *>(namespace_));
+    emit namespaceChanged(this->namespace_());
 }
 
 void QMofParameterObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingelementproperty_cast<QMofParameter *>(this)->setQualifiedName(qualifiedName);
+    emit qualifiedNameChanged(this->qualifiedName());
 }
 
 void QMofParameterObject::setVisibility(QtMof::VisibilityKind visibility)
 {
     qmodelingelementproperty_cast<QMofParameter *>(this)->setVisibility(visibility);
+    emit visibilityChanged(this->visibility());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [TypedElement]
@@ -330,6 +339,7 @@ void QMofParameterObject::setVisibility(QtMof::VisibilityKind visibility)
 void QMofParameterObject::setType(QObject *type)
 {
     qmodelingelementproperty_cast<QMofParameter *>(this)->setType(qmodelingelementproperty_cast<QMofType *>(type));
+    emit typeChanged(this->type());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [MultiplicityElement]
@@ -337,6 +347,7 @@ void QMofParameterObject::setType(QObject *type)
 void QMofParameterObject::setOrdered(bool isOrdered)
 {
     qmodelingelementproperty_cast<QMofParameter *>(this)->setOrdered(isOrdered);
+    emit isOrderedChanged(this->isOrdered());
 }
 
 void QMofParameterObject::unsetOrdered()
@@ -349,6 +360,7 @@ void QMofParameterObject::unsetOrdered()
 void QMofParameterObject::setUnique(bool isUnique)
 {
     qmodelingelementproperty_cast<QMofParameter *>(this)->setUnique(isUnique);
+    emit isUniqueChanged(this->isUnique());
 }
 
 void QMofParameterObject::unsetUnique()
@@ -362,6 +374,7 @@ void QMofParameterObject::unsetUnique()
 void QMofParameterObject::setLower(int lower)
 {
     qmodelingelementproperty_cast<QMofParameter *>(this)->setLower(lower);
+    emit lowerChanged(this->lower());
 }
 
 void QMofParameterObject::unsetLower()
@@ -374,11 +387,13 @@ void QMofParameterObject::unsetLower()
 void QMofParameterObject::setLowerValue(QObject *lowerValue)
 {
     qmodelingelementproperty_cast<QMofParameter *>(this)->setLowerValue(qmodelingelementproperty_cast<QMofValueSpecification *>(lowerValue));
+    emit lowerValueChanged(this->lowerValue());
 }
 
 void QMofParameterObject::setUpper(int upper)
 {
     qmodelingelementproperty_cast<QMofParameter *>(this)->setUpper(upper);
+    emit upperChanged(this->upper());
 }
 
 void QMofParameterObject::unsetUpper()
@@ -391,6 +406,7 @@ void QMofParameterObject::unsetUpper()
 void QMofParameterObject::setUpperValue(QObject *upperValue)
 {
     qmodelingelementproperty_cast<QMofParameter *>(this)->setUpperValue(qmodelingelementproperty_cast<QMofValueSpecification *>(upperValue));
+    emit upperValueChanged(this->upperValue());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Parameter]
@@ -398,16 +414,19 @@ void QMofParameterObject::setUpperValue(QObject *upperValue)
 void QMofParameterObject::setDefault(QString default_)
 {
     qmodelingelementproperty_cast<QMofParameter *>(this)->setDefault(default_);
+    emit defaultChanged(this->default_());
 }
 
 void QMofParameterObject::setDefaultValue(QObject *defaultValue)
 {
     qmodelingelementproperty_cast<QMofParameter *>(this)->setDefaultValue(qmodelingelementproperty_cast<QMofValueSpecification *>(defaultValue));
+    emit defaultValueChanged(this->defaultValue());
 }
 
 void QMofParameterObject::setDirection(QtMof::ParameterDirectionKind direction)
 {
     qmodelingelementproperty_cast<QMofParameter *>(this)->setDirection(direction);
+    emit directionChanged(this->direction());
 }
 
 void QMofParameterObject::unsetDirection()
@@ -420,6 +439,7 @@ void QMofParameterObject::unsetDirection()
 void QMofParameterObject::setOperation(QObject *operation)
 {
     qmodelingelementproperty_cast<QMofParameter *>(this)->setOperation(qmodelingelementproperty_cast<QMofOperation *>(operation));
+    emit operationChanged(this->operation());
 }
 
 

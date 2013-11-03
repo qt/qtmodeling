@@ -147,26 +147,31 @@ bool QUmlProtocolConformanceObject::mustBeOwned() const
 void QUmlProtocolConformanceObject::addOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlProtocolConformance *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlProtocolConformanceObject::removeOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlProtocolConformance *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlProtocolConformanceObject::addOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlProtocolConformance *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlProtocolConformanceObject::removeOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlProtocolConformance *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlProtocolConformanceObject::setOwner(QObject *owner)
 {
     qmodelingelementproperty_cast<QUmlProtocolConformance *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
+    emit ownerChanged(this->owner());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Relationship]
@@ -174,11 +179,13 @@ void QUmlProtocolConformanceObject::setOwner(QObject *owner)
 void QUmlProtocolConformanceObject::addRelatedElement(QObject *relatedElement)
 {
     qmodelingelementproperty_cast<QUmlProtocolConformance *>(this)->addRelatedElement(qmodelingelementproperty_cast<QUmlElement *>(relatedElement));
+    emit relatedElementsChanged(this->relatedElements());
 }
 
 void QUmlProtocolConformanceObject::removeRelatedElement(QObject *relatedElement)
 {
     qmodelingelementproperty_cast<QUmlProtocolConformance *>(this)->removeRelatedElement(qmodelingelementproperty_cast<QUmlElement *>(relatedElement));
+    emit relatedElementsChanged(this->relatedElements());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [DirectedRelationship]
@@ -186,21 +193,25 @@ void QUmlProtocolConformanceObject::removeRelatedElement(QObject *relatedElement
 void QUmlProtocolConformanceObject::addSource(QObject *source)
 {
     qmodelingelementproperty_cast<QUmlProtocolConformance *>(this)->addSource(qmodelingelementproperty_cast<QUmlElement *>(source));
+    emit sourcesChanged(this->sources());
 }
 
 void QUmlProtocolConformanceObject::removeSource(QObject *source)
 {
     qmodelingelementproperty_cast<QUmlProtocolConformance *>(this)->removeSource(qmodelingelementproperty_cast<QUmlElement *>(source));
+    emit sourcesChanged(this->sources());
 }
 
 void QUmlProtocolConformanceObject::addTarget(QObject *target)
 {
     qmodelingelementproperty_cast<QUmlProtocolConformance *>(this)->addTarget(qmodelingelementproperty_cast<QUmlElement *>(target));
+    emit targetsChanged(this->targets());
 }
 
 void QUmlProtocolConformanceObject::removeTarget(QObject *target)
 {
     qmodelingelementproperty_cast<QUmlProtocolConformance *>(this)->removeTarget(qmodelingelementproperty_cast<QUmlElement *>(target));
+    emit targetsChanged(this->targets());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ProtocolConformance]
@@ -208,11 +219,13 @@ void QUmlProtocolConformanceObject::removeTarget(QObject *target)
 void QUmlProtocolConformanceObject::setGeneralMachine(QObject *generalMachine)
 {
     qmodelingelementproperty_cast<QUmlProtocolConformance *>(this)->setGeneralMachine(qmodelingelementproperty_cast<QUmlProtocolStateMachine *>(generalMachine));
+    emit generalMachineChanged(this->generalMachine());
 }
 
 void QUmlProtocolConformanceObject::setSpecificMachine(QObject *specificMachine)
 {
     qmodelingelementproperty_cast<QUmlProtocolConformance *>(this)->setSpecificMachine(qmodelingelementproperty_cast<QUmlProtocolStateMachine *>(specificMachine));
+    emit specificMachineChanged(this->specificMachine());
 }
 
 

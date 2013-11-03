@@ -268,26 +268,31 @@ bool QUmlConnectorObject::isRedefinitionContextValid(QObject *redefined) const
 void QUmlConnectorObject::addOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlConnector *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlConnectorObject::removeOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlConnector *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlConnectorObject::addOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlConnector *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlConnectorObject::removeOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlConnector *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlConnectorObject::setOwner(QObject *owner)
 {
     qmodelingelementproperty_cast<QUmlConnector *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
+    emit ownerChanged(this->owner());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [NamedElement]
@@ -295,36 +300,43 @@ void QUmlConnectorObject::setOwner(QObject *owner)
 void QUmlConnectorObject::addClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlConnector *>(this)->addClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlConnectorObject::removeClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlConnector *>(this)->removeClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlConnectorObject::setName(QString name)
 {
     qmodelingelementproperty_cast<QUmlConnector *>(this)->setName(name);
+    emit nameChanged(this->name());
 }
 
 void QUmlConnectorObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingelementproperty_cast<QUmlConnector *>(this)->setNameExpression(qmodelingelementproperty_cast<QUmlStringExpression *>(nameExpression));
+    emit nameExpressionChanged(this->nameExpression());
 }
 
 void QUmlConnectorObject::setNamespace(QObject *namespace_)
 {
     qmodelingelementproperty_cast<QUmlConnector *>(this)->setNamespace(qmodelingelementproperty_cast<QUmlNamespace *>(namespace_));
+    emit namespaceChanged(this->namespace_());
 }
 
 void QUmlConnectorObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingelementproperty_cast<QUmlConnector *>(this)->setQualifiedName(qualifiedName);
+    emit qualifiedNameChanged(this->qualifiedName());
 }
 
 void QUmlConnectorObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingelementproperty_cast<QUmlConnector *>(this)->setVisibility(visibility);
+    emit visibilityChanged(this->visibility());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [RedefinableElement]
@@ -332,6 +344,7 @@ void QUmlConnectorObject::setVisibility(QtUml::VisibilityKind visibility)
 void QUmlConnectorObject::setLeaf(bool isLeaf)
 {
     qmodelingelementproperty_cast<QUmlConnector *>(this)->setLeaf(isLeaf);
+    emit isLeafChanged(this->isLeaf());
 }
 
 void QUmlConnectorObject::unsetLeaf()
@@ -344,21 +357,25 @@ void QUmlConnectorObject::unsetLeaf()
 void QUmlConnectorObject::addRedefinedElement(QObject *redefinedElement)
 {
     qmodelingelementproperty_cast<QUmlConnector *>(this)->addRedefinedElement(qmodelingelementproperty_cast<QUmlRedefinableElement *>(redefinedElement));
+    emit redefinedElementsChanged(this->redefinedElements());
 }
 
 void QUmlConnectorObject::removeRedefinedElement(QObject *redefinedElement)
 {
     qmodelingelementproperty_cast<QUmlConnector *>(this)->removeRedefinedElement(qmodelingelementproperty_cast<QUmlRedefinableElement *>(redefinedElement));
+    emit redefinedElementsChanged(this->redefinedElements());
 }
 
 void QUmlConnectorObject::addRedefinitionContext(QObject *redefinitionContext)
 {
     qmodelingelementproperty_cast<QUmlConnector *>(this)->addRedefinitionContext(qmodelingelementproperty_cast<QUmlClassifier *>(redefinitionContext));
+    emit redefinitionContextsChanged(this->redefinitionContexts());
 }
 
 void QUmlConnectorObject::removeRedefinitionContext(QObject *redefinitionContext)
 {
     qmodelingelementproperty_cast<QUmlConnector *>(this)->removeRedefinitionContext(qmodelingelementproperty_cast<QUmlClassifier *>(redefinitionContext));
+    emit redefinitionContextsChanged(this->redefinitionContexts());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Feature]
@@ -366,16 +383,19 @@ void QUmlConnectorObject::removeRedefinitionContext(QObject *redefinitionContext
 void QUmlConnectorObject::addFeaturingClassifier(QObject *featuringClassifier)
 {
     qmodelingelementproperty_cast<QUmlConnector *>(this)->addFeaturingClassifier(qmodelingelementproperty_cast<QUmlClassifier *>(featuringClassifier));
+    emit featuringClassifiersChanged(this->featuringClassifiers());
 }
 
 void QUmlConnectorObject::removeFeaturingClassifier(QObject *featuringClassifier)
 {
     qmodelingelementproperty_cast<QUmlConnector *>(this)->removeFeaturingClassifier(qmodelingelementproperty_cast<QUmlClassifier *>(featuringClassifier));
+    emit featuringClassifiersChanged(this->featuringClassifiers());
 }
 
 void QUmlConnectorObject::setStatic(bool isStatic)
 {
     qmodelingelementproperty_cast<QUmlConnector *>(this)->setStatic(isStatic);
+    emit isStaticChanged(this->isStatic());
 }
 
 void QUmlConnectorObject::unsetStatic()
@@ -390,41 +410,49 @@ void QUmlConnectorObject::unsetStatic()
 void QUmlConnectorObject::addContract(QObject *contract)
 {
     qmodelingelementproperty_cast<QUmlConnector *>(this)->addContract(qmodelingelementproperty_cast<QUmlBehavior *>(contract));
+    emit contractsChanged(this->contracts());
 }
 
 void QUmlConnectorObject::removeContract(QObject *contract)
 {
     qmodelingelementproperty_cast<QUmlConnector *>(this)->removeContract(qmodelingelementproperty_cast<QUmlBehavior *>(contract));
+    emit contractsChanged(this->contracts());
 }
 
 void QUmlConnectorObject::addEnd(QObject *end)
 {
     qmodelingelementproperty_cast<QUmlConnector *>(this)->addEnd(qmodelingelementproperty_cast<QUmlConnectorEnd *>(end));
+    emit endsChanged(this->ends());
 }
 
 void QUmlConnectorObject::removeEnd(QObject *end)
 {
     qmodelingelementproperty_cast<QUmlConnector *>(this)->removeEnd(qmodelingelementproperty_cast<QUmlConnectorEnd *>(end));
+    emit endsChanged(this->ends());
 }
 
 void QUmlConnectorObject::setKind(QtUml::ConnectorKind kind)
 {
     qmodelingelementproperty_cast<QUmlConnector *>(this)->setKind(kind);
+    emit kindChanged(this->kind());
 }
 
 void QUmlConnectorObject::addRedefinedConnector(QObject *redefinedConnector)
 {
     qmodelingelementproperty_cast<QUmlConnector *>(this)->addRedefinedConnector(qmodelingelementproperty_cast<QUmlConnector *>(redefinedConnector));
+    emit redefinedConnectorsChanged(this->redefinedConnectors());
 }
 
 void QUmlConnectorObject::removeRedefinedConnector(QObject *redefinedConnector)
 {
     qmodelingelementproperty_cast<QUmlConnector *>(this)->removeRedefinedConnector(qmodelingelementproperty_cast<QUmlConnector *>(redefinedConnector));
+    emit redefinedConnectorsChanged(this->redefinedConnectors());
 }
 
 void QUmlConnectorObject::setType(QObject *type)
 {
     qmodelingelementproperty_cast<QUmlConnector *>(this)->setType(qmodelingelementproperty_cast<QUmlAssociation *>(type));
+    emit typeChanged(this->type());
 }
 
 

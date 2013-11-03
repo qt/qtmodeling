@@ -240,26 +240,31 @@ int QMofExpressionObject::unlimitedValue() const
 void QMofExpressionObject::addOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QMofExpression *>(this)->addOwnedComment(qmodelingelementproperty_cast<QMofComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QMofExpressionObject::removeOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QMofExpression *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QMofComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QMofExpressionObject::addOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QMofExpression *>(this)->addOwnedElement(qmodelingelementproperty_cast<QMofElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QMofExpressionObject::removeOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QMofExpression *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QMofElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QMofExpressionObject::setOwner(QObject *owner)
 {
     qmodelingelementproperty_cast<QMofExpression *>(this)->setOwner(qmodelingelementproperty_cast<QMofElement *>(owner));
+    emit ownerChanged(this->owner());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [NamedElement]
@@ -267,22 +272,26 @@ void QMofExpressionObject::setOwner(QObject *owner)
 void QMofExpressionObject::setName(QString name)
 {
     qmodelingelementproperty_cast<QMofExpression *>(this)->setName(name);
+    emit nameChanged(this->name());
 }
 
 void QMofExpressionObject::setNamespace(QObject *namespace_)
 {
     qmodelingelementproperty_cast<QMofExpression *>(this)->setNamespace(qmodelingelementproperty_cast<QMofNamespace *>(namespace_));
+    emit namespaceChanged(this->namespace_());
 }
 
 void QMofExpressionObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingelementproperty_cast<QMofExpression *>(this)->setQualifiedName(qualifiedName);
+    emit qualifiedNameChanged(this->qualifiedName());
 }
 // SLOTS FOR OWNED ATTRIBUTES [PackageableElement]
 
 void QMofExpressionObject::setVisibility(QtMof::VisibilityKind visibility)
 {
     qmodelingelementproperty_cast<QMofExpression *>(this)->setVisibility(visibility);
+    emit visibilityChanged(this->visibility());
 }
 
 void QMofExpressionObject::unsetVisibility()
@@ -297,6 +306,7 @@ void QMofExpressionObject::unsetVisibility()
 void QMofExpressionObject::setType(QObject *type)
 {
     qmodelingelementproperty_cast<QMofExpression *>(this)->setType(qmodelingelementproperty_cast<QMofType *>(type));
+    emit typeChanged(this->type());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Expression]
@@ -304,16 +314,19 @@ void QMofExpressionObject::setType(QObject *type)
 void QMofExpressionObject::addOperand(QObject *operand)
 {
     qmodelingelementproperty_cast<QMofExpression *>(this)->addOperand(qmodelingelementproperty_cast<QMofValueSpecification *>(operand));
+    emit operandsChanged(this->operands());
 }
 
 void QMofExpressionObject::removeOperand(QObject *operand)
 {
     qmodelingelementproperty_cast<QMofExpression *>(this)->removeOperand(qmodelingelementproperty_cast<QMofValueSpecification *>(operand));
+    emit operandsChanged(this->operands());
 }
 
 void QMofExpressionObject::setSymbol(QString symbol)
 {
     qmodelingelementproperty_cast<QMofExpression *>(this)->setSymbol(symbol);
+    emit symbolChanged(this->symbol());
 }
 
 

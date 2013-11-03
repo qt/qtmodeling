@@ -308,26 +308,31 @@ int QUmlOpaqueExpressionObject::value() const
 void QUmlOpaqueExpressionObject::addOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlOpaqueExpression *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlOpaqueExpressionObject::removeOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlOpaqueExpression *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlOpaqueExpressionObject::addOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlOpaqueExpression *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlOpaqueExpressionObject::removeOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlOpaqueExpression *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlOpaqueExpressionObject::setOwner(QObject *owner)
 {
     qmodelingelementproperty_cast<QUmlOpaqueExpression *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
+    emit ownerChanged(this->owner());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [NamedElement]
@@ -335,37 +340,44 @@ void QUmlOpaqueExpressionObject::setOwner(QObject *owner)
 void QUmlOpaqueExpressionObject::addClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlOpaqueExpression *>(this)->addClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlOpaqueExpressionObject::removeClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlOpaqueExpression *>(this)->removeClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlOpaqueExpressionObject::setName(QString name)
 {
     qmodelingelementproperty_cast<QUmlOpaqueExpression *>(this)->setName(name);
+    emit nameChanged(this->name());
 }
 
 void QUmlOpaqueExpressionObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingelementproperty_cast<QUmlOpaqueExpression *>(this)->setNameExpression(qmodelingelementproperty_cast<QUmlStringExpression *>(nameExpression));
+    emit nameExpressionChanged(this->nameExpression());
 }
 
 void QUmlOpaqueExpressionObject::setNamespace(QObject *namespace_)
 {
     qmodelingelementproperty_cast<QUmlOpaqueExpression *>(this)->setNamespace(qmodelingelementproperty_cast<QUmlNamespace *>(namespace_));
+    emit namespaceChanged(this->namespace_());
 }
 
 void QUmlOpaqueExpressionObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingelementproperty_cast<QUmlOpaqueExpression *>(this)->setQualifiedName(qualifiedName);
+    emit qualifiedNameChanged(this->qualifiedName());
 }
 // SLOTS FOR OWNED ATTRIBUTES [TypedElement]
 
 void QUmlOpaqueExpressionObject::setType(QObject *type)
 {
     qmodelingelementproperty_cast<QUmlOpaqueExpression *>(this)->setType(qmodelingelementproperty_cast<QUmlType *>(type));
+    emit typeChanged(this->type());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ParameterableElement]
@@ -373,11 +385,13 @@ void QUmlOpaqueExpressionObject::setType(QObject *type)
 void QUmlOpaqueExpressionObject::setOwningTemplateParameter(QObject *owningTemplateParameter)
 {
     qmodelingelementproperty_cast<QUmlOpaqueExpression *>(this)->setOwningTemplateParameter(qmodelingelementproperty_cast<QUmlTemplateParameter *>(owningTemplateParameter));
+    emit owningTemplateParameterChanged(this->owningTemplateParameter());
 }
 
 void QUmlOpaqueExpressionObject::setTemplateParameter(QObject *templateParameter)
 {
     qmodelingelementproperty_cast<QUmlOpaqueExpression *>(this)->setTemplateParameter(qmodelingelementproperty_cast<QUmlTemplateParameter *>(templateParameter));
+    emit templateParameterChanged(this->templateParameter());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [PackageableElement]
@@ -385,6 +399,7 @@ void QUmlOpaqueExpressionObject::setTemplateParameter(QObject *templateParameter
 void QUmlOpaqueExpressionObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingelementproperty_cast<QUmlOpaqueExpression *>(this)->setVisibility(visibility);
+    emit visibilityChanged(this->visibility());
 }
 
 void QUmlOpaqueExpressionObject::unsetVisibility()
@@ -399,31 +414,37 @@ void QUmlOpaqueExpressionObject::unsetVisibility()
 void QUmlOpaqueExpressionObject::setBehavior(QObject *behavior)
 {
     qmodelingelementproperty_cast<QUmlOpaqueExpression *>(this)->setBehavior(qmodelingelementproperty_cast<QUmlBehavior *>(behavior));
+    emit behaviorChanged(this->behavior());
 }
 
 void QUmlOpaqueExpressionObject::addBody(QString  body)
 {
     qmodelingelementproperty_cast<QUmlOpaqueExpression *>(this)->addBody(body);
+    emit bodiesChanged(this->bodies());
 }
 
 void QUmlOpaqueExpressionObject::removeBody(QString  body)
 {
     qmodelingelementproperty_cast<QUmlOpaqueExpression *>(this)->removeBody(body);
+    emit bodiesChanged(this->bodies());
 }
 
 void QUmlOpaqueExpressionObject::addLanguage(QString  language)
 {
     qmodelingelementproperty_cast<QUmlOpaqueExpression *>(this)->addLanguage(language);
+    emit languagesChanged(this->languages());
 }
 
 void QUmlOpaqueExpressionObject::removeLanguage(QString  language)
 {
     qmodelingelementproperty_cast<QUmlOpaqueExpression *>(this)->removeLanguage(language);
+    emit languagesChanged(this->languages());
 }
 
 void QUmlOpaqueExpressionObject::setResult(QObject *result)
 {
     qmodelingelementproperty_cast<QUmlOpaqueExpression *>(this)->setResult(qmodelingelementproperty_cast<QUmlParameter *>(result));
+    emit resultChanged(this->result());
 }
 
 

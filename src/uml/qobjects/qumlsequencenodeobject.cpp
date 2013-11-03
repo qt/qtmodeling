@@ -517,26 +517,31 @@ bool QUmlSequenceNodeObject::membersAreDistinguishable() const
 void QUmlSequenceNodeObject::addOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlSequenceNodeObject::removeOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlSequenceNodeObject::addOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlSequenceNodeObject::removeOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlSequenceNodeObject::setOwner(QObject *owner)
 {
     qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
+    emit ownerChanged(this->owner());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [NamedElement]
@@ -544,36 +549,43 @@ void QUmlSequenceNodeObject::setOwner(QObject *owner)
 void QUmlSequenceNodeObject::addClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->addClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlSequenceNodeObject::removeClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->removeClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlSequenceNodeObject::setName(QString name)
 {
     qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->setName(name);
+    emit nameChanged(this->name());
 }
 
 void QUmlSequenceNodeObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->setNameExpression(qmodelingelementproperty_cast<QUmlStringExpression *>(nameExpression));
+    emit nameExpressionChanged(this->nameExpression());
 }
 
 void QUmlSequenceNodeObject::setNamespace(QObject *namespace_)
 {
     qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->setNamespace(qmodelingelementproperty_cast<QUmlNamespace *>(namespace_));
+    emit namespaceChanged(this->namespace_());
 }
 
 void QUmlSequenceNodeObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->setQualifiedName(qualifiedName);
+    emit qualifiedNameChanged(this->qualifiedName());
 }
 
 void QUmlSequenceNodeObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->setVisibility(visibility);
+    emit visibilityChanged(this->visibility());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [RedefinableElement]
@@ -581,6 +593,7 @@ void QUmlSequenceNodeObject::setVisibility(QtUml::VisibilityKind visibility)
 void QUmlSequenceNodeObject::setLeaf(bool isLeaf)
 {
     qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->setLeaf(isLeaf);
+    emit isLeafChanged(this->isLeaf());
 }
 
 void QUmlSequenceNodeObject::unsetLeaf()
@@ -593,21 +606,25 @@ void QUmlSequenceNodeObject::unsetLeaf()
 void QUmlSequenceNodeObject::addRedefinedElement(QObject *redefinedElement)
 {
     qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->addRedefinedElement(qmodelingelementproperty_cast<QUmlRedefinableElement *>(redefinedElement));
+    emit redefinedElementsChanged(this->redefinedElements());
 }
 
 void QUmlSequenceNodeObject::removeRedefinedElement(QObject *redefinedElement)
 {
     qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->removeRedefinedElement(qmodelingelementproperty_cast<QUmlRedefinableElement *>(redefinedElement));
+    emit redefinedElementsChanged(this->redefinedElements());
 }
 
 void QUmlSequenceNodeObject::addRedefinitionContext(QObject *redefinitionContext)
 {
     qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->addRedefinitionContext(qmodelingelementproperty_cast<QUmlClassifier *>(redefinitionContext));
+    emit redefinitionContextsChanged(this->redefinitionContexts());
 }
 
 void QUmlSequenceNodeObject::removeRedefinitionContext(QObject *redefinitionContext)
 {
     qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->removeRedefinitionContext(qmodelingelementproperty_cast<QUmlClassifier *>(redefinitionContext));
+    emit redefinitionContextsChanged(this->redefinitionContexts());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ActivityNode]
@@ -615,66 +632,79 @@ void QUmlSequenceNodeObject::removeRedefinitionContext(QObject *redefinitionCont
 void QUmlSequenceNodeObject::addInGroup(QObject *inGroup)
 {
     qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->addInGroup(qmodelingelementproperty_cast<QUmlActivityGroup *>(inGroup));
+    emit inGroupsChanged(this->inGroups());
 }
 
 void QUmlSequenceNodeObject::removeInGroup(QObject *inGroup)
 {
     qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->removeInGroup(qmodelingelementproperty_cast<QUmlActivityGroup *>(inGroup));
+    emit inGroupsChanged(this->inGroups());
 }
 
 void QUmlSequenceNodeObject::addInInterruptibleRegion(QObject *inInterruptibleRegion)
 {
     qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->addInInterruptibleRegion(qmodelingelementproperty_cast<QUmlInterruptibleActivityRegion *>(inInterruptibleRegion));
+    emit inInterruptibleRegionsChanged(this->inInterruptibleRegions());
 }
 
 void QUmlSequenceNodeObject::removeInInterruptibleRegion(QObject *inInterruptibleRegion)
 {
     qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->removeInInterruptibleRegion(qmodelingelementproperty_cast<QUmlInterruptibleActivityRegion *>(inInterruptibleRegion));
+    emit inInterruptibleRegionsChanged(this->inInterruptibleRegions());
 }
 
 void QUmlSequenceNodeObject::addInPartition(QObject *inPartition)
 {
     qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->addInPartition(qmodelingelementproperty_cast<QUmlActivityPartition *>(inPartition));
+    emit inPartitionsChanged(this->inPartitions());
 }
 
 void QUmlSequenceNodeObject::removeInPartition(QObject *inPartition)
 {
     qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->removeInPartition(qmodelingelementproperty_cast<QUmlActivityPartition *>(inPartition));
+    emit inPartitionsChanged(this->inPartitions());
 }
 
 void QUmlSequenceNodeObject::setInStructuredNode(QObject *inStructuredNode)
 {
     qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->setInStructuredNode(qmodelingelementproperty_cast<QUmlStructuredActivityNode *>(inStructuredNode));
+    emit inStructuredNodeChanged(this->inStructuredNode());
 }
 
 void QUmlSequenceNodeObject::addIncoming(QObject *incoming)
 {
     qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->addIncoming(qmodelingelementproperty_cast<QUmlActivityEdge *>(incoming));
+    emit incomingsChanged(this->incomings());
 }
 
 void QUmlSequenceNodeObject::removeIncoming(QObject *incoming)
 {
     qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->removeIncoming(qmodelingelementproperty_cast<QUmlActivityEdge *>(incoming));
+    emit incomingsChanged(this->incomings());
 }
 
 void QUmlSequenceNodeObject::addOutgoing(QObject *outgoing)
 {
     qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->addOutgoing(qmodelingelementproperty_cast<QUmlActivityEdge *>(outgoing));
+    emit outgoingsChanged(this->outgoings());
 }
 
 void QUmlSequenceNodeObject::removeOutgoing(QObject *outgoing)
 {
     qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->removeOutgoing(qmodelingelementproperty_cast<QUmlActivityEdge *>(outgoing));
+    emit outgoingsChanged(this->outgoings());
 }
 
 void QUmlSequenceNodeObject::addRedefinedNode(QObject *redefinedNode)
 {
     qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->addRedefinedNode(qmodelingelementproperty_cast<QUmlActivityNode *>(redefinedNode));
+    emit redefinedNodesChanged(this->redefinedNodes());
 }
 
 void QUmlSequenceNodeObject::removeRedefinedNode(QObject *redefinedNode)
 {
     qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->removeRedefinedNode(qmodelingelementproperty_cast<QUmlActivityNode *>(redefinedNode));
+    emit redefinedNodesChanged(this->redefinedNodes());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ExecutableNode]
@@ -682,11 +712,13 @@ void QUmlSequenceNodeObject::removeRedefinedNode(QObject *redefinedNode)
 void QUmlSequenceNodeObject::addHandler(QObject *handler)
 {
     qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->addHandler(qmodelingelementproperty_cast<QUmlExceptionHandler *>(handler));
+    emit handlersChanged(this->handlers());
 }
 
 void QUmlSequenceNodeObject::removeHandler(QObject *handler)
 {
     qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->removeHandler(qmodelingelementproperty_cast<QUmlExceptionHandler *>(handler));
+    emit handlersChanged(this->handlers());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Action]
@@ -694,21 +726,25 @@ void QUmlSequenceNodeObject::removeHandler(QObject *handler)
 void QUmlSequenceNodeObject::setContext(QObject *context)
 {
     qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->setContext(qmodelingelementproperty_cast<QUmlClassifier *>(context));
+    emit contextChanged(this->context());
 }
 
 void QUmlSequenceNodeObject::addInput(QObject *input)
 {
     qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->addInput(qmodelingelementproperty_cast<QUmlInputPin *>(input));
+    emit inputsChanged(this->inputs());
 }
 
 void QUmlSequenceNodeObject::removeInput(QObject *input)
 {
     qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->removeInput(qmodelingelementproperty_cast<QUmlInputPin *>(input));
+    emit inputsChanged(this->inputs());
 }
 
 void QUmlSequenceNodeObject::setLocallyReentrant(bool isLocallyReentrant)
 {
     qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->setLocallyReentrant(isLocallyReentrant);
+    emit isLocallyReentrantChanged(this->isLocallyReentrant());
 }
 
 void QUmlSequenceNodeObject::unsetLocallyReentrant()
@@ -721,31 +757,37 @@ void QUmlSequenceNodeObject::unsetLocallyReentrant()
 void QUmlSequenceNodeObject::addLocalPostcondition(QObject *localPostcondition)
 {
     qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->addLocalPostcondition(qmodelingelementproperty_cast<QUmlConstraint *>(localPostcondition));
+    emit localPostconditionsChanged(this->localPostconditions());
 }
 
 void QUmlSequenceNodeObject::removeLocalPostcondition(QObject *localPostcondition)
 {
     qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->removeLocalPostcondition(qmodelingelementproperty_cast<QUmlConstraint *>(localPostcondition));
+    emit localPostconditionsChanged(this->localPostconditions());
 }
 
 void QUmlSequenceNodeObject::addLocalPrecondition(QObject *localPrecondition)
 {
     qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->addLocalPrecondition(qmodelingelementproperty_cast<QUmlConstraint *>(localPrecondition));
+    emit localPreconditionsChanged(this->localPreconditions());
 }
 
 void QUmlSequenceNodeObject::removeLocalPrecondition(QObject *localPrecondition)
 {
     qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->removeLocalPrecondition(qmodelingelementproperty_cast<QUmlConstraint *>(localPrecondition));
+    emit localPreconditionsChanged(this->localPreconditions());
 }
 
 void QUmlSequenceNodeObject::addOutput(QObject *output)
 {
     qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->addOutput(qmodelingelementproperty_cast<QUmlOutputPin *>(output));
+    emit outputsChanged(this->outputs());
 }
 
 void QUmlSequenceNodeObject::removeOutput(QObject *output)
 {
     qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->removeOutput(qmodelingelementproperty_cast<QUmlOutputPin *>(output));
+    emit outputsChanged(this->outputs());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Namespace]
@@ -753,61 +795,73 @@ void QUmlSequenceNodeObject::removeOutput(QObject *output)
 void QUmlSequenceNodeObject::addElementImport(QObject *elementImport)
 {
     qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->addElementImport(qmodelingelementproperty_cast<QUmlElementImport *>(elementImport));
+    emit elementImportsChanged(this->elementImports());
 }
 
 void QUmlSequenceNodeObject::removeElementImport(QObject *elementImport)
 {
     qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->removeElementImport(qmodelingelementproperty_cast<QUmlElementImport *>(elementImport));
+    emit elementImportsChanged(this->elementImports());
 }
 
 void QUmlSequenceNodeObject::addImportedMember(QObject *importedMember)
 {
     qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->addImportedMember(qmodelingelementproperty_cast<QUmlPackageableElement *>(importedMember));
+    emit importedMembersChanged(this->importedMembers());
 }
 
 void QUmlSequenceNodeObject::removeImportedMember(QObject *importedMember)
 {
     qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->removeImportedMember(qmodelingelementproperty_cast<QUmlPackageableElement *>(importedMember));
+    emit importedMembersChanged(this->importedMembers());
 }
 
 void QUmlSequenceNodeObject::addMember(QObject *member)
 {
     qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->addMember(qmodelingelementproperty_cast<QUmlNamedElement *>(member));
+    emit membersChanged(this->members());
 }
 
 void QUmlSequenceNodeObject::removeMember(QObject *member)
 {
     qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->removeMember(qmodelingelementproperty_cast<QUmlNamedElement *>(member));
+    emit membersChanged(this->members());
 }
 
 void QUmlSequenceNodeObject::addOwnedMember(QObject *ownedMember)
 {
     qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->addOwnedMember(qmodelingelementproperty_cast<QUmlNamedElement *>(ownedMember));
+    emit ownedMembersChanged(this->ownedMembers());
 }
 
 void QUmlSequenceNodeObject::removeOwnedMember(QObject *ownedMember)
 {
     qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->removeOwnedMember(qmodelingelementproperty_cast<QUmlNamedElement *>(ownedMember));
+    emit ownedMembersChanged(this->ownedMembers());
 }
 
 void QUmlSequenceNodeObject::addOwnedRule(QObject *ownedRule)
 {
     qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->addOwnedRule(qmodelingelementproperty_cast<QUmlConstraint *>(ownedRule));
+    emit ownedRulesChanged(this->ownedRules());
 }
 
 void QUmlSequenceNodeObject::removeOwnedRule(QObject *ownedRule)
 {
     qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->removeOwnedRule(qmodelingelementproperty_cast<QUmlConstraint *>(ownedRule));
+    emit ownedRulesChanged(this->ownedRules());
 }
 
 void QUmlSequenceNodeObject::addPackageImport(QObject *packageImport)
 {
     qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->addPackageImport(qmodelingelementproperty_cast<QUmlPackageImport *>(packageImport));
+    emit packageImportsChanged(this->packageImports());
 }
 
 void QUmlSequenceNodeObject::removePackageImport(QObject *packageImport)
 {
     qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->removePackageImport(qmodelingelementproperty_cast<QUmlPackageImport *>(packageImport));
+    emit packageImportsChanged(this->packageImports());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ActivityGroup]
@@ -815,36 +869,43 @@ void QUmlSequenceNodeObject::removePackageImport(QObject *packageImport)
 void QUmlSequenceNodeObject::addContainedEdge(QObject *containedEdge)
 {
     qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->addContainedEdge(qmodelingelementproperty_cast<QUmlActivityEdge *>(containedEdge));
+    emit containedEdgesChanged(this->containedEdges());
 }
 
 void QUmlSequenceNodeObject::removeContainedEdge(QObject *containedEdge)
 {
     qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->removeContainedEdge(qmodelingelementproperty_cast<QUmlActivityEdge *>(containedEdge));
+    emit containedEdgesChanged(this->containedEdges());
 }
 
 void QUmlSequenceNodeObject::addContainedNode(QObject *containedNode)
 {
     qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->addContainedNode(qmodelingelementproperty_cast<QUmlActivityNode *>(containedNode));
+    emit containedNodesChanged(this->containedNodes());
 }
 
 void QUmlSequenceNodeObject::removeContainedNode(QObject *containedNode)
 {
     qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->removeContainedNode(qmodelingelementproperty_cast<QUmlActivityNode *>(containedNode));
+    emit containedNodesChanged(this->containedNodes());
 }
 
 void QUmlSequenceNodeObject::addSubgroup(QObject *subgroup)
 {
     qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->addSubgroup(qmodelingelementproperty_cast<QUmlActivityGroup *>(subgroup));
+    emit subgroupsChanged(this->subgroups());
 }
 
 void QUmlSequenceNodeObject::removeSubgroup(QObject *subgroup)
 {
     qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->removeSubgroup(qmodelingelementproperty_cast<QUmlActivityGroup *>(subgroup));
+    emit subgroupsChanged(this->subgroups());
 }
 
 void QUmlSequenceNodeObject::setSuperGroup(QObject *superGroup)
 {
     qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->setSuperGroup(qmodelingelementproperty_cast<QUmlActivityGroup *>(superGroup));
+    emit superGroupChanged(this->superGroup());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [StructuredActivityNode]
@@ -852,21 +913,25 @@ void QUmlSequenceNodeObject::setSuperGroup(QObject *superGroup)
 void QUmlSequenceNodeObject::setActivity(QObject *activity)
 {
     qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->setActivity(qmodelingelementproperty_cast<QUmlActivity *>(activity));
+    emit activityChanged(this->activity());
 }
 
 void QUmlSequenceNodeObject::addEdge(QObject *edge)
 {
     qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->addEdge(qmodelingelementproperty_cast<QUmlActivityEdge *>(edge));
+    emit edgesChanged(this->edges());
 }
 
 void QUmlSequenceNodeObject::removeEdge(QObject *edge)
 {
     qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->removeEdge(qmodelingelementproperty_cast<QUmlActivityEdge *>(edge));
+    emit edgesChanged(this->edges());
 }
 
 void QUmlSequenceNodeObject::setMustIsolate(bool mustIsolate)
 {
     qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->setMustIsolate(mustIsolate);
+    emit mustIsolateChanged(this->mustIsolate());
 }
 
 void QUmlSequenceNodeObject::unsetMustIsolate()
@@ -879,31 +944,37 @@ void QUmlSequenceNodeObject::unsetMustIsolate()
 void QUmlSequenceNodeObject::addStructuredNodeInput(QObject *structuredNodeInput)
 {
     qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->addStructuredNodeInput(qmodelingelementproperty_cast<QUmlInputPin *>(structuredNodeInput));
+    emit structuredNodeInputsChanged(this->structuredNodeInputs());
 }
 
 void QUmlSequenceNodeObject::removeStructuredNodeInput(QObject *structuredNodeInput)
 {
     qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->removeStructuredNodeInput(qmodelingelementproperty_cast<QUmlInputPin *>(structuredNodeInput));
+    emit structuredNodeInputsChanged(this->structuredNodeInputs());
 }
 
 void QUmlSequenceNodeObject::addStructuredNodeOutput(QObject *structuredNodeOutput)
 {
     qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->addStructuredNodeOutput(qmodelingelementproperty_cast<QUmlOutputPin *>(structuredNodeOutput));
+    emit structuredNodeOutputsChanged(this->structuredNodeOutputs());
 }
 
 void QUmlSequenceNodeObject::removeStructuredNodeOutput(QObject *structuredNodeOutput)
 {
     qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->removeStructuredNodeOutput(qmodelingelementproperty_cast<QUmlOutputPin *>(structuredNodeOutput));
+    emit structuredNodeOutputsChanged(this->structuredNodeOutputs());
 }
 
 void QUmlSequenceNodeObject::addVariable(QObject *variable)
 {
     qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->addVariable(qmodelingelementproperty_cast<QUmlVariable *>(variable));
+    emit variablesChanged(this->variables());
 }
 
 void QUmlSequenceNodeObject::removeVariable(QObject *variable)
 {
     qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->removeVariable(qmodelingelementproperty_cast<QUmlVariable *>(variable));
+    emit variablesChanged(this->variables());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [SequenceNode]
@@ -911,11 +982,13 @@ void QUmlSequenceNodeObject::removeVariable(QObject *variable)
 void QUmlSequenceNodeObject::addExecutableNode(QObject *executableNode)
 {
     qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->addExecutableNode(qmodelingelementproperty_cast<QUmlExecutableNode *>(executableNode));
+    emit executableNodesChanged(this->executableNodes());
 }
 
 void QUmlSequenceNodeObject::removeExecutableNode(QObject *executableNode)
 {
     qmodelingelementproperty_cast<QUmlSequenceNode *>(this)->removeExecutableNode(qmodelingelementproperty_cast<QUmlExecutableNode *>(executableNode));
+    emit executableNodesChanged(this->executableNodes());
 }
 
 

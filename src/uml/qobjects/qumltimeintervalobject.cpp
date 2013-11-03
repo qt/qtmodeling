@@ -276,26 +276,31 @@ int QUmlTimeIntervalObject::unlimitedValue() const
 void QUmlTimeIntervalObject::addOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlTimeInterval *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlTimeIntervalObject::removeOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlTimeInterval *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlTimeIntervalObject::addOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlTimeInterval *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlTimeIntervalObject::removeOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlTimeInterval *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlTimeIntervalObject::setOwner(QObject *owner)
 {
     qmodelingelementproperty_cast<QUmlTimeInterval *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
+    emit ownerChanged(this->owner());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [NamedElement]
@@ -303,37 +308,44 @@ void QUmlTimeIntervalObject::setOwner(QObject *owner)
 void QUmlTimeIntervalObject::addClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlTimeInterval *>(this)->addClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlTimeIntervalObject::removeClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlTimeInterval *>(this)->removeClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlTimeIntervalObject::setName(QString name)
 {
     qmodelingelementproperty_cast<QUmlTimeInterval *>(this)->setName(name);
+    emit nameChanged(this->name());
 }
 
 void QUmlTimeIntervalObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingelementproperty_cast<QUmlTimeInterval *>(this)->setNameExpression(qmodelingelementproperty_cast<QUmlStringExpression *>(nameExpression));
+    emit nameExpressionChanged(this->nameExpression());
 }
 
 void QUmlTimeIntervalObject::setNamespace(QObject *namespace_)
 {
     qmodelingelementproperty_cast<QUmlTimeInterval *>(this)->setNamespace(qmodelingelementproperty_cast<QUmlNamespace *>(namespace_));
+    emit namespaceChanged(this->namespace_());
 }
 
 void QUmlTimeIntervalObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingelementproperty_cast<QUmlTimeInterval *>(this)->setQualifiedName(qualifiedName);
+    emit qualifiedNameChanged(this->qualifiedName());
 }
 // SLOTS FOR OWNED ATTRIBUTES [TypedElement]
 
 void QUmlTimeIntervalObject::setType(QObject *type)
 {
     qmodelingelementproperty_cast<QUmlTimeInterval *>(this)->setType(qmodelingelementproperty_cast<QUmlType *>(type));
+    emit typeChanged(this->type());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ParameterableElement]
@@ -341,11 +353,13 @@ void QUmlTimeIntervalObject::setType(QObject *type)
 void QUmlTimeIntervalObject::setOwningTemplateParameter(QObject *owningTemplateParameter)
 {
     qmodelingelementproperty_cast<QUmlTimeInterval *>(this)->setOwningTemplateParameter(qmodelingelementproperty_cast<QUmlTemplateParameter *>(owningTemplateParameter));
+    emit owningTemplateParameterChanged(this->owningTemplateParameter());
 }
 
 void QUmlTimeIntervalObject::setTemplateParameter(QObject *templateParameter)
 {
     qmodelingelementproperty_cast<QUmlTimeInterval *>(this)->setTemplateParameter(qmodelingelementproperty_cast<QUmlTemplateParameter *>(templateParameter));
+    emit templateParameterChanged(this->templateParameter());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [PackageableElement]
@@ -353,6 +367,7 @@ void QUmlTimeIntervalObject::setTemplateParameter(QObject *templateParameter)
 void QUmlTimeIntervalObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingelementproperty_cast<QUmlTimeInterval *>(this)->setVisibility(visibility);
+    emit visibilityChanged(this->visibility());
 }
 
 void QUmlTimeIntervalObject::unsetVisibility()
@@ -367,11 +382,13 @@ void QUmlTimeIntervalObject::unsetVisibility()
 void QUmlTimeIntervalObject::setMax(QObject *max)
 {
     qmodelingelementproperty_cast<QUmlTimeInterval *>(this)->setMax(qmodelingelementproperty_cast<QUmlTimeExpression *>(max));
+    emit maxChanged(this->max());
 }
 
 void QUmlTimeIntervalObject::setMin(QObject *min)
 {
     qmodelingelementproperty_cast<QUmlTimeInterval *>(this)->setMin(qmodelingelementproperty_cast<QUmlTimeExpression *>(min));
+    emit minChanged(this->min());
 }
 
 

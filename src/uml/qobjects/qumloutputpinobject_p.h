@@ -62,53 +62,53 @@ class Q_UML_EXPORT QUmlOutputPinObject : public QModelingObject
     Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [Element]
-    Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
-    Q_PROPERTY(QSet<QObject *> ownedElements READ ownedElements)
-    Q_PROPERTY(QObject * owner READ owner)
+    Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments NOTIFY ownedCommentsChanged)
+    Q_PROPERTY(QSet<QObject *> ownedElements READ ownedElements NOTIFY ownedElementsChanged)
+    Q_PROPERTY(QObject * owner READ owner NOTIFY ownerChanged)
 
     // Properties [MultiplicityElement]
-    Q_PROPERTY(bool isOrdered READ isOrdered WRITE setOrdered RESET unsetOrdered)
-    Q_PROPERTY(bool isUnique READ isUnique WRITE setUnique RESET unsetUnique)
-    Q_PROPERTY(int lower READ lower WRITE setLower RESET unsetLower STORED false)
-    Q_PROPERTY(QObject * lowerValue READ lowerValue WRITE setLowerValue)
-    Q_PROPERTY(int upper READ upper WRITE setUpper RESET unsetUpper STORED false)
-    Q_PROPERTY(QObject * upperValue READ upperValue WRITE setUpperValue)
+    Q_PROPERTY(bool isOrdered READ isOrdered WRITE setOrdered NOTIFY isOrderedChanged RESET unsetOrdered)
+    Q_PROPERTY(bool isUnique READ isUnique WRITE setUnique NOTIFY isUniqueChanged RESET unsetUnique)
+    Q_PROPERTY(int lower READ lower WRITE setLower NOTIFY lowerChanged RESET unsetLower STORED false)
+    Q_PROPERTY(QObject * lowerValue READ lowerValue WRITE setLowerValue NOTIFY lowerValueChanged)
+    Q_PROPERTY(int upper READ upper WRITE setUpper NOTIFY upperChanged RESET unsetUpper STORED false)
+    Q_PROPERTY(QObject * upperValue READ upperValue WRITE setUpperValue NOTIFY upperValueChanged)
 
     // Properties [NamedElement]
-    Q_PROPERTY(QSet<QObject *> clientDependencies READ clientDependencies)
-    Q_PROPERTY(QString name READ name WRITE setName)
-    Q_PROPERTY(QObject * nameExpression READ nameExpression WRITE setNameExpression)
-    Q_PROPERTY(QObject * namespace_ READ namespace_)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
+    Q_PROPERTY(QSet<QObject *> clientDependencies READ clientDependencies NOTIFY clientDependenciesChanged)
+    Q_PROPERTY(QString name READ name WRITE setName NOTIFY nameChanged)
+    Q_PROPERTY(QObject * nameExpression READ nameExpression WRITE setNameExpression NOTIFY nameExpressionChanged)
+    Q_PROPERTY(QObject * namespace_ READ namespace_ NOTIFY namespaceChanged)
+    Q_PROPERTY(QString qualifiedName READ qualifiedName NOTIFY qualifiedNameChanged STORED false)
+    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility NOTIFY visibilityChanged)
 
     // Properties [RedefinableElement]
-    Q_PROPERTY(bool isLeaf READ isLeaf WRITE setLeaf RESET unsetLeaf)
-    Q_PROPERTY(QSet<QObject *> redefinedElements READ redefinedElements)
-    Q_PROPERTY(QSet<QObject *> redefinitionContexts READ redefinitionContexts)
+    Q_PROPERTY(bool isLeaf READ isLeaf WRITE setLeaf NOTIFY isLeafChanged RESET unsetLeaf)
+    Q_PROPERTY(QSet<QObject *> redefinedElements READ redefinedElements NOTIFY redefinedElementsChanged)
+    Q_PROPERTY(QSet<QObject *> redefinitionContexts READ redefinitionContexts NOTIFY redefinitionContextsChanged)
 
     // Properties [ActivityNode]
-    Q_PROPERTY(QObject * activity READ activity WRITE setActivity)
-    Q_PROPERTY(QSet<QObject *> inGroups READ inGroups)
-    Q_PROPERTY(QSet<QObject *> inInterruptibleRegions READ inInterruptibleRegions)
-    Q_PROPERTY(QSet<QObject *> inPartitions READ inPartitions)
-    Q_PROPERTY(QObject * inStructuredNode READ inStructuredNode WRITE setInStructuredNode)
-    Q_PROPERTY(QSet<QObject *> incomings READ incomings)
-    Q_PROPERTY(QSet<QObject *> outgoings READ outgoings)
-    Q_PROPERTY(QSet<QObject *> redefinedNodes READ redefinedNodes)
+    Q_PROPERTY(QObject * activity READ activity WRITE setActivity NOTIFY activityChanged)
+    Q_PROPERTY(QSet<QObject *> inGroups READ inGroups NOTIFY inGroupsChanged)
+    Q_PROPERTY(QSet<QObject *> inInterruptibleRegions READ inInterruptibleRegions NOTIFY inInterruptibleRegionsChanged)
+    Q_PROPERTY(QSet<QObject *> inPartitions READ inPartitions NOTIFY inPartitionsChanged)
+    Q_PROPERTY(QObject * inStructuredNode READ inStructuredNode WRITE setInStructuredNode NOTIFY inStructuredNodeChanged)
+    Q_PROPERTY(QSet<QObject *> incomings READ incomings NOTIFY incomingsChanged)
+    Q_PROPERTY(QSet<QObject *> outgoings READ outgoings NOTIFY outgoingsChanged)
+    Q_PROPERTY(QSet<QObject *> redefinedNodes READ redefinedNodes NOTIFY redefinedNodesChanged)
 
     // Properties [TypedElement]
-    Q_PROPERTY(QObject * type READ type WRITE setType)
+    Q_PROPERTY(QObject * type READ type WRITE setType NOTIFY typeChanged)
 
     // Properties [ObjectNode]
-    Q_PROPERTY(QSet<QObject *> inStates READ inStates)
-    Q_PROPERTY(bool isControlType READ isControlType WRITE setControlType RESET unsetControlType)
-    Q_PROPERTY(QtUml::ObjectNodeOrderingKind ordering READ ordering WRITE setOrdering RESET unsetOrdering)
-    Q_PROPERTY(QObject * selection READ selection WRITE setSelection)
-    Q_PROPERTY(QObject * upperBound READ upperBound WRITE setUpperBound)
+    Q_PROPERTY(QSet<QObject *> inStates READ inStates NOTIFY inStatesChanged)
+    Q_PROPERTY(bool isControlType READ isControlType WRITE setControlType NOTIFY isControlTypeChanged RESET unsetControlType)
+    Q_PROPERTY(QtUml::ObjectNodeOrderingKind ordering READ ordering WRITE setOrdering NOTIFY orderingChanged RESET unsetOrdering)
+    Q_PROPERTY(QObject * selection READ selection WRITE setSelection NOTIFY selectionChanged)
+    Q_PROPERTY(QObject * upperBound READ upperBound WRITE setUpperBound NOTIFY upperBoundChanged)
 
     // Properties [Pin]
-    Q_PROPERTY(bool isControl READ isControl WRITE setControl RESET unsetControl)
+    Q_PROPERTY(bool isControl READ isControl WRITE setControl NOTIFY isControlChanged RESET unsetControl)
 
 public:
     Q_INVOKABLE explicit QUmlOutputPinObject(QUmlOutputPin *modelingElement);
@@ -255,6 +255,57 @@ public Q_SLOTS:
     // Slots for owned attributes [Pin]
     void setControl(bool isControl);
     void unsetControl();
+
+Q_SIGNALS:
+
+    // Signals for owned attributes [Element]
+    void ownedCommentsChanged(QSet<QObject *> ownedComments);
+    void ownedElementsChanged(QSet<QObject *> ownedElements);
+    void ownerChanged(QObject *owner);
+
+    // Signals for owned attributes [MultiplicityElement]
+    void isOrderedChanged(bool isOrdered);
+    void isUniqueChanged(bool isUnique);
+    void lowerChanged(int lower);
+    void lowerValueChanged(QObject *lowerValue);
+    void upperChanged(int upper);
+    void upperValueChanged(QObject *upperValue);
+
+    // Signals for owned attributes [NamedElement]
+    void clientDependenciesChanged(QSet<QObject *> clientDependencies);
+    void nameChanged(QString name);
+    void nameExpressionChanged(QObject *nameExpression);
+    void namespaceChanged(QObject *namespace_);
+    void qualifiedNameChanged(QString qualifiedName);
+    void visibilityChanged(QtUml::VisibilityKind visibility);
+
+    // Signals for owned attributes [RedefinableElement]
+    void isLeafChanged(bool isLeaf);
+    void redefinedElementsChanged(QSet<QObject *> redefinedElements);
+    void redefinitionContextsChanged(QSet<QObject *> redefinitionContexts);
+
+    // Signals for owned attributes [ActivityNode]
+    void activityChanged(QObject *activity);
+    void inGroupsChanged(QSet<QObject *> inGroups);
+    void inInterruptibleRegionsChanged(QSet<QObject *> inInterruptibleRegions);
+    void inPartitionsChanged(QSet<QObject *> inPartitions);
+    void inStructuredNodeChanged(QObject *inStructuredNode);
+    void incomingsChanged(QSet<QObject *> incomings);
+    void outgoingsChanged(QSet<QObject *> outgoings);
+    void redefinedNodesChanged(QSet<QObject *> redefinedNodes);
+
+    // Signals for owned attributes [TypedElement]
+    void typeChanged(QObject *type);
+
+    // Signals for owned attributes [ObjectNode]
+    void inStatesChanged(QSet<QObject *> inStates);
+    void isControlTypeChanged(bool isControlType);
+    void orderingChanged(QtUml::ObjectNodeOrderingKind ordering);
+    void selectionChanged(QObject *selection);
+    void upperBoundChanged(QObject *upperBound);
+
+    // Signals for owned attributes [Pin]
+    void isControlChanged(bool isControl);
 
 protected:
     virtual void setGroupProperties();

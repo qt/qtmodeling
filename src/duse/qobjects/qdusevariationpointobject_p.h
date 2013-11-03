@@ -60,10 +60,10 @@ class Q_DUSE_EXPORT QDuseVariationPointObject : public QModelingObject
     Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [VariationPoint]
-    Q_PROPERTY(QString name READ name WRITE setName)
-    Q_PROPERTY(QString rationale READ rationale WRITE setRationale)
-    Q_PROPERTY(QString preChangeValidationRule READ preChangeValidationRule WRITE setPreChangeValidationRule)
-    Q_PROPERTY(QString modelChange READ modelChange WRITE setModelChange)
+    Q_PROPERTY(QString name READ name WRITE setName NOTIFY nameChanged)
+    Q_PROPERTY(QString rationale READ rationale WRITE setRationale NOTIFY rationaleChanged)
+    Q_PROPERTY(QString preChangeValidationRule READ preChangeValidationRule WRITE setPreChangeValidationRule NOTIFY preChangeValidationRuleChanged)
+    Q_PROPERTY(QString modelChange READ modelChange WRITE setModelChange NOTIFY modelChangeChanged)
 
 public:
     Q_INVOKABLE explicit QDuseVariationPointObject(QDuseVariationPoint *modelingElement);
@@ -81,6 +81,14 @@ public Q_SLOTS:
     void setRationale(QString rationale);
     void setPreChangeValidationRule(QString preChangeValidationRule);
     void setModelChange(QString modelChange);
+
+Q_SIGNALS:
+
+    // Signals for owned attributes [VariationPoint]
+    void nameChanged(QString name);
+    void rationaleChanged(QString rationale);
+    void preChangeValidationRuleChanged(QString preChangeValidationRule);
+    void modelChangeChanged(QString modelChange);
 
 protected:
     virtual void setGroupProperties();

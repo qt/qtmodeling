@@ -634,26 +634,31 @@ QObject *QUmlExtensionObject::metaclassEnd() const
 void QUmlExtensionObject::addOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlExtension *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlExtensionObject::removeOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlExtension *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlExtensionObject::addOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlExtension *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlExtensionObject::removeOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlExtension *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlExtensionObject::setOwner(QObject *owner)
 {
     qmodelingelementproperty_cast<QUmlExtension *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
+    emit ownerChanged(this->owner());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [NamedElement]
@@ -661,92 +666,110 @@ void QUmlExtensionObject::setOwner(QObject *owner)
 void QUmlExtensionObject::addClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlExtension *>(this)->addClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlExtensionObject::removeClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlExtension *>(this)->removeClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlExtensionObject::setName(QString name)
 {
     qmodelingelementproperty_cast<QUmlExtension *>(this)->setName(name);
+    emit nameChanged(this->name());
 }
 
 void QUmlExtensionObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingelementproperty_cast<QUmlExtension *>(this)->setNameExpression(qmodelingelementproperty_cast<QUmlStringExpression *>(nameExpression));
+    emit nameExpressionChanged(this->nameExpression());
 }
 
 void QUmlExtensionObject::setNamespace(QObject *namespace_)
 {
     qmodelingelementproperty_cast<QUmlExtension *>(this)->setNamespace(qmodelingelementproperty_cast<QUmlNamespace *>(namespace_));
+    emit namespaceChanged(this->namespace_());
 }
 
 void QUmlExtensionObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingelementproperty_cast<QUmlExtension *>(this)->setQualifiedName(qualifiedName);
+    emit qualifiedNameChanged(this->qualifiedName());
 }
 // SLOTS FOR OWNED ATTRIBUTES [Namespace]
 
 void QUmlExtensionObject::addElementImport(QObject *elementImport)
 {
     qmodelingelementproperty_cast<QUmlExtension *>(this)->addElementImport(qmodelingelementproperty_cast<QUmlElementImport *>(elementImport));
+    emit elementImportsChanged(this->elementImports());
 }
 
 void QUmlExtensionObject::removeElementImport(QObject *elementImport)
 {
     qmodelingelementproperty_cast<QUmlExtension *>(this)->removeElementImport(qmodelingelementproperty_cast<QUmlElementImport *>(elementImport));
+    emit elementImportsChanged(this->elementImports());
 }
 
 void QUmlExtensionObject::addImportedMember(QObject *importedMember)
 {
     qmodelingelementproperty_cast<QUmlExtension *>(this)->addImportedMember(qmodelingelementproperty_cast<QUmlPackageableElement *>(importedMember));
+    emit importedMembersChanged(this->importedMembers());
 }
 
 void QUmlExtensionObject::removeImportedMember(QObject *importedMember)
 {
     qmodelingelementproperty_cast<QUmlExtension *>(this)->removeImportedMember(qmodelingelementproperty_cast<QUmlPackageableElement *>(importedMember));
+    emit importedMembersChanged(this->importedMembers());
 }
 
 void QUmlExtensionObject::addMember(QObject *member)
 {
     qmodelingelementproperty_cast<QUmlExtension *>(this)->addMember(qmodelingelementproperty_cast<QUmlNamedElement *>(member));
+    emit membersChanged(this->members());
 }
 
 void QUmlExtensionObject::removeMember(QObject *member)
 {
     qmodelingelementproperty_cast<QUmlExtension *>(this)->removeMember(qmodelingelementproperty_cast<QUmlNamedElement *>(member));
+    emit membersChanged(this->members());
 }
 
 void QUmlExtensionObject::addOwnedMember(QObject *ownedMember)
 {
     qmodelingelementproperty_cast<QUmlExtension *>(this)->addOwnedMember(qmodelingelementproperty_cast<QUmlNamedElement *>(ownedMember));
+    emit ownedMembersChanged(this->ownedMembers());
 }
 
 void QUmlExtensionObject::removeOwnedMember(QObject *ownedMember)
 {
     qmodelingelementproperty_cast<QUmlExtension *>(this)->removeOwnedMember(qmodelingelementproperty_cast<QUmlNamedElement *>(ownedMember));
+    emit ownedMembersChanged(this->ownedMembers());
 }
 
 void QUmlExtensionObject::addOwnedRule(QObject *ownedRule)
 {
     qmodelingelementproperty_cast<QUmlExtension *>(this)->addOwnedRule(qmodelingelementproperty_cast<QUmlConstraint *>(ownedRule));
+    emit ownedRulesChanged(this->ownedRules());
 }
 
 void QUmlExtensionObject::removeOwnedRule(QObject *ownedRule)
 {
     qmodelingelementproperty_cast<QUmlExtension *>(this)->removeOwnedRule(qmodelingelementproperty_cast<QUmlConstraint *>(ownedRule));
+    emit ownedRulesChanged(this->ownedRules());
 }
 
 void QUmlExtensionObject::addPackageImport(QObject *packageImport)
 {
     qmodelingelementproperty_cast<QUmlExtension *>(this)->addPackageImport(qmodelingelementproperty_cast<QUmlPackageImport *>(packageImport));
+    emit packageImportsChanged(this->packageImports());
 }
 
 void QUmlExtensionObject::removePackageImport(QObject *packageImport)
 {
     qmodelingelementproperty_cast<QUmlExtension *>(this)->removePackageImport(qmodelingelementproperty_cast<QUmlPackageImport *>(packageImport));
+    emit packageImportsChanged(this->packageImports());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ParameterableElement]
@@ -754,12 +777,14 @@ void QUmlExtensionObject::removePackageImport(QObject *packageImport)
 void QUmlExtensionObject::setOwningTemplateParameter(QObject *owningTemplateParameter)
 {
     qmodelingelementproperty_cast<QUmlExtension *>(this)->setOwningTemplateParameter(qmodelingelementproperty_cast<QUmlTemplateParameter *>(owningTemplateParameter));
+    emit owningTemplateParameterChanged(this->owningTemplateParameter());
 }
 // SLOTS FOR OWNED ATTRIBUTES [PackageableElement]
 
 void QUmlExtensionObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingelementproperty_cast<QUmlExtension *>(this)->setVisibility(visibility);
+    emit visibilityChanged(this->visibility());
 }
 
 void QUmlExtensionObject::unsetVisibility()
@@ -774,6 +799,7 @@ void QUmlExtensionObject::unsetVisibility()
 void QUmlExtensionObject::setPackage(QObject *package)
 {
     qmodelingelementproperty_cast<QUmlExtension *>(this)->setPackage(qmodelingelementproperty_cast<QUmlPackage *>(package));
+    emit packageChanged(this->package());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [RedefinableElement]
@@ -781,6 +807,7 @@ void QUmlExtensionObject::setPackage(QObject *package)
 void QUmlExtensionObject::setLeaf(bool isLeaf)
 {
     qmodelingelementproperty_cast<QUmlExtension *>(this)->setLeaf(isLeaf);
+    emit isLeafChanged(this->isLeaf());
 }
 
 void QUmlExtensionObject::unsetLeaf()
@@ -793,21 +820,25 @@ void QUmlExtensionObject::unsetLeaf()
 void QUmlExtensionObject::addRedefinedElement(QObject *redefinedElement)
 {
     qmodelingelementproperty_cast<QUmlExtension *>(this)->addRedefinedElement(qmodelingelementproperty_cast<QUmlRedefinableElement *>(redefinedElement));
+    emit redefinedElementsChanged(this->redefinedElements());
 }
 
 void QUmlExtensionObject::removeRedefinedElement(QObject *redefinedElement)
 {
     qmodelingelementproperty_cast<QUmlExtension *>(this)->removeRedefinedElement(qmodelingelementproperty_cast<QUmlRedefinableElement *>(redefinedElement));
+    emit redefinedElementsChanged(this->redefinedElements());
 }
 
 void QUmlExtensionObject::addRedefinitionContext(QObject *redefinitionContext)
 {
     qmodelingelementproperty_cast<QUmlExtension *>(this)->addRedefinitionContext(qmodelingelementproperty_cast<QUmlClassifier *>(redefinitionContext));
+    emit redefinitionContextsChanged(this->redefinitionContexts());
 }
 
 void QUmlExtensionObject::removeRedefinitionContext(QObject *redefinitionContext)
 {
     qmodelingelementproperty_cast<QUmlExtension *>(this)->removeRedefinitionContext(qmodelingelementproperty_cast<QUmlClassifier *>(redefinitionContext));
+    emit redefinitionContextsChanged(this->redefinitionContexts());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [TemplateableElement]
@@ -815,11 +846,13 @@ void QUmlExtensionObject::removeRedefinitionContext(QObject *redefinitionContext
 void QUmlExtensionObject::addTemplateBinding(QObject *templateBinding)
 {
     qmodelingelementproperty_cast<QUmlExtension *>(this)->addTemplateBinding(qmodelingelementproperty_cast<QUmlTemplateBinding *>(templateBinding));
+    emit templateBindingsChanged(this->templateBindings());
 }
 
 void QUmlExtensionObject::removeTemplateBinding(QObject *templateBinding)
 {
     qmodelingelementproperty_cast<QUmlExtension *>(this)->removeTemplateBinding(qmodelingelementproperty_cast<QUmlTemplateBinding *>(templateBinding));
+    emit templateBindingsChanged(this->templateBindings());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Classifier]
@@ -827,66 +860,79 @@ void QUmlExtensionObject::removeTemplateBinding(QObject *templateBinding)
 void QUmlExtensionObject::addAttribute(QObject *attribute)
 {
     qmodelingelementproperty_cast<QUmlExtension *>(this)->addAttribute(qmodelingelementproperty_cast<QUmlProperty *>(attribute));
+    emit attributesChanged(this->attributes());
 }
 
 void QUmlExtensionObject::removeAttribute(QObject *attribute)
 {
     qmodelingelementproperty_cast<QUmlExtension *>(this)->removeAttribute(qmodelingelementproperty_cast<QUmlProperty *>(attribute));
+    emit attributesChanged(this->attributes());
 }
 
 void QUmlExtensionObject::addCollaborationUse(QObject *collaborationUse)
 {
     qmodelingelementproperty_cast<QUmlExtension *>(this)->addCollaborationUse(qmodelingelementproperty_cast<QUmlCollaborationUse *>(collaborationUse));
+    emit collaborationUsesChanged(this->collaborationUses());
 }
 
 void QUmlExtensionObject::removeCollaborationUse(QObject *collaborationUse)
 {
     qmodelingelementproperty_cast<QUmlExtension *>(this)->removeCollaborationUse(qmodelingelementproperty_cast<QUmlCollaborationUse *>(collaborationUse));
+    emit collaborationUsesChanged(this->collaborationUses());
 }
 
 void QUmlExtensionObject::addFeature(QObject *feature)
 {
     qmodelingelementproperty_cast<QUmlExtension *>(this)->addFeature(qmodelingelementproperty_cast<QUmlFeature *>(feature));
+    emit featuresChanged(this->features());
 }
 
 void QUmlExtensionObject::removeFeature(QObject *feature)
 {
     qmodelingelementproperty_cast<QUmlExtension *>(this)->removeFeature(qmodelingelementproperty_cast<QUmlFeature *>(feature));
+    emit featuresChanged(this->features());
 }
 
 void QUmlExtensionObject::addGeneral(QObject *general)
 {
     qmodelingelementproperty_cast<QUmlExtension *>(this)->addGeneral(qmodelingelementproperty_cast<QUmlClassifier *>(general));
+    emit generalsChanged(this->generals());
 }
 
 void QUmlExtensionObject::removeGeneral(QObject *general)
 {
     qmodelingelementproperty_cast<QUmlExtension *>(this)->removeGeneral(qmodelingelementproperty_cast<QUmlClassifier *>(general));
+    emit generalsChanged(this->generals());
 }
 
 void QUmlExtensionObject::addGeneralization(QObject *generalization)
 {
     qmodelingelementproperty_cast<QUmlExtension *>(this)->addGeneralization(qmodelingelementproperty_cast<QUmlGeneralization *>(generalization));
+    emit generalizationsChanged(this->generalizations());
 }
 
 void QUmlExtensionObject::removeGeneralization(QObject *generalization)
 {
     qmodelingelementproperty_cast<QUmlExtension *>(this)->removeGeneralization(qmodelingelementproperty_cast<QUmlGeneralization *>(generalization));
+    emit generalizationsChanged(this->generalizations());
 }
 
 void QUmlExtensionObject::addInheritedMember(QObject *inheritedMember)
 {
     qmodelingelementproperty_cast<QUmlExtension *>(this)->addInheritedMember(qmodelingelementproperty_cast<QUmlNamedElement *>(inheritedMember));
+    emit inheritedMembersChanged(this->inheritedMembers());
 }
 
 void QUmlExtensionObject::removeInheritedMember(QObject *inheritedMember)
 {
     qmodelingelementproperty_cast<QUmlExtension *>(this)->removeInheritedMember(qmodelingelementproperty_cast<QUmlNamedElement *>(inheritedMember));
+    emit inheritedMembersChanged(this->inheritedMembers());
 }
 
 void QUmlExtensionObject::setAbstract(bool isAbstract)
 {
     qmodelingelementproperty_cast<QUmlExtension *>(this)->setAbstract(isAbstract);
+    emit isAbstractChanged(this->isAbstract());
 }
 
 void QUmlExtensionObject::unsetAbstract()
@@ -899,6 +945,7 @@ void QUmlExtensionObject::unsetAbstract()
 void QUmlExtensionObject::setFinalSpecialization(bool isFinalSpecialization)
 {
     qmodelingelementproperty_cast<QUmlExtension *>(this)->setFinalSpecialization(isFinalSpecialization);
+    emit isFinalSpecializationChanged(this->isFinalSpecialization());
 }
 
 void QUmlExtensionObject::unsetFinalSpecialization()
@@ -911,66 +958,79 @@ void QUmlExtensionObject::unsetFinalSpecialization()
 void QUmlExtensionObject::setOwnedTemplateSignature(QObject *ownedTemplateSignature)
 {
     qmodelingelementproperty_cast<QUmlExtension *>(this)->setOwnedTemplateSignature(qmodelingelementproperty_cast<QUmlRedefinableTemplateSignature *>(ownedTemplateSignature));
+    emit ownedTemplateSignatureChanged(this->ownedTemplateSignature());
 }
 
 void QUmlExtensionObject::addOwnedUseCase(QObject *ownedUseCase)
 {
     qmodelingelementproperty_cast<QUmlExtension *>(this)->addOwnedUseCase(qmodelingelementproperty_cast<QUmlUseCase *>(ownedUseCase));
+    emit ownedUseCasesChanged(this->ownedUseCases());
 }
 
 void QUmlExtensionObject::removeOwnedUseCase(QObject *ownedUseCase)
 {
     qmodelingelementproperty_cast<QUmlExtension *>(this)->removeOwnedUseCase(qmodelingelementproperty_cast<QUmlUseCase *>(ownedUseCase));
+    emit ownedUseCasesChanged(this->ownedUseCases());
 }
 
 void QUmlExtensionObject::addPowertypeExtent(QObject *powertypeExtent)
 {
     qmodelingelementproperty_cast<QUmlExtension *>(this)->addPowertypeExtent(qmodelingelementproperty_cast<QUmlGeneralizationSet *>(powertypeExtent));
+    emit powertypeExtentsChanged(this->powertypeExtents());
 }
 
 void QUmlExtensionObject::removePowertypeExtent(QObject *powertypeExtent)
 {
     qmodelingelementproperty_cast<QUmlExtension *>(this)->removePowertypeExtent(qmodelingelementproperty_cast<QUmlGeneralizationSet *>(powertypeExtent));
+    emit powertypeExtentsChanged(this->powertypeExtents());
 }
 
 void QUmlExtensionObject::addRedefinedClassifier(QObject *redefinedClassifier)
 {
     qmodelingelementproperty_cast<QUmlExtension *>(this)->addRedefinedClassifier(qmodelingelementproperty_cast<QUmlClassifier *>(redefinedClassifier));
+    emit redefinedClassifiersChanged(this->redefinedClassifiers());
 }
 
 void QUmlExtensionObject::removeRedefinedClassifier(QObject *redefinedClassifier)
 {
     qmodelingelementproperty_cast<QUmlExtension *>(this)->removeRedefinedClassifier(qmodelingelementproperty_cast<QUmlClassifier *>(redefinedClassifier));
+    emit redefinedClassifiersChanged(this->redefinedClassifiers());
 }
 
 void QUmlExtensionObject::setRepresentation(QObject *representation)
 {
     qmodelingelementproperty_cast<QUmlExtension *>(this)->setRepresentation(qmodelingelementproperty_cast<QUmlCollaborationUse *>(representation));
+    emit representationChanged(this->representation());
 }
 
 void QUmlExtensionObject::addSubstitution(QObject *substitution)
 {
     qmodelingelementproperty_cast<QUmlExtension *>(this)->addSubstitution(qmodelingelementproperty_cast<QUmlSubstitution *>(substitution));
+    emit substitutionsChanged(this->substitutions());
 }
 
 void QUmlExtensionObject::removeSubstitution(QObject *substitution)
 {
     qmodelingelementproperty_cast<QUmlExtension *>(this)->removeSubstitution(qmodelingelementproperty_cast<QUmlSubstitution *>(substitution));
+    emit substitutionsChanged(this->substitutions());
 }
 
 void QUmlExtensionObject::setTemplateParameter(QObject *templateParameter)
 {
     qmodelingelementproperty_cast<QUmlExtension *>(this)->setTemplateParameter(qmodelingelementproperty_cast<QUmlClassifierTemplateParameter *>(templateParameter));
+    emit templateParameterChanged(this->templateParameter());
 }
 
 void QUmlExtensionObject::addUseCase(QObject *useCase)
 {
     qmodelingelementproperty_cast<QUmlExtension *>(this)->addUseCase(qmodelingelementproperty_cast<QUmlUseCase *>(useCase));
+    emit useCasesChanged(this->useCases());
 }
 
 void QUmlExtensionObject::removeUseCase(QObject *useCase)
 {
     qmodelingelementproperty_cast<QUmlExtension *>(this)->removeUseCase(qmodelingelementproperty_cast<QUmlUseCase *>(useCase));
+    emit useCasesChanged(this->useCases());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Relationship]
@@ -978,11 +1038,13 @@ void QUmlExtensionObject::removeUseCase(QObject *useCase)
 void QUmlExtensionObject::addRelatedElement(QObject *relatedElement)
 {
     qmodelingelementproperty_cast<QUmlExtension *>(this)->addRelatedElement(qmodelingelementproperty_cast<QUmlElement *>(relatedElement));
+    emit relatedElementsChanged(this->relatedElements());
 }
 
 void QUmlExtensionObject::removeRelatedElement(QObject *relatedElement)
 {
     qmodelingelementproperty_cast<QUmlExtension *>(this)->removeRelatedElement(qmodelingelementproperty_cast<QUmlElement *>(relatedElement));
+    emit relatedElementsChanged(this->relatedElements());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Association]
@@ -990,16 +1052,19 @@ void QUmlExtensionObject::removeRelatedElement(QObject *relatedElement)
 void QUmlExtensionObject::addEndType(QObject *endType)
 {
     qmodelingelementproperty_cast<QUmlExtension *>(this)->addEndType(qmodelingelementproperty_cast<QUmlType *>(endType));
+    emit endTypesChanged(this->endTypes());
 }
 
 void QUmlExtensionObject::removeEndType(QObject *endType)
 {
     qmodelingelementproperty_cast<QUmlExtension *>(this)->removeEndType(qmodelingelementproperty_cast<QUmlType *>(endType));
+    emit endTypesChanged(this->endTypes());
 }
 
 void QUmlExtensionObject::setDerived(bool isDerived)
 {
     qmodelingelementproperty_cast<QUmlExtension *>(this)->setDerived(isDerived);
+    emit isDerivedChanged(this->isDerived());
 }
 
 void QUmlExtensionObject::unsetDerived()
@@ -1012,27 +1077,32 @@ void QUmlExtensionObject::unsetDerived()
 void QUmlExtensionObject::addMemberEnd(QObject *memberEnd)
 {
     qmodelingelementproperty_cast<QUmlExtension *>(this)->addMemberEnd(qmodelingelementproperty_cast<QUmlProperty *>(memberEnd));
+    emit memberEndsChanged(this->memberEnds());
 }
 
 void QUmlExtensionObject::removeMemberEnd(QObject *memberEnd)
 {
     qmodelingelementproperty_cast<QUmlExtension *>(this)->removeMemberEnd(qmodelingelementproperty_cast<QUmlProperty *>(memberEnd));
+    emit memberEndsChanged(this->memberEnds());
 }
 
 void QUmlExtensionObject::addNavigableOwnedEnd(QObject *navigableOwnedEnd)
 {
     qmodelingelementproperty_cast<QUmlExtension *>(this)->addNavigableOwnedEnd(qmodelingelementproperty_cast<QUmlProperty *>(navigableOwnedEnd));
+    emit navigableOwnedEndsChanged(this->navigableOwnedEnds());
 }
 
 void QUmlExtensionObject::removeNavigableOwnedEnd(QObject *navigableOwnedEnd)
 {
     qmodelingelementproperty_cast<QUmlExtension *>(this)->removeNavigableOwnedEnd(qmodelingelementproperty_cast<QUmlProperty *>(navigableOwnedEnd));
+    emit navigableOwnedEndsChanged(this->navigableOwnedEnds());
 }
 // SLOTS FOR OWNED ATTRIBUTES [Extension]
 
 void QUmlExtensionObject::setRequired(bool isRequired)
 {
     qmodelingelementproperty_cast<QUmlExtension *>(this)->setRequired(isRequired);
+    emit isRequiredChanged(this->isRequired());
 }
 
 void QUmlExtensionObject::unsetRequired()
@@ -1045,11 +1115,13 @@ void QUmlExtensionObject::unsetRequired()
 void QUmlExtensionObject::setMetaclass(QObject *metaclass)
 {
     qmodelingelementproperty_cast<QUmlExtension *>(this)->setMetaclass(qmodelingelementproperty_cast<QUmlClass *>(metaclass));
+    emit metaclassChanged(this->metaclass());
 }
 
 void QUmlExtensionObject::setOwnedEnd(QObject *ownedEnd)
 {
     qmodelingelementproperty_cast<QUmlExtension *>(this)->setOwnedEnd(qmodelingelementproperty_cast<QUmlExtensionEnd *>(ownedEnd));
+    emit ownedEndChanged(this->ownedEnd());
 }
 
 

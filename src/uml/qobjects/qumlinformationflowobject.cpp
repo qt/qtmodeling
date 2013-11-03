@@ -299,26 +299,31 @@ QString QUmlInformationFlowObject::separator() const
 void QUmlInformationFlowObject::addOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlInformationFlow *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlInformationFlowObject::removeOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlInformationFlow *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlInformationFlowObject::addOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlInformationFlow *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlInformationFlowObject::removeOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlInformationFlow *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlInformationFlowObject::setOwner(QObject *owner)
 {
     qmodelingelementproperty_cast<QUmlInformationFlow *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
+    emit ownerChanged(this->owner());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Relationship]
@@ -326,11 +331,13 @@ void QUmlInformationFlowObject::setOwner(QObject *owner)
 void QUmlInformationFlowObject::addRelatedElement(QObject *relatedElement)
 {
     qmodelingelementproperty_cast<QUmlInformationFlow *>(this)->addRelatedElement(qmodelingelementproperty_cast<QUmlElement *>(relatedElement));
+    emit relatedElementsChanged(this->relatedElements());
 }
 
 void QUmlInformationFlowObject::removeRelatedElement(QObject *relatedElement)
 {
     qmodelingelementproperty_cast<QUmlInformationFlow *>(this)->removeRelatedElement(qmodelingelementproperty_cast<QUmlElement *>(relatedElement));
+    emit relatedElementsChanged(this->relatedElements());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [DirectedRelationship]
@@ -338,21 +345,25 @@ void QUmlInformationFlowObject::removeRelatedElement(QObject *relatedElement)
 void QUmlInformationFlowObject::addSource(QObject *source)
 {
     qmodelingelementproperty_cast<QUmlInformationFlow *>(this)->addSource(qmodelingelementproperty_cast<QUmlElement *>(source));
+    emit sourcesChanged(this->sources());
 }
 
 void QUmlInformationFlowObject::removeSource(QObject *source)
 {
     qmodelingelementproperty_cast<QUmlInformationFlow *>(this)->removeSource(qmodelingelementproperty_cast<QUmlElement *>(source));
+    emit sourcesChanged(this->sources());
 }
 
 void QUmlInformationFlowObject::addTarget(QObject *target)
 {
     qmodelingelementproperty_cast<QUmlInformationFlow *>(this)->addTarget(qmodelingelementproperty_cast<QUmlElement *>(target));
+    emit targetsChanged(this->targets());
 }
 
 void QUmlInformationFlowObject::removeTarget(QObject *target)
 {
     qmodelingelementproperty_cast<QUmlInformationFlow *>(this)->removeTarget(qmodelingelementproperty_cast<QUmlElement *>(target));
+    emit targetsChanged(this->targets());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ParameterableElement]
@@ -360,11 +371,13 @@ void QUmlInformationFlowObject::removeTarget(QObject *target)
 void QUmlInformationFlowObject::setOwningTemplateParameter(QObject *owningTemplateParameter)
 {
     qmodelingelementproperty_cast<QUmlInformationFlow *>(this)->setOwningTemplateParameter(qmodelingelementproperty_cast<QUmlTemplateParameter *>(owningTemplateParameter));
+    emit owningTemplateParameterChanged(this->owningTemplateParameter());
 }
 
 void QUmlInformationFlowObject::setTemplateParameter(QObject *templateParameter)
 {
     qmodelingelementproperty_cast<QUmlInformationFlow *>(this)->setTemplateParameter(qmodelingelementproperty_cast<QUmlTemplateParameter *>(templateParameter));
+    emit templateParameterChanged(this->templateParameter());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [NamedElement]
@@ -372,37 +385,44 @@ void QUmlInformationFlowObject::setTemplateParameter(QObject *templateParameter)
 void QUmlInformationFlowObject::addClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlInformationFlow *>(this)->addClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlInformationFlowObject::removeClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlInformationFlow *>(this)->removeClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlInformationFlowObject::setName(QString name)
 {
     qmodelingelementproperty_cast<QUmlInformationFlow *>(this)->setName(name);
+    emit nameChanged(this->name());
 }
 
 void QUmlInformationFlowObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingelementproperty_cast<QUmlInformationFlow *>(this)->setNameExpression(qmodelingelementproperty_cast<QUmlStringExpression *>(nameExpression));
+    emit nameExpressionChanged(this->nameExpression());
 }
 
 void QUmlInformationFlowObject::setNamespace(QObject *namespace_)
 {
     qmodelingelementproperty_cast<QUmlInformationFlow *>(this)->setNamespace(qmodelingelementproperty_cast<QUmlNamespace *>(namespace_));
+    emit namespaceChanged(this->namespace_());
 }
 
 void QUmlInformationFlowObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingelementproperty_cast<QUmlInformationFlow *>(this)->setQualifiedName(qualifiedName);
+    emit qualifiedNameChanged(this->qualifiedName());
 }
 // SLOTS FOR OWNED ATTRIBUTES [PackageableElement]
 
 void QUmlInformationFlowObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingelementproperty_cast<QUmlInformationFlow *>(this)->setVisibility(visibility);
+    emit visibilityChanged(this->visibility());
 }
 
 void QUmlInformationFlowObject::unsetVisibility()
@@ -417,71 +437,85 @@ void QUmlInformationFlowObject::unsetVisibility()
 void QUmlInformationFlowObject::addConveyed(QObject *conveyed)
 {
     qmodelingelementproperty_cast<QUmlInformationFlow *>(this)->addConveyed(qmodelingelementproperty_cast<QUmlClassifier *>(conveyed));
+    emit conveyedChanged(this->conveyed());
 }
 
 void QUmlInformationFlowObject::removeConveyed(QObject *conveyed)
 {
     qmodelingelementproperty_cast<QUmlInformationFlow *>(this)->removeConveyed(qmodelingelementproperty_cast<QUmlClassifier *>(conveyed));
+    emit conveyedChanged(this->conveyed());
 }
 
 void QUmlInformationFlowObject::addInformationSource(QObject *informationSource)
 {
     qmodelingelementproperty_cast<QUmlInformationFlow *>(this)->addInformationSource(qmodelingelementproperty_cast<QUmlNamedElement *>(informationSource));
+    emit informationSourcesChanged(this->informationSources());
 }
 
 void QUmlInformationFlowObject::removeInformationSource(QObject *informationSource)
 {
     qmodelingelementproperty_cast<QUmlInformationFlow *>(this)->removeInformationSource(qmodelingelementproperty_cast<QUmlNamedElement *>(informationSource));
+    emit informationSourcesChanged(this->informationSources());
 }
 
 void QUmlInformationFlowObject::addInformationTarget(QObject *informationTarget)
 {
     qmodelingelementproperty_cast<QUmlInformationFlow *>(this)->addInformationTarget(qmodelingelementproperty_cast<QUmlNamedElement *>(informationTarget));
+    emit informationTargetsChanged(this->informationTargets());
 }
 
 void QUmlInformationFlowObject::removeInformationTarget(QObject *informationTarget)
 {
     qmodelingelementproperty_cast<QUmlInformationFlow *>(this)->removeInformationTarget(qmodelingelementproperty_cast<QUmlNamedElement *>(informationTarget));
+    emit informationTargetsChanged(this->informationTargets());
 }
 
 void QUmlInformationFlowObject::addRealization(QObject *realization)
 {
     qmodelingelementproperty_cast<QUmlInformationFlow *>(this)->addRealization(qmodelingelementproperty_cast<QUmlRelationship *>(realization));
+    emit realizationsChanged(this->realizations());
 }
 
 void QUmlInformationFlowObject::removeRealization(QObject *realization)
 {
     qmodelingelementproperty_cast<QUmlInformationFlow *>(this)->removeRealization(qmodelingelementproperty_cast<QUmlRelationship *>(realization));
+    emit realizationsChanged(this->realizations());
 }
 
 void QUmlInformationFlowObject::addRealizingActivityEdge(QObject *realizingActivityEdge)
 {
     qmodelingelementproperty_cast<QUmlInformationFlow *>(this)->addRealizingActivityEdge(qmodelingelementproperty_cast<QUmlActivityEdge *>(realizingActivityEdge));
+    emit realizingActivityEdgesChanged(this->realizingActivityEdges());
 }
 
 void QUmlInformationFlowObject::removeRealizingActivityEdge(QObject *realizingActivityEdge)
 {
     qmodelingelementproperty_cast<QUmlInformationFlow *>(this)->removeRealizingActivityEdge(qmodelingelementproperty_cast<QUmlActivityEdge *>(realizingActivityEdge));
+    emit realizingActivityEdgesChanged(this->realizingActivityEdges());
 }
 
 void QUmlInformationFlowObject::addRealizingConnector(QObject *realizingConnector)
 {
     qmodelingelementproperty_cast<QUmlInformationFlow *>(this)->addRealizingConnector(qmodelingelementproperty_cast<QUmlConnector *>(realizingConnector));
+    emit realizingConnectorsChanged(this->realizingConnectors());
 }
 
 void QUmlInformationFlowObject::removeRealizingConnector(QObject *realizingConnector)
 {
     qmodelingelementproperty_cast<QUmlInformationFlow *>(this)->removeRealizingConnector(qmodelingelementproperty_cast<QUmlConnector *>(realizingConnector));
+    emit realizingConnectorsChanged(this->realizingConnectors());
 }
 
 void QUmlInformationFlowObject::addRealizingMessage(QObject *realizingMessage)
 {
     qmodelingelementproperty_cast<QUmlInformationFlow *>(this)->addRealizingMessage(qmodelingelementproperty_cast<QUmlMessage *>(realizingMessage));
+    emit realizingMessagesChanged(this->realizingMessages());
 }
 
 void QUmlInformationFlowObject::removeRealizingMessage(QObject *realizingMessage)
 {
     qmodelingelementproperty_cast<QUmlInformationFlow *>(this)->removeRealizingMessage(qmodelingelementproperty_cast<QUmlMessage *>(realizingMessage));
+    emit realizingMessagesChanged(this->realizingMessages());
 }
 
 

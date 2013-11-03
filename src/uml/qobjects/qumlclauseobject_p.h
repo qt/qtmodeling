@@ -60,17 +60,17 @@ class Q_UML_EXPORT QUmlClauseObject : public QModelingObject
     Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [Element]
-    Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
-    Q_PROPERTY(QSet<QObject *> ownedElements READ ownedElements)
-    Q_PROPERTY(QObject * owner READ owner)
+    Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments NOTIFY ownedCommentsChanged)
+    Q_PROPERTY(QSet<QObject *> ownedElements READ ownedElements NOTIFY ownedElementsChanged)
+    Q_PROPERTY(QObject * owner READ owner NOTIFY ownerChanged)
 
     // Properties [Clause]
-    Q_PROPERTY(QSet<QObject *> bodies READ bodies)
-    Q_PROPERTY(QList<QObject *> bodyOutputs READ bodyOutputs)
-    Q_PROPERTY(QObject * decider READ decider WRITE setDecider)
-    Q_PROPERTY(QSet<QObject *> predecessorClauses READ predecessorClauses)
-    Q_PROPERTY(QSet<QObject *> successorClauses READ successorClauses)
-    Q_PROPERTY(QSet<QObject *> tests READ tests)
+    Q_PROPERTY(QSet<QObject *> bodies READ bodies NOTIFY bodiesChanged)
+    Q_PROPERTY(QList<QObject *> bodyOutputs READ bodyOutputs NOTIFY bodyOutputsChanged)
+    Q_PROPERTY(QObject * decider READ decider WRITE setDecider NOTIFY deciderChanged)
+    Q_PROPERTY(QSet<QObject *> predecessorClauses READ predecessorClauses NOTIFY predecessorClausesChanged)
+    Q_PROPERTY(QSet<QObject *> successorClauses READ successorClauses NOTIFY successorClausesChanged)
+    Q_PROPERTY(QSet<QObject *> tests READ tests NOTIFY testsChanged)
 
 public:
     Q_INVOKABLE explicit QUmlClauseObject(QUmlClause *modelingElement);
@@ -113,6 +113,21 @@ public Q_SLOTS:
     void removeSuccessorClause(QObject *successorClause);
     void addTest(QObject *test);
     void removeTest(QObject *test);
+
+Q_SIGNALS:
+
+    // Signals for owned attributes [Element]
+    void ownedCommentsChanged(QSet<QObject *> ownedComments);
+    void ownedElementsChanged(QSet<QObject *> ownedElements);
+    void ownerChanged(QObject *owner);
+
+    // Signals for owned attributes [Clause]
+    void bodiesChanged(QSet<QObject *> bodies);
+    void bodyOutputsChanged(QList<QObject *> bodyOutputs);
+    void deciderChanged(QObject *decider);
+    void predecessorClausesChanged(QSet<QObject *> predecessorClauses);
+    void successorClausesChanged(QSet<QObject *> successorClauses);
+    void testsChanged(QSet<QObject *> tests);
 
 protected:
     virtual void setGroupProperties();

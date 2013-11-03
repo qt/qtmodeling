@@ -179,26 +179,31 @@ void QMofGeneralizationObject::delete_()
 void QMofGeneralizationObject::addOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QMofGeneralization *>(this)->addOwnedComment(qmodelingelementproperty_cast<QMofComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QMofGeneralizationObject::removeOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QMofGeneralization *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QMofComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QMofGeneralizationObject::addOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QMofGeneralization *>(this)->addOwnedElement(qmodelingelementproperty_cast<QMofElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QMofGeneralizationObject::removeOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QMofGeneralization *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QMofElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QMofGeneralizationObject::setOwner(QObject *owner)
 {
     qmodelingelementproperty_cast<QMofGeneralization *>(this)->setOwner(qmodelingelementproperty_cast<QMofElement *>(owner));
+    emit ownerChanged(this->owner());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Relationship]
@@ -206,11 +211,13 @@ void QMofGeneralizationObject::setOwner(QObject *owner)
 void QMofGeneralizationObject::addRelatedElement(QObject *relatedElement)
 {
     qmodelingelementproperty_cast<QMofGeneralization *>(this)->addRelatedElement(qmodelingelementproperty_cast<QMofElement *>(relatedElement));
+    emit relatedElementsChanged(this->relatedElements());
 }
 
 void QMofGeneralizationObject::removeRelatedElement(QObject *relatedElement)
 {
     qmodelingelementproperty_cast<QMofGeneralization *>(this)->removeRelatedElement(qmodelingelementproperty_cast<QMofElement *>(relatedElement));
+    emit relatedElementsChanged(this->relatedElements());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [DirectedRelationship]
@@ -218,21 +225,25 @@ void QMofGeneralizationObject::removeRelatedElement(QObject *relatedElement)
 void QMofGeneralizationObject::addSource(QObject *source)
 {
     qmodelingelementproperty_cast<QMofGeneralization *>(this)->addSource(qmodelingelementproperty_cast<QMofElement *>(source));
+    emit sourcesChanged(this->sources());
 }
 
 void QMofGeneralizationObject::removeSource(QObject *source)
 {
     qmodelingelementproperty_cast<QMofGeneralization *>(this)->removeSource(qmodelingelementproperty_cast<QMofElement *>(source));
+    emit sourcesChanged(this->sources());
 }
 
 void QMofGeneralizationObject::addTarget(QObject *target)
 {
     qmodelingelementproperty_cast<QMofGeneralization *>(this)->addTarget(qmodelingelementproperty_cast<QMofElement *>(target));
+    emit targetsChanged(this->targets());
 }
 
 void QMofGeneralizationObject::removeTarget(QObject *target)
 {
     qmodelingelementproperty_cast<QMofGeneralization *>(this)->removeTarget(qmodelingelementproperty_cast<QMofElement *>(target));
+    emit targetsChanged(this->targets());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Generalization]
@@ -240,11 +251,13 @@ void QMofGeneralizationObject::removeTarget(QObject *target)
 void QMofGeneralizationObject::setGeneral(QObject *general)
 {
     qmodelingelementproperty_cast<QMofGeneralization *>(this)->setGeneral(qmodelingelementproperty_cast<QMofClassifier *>(general));
+    emit generalChanged(this->general());
 }
 
 void QMofGeneralizationObject::setSubstitutable(bool isSubstitutable)
 {
     qmodelingelementproperty_cast<QMofGeneralization *>(this)->setSubstitutable(isSubstitutable);
+    emit isSubstitutableChanged(this->isSubstitutable());
 }
 
 void QMofGeneralizationObject::unsetSubstitutable()
@@ -258,6 +271,7 @@ void QMofGeneralizationObject::unsetSubstitutable()
 void QMofGeneralizationObject::setSpecific(QObject *specific)
 {
     qmodelingelementproperty_cast<QMofGeneralization *>(this)->setSpecific(qmodelingelementproperty_cast<QMofClassifier *>(specific));
+    emit specificChanged(this->specific());
 }
 
 

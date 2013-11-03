@@ -156,26 +156,31 @@ void QMofSlotObject::delete_()
 void QMofSlotObject::addOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QMofSlot *>(this)->addOwnedComment(qmodelingelementproperty_cast<QMofComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QMofSlotObject::removeOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QMofSlot *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QMofComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QMofSlotObject::addOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QMofSlot *>(this)->addOwnedElement(qmodelingelementproperty_cast<QMofElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QMofSlotObject::removeOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QMofSlot *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QMofElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QMofSlotObject::setOwner(QObject *owner)
 {
     qmodelingelementproperty_cast<QMofSlot *>(this)->setOwner(qmodelingelementproperty_cast<QMofElement *>(owner));
+    emit ownerChanged(this->owner());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Slot]
@@ -183,21 +188,25 @@ void QMofSlotObject::setOwner(QObject *owner)
 void QMofSlotObject::setDefiningFeature(QObject *definingFeature)
 {
     qmodelingelementproperty_cast<QMofSlot *>(this)->setDefiningFeature(qmodelingelementproperty_cast<QMofStructuralFeature *>(definingFeature));
+    emit definingFeatureChanged(this->definingFeature());
 }
 
 void QMofSlotObject::setOwningInstance(QObject *owningInstance)
 {
     qmodelingelementproperty_cast<QMofSlot *>(this)->setOwningInstance(qmodelingelementproperty_cast<QMofInstanceSpecification *>(owningInstance));
+    emit owningInstanceChanged(this->owningInstance());
 }
 
 void QMofSlotObject::addValue(QObject *value)
 {
     qmodelingelementproperty_cast<QMofSlot *>(this)->addValue(qmodelingelementproperty_cast<QMofValueSpecification *>(value));
+    emit valuesChanged(this->values());
 }
 
 void QMofSlotObject::removeValue(QObject *value)
 {
     qmodelingelementproperty_cast<QMofSlot *>(this)->removeValue(qmodelingelementproperty_cast<QMofValueSpecification *>(value));
+    emit valuesChanged(this->values());
 }
 
 

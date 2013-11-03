@@ -334,26 +334,31 @@ bool QUmlDataStoreNodeObject::isRedefinitionContextValid(QObject *redefined) con
 void QUmlDataStoreNodeObject::addOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlDataStoreNode *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlDataStoreNodeObject::removeOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlDataStoreNode *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlDataStoreNodeObject::addOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlDataStoreNode *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlDataStoreNodeObject::removeOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlDataStoreNode *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlDataStoreNodeObject::setOwner(QObject *owner)
 {
     qmodelingelementproperty_cast<QUmlDataStoreNode *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
+    emit ownerChanged(this->owner());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [NamedElement]
@@ -361,36 +366,43 @@ void QUmlDataStoreNodeObject::setOwner(QObject *owner)
 void QUmlDataStoreNodeObject::addClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlDataStoreNode *>(this)->addClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlDataStoreNodeObject::removeClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlDataStoreNode *>(this)->removeClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlDataStoreNodeObject::setName(QString name)
 {
     qmodelingelementproperty_cast<QUmlDataStoreNode *>(this)->setName(name);
+    emit nameChanged(this->name());
 }
 
 void QUmlDataStoreNodeObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingelementproperty_cast<QUmlDataStoreNode *>(this)->setNameExpression(qmodelingelementproperty_cast<QUmlStringExpression *>(nameExpression));
+    emit nameExpressionChanged(this->nameExpression());
 }
 
 void QUmlDataStoreNodeObject::setNamespace(QObject *namespace_)
 {
     qmodelingelementproperty_cast<QUmlDataStoreNode *>(this)->setNamespace(qmodelingelementproperty_cast<QUmlNamespace *>(namespace_));
+    emit namespaceChanged(this->namespace_());
 }
 
 void QUmlDataStoreNodeObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingelementproperty_cast<QUmlDataStoreNode *>(this)->setQualifiedName(qualifiedName);
+    emit qualifiedNameChanged(this->qualifiedName());
 }
 
 void QUmlDataStoreNodeObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingelementproperty_cast<QUmlDataStoreNode *>(this)->setVisibility(visibility);
+    emit visibilityChanged(this->visibility());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [RedefinableElement]
@@ -398,6 +410,7 @@ void QUmlDataStoreNodeObject::setVisibility(QtUml::VisibilityKind visibility)
 void QUmlDataStoreNodeObject::setLeaf(bool isLeaf)
 {
     qmodelingelementproperty_cast<QUmlDataStoreNode *>(this)->setLeaf(isLeaf);
+    emit isLeafChanged(this->isLeaf());
 }
 
 void QUmlDataStoreNodeObject::unsetLeaf()
@@ -410,21 +423,25 @@ void QUmlDataStoreNodeObject::unsetLeaf()
 void QUmlDataStoreNodeObject::addRedefinedElement(QObject *redefinedElement)
 {
     qmodelingelementproperty_cast<QUmlDataStoreNode *>(this)->addRedefinedElement(qmodelingelementproperty_cast<QUmlRedefinableElement *>(redefinedElement));
+    emit redefinedElementsChanged(this->redefinedElements());
 }
 
 void QUmlDataStoreNodeObject::removeRedefinedElement(QObject *redefinedElement)
 {
     qmodelingelementproperty_cast<QUmlDataStoreNode *>(this)->removeRedefinedElement(qmodelingelementproperty_cast<QUmlRedefinableElement *>(redefinedElement));
+    emit redefinedElementsChanged(this->redefinedElements());
 }
 
 void QUmlDataStoreNodeObject::addRedefinitionContext(QObject *redefinitionContext)
 {
     qmodelingelementproperty_cast<QUmlDataStoreNode *>(this)->addRedefinitionContext(qmodelingelementproperty_cast<QUmlClassifier *>(redefinitionContext));
+    emit redefinitionContextsChanged(this->redefinitionContexts());
 }
 
 void QUmlDataStoreNodeObject::removeRedefinitionContext(QObject *redefinitionContext)
 {
     qmodelingelementproperty_cast<QUmlDataStoreNode *>(this)->removeRedefinitionContext(qmodelingelementproperty_cast<QUmlClassifier *>(redefinitionContext));
+    emit redefinitionContextsChanged(this->redefinitionContexts());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ActivityNode]
@@ -432,71 +449,85 @@ void QUmlDataStoreNodeObject::removeRedefinitionContext(QObject *redefinitionCon
 void QUmlDataStoreNodeObject::setActivity(QObject *activity)
 {
     qmodelingelementproperty_cast<QUmlDataStoreNode *>(this)->setActivity(qmodelingelementproperty_cast<QUmlActivity *>(activity));
+    emit activityChanged(this->activity());
 }
 
 void QUmlDataStoreNodeObject::addInGroup(QObject *inGroup)
 {
     qmodelingelementproperty_cast<QUmlDataStoreNode *>(this)->addInGroup(qmodelingelementproperty_cast<QUmlActivityGroup *>(inGroup));
+    emit inGroupsChanged(this->inGroups());
 }
 
 void QUmlDataStoreNodeObject::removeInGroup(QObject *inGroup)
 {
     qmodelingelementproperty_cast<QUmlDataStoreNode *>(this)->removeInGroup(qmodelingelementproperty_cast<QUmlActivityGroup *>(inGroup));
+    emit inGroupsChanged(this->inGroups());
 }
 
 void QUmlDataStoreNodeObject::addInInterruptibleRegion(QObject *inInterruptibleRegion)
 {
     qmodelingelementproperty_cast<QUmlDataStoreNode *>(this)->addInInterruptibleRegion(qmodelingelementproperty_cast<QUmlInterruptibleActivityRegion *>(inInterruptibleRegion));
+    emit inInterruptibleRegionsChanged(this->inInterruptibleRegions());
 }
 
 void QUmlDataStoreNodeObject::removeInInterruptibleRegion(QObject *inInterruptibleRegion)
 {
     qmodelingelementproperty_cast<QUmlDataStoreNode *>(this)->removeInInterruptibleRegion(qmodelingelementproperty_cast<QUmlInterruptibleActivityRegion *>(inInterruptibleRegion));
+    emit inInterruptibleRegionsChanged(this->inInterruptibleRegions());
 }
 
 void QUmlDataStoreNodeObject::addInPartition(QObject *inPartition)
 {
     qmodelingelementproperty_cast<QUmlDataStoreNode *>(this)->addInPartition(qmodelingelementproperty_cast<QUmlActivityPartition *>(inPartition));
+    emit inPartitionsChanged(this->inPartitions());
 }
 
 void QUmlDataStoreNodeObject::removeInPartition(QObject *inPartition)
 {
     qmodelingelementproperty_cast<QUmlDataStoreNode *>(this)->removeInPartition(qmodelingelementproperty_cast<QUmlActivityPartition *>(inPartition));
+    emit inPartitionsChanged(this->inPartitions());
 }
 
 void QUmlDataStoreNodeObject::setInStructuredNode(QObject *inStructuredNode)
 {
     qmodelingelementproperty_cast<QUmlDataStoreNode *>(this)->setInStructuredNode(qmodelingelementproperty_cast<QUmlStructuredActivityNode *>(inStructuredNode));
+    emit inStructuredNodeChanged(this->inStructuredNode());
 }
 
 void QUmlDataStoreNodeObject::addIncoming(QObject *incoming)
 {
     qmodelingelementproperty_cast<QUmlDataStoreNode *>(this)->addIncoming(qmodelingelementproperty_cast<QUmlActivityEdge *>(incoming));
+    emit incomingsChanged(this->incomings());
 }
 
 void QUmlDataStoreNodeObject::removeIncoming(QObject *incoming)
 {
     qmodelingelementproperty_cast<QUmlDataStoreNode *>(this)->removeIncoming(qmodelingelementproperty_cast<QUmlActivityEdge *>(incoming));
+    emit incomingsChanged(this->incomings());
 }
 
 void QUmlDataStoreNodeObject::addOutgoing(QObject *outgoing)
 {
     qmodelingelementproperty_cast<QUmlDataStoreNode *>(this)->addOutgoing(qmodelingelementproperty_cast<QUmlActivityEdge *>(outgoing));
+    emit outgoingsChanged(this->outgoings());
 }
 
 void QUmlDataStoreNodeObject::removeOutgoing(QObject *outgoing)
 {
     qmodelingelementproperty_cast<QUmlDataStoreNode *>(this)->removeOutgoing(qmodelingelementproperty_cast<QUmlActivityEdge *>(outgoing));
+    emit outgoingsChanged(this->outgoings());
 }
 
 void QUmlDataStoreNodeObject::addRedefinedNode(QObject *redefinedNode)
 {
     qmodelingelementproperty_cast<QUmlDataStoreNode *>(this)->addRedefinedNode(qmodelingelementproperty_cast<QUmlActivityNode *>(redefinedNode));
+    emit redefinedNodesChanged(this->redefinedNodes());
 }
 
 void QUmlDataStoreNodeObject::removeRedefinedNode(QObject *redefinedNode)
 {
     qmodelingelementproperty_cast<QUmlDataStoreNode *>(this)->removeRedefinedNode(qmodelingelementproperty_cast<QUmlActivityNode *>(redefinedNode));
+    emit redefinedNodesChanged(this->redefinedNodes());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [TypedElement]
@@ -504,6 +535,7 @@ void QUmlDataStoreNodeObject::removeRedefinedNode(QObject *redefinedNode)
 void QUmlDataStoreNodeObject::setType(QObject *type)
 {
     qmodelingelementproperty_cast<QUmlDataStoreNode *>(this)->setType(qmodelingelementproperty_cast<QUmlType *>(type));
+    emit typeChanged(this->type());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ObjectNode]
@@ -511,16 +543,19 @@ void QUmlDataStoreNodeObject::setType(QObject *type)
 void QUmlDataStoreNodeObject::addInState(QObject *inState)
 {
     qmodelingelementproperty_cast<QUmlDataStoreNode *>(this)->addInState(qmodelingelementproperty_cast<QUmlState *>(inState));
+    emit inStatesChanged(this->inStates());
 }
 
 void QUmlDataStoreNodeObject::removeInState(QObject *inState)
 {
     qmodelingelementproperty_cast<QUmlDataStoreNode *>(this)->removeInState(qmodelingelementproperty_cast<QUmlState *>(inState));
+    emit inStatesChanged(this->inStates());
 }
 
 void QUmlDataStoreNodeObject::setControlType(bool isControlType)
 {
     qmodelingelementproperty_cast<QUmlDataStoreNode *>(this)->setControlType(isControlType);
+    emit isControlTypeChanged(this->isControlType());
 }
 
 void QUmlDataStoreNodeObject::unsetControlType()
@@ -533,6 +568,7 @@ void QUmlDataStoreNodeObject::unsetControlType()
 void QUmlDataStoreNodeObject::setOrdering(QtUml::ObjectNodeOrderingKind ordering)
 {
     qmodelingelementproperty_cast<QUmlDataStoreNode *>(this)->setOrdering(ordering);
+    emit orderingChanged(this->ordering());
 }
 
 void QUmlDataStoreNodeObject::unsetOrdering()
@@ -545,11 +581,13 @@ void QUmlDataStoreNodeObject::unsetOrdering()
 void QUmlDataStoreNodeObject::setSelection(QObject *selection)
 {
     qmodelingelementproperty_cast<QUmlDataStoreNode *>(this)->setSelection(qmodelingelementproperty_cast<QUmlBehavior *>(selection));
+    emit selectionChanged(this->selection());
 }
 
 void QUmlDataStoreNodeObject::setUpperBound(QObject *upperBound)
 {
     qmodelingelementproperty_cast<QUmlDataStoreNode *>(this)->setUpperBound(qmodelingelementproperty_cast<QUmlValueSpecification *>(upperBound));
+    emit upperBoundChanged(this->upperBound());
 }
 
 

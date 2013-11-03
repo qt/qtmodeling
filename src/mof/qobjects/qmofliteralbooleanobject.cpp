@@ -233,26 +233,31 @@ bool QMofLiteralBooleanObject::isComputable() const
 void QMofLiteralBooleanObject::addOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QMofLiteralBoolean *>(this)->addOwnedComment(qmodelingelementproperty_cast<QMofComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QMofLiteralBooleanObject::removeOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QMofLiteralBoolean *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QMofComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QMofLiteralBooleanObject::addOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QMofLiteralBoolean *>(this)->addOwnedElement(qmodelingelementproperty_cast<QMofElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QMofLiteralBooleanObject::removeOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QMofLiteralBoolean *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QMofElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QMofLiteralBooleanObject::setOwner(QObject *owner)
 {
     qmodelingelementproperty_cast<QMofLiteralBoolean *>(this)->setOwner(qmodelingelementproperty_cast<QMofElement *>(owner));
+    emit ownerChanged(this->owner());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [NamedElement]
@@ -260,22 +265,26 @@ void QMofLiteralBooleanObject::setOwner(QObject *owner)
 void QMofLiteralBooleanObject::setName(QString name)
 {
     qmodelingelementproperty_cast<QMofLiteralBoolean *>(this)->setName(name);
+    emit nameChanged(this->name());
 }
 
 void QMofLiteralBooleanObject::setNamespace(QObject *namespace_)
 {
     qmodelingelementproperty_cast<QMofLiteralBoolean *>(this)->setNamespace(qmodelingelementproperty_cast<QMofNamespace *>(namespace_));
+    emit namespaceChanged(this->namespace_());
 }
 
 void QMofLiteralBooleanObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingelementproperty_cast<QMofLiteralBoolean *>(this)->setQualifiedName(qualifiedName);
+    emit qualifiedNameChanged(this->qualifiedName());
 }
 // SLOTS FOR OWNED ATTRIBUTES [PackageableElement]
 
 void QMofLiteralBooleanObject::setVisibility(QtMof::VisibilityKind visibility)
 {
     qmodelingelementproperty_cast<QMofLiteralBoolean *>(this)->setVisibility(visibility);
+    emit visibilityChanged(this->visibility());
 }
 
 void QMofLiteralBooleanObject::unsetVisibility()
@@ -290,6 +299,7 @@ void QMofLiteralBooleanObject::unsetVisibility()
 void QMofLiteralBooleanObject::setType(QObject *type)
 {
     qmodelingelementproperty_cast<QMofLiteralBoolean *>(this)->setType(qmodelingelementproperty_cast<QMofType *>(type));
+    emit typeChanged(this->type());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [LiteralBoolean]
@@ -297,6 +307,7 @@ void QMofLiteralBooleanObject::setType(QObject *type)
 void QMofLiteralBooleanObject::setValue(bool value)
 {
     qmodelingelementproperty_cast<QMofLiteralBoolean *>(this)->setValue(value);
+    emit valueChanged(this->value());
 }
 
 void QMofLiteralBooleanObject::unsetValue()

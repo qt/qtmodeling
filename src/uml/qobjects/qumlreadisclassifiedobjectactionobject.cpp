@@ -376,26 +376,31 @@ bool QUmlReadIsClassifiedObjectActionObject::isRedefinitionContextValid(QObject 
 void QUmlReadIsClassifiedObjectActionObject::addOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlReadIsClassifiedObjectAction *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlReadIsClassifiedObjectActionObject::removeOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlReadIsClassifiedObjectAction *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlReadIsClassifiedObjectActionObject::addOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlReadIsClassifiedObjectAction *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlReadIsClassifiedObjectActionObject::removeOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlReadIsClassifiedObjectAction *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlReadIsClassifiedObjectActionObject::setOwner(QObject *owner)
 {
     qmodelingelementproperty_cast<QUmlReadIsClassifiedObjectAction *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
+    emit ownerChanged(this->owner());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [NamedElement]
@@ -403,36 +408,43 @@ void QUmlReadIsClassifiedObjectActionObject::setOwner(QObject *owner)
 void QUmlReadIsClassifiedObjectActionObject::addClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlReadIsClassifiedObjectAction *>(this)->addClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlReadIsClassifiedObjectActionObject::removeClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlReadIsClassifiedObjectAction *>(this)->removeClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlReadIsClassifiedObjectActionObject::setName(QString name)
 {
     qmodelingelementproperty_cast<QUmlReadIsClassifiedObjectAction *>(this)->setName(name);
+    emit nameChanged(this->name());
 }
 
 void QUmlReadIsClassifiedObjectActionObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingelementproperty_cast<QUmlReadIsClassifiedObjectAction *>(this)->setNameExpression(qmodelingelementproperty_cast<QUmlStringExpression *>(nameExpression));
+    emit nameExpressionChanged(this->nameExpression());
 }
 
 void QUmlReadIsClassifiedObjectActionObject::setNamespace(QObject *namespace_)
 {
     qmodelingelementproperty_cast<QUmlReadIsClassifiedObjectAction *>(this)->setNamespace(qmodelingelementproperty_cast<QUmlNamespace *>(namespace_));
+    emit namespaceChanged(this->namespace_());
 }
 
 void QUmlReadIsClassifiedObjectActionObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingelementproperty_cast<QUmlReadIsClassifiedObjectAction *>(this)->setQualifiedName(qualifiedName);
+    emit qualifiedNameChanged(this->qualifiedName());
 }
 
 void QUmlReadIsClassifiedObjectActionObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingelementproperty_cast<QUmlReadIsClassifiedObjectAction *>(this)->setVisibility(visibility);
+    emit visibilityChanged(this->visibility());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [RedefinableElement]
@@ -440,6 +452,7 @@ void QUmlReadIsClassifiedObjectActionObject::setVisibility(QtUml::VisibilityKind
 void QUmlReadIsClassifiedObjectActionObject::setLeaf(bool isLeaf)
 {
     qmodelingelementproperty_cast<QUmlReadIsClassifiedObjectAction *>(this)->setLeaf(isLeaf);
+    emit isLeafChanged(this->isLeaf());
 }
 
 void QUmlReadIsClassifiedObjectActionObject::unsetLeaf()
@@ -452,21 +465,25 @@ void QUmlReadIsClassifiedObjectActionObject::unsetLeaf()
 void QUmlReadIsClassifiedObjectActionObject::addRedefinedElement(QObject *redefinedElement)
 {
     qmodelingelementproperty_cast<QUmlReadIsClassifiedObjectAction *>(this)->addRedefinedElement(qmodelingelementproperty_cast<QUmlRedefinableElement *>(redefinedElement));
+    emit redefinedElementsChanged(this->redefinedElements());
 }
 
 void QUmlReadIsClassifiedObjectActionObject::removeRedefinedElement(QObject *redefinedElement)
 {
     qmodelingelementproperty_cast<QUmlReadIsClassifiedObjectAction *>(this)->removeRedefinedElement(qmodelingelementproperty_cast<QUmlRedefinableElement *>(redefinedElement));
+    emit redefinedElementsChanged(this->redefinedElements());
 }
 
 void QUmlReadIsClassifiedObjectActionObject::addRedefinitionContext(QObject *redefinitionContext)
 {
     qmodelingelementproperty_cast<QUmlReadIsClassifiedObjectAction *>(this)->addRedefinitionContext(qmodelingelementproperty_cast<QUmlClassifier *>(redefinitionContext));
+    emit redefinitionContextsChanged(this->redefinitionContexts());
 }
 
 void QUmlReadIsClassifiedObjectActionObject::removeRedefinitionContext(QObject *redefinitionContext)
 {
     qmodelingelementproperty_cast<QUmlReadIsClassifiedObjectAction *>(this)->removeRedefinitionContext(qmodelingelementproperty_cast<QUmlClassifier *>(redefinitionContext));
+    emit redefinitionContextsChanged(this->redefinitionContexts());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ActivityNode]
@@ -474,71 +491,85 @@ void QUmlReadIsClassifiedObjectActionObject::removeRedefinitionContext(QObject *
 void QUmlReadIsClassifiedObjectActionObject::setActivity(QObject *activity)
 {
     qmodelingelementproperty_cast<QUmlReadIsClassifiedObjectAction *>(this)->setActivity(qmodelingelementproperty_cast<QUmlActivity *>(activity));
+    emit activityChanged(this->activity());
 }
 
 void QUmlReadIsClassifiedObjectActionObject::addInGroup(QObject *inGroup)
 {
     qmodelingelementproperty_cast<QUmlReadIsClassifiedObjectAction *>(this)->addInGroup(qmodelingelementproperty_cast<QUmlActivityGroup *>(inGroup));
+    emit inGroupsChanged(this->inGroups());
 }
 
 void QUmlReadIsClassifiedObjectActionObject::removeInGroup(QObject *inGroup)
 {
     qmodelingelementproperty_cast<QUmlReadIsClassifiedObjectAction *>(this)->removeInGroup(qmodelingelementproperty_cast<QUmlActivityGroup *>(inGroup));
+    emit inGroupsChanged(this->inGroups());
 }
 
 void QUmlReadIsClassifiedObjectActionObject::addInInterruptibleRegion(QObject *inInterruptibleRegion)
 {
     qmodelingelementproperty_cast<QUmlReadIsClassifiedObjectAction *>(this)->addInInterruptibleRegion(qmodelingelementproperty_cast<QUmlInterruptibleActivityRegion *>(inInterruptibleRegion));
+    emit inInterruptibleRegionsChanged(this->inInterruptibleRegions());
 }
 
 void QUmlReadIsClassifiedObjectActionObject::removeInInterruptibleRegion(QObject *inInterruptibleRegion)
 {
     qmodelingelementproperty_cast<QUmlReadIsClassifiedObjectAction *>(this)->removeInInterruptibleRegion(qmodelingelementproperty_cast<QUmlInterruptibleActivityRegion *>(inInterruptibleRegion));
+    emit inInterruptibleRegionsChanged(this->inInterruptibleRegions());
 }
 
 void QUmlReadIsClassifiedObjectActionObject::addInPartition(QObject *inPartition)
 {
     qmodelingelementproperty_cast<QUmlReadIsClassifiedObjectAction *>(this)->addInPartition(qmodelingelementproperty_cast<QUmlActivityPartition *>(inPartition));
+    emit inPartitionsChanged(this->inPartitions());
 }
 
 void QUmlReadIsClassifiedObjectActionObject::removeInPartition(QObject *inPartition)
 {
     qmodelingelementproperty_cast<QUmlReadIsClassifiedObjectAction *>(this)->removeInPartition(qmodelingelementproperty_cast<QUmlActivityPartition *>(inPartition));
+    emit inPartitionsChanged(this->inPartitions());
 }
 
 void QUmlReadIsClassifiedObjectActionObject::setInStructuredNode(QObject *inStructuredNode)
 {
     qmodelingelementproperty_cast<QUmlReadIsClassifiedObjectAction *>(this)->setInStructuredNode(qmodelingelementproperty_cast<QUmlStructuredActivityNode *>(inStructuredNode));
+    emit inStructuredNodeChanged(this->inStructuredNode());
 }
 
 void QUmlReadIsClassifiedObjectActionObject::addIncoming(QObject *incoming)
 {
     qmodelingelementproperty_cast<QUmlReadIsClassifiedObjectAction *>(this)->addIncoming(qmodelingelementproperty_cast<QUmlActivityEdge *>(incoming));
+    emit incomingsChanged(this->incomings());
 }
 
 void QUmlReadIsClassifiedObjectActionObject::removeIncoming(QObject *incoming)
 {
     qmodelingelementproperty_cast<QUmlReadIsClassifiedObjectAction *>(this)->removeIncoming(qmodelingelementproperty_cast<QUmlActivityEdge *>(incoming));
+    emit incomingsChanged(this->incomings());
 }
 
 void QUmlReadIsClassifiedObjectActionObject::addOutgoing(QObject *outgoing)
 {
     qmodelingelementproperty_cast<QUmlReadIsClassifiedObjectAction *>(this)->addOutgoing(qmodelingelementproperty_cast<QUmlActivityEdge *>(outgoing));
+    emit outgoingsChanged(this->outgoings());
 }
 
 void QUmlReadIsClassifiedObjectActionObject::removeOutgoing(QObject *outgoing)
 {
     qmodelingelementproperty_cast<QUmlReadIsClassifiedObjectAction *>(this)->removeOutgoing(qmodelingelementproperty_cast<QUmlActivityEdge *>(outgoing));
+    emit outgoingsChanged(this->outgoings());
 }
 
 void QUmlReadIsClassifiedObjectActionObject::addRedefinedNode(QObject *redefinedNode)
 {
     qmodelingelementproperty_cast<QUmlReadIsClassifiedObjectAction *>(this)->addRedefinedNode(qmodelingelementproperty_cast<QUmlActivityNode *>(redefinedNode));
+    emit redefinedNodesChanged(this->redefinedNodes());
 }
 
 void QUmlReadIsClassifiedObjectActionObject::removeRedefinedNode(QObject *redefinedNode)
 {
     qmodelingelementproperty_cast<QUmlReadIsClassifiedObjectAction *>(this)->removeRedefinedNode(qmodelingelementproperty_cast<QUmlActivityNode *>(redefinedNode));
+    emit redefinedNodesChanged(this->redefinedNodes());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ExecutableNode]
@@ -546,11 +577,13 @@ void QUmlReadIsClassifiedObjectActionObject::removeRedefinedNode(QObject *redefi
 void QUmlReadIsClassifiedObjectActionObject::addHandler(QObject *handler)
 {
     qmodelingelementproperty_cast<QUmlReadIsClassifiedObjectAction *>(this)->addHandler(qmodelingelementproperty_cast<QUmlExceptionHandler *>(handler));
+    emit handlersChanged(this->handlers());
 }
 
 void QUmlReadIsClassifiedObjectActionObject::removeHandler(QObject *handler)
 {
     qmodelingelementproperty_cast<QUmlReadIsClassifiedObjectAction *>(this)->removeHandler(qmodelingelementproperty_cast<QUmlExceptionHandler *>(handler));
+    emit handlersChanged(this->handlers());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Action]
@@ -558,21 +591,25 @@ void QUmlReadIsClassifiedObjectActionObject::removeHandler(QObject *handler)
 void QUmlReadIsClassifiedObjectActionObject::setContext(QObject *context)
 {
     qmodelingelementproperty_cast<QUmlReadIsClassifiedObjectAction *>(this)->setContext(qmodelingelementproperty_cast<QUmlClassifier *>(context));
+    emit contextChanged(this->context());
 }
 
 void QUmlReadIsClassifiedObjectActionObject::addInput(QObject *input)
 {
     qmodelingelementproperty_cast<QUmlReadIsClassifiedObjectAction *>(this)->addInput(qmodelingelementproperty_cast<QUmlInputPin *>(input));
+    emit inputsChanged(this->inputs());
 }
 
 void QUmlReadIsClassifiedObjectActionObject::removeInput(QObject *input)
 {
     qmodelingelementproperty_cast<QUmlReadIsClassifiedObjectAction *>(this)->removeInput(qmodelingelementproperty_cast<QUmlInputPin *>(input));
+    emit inputsChanged(this->inputs());
 }
 
 void QUmlReadIsClassifiedObjectActionObject::setLocallyReentrant(bool isLocallyReentrant)
 {
     qmodelingelementproperty_cast<QUmlReadIsClassifiedObjectAction *>(this)->setLocallyReentrant(isLocallyReentrant);
+    emit isLocallyReentrantChanged(this->isLocallyReentrant());
 }
 
 void QUmlReadIsClassifiedObjectActionObject::unsetLocallyReentrant()
@@ -585,31 +622,37 @@ void QUmlReadIsClassifiedObjectActionObject::unsetLocallyReentrant()
 void QUmlReadIsClassifiedObjectActionObject::addLocalPostcondition(QObject *localPostcondition)
 {
     qmodelingelementproperty_cast<QUmlReadIsClassifiedObjectAction *>(this)->addLocalPostcondition(qmodelingelementproperty_cast<QUmlConstraint *>(localPostcondition));
+    emit localPostconditionsChanged(this->localPostconditions());
 }
 
 void QUmlReadIsClassifiedObjectActionObject::removeLocalPostcondition(QObject *localPostcondition)
 {
     qmodelingelementproperty_cast<QUmlReadIsClassifiedObjectAction *>(this)->removeLocalPostcondition(qmodelingelementproperty_cast<QUmlConstraint *>(localPostcondition));
+    emit localPostconditionsChanged(this->localPostconditions());
 }
 
 void QUmlReadIsClassifiedObjectActionObject::addLocalPrecondition(QObject *localPrecondition)
 {
     qmodelingelementproperty_cast<QUmlReadIsClassifiedObjectAction *>(this)->addLocalPrecondition(qmodelingelementproperty_cast<QUmlConstraint *>(localPrecondition));
+    emit localPreconditionsChanged(this->localPreconditions());
 }
 
 void QUmlReadIsClassifiedObjectActionObject::removeLocalPrecondition(QObject *localPrecondition)
 {
     qmodelingelementproperty_cast<QUmlReadIsClassifiedObjectAction *>(this)->removeLocalPrecondition(qmodelingelementproperty_cast<QUmlConstraint *>(localPrecondition));
+    emit localPreconditionsChanged(this->localPreconditions());
 }
 
 void QUmlReadIsClassifiedObjectActionObject::addOutput(QObject *output)
 {
     qmodelingelementproperty_cast<QUmlReadIsClassifiedObjectAction *>(this)->addOutput(qmodelingelementproperty_cast<QUmlOutputPin *>(output));
+    emit outputsChanged(this->outputs());
 }
 
 void QUmlReadIsClassifiedObjectActionObject::removeOutput(QObject *output)
 {
     qmodelingelementproperty_cast<QUmlReadIsClassifiedObjectAction *>(this)->removeOutput(qmodelingelementproperty_cast<QUmlOutputPin *>(output));
+    emit outputsChanged(this->outputs());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ReadIsClassifiedObjectAction]
@@ -617,11 +660,13 @@ void QUmlReadIsClassifiedObjectActionObject::removeOutput(QObject *output)
 void QUmlReadIsClassifiedObjectActionObject::setClassifier(QObject *classifier)
 {
     qmodelingelementproperty_cast<QUmlReadIsClassifiedObjectAction *>(this)->setClassifier(qmodelingelementproperty_cast<QUmlClassifier *>(classifier));
+    emit classifierChanged(this->classifier());
 }
 
 void QUmlReadIsClassifiedObjectActionObject::setDirect(bool isDirect)
 {
     qmodelingelementproperty_cast<QUmlReadIsClassifiedObjectAction *>(this)->setDirect(isDirect);
+    emit isDirectChanged(this->isDirect());
 }
 
 void QUmlReadIsClassifiedObjectActionObject::unsetDirect()
@@ -634,11 +679,13 @@ void QUmlReadIsClassifiedObjectActionObject::unsetDirect()
 void QUmlReadIsClassifiedObjectActionObject::setObject(QObject *object)
 {
     qmodelingelementproperty_cast<QUmlReadIsClassifiedObjectAction *>(this)->setObject(qmodelingelementproperty_cast<QUmlInputPin *>(object));
+    emit objectChanged(this->object());
 }
 
 void QUmlReadIsClassifiedObjectActionObject::setResult(QObject *result)
 {
     qmodelingelementproperty_cast<QUmlReadIsClassifiedObjectAction *>(this)->setResult(qmodelingelementproperty_cast<QUmlOutputPin *>(result));
+    emit resultChanged(this->result());
 }
 
 

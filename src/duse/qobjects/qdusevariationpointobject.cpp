@@ -78,21 +78,25 @@ QString QDuseVariationPointObject::modelChange() const
 void QDuseVariationPointObject::setName(QString name)
 {
     qmodelingelementproperty_cast<QDuseVariationPoint *>(this)->setName(name);
+    emit nameChanged(this->name());
 }
 
 void QDuseVariationPointObject::setRationale(QString rationale)
 {
     qmodelingelementproperty_cast<QDuseVariationPoint *>(this)->setRationale(rationale);
+    emit rationaleChanged(this->rationale());
 }
 
 void QDuseVariationPointObject::setPreChangeValidationRule(QString preChangeValidationRule)
 {
     qmodelingelementproperty_cast<QDuseVariationPoint *>(this)->setPreChangeValidationRule(preChangeValidationRule);
+    emit preChangeValidationRuleChanged(this->preChangeValidationRule());
 }
 
 void QDuseVariationPointObject::setModelChange(QString modelChange)
 {
     qmodelingelementproperty_cast<QDuseVariationPoint *>(this)->setModelChange(modelChange);
+    emit modelChangeChanged(this->modelChange());
 }
 
 

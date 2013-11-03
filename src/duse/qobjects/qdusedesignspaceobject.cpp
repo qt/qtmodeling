@@ -82,26 +82,31 @@ const QSet<QObject *> QDuseDesignSpaceObject::qualityMetrics() const
 void QDuseDesignSpaceObject::setName(QString name)
 {
     qmodelingelementproperty_cast<QDuseDesignSpace *>(this)->setName(name);
+    emit nameChanged(this->name());
 }
 
 void QDuseDesignSpaceObject::addDesignDimension(QObject *designDimension)
 {
     qmodelingelementproperty_cast<QDuseDesignSpace *>(this)->addDesignDimension(qmodelingelementproperty_cast<QDuseDesignDimension *>(designDimension));
+    emit designDimensionsChanged(this->designDimensions());
 }
 
 void QDuseDesignSpaceObject::removeDesignDimension(QObject *designDimension)
 {
     qmodelingelementproperty_cast<QDuseDesignSpace *>(this)->removeDesignDimension(qmodelingelementproperty_cast<QDuseDesignDimension *>(designDimension));
+    emit designDimensionsChanged(this->designDimensions());
 }
 
 void QDuseDesignSpaceObject::addQualityMetric(QObject *qualityMetric)
 {
     qmodelingelementproperty_cast<QDuseDesignSpace *>(this)->addQualityMetric(qmodelingelementproperty_cast<QDuseQualityMetric *>(qualityMetric));
+    emit qualityMetricsChanged(this->qualityMetrics());
 }
 
 void QDuseDesignSpaceObject::removeQualityMetric(QObject *qualityMetric)
 {
     qmodelingelementproperty_cast<QDuseDesignSpace *>(this)->removeQualityMetric(qmodelingelementproperty_cast<QDuseQualityMetric *>(qualityMetric));
+    emit qualityMetricsChanged(this->qualityMetrics());
 }
 
 

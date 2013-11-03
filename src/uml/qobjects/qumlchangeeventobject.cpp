@@ -219,26 +219,31 @@ QString QUmlChangeEventObject::separator() const
 void QUmlChangeEventObject::addOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlChangeEvent *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlChangeEventObject::removeOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlChangeEvent *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlChangeEventObject::addOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlChangeEvent *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlChangeEventObject::removeOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlChangeEvent *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlChangeEventObject::setOwner(QObject *owner)
 {
     qmodelingelementproperty_cast<QUmlChangeEvent *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
+    emit ownerChanged(this->owner());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ParameterableElement]
@@ -246,11 +251,13 @@ void QUmlChangeEventObject::setOwner(QObject *owner)
 void QUmlChangeEventObject::setOwningTemplateParameter(QObject *owningTemplateParameter)
 {
     qmodelingelementproperty_cast<QUmlChangeEvent *>(this)->setOwningTemplateParameter(qmodelingelementproperty_cast<QUmlTemplateParameter *>(owningTemplateParameter));
+    emit owningTemplateParameterChanged(this->owningTemplateParameter());
 }
 
 void QUmlChangeEventObject::setTemplateParameter(QObject *templateParameter)
 {
     qmodelingelementproperty_cast<QUmlChangeEvent *>(this)->setTemplateParameter(qmodelingelementproperty_cast<QUmlTemplateParameter *>(templateParameter));
+    emit templateParameterChanged(this->templateParameter());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [NamedElement]
@@ -258,37 +265,44 @@ void QUmlChangeEventObject::setTemplateParameter(QObject *templateParameter)
 void QUmlChangeEventObject::addClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlChangeEvent *>(this)->addClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlChangeEventObject::removeClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlChangeEvent *>(this)->removeClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlChangeEventObject::setName(QString name)
 {
     qmodelingelementproperty_cast<QUmlChangeEvent *>(this)->setName(name);
+    emit nameChanged(this->name());
 }
 
 void QUmlChangeEventObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingelementproperty_cast<QUmlChangeEvent *>(this)->setNameExpression(qmodelingelementproperty_cast<QUmlStringExpression *>(nameExpression));
+    emit nameExpressionChanged(this->nameExpression());
 }
 
 void QUmlChangeEventObject::setNamespace(QObject *namespace_)
 {
     qmodelingelementproperty_cast<QUmlChangeEvent *>(this)->setNamespace(qmodelingelementproperty_cast<QUmlNamespace *>(namespace_));
+    emit namespaceChanged(this->namespace_());
 }
 
 void QUmlChangeEventObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingelementproperty_cast<QUmlChangeEvent *>(this)->setQualifiedName(qualifiedName);
+    emit qualifiedNameChanged(this->qualifiedName());
 }
 // SLOTS FOR OWNED ATTRIBUTES [PackageableElement]
 
 void QUmlChangeEventObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingelementproperty_cast<QUmlChangeEvent *>(this)->setVisibility(visibility);
+    emit visibilityChanged(this->visibility());
 }
 
 void QUmlChangeEventObject::unsetVisibility()
@@ -303,6 +317,7 @@ void QUmlChangeEventObject::unsetVisibility()
 void QUmlChangeEventObject::setChangeExpression(QObject *changeExpression)
 {
     qmodelingelementproperty_cast<QUmlChangeEvent *>(this)->setChangeExpression(qmodelingelementproperty_cast<QUmlValueSpecification *>(changeExpression));
+    emit changeExpressionChanged(this->changeExpression());
 }
 
 

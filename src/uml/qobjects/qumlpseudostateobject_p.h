@@ -62,27 +62,27 @@ class Q_UML_EXPORT QUmlPseudostateObject : public QModelingObject
     Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [Element]
-    Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
-    Q_PROPERTY(QSet<QObject *> ownedElements READ ownedElements)
-    Q_PROPERTY(QObject * owner READ owner)
+    Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments NOTIFY ownedCommentsChanged)
+    Q_PROPERTY(QSet<QObject *> ownedElements READ ownedElements NOTIFY ownedElementsChanged)
+    Q_PROPERTY(QObject * owner READ owner NOTIFY ownerChanged)
 
     // Properties [NamedElement]
-    Q_PROPERTY(QSet<QObject *> clientDependencies READ clientDependencies)
-    Q_PROPERTY(QString name READ name WRITE setName)
-    Q_PROPERTY(QObject * nameExpression READ nameExpression WRITE setNameExpression)
-    Q_PROPERTY(QObject * namespace_ READ namespace_)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
+    Q_PROPERTY(QSet<QObject *> clientDependencies READ clientDependencies NOTIFY clientDependenciesChanged)
+    Q_PROPERTY(QString name READ name WRITE setName NOTIFY nameChanged)
+    Q_PROPERTY(QObject * nameExpression READ nameExpression WRITE setNameExpression NOTIFY nameExpressionChanged)
+    Q_PROPERTY(QObject * namespace_ READ namespace_ NOTIFY namespaceChanged)
+    Q_PROPERTY(QString qualifiedName READ qualifiedName NOTIFY qualifiedNameChanged STORED false)
+    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility NOTIFY visibilityChanged)
 
     // Properties [Vertex]
-    Q_PROPERTY(QObject * container READ container WRITE setContainer)
-    Q_PROPERTY(QSet<QObject *> incomings READ incomings STORED false)
-    Q_PROPERTY(QSet<QObject *> outgoings READ outgoings STORED false)
+    Q_PROPERTY(QObject * container READ container WRITE setContainer NOTIFY containerChanged)
+    Q_PROPERTY(QSet<QObject *> incomings READ incomings NOTIFY incomingsChanged STORED false)
+    Q_PROPERTY(QSet<QObject *> outgoings READ outgoings NOTIFY outgoingsChanged STORED false)
 
     // Properties [Pseudostate]
-    Q_PROPERTY(QtUml::PseudostateKind kind READ kind WRITE setKind RESET unsetKind)
-    Q_PROPERTY(QObject * state READ state WRITE setState)
-    Q_PROPERTY(QObject * stateMachine READ stateMachine WRITE setStateMachine)
+    Q_PROPERTY(QtUml::PseudostateKind kind READ kind WRITE setKind NOTIFY kindChanged RESET unsetKind)
+    Q_PROPERTY(QObject * state READ state WRITE setState NOTIFY stateChanged)
+    Q_PROPERTY(QObject * stateMachine READ stateMachine WRITE setStateMachine NOTIFY stateMachineChanged)
 
 public:
     Q_INVOKABLE explicit QUmlPseudostateObject(QUmlPseudostate *modelingElement);
@@ -153,6 +153,31 @@ public Q_SLOTS:
     void unsetKind();
     void setState(QObject *state = 0);
     void setStateMachine(QObject *stateMachine = 0);
+
+Q_SIGNALS:
+
+    // Signals for owned attributes [Element]
+    void ownedCommentsChanged(QSet<QObject *> ownedComments);
+    void ownedElementsChanged(QSet<QObject *> ownedElements);
+    void ownerChanged(QObject *owner);
+
+    // Signals for owned attributes [NamedElement]
+    void clientDependenciesChanged(QSet<QObject *> clientDependencies);
+    void nameChanged(QString name);
+    void nameExpressionChanged(QObject *nameExpression);
+    void namespaceChanged(QObject *namespace_);
+    void qualifiedNameChanged(QString qualifiedName);
+    void visibilityChanged(QtUml::VisibilityKind visibility);
+
+    // Signals for owned attributes [Vertex]
+    void containerChanged(QObject *container);
+    void incomingsChanged(QSet<QObject *> incomings);
+    void outgoingsChanged(QSet<QObject *> outgoings);
+
+    // Signals for owned attributes [Pseudostate]
+    void kindChanged(QtUml::PseudostateKind kind);
+    void stateChanged(QObject *state);
+    void stateMachineChanged(QObject *stateMachine);
 
 protected:
     virtual void setGroupProperties();

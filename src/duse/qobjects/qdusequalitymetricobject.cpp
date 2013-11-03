@@ -73,16 +73,19 @@ QString QDuseQualityMetricObject::expression() const
 void QDuseQualityMetricObject::setName(QString name)
 {
     qmodelingelementproperty_cast<QDuseQualityMetric *>(this)->setName(name);
+    emit nameChanged(this->name());
 }
 
 void QDuseQualityMetricObject::setValue(double value)
 {
     qmodelingelementproperty_cast<QDuseQualityMetric *>(this)->setValue(value);
+    emit valueChanged(this->value());
 }
 
 void QDuseQualityMetricObject::setExpression(QString expression)
 {
     qmodelingelementproperty_cast<QDuseQualityMetric *>(this)->setExpression(expression);
+    emit expressionChanged(this->expression());
 }
 
 

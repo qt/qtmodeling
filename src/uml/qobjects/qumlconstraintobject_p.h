@@ -62,28 +62,28 @@ class Q_UML_EXPORT QUmlConstraintObject : public QModelingObject
     Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [Element]
-    Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
-    Q_PROPERTY(QSet<QObject *> ownedElements READ ownedElements)
-    Q_PROPERTY(QObject * owner READ owner)
+    Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments NOTIFY ownedCommentsChanged)
+    Q_PROPERTY(QSet<QObject *> ownedElements READ ownedElements NOTIFY ownedElementsChanged)
+    Q_PROPERTY(QObject * owner READ owner NOTIFY ownerChanged)
 
     // Properties [ParameterableElement]
-    Q_PROPERTY(QObject * owningTemplateParameter READ owningTemplateParameter WRITE setOwningTemplateParameter)
-    Q_PROPERTY(QObject * templateParameter READ templateParameter WRITE setTemplateParameter)
+    Q_PROPERTY(QObject * owningTemplateParameter READ owningTemplateParameter WRITE setOwningTemplateParameter NOTIFY owningTemplateParameterChanged)
+    Q_PROPERTY(QObject * templateParameter READ templateParameter WRITE setTemplateParameter NOTIFY templateParameterChanged)
 
     // Properties [NamedElement]
-    Q_PROPERTY(QSet<QObject *> clientDependencies READ clientDependencies)
-    Q_PROPERTY(QString name READ name WRITE setName)
-    Q_PROPERTY(QObject * nameExpression READ nameExpression WRITE setNameExpression)
-    Q_PROPERTY(QObject * namespace_ READ namespace_)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
+    Q_PROPERTY(QSet<QObject *> clientDependencies READ clientDependencies NOTIFY clientDependenciesChanged)
+    Q_PROPERTY(QString name READ name WRITE setName NOTIFY nameChanged)
+    Q_PROPERTY(QObject * nameExpression READ nameExpression WRITE setNameExpression NOTIFY nameExpressionChanged)
+    Q_PROPERTY(QObject * namespace_ READ namespace_ NOTIFY namespaceChanged)
+    Q_PROPERTY(QString qualifiedName READ qualifiedName NOTIFY qualifiedNameChanged STORED false)
 
     // Properties [PackageableElement]
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility RESET unsetVisibility)
+    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility NOTIFY visibilityChanged RESET unsetVisibility)
 
     // Properties [Constraint]
-    Q_PROPERTY(QList<QObject *> constrainedElements READ constrainedElements)
-    Q_PROPERTY(QObject * context READ context WRITE setContext)
-    Q_PROPERTY(QObject * specification READ specification WRITE setSpecification)
+    Q_PROPERTY(QList<QObject *> constrainedElements READ constrainedElements NOTIFY constrainedElementsChanged)
+    Q_PROPERTY(QObject * context READ context WRITE setContext NOTIFY contextChanged)
+    Q_PROPERTY(QObject * specification READ specification WRITE setSpecification NOTIFY specificationChanged)
 
 public:
     Q_INVOKABLE explicit QUmlConstraintObject(QUmlConstraint *modelingElement);
@@ -156,6 +156,32 @@ public Q_SLOTS:
     void removeConstrainedElement(QObject *constrainedElement);
     void setContext(QObject *context = 0);
     void setSpecification(QObject *specification = 0);
+
+Q_SIGNALS:
+
+    // Signals for owned attributes [Element]
+    void ownedCommentsChanged(QSet<QObject *> ownedComments);
+    void ownedElementsChanged(QSet<QObject *> ownedElements);
+    void ownerChanged(QObject *owner);
+
+    // Signals for owned attributes [ParameterableElement]
+    void owningTemplateParameterChanged(QObject *owningTemplateParameter);
+    void templateParameterChanged(QObject *templateParameter);
+
+    // Signals for owned attributes [NamedElement]
+    void clientDependenciesChanged(QSet<QObject *> clientDependencies);
+    void nameChanged(QString name);
+    void nameExpressionChanged(QObject *nameExpression);
+    void namespaceChanged(QObject *namespace_);
+    void qualifiedNameChanged(QString qualifiedName);
+
+    // Signals for owned attributes [PackageableElement]
+    void visibilityChanged(QtUml::VisibilityKind visibility);
+
+    // Signals for owned attributes [Constraint]
+    void constrainedElementsChanged(QList<QObject *> constrainedElements);
+    void contextChanged(QObject *context);
+    void specificationChanged(QObject *specification);
 
 protected:
     virtual void setGroupProperties();

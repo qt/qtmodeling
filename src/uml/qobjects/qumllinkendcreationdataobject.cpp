@@ -144,26 +144,31 @@ bool QUmlLinkEndCreationDataObject::mustBeOwned() const
 void QUmlLinkEndCreationDataObject::addOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlLinkEndCreationData *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlLinkEndCreationDataObject::removeOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlLinkEndCreationData *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlLinkEndCreationDataObject::addOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlLinkEndCreationData *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlLinkEndCreationDataObject::removeOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlLinkEndCreationData *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlLinkEndCreationDataObject::setOwner(QObject *owner)
 {
     qmodelingelementproperty_cast<QUmlLinkEndCreationData *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
+    emit ownerChanged(this->owner());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [LinkEndData]
@@ -171,21 +176,25 @@ void QUmlLinkEndCreationDataObject::setOwner(QObject *owner)
 void QUmlLinkEndCreationDataObject::setEnd(QObject *end)
 {
     qmodelingelementproperty_cast<QUmlLinkEndCreationData *>(this)->setEnd(qmodelingelementproperty_cast<QUmlProperty *>(end));
+    emit endChanged(this->end());
 }
 
 void QUmlLinkEndCreationDataObject::addQualifier(QObject *qualifier)
 {
     qmodelingelementproperty_cast<QUmlLinkEndCreationData *>(this)->addQualifier(qmodelingelementproperty_cast<QUmlQualifierValue *>(qualifier));
+    emit qualifiersChanged(this->qualifiers());
 }
 
 void QUmlLinkEndCreationDataObject::removeQualifier(QObject *qualifier)
 {
     qmodelingelementproperty_cast<QUmlLinkEndCreationData *>(this)->removeQualifier(qmodelingelementproperty_cast<QUmlQualifierValue *>(qualifier));
+    emit qualifiersChanged(this->qualifiers());
 }
 
 void QUmlLinkEndCreationDataObject::setValue(QObject *value)
 {
     qmodelingelementproperty_cast<QUmlLinkEndCreationData *>(this)->setValue(qmodelingelementproperty_cast<QUmlInputPin *>(value));
+    emit valueChanged(this->value());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [LinkEndCreationData]
@@ -193,11 +202,13 @@ void QUmlLinkEndCreationDataObject::setValue(QObject *value)
 void QUmlLinkEndCreationDataObject::setInsertAt(QObject *insertAt)
 {
     qmodelingelementproperty_cast<QUmlLinkEndCreationData *>(this)->setInsertAt(qmodelingelementproperty_cast<QUmlInputPin *>(insertAt));
+    emit insertAtChanged(this->insertAt());
 }
 
 void QUmlLinkEndCreationDataObject::setReplaceAll(bool isReplaceAll)
 {
     qmodelingelementproperty_cast<QUmlLinkEndCreationData *>(this)->setReplaceAll(isReplaceAll);
+    emit isReplaceAllChanged(this->isReplaceAll());
 }
 
 void QUmlLinkEndCreationDataObject::unsetReplaceAll()

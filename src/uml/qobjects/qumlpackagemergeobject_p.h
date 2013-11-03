@@ -60,20 +60,20 @@ class Q_UML_EXPORT QUmlPackageMergeObject : public QModelingObject
     Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [Element]
-    Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
-    Q_PROPERTY(QSet<QObject *> ownedElements READ ownedElements)
-    Q_PROPERTY(QObject * owner READ owner)
+    Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments NOTIFY ownedCommentsChanged)
+    Q_PROPERTY(QSet<QObject *> ownedElements READ ownedElements NOTIFY ownedElementsChanged)
+    Q_PROPERTY(QObject * owner READ owner NOTIFY ownerChanged)
 
     // Properties [Relationship]
-    Q_PROPERTY(QSet<QObject *> relatedElements READ relatedElements)
+    Q_PROPERTY(QSet<QObject *> relatedElements READ relatedElements NOTIFY relatedElementsChanged)
 
     // Properties [DirectedRelationship]
-    Q_PROPERTY(QSet<QObject *> sources READ sources)
-    Q_PROPERTY(QSet<QObject *> targets READ targets)
+    Q_PROPERTY(QSet<QObject *> sources READ sources NOTIFY sourcesChanged)
+    Q_PROPERTY(QSet<QObject *> targets READ targets NOTIFY targetsChanged)
 
     // Properties [PackageMerge]
-    Q_PROPERTY(QObject * mergedPackage READ mergedPackage WRITE setMergedPackage)
-    Q_PROPERTY(QObject * receivingPackage READ receivingPackage WRITE setReceivingPackage)
+    Q_PROPERTY(QObject * mergedPackage READ mergedPackage WRITE setMergedPackage NOTIFY mergedPackageChanged)
+    Q_PROPERTY(QObject * receivingPackage READ receivingPackage WRITE setReceivingPackage NOTIFY receivingPackageChanged)
 
 public:
     Q_INVOKABLE explicit QUmlPackageMergeObject(QUmlPackageMerge *modelingElement);
@@ -120,6 +120,24 @@ public Q_SLOTS:
     // Slots for owned attributes [PackageMerge]
     void setMergedPackage(QObject *mergedPackage = 0);
     void setReceivingPackage(QObject *receivingPackage = 0);
+
+Q_SIGNALS:
+
+    // Signals for owned attributes [Element]
+    void ownedCommentsChanged(QSet<QObject *> ownedComments);
+    void ownedElementsChanged(QSet<QObject *> ownedElements);
+    void ownerChanged(QObject *owner);
+
+    // Signals for owned attributes [Relationship]
+    void relatedElementsChanged(QSet<QObject *> relatedElements);
+
+    // Signals for owned attributes [DirectedRelationship]
+    void sourcesChanged(QSet<QObject *> sources);
+    void targetsChanged(QSet<QObject *> targets);
+
+    // Signals for owned attributes [PackageMerge]
+    void mergedPackageChanged(QObject *mergedPackage);
+    void receivingPackageChanged(QObject *receivingPackage);
 
 protected:
     virtual void setGroupProperties();

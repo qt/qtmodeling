@@ -267,26 +267,31 @@ bool QUmlRedefinableTemplateSignatureObject::isConsistentWith(QObject *redefinee
 void QUmlRedefinableTemplateSignatureObject::addOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlRedefinableTemplateSignature *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlRedefinableTemplateSignatureObject::removeOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlRedefinableTemplateSignature *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlRedefinableTemplateSignatureObject::addOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlRedefinableTemplateSignature *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlRedefinableTemplateSignatureObject::removeOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlRedefinableTemplateSignature *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlRedefinableTemplateSignatureObject::setOwner(QObject *owner)
 {
     qmodelingelementproperty_cast<QUmlRedefinableTemplateSignature *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
+    emit ownerChanged(this->owner());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [TemplateSignature]
@@ -294,26 +299,31 @@ void QUmlRedefinableTemplateSignatureObject::setOwner(QObject *owner)
 void QUmlRedefinableTemplateSignatureObject::addOwnedParameter(QObject *ownedParameter)
 {
     qmodelingelementproperty_cast<QUmlRedefinableTemplateSignature *>(this)->addOwnedParameter(qmodelingelementproperty_cast<QUmlTemplateParameter *>(ownedParameter));
+    emit ownedParametersChanged(this->ownedParameters());
 }
 
 void QUmlRedefinableTemplateSignatureObject::removeOwnedParameter(QObject *ownedParameter)
 {
     qmodelingelementproperty_cast<QUmlRedefinableTemplateSignature *>(this)->removeOwnedParameter(qmodelingelementproperty_cast<QUmlTemplateParameter *>(ownedParameter));
+    emit ownedParametersChanged(this->ownedParameters());
 }
 
 void QUmlRedefinableTemplateSignatureObject::addParameter(QObject *parameter)
 {
     qmodelingelementproperty_cast<QUmlRedefinableTemplateSignature *>(this)->addParameter(qmodelingelementproperty_cast<QUmlTemplateParameter *>(parameter));
+    emit parametersChanged(this->parameters());
 }
 
 void QUmlRedefinableTemplateSignatureObject::removeParameter(QObject *parameter)
 {
     qmodelingelementproperty_cast<QUmlRedefinableTemplateSignature *>(this)->removeParameter(qmodelingelementproperty_cast<QUmlTemplateParameter *>(parameter));
+    emit parametersChanged(this->parameters());
 }
 
 void QUmlRedefinableTemplateSignatureObject::setTemplate(QObject *template_)
 {
     qmodelingelementproperty_cast<QUmlRedefinableTemplateSignature *>(this)->setTemplate(qmodelingelementproperty_cast<QUmlTemplateableElement *>(template_));
+    emit templateChanged(this->template_());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [NamedElement]
@@ -321,36 +331,43 @@ void QUmlRedefinableTemplateSignatureObject::setTemplate(QObject *template_)
 void QUmlRedefinableTemplateSignatureObject::addClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlRedefinableTemplateSignature *>(this)->addClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlRedefinableTemplateSignatureObject::removeClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlRedefinableTemplateSignature *>(this)->removeClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlRedefinableTemplateSignatureObject::setName(QString name)
 {
     qmodelingelementproperty_cast<QUmlRedefinableTemplateSignature *>(this)->setName(name);
+    emit nameChanged(this->name());
 }
 
 void QUmlRedefinableTemplateSignatureObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingelementproperty_cast<QUmlRedefinableTemplateSignature *>(this)->setNameExpression(qmodelingelementproperty_cast<QUmlStringExpression *>(nameExpression));
+    emit nameExpressionChanged(this->nameExpression());
 }
 
 void QUmlRedefinableTemplateSignatureObject::setNamespace(QObject *namespace_)
 {
     qmodelingelementproperty_cast<QUmlRedefinableTemplateSignature *>(this)->setNamespace(qmodelingelementproperty_cast<QUmlNamespace *>(namespace_));
+    emit namespaceChanged(this->namespace_());
 }
 
 void QUmlRedefinableTemplateSignatureObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingelementproperty_cast<QUmlRedefinableTemplateSignature *>(this)->setQualifiedName(qualifiedName);
+    emit qualifiedNameChanged(this->qualifiedName());
 }
 
 void QUmlRedefinableTemplateSignatureObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingelementproperty_cast<QUmlRedefinableTemplateSignature *>(this)->setVisibility(visibility);
+    emit visibilityChanged(this->visibility());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [RedefinableElement]
@@ -358,6 +375,7 @@ void QUmlRedefinableTemplateSignatureObject::setVisibility(QtUml::VisibilityKind
 void QUmlRedefinableTemplateSignatureObject::setLeaf(bool isLeaf)
 {
     qmodelingelementproperty_cast<QUmlRedefinableTemplateSignature *>(this)->setLeaf(isLeaf);
+    emit isLeafChanged(this->isLeaf());
 }
 
 void QUmlRedefinableTemplateSignatureObject::unsetLeaf()
@@ -370,21 +388,25 @@ void QUmlRedefinableTemplateSignatureObject::unsetLeaf()
 void QUmlRedefinableTemplateSignatureObject::addRedefinedElement(QObject *redefinedElement)
 {
     qmodelingelementproperty_cast<QUmlRedefinableTemplateSignature *>(this)->addRedefinedElement(qmodelingelementproperty_cast<QUmlRedefinableElement *>(redefinedElement));
+    emit redefinedElementsChanged(this->redefinedElements());
 }
 
 void QUmlRedefinableTemplateSignatureObject::removeRedefinedElement(QObject *redefinedElement)
 {
     qmodelingelementproperty_cast<QUmlRedefinableTemplateSignature *>(this)->removeRedefinedElement(qmodelingelementproperty_cast<QUmlRedefinableElement *>(redefinedElement));
+    emit redefinedElementsChanged(this->redefinedElements());
 }
 
 void QUmlRedefinableTemplateSignatureObject::addRedefinitionContext(QObject *redefinitionContext)
 {
     qmodelingelementproperty_cast<QUmlRedefinableTemplateSignature *>(this)->addRedefinitionContext(qmodelingelementproperty_cast<QUmlClassifier *>(redefinitionContext));
+    emit redefinitionContextsChanged(this->redefinitionContexts());
 }
 
 void QUmlRedefinableTemplateSignatureObject::removeRedefinitionContext(QObject *redefinitionContext)
 {
     qmodelingelementproperty_cast<QUmlRedefinableTemplateSignature *>(this)->removeRedefinitionContext(qmodelingelementproperty_cast<QUmlClassifier *>(redefinitionContext));
+    emit redefinitionContextsChanged(this->redefinitionContexts());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [RedefinableTemplateSignature]
@@ -392,26 +414,31 @@ void QUmlRedefinableTemplateSignatureObject::removeRedefinitionContext(QObject *
 void QUmlRedefinableTemplateSignatureObject::setClassifier(QObject *classifier)
 {
     qmodelingelementproperty_cast<QUmlRedefinableTemplateSignature *>(this)->setClassifier(qmodelingelementproperty_cast<QUmlClassifier *>(classifier));
+    emit classifierChanged(this->classifier());
 }
 
 void QUmlRedefinableTemplateSignatureObject::addExtendedSignature(QObject *extendedSignature)
 {
     qmodelingelementproperty_cast<QUmlRedefinableTemplateSignature *>(this)->addExtendedSignature(qmodelingelementproperty_cast<QUmlRedefinableTemplateSignature *>(extendedSignature));
+    emit extendedSignaturesChanged(this->extendedSignatures());
 }
 
 void QUmlRedefinableTemplateSignatureObject::removeExtendedSignature(QObject *extendedSignature)
 {
     qmodelingelementproperty_cast<QUmlRedefinableTemplateSignature *>(this)->removeExtendedSignature(qmodelingelementproperty_cast<QUmlRedefinableTemplateSignature *>(extendedSignature));
+    emit extendedSignaturesChanged(this->extendedSignatures());
 }
 
 void QUmlRedefinableTemplateSignatureObject::addInheritedParameter(QObject *inheritedParameter)
 {
     qmodelingelementproperty_cast<QUmlRedefinableTemplateSignature *>(this)->addInheritedParameter(qmodelingelementproperty_cast<QUmlTemplateParameter *>(inheritedParameter));
+    emit inheritedParametersChanged(this->inheritedParameters());
 }
 
 void QUmlRedefinableTemplateSignatureObject::removeInheritedParameter(QObject *inheritedParameter)
 {
     qmodelingelementproperty_cast<QUmlRedefinableTemplateSignature *>(this)->removeInheritedParameter(qmodelingelementproperty_cast<QUmlTemplateParameter *>(inheritedParameter));
+    emit inheritedParametersChanged(this->inheritedParameters());
 }
 
 

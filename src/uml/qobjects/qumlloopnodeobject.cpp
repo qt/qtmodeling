@@ -570,26 +570,31 @@ bool QUmlLoopNodeObject::membersAreDistinguishable() const
 void QUmlLoopNodeObject::addOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlLoopNode *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlLoopNodeObject::removeOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlLoopNode *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlLoopNodeObject::addOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlLoopNode *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlLoopNodeObject::removeOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlLoopNode *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlLoopNodeObject::setOwner(QObject *owner)
 {
     qmodelingelementproperty_cast<QUmlLoopNode *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
+    emit ownerChanged(this->owner());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [NamedElement]
@@ -597,36 +602,43 @@ void QUmlLoopNodeObject::setOwner(QObject *owner)
 void QUmlLoopNodeObject::addClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlLoopNode *>(this)->addClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlLoopNodeObject::removeClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlLoopNode *>(this)->removeClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlLoopNodeObject::setName(QString name)
 {
     qmodelingelementproperty_cast<QUmlLoopNode *>(this)->setName(name);
+    emit nameChanged(this->name());
 }
 
 void QUmlLoopNodeObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingelementproperty_cast<QUmlLoopNode *>(this)->setNameExpression(qmodelingelementproperty_cast<QUmlStringExpression *>(nameExpression));
+    emit nameExpressionChanged(this->nameExpression());
 }
 
 void QUmlLoopNodeObject::setNamespace(QObject *namespace_)
 {
     qmodelingelementproperty_cast<QUmlLoopNode *>(this)->setNamespace(qmodelingelementproperty_cast<QUmlNamespace *>(namespace_));
+    emit namespaceChanged(this->namespace_());
 }
 
 void QUmlLoopNodeObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingelementproperty_cast<QUmlLoopNode *>(this)->setQualifiedName(qualifiedName);
+    emit qualifiedNameChanged(this->qualifiedName());
 }
 
 void QUmlLoopNodeObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingelementproperty_cast<QUmlLoopNode *>(this)->setVisibility(visibility);
+    emit visibilityChanged(this->visibility());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [RedefinableElement]
@@ -634,6 +646,7 @@ void QUmlLoopNodeObject::setVisibility(QtUml::VisibilityKind visibility)
 void QUmlLoopNodeObject::setLeaf(bool isLeaf)
 {
     qmodelingelementproperty_cast<QUmlLoopNode *>(this)->setLeaf(isLeaf);
+    emit isLeafChanged(this->isLeaf());
 }
 
 void QUmlLoopNodeObject::unsetLeaf()
@@ -646,21 +659,25 @@ void QUmlLoopNodeObject::unsetLeaf()
 void QUmlLoopNodeObject::addRedefinedElement(QObject *redefinedElement)
 {
     qmodelingelementproperty_cast<QUmlLoopNode *>(this)->addRedefinedElement(qmodelingelementproperty_cast<QUmlRedefinableElement *>(redefinedElement));
+    emit redefinedElementsChanged(this->redefinedElements());
 }
 
 void QUmlLoopNodeObject::removeRedefinedElement(QObject *redefinedElement)
 {
     qmodelingelementproperty_cast<QUmlLoopNode *>(this)->removeRedefinedElement(qmodelingelementproperty_cast<QUmlRedefinableElement *>(redefinedElement));
+    emit redefinedElementsChanged(this->redefinedElements());
 }
 
 void QUmlLoopNodeObject::addRedefinitionContext(QObject *redefinitionContext)
 {
     qmodelingelementproperty_cast<QUmlLoopNode *>(this)->addRedefinitionContext(qmodelingelementproperty_cast<QUmlClassifier *>(redefinitionContext));
+    emit redefinitionContextsChanged(this->redefinitionContexts());
 }
 
 void QUmlLoopNodeObject::removeRedefinitionContext(QObject *redefinitionContext)
 {
     qmodelingelementproperty_cast<QUmlLoopNode *>(this)->removeRedefinitionContext(qmodelingelementproperty_cast<QUmlClassifier *>(redefinitionContext));
+    emit redefinitionContextsChanged(this->redefinitionContexts());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ActivityNode]
@@ -668,66 +685,79 @@ void QUmlLoopNodeObject::removeRedefinitionContext(QObject *redefinitionContext)
 void QUmlLoopNodeObject::addInGroup(QObject *inGroup)
 {
     qmodelingelementproperty_cast<QUmlLoopNode *>(this)->addInGroup(qmodelingelementproperty_cast<QUmlActivityGroup *>(inGroup));
+    emit inGroupsChanged(this->inGroups());
 }
 
 void QUmlLoopNodeObject::removeInGroup(QObject *inGroup)
 {
     qmodelingelementproperty_cast<QUmlLoopNode *>(this)->removeInGroup(qmodelingelementproperty_cast<QUmlActivityGroup *>(inGroup));
+    emit inGroupsChanged(this->inGroups());
 }
 
 void QUmlLoopNodeObject::addInInterruptibleRegion(QObject *inInterruptibleRegion)
 {
     qmodelingelementproperty_cast<QUmlLoopNode *>(this)->addInInterruptibleRegion(qmodelingelementproperty_cast<QUmlInterruptibleActivityRegion *>(inInterruptibleRegion));
+    emit inInterruptibleRegionsChanged(this->inInterruptibleRegions());
 }
 
 void QUmlLoopNodeObject::removeInInterruptibleRegion(QObject *inInterruptibleRegion)
 {
     qmodelingelementproperty_cast<QUmlLoopNode *>(this)->removeInInterruptibleRegion(qmodelingelementproperty_cast<QUmlInterruptibleActivityRegion *>(inInterruptibleRegion));
+    emit inInterruptibleRegionsChanged(this->inInterruptibleRegions());
 }
 
 void QUmlLoopNodeObject::addInPartition(QObject *inPartition)
 {
     qmodelingelementproperty_cast<QUmlLoopNode *>(this)->addInPartition(qmodelingelementproperty_cast<QUmlActivityPartition *>(inPartition));
+    emit inPartitionsChanged(this->inPartitions());
 }
 
 void QUmlLoopNodeObject::removeInPartition(QObject *inPartition)
 {
     qmodelingelementproperty_cast<QUmlLoopNode *>(this)->removeInPartition(qmodelingelementproperty_cast<QUmlActivityPartition *>(inPartition));
+    emit inPartitionsChanged(this->inPartitions());
 }
 
 void QUmlLoopNodeObject::setInStructuredNode(QObject *inStructuredNode)
 {
     qmodelingelementproperty_cast<QUmlLoopNode *>(this)->setInStructuredNode(qmodelingelementproperty_cast<QUmlStructuredActivityNode *>(inStructuredNode));
+    emit inStructuredNodeChanged(this->inStructuredNode());
 }
 
 void QUmlLoopNodeObject::addIncoming(QObject *incoming)
 {
     qmodelingelementproperty_cast<QUmlLoopNode *>(this)->addIncoming(qmodelingelementproperty_cast<QUmlActivityEdge *>(incoming));
+    emit incomingsChanged(this->incomings());
 }
 
 void QUmlLoopNodeObject::removeIncoming(QObject *incoming)
 {
     qmodelingelementproperty_cast<QUmlLoopNode *>(this)->removeIncoming(qmodelingelementproperty_cast<QUmlActivityEdge *>(incoming));
+    emit incomingsChanged(this->incomings());
 }
 
 void QUmlLoopNodeObject::addOutgoing(QObject *outgoing)
 {
     qmodelingelementproperty_cast<QUmlLoopNode *>(this)->addOutgoing(qmodelingelementproperty_cast<QUmlActivityEdge *>(outgoing));
+    emit outgoingsChanged(this->outgoings());
 }
 
 void QUmlLoopNodeObject::removeOutgoing(QObject *outgoing)
 {
     qmodelingelementproperty_cast<QUmlLoopNode *>(this)->removeOutgoing(qmodelingelementproperty_cast<QUmlActivityEdge *>(outgoing));
+    emit outgoingsChanged(this->outgoings());
 }
 
 void QUmlLoopNodeObject::addRedefinedNode(QObject *redefinedNode)
 {
     qmodelingelementproperty_cast<QUmlLoopNode *>(this)->addRedefinedNode(qmodelingelementproperty_cast<QUmlActivityNode *>(redefinedNode));
+    emit redefinedNodesChanged(this->redefinedNodes());
 }
 
 void QUmlLoopNodeObject::removeRedefinedNode(QObject *redefinedNode)
 {
     qmodelingelementproperty_cast<QUmlLoopNode *>(this)->removeRedefinedNode(qmodelingelementproperty_cast<QUmlActivityNode *>(redefinedNode));
+    emit redefinedNodesChanged(this->redefinedNodes());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ExecutableNode]
@@ -735,11 +765,13 @@ void QUmlLoopNodeObject::removeRedefinedNode(QObject *redefinedNode)
 void QUmlLoopNodeObject::addHandler(QObject *handler)
 {
     qmodelingelementproperty_cast<QUmlLoopNode *>(this)->addHandler(qmodelingelementproperty_cast<QUmlExceptionHandler *>(handler));
+    emit handlersChanged(this->handlers());
 }
 
 void QUmlLoopNodeObject::removeHandler(QObject *handler)
 {
     qmodelingelementproperty_cast<QUmlLoopNode *>(this)->removeHandler(qmodelingelementproperty_cast<QUmlExceptionHandler *>(handler));
+    emit handlersChanged(this->handlers());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Action]
@@ -747,21 +779,25 @@ void QUmlLoopNodeObject::removeHandler(QObject *handler)
 void QUmlLoopNodeObject::setContext(QObject *context)
 {
     qmodelingelementproperty_cast<QUmlLoopNode *>(this)->setContext(qmodelingelementproperty_cast<QUmlClassifier *>(context));
+    emit contextChanged(this->context());
 }
 
 void QUmlLoopNodeObject::addInput(QObject *input)
 {
     qmodelingelementproperty_cast<QUmlLoopNode *>(this)->addInput(qmodelingelementproperty_cast<QUmlInputPin *>(input));
+    emit inputsChanged(this->inputs());
 }
 
 void QUmlLoopNodeObject::removeInput(QObject *input)
 {
     qmodelingelementproperty_cast<QUmlLoopNode *>(this)->removeInput(qmodelingelementproperty_cast<QUmlInputPin *>(input));
+    emit inputsChanged(this->inputs());
 }
 
 void QUmlLoopNodeObject::setLocallyReentrant(bool isLocallyReentrant)
 {
     qmodelingelementproperty_cast<QUmlLoopNode *>(this)->setLocallyReentrant(isLocallyReentrant);
+    emit isLocallyReentrantChanged(this->isLocallyReentrant());
 }
 
 void QUmlLoopNodeObject::unsetLocallyReentrant()
@@ -774,31 +810,37 @@ void QUmlLoopNodeObject::unsetLocallyReentrant()
 void QUmlLoopNodeObject::addLocalPostcondition(QObject *localPostcondition)
 {
     qmodelingelementproperty_cast<QUmlLoopNode *>(this)->addLocalPostcondition(qmodelingelementproperty_cast<QUmlConstraint *>(localPostcondition));
+    emit localPostconditionsChanged(this->localPostconditions());
 }
 
 void QUmlLoopNodeObject::removeLocalPostcondition(QObject *localPostcondition)
 {
     qmodelingelementproperty_cast<QUmlLoopNode *>(this)->removeLocalPostcondition(qmodelingelementproperty_cast<QUmlConstraint *>(localPostcondition));
+    emit localPostconditionsChanged(this->localPostconditions());
 }
 
 void QUmlLoopNodeObject::addLocalPrecondition(QObject *localPrecondition)
 {
     qmodelingelementproperty_cast<QUmlLoopNode *>(this)->addLocalPrecondition(qmodelingelementproperty_cast<QUmlConstraint *>(localPrecondition));
+    emit localPreconditionsChanged(this->localPreconditions());
 }
 
 void QUmlLoopNodeObject::removeLocalPrecondition(QObject *localPrecondition)
 {
     qmodelingelementproperty_cast<QUmlLoopNode *>(this)->removeLocalPrecondition(qmodelingelementproperty_cast<QUmlConstraint *>(localPrecondition));
+    emit localPreconditionsChanged(this->localPreconditions());
 }
 
 void QUmlLoopNodeObject::addOutput(QObject *output)
 {
     qmodelingelementproperty_cast<QUmlLoopNode *>(this)->addOutput(qmodelingelementproperty_cast<QUmlOutputPin *>(output));
+    emit outputsChanged(this->outputs());
 }
 
 void QUmlLoopNodeObject::removeOutput(QObject *output)
 {
     qmodelingelementproperty_cast<QUmlLoopNode *>(this)->removeOutput(qmodelingelementproperty_cast<QUmlOutputPin *>(output));
+    emit outputsChanged(this->outputs());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Namespace]
@@ -806,61 +848,73 @@ void QUmlLoopNodeObject::removeOutput(QObject *output)
 void QUmlLoopNodeObject::addElementImport(QObject *elementImport)
 {
     qmodelingelementproperty_cast<QUmlLoopNode *>(this)->addElementImport(qmodelingelementproperty_cast<QUmlElementImport *>(elementImport));
+    emit elementImportsChanged(this->elementImports());
 }
 
 void QUmlLoopNodeObject::removeElementImport(QObject *elementImport)
 {
     qmodelingelementproperty_cast<QUmlLoopNode *>(this)->removeElementImport(qmodelingelementproperty_cast<QUmlElementImport *>(elementImport));
+    emit elementImportsChanged(this->elementImports());
 }
 
 void QUmlLoopNodeObject::addImportedMember(QObject *importedMember)
 {
     qmodelingelementproperty_cast<QUmlLoopNode *>(this)->addImportedMember(qmodelingelementproperty_cast<QUmlPackageableElement *>(importedMember));
+    emit importedMembersChanged(this->importedMembers());
 }
 
 void QUmlLoopNodeObject::removeImportedMember(QObject *importedMember)
 {
     qmodelingelementproperty_cast<QUmlLoopNode *>(this)->removeImportedMember(qmodelingelementproperty_cast<QUmlPackageableElement *>(importedMember));
+    emit importedMembersChanged(this->importedMembers());
 }
 
 void QUmlLoopNodeObject::addMember(QObject *member)
 {
     qmodelingelementproperty_cast<QUmlLoopNode *>(this)->addMember(qmodelingelementproperty_cast<QUmlNamedElement *>(member));
+    emit membersChanged(this->members());
 }
 
 void QUmlLoopNodeObject::removeMember(QObject *member)
 {
     qmodelingelementproperty_cast<QUmlLoopNode *>(this)->removeMember(qmodelingelementproperty_cast<QUmlNamedElement *>(member));
+    emit membersChanged(this->members());
 }
 
 void QUmlLoopNodeObject::addOwnedMember(QObject *ownedMember)
 {
     qmodelingelementproperty_cast<QUmlLoopNode *>(this)->addOwnedMember(qmodelingelementproperty_cast<QUmlNamedElement *>(ownedMember));
+    emit ownedMembersChanged(this->ownedMembers());
 }
 
 void QUmlLoopNodeObject::removeOwnedMember(QObject *ownedMember)
 {
     qmodelingelementproperty_cast<QUmlLoopNode *>(this)->removeOwnedMember(qmodelingelementproperty_cast<QUmlNamedElement *>(ownedMember));
+    emit ownedMembersChanged(this->ownedMembers());
 }
 
 void QUmlLoopNodeObject::addOwnedRule(QObject *ownedRule)
 {
     qmodelingelementproperty_cast<QUmlLoopNode *>(this)->addOwnedRule(qmodelingelementproperty_cast<QUmlConstraint *>(ownedRule));
+    emit ownedRulesChanged(this->ownedRules());
 }
 
 void QUmlLoopNodeObject::removeOwnedRule(QObject *ownedRule)
 {
     qmodelingelementproperty_cast<QUmlLoopNode *>(this)->removeOwnedRule(qmodelingelementproperty_cast<QUmlConstraint *>(ownedRule));
+    emit ownedRulesChanged(this->ownedRules());
 }
 
 void QUmlLoopNodeObject::addPackageImport(QObject *packageImport)
 {
     qmodelingelementproperty_cast<QUmlLoopNode *>(this)->addPackageImport(qmodelingelementproperty_cast<QUmlPackageImport *>(packageImport));
+    emit packageImportsChanged(this->packageImports());
 }
 
 void QUmlLoopNodeObject::removePackageImport(QObject *packageImport)
 {
     qmodelingelementproperty_cast<QUmlLoopNode *>(this)->removePackageImport(qmodelingelementproperty_cast<QUmlPackageImport *>(packageImport));
+    emit packageImportsChanged(this->packageImports());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ActivityGroup]
@@ -868,36 +922,43 @@ void QUmlLoopNodeObject::removePackageImport(QObject *packageImport)
 void QUmlLoopNodeObject::addContainedEdge(QObject *containedEdge)
 {
     qmodelingelementproperty_cast<QUmlLoopNode *>(this)->addContainedEdge(qmodelingelementproperty_cast<QUmlActivityEdge *>(containedEdge));
+    emit containedEdgesChanged(this->containedEdges());
 }
 
 void QUmlLoopNodeObject::removeContainedEdge(QObject *containedEdge)
 {
     qmodelingelementproperty_cast<QUmlLoopNode *>(this)->removeContainedEdge(qmodelingelementproperty_cast<QUmlActivityEdge *>(containedEdge));
+    emit containedEdgesChanged(this->containedEdges());
 }
 
 void QUmlLoopNodeObject::addContainedNode(QObject *containedNode)
 {
     qmodelingelementproperty_cast<QUmlLoopNode *>(this)->addContainedNode(qmodelingelementproperty_cast<QUmlActivityNode *>(containedNode));
+    emit containedNodesChanged(this->containedNodes());
 }
 
 void QUmlLoopNodeObject::removeContainedNode(QObject *containedNode)
 {
     qmodelingelementproperty_cast<QUmlLoopNode *>(this)->removeContainedNode(qmodelingelementproperty_cast<QUmlActivityNode *>(containedNode));
+    emit containedNodesChanged(this->containedNodes());
 }
 
 void QUmlLoopNodeObject::addSubgroup(QObject *subgroup)
 {
     qmodelingelementproperty_cast<QUmlLoopNode *>(this)->addSubgroup(qmodelingelementproperty_cast<QUmlActivityGroup *>(subgroup));
+    emit subgroupsChanged(this->subgroups());
 }
 
 void QUmlLoopNodeObject::removeSubgroup(QObject *subgroup)
 {
     qmodelingelementproperty_cast<QUmlLoopNode *>(this)->removeSubgroup(qmodelingelementproperty_cast<QUmlActivityGroup *>(subgroup));
+    emit subgroupsChanged(this->subgroups());
 }
 
 void QUmlLoopNodeObject::setSuperGroup(QObject *superGroup)
 {
     qmodelingelementproperty_cast<QUmlLoopNode *>(this)->setSuperGroup(qmodelingelementproperty_cast<QUmlActivityGroup *>(superGroup));
+    emit superGroupChanged(this->superGroup());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [StructuredActivityNode]
@@ -905,21 +966,25 @@ void QUmlLoopNodeObject::setSuperGroup(QObject *superGroup)
 void QUmlLoopNodeObject::setActivity(QObject *activity)
 {
     qmodelingelementproperty_cast<QUmlLoopNode *>(this)->setActivity(qmodelingelementproperty_cast<QUmlActivity *>(activity));
+    emit activityChanged(this->activity());
 }
 
 void QUmlLoopNodeObject::addEdge(QObject *edge)
 {
     qmodelingelementproperty_cast<QUmlLoopNode *>(this)->addEdge(qmodelingelementproperty_cast<QUmlActivityEdge *>(edge));
+    emit edgesChanged(this->edges());
 }
 
 void QUmlLoopNodeObject::removeEdge(QObject *edge)
 {
     qmodelingelementproperty_cast<QUmlLoopNode *>(this)->removeEdge(qmodelingelementproperty_cast<QUmlActivityEdge *>(edge));
+    emit edgesChanged(this->edges());
 }
 
 void QUmlLoopNodeObject::setMustIsolate(bool mustIsolate)
 {
     qmodelingelementproperty_cast<QUmlLoopNode *>(this)->setMustIsolate(mustIsolate);
+    emit mustIsolateChanged(this->mustIsolate());
 }
 
 void QUmlLoopNodeObject::unsetMustIsolate()
@@ -932,21 +997,25 @@ void QUmlLoopNodeObject::unsetMustIsolate()
 void QUmlLoopNodeObject::addNode(QObject *node)
 {
     qmodelingelementproperty_cast<QUmlLoopNode *>(this)->addNode(qmodelingelementproperty_cast<QUmlActivityNode *>(node));
+    emit nodesChanged(this->nodes());
 }
 
 void QUmlLoopNodeObject::removeNode(QObject *node)
 {
     qmodelingelementproperty_cast<QUmlLoopNode *>(this)->removeNode(qmodelingelementproperty_cast<QUmlActivityNode *>(node));
+    emit nodesChanged(this->nodes());
 }
 
 void QUmlLoopNodeObject::addVariable(QObject *variable)
 {
     qmodelingelementproperty_cast<QUmlLoopNode *>(this)->addVariable(qmodelingelementproperty_cast<QUmlVariable *>(variable));
+    emit variablesChanged(this->variables());
 }
 
 void QUmlLoopNodeObject::removeVariable(QObject *variable)
 {
     qmodelingelementproperty_cast<QUmlLoopNode *>(this)->removeVariable(qmodelingelementproperty_cast<QUmlVariable *>(variable));
+    emit variablesChanged(this->variables());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [LoopNode]
@@ -954,31 +1023,37 @@ void QUmlLoopNodeObject::removeVariable(QObject *variable)
 void QUmlLoopNodeObject::addBodyOutput(QObject *bodyOutput)
 {
     qmodelingelementproperty_cast<QUmlLoopNode *>(this)->addBodyOutput(qmodelingelementproperty_cast<QUmlOutputPin *>(bodyOutput));
+    emit bodyOutputsChanged(this->bodyOutputs());
 }
 
 void QUmlLoopNodeObject::removeBodyOutput(QObject *bodyOutput)
 {
     qmodelingelementproperty_cast<QUmlLoopNode *>(this)->removeBodyOutput(qmodelingelementproperty_cast<QUmlOutputPin *>(bodyOutput));
+    emit bodyOutputsChanged(this->bodyOutputs());
 }
 
 void QUmlLoopNodeObject::addBodyPart(QObject *bodyPart)
 {
     qmodelingelementproperty_cast<QUmlLoopNode *>(this)->addBodyPart(qmodelingelementproperty_cast<QUmlExecutableNode *>(bodyPart));
+    emit bodyPartsChanged(this->bodyParts());
 }
 
 void QUmlLoopNodeObject::removeBodyPart(QObject *bodyPart)
 {
     qmodelingelementproperty_cast<QUmlLoopNode *>(this)->removeBodyPart(qmodelingelementproperty_cast<QUmlExecutableNode *>(bodyPart));
+    emit bodyPartsChanged(this->bodyParts());
 }
 
 void QUmlLoopNodeObject::setDecider(QObject *decider)
 {
     qmodelingelementproperty_cast<QUmlLoopNode *>(this)->setDecider(qmodelingelementproperty_cast<QUmlOutputPin *>(decider));
+    emit deciderChanged(this->decider());
 }
 
 void QUmlLoopNodeObject::setTestedFirst(bool isTestedFirst)
 {
     qmodelingelementproperty_cast<QUmlLoopNode *>(this)->setTestedFirst(isTestedFirst);
+    emit isTestedFirstChanged(this->isTestedFirst());
 }
 
 void QUmlLoopNodeObject::unsetTestedFirst()
@@ -991,51 +1066,61 @@ void QUmlLoopNodeObject::unsetTestedFirst()
 void QUmlLoopNodeObject::addLoopVariable(QObject *loopVariable)
 {
     qmodelingelementproperty_cast<QUmlLoopNode *>(this)->addLoopVariable(qmodelingelementproperty_cast<QUmlOutputPin *>(loopVariable));
+    emit loopVariablesChanged(this->loopVariables());
 }
 
 void QUmlLoopNodeObject::removeLoopVariable(QObject *loopVariable)
 {
     qmodelingelementproperty_cast<QUmlLoopNode *>(this)->removeLoopVariable(qmodelingelementproperty_cast<QUmlOutputPin *>(loopVariable));
+    emit loopVariablesChanged(this->loopVariables());
 }
 
 void QUmlLoopNodeObject::addLoopVariableInput(QObject *loopVariableInput)
 {
     qmodelingelementproperty_cast<QUmlLoopNode *>(this)->addLoopVariableInput(qmodelingelementproperty_cast<QUmlInputPin *>(loopVariableInput));
+    emit loopVariableInputsChanged(this->loopVariableInputs());
 }
 
 void QUmlLoopNodeObject::removeLoopVariableInput(QObject *loopVariableInput)
 {
     qmodelingelementproperty_cast<QUmlLoopNode *>(this)->removeLoopVariableInput(qmodelingelementproperty_cast<QUmlInputPin *>(loopVariableInput));
+    emit loopVariableInputsChanged(this->loopVariableInputs());
 }
 
 void QUmlLoopNodeObject::addResult(QObject *result)
 {
     qmodelingelementproperty_cast<QUmlLoopNode *>(this)->addResult(qmodelingelementproperty_cast<QUmlOutputPin *>(result));
+    emit resultsChanged(this->results());
 }
 
 void QUmlLoopNodeObject::removeResult(QObject *result)
 {
     qmodelingelementproperty_cast<QUmlLoopNode *>(this)->removeResult(qmodelingelementproperty_cast<QUmlOutputPin *>(result));
+    emit resultsChanged(this->results());
 }
 
 void QUmlLoopNodeObject::addSetupPart(QObject *setupPart)
 {
     qmodelingelementproperty_cast<QUmlLoopNode *>(this)->addSetupPart(qmodelingelementproperty_cast<QUmlExecutableNode *>(setupPart));
+    emit setupPartsChanged(this->setupParts());
 }
 
 void QUmlLoopNodeObject::removeSetupPart(QObject *setupPart)
 {
     qmodelingelementproperty_cast<QUmlLoopNode *>(this)->removeSetupPart(qmodelingelementproperty_cast<QUmlExecutableNode *>(setupPart));
+    emit setupPartsChanged(this->setupParts());
 }
 
 void QUmlLoopNodeObject::addTest(QObject *test)
 {
     qmodelingelementproperty_cast<QUmlLoopNode *>(this)->addTest(qmodelingelementproperty_cast<QUmlExecutableNode *>(test));
+    emit testsChanged(this->tests());
 }
 
 void QUmlLoopNodeObject::removeTest(QObject *test)
 {
     qmodelingelementproperty_cast<QUmlLoopNode *>(this)->removeTest(qmodelingelementproperty_cast<QUmlExecutableNode *>(test));
+    emit testsChanged(this->tests());
 }
 
 

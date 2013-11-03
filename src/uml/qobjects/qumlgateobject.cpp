@@ -185,26 +185,31 @@ QString QUmlGateObject::separator() const
 void QUmlGateObject::addOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlGate *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlGateObject::removeOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlGate *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlGateObject::addOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlGate *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlGateObject::removeOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlGate *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlGateObject::setOwner(QObject *owner)
 {
     qmodelingelementproperty_cast<QUmlGate *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
+    emit ownerChanged(this->owner());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [NamedElement]
@@ -212,36 +217,43 @@ void QUmlGateObject::setOwner(QObject *owner)
 void QUmlGateObject::addClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlGate *>(this)->addClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlGateObject::removeClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlGate *>(this)->removeClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlGateObject::setName(QString name)
 {
     qmodelingelementproperty_cast<QUmlGate *>(this)->setName(name);
+    emit nameChanged(this->name());
 }
 
 void QUmlGateObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingelementproperty_cast<QUmlGate *>(this)->setNameExpression(qmodelingelementproperty_cast<QUmlStringExpression *>(nameExpression));
+    emit nameExpressionChanged(this->nameExpression());
 }
 
 void QUmlGateObject::setNamespace(QObject *namespace_)
 {
     qmodelingelementproperty_cast<QUmlGate *>(this)->setNamespace(qmodelingelementproperty_cast<QUmlNamespace *>(namespace_));
+    emit namespaceChanged(this->namespace_());
 }
 
 void QUmlGateObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingelementproperty_cast<QUmlGate *>(this)->setQualifiedName(qualifiedName);
+    emit qualifiedNameChanged(this->qualifiedName());
 }
 
 void QUmlGateObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingelementproperty_cast<QUmlGate *>(this)->setVisibility(visibility);
+    emit visibilityChanged(this->visibility());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [MessageEnd]
@@ -249,6 +261,7 @@ void QUmlGateObject::setVisibility(QtUml::VisibilityKind visibility)
 void QUmlGateObject::setMessage(QObject *message)
 {
     qmodelingelementproperty_cast<QUmlGate *>(this)->setMessage(qmodelingelementproperty_cast<QUmlMessage *>(message));
+    emit messageChanged(this->message());
 }
 
 

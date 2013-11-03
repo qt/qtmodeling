@@ -258,26 +258,31 @@ int QMofOpaqueExpressionObject::value() const
 void QMofOpaqueExpressionObject::addOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QMofOpaqueExpression *>(this)->addOwnedComment(qmodelingelementproperty_cast<QMofComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QMofOpaqueExpressionObject::removeOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QMofOpaqueExpression *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QMofComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QMofOpaqueExpressionObject::addOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QMofOpaqueExpression *>(this)->addOwnedElement(qmodelingelementproperty_cast<QMofElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QMofOpaqueExpressionObject::removeOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QMofOpaqueExpression *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QMofElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QMofOpaqueExpressionObject::setOwner(QObject *owner)
 {
     qmodelingelementproperty_cast<QMofOpaqueExpression *>(this)->setOwner(qmodelingelementproperty_cast<QMofElement *>(owner));
+    emit ownerChanged(this->owner());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [NamedElement]
@@ -285,22 +290,26 @@ void QMofOpaqueExpressionObject::setOwner(QObject *owner)
 void QMofOpaqueExpressionObject::setName(QString name)
 {
     qmodelingelementproperty_cast<QMofOpaqueExpression *>(this)->setName(name);
+    emit nameChanged(this->name());
 }
 
 void QMofOpaqueExpressionObject::setNamespace(QObject *namespace_)
 {
     qmodelingelementproperty_cast<QMofOpaqueExpression *>(this)->setNamespace(qmodelingelementproperty_cast<QMofNamespace *>(namespace_));
+    emit namespaceChanged(this->namespace_());
 }
 
 void QMofOpaqueExpressionObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingelementproperty_cast<QMofOpaqueExpression *>(this)->setQualifiedName(qualifiedName);
+    emit qualifiedNameChanged(this->qualifiedName());
 }
 // SLOTS FOR OWNED ATTRIBUTES [PackageableElement]
 
 void QMofOpaqueExpressionObject::setVisibility(QtMof::VisibilityKind visibility)
 {
     qmodelingelementproperty_cast<QMofOpaqueExpression *>(this)->setVisibility(visibility);
+    emit visibilityChanged(this->visibility());
 }
 
 void QMofOpaqueExpressionObject::unsetVisibility()
@@ -315,6 +324,7 @@ void QMofOpaqueExpressionObject::unsetVisibility()
 void QMofOpaqueExpressionObject::setType(QObject *type)
 {
     qmodelingelementproperty_cast<QMofOpaqueExpression *>(this)->setType(qmodelingelementproperty_cast<QMofType *>(type));
+    emit typeChanged(this->type());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [OpaqueExpression]
@@ -322,21 +332,25 @@ void QMofOpaqueExpressionObject::setType(QObject *type)
 void QMofOpaqueExpressionObject::addBody(QString  body)
 {
     qmodelingelementproperty_cast<QMofOpaqueExpression *>(this)->addBody(body);
+    emit bodiesChanged(this->bodies());
 }
 
 void QMofOpaqueExpressionObject::removeBody(QString  body)
 {
     qmodelingelementproperty_cast<QMofOpaqueExpression *>(this)->removeBody(body);
+    emit bodiesChanged(this->bodies());
 }
 
 void QMofOpaqueExpressionObject::addLanguage(QString  language)
 {
     qmodelingelementproperty_cast<QMofOpaqueExpression *>(this)->addLanguage(language);
+    emit languagesChanged(this->languages());
 }
 
 void QMofOpaqueExpressionObject::removeLanguage(QString  language)
 {
     qmodelingelementproperty_cast<QMofOpaqueExpression *>(this)->removeLanguage(language);
+    emit languagesChanged(this->languages());
 }
 
 

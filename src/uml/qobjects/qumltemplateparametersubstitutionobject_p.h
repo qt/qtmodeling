@@ -60,15 +60,15 @@ class Q_UML_EXPORT QUmlTemplateParameterSubstitutionObject : public QModelingObj
     Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [Element]
-    Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
-    Q_PROPERTY(QSet<QObject *> ownedElements READ ownedElements)
-    Q_PROPERTY(QObject * owner READ owner)
+    Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments NOTIFY ownedCommentsChanged)
+    Q_PROPERTY(QSet<QObject *> ownedElements READ ownedElements NOTIFY ownedElementsChanged)
+    Q_PROPERTY(QObject * owner READ owner NOTIFY ownerChanged)
 
     // Properties [TemplateParameterSubstitution]
-    Q_PROPERTY(QObject * actual READ actual WRITE setActual)
-    Q_PROPERTY(QObject * formal READ formal WRITE setFormal)
-    Q_PROPERTY(QObject * ownedActual READ ownedActual WRITE setOwnedActual)
-    Q_PROPERTY(QObject * templateBinding READ templateBinding WRITE setTemplateBinding)
+    Q_PROPERTY(QObject * actual READ actual WRITE setActual NOTIFY actualChanged)
+    Q_PROPERTY(QObject * formal READ formal WRITE setFormal NOTIFY formalChanged)
+    Q_PROPERTY(QObject * ownedActual READ ownedActual WRITE setOwnedActual NOTIFY ownedActualChanged)
+    Q_PROPERTY(QObject * templateBinding READ templateBinding WRITE setTemplateBinding NOTIFY templateBindingChanged)
 
 public:
     Q_INVOKABLE explicit QUmlTemplateParameterSubstitutionObject(QUmlTemplateParameterSubstitution *modelingElement);
@@ -102,6 +102,19 @@ public Q_SLOTS:
     void setFormal(QObject *formal = 0);
     void setOwnedActual(QObject *ownedActual = 0);
     void setTemplateBinding(QObject *templateBinding = 0);
+
+Q_SIGNALS:
+
+    // Signals for owned attributes [Element]
+    void ownedCommentsChanged(QSet<QObject *> ownedComments);
+    void ownedElementsChanged(QSet<QObject *> ownedElements);
+    void ownerChanged(QObject *owner);
+
+    // Signals for owned attributes [TemplateParameterSubstitution]
+    void actualChanged(QObject *actual);
+    void formalChanged(QObject *formal);
+    void ownedActualChanged(QObject *ownedActual);
+    void templateBindingChanged(QObject *templateBinding);
 
 protected:
     virtual void setGroupProperties();

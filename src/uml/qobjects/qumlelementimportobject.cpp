@@ -165,26 +165,31 @@ QString QUmlElementImportObject::getName() const
 void QUmlElementImportObject::addOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlElementImport *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlElementImportObject::removeOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlElementImport *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlElementImportObject::addOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlElementImport *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlElementImportObject::removeOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlElementImport *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlElementImportObject::setOwner(QObject *owner)
 {
     qmodelingelementproperty_cast<QUmlElementImport *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
+    emit ownerChanged(this->owner());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Relationship]
@@ -192,11 +197,13 @@ void QUmlElementImportObject::setOwner(QObject *owner)
 void QUmlElementImportObject::addRelatedElement(QObject *relatedElement)
 {
     qmodelingelementproperty_cast<QUmlElementImport *>(this)->addRelatedElement(qmodelingelementproperty_cast<QUmlElement *>(relatedElement));
+    emit relatedElementsChanged(this->relatedElements());
 }
 
 void QUmlElementImportObject::removeRelatedElement(QObject *relatedElement)
 {
     qmodelingelementproperty_cast<QUmlElementImport *>(this)->removeRelatedElement(qmodelingelementproperty_cast<QUmlElement *>(relatedElement));
+    emit relatedElementsChanged(this->relatedElements());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [DirectedRelationship]
@@ -204,21 +211,25 @@ void QUmlElementImportObject::removeRelatedElement(QObject *relatedElement)
 void QUmlElementImportObject::addSource(QObject *source)
 {
     qmodelingelementproperty_cast<QUmlElementImport *>(this)->addSource(qmodelingelementproperty_cast<QUmlElement *>(source));
+    emit sourcesChanged(this->sources());
 }
 
 void QUmlElementImportObject::removeSource(QObject *source)
 {
     qmodelingelementproperty_cast<QUmlElementImport *>(this)->removeSource(qmodelingelementproperty_cast<QUmlElement *>(source));
+    emit sourcesChanged(this->sources());
 }
 
 void QUmlElementImportObject::addTarget(QObject *target)
 {
     qmodelingelementproperty_cast<QUmlElementImport *>(this)->addTarget(qmodelingelementproperty_cast<QUmlElement *>(target));
+    emit targetsChanged(this->targets());
 }
 
 void QUmlElementImportObject::removeTarget(QObject *target)
 {
     qmodelingelementproperty_cast<QUmlElementImport *>(this)->removeTarget(qmodelingelementproperty_cast<QUmlElement *>(target));
+    emit targetsChanged(this->targets());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ElementImport]
@@ -226,21 +237,25 @@ void QUmlElementImportObject::removeTarget(QObject *target)
 void QUmlElementImportObject::setAlias(QString alias)
 {
     qmodelingelementproperty_cast<QUmlElementImport *>(this)->setAlias(alias);
+    emit aliasChanged(this->alias());
 }
 
 void QUmlElementImportObject::setImportedElement(QObject *importedElement)
 {
     qmodelingelementproperty_cast<QUmlElementImport *>(this)->setImportedElement(qmodelingelementproperty_cast<QUmlPackageableElement *>(importedElement));
+    emit importedElementChanged(this->importedElement());
 }
 
 void QUmlElementImportObject::setImportingNamespace(QObject *importingNamespace)
 {
     qmodelingelementproperty_cast<QUmlElementImport *>(this)->setImportingNamespace(qmodelingelementproperty_cast<QUmlNamespace *>(importingNamespace));
+    emit importingNamespaceChanged(this->importingNamespace());
 }
 
 void QUmlElementImportObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingelementproperty_cast<QUmlElementImport *>(this)->setVisibility(visibility);
+    emit visibilityChanged(this->visibility());
 }
 
 void QUmlElementImportObject::unsetVisibility()

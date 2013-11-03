@@ -253,26 +253,31 @@ QString QUmlDependencyObject::separator() const
 void QUmlDependencyObject::addOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlDependency *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlDependencyObject::removeOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlDependency *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlDependencyObject::addOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlDependency *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlDependencyObject::removeOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlDependency *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlDependencyObject::setOwner(QObject *owner)
 {
     qmodelingelementproperty_cast<QUmlDependency *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
+    emit ownerChanged(this->owner());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ParameterableElement]
@@ -280,11 +285,13 @@ void QUmlDependencyObject::setOwner(QObject *owner)
 void QUmlDependencyObject::setOwningTemplateParameter(QObject *owningTemplateParameter)
 {
     qmodelingelementproperty_cast<QUmlDependency *>(this)->setOwningTemplateParameter(qmodelingelementproperty_cast<QUmlTemplateParameter *>(owningTemplateParameter));
+    emit owningTemplateParameterChanged(this->owningTemplateParameter());
 }
 
 void QUmlDependencyObject::setTemplateParameter(QObject *templateParameter)
 {
     qmodelingelementproperty_cast<QUmlDependency *>(this)->setTemplateParameter(qmodelingelementproperty_cast<QUmlTemplateParameter *>(templateParameter));
+    emit templateParameterChanged(this->templateParameter());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [NamedElement]
@@ -292,37 +299,44 @@ void QUmlDependencyObject::setTemplateParameter(QObject *templateParameter)
 void QUmlDependencyObject::addClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlDependency *>(this)->addClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlDependencyObject::removeClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlDependency *>(this)->removeClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlDependencyObject::setName(QString name)
 {
     qmodelingelementproperty_cast<QUmlDependency *>(this)->setName(name);
+    emit nameChanged(this->name());
 }
 
 void QUmlDependencyObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingelementproperty_cast<QUmlDependency *>(this)->setNameExpression(qmodelingelementproperty_cast<QUmlStringExpression *>(nameExpression));
+    emit nameExpressionChanged(this->nameExpression());
 }
 
 void QUmlDependencyObject::setNamespace(QObject *namespace_)
 {
     qmodelingelementproperty_cast<QUmlDependency *>(this)->setNamespace(qmodelingelementproperty_cast<QUmlNamespace *>(namespace_));
+    emit namespaceChanged(this->namespace_());
 }
 
 void QUmlDependencyObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingelementproperty_cast<QUmlDependency *>(this)->setQualifiedName(qualifiedName);
+    emit qualifiedNameChanged(this->qualifiedName());
 }
 // SLOTS FOR OWNED ATTRIBUTES [PackageableElement]
 
 void QUmlDependencyObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingelementproperty_cast<QUmlDependency *>(this)->setVisibility(visibility);
+    emit visibilityChanged(this->visibility());
 }
 
 void QUmlDependencyObject::unsetVisibility()
@@ -337,11 +351,13 @@ void QUmlDependencyObject::unsetVisibility()
 void QUmlDependencyObject::addRelatedElement(QObject *relatedElement)
 {
     qmodelingelementproperty_cast<QUmlDependency *>(this)->addRelatedElement(qmodelingelementproperty_cast<QUmlElement *>(relatedElement));
+    emit relatedElementsChanged(this->relatedElements());
 }
 
 void QUmlDependencyObject::removeRelatedElement(QObject *relatedElement)
 {
     qmodelingelementproperty_cast<QUmlDependency *>(this)->removeRelatedElement(qmodelingelementproperty_cast<QUmlElement *>(relatedElement));
+    emit relatedElementsChanged(this->relatedElements());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [DirectedRelationship]
@@ -349,21 +365,25 @@ void QUmlDependencyObject::removeRelatedElement(QObject *relatedElement)
 void QUmlDependencyObject::addSource(QObject *source)
 {
     qmodelingelementproperty_cast<QUmlDependency *>(this)->addSource(qmodelingelementproperty_cast<QUmlElement *>(source));
+    emit sourcesChanged(this->sources());
 }
 
 void QUmlDependencyObject::removeSource(QObject *source)
 {
     qmodelingelementproperty_cast<QUmlDependency *>(this)->removeSource(qmodelingelementproperty_cast<QUmlElement *>(source));
+    emit sourcesChanged(this->sources());
 }
 
 void QUmlDependencyObject::addTarget(QObject *target)
 {
     qmodelingelementproperty_cast<QUmlDependency *>(this)->addTarget(qmodelingelementproperty_cast<QUmlElement *>(target));
+    emit targetsChanged(this->targets());
 }
 
 void QUmlDependencyObject::removeTarget(QObject *target)
 {
     qmodelingelementproperty_cast<QUmlDependency *>(this)->removeTarget(qmodelingelementproperty_cast<QUmlElement *>(target));
+    emit targetsChanged(this->targets());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Dependency]
@@ -371,21 +391,25 @@ void QUmlDependencyObject::removeTarget(QObject *target)
 void QUmlDependencyObject::addClient(QObject *client)
 {
     qmodelingelementproperty_cast<QUmlDependency *>(this)->addClient(qmodelingelementproperty_cast<QUmlNamedElement *>(client));
+    emit clientsChanged(this->clients());
 }
 
 void QUmlDependencyObject::removeClient(QObject *client)
 {
     qmodelingelementproperty_cast<QUmlDependency *>(this)->removeClient(qmodelingelementproperty_cast<QUmlNamedElement *>(client));
+    emit clientsChanged(this->clients());
 }
 
 void QUmlDependencyObject::addSupplier(QObject *supplier)
 {
     qmodelingelementproperty_cast<QUmlDependency *>(this)->addSupplier(qmodelingelementproperty_cast<QUmlNamedElement *>(supplier));
+    emit suppliersChanged(this->suppliers());
 }
 
 void QUmlDependencyObject::removeSupplier(QObject *supplier)
 {
     qmodelingelementproperty_cast<QUmlDependency *>(this)->removeSupplier(qmodelingelementproperty_cast<QUmlNamedElement *>(supplier));
+    emit suppliersChanged(this->suppliers());
 }
 
 

@@ -62,95 +62,95 @@ class Q_UML_EXPORT QUmlStateMachineObject : public QModelingObject
     Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [Element]
-    Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
-    Q_PROPERTY(QSet<QObject *> ownedElements READ ownedElements)
-    Q_PROPERTY(QObject * owner READ owner)
+    Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments NOTIFY ownedCommentsChanged)
+    Q_PROPERTY(QSet<QObject *> ownedElements READ ownedElements NOTIFY ownedElementsChanged)
+    Q_PROPERTY(QObject * owner READ owner NOTIFY ownerChanged)
 
     // Properties [NamedElement]
-    Q_PROPERTY(QSet<QObject *> clientDependencies READ clientDependencies)
-    Q_PROPERTY(QString name READ name WRITE setName)
-    Q_PROPERTY(QObject * nameExpression READ nameExpression WRITE setNameExpression)
-    Q_PROPERTY(QObject * namespace_ READ namespace_)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
+    Q_PROPERTY(QSet<QObject *> clientDependencies READ clientDependencies NOTIFY clientDependenciesChanged)
+    Q_PROPERTY(QString name READ name WRITE setName NOTIFY nameChanged)
+    Q_PROPERTY(QObject * nameExpression READ nameExpression WRITE setNameExpression NOTIFY nameExpressionChanged)
+    Q_PROPERTY(QObject * namespace_ READ namespace_ NOTIFY namespaceChanged)
+    Q_PROPERTY(QString qualifiedName READ qualifiedName NOTIFY qualifiedNameChanged STORED false)
 
     // Properties [Namespace]
-    Q_PROPERTY(QSet<QObject *> elementImports READ elementImports)
-    Q_PROPERTY(QSet<QObject *> importedMembers READ importedMembers STORED false)
-    Q_PROPERTY(QSet<QObject *> members READ members)
-    Q_PROPERTY(QSet<QObject *> ownedMembers READ ownedMembers)
-    Q_PROPERTY(QSet<QObject *> ownedRules READ ownedRules)
-    Q_PROPERTY(QSet<QObject *> packageImports READ packageImports)
+    Q_PROPERTY(QSet<QObject *> elementImports READ elementImports NOTIFY elementImportsChanged)
+    Q_PROPERTY(QSet<QObject *> importedMembers READ importedMembers NOTIFY importedMembersChanged STORED false)
+    Q_PROPERTY(QSet<QObject *> members READ members NOTIFY membersChanged)
+    Q_PROPERTY(QSet<QObject *> ownedMembers READ ownedMembers NOTIFY ownedMembersChanged)
+    Q_PROPERTY(QSet<QObject *> ownedRules READ ownedRules NOTIFY ownedRulesChanged)
+    Q_PROPERTY(QSet<QObject *> packageImports READ packageImports NOTIFY packageImportsChanged)
 
     // Properties [ParameterableElement]
-    Q_PROPERTY(QObject * owningTemplateParameter READ owningTemplateParameter WRITE setOwningTemplateParameter)
+    Q_PROPERTY(QObject * owningTemplateParameter READ owningTemplateParameter WRITE setOwningTemplateParameter NOTIFY owningTemplateParameterChanged)
 
     // Properties [PackageableElement]
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility RESET unsetVisibility)
+    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility NOTIFY visibilityChanged RESET unsetVisibility)
 
     // Properties [Type]
-    Q_PROPERTY(QObject * package READ package WRITE setPackage)
+    Q_PROPERTY(QObject * package READ package WRITE setPackage NOTIFY packageChanged)
 
     // Properties [RedefinableElement]
-    Q_PROPERTY(bool isLeaf READ isLeaf WRITE setLeaf RESET unsetLeaf)
-    Q_PROPERTY(QSet<QObject *> redefinedElements READ redefinedElements)
-    Q_PROPERTY(QSet<QObject *> redefinitionContexts READ redefinitionContexts)
+    Q_PROPERTY(bool isLeaf READ isLeaf WRITE setLeaf NOTIFY isLeafChanged RESET unsetLeaf)
+    Q_PROPERTY(QSet<QObject *> redefinedElements READ redefinedElements NOTIFY redefinedElementsChanged)
+    Q_PROPERTY(QSet<QObject *> redefinitionContexts READ redefinitionContexts NOTIFY redefinitionContextsChanged)
 
     // Properties [TemplateableElement]
-    Q_PROPERTY(QSet<QObject *> templateBindings READ templateBindings)
+    Q_PROPERTY(QSet<QObject *> templateBindings READ templateBindings NOTIFY templateBindingsChanged)
 
     // Properties [Classifier]
-    Q_PROPERTY(QSet<QObject *> attributes READ attributes)
-    Q_PROPERTY(QSet<QObject *> collaborationUses READ collaborationUses)
-    Q_PROPERTY(QSet<QObject *> features READ features)
-    Q_PROPERTY(QSet<QObject *> generalizations READ generalizations)
-    Q_PROPERTY(QSet<QObject *> inheritedMembers READ inheritedMembers STORED false)
-    Q_PROPERTY(bool isFinalSpecialization READ isFinalSpecialization WRITE setFinalSpecialization RESET unsetFinalSpecialization)
-    Q_PROPERTY(QObject * ownedTemplateSignature READ ownedTemplateSignature WRITE setOwnedTemplateSignature)
-    Q_PROPERTY(QSet<QObject *> ownedUseCases READ ownedUseCases)
-    Q_PROPERTY(QSet<QObject *> powertypeExtents READ powertypeExtents)
-    Q_PROPERTY(QSet<QObject *> redefinedClassifiers READ redefinedClassifiers)
-    Q_PROPERTY(QObject * representation READ representation WRITE setRepresentation)
-    Q_PROPERTY(QSet<QObject *> substitutions READ substitutions)
-    Q_PROPERTY(QObject * templateParameter READ templateParameter WRITE setTemplateParameter)
-    Q_PROPERTY(QSet<QObject *> useCases READ useCases)
+    Q_PROPERTY(QSet<QObject *> attributes READ attributes NOTIFY attributesChanged)
+    Q_PROPERTY(QSet<QObject *> collaborationUses READ collaborationUses NOTIFY collaborationUsesChanged)
+    Q_PROPERTY(QSet<QObject *> features READ features NOTIFY featuresChanged)
+    Q_PROPERTY(QSet<QObject *> generalizations READ generalizations NOTIFY generalizationsChanged)
+    Q_PROPERTY(QSet<QObject *> inheritedMembers READ inheritedMembers NOTIFY inheritedMembersChanged STORED false)
+    Q_PROPERTY(bool isFinalSpecialization READ isFinalSpecialization WRITE setFinalSpecialization NOTIFY isFinalSpecializationChanged RESET unsetFinalSpecialization)
+    Q_PROPERTY(QObject * ownedTemplateSignature READ ownedTemplateSignature WRITE setOwnedTemplateSignature NOTIFY ownedTemplateSignatureChanged)
+    Q_PROPERTY(QSet<QObject *> ownedUseCases READ ownedUseCases NOTIFY ownedUseCasesChanged)
+    Q_PROPERTY(QSet<QObject *> powertypeExtents READ powertypeExtents NOTIFY powertypeExtentsChanged)
+    Q_PROPERTY(QSet<QObject *> redefinedClassifiers READ redefinedClassifiers NOTIFY redefinedClassifiersChanged)
+    Q_PROPERTY(QObject * representation READ representation WRITE setRepresentation NOTIFY representationChanged)
+    Q_PROPERTY(QSet<QObject *> substitutions READ substitutions NOTIFY substitutionsChanged)
+    Q_PROPERTY(QObject * templateParameter READ templateParameter WRITE setTemplateParameter NOTIFY templateParameterChanged)
+    Q_PROPERTY(QSet<QObject *> useCases READ useCases NOTIFY useCasesChanged)
 
     // Properties [StructuredClassifier]
-    Q_PROPERTY(QSet<QObject *> ownedConnectors READ ownedConnectors)
-    Q_PROPERTY(QSet<QObject *> parts READ parts STORED false)
-    Q_PROPERTY(QSet<QObject *> roles READ roles)
+    Q_PROPERTY(QSet<QObject *> ownedConnectors READ ownedConnectors NOTIFY ownedConnectorsChanged)
+    Q_PROPERTY(QSet<QObject *> parts READ parts NOTIFY partsChanged STORED false)
+    Q_PROPERTY(QSet<QObject *> roles READ roles NOTIFY rolesChanged)
 
     // Properties [EncapsulatedClassifier]
-    Q_PROPERTY(QSet<QObject *> ownedPorts READ ownedPorts STORED false)
+    Q_PROPERTY(QSet<QObject *> ownedPorts READ ownedPorts NOTIFY ownedPortsChanged STORED false)
 
     // Properties [BehavioredClassifier]
-    Q_PROPERTY(QObject * classifierBehavior READ classifierBehavior WRITE setClassifierBehavior)
-    Q_PROPERTY(QSet<QObject *> interfaceRealizations READ interfaceRealizations)
-    Q_PROPERTY(QSet<QObject *> ownedBehaviors READ ownedBehaviors)
+    Q_PROPERTY(QObject * classifierBehavior READ classifierBehavior WRITE setClassifierBehavior NOTIFY classifierBehaviorChanged)
+    Q_PROPERTY(QSet<QObject *> interfaceRealizations READ interfaceRealizations NOTIFY interfaceRealizationsChanged)
+    Q_PROPERTY(QSet<QObject *> ownedBehaviors READ ownedBehaviors NOTIFY ownedBehaviorsChanged)
 
     // Properties [Class]
-    Q_PROPERTY(QSet<QObject *> extensions READ extensions STORED false)
-    Q_PROPERTY(bool isAbstract READ isAbstract WRITE setAbstract RESET unsetAbstract)
-    Q_PROPERTY(bool isActive READ isActive WRITE setActive RESET unsetActive)
-    Q_PROPERTY(QList<QObject *> nestedClassifiers READ nestedClassifiers)
-    Q_PROPERTY(QList<QObject *> ownedAttributes READ ownedAttributes)
-    Q_PROPERTY(QList<QObject *> ownedOperations READ ownedOperations)
-    Q_PROPERTY(QSet<QObject *> ownedReceptions READ ownedReceptions)
-    Q_PROPERTY(QSet<QObject *> superClasses READ superClasses STORED false)
+    Q_PROPERTY(QSet<QObject *> extensions READ extensions NOTIFY extensionsChanged STORED false)
+    Q_PROPERTY(bool isAbstract READ isAbstract WRITE setAbstract NOTIFY isAbstractChanged RESET unsetAbstract)
+    Q_PROPERTY(bool isActive READ isActive WRITE setActive NOTIFY isActiveChanged RESET unsetActive)
+    Q_PROPERTY(QList<QObject *> nestedClassifiers READ nestedClassifiers NOTIFY nestedClassifiersChanged)
+    Q_PROPERTY(QList<QObject *> ownedAttributes READ ownedAttributes NOTIFY ownedAttributesChanged)
+    Q_PROPERTY(QList<QObject *> ownedOperations READ ownedOperations NOTIFY ownedOperationsChanged)
+    Q_PROPERTY(QSet<QObject *> ownedReceptions READ ownedReceptions NOTIFY ownedReceptionsChanged)
+    Q_PROPERTY(QSet<QObject *> superClasses READ superClasses NOTIFY superClassesChanged STORED false)
 
     // Properties [Behavior]
-    Q_PROPERTY(QObject * context READ context STORED false)
-    Q_PROPERTY(bool isReentrant READ isReentrant WRITE setReentrant RESET unsetReentrant)
-    Q_PROPERTY(QList<QObject *> ownedParameters READ ownedParameters)
-    Q_PROPERTY(QSet<QObject *> ownedParameterSets READ ownedParameterSets)
-    Q_PROPERTY(QSet<QObject *> postconditions READ postconditions)
-    Q_PROPERTY(QSet<QObject *> preconditions READ preconditions)
-    Q_PROPERTY(QObject * specification READ specification WRITE setSpecification)
+    Q_PROPERTY(QObject * context READ context NOTIFY contextChanged STORED false)
+    Q_PROPERTY(bool isReentrant READ isReentrant WRITE setReentrant NOTIFY isReentrantChanged RESET unsetReentrant)
+    Q_PROPERTY(QList<QObject *> ownedParameters READ ownedParameters NOTIFY ownedParametersChanged)
+    Q_PROPERTY(QSet<QObject *> ownedParameterSets READ ownedParameterSets NOTIFY ownedParameterSetsChanged)
+    Q_PROPERTY(QSet<QObject *> postconditions READ postconditions NOTIFY postconditionsChanged)
+    Q_PROPERTY(QSet<QObject *> preconditions READ preconditions NOTIFY preconditionsChanged)
+    Q_PROPERTY(QObject * specification READ specification WRITE setSpecification NOTIFY specificationChanged)
 
     // Properties [StateMachine]
-    Q_PROPERTY(QSet<QObject *> connectionPoints READ connectionPoints)
-    Q_PROPERTY(QSet<QObject *> extendedStateMachines READ extendedStateMachines)
-    Q_PROPERTY(QSet<QObject *> regions READ regions)
-    Q_PROPERTY(QSet<QObject *> submachineStates READ submachineStates)
+    Q_PROPERTY(QSet<QObject *> connectionPoints READ connectionPoints NOTIFY connectionPointsChanged)
+    Q_PROPERTY(QSet<QObject *> extendedStateMachines READ extendedStateMachines NOTIFY extendedStateMachinesChanged)
+    Q_PROPERTY(QSet<QObject *> regions READ regions NOTIFY regionsChanged)
+    Q_PROPERTY(QSet<QObject *> submachineStates READ submachineStates NOTIFY submachineStatesChanged)
 
 public:
     Q_INVOKABLE explicit QUmlStateMachineObject(QUmlStateMachine *modelingElement);
@@ -432,6 +432,99 @@ public Q_SLOTS:
     void removeRegion(QObject *region);
     void addSubmachineState(QObject *submachineState);
     void removeSubmachineState(QObject *submachineState);
+
+Q_SIGNALS:
+
+    // Signals for owned attributes [Element]
+    void ownedCommentsChanged(QSet<QObject *> ownedComments);
+    void ownedElementsChanged(QSet<QObject *> ownedElements);
+    void ownerChanged(QObject *owner);
+
+    // Signals for owned attributes [NamedElement]
+    void clientDependenciesChanged(QSet<QObject *> clientDependencies);
+    void nameChanged(QString name);
+    void nameExpressionChanged(QObject *nameExpression);
+    void namespaceChanged(QObject *namespace_);
+    void qualifiedNameChanged(QString qualifiedName);
+
+    // Signals for owned attributes [Namespace]
+    void elementImportsChanged(QSet<QObject *> elementImports);
+    void importedMembersChanged(QSet<QObject *> importedMembers);
+    void membersChanged(QSet<QObject *> members);
+    void ownedMembersChanged(QSet<QObject *> ownedMembers);
+    void ownedRulesChanged(QSet<QObject *> ownedRules);
+    void packageImportsChanged(QSet<QObject *> packageImports);
+
+    // Signals for owned attributes [ParameterableElement]
+    void owningTemplateParameterChanged(QObject *owningTemplateParameter);
+
+    // Signals for owned attributes [PackageableElement]
+    void visibilityChanged(QtUml::VisibilityKind visibility);
+
+    // Signals for owned attributes [Type]
+    void packageChanged(QObject *package);
+
+    // Signals for owned attributes [RedefinableElement]
+    void isLeafChanged(bool isLeaf);
+    void redefinedElementsChanged(QSet<QObject *> redefinedElements);
+    void redefinitionContextsChanged(QSet<QObject *> redefinitionContexts);
+
+    // Signals for owned attributes [TemplateableElement]
+    void templateBindingsChanged(QSet<QObject *> templateBindings);
+
+    // Signals for owned attributes [Classifier]
+    void attributesChanged(QSet<QObject *> attributes);
+    void collaborationUsesChanged(QSet<QObject *> collaborationUses);
+    void featuresChanged(QSet<QObject *> features);
+    void generalizationsChanged(QSet<QObject *> generalizations);
+    void inheritedMembersChanged(QSet<QObject *> inheritedMembers);
+    void isFinalSpecializationChanged(bool isFinalSpecialization);
+    void ownedTemplateSignatureChanged(QObject *ownedTemplateSignature);
+    void ownedUseCasesChanged(QSet<QObject *> ownedUseCases);
+    void powertypeExtentsChanged(QSet<QObject *> powertypeExtents);
+    void redefinedClassifiersChanged(QSet<QObject *> redefinedClassifiers);
+    void representationChanged(QObject *representation);
+    void substitutionsChanged(QSet<QObject *> substitutions);
+    void templateParameterChanged(QObject *templateParameter);
+    void useCasesChanged(QSet<QObject *> useCases);
+
+    // Signals for owned attributes [StructuredClassifier]
+    void ownedConnectorsChanged(QSet<QObject *> ownedConnectors);
+    void partsChanged(QSet<QObject *> parts);
+    void rolesChanged(QSet<QObject *> roles);
+
+    // Signals for owned attributes [EncapsulatedClassifier]
+    void ownedPortsChanged(QSet<QObject *> ownedPorts);
+
+    // Signals for owned attributes [BehavioredClassifier]
+    void classifierBehaviorChanged(QObject *classifierBehavior);
+    void interfaceRealizationsChanged(QSet<QObject *> interfaceRealizations);
+    void ownedBehaviorsChanged(QSet<QObject *> ownedBehaviors);
+
+    // Signals for owned attributes [Class]
+    void extensionsChanged(QSet<QObject *> extensions);
+    void isAbstractChanged(bool isAbstract);
+    void isActiveChanged(bool isActive);
+    void nestedClassifiersChanged(QList<QObject *> nestedClassifiers);
+    void ownedAttributesChanged(QList<QObject *> ownedAttributes);
+    void ownedOperationsChanged(QList<QObject *> ownedOperations);
+    void ownedReceptionsChanged(QSet<QObject *> ownedReceptions);
+    void superClassesChanged(QSet<QObject *> superClasses);
+
+    // Signals for owned attributes [Behavior]
+    void contextChanged(QObject *context);
+    void isReentrantChanged(bool isReentrant);
+    void ownedParametersChanged(QList<QObject *> ownedParameters);
+    void ownedParameterSetsChanged(QSet<QObject *> ownedParameterSets);
+    void postconditionsChanged(QSet<QObject *> postconditions);
+    void preconditionsChanged(QSet<QObject *> preconditions);
+    void specificationChanged(QObject *specification);
+
+    // Signals for owned attributes [StateMachine]
+    void connectionPointsChanged(QSet<QObject *> connectionPoints);
+    void extendedStateMachinesChanged(QSet<QObject *> extendedStateMachines);
+    void regionsChanged(QSet<QObject *> regions);
+    void submachineStatesChanged(QSet<QObject *> submachineStates);
 
 protected:
     virtual void setGroupProperties();

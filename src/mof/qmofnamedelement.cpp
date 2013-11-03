@@ -54,7 +54,8 @@ QT_BEGIN_NAMESPACE
     \brief A named element is an element in a model that may have a name.
  */
 QMofNamedElement::QMofNamedElement() :
-    _namespace_(0)
+    _namespace_(0),
+    _visibility(QtMof::VisibilityKindNone)
 {
 }
 

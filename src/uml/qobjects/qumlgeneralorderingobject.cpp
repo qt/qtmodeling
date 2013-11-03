@@ -193,26 +193,31 @@ QString QUmlGeneralOrderingObject::separator() const
 void QUmlGeneralOrderingObject::addOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlGeneralOrdering *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlGeneralOrderingObject::removeOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlGeneralOrdering *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlGeneralOrderingObject::addOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlGeneralOrdering *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlGeneralOrderingObject::removeOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlGeneralOrdering *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlGeneralOrderingObject::setOwner(QObject *owner)
 {
     qmodelingelementproperty_cast<QUmlGeneralOrdering *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
+    emit ownerChanged(this->owner());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [NamedElement]
@@ -220,36 +225,43 @@ void QUmlGeneralOrderingObject::setOwner(QObject *owner)
 void QUmlGeneralOrderingObject::addClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlGeneralOrdering *>(this)->addClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlGeneralOrderingObject::removeClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlGeneralOrdering *>(this)->removeClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlGeneralOrderingObject::setName(QString name)
 {
     qmodelingelementproperty_cast<QUmlGeneralOrdering *>(this)->setName(name);
+    emit nameChanged(this->name());
 }
 
 void QUmlGeneralOrderingObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingelementproperty_cast<QUmlGeneralOrdering *>(this)->setNameExpression(qmodelingelementproperty_cast<QUmlStringExpression *>(nameExpression));
+    emit nameExpressionChanged(this->nameExpression());
 }
 
 void QUmlGeneralOrderingObject::setNamespace(QObject *namespace_)
 {
     qmodelingelementproperty_cast<QUmlGeneralOrdering *>(this)->setNamespace(qmodelingelementproperty_cast<QUmlNamespace *>(namespace_));
+    emit namespaceChanged(this->namespace_());
 }
 
 void QUmlGeneralOrderingObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingelementproperty_cast<QUmlGeneralOrdering *>(this)->setQualifiedName(qualifiedName);
+    emit qualifiedNameChanged(this->qualifiedName());
 }
 
 void QUmlGeneralOrderingObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingelementproperty_cast<QUmlGeneralOrdering *>(this)->setVisibility(visibility);
+    emit visibilityChanged(this->visibility());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [GeneralOrdering]
@@ -257,11 +269,13 @@ void QUmlGeneralOrderingObject::setVisibility(QtUml::VisibilityKind visibility)
 void QUmlGeneralOrderingObject::setAfter(QObject *after)
 {
     qmodelingelementproperty_cast<QUmlGeneralOrdering *>(this)->setAfter(qmodelingelementproperty_cast<QUmlOccurrenceSpecification *>(after));
+    emit afterChanged(this->after());
 }
 
 void QUmlGeneralOrderingObject::setBefore(QObject *before)
 {
     qmodelingelementproperty_cast<QUmlGeneralOrdering *>(this)->setBefore(qmodelingelementproperty_cast<QUmlOccurrenceSpecification *>(before));
+    emit beforeChanged(this->before());
 }
 
 

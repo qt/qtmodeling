@@ -216,26 +216,31 @@ QString QMofEnumerationLiteralObject::separator() const
 void QMofEnumerationLiteralObject::addOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QMofEnumerationLiteral *>(this)->addOwnedComment(qmodelingelementproperty_cast<QMofComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QMofEnumerationLiteralObject::removeOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QMofEnumerationLiteral *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QMofComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QMofEnumerationLiteralObject::addOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QMofEnumerationLiteral *>(this)->addOwnedElement(qmodelingelementproperty_cast<QMofElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QMofEnumerationLiteralObject::removeOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QMofEnumerationLiteral *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QMofElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QMofEnumerationLiteralObject::setOwner(QObject *owner)
 {
     qmodelingelementproperty_cast<QMofEnumerationLiteral *>(this)->setOwner(qmodelingelementproperty_cast<QMofElement *>(owner));
+    emit ownerChanged(this->owner());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [NamedElement]
@@ -243,22 +248,26 @@ void QMofEnumerationLiteralObject::setOwner(QObject *owner)
 void QMofEnumerationLiteralObject::setName(QString name)
 {
     qmodelingelementproperty_cast<QMofEnumerationLiteral *>(this)->setName(name);
+    emit nameChanged(this->name());
 }
 
 void QMofEnumerationLiteralObject::setNamespace(QObject *namespace_)
 {
     qmodelingelementproperty_cast<QMofEnumerationLiteral *>(this)->setNamespace(qmodelingelementproperty_cast<QMofNamespace *>(namespace_));
+    emit namespaceChanged(this->namespace_());
 }
 
 void QMofEnumerationLiteralObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingelementproperty_cast<QMofEnumerationLiteral *>(this)->setQualifiedName(qualifiedName);
+    emit qualifiedNameChanged(this->qualifiedName());
 }
 // SLOTS FOR OWNED ATTRIBUTES [PackageableElement]
 
 void QMofEnumerationLiteralObject::setVisibility(QtMof::VisibilityKind visibility)
 {
     qmodelingelementproperty_cast<QMofEnumerationLiteral *>(this)->setVisibility(visibility);
+    emit visibilityChanged(this->visibility());
 }
 
 void QMofEnumerationLiteralObject::unsetVisibility()
@@ -273,16 +282,19 @@ void QMofEnumerationLiteralObject::unsetVisibility()
 void QMofEnumerationLiteralObject::addSlot(QObject *slot_)
 {
     qmodelingelementproperty_cast<QMofEnumerationLiteral *>(this)->addSlot(qmodelingelementproperty_cast<QMofSlot *>(slot_));
+    emit slotsChanged(this->slots_());
 }
 
 void QMofEnumerationLiteralObject::removeSlot(QObject *slot_)
 {
     qmodelingelementproperty_cast<QMofEnumerationLiteral *>(this)->removeSlot(qmodelingelementproperty_cast<QMofSlot *>(slot_));
+    emit slotsChanged(this->slots_());
 }
 
 void QMofEnumerationLiteralObject::setSpecification(QObject *specification)
 {
     qmodelingelementproperty_cast<QMofEnumerationLiteral *>(this)->setSpecification(qmodelingelementproperty_cast<QMofValueSpecification *>(specification));
+    emit specificationChanged(this->specification());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [EnumerationLiteral]
@@ -290,11 +302,13 @@ void QMofEnumerationLiteralObject::setSpecification(QObject *specification)
 void QMofEnumerationLiteralObject::setClassifier(QObject *classifier)
 {
     qmodelingelementproperty_cast<QMofEnumerationLiteral *>(this)->setClassifier(qmodelingelementproperty_cast<QMofEnumeration *>(classifier));
+    emit classifierChanged(this->classifier());
 }
 
 void QMofEnumerationLiteralObject::setEnumeration(QObject *enumeration)
 {
     qmodelingelementproperty_cast<QMofEnumerationLiteral *>(this)->setEnumeration(qmodelingelementproperty_cast<QMofEnumeration *>(enumeration));
+    emit enumerationChanged(this->enumeration());
 }
 
 

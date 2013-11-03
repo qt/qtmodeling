@@ -257,26 +257,31 @@ bool QUmlInstanceSpecificationObject::isTemplateParameter() const
 void QUmlInstanceSpecificationObject::addOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlInstanceSpecification *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlInstanceSpecificationObject::removeOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlInstanceSpecification *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlInstanceSpecificationObject::addOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlInstanceSpecification *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlInstanceSpecificationObject::removeOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlInstanceSpecification *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlInstanceSpecificationObject::setOwner(QObject *owner)
 {
     qmodelingelementproperty_cast<QUmlInstanceSpecification *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
+    emit ownerChanged(this->owner());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [NamedElement]
@@ -284,42 +289,50 @@ void QUmlInstanceSpecificationObject::setOwner(QObject *owner)
 void QUmlInstanceSpecificationObject::addClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlInstanceSpecification *>(this)->addClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlInstanceSpecificationObject::removeClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlInstanceSpecification *>(this)->removeClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlInstanceSpecificationObject::setName(QString name)
 {
     qmodelingelementproperty_cast<QUmlInstanceSpecification *>(this)->setName(name);
+    emit nameChanged(this->name());
 }
 
 void QUmlInstanceSpecificationObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingelementproperty_cast<QUmlInstanceSpecification *>(this)->setNameExpression(qmodelingelementproperty_cast<QUmlStringExpression *>(nameExpression));
+    emit nameExpressionChanged(this->nameExpression());
 }
 
 void QUmlInstanceSpecificationObject::setNamespace(QObject *namespace_)
 {
     qmodelingelementproperty_cast<QUmlInstanceSpecification *>(this)->setNamespace(qmodelingelementproperty_cast<QUmlNamespace *>(namespace_));
+    emit namespaceChanged(this->namespace_());
 }
 
 void QUmlInstanceSpecificationObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingelementproperty_cast<QUmlInstanceSpecification *>(this)->setQualifiedName(qualifiedName);
+    emit qualifiedNameChanged(this->qualifiedName());
 }
 // SLOTS FOR OWNED ATTRIBUTES [ParameterableElement]
 
 void QUmlInstanceSpecificationObject::setOwningTemplateParameter(QObject *owningTemplateParameter)
 {
     qmodelingelementproperty_cast<QUmlInstanceSpecification *>(this)->setOwningTemplateParameter(qmodelingelementproperty_cast<QUmlTemplateParameter *>(owningTemplateParameter));
+    emit owningTemplateParameterChanged(this->owningTemplateParameter());
 }
 
 void QUmlInstanceSpecificationObject::setTemplateParameter(QObject *templateParameter)
 {
     qmodelingelementproperty_cast<QUmlInstanceSpecification *>(this)->setTemplateParameter(qmodelingelementproperty_cast<QUmlTemplateParameter *>(templateParameter));
+    emit templateParameterChanged(this->templateParameter());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [PackageableElement]
@@ -327,6 +340,7 @@ void QUmlInstanceSpecificationObject::setTemplateParameter(QObject *templatePara
 void QUmlInstanceSpecificationObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingelementproperty_cast<QUmlInstanceSpecification *>(this)->setVisibility(visibility);
+    emit visibilityChanged(this->visibility());
 }
 
 void QUmlInstanceSpecificationObject::unsetVisibility()
@@ -341,21 +355,25 @@ void QUmlInstanceSpecificationObject::unsetVisibility()
 void QUmlInstanceSpecificationObject::addDeployedElement(QObject *deployedElement)
 {
     qmodelingelementproperty_cast<QUmlInstanceSpecification *>(this)->addDeployedElement(qmodelingelementproperty_cast<QUmlPackageableElement *>(deployedElement));
+    emit deployedElementsChanged(this->deployedElements());
 }
 
 void QUmlInstanceSpecificationObject::removeDeployedElement(QObject *deployedElement)
 {
     qmodelingelementproperty_cast<QUmlInstanceSpecification *>(this)->removeDeployedElement(qmodelingelementproperty_cast<QUmlPackageableElement *>(deployedElement));
+    emit deployedElementsChanged(this->deployedElements());
 }
 
 void QUmlInstanceSpecificationObject::addDeployment(QObject *deployment)
 {
     qmodelingelementproperty_cast<QUmlInstanceSpecification *>(this)->addDeployment(qmodelingelementproperty_cast<QUmlDeployment *>(deployment));
+    emit deploymentsChanged(this->deployments());
 }
 
 void QUmlInstanceSpecificationObject::removeDeployment(QObject *deployment)
 {
     qmodelingelementproperty_cast<QUmlInstanceSpecification *>(this)->removeDeployment(qmodelingelementproperty_cast<QUmlDeployment *>(deployment));
+    emit deploymentsChanged(this->deployments());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [InstanceSpecification]
@@ -363,26 +381,31 @@ void QUmlInstanceSpecificationObject::removeDeployment(QObject *deployment)
 void QUmlInstanceSpecificationObject::addClassifier(QObject *classifier)
 {
     qmodelingelementproperty_cast<QUmlInstanceSpecification *>(this)->addClassifier(qmodelingelementproperty_cast<QUmlClassifier *>(classifier));
+    emit classifiersChanged(this->classifiers());
 }
 
 void QUmlInstanceSpecificationObject::removeClassifier(QObject *classifier)
 {
     qmodelingelementproperty_cast<QUmlInstanceSpecification *>(this)->removeClassifier(qmodelingelementproperty_cast<QUmlClassifier *>(classifier));
+    emit classifiersChanged(this->classifiers());
 }
 
 void QUmlInstanceSpecificationObject::addSlot(QObject *slot_)
 {
     qmodelingelementproperty_cast<QUmlInstanceSpecification *>(this)->addSlot(qmodelingelementproperty_cast<QUmlSlot *>(slot_));
+    emit slotsChanged(this->slots_());
 }
 
 void QUmlInstanceSpecificationObject::removeSlot(QObject *slot_)
 {
     qmodelingelementproperty_cast<QUmlInstanceSpecification *>(this)->removeSlot(qmodelingelementproperty_cast<QUmlSlot *>(slot_));
+    emit slotsChanged(this->slots_());
 }
 
 void QUmlInstanceSpecificationObject::setSpecification(QObject *specification)
 {
     qmodelingelementproperty_cast<QUmlInstanceSpecification *>(this)->setSpecification(qmodelingelementproperty_cast<QUmlValueSpecification *>(specification));
+    emit specificationChanged(this->specification());
 }
 
 

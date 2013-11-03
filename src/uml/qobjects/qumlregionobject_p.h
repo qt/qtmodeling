@@ -62,37 +62,37 @@ class Q_UML_EXPORT QUmlRegionObject : public QModelingObject
     Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [Element]
-    Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
-    Q_PROPERTY(QSet<QObject *> ownedElements READ ownedElements)
-    Q_PROPERTY(QObject * owner READ owner)
+    Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments NOTIFY ownedCommentsChanged)
+    Q_PROPERTY(QSet<QObject *> ownedElements READ ownedElements NOTIFY ownedElementsChanged)
+    Q_PROPERTY(QObject * owner READ owner NOTIFY ownerChanged)
 
     // Properties [NamedElement]
-    Q_PROPERTY(QSet<QObject *> clientDependencies READ clientDependencies)
-    Q_PROPERTY(QString name READ name WRITE setName)
-    Q_PROPERTY(QObject * nameExpression READ nameExpression WRITE setNameExpression)
-    Q_PROPERTY(QObject * namespace_ READ namespace_)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
+    Q_PROPERTY(QSet<QObject *> clientDependencies READ clientDependencies NOTIFY clientDependenciesChanged)
+    Q_PROPERTY(QString name READ name WRITE setName NOTIFY nameChanged)
+    Q_PROPERTY(QObject * nameExpression READ nameExpression WRITE setNameExpression NOTIFY nameExpressionChanged)
+    Q_PROPERTY(QObject * namespace_ READ namespace_ NOTIFY namespaceChanged)
+    Q_PROPERTY(QString qualifiedName READ qualifiedName NOTIFY qualifiedNameChanged STORED false)
+    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility NOTIFY visibilityChanged)
 
     // Properties [RedefinableElement]
-    Q_PROPERTY(bool isLeaf READ isLeaf WRITE setLeaf RESET unsetLeaf)
-    Q_PROPERTY(QSet<QObject *> redefinedElements READ redefinedElements)
+    Q_PROPERTY(bool isLeaf READ isLeaf WRITE setLeaf NOTIFY isLeafChanged RESET unsetLeaf)
+    Q_PROPERTY(QSet<QObject *> redefinedElements READ redefinedElements NOTIFY redefinedElementsChanged)
 
     // Properties [Namespace]
-    Q_PROPERTY(QSet<QObject *> elementImports READ elementImports)
-    Q_PROPERTY(QSet<QObject *> importedMembers READ importedMembers STORED false)
-    Q_PROPERTY(QSet<QObject *> members READ members)
-    Q_PROPERTY(QSet<QObject *> ownedMembers READ ownedMembers)
-    Q_PROPERTY(QSet<QObject *> ownedRules READ ownedRules)
-    Q_PROPERTY(QSet<QObject *> packageImports READ packageImports)
+    Q_PROPERTY(QSet<QObject *> elementImports READ elementImports NOTIFY elementImportsChanged)
+    Q_PROPERTY(QSet<QObject *> importedMembers READ importedMembers NOTIFY importedMembersChanged STORED false)
+    Q_PROPERTY(QSet<QObject *> members READ members NOTIFY membersChanged)
+    Q_PROPERTY(QSet<QObject *> ownedMembers READ ownedMembers NOTIFY ownedMembersChanged)
+    Q_PROPERTY(QSet<QObject *> ownedRules READ ownedRules NOTIFY ownedRulesChanged)
+    Q_PROPERTY(QSet<QObject *> packageImports READ packageImports NOTIFY packageImportsChanged)
 
     // Properties [Region]
-    Q_PROPERTY(QObject * extendedRegion READ extendedRegion WRITE setExtendedRegion)
-    Q_PROPERTY(QObject * redefinitionContext READ redefinitionContext STORED false)
-    Q_PROPERTY(QObject * state READ state WRITE setState)
-    Q_PROPERTY(QObject * stateMachine READ stateMachine WRITE setStateMachine)
-    Q_PROPERTY(QSet<QObject *> subvertices READ subvertices)
-    Q_PROPERTY(QSet<QObject *> transitions READ transitions)
+    Q_PROPERTY(QObject * extendedRegion READ extendedRegion WRITE setExtendedRegion NOTIFY extendedRegionChanged)
+    Q_PROPERTY(QObject * redefinitionContext READ redefinitionContext NOTIFY redefinitionContextChanged STORED false)
+    Q_PROPERTY(QObject * state READ state WRITE setState NOTIFY stateChanged)
+    Q_PROPERTY(QObject * stateMachine READ stateMachine WRITE setStateMachine NOTIFY stateMachineChanged)
+    Q_PROPERTY(QSet<QObject *> subvertices READ subvertices NOTIFY subverticesChanged)
+    Q_PROPERTY(QSet<QObject *> transitions READ transitions NOTIFY transitionsChanged)
 
 public:
     Q_INVOKABLE explicit QUmlRegionObject(QUmlRegion *modelingElement);
@@ -201,6 +201,41 @@ public Q_SLOTS:
     void removeSubvertex(QObject *subvertex);
     void addTransition(QObject *transition);
     void removeTransition(QObject *transition);
+
+Q_SIGNALS:
+
+    // Signals for owned attributes [Element]
+    void ownedCommentsChanged(QSet<QObject *> ownedComments);
+    void ownedElementsChanged(QSet<QObject *> ownedElements);
+    void ownerChanged(QObject *owner);
+
+    // Signals for owned attributes [NamedElement]
+    void clientDependenciesChanged(QSet<QObject *> clientDependencies);
+    void nameChanged(QString name);
+    void nameExpressionChanged(QObject *nameExpression);
+    void namespaceChanged(QObject *namespace_);
+    void qualifiedNameChanged(QString qualifiedName);
+    void visibilityChanged(QtUml::VisibilityKind visibility);
+
+    // Signals for owned attributes [RedefinableElement]
+    void isLeafChanged(bool isLeaf);
+    void redefinedElementsChanged(QSet<QObject *> redefinedElements);
+
+    // Signals for owned attributes [Namespace]
+    void elementImportsChanged(QSet<QObject *> elementImports);
+    void importedMembersChanged(QSet<QObject *> importedMembers);
+    void membersChanged(QSet<QObject *> members);
+    void ownedMembersChanged(QSet<QObject *> ownedMembers);
+    void ownedRulesChanged(QSet<QObject *> ownedRules);
+    void packageImportsChanged(QSet<QObject *> packageImports);
+
+    // Signals for owned attributes [Region]
+    void extendedRegionChanged(QObject *extendedRegion);
+    void redefinitionContextChanged(QObject *redefinitionContext);
+    void stateChanged(QObject *state);
+    void stateMachineChanged(QObject *stateMachine);
+    void subverticesChanged(QSet<QObject *> subvertices);
+    void transitionsChanged(QSet<QObject *> transitions);
 
 protected:
     virtual void setGroupProperties();

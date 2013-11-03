@@ -62,32 +62,32 @@ class Q_MOF_EXPORT QMofParameterObject : public QModelingObject
     Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [Element]
-    Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
-    Q_PROPERTY(QSet<QObject *> ownedElements READ ownedElements)
-    Q_PROPERTY(QObject * owner READ owner)
+    Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments NOTIFY ownedCommentsChanged)
+    Q_PROPERTY(QSet<QObject *> ownedElements READ ownedElements NOTIFY ownedElementsChanged)
+    Q_PROPERTY(QObject * owner READ owner NOTIFY ownerChanged)
 
     // Properties [NamedElement]
-    Q_PROPERTY(QString name READ name WRITE setName)
-    Q_PROPERTY(QObject * namespace_ READ namespace_)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
-    Q_PROPERTY(QtMof::VisibilityKind visibility READ visibility WRITE setVisibility)
+    Q_PROPERTY(QString name READ name WRITE setName NOTIFY nameChanged)
+    Q_PROPERTY(QObject * namespace_ READ namespace_ NOTIFY namespaceChanged)
+    Q_PROPERTY(QString qualifiedName READ qualifiedName NOTIFY qualifiedNameChanged STORED false)
+    Q_PROPERTY(QtMof::VisibilityKind visibility READ visibility WRITE setVisibility NOTIFY visibilityChanged)
 
     // Properties [TypedElement]
-    Q_PROPERTY(QObject * type READ type WRITE setType)
+    Q_PROPERTY(QObject * type READ type WRITE setType NOTIFY typeChanged)
 
     // Properties [MultiplicityElement]
-    Q_PROPERTY(bool isOrdered READ isOrdered WRITE setOrdered RESET unsetOrdered)
-    Q_PROPERTY(bool isUnique READ isUnique WRITE setUnique RESET unsetUnique)
-    Q_PROPERTY(int lower READ lower WRITE setLower RESET unsetLower STORED false)
-    Q_PROPERTY(QObject * lowerValue READ lowerValue WRITE setLowerValue)
-    Q_PROPERTY(int upper READ upper WRITE setUpper RESET unsetUpper STORED false)
-    Q_PROPERTY(QObject * upperValue READ upperValue WRITE setUpperValue)
+    Q_PROPERTY(bool isOrdered READ isOrdered WRITE setOrdered NOTIFY isOrderedChanged RESET unsetOrdered)
+    Q_PROPERTY(bool isUnique READ isUnique WRITE setUnique NOTIFY isUniqueChanged RESET unsetUnique)
+    Q_PROPERTY(int lower READ lower WRITE setLower NOTIFY lowerChanged RESET unsetLower STORED false)
+    Q_PROPERTY(QObject * lowerValue READ lowerValue WRITE setLowerValue NOTIFY lowerValueChanged)
+    Q_PROPERTY(int upper READ upper WRITE setUpper NOTIFY upperChanged RESET unsetUpper STORED false)
+    Q_PROPERTY(QObject * upperValue READ upperValue WRITE setUpperValue NOTIFY upperValueChanged)
 
     // Properties [Parameter]
-    Q_PROPERTY(QString default_ READ default_ STORED false)
-    Q_PROPERTY(QObject * defaultValue READ defaultValue WRITE setDefaultValue)
-    Q_PROPERTY(QtMof::ParameterDirectionKind direction READ direction WRITE setDirection RESET unsetDirection)
-    Q_PROPERTY(QObject * operation READ operation WRITE setOperation)
+    Q_PROPERTY(QString default_ READ default_ NOTIFY defaultChanged STORED false)
+    Q_PROPERTY(QObject * defaultValue READ defaultValue WRITE setDefaultValue NOTIFY defaultValueChanged)
+    Q_PROPERTY(QtMof::ParameterDirectionKind direction READ direction WRITE setDirection NOTIFY directionChanged RESET unsetDirection)
+    Q_PROPERTY(QObject * operation READ operation WRITE setOperation NOTIFY operationChanged)
 
 public:
     Q_INVOKABLE explicit QMofParameterObject(QMofParameter *modelingElement);
@@ -176,6 +176,36 @@ public Q_SLOTS:
     void setDirection(QtMof::ParameterDirectionKind direction);
     void unsetDirection();
     void setOperation(QObject *operation = 0);
+
+Q_SIGNALS:
+
+    // Signals for owned attributes [Element]
+    void ownedCommentsChanged(QSet<QObject *> ownedComments);
+    void ownedElementsChanged(QSet<QObject *> ownedElements);
+    void ownerChanged(QObject *owner);
+
+    // Signals for owned attributes [NamedElement]
+    void nameChanged(QString name);
+    void namespaceChanged(QObject *namespace_);
+    void qualifiedNameChanged(QString qualifiedName);
+    void visibilityChanged(QtMof::VisibilityKind visibility);
+
+    // Signals for owned attributes [TypedElement]
+    void typeChanged(QObject *type);
+
+    // Signals for owned attributes [MultiplicityElement]
+    void isOrderedChanged(bool isOrdered);
+    void isUniqueChanged(bool isUnique);
+    void lowerChanged(int lower);
+    void lowerValueChanged(QObject *lowerValue);
+    void upperChanged(int upper);
+    void upperValueChanged(QObject *upperValue);
+
+    // Signals for owned attributes [Parameter]
+    void defaultChanged(QString default_);
+    void defaultValueChanged(QObject *defaultValue);
+    void directionChanged(QtMof::ParameterDirectionKind direction);
+    void operationChanged(QObject *operation);
 
 protected:
     virtual void setGroupProperties();

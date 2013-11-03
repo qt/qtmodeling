@@ -194,26 +194,31 @@ QString QUmlParameterSetObject::separator() const
 void QUmlParameterSetObject::addOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlParameterSet *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlParameterSetObject::removeOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlParameterSet *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlParameterSetObject::addOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlParameterSet *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlParameterSetObject::removeOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlParameterSet *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlParameterSetObject::setOwner(QObject *owner)
 {
     qmodelingelementproperty_cast<QUmlParameterSet *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
+    emit ownerChanged(this->owner());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [NamedElement]
@@ -221,36 +226,43 @@ void QUmlParameterSetObject::setOwner(QObject *owner)
 void QUmlParameterSetObject::addClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlParameterSet *>(this)->addClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlParameterSetObject::removeClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlParameterSet *>(this)->removeClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlParameterSetObject::setName(QString name)
 {
     qmodelingelementproperty_cast<QUmlParameterSet *>(this)->setName(name);
+    emit nameChanged(this->name());
 }
 
 void QUmlParameterSetObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingelementproperty_cast<QUmlParameterSet *>(this)->setNameExpression(qmodelingelementproperty_cast<QUmlStringExpression *>(nameExpression));
+    emit nameExpressionChanged(this->nameExpression());
 }
 
 void QUmlParameterSetObject::setNamespace(QObject *namespace_)
 {
     qmodelingelementproperty_cast<QUmlParameterSet *>(this)->setNamespace(qmodelingelementproperty_cast<QUmlNamespace *>(namespace_));
+    emit namespaceChanged(this->namespace_());
 }
 
 void QUmlParameterSetObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingelementproperty_cast<QUmlParameterSet *>(this)->setQualifiedName(qualifiedName);
+    emit qualifiedNameChanged(this->qualifiedName());
 }
 
 void QUmlParameterSetObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingelementproperty_cast<QUmlParameterSet *>(this)->setVisibility(visibility);
+    emit visibilityChanged(this->visibility());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ParameterSet]
@@ -258,21 +270,25 @@ void QUmlParameterSetObject::setVisibility(QtUml::VisibilityKind visibility)
 void QUmlParameterSetObject::addCondition(QObject *condition)
 {
     qmodelingelementproperty_cast<QUmlParameterSet *>(this)->addCondition(qmodelingelementproperty_cast<QUmlConstraint *>(condition));
+    emit conditionsChanged(this->conditions());
 }
 
 void QUmlParameterSetObject::removeCondition(QObject *condition)
 {
     qmodelingelementproperty_cast<QUmlParameterSet *>(this)->removeCondition(qmodelingelementproperty_cast<QUmlConstraint *>(condition));
+    emit conditionsChanged(this->conditions());
 }
 
 void QUmlParameterSetObject::addParameter(QObject *parameter)
 {
     qmodelingelementproperty_cast<QUmlParameterSet *>(this)->addParameter(qmodelingelementproperty_cast<QUmlParameter *>(parameter));
+    emit parametersChanged(this->parameters());
 }
 
 void QUmlParameterSetObject::removeParameter(QObject *parameter)
 {
     qmodelingelementproperty_cast<QUmlParameterSet *>(this)->removeParameter(qmodelingelementproperty_cast<QUmlParameter *>(parameter));
+    emit parametersChanged(this->parameters());
 }
 
 

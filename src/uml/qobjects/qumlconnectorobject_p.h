@@ -62,33 +62,33 @@ class Q_UML_EXPORT QUmlConnectorObject : public QModelingObject
     Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [Element]
-    Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
-    Q_PROPERTY(QSet<QObject *> ownedElements READ ownedElements)
-    Q_PROPERTY(QObject * owner READ owner)
+    Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments NOTIFY ownedCommentsChanged)
+    Q_PROPERTY(QSet<QObject *> ownedElements READ ownedElements NOTIFY ownedElementsChanged)
+    Q_PROPERTY(QObject * owner READ owner NOTIFY ownerChanged)
 
     // Properties [NamedElement]
-    Q_PROPERTY(QSet<QObject *> clientDependencies READ clientDependencies)
-    Q_PROPERTY(QString name READ name WRITE setName)
-    Q_PROPERTY(QObject * nameExpression READ nameExpression WRITE setNameExpression)
-    Q_PROPERTY(QObject * namespace_ READ namespace_)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
+    Q_PROPERTY(QSet<QObject *> clientDependencies READ clientDependencies NOTIFY clientDependenciesChanged)
+    Q_PROPERTY(QString name READ name WRITE setName NOTIFY nameChanged)
+    Q_PROPERTY(QObject * nameExpression READ nameExpression WRITE setNameExpression NOTIFY nameExpressionChanged)
+    Q_PROPERTY(QObject * namespace_ READ namespace_ NOTIFY namespaceChanged)
+    Q_PROPERTY(QString qualifiedName READ qualifiedName NOTIFY qualifiedNameChanged STORED false)
+    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility NOTIFY visibilityChanged)
 
     // Properties [RedefinableElement]
-    Q_PROPERTY(bool isLeaf READ isLeaf WRITE setLeaf RESET unsetLeaf)
-    Q_PROPERTY(QSet<QObject *> redefinedElements READ redefinedElements)
-    Q_PROPERTY(QSet<QObject *> redefinitionContexts READ redefinitionContexts)
+    Q_PROPERTY(bool isLeaf READ isLeaf WRITE setLeaf NOTIFY isLeafChanged RESET unsetLeaf)
+    Q_PROPERTY(QSet<QObject *> redefinedElements READ redefinedElements NOTIFY redefinedElementsChanged)
+    Q_PROPERTY(QSet<QObject *> redefinitionContexts READ redefinitionContexts NOTIFY redefinitionContextsChanged)
 
     // Properties [Feature]
-    Q_PROPERTY(QSet<QObject *> featuringClassifiers READ featuringClassifiers)
-    Q_PROPERTY(bool isStatic READ isStatic WRITE setStatic RESET unsetStatic)
+    Q_PROPERTY(QSet<QObject *> featuringClassifiers READ featuringClassifiers NOTIFY featuringClassifiersChanged)
+    Q_PROPERTY(bool isStatic READ isStatic WRITE setStatic NOTIFY isStaticChanged RESET unsetStatic)
 
     // Properties [Connector]
-    Q_PROPERTY(QSet<QObject *> contracts READ contracts)
-    Q_PROPERTY(QList<QObject *> ends READ ends)
-    Q_PROPERTY(QtUml::ConnectorKind kind READ kind STORED false)
-    Q_PROPERTY(QSet<QObject *> redefinedConnectors READ redefinedConnectors)
-    Q_PROPERTY(QObject * type READ type WRITE setType)
+    Q_PROPERTY(QSet<QObject *> contracts READ contracts NOTIFY contractsChanged)
+    Q_PROPERTY(QList<QObject *> ends READ ends NOTIFY endsChanged)
+    Q_PROPERTY(QtUml::ConnectorKind kind READ kind NOTIFY kindChanged STORED false)
+    Q_PROPERTY(QSet<QObject *> redefinedConnectors READ redefinedConnectors NOTIFY redefinedConnectorsChanged)
+    Q_PROPERTY(QObject * type READ type WRITE setType NOTIFY typeChanged)
 
 public:
     Q_INVOKABLE explicit QUmlConnectorObject(QUmlConnector *modelingElement);
@@ -177,6 +177,37 @@ public Q_SLOTS:
     void addRedefinedConnector(QObject *redefinedConnector);
     void removeRedefinedConnector(QObject *redefinedConnector);
     void setType(QObject *type = 0);
+
+Q_SIGNALS:
+
+    // Signals for owned attributes [Element]
+    void ownedCommentsChanged(QSet<QObject *> ownedComments);
+    void ownedElementsChanged(QSet<QObject *> ownedElements);
+    void ownerChanged(QObject *owner);
+
+    // Signals for owned attributes [NamedElement]
+    void clientDependenciesChanged(QSet<QObject *> clientDependencies);
+    void nameChanged(QString name);
+    void nameExpressionChanged(QObject *nameExpression);
+    void namespaceChanged(QObject *namespace_);
+    void qualifiedNameChanged(QString qualifiedName);
+    void visibilityChanged(QtUml::VisibilityKind visibility);
+
+    // Signals for owned attributes [RedefinableElement]
+    void isLeafChanged(bool isLeaf);
+    void redefinedElementsChanged(QSet<QObject *> redefinedElements);
+    void redefinitionContextsChanged(QSet<QObject *> redefinitionContexts);
+
+    // Signals for owned attributes [Feature]
+    void featuringClassifiersChanged(QSet<QObject *> featuringClassifiers);
+    void isStaticChanged(bool isStatic);
+
+    // Signals for owned attributes [Connector]
+    void contractsChanged(QSet<QObject *> contracts);
+    void endsChanged(QList<QObject *> ends);
+    void kindChanged(QtUml::ConnectorKind kind);
+    void redefinedConnectorsChanged(QSet<QObject *> redefinedConnectors);
+    void typeChanged(QObject *type);
 
 protected:
     virtual void setGroupProperties();

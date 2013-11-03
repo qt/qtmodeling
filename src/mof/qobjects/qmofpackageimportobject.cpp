@@ -180,26 +180,31 @@ void QMofPackageImportObject::delete_()
 void QMofPackageImportObject::addOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QMofPackageImport *>(this)->addOwnedComment(qmodelingelementproperty_cast<QMofComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QMofPackageImportObject::removeOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QMofPackageImport *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QMofComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QMofPackageImportObject::addOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QMofPackageImport *>(this)->addOwnedElement(qmodelingelementproperty_cast<QMofElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QMofPackageImportObject::removeOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QMofPackageImport *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QMofElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QMofPackageImportObject::setOwner(QObject *owner)
 {
     qmodelingelementproperty_cast<QMofPackageImport *>(this)->setOwner(qmodelingelementproperty_cast<QMofElement *>(owner));
+    emit ownerChanged(this->owner());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Relationship]
@@ -207,11 +212,13 @@ void QMofPackageImportObject::setOwner(QObject *owner)
 void QMofPackageImportObject::addRelatedElement(QObject *relatedElement)
 {
     qmodelingelementproperty_cast<QMofPackageImport *>(this)->addRelatedElement(qmodelingelementproperty_cast<QMofElement *>(relatedElement));
+    emit relatedElementsChanged(this->relatedElements());
 }
 
 void QMofPackageImportObject::removeRelatedElement(QObject *relatedElement)
 {
     qmodelingelementproperty_cast<QMofPackageImport *>(this)->removeRelatedElement(qmodelingelementproperty_cast<QMofElement *>(relatedElement));
+    emit relatedElementsChanged(this->relatedElements());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [DirectedRelationship]
@@ -219,21 +226,25 @@ void QMofPackageImportObject::removeRelatedElement(QObject *relatedElement)
 void QMofPackageImportObject::addSource(QObject *source)
 {
     qmodelingelementproperty_cast<QMofPackageImport *>(this)->addSource(qmodelingelementproperty_cast<QMofElement *>(source));
+    emit sourcesChanged(this->sources());
 }
 
 void QMofPackageImportObject::removeSource(QObject *source)
 {
     qmodelingelementproperty_cast<QMofPackageImport *>(this)->removeSource(qmodelingelementproperty_cast<QMofElement *>(source));
+    emit sourcesChanged(this->sources());
 }
 
 void QMofPackageImportObject::addTarget(QObject *target)
 {
     qmodelingelementproperty_cast<QMofPackageImport *>(this)->addTarget(qmodelingelementproperty_cast<QMofElement *>(target));
+    emit targetsChanged(this->targets());
 }
 
 void QMofPackageImportObject::removeTarget(QObject *target)
 {
     qmodelingelementproperty_cast<QMofPackageImport *>(this)->removeTarget(qmodelingelementproperty_cast<QMofElement *>(target));
+    emit targetsChanged(this->targets());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [PackageImport]
@@ -241,16 +252,19 @@ void QMofPackageImportObject::removeTarget(QObject *target)
 void QMofPackageImportObject::setImportedPackage(QObject *importedPackage)
 {
     qmodelingelementproperty_cast<QMofPackageImport *>(this)->setImportedPackage(qmodelingelementproperty_cast<QMofPackage *>(importedPackage));
+    emit importedPackageChanged(this->importedPackage());
 }
 
 void QMofPackageImportObject::setImportingNamespace(QObject *importingNamespace)
 {
     qmodelingelementproperty_cast<QMofPackageImport *>(this)->setImportingNamespace(qmodelingelementproperty_cast<QMofNamespace *>(importingNamespace));
+    emit importingNamespaceChanged(this->importingNamespace());
 }
 
 void QMofPackageImportObject::setVisibility(QtMof::VisibilityKind visibility)
 {
     qmodelingelementproperty_cast<QMofPackageImport *>(this)->setVisibility(visibility);
+    emit visibilityChanged(this->visibility());
 }
 
 void QMofPackageImportObject::unsetVisibility()

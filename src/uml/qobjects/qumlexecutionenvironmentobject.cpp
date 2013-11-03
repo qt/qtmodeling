@@ -708,26 +708,31 @@ QSet<QObject *> QUmlExecutionEnvironmentObject::inherit(QSet<QObject *> inhs) co
 void QUmlExecutionEnvironmentObject::addOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlExecutionEnvironment *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlExecutionEnvironmentObject::removeOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlExecutionEnvironment *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlExecutionEnvironmentObject::addOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlExecutionEnvironment *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlExecutionEnvironmentObject::removeOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlExecutionEnvironment *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlExecutionEnvironmentObject::setOwner(QObject *owner)
 {
     qmodelingelementproperty_cast<QUmlExecutionEnvironment *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
+    emit ownerChanged(this->owner());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [NamedElement]
@@ -735,92 +740,110 @@ void QUmlExecutionEnvironmentObject::setOwner(QObject *owner)
 void QUmlExecutionEnvironmentObject::addClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlExecutionEnvironment *>(this)->addClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlExecutionEnvironmentObject::removeClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlExecutionEnvironment *>(this)->removeClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlExecutionEnvironmentObject::setName(QString name)
 {
     qmodelingelementproperty_cast<QUmlExecutionEnvironment *>(this)->setName(name);
+    emit nameChanged(this->name());
 }
 
 void QUmlExecutionEnvironmentObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingelementproperty_cast<QUmlExecutionEnvironment *>(this)->setNameExpression(qmodelingelementproperty_cast<QUmlStringExpression *>(nameExpression));
+    emit nameExpressionChanged(this->nameExpression());
 }
 
 void QUmlExecutionEnvironmentObject::setNamespace(QObject *namespace_)
 {
     qmodelingelementproperty_cast<QUmlExecutionEnvironment *>(this)->setNamespace(qmodelingelementproperty_cast<QUmlNamespace *>(namespace_));
+    emit namespaceChanged(this->namespace_());
 }
 
 void QUmlExecutionEnvironmentObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingelementproperty_cast<QUmlExecutionEnvironment *>(this)->setQualifiedName(qualifiedName);
+    emit qualifiedNameChanged(this->qualifiedName());
 }
 // SLOTS FOR OWNED ATTRIBUTES [Namespace]
 
 void QUmlExecutionEnvironmentObject::addElementImport(QObject *elementImport)
 {
     qmodelingelementproperty_cast<QUmlExecutionEnvironment *>(this)->addElementImport(qmodelingelementproperty_cast<QUmlElementImport *>(elementImport));
+    emit elementImportsChanged(this->elementImports());
 }
 
 void QUmlExecutionEnvironmentObject::removeElementImport(QObject *elementImport)
 {
     qmodelingelementproperty_cast<QUmlExecutionEnvironment *>(this)->removeElementImport(qmodelingelementproperty_cast<QUmlElementImport *>(elementImport));
+    emit elementImportsChanged(this->elementImports());
 }
 
 void QUmlExecutionEnvironmentObject::addImportedMember(QObject *importedMember)
 {
     qmodelingelementproperty_cast<QUmlExecutionEnvironment *>(this)->addImportedMember(qmodelingelementproperty_cast<QUmlPackageableElement *>(importedMember));
+    emit importedMembersChanged(this->importedMembers());
 }
 
 void QUmlExecutionEnvironmentObject::removeImportedMember(QObject *importedMember)
 {
     qmodelingelementproperty_cast<QUmlExecutionEnvironment *>(this)->removeImportedMember(qmodelingelementproperty_cast<QUmlPackageableElement *>(importedMember));
+    emit importedMembersChanged(this->importedMembers());
 }
 
 void QUmlExecutionEnvironmentObject::addMember(QObject *member)
 {
     qmodelingelementproperty_cast<QUmlExecutionEnvironment *>(this)->addMember(qmodelingelementproperty_cast<QUmlNamedElement *>(member));
+    emit membersChanged(this->members());
 }
 
 void QUmlExecutionEnvironmentObject::removeMember(QObject *member)
 {
     qmodelingelementproperty_cast<QUmlExecutionEnvironment *>(this)->removeMember(qmodelingelementproperty_cast<QUmlNamedElement *>(member));
+    emit membersChanged(this->members());
 }
 
 void QUmlExecutionEnvironmentObject::addOwnedMember(QObject *ownedMember)
 {
     qmodelingelementproperty_cast<QUmlExecutionEnvironment *>(this)->addOwnedMember(qmodelingelementproperty_cast<QUmlNamedElement *>(ownedMember));
+    emit ownedMembersChanged(this->ownedMembers());
 }
 
 void QUmlExecutionEnvironmentObject::removeOwnedMember(QObject *ownedMember)
 {
     qmodelingelementproperty_cast<QUmlExecutionEnvironment *>(this)->removeOwnedMember(qmodelingelementproperty_cast<QUmlNamedElement *>(ownedMember));
+    emit ownedMembersChanged(this->ownedMembers());
 }
 
 void QUmlExecutionEnvironmentObject::addOwnedRule(QObject *ownedRule)
 {
     qmodelingelementproperty_cast<QUmlExecutionEnvironment *>(this)->addOwnedRule(qmodelingelementproperty_cast<QUmlConstraint *>(ownedRule));
+    emit ownedRulesChanged(this->ownedRules());
 }
 
 void QUmlExecutionEnvironmentObject::removeOwnedRule(QObject *ownedRule)
 {
     qmodelingelementproperty_cast<QUmlExecutionEnvironment *>(this)->removeOwnedRule(qmodelingelementproperty_cast<QUmlConstraint *>(ownedRule));
+    emit ownedRulesChanged(this->ownedRules());
 }
 
 void QUmlExecutionEnvironmentObject::addPackageImport(QObject *packageImport)
 {
     qmodelingelementproperty_cast<QUmlExecutionEnvironment *>(this)->addPackageImport(qmodelingelementproperty_cast<QUmlPackageImport *>(packageImport));
+    emit packageImportsChanged(this->packageImports());
 }
 
 void QUmlExecutionEnvironmentObject::removePackageImport(QObject *packageImport)
 {
     qmodelingelementproperty_cast<QUmlExecutionEnvironment *>(this)->removePackageImport(qmodelingelementproperty_cast<QUmlPackageImport *>(packageImport));
+    emit packageImportsChanged(this->packageImports());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ParameterableElement]
@@ -828,12 +851,14 @@ void QUmlExecutionEnvironmentObject::removePackageImport(QObject *packageImport)
 void QUmlExecutionEnvironmentObject::setOwningTemplateParameter(QObject *owningTemplateParameter)
 {
     qmodelingelementproperty_cast<QUmlExecutionEnvironment *>(this)->setOwningTemplateParameter(qmodelingelementproperty_cast<QUmlTemplateParameter *>(owningTemplateParameter));
+    emit owningTemplateParameterChanged(this->owningTemplateParameter());
 }
 // SLOTS FOR OWNED ATTRIBUTES [PackageableElement]
 
 void QUmlExecutionEnvironmentObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingelementproperty_cast<QUmlExecutionEnvironment *>(this)->setVisibility(visibility);
+    emit visibilityChanged(this->visibility());
 }
 
 void QUmlExecutionEnvironmentObject::unsetVisibility()
@@ -848,6 +873,7 @@ void QUmlExecutionEnvironmentObject::unsetVisibility()
 void QUmlExecutionEnvironmentObject::setPackage(QObject *package)
 {
     qmodelingelementproperty_cast<QUmlExecutionEnvironment *>(this)->setPackage(qmodelingelementproperty_cast<QUmlPackage *>(package));
+    emit packageChanged(this->package());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [RedefinableElement]
@@ -855,6 +881,7 @@ void QUmlExecutionEnvironmentObject::setPackage(QObject *package)
 void QUmlExecutionEnvironmentObject::setLeaf(bool isLeaf)
 {
     qmodelingelementproperty_cast<QUmlExecutionEnvironment *>(this)->setLeaf(isLeaf);
+    emit isLeafChanged(this->isLeaf());
 }
 
 void QUmlExecutionEnvironmentObject::unsetLeaf()
@@ -867,21 +894,25 @@ void QUmlExecutionEnvironmentObject::unsetLeaf()
 void QUmlExecutionEnvironmentObject::addRedefinedElement(QObject *redefinedElement)
 {
     qmodelingelementproperty_cast<QUmlExecutionEnvironment *>(this)->addRedefinedElement(qmodelingelementproperty_cast<QUmlRedefinableElement *>(redefinedElement));
+    emit redefinedElementsChanged(this->redefinedElements());
 }
 
 void QUmlExecutionEnvironmentObject::removeRedefinedElement(QObject *redefinedElement)
 {
     qmodelingelementproperty_cast<QUmlExecutionEnvironment *>(this)->removeRedefinedElement(qmodelingelementproperty_cast<QUmlRedefinableElement *>(redefinedElement));
+    emit redefinedElementsChanged(this->redefinedElements());
 }
 
 void QUmlExecutionEnvironmentObject::addRedefinitionContext(QObject *redefinitionContext)
 {
     qmodelingelementproperty_cast<QUmlExecutionEnvironment *>(this)->addRedefinitionContext(qmodelingelementproperty_cast<QUmlClassifier *>(redefinitionContext));
+    emit redefinitionContextsChanged(this->redefinitionContexts());
 }
 
 void QUmlExecutionEnvironmentObject::removeRedefinitionContext(QObject *redefinitionContext)
 {
     qmodelingelementproperty_cast<QUmlExecutionEnvironment *>(this)->removeRedefinitionContext(qmodelingelementproperty_cast<QUmlClassifier *>(redefinitionContext));
+    emit redefinitionContextsChanged(this->redefinitionContexts());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [TemplateableElement]
@@ -889,11 +920,13 @@ void QUmlExecutionEnvironmentObject::removeRedefinitionContext(QObject *redefini
 void QUmlExecutionEnvironmentObject::addTemplateBinding(QObject *templateBinding)
 {
     qmodelingelementproperty_cast<QUmlExecutionEnvironment *>(this)->addTemplateBinding(qmodelingelementproperty_cast<QUmlTemplateBinding *>(templateBinding));
+    emit templateBindingsChanged(this->templateBindings());
 }
 
 void QUmlExecutionEnvironmentObject::removeTemplateBinding(QObject *templateBinding)
 {
     qmodelingelementproperty_cast<QUmlExecutionEnvironment *>(this)->removeTemplateBinding(qmodelingelementproperty_cast<QUmlTemplateBinding *>(templateBinding));
+    emit templateBindingsChanged(this->templateBindings());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Classifier]
@@ -901,56 +934,67 @@ void QUmlExecutionEnvironmentObject::removeTemplateBinding(QObject *templateBind
 void QUmlExecutionEnvironmentObject::addAttribute(QObject *attribute)
 {
     qmodelingelementproperty_cast<QUmlExecutionEnvironment *>(this)->addAttribute(qmodelingelementproperty_cast<QUmlProperty *>(attribute));
+    emit attributesChanged(this->attributes());
 }
 
 void QUmlExecutionEnvironmentObject::removeAttribute(QObject *attribute)
 {
     qmodelingelementproperty_cast<QUmlExecutionEnvironment *>(this)->removeAttribute(qmodelingelementproperty_cast<QUmlProperty *>(attribute));
+    emit attributesChanged(this->attributes());
 }
 
 void QUmlExecutionEnvironmentObject::addCollaborationUse(QObject *collaborationUse)
 {
     qmodelingelementproperty_cast<QUmlExecutionEnvironment *>(this)->addCollaborationUse(qmodelingelementproperty_cast<QUmlCollaborationUse *>(collaborationUse));
+    emit collaborationUsesChanged(this->collaborationUses());
 }
 
 void QUmlExecutionEnvironmentObject::removeCollaborationUse(QObject *collaborationUse)
 {
     qmodelingelementproperty_cast<QUmlExecutionEnvironment *>(this)->removeCollaborationUse(qmodelingelementproperty_cast<QUmlCollaborationUse *>(collaborationUse));
+    emit collaborationUsesChanged(this->collaborationUses());
 }
 
 void QUmlExecutionEnvironmentObject::addFeature(QObject *feature)
 {
     qmodelingelementproperty_cast<QUmlExecutionEnvironment *>(this)->addFeature(qmodelingelementproperty_cast<QUmlFeature *>(feature));
+    emit featuresChanged(this->features());
 }
 
 void QUmlExecutionEnvironmentObject::removeFeature(QObject *feature)
 {
     qmodelingelementproperty_cast<QUmlExecutionEnvironment *>(this)->removeFeature(qmodelingelementproperty_cast<QUmlFeature *>(feature));
+    emit featuresChanged(this->features());
 }
 
 void QUmlExecutionEnvironmentObject::addGeneralization(QObject *generalization)
 {
     qmodelingelementproperty_cast<QUmlExecutionEnvironment *>(this)->addGeneralization(qmodelingelementproperty_cast<QUmlGeneralization *>(generalization));
+    emit generalizationsChanged(this->generalizations());
 }
 
 void QUmlExecutionEnvironmentObject::removeGeneralization(QObject *generalization)
 {
     qmodelingelementproperty_cast<QUmlExecutionEnvironment *>(this)->removeGeneralization(qmodelingelementproperty_cast<QUmlGeneralization *>(generalization));
+    emit generalizationsChanged(this->generalizations());
 }
 
 void QUmlExecutionEnvironmentObject::addInheritedMember(QObject *inheritedMember)
 {
     qmodelingelementproperty_cast<QUmlExecutionEnvironment *>(this)->addInheritedMember(qmodelingelementproperty_cast<QUmlNamedElement *>(inheritedMember));
+    emit inheritedMembersChanged(this->inheritedMembers());
 }
 
 void QUmlExecutionEnvironmentObject::removeInheritedMember(QObject *inheritedMember)
 {
     qmodelingelementproperty_cast<QUmlExecutionEnvironment *>(this)->removeInheritedMember(qmodelingelementproperty_cast<QUmlNamedElement *>(inheritedMember));
+    emit inheritedMembersChanged(this->inheritedMembers());
 }
 
 void QUmlExecutionEnvironmentObject::setFinalSpecialization(bool isFinalSpecialization)
 {
     qmodelingelementproperty_cast<QUmlExecutionEnvironment *>(this)->setFinalSpecialization(isFinalSpecialization);
+    emit isFinalSpecializationChanged(this->isFinalSpecialization());
 }
 
 void QUmlExecutionEnvironmentObject::unsetFinalSpecialization()
@@ -963,66 +1007,79 @@ void QUmlExecutionEnvironmentObject::unsetFinalSpecialization()
 void QUmlExecutionEnvironmentObject::setOwnedTemplateSignature(QObject *ownedTemplateSignature)
 {
     qmodelingelementproperty_cast<QUmlExecutionEnvironment *>(this)->setOwnedTemplateSignature(qmodelingelementproperty_cast<QUmlRedefinableTemplateSignature *>(ownedTemplateSignature));
+    emit ownedTemplateSignatureChanged(this->ownedTemplateSignature());
 }
 
 void QUmlExecutionEnvironmentObject::addOwnedUseCase(QObject *ownedUseCase)
 {
     qmodelingelementproperty_cast<QUmlExecutionEnvironment *>(this)->addOwnedUseCase(qmodelingelementproperty_cast<QUmlUseCase *>(ownedUseCase));
+    emit ownedUseCasesChanged(this->ownedUseCases());
 }
 
 void QUmlExecutionEnvironmentObject::removeOwnedUseCase(QObject *ownedUseCase)
 {
     qmodelingelementproperty_cast<QUmlExecutionEnvironment *>(this)->removeOwnedUseCase(qmodelingelementproperty_cast<QUmlUseCase *>(ownedUseCase));
+    emit ownedUseCasesChanged(this->ownedUseCases());
 }
 
 void QUmlExecutionEnvironmentObject::addPowertypeExtent(QObject *powertypeExtent)
 {
     qmodelingelementproperty_cast<QUmlExecutionEnvironment *>(this)->addPowertypeExtent(qmodelingelementproperty_cast<QUmlGeneralizationSet *>(powertypeExtent));
+    emit powertypeExtentsChanged(this->powertypeExtents());
 }
 
 void QUmlExecutionEnvironmentObject::removePowertypeExtent(QObject *powertypeExtent)
 {
     qmodelingelementproperty_cast<QUmlExecutionEnvironment *>(this)->removePowertypeExtent(qmodelingelementproperty_cast<QUmlGeneralizationSet *>(powertypeExtent));
+    emit powertypeExtentsChanged(this->powertypeExtents());
 }
 
 void QUmlExecutionEnvironmentObject::addRedefinedClassifier(QObject *redefinedClassifier)
 {
     qmodelingelementproperty_cast<QUmlExecutionEnvironment *>(this)->addRedefinedClassifier(qmodelingelementproperty_cast<QUmlClassifier *>(redefinedClassifier));
+    emit redefinedClassifiersChanged(this->redefinedClassifiers());
 }
 
 void QUmlExecutionEnvironmentObject::removeRedefinedClassifier(QObject *redefinedClassifier)
 {
     qmodelingelementproperty_cast<QUmlExecutionEnvironment *>(this)->removeRedefinedClassifier(qmodelingelementproperty_cast<QUmlClassifier *>(redefinedClassifier));
+    emit redefinedClassifiersChanged(this->redefinedClassifiers());
 }
 
 void QUmlExecutionEnvironmentObject::setRepresentation(QObject *representation)
 {
     qmodelingelementproperty_cast<QUmlExecutionEnvironment *>(this)->setRepresentation(qmodelingelementproperty_cast<QUmlCollaborationUse *>(representation));
+    emit representationChanged(this->representation());
 }
 
 void QUmlExecutionEnvironmentObject::addSubstitution(QObject *substitution)
 {
     qmodelingelementproperty_cast<QUmlExecutionEnvironment *>(this)->addSubstitution(qmodelingelementproperty_cast<QUmlSubstitution *>(substitution));
+    emit substitutionsChanged(this->substitutions());
 }
 
 void QUmlExecutionEnvironmentObject::removeSubstitution(QObject *substitution)
 {
     qmodelingelementproperty_cast<QUmlExecutionEnvironment *>(this)->removeSubstitution(qmodelingelementproperty_cast<QUmlSubstitution *>(substitution));
+    emit substitutionsChanged(this->substitutions());
 }
 
 void QUmlExecutionEnvironmentObject::setTemplateParameter(QObject *templateParameter)
 {
     qmodelingelementproperty_cast<QUmlExecutionEnvironment *>(this)->setTemplateParameter(qmodelingelementproperty_cast<QUmlClassifierTemplateParameter *>(templateParameter));
+    emit templateParameterChanged(this->templateParameter());
 }
 
 void QUmlExecutionEnvironmentObject::addUseCase(QObject *useCase)
 {
     qmodelingelementproperty_cast<QUmlExecutionEnvironment *>(this)->addUseCase(qmodelingelementproperty_cast<QUmlUseCase *>(useCase));
+    emit useCasesChanged(this->useCases());
 }
 
 void QUmlExecutionEnvironmentObject::removeUseCase(QObject *useCase)
 {
     qmodelingelementproperty_cast<QUmlExecutionEnvironment *>(this)->removeUseCase(qmodelingelementproperty_cast<QUmlUseCase *>(useCase));
+    emit useCasesChanged(this->useCases());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [StructuredClassifier]
@@ -1030,31 +1087,37 @@ void QUmlExecutionEnvironmentObject::removeUseCase(QObject *useCase)
 void QUmlExecutionEnvironmentObject::addOwnedConnector(QObject *ownedConnector)
 {
     qmodelingelementproperty_cast<QUmlExecutionEnvironment *>(this)->addOwnedConnector(qmodelingelementproperty_cast<QUmlConnector *>(ownedConnector));
+    emit ownedConnectorsChanged(this->ownedConnectors());
 }
 
 void QUmlExecutionEnvironmentObject::removeOwnedConnector(QObject *ownedConnector)
 {
     qmodelingelementproperty_cast<QUmlExecutionEnvironment *>(this)->removeOwnedConnector(qmodelingelementproperty_cast<QUmlConnector *>(ownedConnector));
+    emit ownedConnectorsChanged(this->ownedConnectors());
 }
 
 void QUmlExecutionEnvironmentObject::addPart(QObject *part)
 {
     qmodelingelementproperty_cast<QUmlExecutionEnvironment *>(this)->addPart(qmodelingelementproperty_cast<QUmlProperty *>(part));
+    emit partsChanged(this->parts());
 }
 
 void QUmlExecutionEnvironmentObject::removePart(QObject *part)
 {
     qmodelingelementproperty_cast<QUmlExecutionEnvironment *>(this)->removePart(qmodelingelementproperty_cast<QUmlProperty *>(part));
+    emit partsChanged(this->parts());
 }
 
 void QUmlExecutionEnvironmentObject::addRole(QObject *role)
 {
     qmodelingelementproperty_cast<QUmlExecutionEnvironment *>(this)->addRole(qmodelingelementproperty_cast<QUmlConnectableElement *>(role));
+    emit rolesChanged(this->roles());
 }
 
 void QUmlExecutionEnvironmentObject::removeRole(QObject *role)
 {
     qmodelingelementproperty_cast<QUmlExecutionEnvironment *>(this)->removeRole(qmodelingelementproperty_cast<QUmlConnectableElement *>(role));
+    emit rolesChanged(this->roles());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [EncapsulatedClassifier]
@@ -1062,11 +1125,13 @@ void QUmlExecutionEnvironmentObject::removeRole(QObject *role)
 void QUmlExecutionEnvironmentObject::addOwnedPort(QObject *ownedPort)
 {
     qmodelingelementproperty_cast<QUmlExecutionEnvironment *>(this)->addOwnedPort(qmodelingelementproperty_cast<QUmlPort *>(ownedPort));
+    emit ownedPortsChanged(this->ownedPorts());
 }
 
 void QUmlExecutionEnvironmentObject::removeOwnedPort(QObject *ownedPort)
 {
     qmodelingelementproperty_cast<QUmlExecutionEnvironment *>(this)->removeOwnedPort(qmodelingelementproperty_cast<QUmlPort *>(ownedPort));
+    emit ownedPortsChanged(this->ownedPorts());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [BehavioredClassifier]
@@ -1074,26 +1139,31 @@ void QUmlExecutionEnvironmentObject::removeOwnedPort(QObject *ownedPort)
 void QUmlExecutionEnvironmentObject::setClassifierBehavior(QObject *classifierBehavior)
 {
     qmodelingelementproperty_cast<QUmlExecutionEnvironment *>(this)->setClassifierBehavior(qmodelingelementproperty_cast<QUmlBehavior *>(classifierBehavior));
+    emit classifierBehaviorChanged(this->classifierBehavior());
 }
 
 void QUmlExecutionEnvironmentObject::addInterfaceRealization(QObject *interfaceRealization)
 {
     qmodelingelementproperty_cast<QUmlExecutionEnvironment *>(this)->addInterfaceRealization(qmodelingelementproperty_cast<QUmlInterfaceRealization *>(interfaceRealization));
+    emit interfaceRealizationsChanged(this->interfaceRealizations());
 }
 
 void QUmlExecutionEnvironmentObject::removeInterfaceRealization(QObject *interfaceRealization)
 {
     qmodelingelementproperty_cast<QUmlExecutionEnvironment *>(this)->removeInterfaceRealization(qmodelingelementproperty_cast<QUmlInterfaceRealization *>(interfaceRealization));
+    emit interfaceRealizationsChanged(this->interfaceRealizations());
 }
 
 void QUmlExecutionEnvironmentObject::addOwnedBehavior(QObject *ownedBehavior)
 {
     qmodelingelementproperty_cast<QUmlExecutionEnvironment *>(this)->addOwnedBehavior(qmodelingelementproperty_cast<QUmlBehavior *>(ownedBehavior));
+    emit ownedBehaviorsChanged(this->ownedBehaviors());
 }
 
 void QUmlExecutionEnvironmentObject::removeOwnedBehavior(QObject *ownedBehavior)
 {
     qmodelingelementproperty_cast<QUmlExecutionEnvironment *>(this)->removeOwnedBehavior(qmodelingelementproperty_cast<QUmlBehavior *>(ownedBehavior));
+    emit ownedBehaviorsChanged(this->ownedBehaviors());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Class]
@@ -1101,16 +1171,19 @@ void QUmlExecutionEnvironmentObject::removeOwnedBehavior(QObject *ownedBehavior)
 void QUmlExecutionEnvironmentObject::addExtension(QObject *extension)
 {
     qmodelingelementproperty_cast<QUmlExecutionEnvironment *>(this)->addExtension(qmodelingelementproperty_cast<QUmlExtension *>(extension));
+    emit extensionsChanged(this->extensions());
 }
 
 void QUmlExecutionEnvironmentObject::removeExtension(QObject *extension)
 {
     qmodelingelementproperty_cast<QUmlExecutionEnvironment *>(this)->removeExtension(qmodelingelementproperty_cast<QUmlExtension *>(extension));
+    emit extensionsChanged(this->extensions());
 }
 
 void QUmlExecutionEnvironmentObject::setAbstract(bool isAbstract)
 {
     qmodelingelementproperty_cast<QUmlExecutionEnvironment *>(this)->setAbstract(isAbstract);
+    emit isAbstractChanged(this->isAbstract());
 }
 
 void QUmlExecutionEnvironmentObject::unsetAbstract()
@@ -1123,6 +1196,7 @@ void QUmlExecutionEnvironmentObject::unsetAbstract()
 void QUmlExecutionEnvironmentObject::setActive(bool isActive)
 {
     qmodelingelementproperty_cast<QUmlExecutionEnvironment *>(this)->setActive(isActive);
+    emit isActiveChanged(this->isActive());
 }
 
 void QUmlExecutionEnvironmentObject::unsetActive()
@@ -1135,51 +1209,61 @@ void QUmlExecutionEnvironmentObject::unsetActive()
 void QUmlExecutionEnvironmentObject::addNestedClassifier(QObject *nestedClassifier)
 {
     qmodelingelementproperty_cast<QUmlExecutionEnvironment *>(this)->addNestedClassifier(qmodelingelementproperty_cast<QUmlClassifier *>(nestedClassifier));
+    emit nestedClassifiersChanged(this->nestedClassifiers());
 }
 
 void QUmlExecutionEnvironmentObject::removeNestedClassifier(QObject *nestedClassifier)
 {
     qmodelingelementproperty_cast<QUmlExecutionEnvironment *>(this)->removeNestedClassifier(qmodelingelementproperty_cast<QUmlClassifier *>(nestedClassifier));
+    emit nestedClassifiersChanged(this->nestedClassifiers());
 }
 
 void QUmlExecutionEnvironmentObject::addOwnedAttribute(QObject *ownedAttribute)
 {
     qmodelingelementproperty_cast<QUmlExecutionEnvironment *>(this)->addOwnedAttribute(qmodelingelementproperty_cast<QUmlProperty *>(ownedAttribute));
+    emit ownedAttributesChanged(this->ownedAttributes());
 }
 
 void QUmlExecutionEnvironmentObject::removeOwnedAttribute(QObject *ownedAttribute)
 {
     qmodelingelementproperty_cast<QUmlExecutionEnvironment *>(this)->removeOwnedAttribute(qmodelingelementproperty_cast<QUmlProperty *>(ownedAttribute));
+    emit ownedAttributesChanged(this->ownedAttributes());
 }
 
 void QUmlExecutionEnvironmentObject::addOwnedOperation(QObject *ownedOperation)
 {
     qmodelingelementproperty_cast<QUmlExecutionEnvironment *>(this)->addOwnedOperation(qmodelingelementproperty_cast<QUmlOperation *>(ownedOperation));
+    emit ownedOperationsChanged(this->ownedOperations());
 }
 
 void QUmlExecutionEnvironmentObject::removeOwnedOperation(QObject *ownedOperation)
 {
     qmodelingelementproperty_cast<QUmlExecutionEnvironment *>(this)->removeOwnedOperation(qmodelingelementproperty_cast<QUmlOperation *>(ownedOperation));
+    emit ownedOperationsChanged(this->ownedOperations());
 }
 
 void QUmlExecutionEnvironmentObject::addOwnedReception(QObject *ownedReception)
 {
     qmodelingelementproperty_cast<QUmlExecutionEnvironment *>(this)->addOwnedReception(qmodelingelementproperty_cast<QUmlReception *>(ownedReception));
+    emit ownedReceptionsChanged(this->ownedReceptions());
 }
 
 void QUmlExecutionEnvironmentObject::removeOwnedReception(QObject *ownedReception)
 {
     qmodelingelementproperty_cast<QUmlExecutionEnvironment *>(this)->removeOwnedReception(qmodelingelementproperty_cast<QUmlReception *>(ownedReception));
+    emit ownedReceptionsChanged(this->ownedReceptions());
 }
 
 void QUmlExecutionEnvironmentObject::addSuperClass(QObject *superClass)
 {
     qmodelingelementproperty_cast<QUmlExecutionEnvironment *>(this)->addSuperClass(qmodelingelementproperty_cast<QUmlClass *>(superClass));
+    emit superClassesChanged(this->superClasses());
 }
 
 void QUmlExecutionEnvironmentObject::removeSuperClass(QObject *superClass)
 {
     qmodelingelementproperty_cast<QUmlExecutionEnvironment *>(this)->removeSuperClass(qmodelingelementproperty_cast<QUmlClass *>(superClass));
+    emit superClassesChanged(this->superClasses());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [DeploymentTarget]
@@ -1187,21 +1271,25 @@ void QUmlExecutionEnvironmentObject::removeSuperClass(QObject *superClass)
 void QUmlExecutionEnvironmentObject::addDeployedElement(QObject *deployedElement)
 {
     qmodelingelementproperty_cast<QUmlExecutionEnvironment *>(this)->addDeployedElement(qmodelingelementproperty_cast<QUmlPackageableElement *>(deployedElement));
+    emit deployedElementsChanged(this->deployedElements());
 }
 
 void QUmlExecutionEnvironmentObject::removeDeployedElement(QObject *deployedElement)
 {
     qmodelingelementproperty_cast<QUmlExecutionEnvironment *>(this)->removeDeployedElement(qmodelingelementproperty_cast<QUmlPackageableElement *>(deployedElement));
+    emit deployedElementsChanged(this->deployedElements());
 }
 
 void QUmlExecutionEnvironmentObject::addDeployment(QObject *deployment)
 {
     qmodelingelementproperty_cast<QUmlExecutionEnvironment *>(this)->addDeployment(qmodelingelementproperty_cast<QUmlDeployment *>(deployment));
+    emit deploymentsChanged(this->deployments());
 }
 
 void QUmlExecutionEnvironmentObject::removeDeployment(QObject *deployment)
 {
     qmodelingelementproperty_cast<QUmlExecutionEnvironment *>(this)->removeDeployment(qmodelingelementproperty_cast<QUmlDeployment *>(deployment));
+    emit deploymentsChanged(this->deployments());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Node]
@@ -1209,11 +1297,13 @@ void QUmlExecutionEnvironmentObject::removeDeployment(QObject *deployment)
 void QUmlExecutionEnvironmentObject::addNestedNode(QObject *nestedNode)
 {
     qmodelingelementproperty_cast<QUmlExecutionEnvironment *>(this)->addNestedNode(qmodelingelementproperty_cast<QUmlNode *>(nestedNode));
+    emit nestedNodesChanged(this->nestedNodes());
 }
 
 void QUmlExecutionEnvironmentObject::removeNestedNode(QObject *nestedNode)
 {
     qmodelingelementproperty_cast<QUmlExecutionEnvironment *>(this)->removeNestedNode(qmodelingelementproperty_cast<QUmlNode *>(nestedNode));
+    emit nestedNodesChanged(this->nestedNodes());
 }
 
 

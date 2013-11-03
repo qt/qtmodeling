@@ -406,7 +406,7 @@ void Q${namespace}${originalClassName}Object::add${attributeName}(${originalQtTy
         [%- ELSE %]
     qmodelingelementproperty_cast<Q${namespace}${originalClassName} *>(this)->add${attributeName}(${qtAttribute});
         [%- END %]
-    emit ${PLURALFORM(qtAttribute, attribute)}Changed(this->${PLURALFORM(qtAttribute, attribute)}());
+    emit ${PLURALFORM(qtAttribute, attribute).remove('_$')}Changed(this->${PLURALFORM(qtAttribute, attribute)}());
 }
 
         [%- IF qtType.remove("QSet<").remove("QList<").match('\*') %]
@@ -420,21 +420,29 @@ void Q${namespace}${originalClassName}Object::remove${attributeName}(${originalQ
         [%- ELSE %]
     qmodelingelementproperty_cast<Q${namespace}${originalClassName} *>(this)->remove${attributeName}(${qtAttribute});
         [%- END %]
-    emit ${PLURALFORM(qtAttribute, attribute)}Changed(this->${PLURALFORM(qtAttribute, attribute)}());
+    emit ${PLURALFORM(qtAttribute, attribute).remove('_$')}Changed(this->${PLURALFORM(qtAttribute, attribute)}());
 }
 
     [%- ELSIF qtType.match('\*$') %]
 void Q${namespace}${originalClassName}Object::set${attributeName}(${qtType}${qtAttribute})
 {
     qmodelingelementproperty_cast<Q${namespace}${originalClassName} *>(this)->set${attributeName}(qmodelingelementproperty_cast<${originalQtType}>(${qtAttribute}));
-    emit ${qtAttribute}Changed(this->${qtAttribute}());
+    [%- IF attributeName.upper != attributeName %]
+    emit ${attributeName.lcfirst}Changed(this->${qtAttribute}());
+    [%- ELSE %]
+    emit ${attributeName}Changed(this->${attributeName}());
+    [%- END %]
 }
 
     [%- ELSE %]
 void Q${namespace}${originalClassName}Object::set${attributeName.remove("^Is")}(${qtType}${qtAttribute})
 {
     qmodelingelementproperty_cast<Q${namespace}${originalClassName} *>(this)->set${attributeName.remove("^Is")}(${qtAttribute});
-    emit ${attributeName.lcfirst}Changed(this->${attributeName.lcfirst}());
+    [%- IF attributeName.upper != attributeName %]
+    emit ${attributeName.lcfirst}Changed(this->${qtAttribute}());
+    [%- ELSE %]
+    emit ${attributeName}Changed(this->${attributeName}());
+    [%- END %]
 }
 
     [%- END -%]

@@ -205,26 +205,31 @@ int QUmlConnectorEndObject::lowerBound() const
 void QUmlConnectorEndObject::addOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlConnectorEnd *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlConnectorEndObject::removeOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlConnectorEnd *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlConnectorEndObject::addOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlConnectorEnd *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlConnectorEndObject::removeOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlConnectorEnd *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlConnectorEndObject::setOwner(QObject *owner)
 {
     qmodelingelementproperty_cast<QUmlConnectorEnd *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
+    emit ownerChanged(this->owner());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [MultiplicityElement]
@@ -232,6 +237,7 @@ void QUmlConnectorEndObject::setOwner(QObject *owner)
 void QUmlConnectorEndObject::setOrdered(bool isOrdered)
 {
     qmodelingelementproperty_cast<QUmlConnectorEnd *>(this)->setOrdered(isOrdered);
+    emit isOrderedChanged(this->isOrdered());
 }
 
 void QUmlConnectorEndObject::unsetOrdered()
@@ -244,6 +250,7 @@ void QUmlConnectorEndObject::unsetOrdered()
 void QUmlConnectorEndObject::setUnique(bool isUnique)
 {
     qmodelingelementproperty_cast<QUmlConnectorEnd *>(this)->setUnique(isUnique);
+    emit isUniqueChanged(this->isUnique());
 }
 
 void QUmlConnectorEndObject::unsetUnique()
@@ -257,6 +264,7 @@ void QUmlConnectorEndObject::unsetUnique()
 void QUmlConnectorEndObject::setLower(int lower)
 {
     qmodelingelementproperty_cast<QUmlConnectorEnd *>(this)->setLower(lower);
+    emit lowerChanged(this->lower());
 }
 
 void QUmlConnectorEndObject::unsetLower()
@@ -269,11 +277,13 @@ void QUmlConnectorEndObject::unsetLower()
 void QUmlConnectorEndObject::setLowerValue(QObject *lowerValue)
 {
     qmodelingelementproperty_cast<QUmlConnectorEnd *>(this)->setLowerValue(qmodelingelementproperty_cast<QUmlValueSpecification *>(lowerValue));
+    emit lowerValueChanged(this->lowerValue());
 }
 
 void QUmlConnectorEndObject::setUpper(int upper)
 {
     qmodelingelementproperty_cast<QUmlConnectorEnd *>(this)->setUpper(upper);
+    emit upperChanged(this->upper());
 }
 
 void QUmlConnectorEndObject::unsetUpper()
@@ -286,6 +296,7 @@ void QUmlConnectorEndObject::unsetUpper()
 void QUmlConnectorEndObject::setUpperValue(QObject *upperValue)
 {
     qmodelingelementproperty_cast<QUmlConnectorEnd *>(this)->setUpperValue(qmodelingelementproperty_cast<QUmlValueSpecification *>(upperValue));
+    emit upperValueChanged(this->upperValue());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ConnectorEnd]
@@ -293,16 +304,19 @@ void QUmlConnectorEndObject::setUpperValue(QObject *upperValue)
 void QUmlConnectorEndObject::setDefiningEnd(QObject *definingEnd)
 {
     qmodelingelementproperty_cast<QUmlConnectorEnd *>(this)->setDefiningEnd(qmodelingelementproperty_cast<QUmlProperty *>(definingEnd));
+    emit definingEndChanged(this->definingEnd());
 }
 
 void QUmlConnectorEndObject::setPartWithPort(QObject *partWithPort)
 {
     qmodelingelementproperty_cast<QUmlConnectorEnd *>(this)->setPartWithPort(qmodelingelementproperty_cast<QUmlProperty *>(partWithPort));
+    emit partWithPortChanged(this->partWithPort());
 }
 
 void QUmlConnectorEndObject::setRole(QObject *role)
 {
     qmodelingelementproperty_cast<QUmlConnectorEnd *>(this)->setRole(qmodelingelementproperty_cast<QUmlConnectableElement *>(role));
+    emit roleChanged(this->role());
 }
 
 

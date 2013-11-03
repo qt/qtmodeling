@@ -153,26 +153,31 @@ bool QUmlProfileApplicationObject::mustBeOwned() const
 void QUmlProfileApplicationObject::addOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlProfileApplication *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlProfileApplicationObject::removeOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlProfileApplication *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlProfileApplicationObject::addOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlProfileApplication *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlProfileApplicationObject::removeOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlProfileApplication *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlProfileApplicationObject::setOwner(QObject *owner)
 {
     qmodelingelementproperty_cast<QUmlProfileApplication *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
+    emit ownerChanged(this->owner());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Relationship]
@@ -180,11 +185,13 @@ void QUmlProfileApplicationObject::setOwner(QObject *owner)
 void QUmlProfileApplicationObject::addRelatedElement(QObject *relatedElement)
 {
     qmodelingelementproperty_cast<QUmlProfileApplication *>(this)->addRelatedElement(qmodelingelementproperty_cast<QUmlElement *>(relatedElement));
+    emit relatedElementsChanged(this->relatedElements());
 }
 
 void QUmlProfileApplicationObject::removeRelatedElement(QObject *relatedElement)
 {
     qmodelingelementproperty_cast<QUmlProfileApplication *>(this)->removeRelatedElement(qmodelingelementproperty_cast<QUmlElement *>(relatedElement));
+    emit relatedElementsChanged(this->relatedElements());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [DirectedRelationship]
@@ -192,21 +199,25 @@ void QUmlProfileApplicationObject::removeRelatedElement(QObject *relatedElement)
 void QUmlProfileApplicationObject::addSource(QObject *source)
 {
     qmodelingelementproperty_cast<QUmlProfileApplication *>(this)->addSource(qmodelingelementproperty_cast<QUmlElement *>(source));
+    emit sourcesChanged(this->sources());
 }
 
 void QUmlProfileApplicationObject::removeSource(QObject *source)
 {
     qmodelingelementproperty_cast<QUmlProfileApplication *>(this)->removeSource(qmodelingelementproperty_cast<QUmlElement *>(source));
+    emit sourcesChanged(this->sources());
 }
 
 void QUmlProfileApplicationObject::addTarget(QObject *target)
 {
     qmodelingelementproperty_cast<QUmlProfileApplication *>(this)->addTarget(qmodelingelementproperty_cast<QUmlElement *>(target));
+    emit targetsChanged(this->targets());
 }
 
 void QUmlProfileApplicationObject::removeTarget(QObject *target)
 {
     qmodelingelementproperty_cast<QUmlProfileApplication *>(this)->removeTarget(qmodelingelementproperty_cast<QUmlElement *>(target));
+    emit targetsChanged(this->targets());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ProfileApplication]
@@ -214,16 +225,19 @@ void QUmlProfileApplicationObject::removeTarget(QObject *target)
 void QUmlProfileApplicationObject::setAppliedProfile(QObject *appliedProfile)
 {
     qmodelingelementproperty_cast<QUmlProfileApplication *>(this)->setAppliedProfile(qmodelingelementproperty_cast<QUmlProfile *>(appliedProfile));
+    emit appliedProfileChanged(this->appliedProfile());
 }
 
 void QUmlProfileApplicationObject::setApplyingPackage(QObject *applyingPackage)
 {
     qmodelingelementproperty_cast<QUmlProfileApplication *>(this)->setApplyingPackage(qmodelingelementproperty_cast<QUmlPackage *>(applyingPackage));
+    emit applyingPackageChanged(this->applyingPackage());
 }
 
 void QUmlProfileApplicationObject::setStrict(bool isStrict)
 {
     qmodelingelementproperty_cast<QUmlProfileApplication *>(this)->setStrict(isStrict);
+    emit isStrictChanged(this->isStrict());
 }
 
 void QUmlProfileApplicationObject::unsetStrict()

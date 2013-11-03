@@ -62,29 +62,29 @@ class Q_UML_EXPORT QUmlLiteralStringObject : public QModelingObject
     Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [Element]
-    Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
-    Q_PROPERTY(QSet<QObject *> ownedElements READ ownedElements)
-    Q_PROPERTY(QObject * owner READ owner)
+    Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments NOTIFY ownedCommentsChanged)
+    Q_PROPERTY(QSet<QObject *> ownedElements READ ownedElements NOTIFY ownedElementsChanged)
+    Q_PROPERTY(QObject * owner READ owner NOTIFY ownerChanged)
 
     // Properties [NamedElement]
-    Q_PROPERTY(QSet<QObject *> clientDependencies READ clientDependencies)
-    Q_PROPERTY(QString name READ name WRITE setName)
-    Q_PROPERTY(QObject * nameExpression READ nameExpression WRITE setNameExpression)
-    Q_PROPERTY(QObject * namespace_ READ namespace_)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
+    Q_PROPERTY(QSet<QObject *> clientDependencies READ clientDependencies NOTIFY clientDependenciesChanged)
+    Q_PROPERTY(QString name READ name WRITE setName NOTIFY nameChanged)
+    Q_PROPERTY(QObject * nameExpression READ nameExpression WRITE setNameExpression NOTIFY nameExpressionChanged)
+    Q_PROPERTY(QObject * namespace_ READ namespace_ NOTIFY namespaceChanged)
+    Q_PROPERTY(QString qualifiedName READ qualifiedName NOTIFY qualifiedNameChanged STORED false)
 
     // Properties [TypedElement]
-    Q_PROPERTY(QObject * type READ type WRITE setType)
+    Q_PROPERTY(QObject * type READ type WRITE setType NOTIFY typeChanged)
 
     // Properties [ParameterableElement]
-    Q_PROPERTY(QObject * owningTemplateParameter READ owningTemplateParameter WRITE setOwningTemplateParameter)
-    Q_PROPERTY(QObject * templateParameter READ templateParameter WRITE setTemplateParameter)
+    Q_PROPERTY(QObject * owningTemplateParameter READ owningTemplateParameter WRITE setOwningTemplateParameter NOTIFY owningTemplateParameterChanged)
+    Q_PROPERTY(QObject * templateParameter READ templateParameter WRITE setTemplateParameter NOTIFY templateParameterChanged)
 
     // Properties [PackageableElement]
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility RESET unsetVisibility)
+    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility NOTIFY visibilityChanged RESET unsetVisibility)
 
     // Properties [LiteralString]
-    Q_PROPERTY(QString value READ value WRITE setValue)
+    Q_PROPERTY(QString value READ value WRITE setValue NOTIFY valueChanged)
 
 public:
     Q_INVOKABLE explicit QUmlLiteralStringObject(QUmlLiteralString *modelingElement);
@@ -169,6 +169,33 @@ public Q_SLOTS:
 
     // Slots for owned attributes [LiteralString]
     void setValue(QString value);
+
+Q_SIGNALS:
+
+    // Signals for owned attributes [Element]
+    void ownedCommentsChanged(QSet<QObject *> ownedComments);
+    void ownedElementsChanged(QSet<QObject *> ownedElements);
+    void ownerChanged(QObject *owner);
+
+    // Signals for owned attributes [NamedElement]
+    void clientDependenciesChanged(QSet<QObject *> clientDependencies);
+    void nameChanged(QString name);
+    void nameExpressionChanged(QObject *nameExpression);
+    void namespaceChanged(QObject *namespace_);
+    void qualifiedNameChanged(QString qualifiedName);
+
+    // Signals for owned attributes [TypedElement]
+    void typeChanged(QObject *type);
+
+    // Signals for owned attributes [ParameterableElement]
+    void owningTemplateParameterChanged(QObject *owningTemplateParameter);
+    void templateParameterChanged(QObject *templateParameter);
+
+    // Signals for owned attributes [PackageableElement]
+    void visibilityChanged(QtUml::VisibilityKind visibility);
+
+    // Signals for owned attributes [LiteralString]
+    void valueChanged(QString value);
 
 protected:
     virtual void setGroupProperties();

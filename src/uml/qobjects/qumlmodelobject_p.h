@@ -62,48 +62,48 @@ class Q_UML_EXPORT QUmlModelObject : public QModelingObject
     Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [Element]
-    Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
-    Q_PROPERTY(QSet<QObject *> ownedElements READ ownedElements)
-    Q_PROPERTY(QObject * owner READ owner)
+    Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments NOTIFY ownedCommentsChanged)
+    Q_PROPERTY(QSet<QObject *> ownedElements READ ownedElements NOTIFY ownedElementsChanged)
+    Q_PROPERTY(QObject * owner READ owner NOTIFY ownerChanged)
 
     // Properties [NamedElement]
-    Q_PROPERTY(QSet<QObject *> clientDependencies READ clientDependencies)
-    Q_PROPERTY(QString name READ name WRITE setName)
-    Q_PROPERTY(QObject * nameExpression READ nameExpression WRITE setNameExpression)
-    Q_PROPERTY(QObject * namespace_ READ namespace_)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
+    Q_PROPERTY(QSet<QObject *> clientDependencies READ clientDependencies NOTIFY clientDependenciesChanged)
+    Q_PROPERTY(QString name READ name WRITE setName NOTIFY nameChanged)
+    Q_PROPERTY(QObject * nameExpression READ nameExpression WRITE setNameExpression NOTIFY nameExpressionChanged)
+    Q_PROPERTY(QObject * namespace_ READ namespace_ NOTIFY namespaceChanged)
+    Q_PROPERTY(QString qualifiedName READ qualifiedName NOTIFY qualifiedNameChanged STORED false)
 
     // Properties [Namespace]
-    Q_PROPERTY(QSet<QObject *> elementImports READ elementImports)
-    Q_PROPERTY(QSet<QObject *> importedMembers READ importedMembers STORED false)
-    Q_PROPERTY(QSet<QObject *> members READ members)
-    Q_PROPERTY(QSet<QObject *> ownedMembers READ ownedMembers)
-    Q_PROPERTY(QSet<QObject *> ownedRules READ ownedRules)
-    Q_PROPERTY(QSet<QObject *> packageImports READ packageImports)
+    Q_PROPERTY(QSet<QObject *> elementImports READ elementImports NOTIFY elementImportsChanged)
+    Q_PROPERTY(QSet<QObject *> importedMembers READ importedMembers NOTIFY importedMembersChanged STORED false)
+    Q_PROPERTY(QSet<QObject *> members READ members NOTIFY membersChanged)
+    Q_PROPERTY(QSet<QObject *> ownedMembers READ ownedMembers NOTIFY ownedMembersChanged)
+    Q_PROPERTY(QSet<QObject *> ownedRules READ ownedRules NOTIFY ownedRulesChanged)
+    Q_PROPERTY(QSet<QObject *> packageImports READ packageImports NOTIFY packageImportsChanged)
 
     // Properties [ParameterableElement]
-    Q_PROPERTY(QObject * owningTemplateParameter READ owningTemplateParameter WRITE setOwningTemplateParameter)
-    Q_PROPERTY(QObject * templateParameter READ templateParameter WRITE setTemplateParameter)
+    Q_PROPERTY(QObject * owningTemplateParameter READ owningTemplateParameter WRITE setOwningTemplateParameter NOTIFY owningTemplateParameterChanged)
+    Q_PROPERTY(QObject * templateParameter READ templateParameter WRITE setTemplateParameter NOTIFY templateParameterChanged)
 
     // Properties [PackageableElement]
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility RESET unsetVisibility)
+    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility NOTIFY visibilityChanged RESET unsetVisibility)
 
     // Properties [TemplateableElement]
-    Q_PROPERTY(QObject * ownedTemplateSignature READ ownedTemplateSignature WRITE setOwnedTemplateSignature)
-    Q_PROPERTY(QSet<QObject *> templateBindings READ templateBindings)
+    Q_PROPERTY(QObject * ownedTemplateSignature READ ownedTemplateSignature WRITE setOwnedTemplateSignature NOTIFY ownedTemplateSignatureChanged)
+    Q_PROPERTY(QSet<QObject *> templateBindings READ templateBindings NOTIFY templateBindingsChanged)
 
     // Properties [Package]
-    Q_PROPERTY(QString URI READ URI WRITE setURI)
-    Q_PROPERTY(QSet<QObject *> nestedPackages READ nestedPackages STORED false)
-    Q_PROPERTY(QObject * nestingPackage READ nestingPackage WRITE setNestingPackage)
-    Q_PROPERTY(QSet<QObject *> ownedStereotypes READ ownedStereotypes STORED false)
-    Q_PROPERTY(QSet<QObject *> ownedTypes READ ownedTypes STORED false)
-    Q_PROPERTY(QSet<QObject *> packageMerges READ packageMerges)
-    Q_PROPERTY(QSet<QObject *> packagedElements READ packagedElements)
-    Q_PROPERTY(QSet<QObject *> profileApplications READ profileApplications)
+    Q_PROPERTY(QString URI READ URI WRITE setURI NOTIFY URIChanged)
+    Q_PROPERTY(QSet<QObject *> nestedPackages READ nestedPackages NOTIFY nestedPackagesChanged STORED false)
+    Q_PROPERTY(QObject * nestingPackage READ nestingPackage WRITE setNestingPackage NOTIFY nestingPackageChanged)
+    Q_PROPERTY(QSet<QObject *> ownedStereotypes READ ownedStereotypes NOTIFY ownedStereotypesChanged STORED false)
+    Q_PROPERTY(QSet<QObject *> ownedTypes READ ownedTypes NOTIFY ownedTypesChanged STORED false)
+    Q_PROPERTY(QSet<QObject *> packageMerges READ packageMerges NOTIFY packageMergesChanged)
+    Q_PROPERTY(QSet<QObject *> packagedElements READ packagedElements NOTIFY packagedElementsChanged)
+    Q_PROPERTY(QSet<QObject *> profileApplications READ profileApplications NOTIFY profileApplicationsChanged)
 
     // Properties [Model]
-    Q_PROPERTY(QString viewpoint READ viewpoint WRITE setViewpoint)
+    Q_PROPERTY(QString viewpoint READ viewpoint WRITE setViewpoint NOTIFY viewpointChanged)
 
 public:
     Q_INVOKABLE explicit QUmlModelObject(QUmlModel *modelingElement);
@@ -244,6 +244,52 @@ public Q_SLOTS:
 
     // Slots for owned attributes [Model]
     void setViewpoint(QString viewpoint);
+
+Q_SIGNALS:
+
+    // Signals for owned attributes [Element]
+    void ownedCommentsChanged(QSet<QObject *> ownedComments);
+    void ownedElementsChanged(QSet<QObject *> ownedElements);
+    void ownerChanged(QObject *owner);
+
+    // Signals for owned attributes [NamedElement]
+    void clientDependenciesChanged(QSet<QObject *> clientDependencies);
+    void nameChanged(QString name);
+    void nameExpressionChanged(QObject *nameExpression);
+    void namespaceChanged(QObject *namespace_);
+    void qualifiedNameChanged(QString qualifiedName);
+
+    // Signals for owned attributes [Namespace]
+    void elementImportsChanged(QSet<QObject *> elementImports);
+    void importedMembersChanged(QSet<QObject *> importedMembers);
+    void membersChanged(QSet<QObject *> members);
+    void ownedMembersChanged(QSet<QObject *> ownedMembers);
+    void ownedRulesChanged(QSet<QObject *> ownedRules);
+    void packageImportsChanged(QSet<QObject *> packageImports);
+
+    // Signals for owned attributes [ParameterableElement]
+    void owningTemplateParameterChanged(QObject *owningTemplateParameter);
+    void templateParameterChanged(QObject *templateParameter);
+
+    // Signals for owned attributes [PackageableElement]
+    void visibilityChanged(QtUml::VisibilityKind visibility);
+
+    // Signals for owned attributes [TemplateableElement]
+    void ownedTemplateSignatureChanged(QObject *ownedTemplateSignature);
+    void templateBindingsChanged(QSet<QObject *> templateBindings);
+
+    // Signals for owned attributes [Package]
+    void URIChanged(QString URI);
+    void nestedPackagesChanged(QSet<QObject *> nestedPackages);
+    void nestingPackageChanged(QObject *nestingPackage);
+    void ownedStereotypesChanged(QSet<QObject *> ownedStereotypes);
+    void ownedTypesChanged(QSet<QObject *> ownedTypes);
+    void packageMergesChanged(QSet<QObject *> packageMerges);
+    void packagedElementsChanged(QSet<QObject *> packagedElements);
+    void profileApplicationsChanged(QSet<QObject *> profileApplications);
+
+    // Signals for owned attributes [Model]
+    void viewpointChanged(QString viewpoint);
 
 protected:
     virtual void setGroupProperties();

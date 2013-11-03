@@ -62,34 +62,34 @@ class Q_UML_EXPORT QUmlControlFlowObject : public QModelingObject
     Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [Element]
-    Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
-    Q_PROPERTY(QSet<QObject *> ownedElements READ ownedElements)
-    Q_PROPERTY(QObject * owner READ owner)
+    Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments NOTIFY ownedCommentsChanged)
+    Q_PROPERTY(QSet<QObject *> ownedElements READ ownedElements NOTIFY ownedElementsChanged)
+    Q_PROPERTY(QObject * owner READ owner NOTIFY ownerChanged)
 
     // Properties [NamedElement]
-    Q_PROPERTY(QSet<QObject *> clientDependencies READ clientDependencies)
-    Q_PROPERTY(QString name READ name WRITE setName)
-    Q_PROPERTY(QObject * nameExpression READ nameExpression WRITE setNameExpression)
-    Q_PROPERTY(QObject * namespace_ READ namespace_)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
+    Q_PROPERTY(QSet<QObject *> clientDependencies READ clientDependencies NOTIFY clientDependenciesChanged)
+    Q_PROPERTY(QString name READ name WRITE setName NOTIFY nameChanged)
+    Q_PROPERTY(QObject * nameExpression READ nameExpression WRITE setNameExpression NOTIFY nameExpressionChanged)
+    Q_PROPERTY(QObject * namespace_ READ namespace_ NOTIFY namespaceChanged)
+    Q_PROPERTY(QString qualifiedName READ qualifiedName NOTIFY qualifiedNameChanged STORED false)
+    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility NOTIFY visibilityChanged)
 
     // Properties [RedefinableElement]
-    Q_PROPERTY(bool isLeaf READ isLeaf WRITE setLeaf RESET unsetLeaf)
-    Q_PROPERTY(QSet<QObject *> redefinedElements READ redefinedElements)
-    Q_PROPERTY(QSet<QObject *> redefinitionContexts READ redefinitionContexts)
+    Q_PROPERTY(bool isLeaf READ isLeaf WRITE setLeaf NOTIFY isLeafChanged RESET unsetLeaf)
+    Q_PROPERTY(QSet<QObject *> redefinedElements READ redefinedElements NOTIFY redefinedElementsChanged)
+    Q_PROPERTY(QSet<QObject *> redefinitionContexts READ redefinitionContexts NOTIFY redefinitionContextsChanged)
 
     // Properties [ActivityEdge]
-    Q_PROPERTY(QObject * activity READ activity WRITE setActivity)
-    Q_PROPERTY(QObject * guard READ guard WRITE setGuard)
-    Q_PROPERTY(QSet<QObject *> inGroups READ inGroups)
-    Q_PROPERTY(QSet<QObject *> inPartitions READ inPartitions)
-    Q_PROPERTY(QObject * inStructuredNode READ inStructuredNode WRITE setInStructuredNode)
-    Q_PROPERTY(QObject * interrupts READ interrupts WRITE setInterrupts)
-    Q_PROPERTY(QSet<QObject *> redefinedEdges READ redefinedEdges)
-    Q_PROPERTY(QObject * source READ source WRITE setSource)
-    Q_PROPERTY(QObject * target READ target WRITE setTarget)
-    Q_PROPERTY(QObject * weight READ weight WRITE setWeight)
+    Q_PROPERTY(QObject * activity READ activity WRITE setActivity NOTIFY activityChanged)
+    Q_PROPERTY(QObject * guard READ guard WRITE setGuard NOTIFY guardChanged)
+    Q_PROPERTY(QSet<QObject *> inGroups READ inGroups NOTIFY inGroupsChanged)
+    Q_PROPERTY(QSet<QObject *> inPartitions READ inPartitions NOTIFY inPartitionsChanged)
+    Q_PROPERTY(QObject * inStructuredNode READ inStructuredNode WRITE setInStructuredNode NOTIFY inStructuredNodeChanged)
+    Q_PROPERTY(QObject * interrupts READ interrupts WRITE setInterrupts NOTIFY interruptsChanged)
+    Q_PROPERTY(QSet<QObject *> redefinedEdges READ redefinedEdges NOTIFY redefinedEdgesChanged)
+    Q_PROPERTY(QObject * source READ source WRITE setSource NOTIFY sourceChanged)
+    Q_PROPERTY(QObject * target READ target WRITE setTarget NOTIFY targetChanged)
+    Q_PROPERTY(QObject * weight READ weight WRITE setWeight NOTIFY weightChanged)
 
 public:
     Q_INVOKABLE explicit QUmlControlFlowObject(QUmlControlFlow *modelingElement);
@@ -178,6 +178,38 @@ public Q_SLOTS:
     void setSource(QObject *source = 0);
     void setTarget(QObject *target = 0);
     void setWeight(QObject *weight = 0);
+
+Q_SIGNALS:
+
+    // Signals for owned attributes [Element]
+    void ownedCommentsChanged(QSet<QObject *> ownedComments);
+    void ownedElementsChanged(QSet<QObject *> ownedElements);
+    void ownerChanged(QObject *owner);
+
+    // Signals for owned attributes [NamedElement]
+    void clientDependenciesChanged(QSet<QObject *> clientDependencies);
+    void nameChanged(QString name);
+    void nameExpressionChanged(QObject *nameExpression);
+    void namespaceChanged(QObject *namespace_);
+    void qualifiedNameChanged(QString qualifiedName);
+    void visibilityChanged(QtUml::VisibilityKind visibility);
+
+    // Signals for owned attributes [RedefinableElement]
+    void isLeafChanged(bool isLeaf);
+    void redefinedElementsChanged(QSet<QObject *> redefinedElements);
+    void redefinitionContextsChanged(QSet<QObject *> redefinitionContexts);
+
+    // Signals for owned attributes [ActivityEdge]
+    void activityChanged(QObject *activity);
+    void guardChanged(QObject *guard);
+    void inGroupsChanged(QSet<QObject *> inGroups);
+    void inPartitionsChanged(QSet<QObject *> inPartitions);
+    void inStructuredNodeChanged(QObject *inStructuredNode);
+    void interruptsChanged(QObject *interrupts);
+    void redefinedEdgesChanged(QSet<QObject *> redefinedEdges);
+    void sourceChanged(QObject *source);
+    void targetChanged(QObject *target);
+    void weightChanged(QObject *weight);
 
 protected:
     virtual void setGroupProperties();

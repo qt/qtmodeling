@@ -272,26 +272,31 @@ QString QUmlActivityPartitionObject::separator() const
 void QUmlActivityPartitionObject::addOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlActivityPartition *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlActivityPartitionObject::removeOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlActivityPartition *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlActivityPartitionObject::addOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlActivityPartition *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlActivityPartitionObject::removeOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlActivityPartition *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlActivityPartitionObject::setOwner(QObject *owner)
 {
     qmodelingelementproperty_cast<QUmlActivityPartition *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
+    emit ownerChanged(this->owner());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [NamedElement]
@@ -299,36 +304,43 @@ void QUmlActivityPartitionObject::setOwner(QObject *owner)
 void QUmlActivityPartitionObject::addClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlActivityPartition *>(this)->addClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlActivityPartitionObject::removeClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlActivityPartition *>(this)->removeClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlActivityPartitionObject::setName(QString name)
 {
     qmodelingelementproperty_cast<QUmlActivityPartition *>(this)->setName(name);
+    emit nameChanged(this->name());
 }
 
 void QUmlActivityPartitionObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingelementproperty_cast<QUmlActivityPartition *>(this)->setNameExpression(qmodelingelementproperty_cast<QUmlStringExpression *>(nameExpression));
+    emit nameExpressionChanged(this->nameExpression());
 }
 
 void QUmlActivityPartitionObject::setNamespace(QObject *namespace_)
 {
     qmodelingelementproperty_cast<QUmlActivityPartition *>(this)->setNamespace(qmodelingelementproperty_cast<QUmlNamespace *>(namespace_));
+    emit namespaceChanged(this->namespace_());
 }
 
 void QUmlActivityPartitionObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingelementproperty_cast<QUmlActivityPartition *>(this)->setQualifiedName(qualifiedName);
+    emit qualifiedNameChanged(this->qualifiedName());
 }
 
 void QUmlActivityPartitionObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingelementproperty_cast<QUmlActivityPartition *>(this)->setVisibility(visibility);
+    emit visibilityChanged(this->visibility());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ActivityGroup]
@@ -336,41 +348,49 @@ void QUmlActivityPartitionObject::setVisibility(QtUml::VisibilityKind visibility
 void QUmlActivityPartitionObject::addContainedEdge(QObject *containedEdge)
 {
     qmodelingelementproperty_cast<QUmlActivityPartition *>(this)->addContainedEdge(qmodelingelementproperty_cast<QUmlActivityEdge *>(containedEdge));
+    emit containedEdgesChanged(this->containedEdges());
 }
 
 void QUmlActivityPartitionObject::removeContainedEdge(QObject *containedEdge)
 {
     qmodelingelementproperty_cast<QUmlActivityPartition *>(this)->removeContainedEdge(qmodelingelementproperty_cast<QUmlActivityEdge *>(containedEdge));
+    emit containedEdgesChanged(this->containedEdges());
 }
 
 void QUmlActivityPartitionObject::addContainedNode(QObject *containedNode)
 {
     qmodelingelementproperty_cast<QUmlActivityPartition *>(this)->addContainedNode(qmodelingelementproperty_cast<QUmlActivityNode *>(containedNode));
+    emit containedNodesChanged(this->containedNodes());
 }
 
 void QUmlActivityPartitionObject::removeContainedNode(QObject *containedNode)
 {
     qmodelingelementproperty_cast<QUmlActivityPartition *>(this)->removeContainedNode(qmodelingelementproperty_cast<QUmlActivityNode *>(containedNode));
+    emit containedNodesChanged(this->containedNodes());
 }
 
 void QUmlActivityPartitionObject::setInActivity(QObject *inActivity)
 {
     qmodelingelementproperty_cast<QUmlActivityPartition *>(this)->setInActivity(qmodelingelementproperty_cast<QUmlActivity *>(inActivity));
+    emit inActivityChanged(this->inActivity());
 }
 
 void QUmlActivityPartitionObject::addSubgroup(QObject *subgroup)
 {
     qmodelingelementproperty_cast<QUmlActivityPartition *>(this)->addSubgroup(qmodelingelementproperty_cast<QUmlActivityGroup *>(subgroup));
+    emit subgroupsChanged(this->subgroups());
 }
 
 void QUmlActivityPartitionObject::removeSubgroup(QObject *subgroup)
 {
     qmodelingelementproperty_cast<QUmlActivityPartition *>(this)->removeSubgroup(qmodelingelementproperty_cast<QUmlActivityGroup *>(subgroup));
+    emit subgroupsChanged(this->subgroups());
 }
 
 void QUmlActivityPartitionObject::setSuperGroup(QObject *superGroup)
 {
     qmodelingelementproperty_cast<QUmlActivityPartition *>(this)->setSuperGroup(qmodelingelementproperty_cast<QUmlActivityGroup *>(superGroup));
+    emit superGroupChanged(this->superGroup());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ActivityPartition]
@@ -378,16 +398,19 @@ void QUmlActivityPartitionObject::setSuperGroup(QObject *superGroup)
 void QUmlActivityPartitionObject::addEdge(QObject *edge)
 {
     qmodelingelementproperty_cast<QUmlActivityPartition *>(this)->addEdge(qmodelingelementproperty_cast<QUmlActivityEdge *>(edge));
+    emit edgesChanged(this->edges());
 }
 
 void QUmlActivityPartitionObject::removeEdge(QObject *edge)
 {
     qmodelingelementproperty_cast<QUmlActivityPartition *>(this)->removeEdge(qmodelingelementproperty_cast<QUmlActivityEdge *>(edge));
+    emit edgesChanged(this->edges());
 }
 
 void QUmlActivityPartitionObject::setDimension(bool isDimension)
 {
     qmodelingelementproperty_cast<QUmlActivityPartition *>(this)->setDimension(isDimension);
+    emit isDimensionChanged(this->isDimension());
 }
 
 void QUmlActivityPartitionObject::unsetDimension()
@@ -400,6 +423,7 @@ void QUmlActivityPartitionObject::unsetDimension()
 void QUmlActivityPartitionObject::setExternal(bool isExternal)
 {
     qmodelingelementproperty_cast<QUmlActivityPartition *>(this)->setExternal(isExternal);
+    emit isExternalChanged(this->isExternal());
 }
 
 void QUmlActivityPartitionObject::unsetExternal()
@@ -412,31 +436,37 @@ void QUmlActivityPartitionObject::unsetExternal()
 void QUmlActivityPartitionObject::addNode(QObject *node)
 {
     qmodelingelementproperty_cast<QUmlActivityPartition *>(this)->addNode(qmodelingelementproperty_cast<QUmlActivityNode *>(node));
+    emit nodesChanged(this->nodes());
 }
 
 void QUmlActivityPartitionObject::removeNode(QObject *node)
 {
     qmodelingelementproperty_cast<QUmlActivityPartition *>(this)->removeNode(qmodelingelementproperty_cast<QUmlActivityNode *>(node));
+    emit nodesChanged(this->nodes());
 }
 
 void QUmlActivityPartitionObject::setRepresents(QObject *represents)
 {
     qmodelingelementproperty_cast<QUmlActivityPartition *>(this)->setRepresents(qmodelingelementproperty_cast<QUmlElement *>(represents));
+    emit representsChanged(this->represents());
 }
 
 void QUmlActivityPartitionObject::addSubpartition(QObject *subpartition)
 {
     qmodelingelementproperty_cast<QUmlActivityPartition *>(this)->addSubpartition(qmodelingelementproperty_cast<QUmlActivityPartition *>(subpartition));
+    emit subpartitionsChanged(this->subpartitions());
 }
 
 void QUmlActivityPartitionObject::removeSubpartition(QObject *subpartition)
 {
     qmodelingelementproperty_cast<QUmlActivityPartition *>(this)->removeSubpartition(qmodelingelementproperty_cast<QUmlActivityPartition *>(subpartition));
+    emit subpartitionsChanged(this->subpartitions());
 }
 
 void QUmlActivityPartitionObject::setSuperPartition(QObject *superPartition)
 {
     qmodelingelementproperty_cast<QUmlActivityPartition *>(this)->setSuperPartition(qmodelingelementproperty_cast<QUmlActivityPartition *>(superPartition));
+    emit superPartitionChanged(this->superPartition());
 }
 
 

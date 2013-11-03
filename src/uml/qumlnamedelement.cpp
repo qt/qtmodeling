@@ -57,7 +57,8 @@ QT_BEGIN_NAMESPACE
  */
 QUmlNamedElement::QUmlNamedElement() :
     _nameExpression(0),
-    _namespace_(0)
+    _namespace_(0),
+    _visibility(QtUml::VisibilityKindNone)
 {
 }
 

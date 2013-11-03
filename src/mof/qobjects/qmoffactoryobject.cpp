@@ -117,6 +117,7 @@ QObject *QMofFactoryObject::createLink(QObject *association, QObject *firstEleme
 void QMofFactoryObject::setPackage(QObject *package)
 {
     qmodelingelementproperty_cast<QMofFactory *>(this)->setPackage(qmodelingelementproperty_cast<QMofPackage *>(package));
+    emit packageChanged(this->package());
 }
 
 

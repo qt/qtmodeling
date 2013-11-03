@@ -226,26 +226,31 @@ bool QMofLiteralNullObject::isNull() const
 void QMofLiteralNullObject::addOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QMofLiteralNull *>(this)->addOwnedComment(qmodelingelementproperty_cast<QMofComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QMofLiteralNullObject::removeOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QMofLiteralNull *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QMofComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QMofLiteralNullObject::addOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QMofLiteralNull *>(this)->addOwnedElement(qmodelingelementproperty_cast<QMofElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QMofLiteralNullObject::removeOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QMofLiteralNull *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QMofElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QMofLiteralNullObject::setOwner(QObject *owner)
 {
     qmodelingelementproperty_cast<QMofLiteralNull *>(this)->setOwner(qmodelingelementproperty_cast<QMofElement *>(owner));
+    emit ownerChanged(this->owner());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [NamedElement]
@@ -253,22 +258,26 @@ void QMofLiteralNullObject::setOwner(QObject *owner)
 void QMofLiteralNullObject::setName(QString name)
 {
     qmodelingelementproperty_cast<QMofLiteralNull *>(this)->setName(name);
+    emit nameChanged(this->name());
 }
 
 void QMofLiteralNullObject::setNamespace(QObject *namespace_)
 {
     qmodelingelementproperty_cast<QMofLiteralNull *>(this)->setNamespace(qmodelingelementproperty_cast<QMofNamespace *>(namespace_));
+    emit namespaceChanged(this->namespace_());
 }
 
 void QMofLiteralNullObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingelementproperty_cast<QMofLiteralNull *>(this)->setQualifiedName(qualifiedName);
+    emit qualifiedNameChanged(this->qualifiedName());
 }
 // SLOTS FOR OWNED ATTRIBUTES [PackageableElement]
 
 void QMofLiteralNullObject::setVisibility(QtMof::VisibilityKind visibility)
 {
     qmodelingelementproperty_cast<QMofLiteralNull *>(this)->setVisibility(visibility);
+    emit visibilityChanged(this->visibility());
 }
 
 void QMofLiteralNullObject::unsetVisibility()
@@ -283,6 +292,7 @@ void QMofLiteralNullObject::unsetVisibility()
 void QMofLiteralNullObject::setType(QObject *type)
 {
     qmodelingelementproperty_cast<QMofLiteralNull *>(this)->setType(qmodelingelementproperty_cast<QMofType *>(type));
+    emit typeChanged(this->type());
 }
 
 

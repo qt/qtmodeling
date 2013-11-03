@@ -152,26 +152,31 @@ bool QUmlClauseObject::mustBeOwned() const
 void QUmlClauseObject::addOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlClause *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlClauseObject::removeOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlClause *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlClauseObject::addOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlClause *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlClauseObject::removeOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlClause *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlClauseObject::setOwner(QObject *owner)
 {
     qmodelingelementproperty_cast<QUmlClause *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
+    emit ownerChanged(this->owner());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Clause]
@@ -179,56 +184,67 @@ void QUmlClauseObject::setOwner(QObject *owner)
 void QUmlClauseObject::addBody(QObject *body)
 {
     qmodelingelementproperty_cast<QUmlClause *>(this)->addBody(qmodelingelementproperty_cast<QUmlExecutableNode *>(body));
+    emit bodiesChanged(this->bodies());
 }
 
 void QUmlClauseObject::removeBody(QObject *body)
 {
     qmodelingelementproperty_cast<QUmlClause *>(this)->removeBody(qmodelingelementproperty_cast<QUmlExecutableNode *>(body));
+    emit bodiesChanged(this->bodies());
 }
 
 void QUmlClauseObject::addBodyOutput(QObject *bodyOutput)
 {
     qmodelingelementproperty_cast<QUmlClause *>(this)->addBodyOutput(qmodelingelementproperty_cast<QUmlOutputPin *>(bodyOutput));
+    emit bodyOutputsChanged(this->bodyOutputs());
 }
 
 void QUmlClauseObject::removeBodyOutput(QObject *bodyOutput)
 {
     qmodelingelementproperty_cast<QUmlClause *>(this)->removeBodyOutput(qmodelingelementproperty_cast<QUmlOutputPin *>(bodyOutput));
+    emit bodyOutputsChanged(this->bodyOutputs());
 }
 
 void QUmlClauseObject::setDecider(QObject *decider)
 {
     qmodelingelementproperty_cast<QUmlClause *>(this)->setDecider(qmodelingelementproperty_cast<QUmlOutputPin *>(decider));
+    emit deciderChanged(this->decider());
 }
 
 void QUmlClauseObject::addPredecessorClause(QObject *predecessorClause)
 {
     qmodelingelementproperty_cast<QUmlClause *>(this)->addPredecessorClause(qmodelingelementproperty_cast<QUmlClause *>(predecessorClause));
+    emit predecessorClausesChanged(this->predecessorClauses());
 }
 
 void QUmlClauseObject::removePredecessorClause(QObject *predecessorClause)
 {
     qmodelingelementproperty_cast<QUmlClause *>(this)->removePredecessorClause(qmodelingelementproperty_cast<QUmlClause *>(predecessorClause));
+    emit predecessorClausesChanged(this->predecessorClauses());
 }
 
 void QUmlClauseObject::addSuccessorClause(QObject *successorClause)
 {
     qmodelingelementproperty_cast<QUmlClause *>(this)->addSuccessorClause(qmodelingelementproperty_cast<QUmlClause *>(successorClause));
+    emit successorClausesChanged(this->successorClauses());
 }
 
 void QUmlClauseObject::removeSuccessorClause(QObject *successorClause)
 {
     qmodelingelementproperty_cast<QUmlClause *>(this)->removeSuccessorClause(qmodelingelementproperty_cast<QUmlClause *>(successorClause));
+    emit successorClausesChanged(this->successorClauses());
 }
 
 void QUmlClauseObject::addTest(QObject *test)
 {
     qmodelingelementproperty_cast<QUmlClause *>(this)->addTest(qmodelingelementproperty_cast<QUmlExecutableNode *>(test));
+    emit testsChanged(this->tests());
 }
 
 void QUmlClauseObject::removeTest(QObject *test)
 {
     qmodelingelementproperty_cast<QUmlClause *>(this)->removeTest(qmodelingelementproperty_cast<QUmlExecutableNode *>(test));
+    emit testsChanged(this->tests());
 }
 
 

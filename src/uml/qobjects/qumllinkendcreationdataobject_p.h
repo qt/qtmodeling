@@ -60,18 +60,18 @@ class Q_UML_EXPORT QUmlLinkEndCreationDataObject : public QModelingObject
     Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [Element]
-    Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
-    Q_PROPERTY(QSet<QObject *> ownedElements READ ownedElements)
-    Q_PROPERTY(QObject * owner READ owner)
+    Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments NOTIFY ownedCommentsChanged)
+    Q_PROPERTY(QSet<QObject *> ownedElements READ ownedElements NOTIFY ownedElementsChanged)
+    Q_PROPERTY(QObject * owner READ owner NOTIFY ownerChanged)
 
     // Properties [LinkEndData]
-    Q_PROPERTY(QObject * end READ end WRITE setEnd)
-    Q_PROPERTY(QSet<QObject *> qualifiers READ qualifiers)
-    Q_PROPERTY(QObject * value READ value WRITE setValue)
+    Q_PROPERTY(QObject * end READ end WRITE setEnd NOTIFY endChanged)
+    Q_PROPERTY(QSet<QObject *> qualifiers READ qualifiers NOTIFY qualifiersChanged)
+    Q_PROPERTY(QObject * value READ value WRITE setValue NOTIFY valueChanged)
 
     // Properties [LinkEndCreationData]
-    Q_PROPERTY(QObject * insertAt READ insertAt WRITE setInsertAt)
-    Q_PROPERTY(bool isReplaceAll READ isReplaceAll WRITE setReplaceAll RESET unsetReplaceAll)
+    Q_PROPERTY(QObject * insertAt READ insertAt WRITE setInsertAt NOTIFY insertAtChanged)
+    Q_PROPERTY(bool isReplaceAll READ isReplaceAll WRITE setReplaceAll NOTIFY isReplaceAllChanged RESET unsetReplaceAll)
 
 public:
     Q_INVOKABLE explicit QUmlLinkEndCreationDataObject(QUmlLinkEndCreationData *modelingElement);
@@ -113,6 +113,22 @@ public Q_SLOTS:
     void setInsertAt(QObject *insertAt = 0);
     void setReplaceAll(bool isReplaceAll);
     void unsetReplaceAll();
+
+Q_SIGNALS:
+
+    // Signals for owned attributes [Element]
+    void ownedCommentsChanged(QSet<QObject *> ownedComments);
+    void ownedElementsChanged(QSet<QObject *> ownedElements);
+    void ownerChanged(QObject *owner);
+
+    // Signals for owned attributes [LinkEndData]
+    void endChanged(QObject *end);
+    void qualifiersChanged(QSet<QObject *> qualifiers);
+    void valueChanged(QObject *value);
+
+    // Signals for owned attributes [LinkEndCreationData]
+    void insertAtChanged(QObject *insertAt);
+    void isReplaceAllChanged(bool isReplaceAll);
 
 protected:
     virtual void setGroupProperties();

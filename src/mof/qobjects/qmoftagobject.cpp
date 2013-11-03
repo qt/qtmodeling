@@ -86,26 +86,31 @@ QObject *QMofTagObject::tagOwner() const
 void QMofTagObject::setName(QString name)
 {
     qmodelingelementproperty_cast<QMofTag *>(this)->setName(name);
+    emit nameChanged(this->name());
 }
 
 void QMofTagObject::setValue(QString value)
 {
     qmodelingelementproperty_cast<QMofTag *>(this)->setValue(value);
+    emit valueChanged(this->value());
 }
 
 void QMofTagObject::addElement(QObject *element)
 {
     qmodelingelementproperty_cast<QMofTag *>(this)->addElement(qmodelingelementproperty_cast<QMofElement *>(element));
+    emit elementsChanged(this->elements());
 }
 
 void QMofTagObject::removeElement(QObject *element)
 {
     qmodelingelementproperty_cast<QMofTag *>(this)->removeElement(qmodelingelementproperty_cast<QMofElement *>(element));
+    emit elementsChanged(this->elements());
 }
 
 void QMofTagObject::setTagOwner(QObject *tagOwner)
 {
     qmodelingelementproperty_cast<QMofTag *>(this)->setTagOwner(qmodelingelementproperty_cast<QMofElement *>(tagOwner));
+    emit tagOwnerChanged(this->tagOwner());
 }
 
 

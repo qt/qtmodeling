@@ -253,26 +253,31 @@ QString QUmlInteractionConstraintObject::separator() const
 void QUmlInteractionConstraintObject::addOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlInteractionConstraint *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlInteractionConstraintObject::removeOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlInteractionConstraint *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlInteractionConstraintObject::addOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlInteractionConstraint *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlInteractionConstraintObject::removeOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlInteractionConstraint *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlInteractionConstraintObject::setOwner(QObject *owner)
 {
     qmodelingelementproperty_cast<QUmlInteractionConstraint *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
+    emit ownerChanged(this->owner());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ParameterableElement]
@@ -280,11 +285,13 @@ void QUmlInteractionConstraintObject::setOwner(QObject *owner)
 void QUmlInteractionConstraintObject::setOwningTemplateParameter(QObject *owningTemplateParameter)
 {
     qmodelingelementproperty_cast<QUmlInteractionConstraint *>(this)->setOwningTemplateParameter(qmodelingelementproperty_cast<QUmlTemplateParameter *>(owningTemplateParameter));
+    emit owningTemplateParameterChanged(this->owningTemplateParameter());
 }
 
 void QUmlInteractionConstraintObject::setTemplateParameter(QObject *templateParameter)
 {
     qmodelingelementproperty_cast<QUmlInteractionConstraint *>(this)->setTemplateParameter(qmodelingelementproperty_cast<QUmlTemplateParameter *>(templateParameter));
+    emit templateParameterChanged(this->templateParameter());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [NamedElement]
@@ -292,37 +299,44 @@ void QUmlInteractionConstraintObject::setTemplateParameter(QObject *templatePara
 void QUmlInteractionConstraintObject::addClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlInteractionConstraint *>(this)->addClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlInteractionConstraintObject::removeClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlInteractionConstraint *>(this)->removeClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlInteractionConstraintObject::setName(QString name)
 {
     qmodelingelementproperty_cast<QUmlInteractionConstraint *>(this)->setName(name);
+    emit nameChanged(this->name());
 }
 
 void QUmlInteractionConstraintObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingelementproperty_cast<QUmlInteractionConstraint *>(this)->setNameExpression(qmodelingelementproperty_cast<QUmlStringExpression *>(nameExpression));
+    emit nameExpressionChanged(this->nameExpression());
 }
 
 void QUmlInteractionConstraintObject::setNamespace(QObject *namespace_)
 {
     qmodelingelementproperty_cast<QUmlInteractionConstraint *>(this)->setNamespace(qmodelingelementproperty_cast<QUmlNamespace *>(namespace_));
+    emit namespaceChanged(this->namespace_());
 }
 
 void QUmlInteractionConstraintObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingelementproperty_cast<QUmlInteractionConstraint *>(this)->setQualifiedName(qualifiedName);
+    emit qualifiedNameChanged(this->qualifiedName());
 }
 // SLOTS FOR OWNED ATTRIBUTES [PackageableElement]
 
 void QUmlInteractionConstraintObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingelementproperty_cast<QUmlInteractionConstraint *>(this)->setVisibility(visibility);
+    emit visibilityChanged(this->visibility());
 }
 
 void QUmlInteractionConstraintObject::unsetVisibility()
@@ -337,21 +351,25 @@ void QUmlInteractionConstraintObject::unsetVisibility()
 void QUmlInteractionConstraintObject::addConstrainedElement(QObject *constrainedElement)
 {
     qmodelingelementproperty_cast<QUmlInteractionConstraint *>(this)->addConstrainedElement(qmodelingelementproperty_cast<QUmlElement *>(constrainedElement));
+    emit constrainedElementsChanged(this->constrainedElements());
 }
 
 void QUmlInteractionConstraintObject::removeConstrainedElement(QObject *constrainedElement)
 {
     qmodelingelementproperty_cast<QUmlInteractionConstraint *>(this)->removeConstrainedElement(qmodelingelementproperty_cast<QUmlElement *>(constrainedElement));
+    emit constrainedElementsChanged(this->constrainedElements());
 }
 
 void QUmlInteractionConstraintObject::setContext(QObject *context)
 {
     qmodelingelementproperty_cast<QUmlInteractionConstraint *>(this)->setContext(qmodelingelementproperty_cast<QUmlNamespace *>(context));
+    emit contextChanged(this->context());
 }
 
 void QUmlInteractionConstraintObject::setSpecification(QObject *specification)
 {
     qmodelingelementproperty_cast<QUmlInteractionConstraint *>(this)->setSpecification(qmodelingelementproperty_cast<QUmlValueSpecification *>(specification));
+    emit specificationChanged(this->specification());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [InteractionConstraint]
@@ -359,11 +377,13 @@ void QUmlInteractionConstraintObject::setSpecification(QObject *specification)
 void QUmlInteractionConstraintObject::setMaxint(QObject *maxint)
 {
     qmodelingelementproperty_cast<QUmlInteractionConstraint *>(this)->setMaxint(qmodelingelementproperty_cast<QUmlValueSpecification *>(maxint));
+    emit maxintChanged(this->maxint());
 }
 
 void QUmlInteractionConstraintObject::setMinint(QObject *minint)
 {
     qmodelingelementproperty_cast<QUmlInteractionConstraint *>(this)->setMinint(qmodelingelementproperty_cast<QUmlValueSpecification *>(minint));
+    emit minintChanged(this->minint());
 }
 
 

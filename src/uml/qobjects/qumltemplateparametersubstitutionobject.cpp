@@ -137,26 +137,31 @@ bool QUmlTemplateParameterSubstitutionObject::mustBeOwned() const
 void QUmlTemplateParameterSubstitutionObject::addOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlTemplateParameterSubstitution *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlTemplateParameterSubstitutionObject::removeOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlTemplateParameterSubstitution *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlTemplateParameterSubstitutionObject::addOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlTemplateParameterSubstitution *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlTemplateParameterSubstitutionObject::removeOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlTemplateParameterSubstitution *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlTemplateParameterSubstitutionObject::setOwner(QObject *owner)
 {
     qmodelingelementproperty_cast<QUmlTemplateParameterSubstitution *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
+    emit ownerChanged(this->owner());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [TemplateParameterSubstitution]
@@ -164,21 +169,25 @@ void QUmlTemplateParameterSubstitutionObject::setOwner(QObject *owner)
 void QUmlTemplateParameterSubstitutionObject::setActual(QObject *actual)
 {
     qmodelingelementproperty_cast<QUmlTemplateParameterSubstitution *>(this)->setActual(qmodelingelementproperty_cast<QUmlParameterableElement *>(actual));
+    emit actualChanged(this->actual());
 }
 
 void QUmlTemplateParameterSubstitutionObject::setFormal(QObject *formal)
 {
     qmodelingelementproperty_cast<QUmlTemplateParameterSubstitution *>(this)->setFormal(qmodelingelementproperty_cast<QUmlTemplateParameter *>(formal));
+    emit formalChanged(this->formal());
 }
 
 void QUmlTemplateParameterSubstitutionObject::setOwnedActual(QObject *ownedActual)
 {
     qmodelingelementproperty_cast<QUmlTemplateParameterSubstitution *>(this)->setOwnedActual(qmodelingelementproperty_cast<QUmlParameterableElement *>(ownedActual));
+    emit ownedActualChanged(this->ownedActual());
 }
 
 void QUmlTemplateParameterSubstitutionObject::setTemplateBinding(QObject *templateBinding)
 {
     qmodelingelementproperty_cast<QUmlTemplateParameterSubstitution *>(this)->setTemplateBinding(qmodelingelementproperty_cast<QUmlTemplateBinding *>(templateBinding));
+    emit templateBindingChanged(this->templateBinding());
 }
 
 

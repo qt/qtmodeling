@@ -355,26 +355,31 @@ bool QUmlStartClassifierBehaviorActionObject::isRedefinitionContextValid(QObject
 void QUmlStartClassifierBehaviorActionObject::addOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlStartClassifierBehaviorAction *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlStartClassifierBehaviorActionObject::removeOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlStartClassifierBehaviorAction *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlStartClassifierBehaviorActionObject::addOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlStartClassifierBehaviorAction *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlStartClassifierBehaviorActionObject::removeOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlStartClassifierBehaviorAction *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlStartClassifierBehaviorActionObject::setOwner(QObject *owner)
 {
     qmodelingelementproperty_cast<QUmlStartClassifierBehaviorAction *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
+    emit ownerChanged(this->owner());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [NamedElement]
@@ -382,36 +387,43 @@ void QUmlStartClassifierBehaviorActionObject::setOwner(QObject *owner)
 void QUmlStartClassifierBehaviorActionObject::addClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlStartClassifierBehaviorAction *>(this)->addClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlStartClassifierBehaviorActionObject::removeClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlStartClassifierBehaviorAction *>(this)->removeClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlStartClassifierBehaviorActionObject::setName(QString name)
 {
     qmodelingelementproperty_cast<QUmlStartClassifierBehaviorAction *>(this)->setName(name);
+    emit nameChanged(this->name());
 }
 
 void QUmlStartClassifierBehaviorActionObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingelementproperty_cast<QUmlStartClassifierBehaviorAction *>(this)->setNameExpression(qmodelingelementproperty_cast<QUmlStringExpression *>(nameExpression));
+    emit nameExpressionChanged(this->nameExpression());
 }
 
 void QUmlStartClassifierBehaviorActionObject::setNamespace(QObject *namespace_)
 {
     qmodelingelementproperty_cast<QUmlStartClassifierBehaviorAction *>(this)->setNamespace(qmodelingelementproperty_cast<QUmlNamespace *>(namespace_));
+    emit namespaceChanged(this->namespace_());
 }
 
 void QUmlStartClassifierBehaviorActionObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingelementproperty_cast<QUmlStartClassifierBehaviorAction *>(this)->setQualifiedName(qualifiedName);
+    emit qualifiedNameChanged(this->qualifiedName());
 }
 
 void QUmlStartClassifierBehaviorActionObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingelementproperty_cast<QUmlStartClassifierBehaviorAction *>(this)->setVisibility(visibility);
+    emit visibilityChanged(this->visibility());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [RedefinableElement]
@@ -419,6 +431,7 @@ void QUmlStartClassifierBehaviorActionObject::setVisibility(QtUml::VisibilityKin
 void QUmlStartClassifierBehaviorActionObject::setLeaf(bool isLeaf)
 {
     qmodelingelementproperty_cast<QUmlStartClassifierBehaviorAction *>(this)->setLeaf(isLeaf);
+    emit isLeafChanged(this->isLeaf());
 }
 
 void QUmlStartClassifierBehaviorActionObject::unsetLeaf()
@@ -431,21 +444,25 @@ void QUmlStartClassifierBehaviorActionObject::unsetLeaf()
 void QUmlStartClassifierBehaviorActionObject::addRedefinedElement(QObject *redefinedElement)
 {
     qmodelingelementproperty_cast<QUmlStartClassifierBehaviorAction *>(this)->addRedefinedElement(qmodelingelementproperty_cast<QUmlRedefinableElement *>(redefinedElement));
+    emit redefinedElementsChanged(this->redefinedElements());
 }
 
 void QUmlStartClassifierBehaviorActionObject::removeRedefinedElement(QObject *redefinedElement)
 {
     qmodelingelementproperty_cast<QUmlStartClassifierBehaviorAction *>(this)->removeRedefinedElement(qmodelingelementproperty_cast<QUmlRedefinableElement *>(redefinedElement));
+    emit redefinedElementsChanged(this->redefinedElements());
 }
 
 void QUmlStartClassifierBehaviorActionObject::addRedefinitionContext(QObject *redefinitionContext)
 {
     qmodelingelementproperty_cast<QUmlStartClassifierBehaviorAction *>(this)->addRedefinitionContext(qmodelingelementproperty_cast<QUmlClassifier *>(redefinitionContext));
+    emit redefinitionContextsChanged(this->redefinitionContexts());
 }
 
 void QUmlStartClassifierBehaviorActionObject::removeRedefinitionContext(QObject *redefinitionContext)
 {
     qmodelingelementproperty_cast<QUmlStartClassifierBehaviorAction *>(this)->removeRedefinitionContext(qmodelingelementproperty_cast<QUmlClassifier *>(redefinitionContext));
+    emit redefinitionContextsChanged(this->redefinitionContexts());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ActivityNode]
@@ -453,71 +470,85 @@ void QUmlStartClassifierBehaviorActionObject::removeRedefinitionContext(QObject 
 void QUmlStartClassifierBehaviorActionObject::setActivity(QObject *activity)
 {
     qmodelingelementproperty_cast<QUmlStartClassifierBehaviorAction *>(this)->setActivity(qmodelingelementproperty_cast<QUmlActivity *>(activity));
+    emit activityChanged(this->activity());
 }
 
 void QUmlStartClassifierBehaviorActionObject::addInGroup(QObject *inGroup)
 {
     qmodelingelementproperty_cast<QUmlStartClassifierBehaviorAction *>(this)->addInGroup(qmodelingelementproperty_cast<QUmlActivityGroup *>(inGroup));
+    emit inGroupsChanged(this->inGroups());
 }
 
 void QUmlStartClassifierBehaviorActionObject::removeInGroup(QObject *inGroup)
 {
     qmodelingelementproperty_cast<QUmlStartClassifierBehaviorAction *>(this)->removeInGroup(qmodelingelementproperty_cast<QUmlActivityGroup *>(inGroup));
+    emit inGroupsChanged(this->inGroups());
 }
 
 void QUmlStartClassifierBehaviorActionObject::addInInterruptibleRegion(QObject *inInterruptibleRegion)
 {
     qmodelingelementproperty_cast<QUmlStartClassifierBehaviorAction *>(this)->addInInterruptibleRegion(qmodelingelementproperty_cast<QUmlInterruptibleActivityRegion *>(inInterruptibleRegion));
+    emit inInterruptibleRegionsChanged(this->inInterruptibleRegions());
 }
 
 void QUmlStartClassifierBehaviorActionObject::removeInInterruptibleRegion(QObject *inInterruptibleRegion)
 {
     qmodelingelementproperty_cast<QUmlStartClassifierBehaviorAction *>(this)->removeInInterruptibleRegion(qmodelingelementproperty_cast<QUmlInterruptibleActivityRegion *>(inInterruptibleRegion));
+    emit inInterruptibleRegionsChanged(this->inInterruptibleRegions());
 }
 
 void QUmlStartClassifierBehaviorActionObject::addInPartition(QObject *inPartition)
 {
     qmodelingelementproperty_cast<QUmlStartClassifierBehaviorAction *>(this)->addInPartition(qmodelingelementproperty_cast<QUmlActivityPartition *>(inPartition));
+    emit inPartitionsChanged(this->inPartitions());
 }
 
 void QUmlStartClassifierBehaviorActionObject::removeInPartition(QObject *inPartition)
 {
     qmodelingelementproperty_cast<QUmlStartClassifierBehaviorAction *>(this)->removeInPartition(qmodelingelementproperty_cast<QUmlActivityPartition *>(inPartition));
+    emit inPartitionsChanged(this->inPartitions());
 }
 
 void QUmlStartClassifierBehaviorActionObject::setInStructuredNode(QObject *inStructuredNode)
 {
     qmodelingelementproperty_cast<QUmlStartClassifierBehaviorAction *>(this)->setInStructuredNode(qmodelingelementproperty_cast<QUmlStructuredActivityNode *>(inStructuredNode));
+    emit inStructuredNodeChanged(this->inStructuredNode());
 }
 
 void QUmlStartClassifierBehaviorActionObject::addIncoming(QObject *incoming)
 {
     qmodelingelementproperty_cast<QUmlStartClassifierBehaviorAction *>(this)->addIncoming(qmodelingelementproperty_cast<QUmlActivityEdge *>(incoming));
+    emit incomingsChanged(this->incomings());
 }
 
 void QUmlStartClassifierBehaviorActionObject::removeIncoming(QObject *incoming)
 {
     qmodelingelementproperty_cast<QUmlStartClassifierBehaviorAction *>(this)->removeIncoming(qmodelingelementproperty_cast<QUmlActivityEdge *>(incoming));
+    emit incomingsChanged(this->incomings());
 }
 
 void QUmlStartClassifierBehaviorActionObject::addOutgoing(QObject *outgoing)
 {
     qmodelingelementproperty_cast<QUmlStartClassifierBehaviorAction *>(this)->addOutgoing(qmodelingelementproperty_cast<QUmlActivityEdge *>(outgoing));
+    emit outgoingsChanged(this->outgoings());
 }
 
 void QUmlStartClassifierBehaviorActionObject::removeOutgoing(QObject *outgoing)
 {
     qmodelingelementproperty_cast<QUmlStartClassifierBehaviorAction *>(this)->removeOutgoing(qmodelingelementproperty_cast<QUmlActivityEdge *>(outgoing));
+    emit outgoingsChanged(this->outgoings());
 }
 
 void QUmlStartClassifierBehaviorActionObject::addRedefinedNode(QObject *redefinedNode)
 {
     qmodelingelementproperty_cast<QUmlStartClassifierBehaviorAction *>(this)->addRedefinedNode(qmodelingelementproperty_cast<QUmlActivityNode *>(redefinedNode));
+    emit redefinedNodesChanged(this->redefinedNodes());
 }
 
 void QUmlStartClassifierBehaviorActionObject::removeRedefinedNode(QObject *redefinedNode)
 {
     qmodelingelementproperty_cast<QUmlStartClassifierBehaviorAction *>(this)->removeRedefinedNode(qmodelingelementproperty_cast<QUmlActivityNode *>(redefinedNode));
+    emit redefinedNodesChanged(this->redefinedNodes());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ExecutableNode]
@@ -525,11 +556,13 @@ void QUmlStartClassifierBehaviorActionObject::removeRedefinedNode(QObject *redef
 void QUmlStartClassifierBehaviorActionObject::addHandler(QObject *handler)
 {
     qmodelingelementproperty_cast<QUmlStartClassifierBehaviorAction *>(this)->addHandler(qmodelingelementproperty_cast<QUmlExceptionHandler *>(handler));
+    emit handlersChanged(this->handlers());
 }
 
 void QUmlStartClassifierBehaviorActionObject::removeHandler(QObject *handler)
 {
     qmodelingelementproperty_cast<QUmlStartClassifierBehaviorAction *>(this)->removeHandler(qmodelingelementproperty_cast<QUmlExceptionHandler *>(handler));
+    emit handlersChanged(this->handlers());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Action]
@@ -537,21 +570,25 @@ void QUmlStartClassifierBehaviorActionObject::removeHandler(QObject *handler)
 void QUmlStartClassifierBehaviorActionObject::setContext(QObject *context)
 {
     qmodelingelementproperty_cast<QUmlStartClassifierBehaviorAction *>(this)->setContext(qmodelingelementproperty_cast<QUmlClassifier *>(context));
+    emit contextChanged(this->context());
 }
 
 void QUmlStartClassifierBehaviorActionObject::addInput(QObject *input)
 {
     qmodelingelementproperty_cast<QUmlStartClassifierBehaviorAction *>(this)->addInput(qmodelingelementproperty_cast<QUmlInputPin *>(input));
+    emit inputsChanged(this->inputs());
 }
 
 void QUmlStartClassifierBehaviorActionObject::removeInput(QObject *input)
 {
     qmodelingelementproperty_cast<QUmlStartClassifierBehaviorAction *>(this)->removeInput(qmodelingelementproperty_cast<QUmlInputPin *>(input));
+    emit inputsChanged(this->inputs());
 }
 
 void QUmlStartClassifierBehaviorActionObject::setLocallyReentrant(bool isLocallyReentrant)
 {
     qmodelingelementproperty_cast<QUmlStartClassifierBehaviorAction *>(this)->setLocallyReentrant(isLocallyReentrant);
+    emit isLocallyReentrantChanged(this->isLocallyReentrant());
 }
 
 void QUmlStartClassifierBehaviorActionObject::unsetLocallyReentrant()
@@ -564,31 +601,37 @@ void QUmlStartClassifierBehaviorActionObject::unsetLocallyReentrant()
 void QUmlStartClassifierBehaviorActionObject::addLocalPostcondition(QObject *localPostcondition)
 {
     qmodelingelementproperty_cast<QUmlStartClassifierBehaviorAction *>(this)->addLocalPostcondition(qmodelingelementproperty_cast<QUmlConstraint *>(localPostcondition));
+    emit localPostconditionsChanged(this->localPostconditions());
 }
 
 void QUmlStartClassifierBehaviorActionObject::removeLocalPostcondition(QObject *localPostcondition)
 {
     qmodelingelementproperty_cast<QUmlStartClassifierBehaviorAction *>(this)->removeLocalPostcondition(qmodelingelementproperty_cast<QUmlConstraint *>(localPostcondition));
+    emit localPostconditionsChanged(this->localPostconditions());
 }
 
 void QUmlStartClassifierBehaviorActionObject::addLocalPrecondition(QObject *localPrecondition)
 {
     qmodelingelementproperty_cast<QUmlStartClassifierBehaviorAction *>(this)->addLocalPrecondition(qmodelingelementproperty_cast<QUmlConstraint *>(localPrecondition));
+    emit localPreconditionsChanged(this->localPreconditions());
 }
 
 void QUmlStartClassifierBehaviorActionObject::removeLocalPrecondition(QObject *localPrecondition)
 {
     qmodelingelementproperty_cast<QUmlStartClassifierBehaviorAction *>(this)->removeLocalPrecondition(qmodelingelementproperty_cast<QUmlConstraint *>(localPrecondition));
+    emit localPreconditionsChanged(this->localPreconditions());
 }
 
 void QUmlStartClassifierBehaviorActionObject::addOutput(QObject *output)
 {
     qmodelingelementproperty_cast<QUmlStartClassifierBehaviorAction *>(this)->addOutput(qmodelingelementproperty_cast<QUmlOutputPin *>(output));
+    emit outputsChanged(this->outputs());
 }
 
 void QUmlStartClassifierBehaviorActionObject::removeOutput(QObject *output)
 {
     qmodelingelementproperty_cast<QUmlStartClassifierBehaviorAction *>(this)->removeOutput(qmodelingelementproperty_cast<QUmlOutputPin *>(output));
+    emit outputsChanged(this->outputs());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [StartClassifierBehaviorAction]
@@ -596,6 +639,7 @@ void QUmlStartClassifierBehaviorActionObject::removeOutput(QObject *output)
 void QUmlStartClassifierBehaviorActionObject::setObject(QObject *object)
 {
     qmodelingelementproperty_cast<QUmlStartClassifierBehaviorAction *>(this)->setObject(qmodelingelementproperty_cast<QUmlInputPin *>(object));
+    emit objectChanged(this->object());
 }
 
 

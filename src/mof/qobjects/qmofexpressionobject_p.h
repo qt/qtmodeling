@@ -62,24 +62,24 @@ class Q_MOF_EXPORT QMofExpressionObject : public QModelingObject
     Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [Element]
-    Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
-    Q_PROPERTY(QSet<QObject *> ownedElements READ ownedElements)
-    Q_PROPERTY(QObject * owner READ owner)
+    Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments NOTIFY ownedCommentsChanged)
+    Q_PROPERTY(QSet<QObject *> ownedElements READ ownedElements NOTIFY ownedElementsChanged)
+    Q_PROPERTY(QObject * owner READ owner NOTIFY ownerChanged)
 
     // Properties [NamedElement]
-    Q_PROPERTY(QString name READ name WRITE setName)
-    Q_PROPERTY(QObject * namespace_ READ namespace_)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
+    Q_PROPERTY(QString name READ name WRITE setName NOTIFY nameChanged)
+    Q_PROPERTY(QObject * namespace_ READ namespace_ NOTIFY namespaceChanged)
+    Q_PROPERTY(QString qualifiedName READ qualifiedName NOTIFY qualifiedNameChanged STORED false)
 
     // Properties [PackageableElement]
-    Q_PROPERTY(QtMof::VisibilityKind visibility READ visibility WRITE setVisibility RESET unsetVisibility)
+    Q_PROPERTY(QtMof::VisibilityKind visibility READ visibility WRITE setVisibility NOTIFY visibilityChanged RESET unsetVisibility)
 
     // Properties [TypedElement]
-    Q_PROPERTY(QObject * type READ type WRITE setType)
+    Q_PROPERTY(QObject * type READ type WRITE setType NOTIFY typeChanged)
 
     // Properties [Expression]
-    Q_PROPERTY(QList<QObject *> operands READ operands)
-    Q_PROPERTY(QString symbol READ symbol WRITE setSymbol)
+    Q_PROPERTY(QList<QObject *> operands READ operands NOTIFY operandsChanged)
+    Q_PROPERTY(QString symbol READ symbol WRITE setSymbol NOTIFY symbolChanged)
 
 public:
     Q_INVOKABLE explicit QMofExpressionObject(QMofExpression *modelingElement);
@@ -151,6 +151,28 @@ public Q_SLOTS:
     void addOperand(QObject *operand);
     void removeOperand(QObject *operand);
     void setSymbol(QString symbol);
+
+Q_SIGNALS:
+
+    // Signals for owned attributes [Element]
+    void ownedCommentsChanged(QSet<QObject *> ownedComments);
+    void ownedElementsChanged(QSet<QObject *> ownedElements);
+    void ownerChanged(QObject *owner);
+
+    // Signals for owned attributes [NamedElement]
+    void nameChanged(QString name);
+    void namespaceChanged(QObject *namespace_);
+    void qualifiedNameChanged(QString qualifiedName);
+
+    // Signals for owned attributes [PackageableElement]
+    void visibilityChanged(QtMof::VisibilityKind visibility);
+
+    // Signals for owned attributes [TypedElement]
+    void typeChanged(QObject *type);
+
+    // Signals for owned attributes [Expression]
+    void operandsChanged(QList<QObject *> operands);
+    void symbolChanged(QString symbol);
 
 protected:
     virtual void setGroupProperties();

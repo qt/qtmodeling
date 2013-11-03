@@ -238,26 +238,31 @@ QString QUmlIntervalConstraintObject::separator() const
 void QUmlIntervalConstraintObject::addOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlIntervalConstraint *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlIntervalConstraintObject::removeOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlIntervalConstraint *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlIntervalConstraintObject::addOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlIntervalConstraint *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlIntervalConstraintObject::removeOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlIntervalConstraint *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlIntervalConstraintObject::setOwner(QObject *owner)
 {
     qmodelingelementproperty_cast<QUmlIntervalConstraint *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
+    emit ownerChanged(this->owner());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ParameterableElement]
@@ -265,11 +270,13 @@ void QUmlIntervalConstraintObject::setOwner(QObject *owner)
 void QUmlIntervalConstraintObject::setOwningTemplateParameter(QObject *owningTemplateParameter)
 {
     qmodelingelementproperty_cast<QUmlIntervalConstraint *>(this)->setOwningTemplateParameter(qmodelingelementproperty_cast<QUmlTemplateParameter *>(owningTemplateParameter));
+    emit owningTemplateParameterChanged(this->owningTemplateParameter());
 }
 
 void QUmlIntervalConstraintObject::setTemplateParameter(QObject *templateParameter)
 {
     qmodelingelementproperty_cast<QUmlIntervalConstraint *>(this)->setTemplateParameter(qmodelingelementproperty_cast<QUmlTemplateParameter *>(templateParameter));
+    emit templateParameterChanged(this->templateParameter());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [NamedElement]
@@ -277,37 +284,44 @@ void QUmlIntervalConstraintObject::setTemplateParameter(QObject *templateParamet
 void QUmlIntervalConstraintObject::addClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlIntervalConstraint *>(this)->addClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlIntervalConstraintObject::removeClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlIntervalConstraint *>(this)->removeClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlIntervalConstraintObject::setName(QString name)
 {
     qmodelingelementproperty_cast<QUmlIntervalConstraint *>(this)->setName(name);
+    emit nameChanged(this->name());
 }
 
 void QUmlIntervalConstraintObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingelementproperty_cast<QUmlIntervalConstraint *>(this)->setNameExpression(qmodelingelementproperty_cast<QUmlStringExpression *>(nameExpression));
+    emit nameExpressionChanged(this->nameExpression());
 }
 
 void QUmlIntervalConstraintObject::setNamespace(QObject *namespace_)
 {
     qmodelingelementproperty_cast<QUmlIntervalConstraint *>(this)->setNamespace(qmodelingelementproperty_cast<QUmlNamespace *>(namespace_));
+    emit namespaceChanged(this->namespace_());
 }
 
 void QUmlIntervalConstraintObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingelementproperty_cast<QUmlIntervalConstraint *>(this)->setQualifiedName(qualifiedName);
+    emit qualifiedNameChanged(this->qualifiedName());
 }
 // SLOTS FOR OWNED ATTRIBUTES [PackageableElement]
 
 void QUmlIntervalConstraintObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingelementproperty_cast<QUmlIntervalConstraint *>(this)->setVisibility(visibility);
+    emit visibilityChanged(this->visibility());
 }
 
 void QUmlIntervalConstraintObject::unsetVisibility()
@@ -322,22 +336,26 @@ void QUmlIntervalConstraintObject::unsetVisibility()
 void QUmlIntervalConstraintObject::addConstrainedElement(QObject *constrainedElement)
 {
     qmodelingelementproperty_cast<QUmlIntervalConstraint *>(this)->addConstrainedElement(qmodelingelementproperty_cast<QUmlElement *>(constrainedElement));
+    emit constrainedElementsChanged(this->constrainedElements());
 }
 
 void QUmlIntervalConstraintObject::removeConstrainedElement(QObject *constrainedElement)
 {
     qmodelingelementproperty_cast<QUmlIntervalConstraint *>(this)->removeConstrainedElement(qmodelingelementproperty_cast<QUmlElement *>(constrainedElement));
+    emit constrainedElementsChanged(this->constrainedElements());
 }
 
 void QUmlIntervalConstraintObject::setContext(QObject *context)
 {
     qmodelingelementproperty_cast<QUmlIntervalConstraint *>(this)->setContext(qmodelingelementproperty_cast<QUmlNamespace *>(context));
+    emit contextChanged(this->context());
 }
 // SLOTS FOR OWNED ATTRIBUTES [IntervalConstraint]
 
 void QUmlIntervalConstraintObject::setSpecification(QObject *specification)
 {
     qmodelingelementproperty_cast<QUmlIntervalConstraint *>(this)->setSpecification(qmodelingelementproperty_cast<QUmlInterval *>(specification));
+    emit specificationChanged(this->specification());
 }
 
 

@@ -373,26 +373,31 @@ bool QUmlOpaqueActionObject::isRedefinitionContextValid(QObject *redefined) cons
 void QUmlOpaqueActionObject::addOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlOpaqueAction *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlOpaqueActionObject::removeOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlOpaqueAction *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlOpaqueActionObject::addOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlOpaqueAction *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlOpaqueActionObject::removeOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlOpaqueAction *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlOpaqueActionObject::setOwner(QObject *owner)
 {
     qmodelingelementproperty_cast<QUmlOpaqueAction *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
+    emit ownerChanged(this->owner());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [NamedElement]
@@ -400,36 +405,43 @@ void QUmlOpaqueActionObject::setOwner(QObject *owner)
 void QUmlOpaqueActionObject::addClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlOpaqueAction *>(this)->addClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlOpaqueActionObject::removeClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlOpaqueAction *>(this)->removeClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlOpaqueActionObject::setName(QString name)
 {
     qmodelingelementproperty_cast<QUmlOpaqueAction *>(this)->setName(name);
+    emit nameChanged(this->name());
 }
 
 void QUmlOpaqueActionObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingelementproperty_cast<QUmlOpaqueAction *>(this)->setNameExpression(qmodelingelementproperty_cast<QUmlStringExpression *>(nameExpression));
+    emit nameExpressionChanged(this->nameExpression());
 }
 
 void QUmlOpaqueActionObject::setNamespace(QObject *namespace_)
 {
     qmodelingelementproperty_cast<QUmlOpaqueAction *>(this)->setNamespace(qmodelingelementproperty_cast<QUmlNamespace *>(namespace_));
+    emit namespaceChanged(this->namespace_());
 }
 
 void QUmlOpaqueActionObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingelementproperty_cast<QUmlOpaqueAction *>(this)->setQualifiedName(qualifiedName);
+    emit qualifiedNameChanged(this->qualifiedName());
 }
 
 void QUmlOpaqueActionObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingelementproperty_cast<QUmlOpaqueAction *>(this)->setVisibility(visibility);
+    emit visibilityChanged(this->visibility());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [RedefinableElement]
@@ -437,6 +449,7 @@ void QUmlOpaqueActionObject::setVisibility(QtUml::VisibilityKind visibility)
 void QUmlOpaqueActionObject::setLeaf(bool isLeaf)
 {
     qmodelingelementproperty_cast<QUmlOpaqueAction *>(this)->setLeaf(isLeaf);
+    emit isLeafChanged(this->isLeaf());
 }
 
 void QUmlOpaqueActionObject::unsetLeaf()
@@ -449,21 +462,25 @@ void QUmlOpaqueActionObject::unsetLeaf()
 void QUmlOpaqueActionObject::addRedefinedElement(QObject *redefinedElement)
 {
     qmodelingelementproperty_cast<QUmlOpaqueAction *>(this)->addRedefinedElement(qmodelingelementproperty_cast<QUmlRedefinableElement *>(redefinedElement));
+    emit redefinedElementsChanged(this->redefinedElements());
 }
 
 void QUmlOpaqueActionObject::removeRedefinedElement(QObject *redefinedElement)
 {
     qmodelingelementproperty_cast<QUmlOpaqueAction *>(this)->removeRedefinedElement(qmodelingelementproperty_cast<QUmlRedefinableElement *>(redefinedElement));
+    emit redefinedElementsChanged(this->redefinedElements());
 }
 
 void QUmlOpaqueActionObject::addRedefinitionContext(QObject *redefinitionContext)
 {
     qmodelingelementproperty_cast<QUmlOpaqueAction *>(this)->addRedefinitionContext(qmodelingelementproperty_cast<QUmlClassifier *>(redefinitionContext));
+    emit redefinitionContextsChanged(this->redefinitionContexts());
 }
 
 void QUmlOpaqueActionObject::removeRedefinitionContext(QObject *redefinitionContext)
 {
     qmodelingelementproperty_cast<QUmlOpaqueAction *>(this)->removeRedefinitionContext(qmodelingelementproperty_cast<QUmlClassifier *>(redefinitionContext));
+    emit redefinitionContextsChanged(this->redefinitionContexts());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ActivityNode]
@@ -471,71 +488,85 @@ void QUmlOpaqueActionObject::removeRedefinitionContext(QObject *redefinitionCont
 void QUmlOpaqueActionObject::setActivity(QObject *activity)
 {
     qmodelingelementproperty_cast<QUmlOpaqueAction *>(this)->setActivity(qmodelingelementproperty_cast<QUmlActivity *>(activity));
+    emit activityChanged(this->activity());
 }
 
 void QUmlOpaqueActionObject::addInGroup(QObject *inGroup)
 {
     qmodelingelementproperty_cast<QUmlOpaqueAction *>(this)->addInGroup(qmodelingelementproperty_cast<QUmlActivityGroup *>(inGroup));
+    emit inGroupsChanged(this->inGroups());
 }
 
 void QUmlOpaqueActionObject::removeInGroup(QObject *inGroup)
 {
     qmodelingelementproperty_cast<QUmlOpaqueAction *>(this)->removeInGroup(qmodelingelementproperty_cast<QUmlActivityGroup *>(inGroup));
+    emit inGroupsChanged(this->inGroups());
 }
 
 void QUmlOpaqueActionObject::addInInterruptibleRegion(QObject *inInterruptibleRegion)
 {
     qmodelingelementproperty_cast<QUmlOpaqueAction *>(this)->addInInterruptibleRegion(qmodelingelementproperty_cast<QUmlInterruptibleActivityRegion *>(inInterruptibleRegion));
+    emit inInterruptibleRegionsChanged(this->inInterruptibleRegions());
 }
 
 void QUmlOpaqueActionObject::removeInInterruptibleRegion(QObject *inInterruptibleRegion)
 {
     qmodelingelementproperty_cast<QUmlOpaqueAction *>(this)->removeInInterruptibleRegion(qmodelingelementproperty_cast<QUmlInterruptibleActivityRegion *>(inInterruptibleRegion));
+    emit inInterruptibleRegionsChanged(this->inInterruptibleRegions());
 }
 
 void QUmlOpaqueActionObject::addInPartition(QObject *inPartition)
 {
     qmodelingelementproperty_cast<QUmlOpaqueAction *>(this)->addInPartition(qmodelingelementproperty_cast<QUmlActivityPartition *>(inPartition));
+    emit inPartitionsChanged(this->inPartitions());
 }
 
 void QUmlOpaqueActionObject::removeInPartition(QObject *inPartition)
 {
     qmodelingelementproperty_cast<QUmlOpaqueAction *>(this)->removeInPartition(qmodelingelementproperty_cast<QUmlActivityPartition *>(inPartition));
+    emit inPartitionsChanged(this->inPartitions());
 }
 
 void QUmlOpaqueActionObject::setInStructuredNode(QObject *inStructuredNode)
 {
     qmodelingelementproperty_cast<QUmlOpaqueAction *>(this)->setInStructuredNode(qmodelingelementproperty_cast<QUmlStructuredActivityNode *>(inStructuredNode));
+    emit inStructuredNodeChanged(this->inStructuredNode());
 }
 
 void QUmlOpaqueActionObject::addIncoming(QObject *incoming)
 {
     qmodelingelementproperty_cast<QUmlOpaqueAction *>(this)->addIncoming(qmodelingelementproperty_cast<QUmlActivityEdge *>(incoming));
+    emit incomingsChanged(this->incomings());
 }
 
 void QUmlOpaqueActionObject::removeIncoming(QObject *incoming)
 {
     qmodelingelementproperty_cast<QUmlOpaqueAction *>(this)->removeIncoming(qmodelingelementproperty_cast<QUmlActivityEdge *>(incoming));
+    emit incomingsChanged(this->incomings());
 }
 
 void QUmlOpaqueActionObject::addOutgoing(QObject *outgoing)
 {
     qmodelingelementproperty_cast<QUmlOpaqueAction *>(this)->addOutgoing(qmodelingelementproperty_cast<QUmlActivityEdge *>(outgoing));
+    emit outgoingsChanged(this->outgoings());
 }
 
 void QUmlOpaqueActionObject::removeOutgoing(QObject *outgoing)
 {
     qmodelingelementproperty_cast<QUmlOpaqueAction *>(this)->removeOutgoing(qmodelingelementproperty_cast<QUmlActivityEdge *>(outgoing));
+    emit outgoingsChanged(this->outgoings());
 }
 
 void QUmlOpaqueActionObject::addRedefinedNode(QObject *redefinedNode)
 {
     qmodelingelementproperty_cast<QUmlOpaqueAction *>(this)->addRedefinedNode(qmodelingelementproperty_cast<QUmlActivityNode *>(redefinedNode));
+    emit redefinedNodesChanged(this->redefinedNodes());
 }
 
 void QUmlOpaqueActionObject::removeRedefinedNode(QObject *redefinedNode)
 {
     qmodelingelementproperty_cast<QUmlOpaqueAction *>(this)->removeRedefinedNode(qmodelingelementproperty_cast<QUmlActivityNode *>(redefinedNode));
+    emit redefinedNodesChanged(this->redefinedNodes());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ExecutableNode]
@@ -543,11 +574,13 @@ void QUmlOpaqueActionObject::removeRedefinedNode(QObject *redefinedNode)
 void QUmlOpaqueActionObject::addHandler(QObject *handler)
 {
     qmodelingelementproperty_cast<QUmlOpaqueAction *>(this)->addHandler(qmodelingelementproperty_cast<QUmlExceptionHandler *>(handler));
+    emit handlersChanged(this->handlers());
 }
 
 void QUmlOpaqueActionObject::removeHandler(QObject *handler)
 {
     qmodelingelementproperty_cast<QUmlOpaqueAction *>(this)->removeHandler(qmodelingelementproperty_cast<QUmlExceptionHandler *>(handler));
+    emit handlersChanged(this->handlers());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Action]
@@ -555,21 +588,25 @@ void QUmlOpaqueActionObject::removeHandler(QObject *handler)
 void QUmlOpaqueActionObject::setContext(QObject *context)
 {
     qmodelingelementproperty_cast<QUmlOpaqueAction *>(this)->setContext(qmodelingelementproperty_cast<QUmlClassifier *>(context));
+    emit contextChanged(this->context());
 }
 
 void QUmlOpaqueActionObject::addInput(QObject *input)
 {
     qmodelingelementproperty_cast<QUmlOpaqueAction *>(this)->addInput(qmodelingelementproperty_cast<QUmlInputPin *>(input));
+    emit inputsChanged(this->inputs());
 }
 
 void QUmlOpaqueActionObject::removeInput(QObject *input)
 {
     qmodelingelementproperty_cast<QUmlOpaqueAction *>(this)->removeInput(qmodelingelementproperty_cast<QUmlInputPin *>(input));
+    emit inputsChanged(this->inputs());
 }
 
 void QUmlOpaqueActionObject::setLocallyReentrant(bool isLocallyReentrant)
 {
     qmodelingelementproperty_cast<QUmlOpaqueAction *>(this)->setLocallyReentrant(isLocallyReentrant);
+    emit isLocallyReentrantChanged(this->isLocallyReentrant());
 }
 
 void QUmlOpaqueActionObject::unsetLocallyReentrant()
@@ -582,31 +619,37 @@ void QUmlOpaqueActionObject::unsetLocallyReentrant()
 void QUmlOpaqueActionObject::addLocalPostcondition(QObject *localPostcondition)
 {
     qmodelingelementproperty_cast<QUmlOpaqueAction *>(this)->addLocalPostcondition(qmodelingelementproperty_cast<QUmlConstraint *>(localPostcondition));
+    emit localPostconditionsChanged(this->localPostconditions());
 }
 
 void QUmlOpaqueActionObject::removeLocalPostcondition(QObject *localPostcondition)
 {
     qmodelingelementproperty_cast<QUmlOpaqueAction *>(this)->removeLocalPostcondition(qmodelingelementproperty_cast<QUmlConstraint *>(localPostcondition));
+    emit localPostconditionsChanged(this->localPostconditions());
 }
 
 void QUmlOpaqueActionObject::addLocalPrecondition(QObject *localPrecondition)
 {
     qmodelingelementproperty_cast<QUmlOpaqueAction *>(this)->addLocalPrecondition(qmodelingelementproperty_cast<QUmlConstraint *>(localPrecondition));
+    emit localPreconditionsChanged(this->localPreconditions());
 }
 
 void QUmlOpaqueActionObject::removeLocalPrecondition(QObject *localPrecondition)
 {
     qmodelingelementproperty_cast<QUmlOpaqueAction *>(this)->removeLocalPrecondition(qmodelingelementproperty_cast<QUmlConstraint *>(localPrecondition));
+    emit localPreconditionsChanged(this->localPreconditions());
 }
 
 void QUmlOpaqueActionObject::addOutput(QObject *output)
 {
     qmodelingelementproperty_cast<QUmlOpaqueAction *>(this)->addOutput(qmodelingelementproperty_cast<QUmlOutputPin *>(output));
+    emit outputsChanged(this->outputs());
 }
 
 void QUmlOpaqueActionObject::removeOutput(QObject *output)
 {
     qmodelingelementproperty_cast<QUmlOpaqueAction *>(this)->removeOutput(qmodelingelementproperty_cast<QUmlOutputPin *>(output));
+    emit outputsChanged(this->outputs());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [OpaqueAction]
@@ -614,41 +657,49 @@ void QUmlOpaqueActionObject::removeOutput(QObject *output)
 void QUmlOpaqueActionObject::addBody(QString  body)
 {
     qmodelingelementproperty_cast<QUmlOpaqueAction *>(this)->addBody(body);
+    emit bodiesChanged(this->bodies());
 }
 
 void QUmlOpaqueActionObject::removeBody(QString  body)
 {
     qmodelingelementproperty_cast<QUmlOpaqueAction *>(this)->removeBody(body);
+    emit bodiesChanged(this->bodies());
 }
 
 void QUmlOpaqueActionObject::addInputValue(QObject *inputValue)
 {
     qmodelingelementproperty_cast<QUmlOpaqueAction *>(this)->addInputValue(qmodelingelementproperty_cast<QUmlInputPin *>(inputValue));
+    emit inputValuesChanged(this->inputValues());
 }
 
 void QUmlOpaqueActionObject::removeInputValue(QObject *inputValue)
 {
     qmodelingelementproperty_cast<QUmlOpaqueAction *>(this)->removeInputValue(qmodelingelementproperty_cast<QUmlInputPin *>(inputValue));
+    emit inputValuesChanged(this->inputValues());
 }
 
 void QUmlOpaqueActionObject::addLanguage(QString  language)
 {
     qmodelingelementproperty_cast<QUmlOpaqueAction *>(this)->addLanguage(language);
+    emit languagesChanged(this->languages());
 }
 
 void QUmlOpaqueActionObject::removeLanguage(QString  language)
 {
     qmodelingelementproperty_cast<QUmlOpaqueAction *>(this)->removeLanguage(language);
+    emit languagesChanged(this->languages());
 }
 
 void QUmlOpaqueActionObject::addOutputValue(QObject *outputValue)
 {
     qmodelingelementproperty_cast<QUmlOpaqueAction *>(this)->addOutputValue(qmodelingelementproperty_cast<QUmlOutputPin *>(outputValue));
+    emit outputValuesChanged(this->outputValues());
 }
 
 void QUmlOpaqueActionObject::removeOutputValue(QObject *outputValue)
 {
     qmodelingelementproperty_cast<QUmlOpaqueAction *>(this)->removeOutputValue(qmodelingelementproperty_cast<QUmlOutputPin *>(outputValue));
+    emit outputValuesChanged(this->outputValues());
 }
 
 

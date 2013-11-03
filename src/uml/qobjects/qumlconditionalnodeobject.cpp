@@ -535,26 +535,31 @@ bool QUmlConditionalNodeObject::membersAreDistinguishable() const
 void QUmlConditionalNodeObject::addOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlConditionalNode *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlConditionalNodeObject::removeOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlConditionalNode *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlConditionalNodeObject::addOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlConditionalNode *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlConditionalNodeObject::removeOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlConditionalNode *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlConditionalNodeObject::setOwner(QObject *owner)
 {
     qmodelingelementproperty_cast<QUmlConditionalNode *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
+    emit ownerChanged(this->owner());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [NamedElement]
@@ -562,36 +567,43 @@ void QUmlConditionalNodeObject::setOwner(QObject *owner)
 void QUmlConditionalNodeObject::addClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlConditionalNode *>(this)->addClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlConditionalNodeObject::removeClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlConditionalNode *>(this)->removeClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlConditionalNodeObject::setName(QString name)
 {
     qmodelingelementproperty_cast<QUmlConditionalNode *>(this)->setName(name);
+    emit nameChanged(this->name());
 }
 
 void QUmlConditionalNodeObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingelementproperty_cast<QUmlConditionalNode *>(this)->setNameExpression(qmodelingelementproperty_cast<QUmlStringExpression *>(nameExpression));
+    emit nameExpressionChanged(this->nameExpression());
 }
 
 void QUmlConditionalNodeObject::setNamespace(QObject *namespace_)
 {
     qmodelingelementproperty_cast<QUmlConditionalNode *>(this)->setNamespace(qmodelingelementproperty_cast<QUmlNamespace *>(namespace_));
+    emit namespaceChanged(this->namespace_());
 }
 
 void QUmlConditionalNodeObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingelementproperty_cast<QUmlConditionalNode *>(this)->setQualifiedName(qualifiedName);
+    emit qualifiedNameChanged(this->qualifiedName());
 }
 
 void QUmlConditionalNodeObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingelementproperty_cast<QUmlConditionalNode *>(this)->setVisibility(visibility);
+    emit visibilityChanged(this->visibility());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [RedefinableElement]
@@ -599,6 +611,7 @@ void QUmlConditionalNodeObject::setVisibility(QtUml::VisibilityKind visibility)
 void QUmlConditionalNodeObject::setLeaf(bool isLeaf)
 {
     qmodelingelementproperty_cast<QUmlConditionalNode *>(this)->setLeaf(isLeaf);
+    emit isLeafChanged(this->isLeaf());
 }
 
 void QUmlConditionalNodeObject::unsetLeaf()
@@ -611,21 +624,25 @@ void QUmlConditionalNodeObject::unsetLeaf()
 void QUmlConditionalNodeObject::addRedefinedElement(QObject *redefinedElement)
 {
     qmodelingelementproperty_cast<QUmlConditionalNode *>(this)->addRedefinedElement(qmodelingelementproperty_cast<QUmlRedefinableElement *>(redefinedElement));
+    emit redefinedElementsChanged(this->redefinedElements());
 }
 
 void QUmlConditionalNodeObject::removeRedefinedElement(QObject *redefinedElement)
 {
     qmodelingelementproperty_cast<QUmlConditionalNode *>(this)->removeRedefinedElement(qmodelingelementproperty_cast<QUmlRedefinableElement *>(redefinedElement));
+    emit redefinedElementsChanged(this->redefinedElements());
 }
 
 void QUmlConditionalNodeObject::addRedefinitionContext(QObject *redefinitionContext)
 {
     qmodelingelementproperty_cast<QUmlConditionalNode *>(this)->addRedefinitionContext(qmodelingelementproperty_cast<QUmlClassifier *>(redefinitionContext));
+    emit redefinitionContextsChanged(this->redefinitionContexts());
 }
 
 void QUmlConditionalNodeObject::removeRedefinitionContext(QObject *redefinitionContext)
 {
     qmodelingelementproperty_cast<QUmlConditionalNode *>(this)->removeRedefinitionContext(qmodelingelementproperty_cast<QUmlClassifier *>(redefinitionContext));
+    emit redefinitionContextsChanged(this->redefinitionContexts());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ActivityNode]
@@ -633,66 +650,79 @@ void QUmlConditionalNodeObject::removeRedefinitionContext(QObject *redefinitionC
 void QUmlConditionalNodeObject::addInGroup(QObject *inGroup)
 {
     qmodelingelementproperty_cast<QUmlConditionalNode *>(this)->addInGroup(qmodelingelementproperty_cast<QUmlActivityGroup *>(inGroup));
+    emit inGroupsChanged(this->inGroups());
 }
 
 void QUmlConditionalNodeObject::removeInGroup(QObject *inGroup)
 {
     qmodelingelementproperty_cast<QUmlConditionalNode *>(this)->removeInGroup(qmodelingelementproperty_cast<QUmlActivityGroup *>(inGroup));
+    emit inGroupsChanged(this->inGroups());
 }
 
 void QUmlConditionalNodeObject::addInInterruptibleRegion(QObject *inInterruptibleRegion)
 {
     qmodelingelementproperty_cast<QUmlConditionalNode *>(this)->addInInterruptibleRegion(qmodelingelementproperty_cast<QUmlInterruptibleActivityRegion *>(inInterruptibleRegion));
+    emit inInterruptibleRegionsChanged(this->inInterruptibleRegions());
 }
 
 void QUmlConditionalNodeObject::removeInInterruptibleRegion(QObject *inInterruptibleRegion)
 {
     qmodelingelementproperty_cast<QUmlConditionalNode *>(this)->removeInInterruptibleRegion(qmodelingelementproperty_cast<QUmlInterruptibleActivityRegion *>(inInterruptibleRegion));
+    emit inInterruptibleRegionsChanged(this->inInterruptibleRegions());
 }
 
 void QUmlConditionalNodeObject::addInPartition(QObject *inPartition)
 {
     qmodelingelementproperty_cast<QUmlConditionalNode *>(this)->addInPartition(qmodelingelementproperty_cast<QUmlActivityPartition *>(inPartition));
+    emit inPartitionsChanged(this->inPartitions());
 }
 
 void QUmlConditionalNodeObject::removeInPartition(QObject *inPartition)
 {
     qmodelingelementproperty_cast<QUmlConditionalNode *>(this)->removeInPartition(qmodelingelementproperty_cast<QUmlActivityPartition *>(inPartition));
+    emit inPartitionsChanged(this->inPartitions());
 }
 
 void QUmlConditionalNodeObject::setInStructuredNode(QObject *inStructuredNode)
 {
     qmodelingelementproperty_cast<QUmlConditionalNode *>(this)->setInStructuredNode(qmodelingelementproperty_cast<QUmlStructuredActivityNode *>(inStructuredNode));
+    emit inStructuredNodeChanged(this->inStructuredNode());
 }
 
 void QUmlConditionalNodeObject::addIncoming(QObject *incoming)
 {
     qmodelingelementproperty_cast<QUmlConditionalNode *>(this)->addIncoming(qmodelingelementproperty_cast<QUmlActivityEdge *>(incoming));
+    emit incomingsChanged(this->incomings());
 }
 
 void QUmlConditionalNodeObject::removeIncoming(QObject *incoming)
 {
     qmodelingelementproperty_cast<QUmlConditionalNode *>(this)->removeIncoming(qmodelingelementproperty_cast<QUmlActivityEdge *>(incoming));
+    emit incomingsChanged(this->incomings());
 }
 
 void QUmlConditionalNodeObject::addOutgoing(QObject *outgoing)
 {
     qmodelingelementproperty_cast<QUmlConditionalNode *>(this)->addOutgoing(qmodelingelementproperty_cast<QUmlActivityEdge *>(outgoing));
+    emit outgoingsChanged(this->outgoings());
 }
 
 void QUmlConditionalNodeObject::removeOutgoing(QObject *outgoing)
 {
     qmodelingelementproperty_cast<QUmlConditionalNode *>(this)->removeOutgoing(qmodelingelementproperty_cast<QUmlActivityEdge *>(outgoing));
+    emit outgoingsChanged(this->outgoings());
 }
 
 void QUmlConditionalNodeObject::addRedefinedNode(QObject *redefinedNode)
 {
     qmodelingelementproperty_cast<QUmlConditionalNode *>(this)->addRedefinedNode(qmodelingelementproperty_cast<QUmlActivityNode *>(redefinedNode));
+    emit redefinedNodesChanged(this->redefinedNodes());
 }
 
 void QUmlConditionalNodeObject::removeRedefinedNode(QObject *redefinedNode)
 {
     qmodelingelementproperty_cast<QUmlConditionalNode *>(this)->removeRedefinedNode(qmodelingelementproperty_cast<QUmlActivityNode *>(redefinedNode));
+    emit redefinedNodesChanged(this->redefinedNodes());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ExecutableNode]
@@ -700,11 +730,13 @@ void QUmlConditionalNodeObject::removeRedefinedNode(QObject *redefinedNode)
 void QUmlConditionalNodeObject::addHandler(QObject *handler)
 {
     qmodelingelementproperty_cast<QUmlConditionalNode *>(this)->addHandler(qmodelingelementproperty_cast<QUmlExceptionHandler *>(handler));
+    emit handlersChanged(this->handlers());
 }
 
 void QUmlConditionalNodeObject::removeHandler(QObject *handler)
 {
     qmodelingelementproperty_cast<QUmlConditionalNode *>(this)->removeHandler(qmodelingelementproperty_cast<QUmlExceptionHandler *>(handler));
+    emit handlersChanged(this->handlers());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Action]
@@ -712,21 +744,25 @@ void QUmlConditionalNodeObject::removeHandler(QObject *handler)
 void QUmlConditionalNodeObject::setContext(QObject *context)
 {
     qmodelingelementproperty_cast<QUmlConditionalNode *>(this)->setContext(qmodelingelementproperty_cast<QUmlClassifier *>(context));
+    emit contextChanged(this->context());
 }
 
 void QUmlConditionalNodeObject::addInput(QObject *input)
 {
     qmodelingelementproperty_cast<QUmlConditionalNode *>(this)->addInput(qmodelingelementproperty_cast<QUmlInputPin *>(input));
+    emit inputsChanged(this->inputs());
 }
 
 void QUmlConditionalNodeObject::removeInput(QObject *input)
 {
     qmodelingelementproperty_cast<QUmlConditionalNode *>(this)->removeInput(qmodelingelementproperty_cast<QUmlInputPin *>(input));
+    emit inputsChanged(this->inputs());
 }
 
 void QUmlConditionalNodeObject::setLocallyReentrant(bool isLocallyReentrant)
 {
     qmodelingelementproperty_cast<QUmlConditionalNode *>(this)->setLocallyReentrant(isLocallyReentrant);
+    emit isLocallyReentrantChanged(this->isLocallyReentrant());
 }
 
 void QUmlConditionalNodeObject::unsetLocallyReentrant()
@@ -739,31 +775,37 @@ void QUmlConditionalNodeObject::unsetLocallyReentrant()
 void QUmlConditionalNodeObject::addLocalPostcondition(QObject *localPostcondition)
 {
     qmodelingelementproperty_cast<QUmlConditionalNode *>(this)->addLocalPostcondition(qmodelingelementproperty_cast<QUmlConstraint *>(localPostcondition));
+    emit localPostconditionsChanged(this->localPostconditions());
 }
 
 void QUmlConditionalNodeObject::removeLocalPostcondition(QObject *localPostcondition)
 {
     qmodelingelementproperty_cast<QUmlConditionalNode *>(this)->removeLocalPostcondition(qmodelingelementproperty_cast<QUmlConstraint *>(localPostcondition));
+    emit localPostconditionsChanged(this->localPostconditions());
 }
 
 void QUmlConditionalNodeObject::addLocalPrecondition(QObject *localPrecondition)
 {
     qmodelingelementproperty_cast<QUmlConditionalNode *>(this)->addLocalPrecondition(qmodelingelementproperty_cast<QUmlConstraint *>(localPrecondition));
+    emit localPreconditionsChanged(this->localPreconditions());
 }
 
 void QUmlConditionalNodeObject::removeLocalPrecondition(QObject *localPrecondition)
 {
     qmodelingelementproperty_cast<QUmlConditionalNode *>(this)->removeLocalPrecondition(qmodelingelementproperty_cast<QUmlConstraint *>(localPrecondition));
+    emit localPreconditionsChanged(this->localPreconditions());
 }
 
 void QUmlConditionalNodeObject::addOutput(QObject *output)
 {
     qmodelingelementproperty_cast<QUmlConditionalNode *>(this)->addOutput(qmodelingelementproperty_cast<QUmlOutputPin *>(output));
+    emit outputsChanged(this->outputs());
 }
 
 void QUmlConditionalNodeObject::removeOutput(QObject *output)
 {
     qmodelingelementproperty_cast<QUmlConditionalNode *>(this)->removeOutput(qmodelingelementproperty_cast<QUmlOutputPin *>(output));
+    emit outputsChanged(this->outputs());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Namespace]
@@ -771,61 +813,73 @@ void QUmlConditionalNodeObject::removeOutput(QObject *output)
 void QUmlConditionalNodeObject::addElementImport(QObject *elementImport)
 {
     qmodelingelementproperty_cast<QUmlConditionalNode *>(this)->addElementImport(qmodelingelementproperty_cast<QUmlElementImport *>(elementImport));
+    emit elementImportsChanged(this->elementImports());
 }
 
 void QUmlConditionalNodeObject::removeElementImport(QObject *elementImport)
 {
     qmodelingelementproperty_cast<QUmlConditionalNode *>(this)->removeElementImport(qmodelingelementproperty_cast<QUmlElementImport *>(elementImport));
+    emit elementImportsChanged(this->elementImports());
 }
 
 void QUmlConditionalNodeObject::addImportedMember(QObject *importedMember)
 {
     qmodelingelementproperty_cast<QUmlConditionalNode *>(this)->addImportedMember(qmodelingelementproperty_cast<QUmlPackageableElement *>(importedMember));
+    emit importedMembersChanged(this->importedMembers());
 }
 
 void QUmlConditionalNodeObject::removeImportedMember(QObject *importedMember)
 {
     qmodelingelementproperty_cast<QUmlConditionalNode *>(this)->removeImportedMember(qmodelingelementproperty_cast<QUmlPackageableElement *>(importedMember));
+    emit importedMembersChanged(this->importedMembers());
 }
 
 void QUmlConditionalNodeObject::addMember(QObject *member)
 {
     qmodelingelementproperty_cast<QUmlConditionalNode *>(this)->addMember(qmodelingelementproperty_cast<QUmlNamedElement *>(member));
+    emit membersChanged(this->members());
 }
 
 void QUmlConditionalNodeObject::removeMember(QObject *member)
 {
     qmodelingelementproperty_cast<QUmlConditionalNode *>(this)->removeMember(qmodelingelementproperty_cast<QUmlNamedElement *>(member));
+    emit membersChanged(this->members());
 }
 
 void QUmlConditionalNodeObject::addOwnedMember(QObject *ownedMember)
 {
     qmodelingelementproperty_cast<QUmlConditionalNode *>(this)->addOwnedMember(qmodelingelementproperty_cast<QUmlNamedElement *>(ownedMember));
+    emit ownedMembersChanged(this->ownedMembers());
 }
 
 void QUmlConditionalNodeObject::removeOwnedMember(QObject *ownedMember)
 {
     qmodelingelementproperty_cast<QUmlConditionalNode *>(this)->removeOwnedMember(qmodelingelementproperty_cast<QUmlNamedElement *>(ownedMember));
+    emit ownedMembersChanged(this->ownedMembers());
 }
 
 void QUmlConditionalNodeObject::addOwnedRule(QObject *ownedRule)
 {
     qmodelingelementproperty_cast<QUmlConditionalNode *>(this)->addOwnedRule(qmodelingelementproperty_cast<QUmlConstraint *>(ownedRule));
+    emit ownedRulesChanged(this->ownedRules());
 }
 
 void QUmlConditionalNodeObject::removeOwnedRule(QObject *ownedRule)
 {
     qmodelingelementproperty_cast<QUmlConditionalNode *>(this)->removeOwnedRule(qmodelingelementproperty_cast<QUmlConstraint *>(ownedRule));
+    emit ownedRulesChanged(this->ownedRules());
 }
 
 void QUmlConditionalNodeObject::addPackageImport(QObject *packageImport)
 {
     qmodelingelementproperty_cast<QUmlConditionalNode *>(this)->addPackageImport(qmodelingelementproperty_cast<QUmlPackageImport *>(packageImport));
+    emit packageImportsChanged(this->packageImports());
 }
 
 void QUmlConditionalNodeObject::removePackageImport(QObject *packageImport)
 {
     qmodelingelementproperty_cast<QUmlConditionalNode *>(this)->removePackageImport(qmodelingelementproperty_cast<QUmlPackageImport *>(packageImport));
+    emit packageImportsChanged(this->packageImports());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ActivityGroup]
@@ -833,36 +887,43 @@ void QUmlConditionalNodeObject::removePackageImport(QObject *packageImport)
 void QUmlConditionalNodeObject::addContainedEdge(QObject *containedEdge)
 {
     qmodelingelementproperty_cast<QUmlConditionalNode *>(this)->addContainedEdge(qmodelingelementproperty_cast<QUmlActivityEdge *>(containedEdge));
+    emit containedEdgesChanged(this->containedEdges());
 }
 
 void QUmlConditionalNodeObject::removeContainedEdge(QObject *containedEdge)
 {
     qmodelingelementproperty_cast<QUmlConditionalNode *>(this)->removeContainedEdge(qmodelingelementproperty_cast<QUmlActivityEdge *>(containedEdge));
+    emit containedEdgesChanged(this->containedEdges());
 }
 
 void QUmlConditionalNodeObject::addContainedNode(QObject *containedNode)
 {
     qmodelingelementproperty_cast<QUmlConditionalNode *>(this)->addContainedNode(qmodelingelementproperty_cast<QUmlActivityNode *>(containedNode));
+    emit containedNodesChanged(this->containedNodes());
 }
 
 void QUmlConditionalNodeObject::removeContainedNode(QObject *containedNode)
 {
     qmodelingelementproperty_cast<QUmlConditionalNode *>(this)->removeContainedNode(qmodelingelementproperty_cast<QUmlActivityNode *>(containedNode));
+    emit containedNodesChanged(this->containedNodes());
 }
 
 void QUmlConditionalNodeObject::addSubgroup(QObject *subgroup)
 {
     qmodelingelementproperty_cast<QUmlConditionalNode *>(this)->addSubgroup(qmodelingelementproperty_cast<QUmlActivityGroup *>(subgroup));
+    emit subgroupsChanged(this->subgroups());
 }
 
 void QUmlConditionalNodeObject::removeSubgroup(QObject *subgroup)
 {
     qmodelingelementproperty_cast<QUmlConditionalNode *>(this)->removeSubgroup(qmodelingelementproperty_cast<QUmlActivityGroup *>(subgroup));
+    emit subgroupsChanged(this->subgroups());
 }
 
 void QUmlConditionalNodeObject::setSuperGroup(QObject *superGroup)
 {
     qmodelingelementproperty_cast<QUmlConditionalNode *>(this)->setSuperGroup(qmodelingelementproperty_cast<QUmlActivityGroup *>(superGroup));
+    emit superGroupChanged(this->superGroup());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [StructuredActivityNode]
@@ -870,21 +931,25 @@ void QUmlConditionalNodeObject::setSuperGroup(QObject *superGroup)
 void QUmlConditionalNodeObject::setActivity(QObject *activity)
 {
     qmodelingelementproperty_cast<QUmlConditionalNode *>(this)->setActivity(qmodelingelementproperty_cast<QUmlActivity *>(activity));
+    emit activityChanged(this->activity());
 }
 
 void QUmlConditionalNodeObject::addEdge(QObject *edge)
 {
     qmodelingelementproperty_cast<QUmlConditionalNode *>(this)->addEdge(qmodelingelementproperty_cast<QUmlActivityEdge *>(edge));
+    emit edgesChanged(this->edges());
 }
 
 void QUmlConditionalNodeObject::removeEdge(QObject *edge)
 {
     qmodelingelementproperty_cast<QUmlConditionalNode *>(this)->removeEdge(qmodelingelementproperty_cast<QUmlActivityEdge *>(edge));
+    emit edgesChanged(this->edges());
 }
 
 void QUmlConditionalNodeObject::setMustIsolate(bool mustIsolate)
 {
     qmodelingelementproperty_cast<QUmlConditionalNode *>(this)->setMustIsolate(mustIsolate);
+    emit mustIsolateChanged(this->mustIsolate());
 }
 
 void QUmlConditionalNodeObject::unsetMustIsolate()
@@ -897,31 +962,37 @@ void QUmlConditionalNodeObject::unsetMustIsolate()
 void QUmlConditionalNodeObject::addNode(QObject *node)
 {
     qmodelingelementproperty_cast<QUmlConditionalNode *>(this)->addNode(qmodelingelementproperty_cast<QUmlActivityNode *>(node));
+    emit nodesChanged(this->nodes());
 }
 
 void QUmlConditionalNodeObject::removeNode(QObject *node)
 {
     qmodelingelementproperty_cast<QUmlConditionalNode *>(this)->removeNode(qmodelingelementproperty_cast<QUmlActivityNode *>(node));
+    emit nodesChanged(this->nodes());
 }
 
 void QUmlConditionalNodeObject::addStructuredNodeInput(QObject *structuredNodeInput)
 {
     qmodelingelementproperty_cast<QUmlConditionalNode *>(this)->addStructuredNodeInput(qmodelingelementproperty_cast<QUmlInputPin *>(structuredNodeInput));
+    emit structuredNodeInputsChanged(this->structuredNodeInputs());
 }
 
 void QUmlConditionalNodeObject::removeStructuredNodeInput(QObject *structuredNodeInput)
 {
     qmodelingelementproperty_cast<QUmlConditionalNode *>(this)->removeStructuredNodeInput(qmodelingelementproperty_cast<QUmlInputPin *>(structuredNodeInput));
+    emit structuredNodeInputsChanged(this->structuredNodeInputs());
 }
 
 void QUmlConditionalNodeObject::addVariable(QObject *variable)
 {
     qmodelingelementproperty_cast<QUmlConditionalNode *>(this)->addVariable(qmodelingelementproperty_cast<QUmlVariable *>(variable));
+    emit variablesChanged(this->variables());
 }
 
 void QUmlConditionalNodeObject::removeVariable(QObject *variable)
 {
     qmodelingelementproperty_cast<QUmlConditionalNode *>(this)->removeVariable(qmodelingelementproperty_cast<QUmlVariable *>(variable));
+    emit variablesChanged(this->variables());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ConditionalNode]
@@ -929,16 +1000,19 @@ void QUmlConditionalNodeObject::removeVariable(QObject *variable)
 void QUmlConditionalNodeObject::addClause(QObject *clause)
 {
     qmodelingelementproperty_cast<QUmlConditionalNode *>(this)->addClause(qmodelingelementproperty_cast<QUmlClause *>(clause));
+    emit clausesChanged(this->clauses());
 }
 
 void QUmlConditionalNodeObject::removeClause(QObject *clause)
 {
     qmodelingelementproperty_cast<QUmlConditionalNode *>(this)->removeClause(qmodelingelementproperty_cast<QUmlClause *>(clause));
+    emit clausesChanged(this->clauses());
 }
 
 void QUmlConditionalNodeObject::setAssured(bool isAssured)
 {
     qmodelingelementproperty_cast<QUmlConditionalNode *>(this)->setAssured(isAssured);
+    emit isAssuredChanged(this->isAssured());
 }
 
 void QUmlConditionalNodeObject::unsetAssured()
@@ -951,6 +1025,7 @@ void QUmlConditionalNodeObject::unsetAssured()
 void QUmlConditionalNodeObject::setDeterminate(bool isDeterminate)
 {
     qmodelingelementproperty_cast<QUmlConditionalNode *>(this)->setDeterminate(isDeterminate);
+    emit isDeterminateChanged(this->isDeterminate());
 }
 
 void QUmlConditionalNodeObject::unsetDeterminate()
@@ -963,11 +1038,13 @@ void QUmlConditionalNodeObject::unsetDeterminate()
 void QUmlConditionalNodeObject::addResult(QObject *result)
 {
     qmodelingelementproperty_cast<QUmlConditionalNode *>(this)->addResult(qmodelingelementproperty_cast<QUmlOutputPin *>(result));
+    emit resultsChanged(this->results());
 }
 
 void QUmlConditionalNodeObject::removeResult(QObject *result)
 {
     qmodelingelementproperty_cast<QUmlConditionalNode *>(this)->removeResult(qmodelingelementproperty_cast<QUmlOutputPin *>(result));
+    emit resultsChanged(this->results());
 }
 
 

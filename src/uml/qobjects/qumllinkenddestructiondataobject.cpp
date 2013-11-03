@@ -144,26 +144,31 @@ bool QUmlLinkEndDestructionDataObject::mustBeOwned() const
 void QUmlLinkEndDestructionDataObject::addOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlLinkEndDestructionData *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlLinkEndDestructionDataObject::removeOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlLinkEndDestructionData *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlLinkEndDestructionDataObject::addOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlLinkEndDestructionData *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlLinkEndDestructionDataObject::removeOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlLinkEndDestructionData *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlLinkEndDestructionDataObject::setOwner(QObject *owner)
 {
     qmodelingelementproperty_cast<QUmlLinkEndDestructionData *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
+    emit ownerChanged(this->owner());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [LinkEndData]
@@ -171,21 +176,25 @@ void QUmlLinkEndDestructionDataObject::setOwner(QObject *owner)
 void QUmlLinkEndDestructionDataObject::setEnd(QObject *end)
 {
     qmodelingelementproperty_cast<QUmlLinkEndDestructionData *>(this)->setEnd(qmodelingelementproperty_cast<QUmlProperty *>(end));
+    emit endChanged(this->end());
 }
 
 void QUmlLinkEndDestructionDataObject::addQualifier(QObject *qualifier)
 {
     qmodelingelementproperty_cast<QUmlLinkEndDestructionData *>(this)->addQualifier(qmodelingelementproperty_cast<QUmlQualifierValue *>(qualifier));
+    emit qualifiersChanged(this->qualifiers());
 }
 
 void QUmlLinkEndDestructionDataObject::removeQualifier(QObject *qualifier)
 {
     qmodelingelementproperty_cast<QUmlLinkEndDestructionData *>(this)->removeQualifier(qmodelingelementproperty_cast<QUmlQualifierValue *>(qualifier));
+    emit qualifiersChanged(this->qualifiers());
 }
 
 void QUmlLinkEndDestructionDataObject::setValue(QObject *value)
 {
     qmodelingelementproperty_cast<QUmlLinkEndDestructionData *>(this)->setValue(qmodelingelementproperty_cast<QUmlInputPin *>(value));
+    emit valueChanged(this->value());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [LinkEndDestructionData]
@@ -193,11 +202,13 @@ void QUmlLinkEndDestructionDataObject::setValue(QObject *value)
 void QUmlLinkEndDestructionDataObject::setDestroyAt(QObject *destroyAt)
 {
     qmodelingelementproperty_cast<QUmlLinkEndDestructionData *>(this)->setDestroyAt(qmodelingelementproperty_cast<QUmlInputPin *>(destroyAt));
+    emit destroyAtChanged(this->destroyAt());
 }
 
 void QUmlLinkEndDestructionDataObject::setDestroyDuplicates(bool isDestroyDuplicates)
 {
     qmodelingelementproperty_cast<QUmlLinkEndDestructionData *>(this)->setDestroyDuplicates(isDestroyDuplicates);
+    emit isDestroyDuplicatesChanged(this->isDestroyDuplicates());
 }
 
 void QUmlLinkEndDestructionDataObject::unsetDestroyDuplicates()

@@ -241,26 +241,31 @@ QObject *QUmlConnectionPointReferenceObject::containingStateMachine() const
 void QUmlConnectionPointReferenceObject::addOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlConnectionPointReference *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlConnectionPointReferenceObject::removeOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlConnectionPointReference *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlConnectionPointReferenceObject::addOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlConnectionPointReference *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlConnectionPointReferenceObject::removeOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlConnectionPointReference *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlConnectionPointReferenceObject::setOwner(QObject *owner)
 {
     qmodelingelementproperty_cast<QUmlConnectionPointReference *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
+    emit ownerChanged(this->owner());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [NamedElement]
@@ -268,36 +273,43 @@ void QUmlConnectionPointReferenceObject::setOwner(QObject *owner)
 void QUmlConnectionPointReferenceObject::addClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlConnectionPointReference *>(this)->addClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlConnectionPointReferenceObject::removeClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlConnectionPointReference *>(this)->removeClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlConnectionPointReferenceObject::setName(QString name)
 {
     qmodelingelementproperty_cast<QUmlConnectionPointReference *>(this)->setName(name);
+    emit nameChanged(this->name());
 }
 
 void QUmlConnectionPointReferenceObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingelementproperty_cast<QUmlConnectionPointReference *>(this)->setNameExpression(qmodelingelementproperty_cast<QUmlStringExpression *>(nameExpression));
+    emit nameExpressionChanged(this->nameExpression());
 }
 
 void QUmlConnectionPointReferenceObject::setNamespace(QObject *namespace_)
 {
     qmodelingelementproperty_cast<QUmlConnectionPointReference *>(this)->setNamespace(qmodelingelementproperty_cast<QUmlNamespace *>(namespace_));
+    emit namespaceChanged(this->namespace_());
 }
 
 void QUmlConnectionPointReferenceObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingelementproperty_cast<QUmlConnectionPointReference *>(this)->setQualifiedName(qualifiedName);
+    emit qualifiedNameChanged(this->qualifiedName());
 }
 
 void QUmlConnectionPointReferenceObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingelementproperty_cast<QUmlConnectionPointReference *>(this)->setVisibility(visibility);
+    emit visibilityChanged(this->visibility());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Vertex]
@@ -305,26 +317,31 @@ void QUmlConnectionPointReferenceObject::setVisibility(QtUml::VisibilityKind vis
 void QUmlConnectionPointReferenceObject::setContainer(QObject *container)
 {
     qmodelingelementproperty_cast<QUmlConnectionPointReference *>(this)->setContainer(qmodelingelementproperty_cast<QUmlRegion *>(container));
+    emit containerChanged(this->container());
 }
 
 void QUmlConnectionPointReferenceObject::addIncoming(QObject *incoming)
 {
     qmodelingelementproperty_cast<QUmlConnectionPointReference *>(this)->addIncoming(qmodelingelementproperty_cast<QUmlTransition *>(incoming));
+    emit incomingsChanged(this->incomings());
 }
 
 void QUmlConnectionPointReferenceObject::removeIncoming(QObject *incoming)
 {
     qmodelingelementproperty_cast<QUmlConnectionPointReference *>(this)->removeIncoming(qmodelingelementproperty_cast<QUmlTransition *>(incoming));
+    emit incomingsChanged(this->incomings());
 }
 
 void QUmlConnectionPointReferenceObject::addOutgoing(QObject *outgoing)
 {
     qmodelingelementproperty_cast<QUmlConnectionPointReference *>(this)->addOutgoing(qmodelingelementproperty_cast<QUmlTransition *>(outgoing));
+    emit outgoingsChanged(this->outgoings());
 }
 
 void QUmlConnectionPointReferenceObject::removeOutgoing(QObject *outgoing)
 {
     qmodelingelementproperty_cast<QUmlConnectionPointReference *>(this)->removeOutgoing(qmodelingelementproperty_cast<QUmlTransition *>(outgoing));
+    emit outgoingsChanged(this->outgoings());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ConnectionPointReference]
@@ -332,26 +349,31 @@ void QUmlConnectionPointReferenceObject::removeOutgoing(QObject *outgoing)
 void QUmlConnectionPointReferenceObject::addEntry(QObject *entry)
 {
     qmodelingelementproperty_cast<QUmlConnectionPointReference *>(this)->addEntry(qmodelingelementproperty_cast<QUmlPseudostate *>(entry));
+    emit entriesChanged(this->entries());
 }
 
 void QUmlConnectionPointReferenceObject::removeEntry(QObject *entry)
 {
     qmodelingelementproperty_cast<QUmlConnectionPointReference *>(this)->removeEntry(qmodelingelementproperty_cast<QUmlPseudostate *>(entry));
+    emit entriesChanged(this->entries());
 }
 
 void QUmlConnectionPointReferenceObject::addExit(QObject *exit)
 {
     qmodelingelementproperty_cast<QUmlConnectionPointReference *>(this)->addExit(qmodelingelementproperty_cast<QUmlPseudostate *>(exit));
+    emit exitsChanged(this->exits());
 }
 
 void QUmlConnectionPointReferenceObject::removeExit(QObject *exit)
 {
     qmodelingelementproperty_cast<QUmlConnectionPointReference *>(this)->removeExit(qmodelingelementproperty_cast<QUmlPseudostate *>(exit));
+    emit exitsChanged(this->exits());
 }
 
 void QUmlConnectionPointReferenceObject::setState(QObject *state)
 {
     qmodelingelementproperty_cast<QUmlConnectionPointReference *>(this)->setState(qmodelingelementproperty_cast<QUmlState *>(state));
+    emit stateChanged(this->state());
 }
 
 

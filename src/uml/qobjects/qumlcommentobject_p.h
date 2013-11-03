@@ -60,13 +60,13 @@ class Q_UML_EXPORT QUmlCommentObject : public QModelingObject
     Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [Element]
-    Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
-    Q_PROPERTY(QSet<QObject *> ownedElements READ ownedElements)
-    Q_PROPERTY(QObject * owner READ owner)
+    Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments NOTIFY ownedCommentsChanged)
+    Q_PROPERTY(QSet<QObject *> ownedElements READ ownedElements NOTIFY ownedElementsChanged)
+    Q_PROPERTY(QObject * owner READ owner NOTIFY ownerChanged)
 
     // Properties [Comment]
-    Q_PROPERTY(QSet<QObject *> annotatedElements READ annotatedElements)
-    Q_PROPERTY(QString body READ body WRITE setBody)
+    Q_PROPERTY(QSet<QObject *> annotatedElements READ annotatedElements NOTIFY annotatedElementsChanged)
+    Q_PROPERTY(QString body READ body WRITE setBody NOTIFY bodyChanged)
 
 public:
     Q_INVOKABLE explicit QUmlCommentObject(QUmlComment *modelingElement);
@@ -97,6 +97,17 @@ public Q_SLOTS:
     void addAnnotatedElement(QObject *annotatedElement);
     void removeAnnotatedElement(QObject *annotatedElement);
     void setBody(QString body);
+
+Q_SIGNALS:
+
+    // Signals for owned attributes [Element]
+    void ownedCommentsChanged(QSet<QObject *> ownedComments);
+    void ownedElementsChanged(QSet<QObject *> ownedElements);
+    void ownerChanged(QObject *owner);
+
+    // Signals for owned attributes [Comment]
+    void annotatedElementsChanged(QSet<QObject *> annotatedElements);
+    void bodyChanged(QString body);
 
 protected:
     virtual void setGroupProperties();

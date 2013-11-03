@@ -219,26 +219,31 @@ QString QUmlSignalEventObject::separator() const
 void QUmlSignalEventObject::addOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlSignalEvent *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlSignalEventObject::removeOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlSignalEvent *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlSignalEventObject::addOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlSignalEvent *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlSignalEventObject::removeOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlSignalEvent *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlSignalEventObject::setOwner(QObject *owner)
 {
     qmodelingelementproperty_cast<QUmlSignalEvent *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
+    emit ownerChanged(this->owner());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ParameterableElement]
@@ -246,11 +251,13 @@ void QUmlSignalEventObject::setOwner(QObject *owner)
 void QUmlSignalEventObject::setOwningTemplateParameter(QObject *owningTemplateParameter)
 {
     qmodelingelementproperty_cast<QUmlSignalEvent *>(this)->setOwningTemplateParameter(qmodelingelementproperty_cast<QUmlTemplateParameter *>(owningTemplateParameter));
+    emit owningTemplateParameterChanged(this->owningTemplateParameter());
 }
 
 void QUmlSignalEventObject::setTemplateParameter(QObject *templateParameter)
 {
     qmodelingelementproperty_cast<QUmlSignalEvent *>(this)->setTemplateParameter(qmodelingelementproperty_cast<QUmlTemplateParameter *>(templateParameter));
+    emit templateParameterChanged(this->templateParameter());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [NamedElement]
@@ -258,37 +265,44 @@ void QUmlSignalEventObject::setTemplateParameter(QObject *templateParameter)
 void QUmlSignalEventObject::addClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlSignalEvent *>(this)->addClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlSignalEventObject::removeClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlSignalEvent *>(this)->removeClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlSignalEventObject::setName(QString name)
 {
     qmodelingelementproperty_cast<QUmlSignalEvent *>(this)->setName(name);
+    emit nameChanged(this->name());
 }
 
 void QUmlSignalEventObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingelementproperty_cast<QUmlSignalEvent *>(this)->setNameExpression(qmodelingelementproperty_cast<QUmlStringExpression *>(nameExpression));
+    emit nameExpressionChanged(this->nameExpression());
 }
 
 void QUmlSignalEventObject::setNamespace(QObject *namespace_)
 {
     qmodelingelementproperty_cast<QUmlSignalEvent *>(this)->setNamespace(qmodelingelementproperty_cast<QUmlNamespace *>(namespace_));
+    emit namespaceChanged(this->namespace_());
 }
 
 void QUmlSignalEventObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingelementproperty_cast<QUmlSignalEvent *>(this)->setQualifiedName(qualifiedName);
+    emit qualifiedNameChanged(this->qualifiedName());
 }
 // SLOTS FOR OWNED ATTRIBUTES [PackageableElement]
 
 void QUmlSignalEventObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingelementproperty_cast<QUmlSignalEvent *>(this)->setVisibility(visibility);
+    emit visibilityChanged(this->visibility());
 }
 
 void QUmlSignalEventObject::unsetVisibility()
@@ -303,6 +317,7 @@ void QUmlSignalEventObject::unsetVisibility()
 void QUmlSignalEventObject::setSignal(QObject *signal)
 {
     qmodelingelementproperty_cast<QUmlSignalEvent *>(this)->setSignal(qmodelingelementproperty_cast<QUmlSignal *>(signal));
+    emit signalChanged(this->signal());
 }
 
 

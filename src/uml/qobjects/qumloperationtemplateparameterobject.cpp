@@ -147,26 +147,31 @@ bool QUmlOperationTemplateParameterObject::mustBeOwned() const
 void QUmlOperationTemplateParameterObject::addOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlOperationTemplateParameter *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlOperationTemplateParameterObject::removeOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlOperationTemplateParameter *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlOperationTemplateParameterObject::addOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlOperationTemplateParameter *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlOperationTemplateParameterObject::removeOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlOperationTemplateParameter *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlOperationTemplateParameterObject::setOwner(QObject *owner)
 {
     qmodelingelementproperty_cast<QUmlOperationTemplateParameter *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
+    emit ownerChanged(this->owner());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [TemplateParameter]
@@ -174,21 +179,25 @@ void QUmlOperationTemplateParameterObject::setOwner(QObject *owner)
 void QUmlOperationTemplateParameterObject::setDefault(QObject *default_)
 {
     qmodelingelementproperty_cast<QUmlOperationTemplateParameter *>(this)->setDefault(qmodelingelementproperty_cast<QUmlParameterableElement *>(default_));
+    emit defaultChanged(this->default_());
 }
 
 void QUmlOperationTemplateParameterObject::setOwnedDefault(QObject *ownedDefault)
 {
     qmodelingelementproperty_cast<QUmlOperationTemplateParameter *>(this)->setOwnedDefault(qmodelingelementproperty_cast<QUmlParameterableElement *>(ownedDefault));
+    emit ownedDefaultChanged(this->ownedDefault());
 }
 
 void QUmlOperationTemplateParameterObject::setOwnedParameteredElement(QObject *ownedParameteredElement)
 {
     qmodelingelementproperty_cast<QUmlOperationTemplateParameter *>(this)->setOwnedParameteredElement(qmodelingelementproperty_cast<QUmlParameterableElement *>(ownedParameteredElement));
+    emit ownedParameteredElementChanged(this->ownedParameteredElement());
 }
 
 void QUmlOperationTemplateParameterObject::setSignature(QObject *signature)
 {
     qmodelingelementproperty_cast<QUmlOperationTemplateParameter *>(this)->setSignature(qmodelingelementproperty_cast<QUmlTemplateSignature *>(signature));
+    emit signatureChanged(this->signature());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [OperationTemplateParameter]
@@ -196,6 +205,7 @@ void QUmlOperationTemplateParameterObject::setSignature(QObject *signature)
 void QUmlOperationTemplateParameterObject::setParameteredElement(QObject *parameteredElement)
 {
     qmodelingelementproperty_cast<QUmlOperationTemplateParameter *>(this)->setParameteredElement(qmodelingelementproperty_cast<QUmlOperation *>(parameteredElement));
+    emit parameteredElementChanged(this->parameteredElement());
 }
 
 

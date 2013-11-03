@@ -446,26 +446,31 @@ bool QUmlStateObject::isRedefinitionContextValid(QObject *redefined) const
 void QUmlStateObject::addOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlState *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlStateObject::removeOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlState *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlStateObject::addOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlState *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlStateObject::removeOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlState *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlStateObject::setOwner(QObject *owner)
 {
     qmodelingelementproperty_cast<QUmlState *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
+    emit ownerChanged(this->owner());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [NamedElement]
@@ -473,36 +478,43 @@ void QUmlStateObject::setOwner(QObject *owner)
 void QUmlStateObject::addClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlState *>(this)->addClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlStateObject::removeClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlState *>(this)->removeClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlStateObject::setName(QString name)
 {
     qmodelingelementproperty_cast<QUmlState *>(this)->setName(name);
+    emit nameChanged(this->name());
 }
 
 void QUmlStateObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingelementproperty_cast<QUmlState *>(this)->setNameExpression(qmodelingelementproperty_cast<QUmlStringExpression *>(nameExpression));
+    emit nameExpressionChanged(this->nameExpression());
 }
 
 void QUmlStateObject::setNamespace(QObject *namespace_)
 {
     qmodelingelementproperty_cast<QUmlState *>(this)->setNamespace(qmodelingelementproperty_cast<QUmlNamespace *>(namespace_));
+    emit namespaceChanged(this->namespace_());
 }
 
 void QUmlStateObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingelementproperty_cast<QUmlState *>(this)->setQualifiedName(qualifiedName);
+    emit qualifiedNameChanged(this->qualifiedName());
 }
 
 void QUmlStateObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingelementproperty_cast<QUmlState *>(this)->setVisibility(visibility);
+    emit visibilityChanged(this->visibility());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Namespace]
@@ -510,61 +522,73 @@ void QUmlStateObject::setVisibility(QtUml::VisibilityKind visibility)
 void QUmlStateObject::addElementImport(QObject *elementImport)
 {
     qmodelingelementproperty_cast<QUmlState *>(this)->addElementImport(qmodelingelementproperty_cast<QUmlElementImport *>(elementImport));
+    emit elementImportsChanged(this->elementImports());
 }
 
 void QUmlStateObject::removeElementImport(QObject *elementImport)
 {
     qmodelingelementproperty_cast<QUmlState *>(this)->removeElementImport(qmodelingelementproperty_cast<QUmlElementImport *>(elementImport));
+    emit elementImportsChanged(this->elementImports());
 }
 
 void QUmlStateObject::addImportedMember(QObject *importedMember)
 {
     qmodelingelementproperty_cast<QUmlState *>(this)->addImportedMember(qmodelingelementproperty_cast<QUmlPackageableElement *>(importedMember));
+    emit importedMembersChanged(this->importedMembers());
 }
 
 void QUmlStateObject::removeImportedMember(QObject *importedMember)
 {
     qmodelingelementproperty_cast<QUmlState *>(this)->removeImportedMember(qmodelingelementproperty_cast<QUmlPackageableElement *>(importedMember));
+    emit importedMembersChanged(this->importedMembers());
 }
 
 void QUmlStateObject::addMember(QObject *member)
 {
     qmodelingelementproperty_cast<QUmlState *>(this)->addMember(qmodelingelementproperty_cast<QUmlNamedElement *>(member));
+    emit membersChanged(this->members());
 }
 
 void QUmlStateObject::removeMember(QObject *member)
 {
     qmodelingelementproperty_cast<QUmlState *>(this)->removeMember(qmodelingelementproperty_cast<QUmlNamedElement *>(member));
+    emit membersChanged(this->members());
 }
 
 void QUmlStateObject::addOwnedMember(QObject *ownedMember)
 {
     qmodelingelementproperty_cast<QUmlState *>(this)->addOwnedMember(qmodelingelementproperty_cast<QUmlNamedElement *>(ownedMember));
+    emit ownedMembersChanged(this->ownedMembers());
 }
 
 void QUmlStateObject::removeOwnedMember(QObject *ownedMember)
 {
     qmodelingelementproperty_cast<QUmlState *>(this)->removeOwnedMember(qmodelingelementproperty_cast<QUmlNamedElement *>(ownedMember));
+    emit ownedMembersChanged(this->ownedMembers());
 }
 
 void QUmlStateObject::addOwnedRule(QObject *ownedRule)
 {
     qmodelingelementproperty_cast<QUmlState *>(this)->addOwnedRule(qmodelingelementproperty_cast<QUmlConstraint *>(ownedRule));
+    emit ownedRulesChanged(this->ownedRules());
 }
 
 void QUmlStateObject::removeOwnedRule(QObject *ownedRule)
 {
     qmodelingelementproperty_cast<QUmlState *>(this)->removeOwnedRule(qmodelingelementproperty_cast<QUmlConstraint *>(ownedRule));
+    emit ownedRulesChanged(this->ownedRules());
 }
 
 void QUmlStateObject::addPackageImport(QObject *packageImport)
 {
     qmodelingelementproperty_cast<QUmlState *>(this)->addPackageImport(qmodelingelementproperty_cast<QUmlPackageImport *>(packageImport));
+    emit packageImportsChanged(this->packageImports());
 }
 
 void QUmlStateObject::removePackageImport(QObject *packageImport)
 {
     qmodelingelementproperty_cast<QUmlState *>(this)->removePackageImport(qmodelingelementproperty_cast<QUmlPackageImport *>(packageImport));
+    emit packageImportsChanged(this->packageImports());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [RedefinableElement]
@@ -572,6 +596,7 @@ void QUmlStateObject::removePackageImport(QObject *packageImport)
 void QUmlStateObject::setLeaf(bool isLeaf)
 {
     qmodelingelementproperty_cast<QUmlState *>(this)->setLeaf(isLeaf);
+    emit isLeafChanged(this->isLeaf());
 }
 
 void QUmlStateObject::unsetLeaf()
@@ -584,37 +609,44 @@ void QUmlStateObject::unsetLeaf()
 void QUmlStateObject::addRedefinedElement(QObject *redefinedElement)
 {
     qmodelingelementproperty_cast<QUmlState *>(this)->addRedefinedElement(qmodelingelementproperty_cast<QUmlRedefinableElement *>(redefinedElement));
+    emit redefinedElementsChanged(this->redefinedElements());
 }
 
 void QUmlStateObject::removeRedefinedElement(QObject *redefinedElement)
 {
     qmodelingelementproperty_cast<QUmlState *>(this)->removeRedefinedElement(qmodelingelementproperty_cast<QUmlRedefinableElement *>(redefinedElement));
+    emit redefinedElementsChanged(this->redefinedElements());
 }
 // SLOTS FOR OWNED ATTRIBUTES [Vertex]
 
 void QUmlStateObject::setContainer(QObject *container)
 {
     qmodelingelementproperty_cast<QUmlState *>(this)->setContainer(qmodelingelementproperty_cast<QUmlRegion *>(container));
+    emit containerChanged(this->container());
 }
 
 void QUmlStateObject::addIncoming(QObject *incoming)
 {
     qmodelingelementproperty_cast<QUmlState *>(this)->addIncoming(qmodelingelementproperty_cast<QUmlTransition *>(incoming));
+    emit incomingsChanged(this->incomings());
 }
 
 void QUmlStateObject::removeIncoming(QObject *incoming)
 {
     qmodelingelementproperty_cast<QUmlState *>(this)->removeIncoming(qmodelingelementproperty_cast<QUmlTransition *>(incoming));
+    emit incomingsChanged(this->incomings());
 }
 
 void QUmlStateObject::addOutgoing(QObject *outgoing)
 {
     qmodelingelementproperty_cast<QUmlState *>(this)->addOutgoing(qmodelingelementproperty_cast<QUmlTransition *>(outgoing));
+    emit outgoingsChanged(this->outgoings());
 }
 
 void QUmlStateObject::removeOutgoing(QObject *outgoing)
 {
     qmodelingelementproperty_cast<QUmlState *>(this)->removeOutgoing(qmodelingelementproperty_cast<QUmlTransition *>(outgoing));
+    emit outgoingsChanged(this->outgoings());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [State]
@@ -622,51 +654,61 @@ void QUmlStateObject::removeOutgoing(QObject *outgoing)
 void QUmlStateObject::addConnection(QObject *connection)
 {
     qmodelingelementproperty_cast<QUmlState *>(this)->addConnection(qmodelingelementproperty_cast<QUmlConnectionPointReference *>(connection));
+    emit connectionsChanged(this->connections());
 }
 
 void QUmlStateObject::removeConnection(QObject *connection)
 {
     qmodelingelementproperty_cast<QUmlState *>(this)->removeConnection(qmodelingelementproperty_cast<QUmlConnectionPointReference *>(connection));
+    emit connectionsChanged(this->connections());
 }
 
 void QUmlStateObject::addConnectionPoint(QObject *connectionPoint)
 {
     qmodelingelementproperty_cast<QUmlState *>(this)->addConnectionPoint(qmodelingelementproperty_cast<QUmlPseudostate *>(connectionPoint));
+    emit connectionPointsChanged(this->connectionPoints());
 }
 
 void QUmlStateObject::removeConnectionPoint(QObject *connectionPoint)
 {
     qmodelingelementproperty_cast<QUmlState *>(this)->removeConnectionPoint(qmodelingelementproperty_cast<QUmlPseudostate *>(connectionPoint));
+    emit connectionPointsChanged(this->connectionPoints());
 }
 
 void QUmlStateObject::addDeferrableTrigger(QObject *deferrableTrigger)
 {
     qmodelingelementproperty_cast<QUmlState *>(this)->addDeferrableTrigger(qmodelingelementproperty_cast<QUmlTrigger *>(deferrableTrigger));
+    emit deferrableTriggersChanged(this->deferrableTriggers());
 }
 
 void QUmlStateObject::removeDeferrableTrigger(QObject *deferrableTrigger)
 {
     qmodelingelementproperty_cast<QUmlState *>(this)->removeDeferrableTrigger(qmodelingelementproperty_cast<QUmlTrigger *>(deferrableTrigger));
+    emit deferrableTriggersChanged(this->deferrableTriggers());
 }
 
 void QUmlStateObject::setDoActivity(QObject *doActivity)
 {
     qmodelingelementproperty_cast<QUmlState *>(this)->setDoActivity(qmodelingelementproperty_cast<QUmlBehavior *>(doActivity));
+    emit doActivityChanged(this->doActivity());
 }
 
 void QUmlStateObject::setEntry(QObject *entry)
 {
     qmodelingelementproperty_cast<QUmlState *>(this)->setEntry(qmodelingelementproperty_cast<QUmlBehavior *>(entry));
+    emit entryChanged(this->entry());
 }
 
 void QUmlStateObject::setExit(QObject *exit)
 {
     qmodelingelementproperty_cast<QUmlState *>(this)->setExit(qmodelingelementproperty_cast<QUmlBehavior *>(exit));
+    emit exitChanged(this->exit());
 }
 
 void QUmlStateObject::setComposite(bool isComposite)
 {
     qmodelingelementproperty_cast<QUmlState *>(this)->setComposite(isComposite);
+    emit isCompositeChanged(this->isComposite());
 }
 
 void QUmlStateObject::unsetComposite()
@@ -679,6 +721,7 @@ void QUmlStateObject::unsetComposite()
 void QUmlStateObject::setOrthogonal(bool isOrthogonal)
 {
     qmodelingelementproperty_cast<QUmlState *>(this)->setOrthogonal(isOrthogonal);
+    emit isOrthogonalChanged(this->isOrthogonal());
 }
 
 void QUmlStateObject::unsetOrthogonal()
@@ -691,6 +734,7 @@ void QUmlStateObject::unsetOrthogonal()
 void QUmlStateObject::setSimple(bool isSimple)
 {
     qmodelingelementproperty_cast<QUmlState *>(this)->setSimple(isSimple);
+    emit isSimpleChanged(this->isSimple());
 }
 
 void QUmlStateObject::unsetSimple()
@@ -704,6 +748,7 @@ void QUmlStateObject::unsetSimple()
 void QUmlStateObject::setSubmachineState(bool isSubmachineState)
 {
     qmodelingelementproperty_cast<QUmlState *>(this)->setSubmachineState(isSubmachineState);
+    emit isSubmachineStateChanged(this->isSubmachineState());
 }
 
 void QUmlStateObject::unsetSubmachineState()
@@ -716,31 +761,37 @@ void QUmlStateObject::unsetSubmachineState()
 void QUmlStateObject::setRedefinedState(QObject *redefinedState)
 {
     qmodelingelementproperty_cast<QUmlState *>(this)->setRedefinedState(qmodelingelementproperty_cast<QUmlState *>(redefinedState));
+    emit redefinedStateChanged(this->redefinedState());
 }
 
 void QUmlStateObject::setRedefinitionContext(QObject *redefinitionContext)
 {
     qmodelingelementproperty_cast<QUmlState *>(this)->setRedefinitionContext(qmodelingelementproperty_cast<QUmlClassifier *>(redefinitionContext));
+    emit redefinitionContextChanged(this->redefinitionContext());
 }
 
 void QUmlStateObject::addRegion(QObject *region)
 {
     qmodelingelementproperty_cast<QUmlState *>(this)->addRegion(qmodelingelementproperty_cast<QUmlRegion *>(region));
+    emit regionsChanged(this->regions());
 }
 
 void QUmlStateObject::removeRegion(QObject *region)
 {
     qmodelingelementproperty_cast<QUmlState *>(this)->removeRegion(qmodelingelementproperty_cast<QUmlRegion *>(region));
+    emit regionsChanged(this->regions());
 }
 
 void QUmlStateObject::setStateInvariant(QObject *stateInvariant)
 {
     qmodelingelementproperty_cast<QUmlState *>(this)->setStateInvariant(qmodelingelementproperty_cast<QUmlConstraint *>(stateInvariant));
+    emit stateInvariantChanged(this->stateInvariant());
 }
 
 void QUmlStateObject::setSubmachine(QObject *submachine)
 {
     qmodelingelementproperty_cast<QUmlState *>(this)->setSubmachine(qmodelingelementproperty_cast<QUmlStateMachine *>(submachine));
+    emit submachineChanged(this->submachine());
 }
 
 

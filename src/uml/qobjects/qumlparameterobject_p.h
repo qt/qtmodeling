@@ -62,45 +62,45 @@ class Q_UML_EXPORT QUmlParameterObject : public QModelingObject
     Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [Element]
-    Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
-    Q_PROPERTY(QSet<QObject *> ownedElements READ ownedElements)
-    Q_PROPERTY(QObject * owner READ owner)
+    Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments NOTIFY ownedCommentsChanged)
+    Q_PROPERTY(QSet<QObject *> ownedElements READ ownedElements NOTIFY ownedElementsChanged)
+    Q_PROPERTY(QObject * owner READ owner NOTIFY ownerChanged)
 
     // Properties [MultiplicityElement]
-    Q_PROPERTY(bool isOrdered READ isOrdered WRITE setOrdered RESET unsetOrdered)
-    Q_PROPERTY(bool isUnique READ isUnique WRITE setUnique RESET unsetUnique)
-    Q_PROPERTY(int lower READ lower WRITE setLower RESET unsetLower STORED false)
-    Q_PROPERTY(QObject * lowerValue READ lowerValue WRITE setLowerValue)
-    Q_PROPERTY(int upper READ upper WRITE setUpper RESET unsetUpper STORED false)
-    Q_PROPERTY(QObject * upperValue READ upperValue WRITE setUpperValue)
+    Q_PROPERTY(bool isOrdered READ isOrdered WRITE setOrdered NOTIFY isOrderedChanged RESET unsetOrdered)
+    Q_PROPERTY(bool isUnique READ isUnique WRITE setUnique NOTIFY isUniqueChanged RESET unsetUnique)
+    Q_PROPERTY(int lower READ lower WRITE setLower NOTIFY lowerChanged RESET unsetLower STORED false)
+    Q_PROPERTY(QObject * lowerValue READ lowerValue WRITE setLowerValue NOTIFY lowerValueChanged)
+    Q_PROPERTY(int upper READ upper WRITE setUpper NOTIFY upperChanged RESET unsetUpper STORED false)
+    Q_PROPERTY(QObject * upperValue READ upperValue WRITE setUpperValue NOTIFY upperValueChanged)
 
     // Properties [NamedElement]
-    Q_PROPERTY(QSet<QObject *> clientDependencies READ clientDependencies)
-    Q_PROPERTY(QString name READ name WRITE setName)
-    Q_PROPERTY(QObject * nameExpression READ nameExpression WRITE setNameExpression)
-    Q_PROPERTY(QObject * namespace_ READ namespace_)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
+    Q_PROPERTY(QSet<QObject *> clientDependencies READ clientDependencies NOTIFY clientDependenciesChanged)
+    Q_PROPERTY(QString name READ name WRITE setName NOTIFY nameChanged)
+    Q_PROPERTY(QObject * nameExpression READ nameExpression WRITE setNameExpression NOTIFY nameExpressionChanged)
+    Q_PROPERTY(QObject * namespace_ READ namespace_ NOTIFY namespaceChanged)
+    Q_PROPERTY(QString qualifiedName READ qualifiedName NOTIFY qualifiedNameChanged STORED false)
+    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility NOTIFY visibilityChanged)
 
     // Properties [TypedElement]
-    Q_PROPERTY(QObject * type READ type WRITE setType)
+    Q_PROPERTY(QObject * type READ type WRITE setType NOTIFY typeChanged)
 
     // Properties [ParameterableElement]
-    Q_PROPERTY(QObject * owningTemplateParameter READ owningTemplateParameter WRITE setOwningTemplateParameter)
+    Q_PROPERTY(QObject * owningTemplateParameter READ owningTemplateParameter WRITE setOwningTemplateParameter NOTIFY owningTemplateParameterChanged)
 
     // Properties [ConnectableElement]
-    Q_PROPERTY(QList<QObject *> ends READ ends STORED false)
-    Q_PROPERTY(QObject * templateParameter READ templateParameter WRITE setTemplateParameter)
+    Q_PROPERTY(QList<QObject *> ends READ ends NOTIFY endsChanged STORED false)
+    Q_PROPERTY(QObject * templateParameter READ templateParameter WRITE setTemplateParameter NOTIFY templateParameterChanged)
 
     // Properties [Parameter]
-    Q_PROPERTY(QString default_ READ default_ WRITE setDefault STORED false)
-    Q_PROPERTY(QObject * defaultValue READ defaultValue WRITE setDefaultValue)
-    Q_PROPERTY(QtUml::ParameterDirectionKind direction READ direction WRITE setDirection RESET unsetDirection)
-    Q_PROPERTY(QtUml::ParameterEffectKind effect READ effect WRITE setEffect)
-    Q_PROPERTY(bool isException READ isException WRITE setException RESET unsetException)
-    Q_PROPERTY(bool isStream READ isStream WRITE setStream RESET unsetStream)
-    Q_PROPERTY(QObject * operation READ operation WRITE setOperation)
-    Q_PROPERTY(QSet<QObject *> parameterSets READ parameterSets)
+    Q_PROPERTY(QString default_ READ default_ WRITE setDefault NOTIFY defaultChanged STORED false)
+    Q_PROPERTY(QObject * defaultValue READ defaultValue WRITE setDefaultValue NOTIFY defaultValueChanged)
+    Q_PROPERTY(QtUml::ParameterDirectionKind direction READ direction WRITE setDirection NOTIFY directionChanged RESET unsetDirection)
+    Q_PROPERTY(QtUml::ParameterEffectKind effect READ effect WRITE setEffect NOTIFY effectChanged)
+    Q_PROPERTY(bool isException READ isException WRITE setException NOTIFY isExceptionChanged RESET unsetException)
+    Q_PROPERTY(bool isStream READ isStream WRITE setStream NOTIFY isStreamChanged RESET unsetStream)
+    Q_PROPERTY(QObject * operation READ operation WRITE setOperation NOTIFY operationChanged)
+    Q_PROPERTY(QSet<QObject *> parameterSets READ parameterSets NOTIFY parameterSetsChanged)
 
 public:
     Q_INVOKABLE explicit QUmlParameterObject(QUmlParameter *modelingElement);
@@ -223,6 +223,49 @@ public Q_SLOTS:
     void setOperation(QObject *operation = 0);
     void addParameterSet(QObject *parameterSet);
     void removeParameterSet(QObject *parameterSet);
+
+Q_SIGNALS:
+
+    // Signals for owned attributes [Element]
+    void ownedCommentsChanged(QSet<QObject *> ownedComments);
+    void ownedElementsChanged(QSet<QObject *> ownedElements);
+    void ownerChanged(QObject *owner);
+
+    // Signals for owned attributes [MultiplicityElement]
+    void isOrderedChanged(bool isOrdered);
+    void isUniqueChanged(bool isUnique);
+    void lowerChanged(int lower);
+    void lowerValueChanged(QObject *lowerValue);
+    void upperChanged(int upper);
+    void upperValueChanged(QObject *upperValue);
+
+    // Signals for owned attributes [NamedElement]
+    void clientDependenciesChanged(QSet<QObject *> clientDependencies);
+    void nameChanged(QString name);
+    void nameExpressionChanged(QObject *nameExpression);
+    void namespaceChanged(QObject *namespace_);
+    void qualifiedNameChanged(QString qualifiedName);
+    void visibilityChanged(QtUml::VisibilityKind visibility);
+
+    // Signals for owned attributes [TypedElement]
+    void typeChanged(QObject *type);
+
+    // Signals for owned attributes [ParameterableElement]
+    void owningTemplateParameterChanged(QObject *owningTemplateParameter);
+
+    // Signals for owned attributes [ConnectableElement]
+    void endsChanged(QList<QObject *> ends);
+    void templateParameterChanged(QObject *templateParameter);
+
+    // Signals for owned attributes [Parameter]
+    void defaultChanged(QString default_);
+    void defaultValueChanged(QObject *defaultValue);
+    void directionChanged(QtUml::ParameterDirectionKind direction);
+    void effectChanged(QtUml::ParameterEffectKind effect);
+    void isExceptionChanged(bool isException);
+    void isStreamChanged(bool isStream);
+    void operationChanged(QObject *operation);
+    void parameterSetsChanged(QSet<QObject *> parameterSets);
 
 protected:
     virtual void setGroupProperties();

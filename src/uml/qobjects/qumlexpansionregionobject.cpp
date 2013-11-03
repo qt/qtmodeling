@@ -538,26 +538,31 @@ bool QUmlExpansionRegionObject::membersAreDistinguishable() const
 void QUmlExpansionRegionObject::addOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlExpansionRegion *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlExpansionRegionObject::removeOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlExpansionRegion *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlExpansionRegionObject::addOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlExpansionRegion *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlExpansionRegionObject::removeOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlExpansionRegion *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlExpansionRegionObject::setOwner(QObject *owner)
 {
     qmodelingelementproperty_cast<QUmlExpansionRegion *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
+    emit ownerChanged(this->owner());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [NamedElement]
@@ -565,36 +570,43 @@ void QUmlExpansionRegionObject::setOwner(QObject *owner)
 void QUmlExpansionRegionObject::addClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlExpansionRegion *>(this)->addClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlExpansionRegionObject::removeClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlExpansionRegion *>(this)->removeClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlExpansionRegionObject::setName(QString name)
 {
     qmodelingelementproperty_cast<QUmlExpansionRegion *>(this)->setName(name);
+    emit nameChanged(this->name());
 }
 
 void QUmlExpansionRegionObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingelementproperty_cast<QUmlExpansionRegion *>(this)->setNameExpression(qmodelingelementproperty_cast<QUmlStringExpression *>(nameExpression));
+    emit nameExpressionChanged(this->nameExpression());
 }
 
 void QUmlExpansionRegionObject::setNamespace(QObject *namespace_)
 {
     qmodelingelementproperty_cast<QUmlExpansionRegion *>(this)->setNamespace(qmodelingelementproperty_cast<QUmlNamespace *>(namespace_));
+    emit namespaceChanged(this->namespace_());
 }
 
 void QUmlExpansionRegionObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingelementproperty_cast<QUmlExpansionRegion *>(this)->setQualifiedName(qualifiedName);
+    emit qualifiedNameChanged(this->qualifiedName());
 }
 
 void QUmlExpansionRegionObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingelementproperty_cast<QUmlExpansionRegion *>(this)->setVisibility(visibility);
+    emit visibilityChanged(this->visibility());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [RedefinableElement]
@@ -602,6 +614,7 @@ void QUmlExpansionRegionObject::setVisibility(QtUml::VisibilityKind visibility)
 void QUmlExpansionRegionObject::setLeaf(bool isLeaf)
 {
     qmodelingelementproperty_cast<QUmlExpansionRegion *>(this)->setLeaf(isLeaf);
+    emit isLeafChanged(this->isLeaf());
 }
 
 void QUmlExpansionRegionObject::unsetLeaf()
@@ -614,21 +627,25 @@ void QUmlExpansionRegionObject::unsetLeaf()
 void QUmlExpansionRegionObject::addRedefinedElement(QObject *redefinedElement)
 {
     qmodelingelementproperty_cast<QUmlExpansionRegion *>(this)->addRedefinedElement(qmodelingelementproperty_cast<QUmlRedefinableElement *>(redefinedElement));
+    emit redefinedElementsChanged(this->redefinedElements());
 }
 
 void QUmlExpansionRegionObject::removeRedefinedElement(QObject *redefinedElement)
 {
     qmodelingelementproperty_cast<QUmlExpansionRegion *>(this)->removeRedefinedElement(qmodelingelementproperty_cast<QUmlRedefinableElement *>(redefinedElement));
+    emit redefinedElementsChanged(this->redefinedElements());
 }
 
 void QUmlExpansionRegionObject::addRedefinitionContext(QObject *redefinitionContext)
 {
     qmodelingelementproperty_cast<QUmlExpansionRegion *>(this)->addRedefinitionContext(qmodelingelementproperty_cast<QUmlClassifier *>(redefinitionContext));
+    emit redefinitionContextsChanged(this->redefinitionContexts());
 }
 
 void QUmlExpansionRegionObject::removeRedefinitionContext(QObject *redefinitionContext)
 {
     qmodelingelementproperty_cast<QUmlExpansionRegion *>(this)->removeRedefinitionContext(qmodelingelementproperty_cast<QUmlClassifier *>(redefinitionContext));
+    emit redefinitionContextsChanged(this->redefinitionContexts());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ActivityNode]
@@ -636,66 +653,79 @@ void QUmlExpansionRegionObject::removeRedefinitionContext(QObject *redefinitionC
 void QUmlExpansionRegionObject::addInGroup(QObject *inGroup)
 {
     qmodelingelementproperty_cast<QUmlExpansionRegion *>(this)->addInGroup(qmodelingelementproperty_cast<QUmlActivityGroup *>(inGroup));
+    emit inGroupsChanged(this->inGroups());
 }
 
 void QUmlExpansionRegionObject::removeInGroup(QObject *inGroup)
 {
     qmodelingelementproperty_cast<QUmlExpansionRegion *>(this)->removeInGroup(qmodelingelementproperty_cast<QUmlActivityGroup *>(inGroup));
+    emit inGroupsChanged(this->inGroups());
 }
 
 void QUmlExpansionRegionObject::addInInterruptibleRegion(QObject *inInterruptibleRegion)
 {
     qmodelingelementproperty_cast<QUmlExpansionRegion *>(this)->addInInterruptibleRegion(qmodelingelementproperty_cast<QUmlInterruptibleActivityRegion *>(inInterruptibleRegion));
+    emit inInterruptibleRegionsChanged(this->inInterruptibleRegions());
 }
 
 void QUmlExpansionRegionObject::removeInInterruptibleRegion(QObject *inInterruptibleRegion)
 {
     qmodelingelementproperty_cast<QUmlExpansionRegion *>(this)->removeInInterruptibleRegion(qmodelingelementproperty_cast<QUmlInterruptibleActivityRegion *>(inInterruptibleRegion));
+    emit inInterruptibleRegionsChanged(this->inInterruptibleRegions());
 }
 
 void QUmlExpansionRegionObject::addInPartition(QObject *inPartition)
 {
     qmodelingelementproperty_cast<QUmlExpansionRegion *>(this)->addInPartition(qmodelingelementproperty_cast<QUmlActivityPartition *>(inPartition));
+    emit inPartitionsChanged(this->inPartitions());
 }
 
 void QUmlExpansionRegionObject::removeInPartition(QObject *inPartition)
 {
     qmodelingelementproperty_cast<QUmlExpansionRegion *>(this)->removeInPartition(qmodelingelementproperty_cast<QUmlActivityPartition *>(inPartition));
+    emit inPartitionsChanged(this->inPartitions());
 }
 
 void QUmlExpansionRegionObject::setInStructuredNode(QObject *inStructuredNode)
 {
     qmodelingelementproperty_cast<QUmlExpansionRegion *>(this)->setInStructuredNode(qmodelingelementproperty_cast<QUmlStructuredActivityNode *>(inStructuredNode));
+    emit inStructuredNodeChanged(this->inStructuredNode());
 }
 
 void QUmlExpansionRegionObject::addIncoming(QObject *incoming)
 {
     qmodelingelementproperty_cast<QUmlExpansionRegion *>(this)->addIncoming(qmodelingelementproperty_cast<QUmlActivityEdge *>(incoming));
+    emit incomingsChanged(this->incomings());
 }
 
 void QUmlExpansionRegionObject::removeIncoming(QObject *incoming)
 {
     qmodelingelementproperty_cast<QUmlExpansionRegion *>(this)->removeIncoming(qmodelingelementproperty_cast<QUmlActivityEdge *>(incoming));
+    emit incomingsChanged(this->incomings());
 }
 
 void QUmlExpansionRegionObject::addOutgoing(QObject *outgoing)
 {
     qmodelingelementproperty_cast<QUmlExpansionRegion *>(this)->addOutgoing(qmodelingelementproperty_cast<QUmlActivityEdge *>(outgoing));
+    emit outgoingsChanged(this->outgoings());
 }
 
 void QUmlExpansionRegionObject::removeOutgoing(QObject *outgoing)
 {
     qmodelingelementproperty_cast<QUmlExpansionRegion *>(this)->removeOutgoing(qmodelingelementproperty_cast<QUmlActivityEdge *>(outgoing));
+    emit outgoingsChanged(this->outgoings());
 }
 
 void QUmlExpansionRegionObject::addRedefinedNode(QObject *redefinedNode)
 {
     qmodelingelementproperty_cast<QUmlExpansionRegion *>(this)->addRedefinedNode(qmodelingelementproperty_cast<QUmlActivityNode *>(redefinedNode));
+    emit redefinedNodesChanged(this->redefinedNodes());
 }
 
 void QUmlExpansionRegionObject::removeRedefinedNode(QObject *redefinedNode)
 {
     qmodelingelementproperty_cast<QUmlExpansionRegion *>(this)->removeRedefinedNode(qmodelingelementproperty_cast<QUmlActivityNode *>(redefinedNode));
+    emit redefinedNodesChanged(this->redefinedNodes());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ExecutableNode]
@@ -703,11 +733,13 @@ void QUmlExpansionRegionObject::removeRedefinedNode(QObject *redefinedNode)
 void QUmlExpansionRegionObject::addHandler(QObject *handler)
 {
     qmodelingelementproperty_cast<QUmlExpansionRegion *>(this)->addHandler(qmodelingelementproperty_cast<QUmlExceptionHandler *>(handler));
+    emit handlersChanged(this->handlers());
 }
 
 void QUmlExpansionRegionObject::removeHandler(QObject *handler)
 {
     qmodelingelementproperty_cast<QUmlExpansionRegion *>(this)->removeHandler(qmodelingelementproperty_cast<QUmlExceptionHandler *>(handler));
+    emit handlersChanged(this->handlers());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Action]
@@ -715,21 +747,25 @@ void QUmlExpansionRegionObject::removeHandler(QObject *handler)
 void QUmlExpansionRegionObject::setContext(QObject *context)
 {
     qmodelingelementproperty_cast<QUmlExpansionRegion *>(this)->setContext(qmodelingelementproperty_cast<QUmlClassifier *>(context));
+    emit contextChanged(this->context());
 }
 
 void QUmlExpansionRegionObject::addInput(QObject *input)
 {
     qmodelingelementproperty_cast<QUmlExpansionRegion *>(this)->addInput(qmodelingelementproperty_cast<QUmlInputPin *>(input));
+    emit inputsChanged(this->inputs());
 }
 
 void QUmlExpansionRegionObject::removeInput(QObject *input)
 {
     qmodelingelementproperty_cast<QUmlExpansionRegion *>(this)->removeInput(qmodelingelementproperty_cast<QUmlInputPin *>(input));
+    emit inputsChanged(this->inputs());
 }
 
 void QUmlExpansionRegionObject::setLocallyReentrant(bool isLocallyReentrant)
 {
     qmodelingelementproperty_cast<QUmlExpansionRegion *>(this)->setLocallyReentrant(isLocallyReentrant);
+    emit isLocallyReentrantChanged(this->isLocallyReentrant());
 }
 
 void QUmlExpansionRegionObject::unsetLocallyReentrant()
@@ -742,31 +778,37 @@ void QUmlExpansionRegionObject::unsetLocallyReentrant()
 void QUmlExpansionRegionObject::addLocalPostcondition(QObject *localPostcondition)
 {
     qmodelingelementproperty_cast<QUmlExpansionRegion *>(this)->addLocalPostcondition(qmodelingelementproperty_cast<QUmlConstraint *>(localPostcondition));
+    emit localPostconditionsChanged(this->localPostconditions());
 }
 
 void QUmlExpansionRegionObject::removeLocalPostcondition(QObject *localPostcondition)
 {
     qmodelingelementproperty_cast<QUmlExpansionRegion *>(this)->removeLocalPostcondition(qmodelingelementproperty_cast<QUmlConstraint *>(localPostcondition));
+    emit localPostconditionsChanged(this->localPostconditions());
 }
 
 void QUmlExpansionRegionObject::addLocalPrecondition(QObject *localPrecondition)
 {
     qmodelingelementproperty_cast<QUmlExpansionRegion *>(this)->addLocalPrecondition(qmodelingelementproperty_cast<QUmlConstraint *>(localPrecondition));
+    emit localPreconditionsChanged(this->localPreconditions());
 }
 
 void QUmlExpansionRegionObject::removeLocalPrecondition(QObject *localPrecondition)
 {
     qmodelingelementproperty_cast<QUmlExpansionRegion *>(this)->removeLocalPrecondition(qmodelingelementproperty_cast<QUmlConstraint *>(localPrecondition));
+    emit localPreconditionsChanged(this->localPreconditions());
 }
 
 void QUmlExpansionRegionObject::addOutput(QObject *output)
 {
     qmodelingelementproperty_cast<QUmlExpansionRegion *>(this)->addOutput(qmodelingelementproperty_cast<QUmlOutputPin *>(output));
+    emit outputsChanged(this->outputs());
 }
 
 void QUmlExpansionRegionObject::removeOutput(QObject *output)
 {
     qmodelingelementproperty_cast<QUmlExpansionRegion *>(this)->removeOutput(qmodelingelementproperty_cast<QUmlOutputPin *>(output));
+    emit outputsChanged(this->outputs());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Namespace]
@@ -774,61 +816,73 @@ void QUmlExpansionRegionObject::removeOutput(QObject *output)
 void QUmlExpansionRegionObject::addElementImport(QObject *elementImport)
 {
     qmodelingelementproperty_cast<QUmlExpansionRegion *>(this)->addElementImport(qmodelingelementproperty_cast<QUmlElementImport *>(elementImport));
+    emit elementImportsChanged(this->elementImports());
 }
 
 void QUmlExpansionRegionObject::removeElementImport(QObject *elementImport)
 {
     qmodelingelementproperty_cast<QUmlExpansionRegion *>(this)->removeElementImport(qmodelingelementproperty_cast<QUmlElementImport *>(elementImport));
+    emit elementImportsChanged(this->elementImports());
 }
 
 void QUmlExpansionRegionObject::addImportedMember(QObject *importedMember)
 {
     qmodelingelementproperty_cast<QUmlExpansionRegion *>(this)->addImportedMember(qmodelingelementproperty_cast<QUmlPackageableElement *>(importedMember));
+    emit importedMembersChanged(this->importedMembers());
 }
 
 void QUmlExpansionRegionObject::removeImportedMember(QObject *importedMember)
 {
     qmodelingelementproperty_cast<QUmlExpansionRegion *>(this)->removeImportedMember(qmodelingelementproperty_cast<QUmlPackageableElement *>(importedMember));
+    emit importedMembersChanged(this->importedMembers());
 }
 
 void QUmlExpansionRegionObject::addMember(QObject *member)
 {
     qmodelingelementproperty_cast<QUmlExpansionRegion *>(this)->addMember(qmodelingelementproperty_cast<QUmlNamedElement *>(member));
+    emit membersChanged(this->members());
 }
 
 void QUmlExpansionRegionObject::removeMember(QObject *member)
 {
     qmodelingelementproperty_cast<QUmlExpansionRegion *>(this)->removeMember(qmodelingelementproperty_cast<QUmlNamedElement *>(member));
+    emit membersChanged(this->members());
 }
 
 void QUmlExpansionRegionObject::addOwnedMember(QObject *ownedMember)
 {
     qmodelingelementproperty_cast<QUmlExpansionRegion *>(this)->addOwnedMember(qmodelingelementproperty_cast<QUmlNamedElement *>(ownedMember));
+    emit ownedMembersChanged(this->ownedMembers());
 }
 
 void QUmlExpansionRegionObject::removeOwnedMember(QObject *ownedMember)
 {
     qmodelingelementproperty_cast<QUmlExpansionRegion *>(this)->removeOwnedMember(qmodelingelementproperty_cast<QUmlNamedElement *>(ownedMember));
+    emit ownedMembersChanged(this->ownedMembers());
 }
 
 void QUmlExpansionRegionObject::addOwnedRule(QObject *ownedRule)
 {
     qmodelingelementproperty_cast<QUmlExpansionRegion *>(this)->addOwnedRule(qmodelingelementproperty_cast<QUmlConstraint *>(ownedRule));
+    emit ownedRulesChanged(this->ownedRules());
 }
 
 void QUmlExpansionRegionObject::removeOwnedRule(QObject *ownedRule)
 {
     qmodelingelementproperty_cast<QUmlExpansionRegion *>(this)->removeOwnedRule(qmodelingelementproperty_cast<QUmlConstraint *>(ownedRule));
+    emit ownedRulesChanged(this->ownedRules());
 }
 
 void QUmlExpansionRegionObject::addPackageImport(QObject *packageImport)
 {
     qmodelingelementproperty_cast<QUmlExpansionRegion *>(this)->addPackageImport(qmodelingelementproperty_cast<QUmlPackageImport *>(packageImport));
+    emit packageImportsChanged(this->packageImports());
 }
 
 void QUmlExpansionRegionObject::removePackageImport(QObject *packageImport)
 {
     qmodelingelementproperty_cast<QUmlExpansionRegion *>(this)->removePackageImport(qmodelingelementproperty_cast<QUmlPackageImport *>(packageImport));
+    emit packageImportsChanged(this->packageImports());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ActivityGroup]
@@ -836,36 +890,43 @@ void QUmlExpansionRegionObject::removePackageImport(QObject *packageImport)
 void QUmlExpansionRegionObject::addContainedEdge(QObject *containedEdge)
 {
     qmodelingelementproperty_cast<QUmlExpansionRegion *>(this)->addContainedEdge(qmodelingelementproperty_cast<QUmlActivityEdge *>(containedEdge));
+    emit containedEdgesChanged(this->containedEdges());
 }
 
 void QUmlExpansionRegionObject::removeContainedEdge(QObject *containedEdge)
 {
     qmodelingelementproperty_cast<QUmlExpansionRegion *>(this)->removeContainedEdge(qmodelingelementproperty_cast<QUmlActivityEdge *>(containedEdge));
+    emit containedEdgesChanged(this->containedEdges());
 }
 
 void QUmlExpansionRegionObject::addContainedNode(QObject *containedNode)
 {
     qmodelingelementproperty_cast<QUmlExpansionRegion *>(this)->addContainedNode(qmodelingelementproperty_cast<QUmlActivityNode *>(containedNode));
+    emit containedNodesChanged(this->containedNodes());
 }
 
 void QUmlExpansionRegionObject::removeContainedNode(QObject *containedNode)
 {
     qmodelingelementproperty_cast<QUmlExpansionRegion *>(this)->removeContainedNode(qmodelingelementproperty_cast<QUmlActivityNode *>(containedNode));
+    emit containedNodesChanged(this->containedNodes());
 }
 
 void QUmlExpansionRegionObject::addSubgroup(QObject *subgroup)
 {
     qmodelingelementproperty_cast<QUmlExpansionRegion *>(this)->addSubgroup(qmodelingelementproperty_cast<QUmlActivityGroup *>(subgroup));
+    emit subgroupsChanged(this->subgroups());
 }
 
 void QUmlExpansionRegionObject::removeSubgroup(QObject *subgroup)
 {
     qmodelingelementproperty_cast<QUmlExpansionRegion *>(this)->removeSubgroup(qmodelingelementproperty_cast<QUmlActivityGroup *>(subgroup));
+    emit subgroupsChanged(this->subgroups());
 }
 
 void QUmlExpansionRegionObject::setSuperGroup(QObject *superGroup)
 {
     qmodelingelementproperty_cast<QUmlExpansionRegion *>(this)->setSuperGroup(qmodelingelementproperty_cast<QUmlActivityGroup *>(superGroup));
+    emit superGroupChanged(this->superGroup());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [StructuredActivityNode]
@@ -873,21 +934,25 @@ void QUmlExpansionRegionObject::setSuperGroup(QObject *superGroup)
 void QUmlExpansionRegionObject::setActivity(QObject *activity)
 {
     qmodelingelementproperty_cast<QUmlExpansionRegion *>(this)->setActivity(qmodelingelementproperty_cast<QUmlActivity *>(activity));
+    emit activityChanged(this->activity());
 }
 
 void QUmlExpansionRegionObject::addEdge(QObject *edge)
 {
     qmodelingelementproperty_cast<QUmlExpansionRegion *>(this)->addEdge(qmodelingelementproperty_cast<QUmlActivityEdge *>(edge));
+    emit edgesChanged(this->edges());
 }
 
 void QUmlExpansionRegionObject::removeEdge(QObject *edge)
 {
     qmodelingelementproperty_cast<QUmlExpansionRegion *>(this)->removeEdge(qmodelingelementproperty_cast<QUmlActivityEdge *>(edge));
+    emit edgesChanged(this->edges());
 }
 
 void QUmlExpansionRegionObject::setMustIsolate(bool mustIsolate)
 {
     qmodelingelementproperty_cast<QUmlExpansionRegion *>(this)->setMustIsolate(mustIsolate);
+    emit mustIsolateChanged(this->mustIsolate());
 }
 
 void QUmlExpansionRegionObject::unsetMustIsolate()
@@ -900,41 +965,49 @@ void QUmlExpansionRegionObject::unsetMustIsolate()
 void QUmlExpansionRegionObject::addNode(QObject *node)
 {
     qmodelingelementproperty_cast<QUmlExpansionRegion *>(this)->addNode(qmodelingelementproperty_cast<QUmlActivityNode *>(node));
+    emit nodesChanged(this->nodes());
 }
 
 void QUmlExpansionRegionObject::removeNode(QObject *node)
 {
     qmodelingelementproperty_cast<QUmlExpansionRegion *>(this)->removeNode(qmodelingelementproperty_cast<QUmlActivityNode *>(node));
+    emit nodesChanged(this->nodes());
 }
 
 void QUmlExpansionRegionObject::addStructuredNodeInput(QObject *structuredNodeInput)
 {
     qmodelingelementproperty_cast<QUmlExpansionRegion *>(this)->addStructuredNodeInput(qmodelingelementproperty_cast<QUmlInputPin *>(structuredNodeInput));
+    emit structuredNodeInputsChanged(this->structuredNodeInputs());
 }
 
 void QUmlExpansionRegionObject::removeStructuredNodeInput(QObject *structuredNodeInput)
 {
     qmodelingelementproperty_cast<QUmlExpansionRegion *>(this)->removeStructuredNodeInput(qmodelingelementproperty_cast<QUmlInputPin *>(structuredNodeInput));
+    emit structuredNodeInputsChanged(this->structuredNodeInputs());
 }
 
 void QUmlExpansionRegionObject::addStructuredNodeOutput(QObject *structuredNodeOutput)
 {
     qmodelingelementproperty_cast<QUmlExpansionRegion *>(this)->addStructuredNodeOutput(qmodelingelementproperty_cast<QUmlOutputPin *>(structuredNodeOutput));
+    emit structuredNodeOutputsChanged(this->structuredNodeOutputs());
 }
 
 void QUmlExpansionRegionObject::removeStructuredNodeOutput(QObject *structuredNodeOutput)
 {
     qmodelingelementproperty_cast<QUmlExpansionRegion *>(this)->removeStructuredNodeOutput(qmodelingelementproperty_cast<QUmlOutputPin *>(structuredNodeOutput));
+    emit structuredNodeOutputsChanged(this->structuredNodeOutputs());
 }
 
 void QUmlExpansionRegionObject::addVariable(QObject *variable)
 {
     qmodelingelementproperty_cast<QUmlExpansionRegion *>(this)->addVariable(qmodelingelementproperty_cast<QUmlVariable *>(variable));
+    emit variablesChanged(this->variables());
 }
 
 void QUmlExpansionRegionObject::removeVariable(QObject *variable)
 {
     qmodelingelementproperty_cast<QUmlExpansionRegion *>(this)->removeVariable(qmodelingelementproperty_cast<QUmlVariable *>(variable));
+    emit variablesChanged(this->variables());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ExpansionRegion]
@@ -942,16 +1015,19 @@ void QUmlExpansionRegionObject::removeVariable(QObject *variable)
 void QUmlExpansionRegionObject::addInputElement(QObject *inputElement)
 {
     qmodelingelementproperty_cast<QUmlExpansionRegion *>(this)->addInputElement(qmodelingelementproperty_cast<QUmlExpansionNode *>(inputElement));
+    emit inputElementsChanged(this->inputElements());
 }
 
 void QUmlExpansionRegionObject::removeInputElement(QObject *inputElement)
 {
     qmodelingelementproperty_cast<QUmlExpansionRegion *>(this)->removeInputElement(qmodelingelementproperty_cast<QUmlExpansionNode *>(inputElement));
+    emit inputElementsChanged(this->inputElements());
 }
 
 void QUmlExpansionRegionObject::setMode(QtUml::ExpansionKind mode)
 {
     qmodelingelementproperty_cast<QUmlExpansionRegion *>(this)->setMode(mode);
+    emit modeChanged(this->mode());
 }
 
 void QUmlExpansionRegionObject::unsetMode()
@@ -964,11 +1040,13 @@ void QUmlExpansionRegionObject::unsetMode()
 void QUmlExpansionRegionObject::addOutputElement(QObject *outputElement)
 {
     qmodelingelementproperty_cast<QUmlExpansionRegion *>(this)->addOutputElement(qmodelingelementproperty_cast<QUmlExpansionNode *>(outputElement));
+    emit outputElementsChanged(this->outputElements());
 }
 
 void QUmlExpansionRegionObject::removeOutputElement(QObject *outputElement)
 {
     qmodelingelementproperty_cast<QUmlExpansionRegion *>(this)->removeOutputElement(qmodelingelementproperty_cast<QUmlExpansionNode *>(outputElement));
+    emit outputElementsChanged(this->outputElements());
 }
 
 

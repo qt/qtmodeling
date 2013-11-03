@@ -238,26 +238,31 @@ QString QUmlMessageObject::separator() const
 void QUmlMessageObject::addOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlMessage *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlMessageObject::removeOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlMessage *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlMessageObject::addOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlMessage *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlMessageObject::removeOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlMessage *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlMessageObject::setOwner(QObject *owner)
 {
     qmodelingelementproperty_cast<QUmlMessage *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
+    emit ownerChanged(this->owner());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [NamedElement]
@@ -265,36 +270,43 @@ void QUmlMessageObject::setOwner(QObject *owner)
 void QUmlMessageObject::addClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlMessage *>(this)->addClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlMessageObject::removeClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlMessage *>(this)->removeClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlMessageObject::setName(QString name)
 {
     qmodelingelementproperty_cast<QUmlMessage *>(this)->setName(name);
+    emit nameChanged(this->name());
 }
 
 void QUmlMessageObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingelementproperty_cast<QUmlMessage *>(this)->setNameExpression(qmodelingelementproperty_cast<QUmlStringExpression *>(nameExpression));
+    emit nameExpressionChanged(this->nameExpression());
 }
 
 void QUmlMessageObject::setNamespace(QObject *namespace_)
 {
     qmodelingelementproperty_cast<QUmlMessage *>(this)->setNamespace(qmodelingelementproperty_cast<QUmlNamespace *>(namespace_));
+    emit namespaceChanged(this->namespace_());
 }
 
 void QUmlMessageObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingelementproperty_cast<QUmlMessage *>(this)->setQualifiedName(qualifiedName);
+    emit qualifiedNameChanged(this->qualifiedName());
 }
 
 void QUmlMessageObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingelementproperty_cast<QUmlMessage *>(this)->setVisibility(visibility);
+    emit visibilityChanged(this->visibility());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Message]
@@ -302,26 +314,31 @@ void QUmlMessageObject::setVisibility(QtUml::VisibilityKind visibility)
 void QUmlMessageObject::addArgument(QObject *argument)
 {
     qmodelingelementproperty_cast<QUmlMessage *>(this)->addArgument(qmodelingelementproperty_cast<QUmlValueSpecification *>(argument));
+    emit argumentsChanged(this->arguments());
 }
 
 void QUmlMessageObject::removeArgument(QObject *argument)
 {
     qmodelingelementproperty_cast<QUmlMessage *>(this)->removeArgument(qmodelingelementproperty_cast<QUmlValueSpecification *>(argument));
+    emit argumentsChanged(this->arguments());
 }
 
 void QUmlMessageObject::setConnector(QObject *connector)
 {
     qmodelingelementproperty_cast<QUmlMessage *>(this)->setConnector(qmodelingelementproperty_cast<QUmlConnector *>(connector));
+    emit connectorChanged(this->connector());
 }
 
 void QUmlMessageObject::setInteraction(QObject *interaction)
 {
     qmodelingelementproperty_cast<QUmlMessage *>(this)->setInteraction(qmodelingelementproperty_cast<QUmlInteraction *>(interaction));
+    emit interactionChanged(this->interaction());
 }
 
 void QUmlMessageObject::setMessageKind(QtUml::MessageKind messageKind)
 {
     qmodelingelementproperty_cast<QUmlMessage *>(this)->setMessageKind(messageKind);
+    emit messageKindChanged(this->messageKind());
 }
 
 void QUmlMessageObject::unsetMessageKind()
@@ -334,6 +351,7 @@ void QUmlMessageObject::unsetMessageKind()
 void QUmlMessageObject::setMessageSort(QtUml::MessageSort messageSort)
 {
     qmodelingelementproperty_cast<QUmlMessage *>(this)->setMessageSort(messageSort);
+    emit messageSortChanged(this->messageSort());
 }
 
 void QUmlMessageObject::unsetMessageSort()
@@ -346,16 +364,19 @@ void QUmlMessageObject::unsetMessageSort()
 void QUmlMessageObject::setReceiveEvent(QObject *receiveEvent)
 {
     qmodelingelementproperty_cast<QUmlMessage *>(this)->setReceiveEvent(qmodelingelementproperty_cast<QUmlMessageEnd *>(receiveEvent));
+    emit receiveEventChanged(this->receiveEvent());
 }
 
 void QUmlMessageObject::setSendEvent(QObject *sendEvent)
 {
     qmodelingelementproperty_cast<QUmlMessage *>(this)->setSendEvent(qmodelingelementproperty_cast<QUmlMessageEnd *>(sendEvent));
+    emit sendEventChanged(this->sendEvent());
 }
 
 void QUmlMessageObject::setSignature(QObject *signature)
 {
     qmodelingelementproperty_cast<QUmlMessage *>(this)->setSignature(qmodelingelementproperty_cast<QUmlNamedElement *>(signature));
+    emit signatureChanged(this->signature());
 }
 
 

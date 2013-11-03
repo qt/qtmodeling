@@ -60,13 +60,13 @@ class Q_UML_EXPORT QUmlQualifierValueObject : public QModelingObject
     Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [Element]
-    Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
-    Q_PROPERTY(QSet<QObject *> ownedElements READ ownedElements)
-    Q_PROPERTY(QObject * owner READ owner)
+    Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments NOTIFY ownedCommentsChanged)
+    Q_PROPERTY(QSet<QObject *> ownedElements READ ownedElements NOTIFY ownedElementsChanged)
+    Q_PROPERTY(QObject * owner READ owner NOTIFY ownerChanged)
 
     // Properties [QualifierValue]
-    Q_PROPERTY(QObject * qualifier READ qualifier WRITE setQualifier)
-    Q_PROPERTY(QObject * value READ value WRITE setValue)
+    Q_PROPERTY(QObject * qualifier READ qualifier WRITE setQualifier NOTIFY qualifierChanged)
+    Q_PROPERTY(QObject * value READ value WRITE setValue NOTIFY valueChanged)
 
 public:
     Q_INVOKABLE explicit QUmlQualifierValueObject(QUmlQualifierValue *modelingElement);
@@ -96,6 +96,17 @@ public Q_SLOTS:
     // Slots for owned attributes [QualifierValue]
     void setQualifier(QObject *qualifier = 0);
     void setValue(QObject *value = 0);
+
+Q_SIGNALS:
+
+    // Signals for owned attributes [Element]
+    void ownedCommentsChanged(QSet<QObject *> ownedComments);
+    void ownedElementsChanged(QSet<QObject *> ownedElements);
+    void ownerChanged(QObject *owner);
+
+    // Signals for owned attributes [QualifierValue]
+    void qualifierChanged(QObject *qualifier);
+    void valueChanged(QObject *value);
 
 protected:
     virtual void setGroupProperties();

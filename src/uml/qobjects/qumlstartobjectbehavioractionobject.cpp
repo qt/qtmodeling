@@ -389,26 +389,31 @@ bool QUmlStartObjectBehaviorActionObject::isRedefinitionContextValid(QObject *re
 void QUmlStartObjectBehaviorActionObject::addOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlStartObjectBehaviorAction *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlStartObjectBehaviorActionObject::removeOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlStartObjectBehaviorAction *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlStartObjectBehaviorActionObject::addOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlStartObjectBehaviorAction *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlStartObjectBehaviorActionObject::removeOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlStartObjectBehaviorAction *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlStartObjectBehaviorActionObject::setOwner(QObject *owner)
 {
     qmodelingelementproperty_cast<QUmlStartObjectBehaviorAction *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
+    emit ownerChanged(this->owner());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [NamedElement]
@@ -416,36 +421,43 @@ void QUmlStartObjectBehaviorActionObject::setOwner(QObject *owner)
 void QUmlStartObjectBehaviorActionObject::addClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlStartObjectBehaviorAction *>(this)->addClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlStartObjectBehaviorActionObject::removeClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlStartObjectBehaviorAction *>(this)->removeClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlStartObjectBehaviorActionObject::setName(QString name)
 {
     qmodelingelementproperty_cast<QUmlStartObjectBehaviorAction *>(this)->setName(name);
+    emit nameChanged(this->name());
 }
 
 void QUmlStartObjectBehaviorActionObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingelementproperty_cast<QUmlStartObjectBehaviorAction *>(this)->setNameExpression(qmodelingelementproperty_cast<QUmlStringExpression *>(nameExpression));
+    emit nameExpressionChanged(this->nameExpression());
 }
 
 void QUmlStartObjectBehaviorActionObject::setNamespace(QObject *namespace_)
 {
     qmodelingelementproperty_cast<QUmlStartObjectBehaviorAction *>(this)->setNamespace(qmodelingelementproperty_cast<QUmlNamespace *>(namespace_));
+    emit namespaceChanged(this->namespace_());
 }
 
 void QUmlStartObjectBehaviorActionObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingelementproperty_cast<QUmlStartObjectBehaviorAction *>(this)->setQualifiedName(qualifiedName);
+    emit qualifiedNameChanged(this->qualifiedName());
 }
 
 void QUmlStartObjectBehaviorActionObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingelementproperty_cast<QUmlStartObjectBehaviorAction *>(this)->setVisibility(visibility);
+    emit visibilityChanged(this->visibility());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [RedefinableElement]
@@ -453,6 +465,7 @@ void QUmlStartObjectBehaviorActionObject::setVisibility(QtUml::VisibilityKind vi
 void QUmlStartObjectBehaviorActionObject::setLeaf(bool isLeaf)
 {
     qmodelingelementproperty_cast<QUmlStartObjectBehaviorAction *>(this)->setLeaf(isLeaf);
+    emit isLeafChanged(this->isLeaf());
 }
 
 void QUmlStartObjectBehaviorActionObject::unsetLeaf()
@@ -465,21 +478,25 @@ void QUmlStartObjectBehaviorActionObject::unsetLeaf()
 void QUmlStartObjectBehaviorActionObject::addRedefinedElement(QObject *redefinedElement)
 {
     qmodelingelementproperty_cast<QUmlStartObjectBehaviorAction *>(this)->addRedefinedElement(qmodelingelementproperty_cast<QUmlRedefinableElement *>(redefinedElement));
+    emit redefinedElementsChanged(this->redefinedElements());
 }
 
 void QUmlStartObjectBehaviorActionObject::removeRedefinedElement(QObject *redefinedElement)
 {
     qmodelingelementproperty_cast<QUmlStartObjectBehaviorAction *>(this)->removeRedefinedElement(qmodelingelementproperty_cast<QUmlRedefinableElement *>(redefinedElement));
+    emit redefinedElementsChanged(this->redefinedElements());
 }
 
 void QUmlStartObjectBehaviorActionObject::addRedefinitionContext(QObject *redefinitionContext)
 {
     qmodelingelementproperty_cast<QUmlStartObjectBehaviorAction *>(this)->addRedefinitionContext(qmodelingelementproperty_cast<QUmlClassifier *>(redefinitionContext));
+    emit redefinitionContextsChanged(this->redefinitionContexts());
 }
 
 void QUmlStartObjectBehaviorActionObject::removeRedefinitionContext(QObject *redefinitionContext)
 {
     qmodelingelementproperty_cast<QUmlStartObjectBehaviorAction *>(this)->removeRedefinitionContext(qmodelingelementproperty_cast<QUmlClassifier *>(redefinitionContext));
+    emit redefinitionContextsChanged(this->redefinitionContexts());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ActivityNode]
@@ -487,71 +504,85 @@ void QUmlStartObjectBehaviorActionObject::removeRedefinitionContext(QObject *red
 void QUmlStartObjectBehaviorActionObject::setActivity(QObject *activity)
 {
     qmodelingelementproperty_cast<QUmlStartObjectBehaviorAction *>(this)->setActivity(qmodelingelementproperty_cast<QUmlActivity *>(activity));
+    emit activityChanged(this->activity());
 }
 
 void QUmlStartObjectBehaviorActionObject::addInGroup(QObject *inGroup)
 {
     qmodelingelementproperty_cast<QUmlStartObjectBehaviorAction *>(this)->addInGroup(qmodelingelementproperty_cast<QUmlActivityGroup *>(inGroup));
+    emit inGroupsChanged(this->inGroups());
 }
 
 void QUmlStartObjectBehaviorActionObject::removeInGroup(QObject *inGroup)
 {
     qmodelingelementproperty_cast<QUmlStartObjectBehaviorAction *>(this)->removeInGroup(qmodelingelementproperty_cast<QUmlActivityGroup *>(inGroup));
+    emit inGroupsChanged(this->inGroups());
 }
 
 void QUmlStartObjectBehaviorActionObject::addInInterruptibleRegion(QObject *inInterruptibleRegion)
 {
     qmodelingelementproperty_cast<QUmlStartObjectBehaviorAction *>(this)->addInInterruptibleRegion(qmodelingelementproperty_cast<QUmlInterruptibleActivityRegion *>(inInterruptibleRegion));
+    emit inInterruptibleRegionsChanged(this->inInterruptibleRegions());
 }
 
 void QUmlStartObjectBehaviorActionObject::removeInInterruptibleRegion(QObject *inInterruptibleRegion)
 {
     qmodelingelementproperty_cast<QUmlStartObjectBehaviorAction *>(this)->removeInInterruptibleRegion(qmodelingelementproperty_cast<QUmlInterruptibleActivityRegion *>(inInterruptibleRegion));
+    emit inInterruptibleRegionsChanged(this->inInterruptibleRegions());
 }
 
 void QUmlStartObjectBehaviorActionObject::addInPartition(QObject *inPartition)
 {
     qmodelingelementproperty_cast<QUmlStartObjectBehaviorAction *>(this)->addInPartition(qmodelingelementproperty_cast<QUmlActivityPartition *>(inPartition));
+    emit inPartitionsChanged(this->inPartitions());
 }
 
 void QUmlStartObjectBehaviorActionObject::removeInPartition(QObject *inPartition)
 {
     qmodelingelementproperty_cast<QUmlStartObjectBehaviorAction *>(this)->removeInPartition(qmodelingelementproperty_cast<QUmlActivityPartition *>(inPartition));
+    emit inPartitionsChanged(this->inPartitions());
 }
 
 void QUmlStartObjectBehaviorActionObject::setInStructuredNode(QObject *inStructuredNode)
 {
     qmodelingelementproperty_cast<QUmlStartObjectBehaviorAction *>(this)->setInStructuredNode(qmodelingelementproperty_cast<QUmlStructuredActivityNode *>(inStructuredNode));
+    emit inStructuredNodeChanged(this->inStructuredNode());
 }
 
 void QUmlStartObjectBehaviorActionObject::addIncoming(QObject *incoming)
 {
     qmodelingelementproperty_cast<QUmlStartObjectBehaviorAction *>(this)->addIncoming(qmodelingelementproperty_cast<QUmlActivityEdge *>(incoming));
+    emit incomingsChanged(this->incomings());
 }
 
 void QUmlStartObjectBehaviorActionObject::removeIncoming(QObject *incoming)
 {
     qmodelingelementproperty_cast<QUmlStartObjectBehaviorAction *>(this)->removeIncoming(qmodelingelementproperty_cast<QUmlActivityEdge *>(incoming));
+    emit incomingsChanged(this->incomings());
 }
 
 void QUmlStartObjectBehaviorActionObject::addOutgoing(QObject *outgoing)
 {
     qmodelingelementproperty_cast<QUmlStartObjectBehaviorAction *>(this)->addOutgoing(qmodelingelementproperty_cast<QUmlActivityEdge *>(outgoing));
+    emit outgoingsChanged(this->outgoings());
 }
 
 void QUmlStartObjectBehaviorActionObject::removeOutgoing(QObject *outgoing)
 {
     qmodelingelementproperty_cast<QUmlStartObjectBehaviorAction *>(this)->removeOutgoing(qmodelingelementproperty_cast<QUmlActivityEdge *>(outgoing));
+    emit outgoingsChanged(this->outgoings());
 }
 
 void QUmlStartObjectBehaviorActionObject::addRedefinedNode(QObject *redefinedNode)
 {
     qmodelingelementproperty_cast<QUmlStartObjectBehaviorAction *>(this)->addRedefinedNode(qmodelingelementproperty_cast<QUmlActivityNode *>(redefinedNode));
+    emit redefinedNodesChanged(this->redefinedNodes());
 }
 
 void QUmlStartObjectBehaviorActionObject::removeRedefinedNode(QObject *redefinedNode)
 {
     qmodelingelementproperty_cast<QUmlStartObjectBehaviorAction *>(this)->removeRedefinedNode(qmodelingelementproperty_cast<QUmlActivityNode *>(redefinedNode));
+    emit redefinedNodesChanged(this->redefinedNodes());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ExecutableNode]
@@ -559,11 +590,13 @@ void QUmlStartObjectBehaviorActionObject::removeRedefinedNode(QObject *redefined
 void QUmlStartObjectBehaviorActionObject::addHandler(QObject *handler)
 {
     qmodelingelementproperty_cast<QUmlStartObjectBehaviorAction *>(this)->addHandler(qmodelingelementproperty_cast<QUmlExceptionHandler *>(handler));
+    emit handlersChanged(this->handlers());
 }
 
 void QUmlStartObjectBehaviorActionObject::removeHandler(QObject *handler)
 {
     qmodelingelementproperty_cast<QUmlStartObjectBehaviorAction *>(this)->removeHandler(qmodelingelementproperty_cast<QUmlExceptionHandler *>(handler));
+    emit handlersChanged(this->handlers());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Action]
@@ -571,21 +604,25 @@ void QUmlStartObjectBehaviorActionObject::removeHandler(QObject *handler)
 void QUmlStartObjectBehaviorActionObject::setContext(QObject *context)
 {
     qmodelingelementproperty_cast<QUmlStartObjectBehaviorAction *>(this)->setContext(qmodelingelementproperty_cast<QUmlClassifier *>(context));
+    emit contextChanged(this->context());
 }
 
 void QUmlStartObjectBehaviorActionObject::addInput(QObject *input)
 {
     qmodelingelementproperty_cast<QUmlStartObjectBehaviorAction *>(this)->addInput(qmodelingelementproperty_cast<QUmlInputPin *>(input));
+    emit inputsChanged(this->inputs());
 }
 
 void QUmlStartObjectBehaviorActionObject::removeInput(QObject *input)
 {
     qmodelingelementproperty_cast<QUmlStartObjectBehaviorAction *>(this)->removeInput(qmodelingelementproperty_cast<QUmlInputPin *>(input));
+    emit inputsChanged(this->inputs());
 }
 
 void QUmlStartObjectBehaviorActionObject::setLocallyReentrant(bool isLocallyReentrant)
 {
     qmodelingelementproperty_cast<QUmlStartObjectBehaviorAction *>(this)->setLocallyReentrant(isLocallyReentrant);
+    emit isLocallyReentrantChanged(this->isLocallyReentrant());
 }
 
 void QUmlStartObjectBehaviorActionObject::unsetLocallyReentrant()
@@ -598,31 +635,37 @@ void QUmlStartObjectBehaviorActionObject::unsetLocallyReentrant()
 void QUmlStartObjectBehaviorActionObject::addLocalPostcondition(QObject *localPostcondition)
 {
     qmodelingelementproperty_cast<QUmlStartObjectBehaviorAction *>(this)->addLocalPostcondition(qmodelingelementproperty_cast<QUmlConstraint *>(localPostcondition));
+    emit localPostconditionsChanged(this->localPostconditions());
 }
 
 void QUmlStartObjectBehaviorActionObject::removeLocalPostcondition(QObject *localPostcondition)
 {
     qmodelingelementproperty_cast<QUmlStartObjectBehaviorAction *>(this)->removeLocalPostcondition(qmodelingelementproperty_cast<QUmlConstraint *>(localPostcondition));
+    emit localPostconditionsChanged(this->localPostconditions());
 }
 
 void QUmlStartObjectBehaviorActionObject::addLocalPrecondition(QObject *localPrecondition)
 {
     qmodelingelementproperty_cast<QUmlStartObjectBehaviorAction *>(this)->addLocalPrecondition(qmodelingelementproperty_cast<QUmlConstraint *>(localPrecondition));
+    emit localPreconditionsChanged(this->localPreconditions());
 }
 
 void QUmlStartObjectBehaviorActionObject::removeLocalPrecondition(QObject *localPrecondition)
 {
     qmodelingelementproperty_cast<QUmlStartObjectBehaviorAction *>(this)->removeLocalPrecondition(qmodelingelementproperty_cast<QUmlConstraint *>(localPrecondition));
+    emit localPreconditionsChanged(this->localPreconditions());
 }
 
 void QUmlStartObjectBehaviorActionObject::addOutput(QObject *output)
 {
     qmodelingelementproperty_cast<QUmlStartObjectBehaviorAction *>(this)->addOutput(qmodelingelementproperty_cast<QUmlOutputPin *>(output));
+    emit outputsChanged(this->outputs());
 }
 
 void QUmlStartObjectBehaviorActionObject::removeOutput(QObject *output)
 {
     qmodelingelementproperty_cast<QUmlStartObjectBehaviorAction *>(this)->removeOutput(qmodelingelementproperty_cast<QUmlOutputPin *>(output));
+    emit outputsChanged(this->outputs());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [InvocationAction]
@@ -630,16 +673,19 @@ void QUmlStartObjectBehaviorActionObject::removeOutput(QObject *output)
 void QUmlStartObjectBehaviorActionObject::addArgument(QObject *argument)
 {
     qmodelingelementproperty_cast<QUmlStartObjectBehaviorAction *>(this)->addArgument(qmodelingelementproperty_cast<QUmlInputPin *>(argument));
+    emit argumentsChanged(this->arguments());
 }
 
 void QUmlStartObjectBehaviorActionObject::removeArgument(QObject *argument)
 {
     qmodelingelementproperty_cast<QUmlStartObjectBehaviorAction *>(this)->removeArgument(qmodelingelementproperty_cast<QUmlInputPin *>(argument));
+    emit argumentsChanged(this->arguments());
 }
 
 void QUmlStartObjectBehaviorActionObject::setOnPort(QObject *onPort)
 {
     qmodelingelementproperty_cast<QUmlStartObjectBehaviorAction *>(this)->setOnPort(qmodelingelementproperty_cast<QUmlPort *>(onPort));
+    emit onPortChanged(this->onPort());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [CallAction]
@@ -647,6 +693,7 @@ void QUmlStartObjectBehaviorActionObject::setOnPort(QObject *onPort)
 void QUmlStartObjectBehaviorActionObject::setSynchronous(bool isSynchronous)
 {
     qmodelingelementproperty_cast<QUmlStartObjectBehaviorAction *>(this)->setSynchronous(isSynchronous);
+    emit isSynchronousChanged(this->isSynchronous());
 }
 
 void QUmlStartObjectBehaviorActionObject::unsetSynchronous()
@@ -660,11 +707,13 @@ void QUmlStartObjectBehaviorActionObject::unsetSynchronous()
 void QUmlStartObjectBehaviorActionObject::addResult(QObject *result)
 {
     qmodelingelementproperty_cast<QUmlStartObjectBehaviorAction *>(this)->addResult(qmodelingelementproperty_cast<QUmlOutputPin *>(result));
+    emit resultsChanged(this->results());
 }
 
 void QUmlStartObjectBehaviorActionObject::removeResult(QObject *result)
 {
     qmodelingelementproperty_cast<QUmlStartObjectBehaviorAction *>(this)->removeResult(qmodelingelementproperty_cast<QUmlOutputPin *>(result));
+    emit resultsChanged(this->results());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [StartObjectBehaviorAction]
@@ -672,6 +721,7 @@ void QUmlStartObjectBehaviorActionObject::removeResult(QObject *result)
 void QUmlStartObjectBehaviorActionObject::setObject(QObject *object)
 {
     qmodelingelementproperty_cast<QUmlStartObjectBehaviorAction *>(this)->setObject(qmodelingelementproperty_cast<QUmlInputPin *>(object));
+    emit objectChanged(this->object());
 }
 
 

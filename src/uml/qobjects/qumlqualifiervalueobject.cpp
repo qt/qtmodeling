@@ -120,26 +120,31 @@ bool QUmlQualifierValueObject::mustBeOwned() const
 void QUmlQualifierValueObject::addOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlQualifierValue *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlQualifierValueObject::removeOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlQualifierValue *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlQualifierValueObject::addOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlQualifierValue *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlQualifierValueObject::removeOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlQualifierValue *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlQualifierValueObject::setOwner(QObject *owner)
 {
     qmodelingelementproperty_cast<QUmlQualifierValue *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
+    emit ownerChanged(this->owner());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [QualifierValue]
@@ -147,11 +152,13 @@ void QUmlQualifierValueObject::setOwner(QObject *owner)
 void QUmlQualifierValueObject::setQualifier(QObject *qualifier)
 {
     qmodelingelementproperty_cast<QUmlQualifierValue *>(this)->setQualifier(qmodelingelementproperty_cast<QUmlProperty *>(qualifier));
+    emit qualifierChanged(this->qualifier());
 }
 
 void QUmlQualifierValueObject::setValue(QObject *value)
 {
     qmodelingelementproperty_cast<QUmlQualifierValue *>(this)->setValue(qmodelingelementproperty_cast<QUmlInputPin *>(value));
+    emit valueChanged(this->value());
 }
 
 

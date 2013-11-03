@@ -235,26 +235,31 @@ QString QUmlConstraintObject::separator() const
 void QUmlConstraintObject::addOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlConstraint *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlConstraintObject::removeOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlConstraint *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlConstraintObject::addOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlConstraint *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlConstraintObject::removeOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlConstraint *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlConstraintObject::setOwner(QObject *owner)
 {
     qmodelingelementproperty_cast<QUmlConstraint *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
+    emit ownerChanged(this->owner());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ParameterableElement]
@@ -262,11 +267,13 @@ void QUmlConstraintObject::setOwner(QObject *owner)
 void QUmlConstraintObject::setOwningTemplateParameter(QObject *owningTemplateParameter)
 {
     qmodelingelementproperty_cast<QUmlConstraint *>(this)->setOwningTemplateParameter(qmodelingelementproperty_cast<QUmlTemplateParameter *>(owningTemplateParameter));
+    emit owningTemplateParameterChanged(this->owningTemplateParameter());
 }
 
 void QUmlConstraintObject::setTemplateParameter(QObject *templateParameter)
 {
     qmodelingelementproperty_cast<QUmlConstraint *>(this)->setTemplateParameter(qmodelingelementproperty_cast<QUmlTemplateParameter *>(templateParameter));
+    emit templateParameterChanged(this->templateParameter());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [NamedElement]
@@ -274,37 +281,44 @@ void QUmlConstraintObject::setTemplateParameter(QObject *templateParameter)
 void QUmlConstraintObject::addClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlConstraint *>(this)->addClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlConstraintObject::removeClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlConstraint *>(this)->removeClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlConstraintObject::setName(QString name)
 {
     qmodelingelementproperty_cast<QUmlConstraint *>(this)->setName(name);
+    emit nameChanged(this->name());
 }
 
 void QUmlConstraintObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingelementproperty_cast<QUmlConstraint *>(this)->setNameExpression(qmodelingelementproperty_cast<QUmlStringExpression *>(nameExpression));
+    emit nameExpressionChanged(this->nameExpression());
 }
 
 void QUmlConstraintObject::setNamespace(QObject *namespace_)
 {
     qmodelingelementproperty_cast<QUmlConstraint *>(this)->setNamespace(qmodelingelementproperty_cast<QUmlNamespace *>(namespace_));
+    emit namespaceChanged(this->namespace_());
 }
 
 void QUmlConstraintObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingelementproperty_cast<QUmlConstraint *>(this)->setQualifiedName(qualifiedName);
+    emit qualifiedNameChanged(this->qualifiedName());
 }
 // SLOTS FOR OWNED ATTRIBUTES [PackageableElement]
 
 void QUmlConstraintObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingelementproperty_cast<QUmlConstraint *>(this)->setVisibility(visibility);
+    emit visibilityChanged(this->visibility());
 }
 
 void QUmlConstraintObject::unsetVisibility()
@@ -319,21 +333,25 @@ void QUmlConstraintObject::unsetVisibility()
 void QUmlConstraintObject::addConstrainedElement(QObject *constrainedElement)
 {
     qmodelingelementproperty_cast<QUmlConstraint *>(this)->addConstrainedElement(qmodelingelementproperty_cast<QUmlElement *>(constrainedElement));
+    emit constrainedElementsChanged(this->constrainedElements());
 }
 
 void QUmlConstraintObject::removeConstrainedElement(QObject *constrainedElement)
 {
     qmodelingelementproperty_cast<QUmlConstraint *>(this)->removeConstrainedElement(qmodelingelementproperty_cast<QUmlElement *>(constrainedElement));
+    emit constrainedElementsChanged(this->constrainedElements());
 }
 
 void QUmlConstraintObject::setContext(QObject *context)
 {
     qmodelingelementproperty_cast<QUmlConstraint *>(this)->setContext(qmodelingelementproperty_cast<QUmlNamespace *>(context));
+    emit contextChanged(this->context());
 }
 
 void QUmlConstraintObject::setSpecification(QObject *specification)
 {
     qmodelingelementproperty_cast<QUmlConstraint *>(this)->setSpecification(qmodelingelementproperty_cast<QUmlValueSpecification *>(specification));
+    emit specificationChanged(this->specification());
 }
 
 

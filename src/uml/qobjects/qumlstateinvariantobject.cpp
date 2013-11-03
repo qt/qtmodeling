@@ -223,26 +223,31 @@ QString QUmlStateInvariantObject::separator() const
 void QUmlStateInvariantObject::addOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlStateInvariant *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlStateInvariantObject::removeOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlStateInvariant *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlStateInvariantObject::addOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlStateInvariant *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlStateInvariantObject::removeOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlStateInvariant *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlStateInvariantObject::setOwner(QObject *owner)
 {
     qmodelingelementproperty_cast<QUmlStateInvariant *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
+    emit ownerChanged(this->owner());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [NamedElement]
@@ -250,36 +255,43 @@ void QUmlStateInvariantObject::setOwner(QObject *owner)
 void QUmlStateInvariantObject::addClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlStateInvariant *>(this)->addClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlStateInvariantObject::removeClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlStateInvariant *>(this)->removeClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlStateInvariantObject::setName(QString name)
 {
     qmodelingelementproperty_cast<QUmlStateInvariant *>(this)->setName(name);
+    emit nameChanged(this->name());
 }
 
 void QUmlStateInvariantObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingelementproperty_cast<QUmlStateInvariant *>(this)->setNameExpression(qmodelingelementproperty_cast<QUmlStringExpression *>(nameExpression));
+    emit nameExpressionChanged(this->nameExpression());
 }
 
 void QUmlStateInvariantObject::setNamespace(QObject *namespace_)
 {
     qmodelingelementproperty_cast<QUmlStateInvariant *>(this)->setNamespace(qmodelingelementproperty_cast<QUmlNamespace *>(namespace_));
+    emit namespaceChanged(this->namespace_());
 }
 
 void QUmlStateInvariantObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingelementproperty_cast<QUmlStateInvariant *>(this)->setQualifiedName(qualifiedName);
+    emit qualifiedNameChanged(this->qualifiedName());
 }
 
 void QUmlStateInvariantObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingelementproperty_cast<QUmlStateInvariant *>(this)->setVisibility(visibility);
+    emit visibilityChanged(this->visibility());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [InteractionFragment]
@@ -287,21 +299,25 @@ void QUmlStateInvariantObject::setVisibility(QtUml::VisibilityKind visibility)
 void QUmlStateInvariantObject::setEnclosingInteraction(QObject *enclosingInteraction)
 {
     qmodelingelementproperty_cast<QUmlStateInvariant *>(this)->setEnclosingInteraction(qmodelingelementproperty_cast<QUmlInteraction *>(enclosingInteraction));
+    emit enclosingInteractionChanged(this->enclosingInteraction());
 }
 
 void QUmlStateInvariantObject::setEnclosingOperand(QObject *enclosingOperand)
 {
     qmodelingelementproperty_cast<QUmlStateInvariant *>(this)->setEnclosingOperand(qmodelingelementproperty_cast<QUmlInteractionOperand *>(enclosingOperand));
+    emit enclosingOperandChanged(this->enclosingOperand());
 }
 
 void QUmlStateInvariantObject::addGeneralOrdering(QObject *generalOrdering)
 {
     qmodelingelementproperty_cast<QUmlStateInvariant *>(this)->addGeneralOrdering(qmodelingelementproperty_cast<QUmlGeneralOrdering *>(generalOrdering));
+    emit generalOrderingsChanged(this->generalOrderings());
 }
 
 void QUmlStateInvariantObject::removeGeneralOrdering(QObject *generalOrdering)
 {
     qmodelingelementproperty_cast<QUmlStateInvariant *>(this)->removeGeneralOrdering(qmodelingelementproperty_cast<QUmlGeneralOrdering *>(generalOrdering));
+    emit generalOrderingsChanged(this->generalOrderings());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [StateInvariant]
@@ -309,11 +325,13 @@ void QUmlStateInvariantObject::removeGeneralOrdering(QObject *generalOrdering)
 void QUmlStateInvariantObject::setCovered(QObject *covered)
 {
     qmodelingelementproperty_cast<QUmlStateInvariant *>(this)->setCovered(qmodelingelementproperty_cast<QUmlLifeline *>(covered));
+    emit coveredChanged(this->covered());
 }
 
 void QUmlStateInvariantObject::setInvariant(QObject *invariant)
 {
     qmodelingelementproperty_cast<QUmlStateInvariant *>(this)->setInvariant(qmodelingelementproperty_cast<QUmlConstraint *>(invariant));
+    emit invariantChanged(this->invariant());
 }
 
 

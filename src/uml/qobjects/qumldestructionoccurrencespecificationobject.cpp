@@ -241,26 +241,31 @@ QString QUmlDestructionOccurrenceSpecificationObject::separator() const
 void QUmlDestructionOccurrenceSpecificationObject::addOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlDestructionOccurrenceSpecification *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlDestructionOccurrenceSpecificationObject::removeOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlDestructionOccurrenceSpecification *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlDestructionOccurrenceSpecificationObject::addOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlDestructionOccurrenceSpecification *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlDestructionOccurrenceSpecificationObject::removeOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlDestructionOccurrenceSpecification *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlDestructionOccurrenceSpecificationObject::setOwner(QObject *owner)
 {
     qmodelingelementproperty_cast<QUmlDestructionOccurrenceSpecification *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
+    emit ownerChanged(this->owner());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [NamedElement]
@@ -268,36 +273,43 @@ void QUmlDestructionOccurrenceSpecificationObject::setOwner(QObject *owner)
 void QUmlDestructionOccurrenceSpecificationObject::addClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlDestructionOccurrenceSpecification *>(this)->addClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlDestructionOccurrenceSpecificationObject::removeClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlDestructionOccurrenceSpecification *>(this)->removeClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlDestructionOccurrenceSpecificationObject::setName(QString name)
 {
     qmodelingelementproperty_cast<QUmlDestructionOccurrenceSpecification *>(this)->setName(name);
+    emit nameChanged(this->name());
 }
 
 void QUmlDestructionOccurrenceSpecificationObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingelementproperty_cast<QUmlDestructionOccurrenceSpecification *>(this)->setNameExpression(qmodelingelementproperty_cast<QUmlStringExpression *>(nameExpression));
+    emit nameExpressionChanged(this->nameExpression());
 }
 
 void QUmlDestructionOccurrenceSpecificationObject::setNamespace(QObject *namespace_)
 {
     qmodelingelementproperty_cast<QUmlDestructionOccurrenceSpecification *>(this)->setNamespace(qmodelingelementproperty_cast<QUmlNamespace *>(namespace_));
+    emit namespaceChanged(this->namespace_());
 }
 
 void QUmlDestructionOccurrenceSpecificationObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingelementproperty_cast<QUmlDestructionOccurrenceSpecification *>(this)->setQualifiedName(qualifiedName);
+    emit qualifiedNameChanged(this->qualifiedName());
 }
 
 void QUmlDestructionOccurrenceSpecificationObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingelementproperty_cast<QUmlDestructionOccurrenceSpecification *>(this)->setVisibility(visibility);
+    emit visibilityChanged(this->visibility());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [InteractionFragment]
@@ -305,21 +317,25 @@ void QUmlDestructionOccurrenceSpecificationObject::setVisibility(QtUml::Visibili
 void QUmlDestructionOccurrenceSpecificationObject::setEnclosingInteraction(QObject *enclosingInteraction)
 {
     qmodelingelementproperty_cast<QUmlDestructionOccurrenceSpecification *>(this)->setEnclosingInteraction(qmodelingelementproperty_cast<QUmlInteraction *>(enclosingInteraction));
+    emit enclosingInteractionChanged(this->enclosingInteraction());
 }
 
 void QUmlDestructionOccurrenceSpecificationObject::setEnclosingOperand(QObject *enclosingOperand)
 {
     qmodelingelementproperty_cast<QUmlDestructionOccurrenceSpecification *>(this)->setEnclosingOperand(qmodelingelementproperty_cast<QUmlInteractionOperand *>(enclosingOperand));
+    emit enclosingOperandChanged(this->enclosingOperand());
 }
 
 void QUmlDestructionOccurrenceSpecificationObject::addGeneralOrdering(QObject *generalOrdering)
 {
     qmodelingelementproperty_cast<QUmlDestructionOccurrenceSpecification *>(this)->addGeneralOrdering(qmodelingelementproperty_cast<QUmlGeneralOrdering *>(generalOrdering));
+    emit generalOrderingsChanged(this->generalOrderings());
 }
 
 void QUmlDestructionOccurrenceSpecificationObject::removeGeneralOrdering(QObject *generalOrdering)
 {
     qmodelingelementproperty_cast<QUmlDestructionOccurrenceSpecification *>(this)->removeGeneralOrdering(qmodelingelementproperty_cast<QUmlGeneralOrdering *>(generalOrdering));
+    emit generalOrderingsChanged(this->generalOrderings());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [OccurrenceSpecification]
@@ -327,26 +343,31 @@ void QUmlDestructionOccurrenceSpecificationObject::removeGeneralOrdering(QObject
 void QUmlDestructionOccurrenceSpecificationObject::setCovered(QObject *covered)
 {
     qmodelingelementproperty_cast<QUmlDestructionOccurrenceSpecification *>(this)->setCovered(qmodelingelementproperty_cast<QUmlLifeline *>(covered));
+    emit coveredChanged(this->covered());
 }
 
 void QUmlDestructionOccurrenceSpecificationObject::addToAfter(QObject *toAfter)
 {
     qmodelingelementproperty_cast<QUmlDestructionOccurrenceSpecification *>(this)->addToAfter(qmodelingelementproperty_cast<QUmlGeneralOrdering *>(toAfter));
+    emit toAftersChanged(this->toAfters());
 }
 
 void QUmlDestructionOccurrenceSpecificationObject::removeToAfter(QObject *toAfter)
 {
     qmodelingelementproperty_cast<QUmlDestructionOccurrenceSpecification *>(this)->removeToAfter(qmodelingelementproperty_cast<QUmlGeneralOrdering *>(toAfter));
+    emit toAftersChanged(this->toAfters());
 }
 
 void QUmlDestructionOccurrenceSpecificationObject::addToBefore(QObject *toBefore)
 {
     qmodelingelementproperty_cast<QUmlDestructionOccurrenceSpecification *>(this)->addToBefore(qmodelingelementproperty_cast<QUmlGeneralOrdering *>(toBefore));
+    emit toBeforesChanged(this->toBefores());
 }
 
 void QUmlDestructionOccurrenceSpecificationObject::removeToBefore(QObject *toBefore)
 {
     qmodelingelementproperty_cast<QUmlDestructionOccurrenceSpecification *>(this)->removeToBefore(qmodelingelementproperty_cast<QUmlGeneralOrdering *>(toBefore));
+    emit toBeforesChanged(this->toBefores());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [MessageEnd]
@@ -354,6 +375,7 @@ void QUmlDestructionOccurrenceSpecificationObject::removeToBefore(QObject *toBef
 void QUmlDestructionOccurrenceSpecificationObject::setMessage(QObject *message)
 {
     qmodelingelementproperty_cast<QUmlDestructionOccurrenceSpecification *>(this)->setMessage(qmodelingelementproperty_cast<QUmlMessage *>(message));
+    emit messageChanged(this->message());
 }
 
 

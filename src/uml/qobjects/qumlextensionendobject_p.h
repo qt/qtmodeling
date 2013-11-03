@@ -62,72 +62,72 @@ class Q_UML_EXPORT QUmlExtensionEndObject : public QModelingObject
     Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [Element]
-    Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
-    Q_PROPERTY(QSet<QObject *> ownedElements READ ownedElements)
-    Q_PROPERTY(QObject * owner READ owner)
+    Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments NOTIFY ownedCommentsChanged)
+    Q_PROPERTY(QSet<QObject *> ownedElements READ ownedElements NOTIFY ownedElementsChanged)
+    Q_PROPERTY(QObject * owner READ owner NOTIFY ownerChanged)
 
     // Properties [NamedElement]
-    Q_PROPERTY(QSet<QObject *> clientDependencies READ clientDependencies)
-    Q_PROPERTY(QString name READ name WRITE setName)
-    Q_PROPERTY(QObject * nameExpression READ nameExpression WRITE setNameExpression)
-    Q_PROPERTY(QObject * namespace_ READ namespace_)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
+    Q_PROPERTY(QSet<QObject *> clientDependencies READ clientDependencies NOTIFY clientDependenciesChanged)
+    Q_PROPERTY(QString name READ name WRITE setName NOTIFY nameChanged)
+    Q_PROPERTY(QObject * nameExpression READ nameExpression WRITE setNameExpression NOTIFY nameExpressionChanged)
+    Q_PROPERTY(QObject * namespace_ READ namespace_ NOTIFY namespaceChanged)
+    Q_PROPERTY(QString qualifiedName READ qualifiedName NOTIFY qualifiedNameChanged STORED false)
+    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility NOTIFY visibilityChanged)
 
     // Properties [TypedElement]
 
     // Properties [MultiplicityElement]
-    Q_PROPERTY(bool isOrdered READ isOrdered WRITE setOrdered RESET unsetOrdered)
-    Q_PROPERTY(bool isUnique READ isUnique WRITE setUnique RESET unsetUnique)
-    Q_PROPERTY(QObject * lowerValue READ lowerValue WRITE setLowerValue)
-    Q_PROPERTY(int upper READ upper WRITE setUpper RESET unsetUpper STORED false)
-    Q_PROPERTY(QObject * upperValue READ upperValue WRITE setUpperValue)
+    Q_PROPERTY(bool isOrdered READ isOrdered WRITE setOrdered NOTIFY isOrderedChanged RESET unsetOrdered)
+    Q_PROPERTY(bool isUnique READ isUnique WRITE setUnique NOTIFY isUniqueChanged RESET unsetUnique)
+    Q_PROPERTY(QObject * lowerValue READ lowerValue WRITE setLowerValue NOTIFY lowerValueChanged)
+    Q_PROPERTY(int upper READ upper WRITE setUpper NOTIFY upperChanged RESET unsetUpper STORED false)
+    Q_PROPERTY(QObject * upperValue READ upperValue WRITE setUpperValue NOTIFY upperValueChanged)
 
     // Properties [RedefinableElement]
-    Q_PROPERTY(bool isLeaf READ isLeaf WRITE setLeaf RESET unsetLeaf)
-    Q_PROPERTY(QSet<QObject *> redefinedElements READ redefinedElements)
-    Q_PROPERTY(QSet<QObject *> redefinitionContexts READ redefinitionContexts)
+    Q_PROPERTY(bool isLeaf READ isLeaf WRITE setLeaf NOTIFY isLeafChanged RESET unsetLeaf)
+    Q_PROPERTY(QSet<QObject *> redefinedElements READ redefinedElements NOTIFY redefinedElementsChanged)
+    Q_PROPERTY(QSet<QObject *> redefinitionContexts READ redefinitionContexts NOTIFY redefinitionContextsChanged)
 
     // Properties [Feature]
-    Q_PROPERTY(QSet<QObject *> featuringClassifiers READ featuringClassifiers)
-    Q_PROPERTY(bool isStatic READ isStatic WRITE setStatic RESET unsetStatic)
+    Q_PROPERTY(QSet<QObject *> featuringClassifiers READ featuringClassifiers NOTIFY featuringClassifiersChanged)
+    Q_PROPERTY(bool isStatic READ isStatic WRITE setStatic NOTIFY isStaticChanged RESET unsetStatic)
 
     // Properties [StructuralFeature]
 
     // Properties [ParameterableElement]
-    Q_PROPERTY(QObject * owningTemplateParameter READ owningTemplateParameter WRITE setOwningTemplateParameter)
+    Q_PROPERTY(QObject * owningTemplateParameter READ owningTemplateParameter WRITE setOwningTemplateParameter NOTIFY owningTemplateParameterChanged)
 
     // Properties [ConnectableElement]
-    Q_PROPERTY(QList<QObject *> ends READ ends STORED false)
-    Q_PROPERTY(QObject * templateParameter READ templateParameter WRITE setTemplateParameter)
+    Q_PROPERTY(QList<QObject *> ends READ ends NOTIFY endsChanged STORED false)
+    Q_PROPERTY(QObject * templateParameter READ templateParameter WRITE setTemplateParameter NOTIFY templateParameterChanged)
 
     // Properties [DeploymentTarget]
-    Q_PROPERTY(QSet<QObject *> deployedElements READ deployedElements STORED false)
-    Q_PROPERTY(QSet<QObject *> deployments READ deployments)
+    Q_PROPERTY(QSet<QObject *> deployedElements READ deployedElements NOTIFY deployedElementsChanged STORED false)
+    Q_PROPERTY(QSet<QObject *> deployments READ deployments NOTIFY deploymentsChanged)
 
     // Properties [Property]
-    Q_PROPERTY(QtUml::AggregationKind aggregation READ aggregation WRITE setAggregation RESET unsetAggregation)
-    Q_PROPERTY(QObject * association READ association WRITE setAssociation)
-    Q_PROPERTY(QObject * associationEnd READ associationEnd WRITE setAssociationEnd)
-    Q_PROPERTY(QObject * class_ READ class_ WRITE setClass)
-    Q_PROPERTY(QObject * datatype READ datatype WRITE setDatatype)
-    Q_PROPERTY(QString default_ READ default_ WRITE setDefault STORED false)
-    Q_PROPERTY(QObject * defaultValue READ defaultValue WRITE setDefaultValue)
-    Q_PROPERTY(QObject * interface_ READ interface_ WRITE setInterface)
-    Q_PROPERTY(bool isComposite READ isComposite WRITE setComposite RESET unsetComposite STORED false)
-    Q_PROPERTY(bool isDerived READ isDerived WRITE setDerived RESET unsetDerived)
-    Q_PROPERTY(bool isDerivedUnion READ isDerivedUnion WRITE setDerivedUnion RESET unsetDerivedUnion)
-    Q_PROPERTY(bool isID READ isID WRITE setID RESET unsetID)
-    Q_PROPERTY(bool isReadOnly READ isReadOnly WRITE setReadOnly RESET unsetReadOnly)
-    Q_PROPERTY(QObject * opposite READ opposite WRITE setOpposite STORED false)
-    Q_PROPERTY(QObject * owningAssociation READ owningAssociation WRITE setOwningAssociation)
-    Q_PROPERTY(QList<QObject *> qualifiers READ qualifiers)
-    Q_PROPERTY(QSet<QObject *> redefinedProperties READ redefinedProperties)
-    Q_PROPERTY(QSet<QObject *> subsettedProperties READ subsettedProperties)
+    Q_PROPERTY(QtUml::AggregationKind aggregation READ aggregation WRITE setAggregation NOTIFY aggregationChanged RESET unsetAggregation)
+    Q_PROPERTY(QObject * association READ association WRITE setAssociation NOTIFY associationChanged)
+    Q_PROPERTY(QObject * associationEnd READ associationEnd WRITE setAssociationEnd NOTIFY associationEndChanged)
+    Q_PROPERTY(QObject * class_ READ class_ WRITE setClass NOTIFY classChanged)
+    Q_PROPERTY(QObject * datatype READ datatype WRITE setDatatype NOTIFY datatypeChanged)
+    Q_PROPERTY(QString default_ READ default_ WRITE setDefault NOTIFY defaultChanged STORED false)
+    Q_PROPERTY(QObject * defaultValue READ defaultValue WRITE setDefaultValue NOTIFY defaultValueChanged)
+    Q_PROPERTY(QObject * interface_ READ interface_ WRITE setInterface NOTIFY interfaceChanged)
+    Q_PROPERTY(bool isComposite READ isComposite WRITE setComposite NOTIFY isCompositeChanged RESET unsetComposite STORED false)
+    Q_PROPERTY(bool isDerived READ isDerived WRITE setDerived NOTIFY isDerivedChanged RESET unsetDerived)
+    Q_PROPERTY(bool isDerivedUnion READ isDerivedUnion WRITE setDerivedUnion NOTIFY isDerivedUnionChanged RESET unsetDerivedUnion)
+    Q_PROPERTY(bool isID READ isID WRITE setID NOTIFY isIDChanged RESET unsetID)
+    Q_PROPERTY(bool isReadOnly READ isReadOnly WRITE setReadOnly NOTIFY isReadOnlyChanged RESET unsetReadOnly)
+    Q_PROPERTY(QObject * opposite READ opposite WRITE setOpposite NOTIFY oppositeChanged STORED false)
+    Q_PROPERTY(QObject * owningAssociation READ owningAssociation WRITE setOwningAssociation NOTIFY owningAssociationChanged)
+    Q_PROPERTY(QList<QObject *> qualifiers READ qualifiers NOTIFY qualifiersChanged)
+    Q_PROPERTY(QSet<QObject *> redefinedProperties READ redefinedProperties NOTIFY redefinedPropertiesChanged)
+    Q_PROPERTY(QSet<QObject *> subsettedProperties READ subsettedProperties NOTIFY subsettedPropertiesChanged)
 
     // Properties [ExtensionEnd]
-    Q_PROPERTY(int lower READ lower WRITE setLower RESET unsetLower STORED false)
-    Q_PROPERTY(QObject * type READ type WRITE setType)
+    Q_PROPERTY(int lower READ lower WRITE setLower NOTIFY lowerChanged RESET unsetLower STORED false)
+    Q_PROPERTY(QObject * type READ type WRITE setType NOTIFY typeChanged)
 
 public:
     Q_INVOKABLE explicit QUmlExtensionEndObject(QUmlExtensionEnd *modelingElement);
@@ -327,6 +327,76 @@ public Q_SLOTS:
     void setLower(int lower);
     void unsetLower();
     void setType(QObject *type = 0);
+
+Q_SIGNALS:
+
+    // Signals for owned attributes [Element]
+    void ownedCommentsChanged(QSet<QObject *> ownedComments);
+    void ownedElementsChanged(QSet<QObject *> ownedElements);
+    void ownerChanged(QObject *owner);
+
+    // Signals for owned attributes [NamedElement]
+    void clientDependenciesChanged(QSet<QObject *> clientDependencies);
+    void nameChanged(QString name);
+    void nameExpressionChanged(QObject *nameExpression);
+    void namespaceChanged(QObject *namespace_);
+    void qualifiedNameChanged(QString qualifiedName);
+    void visibilityChanged(QtUml::VisibilityKind visibility);
+
+    // Signals for owned attributes [TypedElement]
+
+    // Signals for owned attributes [MultiplicityElement]
+    void isOrderedChanged(bool isOrdered);
+    void isUniqueChanged(bool isUnique);
+    void lowerValueChanged(QObject *lowerValue);
+    void upperChanged(int upper);
+    void upperValueChanged(QObject *upperValue);
+
+    // Signals for owned attributes [RedefinableElement]
+    void isLeafChanged(bool isLeaf);
+    void redefinedElementsChanged(QSet<QObject *> redefinedElements);
+    void redefinitionContextsChanged(QSet<QObject *> redefinitionContexts);
+
+    // Signals for owned attributes [Feature]
+    void featuringClassifiersChanged(QSet<QObject *> featuringClassifiers);
+    void isStaticChanged(bool isStatic);
+
+    // Signals for owned attributes [StructuralFeature]
+
+    // Signals for owned attributes [ParameterableElement]
+    void owningTemplateParameterChanged(QObject *owningTemplateParameter);
+
+    // Signals for owned attributes [ConnectableElement]
+    void endsChanged(QList<QObject *> ends);
+    void templateParameterChanged(QObject *templateParameter);
+
+    // Signals for owned attributes [DeploymentTarget]
+    void deployedElementsChanged(QSet<QObject *> deployedElements);
+    void deploymentsChanged(QSet<QObject *> deployments);
+
+    // Signals for owned attributes [Property]
+    void aggregationChanged(QtUml::AggregationKind aggregation);
+    void associationChanged(QObject *association);
+    void associationEndChanged(QObject *associationEnd);
+    void classChanged(QObject *class_);
+    void datatypeChanged(QObject *datatype);
+    void defaultChanged(QString default_);
+    void defaultValueChanged(QObject *defaultValue);
+    void interfaceChanged(QObject *interface_);
+    void isCompositeChanged(bool isComposite);
+    void isDerivedChanged(bool isDerived);
+    void isDerivedUnionChanged(bool isDerivedUnion);
+    void isIDChanged(bool isID);
+    void isReadOnlyChanged(bool isReadOnly);
+    void oppositeChanged(QObject *opposite);
+    void owningAssociationChanged(QObject *owningAssociation);
+    void qualifiersChanged(QList<QObject *> qualifiers);
+    void redefinedPropertiesChanged(QSet<QObject *> redefinedProperties);
+    void subsettedPropertiesChanged(QSet<QObject *> subsettedProperties);
+
+    // Signals for owned attributes [ExtensionEnd]
+    void lowerChanged(int lower);
+    void typeChanged(QObject *type);
 
 protected:
     virtual void setGroupProperties();

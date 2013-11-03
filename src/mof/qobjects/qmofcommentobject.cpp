@@ -141,26 +141,31 @@ void QMofCommentObject::delete_()
 void QMofCommentObject::addOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QMofComment *>(this)->addOwnedComment(qmodelingelementproperty_cast<QMofComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QMofCommentObject::removeOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QMofComment *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QMofComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QMofCommentObject::addOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QMofComment *>(this)->addOwnedElement(qmodelingelementproperty_cast<QMofElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QMofCommentObject::removeOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QMofComment *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QMofElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QMofCommentObject::setOwner(QObject *owner)
 {
     qmodelingelementproperty_cast<QMofComment *>(this)->setOwner(qmodelingelementproperty_cast<QMofElement *>(owner));
+    emit ownerChanged(this->owner());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Comment]
@@ -168,16 +173,19 @@ void QMofCommentObject::setOwner(QObject *owner)
 void QMofCommentObject::addAnnotatedElement(QObject *annotatedElement)
 {
     qmodelingelementproperty_cast<QMofComment *>(this)->addAnnotatedElement(qmodelingelementproperty_cast<QMofElement *>(annotatedElement));
+    emit annotatedElementsChanged(this->annotatedElements());
 }
 
 void QMofCommentObject::removeAnnotatedElement(QObject *annotatedElement)
 {
     qmodelingelementproperty_cast<QMofComment *>(this)->removeAnnotatedElement(qmodelingelementproperty_cast<QMofElement *>(annotatedElement));
+    emit annotatedElementsChanged(this->annotatedElements());
 }
 
 void QMofCommentObject::setBody(QString body)
 {
     qmodelingelementproperty_cast<QMofComment *>(this)->setBody(body);
+    emit bodyChanged(this->body());
 }
 
 

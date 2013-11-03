@@ -221,26 +221,31 @@ QString QUmlIncludeObject::separator() const
 void QUmlIncludeObject::addOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlInclude *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlIncludeObject::removeOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlInclude *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlIncludeObject::addOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlInclude *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlIncludeObject::removeOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlInclude *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlIncludeObject::setOwner(QObject *owner)
 {
     qmodelingelementproperty_cast<QUmlInclude *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
+    emit ownerChanged(this->owner());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Relationship]
@@ -248,11 +253,13 @@ void QUmlIncludeObject::setOwner(QObject *owner)
 void QUmlIncludeObject::addRelatedElement(QObject *relatedElement)
 {
     qmodelingelementproperty_cast<QUmlInclude *>(this)->addRelatedElement(qmodelingelementproperty_cast<QUmlElement *>(relatedElement));
+    emit relatedElementsChanged(this->relatedElements());
 }
 
 void QUmlIncludeObject::removeRelatedElement(QObject *relatedElement)
 {
     qmodelingelementproperty_cast<QUmlInclude *>(this)->removeRelatedElement(qmodelingelementproperty_cast<QUmlElement *>(relatedElement));
+    emit relatedElementsChanged(this->relatedElements());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [DirectedRelationship]
@@ -260,21 +267,25 @@ void QUmlIncludeObject::removeRelatedElement(QObject *relatedElement)
 void QUmlIncludeObject::addSource(QObject *source)
 {
     qmodelingelementproperty_cast<QUmlInclude *>(this)->addSource(qmodelingelementproperty_cast<QUmlElement *>(source));
+    emit sourcesChanged(this->sources());
 }
 
 void QUmlIncludeObject::removeSource(QObject *source)
 {
     qmodelingelementproperty_cast<QUmlInclude *>(this)->removeSource(qmodelingelementproperty_cast<QUmlElement *>(source));
+    emit sourcesChanged(this->sources());
 }
 
 void QUmlIncludeObject::addTarget(QObject *target)
 {
     qmodelingelementproperty_cast<QUmlInclude *>(this)->addTarget(qmodelingelementproperty_cast<QUmlElement *>(target));
+    emit targetsChanged(this->targets());
 }
 
 void QUmlIncludeObject::removeTarget(QObject *target)
 {
     qmodelingelementproperty_cast<QUmlInclude *>(this)->removeTarget(qmodelingelementproperty_cast<QUmlElement *>(target));
+    emit targetsChanged(this->targets());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [NamedElement]
@@ -282,36 +293,43 @@ void QUmlIncludeObject::removeTarget(QObject *target)
 void QUmlIncludeObject::addClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlInclude *>(this)->addClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlIncludeObject::removeClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlInclude *>(this)->removeClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlIncludeObject::setName(QString name)
 {
     qmodelingelementproperty_cast<QUmlInclude *>(this)->setName(name);
+    emit nameChanged(this->name());
 }
 
 void QUmlIncludeObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingelementproperty_cast<QUmlInclude *>(this)->setNameExpression(qmodelingelementproperty_cast<QUmlStringExpression *>(nameExpression));
+    emit nameExpressionChanged(this->nameExpression());
 }
 
 void QUmlIncludeObject::setNamespace(QObject *namespace_)
 {
     qmodelingelementproperty_cast<QUmlInclude *>(this)->setNamespace(qmodelingelementproperty_cast<QUmlNamespace *>(namespace_));
+    emit namespaceChanged(this->namespace_());
 }
 
 void QUmlIncludeObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingelementproperty_cast<QUmlInclude *>(this)->setQualifiedName(qualifiedName);
+    emit qualifiedNameChanged(this->qualifiedName());
 }
 
 void QUmlIncludeObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingelementproperty_cast<QUmlInclude *>(this)->setVisibility(visibility);
+    emit visibilityChanged(this->visibility());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Include]
@@ -319,11 +337,13 @@ void QUmlIncludeObject::setVisibility(QtUml::VisibilityKind visibility)
 void QUmlIncludeObject::setAddition(QObject *addition)
 {
     qmodelingelementproperty_cast<QUmlInclude *>(this)->setAddition(qmodelingelementproperty_cast<QUmlUseCase *>(addition));
+    emit additionChanged(this->addition());
 }
 
 void QUmlIncludeObject::setIncludingCase(QObject *includingCase)
 {
     qmodelingelementproperty_cast<QUmlInclude *>(this)->setIncludingCase(qmodelingelementproperty_cast<QUmlUseCase *>(includingCase));
+    emit includingCaseChanged(this->includingCase());
 }
 
 

@@ -62,49 +62,49 @@ class Q_UML_EXPORT QUmlReduceActionObject : public QModelingObject
     Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [Element]
-    Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
-    Q_PROPERTY(QSet<QObject *> ownedElements READ ownedElements)
-    Q_PROPERTY(QObject * owner READ owner)
+    Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments NOTIFY ownedCommentsChanged)
+    Q_PROPERTY(QSet<QObject *> ownedElements READ ownedElements NOTIFY ownedElementsChanged)
+    Q_PROPERTY(QObject * owner READ owner NOTIFY ownerChanged)
 
     // Properties [NamedElement]
-    Q_PROPERTY(QSet<QObject *> clientDependencies READ clientDependencies)
-    Q_PROPERTY(QString name READ name WRITE setName)
-    Q_PROPERTY(QObject * nameExpression READ nameExpression WRITE setNameExpression)
-    Q_PROPERTY(QObject * namespace_ READ namespace_)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
+    Q_PROPERTY(QSet<QObject *> clientDependencies READ clientDependencies NOTIFY clientDependenciesChanged)
+    Q_PROPERTY(QString name READ name WRITE setName NOTIFY nameChanged)
+    Q_PROPERTY(QObject * nameExpression READ nameExpression WRITE setNameExpression NOTIFY nameExpressionChanged)
+    Q_PROPERTY(QObject * namespace_ READ namespace_ NOTIFY namespaceChanged)
+    Q_PROPERTY(QString qualifiedName READ qualifiedName NOTIFY qualifiedNameChanged STORED false)
+    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility NOTIFY visibilityChanged)
 
     // Properties [RedefinableElement]
-    Q_PROPERTY(bool isLeaf READ isLeaf WRITE setLeaf RESET unsetLeaf)
-    Q_PROPERTY(QSet<QObject *> redefinedElements READ redefinedElements)
-    Q_PROPERTY(QSet<QObject *> redefinitionContexts READ redefinitionContexts)
+    Q_PROPERTY(bool isLeaf READ isLeaf WRITE setLeaf NOTIFY isLeafChanged RESET unsetLeaf)
+    Q_PROPERTY(QSet<QObject *> redefinedElements READ redefinedElements NOTIFY redefinedElementsChanged)
+    Q_PROPERTY(QSet<QObject *> redefinitionContexts READ redefinitionContexts NOTIFY redefinitionContextsChanged)
 
     // Properties [ActivityNode]
-    Q_PROPERTY(QObject * activity READ activity WRITE setActivity)
-    Q_PROPERTY(QSet<QObject *> inGroups READ inGroups)
-    Q_PROPERTY(QSet<QObject *> inInterruptibleRegions READ inInterruptibleRegions)
-    Q_PROPERTY(QSet<QObject *> inPartitions READ inPartitions)
-    Q_PROPERTY(QObject * inStructuredNode READ inStructuredNode WRITE setInStructuredNode)
-    Q_PROPERTY(QSet<QObject *> incomings READ incomings)
-    Q_PROPERTY(QSet<QObject *> outgoings READ outgoings)
-    Q_PROPERTY(QSet<QObject *> redefinedNodes READ redefinedNodes)
+    Q_PROPERTY(QObject * activity READ activity WRITE setActivity NOTIFY activityChanged)
+    Q_PROPERTY(QSet<QObject *> inGroups READ inGroups NOTIFY inGroupsChanged)
+    Q_PROPERTY(QSet<QObject *> inInterruptibleRegions READ inInterruptibleRegions NOTIFY inInterruptibleRegionsChanged)
+    Q_PROPERTY(QSet<QObject *> inPartitions READ inPartitions NOTIFY inPartitionsChanged)
+    Q_PROPERTY(QObject * inStructuredNode READ inStructuredNode WRITE setInStructuredNode NOTIFY inStructuredNodeChanged)
+    Q_PROPERTY(QSet<QObject *> incomings READ incomings NOTIFY incomingsChanged)
+    Q_PROPERTY(QSet<QObject *> outgoings READ outgoings NOTIFY outgoingsChanged)
+    Q_PROPERTY(QSet<QObject *> redefinedNodes READ redefinedNodes NOTIFY redefinedNodesChanged)
 
     // Properties [ExecutableNode]
-    Q_PROPERTY(QSet<QObject *> handlers READ handlers)
+    Q_PROPERTY(QSet<QObject *> handlers READ handlers NOTIFY handlersChanged)
 
     // Properties [Action]
-    Q_PROPERTY(QObject * context READ context STORED false)
-    Q_PROPERTY(QList<QObject *> inputs READ inputs)
-    Q_PROPERTY(bool isLocallyReentrant READ isLocallyReentrant WRITE setLocallyReentrant RESET unsetLocallyReentrant)
-    Q_PROPERTY(QSet<QObject *> localPostconditions READ localPostconditions)
-    Q_PROPERTY(QSet<QObject *> localPreconditions READ localPreconditions)
-    Q_PROPERTY(QList<QObject *> outputs READ outputs)
+    Q_PROPERTY(QObject * context READ context NOTIFY contextChanged STORED false)
+    Q_PROPERTY(QList<QObject *> inputs READ inputs NOTIFY inputsChanged)
+    Q_PROPERTY(bool isLocallyReentrant READ isLocallyReentrant WRITE setLocallyReentrant NOTIFY isLocallyReentrantChanged RESET unsetLocallyReentrant)
+    Q_PROPERTY(QSet<QObject *> localPostconditions READ localPostconditions NOTIFY localPostconditionsChanged)
+    Q_PROPERTY(QSet<QObject *> localPreconditions READ localPreconditions NOTIFY localPreconditionsChanged)
+    Q_PROPERTY(QList<QObject *> outputs READ outputs NOTIFY outputsChanged)
 
     // Properties [ReduceAction]
-    Q_PROPERTY(QObject * collection READ collection WRITE setCollection)
-    Q_PROPERTY(bool isOrdered READ isOrdered WRITE setOrdered RESET unsetOrdered)
-    Q_PROPERTY(QObject * reducer READ reducer WRITE setReducer)
-    Q_PROPERTY(QObject * result READ result WRITE setResult)
+    Q_PROPERTY(QObject * collection READ collection WRITE setCollection NOTIFY collectionChanged)
+    Q_PROPERTY(bool isOrdered READ isOrdered WRITE setOrdered NOTIFY isOrderedChanged RESET unsetOrdered)
+    Q_PROPERTY(QObject * reducer READ reducer WRITE setReducer NOTIFY reducerChanged)
+    Q_PROPERTY(QObject * result READ result WRITE setResult NOTIFY resultChanged)
 
 public:
     Q_INVOKABLE explicit QUmlReduceActionObject(QUmlReduceAction *modelingElement);
@@ -233,6 +233,53 @@ public Q_SLOTS:
     void unsetOrdered();
     void setReducer(QObject *reducer = 0);
     void setResult(QObject *result = 0);
+
+Q_SIGNALS:
+
+    // Signals for owned attributes [Element]
+    void ownedCommentsChanged(QSet<QObject *> ownedComments);
+    void ownedElementsChanged(QSet<QObject *> ownedElements);
+    void ownerChanged(QObject *owner);
+
+    // Signals for owned attributes [NamedElement]
+    void clientDependenciesChanged(QSet<QObject *> clientDependencies);
+    void nameChanged(QString name);
+    void nameExpressionChanged(QObject *nameExpression);
+    void namespaceChanged(QObject *namespace_);
+    void qualifiedNameChanged(QString qualifiedName);
+    void visibilityChanged(QtUml::VisibilityKind visibility);
+
+    // Signals for owned attributes [RedefinableElement]
+    void isLeafChanged(bool isLeaf);
+    void redefinedElementsChanged(QSet<QObject *> redefinedElements);
+    void redefinitionContextsChanged(QSet<QObject *> redefinitionContexts);
+
+    // Signals for owned attributes [ActivityNode]
+    void activityChanged(QObject *activity);
+    void inGroupsChanged(QSet<QObject *> inGroups);
+    void inInterruptibleRegionsChanged(QSet<QObject *> inInterruptibleRegions);
+    void inPartitionsChanged(QSet<QObject *> inPartitions);
+    void inStructuredNodeChanged(QObject *inStructuredNode);
+    void incomingsChanged(QSet<QObject *> incomings);
+    void outgoingsChanged(QSet<QObject *> outgoings);
+    void redefinedNodesChanged(QSet<QObject *> redefinedNodes);
+
+    // Signals for owned attributes [ExecutableNode]
+    void handlersChanged(QSet<QObject *> handlers);
+
+    // Signals for owned attributes [Action]
+    void contextChanged(QObject *context);
+    void inputsChanged(QList<QObject *> inputs);
+    void isLocallyReentrantChanged(bool isLocallyReentrant);
+    void localPostconditionsChanged(QSet<QObject *> localPostconditions);
+    void localPreconditionsChanged(QSet<QObject *> localPreconditions);
+    void outputsChanged(QList<QObject *> outputs);
+
+    // Signals for owned attributes [ReduceAction]
+    void collectionChanged(QObject *collection);
+    void isOrderedChanged(bool isOrdered);
+    void reducerChanged(QObject *reducer);
+    void resultChanged(QObject *result);
 
 protected:
     virtual void setGroupProperties();

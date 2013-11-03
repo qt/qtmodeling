@@ -60,9 +60,9 @@ class Q_DUSE_EXPORT QDuseDesignSpaceObject : public QModelingObject
     Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [DesignSpace]
-    Q_PROPERTY(QString name READ name WRITE setName)
-    Q_PROPERTY(QList<QObject *> designDimensions READ designDimensions)
-    Q_PROPERTY(QSet<QObject *> qualityMetrics READ qualityMetrics)
+    Q_PROPERTY(QString name READ name WRITE setName NOTIFY nameChanged)
+    Q_PROPERTY(QList<QObject *> designDimensions READ designDimensions NOTIFY designDimensionsChanged)
+    Q_PROPERTY(QSet<QObject *> qualityMetrics READ qualityMetrics NOTIFY qualityMetricsChanged)
 
 public:
     Q_INVOKABLE explicit QDuseDesignSpaceObject(QDuseDesignSpace *modelingElement);
@@ -80,6 +80,13 @@ public Q_SLOTS:
     void removeDesignDimension(QObject *designDimension);
     void addQualityMetric(QObject *qualityMetric);
     void removeQualityMetric(QObject *qualityMetric);
+
+Q_SIGNALS:
+
+    // Signals for owned attributes [DesignSpace]
+    void nameChanged(QString name);
+    void designDimensionsChanged(QList<QObject *> designDimensions);
+    void qualityMetricsChanged(QSet<QObject *> qualityMetrics);
 
 protected:
     virtual void setGroupProperties();

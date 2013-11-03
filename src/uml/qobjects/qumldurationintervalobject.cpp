@@ -276,26 +276,31 @@ int QUmlDurationIntervalObject::unlimitedValue() const
 void QUmlDurationIntervalObject::addOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlDurationInterval *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlDurationIntervalObject::removeOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlDurationInterval *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlDurationIntervalObject::addOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlDurationInterval *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlDurationIntervalObject::removeOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlDurationInterval *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlDurationIntervalObject::setOwner(QObject *owner)
 {
     qmodelingelementproperty_cast<QUmlDurationInterval *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
+    emit ownerChanged(this->owner());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [NamedElement]
@@ -303,37 +308,44 @@ void QUmlDurationIntervalObject::setOwner(QObject *owner)
 void QUmlDurationIntervalObject::addClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlDurationInterval *>(this)->addClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlDurationIntervalObject::removeClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlDurationInterval *>(this)->removeClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlDurationIntervalObject::setName(QString name)
 {
     qmodelingelementproperty_cast<QUmlDurationInterval *>(this)->setName(name);
+    emit nameChanged(this->name());
 }
 
 void QUmlDurationIntervalObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingelementproperty_cast<QUmlDurationInterval *>(this)->setNameExpression(qmodelingelementproperty_cast<QUmlStringExpression *>(nameExpression));
+    emit nameExpressionChanged(this->nameExpression());
 }
 
 void QUmlDurationIntervalObject::setNamespace(QObject *namespace_)
 {
     qmodelingelementproperty_cast<QUmlDurationInterval *>(this)->setNamespace(qmodelingelementproperty_cast<QUmlNamespace *>(namespace_));
+    emit namespaceChanged(this->namespace_());
 }
 
 void QUmlDurationIntervalObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingelementproperty_cast<QUmlDurationInterval *>(this)->setQualifiedName(qualifiedName);
+    emit qualifiedNameChanged(this->qualifiedName());
 }
 // SLOTS FOR OWNED ATTRIBUTES [TypedElement]
 
 void QUmlDurationIntervalObject::setType(QObject *type)
 {
     qmodelingelementproperty_cast<QUmlDurationInterval *>(this)->setType(qmodelingelementproperty_cast<QUmlType *>(type));
+    emit typeChanged(this->type());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ParameterableElement]
@@ -341,11 +353,13 @@ void QUmlDurationIntervalObject::setType(QObject *type)
 void QUmlDurationIntervalObject::setOwningTemplateParameter(QObject *owningTemplateParameter)
 {
     qmodelingelementproperty_cast<QUmlDurationInterval *>(this)->setOwningTemplateParameter(qmodelingelementproperty_cast<QUmlTemplateParameter *>(owningTemplateParameter));
+    emit owningTemplateParameterChanged(this->owningTemplateParameter());
 }
 
 void QUmlDurationIntervalObject::setTemplateParameter(QObject *templateParameter)
 {
     qmodelingelementproperty_cast<QUmlDurationInterval *>(this)->setTemplateParameter(qmodelingelementproperty_cast<QUmlTemplateParameter *>(templateParameter));
+    emit templateParameterChanged(this->templateParameter());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [PackageableElement]
@@ -353,6 +367,7 @@ void QUmlDurationIntervalObject::setTemplateParameter(QObject *templateParameter
 void QUmlDurationIntervalObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingelementproperty_cast<QUmlDurationInterval *>(this)->setVisibility(visibility);
+    emit visibilityChanged(this->visibility());
 }
 
 void QUmlDurationIntervalObject::unsetVisibility()
@@ -367,11 +382,13 @@ void QUmlDurationIntervalObject::unsetVisibility()
 void QUmlDurationIntervalObject::setMax(QObject *max)
 {
     qmodelingelementproperty_cast<QUmlDurationInterval *>(this)->setMax(qmodelingelementproperty_cast<QUmlDuration *>(max));
+    emit maxChanged(this->max());
 }
 
 void QUmlDurationIntervalObject::setMin(QObject *min)
 {
     qmodelingelementproperty_cast<QUmlDurationInterval *>(this)->setMin(qmodelingelementproperty_cast<QUmlDuration *>(min));
+    emit minChanged(this->min());
 }
 
 

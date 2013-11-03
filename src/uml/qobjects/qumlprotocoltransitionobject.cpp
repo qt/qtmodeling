@@ -405,26 +405,31 @@ bool QUmlProtocolTransitionObject::isConsistentWith(QObject *redefinee) const
 void QUmlProtocolTransitionObject::addOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlProtocolTransitionObject::removeOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlProtocolTransitionObject::addOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlProtocolTransitionObject::removeOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlProtocolTransitionObject::setOwner(QObject *owner)
 {
     qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
+    emit ownerChanged(this->owner());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [NamedElement]
@@ -432,36 +437,43 @@ void QUmlProtocolTransitionObject::setOwner(QObject *owner)
 void QUmlProtocolTransitionObject::addClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->addClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlProtocolTransitionObject::removeClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->removeClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlProtocolTransitionObject::setName(QString name)
 {
     qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->setName(name);
+    emit nameChanged(this->name());
 }
 
 void QUmlProtocolTransitionObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->setNameExpression(qmodelingelementproperty_cast<QUmlStringExpression *>(nameExpression));
+    emit nameExpressionChanged(this->nameExpression());
 }
 
 void QUmlProtocolTransitionObject::setNamespace(QObject *namespace_)
 {
     qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->setNamespace(qmodelingelementproperty_cast<QUmlNamespace *>(namespace_));
+    emit namespaceChanged(this->namespace_());
 }
 
 void QUmlProtocolTransitionObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->setQualifiedName(qualifiedName);
+    emit qualifiedNameChanged(this->qualifiedName());
 }
 
 void QUmlProtocolTransitionObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->setVisibility(visibility);
+    emit visibilityChanged(this->visibility());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [RedefinableElement]
@@ -469,6 +481,7 @@ void QUmlProtocolTransitionObject::setVisibility(QtUml::VisibilityKind visibilit
 void QUmlProtocolTransitionObject::setLeaf(bool isLeaf)
 {
     qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->setLeaf(isLeaf);
+    emit isLeafChanged(this->isLeaf());
 }
 
 void QUmlProtocolTransitionObject::unsetLeaf()
@@ -481,72 +494,86 @@ void QUmlProtocolTransitionObject::unsetLeaf()
 void QUmlProtocolTransitionObject::addRedefinedElement(QObject *redefinedElement)
 {
     qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->addRedefinedElement(qmodelingelementproperty_cast<QUmlRedefinableElement *>(redefinedElement));
+    emit redefinedElementsChanged(this->redefinedElements());
 }
 
 void QUmlProtocolTransitionObject::removeRedefinedElement(QObject *redefinedElement)
 {
     qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->removeRedefinedElement(qmodelingelementproperty_cast<QUmlRedefinableElement *>(redefinedElement));
+    emit redefinedElementsChanged(this->redefinedElements());
 }
 // SLOTS FOR OWNED ATTRIBUTES [Namespace]
 
 void QUmlProtocolTransitionObject::addElementImport(QObject *elementImport)
 {
     qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->addElementImport(qmodelingelementproperty_cast<QUmlElementImport *>(elementImport));
+    emit elementImportsChanged(this->elementImports());
 }
 
 void QUmlProtocolTransitionObject::removeElementImport(QObject *elementImport)
 {
     qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->removeElementImport(qmodelingelementproperty_cast<QUmlElementImport *>(elementImport));
+    emit elementImportsChanged(this->elementImports());
 }
 
 void QUmlProtocolTransitionObject::addImportedMember(QObject *importedMember)
 {
     qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->addImportedMember(qmodelingelementproperty_cast<QUmlPackageableElement *>(importedMember));
+    emit importedMembersChanged(this->importedMembers());
 }
 
 void QUmlProtocolTransitionObject::removeImportedMember(QObject *importedMember)
 {
     qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->removeImportedMember(qmodelingelementproperty_cast<QUmlPackageableElement *>(importedMember));
+    emit importedMembersChanged(this->importedMembers());
 }
 
 void QUmlProtocolTransitionObject::addMember(QObject *member)
 {
     qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->addMember(qmodelingelementproperty_cast<QUmlNamedElement *>(member));
+    emit membersChanged(this->members());
 }
 
 void QUmlProtocolTransitionObject::removeMember(QObject *member)
 {
     qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->removeMember(qmodelingelementproperty_cast<QUmlNamedElement *>(member));
+    emit membersChanged(this->members());
 }
 
 void QUmlProtocolTransitionObject::addOwnedMember(QObject *ownedMember)
 {
     qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->addOwnedMember(qmodelingelementproperty_cast<QUmlNamedElement *>(ownedMember));
+    emit ownedMembersChanged(this->ownedMembers());
 }
 
 void QUmlProtocolTransitionObject::removeOwnedMember(QObject *ownedMember)
 {
     qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->removeOwnedMember(qmodelingelementproperty_cast<QUmlNamedElement *>(ownedMember));
+    emit ownedMembersChanged(this->ownedMembers());
 }
 
 void QUmlProtocolTransitionObject::addOwnedRule(QObject *ownedRule)
 {
     qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->addOwnedRule(qmodelingelementproperty_cast<QUmlConstraint *>(ownedRule));
+    emit ownedRulesChanged(this->ownedRules());
 }
 
 void QUmlProtocolTransitionObject::removeOwnedRule(QObject *ownedRule)
 {
     qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->removeOwnedRule(qmodelingelementproperty_cast<QUmlConstraint *>(ownedRule));
+    emit ownedRulesChanged(this->ownedRules());
 }
 
 void QUmlProtocolTransitionObject::addPackageImport(QObject *packageImport)
 {
     qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->addPackageImport(qmodelingelementproperty_cast<QUmlPackageImport *>(packageImport));
+    emit packageImportsChanged(this->packageImports());
 }
 
 void QUmlProtocolTransitionObject::removePackageImport(QObject *packageImport)
 {
     qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->removePackageImport(qmodelingelementproperty_cast<QUmlPackageImport *>(packageImport));
+    emit packageImportsChanged(this->packageImports());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Transition]
@@ -554,21 +581,25 @@ void QUmlProtocolTransitionObject::removePackageImport(QObject *packageImport)
 void QUmlProtocolTransitionObject::setContainer(QObject *container)
 {
     qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->setContainer(qmodelingelementproperty_cast<QUmlRegion *>(container));
+    emit containerChanged(this->container());
 }
 
 void QUmlProtocolTransitionObject::setEffect(QObject *effect)
 {
     qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->setEffect(qmodelingelementproperty_cast<QUmlBehavior *>(effect));
+    emit effectChanged(this->effect());
 }
 
 void QUmlProtocolTransitionObject::setGuard(QObject *guard)
 {
     qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->setGuard(qmodelingelementproperty_cast<QUmlConstraint *>(guard));
+    emit guardChanged(this->guard());
 }
 
 void QUmlProtocolTransitionObject::setKind(QtUml::TransitionKind kind)
 {
     qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->setKind(kind);
+    emit kindChanged(this->kind());
 }
 
 void QUmlProtocolTransitionObject::unsetKind()
@@ -581,31 +612,37 @@ void QUmlProtocolTransitionObject::unsetKind()
 void QUmlProtocolTransitionObject::setRedefinedTransition(QObject *redefinedTransition)
 {
     qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->setRedefinedTransition(qmodelingelementproperty_cast<QUmlTransition *>(redefinedTransition));
+    emit redefinedTransitionChanged(this->redefinedTransition());
 }
 
 void QUmlProtocolTransitionObject::setRedefinitionContext(QObject *redefinitionContext)
 {
     qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->setRedefinitionContext(qmodelingelementproperty_cast<QUmlClassifier *>(redefinitionContext));
+    emit redefinitionContextChanged(this->redefinitionContext());
 }
 
 void QUmlProtocolTransitionObject::setSource(QObject *source)
 {
     qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->setSource(qmodelingelementproperty_cast<QUmlVertex *>(source));
+    emit sourceChanged(this->source());
 }
 
 void QUmlProtocolTransitionObject::setTarget(QObject *target)
 {
     qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->setTarget(qmodelingelementproperty_cast<QUmlVertex *>(target));
+    emit targetChanged(this->target());
 }
 
 void QUmlProtocolTransitionObject::addTrigger(QObject *trigger)
 {
     qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->addTrigger(qmodelingelementproperty_cast<QUmlTrigger *>(trigger));
+    emit triggersChanged(this->triggers());
 }
 
 void QUmlProtocolTransitionObject::removeTrigger(QObject *trigger)
 {
     qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->removeTrigger(qmodelingelementproperty_cast<QUmlTrigger *>(trigger));
+    emit triggersChanged(this->triggers());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ProtocolTransition]
@@ -613,21 +650,25 @@ void QUmlProtocolTransitionObject::removeTrigger(QObject *trigger)
 void QUmlProtocolTransitionObject::setPostCondition(QObject *postCondition)
 {
     qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->setPostCondition(qmodelingelementproperty_cast<QUmlConstraint *>(postCondition));
+    emit postConditionChanged(this->postCondition());
 }
 
 void QUmlProtocolTransitionObject::setPreCondition(QObject *preCondition)
 {
     qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->setPreCondition(qmodelingelementproperty_cast<QUmlConstraint *>(preCondition));
+    emit preConditionChanged(this->preCondition());
 }
 
 void QUmlProtocolTransitionObject::addReferred(QObject *referred)
 {
     qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->addReferred(qmodelingelementproperty_cast<QUmlOperation *>(referred));
+    emit referredChanged(this->referred());
 }
 
 void QUmlProtocolTransitionObject::removeReferred(QObject *referred)
 {
     qmodelingelementproperty_cast<QUmlProtocolTransition *>(this)->removeReferred(qmodelingelementproperty_cast<QUmlOperation *>(referred));
+    emit referredChanged(this->referred());
 }
 
 

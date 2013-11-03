@@ -128,26 +128,31 @@ bool QUmlTemplateSignatureObject::mustBeOwned() const
 void QUmlTemplateSignatureObject::addOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlTemplateSignature *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlTemplateSignatureObject::removeOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlTemplateSignature *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlTemplateSignatureObject::addOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlTemplateSignature *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlTemplateSignatureObject::removeOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlTemplateSignature *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlTemplateSignatureObject::setOwner(QObject *owner)
 {
     qmodelingelementproperty_cast<QUmlTemplateSignature *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
+    emit ownerChanged(this->owner());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [TemplateSignature]
@@ -155,26 +160,31 @@ void QUmlTemplateSignatureObject::setOwner(QObject *owner)
 void QUmlTemplateSignatureObject::addOwnedParameter(QObject *ownedParameter)
 {
     qmodelingelementproperty_cast<QUmlTemplateSignature *>(this)->addOwnedParameter(qmodelingelementproperty_cast<QUmlTemplateParameter *>(ownedParameter));
+    emit ownedParametersChanged(this->ownedParameters());
 }
 
 void QUmlTemplateSignatureObject::removeOwnedParameter(QObject *ownedParameter)
 {
     qmodelingelementproperty_cast<QUmlTemplateSignature *>(this)->removeOwnedParameter(qmodelingelementproperty_cast<QUmlTemplateParameter *>(ownedParameter));
+    emit ownedParametersChanged(this->ownedParameters());
 }
 
 void QUmlTemplateSignatureObject::addParameter(QObject *parameter)
 {
     qmodelingelementproperty_cast<QUmlTemplateSignature *>(this)->addParameter(qmodelingelementproperty_cast<QUmlTemplateParameter *>(parameter));
+    emit parametersChanged(this->parameters());
 }
 
 void QUmlTemplateSignatureObject::removeParameter(QObject *parameter)
 {
     qmodelingelementproperty_cast<QUmlTemplateSignature *>(this)->removeParameter(qmodelingelementproperty_cast<QUmlTemplateParameter *>(parameter));
+    emit parametersChanged(this->parameters());
 }
 
 void QUmlTemplateSignatureObject::setTemplate(QObject *template_)
 {
     qmodelingelementproperty_cast<QUmlTemplateSignature *>(this)->setTemplate(qmodelingelementproperty_cast<QUmlTemplateableElement *>(template_));
+    emit templateChanged(this->template_());
 }
 
 

@@ -70,6 +70,7 @@ QT_BEGIN_NAMESPACE
 QUmlParameter::QUmlParameter(bool createQModelingObject) :
     _defaultValue(0),
     _direction(QtUml::ParameterDirectionKindIn),
+    _effect(QtUml::ParameterEffectKindNone),
     _isException(false),
     _isStream(false),
     _operation(0)

@@ -62,24 +62,24 @@ class Q_UML_EXPORT QUmlLifelineObject : public QModelingObject
     Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [Element]
-    Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
-    Q_PROPERTY(QSet<QObject *> ownedElements READ ownedElements)
-    Q_PROPERTY(QObject * owner READ owner)
+    Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments NOTIFY ownedCommentsChanged)
+    Q_PROPERTY(QSet<QObject *> ownedElements READ ownedElements NOTIFY ownedElementsChanged)
+    Q_PROPERTY(QObject * owner READ owner NOTIFY ownerChanged)
 
     // Properties [NamedElement]
-    Q_PROPERTY(QSet<QObject *> clientDependencies READ clientDependencies)
-    Q_PROPERTY(QString name READ name WRITE setName)
-    Q_PROPERTY(QObject * nameExpression READ nameExpression WRITE setNameExpression)
-    Q_PROPERTY(QObject * namespace_ READ namespace_)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
+    Q_PROPERTY(QSet<QObject *> clientDependencies READ clientDependencies NOTIFY clientDependenciesChanged)
+    Q_PROPERTY(QString name READ name WRITE setName NOTIFY nameChanged)
+    Q_PROPERTY(QObject * nameExpression READ nameExpression WRITE setNameExpression NOTIFY nameExpressionChanged)
+    Q_PROPERTY(QObject * namespace_ READ namespace_ NOTIFY namespaceChanged)
+    Q_PROPERTY(QString qualifiedName READ qualifiedName NOTIFY qualifiedNameChanged STORED false)
+    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility NOTIFY visibilityChanged)
 
     // Properties [Lifeline]
-    Q_PROPERTY(QSet<QObject *> coveredBy READ coveredBy)
-    Q_PROPERTY(QObject * decomposedAs READ decomposedAs WRITE setDecomposedAs)
-    Q_PROPERTY(QObject * interaction READ interaction WRITE setInteraction)
-    Q_PROPERTY(QObject * represents READ represents WRITE setRepresents)
-    Q_PROPERTY(QObject * selector READ selector WRITE setSelector)
+    Q_PROPERTY(QSet<QObject *> coveredBy READ coveredBy NOTIFY coveredByChanged)
+    Q_PROPERTY(QObject * decomposedAs READ decomposedAs WRITE setDecomposedAs NOTIFY decomposedAsChanged)
+    Q_PROPERTY(QObject * interaction READ interaction WRITE setInteraction NOTIFY interactionChanged)
+    Q_PROPERTY(QObject * represents READ represents WRITE setRepresents NOTIFY representsChanged)
+    Q_PROPERTY(QObject * selector READ selector WRITE setSelector NOTIFY selectorChanged)
 
 public:
     Q_INVOKABLE explicit QUmlLifelineObject(QUmlLifeline *modelingElement);
@@ -139,6 +139,28 @@ public Q_SLOTS:
     void setInteraction(QObject *interaction = 0);
     void setRepresents(QObject *represents = 0);
     void setSelector(QObject *selector = 0);
+
+Q_SIGNALS:
+
+    // Signals for owned attributes [Element]
+    void ownedCommentsChanged(QSet<QObject *> ownedComments);
+    void ownedElementsChanged(QSet<QObject *> ownedElements);
+    void ownerChanged(QObject *owner);
+
+    // Signals for owned attributes [NamedElement]
+    void clientDependenciesChanged(QSet<QObject *> clientDependencies);
+    void nameChanged(QString name);
+    void nameExpressionChanged(QObject *nameExpression);
+    void namespaceChanged(QObject *namespace_);
+    void qualifiedNameChanged(QString qualifiedName);
+    void visibilityChanged(QtUml::VisibilityKind visibility);
+
+    // Signals for owned attributes [Lifeline]
+    void coveredByChanged(QSet<QObject *> coveredBy);
+    void decomposedAsChanged(QObject *decomposedAs);
+    void interactionChanged(QObject *interaction);
+    void representsChanged(QObject *represents);
+    void selectorChanged(QObject *selector);
 
 protected:
     virtual void setGroupProperties();

@@ -60,22 +60,22 @@ class Q_UML_EXPORT QUmlConnectorEndObject : public QModelingObject
     Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [Element]
-    Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
-    Q_PROPERTY(QSet<QObject *> ownedElements READ ownedElements)
-    Q_PROPERTY(QObject * owner READ owner)
+    Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments NOTIFY ownedCommentsChanged)
+    Q_PROPERTY(QSet<QObject *> ownedElements READ ownedElements NOTIFY ownedElementsChanged)
+    Q_PROPERTY(QObject * owner READ owner NOTIFY ownerChanged)
 
     // Properties [MultiplicityElement]
-    Q_PROPERTY(bool isOrdered READ isOrdered WRITE setOrdered RESET unsetOrdered)
-    Q_PROPERTY(bool isUnique READ isUnique WRITE setUnique RESET unsetUnique)
-    Q_PROPERTY(int lower READ lower WRITE setLower RESET unsetLower STORED false)
-    Q_PROPERTY(QObject * lowerValue READ lowerValue WRITE setLowerValue)
-    Q_PROPERTY(int upper READ upper WRITE setUpper RESET unsetUpper STORED false)
-    Q_PROPERTY(QObject * upperValue READ upperValue WRITE setUpperValue)
+    Q_PROPERTY(bool isOrdered READ isOrdered WRITE setOrdered NOTIFY isOrderedChanged RESET unsetOrdered)
+    Q_PROPERTY(bool isUnique READ isUnique WRITE setUnique NOTIFY isUniqueChanged RESET unsetUnique)
+    Q_PROPERTY(int lower READ lower WRITE setLower NOTIFY lowerChanged RESET unsetLower STORED false)
+    Q_PROPERTY(QObject * lowerValue READ lowerValue WRITE setLowerValue NOTIFY lowerValueChanged)
+    Q_PROPERTY(int upper READ upper WRITE setUpper NOTIFY upperChanged RESET unsetUpper STORED false)
+    Q_PROPERTY(QObject * upperValue READ upperValue WRITE setUpperValue NOTIFY upperValueChanged)
 
     // Properties [ConnectorEnd]
-    Q_PROPERTY(QObject * definingEnd READ definingEnd STORED false)
-    Q_PROPERTY(QObject * partWithPort READ partWithPort WRITE setPartWithPort)
-    Q_PROPERTY(QObject * role READ role WRITE setRole)
+    Q_PROPERTY(QObject * definingEnd READ definingEnd NOTIFY definingEndChanged STORED false)
+    Q_PROPERTY(QObject * partWithPort READ partWithPort WRITE setPartWithPort NOTIFY partWithPortChanged)
+    Q_PROPERTY(QObject * role READ role WRITE setRole NOTIFY roleChanged)
 
 public:
     Q_INVOKABLE explicit QUmlConnectorEndObject(QUmlConnectorEnd *modelingElement);
@@ -136,6 +136,26 @@ public Q_SLOTS:
     void Q_DECL_HIDDEN setDefiningEnd(QObject *definingEnd = 0);
     void setPartWithPort(QObject *partWithPort = 0);
     void setRole(QObject *role = 0);
+
+Q_SIGNALS:
+
+    // Signals for owned attributes [Element]
+    void ownedCommentsChanged(QSet<QObject *> ownedComments);
+    void ownedElementsChanged(QSet<QObject *> ownedElements);
+    void ownerChanged(QObject *owner);
+
+    // Signals for owned attributes [MultiplicityElement]
+    void isOrderedChanged(bool isOrdered);
+    void isUniqueChanged(bool isUnique);
+    void lowerChanged(int lower);
+    void lowerValueChanged(QObject *lowerValue);
+    void upperChanged(int upper);
+    void upperValueChanged(QObject *upperValue);
+
+    // Signals for owned attributes [ConnectorEnd]
+    void definingEndChanged(QObject *definingEnd);
+    void partWithPortChanged(QObject *partWithPort);
+    void roleChanged(QObject *role);
 
 protected:
     virtual void setGroupProperties();

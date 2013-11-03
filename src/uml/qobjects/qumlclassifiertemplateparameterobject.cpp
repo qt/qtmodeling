@@ -160,26 +160,31 @@ bool QUmlClassifierTemplateParameterObject::mustBeOwned() const
 void QUmlClassifierTemplateParameterObject::addOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlClassifierTemplateParameter *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlClassifierTemplateParameterObject::removeOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlClassifierTemplateParameter *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlClassifierTemplateParameterObject::addOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlClassifierTemplateParameter *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlClassifierTemplateParameterObject::removeOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlClassifierTemplateParameter *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlClassifierTemplateParameterObject::setOwner(QObject *owner)
 {
     qmodelingelementproperty_cast<QUmlClassifierTemplateParameter *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
+    emit ownerChanged(this->owner());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [TemplateParameter]
@@ -187,21 +192,25 @@ void QUmlClassifierTemplateParameterObject::setOwner(QObject *owner)
 void QUmlClassifierTemplateParameterObject::setDefault(QObject *default_)
 {
     qmodelingelementproperty_cast<QUmlClassifierTemplateParameter *>(this)->setDefault(qmodelingelementproperty_cast<QUmlParameterableElement *>(default_));
+    emit defaultChanged(this->default_());
 }
 
 void QUmlClassifierTemplateParameterObject::setOwnedDefault(QObject *ownedDefault)
 {
     qmodelingelementproperty_cast<QUmlClassifierTemplateParameter *>(this)->setOwnedDefault(qmodelingelementproperty_cast<QUmlParameterableElement *>(ownedDefault));
+    emit ownedDefaultChanged(this->ownedDefault());
 }
 
 void QUmlClassifierTemplateParameterObject::setOwnedParameteredElement(QObject *ownedParameteredElement)
 {
     qmodelingelementproperty_cast<QUmlClassifierTemplateParameter *>(this)->setOwnedParameteredElement(qmodelingelementproperty_cast<QUmlParameterableElement *>(ownedParameteredElement));
+    emit ownedParameteredElementChanged(this->ownedParameteredElement());
 }
 
 void QUmlClassifierTemplateParameterObject::setSignature(QObject *signature)
 {
     qmodelingelementproperty_cast<QUmlClassifierTemplateParameter *>(this)->setSignature(qmodelingelementproperty_cast<QUmlTemplateSignature *>(signature));
+    emit signatureChanged(this->signature());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ClassifierTemplateParameter]
@@ -209,6 +218,7 @@ void QUmlClassifierTemplateParameterObject::setSignature(QObject *signature)
 void QUmlClassifierTemplateParameterObject::setAllowSubstitutable(bool allowSubstitutable)
 {
     qmodelingelementproperty_cast<QUmlClassifierTemplateParameter *>(this)->setAllowSubstitutable(allowSubstitutable);
+    emit allowSubstitutableChanged(this->allowSubstitutable());
 }
 
 void QUmlClassifierTemplateParameterObject::unsetAllowSubstitutable()
@@ -222,16 +232,19 @@ void QUmlClassifierTemplateParameterObject::unsetAllowSubstitutable()
 void QUmlClassifierTemplateParameterObject::addConstrainingClassifier(QObject *constrainingClassifier)
 {
     qmodelingelementproperty_cast<QUmlClassifierTemplateParameter *>(this)->addConstrainingClassifier(qmodelingelementproperty_cast<QUmlClassifier *>(constrainingClassifier));
+    emit constrainingClassifiersChanged(this->constrainingClassifiers());
 }
 
 void QUmlClassifierTemplateParameterObject::removeConstrainingClassifier(QObject *constrainingClassifier)
 {
     qmodelingelementproperty_cast<QUmlClassifierTemplateParameter *>(this)->removeConstrainingClassifier(qmodelingelementproperty_cast<QUmlClassifier *>(constrainingClassifier));
+    emit constrainingClassifiersChanged(this->constrainingClassifiers());
 }
 
 void QUmlClassifierTemplateParameterObject::setParameteredElement(QObject *parameteredElement)
 {
     qmodelingelementproperty_cast<QUmlClassifierTemplateParameter *>(this)->setParameteredElement(qmodelingelementproperty_cast<QUmlClassifier *>(parameteredElement));
+    emit parameteredElementChanged(this->parameteredElement());
 }
 
 

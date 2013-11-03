@@ -60,9 +60,9 @@ class Q_MOF_EXPORT QMofLinkObject : public QModelingObject
     Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [Link]
-    Q_PROPERTY(QObject * firstElement READ firstElement WRITE setFirstElement)
-    Q_PROPERTY(QObject * secondElement READ secondElement WRITE setSecondElement)
-    Q_PROPERTY(QObject * association READ association WRITE setAssociation)
+    Q_PROPERTY(QObject * firstElement READ firstElement WRITE setFirstElement NOTIFY firstElementChanged)
+    Q_PROPERTY(QObject * secondElement READ secondElement WRITE setSecondElement NOTIFY secondElementChanged)
+    Q_PROPERTY(QObject * association READ association WRITE setAssociation NOTIFY associationChanged)
 
 public:
     Q_INVOKABLE explicit QMofLinkObject(QMofLink *modelingElement);
@@ -82,6 +82,13 @@ public Q_SLOTS:
     void setFirstElement(QObject *firstElement = 0);
     void setSecondElement(QObject *secondElement = 0);
     void setAssociation(QObject *association = 0);
+
+Q_SIGNALS:
+
+    // Signals for owned attributes [Link]
+    void firstElementChanged(QObject *firstElement);
+    void secondElementChanged(QObject *secondElement);
+    void associationChanged(QObject *association);
 
 protected:
     virtual void setGroupProperties();

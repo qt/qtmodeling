@@ -375,26 +375,31 @@ bool QUmlReceptionObject::isDistinguishableFrom(QObject *n, QObject *ns) const
 void QUmlReceptionObject::addOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlReception *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlReceptionObject::removeOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlReception *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlReceptionObject::addOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlReception *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlReceptionObject::removeOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlReception *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlReceptionObject::setOwner(QObject *owner)
 {
     qmodelingelementproperty_cast<QUmlReception *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
+    emit ownerChanged(this->owner());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [NamedElement]
@@ -402,36 +407,43 @@ void QUmlReceptionObject::setOwner(QObject *owner)
 void QUmlReceptionObject::addClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlReception *>(this)->addClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlReceptionObject::removeClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlReception *>(this)->removeClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlReceptionObject::setName(QString name)
 {
     qmodelingelementproperty_cast<QUmlReception *>(this)->setName(name);
+    emit nameChanged(this->name());
 }
 
 void QUmlReceptionObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingelementproperty_cast<QUmlReception *>(this)->setNameExpression(qmodelingelementproperty_cast<QUmlStringExpression *>(nameExpression));
+    emit nameExpressionChanged(this->nameExpression());
 }
 
 void QUmlReceptionObject::setNamespace(QObject *namespace_)
 {
     qmodelingelementproperty_cast<QUmlReception *>(this)->setNamespace(qmodelingelementproperty_cast<QUmlNamespace *>(namespace_));
+    emit namespaceChanged(this->namespace_());
 }
 
 void QUmlReceptionObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingelementproperty_cast<QUmlReception *>(this)->setQualifiedName(qualifiedName);
+    emit qualifiedNameChanged(this->qualifiedName());
 }
 
 void QUmlReceptionObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingelementproperty_cast<QUmlReception *>(this)->setVisibility(visibility);
+    emit visibilityChanged(this->visibility());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Namespace]
@@ -439,61 +451,73 @@ void QUmlReceptionObject::setVisibility(QtUml::VisibilityKind visibility)
 void QUmlReceptionObject::addElementImport(QObject *elementImport)
 {
     qmodelingelementproperty_cast<QUmlReception *>(this)->addElementImport(qmodelingelementproperty_cast<QUmlElementImport *>(elementImport));
+    emit elementImportsChanged(this->elementImports());
 }
 
 void QUmlReceptionObject::removeElementImport(QObject *elementImport)
 {
     qmodelingelementproperty_cast<QUmlReception *>(this)->removeElementImport(qmodelingelementproperty_cast<QUmlElementImport *>(elementImport));
+    emit elementImportsChanged(this->elementImports());
 }
 
 void QUmlReceptionObject::addImportedMember(QObject *importedMember)
 {
     qmodelingelementproperty_cast<QUmlReception *>(this)->addImportedMember(qmodelingelementproperty_cast<QUmlPackageableElement *>(importedMember));
+    emit importedMembersChanged(this->importedMembers());
 }
 
 void QUmlReceptionObject::removeImportedMember(QObject *importedMember)
 {
     qmodelingelementproperty_cast<QUmlReception *>(this)->removeImportedMember(qmodelingelementproperty_cast<QUmlPackageableElement *>(importedMember));
+    emit importedMembersChanged(this->importedMembers());
 }
 
 void QUmlReceptionObject::addMember(QObject *member)
 {
     qmodelingelementproperty_cast<QUmlReception *>(this)->addMember(qmodelingelementproperty_cast<QUmlNamedElement *>(member));
+    emit membersChanged(this->members());
 }
 
 void QUmlReceptionObject::removeMember(QObject *member)
 {
     qmodelingelementproperty_cast<QUmlReception *>(this)->removeMember(qmodelingelementproperty_cast<QUmlNamedElement *>(member));
+    emit membersChanged(this->members());
 }
 
 void QUmlReceptionObject::addOwnedMember(QObject *ownedMember)
 {
     qmodelingelementproperty_cast<QUmlReception *>(this)->addOwnedMember(qmodelingelementproperty_cast<QUmlNamedElement *>(ownedMember));
+    emit ownedMembersChanged(this->ownedMembers());
 }
 
 void QUmlReceptionObject::removeOwnedMember(QObject *ownedMember)
 {
     qmodelingelementproperty_cast<QUmlReception *>(this)->removeOwnedMember(qmodelingelementproperty_cast<QUmlNamedElement *>(ownedMember));
+    emit ownedMembersChanged(this->ownedMembers());
 }
 
 void QUmlReceptionObject::addOwnedRule(QObject *ownedRule)
 {
     qmodelingelementproperty_cast<QUmlReception *>(this)->addOwnedRule(qmodelingelementproperty_cast<QUmlConstraint *>(ownedRule));
+    emit ownedRulesChanged(this->ownedRules());
 }
 
 void QUmlReceptionObject::removeOwnedRule(QObject *ownedRule)
 {
     qmodelingelementproperty_cast<QUmlReception *>(this)->removeOwnedRule(qmodelingelementproperty_cast<QUmlConstraint *>(ownedRule));
+    emit ownedRulesChanged(this->ownedRules());
 }
 
 void QUmlReceptionObject::addPackageImport(QObject *packageImport)
 {
     qmodelingelementproperty_cast<QUmlReception *>(this)->addPackageImport(qmodelingelementproperty_cast<QUmlPackageImport *>(packageImport));
+    emit packageImportsChanged(this->packageImports());
 }
 
 void QUmlReceptionObject::removePackageImport(QObject *packageImport)
 {
     qmodelingelementproperty_cast<QUmlReception *>(this)->removePackageImport(qmodelingelementproperty_cast<QUmlPackageImport *>(packageImport));
+    emit packageImportsChanged(this->packageImports());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [RedefinableElement]
@@ -501,6 +525,7 @@ void QUmlReceptionObject::removePackageImport(QObject *packageImport)
 void QUmlReceptionObject::setLeaf(bool isLeaf)
 {
     qmodelingelementproperty_cast<QUmlReception *>(this)->setLeaf(isLeaf);
+    emit isLeafChanged(this->isLeaf());
 }
 
 void QUmlReceptionObject::unsetLeaf()
@@ -513,21 +538,25 @@ void QUmlReceptionObject::unsetLeaf()
 void QUmlReceptionObject::addRedefinedElement(QObject *redefinedElement)
 {
     qmodelingelementproperty_cast<QUmlReception *>(this)->addRedefinedElement(qmodelingelementproperty_cast<QUmlRedefinableElement *>(redefinedElement));
+    emit redefinedElementsChanged(this->redefinedElements());
 }
 
 void QUmlReceptionObject::removeRedefinedElement(QObject *redefinedElement)
 {
     qmodelingelementproperty_cast<QUmlReception *>(this)->removeRedefinedElement(qmodelingelementproperty_cast<QUmlRedefinableElement *>(redefinedElement));
+    emit redefinedElementsChanged(this->redefinedElements());
 }
 
 void QUmlReceptionObject::addRedefinitionContext(QObject *redefinitionContext)
 {
     qmodelingelementproperty_cast<QUmlReception *>(this)->addRedefinitionContext(qmodelingelementproperty_cast<QUmlClassifier *>(redefinitionContext));
+    emit redefinitionContextsChanged(this->redefinitionContexts());
 }
 
 void QUmlReceptionObject::removeRedefinitionContext(QObject *redefinitionContext)
 {
     qmodelingelementproperty_cast<QUmlReception *>(this)->removeRedefinitionContext(qmodelingelementproperty_cast<QUmlClassifier *>(redefinitionContext));
+    emit redefinitionContextsChanged(this->redefinitionContexts());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Feature]
@@ -535,16 +564,19 @@ void QUmlReceptionObject::removeRedefinitionContext(QObject *redefinitionContext
 void QUmlReceptionObject::addFeaturingClassifier(QObject *featuringClassifier)
 {
     qmodelingelementproperty_cast<QUmlReception *>(this)->addFeaturingClassifier(qmodelingelementproperty_cast<QUmlClassifier *>(featuringClassifier));
+    emit featuringClassifiersChanged(this->featuringClassifiers());
 }
 
 void QUmlReceptionObject::removeFeaturingClassifier(QObject *featuringClassifier)
 {
     qmodelingelementproperty_cast<QUmlReception *>(this)->removeFeaturingClassifier(qmodelingelementproperty_cast<QUmlClassifier *>(featuringClassifier));
+    emit featuringClassifiersChanged(this->featuringClassifiers());
 }
 
 void QUmlReceptionObject::setStatic(bool isStatic)
 {
     qmodelingelementproperty_cast<QUmlReception *>(this)->setStatic(isStatic);
+    emit isStaticChanged(this->isStatic());
 }
 
 void QUmlReceptionObject::unsetStatic()
@@ -559,6 +591,7 @@ void QUmlReceptionObject::unsetStatic()
 void QUmlReceptionObject::setConcurrency(QtUml::CallConcurrencyKind concurrency)
 {
     qmodelingelementproperty_cast<QUmlReception *>(this)->setConcurrency(concurrency);
+    emit concurrencyChanged(this->concurrency());
 }
 
 void QUmlReceptionObject::unsetConcurrency()
@@ -571,6 +604,7 @@ void QUmlReceptionObject::unsetConcurrency()
 void QUmlReceptionObject::setAbstract(bool isAbstract)
 {
     qmodelingelementproperty_cast<QUmlReception *>(this)->setAbstract(isAbstract);
+    emit isAbstractChanged(this->isAbstract());
 }
 
 void QUmlReceptionObject::unsetAbstract()
@@ -583,41 +617,49 @@ void QUmlReceptionObject::unsetAbstract()
 void QUmlReceptionObject::addMethod(QObject *method)
 {
     qmodelingelementproperty_cast<QUmlReception *>(this)->addMethod(qmodelingelementproperty_cast<QUmlBehavior *>(method));
+    emit methodsChanged(this->methods());
 }
 
 void QUmlReceptionObject::removeMethod(QObject *method)
 {
     qmodelingelementproperty_cast<QUmlReception *>(this)->removeMethod(qmodelingelementproperty_cast<QUmlBehavior *>(method));
+    emit methodsChanged(this->methods());
 }
 
 void QUmlReceptionObject::addOwnedParameter(QObject *ownedParameter)
 {
     qmodelingelementproperty_cast<QUmlReception *>(this)->addOwnedParameter(qmodelingelementproperty_cast<QUmlParameter *>(ownedParameter));
+    emit ownedParametersChanged(this->ownedParameters());
 }
 
 void QUmlReceptionObject::removeOwnedParameter(QObject *ownedParameter)
 {
     qmodelingelementproperty_cast<QUmlReception *>(this)->removeOwnedParameter(qmodelingelementproperty_cast<QUmlParameter *>(ownedParameter));
+    emit ownedParametersChanged(this->ownedParameters());
 }
 
 void QUmlReceptionObject::addOwnedParameterSet(QObject *ownedParameterSet)
 {
     qmodelingelementproperty_cast<QUmlReception *>(this)->addOwnedParameterSet(qmodelingelementproperty_cast<QUmlParameterSet *>(ownedParameterSet));
+    emit ownedParameterSetsChanged(this->ownedParameterSets());
 }
 
 void QUmlReceptionObject::removeOwnedParameterSet(QObject *ownedParameterSet)
 {
     qmodelingelementproperty_cast<QUmlReception *>(this)->removeOwnedParameterSet(qmodelingelementproperty_cast<QUmlParameterSet *>(ownedParameterSet));
+    emit ownedParameterSetsChanged(this->ownedParameterSets());
 }
 
 void QUmlReceptionObject::addRaisedException(QObject *raisedException)
 {
     qmodelingelementproperty_cast<QUmlReception *>(this)->addRaisedException(qmodelingelementproperty_cast<QUmlType *>(raisedException));
+    emit raisedExceptionsChanged(this->raisedExceptions());
 }
 
 void QUmlReceptionObject::removeRaisedException(QObject *raisedException)
 {
     qmodelingelementproperty_cast<QUmlReception *>(this)->removeRaisedException(qmodelingelementproperty_cast<QUmlType *>(raisedException));
+    emit raisedExceptionsChanged(this->raisedExceptions());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Reception]
@@ -625,6 +667,7 @@ void QUmlReceptionObject::removeRaisedException(QObject *raisedException)
 void QUmlReceptionObject::setSignal(QObject *signal)
 {
     qmodelingelementproperty_cast<QUmlReception *>(this)->setSignal(qmodelingelementproperty_cast<QUmlSignal *>(signal));
+    emit signalChanged(this->signal());
 }
 
 

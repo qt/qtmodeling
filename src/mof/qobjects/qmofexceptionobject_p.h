@@ -60,9 +60,9 @@ class Q_MOF_EXPORT QMofExceptionObject : public QModelingObject
     Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [Exception]
-    Q_PROPERTY(QObject * objectInError READ objectInError WRITE setObjectInError)
-    Q_PROPERTY(QObject * elementInError READ elementInError WRITE setElementInError)
-    Q_PROPERTY(QString description READ description WRITE setDescription)
+    Q_PROPERTY(QObject * objectInError READ objectInError WRITE setObjectInError NOTIFY objectInErrorChanged)
+    Q_PROPERTY(QObject * elementInError READ elementInError WRITE setElementInError NOTIFY elementInErrorChanged)
+    Q_PROPERTY(QString description READ description WRITE setDescription NOTIFY descriptionChanged)
 
 public:
     Q_INVOKABLE explicit QMofExceptionObject(QMofException *modelingElement);
@@ -78,6 +78,13 @@ public Q_SLOTS:
     void setObjectInError(QObject *objectInError = 0);
     void setElementInError(QObject *elementInError = 0);
     void setDescription(QString description);
+
+Q_SIGNALS:
+
+    // Signals for owned attributes [Exception]
+    void objectInErrorChanged(QObject *objectInError);
+    void elementInErrorChanged(QObject *elementInError);
+    void descriptionChanged(QString description);
 
 protected:
     virtual void setGroupProperties();

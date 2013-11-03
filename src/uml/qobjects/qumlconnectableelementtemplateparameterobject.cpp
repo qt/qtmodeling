@@ -147,26 +147,31 @@ bool QUmlConnectableElementTemplateParameterObject::mustBeOwned() const
 void QUmlConnectableElementTemplateParameterObject::addOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlConnectableElementTemplateParameter *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlConnectableElementTemplateParameterObject::removeOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlConnectableElementTemplateParameter *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlConnectableElementTemplateParameterObject::addOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlConnectableElementTemplateParameter *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlConnectableElementTemplateParameterObject::removeOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlConnectableElementTemplateParameter *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlConnectableElementTemplateParameterObject::setOwner(QObject *owner)
 {
     qmodelingelementproperty_cast<QUmlConnectableElementTemplateParameter *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
+    emit ownerChanged(this->owner());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [TemplateParameter]
@@ -174,21 +179,25 @@ void QUmlConnectableElementTemplateParameterObject::setOwner(QObject *owner)
 void QUmlConnectableElementTemplateParameterObject::setDefault(QObject *default_)
 {
     qmodelingelementproperty_cast<QUmlConnectableElementTemplateParameter *>(this)->setDefault(qmodelingelementproperty_cast<QUmlParameterableElement *>(default_));
+    emit defaultChanged(this->default_());
 }
 
 void QUmlConnectableElementTemplateParameterObject::setOwnedDefault(QObject *ownedDefault)
 {
     qmodelingelementproperty_cast<QUmlConnectableElementTemplateParameter *>(this)->setOwnedDefault(qmodelingelementproperty_cast<QUmlParameterableElement *>(ownedDefault));
+    emit ownedDefaultChanged(this->ownedDefault());
 }
 
 void QUmlConnectableElementTemplateParameterObject::setOwnedParameteredElement(QObject *ownedParameteredElement)
 {
     qmodelingelementproperty_cast<QUmlConnectableElementTemplateParameter *>(this)->setOwnedParameteredElement(qmodelingelementproperty_cast<QUmlParameterableElement *>(ownedParameteredElement));
+    emit ownedParameteredElementChanged(this->ownedParameteredElement());
 }
 
 void QUmlConnectableElementTemplateParameterObject::setSignature(QObject *signature)
 {
     qmodelingelementproperty_cast<QUmlConnectableElementTemplateParameter *>(this)->setSignature(qmodelingelementproperty_cast<QUmlTemplateSignature *>(signature));
+    emit signatureChanged(this->signature());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ConnectableElementTemplateParameter]
@@ -196,6 +205,7 @@ void QUmlConnectableElementTemplateParameterObject::setSignature(QObject *signat
 void QUmlConnectableElementTemplateParameterObject::setParameteredElement(QObject *parameteredElement)
 {
     qmodelingelementproperty_cast<QUmlConnectableElementTemplateParameter *>(this)->setParameteredElement(qmodelingelementproperty_cast<QUmlConnectableElement *>(parameteredElement));
+    emit parameteredElementChanged(this->parameteredElement());
 }
 
 

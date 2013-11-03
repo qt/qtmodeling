@@ -60,10 +60,10 @@ class Q_MOF_EXPORT QMofTagObject : public QModelingObject
     Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [Tag]
-    Q_PROPERTY(QString name READ name WRITE setName)
-    Q_PROPERTY(QString value READ value WRITE setValue)
-    Q_PROPERTY(QSet<QObject *> elements READ elements)
-    Q_PROPERTY(QObject * tagOwner READ tagOwner WRITE setTagOwner)
+    Q_PROPERTY(QString name READ name WRITE setName NOTIFY nameChanged)
+    Q_PROPERTY(QString value READ value WRITE setValue NOTIFY valueChanged)
+    Q_PROPERTY(QSet<QObject *> elements READ elements NOTIFY elementsChanged)
+    Q_PROPERTY(QObject * tagOwner READ tagOwner WRITE setTagOwner NOTIFY tagOwnerChanged)
 
 public:
     Q_INVOKABLE explicit QMofTagObject(QMofTag *modelingElement);
@@ -82,6 +82,14 @@ public Q_SLOTS:
     void addElement(QObject *element);
     void removeElement(QObject *element);
     void setTagOwner(QObject *tagOwner = 0);
+
+Q_SIGNALS:
+
+    // Signals for owned attributes [Tag]
+    void nameChanged(QString name);
+    void valueChanged(QString value);
+    void elementsChanged(QSet<QObject *> elements);
+    void tagOwnerChanged(QObject *tagOwner);
 
 protected:
     virtual void setGroupProperties();

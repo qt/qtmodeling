@@ -62,22 +62,22 @@ class Q_UML_EXPORT QUmlElementImportObject : public QModelingObject
     Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [Element]
-    Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
-    Q_PROPERTY(QSet<QObject *> ownedElements READ ownedElements)
-    Q_PROPERTY(QObject * owner READ owner)
+    Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments NOTIFY ownedCommentsChanged)
+    Q_PROPERTY(QSet<QObject *> ownedElements READ ownedElements NOTIFY ownedElementsChanged)
+    Q_PROPERTY(QObject * owner READ owner NOTIFY ownerChanged)
 
     // Properties [Relationship]
-    Q_PROPERTY(QSet<QObject *> relatedElements READ relatedElements)
+    Q_PROPERTY(QSet<QObject *> relatedElements READ relatedElements NOTIFY relatedElementsChanged)
 
     // Properties [DirectedRelationship]
-    Q_PROPERTY(QSet<QObject *> sources READ sources)
-    Q_PROPERTY(QSet<QObject *> targets READ targets)
+    Q_PROPERTY(QSet<QObject *> sources READ sources NOTIFY sourcesChanged)
+    Q_PROPERTY(QSet<QObject *> targets READ targets NOTIFY targetsChanged)
 
     // Properties [ElementImport]
-    Q_PROPERTY(QString alias READ alias WRITE setAlias)
-    Q_PROPERTY(QObject * importedElement READ importedElement WRITE setImportedElement)
-    Q_PROPERTY(QObject * importingNamespace READ importingNamespace WRITE setImportingNamespace)
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility RESET unsetVisibility)
+    Q_PROPERTY(QString alias READ alias WRITE setAlias NOTIFY aliasChanged)
+    Q_PROPERTY(QObject * importedElement READ importedElement WRITE setImportedElement NOTIFY importedElementChanged)
+    Q_PROPERTY(QObject * importingNamespace READ importingNamespace WRITE setImportingNamespace NOTIFY importingNamespaceChanged)
+    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility NOTIFY visibilityChanged RESET unsetVisibility)
 
 public:
     Q_INVOKABLE explicit QUmlElementImportObject(QUmlElementImport *modelingElement);
@@ -132,6 +132,26 @@ public Q_SLOTS:
     void setImportingNamespace(QObject *importingNamespace = 0);
     void setVisibility(QtUml::VisibilityKind visibility);
     void unsetVisibility();
+
+Q_SIGNALS:
+
+    // Signals for owned attributes [Element]
+    void ownedCommentsChanged(QSet<QObject *> ownedComments);
+    void ownedElementsChanged(QSet<QObject *> ownedElements);
+    void ownerChanged(QObject *owner);
+
+    // Signals for owned attributes [Relationship]
+    void relatedElementsChanged(QSet<QObject *> relatedElements);
+
+    // Signals for owned attributes [DirectedRelationship]
+    void sourcesChanged(QSet<QObject *> sources);
+    void targetsChanged(QSet<QObject *> targets);
+
+    // Signals for owned attributes [ElementImport]
+    void aliasChanged(QString alias);
+    void importedElementChanged(QObject *importedElement);
+    void importingNamespaceChanged(QObject *importingNamespace);
+    void visibilityChanged(QtUml::VisibilityKind visibility);
 
 protected:
     virtual void setGroupProperties();

@@ -129,26 +129,31 @@ bool QUmlLinkEndDataObject::mustBeOwned() const
 void QUmlLinkEndDataObject::addOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlLinkEndData *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlLinkEndDataObject::removeOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlLinkEndData *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlLinkEndDataObject::addOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlLinkEndData *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlLinkEndDataObject::removeOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlLinkEndData *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlLinkEndDataObject::setOwner(QObject *owner)
 {
     qmodelingelementproperty_cast<QUmlLinkEndData *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
+    emit ownerChanged(this->owner());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [LinkEndData]
@@ -156,21 +161,25 @@ void QUmlLinkEndDataObject::setOwner(QObject *owner)
 void QUmlLinkEndDataObject::setEnd(QObject *end)
 {
     qmodelingelementproperty_cast<QUmlLinkEndData *>(this)->setEnd(qmodelingelementproperty_cast<QUmlProperty *>(end));
+    emit endChanged(this->end());
 }
 
 void QUmlLinkEndDataObject::addQualifier(QObject *qualifier)
 {
     qmodelingelementproperty_cast<QUmlLinkEndData *>(this)->addQualifier(qmodelingelementproperty_cast<QUmlQualifierValue *>(qualifier));
+    emit qualifiersChanged(this->qualifiers());
 }
 
 void QUmlLinkEndDataObject::removeQualifier(QObject *qualifier)
 {
     qmodelingelementproperty_cast<QUmlLinkEndData *>(this)->removeQualifier(qmodelingelementproperty_cast<QUmlQualifierValue *>(qualifier));
+    emit qualifiersChanged(this->qualifiers());
 }
 
 void QUmlLinkEndDataObject::setValue(QObject *value)
 {
     qmodelingelementproperty_cast<QUmlLinkEndData *>(this)->setValue(qmodelingelementproperty_cast<QUmlInputPin *>(value));
+    emit valueChanged(this->value());
 }
 
 

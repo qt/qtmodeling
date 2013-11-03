@@ -205,26 +205,31 @@ QString QMofInstanceSpecificationObject::separator() const
 void QMofInstanceSpecificationObject::addOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QMofInstanceSpecification *>(this)->addOwnedComment(qmodelingelementproperty_cast<QMofComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QMofInstanceSpecificationObject::removeOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QMofInstanceSpecification *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QMofComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QMofInstanceSpecificationObject::addOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QMofInstanceSpecification *>(this)->addOwnedElement(qmodelingelementproperty_cast<QMofElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QMofInstanceSpecificationObject::removeOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QMofInstanceSpecification *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QMofElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QMofInstanceSpecificationObject::setOwner(QObject *owner)
 {
     qmodelingelementproperty_cast<QMofInstanceSpecification *>(this)->setOwner(qmodelingelementproperty_cast<QMofElement *>(owner));
+    emit ownerChanged(this->owner());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [NamedElement]
@@ -232,22 +237,26 @@ void QMofInstanceSpecificationObject::setOwner(QObject *owner)
 void QMofInstanceSpecificationObject::setName(QString name)
 {
     qmodelingelementproperty_cast<QMofInstanceSpecification *>(this)->setName(name);
+    emit nameChanged(this->name());
 }
 
 void QMofInstanceSpecificationObject::setNamespace(QObject *namespace_)
 {
     qmodelingelementproperty_cast<QMofInstanceSpecification *>(this)->setNamespace(qmodelingelementproperty_cast<QMofNamespace *>(namespace_));
+    emit namespaceChanged(this->namespace_());
 }
 
 void QMofInstanceSpecificationObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingelementproperty_cast<QMofInstanceSpecification *>(this)->setQualifiedName(qualifiedName);
+    emit qualifiedNameChanged(this->qualifiedName());
 }
 // SLOTS FOR OWNED ATTRIBUTES [PackageableElement]
 
 void QMofInstanceSpecificationObject::setVisibility(QtMof::VisibilityKind visibility)
 {
     qmodelingelementproperty_cast<QMofInstanceSpecification *>(this)->setVisibility(visibility);
+    emit visibilityChanged(this->visibility());
 }
 
 void QMofInstanceSpecificationObject::unsetVisibility()
@@ -262,26 +271,31 @@ void QMofInstanceSpecificationObject::unsetVisibility()
 void QMofInstanceSpecificationObject::addClassifier(QObject *classifier)
 {
     qmodelingelementproperty_cast<QMofInstanceSpecification *>(this)->addClassifier(qmodelingelementproperty_cast<QMofClassifier *>(classifier));
+    emit classifiersChanged(this->classifiers());
 }
 
 void QMofInstanceSpecificationObject::removeClassifier(QObject *classifier)
 {
     qmodelingelementproperty_cast<QMofInstanceSpecification *>(this)->removeClassifier(qmodelingelementproperty_cast<QMofClassifier *>(classifier));
+    emit classifiersChanged(this->classifiers());
 }
 
 void QMofInstanceSpecificationObject::addSlot(QObject *slot_)
 {
     qmodelingelementproperty_cast<QMofInstanceSpecification *>(this)->addSlot(qmodelingelementproperty_cast<QMofSlot *>(slot_));
+    emit slotsChanged(this->slots_());
 }
 
 void QMofInstanceSpecificationObject::removeSlot(QObject *slot_)
 {
     qmodelingelementproperty_cast<QMofInstanceSpecification *>(this)->removeSlot(qmodelingelementproperty_cast<QMofSlot *>(slot_));
+    emit slotsChanged(this->slots_());
 }
 
 void QMofInstanceSpecificationObject::setSpecification(QObject *specification)
 {
     qmodelingelementproperty_cast<QMofInstanceSpecification *>(this)->setSpecification(qmodelingelementproperty_cast<QMofValueSpecification *>(specification));
+    emit specificationChanged(this->specification());
 }
 
 

@@ -60,18 +60,18 @@ class Q_UML_EXPORT QUmlLinkEndDestructionDataObject : public QModelingObject
     Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [Element]
-    Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
-    Q_PROPERTY(QSet<QObject *> ownedElements READ ownedElements)
-    Q_PROPERTY(QObject * owner READ owner)
+    Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments NOTIFY ownedCommentsChanged)
+    Q_PROPERTY(QSet<QObject *> ownedElements READ ownedElements NOTIFY ownedElementsChanged)
+    Q_PROPERTY(QObject * owner READ owner NOTIFY ownerChanged)
 
     // Properties [LinkEndData]
-    Q_PROPERTY(QObject * end READ end WRITE setEnd)
-    Q_PROPERTY(QSet<QObject *> qualifiers READ qualifiers)
-    Q_PROPERTY(QObject * value READ value WRITE setValue)
+    Q_PROPERTY(QObject * end READ end WRITE setEnd NOTIFY endChanged)
+    Q_PROPERTY(QSet<QObject *> qualifiers READ qualifiers NOTIFY qualifiersChanged)
+    Q_PROPERTY(QObject * value READ value WRITE setValue NOTIFY valueChanged)
 
     // Properties [LinkEndDestructionData]
-    Q_PROPERTY(QObject * destroyAt READ destroyAt WRITE setDestroyAt)
-    Q_PROPERTY(bool isDestroyDuplicates READ isDestroyDuplicates WRITE setDestroyDuplicates RESET unsetDestroyDuplicates)
+    Q_PROPERTY(QObject * destroyAt READ destroyAt WRITE setDestroyAt NOTIFY destroyAtChanged)
+    Q_PROPERTY(bool isDestroyDuplicates READ isDestroyDuplicates WRITE setDestroyDuplicates NOTIFY isDestroyDuplicatesChanged RESET unsetDestroyDuplicates)
 
 public:
     Q_INVOKABLE explicit QUmlLinkEndDestructionDataObject(QUmlLinkEndDestructionData *modelingElement);
@@ -113,6 +113,22 @@ public Q_SLOTS:
     void setDestroyAt(QObject *destroyAt = 0);
     void setDestroyDuplicates(bool isDestroyDuplicates);
     void unsetDestroyDuplicates();
+
+Q_SIGNALS:
+
+    // Signals for owned attributes [Element]
+    void ownedCommentsChanged(QSet<QObject *> ownedComments);
+    void ownedElementsChanged(QSet<QObject *> ownedElements);
+    void ownerChanged(QObject *owner);
+
+    // Signals for owned attributes [LinkEndData]
+    void endChanged(QObject *end);
+    void qualifiersChanged(QSet<QObject *> qualifiers);
+    void valueChanged(QObject *value);
+
+    // Signals for owned attributes [LinkEndDestructionData]
+    void destroyAtChanged(QObject *destroyAt);
+    void isDestroyDuplicatesChanged(bool isDestroyDuplicates);
 
 protected:
     virtual void setGroupProperties();

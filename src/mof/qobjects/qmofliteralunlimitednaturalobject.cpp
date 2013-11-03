@@ -233,26 +233,31 @@ int QMofLiteralUnlimitedNaturalObject::unlimitedValue() const
 void QMofLiteralUnlimitedNaturalObject::addOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QMofLiteralUnlimitedNatural *>(this)->addOwnedComment(qmodelingelementproperty_cast<QMofComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QMofLiteralUnlimitedNaturalObject::removeOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QMofLiteralUnlimitedNatural *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QMofComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QMofLiteralUnlimitedNaturalObject::addOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QMofLiteralUnlimitedNatural *>(this)->addOwnedElement(qmodelingelementproperty_cast<QMofElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QMofLiteralUnlimitedNaturalObject::removeOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QMofLiteralUnlimitedNatural *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QMofElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QMofLiteralUnlimitedNaturalObject::setOwner(QObject *owner)
 {
     qmodelingelementproperty_cast<QMofLiteralUnlimitedNatural *>(this)->setOwner(qmodelingelementproperty_cast<QMofElement *>(owner));
+    emit ownerChanged(this->owner());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [NamedElement]
@@ -260,22 +265,26 @@ void QMofLiteralUnlimitedNaturalObject::setOwner(QObject *owner)
 void QMofLiteralUnlimitedNaturalObject::setName(QString name)
 {
     qmodelingelementproperty_cast<QMofLiteralUnlimitedNatural *>(this)->setName(name);
+    emit nameChanged(this->name());
 }
 
 void QMofLiteralUnlimitedNaturalObject::setNamespace(QObject *namespace_)
 {
     qmodelingelementproperty_cast<QMofLiteralUnlimitedNatural *>(this)->setNamespace(qmodelingelementproperty_cast<QMofNamespace *>(namespace_));
+    emit namespaceChanged(this->namespace_());
 }
 
 void QMofLiteralUnlimitedNaturalObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingelementproperty_cast<QMofLiteralUnlimitedNatural *>(this)->setQualifiedName(qualifiedName);
+    emit qualifiedNameChanged(this->qualifiedName());
 }
 // SLOTS FOR OWNED ATTRIBUTES [PackageableElement]
 
 void QMofLiteralUnlimitedNaturalObject::setVisibility(QtMof::VisibilityKind visibility)
 {
     qmodelingelementproperty_cast<QMofLiteralUnlimitedNatural *>(this)->setVisibility(visibility);
+    emit visibilityChanged(this->visibility());
 }
 
 void QMofLiteralUnlimitedNaturalObject::unsetVisibility()
@@ -290,6 +299,7 @@ void QMofLiteralUnlimitedNaturalObject::unsetVisibility()
 void QMofLiteralUnlimitedNaturalObject::setType(QObject *type)
 {
     qmodelingelementproperty_cast<QMofLiteralUnlimitedNatural *>(this)->setType(qmodelingelementproperty_cast<QMofType *>(type));
+    emit typeChanged(this->type());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [LiteralUnlimitedNatural]
@@ -297,6 +307,7 @@ void QMofLiteralUnlimitedNaturalObject::setType(QObject *type)
 void QMofLiteralUnlimitedNaturalObject::setValue(int value)
 {
     qmodelingelementproperty_cast<QMofLiteralUnlimitedNatural *>(this)->setValue(value);
+    emit valueChanged(this->value());
 }
 
 void QMofLiteralUnlimitedNaturalObject::unsetValue()

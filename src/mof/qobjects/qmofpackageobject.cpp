@@ -322,26 +322,31 @@ QSet<QObject *> QMofPackageObject::visibleMembers() const
 void QMofPackageObject::addOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QMofPackage *>(this)->addOwnedComment(qmodelingelementproperty_cast<QMofComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QMofPackageObject::removeOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QMofPackage *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QMofComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QMofPackageObject::addOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QMofPackage *>(this)->addOwnedElement(qmodelingelementproperty_cast<QMofElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QMofPackageObject::removeOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QMofPackage *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QMofElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QMofPackageObject::setOwner(QObject *owner)
 {
     qmodelingelementproperty_cast<QMofPackage *>(this)->setOwner(qmodelingelementproperty_cast<QMofElement *>(owner));
+    emit ownerChanged(this->owner());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [NamedElement]
@@ -349,77 +354,92 @@ void QMofPackageObject::setOwner(QObject *owner)
 void QMofPackageObject::setName(QString name)
 {
     qmodelingelementproperty_cast<QMofPackage *>(this)->setName(name);
+    emit nameChanged(this->name());
 }
 
 void QMofPackageObject::setNamespace(QObject *namespace_)
 {
     qmodelingelementproperty_cast<QMofPackage *>(this)->setNamespace(qmodelingelementproperty_cast<QMofNamespace *>(namespace_));
+    emit namespaceChanged(this->namespace_());
 }
 
 void QMofPackageObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingelementproperty_cast<QMofPackage *>(this)->setQualifiedName(qualifiedName);
+    emit qualifiedNameChanged(this->qualifiedName());
 }
 // SLOTS FOR OWNED ATTRIBUTES [Namespace]
 
 void QMofPackageObject::addElementImport(QObject *elementImport)
 {
     qmodelingelementproperty_cast<QMofPackage *>(this)->addElementImport(qmodelingelementproperty_cast<QMofElementImport *>(elementImport));
+    emit elementImportsChanged(this->elementImports());
 }
 
 void QMofPackageObject::removeElementImport(QObject *elementImport)
 {
     qmodelingelementproperty_cast<QMofPackage *>(this)->removeElementImport(qmodelingelementproperty_cast<QMofElementImport *>(elementImport));
+    emit elementImportsChanged(this->elementImports());
 }
 
 void QMofPackageObject::addImportedMember(QObject *importedMember)
 {
     qmodelingelementproperty_cast<QMofPackage *>(this)->addImportedMember(qmodelingelementproperty_cast<QMofPackageableElement *>(importedMember));
+    emit importedMembersChanged(this->importedMembers());
 }
 
 void QMofPackageObject::removeImportedMember(QObject *importedMember)
 {
     qmodelingelementproperty_cast<QMofPackage *>(this)->removeImportedMember(qmodelingelementproperty_cast<QMofPackageableElement *>(importedMember));
+    emit importedMembersChanged(this->importedMembers());
 }
 
 void QMofPackageObject::addMember(QObject *member)
 {
     qmodelingelementproperty_cast<QMofPackage *>(this)->addMember(qmodelingelementproperty_cast<QMofNamedElement *>(member));
+    emit membersChanged(this->members());
 }
 
 void QMofPackageObject::removeMember(QObject *member)
 {
     qmodelingelementproperty_cast<QMofPackage *>(this)->removeMember(qmodelingelementproperty_cast<QMofNamedElement *>(member));
+    emit membersChanged(this->members());
 }
 
 void QMofPackageObject::addOwnedMember(QObject *ownedMember)
 {
     qmodelingelementproperty_cast<QMofPackage *>(this)->addOwnedMember(qmodelingelementproperty_cast<QMofNamedElement *>(ownedMember));
+    emit ownedMembersChanged(this->ownedMembers());
 }
 
 void QMofPackageObject::removeOwnedMember(QObject *ownedMember)
 {
     qmodelingelementproperty_cast<QMofPackage *>(this)->removeOwnedMember(qmodelingelementproperty_cast<QMofNamedElement *>(ownedMember));
+    emit ownedMembersChanged(this->ownedMembers());
 }
 
 void QMofPackageObject::addOwnedRule(QObject *ownedRule)
 {
     qmodelingelementproperty_cast<QMofPackage *>(this)->addOwnedRule(qmodelingelementproperty_cast<QMofConstraint *>(ownedRule));
+    emit ownedRulesChanged(this->ownedRules());
 }
 
 void QMofPackageObject::removeOwnedRule(QObject *ownedRule)
 {
     qmodelingelementproperty_cast<QMofPackage *>(this)->removeOwnedRule(qmodelingelementproperty_cast<QMofConstraint *>(ownedRule));
+    emit ownedRulesChanged(this->ownedRules());
 }
 
 void QMofPackageObject::addPackageImport(QObject *packageImport)
 {
     qmodelingelementproperty_cast<QMofPackage *>(this)->addPackageImport(qmodelingelementproperty_cast<QMofPackageImport *>(packageImport));
+    emit packageImportsChanged(this->packageImports());
 }
 
 void QMofPackageObject::removePackageImport(QObject *packageImport)
 {
     qmodelingelementproperty_cast<QMofPackage *>(this)->removePackageImport(qmodelingelementproperty_cast<QMofPackageImport *>(packageImport));
+    emit packageImportsChanged(this->packageImports());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [PackageableElement]
@@ -427,6 +447,7 @@ void QMofPackageObject::removePackageImport(QObject *packageImport)
 void QMofPackageObject::setVisibility(QtMof::VisibilityKind visibility)
 {
     qmodelingelementproperty_cast<QMofPackage *>(this)->setVisibility(visibility);
+    emit visibilityChanged(this->visibility());
 }
 
 void QMofPackageObject::unsetVisibility()
@@ -441,51 +462,61 @@ void QMofPackageObject::unsetVisibility()
 void QMofPackageObject::setURI(QString URI)
 {
     qmodelingelementproperty_cast<QMofPackage *>(this)->setURI(URI);
+    emit URIChanged(this->URI());
 }
 
 void QMofPackageObject::addNestedPackage(QObject *nestedPackage)
 {
     qmodelingelementproperty_cast<QMofPackage *>(this)->addNestedPackage(qmodelingelementproperty_cast<QMofPackage *>(nestedPackage));
+    emit nestedPackagesChanged(this->nestedPackages());
 }
 
 void QMofPackageObject::removeNestedPackage(QObject *nestedPackage)
 {
     qmodelingelementproperty_cast<QMofPackage *>(this)->removeNestedPackage(qmodelingelementproperty_cast<QMofPackage *>(nestedPackage));
+    emit nestedPackagesChanged(this->nestedPackages());
 }
 
 void QMofPackageObject::setNestingPackage(QObject *nestingPackage)
 {
     qmodelingelementproperty_cast<QMofPackage *>(this)->setNestingPackage(qmodelingelementproperty_cast<QMofPackage *>(nestingPackage));
+    emit nestingPackageChanged(this->nestingPackage());
 }
 
 void QMofPackageObject::addOwnedType(QObject *ownedType)
 {
     qmodelingelementproperty_cast<QMofPackage *>(this)->addOwnedType(qmodelingelementproperty_cast<QMofType *>(ownedType));
+    emit ownedTypesChanged(this->ownedTypes());
 }
 
 void QMofPackageObject::removeOwnedType(QObject *ownedType)
 {
     qmodelingelementproperty_cast<QMofPackage *>(this)->removeOwnedType(qmodelingelementproperty_cast<QMofType *>(ownedType));
+    emit ownedTypesChanged(this->ownedTypes());
 }
 
 void QMofPackageObject::addPackageMerge(QObject *packageMerge)
 {
     qmodelingelementproperty_cast<QMofPackage *>(this)->addPackageMerge(qmodelingelementproperty_cast<QMofPackageMerge *>(packageMerge));
+    emit packageMergesChanged(this->packageMerges());
 }
 
 void QMofPackageObject::removePackageMerge(QObject *packageMerge)
 {
     qmodelingelementproperty_cast<QMofPackage *>(this)->removePackageMerge(qmodelingelementproperty_cast<QMofPackageMerge *>(packageMerge));
+    emit packageMergesChanged(this->packageMerges());
 }
 
 void QMofPackageObject::addPackagedElement(QObject *packagedElement)
 {
     qmodelingelementproperty_cast<QMofPackage *>(this)->addPackagedElement(qmodelingelementproperty_cast<QMofPackageableElement *>(packagedElement));
+    emit packagedElementsChanged(this->packagedElements());
 }
 
 void QMofPackageObject::removePackagedElement(QObject *packagedElement)
 {
     qmodelingelementproperty_cast<QMofPackage *>(this)->removePackagedElement(qmodelingelementproperty_cast<QMofPackageableElement *>(packagedElement));
+    emit packagedElementsChanged(this->packagedElements());
 }
 
 

@@ -369,26 +369,31 @@ bool QUmlAcceptEventActionObject::isRedefinitionContextValid(QObject *redefined)
 void QUmlAcceptEventActionObject::addOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlAcceptEventAction *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlAcceptEventActionObject::removeOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlAcceptEventAction *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlAcceptEventActionObject::addOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlAcceptEventAction *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlAcceptEventActionObject::removeOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlAcceptEventAction *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlAcceptEventActionObject::setOwner(QObject *owner)
 {
     qmodelingelementproperty_cast<QUmlAcceptEventAction *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
+    emit ownerChanged(this->owner());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [NamedElement]
@@ -396,36 +401,43 @@ void QUmlAcceptEventActionObject::setOwner(QObject *owner)
 void QUmlAcceptEventActionObject::addClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlAcceptEventAction *>(this)->addClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlAcceptEventActionObject::removeClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlAcceptEventAction *>(this)->removeClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlAcceptEventActionObject::setName(QString name)
 {
     qmodelingelementproperty_cast<QUmlAcceptEventAction *>(this)->setName(name);
+    emit nameChanged(this->name());
 }
 
 void QUmlAcceptEventActionObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingelementproperty_cast<QUmlAcceptEventAction *>(this)->setNameExpression(qmodelingelementproperty_cast<QUmlStringExpression *>(nameExpression));
+    emit nameExpressionChanged(this->nameExpression());
 }
 
 void QUmlAcceptEventActionObject::setNamespace(QObject *namespace_)
 {
     qmodelingelementproperty_cast<QUmlAcceptEventAction *>(this)->setNamespace(qmodelingelementproperty_cast<QUmlNamespace *>(namespace_));
+    emit namespaceChanged(this->namespace_());
 }
 
 void QUmlAcceptEventActionObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingelementproperty_cast<QUmlAcceptEventAction *>(this)->setQualifiedName(qualifiedName);
+    emit qualifiedNameChanged(this->qualifiedName());
 }
 
 void QUmlAcceptEventActionObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingelementproperty_cast<QUmlAcceptEventAction *>(this)->setVisibility(visibility);
+    emit visibilityChanged(this->visibility());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [RedefinableElement]
@@ -433,6 +445,7 @@ void QUmlAcceptEventActionObject::setVisibility(QtUml::VisibilityKind visibility
 void QUmlAcceptEventActionObject::setLeaf(bool isLeaf)
 {
     qmodelingelementproperty_cast<QUmlAcceptEventAction *>(this)->setLeaf(isLeaf);
+    emit isLeafChanged(this->isLeaf());
 }
 
 void QUmlAcceptEventActionObject::unsetLeaf()
@@ -445,21 +458,25 @@ void QUmlAcceptEventActionObject::unsetLeaf()
 void QUmlAcceptEventActionObject::addRedefinedElement(QObject *redefinedElement)
 {
     qmodelingelementproperty_cast<QUmlAcceptEventAction *>(this)->addRedefinedElement(qmodelingelementproperty_cast<QUmlRedefinableElement *>(redefinedElement));
+    emit redefinedElementsChanged(this->redefinedElements());
 }
 
 void QUmlAcceptEventActionObject::removeRedefinedElement(QObject *redefinedElement)
 {
     qmodelingelementproperty_cast<QUmlAcceptEventAction *>(this)->removeRedefinedElement(qmodelingelementproperty_cast<QUmlRedefinableElement *>(redefinedElement));
+    emit redefinedElementsChanged(this->redefinedElements());
 }
 
 void QUmlAcceptEventActionObject::addRedefinitionContext(QObject *redefinitionContext)
 {
     qmodelingelementproperty_cast<QUmlAcceptEventAction *>(this)->addRedefinitionContext(qmodelingelementproperty_cast<QUmlClassifier *>(redefinitionContext));
+    emit redefinitionContextsChanged(this->redefinitionContexts());
 }
 
 void QUmlAcceptEventActionObject::removeRedefinitionContext(QObject *redefinitionContext)
 {
     qmodelingelementproperty_cast<QUmlAcceptEventAction *>(this)->removeRedefinitionContext(qmodelingelementproperty_cast<QUmlClassifier *>(redefinitionContext));
+    emit redefinitionContextsChanged(this->redefinitionContexts());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ActivityNode]
@@ -467,71 +484,85 @@ void QUmlAcceptEventActionObject::removeRedefinitionContext(QObject *redefinitio
 void QUmlAcceptEventActionObject::setActivity(QObject *activity)
 {
     qmodelingelementproperty_cast<QUmlAcceptEventAction *>(this)->setActivity(qmodelingelementproperty_cast<QUmlActivity *>(activity));
+    emit activityChanged(this->activity());
 }
 
 void QUmlAcceptEventActionObject::addInGroup(QObject *inGroup)
 {
     qmodelingelementproperty_cast<QUmlAcceptEventAction *>(this)->addInGroup(qmodelingelementproperty_cast<QUmlActivityGroup *>(inGroup));
+    emit inGroupsChanged(this->inGroups());
 }
 
 void QUmlAcceptEventActionObject::removeInGroup(QObject *inGroup)
 {
     qmodelingelementproperty_cast<QUmlAcceptEventAction *>(this)->removeInGroup(qmodelingelementproperty_cast<QUmlActivityGroup *>(inGroup));
+    emit inGroupsChanged(this->inGroups());
 }
 
 void QUmlAcceptEventActionObject::addInInterruptibleRegion(QObject *inInterruptibleRegion)
 {
     qmodelingelementproperty_cast<QUmlAcceptEventAction *>(this)->addInInterruptibleRegion(qmodelingelementproperty_cast<QUmlInterruptibleActivityRegion *>(inInterruptibleRegion));
+    emit inInterruptibleRegionsChanged(this->inInterruptibleRegions());
 }
 
 void QUmlAcceptEventActionObject::removeInInterruptibleRegion(QObject *inInterruptibleRegion)
 {
     qmodelingelementproperty_cast<QUmlAcceptEventAction *>(this)->removeInInterruptibleRegion(qmodelingelementproperty_cast<QUmlInterruptibleActivityRegion *>(inInterruptibleRegion));
+    emit inInterruptibleRegionsChanged(this->inInterruptibleRegions());
 }
 
 void QUmlAcceptEventActionObject::addInPartition(QObject *inPartition)
 {
     qmodelingelementproperty_cast<QUmlAcceptEventAction *>(this)->addInPartition(qmodelingelementproperty_cast<QUmlActivityPartition *>(inPartition));
+    emit inPartitionsChanged(this->inPartitions());
 }
 
 void QUmlAcceptEventActionObject::removeInPartition(QObject *inPartition)
 {
     qmodelingelementproperty_cast<QUmlAcceptEventAction *>(this)->removeInPartition(qmodelingelementproperty_cast<QUmlActivityPartition *>(inPartition));
+    emit inPartitionsChanged(this->inPartitions());
 }
 
 void QUmlAcceptEventActionObject::setInStructuredNode(QObject *inStructuredNode)
 {
     qmodelingelementproperty_cast<QUmlAcceptEventAction *>(this)->setInStructuredNode(qmodelingelementproperty_cast<QUmlStructuredActivityNode *>(inStructuredNode));
+    emit inStructuredNodeChanged(this->inStructuredNode());
 }
 
 void QUmlAcceptEventActionObject::addIncoming(QObject *incoming)
 {
     qmodelingelementproperty_cast<QUmlAcceptEventAction *>(this)->addIncoming(qmodelingelementproperty_cast<QUmlActivityEdge *>(incoming));
+    emit incomingsChanged(this->incomings());
 }
 
 void QUmlAcceptEventActionObject::removeIncoming(QObject *incoming)
 {
     qmodelingelementproperty_cast<QUmlAcceptEventAction *>(this)->removeIncoming(qmodelingelementproperty_cast<QUmlActivityEdge *>(incoming));
+    emit incomingsChanged(this->incomings());
 }
 
 void QUmlAcceptEventActionObject::addOutgoing(QObject *outgoing)
 {
     qmodelingelementproperty_cast<QUmlAcceptEventAction *>(this)->addOutgoing(qmodelingelementproperty_cast<QUmlActivityEdge *>(outgoing));
+    emit outgoingsChanged(this->outgoings());
 }
 
 void QUmlAcceptEventActionObject::removeOutgoing(QObject *outgoing)
 {
     qmodelingelementproperty_cast<QUmlAcceptEventAction *>(this)->removeOutgoing(qmodelingelementproperty_cast<QUmlActivityEdge *>(outgoing));
+    emit outgoingsChanged(this->outgoings());
 }
 
 void QUmlAcceptEventActionObject::addRedefinedNode(QObject *redefinedNode)
 {
     qmodelingelementproperty_cast<QUmlAcceptEventAction *>(this)->addRedefinedNode(qmodelingelementproperty_cast<QUmlActivityNode *>(redefinedNode));
+    emit redefinedNodesChanged(this->redefinedNodes());
 }
 
 void QUmlAcceptEventActionObject::removeRedefinedNode(QObject *redefinedNode)
 {
     qmodelingelementproperty_cast<QUmlAcceptEventAction *>(this)->removeRedefinedNode(qmodelingelementproperty_cast<QUmlActivityNode *>(redefinedNode));
+    emit redefinedNodesChanged(this->redefinedNodes());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ExecutableNode]
@@ -539,11 +570,13 @@ void QUmlAcceptEventActionObject::removeRedefinedNode(QObject *redefinedNode)
 void QUmlAcceptEventActionObject::addHandler(QObject *handler)
 {
     qmodelingelementproperty_cast<QUmlAcceptEventAction *>(this)->addHandler(qmodelingelementproperty_cast<QUmlExceptionHandler *>(handler));
+    emit handlersChanged(this->handlers());
 }
 
 void QUmlAcceptEventActionObject::removeHandler(QObject *handler)
 {
     qmodelingelementproperty_cast<QUmlAcceptEventAction *>(this)->removeHandler(qmodelingelementproperty_cast<QUmlExceptionHandler *>(handler));
+    emit handlersChanged(this->handlers());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Action]
@@ -551,21 +584,25 @@ void QUmlAcceptEventActionObject::removeHandler(QObject *handler)
 void QUmlAcceptEventActionObject::setContext(QObject *context)
 {
     qmodelingelementproperty_cast<QUmlAcceptEventAction *>(this)->setContext(qmodelingelementproperty_cast<QUmlClassifier *>(context));
+    emit contextChanged(this->context());
 }
 
 void QUmlAcceptEventActionObject::addInput(QObject *input)
 {
     qmodelingelementproperty_cast<QUmlAcceptEventAction *>(this)->addInput(qmodelingelementproperty_cast<QUmlInputPin *>(input));
+    emit inputsChanged(this->inputs());
 }
 
 void QUmlAcceptEventActionObject::removeInput(QObject *input)
 {
     qmodelingelementproperty_cast<QUmlAcceptEventAction *>(this)->removeInput(qmodelingelementproperty_cast<QUmlInputPin *>(input));
+    emit inputsChanged(this->inputs());
 }
 
 void QUmlAcceptEventActionObject::setLocallyReentrant(bool isLocallyReentrant)
 {
     qmodelingelementproperty_cast<QUmlAcceptEventAction *>(this)->setLocallyReentrant(isLocallyReentrant);
+    emit isLocallyReentrantChanged(this->isLocallyReentrant());
 }
 
 void QUmlAcceptEventActionObject::unsetLocallyReentrant()
@@ -578,31 +615,37 @@ void QUmlAcceptEventActionObject::unsetLocallyReentrant()
 void QUmlAcceptEventActionObject::addLocalPostcondition(QObject *localPostcondition)
 {
     qmodelingelementproperty_cast<QUmlAcceptEventAction *>(this)->addLocalPostcondition(qmodelingelementproperty_cast<QUmlConstraint *>(localPostcondition));
+    emit localPostconditionsChanged(this->localPostconditions());
 }
 
 void QUmlAcceptEventActionObject::removeLocalPostcondition(QObject *localPostcondition)
 {
     qmodelingelementproperty_cast<QUmlAcceptEventAction *>(this)->removeLocalPostcondition(qmodelingelementproperty_cast<QUmlConstraint *>(localPostcondition));
+    emit localPostconditionsChanged(this->localPostconditions());
 }
 
 void QUmlAcceptEventActionObject::addLocalPrecondition(QObject *localPrecondition)
 {
     qmodelingelementproperty_cast<QUmlAcceptEventAction *>(this)->addLocalPrecondition(qmodelingelementproperty_cast<QUmlConstraint *>(localPrecondition));
+    emit localPreconditionsChanged(this->localPreconditions());
 }
 
 void QUmlAcceptEventActionObject::removeLocalPrecondition(QObject *localPrecondition)
 {
     qmodelingelementproperty_cast<QUmlAcceptEventAction *>(this)->removeLocalPrecondition(qmodelingelementproperty_cast<QUmlConstraint *>(localPrecondition));
+    emit localPreconditionsChanged(this->localPreconditions());
 }
 
 void QUmlAcceptEventActionObject::addOutput(QObject *output)
 {
     qmodelingelementproperty_cast<QUmlAcceptEventAction *>(this)->addOutput(qmodelingelementproperty_cast<QUmlOutputPin *>(output));
+    emit outputsChanged(this->outputs());
 }
 
 void QUmlAcceptEventActionObject::removeOutput(QObject *output)
 {
     qmodelingelementproperty_cast<QUmlAcceptEventAction *>(this)->removeOutput(qmodelingelementproperty_cast<QUmlOutputPin *>(output));
+    emit outputsChanged(this->outputs());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [AcceptEventAction]
@@ -610,6 +653,7 @@ void QUmlAcceptEventActionObject::removeOutput(QObject *output)
 void QUmlAcceptEventActionObject::setUnmarshall(bool isUnmarshall)
 {
     qmodelingelementproperty_cast<QUmlAcceptEventAction *>(this)->setUnmarshall(isUnmarshall);
+    emit isUnmarshallChanged(this->isUnmarshall());
 }
 
 void QUmlAcceptEventActionObject::unsetUnmarshall()
@@ -622,21 +666,25 @@ void QUmlAcceptEventActionObject::unsetUnmarshall()
 void QUmlAcceptEventActionObject::addResult(QObject *result)
 {
     qmodelingelementproperty_cast<QUmlAcceptEventAction *>(this)->addResult(qmodelingelementproperty_cast<QUmlOutputPin *>(result));
+    emit resultsChanged(this->results());
 }
 
 void QUmlAcceptEventActionObject::removeResult(QObject *result)
 {
     qmodelingelementproperty_cast<QUmlAcceptEventAction *>(this)->removeResult(qmodelingelementproperty_cast<QUmlOutputPin *>(result));
+    emit resultsChanged(this->results());
 }
 
 void QUmlAcceptEventActionObject::addTrigger(QObject *trigger)
 {
     qmodelingelementproperty_cast<QUmlAcceptEventAction *>(this)->addTrigger(qmodelingelementproperty_cast<QUmlTrigger *>(trigger));
+    emit triggersChanged(this->triggers());
 }
 
 void QUmlAcceptEventActionObject::removeTrigger(QObject *trigger)
 {
     qmodelingelementproperty_cast<QUmlAcceptEventAction *>(this)->removeTrigger(qmodelingelementproperty_cast<QUmlTrigger *>(trigger));
+    emit triggersChanged(this->triggers());
 }
 
 

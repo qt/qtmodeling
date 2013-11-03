@@ -60,20 +60,20 @@ class Q_UML_EXPORT QUmlClassifierTemplateParameterObject : public QModelingObjec
     Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [Element]
-    Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
-    Q_PROPERTY(QSet<QObject *> ownedElements READ ownedElements)
-    Q_PROPERTY(QObject * owner READ owner)
+    Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments NOTIFY ownedCommentsChanged)
+    Q_PROPERTY(QSet<QObject *> ownedElements READ ownedElements NOTIFY ownedElementsChanged)
+    Q_PROPERTY(QObject * owner READ owner NOTIFY ownerChanged)
 
     // Properties [TemplateParameter]
-    Q_PROPERTY(QObject * default_ READ default_ WRITE setDefault)
-    Q_PROPERTY(QObject * ownedDefault READ ownedDefault WRITE setOwnedDefault)
-    Q_PROPERTY(QObject * ownedParameteredElement READ ownedParameteredElement WRITE setOwnedParameteredElement)
-    Q_PROPERTY(QObject * signature READ signature WRITE setSignature)
+    Q_PROPERTY(QObject * default_ READ default_ WRITE setDefault NOTIFY defaultChanged)
+    Q_PROPERTY(QObject * ownedDefault READ ownedDefault WRITE setOwnedDefault NOTIFY ownedDefaultChanged)
+    Q_PROPERTY(QObject * ownedParameteredElement READ ownedParameteredElement WRITE setOwnedParameteredElement NOTIFY ownedParameteredElementChanged)
+    Q_PROPERTY(QObject * signature READ signature WRITE setSignature NOTIFY signatureChanged)
 
     // Properties [ClassifierTemplateParameter]
-    Q_PROPERTY(bool allowSubstitutable READ allowSubstitutable WRITE setAllowSubstitutable RESET unsetAllowSubstitutable)
-    Q_PROPERTY(QSet<QObject *> constrainingClassifiers READ constrainingClassifiers)
-    Q_PROPERTY(QObject * parameteredElement READ parameteredElement WRITE setParameteredElement)
+    Q_PROPERTY(bool allowSubstitutable READ allowSubstitutable WRITE setAllowSubstitutable NOTIFY allowSubstitutableChanged RESET unsetAllowSubstitutable)
+    Q_PROPERTY(QSet<QObject *> constrainingClassifiers READ constrainingClassifiers NOTIFY constrainingClassifiersChanged)
+    Q_PROPERTY(QObject * parameteredElement READ parameteredElement WRITE setParameteredElement NOTIFY parameteredElementChanged)
 
 public:
     Q_INVOKABLE explicit QUmlClassifierTemplateParameterObject(QUmlClassifierTemplateParameter *modelingElement);
@@ -119,6 +119,24 @@ public Q_SLOTS:
     void addConstrainingClassifier(QObject *constrainingClassifier);
     void removeConstrainingClassifier(QObject *constrainingClassifier);
     void setParameteredElement(QObject *parameteredElement = 0);
+
+Q_SIGNALS:
+
+    // Signals for owned attributes [Element]
+    void ownedCommentsChanged(QSet<QObject *> ownedComments);
+    void ownedElementsChanged(QSet<QObject *> ownedElements);
+    void ownerChanged(QObject *owner);
+
+    // Signals for owned attributes [TemplateParameter]
+    void defaultChanged(QObject *default_);
+    void ownedDefaultChanged(QObject *ownedDefault);
+    void ownedParameteredElementChanged(QObject *ownedParameteredElement);
+    void signatureChanged(QObject *signature);
+
+    // Signals for owned attributes [ClassifierTemplateParameter]
+    void allowSubstitutableChanged(bool allowSubstitutable);
+    void constrainingClassifiersChanged(QSet<QObject *> constrainingClassifiers);
+    void parameteredElementChanged(QObject *parameteredElement);
 
 protected:
     virtual void setGroupProperties();

@@ -62,54 +62,54 @@ class Q_MOF_EXPORT QMofPropertyObject : public QModelingObject
     Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [Element]
-    Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
-    Q_PROPERTY(QSet<QObject *> ownedElements READ ownedElements)
-    Q_PROPERTY(QObject * owner READ owner)
+    Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments NOTIFY ownedCommentsChanged)
+    Q_PROPERTY(QSet<QObject *> ownedElements READ ownedElements NOTIFY ownedElementsChanged)
+    Q_PROPERTY(QObject * owner READ owner NOTIFY ownerChanged)
 
     // Properties [NamedElement]
-    Q_PROPERTY(QString name READ name WRITE setName)
-    Q_PROPERTY(QObject * namespace_ READ namespace_)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
-    Q_PROPERTY(QtMof::VisibilityKind visibility READ visibility WRITE setVisibility)
+    Q_PROPERTY(QString name READ name WRITE setName NOTIFY nameChanged)
+    Q_PROPERTY(QObject * namespace_ READ namespace_ NOTIFY namespaceChanged)
+    Q_PROPERTY(QString qualifiedName READ qualifiedName NOTIFY qualifiedNameChanged STORED false)
+    Q_PROPERTY(QtMof::VisibilityKind visibility READ visibility WRITE setVisibility NOTIFY visibilityChanged)
 
     // Properties [RedefinableElement]
-    Q_PROPERTY(bool isLeaf READ isLeaf WRITE setLeaf RESET unsetLeaf)
-    Q_PROPERTY(QSet<QObject *> redefinedElements READ redefinedElements)
-    Q_PROPERTY(QSet<QObject *> redefinitionContexts READ redefinitionContexts)
+    Q_PROPERTY(bool isLeaf READ isLeaf WRITE setLeaf NOTIFY isLeafChanged RESET unsetLeaf)
+    Q_PROPERTY(QSet<QObject *> redefinedElements READ redefinedElements NOTIFY redefinedElementsChanged)
+    Q_PROPERTY(QSet<QObject *> redefinitionContexts READ redefinitionContexts NOTIFY redefinitionContextsChanged)
 
     // Properties [Feature]
-    Q_PROPERTY(QSet<QObject *> featuringClassifiers READ featuringClassifiers)
-    Q_PROPERTY(bool isStatic READ isStatic WRITE setStatic RESET unsetStatic)
+    Q_PROPERTY(QSet<QObject *> featuringClassifiers READ featuringClassifiers NOTIFY featuringClassifiersChanged)
+    Q_PROPERTY(bool isStatic READ isStatic WRITE setStatic NOTIFY isStaticChanged RESET unsetStatic)
 
     // Properties [TypedElement]
-    Q_PROPERTY(QObject * type READ type WRITE setType)
+    Q_PROPERTY(QObject * type READ type WRITE setType NOTIFY typeChanged)
 
     // Properties [MultiplicityElement]
-    Q_PROPERTY(bool isOrdered READ isOrdered WRITE setOrdered RESET unsetOrdered)
-    Q_PROPERTY(bool isUnique READ isUnique WRITE setUnique RESET unsetUnique)
-    Q_PROPERTY(int lower READ lower WRITE setLower RESET unsetLower STORED false)
-    Q_PROPERTY(QObject * lowerValue READ lowerValue WRITE setLowerValue)
-    Q_PROPERTY(int upper READ upper WRITE setUpper RESET unsetUpper STORED false)
-    Q_PROPERTY(QObject * upperValue READ upperValue WRITE setUpperValue)
+    Q_PROPERTY(bool isOrdered READ isOrdered WRITE setOrdered NOTIFY isOrderedChanged RESET unsetOrdered)
+    Q_PROPERTY(bool isUnique READ isUnique WRITE setUnique NOTIFY isUniqueChanged RESET unsetUnique)
+    Q_PROPERTY(int lower READ lower WRITE setLower NOTIFY lowerChanged RESET unsetLower STORED false)
+    Q_PROPERTY(QObject * lowerValue READ lowerValue WRITE setLowerValue NOTIFY lowerValueChanged)
+    Q_PROPERTY(int upper READ upper WRITE setUpper NOTIFY upperChanged RESET unsetUpper STORED false)
+    Q_PROPERTY(QObject * upperValue READ upperValue WRITE setUpperValue NOTIFY upperValueChanged)
 
     // Properties [StructuralFeature]
 
     // Properties [Property]
-    Q_PROPERTY(QtMof::AggregationKind aggregation READ aggregation WRITE setAggregation RESET unsetAggregation)
-    Q_PROPERTY(QObject * association READ association WRITE setAssociation)
-    Q_PROPERTY(QObject * class_ READ class_ WRITE setClass)
-    Q_PROPERTY(QObject * datatype READ datatype WRITE setDatatype)
-    Q_PROPERTY(QString default_ READ default_ WRITE setDefault STORED false)
-    Q_PROPERTY(QObject * defaultValue READ defaultValue WRITE setDefaultValue)
-    Q_PROPERTY(bool isComposite READ isComposite WRITE setComposite STORED false)
-    Q_PROPERTY(bool isDerived READ isDerived WRITE setDerived RESET unsetDerived)
-    Q_PROPERTY(bool isDerivedUnion READ isDerivedUnion WRITE setDerivedUnion RESET unsetDerivedUnion)
-    Q_PROPERTY(bool isID READ isID WRITE setID RESET unsetID)
-    Q_PROPERTY(bool isReadOnly READ isReadOnly WRITE setReadOnly RESET unsetReadOnly)
-    Q_PROPERTY(QObject * opposite READ opposite WRITE setOpposite STORED false)
-    Q_PROPERTY(QObject * owningAssociation READ owningAssociation WRITE setOwningAssociation)
-    Q_PROPERTY(QSet<QObject *> redefinedProperties READ redefinedProperties)
-    Q_PROPERTY(QSet<QObject *> subsettedProperties READ subsettedProperties)
+    Q_PROPERTY(QtMof::AggregationKind aggregation READ aggregation WRITE setAggregation NOTIFY aggregationChanged RESET unsetAggregation)
+    Q_PROPERTY(QObject * association READ association WRITE setAssociation NOTIFY associationChanged)
+    Q_PROPERTY(QObject * class_ READ class_ WRITE setClass NOTIFY classChanged)
+    Q_PROPERTY(QObject * datatype READ datatype WRITE setDatatype NOTIFY datatypeChanged)
+    Q_PROPERTY(QString default_ READ default_ WRITE setDefault NOTIFY defaultChanged STORED false)
+    Q_PROPERTY(QObject * defaultValue READ defaultValue WRITE setDefaultValue NOTIFY defaultValueChanged)
+    Q_PROPERTY(bool isComposite READ isComposite WRITE setComposite NOTIFY isCompositeChanged STORED false)
+    Q_PROPERTY(bool isDerived READ isDerived WRITE setDerived NOTIFY isDerivedChanged RESET unsetDerived)
+    Q_PROPERTY(bool isDerivedUnion READ isDerivedUnion WRITE setDerivedUnion NOTIFY isDerivedUnionChanged RESET unsetDerivedUnion)
+    Q_PROPERTY(bool isID READ isID WRITE setID NOTIFY isIDChanged RESET unsetID)
+    Q_PROPERTY(bool isReadOnly READ isReadOnly WRITE setReadOnly NOTIFY isReadOnlyChanged RESET unsetReadOnly)
+    Q_PROPERTY(QObject * opposite READ opposite WRITE setOpposite NOTIFY oppositeChanged STORED false)
+    Q_PROPERTY(QObject * owningAssociation READ owningAssociation WRITE setOwningAssociation NOTIFY owningAssociationChanged)
+    Q_PROPERTY(QSet<QObject *> redefinedProperties READ redefinedProperties NOTIFY redefinedPropertiesChanged)
+    Q_PROPERTY(QSet<QObject *> subsettedProperties READ subsettedProperties NOTIFY subsettedPropertiesChanged)
 
 public:
     Q_INVOKABLE explicit QMofPropertyObject(QMofProperty *modelingElement);
@@ -262,6 +262,58 @@ public Q_SLOTS:
     void removeRedefinedProperty(QObject *redefinedProperty);
     void addSubsettedProperty(QObject *subsettedProperty);
     void removeSubsettedProperty(QObject *subsettedProperty);
+
+Q_SIGNALS:
+
+    // Signals for owned attributes [Element]
+    void ownedCommentsChanged(QSet<QObject *> ownedComments);
+    void ownedElementsChanged(QSet<QObject *> ownedElements);
+    void ownerChanged(QObject *owner);
+
+    // Signals for owned attributes [NamedElement]
+    void nameChanged(QString name);
+    void namespaceChanged(QObject *namespace_);
+    void qualifiedNameChanged(QString qualifiedName);
+    void visibilityChanged(QtMof::VisibilityKind visibility);
+
+    // Signals for owned attributes [RedefinableElement]
+    void isLeafChanged(bool isLeaf);
+    void redefinedElementsChanged(QSet<QObject *> redefinedElements);
+    void redefinitionContextsChanged(QSet<QObject *> redefinitionContexts);
+
+    // Signals for owned attributes [Feature]
+    void featuringClassifiersChanged(QSet<QObject *> featuringClassifiers);
+    void isStaticChanged(bool isStatic);
+
+    // Signals for owned attributes [TypedElement]
+    void typeChanged(QObject *type);
+
+    // Signals for owned attributes [MultiplicityElement]
+    void isOrderedChanged(bool isOrdered);
+    void isUniqueChanged(bool isUnique);
+    void lowerChanged(int lower);
+    void lowerValueChanged(QObject *lowerValue);
+    void upperChanged(int upper);
+    void upperValueChanged(QObject *upperValue);
+
+    // Signals for owned attributes [StructuralFeature]
+
+    // Signals for owned attributes [Property]
+    void aggregationChanged(QtMof::AggregationKind aggregation);
+    void associationChanged(QObject *association);
+    void classChanged(QObject *class_);
+    void datatypeChanged(QObject *datatype);
+    void defaultChanged(QString default_);
+    void defaultValueChanged(QObject *defaultValue);
+    void isCompositeChanged(bool isComposite);
+    void isDerivedChanged(bool isDerived);
+    void isDerivedUnionChanged(bool isDerivedUnion);
+    void isIDChanged(bool isID);
+    void isReadOnlyChanged(bool isReadOnly);
+    void oppositeChanged(QObject *opposite);
+    void owningAssociationChanged(QObject *owningAssociation);
+    void redefinedPropertiesChanged(QSet<QObject *> redefinedProperties);
+    void subsettedPropertiesChanged(QSet<QObject *> subsettedProperties);
 
 protected:
     virtual void setGroupProperties();

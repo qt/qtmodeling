@@ -233,26 +233,31 @@ double QMofLiteralRealObject::realValue() const
 void QMofLiteralRealObject::addOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QMofLiteralReal *>(this)->addOwnedComment(qmodelingelementproperty_cast<QMofComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QMofLiteralRealObject::removeOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QMofLiteralReal *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QMofComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QMofLiteralRealObject::addOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QMofLiteralReal *>(this)->addOwnedElement(qmodelingelementproperty_cast<QMofElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QMofLiteralRealObject::removeOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QMofLiteralReal *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QMofElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QMofLiteralRealObject::setOwner(QObject *owner)
 {
     qmodelingelementproperty_cast<QMofLiteralReal *>(this)->setOwner(qmodelingelementproperty_cast<QMofElement *>(owner));
+    emit ownerChanged(this->owner());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [NamedElement]
@@ -260,22 +265,26 @@ void QMofLiteralRealObject::setOwner(QObject *owner)
 void QMofLiteralRealObject::setName(QString name)
 {
     qmodelingelementproperty_cast<QMofLiteralReal *>(this)->setName(name);
+    emit nameChanged(this->name());
 }
 
 void QMofLiteralRealObject::setNamespace(QObject *namespace_)
 {
     qmodelingelementproperty_cast<QMofLiteralReal *>(this)->setNamespace(qmodelingelementproperty_cast<QMofNamespace *>(namespace_));
+    emit namespaceChanged(this->namespace_());
 }
 
 void QMofLiteralRealObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingelementproperty_cast<QMofLiteralReal *>(this)->setQualifiedName(qualifiedName);
+    emit qualifiedNameChanged(this->qualifiedName());
 }
 // SLOTS FOR OWNED ATTRIBUTES [PackageableElement]
 
 void QMofLiteralRealObject::setVisibility(QtMof::VisibilityKind visibility)
 {
     qmodelingelementproperty_cast<QMofLiteralReal *>(this)->setVisibility(visibility);
+    emit visibilityChanged(this->visibility());
 }
 
 void QMofLiteralRealObject::unsetVisibility()
@@ -290,6 +299,7 @@ void QMofLiteralRealObject::unsetVisibility()
 void QMofLiteralRealObject::setType(QObject *type)
 {
     qmodelingelementproperty_cast<QMofLiteralReal *>(this)->setType(qmodelingelementproperty_cast<QMofType *>(type));
+    emit typeChanged(this->type());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [LiteralReal]
@@ -297,6 +307,7 @@ void QMofLiteralRealObject::setType(QObject *type)
 void QMofLiteralRealObject::setValue(double value)
 {
     qmodelingelementproperty_cast<QMofLiteralReal *>(this)->setValue(value);
+    emit valueChanged(this->value());
 }
 
 

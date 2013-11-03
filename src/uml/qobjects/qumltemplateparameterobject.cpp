@@ -144,26 +144,31 @@ bool QUmlTemplateParameterObject::mustBeOwned() const
 void QUmlTemplateParameterObject::addOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlTemplateParameter *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlTemplateParameterObject::removeOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlTemplateParameter *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlTemplateParameterObject::addOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlTemplateParameter *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlTemplateParameterObject::removeOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlTemplateParameter *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlTemplateParameterObject::setOwner(QObject *owner)
 {
     qmodelingelementproperty_cast<QUmlTemplateParameter *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
+    emit ownerChanged(this->owner());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [TemplateParameter]
@@ -171,26 +176,31 @@ void QUmlTemplateParameterObject::setOwner(QObject *owner)
 void QUmlTemplateParameterObject::setDefault(QObject *default_)
 {
     qmodelingelementproperty_cast<QUmlTemplateParameter *>(this)->setDefault(qmodelingelementproperty_cast<QUmlParameterableElement *>(default_));
+    emit defaultChanged(this->default_());
 }
 
 void QUmlTemplateParameterObject::setOwnedDefault(QObject *ownedDefault)
 {
     qmodelingelementproperty_cast<QUmlTemplateParameter *>(this)->setOwnedDefault(qmodelingelementproperty_cast<QUmlParameterableElement *>(ownedDefault));
+    emit ownedDefaultChanged(this->ownedDefault());
 }
 
 void QUmlTemplateParameterObject::setOwnedParameteredElement(QObject *ownedParameteredElement)
 {
     qmodelingelementproperty_cast<QUmlTemplateParameter *>(this)->setOwnedParameteredElement(qmodelingelementproperty_cast<QUmlParameterableElement *>(ownedParameteredElement));
+    emit ownedParameteredElementChanged(this->ownedParameteredElement());
 }
 
 void QUmlTemplateParameterObject::setParameteredElement(QObject *parameteredElement)
 {
     qmodelingelementproperty_cast<QUmlTemplateParameter *>(this)->setParameteredElement(qmodelingelementproperty_cast<QUmlParameterableElement *>(parameteredElement));
+    emit parameteredElementChanged(this->parameteredElement());
 }
 
 void QUmlTemplateParameterObject::setSignature(QObject *signature)
 {
     qmodelingelementproperty_cast<QUmlTemplateParameter *>(this)->setSignature(qmodelingelementproperty_cast<QUmlTemplateSignature *>(signature));
+    emit signatureChanged(this->signature());
 }
 
 

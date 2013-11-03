@@ -95,41 +95,49 @@ const QSet<QObject *> QDuseDesignDimensionObject::designDimensionInstances() con
 void QDuseDesignDimensionObject::setName(QString name)
 {
     qmodelingelementproperty_cast<QDuseDesignDimension *>(this)->setName(name);
+    emit nameChanged(this->name());
 }
 
 void QDuseDesignDimensionObject::setInstanceSelectionRule(QString instanceSelectionRule)
 {
     qmodelingelementproperty_cast<QDuseDesignDimension *>(this)->setInstanceSelectionRule(instanceSelectionRule);
+    emit instanceSelectionRuleChanged(this->instanceSelectionRule());
 }
 
 void QDuseDesignDimensionObject::addRequiredPreviousEvaluation(QObject *requiredPreviousEvaluation)
 {
     qmodelingelementproperty_cast<QDuseDesignDimension *>(this)->addRequiredPreviousEvaluation(qmodelingelementproperty_cast<QDuseDesignDimension *>(requiredPreviousEvaluation));
+    emit requiredPreviousEvaluationsChanged(this->requiredPreviousEvaluations());
 }
 
 void QDuseDesignDimensionObject::removeRequiredPreviousEvaluation(QObject *requiredPreviousEvaluation)
 {
     qmodelingelementproperty_cast<QDuseDesignDimension *>(this)->removeRequiredPreviousEvaluation(qmodelingelementproperty_cast<QDuseDesignDimension *>(requiredPreviousEvaluation));
+    emit requiredPreviousEvaluationsChanged(this->requiredPreviousEvaluations());
 }
 
 void QDuseDesignDimensionObject::addVariationPoint(QObject *variationPoint)
 {
     qmodelingelementproperty_cast<QDuseDesignDimension *>(this)->addVariationPoint(qmodelingelementproperty_cast<QDuseVariationPoint *>(variationPoint));
+    emit variationPointsChanged(this->variationPoints());
 }
 
 void QDuseDesignDimensionObject::removeVariationPoint(QObject *variationPoint)
 {
     qmodelingelementproperty_cast<QDuseDesignDimension *>(this)->removeVariationPoint(qmodelingelementproperty_cast<QDuseVariationPoint *>(variationPoint));
+    emit variationPointsChanged(this->variationPoints());
 }
 
 void QDuseDesignDimensionObject::addDesignDimensionInstance(QObject *designDimensionInstance)
 {
     qmodelingelementproperty_cast<QDuseDesignDimension *>(this)->addDesignDimensionInstance(qmodelingelementproperty_cast<QDuseDesignDimensionInstance *>(designDimensionInstance));
+    emit designDimensionInstancesChanged(this->designDimensionInstances());
 }
 
 void QDuseDesignDimensionObject::removeDesignDimensionInstance(QObject *designDimensionInstance)
 {
     qmodelingelementproperty_cast<QDuseDesignDimension *>(this)->removeDesignDimensionInstance(qmodelingelementproperty_cast<QDuseDesignDimensionInstance *>(designDimensionInstance));
+    emit designDimensionInstancesChanged(this->designDimensionInstances());
 }
 
 

@@ -757,26 +757,31 @@ QSet<QObject *> QUmlOpaqueBehaviorObject::inherit(QSet<QObject *> inhs) const
 void QUmlOpaqueBehaviorObject::addOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlOpaqueBehavior *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlOpaqueBehaviorObject::removeOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlOpaqueBehavior *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlOpaqueBehaviorObject::addOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlOpaqueBehavior *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlOpaqueBehaviorObject::removeOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlOpaqueBehavior *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlOpaqueBehaviorObject::setOwner(QObject *owner)
 {
     qmodelingelementproperty_cast<QUmlOpaqueBehavior *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
+    emit ownerChanged(this->owner());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [NamedElement]
@@ -784,92 +789,110 @@ void QUmlOpaqueBehaviorObject::setOwner(QObject *owner)
 void QUmlOpaqueBehaviorObject::addClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlOpaqueBehavior *>(this)->addClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlOpaqueBehaviorObject::removeClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlOpaqueBehavior *>(this)->removeClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlOpaqueBehaviorObject::setName(QString name)
 {
     qmodelingelementproperty_cast<QUmlOpaqueBehavior *>(this)->setName(name);
+    emit nameChanged(this->name());
 }
 
 void QUmlOpaqueBehaviorObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingelementproperty_cast<QUmlOpaqueBehavior *>(this)->setNameExpression(qmodelingelementproperty_cast<QUmlStringExpression *>(nameExpression));
+    emit nameExpressionChanged(this->nameExpression());
 }
 
 void QUmlOpaqueBehaviorObject::setNamespace(QObject *namespace_)
 {
     qmodelingelementproperty_cast<QUmlOpaqueBehavior *>(this)->setNamespace(qmodelingelementproperty_cast<QUmlNamespace *>(namespace_));
+    emit namespaceChanged(this->namespace_());
 }
 
 void QUmlOpaqueBehaviorObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingelementproperty_cast<QUmlOpaqueBehavior *>(this)->setQualifiedName(qualifiedName);
+    emit qualifiedNameChanged(this->qualifiedName());
 }
 // SLOTS FOR OWNED ATTRIBUTES [Namespace]
 
 void QUmlOpaqueBehaviorObject::addElementImport(QObject *elementImport)
 {
     qmodelingelementproperty_cast<QUmlOpaqueBehavior *>(this)->addElementImport(qmodelingelementproperty_cast<QUmlElementImport *>(elementImport));
+    emit elementImportsChanged(this->elementImports());
 }
 
 void QUmlOpaqueBehaviorObject::removeElementImport(QObject *elementImport)
 {
     qmodelingelementproperty_cast<QUmlOpaqueBehavior *>(this)->removeElementImport(qmodelingelementproperty_cast<QUmlElementImport *>(elementImport));
+    emit elementImportsChanged(this->elementImports());
 }
 
 void QUmlOpaqueBehaviorObject::addImportedMember(QObject *importedMember)
 {
     qmodelingelementproperty_cast<QUmlOpaqueBehavior *>(this)->addImportedMember(qmodelingelementproperty_cast<QUmlPackageableElement *>(importedMember));
+    emit importedMembersChanged(this->importedMembers());
 }
 
 void QUmlOpaqueBehaviorObject::removeImportedMember(QObject *importedMember)
 {
     qmodelingelementproperty_cast<QUmlOpaqueBehavior *>(this)->removeImportedMember(qmodelingelementproperty_cast<QUmlPackageableElement *>(importedMember));
+    emit importedMembersChanged(this->importedMembers());
 }
 
 void QUmlOpaqueBehaviorObject::addMember(QObject *member)
 {
     qmodelingelementproperty_cast<QUmlOpaqueBehavior *>(this)->addMember(qmodelingelementproperty_cast<QUmlNamedElement *>(member));
+    emit membersChanged(this->members());
 }
 
 void QUmlOpaqueBehaviorObject::removeMember(QObject *member)
 {
     qmodelingelementproperty_cast<QUmlOpaqueBehavior *>(this)->removeMember(qmodelingelementproperty_cast<QUmlNamedElement *>(member));
+    emit membersChanged(this->members());
 }
 
 void QUmlOpaqueBehaviorObject::addOwnedMember(QObject *ownedMember)
 {
     qmodelingelementproperty_cast<QUmlOpaqueBehavior *>(this)->addOwnedMember(qmodelingelementproperty_cast<QUmlNamedElement *>(ownedMember));
+    emit ownedMembersChanged(this->ownedMembers());
 }
 
 void QUmlOpaqueBehaviorObject::removeOwnedMember(QObject *ownedMember)
 {
     qmodelingelementproperty_cast<QUmlOpaqueBehavior *>(this)->removeOwnedMember(qmodelingelementproperty_cast<QUmlNamedElement *>(ownedMember));
+    emit ownedMembersChanged(this->ownedMembers());
 }
 
 void QUmlOpaqueBehaviorObject::addOwnedRule(QObject *ownedRule)
 {
     qmodelingelementproperty_cast<QUmlOpaqueBehavior *>(this)->addOwnedRule(qmodelingelementproperty_cast<QUmlConstraint *>(ownedRule));
+    emit ownedRulesChanged(this->ownedRules());
 }
 
 void QUmlOpaqueBehaviorObject::removeOwnedRule(QObject *ownedRule)
 {
     qmodelingelementproperty_cast<QUmlOpaqueBehavior *>(this)->removeOwnedRule(qmodelingelementproperty_cast<QUmlConstraint *>(ownedRule));
+    emit ownedRulesChanged(this->ownedRules());
 }
 
 void QUmlOpaqueBehaviorObject::addPackageImport(QObject *packageImport)
 {
     qmodelingelementproperty_cast<QUmlOpaqueBehavior *>(this)->addPackageImport(qmodelingelementproperty_cast<QUmlPackageImport *>(packageImport));
+    emit packageImportsChanged(this->packageImports());
 }
 
 void QUmlOpaqueBehaviorObject::removePackageImport(QObject *packageImport)
 {
     qmodelingelementproperty_cast<QUmlOpaqueBehavior *>(this)->removePackageImport(qmodelingelementproperty_cast<QUmlPackageImport *>(packageImport));
+    emit packageImportsChanged(this->packageImports());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ParameterableElement]
@@ -877,12 +900,14 @@ void QUmlOpaqueBehaviorObject::removePackageImport(QObject *packageImport)
 void QUmlOpaqueBehaviorObject::setOwningTemplateParameter(QObject *owningTemplateParameter)
 {
     qmodelingelementproperty_cast<QUmlOpaqueBehavior *>(this)->setOwningTemplateParameter(qmodelingelementproperty_cast<QUmlTemplateParameter *>(owningTemplateParameter));
+    emit owningTemplateParameterChanged(this->owningTemplateParameter());
 }
 // SLOTS FOR OWNED ATTRIBUTES [PackageableElement]
 
 void QUmlOpaqueBehaviorObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingelementproperty_cast<QUmlOpaqueBehavior *>(this)->setVisibility(visibility);
+    emit visibilityChanged(this->visibility());
 }
 
 void QUmlOpaqueBehaviorObject::unsetVisibility()
@@ -897,6 +922,7 @@ void QUmlOpaqueBehaviorObject::unsetVisibility()
 void QUmlOpaqueBehaviorObject::setPackage(QObject *package)
 {
     qmodelingelementproperty_cast<QUmlOpaqueBehavior *>(this)->setPackage(qmodelingelementproperty_cast<QUmlPackage *>(package));
+    emit packageChanged(this->package());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [RedefinableElement]
@@ -904,6 +930,7 @@ void QUmlOpaqueBehaviorObject::setPackage(QObject *package)
 void QUmlOpaqueBehaviorObject::setLeaf(bool isLeaf)
 {
     qmodelingelementproperty_cast<QUmlOpaqueBehavior *>(this)->setLeaf(isLeaf);
+    emit isLeafChanged(this->isLeaf());
 }
 
 void QUmlOpaqueBehaviorObject::unsetLeaf()
@@ -916,21 +943,25 @@ void QUmlOpaqueBehaviorObject::unsetLeaf()
 void QUmlOpaqueBehaviorObject::addRedefinedElement(QObject *redefinedElement)
 {
     qmodelingelementproperty_cast<QUmlOpaqueBehavior *>(this)->addRedefinedElement(qmodelingelementproperty_cast<QUmlRedefinableElement *>(redefinedElement));
+    emit redefinedElementsChanged(this->redefinedElements());
 }
 
 void QUmlOpaqueBehaviorObject::removeRedefinedElement(QObject *redefinedElement)
 {
     qmodelingelementproperty_cast<QUmlOpaqueBehavior *>(this)->removeRedefinedElement(qmodelingelementproperty_cast<QUmlRedefinableElement *>(redefinedElement));
+    emit redefinedElementsChanged(this->redefinedElements());
 }
 
 void QUmlOpaqueBehaviorObject::addRedefinitionContext(QObject *redefinitionContext)
 {
     qmodelingelementproperty_cast<QUmlOpaqueBehavior *>(this)->addRedefinitionContext(qmodelingelementproperty_cast<QUmlClassifier *>(redefinitionContext));
+    emit redefinitionContextsChanged(this->redefinitionContexts());
 }
 
 void QUmlOpaqueBehaviorObject::removeRedefinitionContext(QObject *redefinitionContext)
 {
     qmodelingelementproperty_cast<QUmlOpaqueBehavior *>(this)->removeRedefinitionContext(qmodelingelementproperty_cast<QUmlClassifier *>(redefinitionContext));
+    emit redefinitionContextsChanged(this->redefinitionContexts());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [TemplateableElement]
@@ -938,11 +969,13 @@ void QUmlOpaqueBehaviorObject::removeRedefinitionContext(QObject *redefinitionCo
 void QUmlOpaqueBehaviorObject::addTemplateBinding(QObject *templateBinding)
 {
     qmodelingelementproperty_cast<QUmlOpaqueBehavior *>(this)->addTemplateBinding(qmodelingelementproperty_cast<QUmlTemplateBinding *>(templateBinding));
+    emit templateBindingsChanged(this->templateBindings());
 }
 
 void QUmlOpaqueBehaviorObject::removeTemplateBinding(QObject *templateBinding)
 {
     qmodelingelementproperty_cast<QUmlOpaqueBehavior *>(this)->removeTemplateBinding(qmodelingelementproperty_cast<QUmlTemplateBinding *>(templateBinding));
+    emit templateBindingsChanged(this->templateBindings());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Classifier]
@@ -950,56 +983,67 @@ void QUmlOpaqueBehaviorObject::removeTemplateBinding(QObject *templateBinding)
 void QUmlOpaqueBehaviorObject::addAttribute(QObject *attribute)
 {
     qmodelingelementproperty_cast<QUmlOpaqueBehavior *>(this)->addAttribute(qmodelingelementproperty_cast<QUmlProperty *>(attribute));
+    emit attributesChanged(this->attributes());
 }
 
 void QUmlOpaqueBehaviorObject::removeAttribute(QObject *attribute)
 {
     qmodelingelementproperty_cast<QUmlOpaqueBehavior *>(this)->removeAttribute(qmodelingelementproperty_cast<QUmlProperty *>(attribute));
+    emit attributesChanged(this->attributes());
 }
 
 void QUmlOpaqueBehaviorObject::addCollaborationUse(QObject *collaborationUse)
 {
     qmodelingelementproperty_cast<QUmlOpaqueBehavior *>(this)->addCollaborationUse(qmodelingelementproperty_cast<QUmlCollaborationUse *>(collaborationUse));
+    emit collaborationUsesChanged(this->collaborationUses());
 }
 
 void QUmlOpaqueBehaviorObject::removeCollaborationUse(QObject *collaborationUse)
 {
     qmodelingelementproperty_cast<QUmlOpaqueBehavior *>(this)->removeCollaborationUse(qmodelingelementproperty_cast<QUmlCollaborationUse *>(collaborationUse));
+    emit collaborationUsesChanged(this->collaborationUses());
 }
 
 void QUmlOpaqueBehaviorObject::addFeature(QObject *feature)
 {
     qmodelingelementproperty_cast<QUmlOpaqueBehavior *>(this)->addFeature(qmodelingelementproperty_cast<QUmlFeature *>(feature));
+    emit featuresChanged(this->features());
 }
 
 void QUmlOpaqueBehaviorObject::removeFeature(QObject *feature)
 {
     qmodelingelementproperty_cast<QUmlOpaqueBehavior *>(this)->removeFeature(qmodelingelementproperty_cast<QUmlFeature *>(feature));
+    emit featuresChanged(this->features());
 }
 
 void QUmlOpaqueBehaviorObject::addGeneralization(QObject *generalization)
 {
     qmodelingelementproperty_cast<QUmlOpaqueBehavior *>(this)->addGeneralization(qmodelingelementproperty_cast<QUmlGeneralization *>(generalization));
+    emit generalizationsChanged(this->generalizations());
 }
 
 void QUmlOpaqueBehaviorObject::removeGeneralization(QObject *generalization)
 {
     qmodelingelementproperty_cast<QUmlOpaqueBehavior *>(this)->removeGeneralization(qmodelingelementproperty_cast<QUmlGeneralization *>(generalization));
+    emit generalizationsChanged(this->generalizations());
 }
 
 void QUmlOpaqueBehaviorObject::addInheritedMember(QObject *inheritedMember)
 {
     qmodelingelementproperty_cast<QUmlOpaqueBehavior *>(this)->addInheritedMember(qmodelingelementproperty_cast<QUmlNamedElement *>(inheritedMember));
+    emit inheritedMembersChanged(this->inheritedMembers());
 }
 
 void QUmlOpaqueBehaviorObject::removeInheritedMember(QObject *inheritedMember)
 {
     qmodelingelementproperty_cast<QUmlOpaqueBehavior *>(this)->removeInheritedMember(qmodelingelementproperty_cast<QUmlNamedElement *>(inheritedMember));
+    emit inheritedMembersChanged(this->inheritedMembers());
 }
 
 void QUmlOpaqueBehaviorObject::setFinalSpecialization(bool isFinalSpecialization)
 {
     qmodelingelementproperty_cast<QUmlOpaqueBehavior *>(this)->setFinalSpecialization(isFinalSpecialization);
+    emit isFinalSpecializationChanged(this->isFinalSpecialization());
 }
 
 void QUmlOpaqueBehaviorObject::unsetFinalSpecialization()
@@ -1012,66 +1056,79 @@ void QUmlOpaqueBehaviorObject::unsetFinalSpecialization()
 void QUmlOpaqueBehaviorObject::setOwnedTemplateSignature(QObject *ownedTemplateSignature)
 {
     qmodelingelementproperty_cast<QUmlOpaqueBehavior *>(this)->setOwnedTemplateSignature(qmodelingelementproperty_cast<QUmlRedefinableTemplateSignature *>(ownedTemplateSignature));
+    emit ownedTemplateSignatureChanged(this->ownedTemplateSignature());
 }
 
 void QUmlOpaqueBehaviorObject::addOwnedUseCase(QObject *ownedUseCase)
 {
     qmodelingelementproperty_cast<QUmlOpaqueBehavior *>(this)->addOwnedUseCase(qmodelingelementproperty_cast<QUmlUseCase *>(ownedUseCase));
+    emit ownedUseCasesChanged(this->ownedUseCases());
 }
 
 void QUmlOpaqueBehaviorObject::removeOwnedUseCase(QObject *ownedUseCase)
 {
     qmodelingelementproperty_cast<QUmlOpaqueBehavior *>(this)->removeOwnedUseCase(qmodelingelementproperty_cast<QUmlUseCase *>(ownedUseCase));
+    emit ownedUseCasesChanged(this->ownedUseCases());
 }
 
 void QUmlOpaqueBehaviorObject::addPowertypeExtent(QObject *powertypeExtent)
 {
     qmodelingelementproperty_cast<QUmlOpaqueBehavior *>(this)->addPowertypeExtent(qmodelingelementproperty_cast<QUmlGeneralizationSet *>(powertypeExtent));
+    emit powertypeExtentsChanged(this->powertypeExtents());
 }
 
 void QUmlOpaqueBehaviorObject::removePowertypeExtent(QObject *powertypeExtent)
 {
     qmodelingelementproperty_cast<QUmlOpaqueBehavior *>(this)->removePowertypeExtent(qmodelingelementproperty_cast<QUmlGeneralizationSet *>(powertypeExtent));
+    emit powertypeExtentsChanged(this->powertypeExtents());
 }
 
 void QUmlOpaqueBehaviorObject::addRedefinedClassifier(QObject *redefinedClassifier)
 {
     qmodelingelementproperty_cast<QUmlOpaqueBehavior *>(this)->addRedefinedClassifier(qmodelingelementproperty_cast<QUmlClassifier *>(redefinedClassifier));
+    emit redefinedClassifiersChanged(this->redefinedClassifiers());
 }
 
 void QUmlOpaqueBehaviorObject::removeRedefinedClassifier(QObject *redefinedClassifier)
 {
     qmodelingelementproperty_cast<QUmlOpaqueBehavior *>(this)->removeRedefinedClassifier(qmodelingelementproperty_cast<QUmlClassifier *>(redefinedClassifier));
+    emit redefinedClassifiersChanged(this->redefinedClassifiers());
 }
 
 void QUmlOpaqueBehaviorObject::setRepresentation(QObject *representation)
 {
     qmodelingelementproperty_cast<QUmlOpaqueBehavior *>(this)->setRepresentation(qmodelingelementproperty_cast<QUmlCollaborationUse *>(representation));
+    emit representationChanged(this->representation());
 }
 
 void QUmlOpaqueBehaviorObject::addSubstitution(QObject *substitution)
 {
     qmodelingelementproperty_cast<QUmlOpaqueBehavior *>(this)->addSubstitution(qmodelingelementproperty_cast<QUmlSubstitution *>(substitution));
+    emit substitutionsChanged(this->substitutions());
 }
 
 void QUmlOpaqueBehaviorObject::removeSubstitution(QObject *substitution)
 {
     qmodelingelementproperty_cast<QUmlOpaqueBehavior *>(this)->removeSubstitution(qmodelingelementproperty_cast<QUmlSubstitution *>(substitution));
+    emit substitutionsChanged(this->substitutions());
 }
 
 void QUmlOpaqueBehaviorObject::setTemplateParameter(QObject *templateParameter)
 {
     qmodelingelementproperty_cast<QUmlOpaqueBehavior *>(this)->setTemplateParameter(qmodelingelementproperty_cast<QUmlClassifierTemplateParameter *>(templateParameter));
+    emit templateParameterChanged(this->templateParameter());
 }
 
 void QUmlOpaqueBehaviorObject::addUseCase(QObject *useCase)
 {
     qmodelingelementproperty_cast<QUmlOpaqueBehavior *>(this)->addUseCase(qmodelingelementproperty_cast<QUmlUseCase *>(useCase));
+    emit useCasesChanged(this->useCases());
 }
 
 void QUmlOpaqueBehaviorObject::removeUseCase(QObject *useCase)
 {
     qmodelingelementproperty_cast<QUmlOpaqueBehavior *>(this)->removeUseCase(qmodelingelementproperty_cast<QUmlUseCase *>(useCase));
+    emit useCasesChanged(this->useCases());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [StructuredClassifier]
@@ -1079,31 +1136,37 @@ void QUmlOpaqueBehaviorObject::removeUseCase(QObject *useCase)
 void QUmlOpaqueBehaviorObject::addOwnedConnector(QObject *ownedConnector)
 {
     qmodelingelementproperty_cast<QUmlOpaqueBehavior *>(this)->addOwnedConnector(qmodelingelementproperty_cast<QUmlConnector *>(ownedConnector));
+    emit ownedConnectorsChanged(this->ownedConnectors());
 }
 
 void QUmlOpaqueBehaviorObject::removeOwnedConnector(QObject *ownedConnector)
 {
     qmodelingelementproperty_cast<QUmlOpaqueBehavior *>(this)->removeOwnedConnector(qmodelingelementproperty_cast<QUmlConnector *>(ownedConnector));
+    emit ownedConnectorsChanged(this->ownedConnectors());
 }
 
 void QUmlOpaqueBehaviorObject::addPart(QObject *part)
 {
     qmodelingelementproperty_cast<QUmlOpaqueBehavior *>(this)->addPart(qmodelingelementproperty_cast<QUmlProperty *>(part));
+    emit partsChanged(this->parts());
 }
 
 void QUmlOpaqueBehaviorObject::removePart(QObject *part)
 {
     qmodelingelementproperty_cast<QUmlOpaqueBehavior *>(this)->removePart(qmodelingelementproperty_cast<QUmlProperty *>(part));
+    emit partsChanged(this->parts());
 }
 
 void QUmlOpaqueBehaviorObject::addRole(QObject *role)
 {
     qmodelingelementproperty_cast<QUmlOpaqueBehavior *>(this)->addRole(qmodelingelementproperty_cast<QUmlConnectableElement *>(role));
+    emit rolesChanged(this->roles());
 }
 
 void QUmlOpaqueBehaviorObject::removeRole(QObject *role)
 {
     qmodelingelementproperty_cast<QUmlOpaqueBehavior *>(this)->removeRole(qmodelingelementproperty_cast<QUmlConnectableElement *>(role));
+    emit rolesChanged(this->roles());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [EncapsulatedClassifier]
@@ -1111,11 +1174,13 @@ void QUmlOpaqueBehaviorObject::removeRole(QObject *role)
 void QUmlOpaqueBehaviorObject::addOwnedPort(QObject *ownedPort)
 {
     qmodelingelementproperty_cast<QUmlOpaqueBehavior *>(this)->addOwnedPort(qmodelingelementproperty_cast<QUmlPort *>(ownedPort));
+    emit ownedPortsChanged(this->ownedPorts());
 }
 
 void QUmlOpaqueBehaviorObject::removeOwnedPort(QObject *ownedPort)
 {
     qmodelingelementproperty_cast<QUmlOpaqueBehavior *>(this)->removeOwnedPort(qmodelingelementproperty_cast<QUmlPort *>(ownedPort));
+    emit ownedPortsChanged(this->ownedPorts());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [BehavioredClassifier]
@@ -1123,26 +1188,31 @@ void QUmlOpaqueBehaviorObject::removeOwnedPort(QObject *ownedPort)
 void QUmlOpaqueBehaviorObject::setClassifierBehavior(QObject *classifierBehavior)
 {
     qmodelingelementproperty_cast<QUmlOpaqueBehavior *>(this)->setClassifierBehavior(qmodelingelementproperty_cast<QUmlBehavior *>(classifierBehavior));
+    emit classifierBehaviorChanged(this->classifierBehavior());
 }
 
 void QUmlOpaqueBehaviorObject::addInterfaceRealization(QObject *interfaceRealization)
 {
     qmodelingelementproperty_cast<QUmlOpaqueBehavior *>(this)->addInterfaceRealization(qmodelingelementproperty_cast<QUmlInterfaceRealization *>(interfaceRealization));
+    emit interfaceRealizationsChanged(this->interfaceRealizations());
 }
 
 void QUmlOpaqueBehaviorObject::removeInterfaceRealization(QObject *interfaceRealization)
 {
     qmodelingelementproperty_cast<QUmlOpaqueBehavior *>(this)->removeInterfaceRealization(qmodelingelementproperty_cast<QUmlInterfaceRealization *>(interfaceRealization));
+    emit interfaceRealizationsChanged(this->interfaceRealizations());
 }
 
 void QUmlOpaqueBehaviorObject::addOwnedBehavior(QObject *ownedBehavior)
 {
     qmodelingelementproperty_cast<QUmlOpaqueBehavior *>(this)->addOwnedBehavior(qmodelingelementproperty_cast<QUmlBehavior *>(ownedBehavior));
+    emit ownedBehaviorsChanged(this->ownedBehaviors());
 }
 
 void QUmlOpaqueBehaviorObject::removeOwnedBehavior(QObject *ownedBehavior)
 {
     qmodelingelementproperty_cast<QUmlOpaqueBehavior *>(this)->removeOwnedBehavior(qmodelingelementproperty_cast<QUmlBehavior *>(ownedBehavior));
+    emit ownedBehaviorsChanged(this->ownedBehaviors());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Class]
@@ -1150,16 +1220,19 @@ void QUmlOpaqueBehaviorObject::removeOwnedBehavior(QObject *ownedBehavior)
 void QUmlOpaqueBehaviorObject::addExtension(QObject *extension)
 {
     qmodelingelementproperty_cast<QUmlOpaqueBehavior *>(this)->addExtension(qmodelingelementproperty_cast<QUmlExtension *>(extension));
+    emit extensionsChanged(this->extensions());
 }
 
 void QUmlOpaqueBehaviorObject::removeExtension(QObject *extension)
 {
     qmodelingelementproperty_cast<QUmlOpaqueBehavior *>(this)->removeExtension(qmodelingelementproperty_cast<QUmlExtension *>(extension));
+    emit extensionsChanged(this->extensions());
 }
 
 void QUmlOpaqueBehaviorObject::setAbstract(bool isAbstract)
 {
     qmodelingelementproperty_cast<QUmlOpaqueBehavior *>(this)->setAbstract(isAbstract);
+    emit isAbstractChanged(this->isAbstract());
 }
 
 void QUmlOpaqueBehaviorObject::unsetAbstract()
@@ -1172,6 +1245,7 @@ void QUmlOpaqueBehaviorObject::unsetAbstract()
 void QUmlOpaqueBehaviorObject::setActive(bool isActive)
 {
     qmodelingelementproperty_cast<QUmlOpaqueBehavior *>(this)->setActive(isActive);
+    emit isActiveChanged(this->isActive());
 }
 
 void QUmlOpaqueBehaviorObject::unsetActive()
@@ -1184,51 +1258,61 @@ void QUmlOpaqueBehaviorObject::unsetActive()
 void QUmlOpaqueBehaviorObject::addNestedClassifier(QObject *nestedClassifier)
 {
     qmodelingelementproperty_cast<QUmlOpaqueBehavior *>(this)->addNestedClassifier(qmodelingelementproperty_cast<QUmlClassifier *>(nestedClassifier));
+    emit nestedClassifiersChanged(this->nestedClassifiers());
 }
 
 void QUmlOpaqueBehaviorObject::removeNestedClassifier(QObject *nestedClassifier)
 {
     qmodelingelementproperty_cast<QUmlOpaqueBehavior *>(this)->removeNestedClassifier(qmodelingelementproperty_cast<QUmlClassifier *>(nestedClassifier));
+    emit nestedClassifiersChanged(this->nestedClassifiers());
 }
 
 void QUmlOpaqueBehaviorObject::addOwnedAttribute(QObject *ownedAttribute)
 {
     qmodelingelementproperty_cast<QUmlOpaqueBehavior *>(this)->addOwnedAttribute(qmodelingelementproperty_cast<QUmlProperty *>(ownedAttribute));
+    emit ownedAttributesChanged(this->ownedAttributes());
 }
 
 void QUmlOpaqueBehaviorObject::removeOwnedAttribute(QObject *ownedAttribute)
 {
     qmodelingelementproperty_cast<QUmlOpaqueBehavior *>(this)->removeOwnedAttribute(qmodelingelementproperty_cast<QUmlProperty *>(ownedAttribute));
+    emit ownedAttributesChanged(this->ownedAttributes());
 }
 
 void QUmlOpaqueBehaviorObject::addOwnedOperation(QObject *ownedOperation)
 {
     qmodelingelementproperty_cast<QUmlOpaqueBehavior *>(this)->addOwnedOperation(qmodelingelementproperty_cast<QUmlOperation *>(ownedOperation));
+    emit ownedOperationsChanged(this->ownedOperations());
 }
 
 void QUmlOpaqueBehaviorObject::removeOwnedOperation(QObject *ownedOperation)
 {
     qmodelingelementproperty_cast<QUmlOpaqueBehavior *>(this)->removeOwnedOperation(qmodelingelementproperty_cast<QUmlOperation *>(ownedOperation));
+    emit ownedOperationsChanged(this->ownedOperations());
 }
 
 void QUmlOpaqueBehaviorObject::addOwnedReception(QObject *ownedReception)
 {
     qmodelingelementproperty_cast<QUmlOpaqueBehavior *>(this)->addOwnedReception(qmodelingelementproperty_cast<QUmlReception *>(ownedReception));
+    emit ownedReceptionsChanged(this->ownedReceptions());
 }
 
 void QUmlOpaqueBehaviorObject::removeOwnedReception(QObject *ownedReception)
 {
     qmodelingelementproperty_cast<QUmlOpaqueBehavior *>(this)->removeOwnedReception(qmodelingelementproperty_cast<QUmlReception *>(ownedReception));
+    emit ownedReceptionsChanged(this->ownedReceptions());
 }
 
 void QUmlOpaqueBehaviorObject::addSuperClass(QObject *superClass)
 {
     qmodelingelementproperty_cast<QUmlOpaqueBehavior *>(this)->addSuperClass(qmodelingelementproperty_cast<QUmlClass *>(superClass));
+    emit superClassesChanged(this->superClasses());
 }
 
 void QUmlOpaqueBehaviorObject::removeSuperClass(QObject *superClass)
 {
     qmodelingelementproperty_cast<QUmlOpaqueBehavior *>(this)->removeSuperClass(qmodelingelementproperty_cast<QUmlClass *>(superClass));
+    emit superClassesChanged(this->superClasses());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Behavior]
@@ -1236,11 +1320,13 @@ void QUmlOpaqueBehaviorObject::removeSuperClass(QObject *superClass)
 void QUmlOpaqueBehaviorObject::setContext(QObject *context)
 {
     qmodelingelementproperty_cast<QUmlOpaqueBehavior *>(this)->setContext(qmodelingelementproperty_cast<QUmlBehavioredClassifier *>(context));
+    emit contextChanged(this->context());
 }
 
 void QUmlOpaqueBehaviorObject::setReentrant(bool isReentrant)
 {
     qmodelingelementproperty_cast<QUmlOpaqueBehavior *>(this)->setReentrant(isReentrant);
+    emit isReentrantChanged(this->isReentrant());
 }
 
 void QUmlOpaqueBehaviorObject::unsetReentrant()
@@ -1254,56 +1340,67 @@ void QUmlOpaqueBehaviorObject::unsetReentrant()
 void QUmlOpaqueBehaviorObject::addOwnedParameter(QObject *ownedParameter)
 {
     qmodelingelementproperty_cast<QUmlOpaqueBehavior *>(this)->addOwnedParameter(qmodelingelementproperty_cast<QUmlParameter *>(ownedParameter));
+    emit ownedParametersChanged(this->ownedParameters());
 }
 
 void QUmlOpaqueBehaviorObject::removeOwnedParameter(QObject *ownedParameter)
 {
     qmodelingelementproperty_cast<QUmlOpaqueBehavior *>(this)->removeOwnedParameter(qmodelingelementproperty_cast<QUmlParameter *>(ownedParameter));
+    emit ownedParametersChanged(this->ownedParameters());
 }
 
 void QUmlOpaqueBehaviorObject::addOwnedParameterSet(QObject *ownedParameterSet)
 {
     qmodelingelementproperty_cast<QUmlOpaqueBehavior *>(this)->addOwnedParameterSet(qmodelingelementproperty_cast<QUmlParameterSet *>(ownedParameterSet));
+    emit ownedParameterSetsChanged(this->ownedParameterSets());
 }
 
 void QUmlOpaqueBehaviorObject::removeOwnedParameterSet(QObject *ownedParameterSet)
 {
     qmodelingelementproperty_cast<QUmlOpaqueBehavior *>(this)->removeOwnedParameterSet(qmodelingelementproperty_cast<QUmlParameterSet *>(ownedParameterSet));
+    emit ownedParameterSetsChanged(this->ownedParameterSets());
 }
 
 void QUmlOpaqueBehaviorObject::addPostcondition(QObject *postcondition)
 {
     qmodelingelementproperty_cast<QUmlOpaqueBehavior *>(this)->addPostcondition(qmodelingelementproperty_cast<QUmlConstraint *>(postcondition));
+    emit postconditionsChanged(this->postconditions());
 }
 
 void QUmlOpaqueBehaviorObject::removePostcondition(QObject *postcondition)
 {
     qmodelingelementproperty_cast<QUmlOpaqueBehavior *>(this)->removePostcondition(qmodelingelementproperty_cast<QUmlConstraint *>(postcondition));
+    emit postconditionsChanged(this->postconditions());
 }
 
 void QUmlOpaqueBehaviorObject::addPrecondition(QObject *precondition)
 {
     qmodelingelementproperty_cast<QUmlOpaqueBehavior *>(this)->addPrecondition(qmodelingelementproperty_cast<QUmlConstraint *>(precondition));
+    emit preconditionsChanged(this->preconditions());
 }
 
 void QUmlOpaqueBehaviorObject::removePrecondition(QObject *precondition)
 {
     qmodelingelementproperty_cast<QUmlOpaqueBehavior *>(this)->removePrecondition(qmodelingelementproperty_cast<QUmlConstraint *>(precondition));
+    emit preconditionsChanged(this->preconditions());
 }
 
 void QUmlOpaqueBehaviorObject::addRedefinedBehavior(QObject *redefinedBehavior)
 {
     qmodelingelementproperty_cast<QUmlOpaqueBehavior *>(this)->addRedefinedBehavior(qmodelingelementproperty_cast<QUmlBehavior *>(redefinedBehavior));
+    emit redefinedBehaviorsChanged(this->redefinedBehaviors());
 }
 
 void QUmlOpaqueBehaviorObject::removeRedefinedBehavior(QObject *redefinedBehavior)
 {
     qmodelingelementproperty_cast<QUmlOpaqueBehavior *>(this)->removeRedefinedBehavior(qmodelingelementproperty_cast<QUmlBehavior *>(redefinedBehavior));
+    emit redefinedBehaviorsChanged(this->redefinedBehaviors());
 }
 
 void QUmlOpaqueBehaviorObject::setSpecification(QObject *specification)
 {
     qmodelingelementproperty_cast<QUmlOpaqueBehavior *>(this)->setSpecification(qmodelingelementproperty_cast<QUmlBehavioralFeature *>(specification));
+    emit specificationChanged(this->specification());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [OpaqueBehavior]
@@ -1311,21 +1408,25 @@ void QUmlOpaqueBehaviorObject::setSpecification(QObject *specification)
 void QUmlOpaqueBehaviorObject::addBody(QString  body)
 {
     qmodelingelementproperty_cast<QUmlOpaqueBehavior *>(this)->addBody(body);
+    emit bodiesChanged(this->bodies());
 }
 
 void QUmlOpaqueBehaviorObject::removeBody(QString  body)
 {
     qmodelingelementproperty_cast<QUmlOpaqueBehavior *>(this)->removeBody(body);
+    emit bodiesChanged(this->bodies());
 }
 
 void QUmlOpaqueBehaviorObject::addLanguage(QString  language)
 {
     qmodelingelementproperty_cast<QUmlOpaqueBehavior *>(this)->addLanguage(language);
+    emit languagesChanged(this->languages());
 }
 
 void QUmlOpaqueBehaviorObject::removeLanguage(QString  language)
 {
     qmodelingelementproperty_cast<QUmlOpaqueBehavior *>(this)->removeLanguage(language);
+    emit languagesChanged(this->languages());
 }
 
 

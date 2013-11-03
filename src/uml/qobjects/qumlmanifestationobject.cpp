@@ -276,26 +276,31 @@ QString QUmlManifestationObject::separator() const
 void QUmlManifestationObject::addOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlManifestation *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlManifestationObject::removeOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlManifestation *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlManifestationObject::addOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlManifestation *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlManifestationObject::removeOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlManifestation *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlManifestationObject::setOwner(QObject *owner)
 {
     qmodelingelementproperty_cast<QUmlManifestation *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
+    emit ownerChanged(this->owner());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ParameterableElement]
@@ -303,11 +308,13 @@ void QUmlManifestationObject::setOwner(QObject *owner)
 void QUmlManifestationObject::setOwningTemplateParameter(QObject *owningTemplateParameter)
 {
     qmodelingelementproperty_cast<QUmlManifestation *>(this)->setOwningTemplateParameter(qmodelingelementproperty_cast<QUmlTemplateParameter *>(owningTemplateParameter));
+    emit owningTemplateParameterChanged(this->owningTemplateParameter());
 }
 
 void QUmlManifestationObject::setTemplateParameter(QObject *templateParameter)
 {
     qmodelingelementproperty_cast<QUmlManifestation *>(this)->setTemplateParameter(qmodelingelementproperty_cast<QUmlTemplateParameter *>(templateParameter));
+    emit templateParameterChanged(this->templateParameter());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [NamedElement]
@@ -315,37 +322,44 @@ void QUmlManifestationObject::setTemplateParameter(QObject *templateParameter)
 void QUmlManifestationObject::addClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlManifestation *>(this)->addClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlManifestationObject::removeClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlManifestation *>(this)->removeClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlManifestationObject::setName(QString name)
 {
     qmodelingelementproperty_cast<QUmlManifestation *>(this)->setName(name);
+    emit nameChanged(this->name());
 }
 
 void QUmlManifestationObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingelementproperty_cast<QUmlManifestation *>(this)->setNameExpression(qmodelingelementproperty_cast<QUmlStringExpression *>(nameExpression));
+    emit nameExpressionChanged(this->nameExpression());
 }
 
 void QUmlManifestationObject::setNamespace(QObject *namespace_)
 {
     qmodelingelementproperty_cast<QUmlManifestation *>(this)->setNamespace(qmodelingelementproperty_cast<QUmlNamespace *>(namespace_));
+    emit namespaceChanged(this->namespace_());
 }
 
 void QUmlManifestationObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingelementproperty_cast<QUmlManifestation *>(this)->setQualifiedName(qualifiedName);
+    emit qualifiedNameChanged(this->qualifiedName());
 }
 // SLOTS FOR OWNED ATTRIBUTES [PackageableElement]
 
 void QUmlManifestationObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingelementproperty_cast<QUmlManifestation *>(this)->setVisibility(visibility);
+    emit visibilityChanged(this->visibility());
 }
 
 void QUmlManifestationObject::unsetVisibility()
@@ -360,11 +374,13 @@ void QUmlManifestationObject::unsetVisibility()
 void QUmlManifestationObject::addRelatedElement(QObject *relatedElement)
 {
     qmodelingelementproperty_cast<QUmlManifestation *>(this)->addRelatedElement(qmodelingelementproperty_cast<QUmlElement *>(relatedElement));
+    emit relatedElementsChanged(this->relatedElements());
 }
 
 void QUmlManifestationObject::removeRelatedElement(QObject *relatedElement)
 {
     qmodelingelementproperty_cast<QUmlManifestation *>(this)->removeRelatedElement(qmodelingelementproperty_cast<QUmlElement *>(relatedElement));
+    emit relatedElementsChanged(this->relatedElements());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [DirectedRelationship]
@@ -372,21 +388,25 @@ void QUmlManifestationObject::removeRelatedElement(QObject *relatedElement)
 void QUmlManifestationObject::addSource(QObject *source)
 {
     qmodelingelementproperty_cast<QUmlManifestation *>(this)->addSource(qmodelingelementproperty_cast<QUmlElement *>(source));
+    emit sourcesChanged(this->sources());
 }
 
 void QUmlManifestationObject::removeSource(QObject *source)
 {
     qmodelingelementproperty_cast<QUmlManifestation *>(this)->removeSource(qmodelingelementproperty_cast<QUmlElement *>(source));
+    emit sourcesChanged(this->sources());
 }
 
 void QUmlManifestationObject::addTarget(QObject *target)
 {
     qmodelingelementproperty_cast<QUmlManifestation *>(this)->addTarget(qmodelingelementproperty_cast<QUmlElement *>(target));
+    emit targetsChanged(this->targets());
 }
 
 void QUmlManifestationObject::removeTarget(QObject *target)
 {
     qmodelingelementproperty_cast<QUmlManifestation *>(this)->removeTarget(qmodelingelementproperty_cast<QUmlElement *>(target));
+    emit targetsChanged(this->targets());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Dependency]
@@ -394,21 +414,25 @@ void QUmlManifestationObject::removeTarget(QObject *target)
 void QUmlManifestationObject::addClient(QObject *client)
 {
     qmodelingelementproperty_cast<QUmlManifestation *>(this)->addClient(qmodelingelementproperty_cast<QUmlNamedElement *>(client));
+    emit clientsChanged(this->clients());
 }
 
 void QUmlManifestationObject::removeClient(QObject *client)
 {
     qmodelingelementproperty_cast<QUmlManifestation *>(this)->removeClient(qmodelingelementproperty_cast<QUmlNamedElement *>(client));
+    emit clientsChanged(this->clients());
 }
 
 void QUmlManifestationObject::addSupplier(QObject *supplier)
 {
     qmodelingelementproperty_cast<QUmlManifestation *>(this)->addSupplier(qmodelingelementproperty_cast<QUmlNamedElement *>(supplier));
+    emit suppliersChanged(this->suppliers());
 }
 
 void QUmlManifestationObject::removeSupplier(QObject *supplier)
 {
     qmodelingelementproperty_cast<QUmlManifestation *>(this)->removeSupplier(qmodelingelementproperty_cast<QUmlNamedElement *>(supplier));
+    emit suppliersChanged(this->suppliers());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Abstraction]
@@ -416,6 +440,7 @@ void QUmlManifestationObject::removeSupplier(QObject *supplier)
 void QUmlManifestationObject::setMapping(QObject *mapping)
 {
     qmodelingelementproperty_cast<QUmlManifestation *>(this)->setMapping(qmodelingelementproperty_cast<QUmlOpaqueExpression *>(mapping));
+    emit mappingChanged(this->mapping());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Manifestation]
@@ -423,6 +448,7 @@ void QUmlManifestationObject::setMapping(QObject *mapping)
 void QUmlManifestationObject::setUtilizedElement(QObject *utilizedElement)
 {
     qmodelingelementproperty_cast<QUmlManifestation *>(this)->setUtilizedElement(qmodelingelementproperty_cast<QUmlPackageableElement *>(utilizedElement));
+    emit utilizedElementChanged(this->utilizedElement());
 }
 
 

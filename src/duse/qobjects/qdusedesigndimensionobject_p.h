@@ -60,11 +60,11 @@ class Q_DUSE_EXPORT QDuseDesignDimensionObject : public QModelingObject
     Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [DesignDimension]
-    Q_PROPERTY(QString name READ name WRITE setName)
-    Q_PROPERTY(QString instanceSelectionRule READ instanceSelectionRule WRITE setInstanceSelectionRule)
-    Q_PROPERTY(QSet<QObject *> requiredPreviousEvaluations READ requiredPreviousEvaluations)
-    Q_PROPERTY(QSet<QObject *> variationPoints READ variationPoints)
-    Q_PROPERTY(QSet<QObject *> designDimensionInstances READ designDimensionInstances)
+    Q_PROPERTY(QString name READ name WRITE setName NOTIFY nameChanged)
+    Q_PROPERTY(QString instanceSelectionRule READ instanceSelectionRule WRITE setInstanceSelectionRule NOTIFY instanceSelectionRuleChanged)
+    Q_PROPERTY(QSet<QObject *> requiredPreviousEvaluations READ requiredPreviousEvaluations NOTIFY requiredPreviousEvaluationsChanged)
+    Q_PROPERTY(QSet<QObject *> variationPoints READ variationPoints NOTIFY variationPointsChanged)
+    Q_PROPERTY(QSet<QObject *> designDimensionInstances READ designDimensionInstances NOTIFY designDimensionInstancesChanged)
 
 public:
     Q_INVOKABLE explicit QDuseDesignDimensionObject(QDuseDesignDimension *modelingElement);
@@ -87,6 +87,15 @@ public Q_SLOTS:
     void removeVariationPoint(QObject *variationPoint);
     void addDesignDimensionInstance(QObject *designDimensionInstance);
     void removeDesignDimensionInstance(QObject *designDimensionInstance);
+
+Q_SIGNALS:
+
+    // Signals for owned attributes [DesignDimension]
+    void nameChanged(QString name);
+    void instanceSelectionRuleChanged(QString instanceSelectionRule);
+    void requiredPreviousEvaluationsChanged(QSet<QObject *> requiredPreviousEvaluations);
+    void variationPointsChanged(QSet<QObject *> variationPoints);
+    void designDimensionInstancesChanged(QSet<QObject *> designDimensionInstances);
 
 protected:
     virtual void setGroupProperties();

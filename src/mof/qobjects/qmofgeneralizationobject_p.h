@@ -60,21 +60,21 @@ class Q_MOF_EXPORT QMofGeneralizationObject : public QModelingObject
     Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [Element]
-    Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
-    Q_PROPERTY(QSet<QObject *> ownedElements READ ownedElements)
-    Q_PROPERTY(QObject * owner READ owner)
+    Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments NOTIFY ownedCommentsChanged)
+    Q_PROPERTY(QSet<QObject *> ownedElements READ ownedElements NOTIFY ownedElementsChanged)
+    Q_PROPERTY(QObject * owner READ owner NOTIFY ownerChanged)
 
     // Properties [Relationship]
-    Q_PROPERTY(QSet<QObject *> relatedElements READ relatedElements)
+    Q_PROPERTY(QSet<QObject *> relatedElements READ relatedElements NOTIFY relatedElementsChanged)
 
     // Properties [DirectedRelationship]
-    Q_PROPERTY(QSet<QObject *> sources READ sources)
-    Q_PROPERTY(QSet<QObject *> targets READ targets)
+    Q_PROPERTY(QSet<QObject *> sources READ sources NOTIFY sourcesChanged)
+    Q_PROPERTY(QSet<QObject *> targets READ targets NOTIFY targetsChanged)
 
     // Properties [Generalization]
-    Q_PROPERTY(QObject * general READ general WRITE setGeneral)
-    Q_PROPERTY(bool isSubstitutable READ isSubstitutable WRITE setSubstitutable RESET unsetSubstitutable)
-    Q_PROPERTY(QObject * specific READ specific WRITE setSpecific)
+    Q_PROPERTY(QObject * general READ general WRITE setGeneral NOTIFY generalChanged)
+    Q_PROPERTY(bool isSubstitutable READ isSubstitutable WRITE setSubstitutable NOTIFY isSubstitutableChanged RESET unsetSubstitutable)
+    Q_PROPERTY(QObject * specific READ specific WRITE setSpecific NOTIFY specificChanged)
 
 public:
     Q_INVOKABLE explicit QMofGeneralizationObject(QMofGeneralization *modelingElement);
@@ -128,6 +128,25 @@ public Q_SLOTS:
     void setSubstitutable(bool isSubstitutable);
     void unsetSubstitutable();
     void setSpecific(QObject *specific = 0);
+
+Q_SIGNALS:
+
+    // Signals for owned attributes [Element]
+    void ownedCommentsChanged(QSet<QObject *> ownedComments);
+    void ownedElementsChanged(QSet<QObject *> ownedElements);
+    void ownerChanged(QObject *owner);
+
+    // Signals for owned attributes [Relationship]
+    void relatedElementsChanged(QSet<QObject *> relatedElements);
+
+    // Signals for owned attributes [DirectedRelationship]
+    void sourcesChanged(QSet<QObject *> sources);
+    void targetsChanged(QSet<QObject *> targets);
+
+    // Signals for owned attributes [Generalization]
+    void generalChanged(QObject *general);
+    void isSubstitutableChanged(bool isSubstitutable);
+    void specificChanged(QObject *specific);
 
 protected:
     virtual void setGroupProperties();

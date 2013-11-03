@@ -194,26 +194,31 @@ QString QUmlTriggerObject::separator() const
 void QUmlTriggerObject::addOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlTrigger *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlTriggerObject::removeOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlTrigger *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlTriggerObject::addOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlTrigger *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlTriggerObject::removeOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlTrigger *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlTriggerObject::setOwner(QObject *owner)
 {
     qmodelingelementproperty_cast<QUmlTrigger *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
+    emit ownerChanged(this->owner());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [NamedElement]
@@ -221,36 +226,43 @@ void QUmlTriggerObject::setOwner(QObject *owner)
 void QUmlTriggerObject::addClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlTrigger *>(this)->addClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlTriggerObject::removeClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlTrigger *>(this)->removeClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlTriggerObject::setName(QString name)
 {
     qmodelingelementproperty_cast<QUmlTrigger *>(this)->setName(name);
+    emit nameChanged(this->name());
 }
 
 void QUmlTriggerObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingelementproperty_cast<QUmlTrigger *>(this)->setNameExpression(qmodelingelementproperty_cast<QUmlStringExpression *>(nameExpression));
+    emit nameExpressionChanged(this->nameExpression());
 }
 
 void QUmlTriggerObject::setNamespace(QObject *namespace_)
 {
     qmodelingelementproperty_cast<QUmlTrigger *>(this)->setNamespace(qmodelingelementproperty_cast<QUmlNamespace *>(namespace_));
+    emit namespaceChanged(this->namespace_());
 }
 
 void QUmlTriggerObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingelementproperty_cast<QUmlTrigger *>(this)->setQualifiedName(qualifiedName);
+    emit qualifiedNameChanged(this->qualifiedName());
 }
 
 void QUmlTriggerObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingelementproperty_cast<QUmlTrigger *>(this)->setVisibility(visibility);
+    emit visibilityChanged(this->visibility());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Trigger]
@@ -258,16 +270,19 @@ void QUmlTriggerObject::setVisibility(QtUml::VisibilityKind visibility)
 void QUmlTriggerObject::setEvent(QObject *event_)
 {
     qmodelingelementproperty_cast<QUmlTrigger *>(this)->setEvent(qmodelingelementproperty_cast<QUmlEvent *>(event_));
+    emit eventChanged(this->event_());
 }
 
 void QUmlTriggerObject::addPort(QObject *port)
 {
     qmodelingelementproperty_cast<QUmlTrigger *>(this)->addPort(qmodelingelementproperty_cast<QUmlPort *>(port));
+    emit portsChanged(this->ports());
 }
 
 void QUmlTriggerObject::removePort(QObject *port)
 {
     qmodelingelementproperty_cast<QUmlTrigger *>(this)->removePort(qmodelingelementproperty_cast<QUmlPort *>(port));
+    emit portsChanged(this->ports());
 }
 
 

@@ -203,26 +203,31 @@ QString QMofConstraintObject::separator() const
 void QMofConstraintObject::addOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QMofConstraint *>(this)->addOwnedComment(qmodelingelementproperty_cast<QMofComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QMofConstraintObject::removeOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QMofConstraint *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QMofComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QMofConstraintObject::addOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QMofConstraint *>(this)->addOwnedElement(qmodelingelementproperty_cast<QMofElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QMofConstraintObject::removeOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QMofConstraint *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QMofElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QMofConstraintObject::setOwner(QObject *owner)
 {
     qmodelingelementproperty_cast<QMofConstraint *>(this)->setOwner(qmodelingelementproperty_cast<QMofElement *>(owner));
+    emit ownerChanged(this->owner());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [NamedElement]
@@ -230,22 +235,26 @@ void QMofConstraintObject::setOwner(QObject *owner)
 void QMofConstraintObject::setName(QString name)
 {
     qmodelingelementproperty_cast<QMofConstraint *>(this)->setName(name);
+    emit nameChanged(this->name());
 }
 
 void QMofConstraintObject::setNamespace(QObject *namespace_)
 {
     qmodelingelementproperty_cast<QMofConstraint *>(this)->setNamespace(qmodelingelementproperty_cast<QMofNamespace *>(namespace_));
+    emit namespaceChanged(this->namespace_());
 }
 
 void QMofConstraintObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingelementproperty_cast<QMofConstraint *>(this)->setQualifiedName(qualifiedName);
+    emit qualifiedNameChanged(this->qualifiedName());
 }
 // SLOTS FOR OWNED ATTRIBUTES [PackageableElement]
 
 void QMofConstraintObject::setVisibility(QtMof::VisibilityKind visibility)
 {
     qmodelingelementproperty_cast<QMofConstraint *>(this)->setVisibility(visibility);
+    emit visibilityChanged(this->visibility());
 }
 
 void QMofConstraintObject::unsetVisibility()
@@ -260,21 +269,25 @@ void QMofConstraintObject::unsetVisibility()
 void QMofConstraintObject::addConstrainedElement(QObject *constrainedElement)
 {
     qmodelingelementproperty_cast<QMofConstraint *>(this)->addConstrainedElement(qmodelingelementproperty_cast<QMofElement *>(constrainedElement));
+    emit constrainedElementsChanged(this->constrainedElements());
 }
 
 void QMofConstraintObject::removeConstrainedElement(QObject *constrainedElement)
 {
     qmodelingelementproperty_cast<QMofConstraint *>(this)->removeConstrainedElement(qmodelingelementproperty_cast<QMofElement *>(constrainedElement));
+    emit constrainedElementsChanged(this->constrainedElements());
 }
 
 void QMofConstraintObject::setContext(QObject *context)
 {
     qmodelingelementproperty_cast<QMofConstraint *>(this)->setContext(qmodelingelementproperty_cast<QMofNamespace *>(context));
+    emit contextChanged(this->context());
 }
 
 void QMofConstraintObject::setSpecification(QObject *specification)
 {
     qmodelingelementproperty_cast<QMofConstraint *>(this)->setSpecification(qmodelingelementproperty_cast<QMofValueSpecification *>(specification));
+    emit specificationChanged(this->specification());
 }
 
 

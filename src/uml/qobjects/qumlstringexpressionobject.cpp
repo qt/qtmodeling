@@ -326,26 +326,31 @@ QString QUmlStringExpressionObject::stringValue() const
 void QUmlStringExpressionObject::addOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlStringExpression *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlStringExpressionObject::removeOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlStringExpression *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlStringExpressionObject::addOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlStringExpression *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlStringExpressionObject::removeOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlStringExpression *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlStringExpressionObject::setOwner(QObject *owner)
 {
     qmodelingelementproperty_cast<QUmlStringExpression *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
+    emit ownerChanged(this->owner());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [NamedElement]
@@ -353,37 +358,44 @@ void QUmlStringExpressionObject::setOwner(QObject *owner)
 void QUmlStringExpressionObject::addClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlStringExpression *>(this)->addClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlStringExpressionObject::removeClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlStringExpression *>(this)->removeClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlStringExpressionObject::setName(QString name)
 {
     qmodelingelementproperty_cast<QUmlStringExpression *>(this)->setName(name);
+    emit nameChanged(this->name());
 }
 
 void QUmlStringExpressionObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingelementproperty_cast<QUmlStringExpression *>(this)->setNameExpression(qmodelingelementproperty_cast<QUmlStringExpression *>(nameExpression));
+    emit nameExpressionChanged(this->nameExpression());
 }
 
 void QUmlStringExpressionObject::setNamespace(QObject *namespace_)
 {
     qmodelingelementproperty_cast<QUmlStringExpression *>(this)->setNamespace(qmodelingelementproperty_cast<QUmlNamespace *>(namespace_));
+    emit namespaceChanged(this->namespace_());
 }
 
 void QUmlStringExpressionObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingelementproperty_cast<QUmlStringExpression *>(this)->setQualifiedName(qualifiedName);
+    emit qualifiedNameChanged(this->qualifiedName());
 }
 // SLOTS FOR OWNED ATTRIBUTES [TypedElement]
 
 void QUmlStringExpressionObject::setType(QObject *type)
 {
     qmodelingelementproperty_cast<QUmlStringExpression *>(this)->setType(qmodelingelementproperty_cast<QUmlType *>(type));
+    emit typeChanged(this->type());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ParameterableElement]
@@ -391,11 +403,13 @@ void QUmlStringExpressionObject::setType(QObject *type)
 void QUmlStringExpressionObject::setOwningTemplateParameter(QObject *owningTemplateParameter)
 {
     qmodelingelementproperty_cast<QUmlStringExpression *>(this)->setOwningTemplateParameter(qmodelingelementproperty_cast<QUmlTemplateParameter *>(owningTemplateParameter));
+    emit owningTemplateParameterChanged(this->owningTemplateParameter());
 }
 
 void QUmlStringExpressionObject::setTemplateParameter(QObject *templateParameter)
 {
     qmodelingelementproperty_cast<QUmlStringExpression *>(this)->setTemplateParameter(qmodelingelementproperty_cast<QUmlTemplateParameter *>(templateParameter));
+    emit templateParameterChanged(this->templateParameter());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [PackageableElement]
@@ -403,6 +417,7 @@ void QUmlStringExpressionObject::setTemplateParameter(QObject *templateParameter
 void QUmlStringExpressionObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingelementproperty_cast<QUmlStringExpression *>(this)->setVisibility(visibility);
+    emit visibilityChanged(this->visibility());
 }
 
 void QUmlStringExpressionObject::unsetVisibility()
@@ -417,16 +432,19 @@ void QUmlStringExpressionObject::unsetVisibility()
 void QUmlStringExpressionObject::addOperand(QObject *operand)
 {
     qmodelingelementproperty_cast<QUmlStringExpression *>(this)->addOperand(qmodelingelementproperty_cast<QUmlValueSpecification *>(operand));
+    emit operandsChanged(this->operands());
 }
 
 void QUmlStringExpressionObject::removeOperand(QObject *operand)
 {
     qmodelingelementproperty_cast<QUmlStringExpression *>(this)->removeOperand(qmodelingelementproperty_cast<QUmlValueSpecification *>(operand));
+    emit operandsChanged(this->operands());
 }
 
 void QUmlStringExpressionObject::setSymbol(QString symbol)
 {
     qmodelingelementproperty_cast<QUmlStringExpression *>(this)->setSymbol(symbol);
+    emit symbolChanged(this->symbol());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [TemplateableElement]
@@ -434,16 +452,19 @@ void QUmlStringExpressionObject::setSymbol(QString symbol)
 void QUmlStringExpressionObject::setOwnedTemplateSignature(QObject *ownedTemplateSignature)
 {
     qmodelingelementproperty_cast<QUmlStringExpression *>(this)->setOwnedTemplateSignature(qmodelingelementproperty_cast<QUmlTemplateSignature *>(ownedTemplateSignature));
+    emit ownedTemplateSignatureChanged(this->ownedTemplateSignature());
 }
 
 void QUmlStringExpressionObject::addTemplateBinding(QObject *templateBinding)
 {
     qmodelingelementproperty_cast<QUmlStringExpression *>(this)->addTemplateBinding(qmodelingelementproperty_cast<QUmlTemplateBinding *>(templateBinding));
+    emit templateBindingsChanged(this->templateBindings());
 }
 
 void QUmlStringExpressionObject::removeTemplateBinding(QObject *templateBinding)
 {
     qmodelingelementproperty_cast<QUmlStringExpression *>(this)->removeTemplateBinding(qmodelingelementproperty_cast<QUmlTemplateBinding *>(templateBinding));
+    emit templateBindingsChanged(this->templateBindings());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [StringExpression]
@@ -451,16 +472,19 @@ void QUmlStringExpressionObject::removeTemplateBinding(QObject *templateBinding)
 void QUmlStringExpressionObject::setOwningExpression(QObject *owningExpression)
 {
     qmodelingelementproperty_cast<QUmlStringExpression *>(this)->setOwningExpression(qmodelingelementproperty_cast<QUmlStringExpression *>(owningExpression));
+    emit owningExpressionChanged(this->owningExpression());
 }
 
 void QUmlStringExpressionObject::addSubExpression(QObject *subExpression)
 {
     qmodelingelementproperty_cast<QUmlStringExpression *>(this)->addSubExpression(qmodelingelementproperty_cast<QUmlStringExpression *>(subExpression));
+    emit subExpressionsChanged(this->subExpressions());
 }
 
 void QUmlStringExpressionObject::removeSubExpression(QObject *subExpression)
 {
     qmodelingelementproperty_cast<QUmlStringExpression *>(this)->removeSubExpression(qmodelingelementproperty_cast<QUmlStringExpression *>(subExpression));
+    emit subExpressionsChanged(this->subExpressions());
 }
 
 

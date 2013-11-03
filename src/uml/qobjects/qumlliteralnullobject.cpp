@@ -258,26 +258,31 @@ bool QUmlLiteralNullObject::isNull() const
 void QUmlLiteralNullObject::addOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlLiteralNull *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlLiteralNullObject::removeOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlLiteralNull *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlLiteralNullObject::addOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlLiteralNull *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlLiteralNullObject::removeOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlLiteralNull *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlLiteralNullObject::setOwner(QObject *owner)
 {
     qmodelingelementproperty_cast<QUmlLiteralNull *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
+    emit ownerChanged(this->owner());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [NamedElement]
@@ -285,37 +290,44 @@ void QUmlLiteralNullObject::setOwner(QObject *owner)
 void QUmlLiteralNullObject::addClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlLiteralNull *>(this)->addClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlLiteralNullObject::removeClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlLiteralNull *>(this)->removeClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlLiteralNullObject::setName(QString name)
 {
     qmodelingelementproperty_cast<QUmlLiteralNull *>(this)->setName(name);
+    emit nameChanged(this->name());
 }
 
 void QUmlLiteralNullObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingelementproperty_cast<QUmlLiteralNull *>(this)->setNameExpression(qmodelingelementproperty_cast<QUmlStringExpression *>(nameExpression));
+    emit nameExpressionChanged(this->nameExpression());
 }
 
 void QUmlLiteralNullObject::setNamespace(QObject *namespace_)
 {
     qmodelingelementproperty_cast<QUmlLiteralNull *>(this)->setNamespace(qmodelingelementproperty_cast<QUmlNamespace *>(namespace_));
+    emit namespaceChanged(this->namespace_());
 }
 
 void QUmlLiteralNullObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingelementproperty_cast<QUmlLiteralNull *>(this)->setQualifiedName(qualifiedName);
+    emit qualifiedNameChanged(this->qualifiedName());
 }
 // SLOTS FOR OWNED ATTRIBUTES [TypedElement]
 
 void QUmlLiteralNullObject::setType(QObject *type)
 {
     qmodelingelementproperty_cast<QUmlLiteralNull *>(this)->setType(qmodelingelementproperty_cast<QUmlType *>(type));
+    emit typeChanged(this->type());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ParameterableElement]
@@ -323,11 +335,13 @@ void QUmlLiteralNullObject::setType(QObject *type)
 void QUmlLiteralNullObject::setOwningTemplateParameter(QObject *owningTemplateParameter)
 {
     qmodelingelementproperty_cast<QUmlLiteralNull *>(this)->setOwningTemplateParameter(qmodelingelementproperty_cast<QUmlTemplateParameter *>(owningTemplateParameter));
+    emit owningTemplateParameterChanged(this->owningTemplateParameter());
 }
 
 void QUmlLiteralNullObject::setTemplateParameter(QObject *templateParameter)
 {
     qmodelingelementproperty_cast<QUmlLiteralNull *>(this)->setTemplateParameter(qmodelingelementproperty_cast<QUmlTemplateParameter *>(templateParameter));
+    emit templateParameterChanged(this->templateParameter());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [PackageableElement]
@@ -335,6 +349,7 @@ void QUmlLiteralNullObject::setTemplateParameter(QObject *templateParameter)
 void QUmlLiteralNullObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingelementproperty_cast<QUmlLiteralNull *>(this)->setVisibility(visibility);
+    emit visibilityChanged(this->visibility());
 }
 
 void QUmlLiteralNullObject::unsetVisibility()

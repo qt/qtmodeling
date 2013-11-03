@@ -235,26 +235,31 @@ int QMofInstanceValueObject::unlimitedValue() const
 void QMofInstanceValueObject::addOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QMofInstanceValue *>(this)->addOwnedComment(qmodelingelementproperty_cast<QMofComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QMofInstanceValueObject::removeOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QMofInstanceValue *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QMofComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QMofInstanceValueObject::addOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QMofInstanceValue *>(this)->addOwnedElement(qmodelingelementproperty_cast<QMofElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QMofInstanceValueObject::removeOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QMofInstanceValue *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QMofElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QMofInstanceValueObject::setOwner(QObject *owner)
 {
     qmodelingelementproperty_cast<QMofInstanceValue *>(this)->setOwner(qmodelingelementproperty_cast<QMofElement *>(owner));
+    emit ownerChanged(this->owner());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [NamedElement]
@@ -262,22 +267,26 @@ void QMofInstanceValueObject::setOwner(QObject *owner)
 void QMofInstanceValueObject::setName(QString name)
 {
     qmodelingelementproperty_cast<QMofInstanceValue *>(this)->setName(name);
+    emit nameChanged(this->name());
 }
 
 void QMofInstanceValueObject::setNamespace(QObject *namespace_)
 {
     qmodelingelementproperty_cast<QMofInstanceValue *>(this)->setNamespace(qmodelingelementproperty_cast<QMofNamespace *>(namespace_));
+    emit namespaceChanged(this->namespace_());
 }
 
 void QMofInstanceValueObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingelementproperty_cast<QMofInstanceValue *>(this)->setQualifiedName(qualifiedName);
+    emit qualifiedNameChanged(this->qualifiedName());
 }
 // SLOTS FOR OWNED ATTRIBUTES [PackageableElement]
 
 void QMofInstanceValueObject::setVisibility(QtMof::VisibilityKind visibility)
 {
     qmodelingelementproperty_cast<QMofInstanceValue *>(this)->setVisibility(visibility);
+    emit visibilityChanged(this->visibility());
 }
 
 void QMofInstanceValueObject::unsetVisibility()
@@ -292,6 +301,7 @@ void QMofInstanceValueObject::unsetVisibility()
 void QMofInstanceValueObject::setType(QObject *type)
 {
     qmodelingelementproperty_cast<QMofInstanceValue *>(this)->setType(qmodelingelementproperty_cast<QMofType *>(type));
+    emit typeChanged(this->type());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [InstanceValue]
@@ -299,6 +309,7 @@ void QMofInstanceValueObject::setType(QObject *type)
 void QMofInstanceValueObject::setInstance(QObject *instance)
 {
     qmodelingelementproperty_cast<QMofInstanceValue *>(this)->setInstance(qmodelingelementproperty_cast<QMofInstanceSpecification *>(instance));
+    emit instanceChanged(this->instance());
 }
 
 

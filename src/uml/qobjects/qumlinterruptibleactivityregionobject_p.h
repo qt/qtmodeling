@@ -62,28 +62,28 @@ class Q_UML_EXPORT QUmlInterruptibleActivityRegionObject : public QModelingObjec
     Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [Element]
-    Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
-    Q_PROPERTY(QSet<QObject *> ownedElements READ ownedElements)
-    Q_PROPERTY(QObject * owner READ owner)
+    Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments NOTIFY ownedCommentsChanged)
+    Q_PROPERTY(QSet<QObject *> ownedElements READ ownedElements NOTIFY ownedElementsChanged)
+    Q_PROPERTY(QObject * owner READ owner NOTIFY ownerChanged)
 
     // Properties [NamedElement]
-    Q_PROPERTY(QSet<QObject *> clientDependencies READ clientDependencies)
-    Q_PROPERTY(QString name READ name WRITE setName)
-    Q_PROPERTY(QObject * nameExpression READ nameExpression WRITE setNameExpression)
-    Q_PROPERTY(QObject * namespace_ READ namespace_)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
+    Q_PROPERTY(QSet<QObject *> clientDependencies READ clientDependencies NOTIFY clientDependenciesChanged)
+    Q_PROPERTY(QString name READ name WRITE setName NOTIFY nameChanged)
+    Q_PROPERTY(QObject * nameExpression READ nameExpression WRITE setNameExpression NOTIFY nameExpressionChanged)
+    Q_PROPERTY(QObject * namespace_ READ namespace_ NOTIFY namespaceChanged)
+    Q_PROPERTY(QString qualifiedName READ qualifiedName NOTIFY qualifiedNameChanged STORED false)
+    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility NOTIFY visibilityChanged)
 
     // Properties [ActivityGroup]
-    Q_PROPERTY(QSet<QObject *> containedEdges READ containedEdges)
-    Q_PROPERTY(QSet<QObject *> containedNodes READ containedNodes)
-    Q_PROPERTY(QObject * inActivity READ inActivity WRITE setInActivity)
-    Q_PROPERTY(QSet<QObject *> subgroups READ subgroups)
-    Q_PROPERTY(QObject * superGroup READ superGroup)
+    Q_PROPERTY(QSet<QObject *> containedEdges READ containedEdges NOTIFY containedEdgesChanged)
+    Q_PROPERTY(QSet<QObject *> containedNodes READ containedNodes NOTIFY containedNodesChanged)
+    Q_PROPERTY(QObject * inActivity READ inActivity WRITE setInActivity NOTIFY inActivityChanged)
+    Q_PROPERTY(QSet<QObject *> subgroups READ subgroups NOTIFY subgroupsChanged)
+    Q_PROPERTY(QObject * superGroup READ superGroup NOTIFY superGroupChanged)
 
     // Properties [InterruptibleActivityRegion]
-    Q_PROPERTY(QSet<QObject *> interruptingEdges READ interruptingEdges)
-    Q_PROPERTY(QSet<QObject *> nodes READ nodes)
+    Q_PROPERTY(QSet<QObject *> interruptingEdges READ interruptingEdges NOTIFY interruptingEdgesChanged)
+    Q_PROPERTY(QSet<QObject *> nodes READ nodes NOTIFY nodesChanged)
 
 public:
     Q_INVOKABLE explicit QUmlInterruptibleActivityRegionObject(QUmlInterruptibleActivityRegion *modelingElement);
@@ -155,6 +155,32 @@ public Q_SLOTS:
     void removeInterruptingEdge(QObject *interruptingEdge);
     void addNode(QObject *node);
     void removeNode(QObject *node);
+
+Q_SIGNALS:
+
+    // Signals for owned attributes [Element]
+    void ownedCommentsChanged(QSet<QObject *> ownedComments);
+    void ownedElementsChanged(QSet<QObject *> ownedElements);
+    void ownerChanged(QObject *owner);
+
+    // Signals for owned attributes [NamedElement]
+    void clientDependenciesChanged(QSet<QObject *> clientDependencies);
+    void nameChanged(QString name);
+    void nameExpressionChanged(QObject *nameExpression);
+    void namespaceChanged(QObject *namespace_);
+    void qualifiedNameChanged(QString qualifiedName);
+    void visibilityChanged(QtUml::VisibilityKind visibility);
+
+    // Signals for owned attributes [ActivityGroup]
+    void containedEdgesChanged(QSet<QObject *> containedEdges);
+    void containedNodesChanged(QSet<QObject *> containedNodes);
+    void inActivityChanged(QObject *inActivity);
+    void subgroupsChanged(QSet<QObject *> subgroups);
+    void superGroupChanged(QObject *superGroup);
+
+    // Signals for owned attributes [InterruptibleActivityRegion]
+    void interruptingEdgesChanged(QSet<QObject *> interruptingEdges);
+    void nodesChanged(QSet<QObject *> nodes);
 
 protected:
     virtual void setGroupProperties();

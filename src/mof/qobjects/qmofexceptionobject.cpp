@@ -81,16 +81,19 @@ QString QMofExceptionObject::description() const
 void QMofExceptionObject::setObjectInError(QObject *objectInError)
 {
     qmodelingelementproperty_cast<QMofException *>(this)->setObjectInError(qmodelingelementproperty_cast<QMofElement *>(objectInError));
+    emit objectInErrorChanged(this->objectInError());
 }
 
 void QMofExceptionObject::setElementInError(QObject *elementInError)
 {
     qmodelingelementproperty_cast<QMofException *>(this)->setElementInError(qmodelingelementproperty_cast<QMofElement *>(elementInError));
+    emit elementInErrorChanged(this->elementInError());
 }
 
 void QMofExceptionObject::setDescription(QString description)
 {
     qmodelingelementproperty_cast<QMofException *>(this)->setDescription(description);
+    emit descriptionChanged(this->description());
 }
 
 

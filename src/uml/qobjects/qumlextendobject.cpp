@@ -239,26 +239,31 @@ QString QUmlExtendObject::separator() const
 void QUmlExtendObject::addOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlExtend *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlExtendObject::removeOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlExtend *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlExtendObject::addOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlExtend *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlExtendObject::removeOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlExtend *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlExtendObject::setOwner(QObject *owner)
 {
     qmodelingelementproperty_cast<QUmlExtend *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
+    emit ownerChanged(this->owner());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Relationship]
@@ -266,11 +271,13 @@ void QUmlExtendObject::setOwner(QObject *owner)
 void QUmlExtendObject::addRelatedElement(QObject *relatedElement)
 {
     qmodelingelementproperty_cast<QUmlExtend *>(this)->addRelatedElement(qmodelingelementproperty_cast<QUmlElement *>(relatedElement));
+    emit relatedElementsChanged(this->relatedElements());
 }
 
 void QUmlExtendObject::removeRelatedElement(QObject *relatedElement)
 {
     qmodelingelementproperty_cast<QUmlExtend *>(this)->removeRelatedElement(qmodelingelementproperty_cast<QUmlElement *>(relatedElement));
+    emit relatedElementsChanged(this->relatedElements());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [DirectedRelationship]
@@ -278,21 +285,25 @@ void QUmlExtendObject::removeRelatedElement(QObject *relatedElement)
 void QUmlExtendObject::addSource(QObject *source)
 {
     qmodelingelementproperty_cast<QUmlExtend *>(this)->addSource(qmodelingelementproperty_cast<QUmlElement *>(source));
+    emit sourcesChanged(this->sources());
 }
 
 void QUmlExtendObject::removeSource(QObject *source)
 {
     qmodelingelementproperty_cast<QUmlExtend *>(this)->removeSource(qmodelingelementproperty_cast<QUmlElement *>(source));
+    emit sourcesChanged(this->sources());
 }
 
 void QUmlExtendObject::addTarget(QObject *target)
 {
     qmodelingelementproperty_cast<QUmlExtend *>(this)->addTarget(qmodelingelementproperty_cast<QUmlElement *>(target));
+    emit targetsChanged(this->targets());
 }
 
 void QUmlExtendObject::removeTarget(QObject *target)
 {
     qmodelingelementproperty_cast<QUmlExtend *>(this)->removeTarget(qmodelingelementproperty_cast<QUmlElement *>(target));
+    emit targetsChanged(this->targets());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [NamedElement]
@@ -300,36 +311,43 @@ void QUmlExtendObject::removeTarget(QObject *target)
 void QUmlExtendObject::addClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlExtend *>(this)->addClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlExtendObject::removeClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlExtend *>(this)->removeClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlExtendObject::setName(QString name)
 {
     qmodelingelementproperty_cast<QUmlExtend *>(this)->setName(name);
+    emit nameChanged(this->name());
 }
 
 void QUmlExtendObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingelementproperty_cast<QUmlExtend *>(this)->setNameExpression(qmodelingelementproperty_cast<QUmlStringExpression *>(nameExpression));
+    emit nameExpressionChanged(this->nameExpression());
 }
 
 void QUmlExtendObject::setNamespace(QObject *namespace_)
 {
     qmodelingelementproperty_cast<QUmlExtend *>(this)->setNamespace(qmodelingelementproperty_cast<QUmlNamespace *>(namespace_));
+    emit namespaceChanged(this->namespace_());
 }
 
 void QUmlExtendObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingelementproperty_cast<QUmlExtend *>(this)->setQualifiedName(qualifiedName);
+    emit qualifiedNameChanged(this->qualifiedName());
 }
 
 void QUmlExtendObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingelementproperty_cast<QUmlExtend *>(this)->setVisibility(visibility);
+    emit visibilityChanged(this->visibility());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Extend]
@@ -337,26 +355,31 @@ void QUmlExtendObject::setVisibility(QtUml::VisibilityKind visibility)
 void QUmlExtendObject::setCondition(QObject *condition)
 {
     qmodelingelementproperty_cast<QUmlExtend *>(this)->setCondition(qmodelingelementproperty_cast<QUmlConstraint *>(condition));
+    emit conditionChanged(this->condition());
 }
 
 void QUmlExtendObject::setExtendedCase(QObject *extendedCase)
 {
     qmodelingelementproperty_cast<QUmlExtend *>(this)->setExtendedCase(qmodelingelementproperty_cast<QUmlUseCase *>(extendedCase));
+    emit extendedCaseChanged(this->extendedCase());
 }
 
 void QUmlExtendObject::setExtension(QObject *extension)
 {
     qmodelingelementproperty_cast<QUmlExtend *>(this)->setExtension(qmodelingelementproperty_cast<QUmlUseCase *>(extension));
+    emit extensionChanged(this->extension());
 }
 
 void QUmlExtendObject::addExtensionLocation(QObject *extensionLocation)
 {
     qmodelingelementproperty_cast<QUmlExtend *>(this)->addExtensionLocation(qmodelingelementproperty_cast<QUmlExtensionPoint *>(extensionLocation));
+    emit extensionLocationsChanged(this->extensionLocations());
 }
 
 void QUmlExtendObject::removeExtensionLocation(QObject *extensionLocation)
 {
     qmodelingelementproperty_cast<QUmlExtend *>(this)->removeExtensionLocation(qmodelingelementproperty_cast<QUmlExtensionPoint *>(extensionLocation));
+    emit extensionLocationsChanged(this->extensionLocations());
 }
 
 

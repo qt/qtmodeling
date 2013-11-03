@@ -193,26 +193,31 @@ QString QUmlCollaborationUseObject::separator() const
 void QUmlCollaborationUseObject::addOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlCollaborationUse *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlCollaborationUseObject::removeOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlCollaborationUse *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlCollaborationUseObject::addOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlCollaborationUse *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlCollaborationUseObject::removeOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlCollaborationUse *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlCollaborationUseObject::setOwner(QObject *owner)
 {
     qmodelingelementproperty_cast<QUmlCollaborationUse *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
+    emit ownerChanged(this->owner());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [NamedElement]
@@ -220,36 +225,43 @@ void QUmlCollaborationUseObject::setOwner(QObject *owner)
 void QUmlCollaborationUseObject::addClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlCollaborationUse *>(this)->addClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlCollaborationUseObject::removeClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlCollaborationUse *>(this)->removeClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlCollaborationUseObject::setName(QString name)
 {
     qmodelingelementproperty_cast<QUmlCollaborationUse *>(this)->setName(name);
+    emit nameChanged(this->name());
 }
 
 void QUmlCollaborationUseObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingelementproperty_cast<QUmlCollaborationUse *>(this)->setNameExpression(qmodelingelementproperty_cast<QUmlStringExpression *>(nameExpression));
+    emit nameExpressionChanged(this->nameExpression());
 }
 
 void QUmlCollaborationUseObject::setNamespace(QObject *namespace_)
 {
     qmodelingelementproperty_cast<QUmlCollaborationUse *>(this)->setNamespace(qmodelingelementproperty_cast<QUmlNamespace *>(namespace_));
+    emit namespaceChanged(this->namespace_());
 }
 
 void QUmlCollaborationUseObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingelementproperty_cast<QUmlCollaborationUse *>(this)->setQualifiedName(qualifiedName);
+    emit qualifiedNameChanged(this->qualifiedName());
 }
 
 void QUmlCollaborationUseObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingelementproperty_cast<QUmlCollaborationUse *>(this)->setVisibility(visibility);
+    emit visibilityChanged(this->visibility());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [CollaborationUse]
@@ -257,16 +269,19 @@ void QUmlCollaborationUseObject::setVisibility(QtUml::VisibilityKind visibility)
 void QUmlCollaborationUseObject::addRoleBinding(QObject *roleBinding)
 {
     qmodelingelementproperty_cast<QUmlCollaborationUse *>(this)->addRoleBinding(qmodelingelementproperty_cast<QUmlDependency *>(roleBinding));
+    emit roleBindingsChanged(this->roleBindings());
 }
 
 void QUmlCollaborationUseObject::removeRoleBinding(QObject *roleBinding)
 {
     qmodelingelementproperty_cast<QUmlCollaborationUse *>(this)->removeRoleBinding(qmodelingelementproperty_cast<QUmlDependency *>(roleBinding));
+    emit roleBindingsChanged(this->roleBindings());
 }
 
 void QUmlCollaborationUseObject::setType(QObject *type)
 {
     qmodelingelementproperty_cast<QUmlCollaborationUse *>(this)->setType(qmodelingelementproperty_cast<QUmlCollaboration *>(type));
+    emit typeChanged(this->type());
 }
 
 

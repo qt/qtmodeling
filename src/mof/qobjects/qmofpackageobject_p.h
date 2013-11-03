@@ -62,33 +62,33 @@ class Q_MOF_EXPORT QMofPackageObject : public QModelingObject
     Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [Element]
-    Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
-    Q_PROPERTY(QSet<QObject *> ownedElements READ ownedElements)
-    Q_PROPERTY(QObject * owner READ owner)
+    Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments NOTIFY ownedCommentsChanged)
+    Q_PROPERTY(QSet<QObject *> ownedElements READ ownedElements NOTIFY ownedElementsChanged)
+    Q_PROPERTY(QObject * owner READ owner NOTIFY ownerChanged)
 
     // Properties [NamedElement]
-    Q_PROPERTY(QString name READ name WRITE setName)
-    Q_PROPERTY(QObject * namespace_ READ namespace_)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
+    Q_PROPERTY(QString name READ name WRITE setName NOTIFY nameChanged)
+    Q_PROPERTY(QObject * namespace_ READ namespace_ NOTIFY namespaceChanged)
+    Q_PROPERTY(QString qualifiedName READ qualifiedName NOTIFY qualifiedNameChanged STORED false)
 
     // Properties [Namespace]
-    Q_PROPERTY(QSet<QObject *> elementImports READ elementImports)
-    Q_PROPERTY(QSet<QObject *> importedMembers READ importedMembers STORED false)
-    Q_PROPERTY(QSet<QObject *> members READ members)
-    Q_PROPERTY(QSet<QObject *> ownedMembers READ ownedMembers)
-    Q_PROPERTY(QSet<QObject *> ownedRules READ ownedRules)
-    Q_PROPERTY(QSet<QObject *> packageImports READ packageImports)
+    Q_PROPERTY(QSet<QObject *> elementImports READ elementImports NOTIFY elementImportsChanged)
+    Q_PROPERTY(QSet<QObject *> importedMembers READ importedMembers NOTIFY importedMembersChanged STORED false)
+    Q_PROPERTY(QSet<QObject *> members READ members NOTIFY membersChanged)
+    Q_PROPERTY(QSet<QObject *> ownedMembers READ ownedMembers NOTIFY ownedMembersChanged)
+    Q_PROPERTY(QSet<QObject *> ownedRules READ ownedRules NOTIFY ownedRulesChanged)
+    Q_PROPERTY(QSet<QObject *> packageImports READ packageImports NOTIFY packageImportsChanged)
 
     // Properties [PackageableElement]
-    Q_PROPERTY(QtMof::VisibilityKind visibility READ visibility WRITE setVisibility RESET unsetVisibility)
+    Q_PROPERTY(QtMof::VisibilityKind visibility READ visibility WRITE setVisibility NOTIFY visibilityChanged RESET unsetVisibility)
 
     // Properties [Package]
-    Q_PROPERTY(QString URI READ URI WRITE setURI)
-    Q_PROPERTY(QSet<QObject *> nestedPackages READ nestedPackages STORED false)
-    Q_PROPERTY(QObject * nestingPackage READ nestingPackage WRITE setNestingPackage)
-    Q_PROPERTY(QSet<QObject *> ownedTypes READ ownedTypes STORED false)
-    Q_PROPERTY(QSet<QObject *> packageMerges READ packageMerges)
-    Q_PROPERTY(QSet<QObject *> packagedElements READ packagedElements)
+    Q_PROPERTY(QString URI READ URI WRITE setURI NOTIFY URIChanged)
+    Q_PROPERTY(QSet<QObject *> nestedPackages READ nestedPackages NOTIFY nestedPackagesChanged STORED false)
+    Q_PROPERTY(QObject * nestingPackage READ nestingPackage WRITE setNestingPackage NOTIFY nestingPackageChanged)
+    Q_PROPERTY(QSet<QObject *> ownedTypes READ ownedTypes NOTIFY ownedTypesChanged STORED false)
+    Q_PROPERTY(QSet<QObject *> packageMerges READ packageMerges NOTIFY packageMergesChanged)
+    Q_PROPERTY(QSet<QObject *> packagedElements READ packagedElements NOTIFY packagedElementsChanged)
 
 public:
     Q_INVOKABLE explicit QMofPackageObject(QMofPackage *modelingElement);
@@ -188,6 +188,37 @@ public Q_SLOTS:
     void removePackageMerge(QObject *packageMerge);
     void addPackagedElement(QObject *packagedElement);
     void removePackagedElement(QObject *packagedElement);
+
+Q_SIGNALS:
+
+    // Signals for owned attributes [Element]
+    void ownedCommentsChanged(QSet<QObject *> ownedComments);
+    void ownedElementsChanged(QSet<QObject *> ownedElements);
+    void ownerChanged(QObject *owner);
+
+    // Signals for owned attributes [NamedElement]
+    void nameChanged(QString name);
+    void namespaceChanged(QObject *namespace_);
+    void qualifiedNameChanged(QString qualifiedName);
+
+    // Signals for owned attributes [Namespace]
+    void elementImportsChanged(QSet<QObject *> elementImports);
+    void importedMembersChanged(QSet<QObject *> importedMembers);
+    void membersChanged(QSet<QObject *> members);
+    void ownedMembersChanged(QSet<QObject *> ownedMembers);
+    void ownedRulesChanged(QSet<QObject *> ownedRules);
+    void packageImportsChanged(QSet<QObject *> packageImports);
+
+    // Signals for owned attributes [PackageableElement]
+    void visibilityChanged(QtMof::VisibilityKind visibility);
+
+    // Signals for owned attributes [Package]
+    void URIChanged(QString URI);
+    void nestedPackagesChanged(QSet<QObject *> nestedPackages);
+    void nestingPackageChanged(QObject *nestingPackage);
+    void ownedTypesChanged(QSet<QObject *> ownedTypes);
+    void packageMergesChanged(QSet<QObject *> packageMerges);
+    void packagedElementsChanged(QSet<QObject *> packagedElements);
 
 protected:
     virtual void setGroupProperties();

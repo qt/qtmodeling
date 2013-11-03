@@ -237,26 +237,31 @@ QObject *QUmlPseudostateObject::containingStateMachine() const
 void QUmlPseudostateObject::addOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlPseudostate *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlPseudostateObject::removeOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlPseudostate *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlPseudostateObject::addOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlPseudostate *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlPseudostateObject::removeOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlPseudostate *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlPseudostateObject::setOwner(QObject *owner)
 {
     qmodelingelementproperty_cast<QUmlPseudostate *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
+    emit ownerChanged(this->owner());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [NamedElement]
@@ -264,36 +269,43 @@ void QUmlPseudostateObject::setOwner(QObject *owner)
 void QUmlPseudostateObject::addClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlPseudostate *>(this)->addClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlPseudostateObject::removeClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlPseudostate *>(this)->removeClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlPseudostateObject::setName(QString name)
 {
     qmodelingelementproperty_cast<QUmlPseudostate *>(this)->setName(name);
+    emit nameChanged(this->name());
 }
 
 void QUmlPseudostateObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingelementproperty_cast<QUmlPseudostate *>(this)->setNameExpression(qmodelingelementproperty_cast<QUmlStringExpression *>(nameExpression));
+    emit nameExpressionChanged(this->nameExpression());
 }
 
 void QUmlPseudostateObject::setNamespace(QObject *namespace_)
 {
     qmodelingelementproperty_cast<QUmlPseudostate *>(this)->setNamespace(qmodelingelementproperty_cast<QUmlNamespace *>(namespace_));
+    emit namespaceChanged(this->namespace_());
 }
 
 void QUmlPseudostateObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingelementproperty_cast<QUmlPseudostate *>(this)->setQualifiedName(qualifiedName);
+    emit qualifiedNameChanged(this->qualifiedName());
 }
 
 void QUmlPseudostateObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingelementproperty_cast<QUmlPseudostate *>(this)->setVisibility(visibility);
+    emit visibilityChanged(this->visibility());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Vertex]
@@ -301,26 +313,31 @@ void QUmlPseudostateObject::setVisibility(QtUml::VisibilityKind visibility)
 void QUmlPseudostateObject::setContainer(QObject *container)
 {
     qmodelingelementproperty_cast<QUmlPseudostate *>(this)->setContainer(qmodelingelementproperty_cast<QUmlRegion *>(container));
+    emit containerChanged(this->container());
 }
 
 void QUmlPseudostateObject::addIncoming(QObject *incoming)
 {
     qmodelingelementproperty_cast<QUmlPseudostate *>(this)->addIncoming(qmodelingelementproperty_cast<QUmlTransition *>(incoming));
+    emit incomingsChanged(this->incomings());
 }
 
 void QUmlPseudostateObject::removeIncoming(QObject *incoming)
 {
     qmodelingelementproperty_cast<QUmlPseudostate *>(this)->removeIncoming(qmodelingelementproperty_cast<QUmlTransition *>(incoming));
+    emit incomingsChanged(this->incomings());
 }
 
 void QUmlPseudostateObject::addOutgoing(QObject *outgoing)
 {
     qmodelingelementproperty_cast<QUmlPseudostate *>(this)->addOutgoing(qmodelingelementproperty_cast<QUmlTransition *>(outgoing));
+    emit outgoingsChanged(this->outgoings());
 }
 
 void QUmlPseudostateObject::removeOutgoing(QObject *outgoing)
 {
     qmodelingelementproperty_cast<QUmlPseudostate *>(this)->removeOutgoing(qmodelingelementproperty_cast<QUmlTransition *>(outgoing));
+    emit outgoingsChanged(this->outgoings());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Pseudostate]
@@ -328,6 +345,7 @@ void QUmlPseudostateObject::removeOutgoing(QObject *outgoing)
 void QUmlPseudostateObject::setKind(QtUml::PseudostateKind kind)
 {
     qmodelingelementproperty_cast<QUmlPseudostate *>(this)->setKind(kind);
+    emit kindChanged(this->kind());
 }
 
 void QUmlPseudostateObject::unsetKind()
@@ -340,11 +358,13 @@ void QUmlPseudostateObject::unsetKind()
 void QUmlPseudostateObject::setState(QObject *state)
 {
     qmodelingelementproperty_cast<QUmlPseudostate *>(this)->setState(qmodelingelementproperty_cast<QUmlState *>(state));
+    emit stateChanged(this->state());
 }
 
 void QUmlPseudostateObject::setStateMachine(QObject *stateMachine)
 {
     qmodelingelementproperty_cast<QUmlPseudostate *>(this)->setStateMachine(qmodelingelementproperty_cast<QUmlStateMachine *>(stateMachine));
+    emit stateMachineChanged(this->stateMachine());
 }
 
 

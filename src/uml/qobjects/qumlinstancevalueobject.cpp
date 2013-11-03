@@ -267,26 +267,31 @@ int QUmlInstanceValueObject::unlimitedValue() const
 void QUmlInstanceValueObject::addOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlInstanceValue *>(this)->addOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlInstanceValueObject::removeOwnedComment(QObject *ownedComment)
 {
     qmodelingelementproperty_cast<QUmlInstanceValue *>(this)->removeOwnedComment(qmodelingelementproperty_cast<QUmlComment *>(ownedComment));
+    emit ownedCommentsChanged(this->ownedComments());
 }
 
 void QUmlInstanceValueObject::addOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlInstanceValue *>(this)->addOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlInstanceValueObject::removeOwnedElement(QObject *ownedElement)
 {
     qmodelingelementproperty_cast<QUmlInstanceValue *>(this)->removeOwnedElement(qmodelingelementproperty_cast<QUmlElement *>(ownedElement));
+    emit ownedElementsChanged(this->ownedElements());
 }
 
 void QUmlInstanceValueObject::setOwner(QObject *owner)
 {
     qmodelingelementproperty_cast<QUmlInstanceValue *>(this)->setOwner(qmodelingelementproperty_cast<QUmlElement *>(owner));
+    emit ownerChanged(this->owner());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [NamedElement]
@@ -294,37 +299,44 @@ void QUmlInstanceValueObject::setOwner(QObject *owner)
 void QUmlInstanceValueObject::addClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlInstanceValue *>(this)->addClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlInstanceValueObject::removeClientDependency(QObject *clientDependency)
 {
     qmodelingelementproperty_cast<QUmlInstanceValue *>(this)->removeClientDependency(qmodelingelementproperty_cast<QUmlDependency *>(clientDependency));
+    emit clientDependenciesChanged(this->clientDependencies());
 }
 
 void QUmlInstanceValueObject::setName(QString name)
 {
     qmodelingelementproperty_cast<QUmlInstanceValue *>(this)->setName(name);
+    emit nameChanged(this->name());
 }
 
 void QUmlInstanceValueObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingelementproperty_cast<QUmlInstanceValue *>(this)->setNameExpression(qmodelingelementproperty_cast<QUmlStringExpression *>(nameExpression));
+    emit nameExpressionChanged(this->nameExpression());
 }
 
 void QUmlInstanceValueObject::setNamespace(QObject *namespace_)
 {
     qmodelingelementproperty_cast<QUmlInstanceValue *>(this)->setNamespace(qmodelingelementproperty_cast<QUmlNamespace *>(namespace_));
+    emit namespaceChanged(this->namespace_());
 }
 
 void QUmlInstanceValueObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingelementproperty_cast<QUmlInstanceValue *>(this)->setQualifiedName(qualifiedName);
+    emit qualifiedNameChanged(this->qualifiedName());
 }
 // SLOTS FOR OWNED ATTRIBUTES [TypedElement]
 
 void QUmlInstanceValueObject::setType(QObject *type)
 {
     qmodelingelementproperty_cast<QUmlInstanceValue *>(this)->setType(qmodelingelementproperty_cast<QUmlType *>(type));
+    emit typeChanged(this->type());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [ParameterableElement]
@@ -332,11 +344,13 @@ void QUmlInstanceValueObject::setType(QObject *type)
 void QUmlInstanceValueObject::setOwningTemplateParameter(QObject *owningTemplateParameter)
 {
     qmodelingelementproperty_cast<QUmlInstanceValue *>(this)->setOwningTemplateParameter(qmodelingelementproperty_cast<QUmlTemplateParameter *>(owningTemplateParameter));
+    emit owningTemplateParameterChanged(this->owningTemplateParameter());
 }
 
 void QUmlInstanceValueObject::setTemplateParameter(QObject *templateParameter)
 {
     qmodelingelementproperty_cast<QUmlInstanceValue *>(this)->setTemplateParameter(qmodelingelementproperty_cast<QUmlTemplateParameter *>(templateParameter));
+    emit templateParameterChanged(this->templateParameter());
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [PackageableElement]
@@ -344,6 +358,7 @@ void QUmlInstanceValueObject::setTemplateParameter(QObject *templateParameter)
 void QUmlInstanceValueObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingelementproperty_cast<QUmlInstanceValue *>(this)->setVisibility(visibility);
+    emit visibilityChanged(this->visibility());
 }
 
 void QUmlInstanceValueObject::unsetVisibility()
@@ -358,6 +373,7 @@ void QUmlInstanceValueObject::unsetVisibility()
 void QUmlInstanceValueObject::setInstance(QObject *instance)
 {
     qmodelingelementproperty_cast<QUmlInstanceValue *>(this)->setInstance(qmodelingelementproperty_cast<QUmlInstanceSpecification *>(instance));
+    emit instanceChanged(this->instance());
 }
 
 
