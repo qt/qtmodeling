@@ -122,9 +122,20 @@ QList<QModelingElement *> QXmiReader::readFile(QIODevice *device, QString import
             idStack.push(reader.name().toString());
             QString elementName = reader.name().toString();
             if (elementName == QStringLiteral("importedPackage") || elementName == QStringLiteral("importedElement") || elementName == QStringLiteral("appliedProfile")) {
-                QFile importFile(reader.attributes().value(QStringLiteral("href")).toString().split('#').first());
-                if (!importFile.open(QFile::ReadOnly | QFile::Text))
-                    d->errors << QStringLiteral("Could not open imported file '%1'").arg(importFile.fileName());
+                QDir currentPath = QFileInfo(*dynamic_cast<QFile *>(device)).absoluteDir();
+                QString importedFileName = reader.attributes().value(QStringLiteral("href")).toString().split('#').first().split('/').last();
+                QFile importFile(currentPath.filePath(importedFileName));
+                if (!importFile.open(QFile::ReadOnly | QFile::Text)) {
+                    foreach (QString pluginPath, QCoreApplication::libraryPaths()) {
+                        QDir pluginsDir(pluginPath);
+                        pluginsDir.cd(QStringLiteral("metamodels"));
+                        importFile.setFileName(pluginsDir.filePath(importedFileName));
+                        if (importFile.open(QFile::ReadOnly | QFile::Text))
+                            break;
+                    }
+                    if (!importFile.isOpen())
+                        d->errors << QStringLiteral("Could not open imported file '%1'").arg(importFile.fileName());
+                }
                 QList<QModelingElement *> importList = readFile(&importFile, reader.attributes().value(QStringLiteral("href")).toString().split('#').last());
                 if (importList.count() > 0) {
                     if (elementName == QStringLiteral("importedPackage"))
