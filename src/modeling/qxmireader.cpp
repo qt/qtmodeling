@@ -201,8 +201,15 @@ QList<QModelingElement *> QXmiReader::readFile(QIODevice *device, QString import
                 id = reader.attributes().value(QStringLiteral("xmi:idref")).toString();
             if (id.isEmpty())
                 id = reader.attributes().value(QStringLiteral("href")).toString().split('#').last();
-            if (id.isEmpty() && !stack.isEmpty())
+            if (id.isEmpty() && !stack.isEmpty()) {
+                QObject *top = stack.top().second->asQModelingObject();
+                if (top->metaObject()->indexOfProperty(reader.name().toLatin1()) != -1) {
+                    QStringRef propertyName = reader.name();
+                    reader.readNext();
+                    top->setProperty(propertyName.toLatin1(), reader.text().toLatin1());
+                }
                 continue;
+            }
 
             QModelingElement *modelingObject = d->idMap.value(id);
 
