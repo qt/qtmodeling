@@ -8,4 +8,5 @@ SUBDIRS = \
     designspaceexplorer \
     designoptimizer \
     concretesyntaxview \
-    umlconcretesyntax
+    umlconcretesyntax \
+    architecturerecoverycore
