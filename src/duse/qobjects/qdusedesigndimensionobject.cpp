@@ -90,6 +90,11 @@ const QSet<QObject *> QDuseDesignDimensionObject::designDimensionInstances() con
     return set;
 }
 
+bool QDuseDesignDimensionObject::enabled() const
+{
+    return qmodelingelementproperty_cast<QDuseDesignDimension *>(this)->enabled();
+}
+
 // SLOTS FOR OWNED ATTRIBUTES [DesignDimension]
 
 void QDuseDesignDimensionObject::setName(QString name)
@@ -140,6 +145,12 @@ void QDuseDesignDimensionObject::removeDesignDimensionInstance(QObject *designDi
     emit designDimensionInstancesChanged(this->designDimensionInstances());
 }
 
+void QDuseDesignDimensionObject::setEnabled(bool enabled)
+{
+    qmodelingelementproperty_cast<QDuseDesignDimension *>(this)->setEnabled(enabled);
+    emit enabledChanged(this->enabled());
+}
+
 
 void QDuseDesignDimensionObject::setGroupProperties()
 {
@@ -155,6 +166,7 @@ void QDuseDesignDimensionObject::setGroupProperties()
     d->groupProperties.insert(QStringLiteral("QDuseDesignDimension"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("requiredPreviousEvaluations"))));
     d->groupProperties.insert(QStringLiteral("QDuseDesignDimension"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("variationPoints"))));
     d->groupProperties.insert(QStringLiteral("QDuseDesignDimension"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("designDimensionInstances"))));
+    d->groupProperties.insert(QStringLiteral("QDuseDesignDimension"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("enabled"))));
 }
 
 void QDuseDesignDimensionObject::setPropertyData()
@@ -203,6 +215,15 @@ void QDuseDesignDimensionObject::setPropertyData()
     Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimension, designDimensionInstances, RedefinedPropertiesRole, QStringLiteral(""));
     Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimension, designDimensionInstances, SubsettedPropertiesRole, QStringLiteral(""));
     Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimension, designDimensionInstances, OppositeEndRole, QStringLiteral(""));
+
+    Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimension, enabled, AggregationRole, QStringLiteral("none"));
+    Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimension, enabled, PropertyClassRole, QStringLiteral("QDuseDesignDimension"));
+    Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimension, enabled, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimension, enabled, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimension, enabled, DocumentationRole, QStringLiteral("Indicates if the design dimension should be considered in automated architecture design."));
+    Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimension, enabled, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimension, enabled, SubsettedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimension, enabled, OppositeEndRole, QStringLiteral(""));
 
 }
 

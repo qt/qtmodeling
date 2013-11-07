@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:duse="http://liveblue.wordpress.com">
+<xmi:XMI xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:duse="http://liveblue.wordpress.com/Duse">
   <duse:DesignSpace name="SADuSE" xmi:id="SADuSE">
     <qualityMetric xmi:type="duse:QualityMetric" name="Control Robustness" xmi:id="SADuSE-Control Robustness" expression="(1/input[0].ownedElements.length)*120"/>
     <qualityMetric xmi:type="duse:QualityMetric" name="Average Maximum Overshoot" xmi:id="SADuSE-Average Maximum Overshoot" expression="(1/input[0].ownedTypes.length)*120"/>

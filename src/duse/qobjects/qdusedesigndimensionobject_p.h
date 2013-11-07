@@ -65,6 +65,7 @@ class Q_DUSE_EXPORT QDuseDesignDimensionObject : public QModelingObject
     Q_PROPERTY(QSet<QObject *> requiredPreviousEvaluations READ requiredPreviousEvaluations NOTIFY requiredPreviousEvaluationsChanged)
     Q_PROPERTY(QSet<QObject *> variationPoints READ variationPoints NOTIFY variationPointsChanged)
     Q_PROPERTY(QSet<QObject *> designDimensionInstances READ designDimensionInstances NOTIFY designDimensionInstancesChanged)
+    Q_PROPERTY(bool enabled READ enabled WRITE setEnabled NOTIFY enabledChanged)
 
 public:
     Q_INVOKABLE explicit QDuseDesignDimensionObject(QDuseDesignDimension *modelingElement);
@@ -75,6 +76,7 @@ public:
     Q_INVOKABLE const QSet<QObject *> requiredPreviousEvaluations() const;
     Q_INVOKABLE const QSet<QObject *> variationPoints() const;
     Q_INVOKABLE const QSet<QObject *> designDimensionInstances() const;
+    Q_INVOKABLE bool enabled() const;
 
 public Q_SLOTS:
 
@@ -87,6 +89,7 @@ public Q_SLOTS:
     void removeVariationPoint(QObject *variationPoint);
     void addDesignDimensionInstance(QObject *designDimensionInstance);
     void removeDesignDimensionInstance(QObject *designDimensionInstance);
+    void setEnabled(bool enabled);
 
 Q_SIGNALS:
 
@@ -96,6 +99,7 @@ Q_SIGNALS:
     void requiredPreviousEvaluationsChanged(QSet<QObject *> requiredPreviousEvaluations);
     void variationPointsChanged(QSet<QObject *> variationPoints);
     void designDimensionInstancesChanged(QSet<QObject *> designDimensionInstances);
+    void enabledChanged(bool enabled);
 
 protected:
     virtual void setGroupProperties();

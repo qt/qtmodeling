@@ -71,6 +71,7 @@ QModelingElement *QDuseDesignDimension::clone() const
         c->addVariationPoint(dynamic_cast<QDuseVariationPoint *>(element->clone()));
     foreach (QDuseDesignDimensionInstance *element, designDimensionInstances())
         c->addDesignDimensionInstance(dynamic_cast<QDuseDesignDimensionInstance *>(element->clone()));
+    c->setEnabled(enabled());
     return c;
 }
 
@@ -207,6 +208,25 @@ void QDuseDesignDimension::removeDesignDimensionInstance(QDuseDesignDimensionIns
         _designDimensionInstances.remove(designDimensionInstance);
         if (designDimensionInstance->asQModelingObject())
             designDimensionInstance->asQModelingObject()->setParent(0);
+    }
+}
+
+/*!
+    Indicates if the design dimension should be considered in automated architecture design.
+ */
+bool QDuseDesignDimension::enabled() const
+{
+    // This is a read-write property
+
+    return _enabled;
+}
+
+void QDuseDesignDimension::setEnabled(bool enabled)
+{
+    // This is a read-write property
+
+    if (_enabled != enabled) {
+        _enabled = enabled;
     }
 }
 

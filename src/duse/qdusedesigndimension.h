@@ -75,6 +75,8 @@ public:
     const QSet<QDuseDesignDimensionInstance *> designDimensionInstances() const;
     void addDesignDimensionInstance(QDuseDesignDimensionInstance *designDimensionInstance);
     void removeDesignDimensionInstance(QDuseDesignDimensionInstance *designDimensionInstance);
+    bool enabled() const;
+    void setEnabled(bool enabled);
 
 protected:
     QString _name;
@@ -82,6 +84,7 @@ protected:
     QSet<QDuseDesignDimension *> _requiredPreviousEvaluations;
     QSet<QDuseVariationPoint *> _variationPoints;
     QSet<QDuseDesignDimensionInstance *> _designDimensionInstances;
+    bool _enabled;
 };
 
 QT_END_NAMESPACE

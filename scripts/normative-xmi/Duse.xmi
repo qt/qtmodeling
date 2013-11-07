@@ -4,6 +4,9 @@
     <packageImport xmi:type="uml:PackageImport" xmi:id="PackageImport.0">
       <importedPackage href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#_0"/>
     </packageImport>
+    <elementImport xmi:type="uml:ElementImport" xmi:id="ElementImport.0">
+      <importedElement href="http://www.omg.org/spec/UML/20110701/UML.xmi#Property"/>
+    </elementImport>
     <packagedElement xmi:type="uml:Association" name="A_designSpace_designDimension" xmi:id="A_designSpace_designDimension">
       <memberEnd xmi:idref="DesignSpace-designDimension"/>
       <memberEnd xmi:idref="A_designSpace_designDimension-designSpace"/>
@@ -75,14 +78,14 @@
       <ownedComment xmi:type="uml:Comment" xmi:id="DesignDimension-_ownedComment.0" annotatedElement="DesignDimension">
         <body>A design dimension captures a specific degree of freedom when designing architectures in the given application domain. A design dimension entails a set of variation points which denote alternative solutions for such degree of freedom. Optionally, a variation point may define validation rules which should return a true value if that variation point is to be considered valid for the corresponding input model. A variation point may also specify a set of other variation points which should be previously evaluated, defining a sort of design dimension dependency.</body>
       </ownedComment>
-      <ownedAttribute xmi:type="uml:Property" visibility="public" name="name" xmi:id="DesignSpace-name">
-        <ownedComment xmi:type="uml:Comment" xmi:id="DesignSpace-name-_ownedComment.0" annotatedElement="DesignSpace-name">
+      <ownedAttribute xmi:type="uml:Property" visibility="public" name="name" xmi:id="DesignDimension-name">
+        <ownedComment xmi:type="uml:Comment" xmi:id="DesignDimension-name-_ownedComment.0" annotatedElement="DesignDimension-name">
           <body>The design dimension's name.</body>
         </ownedComment>
         <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" visibility="public" name="instanceSelectionRule" xmi:id="DesignSpace-instanceSelectionRule">
-        <ownedComment xmi:type="uml:Comment" xmi:id="DesignSpace-instanceSelectionRule-_ownedComment.0" annotatedElement="DesignSpace-instanceSelectionRule">
+      <ownedAttribute xmi:type="uml:Property" visibility="public" name="instanceSelectionRule" xmi:id="DesignDimension-instanceSelectionRule">
+        <ownedComment xmi:type="uml:Comment" xmi:id="DesignDimension-instanceSelectionRule-_ownedComment.0" annotatedElement="DesignDimension-instanceSelectionRule">
           <body>The rule for detecting a specific locus of architectural decision related to this design dimension. Such rule relies on the accompanying UML profile for the specific application domain, in order to identify the decision loci.</body>
         </ownedComment>
         <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
@@ -111,6 +114,12 @@
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" value="*" xmi:id="DesignDimension-designDimensionInstance-LiteralUnlimitedNatural.1"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="DesignDimension-designDimensionInstance-LiteralInteger.1"/>
       </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" visibility="public" name="enabled" xmi:id="DesignDimension-enabled">
+        <ownedComment xmi:type="uml:Comment" xmi:id="DesignDimension-enabled-_ownedComment.0" annotatedElement="DesignDimension-enabled">
+          <body>Indicates if the design dimension should be considered in automated architecture design.</body>
+        </ownedComment>
+        <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#Boolean"/>
+      </ownedAttribute>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" name="VariationPoint" xmi:id="VariationPoint">
       <ownedComment xmi:type="uml:Comment" xmi:id="VariationPoint-_ownedComment.0" annotatedElement="VariationPoint">
@@ -134,11 +143,11 @@
         </ownedComment>
         <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" visibility="public" name="modelChange" xmi:id="VariationPoint-modelChange">
+      <ownedAttribute xmi:type="uml:Property" visibility="public" name="modelChange" isOrdered="true" xmi:id="VariationPoint-modelChange">
         <ownedComment xmi:type="uml:Comment" xmi:id="VariationPoint-modelChange-_ownedComment.0" annotatedElement="VariationPoint-modelChange">
           <body>The architectural changes to be enacted as contributions arosen from this variation point. The complete set of architectural changes is the merge of architectural contributions from all involved variation points.</body>
         </ownedComment>
-        <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
+        <type href="http://www.omg.org/spec/UML/20110701/UML.xmi#Property"/>
       </ownedAttribute>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" name="DesignDimensionInstance" xmi:id="DesignDimensionInstance">
