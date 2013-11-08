@@ -53,3 +53,4 @@ public:
 };
 
 #endif // IMODELINGNOTATION_H
+

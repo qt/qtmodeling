@@ -50,3 +50,4 @@ bool ArchitectureRecoveryPlugin::initialize(DuSE::ICore *core)
     Q_UNUSED(core);
     return true;
 }
+
