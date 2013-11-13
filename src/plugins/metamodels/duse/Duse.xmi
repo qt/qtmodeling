@@ -1,0 +1,182 @@
+<?xml version="1.0"?>
+<xmi:XMI xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:uml="http://www.omg.org/spec/UML/20110701">
+  <uml:Package xmi:type="uml:Package" xmi:id="Duse" name="Duse" URI="http://liveblue.wordpress.com/Duse">
+    <packageImport xmi:type="uml:PackageImport" xmi:id="PackageImport.0">
+      <importedPackage href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#_0"/>
+    </packageImport>
+    <elementImport xmi:type="uml:ElementImport" xmi:id="ElementImport.0">
+      <importedElement href="http://www.omg.org/spec/UML/20110701/UML.xmi#Property"/>
+    </elementImport>
+    <packagedElement xmi:type="uml:Association" name="A_designSpace_designDimension" xmi:id="A_designSpace_designDimension">
+      <memberEnd xmi:idref="DesignSpace-designDimension"/>
+      <memberEnd xmi:idref="A_designSpace_designDimension-designSpace"/>
+      <ownedEnd xmi:type="uml:Property" name="designSpace" visibility="public" xmi:id="A_designSpace_designDimension-designSpace">
+        <type xmi:idref="DesignSpace"/>
+        <association xmi:idref="A_designSpace_designDimension"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" name="A_designDimension_previousEvaluation" xmi:id="A_designDimension_previousEvaluation">
+      <memberEnd xmi:idref="DesignDimension-requiredPreviousEvaluation"/>
+      <memberEnd xmi:idref="A_designDimension_previousEvaluation-requiringDesignDimension"/>
+      <ownedEnd xmi:type="uml:Property" name="designSpace" visibility="public" xmi:id="A_designDimension_previousEvaluation-requiringDesignDimension">
+        <type xmi:idref="DesignDimension"/>
+        <association xmi:idref="A_designDimension_previousEvaluation"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" name="A_designDimension_variationPoint" xmi:id="A_designDimension_variationPoint">
+      <memberEnd xmi:idref="DesignDimension-variationPoint"/>
+      <memberEnd xmi:idref="A_designDimension_variationPoint-designDimension"/>
+      <ownedEnd xmi:type="uml:Property" name="designDimension" visibility="public" xmi:id="A_designDimension_variationPoint-designDimension">
+        <type xmi:idref="DesignDimension"/>
+        <association xmi:idref="A_designDimension_variationPoint"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" name="A_designDimension_designDimensionInstance" xmi:id="A_designDimension_designDimensionInstance">
+      <memberEnd xmi:idref="DesignDimension-designDimensionInstance"/>
+      <memberEnd xmi:idref="A_designDimension_designDimensionInstance-designDimension"/>
+      <ownedEnd xmi:type="uml:Property" name="designDimension" visibility="public" xmi:id="A_designDimension_designDimensionInstance-designDimension">
+        <type xmi:idref="DesignDimension"/>
+        <association xmi:idref="A_designDimension_designDimensionInstance"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" name="A_designSpace_qualityMetric" xmi:id="A_designSpace_qualityMetric">
+      <memberEnd xmi:idref="DesignSpace-qualityMetric"/>
+      <memberEnd xmi:idref="A_designSpace_qualityMetric-designSpace"/>
+      <ownedEnd xmi:type="uml:Property" name="designDimension" visibility="public" xmi:id="A_designSpace_qualityMetric-designSpace">
+        <type xmi:idref="DesignSpace"/>
+        <association xmi:idref="A_designSpace_qualityMetric"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" name="DesignSpace" xmi:id="DesignSpace">
+      <ownedComment xmi:type="uml:Comment" xmi:id="DesignSpace-_ownedComment.0" annotatedElement="DesignSpace">
+        <body>A design space entails the design dimensions (degrees of freedom) and quality metrics for a particular application domain.</body>
+      </ownedComment>
+      <ownedAttribute xmi:type="uml:Property" name="name" visibility="public" xmi:id="DesignSpace-name">
+      <ownedComment xmi:type="uml:Comment" xmi:id="DesignSpace-name-_ownedComment.0" annotatedElement="DesignSpace-name">
+        <body>The design space's name.</body>
+      </ownedComment>
+        <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" name="designDimension" visibility="public" type="DesignDimension" aggregation="composite" isOrdered="true" xmi:id="DesignSpace-designDimension">
+        <ownedComment xmi:type="uml:Comment" xmi:id="DesignSpace-designDimension-_ownedComment.0" annotatedElement="DesignSpace-designDimension">
+          <body>The design dimensions (degrees of freedom) of the design space.</body>
+        </ownedComment>
+        <association xmi:idref="A_designSpace_designDimension"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" value="*" xmi:id="DesignSpace-designDimension-LiteralUnlimitedNatural.1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="DesignSpace-designDimension-LiteralInteger.1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" name="qualityMetric" visibility="public" type="QualityMetric" aggregation="composite" xmi:id="DesignSpace-qualityMetric">
+        <ownedComment xmi:type="uml:Comment" xmi:id="DesignSpace-qualityMetric-_ownedComment.0" annotatedElement="DesignSpace-qualityMetric">
+          <body>The quality metrics defined for the design space.</body>
+        </ownedComment>
+        <association xmi:idref="A_designSpace_qualityMetric"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" value="*" xmi:id="DesignSpace-qualityMetric-LiteralUnlimitedNatural.1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="DesignSpace-qualityMetric-LiteralInteger.1"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" name="DesignDimension" xmi:id="DesignDimension">
+      <ownedComment xmi:type="uml:Comment" xmi:id="DesignDimension-_ownedComment.0" annotatedElement="DesignDimension">
+        <body>A design dimension captures a specific degree of freedom when designing architectures in the given application domain. A design dimension entails a set of variation points which denote alternative solutions for such degree of freedom. Optionally, a variation point may define validation rules which should return a true value if that variation point is to be considered valid for the corresponding input model. A variation point may also specify a set of other variation points which should be previously evaluated, defining a sort of design dimension dependency.</body>
+      </ownedComment>
+      <ownedAttribute xmi:type="uml:Property" visibility="public" name="name" xmi:id="DesignDimension-name">
+        <ownedComment xmi:type="uml:Comment" xmi:id="DesignDimension-name-_ownedComment.0" annotatedElement="DesignDimension-name">
+          <body>The design dimension's name.</body>
+        </ownedComment>
+        <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" visibility="public" name="instanceSelectionRule" xmi:id="DesignDimension-instanceSelectionRule">
+        <ownedComment xmi:type="uml:Comment" xmi:id="DesignDimension-instanceSelectionRule-_ownedComment.0" annotatedElement="DesignDimension-instanceSelectionRule">
+          <body>The rule for detecting a specific locus of architectural decision related to this design dimension. Such rule relies on the accompanying UML profile for the specific application domain, in order to identify the decision loci.</body>
+        </ownedComment>
+        <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" name="requiredPreviousEvaluation" visibility="public" type="DesignDimension" xmi:id="DesignDimension-requiredPreviousEvaluation">
+        <ownedComment xmi:type="uml:Comment" xmi:id="DesignDimension-requiredPreviousEvaluation-_ownedComment.0" annotatedElement="DesignDimension-requiredPreviousEvaluation">
+          <body>The design dimensions that must be previously evaluated before this design dimension. Such dependency may be required in order to tackle dependent design dimensions and identify invalid design space locations.</body>
+        </ownedComment>
+        <association xmi:idref="A_designDimension_previousEvaluation"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" value="*" xmi:id="DesignDimension-requiredPreviousEvaluation-LiteralUnlimitedNatural.1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="DesignDimension-requiredPreviousEvaluation-LiteralInteger.1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" name="variationPoint" visibility="public" type="VariationPoint" aggregation="composite" xmi:id="DesignDimension-variationPoint">
+        <ownedComment xmi:type="uml:Comment" xmi:id="DesignDimension-variationPoint-_ownedComment.0" annotatedElement="DesignDimension-variationPoint">
+          <body>The design dimension's variation points (alternative solutions for the design dimension's concern).</body>
+        </ownedComment>
+        <association xmi:idref="A_designDimension_variationPoint"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" value="*" xmi:id="DesignDimension-variationPoint-LiteralUnlimitedNatural.1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="DesignDimension-variationPoint-LiteralInteger.1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" name="designDimensionInstance" visibility="public" type="DesignDimensionInstance" aggregation="composite" xmi:id="DesignDimension-designDimensionInstance">
+        <ownedComment xmi:type="uml:Comment" xmi:id="DesignDimension-designDimensionInstance-_ownedComment.0" annotatedElement="DesignDimension-designDimensionInstance">
+          <body>A specific design dimension instance created for a identified locus of architectural decision.</body>
+        </ownedComment>
+        <association xmi:idref="A_designDimension_designDimensionInstance"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" value="*" xmi:id="DesignDimension-designDimensionInstance-LiteralUnlimitedNatural.1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="DesignDimension-designDimensionInstance-LiteralInteger.1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" visibility="public" name="enabled" xmi:id="DesignDimension-enabled">
+        <ownedComment xmi:type="uml:Comment" xmi:id="DesignDimension-enabled-_ownedComment.0" annotatedElement="DesignDimension-enabled">
+          <body>Indicates if the design dimension should be considered in automated architecture design.</body>
+        </ownedComment>
+        <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#Boolean"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" name="VariationPoint" xmi:id="VariationPoint">
+      <ownedComment xmi:type="uml:Comment" xmi:id="VariationPoint-_ownedComment.0" annotatedElement="VariationPoint">
+        <body>A variation point represents a specific solution for a given design dimension. A variation point entails validation rules which check for valid combinations of variation points and a script which defines the architectural changes to be enacted from such solution.</body>
+      </ownedComment>
+      <ownedAttribute xmi:type="uml:Property" visibility="public" name="name" xmi:id="VariationPoint-name">
+        <ownedComment xmi:type="uml:Comment" xmi:id="VariationPoint-name-_ownedComment.0" annotatedElement="VariationPoint-name">
+          <body>The variation point's name.</body>
+        </ownedComment>
+        <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" visibility="public" name="rationale" xmi:id="VariationPoint-rationale">
+        <ownedComment xmi:type="uml:Comment" xmi:id="VariationPoint-rationale-_ownedComment.0" annotatedElement="VariationPoint-rationale">
+          <body>The variation point's rationale.</body>
+        </ownedComment>
+        <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" visibility="public" name="preChangeValidationRule" xmi:id="VariationPoint-preChangeValidationRule">
+        <ownedComment xmi:type="uml:Comment" xmi:id="VariationPoint-preChangeValidationRule-_ownedComment.0" annotatedElement="VariationPoint-preChangeValidationRule">
+          <body>A set of rules which should be evaluated as true if design space locations containing such variation point are to be considered as valid ones.</body>
+        </ownedComment>
+        <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" visibility="public" name="modelChange" isOrdered="true" xmi:id="VariationPoint-modelChange">
+        <ownedComment xmi:type="uml:Comment" xmi:id="VariationPoint-modelChange-_ownedComment.0" annotatedElement="VariationPoint-modelChange">
+          <body>The architectural changes to be enacted as contributions arosen from this variation point. The complete set of architectural changes is the merge of architectural contributions from all involved variation points.</body>
+        </ownedComment>
+        <type href="http://www.omg.org/spec/UML/20110701/UML.xmi#Property"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" name="DesignDimensionInstance" xmi:id="DesignDimensionInstance">
+      <ownedComment xmi:type="uml:Comment" xmi:id="DesignDimensionInstance-_ownedComment.0" annotatedElement="DesignDimensionInstance">
+        <body>A specific design dimenstion instance created to tackle a particular locus of architectural decision in the input model.</body>
+      </ownedComment>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" name="QualityMetric" xmi:id="QualityMetric">
+      <ownedComment xmi:type="uml:Comment" xmi:id="QualityMetric-_ownedComment.0" annotatedElement="QualityMetric">
+        <body>A quality metric defined for the corresponding design space.</body>
+      </ownedComment>
+      <ownedAttribute xmi:type="uml:Property" visibility="public" name="name" xmi:id="QualityMetric-name">
+        <ownedComment xmi:type="uml:Comment" xmi:id="QualityMetric-name-_ownedComment.0" annotatedElement="QualityMetric-name">
+          <body>The quality metric's name.</body>
+        </ownedComment>
+        <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" visibility="public" name="value" xmi:id="QualityMetric-value">
+        <ownedComment xmi:type="uml:Comment" xmi:id="QualityMetric-value-_ownedComment.0" annotatedElement="QualityMetric-value">
+          <body>The quality metric's value.</body>
+        </ownedComment>
+        <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#Real"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" visibility="public" name="expression" xmi:id="QualityMetric-expression">
+        <ownedComment xmi:type="uml:Comment" xmi:id="QualityMetric-expression-_ownedComment.0" annotatedElement="QualityMetric-expression">
+          <body>The quality metric's evaluation expression.</body>
+        </ownedComment>
+        <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
+      </ownedAttribute>
+    </packagedElement>
+  </uml:Package>
+</xmi:XMI>

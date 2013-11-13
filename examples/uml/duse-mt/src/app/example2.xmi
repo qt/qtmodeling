@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:uml="http://www.omg.org/spec/UML/20110701" xmlns:mofext="http://www.omg.org/spec/MOF/20110701" xmlns:SADuSEProfile="http://liveblue.wordpress.com/SADuSEProfile">
+<xmi:XMI xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:uml="http://www.omg.org/spec/UML/20110701" xmlns:mofext="http://www.omg.org/spec/MOF/20110701" xmlns:SADuseProfile="http://liveblue.wordpress.com/SADuseProfile">
   <uml:Model name="MyModel" xmi:id="MyModel">
     <packageImport xmi:type="uml:PackageImport" xmi:id="_PackageImport.0">
       <importedPackage href=":/metamodels/PrimitiveTypes.xmi#_0"/>
@@ -27,9 +27,9 @@
       </ownedAttribute>
     </packagedElement>
     <profileApplication xmi:type="uml:ProfileApplication" xmi:applyingPackage="MyModel" xmi:id="Component2ProfileApplication">
-      <appliedProfile xmi:type="uml:Profile" xmi:applyingPackage="Component2ProfileApplication" href=":/metamodels/SADuSEProfile.xmi#SADuSEProfile"/>
+      <appliedProfile xmi:type="uml:Profile" xmi:applyingPackage="Component2ProfileApplication" href=":/metamodels/SADuseProfile.xmi#SADuseProfile"/>
     </profileApplication>
   </uml:Model>
-  <SADuSEProfile:ProcessComponent xmi:id="Component2ProcessComponent" base_Component="MyModel-Component2"/>
-  <SADuSEProfile:ProcessComponent xmi:id="Component1ProcessComponent" base_Component="MyModel-Component1"/>
+  <SADuseProfile:ProcessComponent xmi:id="Component2ProcessComponent" base_Component="MyModel-Component2"/>
+  <SADuseProfile:ProcessComponent xmi:id="Component1ProcessComponent" base_Component="MyModel-Component1"/>
 </xmi:XMI>
