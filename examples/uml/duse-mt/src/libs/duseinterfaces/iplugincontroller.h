@@ -43,6 +43,9 @@
 
 #include <QtCore/QObject>
 
+#include <QtCore/QPair>
+#include <QtCore/QJsonObject>
+
 class QMetaModelPlugin;
 
 namespace DuSE
@@ -59,9 +62,24 @@ public:
 
     virtual bool initialize() = 0;
 
-    virtual const QHash< QString, QPair<QMetaModelPlugin *, QJsonObject> > &metamodelPlugins() const = 0;
-    virtual const QList< QPair<DuSE::IPlugin *, QJsonObject> > &dusemtPlugins() const = 0;
+    typedef QPair<QMetaModelPlugin *, QJsonObject> MetamodelPluginPair;
+    typedef QPair<IPlugin *, QJsonObject> DusemtPluginPair;
+
+    virtual const QHash<QString, DuSE::IPluginController::MetamodelPluginPair> &metamodelPlugins() const = 0;
+    virtual const QList<DuSE::IPluginController::DusemtPluginPair> &dusemtPlugins() const = 0;
+
     virtual QStringList errorStrings() const = 0;
+
+    template <class T>
+    QList<IPlugin *> pluginsByType() const
+    {
+        QList<IPlugin *> foundPlugins;
+        const QList<DusemtPluginPair> &plugins = dusemtPlugins();
+        foreach (const DusemtPluginPair &pair, plugins)
+            if (dynamic_cast<T>(pair.first))
+                foundPlugins << pair.first;
+        return foundPlugins;
+    }
 
 protected:
     IPluginController();

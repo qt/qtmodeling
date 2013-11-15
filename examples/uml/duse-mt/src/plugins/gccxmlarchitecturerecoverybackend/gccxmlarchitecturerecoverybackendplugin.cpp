@@ -51,3 +51,118 @@ bool GccXmlArchitectureRecoveryBackendPlugin::initialize(DuSE::ICore *core)
     return true;
 }
 
+void GccXmlArchitectureRecoveryBackendPlugin::setRootProjectDir(const QDir &rootProjectDir)
+{
+    this->rootProjectDir = rootProjectDir;
+}
+
+QObjectList GccXmlArchitectureRecoveryBackendPlugin::components()
+{
+    QList<QObject*> components;
+
+    QStringList headers = findFiles("*.h");
+    QStringList xmlFiles = generateXmlFiles(headers);
+
+
+    for (int i = 0; i < xmlFiles.size(); ++i) {
+
+        QString xmlFile = xmlFiles.at(i).toLocal8Bit().constData();
+
+        if (openXmlFile(rootProjectDir.absolutePath() + "/" + xmlFile)) {
+
+            QObject *component = extractComponent(xmlFile);
+            components.append(component);
+        }
+    }
+
+    return components;
+}
+
+QObjectList GccXmlArchitectureRecoveryBackendPlugin::connectors()
+{
+    return QObjectList();
+}
+
+QStringList GccXmlArchitectureRecoveryBackendPlugin::findFiles(const QString &name) const
+{
+
+    return rootProjectDir.entryList(QStringList(name), QDir::Files | QDir::NoSymLinks);
+}
+
+
+QStringList GccXmlArchitectureRecoveryBackendPlugin::generateXmlFiles(const QStringList &codeFiles) const
+{
+
+    for (int i = 0; i < codeFiles.size(); ++i) {
+
+        QString file = codeFiles.at(i).toLocal8Bit().constData();
+        QString fileDir = rootProjectDir.absolutePath() + "/" + file;
+        QString xmlFileDir = rootProjectDir.absolutePath() + "/" + file.replace(".h", ".xml");
+
+        QString command = "gccxml " + fileDir + " -fxml=" + xmlFileDir;
+
+        QProcess process;
+        process.start(command);
+        process.waitForFinished();
+    }
+
+    return rootProjectDir.entryList(QStringList("*.xml"), QDir::Files | QDir::NoSymLinks);
+}
+
+bool GccXmlArchitectureRecoveryBackendPlugin::openXmlFile(const QString &filePath)
+{
+
+    QFile *file = new QFile(filePath);
+
+    xml = new QXmlStreamReader(file);
+
+    if (!file->open(QIODevice::ReadOnly | QIODevice::Text)) {
+        return false;
+    }
+
+    return true;
+}
+
+QStringList GccXmlArchitectureRecoveryBackendPlugin::findConstructorsFromXml(const QString &className)
+{
+    QStringList constructors;
+
+    while (!xml->atEnd() && !xml->hasError()) {
+
+        QXmlStreamReader::TokenType token = xml->readNext();
+
+        if (token == QXmlStreamReader::StartDocument) {
+            continue;
+        }
+
+        if (token == QXmlStreamReader::StartElement) {
+
+            if (xml->name() == "Constructor") {
+                QXmlStreamAttributes attributes = xml->attributes();
+
+                QString attribute = attributes.value("demangled").toString();
+                if (attribute.contains(className + "::")) {
+                    constructors.append(attribute);
+                }
+            }
+        }
+    }
+
+    return constructors;
+}
+
+QObject *GccXmlArchitectureRecoveryBackendPlugin::extractComponent(QString xmlFile)
+{
+
+    QStringList constructors = findConstructorsFromXml(xmlFile.replace(".xml", ""));
+
+    QString expression = constructors.at(constructors.size() - 1).toLocal8Bit().constData();
+    QStringList elements = expression.split("::");
+    QString className = elements.at(1).toLocal8Bit().constData();
+
+    QObject *component = new QObject;
+    component->setObjectName(className);
+
+    return component;
+}
+

@@ -6,10 +6,8 @@
 
 include(../../duse-mt-plugin.pri)
 
-HEADERS += gccxmlarchitecturerecoverybackendplugin.h \
-           gccxmlarchitecturerecoverybackend.h
+HEADERS += gccxmlarchitecturerecoverybackendplugin.h
 
-SOURCES += gccxmlarchitecturerecoverybackendplugin.cpp \
-           gccxmlarchitecturerecoverybackend.cpp
+SOURCES += gccxmlarchitecturerecoverybackendplugin.cpp
 
 OTHER_FILES += gccxmlarchitecturerecoverybackend.json

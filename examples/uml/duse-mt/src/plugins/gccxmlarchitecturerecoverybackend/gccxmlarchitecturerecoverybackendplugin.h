@@ -42,8 +42,15 @@
 #define GCCXMLARCHITECTURERECOVERYBACKENDPLUGIN_H
 
 #include <duseinterfaces/iplugin.h>
+#include <architecturerecoverycore/iarchitecturerecoverybackend.h>
 
-class GccXmlArchitectureRecoveryBackendPlugin : public DuSE::IPlugin
+#include <QDir>
+#include <QProcess>
+#include <QObjectList>
+#include <QStringList>
+#include <QXmlStreamReader>
+
+class GccXmlArchitectureRecoveryBackendPlugin : public DuSE::IPlugin, public IArchitectureRecoveryBackend
 {
     Q_OBJECT
     Q_PLUGIN_METADATA(IID "org.liveblue.DuSE.IPlugin" FILE "gccxmlarchitecturerecoverybackend.json")
@@ -52,6 +59,21 @@ public:
     GccXmlArchitectureRecoveryBackendPlugin(QObject *parent = 0);
 
     virtual bool initialize(DuSE::ICore *core);
+
+    void setRootProjectDir(const QDir &rootProjectDir);
+
+    virtual QObjectList components();
+    virtual QObjectList connectors();
+
+private:
+    QStringList findFiles(const QString &name) const;
+    QStringList generateXmlFiles(const QStringList &codeFiles) const;
+    bool openXmlFile(const QString &filePath);
+    QStringList findConstructorsFromXml(const QString &className);
+    QObject *extractComponent(QString xmlFile);
+
+    QDir rootProjectDir;
+    QXmlStreamReader *xml;
 };
 
 #endif // GCCXMLARCHITECTURERECOVERYBACKENDPLUGIN

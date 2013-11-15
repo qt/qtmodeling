@@ -40,6 +40,11 @@
 ****************************************************************************/
 #include "architecturerecoverycoreplugin.h"
 
+#include <QtCore/QDebug>
+
+#include <duseinterfaces/iplugincontroller.h>
+#include "iarchitecturerecoverybackend.h"
+
 ArchitectureRecoveryCorePlugin::ArchitectureRecoveryCorePlugin(QObject *parent) :
     DuSE::IPlugin(parent)
 {
@@ -48,6 +53,7 @@ ArchitectureRecoveryCorePlugin::ArchitectureRecoveryCorePlugin(QObject *parent) 
 bool ArchitectureRecoveryCorePlugin::initialize(DuSE::ICore *core)
 {
     Q_UNUSED(core);
+    qDebug() << core->pluginController()->pluginsByType<IArchitectureRecoveryBackend *>();
     return true;
 }
 

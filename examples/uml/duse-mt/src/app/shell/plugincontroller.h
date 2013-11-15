@@ -37,7 +37,7 @@
 **
 ** $QT_END_LICENSE$
 **
-****************************************************************************/
+***************************************************************************/
 #ifndef PLUGINCONTROLLER_H
 #define PLUGINCONTROLLER_H
 
@@ -63,13 +63,13 @@ public:
 
     virtual bool initialize();
 
-    virtual const QHash< QString, QPair<QMetaModelPlugin *, QJsonObject> > &metamodelPlugins() const;
-    virtual const QList< QPair<DuSE::IPlugin *, QJsonObject> > &dusemtPlugins() const;
+    virtual const QHash<QString, DuSE::IPluginController::MetamodelPluginPair> &metamodelPlugins() const;
+    virtual const QList<DuSE::IPluginController::DusemtPluginPair> &dusemtPlugins() const;
     virtual QStringList errorStrings() const;
 
 private:
-    QHash< QString, QPair<QMetaModelPlugin *, QJsonObject> > _metamodelPlugins;
-    QList< QPair<DuSE::IPlugin *, QJsonObject> > _dusemtPlugins;
+    QHash<QString, DuSE::IPluginController::MetamodelPluginPair> _metamodelPlugins;
+    QList<DuSE::IPluginController::DusemtPluginPair> _dusemtPlugins;
     QStringList _errorStrings;
 };
 
