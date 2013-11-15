@@ -38,14 +38,14 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#include "architecturerecoveryplugin.h"
+#include "gccxmlarchitecturerecoverybackendplugin.h"
 
-ArchitectureRecoveryPlugin::ArchitectureRecoveryPlugin(QObject *parent) :
+GccXmlArchitectureRecoveryBackendPlugin::GccXmlArchitectureRecoveryBackendPlugin(QObject *parent) :
     DuSE::IPlugin(parent)
 {
 }
 
-bool ArchitectureRecoveryPlugin::initialize(DuSE::ICore *core)
+bool GccXmlArchitectureRecoveryBackendPlugin::initialize(DuSE::ICore *core)
 {
     Q_UNUSED(core);
     return true;

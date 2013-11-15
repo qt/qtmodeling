@@ -38,20 +38,37 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef IDEVELOPMENTPLATFORM_H
-#define IDEVELOPMENTPLATFORM_H
+#ifndef GCCXMLARCHITECTURERECOVERYBACKEND_H
+#define GCCXMLARCHITECTURERECOVERYBACKEND_H
 
+#include "../architecturerecoverycore/iarchitecturerecoverybackend.h"
+
+#include <QDir>
 #include <QObjectList>
+#include <QProcess>
+#include <QStringList>
+#include <QXmlStreamReader>
 
-class IDevelopmentPlatform
+class GccXmlArchitectureRecoveryBackend : public IArchitectureRecoveryBackend
 {
 
 public:
-    IDevelopmentPlatform();
+    GccXmlArchitectureRecoveryBackend(QDir *rootProjDir);
+    ~GccXmlArchitectureRecoveryBackend();
 
-    virtual QObjectList components() const = 0;
-    virtual QObjectList connectors() const = 0;
+    QObjectList components();
+
+private:
+    QStringList findFiles(const QString &name);
+    QStringList generateXmlFiles(const QStringList &codeFiles);
+    bool openXmlFile(const QString &filePath);
+    QStringList findConstructorsFromXml(const QString &className);
+    QObject* extractComponent(QString xmlFile);
+
+private:
+    QDir *_rootProjDir;
+    QXmlStreamReader *xml;
 };
 
-#endif // IDEVELOPMENTPLATFORM_H
+#endif // GCCXMLARCHITECTURERECOVERYBACKEND_H
 

@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT += quick
+QT += quick widgets
 
 include(../../duse-mt-plugin.pri)
 

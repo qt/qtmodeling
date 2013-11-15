@@ -9,4 +9,5 @@ SUBDIRS = \
     designoptimizer \
     concretesyntaxview \
     umlconcretesyntax \
-    architecturerecoverycore
+    architecturerecoverycore \
+    gccxmlarchitecturerecoverybackend

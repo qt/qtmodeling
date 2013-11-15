@@ -6,13 +6,11 @@
 
 include(../../duse-mt-plugin.pri)
 
-HEADERS += architecturerecoveryplugin.h \
-           cppdevelopmentplatform.h \
-           idevelopmentplatform.h \
+HEADERS += architecturerecoverycoreplugin.h \
+           iarchitecturerecoverybackend.h \
            imodelingnotation.h \
            iarchitecturerecoveryalgorithm.h
 
-SOURCES += architecturerecoveryplugin.cpp \
-           cppdevelopmentplatform.cpp
+SOURCES += architecturerecoverycoreplugin.cpp
 
 OTHER_FILES += architecturerecoverycore.json

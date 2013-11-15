@@ -38,21 +38,21 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef ARCHITECTURERECOVERYPLUGIN_H
-#define ARCHITECTURERECOVERYPLUGIN_H
+#ifndef ARCHITECTURERECOVERYCOREPLUGIN_H
+#define ARCHITECTURERECOVERYCOREPLUGIN_H
 
 #include <interfaces/iplugin.h>
 
-class ArchitectureRecoveryPlugin : public DuSE::IPlugin
+class ArchitectureRecoveryCorePlugin : public DuSE::IPlugin
 {
     Q_OBJECT
     Q_PLUGIN_METADATA(IID "org.liveblue.DuSE.IPlugin" FILE "architecturerecoverycore.json")
 
 public:
-    ArchitectureRecoveryPlugin(QObject *parent = 0);
+    ArchitectureRecoveryCorePlugin(QObject *parent = 0);
 
     virtual bool initialize(DuSE::ICore *core);
 };
 
-#endif // ARCHITECTURERECOVERYPLUGIN
+#endif // ARCHITECTURERECOVERYCOREPLUGIN
 

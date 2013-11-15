@@ -3,7 +3,7 @@
 ** Copyright (C) 2013 Sandro S. Andrade <sandroandrade@kde.org>
 ** Contact: http://www.qt-project.org/legal
 **
-** This file is part of the QtDuse module of the Qt Toolkit.
+** This file is part of the QtUml module of the Qt Toolkit.
 **
 ** $QT_BEGIN_LICENSE:LGPL$
 ** Commercial License Usage
@@ -38,36 +38,16 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef CPPDEVELOPMENTPLATFORM_H
-#define CPPDEVELOPMENTPLATFORM_H
+#include "architecturerecoverycoreplugin.h"
 
-#include "idevelopmentplatform.h"
-
-#include <QDir>
-#include <QObjectList>
-#include <QProcess>
-#include <QStringList>
-#include <QXmlStreamReader>
-
-class CppDevelopmentPlatform : public IDevelopmentPlatform
+ArchitectureRecoveryCorePlugin::ArchitectureRecoveryCorePlugin(QObject *parent) :
+    DuSE::IPlugin(parent)
 {
+}
 
-public:
-    CppDevelopmentPlatform(QDir *rootProjDir);
-    ~CppDevelopmentPlatform();
+bool ArchitectureRecoveryCorePlugin::initialize(DuSE::ICore *core)
+{
+    Q_UNUSED(core);
+    return true;
+}
 
-    QObjectList components();
-
-private:
-    QStringList findFiles(const QString &name);
-    QStringList generateXmlFiles(const QStringList &codeFiles);
-    bool openXmlFile(const QString &filePath);
-    QStringList findConstructorsFromXml(const QString &className);
-    QObject* extractComponent(QString xmlFile);
-
-private:
-    QDir *_rootProjDir;
-    QXmlStreamReader *xml;
-};
-
-#endif // CPPDEVELOPMENTPLATFORM_H

@@ -38,18 +38,18 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#include "cppdevelopmentplatform.h"
+#include "gccxmlarchitecturerecoverybackend.h"
 
-CppDevelopmentPlatform::CppDevelopmentPlatform(QDir *rootProjDir)
+GccXmlArchitectureRecoveryBackend::GccXmlArchitectureRecoveryBackend(QDir *rootProjDir)
 {
     _rootProjDir = rootProjDir;
 }
 
-CppDevelopmentPlatform::~CppDevelopmentPlatform()
+GccXmlArchitectureRecoveryBackend::~GccXmlArchitectureRecoveryBackend()
 {
 }
 
-QObjectList CppDevelopmentPlatform::components()
+QObjectList GccXmlArchitectureRecoveryBackend::components()
 {
     QList<QObject*> components;
 
@@ -72,13 +72,13 @@ QObjectList CppDevelopmentPlatform::components()
 }
 
 
-QStringList CppDevelopmentPlatform::findFiles(const QString &name) {
+QStringList GccXmlArchitectureRecoveryBackend::findFiles(const QString &name) {
 
     return _rootProjDir->entryList(QStringList(name), QDir::Files | QDir::NoSymLinks);
 }
 
 
-QStringList CppDevelopmentPlatform::generateXmlFiles(const QStringList &codeFiles) {
+QStringList GccXmlArchitectureRecoveryBackend::generateXmlFiles(const QStringList &codeFiles) {
 
     for (int i = 0; i < codeFiles.size(); ++i) {
 
@@ -97,7 +97,7 @@ QStringList CppDevelopmentPlatform::generateXmlFiles(const QStringList &codeFile
 }
 
 
-bool CppDevelopmentPlatform::openXmlFile(const QString &filePath) {
+bool GccXmlArchitectureRecoveryBackend::openXmlFile(const QString &filePath) {
 
     QFile *file = new QFile(filePath);
 
@@ -111,7 +111,7 @@ bool CppDevelopmentPlatform::openXmlFile(const QString &filePath) {
 }
 
 
-QStringList CppDevelopmentPlatform::findConstructorsFromXml(const QString &className) {
+QStringList GccXmlArchitectureRecoveryBackend::findConstructorsFromXml(const QString &className) {
 
     QStringList constructors;
 
@@ -140,7 +140,7 @@ QStringList CppDevelopmentPlatform::findConstructorsFromXml(const QString &class
 }
 
 
-QObject* CppDevelopmentPlatform::extractComponent(QString xmlFile) {
+QObject* GccXmlArchitectureRecoveryBackend::extractComponent(QString xmlFile) {
 
     QStringList constructors = findConstructorsFromXml(xmlFile.replace(".xml", ""));
 
