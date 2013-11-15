@@ -12,9 +12,9 @@ QT -= gui
 
 DUSEMT_LIB_DEPENDS += duseinterfaces
 
-include(../duse-mt.pri)
+TARGET = $$DUSEMT_PLUGIN_NAME
 
-TARGET = $$qtLibraryName($$DUSEMT_PLUGIN_NAME)
+include(../duse-mt.pri)
 
 LIBS += -L$$DUSEMT_LIBRARY_PATH
 
@@ -36,3 +36,5 @@ QMAKE_RPATHDIR =
 
 TEMPLATE = lib
 CONFIG += plugin plugin_with_soname
+
+TARGET = $$qtLibraryName($$TARGET)
