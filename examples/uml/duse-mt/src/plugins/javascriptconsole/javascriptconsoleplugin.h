@@ -41,7 +41,7 @@
 #ifndef JAVASCRIPTCONSOLEPLUGIN_H
 #define JAVASCRIPTCONSOLEPLUGIN_H
 
-#include <interfaces/iplugin.h>
+#include <duseinterfaces/iplugin.h>
 
 #include <QtScript/QScriptEngine>
 

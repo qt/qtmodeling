@@ -6,15 +6,18 @@
 
 QT += widgets modeling
 
+DUSEMT_LIB_DEPENDS += \
+    duseinterfaces
+
 include(../../duse-mt.pri)
+
+LIBS += -L$$DUSEMT_LIBRARY_PATH
 
 TEMPLATE = app
 TARGET = $$DUSEMT_APP_TARGET
 DESTDIR = $$DUSEMT_APP_PATH
 
 include(../rpath.pri)
-
-LIBS *= -lduseinterfaces
 
 SOURCES += main.cpp \
     shell/core.cpp \

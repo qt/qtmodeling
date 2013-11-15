@@ -38,51 +38,18 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef IUICONTROLLER_H
-#define IUICONTROLLER_H
-
-#include <QtCore/QObject>
-
-#include <QtCore/QString>
-
-#include <QtGui/QIcon>
-
-class QModelingObject;
-
-class QAction;
-class QWidget;
-class QQuickItem;
-class QMainWindow;
+#include "iplugincontroller.h"
 
 namespace DuSE
 {
 
-class IUiController : public QObject
+IPluginController::~IPluginController()
 {
-    Q_OBJECT
+}
 
-public:
-    virtual ~IUiController();
-
-    virtual bool initialize() = 0;
-
-    virtual void addDockWidget(Qt::DockWidgetArea area, QString name, QWidget *widget) = 0;
-    virtual void removeDockWidget(const QString &name) = 0;
-
-    virtual void addCentralWidgetTab(QWidget *widget, const QString &label, int position = -1, const QIcon &icon = QIcon()) = 0;
-    virtual void removeCentralWidgetTab(const QString &name) = 0;
-
-    virtual void addAction(QAction *action, const QString &menuTitle, const QString &toolbarName = QString()) = 0;
-
-Q_SIGNALS:
-    void currentModelingObjectChanged(QModelingObject *currentModelingObject);
-    void updateCurrentModelingObject();
-    void addToView(QObject *selectedModelingObject, QQuickItem *parent = 0);
-
-protected:
-    IUiController();
-};
+IPluginController::IPluginController()
+{
+}
 
 }
 
-#endif // IUICONTROLLER_H

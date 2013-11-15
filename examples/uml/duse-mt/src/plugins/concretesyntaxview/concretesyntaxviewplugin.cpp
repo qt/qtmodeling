@@ -40,7 +40,7 @@
 ****************************************************************************/
 #include "concretesyntaxviewplugin.h"
 
-#include <interfaces/iuicontroller.h>
+#include <duseinterfaces/iuicontroller.h>
 
 #include <QtQuick/QQuickView>
 #include <QtQuick/QQuickItem>

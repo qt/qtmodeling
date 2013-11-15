@@ -47,8 +47,6 @@ class IArchitectureRecoveryBackend
 {
 
 public:
-    IArchitectureRecoveryBackend();
-
     virtual QObjectList components() const = 0;
     virtual QObjectList connectors() const = 0;
 };

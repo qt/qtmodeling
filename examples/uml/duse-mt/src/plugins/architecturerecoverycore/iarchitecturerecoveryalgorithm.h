@@ -48,8 +48,6 @@ class IArchitectureRecoveryAlgorithm
 {
 
 public:
-    IArchitectureRecoveryAlgorithm();
-
     virtual void run() const = 0;
 
     virtual void setDevelopmentPlatform(IDevelopmentPlatform *m_developmentPlatform) = 0;

@@ -38,17 +38,36 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#include "iplugincontroller.h"
+#ifndef IPLUGINCONTROLLER_H
+#define IPLUGINCONTROLLER_H
+
+#include <QtCore/QObject>
+
+class QMetaModelPlugin;
 
 namespace DuSE
 {
 
-IPluginController::~IPluginController()
+class IPlugin;
+
+class IPluginController : public QObject
 {
+    Q_OBJECT
+
+public:
+    virtual ~IPluginController();
+
+    virtual bool initialize() = 0;
+
+    virtual const QHash< QString, QPair<QMetaModelPlugin *, QJsonObject> > &metamodelPlugins() const = 0;
+    virtual const QList< QPair<DuSE::IPlugin *, QJsonObject> > &dusemtPlugins() const = 0;
+    virtual QStringList errorStrings() const = 0;
+
+protected:
+    IPluginController();
+};
+
 }
 
-IPluginController::IPluginController()
-{
-}
+#endif // IPLUGINCONTROLLER_H
 
-}

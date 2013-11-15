@@ -41,7 +41,7 @@
 #ifndef GCCXMLARCHITECTURERECOVERYBACKENDPLUGIN_H
 #define GCCXMLARCHITECTURERECOVERYBACKENDPLUGIN_H
 
-#include <interfaces/iplugin.h>
+#include <duseinterfaces/iplugin.h>
 
 class GccXmlArchitectureRecoveryBackendPlugin : public DuSE::IPlugin
 {

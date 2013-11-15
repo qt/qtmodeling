@@ -40,7 +40,7 @@
 ****************************************************************************/
 #include "welcomedashboardplugin.h"
 
-#include <interfaces/iuicontroller.h>
+#include <duseinterfaces/iuicontroller.h>
 
 #include <QtQuick/QQuickView>
 

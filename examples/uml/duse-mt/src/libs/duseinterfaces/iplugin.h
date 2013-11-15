@@ -64,3 +64,4 @@ public:
 }
 
 #endif // IPLUGIN_H
+

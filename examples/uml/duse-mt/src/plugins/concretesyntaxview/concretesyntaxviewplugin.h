@@ -41,7 +41,7 @@
 #ifndef CONCRETESYNTAXVIEWPLUGIN_H
 #define CONCRETESYNTAXVIEWPLUGIN_H
 
-#include <interfaces/iplugin.h>
+#include <duseinterfaces/iplugin.h>
 
 class QQuickView;
 class QQuickItem;

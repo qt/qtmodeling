@@ -75,10 +75,10 @@
 #include <QtQuick/QQuickItem>
 //#include "QtQuick/private/qquickflickable_p.h"
 
-#include <interfaces/icore.h>
-#include <interfaces/iplugin.h>
-#include <interfaces/iplugincontroller.h>
-#include <interfaces/iprojectcontroller.h>
+#include <duseinterfaces/icore.h>
+#include <duseinterfaces/iplugin.h>
+#include <duseinterfaces/iplugincontroller.h>
+#include <duseinterfaces/iprojectcontroller.h>
 
 namespace DuSE
 {

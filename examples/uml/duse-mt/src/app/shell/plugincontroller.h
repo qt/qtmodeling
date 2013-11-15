@@ -41,7 +41,7 @@
 #ifndef PLUGINCONTROLLER_H
 #define PLUGINCONTROLLER_H
 
-#include <interfaces/iplugincontroller.h>
+#include <duseinterfaces/iplugincontroller.h>
 
 #include <QtCore/QHash>
 #include <QtCore/QStringList>

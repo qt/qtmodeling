@@ -41,7 +41,7 @@
 #ifndef GCCXMLARCHITECTURERECOVERYBACKEND_H
 #define GCCXMLARCHITECTURERECOVERYBACKEND_H
 
-#include "../architecturerecoverycore/iarchitecturerecoverybackend.h"
+#include <architecturerecoverycore/iarchitecturerecoverybackend.h>
 
 #include <QDir>
 #include <QObjectList>

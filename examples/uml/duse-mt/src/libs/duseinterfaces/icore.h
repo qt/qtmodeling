@@ -38,35 +38,34 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef IPLUGINCONTROLLER_H
-#define IPLUGINCONTROLLER_H
+#ifndef ICORE_H
+#define ICORE_H
 
-#include <QtCore/QObject>
-
-class QMetaModelPlugin;
+#include "duseinterfaces_global.h"
 
 namespace DuSE
 {
 
-class IPlugin;
+class IPluginController;
+class IProjectController;
+class IUiController;
 
-class IPluginController : public QObject
+class DUSEINTERFACESSHARED_EXPORT ICore
 {
-    Q_OBJECT
-
 public:
-    virtual ~IPluginController();
+    virtual ~ICore();
+    static ICore *self();
 
-    virtual bool initialize() = 0;
-
-    virtual const QHash< QString, QPair<QMetaModelPlugin *, QJsonObject> > &metamodelPlugins() const = 0;
-    virtual const QList< QPair<DuSE::IPlugin *, QJsonObject> > &dusemtPlugins() const = 0;
-    virtual QStringList errorStrings() const = 0;
+    virtual IPluginController *pluginController() = 0;
+    virtual IProjectController *projectController() = 0;
+    virtual IUiController *uiController() = 0;
 
 protected:
-    IPluginController();
+    ICore();
+    static ICore *_self;
 };
 
 }
 
-#endif // IPLUGINCONTROLLER_H
+#endif // ICORE_H
+

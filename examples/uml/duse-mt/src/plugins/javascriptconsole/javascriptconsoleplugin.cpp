@@ -42,8 +42,8 @@
 
 #include "ui_javascriptconsole.h"
 
-#include <interfaces/iuicontroller.h>
-#include <interfaces/iprojectcontroller.h>
+#include <duseinterfaces/iuicontroller.h>
+#include <duseinterfaces/iprojectcontroller.h>
 
 #include <QtModeling/QModelingObject>
 

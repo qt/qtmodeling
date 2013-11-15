@@ -38,17 +38,16 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#include "iuicontroller.h"
+#ifndef DUSEINTERFACES_GLOBAL_H
+#define DUSEINTERFACES_GLOBAL_H
 
-namespace DuSE
-{
+#include <QtCore/qglobal.h>
 
-IUiController::~IUiController()
-{
-}
+#if defined(DUSEINTERFACES_LIBRARY)
+#  define DUSEINTERFACESSHARED_EXPORT Q_DECL_EXPORT
+#else
+#  define DUSEINTERFACESSHARED_EXPORT Q_DECL_IMPORT
+#endif
 
-IUiController::IUiController()
-{
-}
+#endif // DUSEINTERFACES_GLOBAL_H
 
-}

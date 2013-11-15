@@ -38,15 +38,47 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef DUSEINTERFACES_GLOBAL_H
-#define DUSEINTERFACES_GLOBAL_H
+#ifndef IPROJECTCONTROLLER_H
+#define IPROJECTCONTROLLER_H
 
-#include <QtCore/qglobal.h>
+#include <QtCore/QObject>
 
-#if defined(DUSEINTERFACES_LIBRARY)
-#  define DUSEINTERFACESSHARED_EXPORT Q_DECL_EXPORT
-#else
-#  define DUSEINTERFACESSHARED_EXPORT Q_DECL_IMPORT
-#endif
+#include <QtCore/QString>
 
-#endif // DUSEINTERFACES_GLOBAL_H
+class QWidget;
+
+class QModelingObject;
+class QMetaModelPlugin;
+
+namespace DuSE
+{
+
+class IProjectController : public QObject
+{
+    Q_OBJECT
+
+public:
+    virtual ~IProjectController();
+
+    virtual bool initialize() = 0;
+
+    virtual QStringList errorStrings() const = 0;
+    virtual QString currentModelFileName() const = 0;
+
+public Q_SLOTS:
+    virtual bool openModel(const QString &fileName) = 0;
+    virtual bool saveModel() = 0;
+    virtual bool saveModelAs(const QString &fileName) = 0;
+    virtual bool createModel(const QString &modelFileName, QMetaModelPlugin *metamodelPlugin, const QString &topLevelType) = 0;
+
+Q_SIGNALS:
+    void modelOpened(QList<QModelingObject *> model);
+
+protected:
+    IProjectController();
+};
+
+}
+
+#endif // IPROJECTCONTROLLER_H
+

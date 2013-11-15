@@ -38,46 +38,18 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef IPROJECTCONTROLLER_H
-#define IPROJECTCONTROLLER_H
-
-#include <QtCore/QObject>
-
-#include <QtCore/QString>
-
-class QWidget;
-
-class QModelingObject;
-class QMetaModelPlugin;
+#include "iuicontroller.h"
 
 namespace DuSE
 {
 
-class IProjectController : public QObject
+IUiController::~IUiController()
 {
-    Q_OBJECT
+}
 
-public:
-    virtual ~IProjectController();
-
-    virtual bool initialize() = 0;
-
-    virtual QStringList errorStrings() const = 0;
-    virtual QString currentModelFileName() const = 0;
-
-public Q_SLOTS:
-    virtual bool openModel(const QString &fileName) = 0;
-    virtual bool saveModel() = 0;
-    virtual bool saveModelAs(const QString &fileName) = 0;
-    virtual bool createModel(const QString &modelFileName, QMetaModelPlugin *metamodelPlugin, const QString &topLevelType) = 0;
-
-Q_SIGNALS:
-    void modelOpened(QList<QModelingObject *> model);
-
-protected:
-    IProjectController();
-};
+IUiController::IUiController()
+{
+}
 
 }
 
-#endif // IPROJECTCONTROLLER_H

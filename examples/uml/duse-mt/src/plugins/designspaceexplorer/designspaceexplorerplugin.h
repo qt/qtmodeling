@@ -41,7 +41,7 @@
 #ifndef DESIGNSPACEEXPLORERPLUGIN_H
 #define DESIGNSPACEEXPLORERPLUGIN_H
 
-#include <interfaces/iplugin.h>
+#include <duseinterfaces/iplugin.h>
 
 class NewDuseDesignDialog;
 

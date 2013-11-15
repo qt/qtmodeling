@@ -41,7 +41,7 @@
 #ifndef UICONTROLLER_H
 #define UICONTROLLER_H
 
-#include <interfaces/iuicontroller.h>
+#include <duseinterfaces/iuicontroller.h>
 
 #include "mainwindow.h"
 

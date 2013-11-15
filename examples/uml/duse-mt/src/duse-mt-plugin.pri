@@ -1,4 +1,22 @@
+depfile = $$replace(_PRO_FILE_PWD_, ([^/]+$), \\1/\\1_dependencies.pri)
+exists($$depfile) {
+    include($$depfile)
+    isEmpty(DUSEMT_PLUGIN_NAME): \
+        error("$$basename(depfile) does not define DUSEMT_PLUGIN_NAME.")
+} else {
+    isEmpty(DUSEMT_PLUGIN_NAME): \
+        error("DUSEMT_PLUGIN_NAME is empty. Maybe you meant to create $$basename(depfile)?")
+}
+
+QT -= gui
+
+DUSEMT_LIB_DEPENDS += duseinterfaces
+
 include(../duse-mt.pri)
+
+TARGET = $$qtLibraryName($$DUSEMT_PLUGIN_NAME)
+
+LIBS += -L$$DUSEMT_LIBRARY_PATH
 
 isEmpty(PROVIDER) {
     PROVIDER = QtProject

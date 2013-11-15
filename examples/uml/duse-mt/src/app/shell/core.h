@@ -41,7 +41,7 @@
 #ifndef CORE_H
 #define CORE_H
 
-#include <interfaces/icore.h>
+#include <duseinterfaces/icore.h>
 
 namespace DuSE
 {

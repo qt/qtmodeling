@@ -38,33 +38,18 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef ICORE_H
-#define ICORE_H
-
-#include "duseinterfaces_global.h"
+#include "iprojectcontroller.h"
 
 namespace DuSE
 {
 
-class IPluginController;
-class IProjectController;
-class IUiController;
-
-class DUSEINTERFACESSHARED_EXPORT ICore
+IProjectController::~IProjectController()
 {
-public:
-    virtual ~ICore();
-    static ICore *self();
+}
 
-    virtual IPluginController *pluginController() = 0;
-    virtual IProjectController *projectController() = 0;
-    virtual IUiController *uiController() = 0;
-
-protected:
-    ICore();
-    static ICore *_self;
-};
+IProjectController::IProjectController()
+{
+}
 
 }
 
-#endif // ICORE_H

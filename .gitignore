@@ -1,5 +1,6 @@
 .obj
 .moc
+*moc_*
 *.o
 mkspecs
 Makefile

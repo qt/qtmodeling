@@ -47,8 +47,6 @@ class IModelingNotation
 {
 
 public:
-    IModelingNotation();
-
     virtual void generateDiagram(const QString &name) = 0;
 };
 

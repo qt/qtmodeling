@@ -41,7 +41,7 @@
 #ifndef ARCHITECTURERECOVERYCOREPLUGIN_H
 #define ARCHITECTURERECOVERYCOREPLUGIN_H
 
-#include <interfaces/iplugin.h>
+#include <duseinterfaces/iplugin.h>
 
 class ArchitectureRecoveryCorePlugin : public DuSE::IPlugin
 {

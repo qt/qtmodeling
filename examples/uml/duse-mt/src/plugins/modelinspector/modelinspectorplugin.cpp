@@ -40,8 +40,8 @@
 ****************************************************************************/
 #include "modelinspectorplugin.h"
 
-#include <interfaces/iuicontroller.h>
-#include <interfaces/iprojectcontroller.h>
+#include <duseinterfaces/iuicontroller.h>
+#include <duseinterfaces/iprojectcontroller.h>
 
 #include <QtModelingWidgets/QModelingObjectView>
 #include <QtModelingWidgets/QModelingObjectModel>

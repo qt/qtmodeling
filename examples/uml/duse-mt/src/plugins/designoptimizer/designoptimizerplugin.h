@@ -41,7 +41,7 @@
 #ifndef DESIGNOPTIMIZERPLUGIN_H
 #define DESIGNOPTIMIZERPLUGIN_H
 
-#include <interfaces/iplugin.h>
+#include <duseinterfaces/iplugin.h>
 
 class QQuickView;
 

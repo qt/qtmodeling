@@ -40,8 +40,8 @@
 ****************************************************************************/
 #include "plugincontroller.h"
 
-#include <interfaces/icore.h>
-#include <interfaces/iplugin.h>
+#include <duseinterfaces/icore.h>
+#include <duseinterfaces/iplugin.h>
 
 #include <QtModeling/QMetaModelPlugin>
 

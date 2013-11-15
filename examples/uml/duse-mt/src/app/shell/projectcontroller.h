@@ -41,7 +41,7 @@
 #ifndef PROJECTCONTROLLER_H
 #define PROJECTCONTROLLER_H
 
-#include <interfaces/iprojectcontroller.h>
+#include <duseinterfaces/iprojectcontroller.h>
 
 #include "mainwindow.h"
 

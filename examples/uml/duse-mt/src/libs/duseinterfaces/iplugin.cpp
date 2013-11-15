@@ -38,17 +38,19 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#include "iprojectcontroller.h"
+#include "iplugin.h"
 
 namespace DuSE
 {
 
-IProjectController::~IProjectController()
+IPlugin::IPlugin(QObject *parent) :
+    QObject(parent)
 {
 }
 
-IProjectController::IProjectController()
+IPlugin::~IPlugin()
 {
 }
 
 }
+
