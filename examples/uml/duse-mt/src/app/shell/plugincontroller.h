@@ -63,13 +63,13 @@ public:
 
     virtual bool initialize();
 
-    virtual const QHash<QString, DuSE::IPluginController::MetamodelPluginPair> &metamodelPlugins() const;
-    virtual const QList<DuSE::IPluginController::DusemtPluginPair> &dusemtPlugins() const;
+    virtual const QHash<QString, QMetaModelPlugin *> &metamodelPlugins() const;
+    virtual const QList<DuSE::IPlugin *> &dusemtPlugins() const;
     virtual QStringList errorStrings() const;
 
 private:
-    QHash<QString, DuSE::IPluginController::MetamodelPluginPair> _metamodelPlugins;
-    QList<DuSE::IPluginController::DusemtPluginPair> _dusemtPlugins;
+    QHash<QString, QMetaModelPlugin *> _metamodelPlugins;
+    QList<DuSE::IPlugin *> _dusemtPlugins;
     QStringList _errorStrings;
 };
 

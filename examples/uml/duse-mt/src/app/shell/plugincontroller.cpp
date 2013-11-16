@@ -77,10 +77,11 @@ bool PluginController::initialize()
         foreach (QString fileName, pluginsDir.entryList(QDir::Files)) {
             QPluginLoader loader(pluginsDir.absoluteFilePath(fileName));
             QObject *plugin = loader.instance();
-            QMetaModelPlugin *metaModelPlugin = 0;
-            if (plugin && (metaModelPlugin = qobject_cast<QMetaModelPlugin *>(plugin))) {
+            QMetaModelPlugin *metamodelPlugin = 0;
+            if (plugin && (metamodelPlugin = qobject_cast<QMetaModelPlugin *>(plugin))) {
                 QJsonObject jsonObject = loader.metaData().value(QStringLiteral("MetaData")).toObject();
-                _metamodelPlugins.insert(jsonObject.value(QStringLiteral("MetaModelNamespaceUri")).toString(), DuSE::IPluginController::MetamodelPluginPair(metaModelPlugin, jsonObject));
+                metamodelPlugin->setProperty("metadata", jsonObject);
+                _metamodelPlugins.insert(jsonObject.value(QStringLiteral("MetaModelNamespaceUri")).toString(), metamodelPlugin);
             }
         }
     }
@@ -115,8 +116,8 @@ bool PluginController::initialize()
                 int dependencyCount = invertedDependency.values(dusePlugin->metaObject()->className()).count();
                 int loadedDependencies = 0;
                 foreach (const QString &dependency, invertedDependency.values(dusePlugin->metaObject()->className())) {
-                    foreach (const DuSE::IPluginController::DusemtPluginPair &pair, _dusemtPlugins) {
-                        if (pair.first->metaObject()->className() == dependency) {
+                    foreach (DuSE::IPlugin *dusePlugin, _dusemtPlugins) {
+                        if (dusePlugin->metaObject()->className() == dependency) {
                             ++loadedDependencies;
                             break;
                         }
@@ -124,7 +125,8 @@ bool PluginController::initialize()
                 }
                 if (loadedDependencies == dependencyCount) {
                     dusePlugin->initialize(core);
-                    _dusemtPlugins << DuSE::IPluginController::DusemtPluginPair(dusePlugin, loader.metaData().value(QStringLiteral("MetaData")).toObject());
+                    dusePlugin->setProperty("metadata", loader.metaData().value(QStringLiteral("MetaData")).toObject());
+                    _dusemtPlugins << dusePlugin;
                     pluginList.removeAll(pluginFileName);
                 }
             }
@@ -135,12 +137,12 @@ bool PluginController::initialize()
     return _errorStrings.isEmpty() ? true:false;
 }
 
-const QHash<QString, DuSE::IPluginController::MetamodelPluginPair> &PluginController::metamodelPlugins() const
+const QHash<QString, QMetaModelPlugin *> &PluginController::metamodelPlugins() const
 {
     return _metamodelPlugins;
 }
 
-const QList<DuSE::IPluginController::DusemtPluginPair> &PluginController::dusemtPlugins() const
+const QList<IPlugin *> &PluginController::dusemtPlugins() const
 {
     return _dusemtPlugins;
 }

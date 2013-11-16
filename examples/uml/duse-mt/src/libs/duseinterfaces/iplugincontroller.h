@@ -62,11 +62,8 @@ public:
 
     virtual bool initialize() = 0;
 
-    typedef QPair<QMetaModelPlugin *, QJsonObject> MetamodelPluginPair;
-    typedef QPair<IPlugin *, QJsonObject> DusemtPluginPair;
-
-    virtual const QHash<QString, DuSE::IPluginController::MetamodelPluginPair> &metamodelPlugins() const = 0;
-    virtual const QList<DuSE::IPluginController::DusemtPluginPair> &dusemtPlugins() const = 0;
+    virtual const QHash<QString, QMetaModelPlugin *> &metamodelPlugins() const = 0;
+    virtual const QList<DuSE::IPlugin *> &dusemtPlugins() const = 0;
 
     virtual QStringList errorStrings() const = 0;
 
@@ -74,10 +71,10 @@ public:
     QList<IPlugin *> pluginsByType() const
     {
         QList<IPlugin *> foundPlugins;
-        const QList<DusemtPluginPair> &plugins = dusemtPlugins();
-        foreach (const DusemtPluginPair &pair, plugins)
-            if (dynamic_cast<T>(pair.first))
-                foundPlugins << pair.first;
+        const QList<IPlugin *> &plugins = dusemtPlugins();
+        foreach (IPlugin *dusePlugin, plugins)
+            if (dynamic_cast<T>(dusePlugin))
+                foundPlugins << dusePlugin;
         return foundPlugins;
     }
 

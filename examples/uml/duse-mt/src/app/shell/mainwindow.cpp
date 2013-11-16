@@ -123,15 +123,14 @@ void MainWindow::on_actionFileNewModel_triggered()
 {
     _newModel->lneModel->clear();
     _newModel->cboMetamodel->clear();
-    typedef QPair<QMetaModelPlugin *, QJsonObject> MetaModelPluginPair;
-    foreach (const MetaModelPluginPair &pair, ICore::self()->pluginController()->metamodelPlugins().values())
-        _newModel->cboMetamodel->addItem(pair.first->metaObject()->className());
+    foreach (QMetaModelPlugin *metamodelPlugin, ICore::self()->pluginController()->metamodelPlugins().values())
+        _newModel->cboMetamodel->addItem(metamodelPlugin->metaObject()->className());
     _newModel->lneModel->setFocus();
     if (_newModelDialog->exec() == QDialog::Accepted) {
         QMetaModelPlugin *metamodelPlugin;
-        foreach (const MetaModelPluginPair &pair, ICore::self()->pluginController()->metamodelPlugins().values()) {
-            if (pair.first->metaObject()->className() == _newModel->cboMetamodel->currentText())
-                metamodelPlugin = pair.first;
+        foreach (QMetaModelPlugin *plugin, ICore::self()->pluginController()->metamodelPlugins().values()) {
+            if (plugin->metaObject()->className() == _newModel->cboMetamodel->currentText())
+                metamodelPlugin = plugin;
         }
         if (ICore::self()->projectController()->createModel(_newModel->lneModel->text(), metamodelPlugin, _newModel->lstTopLevelContainers->currentItem()->text()))
             setWindowTitle(ICore::self()->projectController()->currentModelFileName() + " - DuSE-MT");
@@ -289,10 +288,9 @@ void MainWindow::metaModelChanged(QString newMetaModel)
 {
     _newModel->lstTopLevelContainers->clear();
     QVariantList list;
-    typedef QPair<QMetaModelPlugin *, QJsonObject> MetaModelPluginPair;
-    foreach (const MetaModelPluginPair &pair, ICore::self()->pluginController()->metamodelPlugins()) {
-        if (pair.first->metaObject()->className() == newMetaModel)
-            list = pair.second.value("MetaModelTopLevelTypes").toArray().toVariantList();
+    foreach (QMetaModelPlugin *metamodelPlugin, ICore::self()->pluginController()->metamodelPlugins()) {
+        if (metamodelPlugin->metaObject()->className() == newMetaModel)
+            list = metamodelPlugin->property("metadata").value<QJsonObject>().value("MetaModelTopLevelTypes").toArray().toVariantList();
     }
     foreach (QVariant variant, list)
         _newModel->lstTopLevelContainers->addItem(variant.toString());
@@ -379,22 +377,22 @@ void MainWindow::populatePluginDialog()
     _aboutPlugins->loadedPlugins->header()->setSectionResizeMode(0, QHeaderView::ResizeToContents);
     _aboutPlugins->loadedPlugins->header()->setSectionResizeMode(2, QHeaderView::ResizeToContents);
 
-    typedef QPair<QMetaModelPlugin *, QJsonObject> MetaModelPluginPair;
-    foreach (const MetaModelPluginPair &pair, ICore::self()->pluginController()->metamodelPlugins()) {
+    foreach (QMetaModelPlugin *metamodelPlugin, ICore::self()->pluginController()->metamodelPlugins()) {
+        QJsonObject jsonObject = metamodelPlugin->property("metadata").value<QJsonObject>();
         QTreeWidgetItem *metamodelItem = new QTreeWidgetItem(itemForCategory("Metamodels"),
-                                                             QStringList() << pair.first->metaObject()->className()
+                                                             QStringList() << metamodelPlugin->metaObject()->className()
                                                                            << QString()
-                                                                           << pair.second.value("Version").toString()
-                                                                           << pair.second.value("Vendor").toString());
+                                                                           << jsonObject.value("Version").toString()
+                                                                           << jsonObject.value("Vendor").toString());
         metamodelItem->setData(1, Qt::CheckStateRole, QVariant(Qt::Checked));
     }
-    typedef QPair<DuSE::IPlugin *, QJsonObject> DuSEMTPluginPair;
-    foreach (const DuSEMTPluginPair &pair, ICore::self()->pluginController()->dusemtPlugins()) {
-        QTreeWidgetItem *dusemtItem = new QTreeWidgetItem(itemForCategory(pair.second.value("Category").toString()),
-                                                          QStringList() << pair.first->metaObject()->className()
+    foreach (DuSE::IPlugin *dusePlugin, ICore::self()->pluginController()->dusemtPlugins()) {
+        QJsonObject jsonObject = dusePlugin->property("metadata").value<QJsonObject>();
+        QTreeWidgetItem *dusemtItem = new QTreeWidgetItem(itemForCategory(jsonObject.value("Category").toString()),
+                                                          QStringList() << dusePlugin->metaObject()->className()
                                                                         << QString()
-                                                                        << pair.second.value("Version").toString()
-                                                                        << pair.second.value("Vendor").toString());
+                                                                        << jsonObject.value("Version").toString()
+                                                                        << jsonObject.value("Vendor").toString());
         dusemtItem->setData(1, Qt::CheckStateRole, QVariant(Qt::Checked));
     }
 
