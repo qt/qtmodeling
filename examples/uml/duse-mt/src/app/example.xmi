@@ -7,6 +7,14 @@
     <elementImport xmi:type="uml:ElementImport" xmi:id="_elementImport.1">
       <importedElement href=":/metamodels/PrimitiveTypes.xmi#Integer"/>
     </elementImport>
+    <packagedElement xmi:type="uml:Association" name="A_student_professor" xmi:id="MyRootPackage-A_student_professor">
+        <memberEnd xmi:idref="MyRootPackage-Package1-Student-advisor"/>
+        <memberEnd xmi:idref="A_student_professor-student"/>
+        <ownedEnd xmi:type="uml:Property" name="student" visibility="public" xmi:id="A_student_professor-student">
+            <type xmi:idref="Student"/>
+            <association xmi:idref="MyRootPackage-A_student_professor"/>
+        </ownedEnd>
+    </packagedElement>
     <packagedElement xmi:type="uml:Package" name="Package1" xmi:id="MyRootPackage-Package1">
       <packagedElement xmi:type="uml:Class" isAbstract="true" name="Student" xmi:id="MyRootPackage-Package1-Student">
         <ownedAttribute xmi:type="uml:Property" visibility="public" name="name" xmi:id="MyRootPackage-Package1-Student-name">
