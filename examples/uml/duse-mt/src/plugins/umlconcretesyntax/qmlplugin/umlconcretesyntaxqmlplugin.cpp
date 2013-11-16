@@ -40,7 +40,14 @@
 ****************************************************************************/
 #include "umlconcretesyntaxqmlplugin.h"
 
+#include <QtQml/QQmlEngine>
+
+#include "relationshipitem.h"
+
 void UmlConcreteSyntaxQmlPlugin::registerTypes(const char *uri)
 {
+    Q_ASSERT(uri == QLatin1String("QtModeling.Uml"));
+    // @uri QtModeling.Uml
+    qmlRegisterType<RelationshipItem>(uri, 1, 0, "Relationship");
 }
 

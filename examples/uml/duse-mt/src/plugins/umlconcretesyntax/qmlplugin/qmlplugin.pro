@@ -7,21 +7,28 @@
 TARGET  = qtmodelingumlplugin
 TARGETPATH = QtModeling/Uml
 
+QT += quick-private
+
 # Qml
 QML_FILES = \
     UmlElement.qml \
     UmlSlot.qml \
     UmlClass.qml \
     UmlComponent.qml \
-    UmlProperty.qml
+    UmlProperty.qml \
+    UmlAssociation.qml
 
 # Images
 QML_FILES += \
     images/resize-mark.png \
 
-HEADERS += umlconcretesyntaxqmlplugin.h
+HEADERS += \
+    umlconcretesyntaxqmlplugin.h \
+    relationshipitem.h
 
-SOURCES += umlconcretesyntaxqmlplugin.cpp
+SOURCES += \
+    umlconcretesyntaxqmlplugin.cpp \
+    relationshipitem.cpp
 
 CONFIG += no_cxx_module
 load(qml_plugin)

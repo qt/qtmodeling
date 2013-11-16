@@ -78,14 +78,14 @@ void ConcreteSyntaxViewPlugin::addToView(QObject *selectedModelingObject, QQuick
     QQmlComponent *qmlComponent = new QQmlComponent(_concreteSyntaxQuickView->engine());
     int x = qrand() % 400;
     int y = qrand() % 400;
-    qmlComponent->setData(QString("import QtQuick 2.0\nimport QtModeling.Uml 1.0\n\n%1 { x: %2; y: %3}").arg(QString(selectedModelingObject->metaObject()->className()).remove(QRegularExpression("^Q")).remove(QRegularExpression("Object$"))).arg(x).arg(y).toLatin1(), QUrl());
+    qmlComponent->setData(QString("import QtQuick 2.0\nimport QtModeling.Uml 1.0\n\n%1 { x: %2; y: %3; objectName: \"%4\" }").arg(QString(selectedModelingObject->metaObject()->className()).remove(QRegularExpression("^Q")).remove(QRegularExpression("Object$"))).arg(x).arg(y).arg(selectedModelingObject->objectName()).toLatin1(), QUrl());
 
-    QQuickItem *item = 0;
     if (qmlComponent->isError()) {
         qWarning() << qmlComponent->errors();
     } else {
-        item = qobject_cast<QQuickItem *>(qmlComponent->create(context));
+        QQuickItem *item = qobject_cast<QQuickItem *>(qmlComponent->create(context));
         if (item) {
+            item->setParent(parent ? parent:(qobject_cast<QQuickFlickable *>(_concreteSyntaxQuickView->rootObject()))->contentItem());
             item->setParentItem(parent ? parent:(qobject_cast<QQuickFlickable *>(_concreteSyntaxQuickView->rootObject()))->contentItem());
         }
     }
