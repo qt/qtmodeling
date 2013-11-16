@@ -4,13 +4,29 @@
     <elementImport xmi:type="uml:ElementImport" xmi:id="_elementImport.0">
       <importedElement href=":/metamodels/PrimitiveTypes.xmi#String"/>
     </elementImport>
+    <elementImport xmi:type="uml:ElementImport" xmi:id="_elementImport.1">
+      <importedElement href=":/metamodels/PrimitiveTypes.xmi#Integer"/>
+    </elementImport>
     <packagedElement xmi:type="uml:Package" name="Package1" xmi:id="MyRootPackage-Package1">
       <packagedElement xmi:type="uml:Class" isAbstract="true" name="Student" xmi:id="MyRootPackage-Package1-Student">
         <ownedAttribute xmi:type="uml:Property" visibility="public" name="name" xmi:id="MyRootPackage-Package1-Student-name">
           <type href=":/metamodels/PrimitiveTypes.xmi#String"/>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" visibility="public" name="age" xmi:id="MyRootPackage-Package1-Student-age"/>
+        <ownedAttribute xmi:type="uml:Property" visibility="public" name="age" xmi:id="MyRootPackage-Package1-Student-age">
+          <type href=":/metamodels/PrimitiveTypes.xmi#Integer"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" visibility="public" name="advisor" xmi:id="MyRootPackage-Package1-Student-advisor">
+          <type href="MyRootPackage-Package1-Professor"/>
+        </ownedAttribute>
         <ownedOperation xmi:type="uml:Operation" name="getName" xmi:id="MyRootPackage-Package1-Student-getName"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" name="Professor" xmi:id="MyRootPackage-Package1-Professor">
+        <ownedAttribute xmi:type="uml:Property" visibility="public" name="name" xmi:id="MyRootPackage-Package1-Professor-name">
+          <type href=":/metamodels/PrimitiveTypes.xmi#String"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" visibility="public" name="department" xmi:id="MyRootPackage-Package1-Professor-department">
+          <type href=":/metamodels/PrimitiveTypes.xmi#String"/>
+        </ownedAttribute>
       </packagedElement>
       <packagedElement xmi:type="uml:Enumeration" name="DirectionKind" xmi:id="MyRootPackage-Package1-DirectionKind">
         <ownedLiteral xmi:type="uml:EnumerationLiteral" name="DirectionIn" xmi:id="MyRootPackage-Package1-DirectionKind-DirectionIn"/>
