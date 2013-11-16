@@ -43,9 +43,6 @@
 
 #include <duseinterfaces/iplugin.h>
 
-class QQuickView;
-class QQuickItem;
-
 class UmlConcreteSyntaxPlugin : public DuSE::IPlugin
 {
     Q_OBJECT

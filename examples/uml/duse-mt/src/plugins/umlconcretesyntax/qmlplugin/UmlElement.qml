@@ -76,7 +76,7 @@ Rectangle {
     Image {
         id: resizeMark
         visible: parent.focus
-        source: "resize-mark.png"
+        source: "images/resize-mark.png"
         anchors { right: parent.right; bottom: parent.bottom }
         z: 1
         MouseArea {
