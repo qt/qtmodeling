@@ -69,12 +69,11 @@ PluginController::~PluginController()
 
 bool PluginController::initialize()
 {
-    ICore *core = ICore::self();
-    IPlugin *dusePlugin;
+    // Load metamodel plugins
     foreach (QString pluginPath, QCoreApplication::libraryPaths()) {
         QDir pluginsDir(pluginPath);
         pluginsDir.cd("metamodels");
-        foreach (QString fileName, pluginsDir.entryList(QDir::Files)) {
+        foreach (const QString &fileName, pluginsDir.entryList(QDir::Files)) {
             QPluginLoader loader(pluginsDir.absoluteFilePath(fileName));
             QObject *plugin = loader.instance();
             QMetaModelPlugin *metamodelPlugin = 0;
@@ -85,33 +84,40 @@ bool PluginController::initialize()
             }
         }
     }
+
+    // Load DuSE-MT plugins
     QDir dusePluginsDir(QCoreApplication::applicationDirPath());
     dusePluginsDir.cd("../lib/duse-mt/plugins");
-    const QFileInfoList subdirs = dusePluginsDir.entryInfoList(QDir::Dirs|QDir::NoDotAndDotDot);
     QHash<QString, QString> invertedDependency;
-    QStringList pluginList;
-    foreach (const QFileInfo &subdir, subdirs) {
+    QObjectList pluginList;
+    foreach (const QFileInfo &subdir, dusePluginsDir.entryInfoList(QDir::Dirs|QDir::NoDotAndDotDot)) {
         QDir dusePluginSubDir(subdir.absoluteFilePath());
-        foreach (QString fileName, dusePluginSubDir.entryList(QDir::Files)) {
+        foreach (const QString &fileName, dusePluginSubDir.entryList(QDir::Files)) {
             QPluginLoader loader(dusePluginSubDir.absoluteFilePath(fileName));
             QObject *plugin = loader.instance();
-            if (plugin && (dusePlugin = qobject_cast<DuSE::IPlugin *>(plugin))) {
+            if (plugin && qobject_cast<DuSE::IPlugin *>(plugin)) {
                 QJsonObject jsonObject = loader.metaData().value(QStringLiteral("MetaData")).toObject();
                 QJsonArray dependencies = jsonObject.value(QStringLiteral("DependencyList")).toArray();
+                plugin->setProperty("metadata", loader.metaData().value(QStringLiteral("MetaData")).toObject());
+                plugin->setObjectName(plugin->metaObject()->className());
                 int dependencyCount = dependencies.size();
                 for (int i = 0; i < dependencyCount; ++i)
-                    invertedDependency.insert(dependencies.at(i).toString(), dusePlugin->metaObject()->className());
-                pluginList << dusePluginSubDir.absoluteFilePath(fileName);
+                    invertedDependency.insert(dependencies.at(i).toString(), plugin->objectName());
+                pluginList << plugin;
             }
-            delete plugin;
+            else {
+                _errorStrings << "Error when loading plugin" << fileName << ":" << loader.errorString();
+            }
         }
     }
+
+    // Initialize DuSE-MT plugins
+    ICore *core = ICore::self();
+    IPlugin *dusePlugin;
     int previousPluginListSize = 0;
     while (pluginList.size() != previousPluginListSize) {
         previousPluginListSize = pluginList.size();
-        foreach (const QString &pluginFileName, pluginList) {
-            QPluginLoader loader(pluginFileName);
-            QObject *plugin = loader.instance();
+        foreach (QObject *plugin, pluginList) {
             if (plugin && (dusePlugin = qobject_cast<DuSE::IPlugin *>(plugin))) {
                 int dependencyCount = invertedDependency.values(dusePlugin->metaObject()->className()).count();
                 int loadedDependencies = 0;
@@ -124,16 +130,22 @@ bool PluginController::initialize()
                     }
                 }
                 if (loadedDependencies == dependencyCount) {
-                    dusePlugin->initialize(core);
-                    dusePlugin->setProperty("metadata", loader.metaData().value(QStringLiteral("MetaData")).toObject());
-                    _dusemtPlugins << dusePlugin;
-                    pluginList.removeAll(pluginFileName);
+                    if (dusePlugin->initialize(core)) {
+                        _dusemtPlugins << dusePlugin;
+                        pluginList.removeAll(plugin);
+                    }
                 }
             }
-            else
-                _errorStrings << "Error when loading plugin" << pluginFileName << ":" << loader.errorString();
         }
     }
+    if (!pluginList.isEmpty()) {
+        QString errorString = "The following plugins have not been initialized: ";
+        foreach (QObject *plugin, pluginList)
+            errorString += plugin->objectName() + ", ";
+        errorString.chop(2);
+        _errorStrings << errorString;
+    }
+
     return _errorStrings.isEmpty() ? true:false;
 }
 
