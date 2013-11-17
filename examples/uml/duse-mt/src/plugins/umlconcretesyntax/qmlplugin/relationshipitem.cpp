@@ -74,11 +74,20 @@ void RelationshipItem::paint(QPainter *painter)
     if (originalLine.intersect(QLineF(x2 + w2, y2     , x2 + w2, y2 + h2), &p2) == QLineF::BoundedIntersection) {}
 
     painter->drawLine(p1.x()-x(), p1.y()-y(), p2.x()-x(), p2.y()-y());
+    QPolygonF arrow(QVector<QPointF>() << QPointF(-10, -10) << QPointF(0, 0) << QPointF(-10, +10));
     QTransform transform;
     transform.translate(p2.x()-x(), p2.y()-y());
     transform.rotate(-originalLine.angle());
-    QPolygonF arrow(QVector<QPointF>() << QPointF(-10, -10) << QPointF(0, 0) << QPointF(-10, +10));
     painter->drawPolyline(transform.map(arrow));
+
+    if (_end1Aggregation == "composite") {
+        painter->setBrush(QBrush(Qt::black));
+        QPolygon diamond(QVector<QPoint>() << QPoint(0, 0) << QPoint(10, -10) << QPoint(20, 0) << QPoint(10, 10));
+        QTransform transform;
+        transform.translate(p1.x()-x(), p1.y()-y());
+        transform.rotate(-originalLine.angle());
+        painter->drawPolygon(transform.map(diamond));
+    }
 }
 
 QQuickRectangle *RelationshipItem::end1() const

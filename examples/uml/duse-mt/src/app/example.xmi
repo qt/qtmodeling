@@ -23,7 +23,7 @@
         <ownedAttribute xmi:type="uml:Property" visibility="public" name="age" xmi:id="MyRootPackage-Package1-Student-age">
           <type href=":/metamodels/PrimitiveTypes.xmi#Integer"/>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" visibility="public" name="advisor" xmi:id="MyRootPackage-Package1-Student-advisor">
+        <ownedAttribute xmi:type="uml:Property" visibility="public" name="advisor" xmi:id="MyRootPackage-Package1-Student-advisor" aggregation="composite">
           <type href="MyRootPackage-Package1-Professor"/>
         </ownedAttribute>
         <ownedOperation xmi:type="uml:Operation" name="getName" xmi:id="MyRootPackage-Package1-Student-getName"/>
