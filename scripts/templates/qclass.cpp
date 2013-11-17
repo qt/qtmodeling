@@ -90,7 +90,7 @@ Q${namespace}${className}::Q${namespace}${className}([%- IF class.findvalue("@is
     [%- SET defaultType = attribute.findvalue("defaultValue/@xmi:type") -%]
     [%- SET type = QT_TYPE(namespace, attribute) -%]
     [%- SET originalType = attribute.findvalue("@type") -%]
-    [%- IF defaultType == "uml:LiteralBoolean" || defaultType == "uml:InstanceValue" || defaultType == "uml:LiteralInteger" || defaultType == "uml:LiteralUnlimitedNatural" || type.match('\*$') -%]
+    [%- IF defaultType == "uml:LiteralBoolean" || defaultType == "uml:InstanceValue" || defaultType == "uml:LiteralInteger" || type.match('\*$') -%]
         [%- IF found == "false" %] :
 [% SET found = "true" -%]
         [%- ELSE %],
@@ -106,13 +106,6 @@ Q${namespace}${className}::Q${namespace}${className}([%- IF class.findvalue("@is
             [%- SET defaultInstance = attribute.findvalue("defaultValue/@instance") -%]
     _[% QT_ATTRIBUTE(attribute) %](Qt${namespace}::${defaultInstance.split("-").0}${defaultInstance.split("-").1.ucfirst})
         [%- ELSIF defaultType == "uml:LiteralInteger" -%]
-            [%- SET defaultValue = attribute.findvalue("defaultValue/@value") -%]
-            [%- IF defaultValue != "" -%]
-    _[% QT_ATTRIBUTE(attribute) %](${defaultValue})
-            [%- ELSE -%]
-    _[% QT_ATTRIBUTE(attribute) %](0)
-            [%- END -%]
-        [%- ELSIF defaultType == "uml:LiteralUnlimitedNatural" -%]
             [%- SET defaultValue = attribute.findvalue("defaultValue/@value") -%]
             [%- IF defaultValue != "" -%]
     _[% QT_ATTRIBUTE(attribute) %](${defaultValue})

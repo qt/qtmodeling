@@ -3,7 +3,7 @@
 ** Copyright (C) 2013 Sandro S. Andrade <sandroandrade@kde.org>
 ** Contact: http://www.qt-project.org/legal
 **
-** This file is part of the QtMof module of the Qt Toolkit.
+** This file is part of the QtUml module of the Qt Toolkit.
 **
 ** $QT_BEGIN_LICENSE:LGPL$
 ** Commercial License Usage
@@ -38,43 +38,12 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef QMOFLITERALUNLIMITEDNATURAL_H
-#define QMOFLITERALUNLIMITEDNATURAL_H
+import QtQuick 2.0
+import QtModeling.Uml 1.0
+import "util.js" as Util
 
-#include <QtMof/QtMofGlobal>
-
-#include <QtMof/QMofLiteralSpecification>
-
-QT_BEGIN_HEADER
-
-QT_BEGIN_NAMESPACE
-
-QT_MODULE(QtMof)
-
-class Q_MOF_EXPORT QMofLiteralUnlimitedNatural : public QMofLiteralSpecification
-{
-public:
-    explicit QMofLiteralUnlimitedNatural(bool createQModelingObject = true);
-
-    virtual QModelingElement *clone() const;
-
-    // Owned attributes
-    QString value() const;
-    void setValue(QString value);
-
-    // Operations
-    bool isComputable() const;
-    QString unlimitedValue() const;
-
-protected:
-    QString _value;
-};
-
-QT_END_NAMESPACE
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE(QMofLiteralUnlimitedNatural) *)
-
-QT_END_HEADER
-
-#endif // QMOFLITERALUNLIMITEDNATURAL_H
-
+Relationship {
+    relationshipType: "generalization"
+    source: Util.findQuickItem(parent, element.specific.name)
+    target: Util.findQuickItem(parent, element.general.name)
+}

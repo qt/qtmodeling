@@ -49,36 +49,56 @@ class RelationshipItem : public QQuickPaintedItem
 {
     Q_OBJECT
 
-    Q_PROPERTY(QQuickRectangle * end1 READ end1 WRITE setEnd1)
-    Q_PROPERTY(QQuickRectangle * end2 READ end2 WRITE setEnd2)
-    Q_PROPERTY(QString end1Aggregation READ end1Aggregation WRITE setEnd1Aggregation)
-    Q_PROPERTY(QString end2Aggregation READ end2Aggregation WRITE setEnd2Aggregation)
+    Q_PROPERTY(QString name READ name WRITE setName)
+    Q_PROPERTY(QQuickRectangle * source READ source WRITE setSource)
+    Q_PROPERTY(QQuickRectangle * target READ target WRITE setTarget)
+    Q_PROPERTY(QString relationshipType READ relationshipType WRITE setRelationshipType)
+    Q_PROPERTY(QString sourceAggregation READ sourceAggregation WRITE setSourceAggregation)
+    Q_PROPERTY(QString targetAggregation READ targetAggregation WRITE setTargetAggregation)
+    Q_PROPERTY(QString sourceMultiplicity READ sourceMultiplicity WRITE setSourceMultiplicity)
+    Q_PROPERTY(QString targetMultiplicity READ targetMultiplicity WRITE setTargetMultiplicity)
 
 public:
     RelationshipItem(QQuickItem *parent = 0);
 
     void paint(QPainter *painter);
 
-    QQuickRectangle *end1() const;
-    void setEnd1(QQuickRectangle *end1);
+    QString name() const;
+    void setName(QString name);
 
-    QQuickRectangle *end2() const;
-    void setEnd2(QQuickRectangle *end2);
+    QQuickRectangle *source() const;
+    void setSource(QQuickRectangle *source);
 
-    QString end1Aggregation() const;
-    void setEnd1Aggregation(QString end1Aggregation);
+    QQuickRectangle *target() const;
+    void setTarget(QQuickRectangle *target);
 
-    QString end2Aggregation() const;
-    void setEnd2Aggregation(QString end2Aggregation);
+    QString relationshipType() const;
+    void setRelationshipType(QString relationshipType);
+
+    QString sourceAggregation() const;
+    void setSourceAggregation(QString sourceAggregation);
+
+    QString targetAggregation() const;
+    void setTargetAggregation(QString targetAggregation);
+
+    QString sourceMultiplicity() const;
+    void setSourceMultiplicity(QString sourceMultiplicity);
+
+    QString targetMultiplicity() const;
+    void setTargetMultiplicity(QString targetMultiplicity);
 
 private Q_SLOTS:
     void updateCoordinates();
 
 private:
-    QQuickRectangle *_end1;
-    QQuickRectangle *_end2;
-    QString _end1Aggregation;
-    QString _end2Aggregation;
+    QString _name;
+    QQuickRectangle *_source;
+    QQuickRectangle *_target;
+    QString _relationshipType;
+    QString _sourceAggregation;
+    QString _targetAggregation;
+    QString _sourceMultiplicity;
+    QString _targetMultiplicity;
 };
 
 #endif // RELATIONSHIPITEM_H

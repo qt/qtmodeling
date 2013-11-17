@@ -3,7 +3,7 @@
 [% SET uml2qt_type = {
       "Boolean" = "bool",
       "Integer" = "int",
-      "UnlimitedNatural" = "int",
+      "UnlimitedNatural" = "QString",
       "String" = "QString",
       "Real" = "double"
    };
@@ -475,7 +475,7 @@ void Q${namespace}${originalClassName}Object::unset${qtAttribute.remove("^is").u
             [%- IF defaultValue != "" -%]
     set${qtAttribute.remove("^is").ucfirst}(${defaultValue});
             [%- ELSE -%]
-    set${qtAttribute.remove("^is").ucfirst}(0);
+    set${qtAttribute.remove("^is").ucfirst}(QStringLiteral(""));
             [%- END -%]
         [%- ELSIF type.match('\*$') -%]
     set${qtAttribute.remove("^is").ucfirst}(0);

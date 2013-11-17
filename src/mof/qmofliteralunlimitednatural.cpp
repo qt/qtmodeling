@@ -58,8 +58,7 @@ QT_BEGIN_NAMESPACE
 
     \brief A literal unlimited natural is a specification of an unlimited natural number.
  */
-QMofLiteralUnlimitedNatural::QMofLiteralUnlimitedNatural(bool createQModelingObject) :
-    _value(0)
+QMofLiteralUnlimitedNatural::QMofLiteralUnlimitedNatural(bool createQModelingObject)
 {
     if (createQModelingObject)
         _qModelingObject = qobject_cast<QModelingObject *>(new QMofLiteralUnlimitedNaturalObject(this));
@@ -83,14 +82,14 @@ QModelingElement *QMofLiteralUnlimitedNatural::clone() const
 /*!
     The specified UnlimitedNatural value.
  */
-int QMofLiteralUnlimitedNatural::value() const
+QString QMofLiteralUnlimitedNatural::value() const
 {
     // This is a read-write property
 
     return _value;
 }
 
-void QMofLiteralUnlimitedNatural::setValue(int value)
+void QMofLiteralUnlimitedNatural::setValue(QString value)
 {
     // This is a read-write property
 
@@ -115,11 +114,11 @@ bool QMofLiteralUnlimitedNatural::isComputable() const
 /*!
     The query unlimitedValue() gives the value.
  */
-int QMofLiteralUnlimitedNatural::unlimitedValue() const
+QString QMofLiteralUnlimitedNatural::unlimitedValue() const
 {
     qWarning("QMofLiteralUnlimitedNatural::unlimitedValue(): to be implemented (operation)");
 
-    return int ();
+    return QString ();
 }
 
 QT_END_NAMESPACE

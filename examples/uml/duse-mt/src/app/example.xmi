@@ -9,10 +9,12 @@
     </elementImport>
     <packagedElement xmi:type="uml:Association" name="A_student_professor" xmi:id="MyRootPackage-A_student_professor">
         <memberEnd xmi:idref="MyRootPackage-Package1-Student-advisor"/>
-        <memberEnd xmi:idref="A_student_professor-student"/>
-        <ownedEnd xmi:type="uml:Property" name="student" visibility="public" xmi:id="A_student_professor-student">
+        <memberEnd xmi:idref="MyRootPackage-A_student_professor-student"/>
+        <ownedEnd xmi:type="uml:Property" name="student" visibility="public" xmi:id="MyRootPackage-A_student_professor-student">
             <type xmi:idref="MyRootPackage-Package1-Student"/>
             <association xmi:idref="MyRootPackage-A_student_professor"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="MyRootPackage-A_student_professor-student-_upperValue" value="4"/>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="MyRootPackage-A_student_professor-student-_lowerValue"/>
         </ownedEnd>
     </packagedElement>
     <packagedElement xmi:type="uml:Association" name="A_student_enrollment" xmi:id="MyRootPackage-A_student_enrollment">
@@ -33,6 +35,8 @@
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" visibility="public" name="advisor" xmi:id="MyRootPackage-Package1-Student-advisor" aggregation="shared">
           <type href="MyRootPackage-Package1-Professor"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="MyRootPackage-Package1-Student-advisor-_upperValue" value="*"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="MyRootPackage-Package1-Student-advisor-_lowerValue"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" visibility="public" name="enrollment" xmi:id="MyRootPackage-Package1-Student-enrollment" aggregation="composite">
           <type href="MyRootPackage-Package1-Enrollment"/>
@@ -59,6 +63,7 @@
         <ownedLiteral xmi:type="uml:EnumerationLiteral" name="DirectionIn" xmi:id="MyRootPackage-Package1-DirectionKind-DirectionIn"/>
       </packagedElement>
       <packagedElement xmi:type="uml:Class" name="InterStudent" xmi:id="MyRootPackage-Package1-InterStudent">
+        <generalization xmi:type="uml:Generalization" xmi:id="MyRootPackage-Package1-InterStudent-_generalization.0" general="MyRootPackage-Package1-Student"/>
         <ownedAttribute xmi:type="uml:Property" name="studentId" xmi:id="MyRootPackage-Package1-InterStudent-studentId"/>
       </packagedElement>
     </packagedElement>

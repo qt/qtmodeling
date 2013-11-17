@@ -41,6 +41,7 @@
 #include "propertyeditoritemdelegate_p.h"
 
 #include <QtWidgets/QLineEdit>
+#include <QtWidgets/QSpinBox>
 #include <QtWidgets/QCheckBox>
 #include <QtWidgets/QComboBox>
 #include <QtWidgets/QTreeView>
@@ -105,7 +106,7 @@ QWidget *PropertyEditorItemDelegate::createEditor(QWidget *parent, const QStyleO
             connect(propertyEditor, &PropertyEditor::closeEditor, this, &PropertyEditorItemDelegate::closeEditor);
             return propertyEditor;
         }
-        else if (metaProperty->type() == QVariant::String)
+        else if (metaProperty->type() == QVariant::String || metaProperty->type() == QVariant::Int)
             return QStyledItemDelegate::createEditor(parent, option, index);
         else return 0;
     }
@@ -196,6 +197,10 @@ void PropertyEditorItemDelegate::setModelData(QWidget *editor, QAbstractItemMode
         else if (metaProperty->type() == QVariant::String) {
             QLineEdit *lineEdit = qobject_cast<QLineEdit *>(editor);
             model->setData(index, lineEdit->text(), Qt::DisplayRole);
+        }
+        else if (metaProperty->type() == QVariant::Int) {
+            QSpinBox *spinBox = qobject_cast<QSpinBox *>(editor);
+            model->setData(index, spinBox->value(), Qt::DisplayRole);
         }
         else if (QString::fromLatin1(metaProperty->typeName()).endsWith('*')) {
             PropertyEditor *propertyEditor = qobject_cast<PropertyEditor *>(editor);

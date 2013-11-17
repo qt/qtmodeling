@@ -150,14 +150,11 @@ QVariant QModelingObjectPropertyModel::data(const QModelIndex &index, int role) 
                     if (index.parent().row() != -1 && metaProperty->isValid()) {
                         QString typeName = QString::fromLatin1(metaProperty->typeName());
                         QVariant variant = metaProperty->read(d->modelingObject);
-                        if (metaProperty->type() == QVariant::String) {
-                            return metaProperty->read(d->modelingObject);
-                        }
-                        else if (metaProperty->type() == QVariant::Bool) {
+                        if (metaProperty->isEnumType())
+                            return QString::fromLatin1(metaProperty->enumerator().valueToKey(variant.toInt())).remove(QString::fromLatin1(metaProperty->typeName()).split(':').last()).toLower();
+                        else if (metaProperty->type() == QVariant::Bool || metaProperty->type() == QVariant::String || metaProperty->type() == QVariant::Int) {
                             return variant;
                         }
-                        else if (metaProperty->isEnumType())
-                            return QString::fromLatin1(metaProperty->enumerator().valueToKey(variant.toInt())).remove(QString::fromLatin1(metaProperty->typeName()).split(':').last()).toLower();
                         else if (typeName.endsWith('*') && qvariant_cast<QModelingObject *>(variant)) {
                             QModelingObject *modelingObject = qvariant_cast<QModelingObject *>(variant);
                             if (modelingObject) {

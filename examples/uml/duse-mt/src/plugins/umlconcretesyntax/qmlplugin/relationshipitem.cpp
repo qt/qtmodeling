@@ -42,23 +42,28 @@
 
 #include <QtGui/QPainter>
 
+#include <QtWidgets/QApplication>
+
 #include "private/qquickrectangle_p.h"
 
 RelationshipItem::RelationshipItem(QQuickItem *parent)
     : QQuickPaintedItem(parent),
-      _end1(0),
-      _end2(0)
+      _source(0),
+      _target(0),
+      _relationshipType("association"),
+      _sourceAggregation("none"),
+      _targetAggregation("none")
 {
     setAntialiasing(true);
 }
 
 void RelationshipItem::paint(QPainter *painter)
 {
-    if (!_end1 || !_end2)
+    if (!_source || !_target)
         return;
 
-    qreal x1 = _end1->x();  qreal y1 = _end1->y();  qreal w1 = _end1->width();  qreal h1 = _end1->height();
-    qreal x2 = _end2->x();  qreal y2 = _end2->y();  qreal w2 = _end2->width();  qreal h2 = _end2->height();
+    qreal x1 = _source->x();  qreal y1 = _source->y();  qreal w1 = _source->width();  qreal h1 = _source->height();
+    qreal x2 = _target->x();  qreal y2 = _target->y();  qreal w2 = _target->width();  qreal h2 = _target->height();
 
     QLineF originalLine(x1 + w1/2, y1 + h1/2, x2 + w2/2, y2 + h2/2);
     QPointF p1, p2;
@@ -74,15 +79,27 @@ void RelationshipItem::paint(QPainter *painter)
     if (originalLine.intersect(QLineF(x2 + w2, y2     , x2 + w2, y2 + h2), &p2) == QLineF::BoundedIntersection) {}
 
     painter->drawLine(p1.x()-x(), p1.y()-y(), p2.x()-x(), p2.y()-y());
-    QPolygonF arrow(QVector<QPointF>() << QPointF(-10, -10) << QPointF(0, 0) << QPointF(-10, +10));
+    QPolygonF arrow(QVector<QPointF>() << QPointF(-12, -8) << QPointF(0, 0) << QPointF(-12, 8));
     QTransform transform;
     transform.translate(p2.x()-x(), p2.y()-y());
     transform.rotate(-originalLine.angle());
-    painter->drawPolyline(transform.map(arrow));
+    if (_relationshipType == "association") {
+        painter->drawPolyline(transform.map(arrow));
+        QFont font("Korolev");
+        QFontMetrics metrics(font);
+        painter->setFont(font);
+        painter->drawText(p1.x()-x()+(p2.x()-x()-(p1.x()-x()))/2+10, p1.y()-y()+(p2.y()-y()-(p1.y()-y()))/2, _name);
+        painter->drawText(p2.x()-x()+10, p2.y()-y()-10, _sourceMultiplicity);
+        painter->drawText(p1.x()-x()+10, p1.y()-y()-10, _targetMultiplicity);
+    }
+    else if (_relationshipType == "generalization") {
+        painter->setBrush(QBrush(Qt::white));
+        painter->drawPolygon(transform.map(arrow));
+    }
 
-    if (_end1Aggregation == "composite" || _end1Aggregation == "shared") {
-        painter->setBrush(QBrush(_end1Aggregation == "composite" ? Qt::black:Qt::white));
-        QPolygon diamond(QVector<QPoint>() << QPoint(0, 0) << QPoint(10, -10) << QPoint(20, 0) << QPoint(10, 10));
+    if (_relationshipType == "association" && (_sourceAggregation == "composite" || _sourceAggregation == "shared")) {
+        painter->setBrush(QBrush(_sourceAggregation == "composite" ? Qt::black:Qt::white));
+        QPolygon diamond(QVector<QPoint>() << QPoint(0, 0) << QPoint(12, -8) << QPoint(24, 0) << QPoint(12, 8));
         QTransform transform;
         transform.translate(p1.x()-x(), p1.y()-y());
         transform.rotate(-originalLine.angle());
@@ -90,85 +107,125 @@ void RelationshipItem::paint(QPainter *painter)
     }
 }
 
-QQuickRectangle *RelationshipItem::end1() const
+QString RelationshipItem::name() const
 {
-    return _end1;
+    return _name;
 }
 
-void RelationshipItem::setEnd1(QQuickRectangle *end1)
+void RelationshipItem::setName(QString name)
 {
-    if (end1 != _end1) {
-        if (_end1) {
-            disconnect(end1, &QQuickRectangle::xChanged, this, &RelationshipItem::updateCoordinates);
-            disconnect(end1, &QQuickRectangle::yChanged, this, &RelationshipItem::updateCoordinates);
-        }
-        _end1 = end1;
-        if (!_end2) {
-            setX(_end1->x());
-            setY(_end1->y());
-        }
-        else {
-            updateCoordinates();
-        }
-        connect(end1, &QQuickRectangle::xChanged, this, &RelationshipItem::updateCoordinates);
-        connect(end1, &QQuickRectangle::yChanged, this, &RelationshipItem::updateCoordinates);
-    }
+    _name = name;
 }
 
-QQuickRectangle *RelationshipItem::end2() const
+QQuickRectangle *RelationshipItem::source() const
 {
-    return _end2;
+    return _source;
 }
 
-void RelationshipItem::setEnd2(QQuickRectangle *end2)
+void RelationshipItem::setSource(QQuickRectangle *source)
 {
-    if (end2 != _end2) {
-        if (_end2) {
-            disconnect(end2, &QQuickRectangle::xChanged, this, &RelationshipItem::updateCoordinates);
-            disconnect(end2, &QQuickRectangle::yChanged, this, &RelationshipItem::updateCoordinates);
+    if (source != _source) {
+        if (_source) {
+            disconnect(source, &QQuickRectangle::xChanged, this, &RelationshipItem::updateCoordinates);
+            disconnect(source, &QQuickRectangle::yChanged, this, &RelationshipItem::updateCoordinates);
         }
-        _end2 = end2;
-        if (!_end1) {
-            setX(_end2->x());
-            setY(_end2->y());
+        _source = source;
+        if (!_target) {
+            setX(_source->x());
+            setY(_source->y());
         }
         else {
             updateCoordinates();
         }
-        connect(end2, &QQuickRectangle::xChanged, this, &RelationshipItem::updateCoordinates);
-        connect(end2, &QQuickRectangle::yChanged, this, &RelationshipItem::updateCoordinates);
+        connect(source, &QQuickRectangle::xChanged, this, &RelationshipItem::updateCoordinates);
+        connect(source, &QQuickRectangle::yChanged, this, &RelationshipItem::updateCoordinates);
     }
 }
 
-QString RelationshipItem::end1Aggregation() const
+QQuickRectangle *RelationshipItem::target() const
 {
-    return _end1Aggregation;
+    return _target;
 }
 
-void RelationshipItem::setEnd1Aggregation(QString end1Aggregation)
+void RelationshipItem::setTarget(QQuickRectangle *target)
 {
-    _end1Aggregation = end1Aggregation;
+    if (target != _target) {
+        if (_target) {
+            disconnect(target, &QQuickRectangle::xChanged, this, &RelationshipItem::updateCoordinates);
+            disconnect(target, &QQuickRectangle::yChanged, this, &RelationshipItem::updateCoordinates);
+        }
+        _target = target;
+        if (!_source) {
+            setX(_target->x());
+            setY(_target->y());
+        }
+        else {
+            updateCoordinates();
+        }
+        connect(target, &QQuickRectangle::xChanged, this, &RelationshipItem::updateCoordinates);
+        connect(target, &QQuickRectangle::yChanged, this, &RelationshipItem::updateCoordinates);
+    }
 }
 
-QString RelationshipItem::end2Aggregation() const
+QString RelationshipItem::relationshipType() const
 {
-    return _end2Aggregation;
+    return _relationshipType;
 }
 
-void RelationshipItem::setEnd2Aggregation(QString end2Aggregation)
+void RelationshipItem::setRelationshipType(QString relationshipType)
 {
-    _end2Aggregation = end2Aggregation;
+    _relationshipType = relationshipType;
+}
+
+QString RelationshipItem::sourceAggregation() const
+{
+    return _sourceAggregation;
+}
+
+void RelationshipItem::setSourceAggregation(QString sourceAggregation)
+{
+    _sourceAggregation = sourceAggregation;
+}
+
+QString RelationshipItem::targetAggregation() const
+{
+    return _targetAggregation;
+}
+
+void RelationshipItem::setTargetAggregation(QString targetAggregation)
+{
+    _targetAggregation = targetAggregation;
+}
+
+QString RelationshipItem::sourceMultiplicity() const
+{
+    return _sourceMultiplicity;
+}
+
+void RelationshipItem::setSourceMultiplicity(QString sourceMultiplicity)
+{
+    _sourceMultiplicity = sourceMultiplicity;
+}
+
+QString RelationshipItem::targetMultiplicity() const
+{
+    return _targetMultiplicity;
+}
+
+void RelationshipItem::setTargetMultiplicity(QString targetMultiplicity)
+{
+    _targetMultiplicity = targetMultiplicity;
 }
 
 void RelationshipItem::updateCoordinates()
 {
-    QQuickRectangle *minRectX = _end1->x() < _end2->x() ? _end1:_end2;
-    QQuickRectangle *minRectY = _end1->y() < _end2->y() ? _end1:_end2;
-    QQuickRectangle *maxRectX = minRectX == _end1 ? _end2:_end1;
-    QQuickRectangle *maxRectY = minRectY == _end1 ? _end2:_end1;
+    QQuickRectangle *minRectX = _source->x() < _target->x() ? _source:_target;
+    QQuickRectangle *minRectY = _source->y() < _target->y() ? _source:_target;
+    QQuickRectangle *maxRectX = minRectX == _source ? _target:_source;
+    QQuickRectangle *maxRectY = minRectY == _source ? _target:_source;
     setX(minRectX->x());
     setY(minRectY->y());
-    setWidth(qMax(maxRectX->x() + maxRectX->width() - minRectX->x(), qMax(_end1->width(), _end2->width())));
-    setHeight(qMax(maxRectY->y() + maxRectY->height() - minRectY->y(), qMax(_end1->height(), _end2->height())));
+    setWidth(qMax(maxRectX->x() + maxRectX->width() - minRectX->x(), qMax(_source->width(), _target->width())));
+    setHeight(qMax(maxRectY->y() + maxRectY->height() - minRectY->y(), qMax(_source->height(), _target->height())));
 }
 

@@ -43,10 +43,14 @@ import QtModeling.Uml 1.0
 import "util.js" as Util
 
 Relationship {
-    end1: Util.findQuickItem(parent, element.memberEnds[0].class_.name)
-    end2: Util.findQuickItem(parent, element.memberEnds[0].type.name)
-    end1Aggregation: aggregation(element.memberEnds[0].aggregation);
-    end2Aggregation: aggregation(element.memberEnds[1].aggregation);
+    name: element.name
+    relationshipType: "association"
+    source: Util.findQuickItem(parent, element.memberEnds[0].class_.name)
+    target: Util.findQuickItem(parent, element.memberEnds[0].type.name)
+    sourceAggregation: aggregation(element.memberEnds[0].aggregation);
+    targetAggregation: aggregation(element.memberEnds[1].aggregation);
+    sourceMultiplicity: element.memberEnds[0].lowerValue.value + ".." + element.memberEnds[0].upperValue.value
+    targetMultiplicity: element.memberEnds[1].lowerValue.value + ".." + element.memberEnds[1].upperValue.value
     function aggregation(aggregationEnum)
     {
         switch (aggregationEnum) {

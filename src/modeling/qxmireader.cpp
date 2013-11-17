@@ -245,6 +245,10 @@ QList<QModelingElement *> QXmiReader::readFile(QIODevice *device, QString import
                             if (!modelingObject->asQModelingObject()->setProperty(attribute.name().toString().toLatin1(), attribute.value().toString()))
                                 d->errors << QStringLiteral("Error when setting property '%1' of object with id '%2'.").arg(attribute.name().toString()).arg(id);
                         }
+                        else if (metaProperty.type() == QVariant::Int) {
+                            if (!modelingObject->asQModelingObject()->setProperty(attribute.name().toString().toLatin1(), attribute.value().toInt()))
+                                d->errors << QStringLiteral("Error when setting property '%1' of object with id '%2'.").arg(attribute.name().toString()).arg(id);
+                        }
                         else if (QString::fromLatin1(metaProperty.typeName()).endsWith('*')) {
                             QModelingElement *propertyObject = d->idMap.value(attribute.value().toString());
                             if (propertyObject) {

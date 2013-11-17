@@ -161,7 +161,7 @@ QtUml::VisibilityKind QUmlLiteralUnlimitedNaturalObject::visibility() const
 
 // OWNED ATTRIBUTES [LiteralUnlimitedNatural]
 
-int QUmlLiteralUnlimitedNaturalObject::value() const
+QString QUmlLiteralUnlimitedNaturalObject::value() const
 {
     return qmodelingelementproperty_cast<QUmlLiteralUnlimitedNatural *>(this)->value();
 }
@@ -255,7 +255,7 @@ bool QUmlLiteralUnlimitedNaturalObject::isComputable() const
     return qmodelingelementproperty_cast<QUmlLiteralUnlimitedNatural *>(this)->isComputable();
 }
 
-int QUmlLiteralUnlimitedNaturalObject::unlimitedValue() const
+QString QUmlLiteralUnlimitedNaturalObject::unlimitedValue() const
 {
     return qmodelingelementproperty_cast<QUmlLiteralUnlimitedNatural *>(this)->unlimitedValue();
 }
@@ -368,7 +368,7 @@ void QUmlLiteralUnlimitedNaturalObject::unsetVisibility()
 
 // SLOTS FOR OWNED ATTRIBUTES [LiteralUnlimitedNatural]
 
-void QUmlLiteralUnlimitedNaturalObject::setValue(int value)
+void QUmlLiteralUnlimitedNaturalObject::setValue(QString value)
 {
     qmodelingelementproperty_cast<QUmlLiteralUnlimitedNatural *>(this)->setValue(value);
     emit valueChanged(this->value());
@@ -377,7 +377,7 @@ void QUmlLiteralUnlimitedNaturalObject::setValue(int value)
 void QUmlLiteralUnlimitedNaturalObject::unsetValue()
 {
     Q_D(QModelingObject);
-    setValue(0);
+    setValue(QStringLiteral(""));
     d->modifiedResettableProperties.removeAll(QStringLiteral("value"));
 }
 

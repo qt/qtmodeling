@@ -59,15 +59,15 @@ public:
     virtual QModelingElement *clone() const;
 
     // Owned attributes
-    int value() const;
-    void setValue(int value);
+    QString value() const;
+    void setValue(QString value);
 
     // Operations
     bool isComputable() const;
-    int unlimitedValue() const;
+    QString unlimitedValue() const;
 
 protected:
-    int _value;
+    QString _value;
 };
 
 QT_END_NAMESPACE

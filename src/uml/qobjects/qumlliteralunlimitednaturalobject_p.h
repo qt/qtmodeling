@@ -84,7 +84,7 @@ class Q_UML_EXPORT QUmlLiteralUnlimitedNaturalObject : public QModelingObject
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility NOTIFY visibilityChanged RESET unsetVisibility)
 
     // Properties [LiteralUnlimitedNatural]
-    Q_PROPERTY(int value READ value WRITE setValue NOTIFY valueChanged RESET unsetValue)
+    Q_PROPERTY(QString value READ value WRITE setValue NOTIFY valueChanged RESET unsetValue)
 
 public:
     Q_INVOKABLE explicit QUmlLiteralUnlimitedNaturalObject(QUmlLiteralUnlimitedNatural *modelingElement);
@@ -112,7 +112,7 @@ public:
     Q_INVOKABLE QtUml::VisibilityKind visibility() const;
 
     // Owned attributes [LiteralUnlimitedNatural]
-    Q_INVOKABLE int value() const;
+    Q_INVOKABLE QString value() const;
 
     // Operations [Element]
     Q_INVOKABLE QSet<QObject *> allOwnedElements() const;
@@ -137,7 +137,7 @@ public:
 
     // Operations [LiteralUnlimitedNatural]
     Q_INVOKABLE bool isComputable() const;
-    Q_INVOKABLE int unlimitedValue() const;
+    Q_INVOKABLE QString unlimitedValue() const;
 
 public Q_SLOTS:
 
@@ -168,7 +168,7 @@ public Q_SLOTS:
     void unsetVisibility();
 
     // Slots for owned attributes [LiteralUnlimitedNatural]
-    void setValue(int value);
+    void setValue(QString value);
     void unsetValue();
 
 Q_SIGNALS:
@@ -196,7 +196,7 @@ Q_SIGNALS:
     void visibilityChanged(QtUml::VisibilityKind visibility);
 
     // Signals for owned attributes [LiteralUnlimitedNatural]
-    void valueChanged(int value);
+    void valueChanged(QString value);
 
 protected:
     virtual void setGroupProperties();

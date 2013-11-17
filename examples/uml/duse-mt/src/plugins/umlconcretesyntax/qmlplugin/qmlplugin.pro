@@ -16,7 +16,8 @@ QML_FILES = \
     UmlClass.qml \
     UmlComponent.qml \
     UmlProperty.qml \
-    UmlAssociation.qml
+    UmlAssociation.qml \
+    UmlGeneralization.qml
 
 # JavaScript
 

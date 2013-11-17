@@ -78,7 +78,7 @@ class Q_MOF_EXPORT QMofLiteralUnlimitedNaturalObject : public QModelingObject
     Q_PROPERTY(QObject * type READ type WRITE setType NOTIFY typeChanged)
 
     // Properties [LiteralUnlimitedNatural]
-    Q_PROPERTY(int value READ value WRITE setValue NOTIFY valueChanged RESET unsetValue)
+    Q_PROPERTY(QString value READ value WRITE setValue NOTIFY valueChanged RESET unsetValue)
 
 public:
     Q_INVOKABLE explicit QMofLiteralUnlimitedNaturalObject(QMofLiteralUnlimitedNatural *modelingElement);
@@ -100,7 +100,7 @@ public:
     Q_INVOKABLE QObject *type() const;
 
     // Owned attributes [LiteralUnlimitedNatural]
-    Q_INVOKABLE int value() const;
+    Q_INVOKABLE QString value() const;
 
     // Operations [Element]
     Q_INVOKABLE QSet<QObject *> allOwnedElements() const;
@@ -124,7 +124,7 @@ public:
 
     // Operations [LiteralUnlimitedNatural]
     Q_INVOKABLE bool isComputable() const;
-    Q_INVOKABLE int unlimitedValue() const;
+    Q_INVOKABLE QString unlimitedValue() const;
 
 public Q_SLOTS:
 
@@ -148,7 +148,7 @@ public Q_SLOTS:
     void setType(QObject *type = 0);
 
     // Slots for owned attributes [LiteralUnlimitedNatural]
-    void setValue(int value);
+    void setValue(QString value);
     void unsetValue();
 
 Q_SIGNALS:
@@ -170,7 +170,7 @@ Q_SIGNALS:
     void typeChanged(QObject *type);
 
     // Signals for owned attributes [LiteralUnlimitedNatural]
-    void valueChanged(int value);
+    void valueChanged(QString value);
 
 protected:
     virtual void setGroupProperties();
