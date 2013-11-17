@@ -80,8 +80,8 @@ void RelationshipItem::paint(QPainter *painter)
     transform.rotate(-originalLine.angle());
     painter->drawPolyline(transform.map(arrow));
 
-    if (_end1Aggregation == "composite") {
-        painter->setBrush(QBrush(Qt::black));
+    if (_end1Aggregation == "composite" || _end1Aggregation == "shared") {
+        painter->setBrush(QBrush(_end1Aggregation == "composite" ? Qt::black:Qt::white));
         QPolygon diamond(QVector<QPoint>() << QPoint(0, 0) << QPoint(10, -10) << QPoint(20, 0) << QPoint(10, 10));
         QTransform transform;
         transform.translate(p1.x()-x(), p1.y()-y());
