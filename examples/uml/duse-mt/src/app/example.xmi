@@ -11,7 +11,7 @@
         <memberEnd xmi:idref="MyRootPackage-Package1-Student-advisor"/>
         <memberEnd xmi:idref="A_student_professor-student"/>
         <ownedEnd xmi:type="uml:Property" name="student" visibility="public" xmi:id="A_student_professor-student">
-            <type xmi:idref="Student"/>
+            <type xmi:idref="MyRootPackage-Package1-Student"/>
             <association xmi:idref="MyRootPackage-A_student_professor"/>
         </ownedEnd>
     </packagedElement>

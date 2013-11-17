@@ -18,6 +18,11 @@ QML_FILES = \
     UmlProperty.qml \
     UmlAssociation.qml
 
+# JavaScript
+
+QML_FILES += \
+    util.js
+
 # Images
 QML_FILES += \
     images/resize-mark.png \

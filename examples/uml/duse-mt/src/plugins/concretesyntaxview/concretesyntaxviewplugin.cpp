@@ -74,7 +74,7 @@ bool ConcreteSyntaxViewPlugin::initialize(DuSE::ICore *core)
 void ConcreteSyntaxViewPlugin::addToView(QObject *selectedModelingObject, QQuickItem *parent)
 {
     QQmlContext *context = new QQmlContext(_concreteSyntaxQuickView->engine()->rootContext());
-    context->setContextProperty(QStringLiteral("element"), selectedModelingObject);
+    context->setContextProperty("element", selectedModelingObject);
     QQmlComponent *qmlComponent = new QQmlComponent(_concreteSyntaxQuickView->engine());
     int x = qrand() % 400;
     int y = qrand() % 400;
@@ -83,13 +83,14 @@ void ConcreteSyntaxViewPlugin::addToView(QObject *selectedModelingObject, QQuick
     if (qmlComponent->isError()) {
         qWarning() << qmlComponent->errors();
     } else {
-        QQuickItem *item = qobject_cast<QQuickItem *>(qmlComponent->create(context));
+        QQuickItem *item = qobject_cast<QQuickItem *>(qmlComponent->beginCreate(context));
         if (item) {
-            item->setParent(parent ? parent:(qobject_cast<QQuickFlickable *>(_concreteSyntaxQuickView->rootObject()))->contentItem());
             item->setParentItem(parent ? parent:(qobject_cast<QQuickFlickable *>(_concreteSyntaxQuickView->rootObject()))->contentItem());
+            qmlComponent->completeCreate();
         }
     }
 
+//    _concreteSyntaxQuickView->rootObject()->dumpObjectTree();
     qmlComponent->deleteLater();
 }
 

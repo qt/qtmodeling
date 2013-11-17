@@ -38,30 +38,21 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-function findElement(owner, elementName) {
-    console.log("Procurando " + elementName + " in " + owner.name);
-    console.log(owner.ownedElements);
-    var ret;
-    for (var i = 0; i < owner.ownedElements.length; ++i) {
-        console.log("Analyzing " + owner.ownedElements[i].name);
-        ret = findElement(owner.ownedElements[i], elementName);
-        if (ret != null)
-            break;
-    }
-    if (ret == null && owner.objectName == elementName)
-        ret = owner;
-    return ret;
-}
+import QtQuick 2.0
+import QtModeling.Uml 1.0
+import "util.js" as Util
 
-function findQuickItem(parent, objectName) {
-    var ret = null;
-    for (var i = 0; i < parent.children.length; ++i) {
-        ret = findQuickItem(parent.children[i], objectName);
-        if (ret != null)
-            break;
+Relationship {
+    end1: Util.findQuickItem(parent, element.memberEnds[0].class_.name)
+    end2: Util.findQuickItem(parent, element.memberEnds[0].type.name)
+    end1Aggregation: aggregation(element.memberEnds[0].aggregation);
+    end2Aggregation: aggregation(element.memberEnds[1].aggregation);
+    function aggregation(aggregationEnum)
+    {
+        switch (aggregationEnum) {
+        case 0: return "none"
+        case 1: return "shared"
+        case 2: return "composite"
+        }
     }
-    if (ret == null && parent.objectName == objectName) {
-        ret = parent;
-    }
-    return ret;
 }

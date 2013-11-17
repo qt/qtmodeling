@@ -38,30 +38,48 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-function findElement(owner, elementName) {
-    console.log("Procurando " + elementName + " in " + owner.name);
-    console.log(owner.ownedElements);
-    var ret;
-    for (var i = 0; i < owner.ownedElements.length; ++i) {
-        console.log("Analyzing " + owner.ownedElements[i].name);
-        ret = findElement(owner.ownedElements[i], elementName);
-        if (ret != null)
-            break;
-    }
-    if (ret == null && owner.objectName == elementName)
-        ret = owner;
-    return ret;
-}
+#ifndef RELATIONSHIPITEM_H
+#define RELATIONSHIPITEM_H
 
-function findQuickItem(parent, objectName) {
-    var ret = null;
-    for (var i = 0; i < parent.children.length; ++i) {
-        ret = findQuickItem(parent.children[i], objectName);
-        if (ret != null)
-            break;
-    }
-    if (ret == null && parent.objectName == objectName) {
-        ret = parent;
-    }
-    return ret;
-}
+#include <QtQuick/QQuickPaintedItem>
+
+class QQuickRectangle;
+
+class RelationshipItem : public QQuickPaintedItem
+{
+    Q_OBJECT
+
+    Q_PROPERTY(QQuickRectangle * end1 READ end1 WRITE setEnd1)
+    Q_PROPERTY(QQuickRectangle * end2 READ end2 WRITE setEnd2)
+    Q_PROPERTY(QString end1Aggregation READ end1Aggregation WRITE setEnd1Aggregation)
+    Q_PROPERTY(QString end2Aggregation READ end2Aggregation WRITE setEnd2Aggregation)
+
+public:
+    RelationshipItem(QQuickItem *parent = 0);
+
+    void paint(QPainter *painter);
+
+    QQuickRectangle *end1() const;
+    void setEnd1(QQuickRectangle *end1);
+
+    QQuickRectangle *end2() const;
+    void setEnd2(QQuickRectangle *end2);
+
+    QString end1Aggregation() const;
+    void setEnd1Aggregation(QString end1Aggregation);
+
+    QString end2Aggregation() const;
+    void setEnd2Aggregation(QString end2Aggregation);
+
+private Q_SLOTS:
+    void updateCoordinates();
+
+private:
+    QQuickRectangle *_end1;
+    QQuickRectangle *_end2;
+    QString _end1Aggregation;
+    QString _end2Aggregation;
+};
+
+#endif // RELATIONSHIPITEM_H
+
