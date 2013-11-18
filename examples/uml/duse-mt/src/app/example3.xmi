@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:uml="http://www.omg.org/spec/UML/20110701">
+<uml:Model xmi:id="_kk-nYE_cEeOrf6v5LQGc0Q" name="project2">
+  <packagedElement xmi:type="uml:Node" xmi:id="_kk-nZE_cEeOrf6v5LQGc0Q" name="Node"/>
+  <packagedElement xmi:type="uml:Component" xmi:id="_kk-nZU_cEeOrf6v5LQGc0Q" name="WebServer">
+    <ownedAttribute xmi:type="uml:Port" xmi:id="_kk-nZk_cEeOrf6v5LQGc0Q" name="monitorablePort" type="_kk-naU_cEeOrf6v5LQGc0Q"/>
+    <ownedAttribute xmi:type="uml:Port" xmi:id="_kk-nZ0_cEeOrf6v5LQGc0Q" name="controllablePort" type="_kk-naE_cEeOrf6v5LQGc0Q"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_kk-naE_cEeOrf6v5LQGc0Q" name="IMaxClientsControl" isAbstract="true"/>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_kk-naU_cEeOrf6v5LQGc0Q" name="IAvgResponseTimeMonitor" isAbstract="true"/>
+</uml:Model>
+</xmi:XMI>

@@ -146,9 +146,13 @@ const QSet<QUmlPort *> QUmlEncapsulatedClassifier::ownedPorts() const
 {
     // This is a read-only derived association end
 
-    qWarning("QUmlEncapsulatedClassifier::ownedPorts(): to be implemented (this is a derived association end)");
+    QSet<QUmlPort *> _ownedPorts;
+    foreach (QUmlProperty *property, _ownedAttributes) {
+        if (QUmlPort *port = dynamic_cast<QUmlPort *>(property))
+            _ownedPorts.insert(port);
+    }
 
-    return QSet<QUmlPort *>();
+    return _ownedPorts;
 }
 
 void QUmlEncapsulatedClassifier::addOwnedPort(QUmlPort *ownedPort)

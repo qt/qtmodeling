@@ -226,6 +226,9 @@ void QUmlClass::setAbstract(bool isAbstract)
     if (_isAbstract != isAbstract) {
         _isAbstract = isAbstract;
         _qModelingObject->modifiedResettableProperties() << QStringLiteral("isAbstract");
+
+        // Adjust redefined properties
+        QUmlClassifier::setAbstract(isAbstract);
     }
 }
 
@@ -312,6 +315,9 @@ void QUmlClass::addOwnedAttribute(QUmlProperty *ownedAttribute)
         addOwnedMember(ownedAttribute);
         addAttribute(ownedAttribute);
 
+        // Adjust redefined properties
+        QUmlStructuredClassifier::addOwnedAttribute(ownedAttribute);
+
         // Adjust opposite properties
         if (ownedAttribute) {
             ownedAttribute->setClass(this);
@@ -331,6 +337,9 @@ void QUmlClass::removeOwnedAttribute(QUmlProperty *ownedAttribute)
         // Adjust subsetted properties
         removeOwnedMember(ownedAttribute);
         removeAttribute(ownedAttribute);
+
+        // Adjust redefined properties
+        QUmlStructuredClassifier::removeOwnedAttribute(ownedAttribute);
 
         // Adjust opposite properties
         if (ownedAttribute) {
@@ -452,6 +461,9 @@ void QUmlClass::addSuperClass(QUmlClass *superClass)
 
     if (false /* <derivedexclusion-criteria> */) {
         // <derived-code>
+
+        // Adjust redefined properties
+        QUmlClassifier::addGeneral(superClass);
     }
 }
 
@@ -464,6 +476,9 @@ void QUmlClass::removeSuperClass(QUmlClass *superClass)
 
     if (false /* <derivedexclusion-criteria> */) {
         // <derived-code>
+
+        // Adjust redefined properties
+        QUmlClassifier::removeGeneral(superClass);
     }
 }
 

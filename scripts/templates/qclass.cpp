@@ -215,6 +215,22 @@ void Q${namespace}${className}::add${attributeName}(${qtType.remove("QSet<").rem
                     [%- END -%]
             [%- END %]
         [%- END %]
+        [%- found = "false" -%]
+        [%- FOREACH redefinedPropertyName = attribute.findvalue("@redefinedProperty").split(" ") -%]
+            [%- SET redefinedProperty = xmi.findnodes("//packagedElement[(@xmi:type=\"uml:Class\" or @xmi:type=\"uml:Stereotype\") and @name=\"${redefinedPropertyName.split('-').0}\"]/ownedAttribute[@name=\"${redefinedPropertyName.split('-').1}\"]") -%]
+            [%- IF redefinedProperty.findvalue("@name") != "" -%]
+                [%- IF found == "false" %]
+
+        // Adjust redefined properties
+                    [%- found = "true" -%]
+                [%- END -%]
+                    [%- IF redefinedProperty.findvalue("upperValue/@value") == "*" %]
+        Q${namespace}${redefinedPropertyName.split('-').0}::add${redefinedPropertyName.split('-').1.ucfirst}(${qtAttribute});
+                    [%- ELSE %]
+        Q${namespace}${redefinedPropertyName.split('-').0}::set${redefinedPropertyName.split('-').1.remove('^is').ucfirst}(${qtAttribute});
+                    [%- END -%]
+            [%- END %]
+        [%- END %]
         [%- IF association != "" -%]
         [%- found = "false" -%]
         [%- FOREACH memberEnd = xmi.findvalue("//packagedElement[(@xmi:type=\"uml:Association\" or @xmi:type=\"uml:Extension\") and @name=\"${association}\"]/@memberEnd").split(' ') -%]
@@ -273,6 +289,22 @@ void Q${namespace}${className}::remove${attributeName}(${qtType.remove("QSet<").
                     [%- END -%]
             [%- END %]
         [%- END %]
+        [%- found = "false" -%]
+        [%- FOREACH redefinedPropertyName = attribute.findvalue("@redefinedProperty").split(" ") -%]
+            [%- SET redefinedProperty = xmi.findnodes("//packagedElement[(@xmi:type=\"uml:Class\" or @xmi:type=\"uml:Stereotype\") and @name=\"${redefinedPropertyName.split('-').0}\"]/ownedAttribute[@name=\"${redefinedPropertyName.split('-').1}\"]") -%]
+            [%- IF redefinedProperty.findvalue("@name") != "" -%]
+                [%- IF found == "false" %]
+
+        // Adjust redefined properties
+                    [%- found = "true" -%]
+                [%- END -%]
+                    [%- IF redefinedProperty.findvalue("upperValue/@value") == "*" %]
+        Q${namespace}${redefinedPropertyName.split('-').0}::remove${redefinedPropertyName.split('-').1.ucfirst}(${qtAttribute});
+                    [%- ELSE %]
+        Q${namespace}${redefinedPropertyName.split('-').0}::set${redefinedPropertyName.split('-').1.remove('^is').ucfirst}(${qtAttribute});
+                    [%- END -%]
+            [%- END %]
+        [%- END %]
         [%- IF association != "" -%]
         [%- found = "false" -%]
         [%- FOREACH memberEnd = xmi.findvalue("//packagedElement[(@xmi:type=\"uml:Association\" or @xmi:type=\"uml:Extension\") and @name=\"${association}\"]/@memberEnd").split(' ') -%]
@@ -325,6 +357,21 @@ void Q${namespace}${className}::set${attributeName.remove("^Is")}([% IF !qtType.
         [%- END %]
 [%- IF found == "true" %]
 [% END %]
+        [%- found = "false" -%]
+        [%- FOREACH redefinedPropertyName = attribute.findvalue("@redefinedProperty").split(" ") -%]
+            [%- SET redefinedProperty = xmi.findnodes("//packagedElement[(@xmi:type=\"uml:Class\" or @xmi:type=\"uml:Stereotype\") and @name=\"${redefinedPropertyName.split('-').0}\"]/ownedAttribute[@name=\"${redefinedPropertyName.split('-').1}\"]") -%]
+            [%- IF redefinedProperty.findvalue("@name") != "" -%]
+                    [%- IF redefinedProperty.findvalue("upperValue/@value") == "*" %]
+                [%- IF found == "false" %]
+        // Adjust redefined properties
+                    [%- found = "true" -%]
+                [%- END -%]
+        [% IF derived == "true" && (derivedUnion == "false" || derivedUnion == "") %]// [% END %]Q${namespace}${redefinedPropertyName.split('-').0}::remove${redefinedPropertyName.split('-').1.ucfirst}([%- IF derived == "true" && (derivedUnion == "false" || derivedUnion == "") %]/* <derived-code> */[% ELSE %]_${PLURALFORM(qtAttribute, attribute)}[% END %]);
+                    [%- END -%]
+            [%- END %]
+        [%- END %]
+[%- IF found == "true" %]
+[% END %]
         [%- IF derived == "true" && (derivedUnion == "false" || derivedUnion == "") %]
         // <derived-code>
         [%- ELSE %]
@@ -355,6 +402,24 @@ void Q${namespace}${className}::set${attributeName.remove("^Is")}([% IF !qtType.
         }
                     [%- ELSE %]
         set${subsettedPropertyName.split('-').1.ucfirst}(${qtAttribute});
+                    [%- END -%]
+            [%- END %]
+        [%- END %]
+        [%- found = "false" -%]
+        [%- FOREACH redefinedPropertyName = attribute.findvalue("@redefinedProperty").split(" ") -%]
+            [%- SET redefinedProperty = xmi.findnodes("//packagedElement[(@xmi:type=\"uml:Class\" or @xmi:type=\"uml:Stereotype\") and @name=\"${redefinedPropertyName.split('-').0}\"]/ownedAttribute[@name=\"${redefinedPropertyName.split('-').1}\"]") -%]
+            [%- IF redefinedProperty.findvalue("@name") != "" -%]
+                [%- IF found == "false" %]
+
+        // Adjust redefined properties
+                    [%- found = "true" -%]
+                [%- END -%]
+                    [%- IF redefinedProperty.findvalue("upperValue/@value") == "*" %]
+        if (${qtAttribute}) {
+            Q${namespace}${redefinedPropertyName.split('-').0}::add${redefinedPropertyName.split('-').1.ucfirst}(${qtAttribute});
+        }
+                    [%- ELSE %]
+        Q${namespace}${redefinedPropertyName.split('-').0}::set${redefinedPropertyName.split('-').1.remove('^is').ucfirst}(${qtAttribute});
                     [%- END -%]
             [%- END %]
         [%- END %]
