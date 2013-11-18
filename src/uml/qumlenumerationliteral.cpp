@@ -123,7 +123,14 @@ void QUmlEnumerationLiteral::setClassifier(QUmlEnumeration *classifier)
     Q_UNUSED(classifier);
 
     if (false /* <derivedexclusion-criteria> */) {
+        // Adjust redefined properties        // QUmlInstanceSpecification::removeClassifier(/* <derived-code> */);
+
         // <derived-code>
+
+        // Adjust redefined properties
+        if (classifier) {
+            QUmlInstanceSpecification::addClassifier(classifier);
+        }
     }
 }
 

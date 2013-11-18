@@ -116,6 +116,9 @@ void QUmlIntervalConstraint::setSpecification(QUmlInterval *specification)
         if (specification && specification->asQModelingObject() && this->asQModelingObject())
             QObject::connect(specification->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setSpecification()));
         specification->asQModelingObject()->setParent(this->asQModelingObject());
+
+        // Adjust redefined properties
+        QUmlConstraint::setSpecification(specification);
     }
 }
 

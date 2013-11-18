@@ -266,7 +266,7 @@ QString QUmlTimeIntervalObject::stringValue() const
     return qmodelingelementproperty_cast<QUmlTimeInterval *>(this)->stringValue();
 }
 
-int QUmlTimeIntervalObject::unlimitedValue() const
+QString QUmlTimeIntervalObject::unlimitedValue() const
 {
     return qmodelingelementproperty_cast<QUmlTimeInterval *>(this)->unlimitedValue();
 }

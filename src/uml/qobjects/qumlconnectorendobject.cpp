@@ -109,7 +109,7 @@ QObject *QUmlConnectorEndObject::lowerValue() const
         return qmodelingelementproperty_cast<QUmlConnectorEnd *>(this)->lowerValue()->asQModelingObject();
 }
 
-int QUmlConnectorEndObject::upper() const
+QString QUmlConnectorEndObject::upper() const
 {
     return qmodelingelementproperty_cast<QUmlConnectorEnd *>(this)->upper();
 }
@@ -195,10 +195,10 @@ int QUmlConnectorEndObject::lowerBound() const
     return qmodelingelementproperty_cast<QUmlConnectorEnd *>(this)->lowerBound();
 }
 
-//int QUmlConnectorEndObject::upperBound() const
-//{
-//    return qmodelingelementproperty_cast<QUmlConnectorEnd *>(this)->upperBound();
-//}
+QString QUmlConnectorEndObject::upperBoundOperation() const
+{
+    return qmodelingelementproperty_cast<QUmlConnectorEnd *>(this)->upperBoundOperation();
+}
 
 // SLOTS FOR OWNED ATTRIBUTES [Element]
 
@@ -280,7 +280,7 @@ void QUmlConnectorEndObject::setLowerValue(QObject *lowerValue)
     emit lowerValueChanged(this->lowerValue());
 }
 
-void QUmlConnectorEndObject::setUpper(int upper)
+void QUmlConnectorEndObject::setUpper(QString upper)
 {
     qmodelingelementproperty_cast<QUmlConnectorEnd *>(this)->setUpper(upper);
     emit upperChanged(this->upper());
@@ -289,7 +289,7 @@ void QUmlConnectorEndObject::setUpper(int upper)
 void QUmlConnectorEndObject::unsetUpper()
 {
     Q_D(QModelingObject);
-    setUpper(1);
+    setUpper(QStringLiteral("1"));
     d->modifiedResettableProperties.removeAll(QStringLiteral("upper"));
 }
 

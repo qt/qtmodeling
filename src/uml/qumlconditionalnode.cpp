@@ -242,6 +242,9 @@ void QUmlConditionalNode::addResult(QUmlOutputPin *result)
         if (result && result->asQModelingObject() && this->asQModelingObject())
             QObject::connect(result->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeResult(QObject *)));
         result->asQModelingObject()->setParent(this->asQModelingObject());
+
+        // Adjust redefined properties
+        QUmlStructuredActivityNode::addStructuredNodeOutput(result);
     }
 }
 
@@ -253,6 +256,9 @@ void QUmlConditionalNode::removeResult(QUmlOutputPin *result)
         _results.removeAll(result);
         if (result->asQModelingObject())
             result->asQModelingObject()->setParent(0);
+
+        // Adjust redefined properties
+        QUmlStructuredActivityNode::removeStructuredNodeOutput(result);
     }
 }
 

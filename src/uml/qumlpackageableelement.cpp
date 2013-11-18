@@ -99,6 +99,9 @@ void QUmlPackageableElement::setVisibility(QtUml::VisibilityKind visibility)
     if (_visibility != visibility) {
         _visibility = visibility;
         _qModelingObject->modifiedResettableProperties() << QStringLiteral("visibility");
+
+        // Adjust redefined properties
+        QUmlNamedElement::setVisibility(visibility);
     }
 }
 

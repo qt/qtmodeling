@@ -113,9 +113,16 @@ void QUmlStateInvariant::setCovered(QUmlLifeline *covered)
     // This is a read-write association end
 
     if (_covered != covered) {
+        // Adjust redefined properties        QUmlInteractionFragment::removeCovered(_covered);
+
         _covered = covered;
         if (covered && covered->asQModelingObject() && this->asQModelingObject())
             QObject::connect(covered->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setCovered()));
+
+        // Adjust redefined properties
+        if (covered) {
+            QUmlInteractionFragment::addCovered(covered);
+        }
     }
 }
 

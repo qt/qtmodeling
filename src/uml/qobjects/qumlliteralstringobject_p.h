@@ -133,7 +133,7 @@ public:
     Q_INVOKABLE bool isCompatibleWith(QObject *p) const;
     Q_INVOKABLE bool isNull() const;
     Q_INVOKABLE double realValue() const;
-    Q_INVOKABLE int unlimitedValue() const;
+    Q_INVOKABLE QString unlimitedValue() const;
 
     // Operations [LiteralString]
     Q_INVOKABLE bool isComputable() const;

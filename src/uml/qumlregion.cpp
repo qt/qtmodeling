@@ -158,7 +158,14 @@ void QUmlRegion::setRedefinitionContext(QUmlClassifier *redefinitionContext)
     Q_UNUSED(redefinitionContext);
 
     if (false /* <derivedexclusion-criteria> */) {
+        // Adjust redefined properties        // QUmlRedefinableElement::removeRedefinitionContext(/* <derived-code> */);
+
         // <derived-code>
+
+        // Adjust redefined properties
+        if (redefinitionContext) {
+            QUmlRedefinableElement::addRedefinitionContext(redefinitionContext);
+        }
     }
 }
 

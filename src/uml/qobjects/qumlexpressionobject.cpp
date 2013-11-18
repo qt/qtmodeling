@@ -262,7 +262,7 @@ QString QUmlExpressionObject::stringValue() const
     return qmodelingelementproperty_cast<QUmlExpression *>(this)->stringValue();
 }
 
-int QUmlExpressionObject::unlimitedValue() const
+QString QUmlExpressionObject::unlimitedValue() const
 {
     return qmodelingelementproperty_cast<QUmlExpression *>(this)->unlimitedValue();
 }

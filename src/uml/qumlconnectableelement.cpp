@@ -152,6 +152,9 @@ void QUmlConnectableElement::setTemplateParameter(QUmlConnectableElementTemplate
         _templateParameter = templateParameter;
         if (templateParameter && templateParameter->asQModelingObject() && this->asQModelingObject())
             QObject::connect(templateParameter->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setTemplateParameter()));
+
+        // Adjust redefined properties
+        QUmlParameterableElement::setTemplateParameter(templateParameter);
     }
 }
 

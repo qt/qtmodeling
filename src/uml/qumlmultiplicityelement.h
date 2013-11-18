@@ -67,8 +67,8 @@ public:
     void setLower(int lower);
     QUmlValueSpecification *lowerValue() const;
     void setLowerValue(QUmlValueSpecification *lowerValue);
-    int upper() const;
-    void setUpper(int upper);
+    QString upper() const;
+    void setUpper(QString upper);
     QUmlValueSpecification *upperValue() const;
     void setUpperValue(QUmlValueSpecification *upperValue);
 
@@ -79,7 +79,7 @@ public:
     bool is(int lowerbound, int upperbound) const;
     bool isMultivalued() const;
     int lowerBound() const;
-//    int upperBound() const;
+    QString upperBoundOperation() const;
 
 protected:
     explicit QUmlMultiplicityElement();

@@ -276,7 +276,7 @@ QString QUmlOpaqueExpressionObject::stringValue() const
     return qmodelingelementproperty_cast<QUmlOpaqueExpression *>(this)->stringValue();
 }
 
-int QUmlOpaqueExpressionObject::unlimitedValue() const
+QString QUmlOpaqueExpressionObject::unlimitedValue() const
 {
     return qmodelingelementproperty_cast<QUmlOpaqueExpression *>(this)->unlimitedValue();
 }

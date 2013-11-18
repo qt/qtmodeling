@@ -124,7 +124,7 @@ QObject *QUmlInputPinObject::lowerValue() const
         return qmodelingelementproperty_cast<QUmlInputPin *>(this)->lowerValue()->asQModelingObject();
 }
 
-int QUmlInputPinObject::upper() const
+QString QUmlInputPinObject::upper() const
 {
     return qmodelingelementproperty_cast<QUmlInputPin *>(this)->upper();
 }
@@ -367,10 +367,10 @@ int QUmlInputPinObject::lowerBound() const
     return qmodelingelementproperty_cast<QUmlInputPin *>(this)->lowerBound();
 }
 
-//int QUmlInputPinObject::upperBound() const
-//{
-//    return qmodelingelementproperty_cast<QUmlInputPin *>(this)->upperBound();
-//}
+QString QUmlInputPinObject::upperBoundOperation() const
+{
+    return qmodelingelementproperty_cast<QUmlInputPin *>(this)->upperBoundOperation();
+}
 
 // OPERATIONS [NamedElement]
 
@@ -492,7 +492,7 @@ void QUmlInputPinObject::setLowerValue(QObject *lowerValue)
     emit lowerValueChanged(this->lowerValue());
 }
 
-void QUmlInputPinObject::setUpper(int upper)
+void QUmlInputPinObject::setUpper(QString upper)
 {
     qmodelingelementproperty_cast<QUmlInputPin *>(this)->setUpper(upper);
     emit upperChanged(this->upper());
@@ -501,7 +501,7 @@ void QUmlInputPinObject::setUpper(int upper)
 void QUmlInputPinObject::unsetUpper()
 {
     Q_D(QModelingObject);
-    setUpper(1);
+    setUpper(QStringLiteral("1"));
     d->modifiedResettableProperties.removeAll(QStringLiteral("upper"));
 }
 

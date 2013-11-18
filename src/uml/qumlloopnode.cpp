@@ -303,6 +303,9 @@ void QUmlLoopNode::addLoopVariableInput(QUmlInputPin *loopVariableInput)
         if (loopVariableInput && loopVariableInput->asQModelingObject() && this->asQModelingObject())
             QObject::connect(loopVariableInput->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeLoopVariableInput(QObject *)));
         loopVariableInput->asQModelingObject()->setParent(this->asQModelingObject());
+
+        // Adjust redefined properties
+        QUmlStructuredActivityNode::addStructuredNodeInput(loopVariableInput);
     }
 }
 
@@ -314,6 +317,9 @@ void QUmlLoopNode::removeLoopVariableInput(QUmlInputPin *loopVariableInput)
         _loopVariableInputs.removeAll(loopVariableInput);
         if (loopVariableInput->asQModelingObject())
             loopVariableInput->asQModelingObject()->setParent(0);
+
+        // Adjust redefined properties
+        QUmlStructuredActivityNode::removeStructuredNodeInput(loopVariableInput);
     }
 }
 
@@ -336,6 +342,9 @@ void QUmlLoopNode::addResult(QUmlOutputPin *result)
         if (result && result->asQModelingObject() && this->asQModelingObject())
             QObject::connect(result->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeResult(QObject *)));
         result->asQModelingObject()->setParent(this->asQModelingObject());
+
+        // Adjust redefined properties
+        QUmlStructuredActivityNode::addStructuredNodeOutput(result);
     }
 }
 
@@ -347,6 +356,9 @@ void QUmlLoopNode::removeResult(QUmlOutputPin *result)
         _results.removeAll(result);
         if (result->asQModelingObject())
             result->asQModelingObject()->setParent(0);
+
+        // Adjust redefined properties
+        QUmlStructuredActivityNode::removeStructuredNodeOutput(result);
     }
 }
 

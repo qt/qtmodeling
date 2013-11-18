@@ -82,7 +82,7 @@ class Q_UML_EXPORT QUmlPropertyObject : public QModelingObject
     Q_PROPERTY(bool isUnique READ isUnique WRITE setUnique NOTIFY isUniqueChanged RESET unsetUnique)
     Q_PROPERTY(int lower READ lower WRITE setLower NOTIFY lowerChanged RESET unsetLower STORED false)
     Q_PROPERTY(QObject * lowerValue READ lowerValue WRITE setLowerValue NOTIFY lowerValueChanged)
-    Q_PROPERTY(int upper READ upper WRITE setUpper NOTIFY upperChanged RESET unsetUpper STORED false)
+    Q_PROPERTY(QString upper READ upper WRITE setUpper NOTIFY upperChanged RESET unsetUpper STORED false)
     Q_PROPERTY(QObject * upperValue READ upperValue WRITE setUpperValue NOTIFY upperValueChanged)
 
     // Properties [RedefinableElement]
@@ -151,7 +151,7 @@ public:
     Q_INVOKABLE bool isUnique() const;
     Q_INVOKABLE int lower() const;
     Q_INVOKABLE QObject *lowerValue() const;
-    Q_INVOKABLE int upper() const;
+    Q_INVOKABLE QString upper() const;
     Q_INVOKABLE QObject *upperValue() const;
 
     // Owned attributes [RedefinableElement]
@@ -213,7 +213,7 @@ public:
     Q_INVOKABLE bool is(int lowerbound, int upperbound) const;
     Q_INVOKABLE bool isMultivalued() const;
     Q_INVOKABLE int lowerBound() const;
-//    Q_INVOKABLE int upperBound() const;
+    Q_INVOKABLE QString upperBoundOperation() const;
 
     // Operations [RedefinableElement]
     Q_INVOKABLE bool isRedefinitionContextValid(QObject *redefined) const;
@@ -257,7 +257,7 @@ public Q_SLOTS:
     void setLower(int lower);
     void unsetLower();
     void setLowerValue(QObject *lowerValue = 0);
-    void setUpper(int upper);
+    void setUpper(QString upper);
     void unsetUpper();
     void setUpperValue(QObject *upperValue = 0);
 
@@ -343,7 +343,7 @@ Q_SIGNALS:
     void isUniqueChanged(bool isUnique);
     void lowerChanged(int lower);
     void lowerValueChanged(QObject *lowerValue);
-    void upperChanged(int upper);
+    void upperChanged(QString upper);
     void upperValueChanged(QObject *upperValue);
 
     // Signals for owned attributes [RedefinableElement]

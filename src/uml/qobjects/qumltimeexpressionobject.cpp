@@ -266,7 +266,7 @@ QString QUmlTimeExpressionObject::stringValue() const
     return qmodelingelementproperty_cast<QUmlTimeExpression *>(this)->stringValue();
 }
 
-int QUmlTimeExpressionObject::unlimitedValue() const
+QString QUmlTimeExpressionObject::unlimitedValue() const
 {
     return qmodelingelementproperty_cast<QUmlTimeExpression *>(this)->unlimitedValue();
 }

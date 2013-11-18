@@ -178,7 +178,7 @@ QObject *QUmlPortObject::lowerValue() const
         return qmodelingelementproperty_cast<QUmlPort *>(this)->lowerValue()->asQModelingObject();
 }
 
-int QUmlPortObject::upper() const
+QString QUmlPortObject::upper() const
 {
     return qmodelingelementproperty_cast<QUmlPort *>(this)->upper();
 }
@@ -524,10 +524,10 @@ int QUmlPortObject::lowerBound() const
     return qmodelingelementproperty_cast<QUmlPort *>(this)->lowerBound();
 }
 
-//int QUmlPortObject::upperBound() const
-//{
-//    return qmodelingelementproperty_cast<QUmlPort *>(this)->upperBound();
-//}
+QString QUmlPortObject::upperBoundOperation() const
+{
+    return qmodelingelementproperty_cast<QUmlPort *>(this)->upperBoundOperation();
+}
 
 // OPERATIONS [RedefinableElement]
 
@@ -705,7 +705,7 @@ void QUmlPortObject::setLowerValue(QObject *lowerValue)
     emit lowerValueChanged(this->lowerValue());
 }
 
-void QUmlPortObject::setUpper(int upper)
+void QUmlPortObject::setUpper(QString upper)
 {
     qmodelingelementproperty_cast<QUmlPort *>(this)->setUpper(upper);
     emit upperChanged(this->upper());
@@ -714,7 +714,7 @@ void QUmlPortObject::setUpper(int upper)
 void QUmlPortObject::unsetUpper()
 {
     Q_D(QModelingObject);
-    setUpper(1);
+    setUpper(QStringLiteral("1"));
     d->modifiedResettableProperties.removeAll(QStringLiteral("upper"));
 }
 

@@ -389,6 +389,9 @@ void QUmlOperation::addOwnedParameter(QUmlParameter *ownedParameter)
             QObject::connect(ownedParameter->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeOwnedParameter(QObject *)));
         ownedParameter->asQModelingObject()->setParent(this->asQModelingObject());
 
+        // Adjust redefined properties
+        QUmlBehavioralFeature::addOwnedParameter(ownedParameter);
+
         // Adjust opposite properties
         if (ownedParameter) {
             ownedParameter->setOperation(this);
@@ -404,6 +407,9 @@ void QUmlOperation::removeOwnedParameter(QUmlParameter *ownedParameter)
         _ownedParameters.removeAll(ownedParameter);
         if (ownedParameter->asQModelingObject())
             ownedParameter->asQModelingObject()->setParent(0);
+
+        // Adjust redefined properties
+        QUmlBehavioralFeature::removeOwnedParameter(ownedParameter);
 
         // Adjust opposite properties
         if (ownedParameter) {
@@ -508,6 +514,9 @@ void QUmlOperation::addRaisedException(QUmlType *raisedException)
         _raisedExceptions.insert(raisedException);
         if (raisedException && raisedException->asQModelingObject() && this->asQModelingObject())
             QObject::connect(raisedException->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeRaisedException(QObject *)));
+
+        // Adjust redefined properties
+        QUmlBehavioralFeature::addRaisedException(raisedException);
     }
 }
 
@@ -517,6 +526,9 @@ void QUmlOperation::removeRaisedException(QUmlType *raisedException)
 
     if (_raisedExceptions.contains(raisedException)) {
         _raisedExceptions.remove(raisedException);
+
+        // Adjust redefined properties
+        QUmlBehavioralFeature::removeRaisedException(raisedException);
     }
 }
 
@@ -574,6 +586,9 @@ void QUmlOperation::setTemplateParameter(QUmlOperationTemplateParameter *templat
         _templateParameter = templateParameter;
         if (templateParameter && templateParameter->asQModelingObject() && this->asQModelingObject())
             QObject::connect(templateParameter->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setTemplateParameter()));
+
+        // Adjust redefined properties
+        QUmlParameterableElement::setTemplateParameter(templateParameter);
     }
 }
 
@@ -604,16 +619,16 @@ void QUmlOperation::setType(QUmlType *type)
 /*!
     This information is derived from the return result for this Operation.Specifies the upper multiplicity of the return parameter, if present.
  */
-int QUmlOperation::upper() const
+QString QUmlOperation::upper() const
 {
     // This is a read-only derived property
 
     qWarning("QUmlOperation::upper(): to be implemented (this is a derived property)");
 
-    return int();
+    return QString();
 }
 
-void QUmlOperation::setUpper(int upper)
+void QUmlOperation::setUpper(QString upper)
 {
     // This is a read-only derived property
 

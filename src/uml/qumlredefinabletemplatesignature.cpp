@@ -123,6 +123,9 @@ void QUmlRedefinableTemplateSignature::setClassifier(QUmlClassifier *classifier)
         if (classifier) {
             addRedefinitionContext(classifier);
         }
+
+        // Adjust redefined properties
+        QUmlTemplateSignature::setTemplate(classifier);
     }
 }
 

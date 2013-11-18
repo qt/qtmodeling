@@ -161,6 +161,9 @@ void QUmlExtensionEnd::setLower(int lower)
 
     if (false /* <derivedexclusion-criteria> */) {
         // <derived-code>
+
+        // Adjust redefined properties
+        QUmlMultiplicityElement::setLower(lower);
     }
 }
 
@@ -182,6 +185,9 @@ void QUmlExtensionEnd::setType(QUmlStereotype *type)
         _type = type;
         if (type && type->asQModelingObject() && this->asQModelingObject())
             QObject::connect(type->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setType()));
+
+        // Adjust redefined properties
+        QUmlTypedElement::setType(type);
     }
 }
 

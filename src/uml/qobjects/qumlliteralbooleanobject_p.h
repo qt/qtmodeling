@@ -133,7 +133,7 @@ public:
     Q_INVOKABLE bool isNull() const;
     Q_INVOKABLE double realValue() const;
     Q_INVOKABLE QString stringValue() const;
-    Q_INVOKABLE int unlimitedValue() const;
+    Q_INVOKABLE QString unlimitedValue() const;
 
     // Operations [LiteralBoolean]
     Q_INVOKABLE bool booleanValue() const;

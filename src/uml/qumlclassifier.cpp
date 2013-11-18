@@ -440,6 +440,9 @@ void QUmlClassifier::setOwnedTemplateSignature(QUmlRedefinableTemplateSignature 
         if (ownedTemplateSignature && ownedTemplateSignature->asQModelingObject() && this->asQModelingObject())
             QObject::connect(ownedTemplateSignature->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setOwnedTemplateSignature()));
         ownedTemplateSignature->asQModelingObject()->setParent(this->asQModelingObject());
+
+        // Adjust redefined properties
+        QUmlTemplateableElement::setOwnedTemplateSignature(ownedTemplateSignature);
     }
 }
 
@@ -656,6 +659,9 @@ void QUmlClassifier::setTemplateParameter(QUmlClassifierTemplateParameter *templ
         _templateParameter = templateParameter;
         if (templateParameter && templateParameter->asQModelingObject() && this->asQModelingObject())
             QObject::connect(templateParameter->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setTemplateParameter()));
+
+        // Adjust redefined properties
+        QUmlParameterableElement::setTemplateParameter(templateParameter);
     }
 }
 

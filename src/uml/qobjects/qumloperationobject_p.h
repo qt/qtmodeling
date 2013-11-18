@@ -120,7 +120,7 @@ class Q_UML_EXPORT QUmlOperationObject : public QModelingObject
     Q_PROPERTY(QSet<QObject *> redefinedOperations READ redefinedOperations NOTIFY redefinedOperationsChanged)
     Q_PROPERTY(QObject * templateParameter READ templateParameter WRITE setTemplateParameter NOTIFY templateParameterChanged)
     Q_PROPERTY(QObject * type READ type NOTIFY typeChanged STORED false)
-    Q_PROPERTY(int upper READ upper NOTIFY upperChanged RESET unsetUpper STORED false)
+    Q_PROPERTY(QString upper READ upper NOTIFY upperChanged RESET unsetUpper STORED false)
 
 public:
     Q_INVOKABLE explicit QUmlOperationObject(QUmlOperation *modelingElement);
@@ -184,7 +184,7 @@ public:
     Q_INVOKABLE const QSet<QObject *> redefinedOperations() const;
     Q_INVOKABLE QObject *templateParameter() const;
     Q_INVOKABLE QObject *type() const;
-    Q_INVOKABLE int upper() const;
+    Q_INVOKABLE QString upper() const;
 
     // Operations [Element]
     Q_INVOKABLE QSet<QObject *> allOwnedElements() const;
@@ -308,7 +308,7 @@ public Q_SLOTS:
     void removeRedefinedOperation(QObject *redefinedOperation);
     void setTemplateParameter(QObject *templateParameter = 0);
     void Q_DECL_HIDDEN setType(QObject *type = 0);
-    void Q_DECL_HIDDEN setUpper(int upper);
+    void Q_DECL_HIDDEN setUpper(QString upper);
     void unsetUpper();
 
 Q_SIGNALS:
@@ -372,7 +372,7 @@ Q_SIGNALS:
     void redefinedOperationsChanged(QSet<QObject *> redefinedOperations);
     void templateParameterChanged(QObject *templateParameter);
     void typeChanged(QObject *type);
-    void upperChanged(int upper);
+    void upperChanged(QString upper);
 
 protected:
     virtual void setGroupProperties();

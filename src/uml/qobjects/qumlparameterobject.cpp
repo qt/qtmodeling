@@ -119,7 +119,7 @@ QObject *QUmlParameterObject::lowerValue() const
         return qmodelingelementproperty_cast<QUmlParameter *>(this)->lowerValue()->asQModelingObject();
 }
 
-int QUmlParameterObject::upper() const
+QString QUmlParameterObject::upper() const
 {
     return qmodelingelementproperty_cast<QUmlParameter *>(this)->upper();
 }
@@ -309,10 +309,10 @@ int QUmlParameterObject::lowerBound() const
     return qmodelingelementproperty_cast<QUmlParameter *>(this)->lowerBound();
 }
 
-//int QUmlParameterObject::upperBound() const
-//{
-//    return qmodelingelementproperty_cast<QUmlParameter *>(this)->upperBound();
-//}
+QString QUmlParameterObject::upperBoundOperation() const
+{
+    return qmodelingelementproperty_cast<QUmlParameter *>(this)->upperBoundOperation();
+}
 
 // OPERATIONS [NamedElement]
 
@@ -434,7 +434,7 @@ void QUmlParameterObject::setLowerValue(QObject *lowerValue)
     emit lowerValueChanged(this->lowerValue());
 }
 
-void QUmlParameterObject::setUpper(int upper)
+void QUmlParameterObject::setUpper(QString upper)
 {
     qmodelingelementproperty_cast<QUmlParameter *>(this)->setUpper(upper);
     emit upperChanged(this->upper());
@@ -443,7 +443,7 @@ void QUmlParameterObject::setUpper(int upper)
 void QUmlParameterObject::unsetUpper()
 {
     Q_D(QModelingObject);
-    setUpper(1);
+    setUpper(QStringLiteral("1"));
     d->modifiedResettableProperties.removeAll(QStringLiteral("upper"));
 }
 

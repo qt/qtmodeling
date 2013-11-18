@@ -243,7 +243,7 @@ QString QUmlLiteralBooleanObject::stringValue() const
     return qmodelingelementproperty_cast<QUmlLiteralBoolean *>(this)->stringValue();
 }
 
-int QUmlLiteralBooleanObject::unlimitedValue() const
+QString QUmlLiteralBooleanObject::unlimitedValue() const
 {
     return qmodelingelementproperty_cast<QUmlLiteralBoolean *>(this)->unlimitedValue();
 }

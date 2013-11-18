@@ -68,7 +68,7 @@ public:
     bool isNull() const;
     double realValue() const;
     QString stringValue() const;
-    int unlimitedValue() const;
+    QString unlimitedValue() const;
 
 protected:
     explicit QUmlValueSpecification();

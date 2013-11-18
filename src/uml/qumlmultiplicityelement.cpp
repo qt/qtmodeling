@@ -173,16 +173,16 @@ void QUmlMultiplicityElement::setLowerValue(QUmlValueSpecification *lowerValue)
 /*!
     Specifies the upper bound of the multiplicity interval.
  */
-int QUmlMultiplicityElement::upper() const
+QString QUmlMultiplicityElement::upper() const
 {
     // This is a read-write derived property
 
     qWarning("QUmlMultiplicityElement::upper(): to be implemented (this is a derived property)");
 
-    return int();
+    return QString();
 }
 
-void QUmlMultiplicityElement::setUpper(int upper)
+void QUmlMultiplicityElement::setUpper(QString upper)
 {
     // This is a read-write derived property
 
@@ -294,12 +294,12 @@ int QUmlMultiplicityElement::lowerBound() const
 /*!
     The query upperBound() returns the upper bound of the multiplicity for a bounded multiplicity as an unlimited natural.
  */
-//int QUmlMultiplicityElement::upperBound() const
-//{
-//    qWarning("QUmlMultiplicityElement::upperBound(): to be implemented (operation)");
-//
-//    return int ();
-//}
+QString QUmlMultiplicityElement::upperBoundOperation() const
+{
+    qWarning("QUmlMultiplicityElement::upperBoundOperation(): to be implemented (operation)");
+
+    return QString ();
+}
 
 QT_END_NAMESPACE
 

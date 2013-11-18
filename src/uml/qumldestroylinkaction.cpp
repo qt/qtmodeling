@@ -142,6 +142,9 @@ void QUmlDestroyLinkAction::addEndData(QUmlLinkEndDestructionData *endData)
         if (endData && endData->asQModelingObject() && this->asQModelingObject())
             QObject::connect(endData->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeEndData(QObject *)));
         endData->asQModelingObject()->setParent(this->asQModelingObject());
+
+        // Adjust redefined properties
+        QUmlLinkAction::addEndData(endData);
     }
 }
 
@@ -153,6 +156,9 @@ void QUmlDestroyLinkAction::removeEndData(QUmlLinkEndDestructionData *endData)
         _endData.remove(endData);
         if (endData->asQModelingObject())
             endData->asQModelingObject()->setParent(0);
+
+        // Adjust redefined properties
+        QUmlLinkAction::removeEndData(endData);
     }
 }
 

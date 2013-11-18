@@ -140,10 +140,17 @@ void QUmlSendObjectAction::setRequest(QUmlInputPin *request)
     // This is a read-write association end
 
     if (_request != request) {
+        // Adjust redefined properties        QUmlInvocationAction::removeArgument(_request);
+
         _request = request;
         if (request && request->asQModelingObject() && this->asQModelingObject())
             QObject::connect(request->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setRequest()));
         request->asQModelingObject()->setParent(this->asQModelingObject());
+
+        // Adjust redefined properties
+        if (request) {
+            QUmlInvocationAction::addArgument(request);
+        }
     }
 }
 

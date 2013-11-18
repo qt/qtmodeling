@@ -257,7 +257,7 @@ QString QUmlInstanceValueObject::stringValue() const
     return qmodelingelementproperty_cast<QUmlInstanceValue *>(this)->stringValue();
 }
 
-int QUmlInstanceValueObject::unlimitedValue() const
+QString QUmlInstanceValueObject::unlimitedValue() const
 {
     return qmodelingelementproperty_cast<QUmlInstanceValue *>(this)->unlimitedValue();
 }

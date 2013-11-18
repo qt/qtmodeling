@@ -154,6 +154,10 @@ void QUmlStructuredActivityNode::setActivity(QUmlActivity *activity)
         _activity = activity;
         if (activity && activity->asQModelingObject() && this->asQModelingObject())
             QObject::connect(activity->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setActivity()));
+
+        // Adjust redefined properties
+        QUmlActivityGroup::setInActivity(activity);
+        QUmlActivityNode::setActivity(activity);
     }
 }
 

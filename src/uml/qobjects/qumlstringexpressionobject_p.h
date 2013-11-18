@@ -152,7 +152,7 @@ public:
     Q_INVOKABLE bool isComputable() const;
     Q_INVOKABLE bool isNull() const;
     Q_INVOKABLE double realValue() const;
-    Q_INVOKABLE int unlimitedValue() const;
+    Q_INVOKABLE QString unlimitedValue() const;
 
     // Operations [TemplateableElement]
     Q_INVOKABLE bool isTemplate() const;

@@ -294,7 +294,7 @@ double QUmlStringExpressionObject::realValue() const
     return qmodelingelementproperty_cast<QUmlStringExpression *>(this)->realValue();
 }
 
-int QUmlStringExpressionObject::unlimitedValue() const
+QString QUmlStringExpressionObject::unlimitedValue() const
 {
     return qmodelingelementproperty_cast<QUmlStringExpression *>(this)->unlimitedValue();
 }

@@ -105,8 +105,8 @@ public:
     void setTemplateParameter(QUmlOperationTemplateParameter *templateParameter);
     QUmlType *type() const;
     Q_DECL_HIDDEN void setType(QUmlType *type);
-    int upper() const;
-    Q_DECL_HIDDEN void setUpper(int upper);
+    QString upper() const;
+    Q_DECL_HIDDEN void setUpper(QString upper);
 
     // Operations
     bool isConsistentWith(QUmlRedefinableElement *redefinee) const;

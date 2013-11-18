@@ -449,6 +449,9 @@ void QUmlProperty::setReadOnly(bool isReadOnly)
     if (_isReadOnly != isReadOnly) {
         _isReadOnly = isReadOnly;
         _qModelingObject->modifiedResettableProperties() << QStringLiteral("isReadOnly");
+
+        // Adjust redefined properties
+        QUmlStructuralFeature::setReadOnly(isReadOnly);
     }
 }
 

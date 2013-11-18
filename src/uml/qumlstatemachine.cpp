@@ -254,6 +254,9 @@ void QUmlStateMachine::addExtendedStateMachine(QUmlStateMachine *extendedStateMa
         _extendedStateMachines.insert(extendedStateMachine);
         if (extendedStateMachine && extendedStateMachine->asQModelingObject() && this->asQModelingObject())
             QObject::connect(extendedStateMachine->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeExtendedStateMachine(QObject *)));
+
+        // Adjust redefined properties
+        QUmlBehavior::addRedefinedBehavior(extendedStateMachine);
     }
 }
 
@@ -263,6 +266,9 @@ void QUmlStateMachine::removeExtendedStateMachine(QUmlStateMachine *extendedStat
 
     if (_extendedStateMachines.contains(extendedStateMachine)) {
         _extendedStateMachines.remove(extendedStateMachine);
+
+        // Adjust redefined properties
+        QUmlBehavior::removeRedefinedBehavior(extendedStateMachine);
     }
 }
 

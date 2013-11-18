@@ -117,6 +117,9 @@ void QUmlTimeInterval::setMax(QUmlTimeExpression *max)
         _max = max;
         if (max && max->asQModelingObject() && this->asQModelingObject())
             QObject::connect(max->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setMax()));
+
+        // Adjust redefined properties
+        QUmlInterval::setMax(max);
     }
 }
 
@@ -138,6 +141,9 @@ void QUmlTimeInterval::setMin(QUmlTimeExpression *min)
         _min = min;
         if (min && min->asQModelingObject() && this->asQModelingObject())
             QObject::connect(min->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setMin()));
+
+        // Adjust redefined properties
+        QUmlInterval::setMin(min);
     }
 }
 

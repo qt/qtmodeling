@@ -210,10 +210,17 @@ void QUmlExtension::setOwnedEnd(QUmlExtensionEnd *ownedEnd)
     // This is a read-write association end
 
     if (_ownedEnd != ownedEnd) {
+        // Adjust redefined properties        QUmlAssociation::removeOwnedEnd(_ownedEnd);
+
         _ownedEnd = ownedEnd;
         if (ownedEnd && ownedEnd->asQModelingObject() && this->asQModelingObject())
             QObject::connect(ownedEnd->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setOwnedEnd()));
         ownedEnd->asQModelingObject()->setParent(this->asQModelingObject());
+
+        // Adjust redefined properties
+        if (ownedEnd) {
+            QUmlAssociation::addOwnedEnd(ownedEnd);
+        }
     }
 }
 

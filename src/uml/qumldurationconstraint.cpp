@@ -137,6 +137,9 @@ void QUmlDurationConstraint::setSpecification(QUmlDurationInterval *specificatio
         if (specification && specification->asQModelingObject() && this->asQModelingObject())
             QObject::connect(specification->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setSpecification()));
         specification->asQModelingObject()->setParent(this->asQModelingObject());
+
+        // Adjust redefined properties
+        QUmlIntervalConstraint::setSpecification(specification);
     }
 }
 

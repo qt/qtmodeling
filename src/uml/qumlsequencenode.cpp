@@ -157,6 +157,9 @@ void QUmlSequenceNode::addExecutableNode(QUmlExecutableNode *executableNode)
         if (executableNode && executableNode->asQModelingObject() && this->asQModelingObject())
             QObject::connect(executableNode->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeExecutableNode(QObject *)));
         executableNode->asQModelingObject()->setParent(this->asQModelingObject());
+
+        // Adjust redefined properties
+        QUmlStructuredActivityNode::addNode(executableNode);
     }
 }
 
@@ -168,6 +171,9 @@ void QUmlSequenceNode::removeExecutableNode(QUmlExecutableNode *executableNode)
         _executableNodes.removeAll(executableNode);
         if (executableNode->asQModelingObject())
             executableNode->asQModelingObject()->setParent(0);
+
+        // Adjust redefined properties
+        QUmlStructuredActivityNode::removeNode(executableNode);
     }
 }
 

@@ -103,6 +103,9 @@ void QUmlOperationTemplateParameter::setParameteredElement(QUmlOperation *parame
         _parameteredElement = parameteredElement;
         if (parameteredElement && parameteredElement->asQModelingObject() && this->asQModelingObject())
             QObject::connect(parameteredElement->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setParameteredElement()));
+
+        // Adjust redefined properties
+        QUmlTemplateParameter::setParameteredElement(parameteredElement);
     }
 }
 
