@@ -1,7 +1,7 @@
 load(qt_build_config)
 
 TARGET = QtDuse
-QT = core-private modeling-private
+QT = core-private modeling-private uml
 
 QMAKE_DOCS = $$PWD/doc/qtduse.qdocconf
 

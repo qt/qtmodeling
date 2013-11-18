@@ -42,6 +42,8 @@
 #include "private/qmodelingobject_p.h"
 
 #include <QtDuse/QDuseVariationPoint>
+#include <QtUml/QUmlProperty>
+
 QT_BEGIN_NAMESPACE
 
 QDuseVariationPointObject::QDuseVariationPointObject(QDuseVariationPoint *modelingElement)
@@ -68,9 +70,12 @@ QString QDuseVariationPointObject::preChangeValidationRule() const
     return qmodelingelementproperty_cast<QDuseVariationPoint *>(this)->preChangeValidationRule();
 }
 
-QString QDuseVariationPointObject::modelChange() const
+QObject *QDuseVariationPointObject::modelChange() const
 {
-    return qmodelingelementproperty_cast<QDuseVariationPoint *>(this)->modelChange();
+    if (!qmodelingelementproperty_cast<QDuseVariationPoint *>(this)->modelChange())
+        return 0;
+    else
+        return qmodelingelementproperty_cast<QDuseVariationPoint *>(this)->modelChange()->asQModelingObject();
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [VariationPoint]
@@ -93,9 +98,9 @@ void QDuseVariationPointObject::setPreChangeValidationRule(QString preChangeVali
     emit preChangeValidationRuleChanged(this->preChangeValidationRule());
 }
 
-void QDuseVariationPointObject::setModelChange(QString modelChange)
+void QDuseVariationPointObject::setModelChange(QObject *modelChange)
 {
-    qmodelingelementproperty_cast<QDuseVariationPoint *>(this)->setModelChange(modelChange);
+    qmodelingelementproperty_cast<QDuseVariationPoint *>(this)->setModelChange(qmodelingelementproperty_cast<QUmlProperty *>(modelChange));
     emit modelChangeChanged(this->modelChange());
 }
 

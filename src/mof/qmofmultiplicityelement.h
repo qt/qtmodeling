@@ -67,8 +67,8 @@ public:
     void setLower(int lower);
     QMofValueSpecification *lowerValue() const;
     void setLowerValue(QMofValueSpecification *lowerValue);
-    int upper() const;
-    void setUpper(int upper);
+    QString upper() const;
+    void setUpper(QString upper);
     QMofValueSpecification *upperValue() const;
     void setUpperValue(QMofValueSpecification *upperValue);
 
@@ -77,7 +77,7 @@ public:
     bool includesMultiplicity(QMofMultiplicityElement *M) const;
     bool isMultivalued() const;
     int lowerBound() const;
-    int upperBound() const;
+    QString upperBound() const;
 
 protected:
     explicit QMofMultiplicityElement();

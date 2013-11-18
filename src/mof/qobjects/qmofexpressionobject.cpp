@@ -230,7 +230,7 @@ QString QMofExpressionObject::stringValue() const
     return qmodelingelementproperty_cast<QMofExpression *>(this)->stringValue();
 }
 
-int QMofExpressionObject::unlimitedValue() const
+QString QMofExpressionObject::unlimitedValue() const
 {
     return qmodelingelementproperty_cast<QMofExpression *>(this)->unlimitedValue();
 }

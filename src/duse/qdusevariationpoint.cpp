@@ -42,6 +42,8 @@
 
 #include "private/qdusevariationpointobject_p.h"
 
+#include <QtUml/QUmlProperty>
+
 QT_BEGIN_NAMESPACE
 
 /*!
@@ -51,7 +53,8 @@ QT_BEGIN_NAMESPACE
 
     \brief A variation point represents a specific solution for a given design dimension. A variation point entails validation rules which check for valid combinations of variation points and a script which defines the architectural changes to be enacted from such solution.
  */
-QDuseVariationPoint::QDuseVariationPoint(bool createQModelingObject)
+QDuseVariationPoint::QDuseVariationPoint(bool createQModelingObject) :
+    _modelChange(0)
 {
     if (createQModelingObject)
         _qModelingObject = qobject_cast<QModelingObject *>(new QDuseVariationPointObject(this));
@@ -63,7 +66,8 @@ QModelingElement *QDuseVariationPoint::clone() const
     c->setName(name());
     c->setRationale(rationale());
     c->setPreChangeValidationRule(preChangeValidationRule());
-    c->setModelChange(modelChange());
+    if (modelChange())
+        c->setModelChange(dynamic_cast<QUmlProperty *>(modelChange()->clone()));
     return c;
 }
 
@@ -129,19 +133,21 @@ void QDuseVariationPoint::setPreChangeValidationRule(QString preChangeValidation
 /*!
     The architectural changes to be enacted as contributions arosen from this variation point. The complete set of architectural changes is the merge of architectural contributions from all involved variation points.
  */
-QString QDuseVariationPoint::modelChange() const
+QUmlProperty *QDuseVariationPoint::modelChange() const
 {
     // This is a read-write property
 
     return _modelChange;
 }
 
-void QDuseVariationPoint::setModelChange(QString modelChange)
+void QDuseVariationPoint::setModelChange(QUmlProperty *modelChange)
 {
     // This is a read-write property
 
     if (_modelChange != modelChange) {
         _modelChange = modelChange;
+        if (modelChange && modelChange->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(modelChange->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setModelChange()));
     }
 }
 

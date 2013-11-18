@@ -114,7 +114,7 @@ public:
     Q_INVOKABLE int integerValue() const;
     Q_INVOKABLE double realValue();
     Q_INVOKABLE QString stringValue() const;
-    Q_INVOKABLE int unlimitedValue() const;
+    Q_INVOKABLE QString unlimitedValue() const;
 
     // Operations [LiteralNull]
     Q_INVOKABLE bool isComputable() const;

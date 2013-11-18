@@ -105,7 +105,7 @@ class Q_MOF_EXPORT QMofOperationObject : public QModelingObject
     Q_PROPERTY(QSet<QObject *> raisedExceptions READ raisedExceptions NOTIFY raisedExceptionsChanged)
     Q_PROPERTY(QSet<QObject *> redefinedOperations READ redefinedOperations NOTIFY redefinedOperationsChanged)
     Q_PROPERTY(QObject * type READ type NOTIFY typeChanged STORED false)
-    Q_PROPERTY(int upper READ upper NOTIFY upperChanged RESET unsetUpper STORED false)
+    Q_PROPERTY(QString upper READ upper NOTIFY upperChanged RESET unsetUpper STORED false)
 
 public:
     Q_INVOKABLE explicit QMofOperationObject(QMofOperation *modelingElement);
@@ -154,7 +154,7 @@ public:
     Q_INVOKABLE const QSet<QObject *> raisedExceptions() const;
     Q_INVOKABLE const QSet<QObject *> redefinedOperations() const;
     Q_INVOKABLE QObject *type() const;
-    Q_INVOKABLE int upper() const;
+    Q_INVOKABLE QString upper() const;
 
     // Operations [Element]
     Q_INVOKABLE QSet<QObject *> allOwnedElements() const;
@@ -252,7 +252,7 @@ public Q_SLOTS:
     void addRedefinedOperation(QObject *redefinedOperation);
     void removeRedefinedOperation(QObject *redefinedOperation);
     void Q_DECL_HIDDEN setType(QObject *type = 0);
-    void Q_DECL_HIDDEN setUpper(int upper);
+    void Q_DECL_HIDDEN setUpper(QString upper);
     void unsetUpper();
 
 Q_SIGNALS:
@@ -301,7 +301,7 @@ Q_SIGNALS:
     void raisedExceptionsChanged(QSet<QObject *> raisedExceptions);
     void redefinedOperationsChanged(QSet<QObject *> redefinedOperations);
     void typeChanged(QObject *type);
-    void upperChanged(int upper);
+    void upperChanged(QString upper);
 
 protected:
     virtual void setGroupProperties();

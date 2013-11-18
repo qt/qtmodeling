@@ -125,6 +125,9 @@ void QMofClass::setAbstract(bool isAbstract)
     if (_isAbstract != isAbstract) {
         _isAbstract = isAbstract;
         _qModelingObject->modifiedResettableProperties() << QStringLiteral("isAbstract");
+
+        // Adjust redefined properties
+        QMofClassifier::setAbstract(isAbstract);
     }
 }
 
@@ -290,6 +293,9 @@ void QMofClass::addSuperClass(QMofClass *superClass)
 
     if (false /* <derivedexclusion-criteria> */) {
         // <derived-code>
+
+        // Adjust redefined properties
+        QMofClassifier::addGeneral(superClass);
     }
 }
 
@@ -302,6 +308,9 @@ void QMofClass::removeSuperClass(QMofClass *superClass)
 
     if (false /* <derivedexclusion-criteria> */) {
         // <derived-code>
+
+        // Adjust redefined properties
+        QMofClassifier::removeGeneral(superClass);
     }
 }
 

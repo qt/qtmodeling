@@ -473,7 +473,7 @@ void Q${namespace}${originalClassName}Object::unset${qtAttribute.remove("^is").u
         [%- ELSIF defaultType == "uml:LiteralUnlimitedNatural" -%]
             [%- SET defaultValue = attribute.findvalue("defaultValue/@value") -%]
             [%- IF defaultValue != "" -%]
-    set${qtAttribute.remove("^is").ucfirst}(${defaultValue});
+    set${qtAttribute.remove("^is").ucfirst}(QStringLiteral("${defaultValue}"));
             [%- ELSE -%]
     set${qtAttribute.remove("^is").ucfirst}(QStringLiteral(""));
             [%- END -%]

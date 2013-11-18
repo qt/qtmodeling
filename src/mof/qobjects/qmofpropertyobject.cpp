@@ -188,7 +188,7 @@ QObject *QMofPropertyObject::lowerValue() const
         return qmodelingelementproperty_cast<QMofProperty *>(this)->lowerValue()->asQModelingObject();
 }
 
-int QMofPropertyObject::upper() const
+QString QMofPropertyObject::upper() const
 {
     return qmodelingelementproperty_cast<QMofProperty *>(this)->upper();
 }
@@ -392,7 +392,7 @@ int QMofPropertyObject::lowerBound() const
     return qmodelingelementproperty_cast<QMofProperty *>(this)->lowerBound();
 }
 
-int QMofPropertyObject::upperBound() const
+QString QMofPropertyObject::upperBound() const
 {
     return qmodelingelementproperty_cast<QMofProperty *>(this)->upperBound();
 }
@@ -602,7 +602,7 @@ void QMofPropertyObject::setLowerValue(QObject *lowerValue)
     emit lowerValueChanged(this->lowerValue());
 }
 
-void QMofPropertyObject::setUpper(int upper)
+void QMofPropertyObject::setUpper(QString upper)
 {
     qmodelingelementproperty_cast<QMofProperty *>(this)->setUpper(upper);
     emit upperChanged(this->upper());
@@ -611,7 +611,7 @@ void QMofPropertyObject::setUpper(int upper)
 void QMofPropertyObject::unsetUpper()
 {
     Q_D(QModelingObject);
-    setUpper(1);
+    setUpper(QStringLiteral("1"));
     d->modifiedResettableProperties.removeAll(QStringLiteral("upper"));
 }
 

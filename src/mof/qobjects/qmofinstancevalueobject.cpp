@@ -225,7 +225,7 @@ QString QMofInstanceValueObject::stringValue() const
     return qmodelingelementproperty_cast<QMofInstanceValue *>(this)->stringValue();
 }
 
-int QMofInstanceValueObject::unlimitedValue() const
+QString QMofInstanceValueObject::unlimitedValue() const
 {
     return qmodelingelementproperty_cast<QMofInstanceValue *>(this)->unlimitedValue();
 }

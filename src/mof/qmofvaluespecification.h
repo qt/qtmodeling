@@ -65,7 +65,7 @@ public:
     bool isNull() const;
     double realValue();
     QString stringValue() const;
-    int unlimitedValue() const;
+    QString unlimitedValue() const;
 
 protected:
     explicit QMofValueSpecification();

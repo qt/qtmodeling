@@ -323,6 +323,9 @@ void QMofOperation::addOwnedParameter(QMofParameter *ownedParameter)
             QObject::connect(ownedParameter->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeOwnedParameter(QObject *)));
         ownedParameter->asQModelingObject()->setParent(this->asQModelingObject());
 
+        // Adjust redefined properties
+        QMofBehavioralFeature::addOwnedParameter(ownedParameter);
+
         // Adjust opposite properties
         if (ownedParameter) {
             ownedParameter->setOperation(this);
@@ -338,6 +341,9 @@ void QMofOperation::removeOwnedParameter(QMofParameter *ownedParameter)
         _ownedParameters.removeAll(ownedParameter);
         if (ownedParameter->asQModelingObject())
             ownedParameter->asQModelingObject()->setParent(0);
+
+        // Adjust redefined properties
+        QMofBehavioralFeature::removeOwnedParameter(ownedParameter);
 
         // Adjust opposite properties
         if (ownedParameter) {
@@ -442,6 +448,9 @@ void QMofOperation::addRaisedException(QMofType *raisedException)
         _raisedExceptions.insert(raisedException);
         if (raisedException && raisedException->asQModelingObject() && this->asQModelingObject())
             QObject::connect(raisedException->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeRaisedException(QObject *)));
+
+        // Adjust redefined properties
+        QMofBehavioralFeature::addRaisedException(raisedException);
     }
 }
 
@@ -451,6 +460,9 @@ void QMofOperation::removeRaisedException(QMofType *raisedException)
 
     if (_raisedExceptions.contains(raisedException)) {
         _raisedExceptions.remove(raisedException);
+
+        // Adjust redefined properties
+        QMofBehavioralFeature::removeRaisedException(raisedException);
     }
 }
 
@@ -517,16 +529,16 @@ void QMofOperation::setType(QMofType *type)
 /*!
     Specifies the upper multiplicity of the return parameter, if present.
  */
-int QMofOperation::upper() const
+QString QMofOperation::upper() const
 {
     // This is a read-only derived property
 
     qWarning("QMofOperation::upper(): to be implemented (this is a derived property)");
 
-    return int();
+    return QString();
 }
 
-void QMofOperation::setUpper(int upper)
+void QMofOperation::setUpper(QString upper)
 {
     // This is a read-only derived property
 

@@ -88,6 +88,9 @@ void QMofPackageableElement::setVisibility(QtMof::VisibilityKind visibility)
     if (_visibility != visibility) {
         _visibility = visibility;
         _qModelingObject->modifiedResettableProperties() << QStringLiteral("visibility");
+
+        // Adjust redefined properties
+        QMofNamedElement::setVisibility(visibility);
     }
 }
 

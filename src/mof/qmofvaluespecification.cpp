@@ -137,11 +137,11 @@ QString QMofValueSpecification::stringValue() const
 /*!
     The query unlimitedValue() gives a single UnlimitedNatural value when one can be computed.
  */
-int QMofValueSpecification::unlimitedValue() const
+QString QMofValueSpecification::unlimitedValue() const
 {
     qWarning("QMofValueSpecification::unlimitedValue(): to be implemented (operation)");
 
-    return int ();
+    return QString ();
 }
 
 QT_END_NAMESPACE

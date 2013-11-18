@@ -299,7 +299,7 @@ QObject *QMofOperationObject::type() const
         return qmodelingelementproperty_cast<QMofOperation *>(this)->type()->asQModelingObject();
 }
 
-int QMofOperationObject::upper() const
+QString QMofOperationObject::upper() const
 {
     return qmodelingelementproperty_cast<QMofOperation *>(this)->upper();
 }
@@ -754,7 +754,7 @@ void QMofOperationObject::setType(QObject *type)
     emit typeChanged(this->type());
 }
 
-void QMofOperationObject::setUpper(int upper)
+void QMofOperationObject::setUpper(QString upper)
 {
     qmodelingelementproperty_cast<QMofOperation *>(this)->setUpper(upper);
     emit upperChanged(this->upper());
@@ -763,7 +763,7 @@ void QMofOperationObject::setUpper(int upper)
 void QMofOperationObject::unsetUpper()
 {
     Q_D(QModelingObject);
-    setUpper(1);
+    setUpper(QStringLiteral("1"));
     d->modifiedResettableProperties.removeAll(QStringLiteral("upper"));
 }
 

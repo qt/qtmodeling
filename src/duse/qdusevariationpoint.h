@@ -51,6 +51,8 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtDuse)
 
+class QUmlProperty;
+
 class Q_DUSE_EXPORT QDuseVariationPoint : public QModelingElement
 {
 public:
@@ -65,14 +67,14 @@ public:
     void setRationale(QString rationale);
     QString preChangeValidationRule() const;
     void setPreChangeValidationRule(QString preChangeValidationRule);
-    QString modelChange() const;
-    void setModelChange(QString modelChange);
+    QUmlProperty *modelChange() const;
+    void setModelChange(QUmlProperty *modelChange);
 
 protected:
     QString _name;
     QString _rationale;
     QString _preChangeValidationRule;
-    QString _modelChange;
+    QUmlProperty *_modelChange;
 };
 
 QT_END_NAMESPACE

@@ -211,7 +211,7 @@ double QMofLiteralStringObject::realValue()
     return qmodelingelementproperty_cast<QMofLiteralString *>(this)->realValue();
 }
 
-int QMofLiteralStringObject::unlimitedValue() const
+QString QMofLiteralStringObject::unlimitedValue() const
 {
     return qmodelingelementproperty_cast<QMofLiteralString *>(this)->unlimitedValue();
 }

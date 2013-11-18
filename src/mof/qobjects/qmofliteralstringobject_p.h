@@ -120,7 +120,7 @@ public:
     Q_INVOKABLE int integerValue() const;
     Q_INVOKABLE bool isNull() const;
     Q_INVOKABLE double realValue();
-    Q_INVOKABLE int unlimitedValue() const;
+    Q_INVOKABLE QString unlimitedValue() const;
 
     // Operations [LiteralString]
     Q_INVOKABLE bool isComputable() const;

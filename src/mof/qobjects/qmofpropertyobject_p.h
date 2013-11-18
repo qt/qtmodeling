@@ -89,7 +89,7 @@ class Q_MOF_EXPORT QMofPropertyObject : public QModelingObject
     Q_PROPERTY(bool isUnique READ isUnique WRITE setUnique NOTIFY isUniqueChanged RESET unsetUnique)
     Q_PROPERTY(int lower READ lower WRITE setLower NOTIFY lowerChanged RESET unsetLower STORED false)
     Q_PROPERTY(QObject * lowerValue READ lowerValue WRITE setLowerValue NOTIFY lowerValueChanged)
-    Q_PROPERTY(int upper READ upper WRITE setUpper NOTIFY upperChanged RESET unsetUpper STORED false)
+    Q_PROPERTY(QString upper READ upper WRITE setUpper NOTIFY upperChanged RESET unsetUpper STORED false)
     Q_PROPERTY(QObject * upperValue READ upperValue WRITE setUpperValue NOTIFY upperValueChanged)
 
     // Properties [StructuralFeature]
@@ -142,7 +142,7 @@ public:
     Q_INVOKABLE bool isUnique() const;
     Q_INVOKABLE int lower() const;
     Q_INVOKABLE QObject *lowerValue() const;
-    Q_INVOKABLE int upper() const;
+    Q_INVOKABLE QString upper() const;
     Q_INVOKABLE QObject *upperValue() const;
 
     // Owned attributes [StructuralFeature]
@@ -185,7 +185,7 @@ public:
     Q_INVOKABLE bool includesMultiplicity(QObject *M) const;
     Q_INVOKABLE bool isMultivalued() const;
     Q_INVOKABLE int lowerBound() const;
-    Q_INVOKABLE int upperBound() const;
+    Q_INVOKABLE QString upperBound() const;
 
     // Operations [Property]
     Q_INVOKABLE bool isAttribute(QObject *p) const;
@@ -233,7 +233,7 @@ public Q_SLOTS:
     void setLower(int lower);
     void unsetLower();
     void setLowerValue(QObject *lowerValue = 0);
-    void setUpper(int upper);
+    void setUpper(QString upper);
     void unsetUpper();
     void setUpperValue(QObject *upperValue = 0);
 
@@ -293,7 +293,7 @@ Q_SIGNALS:
     void isUniqueChanged(bool isUnique);
     void lowerChanged(int lower);
     void lowerValueChanged(QObject *lowerValue);
-    void upperChanged(int upper);
+    void upperChanged(QString upper);
     void upperValueChanged(QObject *upperValue);
 
     // Signals for owned attributes [StructuralFeature]

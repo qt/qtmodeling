@@ -204,7 +204,7 @@ QString QMofLiteralNullObject::stringValue() const
     return qmodelingelementproperty_cast<QMofLiteralNull *>(this)->stringValue();
 }
 
-int QMofLiteralNullObject::unlimitedValue() const
+QString QMofLiteralNullObject::unlimitedValue() const
 {
     return qmodelingelementproperty_cast<QMofLiteralNull *>(this)->unlimitedValue();
 }

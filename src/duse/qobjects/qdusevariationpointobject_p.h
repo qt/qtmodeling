@@ -63,7 +63,7 @@ class Q_DUSE_EXPORT QDuseVariationPointObject : public QModelingObject
     Q_PROPERTY(QString name READ name WRITE setName NOTIFY nameChanged)
     Q_PROPERTY(QString rationale READ rationale WRITE setRationale NOTIFY rationaleChanged)
     Q_PROPERTY(QString preChangeValidationRule READ preChangeValidationRule WRITE setPreChangeValidationRule NOTIFY preChangeValidationRuleChanged)
-    Q_PROPERTY(QString modelChange READ modelChange WRITE setModelChange NOTIFY modelChangeChanged)
+    Q_PROPERTY(QObject * modelChange READ modelChange WRITE setModelChange NOTIFY modelChangeChanged)
 
 public:
     Q_INVOKABLE explicit QDuseVariationPointObject(QDuseVariationPoint *modelingElement);
@@ -72,7 +72,7 @@ public:
     Q_INVOKABLE QString name() const;
     Q_INVOKABLE QString rationale() const;
     Q_INVOKABLE QString preChangeValidationRule() const;
-    Q_INVOKABLE QString modelChange() const;
+    Q_INVOKABLE QObject *modelChange() const;
 
 public Q_SLOTS:
 
@@ -80,7 +80,7 @@ public Q_SLOTS:
     void setName(QString name);
     void setRationale(QString rationale);
     void setPreChangeValidationRule(QString preChangeValidationRule);
-    void setModelChange(QString modelChange);
+    void setModelChange(QObject *modelChange = 0);
 
 Q_SIGNALS:
 
@@ -88,7 +88,7 @@ Q_SIGNALS:
     void nameChanged(QString name);
     void rationaleChanged(QString rationale);
     void preChangeValidationRuleChanged(QString preChangeValidationRule);
-    void modelChangeChanged(QString modelChange);
+    void modelChangeChanged(QObject *modelChange);
 
 protected:
     virtual void setGroupProperties();

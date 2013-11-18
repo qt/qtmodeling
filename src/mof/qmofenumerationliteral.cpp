@@ -107,7 +107,14 @@ void QMofEnumerationLiteral::setClassifier(QMofEnumeration *classifier)
     Q_UNUSED(classifier);
 
     if (false /* <derivedexclusion-criteria> */) {
+        // Adjust redefined properties        // QMofInstanceSpecification::removeClassifier(/* <derived-code> */);
+
         // <derived-code>
+
+        // Adjust redefined properties
+        if (classifier) {
+            QMofInstanceSpecification::addClassifier(classifier);
+        }
     }
 }
 
