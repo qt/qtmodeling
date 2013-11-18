@@ -66,6 +66,9 @@
 #include <QtUml/QUmlType>
 #include <QtUml/QUmlValueSpecification>
 
+#include <QtUml/QUmlGeneralization>
+#include <QtUml/QUmlInterfaceRealization>
+
 QT_BEGIN_NAMESPACE
 
 /*!
@@ -238,9 +241,20 @@ const QSet<QUmlInterface *> QUmlPort::provided() const
 {
     // This is a read-only derived association end
 
-    qWarning("QUmlPort::provided(): to be implemented (this is a derived association end)");
+    QSet<QUmlInterface *> provided_;
+    if (!_isConjugated) {
+        if (QUmlInterface *interface = dynamic_cast<QUmlInterface *>(_type)) {
+            provided_.insert(interface);
+        }
+        else {
+            collectRealizedInterfaces(dynamic_cast<QUmlBehavioredClassifier *>(_type), provided_);
+        }
+    }
+    else {
+        collectUsedInterfaces(dynamic_cast<QUmlBehavioredClassifier *>(_type), provided_);
+    }
 
-    return QSet<QUmlInterface *>();
+    return provided_;
 }
 
 void QUmlPort::addProvided(QUmlInterface *provided)
@@ -310,9 +324,20 @@ const QSet<QUmlInterface *> QUmlPort::required() const
 {
     // This is a read-only derived association end
 
-    qWarning("QUmlPort::required(): to be implemented (this is a derived association end)");
+    QSet<QUmlInterface *> required_;
+    if (_isConjugated) {
+        if (QUmlInterface *interface = dynamic_cast<QUmlInterface *>(_type)) {
+            required_.insert(interface);
+        }
+        else {
+            collectRealizedInterfaces(dynamic_cast<QUmlBehavioredClassifier *>(_type), required_);
+        }
+    }
+    else {
+        collectUsedInterfaces(dynamic_cast<QUmlBehavioredClassifier *>(_type), required_);
+    }
 
-    return QSet<QUmlInterface *>();
+    return required_;
 }
 
 void QUmlPort::addRequired(QUmlInterface *required)
@@ -337,6 +362,29 @@ void QUmlPort::removeRequired(QUmlInterface *required)
     if (false /* <derivedexclusion-criteria> */) {
         // <derived-code>
     }
+}
+
+void QUmlPort::collectRealizedInterfaces(QUmlBehavioredClassifier *behavioredClassifier, QSet<QUmlInterface *> &provided_) const
+{
+    if (!behavioredClassifier)
+        return;
+    foreach (QUmlInterfaceRealization *realization, behavioredClassifier->interfaceRealizations())
+        provided_.insert(realization->contract());
+    foreach (QUmlGeneralization *generalization, behavioredClassifier->generalizations())
+        collectRealizedInterfaces(dynamic_cast<QUmlBehavioredClassifier *>(generalization->general()), provided_);
+}
+
+void QUmlPort::collectUsedInterfaces(QUmlBehavioredClassifier *behavioredClassifier, QSet<QUmlInterface *> &required_) const
+{
+    if (!behavioredClassifier)
+        return;
+    foreach (QUmlDependency *dependency, behavioredClassifier->clientDependencies())
+        if (QString::fromLatin1(dependency->asQModelingObject()->metaObject()->className()) == QStringLiteral("QUmlDependencyObject"))
+            foreach (QUmlNamedElement *supplier, dependency->suppliers())
+                if (QUmlInterface *interface = dynamic_cast<QUmlInterface *>(supplier))
+                    required_.insert(interface);
+    foreach (QUmlGeneralization *generalization, behavioredClassifier->generalizations())
+        collectUsedInterfaces(dynamic_cast<QUmlBehavioredClassifier *>(generalization->general()), required_);
 }
 
 QT_END_NAMESPACE

@@ -1,3 +1,3 @@
 TEMPLATE=subdirs
 qtHaveModule(mof): SUBDIRS += qtmofcontainment
-qtHaveModule(uml): SUBDIRS += qtumlcontainment
+qtHaveModule(uml): SUBDIRS += qtumlcontainment qtumlprovidedrequiredinterfaces

@@ -54,6 +54,8 @@ QT_MODULE(QtUml)
 class QUmlInterface;
 class QUmlProtocolStateMachine;
 
+class QUmlBehavioredClassifier;
+
 class Q_UML_EXPORT QUmlPort : public QUmlProperty
 {
 public:
@@ -86,6 +88,10 @@ protected:
     bool _isService;
     QUmlProtocolStateMachine *_protocol;
     QSet<QUmlPort *> _redefinedPorts;
+
+private:
+    void collectRealizedInterfaces(QUmlBehavioredClassifier *behavioredClassifier, QSet<QUmlInterface *> &provided_) const;
+    void collectUsedInterfaces(QUmlBehavioredClassifier *behavioredClassifier, QSet<QUmlInterface *> &required_) const;
 };
 
 QT_END_NAMESPACE
