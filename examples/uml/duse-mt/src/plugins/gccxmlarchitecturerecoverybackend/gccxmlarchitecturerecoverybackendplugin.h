@@ -66,15 +66,13 @@ public:
     virtual QObjectList connectors();
 
 private:
-    QStringList findFiles(const QString &name) const;
     QStringList generateXmlFiles(const QStringList &codeFiles) const;
     bool openXmlFile(const QString &filePath);
     QStringList findConstructorsFromXml(const QString &className);
     QObject *extractComponent(QString xmlFile);
 
-    QDir rootProjectDir;
-    QXmlStreamReader *xml;
+    QDir _rootProjectDir;
+    QXmlStreamReader *_xmlReader;
 };
 
 #endif // GCCXMLARCHITECTURERECOVERYBACKENDPLUGIN
-
