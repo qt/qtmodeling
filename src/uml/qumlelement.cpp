@@ -124,6 +124,11 @@ void QUmlElement::addOwnedElement(QUmlElement *ownedElement)
         if (ownedElement && ownedElement->asQModelingObject() && this->asQModelingObject())
             QObject::connect(ownedElement->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeOwnedElement(QObject *)));
         ownedElement->asQModelingObject()->setParent(this->asQModelingObject());
+
+        // Adjust opposite properties
+        if (ownedElement) {
+            ownedElement->setOwner(this);
+        }
     }
 }
 
@@ -135,6 +140,11 @@ void QUmlElement::removeOwnedElement(QUmlElement *ownedElement)
         _ownedElements.remove(ownedElement);
         if (ownedElement->asQModelingObject())
             ownedElement->asQModelingObject()->setParent(0);
+
+        // Adjust opposite properties
+        if (ownedElement) {
+            ownedElement->setOwner(0);
+        }
     }
 }
 
