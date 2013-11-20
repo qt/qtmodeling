@@ -355,9 +355,7 @@ bool QUmlProperty::isComposite() const
 {
     // This is a read-write derived property
 
-    qWarning("QUmlProperty::isComposite(): to be implemented (this is a derived property)");
-
-    return bool();
+    return _aggregation == QtUml::AggregationKindComposite;
 }
 
 void QUmlProperty::setComposite(bool isComposite)

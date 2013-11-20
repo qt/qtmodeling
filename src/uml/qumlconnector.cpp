@@ -55,6 +55,8 @@
 #include <QtUml/QUmlRedefinableElement>
 #include <QtUml/QUmlStringExpression>
 
+#include <QtUml/QUmlPort>
+
 QT_BEGIN_NAMESPACE
 
 /*!
@@ -173,9 +175,11 @@ QtUml::ConnectorKind QUmlConnector::kind() const
 {
     // This is a read-only derived property
 
-    qWarning("QUmlConnector::kind(): to be implemented (this is a derived property)");
-
-    return QtUml::ConnectorKind();
+    bool found = false;
+    foreach (QUmlConnectorEnd *end, ends())
+        if (dynamic_cast<QUmlPort *>(end->role()) && !end->partWithPort() && !(dynamic_cast<QUmlPort *>(end->role()))->isBehavior())
+            found = true;
+    return found ? QtUml::ConnectorKindDelegation:QtUml::ConnectorKindAssembly;
 }
 
 void QUmlConnector::setKind(QtUml::ConnectorKind kind)
