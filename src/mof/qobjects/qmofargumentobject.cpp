@@ -100,6 +100,7 @@ void QMofArgumentObject::setPropertyData()
 {
     Q_DECLARE_METAPROPERTY_INFO(QMofArgument, name, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QMofArgument, name, PropertyClassRole, QStringLiteral("QMofArgument"));
+    Q_DECLARE_METAPROPERTY_INFO(QMofArgument, name, PropertyTypeRole, QStringLiteral("QString"));
     Q_DECLARE_METAPROPERTY_INFO(QMofArgument, name, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofArgument, name, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofArgument, name, DocumentationRole, QStringLiteral(""));
@@ -109,6 +110,7 @@ void QMofArgumentObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QMofArgument, value, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QMofArgument, value, PropertyClassRole, QStringLiteral("QMofArgument"));
+    Q_DECLARE_METAPROPERTY_INFO(QMofArgument, value, PropertyTypeRole, QStringLiteral("QMofObject *"));
     Q_DECLARE_METAPROPERTY_INFO(QMofArgument, value, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofArgument, value, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofArgument, value, DocumentationRole, QStringLiteral(""));

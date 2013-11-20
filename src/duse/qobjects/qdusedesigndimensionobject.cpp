@@ -173,6 +173,7 @@ void QDuseDesignDimensionObject::setPropertyData()
 {
     Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimension, name, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimension, name, PropertyClassRole, QStringLiteral("QDuseDesignDimension"));
+    Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimension, name, PropertyTypeRole, QStringLiteral("QString"));
     Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimension, name, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimension, name, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimension, name, DocumentationRole, QStringLiteral("The design dimension's name."));
@@ -182,6 +183,7 @@ void QDuseDesignDimensionObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimension, instanceSelectionRule, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimension, instanceSelectionRule, PropertyClassRole, QStringLiteral("QDuseDesignDimension"));
+    Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimension, instanceSelectionRule, PropertyTypeRole, QStringLiteral("QString"));
     Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimension, instanceSelectionRule, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimension, instanceSelectionRule, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimension, instanceSelectionRule, DocumentationRole, QStringLiteral("The rule for detecting a specific locus of architectural decision related to this design dimension. Such rule relies on the accompanying UML profile for the specific application domain, in order to identify the decision loci."));
@@ -191,6 +193,7 @@ void QDuseDesignDimensionObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimension, requiredPreviousEvaluations, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimension, requiredPreviousEvaluations, PropertyClassRole, QStringLiteral("QDuseDesignDimension"));
+    Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimension, requiredPreviousEvaluations, PropertyTypeRole, QStringLiteral("QSet<QDuseDesignDimension *>"));
     Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimension, requiredPreviousEvaluations, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimension, requiredPreviousEvaluations, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimension, requiredPreviousEvaluations, DocumentationRole, QStringLiteral("The design dimensions that must be previously evaluated before this design dimension. Such dependency may be required in order to tackle dependent design dimensions and identify invalid design space locations."));
@@ -200,6 +203,7 @@ void QDuseDesignDimensionObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimension, variationPoints, AggregationRole, QStringLiteral("composite"));
     Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimension, variationPoints, PropertyClassRole, QStringLiteral("QDuseDesignDimension"));
+    Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimension, variationPoints, PropertyTypeRole, QStringLiteral("QSet<QDuseVariationPoint *>"));
     Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimension, variationPoints, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimension, variationPoints, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimension, variationPoints, DocumentationRole, QStringLiteral("The design dimension's variation points (alternative solutions for the design dimension's concern)."));
@@ -209,6 +213,7 @@ void QDuseDesignDimensionObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimension, designDimensionInstances, AggregationRole, QStringLiteral("composite"));
     Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimension, designDimensionInstances, PropertyClassRole, QStringLiteral("QDuseDesignDimension"));
+    Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimension, designDimensionInstances, PropertyTypeRole, QStringLiteral("QSet<QDuseDesignDimensionInstance *>"));
     Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimension, designDimensionInstances, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimension, designDimensionInstances, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimension, designDimensionInstances, DocumentationRole, QStringLiteral("A specific design dimension instance created for a identified locus of architectural decision."));
@@ -218,6 +223,7 @@ void QDuseDesignDimensionObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimension, enabled, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimension, enabled, PropertyClassRole, QStringLiteral("QDuseDesignDimension"));
+    Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimension, enabled, PropertyTypeRole, QStringLiteral("bool"));
     Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimension, enabled, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimension, enabled, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimension, enabled, DocumentationRole, QStringLiteral("Indicates if the design dimension should be considered in automated architecture design."));

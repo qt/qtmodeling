@@ -124,6 +124,7 @@ void QDuseVariationPointObject::setPropertyData()
 {
     Q_DECLARE_METAPROPERTY_INFO(QDuseVariationPoint, name, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QDuseVariationPoint, name, PropertyClassRole, QStringLiteral("QDuseVariationPoint"));
+    Q_DECLARE_METAPROPERTY_INFO(QDuseVariationPoint, name, PropertyTypeRole, QStringLiteral("QString"));
     Q_DECLARE_METAPROPERTY_INFO(QDuseVariationPoint, name, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QDuseVariationPoint, name, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QDuseVariationPoint, name, DocumentationRole, QStringLiteral("The variation point's name."));
@@ -133,6 +134,7 @@ void QDuseVariationPointObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QDuseVariationPoint, rationale, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QDuseVariationPoint, rationale, PropertyClassRole, QStringLiteral("QDuseVariationPoint"));
+    Q_DECLARE_METAPROPERTY_INFO(QDuseVariationPoint, rationale, PropertyTypeRole, QStringLiteral("QString"));
     Q_DECLARE_METAPROPERTY_INFO(QDuseVariationPoint, rationale, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QDuseVariationPoint, rationale, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QDuseVariationPoint, rationale, DocumentationRole, QStringLiteral("The variation point's rationale."));
@@ -142,6 +144,7 @@ void QDuseVariationPointObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QDuseVariationPoint, preChangeValidationRule, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QDuseVariationPoint, preChangeValidationRule, PropertyClassRole, QStringLiteral("QDuseVariationPoint"));
+    Q_DECLARE_METAPROPERTY_INFO(QDuseVariationPoint, preChangeValidationRule, PropertyTypeRole, QStringLiteral("QString"));
     Q_DECLARE_METAPROPERTY_INFO(QDuseVariationPoint, preChangeValidationRule, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QDuseVariationPoint, preChangeValidationRule, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QDuseVariationPoint, preChangeValidationRule, DocumentationRole, QStringLiteral("A set of rules which should be evaluated as true if design space locations containing such variation point are to be considered as valid ones."));
@@ -151,6 +154,7 @@ void QDuseVariationPointObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QDuseVariationPoint, modelChange, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QDuseVariationPoint, modelChange, PropertyClassRole, QStringLiteral("QDuseVariationPoint"));
+    Q_DECLARE_METAPROPERTY_INFO(QDuseVariationPoint, modelChange, PropertyTypeRole, QStringLiteral("QUmlProperty *"));
     Q_DECLARE_METAPROPERTY_INFO(QDuseVariationPoint, modelChange, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QDuseVariationPoint, modelChange, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QDuseVariationPoint, modelChange, DocumentationRole, QStringLiteral("The architectural changes to be enacted as contributions arosen from this variation point. The complete set of architectural changes is the merge of architectural contributions from all involved variation points."));

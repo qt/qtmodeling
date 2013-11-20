@@ -240,7 +240,11 @@ QVariant QModelingObjectPropertyModel::data(const QModelIndex &index, int role) 
                 if (!toolTip.isEmpty())
                     toolTip += QStringLiteral("\n\n");
 
-                toolTip += QStringLiteral("Type: %1").arg(QString::fromLatin1(metaProperty->typeName()));
+                toolTip += QStringLiteral("Type: %1").arg(
+                    QModelingObject::propertyData(d->propertyGroups->at(d->modelingObject->propertyGroupIndex(*metaProperty)),
+                                                  *metaProperty,
+                                                  QtModeling::PropertyTypeRole).toString()
+                                                         );
                 QVariant variant = QModelingObject::propertyData(d->propertyGroups->at(d->modelingObject->propertyGroupIndex(*metaProperty)),
                                                                  *metaProperty,
                                                                  QtModeling::AggregationRole);

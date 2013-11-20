@@ -41,7 +41,16 @@
         <ownedAttribute xmi:type="uml:Property" visibility="public" name="enrollment" xmi:id="MyRootPackage-Package1-Student-enrollment" aggregation="composite">
           <type href="MyRootPackage-Package1-Enrollment"/>
         </ownedAttribute>
-        <ownedOperation xmi:type="uml:Operation" name="getName" xmi:id="MyRootPackage-Package1-Student-getName"/>
+        <ownedOperation xmi:type="uml:Operation" name="getName" xmi:id="MyRootPackage-Package1-Student-getName">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="MyRootPackage-Package1-Student-getName-result" name="result" visibility="public" direction="return">
+            <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" name="setName" xmi:id="MyRootPackage-Package1-Student-setName">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="MyRootPackage-Package1-Student-setName-name" name="name" visibility="public" direction="in">
+            <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
+          </ownedParameter>
+        </ownedOperation>
       </packagedElement>
       <packagedElement xmi:type="uml:Class" name="Professor" xmi:id="MyRootPackage-Package1-Professor">
         <ownedAttribute xmi:type="uml:Property" visibility="public" name="name" xmi:id="MyRootPackage-Package1-Professor-name">

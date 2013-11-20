@@ -128,6 +128,7 @@ void QDuseDesignSpaceObject::setPropertyData()
 {
     Q_DECLARE_METAPROPERTY_INFO(QDuseDesignSpace, name, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QDuseDesignSpace, name, PropertyClassRole, QStringLiteral("QDuseDesignSpace"));
+    Q_DECLARE_METAPROPERTY_INFO(QDuseDesignSpace, name, PropertyTypeRole, QStringLiteral("QString"));
     Q_DECLARE_METAPROPERTY_INFO(QDuseDesignSpace, name, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QDuseDesignSpace, name, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QDuseDesignSpace, name, DocumentationRole, QStringLiteral("The design space's name."));
@@ -137,6 +138,7 @@ void QDuseDesignSpaceObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QDuseDesignSpace, designDimensions, AggregationRole, QStringLiteral("composite"));
     Q_DECLARE_METAPROPERTY_INFO(QDuseDesignSpace, designDimensions, PropertyClassRole, QStringLiteral("QDuseDesignSpace"));
+    Q_DECLARE_METAPROPERTY_INFO(QDuseDesignSpace, designDimensions, PropertyTypeRole, QStringLiteral("QList<QDuseDesignDimension *>"));
     Q_DECLARE_METAPROPERTY_INFO(QDuseDesignSpace, designDimensions, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QDuseDesignSpace, designDimensions, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QDuseDesignSpace, designDimensions, DocumentationRole, QStringLiteral("The design dimensions (degrees of freedom) of the design space."));
@@ -146,6 +148,7 @@ void QDuseDesignSpaceObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QDuseDesignSpace, qualityMetrics, AggregationRole, QStringLiteral("composite"));
     Q_DECLARE_METAPROPERTY_INFO(QDuseDesignSpace, qualityMetrics, PropertyClassRole, QStringLiteral("QDuseDesignSpace"));
+    Q_DECLARE_METAPROPERTY_INFO(QDuseDesignSpace, qualityMetrics, PropertyTypeRole, QStringLiteral("QSet<QDuseQualityMetric *>"));
     Q_DECLARE_METAPROPERTY_INFO(QDuseDesignSpace, qualityMetrics, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QDuseDesignSpace, qualityMetrics, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QDuseDesignSpace, qualityMetrics, DocumentationRole, QStringLiteral("The quality metrics defined for the design space."));

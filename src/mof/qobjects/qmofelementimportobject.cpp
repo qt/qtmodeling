@@ -324,6 +324,7 @@ void QMofElementImportObject::setPropertyData()
 {
     Q_DECLARE_METAPROPERTY_INFO(QMofElement, ownedComments, AggregationRole, QStringLiteral("composite"));
     Q_DECLARE_METAPROPERTY_INFO(QMofElement, ownedComments, PropertyClassRole, QStringLiteral("QMofElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QMofElement, ownedComments, PropertyTypeRole, QStringLiteral("QSet<QMofComment *>"));
     Q_DECLARE_METAPROPERTY_INFO(QMofElement, ownedComments, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofElement, ownedComments, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofElement, ownedComments, DocumentationRole, QStringLiteral("The Comments owned by this element."));
@@ -333,6 +334,7 @@ void QMofElementImportObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QMofElement, ownedElements, AggregationRole, QStringLiteral("composite"));
     Q_DECLARE_METAPROPERTY_INFO(QMofElement, ownedElements, PropertyClassRole, QStringLiteral("QMofElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QMofElement, ownedElements, PropertyTypeRole, QStringLiteral("QSet<QMofElement *>"));
     Q_DECLARE_METAPROPERTY_INFO(QMofElement, ownedElements, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QMofElement, ownedElements, IsDerivedUnionRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QMofElement, ownedElements, DocumentationRole, QStringLiteral("The Elements owned by this element."));
@@ -342,6 +344,7 @@ void QMofElementImportObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QMofElement, owner, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QMofElement, owner, PropertyClassRole, QStringLiteral("QMofElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QMofElement, owner, PropertyTypeRole, QStringLiteral("QMofElement *"));
     Q_DECLARE_METAPROPERTY_INFO(QMofElement, owner, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QMofElement, owner, IsDerivedUnionRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QMofElement, owner, DocumentationRole, QStringLiteral("The Element that owns this element."));
@@ -351,6 +354,7 @@ void QMofElementImportObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QMofRelationship, relatedElements, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QMofRelationship, relatedElements, PropertyClassRole, QStringLiteral("QMofRelationship"));
+    Q_DECLARE_METAPROPERTY_INFO(QMofRelationship, relatedElements, PropertyTypeRole, QStringLiteral("QSet<QMofElement *>"));
     Q_DECLARE_METAPROPERTY_INFO(QMofRelationship, relatedElements, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QMofRelationship, relatedElements, IsDerivedUnionRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QMofRelationship, relatedElements, DocumentationRole, QStringLiteral("Specifies the elements related by the Relationship."));
@@ -360,6 +364,7 @@ void QMofElementImportObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QMofDirectedRelationship, sources, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QMofDirectedRelationship, sources, PropertyClassRole, QStringLiteral("QMofDirectedRelationship"));
+    Q_DECLARE_METAPROPERTY_INFO(QMofDirectedRelationship, sources, PropertyTypeRole, QStringLiteral("QSet<QMofElement *>"));
     Q_DECLARE_METAPROPERTY_INFO(QMofDirectedRelationship, sources, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QMofDirectedRelationship, sources, IsDerivedUnionRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QMofDirectedRelationship, sources, DocumentationRole, QStringLiteral("Specifies the sources of the DirectedRelationship."));
@@ -369,6 +374,7 @@ void QMofElementImportObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QMofDirectedRelationship, targets, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QMofDirectedRelationship, targets, PropertyClassRole, QStringLiteral("QMofDirectedRelationship"));
+    Q_DECLARE_METAPROPERTY_INFO(QMofDirectedRelationship, targets, PropertyTypeRole, QStringLiteral("QSet<QMofElement *>"));
     Q_DECLARE_METAPROPERTY_INFO(QMofDirectedRelationship, targets, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QMofDirectedRelationship, targets, IsDerivedUnionRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QMofDirectedRelationship, targets, DocumentationRole, QStringLiteral("Specifies the targets of the DirectedRelationship."));
@@ -378,6 +384,7 @@ void QMofElementImportObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QMofElementImport, alias, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QMofElementImport, alias, PropertyClassRole, QStringLiteral("QMofElementImport"));
+    Q_DECLARE_METAPROPERTY_INFO(QMofElementImport, alias, PropertyTypeRole, QStringLiteral("QString"));
     Q_DECLARE_METAPROPERTY_INFO(QMofElementImport, alias, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofElementImport, alias, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofElementImport, alias, DocumentationRole, QStringLiteral("Specifies the name that should be added to the namespace of the importing package in lieu of the name of the imported packagable element. The aliased name must not clash with any other member name in the importing package. By default, no alias is used."));
@@ -387,6 +394,7 @@ void QMofElementImportObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QMofElementImport, importedElement, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QMofElementImport, importedElement, PropertyClassRole, QStringLiteral("QMofElementImport"));
+    Q_DECLARE_METAPROPERTY_INFO(QMofElementImport, importedElement, PropertyTypeRole, QStringLiteral("QMofPackageableElement *"));
     Q_DECLARE_METAPROPERTY_INFO(QMofElementImport, importedElement, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofElementImport, importedElement, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofElementImport, importedElement, DocumentationRole, QStringLiteral("Specifies the PackageableElement whose name is to be added to a Namespace."));
@@ -396,6 +404,7 @@ void QMofElementImportObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QMofElementImport, importingNamespace, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QMofElementImport, importingNamespace, PropertyClassRole, QStringLiteral("QMofElementImport"));
+    Q_DECLARE_METAPROPERTY_INFO(QMofElementImport, importingNamespace, PropertyTypeRole, QStringLiteral("QMofNamespace *"));
     Q_DECLARE_METAPROPERTY_INFO(QMofElementImport, importingNamespace, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofElementImport, importingNamespace, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofElementImport, importingNamespace, DocumentationRole, QStringLiteral("Specifies the Namespace that imports a PackageableElement from another Package."));
@@ -405,6 +414,7 @@ void QMofElementImportObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QMofElementImport, visibility, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QMofElementImport, visibility, PropertyClassRole, QStringLiteral("QMofElementImport"));
+    Q_DECLARE_METAPROPERTY_INFO(QMofElementImport, visibility, PropertyTypeRole, QStringLiteral("QtMof::VisibilityKind"));
     Q_DECLARE_METAPROPERTY_INFO(QMofElementImport, visibility, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofElementImport, visibility, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofElementImport, visibility, DocumentationRole, QStringLiteral("Specifies the visibility of the imported PackageableElement within the importing Package. The default visibility is the same as that of the imported element. If the imported element does not have a visibility, it is possible to add visibility to the element import."));

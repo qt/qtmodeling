@@ -69,6 +69,7 @@ public:
         IsDerivedUnionRole,
         IsDerivedRole,
         PropertyClassRole,
+        PropertyTypeRole,
         UserRole = 0x0100
     };
 

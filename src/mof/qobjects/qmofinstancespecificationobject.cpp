@@ -330,6 +330,7 @@ void QMofInstanceSpecificationObject::setPropertyData()
 {
     Q_DECLARE_METAPROPERTY_INFO(QMofElement, ownedComments, AggregationRole, QStringLiteral("composite"));
     Q_DECLARE_METAPROPERTY_INFO(QMofElement, ownedComments, PropertyClassRole, QStringLiteral("QMofElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QMofElement, ownedComments, PropertyTypeRole, QStringLiteral("QSet<QMofComment *>"));
     Q_DECLARE_METAPROPERTY_INFO(QMofElement, ownedComments, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofElement, ownedComments, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofElement, ownedComments, DocumentationRole, QStringLiteral("The Comments owned by this element."));
@@ -339,6 +340,7 @@ void QMofInstanceSpecificationObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QMofElement, ownedElements, AggregationRole, QStringLiteral("composite"));
     Q_DECLARE_METAPROPERTY_INFO(QMofElement, ownedElements, PropertyClassRole, QStringLiteral("QMofElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QMofElement, ownedElements, PropertyTypeRole, QStringLiteral("QSet<QMofElement *>"));
     Q_DECLARE_METAPROPERTY_INFO(QMofElement, ownedElements, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QMofElement, ownedElements, IsDerivedUnionRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QMofElement, ownedElements, DocumentationRole, QStringLiteral("The Elements owned by this element."));
@@ -348,6 +350,7 @@ void QMofInstanceSpecificationObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QMofElement, owner, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QMofElement, owner, PropertyClassRole, QStringLiteral("QMofElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QMofElement, owner, PropertyTypeRole, QStringLiteral("QMofElement *"));
     Q_DECLARE_METAPROPERTY_INFO(QMofElement, owner, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QMofElement, owner, IsDerivedUnionRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QMofElement, owner, DocumentationRole, QStringLiteral("The Element that owns this element."));
@@ -357,6 +360,7 @@ void QMofInstanceSpecificationObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QMofNamedElement, name, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QMofNamedElement, name, PropertyClassRole, QStringLiteral("QMofNamedElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QMofNamedElement, name, PropertyTypeRole, QStringLiteral("QString"));
     Q_DECLARE_METAPROPERTY_INFO(QMofNamedElement, name, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofNamedElement, name, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofNamedElement, name, DocumentationRole, QStringLiteral("The name of the NamedElement."));
@@ -366,6 +370,7 @@ void QMofInstanceSpecificationObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QMofNamedElement, namespace_, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QMofNamedElement, namespace_, PropertyClassRole, QStringLiteral("QMofNamedElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QMofNamedElement, namespace_, PropertyTypeRole, QStringLiteral("QMofNamespace *"));
     Q_DECLARE_METAPROPERTY_INFO(QMofNamedElement, namespace_, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QMofNamedElement, namespace_, IsDerivedUnionRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QMofNamedElement, namespace_, DocumentationRole, QStringLiteral("Specifies the namespace that owns the NamedElement."));
@@ -375,6 +380,7 @@ void QMofInstanceSpecificationObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QMofNamedElement, qualifiedName, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QMofNamedElement, qualifiedName, PropertyClassRole, QStringLiteral("QMofNamedElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QMofNamedElement, qualifiedName, PropertyTypeRole, QStringLiteral("QString"));
     Q_DECLARE_METAPROPERTY_INFO(QMofNamedElement, qualifiedName, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QMofNamedElement, qualifiedName, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofNamedElement, qualifiedName, DocumentationRole, QStringLiteral("A name which allows the NamedElement to be identified within a hierarchy of nested Namespaces. It is constructed from the names of the containing namespaces starting at the root of the hierarchy and ending with the name of the NamedElement itself."));
@@ -384,6 +390,7 @@ void QMofInstanceSpecificationObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QMofNamedElement, visibility, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QMofNamedElement, visibility, PropertyClassRole, QStringLiteral("QMofNamedElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QMofNamedElement, visibility, PropertyTypeRole, QStringLiteral("QtMof::VisibilityKind"));
     Q_DECLARE_METAPROPERTY_INFO(QMofNamedElement, visibility, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofNamedElement, visibility, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofNamedElement, visibility, DocumentationRole, QStringLiteral("Determines where the NamedElement appears within different Namespaces within the overall model, and its accessibility."));
@@ -393,6 +400,7 @@ void QMofInstanceSpecificationObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QMofPackageableElement, visibility, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QMofPackageableElement, visibility, PropertyClassRole, QStringLiteral("QMofPackageableElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QMofPackageableElement, visibility, PropertyTypeRole, QStringLiteral("QtMof::VisibilityKind"));
     Q_DECLARE_METAPROPERTY_INFO(QMofPackageableElement, visibility, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofPackageableElement, visibility, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofPackageableElement, visibility, DocumentationRole, QStringLiteral("Indicates that packageable elements must always have a visibility, i.e., visibility is not optional."));
@@ -402,6 +410,7 @@ void QMofInstanceSpecificationObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QMofInstanceSpecification, classifiers, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QMofInstanceSpecification, classifiers, PropertyClassRole, QStringLiteral("QMofInstanceSpecification"));
+    Q_DECLARE_METAPROPERTY_INFO(QMofInstanceSpecification, classifiers, PropertyTypeRole, QStringLiteral("QSet<QMofClassifier *>"));
     Q_DECLARE_METAPROPERTY_INFO(QMofInstanceSpecification, classifiers, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofInstanceSpecification, classifiers, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofInstanceSpecification, classifiers, DocumentationRole, QStringLiteral("The classifier or classifiers of the represented instance. If multiple classifiers are specified, the instance is classified by all of them."));
@@ -411,6 +420,7 @@ void QMofInstanceSpecificationObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QMofInstanceSpecification, slots_, AggregationRole, QStringLiteral("composite"));
     Q_DECLARE_METAPROPERTY_INFO(QMofInstanceSpecification, slots_, PropertyClassRole, QStringLiteral("QMofInstanceSpecification"));
+    Q_DECLARE_METAPROPERTY_INFO(QMofInstanceSpecification, slots_, PropertyTypeRole, QStringLiteral("QSet<QMofSlot *>"));
     Q_DECLARE_METAPROPERTY_INFO(QMofInstanceSpecification, slots_, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofInstanceSpecification, slots_, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofInstanceSpecification, slots_, DocumentationRole, QStringLiteral("A slot giving the value or values of a structural feature of the instance. An instance specification can have one slot per structural feature of its classifiers, including inherited features. It is not necessary to model a slot for each structural feature, in which case the instance specification is a partial description."));
@@ -420,6 +430,7 @@ void QMofInstanceSpecificationObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QMofInstanceSpecification, specification, AggregationRole, QStringLiteral("composite"));
     Q_DECLARE_METAPROPERTY_INFO(QMofInstanceSpecification, specification, PropertyClassRole, QStringLiteral("QMofInstanceSpecification"));
+    Q_DECLARE_METAPROPERTY_INFO(QMofInstanceSpecification, specification, PropertyTypeRole, QStringLiteral("QMofValueSpecification *"));
     Q_DECLARE_METAPROPERTY_INFO(QMofInstanceSpecification, specification, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofInstanceSpecification, specification, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofInstanceSpecification, specification, DocumentationRole, QStringLiteral("A specification of how to compute, derive, or construct the instance."));

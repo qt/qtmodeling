@@ -583,6 +583,7 @@ void Q${namespace}${originalClassName}Object::unset${qtAttribute.remove("^is").u
     Q_DECLARE_METAPROPERTY_INFO(Q${namespace}${className}, ${PLURALFORM(qtAttribute, attribute)}, AggregationRole, QStringLiteral("none"));
 [%- END %]
     Q_DECLARE_METAPROPERTY_INFO(Q${namespace}${className}, ${PLURALFORM(qtAttribute, attribute)}, PropertyClassRole, QStringLiteral("Q${namespace}${className}"));
+    Q_DECLARE_METAPROPERTY_INFO(Q${namespace}${className}, ${PLURALFORM(qtAttribute, attribute)}, PropertyTypeRole, QStringLiteral("${QT_TYPE(namespace, attribute, "true").trim}"));
     Q_DECLARE_METAPROPERTY_INFO(Q${namespace}${className}, ${PLURALFORM(qtAttribute, attribute)}, IsDerivedRole, [% IF attribute.findvalue("@isDerived") == "true" %]true[% ELSE %]false[% END %]);
     Q_DECLARE_METAPROPERTY_INFO(Q${namespace}${className}, ${PLURALFORM(qtAttribute, attribute)}, IsDerivedUnionRole, [% IF attribute.findvalue("@isDerivedUnion") == "true" %]true[% ELSE %]false[% END %]);
     Q_DECLARE_METAPROPERTY_INFO(Q${namespace}${className}, ${PLURALFORM(qtAttribute, attribute)}, DocumentationRole, QStringLiteral("${attribute.findvalue("ownedComment/body/text()")}"));

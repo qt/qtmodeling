@@ -133,6 +133,7 @@ void QMofLinkObject::setPropertyData()
 {
     Q_DECLARE_METAPROPERTY_INFO(QMofLink, firstElement, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QMofLink, firstElement, PropertyClassRole, QStringLiteral("QMofLink"));
+    Q_DECLARE_METAPROPERTY_INFO(QMofLink, firstElement, PropertyTypeRole, QStringLiteral("QMofElement *"));
     Q_DECLARE_METAPROPERTY_INFO(QMofLink, firstElement, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofLink, firstElement, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofLink, firstElement, DocumentationRole, QStringLiteral(""));
@@ -142,6 +143,7 @@ void QMofLinkObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QMofLink, secondElement, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QMofLink, secondElement, PropertyClassRole, QStringLiteral("QMofLink"));
+    Q_DECLARE_METAPROPERTY_INFO(QMofLink, secondElement, PropertyTypeRole, QStringLiteral("QMofElement *"));
     Q_DECLARE_METAPROPERTY_INFO(QMofLink, secondElement, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofLink, secondElement, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofLink, secondElement, DocumentationRole, QStringLiteral(""));
@@ -151,6 +153,7 @@ void QMofLinkObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QMofLink, association, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QMofLink, association, PropertyClassRole, QStringLiteral("QMofLink"));
+    Q_DECLARE_METAPROPERTY_INFO(QMofLink, association, PropertyTypeRole, QStringLiteral("QMofAssociation *"));
     Q_DECLARE_METAPROPERTY_INFO(QMofLink, association, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofLink, association, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofLink, association, DocumentationRole, QStringLiteral(""));

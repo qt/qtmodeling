@@ -233,6 +233,7 @@ void QMofSlotObject::setPropertyData()
 {
     Q_DECLARE_METAPROPERTY_INFO(QMofElement, ownedComments, AggregationRole, QStringLiteral("composite"));
     Q_DECLARE_METAPROPERTY_INFO(QMofElement, ownedComments, PropertyClassRole, QStringLiteral("QMofElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QMofElement, ownedComments, PropertyTypeRole, QStringLiteral("QSet<QMofComment *>"));
     Q_DECLARE_METAPROPERTY_INFO(QMofElement, ownedComments, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofElement, ownedComments, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofElement, ownedComments, DocumentationRole, QStringLiteral("The Comments owned by this element."));
@@ -242,6 +243,7 @@ void QMofSlotObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QMofElement, ownedElements, AggregationRole, QStringLiteral("composite"));
     Q_DECLARE_METAPROPERTY_INFO(QMofElement, ownedElements, PropertyClassRole, QStringLiteral("QMofElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QMofElement, ownedElements, PropertyTypeRole, QStringLiteral("QSet<QMofElement *>"));
     Q_DECLARE_METAPROPERTY_INFO(QMofElement, ownedElements, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QMofElement, ownedElements, IsDerivedUnionRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QMofElement, ownedElements, DocumentationRole, QStringLiteral("The Elements owned by this element."));
@@ -251,6 +253,7 @@ void QMofSlotObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QMofElement, owner, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QMofElement, owner, PropertyClassRole, QStringLiteral("QMofElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QMofElement, owner, PropertyTypeRole, QStringLiteral("QMofElement *"));
     Q_DECLARE_METAPROPERTY_INFO(QMofElement, owner, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QMofElement, owner, IsDerivedUnionRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QMofElement, owner, DocumentationRole, QStringLiteral("The Element that owns this element."));
@@ -260,6 +263,7 @@ void QMofSlotObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QMofSlot, definingFeature, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QMofSlot, definingFeature, PropertyClassRole, QStringLiteral("QMofSlot"));
+    Q_DECLARE_METAPROPERTY_INFO(QMofSlot, definingFeature, PropertyTypeRole, QStringLiteral("QMofStructuralFeature *"));
     Q_DECLARE_METAPROPERTY_INFO(QMofSlot, definingFeature, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofSlot, definingFeature, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofSlot, definingFeature, DocumentationRole, QStringLiteral("The structural feature that specifies the values that may be held by the slot."));
@@ -269,6 +273,7 @@ void QMofSlotObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QMofSlot, owningInstance, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QMofSlot, owningInstance, PropertyClassRole, QStringLiteral("QMofSlot"));
+    Q_DECLARE_METAPROPERTY_INFO(QMofSlot, owningInstance, PropertyTypeRole, QStringLiteral("QMofInstanceSpecification *"));
     Q_DECLARE_METAPROPERTY_INFO(QMofSlot, owningInstance, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofSlot, owningInstance, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofSlot, owningInstance, DocumentationRole, QStringLiteral("The instance specification that owns this slot."));
@@ -278,6 +283,7 @@ void QMofSlotObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QMofSlot, values, AggregationRole, QStringLiteral("composite"));
     Q_DECLARE_METAPROPERTY_INFO(QMofSlot, values, PropertyClassRole, QStringLiteral("QMofSlot"));
+    Q_DECLARE_METAPROPERTY_INFO(QMofSlot, values, PropertyTypeRole, QStringLiteral("QList<QMofValueSpecification *>"));
     Q_DECLARE_METAPROPERTY_INFO(QMofSlot, values, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofSlot, values, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofSlot, values, DocumentationRole, QStringLiteral("The value or values corresponding to the defining feature for the owning instance specification."));

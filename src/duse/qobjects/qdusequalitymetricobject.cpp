@@ -107,6 +107,7 @@ void QDuseQualityMetricObject::setPropertyData()
 {
     Q_DECLARE_METAPROPERTY_INFO(QDuseQualityMetric, name, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QDuseQualityMetric, name, PropertyClassRole, QStringLiteral("QDuseQualityMetric"));
+    Q_DECLARE_METAPROPERTY_INFO(QDuseQualityMetric, name, PropertyTypeRole, QStringLiteral("QString"));
     Q_DECLARE_METAPROPERTY_INFO(QDuseQualityMetric, name, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QDuseQualityMetric, name, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QDuseQualityMetric, name, DocumentationRole, QStringLiteral("The quality metric's name."));
@@ -116,6 +117,7 @@ void QDuseQualityMetricObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QDuseQualityMetric, value, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QDuseQualityMetric, value, PropertyClassRole, QStringLiteral("QDuseQualityMetric"));
+    Q_DECLARE_METAPROPERTY_INFO(QDuseQualityMetric, value, PropertyTypeRole, QStringLiteral("double"));
     Q_DECLARE_METAPROPERTY_INFO(QDuseQualityMetric, value, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QDuseQualityMetric, value, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QDuseQualityMetric, value, DocumentationRole, QStringLiteral("The quality metric's value."));
@@ -125,6 +127,7 @@ void QDuseQualityMetricObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QDuseQualityMetric, expression, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QDuseQualityMetric, expression, PropertyClassRole, QStringLiteral("QDuseQualityMetric"));
+    Q_DECLARE_METAPROPERTY_INFO(QDuseQualityMetric, expression, PropertyTypeRole, QStringLiteral("QString"));
     Q_DECLARE_METAPROPERTY_INFO(QDuseQualityMetric, expression, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QDuseQualityMetric, expression, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QDuseQualityMetric, expression, DocumentationRole, QStringLiteral("The quality metric's evaluation expression."));

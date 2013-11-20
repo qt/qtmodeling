@@ -88,6 +88,7 @@ void QSADuseProfileProcessComponentObject::setPropertyData()
 {
     Q_DECLARE_METAPROPERTY_INFO(QSADuseProfileProcessComponent, base_Component, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QSADuseProfileProcessComponent, base_Component, PropertyClassRole, QStringLiteral("QSADuseProfileProcessComponent"));
+    Q_DECLARE_METAPROPERTY_INFO(QSADuseProfileProcessComponent, base_Component, PropertyTypeRole, QStringLiteral("QUmlComponent *"));
     Q_DECLARE_METAPROPERTY_INFO(QSADuseProfileProcessComponent, base_Component, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QSADuseProfileProcessComponent, base_Component, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QSADuseProfileProcessComponent, base_Component, DocumentationRole, QStringLiteral(""));

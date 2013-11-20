@@ -135,6 +135,7 @@ void QMofTagObject::setPropertyData()
 {
     Q_DECLARE_METAPROPERTY_INFO(QMofTag, name, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QMofTag, name, PropertyClassRole, QStringLiteral("QMofTag"));
+    Q_DECLARE_METAPROPERTY_INFO(QMofTag, name, PropertyTypeRole, QStringLiteral("QString"));
     Q_DECLARE_METAPROPERTY_INFO(QMofTag, name, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofTag, name, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofTag, name, DocumentationRole, QStringLiteral(""));
@@ -144,6 +145,7 @@ void QMofTagObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QMofTag, value, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QMofTag, value, PropertyClassRole, QStringLiteral("QMofTag"));
+    Q_DECLARE_METAPROPERTY_INFO(QMofTag, value, PropertyTypeRole, QStringLiteral("QString"));
     Q_DECLARE_METAPROPERTY_INFO(QMofTag, value, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofTag, value, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofTag, value, DocumentationRole, QStringLiteral(""));
@@ -153,6 +155,7 @@ void QMofTagObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QMofTag, elements, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QMofTag, elements, PropertyClassRole, QStringLiteral("QMofTag"));
+    Q_DECLARE_METAPROPERTY_INFO(QMofTag, elements, PropertyTypeRole, QStringLiteral("QSet<QMofElement *>"));
     Q_DECLARE_METAPROPERTY_INFO(QMofTag, elements, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofTag, elements, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofTag, elements, DocumentationRole, QStringLiteral(""));
@@ -162,6 +165,7 @@ void QMofTagObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QMofTag, tagOwner, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QMofTag, tagOwner, PropertyClassRole, QStringLiteral("QMofTag"));
+    Q_DECLARE_METAPROPERTY_INFO(QMofTag, tagOwner, PropertyTypeRole, QStringLiteral("QMofElement *"));
     Q_DECLARE_METAPROPERTY_INFO(QMofTag, tagOwner, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofTag, tagOwner, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofTag, tagOwner, DocumentationRole, QStringLiteral(""));

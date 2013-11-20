@@ -285,6 +285,7 @@ void QMofPackageMergeObject::setPropertyData()
 {
     Q_DECLARE_METAPROPERTY_INFO(QMofElement, ownedComments, AggregationRole, QStringLiteral("composite"));
     Q_DECLARE_METAPROPERTY_INFO(QMofElement, ownedComments, PropertyClassRole, QStringLiteral("QMofElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QMofElement, ownedComments, PropertyTypeRole, QStringLiteral("QSet<QMofComment *>"));
     Q_DECLARE_METAPROPERTY_INFO(QMofElement, ownedComments, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofElement, ownedComments, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofElement, ownedComments, DocumentationRole, QStringLiteral("The Comments owned by this element."));
@@ -294,6 +295,7 @@ void QMofPackageMergeObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QMofElement, ownedElements, AggregationRole, QStringLiteral("composite"));
     Q_DECLARE_METAPROPERTY_INFO(QMofElement, ownedElements, PropertyClassRole, QStringLiteral("QMofElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QMofElement, ownedElements, PropertyTypeRole, QStringLiteral("QSet<QMofElement *>"));
     Q_DECLARE_METAPROPERTY_INFO(QMofElement, ownedElements, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QMofElement, ownedElements, IsDerivedUnionRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QMofElement, ownedElements, DocumentationRole, QStringLiteral("The Elements owned by this element."));
@@ -303,6 +305,7 @@ void QMofPackageMergeObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QMofElement, owner, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QMofElement, owner, PropertyClassRole, QStringLiteral("QMofElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QMofElement, owner, PropertyTypeRole, QStringLiteral("QMofElement *"));
     Q_DECLARE_METAPROPERTY_INFO(QMofElement, owner, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QMofElement, owner, IsDerivedUnionRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QMofElement, owner, DocumentationRole, QStringLiteral("The Element that owns this element."));
@@ -312,6 +315,7 @@ void QMofPackageMergeObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QMofRelationship, relatedElements, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QMofRelationship, relatedElements, PropertyClassRole, QStringLiteral("QMofRelationship"));
+    Q_DECLARE_METAPROPERTY_INFO(QMofRelationship, relatedElements, PropertyTypeRole, QStringLiteral("QSet<QMofElement *>"));
     Q_DECLARE_METAPROPERTY_INFO(QMofRelationship, relatedElements, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QMofRelationship, relatedElements, IsDerivedUnionRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QMofRelationship, relatedElements, DocumentationRole, QStringLiteral("Specifies the elements related by the Relationship."));
@@ -321,6 +325,7 @@ void QMofPackageMergeObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QMofDirectedRelationship, sources, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QMofDirectedRelationship, sources, PropertyClassRole, QStringLiteral("QMofDirectedRelationship"));
+    Q_DECLARE_METAPROPERTY_INFO(QMofDirectedRelationship, sources, PropertyTypeRole, QStringLiteral("QSet<QMofElement *>"));
     Q_DECLARE_METAPROPERTY_INFO(QMofDirectedRelationship, sources, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QMofDirectedRelationship, sources, IsDerivedUnionRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QMofDirectedRelationship, sources, DocumentationRole, QStringLiteral("Specifies the sources of the DirectedRelationship."));
@@ -330,6 +335,7 @@ void QMofPackageMergeObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QMofDirectedRelationship, targets, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QMofDirectedRelationship, targets, PropertyClassRole, QStringLiteral("QMofDirectedRelationship"));
+    Q_DECLARE_METAPROPERTY_INFO(QMofDirectedRelationship, targets, PropertyTypeRole, QStringLiteral("QSet<QMofElement *>"));
     Q_DECLARE_METAPROPERTY_INFO(QMofDirectedRelationship, targets, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QMofDirectedRelationship, targets, IsDerivedUnionRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QMofDirectedRelationship, targets, DocumentationRole, QStringLiteral("Specifies the targets of the DirectedRelationship."));
@@ -339,6 +345,7 @@ void QMofPackageMergeObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QMofPackageMerge, mergedPackage, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QMofPackageMerge, mergedPackage, PropertyClassRole, QStringLiteral("QMofPackageMerge"));
+    Q_DECLARE_METAPROPERTY_INFO(QMofPackageMerge, mergedPackage, PropertyTypeRole, QStringLiteral("QMofPackage *"));
     Q_DECLARE_METAPROPERTY_INFO(QMofPackageMerge, mergedPackage, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofPackageMerge, mergedPackage, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofPackageMerge, mergedPackage, DocumentationRole, QStringLiteral("References the Package that is to be merged with the receiving package of the PackageMerge."));
@@ -348,6 +355,7 @@ void QMofPackageMergeObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QMofPackageMerge, receivingPackage, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QMofPackageMerge, receivingPackage, PropertyClassRole, QStringLiteral("QMofPackageMerge"));
+    Q_DECLARE_METAPROPERTY_INFO(QMofPackageMerge, receivingPackage, PropertyTypeRole, QStringLiteral("QMofPackage *"));
     Q_DECLARE_METAPROPERTY_INFO(QMofPackageMerge, receivingPackage, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofPackageMerge, receivingPackage, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofPackageMerge, receivingPackage, DocumentationRole, QStringLiteral("References the Package that is being extended with the contents of the merged package of the PackageMerge."));

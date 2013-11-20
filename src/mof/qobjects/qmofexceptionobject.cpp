@@ -115,6 +115,7 @@ void QMofExceptionObject::setPropertyData()
 {
     Q_DECLARE_METAPROPERTY_INFO(QMofException, objectInError, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QMofException, objectInError, PropertyClassRole, QStringLiteral("QMofException"));
+    Q_DECLARE_METAPROPERTY_INFO(QMofException, objectInError, PropertyTypeRole, QStringLiteral("QMofElement *"));
     Q_DECLARE_METAPROPERTY_INFO(QMofException, objectInError, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofException, objectInError, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofException, objectInError, DocumentationRole, QStringLiteral(""));
@@ -124,6 +125,7 @@ void QMofExceptionObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QMofException, elementInError, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QMofException, elementInError, PropertyClassRole, QStringLiteral("QMofException"));
+    Q_DECLARE_METAPROPERTY_INFO(QMofException, elementInError, PropertyTypeRole, QStringLiteral("QMofElement *"));
     Q_DECLARE_METAPROPERTY_INFO(QMofException, elementInError, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofException, elementInError, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofException, elementInError, DocumentationRole, QStringLiteral(""));
@@ -133,6 +135,7 @@ void QMofExceptionObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QMofException, description, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QMofException, description, PropertyClassRole, QStringLiteral("QMofException"));
+    Q_DECLARE_METAPROPERTY_INFO(QMofException, description, PropertyTypeRole, QStringLiteral("QString"));
     Q_DECLARE_METAPROPERTY_INFO(QMofException, description, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofException, description, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofException, description, DocumentationRole, QStringLiteral(""));

@@ -139,6 +139,7 @@ void QMofFactoryObject::setPropertyData()
 {
     Q_DECLARE_METAPROPERTY_INFO(QMofFactory, package, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QMofFactory, package, PropertyClassRole, QStringLiteral("QMofFactory"));
+    Q_DECLARE_METAPROPERTY_INFO(QMofFactory, package, PropertyTypeRole, QStringLiteral("QMofPackage *"));
     Q_DECLARE_METAPROPERTY_INFO(QMofFactory, package, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofFactory, package, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofFactory, package, DocumentationRole, QStringLiteral(""));

@@ -211,6 +211,7 @@ void QMofCommentObject::setPropertyData()
 {
     Q_DECLARE_METAPROPERTY_INFO(QMofElement, ownedComments, AggregationRole, QStringLiteral("composite"));
     Q_DECLARE_METAPROPERTY_INFO(QMofElement, ownedComments, PropertyClassRole, QStringLiteral("QMofElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QMofElement, ownedComments, PropertyTypeRole, QStringLiteral("QSet<QMofComment *>"));
     Q_DECLARE_METAPROPERTY_INFO(QMofElement, ownedComments, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofElement, ownedComments, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofElement, ownedComments, DocumentationRole, QStringLiteral("The Comments owned by this element."));
@@ -220,6 +221,7 @@ void QMofCommentObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QMofElement, ownedElements, AggregationRole, QStringLiteral("composite"));
     Q_DECLARE_METAPROPERTY_INFO(QMofElement, ownedElements, PropertyClassRole, QStringLiteral("QMofElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QMofElement, ownedElements, PropertyTypeRole, QStringLiteral("QSet<QMofElement *>"));
     Q_DECLARE_METAPROPERTY_INFO(QMofElement, ownedElements, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QMofElement, ownedElements, IsDerivedUnionRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QMofElement, ownedElements, DocumentationRole, QStringLiteral("The Elements owned by this element."));
@@ -229,6 +231,7 @@ void QMofCommentObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QMofElement, owner, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QMofElement, owner, PropertyClassRole, QStringLiteral("QMofElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QMofElement, owner, PropertyTypeRole, QStringLiteral("QMofElement *"));
     Q_DECLARE_METAPROPERTY_INFO(QMofElement, owner, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QMofElement, owner, IsDerivedUnionRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QMofElement, owner, DocumentationRole, QStringLiteral("The Element that owns this element."));
@@ -238,6 +241,7 @@ void QMofCommentObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QMofComment, annotatedElements, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QMofComment, annotatedElements, PropertyClassRole, QStringLiteral("QMofComment"));
+    Q_DECLARE_METAPROPERTY_INFO(QMofComment, annotatedElements, PropertyTypeRole, QStringLiteral("QSet<QMofElement *>"));
     Q_DECLARE_METAPROPERTY_INFO(QMofComment, annotatedElements, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofComment, annotatedElements, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofComment, annotatedElements, DocumentationRole, QStringLiteral("References the Element(s) being commented."));
@@ -247,6 +251,7 @@ void QMofCommentObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QMofComment, body, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QMofComment, body, PropertyClassRole, QStringLiteral("QMofComment"));
+    Q_DECLARE_METAPROPERTY_INFO(QMofComment, body, PropertyTypeRole, QStringLiteral("QString"));
     Q_DECLARE_METAPROPERTY_INFO(QMofComment, body, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofComment, body, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofComment, body, DocumentationRole, QStringLiteral("Specifies a string that is the comment."));

@@ -827,6 +827,7 @@ void QMofOperationObject::setPropertyData()
 {
     Q_DECLARE_METAPROPERTY_INFO(QMofElement, ownedComments, AggregationRole, QStringLiteral("composite"));
     Q_DECLARE_METAPROPERTY_INFO(QMofElement, ownedComments, PropertyClassRole, QStringLiteral("QMofElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QMofElement, ownedComments, PropertyTypeRole, QStringLiteral("QSet<QMofComment *>"));
     Q_DECLARE_METAPROPERTY_INFO(QMofElement, ownedComments, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofElement, ownedComments, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofElement, ownedComments, DocumentationRole, QStringLiteral("The Comments owned by this element."));
@@ -836,6 +837,7 @@ void QMofOperationObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QMofElement, ownedElements, AggregationRole, QStringLiteral("composite"));
     Q_DECLARE_METAPROPERTY_INFO(QMofElement, ownedElements, PropertyClassRole, QStringLiteral("QMofElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QMofElement, ownedElements, PropertyTypeRole, QStringLiteral("QSet<QMofElement *>"));
     Q_DECLARE_METAPROPERTY_INFO(QMofElement, ownedElements, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QMofElement, ownedElements, IsDerivedUnionRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QMofElement, ownedElements, DocumentationRole, QStringLiteral("The Elements owned by this element."));
@@ -845,6 +847,7 @@ void QMofOperationObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QMofElement, owner, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QMofElement, owner, PropertyClassRole, QStringLiteral("QMofElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QMofElement, owner, PropertyTypeRole, QStringLiteral("QMofElement *"));
     Q_DECLARE_METAPROPERTY_INFO(QMofElement, owner, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QMofElement, owner, IsDerivedUnionRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QMofElement, owner, DocumentationRole, QStringLiteral("The Element that owns this element."));
@@ -854,6 +857,7 @@ void QMofOperationObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QMofNamedElement, name, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QMofNamedElement, name, PropertyClassRole, QStringLiteral("QMofNamedElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QMofNamedElement, name, PropertyTypeRole, QStringLiteral("QString"));
     Q_DECLARE_METAPROPERTY_INFO(QMofNamedElement, name, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofNamedElement, name, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofNamedElement, name, DocumentationRole, QStringLiteral("The name of the NamedElement."));
@@ -863,6 +867,7 @@ void QMofOperationObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QMofNamedElement, namespace_, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QMofNamedElement, namespace_, PropertyClassRole, QStringLiteral("QMofNamedElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QMofNamedElement, namespace_, PropertyTypeRole, QStringLiteral("QMofNamespace *"));
     Q_DECLARE_METAPROPERTY_INFO(QMofNamedElement, namespace_, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QMofNamedElement, namespace_, IsDerivedUnionRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QMofNamedElement, namespace_, DocumentationRole, QStringLiteral("Specifies the namespace that owns the NamedElement."));
@@ -872,6 +877,7 @@ void QMofOperationObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QMofNamedElement, qualifiedName, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QMofNamedElement, qualifiedName, PropertyClassRole, QStringLiteral("QMofNamedElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QMofNamedElement, qualifiedName, PropertyTypeRole, QStringLiteral("QString"));
     Q_DECLARE_METAPROPERTY_INFO(QMofNamedElement, qualifiedName, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QMofNamedElement, qualifiedName, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofNamedElement, qualifiedName, DocumentationRole, QStringLiteral("A name which allows the NamedElement to be identified within a hierarchy of nested Namespaces. It is constructed from the names of the containing namespaces starting at the root of the hierarchy and ending with the name of the NamedElement itself."));
@@ -881,6 +887,7 @@ void QMofOperationObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QMofNamedElement, visibility, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QMofNamedElement, visibility, PropertyClassRole, QStringLiteral("QMofNamedElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QMofNamedElement, visibility, PropertyTypeRole, QStringLiteral("QtMof::VisibilityKind"));
     Q_DECLARE_METAPROPERTY_INFO(QMofNamedElement, visibility, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofNamedElement, visibility, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofNamedElement, visibility, DocumentationRole, QStringLiteral("Determines where the NamedElement appears within different Namespaces within the overall model, and its accessibility."));
@@ -890,6 +897,7 @@ void QMofOperationObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QMofRedefinableElement, isLeaf, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QMofRedefinableElement, isLeaf, PropertyClassRole, QStringLiteral("QMofRedefinableElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QMofRedefinableElement, isLeaf, PropertyTypeRole, QStringLiteral("bool"));
     Q_DECLARE_METAPROPERTY_INFO(QMofRedefinableElement, isLeaf, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofRedefinableElement, isLeaf, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofRedefinableElement, isLeaf, DocumentationRole, QStringLiteral("Indicates whether it is possible to further redefine a RedefinableElement. If the value is true, then it is not possible to further redefine the RedefinableElement. Note that this property is preserved through package merge operations; that is, the capability to redefine a RedefinableElement (i.e., isLeaf=false) must be preserved in the resulting RedefinableElement of a package merge operation where a RedefinableElement with isLeaf=false is merged with a matching RedefinableElement with isLeaf=true: the resulting RedefinableElement will have isLeaf=false. Default value is false."));
@@ -899,6 +907,7 @@ void QMofOperationObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QMofRedefinableElement, redefinedElements, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QMofRedefinableElement, redefinedElements, PropertyClassRole, QStringLiteral("QMofRedefinableElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QMofRedefinableElement, redefinedElements, PropertyTypeRole, QStringLiteral("QSet<QMofRedefinableElement *>"));
     Q_DECLARE_METAPROPERTY_INFO(QMofRedefinableElement, redefinedElements, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QMofRedefinableElement, redefinedElements, IsDerivedUnionRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QMofRedefinableElement, redefinedElements, DocumentationRole, QStringLiteral("The redefinable element that is being redefined by this element."));
@@ -908,6 +917,7 @@ void QMofOperationObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QMofRedefinableElement, redefinitionContexts, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QMofRedefinableElement, redefinitionContexts, PropertyClassRole, QStringLiteral("QMofRedefinableElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QMofRedefinableElement, redefinitionContexts, PropertyTypeRole, QStringLiteral("QSet<QMofClassifier *>"));
     Q_DECLARE_METAPROPERTY_INFO(QMofRedefinableElement, redefinitionContexts, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QMofRedefinableElement, redefinitionContexts, IsDerivedUnionRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QMofRedefinableElement, redefinitionContexts, DocumentationRole, QStringLiteral("References the contexts that this element may be redefined from."));
@@ -917,6 +927,7 @@ void QMofOperationObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QMofFeature, featuringClassifiers, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QMofFeature, featuringClassifiers, PropertyClassRole, QStringLiteral("QMofFeature"));
+    Q_DECLARE_METAPROPERTY_INFO(QMofFeature, featuringClassifiers, PropertyTypeRole, QStringLiteral("QSet<QMofClassifier *>"));
     Q_DECLARE_METAPROPERTY_INFO(QMofFeature, featuringClassifiers, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QMofFeature, featuringClassifiers, IsDerivedUnionRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QMofFeature, featuringClassifiers, DocumentationRole, QStringLiteral("The Classifiers that have this Feature as a feature."));
@@ -926,6 +937,7 @@ void QMofOperationObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QMofFeature, isStatic, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QMofFeature, isStatic, PropertyClassRole, QStringLiteral("QMofFeature"));
+    Q_DECLARE_METAPROPERTY_INFO(QMofFeature, isStatic, PropertyTypeRole, QStringLiteral("bool"));
     Q_DECLARE_METAPROPERTY_INFO(QMofFeature, isStatic, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofFeature, isStatic, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofFeature, isStatic, DocumentationRole, QStringLiteral("Specifies whether this feature characterizes individual instances classified by the classifier (false) or the classifier itself (true)."));
@@ -935,6 +947,7 @@ void QMofOperationObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QMofNamespace, elementImports, AggregationRole, QStringLiteral("composite"));
     Q_DECLARE_METAPROPERTY_INFO(QMofNamespace, elementImports, PropertyClassRole, QStringLiteral("QMofNamespace"));
+    Q_DECLARE_METAPROPERTY_INFO(QMofNamespace, elementImports, PropertyTypeRole, QStringLiteral("QSet<QMofElementImport *>"));
     Q_DECLARE_METAPROPERTY_INFO(QMofNamespace, elementImports, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofNamespace, elementImports, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofNamespace, elementImports, DocumentationRole, QStringLiteral("References the ElementImports owned by the Namespace."));
@@ -944,6 +957,7 @@ void QMofOperationObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QMofNamespace, importedMembers, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QMofNamespace, importedMembers, PropertyClassRole, QStringLiteral("QMofNamespace"));
+    Q_DECLARE_METAPROPERTY_INFO(QMofNamespace, importedMembers, PropertyTypeRole, QStringLiteral("QSet<QMofPackageableElement *>"));
     Q_DECLARE_METAPROPERTY_INFO(QMofNamespace, importedMembers, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QMofNamespace, importedMembers, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofNamespace, importedMembers, DocumentationRole, QStringLiteral("References the PackageableElements that are members of this Namespace as a result of either PackageImports or ElementImports."));
@@ -953,6 +967,7 @@ void QMofOperationObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QMofNamespace, members, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QMofNamespace, members, PropertyClassRole, QStringLiteral("QMofNamespace"));
+    Q_DECLARE_METAPROPERTY_INFO(QMofNamespace, members, PropertyTypeRole, QStringLiteral("QSet<QMofNamedElement *>"));
     Q_DECLARE_METAPROPERTY_INFO(QMofNamespace, members, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QMofNamespace, members, IsDerivedUnionRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QMofNamespace, members, DocumentationRole, QStringLiteral("A collection of NamedElements identifiable within the Namespace, either by being owned or by being introduced by importing or inheritance."));
@@ -962,6 +977,7 @@ void QMofOperationObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QMofNamespace, ownedMembers, AggregationRole, QStringLiteral("composite"));
     Q_DECLARE_METAPROPERTY_INFO(QMofNamespace, ownedMembers, PropertyClassRole, QStringLiteral("QMofNamespace"));
+    Q_DECLARE_METAPROPERTY_INFO(QMofNamespace, ownedMembers, PropertyTypeRole, QStringLiteral("QSet<QMofNamedElement *>"));
     Q_DECLARE_METAPROPERTY_INFO(QMofNamespace, ownedMembers, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QMofNamespace, ownedMembers, IsDerivedUnionRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QMofNamespace, ownedMembers, DocumentationRole, QStringLiteral("A collection of NamedElements owned by the Namespace."));
@@ -971,6 +987,7 @@ void QMofOperationObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QMofNamespace, ownedRules, AggregationRole, QStringLiteral("composite"));
     Q_DECLARE_METAPROPERTY_INFO(QMofNamespace, ownedRules, PropertyClassRole, QStringLiteral("QMofNamespace"));
+    Q_DECLARE_METAPROPERTY_INFO(QMofNamespace, ownedRules, PropertyTypeRole, QStringLiteral("QSet<QMofConstraint *>"));
     Q_DECLARE_METAPROPERTY_INFO(QMofNamespace, ownedRules, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofNamespace, ownedRules, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofNamespace, ownedRules, DocumentationRole, QStringLiteral("Specifies a set of Constraints owned by this Namespace."));
@@ -980,6 +997,7 @@ void QMofOperationObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QMofNamespace, packageImports, AggregationRole, QStringLiteral("composite"));
     Q_DECLARE_METAPROPERTY_INFO(QMofNamespace, packageImports, PropertyClassRole, QStringLiteral("QMofNamespace"));
+    Q_DECLARE_METAPROPERTY_INFO(QMofNamespace, packageImports, PropertyTypeRole, QStringLiteral("QSet<QMofPackageImport *>"));
     Q_DECLARE_METAPROPERTY_INFO(QMofNamespace, packageImports, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofNamespace, packageImports, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofNamespace, packageImports, DocumentationRole, QStringLiteral("References the PackageImports owned by the Namespace."));
@@ -989,6 +1007,7 @@ void QMofOperationObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QMofBehavioralFeature, ownedParameters, AggregationRole, QStringLiteral("composite"));
     Q_DECLARE_METAPROPERTY_INFO(QMofBehavioralFeature, ownedParameters, PropertyClassRole, QStringLiteral("QMofBehavioralFeature"));
+    Q_DECLARE_METAPROPERTY_INFO(QMofBehavioralFeature, ownedParameters, PropertyTypeRole, QStringLiteral("QList<QMofParameter *>"));
     Q_DECLARE_METAPROPERTY_INFO(QMofBehavioralFeature, ownedParameters, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofBehavioralFeature, ownedParameters, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofBehavioralFeature, ownedParameters, DocumentationRole, QStringLiteral("Specifies the ordered set of formal parameters of this BehavioralFeature."));
@@ -998,6 +1017,7 @@ void QMofOperationObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QMofBehavioralFeature, raisedExceptions, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QMofBehavioralFeature, raisedExceptions, PropertyClassRole, QStringLiteral("QMofBehavioralFeature"));
+    Q_DECLARE_METAPROPERTY_INFO(QMofBehavioralFeature, raisedExceptions, PropertyTypeRole, QStringLiteral("QSet<QMofType *>"));
     Q_DECLARE_METAPROPERTY_INFO(QMofBehavioralFeature, raisedExceptions, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofBehavioralFeature, raisedExceptions, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofBehavioralFeature, raisedExceptions, DocumentationRole, QStringLiteral("References the Types representing exceptions that may be raised during an invocation of this feature."));
@@ -1007,6 +1027,7 @@ void QMofOperationObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QMofOperation, bodyCondition, AggregationRole, QStringLiteral("composite"));
     Q_DECLARE_METAPROPERTY_INFO(QMofOperation, bodyCondition, PropertyClassRole, QStringLiteral("QMofOperation"));
+    Q_DECLARE_METAPROPERTY_INFO(QMofOperation, bodyCondition, PropertyTypeRole, QStringLiteral("QMofConstraint *"));
     Q_DECLARE_METAPROPERTY_INFO(QMofOperation, bodyCondition, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofOperation, bodyCondition, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofOperation, bodyCondition, DocumentationRole, QStringLiteral("An optional Constraint on the result values of an invocation of this Operation."));
@@ -1016,6 +1037,7 @@ void QMofOperationObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QMofOperation, class_, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QMofOperation, class_, PropertyClassRole, QStringLiteral("QMofOperation"));
+    Q_DECLARE_METAPROPERTY_INFO(QMofOperation, class_, PropertyTypeRole, QStringLiteral("QMofClass *"));
     Q_DECLARE_METAPROPERTY_INFO(QMofOperation, class_, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofOperation, class_, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofOperation, class_, DocumentationRole, QStringLiteral("The class that owns the operation."));
@@ -1025,6 +1047,7 @@ void QMofOperationObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QMofOperation, datatype, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QMofOperation, datatype, PropertyClassRole, QStringLiteral("QMofOperation"));
+    Q_DECLARE_METAPROPERTY_INFO(QMofOperation, datatype, PropertyTypeRole, QStringLiteral("QMofDataType *"));
     Q_DECLARE_METAPROPERTY_INFO(QMofOperation, datatype, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofOperation, datatype, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofOperation, datatype, DocumentationRole, QStringLiteral("The DataType that owns this Operation."));
@@ -1034,6 +1057,7 @@ void QMofOperationObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QMofOperation, isOrdered, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QMofOperation, isOrdered, PropertyClassRole, QStringLiteral("QMofOperation"));
+    Q_DECLARE_METAPROPERTY_INFO(QMofOperation, isOrdered, PropertyTypeRole, QStringLiteral("bool"));
     Q_DECLARE_METAPROPERTY_INFO(QMofOperation, isOrdered, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QMofOperation, isOrdered, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofOperation, isOrdered, DocumentationRole, QStringLiteral("Specifies whether the return parameter is ordered or not, if present."));
@@ -1043,6 +1067,7 @@ void QMofOperationObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QMofOperation, isQuery, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QMofOperation, isQuery, PropertyClassRole, QStringLiteral("QMofOperation"));
+    Q_DECLARE_METAPROPERTY_INFO(QMofOperation, isQuery, PropertyTypeRole, QStringLiteral("bool"));
     Q_DECLARE_METAPROPERTY_INFO(QMofOperation, isQuery, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofOperation, isQuery, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofOperation, isQuery, DocumentationRole, QStringLiteral("Specifies whether an execution of the BehavioralFeature leaves the state of the system unchanged (isQuery=true) or whether side effects may occur (isQuery=false)."));
@@ -1052,6 +1077,7 @@ void QMofOperationObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QMofOperation, isUnique, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QMofOperation, isUnique, PropertyClassRole, QStringLiteral("QMofOperation"));
+    Q_DECLARE_METAPROPERTY_INFO(QMofOperation, isUnique, PropertyTypeRole, QStringLiteral("bool"));
     Q_DECLARE_METAPROPERTY_INFO(QMofOperation, isUnique, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QMofOperation, isUnique, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofOperation, isUnique, DocumentationRole, QStringLiteral("Specifies whether the return parameter is unique or not, if present."));
@@ -1061,6 +1087,7 @@ void QMofOperationObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QMofOperation, lower, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QMofOperation, lower, PropertyClassRole, QStringLiteral("QMofOperation"));
+    Q_DECLARE_METAPROPERTY_INFO(QMofOperation, lower, PropertyTypeRole, QStringLiteral("int"));
     Q_DECLARE_METAPROPERTY_INFO(QMofOperation, lower, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QMofOperation, lower, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofOperation, lower, DocumentationRole, QStringLiteral("Specifies the lower multiplicity of the return parameter, if present."));
@@ -1070,6 +1097,7 @@ void QMofOperationObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QMofOperation, ownedParameters, AggregationRole, QStringLiteral("composite"));
     Q_DECLARE_METAPROPERTY_INFO(QMofOperation, ownedParameters, PropertyClassRole, QStringLiteral("QMofOperation"));
+    Q_DECLARE_METAPROPERTY_INFO(QMofOperation, ownedParameters, PropertyTypeRole, QStringLiteral("QList<QMofParameter *>"));
     Q_DECLARE_METAPROPERTY_INFO(QMofOperation, ownedParameters, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofOperation, ownedParameters, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofOperation, ownedParameters, DocumentationRole, QStringLiteral("Specifies the parameters owned by this Operation."));
@@ -1079,6 +1107,7 @@ void QMofOperationObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QMofOperation, postconditions, AggregationRole, QStringLiteral("composite"));
     Q_DECLARE_METAPROPERTY_INFO(QMofOperation, postconditions, PropertyClassRole, QStringLiteral("QMofOperation"));
+    Q_DECLARE_METAPROPERTY_INFO(QMofOperation, postconditions, PropertyTypeRole, QStringLiteral("QSet<QMofConstraint *>"));
     Q_DECLARE_METAPROPERTY_INFO(QMofOperation, postconditions, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofOperation, postconditions, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofOperation, postconditions, DocumentationRole, QStringLiteral("An optional set of Constraints specifying the state of the system when the Operation is completed."));
@@ -1088,6 +1117,7 @@ void QMofOperationObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QMofOperation, preconditions, AggregationRole, QStringLiteral("composite"));
     Q_DECLARE_METAPROPERTY_INFO(QMofOperation, preconditions, PropertyClassRole, QStringLiteral("QMofOperation"));
+    Q_DECLARE_METAPROPERTY_INFO(QMofOperation, preconditions, PropertyTypeRole, QStringLiteral("QSet<QMofConstraint *>"));
     Q_DECLARE_METAPROPERTY_INFO(QMofOperation, preconditions, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofOperation, preconditions, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofOperation, preconditions, DocumentationRole, QStringLiteral("An optional set of Constraints on the state of the system when the Operation is invoked."));
@@ -1097,6 +1127,7 @@ void QMofOperationObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QMofOperation, raisedExceptions, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QMofOperation, raisedExceptions, PropertyClassRole, QStringLiteral("QMofOperation"));
+    Q_DECLARE_METAPROPERTY_INFO(QMofOperation, raisedExceptions, PropertyTypeRole, QStringLiteral("QSet<QMofType *>"));
     Q_DECLARE_METAPROPERTY_INFO(QMofOperation, raisedExceptions, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofOperation, raisedExceptions, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofOperation, raisedExceptions, DocumentationRole, QStringLiteral("References the Types representing exceptions that may be raised during an invocation of this operation."));
@@ -1106,6 +1137,7 @@ void QMofOperationObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QMofOperation, redefinedOperations, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QMofOperation, redefinedOperations, PropertyClassRole, QStringLiteral("QMofOperation"));
+    Q_DECLARE_METAPROPERTY_INFO(QMofOperation, redefinedOperations, PropertyTypeRole, QStringLiteral("QSet<QMofOperation *>"));
     Q_DECLARE_METAPROPERTY_INFO(QMofOperation, redefinedOperations, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofOperation, redefinedOperations, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofOperation, redefinedOperations, DocumentationRole, QStringLiteral("References the Operations that are redefined by this Operation."));
@@ -1115,6 +1147,7 @@ void QMofOperationObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QMofOperation, type, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QMofOperation, type, PropertyClassRole, QStringLiteral("QMofOperation"));
+    Q_DECLARE_METAPROPERTY_INFO(QMofOperation, type, PropertyTypeRole, QStringLiteral("QMofType *"));
     Q_DECLARE_METAPROPERTY_INFO(QMofOperation, type, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QMofOperation, type, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofOperation, type, DocumentationRole, QStringLiteral("Specifies the return result of the operation, if present."));
@@ -1124,6 +1157,7 @@ void QMofOperationObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QMofOperation, upper, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QMofOperation, upper, PropertyClassRole, QStringLiteral("QMofOperation"));
+    Q_DECLARE_METAPROPERTY_INFO(QMofOperation, upper, PropertyTypeRole, QStringLiteral("QString"));
     Q_DECLARE_METAPROPERTY_INFO(QMofOperation, upper, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QMofOperation, upper, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QMofOperation, upper, DocumentationRole, QStringLiteral("Specifies the upper multiplicity of the return parameter, if present."));
