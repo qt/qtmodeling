@@ -169,50 +169,50 @@ QVariant QModelingObjectPropertyModel::data(const QModelIndex &index, int role) 
                         else if (typeName.contains(QStringLiteral("QSet")) && typeName.contains('*') && variant.isValid()) {
                             QSet<QModelingObject *> elements = *(static_cast<QSet<QModelingObject *> *>(variant.data()));
                             QString str;
+                            str.append('[');
                             if (elements.size() > 0) {
-                                str.append('[');
                                 foreach (QModelingObject *modelingObject, elements)
                                     if (modelingObject)
                                         str.append(modelingObject->objectName().append(QStringLiteral(", ")));
                                 str.chop(2);
-                                str.append(']');
                             }
+                            str.append(']');
                             return !str.isEmpty() ? str:QVariant();
                         }
                         else if (typeName.contains(QStringLiteral("QList")) && typeName.contains('*') && variant.isValid()) {
                             QList<QModelingObject *> elements = *(static_cast<QList<QModelingObject *> *>(variant.data()));
                             QString str;
+                            str.append('[');
                             if (elements.size() > 0) {
-                                str.append('[');
                                 foreach (QModelingObject *modelingObject, elements)
                                     str.append(modelingObject->objectName().append(QStringLiteral(", ")));
                                 str.chop(2);
-                                str.append(']');
                             }
+                            str.append(']');
                             return !str.isEmpty() ? str:QVariant();
                         }
                         else if (typeName.contains(QStringLiteral("QSet")) && typeName.contains(QStringLiteral("QString")) && variant.isValid()) {
                             QSet<QString> elements = *(static_cast<QSet<QString> *>(variant.data()));
                             QString str;
+                            str.append('[');
                             if (elements.size() > 0) {
-                                str.append('[');
                                 foreach (QString string, elements)
                                         str.append(string.append(QStringLiteral(", ")));
                                 str.chop(2);
-                                str.append(']');
                             }
+                            str.append(']');
                             return !str.isEmpty() ? str:QVariant();
                         }
                         else if (typeName.contains(QStringLiteral("QList")) && typeName.contains(QStringLiteral("QString")) && variant.isValid()) {
                             QList<QString> elements = *(static_cast<QList<QString> *>(variant.data()));
                             QString str;
+                            str.append('[');
                             if (elements.size() > 0) {
-                                str.append('[');
                                 foreach (QString string, elements)
                                     str.append(string.append(QStringLiteral(", ")));
                                 str.chop(2);
-                                str.append(']');
                             }
+                            str.append(']');
                             return !str.isEmpty() ? str:QVariant();
                         }
                     }
