@@ -246,6 +246,7 @@ void QUmlLinkEndDestructionDataObject::setPropertyData()
 {
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedComments, AggregationRole, QStringLiteral("composite"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedComments, PropertyClassRole, QStringLiteral("QUmlElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedComments, PropertyTypeRole, QStringLiteral("QSet<QUmlComment *>"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedComments, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedComments, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedComments, DocumentationRole, QStringLiteral("The Comments owned by this element."));
@@ -255,6 +256,7 @@ void QUmlLinkEndDestructionDataObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedElements, AggregationRole, QStringLiteral("composite"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedElements, PropertyClassRole, QStringLiteral("QUmlElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedElements, PropertyTypeRole, QStringLiteral("QSet<QUmlElement *>"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedElements, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedElements, IsDerivedUnionRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedElements, DocumentationRole, QStringLiteral("The Elements owned by this element."));
@@ -264,6 +266,7 @@ void QUmlLinkEndDestructionDataObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, owner, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, owner, PropertyClassRole, QStringLiteral("QUmlElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlElement, owner, PropertyTypeRole, QStringLiteral("QUmlElement *"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, owner, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, owner, IsDerivedUnionRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, owner, DocumentationRole, QStringLiteral("The Element that owns this element."));
@@ -273,6 +276,7 @@ void QUmlLinkEndDestructionDataObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlLinkEndData, end, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlLinkEndData, end, PropertyClassRole, QStringLiteral("QUmlLinkEndData"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlLinkEndData, end, PropertyTypeRole, QStringLiteral("QUmlProperty *"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlLinkEndData, end, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlLinkEndData, end, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlLinkEndData, end, DocumentationRole, QStringLiteral("Association end for which this link-end data specifies values."));
@@ -282,6 +286,7 @@ void QUmlLinkEndDestructionDataObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlLinkEndData, qualifiers, AggregationRole, QStringLiteral("composite"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlLinkEndData, qualifiers, PropertyClassRole, QStringLiteral("QUmlLinkEndData"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlLinkEndData, qualifiers, PropertyTypeRole, QStringLiteral("QSet<QUmlQualifierValue *>"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlLinkEndData, qualifiers, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlLinkEndData, qualifiers, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlLinkEndData, qualifiers, DocumentationRole, QStringLiteral("List of qualifier values"));
@@ -291,6 +296,7 @@ void QUmlLinkEndDestructionDataObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlLinkEndData, value, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlLinkEndData, value, PropertyClassRole, QStringLiteral("QUmlLinkEndData"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlLinkEndData, value, PropertyTypeRole, QStringLiteral("QUmlInputPin *"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlLinkEndData, value, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlLinkEndData, value, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlLinkEndData, value, DocumentationRole, QStringLiteral("Input pin that provides the specified object for the given end. This pin is omitted if the link-end data specifies an 'open' end for reading."));
@@ -300,6 +306,7 @@ void QUmlLinkEndDestructionDataObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlLinkEndDestructionData, destroyAt, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlLinkEndDestructionData, destroyAt, PropertyClassRole, QStringLiteral("QUmlLinkEndDestructionData"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlLinkEndDestructionData, destroyAt, PropertyTypeRole, QStringLiteral("QUmlInputPin *"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlLinkEndDestructionData, destroyAt, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlLinkEndDestructionData, destroyAt, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlLinkEndDestructionData, destroyAt, DocumentationRole, QStringLiteral("Specifies the position of an existing link to be destroyed in ordered nonunique association ends. The type of the pin is UnlimitedNatural, but the value cannot be zero or unlimited."));
@@ -309,6 +316,7 @@ void QUmlLinkEndDestructionDataObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlLinkEndDestructionData, isDestroyDuplicates, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlLinkEndDestructionData, isDestroyDuplicates, PropertyClassRole, QStringLiteral("QUmlLinkEndDestructionData"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlLinkEndDestructionData, isDestroyDuplicates, PropertyTypeRole, QStringLiteral("bool"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlLinkEndDestructionData, isDestroyDuplicates, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlLinkEndDestructionData, isDestroyDuplicates, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlLinkEndDestructionData, isDestroyDuplicates, DocumentationRole, QStringLiteral("Specifies whether to destroy duplicates of the value in nonunique association ends."));

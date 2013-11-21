@@ -292,7 +292,7 @@ int QUmlMultiplicityElement::lowerBound() const
 }
 
 /*!
-    The query upperBound() returns the upper bound of the multiplicity for a bounded multiplicity as an unlimited natural.
+    The query upperBoundOperation() returns the upper bound of the multiplicity for a bounded multiplicity as an unlimited natural.
  */
 QString QUmlMultiplicityElement::upperBoundOperation() const
 {

@@ -277,6 +277,11 @@ void QUmlActivityPartition::addSubpartition(QUmlActivityPartition *subpartition)
 
         // Adjust subsetted properties
         addSubgroup(subpartition);
+
+        // Adjust opposite properties
+        if (subpartition) {
+            subpartition->setSuperPartition(this);
+        }
     }
 }
 
@@ -291,6 +296,11 @@ void QUmlActivityPartition::removeSubpartition(QUmlActivityPartition *subpartiti
 
         // Adjust subsetted properties
         removeSubgroup(subpartition);
+
+        // Adjust opposite properties
+        if (subpartition) {
+            subpartition->setSuperPartition(0);
+        }
     }
 }
 

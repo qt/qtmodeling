@@ -258,6 +258,7 @@ void QUmlProtocolConformanceObject::setPropertyData()
 {
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedComments, AggregationRole, QStringLiteral("composite"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedComments, PropertyClassRole, QStringLiteral("QUmlElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedComments, PropertyTypeRole, QStringLiteral("QSet<QUmlComment *>"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedComments, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedComments, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedComments, DocumentationRole, QStringLiteral("The Comments owned by this element."));
@@ -267,6 +268,7 @@ void QUmlProtocolConformanceObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedElements, AggregationRole, QStringLiteral("composite"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedElements, PropertyClassRole, QStringLiteral("QUmlElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedElements, PropertyTypeRole, QStringLiteral("QSet<QUmlElement *>"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedElements, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedElements, IsDerivedUnionRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedElements, DocumentationRole, QStringLiteral("The Elements owned by this element."));
@@ -276,6 +278,7 @@ void QUmlProtocolConformanceObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, owner, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, owner, PropertyClassRole, QStringLiteral("QUmlElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlElement, owner, PropertyTypeRole, QStringLiteral("QUmlElement *"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, owner, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, owner, IsDerivedUnionRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, owner, DocumentationRole, QStringLiteral("The Element that owns this element."));
@@ -285,6 +288,7 @@ void QUmlProtocolConformanceObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlRelationship, relatedElements, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlRelationship, relatedElements, PropertyClassRole, QStringLiteral("QUmlRelationship"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlRelationship, relatedElements, PropertyTypeRole, QStringLiteral("QSet<QUmlElement *>"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlRelationship, relatedElements, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlRelationship, relatedElements, IsDerivedUnionRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlRelationship, relatedElements, DocumentationRole, QStringLiteral("Specifies the elements related by the Relationship."));
@@ -294,6 +298,7 @@ void QUmlProtocolConformanceObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlDirectedRelationship, sources, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlDirectedRelationship, sources, PropertyClassRole, QStringLiteral("QUmlDirectedRelationship"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlDirectedRelationship, sources, PropertyTypeRole, QStringLiteral("QSet<QUmlElement *>"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlDirectedRelationship, sources, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlDirectedRelationship, sources, IsDerivedUnionRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlDirectedRelationship, sources, DocumentationRole, QStringLiteral("Specifies the sources of the DirectedRelationship."));
@@ -303,6 +308,7 @@ void QUmlProtocolConformanceObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlDirectedRelationship, targets, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlDirectedRelationship, targets, PropertyClassRole, QStringLiteral("QUmlDirectedRelationship"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlDirectedRelationship, targets, PropertyTypeRole, QStringLiteral("QSet<QUmlElement *>"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlDirectedRelationship, targets, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlDirectedRelationship, targets, IsDerivedUnionRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlDirectedRelationship, targets, DocumentationRole, QStringLiteral("Specifies the targets of the DirectedRelationship."));
@@ -312,6 +318,7 @@ void QUmlProtocolConformanceObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlProtocolConformance, generalMachine, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlProtocolConformance, generalMachine, PropertyClassRole, QStringLiteral("QUmlProtocolConformance"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlProtocolConformance, generalMachine, PropertyTypeRole, QStringLiteral("QUmlProtocolStateMachine *"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlProtocolConformance, generalMachine, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlProtocolConformance, generalMachine, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlProtocolConformance, generalMachine, DocumentationRole, QStringLiteral("Specifies the protocol state machine to which the specific state machine conforms."));
@@ -321,6 +328,7 @@ void QUmlProtocolConformanceObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlProtocolConformance, specificMachine, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlProtocolConformance, specificMachine, PropertyClassRole, QStringLiteral("QUmlProtocolConformance"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlProtocolConformance, specificMachine, PropertyTypeRole, QStringLiteral("QUmlProtocolStateMachine *"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlProtocolConformance, specificMachine, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlProtocolConformance, specificMachine, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlProtocolConformance, specificMachine, DocumentationRole, QStringLiteral("Specifies the state machine which conforms to the general state machine."));

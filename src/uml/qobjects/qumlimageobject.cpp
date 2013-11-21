@@ -188,6 +188,7 @@ void QUmlImageObject::setPropertyData()
 {
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedComments, AggregationRole, QStringLiteral("composite"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedComments, PropertyClassRole, QStringLiteral("QUmlElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedComments, PropertyTypeRole, QStringLiteral("QSet<QUmlComment *>"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedComments, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedComments, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedComments, DocumentationRole, QStringLiteral("The Comments owned by this element."));
@@ -197,6 +198,7 @@ void QUmlImageObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedElements, AggregationRole, QStringLiteral("composite"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedElements, PropertyClassRole, QStringLiteral("QUmlElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedElements, PropertyTypeRole, QStringLiteral("QSet<QUmlElement *>"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedElements, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedElements, IsDerivedUnionRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedElements, DocumentationRole, QStringLiteral("The Elements owned by this element."));
@@ -206,6 +208,7 @@ void QUmlImageObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, owner, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, owner, PropertyClassRole, QStringLiteral("QUmlElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlElement, owner, PropertyTypeRole, QStringLiteral("QUmlElement *"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, owner, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, owner, IsDerivedUnionRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, owner, DocumentationRole, QStringLiteral("The Element that owns this element."));
@@ -215,6 +218,7 @@ void QUmlImageObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlImage, content, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlImage, content, PropertyClassRole, QStringLiteral("QUmlImage"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlImage, content, PropertyTypeRole, QStringLiteral("QString"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlImage, content, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlImage, content, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlImage, content, DocumentationRole, QStringLiteral("This contains the serialization of the image according to the format. The value could represent a bitmap, image such as a GIF file, or drawing 'instructions' using a standard such as Scalable Vector Graphic (SVG) (which is XML based)."));
@@ -224,6 +228,7 @@ void QUmlImageObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlImage, format, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlImage, format, PropertyClassRole, QStringLiteral("QUmlImage"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlImage, format, PropertyTypeRole, QStringLiteral("QString"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlImage, format, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlImage, format, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlImage, format, DocumentationRole, QStringLiteral("This indicates the format of the content - which is how the string content should be interpreted. The following values are reserved: SVG, GIF, PNG, JPG, WMF, EMF, BMP. In addition the prefix 'MIME: ' is also reserved. This option can be used as an alternative to express the reserved values above, for example 'SVG' could instead be expressed as 'MIME: image/svg+xml'."));
@@ -233,6 +238,7 @@ void QUmlImageObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlImage, location, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlImage, location, PropertyClassRole, QStringLiteral("QUmlImage"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlImage, location, PropertyTypeRole, QStringLiteral("QString"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlImage, location, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlImage, location, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlImage, location, DocumentationRole, QStringLiteral("This contains a location that can be used by a tool to locate the image as an alternative to embedding it in the stereotype."));

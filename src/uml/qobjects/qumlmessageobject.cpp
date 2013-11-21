@@ -416,6 +416,7 @@ void QUmlMessageObject::setPropertyData()
 {
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedComments, AggregationRole, QStringLiteral("composite"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedComments, PropertyClassRole, QStringLiteral("QUmlElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedComments, PropertyTypeRole, QStringLiteral("QSet<QUmlComment *>"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedComments, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedComments, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedComments, DocumentationRole, QStringLiteral("The Comments owned by this element."));
@@ -425,6 +426,7 @@ void QUmlMessageObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedElements, AggregationRole, QStringLiteral("composite"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedElements, PropertyClassRole, QStringLiteral("QUmlElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedElements, PropertyTypeRole, QStringLiteral("QSet<QUmlElement *>"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedElements, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedElements, IsDerivedUnionRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedElements, DocumentationRole, QStringLiteral("The Elements owned by this element."));
@@ -434,6 +436,7 @@ void QUmlMessageObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, owner, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, owner, PropertyClassRole, QStringLiteral("QUmlElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlElement, owner, PropertyTypeRole, QStringLiteral("QUmlElement *"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, owner, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, owner, IsDerivedUnionRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, owner, DocumentationRole, QStringLiteral("The Element that owns this element."));
@@ -443,6 +446,7 @@ void QUmlMessageObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, clientDependencies, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, clientDependencies, PropertyClassRole, QStringLiteral("QUmlNamedElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, clientDependencies, PropertyTypeRole, QStringLiteral("QSet<QUmlDependency *>"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, clientDependencies, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, clientDependencies, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, clientDependencies, DocumentationRole, QStringLiteral("Indicates the dependencies that reference the client."));
@@ -452,6 +456,7 @@ void QUmlMessageObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, name, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, name, PropertyClassRole, QStringLiteral("QUmlNamedElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, name, PropertyTypeRole, QStringLiteral("QString"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, name, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, name, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, name, DocumentationRole, QStringLiteral("The name of the NamedElement."));
@@ -461,6 +466,7 @@ void QUmlMessageObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, nameExpression, AggregationRole, QStringLiteral("composite"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, nameExpression, PropertyClassRole, QStringLiteral("QUmlNamedElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, nameExpression, PropertyTypeRole, QStringLiteral("QUmlStringExpression *"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, nameExpression, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, nameExpression, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, nameExpression, DocumentationRole, QStringLiteral("The string expression used to define the name of this named element."));
@@ -470,6 +476,7 @@ void QUmlMessageObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, namespace_, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, namespace_, PropertyClassRole, QStringLiteral("QUmlNamedElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, namespace_, PropertyTypeRole, QStringLiteral("QUmlNamespace *"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, namespace_, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, namespace_, IsDerivedUnionRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, namespace_, DocumentationRole, QStringLiteral("Specifies the namespace that owns the NamedElement."));
@@ -479,6 +486,7 @@ void QUmlMessageObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, qualifiedName, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, qualifiedName, PropertyClassRole, QStringLiteral("QUmlNamedElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, qualifiedName, PropertyTypeRole, QStringLiteral("QString"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, qualifiedName, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, qualifiedName, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, qualifiedName, DocumentationRole, QStringLiteral("A name which allows the NamedElement to be identified within a hierarchy of nested Namespaces. It is constructed from the names of the containing namespaces starting at the root of the hierarchy and ending with the name of the NamedElement itself."));
@@ -488,6 +496,7 @@ void QUmlMessageObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, visibility, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, visibility, PropertyClassRole, QStringLiteral("QUmlNamedElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, visibility, PropertyTypeRole, QStringLiteral("QtUml::VisibilityKind"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, visibility, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, visibility, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, visibility, DocumentationRole, QStringLiteral("Determines where the NamedElement appears within different Namespaces within the overall model, and its accessibility."));
@@ -497,6 +506,7 @@ void QUmlMessageObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlMessage, arguments, AggregationRole, QStringLiteral("composite"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlMessage, arguments, PropertyClassRole, QStringLiteral("QUmlMessage"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlMessage, arguments, PropertyTypeRole, QStringLiteral("QList<QUmlValueSpecification *>"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlMessage, arguments, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlMessage, arguments, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlMessage, arguments, DocumentationRole, QStringLiteral("The arguments of the Message"));
@@ -506,6 +516,7 @@ void QUmlMessageObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlMessage, connector, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlMessage, connector, PropertyClassRole, QStringLiteral("QUmlMessage"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlMessage, connector, PropertyTypeRole, QStringLiteral("QUmlConnector *"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlMessage, connector, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlMessage, connector, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlMessage, connector, DocumentationRole, QStringLiteral("The Connector on which this Message is sent."));
@@ -515,6 +526,7 @@ void QUmlMessageObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlMessage, interaction, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlMessage, interaction, PropertyClassRole, QStringLiteral("QUmlMessage"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlMessage, interaction, PropertyTypeRole, QStringLiteral("QUmlInteraction *"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlMessage, interaction, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlMessage, interaction, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlMessage, interaction, DocumentationRole, QStringLiteral("The enclosing Interaction owning the Message"));
@@ -524,6 +536,7 @@ void QUmlMessageObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlMessage, messageKind, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlMessage, messageKind, PropertyClassRole, QStringLiteral("QUmlMessage"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlMessage, messageKind, PropertyTypeRole, QStringLiteral("QtUml::MessageKind"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlMessage, messageKind, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlMessage, messageKind, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlMessage, messageKind, DocumentationRole, QStringLiteral("The derived kind of the Message (complete, lost, found or unknown)"));
@@ -533,6 +546,7 @@ void QUmlMessageObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlMessage, messageSort, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlMessage, messageSort, PropertyClassRole, QStringLiteral("QUmlMessage"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlMessage, messageSort, PropertyTypeRole, QStringLiteral("QtUml::MessageSort"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlMessage, messageSort, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlMessage, messageSort, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlMessage, messageSort, DocumentationRole, QStringLiteral("The sort of communication reflected by the Message"));
@@ -542,6 +556,7 @@ void QUmlMessageObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlMessage, receiveEvent, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlMessage, receiveEvent, PropertyClassRole, QStringLiteral("QUmlMessage"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlMessage, receiveEvent, PropertyTypeRole, QStringLiteral("QUmlMessageEnd *"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlMessage, receiveEvent, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlMessage, receiveEvent, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlMessage, receiveEvent, DocumentationRole, QStringLiteral("References the Receiving of the Message"));
@@ -551,6 +566,7 @@ void QUmlMessageObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlMessage, sendEvent, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlMessage, sendEvent, PropertyClassRole, QStringLiteral("QUmlMessage"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlMessage, sendEvent, PropertyTypeRole, QStringLiteral("QUmlMessageEnd *"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlMessage, sendEvent, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlMessage, sendEvent, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlMessage, sendEvent, DocumentationRole, QStringLiteral("References the Sending of the Message."));
@@ -560,6 +576,7 @@ void QUmlMessageObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlMessage, signature, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlMessage, signature, PropertyClassRole, QStringLiteral("QUmlMessage"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlMessage, signature, PropertyTypeRole, QStringLiteral("QUmlNamedElement *"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlMessage, signature, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlMessage, signature, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlMessage, signature, DocumentationRole, QStringLiteral("The signature of the Message is the specification of its content. It refers either an Operation or a Signal."));

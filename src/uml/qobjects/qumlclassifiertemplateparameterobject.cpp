@@ -277,6 +277,7 @@ void QUmlClassifierTemplateParameterObject::setPropertyData()
 {
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedComments, AggregationRole, QStringLiteral("composite"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedComments, PropertyClassRole, QStringLiteral("QUmlElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedComments, PropertyTypeRole, QStringLiteral("QSet<QUmlComment *>"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedComments, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedComments, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedComments, DocumentationRole, QStringLiteral("The Comments owned by this element."));
@@ -286,6 +287,7 @@ void QUmlClassifierTemplateParameterObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedElements, AggregationRole, QStringLiteral("composite"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedElements, PropertyClassRole, QStringLiteral("QUmlElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedElements, PropertyTypeRole, QStringLiteral("QSet<QUmlElement *>"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedElements, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedElements, IsDerivedUnionRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedElements, DocumentationRole, QStringLiteral("The Elements owned by this element."));
@@ -295,6 +297,7 @@ void QUmlClassifierTemplateParameterObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, owner, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, owner, PropertyClassRole, QStringLiteral("QUmlElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlElement, owner, PropertyTypeRole, QStringLiteral("QUmlElement *"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, owner, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, owner, IsDerivedUnionRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, owner, DocumentationRole, QStringLiteral("The Element that owns this element."));
@@ -304,6 +307,7 @@ void QUmlClassifierTemplateParameterObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateParameter, default_, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateParameter, default_, PropertyClassRole, QStringLiteral("QUmlTemplateParameter"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateParameter, default_, PropertyTypeRole, QStringLiteral("QUmlParameterableElement *"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateParameter, default_, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateParameter, default_, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateParameter, default_, DocumentationRole, QStringLiteral("The element that is the default for this formal template parameter."));
@@ -313,6 +317,7 @@ void QUmlClassifierTemplateParameterObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateParameter, ownedDefault, AggregationRole, QStringLiteral("composite"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateParameter, ownedDefault, PropertyClassRole, QStringLiteral("QUmlTemplateParameter"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateParameter, ownedDefault, PropertyTypeRole, QStringLiteral("QUmlParameterableElement *"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateParameter, ownedDefault, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateParameter, ownedDefault, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateParameter, ownedDefault, DocumentationRole, QStringLiteral("The element that is owned by this template parameter for the purpose of providing a default."));
@@ -322,6 +327,7 @@ void QUmlClassifierTemplateParameterObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateParameter, ownedParameteredElement, AggregationRole, QStringLiteral("composite"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateParameter, ownedParameteredElement, PropertyClassRole, QStringLiteral("QUmlTemplateParameter"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateParameter, ownedParameteredElement, PropertyTypeRole, QStringLiteral("QUmlParameterableElement *"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateParameter, ownedParameteredElement, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateParameter, ownedParameteredElement, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateParameter, ownedParameteredElement, DocumentationRole, QStringLiteral("The element that is owned by this template parameter."));
@@ -331,6 +337,7 @@ void QUmlClassifierTemplateParameterObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateParameter, parameteredElement, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateParameter, parameteredElement, PropertyClassRole, QStringLiteral("QUmlTemplateParameter"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateParameter, parameteredElement, PropertyTypeRole, QStringLiteral("QUmlParameterableElement *"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateParameter, parameteredElement, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateParameter, parameteredElement, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateParameter, parameteredElement, DocumentationRole, QStringLiteral("The element exposed by this template parameter."));
@@ -340,6 +347,7 @@ void QUmlClassifierTemplateParameterObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateParameter, signature, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateParameter, signature, PropertyClassRole, QStringLiteral("QUmlTemplateParameter"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateParameter, signature, PropertyTypeRole, QStringLiteral("QUmlTemplateSignature *"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateParameter, signature, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateParameter, signature, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateParameter, signature, DocumentationRole, QStringLiteral("The template signature that owns this template parameter."));
@@ -349,6 +357,7 @@ void QUmlClassifierTemplateParameterObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlClassifierTemplateParameter, allowSubstitutable, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlClassifierTemplateParameter, allowSubstitutable, PropertyClassRole, QStringLiteral("QUmlClassifierTemplateParameter"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlClassifierTemplateParameter, allowSubstitutable, PropertyTypeRole, QStringLiteral("bool"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlClassifierTemplateParameter, allowSubstitutable, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlClassifierTemplateParameter, allowSubstitutable, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlClassifierTemplateParameter, allowSubstitutable, DocumentationRole, QStringLiteral("Constrains the required relationship between an actual parameter and the parameteredElement for this formal parameter."));
@@ -358,6 +367,7 @@ void QUmlClassifierTemplateParameterObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlClassifierTemplateParameter, constrainingClassifiers, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlClassifierTemplateParameter, constrainingClassifiers, PropertyClassRole, QStringLiteral("QUmlClassifierTemplateParameter"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlClassifierTemplateParameter, constrainingClassifiers, PropertyTypeRole, QStringLiteral("QSet<QUmlClassifier *>"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlClassifierTemplateParameter, constrainingClassifiers, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlClassifierTemplateParameter, constrainingClassifiers, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlClassifierTemplateParameter, constrainingClassifiers, DocumentationRole, QStringLiteral("The classifiers that constrain the argument that can be used for the parameter. If the allowSubstitutable attribute is true, then any classifier that is compatible with this constraining classifier can be substituted; otherwise, it must be either this classifier or one of its subclasses. If this property is empty, there are no constraints on the classifier that can be used as an argument."));
@@ -367,6 +377,7 @@ void QUmlClassifierTemplateParameterObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlClassifierTemplateParameter, parameteredElement, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlClassifierTemplateParameter, parameteredElement, PropertyClassRole, QStringLiteral("QUmlClassifierTemplateParameter"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlClassifierTemplateParameter, parameteredElement, PropertyTypeRole, QStringLiteral("QUmlClassifier *"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlClassifierTemplateParameter, parameteredElement, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlClassifierTemplateParameter, parameteredElement, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlClassifierTemplateParameter, parameteredElement, DocumentationRole, QStringLiteral("The parameterable classifier for this template parameter."));

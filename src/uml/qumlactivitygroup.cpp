@@ -211,6 +211,11 @@ void QUmlActivityGroup::addSubgroup(QUmlActivityGroup *subgroup)
 
         // Adjust subsetted properties
         addOwnedElement(subgroup);
+
+        // Adjust opposite properties
+        if (subgroup) {
+            subgroup->setSuperGroup(this);
+        }
     }
 }
 
@@ -225,6 +230,11 @@ void QUmlActivityGroup::removeSubgroup(QUmlActivityGroup *subgroup)
 
         // Adjust subsetted properties
         removeOwnedElement(subgroup);
+
+        // Adjust opposite properties
+        if (subgroup) {
+            subgroup->setSuperGroup(0);
+        }
     }
 }
 

@@ -537,6 +537,7 @@ void QUmlControlFlowObject::setPropertyData()
 {
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedComments, AggregationRole, QStringLiteral("composite"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedComments, PropertyClassRole, QStringLiteral("QUmlElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedComments, PropertyTypeRole, QStringLiteral("QSet<QUmlComment *>"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedComments, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedComments, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedComments, DocumentationRole, QStringLiteral("The Comments owned by this element."));
@@ -546,6 +547,7 @@ void QUmlControlFlowObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedElements, AggregationRole, QStringLiteral("composite"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedElements, PropertyClassRole, QStringLiteral("QUmlElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedElements, PropertyTypeRole, QStringLiteral("QSet<QUmlElement *>"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedElements, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedElements, IsDerivedUnionRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedElements, DocumentationRole, QStringLiteral("The Elements owned by this element."));
@@ -555,6 +557,7 @@ void QUmlControlFlowObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, owner, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, owner, PropertyClassRole, QStringLiteral("QUmlElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlElement, owner, PropertyTypeRole, QStringLiteral("QUmlElement *"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, owner, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, owner, IsDerivedUnionRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, owner, DocumentationRole, QStringLiteral("The Element that owns this element."));
@@ -564,6 +567,7 @@ void QUmlControlFlowObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, clientDependencies, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, clientDependencies, PropertyClassRole, QStringLiteral("QUmlNamedElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, clientDependencies, PropertyTypeRole, QStringLiteral("QSet<QUmlDependency *>"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, clientDependencies, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, clientDependencies, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, clientDependencies, DocumentationRole, QStringLiteral("Indicates the dependencies that reference the client."));
@@ -573,6 +577,7 @@ void QUmlControlFlowObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, name, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, name, PropertyClassRole, QStringLiteral("QUmlNamedElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, name, PropertyTypeRole, QStringLiteral("QString"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, name, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, name, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, name, DocumentationRole, QStringLiteral("The name of the NamedElement."));
@@ -582,6 +587,7 @@ void QUmlControlFlowObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, nameExpression, AggregationRole, QStringLiteral("composite"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, nameExpression, PropertyClassRole, QStringLiteral("QUmlNamedElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, nameExpression, PropertyTypeRole, QStringLiteral("QUmlStringExpression *"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, nameExpression, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, nameExpression, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, nameExpression, DocumentationRole, QStringLiteral("The string expression used to define the name of this named element."));
@@ -591,6 +597,7 @@ void QUmlControlFlowObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, namespace_, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, namespace_, PropertyClassRole, QStringLiteral("QUmlNamedElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, namespace_, PropertyTypeRole, QStringLiteral("QUmlNamespace *"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, namespace_, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, namespace_, IsDerivedUnionRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, namespace_, DocumentationRole, QStringLiteral("Specifies the namespace that owns the NamedElement."));
@@ -600,6 +607,7 @@ void QUmlControlFlowObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, qualifiedName, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, qualifiedName, PropertyClassRole, QStringLiteral("QUmlNamedElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, qualifiedName, PropertyTypeRole, QStringLiteral("QString"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, qualifiedName, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, qualifiedName, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, qualifiedName, DocumentationRole, QStringLiteral("A name which allows the NamedElement to be identified within a hierarchy of nested Namespaces. It is constructed from the names of the containing namespaces starting at the root of the hierarchy and ending with the name of the NamedElement itself."));
@@ -609,6 +617,7 @@ void QUmlControlFlowObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, visibility, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, visibility, PropertyClassRole, QStringLiteral("QUmlNamedElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, visibility, PropertyTypeRole, QStringLiteral("QtUml::VisibilityKind"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, visibility, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, visibility, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, visibility, DocumentationRole, QStringLiteral("Determines where the NamedElement appears within different Namespaces within the overall model, and its accessibility."));
@@ -618,6 +627,7 @@ void QUmlControlFlowObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlRedefinableElement, isLeaf, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlRedefinableElement, isLeaf, PropertyClassRole, QStringLiteral("QUmlRedefinableElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlRedefinableElement, isLeaf, PropertyTypeRole, QStringLiteral("bool"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlRedefinableElement, isLeaf, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlRedefinableElement, isLeaf, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlRedefinableElement, isLeaf, DocumentationRole, QStringLiteral("Indicates whether it is possible to further redefine a RedefinableElement. If the value is true, then it is not possible to further redefine the RedefinableElement. Note that this property is preserved through package merge operations; that is, the capability to redefine a RedefinableElement (i.e., isLeaf=false) must be preserved in the resulting RedefinableElement of a package merge operation where a RedefinableElement with isLeaf=false is merged with a matching RedefinableElement with isLeaf=true: the resulting RedefinableElement will have isLeaf=false. Default value is false."));
@@ -627,6 +637,7 @@ void QUmlControlFlowObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlRedefinableElement, redefinedElements, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlRedefinableElement, redefinedElements, PropertyClassRole, QStringLiteral("QUmlRedefinableElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlRedefinableElement, redefinedElements, PropertyTypeRole, QStringLiteral("QSet<QUmlRedefinableElement *>"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlRedefinableElement, redefinedElements, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlRedefinableElement, redefinedElements, IsDerivedUnionRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlRedefinableElement, redefinedElements, DocumentationRole, QStringLiteral("The redefinable element that is being redefined by this element."));
@@ -636,6 +647,7 @@ void QUmlControlFlowObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlRedefinableElement, redefinitionContexts, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlRedefinableElement, redefinitionContexts, PropertyClassRole, QStringLiteral("QUmlRedefinableElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlRedefinableElement, redefinitionContexts, PropertyTypeRole, QStringLiteral("QSet<QUmlClassifier *>"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlRedefinableElement, redefinitionContexts, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlRedefinableElement, redefinitionContexts, IsDerivedUnionRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlRedefinableElement, redefinitionContexts, DocumentationRole, QStringLiteral("References the contexts that this element may be redefined from."));
@@ -645,6 +657,7 @@ void QUmlControlFlowObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlActivityEdge, activity, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlActivityEdge, activity, PropertyClassRole, QStringLiteral("QUmlActivityEdge"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlActivityEdge, activity, PropertyTypeRole, QStringLiteral("QUmlActivity *"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlActivityEdge, activity, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlActivityEdge, activity, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlActivityEdge, activity, DocumentationRole, QStringLiteral("Activity containing the edge."));
@@ -654,6 +667,7 @@ void QUmlControlFlowObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlActivityEdge, guard, AggregationRole, QStringLiteral("composite"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlActivityEdge, guard, PropertyClassRole, QStringLiteral("QUmlActivityEdge"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlActivityEdge, guard, PropertyTypeRole, QStringLiteral("QUmlValueSpecification *"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlActivityEdge, guard, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlActivityEdge, guard, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlActivityEdge, guard, DocumentationRole, QStringLiteral("Specification evaluated at runtime to determine if the edge can be traversed."));
@@ -663,6 +677,7 @@ void QUmlControlFlowObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlActivityEdge, inGroups, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlActivityEdge, inGroups, PropertyClassRole, QStringLiteral("QUmlActivityEdge"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlActivityEdge, inGroups, PropertyTypeRole, QStringLiteral("QSet<QUmlActivityGroup *>"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlActivityEdge, inGroups, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlActivityEdge, inGroups, IsDerivedUnionRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlActivityEdge, inGroups, DocumentationRole, QStringLiteral("Groups containing the edge."));
@@ -672,6 +687,7 @@ void QUmlControlFlowObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlActivityEdge, inPartitions, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlActivityEdge, inPartitions, PropertyClassRole, QStringLiteral("QUmlActivityEdge"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlActivityEdge, inPartitions, PropertyTypeRole, QStringLiteral("QSet<QUmlActivityPartition *>"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlActivityEdge, inPartitions, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlActivityEdge, inPartitions, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlActivityEdge, inPartitions, DocumentationRole, QStringLiteral("Partitions containing the edge."));
@@ -681,6 +697,7 @@ void QUmlControlFlowObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlActivityEdge, inStructuredNode, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlActivityEdge, inStructuredNode, PropertyClassRole, QStringLiteral("QUmlActivityEdge"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlActivityEdge, inStructuredNode, PropertyTypeRole, QStringLiteral("QUmlStructuredActivityNode *"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlActivityEdge, inStructuredNode, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlActivityEdge, inStructuredNode, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlActivityEdge, inStructuredNode, DocumentationRole, QStringLiteral("Structured activity node containing the edge."));
@@ -690,6 +707,7 @@ void QUmlControlFlowObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlActivityEdge, interrupts, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlActivityEdge, interrupts, PropertyClassRole, QStringLiteral("QUmlActivityEdge"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlActivityEdge, interrupts, PropertyTypeRole, QStringLiteral("QUmlInterruptibleActivityRegion *"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlActivityEdge, interrupts, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlActivityEdge, interrupts, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlActivityEdge, interrupts, DocumentationRole, QStringLiteral("Region that the edge can interrupt."));
@@ -699,6 +717,7 @@ void QUmlControlFlowObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlActivityEdge, redefinedEdges, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlActivityEdge, redefinedEdges, PropertyClassRole, QStringLiteral("QUmlActivityEdge"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlActivityEdge, redefinedEdges, PropertyTypeRole, QStringLiteral("QSet<QUmlActivityEdge *>"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlActivityEdge, redefinedEdges, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlActivityEdge, redefinedEdges, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlActivityEdge, redefinedEdges, DocumentationRole, QStringLiteral("Inherited edges replaced by this edge in a specialization of the activity."));
@@ -708,6 +727,7 @@ void QUmlControlFlowObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlActivityEdge, source, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlActivityEdge, source, PropertyClassRole, QStringLiteral("QUmlActivityEdge"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlActivityEdge, source, PropertyTypeRole, QStringLiteral("QUmlActivityNode *"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlActivityEdge, source, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlActivityEdge, source, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlActivityEdge, source, DocumentationRole, QStringLiteral("Node from which tokens are taken when they traverse the edge."));
@@ -717,6 +737,7 @@ void QUmlControlFlowObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlActivityEdge, target, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlActivityEdge, target, PropertyClassRole, QStringLiteral("QUmlActivityEdge"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlActivityEdge, target, PropertyTypeRole, QStringLiteral("QUmlActivityNode *"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlActivityEdge, target, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlActivityEdge, target, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlActivityEdge, target, DocumentationRole, QStringLiteral("Node to which tokens are put when they traverse the edge."));
@@ -726,6 +747,7 @@ void QUmlControlFlowObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlActivityEdge, weight, AggregationRole, QStringLiteral("composite"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlActivityEdge, weight, PropertyClassRole, QStringLiteral("QUmlActivityEdge"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlActivityEdge, weight, PropertyTypeRole, QStringLiteral("QUmlValueSpecification *"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlActivityEdge, weight, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlActivityEdge, weight, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlActivityEdge, weight, DocumentationRole, QStringLiteral("The minimum number of tokens that must traverse the edge at the same time."));

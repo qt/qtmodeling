@@ -211,6 +211,7 @@ void QUmlTemplateSignatureObject::setPropertyData()
 {
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedComments, AggregationRole, QStringLiteral("composite"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedComments, PropertyClassRole, QStringLiteral("QUmlElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedComments, PropertyTypeRole, QStringLiteral("QSet<QUmlComment *>"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedComments, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedComments, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedComments, DocumentationRole, QStringLiteral("The Comments owned by this element."));
@@ -220,6 +221,7 @@ void QUmlTemplateSignatureObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedElements, AggregationRole, QStringLiteral("composite"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedElements, PropertyClassRole, QStringLiteral("QUmlElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedElements, PropertyTypeRole, QStringLiteral("QSet<QUmlElement *>"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedElements, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedElements, IsDerivedUnionRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedElements, DocumentationRole, QStringLiteral("The Elements owned by this element."));
@@ -229,6 +231,7 @@ void QUmlTemplateSignatureObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, owner, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, owner, PropertyClassRole, QStringLiteral("QUmlElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlElement, owner, PropertyTypeRole, QStringLiteral("QUmlElement *"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, owner, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, owner, IsDerivedUnionRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, owner, DocumentationRole, QStringLiteral("The Element that owns this element."));
@@ -238,6 +241,7 @@ void QUmlTemplateSignatureObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateSignature, ownedParameters, AggregationRole, QStringLiteral("composite"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateSignature, ownedParameters, PropertyClassRole, QStringLiteral("QUmlTemplateSignature"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateSignature, ownedParameters, PropertyTypeRole, QStringLiteral("QList<QUmlTemplateParameter *>"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateSignature, ownedParameters, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateSignature, ownedParameters, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateSignature, ownedParameters, DocumentationRole, QStringLiteral("The formal template parameters that are owned by this template signature."));
@@ -247,6 +251,7 @@ void QUmlTemplateSignatureObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateSignature, parameters, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateSignature, parameters, PropertyClassRole, QStringLiteral("QUmlTemplateSignature"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateSignature, parameters, PropertyTypeRole, QStringLiteral("QList<QUmlTemplateParameter *>"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateSignature, parameters, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateSignature, parameters, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateSignature, parameters, DocumentationRole, QStringLiteral("The ordered set of all formal template parameters for this template signature."));
@@ -256,6 +261,7 @@ void QUmlTemplateSignatureObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateSignature, template_, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateSignature, template_, PropertyClassRole, QStringLiteral("QUmlTemplateSignature"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateSignature, template_, PropertyTypeRole, QStringLiteral("QUmlTemplateableElement *"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateSignature, template_, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateSignature, template_, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateSignature, template_, DocumentationRole, QStringLiteral("The element that owns this template signature."));

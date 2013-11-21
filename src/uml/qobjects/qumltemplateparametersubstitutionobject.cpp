@@ -215,6 +215,7 @@ void QUmlTemplateParameterSubstitutionObject::setPropertyData()
 {
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedComments, AggregationRole, QStringLiteral("composite"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedComments, PropertyClassRole, QStringLiteral("QUmlElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedComments, PropertyTypeRole, QStringLiteral("QSet<QUmlComment *>"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedComments, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedComments, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedComments, DocumentationRole, QStringLiteral("The Comments owned by this element."));
@@ -224,6 +225,7 @@ void QUmlTemplateParameterSubstitutionObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedElements, AggregationRole, QStringLiteral("composite"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedElements, PropertyClassRole, QStringLiteral("QUmlElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedElements, PropertyTypeRole, QStringLiteral("QSet<QUmlElement *>"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedElements, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedElements, IsDerivedUnionRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedElements, DocumentationRole, QStringLiteral("The Elements owned by this element."));
@@ -233,6 +235,7 @@ void QUmlTemplateParameterSubstitutionObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, owner, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, owner, PropertyClassRole, QStringLiteral("QUmlElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlElement, owner, PropertyTypeRole, QStringLiteral("QUmlElement *"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, owner, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, owner, IsDerivedUnionRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, owner, DocumentationRole, QStringLiteral("The Element that owns this element."));
@@ -242,6 +245,7 @@ void QUmlTemplateParameterSubstitutionObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateParameterSubstitution, actual, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateParameterSubstitution, actual, PropertyClassRole, QStringLiteral("QUmlTemplateParameterSubstitution"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateParameterSubstitution, actual, PropertyTypeRole, QStringLiteral("QUmlParameterableElement *"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateParameterSubstitution, actual, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateParameterSubstitution, actual, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateParameterSubstitution, actual, DocumentationRole, QStringLiteral("The element that is the actual parameter for this substitution."));
@@ -251,6 +255,7 @@ void QUmlTemplateParameterSubstitutionObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateParameterSubstitution, formal, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateParameterSubstitution, formal, PropertyClassRole, QStringLiteral("QUmlTemplateParameterSubstitution"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateParameterSubstitution, formal, PropertyTypeRole, QStringLiteral("QUmlTemplateParameter *"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateParameterSubstitution, formal, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateParameterSubstitution, formal, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateParameterSubstitution, formal, DocumentationRole, QStringLiteral("The formal template parameter that is associated with this substitution."));
@@ -260,6 +265,7 @@ void QUmlTemplateParameterSubstitutionObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateParameterSubstitution, ownedActual, AggregationRole, QStringLiteral("composite"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateParameterSubstitution, ownedActual, PropertyClassRole, QStringLiteral("QUmlTemplateParameterSubstitution"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateParameterSubstitution, ownedActual, PropertyTypeRole, QStringLiteral("QUmlParameterableElement *"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateParameterSubstitution, ownedActual, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateParameterSubstitution, ownedActual, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateParameterSubstitution, ownedActual, DocumentationRole, QStringLiteral("The actual parameter that is owned by this substitution."));
@@ -269,6 +275,7 @@ void QUmlTemplateParameterSubstitutionObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateParameterSubstitution, templateBinding, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateParameterSubstitution, templateBinding, PropertyClassRole, QStringLiteral("QUmlTemplateParameterSubstitution"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateParameterSubstitution, templateBinding, PropertyTypeRole, QStringLiteral("QUmlTemplateBinding *"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateParameterSubstitution, templateBinding, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateParameterSubstitution, templateBinding, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateParameterSubstitution, templateBinding, DocumentationRole, QStringLiteral("The optional bindings from this element to templates."));

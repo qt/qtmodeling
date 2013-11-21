@@ -153,6 +153,11 @@ void QUmlStringExpression::addSubExpression(QUmlStringExpression *subExpression)
 
         // Adjust subsetted properties
         addOwnedElement(subExpression);
+
+        // Adjust opposite properties
+        if (subExpression) {
+            subExpression->setOwningExpression(this);
+        }
     }
 }
 
@@ -167,6 +172,11 @@ void QUmlStringExpression::removeSubExpression(QUmlStringExpression *subExpressi
 
         // Adjust subsetted properties
         removeOwnedElement(subExpression);
+
+        // Adjust opposite properties
+        if (subExpression) {
+            subExpression->setOwningExpression(0);
+        }
     }
 }
 

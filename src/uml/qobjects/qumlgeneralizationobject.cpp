@@ -300,6 +300,7 @@ void QUmlGeneralizationObject::setPropertyData()
 {
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedComments, AggregationRole, QStringLiteral("composite"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedComments, PropertyClassRole, QStringLiteral("QUmlElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedComments, PropertyTypeRole, QStringLiteral("QSet<QUmlComment *>"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedComments, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedComments, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedComments, DocumentationRole, QStringLiteral("The Comments owned by this element."));
@@ -309,6 +310,7 @@ void QUmlGeneralizationObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedElements, AggregationRole, QStringLiteral("composite"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedElements, PropertyClassRole, QStringLiteral("QUmlElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedElements, PropertyTypeRole, QStringLiteral("QSet<QUmlElement *>"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedElements, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedElements, IsDerivedUnionRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedElements, DocumentationRole, QStringLiteral("The Elements owned by this element."));
@@ -318,6 +320,7 @@ void QUmlGeneralizationObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, owner, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, owner, PropertyClassRole, QStringLiteral("QUmlElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlElement, owner, PropertyTypeRole, QStringLiteral("QUmlElement *"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, owner, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, owner, IsDerivedUnionRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, owner, DocumentationRole, QStringLiteral("The Element that owns this element."));
@@ -327,6 +330,7 @@ void QUmlGeneralizationObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlRelationship, relatedElements, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlRelationship, relatedElements, PropertyClassRole, QStringLiteral("QUmlRelationship"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlRelationship, relatedElements, PropertyTypeRole, QStringLiteral("QSet<QUmlElement *>"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlRelationship, relatedElements, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlRelationship, relatedElements, IsDerivedUnionRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlRelationship, relatedElements, DocumentationRole, QStringLiteral("Specifies the elements related by the Relationship."));
@@ -336,6 +340,7 @@ void QUmlGeneralizationObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlDirectedRelationship, sources, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlDirectedRelationship, sources, PropertyClassRole, QStringLiteral("QUmlDirectedRelationship"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlDirectedRelationship, sources, PropertyTypeRole, QStringLiteral("QSet<QUmlElement *>"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlDirectedRelationship, sources, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlDirectedRelationship, sources, IsDerivedUnionRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlDirectedRelationship, sources, DocumentationRole, QStringLiteral("Specifies the sources of the DirectedRelationship."));
@@ -345,6 +350,7 @@ void QUmlGeneralizationObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlDirectedRelationship, targets, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlDirectedRelationship, targets, PropertyClassRole, QStringLiteral("QUmlDirectedRelationship"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlDirectedRelationship, targets, PropertyTypeRole, QStringLiteral("QSet<QUmlElement *>"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlDirectedRelationship, targets, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlDirectedRelationship, targets, IsDerivedUnionRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlDirectedRelationship, targets, DocumentationRole, QStringLiteral("Specifies the targets of the DirectedRelationship."));
@@ -354,6 +360,7 @@ void QUmlGeneralizationObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlGeneralization, general, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlGeneralization, general, PropertyClassRole, QStringLiteral("QUmlGeneralization"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlGeneralization, general, PropertyTypeRole, QStringLiteral("QUmlClassifier *"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlGeneralization, general, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlGeneralization, general, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlGeneralization, general, DocumentationRole, QStringLiteral("References the general classifier in the Generalization relationship."));
@@ -363,6 +370,7 @@ void QUmlGeneralizationObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlGeneralization, generalizationSets, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlGeneralization, generalizationSets, PropertyClassRole, QStringLiteral("QUmlGeneralization"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlGeneralization, generalizationSets, PropertyTypeRole, QStringLiteral("QSet<QUmlGeneralizationSet *>"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlGeneralization, generalizationSets, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlGeneralization, generalizationSets, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlGeneralization, generalizationSets, DocumentationRole, QStringLiteral("Designates a set in which instances of Generalization is considered members."));
@@ -372,6 +380,7 @@ void QUmlGeneralizationObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlGeneralization, isSubstitutable, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlGeneralization, isSubstitutable, PropertyClassRole, QStringLiteral("QUmlGeneralization"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlGeneralization, isSubstitutable, PropertyTypeRole, QStringLiteral("bool"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlGeneralization, isSubstitutable, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlGeneralization, isSubstitutable, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlGeneralization, isSubstitutable, DocumentationRole, QStringLiteral("Indicates whether the specific classifier can be used wherever the general classifier can be used. If true, the execution traces of the specific classifier will be a superset of the execution traces of the general classifier."));
@@ -381,6 +390,7 @@ void QUmlGeneralizationObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlGeneralization, specific, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlGeneralization, specific, PropertyClassRole, QStringLiteral("QUmlGeneralization"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlGeneralization, specific, PropertyTypeRole, QStringLiteral("QUmlClassifier *"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlGeneralization, specific, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlGeneralization, specific, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlGeneralization, specific, DocumentationRole, QStringLiteral("References the specializing classifier in the Generalization relationship."));

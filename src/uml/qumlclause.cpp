@@ -183,6 +183,11 @@ void QUmlClause::addPredecessorClause(QUmlClause *predecessorClause)
         _predecessorClauses.insert(predecessorClause);
         if (predecessorClause && predecessorClause->asQModelingObject() && this->asQModelingObject())
             QObject::connect(predecessorClause->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removePredecessorClause(QObject *)));
+
+        // Adjust opposite properties
+        if (predecessorClause) {
+            predecessorClause->addSuccessorClause(this);
+        }
     }
 }
 
@@ -192,6 +197,11 @@ void QUmlClause::removePredecessorClause(QUmlClause *predecessorClause)
 
     if (_predecessorClauses.contains(predecessorClause)) {
         _predecessorClauses.remove(predecessorClause);
+
+        // Adjust opposite properties
+        if (predecessorClause) {
+            predecessorClause->removeSuccessorClause(this);
+        }
     }
 }
 
@@ -213,6 +223,11 @@ void QUmlClause::addSuccessorClause(QUmlClause *successorClause)
         _successorClauses.insert(successorClause);
         if (successorClause && successorClause->asQModelingObject() && this->asQModelingObject())
             QObject::connect(successorClause->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeSuccessorClause(QObject *)));
+
+        // Adjust opposite properties
+        if (successorClause) {
+            successorClause->addPredecessorClause(this);
+        }
     }
 }
 
@@ -222,6 +237,11 @@ void QUmlClause::removeSuccessorClause(QUmlClause *successorClause)
 
     if (_successorClauses.contains(successorClause)) {
         _successorClauses.remove(successorClause);
+
+        // Adjust opposite properties
+        if (successorClause) {
+            successorClause->removePredecessorClause(this);
+        }
     }
 }
 

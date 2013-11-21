@@ -156,8 +156,10 @@ void QUmlPackage::addNestedPackage(QUmlPackage *nestedPackage)
         // Adjust subsetted property(ies)
         addPackagedElement(nestedPackage);
 
-        // Adjust opposite property
-        nestedPackage->setNestingPackage(this);
+        // Adjust opposite properties
+        if (nestedPackage) {
+            nestedPackage->setNestingPackage(this);
+        }
     }
 }
 
@@ -169,8 +171,10 @@ void QUmlPackage::removeNestedPackage(QUmlPackage *nestedPackage)
         // Adjust subsetted property(ies)
         removePackagedElement(nestedPackage);
 
-        // Adjust opposite property
-        nestedPackage->setNestingPackage(0);
+        // Adjust opposite properties
+        if (nestedPackage) {
+            nestedPackage->setNestingPackage(0);
+        }
     }
 }
 
@@ -261,9 +265,10 @@ void QUmlPackage::addOwnedType(QUmlType *ownedType)
         // Adjust subsetted property(ies)
         addPackagedElement(ownedType);
 
-        // Adjust opposite property
-        if (ownedType)
+        // Adjust opposite properties
+        if (ownedType) {
             ownedType->setPackage(this);
+        }
     }
 }
 
@@ -275,9 +280,10 @@ void QUmlPackage::removeOwnedType(QUmlType *ownedType)
         // Adjust subsetted property(ies)
         removePackagedElement(ownedType);
 
-        // Adjust opposite property
-        if (ownedType)
+        // Adjust opposite properties
+        if (ownedType) {
             ownedType->setPackage(0);
+        }
     }
 }
 

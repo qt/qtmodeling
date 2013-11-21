@@ -483,6 +483,7 @@ void QUmlRedefinableTemplateSignatureObject::setPropertyData()
 {
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedComments, AggregationRole, QStringLiteral("composite"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedComments, PropertyClassRole, QStringLiteral("QUmlElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedComments, PropertyTypeRole, QStringLiteral("QSet<QUmlComment *>"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedComments, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedComments, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedComments, DocumentationRole, QStringLiteral("The Comments owned by this element."));
@@ -492,6 +493,7 @@ void QUmlRedefinableTemplateSignatureObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedElements, AggregationRole, QStringLiteral("composite"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedElements, PropertyClassRole, QStringLiteral("QUmlElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedElements, PropertyTypeRole, QStringLiteral("QSet<QUmlElement *>"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedElements, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedElements, IsDerivedUnionRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedElements, DocumentationRole, QStringLiteral("The Elements owned by this element."));
@@ -501,6 +503,7 @@ void QUmlRedefinableTemplateSignatureObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, owner, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, owner, PropertyClassRole, QStringLiteral("QUmlElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlElement, owner, PropertyTypeRole, QStringLiteral("QUmlElement *"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, owner, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, owner, IsDerivedUnionRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, owner, DocumentationRole, QStringLiteral("The Element that owns this element."));
@@ -510,6 +513,7 @@ void QUmlRedefinableTemplateSignatureObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateSignature, ownedParameters, AggregationRole, QStringLiteral("composite"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateSignature, ownedParameters, PropertyClassRole, QStringLiteral("QUmlTemplateSignature"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateSignature, ownedParameters, PropertyTypeRole, QStringLiteral("QList<QUmlTemplateParameter *>"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateSignature, ownedParameters, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateSignature, ownedParameters, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateSignature, ownedParameters, DocumentationRole, QStringLiteral("The formal template parameters that are owned by this template signature."));
@@ -519,6 +523,7 @@ void QUmlRedefinableTemplateSignatureObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateSignature, parameters, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateSignature, parameters, PropertyClassRole, QStringLiteral("QUmlTemplateSignature"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateSignature, parameters, PropertyTypeRole, QStringLiteral("QList<QUmlTemplateParameter *>"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateSignature, parameters, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateSignature, parameters, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateSignature, parameters, DocumentationRole, QStringLiteral("The ordered set of all formal template parameters for this template signature."));
@@ -528,6 +533,7 @@ void QUmlRedefinableTemplateSignatureObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateSignature, template_, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateSignature, template_, PropertyClassRole, QStringLiteral("QUmlTemplateSignature"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateSignature, template_, PropertyTypeRole, QStringLiteral("QUmlTemplateableElement *"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateSignature, template_, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateSignature, template_, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlTemplateSignature, template_, DocumentationRole, QStringLiteral("The element that owns this template signature."));
@@ -537,6 +543,7 @@ void QUmlRedefinableTemplateSignatureObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, clientDependencies, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, clientDependencies, PropertyClassRole, QStringLiteral("QUmlNamedElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, clientDependencies, PropertyTypeRole, QStringLiteral("QSet<QUmlDependency *>"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, clientDependencies, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, clientDependencies, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, clientDependencies, DocumentationRole, QStringLiteral("Indicates the dependencies that reference the client."));
@@ -546,6 +553,7 @@ void QUmlRedefinableTemplateSignatureObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, name, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, name, PropertyClassRole, QStringLiteral("QUmlNamedElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, name, PropertyTypeRole, QStringLiteral("QString"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, name, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, name, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, name, DocumentationRole, QStringLiteral("The name of the NamedElement."));
@@ -555,6 +563,7 @@ void QUmlRedefinableTemplateSignatureObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, nameExpression, AggregationRole, QStringLiteral("composite"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, nameExpression, PropertyClassRole, QStringLiteral("QUmlNamedElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, nameExpression, PropertyTypeRole, QStringLiteral("QUmlStringExpression *"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, nameExpression, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, nameExpression, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, nameExpression, DocumentationRole, QStringLiteral("The string expression used to define the name of this named element."));
@@ -564,6 +573,7 @@ void QUmlRedefinableTemplateSignatureObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, namespace_, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, namespace_, PropertyClassRole, QStringLiteral("QUmlNamedElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, namespace_, PropertyTypeRole, QStringLiteral("QUmlNamespace *"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, namespace_, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, namespace_, IsDerivedUnionRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, namespace_, DocumentationRole, QStringLiteral("Specifies the namespace that owns the NamedElement."));
@@ -573,6 +583,7 @@ void QUmlRedefinableTemplateSignatureObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, qualifiedName, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, qualifiedName, PropertyClassRole, QStringLiteral("QUmlNamedElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, qualifiedName, PropertyTypeRole, QStringLiteral("QString"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, qualifiedName, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, qualifiedName, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, qualifiedName, DocumentationRole, QStringLiteral("A name which allows the NamedElement to be identified within a hierarchy of nested Namespaces. It is constructed from the names of the containing namespaces starting at the root of the hierarchy and ending with the name of the NamedElement itself."));
@@ -582,6 +593,7 @@ void QUmlRedefinableTemplateSignatureObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, visibility, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, visibility, PropertyClassRole, QStringLiteral("QUmlNamedElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, visibility, PropertyTypeRole, QStringLiteral("QtUml::VisibilityKind"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, visibility, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, visibility, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, visibility, DocumentationRole, QStringLiteral("Determines where the NamedElement appears within different Namespaces within the overall model, and its accessibility."));
@@ -591,6 +603,7 @@ void QUmlRedefinableTemplateSignatureObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlRedefinableElement, isLeaf, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlRedefinableElement, isLeaf, PropertyClassRole, QStringLiteral("QUmlRedefinableElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlRedefinableElement, isLeaf, PropertyTypeRole, QStringLiteral("bool"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlRedefinableElement, isLeaf, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlRedefinableElement, isLeaf, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlRedefinableElement, isLeaf, DocumentationRole, QStringLiteral("Indicates whether it is possible to further redefine a RedefinableElement. If the value is true, then it is not possible to further redefine the RedefinableElement. Note that this property is preserved through package merge operations; that is, the capability to redefine a RedefinableElement (i.e., isLeaf=false) must be preserved in the resulting RedefinableElement of a package merge operation where a RedefinableElement with isLeaf=false is merged with a matching RedefinableElement with isLeaf=true: the resulting RedefinableElement will have isLeaf=false. Default value is false."));
@@ -600,6 +613,7 @@ void QUmlRedefinableTemplateSignatureObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlRedefinableElement, redefinedElements, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlRedefinableElement, redefinedElements, PropertyClassRole, QStringLiteral("QUmlRedefinableElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlRedefinableElement, redefinedElements, PropertyTypeRole, QStringLiteral("QSet<QUmlRedefinableElement *>"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlRedefinableElement, redefinedElements, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlRedefinableElement, redefinedElements, IsDerivedUnionRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlRedefinableElement, redefinedElements, DocumentationRole, QStringLiteral("The redefinable element that is being redefined by this element."));
@@ -609,6 +623,7 @@ void QUmlRedefinableTemplateSignatureObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlRedefinableElement, redefinitionContexts, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlRedefinableElement, redefinitionContexts, PropertyClassRole, QStringLiteral("QUmlRedefinableElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlRedefinableElement, redefinitionContexts, PropertyTypeRole, QStringLiteral("QSet<QUmlClassifier *>"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlRedefinableElement, redefinitionContexts, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlRedefinableElement, redefinitionContexts, IsDerivedUnionRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlRedefinableElement, redefinitionContexts, DocumentationRole, QStringLiteral("References the contexts that this element may be redefined from."));
@@ -618,6 +633,7 @@ void QUmlRedefinableTemplateSignatureObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlRedefinableTemplateSignature, classifier, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlRedefinableTemplateSignature, classifier, PropertyClassRole, QStringLiteral("QUmlRedefinableTemplateSignature"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlRedefinableTemplateSignature, classifier, PropertyTypeRole, QStringLiteral("QUmlClassifier *"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlRedefinableTemplateSignature, classifier, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlRedefinableTemplateSignature, classifier, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlRedefinableTemplateSignature, classifier, DocumentationRole, QStringLiteral("The classifier that owns this template signature."));
@@ -627,6 +643,7 @@ void QUmlRedefinableTemplateSignatureObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlRedefinableTemplateSignature, extendedSignatures, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlRedefinableTemplateSignature, extendedSignatures, PropertyClassRole, QStringLiteral("QUmlRedefinableTemplateSignature"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlRedefinableTemplateSignature, extendedSignatures, PropertyTypeRole, QStringLiteral("QSet<QUmlRedefinableTemplateSignature *>"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlRedefinableTemplateSignature, extendedSignatures, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlRedefinableTemplateSignature, extendedSignatures, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlRedefinableTemplateSignature, extendedSignatures, DocumentationRole, QStringLiteral("The template signature that is extended by this template signature."));
@@ -636,6 +653,7 @@ void QUmlRedefinableTemplateSignatureObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlRedefinableTemplateSignature, inheritedParameters, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlRedefinableTemplateSignature, inheritedParameters, PropertyClassRole, QStringLiteral("QUmlRedefinableTemplateSignature"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlRedefinableTemplateSignature, inheritedParameters, PropertyTypeRole, QStringLiteral("QSet<QUmlTemplateParameter *>"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlRedefinableTemplateSignature, inheritedParameters, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlRedefinableTemplateSignature, inheritedParameters, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlRedefinableTemplateSignature, inheritedParameters, DocumentationRole, QStringLiteral("The formal template parameters of the extendedSignature."));

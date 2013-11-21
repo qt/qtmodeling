@@ -1186,6 +1186,7 @@ void QUmlPortObject::setPropertyData()
 {
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedComments, AggregationRole, QStringLiteral("composite"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedComments, PropertyClassRole, QStringLiteral("QUmlElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedComments, PropertyTypeRole, QStringLiteral("QSet<QUmlComment *>"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedComments, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedComments, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedComments, DocumentationRole, QStringLiteral("The Comments owned by this element."));
@@ -1195,6 +1196,7 @@ void QUmlPortObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedElements, AggregationRole, QStringLiteral("composite"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedElements, PropertyClassRole, QStringLiteral("QUmlElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedElements, PropertyTypeRole, QStringLiteral("QSet<QUmlElement *>"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedElements, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedElements, IsDerivedUnionRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedElements, DocumentationRole, QStringLiteral("The Elements owned by this element."));
@@ -1204,6 +1206,7 @@ void QUmlPortObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, owner, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, owner, PropertyClassRole, QStringLiteral("QUmlElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlElement, owner, PropertyTypeRole, QStringLiteral("QUmlElement *"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, owner, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, owner, IsDerivedUnionRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, owner, DocumentationRole, QStringLiteral("The Element that owns this element."));
@@ -1213,6 +1216,7 @@ void QUmlPortObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, clientDependencies, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, clientDependencies, PropertyClassRole, QStringLiteral("QUmlNamedElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, clientDependencies, PropertyTypeRole, QStringLiteral("QSet<QUmlDependency *>"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, clientDependencies, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, clientDependencies, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, clientDependencies, DocumentationRole, QStringLiteral("Indicates the dependencies that reference the client."));
@@ -1222,6 +1226,7 @@ void QUmlPortObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, name, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, name, PropertyClassRole, QStringLiteral("QUmlNamedElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, name, PropertyTypeRole, QStringLiteral("QString"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, name, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, name, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, name, DocumentationRole, QStringLiteral("The name of the NamedElement."));
@@ -1231,6 +1236,7 @@ void QUmlPortObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, nameExpression, AggregationRole, QStringLiteral("composite"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, nameExpression, PropertyClassRole, QStringLiteral("QUmlNamedElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, nameExpression, PropertyTypeRole, QStringLiteral("QUmlStringExpression *"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, nameExpression, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, nameExpression, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, nameExpression, DocumentationRole, QStringLiteral("The string expression used to define the name of this named element."));
@@ -1240,6 +1246,7 @@ void QUmlPortObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, namespace_, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, namespace_, PropertyClassRole, QStringLiteral("QUmlNamedElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, namespace_, PropertyTypeRole, QStringLiteral("QUmlNamespace *"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, namespace_, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, namespace_, IsDerivedUnionRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, namespace_, DocumentationRole, QStringLiteral("Specifies the namespace that owns the NamedElement."));
@@ -1249,6 +1256,7 @@ void QUmlPortObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, qualifiedName, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, qualifiedName, PropertyClassRole, QStringLiteral("QUmlNamedElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, qualifiedName, PropertyTypeRole, QStringLiteral("QString"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, qualifiedName, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, qualifiedName, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, qualifiedName, DocumentationRole, QStringLiteral("A name which allows the NamedElement to be identified within a hierarchy of nested Namespaces. It is constructed from the names of the containing namespaces starting at the root of the hierarchy and ending with the name of the NamedElement itself."));
@@ -1258,6 +1266,7 @@ void QUmlPortObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, visibility, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, visibility, PropertyClassRole, QStringLiteral("QUmlNamedElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, visibility, PropertyTypeRole, QStringLiteral("QtUml::VisibilityKind"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, visibility, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, visibility, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, visibility, DocumentationRole, QStringLiteral("Determines where the NamedElement appears within different Namespaces within the overall model, and its accessibility."));
@@ -1267,6 +1276,7 @@ void QUmlPortObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlTypedElement, type, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlTypedElement, type, PropertyClassRole, QStringLiteral("QUmlTypedElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlTypedElement, type, PropertyTypeRole, QStringLiteral("QUmlType *"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlTypedElement, type, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlTypedElement, type, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlTypedElement, type, DocumentationRole, QStringLiteral("This information is derived from the return result for this Operation.The type of the TypedElement."));
@@ -1276,6 +1286,7 @@ void QUmlPortObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlMultiplicityElement, isOrdered, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlMultiplicityElement, isOrdered, PropertyClassRole, QStringLiteral("QUmlMultiplicityElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlMultiplicityElement, isOrdered, PropertyTypeRole, QStringLiteral("bool"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlMultiplicityElement, isOrdered, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlMultiplicityElement, isOrdered, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlMultiplicityElement, isOrdered, DocumentationRole, QStringLiteral("For a multivalued multiplicity, this attribute specifies whether the values in an instantiation of this element are sequentially ordered."));
@@ -1285,6 +1296,7 @@ void QUmlPortObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlMultiplicityElement, isUnique, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlMultiplicityElement, isUnique, PropertyClassRole, QStringLiteral("QUmlMultiplicityElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlMultiplicityElement, isUnique, PropertyTypeRole, QStringLiteral("bool"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlMultiplicityElement, isUnique, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlMultiplicityElement, isUnique, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlMultiplicityElement, isUnique, DocumentationRole, QStringLiteral("For a multivalued multiplicity, this attributes specifies whether the values in an instantiation of this element are unique."));
@@ -1294,6 +1306,7 @@ void QUmlPortObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlMultiplicityElement, lower, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlMultiplicityElement, lower, PropertyClassRole, QStringLiteral("QUmlMultiplicityElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlMultiplicityElement, lower, PropertyTypeRole, QStringLiteral("int"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlMultiplicityElement, lower, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlMultiplicityElement, lower, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlMultiplicityElement, lower, DocumentationRole, QStringLiteral("Specifies the lower bound of the multiplicity interval."));
@@ -1303,6 +1316,7 @@ void QUmlPortObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlMultiplicityElement, lowerValue, AggregationRole, QStringLiteral("composite"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlMultiplicityElement, lowerValue, PropertyClassRole, QStringLiteral("QUmlMultiplicityElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlMultiplicityElement, lowerValue, PropertyTypeRole, QStringLiteral("QUmlValueSpecification *"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlMultiplicityElement, lowerValue, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlMultiplicityElement, lowerValue, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlMultiplicityElement, lowerValue, DocumentationRole, QStringLiteral("The specification of the lower bound for this multiplicity."));
@@ -1312,6 +1326,7 @@ void QUmlPortObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlMultiplicityElement, upper, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlMultiplicityElement, upper, PropertyClassRole, QStringLiteral("QUmlMultiplicityElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlMultiplicityElement, upper, PropertyTypeRole, QStringLiteral("QString"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlMultiplicityElement, upper, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlMultiplicityElement, upper, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlMultiplicityElement, upper, DocumentationRole, QStringLiteral("Specifies the upper bound of the multiplicity interval."));
@@ -1321,6 +1336,7 @@ void QUmlPortObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlMultiplicityElement, upperValue, AggregationRole, QStringLiteral("composite"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlMultiplicityElement, upperValue, PropertyClassRole, QStringLiteral("QUmlMultiplicityElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlMultiplicityElement, upperValue, PropertyTypeRole, QStringLiteral("QUmlValueSpecification *"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlMultiplicityElement, upperValue, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlMultiplicityElement, upperValue, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlMultiplicityElement, upperValue, DocumentationRole, QStringLiteral("The specification of the upper bound for this multiplicity."));
@@ -1330,6 +1346,7 @@ void QUmlPortObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlRedefinableElement, isLeaf, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlRedefinableElement, isLeaf, PropertyClassRole, QStringLiteral("QUmlRedefinableElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlRedefinableElement, isLeaf, PropertyTypeRole, QStringLiteral("bool"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlRedefinableElement, isLeaf, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlRedefinableElement, isLeaf, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlRedefinableElement, isLeaf, DocumentationRole, QStringLiteral("Indicates whether it is possible to further redefine a RedefinableElement. If the value is true, then it is not possible to further redefine the RedefinableElement. Note that this property is preserved through package merge operations; that is, the capability to redefine a RedefinableElement (i.e., isLeaf=false) must be preserved in the resulting RedefinableElement of a package merge operation where a RedefinableElement with isLeaf=false is merged with a matching RedefinableElement with isLeaf=true: the resulting RedefinableElement will have isLeaf=false. Default value is false."));
@@ -1339,6 +1356,7 @@ void QUmlPortObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlRedefinableElement, redefinedElements, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlRedefinableElement, redefinedElements, PropertyClassRole, QStringLiteral("QUmlRedefinableElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlRedefinableElement, redefinedElements, PropertyTypeRole, QStringLiteral("QSet<QUmlRedefinableElement *>"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlRedefinableElement, redefinedElements, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlRedefinableElement, redefinedElements, IsDerivedUnionRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlRedefinableElement, redefinedElements, DocumentationRole, QStringLiteral("The redefinable element that is being redefined by this element."));
@@ -1348,6 +1366,7 @@ void QUmlPortObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlRedefinableElement, redefinitionContexts, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlRedefinableElement, redefinitionContexts, PropertyClassRole, QStringLiteral("QUmlRedefinableElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlRedefinableElement, redefinitionContexts, PropertyTypeRole, QStringLiteral("QSet<QUmlClassifier *>"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlRedefinableElement, redefinitionContexts, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlRedefinableElement, redefinitionContexts, IsDerivedUnionRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlRedefinableElement, redefinitionContexts, DocumentationRole, QStringLiteral("References the contexts that this element may be redefined from."));
@@ -1357,6 +1376,7 @@ void QUmlPortObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlFeature, featuringClassifiers, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlFeature, featuringClassifiers, PropertyClassRole, QStringLiteral("QUmlFeature"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlFeature, featuringClassifiers, PropertyTypeRole, QStringLiteral("QSet<QUmlClassifier *>"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlFeature, featuringClassifiers, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlFeature, featuringClassifiers, IsDerivedUnionRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlFeature, featuringClassifiers, DocumentationRole, QStringLiteral("The Classifiers that have this Feature as a feature."));
@@ -1366,6 +1386,7 @@ void QUmlPortObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlFeature, isStatic, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlFeature, isStatic, PropertyClassRole, QStringLiteral("QUmlFeature"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlFeature, isStatic, PropertyTypeRole, QStringLiteral("bool"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlFeature, isStatic, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlFeature, isStatic, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlFeature, isStatic, DocumentationRole, QStringLiteral("Specifies whether this feature characterizes individual instances classified by the classifier (false) or the classifier itself (true)."));
@@ -1375,6 +1396,7 @@ void QUmlPortObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlStructuralFeature, isReadOnly, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlStructuralFeature, isReadOnly, PropertyClassRole, QStringLiteral("QUmlStructuralFeature"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlStructuralFeature, isReadOnly, PropertyTypeRole, QStringLiteral("bool"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlStructuralFeature, isReadOnly, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlStructuralFeature, isReadOnly, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlStructuralFeature, isReadOnly, DocumentationRole, QStringLiteral("States whether the feature's value may be modified by a client."));
@@ -1384,6 +1406,7 @@ void QUmlPortObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlParameterableElement, owningTemplateParameter, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlParameterableElement, owningTemplateParameter, PropertyClassRole, QStringLiteral("QUmlParameterableElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlParameterableElement, owningTemplateParameter, PropertyTypeRole, QStringLiteral("QUmlTemplateParameter *"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlParameterableElement, owningTemplateParameter, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlParameterableElement, owningTemplateParameter, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlParameterableElement, owningTemplateParameter, DocumentationRole, QStringLiteral("The formal template parameter that owns this element."));
@@ -1393,6 +1416,7 @@ void QUmlPortObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlParameterableElement, templateParameter, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlParameterableElement, templateParameter, PropertyClassRole, QStringLiteral("QUmlParameterableElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlParameterableElement, templateParameter, PropertyTypeRole, QStringLiteral("QUmlTemplateParameter *"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlParameterableElement, templateParameter, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlParameterableElement, templateParameter, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlParameterableElement, templateParameter, DocumentationRole, QStringLiteral("The template parameter that exposes this element as a formal parameter."));
@@ -1402,6 +1426,7 @@ void QUmlPortObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlConnectableElement, ends, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlConnectableElement, ends, PropertyClassRole, QStringLiteral("QUmlConnectableElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlConnectableElement, ends, PropertyTypeRole, QStringLiteral("QList<QUmlConnectorEnd *>"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlConnectableElement, ends, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlConnectableElement, ends, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlConnectableElement, ends, DocumentationRole, QStringLiteral("Denotes a set of connector ends that attaches to this connectable element."));
@@ -1411,6 +1436,7 @@ void QUmlPortObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlConnectableElement, templateParameter, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlConnectableElement, templateParameter, PropertyClassRole, QStringLiteral("QUmlConnectableElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlConnectableElement, templateParameter, PropertyTypeRole, QStringLiteral("QUmlConnectableElementTemplateParameter *"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlConnectableElement, templateParameter, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlConnectableElement, templateParameter, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlConnectableElement, templateParameter, DocumentationRole, QStringLiteral("The ConnectableElementTemplateParameter for this ConnectableElement parameter."));
@@ -1420,6 +1446,7 @@ void QUmlPortObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlDeploymentTarget, deployedElements, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlDeploymentTarget, deployedElements, PropertyClassRole, QStringLiteral("QUmlDeploymentTarget"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlDeploymentTarget, deployedElements, PropertyTypeRole, QStringLiteral("QSet<QUmlPackageableElement *>"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlDeploymentTarget, deployedElements, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlDeploymentTarget, deployedElements, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlDeploymentTarget, deployedElements, DocumentationRole, QStringLiteral("The set of elements that are manifested in an Artifact that is involved in Deployment to a DeploymentTarget."));
@@ -1429,6 +1456,7 @@ void QUmlPortObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlDeploymentTarget, deployments, AggregationRole, QStringLiteral("composite"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlDeploymentTarget, deployments, PropertyClassRole, QStringLiteral("QUmlDeploymentTarget"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlDeploymentTarget, deployments, PropertyTypeRole, QStringLiteral("QSet<QUmlDeployment *>"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlDeploymentTarget, deployments, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlDeploymentTarget, deployments, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlDeploymentTarget, deployments, DocumentationRole, QStringLiteral("The set of Deployments for a DeploymentTarget."));
@@ -1438,6 +1466,7 @@ void QUmlPortObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlProperty, aggregation, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlProperty, aggregation, PropertyClassRole, QStringLiteral("QUmlProperty"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlProperty, aggregation, PropertyTypeRole, QStringLiteral("QtUml::AggregationKind"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlProperty, aggregation, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlProperty, aggregation, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlProperty, aggregation, DocumentationRole, QStringLiteral("Specifies the kind of aggregation that applies to the Property."));
@@ -1447,6 +1476,7 @@ void QUmlPortObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlProperty, association, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlProperty, association, PropertyClassRole, QStringLiteral("QUmlProperty"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlProperty, association, PropertyTypeRole, QStringLiteral("QUmlAssociation *"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlProperty, association, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlProperty, association, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlProperty, association, DocumentationRole, QStringLiteral("References the association of which this property is a member, if any."));
@@ -1456,6 +1486,7 @@ void QUmlPortObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlProperty, associationEnd, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlProperty, associationEnd, PropertyClassRole, QStringLiteral("QUmlProperty"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlProperty, associationEnd, PropertyTypeRole, QStringLiteral("QUmlProperty *"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlProperty, associationEnd, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlProperty, associationEnd, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlProperty, associationEnd, DocumentationRole, QStringLiteral("Designates the optional association end that owns a qualifier attribute."));
@@ -1465,6 +1496,7 @@ void QUmlPortObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlProperty, class_, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlProperty, class_, PropertyClassRole, QStringLiteral("QUmlProperty"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlProperty, class_, PropertyTypeRole, QStringLiteral("QUmlClass *"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlProperty, class_, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlProperty, class_, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlProperty, class_, DocumentationRole, QStringLiteral("References the Class that owns the Property.References the Class that owns the Property."));
@@ -1474,6 +1506,7 @@ void QUmlPortObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlProperty, datatype, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlProperty, datatype, PropertyClassRole, QStringLiteral("QUmlProperty"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlProperty, datatype, PropertyTypeRole, QStringLiteral("QUmlDataType *"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlProperty, datatype, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlProperty, datatype, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlProperty, datatype, DocumentationRole, QStringLiteral("The DataType that owns this Property."));
@@ -1483,6 +1516,7 @@ void QUmlPortObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlProperty, default_, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlProperty, default_, PropertyClassRole, QStringLiteral("QUmlProperty"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlProperty, default_, PropertyTypeRole, QStringLiteral("QString"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlProperty, default_, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlProperty, default_, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlProperty, default_, DocumentationRole, QStringLiteral("Specifies a String that represents a value to be used when no argument is supplied for the Property.A String that is evaluated to give a default value for the Property when an object of the owning Classifier is instantiated."));
@@ -1492,6 +1526,7 @@ void QUmlPortObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlProperty, defaultValue, AggregationRole, QStringLiteral("composite"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlProperty, defaultValue, PropertyClassRole, QStringLiteral("QUmlProperty"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlProperty, defaultValue, PropertyTypeRole, QStringLiteral("QUmlValueSpecification *"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlProperty, defaultValue, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlProperty, defaultValue, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlProperty, defaultValue, DocumentationRole, QStringLiteral("A ValueSpecification that is evaluated to give a default value for the Property when an object of the owning Classifier is instantiated."));
@@ -1501,6 +1536,7 @@ void QUmlPortObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlProperty, interface_, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlProperty, interface_, PropertyClassRole, QStringLiteral("QUmlProperty"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlProperty, interface_, PropertyTypeRole, QStringLiteral("QUmlInterface *"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlProperty, interface_, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlProperty, interface_, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlProperty, interface_, DocumentationRole, QStringLiteral("References the Interface that owns the Property"));
@@ -1510,6 +1546,7 @@ void QUmlPortObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlProperty, isComposite, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlProperty, isComposite, PropertyClassRole, QStringLiteral("QUmlProperty"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlProperty, isComposite, PropertyTypeRole, QStringLiteral("bool"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlProperty, isComposite, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlProperty, isComposite, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlProperty, isComposite, DocumentationRole, QStringLiteral("If isComposite is true, the object containing the attribute is a container for the object or value contained in the attribute.This is a derived value, indicating whether the aggregation of the Property is composite or not."));
@@ -1519,6 +1556,7 @@ void QUmlPortObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlProperty, isDerived, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlProperty, isDerived, PropertyClassRole, QStringLiteral("QUmlProperty"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlProperty, isDerived, PropertyTypeRole, QStringLiteral("bool"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlProperty, isDerived, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlProperty, isDerived, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlProperty, isDerived, DocumentationRole, QStringLiteral("If isDerived is true, the value of the attribute is derived from information elsewhere.Specifies whether the Property is derived, i.e., whether its value or values can be computed from other information."));
@@ -1528,6 +1566,7 @@ void QUmlPortObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlProperty, isDerivedUnion, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlProperty, isDerivedUnion, PropertyClassRole, QStringLiteral("QUmlProperty"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlProperty, isDerivedUnion, PropertyTypeRole, QStringLiteral("bool"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlProperty, isDerivedUnion, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlProperty, isDerivedUnion, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlProperty, isDerivedUnion, DocumentationRole, QStringLiteral("Specifies whether the property is derived as the union of all of the properties that are constrained to subset it."));
@@ -1537,6 +1576,7 @@ void QUmlPortObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlProperty, isID, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlProperty, isID, PropertyClassRole, QStringLiteral("QUmlProperty"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlProperty, isID, PropertyTypeRole, QStringLiteral("bool"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlProperty, isID, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlProperty, isID, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlProperty, isID, DocumentationRole, QStringLiteral("True indicates this property can be used to uniquely identify an instance of the containing Class."));
@@ -1546,6 +1586,7 @@ void QUmlPortObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlProperty, isReadOnly, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlProperty, isReadOnly, PropertyClassRole, QStringLiteral("QUmlProperty"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlProperty, isReadOnly, PropertyTypeRole, QStringLiteral("bool"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlProperty, isReadOnly, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlProperty, isReadOnly, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlProperty, isReadOnly, DocumentationRole, QStringLiteral("If true, the attribute may only be read, and not written.If isReadOnly is true, the attribute may not be written to after initialization."));
@@ -1555,6 +1596,7 @@ void QUmlPortObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlProperty, opposite, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlProperty, opposite, PropertyClassRole, QStringLiteral("QUmlProperty"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlProperty, opposite, PropertyTypeRole, QStringLiteral("QUmlProperty *"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlProperty, opposite, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlProperty, opposite, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlProperty, opposite, DocumentationRole, QStringLiteral("In the case where the property is one navigable end of a binary association with both ends navigable, this gives the other end."));
@@ -1564,6 +1606,7 @@ void QUmlPortObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlProperty, owningAssociation, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlProperty, owningAssociation, PropertyClassRole, QStringLiteral("QUmlProperty"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlProperty, owningAssociation, PropertyTypeRole, QStringLiteral("QUmlAssociation *"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlProperty, owningAssociation, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlProperty, owningAssociation, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlProperty, owningAssociation, DocumentationRole, QStringLiteral("References the owning association of this property, if any."));
@@ -1573,6 +1616,7 @@ void QUmlPortObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlProperty, qualifiers, AggregationRole, QStringLiteral("composite"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlProperty, qualifiers, PropertyClassRole, QStringLiteral("QUmlProperty"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlProperty, qualifiers, PropertyTypeRole, QStringLiteral("QList<QUmlProperty *>"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlProperty, qualifiers, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlProperty, qualifiers, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlProperty, qualifiers, DocumentationRole, QStringLiteral("An optional list of ordered qualifier attributes for the end. If the list is empty, then the Association is not qualified."));
@@ -1582,6 +1626,7 @@ void QUmlPortObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlProperty, redefinedProperties, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlProperty, redefinedProperties, PropertyClassRole, QStringLiteral("QUmlProperty"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlProperty, redefinedProperties, PropertyTypeRole, QStringLiteral("QSet<QUmlProperty *>"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlProperty, redefinedProperties, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlProperty, redefinedProperties, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlProperty, redefinedProperties, DocumentationRole, QStringLiteral("References the properties that are redefined by this property."));
@@ -1591,6 +1636,7 @@ void QUmlPortObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlProperty, subsettedProperties, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlProperty, subsettedProperties, PropertyClassRole, QStringLiteral("QUmlProperty"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlProperty, subsettedProperties, PropertyTypeRole, QStringLiteral("QSet<QUmlProperty *>"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlProperty, subsettedProperties, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlProperty, subsettedProperties, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlProperty, subsettedProperties, DocumentationRole, QStringLiteral("References the properties of which this property is constrained to be a subset."));
@@ -1600,6 +1646,7 @@ void QUmlPortObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlPort, isBehavior, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlPort, isBehavior, PropertyClassRole, QStringLiteral("QUmlPort"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlPort, isBehavior, PropertyTypeRole, QStringLiteral("bool"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlPort, isBehavior, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlPort, isBehavior, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlPort, isBehavior, DocumentationRole, QStringLiteral("Specifies whether requests arriving at this port are sent to the classifier behavior of this classifier. Such ports are referred to as behavior port. Any invocation of a behavioral feature targeted at a behavior port will be handled by the instance of the owning classifier itself, rather than by any instances that this classifier may contain."));
@@ -1609,6 +1656,7 @@ void QUmlPortObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlPort, isConjugated, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlPort, isConjugated, PropertyClassRole, QStringLiteral("QUmlPort"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlPort, isConjugated, PropertyTypeRole, QStringLiteral("bool"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlPort, isConjugated, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlPort, isConjugated, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlPort, isConjugated, DocumentationRole, QStringLiteral("Specifies the way that the provided and required interfaces are derived from the Port’s Type. The default value is false."));
@@ -1618,6 +1666,7 @@ void QUmlPortObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlPort, isService, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlPort, isService, PropertyClassRole, QStringLiteral("QUmlPort"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlPort, isService, PropertyTypeRole, QStringLiteral("bool"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlPort, isService, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlPort, isService, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlPort, isService, DocumentationRole, QStringLiteral("If true indicates that this port is used to provide the published functionality of a classifier; if false, this port is used to implement the classifier but is not part of the essential externally-visible functionality of the classifier and can, therefore, be altered or deleted along with the internal implementation of the classifier and other properties that are considered part of its implementation."));
@@ -1627,6 +1676,7 @@ void QUmlPortObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlPort, protocol, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlPort, protocol, PropertyClassRole, QStringLiteral("QUmlPort"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlPort, protocol, PropertyTypeRole, QStringLiteral("QUmlProtocolStateMachine *"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlPort, protocol, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlPort, protocol, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlPort, protocol, DocumentationRole, QStringLiteral("References an optional protocol state machine which describes valid interactions at this interaction point."));
@@ -1636,6 +1686,7 @@ void QUmlPortObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlPort, provided, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlPort, provided, PropertyClassRole, QStringLiteral("QUmlPort"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlPort, provided, PropertyTypeRole, QStringLiteral("QSet<QUmlInterface *>"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlPort, provided, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlPort, provided, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlPort, provided, DocumentationRole, QStringLiteral("References the interfaces specifying the set of operations and receptions that the classifier offers to its environment via this port, and which it will handle either directly or by forwarding it to a part of its internal structure. This association is derived according to the value of isConjugated. If isConjugated is false, provided is derived as the union of the sets of interfaces realized by the type of the port and its supertypes, or directly from the type of the port if the port is typed by an interface. If isConjugated is true, it is derived as the union of the sets of interfaces used by the type of the port and its supertypes."));
@@ -1645,6 +1696,7 @@ void QUmlPortObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlPort, redefinedPorts, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlPort, redefinedPorts, PropertyClassRole, QStringLiteral("QUmlPort"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlPort, redefinedPorts, PropertyTypeRole, QStringLiteral("QSet<QUmlPort *>"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlPort, redefinedPorts, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlPort, redefinedPorts, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlPort, redefinedPorts, DocumentationRole, QStringLiteral("A port may be redefined when its containing classifier is specialized. The redefining port may have additional interfaces to those that are associated with the redefined port or it may replace an interface by one of its subtypes."));
@@ -1654,6 +1706,7 @@ void QUmlPortObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlPort, required, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlPort, required, PropertyClassRole, QStringLiteral("QUmlPort"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlPort, required, PropertyTypeRole, QStringLiteral("QSet<QUmlInterface *>"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlPort, required, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlPort, required, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlPort, required, DocumentationRole, QStringLiteral("References the interfaces specifying the set of operations and receptions that the classifier expects its environment to handle via this port. This association is derived according to the value of isConjugated. If isConjugated is false, required is derived as the union of the sets of interfaces used by the type of the port and its supertypes. If isConjugated is true, it is derived as the union of the sets of interfaces realized by the type of the port and its supertypes, or directly from the type of the port if the port is typed by an interface."));

@@ -534,6 +534,11 @@ void QUmlProperty::addQualifier(QUmlProperty *qualifier)
 
         // Adjust subsetted properties
         addOwnedElement(qualifier);
+
+        // Adjust opposite properties
+        if (qualifier) {
+            qualifier->setAssociationEnd(this);
+        }
     }
 }
 
@@ -548,6 +553,11 @@ void QUmlProperty::removeQualifier(QUmlProperty *qualifier)
 
         // Adjust subsetted properties
         removeOwnedElement(qualifier);
+
+        // Adjust opposite properties
+        if (qualifier) {
+            qualifier->setAssociationEnd(0);
+        }
     }
 }
 

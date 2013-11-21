@@ -274,6 +274,7 @@ void QUmlClauseObject::setPropertyData()
 {
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedComments, AggregationRole, QStringLiteral("composite"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedComments, PropertyClassRole, QStringLiteral("QUmlElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedComments, PropertyTypeRole, QStringLiteral("QSet<QUmlComment *>"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedComments, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedComments, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedComments, DocumentationRole, QStringLiteral("The Comments owned by this element."));
@@ -283,6 +284,7 @@ void QUmlClauseObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedElements, AggregationRole, QStringLiteral("composite"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedElements, PropertyClassRole, QStringLiteral("QUmlElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedElements, PropertyTypeRole, QStringLiteral("QSet<QUmlElement *>"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedElements, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedElements, IsDerivedUnionRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedElements, DocumentationRole, QStringLiteral("The Elements owned by this element."));
@@ -292,6 +294,7 @@ void QUmlClauseObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, owner, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, owner, PropertyClassRole, QStringLiteral("QUmlElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlElement, owner, PropertyTypeRole, QStringLiteral("QUmlElement *"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, owner, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, owner, IsDerivedUnionRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, owner, DocumentationRole, QStringLiteral("The Element that owns this element."));
@@ -301,6 +304,7 @@ void QUmlClauseObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlClause, bodies, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlClause, bodies, PropertyClassRole, QStringLiteral("QUmlClause"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlClause, bodies, PropertyTypeRole, QStringLiteral("QSet<QUmlExecutableNode *>"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlClause, bodies, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlClause, bodies, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlClause, bodies, DocumentationRole, QStringLiteral("A nested activity fragment that is executed if the test evaluates to true and the clause is chosen over any concurrent clauses that also evaluate to true."));
@@ -310,6 +314,7 @@ void QUmlClauseObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlClause, bodyOutputs, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlClause, bodyOutputs, PropertyClassRole, QStringLiteral("QUmlClause"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlClause, bodyOutputs, PropertyTypeRole, QStringLiteral("QList<QUmlOutputPin *>"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlClause, bodyOutputs, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlClause, bodyOutputs, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlClause, bodyOutputs, DocumentationRole, QStringLiteral("A list of output pins within the body fragment whose values are moved to the result pins of the containing conditional node after execution of the clause body."));
@@ -319,6 +324,7 @@ void QUmlClauseObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlClause, decider, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlClause, decider, PropertyClassRole, QStringLiteral("QUmlClause"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlClause, decider, PropertyTypeRole, QStringLiteral("QUmlOutputPin *"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlClause, decider, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlClause, decider, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlClause, decider, DocumentationRole, QStringLiteral("An output pin within the test fragment the value of which is examined after execution of the test to determine whether the body should be executed."));
@@ -328,6 +334,7 @@ void QUmlClauseObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlClause, predecessorClauses, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlClause, predecessorClauses, PropertyClassRole, QStringLiteral("QUmlClause"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlClause, predecessorClauses, PropertyTypeRole, QStringLiteral("QSet<QUmlClause *>"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlClause, predecessorClauses, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlClause, predecessorClauses, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlClause, predecessorClauses, DocumentationRole, QStringLiteral("A set of clauses whose tests must all evaluate false before the current clause can be tested."));
@@ -337,6 +344,7 @@ void QUmlClauseObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlClause, successorClauses, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlClause, successorClauses, PropertyClassRole, QStringLiteral("QUmlClause"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlClause, successorClauses, PropertyTypeRole, QStringLiteral("QSet<QUmlClause *>"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlClause, successorClauses, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlClause, successorClauses, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlClause, successorClauses, DocumentationRole, QStringLiteral("A set of clauses which may not be tested unless the current clause tests false."));
@@ -346,6 +354,7 @@ void QUmlClauseObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlClause, tests, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlClause, tests, PropertyClassRole, QStringLiteral("QUmlClause"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlClause, tests, PropertyTypeRole, QStringLiteral("QSet<QUmlExecutableNode *>"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlClause, tests, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlClause, tests, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlClause, tests, DocumentationRole, QStringLiteral("A nested activity fragment with a designated output pin that specifies the result of the test."));

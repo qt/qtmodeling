@@ -221,6 +221,7 @@ void QUmlExceptionHandlerObject::setPropertyData()
 {
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedComments, AggregationRole, QStringLiteral("composite"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedComments, PropertyClassRole, QStringLiteral("QUmlElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedComments, PropertyTypeRole, QStringLiteral("QSet<QUmlComment *>"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedComments, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedComments, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedComments, DocumentationRole, QStringLiteral("The Comments owned by this element."));
@@ -230,6 +231,7 @@ void QUmlExceptionHandlerObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedElements, AggregationRole, QStringLiteral("composite"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedElements, PropertyClassRole, QStringLiteral("QUmlElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedElements, PropertyTypeRole, QStringLiteral("QSet<QUmlElement *>"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedElements, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedElements, IsDerivedUnionRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedElements, DocumentationRole, QStringLiteral("The Elements owned by this element."));
@@ -239,6 +241,7 @@ void QUmlExceptionHandlerObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, owner, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, owner, PropertyClassRole, QStringLiteral("QUmlElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlElement, owner, PropertyTypeRole, QStringLiteral("QUmlElement *"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, owner, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, owner, IsDerivedUnionRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, owner, DocumentationRole, QStringLiteral("The Element that owns this element."));
@@ -248,6 +251,7 @@ void QUmlExceptionHandlerObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlExceptionHandler, exceptionInput, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlExceptionHandler, exceptionInput, PropertyClassRole, QStringLiteral("QUmlExceptionHandler"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlExceptionHandler, exceptionInput, PropertyTypeRole, QStringLiteral("QUmlObjectNode *"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlExceptionHandler, exceptionInput, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlExceptionHandler, exceptionInput, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlExceptionHandler, exceptionInput, DocumentationRole, QStringLiteral("An object node within the handler body. When the handler catches an exception, the exception token is placed in this node, causing the body to execute."));
@@ -257,6 +261,7 @@ void QUmlExceptionHandlerObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlExceptionHandler, exceptionTypes, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlExceptionHandler, exceptionTypes, PropertyClassRole, QStringLiteral("QUmlExceptionHandler"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlExceptionHandler, exceptionTypes, PropertyTypeRole, QStringLiteral("QSet<QUmlClassifier *>"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlExceptionHandler, exceptionTypes, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlExceptionHandler, exceptionTypes, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlExceptionHandler, exceptionTypes, DocumentationRole, QStringLiteral("The kind of instances that the handler catches. If an exception occurs whose type is any of the classifiers in the set, the handler catches the exception and executes its body."));
@@ -266,6 +271,7 @@ void QUmlExceptionHandlerObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlExceptionHandler, handlerBody, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlExceptionHandler, handlerBody, PropertyClassRole, QStringLiteral("QUmlExceptionHandler"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlExceptionHandler, handlerBody, PropertyTypeRole, QStringLiteral("QUmlExecutableNode *"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlExceptionHandler, handlerBody, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlExceptionHandler, handlerBody, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlExceptionHandler, handlerBody, DocumentationRole, QStringLiteral("A node that is executed if the handler satisfies an uncaught exception."));
@@ -275,6 +281,7 @@ void QUmlExceptionHandlerObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlExceptionHandler, protectedNode, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlExceptionHandler, protectedNode, PropertyClassRole, QStringLiteral("QUmlExceptionHandler"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlExceptionHandler, protectedNode, PropertyTypeRole, QStringLiteral("QUmlExecutableNode *"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlExceptionHandler, protectedNode, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlExceptionHandler, protectedNode, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlExceptionHandler, protectedNode, DocumentationRole, QStringLiteral("The node protected by the handler. The handler is examined if an exception propagates to the outside of the node."));

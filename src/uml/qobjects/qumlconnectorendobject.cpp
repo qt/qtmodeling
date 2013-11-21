@@ -351,6 +351,7 @@ void QUmlConnectorEndObject::setPropertyData()
 {
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedComments, AggregationRole, QStringLiteral("composite"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedComments, PropertyClassRole, QStringLiteral("QUmlElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedComments, PropertyTypeRole, QStringLiteral("QSet<QUmlComment *>"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedComments, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedComments, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedComments, DocumentationRole, QStringLiteral("The Comments owned by this element."));
@@ -360,6 +361,7 @@ void QUmlConnectorEndObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedElements, AggregationRole, QStringLiteral("composite"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedElements, PropertyClassRole, QStringLiteral("QUmlElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedElements, PropertyTypeRole, QStringLiteral("QSet<QUmlElement *>"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedElements, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedElements, IsDerivedUnionRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedElements, DocumentationRole, QStringLiteral("The Elements owned by this element."));
@@ -369,6 +371,7 @@ void QUmlConnectorEndObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, owner, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, owner, PropertyClassRole, QStringLiteral("QUmlElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlElement, owner, PropertyTypeRole, QStringLiteral("QUmlElement *"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, owner, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, owner, IsDerivedUnionRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, owner, DocumentationRole, QStringLiteral("The Element that owns this element."));
@@ -378,6 +381,7 @@ void QUmlConnectorEndObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlMultiplicityElement, isOrdered, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlMultiplicityElement, isOrdered, PropertyClassRole, QStringLiteral("QUmlMultiplicityElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlMultiplicityElement, isOrdered, PropertyTypeRole, QStringLiteral("bool"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlMultiplicityElement, isOrdered, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlMultiplicityElement, isOrdered, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlMultiplicityElement, isOrdered, DocumentationRole, QStringLiteral("For a multivalued multiplicity, this attribute specifies whether the values in an instantiation of this element are sequentially ordered."));
@@ -387,6 +391,7 @@ void QUmlConnectorEndObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlMultiplicityElement, isUnique, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlMultiplicityElement, isUnique, PropertyClassRole, QStringLiteral("QUmlMultiplicityElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlMultiplicityElement, isUnique, PropertyTypeRole, QStringLiteral("bool"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlMultiplicityElement, isUnique, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlMultiplicityElement, isUnique, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlMultiplicityElement, isUnique, DocumentationRole, QStringLiteral("For a multivalued multiplicity, this attributes specifies whether the values in an instantiation of this element are unique."));
@@ -396,6 +401,7 @@ void QUmlConnectorEndObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlMultiplicityElement, lower, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlMultiplicityElement, lower, PropertyClassRole, QStringLiteral("QUmlMultiplicityElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlMultiplicityElement, lower, PropertyTypeRole, QStringLiteral("int"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlMultiplicityElement, lower, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlMultiplicityElement, lower, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlMultiplicityElement, lower, DocumentationRole, QStringLiteral("Specifies the lower bound of the multiplicity interval."));
@@ -405,6 +411,7 @@ void QUmlConnectorEndObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlMultiplicityElement, lowerValue, AggregationRole, QStringLiteral("composite"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlMultiplicityElement, lowerValue, PropertyClassRole, QStringLiteral("QUmlMultiplicityElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlMultiplicityElement, lowerValue, PropertyTypeRole, QStringLiteral("QUmlValueSpecification *"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlMultiplicityElement, lowerValue, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlMultiplicityElement, lowerValue, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlMultiplicityElement, lowerValue, DocumentationRole, QStringLiteral("The specification of the lower bound for this multiplicity."));
@@ -414,6 +421,7 @@ void QUmlConnectorEndObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlMultiplicityElement, upper, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlMultiplicityElement, upper, PropertyClassRole, QStringLiteral("QUmlMultiplicityElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlMultiplicityElement, upper, PropertyTypeRole, QStringLiteral("QString"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlMultiplicityElement, upper, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlMultiplicityElement, upper, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlMultiplicityElement, upper, DocumentationRole, QStringLiteral("Specifies the upper bound of the multiplicity interval."));
@@ -423,6 +431,7 @@ void QUmlConnectorEndObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlMultiplicityElement, upperValue, AggregationRole, QStringLiteral("composite"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlMultiplicityElement, upperValue, PropertyClassRole, QStringLiteral("QUmlMultiplicityElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlMultiplicityElement, upperValue, PropertyTypeRole, QStringLiteral("QUmlValueSpecification *"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlMultiplicityElement, upperValue, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlMultiplicityElement, upperValue, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlMultiplicityElement, upperValue, DocumentationRole, QStringLiteral("The specification of the upper bound for this multiplicity."));
@@ -432,6 +441,7 @@ void QUmlConnectorEndObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlConnectorEnd, definingEnd, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlConnectorEnd, definingEnd, PropertyClassRole, QStringLiteral("QUmlConnectorEnd"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlConnectorEnd, definingEnd, PropertyTypeRole, QStringLiteral("QUmlProperty *"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlConnectorEnd, definingEnd, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlConnectorEnd, definingEnd, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlConnectorEnd, definingEnd, DocumentationRole, QStringLiteral("A derived association referencing the corresponding association end on the association which types the connector owing this connector end. This association is derived by selecting the association end at the same place in the ordering of association ends as this connector end."));
@@ -441,6 +451,7 @@ void QUmlConnectorEndObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlConnectorEnd, partWithPort, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlConnectorEnd, partWithPort, PropertyClassRole, QStringLiteral("QUmlConnectorEnd"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlConnectorEnd, partWithPort, PropertyTypeRole, QStringLiteral("QUmlProperty *"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlConnectorEnd, partWithPort, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlConnectorEnd, partWithPort, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlConnectorEnd, partWithPort, DocumentationRole, QStringLiteral("Indicates the role of the internal structure of a classifier with the port to which the connector end is attached."));
@@ -450,6 +461,7 @@ void QUmlConnectorEndObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlConnectorEnd, role, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlConnectorEnd, role, PropertyClassRole, QStringLiteral("QUmlConnectorEnd"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlConnectorEnd, role, PropertyTypeRole, QStringLiteral("QUmlConnectableElement *"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlConnectorEnd, role, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlConnectorEnd, role, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlConnectorEnd, role, DocumentationRole, QStringLiteral("The connectable element attached at this connector end. When an instance of the containing classifier is created, a link may (depending on the multiplicities) be created to an instance of the classifier that types this connectable element."));

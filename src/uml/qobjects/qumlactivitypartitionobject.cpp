@@ -512,6 +512,7 @@ void QUmlActivityPartitionObject::setPropertyData()
 {
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedComments, AggregationRole, QStringLiteral("composite"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedComments, PropertyClassRole, QStringLiteral("QUmlElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedComments, PropertyTypeRole, QStringLiteral("QSet<QUmlComment *>"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedComments, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedComments, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedComments, DocumentationRole, QStringLiteral("The Comments owned by this element."));
@@ -521,6 +522,7 @@ void QUmlActivityPartitionObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedElements, AggregationRole, QStringLiteral("composite"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedElements, PropertyClassRole, QStringLiteral("QUmlElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedElements, PropertyTypeRole, QStringLiteral("QSet<QUmlElement *>"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedElements, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedElements, IsDerivedUnionRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedElements, DocumentationRole, QStringLiteral("The Elements owned by this element."));
@@ -530,6 +532,7 @@ void QUmlActivityPartitionObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, owner, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, owner, PropertyClassRole, QStringLiteral("QUmlElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlElement, owner, PropertyTypeRole, QStringLiteral("QUmlElement *"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, owner, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, owner, IsDerivedUnionRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, owner, DocumentationRole, QStringLiteral("The Element that owns this element."));
@@ -539,6 +542,7 @@ void QUmlActivityPartitionObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, clientDependencies, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, clientDependencies, PropertyClassRole, QStringLiteral("QUmlNamedElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, clientDependencies, PropertyTypeRole, QStringLiteral("QSet<QUmlDependency *>"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, clientDependencies, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, clientDependencies, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, clientDependencies, DocumentationRole, QStringLiteral("Indicates the dependencies that reference the client."));
@@ -548,6 +552,7 @@ void QUmlActivityPartitionObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, name, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, name, PropertyClassRole, QStringLiteral("QUmlNamedElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, name, PropertyTypeRole, QStringLiteral("QString"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, name, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, name, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, name, DocumentationRole, QStringLiteral("The name of the NamedElement."));
@@ -557,6 +562,7 @@ void QUmlActivityPartitionObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, nameExpression, AggregationRole, QStringLiteral("composite"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, nameExpression, PropertyClassRole, QStringLiteral("QUmlNamedElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, nameExpression, PropertyTypeRole, QStringLiteral("QUmlStringExpression *"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, nameExpression, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, nameExpression, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, nameExpression, DocumentationRole, QStringLiteral("The string expression used to define the name of this named element."));
@@ -566,6 +572,7 @@ void QUmlActivityPartitionObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, namespace_, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, namespace_, PropertyClassRole, QStringLiteral("QUmlNamedElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, namespace_, PropertyTypeRole, QStringLiteral("QUmlNamespace *"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, namespace_, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, namespace_, IsDerivedUnionRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, namespace_, DocumentationRole, QStringLiteral("Specifies the namespace that owns the NamedElement."));
@@ -575,6 +582,7 @@ void QUmlActivityPartitionObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, qualifiedName, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, qualifiedName, PropertyClassRole, QStringLiteral("QUmlNamedElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, qualifiedName, PropertyTypeRole, QStringLiteral("QString"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, qualifiedName, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, qualifiedName, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, qualifiedName, DocumentationRole, QStringLiteral("A name which allows the NamedElement to be identified within a hierarchy of nested Namespaces. It is constructed from the names of the containing namespaces starting at the root of the hierarchy and ending with the name of the NamedElement itself."));
@@ -584,6 +592,7 @@ void QUmlActivityPartitionObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, visibility, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, visibility, PropertyClassRole, QStringLiteral("QUmlNamedElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, visibility, PropertyTypeRole, QStringLiteral("QtUml::VisibilityKind"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, visibility, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, visibility, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, visibility, DocumentationRole, QStringLiteral("Determines where the NamedElement appears within different Namespaces within the overall model, and its accessibility."));
@@ -593,6 +602,7 @@ void QUmlActivityPartitionObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlActivityGroup, containedEdges, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlActivityGroup, containedEdges, PropertyClassRole, QStringLiteral("QUmlActivityGroup"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlActivityGroup, containedEdges, PropertyTypeRole, QStringLiteral("QSet<QUmlActivityEdge *>"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlActivityGroup, containedEdges, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlActivityGroup, containedEdges, IsDerivedUnionRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlActivityGroup, containedEdges, DocumentationRole, QStringLiteral("Edges immediately contained in the group."));
@@ -602,6 +612,7 @@ void QUmlActivityPartitionObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlActivityGroup, containedNodes, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlActivityGroup, containedNodes, PropertyClassRole, QStringLiteral("QUmlActivityGroup"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlActivityGroup, containedNodes, PropertyTypeRole, QStringLiteral("QSet<QUmlActivityNode *>"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlActivityGroup, containedNodes, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlActivityGroup, containedNodes, IsDerivedUnionRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlActivityGroup, containedNodes, DocumentationRole, QStringLiteral("Nodes immediately contained in the group."));
@@ -611,6 +622,7 @@ void QUmlActivityPartitionObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlActivityGroup, inActivity, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlActivityGroup, inActivity, PropertyClassRole, QStringLiteral("QUmlActivityGroup"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlActivityGroup, inActivity, PropertyTypeRole, QStringLiteral("QUmlActivity *"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlActivityGroup, inActivity, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlActivityGroup, inActivity, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlActivityGroup, inActivity, DocumentationRole, QStringLiteral("Activity containing the group."));
@@ -620,6 +632,7 @@ void QUmlActivityPartitionObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlActivityGroup, subgroups, AggregationRole, QStringLiteral("composite"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlActivityGroup, subgroups, PropertyClassRole, QStringLiteral("QUmlActivityGroup"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlActivityGroup, subgroups, PropertyTypeRole, QStringLiteral("QSet<QUmlActivityGroup *>"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlActivityGroup, subgroups, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlActivityGroup, subgroups, IsDerivedUnionRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlActivityGroup, subgroups, DocumentationRole, QStringLiteral("Groups immediately contained in the group."));
@@ -629,6 +642,7 @@ void QUmlActivityPartitionObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlActivityGroup, superGroup, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlActivityGroup, superGroup, PropertyClassRole, QStringLiteral("QUmlActivityGroup"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlActivityGroup, superGroup, PropertyTypeRole, QStringLiteral("QUmlActivityGroup *"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlActivityGroup, superGroup, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlActivityGroup, superGroup, IsDerivedUnionRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlActivityGroup, superGroup, DocumentationRole, QStringLiteral("Group immediately containing the group."));
@@ -638,6 +652,7 @@ void QUmlActivityPartitionObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlActivityPartition, edges, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlActivityPartition, edges, PropertyClassRole, QStringLiteral("QUmlActivityPartition"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlActivityPartition, edges, PropertyTypeRole, QStringLiteral("QSet<QUmlActivityEdge *>"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlActivityPartition, edges, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlActivityPartition, edges, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlActivityPartition, edges, DocumentationRole, QStringLiteral("Edges immediately contained in the group."));
@@ -647,6 +662,7 @@ void QUmlActivityPartitionObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlActivityPartition, isDimension, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlActivityPartition, isDimension, PropertyClassRole, QStringLiteral("QUmlActivityPartition"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlActivityPartition, isDimension, PropertyTypeRole, QStringLiteral("bool"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlActivityPartition, isDimension, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlActivityPartition, isDimension, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlActivityPartition, isDimension, DocumentationRole, QStringLiteral("Tells whether the partition groups other partitions along a dimension."));
@@ -656,6 +672,7 @@ void QUmlActivityPartitionObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlActivityPartition, isExternal, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlActivityPartition, isExternal, PropertyClassRole, QStringLiteral("QUmlActivityPartition"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlActivityPartition, isExternal, PropertyTypeRole, QStringLiteral("bool"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlActivityPartition, isExternal, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlActivityPartition, isExternal, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlActivityPartition, isExternal, DocumentationRole, QStringLiteral("Tells whether the partition represents an entity to which the partitioning structure does not apply."));
@@ -665,6 +682,7 @@ void QUmlActivityPartitionObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlActivityPartition, nodes, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlActivityPartition, nodes, PropertyClassRole, QStringLiteral("QUmlActivityPartition"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlActivityPartition, nodes, PropertyTypeRole, QStringLiteral("QSet<QUmlActivityNode *>"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlActivityPartition, nodes, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlActivityPartition, nodes, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlActivityPartition, nodes, DocumentationRole, QStringLiteral("Nodes immediately contained in the group."));
@@ -674,6 +692,7 @@ void QUmlActivityPartitionObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlActivityPartition, represents, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlActivityPartition, represents, PropertyClassRole, QStringLiteral("QUmlActivityPartition"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlActivityPartition, represents, PropertyTypeRole, QStringLiteral("QUmlElement *"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlActivityPartition, represents, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlActivityPartition, represents, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlActivityPartition, represents, DocumentationRole, QStringLiteral("An element constraining behaviors invoked by nodes in the partition."));
@@ -683,6 +702,7 @@ void QUmlActivityPartitionObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlActivityPartition, subpartitions, AggregationRole, QStringLiteral("composite"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlActivityPartition, subpartitions, PropertyClassRole, QStringLiteral("QUmlActivityPartition"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlActivityPartition, subpartitions, PropertyTypeRole, QStringLiteral("QSet<QUmlActivityPartition *>"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlActivityPartition, subpartitions, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlActivityPartition, subpartitions, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlActivityPartition, subpartitions, DocumentationRole, QStringLiteral("Partitions immediately contained in the partition."));
@@ -692,6 +712,7 @@ void QUmlActivityPartitionObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlActivityPartition, superPartition, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlActivityPartition, superPartition, PropertyClassRole, QStringLiteral("QUmlActivityPartition"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlActivityPartition, superPartition, PropertyTypeRole, QStringLiteral("QUmlActivityPartition *"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlActivityPartition, superPartition, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlActivityPartition, superPartition, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlActivityPartition, superPartition, DocumentationRole, QStringLiteral("Partition immediately containing the partition."));

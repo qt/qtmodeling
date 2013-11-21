@@ -184,6 +184,7 @@ void QUmlQualifierValueObject::setPropertyData()
 {
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedComments, AggregationRole, QStringLiteral("composite"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedComments, PropertyClassRole, QStringLiteral("QUmlElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedComments, PropertyTypeRole, QStringLiteral("QSet<QUmlComment *>"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedComments, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedComments, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedComments, DocumentationRole, QStringLiteral("The Comments owned by this element."));
@@ -193,6 +194,7 @@ void QUmlQualifierValueObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedElements, AggregationRole, QStringLiteral("composite"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedElements, PropertyClassRole, QStringLiteral("QUmlElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedElements, PropertyTypeRole, QStringLiteral("QSet<QUmlElement *>"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedElements, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedElements, IsDerivedUnionRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedElements, DocumentationRole, QStringLiteral("The Elements owned by this element."));
@@ -202,6 +204,7 @@ void QUmlQualifierValueObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, owner, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, owner, PropertyClassRole, QStringLiteral("QUmlElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlElement, owner, PropertyTypeRole, QStringLiteral("QUmlElement *"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, owner, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, owner, IsDerivedUnionRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, owner, DocumentationRole, QStringLiteral("The Element that owns this element."));
@@ -211,6 +214,7 @@ void QUmlQualifierValueObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlQualifierValue, qualifier, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlQualifierValue, qualifier, PropertyClassRole, QStringLiteral("QUmlQualifierValue"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlQualifierValue, qualifier, PropertyTypeRole, QStringLiteral("QUmlProperty *"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlQualifierValue, qualifier, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlQualifierValue, qualifier, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlQualifierValue, qualifier, DocumentationRole, QStringLiteral("Attribute representing the qualifier for which the value is to be specified."));
@@ -220,6 +224,7 @@ void QUmlQualifierValueObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlQualifierValue, value, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlQualifierValue, value, PropertyClassRole, QStringLiteral("QUmlQualifierValue"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlQualifierValue, value, PropertyTypeRole, QStringLiteral("QUmlInputPin *"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlQualifierValue, value, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlQualifierValue, value, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlQualifierValue, value, DocumentationRole, QStringLiteral("Input pin from which the specified value for the qualifier is taken."));

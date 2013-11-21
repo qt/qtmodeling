@@ -855,6 +855,7 @@ void QUmlStateObject::setPropertyData()
 {
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedComments, AggregationRole, QStringLiteral("composite"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedComments, PropertyClassRole, QStringLiteral("QUmlElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedComments, PropertyTypeRole, QStringLiteral("QSet<QUmlComment *>"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedComments, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedComments, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedComments, DocumentationRole, QStringLiteral("The Comments owned by this element."));
@@ -864,6 +865,7 @@ void QUmlStateObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedElements, AggregationRole, QStringLiteral("composite"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedElements, PropertyClassRole, QStringLiteral("QUmlElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedElements, PropertyTypeRole, QStringLiteral("QSet<QUmlElement *>"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedElements, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedElements, IsDerivedUnionRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, ownedElements, DocumentationRole, QStringLiteral("The Elements owned by this element."));
@@ -873,6 +875,7 @@ void QUmlStateObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, owner, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, owner, PropertyClassRole, QStringLiteral("QUmlElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlElement, owner, PropertyTypeRole, QStringLiteral("QUmlElement *"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, owner, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, owner, IsDerivedUnionRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlElement, owner, DocumentationRole, QStringLiteral("The Element that owns this element."));
@@ -882,6 +885,7 @@ void QUmlStateObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, clientDependencies, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, clientDependencies, PropertyClassRole, QStringLiteral("QUmlNamedElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, clientDependencies, PropertyTypeRole, QStringLiteral("QSet<QUmlDependency *>"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, clientDependencies, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, clientDependencies, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, clientDependencies, DocumentationRole, QStringLiteral("Indicates the dependencies that reference the client."));
@@ -891,6 +895,7 @@ void QUmlStateObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, name, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, name, PropertyClassRole, QStringLiteral("QUmlNamedElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, name, PropertyTypeRole, QStringLiteral("QString"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, name, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, name, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, name, DocumentationRole, QStringLiteral("The name of the NamedElement."));
@@ -900,6 +905,7 @@ void QUmlStateObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, nameExpression, AggregationRole, QStringLiteral("composite"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, nameExpression, PropertyClassRole, QStringLiteral("QUmlNamedElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, nameExpression, PropertyTypeRole, QStringLiteral("QUmlStringExpression *"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, nameExpression, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, nameExpression, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, nameExpression, DocumentationRole, QStringLiteral("The string expression used to define the name of this named element."));
@@ -909,6 +915,7 @@ void QUmlStateObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, namespace_, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, namespace_, PropertyClassRole, QStringLiteral("QUmlNamedElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, namespace_, PropertyTypeRole, QStringLiteral("QUmlNamespace *"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, namespace_, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, namespace_, IsDerivedUnionRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, namespace_, DocumentationRole, QStringLiteral("Specifies the namespace that owns the NamedElement."));
@@ -918,6 +925,7 @@ void QUmlStateObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, qualifiedName, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, qualifiedName, PropertyClassRole, QStringLiteral("QUmlNamedElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, qualifiedName, PropertyTypeRole, QStringLiteral("QString"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, qualifiedName, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, qualifiedName, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, qualifiedName, DocumentationRole, QStringLiteral("A name which allows the NamedElement to be identified within a hierarchy of nested Namespaces. It is constructed from the names of the containing namespaces starting at the root of the hierarchy and ending with the name of the NamedElement itself."));
@@ -927,6 +935,7 @@ void QUmlStateObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, visibility, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, visibility, PropertyClassRole, QStringLiteral("QUmlNamedElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, visibility, PropertyTypeRole, QStringLiteral("QtUml::VisibilityKind"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, visibility, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, visibility, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamedElement, visibility, DocumentationRole, QStringLiteral("Determines where the NamedElement appears within different Namespaces within the overall model, and its accessibility."));
@@ -936,6 +945,7 @@ void QUmlStateObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamespace, elementImports, AggregationRole, QStringLiteral("composite"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamespace, elementImports, PropertyClassRole, QStringLiteral("QUmlNamespace"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlNamespace, elementImports, PropertyTypeRole, QStringLiteral("QSet<QUmlElementImport *>"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamespace, elementImports, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamespace, elementImports, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamespace, elementImports, DocumentationRole, QStringLiteral("References the ElementImports owned by the Namespace."));
@@ -945,6 +955,7 @@ void QUmlStateObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamespace, importedMembers, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamespace, importedMembers, PropertyClassRole, QStringLiteral("QUmlNamespace"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlNamespace, importedMembers, PropertyTypeRole, QStringLiteral("QSet<QUmlPackageableElement *>"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamespace, importedMembers, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamespace, importedMembers, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamespace, importedMembers, DocumentationRole, QStringLiteral("References the PackageableElements that are members of this Namespace as a result of either PackageImports or ElementImports."));
@@ -954,6 +965,7 @@ void QUmlStateObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamespace, members, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamespace, members, PropertyClassRole, QStringLiteral("QUmlNamespace"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlNamespace, members, PropertyTypeRole, QStringLiteral("QSet<QUmlNamedElement *>"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamespace, members, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamespace, members, IsDerivedUnionRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamespace, members, DocumentationRole, QStringLiteral("A collection of NamedElements identifiable within the Namespace, either by being owned or by being introduced by importing or inheritance."));
@@ -963,6 +975,7 @@ void QUmlStateObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamespace, ownedMembers, AggregationRole, QStringLiteral("composite"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamespace, ownedMembers, PropertyClassRole, QStringLiteral("QUmlNamespace"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlNamespace, ownedMembers, PropertyTypeRole, QStringLiteral("QSet<QUmlNamedElement *>"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamespace, ownedMembers, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamespace, ownedMembers, IsDerivedUnionRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamespace, ownedMembers, DocumentationRole, QStringLiteral("A collection of NamedElements owned by the Namespace."));
@@ -972,6 +985,7 @@ void QUmlStateObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamespace, ownedRules, AggregationRole, QStringLiteral("composite"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamespace, ownedRules, PropertyClassRole, QStringLiteral("QUmlNamespace"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlNamespace, ownedRules, PropertyTypeRole, QStringLiteral("QSet<QUmlConstraint *>"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamespace, ownedRules, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamespace, ownedRules, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamespace, ownedRules, DocumentationRole, QStringLiteral("Specifies a set of Constraints owned by this Namespace."));
@@ -981,6 +995,7 @@ void QUmlStateObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamespace, packageImports, AggregationRole, QStringLiteral("composite"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamespace, packageImports, PropertyClassRole, QStringLiteral("QUmlNamespace"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlNamespace, packageImports, PropertyTypeRole, QStringLiteral("QSet<QUmlPackageImport *>"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamespace, packageImports, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamespace, packageImports, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlNamespace, packageImports, DocumentationRole, QStringLiteral("References the PackageImports owned by the Namespace."));
@@ -990,6 +1005,7 @@ void QUmlStateObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlRedefinableElement, isLeaf, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlRedefinableElement, isLeaf, PropertyClassRole, QStringLiteral("QUmlRedefinableElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlRedefinableElement, isLeaf, PropertyTypeRole, QStringLiteral("bool"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlRedefinableElement, isLeaf, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlRedefinableElement, isLeaf, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlRedefinableElement, isLeaf, DocumentationRole, QStringLiteral("Indicates whether it is possible to further redefine a RedefinableElement. If the value is true, then it is not possible to further redefine the RedefinableElement. Note that this property is preserved through package merge operations; that is, the capability to redefine a RedefinableElement (i.e., isLeaf=false) must be preserved in the resulting RedefinableElement of a package merge operation where a RedefinableElement with isLeaf=false is merged with a matching RedefinableElement with isLeaf=true: the resulting RedefinableElement will have isLeaf=false. Default value is false."));
@@ -999,6 +1015,7 @@ void QUmlStateObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlRedefinableElement, redefinedElements, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlRedefinableElement, redefinedElements, PropertyClassRole, QStringLiteral("QUmlRedefinableElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlRedefinableElement, redefinedElements, PropertyTypeRole, QStringLiteral("QSet<QUmlRedefinableElement *>"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlRedefinableElement, redefinedElements, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlRedefinableElement, redefinedElements, IsDerivedUnionRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlRedefinableElement, redefinedElements, DocumentationRole, QStringLiteral("The redefinable element that is being redefined by this element."));
@@ -1008,6 +1025,7 @@ void QUmlStateObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlRedefinableElement, redefinitionContexts, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlRedefinableElement, redefinitionContexts, PropertyClassRole, QStringLiteral("QUmlRedefinableElement"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlRedefinableElement, redefinitionContexts, PropertyTypeRole, QStringLiteral("QSet<QUmlClassifier *>"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlRedefinableElement, redefinitionContexts, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlRedefinableElement, redefinitionContexts, IsDerivedUnionRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlRedefinableElement, redefinitionContexts, DocumentationRole, QStringLiteral("References the contexts that this element may be redefined from."));
@@ -1017,6 +1035,7 @@ void QUmlStateObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlVertex, container, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlVertex, container, PropertyClassRole, QStringLiteral("QUmlVertex"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlVertex, container, PropertyTypeRole, QStringLiteral("QUmlRegion *"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlVertex, container, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlVertex, container, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlVertex, container, DocumentationRole, QStringLiteral("The region that contains this vertex."));
@@ -1026,6 +1045,7 @@ void QUmlStateObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlVertex, incomings, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlVertex, incomings, PropertyClassRole, QStringLiteral("QUmlVertex"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlVertex, incomings, PropertyTypeRole, QStringLiteral("QSet<QUmlTransition *>"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlVertex, incomings, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlVertex, incomings, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlVertex, incomings, DocumentationRole, QStringLiteral("Specifies the transitions entering this vertex."));
@@ -1035,6 +1055,7 @@ void QUmlStateObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlVertex, outgoings, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlVertex, outgoings, PropertyClassRole, QStringLiteral("QUmlVertex"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlVertex, outgoings, PropertyTypeRole, QStringLiteral("QSet<QUmlTransition *>"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlVertex, outgoings, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlVertex, outgoings, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlVertex, outgoings, DocumentationRole, QStringLiteral("Specifies the transitions departing from this vertex."));
@@ -1044,6 +1065,7 @@ void QUmlStateObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlState, connections, AggregationRole, QStringLiteral("composite"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlState, connections, PropertyClassRole, QStringLiteral("QUmlState"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, connections, PropertyTypeRole, QStringLiteral("QSet<QUmlConnectionPointReference *>"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlState, connections, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlState, connections, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlState, connections, DocumentationRole, QStringLiteral("The entry and exit connection points used in conjunction with this (submachine) state, i.e. as targets and sources, respectively, in the region with the submachine state. A connection point reference references the corresponding definition of a connection point pseudostate in the statemachine referenced by the submachinestate."));
@@ -1053,6 +1075,7 @@ void QUmlStateObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlState, connectionPoints, AggregationRole, QStringLiteral("composite"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlState, connectionPoints, PropertyClassRole, QStringLiteral("QUmlState"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, connectionPoints, PropertyTypeRole, QStringLiteral("QSet<QUmlPseudostate *>"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlState, connectionPoints, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlState, connectionPoints, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlState, connectionPoints, DocumentationRole, QStringLiteral("The entry and exit pseudostates of a composite state. These can only be entry or exit Pseudostates, and they must have different names. They can only be defined for composite states."));
@@ -1062,6 +1085,7 @@ void QUmlStateObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlState, deferrableTriggers, AggregationRole, QStringLiteral("composite"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlState, deferrableTriggers, PropertyClassRole, QStringLiteral("QUmlState"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, deferrableTriggers, PropertyTypeRole, QStringLiteral("QSet<QUmlTrigger *>"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlState, deferrableTriggers, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlState, deferrableTriggers, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlState, deferrableTriggers, DocumentationRole, QStringLiteral("A list of triggers that are candidates to be retained by the state machine if they trigger no transitions out of the state (not consumed). A deferred trigger is retained until the state machine reaches a state configuration where it is no longer deferred."));
@@ -1071,6 +1095,7 @@ void QUmlStateObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlState, doActivity, AggregationRole, QStringLiteral("composite"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlState, doActivity, PropertyClassRole, QStringLiteral("QUmlState"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, doActivity, PropertyTypeRole, QStringLiteral("QUmlBehavior *"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlState, doActivity, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlState, doActivity, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlState, doActivity, DocumentationRole, QStringLiteral("An optional behavior that is executed while being in the state. The execution starts when this state is entered, and stops either by itself, or when the state is exited, whichever comes first."));
@@ -1080,6 +1105,7 @@ void QUmlStateObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlState, entry, AggregationRole, QStringLiteral("composite"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlState, entry, PropertyClassRole, QStringLiteral("QUmlState"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, entry, PropertyTypeRole, QStringLiteral("QUmlBehavior *"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlState, entry, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlState, entry, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlState, entry, DocumentationRole, QStringLiteral("An optional behavior that is executed whenever this state is entered regardless of the transition taken to reach the state. If defined, entry actions are always executed to completion prior to any internal behavior or transitions performed within the state."));
@@ -1089,6 +1115,7 @@ void QUmlStateObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlState, exit, AggregationRole, QStringLiteral("composite"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlState, exit, PropertyClassRole, QStringLiteral("QUmlState"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, exit, PropertyTypeRole, QStringLiteral("QUmlBehavior *"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlState, exit, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlState, exit, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlState, exit, DocumentationRole, QStringLiteral("An optional behavior that is executed whenever this state is exited regardless of which transition was taken out of the state. If defined, exit actions are always executed to completion only after all internal activities and transition actions have completed execution."));
@@ -1098,6 +1125,7 @@ void QUmlStateObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlState, isComposite, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlState, isComposite, PropertyClassRole, QStringLiteral("QUmlState"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, isComposite, PropertyTypeRole, QStringLiteral("bool"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlState, isComposite, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlState, isComposite, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlState, isComposite, DocumentationRole, QStringLiteral("A state with isComposite=true is said to be a composite state. A composite state is a state that contains at least one region."));
@@ -1107,6 +1135,7 @@ void QUmlStateObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlState, isOrthogonal, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlState, isOrthogonal, PropertyClassRole, QStringLiteral("QUmlState"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, isOrthogonal, PropertyTypeRole, QStringLiteral("bool"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlState, isOrthogonal, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlState, isOrthogonal, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlState, isOrthogonal, DocumentationRole, QStringLiteral("A state with isOrthogonal=true is said to be an orthogonal composite state. An orthogonal composite state contains two or more regions."));
@@ -1116,6 +1145,7 @@ void QUmlStateObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlState, isSimple, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlState, isSimple, PropertyClassRole, QStringLiteral("QUmlState"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, isSimple, PropertyTypeRole, QStringLiteral("bool"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlState, isSimple, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlState, isSimple, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlState, isSimple, DocumentationRole, QStringLiteral("A state with isSimple=true is said to be a simple state. A simple state does not have any regions and it does not refer to any submachine state machine."));
@@ -1125,6 +1155,7 @@ void QUmlStateObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlState, isSubmachineState, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlState, isSubmachineState, PropertyClassRole, QStringLiteral("QUmlState"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, isSubmachineState, PropertyTypeRole, QStringLiteral("bool"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlState, isSubmachineState, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlState, isSubmachineState, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlState, isSubmachineState, DocumentationRole, QStringLiteral("A state with isSubmachineState=true is said to be a submachine state. Such a state refers to a state machine (submachine)."));
@@ -1134,6 +1165,7 @@ void QUmlStateObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlState, redefinedState, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlState, redefinedState, PropertyClassRole, QStringLiteral("QUmlState"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, redefinedState, PropertyTypeRole, QStringLiteral("QUmlState *"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlState, redefinedState, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlState, redefinedState, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlState, redefinedState, DocumentationRole, QStringLiteral("The state of which this state is a redefinition."));
@@ -1143,6 +1175,7 @@ void QUmlStateObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlState, redefinitionContext, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlState, redefinitionContext, PropertyClassRole, QStringLiteral("QUmlState"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, redefinitionContext, PropertyTypeRole, QStringLiteral("QUmlClassifier *"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlState, redefinitionContext, IsDerivedRole, true);
     Q_DECLARE_METAPROPERTY_INFO(QUmlState, redefinitionContext, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlState, redefinitionContext, DocumentationRole, QStringLiteral("References the classifier in which context this element may be redefined."));
@@ -1152,6 +1185,7 @@ void QUmlStateObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlState, regions, AggregationRole, QStringLiteral("composite"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlState, regions, PropertyClassRole, QStringLiteral("QUmlState"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, regions, PropertyTypeRole, QStringLiteral("QSet<QUmlRegion *>"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlState, regions, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlState, regions, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlState, regions, DocumentationRole, QStringLiteral("The regions owned directly by the state."));
@@ -1161,6 +1195,7 @@ void QUmlStateObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlState, stateInvariant, AggregationRole, QStringLiteral("composite"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlState, stateInvariant, PropertyClassRole, QStringLiteral("QUmlState"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, stateInvariant, PropertyTypeRole, QStringLiteral("QUmlConstraint *"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlState, stateInvariant, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlState, stateInvariant, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlState, stateInvariant, DocumentationRole, QStringLiteral("Specifies conditions that are always true when this state is the current state. In protocol state machines, state invariants are additional conditions to the preconditions of the outgoing transitions, and to the postcondition of the incoming transitions."));
@@ -1170,6 +1205,7 @@ void QUmlStateObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QUmlState, submachine, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlState, submachine, PropertyClassRole, QStringLiteral("QUmlState"));
+    Q_DECLARE_METAPROPERTY_INFO(QUmlState, submachine, PropertyTypeRole, QStringLiteral("QUmlStateMachine *"));
     Q_DECLARE_METAPROPERTY_INFO(QUmlState, submachine, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlState, submachine, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QUmlState, submachine, DocumentationRole, QStringLiteral("The state machine that is to be inserted in place of the (submachine) state."));

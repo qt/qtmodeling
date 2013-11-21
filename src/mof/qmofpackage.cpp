@@ -134,8 +134,10 @@ void QMofPackage::addNestedPackage(QMofPackage *nestedPackage)
         // Adjust subsetted property(ies)
         addPackagedElement(nestedPackage);
 
-        // Adjust opposite property
-        nestedPackage->setNestingPackage(this);
+        // Adjust opposite properties
+        if (nestedPackage) {
+            nestedPackage->setNestingPackage(this);
+        }
     }
 }
 
@@ -147,8 +149,10 @@ void QMofPackage::removeNestedPackage(QMofPackage *nestedPackage)
         // Adjust subsetted property(ies)
         removePackagedElement(nestedPackage);
 
-        // Adjust opposite property
-        nestedPackage->setNestingPackage(0);
+        // Adjust opposite properties
+        if (nestedPackage) {
+            nestedPackage->setNestingPackage(0);
+        }
     }
 }
 
@@ -195,9 +199,10 @@ void QMofPackage::addOwnedType(QMofType *ownedType)
         // Adjust subsetted property(ies)
         addPackagedElement(ownedType);
 
-        // Adjust opposite property
-        if (ownedType)
+        // Adjust opposite properties
+        if (ownedType) {
             ownedType->setPackage(this);
+        }
     }
 }
 
@@ -209,9 +214,10 @@ void QMofPackage::removeOwnedType(QMofType *ownedType)
         // Adjust subsetted property(ies)
         removePackagedElement(ownedType);
 
-        // Adjust opposite property
-        if (ownedType)
+        // Adjust opposite properties
+        if (ownedType) {
             ownedType->setPackage(0);
+        }
     }
 }
 
