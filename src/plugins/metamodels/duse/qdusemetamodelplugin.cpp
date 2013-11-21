@@ -56,6 +56,7 @@ QModelingElement *QDuseMetaModelPlugin::createModelingElement(QString type)
     if (type == "QDuseDesignDimensionInstance") return new QDuseDesignDimensionInstance;
     if (type == "QDuseVariationPoint") return new QDuseVariationPoint;
     if (type == "QDuseQualityMetric") return new QDuseQualityMetric;
+    if (type == "QDuseModelChange") return new QDuseModelChange;
     Q_ASSERT_X(true,
                "QDuseMetaModelPlugin::createModelingElement",
                QStringLiteral("QDuseMetaModelPlugin does not know how to create instances of '%1' type !").arg(type).toLatin1());
