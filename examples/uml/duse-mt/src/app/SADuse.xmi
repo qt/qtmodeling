@@ -28,7 +28,7 @@
     <designDimension xmi:type="duse:DesignDimension" name="Control Law" xmi:id="SADuse-ControlLaw">
         <instanceSelectionRule xmi:type="uml:OpaqueExpression" xmi:id="SADuse-ControlLaw-InstanceSelectionRule">
             <language>JavaScript</language>
-            <body>var inputLength = input.length; var selected = new Array(); for (var i = 0; i &lt; inputLength; ++i) { if (input[i] instanceof QSADuseProfileProcessComponent) selected.push(input[i].base_Component); } selected;</body>
+            <body>input[0]</body>
         </instanceSelectionRule>
         <variationPoint xmi:type="duse:VariationPoint" name="Proportional" xmi:id="SADuse-ControlLaw-Proportional">
             <modelChange xmi:type="duse:ModelChange" xmi:id="SADuse-ControlLaw-Proportional-ModelChange1">

@@ -43,6 +43,8 @@
 
 #include <duseinterfaces/iplugin.h>
 
+#include <QtScript/QScriptEngine>
+
 class NewDuseDesignDialog;
 
 class QQuickView;
@@ -78,6 +80,8 @@ private:
 
     NewDuseDesignDialog *_newDuseDesignDialog;
     QList<QModelingElement *> _duseInstance;
+
+    QScriptEngine _engine;
 };
 
 #endif // DESIGNSPACEEXPLORERPLUGIN_H

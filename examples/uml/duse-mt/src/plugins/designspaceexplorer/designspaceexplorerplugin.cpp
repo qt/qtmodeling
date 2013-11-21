@@ -40,6 +40,8 @@
 ****************************************************************************/
 #include "designspaceexplorerplugin.h"
 
+#include <QDebug>
+
 #include <duseinterfaces/iuicontroller.h>
 #include <duseinterfaces/iprojectcontroller.h>
 
@@ -169,6 +171,20 @@ void DesignSpaceExplorerPlugin::newDuseDesign()
                 if (!found) {
                     QMessageBox::critical(0, tr("Create new DuSE design"), QStringLiteral("Input model does not contain the required %1Profile profile application !").arg(_duseInstance.first()->asQModelingObject()->objectName()));
                     return;
+                }
+
+                QScriptValue array = _engine.newArray();
+                foreach (QObject *modelingObject, _core->projectController()->currentModelObjects())
+                    array.property(QString::fromLatin1("push")).call(array, QScriptValueList() << _engine.newQObject(modelingObject));
+                _engine.globalObject().setProperty("input", array);
+
+                foreach (QObject *designDimension, _duseInstance.first()->asQModelingObject()->property("designDimensions").value< QList<QObject *> >()) {
+                    foreach (const QString &body, (designDimension->property("instanceSelectionRule").value<QObject *>())->property("bodies").value< QList<QString> >()) {
+                        qDebug() << body;
+                        QScriptValue value = _engine.evaluate(body);
+                        if (value.toQObject())
+                            qDebug() << "result: " << value.toQObject()->objectName();
+                    }
                 }
 
                 //modelingObjectList.first()->setQmlContextProperties(_metricsQuickView->engine()->rootContext());
