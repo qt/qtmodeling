@@ -42,6 +42,8 @@
 #include "private/qmodelingobject_p.h"
 
 #include <QtDuse/QDuseQualityMetric>
+#include <QtUml/QUmlOpaqueExpression>
+
 QT_BEGIN_NAMESPACE
 
 QDuseQualityMetricObject::QDuseQualityMetricObject(QDuseQualityMetric *modelingElement)
@@ -63,9 +65,12 @@ double QDuseQualityMetricObject::value() const
     return qmodelingelementproperty_cast<QDuseQualityMetric *>(this)->value();
 }
 
-QString QDuseQualityMetricObject::expression() const
+QObject *QDuseQualityMetricObject::expression() const
 {
-    return qmodelingelementproperty_cast<QDuseQualityMetric *>(this)->expression();
+    if (!qmodelingelementproperty_cast<QDuseQualityMetric *>(this)->expression())
+        return 0;
+    else
+        return qmodelingelementproperty_cast<QDuseQualityMetric *>(this)->expression()->asQModelingObject();
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [QualityMetric]
@@ -82,9 +87,9 @@ void QDuseQualityMetricObject::setValue(double value)
     emit valueChanged(this->value());
 }
 
-void QDuseQualityMetricObject::setExpression(QString expression)
+void QDuseQualityMetricObject::setExpression(QObject *expression)
 {
-    qmodelingelementproperty_cast<QDuseQualityMetric *>(this)->setExpression(expression);
+    qmodelingelementproperty_cast<QDuseQualityMetric *>(this)->setExpression(qmodelingelementproperty_cast<QUmlOpaqueExpression *>(expression));
     emit expressionChanged(this->expression());
 }
 
@@ -125,9 +130,9 @@ void QDuseQualityMetricObject::setPropertyData()
     Q_DECLARE_METAPROPERTY_INFO(QDuseQualityMetric, value, SubsettedPropertiesRole, QStringLiteral(""));
     Q_DECLARE_METAPROPERTY_INFO(QDuseQualityMetric, value, OppositeEndRole, QStringLiteral(""));
 
-    Q_DECLARE_METAPROPERTY_INFO(QDuseQualityMetric, expression, AggregationRole, QStringLiteral("none"));
+    Q_DECLARE_METAPROPERTY_INFO(QDuseQualityMetric, expression, AggregationRole, QStringLiteral("composite"));
     Q_DECLARE_METAPROPERTY_INFO(QDuseQualityMetric, expression, PropertyClassRole, QStringLiteral("QDuseQualityMetric"));
-    Q_DECLARE_METAPROPERTY_INFO(QDuseQualityMetric, expression, PropertyTypeRole, QStringLiteral("QString"));
+    Q_DECLARE_METAPROPERTY_INFO(QDuseQualityMetric, expression, PropertyTypeRole, QStringLiteral("QUmlOpaqueExpression *"));
     Q_DECLARE_METAPROPERTY_INFO(QDuseQualityMetric, expression, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QDuseQualityMetric, expression, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QDuseQualityMetric, expression, DocumentationRole, QStringLiteral("The quality metric's evaluation expression."));

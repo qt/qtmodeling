@@ -44,6 +44,7 @@
 #include <QtDuse/QDuseDesignDimension>
 #include <QtDuse/QDuseDesignDimensionInstance>
 #include <QtDuse/QDuseVariationPoint>
+#include <QtUml/QUmlOpaqueExpression>
 
 QT_BEGIN_NAMESPACE
 
@@ -61,9 +62,12 @@ QString QDuseDesignDimensionObject::name() const
     return qmodelingelementproperty_cast<QDuseDesignDimension *>(this)->name();
 }
 
-QString QDuseDesignDimensionObject::instanceSelectionRule() const
+QObject *QDuseDesignDimensionObject::instanceSelectionRule() const
 {
-    return qmodelingelementproperty_cast<QDuseDesignDimension *>(this)->instanceSelectionRule();
+    if (!qmodelingelementproperty_cast<QDuseDesignDimension *>(this)->instanceSelectionRule())
+        return 0;
+    else
+        return qmodelingelementproperty_cast<QDuseDesignDimension *>(this)->instanceSelectionRule()->asQModelingObject();
 }
 
 const QSet<QObject *> QDuseDesignDimensionObject::requiredPreviousEvaluations() const
@@ -74,12 +78,12 @@ const QSet<QObject *> QDuseDesignDimensionObject::requiredPreviousEvaluations() 
     return set;
 }
 
-const QSet<QObject *> QDuseDesignDimensionObject::variationPoints() const
+const QList<QObject *> QDuseDesignDimensionObject::variationPoints() const
 {
-    QSet<QObject *> set;
+    QList<QObject *> list;
     foreach (QDuseVariationPoint *element, qmodelingelementproperty_cast<QDuseDesignDimension *>(this)->variationPoints())
-        set.insert(element->asQModelingObject());
-    return set;
+        list.append(element->asQModelingObject());
+    return list;
 }
 
 const QSet<QObject *> QDuseDesignDimensionObject::designDimensionInstances() const
@@ -103,9 +107,9 @@ void QDuseDesignDimensionObject::setName(QString name)
     emit nameChanged(this->name());
 }
 
-void QDuseDesignDimensionObject::setInstanceSelectionRule(QString instanceSelectionRule)
+void QDuseDesignDimensionObject::setInstanceSelectionRule(QObject *instanceSelectionRule)
 {
-    qmodelingelementproperty_cast<QDuseDesignDimension *>(this)->setInstanceSelectionRule(instanceSelectionRule);
+    qmodelingelementproperty_cast<QDuseDesignDimension *>(this)->setInstanceSelectionRule(qmodelingelementproperty_cast<QUmlOpaqueExpression *>(instanceSelectionRule));
     emit instanceSelectionRuleChanged(this->instanceSelectionRule());
 }
 
@@ -181,9 +185,9 @@ void QDuseDesignDimensionObject::setPropertyData()
     Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimension, name, SubsettedPropertiesRole, QStringLiteral(""));
     Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimension, name, OppositeEndRole, QStringLiteral(""));
 
-    Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimension, instanceSelectionRule, AggregationRole, QStringLiteral("none"));
+    Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimension, instanceSelectionRule, AggregationRole, QStringLiteral("composite"));
     Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimension, instanceSelectionRule, PropertyClassRole, QStringLiteral("QDuseDesignDimension"));
-    Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimension, instanceSelectionRule, PropertyTypeRole, QStringLiteral("QString"));
+    Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimension, instanceSelectionRule, PropertyTypeRole, QStringLiteral("QUmlOpaqueExpression *"));
     Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimension, instanceSelectionRule, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimension, instanceSelectionRule, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimension, instanceSelectionRule, DocumentationRole, QStringLiteral("The rule for detecting a specific locus of architectural decision related to this design dimension. Such rule relies on the accompanying UML profile for the specific application domain, in order to identify the decision loci."));
@@ -203,7 +207,7 @@ void QDuseDesignDimensionObject::setPropertyData()
 
     Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimension, variationPoints, AggregationRole, QStringLiteral("composite"));
     Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimension, variationPoints, PropertyClassRole, QStringLiteral("QDuseDesignDimension"));
-    Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimension, variationPoints, PropertyTypeRole, QStringLiteral("QSet<QDuseVariationPoint *>"));
+    Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimension, variationPoints, PropertyTypeRole, QStringLiteral("QList<QDuseVariationPoint *>"));
     Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimension, variationPoints, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimension, variationPoints, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimension, variationPoints, DocumentationRole, QStringLiteral("The design dimension's variation points (alternative solutions for the design dimension's concern)."));

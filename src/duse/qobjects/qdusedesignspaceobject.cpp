@@ -131,7 +131,7 @@ void QDuseDesignSpaceObject::setPropertyData()
     Q_DECLARE_METAPROPERTY_INFO(QDuseDesignSpace, name, PropertyTypeRole, QStringLiteral("QString"));
     Q_DECLARE_METAPROPERTY_INFO(QDuseDesignSpace, name, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QDuseDesignSpace, name, IsDerivedUnionRole, false);
-    Q_DECLARE_METAPROPERTY_INFO(QDuseDesignSpace, name, DocumentationRole, QStringLiteral("The design space's name."));
+    Q_DECLARE_METAPROPERTY_INFO(QDuseDesignSpace, name, DocumentationRole, QStringLiteral("The design space name."));
     Q_DECLARE_METAPROPERTY_INFO(QDuseDesignSpace, name, RedefinedPropertiesRole, QStringLiteral(""));
     Q_DECLARE_METAPROPERTY_INFO(QDuseDesignSpace, name, SubsettedPropertiesRole, QStringLiteral(""));
     Q_DECLARE_METAPROPERTY_INFO(QDuseDesignSpace, name, OppositeEndRole, QStringLiteral(""));

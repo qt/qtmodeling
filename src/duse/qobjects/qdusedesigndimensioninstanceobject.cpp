@@ -42,6 +42,8 @@
 #include "private/qmodelingobject_p.h"
 
 #include <QtDuse/QDuseDesignDimensionInstance>
+#include <QtUml/QUmlElement>
+
 QT_BEGIN_NAMESPACE
 
 QDuseDesignDimensionInstanceObject::QDuseDesignDimensionInstanceObject(QDuseDesignDimensionInstance *modelingElement)
@@ -49,6 +51,24 @@ QDuseDesignDimensionInstanceObject::QDuseDesignDimensionInstanceObject(QDuseDesi
     setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(modelingElement)));
     setGroupProperties();
     setPropertyData();
+}
+
+// OWNED ATTRIBUTES [DesignDimensionInstance]
+
+QObject *QDuseDesignDimensionInstanceObject::targetInstance() const
+{
+    if (!qmodelingelementproperty_cast<QDuseDesignDimensionInstance *>(this)->targetInstance())
+        return 0;
+    else
+        return qmodelingelementproperty_cast<QDuseDesignDimensionInstance *>(this)->targetInstance()->asQModelingObject();
+}
+
+// SLOTS FOR OWNED ATTRIBUTES [DesignDimensionInstance]
+
+void QDuseDesignDimensionInstanceObject::setTargetInstance(QObject *targetInstance)
+{
+    qmodelingelementproperty_cast<QDuseDesignDimensionInstance *>(this)->setTargetInstance(qmodelingelementproperty_cast<QUmlElement *>(targetInstance));
+    emit targetInstanceChanged(this->targetInstance());
 }
 
 
@@ -61,10 +81,21 @@ void QDuseDesignDimensionInstanceObject::setGroupProperties()
     d->groupProperties.insert(QStringLiteral("QObject"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("objectName"))));
 
     d->propertyGroups << QStringLiteral("QDuseDesignDimensionInstance");
+    d->groupProperties.insert(QStringLiteral("QDuseDesignDimensionInstance"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("targetInstance"))));
 }
 
 void QDuseDesignDimensionInstanceObject::setPropertyData()
 {
+    Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimensionInstance, targetInstance, AggregationRole, QStringLiteral("none"));
+    Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimensionInstance, targetInstance, PropertyClassRole, QStringLiteral("QDuseDesignDimensionInstance"));
+    Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimensionInstance, targetInstance, PropertyTypeRole, QStringLiteral("QUmlElement *"));
+    Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimensionInstance, targetInstance, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimensionInstance, targetInstance, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimensionInstance, targetInstance, DocumentationRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimensionInstance, targetInstance, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimensionInstance, targetInstance, SubsettedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimensionInstance, targetInstance, OppositeEndRole, QStringLiteral(""));
+
 }
 
 QT_END_NAMESPACE

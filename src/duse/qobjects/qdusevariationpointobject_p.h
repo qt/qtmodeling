@@ -62,8 +62,9 @@ class Q_DUSE_EXPORT QDuseVariationPointObject : public QModelingObject
     // Properties [VariationPoint]
     Q_PROPERTY(QString name READ name WRITE setName NOTIFY nameChanged)
     Q_PROPERTY(QString rationale READ rationale WRITE setRationale NOTIFY rationaleChanged)
-    Q_PROPERTY(QString preChangeValidationRule READ preChangeValidationRule WRITE setPreChangeValidationRule NOTIFY preChangeValidationRuleChanged)
-    Q_PROPERTY(QObject * modelChange READ modelChange WRITE setModelChange NOTIFY modelChangeChanged)
+    Q_PROPERTY(QObject * preChangeValidationRule READ preChangeValidationRule WRITE setPreChangeValidationRule NOTIFY preChangeValidationRuleChanged)
+    Q_PROPERTY(QList<QObject *> modelChanges READ modelChanges NOTIFY modelChangesChanged)
+    Q_PROPERTY(QList<QObject *> addedElements READ addedElements NOTIFY addedElementsChanged)
 
 public:
     Q_INVOKABLE explicit QDuseVariationPointObject(QDuseVariationPoint *modelingElement);
@@ -71,24 +72,29 @@ public:
     // Owned attributes [VariationPoint]
     Q_INVOKABLE QString name() const;
     Q_INVOKABLE QString rationale() const;
-    Q_INVOKABLE QString preChangeValidationRule() const;
-    Q_INVOKABLE QObject *modelChange() const;
+    Q_INVOKABLE QObject *preChangeValidationRule() const;
+    Q_INVOKABLE const QList<QObject *> modelChanges() const;
+    Q_INVOKABLE const QList<QObject *> addedElements() const;
 
 public Q_SLOTS:
 
     // Slots for owned attributes [VariationPoint]
     void setName(QString name);
     void setRationale(QString rationale);
-    void setPreChangeValidationRule(QString preChangeValidationRule);
-    void setModelChange(QObject *modelChange = 0);
+    void setPreChangeValidationRule(QObject *preChangeValidationRule = 0);
+    void addModelChange(QObject *modelChange);
+    void removeModelChange(QObject *modelChange);
+    void addAddedElement(QObject *addedElement);
+    void removeAddedElement(QObject *addedElement);
 
 Q_SIGNALS:
 
     // Signals for owned attributes [VariationPoint]
     void nameChanged(QString name);
     void rationaleChanged(QString rationale);
-    void preChangeValidationRuleChanged(QString preChangeValidationRule);
-    void modelChangeChanged(QObject *modelChange);
+    void preChangeValidationRuleChanged(QObject *preChangeValidationRule);
+    void modelChangesChanged(QList<QObject *> modelChanges);
+    void addedElementsChanged(QList<QObject *> addedElements);
 
 protected:
     virtual void setGroupProperties();

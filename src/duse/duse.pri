@@ -5,6 +5,7 @@ HEADERS += \
     qdusedesigndimension.h \
     qdusevariationpoint.h \
     qdusedesigndimensioninstance.h \
+    qdusemodelchange.h \
     qdusequalitymetric.h
 
 PRIVATE_HEADERS += \
@@ -12,6 +13,7 @@ PRIVATE_HEADERS += \
     qobjects/qdusedesigndimensionobject_p.h \
     qobjects/qdusevariationpointobject_p.h \
     qobjects/qdusedesigndimensioninstanceobject_p.h \
+    qobjects/qdusemodelchangeobject_p.h \
     qobjects/qdusequalitymetricobject_p.h
 
 SOURCES += \
@@ -24,5 +26,7 @@ SOURCES += \
     qdusevariationpoint.cpp \
     qobjects/qdusedesigndimensioninstanceobject.cpp \
     qdusedesigndimensioninstance.cpp \
+    qobjects/qdusemodelchangeobject.cpp \
+    qdusemodelchange.cpp \
     qobjects/qdusequalitymetricobject.cpp \
     qdusequalitymetric.cpp

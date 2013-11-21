@@ -42,7 +42,9 @@
 #include "private/qmodelingobject_p.h"
 
 #include <QtDuse/QDuseVariationPoint>
-#include <QtUml/QUmlProperty>
+#include <QtDuse/QDuseModelChange>
+#include <QtUml/QUmlElement>
+#include <QtUml/QUmlOpaqueExpression>
 
 QT_BEGIN_NAMESPACE
 
@@ -65,17 +67,28 @@ QString QDuseVariationPointObject::rationale() const
     return qmodelingelementproperty_cast<QDuseVariationPoint *>(this)->rationale();
 }
 
-QString QDuseVariationPointObject::preChangeValidationRule() const
+QObject *QDuseVariationPointObject::preChangeValidationRule() const
 {
-    return qmodelingelementproperty_cast<QDuseVariationPoint *>(this)->preChangeValidationRule();
-}
-
-QObject *QDuseVariationPointObject::modelChange() const
-{
-    if (!qmodelingelementproperty_cast<QDuseVariationPoint *>(this)->modelChange())
+    if (!qmodelingelementproperty_cast<QDuseVariationPoint *>(this)->preChangeValidationRule())
         return 0;
     else
-        return qmodelingelementproperty_cast<QDuseVariationPoint *>(this)->modelChange()->asQModelingObject();
+        return qmodelingelementproperty_cast<QDuseVariationPoint *>(this)->preChangeValidationRule()->asQModelingObject();
+}
+
+const QList<QObject *> QDuseVariationPointObject::modelChanges() const
+{
+    QList<QObject *> list;
+    foreach (QDuseModelChange *element, qmodelingelementproperty_cast<QDuseVariationPoint *>(this)->modelChanges())
+        list.append(element->asQModelingObject());
+    return list;
+}
+
+const QList<QObject *> QDuseVariationPointObject::addedElements() const
+{
+    QList<QObject *> list;
+    foreach (QUmlElement *element, qmodelingelementproperty_cast<QDuseVariationPoint *>(this)->addedElements())
+        list.append(element->asQModelingObject());
+    return list;
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [VariationPoint]
@@ -92,16 +105,34 @@ void QDuseVariationPointObject::setRationale(QString rationale)
     emit rationaleChanged(this->rationale());
 }
 
-void QDuseVariationPointObject::setPreChangeValidationRule(QString preChangeValidationRule)
+void QDuseVariationPointObject::setPreChangeValidationRule(QObject *preChangeValidationRule)
 {
-    qmodelingelementproperty_cast<QDuseVariationPoint *>(this)->setPreChangeValidationRule(preChangeValidationRule);
+    qmodelingelementproperty_cast<QDuseVariationPoint *>(this)->setPreChangeValidationRule(qmodelingelementproperty_cast<QUmlOpaqueExpression *>(preChangeValidationRule));
     emit preChangeValidationRuleChanged(this->preChangeValidationRule());
 }
 
-void QDuseVariationPointObject::setModelChange(QObject *modelChange)
+void QDuseVariationPointObject::addModelChange(QObject *modelChange)
 {
-    qmodelingelementproperty_cast<QDuseVariationPoint *>(this)->setModelChange(qmodelingelementproperty_cast<QUmlProperty *>(modelChange));
-    emit modelChangeChanged(this->modelChange());
+    qmodelingelementproperty_cast<QDuseVariationPoint *>(this)->addModelChange(qmodelingelementproperty_cast<QDuseModelChange *>(modelChange));
+    emit modelChangesChanged(this->modelChanges());
+}
+
+void QDuseVariationPointObject::removeModelChange(QObject *modelChange)
+{
+    qmodelingelementproperty_cast<QDuseVariationPoint *>(this)->removeModelChange(qmodelingelementproperty_cast<QDuseModelChange *>(modelChange));
+    emit modelChangesChanged(this->modelChanges());
+}
+
+void QDuseVariationPointObject::addAddedElement(QObject *addedElement)
+{
+    qmodelingelementproperty_cast<QDuseVariationPoint *>(this)->addAddedElement(qmodelingelementproperty_cast<QUmlElement *>(addedElement));
+    emit addedElementsChanged(this->addedElements());
+}
+
+void QDuseVariationPointObject::removeAddedElement(QObject *addedElement)
+{
+    qmodelingelementproperty_cast<QDuseVariationPoint *>(this)->removeAddedElement(qmodelingelementproperty_cast<QUmlElement *>(addedElement));
+    emit addedElementsChanged(this->addedElements());
 }
 
 
@@ -117,7 +148,8 @@ void QDuseVariationPointObject::setGroupProperties()
     d->groupProperties.insert(QStringLiteral("QDuseVariationPoint"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
     d->groupProperties.insert(QStringLiteral("QDuseVariationPoint"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("rationale"))));
     d->groupProperties.insert(QStringLiteral("QDuseVariationPoint"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("preChangeValidationRule"))));
-    d->groupProperties.insert(QStringLiteral("QDuseVariationPoint"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("modelChange"))));
+    d->groupProperties.insert(QStringLiteral("QDuseVariationPoint"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("modelChanges"))));
+    d->groupProperties.insert(QStringLiteral("QDuseVariationPoint"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("addedElements"))));
 }
 
 void QDuseVariationPointObject::setPropertyData()
@@ -142,9 +174,9 @@ void QDuseVariationPointObject::setPropertyData()
     Q_DECLARE_METAPROPERTY_INFO(QDuseVariationPoint, rationale, SubsettedPropertiesRole, QStringLiteral(""));
     Q_DECLARE_METAPROPERTY_INFO(QDuseVariationPoint, rationale, OppositeEndRole, QStringLiteral(""));
 
-    Q_DECLARE_METAPROPERTY_INFO(QDuseVariationPoint, preChangeValidationRule, AggregationRole, QStringLiteral("none"));
+    Q_DECLARE_METAPROPERTY_INFO(QDuseVariationPoint, preChangeValidationRule, AggregationRole, QStringLiteral("composite"));
     Q_DECLARE_METAPROPERTY_INFO(QDuseVariationPoint, preChangeValidationRule, PropertyClassRole, QStringLiteral("QDuseVariationPoint"));
-    Q_DECLARE_METAPROPERTY_INFO(QDuseVariationPoint, preChangeValidationRule, PropertyTypeRole, QStringLiteral("QString"));
+    Q_DECLARE_METAPROPERTY_INFO(QDuseVariationPoint, preChangeValidationRule, PropertyTypeRole, QStringLiteral("QUmlOpaqueExpression *"));
     Q_DECLARE_METAPROPERTY_INFO(QDuseVariationPoint, preChangeValidationRule, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QDuseVariationPoint, preChangeValidationRule, IsDerivedUnionRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QDuseVariationPoint, preChangeValidationRule, DocumentationRole, QStringLiteral("A set of rules which should be evaluated as true if design space locations containing such variation point are to be considered as valid ones."));
@@ -152,15 +184,25 @@ void QDuseVariationPointObject::setPropertyData()
     Q_DECLARE_METAPROPERTY_INFO(QDuseVariationPoint, preChangeValidationRule, SubsettedPropertiesRole, QStringLiteral(""));
     Q_DECLARE_METAPROPERTY_INFO(QDuseVariationPoint, preChangeValidationRule, OppositeEndRole, QStringLiteral(""));
 
-    Q_DECLARE_METAPROPERTY_INFO(QDuseVariationPoint, modelChange, AggregationRole, QStringLiteral("none"));
-    Q_DECLARE_METAPROPERTY_INFO(QDuseVariationPoint, modelChange, PropertyClassRole, QStringLiteral("QDuseVariationPoint"));
-    Q_DECLARE_METAPROPERTY_INFO(QDuseVariationPoint, modelChange, PropertyTypeRole, QStringLiteral("QUmlProperty *"));
-    Q_DECLARE_METAPROPERTY_INFO(QDuseVariationPoint, modelChange, IsDerivedRole, false);
-    Q_DECLARE_METAPROPERTY_INFO(QDuseVariationPoint, modelChange, IsDerivedUnionRole, false);
-    Q_DECLARE_METAPROPERTY_INFO(QDuseVariationPoint, modelChange, DocumentationRole, QStringLiteral("The architectural changes to be enacted as contributions arosen from this variation point. The complete set of architectural changes is the merge of architectural contributions from all involved variation points."));
-    Q_DECLARE_METAPROPERTY_INFO(QDuseVariationPoint, modelChange, RedefinedPropertiesRole, QStringLiteral(""));
-    Q_DECLARE_METAPROPERTY_INFO(QDuseVariationPoint, modelChange, SubsettedPropertiesRole, QStringLiteral(""));
-    Q_DECLARE_METAPROPERTY_INFO(QDuseVariationPoint, modelChange, OppositeEndRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QDuseVariationPoint, modelChanges, AggregationRole, QStringLiteral("composite"));
+    Q_DECLARE_METAPROPERTY_INFO(QDuseVariationPoint, modelChanges, PropertyClassRole, QStringLiteral("QDuseVariationPoint"));
+    Q_DECLARE_METAPROPERTY_INFO(QDuseVariationPoint, modelChanges, PropertyTypeRole, QStringLiteral("QList<QDuseModelChange *>"));
+    Q_DECLARE_METAPROPERTY_INFO(QDuseVariationPoint, modelChanges, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QDuseVariationPoint, modelChanges, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QDuseVariationPoint, modelChanges, DocumentationRole, QStringLiteral("The architectural changes to be enacted as contributions arosen from this variation point. The complete set of architectural changes is the merge of architectural contributions from all involved variation points."));
+    Q_DECLARE_METAPROPERTY_INFO(QDuseVariationPoint, modelChanges, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QDuseVariationPoint, modelChanges, SubsettedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QDuseVariationPoint, modelChanges, OppositeEndRole, QStringLiteral(""));
+
+    Q_DECLARE_METAPROPERTY_INFO(QDuseVariationPoint, addedElements, AggregationRole, QStringLiteral("none"));
+    Q_DECLARE_METAPROPERTY_INFO(QDuseVariationPoint, addedElements, PropertyClassRole, QStringLiteral("QDuseVariationPoint"));
+    Q_DECLARE_METAPROPERTY_INFO(QDuseVariationPoint, addedElements, PropertyTypeRole, QStringLiteral("QList<QUmlElement *>"));
+    Q_DECLARE_METAPROPERTY_INFO(QDuseVariationPoint, addedElements, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QDuseVariationPoint, addedElements, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QDuseVariationPoint, addedElements, DocumentationRole, QStringLiteral("The architectural elements to be added as part of architecture redesign contribution arising from this variation point. The complete set of added architectural elements is the merge of architectural contributions from all involved variation points."));
+    Q_DECLARE_METAPROPERTY_INFO(QDuseVariationPoint, addedElements, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QDuseVariationPoint, addedElements, SubsettedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QDuseVariationPoint, addedElements, OppositeEndRole, QStringLiteral(""));
 
 }
 

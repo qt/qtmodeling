@@ -61,9 +61,9 @@ class Q_DUSE_EXPORT QDuseDesignDimensionObject : public QModelingObject
 
     // Properties [DesignDimension]
     Q_PROPERTY(QString name READ name WRITE setName NOTIFY nameChanged)
-    Q_PROPERTY(QString instanceSelectionRule READ instanceSelectionRule WRITE setInstanceSelectionRule NOTIFY instanceSelectionRuleChanged)
+    Q_PROPERTY(QObject * instanceSelectionRule READ instanceSelectionRule WRITE setInstanceSelectionRule NOTIFY instanceSelectionRuleChanged)
     Q_PROPERTY(QSet<QObject *> requiredPreviousEvaluations READ requiredPreviousEvaluations NOTIFY requiredPreviousEvaluationsChanged)
-    Q_PROPERTY(QSet<QObject *> variationPoints READ variationPoints NOTIFY variationPointsChanged)
+    Q_PROPERTY(QList<QObject *> variationPoints READ variationPoints NOTIFY variationPointsChanged)
     Q_PROPERTY(QSet<QObject *> designDimensionInstances READ designDimensionInstances NOTIFY designDimensionInstancesChanged)
     Q_PROPERTY(bool enabled READ enabled WRITE setEnabled NOTIFY enabledChanged)
 
@@ -72,9 +72,9 @@ public:
 
     // Owned attributes [DesignDimension]
     Q_INVOKABLE QString name() const;
-    Q_INVOKABLE QString instanceSelectionRule() const;
+    Q_INVOKABLE QObject *instanceSelectionRule() const;
     Q_INVOKABLE const QSet<QObject *> requiredPreviousEvaluations() const;
-    Q_INVOKABLE const QSet<QObject *> variationPoints() const;
+    Q_INVOKABLE const QList<QObject *> variationPoints() const;
     Q_INVOKABLE const QSet<QObject *> designDimensionInstances() const;
     Q_INVOKABLE bool enabled() const;
 
@@ -82,7 +82,7 @@ public Q_SLOTS:
 
     // Slots for owned attributes [DesignDimension]
     void setName(QString name);
-    void setInstanceSelectionRule(QString instanceSelectionRule);
+    void setInstanceSelectionRule(QObject *instanceSelectionRule = 0);
     void addRequiredPreviousEvaluation(QObject *requiredPreviousEvaluation);
     void removeRequiredPreviousEvaluation(QObject *requiredPreviousEvaluation);
     void addVariationPoint(QObject *variationPoint);
@@ -95,9 +95,9 @@ Q_SIGNALS:
 
     // Signals for owned attributes [DesignDimension]
     void nameChanged(QString name);
-    void instanceSelectionRuleChanged(QString instanceSelectionRule);
+    void instanceSelectionRuleChanged(QObject *instanceSelectionRule);
     void requiredPreviousEvaluationsChanged(QSet<QObject *> requiredPreviousEvaluations);
-    void variationPointsChanged(QSet<QObject *> variationPoints);
+    void variationPointsChanged(QList<QObject *> variationPoints);
     void designDimensionInstancesChanged(QSet<QObject *> designDimensionInstances);
     void enabledChanged(bool enabled);
 

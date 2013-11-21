@@ -7,6 +7,12 @@
     <elementImport xmi:type="uml:ElementImport" xmi:id="ElementImport.0">
       <importedElement href="http://www.omg.org/spec/UML/20110701/UML.xmi#Property"/>
     </elementImport>
+    <elementImport xmi:type="uml:ElementImport" xmi:id="ElementImport.0">
+      <importedElement href="http://www.omg.org/spec/UML/20110701/UML.xmi#OpaqueExpression"/>
+    </elementImport>
+    <elementImport xmi:type="uml:ElementImport" xmi:id="ElementImport.0">
+      <importedElement href="http://www.omg.org/spec/UML/20110701/UML.xmi#Element"/>
+    </elementImport>
     <packagedElement xmi:type="uml:Association" name="A_designSpace_designDimension" xmi:id="A_designSpace_designDimension">
       <memberEnd xmi:idref="DesignSpace-designDimension"/>
       <memberEnd xmi:idref="A_designSpace_designDimension-designSpace"/>
@@ -53,7 +59,7 @@
       </ownedComment>
       <ownedAttribute xmi:type="uml:Property" name="name" visibility="public" xmi:id="DesignSpace-name">
       <ownedComment xmi:type="uml:Comment" xmi:id="DesignSpace-name-_ownedComment.0" annotatedElement="DesignSpace-name">
-        <body>The design space's name.</body>
+        <body>The design space name.</body>
       </ownedComment>
         <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
       </ownedAttribute>
@@ -84,11 +90,11 @@
         </ownedComment>
         <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" visibility="public" name="instanceSelectionRule" xmi:id="DesignDimension-instanceSelectionRule">
+      <ownedAttribute xmi:type="uml:Property" visibility="public" name="instanceSelectionRule" aggregation="composite" xmi:id="DesignDimension-instanceSelectionRule">
         <ownedComment xmi:type="uml:Comment" xmi:id="DesignDimension-instanceSelectionRule-_ownedComment.0" annotatedElement="DesignDimension-instanceSelectionRule">
           <body>The rule for detecting a specific locus of architectural decision related to this design dimension. Such rule relies on the accompanying UML profile for the specific application domain, in order to identify the decision loci.</body>
         </ownedComment>
-        <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
+        <type href="http://www.omg.org/spec/UML/20110701/UML.xmi#OpaqueExpression"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="uml:Property" name="requiredPreviousEvaluation" visibility="public" type="DesignDimension" xmi:id="DesignDimension-requiredPreviousEvaluation">
         <ownedComment xmi:type="uml:Comment" xmi:id="DesignDimension-requiredPreviousEvaluation-_ownedComment.0" annotatedElement="DesignDimension-requiredPreviousEvaluation">
@@ -98,7 +104,7 @@
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" value="*" xmi:id="DesignDimension-requiredPreviousEvaluation-LiteralUnlimitedNatural.1"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="DesignDimension-requiredPreviousEvaluation-LiteralInteger.1"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" name="variationPoint" visibility="public" type="VariationPoint" aggregation="composite" xmi:id="DesignDimension-variationPoint">
+      <ownedAttribute xmi:type="uml:Property" name="variationPoint" visibility="public" type="VariationPoint" aggregation="composite" isOrdered="true" xmi:id="DesignDimension-variationPoint">
         <ownedComment xmi:type="uml:Comment" xmi:id="DesignDimension-variationPoint-_ownedComment.0" annotatedElement="DesignDimension-variationPoint">
           <body>The design dimension's variation points (alternative solutions for the design dimension's concern).</body>
         </ownedComment>
@@ -137,23 +143,46 @@
         </ownedComment>
         <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" visibility="public" name="preChangeValidationRule" xmi:id="VariationPoint-preChangeValidationRule">
+      <ownedAttribute xmi:type="uml:Property" visibility="public" name="preChangeValidationRule" aggregation="composite" xmi:id="VariationPoint-preChangeValidationRule">
         <ownedComment xmi:type="uml:Comment" xmi:id="VariationPoint-preChangeValidationRule-_ownedComment.0" annotatedElement="VariationPoint-preChangeValidationRule">
           <body>A set of rules which should be evaluated as true if design space locations containing such variation point are to be considered as valid ones.</body>
         </ownedComment>
-        <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
+        <type href="http://www.omg.org/spec/UML/20110701/UML.xmi#OpaqueExpression"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" visibility="public" name="modelChange" isOrdered="true" xmi:id="VariationPoint-modelChange">
+      <ownedAttribute xmi:type="uml:Property" visibility="public" name="modelChange" isOrdered="true" type="ModelChange" aggregation="composite" xmi:id="VariationPoint-modelChange">
         <ownedComment xmi:type="uml:Comment" xmi:id="VariationPoint-modelChange-_ownedComment.0" annotatedElement="VariationPoint-modelChange">
           <body>The architectural changes to be enacted as contributions arosen from this variation point. The complete set of architectural changes is the merge of architectural contributions from all involved variation points.</body>
         </ownedComment>
-        <type href="http://www.omg.org/spec/UML/20110701/UML.xmi#Property"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" value="*" xmi:id="VariationPoint-modelChange-LiteralUnlimitedNatural.1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="VariationPoint-modelChange-LiteralInteger.1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" visibility="public" name="addedElement" isOrdered="true" xmi:id="VariationPoint-addedElement">
+        <ownedComment xmi:type="uml:Comment" xmi:id="VariationPoint-addedElement-_ownedComment.0" annotatedElement="VariationPoint-addedElement">
+          <body>The architectural elements to be added as part of architecture redesign contribution arising from this variation point. The complete set of added architectural elements is the merge of architectural contributions from all involved variation points.</body>
+        </ownedComment>
+        <type href="http://www.omg.org/spec/UML/20110701/UML.xmi#Element"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" value="*" xmi:id="VariationPoint-addedElements-LiteralUnlimitedNatural.1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="VariationPoint-addedElements-LiteralInteger.1"/>
       </ownedAttribute>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" name="DesignDimensionInstance" xmi:id="DesignDimensionInstance">
       <ownedComment xmi:type="uml:Comment" xmi:id="DesignDimensionInstance-_ownedComment.0" annotatedElement="DesignDimensionInstance">
         <body>A specific design dimenstion instance created to tackle a particular locus of architectural decision in the input model.</body>
       </ownedComment>
+      <ownedAttribute xmi:type="uml:Property" visibility="public" name="targetInstance" xmi:id="DesignDimensionInstance-targetInstance">
+        <type href="http://www.omg.org/spec/UML/20110701/UML.xmi#Element"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" name="ModelChange" xmi:id="ModelChange">
+      <ownedAttribute xmi:type="uml:Property" visibility="public" name="targetSelectionRule" aggregation="composite" xmi:id="ModelChange-targetSelectionRule">
+        <type href="http://www.omg.org/spec/UML/20110701/UML.xmi#OpaqueExpression"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" visibility="public" name="valueSelectionRule" aggregation="composite" xmi:id="ModelChange-valueSelectionRule">
+        <type href="http://www.omg.org/spec/UML/20110701/UML.xmi#OpaqueExpression"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" visibility="public" name="targetProperty" xmi:id="ModelChange-targetProperty">
+        <type href="http://www.omg.org/spec/UML/20110701/UML.xmi#Property"/>
+      </ownedAttribute>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" name="QualityMetric" xmi:id="QualityMetric">
       <ownedComment xmi:type="uml:Comment" xmi:id="QualityMetric-_ownedComment.0" annotatedElement="QualityMetric">
@@ -171,11 +200,11 @@
         </ownedComment>
         <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#Real"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" visibility="public" name="expression" xmi:id="QualityMetric-expression">
+      <ownedAttribute xmi:type="uml:Property" visibility="public" name="expression" aggregation="composite" xmi:id="QualityMetric-expression">
         <ownedComment xmi:type="uml:Comment" xmi:id="QualityMetric-expression-_ownedComment.0" annotatedElement="QualityMetric-expression">
           <body>The quality metric's evaluation expression.</body>
         </ownedComment>
-        <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
+        <type href="http://www.omg.org/spec/UML/20110701/UML.xmi#OpaqueExpression"/>
       </ownedAttribute>
     </packagedElement>
   </uml:Package>

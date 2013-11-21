@@ -42,6 +42,8 @@
 
 #include "private/qdusedesigndimensioninstanceobject_p.h"
 
+#include <QtUml/QUmlElement>
+
 QT_BEGIN_NAMESPACE
 
 /*!
@@ -51,7 +53,8 @@ QT_BEGIN_NAMESPACE
 
     \brief A specific design dimenstion instance created to tackle a particular locus of architectural decision in the input model.
  */
-QDuseDesignDimensionInstance::QDuseDesignDimensionInstance(bool createQModelingObject)
+QDuseDesignDimensionInstance::QDuseDesignDimensionInstance(bool createQModelingObject) :
+    _targetInstance(0)
 {
     if (createQModelingObject)
         _qModelingObject = qobject_cast<QModelingObject *>(new QDuseDesignDimensionInstanceObject(this));
@@ -60,7 +63,30 @@ QDuseDesignDimensionInstance::QDuseDesignDimensionInstance(bool createQModelingO
 QModelingElement *QDuseDesignDimensionInstance::clone() const
 {
     QDuseDesignDimensionInstance *c = new QDuseDesignDimensionInstance;
+    if (targetInstance())
+        c->setTargetInstance(dynamic_cast<QUmlElement *>(targetInstance()->clone()));
     return c;
+}
+
+// OWNED ATTRIBUTES
+
+
+QUmlElement *QDuseDesignDimensionInstance::targetInstance() const
+{
+    // This is a read-write property
+
+    return _targetInstance;
+}
+
+void QDuseDesignDimensionInstance::setTargetInstance(QUmlElement *targetInstance)
+{
+    // This is a read-write property
+
+    if (_targetInstance != targetInstance) {
+        _targetInstance = targetInstance;
+        if (targetInstance && targetInstance->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(targetInstance->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setTargetInstance()));
+    }
 }
 
 QT_END_NAMESPACE

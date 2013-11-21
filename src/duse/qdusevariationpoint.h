@@ -51,7 +51,9 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtDuse)
 
-class QUmlProperty;
+class QDuseModelChange;
+class QUmlElement;
+class QUmlOpaqueExpression;
 
 class Q_DUSE_EXPORT QDuseVariationPoint : public QModelingElement
 {
@@ -65,16 +67,21 @@ public:
     void setName(QString name);
     QString rationale() const;
     void setRationale(QString rationale);
-    QString preChangeValidationRule() const;
-    void setPreChangeValidationRule(QString preChangeValidationRule);
-    QUmlProperty *modelChange() const;
-    void setModelChange(QUmlProperty *modelChange);
+    QUmlOpaqueExpression *preChangeValidationRule() const;
+    void setPreChangeValidationRule(QUmlOpaqueExpression *preChangeValidationRule);
+    const QList<QDuseModelChange *> modelChanges() const;
+    void addModelChange(QDuseModelChange *modelChange);
+    void removeModelChange(QDuseModelChange *modelChange);
+    const QList<QUmlElement *> addedElements() const;
+    void addAddedElement(QUmlElement *addedElement);
+    void removeAddedElement(QUmlElement *addedElement);
 
 protected:
     QString _name;
     QString _rationale;
-    QString _preChangeValidationRule;
-    QUmlProperty *_modelChange;
+    QUmlOpaqueExpression *_preChangeValidationRule;
+    QList<QDuseModelChange *> _modelChanges;
+    QList<QUmlElement *> _addedElements;
 };
 
 QT_END_NAMESPACE

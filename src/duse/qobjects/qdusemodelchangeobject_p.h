@@ -38,12 +38,12 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef QDUSEDESIGNDIMENSION_H
-#define QDUSEDESIGNDIMENSION_H
+#ifndef QDUSEMODELCHANGEOBJECT_H
+#define QDUSEMODELCHANGEOBJECT_H
 
 #include <QtDuse/QtDuseGlobal>
 
-#include <QtModeling/QModelingElement>
+#include <QtModeling/QModelingObject>
 
 QT_BEGIN_HEADER
 
@@ -51,48 +51,49 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtDuse)
 
-class QDuseDesignDimensionInstance;
-class QDuseVariationPoint;
-class QUmlOpaqueExpression;
-
-class Q_DUSE_EXPORT QDuseDesignDimension : public QModelingElement
+class QDuseModelChange;
+class QModelingObjectPrivate;
+class Q_DUSE_EXPORT QDuseModelChangeObject : public QModelingObject
 {
+    Q_OBJECT
+    Q_DISABLE_COPY(QDuseModelChangeObject)
+    Q_DECLARE_PRIVATE(QModelingObject)
+
+    // Properties [ModelChange]
+    Q_PROPERTY(QObject * targetSelectionRule READ targetSelectionRule WRITE setTargetSelectionRule NOTIFY targetSelectionRuleChanged)
+    Q_PROPERTY(QObject * valueSelectionRule READ valueSelectionRule WRITE setValueSelectionRule NOTIFY valueSelectionRuleChanged)
+    Q_PROPERTY(QObject * targetProperty READ targetProperty WRITE setTargetProperty NOTIFY targetPropertyChanged)
+
 public:
-    explicit QDuseDesignDimension(bool createQModelingObject = true);
+    Q_INVOKABLE explicit QDuseModelChangeObject(QDuseModelChange *modelingElement);
 
-    virtual QModelingElement *clone() const;
+    // Owned attributes [ModelChange]
+    Q_INVOKABLE QObject *targetSelectionRule() const;
+    Q_INVOKABLE QObject *valueSelectionRule() const;
+    Q_INVOKABLE QObject *targetProperty() const;
 
-    // Owned attributes
-    QString name() const;
-    void setName(QString name);
-    QUmlOpaqueExpression *instanceSelectionRule() const;
-    void setInstanceSelectionRule(QUmlOpaqueExpression *instanceSelectionRule);
-    const QSet<QDuseDesignDimension *> requiredPreviousEvaluations() const;
-    void addRequiredPreviousEvaluation(QDuseDesignDimension *requiredPreviousEvaluation);
-    void removeRequiredPreviousEvaluation(QDuseDesignDimension *requiredPreviousEvaluation);
-    const QList<QDuseVariationPoint *> variationPoints() const;
-    void addVariationPoint(QDuseVariationPoint *variationPoint);
-    void removeVariationPoint(QDuseVariationPoint *variationPoint);
-    const QSet<QDuseDesignDimensionInstance *> designDimensionInstances() const;
-    void addDesignDimensionInstance(QDuseDesignDimensionInstance *designDimensionInstance);
-    void removeDesignDimensionInstance(QDuseDesignDimensionInstance *designDimensionInstance);
-    bool enabled() const;
-    void setEnabled(bool enabled);
+public Q_SLOTS:
+
+    // Slots for owned attributes [ModelChange]
+    void setTargetSelectionRule(QObject *targetSelectionRule = 0);
+    void setValueSelectionRule(QObject *valueSelectionRule = 0);
+    void setTargetProperty(QObject *targetProperty = 0);
+
+Q_SIGNALS:
+
+    // Signals for owned attributes [ModelChange]
+    void targetSelectionRuleChanged(QObject *targetSelectionRule);
+    void valueSelectionRuleChanged(QObject *valueSelectionRule);
+    void targetPropertyChanged(QObject *targetProperty);
 
 protected:
-    QString _name;
-    QUmlOpaqueExpression *_instanceSelectionRule;
-    QSet<QDuseDesignDimension *> _requiredPreviousEvaluations;
-    QList<QDuseVariationPoint *> _variationPoints;
-    QSet<QDuseDesignDimensionInstance *> _designDimensionInstances;
-    bool _enabled;
+    virtual void setGroupProperties();
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE
 
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE(QDuseDesignDimension) *)
-
 QT_END_HEADER
 
-#endif // QDUSEDESIGNDIMENSION_H
+#endif // QDUSEMODELCHANGEOBJECT_H
 

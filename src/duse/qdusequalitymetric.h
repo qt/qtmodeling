@@ -51,6 +51,8 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtDuse)
 
+class QUmlOpaqueExpression;
+
 class Q_DUSE_EXPORT QDuseQualityMetric : public QModelingElement
 {
 public:
@@ -63,13 +65,13 @@ public:
     void setName(QString name);
     double value() const;
     void setValue(double value);
-    QString expression() const;
-    void setExpression(QString expression);
+    QUmlOpaqueExpression *expression() const;
+    void setExpression(QUmlOpaqueExpression *expression);
 
 protected:
     QString _name;
     double _value;
-    QString _expression;
+    QUmlOpaqueExpression *_expression;
 };
 
 QT_END_NAMESPACE

@@ -42,7 +42,9 @@
 
 #include "private/qdusevariationpointobject_p.h"
 
-#include <QtUml/QUmlProperty>
+#include <QtDuse/QDuseModelChange>
+#include <QtUml/QUmlElement>
+#include <QtUml/QUmlOpaqueExpression>
 
 QT_BEGIN_NAMESPACE
 
@@ -54,7 +56,7 @@ QT_BEGIN_NAMESPACE
     \brief A variation point represents a specific solution for a given design dimension. A variation point entails validation rules which check for valid combinations of variation points and a script which defines the architectural changes to be enacted from such solution.
  */
 QDuseVariationPoint::QDuseVariationPoint(bool createQModelingObject) :
-    _modelChange(0)
+    _preChangeValidationRule(0)
 {
     if (createQModelingObject)
         _qModelingObject = qobject_cast<QModelingObject *>(new QDuseVariationPointObject(this));
@@ -65,9 +67,12 @@ QModelingElement *QDuseVariationPoint::clone() const
     QDuseVariationPoint *c = new QDuseVariationPoint;
     c->setName(name());
     c->setRationale(rationale());
-    c->setPreChangeValidationRule(preChangeValidationRule());
-    if (modelChange())
-        c->setModelChange(dynamic_cast<QUmlProperty *>(modelChange()->clone()));
+    if (preChangeValidationRule())
+        c->setPreChangeValidationRule(dynamic_cast<QUmlOpaqueExpression *>(preChangeValidationRule()->clone()));
+    foreach (QDuseModelChange *element, modelChanges())
+        c->addModelChange(dynamic_cast<QDuseModelChange *>(element->clone()));
+    foreach (QUmlElement *element, addedElements())
+        c->addAddedElement(dynamic_cast<QUmlElement *>(element->clone()));
     return c;
 }
 
@@ -114,40 +119,85 @@ void QDuseVariationPoint::setRationale(QString rationale)
 /*!
     A set of rules which should be evaluated as true if design space locations containing such variation point are to be considered as valid ones.
  */
-QString QDuseVariationPoint::preChangeValidationRule() const
+QUmlOpaqueExpression *QDuseVariationPoint::preChangeValidationRule() const
 {
     // This is a read-write property
 
     return _preChangeValidationRule;
 }
 
-void QDuseVariationPoint::setPreChangeValidationRule(QString preChangeValidationRule)
+void QDuseVariationPoint::setPreChangeValidationRule(QUmlOpaqueExpression *preChangeValidationRule)
 {
     // This is a read-write property
 
     if (_preChangeValidationRule != preChangeValidationRule) {
         _preChangeValidationRule = preChangeValidationRule;
+        if (preChangeValidationRule && preChangeValidationRule->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(preChangeValidationRule->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setPreChangeValidationRule()));
+        preChangeValidationRule->asQModelingObject()->setParent(this->asQModelingObject());
     }
 }
 
 /*!
     The architectural changes to be enacted as contributions arosen from this variation point. The complete set of architectural changes is the merge of architectural contributions from all involved variation points.
  */
-QUmlProperty *QDuseVariationPoint::modelChange() const
+const QList<QDuseModelChange *> QDuseVariationPoint::modelChanges() const
 {
     // This is a read-write property
 
-    return _modelChange;
+    return _modelChanges;
 }
 
-void QDuseVariationPoint::setModelChange(QUmlProperty *modelChange)
+void QDuseVariationPoint::addModelChange(QDuseModelChange *modelChange)
 {
     // This is a read-write property
 
-    if (_modelChange != modelChange) {
-        _modelChange = modelChange;
+    if (!_modelChanges.contains(modelChange)) {
+        _modelChanges.append(modelChange);
         if (modelChange && modelChange->asQModelingObject() && this->asQModelingObject())
-            QObject::connect(modelChange->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setModelChange()));
+            QObject::connect(modelChange->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeModelChange(QObject *)));
+        modelChange->asQModelingObject()->setParent(this->asQModelingObject());
+    }
+}
+
+void QDuseVariationPoint::removeModelChange(QDuseModelChange *modelChange)
+{
+    // This is a read-write property
+
+    if (_modelChanges.contains(modelChange)) {
+        _modelChanges.removeAll(modelChange);
+        if (modelChange->asQModelingObject())
+            modelChange->asQModelingObject()->setParent(0);
+    }
+}
+
+/*!
+    The architectural elements to be added as part of architecture redesign contribution arising from this variation point. The complete set of added architectural elements is the merge of architectural contributions from all involved variation points.
+ */
+const QList<QUmlElement *> QDuseVariationPoint::addedElements() const
+{
+    // This is a read-write property
+
+    return _addedElements;
+}
+
+void QDuseVariationPoint::addAddedElement(QUmlElement *addedElement)
+{
+    // This is a read-write property
+
+    if (!_addedElements.contains(addedElement)) {
+        _addedElements.append(addedElement);
+        if (addedElement && addedElement->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(addedElement->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeAddedElement(QObject *)));
+    }
+}
+
+void QDuseVariationPoint::removeAddedElement(QUmlElement *addedElement)
+{
+    // This is a read-write property
+
+    if (_addedElements.contains(addedElement)) {
+        _addedElements.removeAll(addedElement);
     }
 }
 

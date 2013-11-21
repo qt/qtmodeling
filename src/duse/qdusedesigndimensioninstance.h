@@ -51,6 +51,8 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtDuse)
 
+class QUmlElement;
+
 class Q_DUSE_EXPORT QDuseDesignDimensionInstance : public QModelingElement
 {
 public:
@@ -58,8 +60,12 @@ public:
 
     virtual QModelingElement *clone() const;
 
+    // Owned attributes
+    QUmlElement *targetInstance() const;
+    void setTargetInstance(QUmlElement *targetInstance);
 
 protected:
+    QUmlElement *_targetInstance;
 };
 
 QT_END_NAMESPACE

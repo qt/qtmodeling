@@ -59,12 +59,24 @@ class Q_DUSE_EXPORT QDuseDesignDimensionInstanceObject : public QModelingObject
     Q_DISABLE_COPY(QDuseDesignDimensionInstanceObject)
     Q_DECLARE_PRIVATE(QModelingObject)
 
+    // Properties [DesignDimensionInstance]
+    Q_PROPERTY(QObject * targetInstance READ targetInstance WRITE setTargetInstance NOTIFY targetInstanceChanged)
+
 public:
     Q_INVOKABLE explicit QDuseDesignDimensionInstanceObject(QDuseDesignDimensionInstance *modelingElement);
 
+    // Owned attributes [DesignDimensionInstance]
+    Q_INVOKABLE QObject *targetInstance() const;
+
 public Q_SLOTS:
 
+    // Slots for owned attributes [DesignDimensionInstance]
+    void setTargetInstance(QObject *targetInstance = 0);
+
 Q_SIGNALS:
+
+    // Signals for owned attributes [DesignDimensionInstance]
+    void targetInstanceChanged(QObject *targetInstance);
 
 protected:
     virtual void setGroupProperties();

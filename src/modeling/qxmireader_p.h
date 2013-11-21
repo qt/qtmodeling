@@ -67,6 +67,7 @@ public:
     QHash<QString, QModelingElement *> idMap;
     QHash< QString, QPair<QMetaModelPlugin *, QJsonObject> > metaModelPlugins;
     QHash<QString, QString> xmlNamespaceToImplementationNamespace;
+    QHash<QString, QString> xmlNamespaceToNamespaceUri;
     QStringList errors;
 };
 

@@ -42,6 +42,8 @@
 
 #include "private/qdusequalitymetricobject_p.h"
 
+#include <QtUml/QUmlOpaqueExpression>
+
 QT_BEGIN_NAMESPACE
 
 /*!
@@ -51,7 +53,8 @@ QT_BEGIN_NAMESPACE
 
     \brief A quality metric defined for the corresponding design space.
  */
-QDuseQualityMetric::QDuseQualityMetric(bool createQModelingObject)
+QDuseQualityMetric::QDuseQualityMetric(bool createQModelingObject) :
+    _expression(0)
 {
     if (createQModelingObject)
         _qModelingObject = qobject_cast<QModelingObject *>(new QDuseQualityMetricObject(this));
@@ -62,7 +65,8 @@ QModelingElement *QDuseQualityMetric::clone() const
     QDuseQualityMetric *c = new QDuseQualityMetric;
     c->setName(name());
     c->setValue(value());
-    c->setExpression(expression());
+    if (expression())
+        c->setExpression(dynamic_cast<QUmlOpaqueExpression *>(expression()->clone()));
     return c;
 }
 
@@ -109,19 +113,22 @@ void QDuseQualityMetric::setValue(double value)
 /*!
     The quality metric's evaluation expression.
  */
-QString QDuseQualityMetric::expression() const
+QUmlOpaqueExpression *QDuseQualityMetric::expression() const
 {
     // This is a read-write property
 
     return _expression;
 }
 
-void QDuseQualityMetric::setExpression(QString expression)
+void QDuseQualityMetric::setExpression(QUmlOpaqueExpression *expression)
 {
     // This is a read-write property
 
     if (_expression != expression) {
         _expression = expression;
+        if (expression && expression->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(expression->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setExpression()));
+        expression->asQModelingObject()->setParent(this->asQModelingObject());
     }
 }
 

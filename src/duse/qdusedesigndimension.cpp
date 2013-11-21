@@ -44,6 +44,7 @@
 
 #include <QtDuse/QDuseDesignDimensionInstance>
 #include <QtDuse/QDuseVariationPoint>
+#include <QtUml/QUmlOpaqueExpression>
 
 QT_BEGIN_NAMESPACE
 
@@ -54,7 +55,8 @@ QT_BEGIN_NAMESPACE
 
     \brief A design dimension captures a specific degree of freedom when designing architectures in the given application domain. A design dimension entails a set of variation points which denote alternative solutions for such degree of freedom. Optionally, a variation point may define validation rules which should return a true value if that variation point is to be considered valid for the corresponding input model. A variation point may also specify a set of other variation points which should be previously evaluated, defining a sort of design dimension dependency.
  */
-QDuseDesignDimension::QDuseDesignDimension(bool createQModelingObject)
+QDuseDesignDimension::QDuseDesignDimension(bool createQModelingObject) :
+    _instanceSelectionRule(0)
 {
     if (createQModelingObject)
         _qModelingObject = qobject_cast<QModelingObject *>(new QDuseDesignDimensionObject(this));
@@ -64,7 +66,8 @@ QModelingElement *QDuseDesignDimension::clone() const
 {
     QDuseDesignDimension *c = new QDuseDesignDimension;
     c->setName(name());
-    c->setInstanceSelectionRule(instanceSelectionRule());
+    if (instanceSelectionRule())
+        c->setInstanceSelectionRule(dynamic_cast<QUmlOpaqueExpression *>(instanceSelectionRule()->clone()));
     foreach (QDuseDesignDimension *element, requiredPreviousEvaluations())
         c->addRequiredPreviousEvaluation(dynamic_cast<QDuseDesignDimension *>(element->clone()));
     foreach (QDuseVariationPoint *element, variationPoints())
@@ -99,19 +102,22 @@ void QDuseDesignDimension::setName(QString name)
 /*!
     The rule for detecting a specific locus of architectural decision related to this design dimension. Such rule relies on the accompanying UML profile for the specific application domain, in order to identify the decision loci.
  */
-QString QDuseDesignDimension::instanceSelectionRule() const
+QUmlOpaqueExpression *QDuseDesignDimension::instanceSelectionRule() const
 {
     // This is a read-write property
 
     return _instanceSelectionRule;
 }
 
-void QDuseDesignDimension::setInstanceSelectionRule(QString instanceSelectionRule)
+void QDuseDesignDimension::setInstanceSelectionRule(QUmlOpaqueExpression *instanceSelectionRule)
 {
     // This is a read-write property
 
     if (_instanceSelectionRule != instanceSelectionRule) {
         _instanceSelectionRule = instanceSelectionRule;
+        if (instanceSelectionRule && instanceSelectionRule->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(instanceSelectionRule->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setInstanceSelectionRule()));
+        instanceSelectionRule->asQModelingObject()->setParent(this->asQModelingObject());
     }
 }
 
@@ -148,7 +154,7 @@ void QDuseDesignDimension::removeRequiredPreviousEvaluation(QDuseDesignDimension
 /*!
     The design dimension's variation points (alternative solutions for the design dimension's concern).
  */
-const QSet<QDuseVariationPoint *> QDuseDesignDimension::variationPoints() const
+const QList<QDuseVariationPoint *> QDuseDesignDimension::variationPoints() const
 {
     // This is a read-write property
 
@@ -160,7 +166,7 @@ void QDuseDesignDimension::addVariationPoint(QDuseVariationPoint *variationPoint
     // This is a read-write property
 
     if (!_variationPoints.contains(variationPoint)) {
-        _variationPoints.insert(variationPoint);
+        _variationPoints.append(variationPoint);
         if (variationPoint && variationPoint->asQModelingObject() && this->asQModelingObject())
             QObject::connect(variationPoint->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeVariationPoint(QObject *)));
         variationPoint->asQModelingObject()->setParent(this->asQModelingObject());
@@ -172,7 +178,7 @@ void QDuseDesignDimension::removeVariationPoint(QDuseVariationPoint *variationPo
     // This is a read-write property
 
     if (_variationPoints.contains(variationPoint)) {
-        _variationPoints.remove(variationPoint);
+        _variationPoints.removeAll(variationPoint);
         if (variationPoint->asQModelingObject())
             variationPoint->asQModelingObject()->setParent(0);
     }

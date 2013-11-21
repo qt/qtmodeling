@@ -96,6 +96,7 @@ QList<QModelingElement *> QXmiReader::readFile(QIODevice *device, QString import
         d->idMap.clear();
         d->errors.clear();
         d->xmlNamespaceToImplementationNamespace.clear();
+        d->xmlNamespaceToNamespaceUri.clear();
     }
     QXmlStreamReader reader;
     reader.setDevice(device);
@@ -151,6 +152,7 @@ QList<QModelingElement *> QXmiReader::readFile(QIODevice *device, QString import
             }
 
             foreach (const QXmlStreamNamespaceDeclaration &namespaceDeclaration, reader.namespaceDeclarations()) {
+                d->xmlNamespaceToNamespaceUri.insert(namespaceDeclaration.prefix().toString(), namespaceDeclaration.namespaceUri().toString());
                 QMetaModelPlugin *metaModelPlugin = d->metaModelPlugins.value(namespaceDeclaration.namespaceUri().toString()).first;
                 if (metaModelPlugin) {
                     d->xmlNamespaceToImplementationNamespace.insert(namespaceDeclaration.prefix().toString(), d->metaModelPlugins.value(namespaceDeclaration.namespaceUri().toString()).second.value(QStringLiteral("MetaModelPrefix")).toString());
@@ -164,11 +166,12 @@ QList<QModelingElement *> QXmiReader::readFile(QIODevice *device, QString import
                 xmiType = reader.qualifiedName().toString();
             if (xmiType.isEmpty() || d->xmlNamespaceToImplementationNamespace[xmiType.split(':').first()].isEmpty())
                 continue;
+            QString typeNamespaceUri = d->xmlNamespaceToNamespaceUri[xmiType.split(':').first()];
             xmiType = QStringLiteral("%1%2").arg(d->xmlNamespaceToImplementationNamespace[xmiType.split(':').first()]).arg(xmiType.split(':').last());
             QString instanceName = reader.attributes().value(QStringLiteral("name")).toString();
             if (instanceName.isEmpty())
                 instanceName = reader.attributes().value(QStringLiteral("xmi:id")).toString();
-            QModelingElement *modelingObject = createInstance(currentNamespaceUri, xmiType, instanceName);
+            QModelingElement *modelingObject = createInstance(typeNamespaceUri, xmiType, instanceName);
             if (modelingObject) {
                 d->idMap.insert(reader.attributes().value(QStringLiteral("xmi:id")).toString(), modelingObject);
                 if (!rootElement) {
@@ -219,6 +222,14 @@ QList<QModelingElement *> QXmiReader::readFile(QIODevice *device, QString import
                     reader.readNext();
                     top->setProperty(propertyName.toLatin1(), reader.text().toLatin1());
                 }
+                QString elementName = reader.name().toString();
+                elementName = elementName.left(1).toUpper() + elementName.mid(1);
+                int methodIndex;
+                if ((methodIndex = top->metaObject()->indexOfMethod(QStringLiteral("add%1(QString)").arg(elementName).toLatin1())) != -1) {
+                    QMetaMethod metaMethod = top->metaObject()->method(methodIndex);
+                    reader.readNext();
+                    metaMethod.invoke(top, ::Q_ARG(QString, reader.text().toString()));
+                }
                 continue;
             }
 
@@ -228,7 +239,10 @@ QList<QModelingElement *> QXmiReader::readFile(QIODevice *device, QString import
                 const QMetaObject *metaObject = modelingObject->asQModelingObject()->metaObject();
                 foreach (QXmlStreamAttribute attribute, reader.attributes()) {
                     int propertyIndex;
-                    if ((propertyIndex = metaObject->indexOfProperty(attribute.name().toString().toLatin1())) != -1) {
+                    QString elementName = attribute.name().toString();
+                    elementName = elementName.left(1).toUpper() + elementName.mid(1);
+                    if ((propertyIndex = metaObject->indexOfProperty(attribute.name().toString().toLatin1())) != -1 ||
+                            metaObject->indexOfMethod(QStringLiteral("add%1").arg(elementName).toLatin1()) != -1) {
                         QMetaProperty metaProperty = metaObject->property(propertyIndex);
                         if (metaProperty.type() == QVariant::Bool) {
                             if (!modelingObject->asQModelingObject()->setProperty(attribute.name().toString().toLatin1(), attribute.value().toString() == QStringLiteral("true") ? true:false))
@@ -252,8 +266,6 @@ QList<QModelingElement *> QXmiReader::readFile(QIODevice *device, QString import
                         else if (QString::fromLatin1(metaProperty.typeName()).endsWith('*')) {
                             QModelingElement *propertyObject = d->idMap.value(attribute.value().toString());
                             if (propertyObject) {
-                                QString elementName = attribute.name().toString();
-                                elementName = elementName.left(1).toUpper() + elementName.mid(1);
                                 int methodCount = modelingObject->asQModelingObject()->metaObject()->methodCount();
                                 int i;
                                 for (i = 0; i < methodCount; ++i) {

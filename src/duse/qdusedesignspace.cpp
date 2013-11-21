@@ -74,7 +74,7 @@ QModelingElement *QDuseDesignSpace::clone() const
 // OWNED ATTRIBUTES
 
 /*!
-    The design space's name.
+    The design space name.
  */
 QString QDuseDesignSpace::name() const
 {
