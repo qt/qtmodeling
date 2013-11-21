@@ -61,6 +61,11 @@ QString QDuseDesignSpaceObject::name() const
     return qmodelingelementproperty_cast<QDuseDesignSpace *>(this)->name();
 }
 
+QString QDuseDesignSpaceObject::requiredProfile() const
+{
+    return qmodelingelementproperty_cast<QDuseDesignSpace *>(this)->requiredProfile();
+}
+
 const QList<QObject *> QDuseDesignSpaceObject::designDimensions() const
 {
     QList<QObject *> list;
@@ -83,6 +88,12 @@ void QDuseDesignSpaceObject::setName(QString name)
 {
     qmodelingelementproperty_cast<QDuseDesignSpace *>(this)->setName(name);
     emit nameChanged(this->name());
+}
+
+void QDuseDesignSpaceObject::setRequiredProfile(QString requiredProfile)
+{
+    qmodelingelementproperty_cast<QDuseDesignSpace *>(this)->setRequiredProfile(requiredProfile);
+    emit requiredProfileChanged(this->requiredProfile());
 }
 
 void QDuseDesignSpaceObject::addDesignDimension(QObject *designDimension)
@@ -120,6 +131,7 @@ void QDuseDesignSpaceObject::setGroupProperties()
 
     d->propertyGroups << QStringLiteral("QDuseDesignSpace");
     d->groupProperties.insert(QStringLiteral("QDuseDesignSpace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
+    d->groupProperties.insert(QStringLiteral("QDuseDesignSpace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("requiredProfile"))));
     d->groupProperties.insert(QStringLiteral("QDuseDesignSpace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("designDimensions"))));
     d->groupProperties.insert(QStringLiteral("QDuseDesignSpace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualityMetrics"))));
 }
@@ -135,6 +147,16 @@ void QDuseDesignSpaceObject::setPropertyData()
     Q_DECLARE_METAPROPERTY_INFO(QDuseDesignSpace, name, RedefinedPropertiesRole, QStringLiteral(""));
     Q_DECLARE_METAPROPERTY_INFO(QDuseDesignSpace, name, SubsettedPropertiesRole, QStringLiteral(""));
     Q_DECLARE_METAPROPERTY_INFO(QDuseDesignSpace, name, OppositeEndRole, QStringLiteral(""));
+
+    Q_DECLARE_METAPROPERTY_INFO(QDuseDesignSpace, requiredProfile, AggregationRole, QStringLiteral("none"));
+    Q_DECLARE_METAPROPERTY_INFO(QDuseDesignSpace, requiredProfile, PropertyClassRole, QStringLiteral("QDuseDesignSpace"));
+    Q_DECLARE_METAPROPERTY_INFO(QDuseDesignSpace, requiredProfile, PropertyTypeRole, QStringLiteral("QString"));
+    Q_DECLARE_METAPROPERTY_INFO(QDuseDesignSpace, requiredProfile, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QDuseDesignSpace, requiredProfile, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QDuseDesignSpace, requiredProfile, DocumentationRole, QStringLiteral("The profile required to be applied in models manipulated by the design space."));
+    Q_DECLARE_METAPROPERTY_INFO(QDuseDesignSpace, requiredProfile, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QDuseDesignSpace, requiredProfile, SubsettedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QDuseDesignSpace, requiredProfile, OppositeEndRole, QStringLiteral(""));
 
     Q_DECLARE_METAPROPERTY_INFO(QDuseDesignSpace, designDimensions, AggregationRole, QStringLiteral("composite"));
     Q_DECLARE_METAPROPERTY_INFO(QDuseDesignSpace, designDimensions, PropertyClassRole, QStringLiteral("QDuseDesignSpace"));

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:duse="http://liveblue.wordpress.com/Duse" xmlns:uml="http://www.omg.org/spec/UML/20110701">
-  <duse:DesignSpace name="SADuse" xmi:id="SADuse">
+  <duse:DesignSpace name="SADuse" xmi:id="SADuse" requiredProfile="SADuseProfile">
     <qualityMetric xmi:type="duse:QualityMetric" name="Control Robustness" xmi:id="SADuse-ControlRobustness">
         <expression xmi:type="uml:OpaqueExpression" xmi:id="SADuse-ControlRobustness-Expression">
             <language>JavaScript</language>

@@ -162,7 +162,7 @@ void DesignSpaceExplorerPlugin::newDuseDesign()
 
                 bool found = false;
                 foreach (QObject *profileApplication, _core->projectController()->currentModelObjects().first()->property("profileApplications").value< QSet<QObject *> >()) {
-                    if ((profileApplication->property("appliedProfile").value<QObject *>())->property("name").toString() == _duseInstance.first()->asQModelingObject()->objectName() + QStringLiteral("Profile"))
+                    if ((profileApplication->property("appliedProfile").value<QObject *>())->property("name").toString() == _duseInstance.first()->asQModelingObject()->property("requiredProfile"))
                         found = true;
                 }
 

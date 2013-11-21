@@ -64,6 +64,7 @@ QModelingElement *QDuseDesignSpace::clone() const
 {
     QDuseDesignSpace *c = new QDuseDesignSpace;
     c->setName(name());
+    c->setRequiredProfile(requiredProfile());
     foreach (QDuseDesignDimension *element, designDimensions())
         c->addDesignDimension(dynamic_cast<QDuseDesignDimension *>(element->clone()));
     foreach (QDuseQualityMetric *element, qualityMetrics())
@@ -89,6 +90,25 @@ void QDuseDesignSpace::setName(QString name)
 
     if (_name != name) {
         _name = name;
+    }
+}
+
+/*!
+    The profile required to be applied in models manipulated by the design space.
+ */
+QString QDuseDesignSpace::requiredProfile() const
+{
+    // This is a read-write property
+
+    return _requiredProfile;
+}
+
+void QDuseDesignSpace::setRequiredProfile(QString requiredProfile)
+{
+    // This is a read-write property
+
+    if (_requiredProfile != requiredProfile) {
+        _requiredProfile = requiredProfile;
     }
 }
 

@@ -63,6 +63,12 @@
       </ownedComment>
         <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
       </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" name="requiredProfile" visibility="public" xmi:id="DesignSpace-requiredProfile">
+      <ownedComment xmi:type="uml:Comment" xmi:id="DesignSpace-requiredProfile-_ownedComment.0" annotatedElement="DesignSpace-requiredProfile">
+        <body>The profile required to be applied in models manipulated by the design space.</body>
+      </ownedComment>
+        <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#String"/>
+      </ownedAttribute>
       <ownedAttribute xmi:type="uml:Property" name="designDimension" visibility="public" type="DesignDimension" aggregation="composite" isOrdered="true" xmi:id="DesignSpace-designDimension">
         <ownedComment xmi:type="uml:Comment" xmi:id="DesignSpace-designDimension-_ownedComment.0" annotatedElement="DesignSpace-designDimension">
           <body>The design dimensions (degrees of freedom) of the design space.</body>

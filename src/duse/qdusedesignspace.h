@@ -64,6 +64,8 @@ public:
     // Owned attributes
     QString name() const;
     void setName(QString name);
+    QString requiredProfile() const;
+    void setRequiredProfile(QString requiredProfile);
     const QList<QDuseDesignDimension *> designDimensions() const;
     void addDesignDimension(QDuseDesignDimension *designDimension);
     void removeDesignDimension(QDuseDesignDimension *designDimension);
@@ -73,6 +75,7 @@ public:
 
 protected:
     QString _name;
+    QString _requiredProfile;
     QList<QDuseDesignDimension *> _designDimensions;
     QSet<QDuseQualityMetric *> _qualityMetrics;
 };

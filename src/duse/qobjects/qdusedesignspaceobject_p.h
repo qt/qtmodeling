@@ -61,6 +61,7 @@ class Q_DUSE_EXPORT QDuseDesignSpaceObject : public QModelingObject
 
     // Properties [DesignSpace]
     Q_PROPERTY(QString name READ name WRITE setName NOTIFY nameChanged)
+    Q_PROPERTY(QString requiredProfile READ requiredProfile WRITE setRequiredProfile NOTIFY requiredProfileChanged)
     Q_PROPERTY(QList<QObject *> designDimensions READ designDimensions NOTIFY designDimensionsChanged)
     Q_PROPERTY(QSet<QObject *> qualityMetrics READ qualityMetrics NOTIFY qualityMetricsChanged)
 
@@ -69,6 +70,7 @@ public:
 
     // Owned attributes [DesignSpace]
     Q_INVOKABLE QString name() const;
+    Q_INVOKABLE QString requiredProfile() const;
     Q_INVOKABLE const QList<QObject *> designDimensions() const;
     Q_INVOKABLE const QSet<QObject *> qualityMetrics() const;
 
@@ -76,6 +78,7 @@ public Q_SLOTS:
 
     // Slots for owned attributes [DesignSpace]
     void setName(QString name);
+    void setRequiredProfile(QString requiredProfile);
     void addDesignDimension(QObject *designDimension);
     void removeDesignDimension(QObject *designDimension);
     void addQualityMetric(QObject *qualityMetric);
@@ -85,6 +88,7 @@ Q_SIGNALS:
 
     // Signals for owned attributes [DesignSpace]
     void nameChanged(QString name);
+    void requiredProfileChanged(QString requiredProfile);
     void designDimensionsChanged(QList<QObject *> designDimensions);
     void qualityMetricsChanged(QSet<QObject *> qualityMetrics);
 
