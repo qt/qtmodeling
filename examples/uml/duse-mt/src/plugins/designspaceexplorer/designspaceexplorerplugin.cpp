@@ -41,6 +41,7 @@
 #include "designspaceexplorerplugin.h"
 
 #include <duseinterfaces/iuicontroller.h>
+#include <duseinterfaces/iprojectcontroller.h>
 
 #include <QtQuick/QQuickView>
 
@@ -74,6 +75,8 @@ DesignSpaceExplorerPlugin::~DesignSpaceExplorerPlugin()
 
 bool DesignSpaceExplorerPlugin::initialize(DuSE::ICore *core)
 {
+    _core = core;
+
     _currentDesignSpaceLocationQuickView->setSource(QUrl("qrc:/designspaceexplorer/currentdesignspacelocation.qml"));
     _currentDesignSpaceLocationQuickView->setResizeMode(QQuickView::SizeRootObjectToView);
 
@@ -140,43 +143,33 @@ void DesignSpaceExplorerPlugin::newDuseDesign()
                 QMessageBox::critical(0, tr("Create new DuSE design"), tr("You should select an input model and a DuSE instance model !"));
             }
             else {
-//                setCursor(Qt::WaitCursor);
-
                 QFile file(_newDuseDesignDialog->_duseInstanceModelFileName);
                 if (!file.open(QFile::ReadOnly | QFile::Text)) {
                     QMessageBox::critical(0, tr("Create new DuSE design"), tr("Cannot read DuSE instance file !"));
-//                    setCursor(Qt::ArrowCursor);
                     return;
                 }
                 QXmiReader reader;
-                QList<QModelingElement *> modelingObjectList = reader.readFile(&file);
-                if (QString::fromLatin1(modelingObjectList.first()->asQModelingObject()->metaObject()->className()) != QString::fromLatin1("QDuseDesignSpace")) {
-                    QMessageBox::critical(0, tr("Create new DuSE design"), QString::fromLatin1("%1 is not a valid DuSE instance !").arg(QFileInfo(file).fileName()));
-//                    setCursor(Qt::ArrowCursor);
+                _duseInstance = reader.readFile(&file);
+                if (QString::fromLatin1(_duseInstance.first()->asQModelingObject()->metaObject()->className()) != QStringLiteral("QDuseDesignSpaceObject")) {
+                    QMessageBox::critical(0, tr("Create new DuSE design"), QStringLiteral("%1 is not a valid DuSE instance !").arg(QFileInfo(file).fileName()));
                     return;
                 }
 
-//                _currentFileName = _newDuseDesign->_inputModelFileName;
-//                foreach (QWrappedObject *object, _inputModel)
-//                    delete object;
-//                _inputModel = loadXmi(_currentFileName);
+                if (!_core->projectController()->openModel(_newDuseDesignDialog->_inputModelFileName)) {
+                    QMessageBox::critical(0, tr("Create new DuSE design"), QStringLiteral("Error loading input file %1 !").arg(_newDuseDesignDialog->_inputModelFileName));
+                    return;
+                }
 
-//                addToView(_inputModel[0]);
+                bool found = false;
+                foreach (QObject *profileApplication, _core->projectController()->currentModelObjects().first()->property("profileApplications").value< QSet<QObject *> >()) {
+                    if ((profileApplication->property("appliedProfile").value<QObject *>())->property("name").toString() == _duseInstance.first()->asQModelingObject()->objectName() + QStringLiteral("Profile"))
+                        found = true;
+                }
 
-//                QScriptValue value = _engine.evaluate("function checkProfile() \
-//                                                       { \
-//                                                           var length = input[0].profileApplications.length; \
-//                                                           for (var i = 0; i < length; ++i) \
-//                                                               if (input[0].profileApplications[0].appliedProfile.name == '" + modelingObjectList.first()->asQModelingObject()->objectName() + "Profile') \
-//                                                                   return true; \
-//                                                           return false; \
-//                                                       } \
-//                                                       checkProfile();");
-//                if (!value.toBool()) {
-//                    QMessageBox::critical(this, tr("Create new DuSE design"), QString::fromLatin1("Input model does not contain the required %1Profile profile application !").arg(modelingObjectList.first()->asQModelingObject()->objectName()));
-//                    setCursor(Qt::ArrowCursor);
-//                    return;
-//                }
+                if (!found) {
+                    QMessageBox::critical(0, tr("Create new DuSE design"), QStringLiteral("Input model does not contain the required %1Profile profile application !").arg(_duseInstance.first()->asQModelingObject()->objectName()));
+                    return;
+                }
 
                 //modelingObjectList.first()->setQmlContextProperties(_metricsQuickView->engine()->rootContext());
 

@@ -48,6 +48,12 @@ class NewDuseDesignDialog;
 class QQuickView;
 class QTableWidget;
 
+class QModelingElement;
+
+namespace Duse {
+    class ICore;
+}
+
 class DesignSpaceExplorerPlugin : public DuSE::IPlugin
 {
     Q_OBJECT
@@ -64,11 +70,14 @@ private Q_SLOTS:
     void openDuseDesign();
 
 private:
+    DuSE::ICore *_core;
+
     QQuickView *_currentDesignSpaceLocationQuickView;
     QQuickView *_metricsQuickView;
     QTableWidget *_designSpaceExplorer;
 
     NewDuseDesignDialog *_newDuseDesignDialog;
+    QList<QModelingElement *> _duseInstance;
 };
 
 #endif // DESIGNSPACEEXPLORERPLUGIN_H
