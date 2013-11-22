@@ -56,10 +56,62 @@
 
 #include <QtCore/QFileInfo>
 
+#include <QtScript/QScriptValueIterator>
+
 #include <QtModeling/QXmiReader>
 #include <QtModeling/QModelingElement>
 
+#include <QtUml/QUmlModel>
+#include <QtUml/QUmlProfile>
+#include <QtUml/QUmlOpaqueExpression>
+#include <QtUml/QUmlProfileApplication>
+
+#include <QtDuse/QDuseDesignSpace>
+#include <QtDuse/QDuseDesignDimension>
+#include <QtDuse/QDuseDesignDimensionInstance>
+
+#include <QtSADuseProfile/QSADuseProfileProcessComponent>
+#include "private/qsaduseprofileprocesscomponentobject_p.h"
+
 #include "newdusedesigndialog.h"
+
+template <class T>
+QScriptValue qSetToScriptValue(QScriptEngine *engine, const QSet<T *> &elements)
+{
+    QScriptValue array = engine->newArray();
+    foreach (T *element, elements)
+        array.property(QString::fromLatin1("push")).call(array, QScriptValueList() << engine->newQObject(element));
+    return array;
+}
+
+template <class T>
+void scriptValueToQSet(const QScriptValue &obj, QSet<T *> &elements)
+{
+    QScriptValueIterator it(obj);
+    while (it.hasNext()) {
+        it.next();
+        elements.insert(qobject_cast<T *>(it.value().toQObject()));
+    }
+}
+
+template <class T>
+QScriptValue qListToScriptValue(QScriptEngine *engine, const QList<T *> &elements)
+{
+    QScriptValue array = engine->newArray();
+    foreach (T *element, elements)
+        array.property(QString::fromLatin1("push")).call(array, QScriptValueList() << engine->newQObject(element));
+    return array;
+}
+
+template <class T>
+void scriptValueToQList(const QScriptValue &obj, QList<T *> &elements)
+{
+    QScriptValueIterator it(obj);
+    while (it.hasNext()) {
+        it.next();
+        elements.append(qobject_cast<T *>(it.value().toQObject()));
+    }
+}
 
 DesignSpaceExplorerPlugin::DesignSpaceExplorerPlugin(QObject *parent) :
     DuSE::IPlugin(parent),
@@ -74,6 +126,8 @@ DesignSpaceExplorerPlugin::~DesignSpaceExplorerPlugin()
 {
     delete _newDuseDesignDialog;
 }
+
+Q_SCRIPT_DECLARE_QMETAOBJECT(QSADuseProfileProcessComponentObject, QSADuseProfileProcessComponent *);
 
 bool DesignSpaceExplorerPlugin::initialize(DuSE::ICore *core)
 {
@@ -134,6 +188,9 @@ bool DesignSpaceExplorerPlugin::initialize(DuSE::ICore *core)
     connect(_actionFileOpenDuseDesign, &QAction::triggered, this, &DesignSpaceExplorerPlugin::openDuseDesign);
     core->uiController()->addAction(_actionFileOpenDuseDesign, "menu_File");
 
+    qScriptRegisterMetaType(&_engine, qSetToScriptValue<QObject>, scriptValueToQSet<QObject>);
+    qScriptRegisterMetaType(&_engine, qListToScriptValue<QObject>, scriptValueToQList<QObject>);
+
     return true;
 }
 
@@ -163,9 +220,13 @@ void DesignSpaceExplorerPlugin::newDuseDesign()
                 }
 
                 bool found = false;
-                foreach (QObject *profileApplication, _core->projectController()->currentModelObjects().first()->property("profileApplications").value< QSet<QObject *> >()) {
-                    if ((profileApplication->property("appliedProfile").value<QObject *>())->property("name").toString() == _duseInstance.first()->asQModelingObject()->property("requiredProfile"))
+                QUmlModel *package = dynamic_cast<QUmlModel *>(_core->projectController()->currentModelElements().first());
+                QDuseDesignSpace *designSpace = dynamic_cast<QDuseDesignSpace *>(_duseInstance.first());
+                foreach (QUmlProfileApplication *profileApplication, package->profileApplications()) {
+                    if (profileApplication->appliedProfile()->name() == designSpace->requiredProfile()) {
                         found = true;
+                        break;
+                    }
                 }
 
                 if (!found) {
@@ -178,12 +239,23 @@ void DesignSpaceExplorerPlugin::newDuseDesign()
                     array.property(QString::fromLatin1("push")).call(array, QScriptValueList() << _engine.newQObject(modelingObject));
                 _engine.globalObject().setProperty("input", array);
 
-                foreach (QObject *designDimension, _duseInstance.first()->asQModelingObject()->property("designDimensions").value< QList<QObject *> >()) {
-                    foreach (const QString &body, (designDimension->property("instanceSelectionRule").value<QObject *>())->property("bodies").value< QList<QString> >()) {
+                foreach (QDuseDesignDimension *designDimension, designSpace->designDimensions()) {
+                    foreach (const QString &body, designDimension->instanceSelectionRule()->bodies()) {
                         qDebug() << body;
                         QScriptValue value = _engine.evaluate(body);
-                        if (value.toQObject())
-                            qDebug() << "result: " << value.toQObject()->objectName();
+                        if (value.toVariant().canConvert(QMetaType::type("QList<QObject*>"))) {
+                            foreach (QObject *targetInstance, value.toVariant().value< QList<QObject*> >()) {
+                                QDuseDesignDimensionInstance *designDimensionInstance = new QDuseDesignDimensionInstance;
+                                designDimensionInstance->setTargetInstance(qmodelingelementproperty_cast<QUmlElement *>(targetInstance));
+                                designDimension->addDesignDimensionInstance(designDimensionInstance);
+                            }
+                        }
+                        else if (value.toVariant().canConvert(QMetaType::type("QObject*"))) {
+                            QDuseDesignDimensionInstance *designDimensionInstance = new QDuseDesignDimensionInstance;
+                            designDimensionInstance->setTargetInstance(qmodelingelementproperty_cast<QUmlElement *>(value.toVariant().value<QObject *>()));
+                            designDimension->addDesignDimensionInstance(designDimensionInstance);
+                        }
+                        qDebug() << "result: " << value.toVariant();
                     }
                 }
 

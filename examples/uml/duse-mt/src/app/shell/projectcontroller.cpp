@@ -79,6 +79,11 @@ QList<QModelingObject *> ProjectController::currentModelObjects() const
     return _currentModelObjects;
 }
 
+QList<QModelingElement *> ProjectController::currentModelElements() const
+{
+    return _currentModelElements;
+}
+
 bool ProjectController::openModel(const QString &fileName)
 {
     qDeleteAll(_currentModelElements);

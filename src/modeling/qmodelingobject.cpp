@@ -106,6 +106,12 @@ QStringList &QModelingObject::modifiedResettableProperties()
     return d->modifiedResettableProperties;
 }
 
+bool QModelingObject::isKindOf(QString type) const
+{
+    Q_D(const QModelingObject);
+    return d->propertyGroups.contains(type);
+}
+
 QModelingObject::QModelingObject()
     : QObject(*new QModelingObjectPrivate)
 {

@@ -70,6 +70,7 @@ public:
     const QStringList &propertyGroups() const;
     const QMultiHash<QString, QMetaProperty *> &groupProperties() const;
     QStringList &modifiedResettableProperties();
+    Q_INVOKABLE bool isKindOf(QString type) const;
 
     static QHash< QString, QHash< QString, QHash<QtModeling::MetaPropertyDataRole, QVariant> > > propertyDataHash;
 

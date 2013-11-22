@@ -59,6 +59,7 @@ public:
     virtual QStringList errorStrings() const;
     virtual QString currentModelFileName() const;
     virtual QList<QModelingObject *> currentModelObjects() const;
+    virtual QList<QModelingElement *> currentModelElements() const;
 
 public Q_SLOTS:
     virtual bool openModel(const QString &fileName);

@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT += widgets quick modeling script
+QT += widgets quick modeling script uml duse saduseprofile-private
 
 include(../../duse-mt-plugin.pri)
 

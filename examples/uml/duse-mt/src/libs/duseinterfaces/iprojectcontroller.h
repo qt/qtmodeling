@@ -48,6 +48,7 @@
 class QWidget;
 
 class QModelingObject;
+class QModelingElement;
 class QMetaModelPlugin;
 
 namespace DuSE
@@ -65,6 +66,7 @@ public:
     virtual QStringList errorStrings() const = 0;
     virtual QString currentModelFileName() const = 0;
     virtual QList<QModelingObject *> currentModelObjects() const = 0;
+    virtual QList<QModelingElement *> currentModelElements() const = 0;
 
 public Q_SLOTS:
     virtual bool openModel(const QString &fileName) = 0;
