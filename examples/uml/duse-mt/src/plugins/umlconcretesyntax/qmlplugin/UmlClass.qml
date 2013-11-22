@@ -70,7 +70,7 @@ UmlElement {
             model: element.ownedOperations
             anchors { fill: parent; margins: 4 }
             delegate: Text {
-                text: visibility(modelData.visibility) + modelData.name
+                text: visibility(modelData.visibility) + modelData.name + operationSignature(model)
                 font { family: "Korolev" }
             }
         }
@@ -84,5 +84,24 @@ UmlElement {
         case 3: return "#"
         case 4: return "~"
         }
+    }
+    function operationSignature(model)
+    {
+        var generalString = "(";
+        var returnString = ": ";
+        var list = element.ownedOperations[model.index].ownedParameters;
+        var count = list.length;
+        for (var i = 0; i < count ; ++i)
+        {
+            if (list[i].direction === 4)
+                returnString = returnString + list[i].type.name;
+            else
+            generalString = generalString + list[i].type.name + ", ";
+        }
+        if (returnString == ": ")
+            returnString = returnString + "void";
+        generalString = generalString + ")" + returnString;
+        generalString = generalString.replace(', )',')');
+        return generalString;
     }
 }
