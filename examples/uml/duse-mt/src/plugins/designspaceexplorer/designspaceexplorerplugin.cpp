@@ -243,11 +243,13 @@ void DesignSpaceExplorerPlugin::newDuseDesign()
                     foreach (const QString &body, designDimension->instanceSelectionRule()->bodies()) {
                         qDebug() << body;
                         QScriptValue value = _engine.evaluate(body);
-                        if (value.toVariant().canConvert(QMetaType::type("QList<QObject*>"))) {
-                            foreach (QObject *targetInstance, value.toVariant().value< QList<QObject*> >()) {
-                                QDuseDesignDimensionInstance *designDimensionInstance = new QDuseDesignDimensionInstance;
-                                designDimensionInstance->setTargetInstance(qmodelingelementproperty_cast<QUmlElement *>(targetInstance));
-                                designDimension->addDesignDimensionInstance(designDimensionInstance);
+                        if (value.toVariant().canConvert(QMetaType::type("QVariantList"))) {
+                            foreach (const QVariant &variant, value.toVariant().value<QVariantList>()) {
+                                if (variant.canConvert(QMetaType::type("QObject*"))) {
+                                    QDuseDesignDimensionInstance *designDimensionInstance = new QDuseDesignDimensionInstance;
+                                    designDimensionInstance->setTargetInstance(qmodelingelementproperty_cast<QUmlElement *>(variant.value<QObject *>()));
+                                    designDimension->addDesignDimensionInstance(designDimensionInstance);
+                                }
                             }
                         }
                         else if (value.toVariant().canConvert(QMetaType::type("QObject*"))) {
