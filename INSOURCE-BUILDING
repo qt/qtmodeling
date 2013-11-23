@@ -1,76 +1,38 @@
-In order to build the QtMof add-on inside Qt official repository the following
+In order to build the QtModeling add-on inside Qt official repository the following
 steps should be applied. Apparently a complete clean, init-repository, configure
 and make is needed.
 
 1) Build
 
-1.1) Apply the following patch
+1.1) Clone qt5 repository
 
-diff --git a/.gitmodules b/.gitmodules
-index ba2aa2e..2483813 100644
---- a/.gitmodules
-+++ b/.gitmodules
-@@ -79,3 +79,6 @@
- [submodule "qtgraphicaleffects"]
-        path = qtgraphicaleffects
-        url = git://gitorious.org/qt/qtgraphicaleffects.git
-+[submodule "qtmof"]
-+       path = qtmof
-+       url = git://gitorious.org/qtplayground/qtmof.git
-diff --git a/qtmof b/qtmof
-new file mode 160000
-index 0000000..1199941
---- /dev/null
-+++ b/qtmof
-@@ -0,0 +1 @@
-+Subproject commit 119994178d59af28b850615968a64897ad8a7026
+1.2) In qt5 root directory add qtmodeling as a submodule:
 
-1.2) Apply the following patch
+git submodule add ../qtmodeling.git
 
-diff --git a/build.dependencies b/build.dependencies
-index a979bf0..fba4688 100644
---- a/build.dependencies
-+++ b/build.dependencies
-@@ -31,6 +31,7 @@ use Config;
-     "qtwebkit" => "qtbase,qtscript,qtdeclarative,qtquick1,qtlocation",
-     "qtwebkit-examples-and-demos" => "qtwebkit",
-     "qtxmlpatterns" => "qtbase",
-+    "qtmof" => "qtbase",
- );
+1.3) Remove all contents in qtmodeling directory
 
- @nondefault_modules = (
-diff --git a/init-repository b/init-repository
-index b63cf86..70f2391 100755
---- a/init-repository
-+++ b/init-repository
-@@ -245,6 +245,7 @@ my %GERRIT_REPOS = map { $_ => "qt/$_" } qw(
-     qtwayland
-     qtwebkit-examples-and-demos
-     qtxmlpatterns
-+    qtmof
- );
+1.4) Add 'qtmodeling' in %GERRIT_REPOS and @DEFAULT_REPOS
+     sections in init-repository script
 
- my $GERRIT_SSH_BASE
-diff --git a/qt.pro b/qt.pro
-index 63d31f2..8bde12f 100644
---- a/qt.pro
-+++ b/qt.pro
-@@ -113,6 +113,10 @@ module_qtgraphicaleffects.subdir = qtgraphicaleffects
- module_qtgraphicaleffects.target = module-qtgraphicaleffects
- module_qtgraphicaleffects.depends = module_qtbase module_qtdeclarative
+1.5) Add the following line in qt.pro:
 
-+module_qtmof.subdir = qtmof
-+module_qtmof.target = module-qtmof
-+module_qtmof.depends = module_qtbase
-+
- # only qtbase is required to exist. The others may not - but it is the
- # users responsibility to ensure that all needed dependencies exist, or
- # it may not build.
-@@ -194,3 +198,4 @@ exists(qttranslations/qttranslations.pro): SUBDIRS += module_qttranslations
- exists(qtdoc/qtdoc.pro): SUBDIRS += module_qtdoc
- exists(qtqa/qtqa.pro): SUBDIRS += module_qtqa
- exists(qlalr/qlalr.pro): SUBDIRS += module_qlalr
-+exists(qtmof/qtmof.pro): SUBDIRS += module_qtmof
+addModule(qtmodeling, qtbase, qtdeclarative, qtscript)
+
+1.6) The previous files (.gitmodules, init-repository, and qt.pro) should be committed in
+     qt5 super-repository when qtmodeling is ready to be released
+
+1.7) Init the repository:
+
+perl init-repository --module-subset=qtbase,qtdeclarative,qtscript,qtmodeling
+
+1.8) Configure Qt5:
+
+./configure -developer-build -opensource -nomake examples -nomake tests -confirm-license
+
+1.9) Build Qt5:
+
+make -j <#core+1>
 
 2) Documentation
 

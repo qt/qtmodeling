@@ -1,6 +1,2 @@
 TEMPLATE=subdirs
-qtHaveModule(mof): SUBDIRS += qtmofcontainment
-qtHaveModule(uml): SUBDIRS += \
-    qtumlcontainment \
-    qtumlprovidedrequiredinterfaces \
-    qtumlconnectortypeandcomponentparts
+SUBDIRS = qtmofcontainment qtumlcontainment qtumlprovidedrequiredinterfaces qtumlconnectortypeandcomponentparts

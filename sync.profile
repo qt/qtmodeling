@@ -42,4 +42,5 @@
 %dependencies = (
     "qtbase" => "refs/heads/stable",
     "qtscript" => "refs/heads/stable",
+    "qtdeclarative" => "refs/heads/stable",
 );

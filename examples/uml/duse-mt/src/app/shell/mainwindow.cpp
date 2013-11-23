@@ -67,14 +67,6 @@
 #include <QtModelingWidgets/QModelingObjectView>
 #include <QtModelingWidgets/QModelingObjectPropertyModel>
 
-#include <QtQml/QQmlEngine>
-#include <QtQml/QQmlContext>
-#include <QtQml/QQmlComponent>
-
-#include <QtQuick/QQuickView>
-#include <QtQuick/QQuickItem>
-//#include "QtQuick/private/qquickflickable_p.h"
-
 #include <duseinterfaces/icore.h>
 #include <duseinterfaces/iplugin.h>
 #include <duseinterfaces/iplugincontroller.h>
@@ -297,8 +289,8 @@ void MainWindow::metaModelChanged(QString newMetaModel)
     _newModel->lstTopLevelContainers->setCurrentRow(0);
 }
 
-void MainWindow::addToDesignSpaceView(QModelingElement *modelingObject, QQuickItem *parent)
-{
+//void MainWindow::addToDesignSpaceView(QModelingElement *modelingObject, QQuickItem *parent)
+//{
 //    QQmlContext *context = new QQmlContext(_designSpaceQuickView->engine()->rootContext());
 //    //modelingObject->setQmlContextProperties(context);
 //    _qmlComponent = new QQmlComponent(_designSpaceQuickView->engine());
@@ -320,7 +312,7 @@ void MainWindow::addToDesignSpaceView(QModelingElement *modelingObject, QQuickIt
 //        addToDesignSpaceView(dynamic_cast<QModelingElement *>(qModelingElement(child)));
 
 //    _qmlComponent->deleteLater();
-}
+//}
 
 void MainWindow::addToPareto(QModelingElement *modelingObject, int pos)
 {
