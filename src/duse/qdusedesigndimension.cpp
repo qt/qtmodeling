@@ -55,6 +55,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A design dimension captures a specific degree of freedom when designing architectures in the given application domain. A design dimension entails a set of variation points which denote alternative solutions for such degree of freedom. Optionally, a variation point may define validation rules which should return a true value if that variation point is to be considered valid for the corresponding input model. A variation point may also specify a set of other variation points which should be previously evaluated, defining a sort of design dimension dependency.
  */
+
+/*!
+    Creates a new QDuseDesignDimension. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QDuseDesignDimension::QDuseDesignDimension(bool createQModelingObject) :
     _instanceSelectionRule(0)
 {
@@ -62,6 +66,9 @@ QDuseDesignDimension::QDuseDesignDimension(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QDuseDesignDimensionObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QDuseDesignDimension.
+*/
 QModelingElement *QDuseDesignDimension::clone() const
 {
     QDuseDesignDimension *c = new QDuseDesignDimension;
@@ -90,6 +97,9 @@ QString QDuseDesignDimension::name() const
     return _name;
 }
 
+/*!
+    Adjusts name to \a name.
+ */
 void QDuseDesignDimension::setName(QString name)
 {
     // This is a read-write property
@@ -109,6 +119,9 @@ QUmlOpaqueExpression *QDuseDesignDimension::instanceSelectionRule() const
     return _instanceSelectionRule;
 }
 
+/*!
+    Adjusts instanceSelectionRule to \a instanceSelectionRule.
+ */
 void QDuseDesignDimension::setInstanceSelectionRule(QUmlOpaqueExpression *instanceSelectionRule)
 {
     // This is a read-write property
@@ -123,6 +136,8 @@ void QDuseDesignDimension::setInstanceSelectionRule(QUmlOpaqueExpression *instan
 
 /*!
     The design dimensions that must be previously evaluated before this design dimension. Such dependency may be required in order to tackle dependent design dimensions and identify invalid design space locations.
+
+    \sa addRequiredPreviousEvaluation(), removeRequiredPreviousEvaluation()
  */
 const QSet<QDuseDesignDimension *> QDuseDesignDimension::requiredPreviousEvaluations() const
 {
@@ -131,6 +146,11 @@ const QSet<QDuseDesignDimension *> QDuseDesignDimension::requiredPreviousEvaluat
     return _requiredPreviousEvaluations;
 }
 
+/*!
+    Adds \a requiredPreviousEvaluation to requiredPreviousEvaluations.
+
+    \sa requiredPreviousEvaluations(), removeRequiredPreviousEvaluation()
+ */
 void QDuseDesignDimension::addRequiredPreviousEvaluation(QDuseDesignDimension *requiredPreviousEvaluation)
 {
     // This is a read-write property
@@ -142,6 +162,11 @@ void QDuseDesignDimension::addRequiredPreviousEvaluation(QDuseDesignDimension *r
     }
 }
 
+/*!
+    Removes \a requiredPreviousEvaluation from requiredPreviousEvaluations.
+
+    \sa requiredPreviousEvaluations(), addRequiredPreviousEvaluation()
+ */
 void QDuseDesignDimension::removeRequiredPreviousEvaluation(QDuseDesignDimension *requiredPreviousEvaluation)
 {
     // This is a read-write property
@@ -153,6 +178,8 @@ void QDuseDesignDimension::removeRequiredPreviousEvaluation(QDuseDesignDimension
 
 /*!
     The design dimension's variation points (alternative solutions for the design dimension's concern).
+
+    \sa addVariationPoint(), removeVariationPoint()
  */
 const QList<QDuseVariationPoint *> QDuseDesignDimension::variationPoints() const
 {
@@ -161,6 +188,11 @@ const QList<QDuseVariationPoint *> QDuseDesignDimension::variationPoints() const
     return _variationPoints;
 }
 
+/*!
+    Adds \a variationPoint to variationPoints.
+
+    \sa variationPoints(), removeVariationPoint()
+ */
 void QDuseDesignDimension::addVariationPoint(QDuseVariationPoint *variationPoint)
 {
     // This is a read-write property
@@ -173,6 +205,11 @@ void QDuseDesignDimension::addVariationPoint(QDuseVariationPoint *variationPoint
     }
 }
 
+/*!
+    Removes \a variationPoint from variationPoints.
+
+    \sa variationPoints(), addVariationPoint()
+ */
 void QDuseDesignDimension::removeVariationPoint(QDuseVariationPoint *variationPoint)
 {
     // This is a read-write property
@@ -186,6 +223,8 @@ void QDuseDesignDimension::removeVariationPoint(QDuseVariationPoint *variationPo
 
 /*!
     A specific design dimension instance created for a identified locus of architectural decision.
+
+    \sa addDesignDimensionInstance(), removeDesignDimensionInstance()
  */
 const QSet<QDuseDesignDimensionInstance *> QDuseDesignDimension::designDimensionInstances() const
 {
@@ -194,6 +233,11 @@ const QSet<QDuseDesignDimensionInstance *> QDuseDesignDimension::designDimension
     return _designDimensionInstances;
 }
 
+/*!
+    Adds \a designDimensionInstance to designDimensionInstances.
+
+    \sa designDimensionInstances(), removeDesignDimensionInstance()
+ */
 void QDuseDesignDimension::addDesignDimensionInstance(QDuseDesignDimensionInstance *designDimensionInstance)
 {
     // This is a read-write property
@@ -206,6 +250,11 @@ void QDuseDesignDimension::addDesignDimensionInstance(QDuseDesignDimensionInstan
     }
 }
 
+/*!
+    Removes \a designDimensionInstance from designDimensionInstances.
+
+    \sa designDimensionInstances(), addDesignDimensionInstance()
+ */
 void QDuseDesignDimension::removeDesignDimensionInstance(QDuseDesignDimensionInstance *designDimensionInstance)
 {
     // This is a read-write property
@@ -218,7 +267,7 @@ void QDuseDesignDimension::removeDesignDimensionInstance(QDuseDesignDimensionIns
 }
 
 /*!
-    Indicates if the design dimension should be considered in automated architecture design.
+    Returns true if the design dimension should be considered in automated architecture design, otherwise returns false.
  */
 bool QDuseDesignDimension::enabled() const
 {
@@ -227,6 +276,9 @@ bool QDuseDesignDimension::enabled() const
     return _enabled;
 }
 
+/*!
+    Adjusts enabled to \a enabled.
+ */
 void QDuseDesignDimension::setEnabled(bool enabled)
 {
     // This is a read-write property

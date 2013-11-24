@@ -128,7 +128,7 @@
       </ownedAttribute>
       <ownedAttribute xmi:type="uml:Property" visibility="public" name="enabled" xmi:id="DesignDimension-enabled">
         <ownedComment xmi:type="uml:Comment" xmi:id="DesignDimension-enabled-_ownedComment.0" annotatedElement="DesignDimension-enabled">
-          <body>Indicates if the design dimension should be considered in automated architecture design.</body>
+          <body>Returns true if the design dimension should be considered in automated architecture design, otherwise returns false.</body>
         </ownedComment>
         <type href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#Boolean"/>
       </ownedAttribute>
@@ -176,17 +176,32 @@
         <body>A specific design dimenstion instance created to tackle a particular locus of architectural decision in the input model.</body>
       </ownedComment>
       <ownedAttribute xmi:type="uml:Property" visibility="public" name="targetInstance" xmi:id="DesignDimensionInstance-targetInstance">
+      <ownedComment xmi:type="uml:Comment" xmi:id="DesignDimensionInstance-targetInstance-_ownedComment.0" annotatedElement="DesignDimensionInstance-targetInstance">
+        <body>The model element which is the target of architectural changes defined in this design dimension instance.</body>
+      </ownedComment>
         <type href="http://www.omg.org/spec/UML/20110701/UML.xmi#Element"/>
       </ownedAttribute>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" name="ModelChange" xmi:id="ModelChange">
+      <ownedComment xmi:type="uml:Comment" xmi:id="ModelChange-_ownedComment.0" annotatedElement="ModelChange">
+        <body>The changes to be enacted in the design dimension instance's target element.</body>
+      </ownedComment>
       <ownedAttribute xmi:type="uml:Property" visibility="public" name="targetSelectionRule" aggregation="composite" xmi:id="ModelChange-targetSelectionRule">
+        <ownedComment xmi:type="uml:Comment" xmi:id="ModelChange-targetSelectionRule-_ownedComment.0" annotatedElement="ModelChange-targetSelectionRule">
+          <body>A rule to select the element which is the target of this particular change.</body>
+        </ownedComment>
         <type href="http://www.omg.org/spec/UML/20110701/UML.xmi#OpaqueExpression"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="uml:Property" visibility="public" name="valueSelectionRule" aggregation="composite" xmi:id="ModelChange-valueSelectionRule">
+        <ownedComment xmi:type="uml:Comment" xmi:id="ModelChange-valueSelectionRule-_ownedComment.0" annotatedElement="ModelChange-valueSelectionRule">
+          <body>A rule to find out the new value of this target's property.</body>
+        </ownedComment>
         <type href="http://www.omg.org/spec/UML/20110701/UML.xmi#OpaqueExpression"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="uml:Property" visibility="public" name="targetProperty" xmi:id="ModelChange-targetProperty">
+        <ownedComment xmi:type="uml:Comment" xmi:id="ModelChange-targetProperty-_ownedComment.0" annotatedElement="ModelChange-targetProperty">
+          <body>The metamodel's property which will be modified in this change.</body>
+        </ownedComment>
         <type href="http://www.omg.org/spec/UML/20110701/UML.xmi#Property"/>
       </ownedAttribute>
     </packagedElement>

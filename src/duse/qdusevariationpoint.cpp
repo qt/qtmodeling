@@ -55,6 +55,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A variation point represents a specific solution for a given design dimension. A variation point entails validation rules which check for valid combinations of variation points and a script which defines the architectural changes to be enacted from such solution.
  */
+
+/*!
+    Creates a new QDuseVariationPoint. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QDuseVariationPoint::QDuseVariationPoint(bool createQModelingObject) :
     _preChangeValidationRule(0)
 {
@@ -62,6 +66,9 @@ QDuseVariationPoint::QDuseVariationPoint(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QDuseVariationPointObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QDuseVariationPoint.
+*/
 QModelingElement *QDuseVariationPoint::clone() const
 {
     QDuseVariationPoint *c = new QDuseVariationPoint;
@@ -88,6 +95,9 @@ QString QDuseVariationPoint::name() const
     return _name;
 }
 
+/*!
+    Adjusts name to \a name.
+ */
 void QDuseVariationPoint::setName(QString name)
 {
     // This is a read-write property
@@ -107,6 +117,9 @@ QString QDuseVariationPoint::rationale() const
     return _rationale;
 }
 
+/*!
+    Adjusts rationale to \a rationale.
+ */
 void QDuseVariationPoint::setRationale(QString rationale)
 {
     // This is a read-write property
@@ -126,6 +139,9 @@ QUmlOpaqueExpression *QDuseVariationPoint::preChangeValidationRule() const
     return _preChangeValidationRule;
 }
 
+/*!
+    Adjusts preChangeValidationRule to \a preChangeValidationRule.
+ */
 void QDuseVariationPoint::setPreChangeValidationRule(QUmlOpaqueExpression *preChangeValidationRule)
 {
     // This is a read-write property
@@ -140,6 +156,8 @@ void QDuseVariationPoint::setPreChangeValidationRule(QUmlOpaqueExpression *preCh
 
 /*!
     The architectural changes to be enacted as contributions arosen from this variation point. The complete set of architectural changes is the merge of architectural contributions from all involved variation points.
+
+    \sa addModelChange(), removeModelChange()
  */
 const QList<QDuseModelChange *> QDuseVariationPoint::modelChanges() const
 {
@@ -148,6 +166,11 @@ const QList<QDuseModelChange *> QDuseVariationPoint::modelChanges() const
     return _modelChanges;
 }
 
+/*!
+    Adds \a modelChange to modelChanges.
+
+    \sa modelChanges(), removeModelChange()
+ */
 void QDuseVariationPoint::addModelChange(QDuseModelChange *modelChange)
 {
     // This is a read-write property
@@ -160,6 +183,11 @@ void QDuseVariationPoint::addModelChange(QDuseModelChange *modelChange)
     }
 }
 
+/*!
+    Removes \a modelChange from modelChanges.
+
+    \sa modelChanges(), addModelChange()
+ */
 void QDuseVariationPoint::removeModelChange(QDuseModelChange *modelChange)
 {
     // This is a read-write property
@@ -173,6 +201,8 @@ void QDuseVariationPoint::removeModelChange(QDuseModelChange *modelChange)
 
 /*!
     The architectural elements to be added as part of architecture redesign contribution arising from this variation point. The complete set of added architectural elements is the merge of architectural contributions from all involved variation points.
+
+    \sa addAddedElement(), removeAddedElement()
  */
 const QList<QUmlElement *> QDuseVariationPoint::addedElements() const
 {
@@ -181,6 +211,11 @@ const QList<QUmlElement *> QDuseVariationPoint::addedElements() const
     return _addedElements;
 }
 
+/*!
+    Adds \a addedElement to addedElements.
+
+    \sa addedElements(), removeAddedElement()
+ */
 void QDuseVariationPoint::addAddedElement(QUmlElement *addedElement)
 {
     // This is a read-write property
@@ -192,6 +227,11 @@ void QDuseVariationPoint::addAddedElement(QUmlElement *addedElement)
     }
 }
 
+/*!
+    Removes \a addedElement from addedElements.
+
+    \sa addedElements(), addAddedElement()
+ */
 void QDuseVariationPoint::removeAddedElement(QUmlElement *addedElement)
 {
     // This is a read-write property

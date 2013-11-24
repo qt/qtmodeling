@@ -91,7 +91,7 @@ void QDuseDesignDimensionInstanceObject::setPropertyData()
     Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimensionInstance, targetInstance, PropertyTypeRole, QStringLiteral("QUmlElement *"));
     Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimensionInstance, targetInstance, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimensionInstance, targetInstance, IsDerivedUnionRole, false);
-    Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimensionInstance, targetInstance, DocumentationRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimensionInstance, targetInstance, DocumentationRole, QStringLiteral("The model element which is the target of architectural changes defined in this design dimension instance."));
     Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimensionInstance, targetInstance, RedefinedPropertiesRole, QStringLiteral(""));
     Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimensionInstance, targetInstance, SubsettedPropertiesRole, QStringLiteral(""));
     Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimensionInstance, targetInstance, OppositeEndRole, QStringLiteral(""));

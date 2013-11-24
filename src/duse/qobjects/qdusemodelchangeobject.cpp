@@ -122,7 +122,7 @@ void QDuseModelChangeObject::setPropertyData()
     Q_DECLARE_METAPROPERTY_INFO(QDuseModelChange, targetSelectionRule, PropertyTypeRole, QStringLiteral("QUmlOpaqueExpression *"));
     Q_DECLARE_METAPROPERTY_INFO(QDuseModelChange, targetSelectionRule, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QDuseModelChange, targetSelectionRule, IsDerivedUnionRole, false);
-    Q_DECLARE_METAPROPERTY_INFO(QDuseModelChange, targetSelectionRule, DocumentationRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QDuseModelChange, targetSelectionRule, DocumentationRole, QStringLiteral("A rule to select the element which is the target of this particular change."));
     Q_DECLARE_METAPROPERTY_INFO(QDuseModelChange, targetSelectionRule, RedefinedPropertiesRole, QStringLiteral(""));
     Q_DECLARE_METAPROPERTY_INFO(QDuseModelChange, targetSelectionRule, SubsettedPropertiesRole, QStringLiteral(""));
     Q_DECLARE_METAPROPERTY_INFO(QDuseModelChange, targetSelectionRule, OppositeEndRole, QStringLiteral(""));
@@ -132,7 +132,7 @@ void QDuseModelChangeObject::setPropertyData()
     Q_DECLARE_METAPROPERTY_INFO(QDuseModelChange, valueSelectionRule, PropertyTypeRole, QStringLiteral("QUmlOpaqueExpression *"));
     Q_DECLARE_METAPROPERTY_INFO(QDuseModelChange, valueSelectionRule, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QDuseModelChange, valueSelectionRule, IsDerivedUnionRole, false);
-    Q_DECLARE_METAPROPERTY_INFO(QDuseModelChange, valueSelectionRule, DocumentationRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QDuseModelChange, valueSelectionRule, DocumentationRole, QStringLiteral("A rule to find out the new value of this target's property."));
     Q_DECLARE_METAPROPERTY_INFO(QDuseModelChange, valueSelectionRule, RedefinedPropertiesRole, QStringLiteral(""));
     Q_DECLARE_METAPROPERTY_INFO(QDuseModelChange, valueSelectionRule, SubsettedPropertiesRole, QStringLiteral(""));
     Q_DECLARE_METAPROPERTY_INFO(QDuseModelChange, valueSelectionRule, OppositeEndRole, QStringLiteral(""));
@@ -142,7 +142,7 @@ void QDuseModelChangeObject::setPropertyData()
     Q_DECLARE_METAPROPERTY_INFO(QDuseModelChange, targetProperty, PropertyTypeRole, QStringLiteral("QUmlProperty *"));
     Q_DECLARE_METAPROPERTY_INFO(QDuseModelChange, targetProperty, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QDuseModelChange, targetProperty, IsDerivedUnionRole, false);
-    Q_DECLARE_METAPROPERTY_INFO(QDuseModelChange, targetProperty, DocumentationRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QDuseModelChange, targetProperty, DocumentationRole, QStringLiteral("The metamodel's property which will be modified in this change."));
     Q_DECLARE_METAPROPERTY_INFO(QDuseModelChange, targetProperty, RedefinedPropertiesRole, QStringLiteral(""));
     Q_DECLARE_METAPROPERTY_INFO(QDuseModelChange, targetProperty, SubsettedPropertiesRole, QStringLiteral(""));
     Q_DECLARE_METAPROPERTY_INFO(QDuseModelChange, targetProperty, OppositeEndRole, QStringLiteral(""));

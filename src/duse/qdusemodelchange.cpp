@@ -51,7 +51,13 @@ QT_BEGIN_NAMESPACE
     \class QDuseModelChange
 
     \inmodule QtDuse
+
+    \brief The changes to be enacted in the design dimension instance's target element.
  */
+
+/*!
+    Creates a new QDuseModelChange. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QDuseModelChange::QDuseModelChange(bool createQModelingObject) :
     _targetSelectionRule(0),
     _valueSelectionRule(0),
@@ -61,6 +67,9 @@ QDuseModelChange::QDuseModelChange(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QDuseModelChangeObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QDuseModelChange.
+*/
 QModelingElement *QDuseModelChange::clone() const
 {
     QDuseModelChange *c = new QDuseModelChange;
@@ -75,7 +84,9 @@ QModelingElement *QDuseModelChange::clone() const
 
 // OWNED ATTRIBUTES
 
-
+/*!
+    A rule to select the element which is the target of this particular change.
+ */
 QUmlOpaqueExpression *QDuseModelChange::targetSelectionRule() const
 {
     // This is a read-write property
@@ -83,6 +94,9 @@ QUmlOpaqueExpression *QDuseModelChange::targetSelectionRule() const
     return _targetSelectionRule;
 }
 
+/*!
+    Adjusts targetSelectionRule to \a targetSelectionRule.
+ */
 void QDuseModelChange::setTargetSelectionRule(QUmlOpaqueExpression *targetSelectionRule)
 {
     // This is a read-write property
@@ -95,7 +109,9 @@ void QDuseModelChange::setTargetSelectionRule(QUmlOpaqueExpression *targetSelect
     }
 }
 
-
+/*!
+    A rule to find out the new value of this target's property.
+ */
 QUmlOpaqueExpression *QDuseModelChange::valueSelectionRule() const
 {
     // This is a read-write property
@@ -103,6 +119,9 @@ QUmlOpaqueExpression *QDuseModelChange::valueSelectionRule() const
     return _valueSelectionRule;
 }
 
+/*!
+    Adjusts valueSelectionRule to \a valueSelectionRule.
+ */
 void QDuseModelChange::setValueSelectionRule(QUmlOpaqueExpression *valueSelectionRule)
 {
     // This is a read-write property
@@ -115,7 +134,9 @@ void QDuseModelChange::setValueSelectionRule(QUmlOpaqueExpression *valueSelectio
     }
 }
 
-
+/*!
+    The metamodel's property which will be modified in this change.
+ */
 QUmlProperty *QDuseModelChange::targetProperty() const
 {
     // This is a read-write property
@@ -123,6 +144,9 @@ QUmlProperty *QDuseModelChange::targetProperty() const
     return _targetProperty;
 }
 
+/*!
+    Adjusts targetProperty to \a targetProperty.
+ */
 void QDuseModelChange::setTargetProperty(QUmlProperty *targetProperty)
 {
     // This is a read-write property

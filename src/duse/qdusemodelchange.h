@@ -45,8 +45,6 @@
 
 #include <QtModeling/QModelingElement>
 
-QT_BEGIN_HEADER
-
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtDuse)
@@ -78,8 +76,6 @@ protected:
 QT_END_NAMESPACE
 
 Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE(QDuseModelChange) *)
-
-QT_END_HEADER
 
 #endif // QDUSEMODELCHANGE_H
 

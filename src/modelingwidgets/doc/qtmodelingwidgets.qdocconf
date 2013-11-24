@@ -40,6 +40,5 @@ exampledirs += ../../../examples/modelingwidgets \
 imagedirs   += images \
                ../../../examples/modelingwidgets/doc/images
 
-
 navigation.landingpage = "Qt Modeling Widgets"
 navigation.cppclassespage = "Qt Modeling Widgets C++ Classes"

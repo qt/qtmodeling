@@ -66,8 +66,6 @@
 #include <Qt${namespace}/Qt${namespace}Namespace>
 
 [% END -%]
-QT_BEGIN_HEADER
-
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(Qt${namespace})
@@ -151,8 +149,6 @@ protected:
 QT_END_NAMESPACE
 
 Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE(Q${namespace}${className}) *)
-
-QT_END_HEADER
 
 #endif // Q${namespace.upper}${className.upper}_H
 

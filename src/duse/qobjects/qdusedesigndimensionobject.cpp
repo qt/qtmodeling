@@ -230,7 +230,7 @@ void QDuseDesignDimensionObject::setPropertyData()
     Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimension, enabled, PropertyTypeRole, QStringLiteral("bool"));
     Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimension, enabled, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimension, enabled, IsDerivedUnionRole, false);
-    Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimension, enabled, DocumentationRole, QStringLiteral("Indicates if the design dimension should be considered in automated architecture design."));
+    Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimension, enabled, DocumentationRole, QStringLiteral("Returns true if the design dimension should be considered in automated architecture design, otherwise returns false."));
     Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimension, enabled, RedefinedPropertiesRole, QStringLiteral(""));
     Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimension, enabled, SubsettedPropertiesRole, QStringLiteral(""));
     Q_DECLARE_METAPROPERTY_INFO(QDuseDesignDimension, enabled, OppositeEndRole, QStringLiteral(""));

@@ -54,12 +54,19 @@ QT_BEGIN_NAMESPACE
 
     \brief A design space entails the design dimensions (degrees of freedom) and quality metrics for a particular application domain.
  */
+
+/*!
+    Creates a new QDuseDesignSpace. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QDuseDesignSpace::QDuseDesignSpace(bool createQModelingObject)
 {
     if (createQModelingObject)
         _qModelingObject = qobject_cast<QModelingObject *>(new QDuseDesignSpaceObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QDuseDesignSpace.
+*/
 QModelingElement *QDuseDesignSpace::clone() const
 {
     QDuseDesignSpace *c = new QDuseDesignSpace;
@@ -84,6 +91,9 @@ QString QDuseDesignSpace::name() const
     return _name;
 }
 
+/*!
+    Adjusts name to \a name.
+ */
 void QDuseDesignSpace::setName(QString name)
 {
     // This is a read-write property
@@ -103,6 +113,9 @@ QString QDuseDesignSpace::requiredProfile() const
     return _requiredProfile;
 }
 
+/*!
+    Adjusts requiredProfile to \a requiredProfile.
+ */
 void QDuseDesignSpace::setRequiredProfile(QString requiredProfile)
 {
     // This is a read-write property
@@ -114,6 +127,8 @@ void QDuseDesignSpace::setRequiredProfile(QString requiredProfile)
 
 /*!
     The design dimensions (degrees of freedom) of the design space.
+
+    \sa addDesignDimension(), removeDesignDimension()
  */
 const QList<QDuseDesignDimension *> QDuseDesignSpace::designDimensions() const
 {
@@ -122,6 +137,11 @@ const QList<QDuseDesignDimension *> QDuseDesignSpace::designDimensions() const
     return _designDimensions;
 }
 
+/*!
+    Adds \a designDimension to designDimensions.
+
+    \sa designDimensions(), removeDesignDimension()
+ */
 void QDuseDesignSpace::addDesignDimension(QDuseDesignDimension *designDimension)
 {
     // This is a read-write property
@@ -134,6 +154,11 @@ void QDuseDesignSpace::addDesignDimension(QDuseDesignDimension *designDimension)
     }
 }
 
+/*!
+    Removes \a designDimension from designDimensions.
+
+    \sa designDimensions(), addDesignDimension()
+ */
 void QDuseDesignSpace::removeDesignDimension(QDuseDesignDimension *designDimension)
 {
     // This is a read-write property
@@ -147,6 +172,8 @@ void QDuseDesignSpace::removeDesignDimension(QDuseDesignDimension *designDimensi
 
 /*!
     The quality metrics defined for the design space.
+
+    \sa addQualityMetric(), removeQualityMetric()
  */
 const QSet<QDuseQualityMetric *> QDuseDesignSpace::qualityMetrics() const
 {
@@ -155,6 +182,11 @@ const QSet<QDuseQualityMetric *> QDuseDesignSpace::qualityMetrics() const
     return _qualityMetrics;
 }
 
+/*!
+    Adds \a qualityMetric to qualityMetrics.
+
+    \sa qualityMetrics(), removeQualityMetric()
+ */
 void QDuseDesignSpace::addQualityMetric(QDuseQualityMetric *qualityMetric)
 {
     // This is a read-write property
@@ -167,6 +199,11 @@ void QDuseDesignSpace::addQualityMetric(QDuseQualityMetric *qualityMetric)
     }
 }
 
+/*!
+    Removes \a qualityMetric from qualityMetrics.
+
+    \sa qualityMetrics(), addQualityMetric()
+ */
 void QDuseDesignSpace::removeQualityMetric(QDuseQualityMetric *qualityMetric)
 {
     // This is a read-write property

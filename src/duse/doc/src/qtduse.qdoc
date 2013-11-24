@@ -44,13 +44,13 @@
     \section1 Reference
     These are links to the API reference materials.
     \list
-    \li \l{Qt Duse Module C++ Classes}{C++ classes}
+    \li \l{Qt Duse C++ Classes}{C++ classes}
     \endlist
 */
 
 /*!
     \module QtDuse
-    \title Qt Duse Module C++ Classes
+    \title Qt Duse C++ Classes
     \ingroup modules
     \brief Implements the Duse metamodel for domain-independent design spaces representation.
 

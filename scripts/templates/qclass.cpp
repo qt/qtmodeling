@@ -73,6 +73,10 @@ QT_BEGIN_NAMESPACE
     \brief ${class.findvalue("ownedComment/body/text()")}
 [%- END %]
  */
+
+/*!
+    Creates a new Q${namespace}${className}. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 Q${namespace}${className}::Q${namespace}${className}([%- IF class.findvalue("@isAbstract") != "true" %]bool createQModelingObject[% END %])
 [%- SET found = "false" -%]
 [%- FOREACH superclass IN generalization -%]
@@ -130,6 +134,9 @@ Q${namespace}${className}::Q${namespace}${className}([%- IF class.findvalue("@is
 [%- END %]
 }
 
+/*!
+    Returns a deep-copied clone of the Q${namespace}${className}.
+*/
 QModelingElement *Q${namespace}${className}::clone() const
 {
     Q${namespace}${className} *c = new Q${namespace}${className};
@@ -154,9 +161,13 @@ QModelingElement *Q${namespace}${className}::clone() const
 [%- SET derivedUnion = attribute.findvalue("@isDerivedUnion") -%]
 [%- SET association = attribute.findvalue("@association") -%]
 [%- SET documentation = attribute.findvalue("ownedComment/body/text()") -%]
+[%- SET attributeName = attribute.findvalue("@name").ucfirst %]
 [%- IF documentation != "" -%]
 /*!
     ${documentation}
+[% IF qtType.match("QList|QSet") %]
+    \sa add${attributeName}(), remove${attributeName}()
+[% END -%]
  */
 [%- END %]
 [% IF qtType.match("QList|QSet") %]const [% END %]${qtType}Q${namespace}${className}::${PLURALFORM(qtAttribute, attribute)}() const
@@ -176,8 +187,12 @@ QModelingElement *Q${namespace}${className}::clone() const
     [%- END %]
 }
 
-    [%- SET attributeName = attribute.findvalue("@name").ucfirst %]
         [%- IF attribute.findnodes("upperValue").findvalue("@value") == "*" %]
+/*!
+    Adds \a ${qtAttribute} to ${PLURALFORM(qtAttribute, attribute)}.
+
+    \sa ${PLURALFORM(qtAttribute, attribute)}(), remove${attributeName}()
+ */
 void Q${namespace}${className}::add${attributeName}(${qtType.remove("QSet<").remove("QList<").replace(">", "").replace('\* $', '*')}${qtAttribute})
 {
     // This is a [% IF readOnly == "" || readOnly == "false" %]read-write[% ELSE %]read-only[% END %][% IF derived == "true" %] derived[% END %][% IF derivedUnion == "true" %] union[% END %] [% IF association != "" %]association end[% ELSE %]property[% END %]
@@ -255,6 +270,11 @@ void Q${namespace}${className}::add${attributeName}(${qtType.remove("QSet<").rem
     }
 }
 
+/*!
+    Removes \a ${qtAttribute} from ${PLURALFORM(qtAttribute, attribute)}.
+
+    \sa ${PLURALFORM(qtAttribute, attribute)}(), add${attributeName}()
+ */
 void Q${namespace}${className}::remove${attributeName}(${qtType.remove("QSet<").remove("QList<").replace(">", "").replace('\* $', '*')}${qtAttribute})
 {
     // This is a [% IF readOnly == "" || readOnly == "false" %]read-write[% ELSE %]read-only[% END %][% IF derived == "true" %] derived[% END %][% IF derivedUnion == "true" %] union[% END %] [% IF association != "" %]association end[% ELSE %]property[% END %]
@@ -330,6 +350,9 @@ void Q${namespace}${className}::remove${attributeName}(${qtType.remove("QSet<").
 }
 
         [%- ELSE %]
+/*!
+    Adjusts ${PLURALFORM(qtAttribute, attribute)} to \a ${qtAttribute}.
+ */
 void Q${namespace}${className}::set${attributeName.remove("^Is")}([% IF !qtType.match('\*$') %]${qtType.trim} [% ELSE %]${qtType}[% END %]${qtAttribute})
 {
     // This is a [% IF readOnly == "" || readOnly == "false" %]read-write[% ELSE %]read-only[% END %][% IF derived == "true" %] derived[% END %][% IF derivedUnion == "true" %] union[% END %] [% IF association != "" %]association end[% ELSE %]property[% END %]

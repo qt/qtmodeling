@@ -53,6 +53,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A specific design dimenstion instance created to tackle a particular locus of architectural decision in the input model.
  */
+
+/*!
+    Creates a new QDuseDesignDimensionInstance. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QDuseDesignDimensionInstance::QDuseDesignDimensionInstance(bool createQModelingObject) :
     _targetInstance(0)
 {
@@ -60,6 +64,9 @@ QDuseDesignDimensionInstance::QDuseDesignDimensionInstance(bool createQModelingO
         _qModelingObject = qobject_cast<QModelingObject *>(new QDuseDesignDimensionInstanceObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QDuseDesignDimensionInstance.
+*/
 QModelingElement *QDuseDesignDimensionInstance::clone() const
 {
     QDuseDesignDimensionInstance *c = new QDuseDesignDimensionInstance;
@@ -70,7 +77,9 @@ QModelingElement *QDuseDesignDimensionInstance::clone() const
 
 // OWNED ATTRIBUTES
 
-
+/*!
+    The model element which is the target of architectural changes defined in this design dimension instance.
+ */
 QUmlElement *QDuseDesignDimensionInstance::targetInstance() const
 {
     // This is a read-write property
@@ -78,6 +87,9 @@ QUmlElement *QDuseDesignDimensionInstance::targetInstance() const
     return _targetInstance;
 }
 
+/*!
+    Adjusts targetInstance to \a targetInstance.
+ */
 void QDuseDesignDimensionInstance::setTargetInstance(QUmlElement *targetInstance)
 {
     // This is a read-write property

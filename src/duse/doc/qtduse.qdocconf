@@ -26,7 +26,7 @@ qhp.QtDuse.subprojects.classes.selectors = class fake:headerfile
 qhp.QtDuse.subprojects.classes.sortPages = true
 tagfile                 = ../../../doc/qtduse/qtduse.tags
 
-depends                 += qtcore qtxml qtdoc
+depends                 += qtcore qtdoc qtmodeling qtuml
 
 headerdirs  += ..
 
@@ -39,3 +39,6 @@ exampledirs += ../../../examples/duse \
 
 imagedirs   += images \
                ../../../examples/duse/doc/images
+
+navigation.landingpage = "Qt Duse"
+navigation.cppclassespage = "Qt Duse C++ Classes"

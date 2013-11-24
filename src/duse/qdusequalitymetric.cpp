@@ -53,6 +53,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A quality metric defined for the corresponding design space.
  */
+
+/*!
+    Creates a new QDuseQualityMetric. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QDuseQualityMetric::QDuseQualityMetric(bool createQModelingObject) :
     _expression(0)
 {
@@ -60,6 +64,9 @@ QDuseQualityMetric::QDuseQualityMetric(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QDuseQualityMetricObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QDuseQualityMetric.
+*/
 QModelingElement *QDuseQualityMetric::clone() const
 {
     QDuseQualityMetric *c = new QDuseQualityMetric;
@@ -82,6 +89,9 @@ QString QDuseQualityMetric::name() const
     return _name;
 }
 
+/*!
+    Adjusts name to \a name.
+ */
 void QDuseQualityMetric::setName(QString name)
 {
     // This is a read-write property
@@ -101,6 +111,9 @@ double QDuseQualityMetric::value() const
     return _value;
 }
 
+/*!
+    Adjusts value to \a value.
+ */
 void QDuseQualityMetric::setValue(double value)
 {
     // This is a read-write property
@@ -120,6 +133,9 @@ QUmlOpaqueExpression *QDuseQualityMetric::expression() const
     return _expression;
 }
 
+/*!
+    Adjusts expression to \a expression.
+ */
 void QDuseQualityMetric::setExpression(QUmlOpaqueExpression *expression)
 {
     // This is a read-write property
