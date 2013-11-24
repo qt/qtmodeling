@@ -43,8 +43,6 @@
 
 #include <QtModeling/QMetaModelPlugin>
 
-QT_BEGIN_HEADER
-
 QT_BEGIN_NAMESPACE
 
 class QModelingElement;
@@ -61,8 +59,6 @@ public:
 };
 
 QT_END_NAMESPACE
-
-QT_END_HEADER
 
 #endif // QSADUSEPROFILEMETAMODELPLUGIN_H
 
