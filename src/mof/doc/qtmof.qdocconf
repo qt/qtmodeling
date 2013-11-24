@@ -1,7 +1,7 @@
 include($QT_INSTALL_DOCS/global/qt-module-defaults.qdocconf)
 
 project                 = QtMof
-description             = Qt MOF Reference Documentation
+description             = Qt Mof Reference Documentation
 url                     = http://qt-project.org/doc/qt-$QT_VER
 version                 = $QT_VERSION
 
@@ -12,7 +12,7 @@ qhp.projects            = QtMof
 qhp.QtMof.file            = qtmof.qhp
 qhp.QtMof.namespace           = org.qt-project.qtmof.$QT_VERSION_TAG
 qhp.QtMof.virtualFolder       = qtmof
-qhp.QtMof.indexTitle          = Qt MOF
+qhp.QtMof.indexTitle          = Qt Mof
 qhp.QtMof.indexRoot           =
 
 qhp.QtMof.filterAttributes    = qtmof $QT_VERSION qtrefdoc
@@ -21,7 +21,7 @@ qhp.QtMof.customFilters.Qt.filterAttributes = qtmof $QT_VERSION
 
 qhp.QtMof.subprojects         = classes
 qhp.QtMof.subprojects.classes.title = C++ Classes
-qhp.QtMof.subprojects.classes.indexTitle = Qt MOF C++ Classes
+qhp.QtMof.subprojects.classes.indexTitle = Qt Mof C++ Classes
 qhp.QtMof.subprojects.classes.selectors = class fake:headerfile
 qhp.QtMof.subprojects.classes.sortPages = true
 tagfile                 = ../../../doc/qtmof/qtmof.tags
@@ -39,3 +39,6 @@ exampledirs += ../../../examples/mof \
 
 imagedirs   += images \
                ../../../examples/mof/doc/images
+
+navigation.landingpage = "Qt Mof"
+navigation.cppclassespage = "Qt Mof C++ Classes"

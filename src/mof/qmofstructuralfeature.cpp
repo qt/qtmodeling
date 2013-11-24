@@ -58,12 +58,21 @@ QT_BEGIN_NAMESPACE
     \inmodule QtMof
 
     \brief By specializing multiplicity element, it supports a multiplicity that specifies valid cardinalities for the collection of values associated with an instantiation of the structural feature.
+
+    \b {QMofStructuralFeature is an abstract class.}
  */
+
+/*!
+    Creates a new QMofStructuralFeature.
+*/
 QMofStructuralFeature::QMofStructuralFeature() :
     _isReadOnly(false)
 {
 }
 
+/*!
+    Returns a deep-copied clone of the QMofStructuralFeature.
+*/
 QModelingElement *QMofStructuralFeature::clone() const
 {
     QMofStructuralFeature *c = new QMofStructuralFeature;
@@ -97,6 +106,9 @@ bool QMofStructuralFeature::isReadOnly() const
     return _isReadOnly;
 }
 
+/*!
+    Adjusts isReadOnly to \a isReadOnly.
+ */
 void QMofStructuralFeature::setReadOnly(bool isReadOnly)
 {
     // This is a read-write property

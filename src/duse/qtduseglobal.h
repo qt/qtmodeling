@@ -48,9 +48,6 @@
 #include <QtCore/QSet>
 #include <QtCore/QString>
 
-Q_DECLARE_METATYPE(QList<QString> *)
-Q_DECLARE_METATYPE(QSet<QString> *)
-
 QT_BEGIN_NAMESPACE
 
 #ifndef QT_STATIC

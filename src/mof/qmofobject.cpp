@@ -48,11 +48,6 @@
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QMofObject
-
-    \inmodule QtMof
- */
 QMofObject::QMofObject(bool createQModelingObject)
 {
     if (createQModelingObject)

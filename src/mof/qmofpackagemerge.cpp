@@ -56,6 +56,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A package merge defines how the contents of one package are extended by the contents of another package.
  */
+
+/*!
+    Creates a new QMofPackageMerge. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QMofPackageMerge::QMofPackageMerge(bool createQModelingObject) :
     _mergedPackage(0),
     _receivingPackage(0)
@@ -64,6 +68,9 @@ QMofPackageMerge::QMofPackageMerge(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QMofPackageMergeObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QMofPackageMerge.
+*/
 QModelingElement *QMofPackageMerge::clone() const
 {
     QMofPackageMerge *c = new QMofPackageMerge;
@@ -80,6 +87,8 @@ QModelingElement *QMofPackageMerge::clone() const
 
 /*!
     References the Package that is to be merged with the receiving package of the PackageMerge.
+
+    \b {Subsetted property(ies):} QMofDirectedRelationship::targets().
  */
 QMofPackage *QMofPackageMerge::mergedPackage() const
 {
@@ -88,6 +97,9 @@ QMofPackage *QMofPackageMerge::mergedPackage() const
     return _mergedPackage;
 }
 
+/*!
+    Adjusts mergedPackage to \a mergedPackage.
+ */
 void QMofPackageMerge::setMergedPackage(QMofPackage *mergedPackage)
 {
     // This is a read-write association end
@@ -109,6 +121,10 @@ void QMofPackageMerge::setMergedPackage(QMofPackage *mergedPackage)
 
 /*!
     References the Package that is being extended with the contents of the merged package of the PackageMerge.
+
+    \b {Subsetted property(ies):} QMofElement::owner(), QMofDirectedRelationship::sources().
+
+    \b {Opposite property(ies):} QMofPackage::packageMerges().
  */
 QMofPackage *QMofPackageMerge::receivingPackage() const
 {
@@ -117,6 +133,9 @@ QMofPackage *QMofPackageMerge::receivingPackage() const
     return _receivingPackage;
 }
 
+/*!
+    Adjusts receivingPackage to \a receivingPackage.
+ */
 void QMofPackageMerge::setReceivingPackage(QMofPackage *receivingPackage)
 {
     // This is a read-write association end

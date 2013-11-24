@@ -58,12 +58,19 @@ QT_BEGIN_NAMESPACE
 
     \brief A literal real is a specification of a real value.
  */
+
+/*!
+    Creates a new QMofLiteralReal. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QMofLiteralReal::QMofLiteralReal(bool createQModelingObject)
 {
     if (createQModelingObject)
         _qModelingObject = qobject_cast<QModelingObject *>(new QMofLiteralRealObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QMofLiteralReal.
+*/
 QModelingElement *QMofLiteralReal::clone() const
 {
     QMofLiteralReal *c = new QMofLiteralReal;
@@ -78,7 +85,6 @@ QModelingElement *QMofLiteralReal::clone() const
 }
 
 // OWNED ATTRIBUTES
-
 
 double QMofLiteralReal::value() const
 {

@@ -58,6 +58,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A constraint is a condition or restriction expressed in natural language text or in a machine readable language for the purpose of declaring some of the semantics of an element.
  */
+
+/*!
+    Creates a new QMofConstraint. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QMofConstraint::QMofConstraint(bool createQModelingObject) :
     _context(0),
     _specification(0)
@@ -66,6 +70,9 @@ QMofConstraint::QMofConstraint(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QMofConstraintObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QMofConstraint.
+*/
 QModelingElement *QMofConstraint::clone() const
 {
     QMofConstraint *c = new QMofConstraint;
@@ -86,6 +93,8 @@ QModelingElement *QMofConstraint::clone() const
 
 /*!
     The ordered set of Elements referenced by this Constraint.
+
+    \sa addConstrainedElement(), removeConstrainedElement()
  */
 const QList<QMofElement *> QMofConstraint::constrainedElements() const
 {
@@ -94,6 +103,11 @@ const QList<QMofElement *> QMofConstraint::constrainedElements() const
     return _constrainedElements;
 }
 
+/*!
+    Adds \a constrainedElement to constrainedElements.
+
+    \sa constrainedElements(), removeConstrainedElement()
+ */
 void QMofConstraint::addConstrainedElement(QMofElement *constrainedElement)
 {
     // This is a read-write association end
@@ -105,6 +119,11 @@ void QMofConstraint::addConstrainedElement(QMofElement *constrainedElement)
     }
 }
 
+/*!
+    Removes \a constrainedElement from constrainedElements.
+
+    \sa constrainedElements(), addConstrainedElement()
+ */
 void QMofConstraint::removeConstrainedElement(QMofElement *constrainedElement)
 {
     // This is a read-write association end
@@ -116,6 +135,10 @@ void QMofConstraint::removeConstrainedElement(QMofElement *constrainedElement)
 
 /*!
     Specifies the namespace that owns the NamedElement.
+
+    \b {Subsetted property(ies):} QMofNamedElement::namespace_().
+
+    \b {Opposite property(ies):} QMofNamespace::ownedRules().
  */
 QMofNamespace *QMofConstraint::context() const
 {
@@ -124,6 +147,9 @@ QMofNamespace *QMofConstraint::context() const
     return _context;
 }
 
+/*!
+    Adjusts context to \a context.
+ */
 void QMofConstraint::setContext(QMofNamespace *context)
 {
     // This is a read-write association end
@@ -142,6 +168,8 @@ void QMofConstraint::setContext(QMofNamespace *context)
 
 /*!
     A condition that must be true when evaluated in order for the constraint to be satisfied.
+
+    \b {Subsetted property(ies):} QMofElement::ownedElements().
  */
 QMofValueSpecification *QMofConstraint::specification() const
 {
@@ -150,6 +178,9 @@ QMofValueSpecification *QMofConstraint::specification() const
     return _specification;
 }
 
+/*!
+    Adjusts specification to \a specification.
+ */
 void QMofConstraint::setSpecification(QMofValueSpecification *specification)
 {
     // This is a read-write association end

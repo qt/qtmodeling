@@ -58,12 +58,19 @@ QT_BEGIN_NAMESPACE
 
     \brief An expression represents a node in an expression tree, which may be non-terminal or terminal. It defines a symbol, and has a possibly empty sequence of operands which are value specifications.
  */
+
+/*!
+    Creates a new QMofExpression. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QMofExpression::QMofExpression(bool createQModelingObject)
 {
     if (createQModelingObject)
         _qModelingObject = qobject_cast<QModelingObject *>(new QMofExpressionObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QMofExpression.
+*/
 QModelingElement *QMofExpression::clone() const
 {
     QMofExpression *c = new QMofExpression;
@@ -83,6 +90,10 @@ QModelingElement *QMofExpression::clone() const
 
 /*!
     Specifies a sequence of operands.
+
+    \sa addOperand(), removeOperand()
+
+    \b {Subsetted property(ies):} QMofElement::ownedElements().
  */
 const QList<QMofValueSpecification *> QMofExpression::operands() const
 {
@@ -91,6 +102,11 @@ const QList<QMofValueSpecification *> QMofExpression::operands() const
     return _operands;
 }
 
+/*!
+    Adds \a operand to operands.
+
+    \sa operands(), removeOperand()
+ */
 void QMofExpression::addOperand(QMofValueSpecification *operand)
 {
     // This is a read-write association end
@@ -106,6 +122,11 @@ void QMofExpression::addOperand(QMofValueSpecification *operand)
     }
 }
 
+/*!
+    Removes \a operand from operands.
+
+    \sa operands(), addOperand()
+ */
 void QMofExpression::removeOperand(QMofValueSpecification *operand)
 {
     // This is a read-write association end
@@ -130,6 +151,9 @@ QString QMofExpression::symbol() const
     return _symbol;
 }
 
+/*!
+    Adjusts symbol to \a symbol.
+ */
 void QMofExpression::setSymbol(QString symbol)
 {
     // This is a read-write property

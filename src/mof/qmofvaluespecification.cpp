@@ -55,11 +55,20 @@ QT_BEGIN_NAMESPACE
     \inmodule QtMof
 
     \brief A value specification is the specification of a (possibly empty) set of instances, including both objects and data values.
+
+    \b {QMofValueSpecification is an abstract class.}
  */
+
+/*!
+    Creates a new QMofValueSpecification.
+*/
 QMofValueSpecification::QMofValueSpecification()
 {
 }
 
+/*!
+    Returns a deep-copied clone of the QMofValueSpecification.
+*/
 QModelingElement *QMofValueSpecification::clone() const
 {
     QMofValueSpecification *c = new QMofValueSpecification;

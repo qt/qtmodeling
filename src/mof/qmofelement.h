@@ -45,8 +45,6 @@
 
 #include <QtMof/QMofObject>
 
-QT_BEGIN_HEADER
-
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtMof)
@@ -91,8 +89,6 @@ private:
 QT_END_NAMESPACE
 
 Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE(QMofElement) *)
-
-QT_END_HEADER
 
 #endif // QMOFELEMENT_H
 

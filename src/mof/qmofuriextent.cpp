@@ -46,11 +46,6 @@
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QMofURIExtent
-
-    \inmodule QtMof
- */
 QMofURIExtent::QMofURIExtent(bool createQModelingObject) :
     QMofExtent(false)
 {

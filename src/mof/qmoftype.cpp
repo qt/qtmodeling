@@ -56,12 +56,21 @@ QT_BEGIN_NAMESPACE
     \inmodule QtMof
 
     \brief A type constrains the values represented by a typed element.
+
+    \b {QMofType is an abstract class.}
  */
+
+/*!
+    Creates a new QMofType.
+*/
 QMofType::QMofType() :
     _package(0)
 {
 }
 
+/*!
+    Returns a deep-copied clone of the QMofType.
+*/
 QModelingElement *QMofType::clone() const
 {
     QMofType *c = new QMofType;
@@ -78,6 +87,10 @@ QModelingElement *QMofType::clone() const
 
 /*!
     Specifies the owning package of this classifier, if any.
+
+    \b {Subsetted property(ies):} .
+
+    \b {Opposite property(ies):} QMofPackage::ownedTypes().
  */
 QMofPackage *QMofType::package() const
 {
@@ -86,6 +99,9 @@ QMofPackage *QMofType::package() const
     return _package;
 }
 
+/*!
+    Adjusts package to \a package.
+ */
 void QMofType::setPackage(QMofPackage *package)
 {
     // This is a read-write association end

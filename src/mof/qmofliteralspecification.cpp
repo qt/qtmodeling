@@ -55,11 +55,20 @@ QT_BEGIN_NAMESPACE
     \inmodule QtMof
 
     \brief A literal specification identifies a literal constant being modeled.
+
+    \b {QMofLiteralSpecification is an abstract class.}
  */
+
+/*!
+    Creates a new QMofLiteralSpecification.
+*/
 QMofLiteralSpecification::QMofLiteralSpecification()
 {
 }
 
+/*!
+    Returns a deep-copied clone of the QMofLiteralSpecification.
+*/
 QModelingElement *QMofLiteralSpecification::clone() const
 {
     QMofLiteralSpecification *c = new QMofLiteralSpecification;

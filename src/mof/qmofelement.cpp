@@ -51,13 +51,22 @@ QT_BEGIN_NAMESPACE
     \inmodule QtMof
 
     \brief An element is a constituent of a model. As such, it has the capability of owning other elements.
+
+    \b {QMofElement is an abstract class.}
  */
+
+/*!
+    Creates a new QMofElement.
+*/
 QMofElement::QMofElement() :
     QMofObject(false),
     _owner(0)
 {
 }
 
+/*!
+    Returns a deep-copied clone of the QMofElement.
+*/
 QModelingElement *QMofElement::clone() const
 {
     QMofElement *c = new QMofElement;
@@ -70,6 +79,10 @@ QModelingElement *QMofElement::clone() const
 
 /*!
     The Comments owned by this element.
+
+    \sa addOwnedComment(), removeOwnedComment()
+
+    \b {Subsetted property(ies):} QMofElement::ownedElements().
  */
 const QSet<QMofComment *> QMofElement::ownedComments() const
 {
@@ -78,6 +91,11 @@ const QSet<QMofComment *> QMofElement::ownedComments() const
     return _ownedComments;
 }
 
+/*!
+    Adds \a ownedComment to ownedComments.
+
+    \sa ownedComments(), removeOwnedComment()
+ */
 void QMofElement::addOwnedComment(QMofComment *ownedComment)
 {
     // This is a read-write association end
@@ -93,6 +111,11 @@ void QMofElement::addOwnedComment(QMofComment *ownedComment)
     }
 }
 
+/*!
+    Removes \a ownedComment from ownedComments.
+
+    \sa ownedComments(), addOwnedComment()
+ */
 void QMofElement::removeOwnedComment(QMofComment *ownedComment)
 {
     // This is a read-write association end
@@ -109,6 +132,10 @@ void QMofElement::removeOwnedComment(QMofComment *ownedComment)
 
 /*!
     The Elements owned by this element.
+
+    \b {This is a read-only derived union property.}
+
+    \b {Opposite property(ies):} QMofElement::owner().
  */
 const QSet<QMofElement *> QMofElement::ownedElements() const
 {
@@ -117,6 +144,11 @@ const QSet<QMofElement *> QMofElement::ownedElements() const
     return _ownedElements;
 }
 
+/*!
+    Adds \a ownedElement to ownedElements.
+
+    \sa ownedElements(), removeOwnedElement()
+ */
 void QMofElement::addOwnedElement(QMofElement *ownedElement)
 {
     // This is a read-only derived union association end
@@ -134,6 +166,11 @@ void QMofElement::addOwnedElement(QMofElement *ownedElement)
     }
 }
 
+/*!
+    Removes \a ownedElement from ownedElements.
+
+    \sa ownedElements(), addOwnedElement()
+ */
 void QMofElement::removeOwnedElement(QMofElement *ownedElement)
 {
     // This is a read-only derived union association end
@@ -152,6 +189,10 @@ void QMofElement::removeOwnedElement(QMofElement *ownedElement)
 
 /*!
     The Element that owns this element.
+
+    \b {This is a read-only derived union property.}
+
+    \b {Opposite property(ies):} QMofElement::ownedElements().
  */
 QMofElement *QMofElement::owner() const
 {
@@ -160,6 +201,9 @@ QMofElement *QMofElement::owner() const
     return _owner;
 }
 
+/*!
+    Adjusts owner to \a owner.
+ */
 void QMofElement::setOwner(QMofElement *owner)
 {
     // This is a read-only derived union association end

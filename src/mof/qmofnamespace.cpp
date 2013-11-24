@@ -58,11 +58,20 @@ QT_BEGIN_NAMESPACE
     \inmodule QtMof
 
     \brief A namespace is an element in a model that contains a set of named elements that can be identified by name.
+
+    \b {QMofNamespace is an abstract class.}
  */
+
+/*!
+    Creates a new QMofNamespace.
+*/
 QMofNamespace::QMofNamespace()
 {
 }
 
+/*!
+    Returns a deep-copied clone of the QMofNamespace.
+*/
 QModelingElement *QMofNamespace::clone() const
 {
     QMofNamespace *c = new QMofNamespace;
@@ -83,6 +92,12 @@ QModelingElement *QMofNamespace::clone() const
 
 /*!
     References the ElementImports owned by the Namespace.
+
+    \sa addElementImport(), removeElementImport()
+
+    \b {Subsetted property(ies):} QMofElement::ownedElements().
+
+    \b {Opposite property(ies):} QMofElementImport::importingNamespace().
  */
 const QSet<QMofElementImport *> QMofNamespace::elementImports() const
 {
@@ -91,6 +106,11 @@ const QSet<QMofElementImport *> QMofNamespace::elementImports() const
     return _elementImports;
 }
 
+/*!
+    Adds \a elementImport to elementImports.
+
+    \sa elementImports(), removeElementImport()
+ */
 void QMofNamespace::addElementImport(QMofElementImport *elementImport)
 {
     // This is a read-write association end
@@ -111,6 +131,11 @@ void QMofNamespace::addElementImport(QMofElementImport *elementImport)
     }
 }
 
+/*!
+    Removes \a elementImport from elementImports.
+
+    \sa elementImports(), addElementImport()
+ */
 void QMofNamespace::removeElementImport(QMofElementImport *elementImport)
 {
     // This is a read-write association end
@@ -132,6 +157,10 @@ void QMofNamespace::removeElementImport(QMofElementImport *elementImport)
 
 /*!
     References the PackageableElements that are members of this Namespace as a result of either PackageImports or ElementImports.
+
+    \b {This is a read-only derived property.}
+
+    \b {Subsetted property(ies):} QMofNamespace::members().
  */
 const QSet<QMofPackageableElement *> QMofNamespace::importedMembers() const
 {
@@ -146,6 +175,11 @@ const QSet<QMofPackageableElement *> QMofNamespace::importedMembers() const
     return importedMembers_;
 }
 
+/*!
+    Adds \a importedMember to importedMembers.
+
+    \sa importedMembers(), removeImportedMember()
+ */
 void QMofNamespace::addImportedMember(QMofPackageableElement *importedMember)
 {
     // This is a read-only derived association end
@@ -161,6 +195,11 @@ void QMofNamespace::addImportedMember(QMofPackageableElement *importedMember)
     }
 }
 
+/*!
+    Removes \a importedMember from importedMembers.
+
+    \sa importedMembers(), addImportedMember()
+ */
 void QMofNamespace::removeImportedMember(QMofPackageableElement *importedMember)
 {
     // This is a read-only derived association end
@@ -178,6 +217,8 @@ void QMofNamespace::removeImportedMember(QMofPackageableElement *importedMember)
 
 /*!
     A collection of NamedElements identifiable within the Namespace, either by being owned or by being introduced by importing or inheritance.
+
+    \b {This is a read-only derived union property.}
  */
 const QSet<QMofNamedElement *> QMofNamespace::members() const
 {
@@ -186,6 +227,11 @@ const QSet<QMofNamedElement *> QMofNamespace::members() const
     return _members;
 }
 
+/*!
+    Adds \a member to members.
+
+    \sa members(), removeMember()
+ */
 void QMofNamespace::addMember(QMofNamedElement *member)
 {
     // This is a read-only derived union association end
@@ -197,6 +243,11 @@ void QMofNamespace::addMember(QMofNamedElement *member)
     }
 }
 
+/*!
+    Removes \a member from members.
+
+    \sa members(), addMember()
+ */
 void QMofNamespace::removeMember(QMofNamedElement *member)
 {
     // This is a read-only derived union association end
@@ -208,6 +259,12 @@ void QMofNamespace::removeMember(QMofNamedElement *member)
 
 /*!
     A collection of NamedElements owned by the Namespace.
+
+    \b {This is a read-only derived union property.}
+
+    \b {Subsetted property(ies):} QMofElement::ownedElements(), QMofNamespace::members().
+
+    \b {Opposite property(ies):} QMofNamedElement::namespace_().
  */
 const QSet<QMofNamedElement *> QMofNamespace::ownedMembers() const
 {
@@ -216,6 +273,11 @@ const QSet<QMofNamedElement *> QMofNamespace::ownedMembers() const
     return _ownedMembers;
 }
 
+/*!
+    Adds \a ownedMember to ownedMembers.
+
+    \sa ownedMembers(), removeOwnedMember()
+ */
 void QMofNamespace::addOwnedMember(QMofNamedElement *ownedMember)
 {
     // This is a read-only derived union association end
@@ -237,6 +299,11 @@ void QMofNamespace::addOwnedMember(QMofNamedElement *ownedMember)
     }
 }
 
+/*!
+    Removes \a ownedMember from ownedMembers.
+
+    \sa ownedMembers(), addOwnedMember()
+ */
 void QMofNamespace::removeOwnedMember(QMofNamedElement *ownedMember)
 {
     // This is a read-only derived union association end
@@ -259,6 +326,12 @@ void QMofNamespace::removeOwnedMember(QMofNamedElement *ownedMember)
 
 /*!
     Specifies a set of Constraints owned by this Namespace.
+
+    \sa addOwnedRule(), removeOwnedRule()
+
+    \b {Subsetted property(ies):} QMofNamespace::ownedMembers().
+
+    \b {Opposite property(ies):} QMofConstraint::context().
  */
 const QSet<QMofConstraint *> QMofNamespace::ownedRules() const
 {
@@ -267,6 +340,11 @@ const QSet<QMofConstraint *> QMofNamespace::ownedRules() const
     return _ownedRules;
 }
 
+/*!
+    Adds \a ownedRule to ownedRules.
+
+    \sa ownedRules(), removeOwnedRule()
+ */
 void QMofNamespace::addOwnedRule(QMofConstraint *ownedRule)
 {
     // This is a read-write association end
@@ -287,6 +365,11 @@ void QMofNamespace::addOwnedRule(QMofConstraint *ownedRule)
     }
 }
 
+/*!
+    Removes \a ownedRule from ownedRules.
+
+    \sa ownedRules(), addOwnedRule()
+ */
 void QMofNamespace::removeOwnedRule(QMofConstraint *ownedRule)
 {
     // This is a read-write association end
@@ -308,6 +391,12 @@ void QMofNamespace::removeOwnedRule(QMofConstraint *ownedRule)
 
 /*!
     References the PackageImports owned by the Namespace.
+
+    \sa addPackageImport(), removePackageImport()
+
+    \b {Subsetted property(ies):} QMofElement::ownedElements().
+
+    \b {Opposite property(ies):} QMofPackageImport::importingNamespace().
  */
 const QSet<QMofPackageImport *> QMofNamespace::packageImports() const
 {
@@ -316,6 +405,11 @@ const QSet<QMofPackageImport *> QMofNamespace::packageImports() const
     return _packageImports;
 }
 
+/*!
+    Adds \a packageImport to packageImports.
+
+    \sa packageImports(), removePackageImport()
+ */
 void QMofNamespace::addPackageImport(QMofPackageImport *packageImport)
 {
     // This is a read-write association end
@@ -336,6 +430,11 @@ void QMofNamespace::addPackageImport(QMofPackageImport *packageImport)
     }
 }
 
+/*!
+    Removes \a packageImport from packageImports.
+
+    \sa packageImports(), addPackageImport()
+ */
 void QMofNamespace::removePackageImport(QMofPackageImport *packageImport)
 {
     // This is a read-write association end

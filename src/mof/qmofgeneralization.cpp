@@ -56,6 +56,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A generalization is a taxonomic relationship between a more general classifier and a more specific classifier. Each instance of the specific classifier is also an indirect instance of the general classifier. Thus, the specific classifier inherits the features of the more general classifier.
  */
+
+/*!
+    Creates a new QMofGeneralization. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QMofGeneralization::QMofGeneralization(bool createQModelingObject) :
     _general(0),
     _isSubstitutable(true),
@@ -65,6 +69,9 @@ QMofGeneralization::QMofGeneralization(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QMofGeneralizationObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QMofGeneralization.
+*/
 QModelingElement *QMofGeneralization::clone() const
 {
     QMofGeneralization *c = new QMofGeneralization;
@@ -82,6 +89,8 @@ QModelingElement *QMofGeneralization::clone() const
 
 /*!
     References the general classifier in the Generalization relationship.
+
+    \b {Subsetted property(ies):} QMofDirectedRelationship::targets().
  */
 QMofClassifier *QMofGeneralization::general() const
 {
@@ -90,6 +99,9 @@ QMofClassifier *QMofGeneralization::general() const
     return _general;
 }
 
+/*!
+    Adjusts general to \a general.
+ */
 void QMofGeneralization::setGeneral(QMofClassifier *general)
 {
     // This is a read-write association end
@@ -119,6 +131,9 @@ bool QMofGeneralization::isSubstitutable() const
     return _isSubstitutable;
 }
 
+/*!
+    Adjusts isSubstitutable to \a isSubstitutable.
+ */
 void QMofGeneralization::setSubstitutable(bool isSubstitutable)
 {
     // This is a read-write property
@@ -131,6 +146,10 @@ void QMofGeneralization::setSubstitutable(bool isSubstitutable)
 
 /*!
     References the specializing classifier in the Generalization relationship.
+
+    \b {Subsetted property(ies):} QMofElement::owner(), QMofDirectedRelationship::sources().
+
+    \b {Opposite property(ies):} QMofClassifier::generalizations().
  */
 QMofClassifier *QMofGeneralization::specific() const
 {
@@ -139,6 +158,9 @@ QMofClassifier *QMofGeneralization::specific() const
     return _specific;
 }
 
+/*!
+    Adjusts specific to \a specific.
+ */
 void QMofGeneralization::setSpecific(QMofClassifier *specific)
 {
     // This is a read-write association end

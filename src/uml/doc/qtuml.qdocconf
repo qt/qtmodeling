@@ -1,7 +1,7 @@
 include($QT_INSTALL_DOCS/global/qt-module-defaults.qdocconf)
 
 project                 = QtUml
-description             = Qt UML Reference Documentation
+description             = Qt Uml Reference Documentation
 url                     = http://qt-project.org/doc/qt-$QT_VER
 version                 = $QT_VERSION
 
@@ -12,7 +12,7 @@ qhp.projects            = QtUml
 qhp.QtUml.file            = qtuml.qhp
 qhp.QtUml.namespace           = org.qt-project.qtuml.$QT_VERSION_TAG
 qhp.QtUml.virtualFolder       = qtuml
-qhp.QtUml.indexTitle          = Qt UML
+qhp.QtUml.indexTitle          = Qt Uml
 qhp.QtUml.indexRoot           =
 
 qhp.QtUml.filterAttributes    = qtuml $QT_VERSION qtrefdoc
@@ -21,7 +21,7 @@ qhp.QtUml.customFilters.Qt.filterAttributes = qtuml $QT_VERSION
 
 qhp.QtUml.subprojects         = classes
 qhp.QtUml.subprojects.classes.title = C++ Classes
-qhp.QtUml.subprojects.classes.indexTitle = Qt UML C++ Classes
+qhp.QtUml.subprojects.classes.indexTitle = Qt Uml C++ Classes
 qhp.QtUml.subprojects.classes.selectors = class fake:headerfile
 qhp.QtUml.subprojects.classes.sortPages = true
 tagfile                 = ../../../doc/qtuml/qtuml.tags
@@ -39,3 +39,7 @@ exampledirs += ../../../examples/uml \
 
 imagedirs   += images \
                ../../../examples/uml/doc/images
+
+
+navigation.landingpage = "Qt Uml"
+navigation.cppclassespage = "Qt Uml C++ Classes"

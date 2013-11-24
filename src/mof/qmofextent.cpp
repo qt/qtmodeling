@@ -50,11 +50,6 @@
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QMofExtent
-
-    \inmodule QtMof
- */
 QMofExtent::QMofExtent(bool createQModelingObject) :
     QMofObject(false)
 {

@@ -61,11 +61,20 @@ QT_BEGIN_NAMESPACE
     \inmodule QtMof
 
     \brief A behavioral feature is a feature of a classifier that specifies an aspect of the behavior of its instances.
+
+    \b {QMofBehavioralFeature is an abstract class.}
  */
+
+/*!
+    Creates a new QMofBehavioralFeature.
+*/
 QMofBehavioralFeature::QMofBehavioralFeature()
 {
 }
 
+/*!
+    Returns a deep-copied clone of the QMofBehavioralFeature.
+*/
 QModelingElement *QMofBehavioralFeature::clone() const
 {
     QMofBehavioralFeature *c = new QMofBehavioralFeature;
@@ -92,6 +101,10 @@ QModelingElement *QMofBehavioralFeature::clone() const
 
 /*!
     Specifies the ordered set of formal parameters of this BehavioralFeature.
+
+    \sa addOwnedParameter(), removeOwnedParameter()
+
+    \b {Subsetted property(ies):} QMofNamespace::ownedMembers().
  */
 const QList<QMofParameter *> QMofBehavioralFeature::ownedParameters() const
 {
@@ -100,6 +113,11 @@ const QList<QMofParameter *> QMofBehavioralFeature::ownedParameters() const
     return _ownedParameters;
 }
 
+/*!
+    Adds \a ownedParameter to ownedParameters.
+
+    \sa ownedParameters(), removeOwnedParameter()
+ */
 void QMofBehavioralFeature::addOwnedParameter(QMofParameter *ownedParameter)
 {
     // This is a read-write association end
@@ -115,6 +133,11 @@ void QMofBehavioralFeature::addOwnedParameter(QMofParameter *ownedParameter)
     }
 }
 
+/*!
+    Removes \a ownedParameter from ownedParameters.
+
+    \sa ownedParameters(), addOwnedParameter()
+ */
 void QMofBehavioralFeature::removeOwnedParameter(QMofParameter *ownedParameter)
 {
     // This is a read-write association end
@@ -131,6 +154,8 @@ void QMofBehavioralFeature::removeOwnedParameter(QMofParameter *ownedParameter)
 
 /*!
     References the Types representing exceptions that may be raised during an invocation of this feature.
+
+    \sa addRaisedException(), removeRaisedException()
  */
 const QSet<QMofType *> QMofBehavioralFeature::raisedExceptions() const
 {
@@ -139,6 +164,11 @@ const QSet<QMofType *> QMofBehavioralFeature::raisedExceptions() const
     return _raisedExceptions;
 }
 
+/*!
+    Adds \a raisedException to raisedExceptions.
+
+    \sa raisedExceptions(), removeRaisedException()
+ */
 void QMofBehavioralFeature::addRaisedException(QMofType *raisedException)
 {
     // This is a read-write association end
@@ -150,6 +180,11 @@ void QMofBehavioralFeature::addRaisedException(QMofType *raisedException)
     }
 }
 
+/*!
+    Removes \a raisedException from raisedExceptions.
+
+    \sa raisedExceptions(), addRaisedException()
+ */
 void QMofBehavioralFeature::removeRaisedException(QMofType *raisedException)
 {
     // This is a read-write association end

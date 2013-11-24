@@ -61,22 +61,27 @@
 [%- IF loop.last %]
 [% END -%]
 [%- END -%]
+[%- SET documentation = class.findvalue("ownedComment/body/text()") -%]
 
 QT_BEGIN_NAMESPACE
 
+[%- IF documentation != "" %]
 /*!
     \class Q${namespace}${className}
 
     \inmodule Qt${namespace}
-[%- IF class.findvalue("ownedComment/body/text()") != "" %]
 
     \brief ${class.findvalue("ownedComment/body/text()")}
+[%- IF class.findvalue("@isAbstract") == "true" %]
+
+    \b {Q${namespace}${className} is an abstract class.}
 [%- END %]
  */
 
 /*!
-    Creates a new Q${namespace}${className}. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+    Creates a new Q${namespace}${className}.[% IF class.findvalue("@isAbstract") != "true" %] Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.[% END %]
 */
+[%- END %]
 Q${namespace}${className}::Q${namespace}${className}([%- IF class.findvalue("@isAbstract") != "true" %]bool createQModelingObject[% END %])
 [%- SET found = "false" -%]
 [%- FOREACH superclass IN generalization -%]
@@ -134,9 +139,11 @@ Q${namespace}${className}::Q${namespace}${className}([%- IF class.findvalue("@is
 [%- END %]
 }
 
+[%- IF documentation != "" %]
 /*!
     Returns a deep-copied clone of the Q${namespace}${className}.
 */
+[%- END %]
 QModelingElement *Q${namespace}${className}::clone() const
 {
     Q${namespace}${className} *c = new Q${namespace}${className};
@@ -165,11 +172,47 @@ QModelingElement *Q${namespace}${className}::clone() const
 [%- IF documentation != "" -%]
 /*!
     ${documentation}
-[% IF qtType.match("QList|QSet") %]
+[% IF attribute.findnodes("upperValue").findvalue("@value") == "*" && readOnly != "true" %]
     \sa add${attributeName}(), remove${attributeName}()
 [% END -%]
+[%- IF readOnly == "true" || derived == "true" || derivedUnion == "true" %]
+    \b {This is a[%- IF readOnly == "true" %] read-only[% END %][% IF derivedUnion == "true" %] derived union[% ELSE %][% IF derived == "true" %] derived[% END %][% END %] property.}
+[% END -%]
+[%- IF attribute.findvalue("@subsettedProperty") != "" %]
+    \b {Subsetted property(ies):} 
+    [%- FOREACH subsettedPropertyName = attribute.findvalue("@subsettedProperty").split(" ") -%]
+        [%- SET subsettedProperty = xmi.findnodes("//packagedElement[(@xmi:type=\"uml:Class\" or @xmi:type=\"uml:Stereotype\") and @name=\"${subsettedPropertyName.split('-').0}\"]/ownedAttribute[@name=\"${subsettedPropertyName.split('-').1}\"]") -%]
+        [%- IF subsettedProperty.findvalue("@name") != "" -%]
+Q${namespace}${subsettedPropertyName.split("-").0}::${PLURALFORM(QT_ATTRIBUTE(subsettedProperty), subsettedProperty)}()[% IF !loop.last %], [% END %]
+        [%- END -%]
+    [%- END -%].
+[% END -%]
+[%- IF attribute.findvalue("@redefinedProperty") != "" %]
+    \b {Redefined property(ies):} 
+    [%- FOREACH redefinedPropertyName = attribute.findvalue("@redefinedProperty").split(" ") -%]
+        [%- SET redefinedProperty = xmi.findnodes("//packagedElement[(@xmi:type=\"uml:Class\" or @xmi:type=\"uml:Stereotype\") and @name=\"${redefinedPropertyName.split('-').0}\"]/ownedAttribute[@name=\"${redefinedPropertyName.split('-').1}\"]") -%]
+        [%- IF redefinedProperty.findvalue("@name") != "" -%]
+Q${namespace}${redefinedPropertyName.split("-").0}::${PLURALFORM(QT_ATTRIBUTE(redefinedProperty), redefinedProperty)}()[% IF !loop.last %], [% END %]
+        [%- END -%]
+    [%- END -%].
+[% END -%]
+[%- IF association != "" -%]
+[%- found = "false" -%]
+[%- FOREACH memberEnd = xmi.findvalue("//packagedElement[(@xmi:type=\"uml:Association\" or @xmi:type=\"uml:Extension\") and @name=\"${association}\"]/@memberEnd").split(' ') -%]
+    [%- NEXT IF memberEnd.split('-').0 == className && memberEnd.split('-').1 == attributeName.lcfirst -%]
+    [%- SET oppositeProperty = xmi.findnodes("//packagedElement[(@xmi:type=\"uml:Class\" or @xmi:type=\"uml:Stereotype\") and @name=\"${memberEnd.split('-').0}\"]/ownedAttribute[@name=\"${memberEnd.split('-').1}\"]") -%]
+    [%- IF oppositeProperty.findvalue("@name") != "" -%]
+        [%- IF found == "false" %]
+    \b {Opposite property(ies):} Q${namespace}${memberEnd.split("-").0}::${PLURALFORM(QT_ATTRIBUTE(oppositeProperty), oppositeProperty)}()
+            [%- found = "true" -%]
+        [%- ELSE %], Q${namespace}${memberEnd.split("-").0}::${PLURALFORM(QT_ATTRIBUTE(oppositeProperty), oppositeProperty)}()
+        [%- END -%]
+    [%- END -%]
+[%- END -%][%- IF found == "true"- %].
+[% END -%]
+[%- END -%]
  */
-[%- END %]
+[% END -%]
 [% IF qtType.match("QList|QSet") %]const [% END %]${qtType}Q${namespace}${className}::${PLURALFORM(qtAttribute, attribute)}() const
 {
     // This is a [% IF readOnly == "" || readOnly == "false" %]read-write[% ELSE %]read-only[% END %][% IF derived == "true" %] derived[% END %][% IF derivedUnion == "true" %] union[% END %] [% IF association != "" %]association end[% ELSE %]property[% END %]
@@ -194,7 +237,7 @@ QModelingElement *Q${namespace}${className}::clone() const
 
     \sa ${PLURALFORM(qtAttribute, attribute)}(), remove${attributeName}()
  */
-[%- END %]
+[% END -%]
 void Q${namespace}${className}::add${attributeName}(${qtType.remove("QSet<").remove("QList<").replace(">", "").replace('\* $', '*')}${qtAttribute})
 {
     // This is a [% IF readOnly == "" || readOnly == "false" %]read-write[% ELSE %]read-only[% END %][% IF derived == "true" %] derived[% END %][% IF derivedUnion == "true" %] union[% END %] [% IF association != "" %]association end[% ELSE %]property[% END %]
@@ -278,7 +321,7 @@ void Q${namespace}${className}::add${attributeName}(${qtType.remove("QSet<").rem
 
     \sa ${PLURALFORM(qtAttribute, attribute)}(), add${attributeName}()
  */
-[%- END %]
+[% END -%]
 void Q${namespace}${className}::remove${attributeName}(${qtType.remove("QSet<").remove("QList<").replace(">", "").replace('\* $', '*')}${qtAttribute})
 {
     // This is a [% IF readOnly == "" || readOnly == "false" %]read-write[% ELSE %]read-only[% END %][% IF derived == "true" %] derived[% END %][% IF derivedUnion == "true" %] union[% END %] [% IF association != "" %]association end[% ELSE %]property[% END %]

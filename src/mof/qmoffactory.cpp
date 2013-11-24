@@ -52,11 +52,6 @@
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QMofFactory
-
-    \inmodule QtMof
- */
 QMofFactory::QMofFactory(bool createQModelingObject) :
     _package(0)
 {
@@ -73,7 +68,6 @@ QModelingElement *QMofFactory::clone() const
 }
 
 // OWNED ATTRIBUTES
-
 
 QMofPackage *QMofFactory::package() const
 {

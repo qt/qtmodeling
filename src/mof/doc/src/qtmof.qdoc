@@ -26,17 +26,17 @@
 ****************************************************************************/
 /*!
     \page qtmof-index.html
-    \title Qt MOF
+    \title Qt Mof
     \brief Implements the OMG's Meta Object Facility (MOF) standard.
 
     Qt Mof is an add-on module which implements the OMG's Meta Object Facility (MOF) metamodel.
 
     \section1 Getting Started
-    To enable Qt MOF in a project, add this directive into the C++ files:
+    To enable Qt Mof in a project, add this directive into the C++ files:
     \code
     #include <QtMof>
     \endcode
-    To link against the Qt MOF module, add this line to the project file:
+    To link against the Qt Mof module, add this line to the project file:
     \code
     QT += mof
     \endcode
@@ -44,13 +44,13 @@
     \section1 Reference
     These are links to the API reference materials.
     \list
-    \li \l{Qt MOF Module C++ Classes}{C++ classes}
+    \li \l{Qt Mof C++ Classes}{C++ classes}
     \endlist
 */
 
 /*!
     \module QtMof
-    \title Qt MOF Module C++ Classes
+    \title Qt Mof C++ Classes
     \ingroup modules
     \brief Implements the OMG's Meta Object Facility (MOF) standard.
 

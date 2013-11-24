@@ -46,11 +46,6 @@
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QMofException
-
-    \inmodule QtMof
- */
 QMofException::QMofException(bool createQModelingObject) :
     _objectInError(0),
     _elementInError(0)
@@ -72,7 +67,6 @@ QModelingElement *QMofException::clone() const
 
 // OWNED ATTRIBUTES
 
-
 QMofElement *QMofException::objectInError() const
 {
     // This is a read-write property
@@ -91,7 +85,6 @@ void QMofException::setObjectInError(QMofElement *objectInError)
     }
 }
 
-
 QMofElement *QMofException::elementInError() const
 {
     // This is a read-write property
@@ -109,7 +102,6 @@ void QMofException::setElementInError(QMofElement *elementInError)
             QObject::connect(elementInError->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setElementInError()));
     }
 }
-
 
 QString QMofException::description() const
 {

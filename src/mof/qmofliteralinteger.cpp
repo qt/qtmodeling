@@ -58,6 +58,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A literal integer is a specification of an integer value.
  */
+
+/*!
+    Creates a new QMofLiteralInteger. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QMofLiteralInteger::QMofLiteralInteger(bool createQModelingObject) :
     _value(0)
 {
@@ -65,6 +69,9 @@ QMofLiteralInteger::QMofLiteralInteger(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QMofLiteralIntegerObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QMofLiteralInteger.
+*/
 QModelingElement *QMofLiteralInteger::clone() const
 {
     QMofLiteralInteger *c = new QMofLiteralInteger;
@@ -90,6 +97,9 @@ int QMofLiteralInteger::value() const
     return _value;
 }
 
+/*!
+    Adjusts value to \a value.
+ */
 void QMofLiteralInteger::setValue(int value)
 {
     // This is a read-write property

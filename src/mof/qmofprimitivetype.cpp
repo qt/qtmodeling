@@ -70,6 +70,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A primitive type defines a predefined data type, without any relevant substructure (i.e., it has no parts in the context of UML). A primitive datatype may have an algebra and operations defined outside of UML, for example, mathematically.
  */
+
+/*!
+    Creates a new QMofPrimitiveType. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QMofPrimitiveType::QMofPrimitiveType(bool createQModelingObject) :
     QMofDataType(false)
 {
@@ -77,6 +81,9 @@ QMofPrimitiveType::QMofPrimitiveType(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QMofPrimitiveTypeObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QMofPrimitiveType.
+*/
 QModelingElement *QMofPrimitiveType::clone() const
 {
     QMofPrimitiveType *c = new QMofPrimitiveType;

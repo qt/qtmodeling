@@ -53,12 +53,21 @@ QT_BEGIN_NAMESPACE
     \inmodule QtMof
 
     \brief A packageable element indicates a named element that may be owned directly by a package.
+
+    \b {QMofPackageableElement is an abstract class.}
  */
+
+/*!
+    Creates a new QMofPackageableElement.
+*/
 QMofPackageableElement::QMofPackageableElement() :
     _visibility(QtMof::VisibilityKindPublic)
 {
 }
 
+/*!
+    Returns a deep-copied clone of the QMofPackageableElement.
+*/
 QModelingElement *QMofPackageableElement::clone() const
 {
     QMofPackageableElement *c = new QMofPackageableElement;
@@ -73,6 +82,8 @@ QModelingElement *QMofPackageableElement::clone() const
 
 /*!
     Indicates that packageable elements must always have a visibility, i.e., visibility is not optional.
+
+    \b {Redefined property(ies):} QMofNamedElement::visibility().
  */
 QtMof::VisibilityKind QMofPackageableElement::visibility() const
 {
@@ -81,6 +92,9 @@ QtMof::VisibilityKind QMofPackageableElement::visibility() const
     return _visibility;
 }
 
+/*!
+    Adjusts visibility to \a visibility.
+ */
 void QMofPackageableElement::setVisibility(QtMof::VisibilityKind visibility)
 {
     // This is a read-write property

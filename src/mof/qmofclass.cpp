@@ -68,6 +68,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A class describes a set of objects that share the same specifications of features, constraints, and semantics.
  */
+
+/*!
+    Creates a new QMofClass. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QMofClass::QMofClass(bool createQModelingObject) :
     _isAbstract(false)
 {
@@ -75,6 +79,9 @@ QMofClass::QMofClass(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QMofClassObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QMofClass.
+*/
 QModelingElement *QMofClass::clone() const
 {
     QMofClass *c = new QMofClass;
@@ -110,6 +117,8 @@ QModelingElement *QMofClass::clone() const
 
 /*!
     If true, the Classifier does not provide a complete declaration and can typically not be instantiated. An abstract classifier is intended to be used by other classifiers e.g. as the target of general metarelationships or generalization relationships.
+
+    \b {Redefined property(ies):} QMofClassifier::isAbstract().
  */
 bool QMofClass::isAbstract() const
 {
@@ -118,6 +127,9 @@ bool QMofClass::isAbstract() const
     return _isAbstract;
 }
 
+/*!
+    Adjusts isAbstract to \a isAbstract.
+ */
 void QMofClass::setAbstract(bool isAbstract)
 {
     // This is a read-write property
@@ -133,6 +145,10 @@ void QMofClass::setAbstract(bool isAbstract)
 
 /*!
     References all the Classifiers that are defined (nested) within the Class.
+
+    \sa addNestedClassifier(), removeNestedClassifier()
+
+    \b {Subsetted property(ies):} QMofNamespace::ownedMembers().
  */
 const QList<QMofClassifier *> QMofClass::nestedClassifiers() const
 {
@@ -141,6 +157,11 @@ const QList<QMofClassifier *> QMofClass::nestedClassifiers() const
     return _nestedClassifiers;
 }
 
+/*!
+    Adds \a nestedClassifier to nestedClassifiers.
+
+    \sa nestedClassifiers(), removeNestedClassifier()
+ */
 void QMofClass::addNestedClassifier(QMofClassifier *nestedClassifier)
 {
     // This is a read-write association end
@@ -156,6 +177,11 @@ void QMofClass::addNestedClassifier(QMofClassifier *nestedClassifier)
     }
 }
 
+/*!
+    Removes \a nestedClassifier from nestedClassifiers.
+
+    \sa nestedClassifiers(), addNestedClassifier()
+ */
 void QMofClass::removeNestedClassifier(QMofClassifier *nestedClassifier)
 {
     // This is a read-write association end
@@ -172,6 +198,12 @@ void QMofClass::removeNestedClassifier(QMofClassifier *nestedClassifier)
 
 /*!
     The attributes (i.e. the properties) owned by the class.
+
+    \sa addOwnedAttribute(), removeOwnedAttribute()
+
+    \b {Subsetted property(ies):} QMofClassifier::attributes(), QMofNamespace::ownedMembers().
+
+    \b {Opposite property(ies):} QMofProperty::class_().
  */
 const QList<QMofProperty *> QMofClass::ownedAttributes() const
 {
@@ -180,6 +212,11 @@ const QList<QMofProperty *> QMofClass::ownedAttributes() const
     return _ownedAttributes;
 }
 
+/*!
+    Adds \a ownedAttribute to ownedAttributes.
+
+    \sa ownedAttributes(), removeOwnedAttribute()
+ */
 void QMofClass::addOwnedAttribute(QMofProperty *ownedAttribute)
 {
     // This is a read-write association end
@@ -201,6 +238,11 @@ void QMofClass::addOwnedAttribute(QMofProperty *ownedAttribute)
     }
 }
 
+/*!
+    Removes \a ownedAttribute from ownedAttributes.
+
+    \sa ownedAttributes(), addOwnedAttribute()
+ */
 void QMofClass::removeOwnedAttribute(QMofProperty *ownedAttribute)
 {
     // This is a read-write association end
@@ -223,6 +265,12 @@ void QMofClass::removeOwnedAttribute(QMofProperty *ownedAttribute)
 
 /*!
     The operations owned by the class.
+
+    \sa addOwnedOperation(), removeOwnedOperation()
+
+    \b {Subsetted property(ies):} QMofClassifier::features(), QMofNamespace::ownedMembers(), .
+
+    \b {Opposite property(ies):} QMofOperation::class_().
  */
 const QList<QMofOperation *> QMofClass::ownedOperations() const
 {
@@ -231,6 +279,11 @@ const QList<QMofOperation *> QMofClass::ownedOperations() const
     return _ownedOperations;
 }
 
+/*!
+    Adds \a ownedOperation to ownedOperations.
+
+    \sa ownedOperations(), removeOwnedOperation()
+ */
 void QMofClass::addOwnedOperation(QMofOperation *ownedOperation)
 {
     // This is a read-write association end
@@ -252,6 +305,11 @@ void QMofClass::addOwnedOperation(QMofOperation *ownedOperation)
     }
 }
 
+/*!
+    Removes \a ownedOperation from ownedOperations.
+
+    \sa ownedOperations(), addOwnedOperation()
+ */
 void QMofClass::removeOwnedOperation(QMofOperation *ownedOperation)
 {
     // This is a read-write association end
@@ -274,6 +332,12 @@ void QMofClass::removeOwnedOperation(QMofOperation *ownedOperation)
 
 /*!
     This gives the superclasses of a class.
+
+    \sa addSuperClass(), removeSuperClass()
+
+    \b {This is a derived property.}
+
+    \b {Redefined property(ies):} QMofClassifier::generals().
  */
 const QSet<QMofClass *> QMofClass::superClasses() const
 {
@@ -284,6 +348,11 @@ const QSet<QMofClass *> QMofClass::superClasses() const
     return QSet<QMofClass *>();
 }
 
+/*!
+    Adds \a superClass to superClasses.
+
+    \sa superClasses(), removeSuperClass()
+ */
 void QMofClass::addSuperClass(QMofClass *superClass)
 {
     // This is a read-write derived association end
@@ -299,6 +368,11 @@ void QMofClass::addSuperClass(QMofClass *superClass)
     }
 }
 
+/*!
+    Removes \a superClass from superClasses.
+
+    \sa superClasses(), addSuperClass()
+ */
 void QMofClass::removeSuperClass(QMofClass *superClass)
 {
     // This is a read-write derived association end

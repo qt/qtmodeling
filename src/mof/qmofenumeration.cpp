@@ -71,6 +71,10 @@ QT_BEGIN_NAMESPACE
 
     \brief An enumeration is a data type whose values are enumerated in the model as enumeration literals.
  */
+
+/*!
+    Creates a new QMofEnumeration. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QMofEnumeration::QMofEnumeration(bool createQModelingObject) :
     QMofDataType(false)
 {
@@ -78,6 +82,9 @@ QMofEnumeration::QMofEnumeration(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QMofEnumerationObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QMofEnumeration.
+*/
 QModelingElement *QMofEnumeration::clone() const
 {
     QMofEnumeration *c = new QMofEnumeration;
@@ -113,6 +120,12 @@ QModelingElement *QMofEnumeration::clone() const
 
 /*!
     The ordered set of literals for this Enumeration.
+
+    \sa addOwnedLiteral(), removeOwnedLiteral()
+
+    \b {Subsetted property(ies):} QMofNamespace::ownedMembers().
+
+    \b {Opposite property(ies):} QMofEnumerationLiteral::enumeration().
  */
 const QList<QMofEnumerationLiteral *> QMofEnumeration::ownedLiterals() const
 {
@@ -121,6 +134,11 @@ const QList<QMofEnumerationLiteral *> QMofEnumeration::ownedLiterals() const
     return _ownedLiterals;
 }
 
+/*!
+    Adds \a ownedLiteral to ownedLiterals.
+
+    \sa ownedLiterals(), removeOwnedLiteral()
+ */
 void QMofEnumeration::addOwnedLiteral(QMofEnumerationLiteral *ownedLiteral)
 {
     // This is a read-write association end
@@ -141,6 +159,11 @@ void QMofEnumeration::addOwnedLiteral(QMofEnumerationLiteral *ownedLiteral)
     }
 }
 
+/*!
+    Removes \a ownedLiteral from ownedLiterals.
+
+    \sa ownedLiterals(), addOwnedLiteral()
+ */
 void QMofEnumeration::removeOwnedLiteral(QMofEnumerationLiteral *ownedLiteral)
 {
     // This is a read-write association end

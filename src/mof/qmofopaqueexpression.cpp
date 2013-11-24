@@ -58,12 +58,19 @@ QT_BEGIN_NAMESPACE
 
     \brief An opaque expression is an uninterpreted textual statement that denotes a (possibly empty) set of values when evaluated in a context.
  */
+
+/*!
+    Creates a new QMofOpaqueExpression. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QMofOpaqueExpression::QMofOpaqueExpression(bool createQModelingObject)
 {
     if (createQModelingObject)
         _qModelingObject = qobject_cast<QModelingObject *>(new QMofOpaqueExpressionObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QMofOpaqueExpression.
+*/
 QModelingElement *QMofOpaqueExpression::clone() const
 {
     QMofOpaqueExpression *c = new QMofOpaqueExpression;
@@ -84,6 +91,8 @@ QModelingElement *QMofOpaqueExpression::clone() const
 
 /*!
     The text of the expression, possibly in multiple languages.
+
+    \sa addBody(), removeBody()
  */
 const QList<QString> QMofOpaqueExpression::bodies() const
 {
@@ -92,6 +101,11 @@ const QList<QString> QMofOpaqueExpression::bodies() const
     return _bodies;
 }
 
+/*!
+    Adds \a body to bodies.
+
+    \sa bodies(), removeBody()
+ */
 void QMofOpaqueExpression::addBody(QString body)
 {
     // This is a read-write property
@@ -101,6 +115,11 @@ void QMofOpaqueExpression::addBody(QString body)
     }
 }
 
+/*!
+    Removes \a body from bodies.
+
+    \sa bodies(), addBody()
+ */
 void QMofOpaqueExpression::removeBody(QString body)
 {
     // This is a read-write property
@@ -112,6 +131,8 @@ void QMofOpaqueExpression::removeBody(QString body)
 
 /*!
     Specifies the languages in which the expression is stated. The interpretation of the expression body depends on the languages. If the languages are unspecified, they might be implicit from the expression body or the context. Languages are matched to body strings by order.
+
+    \sa addLanguage(), removeLanguage()
  */
 const QList<QString> QMofOpaqueExpression::languages() const
 {
@@ -120,6 +141,11 @@ const QList<QString> QMofOpaqueExpression::languages() const
     return _languages;
 }
 
+/*!
+    Adds \a language to languages.
+
+    \sa languages(), removeLanguage()
+ */
 void QMofOpaqueExpression::addLanguage(QString language)
 {
     // This is a read-write property
@@ -129,6 +155,11 @@ void QMofOpaqueExpression::addLanguage(QString language)
     }
 }
 
+/*!
+    Removes \a language from languages.
+
+    \sa languages(), addLanguage()
+ */
 void QMofOpaqueExpression::removeLanguage(QString language)
 {
     // This is a read-write property

@@ -62,13 +62,22 @@ QT_BEGIN_NAMESPACE
     \inmodule QtMof
 
     \brief A classifier is a classification of instances - it describes a set of instances that have features in common. A classifier can specify a generalization hierarchy by referencing its general classifiers.
+
+    \b {QMofClassifier is an abstract class.}
  */
+
+/*!
+    Creates a new QMofClassifier.
+*/
 QMofClassifier::QMofClassifier() :
     _isAbstract(false),
     _isFinalSpecialization(false)
 {
 }
 
+/*!
+    Returns a deep-copied clone of the QMofClassifier.
+*/
 QModelingElement *QMofClassifier::clone() const
 {
     QMofClassifier *c = new QMofClassifier;
@@ -98,6 +107,10 @@ QModelingElement *QMofClassifier::clone() const
 
 /*!
     Refers to all of the Properties that are direct (i.e. not inherited or imported) attributes of the classifier.
+
+    \b {This is a read-only derived union property.}
+
+    \b {Subsetted property(ies):} QMofClassifier::features(), .
  */
 const QSet<QMofProperty *> QMofClassifier::attributes() const
 {
@@ -106,6 +119,11 @@ const QSet<QMofProperty *> QMofClassifier::attributes() const
     return _attributes;
 }
 
+/*!
+    Adds \a attribute to attributes.
+
+    \sa attributes(), removeAttribute()
+ */
 void QMofClassifier::addAttribute(QMofProperty *attribute)
 {
     // This is a read-only derived union association end
@@ -120,6 +138,11 @@ void QMofClassifier::addAttribute(QMofProperty *attribute)
     }
 }
 
+/*!
+    Removes \a attribute from attributes.
+
+    \sa attributes(), addAttribute()
+ */
 void QMofClassifier::removeAttribute(QMofProperty *attribute)
 {
     // This is a read-only derived union association end
@@ -134,6 +157,12 @@ void QMofClassifier::removeAttribute(QMofProperty *attribute)
 
 /*!
     Specifies each feature defined in the classifier.
+
+    \b {This is a read-only derived union property.}
+
+    \b {Subsetted property(ies):} QMofNamespace::members().
+
+    \b {Opposite property(ies):} QMofFeature::featuringClassifiers().
  */
 const QSet<QMofFeature *> QMofClassifier::features() const
 {
@@ -142,6 +171,11 @@ const QSet<QMofFeature *> QMofClassifier::features() const
     return _features;
 }
 
+/*!
+    Adds \a feature to features.
+
+    \sa features(), removeFeature()
+ */
 void QMofClassifier::addFeature(QMofFeature *feature)
 {
     // This is a read-only derived union association end
@@ -161,6 +195,11 @@ void QMofClassifier::addFeature(QMofFeature *feature)
     }
 }
 
+/*!
+    Removes \a feature from features.
+
+    \sa features(), addFeature()
+ */
 void QMofClassifier::removeFeature(QMofFeature *feature)
 {
     // This is a read-only derived union association end
@@ -180,6 +219,10 @@ void QMofClassifier::removeFeature(QMofFeature *feature)
 
 /*!
     Specifies the general Classifiers for this Classifier.
+
+    \sa addGeneral(), removeGeneral()
+
+    \b {This is a derived property.}
  */
 const QSet<QMofClassifier *> QMofClassifier::generals() const
 {
@@ -190,6 +233,11 @@ const QSet<QMofClassifier *> QMofClassifier::generals() const
     return QSet<QMofClassifier *>();
 }
 
+/*!
+    Adds \a general to generals.
+
+    \sa generals(), removeGeneral()
+ */
 void QMofClassifier::addGeneral(QMofClassifier *general)
 {
     // This is a read-write derived association end
@@ -202,6 +250,11 @@ void QMofClassifier::addGeneral(QMofClassifier *general)
     }
 }
 
+/*!
+    Removes \a general from generals.
+
+    \sa generals(), addGeneral()
+ */
 void QMofClassifier::removeGeneral(QMofClassifier *general)
 {
     // This is a read-write derived association end
@@ -216,6 +269,12 @@ void QMofClassifier::removeGeneral(QMofClassifier *general)
 
 /*!
     Specifies the Generalization relationships for this Classifier. These Generalizations navigaten to more general classifiers in the generalization hierarchy.
+
+    \sa addGeneralization(), removeGeneralization()
+
+    \b {Subsetted property(ies):} QMofElement::ownedElements().
+
+    \b {Opposite property(ies):} QMofGeneralization::specific().
  */
 const QSet<QMofGeneralization *> QMofClassifier::generalizations() const
 {
@@ -224,6 +283,11 @@ const QSet<QMofGeneralization *> QMofClassifier::generalizations() const
     return _generalizations;
 }
 
+/*!
+    Adds \a generalization to generalizations.
+
+    \sa generalizations(), removeGeneralization()
+ */
 void QMofClassifier::addGeneralization(QMofGeneralization *generalization)
 {
     // This is a read-write association end
@@ -244,6 +308,11 @@ void QMofClassifier::addGeneralization(QMofGeneralization *generalization)
     }
 }
 
+/*!
+    Removes \a generalization from generalizations.
+
+    \sa generalizations(), addGeneralization()
+ */
 void QMofClassifier::removeGeneralization(QMofGeneralization *generalization)
 {
     // This is a read-write association end
@@ -265,6 +334,10 @@ void QMofClassifier::removeGeneralization(QMofGeneralization *generalization)
 
 /*!
     Specifies all elements inherited by this classifier from the general classifiers.
+
+    \b {This is a read-only derived property.}
+
+    \b {Subsetted property(ies):} QMofNamespace::members().
  */
 const QSet<QMofNamedElement *> QMofClassifier::inheritedMembers() const
 {
@@ -275,6 +348,11 @@ const QSet<QMofNamedElement *> QMofClassifier::inheritedMembers() const
     return QSet<QMofNamedElement *>();
 }
 
+/*!
+    Adds \a inheritedMember to inheritedMembers.
+
+    \sa inheritedMembers(), removeInheritedMember()
+ */
 void QMofClassifier::addInheritedMember(QMofNamedElement *inheritedMember)
 {
     // This is a read-only derived association end
@@ -290,6 +368,11 @@ void QMofClassifier::addInheritedMember(QMofNamedElement *inheritedMember)
     }
 }
 
+/*!
+    Removes \a inheritedMember from inheritedMembers.
+
+    \sa inheritedMembers(), addInheritedMember()
+ */
 void QMofClassifier::removeInheritedMember(QMofNamedElement *inheritedMember)
 {
     // This is a read-only derived association end
@@ -315,6 +398,9 @@ bool QMofClassifier::isAbstract() const
     return _isAbstract;
 }
 
+/*!
+    Adjusts isAbstract to \a isAbstract.
+ */
 void QMofClassifier::setAbstract(bool isAbstract)
 {
     // This is a read-write property
@@ -335,6 +421,9 @@ bool QMofClassifier::isFinalSpecialization() const
     return _isFinalSpecialization;
 }
 
+/*!
+    Adjusts isFinalSpecialization to \a isFinalSpecialization.
+ */
 void QMofClassifier::setFinalSpecialization(bool isFinalSpecialization)
 {
     // This is a read-write property
@@ -347,6 +436,10 @@ void QMofClassifier::setFinalSpecialization(bool isFinalSpecialization)
 
 /*!
     References the Classifiers that are redefined by this Classifier.
+
+    \sa addRedefinedClassifier(), removeRedefinedClassifier()
+
+    \b {Subsetted property(ies):} QMofRedefinableElement::redefinedElements().
  */
 const QSet<QMofClassifier *> QMofClassifier::redefinedClassifiers() const
 {
@@ -355,6 +448,11 @@ const QSet<QMofClassifier *> QMofClassifier::redefinedClassifiers() const
     return _redefinedClassifiers;
 }
 
+/*!
+    Adds \a redefinedClassifier to redefinedClassifiers.
+
+    \sa redefinedClassifiers(), removeRedefinedClassifier()
+ */
 void QMofClassifier::addRedefinedClassifier(QMofClassifier *redefinedClassifier)
 {
     // This is a read-write association end
@@ -369,6 +467,11 @@ void QMofClassifier::addRedefinedClassifier(QMofClassifier *redefinedClassifier)
     }
 }
 
+/*!
+    Removes \a redefinedClassifier from redefinedClassifiers.
+
+    \sa redefinedClassifiers(), addRedefinedClassifier()
+ */
 void QMofClassifier::removeRedefinedClassifier(QMofClassifier *redefinedClassifier)
 {
     // This is a read-write association end

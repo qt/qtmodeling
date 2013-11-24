@@ -47,11 +47,6 @@
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QMofLink
-
-    \inmodule QtMof
- */
 QMofLink::QMofLink(bool createQModelingObject) :
     QMofObject(false),
     _firstElement(0),
@@ -76,7 +71,6 @@ QModelingElement *QMofLink::clone() const
 
 // OWNED ATTRIBUTES
 
-
 QMofElement *QMofLink::firstElement() const
 {
     // This is a read-write property
@@ -95,7 +89,6 @@ void QMofLink::setFirstElement(QMofElement *firstElement)
     }
 }
 
-
 QMofElement *QMofLink::secondElement() const
 {
     // This is a read-write property
@@ -113,7 +106,6 @@ void QMofLink::setSecondElement(QMofElement *secondElement)
             QObject::connect(secondElement->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setSecondElement()));
     }
 }
-
 
 QMofAssociation *QMofLink::association() const
 {

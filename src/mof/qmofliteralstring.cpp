@@ -58,12 +58,19 @@ QT_BEGIN_NAMESPACE
 
     \brief A literal string is a specification of a string value.
  */
+
+/*!
+    Creates a new QMofLiteralString. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QMofLiteralString::QMofLiteralString(bool createQModelingObject)
 {
     if (createQModelingObject)
         _qModelingObject = qobject_cast<QModelingObject *>(new QMofLiteralStringObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QMofLiteralString.
+*/
 QModelingElement *QMofLiteralString::clone() const
 {
     QMofLiteralString *c = new QMofLiteralString;
@@ -89,6 +96,9 @@ QString QMofLiteralString::value() const
     return _value;
 }
 
+/*!
+    Adjusts value to \a value.
+ */
 void QMofLiteralString::setValue(QString value)
 {
     // This is a read-write property

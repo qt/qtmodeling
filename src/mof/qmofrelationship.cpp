@@ -51,11 +51,20 @@ QT_BEGIN_NAMESPACE
     \inmodule QtMof
 
     \brief Relationship is an abstract concept that specifies some kind of relationship between elements.
+
+    \b {QMofRelationship is an abstract class.}
  */
+
+/*!
+    Creates a new QMofRelationship.
+*/
 QMofRelationship::QMofRelationship()
 {
 }
 
+/*!
+    Returns a deep-copied clone of the QMofRelationship.
+*/
 QModelingElement *QMofRelationship::clone() const
 {
     QMofRelationship *c = new QMofRelationship;
@@ -68,6 +77,8 @@ QModelingElement *QMofRelationship::clone() const
 
 /*!
     Specifies the elements related by the Relationship.
+
+    \b {This is a read-only derived union property.}
  */
 const QSet<QMofElement *> QMofRelationship::relatedElements() const
 {
@@ -76,6 +87,11 @@ const QSet<QMofElement *> QMofRelationship::relatedElements() const
     return _relatedElements;
 }
 
+/*!
+    Adds \a relatedElement to relatedElements.
+
+    \sa relatedElements(), removeRelatedElement()
+ */
 void QMofRelationship::addRelatedElement(QMofElement *relatedElement)
 {
     // This is a read-only derived union association end
@@ -87,6 +103,11 @@ void QMofRelationship::addRelatedElement(QMofElement *relatedElement)
     }
 }
 
+/*!
+    Removes \a relatedElement from relatedElements.
+
+    \sa relatedElements(), addRelatedElement()
+ */
 void QMofRelationship::removeRelatedElement(QMofElement *relatedElement)
 {
     // This is a read-only derived union association end

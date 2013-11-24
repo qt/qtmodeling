@@ -46,8 +46,6 @@
 #include <QtMof/QMofFeature>
 #include <QtMof/QMofNamespace>
 
-QT_BEGIN_HEADER
-
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtMof)
@@ -82,8 +80,6 @@ protected:
 QT_END_NAMESPACE
 
 Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE(QMofBehavioralFeature) *)
-
-QT_END_HEADER
 
 #endif // QMOFBEHAVIORALFEATURE_H
 

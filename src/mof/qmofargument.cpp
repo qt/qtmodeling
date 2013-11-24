@@ -46,11 +46,6 @@
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QMofArgument
-
-    \inmodule QtMof
- */
 QMofArgument::QMofArgument(bool createQModelingObject) :
     _value(0)
 {
@@ -69,7 +64,6 @@ QModelingElement *QMofArgument::clone() const
 
 // OWNED ATTRIBUTES
 
-
 QString QMofArgument::name() const
 {
     // This is a read-write property
@@ -85,7 +79,6 @@ void QMofArgument::setName(QString name)
         _name = name;
     }
 }
-
 
 QMofObject *QMofArgument::value() const
 {

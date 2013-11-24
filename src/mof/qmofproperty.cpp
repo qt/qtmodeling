@@ -64,6 +64,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A property is a structural feature of a classifier that characterizes instances of the classifier. A property related by ownedAttribute to a classifier (other than an association) represents an attribute and might also represent an association end. It relates an instance of the class to a value or set of values of the type of the attribute. A property related by memberEnd or its specializations to an association represents an end of the association. The type of the property is the type of the end of the association.
  */
+
+/*!
+    Creates a new QMofProperty. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QMofProperty::QMofProperty(bool createQModelingObject) :
     _aggregation(QtMof::AggregationKindNone),
     _association(0),
@@ -80,6 +84,9 @@ QMofProperty::QMofProperty(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QMofPropertyObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QMofProperty.
+*/
 QModelingElement *QMofProperty::clone() const
 {
     QMofProperty *c = new QMofProperty;
@@ -131,6 +138,9 @@ QtMof::AggregationKind QMofProperty::aggregation() const
     return _aggregation;
 }
 
+/*!
+    Adjusts aggregation to \a aggregation.
+ */
 void QMofProperty::setAggregation(QtMof::AggregationKind aggregation)
 {
     // This is a read-write property
@@ -143,6 +153,10 @@ void QMofProperty::setAggregation(QtMof::AggregationKind aggregation)
 
 /*!
     References the association of which this property is a member, if any.
+
+    \b {Subsetted property(ies):} .
+
+    \b {Opposite property(ies):} QMofAssociation::memberEnds().
  */
 QMofAssociation *QMofProperty::association() const
 {
@@ -151,6 +165,9 @@ QMofAssociation *QMofProperty::association() const
     return _association;
 }
 
+/*!
+    Adjusts association to \a association.
+ */
 void QMofProperty::setAssociation(QMofAssociation *association)
 {
     // This is a read-write association end
@@ -164,6 +181,10 @@ void QMofProperty::setAssociation(QMofAssociation *association)
 
 /*!
     References the Class that owns the Property.
+
+    \b {Subsetted property(ies):} QMofNamedElement::namespace_(), .
+
+    \b {Opposite property(ies):} QMofClass::ownedAttributes().
  */
 QMofClass *QMofProperty::class_() const
 {
@@ -172,6 +193,9 @@ QMofClass *QMofProperty::class_() const
     return _class_;
 }
 
+/*!
+    Adjusts class_ to \a class_.
+ */
 void QMofProperty::setClass(QMofClass *class_)
 {
     // This is a read-write association end
@@ -190,6 +214,10 @@ void QMofProperty::setClass(QMofClass *class_)
 
 /*!
     The DataType that owns this Property.
+
+    \b {Subsetted property(ies):} QMofNamedElement::namespace_(), .
+
+    \b {Opposite property(ies):} QMofDataType::ownedAttributes().
  */
 QMofDataType *QMofProperty::datatype() const
 {
@@ -198,6 +226,9 @@ QMofDataType *QMofProperty::datatype() const
     return _datatype;
 }
 
+/*!
+    Adjusts datatype to \a datatype.
+ */
 void QMofProperty::setDatatype(QMofDataType *datatype)
 {
     // This is a read-write association end
@@ -216,6 +247,8 @@ void QMofProperty::setDatatype(QMofDataType *datatype)
 
 /*!
     A String that is evaluated to give a default value for the Property when an object of the owning Classifier is instantiated.
+
+    \b {This is a derived property.}
  */
 QString QMofProperty::default_() const
 {
@@ -226,6 +259,9 @@ QString QMofProperty::default_() const
     return QString();
 }
 
+/*!
+    Adjusts default_ to \a default_.
+ */
 void QMofProperty::setDefault(QString default_)
 {
     // This is a read-write derived property
@@ -240,6 +276,8 @@ void QMofProperty::setDefault(QString default_)
 
 /*!
     A ValueSpecification that is evaluated to give a default value for the Property when an object of the owning Classifier is instantiated.
+
+    \b {Subsetted property(ies):} QMofElement::ownedElements().
  */
 QMofValueSpecification *QMofProperty::defaultValue() const
 {
@@ -248,6 +286,9 @@ QMofValueSpecification *QMofProperty::defaultValue() const
     return _defaultValue;
 }
 
+/*!
+    Adjusts defaultValue to \a defaultValue.
+ */
 void QMofProperty::setDefaultValue(QMofValueSpecification *defaultValue)
 {
     // This is a read-write association end
@@ -270,6 +311,8 @@ void QMofProperty::setDefaultValue(QMofValueSpecification *defaultValue)
 
 /*!
     This is a derived value, indicating whether the aggregation of the Property is composite or not.
+
+    \b {This is a derived property.}
  */
 bool QMofProperty::isComposite() const
 {
@@ -280,6 +323,9 @@ bool QMofProperty::isComposite() const
     return bool();
 }
 
+/*!
+    Adjusts isComposite to \a isComposite.
+ */
 void QMofProperty::setComposite(bool isComposite)
 {
     // This is a read-write derived property
@@ -302,6 +348,9 @@ bool QMofProperty::isDerived() const
     return _isDerived;
 }
 
+/*!
+    Adjusts isDerived to \a isDerived.
+ */
 void QMofProperty::setDerived(bool isDerived)
 {
     // This is a read-write property
@@ -322,6 +371,9 @@ bool QMofProperty::isDerivedUnion() const
     return _isDerivedUnion;
 }
 
+/*!
+    Adjusts isDerivedUnion to \a isDerivedUnion.
+ */
 void QMofProperty::setDerivedUnion(bool isDerivedUnion)
 {
     // This is a read-write property
@@ -342,6 +394,9 @@ bool QMofProperty::isID() const
     return _isID;
 }
 
+/*!
+    Adjusts isID to \a isID.
+ */
 void QMofProperty::setID(bool isID)
 {
     // This is a read-write property
@@ -354,6 +409,8 @@ void QMofProperty::setID(bool isID)
 
 /*!
     If true, the attribute may only be read, and not written.
+
+    \b {Redefined property(ies):} QMofStructuralFeature::isReadOnly().
  */
 bool QMofProperty::isReadOnly() const
 {
@@ -362,6 +419,9 @@ bool QMofProperty::isReadOnly() const
     return _isReadOnly;
 }
 
+/*!
+    Adjusts isReadOnly to \a isReadOnly.
+ */
 void QMofProperty::setReadOnly(bool isReadOnly)
 {
     // This is a read-write property
@@ -377,6 +437,8 @@ void QMofProperty::setReadOnly(bool isReadOnly)
 
 /*!
     In the case where the property is one navigable end of a binary association with both ends navigable, this gives the other end.
+
+    \b {This is a derived property.}
  */
 QMofProperty *QMofProperty::opposite() const
 {
@@ -387,6 +449,9 @@ QMofProperty *QMofProperty::opposite() const
     return 0;
 }
 
+/*!
+    Adjusts opposite to \a opposite.
+ */
 void QMofProperty::setOpposite(QMofProperty *opposite)
 {
     // This is a read-write derived association end
@@ -401,6 +466,10 @@ void QMofProperty::setOpposite(QMofProperty *opposite)
 
 /*!
     References the owning association of this property, if any.
+
+    \b {Subsetted property(ies):} QMofNamedElement::namespace_(), QMofProperty::association(), QMofFeature::featuringClassifiers(), QMofRedefinableElement::redefinitionContexts().
+
+    \b {Opposite property(ies):} QMofAssociation::ownedEnds().
  */
 QMofAssociation *QMofProperty::owningAssociation() const
 {
@@ -409,6 +478,9 @@ QMofAssociation *QMofProperty::owningAssociation() const
     return _owningAssociation;
 }
 
+/*!
+    Adjusts owningAssociation to \a owningAssociation.
+ */
 void QMofProperty::setOwningAssociation(QMofAssociation *owningAssociation)
 {
     // This is a read-write association end
@@ -436,6 +508,10 @@ void QMofProperty::setOwningAssociation(QMofAssociation *owningAssociation)
 
 /*!
     References the properties that are redefined by this property.
+
+    \sa addRedefinedProperty(), removeRedefinedProperty()
+
+    \b {Subsetted property(ies):} QMofRedefinableElement::redefinedElements().
  */
 const QSet<QMofProperty *> QMofProperty::redefinedProperties() const
 {
@@ -444,6 +520,11 @@ const QSet<QMofProperty *> QMofProperty::redefinedProperties() const
     return _redefinedProperties;
 }
 
+/*!
+    Adds \a redefinedProperty to redefinedProperties.
+
+    \sa redefinedProperties(), removeRedefinedProperty()
+ */
 void QMofProperty::addRedefinedProperty(QMofProperty *redefinedProperty)
 {
     // This is a read-write association end
@@ -458,6 +539,11 @@ void QMofProperty::addRedefinedProperty(QMofProperty *redefinedProperty)
     }
 }
 
+/*!
+    Removes \a redefinedProperty from redefinedProperties.
+
+    \sa redefinedProperties(), addRedefinedProperty()
+ */
 void QMofProperty::removeRedefinedProperty(QMofProperty *redefinedProperty)
 {
     // This is a read-write association end
@@ -472,6 +558,8 @@ void QMofProperty::removeRedefinedProperty(QMofProperty *redefinedProperty)
 
 /*!
     References the properties of which this property is constrained to be a subset.
+
+    \sa addSubsettedProperty(), removeSubsettedProperty()
  */
 const QSet<QMofProperty *> QMofProperty::subsettedProperties() const
 {
@@ -480,6 +568,11 @@ const QSet<QMofProperty *> QMofProperty::subsettedProperties() const
     return _subsettedProperties;
 }
 
+/*!
+    Adds \a subsettedProperty to subsettedProperties.
+
+    \sa subsettedProperties(), removeSubsettedProperty()
+ */
 void QMofProperty::addSubsettedProperty(QMofProperty *subsettedProperty)
 {
     // This is a read-write association end
@@ -491,6 +584,11 @@ void QMofProperty::addSubsettedProperty(QMofProperty *subsettedProperty)
     }
 }
 
+/*!
+    Removes \a subsettedProperty from subsettedProperties.
+
+    \sa subsettedProperties(), addSubsettedProperty()
+ */
 void QMofProperty::removeSubsettedProperty(QMofProperty *subsettedProperty)
 {
     // This is a read-write association end

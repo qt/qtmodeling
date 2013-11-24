@@ -66,6 +66,10 @@ QT_BEGIN_NAMESPACE
 
     \brief An operation is a behavioral feature of a classifier that specifies the name, type, parameters, and constraints for invoking an associated behavior.
  */
+
+/*!
+    Creates a new QMofOperation. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QMofOperation::QMofOperation(bool createQModelingObject) :
     _bodyCondition(0),
     _class_(0),
@@ -76,6 +80,9 @@ QMofOperation::QMofOperation(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QMofOperationObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QMofOperation.
+*/
 QModelingElement *QMofOperation::clone() const
 {
     QMofOperation *c = new QMofOperation;
@@ -115,6 +122,8 @@ QModelingElement *QMofOperation::clone() const
 
 /*!
     An optional Constraint on the result values of an invocation of this Operation.
+
+    \b {Subsetted property(ies):} QMofNamespace::ownedRules().
  */
 QMofConstraint *QMofOperation::bodyCondition() const
 {
@@ -123,6 +132,9 @@ QMofConstraint *QMofOperation::bodyCondition() const
     return _bodyCondition;
 }
 
+/*!
+    Adjusts bodyCondition to \a bodyCondition.
+ */
 void QMofOperation::setBodyCondition(QMofConstraint *bodyCondition)
 {
     // This is a read-write association end
@@ -145,6 +157,10 @@ void QMofOperation::setBodyCondition(QMofConstraint *bodyCondition)
 
 /*!
     The class that owns the operation.
+
+    \b {Subsetted property(ies):} QMofNamedElement::namespace_(), QMofFeature::featuringClassifiers(), QMofRedefinableElement::redefinitionContexts().
+
+    \b {Opposite property(ies):} QMofClass::ownedOperations().
  */
 QMofClass *QMofOperation::class_() const
 {
@@ -153,6 +169,9 @@ QMofClass *QMofOperation::class_() const
     return _class_;
 }
 
+/*!
+    Adjusts class_ to \a class_.
+ */
 void QMofOperation::setClass(QMofClass *class_)
 {
     // This is a read-write association end
@@ -179,6 +198,10 @@ void QMofOperation::setClass(QMofClass *class_)
 
 /*!
     The DataType that owns this Operation.
+
+    \b {Subsetted property(ies):} QMofNamedElement::namespace_(), QMofFeature::featuringClassifiers(), QMofRedefinableElement::redefinitionContexts().
+
+    \b {Opposite property(ies):} QMofDataType::ownedOperations().
  */
 QMofDataType *QMofOperation::datatype() const
 {
@@ -187,6 +210,9 @@ QMofDataType *QMofOperation::datatype() const
     return _datatype;
 }
 
+/*!
+    Adjusts datatype to \a datatype.
+ */
 void QMofOperation::setDatatype(QMofDataType *datatype)
 {
     // This is a read-write association end
@@ -213,6 +239,8 @@ void QMofOperation::setDatatype(QMofDataType *datatype)
 
 /*!
     Specifies whether the return parameter is ordered or not, if present.
+
+    \b {This is a read-only derived property.}
  */
 bool QMofOperation::isOrdered() const
 {
@@ -223,6 +251,9 @@ bool QMofOperation::isOrdered() const
     return bool();
 }
 
+/*!
+    Adjusts isOrdered to \a isOrdered.
+ */
 void QMofOperation::setOrdered(bool isOrdered)
 {
     // This is a read-only derived property
@@ -245,6 +276,9 @@ bool QMofOperation::isQuery() const
     return _isQuery;
 }
 
+/*!
+    Adjusts isQuery to \a isQuery.
+ */
 void QMofOperation::setQuery(bool isQuery)
 {
     // This is a read-write property
@@ -257,6 +291,8 @@ void QMofOperation::setQuery(bool isQuery)
 
 /*!
     Specifies whether the return parameter is unique or not, if present.
+
+    \b {This is a read-only derived property.}
  */
 bool QMofOperation::isUnique() const
 {
@@ -267,6 +303,9 @@ bool QMofOperation::isUnique() const
     return bool();
 }
 
+/*!
+    Adjusts isUnique to \a isUnique.
+ */
 void QMofOperation::setUnique(bool isUnique)
 {
     // This is a read-only derived property
@@ -281,6 +320,8 @@ void QMofOperation::setUnique(bool isUnique)
 
 /*!
     Specifies the lower multiplicity of the return parameter, if present.
+
+    \b {This is a read-only derived property.}
  */
 int QMofOperation::lower() const
 {
@@ -291,6 +332,9 @@ int QMofOperation::lower() const
     return int();
 }
 
+/*!
+    Adjusts lower to \a lower.
+ */
 void QMofOperation::setLower(int lower)
 {
     // This is a read-only derived property
@@ -305,6 +349,12 @@ void QMofOperation::setLower(int lower)
 
 /*!
     Specifies the parameters owned by this Operation.
+
+    \sa addOwnedParameter(), removeOwnedParameter()
+
+    \b {Redefined property(ies):} QMofBehavioralFeature::ownedParameters().
+
+    \b {Opposite property(ies):} QMofParameter::operation().
  */
 const QList<QMofParameter *> QMofOperation::ownedParameters() const
 {
@@ -313,6 +363,11 @@ const QList<QMofParameter *> QMofOperation::ownedParameters() const
     return _ownedParameters;
 }
 
+/*!
+    Adds \a ownedParameter to ownedParameters.
+
+    \sa ownedParameters(), removeOwnedParameter()
+ */
 void QMofOperation::addOwnedParameter(QMofParameter *ownedParameter)
 {
     // This is a read-write association end
@@ -333,6 +388,11 @@ void QMofOperation::addOwnedParameter(QMofParameter *ownedParameter)
     }
 }
 
+/*!
+    Removes \a ownedParameter from ownedParameters.
+
+    \sa ownedParameters(), addOwnedParameter()
+ */
 void QMofOperation::removeOwnedParameter(QMofParameter *ownedParameter)
 {
     // This is a read-write association end
@@ -354,6 +414,10 @@ void QMofOperation::removeOwnedParameter(QMofParameter *ownedParameter)
 
 /*!
     An optional set of Constraints specifying the state of the system when the Operation is completed.
+
+    \sa addPostcondition(), removePostcondition()
+
+    \b {Subsetted property(ies):} QMofNamespace::ownedRules().
  */
 const QSet<QMofConstraint *> QMofOperation::postconditions() const
 {
@@ -362,6 +426,11 @@ const QSet<QMofConstraint *> QMofOperation::postconditions() const
     return _postconditions;
 }
 
+/*!
+    Adds \a postcondition to postconditions.
+
+    \sa postconditions(), removePostcondition()
+ */
 void QMofOperation::addPostcondition(QMofConstraint *postcondition)
 {
     // This is a read-write association end
@@ -377,6 +446,11 @@ void QMofOperation::addPostcondition(QMofConstraint *postcondition)
     }
 }
 
+/*!
+    Removes \a postcondition from postconditions.
+
+    \sa postconditions(), addPostcondition()
+ */
 void QMofOperation::removePostcondition(QMofConstraint *postcondition)
 {
     // This is a read-write association end
@@ -393,6 +467,10 @@ void QMofOperation::removePostcondition(QMofConstraint *postcondition)
 
 /*!
     An optional set of Constraints on the state of the system when the Operation is invoked.
+
+    \sa addPrecondition(), removePrecondition()
+
+    \b {Subsetted property(ies):} QMofNamespace::ownedRules().
  */
 const QSet<QMofConstraint *> QMofOperation::preconditions() const
 {
@@ -401,6 +479,11 @@ const QSet<QMofConstraint *> QMofOperation::preconditions() const
     return _preconditions;
 }
 
+/*!
+    Adds \a precondition to preconditions.
+
+    \sa preconditions(), removePrecondition()
+ */
 void QMofOperation::addPrecondition(QMofConstraint *precondition)
 {
     // This is a read-write association end
@@ -416,6 +499,11 @@ void QMofOperation::addPrecondition(QMofConstraint *precondition)
     }
 }
 
+/*!
+    Removes \a precondition from preconditions.
+
+    \sa preconditions(), addPrecondition()
+ */
 void QMofOperation::removePrecondition(QMofConstraint *precondition)
 {
     // This is a read-write association end
@@ -432,6 +520,10 @@ void QMofOperation::removePrecondition(QMofConstraint *precondition)
 
 /*!
     References the Types representing exceptions that may be raised during an invocation of this operation.
+
+    \sa addRaisedException(), removeRaisedException()
+
+    \b {Redefined property(ies):} QMofBehavioralFeature::raisedExceptions().
  */
 const QSet<QMofType *> QMofOperation::raisedExceptions() const
 {
@@ -440,6 +532,11 @@ const QSet<QMofType *> QMofOperation::raisedExceptions() const
     return _raisedExceptions;
 }
 
+/*!
+    Adds \a raisedException to raisedExceptions.
+
+    \sa raisedExceptions(), removeRaisedException()
+ */
 void QMofOperation::addRaisedException(QMofType *raisedException)
 {
     // This is a read-write association end
@@ -454,6 +551,11 @@ void QMofOperation::addRaisedException(QMofType *raisedException)
     }
 }
 
+/*!
+    Removes \a raisedException from raisedExceptions.
+
+    \sa raisedExceptions(), addRaisedException()
+ */
 void QMofOperation::removeRaisedException(QMofType *raisedException)
 {
     // This is a read-write association end
@@ -468,6 +570,10 @@ void QMofOperation::removeRaisedException(QMofType *raisedException)
 
 /*!
     References the Operations that are redefined by this Operation.
+
+    \sa addRedefinedOperation(), removeRedefinedOperation()
+
+    \b {Subsetted property(ies):} QMofRedefinableElement::redefinedElements().
  */
 const QSet<QMofOperation *> QMofOperation::redefinedOperations() const
 {
@@ -476,6 +582,11 @@ const QSet<QMofOperation *> QMofOperation::redefinedOperations() const
     return _redefinedOperations;
 }
 
+/*!
+    Adds \a redefinedOperation to redefinedOperations.
+
+    \sa redefinedOperations(), removeRedefinedOperation()
+ */
 void QMofOperation::addRedefinedOperation(QMofOperation *redefinedOperation)
 {
     // This is a read-write association end
@@ -490,6 +601,11 @@ void QMofOperation::addRedefinedOperation(QMofOperation *redefinedOperation)
     }
 }
 
+/*!
+    Removes \a redefinedOperation from redefinedOperations.
+
+    \sa redefinedOperations(), addRedefinedOperation()
+ */
 void QMofOperation::removeRedefinedOperation(QMofOperation *redefinedOperation)
 {
     // This is a read-write association end
@@ -504,6 +620,8 @@ void QMofOperation::removeRedefinedOperation(QMofOperation *redefinedOperation)
 
 /*!
     Specifies the return result of the operation, if present.
+
+    \b {This is a read-only derived property.}
  */
 QMofType *QMofOperation::type() const
 {
@@ -514,6 +632,9 @@ QMofType *QMofOperation::type() const
     return 0;
 }
 
+/*!
+    Adjusts type to \a type.
+ */
 void QMofOperation::setType(QMofType *type)
 {
     // This is a read-only derived association end
@@ -528,6 +649,8 @@ void QMofOperation::setType(QMofType *type)
 
 /*!
     Specifies the upper multiplicity of the return parameter, if present.
+
+    \b {This is a read-only derived property.}
  */
 QString QMofOperation::upper() const
 {
@@ -538,6 +661,9 @@ QString QMofOperation::upper() const
     return QString();
 }
 
+/*!
+    Adjusts upper to \a upper.
+ */
 void QMofOperation::setUpper(QString upper)
 {
     // This is a read-only derived property

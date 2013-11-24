@@ -46,11 +46,6 @@
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QMofReflectiveSequence
-
-    \inmodule QtMof
- */
 QMofReflectiveSequence::QMofReflectiveSequence(bool createQModelingObject) :
     QMofReflectiveCollection(false)
 {

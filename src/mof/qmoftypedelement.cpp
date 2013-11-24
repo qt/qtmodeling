@@ -54,12 +54,21 @@ QT_BEGIN_NAMESPACE
     \inmodule QtMof
 
     \brief A typed element has a type.
+
+    \b {QMofTypedElement is an abstract class.}
  */
+
+/*!
+    Creates a new QMofTypedElement.
+*/
 QMofTypedElement::QMofTypedElement() :
     _type(0)
 {
 }
 
+/*!
+    Returns a deep-copied clone of the QMofTypedElement.
+*/
 QModelingElement *QMofTypedElement::clone() const
 {
     QMofTypedElement *c = new QMofTypedElement;
@@ -84,6 +93,9 @@ QMofType *QMofTypedElement::type() const
     return _type;
 }
 
+/*!
+    Adjusts type to \a type.
+ */
 void QMofTypedElement::setType(QMofType *type)
 {
     // This is a read-write association end

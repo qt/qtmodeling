@@ -26,17 +26,17 @@
 ****************************************************************************/
 /*!
     \page qtuml-index.html
-    \title Qt UML
+    \title Qt Uml
     \brief Implements the OMG's Unified Modeling Language (UML) standard.
 
     Qt Uml is an add-on module which implements the OMG's Unified Modeling Language (UML) metamodel.
 
     \section1 Getting Started
-    To enable Qt UML in a project, add this directive into the C++ files:
+    To enable Qt Uml in a project, add this directive into the C++ files:
     \code
     #include <QtUml>
     \endcode
-    To link against the Qt UML module, add this line to the project file:
+    To link against the Qt Uml module, add this line to the project file:
     \code
     QT += uml
     \endcode
@@ -44,13 +44,13 @@
     \section1 Reference
     These are links to the API reference materials.
     \list
-    \li \l{Qt UML Module C++ Classes}{C++ classes}
+    \li \l{Qt Uml C++ Classes}{C++ classes}
     \endlist
 */
 
 /*!
     \module QtUml
-    \title Qt UML Module C++ Classes
+    \title Qt Uml C++ Classes
     \ingroup modules
     \brief Implements the OMG's Unified Modeling Language (UML) standard.
 

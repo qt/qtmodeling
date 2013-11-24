@@ -52,13 +52,22 @@ QT_BEGIN_NAMESPACE
     \inmodule QtMof
 
     \brief A named element is an element in a model that may have a name.
+
+    \b {QMofNamedElement is an abstract class.}
  */
+
+/*!
+    Creates a new QMofNamedElement.
+*/
 QMofNamedElement::QMofNamedElement() :
     _namespace_(0),
     _visibility(QtMof::VisibilityKindNone)
 {
 }
 
+/*!
+    Returns a deep-copied clone of the QMofNamedElement.
+*/
 QModelingElement *QMofNamedElement::clone() const
 {
     QMofNamedElement *c = new QMofNamedElement;
@@ -81,6 +90,9 @@ QString QMofNamedElement::name() const
     return _name;
 }
 
+/*!
+    Adjusts name to \a name.
+ */
 void QMofNamedElement::setName(QString name)
 {
     // This is a read-write property
@@ -93,6 +105,12 @@ void QMofNamedElement::setName(QString name)
 
 /*!
     Specifies the namespace that owns the NamedElement.
+
+    \b {This is a read-only derived union property.}
+
+    \b {Subsetted property(ies):} QMofElement::owner(), .
+
+    \b {Opposite property(ies):} QMofNamespace::ownedMembers().
  */
 QMofNamespace *QMofNamedElement::namespace_() const
 {
@@ -101,6 +119,9 @@ QMofNamespace *QMofNamedElement::namespace_() const
     return _namespace_;
 }
 
+/*!
+    Adjusts namespace_ to \a namespace_.
+ */
 void QMofNamedElement::setNamespace(QMofNamespace *namespace_)
 {
     // This is a read-only derived union association end
@@ -119,6 +140,8 @@ void QMofNamedElement::setNamespace(QMofNamespace *namespace_)
 
 /*!
     A name which allows the NamedElement to be identified within a hierarchy of nested Namespaces. It is constructed from the names of the containing namespaces starting at the root of the hierarchy and ending with the name of the NamedElement itself.
+
+    \b {This is a read-only derived property.}
  */
 QString QMofNamedElement::qualifiedName() const
 {
@@ -136,6 +159,9 @@ QString QMofNamedElement::qualifiedName() const
     return qualifiedName_;
 }
 
+/*!
+    Adjusts qualifiedName to \a qualifiedName.
+ */
 void QMofNamedElement::setQualifiedName(QString qualifiedName)
 {
     // This is a read-only derived property
@@ -158,6 +184,9 @@ QtMof::VisibilityKind QMofNamedElement::visibility() const
     return _visibility;
 }
 
+/*!
+    Adjusts visibility to \a visibility.
+ */
 void QMofNamedElement::setVisibility(QtMof::VisibilityKind visibility)
 {
     // This is a read-write property

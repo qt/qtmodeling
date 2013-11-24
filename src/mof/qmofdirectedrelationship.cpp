@@ -52,11 +52,20 @@ QT_BEGIN_NAMESPACE
     \inmodule QtMof
 
     \brief A directed relationship represents a relationship between a collection of source model elements and a collection of target model elements.
+
+    \b {QMofDirectedRelationship is an abstract class.}
  */
+
+/*!
+    Creates a new QMofDirectedRelationship.
+*/
 QMofDirectedRelationship::QMofDirectedRelationship()
 {
 }
 
+/*!
+    Returns a deep-copied clone of the QMofDirectedRelationship.
+*/
 QModelingElement *QMofDirectedRelationship::clone() const
 {
     QMofDirectedRelationship *c = new QMofDirectedRelationship;
@@ -69,6 +78,10 @@ QModelingElement *QMofDirectedRelationship::clone() const
 
 /*!
     Specifies the sources of the DirectedRelationship.
+
+    \b {This is a read-only derived union property.}
+
+    \b {Subsetted property(ies):} QMofRelationship::relatedElements().
  */
 const QSet<QMofElement *> QMofDirectedRelationship::sources() const
 {
@@ -77,6 +90,11 @@ const QSet<QMofElement *> QMofDirectedRelationship::sources() const
     return _sources;
 }
 
+/*!
+    Adds \a source to sources.
+
+    \sa sources(), removeSource()
+ */
 void QMofDirectedRelationship::addSource(QMofElement *source)
 {
     // This is a read-only derived union association end
@@ -91,6 +109,11 @@ void QMofDirectedRelationship::addSource(QMofElement *source)
     }
 }
 
+/*!
+    Removes \a source from sources.
+
+    \sa sources(), addSource()
+ */
 void QMofDirectedRelationship::removeSource(QMofElement *source)
 {
     // This is a read-only derived union association end
@@ -105,6 +128,10 @@ void QMofDirectedRelationship::removeSource(QMofElement *source)
 
 /*!
     Specifies the targets of the DirectedRelationship.
+
+    \b {This is a read-only derived union property.}
+
+    \b {Subsetted property(ies):} QMofRelationship::relatedElements().
  */
 const QSet<QMofElement *> QMofDirectedRelationship::targets() const
 {
@@ -113,6 +140,11 @@ const QSet<QMofElement *> QMofDirectedRelationship::targets() const
     return _targets;
 }
 
+/*!
+    Adds \a target to targets.
+
+    \sa targets(), removeTarget()
+ */
 void QMofDirectedRelationship::addTarget(QMofElement *target)
 {
     // This is a read-only derived union association end
@@ -127,6 +159,11 @@ void QMofDirectedRelationship::addTarget(QMofElement *target)
     }
 }
 
+/*!
+    Removes \a target from targets.
+
+    \sa targets(), addTarget()
+ */
 void QMofDirectedRelationship::removeTarget(QMofElement *target)
 {
     // This is a read-only derived union association end

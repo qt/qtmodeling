@@ -60,6 +60,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A parameter is a specification of an argument used to pass information into or out of an invocation of a behavioral feature.
  */
+
+/*!
+    Creates a new QMofParameter. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QMofParameter::QMofParameter(bool createQModelingObject) :
     _defaultValue(0),
     _direction(QtMof::ParameterDirectionKindIn),
@@ -69,6 +73,9 @@ QMofParameter::QMofParameter(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QMofParameterObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QMofParameter.
+*/
 QModelingElement *QMofParameter::clone() const
 {
     QMofParameter *c = new QMofParameter;
@@ -96,6 +103,8 @@ QModelingElement *QMofParameter::clone() const
 
 /*!
     Specifies a String that represents a value to be used when no argument is supplied for the Parameter.
+
+    \b {This is a read-only derived property.}
  */
 QString QMofParameter::default_() const
 {
@@ -106,6 +115,9 @@ QString QMofParameter::default_() const
     return QString();
 }
 
+/*!
+    Adjusts default_ to \a default_.
+ */
 void QMofParameter::setDefault(QString default_)
 {
     // This is a read-only derived property
@@ -120,6 +132,8 @@ void QMofParameter::setDefault(QString default_)
 
 /*!
     Specifies a ValueSpecification that represents a value to be used when no argument is supplied for the Parameter.
+
+    \b {Subsetted property(ies):} QMofElement::ownedElements().
  */
 QMofValueSpecification *QMofParameter::defaultValue() const
 {
@@ -128,6 +142,9 @@ QMofValueSpecification *QMofParameter::defaultValue() const
     return _defaultValue;
 }
 
+/*!
+    Adjusts defaultValue to \a defaultValue.
+ */
 void QMofParameter::setDefaultValue(QMofValueSpecification *defaultValue)
 {
     // This is a read-write association end
@@ -158,6 +175,9 @@ QtMof::ParameterDirectionKind QMofParameter::direction() const
     return _direction;
 }
 
+/*!
+    Adjusts direction to \a direction.
+ */
 void QMofParameter::setDirection(QtMof::ParameterDirectionKind direction)
 {
     // This is a read-write property
@@ -170,6 +190,10 @@ void QMofParameter::setDirection(QtMof::ParameterDirectionKind direction)
 
 /*!
     References the Operation owning this parameter.
+
+    \b {Subsetted property(ies):} .
+
+    \b {Opposite property(ies):} QMofOperation::ownedParameters().
  */
 QMofOperation *QMofParameter::operation() const
 {
@@ -178,6 +202,9 @@ QMofOperation *QMofParameter::operation() const
     return _operation;
 }
 
+/*!
+    Adjusts operation to \a operation.
+ */
 void QMofParameter::setOperation(QMofOperation *operation)
 {
     // This is a read-write association end

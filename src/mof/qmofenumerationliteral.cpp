@@ -61,6 +61,10 @@ QT_BEGIN_NAMESPACE
 
     \brief An enumeration literal is a user-defined data value for an enumeration.
  */
+
+/*!
+    Creates a new QMofEnumerationLiteral. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QMofEnumerationLiteral::QMofEnumerationLiteral(bool createQModelingObject) :
     QMofInstanceSpecification(false),
     _enumeration(0)
@@ -69,6 +73,9 @@ QMofEnumerationLiteral::QMofEnumerationLiteral(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QMofEnumerationLiteralObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QMofEnumerationLiteral.
+*/
 QModelingElement *QMofEnumerationLiteral::clone() const
 {
     QMofEnumerationLiteral *c = new QMofEnumerationLiteral;
@@ -89,6 +96,10 @@ QModelingElement *QMofEnumerationLiteral::clone() const
 
 /*!
     The classifier of this EnumerationLiteral derived to be equal to its enumeration.
+
+    \b {This is a read-only derived property.}
+
+    \b {Redefined property(ies):} QMofInstanceSpecification::classifiers().
  */
 QMofEnumeration *QMofEnumerationLiteral::classifier() const
 {
@@ -99,6 +110,9 @@ QMofEnumeration *QMofEnumerationLiteral::classifier() const
     return 0;
 }
 
+/*!
+    Adjusts classifier to \a classifier.
+ */
 void QMofEnumerationLiteral::setClassifier(QMofEnumeration *classifier)
 {
     // This is a read-only derived association end
@@ -120,6 +134,10 @@ void QMofEnumerationLiteral::setClassifier(QMofEnumeration *classifier)
 
 /*!
     The Enumeration that this EnumerationLiteral is a member of.
+
+    \b {Subsetted property(ies):} QMofNamedElement::namespace_().
+
+    \b {Opposite property(ies):} QMofEnumeration::ownedLiterals().
  */
 QMofEnumeration *QMofEnumerationLiteral::enumeration() const
 {
@@ -128,6 +146,9 @@ QMofEnumeration *QMofEnumerationLiteral::enumeration() const
     return _enumeration;
 }
 
+/*!
+    Adjusts enumeration to \a enumeration.
+ */
 void QMofEnumerationLiteral::setEnumeration(QMofEnumeration *enumeration)
 {
     // This is a read-write association end

@@ -61,6 +61,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A package is used to group elements, and provides a namespace for the grouped elements.
  */
+
+/*!
+    Creates a new QMofPackage. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QMofPackage::QMofPackage(bool createQModelingObject) :
     _nestingPackage(0)
 {
@@ -68,6 +72,9 @@ QMofPackage::QMofPackage(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QMofPackageObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QMofPackage.
+*/
 QModelingElement *QMofPackage::clone() const
 {
     QMofPackage *c = new QMofPackage;
@@ -103,6 +110,9 @@ QString QMofPackage::URI() const
     return _URI;
 }
 
+/*!
+    Adjusts URI to \a URI.
+ */
 void QMofPackage::setURI(QString URI)
 {
     // This is a read-write property
@@ -114,6 +124,14 @@ void QMofPackage::setURI(QString URI)
 
 /*!
     References the packaged elements that are Packages.
+
+    \sa addNestedPackage(), removeNestedPackage()
+
+    \b {This is a derived property.}
+
+    \b {Subsetted property(ies):} QMofPackage::packagedElements().
+
+    \b {Opposite property(ies):} QMofPackage::nestingPackage().
  */
 const QSet<QMofPackage *> QMofPackage::nestedPackages() const
 {
@@ -126,6 +144,11 @@ const QSet<QMofPackage *> QMofPackage::nestedPackages() const
     return nestedPackages_;
 }
 
+/*!
+    Adds \a nestedPackage to nestedPackages.
+
+    \sa nestedPackages(), removeNestedPackage()
+ */
 void QMofPackage::addNestedPackage(QMofPackage *nestedPackage)
 {
     // This is a read-write derived association end
@@ -141,6 +164,11 @@ void QMofPackage::addNestedPackage(QMofPackage *nestedPackage)
     }
 }
 
+/*!
+    Removes \a nestedPackage from nestedPackages.
+
+    \sa nestedPackages(), addNestedPackage()
+ */
 void QMofPackage::removeNestedPackage(QMofPackage *nestedPackage)
 {
     // This is a read-write derived association end
@@ -158,6 +186,10 @@ void QMofPackage::removeNestedPackage(QMofPackage *nestedPackage)
 
 /*!
     References the Package that owns this Package.
+
+    \b {Subsetted property(ies):} .
+
+    \b {Opposite property(ies):} QMofPackage::nestedPackages().
  */
 QMofPackage *QMofPackage::nestingPackage() const
 {
@@ -166,6 +198,9 @@ QMofPackage *QMofPackage::nestingPackage() const
     return _nestingPackage;
 }
 
+/*!
+    Adjusts nestingPackage to \a nestingPackage.
+ */
 void QMofPackage::setNestingPackage(QMofPackage *nestingPackage)
 {
     // This is a read-write association end
@@ -179,6 +214,14 @@ void QMofPackage::setNestingPackage(QMofPackage *nestingPackage)
 
 /*!
     References the packaged elements that are Types.
+
+    \sa addOwnedType(), removeOwnedType()
+
+    \b {This is a derived property.}
+
+    \b {Subsetted property(ies):} QMofPackage::packagedElements().
+
+    \b {Opposite property(ies):} QMofType::package().
  */
 const QSet<QMofType *> QMofPackage::ownedTypes() const
 {
@@ -191,6 +234,11 @@ const QSet<QMofType *> QMofPackage::ownedTypes() const
     return ownedTypes_;
 }
 
+/*!
+    Adds \a ownedType to ownedTypes.
+
+    \sa ownedTypes(), removeOwnedType()
+ */
 void QMofPackage::addOwnedType(QMofType *ownedType)
 {
     // This is a read-write derived association end
@@ -206,6 +254,11 @@ void QMofPackage::addOwnedType(QMofType *ownedType)
     }
 }
 
+/*!
+    Removes \a ownedType from ownedTypes.
+
+    \sa ownedTypes(), addOwnedType()
+ */
 void QMofPackage::removeOwnedType(QMofType *ownedType)
 {
     // This is a read-write derived association end
@@ -223,6 +276,12 @@ void QMofPackage::removeOwnedType(QMofType *ownedType)
 
 /*!
     References the PackageMerges that are owned by this Package.
+
+    \sa addPackageMerge(), removePackageMerge()
+
+    \b {Subsetted property(ies):} QMofElement::ownedElements().
+
+    \b {Opposite property(ies):} QMofPackageMerge::receivingPackage().
  */
 const QSet<QMofPackageMerge *> QMofPackage::packageMerges() const
 {
@@ -231,6 +290,11 @@ const QSet<QMofPackageMerge *> QMofPackage::packageMerges() const
     return _packageMerges;
 }
 
+/*!
+    Adds \a packageMerge to packageMerges.
+
+    \sa packageMerges(), removePackageMerge()
+ */
 void QMofPackage::addPackageMerge(QMofPackageMerge *packageMerge)
 {
     // This is a read-write association end
@@ -251,6 +315,11 @@ void QMofPackage::addPackageMerge(QMofPackageMerge *packageMerge)
     }
 }
 
+/*!
+    Removes \a packageMerge from packageMerges.
+
+    \sa packageMerges(), addPackageMerge()
+ */
 void QMofPackage::removePackageMerge(QMofPackageMerge *packageMerge)
 {
     // This is a read-write association end
@@ -272,6 +341,10 @@ void QMofPackage::removePackageMerge(QMofPackageMerge *packageMerge)
 
 /*!
     Specifies the packageable elements that are owned by this Package.
+
+    \sa addPackagedElement(), removePackagedElement()
+
+    \b {Subsetted property(ies):} QMofNamespace::ownedMembers().
  */
 const QSet<QMofPackageableElement *> QMofPackage::packagedElements() const
 {
@@ -280,6 +353,11 @@ const QSet<QMofPackageableElement *> QMofPackage::packagedElements() const
     return _packagedElements;
 }
 
+/*!
+    Adds \a packagedElement to packagedElements.
+
+    \sa packagedElements(), removePackagedElement()
+ */
 void QMofPackage::addPackagedElement(QMofPackageableElement *packagedElement)
 {
     // This is a read-write association end
@@ -295,6 +373,11 @@ void QMofPackage::addPackagedElement(QMofPackageableElement *packagedElement)
     }
 }
 
+/*!
+    Removes \a packagedElement from packagedElements.
+
+    \sa packagedElements(), addPackagedElement()
+ */
 void QMofPackage::removePackagedElement(QMofPackageableElement *packagedElement)
 {
     // This is a read-write association end

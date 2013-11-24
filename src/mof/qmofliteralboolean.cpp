@@ -58,6 +58,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A literal Boolean is a specification of a Boolean value.
  */
+
+/*!
+    Creates a new QMofLiteralBoolean. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QMofLiteralBoolean::QMofLiteralBoolean(bool createQModelingObject) :
     _value(false)
 {
@@ -65,6 +69,9 @@ QMofLiteralBoolean::QMofLiteralBoolean(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QMofLiteralBooleanObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QMofLiteralBoolean.
+*/
 QModelingElement *QMofLiteralBoolean::clone() const
 {
     QMofLiteralBoolean *c = new QMofLiteralBoolean;
@@ -90,6 +97,9 @@ bool QMofLiteralBoolean::value() const
     return _value;
 }
 
+/*!
+    Adjusts value to \a value.
+ */
 void QMofLiteralBoolean::setValue(bool value)
 {
     // This is a read-write property

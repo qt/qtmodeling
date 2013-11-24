@@ -45,8 +45,6 @@
 
 #include <QtMof/QMofRelationship>
 
-QT_BEGIN_HEADER
-
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtMof)
@@ -76,8 +74,6 @@ protected:
 QT_END_NAMESPACE
 
 Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE(QMofDirectedRelationship) *)
-
-QT_END_HEADER
 
 #endif // QMOFDIRECTEDRELATIONSHIP_H
 

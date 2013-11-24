@@ -55,12 +55,21 @@ QT_BEGIN_NAMESPACE
     \inmodule QtMof
 
     \brief A feature declares a behavioral or structural characteristic of instances of classifiers.
+
+    \b {QMofFeature is an abstract class.}
  */
+
+/*!
+    Creates a new QMofFeature.
+*/
 QMofFeature::QMofFeature() :
     _isStatic(false)
 {
 }
 
+/*!
+    Returns a deep-copied clone of the QMofFeature.
+*/
 QModelingElement *QMofFeature::clone() const
 {
     QMofFeature *c = new QMofFeature;
@@ -77,6 +86,12 @@ QModelingElement *QMofFeature::clone() const
 
 /*!
     The Classifiers that have this Feature as a feature.
+
+    \b {This is a read-only derived union property.}
+
+    \b {Subsetted property(ies):} .
+
+    \b {Opposite property(ies):} QMofClassifier::features().
  */
 const QSet<QMofClassifier *> QMofFeature::featuringClassifiers() const
 {
@@ -85,6 +100,11 @@ const QSet<QMofClassifier *> QMofFeature::featuringClassifiers() const
     return _featuringClassifiers;
 }
 
+/*!
+    Adds \a featuringClassifier to featuringClassifiers.
+
+    \sa featuringClassifiers(), removeFeaturingClassifier()
+ */
 void QMofFeature::addFeaturingClassifier(QMofClassifier *featuringClassifier)
 {
     // This is a read-only derived union association end
@@ -101,6 +121,11 @@ void QMofFeature::addFeaturingClassifier(QMofClassifier *featuringClassifier)
     }
 }
 
+/*!
+    Removes \a featuringClassifier from featuringClassifiers.
+
+    \sa featuringClassifiers(), addFeaturingClassifier()
+ */
 void QMofFeature::removeFeaturingClassifier(QMofClassifier *featuringClassifier)
 {
     // This is a read-only derived union association end
@@ -125,6 +150,9 @@ bool QMofFeature::isStatic() const
     return _isStatic;
 }
 
+/*!
+    Adjusts isStatic to \a isStatic.
+ */
 void QMofFeature::setStatic(bool isStatic)
 {
     // This is a read-write property

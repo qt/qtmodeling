@@ -44,11 +44,6 @@
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QMofTag
-
-    \inmodule QtMof
- */
 QMofTag::QMofTag(bool createQModelingObject) :
     _tagOwner(0)
 {
@@ -70,7 +65,6 @@ QModelingElement *QMofTag::clone() const
 
 // OWNED ATTRIBUTES
 
-
 QString QMofTag::name() const
 {
     // This is a read-write property
@@ -86,7 +80,6 @@ void QMofTag::setName(QString name)
         _name = name;
     }
 }
-
 
 QString QMofTag::value() const
 {
@@ -104,14 +97,12 @@ void QMofTag::setValue(QString value)
     }
 }
 
-
 const QSet<QMofElement *> QMofTag::elements() const
 {
     // This is a read-write property
 
     return _elements;
 }
-
 void QMofTag::addElement(QMofElement *element)
 {
     // This is a read-write property
@@ -122,7 +113,6 @@ void QMofTag::addElement(QMofElement *element)
             QObject::connect(element->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeElement(QObject *)));
     }
 }
-
 void QMofTag::removeElement(QMofElement *element)
 {
     // This is a read-write property
@@ -131,7 +121,6 @@ void QMofTag::removeElement(QMofElement *element)
         _elements.remove(element);
     }
 }
-
 
 QMofElement *QMofTag::tagOwner() const
 {
