@@ -51,20 +51,39 @@
 
 QT_BEGIN_NAMESPACE
 
+/*!
+    \class QModelingObjectPropertyModel
+
+    \inmodule QtModelingWidgets
+
+    \brief The QModelingObjectPropertyModel class provides a Qt model for
+    handling QtModeling element's properties.
+*/
+
 QModelingObjectPropertyModelPrivate::QModelingObjectPropertyModelPrivate() :
     modelingObject(0), modelingMetaObject(0)
 {
 }
 
+/*!
+    Creates a new QModelingObjectPropertyModel with the given \a parent.
+*/
 QModelingObjectPropertyModel::QModelingObjectPropertyModel(QObject *parent) :
     QAbstractItemModel(*new QModelingObjectPropertyModelPrivate, parent)
 {
 }
 
+/*!
+    Destroys the QModelingObjectPropertyModel;
+*/
 QModelingObjectPropertyModel::~QModelingObjectPropertyModel()
 {
 }
 
+/*!
+    Adjusts \a modelingObject as the element whose properties should be handled by this QModelingObjectPropertyModel.
+    \a index represents the index \a modelingObject plays in the corresponding QModelingObjectModel.
+*/
 void QModelingObjectPropertyModel::setModelingObject(QModelingObject *modelingObject, QModelIndex index)
 {
     Q_D(QModelingObjectPropertyModel);
@@ -80,6 +99,9 @@ void QModelingObjectPropertyModel::setModelingObject(QModelingObject *modelingOb
     }
 }
 
+/*!
+    Returns the QModelIndex which corresponds to the \a parent's child at position \a row, \a column.
+*/
 QModelIndex QModelingObjectPropertyModel::index(int row, int column, const QModelIndex &parent) const
 {
     Q_D(const QModelingObjectPropertyModel);
@@ -92,6 +114,9 @@ QModelIndex QModelingObjectPropertyModel::index(int row, int column, const QMode
         return createIndex(row, column);
 }
 
+/*!
+    Returns the QModelIndex of the parent of index identified by \a child.
+*/
 QModelIndex QModelingObjectPropertyModel::parent(const QModelIndex &child) const
 {
     Q_D(const QModelingObjectPropertyModel);
@@ -106,6 +131,9 @@ QModelIndex QModelingObjectPropertyModel::parent(const QModelIndex &child) const
     return createIndex(d->modelingObject->propertyGroupIndex(*metaProperty), 0);
 }
 
+/*!
+    Returns the number of index rows having \a parent as parent.
+*/
 int QModelingObjectPropertyModel::rowCount(const QModelIndex &parent) const
 {
     Q_D(const QModelingObjectPropertyModel);
@@ -116,6 +144,9 @@ int QModelingObjectPropertyModel::rowCount(const QModelIndex &parent) const
                                   (!parent.internalPointer()) ? d->groupProperties->values(d->propertyGroups->at(parent.row())).count():0;
 }
 
+/*!
+    Returns the number of index columns having \a parent as parent.
+*/
 int QModelingObjectPropertyModel::columnCount(const QModelIndex &parent) const
 {
     Q_D(const QModelingObjectPropertyModel);
@@ -123,6 +154,9 @@ int QModelingObjectPropertyModel::columnCount(const QModelIndex &parent) const
     return (!d->modelingMetaObject || (parent.isValid() && parent.column() != 0)) ? 0:2;
 }
 
+/*!
+    Returns the data \a index contains in role \a role.
+*/
 QVariant QModelingObjectPropertyModel::data(const QModelIndex &index, int role) const
 {
     Q_D(const QModelingObjectPropertyModel);
@@ -305,6 +339,9 @@ QVariant QModelingObjectPropertyModel::data(const QModelIndex &index, int role) 
     return QVariant();
 }
 
+/*!
+    Ajusts the \a index's data corresponding to role \a role to \a value.
+*/
 bool QModelingObjectPropertyModel::setData(const QModelIndex &index, const QVariant &value, int role)
 {
     Q_D(QModelingObjectPropertyModel);
@@ -330,6 +367,9 @@ bool QModelingObjectPropertyModel::setData(const QModelIndex &index, const QVari
     return false;
 }
 
+/*!
+    Returns the header data for section \a section and orientation \a orientation corresponding to role \a role.
+*/
 QVariant QModelingObjectPropertyModel::headerData(int section, Qt::Orientation orientation, int role) const
 {
     if ((section == 0 || section == 1) && orientation == Qt::Horizontal && role == Qt::DisplayRole)
@@ -337,6 +377,9 @@ QVariant QModelingObjectPropertyModel::headerData(int section, Qt::Orientation o
     return QVariant();
 }
 
+/*!
+    Returns the flags of item corresponding to \a index.
+*/
 Qt::ItemFlags QModelingObjectPropertyModel::flags(const QModelIndex &index) const
 {
     QMetaProperty *metaProperty = static_cast<QMetaProperty *>(index.internalPointer());
@@ -346,12 +389,21 @@ Qt::ItemFlags QModelingObjectPropertyModel::flags(const QModelIndex &index) cons
         return QAbstractItemModel::flags(index);
 }
 
+/*!
+    Returns the QModelingObject whose properties are being handled by this QModelingObjectPropertyModel.
+*/
 QModelingObject *QModelingObjectPropertyModel::modelingObject() const
 {
     Q_D(const QModelingObjectPropertyModel);
 
     return d->modelingObject;
 }
+
+/*!
+    \fn void QModelingObjectPropertyModel::indexChanged(const QModelIndex &modelingObjectIndex)
+
+    This signal is emitted whenever the property represented by \a modelingObjectIndex has been changed.
+*/
 
 QT_END_NAMESPACE
 

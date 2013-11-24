@@ -26,17 +26,17 @@
 ****************************************************************************/
 /*!
     \page qtmodelingwidgets-index.html
-    \title Qt ModelingWidgets
-    \brief Provide model and widget classes for use with QtModelingWidgets module.
+    \title Qt Modeling Widgets
+    \brief Provide model and widget classes for use with QtModeling module.
 
-    Qt ModelingWidgets is an add-on module which provides model and widget classes for use with QtModelingWidgets module.
+    Qt Modeling Widgets is an add-on module which provides model and widget classes for use with QtModeling module.
 
     \section1 Getting Started
-    To enable Qt ModelingWidgets in a project, add this directive into the C++ files:
+    To enable Qt Modeling Widgets in a project, add this directive into the C++ files:
     \code
     #include <QtModelingWidgets>
     \endcode
-    To link against the Qt ModelingWidgets module, add this line to the project file:
+    To link against the Qt Modeling Widgets module, add this line to the project file:
     \code
     QT += modelingwidgets
     \endcode
@@ -44,15 +44,15 @@
     \section1 Reference
     These are links to the API reference materials.
     \list
-    \li \l{Qt ModelingWidgets Module C++ Classes}{C++ classes}
+    \li \l{Qt Modeling Widgets C++ Classes}{C++ classes}
     \endlist
 */
 
 /*!
     \module QtModelingWidgets
-    \title Qt ModelingWidgets Module C++ Classes
+    \title Qt Modeling Widgets C++ Classes
     \ingroup modules
-    \brief Provide model and widget classes for use with QtModelingWidgets module.
+    \brief Provide model and widget classes for use with QtModeling module.
 
     To include the definitions of the module's classes, use the
     following directive:

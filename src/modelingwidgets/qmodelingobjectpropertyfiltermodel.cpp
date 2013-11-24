@@ -42,11 +42,26 @@
 
 QT_BEGIN_NAMESPACE
 
+/*!
+    \class QModelingObjectPropertyFilterModel
+
+    \inmodule QtModelingWidgets
+
+    \brief The QModelingObjectPropertyFilterModel class allows filtering properties
+    in a QModelingObjectPropertyEditor by name.
+*/
+
+/*!
+    Creates a new QModelingObjectPropertyFilterModel with the given \a parent.
+*/
 QModelingObjectPropertyFilterModel::QModelingObjectPropertyFilterModel(QObject *parent) :
     QSortFilterProxyModel(parent)
 {
 }
 
+/*!
+    Implements the filtering mechanism, deciding if element at \a sourceRow identified by \a sourceParent should be exhibited.
+*/
 bool QModelingObjectPropertyFilterModel::filterAcceptsRow(int sourceRow, const QModelIndex &sourceParent) const
 {
     int rows;

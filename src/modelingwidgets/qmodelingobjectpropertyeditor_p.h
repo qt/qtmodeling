@@ -44,8 +44,6 @@
 #include "qtmodelingwidgetsglobal.h"
 #include "private/qwidget_p.h"
 
-QT_BEGIN_HEADER
-
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtModelingWidgets)
@@ -73,8 +71,6 @@ public:
 };
 
 QT_END_NAMESPACE
-
-QT_END_HEADER
 
 #endif // QMODELINGOBJECTPROPERTYEDITOR_P_H
 

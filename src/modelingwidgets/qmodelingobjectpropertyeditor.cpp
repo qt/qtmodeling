@@ -53,6 +53,15 @@
 
 QT_BEGIN_NAMESPACE
 
+/*!
+    \class QModelingObjectPropertyEditor
+
+    \inmodule QtModelingWidgets
+
+    \brief The QModelingObjectPropertyEditor class provides a Qt view for handling
+    model element's properties.
+*/
+
 QModelingObjectPropertyEditorPrivate::QModelingObjectPropertyEditorPrivate() :
     label(new QLabel),
     treeView(new QTreeView),
@@ -67,6 +76,9 @@ QModelingObjectPropertyEditorPrivate::~QModelingObjectPropertyEditorPrivate()
     delete proxyModel;
 }
 
+/*!
+    Creates a new QModelingObjectPropertyEditor with the given \a parent and window flags \a f.
+*/
 QModelingObjectPropertyEditor::QModelingObjectPropertyEditor(QWidget *parent, Qt::WindowFlags f) :
     QWidget(*new QModelingObjectPropertyEditorPrivate, parent, f)
 {
@@ -99,10 +111,16 @@ QModelingObjectPropertyEditor::QModelingObjectPropertyEditor(QWidget *parent, Qt
     connect(d->filter, &FilterWidget::filterChanged, this, &QModelingObjectPropertyEditor::filterChanged);
 }
 
+/*!
+    Destroys the QModelingObjectPropertyEditor.
+*/
 QModelingObjectPropertyEditor::~QModelingObjectPropertyEditor()
 {
 }
 
+/*!
+    Adjusts \a propertyModel as the model handled by this QModelingObjectPropertyEditor.
+*/
 void QModelingObjectPropertyEditor::setModel(QModelingObjectPropertyModel *propertyModel)
 {
     Q_D(QModelingObjectPropertyEditor);
@@ -117,6 +135,9 @@ void QModelingObjectPropertyEditor::setModel(QModelingObjectPropertyModel *prope
         connect(propertyModel, &QAbstractItemModel::modelReset, this, &QModelingObjectPropertyEditor::modelReset);
 }
 
+/*!
+    Returns the QModelingObjectPropertyModel handled by this QModelingObjectPropertyEditor.
+*/
 QModelingObjectPropertyModel *QModelingObjectPropertyEditor::model() const
 {
     Q_D(const QModelingObjectPropertyEditor);

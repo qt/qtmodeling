@@ -45,8 +45,6 @@
 
 #include <QtCore/QSortFilterProxyModel>
 
-QT_BEGIN_HEADER
-
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtModelingWidgets)
@@ -62,8 +60,6 @@ protected:
 };
 
 QT_END_NAMESPACE
-
-QT_END_HEADER
 
 #endif // QMODELINGOBJECTPROPERTYFILTERMODEL_H
 

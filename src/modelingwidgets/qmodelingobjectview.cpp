@@ -51,6 +51,15 @@
 
 QT_BEGIN_NAMESPACE
 
+/*!
+    \class QModelingObjectView
+
+    \inmodule QtModelingWidgets
+
+    \brief The QModelingObjectView class provides a Qt view for
+    handling hierarchical QtModeling elements.
+*/
+
 QModelingObjectViewPrivate::QModelingObjectViewPrivate() :
     treeView(new QTreeView)
 {
@@ -103,6 +112,9 @@ void QModelingObjectViewPrivate::populateContextMenu(QMenu &menu, QObject *eleme
     menu.addAction(action);
 }
 
+/*!
+    Creates a new QModelingObjectView with the given \a parent and window flags \a f.
+*/
 QModelingObjectView::QModelingObjectView(QWidget *parent, Qt::WindowFlags f) :
     QWidget(*new QModelingObjectViewPrivate, parent, f)
 {
@@ -124,6 +136,9 @@ QModelingObjectView::QModelingObjectView(QWidget *parent, Qt::WindowFlags f) :
     layout->addWidget(d->treeView);
 }
 
+/*!
+    Adjusts \a model as the QModelingObjectModel exhibited by this QModelingObjectView.
+*/
 void QModelingObjectView::setModel(QAbstractItemModel *model)
 {
     Q_D(QModelingObjectView);
@@ -140,6 +155,9 @@ void QModelingObjectView::setModel(QAbstractItemModel *model)
     }
 }
 
+/*!
+    Updates data about the currently selected (sub-)element.
+*/
 void QModelingObjectView::updateSelected()
 {
     Q_D(QModelingObjectView);
@@ -151,6 +169,9 @@ void QModelingObjectView::updateSelected()
     d->treeView->setCurrentIndex(index);
 }
 
+/*!
+    Handles the occurrence of \a event.
+*/
 void QModelingObjectView::contextMenuEvent(QContextMenuEvent *event)
 {
     Q_D(QModelingObjectView);
@@ -161,6 +182,19 @@ void QModelingObjectView::contextMenuEvent(QContextMenuEvent *event)
     d->populateContextMenu(menu, element);
     menu.exec(event->globalPos());
 }
+
+/*!
+    \fn void QModelingObjectView::modelingObjectChanged(QModelingObject *selectedModelingObject, QModelIndex index = QModelIndex())
+
+    This signal is emitted whenever the \a selectedModelingObject's data represented by \a index has been changed.
+*/
+
+/*!
+    \fn void QModelingObjectView::addToView(QObject *selectedModelingObject, QQuickItem *parent = 0)
+
+    This signal is emitted whenever the action "Add to view" has been requested for the sub-element \a selectedModelingObject.
+    \a parent, if provided, represents the parent QQuickItem the new element should be drawn into.
+*/
 
 void QModelingObjectView::handleAddMethod()
 {

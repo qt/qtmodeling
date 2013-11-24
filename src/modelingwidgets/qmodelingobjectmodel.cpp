@@ -51,15 +51,30 @@
 
 QT_BEGIN_NAMESPACE
 
+/*!
+    \class QModelingObjectModel
+
+    \inmodule QtModelingWidgets
+
+    \brief The QModelingObjectModel class provides a Qt model for handling
+    with hierarchical model elements.
+*/
+
 QModelingObjectModelPrivate::QModelingObjectModelPrivate()
 {
 }
 
+/*!
+    Creates a new QModelingObjectModel with the given \a parent.
+*/
 QModelingObjectModel::QModelingObjectModel(QObject *parent) :
     QAbstractItemModel(*new QModelingObjectModelPrivate, parent)
 {
 }
 
+/*!
+    Adjusts \a modelingObjects as the top level model elements which should be handled by this QModelingObjectModel.
+*/
 void QModelingObjectModel::setModelingObjects(QList<QModelingObject *> modelingObjects)
 {
     Q_D(QModelingObjectModel);
@@ -69,6 +84,9 @@ void QModelingObjectModel::setModelingObjects(QList<QModelingObject *> modelingO
     endResetModel();
 }
 
+/*!
+    Returns the top level model elements handled by this QModelingObjectModel.
+*/
 QList<QModelingObject *> QModelingObjectModel::modelingObjects() const
 {
     Q_D(const QModelingObjectModel);
@@ -76,6 +94,9 @@ QList<QModelingObject *> QModelingObjectModel::modelingObjects() const
     return d->modelingObjects;
 }
 
+/*!
+    Returns the QModelIndex which corresponds to the \a parent's child at position \a row, \a column.
+*/
 QModelIndex QModelingObjectModel::index(int row, int column, const QModelIndex &parent) const
 {
     Q_D(const QModelingObjectModel);
@@ -93,6 +114,9 @@ QModelIndex QModelingObjectModel::index(int row, int column, const QModelIndex &
     return createIndex(row, column, static_cast<void *>(modelingObject->children().at(row)));
 }
 
+/*!
+    Returns the QModelIndex of the parent of index identified by \a child.
+*/
 QModelIndex QModelingObjectModel::parent(const QModelIndex &child) const
 {
     Q_D(const QModelingObjectModel);
@@ -112,6 +136,9 @@ QModelIndex QModelingObjectModel::parent(const QModelIndex &child) const
     return createIndex(grandParentModelingObject->children().indexOf(parentModelingObject), 0, static_cast<void *>(parentModelingObject));
 }
 
+/*!
+    Returns the number of index rows having \a parent as parent.
+*/
 int QModelingObjectModel::rowCount(const QModelIndex &parent) const
 {
     Q_D(const QModelingObjectModel);
@@ -129,6 +156,9 @@ int QModelingObjectModel::rowCount(const QModelIndex &parent) const
     return modelingObject->children().size();
 }
 
+/*!
+    Returns the number of index columns having \a parent as parent.
+*/
 int QModelingObjectModel::columnCount(const QModelIndex &parent) const
 {
     Q_D(const QModelingObjectModel);
@@ -136,6 +166,9 @@ int QModelingObjectModel::columnCount(const QModelIndex &parent) const
     return (d->modelingObjects.isEmpty() || (parent.isValid() && parent.column() != 0)) ? 0:2;
 }
 
+/*!
+    Returns the data \a index contains in role \a role.
+*/
 QVariant QModelingObjectModel::data(const QModelIndex &index, int role) const
 {
     Q_D(const QModelingObjectModel);
@@ -177,11 +210,17 @@ QVariant QModelingObjectModel::data(const QModelIndex &index, int role) const
     return QVariant();
 }
 
+/*!
+    Ajusts the \a index's data corresponding to role \a role to \a value.
+*/
 bool QModelingObjectModel::setData(const QModelIndex &index, const QVariant &value, int role)
 {
     return QAbstractItemModel::setData(index, value, role);
 }
 
+/*!
+    Returns the header data for section \a section and orientation \a orientation corresponding to role \a role.
+*/
 QVariant QModelingObjectModel::headerData(int section, Qt::Orientation orientation, int role) const
 {
     if ((section == 0 || section == 1) && orientation == Qt::Horizontal && role == Qt::DisplayRole)
@@ -189,11 +228,17 @@ QVariant QModelingObjectModel::headerData(int section, Qt::Orientation orientati
     return QVariant();
 }
 
+/*!
+    Returns the flags of item corresponding to \a index.
+*/
 Qt::ItemFlags QModelingObjectModel::flags(const QModelIndex &index) const
 {
     return QAbstractItemModel::flags(index);
 }
 
+/*!
+    Notify views that \a index has been modified.
+*/
 void QModelingObjectModel::updateIndex(const QModelIndex &index)
 {
     if (!index.isValid()) {
@@ -205,6 +250,9 @@ void QModelingObjectModel::updateIndex(const QModelIndex &index)
         emit dataChanged(index, index, QVector<int>() << Qt::DisplayRole);
 }
 
+/*!
+    Delete the model handled by this QModelingObjectModel.
+*/
 void QModelingObjectModel::clear()
 {
     Q_D(QModelingObjectModel);

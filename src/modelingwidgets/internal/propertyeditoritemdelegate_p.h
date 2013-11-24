@@ -45,8 +45,6 @@
 
 #include <QtWidgets/QStyledItemDelegate>
 
-QT_BEGIN_HEADER
-
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtWrappedObjectsWidgets)
@@ -72,8 +70,6 @@ private:
 };
 
 QT_END_NAMESPACE
-
-QT_END_HEADER
 
 #endif // PROPERTYEDITORITEMDELEGATE_P_H
 

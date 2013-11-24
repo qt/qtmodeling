@@ -1,7 +1,7 @@
 include($QT_INSTALL_DOCS/global/qt-module-defaults.qdocconf)
 
 project                 = QtModelingWidgets
-description             = Qt ModelingWidgets Reference Documentation
+description             = Qt Modeling Widgets Reference Documentation
 url                     = http://qt-project.org/doc/qt-$QT_VER
 version                 = $QT_VERSION
 
@@ -12,7 +12,7 @@ qhp.projects            = QtModelingWidgets
 qhp.QtModelingWidgets.file            = qtmodelingwidgets.qhp
 qhp.QtModelingWidgets.namespace           = org.qt-project.qtmodelingwidgets.$QT_VERSION_TAG
 qhp.QtModelingWidgets.virtualFolder       = qtmodelingwidgets
-qhp.QtModelingWidgets.indexTitle          = Qt ModelingWidgets
+qhp.QtModelingWidgets.indexTitle          = Qt Modeling Widgets
 qhp.QtModelingWidgets.indexRoot           =
 
 qhp.QtModelingWidgets.filterAttributes    = qtmodelingwidgets $QT_VERSION qtrefdoc
@@ -21,12 +21,12 @@ qhp.QtModelingWidgets.customFilters.Qt.filterAttributes = qtmodelingwidgets $QT_
 
 qhp.QtModelingWidgets.subprojects         = classes
 qhp.QtModelingWidgets.subprojects.classes.title = C++ Classes
-qhp.QtModelingWidgets.subprojects.classes.indexTitle = Qt ModelingWidgets C++ Classes
+qhp.QtModelingWidgets.subprojects.classes.indexTitle = Qt Modeling Widgets C++ Classes
 qhp.QtModelingWidgets.subprojects.classes.selectors = class fake:headerfile
 qhp.QtModelingWidgets.subprojects.classes.sortPages = true
 tagfile                 = ../../../doc/qtmodelingwidgets/qtmodelingwidgets.tags
 
-depends                 += qtcore modeling qtdoc
+depends                 += qtcore qtdoc qtmodeling qtquick
 
 headerdirs  += ..
 
@@ -39,3 +39,7 @@ exampledirs += ../../../examples/modelingwidgets \
 
 imagedirs   += images \
                ../../../examples/modelingwidgets/doc/images
+
+
+navigation.landingpage = "Qt Modeling Widgets"
+navigation.cppclassespage = "Qt Modeling Widgets C++ Classes"
