@@ -45,8 +45,6 @@
 
 #include <QtModeling/QModelingElement>
 
-QT_BEGIN_HEADER
-
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtSADuseProfile)
@@ -71,8 +69,6 @@ protected:
 QT_END_NAMESPACE
 
 Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE(QSADuseProfileProcessComponent) *)
-
-QT_END_HEADER
 
 #endif // QSADUSEPROFILEPROCESSCOMPONENT_H
 

@@ -91,7 +91,7 @@ void QSADuseProfileProcessComponentObject::setPropertyData()
     Q_DECLARE_METAPROPERTY_INFO(QSADuseProfileProcessComponent, base_Component, PropertyTypeRole, QStringLiteral("QUmlComponent *"));
     Q_DECLARE_METAPROPERTY_INFO(QSADuseProfileProcessComponent, base_Component, IsDerivedRole, false);
     Q_DECLARE_METAPROPERTY_INFO(QSADuseProfileProcessComponent, base_Component, IsDerivedUnionRole, false);
-    Q_DECLARE_METAPROPERTY_INFO(QSADuseProfileProcessComponent, base_Component, DocumentationRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QSADuseProfileProcessComponent, base_Component, DocumentationRole, QStringLiteral("The QUmlComponent which this QSADuseProfileProcessComponent is attached to."));
     Q_DECLARE_METAPROPERTY_INFO(QSADuseProfileProcessComponent, base_Component, RedefinedPropertiesRole, QStringLiteral(""));
     Q_DECLARE_METAPROPERTY_INFO(QSADuseProfileProcessComponent, base_Component, SubsettedPropertiesRole, QStringLiteral(""));
     Q_DECLARE_METAPROPERTY_INFO(QSADuseProfileProcessComponent, base_Component, OppositeEndRole, QStringLiteral(""));

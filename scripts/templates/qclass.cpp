@@ -188,11 +188,13 @@ QModelingElement *Q${namespace}${className}::clone() const
 }
 
         [%- IF attribute.findnodes("upperValue").findvalue("@value") == "*" %]
+[%- IF documentation != "" %]
 /*!
     Adds \a ${qtAttribute} to ${PLURALFORM(qtAttribute, attribute)}.
 
     \sa ${PLURALFORM(qtAttribute, attribute)}(), remove${attributeName}()
  */
+[%- END %]
 void Q${namespace}${className}::add${attributeName}(${qtType.remove("QSet<").remove("QList<").replace(">", "").replace('\* $', '*')}${qtAttribute})
 {
     // This is a [% IF readOnly == "" || readOnly == "false" %]read-write[% ELSE %]read-only[% END %][% IF derived == "true" %] derived[% END %][% IF derivedUnion == "true" %] union[% END %] [% IF association != "" %]association end[% ELSE %]property[% END %]
@@ -270,11 +272,13 @@ void Q${namespace}${className}::add${attributeName}(${qtType.remove("QSet<").rem
     }
 }
 
+[%- IF documentation != "" %]
 /*!
     Removes \a ${qtAttribute} from ${PLURALFORM(qtAttribute, attribute)}.
 
     \sa ${PLURALFORM(qtAttribute, attribute)}(), add${attributeName}()
  */
+[%- END %]
 void Q${namespace}${className}::remove${attributeName}(${qtType.remove("QSet<").remove("QList<").replace(">", "").replace('\* $', '*')}${qtAttribute})
 {
     // This is a [% IF readOnly == "" || readOnly == "false" %]read-write[% ELSE %]read-only[% END %][% IF derived == "true" %] derived[% END %][% IF derivedUnion == "true" %] union[% END %] [% IF association != "" %]association end[% ELSE %]property[% END %]
@@ -350,9 +354,11 @@ void Q${namespace}${className}::remove${attributeName}(${qtType.remove("QSet<").
 }
 
         [%- ELSE %]
+[%- IF documentation != "" %]
 /*!
     Adjusts ${PLURALFORM(qtAttribute, attribute)} to \a ${qtAttribute}.
  */
+[%- END %]
 void Q${namespace}${className}::set${attributeName.remove("^Is")}([% IF !qtType.match('\*$') %]${qtType.trim} [% ELSE %]${qtType}[% END %]${qtAttribute})
 {
     // This is a [% IF readOnly == "" || readOnly == "false" %]read-write[% ELSE %]read-only[% END %][% IF derived == "true" %] derived[% END %][% IF derivedUnion == "true" %] union[% END %] [% IF association != "" %]association end[% ELSE %]property[% END %]

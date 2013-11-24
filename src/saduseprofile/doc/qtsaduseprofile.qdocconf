@@ -12,7 +12,7 @@ qhp.projects            = QtSADuseProfile
 qhp.QtSADuseProfile.file            = qtsaduseprofile.qhp
 qhp.QtSADuseProfile.namespace           = org.qt-project.qtsaduseprofile.$QT_VERSION_TAG
 qhp.QtSADuseProfile.virtualFolder       = qtsaduseprofile
-qhp.QtSADuseProfile.indexTitle          = Qt SADuseProfile
+qhp.QtSADuseProfile.indexTitle          = Qt SADuse Profile
 qhp.QtSADuseProfile.indexRoot           =
 
 qhp.QtSADuseProfile.filterAttributes    = qtsaduseprofile $QT_VERSION qtrefdoc
@@ -21,12 +21,12 @@ qhp.QtSADuseProfile.customFilters.Qt.filterAttributes = qtsaduseprofile $QT_VERS
 
 qhp.QtSADuseProfile.subprojects         = classes
 qhp.QtSADuseProfile.subprojects.classes.title = C++ Classes
-qhp.QtSADuseProfile.subprojects.classes.indexTitle = Qt SADuseProfile C++ Classes
+qhp.QtSADuseProfile.subprojects.classes.indexTitle = Qt SADuse Profile C++ Classes
 qhp.QtSADuseProfile.subprojects.classes.selectors = class fake:headerfile
 qhp.QtSADuseProfile.subprojects.classes.sortPages = true
 tagfile                 = ../../../doc/qtsaduseprofile/qtsaduseprofile.tags
 
-depends                 += qtcore qtxml qtdoc
+depends                 += qtcore qtdoc qtmodeling qtuml
 
 headerdirs  += ..
 
@@ -39,3 +39,6 @@ exampledirs += ../../../examples/saduseprofile \
 
 imagedirs   += images \
                ../../../examples/saduseprofile/doc/images
+
+navigation.landingpage = "Qt SADuse Profiles"
+navigation.cppclassespage = "Qt SADuse Profile C++ Classes"
