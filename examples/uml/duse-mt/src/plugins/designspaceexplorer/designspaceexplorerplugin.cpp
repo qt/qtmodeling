@@ -49,10 +49,12 @@
 
 #include <QtWidgets/QAction>
 #include <QtWidgets/QWidget>
+#include <QtWidgets/QComboBox>
+#include <QtWidgets/QMessageBox>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QTableWidget>
 #include <QtWidgets/QApplication>
-#include <QtWidgets/QMessageBox>
+
 
 #include <QtCore/QFileInfo>
 
@@ -67,6 +69,7 @@
 #include <QtUml/QUmlProfileApplication>
 
 #include <QtDuse/QDuseDesignSpace>
+#include <QtDuse/QDuseVariationPoint>
 #include <QtDuse/QDuseDesignDimension>
 #include <QtDuse/QDuseDesignDimensionInstance>
 
@@ -261,32 +264,35 @@ void DesignSpaceExplorerPlugin::newDuseDesign()
                     }
                 }
 
-                //modelingObjectList.first()->setQmlContextProperties(_metricsQuickView->engine()->rootContext());
-
-//                _engine.globalObject().setProperty("designspace", _engine.newQObject(modelingObjectList.at(0)->asQModelingObject()));
-//                _engine.evaluate("var dimensionsLength = designspace.designDimensions.length; \
-//                                 for (var dimensionCounter = 0; dimensionCounter < dimensionsLength; ++dimensionCounter) { \
-//                                     if (designspace.designDimensions[dimensionCounter].instanceSelectionRule) { \
-//                                         var selected = eval(designspace.designDimensions[dimensionCounter].instanceSelectionRule); \
-//                                         var selectedLength = selected.length; \
-//                                         for (var selectedCounter = 0; selectedCounter < selectedLength; ++selectedCounter) { \
-//                                             var dimensionInstance = new QDuseDesignDimensionInstance(); \
-//                                             dimensionInstance.objectName = selected[selectedCounter].name; \
-//                                             designspace.designDimensions[dimensionCounter].addDesignDimensionInstance(dimensionInstance); \
-//                                         } \
-//                                     } \
-//                                 }");
-
-
 //                evaluateQualityMetrics();
-//                populateDesignSpaceView(modelingObjectList.at(0));
-
-//                setCursor(Qt::ArrowCursor);
+                populateDesignSpaceExplorer();
             }
         }
         else
             return;
     } while (_newDuseDesignDialog->_inputModelFileName.isEmpty() || _newDuseDesignDialog->_duseInstanceModelFileName.isEmpty());
+}
+
+void DesignSpaceExplorerPlugin::populateDesignSpaceExplorer()
+{
+    QDuseDesignSpace *designSpace = dynamic_cast<QDuseDesignSpace *>(_duseInstance.first());
+    _designSpaceExplorer->setRowCount(0);
+    int row = 0;
+    foreach (QDuseDesignDimension *dimension, designSpace->designDimensions()) {
+        _designSpaceExplorer->setRowCount(_designSpaceExplorer->rowCount() + dimension->designDimensionInstances().count());
+        foreach (QDuseDesignDimensionInstance *instance, dimension->designDimensionInstances()) {
+            _designSpaceExplorer->setItem(row, 0, new QTableWidgetItem(dimension->name()));
+            _designSpaceExplorer->setItem(row, 1, new QTableWidgetItem(instance->targetInstance()->asQModelingObject()->objectName()));
+            QComboBox *comboBox = new QComboBox;
+            foreach (QDuseVariationPoint *variationPoint, dimension->variationPoints()) {
+                comboBox->addItem(variationPoint->asQModelingObject()->objectName());
+            }
+            _designSpaceExplorer->setCellWidget(row, 2, comboBox);
+            connect(comboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(designSpaceChanged()));
+            ++row;
+        }
+    }
+    _designSpaceExplorer->resizeRowsToContents();
 }
 
 void DesignSpaceExplorerPlugin::openDuseDesign()

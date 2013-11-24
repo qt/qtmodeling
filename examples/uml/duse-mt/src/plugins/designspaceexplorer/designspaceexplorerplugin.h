@@ -82,6 +82,8 @@ private:
     QList<QModelingElement *> _duseInstance;
 
     QScriptEngine _engine;
+
+    void populateDesignSpaceExplorer();
 };
 
 #endif // DESIGNSPACEEXPLORERPLUGIN_H

@@ -35,6 +35,7 @@ perl init-repository --module-subset=qtbase,qtdeclarative,qtscript,qtdoc,qtmodel
 make -j <#core+1>
 
 2) FOR INTEGRATED DOCUMENTATION GENERATION
+   (from http://qt-project.org/wiki/Checklist-for-Adding-Documentation-for-a-New-Module)
 
 2.1) Add the following lines in the add-on modules table described in qtdoc/doc/src/qtmodules.qdoc:
 
@@ -51,4 +52,9 @@ make -j <#core+1>
 2.4) Add the following row in the appropriate location in qtbase/qmake/doc/src/qmake-manual.qdoc:
 
 \row    \li modeling                   \li \l{Qt Modeling}
+
+Note: you should include the above lines in steps 2.1, 2.2, and 2.3 for EACH qt5 module in qtmodeling
+      (modeling, modelingwidgets, mof, uml, duse, saduseprofile, and so on)
+
+2.5) The previous files should be committed in qtbase and qtdoc repositories when qtmodeling is ready to be released
 
