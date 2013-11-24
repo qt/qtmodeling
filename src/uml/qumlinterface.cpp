@@ -81,6 +81,10 @@ QT_BEGIN_NAMESPACE
 
     \brief Since an interface specifies conformance characteristics, it does not own detailed behavior specifications. Instead, interfaces may own a protocol state machine that specifies event sequences and pre/post conditions for the operations and receptions described by the interface.Interfaces may include receptions (in addition to operations).An interface is a kind of classifier that represents a declaration of a set of coherent public features and obligations. An interface specifies a contract; any instance of a classifier that realizes the interface must fulfill that contract. The obligations that may be associated with an interface are in the form of various kinds of constraints (such as pre- and post-conditions) or protocol specifications, which may impose ordering restrictions on interactions through the interface.
  */
+
+/*!
+    Creates a new QUmlInterface. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlInterface::QUmlInterface(bool createQModelingObject) :
     _protocol(0)
 {
@@ -88,6 +92,9 @@ QUmlInterface::QUmlInterface(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlInterfaceObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlInterface.
+*/
 QModelingElement *QUmlInterface::clone() const
 {
     QUmlInterface *c = new QUmlInterface;
@@ -153,6 +160,10 @@ QModelingElement *QUmlInterface::clone() const
 
 /*!
     References all the Classifiers that are defined (nested) within the Class.
+
+    \sa addNestedClassifier(), removeNestedClassifier()
+
+    \b {Subsetted property(ies):} QUmlNamespace::ownedMembers().
  */
 const QList<QUmlClassifier *> QUmlInterface::nestedClassifiers() const
 {
@@ -161,6 +172,11 @@ const QList<QUmlClassifier *> QUmlInterface::nestedClassifiers() const
     return _nestedClassifiers;
 }
 
+/*!
+    Adds \a nestedClassifier to nestedClassifiers.
+
+    \sa nestedClassifiers(), removeNestedClassifier()
+ */
 void QUmlInterface::addNestedClassifier(QUmlClassifier *nestedClassifier)
 {
     // This is a read-write association end
@@ -176,6 +192,11 @@ void QUmlInterface::addNestedClassifier(QUmlClassifier *nestedClassifier)
     }
 }
 
+/*!
+    Removes \a nestedClassifier from nestedClassifiers.
+
+    \sa nestedClassifiers(), addNestedClassifier()
+ */
 void QUmlInterface::removeNestedClassifier(QUmlClassifier *nestedClassifier)
 {
     // This is a read-write association end
@@ -192,6 +213,12 @@ void QUmlInterface::removeNestedClassifier(QUmlClassifier *nestedClassifier)
 
 /*!
     The attributes (i.e. the properties) owned by the class.
+
+    \sa addOwnedAttribute(), removeOwnedAttribute()
+
+    \b {Subsetted property(ies):} QUmlNamespace::ownedMembers(), QUmlClassifier::attributes().
+
+    \b {Opposite property(ies):} QUmlProperty::interface_().
  */
 const QList<QUmlProperty *> QUmlInterface::ownedAttributes() const
 {
@@ -200,6 +227,11 @@ const QList<QUmlProperty *> QUmlInterface::ownedAttributes() const
     return _ownedAttributes;
 }
 
+/*!
+    Adds \a ownedAttribute to ownedAttributes.
+
+    \sa ownedAttributes(), removeOwnedAttribute()
+ */
 void QUmlInterface::addOwnedAttribute(QUmlProperty *ownedAttribute)
 {
     // This is a read-write association end
@@ -221,6 +253,11 @@ void QUmlInterface::addOwnedAttribute(QUmlProperty *ownedAttribute)
     }
 }
 
+/*!
+    Removes \a ownedAttribute from ownedAttributes.
+
+    \sa ownedAttributes(), addOwnedAttribute()
+ */
 void QUmlInterface::removeOwnedAttribute(QUmlProperty *ownedAttribute)
 {
     // This is a read-write association end
@@ -243,6 +280,12 @@ void QUmlInterface::removeOwnedAttribute(QUmlProperty *ownedAttribute)
 
 /*!
     The operations owned by the class.
+
+    \sa addOwnedOperation(), removeOwnedOperation()
+
+    \b {Subsetted property(ies):} QUmlClassifier::features(), QUmlNamespace::ownedMembers().
+
+    \b {Opposite property(ies):} QUmlOperation::interface_().
  */
 const QList<QUmlOperation *> QUmlInterface::ownedOperations() const
 {
@@ -251,6 +294,11 @@ const QList<QUmlOperation *> QUmlInterface::ownedOperations() const
     return _ownedOperations;
 }
 
+/*!
+    Adds \a ownedOperation to ownedOperations.
+
+    \sa ownedOperations(), removeOwnedOperation()
+ */
 void QUmlInterface::addOwnedOperation(QUmlOperation *ownedOperation)
 {
     // This is a read-write association end
@@ -272,6 +320,11 @@ void QUmlInterface::addOwnedOperation(QUmlOperation *ownedOperation)
     }
 }
 
+/*!
+    Removes \a ownedOperation from ownedOperations.
+
+    \sa ownedOperations(), addOwnedOperation()
+ */
 void QUmlInterface::removeOwnedOperation(QUmlOperation *ownedOperation)
 {
     // This is a read-write association end
@@ -294,6 +347,10 @@ void QUmlInterface::removeOwnedOperation(QUmlOperation *ownedOperation)
 
 /*!
     Receptions that objects providing this interface are willing to accept.
+
+    \sa addOwnedReception(), removeOwnedReception()
+
+    \b {Subsetted property(ies):} QUmlClassifier::features(), QUmlNamespace::ownedMembers().
  */
 const QSet<QUmlReception *> QUmlInterface::ownedReceptions() const
 {
@@ -302,6 +359,11 @@ const QSet<QUmlReception *> QUmlInterface::ownedReceptions() const
     return _ownedReceptions;
 }
 
+/*!
+    Adds \a ownedReception to ownedReceptions.
+
+    \sa ownedReceptions(), removeOwnedReception()
+ */
 void QUmlInterface::addOwnedReception(QUmlReception *ownedReception)
 {
     // This is a read-write association end
@@ -318,6 +380,11 @@ void QUmlInterface::addOwnedReception(QUmlReception *ownedReception)
     }
 }
 
+/*!
+    Removes \a ownedReception from ownedReceptions.
+
+    \sa ownedReceptions(), addOwnedReception()
+ */
 void QUmlInterface::removeOwnedReception(QUmlReception *ownedReception)
 {
     // This is a read-write association end
@@ -335,6 +402,8 @@ void QUmlInterface::removeOwnedReception(QUmlReception *ownedReception)
 
 /*!
     References a protocol state machine specifying the legal sequences of the invocation of the behavioral features described in the interface.
+
+    \b {Subsetted property(ies):} QUmlNamespace::ownedMembers().
  */
 QUmlProtocolStateMachine *QUmlInterface::protocol() const
 {
@@ -343,6 +412,9 @@ QUmlProtocolStateMachine *QUmlInterface::protocol() const
     return _protocol;
 }
 
+/*!
+    Adjusts protocol to \a protocol.
+ */
 void QUmlInterface::setProtocol(QUmlProtocolStateMachine *protocol)
 {
     // This is a read-write association end
@@ -365,6 +437,10 @@ void QUmlInterface::setProtocol(QUmlProtocolStateMachine *protocol)
 
 /*!
     References all the Interfaces redefined by this Interface.
+
+    \sa addRedefinedInterface(), removeRedefinedInterface()
+
+    \b {Subsetted property(ies):} QUmlClassifier::redefinedClassifiers().
  */
 const QSet<QUmlInterface *> QUmlInterface::redefinedInterfaces() const
 {
@@ -373,6 +449,11 @@ const QSet<QUmlInterface *> QUmlInterface::redefinedInterfaces() const
     return _redefinedInterfaces;
 }
 
+/*!
+    Adds \a redefinedInterface to redefinedInterfaces.
+
+    \sa redefinedInterfaces(), removeRedefinedInterface()
+ */
 void QUmlInterface::addRedefinedInterface(QUmlInterface *redefinedInterface)
 {
     // This is a read-write association end
@@ -387,6 +468,11 @@ void QUmlInterface::addRedefinedInterface(QUmlInterface *redefinedInterface)
     }
 }
 
+/*!
+    Removes \a redefinedInterface from redefinedInterfaces.
+
+    \sa redefinedInterfaces(), addRedefinedInterface()
+ */
 void QUmlInterface::removeRedefinedInterface(QUmlInterface *redefinedInterface)
 {
     // This is a read-write association end

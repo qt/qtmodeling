@@ -57,6 +57,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A link end creation data is not an action. It is an element that identifies links. It identifies one end of a link to be created by a create link action.
  */
+
+/*!
+    Creates a new QUmlLinkEndCreationData. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlLinkEndCreationData::QUmlLinkEndCreationData(bool createQModelingObject) :
     QUmlLinkEndData(false),
     _insertAt(0),
@@ -66,6 +70,9 @@ QUmlLinkEndCreationData::QUmlLinkEndCreationData(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlLinkEndCreationDataObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlLinkEndCreationData.
+*/
 QModelingElement *QUmlLinkEndCreationData::clone() const
 {
     QUmlLinkEndCreationData *c = new QUmlLinkEndCreationData;
@@ -95,6 +102,9 @@ QUmlInputPin *QUmlLinkEndCreationData::insertAt() const
     return _insertAt;
 }
 
+/*!
+    Adjusts insertAt to \a insertAt.
+ */
 void QUmlLinkEndCreationData::setInsertAt(QUmlInputPin *insertAt)
 {
     // This is a read-write association end
@@ -116,6 +126,9 @@ bool QUmlLinkEndCreationData::isReplaceAll() const
     return _isReplaceAll;
 }
 
+/*!
+    Adjusts isReplaceAll to \a isReplaceAll.
+ */
 void QUmlLinkEndCreationData::setReplaceAll(bool isReplaceAll)
 {
     // This is a read-write property

@@ -96,6 +96,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A protocol state machine is always defined in the context of a classifier. It specifies which operations of the classifier can be called in which state and under which condition, thus specifying the allowed call sequences on the classifier's operations. A protocol state machine presents the possible and permitted transitions on the instances of its context classifier, together with the operations which carry the transitions. In this manner, an instance lifecycle can be created for a classifier, by specifying the order in which the operations can be activated and the states through which an instance progresses during its existence.
  */
+
+/*!
+    Creates a new QUmlProtocolStateMachine. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlProtocolStateMachine::QUmlProtocolStateMachine(bool createQModelingObject) :
     QUmlStateMachine(false)
 {
@@ -103,6 +107,9 @@ QUmlProtocolStateMachine::QUmlProtocolStateMachine(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlProtocolStateMachineObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlProtocolStateMachine.
+*/
 QModelingElement *QUmlProtocolStateMachine::clone() const
 {
     QUmlProtocolStateMachine *c = new QUmlProtocolStateMachine;
@@ -194,6 +201,12 @@ QModelingElement *QUmlProtocolStateMachine::clone() const
 
 /*!
     Conformance between protocol state machines.
+
+    \sa addConformance(), removeConformance()
+
+    \b {Subsetted property(ies):} QUmlElement::ownedElements().
+
+    \b {Opposite property(ies):} QUmlProtocolConformance::specificMachine().
  */
 const QSet<QUmlProtocolConformance *> QUmlProtocolStateMachine::conformance() const
 {
@@ -202,6 +215,11 @@ const QSet<QUmlProtocolConformance *> QUmlProtocolStateMachine::conformance() co
     return _conformance;
 }
 
+/*!
+    Adds \a conformance to conformance.
+
+    \sa conformance(), removeConformance()
+ */
 void QUmlProtocolStateMachine::addConformance(QUmlProtocolConformance *conformance)
 {
     // This is a read-write association end
@@ -222,6 +240,11 @@ void QUmlProtocolStateMachine::addConformance(QUmlProtocolConformance *conforman
     }
 }
 
+/*!
+    Removes \a conformance from conformance.
+
+    \sa conformance(), addConformance()
+ */
 void QUmlProtocolStateMachine::removeConformance(QUmlProtocolConformance *conformance)
 {
     // This is a read-write association end

@@ -72,6 +72,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A test identity action is an action that tests if two values are identical objects.
  */
+
+/*!
+    Creates a new QUmlTestIdentityAction. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlTestIdentityAction::QUmlTestIdentityAction(bool createQModelingObject) :
     _first(0),
     _result(0),
@@ -81,6 +85,9 @@ QUmlTestIdentityAction::QUmlTestIdentityAction(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlTestIdentityActionObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlTestIdentityAction.
+*/
 QModelingElement *QUmlTestIdentityAction::clone() const
 {
     QUmlTestIdentityAction *c = new QUmlTestIdentityAction;
@@ -127,6 +134,8 @@ QModelingElement *QUmlTestIdentityAction::clone() const
 
 /*!
     Gives the pin on which an object is placed.
+
+    \b {Subsetted property(ies):} QUmlAction::inputs().
  */
 QUmlInputPin *QUmlTestIdentityAction::first() const
 {
@@ -135,6 +144,9 @@ QUmlInputPin *QUmlTestIdentityAction::first() const
     return _first;
 }
 
+/*!
+    Adjusts first to \a first.
+ */
 void QUmlTestIdentityAction::setFirst(QUmlInputPin *first)
 {
     // This is a read-write association end
@@ -157,6 +169,8 @@ void QUmlTestIdentityAction::setFirst(QUmlInputPin *first)
 
 /*!
     Tells whether the two input objects are identical.
+
+    \b {Subsetted property(ies):} QUmlAction::outputs().
  */
 QUmlOutputPin *QUmlTestIdentityAction::result() const
 {
@@ -165,6 +179,9 @@ QUmlOutputPin *QUmlTestIdentityAction::result() const
     return _result;
 }
 
+/*!
+    Adjusts result to \a result.
+ */
 void QUmlTestIdentityAction::setResult(QUmlOutputPin *result)
 {
     // This is a read-write association end
@@ -187,6 +204,8 @@ void QUmlTestIdentityAction::setResult(QUmlOutputPin *result)
 
 /*!
     Gives the pin on which an object is placed.
+
+    \b {Subsetted property(ies):} QUmlAction::inputs().
  */
 QUmlInputPin *QUmlTestIdentityAction::second() const
 {
@@ -195,6 +214,9 @@ QUmlInputPin *QUmlTestIdentityAction::second() const
     return _second;
 }
 
+/*!
+    Adjusts second to \a second.
+ */
 void QUmlTestIdentityAction::setSecond(QUmlInputPin *second)
 {
     // This is a read-write association end

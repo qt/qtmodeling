@@ -58,12 +58,21 @@ QT_BEGIN_NAMESPACE
     \inmodule QtUml
 
     \brief A type is a named element that is used as the type for a typed element. A type can be contained in a package.A type constrains the values represented by a typed element.
+
+    \b {QUmlType is an abstract class.}
  */
+
+/*!
+    Creates a new QUmlType.
+*/
 QUmlType::QUmlType() :
     _package(0)
 {
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlType.
+*/
 QModelingElement *QUmlType::clone() const
 {
     QUmlType *c = new QUmlType;
@@ -88,6 +97,10 @@ QModelingElement *QUmlType::clone() const
 
 /*!
     Specifies the owning package of this classifier, if any.
+
+    \b {Subsetted property(ies):} .
+
+    \b {Opposite property(ies):} QUmlPackage::ownedTypes().
  */
 QUmlPackage *QUmlType::package() const
 {
@@ -96,6 +109,9 @@ QUmlPackage *QUmlType::package() const
     return _package;
 }
 
+/*!
+    Adjusts package to \a package.
+ */
 void QUmlType::setPackage(QUmlPackage *package)
 {
     // This is a read-write association end

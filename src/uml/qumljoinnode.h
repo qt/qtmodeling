@@ -45,8 +45,6 @@
 
 #include <QtUml/QUmlControlNode>
 
-QT_BEGIN_HEADER
-
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
@@ -74,8 +72,6 @@ protected:
 QT_END_NAMESPACE
 
 Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE(QUmlJoinNode) *)
-
-QT_END_HEADER
 
 #endif // QUMLJOINNODE_H
 

@@ -73,6 +73,10 @@ QT_BEGIN_NAMESPACE
 
     \brief An activity parameter node is an object node for inputs and outputs to activities.
  */
+
+/*!
+    Creates a new QUmlActivityParameterNode. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlActivityParameterNode::QUmlActivityParameterNode(bool createQModelingObject) :
     _parameter(0)
 {
@@ -80,6 +84,9 @@ QUmlActivityParameterNode::QUmlActivityParameterNode(bool createQModelingObject)
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlActivityParameterNodeObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlActivityParameterNode.
+*/
 QModelingElement *QUmlActivityParameterNode::clone() const
 {
     QUmlActivityParameterNode *c = new QUmlActivityParameterNode;
@@ -133,6 +140,9 @@ QUmlParameter *QUmlActivityParameterNode::parameter() const
     return _parameter;
 }
 
+/*!
+    Adjusts parameter to \a parameter.
+ */
 void QUmlActivityParameterNode::setParameter(QUmlParameter *parameter)
 {
     // This is a read-write association end

@@ -73,6 +73,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A read variable action is a variable action that retrieves the values of a variable.
  */
+
+/*!
+    Creates a new QUmlReadVariableAction. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlReadVariableAction::QUmlReadVariableAction(bool createQModelingObject) :
     _result(0)
 {
@@ -80,6 +84,9 @@ QUmlReadVariableAction::QUmlReadVariableAction(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlReadVariableActionObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlReadVariableAction.
+*/
 QModelingElement *QUmlReadVariableAction::clone() const
 {
     QUmlReadVariableAction *c = new QUmlReadVariableAction;
@@ -124,6 +131,8 @@ QModelingElement *QUmlReadVariableAction::clone() const
 
 /*!
     Gives the output pin on which the result is put.
+
+    \b {Subsetted property(ies):} QUmlAction::outputs().
  */
 QUmlOutputPin *QUmlReadVariableAction::result() const
 {
@@ -132,6 +141,9 @@ QUmlOutputPin *QUmlReadVariableAction::result() const
     return _result;
 }
 
+/*!
+    Adjusts result to \a result.
+ */
 void QUmlReadVariableAction::setResult(QUmlOutputPin *result)
 {
     // This is a read-write association end

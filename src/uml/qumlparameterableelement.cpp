@@ -51,13 +51,22 @@ QT_BEGIN_NAMESPACE
     \inmodule QtUml
 
     \brief A parameterable element is an element that can be exposed as a formal template parameter for a template, or specified as an actual parameter in a binding of a template.
+
+    \b {QUmlParameterableElement is an abstract class.}
  */
+
+/*!
+    Creates a new QUmlParameterableElement.
+*/
 QUmlParameterableElement::QUmlParameterableElement() :
     _owningTemplateParameter(0),
     _templateParameter(0)
 {
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlParameterableElement.
+*/
 QModelingElement *QUmlParameterableElement::clone() const
 {
     QUmlParameterableElement *c = new QUmlParameterableElement;
@@ -74,6 +83,10 @@ QModelingElement *QUmlParameterableElement::clone() const
 
 /*!
     The formal template parameter that owns this element.
+
+    \b {Subsetted property(ies):} QUmlParameterableElement::templateParameter(), QUmlElement::owner().
+
+    \b {Opposite property(ies):} QUmlTemplateParameter::ownedParameteredElement().
  */
 QUmlTemplateParameter *QUmlParameterableElement::owningTemplateParameter() const
 {
@@ -82,6 +95,9 @@ QUmlTemplateParameter *QUmlParameterableElement::owningTemplateParameter() const
     return _owningTemplateParameter;
 }
 
+/*!
+    Adjusts owningTemplateParameter to \a owningTemplateParameter.
+ */
 void QUmlParameterableElement::setOwningTemplateParameter(QUmlTemplateParameter *owningTemplateParameter)
 {
     // This is a read-write association end
@@ -101,6 +117,8 @@ void QUmlParameterableElement::setOwningTemplateParameter(QUmlTemplateParameter 
 
 /*!
     The template parameter that exposes this element as a formal parameter.
+
+    \b {Opposite property(ies):} QUmlTemplateParameter::parameteredElement().
  */
 QUmlTemplateParameter *QUmlParameterableElement::templateParameter() const
 {
@@ -109,6 +127,9 @@ QUmlTemplateParameter *QUmlParameterableElement::templateParameter() const
     return _templateParameter;
 }
 
+/*!
+    Adjusts templateParameter to \a templateParameter.
+ */
 void QUmlParameterableElement::setTemplateParameter(QUmlTemplateParameter *templateParameter)
 {
     // This is a read-write association end

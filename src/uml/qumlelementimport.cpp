@@ -56,6 +56,10 @@ QT_BEGIN_NAMESPACE
 
     \brief An element import identifies an element in another package, and allows the element to be referenced using its name without a qualifier.
  */
+
+/*!
+    Creates a new QUmlElementImport. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlElementImport::QUmlElementImport(bool createQModelingObject) :
     _importedElement(0),
     _importingNamespace(0),
@@ -65,6 +69,9 @@ QUmlElementImport::QUmlElementImport(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlElementImportObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlElementImport.
+*/
 QModelingElement *QUmlElementImport::clone() const
 {
     QUmlElementImport *c = new QUmlElementImport;
@@ -91,6 +98,9 @@ QString QUmlElementImport::alias() const
     return _alias;
 }
 
+/*!
+    Adjusts alias to \a alias.
+ */
 void QUmlElementImport::setAlias(QString alias)
 {
     // This is a read-write property
@@ -102,6 +112,8 @@ void QUmlElementImport::setAlias(QString alias)
 
 /*!
     Specifies the PackageableElement whose name is to be added to a Namespace.
+
+    \b {Subsetted property(ies):} QUmlDirectedRelationship::targets().
  */
 QUmlPackageableElement *QUmlElementImport::importedElement() const
 {
@@ -110,6 +122,9 @@ QUmlPackageableElement *QUmlElementImport::importedElement() const
     return _importedElement;
 }
 
+/*!
+    Adjusts importedElement to \a importedElement.
+ */
 void QUmlElementImport::setImportedElement(QUmlPackageableElement *importedElement)
 {
     // This is a read-write association end
@@ -131,6 +146,10 @@ void QUmlElementImport::setImportedElement(QUmlPackageableElement *importedEleme
 
 /*!
     Specifies the Namespace that imports a PackageableElement from another Package.
+
+    \b {Subsetted property(ies):} QUmlElement::owner(), QUmlDirectedRelationship::sources().
+
+    \b {Opposite property(ies):} QUmlNamespace::elementImports().
  */
 QUmlNamespace *QUmlElementImport::importingNamespace() const
 {
@@ -139,6 +158,9 @@ QUmlNamespace *QUmlElementImport::importingNamespace() const
     return _importingNamespace;
 }
 
+/*!
+    Adjusts importingNamespace to \a importingNamespace.
+ */
 void QUmlElementImport::setImportingNamespace(QUmlNamespace *importingNamespace)
 {
     // This is a read-write association end
@@ -169,6 +191,9 @@ QtUml::VisibilityKind QUmlElementImport::visibility() const
     return _visibility;
 }
 
+/*!
+    Adjusts visibility to \a visibility.
+ */
 void QUmlElementImport::setVisibility(QtUml::VisibilityKind visibility)
 {
     // This is a read-write property

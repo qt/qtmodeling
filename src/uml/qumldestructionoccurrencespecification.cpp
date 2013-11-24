@@ -64,6 +64,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A destruction event models the destruction of an object.
  */
+
+/*!
+    Creates a new QUmlDestructionOccurrenceSpecification. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlDestructionOccurrenceSpecification::QUmlDestructionOccurrenceSpecification(bool createQModelingObject) :
     QUmlMessageOccurrenceSpecification(false)
 {
@@ -71,6 +75,9 @@ QUmlDestructionOccurrenceSpecification::QUmlDestructionOccurrenceSpecification(b
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlDestructionOccurrenceSpecificationObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlDestructionOccurrenceSpecification.
+*/
 QModelingElement *QUmlDestructionOccurrenceSpecification::clone() const
 {
     QUmlDestructionOccurrenceSpecification *c = new QUmlDestructionOccurrenceSpecification;

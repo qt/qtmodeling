@@ -83,12 +83,19 @@ QT_BEGIN_NAMESPACE
 
     \brief A use case is the specification of a set of actions performed by a system, which yields an observable result that is, typically, of value for one or more actors or other stakeholders of the system.
  */
+
+/*!
+    Creates a new QUmlUseCase. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlUseCase::QUmlUseCase(bool createQModelingObject)
 {
     if (createQModelingObject)
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlUseCaseObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlUseCase.
+*/
 QModelingElement *QUmlUseCase::clone() const
 {
     QUmlUseCase *c = new QUmlUseCase;
@@ -156,6 +163,12 @@ QModelingElement *QUmlUseCase::clone() const
 
 /*!
     References the Extend relationships owned by this use case.
+
+    \sa addExtend(), removeExtend()
+
+    \b {Subsetted property(ies):} QUmlNamespace::ownedMembers().
+
+    \b {Opposite property(ies):} QUmlExtend::extension().
  */
 const QSet<QUmlExtend *> QUmlUseCase::extends() const
 {
@@ -164,6 +177,11 @@ const QSet<QUmlExtend *> QUmlUseCase::extends() const
     return _extends;
 }
 
+/*!
+    Adds \a extend to extends.
+
+    \sa extends(), removeExtend()
+ */
 void QUmlUseCase::addExtend(QUmlExtend *extend)
 {
     // This is a read-write association end
@@ -184,6 +202,11 @@ void QUmlUseCase::addExtend(QUmlExtend *extend)
     }
 }
 
+/*!
+    Removes \a extend from extends.
+
+    \sa extends(), addExtend()
+ */
 void QUmlUseCase::removeExtend(QUmlExtend *extend)
 {
     // This is a read-write association end
@@ -205,6 +228,12 @@ void QUmlUseCase::removeExtend(QUmlExtend *extend)
 
 /*!
     References the ExtensionPoints owned by the use case.
+
+    \sa addExtensionPoint(), removeExtensionPoint()
+
+    \b {Subsetted property(ies):} QUmlNamespace::ownedMembers().
+
+    \b {Opposite property(ies):} QUmlExtensionPoint::useCase().
  */
 const QSet<QUmlExtensionPoint *> QUmlUseCase::extensionPoints() const
 {
@@ -213,6 +242,11 @@ const QSet<QUmlExtensionPoint *> QUmlUseCase::extensionPoints() const
     return _extensionPoints;
 }
 
+/*!
+    Adds \a extensionPoint to extensionPoints.
+
+    \sa extensionPoints(), removeExtensionPoint()
+ */
 void QUmlUseCase::addExtensionPoint(QUmlExtensionPoint *extensionPoint)
 {
     // This is a read-write association end
@@ -233,6 +267,11 @@ void QUmlUseCase::addExtensionPoint(QUmlExtensionPoint *extensionPoint)
     }
 }
 
+/*!
+    Removes \a extensionPoint from extensionPoints.
+
+    \sa extensionPoints(), addExtensionPoint()
+ */
 void QUmlUseCase::removeExtensionPoint(QUmlExtensionPoint *extensionPoint)
 {
     // This is a read-write association end
@@ -254,6 +293,12 @@ void QUmlUseCase::removeExtensionPoint(QUmlExtensionPoint *extensionPoint)
 
 /*!
     References the Include relationships owned by this use case.
+
+    \sa addInclude(), removeInclude()
+
+    \b {Subsetted property(ies):} QUmlNamespace::ownedMembers().
+
+    \b {Opposite property(ies):} QUmlInclude::includingCase().
  */
 const QSet<QUmlInclude *> QUmlUseCase::includes() const
 {
@@ -262,6 +307,11 @@ const QSet<QUmlInclude *> QUmlUseCase::includes() const
     return _includes;
 }
 
+/*!
+    Adds \a include to includes.
+
+    \sa includes(), removeInclude()
+ */
 void QUmlUseCase::addInclude(QUmlInclude *include)
 {
     // This is a read-write association end
@@ -282,6 +332,11 @@ void QUmlUseCase::addInclude(QUmlInclude *include)
     }
 }
 
+/*!
+    Removes \a include from includes.
+
+    \sa includes(), addInclude()
+ */
 void QUmlUseCase::removeInclude(QUmlInclude *include)
 {
     // This is a read-write association end
@@ -303,6 +358,10 @@ void QUmlUseCase::removeInclude(QUmlInclude *include)
 
 /*!
     References the subjects to which this use case applies. The subject or its parts realize all the use cases that apply to this subject. Use cases need not be attached to any specific subject, however. The subject may, but need not, own the use cases that apply to it.
+
+    \sa addSubject(), removeSubject()
+
+    \b {Opposite property(ies):} QUmlClassifier::useCases().
  */
 const QSet<QUmlClassifier *> QUmlUseCase::subjects() const
 {
@@ -311,6 +370,11 @@ const QSet<QUmlClassifier *> QUmlUseCase::subjects() const
     return _subjects;
 }
 
+/*!
+    Adds \a subject to subjects.
+
+    \sa subjects(), removeSubject()
+ */
 void QUmlUseCase::addSubject(QUmlClassifier *subject)
 {
     // This is a read-write association end
@@ -327,6 +391,11 @@ void QUmlUseCase::addSubject(QUmlClassifier *subject)
     }
 }
 
+/*!
+    Removes \a subject from subjects.
+
+    \sa subjects(), addSubject()
+ */
 void QUmlUseCase::removeSubject(QUmlClassifier *subject)
 {
     // This is a read-write association end

@@ -55,6 +55,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A clause is an element that represents a single branch of a conditional construct, including a test and a body section. The body section is executed only if (but not necessarily if) the test section evaluates true.
  */
+
+/*!
+    Creates a new QUmlClause. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlClause::QUmlClause(bool createQModelingObject) :
     _decider(0)
 {
@@ -62,6 +66,9 @@ QUmlClause::QUmlClause(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlClauseObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlClause.
+*/
 QModelingElement *QUmlClause::clone() const
 {
     QUmlClause *c = new QUmlClause;
@@ -86,6 +93,8 @@ QModelingElement *QUmlClause::clone() const
 
 /*!
     A nested activity fragment that is executed if the test evaluates to true and the clause is chosen over any concurrent clauses that also evaluate to true.
+
+    \sa addBody(), removeBody()
  */
 const QSet<QUmlExecutableNode *> QUmlClause::bodies() const
 {
@@ -94,6 +103,11 @@ const QSet<QUmlExecutableNode *> QUmlClause::bodies() const
     return _bodies;
 }
 
+/*!
+    Adds \a body to bodies.
+
+    \sa bodies(), removeBody()
+ */
 void QUmlClause::addBody(QUmlExecutableNode *body)
 {
     // This is a read-write association end
@@ -105,6 +119,11 @@ void QUmlClause::addBody(QUmlExecutableNode *body)
     }
 }
 
+/*!
+    Removes \a body from bodies.
+
+    \sa bodies(), addBody()
+ */
 void QUmlClause::removeBody(QUmlExecutableNode *body)
 {
     // This is a read-write association end
@@ -116,6 +135,8 @@ void QUmlClause::removeBody(QUmlExecutableNode *body)
 
 /*!
     A list of output pins within the body fragment whose values are moved to the result pins of the containing conditional node after execution of the clause body.
+
+    \sa addBodyOutput(), removeBodyOutput()
  */
 const QList<QUmlOutputPin *> QUmlClause::bodyOutputs() const
 {
@@ -124,6 +145,11 @@ const QList<QUmlOutputPin *> QUmlClause::bodyOutputs() const
     return _bodyOutputs;
 }
 
+/*!
+    Adds \a bodyOutput to bodyOutputs.
+
+    \sa bodyOutputs(), removeBodyOutput()
+ */
 void QUmlClause::addBodyOutput(QUmlOutputPin *bodyOutput)
 {
     // This is a read-write association end
@@ -135,6 +161,11 @@ void QUmlClause::addBodyOutput(QUmlOutputPin *bodyOutput)
     }
 }
 
+/*!
+    Removes \a bodyOutput from bodyOutputs.
+
+    \sa bodyOutputs(), addBodyOutput()
+ */
 void QUmlClause::removeBodyOutput(QUmlOutputPin *bodyOutput)
 {
     // This is a read-write association end
@@ -154,6 +185,9 @@ QUmlOutputPin *QUmlClause::decider() const
     return _decider;
 }
 
+/*!
+    Adjusts decider to \a decider.
+ */
 void QUmlClause::setDecider(QUmlOutputPin *decider)
 {
     // This is a read-write association end
@@ -167,6 +201,10 @@ void QUmlClause::setDecider(QUmlOutputPin *decider)
 
 /*!
     A set of clauses whose tests must all evaluate false before the current clause can be tested.
+
+    \sa addPredecessorClause(), removePredecessorClause()
+
+    \b {Opposite property(ies):} QUmlClause::successorClauses().
  */
 const QSet<QUmlClause *> QUmlClause::predecessorClauses() const
 {
@@ -175,6 +213,11 @@ const QSet<QUmlClause *> QUmlClause::predecessorClauses() const
     return _predecessorClauses;
 }
 
+/*!
+    Adds \a predecessorClause to predecessorClauses.
+
+    \sa predecessorClauses(), removePredecessorClause()
+ */
 void QUmlClause::addPredecessorClause(QUmlClause *predecessorClause)
 {
     // This is a read-write association end
@@ -191,6 +234,11 @@ void QUmlClause::addPredecessorClause(QUmlClause *predecessorClause)
     }
 }
 
+/*!
+    Removes \a predecessorClause from predecessorClauses.
+
+    \sa predecessorClauses(), addPredecessorClause()
+ */
 void QUmlClause::removePredecessorClause(QUmlClause *predecessorClause)
 {
     // This is a read-write association end
@@ -207,6 +255,10 @@ void QUmlClause::removePredecessorClause(QUmlClause *predecessorClause)
 
 /*!
     A set of clauses which may not be tested unless the current clause tests false.
+
+    \sa addSuccessorClause(), removeSuccessorClause()
+
+    \b {Opposite property(ies):} QUmlClause::predecessorClauses().
  */
 const QSet<QUmlClause *> QUmlClause::successorClauses() const
 {
@@ -215,6 +267,11 @@ const QSet<QUmlClause *> QUmlClause::successorClauses() const
     return _successorClauses;
 }
 
+/*!
+    Adds \a successorClause to successorClauses.
+
+    \sa successorClauses(), removeSuccessorClause()
+ */
 void QUmlClause::addSuccessorClause(QUmlClause *successorClause)
 {
     // This is a read-write association end
@@ -231,6 +288,11 @@ void QUmlClause::addSuccessorClause(QUmlClause *successorClause)
     }
 }
 
+/*!
+    Removes \a successorClause from successorClauses.
+
+    \sa successorClauses(), addSuccessorClause()
+ */
 void QUmlClause::removeSuccessorClause(QUmlClause *successorClause)
 {
     // This is a read-write association end
@@ -247,6 +309,8 @@ void QUmlClause::removeSuccessorClause(QUmlClause *successorClause)
 
 /*!
     A nested activity fragment with a designated output pin that specifies the result of the test.
+
+    \sa addTest(), removeTest()
  */
 const QSet<QUmlExecutableNode *> QUmlClause::tests() const
 {
@@ -255,6 +319,11 @@ const QSet<QUmlExecutableNode *> QUmlClause::tests() const
     return _tests;
 }
 
+/*!
+    Adds \a test to tests.
+
+    \sa tests(), removeTest()
+ */
 void QUmlClause::addTest(QUmlExecutableNode *test)
 {
     // This is a read-write association end
@@ -266,6 +335,11 @@ void QUmlClause::addTest(QUmlExecutableNode *test)
     }
 }
 
+/*!
+    Removes \a test from tests.
+
+    \sa tests(), addTest()
+ */
 void QUmlClause::removeTest(QUmlExecutableNode *test)
 {
     // This is a read-write association end

@@ -55,6 +55,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A package merge defines how the contents of one package are extended by the contents of another package.
  */
+
+/*!
+    Creates a new QUmlPackageMerge. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlPackageMerge::QUmlPackageMerge(bool createQModelingObject) :
     _mergedPackage(0),
     _receivingPackage(0)
@@ -63,6 +67,9 @@ QUmlPackageMerge::QUmlPackageMerge(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlPackageMergeObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlPackageMerge.
+*/
 QModelingElement *QUmlPackageMerge::clone() const
 {
     QUmlPackageMerge *c = new QUmlPackageMerge;
@@ -79,6 +86,8 @@ QModelingElement *QUmlPackageMerge::clone() const
 
 /*!
     References the Package that is to be merged with the receiving package of the PackageMerge.
+
+    \b {Subsetted property(ies):} QUmlDirectedRelationship::targets().
  */
 QUmlPackage *QUmlPackageMerge::mergedPackage() const
 {
@@ -87,6 +96,9 @@ QUmlPackage *QUmlPackageMerge::mergedPackage() const
     return _mergedPackage;
 }
 
+/*!
+    Adjusts mergedPackage to \a mergedPackage.
+ */
 void QUmlPackageMerge::setMergedPackage(QUmlPackage *mergedPackage)
 {
     // This is a read-write association end
@@ -108,6 +120,10 @@ void QUmlPackageMerge::setMergedPackage(QUmlPackage *mergedPackage)
 
 /*!
     References the Package that is being extended with the contents of the merged package of the PackageMerge.
+
+    \b {Subsetted property(ies):} QUmlElement::owner(), QUmlDirectedRelationship::sources().
+
+    \b {Opposite property(ies):} QUmlPackage::packageMerges().
  */
 QUmlPackage *QUmlPackageMerge::receivingPackage() const
 {
@@ -116,6 +132,9 @@ QUmlPackage *QUmlPackageMerge::receivingPackage() const
     return _receivingPackage;
 }
 
+/*!
+    Adjusts receivingPackage to \a receivingPackage.
+ */
 void QUmlPackageMerge::setReceivingPackage(QUmlPackage *receivingPackage)
 {
     // This is a read-write association end

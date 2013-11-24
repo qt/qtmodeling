@@ -92,6 +92,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A function behavior is an opaque behavior that does not access or modify any objects or other external data.
  */
+
+/*!
+    Creates a new QUmlFunctionBehavior. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlFunctionBehavior::QUmlFunctionBehavior(bool createQModelingObject) :
     QUmlOpaqueBehavior(false)
 {
@@ -99,6 +103,9 @@ QUmlFunctionBehavior::QUmlFunctionBehavior(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlFunctionBehaviorObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlFunctionBehavior.
+*/
 QModelingElement *QUmlFunctionBehavior::clone() const
 {
     QUmlFunctionBehavior *c = new QUmlFunctionBehavior;

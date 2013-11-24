@@ -68,12 +68,19 @@ QT_BEGIN_NAMESPACE
 
     \brief A merge node is a control node that brings together multiple alternate flows. It is not used to synchronize concurrent flows but to accept one among several alternate flows.
  */
+
+/*!
+    Creates a new QUmlMergeNode. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlMergeNode::QUmlMergeNode(bool createQModelingObject)
 {
     if (createQModelingObject)
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlMergeNodeObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlMergeNode.
+*/
 QModelingElement *QUmlMergeNode::clone() const
 {
     QUmlMergeNode *c = new QUmlMergeNode;

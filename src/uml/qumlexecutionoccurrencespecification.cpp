@@ -64,6 +64,10 @@ QT_BEGIN_NAMESPACE
 
     \brief An execution occurrence specification represents moments in time at which actions or behaviors start or finish.
  */
+
+/*!
+    Creates a new QUmlExecutionOccurrenceSpecification. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlExecutionOccurrenceSpecification::QUmlExecutionOccurrenceSpecification(bool createQModelingObject) :
     QUmlOccurrenceSpecification(false),
     _execution(0)
@@ -72,6 +76,9 @@ QUmlExecutionOccurrenceSpecification::QUmlExecutionOccurrenceSpecification(bool 
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlExecutionOccurrenceSpecificationObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlExecutionOccurrenceSpecification.
+*/
 QModelingElement *QUmlExecutionOccurrenceSpecification::clone() const
 {
     QUmlExecutionOccurrenceSpecification *c = new QUmlExecutionOccurrenceSpecification;
@@ -112,6 +119,9 @@ QUmlExecutionSpecification *QUmlExecutionOccurrenceSpecification::execution() co
     return _execution;
 }
 
+/*!
+    Adjusts execution to \a execution.
+ */
 void QUmlExecutionOccurrenceSpecification::setExecution(QUmlExecutionSpecification *execution)
 {
     // This is a read-write association end

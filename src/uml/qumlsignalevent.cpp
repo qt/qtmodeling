@@ -62,6 +62,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A signal event represents the receipt of an asynchronous signal instance. A signal event may, for example, cause a state machine to trigger a transition.
  */
+
+/*!
+    Creates a new QUmlSignalEvent. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlSignalEvent::QUmlSignalEvent(bool createQModelingObject) :
     _signal(0)
 {
@@ -69,6 +73,9 @@ QUmlSignalEvent::QUmlSignalEvent(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlSignalEventObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlSignalEvent.
+*/
 QModelingElement *QUmlSignalEvent::clone() const
 {
     QUmlSignalEvent *c = new QUmlSignalEvent;
@@ -101,6 +108,9 @@ QUmlSignal *QUmlSignalEvent::signal() const
     return _signal;
 }
 
+/*!
+    Adjusts signal to \a signal.
+ */
 void QUmlSignalEvent::setSignal(QUmlSignal *signal)
 {
     // This is a read-write association end

@@ -56,6 +56,10 @@ QT_BEGIN_NAMESPACE
 
     \brief An exception handler is an element that specifies a body to execute in case the specified exception occurs during the execution of the protected node.
  */
+
+/*!
+    Creates a new QUmlExceptionHandler. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlExceptionHandler::QUmlExceptionHandler(bool createQModelingObject) :
     _exceptionInput(0),
     _handlerBody(0),
@@ -65,6 +69,9 @@ QUmlExceptionHandler::QUmlExceptionHandler(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlExceptionHandlerObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlExceptionHandler.
+*/
 QModelingElement *QUmlExceptionHandler::clone() const
 {
     QUmlExceptionHandler *c = new QUmlExceptionHandler;
@@ -93,6 +100,9 @@ QUmlObjectNode *QUmlExceptionHandler::exceptionInput() const
     return _exceptionInput;
 }
 
+/*!
+    Adjusts exceptionInput to \a exceptionInput.
+ */
 void QUmlExceptionHandler::setExceptionInput(QUmlObjectNode *exceptionInput)
 {
     // This is a read-write association end
@@ -106,6 +116,8 @@ void QUmlExceptionHandler::setExceptionInput(QUmlObjectNode *exceptionInput)
 
 /*!
     The kind of instances that the handler catches. If an exception occurs whose type is any of the classifiers in the set, the handler catches the exception and executes its body.
+
+    \sa addExceptionType(), removeExceptionType()
  */
 const QSet<QUmlClassifier *> QUmlExceptionHandler::exceptionTypes() const
 {
@@ -114,6 +126,11 @@ const QSet<QUmlClassifier *> QUmlExceptionHandler::exceptionTypes() const
     return _exceptionTypes;
 }
 
+/*!
+    Adds \a exceptionType to exceptionTypes.
+
+    \sa exceptionTypes(), removeExceptionType()
+ */
 void QUmlExceptionHandler::addExceptionType(QUmlClassifier *exceptionType)
 {
     // This is a read-write association end
@@ -125,6 +142,11 @@ void QUmlExceptionHandler::addExceptionType(QUmlClassifier *exceptionType)
     }
 }
 
+/*!
+    Removes \a exceptionType from exceptionTypes.
+
+    \sa exceptionTypes(), addExceptionType()
+ */
 void QUmlExceptionHandler::removeExceptionType(QUmlClassifier *exceptionType)
 {
     // This is a read-write association end
@@ -144,6 +166,9 @@ QUmlExecutableNode *QUmlExceptionHandler::handlerBody() const
     return _handlerBody;
 }
 
+/*!
+    Adjusts handlerBody to \a handlerBody.
+ */
 void QUmlExceptionHandler::setHandlerBody(QUmlExecutableNode *handlerBody)
 {
     // This is a read-write association end
@@ -157,6 +182,10 @@ void QUmlExceptionHandler::setHandlerBody(QUmlExecutableNode *handlerBody)
 
 /*!
     The node protected by the handler. The handler is examined if an exception propagates to the outside of the node.
+
+    \b {Subsetted property(ies):} QUmlElement::owner().
+
+    \b {Opposite property(ies):} QUmlExecutableNode::handlers().
  */
 QUmlExecutableNode *QUmlExceptionHandler::protectedNode() const
 {
@@ -165,6 +194,9 @@ QUmlExecutableNode *QUmlExceptionHandler::protectedNode() const
     return _protectedNode;
 }
 
+/*!
+    Adjusts protectedNode to \a protectedNode.
+ */
 void QUmlExceptionHandler::setProtectedNode(QUmlExecutableNode *protectedNode)
 {
     // This is a read-write association end

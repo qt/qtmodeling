@@ -62,6 +62,10 @@ QT_BEGIN_NAMESPACE
 
     \brief Realization is a specialized abstraction relationship between two sets of model elements, one representing a specification (the supplier) and the other represents an implementation of the latter (the client). Realization can be used to model stepwise refinement, optimizations, transformations, templates, model synthesis, framework composition, etc.
  */
+
+/*!
+    Creates a new QUmlRealization. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlRealization::QUmlRealization(bool createQModelingObject) :
     QUmlAbstraction(false)
 {
@@ -69,6 +73,9 @@ QUmlRealization::QUmlRealization(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlRealizationObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlRealization.
+*/
 QModelingElement *QUmlRealization::clone() const
 {
     QUmlRealization *c = new QUmlRealization;

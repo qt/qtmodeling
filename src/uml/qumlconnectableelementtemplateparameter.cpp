@@ -57,6 +57,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A connectable element template parameter exposes a connectable element as a formal parameter for a template.
  */
+
+/*!
+    Creates a new QUmlConnectableElementTemplateParameter. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlConnectableElementTemplateParameter::QUmlConnectableElementTemplateParameter(bool createQModelingObject) :
     QUmlTemplateParameter(false),
     _parameteredElement(0)
@@ -65,6 +69,9 @@ QUmlConnectableElementTemplateParameter::QUmlConnectableElementTemplateParameter
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlConnectableElementTemplateParameterObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlConnectableElementTemplateParameter.
+*/
 QModelingElement *QUmlConnectableElementTemplateParameter::clone() const
 {
     QUmlConnectableElementTemplateParameter *c = new QUmlConnectableElementTemplateParameter;
@@ -87,6 +94,10 @@ QModelingElement *QUmlConnectableElementTemplateParameter::clone() const
 
 /*!
     The ConnectableElement for this template parameter.
+
+    \b {Redefined property(ies):} QUmlTemplateParameter::parameteredElement().
+
+    \b {Opposite property(ies):} QUmlConnectableElement::templateParameter().
  */
 QUmlConnectableElement *QUmlConnectableElementTemplateParameter::parameteredElement() const
 {
@@ -95,6 +106,9 @@ QUmlConnectableElement *QUmlConnectableElementTemplateParameter::parameteredElem
     return _parameteredElement;
 }
 
+/*!
+    Adjusts parameteredElement to \a parameteredElement.
+ */
 void QUmlConnectableElementTemplateParameter::setParameteredElement(QUmlConnectableElement *parameteredElement)
 {
     // This is a read-write association end

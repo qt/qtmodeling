@@ -62,6 +62,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A call event models the receipt by an object of a message invoking a call of an operation.
  */
+
+/*!
+    Creates a new QUmlCallEvent. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlCallEvent::QUmlCallEvent(bool createQModelingObject) :
     _operation(0)
 {
@@ -69,6 +73,9 @@ QUmlCallEvent::QUmlCallEvent(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlCallEventObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlCallEvent.
+*/
 QModelingElement *QUmlCallEvent::clone() const
 {
     QUmlCallEvent *c = new QUmlCallEvent;
@@ -101,6 +108,9 @@ QUmlOperation *QUmlCallEvent::operation() const
     return _operation;
 }
 
+/*!
+    Adjusts operation to \a operation.
+ */
 void QUmlCallEvent::setOperation(QUmlOperation *operation)
 {
     // This is a read-write association end

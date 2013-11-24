@@ -50,11 +50,20 @@ QT_BEGIN_NAMESPACE
     \inmodule QtUml
 
     \brief Relationship is an abstract concept that specifies some kind of relationship between elements.
+
+    \b {QUmlRelationship is an abstract class.}
  */
+
+/*!
+    Creates a new QUmlRelationship.
+*/
 QUmlRelationship::QUmlRelationship()
 {
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlRelationship.
+*/
 QModelingElement *QUmlRelationship::clone() const
 {
     QUmlRelationship *c = new QUmlRelationship;
@@ -67,6 +76,8 @@ QModelingElement *QUmlRelationship::clone() const
 
 /*!
     Specifies the elements related by the Relationship.
+
+    \b {This is a read-only derived union property.}
  */
 const QSet<QUmlElement *> QUmlRelationship::relatedElements() const
 {
@@ -75,6 +86,11 @@ const QSet<QUmlElement *> QUmlRelationship::relatedElements() const
     return _relatedElements;
 }
 
+/*!
+    Adds \a relatedElement to relatedElements.
+
+    \sa relatedElements(), removeRelatedElement()
+ */
 void QUmlRelationship::addRelatedElement(QUmlElement *relatedElement)
 {
     // This is a read-only derived union association end
@@ -86,6 +102,11 @@ void QUmlRelationship::addRelatedElement(QUmlElement *relatedElement)
     }
 }
 
+/*!
+    Removes \a relatedElement from relatedElements.
+
+    \sa relatedElements(), addRelatedElement()
+ */
 void QUmlRelationship::removeRelatedElement(QUmlElement *relatedElement)
 {
     // This is a read-only derived union association end

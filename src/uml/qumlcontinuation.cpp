@@ -63,6 +63,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A continuation is a syntactic way to define continuations of different branches of an alternative combined fragment. Continuations is intuitively similar to labels representing intermediate points in a flow of control.
  */
+
+/*!
+    Creates a new QUmlContinuation. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlContinuation::QUmlContinuation(bool createQModelingObject) :
     _setting(true)
 {
@@ -70,6 +74,9 @@ QUmlContinuation::QUmlContinuation(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlContinuationObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlContinuation.
+*/
 QModelingElement *QUmlContinuation::clone() const
 {
     QUmlContinuation *c = new QUmlContinuation;
@@ -105,6 +112,9 @@ bool QUmlContinuation::setting() const
     return _setting;
 }
 
+/*!
+    Adjusts setting to \a setting.
+ */
 void QUmlContinuation::setSetting(bool setting)
 {
     // This is a read-write property

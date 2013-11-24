@@ -76,6 +76,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A conditional node is a structured activity node that represents an exclusive choice among some number of alternatives.
  */
+
+/*!
+    Creates a new QUmlConditionalNode. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlConditionalNode::QUmlConditionalNode(bool createQModelingObject) :
     QUmlStructuredActivityNode(false),
     _isAssured(false),
@@ -85,6 +89,9 @@ QUmlConditionalNode::QUmlConditionalNode(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlConditionalNodeObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlConditionalNode.
+*/
 QModelingElement *QUmlConditionalNode::clone() const
 {
     QUmlConditionalNode *c = new QUmlConditionalNode;
@@ -146,6 +153,10 @@ QModelingElement *QUmlConditionalNode::clone() const
 
 /*!
     Set of clauses composing the conditional.
+
+    \sa addClause(), removeClause()
+
+    \b {Subsetted property(ies):} QUmlElement::ownedElements().
  */
 const QSet<QUmlClause *> QUmlConditionalNode::clauses() const
 {
@@ -154,6 +165,11 @@ const QSet<QUmlClause *> QUmlConditionalNode::clauses() const
     return _clauses;
 }
 
+/*!
+    Adds \a clause to clauses.
+
+    \sa clauses(), removeClause()
+ */
 void QUmlConditionalNode::addClause(QUmlClause *clause)
 {
     // This is a read-write association end
@@ -169,6 +185,11 @@ void QUmlConditionalNode::addClause(QUmlClause *clause)
     }
 }
 
+/*!
+    Removes \a clause from clauses.
+
+    \sa clauses(), addClause()
+ */
 void QUmlConditionalNode::removeClause(QUmlClause *clause)
 {
     // This is a read-write association end
@@ -193,6 +214,9 @@ bool QUmlConditionalNode::isAssured() const
     return _isAssured;
 }
 
+/*!
+    Adjusts isAssured to \a isAssured.
+ */
 void QUmlConditionalNode::setAssured(bool isAssured)
 {
     // This is a read-write property
@@ -213,6 +237,9 @@ bool QUmlConditionalNode::isDeterminate() const
     return _isDeterminate;
 }
 
+/*!
+    Adjusts isDeterminate to \a isDeterminate.
+ */
 void QUmlConditionalNode::setDeterminate(bool isDeterminate)
 {
     // This is a read-write property
@@ -225,6 +252,10 @@ void QUmlConditionalNode::setDeterminate(bool isDeterminate)
 
 /*!
     A list of output pins that constitute the data flow outputs of the conditional.
+
+    \sa addResult(), removeResult()
+
+    \b {Redefined property(ies):} QUmlStructuredActivityNode::structuredNodeOutputs().
  */
 const QList<QUmlOutputPin *> QUmlConditionalNode::results() const
 {
@@ -233,6 +264,11 @@ const QList<QUmlOutputPin *> QUmlConditionalNode::results() const
     return _results;
 }
 
+/*!
+    Adds \a result to results.
+
+    \sa results(), removeResult()
+ */
 void QUmlConditionalNode::addResult(QUmlOutputPin *result)
 {
     // This is a read-write association end
@@ -248,6 +284,11 @@ void QUmlConditionalNode::addResult(QUmlOutputPin *result)
     }
 }
 
+/*!
+    Removes \a result from results.
+
+    \sa results(), addResult()
+ */
 void QUmlConditionalNode::removeResult(QUmlOutputPin *result)
 {
     // This is a read-write association end

@@ -79,11 +79,20 @@ QT_BEGIN_NAMESPACE
     \inmodule QtUml
 
     \brief A classifier has the ability to own ports as specific and type checked interaction points.
+
+    \b {QUmlEncapsulatedClassifier is an abstract class.}
  */
+
+/*!
+    Creates a new QUmlEncapsulatedClassifier.
+*/
 QUmlEncapsulatedClassifier::QUmlEncapsulatedClassifier()
 {
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlEncapsulatedClassifier.
+*/
 QModelingElement *QUmlEncapsulatedClassifier::clone() const
 {
     QUmlEncapsulatedClassifier *c = new QUmlEncapsulatedClassifier;
@@ -141,6 +150,10 @@ QModelingElement *QUmlEncapsulatedClassifier::clone() const
 
 /*!
     References a set of ports that an encapsulated classifier owns.
+
+    \b {This is a read-only derived property.}
+
+    \b {Subsetted property(ies):} QUmlStructuredClassifier::ownedAttributes().
  */
 const QSet<QUmlPort *> QUmlEncapsulatedClassifier::ownedPorts() const
 {
@@ -155,6 +168,11 @@ const QSet<QUmlPort *> QUmlEncapsulatedClassifier::ownedPorts() const
     return _ownedPorts;
 }
 
+/*!
+    Adds \a ownedPort to ownedPorts.
+
+    \sa ownedPorts(), removeOwnedPort()
+ */
 void QUmlEncapsulatedClassifier::addOwnedPort(QUmlPort *ownedPort)
 {
     // This is a read-only derived association end
@@ -170,6 +188,11 @@ void QUmlEncapsulatedClassifier::addOwnedPort(QUmlPort *ownedPort)
     }
 }
 
+/*!
+    Removes \a ownedPort from ownedPorts.
+
+    \sa ownedPorts(), addOwnedPort()
+ */
 void QUmlEncapsulatedClassifier::removeOwnedPort(QUmlPort *ownedPort)
 {
     // This is a read-only derived association end

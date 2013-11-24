@@ -61,6 +61,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A duration observation is a reference to a duration during an execution. It points out the element(s) in the model to observe and whether the observations are when this model element is entered or when it is exited.
  */
+
+/*!
+    Creates a new QUmlDurationObservation. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlDurationObservation::QUmlDurationObservation(bool createQModelingObject) :
     _event_(0)
 {
@@ -68,6 +72,9 @@ QUmlDurationObservation::QUmlDurationObservation(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlDurationObservationObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlDurationObservation.
+*/
 QModelingElement *QUmlDurationObservation::clone() const
 {
     QUmlDurationObservation *c = new QUmlDurationObservation;
@@ -101,6 +108,9 @@ QUmlNamedElement *QUmlDurationObservation::event_() const
     return _event_;
 }
 
+/*!
+    Adjusts event_ to \a event_.
+ */
 void QUmlDurationObservation::setEvent(QUmlNamedElement *event_)
 {
     // This is a read-write association end
@@ -122,6 +132,9 @@ bool QUmlDurationObservation::firstEvent() const
     return _firstEvent;
 }
 
+/*!
+    Adjusts firstEvent to \a firstEvent.
+ */
 void QUmlDurationObservation::setFirstEvent(bool firstEvent)
 {
     // This is a read-write property

@@ -72,6 +72,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A create object action is an action that creates an object that conforms to a statically specified classifier and puts it on an output pin at runtime.
  */
+
+/*!
+    Creates a new QUmlCreateObjectAction. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlCreateObjectAction::QUmlCreateObjectAction(bool createQModelingObject) :
     _classifier(0),
     _result(0)
@@ -80,6 +84,9 @@ QUmlCreateObjectAction::QUmlCreateObjectAction(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlCreateObjectActionObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlCreateObjectAction.
+*/
 QModelingElement *QUmlCreateObjectAction::clone() const
 {
     QUmlCreateObjectAction *c = new QUmlCreateObjectAction;
@@ -132,6 +139,9 @@ QUmlClassifier *QUmlCreateObjectAction::classifier() const
     return _classifier;
 }
 
+/*!
+    Adjusts classifier to \a classifier.
+ */
 void QUmlCreateObjectAction::setClassifier(QUmlClassifier *classifier)
 {
     // This is a read-write association end
@@ -145,6 +155,8 @@ void QUmlCreateObjectAction::setClassifier(QUmlClassifier *classifier)
 
 /*!
     Gives the output pin on which the result is put.
+
+    \b {Subsetted property(ies):} QUmlAction::outputs().
  */
 QUmlOutputPin *QUmlCreateObjectAction::result() const
 {
@@ -153,6 +165,9 @@ QUmlOutputPin *QUmlCreateObjectAction::result() const
     return _result;
 }
 
+/*!
+    Adjusts result to \a result.
+ */
 void QUmlCreateObjectAction::setResult(QUmlOutputPin *result)
 {
     // This is a read-write association end

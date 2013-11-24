@@ -63,6 +63,10 @@ QT_BEGIN_NAMESPACE
 
     \brief Duration defines a value specification that specifies the temporal distance between two time instants.
  */
+
+/*!
+    Creates a new QUmlDuration. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlDuration::QUmlDuration(bool createQModelingObject) :
     _expr(0)
 {
@@ -70,6 +74,9 @@ QUmlDuration::QUmlDuration(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlDurationObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlDuration.
+*/
 QModelingElement *QUmlDuration::clone() const
 {
     QUmlDuration *c = new QUmlDuration;
@@ -98,6 +105,8 @@ QModelingElement *QUmlDuration::clone() const
 
 /*!
     The value of the Duration.
+
+    \b {Subsetted property(ies):} QUmlElement::ownedElements().
  */
 QUmlValueSpecification *QUmlDuration::expr() const
 {
@@ -106,6 +115,9 @@ QUmlValueSpecification *QUmlDuration::expr() const
     return _expr;
 }
 
+/*!
+    Adjusts expr to \a expr.
+ */
 void QUmlDuration::setExpr(QUmlValueSpecification *expr)
 {
     // This is a read-write association end
@@ -128,6 +140,8 @@ void QUmlDuration::setExpr(QUmlValueSpecification *expr)
 
 /*!
     Refers to the time and duration observations that are involved in expr.
+
+    \sa addObservation(), removeObservation()
  */
 const QSet<QUmlObservation *> QUmlDuration::observations() const
 {
@@ -136,6 +150,11 @@ const QSet<QUmlObservation *> QUmlDuration::observations() const
     return _observations;
 }
 
+/*!
+    Adds \a observation to observations.
+
+    \sa observations(), removeObservation()
+ */
 void QUmlDuration::addObservation(QUmlObservation *observation)
 {
     // This is a read-write association end
@@ -147,6 +166,11 @@ void QUmlDuration::addObservation(QUmlObservation *observation)
     }
 }
 
+/*!
+    Removes \a observation from observations.
+
+    \sa observations(), addObservation()
+ */
 void QUmlDuration::removeObservation(QUmlObservation *observation)
 {
     // This is a read-write association end

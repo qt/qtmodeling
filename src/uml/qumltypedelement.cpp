@@ -56,12 +56,21 @@ QT_BEGIN_NAMESPACE
     \inmodule QtUml
 
     \brief A typed element is a kind of named element that represents an element with a type.A typed element has a type.
+
+    \b {QUmlTypedElement is an abstract class.}
  */
+
+/*!
+    Creates a new QUmlTypedElement.
+*/
 QUmlTypedElement::QUmlTypedElement() :
     _type(0)
 {
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlTypedElement.
+*/
 QModelingElement *QUmlTypedElement::clone() const
 {
     QUmlTypedElement *c = new QUmlTypedElement;
@@ -90,6 +99,9 @@ QUmlType *QUmlTypedElement::type() const
     return _type;
 }
 
+/*!
+    Adjusts type to \a type.
+ */
 void QUmlTypedElement::setType(QUmlType *type)
 {
     // This is a read-write association end

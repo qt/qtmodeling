@@ -62,6 +62,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A constraint is a condition or restriction expressed in natural language text or in a machine readable language for the purpose of declaring some of the semantics of an element.
  */
+
+/*!
+    Creates a new QUmlConstraint. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlConstraint::QUmlConstraint(bool createQModelingObject) :
     _context(0),
     _specification(0)
@@ -70,6 +74,9 @@ QUmlConstraint::QUmlConstraint(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlConstraintObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlConstraint.
+*/
 QModelingElement *QUmlConstraint::clone() const
 {
     QUmlConstraint *c = new QUmlConstraint;
@@ -98,6 +105,8 @@ QModelingElement *QUmlConstraint::clone() const
 
 /*!
     The ordered set of Elements referenced by this Constraint.
+
+    \sa addConstrainedElement(), removeConstrainedElement()
  */
 const QList<QUmlElement *> QUmlConstraint::constrainedElements() const
 {
@@ -106,6 +115,11 @@ const QList<QUmlElement *> QUmlConstraint::constrainedElements() const
     return _constrainedElements;
 }
 
+/*!
+    Adds \a constrainedElement to constrainedElements.
+
+    \sa constrainedElements(), removeConstrainedElement()
+ */
 void QUmlConstraint::addConstrainedElement(QUmlElement *constrainedElement)
 {
     // This is a read-write association end
@@ -117,6 +131,11 @@ void QUmlConstraint::addConstrainedElement(QUmlElement *constrainedElement)
     }
 }
 
+/*!
+    Removes \a constrainedElement from constrainedElements.
+
+    \sa constrainedElements(), addConstrainedElement()
+ */
 void QUmlConstraint::removeConstrainedElement(QUmlElement *constrainedElement)
 {
     // This is a read-write association end
@@ -128,6 +147,10 @@ void QUmlConstraint::removeConstrainedElement(QUmlElement *constrainedElement)
 
 /*!
     Specifies the namespace that owns the NamedElement.
+
+    \b {Subsetted property(ies):} QUmlNamedElement::namespace_().
+
+    \b {Opposite property(ies):} QUmlNamespace::ownedRules().
  */
 QUmlNamespace *QUmlConstraint::context() const
 {
@@ -136,6 +159,9 @@ QUmlNamespace *QUmlConstraint::context() const
     return _context;
 }
 
+/*!
+    Adjusts context to \a context.
+ */
 void QUmlConstraint::setContext(QUmlNamespace *context)
 {
     // This is a read-write association end
@@ -154,6 +180,8 @@ void QUmlConstraint::setContext(QUmlNamespace *context)
 
 /*!
     A condition that must be true when evaluated in order for the constraint to be satisfied.
+
+    \b {Subsetted property(ies):} QUmlElement::ownedElements().
  */
 QUmlValueSpecification *QUmlConstraint::specification() const
 {
@@ -162,6 +190,9 @@ QUmlValueSpecification *QUmlConstraint::specification() const
     return _specification;
 }
 
+/*!
+    Adjusts specification to \a specification.
+ */
 void QUmlConstraint::setSpecification(QUmlValueSpecification *specification)
 {
     // This is a read-write association end

@@ -61,12 +61,19 @@ QT_BEGIN_NAMESPACE
 
     \brief A trigger for an AnyReceiveEvent is triggered by the receipt of any message that is not explicitly handled by any related trigger.
  */
+
+/*!
+    Creates a new QUmlAnyReceiveEvent. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlAnyReceiveEvent::QUmlAnyReceiveEvent(bool createQModelingObject)
 {
     if (createQModelingObject)
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlAnyReceiveEventObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlAnyReceiveEvent.
+*/
 QModelingElement *QUmlAnyReceiveEvent::clone() const
 {
     QUmlAnyReceiveEvent *c = new QUmlAnyReceiveEvent;

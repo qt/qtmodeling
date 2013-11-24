@@ -65,11 +65,20 @@ QT_BEGIN_NAMESPACE
     \inmodule QtUml
 
     \brief A final node is an abstract control node at which a flow in an activity stops.
+
+    \b {QUmlFinalNode is an abstract class.}
  */
+
+/*!
+    Creates a new QUmlFinalNode.
+*/
 QUmlFinalNode::QUmlFinalNode()
 {
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlFinalNode.
+*/
 QModelingElement *QUmlFinalNode::clone() const
 {
     QUmlFinalNode *c = new QUmlFinalNode;

@@ -58,12 +58,21 @@ QT_BEGIN_NAMESPACE
     \inmodule QtUml
 
     \brief A vertex is an abstraction of a node in a state machine graph. In general, it can be the source or destination of any number of transitions.
+
+    \b {QUmlVertex is an abstract class.}
  */
+
+/*!
+    Creates a new QUmlVertex.
+*/
 QUmlVertex::QUmlVertex() :
     _container(0)
 {
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlVertex.
+*/
 QModelingElement *QUmlVertex::clone() const
 {
     QUmlVertex *c = new QUmlVertex;
@@ -84,6 +93,10 @@ QModelingElement *QUmlVertex::clone() const
 
 /*!
     The region that contains this vertex.
+
+    \b {Subsetted property(ies):} QUmlNamedElement::namespace_().
+
+    \b {Opposite property(ies):} QUmlRegion::subvertices().
  */
 QUmlRegion *QUmlVertex::container() const
 {
@@ -92,6 +105,9 @@ QUmlRegion *QUmlVertex::container() const
     return _container;
 }
 
+/*!
+    Adjusts container to \a container.
+ */
 void QUmlVertex::setContainer(QUmlRegion *container)
 {
     // This is a read-write association end
@@ -110,6 +126,10 @@ void QUmlVertex::setContainer(QUmlRegion *container)
 
 /*!
     Specifies the transitions entering this vertex.
+
+    \b {This is a read-only derived property.}
+
+    \b {Opposite property(ies):} QUmlTransition::target().
  */
 const QSet<QUmlTransition *> QUmlVertex::incomings() const
 {
@@ -120,6 +140,11 @@ const QSet<QUmlTransition *> QUmlVertex::incomings() const
     return QSet<QUmlTransition *>();
 }
 
+/*!
+    Adds \a incoming to incomings.
+
+    \sa incomings(), removeIncoming()
+ */
 void QUmlVertex::addIncoming(QUmlTransition *incoming)
 {
     // This is a read-only derived association end
@@ -137,6 +162,11 @@ void QUmlVertex::addIncoming(QUmlTransition *incoming)
     }
 }
 
+/*!
+    Removes \a incoming from incomings.
+
+    \sa incomings(), addIncoming()
+ */
 void QUmlVertex::removeIncoming(QUmlTransition *incoming)
 {
     // This is a read-only derived association end
@@ -156,6 +186,10 @@ void QUmlVertex::removeIncoming(QUmlTransition *incoming)
 
 /*!
     Specifies the transitions departing from this vertex.
+
+    \b {This is a read-only derived property.}
+
+    \b {Opposite property(ies):} QUmlTransition::source().
  */
 const QSet<QUmlTransition *> QUmlVertex::outgoings() const
 {
@@ -166,6 +200,11 @@ const QSet<QUmlTransition *> QUmlVertex::outgoings() const
     return QSet<QUmlTransition *>();
 }
 
+/*!
+    Adds \a outgoing to outgoings.
+
+    \sa outgoings(), removeOutgoing()
+ */
 void QUmlVertex::addOutgoing(QUmlTransition *outgoing)
 {
     // This is a read-only derived association end
@@ -183,6 +222,11 @@ void QUmlVertex::addOutgoing(QUmlTransition *outgoing)
     }
 }
 
+/*!
+    Removes \a outgoing from outgoings.
+
+    \sa outgoings(), addOutgoing()
+ */
 void QUmlVertex::removeOutgoing(QUmlTransition *outgoing)
 {
     // This is a read-only derived association end

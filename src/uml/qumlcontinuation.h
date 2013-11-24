@@ -45,8 +45,6 @@
 
 #include <QtUml/QUmlInteractionFragment>
 
-QT_BEGIN_HEADER
-
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
@@ -69,8 +67,6 @@ protected:
 QT_END_NAMESPACE
 
 Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE(QUmlContinuation) *)
-
-QT_END_HEADER
 
 #endif // QUMLCONTINUATION_H
 

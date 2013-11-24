@@ -62,6 +62,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A time event can be defined relative to entering the current state of the executing state machine.A time event specifies a point in time. At the specified time, the event occurs.
  */
+
+/*!
+    Creates a new QUmlTimeEvent. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlTimeEvent::QUmlTimeEvent(bool createQModelingObject) :
     _isRelative(false),
     _when(0)
@@ -70,6 +74,9 @@ QUmlTimeEvent::QUmlTimeEvent(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlTimeEventObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlTimeEvent.
+*/
 QModelingElement *QUmlTimeEvent::clone() const
 {
     QUmlTimeEvent *c = new QUmlTimeEvent;
@@ -103,6 +110,9 @@ bool QUmlTimeEvent::isRelative() const
     return _isRelative;
 }
 
+/*!
+    Adjusts isRelative to \a isRelative.
+ */
 void QUmlTimeEvent::setRelative(bool isRelative)
 {
     // This is a read-write property
@@ -115,6 +125,8 @@ void QUmlTimeEvent::setRelative(bool isRelative)
 
 /*!
     Specifies the corresponding time deadline.
+
+    \b {Subsetted property(ies):} QUmlElement::ownedElements().
  */
 QUmlTimeExpression *QUmlTimeEvent::when() const
 {
@@ -123,6 +135,9 @@ QUmlTimeExpression *QUmlTimeEvent::when() const
     return _when;
 }
 
+/*!
+    Adjusts when to \a when.
+ */
 void QUmlTimeEvent::setWhen(QUmlTimeExpression *when)
 {
     // This is a read-write association end

@@ -59,11 +59,20 @@ QT_BEGIN_NAMESPACE
     \inmodule QtUml
 
     \brief A literal specification identifies a literal constant being modeled.
+
+    \b {QUmlLiteralSpecification is an abstract class.}
  */
+
+/*!
+    Creates a new QUmlLiteralSpecification.
+*/
 QUmlLiteralSpecification::QUmlLiteralSpecification()
 {
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlLiteralSpecification.
+*/
 QModelingElement *QUmlLiteralSpecification::clone() const
 {
     QUmlLiteralSpecification *c = new QUmlLiteralSpecification;

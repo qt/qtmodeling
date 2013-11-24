@@ -63,6 +63,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A substitution is a relationship between two classifiers signifies that the substituting classifier complies with the contract specified by the contract classifier. This implies that instances of the substituting classifier are runtime substitutable where instances of the contract classifier are expected.
  */
+
+/*!
+    Creates a new QUmlSubstitution. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlSubstitution::QUmlSubstitution(bool createQModelingObject) :
     QUmlRealization(false),
     _contract(0),
@@ -72,6 +76,9 @@ QUmlSubstitution::QUmlSubstitution(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlSubstitutionObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlSubstitution.
+*/
 QModelingElement *QUmlSubstitution::clone() const
 {
     QUmlSubstitution *c = new QUmlSubstitution;
@@ -104,6 +111,8 @@ QModelingElement *QUmlSubstitution::clone() const
 
 /*!
     The contract with which the substituting classifier complies.
+
+    \b {Subsetted property(ies):} QUmlDependency::suppliers().
  */
 QUmlClassifier *QUmlSubstitution::contract() const
 {
@@ -112,6 +121,9 @@ QUmlClassifier *QUmlSubstitution::contract() const
     return _contract;
 }
 
+/*!
+    Adjusts contract to \a contract.
+ */
 void QUmlSubstitution::setContract(QUmlClassifier *contract)
 {
     // This is a read-write association end
@@ -133,6 +145,10 @@ void QUmlSubstitution::setContract(QUmlClassifier *contract)
 
 /*!
     Instances of the substituting classifier are runtime substitutable where instances of the contract classifier are expected.
+
+    \b {Subsetted property(ies):} QUmlElement::owner(), QUmlDependency::clients().
+
+    \b {Opposite property(ies):} QUmlClassifier::substitutions().
  */
 QUmlClassifier *QUmlSubstitution::substitutingClassifier() const
 {
@@ -141,6 +157,9 @@ QUmlClassifier *QUmlSubstitution::substitutingClassifier() const
     return _substitutingClassifier;
 }
 
+/*!
+    Adjusts substitutingClassifier to \a substitutingClassifier.
+ */
 void QUmlSubstitution::setSubstitutingClassifier(QUmlClassifier *substitutingClassifier)
 {
     // This is a read-write association end

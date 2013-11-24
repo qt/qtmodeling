@@ -64,6 +64,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A duration interval defines the range between two durations.
  */
+
+/*!
+    Creates a new QUmlDurationInterval. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlDurationInterval::QUmlDurationInterval(bool createQModelingObject) :
     QUmlInterval(false),
     _max(0),
@@ -73,6 +77,9 @@ QUmlDurationInterval::QUmlDurationInterval(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlDurationIntervalObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlDurationInterval.
+*/
 QModelingElement *QUmlDurationInterval::clone() const
 {
     QUmlDurationInterval *c = new QUmlDurationInterval;
@@ -101,6 +108,8 @@ QModelingElement *QUmlDurationInterval::clone() const
 
 /*!
     Refers to the Duration denoting the maximum value of the range.
+
+    \b {Redefined property(ies):} QUmlInterval::max().
  */
 QUmlDuration *QUmlDurationInterval::max() const
 {
@@ -109,6 +118,9 @@ QUmlDuration *QUmlDurationInterval::max() const
     return _max;
 }
 
+/*!
+    Adjusts max to \a max.
+ */
 void QUmlDurationInterval::setMax(QUmlDuration *max)
 {
     // This is a read-write association end
@@ -125,6 +137,8 @@ void QUmlDurationInterval::setMax(QUmlDuration *max)
 
 /*!
     Refers to the Duration denoting the minimum value of the range.
+
+    \b {Redefined property(ies):} QUmlInterval::min().
  */
 QUmlDuration *QUmlDurationInterval::min() const
 {
@@ -133,6 +147,9 @@ QUmlDuration *QUmlDurationInterval::min() const
     return _min;
 }
 
+/*!
+    Adjusts min to \a min.
+ */
 void QUmlDurationInterval::setMin(QUmlDuration *min)
 {
     // This is a read-write association end

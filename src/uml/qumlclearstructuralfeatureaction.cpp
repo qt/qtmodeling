@@ -73,6 +73,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A clear structural feature action is a structural feature action that removes all values of a structural feature.
  */
+
+/*!
+    Creates a new QUmlClearStructuralFeatureAction. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlClearStructuralFeatureAction::QUmlClearStructuralFeatureAction(bool createQModelingObject) :
     _result(0)
 {
@@ -80,6 +84,9 @@ QUmlClearStructuralFeatureAction::QUmlClearStructuralFeatureAction(bool createQM
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlClearStructuralFeatureActionObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlClearStructuralFeatureAction.
+*/
 QModelingElement *QUmlClearStructuralFeatureAction::clone() const
 {
     QUmlClearStructuralFeatureAction *c = new QUmlClearStructuralFeatureAction;
@@ -126,6 +133,8 @@ QModelingElement *QUmlClearStructuralFeatureAction::clone() const
 
 /*!
     Gives the output pin on which the result is put.
+
+    \b {Subsetted property(ies):} QUmlAction::outputs().
  */
 QUmlOutputPin *QUmlClearStructuralFeatureAction::result() const
 {
@@ -134,6 +143,9 @@ QUmlOutputPin *QUmlClearStructuralFeatureAction::result() const
     return _result;
 }
 
+/*!
+    Adjusts result to \a result.
+ */
 void QUmlClearStructuralFeatureAction::setResult(QUmlOutputPin *result)
 {
     // This is a read-write association end

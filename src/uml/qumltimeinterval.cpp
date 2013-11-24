@@ -64,6 +64,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A time interval defines the range between two time expressions.
  */
+
+/*!
+    Creates a new QUmlTimeInterval. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlTimeInterval::QUmlTimeInterval(bool createQModelingObject) :
     QUmlInterval(false),
     _max(0),
@@ -73,6 +77,9 @@ QUmlTimeInterval::QUmlTimeInterval(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlTimeIntervalObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlTimeInterval.
+*/
 QModelingElement *QUmlTimeInterval::clone() const
 {
     QUmlTimeInterval *c = new QUmlTimeInterval;
@@ -101,6 +108,8 @@ QModelingElement *QUmlTimeInterval::clone() const
 
 /*!
     Refers to the TimeExpression denoting the maximum value of the range.
+
+    \b {Redefined property(ies):} QUmlInterval::max().
  */
 QUmlTimeExpression *QUmlTimeInterval::max() const
 {
@@ -109,6 +118,9 @@ QUmlTimeExpression *QUmlTimeInterval::max() const
     return _max;
 }
 
+/*!
+    Adjusts max to \a max.
+ */
 void QUmlTimeInterval::setMax(QUmlTimeExpression *max)
 {
     // This is a read-write association end
@@ -125,6 +137,8 @@ void QUmlTimeInterval::setMax(QUmlTimeExpression *max)
 
 /*!
     Refers to the TimeExpression denoting the minimum value of the range.
+
+    \b {Redefined property(ies):} QUmlInterval::min().
  */
 QUmlTimeExpression *QUmlTimeInterval::min() const
 {
@@ -133,6 +147,9 @@ QUmlTimeExpression *QUmlTimeInterval::min() const
     return _min;
 }
 
+/*!
+    Adjusts min to \a min.
+ */
 void QUmlTimeInterval::setMin(QUmlTimeExpression *min)
 {
     // This is a read-write association end

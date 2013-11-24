@@ -78,6 +78,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A port has an associated protocol state machine.A port is a property of a classifier that specifies a distinct interaction point between that classifier and its environment or between the (behavior of the) classifier and its internal parts. Ports are connected to properties of the classifier by connectors through which requests can be made to invoke the behavioral features of a classifier. A Port may specify the services a classifier provides (offers) to its environment as well as the services that a classifier expects (requires) of its environment.
  */
+
+/*!
+    Creates a new QUmlPort. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlPort::QUmlPort(bool createQModelingObject) :
     QUmlProperty(false),
     _isBehavior(false),
@@ -89,6 +93,9 @@ QUmlPort::QUmlPort(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlPortObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlPort.
+*/
 QModelingElement *QUmlPort::clone() const
 {
     QUmlPort *c = new QUmlPort;
@@ -163,6 +170,9 @@ bool QUmlPort::isBehavior() const
     return _isBehavior;
 }
 
+/*!
+    Adjusts isBehavior to \a isBehavior.
+ */
 void QUmlPort::setBehavior(bool isBehavior)
 {
     // This is a read-write property
@@ -183,6 +193,9 @@ bool QUmlPort::isConjugated() const
     return _isConjugated;
 }
 
+/*!
+    Adjusts isConjugated to \a isConjugated.
+ */
 void QUmlPort::setConjugated(bool isConjugated)
 {
     // This is a read-write property
@@ -203,6 +216,9 @@ bool QUmlPort::isService() const
     return _isService;
 }
 
+/*!
+    Adjusts isService to \a isService.
+ */
 void QUmlPort::setService(bool isService)
 {
     // This is a read-write property
@@ -223,6 +239,9 @@ QUmlProtocolStateMachine *QUmlPort::protocol() const
     return _protocol;
 }
 
+/*!
+    Adjusts protocol to \a protocol.
+ */
 void QUmlPort::setProtocol(QUmlProtocolStateMachine *protocol)
 {
     // This is a read-write association end
@@ -236,6 +255,8 @@ void QUmlPort::setProtocol(QUmlProtocolStateMachine *protocol)
 
 /*!
     References the interfaces specifying the set of operations and receptions that the classifier offers to its environment via this port, and which it will handle either directly or by forwarding it to a part of its internal structure. This association is derived according to the value of isConjugated. If isConjugated is false, provided is derived as the union of the sets of interfaces realized by the type of the port and its supertypes, or directly from the type of the port if the port is typed by an interface. If isConjugated is true, it is derived as the union of the sets of interfaces used by the type of the port and its supertypes.
+
+    \b {This is a read-only derived property.}
  */
 const QSet<QUmlInterface *> QUmlPort::provided() const
 {
@@ -257,6 +278,11 @@ const QSet<QUmlInterface *> QUmlPort::provided() const
     return provided_;
 }
 
+/*!
+    Adds \a provided to provided.
+
+    \sa provided(), removeProvided()
+ */
 void QUmlPort::addProvided(QUmlInterface *provided)
 {
     // This is a read-only derived association end
@@ -269,6 +295,11 @@ void QUmlPort::addProvided(QUmlInterface *provided)
     }
 }
 
+/*!
+    Removes \a provided from provided.
+
+    \sa provided(), addProvided()
+ */
 void QUmlPort::removeProvided(QUmlInterface *provided)
 {
     // This is a read-only derived association end
@@ -283,6 +314,10 @@ void QUmlPort::removeProvided(QUmlInterface *provided)
 
 /*!
     A port may be redefined when its containing classifier is specialized. The redefining port may have additional interfaces to those that are associated with the redefined port or it may replace an interface by one of its subtypes.
+
+    \sa addRedefinedPort(), removeRedefinedPort()
+
+    \b {Subsetted property(ies):} QUmlProperty::redefinedProperties().
  */
 const QSet<QUmlPort *> QUmlPort::redefinedPorts() const
 {
@@ -291,6 +326,11 @@ const QSet<QUmlPort *> QUmlPort::redefinedPorts() const
     return _redefinedPorts;
 }
 
+/*!
+    Adds \a redefinedPort to redefinedPorts.
+
+    \sa redefinedPorts(), removeRedefinedPort()
+ */
 void QUmlPort::addRedefinedPort(QUmlPort *redefinedPort)
 {
     // This is a read-write association end
@@ -305,6 +345,11 @@ void QUmlPort::addRedefinedPort(QUmlPort *redefinedPort)
     }
 }
 
+/*!
+    Removes \a redefinedPort from redefinedPorts.
+
+    \sa redefinedPorts(), addRedefinedPort()
+ */
 void QUmlPort::removeRedefinedPort(QUmlPort *redefinedPort)
 {
     // This is a read-write association end
@@ -319,6 +364,8 @@ void QUmlPort::removeRedefinedPort(QUmlPort *redefinedPort)
 
 /*!
     References the interfaces specifying the set of operations and receptions that the classifier expects its environment to handle via this port. This association is derived according to the value of isConjugated. If isConjugated is false, required is derived as the union of the sets of interfaces used by the type of the port and its supertypes. If isConjugated is true, it is derived as the union of the sets of interfaces realized by the type of the port and its supertypes, or directly from the type of the port if the port is typed by an interface.
+
+    \b {This is a read-only derived property.}
  */
 const QSet<QUmlInterface *> QUmlPort::required() const
 {
@@ -340,6 +387,11 @@ const QSet<QUmlInterface *> QUmlPort::required() const
     return required_;
 }
 
+/*!
+    Adds \a required to required.
+
+    \sa required(), removeRequired()
+ */
 void QUmlPort::addRequired(QUmlInterface *required)
 {
     // This is a read-only derived association end
@@ -352,6 +404,11 @@ void QUmlPort::addRequired(QUmlInterface *required)
     }
 }
 
+/*!
+    Removes \a required from required.
+
+    \sa required(), addRequired()
+ */
 void QUmlPort::removeRequired(QUmlInterface *required)
 {
     // This is a read-only derived association end

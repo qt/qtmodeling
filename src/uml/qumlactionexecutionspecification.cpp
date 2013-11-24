@@ -65,6 +65,10 @@ QT_BEGIN_NAMESPACE
 
     \brief An action execution specification is a kind of execution specification representing the execution of an action.
  */
+
+/*!
+    Creates a new QUmlActionExecutionSpecification. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlActionExecutionSpecification::QUmlActionExecutionSpecification(bool createQModelingObject) :
     _action(0)
 {
@@ -72,6 +76,9 @@ QUmlActionExecutionSpecification::QUmlActionExecutionSpecification(bool createQM
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlActionExecutionSpecificationObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlActionExecutionSpecification.
+*/
 QModelingElement *QUmlActionExecutionSpecification::clone() const
 {
     QUmlActionExecutionSpecification *c = new QUmlActionExecutionSpecification;
@@ -112,6 +119,9 @@ QUmlAction *QUmlActionExecutionSpecification::action() const
     return _action;
 }
 
+/*!
+    Adjusts action to \a action.
+ */
 void QUmlActionExecutionSpecification::setAction(QUmlAction *action)
 {
     // This is a read-write association end

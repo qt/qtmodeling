@@ -66,6 +66,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A delegation connector is a connector that links the external contract of a component (as specified by its ports) to the realization of that behavior. It represents the forwarding of events (operation requests and events): a signal that arrives at a port that has a delegation connector to one or more parts or ports on parts will be passed on to those targets for handling. An assembly connector is a connector between two or more parts or ports on parts that defines that one or more parts provide the services that other parts use.Specifies a link that enables communication between two or more instances. This link may be an instance of an association, or it may represent the possibility of the instances being able to communicate because their identities are known by virtue of being passed in as parameters, held in variables or slots, or because the communicating instances are the same instance. The link may be realized by something as simple as a pointer or by something as complex as a network connection. In contrast to associations, which specify links between any instance of the associated classifiers, connectors specify links between instances playing the connected parts only.
  */
+
+/*!
+    Creates a new QUmlConnector. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlConnector::QUmlConnector(bool createQModelingObject) :
     _type(0)
 {
@@ -73,6 +77,9 @@ QUmlConnector::QUmlConnector(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlConnectorObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlConnector.
+*/
 QModelingElement *QUmlConnector::clone() const
 {
     QUmlConnector *c = new QUmlConnector;
@@ -101,6 +108,8 @@ QModelingElement *QUmlConnector::clone() const
 
 /*!
     The set of Behaviors that specify the valid interaction patterns across the connector.
+
+    \sa addContract(), removeContract()
  */
 const QSet<QUmlBehavior *> QUmlConnector::contracts() const
 {
@@ -109,6 +118,11 @@ const QSet<QUmlBehavior *> QUmlConnector::contracts() const
     return _contracts;
 }
 
+/*!
+    Adds \a contract to contracts.
+
+    \sa contracts(), removeContract()
+ */
 void QUmlConnector::addContract(QUmlBehavior *contract)
 {
     // This is a read-write association end
@@ -120,6 +134,11 @@ void QUmlConnector::addContract(QUmlBehavior *contract)
     }
 }
 
+/*!
+    Removes \a contract from contracts.
+
+    \sa contracts(), addContract()
+ */
 void QUmlConnector::removeContract(QUmlBehavior *contract)
 {
     // This is a read-write association end
@@ -131,6 +150,10 @@ void QUmlConnector::removeContract(QUmlBehavior *contract)
 
 /*!
     A connector consists of at least two connector ends, each representing the participation of instances of the classifiers typing the connectable elements attached to this end. The set of connector ends is ordered.
+
+    \sa addEnd(), removeEnd()
+
+    \b {Subsetted property(ies):} QUmlElement::ownedElements().
  */
 const QList<QUmlConnectorEnd *> QUmlConnector::ends() const
 {
@@ -139,6 +162,11 @@ const QList<QUmlConnectorEnd *> QUmlConnector::ends() const
     return _ends;
 }
 
+/*!
+    Adds \a end to ends.
+
+    \sa ends(), removeEnd()
+ */
 void QUmlConnector::addEnd(QUmlConnectorEnd *end)
 {
     // This is a read-write association end
@@ -154,6 +182,11 @@ void QUmlConnector::addEnd(QUmlConnectorEnd *end)
     }
 }
 
+/*!
+    Removes \a end from ends.
+
+    \sa ends(), addEnd()
+ */
 void QUmlConnector::removeEnd(QUmlConnectorEnd *end)
 {
     // This is a read-write association end
@@ -170,6 +203,8 @@ void QUmlConnector::removeEnd(QUmlConnectorEnd *end)
 
 /*!
     Indicates the kind of connector. This is derived: a connector with one or more ends connected to a Port which is not on a Part and which is not a behavior port is a delegation; otherwise it is an assembly.
+
+    \b {This is a read-only derived property.}
  */
 QtUml::ConnectorKind QUmlConnector::kind() const
 {
@@ -182,6 +217,9 @@ QtUml::ConnectorKind QUmlConnector::kind() const
     return found ? QtUml::ConnectorKindDelegation:QtUml::ConnectorKindAssembly;
 }
 
+/*!
+    Adjusts kind to \a kind.
+ */
 void QUmlConnector::setKind(QtUml::ConnectorKind kind)
 {
     // This is a read-only derived property
@@ -196,6 +234,10 @@ void QUmlConnector::setKind(QtUml::ConnectorKind kind)
 
 /*!
     A connector may be redefined when its containing classifier is specialized. The redefining connector may have a type that specializes the type of the redefined connector. The types of the connector ends of the redefining connector may specialize the types of the connector ends of the redefined connector. The properties of the connector ends of the redefining connector may be replaced.
+
+    \sa addRedefinedConnector(), removeRedefinedConnector()
+
+    \b {Subsetted property(ies):} QUmlRedefinableElement::redefinedElements().
  */
 const QSet<QUmlConnector *> QUmlConnector::redefinedConnectors() const
 {
@@ -204,6 +246,11 @@ const QSet<QUmlConnector *> QUmlConnector::redefinedConnectors() const
     return _redefinedConnectors;
 }
 
+/*!
+    Adds \a redefinedConnector to redefinedConnectors.
+
+    \sa redefinedConnectors(), removeRedefinedConnector()
+ */
 void QUmlConnector::addRedefinedConnector(QUmlConnector *redefinedConnector)
 {
     // This is a read-write association end
@@ -218,6 +265,11 @@ void QUmlConnector::addRedefinedConnector(QUmlConnector *redefinedConnector)
     }
 }
 
+/*!
+    Removes \a redefinedConnector from redefinedConnectors.
+
+    \sa redefinedConnectors(), addRedefinedConnector()
+ */
 void QUmlConnector::removeRedefinedConnector(QUmlConnector *redefinedConnector)
 {
     // This is a read-write association end
@@ -240,6 +292,9 @@ QUmlAssociation *QUmlConnector::type() const
     return _type;
 }
 
+/*!
+    Adjusts type to \a type.
+ */
 void QUmlConnector::setType(QUmlAssociation *type)
 {
     // This is a read-write association end

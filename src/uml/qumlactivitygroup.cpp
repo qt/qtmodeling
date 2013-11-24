@@ -58,13 +58,22 @@ QT_BEGIN_NAMESPACE
     \inmodule QtUml
 
     \brief ActivityGroup is an abstract class for defining sets of nodes and edges in an activity.
+
+    \b {QUmlActivityGroup is an abstract class.}
  */
+
+/*!
+    Creates a new QUmlActivityGroup.
+*/
 QUmlActivityGroup::QUmlActivityGroup() :
     _inActivity(0),
     _superGroup(0)
 {
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlActivityGroup.
+*/
 QModelingElement *QUmlActivityGroup::clone() const
 {
     QUmlActivityGroup *c = new QUmlActivityGroup;
@@ -85,6 +94,10 @@ QModelingElement *QUmlActivityGroup::clone() const
 
 /*!
     Edges immediately contained in the group.
+
+    \b {This is a read-only derived union property.}
+
+    \b {Opposite property(ies):} QUmlActivityEdge::inGroups().
  */
 const QSet<QUmlActivityEdge *> QUmlActivityGroup::containedEdges() const
 {
@@ -93,6 +106,11 @@ const QSet<QUmlActivityEdge *> QUmlActivityGroup::containedEdges() const
     return _containedEdges;
 }
 
+/*!
+    Adds \a containedEdge to containedEdges.
+
+    \sa containedEdges(), removeContainedEdge()
+ */
 void QUmlActivityGroup::addContainedEdge(QUmlActivityEdge *containedEdge)
 {
     // This is a read-only derived union association end
@@ -109,6 +127,11 @@ void QUmlActivityGroup::addContainedEdge(QUmlActivityEdge *containedEdge)
     }
 }
 
+/*!
+    Removes \a containedEdge from containedEdges.
+
+    \sa containedEdges(), addContainedEdge()
+ */
 void QUmlActivityGroup::removeContainedEdge(QUmlActivityEdge *containedEdge)
 {
     // This is a read-only derived union association end
@@ -125,6 +148,10 @@ void QUmlActivityGroup::removeContainedEdge(QUmlActivityEdge *containedEdge)
 
 /*!
     Nodes immediately contained in the group.
+
+    \b {This is a read-only derived union property.}
+
+    \b {Opposite property(ies):} QUmlActivityNode::inGroups().
  */
 const QSet<QUmlActivityNode *> QUmlActivityGroup::containedNodes() const
 {
@@ -133,6 +160,11 @@ const QSet<QUmlActivityNode *> QUmlActivityGroup::containedNodes() const
     return _containedNodes;
 }
 
+/*!
+    Adds \a containedNode to containedNodes.
+
+    \sa containedNodes(), removeContainedNode()
+ */
 void QUmlActivityGroup::addContainedNode(QUmlActivityNode *containedNode)
 {
     // This is a read-only derived union association end
@@ -149,6 +181,11 @@ void QUmlActivityGroup::addContainedNode(QUmlActivityNode *containedNode)
     }
 }
 
+/*!
+    Removes \a containedNode from containedNodes.
+
+    \sa containedNodes(), addContainedNode()
+ */
 void QUmlActivityGroup::removeContainedNode(QUmlActivityNode *containedNode)
 {
     // This is a read-only derived union association end
@@ -165,6 +202,10 @@ void QUmlActivityGroup::removeContainedNode(QUmlActivityNode *containedNode)
 
 /*!
     Activity containing the group.
+
+    \b {Subsetted property(ies):} QUmlElement::owner().
+
+    \b {Opposite property(ies):} QUmlActivity::groups().
  */
 QUmlActivity *QUmlActivityGroup::inActivity() const
 {
@@ -173,6 +214,9 @@ QUmlActivity *QUmlActivityGroup::inActivity() const
     return _inActivity;
 }
 
+/*!
+    Adjusts inActivity to \a inActivity.
+ */
 void QUmlActivityGroup::setInActivity(QUmlActivity *inActivity)
 {
     // This is a read-write association end
@@ -191,6 +235,12 @@ void QUmlActivityGroup::setInActivity(QUmlActivity *inActivity)
 
 /*!
     Groups immediately contained in the group.
+
+    \b {This is a read-only derived union property.}
+
+    \b {Subsetted property(ies):} QUmlElement::ownedElements().
+
+    \b {Opposite property(ies):} QUmlActivityGroup::superGroup().
  */
 const QSet<QUmlActivityGroup *> QUmlActivityGroup::subgroups() const
 {
@@ -199,6 +249,11 @@ const QSet<QUmlActivityGroup *> QUmlActivityGroup::subgroups() const
     return _subgroups;
 }
 
+/*!
+    Adds \a subgroup to subgroups.
+
+    \sa subgroups(), removeSubgroup()
+ */
 void QUmlActivityGroup::addSubgroup(QUmlActivityGroup *subgroup)
 {
     // This is a read-only derived union association end
@@ -219,6 +274,11 @@ void QUmlActivityGroup::addSubgroup(QUmlActivityGroup *subgroup)
     }
 }
 
+/*!
+    Removes \a subgroup from subgroups.
+
+    \sa subgroups(), addSubgroup()
+ */
 void QUmlActivityGroup::removeSubgroup(QUmlActivityGroup *subgroup)
 {
     // This is a read-only derived union association end
@@ -240,6 +300,12 @@ void QUmlActivityGroup::removeSubgroup(QUmlActivityGroup *subgroup)
 
 /*!
     Group immediately containing the group.
+
+    \b {This is a read-only derived union property.}
+
+    \b {Subsetted property(ies):} QUmlElement::owner().
+
+    \b {Opposite property(ies):} QUmlActivityGroup::subgroups().
  */
 QUmlActivityGroup *QUmlActivityGroup::superGroup() const
 {
@@ -248,6 +314,9 @@ QUmlActivityGroup *QUmlActivityGroup::superGroup() const
     return _superGroup;
 }
 
+/*!
+    Adjusts superGroup to \a superGroup.
+ */
 void QUmlActivityGroup::setSuperGroup(QUmlActivityGroup *superGroup)
 {
     // This is a read-only derived union association end

@@ -89,6 +89,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A stereotype defines how an existing metaclass may be extended, and enables the use of platform or domain specific terminology or notation in place of, or in addition to, the ones used for the extended metaclass.
  */
+
+/*!
+    Creates a new QUmlStereotype. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlStereotype::QUmlStereotype(bool createQModelingObject) :
     QUmlClass(false)
 {
@@ -96,6 +100,9 @@ QUmlStereotype::QUmlStereotype(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlStereotypeObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlStereotype.
+*/
 QModelingElement *QUmlStereotype::clone() const
 {
     QUmlStereotype *c = new QUmlStereotype;
@@ -168,6 +175,10 @@ QModelingElement *QUmlStereotype::clone() const
 
 /*!
     Stereotype can change the graphical appearance of the extended model element by using attached icons. When this association is not null, it references the location of the icon content to be displayed within diagrams presenting the extended model elements.
+
+    \sa addIcon(), removeIcon()
+
+    \b {Subsetted property(ies):} QUmlElement::ownedElements().
  */
 const QSet<QUmlImage *> QUmlStereotype::icons() const
 {
@@ -176,6 +187,11 @@ const QSet<QUmlImage *> QUmlStereotype::icons() const
     return _icons;
 }
 
+/*!
+    Adds \a icon to icons.
+
+    \sa icons(), removeIcon()
+ */
 void QUmlStereotype::addIcon(QUmlImage *icon)
 {
     // This is a read-write association end
@@ -191,6 +207,11 @@ void QUmlStereotype::addIcon(QUmlImage *icon)
     }
 }
 
+/*!
+    Removes \a icon from icons.
+
+    \sa icons(), addIcon()
+ */
 void QUmlStereotype::removeIcon(QUmlImage *icon)
 {
     // This is a read-write association end
@@ -207,6 +228,8 @@ void QUmlStereotype::removeIcon(QUmlImage *icon)
 
 /*!
     The profile that directly or indirectly contains this stereotype.
+
+    \b {This is a read-only derived property.}
  */
 QUmlProfile *QUmlStereotype::profile() const
 {
@@ -217,6 +240,9 @@ QUmlProfile *QUmlStereotype::profile() const
     return 0;
 }
 
+/*!
+    Adjusts profile to \a profile.
+ */
 void QUmlStereotype::setProfile(QUmlProfile *profile)
 {
     // This is a read-only derived association end

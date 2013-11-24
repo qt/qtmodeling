@@ -87,6 +87,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A model element that has both association and class properties. An AssociationClass can be seen as an association that also has class properties, or as a class that also has association properties. It not only connects a set of classifiers but also defines a set of features that belong to the relationship itself and not to any of the classifiers.
  */
+
+/*!
+    Creates a new QUmlAssociationClass. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlAssociationClass::QUmlAssociationClass(bool createQModelingObject) :
     QUmlClass(false),
     QUmlAssociation(false)
@@ -95,6 +99,9 @@ QUmlAssociationClass::QUmlAssociationClass(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlAssociationClassObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlAssociationClass.
+*/
 QModelingElement *QUmlAssociationClass::clone() const
 {
     QUmlAssociationClass *c = new QUmlAssociationClass;

@@ -55,6 +55,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A template parameter exposes a parameterable element as a formal template parameter of a template.
  */
+
+/*!
+    Creates a new QUmlTemplateParameter. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlTemplateParameter::QUmlTemplateParameter(bool createQModelingObject) :
     _default_(0),
     _ownedDefault(0),
@@ -66,6 +70,9 @@ QUmlTemplateParameter::QUmlTemplateParameter(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlTemplateParameterObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlTemplateParameter.
+*/
 QModelingElement *QUmlTemplateParameter::clone() const
 {
     QUmlTemplateParameter *c = new QUmlTemplateParameter;
@@ -96,6 +103,9 @@ QUmlParameterableElement *QUmlTemplateParameter::default_() const
     return _default_;
 }
 
+/*!
+    Adjusts default_ to \a default_.
+ */
 void QUmlTemplateParameter::setDefault(QUmlParameterableElement *default_)
 {
     // This is a read-write association end
@@ -109,6 +119,8 @@ void QUmlTemplateParameter::setDefault(QUmlParameterableElement *default_)
 
 /*!
     The element that is owned by this template parameter for the purpose of providing a default.
+
+    \b {Subsetted property(ies):} QUmlElement::ownedElements(), QUmlTemplateParameter::default_().
  */
 QUmlParameterableElement *QUmlTemplateParameter::ownedDefault() const
 {
@@ -117,6 +129,9 @@ QUmlParameterableElement *QUmlTemplateParameter::ownedDefault() const
     return _ownedDefault;
 }
 
+/*!
+    Adjusts ownedDefault to \a ownedDefault.
+ */
 void QUmlTemplateParameter::setOwnedDefault(QUmlParameterableElement *ownedDefault)
 {
     // This is a read-write association end
@@ -140,6 +155,10 @@ void QUmlTemplateParameter::setOwnedDefault(QUmlParameterableElement *ownedDefau
 
 /*!
     The element that is owned by this template parameter.
+
+    \b {Subsetted property(ies):} QUmlTemplateParameter::parameteredElement(), QUmlElement::ownedElements().
+
+    \b {Opposite property(ies):} QUmlParameterableElement::owningTemplateParameter().
  */
 QUmlParameterableElement *QUmlTemplateParameter::ownedParameteredElement() const
 {
@@ -148,6 +167,9 @@ QUmlParameterableElement *QUmlTemplateParameter::ownedParameteredElement() const
     return _ownedParameteredElement;
 }
 
+/*!
+    Adjusts ownedParameteredElement to \a ownedParameteredElement.
+ */
 void QUmlTemplateParameter::setOwnedParameteredElement(QUmlParameterableElement *ownedParameteredElement)
 {
     // This is a read-write association end
@@ -171,6 +193,8 @@ void QUmlTemplateParameter::setOwnedParameteredElement(QUmlParameterableElement 
 
 /*!
     The element exposed by this template parameter.
+
+    \b {Opposite property(ies):} QUmlParameterableElement::templateParameter().
  */
 QUmlParameterableElement *QUmlTemplateParameter::parameteredElement() const
 {
@@ -179,6 +203,9 @@ QUmlParameterableElement *QUmlTemplateParameter::parameteredElement() const
     return _parameteredElement;
 }
 
+/*!
+    Adjusts parameteredElement to \a parameteredElement.
+ */
 void QUmlTemplateParameter::setParameteredElement(QUmlParameterableElement *parameteredElement)
 {
     // This is a read-write association end
@@ -192,6 +219,10 @@ void QUmlTemplateParameter::setParameteredElement(QUmlParameterableElement *para
 
 /*!
     The template signature that owns this template parameter.
+
+    \b {Subsetted property(ies):} QUmlElement::owner(), .
+
+    \b {Opposite property(ies):} QUmlTemplateSignature::ownedParameters().
  */
 QUmlTemplateSignature *QUmlTemplateParameter::signature() const
 {
@@ -200,6 +231,9 @@ QUmlTemplateSignature *QUmlTemplateParameter::signature() const
     return _signature;
 }
 
+/*!
+    Adjusts signature to \a signature.
+ */
 void QUmlTemplateParameter::setSignature(QUmlTemplateSignature *signature)
 {
     // This is a read-write association end

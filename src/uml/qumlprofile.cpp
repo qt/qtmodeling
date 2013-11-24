@@ -70,6 +70,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A profile defines limited extensions to a reference metamodel with the purpose of adapting the metamodel to a specific platform or domain.
  */
+
+/*!
+    Creates a new QUmlProfile. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlProfile::QUmlProfile(bool createQModelingObject) :
     QUmlPackage(false)
 {
@@ -77,6 +81,9 @@ QUmlProfile::QUmlProfile(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlProfileObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlProfile.
+*/
 QModelingElement *QUmlProfile::clone() const
 {
     QUmlProfile *c = new QUmlProfile;
@@ -122,6 +129,10 @@ QModelingElement *QUmlProfile::clone() const
 
 /*!
     References a metaclass that may be extended.
+
+    \sa addMetaclassReference(), removeMetaclassReference()
+
+    \b {Subsetted property(ies):} QUmlNamespace::elementImports().
  */
 const QSet<QUmlElementImport *> QUmlProfile::metaclassReferences() const
 {
@@ -130,6 +141,11 @@ const QSet<QUmlElementImport *> QUmlProfile::metaclassReferences() const
     return _metaclassReferences;
 }
 
+/*!
+    Adds \a metaclassReference to metaclassReferences.
+
+    \sa metaclassReferences(), removeMetaclassReference()
+ */
 void QUmlProfile::addMetaclassReference(QUmlElementImport *metaclassReference)
 {
     // This is a read-write association end
@@ -145,6 +161,11 @@ void QUmlProfile::addMetaclassReference(QUmlElementImport *metaclassReference)
     }
 }
 
+/*!
+    Removes \a metaclassReference from metaclassReferences.
+
+    \sa metaclassReferences(), addMetaclassReference()
+ */
 void QUmlProfile::removeMetaclassReference(QUmlElementImport *metaclassReference)
 {
     // This is a read-write association end
@@ -161,6 +182,10 @@ void QUmlProfile::removeMetaclassReference(QUmlElementImport *metaclassReference
 
 /*!
     References a package containing (directly or indirectly) metaclasses that may be extended.
+
+    \sa addMetamodelReference(), removeMetamodelReference()
+
+    \b {Subsetted property(ies):} QUmlNamespace::packageImports().
  */
 const QSet<QUmlPackageImport *> QUmlProfile::metamodelReferences() const
 {
@@ -169,6 +194,11 @@ const QSet<QUmlPackageImport *> QUmlProfile::metamodelReferences() const
     return _metamodelReferences;
 }
 
+/*!
+    Adds \a metamodelReference to metamodelReferences.
+
+    \sa metamodelReferences(), removeMetamodelReference()
+ */
 void QUmlProfile::addMetamodelReference(QUmlPackageImport *metamodelReference)
 {
     // This is a read-write association end
@@ -184,6 +214,11 @@ void QUmlProfile::addMetamodelReference(QUmlPackageImport *metamodelReference)
     }
 }
 
+/*!
+    Removes \a metamodelReference from metamodelReferences.
+
+    \sa metamodelReferences(), addMetamodelReference()
+ */
 void QUmlProfile::removeMetamodelReference(QUmlPackageImport *metamodelReference)
 {
     // This is a read-write association end

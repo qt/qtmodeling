@@ -74,6 +74,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A read link action is a link action that navigates across associations to retrieve objects on one end.
  */
+
+/*!
+    Creates a new QUmlReadLinkAction. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlReadLinkAction::QUmlReadLinkAction(bool createQModelingObject) :
     _result(0)
 {
@@ -81,6 +85,9 @@ QUmlReadLinkAction::QUmlReadLinkAction(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlReadLinkActionObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlReadLinkAction.
+*/
 QModelingElement *QUmlReadLinkAction::clone() const
 {
     QUmlReadLinkAction *c = new QUmlReadLinkAction;
@@ -127,6 +134,8 @@ QModelingElement *QUmlReadLinkAction::clone() const
 
 /*!
     The pin on which are put the objects participating in the association at the end not specified by the inputs.
+
+    \b {Subsetted property(ies):} QUmlAction::outputs().
  */
 QUmlOutputPin *QUmlReadLinkAction::result() const
 {
@@ -135,6 +144,9 @@ QUmlOutputPin *QUmlReadLinkAction::result() const
     return _result;
 }
 
+/*!
+    Adjusts result to \a result.
+ */
 void QUmlReadLinkAction::setResult(QUmlOutputPin *result)
 {
     // This is a read-write association end

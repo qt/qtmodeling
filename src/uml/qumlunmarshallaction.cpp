@@ -72,6 +72,10 @@ QT_BEGIN_NAMESPACE
 
     \brief An unmarshall action is an action that breaks an object of a known type into outputs each of which is equal to a value from a structural feature of the object.
  */
+
+/*!
+    Creates a new QUmlUnmarshallAction. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlUnmarshallAction::QUmlUnmarshallAction(bool createQModelingObject) :
     _object(0),
     _unmarshallType(0)
@@ -80,6 +84,9 @@ QUmlUnmarshallAction::QUmlUnmarshallAction(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlUnmarshallActionObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlUnmarshallAction.
+*/
 QModelingElement *QUmlUnmarshallAction::clone() const
 {
     QUmlUnmarshallAction *c = new QUmlUnmarshallAction;
@@ -126,6 +133,8 @@ QModelingElement *QUmlUnmarshallAction::clone() const
 
 /*!
     The object to be unmarshalled.
+
+    \b {Subsetted property(ies):} QUmlAction::inputs().
  */
 QUmlInputPin *QUmlUnmarshallAction::object() const
 {
@@ -134,6 +143,9 @@ QUmlInputPin *QUmlUnmarshallAction::object() const
     return _object;
 }
 
+/*!
+    Adjusts object to \a object.
+ */
 void QUmlUnmarshallAction::setObject(QUmlInputPin *object)
 {
     // This is a read-write association end
@@ -156,6 +168,10 @@ void QUmlUnmarshallAction::setObject(QUmlInputPin *object)
 
 /*!
     The values of the structural features of the input object.
+
+    \sa addResult(), removeResult()
+
+    \b {Subsetted property(ies):} QUmlAction::outputs().
  */
 const QSet<QUmlOutputPin *> QUmlUnmarshallAction::results() const
 {
@@ -164,6 +180,11 @@ const QSet<QUmlOutputPin *> QUmlUnmarshallAction::results() const
     return _results;
 }
 
+/*!
+    Adds \a result to results.
+
+    \sa results(), removeResult()
+ */
 void QUmlUnmarshallAction::addResult(QUmlOutputPin *result)
 {
     // This is a read-write association end
@@ -179,6 +200,11 @@ void QUmlUnmarshallAction::addResult(QUmlOutputPin *result)
     }
 }
 
+/*!
+    Removes \a result from results.
+
+    \sa results(), addResult()
+ */
 void QUmlUnmarshallAction::removeResult(QUmlOutputPin *result)
 {
     // This is a read-write association end
@@ -203,6 +229,9 @@ QUmlClassifier *QUmlUnmarshallAction::unmarshallType() const
     return _unmarshallType;
 }
 
+/*!
+    Adjusts unmarshallType to \a unmarshallType.
+ */
 void QUmlUnmarshallAction::setUnmarshallType(QUmlClassifier *unmarshallType)
 {
     // This is a read-write association end

@@ -62,12 +62,19 @@ QT_BEGIN_NAMESPACE
 
     \brief An expression is a structured tree of symbols that denotes a (possibly empty) set of values when evaluated in a context.An expression represents a node in an expression tree, which may be non-terminal or terminal. It defines a symbol, and has a possibly empty sequence of operands which are value specifications.
  */
+
+/*!
+    Creates a new QUmlExpression. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlExpression::QUmlExpression(bool createQModelingObject)
 {
     if (createQModelingObject)
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlExpressionObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlExpression.
+*/
 QModelingElement *QUmlExpression::clone() const
 {
     QUmlExpression *c = new QUmlExpression;
@@ -95,6 +102,10 @@ QModelingElement *QUmlExpression::clone() const
 
 /*!
     Specifies a sequence of operands.
+
+    \sa addOperand(), removeOperand()
+
+    \b {Subsetted property(ies):} QUmlElement::ownedElements().
  */
 const QList<QUmlValueSpecification *> QUmlExpression::operands() const
 {
@@ -103,6 +114,11 @@ const QList<QUmlValueSpecification *> QUmlExpression::operands() const
     return _operands;
 }
 
+/*!
+    Adds \a operand to operands.
+
+    \sa operands(), removeOperand()
+ */
 void QUmlExpression::addOperand(QUmlValueSpecification *operand)
 {
     // This is a read-write association end
@@ -118,6 +134,11 @@ void QUmlExpression::addOperand(QUmlValueSpecification *operand)
     }
 }
 
+/*!
+    Removes \a operand from operands.
+
+    \sa operands(), addOperand()
+ */
 void QUmlExpression::removeOperand(QUmlValueSpecification *operand)
 {
     // This is a read-write association end
@@ -142,6 +163,9 @@ QString QUmlExpression::symbol() const
     return _symbol;
 }
 
+/*!
+    Adjusts symbol to \a symbol.
+ */
 void QUmlExpression::setSymbol(QString symbol)
 {
     // This is a read-write property

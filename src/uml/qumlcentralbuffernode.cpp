@@ -72,12 +72,19 @@ QT_BEGIN_NAMESPACE
 
     \brief A central buffer node is an object node for managing flows from multiple sources and destinations.
  */
+
+/*!
+    Creates a new QUmlCentralBufferNode. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlCentralBufferNode::QUmlCentralBufferNode(bool createQModelingObject)
 {
     if (createQModelingObject)
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlCentralBufferNodeObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlCentralBufferNode.
+*/
 QModelingElement *QUmlCentralBufferNode::clone() const
 {
     QUmlCentralBufferNode *c = new QUmlCentralBufferNode;

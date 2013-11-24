@@ -64,6 +64,10 @@ QT_BEGIN_NAMESPACE
 
     \brief An expression that specifies a string value that is derived by concatenating a set of sub string expressions, some of which might be template parameters.
  */
+
+/*!
+    Creates a new QUmlStringExpression. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlStringExpression::QUmlStringExpression(bool createQModelingObject) :
     QUmlExpression(false),
     _owningExpression(0)
@@ -72,6 +76,9 @@ QUmlStringExpression::QUmlStringExpression(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlStringExpressionObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlStringExpression.
+*/
 QModelingElement *QUmlStringExpression::clone() const
 {
     QUmlStringExpression *c = new QUmlStringExpression;
@@ -107,6 +114,10 @@ QModelingElement *QUmlStringExpression::clone() const
 
 /*!
     The string expression of which this expression is a substring.
+
+    \b {Subsetted property(ies):} QUmlElement::owner().
+
+    \b {Opposite property(ies):} QUmlStringExpression::subExpressions().
  */
 QUmlStringExpression *QUmlStringExpression::owningExpression() const
 {
@@ -115,6 +126,9 @@ QUmlStringExpression *QUmlStringExpression::owningExpression() const
     return _owningExpression;
 }
 
+/*!
+    Adjusts owningExpression to \a owningExpression.
+ */
 void QUmlStringExpression::setOwningExpression(QUmlStringExpression *owningExpression)
 {
     // This is a read-write association end
@@ -133,6 +147,12 @@ void QUmlStringExpression::setOwningExpression(QUmlStringExpression *owningExpre
 
 /*!
     The StringExpressions that constitute this StringExpression.
+
+    \sa addSubExpression(), removeSubExpression()
+
+    \b {Subsetted property(ies):} QUmlElement::ownedElements().
+
+    \b {Opposite property(ies):} QUmlStringExpression::owningExpression().
  */
 const QSet<QUmlStringExpression *> QUmlStringExpression::subExpressions() const
 {
@@ -141,6 +161,11 @@ const QSet<QUmlStringExpression *> QUmlStringExpression::subExpressions() const
     return _subExpressions;
 }
 
+/*!
+    Adds \a subExpression to subExpressions.
+
+    \sa subExpressions(), removeSubExpression()
+ */
 void QUmlStringExpression::addSubExpression(QUmlStringExpression *subExpression)
 {
     // This is a read-write association end
@@ -161,6 +186,11 @@ void QUmlStringExpression::addSubExpression(QUmlStringExpression *subExpression)
     }
 }
 
+/*!
+    Removes \a subExpression from subExpressions.
+
+    \sa subExpressions(), addSubExpression()
+ */
 void QUmlStringExpression::removeSubExpression(QUmlStringExpression *subExpression)
 {
     // This is a read-write association end

@@ -58,11 +58,20 @@ QT_BEGIN_NAMESPACE
     \inmodule QtUml
 
     \brief A message event specifies the receipt by an object of either a call or a signal.
+
+    \b {QUmlMessageEvent is an abstract class.}
  */
+
+/*!
+    Creates a new QUmlMessageEvent.
+*/
 QUmlMessageEvent::QUmlMessageEvent()
 {
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlMessageEvent.
+*/
 QModelingElement *QUmlMessageEvent::clone() const
 {
     QUmlMessageEvent *c = new QUmlMessageEvent;

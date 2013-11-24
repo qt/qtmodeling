@@ -63,6 +63,10 @@ QT_BEGIN_NAMESPACE
 
     \brief An occurrence specification is the basic semantic unit of interactions. The sequences of occurrences specified by them are the meanings of interactions.
  */
+
+/*!
+    Creates a new QUmlOccurrenceSpecification. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlOccurrenceSpecification::QUmlOccurrenceSpecification(bool createQModelingObject) :
     _covered(0)
 {
@@ -70,6 +74,9 @@ QUmlOccurrenceSpecification::QUmlOccurrenceSpecification(bool createQModelingObj
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlOccurrenceSpecificationObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlOccurrenceSpecification.
+*/
 QModelingElement *QUmlOccurrenceSpecification::clone() const
 {
     QUmlOccurrenceSpecification *c = new QUmlOccurrenceSpecification;
@@ -100,6 +107,8 @@ QModelingElement *QUmlOccurrenceSpecification::clone() const
 
 /*!
     References the Lifeline on which the OccurrenceSpecification appears.
+
+    \b {Redefined property(ies):} QUmlInteractionFragment::covered().
  */
 QUmlLifeline *QUmlOccurrenceSpecification::covered() const
 {
@@ -108,6 +117,9 @@ QUmlLifeline *QUmlOccurrenceSpecification::covered() const
     return _covered;
 }
 
+/*!
+    Adjusts covered to \a covered.
+ */
 void QUmlOccurrenceSpecification::setCovered(QUmlLifeline *covered)
 {
     // This is a read-write association end
@@ -128,6 +140,10 @@ void QUmlOccurrenceSpecification::setCovered(QUmlLifeline *covered)
 
 /*!
     References the GeneralOrderings that specify EventOcurrences that must occur after this OccurrenceSpecification
+
+    \sa addToAfter(), removeToAfter()
+
+    \b {Opposite property(ies):} QUmlGeneralOrdering::before().
  */
 const QSet<QUmlGeneralOrdering *> QUmlOccurrenceSpecification::toAfters() const
 {
@@ -136,6 +152,11 @@ const QSet<QUmlGeneralOrdering *> QUmlOccurrenceSpecification::toAfters() const
     return _toAfters;
 }
 
+/*!
+    Adds \a toAfter to toAfters.
+
+    \sa toAfters(), removeToAfter()
+ */
 void QUmlOccurrenceSpecification::addToAfter(QUmlGeneralOrdering *toAfter)
 {
     // This is a read-write association end
@@ -152,6 +173,11 @@ void QUmlOccurrenceSpecification::addToAfter(QUmlGeneralOrdering *toAfter)
     }
 }
 
+/*!
+    Removes \a toAfter from toAfters.
+
+    \sa toAfters(), addToAfter()
+ */
 void QUmlOccurrenceSpecification::removeToAfter(QUmlGeneralOrdering *toAfter)
 {
     // This is a read-write association end
@@ -168,6 +194,10 @@ void QUmlOccurrenceSpecification::removeToAfter(QUmlGeneralOrdering *toAfter)
 
 /*!
     References the GeneralOrderings that specify EventOcurrences that must occur before this OccurrenceSpecification
+
+    \sa addToBefore(), removeToBefore()
+
+    \b {Opposite property(ies):} QUmlGeneralOrdering::after().
  */
 const QSet<QUmlGeneralOrdering *> QUmlOccurrenceSpecification::toBefores() const
 {
@@ -176,6 +206,11 @@ const QSet<QUmlGeneralOrdering *> QUmlOccurrenceSpecification::toBefores() const
     return _toBefores;
 }
 
+/*!
+    Adds \a toBefore to toBefores.
+
+    \sa toBefores(), removeToBefore()
+ */
 void QUmlOccurrenceSpecification::addToBefore(QUmlGeneralOrdering *toBefore)
 {
     // This is a read-write association end
@@ -192,6 +227,11 @@ void QUmlOccurrenceSpecification::addToBefore(QUmlGeneralOrdering *toBefore)
     }
 }
 
+/*!
+    Removes \a toBefore from toBefores.
+
+    \sa toBefores(), addToBefore()
+ */
 void QUmlOccurrenceSpecification::removeToBefore(QUmlGeneralOrdering *toBefore)
 {
     // This is a read-write association end

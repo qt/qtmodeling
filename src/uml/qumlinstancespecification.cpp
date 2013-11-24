@@ -65,6 +65,10 @@ QT_BEGIN_NAMESPACE
 
     \brief An instance specification has the capability of being a deployment target in a deployment relationship, in the case that it is an instance of a node. It is also has the capability of being a deployed artifact, if it is an instance of an artifact.An instance specification is a model element that represents an instance in a modeled system.
  */
+
+/*!
+    Creates a new QUmlInstanceSpecification. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlInstanceSpecification::QUmlInstanceSpecification(bool createQModelingObject) :
     _specification(0)
 {
@@ -72,6 +76,9 @@ QUmlInstanceSpecification::QUmlInstanceSpecification(bool createQModelingObject)
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlInstanceSpecificationObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlInstanceSpecification.
+*/
 QModelingElement *QUmlInstanceSpecification::clone() const
 {
     QUmlInstanceSpecification *c = new QUmlInstanceSpecification;
@@ -102,6 +109,8 @@ QModelingElement *QUmlInstanceSpecification::clone() const
 
 /*!
     The classifier or classifiers of the represented instance. If multiple classifiers are specified, the instance is classified by all of them.
+
+    \sa addClassifier(), removeClassifier()
  */
 const QSet<QUmlClassifier *> QUmlInstanceSpecification::classifiers() const
 {
@@ -110,6 +119,11 @@ const QSet<QUmlClassifier *> QUmlInstanceSpecification::classifiers() const
     return _classifiers;
 }
 
+/*!
+    Adds \a classifier to classifiers.
+
+    \sa classifiers(), removeClassifier()
+ */
 void QUmlInstanceSpecification::addClassifier(QUmlClassifier *classifier)
 {
     // This is a read-write association end
@@ -121,6 +135,11 @@ void QUmlInstanceSpecification::addClassifier(QUmlClassifier *classifier)
     }
 }
 
+/*!
+    Removes \a classifier from classifiers.
+
+    \sa classifiers(), addClassifier()
+ */
 void QUmlInstanceSpecification::removeClassifier(QUmlClassifier *classifier)
 {
     // This is a read-write association end
@@ -132,6 +151,12 @@ void QUmlInstanceSpecification::removeClassifier(QUmlClassifier *classifier)
 
 /*!
     A slot giving the value or values of a structural feature of the instance. An instance specification can have one slot per structural feature of its classifiers, including inherited features. It is not necessary to model a slot for each structural feature, in which case the instance specification is a partial description.
+
+    \sa addSlot(), removeSlot()
+
+    \b {Subsetted property(ies):} QUmlElement::ownedElements().
+
+    \b {Opposite property(ies):} QUmlSlot::owningInstance().
  */
 const QSet<QUmlSlot *> QUmlInstanceSpecification::slots_() const
 {
@@ -140,6 +165,11 @@ const QSet<QUmlSlot *> QUmlInstanceSpecification::slots_() const
     return _slots_;
 }
 
+/*!
+    Adds \a slot_ to slots_.
+
+    \sa slots_(), removeSlot()
+ */
 void QUmlInstanceSpecification::addSlot(QUmlSlot *slot_)
 {
     // This is a read-write association end
@@ -160,6 +190,11 @@ void QUmlInstanceSpecification::addSlot(QUmlSlot *slot_)
     }
 }
 
+/*!
+    Removes \a slot_ from slots_.
+
+    \sa slots_(), addSlot()
+ */
 void QUmlInstanceSpecification::removeSlot(QUmlSlot *slot_)
 {
     // This is a read-write association end
@@ -181,6 +216,8 @@ void QUmlInstanceSpecification::removeSlot(QUmlSlot *slot_)
 
 /*!
     A specification of how to compute, derive, or construct the instance.
+
+    \b {Subsetted property(ies):} QUmlElement::ownedElements().
  */
 QUmlValueSpecification *QUmlInstanceSpecification::specification() const
 {
@@ -189,6 +226,9 @@ QUmlValueSpecification *QUmlInstanceSpecification::specification() const
     return _specification;
 }
 
+/*!
+    Adjusts specification to \a specification.
+ */
 void QUmlInstanceSpecification::setSpecification(QUmlValueSpecification *specification)
 {
     // This is a read-write association end

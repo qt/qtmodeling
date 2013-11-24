@@ -64,6 +64,10 @@ QT_BEGIN_NAMESPACE
 
     \brief An interface realization is a specialized realization relationship between a classifier and an interface. This relationship signifies that the realizing classifier conforms to the contract specified by the interface.
  */
+
+/*!
+    Creates a new QUmlInterfaceRealization. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlInterfaceRealization::QUmlInterfaceRealization(bool createQModelingObject) :
     QUmlRealization(false),
     _contract(0),
@@ -73,6 +77,9 @@ QUmlInterfaceRealization::QUmlInterfaceRealization(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlInterfaceRealizationObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlInterfaceRealization.
+*/
 QModelingElement *QUmlInterfaceRealization::clone() const
 {
     QUmlInterfaceRealization *c = new QUmlInterfaceRealization;
@@ -105,6 +112,8 @@ QModelingElement *QUmlInterfaceRealization::clone() const
 
 /*!
     References the Interface specifying the conformance contract.
+
+    \b {Subsetted property(ies):} QUmlDependency::suppliers().
  */
 QUmlInterface *QUmlInterfaceRealization::contract() const
 {
@@ -113,6 +122,9 @@ QUmlInterface *QUmlInterfaceRealization::contract() const
     return _contract;
 }
 
+/*!
+    Adjusts contract to \a contract.
+ */
 void QUmlInterfaceRealization::setContract(QUmlInterface *contract)
 {
     // This is a read-write association end
@@ -134,6 +146,10 @@ void QUmlInterfaceRealization::setContract(QUmlInterface *contract)
 
 /*!
     References the BehavioredClassifier that owns this Interfacerealization (i.e., the classifier that realizes the Interface to which it points).
+
+    \b {Subsetted property(ies):} QUmlElement::owner(), QUmlDependency::clients().
+
+    \b {Opposite property(ies):} QUmlBehavioredClassifier::interfaceRealizations().
  */
 QUmlBehavioredClassifier *QUmlInterfaceRealization::implementingClassifier() const
 {
@@ -142,6 +158,9 @@ QUmlBehavioredClassifier *QUmlInterfaceRealization::implementingClassifier() con
     return _implementingClassifier;
 }
 
+/*!
+    Adjusts implementingClassifier to \a implementingClassifier.
+ */
 void QUmlInterfaceRealization::setImplementingClassifier(QUmlBehavioredClassifier *implementingClassifier)
 {
     // This is a read-write association end

@@ -76,6 +76,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A loop node is a structured activity node that represents a loop with setup, test, and body sections.
  */
+
+/*!
+    Creates a new QUmlLoopNode. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlLoopNode::QUmlLoopNode(bool createQModelingObject) :
     QUmlStructuredActivityNode(false),
     _decider(0),
@@ -85,6 +89,9 @@ QUmlLoopNode::QUmlLoopNode(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlLoopNodeObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlLoopNode.
+*/
 QModelingElement *QUmlLoopNode::clone() const
 {
     QUmlLoopNode *c = new QUmlLoopNode;
@@ -155,6 +162,8 @@ QModelingElement *QUmlLoopNode::clone() const
 
 /*!
     A list of output pins within the body fragment the values of which are moved to the loop variable pins after completion of execution of the body, before the next iteration of the loop begins or before the loop exits.
+
+    \sa addBodyOutput(), removeBodyOutput()
  */
 const QList<QUmlOutputPin *> QUmlLoopNode::bodyOutputs() const
 {
@@ -163,6 +172,11 @@ const QList<QUmlOutputPin *> QUmlLoopNode::bodyOutputs() const
     return _bodyOutputs;
 }
 
+/*!
+    Adds \a bodyOutput to bodyOutputs.
+
+    \sa bodyOutputs(), removeBodyOutput()
+ */
 void QUmlLoopNode::addBodyOutput(QUmlOutputPin *bodyOutput)
 {
     // This is a read-write association end
@@ -174,6 +188,11 @@ void QUmlLoopNode::addBodyOutput(QUmlOutputPin *bodyOutput)
     }
 }
 
+/*!
+    Removes \a bodyOutput from bodyOutputs.
+
+    \sa bodyOutputs(), addBodyOutput()
+ */
 void QUmlLoopNode::removeBodyOutput(QUmlOutputPin *bodyOutput)
 {
     // This is a read-write association end
@@ -185,6 +204,8 @@ void QUmlLoopNode::removeBodyOutput(QUmlOutputPin *bodyOutput)
 
 /*!
     The set of nodes and edges that perform the repetitive computations of the loop. The body section is executed as long as the test section produces a true value.
+
+    \sa addBodyPart(), removeBodyPart()
  */
 const QSet<QUmlExecutableNode *> QUmlLoopNode::bodyParts() const
 {
@@ -193,6 +214,11 @@ const QSet<QUmlExecutableNode *> QUmlLoopNode::bodyParts() const
     return _bodyParts;
 }
 
+/*!
+    Adds \a bodyPart to bodyParts.
+
+    \sa bodyParts(), removeBodyPart()
+ */
 void QUmlLoopNode::addBodyPart(QUmlExecutableNode *bodyPart)
 {
     // This is a read-write association end
@@ -204,6 +230,11 @@ void QUmlLoopNode::addBodyPart(QUmlExecutableNode *bodyPart)
     }
 }
 
+/*!
+    Removes \a bodyPart from bodyParts.
+
+    \sa bodyParts(), addBodyPart()
+ */
 void QUmlLoopNode::removeBodyPart(QUmlExecutableNode *bodyPart)
 {
     // This is a read-write association end
@@ -223,6 +254,9 @@ QUmlOutputPin *QUmlLoopNode::decider() const
     return _decider;
 }
 
+/*!
+    Adjusts decider to \a decider.
+ */
 void QUmlLoopNode::setDecider(QUmlOutputPin *decider)
 {
     // This is a read-write association end
@@ -244,6 +278,9 @@ bool QUmlLoopNode::isTestedFirst() const
     return _isTestedFirst;
 }
 
+/*!
+    Adjusts isTestedFirst to \a isTestedFirst.
+ */
 void QUmlLoopNode::setTestedFirst(bool isTestedFirst)
 {
     // This is a read-write property
@@ -256,6 +293,8 @@ void QUmlLoopNode::setTestedFirst(bool isTestedFirst)
 
 /*!
     A list of output pins that hold the values of the loop variables during an execution of the loop. When the test fails, the values are movied to the result pins of the loop.
+
+    \sa addLoopVariable(), removeLoopVariable()
  */
 const QList<QUmlOutputPin *> QUmlLoopNode::loopVariables() const
 {
@@ -264,6 +303,11 @@ const QList<QUmlOutputPin *> QUmlLoopNode::loopVariables() const
     return _loopVariables;
 }
 
+/*!
+    Adds \a loopVariable to loopVariables.
+
+    \sa loopVariables(), removeLoopVariable()
+ */
 void QUmlLoopNode::addLoopVariable(QUmlOutputPin *loopVariable)
 {
     // This is a read-write association end
@@ -275,6 +319,11 @@ void QUmlLoopNode::addLoopVariable(QUmlOutputPin *loopVariable)
     }
 }
 
+/*!
+    Removes \a loopVariable from loopVariables.
+
+    \sa loopVariables(), addLoopVariable()
+ */
 void QUmlLoopNode::removeLoopVariable(QUmlOutputPin *loopVariable)
 {
     // This is a read-write association end
@@ -286,6 +335,10 @@ void QUmlLoopNode::removeLoopVariable(QUmlOutputPin *loopVariable)
 
 /*!
     A list of values that are moved into the loop variable pins before the first iteration of the loop.
+
+    \sa addLoopVariableInput(), removeLoopVariableInput()
+
+    \b {Redefined property(ies):} QUmlStructuredActivityNode::structuredNodeInputs().
  */
 const QList<QUmlInputPin *> QUmlLoopNode::loopVariableInputs() const
 {
@@ -294,6 +347,11 @@ const QList<QUmlInputPin *> QUmlLoopNode::loopVariableInputs() const
     return _loopVariableInputs;
 }
 
+/*!
+    Adds \a loopVariableInput to loopVariableInputs.
+
+    \sa loopVariableInputs(), removeLoopVariableInput()
+ */
 void QUmlLoopNode::addLoopVariableInput(QUmlInputPin *loopVariableInput)
 {
     // This is a read-write association end
@@ -309,6 +367,11 @@ void QUmlLoopNode::addLoopVariableInput(QUmlInputPin *loopVariableInput)
     }
 }
 
+/*!
+    Removes \a loopVariableInput from loopVariableInputs.
+
+    \sa loopVariableInputs(), addLoopVariableInput()
+ */
 void QUmlLoopNode::removeLoopVariableInput(QUmlInputPin *loopVariableInput)
 {
     // This is a read-write association end
@@ -325,6 +388,10 @@ void QUmlLoopNode::removeLoopVariableInput(QUmlInputPin *loopVariableInput)
 
 /*!
     A list of output pins that constitute the data flow output of the entire loop.
+
+    \sa addResult(), removeResult()
+
+    \b {Redefined property(ies):} QUmlStructuredActivityNode::structuredNodeOutputs().
  */
 const QList<QUmlOutputPin *> QUmlLoopNode::results() const
 {
@@ -333,6 +400,11 @@ const QList<QUmlOutputPin *> QUmlLoopNode::results() const
     return _results;
 }
 
+/*!
+    Adds \a result to results.
+
+    \sa results(), removeResult()
+ */
 void QUmlLoopNode::addResult(QUmlOutputPin *result)
 {
     // This is a read-write association end
@@ -348,6 +420,11 @@ void QUmlLoopNode::addResult(QUmlOutputPin *result)
     }
 }
 
+/*!
+    Removes \a result from results.
+
+    \sa results(), addResult()
+ */
 void QUmlLoopNode::removeResult(QUmlOutputPin *result)
 {
     // This is a read-write association end
@@ -364,6 +441,8 @@ void QUmlLoopNode::removeResult(QUmlOutputPin *result)
 
 /*!
     The set of nodes and edges that initialize values or perform other setup computations for the loop.
+
+    \sa addSetupPart(), removeSetupPart()
  */
 const QSet<QUmlExecutableNode *> QUmlLoopNode::setupParts() const
 {
@@ -372,6 +451,11 @@ const QSet<QUmlExecutableNode *> QUmlLoopNode::setupParts() const
     return _setupParts;
 }
 
+/*!
+    Adds \a setupPart to setupParts.
+
+    \sa setupParts(), removeSetupPart()
+ */
 void QUmlLoopNode::addSetupPart(QUmlExecutableNode *setupPart)
 {
     // This is a read-write association end
@@ -383,6 +467,11 @@ void QUmlLoopNode::addSetupPart(QUmlExecutableNode *setupPart)
     }
 }
 
+/*!
+    Removes \a setupPart from setupParts.
+
+    \sa setupParts(), addSetupPart()
+ */
 void QUmlLoopNode::removeSetupPart(QUmlExecutableNode *setupPart)
 {
     // This is a read-write association end
@@ -394,6 +483,8 @@ void QUmlLoopNode::removeSetupPart(QUmlExecutableNode *setupPart)
 
 /*!
     The set of nodes, edges, and designated value that compute a Boolean value to determine if another execution of the body will be performed.
+
+    \sa addTest(), removeTest()
  */
 const QSet<QUmlExecutableNode *> QUmlLoopNode::tests() const
 {
@@ -402,6 +493,11 @@ const QSet<QUmlExecutableNode *> QUmlLoopNode::tests() const
     return _tests;
 }
 
+/*!
+    Adds \a test to tests.
+
+    \sa tests(), removeTest()
+ */
 void QUmlLoopNode::addTest(QUmlExecutableNode *test)
 {
     // This is a read-write association end
@@ -413,6 +509,11 @@ void QUmlLoopNode::addTest(QUmlExecutableNode *test)
     }
 }
 
+/*!
+    Removes \a test from tests.
+
+    \sa tests(), addTest()
+ */
 void QUmlLoopNode::removeTest(QUmlExecutableNode *test)
 {
     // This is a read-write association end

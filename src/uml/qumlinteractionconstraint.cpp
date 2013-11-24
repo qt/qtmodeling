@@ -62,6 +62,10 @@ QT_BEGIN_NAMESPACE
 
     \brief An interaction constraint is a Boolean expression that guards an operand in a combined fragment.
  */
+
+/*!
+    Creates a new QUmlInteractionConstraint. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlInteractionConstraint::QUmlInteractionConstraint(bool createQModelingObject) :
     QUmlConstraint(false),
     _maxint(0),
@@ -71,6 +75,9 @@ QUmlInteractionConstraint::QUmlInteractionConstraint(bool createQModelingObject)
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlInteractionConstraintObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlInteractionConstraint.
+*/
 QModelingElement *QUmlInteractionConstraint::clone() const
 {
     QUmlInteractionConstraint *c = new QUmlInteractionConstraint;
@@ -103,6 +110,8 @@ QModelingElement *QUmlInteractionConstraint::clone() const
 
 /*!
     The maximum number of iterations of a loop
+
+    \b {Subsetted property(ies):} QUmlElement::ownedElements().
  */
 QUmlValueSpecification *QUmlInteractionConstraint::maxint() const
 {
@@ -111,6 +120,9 @@ QUmlValueSpecification *QUmlInteractionConstraint::maxint() const
     return _maxint;
 }
 
+/*!
+    Adjusts maxint to \a maxint.
+ */
 void QUmlInteractionConstraint::setMaxint(QUmlValueSpecification *maxint)
 {
     // This is a read-write association end
@@ -133,6 +145,8 @@ void QUmlInteractionConstraint::setMaxint(QUmlValueSpecification *maxint)
 
 /*!
     The minimum number of iterations of a loop
+
+    \b {Subsetted property(ies):} QUmlElement::ownedElements().
  */
 QUmlValueSpecification *QUmlInteractionConstraint::minint() const
 {
@@ -141,6 +155,9 @@ QUmlValueSpecification *QUmlInteractionConstraint::minint() const
     return _minint;
 }
 
+/*!
+    Adjusts minint to \a minint.
+ */
 void QUmlInteractionConstraint::setMinint(QUmlValueSpecification *minint)
 {
     // This is a read-write association end

@@ -70,12 +70,21 @@ QT_BEGIN_NAMESPACE
     \inmodule QtUml
 
     \brief VariableAction is an abstract class for actions that operate on a statically specified variable.
+
+    \b {QUmlVariableAction is an abstract class.}
  */
+
+/*!
+    Creates a new QUmlVariableAction.
+*/
 QUmlVariableAction::QUmlVariableAction() :
     _variable(0)
 {
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlVariableAction.
+*/
 QModelingElement *QUmlVariableAction::clone() const
 {
     QUmlVariableAction *c = new QUmlVariableAction;
@@ -126,6 +135,9 @@ QUmlVariable *QUmlVariableAction::variable() const
     return _variable;
 }
 
+/*!
+    Adjusts variable to \a variable.
+ */
 void QUmlVariableAction::setVariable(QUmlVariable *variable)
 {
     // This is a read-write association end

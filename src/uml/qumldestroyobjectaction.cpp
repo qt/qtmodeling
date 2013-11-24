@@ -72,6 +72,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A destroy object action is an action that destroys objects.
  */
+
+/*!
+    Creates a new QUmlDestroyObjectAction. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlDestroyObjectAction::QUmlDestroyObjectAction(bool createQModelingObject) :
     _isDestroyLinks(false),
     _isDestroyOwnedObjects(false),
@@ -81,6 +85,9 @@ QUmlDestroyObjectAction::QUmlDestroyObjectAction(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlDestroyObjectActionObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlDestroyObjectAction.
+*/
 QModelingElement *QUmlDestroyObjectAction::clone() const
 {
     QUmlDestroyObjectAction *c = new QUmlDestroyObjectAction;
@@ -133,6 +140,9 @@ bool QUmlDestroyObjectAction::isDestroyLinks() const
     return _isDestroyLinks;
 }
 
+/*!
+    Adjusts isDestroyLinks to \a isDestroyLinks.
+ */
 void QUmlDestroyObjectAction::setDestroyLinks(bool isDestroyLinks)
 {
     // This is a read-write property
@@ -153,6 +163,9 @@ bool QUmlDestroyObjectAction::isDestroyOwnedObjects() const
     return _isDestroyOwnedObjects;
 }
 
+/*!
+    Adjusts isDestroyOwnedObjects to \a isDestroyOwnedObjects.
+ */
 void QUmlDestroyObjectAction::setDestroyOwnedObjects(bool isDestroyOwnedObjects)
 {
     // This is a read-write property
@@ -165,6 +178,8 @@ void QUmlDestroyObjectAction::setDestroyOwnedObjects(bool isDestroyOwnedObjects)
 
 /*!
     The input pin providing the object to be destroyed.
+
+    \b {Subsetted property(ies):} QUmlAction::inputs().
  */
 QUmlInputPin *QUmlDestroyObjectAction::target() const
 {
@@ -173,6 +188,9 @@ QUmlInputPin *QUmlDestroyObjectAction::target() const
     return _target;
 }
 
+/*!
+    Adjusts target to \a target.
+ */
 void QUmlDestroyObjectAction::setTarget(QUmlInputPin *target)
 {
     // This is a read-write association end

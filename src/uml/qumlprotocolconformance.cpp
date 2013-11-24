@@ -55,6 +55,10 @@ QT_BEGIN_NAMESPACE
 
     \brief Protocol state machines can be redefined into more specific protocol state machines, or into behavioral state machines. Protocol conformance declares that the specific protocol state machine specifies a protocol that conforms to the general state machine one, or that the specific behavioral state machine abide by the protocol of the general protocol state machine.
  */
+
+/*!
+    Creates a new QUmlProtocolConformance. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlProtocolConformance::QUmlProtocolConformance(bool createQModelingObject) :
     _generalMachine(0),
     _specificMachine(0)
@@ -63,6 +67,9 @@ QUmlProtocolConformance::QUmlProtocolConformance(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlProtocolConformanceObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlProtocolConformance.
+*/
 QModelingElement *QUmlProtocolConformance::clone() const
 {
     QUmlProtocolConformance *c = new QUmlProtocolConformance;
@@ -79,6 +86,8 @@ QModelingElement *QUmlProtocolConformance::clone() const
 
 /*!
     Specifies the protocol state machine to which the specific state machine conforms.
+
+    \b {Subsetted property(ies):} QUmlDirectedRelationship::targets().
  */
 QUmlProtocolStateMachine *QUmlProtocolConformance::generalMachine() const
 {
@@ -87,6 +96,9 @@ QUmlProtocolStateMachine *QUmlProtocolConformance::generalMachine() const
     return _generalMachine;
 }
 
+/*!
+    Adjusts generalMachine to \a generalMachine.
+ */
 void QUmlProtocolConformance::setGeneralMachine(QUmlProtocolStateMachine *generalMachine)
 {
     // This is a read-write association end
@@ -108,6 +120,10 @@ void QUmlProtocolConformance::setGeneralMachine(QUmlProtocolStateMachine *genera
 
 /*!
     Specifies the state machine which conforms to the general state machine.
+
+    \b {Subsetted property(ies):} QUmlElement::owner(), QUmlDirectedRelationship::sources().
+
+    \b {Opposite property(ies):} QUmlProtocolStateMachine::conformance().
  */
 QUmlProtocolStateMachine *QUmlProtocolConformance::specificMachine() const
 {
@@ -116,6 +132,9 @@ QUmlProtocolStateMachine *QUmlProtocolConformance::specificMachine() const
     return _specificMachine;
 }
 
+/*!
+    Adjusts specificMachine to \a specificMachine.
+ */
 void QUmlProtocolConformance::setSpecificMachine(QUmlProtocolStateMachine *specificMachine)
 {
     // This is a read-write association end

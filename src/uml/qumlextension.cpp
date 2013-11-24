@@ -81,6 +81,10 @@ QT_BEGIN_NAMESPACE
 
     \brief An extension is used to indicate that the properties of a metaclass are extended through a stereotype, and gives the ability to flexibly add (and later remove) stereotypes to classes.
  */
+
+/*!
+    Creates a new QUmlExtension. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlExtension::QUmlExtension(bool createQModelingObject) :
     QUmlAssociation(false),
     _ownedEnd(0)
@@ -89,6 +93,9 @@ QUmlExtension::QUmlExtension(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlExtensionObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlExtension.
+*/
 QModelingElement *QUmlExtension::clone() const
 {
     QUmlExtension *c = new QUmlExtension;
@@ -149,6 +156,8 @@ QModelingElement *QUmlExtension::clone() const
 
 /*!
     Indicates whether an instance of the extending stereotype must be created when an instance of the extended class is created. The attribute value is derived from the value of the lower property of the ExtensionEnd referenced by Extension::ownedEnd; a lower value of 1 means that isRequired is true, but otherwise it is false. Since the default value of ExtensionEnd::lower is 0, the default value of isRequired is false.
+
+    \b {This is a read-only derived property.}
  */
 bool QUmlExtension::isRequired() const
 {
@@ -159,6 +168,9 @@ bool QUmlExtension::isRequired() const
     return bool();
 }
 
+/*!
+    Adjusts isRequired to \a isRequired.
+ */
 void QUmlExtension::setRequired(bool isRequired)
 {
     // This is a read-only derived property
@@ -173,6 +185,10 @@ void QUmlExtension::setRequired(bool isRequired)
 
 /*!
     References the Class that is extended through an Extension. The property is derived from the type of the memberEnd that is not the ownedEnd.
+
+    \b {This is a read-only derived property.}
+
+    \b {Opposite property(ies):} QUmlClass::extensions().
  */
 QUmlClass *QUmlExtension::metaclass() const
 {
@@ -183,6 +199,9 @@ QUmlClass *QUmlExtension::metaclass() const
     return 0;
 }
 
+/*!
+    Adjusts metaclass to \a metaclass.
+ */
 void QUmlExtension::setMetaclass(QUmlClass *metaclass)
 {
     // This is a read-only derived association end
@@ -197,6 +216,8 @@ void QUmlExtension::setMetaclass(QUmlClass *metaclass)
 
 /*!
     References the end of the extension that is typed by a Stereotype.
+
+    \b {Redefined property(ies):} QUmlAssociation::ownedEnds().
  */
 QUmlExtensionEnd *QUmlExtension::ownedEnd() const
 {
@@ -205,6 +226,9 @@ QUmlExtensionEnd *QUmlExtension::ownedEnd() const
     return _ownedEnd;
 }
 
+/*!
+    Adjusts ownedEnd to \a ownedEnd.
+ */
 void QUmlExtension::setOwnedEnd(QUmlExtensionEnd *ownedEnd)
 {
     // This is a read-write association end

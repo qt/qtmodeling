@@ -70,13 +70,22 @@ QT_BEGIN_NAMESPACE
     \inmodule QtUml
 
     \brief StructuralFeatureAction is an abstract class for all structural feature actions.
+
+    \b {QUmlStructuralFeatureAction is an abstract class.}
  */
+
+/*!
+    Creates a new QUmlStructuralFeatureAction.
+*/
 QUmlStructuralFeatureAction::QUmlStructuralFeatureAction() :
     _object(0),
     _structuralFeature(0)
 {
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlStructuralFeatureAction.
+*/
 QModelingElement *QUmlStructuralFeatureAction::clone() const
 {
     QUmlStructuralFeatureAction *c = new QUmlStructuralFeatureAction;
@@ -121,6 +130,8 @@ QModelingElement *QUmlStructuralFeatureAction::clone() const
 
 /*!
     Gives the input pin from which the object whose structural feature is to be read or written is obtained.
+
+    \b {Subsetted property(ies):} QUmlAction::inputs().
  */
 QUmlInputPin *QUmlStructuralFeatureAction::object() const
 {
@@ -129,6 +140,9 @@ QUmlInputPin *QUmlStructuralFeatureAction::object() const
     return _object;
 }
 
+/*!
+    Adjusts object to \a object.
+ */
 void QUmlStructuralFeatureAction::setObject(QUmlInputPin *object)
 {
     // This is a read-write association end
@@ -159,6 +173,9 @@ QUmlStructuralFeature *QUmlStructuralFeatureAction::structuralFeature() const
     return _structuralFeature;
 }
 
+/*!
+    Adjusts structuralFeature to \a structuralFeature.
+ */
 void QUmlStructuralFeatureAction::setStructuralFeature(QUmlStructuralFeature *structuralFeature)
 {
     // This is a read-write association end

@@ -59,13 +59,22 @@ QT_BEGIN_NAMESPACE
     \inmodule QtUml
 
     \brief InteractionFragment is an abstract notion of the most general interaction unit. An interaction fragment is a piece of an interaction. Each interaction fragment is conceptually like an interaction by itself.
+
+    \b {QUmlInteractionFragment is an abstract class.}
  */
+
+/*!
+    Creates a new QUmlInteractionFragment.
+*/
 QUmlInteractionFragment::QUmlInteractionFragment() :
     _enclosingInteraction(0),
     _enclosingOperand(0)
 {
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlInteractionFragment.
+*/
 QModelingElement *QUmlInteractionFragment::clone() const
 {
     QUmlInteractionFragment *c = new QUmlInteractionFragment;
@@ -92,6 +101,10 @@ QModelingElement *QUmlInteractionFragment::clone() const
 
 /*!
     References the Lifelines that the InteractionFragment involves.
+
+    \sa addCovered(), removeCovered()
+
+    \b {Opposite property(ies):} QUmlLifeline::coveredBy().
  */
 const QSet<QUmlLifeline *> QUmlInteractionFragment::covered() const
 {
@@ -100,6 +113,11 @@ const QSet<QUmlLifeline *> QUmlInteractionFragment::covered() const
     return _covered;
 }
 
+/*!
+    Adds \a covered to covered.
+
+    \sa covered(), removeCovered()
+ */
 void QUmlInteractionFragment::addCovered(QUmlLifeline *covered)
 {
     // This is a read-write association end
@@ -116,6 +134,11 @@ void QUmlInteractionFragment::addCovered(QUmlLifeline *covered)
     }
 }
 
+/*!
+    Removes \a covered from covered.
+
+    \sa covered(), addCovered()
+ */
 void QUmlInteractionFragment::removeCovered(QUmlLifeline *covered)
 {
     // This is a read-write association end
@@ -132,6 +155,10 @@ void QUmlInteractionFragment::removeCovered(QUmlLifeline *covered)
 
 /*!
     The Interaction enclosing this InteractionFragment.
+
+    \b {Subsetted property(ies):} QUmlNamedElement::namespace_().
+
+    \b {Opposite property(ies):} QUmlInteraction::fragments().
  */
 QUmlInteraction *QUmlInteractionFragment::enclosingInteraction() const
 {
@@ -140,6 +167,9 @@ QUmlInteraction *QUmlInteractionFragment::enclosingInteraction() const
     return _enclosingInteraction;
 }
 
+/*!
+    Adjusts enclosingInteraction to \a enclosingInteraction.
+ */
 void QUmlInteractionFragment::setEnclosingInteraction(QUmlInteraction *enclosingInteraction)
 {
     // This is a read-write association end
@@ -158,6 +188,10 @@ void QUmlInteractionFragment::setEnclosingInteraction(QUmlInteraction *enclosing
 
 /*!
     The operand enclosing this InteractionFragment (they may nest recursively)
+
+    \b {Subsetted property(ies):} QUmlNamedElement::namespace_().
+
+    \b {Opposite property(ies):} QUmlInteractionOperand::fragments().
  */
 QUmlInteractionOperand *QUmlInteractionFragment::enclosingOperand() const
 {
@@ -166,6 +200,9 @@ QUmlInteractionOperand *QUmlInteractionFragment::enclosingOperand() const
     return _enclosingOperand;
 }
 
+/*!
+    Adjusts enclosingOperand to \a enclosingOperand.
+ */
 void QUmlInteractionFragment::setEnclosingOperand(QUmlInteractionOperand *enclosingOperand)
 {
     // This is a read-write association end
@@ -184,6 +221,10 @@ void QUmlInteractionFragment::setEnclosingOperand(QUmlInteractionOperand *enclos
 
 /*!
     The general ordering relationships contained in this fragment.
+
+    \sa addGeneralOrdering(), removeGeneralOrdering()
+
+    \b {Subsetted property(ies):} QUmlElement::ownedElements().
  */
 const QSet<QUmlGeneralOrdering *> QUmlInteractionFragment::generalOrderings() const
 {
@@ -192,6 +233,11 @@ const QSet<QUmlGeneralOrdering *> QUmlInteractionFragment::generalOrderings() co
     return _generalOrderings;
 }
 
+/*!
+    Adds \a generalOrdering to generalOrderings.
+
+    \sa generalOrderings(), removeGeneralOrdering()
+ */
 void QUmlInteractionFragment::addGeneralOrdering(QUmlGeneralOrdering *generalOrdering)
 {
     // This is a read-write association end
@@ -207,6 +253,11 @@ void QUmlInteractionFragment::addGeneralOrdering(QUmlGeneralOrdering *generalOrd
     }
 }
 
+/*!
+    Removes \a generalOrdering from generalOrderings.
+
+    \sa generalOrderings(), addGeneralOrdering()
+ */
 void QUmlInteractionFragment::removeGeneralOrdering(QUmlGeneralOrdering *generalOrdering)
 {
     // This is a read-write association end

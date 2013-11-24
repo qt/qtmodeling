@@ -63,13 +63,22 @@ QT_BEGIN_NAMESPACE
     \inmodule QtUml
 
     \brief ActivityNode is an abstract class for points in the flow of an activity connected by edges.
+
+    \b {QUmlActivityNode is an abstract class.}
  */
+
+/*!
+    Creates a new QUmlActivityNode.
+*/
 QUmlActivityNode::QUmlActivityNode() :
     _activity(0),
     _inStructuredNode(0)
 {
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlActivityNode.
+*/
 QModelingElement *QUmlActivityNode::clone() const
 {
     QUmlActivityNode *c = new QUmlActivityNode;
@@ -103,6 +112,10 @@ QModelingElement *QUmlActivityNode::clone() const
 
 /*!
     Activity containing the node.
+
+    \b {Subsetted property(ies):} QUmlElement::owner().
+
+    \b {Opposite property(ies):} QUmlActivity::nodes().
  */
 QUmlActivity *QUmlActivityNode::activity() const
 {
@@ -111,6 +124,9 @@ QUmlActivity *QUmlActivityNode::activity() const
     return _activity;
 }
 
+/*!
+    Adjusts activity to \a activity.
+ */
 void QUmlActivityNode::setActivity(QUmlActivity *activity)
 {
     // This is a read-write association end
@@ -129,6 +145,10 @@ void QUmlActivityNode::setActivity(QUmlActivity *activity)
 
 /*!
     Groups containing the node.
+
+    \b {This is a read-only derived union property.}
+
+    \b {Opposite property(ies):} QUmlActivityGroup::containedNodes().
  */
 const QSet<QUmlActivityGroup *> QUmlActivityNode::inGroups() const
 {
@@ -137,6 +157,11 @@ const QSet<QUmlActivityGroup *> QUmlActivityNode::inGroups() const
     return _inGroups;
 }
 
+/*!
+    Adds \a inGroup to inGroups.
+
+    \sa inGroups(), removeInGroup()
+ */
 void QUmlActivityNode::addInGroup(QUmlActivityGroup *inGroup)
 {
     // This is a read-only derived union association end
@@ -153,6 +178,11 @@ void QUmlActivityNode::addInGroup(QUmlActivityGroup *inGroup)
     }
 }
 
+/*!
+    Removes \a inGroup from inGroups.
+
+    \sa inGroups(), addInGroup()
+ */
 void QUmlActivityNode::removeInGroup(QUmlActivityGroup *inGroup)
 {
     // This is a read-only derived union association end
@@ -169,6 +199,12 @@ void QUmlActivityNode::removeInGroup(QUmlActivityGroup *inGroup)
 
 /*!
     Interruptible regions containing the node.
+
+    \sa addInInterruptibleRegion(), removeInInterruptibleRegion()
+
+    \b {Subsetted property(ies):} QUmlActivityNode::inGroups().
+
+    \b {Opposite property(ies):} QUmlInterruptibleActivityRegion::nodes().
  */
 const QSet<QUmlInterruptibleActivityRegion *> QUmlActivityNode::inInterruptibleRegions() const
 {
@@ -177,6 +213,11 @@ const QSet<QUmlInterruptibleActivityRegion *> QUmlActivityNode::inInterruptibleR
     return _inInterruptibleRegions;
 }
 
+/*!
+    Adds \a inInterruptibleRegion to inInterruptibleRegions.
+
+    \sa inInterruptibleRegions(), removeInInterruptibleRegion()
+ */
 void QUmlActivityNode::addInInterruptibleRegion(QUmlInterruptibleActivityRegion *inInterruptibleRegion)
 {
     // This is a read-write association end
@@ -196,6 +237,11 @@ void QUmlActivityNode::addInInterruptibleRegion(QUmlInterruptibleActivityRegion 
     }
 }
 
+/*!
+    Removes \a inInterruptibleRegion from inInterruptibleRegions.
+
+    \sa inInterruptibleRegions(), addInInterruptibleRegion()
+ */
 void QUmlActivityNode::removeInInterruptibleRegion(QUmlInterruptibleActivityRegion *inInterruptibleRegion)
 {
     // This is a read-write association end
@@ -215,6 +261,12 @@ void QUmlActivityNode::removeInInterruptibleRegion(QUmlInterruptibleActivityRegi
 
 /*!
     Partitions containing the node.
+
+    \sa addInPartition(), removeInPartition()
+
+    \b {Subsetted property(ies):} QUmlActivityNode::inGroups().
+
+    \b {Opposite property(ies):} QUmlActivityPartition::nodes().
  */
 const QSet<QUmlActivityPartition *> QUmlActivityNode::inPartitions() const
 {
@@ -223,6 +275,11 @@ const QSet<QUmlActivityPartition *> QUmlActivityNode::inPartitions() const
     return _inPartitions;
 }
 
+/*!
+    Adds \a inPartition to inPartitions.
+
+    \sa inPartitions(), removeInPartition()
+ */
 void QUmlActivityNode::addInPartition(QUmlActivityPartition *inPartition)
 {
     // This is a read-write association end
@@ -242,6 +299,11 @@ void QUmlActivityNode::addInPartition(QUmlActivityPartition *inPartition)
     }
 }
 
+/*!
+    Removes \a inPartition from inPartitions.
+
+    \sa inPartitions(), addInPartition()
+ */
 void QUmlActivityNode::removeInPartition(QUmlActivityPartition *inPartition)
 {
     // This is a read-write association end
@@ -261,6 +323,10 @@ void QUmlActivityNode::removeInPartition(QUmlActivityPartition *inPartition)
 
 /*!
     Structured activity node containing the node.
+
+    \b {Subsetted property(ies):} QUmlActivityNode::inGroups(), QUmlElement::owner().
+
+    \b {Opposite property(ies):} QUmlStructuredActivityNode::nodes().
  */
 QUmlStructuredActivityNode *QUmlActivityNode::inStructuredNode() const
 {
@@ -269,6 +335,9 @@ QUmlStructuredActivityNode *QUmlActivityNode::inStructuredNode() const
     return _inStructuredNode;
 }
 
+/*!
+    Adjusts inStructuredNode to \a inStructuredNode.
+ */
 void QUmlActivityNode::setInStructuredNode(QUmlStructuredActivityNode *inStructuredNode)
 {
     // This is a read-write association end
@@ -291,6 +360,10 @@ void QUmlActivityNode::setInStructuredNode(QUmlStructuredActivityNode *inStructu
 
 /*!
     Edges that have the node as target.
+
+    \sa addIncoming(), removeIncoming()
+
+    \b {Opposite property(ies):} QUmlActivityEdge::target().
  */
 const QSet<QUmlActivityEdge *> QUmlActivityNode::incomings() const
 {
@@ -299,6 +372,11 @@ const QSet<QUmlActivityEdge *> QUmlActivityNode::incomings() const
     return _incomings;
 }
 
+/*!
+    Adds \a incoming to incomings.
+
+    \sa incomings(), removeIncoming()
+ */
 void QUmlActivityNode::addIncoming(QUmlActivityEdge *incoming)
 {
     // This is a read-write association end
@@ -315,6 +393,11 @@ void QUmlActivityNode::addIncoming(QUmlActivityEdge *incoming)
     }
 }
 
+/*!
+    Removes \a incoming from incomings.
+
+    \sa incomings(), addIncoming()
+ */
 void QUmlActivityNode::removeIncoming(QUmlActivityEdge *incoming)
 {
     // This is a read-write association end
@@ -331,6 +414,10 @@ void QUmlActivityNode::removeIncoming(QUmlActivityEdge *incoming)
 
 /*!
     Edges that have the node as source.
+
+    \sa addOutgoing(), removeOutgoing()
+
+    \b {Opposite property(ies):} QUmlActivityEdge::source().
  */
 const QSet<QUmlActivityEdge *> QUmlActivityNode::outgoings() const
 {
@@ -339,6 +426,11 @@ const QSet<QUmlActivityEdge *> QUmlActivityNode::outgoings() const
     return _outgoings;
 }
 
+/*!
+    Adds \a outgoing to outgoings.
+
+    \sa outgoings(), removeOutgoing()
+ */
 void QUmlActivityNode::addOutgoing(QUmlActivityEdge *outgoing)
 {
     // This is a read-write association end
@@ -355,6 +447,11 @@ void QUmlActivityNode::addOutgoing(QUmlActivityEdge *outgoing)
     }
 }
 
+/*!
+    Removes \a outgoing from outgoings.
+
+    \sa outgoings(), addOutgoing()
+ */
 void QUmlActivityNode::removeOutgoing(QUmlActivityEdge *outgoing)
 {
     // This is a read-write association end
@@ -371,6 +468,10 @@ void QUmlActivityNode::removeOutgoing(QUmlActivityEdge *outgoing)
 
 /*!
     Inherited nodes replaced by this node in a specialization of the activity.
+
+    \sa addRedefinedNode(), removeRedefinedNode()
+
+    \b {Subsetted property(ies):} QUmlRedefinableElement::redefinedElements().
  */
 const QSet<QUmlActivityNode *> QUmlActivityNode::redefinedNodes() const
 {
@@ -379,6 +480,11 @@ const QSet<QUmlActivityNode *> QUmlActivityNode::redefinedNodes() const
     return _redefinedNodes;
 }
 
+/*!
+    Adds \a redefinedNode to redefinedNodes.
+
+    \sa redefinedNodes(), removeRedefinedNode()
+ */
 void QUmlActivityNode::addRedefinedNode(QUmlActivityNode *redefinedNode)
 {
     // This is a read-write association end
@@ -393,6 +499,11 @@ void QUmlActivityNode::addRedefinedNode(QUmlActivityNode *redefinedNode)
     }
 }
 
+/*!
+    Removes \a redefinedNode from redefinedNodes.
+
+    \sa redefinedNodes(), addRedefinedNode()
+ */
 void QUmlActivityNode::removeRedefinedNode(QUmlActivityNode *redefinedNode)
 {
     // This is a read-write association end

@@ -65,13 +65,22 @@ QT_BEGIN_NAMESPACE
     \inmodule QtUml
 
     \brief A behavioral feature is a feature of a classifier that specifies an aspect of the behavior of its instances.A behavioral feature is implemented (realized) by a behavior. A behavioral feature specifies that a classifier will respond to a designated request by invoking its implementing method.A behavioral feature owns zero or more parameter sets.
+
+    \b {QUmlBehavioralFeature is an abstract class.}
  */
+
+/*!
+    Creates a new QUmlBehavioralFeature.
+*/
 QUmlBehavioralFeature::QUmlBehavioralFeature() :
     _concurrency(QtUml::CallConcurrencyKindSequential),
     _isAbstract(false)
 {
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlBehavioralFeature.
+*/
 QModelingElement *QUmlBehavioralFeature::clone() const
 {
     QUmlBehavioralFeature *c = new QUmlBehavioralFeature;
@@ -116,6 +125,9 @@ QtUml::CallConcurrencyKind QUmlBehavioralFeature::concurrency() const
     return _concurrency;
 }
 
+/*!
+    Adjusts concurrency to \a concurrency.
+ */
 void QUmlBehavioralFeature::setConcurrency(QtUml::CallConcurrencyKind concurrency)
 {
     // This is a read-write property
@@ -136,6 +148,9 @@ bool QUmlBehavioralFeature::isAbstract() const
     return _isAbstract;
 }
 
+/*!
+    Adjusts isAbstract to \a isAbstract.
+ */
 void QUmlBehavioralFeature::setAbstract(bool isAbstract)
 {
     // This is a read-write property
@@ -148,6 +163,10 @@ void QUmlBehavioralFeature::setAbstract(bool isAbstract)
 
 /*!
     A behavioral description that implements the behavioral feature. There may be at most one behavior for a particular pairing of a classifier (as owner of the behavior) and a behavioral feature (as specification of the behavior).
+
+    \sa addMethod(), removeMethod()
+
+    \b {Opposite property(ies):} QUmlBehavior::specification().
  */
 const QSet<QUmlBehavior *> QUmlBehavioralFeature::methods() const
 {
@@ -156,6 +175,11 @@ const QSet<QUmlBehavior *> QUmlBehavioralFeature::methods() const
     return _methods;
 }
 
+/*!
+    Adds \a method to methods.
+
+    \sa methods(), removeMethod()
+ */
 void QUmlBehavioralFeature::addMethod(QUmlBehavior *method)
 {
     // This is a read-write association end
@@ -172,6 +196,11 @@ void QUmlBehavioralFeature::addMethod(QUmlBehavior *method)
     }
 }
 
+/*!
+    Removes \a method from methods.
+
+    \sa methods(), addMethod()
+ */
 void QUmlBehavioralFeature::removeMethod(QUmlBehavior *method)
 {
     // This is a read-write association end
@@ -188,6 +217,10 @@ void QUmlBehavioralFeature::removeMethod(QUmlBehavior *method)
 
 /*!
     Specifies the ordered set of formal parameters of this BehavioralFeature.
+
+    \sa addOwnedParameter(), removeOwnedParameter()
+
+    \b {Subsetted property(ies):} QUmlNamespace::ownedMembers().
  */
 const QList<QUmlParameter *> QUmlBehavioralFeature::ownedParameters() const
 {
@@ -196,6 +229,11 @@ const QList<QUmlParameter *> QUmlBehavioralFeature::ownedParameters() const
     return _ownedParameters;
 }
 
+/*!
+    Adds \a ownedParameter to ownedParameters.
+
+    \sa ownedParameters(), removeOwnedParameter()
+ */
 void QUmlBehavioralFeature::addOwnedParameter(QUmlParameter *ownedParameter)
 {
     // This is a read-write association end
@@ -211,6 +249,11 @@ void QUmlBehavioralFeature::addOwnedParameter(QUmlParameter *ownedParameter)
     }
 }
 
+/*!
+    Removes \a ownedParameter from ownedParameters.
+
+    \sa ownedParameters(), addOwnedParameter()
+ */
 void QUmlBehavioralFeature::removeOwnedParameter(QUmlParameter *ownedParameter)
 {
     // This is a read-write association end
@@ -227,6 +270,10 @@ void QUmlBehavioralFeature::removeOwnedParameter(QUmlParameter *ownedParameter)
 
 /*!
     The ParameterSets owned by this BehavioralFeature.
+
+    \sa addOwnedParameterSet(), removeOwnedParameterSet()
+
+    \b {Subsetted property(ies):} QUmlNamespace::ownedMembers().
  */
 const QSet<QUmlParameterSet *> QUmlBehavioralFeature::ownedParameterSets() const
 {
@@ -235,6 +282,11 @@ const QSet<QUmlParameterSet *> QUmlBehavioralFeature::ownedParameterSets() const
     return _ownedParameterSets;
 }
 
+/*!
+    Adds \a ownedParameterSet to ownedParameterSets.
+
+    \sa ownedParameterSets(), removeOwnedParameterSet()
+ */
 void QUmlBehavioralFeature::addOwnedParameterSet(QUmlParameterSet *ownedParameterSet)
 {
     // This is a read-write association end
@@ -250,6 +302,11 @@ void QUmlBehavioralFeature::addOwnedParameterSet(QUmlParameterSet *ownedParamete
     }
 }
 
+/*!
+    Removes \a ownedParameterSet from ownedParameterSets.
+
+    \sa ownedParameterSets(), addOwnedParameterSet()
+ */
 void QUmlBehavioralFeature::removeOwnedParameterSet(QUmlParameterSet *ownedParameterSet)
 {
     // This is a read-write association end
@@ -266,6 +323,8 @@ void QUmlBehavioralFeature::removeOwnedParameterSet(QUmlParameterSet *ownedParam
 
 /*!
     References the Types representing exceptions that may be raised during an invocation of this feature.
+
+    \sa addRaisedException(), removeRaisedException()
  */
 const QSet<QUmlType *> QUmlBehavioralFeature::raisedExceptions() const
 {
@@ -274,6 +333,11 @@ const QSet<QUmlType *> QUmlBehavioralFeature::raisedExceptions() const
     return _raisedExceptions;
 }
 
+/*!
+    Adds \a raisedException to raisedExceptions.
+
+    \sa raisedExceptions(), removeRaisedException()
+ */
 void QUmlBehavioralFeature::addRaisedException(QUmlType *raisedException)
 {
     // This is a read-write association end
@@ -285,6 +349,11 @@ void QUmlBehavioralFeature::addRaisedException(QUmlType *raisedException)
     }
 }
 
+/*!
+    Removes \a raisedException from raisedExceptions.
+
+    \sa raisedExceptions(), addRaisedException()
+ */
 void QUmlBehavioralFeature::removeRaisedException(QUmlType *raisedException)
 {
     // This is a read-write association end

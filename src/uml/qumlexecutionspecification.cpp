@@ -61,13 +61,22 @@ QT_BEGIN_NAMESPACE
     \inmodule QtUml
 
     \brief An execution specification is a specification of the execution of a unit of behavior or action within the lifeline. The duration of an execution specification is represented by two cccurrence specifications, the start occurrence specification and the finish occurrence specification.
+
+    \b {QUmlExecutionSpecification is an abstract class.}
  */
+
+/*!
+    Creates a new QUmlExecutionSpecification.
+*/
 QUmlExecutionSpecification::QUmlExecutionSpecification() :
     _finish(0),
     _start(0)
 {
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlExecutionSpecification.
+*/
 QModelingElement *QUmlExecutionSpecification::clone() const
 {
     QUmlExecutionSpecification *c = new QUmlExecutionSpecification;
@@ -106,6 +115,9 @@ QUmlOccurrenceSpecification *QUmlExecutionSpecification::finish() const
     return _finish;
 }
 
+/*!
+    Adjusts finish to \a finish.
+ */
 void QUmlExecutionSpecification::setFinish(QUmlOccurrenceSpecification *finish)
 {
     // This is a read-write association end
@@ -127,6 +139,9 @@ QUmlOccurrenceSpecification *QUmlExecutionSpecification::start() const
     return _start;
 }
 
+/*!
+    Adjusts start to \a start.
+ */
 void QUmlExecutionSpecification::setStart(QUmlOccurrenceSpecification *start)
 {
     // This is a read-write association end

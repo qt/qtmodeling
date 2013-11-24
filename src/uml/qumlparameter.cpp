@@ -67,6 +67,10 @@ QT_BEGIN_NAMESPACE
 
     \brief Parameters are allowed to be treated as connectable elements.A parameter is a specification of an argument used to pass information into or out of an invocation of a behavioral feature.Parameters have support for streaming, exceptions, and parameter sets.
  */
+
+/*!
+    Creates a new QUmlParameter. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlParameter::QUmlParameter(bool createQModelingObject) :
     _defaultValue(0),
     _direction(QtUml::ParameterDirectionKindIn),
@@ -79,6 +83,9 @@ QUmlParameter::QUmlParameter(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlParameterObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlParameter.
+*/
 QModelingElement *QUmlParameter::clone() const
 {
     QUmlParameter *c = new QUmlParameter;
@@ -119,6 +126,8 @@ QModelingElement *QUmlParameter::clone() const
 
 /*!
     Specifies a String that represents a value to be used when no argument is supplied for the Parameter.
+
+    \b {This is a derived property.}
  */
 QString QUmlParameter::default_() const
 {
@@ -129,6 +138,9 @@ QString QUmlParameter::default_() const
     return QString();
 }
 
+/*!
+    Adjusts default_ to \a default_.
+ */
 void QUmlParameter::setDefault(QString default_)
 {
     // This is a read-write derived property
@@ -143,6 +155,8 @@ void QUmlParameter::setDefault(QString default_)
 
 /*!
     Specifies a ValueSpecification that represents a value to be used when no argument is supplied for the Parameter.
+
+    \b {Subsetted property(ies):} QUmlElement::ownedElements().
  */
 QUmlValueSpecification *QUmlParameter::defaultValue() const
 {
@@ -151,6 +165,9 @@ QUmlValueSpecification *QUmlParameter::defaultValue() const
     return _defaultValue;
 }
 
+/*!
+    Adjusts defaultValue to \a defaultValue.
+ */
 void QUmlParameter::setDefaultValue(QUmlValueSpecification *defaultValue)
 {
     // This is a read-write association end
@@ -181,6 +198,9 @@ QtUml::ParameterDirectionKind QUmlParameter::direction() const
     return _direction;
 }
 
+/*!
+    Adjusts direction to \a direction.
+ */
 void QUmlParameter::setDirection(QtUml::ParameterDirectionKind direction)
 {
     // This is a read-write property
@@ -201,6 +221,9 @@ QtUml::ParameterEffectKind QUmlParameter::effect() const
     return _effect;
 }
 
+/*!
+    Adjusts effect to \a effect.
+ */
 void QUmlParameter::setEffect(QtUml::ParameterEffectKind effect)
 {
     // This is a read-write property
@@ -220,6 +243,9 @@ bool QUmlParameter::isException() const
     return _isException;
 }
 
+/*!
+    Adjusts isException to \a isException.
+ */
 void QUmlParameter::setException(bool isException)
 {
     // This is a read-write property
@@ -240,6 +266,9 @@ bool QUmlParameter::isStream() const
     return _isStream;
 }
 
+/*!
+    Adjusts isStream to \a isStream.
+ */
 void QUmlParameter::setStream(bool isStream)
 {
     // This is a read-write property
@@ -252,6 +281,10 @@ void QUmlParameter::setStream(bool isStream)
 
 /*!
     References the Operation owning this parameter.
+
+    \b {Subsetted property(ies):} .
+
+    \b {Opposite property(ies):} QUmlOperation::ownedParameters().
  */
 QUmlOperation *QUmlParameter::operation() const
 {
@@ -260,6 +293,9 @@ QUmlOperation *QUmlParameter::operation() const
     return _operation;
 }
 
+/*!
+    Adjusts operation to \a operation.
+ */
 void QUmlParameter::setOperation(QUmlOperation *operation)
 {
     // This is a read-write association end
@@ -273,6 +309,10 @@ void QUmlParameter::setOperation(QUmlOperation *operation)
 
 /*!
     The parameter sets containing the parameter. See ParameterSet.
+
+    \sa addParameterSet(), removeParameterSet()
+
+    \b {Opposite property(ies):} QUmlParameterSet::parameters().
  */
 const QSet<QUmlParameterSet *> QUmlParameter::parameterSets() const
 {
@@ -281,6 +321,11 @@ const QSet<QUmlParameterSet *> QUmlParameter::parameterSets() const
     return _parameterSets;
 }
 
+/*!
+    Adds \a parameterSet to parameterSets.
+
+    \sa parameterSets(), removeParameterSet()
+ */
 void QUmlParameter::addParameterSet(QUmlParameterSet *parameterSet)
 {
     // This is a read-write association end
@@ -297,6 +342,11 @@ void QUmlParameter::addParameterSet(QUmlParameterSet *parameterSet)
     }
 }
 
+/*!
+    Removes \a parameterSet from parameterSets.
+
+    \sa parameterSets(), addParameterSet()
+ */
 void QUmlParameter::removeParameterSet(QUmlParameterSet *parameterSet)
 {
     // This is a read-write association end

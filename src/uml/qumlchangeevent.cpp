@@ -62,6 +62,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A change event models a change in the system configuration that makes a condition true.
  */
+
+/*!
+    Creates a new QUmlChangeEvent. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlChangeEvent::QUmlChangeEvent(bool createQModelingObject) :
     _changeExpression(0)
 {
@@ -69,6 +73,9 @@ QUmlChangeEvent::QUmlChangeEvent(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlChangeEventObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlChangeEvent.
+*/
 QModelingElement *QUmlChangeEvent::clone() const
 {
     QUmlChangeEvent *c = new QUmlChangeEvent;
@@ -93,6 +100,8 @@ QModelingElement *QUmlChangeEvent::clone() const
 
 /*!
     A Boolean-valued expression that will result in a change event whenever its value changes from false to true.
+
+    \b {Subsetted property(ies):} QUmlElement::ownedElements().
  */
 QUmlValueSpecification *QUmlChangeEvent::changeExpression() const
 {
@@ -101,6 +110,9 @@ QUmlValueSpecification *QUmlChangeEvent::changeExpression() const
     return _changeExpression;
 }
 
+/*!
+    Adjusts changeExpression to \a changeExpression.
+ */
 void QUmlChangeEvent::setChangeExpression(QUmlValueSpecification *changeExpression)
 {
     // This is a read-write association end

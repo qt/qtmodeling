@@ -56,12 +56,21 @@ QT_BEGIN_NAMESPACE
     \inmodule QtUml
 
     \brief A redefinable element is an element that, when defined in the context of a classifier, can be redefined more specifically or differently in the context of another classifier that specializes (directly or indirectly) the context classifier.
+
+    \b {QUmlRedefinableElement is an abstract class.}
  */
+
+/*!
+    Creates a new QUmlRedefinableElement.
+*/
 QUmlRedefinableElement::QUmlRedefinableElement() :
     _isLeaf(false)
 {
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlRedefinableElement.
+*/
 QModelingElement *QUmlRedefinableElement::clone() const
 {
     QUmlRedefinableElement *c = new QUmlRedefinableElement;
@@ -89,6 +98,9 @@ bool QUmlRedefinableElement::isLeaf() const
     return _isLeaf;
 }
 
+/*!
+    Adjusts isLeaf to \a isLeaf.
+ */
 void QUmlRedefinableElement::setLeaf(bool isLeaf)
 {
     // This is a read-write property
@@ -101,6 +113,8 @@ void QUmlRedefinableElement::setLeaf(bool isLeaf)
 
 /*!
     The redefinable element that is being redefined by this element.
+
+    \b {This is a read-only derived union property.}
  */
 const QSet<QUmlRedefinableElement *> QUmlRedefinableElement::redefinedElements() const
 {
@@ -109,6 +123,11 @@ const QSet<QUmlRedefinableElement *> QUmlRedefinableElement::redefinedElements()
     return _redefinedElements;
 }
 
+/*!
+    Adds \a redefinedElement to redefinedElements.
+
+    \sa redefinedElements(), removeRedefinedElement()
+ */
 void QUmlRedefinableElement::addRedefinedElement(QUmlRedefinableElement *redefinedElement)
 {
     // This is a read-only derived union association end
@@ -120,6 +139,11 @@ void QUmlRedefinableElement::addRedefinedElement(QUmlRedefinableElement *redefin
     }
 }
 
+/*!
+    Removes \a redefinedElement from redefinedElements.
+
+    \sa redefinedElements(), addRedefinedElement()
+ */
 void QUmlRedefinableElement::removeRedefinedElement(QUmlRedefinableElement *redefinedElement)
 {
     // This is a read-only derived union association end
@@ -131,6 +155,8 @@ void QUmlRedefinableElement::removeRedefinedElement(QUmlRedefinableElement *rede
 
 /*!
     References the contexts that this element may be redefined from.
+
+    \b {This is a read-only derived union property.}
  */
 const QSet<QUmlClassifier *> QUmlRedefinableElement::redefinitionContexts() const
 {
@@ -139,6 +165,11 @@ const QSet<QUmlClassifier *> QUmlRedefinableElement::redefinitionContexts() cons
     return _redefinitionContexts;
 }
 
+/*!
+    Adds \a redefinitionContext to redefinitionContexts.
+
+    \sa redefinitionContexts(), removeRedefinitionContext()
+ */
 void QUmlRedefinableElement::addRedefinitionContext(QUmlClassifier *redefinitionContext)
 {
     // This is a read-only derived union association end
@@ -150,6 +181,11 @@ void QUmlRedefinableElement::addRedefinitionContext(QUmlClassifier *redefinition
     }
 }
 
+/*!
+    Removes \a redefinitionContext from redefinitionContexts.
+
+    \sa redefinitionContexts(), addRedefinitionContext()
+ */
 void QUmlRedefinableElement::removeRedefinitionContext(QUmlClassifier *redefinitionContext)
 {
     // This is a read-only derived union association end

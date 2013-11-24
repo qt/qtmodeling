@@ -70,12 +70,21 @@ QT_BEGIN_NAMESPACE
     \inmodule QtUml
 
     \brief CallAction is an abstract class for actions that invoke behavior and receive return values.
+
+    \b {QUmlCallAction is an abstract class.}
  */
+
+/*!
+    Creates a new QUmlCallAction.
+*/
 QUmlCallAction::QUmlCallAction() :
     _isSynchronous(true)
 {
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlCallAction.
+*/
 QModelingElement *QUmlCallAction::clone() const
 {
     QUmlCallAction *c = new QUmlCallAction;
@@ -131,6 +140,9 @@ bool QUmlCallAction::isSynchronous() const
     return _isSynchronous;
 }
 
+/*!
+    Adjusts isSynchronous to \a isSynchronous.
+ */
 void QUmlCallAction::setSynchronous(bool isSynchronous)
 {
     // This is a read-write property
@@ -143,6 +155,10 @@ void QUmlCallAction::setSynchronous(bool isSynchronous)
 
 /*!
     A list of output pins where the results of performing the invocation are placed.
+
+    \sa addResult(), removeResult()
+
+    \b {Subsetted property(ies):} QUmlAction::outputs().
  */
 const QList<QUmlOutputPin *> QUmlCallAction::results() const
 {
@@ -151,6 +167,11 @@ const QList<QUmlOutputPin *> QUmlCallAction::results() const
     return _results;
 }
 
+/*!
+    Adds \a result to results.
+
+    \sa results(), removeResult()
+ */
 void QUmlCallAction::addResult(QUmlOutputPin *result)
 {
     // This is a read-write association end
@@ -166,6 +187,11 @@ void QUmlCallAction::addResult(QUmlOutputPin *result)
     }
 }
 
+/*!
+    Removes \a result from results.
+
+    \sa results(), addResult()
+ */
 void QUmlCallAction::removeResult(QUmlOutputPin *result)
 {
     // This is a read-write association end

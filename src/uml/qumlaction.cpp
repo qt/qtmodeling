@@ -69,12 +69,21 @@ QT_BEGIN_NAMESPACE
     \inmodule QtUml
 
     \brief An action has pre- and post-conditions.An action represents a single step within an activity, that is, one that is not further decomposed within the activity.An action is a named element that is the fundamental unit of executable functionality. The execution of an action represents some transformation or processing in the modeled system, be it a computer system or otherwise.
+
+    \b {QUmlAction is an abstract class.}
  */
+
+/*!
+    Creates a new QUmlAction.
+*/
 QUmlAction::QUmlAction() :
     _isLocallyReentrant(false)
 {
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlAction.
+*/
 QModelingElement *QUmlAction::clone() const
 {
     QUmlAction *c = new QUmlAction;
@@ -115,6 +124,8 @@ QModelingElement *QUmlAction::clone() const
 
 /*!
     The classifier that owns the behavior of which this action is a part.
+
+    \b {This is a read-only derived property.}
  */
 QUmlClassifier *QUmlAction::context() const
 {
@@ -125,6 +136,9 @@ QUmlClassifier *QUmlAction::context() const
     return 0;
 }
 
+/*!
+    Adjusts context to \a context.
+ */
 void QUmlAction::setContext(QUmlClassifier *context)
 {
     // This is a read-only derived association end
@@ -139,6 +153,10 @@ void QUmlAction::setContext(QUmlClassifier *context)
 
 /*!
     The ordered set of input pins connected to the Action. These are among the total set of inputs.
+
+    \b {This is a read-only derived union property.}
+
+    \b {Subsetted property(ies):} QUmlElement::ownedElements().
  */
 const QList<QUmlInputPin *> QUmlAction::inputs() const
 {
@@ -147,6 +165,11 @@ const QList<QUmlInputPin *> QUmlAction::inputs() const
     return _inputs;
 }
 
+/*!
+    Adds \a input to inputs.
+
+    \sa inputs(), removeInput()
+ */
 void QUmlAction::addInput(QUmlInputPin *input)
 {
     // This is a read-only derived union association end
@@ -162,6 +185,11 @@ void QUmlAction::addInput(QUmlInputPin *input)
     }
 }
 
+/*!
+    Removes \a input from inputs.
+
+    \sa inputs(), addInput()
+ */
 void QUmlAction::removeInput(QUmlInputPin *input)
 {
     // This is a read-only derived union association end
@@ -186,6 +214,9 @@ bool QUmlAction::isLocallyReentrant() const
     return _isLocallyReentrant;
 }
 
+/*!
+    Adjusts isLocallyReentrant to \a isLocallyReentrant.
+ */
 void QUmlAction::setLocallyReentrant(bool isLocallyReentrant)
 {
     // This is a read-write property
@@ -198,6 +229,10 @@ void QUmlAction::setLocallyReentrant(bool isLocallyReentrant)
 
 /*!
     Constraint that must be satisfied when executed is completed.
+
+    \sa addLocalPostcondition(), removeLocalPostcondition()
+
+    \b {Subsetted property(ies):} QUmlElement::ownedElements().
  */
 const QSet<QUmlConstraint *> QUmlAction::localPostconditions() const
 {
@@ -206,6 +241,11 @@ const QSet<QUmlConstraint *> QUmlAction::localPostconditions() const
     return _localPostconditions;
 }
 
+/*!
+    Adds \a localPostcondition to localPostconditions.
+
+    \sa localPostconditions(), removeLocalPostcondition()
+ */
 void QUmlAction::addLocalPostcondition(QUmlConstraint *localPostcondition)
 {
     // This is a read-write association end
@@ -221,6 +261,11 @@ void QUmlAction::addLocalPostcondition(QUmlConstraint *localPostcondition)
     }
 }
 
+/*!
+    Removes \a localPostcondition from localPostconditions.
+
+    \sa localPostconditions(), addLocalPostcondition()
+ */
 void QUmlAction::removeLocalPostcondition(QUmlConstraint *localPostcondition)
 {
     // This is a read-write association end
@@ -237,6 +282,10 @@ void QUmlAction::removeLocalPostcondition(QUmlConstraint *localPostcondition)
 
 /*!
     Constraint that must be satisfied when execution is started.
+
+    \sa addLocalPrecondition(), removeLocalPrecondition()
+
+    \b {Subsetted property(ies):} QUmlElement::ownedElements().
  */
 const QSet<QUmlConstraint *> QUmlAction::localPreconditions() const
 {
@@ -245,6 +294,11 @@ const QSet<QUmlConstraint *> QUmlAction::localPreconditions() const
     return _localPreconditions;
 }
 
+/*!
+    Adds \a localPrecondition to localPreconditions.
+
+    \sa localPreconditions(), removeLocalPrecondition()
+ */
 void QUmlAction::addLocalPrecondition(QUmlConstraint *localPrecondition)
 {
     // This is a read-write association end
@@ -260,6 +314,11 @@ void QUmlAction::addLocalPrecondition(QUmlConstraint *localPrecondition)
     }
 }
 
+/*!
+    Removes \a localPrecondition from localPreconditions.
+
+    \sa localPreconditions(), addLocalPrecondition()
+ */
 void QUmlAction::removeLocalPrecondition(QUmlConstraint *localPrecondition)
 {
     // This is a read-write association end
@@ -276,6 +335,10 @@ void QUmlAction::removeLocalPrecondition(QUmlConstraint *localPrecondition)
 
 /*!
     The ordered set of output pins connected to the Action. The action places its results onto pins in this set.
+
+    \b {This is a read-only derived union property.}
+
+    \b {Subsetted property(ies):} QUmlElement::ownedElements().
  */
 const QList<QUmlOutputPin *> QUmlAction::outputs() const
 {
@@ -284,6 +347,11 @@ const QList<QUmlOutputPin *> QUmlAction::outputs() const
     return _outputs;
 }
 
+/*!
+    Adds \a output to outputs.
+
+    \sa outputs(), removeOutput()
+ */
 void QUmlAction::addOutput(QUmlOutputPin *output)
 {
     // This is a read-only derived union association end
@@ -299,6 +367,11 @@ void QUmlAction::addOutput(QUmlOutputPin *output)
     }
 }
 
+/*!
+    Removes \a output from outputs.
+
+    \sa outputs(), addOutput()
+ */
 void QUmlAction::removeOutput(QUmlOutputPin *output)
 {
     // This is a read-only derived union association end

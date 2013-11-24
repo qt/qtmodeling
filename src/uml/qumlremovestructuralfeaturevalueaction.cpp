@@ -73,6 +73,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A remove structural feature value action is a write structural feature action that removes values from structural features.
  */
+
+/*!
+    Creates a new QUmlRemoveStructuralFeatureValueAction. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlRemoveStructuralFeatureValueAction::QUmlRemoveStructuralFeatureValueAction(bool createQModelingObject) :
     _isRemoveDuplicates(false),
     _removeAt(0)
@@ -81,6 +85,9 @@ QUmlRemoveStructuralFeatureValueAction::QUmlRemoveStructuralFeatureValueAction(b
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlRemoveStructuralFeatureValueActionObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlRemoveStructuralFeatureValueAction.
+*/
 QModelingElement *QUmlRemoveStructuralFeatureValueAction::clone() const
 {
     QUmlRemoveStructuralFeatureValueAction *c = new QUmlRemoveStructuralFeatureValueAction;
@@ -140,6 +147,9 @@ bool QUmlRemoveStructuralFeatureValueAction::isRemoveDuplicates() const
     return _isRemoveDuplicates;
 }
 
+/*!
+    Adjusts isRemoveDuplicates to \a isRemoveDuplicates.
+ */
 void QUmlRemoveStructuralFeatureValueAction::setRemoveDuplicates(bool isRemoveDuplicates)
 {
     // This is a read-write property
@@ -152,6 +162,8 @@ void QUmlRemoveStructuralFeatureValueAction::setRemoveDuplicates(bool isRemoveDu
 
 /*!
     Specifies the position of an existing value to remove in ordered nonunique structural features. The type of the pin is UnlimitedNatural, but the value cannot be zero or unlimited.
+
+    \b {Subsetted property(ies):} QUmlAction::inputs().
  */
 QUmlInputPin *QUmlRemoveStructuralFeatureValueAction::removeAt() const
 {
@@ -160,6 +172,9 @@ QUmlInputPin *QUmlRemoveStructuralFeatureValueAction::removeAt() const
     return _removeAt;
 }
 
+/*!
+    Adjusts removeAt to \a removeAt.
+ */
 void QUmlRemoveStructuralFeatureValueAction::setRemoveAt(QUmlInputPin *removeAt)
 {
     // This is a read-write association end

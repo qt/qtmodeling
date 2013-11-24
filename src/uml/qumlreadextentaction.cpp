@@ -72,6 +72,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A read extent action is an action that retrieves the current instances of a classifier.
  */
+
+/*!
+    Creates a new QUmlReadExtentAction. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlReadExtentAction::QUmlReadExtentAction(bool createQModelingObject) :
     _classifier(0),
     _result(0)
@@ -80,6 +84,9 @@ QUmlReadExtentAction::QUmlReadExtentAction(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlReadExtentActionObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlReadExtentAction.
+*/
 QModelingElement *QUmlReadExtentAction::clone() const
 {
     QUmlReadExtentAction *c = new QUmlReadExtentAction;
@@ -132,6 +139,9 @@ QUmlClassifier *QUmlReadExtentAction::classifier() const
     return _classifier;
 }
 
+/*!
+    Adjusts classifier to \a classifier.
+ */
 void QUmlReadExtentAction::setClassifier(QUmlClassifier *classifier)
 {
     // This is a read-write association end
@@ -145,6 +155,8 @@ void QUmlReadExtentAction::setClassifier(QUmlClassifier *classifier)
 
 /*!
     The runtime instances of the classifier.
+
+    \b {Subsetted property(ies):} QUmlAction::outputs().
  */
 QUmlOutputPin *QUmlReadExtentAction::result() const
 {
@@ -153,6 +165,9 @@ QUmlOutputPin *QUmlReadExtentAction::result() const
     return _result;
 }
 
+/*!
+    Adjusts result to \a result.
+ */
 void QUmlReadExtentAction::setResult(QUmlOutputPin *result)
 {
     // This is a read-write association end

@@ -73,6 +73,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A accept event action is an action that waits for the occurrence of an event meeting specified conditions.
  */
+
+/*!
+    Creates a new QUmlAcceptEventAction. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlAcceptEventAction::QUmlAcceptEventAction(bool createQModelingObject) :
     _isUnmarshall(false)
 {
@@ -80,6 +84,9 @@ QUmlAcceptEventAction::QUmlAcceptEventAction(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlAcceptEventActionObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlAcceptEventAction.
+*/
 QModelingElement *QUmlAcceptEventAction::clone() const
 {
     QUmlAcceptEventAction *c = new QUmlAcceptEventAction;
@@ -133,6 +140,9 @@ bool QUmlAcceptEventAction::isUnmarshall() const
     return _isUnmarshall;
 }
 
+/*!
+    Adjusts isUnmarshall to \a isUnmarshall.
+ */
 void QUmlAcceptEventAction::setUnmarshall(bool isUnmarshall)
 {
     // This is a read-write property
@@ -145,6 +155,10 @@ void QUmlAcceptEventAction::setUnmarshall(bool isUnmarshall)
 
 /*!
     Pins holding the received event objects or their attributes. Event objects may be copied in transmission, so identity might not be preserved.
+
+    \sa addResult(), removeResult()
+
+    \b {Subsetted property(ies):} QUmlAction::outputs().
  */
 const QSet<QUmlOutputPin *> QUmlAcceptEventAction::results() const
 {
@@ -153,6 +167,11 @@ const QSet<QUmlOutputPin *> QUmlAcceptEventAction::results() const
     return _results;
 }
 
+/*!
+    Adds \a result to results.
+
+    \sa results(), removeResult()
+ */
 void QUmlAcceptEventAction::addResult(QUmlOutputPin *result)
 {
     // This is a read-write association end
@@ -168,6 +187,11 @@ void QUmlAcceptEventAction::addResult(QUmlOutputPin *result)
     }
 }
 
+/*!
+    Removes \a result from results.
+
+    \sa results(), addResult()
+ */
 void QUmlAcceptEventAction::removeResult(QUmlOutputPin *result)
 {
     // This is a read-write association end
@@ -184,6 +208,10 @@ void QUmlAcceptEventAction::removeResult(QUmlOutputPin *result)
 
 /*!
     The type of events accepted by the action, as specified by triggers. For triggers with signal events, a signal of the specified type or any subtype of the specified signal type is accepted.
+
+    \sa addTrigger(), removeTrigger()
+
+    \b {Subsetted property(ies):} QUmlElement::ownedElements().
  */
 const QSet<QUmlTrigger *> QUmlAcceptEventAction::triggers() const
 {
@@ -192,6 +220,11 @@ const QSet<QUmlTrigger *> QUmlAcceptEventAction::triggers() const
     return _triggers;
 }
 
+/*!
+    Adds \a trigger to triggers.
+
+    \sa triggers(), removeTrigger()
+ */
 void QUmlAcceptEventAction::addTrigger(QUmlTrigger *trigger)
 {
     // This is a read-write association end
@@ -207,6 +240,11 @@ void QUmlAcceptEventAction::addTrigger(QUmlTrigger *trigger)
     }
 }
 
+/*!
+    Removes \a trigger from triggers.
+
+    \sa triggers(), addTrigger()
+ */
 void QUmlAcceptEventAction::removeTrigger(QUmlTrigger *trigger)
 {
     // This is a read-write association end

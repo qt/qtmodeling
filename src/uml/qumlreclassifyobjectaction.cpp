@@ -72,6 +72,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A reclassify object action is an action that changes which classifiers classify an object.
  */
+
+/*!
+    Creates a new QUmlReclassifyObjectAction. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlReclassifyObjectAction::QUmlReclassifyObjectAction(bool createQModelingObject) :
     _isReplaceAll(false),
     _object(0)
@@ -80,6 +84,9 @@ QUmlReclassifyObjectAction::QUmlReclassifyObjectAction(bool createQModelingObjec
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlReclassifyObjectActionObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlReclassifyObjectAction.
+*/
 QModelingElement *QUmlReclassifyObjectAction::clone() const
 {
     QUmlReclassifyObjectAction *c = new QUmlReclassifyObjectAction;
@@ -135,6 +142,9 @@ bool QUmlReclassifyObjectAction::isReplaceAll() const
     return _isReplaceAll;
 }
 
+/*!
+    Adjusts isReplaceAll to \a isReplaceAll.
+ */
 void QUmlReclassifyObjectAction::setReplaceAll(bool isReplaceAll)
 {
     // This is a read-write property
@@ -147,6 +157,8 @@ void QUmlReclassifyObjectAction::setReplaceAll(bool isReplaceAll)
 
 /*!
     A set of classifiers to be added to the classifiers of the object.
+
+    \sa addNewClassifier(), removeNewClassifier()
  */
 const QSet<QUmlClassifier *> QUmlReclassifyObjectAction::newClassifiers() const
 {
@@ -155,6 +167,11 @@ const QSet<QUmlClassifier *> QUmlReclassifyObjectAction::newClassifiers() const
     return _newClassifiers;
 }
 
+/*!
+    Adds \a newClassifier to newClassifiers.
+
+    \sa newClassifiers(), removeNewClassifier()
+ */
 void QUmlReclassifyObjectAction::addNewClassifier(QUmlClassifier *newClassifier)
 {
     // This is a read-write association end
@@ -166,6 +183,11 @@ void QUmlReclassifyObjectAction::addNewClassifier(QUmlClassifier *newClassifier)
     }
 }
 
+/*!
+    Removes \a newClassifier from newClassifiers.
+
+    \sa newClassifiers(), addNewClassifier()
+ */
 void QUmlReclassifyObjectAction::removeNewClassifier(QUmlClassifier *newClassifier)
 {
     // This is a read-write association end
@@ -177,6 +199,8 @@ void QUmlReclassifyObjectAction::removeNewClassifier(QUmlClassifier *newClassifi
 
 /*!
     Holds the object to be reclassified.
+
+    \b {Subsetted property(ies):} QUmlAction::inputs().
  */
 QUmlInputPin *QUmlReclassifyObjectAction::object() const
 {
@@ -185,6 +209,9 @@ QUmlInputPin *QUmlReclassifyObjectAction::object() const
     return _object;
 }
 
+/*!
+    Adjusts object to \a object.
+ */
 void QUmlReclassifyObjectAction::setObject(QUmlInputPin *object)
 {
     // This is a read-write association end
@@ -207,6 +234,8 @@ void QUmlReclassifyObjectAction::setObject(QUmlInputPin *object)
 
 /*!
     A set of classifiers to be removed from the classifiers of the object.
+
+    \sa addOldClassifier(), removeOldClassifier()
  */
 const QSet<QUmlClassifier *> QUmlReclassifyObjectAction::oldClassifiers() const
 {
@@ -215,6 +244,11 @@ const QSet<QUmlClassifier *> QUmlReclassifyObjectAction::oldClassifiers() const
     return _oldClassifiers;
 }
 
+/*!
+    Adds \a oldClassifier to oldClassifiers.
+
+    \sa oldClassifiers(), removeOldClassifier()
+ */
 void QUmlReclassifyObjectAction::addOldClassifier(QUmlClassifier *oldClassifier)
 {
     // This is a read-write association end
@@ -226,6 +260,11 @@ void QUmlReclassifyObjectAction::addOldClassifier(QUmlClassifier *oldClassifier)
     }
 }
 
+/*!
+    Removes \a oldClassifier from oldClassifiers.
+
+    \sa oldClassifiers(), addOldClassifier()
+ */
 void QUmlReclassifyObjectAction::removeOldClassifier(QUmlClassifier *oldClassifier)
 {
     // This is a read-write association end

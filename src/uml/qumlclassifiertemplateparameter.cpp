@@ -57,6 +57,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A classifier template parameter exposes a classifier as a formal template parameter.
  */
+
+/*!
+    Creates a new QUmlClassifierTemplateParameter. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlClassifierTemplateParameter::QUmlClassifierTemplateParameter(bool createQModelingObject) :
     QUmlTemplateParameter(false),
     _allowSubstitutable(true),
@@ -66,6 +70,9 @@ QUmlClassifierTemplateParameter::QUmlClassifierTemplateParameter(bool createQMod
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlClassifierTemplateParameterObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlClassifierTemplateParameter.
+*/
 QModelingElement *QUmlClassifierTemplateParameter::clone() const
 {
     QUmlClassifierTemplateParameter *c = new QUmlClassifierTemplateParameter;
@@ -99,6 +106,9 @@ bool QUmlClassifierTemplateParameter::allowSubstitutable() const
     return _allowSubstitutable;
 }
 
+/*!
+    Adjusts allowSubstitutable to \a allowSubstitutable.
+ */
 void QUmlClassifierTemplateParameter::setAllowSubstitutable(bool allowSubstitutable)
 {
     // This is a read-write property
@@ -111,6 +121,8 @@ void QUmlClassifierTemplateParameter::setAllowSubstitutable(bool allowSubstituta
 
 /*!
     The classifiers that constrain the argument that can be used for the parameter. If the allowSubstitutable attribute is true, then any classifier that is compatible with this constraining classifier can be substituted; otherwise, it must be either this classifier or one of its subclasses. If this property is empty, there are no constraints on the classifier that can be used as an argument.
+
+    \sa addConstrainingClassifier(), removeConstrainingClassifier()
  */
 const QSet<QUmlClassifier *> QUmlClassifierTemplateParameter::constrainingClassifiers() const
 {
@@ -119,6 +131,11 @@ const QSet<QUmlClassifier *> QUmlClassifierTemplateParameter::constrainingClassi
     return _constrainingClassifiers;
 }
 
+/*!
+    Adds \a constrainingClassifier to constrainingClassifiers.
+
+    \sa constrainingClassifiers(), removeConstrainingClassifier()
+ */
 void QUmlClassifierTemplateParameter::addConstrainingClassifier(QUmlClassifier *constrainingClassifier)
 {
     // This is a read-write association end
@@ -130,6 +147,11 @@ void QUmlClassifierTemplateParameter::addConstrainingClassifier(QUmlClassifier *
     }
 }
 
+/*!
+    Removes \a constrainingClassifier from constrainingClassifiers.
+
+    \sa constrainingClassifiers(), addConstrainingClassifier()
+ */
 void QUmlClassifierTemplateParameter::removeConstrainingClassifier(QUmlClassifier *constrainingClassifier)
 {
     // This is a read-write association end
@@ -141,6 +163,10 @@ void QUmlClassifierTemplateParameter::removeConstrainingClassifier(QUmlClassifie
 
 /*!
     The parameterable classifier for this template parameter.
+
+    \b {Redefined property(ies):} QUmlTemplateParameter::parameteredElement().
+
+    \b {Opposite property(ies):} QUmlClassifier::templateParameter().
  */
 QUmlClassifier *QUmlClassifierTemplateParameter::parameteredElement() const
 {
@@ -149,6 +175,9 @@ QUmlClassifier *QUmlClassifierTemplateParameter::parameteredElement() const
     return _parameteredElement;
 }
 
+/*!
+    Adjusts parameteredElement to \a parameteredElement.
+ */
 void QUmlClassifierTemplateParameter::setParameteredElement(QUmlClassifier *parameteredElement)
 {
     // This is a read-write association end

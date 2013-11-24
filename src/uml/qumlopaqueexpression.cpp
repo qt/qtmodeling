@@ -64,6 +64,10 @@ QT_BEGIN_NAMESPACE
 
     \brief An opaque expression is an uninterpreted textual statement that denotes a (possibly empty) set of values when evaluated in a context.Provides a mechanism for precisely defining the behavior of an opaque expression. An opaque expression is defined by a behavior restricted to return one result.
  */
+
+/*!
+    Creates a new QUmlOpaqueExpression. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlOpaqueExpression::QUmlOpaqueExpression(bool createQModelingObject) :
     _behavior(0)
 {
@@ -71,6 +75,9 @@ QUmlOpaqueExpression::QUmlOpaqueExpression(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlOpaqueExpressionObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlOpaqueExpression.
+*/
 QModelingElement *QUmlOpaqueExpression::clone() const
 {
     QUmlOpaqueExpression *c = new QUmlOpaqueExpression;
@@ -109,6 +116,9 @@ QUmlBehavior *QUmlOpaqueExpression::behavior() const
     return _behavior;
 }
 
+/*!
+    Adjusts behavior to \a behavior.
+ */
 void QUmlOpaqueExpression::setBehavior(QUmlBehavior *behavior)
 {
     // This is a read-write association end
@@ -122,6 +132,8 @@ void QUmlOpaqueExpression::setBehavior(QUmlBehavior *behavior)
 
 /*!
     The text of the expression, possibly in multiple languages.
+
+    \sa addBody(), removeBody()
  */
 const QList<QString> QUmlOpaqueExpression::bodies() const
 {
@@ -130,6 +142,11 @@ const QList<QString> QUmlOpaqueExpression::bodies() const
     return _bodies;
 }
 
+/*!
+    Adds \a body to bodies.
+
+    \sa bodies(), removeBody()
+ */
 void QUmlOpaqueExpression::addBody(QString body)
 {
     // This is a read-write property
@@ -139,6 +156,11 @@ void QUmlOpaqueExpression::addBody(QString body)
     }
 }
 
+/*!
+    Removes \a body from bodies.
+
+    \sa bodies(), addBody()
+ */
 void QUmlOpaqueExpression::removeBody(QString body)
 {
     // This is a read-write property
@@ -150,6 +172,8 @@ void QUmlOpaqueExpression::removeBody(QString body)
 
 /*!
     Specifies the languages in which the expression is stated. The interpretation of the expression body depends on the languages. If the languages are unspecified, they might be implicit from the expression body or the context. Languages are matched to body strings by order.
+
+    \sa addLanguage(), removeLanguage()
  */
 const QList<QString> QUmlOpaqueExpression::languages() const
 {
@@ -158,6 +182,11 @@ const QList<QString> QUmlOpaqueExpression::languages() const
     return _languages;
 }
 
+/*!
+    Adds \a language to languages.
+
+    \sa languages(), removeLanguage()
+ */
 void QUmlOpaqueExpression::addLanguage(QString language)
 {
     // This is a read-write property
@@ -167,6 +196,11 @@ void QUmlOpaqueExpression::addLanguage(QString language)
     }
 }
 
+/*!
+    Removes \a language from languages.
+
+    \sa languages(), addLanguage()
+ */
 void QUmlOpaqueExpression::removeLanguage(QString language)
 {
     // This is a read-write property
@@ -178,6 +212,8 @@ void QUmlOpaqueExpression::removeLanguage(QString language)
 
 /*!
     Restricts an opaque expression to return exactly one return result. When the invocation of the opaque expression completes, a single set of values is returned to its owner. This association is derived from the single return result parameter of the associated behavior.
+
+    \b {This is a read-only derived property.}
  */
 QUmlParameter *QUmlOpaqueExpression::result() const
 {
@@ -188,6 +224,9 @@ QUmlParameter *QUmlOpaqueExpression::result() const
     return 0;
 }
 
+/*!
+    Adjusts result to \a result.
+ */
 void QUmlOpaqueExpression::setResult(QUmlParameter *result)
 {
     // This is a read-only derived association end

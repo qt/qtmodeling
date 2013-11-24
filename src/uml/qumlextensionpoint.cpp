@@ -61,6 +61,10 @@ QT_BEGIN_NAMESPACE
 
     \brief An extension point identifies a point in the behavior of a use case where that behavior can be extended by the behavior of some other (extending) use case, as specified by an extend relationship.
  */
+
+/*!
+    Creates a new QUmlExtensionPoint. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlExtensionPoint::QUmlExtensionPoint(bool createQModelingObject) :
     _useCase(0)
 {
@@ -68,6 +72,9 @@ QUmlExtensionPoint::QUmlExtensionPoint(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlExtensionPointObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlExtensionPoint.
+*/
 QModelingElement *QUmlExtensionPoint::clone() const
 {
     QUmlExtensionPoint *c = new QUmlExtensionPoint;
@@ -89,6 +96,10 @@ QModelingElement *QUmlExtensionPoint::clone() const
 
 /*!
     References the use case that owns this extension point.
+
+    \b {Subsetted property(ies):} QUmlNamedElement::namespace_().
+
+    \b {Opposite property(ies):} QUmlUseCase::extensionPoints().
  */
 QUmlUseCase *QUmlExtensionPoint::useCase() const
 {
@@ -97,6 +108,9 @@ QUmlUseCase *QUmlExtensionPoint::useCase() const
     return _useCase;
 }
 
+/*!
+    Adjusts useCase to \a useCase.
+ */
 void QUmlExtensionPoint::setUseCase(QUmlUseCase *useCase)
 {
     // This is a read-write association end

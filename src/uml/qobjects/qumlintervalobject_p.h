@@ -47,8 +47,6 @@
 
 #include <QtUml/QtUmlNamespace>
 
-QT_BEGIN_HEADER
-
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
@@ -205,8 +203,6 @@ protected:
 };
 
 QT_END_NAMESPACE
-
-QT_END_HEADER
 
 #endif // QUMLINTERVALOBJECT_H
 

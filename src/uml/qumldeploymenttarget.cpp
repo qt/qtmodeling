@@ -57,11 +57,20 @@ QT_BEGIN_NAMESPACE
     \inmodule QtUml
 
     \brief A deployment target is the location for a deployed artifact.
+
+    \b {QUmlDeploymentTarget is an abstract class.}
  */
+
+/*!
+    Creates a new QUmlDeploymentTarget.
+*/
 QUmlDeploymentTarget::QUmlDeploymentTarget()
 {
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlDeploymentTarget.
+*/
 QModelingElement *QUmlDeploymentTarget::clone() const
 {
     QUmlDeploymentTarget *c = new QUmlDeploymentTarget;
@@ -82,6 +91,8 @@ QModelingElement *QUmlDeploymentTarget::clone() const
 
 /*!
     The set of elements that are manifested in an Artifact that is involved in Deployment to a DeploymentTarget.
+
+    \b {This is a read-only derived property.}
  */
 const QSet<QUmlPackageableElement *> QUmlDeploymentTarget::deployedElements() const
 {
@@ -92,6 +103,11 @@ const QSet<QUmlPackageableElement *> QUmlDeploymentTarget::deployedElements() co
     return QSet<QUmlPackageableElement *>();
 }
 
+/*!
+    Adds \a deployedElement to deployedElements.
+
+    \sa deployedElements(), removeDeployedElement()
+ */
 void QUmlDeploymentTarget::addDeployedElement(QUmlPackageableElement *deployedElement)
 {
     // This is a read-only derived association end
@@ -104,6 +120,11 @@ void QUmlDeploymentTarget::addDeployedElement(QUmlPackageableElement *deployedEl
     }
 }
 
+/*!
+    Removes \a deployedElement from deployedElements.
+
+    \sa deployedElements(), addDeployedElement()
+ */
 void QUmlDeploymentTarget::removeDeployedElement(QUmlPackageableElement *deployedElement)
 {
     // This is a read-only derived association end
@@ -118,6 +139,12 @@ void QUmlDeploymentTarget::removeDeployedElement(QUmlPackageableElement *deploye
 
 /*!
     The set of Deployments for a DeploymentTarget.
+
+    \sa addDeployment(), removeDeployment()
+
+    \b {Subsetted property(ies):} QUmlElement::ownedElements(), QUmlNamedElement::clientDependencies().
+
+    \b {Opposite property(ies):} QUmlDeployment::location().
  */
 const QSet<QUmlDeployment *> QUmlDeploymentTarget::deployments() const
 {
@@ -126,6 +153,11 @@ const QSet<QUmlDeployment *> QUmlDeploymentTarget::deployments() const
     return _deployments;
 }
 
+/*!
+    Adds \a deployment to deployments.
+
+    \sa deployments(), removeDeployment()
+ */
 void QUmlDeploymentTarget::addDeployment(QUmlDeployment *deployment)
 {
     // This is a read-write association end
@@ -147,6 +179,11 @@ void QUmlDeploymentTarget::addDeployment(QUmlDeployment *deployment)
     }
 }
 
+/*!
+    Removes \a deployment from deployments.
+
+    \sa deployments(), addDeployment()
+ */
 void QUmlDeploymentTarget::removeDeployment(QUmlDeployment *deployment)
 {
     // This is a read-write association end

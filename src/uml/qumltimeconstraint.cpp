@@ -64,6 +64,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A time constraint is a constraint that refers to a time interval.
  */
+
+/*!
+    Creates a new QUmlTimeConstraint. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlTimeConstraint::QUmlTimeConstraint(bool createQModelingObject) :
     QUmlIntervalConstraint(false),
     _firstEvent(true),
@@ -73,6 +77,9 @@ QUmlTimeConstraint::QUmlTimeConstraint(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlTimeConstraintObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlTimeConstraint.
+*/
 QModelingElement *QUmlTimeConstraint::clone() const
 {
     QUmlTimeConstraint *c = new QUmlTimeConstraint;
@@ -110,6 +117,9 @@ bool QUmlTimeConstraint::firstEvent() const
     return _firstEvent;
 }
 
+/*!
+    Adjusts firstEvent to \a firstEvent.
+ */
 void QUmlTimeConstraint::setFirstEvent(bool firstEvent)
 {
     // This is a read-write property
@@ -122,6 +132,8 @@ void QUmlTimeConstraint::setFirstEvent(bool firstEvent)
 
 /*!
     A condition that must be true when evaluated in order for the constraint to be satisfied.
+
+    \b {Redefined property(ies):} QUmlIntervalConstraint::specification().
  */
 QUmlTimeInterval *QUmlTimeConstraint::specification() const
 {
@@ -130,6 +142,9 @@ QUmlTimeInterval *QUmlTimeConstraint::specification() const
     return _specification;
 }
 
+/*!
+    Adjusts specification to \a specification.
+ */
 void QUmlTimeConstraint::setSpecification(QUmlTimeInterval *specification)
 {
     // This is a read-write association end

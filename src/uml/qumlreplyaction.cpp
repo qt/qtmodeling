@@ -73,6 +73,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A reply action is an action that accepts a set of return values and a value containing return information produced by a previous accept call action. The reply action returns the values to the caller of the previous call, completing execution of the call.
  */
+
+/*!
+    Creates a new QUmlReplyAction. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlReplyAction::QUmlReplyAction(bool createQModelingObject) :
     _replyToCall(0),
     _returnInformation(0)
@@ -81,6 +85,9 @@ QUmlReplyAction::QUmlReplyAction(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlReplyActionObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlReplyAction.
+*/
 QModelingElement *QUmlReplyAction::clone() const
 {
     QUmlReplyAction *c = new QUmlReplyAction;
@@ -135,6 +142,9 @@ QUmlTrigger *QUmlReplyAction::replyToCall() const
     return _replyToCall;
 }
 
+/*!
+    Adjusts replyToCall to \a replyToCall.
+ */
 void QUmlReplyAction::setReplyToCall(QUmlTrigger *replyToCall)
 {
     // This is a read-write association end
@@ -148,6 +158,10 @@ void QUmlReplyAction::setReplyToCall(QUmlTrigger *replyToCall)
 
 /*!
     A list of pins containing the reply values of the operation. These values are returned to the caller.
+
+    \sa addReplyValue(), removeReplyValue()
+
+    \b {Subsetted property(ies):} QUmlAction::inputs().
  */
 const QSet<QUmlInputPin *> QUmlReplyAction::replyValues() const
 {
@@ -156,6 +170,11 @@ const QSet<QUmlInputPin *> QUmlReplyAction::replyValues() const
     return _replyValues;
 }
 
+/*!
+    Adds \a replyValue to replyValues.
+
+    \sa replyValues(), removeReplyValue()
+ */
 void QUmlReplyAction::addReplyValue(QUmlInputPin *replyValue)
 {
     // This is a read-write association end
@@ -171,6 +190,11 @@ void QUmlReplyAction::addReplyValue(QUmlInputPin *replyValue)
     }
 }
 
+/*!
+    Removes \a replyValue from replyValues.
+
+    \sa replyValues(), addReplyValue()
+ */
 void QUmlReplyAction::removeReplyValue(QUmlInputPin *replyValue)
 {
     // This is a read-write association end
@@ -187,6 +211,8 @@ void QUmlReplyAction::removeReplyValue(QUmlInputPin *replyValue)
 
 /*!
     A pin containing the return information value produced by an earlier AcceptCallAction.
+
+    \b {Subsetted property(ies):} QUmlAction::inputs().
  */
 QUmlInputPin *QUmlReplyAction::returnInformation() const
 {
@@ -195,6 +221,9 @@ QUmlInputPin *QUmlReplyAction::returnInformation() const
     return _returnInformation;
 }
 
+/*!
+    Adjusts returnInformation to \a returnInformation.
+ */
 void QUmlReplyAction::setReturnInformation(QUmlInputPin *returnInformation)
 {
     // This is a read-write association end

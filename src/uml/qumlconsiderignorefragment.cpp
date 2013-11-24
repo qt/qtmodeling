@@ -64,6 +64,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A consider ignore fragment is a kind of combined fragment that is used for the consider and ignore cases, which require lists of pertinent messages to be specified.
  */
+
+/*!
+    Creates a new QUmlConsiderIgnoreFragment. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlConsiderIgnoreFragment::QUmlConsiderIgnoreFragment(bool createQModelingObject) :
     QUmlCombinedFragment(false)
 {
@@ -71,6 +75,9 @@ QUmlConsiderIgnoreFragment::QUmlConsiderIgnoreFragment(bool createQModelingObjec
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlConsiderIgnoreFragmentObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlConsiderIgnoreFragment.
+*/
 QModelingElement *QUmlConsiderIgnoreFragment::clone() const
 {
     QUmlConsiderIgnoreFragment *c = new QUmlConsiderIgnoreFragment;
@@ -104,6 +111,8 @@ QModelingElement *QUmlConsiderIgnoreFragment::clone() const
 
 /*!
     The set of messages that apply to this fragment
+
+    \sa addMessage(), removeMessage()
  */
 const QSet<QUmlNamedElement *> QUmlConsiderIgnoreFragment::messages() const
 {
@@ -112,6 +121,11 @@ const QSet<QUmlNamedElement *> QUmlConsiderIgnoreFragment::messages() const
     return _messages;
 }
 
+/*!
+    Adds \a message to messages.
+
+    \sa messages(), removeMessage()
+ */
 void QUmlConsiderIgnoreFragment::addMessage(QUmlNamedElement *message)
 {
     // This is a read-write association end
@@ -123,6 +137,11 @@ void QUmlConsiderIgnoreFragment::addMessage(QUmlNamedElement *message)
     }
 }
 
+/*!
+    Removes \a message from messages.
+
+    \sa messages(), addMessage()
+ */
 void QUmlConsiderIgnoreFragment::removeMessage(QUmlNamedElement *message)
 {
     // This is a read-write association end

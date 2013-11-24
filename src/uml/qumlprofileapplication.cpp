@@ -56,6 +56,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A profile application is used to show which profiles have been applied to a package.
  */
+
+/*!
+    Creates a new QUmlProfileApplication. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlProfileApplication::QUmlProfileApplication(bool createQModelingObject) :
     _appliedProfile(0),
     _applyingPackage(0),
@@ -65,6 +69,9 @@ QUmlProfileApplication::QUmlProfileApplication(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlProfileApplicationObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlProfileApplication.
+*/
 QModelingElement *QUmlProfileApplication::clone() const
 {
     QUmlProfileApplication *c = new QUmlProfileApplication;
@@ -82,6 +89,8 @@ QModelingElement *QUmlProfileApplication::clone() const
 
 /*!
     References the Profiles that are applied to a Package through this ProfileApplication.
+
+    \b {Subsetted property(ies):} QUmlDirectedRelationship::targets().
  */
 QUmlProfile *QUmlProfileApplication::appliedProfile() const
 {
@@ -90,6 +99,9 @@ QUmlProfile *QUmlProfileApplication::appliedProfile() const
     return _appliedProfile;
 }
 
+/*!
+    Adjusts appliedProfile to \a appliedProfile.
+ */
 void QUmlProfileApplication::setAppliedProfile(QUmlProfile *appliedProfile)
 {
     // This is a read-write association end
@@ -111,6 +123,10 @@ void QUmlProfileApplication::setAppliedProfile(QUmlProfile *appliedProfile)
 
 /*!
     The package that owns the profile application.
+
+    \b {Subsetted property(ies):} QUmlElement::owner(), QUmlDirectedRelationship::sources().
+
+    \b {Opposite property(ies):} QUmlPackage::profileApplications().
  */
 QUmlPackage *QUmlProfileApplication::applyingPackage() const
 {
@@ -119,6 +135,9 @@ QUmlPackage *QUmlProfileApplication::applyingPackage() const
     return _applyingPackage;
 }
 
+/*!
+    Adjusts applyingPackage to \a applyingPackage.
+ */
 void QUmlProfileApplication::setApplyingPackage(QUmlPackage *applyingPackage)
 {
     // This is a read-write association end
@@ -149,6 +168,9 @@ bool QUmlProfileApplication::isStrict() const
     return _isStrict;
 }
 
+/*!
+    Adjusts isStrict to \a isStrict.
+ */
 void QUmlProfileApplication::setStrict(bool isStrict)
 {
     // This is a read-write property

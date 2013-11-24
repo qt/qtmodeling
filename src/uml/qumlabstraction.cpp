@@ -61,6 +61,10 @@ QT_BEGIN_NAMESPACE
 
     \brief An abstraction is a relationship that relates two elements or sets of elements that represent the same concept at different levels of abstraction or from different viewpoints.
  */
+
+/*!
+    Creates a new QUmlAbstraction. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlAbstraction::QUmlAbstraction(bool createQModelingObject) :
     QUmlDependency(false),
     _mapping(0)
@@ -69,6 +73,9 @@ QUmlAbstraction::QUmlAbstraction(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlAbstractionObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlAbstraction.
+*/
 QModelingElement *QUmlAbstraction::clone() const
 {
     QUmlAbstraction *c = new QUmlAbstraction;
@@ -97,6 +104,8 @@ QModelingElement *QUmlAbstraction::clone() const
 
 /*!
     An composition of an Expression that states the abstraction relationship between the supplier and the client. In some cases, such as Derivation, it is usually formal and unidirectional; in other cases, such as Trace, it is usually informal and bidirectional. The mapping expression is optional and may be omitted if the precise relationship between the elements is not specified.
+
+    \b {Subsetted property(ies):} QUmlElement::ownedElements().
  */
 QUmlOpaqueExpression *QUmlAbstraction::mapping() const
 {
@@ -105,6 +114,9 @@ QUmlOpaqueExpression *QUmlAbstraction::mapping() const
     return _mapping;
 }
 
+/*!
+    Adjusts mapping to \a mapping.
+ */
 void QUmlAbstraction::setMapping(QUmlOpaqueExpression *mapping)
 {
     // This is a read-write association end

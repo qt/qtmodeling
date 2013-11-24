@@ -70,6 +70,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A reception is a declaration stating that a classifier is prepared to react to the receipt of a signal. A reception designates a signal and specifies the expected behavioral response. The details of handling a signal are specified by the behavior associated with the reception or the classifier itself.
  */
+
+/*!
+    Creates a new QUmlReception. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlReception::QUmlReception(bool createQModelingObject) :
     _signal(0)
 {
@@ -77,6 +81,9 @@ QUmlReception::QUmlReception(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlReceptionObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlReception.
+*/
 QModelingElement *QUmlReception::clone() const
 {
     QUmlReception *c = new QUmlReception;
@@ -123,6 +130,9 @@ QUmlSignal *QUmlReception::signal() const
     return _signal;
 }
 
+/*!
+    Adjusts signal to \a signal.
+ */
 void QUmlReception::setSignal(QUmlSignal *signal)
 {
     // This is a read-write association end

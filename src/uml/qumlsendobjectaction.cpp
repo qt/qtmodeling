@@ -73,6 +73,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A send object action is an action that transmits an object to the target object, where it may invoke behavior such as the firing of state machine transitions or the execution of an activity. The value of the object is available to the execution of invoked behaviors. The requestor continues execution immediately. Any reply message is ignored and is not transmitted to the requestor.
  */
+
+/*!
+    Creates a new QUmlSendObjectAction. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlSendObjectAction::QUmlSendObjectAction(bool createQModelingObject) :
     _request(0),
     _target(0)
@@ -81,6 +85,9 @@ QUmlSendObjectAction::QUmlSendObjectAction(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlSendObjectActionObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlSendObjectAction.
+*/
 QModelingElement *QUmlSendObjectAction::clone() const
 {
     QUmlSendObjectAction *c = new QUmlSendObjectAction;
@@ -127,6 +134,8 @@ QModelingElement *QUmlSendObjectAction::clone() const
 
 /*!
     The request object, which is transmitted to the target object. The object may be copied in transmission, so identity might not be preserved.
+
+    \b {Redefined property(ies):} QUmlInvocationAction::arguments().
  */
 QUmlInputPin *QUmlSendObjectAction::request() const
 {
@@ -135,6 +144,9 @@ QUmlInputPin *QUmlSendObjectAction::request() const
     return _request;
 }
 
+/*!
+    Adjusts request to \a request.
+ */
 void QUmlSendObjectAction::setRequest(QUmlInputPin *request)
 {
     // This is a read-write association end
@@ -156,6 +168,8 @@ void QUmlSendObjectAction::setRequest(QUmlInputPin *request)
 
 /*!
     The target object to which the object is sent.
+
+    \b {Subsetted property(ies):} QUmlAction::inputs().
  */
 QUmlInputPin *QUmlSendObjectAction::target() const
 {
@@ -164,6 +178,9 @@ QUmlInputPin *QUmlSendObjectAction::target() const
     return _target;
 }
 
+/*!
+    Adjusts target to \a target.
+ */
 void QUmlSendObjectAction::setTarget(QUmlInputPin *target)
 {
     // This is a read-write association end

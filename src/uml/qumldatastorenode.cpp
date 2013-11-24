@@ -72,6 +72,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A data store node is a central buffer node for non-transient information.
  */
+
+/*!
+    Creates a new QUmlDataStoreNode. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlDataStoreNode::QUmlDataStoreNode(bool createQModelingObject) :
     QUmlCentralBufferNode(false)
 {
@@ -79,6 +83,9 @@ QUmlDataStoreNode::QUmlDataStoreNode(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlDataStoreNodeObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlDataStoreNode.
+*/
 QModelingElement *QUmlDataStoreNode::clone() const
 {
     QUmlDataStoreNode *c = new QUmlDataStoreNode;

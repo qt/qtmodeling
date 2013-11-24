@@ -61,6 +61,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A relationship from an extending use case to an extended use case that specifies how and when the behavior defined in the extending use case can be inserted into the behavior defined in the extended use case.
  */
+
+/*!
+    Creates a new QUmlExtend. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlExtend::QUmlExtend(bool createQModelingObject) :
     _condition(0),
     _extendedCase(0),
@@ -70,6 +74,9 @@ QUmlExtend::QUmlExtend(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlExtendObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlExtend.
+*/
 QModelingElement *QUmlExtend::clone() const
 {
     QUmlExtend *c = new QUmlExtend;
@@ -96,6 +103,8 @@ QModelingElement *QUmlExtend::clone() const
 
 /*!
     References the condition that must hold when the first extension point is reached for the extension to take place. If no constraint is associated with the extend relationship, the extension is unconditional.
+
+    \b {Subsetted property(ies):} QUmlElement::ownedElements().
  */
 QUmlConstraint *QUmlExtend::condition() const
 {
@@ -104,6 +113,9 @@ QUmlConstraint *QUmlExtend::condition() const
     return _condition;
 }
 
+/*!
+    Adjusts condition to \a condition.
+ */
 void QUmlExtend::setCondition(QUmlConstraint *condition)
 {
     // This is a read-write association end
@@ -126,6 +138,8 @@ void QUmlExtend::setCondition(QUmlConstraint *condition)
 
 /*!
     References the use case that is being extended.
+
+    \b {Subsetted property(ies):} QUmlDirectedRelationship::targets().
  */
 QUmlUseCase *QUmlExtend::extendedCase() const
 {
@@ -134,6 +148,9 @@ QUmlUseCase *QUmlExtend::extendedCase() const
     return _extendedCase;
 }
 
+/*!
+    Adjusts extendedCase to \a extendedCase.
+ */
 void QUmlExtend::setExtendedCase(QUmlUseCase *extendedCase)
 {
     // This is a read-write association end
@@ -155,6 +172,10 @@ void QUmlExtend::setExtendedCase(QUmlUseCase *extendedCase)
 
 /*!
     References the use case that represents the extension and owns the extend relationship.
+
+    \b {Subsetted property(ies):} QUmlDirectedRelationship::sources(), QUmlNamedElement::namespace_().
+
+    \b {Opposite property(ies):} QUmlUseCase::extends().
  */
 QUmlUseCase *QUmlExtend::extension() const
 {
@@ -163,6 +184,9 @@ QUmlUseCase *QUmlExtend::extension() const
     return _extension;
 }
 
+/*!
+    Adjusts extension to \a extension.
+ */
 void QUmlExtend::setExtension(QUmlUseCase *extension)
 {
     // This is a read-write association end
@@ -185,6 +209,8 @@ void QUmlExtend::setExtension(QUmlUseCase *extension)
 
 /*!
     An ordered list of extension points belonging to the extended use case, specifying where the respective behavioral fragments of the extending use case are to be inserted. The first fragment in the extending use case is associated with the first extension point in the list, the second fragment with the second point, and so on. (Note that, in most practical cases, the extending use case has just a single behavior fragment, so that the list of extension points is trivial.)
+
+    \sa addExtensionLocation(), removeExtensionLocation()
  */
 const QList<QUmlExtensionPoint *> QUmlExtend::extensionLocations() const
 {
@@ -193,6 +219,11 @@ const QList<QUmlExtensionPoint *> QUmlExtend::extensionLocations() const
     return _extensionLocations;
 }
 
+/*!
+    Adds \a extensionLocation to extensionLocations.
+
+    \sa extensionLocations(), removeExtensionLocation()
+ */
 void QUmlExtend::addExtensionLocation(QUmlExtensionPoint *extensionLocation)
 {
     // This is a read-write association end
@@ -204,6 +235,11 @@ void QUmlExtend::addExtensionLocation(QUmlExtensionPoint *extensionLocation)
     }
 }
 
+/*!
+    Removes \a extensionLocation from extensionLocations.
+
+    \sa extensionLocations(), addExtensionLocation()
+ */
 void QUmlExtend::removeExtensionLocation(QUmlExtensionPoint *extensionLocation)
 {
     // This is a read-write association end

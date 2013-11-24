@@ -73,6 +73,10 @@ QT_BEGIN_NAMESPACE
 
     \brief StartObjectBehaviorAction is an action that starts the execution either of a directly instantiated behavior or of the classifier behavior of an object. Argument values may be supplied for the input parameters of the behavior. If the behavior is invoked synchronously, then output values may be obtained for output parameters.
  */
+
+/*!
+    Creates a new QUmlStartObjectBehaviorAction. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlStartObjectBehaviorAction::QUmlStartObjectBehaviorAction(bool createQModelingObject) :
     _object(0)
 {
@@ -80,6 +84,9 @@ QUmlStartObjectBehaviorAction::QUmlStartObjectBehaviorAction(bool createQModelin
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlStartObjectBehaviorActionObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlStartObjectBehaviorAction.
+*/
 QModelingElement *QUmlStartObjectBehaviorAction::clone() const
 {
     QUmlStartObjectBehaviorAction *c = new QUmlStartObjectBehaviorAction;
@@ -129,6 +136,8 @@ QModelingElement *QUmlStartObjectBehaviorAction::clone() const
 
 /*!
     Holds the object which is either a behavior to be started or has a classifier behavior to be started.
+
+    \b {Subsetted property(ies):} QUmlAction::inputs().
  */
 QUmlInputPin *QUmlStartObjectBehaviorAction::object() const
 {
@@ -137,6 +146,9 @@ QUmlInputPin *QUmlStartObjectBehaviorAction::object() const
     return _object;
 }
 
+/*!
+    Adjusts object to \a object.
+ */
 void QUmlStartObjectBehaviorAction::setObject(QUmlInputPin *object)
 {
     // This is a read-write association end

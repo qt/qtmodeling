@@ -64,11 +64,20 @@ QT_BEGIN_NAMESPACE
     \inmodule QtUml
 
     \brief A control node is an abstract activity node that coordinates flows in an activity.
+
+    \b {QUmlControlNode is an abstract class.}
  */
+
+/*!
+    Creates a new QUmlControlNode.
+*/
 QUmlControlNode::QUmlControlNode()
 {
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlControlNode.
+*/
 QModelingElement *QUmlControlNode::clone() const
 {
     QUmlControlNode *c = new QUmlControlNode;

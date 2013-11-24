@@ -56,12 +56,21 @@ QT_BEGIN_NAMESPACE
     \inmodule QtUml
 
     \brief MessageEnd is an abstract specialization of NamedElement that represents what can occur at the end of a message.
+
+    \b {QUmlMessageEnd is an abstract class.}
  */
+
+/*!
+    Creates a new QUmlMessageEnd.
+*/
 QUmlMessageEnd::QUmlMessageEnd() :
     _message(0)
 {
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlMessageEnd.
+*/
 QModelingElement *QUmlMessageEnd::clone() const
 {
     QUmlMessageEnd *c = new QUmlMessageEnd;
@@ -90,6 +99,9 @@ QUmlMessage *QUmlMessageEnd::message() const
     return _message;
 }
 
+/*!
+    Adjusts message to \a message.
+ */
 void QUmlMessageEnd::setMessage(QUmlMessage *message)
 {
     // This is a read-write association end

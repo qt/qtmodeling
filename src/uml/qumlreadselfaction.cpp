@@ -72,6 +72,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A read self action is an action that retrieves the host object of an action.
  */
+
+/*!
+    Creates a new QUmlReadSelfAction. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlReadSelfAction::QUmlReadSelfAction(bool createQModelingObject) :
     _result(0)
 {
@@ -79,6 +83,9 @@ QUmlReadSelfAction::QUmlReadSelfAction(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlReadSelfActionObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlReadSelfAction.
+*/
 QModelingElement *QUmlReadSelfAction::clone() const
 {
     QUmlReadSelfAction *c = new QUmlReadSelfAction;
@@ -121,6 +128,8 @@ QModelingElement *QUmlReadSelfAction::clone() const
 
 /*!
     Gives the output pin on which the hosting object is placed.
+
+    \b {Subsetted property(ies):} QUmlAction::outputs().
  */
 QUmlOutputPin *QUmlReadSelfAction::result() const
 {
@@ -129,6 +138,9 @@ QUmlOutputPin *QUmlReadSelfAction::result() const
     return _result;
 }
 
+/*!
+    Adjusts result to \a result.
+ */
 void QUmlReadSelfAction::setResult(QUmlOutputPin *result)
 {
     // This is a read-write association end

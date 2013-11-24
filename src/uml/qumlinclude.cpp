@@ -59,6 +59,10 @@ QT_BEGIN_NAMESPACE
 
     \brief An include relationship defines that a use case contains the behavior defined in another use case.
  */
+
+/*!
+    Creates a new QUmlInclude. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlInclude::QUmlInclude(bool createQModelingObject) :
     _addition(0),
     _includingCase(0)
@@ -67,6 +71,9 @@ QUmlInclude::QUmlInclude(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlIncludeObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlInclude.
+*/
 QModelingElement *QUmlInclude::clone() const
 {
     QUmlInclude *c = new QUmlInclude;
@@ -89,6 +96,8 @@ QModelingElement *QUmlInclude::clone() const
 
 /*!
     References the use case that is to be included.
+
+    \b {Subsetted property(ies):} QUmlDirectedRelationship::targets().
  */
 QUmlUseCase *QUmlInclude::addition() const
 {
@@ -97,6 +106,9 @@ QUmlUseCase *QUmlInclude::addition() const
     return _addition;
 }
 
+/*!
+    Adjusts addition to \a addition.
+ */
 void QUmlInclude::setAddition(QUmlUseCase *addition)
 {
     // This is a read-write association end
@@ -118,6 +130,10 @@ void QUmlInclude::setAddition(QUmlUseCase *addition)
 
 /*!
     References the use case which will include the addition and owns the include relationship.
+
+    \b {Subsetted property(ies):} QUmlDirectedRelationship::sources(), QUmlNamedElement::namespace_().
+
+    \b {Opposite property(ies):} QUmlUseCase::includes().
  */
 QUmlUseCase *QUmlInclude::includingCase() const
 {
@@ -126,6 +142,9 @@ QUmlUseCase *QUmlInclude::includingCase() const
     return _includingCase;
 }
 
+/*!
+    Adjusts includingCase to \a includingCase.
+ */
 void QUmlInclude::setIncludingCase(QUmlUseCase *includingCase)
 {
     // This is a read-write association end

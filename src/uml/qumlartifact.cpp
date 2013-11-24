@@ -80,12 +80,19 @@ QT_BEGIN_NAMESPACE
 
     \brief An artifact is the source of a deployment to a node.An artifact is the specification of a physical piece of information that is used or produced by a software development process, or by deployment and operation of a system. Examples of artifacts include model files, source files, scripts, and binary executable files, a table in a database system, a development deliverable, or a word-processing document, a mail message.
  */
+
+/*!
+    Creates a new QUmlArtifact. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlArtifact::QUmlArtifact(bool createQModelingObject)
 {
     if (createQModelingObject)
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlArtifactObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlArtifact.
+*/
 QModelingElement *QUmlArtifact::clone() const
 {
     QUmlArtifact *c = new QUmlArtifact;
@@ -156,6 +163,9 @@ QString QUmlArtifact::fileName() const
     return _fileName;
 }
 
+/*!
+    Adjusts fileName to \a fileName.
+ */
 void QUmlArtifact::setFileName(QString fileName)
 {
     // This is a read-write property
@@ -167,6 +177,10 @@ void QUmlArtifact::setFileName(QString fileName)
 
 /*!
     The set of model elements that are manifested in the Artifact. That is, these model elements are utilized in the construction (or generation) of the artifact.
+
+    \sa addManifestation(), removeManifestation()
+
+    \b {Subsetted property(ies):} QUmlElement::ownedElements(), QUmlNamedElement::clientDependencies().
  */
 const QSet<QUmlManifestation *> QUmlArtifact::manifestations() const
 {
@@ -175,6 +189,11 @@ const QSet<QUmlManifestation *> QUmlArtifact::manifestations() const
     return _manifestations;
 }
 
+/*!
+    Adds \a manifestation to manifestations.
+
+    \sa manifestations(), removeManifestation()
+ */
 void QUmlArtifact::addManifestation(QUmlManifestation *manifestation)
 {
     // This is a read-write association end
@@ -191,6 +210,11 @@ void QUmlArtifact::addManifestation(QUmlManifestation *manifestation)
     }
 }
 
+/*!
+    Removes \a manifestation from manifestations.
+
+    \sa manifestations(), addManifestation()
+ */
 void QUmlArtifact::removeManifestation(QUmlManifestation *manifestation)
 {
     // This is a read-write association end
@@ -208,6 +232,10 @@ void QUmlArtifact::removeManifestation(QUmlManifestation *manifestation)
 
 /*!
     The Artifacts that are defined (nested) within the Artifact. The association is a specialization of the ownedMember association from Namespace to NamedElement.
+
+    \sa addNestedArtifact(), removeNestedArtifact()
+
+    \b {Subsetted property(ies):} QUmlNamespace::ownedMembers().
  */
 const QSet<QUmlArtifact *> QUmlArtifact::nestedArtifacts() const
 {
@@ -216,6 +244,11 @@ const QSet<QUmlArtifact *> QUmlArtifact::nestedArtifacts() const
     return _nestedArtifacts;
 }
 
+/*!
+    Adds \a nestedArtifact to nestedArtifacts.
+
+    \sa nestedArtifacts(), removeNestedArtifact()
+ */
 void QUmlArtifact::addNestedArtifact(QUmlArtifact *nestedArtifact)
 {
     // This is a read-write association end
@@ -231,6 +264,11 @@ void QUmlArtifact::addNestedArtifact(QUmlArtifact *nestedArtifact)
     }
 }
 
+/*!
+    Removes \a nestedArtifact from nestedArtifacts.
+
+    \sa nestedArtifacts(), addNestedArtifact()
+ */
 void QUmlArtifact::removeNestedArtifact(QUmlArtifact *nestedArtifact)
 {
     // This is a read-write association end
@@ -247,6 +285,10 @@ void QUmlArtifact::removeNestedArtifact(QUmlArtifact *nestedArtifact)
 
 /*!
     The attributes or association ends defined for the Artifact. The association is a specialization of the ownedMember association.
+
+    \sa addOwnedAttribute(), removeOwnedAttribute()
+
+    \b {Subsetted property(ies):} QUmlNamespace::ownedMembers(), QUmlClassifier::attributes().
  */
 const QList<QUmlProperty *> QUmlArtifact::ownedAttributes() const
 {
@@ -255,6 +297,11 @@ const QList<QUmlProperty *> QUmlArtifact::ownedAttributes() const
     return _ownedAttributes;
 }
 
+/*!
+    Adds \a ownedAttribute to ownedAttributes.
+
+    \sa ownedAttributes(), removeOwnedAttribute()
+ */
 void QUmlArtifact::addOwnedAttribute(QUmlProperty *ownedAttribute)
 {
     // This is a read-write association end
@@ -271,6 +318,11 @@ void QUmlArtifact::addOwnedAttribute(QUmlProperty *ownedAttribute)
     }
 }
 
+/*!
+    Removes \a ownedAttribute from ownedAttributes.
+
+    \sa ownedAttributes(), addOwnedAttribute()
+ */
 void QUmlArtifact::removeOwnedAttribute(QUmlProperty *ownedAttribute)
 {
     // This is a read-write association end
@@ -288,6 +340,10 @@ void QUmlArtifact::removeOwnedAttribute(QUmlProperty *ownedAttribute)
 
 /*!
     The Operations defined for the Artifact. The association is a specialization of the ownedMember association.
+
+    \sa addOwnedOperation(), removeOwnedOperation()
+
+    \b {Subsetted property(ies):} QUmlClassifier::features(), QUmlNamespace::ownedMembers().
  */
 const QList<QUmlOperation *> QUmlArtifact::ownedOperations() const
 {
@@ -296,6 +352,11 @@ const QList<QUmlOperation *> QUmlArtifact::ownedOperations() const
     return _ownedOperations;
 }
 
+/*!
+    Adds \a ownedOperation to ownedOperations.
+
+    \sa ownedOperations(), removeOwnedOperation()
+ */
 void QUmlArtifact::addOwnedOperation(QUmlOperation *ownedOperation)
 {
     // This is a read-write association end
@@ -312,6 +373,11 @@ void QUmlArtifact::addOwnedOperation(QUmlOperation *ownedOperation)
     }
 }
 
+/*!
+    Removes \a ownedOperation from ownedOperations.
+
+    \sa ownedOperations(), addOwnedOperation()
+ */
 void QUmlArtifact::removeOwnedOperation(QUmlOperation *ownedOperation)
 {
     // This is a read-write association end

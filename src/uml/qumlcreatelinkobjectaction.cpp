@@ -75,6 +75,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A create link object action creates a link object.
  */
+
+/*!
+    Creates a new QUmlCreateLinkObjectAction. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlCreateLinkObjectAction::QUmlCreateLinkObjectAction(bool createQModelingObject) :
     QUmlCreateLinkAction(false),
     _result(0)
@@ -83,6 +87,9 @@ QUmlCreateLinkObjectAction::QUmlCreateLinkObjectAction(bool createQModelingObjec
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlCreateLinkObjectActionObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlCreateLinkObjectAction.
+*/
 QModelingElement *QUmlCreateLinkObjectAction::clone() const
 {
     QUmlCreateLinkObjectAction *c = new QUmlCreateLinkObjectAction;
@@ -129,6 +136,8 @@ QModelingElement *QUmlCreateLinkObjectAction::clone() const
 
 /*!
     Gives the output pin on which the result is put.
+
+    \b {Subsetted property(ies):} QUmlAction::outputs().
  */
 QUmlOutputPin *QUmlCreateLinkObjectAction::result() const
 {
@@ -137,6 +146,9 @@ QUmlOutputPin *QUmlCreateLinkObjectAction::result() const
     return _result;
 }
 
+/*!
+    Adjusts result to \a result.
+ */
 void QUmlCreateLinkObjectAction::setResult(QUmlOutputPin *result)
 {
     // This is a read-write association end

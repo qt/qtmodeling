@@ -45,8 +45,6 @@
 
 #include <QtUml/QUmlElement>
 
-QT_BEGIN_HEADER
-
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
@@ -93,8 +91,6 @@ protected:
 QT_END_NAMESPACE
 
 Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE(QUmlMultiplicityElement) *)
-
-QT_END_HEADER
 
 #endif // QUMLMULTIPLICITYELEMENT_H
 

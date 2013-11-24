@@ -72,6 +72,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A start classifier behavior action is an action that starts the classifier behavior of the input.
  */
+
+/*!
+    Creates a new QUmlStartClassifierBehaviorAction. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlStartClassifierBehaviorAction::QUmlStartClassifierBehaviorAction(bool createQModelingObject) :
     _object(0)
 {
@@ -79,6 +83,9 @@ QUmlStartClassifierBehaviorAction::QUmlStartClassifierBehaviorAction(bool create
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlStartClassifierBehaviorActionObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlStartClassifierBehaviorAction.
+*/
 QModelingElement *QUmlStartClassifierBehaviorAction::clone() const
 {
     QUmlStartClassifierBehaviorAction *c = new QUmlStartClassifierBehaviorAction;
@@ -121,6 +128,8 @@ QModelingElement *QUmlStartClassifierBehaviorAction::clone() const
 
 /*!
     Holds the object on which to start the owned behavior.
+
+    \b {Subsetted property(ies):} QUmlAction::inputs().
  */
 QUmlInputPin *QUmlStartClassifierBehaviorAction::object() const
 {
@@ -129,6 +138,9 @@ QUmlInputPin *QUmlStartClassifierBehaviorAction::object() const
     return _object;
 }
 
+/*!
+    Adjusts object to \a object.
+ */
 void QUmlStartClassifierBehaviorAction::setObject(QUmlInputPin *object)
 {
     // This is a read-write association end

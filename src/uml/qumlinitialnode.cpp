@@ -68,12 +68,19 @@ QT_BEGIN_NAMESPACE
 
     \brief An initial node is a control node at which flow starts when the activity is invoked.
  */
+
+/*!
+    Creates a new QUmlInitialNode. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlInitialNode::QUmlInitialNode(bool createQModelingObject)
 {
     if (createQModelingObject)
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlInitialNodeObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlInitialNode.
+*/
 QModelingElement *QUmlInitialNode::clone() const
 {
     QUmlInitialNode *c = new QUmlInitialNode;

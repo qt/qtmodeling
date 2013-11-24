@@ -66,6 +66,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A part decomposition is a description of the internal interactions of one lifeline relative to an interaction.
  */
+
+/*!
+    Creates a new QUmlPartDecomposition. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlPartDecomposition::QUmlPartDecomposition(bool createQModelingObject) :
     QUmlInteractionUse(false)
 {
@@ -73,6 +77,9 @@ QUmlPartDecomposition::QUmlPartDecomposition(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlPartDecompositionObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlPartDecomposition.
+*/
 QModelingElement *QUmlPartDecomposition::clone() const
 {
     QUmlPartDecomposition *c = new QUmlPartDecomposition;

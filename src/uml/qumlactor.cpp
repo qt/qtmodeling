@@ -81,12 +81,19 @@ QT_BEGIN_NAMESPACE
 
     \brief An actor specifies a role played by a user or any other system that interacts with the subject.
  */
+
+/*!
+    Creates a new QUmlActor. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlActor::QUmlActor(bool createQModelingObject)
 {
     if (createQModelingObject)
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlActorObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlActor.
+*/
 QModelingElement *QUmlActor::clone() const
 {
     QUmlActor *c = new QUmlActor;

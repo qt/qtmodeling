@@ -79,12 +79,19 @@ QT_BEGIN_NAMESPACE
 
     \brief A data type is a type whose instances are identified only by their value. A data type may contain attributes to support the modeling of structured data types.
  */
+
+/*!
+    Creates a new QUmlDataType. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlDataType::QUmlDataType(bool createQModelingObject)
 {
     if (createQModelingObject)
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlDataTypeObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlDataType.
+*/
 QModelingElement *QUmlDataType::clone() const
 {
     QUmlDataType *c = new QUmlDataType;
@@ -142,6 +149,12 @@ QModelingElement *QUmlDataType::clone() const
 
 /*!
     The Attributes owned by the DataType.
+
+    \sa addOwnedAttribute(), removeOwnedAttribute()
+
+    \b {Subsetted property(ies):} QUmlNamespace::ownedMembers(), QUmlClassifier::attributes().
+
+    \b {Opposite property(ies):} QUmlProperty::datatype().
  */
 const QList<QUmlProperty *> QUmlDataType::ownedAttributes() const
 {
@@ -150,6 +163,11 @@ const QList<QUmlProperty *> QUmlDataType::ownedAttributes() const
     return _ownedAttributes;
 }
 
+/*!
+    Adds \a ownedAttribute to ownedAttributes.
+
+    \sa ownedAttributes(), removeOwnedAttribute()
+ */
 void QUmlDataType::addOwnedAttribute(QUmlProperty *ownedAttribute)
 {
     // This is a read-write association end
@@ -171,6 +189,11 @@ void QUmlDataType::addOwnedAttribute(QUmlProperty *ownedAttribute)
     }
 }
 
+/*!
+    Removes \a ownedAttribute from ownedAttributes.
+
+    \sa ownedAttributes(), addOwnedAttribute()
+ */
 void QUmlDataType::removeOwnedAttribute(QUmlProperty *ownedAttribute)
 {
     // This is a read-write association end
@@ -193,6 +216,12 @@ void QUmlDataType::removeOwnedAttribute(QUmlProperty *ownedAttribute)
 
 /*!
     The Operations owned by the DataType.
+
+    \sa addOwnedOperation(), removeOwnedOperation()
+
+    \b {Subsetted property(ies):} QUmlClassifier::features(), QUmlNamespace::ownedMembers().
+
+    \b {Opposite property(ies):} QUmlOperation::datatype().
  */
 const QList<QUmlOperation *> QUmlDataType::ownedOperations() const
 {
@@ -201,6 +230,11 @@ const QList<QUmlOperation *> QUmlDataType::ownedOperations() const
     return _ownedOperations;
 }
 
+/*!
+    Adds \a ownedOperation to ownedOperations.
+
+    \sa ownedOperations(), removeOwnedOperation()
+ */
 void QUmlDataType::addOwnedOperation(QUmlOperation *ownedOperation)
 {
     // This is a read-write association end
@@ -222,6 +256,11 @@ void QUmlDataType::addOwnedOperation(QUmlOperation *ownedOperation)
     }
 }
 
+/*!
+    Removes \a ownedOperation from ownedOperations.
+
+    \sa ownedOperations(), addOwnedOperation()
+ */
 void QUmlDataType::removeOwnedOperation(QUmlOperation *ownedOperation)
 {
     // This is a read-write association end

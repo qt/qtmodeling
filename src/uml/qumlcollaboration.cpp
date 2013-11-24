@@ -83,12 +83,19 @@ QT_BEGIN_NAMESPACE
 
     \brief A collaboration use represents the application of the pattern described by a collaboration to a specific situation involving specific classes or instances playing the roles of the collaboration.
  */
+
+/*!
+    Creates a new QUmlCollaboration. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlCollaboration::QUmlCollaboration(bool createQModelingObject)
 {
     if (createQModelingObject)
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlCollaborationObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlCollaboration.
+*/
 QModelingElement *QUmlCollaboration::clone() const
 {
     QUmlCollaboration *c = new QUmlCollaboration;
@@ -154,6 +161,10 @@ QModelingElement *QUmlCollaboration::clone() const
 
 /*!
     References connectable elements (possibly owned by other classifiers) which represent roles that instances may play in this collaboration.
+
+    \sa addCollaborationRole(), removeCollaborationRole()
+
+    \b {Subsetted property(ies):} QUmlStructuredClassifier::roles().
  */
 const QSet<QUmlConnectableElement *> QUmlCollaboration::collaborationRoles() const
 {
@@ -162,6 +173,11 @@ const QSet<QUmlConnectableElement *> QUmlCollaboration::collaborationRoles() con
     return _collaborationRoles;
 }
 
+/*!
+    Adds \a collaborationRole to collaborationRoles.
+
+    \sa collaborationRoles(), removeCollaborationRole()
+ */
 void QUmlCollaboration::addCollaborationRole(QUmlConnectableElement *collaborationRole)
 {
     // This is a read-write association end
@@ -176,6 +192,11 @@ void QUmlCollaboration::addCollaborationRole(QUmlConnectableElement *collaborati
     }
 }
 
+/*!
+    Removes \a collaborationRole from collaborationRoles.
+
+    \sa collaborationRoles(), addCollaborationRole()
+ */
 void QUmlCollaboration::removeCollaborationRole(QUmlConnectableElement *collaborationRole)
 {
     // This is a read-write association end

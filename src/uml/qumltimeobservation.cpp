@@ -61,6 +61,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A time observation is a reference to a time instant during an execution. It points out the element in the model to observe and whether the observation is when this model element is entered or when it is exited.
  */
+
+/*!
+    Creates a new QUmlTimeObservation. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlTimeObservation::QUmlTimeObservation(bool createQModelingObject) :
     _event_(0),
     _firstEvent(true)
@@ -69,6 +73,9 @@ QUmlTimeObservation::QUmlTimeObservation(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlTimeObservationObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlTimeObservation.
+*/
 QModelingElement *QUmlTimeObservation::clone() const
 {
     QUmlTimeObservation *c = new QUmlTimeObservation;
@@ -102,6 +109,9 @@ QUmlNamedElement *QUmlTimeObservation::event_() const
     return _event_;
 }
 
+/*!
+    Adjusts event_ to \a event_.
+ */
 void QUmlTimeObservation::setEvent(QUmlNamedElement *event_)
 {
     // This is a read-write association end
@@ -123,6 +133,9 @@ bool QUmlTimeObservation::firstEvent() const
     return _firstEvent;
 }
 
+/*!
+    Adjusts firstEvent to \a firstEvent.
+ */
 void QUmlTimeObservation::setFirstEvent(bool firstEvent)
 {
     // This is a read-write property

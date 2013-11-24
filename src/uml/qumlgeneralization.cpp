@@ -56,6 +56,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A generalization is a taxonomic relationship between a more general classifier and a more specific classifier. Each instance of the specific classifier is also an indirect instance of the general classifier. Thus, the specific classifier inherits the features of the more general classifier.A generalization relates a specific classifier to a more general classifier, and is owned by the specific classifier.
  */
+
+/*!
+    Creates a new QUmlGeneralization. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlGeneralization::QUmlGeneralization(bool createQModelingObject) :
     _general(0),
     _isSubstitutable(true),
@@ -65,6 +69,9 @@ QUmlGeneralization::QUmlGeneralization(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlGeneralizationObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlGeneralization.
+*/
 QModelingElement *QUmlGeneralization::clone() const
 {
     QUmlGeneralization *c = new QUmlGeneralization;
@@ -84,6 +91,8 @@ QModelingElement *QUmlGeneralization::clone() const
 
 /*!
     References the general classifier in the Generalization relationship.
+
+    \b {Subsetted property(ies):} QUmlDirectedRelationship::targets().
  */
 QUmlClassifier *QUmlGeneralization::general() const
 {
@@ -92,6 +101,9 @@ QUmlClassifier *QUmlGeneralization::general() const
     return _general;
 }
 
+/*!
+    Adjusts general to \a general.
+ */
 void QUmlGeneralization::setGeneral(QUmlClassifier *general)
 {
     // This is a read-write association end
@@ -113,6 +125,10 @@ void QUmlGeneralization::setGeneral(QUmlClassifier *general)
 
 /*!
     Designates a set in which instances of Generalization is considered members.
+
+    \sa addGeneralizationSet(), removeGeneralizationSet()
+
+    \b {Opposite property(ies):} QUmlGeneralizationSet::generalizations().
  */
 const QSet<QUmlGeneralizationSet *> QUmlGeneralization::generalizationSets() const
 {
@@ -121,6 +137,11 @@ const QSet<QUmlGeneralizationSet *> QUmlGeneralization::generalizationSets() con
     return _generalizationSets;
 }
 
+/*!
+    Adds \a generalizationSet to generalizationSets.
+
+    \sa generalizationSets(), removeGeneralizationSet()
+ */
 void QUmlGeneralization::addGeneralizationSet(QUmlGeneralizationSet *generalizationSet)
 {
     // This is a read-write association end
@@ -137,6 +158,11 @@ void QUmlGeneralization::addGeneralizationSet(QUmlGeneralizationSet *generalizat
     }
 }
 
+/*!
+    Removes \a generalizationSet from generalizationSets.
+
+    \sa generalizationSets(), addGeneralizationSet()
+ */
 void QUmlGeneralization::removeGeneralizationSet(QUmlGeneralizationSet *generalizationSet)
 {
     // This is a read-write association end
@@ -161,6 +187,9 @@ bool QUmlGeneralization::isSubstitutable() const
     return _isSubstitutable;
 }
 
+/*!
+    Adjusts isSubstitutable to \a isSubstitutable.
+ */
 void QUmlGeneralization::setSubstitutable(bool isSubstitutable)
 {
     // This is a read-write property
@@ -173,6 +202,10 @@ void QUmlGeneralization::setSubstitutable(bool isSubstitutable)
 
 /*!
     References the specializing classifier in the Generalization relationship.
+
+    \b {Subsetted property(ies):} QUmlElement::owner(), QUmlDirectedRelationship::sources().
+
+    \b {Opposite property(ies):} QUmlClassifier::generalizations().
  */
 QUmlClassifier *QUmlGeneralization::specific() const
 {
@@ -181,6 +214,9 @@ QUmlClassifier *QUmlGeneralization::specific() const
     return _specific;
 }
 
+/*!
+    Adjusts specific to \a specific.
+ */
 void QUmlGeneralization::setSpecific(QUmlClassifier *specific)
 {
     // This is a read-write association end

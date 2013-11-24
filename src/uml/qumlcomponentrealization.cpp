@@ -64,6 +64,10 @@ QT_BEGIN_NAMESPACE
 
     \brief The realization concept is specialized to (optionally) define the classifiers that realize the contract offered by a component in terms of its provided and required interfaces. The component forms an abstraction from these various classifiers.
  */
+
+/*!
+    Creates a new QUmlComponentRealization. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlComponentRealization::QUmlComponentRealization(bool createQModelingObject) :
     QUmlRealization(false),
     _abstraction(0)
@@ -72,6 +76,9 @@ QUmlComponentRealization::QUmlComponentRealization(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlComponentRealizationObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlComponentRealization.
+*/
 QModelingElement *QUmlComponentRealization::clone() const
 {
     QUmlComponentRealization *c = new QUmlComponentRealization;
@@ -104,6 +111,10 @@ QModelingElement *QUmlComponentRealization::clone() const
 
 /*!
     The Component that owns this ComponentRealization and which is implemented by its realizing classifiers.
+
+    \b {Subsetted property(ies):} QUmlDependency::suppliers(), QUmlElement::owner().
+
+    \b {Opposite property(ies):} QUmlComponent::realizations().
  */
 QUmlComponent *QUmlComponentRealization::abstraction() const
 {
@@ -112,6 +123,9 @@ QUmlComponent *QUmlComponentRealization::abstraction() const
     return _abstraction;
 }
 
+/*!
+    Adjusts abstraction to \a abstraction.
+ */
 void QUmlComponentRealization::setAbstraction(QUmlComponent *abstraction)
 {
     // This is a read-write association end
@@ -134,6 +148,10 @@ void QUmlComponentRealization::setAbstraction(QUmlComponent *abstraction)
 
 /*!
     The classifiers that are involved in the implementation of the Component that owns this Realization.
+
+    \sa addRealizingClassifier(), removeRealizingClassifier()
+
+    \b {Subsetted property(ies):} QUmlDependency::clients().
  */
 const QSet<QUmlClassifier *> QUmlComponentRealization::realizingClassifiers() const
 {
@@ -142,6 +160,11 @@ const QSet<QUmlClassifier *> QUmlComponentRealization::realizingClassifiers() co
     return _realizingClassifiers;
 }
 
+/*!
+    Adds \a realizingClassifier to realizingClassifiers.
+
+    \sa realizingClassifiers(), removeRealizingClassifier()
+ */
 void QUmlComponentRealization::addRealizingClassifier(QUmlClassifier *realizingClassifier)
 {
     // This is a read-write association end
@@ -156,6 +179,11 @@ void QUmlComponentRealization::addRealizingClassifier(QUmlClassifier *realizingC
     }
 }
 
+/*!
+    Removes \a realizingClassifier from realizingClassifiers.
+
+    \sa realizingClassifiers(), addRealizingClassifier()
+ */
 void QUmlComponentRealization::removeRealizingClassifier(QUmlClassifier *realizingClassifier)
 {
     // This is a read-write association end

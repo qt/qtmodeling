@@ -59,6 +59,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A general ordering represents a binary relation between two occurrence specifications, to describe that one occurrence specification must occur before the other in a valid trace. This mechanism provides the ability to define partial orders of occurrence cpecifications that may otherwise not have a specified order.
  */
+
+/*!
+    Creates a new QUmlGeneralOrdering. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlGeneralOrdering::QUmlGeneralOrdering(bool createQModelingObject) :
     _after(0),
     _before(0)
@@ -67,6 +71,9 @@ QUmlGeneralOrdering::QUmlGeneralOrdering(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlGeneralOrderingObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlGeneralOrdering.
+*/
 QModelingElement *QUmlGeneralOrdering::clone() const
 {
     QUmlGeneralOrdering *c = new QUmlGeneralOrdering;
@@ -89,6 +96,8 @@ QModelingElement *QUmlGeneralOrdering::clone() const
 
 /*!
     The OccurrenceSpecification referenced comes after the OccurrenceSpecification referenced by before.
+
+    \b {Opposite property(ies):} QUmlOccurrenceSpecification::toBefores().
  */
 QUmlOccurrenceSpecification *QUmlGeneralOrdering::after() const
 {
@@ -97,6 +106,9 @@ QUmlOccurrenceSpecification *QUmlGeneralOrdering::after() const
     return _after;
 }
 
+/*!
+    Adjusts after to \a after.
+ */
 void QUmlGeneralOrdering::setAfter(QUmlOccurrenceSpecification *after)
 {
     // This is a read-write association end
@@ -110,6 +122,8 @@ void QUmlGeneralOrdering::setAfter(QUmlOccurrenceSpecification *after)
 
 /*!
     The OccurrenceSpecification referenced comes before the OccurrenceSpecification referenced by after.
+
+    \b {Opposite property(ies):} QUmlOccurrenceSpecification::toAfters().
  */
 QUmlOccurrenceSpecification *QUmlGeneralOrdering::before() const
 {
@@ -118,6 +132,9 @@ QUmlOccurrenceSpecification *QUmlGeneralOrdering::before() const
     return _before;
 }
 
+/*!
+    Adjusts before to \a before.
+ */
 void QUmlGeneralOrdering::setBefore(QUmlOccurrenceSpecification *before)
 {
     // This is a read-write association end

@@ -57,6 +57,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A connector end is an endpoint of a connector, which attaches the connector to a connectable element. Each connector end is part of one connector.
  */
+
+/*!
+    Creates a new QUmlConnectorEnd. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlConnectorEnd::QUmlConnectorEnd(bool createQModelingObject) :
     _partWithPort(0),
     _role(0)
@@ -65,6 +69,9 @@ QUmlConnectorEnd::QUmlConnectorEnd(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlConnectorEndObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlConnectorEnd.
+*/
 QModelingElement *QUmlConnectorEnd::clone() const
 {
     QUmlConnectorEnd *c = new QUmlConnectorEnd;
@@ -87,6 +94,8 @@ QModelingElement *QUmlConnectorEnd::clone() const
 
 /*!
     A derived association referencing the corresponding association end on the association which types the connector owing this connector end. This association is derived by selecting the association end at the same place in the ordering of association ends as this connector end.
+
+    \b {This is a read-only derived property.}
  */
 QUmlProperty *QUmlConnectorEnd::definingEnd() const
 {
@@ -97,6 +106,9 @@ QUmlProperty *QUmlConnectorEnd::definingEnd() const
     return 0;
 }
 
+/*!
+    Adjusts definingEnd to \a definingEnd.
+ */
 void QUmlConnectorEnd::setDefiningEnd(QUmlProperty *definingEnd)
 {
     // This is a read-only derived association end
@@ -119,6 +131,9 @@ QUmlProperty *QUmlConnectorEnd::partWithPort() const
     return _partWithPort;
 }
 
+/*!
+    Adjusts partWithPort to \a partWithPort.
+ */
 void QUmlConnectorEnd::setPartWithPort(QUmlProperty *partWithPort)
 {
     // This is a read-write association end
@@ -132,6 +147,8 @@ void QUmlConnectorEnd::setPartWithPort(QUmlProperty *partWithPort)
 
 /*!
     The connectable element attached at this connector end. When an instance of the containing classifier is created, a link may (depending on the multiplicities) be created to an instance of the classifier that types this connectable element.
+
+    \b {Opposite property(ies):} QUmlConnectableElement::ends().
  */
 QUmlConnectableElement *QUmlConnectorEnd::role() const
 {
@@ -140,6 +157,9 @@ QUmlConnectableElement *QUmlConnectorEnd::role() const
     return _role;
 }
 
+/*!
+    Adjusts role to \a role.
+ */
 void QUmlConnectorEnd::setRole(QUmlConnectableElement *role)
 {
     // This is a read-write association end

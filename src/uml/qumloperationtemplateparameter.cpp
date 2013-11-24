@@ -57,6 +57,10 @@ QT_BEGIN_NAMESPACE
 
     \brief An operation template parameter exposes an operation as a formal parameter for a template.
  */
+
+/*!
+    Creates a new QUmlOperationTemplateParameter. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlOperationTemplateParameter::QUmlOperationTemplateParameter(bool createQModelingObject) :
     QUmlTemplateParameter(false),
     _parameteredElement(0)
@@ -65,6 +69,9 @@ QUmlOperationTemplateParameter::QUmlOperationTemplateParameter(bool createQModel
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlOperationTemplateParameterObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlOperationTemplateParameter.
+*/
 QModelingElement *QUmlOperationTemplateParameter::clone() const
 {
     QUmlOperationTemplateParameter *c = new QUmlOperationTemplateParameter;
@@ -87,6 +94,10 @@ QModelingElement *QUmlOperationTemplateParameter::clone() const
 
 /*!
     The operation for this template parameter.
+
+    \b {Redefined property(ies):} QUmlTemplateParameter::parameteredElement().
+
+    \b {Opposite property(ies):} QUmlOperation::templateParameter().
  */
 QUmlOperation *QUmlOperationTemplateParameter::parameteredElement() const
 {
@@ -95,6 +106,9 @@ QUmlOperation *QUmlOperationTemplateParameter::parameteredElement() const
     return _parameteredElement;
 }
 
+/*!
+    Adjusts parameteredElement to \a parameteredElement.
+ */
 void QUmlOperationTemplateParameter::setParameteredElement(QUmlOperation *parameteredElement)
 {
     // This is a read-write association end

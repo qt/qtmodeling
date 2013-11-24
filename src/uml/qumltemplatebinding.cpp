@@ -57,6 +57,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A template binding represents a relationship between a templateable element and a template. A template binding specifies the substitutions of actual parameters for the formal parameters of the template.
  */
+
+/*!
+    Creates a new QUmlTemplateBinding. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlTemplateBinding::QUmlTemplateBinding(bool createQModelingObject) :
     _boundElement(0),
     _signature(0)
@@ -65,6 +69,9 @@ QUmlTemplateBinding::QUmlTemplateBinding(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlTemplateBindingObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlTemplateBinding.
+*/
 QModelingElement *QUmlTemplateBinding::clone() const
 {
     QUmlTemplateBinding *c = new QUmlTemplateBinding;
@@ -83,6 +90,10 @@ QModelingElement *QUmlTemplateBinding::clone() const
 
 /*!
     The element that is bound by this binding.
+
+    \b {Subsetted property(ies):} QUmlElement::owner(), QUmlDirectedRelationship::sources().
+
+    \b {Opposite property(ies):} QUmlTemplateableElement::templateBindings().
  */
 QUmlTemplateableElement *QUmlTemplateBinding::boundElement() const
 {
@@ -91,6 +102,9 @@ QUmlTemplateableElement *QUmlTemplateBinding::boundElement() const
     return _boundElement;
 }
 
+/*!
+    Adjusts boundElement to \a boundElement.
+ */
 void QUmlTemplateBinding::setBoundElement(QUmlTemplateableElement *boundElement)
 {
     // This is a read-write association end
@@ -113,6 +127,12 @@ void QUmlTemplateBinding::setBoundElement(QUmlTemplateableElement *boundElement)
 
 /*!
     The parameter substitutions owned by this template binding.
+
+    \sa addParameterSubstitution(), removeParameterSubstitution()
+
+    \b {Subsetted property(ies):} QUmlElement::ownedElements().
+
+    \b {Opposite property(ies):} QUmlTemplateParameterSubstitution::templateBinding().
  */
 const QSet<QUmlTemplateParameterSubstitution *> QUmlTemplateBinding::parameterSubstitutions() const
 {
@@ -121,6 +141,11 @@ const QSet<QUmlTemplateParameterSubstitution *> QUmlTemplateBinding::parameterSu
     return _parameterSubstitutions;
 }
 
+/*!
+    Adds \a parameterSubstitution to parameterSubstitutions.
+
+    \sa parameterSubstitutions(), removeParameterSubstitution()
+ */
 void QUmlTemplateBinding::addParameterSubstitution(QUmlTemplateParameterSubstitution *parameterSubstitution)
 {
     // This is a read-write association end
@@ -141,6 +166,11 @@ void QUmlTemplateBinding::addParameterSubstitution(QUmlTemplateParameterSubstitu
     }
 }
 
+/*!
+    Removes \a parameterSubstitution from parameterSubstitutions.
+
+    \sa parameterSubstitutions(), addParameterSubstitution()
+ */
 void QUmlTemplateBinding::removeParameterSubstitution(QUmlTemplateParameterSubstitution *parameterSubstitution)
 {
     // This is a read-write association end
@@ -162,6 +192,8 @@ void QUmlTemplateBinding::removeParameterSubstitution(QUmlTemplateParameterSubst
 
 /*!
     The template signature for the template that is the target of the binding.
+
+    \b {Subsetted property(ies):} QUmlDirectedRelationship::targets().
  */
 QUmlTemplateSignature *QUmlTemplateBinding::signature() const
 {
@@ -170,6 +202,9 @@ QUmlTemplateSignature *QUmlTemplateBinding::signature() const
     return _signature;
 }
 
+/*!
+    Adjusts signature to \a signature.
+ */
 void QUmlTemplateBinding::setSignature(QUmlTemplateSignature *signature)
 {
     // This is a read-write association end

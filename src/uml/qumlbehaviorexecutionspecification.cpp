@@ -65,6 +65,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A behavior execution specification is a kind of execution specification representing the execution of a behavior.
  */
+
+/*!
+    Creates a new QUmlBehaviorExecutionSpecification. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlBehaviorExecutionSpecification::QUmlBehaviorExecutionSpecification(bool createQModelingObject) :
     _behavior(0)
 {
@@ -72,6 +76,9 @@ QUmlBehaviorExecutionSpecification::QUmlBehaviorExecutionSpecification(bool crea
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlBehaviorExecutionSpecificationObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlBehaviorExecutionSpecification.
+*/
 QModelingElement *QUmlBehaviorExecutionSpecification::clone() const
 {
     QUmlBehaviorExecutionSpecification *c = new QUmlBehaviorExecutionSpecification;
@@ -112,6 +119,9 @@ QUmlBehavior *QUmlBehaviorExecutionSpecification::behavior() const
     return _behavior;
 }
 
+/*!
+    Adjusts behavior to \a behavior.
+ */
 void QUmlBehaviorExecutionSpecification::setBehavior(QUmlBehavior *behavior)
 {
     // This is a read-write association end

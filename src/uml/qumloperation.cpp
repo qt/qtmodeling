@@ -76,6 +76,10 @@ QT_BEGIN_NAMESPACE
 
     \brief An operation is a behavioral feature of a classifier that specifies the name, type, parameters, and constraints for invoking an associated behavior.An operation may invoke both the execution of method behaviors as well as other behavioral responses.Operation specializes TemplateableElement in order to support specification of template operations and bound operations. Operation specializes ParameterableElement to specify that an operation can be exposed as a formal template parameter, and provided as an actual parameter in a binding of a template.
  */
+
+/*!
+    Creates a new QUmlOperation. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlOperation::QUmlOperation(bool createQModelingObject) :
     _bodyCondition(0),
     _class_(0),
@@ -88,6 +92,9 @@ QUmlOperation::QUmlOperation(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlOperationObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlOperation.
+*/
 QModelingElement *QUmlOperation::clone() const
 {
     QUmlOperation *c = new QUmlOperation;
@@ -147,6 +154,8 @@ QModelingElement *QUmlOperation::clone() const
 
 /*!
     An optional Constraint on the result values of an invocation of this Operation.
+
+    \b {Subsetted property(ies):} QUmlNamespace::ownedRules().
  */
 QUmlConstraint *QUmlOperation::bodyCondition() const
 {
@@ -155,6 +164,9 @@ QUmlConstraint *QUmlOperation::bodyCondition() const
     return _bodyCondition;
 }
 
+/*!
+    Adjusts bodyCondition to \a bodyCondition.
+ */
 void QUmlOperation::setBodyCondition(QUmlConstraint *bodyCondition)
 {
     // This is a read-write association end
@@ -177,6 +189,10 @@ void QUmlOperation::setBodyCondition(QUmlConstraint *bodyCondition)
 
 /*!
     The class that owns the operation.
+
+    \b {Subsetted property(ies):} QUmlFeature::featuringClassifiers(), QUmlRedefinableElement::redefinitionContexts(), QUmlNamedElement::namespace_().
+
+    \b {Opposite property(ies):} QUmlClass::ownedOperations().
  */
 QUmlClass *QUmlOperation::class_() const
 {
@@ -185,6 +201,9 @@ QUmlClass *QUmlOperation::class_() const
     return _class_;
 }
 
+/*!
+    Adjusts class_ to \a class_.
+ */
 void QUmlOperation::setClass(QUmlClass *class_)
 {
     // This is a read-write association end
@@ -211,6 +230,10 @@ void QUmlOperation::setClass(QUmlClass *class_)
 
 /*!
     The DataType that owns this Operation.
+
+    \b {Subsetted property(ies):} QUmlFeature::featuringClassifiers(), QUmlRedefinableElement::redefinitionContexts(), QUmlNamedElement::namespace_().
+
+    \b {Opposite property(ies):} QUmlDataType::ownedOperations().
  */
 QUmlDataType *QUmlOperation::datatype() const
 {
@@ -219,6 +242,9 @@ QUmlDataType *QUmlOperation::datatype() const
     return _datatype;
 }
 
+/*!
+    Adjusts datatype to \a datatype.
+ */
 void QUmlOperation::setDatatype(QUmlDataType *datatype)
 {
     // This is a read-write association end
@@ -245,6 +271,10 @@ void QUmlOperation::setDatatype(QUmlDataType *datatype)
 
 /*!
     The Interface that owns this Operation.
+
+    \b {Subsetted property(ies):} QUmlFeature::featuringClassifiers(), QUmlRedefinableElement::redefinitionContexts(), QUmlNamedElement::namespace_().
+
+    \b {Opposite property(ies):} QUmlInterface::ownedOperations().
  */
 QUmlInterface *QUmlOperation::interface_() const
 {
@@ -253,6 +283,9 @@ QUmlInterface *QUmlOperation::interface_() const
     return _interface_;
 }
 
+/*!
+    Adjusts interface_ to \a interface_.
+ */
 void QUmlOperation::setInterface(QUmlInterface *interface_)
 {
     // This is a read-write association end
@@ -279,6 +312,8 @@ void QUmlOperation::setInterface(QUmlInterface *interface_)
 
 /*!
     This information is derived from the return result for this Operation.Specifies whether the return parameter is ordered or not, if present.
+
+    \b {This is a read-only derived property.}
  */
 bool QUmlOperation::isOrdered() const
 {
@@ -289,6 +324,9 @@ bool QUmlOperation::isOrdered() const
     return bool();
 }
 
+/*!
+    Adjusts isOrdered to \a isOrdered.
+ */
 void QUmlOperation::setOrdered(bool isOrdered)
 {
     // This is a read-only derived property
@@ -311,6 +349,9 @@ bool QUmlOperation::isQuery() const
     return _isQuery;
 }
 
+/*!
+    Adjusts isQuery to \a isQuery.
+ */
 void QUmlOperation::setQuery(bool isQuery)
 {
     // This is a read-write property
@@ -323,6 +364,8 @@ void QUmlOperation::setQuery(bool isQuery)
 
 /*!
     Specifies whether the return parameter is unique or not, if present.This information is derived from the return result for this Operation.
+
+    \b {This is a read-only derived property.}
  */
 bool QUmlOperation::isUnique() const
 {
@@ -333,6 +376,9 @@ bool QUmlOperation::isUnique() const
     return bool();
 }
 
+/*!
+    Adjusts isUnique to \a isUnique.
+ */
 void QUmlOperation::setUnique(bool isUnique)
 {
     // This is a read-only derived property
@@ -347,6 +393,8 @@ void QUmlOperation::setUnique(bool isUnique)
 
 /*!
     This information is derived from the return result for this Operation.Specifies the lower multiplicity of the return parameter, if present.
+
+    \b {This is a read-only derived property.}
  */
 int QUmlOperation::lower() const
 {
@@ -357,6 +405,9 @@ int QUmlOperation::lower() const
     return int();
 }
 
+/*!
+    Adjusts lower to \a lower.
+ */
 void QUmlOperation::setLower(int lower)
 {
     // This is a read-only derived property
@@ -371,6 +422,12 @@ void QUmlOperation::setLower(int lower)
 
 /*!
     Specifies the ordered set of formal parameters of this BehavioralFeature.Specifies the parameters owned by this Operation.
+
+    \sa addOwnedParameter(), removeOwnedParameter()
+
+    \b {Redefined property(ies):} QUmlBehavioralFeature::ownedParameters().
+
+    \b {Opposite property(ies):} QUmlParameter::operation().
  */
 const QList<QUmlParameter *> QUmlOperation::ownedParameters() const
 {
@@ -379,6 +436,11 @@ const QList<QUmlParameter *> QUmlOperation::ownedParameters() const
     return _ownedParameters;
 }
 
+/*!
+    Adds \a ownedParameter to ownedParameters.
+
+    \sa ownedParameters(), removeOwnedParameter()
+ */
 void QUmlOperation::addOwnedParameter(QUmlParameter *ownedParameter)
 {
     // This is a read-write association end
@@ -399,6 +461,11 @@ void QUmlOperation::addOwnedParameter(QUmlParameter *ownedParameter)
     }
 }
 
+/*!
+    Removes \a ownedParameter from ownedParameters.
+
+    \sa ownedParameters(), addOwnedParameter()
+ */
 void QUmlOperation::removeOwnedParameter(QUmlParameter *ownedParameter)
 {
     // This is a read-write association end
@@ -420,6 +487,10 @@ void QUmlOperation::removeOwnedParameter(QUmlParameter *ownedParameter)
 
 /*!
     An optional set of Constraints specifying the state of the system when the Operation is completed.
+
+    \sa addPostcondition(), removePostcondition()
+
+    \b {Subsetted property(ies):} QUmlNamespace::ownedRules().
  */
 const QSet<QUmlConstraint *> QUmlOperation::postconditions() const
 {
@@ -428,6 +499,11 @@ const QSet<QUmlConstraint *> QUmlOperation::postconditions() const
     return _postconditions;
 }
 
+/*!
+    Adds \a postcondition to postconditions.
+
+    \sa postconditions(), removePostcondition()
+ */
 void QUmlOperation::addPostcondition(QUmlConstraint *postcondition)
 {
     // This is a read-write association end
@@ -443,6 +519,11 @@ void QUmlOperation::addPostcondition(QUmlConstraint *postcondition)
     }
 }
 
+/*!
+    Removes \a postcondition from postconditions.
+
+    \sa postconditions(), addPostcondition()
+ */
 void QUmlOperation::removePostcondition(QUmlConstraint *postcondition)
 {
     // This is a read-write association end
@@ -459,6 +540,10 @@ void QUmlOperation::removePostcondition(QUmlConstraint *postcondition)
 
 /*!
     An optional set of Constraints on the state of the system when the Operation is invoked.
+
+    \sa addPrecondition(), removePrecondition()
+
+    \b {Subsetted property(ies):} QUmlNamespace::ownedRules().
  */
 const QSet<QUmlConstraint *> QUmlOperation::preconditions() const
 {
@@ -467,6 +552,11 @@ const QSet<QUmlConstraint *> QUmlOperation::preconditions() const
     return _preconditions;
 }
 
+/*!
+    Adds \a precondition to preconditions.
+
+    \sa preconditions(), removePrecondition()
+ */
 void QUmlOperation::addPrecondition(QUmlConstraint *precondition)
 {
     // This is a read-write association end
@@ -482,6 +572,11 @@ void QUmlOperation::addPrecondition(QUmlConstraint *precondition)
     }
 }
 
+/*!
+    Removes \a precondition from preconditions.
+
+    \sa preconditions(), addPrecondition()
+ */
 void QUmlOperation::removePrecondition(QUmlConstraint *precondition)
 {
     // This is a read-write association end
@@ -498,6 +593,10 @@ void QUmlOperation::removePrecondition(QUmlConstraint *precondition)
 
 /*!
     References the Types representing exceptions that may be raised during an invocation of this operation.
+
+    \sa addRaisedException(), removeRaisedException()
+
+    \b {Redefined property(ies):} QUmlBehavioralFeature::raisedExceptions().
  */
 const QSet<QUmlType *> QUmlOperation::raisedExceptions() const
 {
@@ -506,6 +605,11 @@ const QSet<QUmlType *> QUmlOperation::raisedExceptions() const
     return _raisedExceptions;
 }
 
+/*!
+    Adds \a raisedException to raisedExceptions.
+
+    \sa raisedExceptions(), removeRaisedException()
+ */
 void QUmlOperation::addRaisedException(QUmlType *raisedException)
 {
     // This is a read-write association end
@@ -520,6 +624,11 @@ void QUmlOperation::addRaisedException(QUmlType *raisedException)
     }
 }
 
+/*!
+    Removes \a raisedException from raisedExceptions.
+
+    \sa raisedExceptions(), addRaisedException()
+ */
 void QUmlOperation::removeRaisedException(QUmlType *raisedException)
 {
     // This is a read-write association end
@@ -534,6 +643,10 @@ void QUmlOperation::removeRaisedException(QUmlType *raisedException)
 
 /*!
     References the Operations that are redefined by this Operation.
+
+    \sa addRedefinedOperation(), removeRedefinedOperation()
+
+    \b {Subsetted property(ies):} QUmlRedefinableElement::redefinedElements().
  */
 const QSet<QUmlOperation *> QUmlOperation::redefinedOperations() const
 {
@@ -542,6 +655,11 @@ const QSet<QUmlOperation *> QUmlOperation::redefinedOperations() const
     return _redefinedOperations;
 }
 
+/*!
+    Adds \a redefinedOperation to redefinedOperations.
+
+    \sa redefinedOperations(), removeRedefinedOperation()
+ */
 void QUmlOperation::addRedefinedOperation(QUmlOperation *redefinedOperation)
 {
     // This is a read-write association end
@@ -556,6 +674,11 @@ void QUmlOperation::addRedefinedOperation(QUmlOperation *redefinedOperation)
     }
 }
 
+/*!
+    Removes \a redefinedOperation from redefinedOperations.
+
+    \sa redefinedOperations(), addRedefinedOperation()
+ */
 void QUmlOperation::removeRedefinedOperation(QUmlOperation *redefinedOperation)
 {
     // This is a read-write association end
@@ -570,6 +693,10 @@ void QUmlOperation::removeRedefinedOperation(QUmlOperation *redefinedOperation)
 
 /*!
     The template parameter that exposes this element as a formal parameter.
+
+    \b {Redefined property(ies):} QUmlParameterableElement::templateParameter().
+
+    \b {Opposite property(ies):} QUmlOperationTemplateParameter::parameteredElement().
  */
 QUmlOperationTemplateParameter *QUmlOperation::templateParameter() const
 {
@@ -578,6 +705,9 @@ QUmlOperationTemplateParameter *QUmlOperation::templateParameter() const
     return _templateParameter;
 }
 
+/*!
+    Adjusts templateParameter to \a templateParameter.
+ */
 void QUmlOperation::setTemplateParameter(QUmlOperationTemplateParameter *templateParameter)
 {
     // This is a read-write association end
@@ -594,6 +724,8 @@ void QUmlOperation::setTemplateParameter(QUmlOperationTemplateParameter *templat
 
 /*!
     This information is derived from the return result for this Operation.Specifies the return result of the operation, if present.
+
+    \b {This is a read-only derived property.}
  */
 QUmlType *QUmlOperation::type() const
 {
@@ -604,6 +736,9 @@ QUmlType *QUmlOperation::type() const
     return 0;
 }
 
+/*!
+    Adjusts type to \a type.
+ */
 void QUmlOperation::setType(QUmlType *type)
 {
     // This is a read-only derived association end
@@ -618,6 +753,8 @@ void QUmlOperation::setType(QUmlType *type)
 
 /*!
     This information is derived from the return result for this Operation.Specifies the upper multiplicity of the return parameter, if present.
+
+    \b {This is a read-only derived property.}
  */
 QString QUmlOperation::upper() const
 {
@@ -628,6 +765,9 @@ QString QUmlOperation::upper() const
     return QString();
 }
 
+/*!
+    Adjusts upper to \a upper.
+ */
 void QUmlOperation::setUpper(QString upper)
 {
     // This is a read-only derived property

@@ -76,6 +76,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A sequence node is a structured activity node that executes its actions in order.
  */
+
+/*!
+    Creates a new QUmlSequenceNode. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlSequenceNode::QUmlSequenceNode(bool createQModelingObject) :
     QUmlStructuredActivityNode(false)
 {
@@ -83,6 +87,9 @@ QUmlSequenceNode::QUmlSequenceNode(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlSequenceNodeObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlSequenceNode.
+*/
 QModelingElement *QUmlSequenceNode::clone() const
 {
     QUmlSequenceNode *c = new QUmlSequenceNode;
@@ -140,6 +147,10 @@ QModelingElement *QUmlSequenceNode::clone() const
 
 /*!
     An ordered set of executable nodes.
+
+    \sa addExecutableNode(), removeExecutableNode()
+
+    \b {Redefined property(ies):} QUmlStructuredActivityNode::nodes().
  */
 const QList<QUmlExecutableNode *> QUmlSequenceNode::executableNodes() const
 {
@@ -148,6 +159,11 @@ const QList<QUmlExecutableNode *> QUmlSequenceNode::executableNodes() const
     return _executableNodes;
 }
 
+/*!
+    Adds \a executableNode to executableNodes.
+
+    \sa executableNodes(), removeExecutableNode()
+ */
 void QUmlSequenceNode::addExecutableNode(QUmlExecutableNode *executableNode)
 {
     // This is a read-write association end
@@ -163,6 +179,11 @@ void QUmlSequenceNode::addExecutableNode(QUmlExecutableNode *executableNode)
     }
 }
 
+/*!
+    Removes \a executableNode from executableNodes.
+
+    \sa executableNodes(), addExecutableNode()
+ */
 void QUmlSequenceNode::removeExecutableNode(QUmlExecutableNode *executableNode)
 {
     // This is a read-write association end

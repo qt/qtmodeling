@@ -73,6 +73,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A read link object end qualifier action is an action that retrieves a qualifier end value from a link object.
  */
+
+/*!
+    Creates a new QUmlReadLinkObjectEndQualifierAction. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlReadLinkObjectEndQualifierAction::QUmlReadLinkObjectEndQualifierAction(bool createQModelingObject) :
     _object(0),
     _qualifier(0),
@@ -82,6 +86,9 @@ QUmlReadLinkObjectEndQualifierAction::QUmlReadLinkObjectEndQualifierAction(bool 
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlReadLinkObjectEndQualifierActionObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlReadLinkObjectEndQualifierAction.
+*/
 QModelingElement *QUmlReadLinkObjectEndQualifierAction::clone() const
 {
     QUmlReadLinkObjectEndQualifierAction *c = new QUmlReadLinkObjectEndQualifierAction;
@@ -128,6 +135,8 @@ QModelingElement *QUmlReadLinkObjectEndQualifierAction::clone() const
 
 /*!
     Gives the input pin from which the link object is obtained.
+
+    \b {Subsetted property(ies):} QUmlAction::inputs().
  */
 QUmlInputPin *QUmlReadLinkObjectEndQualifierAction::object() const
 {
@@ -136,6 +145,9 @@ QUmlInputPin *QUmlReadLinkObjectEndQualifierAction::object() const
     return _object;
 }
 
+/*!
+    Adjusts object to \a object.
+ */
 void QUmlReadLinkObjectEndQualifierAction::setObject(QUmlInputPin *object)
 {
     // This is a read-write association end
@@ -166,6 +178,9 @@ QUmlProperty *QUmlReadLinkObjectEndQualifierAction::qualifier() const
     return _qualifier;
 }
 
+/*!
+    Adjusts qualifier to \a qualifier.
+ */
 void QUmlReadLinkObjectEndQualifierAction::setQualifier(QUmlProperty *qualifier)
 {
     // This is a read-write association end
@@ -179,6 +194,8 @@ void QUmlReadLinkObjectEndQualifierAction::setQualifier(QUmlProperty *qualifier)
 
 /*!
     Pin where the result value is placed.
+
+    \b {Subsetted property(ies):} QUmlAction::outputs().
  */
 QUmlOutputPin *QUmlReadLinkObjectEndQualifierAction::result() const
 {
@@ -187,6 +204,9 @@ QUmlOutputPin *QUmlReadLinkObjectEndQualifierAction::result() const
     return _result;
 }
 
+/*!
+    Adjusts result to \a result.
+ */
 void QUmlReadLinkObjectEndQualifierAction::setResult(QUmlOutputPin *result)
 {
     // This is a read-write association end

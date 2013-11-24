@@ -70,6 +70,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A state models a situation during which some (usually implicit) invariant condition holds.The states of protocol state machines are exposed to the users of their context classifiers. A protocol state represents an exposed stable situation of its context classifier: when an instance of the classifier is not processing any operation, users of this instance can always know its state configuration.
  */
+
+/*!
+    Creates a new QUmlState. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlState::QUmlState(bool createQModelingObject) :
     _doActivity(0),
     _entry(0),
@@ -82,6 +86,9 @@ QUmlState::QUmlState(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlStateObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlState.
+*/
 QModelingElement *QUmlState::clone() const
 {
     QUmlState *c = new QUmlState;
@@ -129,6 +136,12 @@ QModelingElement *QUmlState::clone() const
 
 /*!
     The entry and exit connection points used in conjunction with this (submachine) state, i.e. as targets and sources, respectively, in the region with the submachine state. A connection point reference references the corresponding definition of a connection point pseudostate in the statemachine referenced by the submachinestate.
+
+    \sa addConnection(), removeConnection()
+
+    \b {Subsetted property(ies):} QUmlNamespace::ownedMembers().
+
+    \b {Opposite property(ies):} QUmlConnectionPointReference::state().
  */
 const QSet<QUmlConnectionPointReference *> QUmlState::connections() const
 {
@@ -137,6 +150,11 @@ const QSet<QUmlConnectionPointReference *> QUmlState::connections() const
     return _connections;
 }
 
+/*!
+    Adds \a connection to connections.
+
+    \sa connections(), removeConnection()
+ */
 void QUmlState::addConnection(QUmlConnectionPointReference *connection)
 {
     // This is a read-write association end
@@ -157,6 +175,11 @@ void QUmlState::addConnection(QUmlConnectionPointReference *connection)
     }
 }
 
+/*!
+    Removes \a connection from connections.
+
+    \sa connections(), addConnection()
+ */
 void QUmlState::removeConnection(QUmlConnectionPointReference *connection)
 {
     // This is a read-write association end
@@ -178,6 +201,12 @@ void QUmlState::removeConnection(QUmlConnectionPointReference *connection)
 
 /*!
     The entry and exit pseudostates of a composite state. These can only be entry or exit Pseudostates, and they must have different names. They can only be defined for composite states.
+
+    \sa addConnectionPoint(), removeConnectionPoint()
+
+    \b {Subsetted property(ies):} QUmlNamespace::ownedMembers().
+
+    \b {Opposite property(ies):} QUmlPseudostate::state().
  */
 const QSet<QUmlPseudostate *> QUmlState::connectionPoints() const
 {
@@ -186,6 +215,11 @@ const QSet<QUmlPseudostate *> QUmlState::connectionPoints() const
     return _connectionPoints;
 }
 
+/*!
+    Adds \a connectionPoint to connectionPoints.
+
+    \sa connectionPoints(), removeConnectionPoint()
+ */
 void QUmlState::addConnectionPoint(QUmlPseudostate *connectionPoint)
 {
     // This is a read-write association end
@@ -206,6 +240,11 @@ void QUmlState::addConnectionPoint(QUmlPseudostate *connectionPoint)
     }
 }
 
+/*!
+    Removes \a connectionPoint from connectionPoints.
+
+    \sa connectionPoints(), addConnectionPoint()
+ */
 void QUmlState::removeConnectionPoint(QUmlPseudostate *connectionPoint)
 {
     // This is a read-write association end
@@ -227,6 +266,10 @@ void QUmlState::removeConnectionPoint(QUmlPseudostate *connectionPoint)
 
 /*!
     A list of triggers that are candidates to be retained by the state machine if they trigger no transitions out of the state (not consumed). A deferred trigger is retained until the state machine reaches a state configuration where it is no longer deferred.
+
+    \sa addDeferrableTrigger(), removeDeferrableTrigger()
+
+    \b {Subsetted property(ies):} QUmlElement::ownedElements().
  */
 const QSet<QUmlTrigger *> QUmlState::deferrableTriggers() const
 {
@@ -235,6 +278,11 @@ const QSet<QUmlTrigger *> QUmlState::deferrableTriggers() const
     return _deferrableTriggers;
 }
 
+/*!
+    Adds \a deferrableTrigger to deferrableTriggers.
+
+    \sa deferrableTriggers(), removeDeferrableTrigger()
+ */
 void QUmlState::addDeferrableTrigger(QUmlTrigger *deferrableTrigger)
 {
     // This is a read-write association end
@@ -250,6 +298,11 @@ void QUmlState::addDeferrableTrigger(QUmlTrigger *deferrableTrigger)
     }
 }
 
+/*!
+    Removes \a deferrableTrigger from deferrableTriggers.
+
+    \sa deferrableTriggers(), addDeferrableTrigger()
+ */
 void QUmlState::removeDeferrableTrigger(QUmlTrigger *deferrableTrigger)
 {
     // This is a read-write association end
@@ -266,6 +319,8 @@ void QUmlState::removeDeferrableTrigger(QUmlTrigger *deferrableTrigger)
 
 /*!
     An optional behavior that is executed while being in the state. The execution starts when this state is entered, and stops either by itself, or when the state is exited, whichever comes first.
+
+    \b {Subsetted property(ies):} QUmlElement::ownedElements().
  */
 QUmlBehavior *QUmlState::doActivity() const
 {
@@ -274,6 +329,9 @@ QUmlBehavior *QUmlState::doActivity() const
     return _doActivity;
 }
 
+/*!
+    Adjusts doActivity to \a doActivity.
+ */
 void QUmlState::setDoActivity(QUmlBehavior *doActivity)
 {
     // This is a read-write association end
@@ -296,6 +354,8 @@ void QUmlState::setDoActivity(QUmlBehavior *doActivity)
 
 /*!
     An optional behavior that is executed whenever this state is entered regardless of the transition taken to reach the state. If defined, entry actions are always executed to completion prior to any internal behavior or transitions performed within the state.
+
+    \b {Subsetted property(ies):} QUmlElement::ownedElements().
  */
 QUmlBehavior *QUmlState::entry() const
 {
@@ -304,6 +364,9 @@ QUmlBehavior *QUmlState::entry() const
     return _entry;
 }
 
+/*!
+    Adjusts entry to \a entry.
+ */
 void QUmlState::setEntry(QUmlBehavior *entry)
 {
     // This is a read-write association end
@@ -326,6 +389,8 @@ void QUmlState::setEntry(QUmlBehavior *entry)
 
 /*!
     An optional behavior that is executed whenever this state is exited regardless of which transition was taken out of the state. If defined, exit actions are always executed to completion only after all internal activities and transition actions have completed execution.
+
+    \b {Subsetted property(ies):} QUmlElement::ownedElements().
  */
 QUmlBehavior *QUmlState::exit() const
 {
@@ -334,6 +399,9 @@ QUmlBehavior *QUmlState::exit() const
     return _exit;
 }
 
+/*!
+    Adjusts exit to \a exit.
+ */
 void QUmlState::setExit(QUmlBehavior *exit)
 {
     // This is a read-write association end
@@ -356,6 +424,8 @@ void QUmlState::setExit(QUmlBehavior *exit)
 
 /*!
     A state with isComposite=true is said to be a composite state. A composite state is a state that contains at least one region.
+
+    \b {This is a read-only derived property.}
  */
 bool QUmlState::isComposite() const
 {
@@ -366,6 +436,9 @@ bool QUmlState::isComposite() const
     return bool();
 }
 
+/*!
+    Adjusts isComposite to \a isComposite.
+ */
 void QUmlState::setComposite(bool isComposite)
 {
     // This is a read-only derived property
@@ -380,6 +453,8 @@ void QUmlState::setComposite(bool isComposite)
 
 /*!
     A state with isOrthogonal=true is said to be an orthogonal composite state. An orthogonal composite state contains two or more regions.
+
+    \b {This is a read-only derived property.}
  */
 bool QUmlState::isOrthogonal() const
 {
@@ -390,6 +465,9 @@ bool QUmlState::isOrthogonal() const
     return bool();
 }
 
+/*!
+    Adjusts isOrthogonal to \a isOrthogonal.
+ */
 void QUmlState::setOrthogonal(bool isOrthogonal)
 {
     // This is a read-only derived property
@@ -404,6 +482,8 @@ void QUmlState::setOrthogonal(bool isOrthogonal)
 
 /*!
     A state with isSimple=true is said to be a simple state. A simple state does not have any regions and it does not refer to any submachine state machine.
+
+    \b {This is a read-only derived property.}
  */
 bool QUmlState::isSimple() const
 {
@@ -414,6 +494,9 @@ bool QUmlState::isSimple() const
     return bool();
 }
 
+/*!
+    Adjusts isSimple to \a isSimple.
+ */
 void QUmlState::setSimple(bool isSimple)
 {
     // This is a read-only derived property
@@ -428,6 +511,8 @@ void QUmlState::setSimple(bool isSimple)
 
 /*!
     A state with isSubmachineState=true is said to be a submachine state. Such a state refers to a state machine (submachine).
+
+    \b {This is a read-only derived property.}
  */
 bool QUmlState::isSubmachineState() const
 {
@@ -438,6 +523,9 @@ bool QUmlState::isSubmachineState() const
     return bool();
 }
 
+/*!
+    Adjusts isSubmachineState to \a isSubmachineState.
+ */
 void QUmlState::setSubmachineState(bool isSubmachineState)
 {
     // This is a read-only derived property
@@ -452,6 +540,8 @@ void QUmlState::setSubmachineState(bool isSubmachineState)
 
 /*!
     The state of which this state is a redefinition.
+
+    \b {Subsetted property(ies):} QUmlRedefinableElement::redefinedElements().
  */
 QUmlState *QUmlState::redefinedState() const
 {
@@ -460,6 +550,9 @@ QUmlState *QUmlState::redefinedState() const
     return _redefinedState;
 }
 
+/*!
+    Adjusts redefinedState to \a redefinedState.
+ */
 void QUmlState::setRedefinedState(QUmlState *redefinedState)
 {
     // This is a read-write association end
@@ -481,6 +574,10 @@ void QUmlState::setRedefinedState(QUmlState *redefinedState)
 
 /*!
     References the classifier in which context this element may be redefined.
+
+    \b {This is a read-only derived property.}
+
+    \b {Redefined property(ies):} QUmlRedefinableElement::redefinitionContexts().
  */
 QUmlClassifier *QUmlState::redefinitionContext() const
 {
@@ -491,6 +588,9 @@ QUmlClassifier *QUmlState::redefinitionContext() const
     return 0;
 }
 
+/*!
+    Adjusts redefinitionContext to \a redefinitionContext.
+ */
 void QUmlState::setRedefinitionContext(QUmlClassifier *redefinitionContext)
 {
     // This is a read-only derived association end
@@ -512,6 +612,12 @@ void QUmlState::setRedefinitionContext(QUmlClassifier *redefinitionContext)
 
 /*!
     The regions owned directly by the state.
+
+    \sa addRegion(), removeRegion()
+
+    \b {Subsetted property(ies):} QUmlNamespace::ownedMembers().
+
+    \b {Opposite property(ies):} QUmlRegion::state().
  */
 const QSet<QUmlRegion *> QUmlState::regions() const
 {
@@ -520,6 +626,11 @@ const QSet<QUmlRegion *> QUmlState::regions() const
     return _regions;
 }
 
+/*!
+    Adds \a region to regions.
+
+    \sa regions(), removeRegion()
+ */
 void QUmlState::addRegion(QUmlRegion *region)
 {
     // This is a read-write association end
@@ -540,6 +651,11 @@ void QUmlState::addRegion(QUmlRegion *region)
     }
 }
 
+/*!
+    Removes \a region from regions.
+
+    \sa regions(), addRegion()
+ */
 void QUmlState::removeRegion(QUmlRegion *region)
 {
     // This is a read-write association end
@@ -561,6 +677,8 @@ void QUmlState::removeRegion(QUmlRegion *region)
 
 /*!
     Specifies conditions that are always true when this state is the current state. In protocol state machines, state invariants are additional conditions to the preconditions of the outgoing transitions, and to the postcondition of the incoming transitions.
+
+    \b {Subsetted property(ies):} QUmlNamespace::ownedRules().
  */
 QUmlConstraint *QUmlState::stateInvariant() const
 {
@@ -569,6 +687,9 @@ QUmlConstraint *QUmlState::stateInvariant() const
     return _stateInvariant;
 }
 
+/*!
+    Adjusts stateInvariant to \a stateInvariant.
+ */
 void QUmlState::setStateInvariant(QUmlConstraint *stateInvariant)
 {
     // This is a read-write association end
@@ -591,6 +712,8 @@ void QUmlState::setStateInvariant(QUmlConstraint *stateInvariant)
 
 /*!
     The state machine that is to be inserted in place of the (submachine) state.
+
+    \b {Opposite property(ies):} QUmlStateMachine::submachineStates().
  */
 QUmlStateMachine *QUmlState::submachine() const
 {
@@ -599,6 +722,9 @@ QUmlStateMachine *QUmlState::submachine() const
     return _submachine;
 }
 
+/*!
+    Adjusts submachine to \a submachine.
+ */
 void QUmlState::setSubmachine(QUmlStateMachine *submachine)
 {
     // This is a read-write association end

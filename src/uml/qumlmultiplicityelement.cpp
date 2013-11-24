@@ -51,7 +51,13 @@ QT_BEGIN_NAMESPACE
     \inmodule QtUml
 
     \brief A multiplicity is a definition of an inclusive interval of non-negative integers beginning with a lower bound and ending with a (possibly infinite) upper bound. A multiplicity element embeds this information to specify the allowable cardinalities for an instantiation of this element.
+
+    \b {QUmlMultiplicityElement is an abstract class.}
  */
+
+/*!
+    Creates a new QUmlMultiplicityElement.
+*/
 QUmlMultiplicityElement::QUmlMultiplicityElement() :
     _isOrdered(false),
     _isUnique(true),
@@ -60,6 +66,9 @@ QUmlMultiplicityElement::QUmlMultiplicityElement() :
 {
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlMultiplicityElement.
+*/
 QModelingElement *QUmlMultiplicityElement::clone() const
 {
     QUmlMultiplicityElement *c = new QUmlMultiplicityElement;
@@ -86,6 +95,9 @@ bool QUmlMultiplicityElement::isOrdered() const
     return _isOrdered;
 }
 
+/*!
+    Adjusts isOrdered to \a isOrdered.
+ */
 void QUmlMultiplicityElement::setOrdered(bool isOrdered)
 {
     // This is a read-write property
@@ -106,6 +118,9 @@ bool QUmlMultiplicityElement::isUnique() const
     return _isUnique;
 }
 
+/*!
+    Adjusts isUnique to \a isUnique.
+ */
 void QUmlMultiplicityElement::setUnique(bool isUnique)
 {
     // This is a read-write property
@@ -118,6 +133,8 @@ void QUmlMultiplicityElement::setUnique(bool isUnique)
 
 /*!
     Specifies the lower bound of the multiplicity interval.
+
+    \b {This is a derived property.}
  */
 int QUmlMultiplicityElement::lower() const
 {
@@ -128,6 +145,9 @@ int QUmlMultiplicityElement::lower() const
     return int();
 }
 
+/*!
+    Adjusts lower to \a lower.
+ */
 void QUmlMultiplicityElement::setLower(int lower)
 {
     // This is a read-write derived property
@@ -142,6 +162,8 @@ void QUmlMultiplicityElement::setLower(int lower)
 
 /*!
     The specification of the lower bound for this multiplicity.
+
+    \b {Subsetted property(ies):} QUmlElement::ownedElements().
  */
 QUmlValueSpecification *QUmlMultiplicityElement::lowerValue() const
 {
@@ -150,6 +172,9 @@ QUmlValueSpecification *QUmlMultiplicityElement::lowerValue() const
     return _lowerValue;
 }
 
+/*!
+    Adjusts lowerValue to \a lowerValue.
+ */
 void QUmlMultiplicityElement::setLowerValue(QUmlValueSpecification *lowerValue)
 {
     // This is a read-write association end
@@ -172,6 +197,8 @@ void QUmlMultiplicityElement::setLowerValue(QUmlValueSpecification *lowerValue)
 
 /*!
     Specifies the upper bound of the multiplicity interval.
+
+    \b {This is a derived property.}
  */
 QString QUmlMultiplicityElement::upper() const
 {
@@ -182,6 +209,9 @@ QString QUmlMultiplicityElement::upper() const
     return QString();
 }
 
+/*!
+    Adjusts upper to \a upper.
+ */
 void QUmlMultiplicityElement::setUpper(QString upper)
 {
     // This is a read-write derived property
@@ -196,6 +226,8 @@ void QUmlMultiplicityElement::setUpper(QString upper)
 
 /*!
     The specification of the upper bound for this multiplicity.
+
+    \b {Subsetted property(ies):} QUmlElement::ownedElements().
  */
 QUmlValueSpecification *QUmlMultiplicityElement::upperValue() const
 {
@@ -204,6 +236,9 @@ QUmlValueSpecification *QUmlMultiplicityElement::upperValue() const
     return _upperValue;
 }
 
+/*!
+    Adjusts upperValue to \a upperValue.
+ */
 void QUmlMultiplicityElement::setUpperValue(QUmlValueSpecification *upperValue)
 {
     // This is a read-write association end

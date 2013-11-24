@@ -55,6 +55,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A template signature bundles the set of formal template parameters for a templated element.
  */
+
+/*!
+    Creates a new QUmlTemplateSignature. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlTemplateSignature::QUmlTemplateSignature(bool createQModelingObject) :
     _template_(0)
 {
@@ -62,6 +66,9 @@ QUmlTemplateSignature::QUmlTemplateSignature(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlTemplateSignatureObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlTemplateSignature.
+*/
 QModelingElement *QUmlTemplateSignature::clone() const
 {
     QUmlTemplateSignature *c = new QUmlTemplateSignature;
@@ -80,6 +87,12 @@ QModelingElement *QUmlTemplateSignature::clone() const
 
 /*!
     The formal template parameters that are owned by this template signature.
+
+    \sa addOwnedParameter(), removeOwnedParameter()
+
+    \b {Subsetted property(ies):} QUmlTemplateSignature::parameters(), QUmlElement::ownedElements().
+
+    \b {Opposite property(ies):} QUmlTemplateParameter::signature().
  */
 const QList<QUmlTemplateParameter *> QUmlTemplateSignature::ownedParameters() const
 {
@@ -88,6 +101,11 @@ const QList<QUmlTemplateParameter *> QUmlTemplateSignature::ownedParameters() co
     return _ownedParameters;
 }
 
+/*!
+    Adds \a ownedParameter to ownedParameters.
+
+    \sa ownedParameters(), removeOwnedParameter()
+ */
 void QUmlTemplateSignature::addOwnedParameter(QUmlTemplateParameter *ownedParameter)
 {
     // This is a read-write association end
@@ -109,6 +127,11 @@ void QUmlTemplateSignature::addOwnedParameter(QUmlTemplateParameter *ownedParame
     }
 }
 
+/*!
+    Removes \a ownedParameter from ownedParameters.
+
+    \sa ownedParameters(), addOwnedParameter()
+ */
 void QUmlTemplateSignature::removeOwnedParameter(QUmlTemplateParameter *ownedParameter)
 {
     // This is a read-write association end
@@ -131,6 +154,8 @@ void QUmlTemplateSignature::removeOwnedParameter(QUmlTemplateParameter *ownedPar
 
 /*!
     The ordered set of all formal template parameters for this template signature.
+
+    \sa addParameter(), removeParameter()
  */
 const QList<QUmlTemplateParameter *> QUmlTemplateSignature::parameters() const
 {
@@ -139,6 +164,11 @@ const QList<QUmlTemplateParameter *> QUmlTemplateSignature::parameters() const
     return _parameters;
 }
 
+/*!
+    Adds \a parameter to parameters.
+
+    \sa parameters(), removeParameter()
+ */
 void QUmlTemplateSignature::addParameter(QUmlTemplateParameter *parameter)
 {
     // This is a read-write association end
@@ -150,6 +180,11 @@ void QUmlTemplateSignature::addParameter(QUmlTemplateParameter *parameter)
     }
 }
 
+/*!
+    Removes \a parameter from parameters.
+
+    \sa parameters(), addParameter()
+ */
 void QUmlTemplateSignature::removeParameter(QUmlTemplateParameter *parameter)
 {
     // This is a read-write association end
@@ -161,6 +196,10 @@ void QUmlTemplateSignature::removeParameter(QUmlTemplateParameter *parameter)
 
 /*!
     The element that owns this template signature.
+
+    \b {Subsetted property(ies):} QUmlElement::owner().
+
+    \b {Opposite property(ies):} QUmlTemplateableElement::ownedTemplateSignature().
  */
 QUmlTemplateableElement *QUmlTemplateSignature::template_() const
 {
@@ -169,6 +208,9 @@ QUmlTemplateableElement *QUmlTemplateSignature::template_() const
     return _template_;
 }
 
+/*!
+    Adjusts template_ to \a template_.
+ */
 void QUmlTemplateSignature::setTemplate(QUmlTemplateableElement *template_)
 {
     // This is a read-write association end

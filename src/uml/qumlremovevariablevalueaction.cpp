@@ -73,6 +73,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A remove variable value action is a write variable action that removes values from variables.
  */
+
+/*!
+    Creates a new QUmlRemoveVariableValueAction. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlRemoveVariableValueAction::QUmlRemoveVariableValueAction(bool createQModelingObject) :
     _isRemoveDuplicates(false),
     _removeAt(0)
@@ -81,6 +85,9 @@ QUmlRemoveVariableValueAction::QUmlRemoveVariableValueAction(bool createQModelin
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlRemoveVariableValueActionObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlRemoveVariableValueAction.
+*/
 QModelingElement *QUmlRemoveVariableValueAction::clone() const
 {
     QUmlRemoveVariableValueAction *c = new QUmlRemoveVariableValueAction;
@@ -136,6 +143,9 @@ bool QUmlRemoveVariableValueAction::isRemoveDuplicates() const
     return _isRemoveDuplicates;
 }
 
+/*!
+    Adjusts isRemoveDuplicates to \a isRemoveDuplicates.
+ */
 void QUmlRemoveVariableValueAction::setRemoveDuplicates(bool isRemoveDuplicates)
 {
     // This is a read-write property
@@ -148,6 +158,8 @@ void QUmlRemoveVariableValueAction::setRemoveDuplicates(bool isRemoveDuplicates)
 
 /*!
     Specifies the position of an existing value to remove in ordered nonunique variables. The type of the pin is UnlimitedNatural, but the value cannot be zero or unlimited.
+
+    \b {Subsetted property(ies):} QUmlAction::inputs().
  */
 QUmlInputPin *QUmlRemoveVariableValueAction::removeAt() const
 {
@@ -156,6 +168,9 @@ QUmlInputPin *QUmlRemoveVariableValueAction::removeAt() const
     return _removeAt;
 }
 
+/*!
+    Adjusts removeAt to \a removeAt.
+ */
 void QUmlRemoveVariableValueAction::setRemoveAt(QUmlInputPin *removeAt)
 {
     // This is a read-write association end

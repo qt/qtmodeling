@@ -60,12 +60,21 @@ QT_BEGIN_NAMESPACE
     \inmodule QtUml
 
     \brief ConnectableElement is an abstract metaclass representing a set of instances that play roles of a classifier. Connectable elements may be joined by attached connectors and specify configurations of linked instances to be created within an instance of the containing classifier.A connectable element may be exposed as a connectable element template parameter.
+
+    \b {QUmlConnectableElement is an abstract class.}
  */
+
+/*!
+    Creates a new QUmlConnectableElement.
+*/
 QUmlConnectableElement::QUmlConnectableElement() :
     _templateParameter(0)
 {
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlConnectableElement.
+*/
 QModelingElement *QUmlConnectableElement::clone() const
 {
     QUmlConnectableElement *c = new QUmlConnectableElement;
@@ -90,6 +99,10 @@ QModelingElement *QUmlConnectableElement::clone() const
 
 /*!
     Denotes a set of connector ends that attaches to this connectable element.
+
+    \b {This is a read-only derived property.}
+
+    \b {Opposite property(ies):} QUmlConnectorEnd::role().
  */
 const QList<QUmlConnectorEnd *> QUmlConnectableElement::ends() const
 {
@@ -100,6 +113,11 @@ const QList<QUmlConnectorEnd *> QUmlConnectableElement::ends() const
     return QList<QUmlConnectorEnd *>();
 }
 
+/*!
+    Adds \a end to ends.
+
+    \sa ends(), removeEnd()
+ */
 void QUmlConnectableElement::addEnd(QUmlConnectorEnd *end)
 {
     // This is a read-only derived association end
@@ -117,6 +135,11 @@ void QUmlConnectableElement::addEnd(QUmlConnectorEnd *end)
     }
 }
 
+/*!
+    Removes \a end from ends.
+
+    \sa ends(), addEnd()
+ */
 void QUmlConnectableElement::removeEnd(QUmlConnectorEnd *end)
 {
     // This is a read-only derived association end
@@ -136,6 +159,10 @@ void QUmlConnectableElement::removeEnd(QUmlConnectorEnd *end)
 
 /*!
     The ConnectableElementTemplateParameter for this ConnectableElement parameter.
+
+    \b {Redefined property(ies):} QUmlParameterableElement::templateParameter().
+
+    \b {Opposite property(ies):} QUmlConnectableElementTemplateParameter::parameteredElement().
  */
 QUmlConnectableElementTemplateParameter *QUmlConnectableElement::templateParameter() const
 {
@@ -144,6 +171,9 @@ QUmlConnectableElementTemplateParameter *QUmlConnectableElement::templateParamet
     return _templateParameter;
 }
 
+/*!
+    Adjusts templateParameter to \a templateParameter.
+ */
 void QUmlConnectableElement::setTemplateParameter(QUmlConnectableElementTemplateParameter *templateParameter)
 {
     // This is a read-write association end

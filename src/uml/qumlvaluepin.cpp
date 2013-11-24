@@ -73,6 +73,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A value pin is an input pin that provides a value by evaluating a value specification.
  */
+
+/*!
+    Creates a new QUmlValuePin. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlValuePin::QUmlValuePin(bool createQModelingObject) :
     QUmlInputPin(false),
     _value(0)
@@ -81,6 +85,9 @@ QUmlValuePin::QUmlValuePin(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlValuePinObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlValuePin.
+*/
 QModelingElement *QUmlValuePin::clone() const
 {
     QUmlValuePin *c = new QUmlValuePin;
@@ -133,6 +140,8 @@ QModelingElement *QUmlValuePin::clone() const
 
 /*!
     Value that the pin will provide.
+
+    \b {Subsetted property(ies):} QUmlElement::ownedElements().
  */
 QUmlValueSpecification *QUmlValuePin::value() const
 {
@@ -141,6 +150,9 @@ QUmlValueSpecification *QUmlValuePin::value() const
     return _value;
 }
 
+/*!
+    Adjusts value to \a value.
+ */
 void QUmlValuePin::setValue(QUmlValueSpecification *value)
 {
     // This is a read-write association end

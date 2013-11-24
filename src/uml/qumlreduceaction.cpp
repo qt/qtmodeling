@@ -73,6 +73,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A reduce action is an action that reduces a collection to a single value by combining the elements of the collection.
  */
+
+/*!
+    Creates a new QUmlReduceAction. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlReduceAction::QUmlReduceAction(bool createQModelingObject) :
     _collection(0),
     _isOrdered(false),
@@ -83,6 +87,9 @@ QUmlReduceAction::QUmlReduceAction(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlReduceActionObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlReduceAction.
+*/
 QModelingElement *QUmlReduceAction::clone() const
 {
     QUmlReduceAction *c = new QUmlReduceAction;
@@ -130,6 +137,8 @@ QModelingElement *QUmlReduceAction::clone() const
 
 /*!
     The collection to be reduced.
+
+    \b {Subsetted property(ies):} QUmlAction::inputs().
  */
 QUmlInputPin *QUmlReduceAction::collection() const
 {
@@ -138,6 +147,9 @@ QUmlInputPin *QUmlReduceAction::collection() const
     return _collection;
 }
 
+/*!
+    Adjusts collection to \a collection.
+ */
 void QUmlReduceAction::setCollection(QUmlInputPin *collection)
 {
     // This is a read-write association end
@@ -168,6 +180,9 @@ bool QUmlReduceAction::isOrdered() const
     return _isOrdered;
 }
 
+/*!
+    Adjusts isOrdered to \a isOrdered.
+ */
 void QUmlReduceAction::setOrdered(bool isOrdered)
 {
     // This is a read-write property
@@ -188,6 +203,9 @@ QUmlBehavior *QUmlReduceAction::reducer() const
     return _reducer;
 }
 
+/*!
+    Adjusts reducer to \a reducer.
+ */
 void QUmlReduceAction::setReducer(QUmlBehavior *reducer)
 {
     // This is a read-write association end
@@ -201,6 +219,8 @@ void QUmlReduceAction::setReducer(QUmlBehavior *reducer)
 
 /*!
     Gives the output pin on which the result is put.
+
+    \b {Subsetted property(ies):} QUmlAction::outputs().
  */
 QUmlOutputPin *QUmlReduceAction::result() const
 {
@@ -209,6 +229,9 @@ QUmlOutputPin *QUmlReduceAction::result() const
     return _result;
 }
 
+/*!
+    Adjusts result to \a result.
+ */
 void QUmlReduceAction::setResult(QUmlOutputPin *result)
 {
     // This is a read-write association end

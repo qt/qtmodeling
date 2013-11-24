@@ -68,6 +68,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A transition is a directed relationship between a source vertex and a target vertex. It may be part of a compound transition, which takes the state machine from one state configuration to another, representing the complete response of the state machine to an occurrence of an event of a particular type.
  */
+
+/*!
+    Creates a new QUmlTransition. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlTransition::QUmlTransition(bool createQModelingObject) :
     _container(0),
     _effect(0),
@@ -81,6 +85,9 @@ QUmlTransition::QUmlTransition(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlTransitionObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlTransition.
+*/
 QModelingElement *QUmlTransition::clone() const
 {
     QUmlTransition *c = new QUmlTransition;
@@ -121,6 +128,10 @@ QModelingElement *QUmlTransition::clone() const
 
 /*!
     Designates the region that owns this transition.
+
+    \b {Subsetted property(ies):} QUmlNamedElement::namespace_().
+
+    \b {Opposite property(ies):} QUmlRegion::transitions().
  */
 QUmlRegion *QUmlTransition::container() const
 {
@@ -129,6 +140,9 @@ QUmlRegion *QUmlTransition::container() const
     return _container;
 }
 
+/*!
+    Adjusts container to \a container.
+ */
 void QUmlTransition::setContainer(QUmlRegion *container)
 {
     // This is a read-write association end
@@ -147,6 +161,8 @@ void QUmlTransition::setContainer(QUmlRegion *container)
 
 /*!
     Specifies an optional behavior to be performed when the transition fires.
+
+    \b {Subsetted property(ies):} QUmlElement::ownedElements().
  */
 QUmlBehavior *QUmlTransition::effect() const
 {
@@ -155,6 +171,9 @@ QUmlBehavior *QUmlTransition::effect() const
     return _effect;
 }
 
+/*!
+    Adjusts effect to \a effect.
+ */
 void QUmlTransition::setEffect(QUmlBehavior *effect)
 {
     // This is a read-write association end
@@ -177,6 +196,8 @@ void QUmlTransition::setEffect(QUmlBehavior *effect)
 
 /*!
     A guard is a constraint that provides a fine-grained control over the firing of the transition. The guard is evaluated when an event occurrence is dispatched by the state machine. If the guard is true at that time, the transition may be enabled, otherwise, it is disabled. Guards should be pure expressions without side effects. Guard expressions with side effects are ill formed.
+
+    \b {Subsetted property(ies):} QUmlNamespace::ownedRules().
  */
 QUmlConstraint *QUmlTransition::guard() const
 {
@@ -185,6 +206,9 @@ QUmlConstraint *QUmlTransition::guard() const
     return _guard;
 }
 
+/*!
+    Adjusts guard to \a guard.
+ */
 void QUmlTransition::setGuard(QUmlConstraint *guard)
 {
     // This is a read-write association end
@@ -215,6 +239,9 @@ QtUml::TransitionKind QUmlTransition::kind() const
     return _kind;
 }
 
+/*!
+    Adjusts kind to \a kind.
+ */
 void QUmlTransition::setKind(QtUml::TransitionKind kind)
 {
     // This is a read-write property
@@ -227,6 +254,8 @@ void QUmlTransition::setKind(QtUml::TransitionKind kind)
 
 /*!
     The transition that is redefined by this transition.
+
+    \b {Subsetted property(ies):} QUmlRedefinableElement::redefinedElements().
  */
 QUmlTransition *QUmlTransition::redefinedTransition() const
 {
@@ -235,6 +264,9 @@ QUmlTransition *QUmlTransition::redefinedTransition() const
     return _redefinedTransition;
 }
 
+/*!
+    Adjusts redefinedTransition to \a redefinedTransition.
+ */
 void QUmlTransition::setRedefinedTransition(QUmlTransition *redefinedTransition)
 {
     // This is a read-write association end
@@ -256,6 +288,10 @@ void QUmlTransition::setRedefinedTransition(QUmlTransition *redefinedTransition)
 
 /*!
     References the classifier in which context this element may be redefined.
+
+    \b {This is a read-only derived property.}
+
+    \b {Redefined property(ies):} QUmlRedefinableElement::redefinitionContexts().
  */
 QUmlClassifier *QUmlTransition::redefinitionContext() const
 {
@@ -266,6 +302,9 @@ QUmlClassifier *QUmlTransition::redefinitionContext() const
     return 0;
 }
 
+/*!
+    Adjusts redefinitionContext to \a redefinitionContext.
+ */
 void QUmlTransition::setRedefinitionContext(QUmlClassifier *redefinitionContext)
 {
     // This is a read-only derived association end
@@ -287,6 +326,8 @@ void QUmlTransition::setRedefinitionContext(QUmlClassifier *redefinitionContext)
 
 /*!
     Designates the originating vertex (state or pseudostate) of the transition.
+
+    \b {Opposite property(ies):} QUmlVertex::outgoings().
  */
 QUmlVertex *QUmlTransition::source() const
 {
@@ -295,6 +336,9 @@ QUmlVertex *QUmlTransition::source() const
     return _source;
 }
 
+/*!
+    Adjusts source to \a source.
+ */
 void QUmlTransition::setSource(QUmlVertex *source)
 {
     // This is a read-write association end
@@ -308,6 +352,8 @@ void QUmlTransition::setSource(QUmlVertex *source)
 
 /*!
     Designates the target vertex that is reached when the transition is taken.
+
+    \b {Opposite property(ies):} QUmlVertex::incomings().
  */
 QUmlVertex *QUmlTransition::target() const
 {
@@ -316,6 +362,9 @@ QUmlVertex *QUmlTransition::target() const
     return _target;
 }
 
+/*!
+    Adjusts target to \a target.
+ */
 void QUmlTransition::setTarget(QUmlVertex *target)
 {
     // This is a read-write association end
@@ -329,6 +378,10 @@ void QUmlTransition::setTarget(QUmlVertex *target)
 
 /*!
     Specifies the triggers that may fire the transition.
+
+    \sa addTrigger(), removeTrigger()
+
+    \b {Subsetted property(ies):} QUmlElement::ownedElements().
  */
 const QSet<QUmlTrigger *> QUmlTransition::triggers() const
 {
@@ -337,6 +390,11 @@ const QSet<QUmlTrigger *> QUmlTransition::triggers() const
     return _triggers;
 }
 
+/*!
+    Adds \a trigger to triggers.
+
+    \sa triggers(), removeTrigger()
+ */
 void QUmlTransition::addTrigger(QUmlTrigger *trigger)
 {
     // This is a read-write association end
@@ -352,6 +410,11 @@ void QUmlTransition::addTrigger(QUmlTrigger *trigger)
     }
 }
 
+/*!
+    Removes \a trigger from triggers.
+
+    \sa triggers(), addTrigger()
+ */
 void QUmlTransition::removeTrigger(QUmlTrigger *trigger)
 {
     // This is a read-write association end

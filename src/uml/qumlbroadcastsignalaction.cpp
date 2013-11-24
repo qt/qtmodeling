@@ -74,6 +74,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A broadcast signal action is an action that transmits a signal instance to all the potential target objects in the system, which may cause the firing of a state machine transitions or the execution of associated activities of a target object. The argument values are available to the execution of associated behaviors. The requestor continues execution immediately after the signals are sent out. It does not wait for receipt. Any reply messages are ignored and are not transmitted to the requestor.
  */
+
+/*!
+    Creates a new QUmlBroadcastSignalAction. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlBroadcastSignalAction::QUmlBroadcastSignalAction(bool createQModelingObject) :
     _signal(0)
 {
@@ -81,6 +85,9 @@ QUmlBroadcastSignalAction::QUmlBroadcastSignalAction(bool createQModelingObject)
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlBroadcastSignalActionObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlBroadcastSignalAction.
+*/
 QModelingElement *QUmlBroadcastSignalAction::clone() const
 {
     QUmlBroadcastSignalAction *c = new QUmlBroadcastSignalAction;
@@ -135,6 +142,9 @@ QUmlSignal *QUmlBroadcastSignalAction::signal() const
     return _signal;
 }
 
+/*!
+    Adjusts signal to \a signal.
+ */
 void QUmlBroadcastSignalAction::setSignal(QUmlSignal *signal)
 {
     // This is a read-write association end

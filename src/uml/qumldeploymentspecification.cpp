@@ -82,6 +82,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A deployment specification specifies a set of properties that determine execution parameters of a component artifact that is deployed on a node. A deployment specification can be aimed at a specific type of container. An artifact that reifies or implements deployment specification properties is a deployment descriptor.
  */
+
+/*!
+    Creates a new QUmlDeploymentSpecification. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlDeploymentSpecification::QUmlDeploymentSpecification(bool createQModelingObject) :
     QUmlArtifact(false),
     _deployment(0)
@@ -90,6 +94,9 @@ QUmlDeploymentSpecification::QUmlDeploymentSpecification(bool createQModelingObj
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlDeploymentSpecificationObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlDeploymentSpecification.
+*/
 QModelingElement *QUmlDeploymentSpecification::clone() const
 {
     QUmlDeploymentSpecification *c = new QUmlDeploymentSpecification;
@@ -156,6 +163,10 @@ QModelingElement *QUmlDeploymentSpecification::clone() const
 
 /*!
     The deployment with which the DeploymentSpecification is associated.
+
+    \b {Subsetted property(ies):} QUmlElement::owner().
+
+    \b {Opposite property(ies):} QUmlDeployment::configurations().
  */
 QUmlDeployment *QUmlDeploymentSpecification::deployment() const
 {
@@ -164,6 +175,9 @@ QUmlDeployment *QUmlDeploymentSpecification::deployment() const
     return _deployment;
 }
 
+/*!
+    Adjusts deployment to \a deployment.
+ */
 void QUmlDeploymentSpecification::setDeployment(QUmlDeployment *deployment)
 {
     // This is a read-write association end
@@ -190,6 +204,9 @@ QString QUmlDeploymentSpecification::deploymentLocation() const
     return _deploymentLocation;
 }
 
+/*!
+    Adjusts deploymentLocation to \a deploymentLocation.
+ */
 void QUmlDeploymentSpecification::setDeploymentLocation(QString deploymentLocation)
 {
     // This is a read-write property
@@ -209,6 +226,9 @@ QString QUmlDeploymentSpecification::executionLocation() const
     return _executionLocation;
 }
 
+/*!
+    Adjusts executionLocation to \a executionLocation.
+ */
 void QUmlDeploymentSpecification::setExecutionLocation(QString executionLocation)
 {
     // This is a read-write property

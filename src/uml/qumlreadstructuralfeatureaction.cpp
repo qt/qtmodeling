@@ -73,6 +73,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A read structural feature action is a structural feature action that retrieves the values of a structural feature.
  */
+
+/*!
+    Creates a new QUmlReadStructuralFeatureAction. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlReadStructuralFeatureAction::QUmlReadStructuralFeatureAction(bool createQModelingObject) :
     _result(0)
 {
@@ -80,6 +84,9 @@ QUmlReadStructuralFeatureAction::QUmlReadStructuralFeatureAction(bool createQMod
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlReadStructuralFeatureActionObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlReadStructuralFeatureAction.
+*/
 QModelingElement *QUmlReadStructuralFeatureAction::clone() const
 {
     QUmlReadStructuralFeatureAction *c = new QUmlReadStructuralFeatureAction;
@@ -126,6 +133,8 @@ QModelingElement *QUmlReadStructuralFeatureAction::clone() const
 
 /*!
     Gives the output pin on which the result is put.
+
+    \b {Subsetted property(ies):} QUmlAction::outputs().
  */
 QUmlOutputPin *QUmlReadStructuralFeatureAction::result() const
 {
@@ -134,6 +143,9 @@ QUmlOutputPin *QUmlReadStructuralFeatureAction::result() const
     return _result;
 }
 
+/*!
+    Adjusts result to \a result.
+ */
 void QUmlReadStructuralFeatureAction::setResult(QUmlOutputPin *result)
 {
     // This is a read-write association end

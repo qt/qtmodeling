@@ -97,12 +97,19 @@ QT_BEGIN_NAMESPACE
 
     \brief An interaction is a unit of behavior that focuses on the observable exchange of information between connectable elements.
  */
+
+/*!
+    Creates a new QUmlInteraction. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlInteraction::QUmlInteraction(bool createQModelingObject)
 {
     if (createQModelingObject)
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlInteractionObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlInteraction.
+*/
 QModelingElement *QUmlInteraction::clone() const
 {
     QUmlInteraction *c = new QUmlInteraction;
@@ -204,6 +211,10 @@ QModelingElement *QUmlInteraction::clone() const
 
 /*!
     Actions owned by the Interaction.
+
+    \sa addAction(), removeAction()
+
+    \b {Subsetted property(ies):} QUmlElement::ownedElements().
  */
 const QSet<QUmlAction *> QUmlInteraction::actions() const
 {
@@ -212,6 +223,11 @@ const QSet<QUmlAction *> QUmlInteraction::actions() const
     return _actions;
 }
 
+/*!
+    Adds \a action to actions.
+
+    \sa actions(), removeAction()
+ */
 void QUmlInteraction::addAction(QUmlAction *action)
 {
     // This is a read-write association end
@@ -227,6 +243,11 @@ void QUmlInteraction::addAction(QUmlAction *action)
     }
 }
 
+/*!
+    Removes \a action from actions.
+
+    \sa actions(), addAction()
+ */
 void QUmlInteraction::removeAction(QUmlAction *action)
 {
     // This is a read-write association end
@@ -243,6 +264,10 @@ void QUmlInteraction::removeAction(QUmlAction *action)
 
 /*!
     Specifies the gates that form the message interface between this Interaction and any InteractionUses which reference it.
+
+    \sa addFormalGate(), removeFormalGate()
+
+    \b {Subsetted property(ies):} QUmlNamespace::ownedMembers().
  */
 const QSet<QUmlGate *> QUmlInteraction::formalGates() const
 {
@@ -251,6 +276,11 @@ const QSet<QUmlGate *> QUmlInteraction::formalGates() const
     return _formalGates;
 }
 
+/*!
+    Adds \a formalGate to formalGates.
+
+    \sa formalGates(), removeFormalGate()
+ */
 void QUmlInteraction::addFormalGate(QUmlGate *formalGate)
 {
     // This is a read-write association end
@@ -266,6 +296,11 @@ void QUmlInteraction::addFormalGate(QUmlGate *formalGate)
     }
 }
 
+/*!
+    Removes \a formalGate from formalGates.
+
+    \sa formalGates(), addFormalGate()
+ */
 void QUmlInteraction::removeFormalGate(QUmlGate *formalGate)
 {
     // This is a read-write association end
@@ -282,6 +317,12 @@ void QUmlInteraction::removeFormalGate(QUmlGate *formalGate)
 
 /*!
     The ordered set of fragments in the Interaction.
+
+    \sa addFragment(), removeFragment()
+
+    \b {Subsetted property(ies):} QUmlNamespace::ownedMembers().
+
+    \b {Opposite property(ies):} QUmlInteractionFragment::enclosingInteraction().
  */
 const QList<QUmlInteractionFragment *> QUmlInteraction::fragments() const
 {
@@ -290,6 +331,11 @@ const QList<QUmlInteractionFragment *> QUmlInteraction::fragments() const
     return _fragments;
 }
 
+/*!
+    Adds \a fragment to fragments.
+
+    \sa fragments(), removeFragment()
+ */
 void QUmlInteraction::addFragment(QUmlInteractionFragment *fragment)
 {
     // This is a read-write association end
@@ -310,6 +356,11 @@ void QUmlInteraction::addFragment(QUmlInteractionFragment *fragment)
     }
 }
 
+/*!
+    Removes \a fragment from fragments.
+
+    \sa fragments(), addFragment()
+ */
 void QUmlInteraction::removeFragment(QUmlInteractionFragment *fragment)
 {
     // This is a read-write association end
@@ -331,6 +382,12 @@ void QUmlInteraction::removeFragment(QUmlInteractionFragment *fragment)
 
 /*!
     Specifies the participants in this Interaction.
+
+    \sa addLifeline(), removeLifeline()
+
+    \b {Subsetted property(ies):} QUmlNamespace::ownedMembers().
+
+    \b {Opposite property(ies):} QUmlLifeline::interaction().
  */
 const QSet<QUmlLifeline *> QUmlInteraction::lifelines() const
 {
@@ -339,6 +396,11 @@ const QSet<QUmlLifeline *> QUmlInteraction::lifelines() const
     return _lifelines;
 }
 
+/*!
+    Adds \a lifeline to lifelines.
+
+    \sa lifelines(), removeLifeline()
+ */
 void QUmlInteraction::addLifeline(QUmlLifeline *lifeline)
 {
     // This is a read-write association end
@@ -359,6 +421,11 @@ void QUmlInteraction::addLifeline(QUmlLifeline *lifeline)
     }
 }
 
+/*!
+    Removes \a lifeline from lifelines.
+
+    \sa lifelines(), addLifeline()
+ */
 void QUmlInteraction::removeLifeline(QUmlLifeline *lifeline)
 {
     // This is a read-write association end
@@ -380,6 +447,12 @@ void QUmlInteraction::removeLifeline(QUmlLifeline *lifeline)
 
 /*!
     The Messages contained in this Interaction.
+
+    \sa addMessage(), removeMessage()
+
+    \b {Subsetted property(ies):} QUmlNamespace::ownedMembers().
+
+    \b {Opposite property(ies):} QUmlMessage::interaction().
  */
 const QSet<QUmlMessage *> QUmlInteraction::messages() const
 {
@@ -388,6 +461,11 @@ const QSet<QUmlMessage *> QUmlInteraction::messages() const
     return _messages;
 }
 
+/*!
+    Adds \a message to messages.
+
+    \sa messages(), removeMessage()
+ */
 void QUmlInteraction::addMessage(QUmlMessage *message)
 {
     // This is a read-write association end
@@ -408,6 +486,11 @@ void QUmlInteraction::addMessage(QUmlMessage *message)
     }
 }
 
+/*!
+    Removes \a message from messages.
+
+    \sa messages(), addMessage()
+ */
 void QUmlInteraction::removeMessage(QUmlMessage *message)
 {
     // This is a read-write association end

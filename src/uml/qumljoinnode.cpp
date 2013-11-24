@@ -69,6 +69,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A join node is a control node that synchronizes multiple flows.Join nodes have a Boolean value specification using the names of the incoming edges to specify the conditions under which the join will emit a token.
  */
+
+/*!
+    Creates a new QUmlJoinNode. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlJoinNode::QUmlJoinNode(bool createQModelingObject) :
     _isCombineDuplicate(true),
     _joinSpec(0)
@@ -77,6 +81,9 @@ QUmlJoinNode::QUmlJoinNode(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlJoinNodeObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlJoinNode.
+*/
 QModelingElement *QUmlJoinNode::clone() const
 {
     QUmlJoinNode *c = new QUmlJoinNode;
@@ -121,6 +128,9 @@ bool QUmlJoinNode::isCombineDuplicate() const
     return _isCombineDuplicate;
 }
 
+/*!
+    Adjusts isCombineDuplicate to \a isCombineDuplicate.
+ */
 void QUmlJoinNode::setCombineDuplicate(bool isCombineDuplicate)
 {
     // This is a read-write property
@@ -133,6 +143,8 @@ void QUmlJoinNode::setCombineDuplicate(bool isCombineDuplicate)
 
 /*!
     A specification giving the conditions under which the join with emit a token. Default is 'and'.
+
+    \b {Subsetted property(ies):} QUmlElement::ownedElements().
  */
 QUmlValueSpecification *QUmlJoinNode::joinSpec() const
 {
@@ -141,6 +153,9 @@ QUmlValueSpecification *QUmlJoinNode::joinSpec() const
     return _joinSpec;
 }
 
+/*!
+    Adjusts joinSpec to \a joinSpec.
+ */
 void QUmlJoinNode::setJoinSpec(QUmlValueSpecification *joinSpec)
 {
     // This is a read-write association end

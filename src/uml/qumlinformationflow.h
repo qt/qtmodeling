@@ -46,8 +46,6 @@
 #include <QtUml/QUmlDirectedRelationship>
 #include <QtUml/QUmlPackageableElement>
 
-QT_BEGIN_HEADER
-
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
@@ -102,8 +100,6 @@ protected:
 QT_END_NAMESPACE
 
 Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE(QUmlInformationFlow) *)
-
-QT_END_HEADER
 
 #endif // QUMLINFORMATIONFLOW_H
 

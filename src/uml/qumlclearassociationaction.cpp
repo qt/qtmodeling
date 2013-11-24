@@ -73,6 +73,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A clear association action is an action that destroys all links of an association in which a particular object participates.
  */
+
+/*!
+    Creates a new QUmlClearAssociationAction. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlClearAssociationAction::QUmlClearAssociationAction(bool createQModelingObject) :
     _association(0),
     _object(0)
@@ -81,6 +85,9 @@ QUmlClearAssociationAction::QUmlClearAssociationAction(bool createQModelingObjec
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlClearAssociationActionObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlClearAssociationAction.
+*/
 QModelingElement *QUmlClearAssociationAction::clone() const
 {
     QUmlClearAssociationAction *c = new QUmlClearAssociationAction;
@@ -133,6 +140,9 @@ QUmlAssociation *QUmlClearAssociationAction::association() const
     return _association;
 }
 
+/*!
+    Adjusts association to \a association.
+ */
 void QUmlClearAssociationAction::setAssociation(QUmlAssociation *association)
 {
     // This is a read-write association end
@@ -146,6 +156,8 @@ void QUmlClearAssociationAction::setAssociation(QUmlAssociation *association)
 
 /*!
     Gives the input pin from which is obtained the object whose participation in the association is to be cleared.
+
+    \b {Subsetted property(ies):} QUmlAction::inputs().
  */
 QUmlInputPin *QUmlClearAssociationAction::object() const
 {
@@ -154,6 +166,9 @@ QUmlInputPin *QUmlClearAssociationAction::object() const
     return _object;
 }
 
+/*!
+    Adjusts object to \a object.
+ */
 void QUmlClearAssociationAction::setObject(QUmlInputPin *object)
 {
     // This is a read-write association end

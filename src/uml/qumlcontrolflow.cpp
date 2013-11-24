@@ -68,12 +68,19 @@ QT_BEGIN_NAMESPACE
 
     \brief A control flow is an edge that starts an activity node after the previous one is finished.
  */
+
+/*!
+    Creates a new QUmlControlFlow. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlControlFlow::QUmlControlFlow(bool createQModelingObject)
 {
     if (createQModelingObject)
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlControlFlowObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlControlFlow.
+*/
 QModelingElement *QUmlControlFlow::clone() const
 {
     QUmlControlFlow *c = new QUmlControlFlow;

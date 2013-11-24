@@ -62,12 +62,19 @@ QT_BEGIN_NAMESPACE
 
     \brief An interruptible activity region is an activity group that supports termination of tokens flowing in the portions of an activity.
  */
+
+/*!
+    Creates a new QUmlInterruptibleActivityRegion. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlInterruptibleActivityRegion::QUmlInterruptibleActivityRegion(bool createQModelingObject)
 {
     if (createQModelingObject)
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlInterruptibleActivityRegionObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlInterruptibleActivityRegion.
+*/
 QModelingElement *QUmlInterruptibleActivityRegion::clone() const
 {
     QUmlInterruptibleActivityRegion *c = new QUmlInterruptibleActivityRegion;
@@ -92,6 +99,10 @@ QModelingElement *QUmlInterruptibleActivityRegion::clone() const
 
 /*!
     The edges leaving the region that will abort other tokens flowing in the region.
+
+    \sa addInterruptingEdge(), removeInterruptingEdge()
+
+    \b {Opposite property(ies):} QUmlActivityEdge::interrupts().
  */
 const QSet<QUmlActivityEdge *> QUmlInterruptibleActivityRegion::interruptingEdges() const
 {
@@ -100,6 +111,11 @@ const QSet<QUmlActivityEdge *> QUmlInterruptibleActivityRegion::interruptingEdge
     return _interruptingEdges;
 }
 
+/*!
+    Adds \a interruptingEdge to interruptingEdges.
+
+    \sa interruptingEdges(), removeInterruptingEdge()
+ */
 void QUmlInterruptibleActivityRegion::addInterruptingEdge(QUmlActivityEdge *interruptingEdge)
 {
     // This is a read-write association end
@@ -116,6 +132,11 @@ void QUmlInterruptibleActivityRegion::addInterruptingEdge(QUmlActivityEdge *inte
     }
 }
 
+/*!
+    Removes \a interruptingEdge from interruptingEdges.
+
+    \sa interruptingEdges(), addInterruptingEdge()
+ */
 void QUmlInterruptibleActivityRegion::removeInterruptingEdge(QUmlActivityEdge *interruptingEdge)
 {
     // This is a read-write association end
@@ -132,6 +153,12 @@ void QUmlInterruptibleActivityRegion::removeInterruptingEdge(QUmlActivityEdge *i
 
 /*!
     Nodes immediately contained in the group.
+
+    \sa addNode(), removeNode()
+
+    \b {Subsetted property(ies):} QUmlActivityGroup::containedNodes().
+
+    \b {Opposite property(ies):} QUmlActivityNode::inInterruptibleRegions().
  */
 const QSet<QUmlActivityNode *> QUmlInterruptibleActivityRegion::nodes() const
 {
@@ -140,6 +167,11 @@ const QSet<QUmlActivityNode *> QUmlInterruptibleActivityRegion::nodes() const
     return _nodes;
 }
 
+/*!
+    Adds \a node to nodes.
+
+    \sa nodes(), removeNode()
+ */
 void QUmlInterruptibleActivityRegion::addNode(QUmlActivityNode *node)
 {
     // This is a read-write association end
@@ -159,6 +191,11 @@ void QUmlInterruptibleActivityRegion::addNode(QUmlActivityNode *node)
     }
 }
 
+/*!
+    Removes \a node from nodes.
+
+    \sa nodes(), addNode()
+ */
 void QUmlInterruptibleActivityRegion::removeNode(QUmlActivityNode *node)
 {
     // This is a read-write association end

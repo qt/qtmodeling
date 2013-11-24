@@ -89,6 +89,10 @@ QT_BEGIN_NAMESPACE
 
     \brief An execution environment is a node that offers an execution environment for specific types of components that are deployed on it in the form of executable artifacts.
  */
+
+/*!
+    Creates a new QUmlExecutionEnvironment. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlExecutionEnvironment::QUmlExecutionEnvironment(bool createQModelingObject) :
     QUmlNode(false)
 {
@@ -96,6 +100,9 @@ QUmlExecutionEnvironment::QUmlExecutionEnvironment(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlExecutionEnvironmentObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlExecutionEnvironment.
+*/
 QModelingElement *QUmlExecutionEnvironment::clone() const
 {
     QUmlExecutionEnvironment *c = new QUmlExecutionEnvironment;

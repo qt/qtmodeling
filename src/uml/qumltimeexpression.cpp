@@ -63,6 +63,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A time expression defines a value specification that represents a time value.
  */
+
+/*!
+    Creates a new QUmlTimeExpression. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlTimeExpression::QUmlTimeExpression(bool createQModelingObject) :
     _expr(0)
 {
@@ -70,6 +74,9 @@ QUmlTimeExpression::QUmlTimeExpression(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlTimeExpressionObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlTimeExpression.
+*/
 QModelingElement *QUmlTimeExpression::clone() const
 {
     QUmlTimeExpression *c = new QUmlTimeExpression;
@@ -98,6 +105,8 @@ QModelingElement *QUmlTimeExpression::clone() const
 
 /*!
     The value of the time expression.
+
+    \b {Subsetted property(ies):} QUmlElement::ownedElements().
  */
 QUmlValueSpecification *QUmlTimeExpression::expr() const
 {
@@ -106,6 +115,9 @@ QUmlValueSpecification *QUmlTimeExpression::expr() const
     return _expr;
 }
 
+/*!
+    Adjusts expr to \a expr.
+ */
 void QUmlTimeExpression::setExpr(QUmlValueSpecification *expr)
 {
     // This is a read-write association end
@@ -128,6 +140,8 @@ void QUmlTimeExpression::setExpr(QUmlValueSpecification *expr)
 
 /*!
     Refers to the time and duration observations that are involved in expr.
+
+    \sa addObservation(), removeObservation()
  */
 const QSet<QUmlObservation *> QUmlTimeExpression::observations() const
 {
@@ -136,6 +150,11 @@ const QSet<QUmlObservation *> QUmlTimeExpression::observations() const
     return _observations;
 }
 
+/*!
+    Adds \a observation to observations.
+
+    \sa observations(), removeObservation()
+ */
 void QUmlTimeExpression::addObservation(QUmlObservation *observation)
 {
     // This is a read-write association end
@@ -147,6 +166,11 @@ void QUmlTimeExpression::addObservation(QUmlObservation *observation)
     }
 }
 
+/*!
+    Removes \a observation from observations.
+
+    \sa observations(), addObservation()
+ */
 void QUmlTimeExpression::removeObservation(QUmlObservation *observation)
 {
     // This is a read-write association end

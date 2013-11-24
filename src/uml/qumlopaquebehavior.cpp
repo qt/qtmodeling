@@ -91,12 +91,19 @@ QT_BEGIN_NAMESPACE
 
     \brief An behavior with implementation-specific semantics.
  */
+
+/*!
+    Creates a new QUmlOpaqueBehavior. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlOpaqueBehavior::QUmlOpaqueBehavior(bool createQModelingObject)
 {
     if (createQModelingObject)
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlOpaqueBehaviorObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlOpaqueBehavior.
+*/
 QModelingElement *QUmlOpaqueBehavior::clone() const
 {
     QUmlOpaqueBehavior *c = new QUmlOpaqueBehavior;
@@ -184,6 +191,8 @@ QModelingElement *QUmlOpaqueBehavior::clone() const
 
 /*!
     Specifies the behavior in one or more languages.
+
+    \sa addBody(), removeBody()
  */
 const QList<QString> QUmlOpaqueBehavior::bodies() const
 {
@@ -192,6 +201,11 @@ const QList<QString> QUmlOpaqueBehavior::bodies() const
     return _bodies;
 }
 
+/*!
+    Adds \a body to bodies.
+
+    \sa bodies(), removeBody()
+ */
 void QUmlOpaqueBehavior::addBody(QString body)
 {
     // This is a read-write property
@@ -201,6 +215,11 @@ void QUmlOpaqueBehavior::addBody(QString body)
     }
 }
 
+/*!
+    Removes \a body from bodies.
+
+    \sa bodies(), addBody()
+ */
 void QUmlOpaqueBehavior::removeBody(QString body)
 {
     // This is a read-write property
@@ -212,6 +231,8 @@ void QUmlOpaqueBehavior::removeBody(QString body)
 
 /*!
     Languages the body strings use in the same order as the body strings.
+
+    \sa addLanguage(), removeLanguage()
  */
 const QList<QString> QUmlOpaqueBehavior::languages() const
 {
@@ -220,6 +241,11 @@ const QList<QString> QUmlOpaqueBehavior::languages() const
     return _languages;
 }
 
+/*!
+    Adds \a language to languages.
+
+    \sa languages(), removeLanguage()
+ */
 void QUmlOpaqueBehavior::addLanguage(QString language)
 {
     // This is a read-write property
@@ -229,6 +255,11 @@ void QUmlOpaqueBehavior::addLanguage(QString language)
     }
 }
 
+/*!
+    Removes \a language from languages.
+
+    \sa languages(), addLanguage()
+ */
 void QUmlOpaqueBehavior::removeLanguage(QString language)
 {
     // This is a read-write property

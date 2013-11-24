@@ -59,6 +59,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A collaboration use represents one particular use of a collaboration to explain the relationships between the properties of a classifier. A collaboration use shows how the pattern described by a collaboration is applied in a given context, by binding specific entities from that context to the roles of the collaboration. Depending on the context, these entities could be structural features of a classifier, instance specifications, or even roles in some containing collaboration. There may be multiple occurrences of a given collaboration within a classifier, each involving a different set of roles and connectors. A given role or connector may be involved in multiple occurrences of the same or different collaborations. Associated dependencies map features of the collaboration type to features in the classifier. These dependencies indicate which role in the classifier plays which role in the collaboration.
  */
+
+/*!
+    Creates a new QUmlCollaborationUse. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlCollaborationUse::QUmlCollaborationUse(bool createQModelingObject) :
     _type(0)
 {
@@ -66,6 +70,9 @@ QUmlCollaborationUse::QUmlCollaborationUse(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlCollaborationUseObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlCollaborationUse.
+*/
 QModelingElement *QUmlCollaborationUse::clone() const
 {
     QUmlCollaborationUse *c = new QUmlCollaborationUse;
@@ -88,6 +95,10 @@ QModelingElement *QUmlCollaborationUse::clone() const
 
 /*!
     A mapping between features of the collaboration type and features of the owning classifier. This mapping indicates which connectable element of the classifier plays which role(s) in the collaboration. A connectable element may be bound to multiple roles in the same collaboration use (that is, it may play multiple roles).
+
+    \sa addRoleBinding(), removeRoleBinding()
+
+    \b {Subsetted property(ies):} QUmlElement::ownedElements().
  */
 const QSet<QUmlDependency *> QUmlCollaborationUse::roleBindings() const
 {
@@ -96,6 +107,11 @@ const QSet<QUmlDependency *> QUmlCollaborationUse::roleBindings() const
     return _roleBindings;
 }
 
+/*!
+    Adds \a roleBinding to roleBindings.
+
+    \sa roleBindings(), removeRoleBinding()
+ */
 void QUmlCollaborationUse::addRoleBinding(QUmlDependency *roleBinding)
 {
     // This is a read-write association end
@@ -111,6 +127,11 @@ void QUmlCollaborationUse::addRoleBinding(QUmlDependency *roleBinding)
     }
 }
 
+/*!
+    Removes \a roleBinding from roleBindings.
+
+    \sa roleBindings(), addRoleBinding()
+ */
 void QUmlCollaborationUse::removeRoleBinding(QUmlDependency *roleBinding)
 {
     // This is a read-write association end
@@ -135,6 +156,9 @@ QUmlCollaboration *QUmlCollaborationUse::type() const
     return _type;
 }
 
+/*!
+    Adjusts type to \a type.
+ */
 void QUmlCollaborationUse::setType(QUmlCollaboration *type)
 {
     // This is a read-write association end

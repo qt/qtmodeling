@@ -60,12 +60,19 @@ QT_BEGIN_NAMESPACE
 
     \brief A gate is a connection point for relating a message outside an interaction fragment with a message inside the interaction fragment.
  */
+
+/*!
+    Creates a new QUmlGate. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlGate::QUmlGate(bool createQModelingObject)
 {
     if (createQModelingObject)
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlGateObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlGate.
+*/
 QModelingElement *QUmlGate::clone() const
 {
     QUmlGate *c = new QUmlGate;

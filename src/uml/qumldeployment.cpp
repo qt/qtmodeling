@@ -63,6 +63,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A deployment is the allocation of an artifact or artifact instance to a deployment target.A component deployment is the deployment of one or more artifacts or artifact instances to a deployment target, optionally parameterized by a deployment specification. Examples are executables and configuration files.
  */
+
+/*!
+    Creates a new QUmlDeployment. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlDeployment::QUmlDeployment(bool createQModelingObject) :
     QUmlDependency(false),
     _location(0)
@@ -71,6 +75,9 @@ QUmlDeployment::QUmlDeployment(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlDeploymentObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlDeployment.
+*/
 QModelingElement *QUmlDeployment::clone() const
 {
     QUmlDeployment *c = new QUmlDeployment;
@@ -103,6 +110,12 @@ QModelingElement *QUmlDeployment::clone() const
 
 /*!
     The specification of properties that parameterize the deployment and execution of one or more Artifacts.
+
+    \sa addConfiguration(), removeConfiguration()
+
+    \b {Subsetted property(ies):} QUmlElement::ownedElements().
+
+    \b {Opposite property(ies):} QUmlDeploymentSpecification::deployment().
  */
 const QSet<QUmlDeploymentSpecification *> QUmlDeployment::configurations() const
 {
@@ -111,6 +124,11 @@ const QSet<QUmlDeploymentSpecification *> QUmlDeployment::configurations() const
     return _configurations;
 }
 
+/*!
+    Adds \a configuration to configurations.
+
+    \sa configurations(), removeConfiguration()
+ */
 void QUmlDeployment::addConfiguration(QUmlDeploymentSpecification *configuration)
 {
     // This is a read-write association end
@@ -131,6 +149,11 @@ void QUmlDeployment::addConfiguration(QUmlDeploymentSpecification *configuration
     }
 }
 
+/*!
+    Removes \a configuration from configurations.
+
+    \sa configurations(), addConfiguration()
+ */
 void QUmlDeployment::removeConfiguration(QUmlDeploymentSpecification *configuration)
 {
     // This is a read-write association end
@@ -152,6 +175,10 @@ void QUmlDeployment::removeConfiguration(QUmlDeploymentSpecification *configurat
 
 /*!
     The Artifacts that are deployed onto a Node. This association specializes the supplier association.
+
+    \sa addDeployedArtifact(), removeDeployedArtifact()
+
+    \b {Subsetted property(ies):} QUmlDependency::suppliers().
  */
 const QSet<QUmlDeployedArtifact *> QUmlDeployment::deployedArtifacts() const
 {
@@ -160,6 +187,11 @@ const QSet<QUmlDeployedArtifact *> QUmlDeployment::deployedArtifacts() const
     return _deployedArtifacts;
 }
 
+/*!
+    Adds \a deployedArtifact to deployedArtifacts.
+
+    \sa deployedArtifacts(), removeDeployedArtifact()
+ */
 void QUmlDeployment::addDeployedArtifact(QUmlDeployedArtifact *deployedArtifact)
 {
     // This is a read-write association end
@@ -174,6 +206,11 @@ void QUmlDeployment::addDeployedArtifact(QUmlDeployedArtifact *deployedArtifact)
     }
 }
 
+/*!
+    Removes \a deployedArtifact from deployedArtifacts.
+
+    \sa deployedArtifacts(), addDeployedArtifact()
+ */
 void QUmlDeployment::removeDeployedArtifact(QUmlDeployedArtifact *deployedArtifact)
 {
     // This is a read-write association end
@@ -188,6 +225,10 @@ void QUmlDeployment::removeDeployedArtifact(QUmlDeployedArtifact *deployedArtifa
 
 /*!
     The DeployedTarget which is the target of a Deployment.
+
+    \b {Subsetted property(ies):} QUmlElement::owner(), QUmlDependency::clients().
+
+    \b {Opposite property(ies):} QUmlDeploymentTarget::deployments().
  */
 QUmlDeploymentTarget *QUmlDeployment::location() const
 {
@@ -196,6 +237,9 @@ QUmlDeploymentTarget *QUmlDeployment::location() const
     return _location;
 }
 
+/*!
+    Adjusts location to \a location.
+ */
 void QUmlDeployment::setLocation(QUmlDeploymentTarget *location)
 {
     // This is a read-write association end

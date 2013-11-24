@@ -69,6 +69,10 @@ QT_BEGIN_NAMESPACE
 
     \brief An object flow is an activity edge that can have objects or data passing along it.Object flows have support for multicast/receive, token selection from object nodes, and transformation of tokens.
  */
+
+/*!
+    Creates a new QUmlObjectFlow. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlObjectFlow::QUmlObjectFlow(bool createQModelingObject) :
     _isMulticast(false),
     _isMultireceive(false),
@@ -79,6 +83,9 @@ QUmlObjectFlow::QUmlObjectFlow(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlObjectFlowObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlObjectFlow.
+*/
 QModelingElement *QUmlObjectFlow::clone() const
 {
     QUmlObjectFlow *c = new QUmlObjectFlow;
@@ -130,6 +137,9 @@ bool QUmlObjectFlow::isMulticast() const
     return _isMulticast;
 }
 
+/*!
+    Adjusts isMulticast to \a isMulticast.
+ */
 void QUmlObjectFlow::setMulticast(bool isMulticast)
 {
     // This is a read-write property
@@ -150,6 +160,9 @@ bool QUmlObjectFlow::isMultireceive() const
     return _isMultireceive;
 }
 
+/*!
+    Adjusts isMultireceive to \a isMultireceive.
+ */
 void QUmlObjectFlow::setMultireceive(bool isMultireceive)
 {
     // This is a read-write property
@@ -170,6 +183,9 @@ QUmlBehavior *QUmlObjectFlow::selection() const
     return _selection;
 }
 
+/*!
+    Adjusts selection to \a selection.
+ */
 void QUmlObjectFlow::setSelection(QUmlBehavior *selection)
 {
     // This is a read-write association end
@@ -191,6 +207,9 @@ QUmlBehavior *QUmlObjectFlow::transformation() const
     return _transformation;
 }
 
+/*!
+    Adjusts transformation to \a transformation.
+ */
 void QUmlObjectFlow::setTransformation(QUmlBehavior *transformation)
 {
     // This is a read-write association end

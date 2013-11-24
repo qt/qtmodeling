@@ -75,12 +75,19 @@ QT_BEGIN_NAMESPACE
 
     \brief A create link action is a write link action for creating links.
  */
+
+/*!
+    Creates a new QUmlCreateLinkAction. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlCreateLinkAction::QUmlCreateLinkAction(bool createQModelingObject)
 {
     if (createQModelingObject)
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlCreateLinkActionObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlCreateLinkAction.
+*/
 QModelingElement *QUmlCreateLinkAction::clone() const
 {
     QUmlCreateLinkAction *c = new QUmlCreateLinkAction;
@@ -125,6 +132,10 @@ QModelingElement *QUmlCreateLinkAction::clone() const
 
 /*!
     Specifies ends of association and inputs.
+
+    \sa addEndData(), removeEndData()
+
+    \b {Redefined property(ies):} QUmlLinkAction::endData().
  */
 const QSet<QUmlLinkEndCreationData *> QUmlCreateLinkAction::endData() const
 {
@@ -133,6 +144,11 @@ const QSet<QUmlLinkEndCreationData *> QUmlCreateLinkAction::endData() const
     return _endData;
 }
 
+/*!
+    Adds \a endData to endData.
+
+    \sa endData(), removeEndData()
+ */
 void QUmlCreateLinkAction::addEndData(QUmlLinkEndCreationData *endData)
 {
     // This is a read-write association end
@@ -148,6 +164,11 @@ void QUmlCreateLinkAction::addEndData(QUmlLinkEndCreationData *endData)
     }
 }
 
+/*!
+    Removes \a endData from endData.
+
+    \sa endData(), addEndData()
+ */
 void QUmlCreateLinkAction::removeEndData(QUmlLinkEndCreationData *endData)
 {
     // This is a read-write association end

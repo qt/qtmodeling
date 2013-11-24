@@ -87,6 +87,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A class may be designated as active (i.e., each of its instances having its own thread of control) or passive (i.e., each of its instances executing within the context of some other object). A class may also specify which signals the instances of this class handle.A class describes a set of objects that share the same specifications of features, constraints, and semantics.A class has the capability to have an internal structure and ports.Class has derived association that indicates how it may be extended through one or more stereotypes. Stereotype is the only kind of metaclass that cannot be extended by stereotypes.
  */
+
+/*!
+    Creates a new QUmlClass. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlClass::QUmlClass(bool createQModelingObject) :
     _isAbstract(false),
     _isActive(false)
@@ -95,6 +99,9 @@ QUmlClass::QUmlClass(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlClassObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlClass.
+*/
 QModelingElement *QUmlClass::clone() const
 {
     QUmlClass *c = new QUmlClass;
@@ -165,6 +172,10 @@ QModelingElement *QUmlClass::clone() const
 
 /*!
     References the Extensions that specify additional properties of the metaclass. The property is derived from the extensions whose memberEnds are typed by the Class.
+
+    \b {This is a read-only derived property.}
+
+    \b {Opposite property(ies):} QUmlExtension::metaclass().
  */
 const QSet<QUmlExtension *> QUmlClass::extensions() const
 {
@@ -175,6 +186,11 @@ const QSet<QUmlExtension *> QUmlClass::extensions() const
     return QSet<QUmlExtension *>();
 }
 
+/*!
+    Adds \a extension to extensions.
+
+    \sa extensions(), removeExtension()
+ */
 void QUmlClass::addExtension(QUmlExtension *extension)
 {
     // This is a read-only derived association end
@@ -192,6 +208,11 @@ void QUmlClass::addExtension(QUmlExtension *extension)
     }
 }
 
+/*!
+    Removes \a extension from extensions.
+
+    \sa extensions(), addExtension()
+ */
 void QUmlClass::removeExtension(QUmlExtension *extension)
 {
     // This is a read-only derived association end
@@ -211,6 +232,8 @@ void QUmlClass::removeExtension(QUmlExtension *extension)
 
 /*!
     If true, the Classifier does not provide a complete declaration and can typically not be instantiated. An abstract classifier is intended to be used by other classifiers e.g. as the target of general metarelationships or generalization relationships.True when a class is abstract.
+
+    \b {Redefined property(ies):} QUmlClassifier::isAbstract().
  */
 bool QUmlClass::isAbstract() const
 {
@@ -219,6 +242,9 @@ bool QUmlClass::isAbstract() const
     return _isAbstract;
 }
 
+/*!
+    Adjusts isAbstract to \a isAbstract.
+ */
 void QUmlClass::setAbstract(bool isAbstract)
 {
     // This is a read-write property
@@ -242,6 +268,9 @@ bool QUmlClass::isActive() const
     return _isActive;
 }
 
+/*!
+    Adjusts isActive to \a isActive.
+ */
 void QUmlClass::setActive(bool isActive)
 {
     // This is a read-write property
@@ -254,6 +283,10 @@ void QUmlClass::setActive(bool isActive)
 
 /*!
     References all the Classifiers that are defined (nested) within the Class.
+
+    \sa addNestedClassifier(), removeNestedClassifier()
+
+    \b {Subsetted property(ies):} QUmlNamespace::ownedMembers().
  */
 const QList<QUmlClassifier *> QUmlClass::nestedClassifiers() const
 {
@@ -262,6 +295,11 @@ const QList<QUmlClassifier *> QUmlClass::nestedClassifiers() const
     return _nestedClassifiers;
 }
 
+/*!
+    Adds \a nestedClassifier to nestedClassifiers.
+
+    \sa nestedClassifiers(), removeNestedClassifier()
+ */
 void QUmlClass::addNestedClassifier(QUmlClassifier *nestedClassifier)
 {
     // This is a read-write association end
@@ -277,6 +315,11 @@ void QUmlClass::addNestedClassifier(QUmlClassifier *nestedClassifier)
     }
 }
 
+/*!
+    Removes \a nestedClassifier from nestedClassifiers.
+
+    \sa nestedClassifiers(), addNestedClassifier()
+ */
 void QUmlClass::removeNestedClassifier(QUmlClassifier *nestedClassifier)
 {
     // This is a read-write association end
@@ -293,6 +336,14 @@ void QUmlClass::removeNestedClassifier(QUmlClassifier *nestedClassifier)
 
 /*!
     The attributes (i.e. the properties) owned by the class.
+
+    \sa addOwnedAttribute(), removeOwnedAttribute()
+
+    \b {Subsetted property(ies):} QUmlNamespace::ownedMembers(), QUmlClassifier::attributes().
+
+    \b {Redefined property(ies):} QUmlStructuredClassifier::ownedAttributes().
+
+    \b {Opposite property(ies):} QUmlProperty::class_().
  */
 const QList<QUmlProperty *> QUmlClass::ownedAttributes() const
 {
@@ -301,6 +352,11 @@ const QList<QUmlProperty *> QUmlClass::ownedAttributes() const
     return _ownedAttributes;
 }
 
+/*!
+    Adds \a ownedAttribute to ownedAttributes.
+
+    \sa ownedAttributes(), removeOwnedAttribute()
+ */
 void QUmlClass::addOwnedAttribute(QUmlProperty *ownedAttribute)
 {
     // This is a read-write association end
@@ -325,6 +381,11 @@ void QUmlClass::addOwnedAttribute(QUmlProperty *ownedAttribute)
     }
 }
 
+/*!
+    Removes \a ownedAttribute from ownedAttributes.
+
+    \sa ownedAttributes(), addOwnedAttribute()
+ */
 void QUmlClass::removeOwnedAttribute(QUmlProperty *ownedAttribute)
 {
     // This is a read-write association end
@@ -350,6 +411,12 @@ void QUmlClass::removeOwnedAttribute(QUmlProperty *ownedAttribute)
 
 /*!
     The operations owned by the class.
+
+    \sa addOwnedOperation(), removeOwnedOperation()
+
+    \b {Subsetted property(ies):} QUmlClassifier::features(), QUmlNamespace::ownedMembers().
+
+    \b {Opposite property(ies):} QUmlOperation::class_().
  */
 const QList<QUmlOperation *> QUmlClass::ownedOperations() const
 {
@@ -358,6 +425,11 @@ const QList<QUmlOperation *> QUmlClass::ownedOperations() const
     return _ownedOperations;
 }
 
+/*!
+    Adds \a ownedOperation to ownedOperations.
+
+    \sa ownedOperations(), removeOwnedOperation()
+ */
 void QUmlClass::addOwnedOperation(QUmlOperation *ownedOperation)
 {
     // This is a read-write association end
@@ -379,6 +451,11 @@ void QUmlClass::addOwnedOperation(QUmlOperation *ownedOperation)
     }
 }
 
+/*!
+    Removes \a ownedOperation from ownedOperations.
+
+    \sa ownedOperations(), addOwnedOperation()
+ */
 void QUmlClass::removeOwnedOperation(QUmlOperation *ownedOperation)
 {
     // This is a read-write association end
@@ -401,6 +478,10 @@ void QUmlClass::removeOwnedOperation(QUmlOperation *ownedOperation)
 
 /*!
     Receptions that objects of this class are willing to accept.
+
+    \sa addOwnedReception(), removeOwnedReception()
+
+    \b {Subsetted property(ies):} QUmlClassifier::features(), QUmlNamespace::ownedMembers().
  */
 const QSet<QUmlReception *> QUmlClass::ownedReceptions() const
 {
@@ -409,6 +490,11 @@ const QSet<QUmlReception *> QUmlClass::ownedReceptions() const
     return _ownedReceptions;
 }
 
+/*!
+    Adds \a ownedReception to ownedReceptions.
+
+    \sa ownedReceptions(), removeOwnedReception()
+ */
 void QUmlClass::addOwnedReception(QUmlReception *ownedReception)
 {
     // This is a read-write association end
@@ -425,6 +511,11 @@ void QUmlClass::addOwnedReception(QUmlReception *ownedReception)
     }
 }
 
+/*!
+    Removes \a ownedReception from ownedReceptions.
+
+    \sa ownedReceptions(), addOwnedReception()
+ */
 void QUmlClass::removeOwnedReception(QUmlReception *ownedReception)
 {
     // This is a read-write association end
@@ -442,6 +533,12 @@ void QUmlClass::removeOwnedReception(QUmlReception *ownedReception)
 
 /*!
     This gives the superclasses of a class.
+
+    \sa addSuperClass(), removeSuperClass()
+
+    \b {This is a derived property.}
+
+    \b {Redefined property(ies):} QUmlClassifier::generals().
  */
 const QSet<QUmlClass *> QUmlClass::superClasses() const
 {
@@ -452,6 +549,11 @@ const QSet<QUmlClass *> QUmlClass::superClasses() const
     return QSet<QUmlClass *>();
 }
 
+/*!
+    Adds \a superClass to superClasses.
+
+    \sa superClasses(), removeSuperClass()
+ */
 void QUmlClass::addSuperClass(QUmlClass *superClass)
 {
     // This is a read-write derived association end
@@ -467,6 +569,11 @@ void QUmlClass::addSuperClass(QUmlClass *superClass)
     }
 }
 
+/*!
+    Removes \a superClass from superClasses.
+
+    \sa superClasses(), addSuperClass()
+ */
 void QUmlClass::removeSuperClass(QUmlClass *superClass)
 {
     // This is a read-write derived association end

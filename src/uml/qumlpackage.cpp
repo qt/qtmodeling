@@ -69,6 +69,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A package can have one or more profile applications to indicate which profiles have been applied. Because a profile is a package, it is possible to apply a profile not only to packages, but also to profiles.Package specializes TemplateableElement and PackageableElement specializes ParameterableElement to specify that a package can be used as a template and a PackageableElement as a template parameter.A package is used to group elements, and provides a namespace for the grouped elements.
  */
+
+/*!
+    Creates a new QUmlPackage. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlPackage::QUmlPackage(bool createQModelingObject) :
     _nestingPackage(0)
 {
@@ -76,6 +80,9 @@ QUmlPackage::QUmlPackage(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlPackageObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlPackage.
+*/
 QModelingElement *QUmlPackage::clone() const
 {
     QUmlPackage *c = new QUmlPackage;
@@ -125,6 +132,9 @@ QString QUmlPackage::URI() const
     return _URI;
 }
 
+/*!
+    Adjusts URI to \a URI.
+ */
 void QUmlPackage::setURI(QString URI)
 {
     // This is a read-write property
@@ -136,6 +146,14 @@ void QUmlPackage::setURI(QString URI)
 
 /*!
     References the packaged elements that are Packages.
+
+    \sa addNestedPackage(), removeNestedPackage()
+
+    \b {This is a derived property.}
+
+    \b {Subsetted property(ies):} QUmlPackage::packagedElements().
+
+    \b {Opposite property(ies):} QUmlPackage::nestingPackage().
  */
 const QSet<QUmlPackage *> QUmlPackage::nestedPackages() const
 {
@@ -148,6 +166,11 @@ const QSet<QUmlPackage *> QUmlPackage::nestedPackages() const
     return nestedPackages_;
 }
 
+/*!
+    Adds \a nestedPackage to nestedPackages.
+
+    \sa nestedPackages(), removeNestedPackage()
+ */
 void QUmlPackage::addNestedPackage(QUmlPackage *nestedPackage)
 {
     // This is a read-write derived association end
@@ -163,6 +186,11 @@ void QUmlPackage::addNestedPackage(QUmlPackage *nestedPackage)
     }
 }
 
+/*!
+    Removes \a nestedPackage from nestedPackages.
+
+    \sa nestedPackages(), addNestedPackage()
+ */
 void QUmlPackage::removeNestedPackage(QUmlPackage *nestedPackage)
 {
     // This is a read-write derived association end
@@ -180,6 +208,10 @@ void QUmlPackage::removeNestedPackage(QUmlPackage *nestedPackage)
 
 /*!
     References the Package that owns this Package.
+
+    \b {Subsetted property(ies):} .
+
+    \b {Opposite property(ies):} QUmlPackage::nestedPackages().
  */
 QUmlPackage *QUmlPackage::nestingPackage() const
 {
@@ -188,6 +220,9 @@ QUmlPackage *QUmlPackage::nestingPackage() const
     return _nestingPackage;
 }
 
+/*!
+    Adjusts nestingPackage to \a nestingPackage.
+ */
 void QUmlPackage::setNestingPackage(QUmlPackage *nestingPackage)
 {
     // This is a read-write association end
@@ -201,6 +236,10 @@ void QUmlPackage::setNestingPackage(QUmlPackage *nestingPackage)
 
 /*!
     References the Stereotypes that are owned by the Package
+
+    \b {This is a read-only derived property.}
+
+    \b {Subsetted property(ies):} QUmlPackage::packagedElements().
  */
 const QSet<QUmlStereotype *> QUmlPackage::ownedStereotypes() const
 {
@@ -213,6 +252,11 @@ const QSet<QUmlStereotype *> QUmlPackage::ownedStereotypes() const
     return ownedStereotypes_;
 }
 
+/*!
+    Adds \a ownedStereotype to ownedStereotypes.
+
+    \sa ownedStereotypes(), removeOwnedStereotype()
+ */
 void QUmlPackage::addOwnedStereotype(QUmlStereotype *ownedStereotype)
 {
     // This is a read-only derived association end
@@ -228,6 +272,11 @@ void QUmlPackage::addOwnedStereotype(QUmlStereotype *ownedStereotype)
     }
 }
 
+/*!
+    Removes \a ownedStereotype from ownedStereotypes.
+
+    \sa ownedStereotypes(), addOwnedStereotype()
+ */
 void QUmlPackage::removeOwnedStereotype(QUmlStereotype *ownedStereotype)
 {
     // This is a read-only derived association end
@@ -245,6 +294,14 @@ void QUmlPackage::removeOwnedStereotype(QUmlStereotype *ownedStereotype)
 
 /*!
     References the packaged elements that are Types.
+
+    \sa addOwnedType(), removeOwnedType()
+
+    \b {This is a derived property.}
+
+    \b {Subsetted property(ies):} QUmlPackage::packagedElements().
+
+    \b {Opposite property(ies):} QUmlType::package().
  */
 const QSet<QUmlType *> QUmlPackage::ownedTypes() const
 {
@@ -257,6 +314,11 @@ const QSet<QUmlType *> QUmlPackage::ownedTypes() const
     return ownedTypes_;
 }
 
+/*!
+    Adds \a ownedType to ownedTypes.
+
+    \sa ownedTypes(), removeOwnedType()
+ */
 void QUmlPackage::addOwnedType(QUmlType *ownedType)
 {
     // This is a read-write derived association end
@@ -272,6 +334,11 @@ void QUmlPackage::addOwnedType(QUmlType *ownedType)
     }
 }
 
+/*!
+    Removes \a ownedType from ownedTypes.
+
+    \sa ownedTypes(), addOwnedType()
+ */
 void QUmlPackage::removeOwnedType(QUmlType *ownedType)
 {
     // This is a read-write derived association end
@@ -289,6 +356,12 @@ void QUmlPackage::removeOwnedType(QUmlType *ownedType)
 
 /*!
     References the PackageMerges that are owned by this Package.
+
+    \sa addPackageMerge(), removePackageMerge()
+
+    \b {Subsetted property(ies):} QUmlElement::ownedElements().
+
+    \b {Opposite property(ies):} QUmlPackageMerge::receivingPackage().
  */
 const QSet<QUmlPackageMerge *> QUmlPackage::packageMerges() const
 {
@@ -297,6 +370,11 @@ const QSet<QUmlPackageMerge *> QUmlPackage::packageMerges() const
     return _packageMerges;
 }
 
+/*!
+    Adds \a packageMerge to packageMerges.
+
+    \sa packageMerges(), removePackageMerge()
+ */
 void QUmlPackage::addPackageMerge(QUmlPackageMerge *packageMerge)
 {
     // This is a read-write association end
@@ -317,6 +395,11 @@ void QUmlPackage::addPackageMerge(QUmlPackageMerge *packageMerge)
     }
 }
 
+/*!
+    Removes \a packageMerge from packageMerges.
+
+    \sa packageMerges(), addPackageMerge()
+ */
 void QUmlPackage::removePackageMerge(QUmlPackageMerge *packageMerge)
 {
     // This is a read-write association end
@@ -338,6 +421,10 @@ void QUmlPackage::removePackageMerge(QUmlPackageMerge *packageMerge)
 
 /*!
     Specifies the packageable elements that are owned by this Package.
+
+    \sa addPackagedElement(), removePackagedElement()
+
+    \b {Subsetted property(ies):} QUmlNamespace::ownedMembers().
  */
 const QSet<QUmlPackageableElement *> QUmlPackage::packagedElements() const
 {
@@ -346,6 +433,11 @@ const QSet<QUmlPackageableElement *> QUmlPackage::packagedElements() const
     return _packagedElements;
 }
 
+/*!
+    Adds \a packagedElement to packagedElements.
+
+    \sa packagedElements(), removePackagedElement()
+ */
 void QUmlPackage::addPackagedElement(QUmlPackageableElement *packagedElement)
 {
     // This is a read-write association end
@@ -361,6 +453,11 @@ void QUmlPackage::addPackagedElement(QUmlPackageableElement *packagedElement)
     }
 }
 
+/*!
+    Removes \a packagedElement from packagedElements.
+
+    \sa packagedElements(), addPackagedElement()
+ */
 void QUmlPackage::removePackagedElement(QUmlPackageableElement *packagedElement)
 {
     // This is a read-write association end
@@ -377,6 +474,12 @@ void QUmlPackage::removePackagedElement(QUmlPackageableElement *packagedElement)
 
 /*!
     References the ProfileApplications that indicate which profiles have been applied to the Package.
+
+    \sa addProfileApplication(), removeProfileApplication()
+
+    \b {Subsetted property(ies):} QUmlElement::ownedElements().
+
+    \b {Opposite property(ies):} QUmlProfileApplication::applyingPackage().
  */
 const QSet<QUmlProfileApplication *> QUmlPackage::profileApplications() const
 {
@@ -385,6 +488,11 @@ const QSet<QUmlProfileApplication *> QUmlPackage::profileApplications() const
     return _profileApplications;
 }
 
+/*!
+    Adds \a profileApplication to profileApplications.
+
+    \sa profileApplications(), removeProfileApplication()
+ */
 void QUmlPackage::addProfileApplication(QUmlProfileApplication *profileApplication)
 {
     // This is a read-write association end
@@ -405,6 +513,11 @@ void QUmlPackage::addProfileApplication(QUmlProfileApplication *profileApplicati
     }
 }
 
+/*!
+    Removes \a profileApplication from profileApplications.
+
+    \sa profileApplications(), addProfileApplication()
+ */
 void QUmlPackage::removeProfileApplication(QUmlProfileApplication *profileApplication)
 {
     // This is a read-write association end

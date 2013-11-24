@@ -68,7 +68,13 @@ QT_BEGIN_NAMESPACE
     \inmodule QtUml
 
     \brief An object node is an abstract activity node that is part of defining object flow in an activity.Object nodes have support for token selection, limitation on the number of tokens, specifying the state required for tokens, and carrying control values.
+
+    \b {QUmlObjectNode is an abstract class.}
  */
+
+/*!
+    Creates a new QUmlObjectNode.
+*/
 QUmlObjectNode::QUmlObjectNode() :
     _isControlType(false),
     _ordering(QtUml::ObjectNodeOrderingKindFIFO),
@@ -77,6 +83,9 @@ QUmlObjectNode::QUmlObjectNode() :
 {
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlObjectNode.
+*/
 QModelingElement *QUmlObjectNode::clone() const
 {
     QUmlObjectNode *c = new QUmlObjectNode;
@@ -120,6 +129,8 @@ QModelingElement *QUmlObjectNode::clone() const
 
 /*!
     The required states of the object available at this point in the activity.
+
+    \sa addInState(), removeInState()
  */
 const QSet<QUmlState *> QUmlObjectNode::inStates() const
 {
@@ -128,6 +139,11 @@ const QSet<QUmlState *> QUmlObjectNode::inStates() const
     return _inStates;
 }
 
+/*!
+    Adds \a inState to inStates.
+
+    \sa inStates(), removeInState()
+ */
 void QUmlObjectNode::addInState(QUmlState *inState)
 {
     // This is a read-write association end
@@ -139,6 +155,11 @@ void QUmlObjectNode::addInState(QUmlState *inState)
     }
 }
 
+/*!
+    Removes \a inState from inStates.
+
+    \sa inStates(), addInState()
+ */
 void QUmlObjectNode::removeInState(QUmlState *inState)
 {
     // This is a read-write association end
@@ -158,6 +179,9 @@ bool QUmlObjectNode::isControlType() const
     return _isControlType;
 }
 
+/*!
+    Adjusts isControlType to \a isControlType.
+ */
 void QUmlObjectNode::setControlType(bool isControlType)
 {
     // This is a read-write property
@@ -178,6 +202,9 @@ QtUml::ObjectNodeOrderingKind QUmlObjectNode::ordering() const
     return _ordering;
 }
 
+/*!
+    Adjusts ordering to \a ordering.
+ */
 void QUmlObjectNode::setOrdering(QtUml::ObjectNodeOrderingKind ordering)
 {
     // This is a read-write property
@@ -198,6 +225,9 @@ QUmlBehavior *QUmlObjectNode::selection() const
     return _selection;
 }
 
+/*!
+    Adjusts selection to \a selection.
+ */
 void QUmlObjectNode::setSelection(QUmlBehavior *selection)
 {
     // This is a read-write association end
@@ -211,6 +241,8 @@ void QUmlObjectNode::setSelection(QUmlBehavior *selection)
 
 /*!
     The maximum number of tokens allowed in the node. Objects cannot flow into the node if the upper bound is reached.
+
+    \b {Subsetted property(ies):} QUmlElement::ownedElements().
  */
 QUmlValueSpecification *QUmlObjectNode::upperBound() const
 {
@@ -219,6 +251,9 @@ QUmlValueSpecification *QUmlObjectNode::upperBound() const
     return _upperBound;
 }
 
+/*!
+    Adjusts upperBound to \a upperBound.
+ */
 void QUmlObjectNode::setUpperBound(QUmlValueSpecification *upperBound)
 {
     // This is a read-write association end

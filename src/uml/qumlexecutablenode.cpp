@@ -65,11 +65,20 @@ QT_BEGIN_NAMESPACE
     \inmodule QtUml
 
     \brief An executable node is an abstract class for activity nodes that may be executed. It is used as an attachment point for exception handlers.An executable node is an abstract class for activity nodes that may be executed. It is used as an attachment point for exception handlers.
+
+    \b {QUmlExecutableNode is an abstract class.}
  */
+
+/*!
+    Creates a new QUmlExecutableNode.
+*/
 QUmlExecutableNode::QUmlExecutableNode()
 {
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlExecutableNode.
+*/
 QModelingElement *QUmlExecutableNode::clone() const
 {
     QUmlExecutableNode *c = new QUmlExecutableNode;
@@ -105,6 +114,12 @@ QModelingElement *QUmlExecutableNode::clone() const
 
 /*!
     A set of exception handlers that are examined if an uncaught exception propagates to the outer level of the executable node.
+
+    \sa addHandler(), removeHandler()
+
+    \b {Subsetted property(ies):} QUmlElement::ownedElements().
+
+    \b {Opposite property(ies):} QUmlExceptionHandler::protectedNode().
  */
 const QSet<QUmlExceptionHandler *> QUmlExecutableNode::handlers() const
 {
@@ -113,6 +128,11 @@ const QSet<QUmlExceptionHandler *> QUmlExecutableNode::handlers() const
     return _handlers;
 }
 
+/*!
+    Adds \a handler to handlers.
+
+    \sa handlers(), removeHandler()
+ */
 void QUmlExecutableNode::addHandler(QUmlExceptionHandler *handler)
 {
     // This is a read-write association end
@@ -133,6 +153,11 @@ void QUmlExecutableNode::addHandler(QUmlExceptionHandler *handler)
     }
 }
 
+/*!
+    Removes \a handler from handlers.
+
+    \sa handlers(), addHandler()
+ */
 void QUmlExecutableNode::removeHandler(QUmlExceptionHandler *handler)
 {
     // This is a read-write association end

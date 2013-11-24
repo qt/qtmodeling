@@ -64,6 +64,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A duration constraint is a constraint that refers to a duration interval.
  */
+
+/*!
+    Creates a new QUmlDurationConstraint. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlDurationConstraint::QUmlDurationConstraint(bool createQModelingObject) :
     QUmlIntervalConstraint(false),
     _specification(0)
@@ -72,6 +76,9 @@ QUmlDurationConstraint::QUmlDurationConstraint(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlDurationConstraintObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlDurationConstraint.
+*/
 QModelingElement *QUmlDurationConstraint::clone() const
 {
     QUmlDurationConstraint *c = new QUmlDurationConstraint;
@@ -109,6 +116,9 @@ bool QUmlDurationConstraint::firstEvent() const
     return _firstEvent;
 }
 
+/*!
+    Adjusts firstEvent to \a firstEvent.
+ */
 void QUmlDurationConstraint::setFirstEvent(bool firstEvent)
 {
     // This is a read-write property
@@ -120,6 +130,8 @@ void QUmlDurationConstraint::setFirstEvent(bool firstEvent)
 
 /*!
     The interval constraining the duration.
+
+    \b {Redefined property(ies):} QUmlIntervalConstraint::specification().
  */
 QUmlDurationInterval *QUmlDurationConstraint::specification() const
 {
@@ -128,6 +140,9 @@ QUmlDurationInterval *QUmlDurationConstraint::specification() const
     return _specification;
 }
 
+/*!
+    Adjusts specification to \a specification.
+ */
 void QUmlDurationConstraint::setSpecification(QUmlDurationInterval *specification)
 {
     // This is a read-write association end

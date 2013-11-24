@@ -77,12 +77,21 @@ QT_BEGIN_NAMESPACE
     \inmodule QtUml
 
     \brief A behaviored classifier may have an interface realization.A classifier can have behavior specifications defined in its namespace. One of these may specify the behavior of the classifier itself.
+
+    \b {QUmlBehavioredClassifier is an abstract class.}
  */
+
+/*!
+    Creates a new QUmlBehavioredClassifier.
+*/
 QUmlBehavioredClassifier::QUmlBehavioredClassifier() :
     _classifierBehavior(0)
 {
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlBehavioredClassifier.
+*/
 QModelingElement *QUmlBehavioredClassifier::clone() const
 {
     QUmlBehavioredClassifier *c = new QUmlBehavioredClassifier;
@@ -142,6 +151,8 @@ QModelingElement *QUmlBehavioredClassifier::clone() const
 
 /*!
     A behavior specification that specifies the behavior of the classifier itself.
+
+    \b {Subsetted property(ies):} QUmlBehavioredClassifier::ownedBehaviors().
  */
 QUmlBehavior *QUmlBehavioredClassifier::classifierBehavior() const
 {
@@ -150,6 +161,9 @@ QUmlBehavior *QUmlBehavioredClassifier::classifierBehavior() const
     return _classifierBehavior;
 }
 
+/*!
+    Adjusts classifierBehavior to \a classifierBehavior.
+ */
 void QUmlBehavioredClassifier::setClassifierBehavior(QUmlBehavior *classifierBehavior)
 {
     // This is a read-write association end
@@ -171,6 +185,12 @@ void QUmlBehavioredClassifier::setClassifierBehavior(QUmlBehavior *classifierBeh
 
 /*!
     The set of InterfaceRealizations owned by the BehavioredClassifier. Interface realizations reference the Interfaces of which the BehavioredClassifier is an implementation.
+
+    \sa addInterfaceRealization(), removeInterfaceRealization()
+
+    \b {Subsetted property(ies):} QUmlElement::ownedElements(), QUmlNamedElement::clientDependencies().
+
+    \b {Opposite property(ies):} QUmlInterfaceRealization::implementingClassifier().
  */
 const QSet<QUmlInterfaceRealization *> QUmlBehavioredClassifier::interfaceRealizations() const
 {
@@ -179,6 +199,11 @@ const QSet<QUmlInterfaceRealization *> QUmlBehavioredClassifier::interfaceRealiz
     return _interfaceRealizations;
 }
 
+/*!
+    Adds \a interfaceRealization to interfaceRealizations.
+
+    \sa interfaceRealizations(), removeInterfaceRealization()
+ */
 void QUmlBehavioredClassifier::addInterfaceRealization(QUmlInterfaceRealization *interfaceRealization)
 {
     // This is a read-write association end
@@ -200,6 +225,11 @@ void QUmlBehavioredClassifier::addInterfaceRealization(QUmlInterfaceRealization 
     }
 }
 
+/*!
+    Removes \a interfaceRealization from interfaceRealizations.
+
+    \sa interfaceRealizations(), addInterfaceRealization()
+ */
 void QUmlBehavioredClassifier::removeInterfaceRealization(QUmlInterfaceRealization *interfaceRealization)
 {
     // This is a read-write association end
@@ -222,6 +252,10 @@ void QUmlBehavioredClassifier::removeInterfaceRealization(QUmlInterfaceRealizati
 
 /*!
     References behavior specifications owned by a classifier.
+
+    \sa addOwnedBehavior(), removeOwnedBehavior()
+
+    \b {Subsetted property(ies):} QUmlNamespace::ownedMembers().
  */
 const QSet<QUmlBehavior *> QUmlBehavioredClassifier::ownedBehaviors() const
 {
@@ -230,6 +264,11 @@ const QSet<QUmlBehavior *> QUmlBehavioredClassifier::ownedBehaviors() const
     return _ownedBehaviors;
 }
 
+/*!
+    Adds \a ownedBehavior to ownedBehaviors.
+
+    \sa ownedBehaviors(), removeOwnedBehavior()
+ */
 void QUmlBehavioredClassifier::addOwnedBehavior(QUmlBehavior *ownedBehavior)
 {
     // This is a read-write association end
@@ -245,6 +284,11 @@ void QUmlBehavioredClassifier::addOwnedBehavior(QUmlBehavior *ownedBehavior)
     }
 }
 
+/*!
+    Removes \a ownedBehavior from ownedBehaviors.
+
+    \sa ownedBehaviors(), addOwnedBehavior()
+ */
 void QUmlBehavioredClassifier::removeOwnedBehavior(QUmlBehavior *ownedBehavior)
 {
     // This is a read-write association end

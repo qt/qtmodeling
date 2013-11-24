@@ -97,6 +97,10 @@ QT_BEGIN_NAMESPACE
 
     \brief An activity is the specification of parameterized behavior as the coordinated sequencing of subordinate units whose individual elements are actions.
  */
+
+/*!
+    Creates a new QUmlActivity. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlActivity::QUmlActivity(bool createQModelingObject) :
     _isReadOnly(false),
     _isSingleExecution(false)
@@ -105,6 +109,9 @@ QUmlActivity::QUmlActivity(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlActivityObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlActivity.
+*/
 QModelingElement *QUmlActivity::clone() const
 {
     QUmlActivity *c = new QUmlActivity;
@@ -202,6 +209,12 @@ QModelingElement *QUmlActivity::clone() const
 
 /*!
     Edges expressing flow between nodes of the activity.
+
+    \sa addEdge(), removeEdge()
+
+    \b {Subsetted property(ies):} QUmlElement::ownedElements().
+
+    \b {Opposite property(ies):} QUmlActivityEdge::activity().
  */
 const QSet<QUmlActivityEdge *> QUmlActivity::edges() const
 {
@@ -210,6 +223,11 @@ const QSet<QUmlActivityEdge *> QUmlActivity::edges() const
     return _edges;
 }
 
+/*!
+    Adds \a edge to edges.
+
+    \sa edges(), removeEdge()
+ */
 void QUmlActivity::addEdge(QUmlActivityEdge *edge)
 {
     // This is a read-write association end
@@ -230,6 +248,11 @@ void QUmlActivity::addEdge(QUmlActivityEdge *edge)
     }
 }
 
+/*!
+    Removes \a edge from edges.
+
+    \sa edges(), addEdge()
+ */
 void QUmlActivity::removeEdge(QUmlActivityEdge *edge)
 {
     // This is a read-write association end
@@ -251,6 +274,12 @@ void QUmlActivity::removeEdge(QUmlActivityEdge *edge)
 
 /*!
     Top-level groups in the activity.
+
+    \sa addGroup(), removeGroup()
+
+    \b {Subsetted property(ies):} QUmlElement::ownedElements().
+
+    \b {Opposite property(ies):} QUmlActivityGroup::inActivity().
  */
 const QSet<QUmlActivityGroup *> QUmlActivity::groups() const
 {
@@ -259,6 +288,11 @@ const QSet<QUmlActivityGroup *> QUmlActivity::groups() const
     return _groups;
 }
 
+/*!
+    Adds \a group to groups.
+
+    \sa groups(), removeGroup()
+ */
 void QUmlActivity::addGroup(QUmlActivityGroup *group)
 {
     // This is a read-write association end
@@ -279,6 +313,11 @@ void QUmlActivity::addGroup(QUmlActivityGroup *group)
     }
 }
 
+/*!
+    Removes \a group from groups.
+
+    \sa groups(), addGroup()
+ */
 void QUmlActivity::removeGroup(QUmlActivityGroup *group)
 {
     // This is a read-write association end
@@ -308,6 +347,9 @@ bool QUmlActivity::isReadOnly() const
     return _isReadOnly;
 }
 
+/*!
+    Adjusts isReadOnly to \a isReadOnly.
+ */
 void QUmlActivity::setReadOnly(bool isReadOnly)
 {
     // This is a read-write property
@@ -328,6 +370,9 @@ bool QUmlActivity::isSingleExecution() const
     return _isSingleExecution;
 }
 
+/*!
+    Adjusts isSingleExecution to \a isSingleExecution.
+ */
 void QUmlActivity::setSingleExecution(bool isSingleExecution)
 {
     // This is a read-write property
@@ -340,6 +385,12 @@ void QUmlActivity::setSingleExecution(bool isSingleExecution)
 
 /*!
     Nodes coordinated by the activity.
+
+    \sa addNode(), removeNode()
+
+    \b {Subsetted property(ies):} QUmlElement::ownedElements().
+
+    \b {Opposite property(ies):} QUmlActivityNode::activity().
  */
 const QSet<QUmlActivityNode *> QUmlActivity::nodes() const
 {
@@ -348,6 +399,11 @@ const QSet<QUmlActivityNode *> QUmlActivity::nodes() const
     return _nodes;
 }
 
+/*!
+    Adds \a node to nodes.
+
+    \sa nodes(), removeNode()
+ */
 void QUmlActivity::addNode(QUmlActivityNode *node)
 {
     // This is a read-write association end
@@ -368,6 +424,11 @@ void QUmlActivity::addNode(QUmlActivityNode *node)
     }
 }
 
+/*!
+    Removes \a node from nodes.
+
+    \sa nodes(), addNode()
+ */
 void QUmlActivity::removeNode(QUmlActivityNode *node)
 {
     // This is a read-write association end
@@ -389,6 +450,10 @@ void QUmlActivity::removeNode(QUmlActivityNode *node)
 
 /*!
     Top-level partitions in the activity.
+
+    \sa addPartition(), removePartition()
+
+    \b {Subsetted property(ies):} QUmlActivity::groups().
  */
 const QSet<QUmlActivityPartition *> QUmlActivity::partitions() const
 {
@@ -397,6 +462,11 @@ const QSet<QUmlActivityPartition *> QUmlActivity::partitions() const
     return _partitions;
 }
 
+/*!
+    Adds \a partition to partitions.
+
+    \sa partitions(), removePartition()
+ */
 void QUmlActivity::addPartition(QUmlActivityPartition *partition)
 {
     // This is a read-write association end
@@ -411,6 +481,11 @@ void QUmlActivity::addPartition(QUmlActivityPartition *partition)
     }
 }
 
+/*!
+    Removes \a partition from partitions.
+
+    \sa partitions(), addPartition()
+ */
 void QUmlActivity::removePartition(QUmlActivityPartition *partition)
 {
     // This is a read-write association end
@@ -425,6 +500,12 @@ void QUmlActivity::removePartition(QUmlActivityPartition *partition)
 
 /*!
     Top-level structured nodes in the activity.
+
+    \sa addStructuredNode(), removeStructuredNode()
+
+    \b {Subsetted property(ies):} QUmlActivity::groups(), QUmlActivity::nodes().
+
+    \b {Opposite property(ies):} QUmlStructuredActivityNode::activity().
  */
 const QSet<QUmlStructuredActivityNode *> QUmlActivity::structuredNodes() const
 {
@@ -433,6 +514,11 @@ const QSet<QUmlStructuredActivityNode *> QUmlActivity::structuredNodes() const
     return _structuredNodes;
 }
 
+/*!
+    Adds \a structuredNode to structuredNodes.
+
+    \sa structuredNodes(), removeStructuredNode()
+ */
 void QUmlActivity::addStructuredNode(QUmlStructuredActivityNode *structuredNode)
 {
     // This is a read-write association end
@@ -454,6 +540,11 @@ void QUmlActivity::addStructuredNode(QUmlStructuredActivityNode *structuredNode)
     }
 }
 
+/*!
+    Removes \a structuredNode from structuredNodes.
+
+    \sa structuredNodes(), addStructuredNode()
+ */
 void QUmlActivity::removeStructuredNode(QUmlStructuredActivityNode *structuredNode)
 {
     // This is a read-write association end
@@ -476,6 +567,12 @@ void QUmlActivity::removeStructuredNode(QUmlStructuredActivityNode *structuredNo
 
 /*!
     Top-level variables in the activity.
+
+    \sa addVariable(), removeVariable()
+
+    \b {Subsetted property(ies):} QUmlNamespace::ownedMembers().
+
+    \b {Opposite property(ies):} QUmlVariable::activityScope().
  */
 const QSet<QUmlVariable *> QUmlActivity::variables() const
 {
@@ -484,6 +581,11 @@ const QSet<QUmlVariable *> QUmlActivity::variables() const
     return _variables;
 }
 
+/*!
+    Adds \a variable to variables.
+
+    \sa variables(), removeVariable()
+ */
 void QUmlActivity::addVariable(QUmlVariable *variable)
 {
     // This is a read-write association end
@@ -504,6 +606,11 @@ void QUmlActivity::addVariable(QUmlVariable *variable)
     }
 }
 
+/*!
+    Removes \a variable from variables.
+
+    \sa variables(), addVariable()
+ */
 void QUmlActivity::removeVariable(QUmlVariable *variable)
 {
     // This is a read-write association end

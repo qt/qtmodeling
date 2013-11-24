@@ -64,7 +64,13 @@ QT_BEGIN_NAMESPACE
     \inmodule QtUml
 
     \brief Activity edges can be contained in interruptible regions.An activity edge is an abstract class for directed connections between two activity nodes.
+
+    \b {QUmlActivityEdge is an abstract class.}
  */
+
+/*!
+    Creates a new QUmlActivityEdge.
+*/
 QUmlActivityEdge::QUmlActivityEdge() :
     _activity(0),
     _guard(0),
@@ -76,6 +82,9 @@ QUmlActivityEdge::QUmlActivityEdge() :
 {
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlActivityEdge.
+*/
 QModelingElement *QUmlActivityEdge::clone() const
 {
     QUmlActivityEdge *c = new QUmlActivityEdge;
@@ -113,6 +122,10 @@ QModelingElement *QUmlActivityEdge::clone() const
 
 /*!
     Activity containing the edge.
+
+    \b {Subsetted property(ies):} QUmlElement::owner().
+
+    \b {Opposite property(ies):} QUmlActivity::edges().
  */
 QUmlActivity *QUmlActivityEdge::activity() const
 {
@@ -121,6 +134,9 @@ QUmlActivity *QUmlActivityEdge::activity() const
     return _activity;
 }
 
+/*!
+    Adjusts activity to \a activity.
+ */
 void QUmlActivityEdge::setActivity(QUmlActivity *activity)
 {
     // This is a read-write association end
@@ -139,6 +155,8 @@ void QUmlActivityEdge::setActivity(QUmlActivity *activity)
 
 /*!
     Specification evaluated at runtime to determine if the edge can be traversed.
+
+    \b {Subsetted property(ies):} QUmlElement::ownedElements().
  */
 QUmlValueSpecification *QUmlActivityEdge::guard() const
 {
@@ -147,6 +165,9 @@ QUmlValueSpecification *QUmlActivityEdge::guard() const
     return _guard;
 }
 
+/*!
+    Adjusts guard to \a guard.
+ */
 void QUmlActivityEdge::setGuard(QUmlValueSpecification *guard)
 {
     // This is a read-write association end
@@ -169,6 +190,10 @@ void QUmlActivityEdge::setGuard(QUmlValueSpecification *guard)
 
 /*!
     Groups containing the edge.
+
+    \b {This is a read-only derived union property.}
+
+    \b {Opposite property(ies):} QUmlActivityGroup::containedEdges().
  */
 const QSet<QUmlActivityGroup *> QUmlActivityEdge::inGroups() const
 {
@@ -177,6 +202,11 @@ const QSet<QUmlActivityGroup *> QUmlActivityEdge::inGroups() const
     return _inGroups;
 }
 
+/*!
+    Adds \a inGroup to inGroups.
+
+    \sa inGroups(), removeInGroup()
+ */
 void QUmlActivityEdge::addInGroup(QUmlActivityGroup *inGroup)
 {
     // This is a read-only derived union association end
@@ -193,6 +223,11 @@ void QUmlActivityEdge::addInGroup(QUmlActivityGroup *inGroup)
     }
 }
 
+/*!
+    Removes \a inGroup from inGroups.
+
+    \sa inGroups(), addInGroup()
+ */
 void QUmlActivityEdge::removeInGroup(QUmlActivityGroup *inGroup)
 {
     // This is a read-only derived union association end
@@ -209,6 +244,12 @@ void QUmlActivityEdge::removeInGroup(QUmlActivityGroup *inGroup)
 
 /*!
     Partitions containing the edge.
+
+    \sa addInPartition(), removeInPartition()
+
+    \b {Subsetted property(ies):} QUmlActivityEdge::inGroups().
+
+    \b {Opposite property(ies):} QUmlActivityPartition::edges().
  */
 const QSet<QUmlActivityPartition *> QUmlActivityEdge::inPartitions() const
 {
@@ -217,6 +258,11 @@ const QSet<QUmlActivityPartition *> QUmlActivityEdge::inPartitions() const
     return _inPartitions;
 }
 
+/*!
+    Adds \a inPartition to inPartitions.
+
+    \sa inPartitions(), removeInPartition()
+ */
 void QUmlActivityEdge::addInPartition(QUmlActivityPartition *inPartition)
 {
     // This is a read-write association end
@@ -236,6 +282,11 @@ void QUmlActivityEdge::addInPartition(QUmlActivityPartition *inPartition)
     }
 }
 
+/*!
+    Removes \a inPartition from inPartitions.
+
+    \sa inPartitions(), addInPartition()
+ */
 void QUmlActivityEdge::removeInPartition(QUmlActivityPartition *inPartition)
 {
     // This is a read-write association end
@@ -255,6 +306,10 @@ void QUmlActivityEdge::removeInPartition(QUmlActivityPartition *inPartition)
 
 /*!
     Structured activity node containing the edge.
+
+    \b {Subsetted property(ies):} QUmlActivityEdge::inGroups(), QUmlElement::owner().
+
+    \b {Opposite property(ies):} QUmlStructuredActivityNode::edges().
  */
 QUmlStructuredActivityNode *QUmlActivityEdge::inStructuredNode() const
 {
@@ -263,6 +318,9 @@ QUmlStructuredActivityNode *QUmlActivityEdge::inStructuredNode() const
     return _inStructuredNode;
 }
 
+/*!
+    Adjusts inStructuredNode to \a inStructuredNode.
+ */
 void QUmlActivityEdge::setInStructuredNode(QUmlStructuredActivityNode *inStructuredNode)
 {
     // This is a read-write association end
@@ -285,6 +343,8 @@ void QUmlActivityEdge::setInStructuredNode(QUmlStructuredActivityNode *inStructu
 
 /*!
     Region that the edge can interrupt.
+
+    \b {Opposite property(ies):} QUmlInterruptibleActivityRegion::interruptingEdges().
  */
 QUmlInterruptibleActivityRegion *QUmlActivityEdge::interrupts() const
 {
@@ -293,6 +353,9 @@ QUmlInterruptibleActivityRegion *QUmlActivityEdge::interrupts() const
     return _interrupts;
 }
 
+/*!
+    Adjusts interrupts to \a interrupts.
+ */
 void QUmlActivityEdge::setInterrupts(QUmlInterruptibleActivityRegion *interrupts)
 {
     // This is a read-write association end
@@ -306,6 +369,10 @@ void QUmlActivityEdge::setInterrupts(QUmlInterruptibleActivityRegion *interrupts
 
 /*!
     Inherited edges replaced by this edge in a specialization of the activity.
+
+    \sa addRedefinedEdge(), removeRedefinedEdge()
+
+    \b {Subsetted property(ies):} QUmlRedefinableElement::redefinedElements().
  */
 const QSet<QUmlActivityEdge *> QUmlActivityEdge::redefinedEdges() const
 {
@@ -314,6 +381,11 @@ const QSet<QUmlActivityEdge *> QUmlActivityEdge::redefinedEdges() const
     return _redefinedEdges;
 }
 
+/*!
+    Adds \a redefinedEdge to redefinedEdges.
+
+    \sa redefinedEdges(), removeRedefinedEdge()
+ */
 void QUmlActivityEdge::addRedefinedEdge(QUmlActivityEdge *redefinedEdge)
 {
     // This is a read-write association end
@@ -328,6 +400,11 @@ void QUmlActivityEdge::addRedefinedEdge(QUmlActivityEdge *redefinedEdge)
     }
 }
 
+/*!
+    Removes \a redefinedEdge from redefinedEdges.
+
+    \sa redefinedEdges(), addRedefinedEdge()
+ */
 void QUmlActivityEdge::removeRedefinedEdge(QUmlActivityEdge *redefinedEdge)
 {
     // This is a read-write association end
@@ -342,6 +419,8 @@ void QUmlActivityEdge::removeRedefinedEdge(QUmlActivityEdge *redefinedEdge)
 
 /*!
     Node from which tokens are taken when they traverse the edge.
+
+    \b {Opposite property(ies):} QUmlActivityNode::outgoings().
  */
 QUmlActivityNode *QUmlActivityEdge::source() const
 {
@@ -350,6 +429,9 @@ QUmlActivityNode *QUmlActivityEdge::source() const
     return _source;
 }
 
+/*!
+    Adjusts source to \a source.
+ */
 void QUmlActivityEdge::setSource(QUmlActivityNode *source)
 {
     // This is a read-write association end
@@ -363,6 +445,8 @@ void QUmlActivityEdge::setSource(QUmlActivityNode *source)
 
 /*!
     Node to which tokens are put when they traverse the edge.
+
+    \b {Opposite property(ies):} QUmlActivityNode::incomings().
  */
 QUmlActivityNode *QUmlActivityEdge::target() const
 {
@@ -371,6 +455,9 @@ QUmlActivityNode *QUmlActivityEdge::target() const
     return _target;
 }
 
+/*!
+    Adjusts target to \a target.
+ */
 void QUmlActivityEdge::setTarget(QUmlActivityNode *target)
 {
     // This is a read-write association end
@@ -384,6 +471,8 @@ void QUmlActivityEdge::setTarget(QUmlActivityNode *target)
 
 /*!
     The minimum number of tokens that must traverse the edge at the same time.
+
+    \b {Subsetted property(ies):} QUmlElement::ownedElements().
  */
 QUmlValueSpecification *QUmlActivityEdge::weight() const
 {
@@ -392,6 +481,9 @@ QUmlValueSpecification *QUmlActivityEdge::weight() const
     return _weight;
 }
 
+/*!
+    Adjusts weight to \a weight.
+ */
 void QUmlActivityEdge::setWeight(QUmlValueSpecification *weight)
 {
     // This is a read-write association end

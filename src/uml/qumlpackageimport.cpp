@@ -56,6 +56,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A package import is a relationship that allows the use of unqualified names to refer to package members from other namespaces.
  */
+
+/*!
+    Creates a new QUmlPackageImport. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlPackageImport::QUmlPackageImport(bool createQModelingObject) :
     _importedPackage(0),
     _importingNamespace(0),
@@ -65,6 +69,9 @@ QUmlPackageImport::QUmlPackageImport(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlPackageImportObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlPackageImport.
+*/
 QModelingElement *QUmlPackageImport::clone() const
 {
     QUmlPackageImport *c = new QUmlPackageImport;
@@ -82,6 +89,8 @@ QModelingElement *QUmlPackageImport::clone() const
 
 /*!
     Specifies the Package whose members are imported into a Namespace.
+
+    \b {Subsetted property(ies):} QUmlDirectedRelationship::targets().
  */
 QUmlPackage *QUmlPackageImport::importedPackage() const
 {
@@ -90,6 +99,9 @@ QUmlPackage *QUmlPackageImport::importedPackage() const
     return _importedPackage;
 }
 
+/*!
+    Adjusts importedPackage to \a importedPackage.
+ */
 void QUmlPackageImport::setImportedPackage(QUmlPackage *importedPackage)
 {
     // This is a read-write association end
@@ -111,6 +123,10 @@ void QUmlPackageImport::setImportedPackage(QUmlPackage *importedPackage)
 
 /*!
     Specifies the Namespace that imports the members from a Package.
+
+    \b {Subsetted property(ies):} QUmlElement::owner(), QUmlDirectedRelationship::sources().
+
+    \b {Opposite property(ies):} QUmlNamespace::packageImports().
  */
 QUmlNamespace *QUmlPackageImport::importingNamespace() const
 {
@@ -119,6 +135,9 @@ QUmlNamespace *QUmlPackageImport::importingNamespace() const
     return _importingNamespace;
 }
 
+/*!
+    Adjusts importingNamespace to \a importingNamespace.
+ */
 void QUmlPackageImport::setImportingNamespace(QUmlNamespace *importingNamespace)
 {
     // This is a read-write association end
@@ -149,6 +168,9 @@ QtUml::VisibilityKind QUmlPackageImport::visibility() const
     return _visibility;
 }
 
+/*!
+    Adjusts visibility to \a visibility.
+ */
 void QUmlPackageImport::setVisibility(QtUml::VisibilityKind visibility)
 {
     // This is a read-write property

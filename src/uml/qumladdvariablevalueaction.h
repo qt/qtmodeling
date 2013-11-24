@@ -45,8 +45,6 @@
 
 #include <QtUml/QUmlWriteVariableAction>
 
-QT_BEGIN_HEADER
-
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
@@ -74,8 +72,6 @@ protected:
 QT_END_NAMESPACE
 
 Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE(QUmlAddVariableValueAction) *)
-
-QT_END_HEADER
 
 #endif // QUMLADDVARIABLEVALUEACTION_H
 

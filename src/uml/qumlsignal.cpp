@@ -78,12 +78,19 @@ QT_BEGIN_NAMESPACE
 
     \brief A signal is a specification of send request instances communicated between objects. The receiving object handles the received request instances as specified by its receptions. The data carried by a send request (which was passed to it by the send invocation occurrence that caused that request) are represented as attributes of the signal. A signal is defined independently of the classifiers handling the signal occurrence.
  */
+
+/*!
+    Creates a new QUmlSignal. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlSignal::QUmlSignal(bool createQModelingObject)
 {
     if (createQModelingObject)
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlSignalObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlSignal.
+*/
 QModelingElement *QUmlSignal::clone() const
 {
     QUmlSignal *c = new QUmlSignal;
@@ -139,6 +146,10 @@ QModelingElement *QUmlSignal::clone() const
 
 /*!
     The attributes owned by the signal.
+
+    \sa addOwnedAttribute(), removeOwnedAttribute()
+
+    \b {Subsetted property(ies):} QUmlNamespace::ownedMembers(), QUmlClassifier::attributes().
  */
 const QList<QUmlProperty *> QUmlSignal::ownedAttributes() const
 {
@@ -147,6 +158,11 @@ const QList<QUmlProperty *> QUmlSignal::ownedAttributes() const
     return _ownedAttributes;
 }
 
+/*!
+    Adds \a ownedAttribute to ownedAttributes.
+
+    \sa ownedAttributes(), removeOwnedAttribute()
+ */
 void QUmlSignal::addOwnedAttribute(QUmlProperty *ownedAttribute)
 {
     // This is a read-write association end
@@ -163,6 +179,11 @@ void QUmlSignal::addOwnedAttribute(QUmlProperty *ownedAttribute)
     }
 }
 
+/*!
+    Removes \a ownedAttribute from ownedAttributes.
+
+    \sa ownedAttributes(), addOwnedAttribute()
+ */
 void QUmlSignal::removeOwnedAttribute(QUmlProperty *ownedAttribute)
 {
     // This is a read-write association end

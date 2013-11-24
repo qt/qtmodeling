@@ -73,6 +73,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A read link object end action is an action that retrieves an end object from a link object.
  */
+
+/*!
+    Creates a new QUmlReadLinkObjectEndAction. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlReadLinkObjectEndAction::QUmlReadLinkObjectEndAction(bool createQModelingObject) :
     _end(0),
     _object(0),
@@ -82,6 +86,9 @@ QUmlReadLinkObjectEndAction::QUmlReadLinkObjectEndAction(bool createQModelingObj
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlReadLinkObjectEndActionObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlReadLinkObjectEndAction.
+*/
 QModelingElement *QUmlReadLinkObjectEndAction::clone() const
 {
     QUmlReadLinkObjectEndAction *c = new QUmlReadLinkObjectEndAction;
@@ -136,6 +143,9 @@ QUmlProperty *QUmlReadLinkObjectEndAction::end() const
     return _end;
 }
 
+/*!
+    Adjusts end to \a end.
+ */
 void QUmlReadLinkObjectEndAction::setEnd(QUmlProperty *end)
 {
     // This is a read-write association end
@@ -149,6 +159,8 @@ void QUmlReadLinkObjectEndAction::setEnd(QUmlProperty *end)
 
 /*!
     Gives the input pin from which the link object is obtained.
+
+    \b {Subsetted property(ies):} QUmlAction::inputs().
  */
 QUmlInputPin *QUmlReadLinkObjectEndAction::object() const
 {
@@ -157,6 +169,9 @@ QUmlInputPin *QUmlReadLinkObjectEndAction::object() const
     return _object;
 }
 
+/*!
+    Adjusts object to \a object.
+ */
 void QUmlReadLinkObjectEndAction::setObject(QUmlInputPin *object)
 {
     // This is a read-write association end
@@ -179,6 +194,8 @@ void QUmlReadLinkObjectEndAction::setObject(QUmlInputPin *object)
 
 /*!
     Pin where the result value is placed.
+
+    \b {Subsetted property(ies):} QUmlAction::outputs().
  */
 QUmlOutputPin *QUmlReadLinkObjectEndAction::result() const
 {
@@ -187,6 +204,9 @@ QUmlOutputPin *QUmlReadLinkObjectEndAction::result() const
     return _result;
 }
 
+/*!
+    Adjusts result to \a result.
+ */
 void QUmlReadLinkObjectEndAction::setResult(QUmlOutputPin *result)
 {
     // This is a read-write association end

@@ -58,11 +58,20 @@ QT_BEGIN_NAMESPACE
     \inmodule QtUml
 
     \brief An event is the specification of some occurrence that may potentially trigger effects by an object.
+
+    \b {QUmlEvent is an abstract class.}
  */
+
+/*!
+    Creates a new QUmlEvent.
+*/
 QUmlEvent::QUmlEvent()
 {
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlEvent.
+*/
 QModelingElement *QUmlEvent::clone() const
 {
     QUmlEvent *c = new QUmlEvent;

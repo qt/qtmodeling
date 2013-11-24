@@ -71,11 +71,20 @@ QT_BEGIN_NAMESPACE
     \inmodule QtUml
 
     \brief LinkAction is an abstract class for all link actions that identify their links by the objects at the ends of the links and by the qualifiers at ends of the links.
+
+    \b {QUmlLinkAction is an abstract class.}
  */
+
+/*!
+    Creates a new QUmlLinkAction.
+*/
 QUmlLinkAction::QUmlLinkAction()
 {
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlLinkAction.
+*/
 QModelingElement *QUmlLinkAction::clone() const
 {
     QUmlLinkAction *c = new QUmlLinkAction;
@@ -120,6 +129,10 @@ QModelingElement *QUmlLinkAction::clone() const
 
 /*!
     Data identifying one end of a link by the objects on its ends and qualifiers.
+
+    \sa addEndData(), removeEndData()
+
+    \b {Subsetted property(ies):} QUmlElement::ownedElements().
  */
 const QSet<QUmlLinkEndData *> QUmlLinkAction::endData() const
 {
@@ -128,6 +141,11 @@ const QSet<QUmlLinkEndData *> QUmlLinkAction::endData() const
     return _endData;
 }
 
+/*!
+    Adds \a endData to endData.
+
+    \sa endData(), removeEndData()
+ */
 void QUmlLinkAction::addEndData(QUmlLinkEndData *endData)
 {
     // This is a read-write association end
@@ -143,6 +161,11 @@ void QUmlLinkAction::addEndData(QUmlLinkEndData *endData)
     }
 }
 
+/*!
+    Removes \a endData from endData.
+
+    \sa endData(), addEndData()
+ */
 void QUmlLinkAction::removeEndData(QUmlLinkEndData *endData)
 {
     // This is a read-write association end
@@ -159,6 +182,10 @@ void QUmlLinkAction::removeEndData(QUmlLinkEndData *endData)
 
 /*!
     Pins taking end objects and qualifier values as input.
+
+    \sa addInputValue(), removeInputValue()
+
+    \b {Subsetted property(ies):} QUmlAction::inputs().
  */
 const QSet<QUmlInputPin *> QUmlLinkAction::inputValues() const
 {
@@ -167,6 +194,11 @@ const QSet<QUmlInputPin *> QUmlLinkAction::inputValues() const
     return _inputValues;
 }
 
+/*!
+    Adds \a inputValue to inputValues.
+
+    \sa inputValues(), removeInputValue()
+ */
 void QUmlLinkAction::addInputValue(QUmlInputPin *inputValue)
 {
     // This is a read-write association end
@@ -182,6 +214,11 @@ void QUmlLinkAction::addInputValue(QUmlInputPin *inputValue)
     }
 }
 
+/*!
+    Removes \a inputValue from inputValues.
+
+    \sa inputValues(), addInputValue()
+ */
 void QUmlLinkAction::removeInputValue(QUmlInputPin *inputValue)
 {
     // This is a read-write association end

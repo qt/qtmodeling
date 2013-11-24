@@ -72,12 +72,19 @@ QT_BEGIN_NAMESPACE
 
     \brief An action with implementation-specific semantics.
  */
+
+/*!
+    Creates a new QUmlOpaqueAction. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlOpaqueAction::QUmlOpaqueAction(bool createQModelingObject)
 {
     if (createQModelingObject)
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlOpaqueActionObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlOpaqueAction.
+*/
 QModelingElement *QUmlOpaqueAction::clone() const
 {
     QUmlOpaqueAction *c = new QUmlOpaqueAction;
@@ -126,6 +133,8 @@ QModelingElement *QUmlOpaqueAction::clone() const
 
 /*!
     Specifies the action in one or more languages.
+
+    \sa addBody(), removeBody()
  */
 const QList<QString> QUmlOpaqueAction::bodies() const
 {
@@ -134,6 +143,11 @@ const QList<QString> QUmlOpaqueAction::bodies() const
     return _bodies;
 }
 
+/*!
+    Adds \a body to bodies.
+
+    \sa bodies(), removeBody()
+ */
 void QUmlOpaqueAction::addBody(QString body)
 {
     // This is a read-write property
@@ -143,6 +157,11 @@ void QUmlOpaqueAction::addBody(QString body)
     }
 }
 
+/*!
+    Removes \a body from bodies.
+
+    \sa bodies(), addBody()
+ */
 void QUmlOpaqueAction::removeBody(QString body)
 {
     // This is a read-write property
@@ -154,6 +173,10 @@ void QUmlOpaqueAction::removeBody(QString body)
 
 /*!
     Provides input to the action.
+
+    \sa addInputValue(), removeInputValue()
+
+    \b {Subsetted property(ies):} QUmlAction::inputs().
  */
 const QSet<QUmlInputPin *> QUmlOpaqueAction::inputValues() const
 {
@@ -162,6 +185,11 @@ const QSet<QUmlInputPin *> QUmlOpaqueAction::inputValues() const
     return _inputValues;
 }
 
+/*!
+    Adds \a inputValue to inputValues.
+
+    \sa inputValues(), removeInputValue()
+ */
 void QUmlOpaqueAction::addInputValue(QUmlInputPin *inputValue)
 {
     // This is a read-write association end
@@ -177,6 +205,11 @@ void QUmlOpaqueAction::addInputValue(QUmlInputPin *inputValue)
     }
 }
 
+/*!
+    Removes \a inputValue from inputValues.
+
+    \sa inputValues(), addInputValue()
+ */
 void QUmlOpaqueAction::removeInputValue(QUmlInputPin *inputValue)
 {
     // This is a read-write association end
@@ -193,6 +226,8 @@ void QUmlOpaqueAction::removeInputValue(QUmlInputPin *inputValue)
 
 /*!
     Languages the body strings use, in the same order as the body strings
+
+    \sa addLanguage(), removeLanguage()
  */
 const QList<QString> QUmlOpaqueAction::languages() const
 {
@@ -201,6 +236,11 @@ const QList<QString> QUmlOpaqueAction::languages() const
     return _languages;
 }
 
+/*!
+    Adds \a language to languages.
+
+    \sa languages(), removeLanguage()
+ */
 void QUmlOpaqueAction::addLanguage(QString language)
 {
     // This is a read-write property
@@ -210,6 +250,11 @@ void QUmlOpaqueAction::addLanguage(QString language)
     }
 }
 
+/*!
+    Removes \a language from languages.
+
+    \sa languages(), addLanguage()
+ */
 void QUmlOpaqueAction::removeLanguage(QString language)
 {
     // This is a read-write property
@@ -221,6 +266,10 @@ void QUmlOpaqueAction::removeLanguage(QString language)
 
 /*!
     Takes output from the action.
+
+    \sa addOutputValue(), removeOutputValue()
+
+    \b {Subsetted property(ies):} QUmlAction::outputs().
  */
 const QSet<QUmlOutputPin *> QUmlOpaqueAction::outputValues() const
 {
@@ -229,6 +278,11 @@ const QSet<QUmlOutputPin *> QUmlOpaqueAction::outputValues() const
     return _outputValues;
 }
 
+/*!
+    Adds \a outputValue to outputValues.
+
+    \sa outputValues(), removeOutputValue()
+ */
 void QUmlOpaqueAction::addOutputValue(QUmlOutputPin *outputValue)
 {
     // This is a read-write association end
@@ -244,6 +298,11 @@ void QUmlOpaqueAction::addOutputValue(QUmlOutputPin *outputValue)
     }
 }
 
+/*!
+    Removes \a outputValue from outputValues.
+
+    \sa outputValues(), addOutputValue()
+ */
 void QUmlOpaqueAction::removeOutputValue(QUmlOutputPin *outputValue)
 {
     // This is a read-write association end

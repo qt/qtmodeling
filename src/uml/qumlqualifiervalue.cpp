@@ -55,6 +55,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A qualifier value is not an action. It is an element that identifies links. It gives a single qualifier within a link end data specification.
  */
+
+/*!
+    Creates a new QUmlQualifierValue. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlQualifierValue::QUmlQualifierValue(bool createQModelingObject) :
     _qualifier(0),
     _value(0)
@@ -63,6 +67,9 @@ QUmlQualifierValue::QUmlQualifierValue(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlQualifierValueObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlQualifierValue.
+*/
 QModelingElement *QUmlQualifierValue::clone() const
 {
     QUmlQualifierValue *c = new QUmlQualifierValue;
@@ -87,6 +94,9 @@ QUmlProperty *QUmlQualifierValue::qualifier() const
     return _qualifier;
 }
 
+/*!
+    Adjusts qualifier to \a qualifier.
+ */
 void QUmlQualifierValue::setQualifier(QUmlProperty *qualifier)
 {
     // This is a read-write association end
@@ -108,6 +118,9 @@ QUmlInputPin *QUmlQualifierValue::value() const
     return _value;
 }
 
+/*!
+    Adjusts value to \a value.
+ */
 void QUmlQualifierValue::setValue(QUmlInputPin *value)
 {
     // This is a read-write association end

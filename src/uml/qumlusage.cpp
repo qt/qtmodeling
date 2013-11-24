@@ -60,6 +60,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A usage is a relationship in which one element requires another element (or set of elements) for its full implementation or operation. A usage is a dependency in which the client requires the presence of the supplier.
  */
+
+/*!
+    Creates a new QUmlUsage. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlUsage::QUmlUsage(bool createQModelingObject) :
     QUmlDependency(false)
 {
@@ -67,6 +71,9 @@ QUmlUsage::QUmlUsage(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlUsageObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlUsage.
+*/
 QModelingElement *QUmlUsage::clone() const
 {
     QUmlUsage *c = new QUmlUsage;

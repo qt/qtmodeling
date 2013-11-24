@@ -73,6 +73,10 @@ QT_BEGIN_NAMESPACE
 
     \brief An add variable value action is a write variable action for adding values to a variable.
  */
+
+/*!
+    Creates a new QUmlAddVariableValueAction. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlAddVariableValueAction::QUmlAddVariableValueAction(bool createQModelingObject) :
     _insertAt(0),
     _isReplaceAll(false)
@@ -81,6 +85,9 @@ QUmlAddVariableValueAction::QUmlAddVariableValueAction(bool createQModelingObjec
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlAddVariableValueActionObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlAddVariableValueAction.
+*/
 QModelingElement *QUmlAddVariableValueAction::clone() const
 {
     QUmlAddVariableValueAction *c = new QUmlAddVariableValueAction;
@@ -128,6 +135,8 @@ QModelingElement *QUmlAddVariableValueAction::clone() const
 
 /*!
     Gives the position at which to insert a new value or move an existing value in ordered variables. The types is UnlimitedINatural, but the value cannot be zero. This pin is omitted for unordered variables.
+
+    \b {Subsetted property(ies):} QUmlAction::inputs().
  */
 QUmlInputPin *QUmlAddVariableValueAction::insertAt() const
 {
@@ -136,6 +145,9 @@ QUmlInputPin *QUmlAddVariableValueAction::insertAt() const
     return _insertAt;
 }
 
+/*!
+    Adjusts insertAt to \a insertAt.
+ */
 void QUmlAddVariableValueAction::setInsertAt(QUmlInputPin *insertAt)
 {
     // This is a read-write association end
@@ -166,6 +178,9 @@ bool QUmlAddVariableValueAction::isReplaceAll() const
     return _isReplaceAll;
 }
 
+/*!
+    Adjusts isReplaceAll to \a isReplaceAll.
+ */
 void QUmlAddVariableValueAction::setReplaceAll(bool isReplaceAll)
 {
     // This is a read-write property

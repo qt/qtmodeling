@@ -69,12 +69,21 @@ QT_BEGIN_NAMESPACE
     \inmodule QtUml
 
     \brief A pin is a typed element and multiplicity element that provides values to actions and accept result values from them.A pin is an object node for inputs and outputs to actions.
+
+    \b {QUmlPin is an abstract class.}
  */
+
+/*!
+    Creates a new QUmlPin.
+*/
 QUmlPin::QUmlPin() :
     _isControl(false)
 {
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlPin.
+*/
 QModelingElement *QUmlPin::clone() const
 {
     QUmlPin *c = new QUmlPin;
@@ -133,6 +142,9 @@ bool QUmlPin::isControl() const
     return _isControl;
 }
 
+/*!
+    Adjusts isControl to \a isControl.
+ */
 void QUmlPin::setControl(bool isControl)
 {
     // This is a read-write property

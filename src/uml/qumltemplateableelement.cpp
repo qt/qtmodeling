@@ -53,12 +53,21 @@ QT_BEGIN_NAMESPACE
     \inmodule QtUml
 
     \brief A templateable element is an element that can optionally be defined as a template and bound to other templates.
+
+    \b {QUmlTemplateableElement is an abstract class.}
  */
+
+/*!
+    Creates a new QUmlTemplateableElement.
+*/
 QUmlTemplateableElement::QUmlTemplateableElement() :
     _ownedTemplateSignature(0)
 {
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlTemplateableElement.
+*/
 QModelingElement *QUmlTemplateableElement::clone() const
 {
     QUmlTemplateableElement *c = new QUmlTemplateableElement;
@@ -75,6 +84,10 @@ QModelingElement *QUmlTemplateableElement::clone() const
 
 /*!
     The optional template signature specifying the formal template parameters.
+
+    \b {Subsetted property(ies):} QUmlElement::ownedElements().
+
+    \b {Opposite property(ies):} QUmlTemplateSignature::template_().
  */
 QUmlTemplateSignature *QUmlTemplateableElement::ownedTemplateSignature() const
 {
@@ -83,6 +96,9 @@ QUmlTemplateSignature *QUmlTemplateableElement::ownedTemplateSignature() const
     return _ownedTemplateSignature;
 }
 
+/*!
+    Adjusts ownedTemplateSignature to \a ownedTemplateSignature.
+ */
 void QUmlTemplateableElement::setOwnedTemplateSignature(QUmlTemplateSignature *ownedTemplateSignature)
 {
     // This is a read-write association end
@@ -105,6 +121,12 @@ void QUmlTemplateableElement::setOwnedTemplateSignature(QUmlTemplateSignature *o
 
 /*!
     The optional bindings from this element to templates.
+
+    \sa addTemplateBinding(), removeTemplateBinding()
+
+    \b {Subsetted property(ies):} QUmlElement::ownedElements().
+
+    \b {Opposite property(ies):} QUmlTemplateBinding::boundElement().
  */
 const QSet<QUmlTemplateBinding *> QUmlTemplateableElement::templateBindings() const
 {
@@ -113,6 +135,11 @@ const QSet<QUmlTemplateBinding *> QUmlTemplateableElement::templateBindings() co
     return _templateBindings;
 }
 
+/*!
+    Adds \a templateBinding to templateBindings.
+
+    \sa templateBindings(), removeTemplateBinding()
+ */
 void QUmlTemplateableElement::addTemplateBinding(QUmlTemplateBinding *templateBinding)
 {
     // This is a read-write association end
@@ -133,6 +160,11 @@ void QUmlTemplateableElement::addTemplateBinding(QUmlTemplateBinding *templateBi
     }
 }
 
+/*!
+    Removes \a templateBinding from templateBindings.
+
+    \sa templateBindings(), addTemplateBinding()
+ */
 void QUmlTemplateableElement::removeTemplateBinding(QUmlTemplateBinding *templateBinding)
 {
     // This is a read-write association end

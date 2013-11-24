@@ -74,6 +74,10 @@ QT_BEGIN_NAMESPACE
 
     \brief Property represents a declared state of one or more instances in terms of a named relationship to a value or values. When a property is an attribute of a classifier, the value or values are related to the instance of the classifier by being held in slots of the instance. When a property is an association end, the value or values are related to the instance or instances at the other end(s) of the association. The range of valid values represented by the property can be controlled by setting the property's type.A property is a structural feature of a classifier that characterizes instances of the classifier. A property related by ownedAttribute to a classifier (other than an association) represents an attribute and might also represent an association end. It relates an instance of the class to a value or set of values of the type of the attribute. A property related by memberEnd or its specializations to an association represents an end of the association. The type of the property is the type of the end of the association.A property has the capability of being a deployment target in a deployment relationship. This enables modeling the deployment to hierarchical nodes that have properties functioning as internal parts.Property specializes ParameterableElement to specify that a property can be exposed as a formal template parameter, and provided as an actual parameter in a binding of a template.A property represents a set of instances that are owned by a containing classifier instance.
  */
+
+/*!
+    Creates a new QUmlProperty. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlProperty::QUmlProperty(bool createQModelingObject) :
     _aggregation(QtUml::AggregationKindNone),
     _association(0),
@@ -92,6 +96,9 @@ QUmlProperty::QUmlProperty(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlPropertyObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlProperty.
+*/
 QModelingElement *QUmlProperty::clone() const
 {
     QUmlProperty *c = new QUmlProperty;
@@ -159,6 +166,9 @@ QtUml::AggregationKind QUmlProperty::aggregation() const
     return _aggregation;
 }
 
+/*!
+    Adjusts aggregation to \a aggregation.
+ */
 void QUmlProperty::setAggregation(QtUml::AggregationKind aggregation)
 {
     // This is a read-write property
@@ -171,6 +181,10 @@ void QUmlProperty::setAggregation(QtUml::AggregationKind aggregation)
 
 /*!
     References the association of which this property is a member, if any.
+
+    \b {Subsetted property(ies):} .
+
+    \b {Opposite property(ies):} QUmlAssociation::memberEnds().
  */
 QUmlAssociation *QUmlProperty::association() const
 {
@@ -179,6 +193,9 @@ QUmlAssociation *QUmlProperty::association() const
     return _association;
 }
 
+/*!
+    Adjusts association to \a association.
+ */
 void QUmlProperty::setAssociation(QUmlAssociation *association)
 {
     // This is a read-write association end
@@ -192,6 +209,10 @@ void QUmlProperty::setAssociation(QUmlAssociation *association)
 
 /*!
     Designates the optional association end that owns a qualifier attribute.
+
+    \b {Subsetted property(ies):} QUmlElement::owner().
+
+    \b {Opposite property(ies):} QUmlProperty::qualifiers().
  */
 QUmlProperty *QUmlProperty::associationEnd() const
 {
@@ -200,6 +221,9 @@ QUmlProperty *QUmlProperty::associationEnd() const
     return _associationEnd;
 }
 
+/*!
+    Adjusts associationEnd to \a associationEnd.
+ */
 void QUmlProperty::setAssociationEnd(QUmlProperty *associationEnd)
 {
     // This is a read-write association end
@@ -218,6 +242,10 @@ void QUmlProperty::setAssociationEnd(QUmlProperty *associationEnd)
 
 /*!
     References the Class that owns the Property.References the Class that owns the Property.
+
+    \b {Subsetted property(ies):} QUmlNamedElement::namespace_().
+
+    \b {Opposite property(ies):} QUmlClass::ownedAttributes().
  */
 QUmlClass *QUmlProperty::class_() const
 {
@@ -226,6 +254,9 @@ QUmlClass *QUmlProperty::class_() const
     return _class_;
 }
 
+/*!
+    Adjusts class_ to \a class_.
+ */
 void QUmlProperty::setClass(QUmlClass *class_)
 {
     // This is a read-write association end
@@ -244,6 +275,10 @@ void QUmlProperty::setClass(QUmlClass *class_)
 
 /*!
     The DataType that owns this Property.
+
+    \b {Subsetted property(ies):} QUmlNamedElement::namespace_().
+
+    \b {Opposite property(ies):} QUmlDataType::ownedAttributes().
  */
 QUmlDataType *QUmlProperty::datatype() const
 {
@@ -252,6 +287,9 @@ QUmlDataType *QUmlProperty::datatype() const
     return _datatype;
 }
 
+/*!
+    Adjusts datatype to \a datatype.
+ */
 void QUmlProperty::setDatatype(QUmlDataType *datatype)
 {
     // This is a read-write association end
@@ -270,6 +308,8 @@ void QUmlProperty::setDatatype(QUmlDataType *datatype)
 
 /*!
     Specifies a String that represents a value to be used when no argument is supplied for the Property.A String that is evaluated to give a default value for the Property when an object of the owning Classifier is instantiated.
+
+    \b {This is a derived property.}
  */
 QString QUmlProperty::default_() const
 {
@@ -280,6 +320,9 @@ QString QUmlProperty::default_() const
     return QString();
 }
 
+/*!
+    Adjusts default_ to \a default_.
+ */
 void QUmlProperty::setDefault(QString default_)
 {
     // This is a read-write derived property
@@ -294,6 +337,8 @@ void QUmlProperty::setDefault(QString default_)
 
 /*!
     A ValueSpecification that is evaluated to give a default value for the Property when an object of the owning Classifier is instantiated.
+
+    \b {Subsetted property(ies):} QUmlElement::ownedElements().
  */
 QUmlValueSpecification *QUmlProperty::defaultValue() const
 {
@@ -302,6 +347,9 @@ QUmlValueSpecification *QUmlProperty::defaultValue() const
     return _defaultValue;
 }
 
+/*!
+    Adjusts defaultValue to \a defaultValue.
+ */
 void QUmlProperty::setDefaultValue(QUmlValueSpecification *defaultValue)
 {
     // This is a read-write association end
@@ -324,6 +372,10 @@ void QUmlProperty::setDefaultValue(QUmlValueSpecification *defaultValue)
 
 /*!
     References the Interface that owns the Property
+
+    \b {Subsetted property(ies):} QUmlNamedElement::namespace_().
+
+    \b {Opposite property(ies):} QUmlInterface::ownedAttributes().
  */
 QUmlInterface *QUmlProperty::interface_() const
 {
@@ -332,6 +384,9 @@ QUmlInterface *QUmlProperty::interface_() const
     return _interface_;
 }
 
+/*!
+    Adjusts interface_ to \a interface_.
+ */
 void QUmlProperty::setInterface(QUmlInterface *interface_)
 {
     // This is a read-write association end
@@ -350,6 +405,8 @@ void QUmlProperty::setInterface(QUmlInterface *interface_)
 
 /*!
     If isComposite is true, the object containing the attribute is a container for the object or value contained in the attribute.This is a derived value, indicating whether the aggregation of the Property is composite or not.
+
+    \b {This is a derived property.}
  */
 bool QUmlProperty::isComposite() const
 {
@@ -358,6 +415,9 @@ bool QUmlProperty::isComposite() const
     return _aggregation == QtUml::AggregationKindComposite;
 }
 
+/*!
+    Adjusts isComposite to \a isComposite.
+ */
 void QUmlProperty::setComposite(bool isComposite)
 {
     // This is a read-write derived property
@@ -380,6 +440,9 @@ bool QUmlProperty::isDerived() const
     return _isDerived;
 }
 
+/*!
+    Adjusts isDerived to \a isDerived.
+ */
 void QUmlProperty::setDerived(bool isDerived)
 {
     // This is a read-write property
@@ -400,6 +463,9 @@ bool QUmlProperty::isDerivedUnion() const
     return _isDerivedUnion;
 }
 
+/*!
+    Adjusts isDerivedUnion to \a isDerivedUnion.
+ */
 void QUmlProperty::setDerivedUnion(bool isDerivedUnion)
 {
     // This is a read-write property
@@ -420,6 +486,9 @@ bool QUmlProperty::isID() const
     return _isID;
 }
 
+/*!
+    Adjusts isID to \a isID.
+ */
 void QUmlProperty::setID(bool isID)
 {
     // This is a read-write property
@@ -432,6 +501,8 @@ void QUmlProperty::setID(bool isID)
 
 /*!
     If true, the attribute may only be read, and not written.If isReadOnly is true, the attribute may not be written to after initialization.
+
+    \b {Redefined property(ies):} QUmlStructuralFeature::isReadOnly().
  */
 bool QUmlProperty::isReadOnly() const
 {
@@ -440,6 +511,9 @@ bool QUmlProperty::isReadOnly() const
     return _isReadOnly;
 }
 
+/*!
+    Adjusts isReadOnly to \a isReadOnly.
+ */
 void QUmlProperty::setReadOnly(bool isReadOnly)
 {
     // This is a read-write property
@@ -455,6 +529,8 @@ void QUmlProperty::setReadOnly(bool isReadOnly)
 
 /*!
     In the case where the property is one navigable end of a binary association with both ends navigable, this gives the other end.
+
+    \b {This is a derived property.}
  */
 QUmlProperty *QUmlProperty::opposite() const
 {
@@ -465,6 +541,9 @@ QUmlProperty *QUmlProperty::opposite() const
     return 0;
 }
 
+/*!
+    Adjusts opposite to \a opposite.
+ */
 void QUmlProperty::setOpposite(QUmlProperty *opposite)
 {
     // This is a read-write derived association end
@@ -479,6 +558,10 @@ void QUmlProperty::setOpposite(QUmlProperty *opposite)
 
 /*!
     References the owning association of this property, if any.
+
+    \b {Subsetted property(ies):} QUmlFeature::featuringClassifiers(), QUmlRedefinableElement::redefinitionContexts(), QUmlNamedElement::namespace_(), QUmlProperty::association().
+
+    \b {Opposite property(ies):} QUmlAssociation::ownedEnds().
  */
 QUmlAssociation *QUmlProperty::owningAssociation() const
 {
@@ -487,6 +570,9 @@ QUmlAssociation *QUmlProperty::owningAssociation() const
     return _owningAssociation;
 }
 
+/*!
+    Adjusts owningAssociation to \a owningAssociation.
+ */
 void QUmlProperty::setOwningAssociation(QUmlAssociation *owningAssociation)
 {
     // This is a read-write association end
@@ -514,6 +600,12 @@ void QUmlProperty::setOwningAssociation(QUmlAssociation *owningAssociation)
 
 /*!
     An optional list of ordered qualifier attributes for the end. If the list is empty, then the Association is not qualified.
+
+    \sa addQualifier(), removeQualifier()
+
+    \b {Subsetted property(ies):} QUmlElement::ownedElements().
+
+    \b {Opposite property(ies):} QUmlProperty::associationEnd().
  */
 const QList<QUmlProperty *> QUmlProperty::qualifiers() const
 {
@@ -522,6 +614,11 @@ const QList<QUmlProperty *> QUmlProperty::qualifiers() const
     return _qualifiers;
 }
 
+/*!
+    Adds \a qualifier to qualifiers.
+
+    \sa qualifiers(), removeQualifier()
+ */
 void QUmlProperty::addQualifier(QUmlProperty *qualifier)
 {
     // This is a read-write association end
@@ -542,6 +639,11 @@ void QUmlProperty::addQualifier(QUmlProperty *qualifier)
     }
 }
 
+/*!
+    Removes \a qualifier from qualifiers.
+
+    \sa qualifiers(), addQualifier()
+ */
 void QUmlProperty::removeQualifier(QUmlProperty *qualifier)
 {
     // This is a read-write association end
@@ -563,6 +665,10 @@ void QUmlProperty::removeQualifier(QUmlProperty *qualifier)
 
 /*!
     References the properties that are redefined by this property.
+
+    \sa addRedefinedProperty(), removeRedefinedProperty()
+
+    \b {Subsetted property(ies):} QUmlRedefinableElement::redefinedElements().
  */
 const QSet<QUmlProperty *> QUmlProperty::redefinedProperties() const
 {
@@ -571,6 +677,11 @@ const QSet<QUmlProperty *> QUmlProperty::redefinedProperties() const
     return _redefinedProperties;
 }
 
+/*!
+    Adds \a redefinedProperty to redefinedProperties.
+
+    \sa redefinedProperties(), removeRedefinedProperty()
+ */
 void QUmlProperty::addRedefinedProperty(QUmlProperty *redefinedProperty)
 {
     // This is a read-write association end
@@ -585,6 +696,11 @@ void QUmlProperty::addRedefinedProperty(QUmlProperty *redefinedProperty)
     }
 }
 
+/*!
+    Removes \a redefinedProperty from redefinedProperties.
+
+    \sa redefinedProperties(), addRedefinedProperty()
+ */
 void QUmlProperty::removeRedefinedProperty(QUmlProperty *redefinedProperty)
 {
     // This is a read-write association end
@@ -599,6 +715,8 @@ void QUmlProperty::removeRedefinedProperty(QUmlProperty *redefinedProperty)
 
 /*!
     References the properties of which this property is constrained to be a subset.
+
+    \sa addSubsettedProperty(), removeSubsettedProperty()
  */
 const QSet<QUmlProperty *> QUmlProperty::subsettedProperties() const
 {
@@ -607,6 +725,11 @@ const QSet<QUmlProperty *> QUmlProperty::subsettedProperties() const
     return _subsettedProperties;
 }
 
+/*!
+    Adds \a subsettedProperty to subsettedProperties.
+
+    \sa subsettedProperties(), removeSubsettedProperty()
+ */
 void QUmlProperty::addSubsettedProperty(QUmlProperty *subsettedProperty)
 {
     // This is a read-write association end
@@ -618,6 +741,11 @@ void QUmlProperty::addSubsettedProperty(QUmlProperty *subsettedProperty)
     }
 }
 
+/*!
+    Removes \a subsettedProperty from subsettedProperties.
+
+    \sa subsettedProperties(), addSubsettedProperty()
+ */
 void QUmlProperty::removeSubsettedProperty(QUmlProperty *subsettedProperty)
 {
     // This is a read-write association end

@@ -73,6 +73,10 @@ QT_BEGIN_NAMESPACE
 
     \brief An accept call action is an accept event action representing the receipt of a synchronous call request. In addition to the normal operation parameters, the action produces an output that is needed later to supply the information to the reply action necessary to return control to the caller. This action is for synchronous calls. If it is used to handle an asynchronous call, execution of the subsequent reply action will complete immediately with no effects.
  */
+
+/*!
+    Creates a new QUmlAcceptCallAction. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlAcceptCallAction::QUmlAcceptCallAction(bool createQModelingObject) :
     QUmlAcceptEventAction(false),
     _returnInformation(0)
@@ -81,6 +85,9 @@ QUmlAcceptCallAction::QUmlAcceptCallAction(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlAcceptCallActionObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlAcceptCallAction.
+*/
 QModelingElement *QUmlAcceptCallAction::clone() const
 {
     QUmlAcceptCallAction *c = new QUmlAcceptCallAction;
@@ -128,6 +135,8 @@ QModelingElement *QUmlAcceptCallAction::clone() const
 
 /*!
     Pin where a value is placed containing sufficient information to perform a subsequent reply and return control to the caller. The contents of this value are opaque. It can be passed and copied but it cannot be manipulated by the model.
+
+    \b {Subsetted property(ies):} QUmlAction::outputs().
  */
 QUmlOutputPin *QUmlAcceptCallAction::returnInformation() const
 {
@@ -136,6 +145,9 @@ QUmlOutputPin *QUmlAcceptCallAction::returnInformation() const
     return _returnInformation;
 }
 
+/*!
+    Adjusts returnInformation to \a returnInformation.
+ */
 void QUmlAcceptCallAction::setReturnInformation(QUmlOutputPin *returnInformation)
 {
     // This is a read-write association end

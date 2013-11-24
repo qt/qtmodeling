@@ -60,6 +60,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A trigger specification may be qualified by the port on which the event occurred.A trigger relates an event to a behavior that may affect an instance of the classifier.
  */
+
+/*!
+    Creates a new QUmlTrigger. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlTrigger::QUmlTrigger(bool createQModelingObject) :
     _event_(0)
 {
@@ -67,6 +71,9 @@ QUmlTrigger::QUmlTrigger(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlTriggerObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlTrigger.
+*/
 QModelingElement *QUmlTrigger::clone() const
 {
     QUmlTrigger *c = new QUmlTrigger;
@@ -97,6 +104,9 @@ QUmlEvent *QUmlTrigger::event_() const
     return _event_;
 }
 
+/*!
+    Adjusts event_ to \a event_.
+ */
 void QUmlTrigger::setEvent(QUmlEvent *event_)
 {
     // This is a read-write association end
@@ -110,6 +120,8 @@ void QUmlTrigger::setEvent(QUmlEvent *event_)
 
 /*!
     A optional port of the receiver object on which the behavioral feature is invoked.
+
+    \sa addPort(), removePort()
  */
 const QSet<QUmlPort *> QUmlTrigger::ports() const
 {
@@ -118,6 +130,11 @@ const QSet<QUmlPort *> QUmlTrigger::ports() const
     return _ports;
 }
 
+/*!
+    Adds \a port to ports.
+
+    \sa ports(), removePort()
+ */
 void QUmlTrigger::addPort(QUmlPort *port)
 {
     // This is a read-write association end
@@ -129,6 +146,11 @@ void QUmlTrigger::addPort(QUmlPort *port)
     }
 }
 
+/*!
+    Removes \a port from ports.
+
+    \sa ports(), addPort()
+ */
 void QUmlTrigger::removePort(QUmlPort *port)
 {
     // This is a read-write association end

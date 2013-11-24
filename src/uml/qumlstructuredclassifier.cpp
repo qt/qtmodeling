@@ -77,11 +77,20 @@ QT_BEGIN_NAMESPACE
     \inmodule QtUml
 
     \brief A structured classifier is an abstract metaclass that represents any classifier whose behavior can be fully or partly described by the collaboration of owned or referenced instances.
+
+    \b {QUmlStructuredClassifier is an abstract class.}
  */
+
+/*!
+    Creates a new QUmlStructuredClassifier.
+*/
 QUmlStructuredClassifier::QUmlStructuredClassifier()
 {
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlStructuredClassifier.
+*/
 QModelingElement *QUmlStructuredClassifier::clone() const
 {
     QUmlStructuredClassifier *c = new QUmlStructuredClassifier;
@@ -139,6 +148,10 @@ QModelingElement *QUmlStructuredClassifier::clone() const
 
 /*!
     References the properties owned by the classifier.
+
+    \sa addOwnedAttribute(), removeOwnedAttribute()
+
+    \b {Subsetted property(ies):} QUmlClassifier::attributes(), QUmlNamespace::ownedMembers(), QUmlStructuredClassifier::roles().
  */
 const QList<QUmlProperty *> QUmlStructuredClassifier::ownedAttributes() const
 {
@@ -147,6 +160,11 @@ const QList<QUmlProperty *> QUmlStructuredClassifier::ownedAttributes() const
     return _ownedAttributes;
 }
 
+/*!
+    Adds \a ownedAttribute to ownedAttributes.
+
+    \sa ownedAttributes(), removeOwnedAttribute()
+ */
 void QUmlStructuredClassifier::addOwnedAttribute(QUmlProperty *ownedAttribute)
 {
     // This is a read-write association end
@@ -164,6 +182,11 @@ void QUmlStructuredClassifier::addOwnedAttribute(QUmlProperty *ownedAttribute)
     }
 }
 
+/*!
+    Removes \a ownedAttribute from ownedAttributes.
+
+    \sa ownedAttributes(), addOwnedAttribute()
+ */
 void QUmlStructuredClassifier::removeOwnedAttribute(QUmlProperty *ownedAttribute)
 {
     // This is a read-write association end
@@ -182,6 +205,10 @@ void QUmlStructuredClassifier::removeOwnedAttribute(QUmlProperty *ownedAttribute
 
 /*!
     References the connectors owned by the classifier.
+
+    \sa addOwnedConnector(), removeOwnedConnector()
+
+    \b {Subsetted property(ies):} QUmlClassifier::features(), QUmlNamespace::ownedMembers().
  */
 const QSet<QUmlConnector *> QUmlStructuredClassifier::ownedConnectors() const
 {
@@ -190,6 +217,11 @@ const QSet<QUmlConnector *> QUmlStructuredClassifier::ownedConnectors() const
     return _ownedConnectors;
 }
 
+/*!
+    Adds \a ownedConnector to ownedConnectors.
+
+    \sa ownedConnectors(), removeOwnedConnector()
+ */
 void QUmlStructuredClassifier::addOwnedConnector(QUmlConnector *ownedConnector)
 {
     // This is a read-write association end
@@ -206,6 +238,11 @@ void QUmlStructuredClassifier::addOwnedConnector(QUmlConnector *ownedConnector)
     }
 }
 
+/*!
+    Removes \a ownedConnector from ownedConnectors.
+
+    \sa ownedConnectors(), addOwnedConnector()
+ */
 void QUmlStructuredClassifier::removeOwnedConnector(QUmlConnector *ownedConnector)
 {
     // This is a read-write association end
@@ -223,6 +260,8 @@ void QUmlStructuredClassifier::removeOwnedConnector(QUmlConnector *ownedConnecto
 
 /*!
     References the properties specifying instances that the classifier owns by composition. This association is derived, selecting those owned properties where isComposite is true.
+
+    \b {This is a read-only derived property.}
  */
 const QSet<QUmlProperty *> QUmlStructuredClassifier::parts() const
 {
@@ -237,6 +276,11 @@ const QSet<QUmlProperty *> QUmlStructuredClassifier::parts() const
     return parts_;
 }
 
+/*!
+    Adds \a part to parts.
+
+    \sa parts(), removePart()
+ */
 void QUmlStructuredClassifier::addPart(QUmlProperty *part)
 {
     // This is a read-only derived association end
@@ -249,6 +293,11 @@ void QUmlStructuredClassifier::addPart(QUmlProperty *part)
     }
 }
 
+/*!
+    Removes \a part from parts.
+
+    \sa parts(), addPart()
+ */
 void QUmlStructuredClassifier::removePart(QUmlProperty *part)
 {
     // This is a read-only derived association end
@@ -263,6 +312,10 @@ void QUmlStructuredClassifier::removePart(QUmlProperty *part)
 
 /*!
     References the roles that instances may play in this classifier.
+
+    \b {This is a read-only derived union property.}
+
+    \b {Subsetted property(ies):} QUmlNamespace::members().
  */
 const QSet<QUmlConnectableElement *> QUmlStructuredClassifier::roles() const
 {
@@ -271,6 +324,11 @@ const QSet<QUmlConnectableElement *> QUmlStructuredClassifier::roles() const
     return _roles;
 }
 
+/*!
+    Adds \a role to roles.
+
+    \sa roles(), removeRole()
+ */
 void QUmlStructuredClassifier::addRole(QUmlConnectableElement *role)
 {
     // This is a read-only derived union association end
@@ -285,6 +343,11 @@ void QUmlStructuredClassifier::addRole(QUmlConnectableElement *role)
     }
 }
 
+/*!
+    Removes \a role from roles.
+
+    \sa roles(), addRole()
+ */
 void QUmlStructuredClassifier::removeRole(QUmlConnectableElement *role)
 {
     // This is a read-only derived union association end

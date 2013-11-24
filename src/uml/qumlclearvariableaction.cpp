@@ -73,12 +73,19 @@ QT_BEGIN_NAMESPACE
 
     \brief A clear variable action is a variable action that removes all values of a variable.
  */
+
+/*!
+    Creates a new QUmlClearVariableAction. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlClearVariableAction::QUmlClearVariableAction(bool createQModelingObject)
 {
     if (createQModelingObject)
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlClearVariableActionObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlClearVariableAction.
+*/
 QModelingElement *QUmlClearVariableAction::clone() const
 {
     QUmlClearVariableAction *c = new QUmlClearVariableAction;

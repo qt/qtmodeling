@@ -71,6 +71,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A model captures a view of a physical system. It is an abstraction of the physical system, with a certain purpose. This purpose determines what is to be included in the model and what is irrelevant. Thus the model completely describes those aspects of the physical system that are relevant to the purpose of the model, at the appropriate level of detail.
  */
+
+/*!
+    Creates a new QUmlModel. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlModel::QUmlModel(bool createQModelingObject) :
     QUmlPackage(false)
 {
@@ -78,6 +82,9 @@ QUmlModel::QUmlModel(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlModelObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlModel.
+*/
 QModelingElement *QUmlModel::clone() const
 {
     QUmlModel *c = new QUmlModel;
@@ -128,6 +135,9 @@ QString QUmlModel::viewpoint() const
     return _viewpoint;
 }
 
+/*!
+    Adjusts viewpoint to \a viewpoint.
+ */
 void QUmlModel::setViewpoint(QString viewpoint)
 {
     // This is a read-write property

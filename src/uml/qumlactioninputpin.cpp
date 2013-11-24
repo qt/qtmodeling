@@ -74,6 +74,10 @@ QT_BEGIN_NAMESPACE
 
     \brief An action input pin is a kind of pin that executes an action to determine the values to input to another.
  */
+
+/*!
+    Creates a new QUmlActionInputPin. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlActionInputPin::QUmlActionInputPin(bool createQModelingObject) :
     QUmlInputPin(false),
     _fromAction(0)
@@ -82,6 +86,9 @@ QUmlActionInputPin::QUmlActionInputPin(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlActionInputPinObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlActionInputPin.
+*/
 QModelingElement *QUmlActionInputPin::clone() const
 {
     QUmlActionInputPin *c = new QUmlActionInputPin;
@@ -134,6 +141,8 @@ QModelingElement *QUmlActionInputPin::clone() const
 
 /*!
     The action used to provide values.
+
+    \b {Subsetted property(ies):} QUmlElement::ownedElements().
  */
 QUmlAction *QUmlActionInputPin::fromAction() const
 {
@@ -142,6 +151,9 @@ QUmlAction *QUmlActionInputPin::fromAction() const
     return _fromAction;
 }
 
+/*!
+    Adjusts fromAction to \a fromAction.
+ */
 void QUmlActionInputPin::setFromAction(QUmlAction *fromAction)
 {
     // This is a read-write association end

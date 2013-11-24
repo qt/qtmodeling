@@ -75,12 +75,19 @@ QT_BEGIN_NAMESPACE
 
     \brief A destroy link action is a write link action that destroys links and link objects.
  */
+
+/*!
+    Creates a new QUmlDestroyLinkAction. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlDestroyLinkAction::QUmlDestroyLinkAction(bool createQModelingObject)
 {
     if (createQModelingObject)
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlDestroyLinkActionObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlDestroyLinkAction.
+*/
 QModelingElement *QUmlDestroyLinkAction::clone() const
 {
     QUmlDestroyLinkAction *c = new QUmlDestroyLinkAction;
@@ -125,6 +132,10 @@ QModelingElement *QUmlDestroyLinkAction::clone() const
 
 /*!
     Specifies ends of association and inputs.
+
+    \sa addEndData(), removeEndData()
+
+    \b {Redefined property(ies):} QUmlLinkAction::endData().
  */
 const QSet<QUmlLinkEndDestructionData *> QUmlDestroyLinkAction::endData() const
 {
@@ -133,6 +144,11 @@ const QSet<QUmlLinkEndDestructionData *> QUmlDestroyLinkAction::endData() const
     return _endData;
 }
 
+/*!
+    Adds \a endData to endData.
+
+    \sa endData(), removeEndData()
+ */
 void QUmlDestroyLinkAction::addEndData(QUmlLinkEndDestructionData *endData)
 {
     // This is a read-write association end
@@ -148,6 +164,11 @@ void QUmlDestroyLinkAction::addEndData(QUmlLinkEndDestructionData *endData)
     }
 }
 
+/*!
+    Removes \a endData from endData.
+
+    \sa endData(), addEndData()
+ */
 void QUmlDestroyLinkAction::removeEndData(QUmlLinkEndDestructionData *endData)
 {
     // This is a read-write association end

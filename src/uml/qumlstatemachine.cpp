@@ -94,12 +94,19 @@ QT_BEGIN_NAMESPACE
 
     \brief State machines can be used to express the behavior of part of a system. Behavior is modeled as a traversal of a graph of state nodes interconnected by one or more joined transition arcs that are triggered by the dispatching of series of (event) occurrences. During this traversal, the state machine executes a series of activities associated with various elements of the state machine.
  */
+
+/*!
+    Creates a new QUmlStateMachine. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlStateMachine::QUmlStateMachine(bool createQModelingObject)
 {
     if (createQModelingObject)
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlStateMachineObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlStateMachine.
+*/
 QModelingElement *QUmlStateMachine::clone() const
 {
     QUmlStateMachine *c = new QUmlStateMachine;
@@ -189,6 +196,12 @@ QModelingElement *QUmlStateMachine::clone() const
 
 /*!
     The connection points defined for this state machine. They represent the interface of the state machine when used as part of submachine state.
+
+    \sa addConnectionPoint(), removeConnectionPoint()
+
+    \b {Subsetted property(ies):} QUmlNamespace::ownedMembers().
+
+    \b {Opposite property(ies):} QUmlPseudostate::stateMachine().
  */
 const QSet<QUmlPseudostate *> QUmlStateMachine::connectionPoints() const
 {
@@ -197,6 +210,11 @@ const QSet<QUmlPseudostate *> QUmlStateMachine::connectionPoints() const
     return _connectionPoints;
 }
 
+/*!
+    Adds \a connectionPoint to connectionPoints.
+
+    \sa connectionPoints(), removeConnectionPoint()
+ */
 void QUmlStateMachine::addConnectionPoint(QUmlPseudostate *connectionPoint)
 {
     // This is a read-write association end
@@ -217,6 +235,11 @@ void QUmlStateMachine::addConnectionPoint(QUmlPseudostate *connectionPoint)
     }
 }
 
+/*!
+    Removes \a connectionPoint from connectionPoints.
+
+    \sa connectionPoints(), addConnectionPoint()
+ */
 void QUmlStateMachine::removeConnectionPoint(QUmlPseudostate *connectionPoint)
 {
     // This is a read-write association end
@@ -238,6 +261,10 @@ void QUmlStateMachine::removeConnectionPoint(QUmlPseudostate *connectionPoint)
 
 /*!
     The state machines of which this is an extension.
+
+    \sa addExtendedStateMachine(), removeExtendedStateMachine()
+
+    \b {Redefined property(ies):} QUmlBehavior::redefinedBehaviors().
  */
 const QSet<QUmlStateMachine *> QUmlStateMachine::extendedStateMachines() const
 {
@@ -246,6 +273,11 @@ const QSet<QUmlStateMachine *> QUmlStateMachine::extendedStateMachines() const
     return _extendedStateMachines;
 }
 
+/*!
+    Adds \a extendedStateMachine to extendedStateMachines.
+
+    \sa extendedStateMachines(), removeExtendedStateMachine()
+ */
 void QUmlStateMachine::addExtendedStateMachine(QUmlStateMachine *extendedStateMachine)
 {
     // This is a read-write association end
@@ -260,6 +292,11 @@ void QUmlStateMachine::addExtendedStateMachine(QUmlStateMachine *extendedStateMa
     }
 }
 
+/*!
+    Removes \a extendedStateMachine from extendedStateMachines.
+
+    \sa extendedStateMachines(), addExtendedStateMachine()
+ */
 void QUmlStateMachine::removeExtendedStateMachine(QUmlStateMachine *extendedStateMachine)
 {
     // This is a read-write association end
@@ -274,6 +311,12 @@ void QUmlStateMachine::removeExtendedStateMachine(QUmlStateMachine *extendedStat
 
 /*!
     The regions owned directly by the state machine.
+
+    \sa addRegion(), removeRegion()
+
+    \b {Subsetted property(ies):} QUmlNamespace::ownedMembers().
+
+    \b {Opposite property(ies):} QUmlRegion::stateMachine().
  */
 const QSet<QUmlRegion *> QUmlStateMachine::regions() const
 {
@@ -282,6 +325,11 @@ const QSet<QUmlRegion *> QUmlStateMachine::regions() const
     return _regions;
 }
 
+/*!
+    Adds \a region to regions.
+
+    \sa regions(), removeRegion()
+ */
 void QUmlStateMachine::addRegion(QUmlRegion *region)
 {
     // This is a read-write association end
@@ -302,6 +350,11 @@ void QUmlStateMachine::addRegion(QUmlRegion *region)
     }
 }
 
+/*!
+    Removes \a region from regions.
+
+    \sa regions(), addRegion()
+ */
 void QUmlStateMachine::removeRegion(QUmlRegion *region)
 {
     // This is a read-write association end
@@ -323,6 +376,10 @@ void QUmlStateMachine::removeRegion(QUmlRegion *region)
 
 /*!
     References the submachine(s) in case of a submachine state. Multiple machines are referenced in case of a concurrent state.
+
+    \sa addSubmachineState(), removeSubmachineState()
+
+    \b {Opposite property(ies):} QUmlState::submachine().
  */
 const QSet<QUmlState *> QUmlStateMachine::submachineStates() const
 {
@@ -331,6 +388,11 @@ const QSet<QUmlState *> QUmlStateMachine::submachineStates() const
     return _submachineStates;
 }
 
+/*!
+    Adds \a submachineState to submachineStates.
+
+    \sa submachineStates(), removeSubmachineState()
+ */
 void QUmlStateMachine::addSubmachineState(QUmlState *submachineState)
 {
     // This is a read-write association end
@@ -347,6 +409,11 @@ void QUmlStateMachine::addSubmachineState(QUmlState *submachineState)
     }
 }
 
+/*!
+    Removes \a submachineState from submachineStates.
+
+    \sa submachineStates(), addSubmachineState()
+ */
 void QUmlStateMachine::removeSubmachineState(QUmlState *submachineState)
 {
     // This is a read-write association end

@@ -51,12 +51,19 @@ QT_BEGIN_NAMESPACE
 
     \brief A comment is a textual annotation that can be attached to a set of elements.
  */
+
+/*!
+    Creates a new QUmlComment. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlComment::QUmlComment(bool createQModelingObject)
 {
     if (createQModelingObject)
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlCommentObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlComment.
+*/
 QModelingElement *QUmlComment::clone() const
 {
     QUmlComment *c = new QUmlComment;
@@ -72,6 +79,8 @@ QModelingElement *QUmlComment::clone() const
 
 /*!
     References the Element(s) being commented.
+
+    \sa addAnnotatedElement(), removeAnnotatedElement()
  */
 const QSet<QUmlElement *> QUmlComment::annotatedElements() const
 {
@@ -80,6 +89,11 @@ const QSet<QUmlElement *> QUmlComment::annotatedElements() const
     return _annotatedElements;
 }
 
+/*!
+    Adds \a annotatedElement to annotatedElements.
+
+    \sa annotatedElements(), removeAnnotatedElement()
+ */
 void QUmlComment::addAnnotatedElement(QUmlElement *annotatedElement)
 {
     // This is a read-write association end
@@ -91,6 +105,11 @@ void QUmlComment::addAnnotatedElement(QUmlElement *annotatedElement)
     }
 }
 
+/*!
+    Removes \a annotatedElement from annotatedElements.
+
+    \sa annotatedElements(), addAnnotatedElement()
+ */
 void QUmlComment::removeAnnotatedElement(QUmlElement *annotatedElement)
 {
     // This is a read-write association end
@@ -110,6 +129,9 @@ QString QUmlComment::body() const
     return _body;
 }
 
+/*!
+    Adjusts body to \a body.
+ */
 void QUmlComment::setBody(QString body)
 {
     // This is a read-write property

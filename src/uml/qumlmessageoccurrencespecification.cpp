@@ -64,6 +64,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A message occurrence specification pecifies the occurrence of message events, such as sending and receiving of signals or invoking or receiving of operation calls. A message occurrence specification is a kind of message end. Messages are generated either by synchronous operation calls or asynchronous signal sends. They are received by the execution of corresponding accept event actions.
  */
+
+/*!
+    Creates a new QUmlMessageOccurrenceSpecification. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlMessageOccurrenceSpecification::QUmlMessageOccurrenceSpecification(bool createQModelingObject) :
     QUmlOccurrenceSpecification(false)
 {
@@ -71,6 +75,9 @@ QUmlMessageOccurrenceSpecification::QUmlMessageOccurrenceSpecification(bool crea
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlMessageOccurrenceSpecificationObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlMessageOccurrenceSpecification.
+*/
 QModelingElement *QUmlMessageOccurrenceSpecification::clone() const
 {
     QUmlMessageOccurrenceSpecification *c = new QUmlMessageOccurrenceSpecification;

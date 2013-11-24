@@ -74,6 +74,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A send signal action is an action that creates a signal instance from its inputs, and transmits it to the target object, where it may cause the firing of a state machine transition or the execution of an activity. The argument values are available to the execution of associated behaviors. The requestor continues execution immediately. Any reply message is ignored and is not transmitted to the requestor. If the input is already a signal instance, use a send object action.
  */
+
+/*!
+    Creates a new QUmlSendSignalAction. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlSendSignalAction::QUmlSendSignalAction(bool createQModelingObject) :
     _signal(0),
     _target(0)
@@ -82,6 +86,9 @@ QUmlSendSignalAction::QUmlSendSignalAction(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlSendSignalActionObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlSendSignalAction.
+*/
 QModelingElement *QUmlSendSignalAction::clone() const
 {
     QUmlSendSignalAction *c = new QUmlSendSignalAction;
@@ -138,6 +145,9 @@ QUmlSignal *QUmlSendSignalAction::signal() const
     return _signal;
 }
 
+/*!
+    Adjusts signal to \a signal.
+ */
 void QUmlSendSignalAction::setSignal(QUmlSignal *signal)
 {
     // This is a read-write association end
@@ -151,6 +161,8 @@ void QUmlSendSignalAction::setSignal(QUmlSignal *signal)
 
 /*!
     The target object to which the signal is sent.
+
+    \b {Subsetted property(ies):} QUmlAction::inputs().
  */
 QUmlInputPin *QUmlSendSignalAction::target() const
 {
@@ -159,6 +171,9 @@ QUmlInputPin *QUmlSendSignalAction::target() const
     return _target;
 }
 
+/*!
+    Adjusts target to \a target.
+ */
 void QUmlSendSignalAction::setTarget(QUmlInputPin *target)
 {
     // This is a read-write association end

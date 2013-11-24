@@ -76,6 +76,10 @@ QT_BEGIN_NAMESPACE
 
     \brief An expansion region is a structured activity region that executes multiple times corresponding to elements of an input collection.
  */
+
+/*!
+    Creates a new QUmlExpansionRegion. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlExpansionRegion::QUmlExpansionRegion(bool createQModelingObject) :
     QUmlStructuredActivityNode(false),
     _mode(QtUml::ExpansionKindIterative)
@@ -84,6 +88,9 @@ QUmlExpansionRegion::QUmlExpansionRegion(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlExpansionRegionObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlExpansionRegion.
+*/
 QModelingElement *QUmlExpansionRegion::clone() const
 {
     QUmlExpansionRegion *c = new QUmlExpansionRegion;
@@ -146,6 +153,10 @@ QModelingElement *QUmlExpansionRegion::clone() const
 
 /*!
     An object node that holds a separate element of the input collection during each of the multiple executions of the region.
+
+    \sa addInputElement(), removeInputElement()
+
+    \b {Opposite property(ies):} QUmlExpansionNode::regionAsInput().
  */
 const QSet<QUmlExpansionNode *> QUmlExpansionRegion::inputElements() const
 {
@@ -154,6 +165,11 @@ const QSet<QUmlExpansionNode *> QUmlExpansionRegion::inputElements() const
     return _inputElements;
 }
 
+/*!
+    Adds \a inputElement to inputElements.
+
+    \sa inputElements(), removeInputElement()
+ */
 void QUmlExpansionRegion::addInputElement(QUmlExpansionNode *inputElement)
 {
     // This is a read-write association end
@@ -170,6 +186,11 @@ void QUmlExpansionRegion::addInputElement(QUmlExpansionNode *inputElement)
     }
 }
 
+/*!
+    Removes \a inputElement from inputElements.
+
+    \sa inputElements(), addInputElement()
+ */
 void QUmlExpansionRegion::removeInputElement(QUmlExpansionNode *inputElement)
 {
     // This is a read-write association end
@@ -194,6 +215,9 @@ QtUml::ExpansionKind QUmlExpansionRegion::mode() const
     return _mode;
 }
 
+/*!
+    Adjusts mode to \a mode.
+ */
 void QUmlExpansionRegion::setMode(QtUml::ExpansionKind mode)
 {
     // This is a read-write property
@@ -206,6 +230,10 @@ void QUmlExpansionRegion::setMode(QtUml::ExpansionKind mode)
 
 /*!
     An object node that accepts a separate element of the output collection during each of the multiple executions of the region. The values are formed into a collection that is available when the execution of the region is complete.
+
+    \sa addOutputElement(), removeOutputElement()
+
+    \b {Opposite property(ies):} QUmlExpansionNode::regionAsOutput().
  */
 const QSet<QUmlExpansionNode *> QUmlExpansionRegion::outputElements() const
 {
@@ -214,6 +242,11 @@ const QSet<QUmlExpansionNode *> QUmlExpansionRegion::outputElements() const
     return _outputElements;
 }
 
+/*!
+    Adds \a outputElement to outputElements.
+
+    \sa outputElements(), removeOutputElement()
+ */
 void QUmlExpansionRegion::addOutputElement(QUmlExpansionNode *outputElement)
 {
     // This is a read-write association end
@@ -230,6 +263,11 @@ void QUmlExpansionRegion::addOutputElement(QUmlExpansionNode *outputElement)
     }
 }
 
+/*!
+    Removes \a outputElement from outputElements.
+
+    \sa outputElements(), addOutputElement()
+ */
 void QUmlExpansionRegion::removeOutputElement(QUmlExpansionNode *outputElement)
 {
     // This is a read-write association end

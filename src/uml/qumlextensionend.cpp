@@ -75,6 +75,10 @@ QT_BEGIN_NAMESPACE
 
     \brief An extension end is used to tie an extension to a stereotype when extending a metaclass.The default multiplicity of an extension end is 0..1.
  */
+
+/*!
+    Creates a new QUmlExtensionEnd. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlExtensionEnd::QUmlExtensionEnd(bool createQModelingObject) :
     QUmlProperty(false),
     _type(0)
@@ -83,6 +87,9 @@ QUmlExtensionEnd::QUmlExtensionEnd(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlExtensionEndObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlExtensionEnd.
+*/
 QModelingElement *QUmlExtensionEnd::clone() const
 {
     QUmlExtensionEnd *c = new QUmlExtensionEnd;
@@ -142,6 +149,10 @@ QModelingElement *QUmlExtensionEnd::clone() const
 
 /*!
     This redefinition changes the default multiplicity of association ends, since model elements are usually extended by 0 or 1 instance of the extension stereotype.
+
+    \b {This is a derived property.}
+
+    \b {Redefined property(ies):} QUmlMultiplicityElement::lower().
  */
 int QUmlExtensionEnd::lower() const
 {
@@ -152,6 +163,9 @@ int QUmlExtensionEnd::lower() const
     return int();
 }
 
+/*!
+    Adjusts lower to \a lower.
+ */
 void QUmlExtensionEnd::setLower(int lower)
 {
     // This is a read-write derived property
@@ -169,6 +183,8 @@ void QUmlExtensionEnd::setLower(int lower)
 
 /*!
     References the type of the ExtensionEnd. Note that this association restricts the possible types of an ExtensionEnd to only be Stereotypes.
+
+    \b {Redefined property(ies):} QUmlTypedElement::type().
  */
 QUmlStereotype *QUmlExtensionEnd::type() const
 {
@@ -177,6 +193,9 @@ QUmlStereotype *QUmlExtensionEnd::type() const
     return _type;
 }
 
+/*!
+    Adjusts type to \a type.
+ */
 void QUmlExtensionEnd::setType(QUmlStereotype *type)
 {
     // This is a read-write association end

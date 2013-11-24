@@ -87,7 +87,13 @@ QT_BEGIN_NAMESPACE
     \inmodule QtUml
 
     \brief Behavior is a specification of how its context classifier changes state over time. This specification may be either a definition of possible behavior execution or emergent behavior, or a selective illustration of an interesting subset of possible executions. The latter form is typically used for capturing examples, such as a trace of a particular execution.A behavior owns zero or more parameter sets.
+
+    \b {QUmlBehavior is an abstract class.}
  */
+
+/*!
+    Creates a new QUmlBehavior.
+*/
 QUmlBehavior::QUmlBehavior() :
     QUmlClass(false),
     _isReentrant(true),
@@ -95,6 +101,9 @@ QUmlBehavior::QUmlBehavior() :
 {
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlBehavior.
+*/
 QModelingElement *QUmlBehavior::clone() const
 {
     QUmlBehavior *c = new QUmlBehavior;
@@ -178,6 +187,10 @@ QModelingElement *QUmlBehavior::clone() const
 
 /*!
     The classifier that is the context for the execution of the behavior. If the behavior is owned by a BehavioredClassifier, that classifier is the context. Otherwise, the context is the first BehavioredClassifier reached by following the chain of owner relationships. For example, following this algorithm, the context of an entry action in a state machine is the classifier that owns the state machine. The features of the context classifier as well as the elements visible to the context classifier are visible to the behavior.
+
+    \b {This is a read-only derived property.}
+
+    \b {Subsetted property(ies):} QUmlRedefinableElement::redefinitionContexts().
  */
 QUmlBehavioredClassifier *QUmlBehavior::context() const
 {
@@ -188,6 +201,9 @@ QUmlBehavioredClassifier *QUmlBehavior::context() const
     return 0;
 }
 
+/*!
+    Adjusts context to \a context.
+ */
 void QUmlBehavior::setContext(QUmlBehavioredClassifier *context)
 {
     // This is a read-only derived association end
@@ -218,6 +234,9 @@ bool QUmlBehavior::isReentrant() const
     return _isReentrant;
 }
 
+/*!
+    Adjusts isReentrant to \a isReentrant.
+ */
 void QUmlBehavior::setReentrant(bool isReentrant)
 {
     // This is a read-write property
@@ -230,6 +249,10 @@ void QUmlBehavior::setReentrant(bool isReentrant)
 
 /*!
     References a list of parameters to the behavior which describes the order and type of arguments that can be given when the behavior is invoked and of the values which will be returned when the behavior completes its execution.
+
+    \sa addOwnedParameter(), removeOwnedParameter()
+
+    \b {Subsetted property(ies):} QUmlNamespace::ownedMembers().
  */
 const QList<QUmlParameter *> QUmlBehavior::ownedParameters() const
 {
@@ -238,6 +261,11 @@ const QList<QUmlParameter *> QUmlBehavior::ownedParameters() const
     return _ownedParameters;
 }
 
+/*!
+    Adds \a ownedParameter to ownedParameters.
+
+    \sa ownedParameters(), removeOwnedParameter()
+ */
 void QUmlBehavior::addOwnedParameter(QUmlParameter *ownedParameter)
 {
     // This is a read-write association end
@@ -253,6 +281,11 @@ void QUmlBehavior::addOwnedParameter(QUmlParameter *ownedParameter)
     }
 }
 
+/*!
+    Removes \a ownedParameter from ownedParameters.
+
+    \sa ownedParameters(), addOwnedParameter()
+ */
 void QUmlBehavior::removeOwnedParameter(QUmlParameter *ownedParameter)
 {
     // This is a read-write association end
@@ -269,6 +302,10 @@ void QUmlBehavior::removeOwnedParameter(QUmlParameter *ownedParameter)
 
 /*!
     The ParameterSets owned by this Behavior.
+
+    \sa addOwnedParameterSet(), removeOwnedParameterSet()
+
+    \b {Subsetted property(ies):} QUmlNamespace::ownedMembers().
  */
 const QSet<QUmlParameterSet *> QUmlBehavior::ownedParameterSets() const
 {
@@ -277,6 +314,11 @@ const QSet<QUmlParameterSet *> QUmlBehavior::ownedParameterSets() const
     return _ownedParameterSets;
 }
 
+/*!
+    Adds \a ownedParameterSet to ownedParameterSets.
+
+    \sa ownedParameterSets(), removeOwnedParameterSet()
+ */
 void QUmlBehavior::addOwnedParameterSet(QUmlParameterSet *ownedParameterSet)
 {
     // This is a read-write association end
@@ -292,6 +334,11 @@ void QUmlBehavior::addOwnedParameterSet(QUmlParameterSet *ownedParameterSet)
     }
 }
 
+/*!
+    Removes \a ownedParameterSet from ownedParameterSets.
+
+    \sa ownedParameterSets(), addOwnedParameterSet()
+ */
 void QUmlBehavior::removeOwnedParameterSet(QUmlParameterSet *ownedParameterSet)
 {
     // This is a read-write association end
@@ -308,6 +355,10 @@ void QUmlBehavior::removeOwnedParameterSet(QUmlParameterSet *ownedParameterSet)
 
 /*!
     An optional set of Constraints specifying what is fulfilled after the execution of the behavior is completed, if its precondition was fulfilled before its invocation.
+
+    \sa addPostcondition(), removePostcondition()
+
+    \b {Subsetted property(ies):} QUmlNamespace::ownedRules().
  */
 const QSet<QUmlConstraint *> QUmlBehavior::postconditions() const
 {
@@ -316,6 +367,11 @@ const QSet<QUmlConstraint *> QUmlBehavior::postconditions() const
     return _postconditions;
 }
 
+/*!
+    Adds \a postcondition to postconditions.
+
+    \sa postconditions(), removePostcondition()
+ */
 void QUmlBehavior::addPostcondition(QUmlConstraint *postcondition)
 {
     // This is a read-write association end
@@ -331,6 +387,11 @@ void QUmlBehavior::addPostcondition(QUmlConstraint *postcondition)
     }
 }
 
+/*!
+    Removes \a postcondition from postconditions.
+
+    \sa postconditions(), addPostcondition()
+ */
 void QUmlBehavior::removePostcondition(QUmlConstraint *postcondition)
 {
     // This is a read-write association end
@@ -347,6 +408,10 @@ void QUmlBehavior::removePostcondition(QUmlConstraint *postcondition)
 
 /*!
     An optional set of Constraints specifying what must be fulfilled when the behavior is invoked.
+
+    \sa addPrecondition(), removePrecondition()
+
+    \b {Subsetted property(ies):} QUmlNamespace::ownedRules().
  */
 const QSet<QUmlConstraint *> QUmlBehavior::preconditions() const
 {
@@ -355,6 +420,11 @@ const QSet<QUmlConstraint *> QUmlBehavior::preconditions() const
     return _preconditions;
 }
 
+/*!
+    Adds \a precondition to preconditions.
+
+    \sa preconditions(), removePrecondition()
+ */
 void QUmlBehavior::addPrecondition(QUmlConstraint *precondition)
 {
     // This is a read-write association end
@@ -370,6 +440,11 @@ void QUmlBehavior::addPrecondition(QUmlConstraint *precondition)
     }
 }
 
+/*!
+    Removes \a precondition from preconditions.
+
+    \sa preconditions(), addPrecondition()
+ */
 void QUmlBehavior::removePrecondition(QUmlConstraint *precondition)
 {
     // This is a read-write association end
@@ -386,6 +461,10 @@ void QUmlBehavior::removePrecondition(QUmlConstraint *precondition)
 
 /*!
     References a behavior that this behavior redefines. A subtype of Behavior may redefine any other subtype of Behavior. If the behavior implements a behavioral feature, it replaces the redefined behavior. If the behavior is a classifier behavior, it extends the redefined behavior.
+
+    \sa addRedefinedBehavior(), removeRedefinedBehavior()
+
+    \b {Subsetted property(ies):} QUmlClassifier::redefinedClassifiers().
  */
 const QSet<QUmlBehavior *> QUmlBehavior::redefinedBehaviors() const
 {
@@ -394,6 +473,11 @@ const QSet<QUmlBehavior *> QUmlBehavior::redefinedBehaviors() const
     return _redefinedBehaviors;
 }
 
+/*!
+    Adds \a redefinedBehavior to redefinedBehaviors.
+
+    \sa redefinedBehaviors(), removeRedefinedBehavior()
+ */
 void QUmlBehavior::addRedefinedBehavior(QUmlBehavior *redefinedBehavior)
 {
     // This is a read-write association end
@@ -408,6 +492,11 @@ void QUmlBehavior::addRedefinedBehavior(QUmlBehavior *redefinedBehavior)
     }
 }
 
+/*!
+    Removes \a redefinedBehavior from redefinedBehaviors.
+
+    \sa redefinedBehaviors(), addRedefinedBehavior()
+ */
 void QUmlBehavior::removeRedefinedBehavior(QUmlBehavior *redefinedBehavior)
 {
     // This is a read-write association end
@@ -422,6 +511,8 @@ void QUmlBehavior::removeRedefinedBehavior(QUmlBehavior *redefinedBehavior)
 
 /*!
     Designates a behavioral feature that the behavior implements. The behavioral feature must be owned by the classifier that owns the behavior or be inherited by it. The parameters of the behavioral feature and the implementing behavior must match. A behavior does not need to have a specification, in which case it either is the classifer behavior of a BehavioredClassifier or it can only be invoked by another behavior of the classifier.
+
+    \b {Opposite property(ies):} QUmlBehavioralFeature::methods().
  */
 QUmlBehavioralFeature *QUmlBehavior::specification() const
 {
@@ -430,6 +521,9 @@ QUmlBehavioralFeature *QUmlBehavior::specification() const
     return _specification;
 }
 
+/*!
+    Adjusts specification to \a specification.
+ */
 void QUmlBehavior::setSpecification(QUmlBehavioralFeature *specification)
 {
     // This is a read-write association end

@@ -71,11 +71,20 @@ QT_BEGIN_NAMESPACE
     \inmodule QtUml
 
     \brief WriteLinkAction is an abstract class for link actions that create and destroy links.
+
+    \b {QUmlWriteLinkAction is an abstract class.}
  */
+
+/*!
+    Creates a new QUmlWriteLinkAction.
+*/
 QUmlWriteLinkAction::QUmlWriteLinkAction()
 {
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlWriteLinkAction.
+*/
 QModelingElement *QUmlWriteLinkAction::clone() const
 {
     QUmlWriteLinkAction *c = new QUmlWriteLinkAction;

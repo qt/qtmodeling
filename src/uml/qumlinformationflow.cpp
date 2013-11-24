@@ -66,12 +66,19 @@ QT_BEGIN_NAMESPACE
 
     \brief An information flow specifies that one or more information items circulates from its sources to its targets. Information flows require some kind of information channel for transmitting information items from the source to the destination. An information channel is represented in various ways depending on the nature of its sources and targets. It may be represented by connectors, links, associations, or even dependencies. For example, if the source and destination are parts in some composite structure such as a collaboration, then the information channel is likely to be represented by a connector between them. Or, if the source and target are objects (which are a kind of instance specification), they may be represented by a link that joins the two, and so on.
  */
+
+/*!
+    Creates a new QUmlInformationFlow. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlInformationFlow::QUmlInformationFlow(bool createQModelingObject)
 {
     if (createQModelingObject)
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlInformationFlowObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlInformationFlow.
+*/
 QModelingElement *QUmlInformationFlow::clone() const
 {
     QUmlInformationFlow *c = new QUmlInformationFlow;
@@ -108,6 +115,8 @@ QModelingElement *QUmlInformationFlow::clone() const
 
 /*!
     Specifies the information items that may circulate on this information flow.
+
+    \sa addConveyed(), removeConveyed()
  */
 const QSet<QUmlClassifier *> QUmlInformationFlow::conveyed() const
 {
@@ -116,6 +125,11 @@ const QSet<QUmlClassifier *> QUmlInformationFlow::conveyed() const
     return _conveyed;
 }
 
+/*!
+    Adds \a conveyed to conveyed.
+
+    \sa conveyed(), removeConveyed()
+ */
 void QUmlInformationFlow::addConveyed(QUmlClassifier *conveyed)
 {
     // This is a read-write association end
@@ -127,6 +141,11 @@ void QUmlInformationFlow::addConveyed(QUmlClassifier *conveyed)
     }
 }
 
+/*!
+    Removes \a conveyed from conveyed.
+
+    \sa conveyed(), addConveyed()
+ */
 void QUmlInformationFlow::removeConveyed(QUmlClassifier *conveyed)
 {
     // This is a read-write association end
@@ -138,6 +157,10 @@ void QUmlInformationFlow::removeConveyed(QUmlClassifier *conveyed)
 
 /*!
     Defines from which source the conveyed InformationItems are initiated.
+
+    \sa addInformationSource(), removeInformationSource()
+
+    \b {Subsetted property(ies):} QUmlDirectedRelationship::sources().
  */
 const QSet<QUmlNamedElement *> QUmlInformationFlow::informationSources() const
 {
@@ -146,6 +169,11 @@ const QSet<QUmlNamedElement *> QUmlInformationFlow::informationSources() const
     return _informationSources;
 }
 
+/*!
+    Adds \a informationSource to informationSources.
+
+    \sa informationSources(), removeInformationSource()
+ */
 void QUmlInformationFlow::addInformationSource(QUmlNamedElement *informationSource)
 {
     // This is a read-write association end
@@ -160,6 +188,11 @@ void QUmlInformationFlow::addInformationSource(QUmlNamedElement *informationSour
     }
 }
 
+/*!
+    Removes \a informationSource from informationSources.
+
+    \sa informationSources(), addInformationSource()
+ */
 void QUmlInformationFlow::removeInformationSource(QUmlNamedElement *informationSource)
 {
     // This is a read-write association end
@@ -174,6 +207,10 @@ void QUmlInformationFlow::removeInformationSource(QUmlNamedElement *informationS
 
 /*!
     Defines to which target the conveyed InformationItems are directed.
+
+    \sa addInformationTarget(), removeInformationTarget()
+
+    \b {Subsetted property(ies):} QUmlDirectedRelationship::targets().
  */
 const QSet<QUmlNamedElement *> QUmlInformationFlow::informationTargets() const
 {
@@ -182,6 +219,11 @@ const QSet<QUmlNamedElement *> QUmlInformationFlow::informationTargets() const
     return _informationTargets;
 }
 
+/*!
+    Adds \a informationTarget to informationTargets.
+
+    \sa informationTargets(), removeInformationTarget()
+ */
 void QUmlInformationFlow::addInformationTarget(QUmlNamedElement *informationTarget)
 {
     // This is a read-write association end
@@ -196,6 +238,11 @@ void QUmlInformationFlow::addInformationTarget(QUmlNamedElement *informationTarg
     }
 }
 
+/*!
+    Removes \a informationTarget from informationTargets.
+
+    \sa informationTargets(), addInformationTarget()
+ */
 void QUmlInformationFlow::removeInformationTarget(QUmlNamedElement *informationTarget)
 {
     // This is a read-write association end
@@ -210,6 +257,8 @@ void QUmlInformationFlow::removeInformationTarget(QUmlNamedElement *informationT
 
 /*!
     Determines which Relationship will realize the specified flow
+
+    \sa addRealization(), removeRealization()
  */
 const QSet<QUmlRelationship *> QUmlInformationFlow::realizations() const
 {
@@ -218,6 +267,11 @@ const QSet<QUmlRelationship *> QUmlInformationFlow::realizations() const
     return _realizations;
 }
 
+/*!
+    Adds \a realization to realizations.
+
+    \sa realizations(), removeRealization()
+ */
 void QUmlInformationFlow::addRealization(QUmlRelationship *realization)
 {
     // This is a read-write association end
@@ -229,6 +283,11 @@ void QUmlInformationFlow::addRealization(QUmlRelationship *realization)
     }
 }
 
+/*!
+    Removes \a realization from realizations.
+
+    \sa realizations(), addRealization()
+ */
 void QUmlInformationFlow::removeRealization(QUmlRelationship *realization)
 {
     // This is a read-write association end
@@ -240,6 +299,8 @@ void QUmlInformationFlow::removeRealization(QUmlRelationship *realization)
 
 /*!
     Determines which ActivityEdges will realize the specified flow.
+
+    \sa addRealizingActivityEdge(), removeRealizingActivityEdge()
  */
 const QSet<QUmlActivityEdge *> QUmlInformationFlow::realizingActivityEdges() const
 {
@@ -248,6 +309,11 @@ const QSet<QUmlActivityEdge *> QUmlInformationFlow::realizingActivityEdges() con
     return _realizingActivityEdges;
 }
 
+/*!
+    Adds \a realizingActivityEdge to realizingActivityEdges.
+
+    \sa realizingActivityEdges(), removeRealizingActivityEdge()
+ */
 void QUmlInformationFlow::addRealizingActivityEdge(QUmlActivityEdge *realizingActivityEdge)
 {
     // This is a read-write association end
@@ -259,6 +325,11 @@ void QUmlInformationFlow::addRealizingActivityEdge(QUmlActivityEdge *realizingAc
     }
 }
 
+/*!
+    Removes \a realizingActivityEdge from realizingActivityEdges.
+
+    \sa realizingActivityEdges(), addRealizingActivityEdge()
+ */
 void QUmlInformationFlow::removeRealizingActivityEdge(QUmlActivityEdge *realizingActivityEdge)
 {
     // This is a read-write association end
@@ -270,6 +341,8 @@ void QUmlInformationFlow::removeRealizingActivityEdge(QUmlActivityEdge *realizin
 
 /*!
     Determines which Connectors will realize the specified flow.
+
+    \sa addRealizingConnector(), removeRealizingConnector()
  */
 const QSet<QUmlConnector *> QUmlInformationFlow::realizingConnectors() const
 {
@@ -278,6 +351,11 @@ const QSet<QUmlConnector *> QUmlInformationFlow::realizingConnectors() const
     return _realizingConnectors;
 }
 
+/*!
+    Adds \a realizingConnector to realizingConnectors.
+
+    \sa realizingConnectors(), removeRealizingConnector()
+ */
 void QUmlInformationFlow::addRealizingConnector(QUmlConnector *realizingConnector)
 {
     // This is a read-write association end
@@ -289,6 +367,11 @@ void QUmlInformationFlow::addRealizingConnector(QUmlConnector *realizingConnecto
     }
 }
 
+/*!
+    Removes \a realizingConnector from realizingConnectors.
+
+    \sa realizingConnectors(), addRealizingConnector()
+ */
 void QUmlInformationFlow::removeRealizingConnector(QUmlConnector *realizingConnector)
 {
     // This is a read-write association end
@@ -300,6 +383,8 @@ void QUmlInformationFlow::removeRealizingConnector(QUmlConnector *realizingConne
 
 /*!
     Determines which Messages will realize the specified flow.
+
+    \sa addRealizingMessage(), removeRealizingMessage()
  */
 const QSet<QUmlMessage *> QUmlInformationFlow::realizingMessages() const
 {
@@ -308,6 +393,11 @@ const QSet<QUmlMessage *> QUmlInformationFlow::realizingMessages() const
     return _realizingMessages;
 }
 
+/*!
+    Adds \a realizingMessage to realizingMessages.
+
+    \sa realizingMessages(), removeRealizingMessage()
+ */
 void QUmlInformationFlow::addRealizingMessage(QUmlMessage *realizingMessage)
 {
     // This is a read-write association end
@@ -319,6 +409,11 @@ void QUmlInformationFlow::addRealizingMessage(QUmlMessage *realizingMessage)
     }
 }
 
+/*!
+    Removes \a realizingMessage from realizingMessages.
+
+    \sa realizingMessages(), addRealizingMessage()
+ */
 void QUmlInformationFlow::removeRealizingMessage(QUmlMessage *realizingMessage)
 {
     // This is a read-write association end

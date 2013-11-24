@@ -46,8 +46,6 @@
 #include <QtUml/QUmlClass>
 #include <QtUml/QUmlDeploymentTarget>
 
-QT_BEGIN_HEADER
-
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
@@ -71,8 +69,6 @@ protected:
 QT_END_NAMESPACE
 
 Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE(QUmlNode) *)
-
-QT_END_HEADER
 
 #endif // QUMLNODE_H
 

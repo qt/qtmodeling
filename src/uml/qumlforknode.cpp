@@ -68,12 +68,19 @@ QT_BEGIN_NAMESPACE
 
     \brief A fork node is a control node that splits a flow into multiple concurrent flows.
  */
+
+/*!
+    Creates a new QUmlForkNode. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlForkNode::QUmlForkNode(bool createQModelingObject)
 {
     if (createQModelingObject)
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlForkNodeObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlForkNode.
+*/
 QModelingElement *QUmlForkNode::clone() const
 {
     QUmlForkNode *c = new QUmlForkNode;

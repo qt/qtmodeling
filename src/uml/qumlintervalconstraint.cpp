@@ -63,6 +63,10 @@ QT_BEGIN_NAMESPACE
 
     \brief An interval constraint is a constraint that refers to an interval.
  */
+
+/*!
+    Creates a new QUmlIntervalConstraint. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlIntervalConstraint::QUmlIntervalConstraint(bool createQModelingObject) :
     QUmlConstraint(false),
     _specification(0)
@@ -71,6 +75,9 @@ QUmlIntervalConstraint::QUmlIntervalConstraint(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlIntervalConstraintObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlIntervalConstraint.
+*/
 QModelingElement *QUmlIntervalConstraint::clone() const
 {
     QUmlIntervalConstraint *c = new QUmlIntervalConstraint;
@@ -99,6 +106,8 @@ QModelingElement *QUmlIntervalConstraint::clone() const
 
 /*!
     A condition that must be true when evaluated in order for the constraint to be satisfied.
+
+    \b {Redefined property(ies):} QUmlConstraint::specification().
  */
 QUmlInterval *QUmlIntervalConstraint::specification() const
 {
@@ -107,6 +116,9 @@ QUmlInterval *QUmlIntervalConstraint::specification() const
     return _specification;
 }
 
+/*!
+    Adjusts specification to \a specification.
+ */
 void QUmlIntervalConstraint::setSpecification(QUmlInterval *specification)
 {
     // This is a read-write association end

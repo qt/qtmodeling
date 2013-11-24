@@ -88,6 +88,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A node is computational resource upon which artifacts may be deployed for execution. Nodes can be interconnected through communication paths to define network structures.
  */
+
+/*!
+    Creates a new QUmlNode. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlNode::QUmlNode(bool createQModelingObject) :
     QUmlClass(false)
 {
@@ -95,6 +99,9 @@ QUmlNode::QUmlNode(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlNodeObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlNode.
+*/
 QModelingElement *QUmlNode::clone() const
 {
     QUmlNode *c = new QUmlNode;
@@ -169,6 +176,10 @@ QModelingElement *QUmlNode::clone() const
 
 /*!
     The Nodes that are defined (nested) within the Node.
+
+    \sa addNestedNode(), removeNestedNode()
+
+    \b {Subsetted property(ies):} QUmlNamespace::ownedMembers().
  */
 const QSet<QUmlNode *> QUmlNode::nestedNodes() const
 {
@@ -177,6 +188,11 @@ const QSet<QUmlNode *> QUmlNode::nestedNodes() const
     return _nestedNodes;
 }
 
+/*!
+    Adds \a nestedNode to nestedNodes.
+
+    \sa nestedNodes(), removeNestedNode()
+ */
 void QUmlNode::addNestedNode(QUmlNode *nestedNode)
 {
     // This is a read-write association end
@@ -192,6 +208,11 @@ void QUmlNode::addNestedNode(QUmlNode *nestedNode)
     }
 }
 
+/*!
+    Removes \a nestedNode from nestedNodes.
+
+    \sa nestedNodes(), addNestedNode()
+ */
 void QUmlNode::removeNestedNode(QUmlNode *nestedNode)
 {
     // This is a read-write association end

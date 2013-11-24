@@ -70,12 +70,21 @@ QT_BEGIN_NAMESPACE
     \inmodule QtUml
 
     \brief InvocationAction is an abstract class for the various actions that invoke behavior.In addition to targeting an object, invocation actions can also invoke behavioral features on ports from where the invocation requests are routed onwards on links deriving from attached connectors. Invocation actions may also be sent to a target via a given port, either on the sending object or on another object.
+
+    \b {QUmlInvocationAction is an abstract class.}
  */
+
+/*!
+    Creates a new QUmlInvocationAction.
+*/
 QUmlInvocationAction::QUmlInvocationAction() :
     _onPort(0)
 {
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlInvocationAction.
+*/
 QModelingElement *QUmlInvocationAction::clone() const
 {
     QUmlInvocationAction *c = new QUmlInvocationAction;
@@ -120,6 +129,10 @@ QModelingElement *QUmlInvocationAction::clone() const
 
 /*!
     Specification of the ordered set of argument values that appears during execution.
+
+    \sa addArgument(), removeArgument()
+
+    \b {Subsetted property(ies):} QUmlAction::inputs().
  */
 const QList<QUmlInputPin *> QUmlInvocationAction::arguments() const
 {
@@ -128,6 +141,11 @@ const QList<QUmlInputPin *> QUmlInvocationAction::arguments() const
     return _arguments;
 }
 
+/*!
+    Adds \a argument to arguments.
+
+    \sa arguments(), removeArgument()
+ */
 void QUmlInvocationAction::addArgument(QUmlInputPin *argument)
 {
     // This is a read-write association end
@@ -143,6 +161,11 @@ void QUmlInvocationAction::addArgument(QUmlInputPin *argument)
     }
 }
 
+/*!
+    Removes \a argument from arguments.
+
+    \sa arguments(), addArgument()
+ */
 void QUmlInvocationAction::removeArgument(QUmlInputPin *argument)
 {
     // This is a read-write association end
@@ -167,6 +190,9 @@ QUmlPort *QUmlInvocationAction::onPort() const
     return _onPort;
 }
 
+/*!
+    Adjusts onPort to \a onPort.
+ */
 void QUmlInvocationAction::setOnPort(QUmlPort *onPort)
 {
     // This is a read-write association end

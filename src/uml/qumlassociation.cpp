@@ -78,6 +78,10 @@ QT_BEGIN_NAMESPACE
 
     \brief An association describes a set of tuples whose values refer to typed instances. An instance of an association is called a link.A link is a tuple with one value for each end of the association, where each value is an instance of the type of the end.An association describes a set of tuples whose values refer to typed instances. An instance of an association is called a link. A link is a tuple with one value for each end of the association, where each value is an instance of the type of the end.
  */
+
+/*!
+    Creates a new QUmlAssociation. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlAssociation::QUmlAssociation(bool createQModelingObject) :
     _isDerived(false)
 {
@@ -85,6 +89,9 @@ QUmlAssociation::QUmlAssociation(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlAssociationObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlAssociation.
+*/
 QModelingElement *QUmlAssociation::clone() const
 {
     QUmlAssociation *c = new QUmlAssociation;
@@ -145,6 +152,10 @@ QModelingElement *QUmlAssociation::clone() const
 
 /*!
     References the classifiers that are used as types of the ends of the association.
+
+    \b {This is a read-only derived property.}
+
+    \b {Subsetted property(ies):} QUmlRelationship::relatedElements().
  */
 const QList<QUmlType *> QUmlAssociation::endTypes() const
 {
@@ -155,6 +166,11 @@ const QList<QUmlType *> QUmlAssociation::endTypes() const
     return QList<QUmlType *>();
 }
 
+/*!
+    Adds \a endType to endTypes.
+
+    \sa endTypes(), removeEndType()
+ */
 void QUmlAssociation::addEndType(QUmlType *endType)
 {
     // This is a read-only derived association end
@@ -170,6 +186,11 @@ void QUmlAssociation::addEndType(QUmlType *endType)
     }
 }
 
+/*!
+    Removes \a endType from endTypes.
+
+    \sa endTypes(), addEndType()
+ */
 void QUmlAssociation::removeEndType(QUmlType *endType)
 {
     // This is a read-only derived association end
@@ -195,6 +216,9 @@ bool QUmlAssociation::isDerived() const
     return _isDerived;
 }
 
+/*!
+    Adjusts isDerived to \a isDerived.
+ */
 void QUmlAssociation::setDerived(bool isDerived)
 {
     // This is a read-write property
@@ -207,6 +231,12 @@ void QUmlAssociation::setDerived(bool isDerived)
 
 /*!
     Each end represents participation of instances of the classifier connected to the end in links of the association.
+
+    \sa addMemberEnd(), removeMemberEnd()
+
+    \b {Subsetted property(ies):} QUmlNamespace::members().
+
+    \b {Opposite property(ies):} QUmlProperty::association().
  */
 const QList<QUmlProperty *> QUmlAssociation::memberEnds() const
 {
@@ -215,6 +245,11 @@ const QList<QUmlProperty *> QUmlAssociation::memberEnds() const
     return _memberEnds;
 }
 
+/*!
+    Adds \a memberEnd to memberEnds.
+
+    \sa memberEnds(), removeMemberEnd()
+ */
 void QUmlAssociation::addMemberEnd(QUmlProperty *memberEnd)
 {
     // This is a read-write association end
@@ -234,6 +269,11 @@ void QUmlAssociation::addMemberEnd(QUmlProperty *memberEnd)
     }
 }
 
+/*!
+    Removes \a memberEnd from memberEnds.
+
+    \sa memberEnds(), addMemberEnd()
+ */
 void QUmlAssociation::removeMemberEnd(QUmlProperty *memberEnd)
 {
     // This is a read-write association end
@@ -253,6 +293,10 @@ void QUmlAssociation::removeMemberEnd(QUmlProperty *memberEnd)
 
 /*!
     The navigable ends that are owned by the association itself.
+
+    \sa addNavigableOwnedEnd(), removeNavigableOwnedEnd()
+
+    \b {Subsetted property(ies):} QUmlAssociation::ownedEnds().
  */
 const QSet<QUmlProperty *> QUmlAssociation::navigableOwnedEnds() const
 {
@@ -261,6 +305,11 @@ const QSet<QUmlProperty *> QUmlAssociation::navigableOwnedEnds() const
     return _navigableOwnedEnds;
 }
 
+/*!
+    Adds \a navigableOwnedEnd to navigableOwnedEnds.
+
+    \sa navigableOwnedEnds(), removeNavigableOwnedEnd()
+ */
 void QUmlAssociation::addNavigableOwnedEnd(QUmlProperty *navigableOwnedEnd)
 {
     // This is a read-write association end
@@ -275,6 +324,11 @@ void QUmlAssociation::addNavigableOwnedEnd(QUmlProperty *navigableOwnedEnd)
     }
 }
 
+/*!
+    Removes \a navigableOwnedEnd from navigableOwnedEnds.
+
+    \sa navigableOwnedEnds(), addNavigableOwnedEnd()
+ */
 void QUmlAssociation::removeNavigableOwnedEnd(QUmlProperty *navigableOwnedEnd)
 {
     // This is a read-write association end
@@ -289,6 +343,12 @@ void QUmlAssociation::removeNavigableOwnedEnd(QUmlProperty *navigableOwnedEnd)
 
 /*!
     The ends that are owned by the association itself.
+
+    \sa addOwnedEnd(), removeOwnedEnd()
+
+    \b {Subsetted property(ies):} QUmlAssociation::memberEnds(), QUmlClassifier::features(), QUmlNamespace::ownedMembers().
+
+    \b {Opposite property(ies):} QUmlProperty::owningAssociation().
  */
 const QList<QUmlProperty *> QUmlAssociation::ownedEnds() const
 {
@@ -297,6 +357,11 @@ const QList<QUmlProperty *> QUmlAssociation::ownedEnds() const
     return _ownedEnds;
 }
 
+/*!
+    Adds \a ownedEnd to ownedEnds.
+
+    \sa ownedEnds(), removeOwnedEnd()
+ */
 void QUmlAssociation::addOwnedEnd(QUmlProperty *ownedEnd)
 {
     // This is a read-write association end
@@ -319,6 +384,11 @@ void QUmlAssociation::addOwnedEnd(QUmlProperty *ownedEnd)
     }
 }
 
+/*!
+    Removes \a ownedEnd from ownedEnds.
+
+    \sa ownedEnds(), addOwnedEnd()
+ */
 void QUmlAssociation::removeOwnedEnd(QUmlProperty *ownedEnd)
 {
     // This is a read-write association end

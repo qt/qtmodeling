@@ -56,6 +56,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A link end data is not an action. It is an element that identifies links. It identifies one end of a link to be read or written by the children of a link action. A link cannot be passed as a runtime value to or from an action. Instead, a link is identified by its end objects and qualifier values, if any. This requires more than one piece of data, namely, the statically-specified end in the user model, the object on the end, and the qualifier values for that end, if any. These pieces are brought together around a link end data. Each association end is identified separately with an instance of the LinkEndData class.
  */
+
+/*!
+    Creates a new QUmlLinkEndData. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlLinkEndData::QUmlLinkEndData(bool createQModelingObject) :
     _end(0),
     _value(0)
@@ -64,6 +68,9 @@ QUmlLinkEndData::QUmlLinkEndData(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlLinkEndDataObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlLinkEndData.
+*/
 QModelingElement *QUmlLinkEndData::clone() const
 {
     QUmlLinkEndData *c = new QUmlLinkEndData;
@@ -90,6 +97,9 @@ QUmlProperty *QUmlLinkEndData::end() const
     return _end;
 }
 
+/*!
+    Adjusts end to \a end.
+ */
 void QUmlLinkEndData::setEnd(QUmlProperty *end)
 {
     // This is a read-write association end
@@ -103,6 +113,10 @@ void QUmlLinkEndData::setEnd(QUmlProperty *end)
 
 /*!
     List of qualifier values
+
+    \sa addQualifier(), removeQualifier()
+
+    \b {Subsetted property(ies):} QUmlElement::ownedElements().
  */
 const QSet<QUmlQualifierValue *> QUmlLinkEndData::qualifiers() const
 {
@@ -111,6 +125,11 @@ const QSet<QUmlQualifierValue *> QUmlLinkEndData::qualifiers() const
     return _qualifiers;
 }
 
+/*!
+    Adds \a qualifier to qualifiers.
+
+    \sa qualifiers(), removeQualifier()
+ */
 void QUmlLinkEndData::addQualifier(QUmlQualifierValue *qualifier)
 {
     // This is a read-write association end
@@ -126,6 +145,11 @@ void QUmlLinkEndData::addQualifier(QUmlQualifierValue *qualifier)
     }
 }
 
+/*!
+    Removes \a qualifier from qualifiers.
+
+    \sa qualifiers(), addQualifier()
+ */
 void QUmlLinkEndData::removeQualifier(QUmlQualifierValue *qualifier)
 {
     // This is a read-write association end
@@ -150,6 +174,9 @@ QUmlInputPin *QUmlLinkEndData::value() const
     return _value;
 }
 
+/*!
+    Adjusts value to \a value.
+ */
 void QUmlLinkEndData::setValue(QUmlInputPin *value)
 {
     // This is a read-write association end

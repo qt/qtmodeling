@@ -73,12 +73,19 @@ QT_BEGIN_NAMESPACE
 
     \brief An input pin is a pin that holds input values to be consumed by an action.
  */
+
+/*!
+    Creates a new QUmlInputPin. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlInputPin::QUmlInputPin(bool createQModelingObject)
 {
     if (createQModelingObject)
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlInputPinObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlInputPin.
+*/
 QModelingElement *QUmlInputPin::clone() const
 {
     QUmlInputPin *c = new QUmlInputPin;

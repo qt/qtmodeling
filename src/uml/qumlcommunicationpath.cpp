@@ -79,6 +79,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A communication path is an association between two deployment targets, through which they are able to exchange signals and messages.
  */
+
+/*!
+    Creates a new QUmlCommunicationPath. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlCommunicationPath::QUmlCommunicationPath(bool createQModelingObject) :
     QUmlAssociation(false)
 {
@@ -86,6 +90,9 @@ QUmlCommunicationPath::QUmlCommunicationPath(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlCommunicationPathObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlCommunicationPath.
+*/
 QModelingElement *QUmlCommunicationPath::clone() const
 {
     QUmlCommunicationPath *c = new QUmlCommunicationPath;

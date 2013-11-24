@@ -46,8 +46,6 @@
 #include <QtUml/QUmlEncapsulatedClassifier>
 #include <QtUml/QUmlBehavioredClassifier>
 
-QT_BEGIN_HEADER
-
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
@@ -105,8 +103,6 @@ protected:
 QT_END_NAMESPACE
 
 Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE(QUmlClass) *)
-
-QT_END_HEADER
 
 #endif // QUMLCLASS_H
 

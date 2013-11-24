@@ -73,6 +73,10 @@ QT_BEGIN_NAMESPACE
 
     \brief An add structural feature value action is a write structural feature action for adding values to a structural feature.
  */
+
+/*!
+    Creates a new QUmlAddStructuralFeatureValueAction. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlAddStructuralFeatureValueAction::QUmlAddStructuralFeatureValueAction(bool createQModelingObject) :
     _insertAt(0),
     _isReplaceAll(false)
@@ -81,6 +85,9 @@ QUmlAddStructuralFeatureValueAction::QUmlAddStructuralFeatureValueAction(bool cr
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlAddStructuralFeatureValueActionObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlAddStructuralFeatureValueAction.
+*/
 QModelingElement *QUmlAddStructuralFeatureValueAction::clone() const
 {
     QUmlAddStructuralFeatureValueAction *c = new QUmlAddStructuralFeatureValueAction;
@@ -132,6 +139,8 @@ QModelingElement *QUmlAddStructuralFeatureValueAction::clone() const
 
 /*!
     Gives the position at which to insert a new value or move an existing value in ordered structural features. The type of the pin is UnlimitedNatural, but the value cannot be zero. This pin is omitted for unordered structural features.
+
+    \b {Subsetted property(ies):} QUmlAction::inputs().
  */
 QUmlInputPin *QUmlAddStructuralFeatureValueAction::insertAt() const
 {
@@ -140,6 +149,9 @@ QUmlInputPin *QUmlAddStructuralFeatureValueAction::insertAt() const
     return _insertAt;
 }
 
+/*!
+    Adjusts insertAt to \a insertAt.
+ */
 void QUmlAddStructuralFeatureValueAction::setInsertAt(QUmlInputPin *insertAt)
 {
     // This is a read-write association end
@@ -170,6 +182,9 @@ bool QUmlAddStructuralFeatureValueAction::isReplaceAll() const
     return _isReplaceAll;
 }
 
+/*!
+    Adjusts isReplaceAll to \a isReplaceAll.
+ */
 void QUmlAddStructuralFeatureValueAction::setReplaceAll(bool isReplaceAll)
 {
     // This is a read-write property

@@ -64,6 +64,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A state invariant is a runtime constraint on the participants of the interaction. It may be used to specify a variety of different kinds of constraints, such as values of attributes or variables, internal or external states, and so on. A state invariant is an interaction fragment and it is placed on a lifeline.
  */
+
+/*!
+    Creates a new QUmlStateInvariant. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlStateInvariant::QUmlStateInvariant(bool createQModelingObject) :
     _covered(0),
     _invariant(0)
@@ -72,6 +76,9 @@ QUmlStateInvariant::QUmlStateInvariant(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlStateInvariantObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlStateInvariant.
+*/
 QModelingElement *QUmlStateInvariant::clone() const
 {
     QUmlStateInvariant *c = new QUmlStateInvariant;
@@ -100,6 +107,8 @@ QModelingElement *QUmlStateInvariant::clone() const
 
 /*!
     References the Lifeline on which the StateInvariant appears.
+
+    \b {Redefined property(ies):} QUmlInteractionFragment::covered().
  */
 QUmlLifeline *QUmlStateInvariant::covered() const
 {
@@ -108,6 +117,9 @@ QUmlLifeline *QUmlStateInvariant::covered() const
     return _covered;
 }
 
+/*!
+    Adjusts covered to \a covered.
+ */
 void QUmlStateInvariant::setCovered(QUmlLifeline *covered)
 {
     // This is a read-write association end
@@ -128,6 +140,8 @@ void QUmlStateInvariant::setCovered(QUmlLifeline *covered)
 
 /*!
     A Constraint that should hold at runtime for this StateInvariant
+
+    \b {Subsetted property(ies):} QUmlElement::ownedElements().
  */
 QUmlConstraint *QUmlStateInvariant::invariant() const
 {
@@ -136,6 +150,9 @@ QUmlConstraint *QUmlStateInvariant::invariant() const
     return _invariant;
 }
 
+/*!
+    Adjusts invariant to \a invariant.
+ */
 void QUmlStateInvariant::setInvariant(QUmlConstraint *invariant)
 {
     // This is a read-write association end

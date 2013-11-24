@@ -73,6 +73,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A value specification action is an action that evaluates a value specification.
  */
+
+/*!
+    Creates a new QUmlValueSpecificationAction. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlValueSpecificationAction::QUmlValueSpecificationAction(bool createQModelingObject) :
     _result(0),
     _value(0)
@@ -81,6 +85,9 @@ QUmlValueSpecificationAction::QUmlValueSpecificationAction(bool createQModelingO
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlValueSpecificationActionObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlValueSpecificationAction.
+*/
 QModelingElement *QUmlValueSpecificationAction::clone() const
 {
     QUmlValueSpecificationAction *c = new QUmlValueSpecificationAction;
@@ -125,6 +132,8 @@ QModelingElement *QUmlValueSpecificationAction::clone() const
 
 /*!
     Gives the output pin on which the result is put.
+
+    \b {Subsetted property(ies):} QUmlAction::outputs().
  */
 QUmlOutputPin *QUmlValueSpecificationAction::result() const
 {
@@ -133,6 +142,9 @@ QUmlOutputPin *QUmlValueSpecificationAction::result() const
     return _result;
 }
 
+/*!
+    Adjusts result to \a result.
+ */
 void QUmlValueSpecificationAction::setResult(QUmlOutputPin *result)
 {
     // This is a read-write association end
@@ -155,6 +167,8 @@ void QUmlValueSpecificationAction::setResult(QUmlOutputPin *result)
 
 /*!
     Value specification to be evaluated.
+
+    \b {Subsetted property(ies):} QUmlElement::ownedElements().
  */
 QUmlValueSpecification *QUmlValueSpecificationAction::value() const
 {
@@ -163,6 +177,9 @@ QUmlValueSpecification *QUmlValueSpecificationAction::value() const
     return _value;
 }
 
+/*!
+    Adjusts value to \a value.
+ */
 void QUmlValueSpecificationAction::setValue(QUmlValueSpecification *value)
 {
     // This is a read-write association end

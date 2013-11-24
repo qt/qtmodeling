@@ -89,6 +89,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A device is a physical computational resource with processing capability upon which artifacts may be deployed for execution. Devices may be complex (i.e., they may consist of other devices).
  */
+
+/*!
+    Creates a new QUmlDevice. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlDevice::QUmlDevice(bool createQModelingObject) :
     QUmlNode(false)
 {
@@ -96,6 +100,9 @@ QUmlDevice::QUmlDevice(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlDeviceObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlDevice.
+*/
 QModelingElement *QUmlDevice::clone() const
 {
     QUmlDevice *c = new QUmlDevice;

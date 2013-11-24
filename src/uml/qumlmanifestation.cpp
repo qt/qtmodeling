@@ -63,6 +63,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A manifestation is the concrete physical rendering of one or more model elements by an artifact.
  */
+
+/*!
+    Creates a new QUmlManifestation. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlManifestation::QUmlManifestation(bool createQModelingObject) :
     QUmlAbstraction(false),
     _utilizedElement(0)
@@ -71,6 +75,9 @@ QUmlManifestation::QUmlManifestation(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlManifestationObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlManifestation.
+*/
 QModelingElement *QUmlManifestation::clone() const
 {
     QUmlManifestation *c = new QUmlManifestation;
@@ -101,6 +108,8 @@ QModelingElement *QUmlManifestation::clone() const
 
 /*!
     The model element that is utilized in the manifestation in an Artifact.
+
+    \b {Subsetted property(ies):} QUmlDependency::suppliers().
  */
 QUmlPackageableElement *QUmlManifestation::utilizedElement() const
 {
@@ -109,6 +118,9 @@ QUmlPackageableElement *QUmlManifestation::utilizedElement() const
     return _utilizedElement;
 }
 
+/*!
+    Adjusts utilizedElement to \a utilizedElement.
+ */
 void QUmlManifestation::setUtilizedElement(QUmlPackageableElement *utilizedElement)
 {
     // This is a read-write association end

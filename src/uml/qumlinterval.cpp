@@ -62,6 +62,10 @@ QT_BEGIN_NAMESPACE
 
     \brief An interval defines the range between two value specifications.
  */
+
+/*!
+    Creates a new QUmlInterval. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlInterval::QUmlInterval(bool createQModelingObject) :
     _max(0),
     _min(0)
@@ -70,6 +74,9 @@ QUmlInterval::QUmlInterval(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlIntervalObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlInterval.
+*/
 QModelingElement *QUmlInterval::clone() const
 {
     QUmlInterval *c = new QUmlInterval;
@@ -106,6 +113,9 @@ QUmlValueSpecification *QUmlInterval::max() const
     return _max;
 }
 
+/*!
+    Adjusts max to \a max.
+ */
 void QUmlInterval::setMax(QUmlValueSpecification *max)
 {
     // This is a read-write association end
@@ -127,6 +137,9 @@ QUmlValueSpecification *QUmlInterval::min() const
     return _min;
 }
 
+/*!
+    Adjusts min to \a min.
+ */
 void QUmlInterval::setMin(QUmlValueSpecification *min)
 {
     // This is a read-write association end

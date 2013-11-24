@@ -62,6 +62,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A redefinable template signature supports the addition of formal template parameters in a specialization of a template classifier.
  */
+
+/*!
+    Creates a new QUmlRedefinableTemplateSignature. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlRedefinableTemplateSignature::QUmlRedefinableTemplateSignature(bool createQModelingObject) :
     QUmlTemplateSignature(false),
     _classifier(0)
@@ -70,6 +74,9 @@ QUmlRedefinableTemplateSignature::QUmlRedefinableTemplateSignature(bool createQM
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlRedefinableTemplateSignatureObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlRedefinableTemplateSignature.
+*/
 QModelingElement *QUmlRedefinableTemplateSignature::clone() const
 {
     QUmlRedefinableTemplateSignature *c = new QUmlRedefinableTemplateSignature;
@@ -99,6 +106,12 @@ QModelingElement *QUmlRedefinableTemplateSignature::clone() const
 
 /*!
     The classifier that owns this template signature.
+
+    \b {Subsetted property(ies):} QUmlRedefinableElement::redefinitionContexts().
+
+    \b {Redefined property(ies):} QUmlTemplateSignature::template_().
+
+    \b {Opposite property(ies):} QUmlClassifier::ownedTemplateSignature().
  */
 QUmlClassifier *QUmlRedefinableTemplateSignature::classifier() const
 {
@@ -107,6 +120,9 @@ QUmlClassifier *QUmlRedefinableTemplateSignature::classifier() const
     return _classifier;
 }
 
+/*!
+    Adjusts classifier to \a classifier.
+ */
 void QUmlRedefinableTemplateSignature::setClassifier(QUmlClassifier *classifier)
 {
     // This is a read-write association end
@@ -131,6 +147,10 @@ void QUmlRedefinableTemplateSignature::setClassifier(QUmlClassifier *classifier)
 
 /*!
     The template signature that is extended by this template signature.
+
+    \sa addExtendedSignature(), removeExtendedSignature()
+
+    \b {Subsetted property(ies):} QUmlRedefinableElement::redefinedElements().
  */
 const QSet<QUmlRedefinableTemplateSignature *> QUmlRedefinableTemplateSignature::extendedSignatures() const
 {
@@ -139,6 +159,11 @@ const QSet<QUmlRedefinableTemplateSignature *> QUmlRedefinableTemplateSignature:
     return _extendedSignatures;
 }
 
+/*!
+    Adds \a extendedSignature to extendedSignatures.
+
+    \sa extendedSignatures(), removeExtendedSignature()
+ */
 void QUmlRedefinableTemplateSignature::addExtendedSignature(QUmlRedefinableTemplateSignature *extendedSignature)
 {
     // This is a read-write association end
@@ -153,6 +178,11 @@ void QUmlRedefinableTemplateSignature::addExtendedSignature(QUmlRedefinableTempl
     }
 }
 
+/*!
+    Removes \a extendedSignature from extendedSignatures.
+
+    \sa extendedSignatures(), addExtendedSignature()
+ */
 void QUmlRedefinableTemplateSignature::removeExtendedSignature(QUmlRedefinableTemplateSignature *extendedSignature)
 {
     // This is a read-write association end
@@ -167,6 +197,10 @@ void QUmlRedefinableTemplateSignature::removeExtendedSignature(QUmlRedefinableTe
 
 /*!
     The formal template parameters of the extendedSignature.
+
+    \b {This is a read-only derived property.}
+
+    \b {Subsetted property(ies):} QUmlTemplateSignature::parameters().
  */
 const QSet<QUmlTemplateParameter *> QUmlRedefinableTemplateSignature::inheritedParameters() const
 {
@@ -177,6 +211,11 @@ const QSet<QUmlTemplateParameter *> QUmlRedefinableTemplateSignature::inheritedP
     return QSet<QUmlTemplateParameter *>();
 }
 
+/*!
+    Adds \a inheritedParameter to inheritedParameters.
+
+    \sa inheritedParameters(), removeInheritedParameter()
+ */
 void QUmlRedefinableTemplateSignature::addInheritedParameter(QUmlTemplateParameter *inheritedParameter)
 {
     // This is a read-only derived association end
@@ -192,6 +231,11 @@ void QUmlRedefinableTemplateSignature::addInheritedParameter(QUmlTemplateParamet
     }
 }
 
+/*!
+    Removes \a inheritedParameter from inheritedParameters.
+
+    \sa inheritedParameters(), addInheritedParameter()
+ */
 void QUmlRedefinableTemplateSignature::removeInheritedParameter(QUmlTemplateParameter *inheritedParameter)
 {
     // This is a read-only derived association end

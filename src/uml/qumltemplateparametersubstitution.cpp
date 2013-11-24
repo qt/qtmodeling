@@ -56,6 +56,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A template parameter substitution relates the actual parameter to a formal template parameter as part of a template binding.
  */
+
+/*!
+    Creates a new QUmlTemplateParameterSubstitution. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlTemplateParameterSubstitution::QUmlTemplateParameterSubstitution(bool createQModelingObject) :
     _actual(0),
     _formal(0),
@@ -66,6 +70,9 @@ QUmlTemplateParameterSubstitution::QUmlTemplateParameterSubstitution(bool create
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlTemplateParameterSubstitutionObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlTemplateParameterSubstitution.
+*/
 QModelingElement *QUmlTemplateParameterSubstitution::clone() const
 {
     QUmlTemplateParameterSubstitution *c = new QUmlTemplateParameterSubstitution;
@@ -94,6 +101,9 @@ QUmlParameterableElement *QUmlTemplateParameterSubstitution::actual() const
     return _actual;
 }
 
+/*!
+    Adjusts actual to \a actual.
+ */
 void QUmlTemplateParameterSubstitution::setActual(QUmlParameterableElement *actual)
 {
     // This is a read-write association end
@@ -115,6 +125,9 @@ QUmlTemplateParameter *QUmlTemplateParameterSubstitution::formal() const
     return _formal;
 }
 
+/*!
+    Adjusts formal to \a formal.
+ */
 void QUmlTemplateParameterSubstitution::setFormal(QUmlTemplateParameter *formal)
 {
     // This is a read-write association end
@@ -128,6 +141,8 @@ void QUmlTemplateParameterSubstitution::setFormal(QUmlTemplateParameter *formal)
 
 /*!
     The actual parameter that is owned by this substitution.
+
+    \b {Subsetted property(ies):} QUmlElement::ownedElements(), QUmlTemplateParameterSubstitution::actual().
  */
 QUmlParameterableElement *QUmlTemplateParameterSubstitution::ownedActual() const
 {
@@ -136,6 +151,9 @@ QUmlParameterableElement *QUmlTemplateParameterSubstitution::ownedActual() const
     return _ownedActual;
 }
 
+/*!
+    Adjusts ownedActual to \a ownedActual.
+ */
 void QUmlTemplateParameterSubstitution::setOwnedActual(QUmlParameterableElement *ownedActual)
 {
     // This is a read-write association end
@@ -159,6 +177,10 @@ void QUmlTemplateParameterSubstitution::setOwnedActual(QUmlParameterableElement 
 
 /*!
     The optional bindings from this element to templates.
+
+    \b {Subsetted property(ies):} QUmlElement::owner().
+
+    \b {Opposite property(ies):} QUmlTemplateBinding::parameterSubstitutions().
  */
 QUmlTemplateBinding *QUmlTemplateParameterSubstitution::templateBinding() const
 {
@@ -167,6 +189,9 @@ QUmlTemplateBinding *QUmlTemplateParameterSubstitution::templateBinding() const
     return _templateBinding;
 }
 
+/*!
+    Adjusts templateBinding to \a templateBinding.
+ */
 void QUmlTemplateParameterSubstitution::setTemplateBinding(QUmlTemplateBinding *templateBinding)
 {
     // This is a read-write association end

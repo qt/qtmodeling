@@ -53,12 +53,19 @@ QT_BEGIN_NAMESPACE
 
     \brief Physical definition of a graphical image.
  */
+
+/*!
+    Creates a new QUmlImage. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlImage::QUmlImage(bool createQModelingObject)
 {
     if (createQModelingObject)
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlImageObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlImage.
+*/
 QModelingElement *QUmlImage::clone() const
 {
     QUmlImage *c = new QUmlImage;
@@ -82,6 +89,9 @@ QString QUmlImage::content() const
     return _content;
 }
 
+/*!
+    Adjusts content to \a content.
+ */
 void QUmlImage::setContent(QString content)
 {
     // This is a read-write property
@@ -101,6 +111,9 @@ QString QUmlImage::format() const
     return _format;
 }
 
+/*!
+    Adjusts format to \a format.
+ */
 void QUmlImage::setFormat(QString format)
 {
     // This is a read-write property
@@ -120,6 +133,9 @@ QString QUmlImage::location() const
     return _location;
 }
 
+/*!
+    Adjusts location to \a location.
+ */
 void QUmlImage::setLocation(QString location)
 {
     // This is a read-write property

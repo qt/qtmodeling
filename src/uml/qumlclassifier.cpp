@@ -72,7 +72,13 @@ QT_BEGIN_NAMESPACE
     \inmodule QtUml
 
     \brief A classifier is a classification of instances - it describes a set of instances that have features in common. A classifier can specify a generalization hierarchy by referencing its general classifiers.A classifier has the capability to own use cases. Although the owning classifier typically represents the subject to which the owned use cases apply, this is not necessarily the case. In principle, the same use case can be applied to multiple subjects, as identified by the subject association role of a use case.Classifier is defined to be a kind of templateable element so that a classifier can be parameterized. It is also defined to be a kind of parameterable element so that a classifier can be a formal template parameter.A classifier has the capability to own collaboration uses. These collaboration uses link a collaboration with the classifier to give a description of the workings of the classifier.
+
+    \b {QUmlClassifier is an abstract class.}
  */
+
+/*!
+    Creates a new QUmlClassifier.
+*/
 QUmlClassifier::QUmlClassifier() :
     _isAbstract(false),
     _isFinalSpecialization(false),
@@ -82,6 +88,9 @@ QUmlClassifier::QUmlClassifier() :
 {
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlClassifier.
+*/
 QModelingElement *QUmlClassifier::clone() const
 {
     QUmlClassifier *c = new QUmlClassifier;
@@ -135,6 +144,10 @@ QModelingElement *QUmlClassifier::clone() const
 
 /*!
     Refers to all of the Properties that are direct (i.e. not inherited or imported) attributes of the classifier.
+
+    \b {This is a read-only derived union property.}
+
+    \b {Subsetted property(ies):} QUmlClassifier::features(), .
  */
 const QSet<QUmlProperty *> QUmlClassifier::attributes() const
 {
@@ -143,6 +156,11 @@ const QSet<QUmlProperty *> QUmlClassifier::attributes() const
     return _attributes;
 }
 
+/*!
+    Adds \a attribute to attributes.
+
+    \sa attributes(), removeAttribute()
+ */
 void QUmlClassifier::addAttribute(QUmlProperty *attribute)
 {
     // This is a read-only derived union association end
@@ -157,6 +175,11 @@ void QUmlClassifier::addAttribute(QUmlProperty *attribute)
     }
 }
 
+/*!
+    Removes \a attribute from attributes.
+
+    \sa attributes(), addAttribute()
+ */
 void QUmlClassifier::removeAttribute(QUmlProperty *attribute)
 {
     // This is a read-only derived union association end
@@ -171,6 +194,10 @@ void QUmlClassifier::removeAttribute(QUmlProperty *attribute)
 
 /*!
     References the collaboration uses owned by the classifier.
+
+    \sa addCollaborationUse(), removeCollaborationUse()
+
+    \b {Subsetted property(ies):} QUmlElement::ownedElements().
  */
 const QSet<QUmlCollaborationUse *> QUmlClassifier::collaborationUses() const
 {
@@ -179,6 +206,11 @@ const QSet<QUmlCollaborationUse *> QUmlClassifier::collaborationUses() const
     return _collaborationUses;
 }
 
+/*!
+    Adds \a collaborationUse to collaborationUses.
+
+    \sa collaborationUses(), removeCollaborationUse()
+ */
 void QUmlClassifier::addCollaborationUse(QUmlCollaborationUse *collaborationUse)
 {
     // This is a read-write association end
@@ -194,6 +226,11 @@ void QUmlClassifier::addCollaborationUse(QUmlCollaborationUse *collaborationUse)
     }
 }
 
+/*!
+    Removes \a collaborationUse from collaborationUses.
+
+    \sa collaborationUses(), addCollaborationUse()
+ */
 void QUmlClassifier::removeCollaborationUse(QUmlCollaborationUse *collaborationUse)
 {
     // This is a read-write association end
@@ -210,6 +247,12 @@ void QUmlClassifier::removeCollaborationUse(QUmlCollaborationUse *collaborationU
 
 /*!
     Specifies each feature defined in the classifier.Note that there may be members of the Classifier that are of the type Feature but are not included in this association, e.g. inherited features.
+
+    \b {This is a read-only derived union property.}
+
+    \b {Subsetted property(ies):} QUmlNamespace::members().
+
+    \b {Opposite property(ies):} QUmlFeature::featuringClassifiers().
  */
 const QSet<QUmlFeature *> QUmlClassifier::features() const
 {
@@ -218,6 +261,11 @@ const QSet<QUmlFeature *> QUmlClassifier::features() const
     return _features;
 }
 
+/*!
+    Adds \a feature to features.
+
+    \sa features(), removeFeature()
+ */
 void QUmlClassifier::addFeature(QUmlFeature *feature)
 {
     // This is a read-only derived union association end
@@ -237,6 +285,11 @@ void QUmlClassifier::addFeature(QUmlFeature *feature)
     }
 }
 
+/*!
+    Removes \a feature from features.
+
+    \sa features(), addFeature()
+ */
 void QUmlClassifier::removeFeature(QUmlFeature *feature)
 {
     // This is a read-only derived union association end
@@ -256,6 +309,10 @@ void QUmlClassifier::removeFeature(QUmlFeature *feature)
 
 /*!
     Specifies the general Classifiers for this Classifier.References the general classifier in the Generalization relationship.
+
+    \sa addGeneral(), removeGeneral()
+
+    \b {This is a derived property.}
  */
 const QSet<QUmlClassifier *> QUmlClassifier::generals() const
 {
@@ -266,6 +323,11 @@ const QSet<QUmlClassifier *> QUmlClassifier::generals() const
     return QSet<QUmlClassifier *>();
 }
 
+/*!
+    Adds \a general to generals.
+
+    \sa generals(), removeGeneral()
+ */
 void QUmlClassifier::addGeneral(QUmlClassifier *general)
 {
     // This is a read-write derived association end
@@ -278,6 +340,11 @@ void QUmlClassifier::addGeneral(QUmlClassifier *general)
     }
 }
 
+/*!
+    Removes \a general from generals.
+
+    \sa generals(), addGeneral()
+ */
 void QUmlClassifier::removeGeneral(QUmlClassifier *general)
 {
     // This is a read-write derived association end
@@ -292,6 +359,12 @@ void QUmlClassifier::removeGeneral(QUmlClassifier *general)
 
 /*!
     Specifies the Generalization relationships for this Classifier. These Generalizations navigaten to more general classifiers in the generalization hierarchy.
+
+    \sa addGeneralization(), removeGeneralization()
+
+    \b {Subsetted property(ies):} QUmlElement::ownedElements().
+
+    \b {Opposite property(ies):} QUmlGeneralization::specific().
  */
 const QSet<QUmlGeneralization *> QUmlClassifier::generalizations() const
 {
@@ -300,6 +373,11 @@ const QSet<QUmlGeneralization *> QUmlClassifier::generalizations() const
     return _generalizations;
 }
 
+/*!
+    Adds \a generalization to generalizations.
+
+    \sa generalizations(), removeGeneralization()
+ */
 void QUmlClassifier::addGeneralization(QUmlGeneralization *generalization)
 {
     // This is a read-write association end
@@ -320,6 +398,11 @@ void QUmlClassifier::addGeneralization(QUmlGeneralization *generalization)
     }
 }
 
+/*!
+    Removes \a generalization from generalizations.
+
+    \sa generalizations(), addGeneralization()
+ */
 void QUmlClassifier::removeGeneralization(QUmlGeneralization *generalization)
 {
     // This is a read-write association end
@@ -341,6 +424,10 @@ void QUmlClassifier::removeGeneralization(QUmlGeneralization *generalization)
 
 /*!
     Specifies all elements inherited by this classifier from the general classifiers.
+
+    \b {This is a read-only derived property.}
+
+    \b {Subsetted property(ies):} QUmlNamespace::members().
  */
 const QSet<QUmlNamedElement *> QUmlClassifier::inheritedMembers() const
 {
@@ -351,6 +438,11 @@ const QSet<QUmlNamedElement *> QUmlClassifier::inheritedMembers() const
     return QSet<QUmlNamedElement *>();
 }
 
+/*!
+    Adds \a inheritedMember to inheritedMembers.
+
+    \sa inheritedMembers(), removeInheritedMember()
+ */
 void QUmlClassifier::addInheritedMember(QUmlNamedElement *inheritedMember)
 {
     // This is a read-only derived association end
@@ -366,6 +458,11 @@ void QUmlClassifier::addInheritedMember(QUmlNamedElement *inheritedMember)
     }
 }
 
+/*!
+    Removes \a inheritedMember from inheritedMembers.
+
+    \sa inheritedMembers(), addInheritedMember()
+ */
 void QUmlClassifier::removeInheritedMember(QUmlNamedElement *inheritedMember)
 {
     // This is a read-only derived association end
@@ -391,6 +488,9 @@ bool QUmlClassifier::isAbstract() const
     return _isAbstract;
 }
 
+/*!
+    Adjusts isAbstract to \a isAbstract.
+ */
 void QUmlClassifier::setAbstract(bool isAbstract)
 {
     // This is a read-write property
@@ -411,6 +511,9 @@ bool QUmlClassifier::isFinalSpecialization() const
     return _isFinalSpecialization;
 }
 
+/*!
+    Adjusts isFinalSpecialization to \a isFinalSpecialization.
+ */
 void QUmlClassifier::setFinalSpecialization(bool isFinalSpecialization)
 {
     // This is a read-write property
@@ -423,6 +526,12 @@ void QUmlClassifier::setFinalSpecialization(bool isFinalSpecialization)
 
 /*!
     The optional template signature specifying the formal template parameters.
+
+    \b {Subsetted property(ies):} .
+
+    \b {Redefined property(ies):} QUmlTemplateableElement::ownedTemplateSignature().
+
+    \b {Opposite property(ies):} QUmlRedefinableTemplateSignature::classifier().
  */
 QUmlRedefinableTemplateSignature *QUmlClassifier::ownedTemplateSignature() const
 {
@@ -431,6 +540,9 @@ QUmlRedefinableTemplateSignature *QUmlClassifier::ownedTemplateSignature() const
     return _ownedTemplateSignature;
 }
 
+/*!
+    Adjusts ownedTemplateSignature to \a ownedTemplateSignature.
+ */
 void QUmlClassifier::setOwnedTemplateSignature(QUmlRedefinableTemplateSignature *ownedTemplateSignature)
 {
     // This is a read-write association end
@@ -448,6 +560,10 @@ void QUmlClassifier::setOwnedTemplateSignature(QUmlRedefinableTemplateSignature 
 
 /*!
     References the use cases owned by this classifier.
+
+    \sa addOwnedUseCase(), removeOwnedUseCase()
+
+    \b {Subsetted property(ies):} QUmlNamespace::ownedMembers().
  */
 const QSet<QUmlUseCase *> QUmlClassifier::ownedUseCases() const
 {
@@ -456,6 +572,11 @@ const QSet<QUmlUseCase *> QUmlClassifier::ownedUseCases() const
     return _ownedUseCases;
 }
 
+/*!
+    Adds \a ownedUseCase to ownedUseCases.
+
+    \sa ownedUseCases(), removeOwnedUseCase()
+ */
 void QUmlClassifier::addOwnedUseCase(QUmlUseCase *ownedUseCase)
 {
     // This is a read-write association end
@@ -471,6 +592,11 @@ void QUmlClassifier::addOwnedUseCase(QUmlUseCase *ownedUseCase)
     }
 }
 
+/*!
+    Removes \a ownedUseCase from ownedUseCases.
+
+    \sa ownedUseCases(), addOwnedUseCase()
+ */
 void QUmlClassifier::removeOwnedUseCase(QUmlUseCase *ownedUseCase)
 {
     // This is a read-write association end
@@ -487,6 +613,10 @@ void QUmlClassifier::removeOwnedUseCase(QUmlUseCase *ownedUseCase)
 
 /*!
     Designates the GeneralizationSet of which the associated Classifier is a power type.
+
+    \sa addPowertypeExtent(), removePowertypeExtent()
+
+    \b {Opposite property(ies):} QUmlGeneralizationSet::powertype().
  */
 const QSet<QUmlGeneralizationSet *> QUmlClassifier::powertypeExtents() const
 {
@@ -495,6 +625,11 @@ const QSet<QUmlGeneralizationSet *> QUmlClassifier::powertypeExtents() const
     return _powertypeExtents;
 }
 
+/*!
+    Adds \a powertypeExtent to powertypeExtents.
+
+    \sa powertypeExtents(), removePowertypeExtent()
+ */
 void QUmlClassifier::addPowertypeExtent(QUmlGeneralizationSet *powertypeExtent)
 {
     // This is a read-write association end
@@ -511,6 +646,11 @@ void QUmlClassifier::addPowertypeExtent(QUmlGeneralizationSet *powertypeExtent)
     }
 }
 
+/*!
+    Removes \a powertypeExtent from powertypeExtents.
+
+    \sa powertypeExtents(), addPowertypeExtent()
+ */
 void QUmlClassifier::removePowertypeExtent(QUmlGeneralizationSet *powertypeExtent)
 {
     // This is a read-write association end
@@ -527,6 +667,10 @@ void QUmlClassifier::removePowertypeExtent(QUmlGeneralizationSet *powertypeExten
 
 /*!
     References the Classifiers that are redefined by this Classifier.
+
+    \sa addRedefinedClassifier(), removeRedefinedClassifier()
+
+    \b {Subsetted property(ies):} QUmlRedefinableElement::redefinedElements().
  */
 const QSet<QUmlClassifier *> QUmlClassifier::redefinedClassifiers() const
 {
@@ -535,6 +679,11 @@ const QSet<QUmlClassifier *> QUmlClassifier::redefinedClassifiers() const
     return _redefinedClassifiers;
 }
 
+/*!
+    Adds \a redefinedClassifier to redefinedClassifiers.
+
+    \sa redefinedClassifiers(), removeRedefinedClassifier()
+ */
 void QUmlClassifier::addRedefinedClassifier(QUmlClassifier *redefinedClassifier)
 {
     // This is a read-write association end
@@ -549,6 +698,11 @@ void QUmlClassifier::addRedefinedClassifier(QUmlClassifier *redefinedClassifier)
     }
 }
 
+/*!
+    Removes \a redefinedClassifier from redefinedClassifiers.
+
+    \sa redefinedClassifiers(), addRedefinedClassifier()
+ */
 void QUmlClassifier::removeRedefinedClassifier(QUmlClassifier *redefinedClassifier)
 {
     // This is a read-write association end
@@ -563,6 +717,8 @@ void QUmlClassifier::removeRedefinedClassifier(QUmlClassifier *redefinedClassifi
 
 /*!
     References a collaboration use which indicates the collaboration that represents this classifier.
+
+    \b {Subsetted property(ies):} QUmlClassifier::collaborationUses().
  */
 QUmlCollaborationUse *QUmlClassifier::representation() const
 {
@@ -571,6 +727,9 @@ QUmlCollaborationUse *QUmlClassifier::representation() const
     return _representation;
 }
 
+/*!
+    Adjusts representation to \a representation.
+ */
 void QUmlClassifier::setRepresentation(QUmlCollaborationUse *representation)
 {
     // This is a read-write association end
@@ -592,6 +751,12 @@ void QUmlClassifier::setRepresentation(QUmlCollaborationUse *representation)
 
 /*!
     References the substitutions that are owned by this Classifier.
+
+    \sa addSubstitution(), removeSubstitution()
+
+    \b {Subsetted property(ies):} QUmlElement::ownedElements(), QUmlNamedElement::clientDependencies().
+
+    \b {Opposite property(ies):} QUmlSubstitution::substitutingClassifier().
  */
 const QSet<QUmlSubstitution *> QUmlClassifier::substitutions() const
 {
@@ -600,6 +765,11 @@ const QSet<QUmlSubstitution *> QUmlClassifier::substitutions() const
     return _substitutions;
 }
 
+/*!
+    Adds \a substitution to substitutions.
+
+    \sa substitutions(), removeSubstitution()
+ */
 void QUmlClassifier::addSubstitution(QUmlSubstitution *substitution)
 {
     // This is a read-write association end
@@ -621,6 +791,11 @@ void QUmlClassifier::addSubstitution(QUmlSubstitution *substitution)
     }
 }
 
+/*!
+    Removes \a substitution from substitutions.
+
+    \sa substitutions(), addSubstitution()
+ */
 void QUmlClassifier::removeSubstitution(QUmlSubstitution *substitution)
 {
     // This is a read-write association end
@@ -643,6 +818,10 @@ void QUmlClassifier::removeSubstitution(QUmlSubstitution *substitution)
 
 /*!
     The template parameter that exposes this element as a formal parameter.
+
+    \b {Redefined property(ies):} QUmlParameterableElement::templateParameter().
+
+    \b {Opposite property(ies):} QUmlClassifierTemplateParameter::parameteredElement().
  */
 QUmlClassifierTemplateParameter *QUmlClassifier::templateParameter() const
 {
@@ -651,6 +830,9 @@ QUmlClassifierTemplateParameter *QUmlClassifier::templateParameter() const
     return _templateParameter;
 }
 
+/*!
+    Adjusts templateParameter to \a templateParameter.
+ */
 void QUmlClassifier::setTemplateParameter(QUmlClassifierTemplateParameter *templateParameter)
 {
     // This is a read-write association end
@@ -667,6 +849,10 @@ void QUmlClassifier::setTemplateParameter(QUmlClassifierTemplateParameter *templ
 
 /*!
     The set of use cases for which this Classifier is the subject.
+
+    \sa addUseCase(), removeUseCase()
+
+    \b {Opposite property(ies):} QUmlUseCase::subjects().
  */
 const QSet<QUmlUseCase *> QUmlClassifier::useCases() const
 {
@@ -675,6 +861,11 @@ const QSet<QUmlUseCase *> QUmlClassifier::useCases() const
     return _useCases;
 }
 
+/*!
+    Adds \a useCase to useCases.
+
+    \sa useCases(), removeUseCase()
+ */
 void QUmlClassifier::addUseCase(QUmlUseCase *useCase)
 {
     // This is a read-write association end
@@ -691,6 +882,11 @@ void QUmlClassifier::addUseCase(QUmlUseCase *useCase)
     }
 }
 
+/*!
+    Removes \a useCase from useCases.
+
+    \sa useCases(), addUseCase()
+ */
 void QUmlClassifier::removeUseCase(QUmlUseCase *useCase)
 {
     // This is a read-write association end

@@ -72,6 +72,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A read is classified object action is an action that determines whether a runtime object is classified by a given classifier.
  */
+
+/*!
+    Creates a new QUmlReadIsClassifiedObjectAction. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlReadIsClassifiedObjectAction::QUmlReadIsClassifiedObjectAction(bool createQModelingObject) :
     _classifier(0),
     _isDirect(false),
@@ -82,6 +86,9 @@ QUmlReadIsClassifiedObjectAction::QUmlReadIsClassifiedObjectAction(bool createQM
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlReadIsClassifiedObjectActionObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlReadIsClassifiedObjectAction.
+*/
 QModelingElement *QUmlReadIsClassifiedObjectAction::clone() const
 {
     QUmlReadIsClassifiedObjectAction *c = new QUmlReadIsClassifiedObjectAction;
@@ -137,6 +144,9 @@ QUmlClassifier *QUmlReadIsClassifiedObjectAction::classifier() const
     return _classifier;
 }
 
+/*!
+    Adjusts classifier to \a classifier.
+ */
 void QUmlReadIsClassifiedObjectAction::setClassifier(QUmlClassifier *classifier)
 {
     // This is a read-write association end
@@ -158,6 +168,9 @@ bool QUmlReadIsClassifiedObjectAction::isDirect() const
     return _isDirect;
 }
 
+/*!
+    Adjusts isDirect to \a isDirect.
+ */
 void QUmlReadIsClassifiedObjectAction::setDirect(bool isDirect)
 {
     // This is a read-write property
@@ -170,6 +183,8 @@ void QUmlReadIsClassifiedObjectAction::setDirect(bool isDirect)
 
 /*!
     Holds the object whose classification is to be tested.
+
+    \b {Subsetted property(ies):} QUmlAction::inputs().
  */
 QUmlInputPin *QUmlReadIsClassifiedObjectAction::object() const
 {
@@ -178,6 +193,9 @@ QUmlInputPin *QUmlReadIsClassifiedObjectAction::object() const
     return _object;
 }
 
+/*!
+    Adjusts object to \a object.
+ */
 void QUmlReadIsClassifiedObjectAction::setObject(QUmlInputPin *object)
 {
     // This is a read-write association end
@@ -200,6 +218,8 @@ void QUmlReadIsClassifiedObjectAction::setObject(QUmlInputPin *object)
 
 /*!
     After termination of the action, will hold the result of the test.
+
+    \b {Subsetted property(ies):} QUmlAction::outputs().
  */
 QUmlOutputPin *QUmlReadIsClassifiedObjectAction::result() const
 {
@@ -208,6 +228,9 @@ QUmlOutputPin *QUmlReadIsClassifiedObjectAction::result() const
     return _result;
 }
 
+/*!
+    Adjusts result to \a result.
+ */
 void QUmlReadIsClassifiedObjectAction::setResult(QUmlOutputPin *result)
 {
     // This is a read-write association end

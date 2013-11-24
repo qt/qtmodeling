@@ -68,6 +68,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A variable is considered a connectable element.Variables are elements for passing data between actions indirectly. A local variable stores values shared by the actions within a structured activity group but not accessible outside it. The output of an action may be written to a variable and read for the input to a subsequent action, which is effectively an indirect data flow path. Because there is no predefined relationship between actions that read and write variables, these actions must be sequenced by control flows to prevent race conditions that may occur between actions that read or write the same variable.
  */
+
+/*!
+    Creates a new QUmlVariable. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlVariable::QUmlVariable(bool createQModelingObject) :
     _activityScope(0),
     _scope(0)
@@ -76,6 +80,9 @@ QUmlVariable::QUmlVariable(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlVariableObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlVariable.
+*/
 QModelingElement *QUmlVariable::clone() const
 {
     QUmlVariable *c = new QUmlVariable;
@@ -110,6 +117,10 @@ QModelingElement *QUmlVariable::clone() const
 
 /*!
     An activity that owns the variable.
+
+    \b {Subsetted property(ies):} QUmlNamedElement::namespace_().
+
+    \b {Opposite property(ies):} QUmlActivity::variables().
  */
 QUmlActivity *QUmlVariable::activityScope() const
 {
@@ -118,6 +129,9 @@ QUmlActivity *QUmlVariable::activityScope() const
     return _activityScope;
 }
 
+/*!
+    Adjusts activityScope to \a activityScope.
+ */
 void QUmlVariable::setActivityScope(QUmlActivity *activityScope)
 {
     // This is a read-write association end
@@ -136,6 +150,10 @@ void QUmlVariable::setActivityScope(QUmlActivity *activityScope)
 
 /*!
     A structured activity node that owns the variable.
+
+    \b {Subsetted property(ies):} QUmlNamedElement::namespace_().
+
+    \b {Opposite property(ies):} QUmlStructuredActivityNode::variables().
  */
 QUmlStructuredActivityNode *QUmlVariable::scope() const
 {
@@ -144,6 +162,9 @@ QUmlStructuredActivityNode *QUmlVariable::scope() const
     return _scope;
 }
 
+/*!
+    Adjusts scope to \a scope.
+ */
 void QUmlVariable::setScope(QUmlStructuredActivityNode *scope)
 {
     // This is a read-write association end

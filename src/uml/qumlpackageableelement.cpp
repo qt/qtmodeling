@@ -56,12 +56,21 @@ QT_BEGIN_NAMESPACE
     \inmodule QtUml
 
     \brief Packageable elements are able to serve as a template parameter.A packageable element indicates a named element that may be owned directly by a package.
+
+    \b {QUmlPackageableElement is an abstract class.}
  */
+
+/*!
+    Creates a new QUmlPackageableElement.
+*/
 QUmlPackageableElement::QUmlPackageableElement() :
     _visibility(QtUml::VisibilityKindPublic)
 {
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlPackageableElement.
+*/
 QModelingElement *QUmlPackageableElement::clone() const
 {
     QUmlPackageableElement *c = new QUmlPackageableElement;
@@ -84,6 +93,8 @@ QModelingElement *QUmlPackageableElement::clone() const
 
 /*!
     Indicates that packageable elements must always have a visibility, i.e., visibility is not optional.
+
+    \b {Redefined property(ies):} QUmlNamedElement::visibility().
  */
 QtUml::VisibilityKind QUmlPackageableElement::visibility() const
 {
@@ -92,6 +103,9 @@ QtUml::VisibilityKind QUmlPackageableElement::visibility() const
     return _visibility;
 }
 
+/*!
+    Adjusts visibility to \a visibility.
+ */
 void QUmlPackageableElement::setVisibility(QtUml::VisibilityKind visibility)
 {
     // This is a read-write property

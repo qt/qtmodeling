@@ -70,13 +70,22 @@ QT_BEGIN_NAMESPACE
     \inmodule QtUml
 
     \brief WriteStructuralFeatureAction is an abstract class for structural feature actions that change structural feature values.
+
+    \b {QUmlWriteStructuralFeatureAction is an abstract class.}
  */
+
+/*!
+    Creates a new QUmlWriteStructuralFeatureAction.
+*/
 QUmlWriteStructuralFeatureAction::QUmlWriteStructuralFeatureAction() :
     _result(0),
     _value(0)
 {
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlWriteStructuralFeatureAction.
+*/
 QModelingElement *QUmlWriteStructuralFeatureAction::clone() const
 {
     QUmlWriteStructuralFeatureAction *c = new QUmlWriteStructuralFeatureAction;
@@ -125,6 +134,8 @@ QModelingElement *QUmlWriteStructuralFeatureAction::clone() const
 
 /*!
     Gives the output pin on which the result is put.
+
+    \b {Subsetted property(ies):} QUmlAction::outputs().
  */
 QUmlOutputPin *QUmlWriteStructuralFeatureAction::result() const
 {
@@ -133,6 +144,9 @@ QUmlOutputPin *QUmlWriteStructuralFeatureAction::result() const
     return _result;
 }
 
+/*!
+    Adjusts result to \a result.
+ */
 void QUmlWriteStructuralFeatureAction::setResult(QUmlOutputPin *result)
 {
     // This is a read-write association end
@@ -155,6 +169,8 @@ void QUmlWriteStructuralFeatureAction::setResult(QUmlOutputPin *result)
 
 /*!
     Value to be added or removed from the structural feature.
+
+    \b {Subsetted property(ies):} QUmlAction::inputs().
  */
 QUmlInputPin *QUmlWriteStructuralFeatureAction::value() const
 {
@@ -163,6 +179,9 @@ QUmlInputPin *QUmlWriteStructuralFeatureAction::value() const
     return _value;
 }
 
+/*!
+    Adjusts value to \a value.
+ */
 void QUmlWriteStructuralFeatureAction::setValue(QUmlInputPin *value)
 {
     // This is a read-write association end

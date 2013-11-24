@@ -71,6 +71,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A protocol transition specifies a legal transition for an operation. Transitions of protocol state machines have the following information: a pre condition (guard), on trigger, and a post condition. Every protocol transition is associated to zero or one operation (referred BehavioralFeature) that belongs to the context classifier of the protocol state machine.
  */
+
+/*!
+    Creates a new QUmlProtocolTransition. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlProtocolTransition::QUmlProtocolTransition(bool createQModelingObject) :
     QUmlTransition(false),
     _postCondition(0),
@@ -80,6 +84,9 @@ QUmlProtocolTransition::QUmlProtocolTransition(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlProtocolTransitionObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlProtocolTransition.
+*/
 QModelingElement *QUmlProtocolTransition::clone() const
 {
     QUmlProtocolTransition *c = new QUmlProtocolTransition;
@@ -124,6 +131,8 @@ QModelingElement *QUmlProtocolTransition::clone() const
 
 /*!
     Specifies the post condition of the transition which is the condition that should be obtained once the transition is triggered. This post condition is part of the post condition of the operation connected to the transition.
+
+    \b {Subsetted property(ies):} QUmlNamespace::ownedRules().
  */
 QUmlConstraint *QUmlProtocolTransition::postCondition() const
 {
@@ -132,6 +141,9 @@ QUmlConstraint *QUmlProtocolTransition::postCondition() const
     return _postCondition;
 }
 
+/*!
+    Adjusts postCondition to \a postCondition.
+ */
 void QUmlProtocolTransition::setPostCondition(QUmlConstraint *postCondition)
 {
     // This is a read-write association end
@@ -154,6 +166,8 @@ void QUmlProtocolTransition::setPostCondition(QUmlConstraint *postCondition)
 
 /*!
     Specifies the precondition of the transition. It specifies the condition that should be verified before triggering the transition. This guard condition added to the source state will be evaluated as part of the precondition of the operation referred by the transition if any.
+
+    \b {Subsetted property(ies):} QUmlTransition::guard().
  */
 QUmlConstraint *QUmlProtocolTransition::preCondition() const
 {
@@ -162,6 +176,9 @@ QUmlConstraint *QUmlProtocolTransition::preCondition() const
     return _preCondition;
 }
 
+/*!
+    Adjusts preCondition to \a preCondition.
+ */
 void QUmlProtocolTransition::setPreCondition(QUmlConstraint *preCondition)
 {
     // This is a read-write association end
@@ -181,6 +198,8 @@ void QUmlProtocolTransition::setPreCondition(QUmlConstraint *preCondition)
 
 /*!
     This association refers to the associated operation. It is derived from the operation of the call trigger when applicable.
+
+    \b {This is a read-only derived property.}
  */
 const QSet<QUmlOperation *> QUmlProtocolTransition::referred() const
 {
@@ -191,6 +210,11 @@ const QSet<QUmlOperation *> QUmlProtocolTransition::referred() const
     return QSet<QUmlOperation *>();
 }
 
+/*!
+    Adds \a referred to referred.
+
+    \sa referred(), removeReferred()
+ */
 void QUmlProtocolTransition::addReferred(QUmlOperation *referred)
 {
     // This is a read-only derived association end
@@ -203,6 +227,11 @@ void QUmlProtocolTransition::addReferred(QUmlOperation *referred)
     }
 }
 
+/*!
+    Removes \a referred from referred.
+
+    \sa referred(), addReferred()
+ */
 void QUmlProtocolTransition::removeReferred(QUmlOperation *referred)
 {
     // This is a read-only derived association end

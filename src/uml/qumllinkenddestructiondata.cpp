@@ -57,6 +57,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A link end destruction data is not an action. It is an element that identifies links. It identifies one end of a link to be destroyed by destroy link action.
  */
+
+/*!
+    Creates a new QUmlLinkEndDestructionData. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlLinkEndDestructionData::QUmlLinkEndDestructionData(bool createQModelingObject) :
     QUmlLinkEndData(false),
     _destroyAt(0),
@@ -66,6 +70,9 @@ QUmlLinkEndDestructionData::QUmlLinkEndDestructionData(bool createQModelingObjec
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlLinkEndDestructionDataObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlLinkEndDestructionData.
+*/
 QModelingElement *QUmlLinkEndDestructionData::clone() const
 {
     QUmlLinkEndDestructionData *c = new QUmlLinkEndDestructionData;
@@ -95,6 +102,9 @@ QUmlInputPin *QUmlLinkEndDestructionData::destroyAt() const
     return _destroyAt;
 }
 
+/*!
+    Adjusts destroyAt to \a destroyAt.
+ */
 void QUmlLinkEndDestructionData::setDestroyAt(QUmlInputPin *destroyAt)
 {
     // This is a read-write association end
@@ -116,6 +126,9 @@ bool QUmlLinkEndDestructionData::isDestroyDuplicates() const
     return _isDestroyDuplicates;
 }
 
+/*!
+    Adjusts isDestroyDuplicates to \a isDestroyDuplicates.
+ */
 void QUmlLinkEndDestructionData::setDestroyDuplicates(bool isDestroyDuplicates)
 {
     // This is a read-write property

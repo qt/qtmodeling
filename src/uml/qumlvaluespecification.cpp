@@ -59,11 +59,20 @@ QT_BEGIN_NAMESPACE
     \inmodule QtUml
 
     \brief ValueSpecification specializes ParameterableElement to specify that a value specification can be exposed as a formal template parameter, and provided as an actual parameter in a binding of a template.A value specification is the specification of a (possibly empty) set of instances, including both objects and data values.
+
+    \b {QUmlValueSpecification is an abstract class.}
  */
+
+/*!
+    Creates a new QUmlValueSpecification.
+*/
 QUmlValueSpecification::QUmlValueSpecification()
 {
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlValueSpecification.
+*/
 QModelingElement *QUmlValueSpecification::clone() const
 {
     QUmlValueSpecification *c = new QUmlValueSpecification;

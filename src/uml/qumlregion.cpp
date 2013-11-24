@@ -67,6 +67,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A region is an orthogonal part of either a composite state or a state machine. It contains states and transitions.
  */
+
+/*!
+    Creates a new QUmlRegion. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlRegion::QUmlRegion(bool createQModelingObject) :
     _extendedRegion(0),
     _state(0),
@@ -76,6 +80,9 @@ QUmlRegion::QUmlRegion(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlRegionObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlRegion.
+*/
 QModelingElement *QUmlRegion::clone() const
 {
     QUmlRegion *c = new QUmlRegion;
@@ -111,6 +118,8 @@ QModelingElement *QUmlRegion::clone() const
 
 /*!
     The region of which this region is an extension.
+
+    \b {Subsetted property(ies):} QUmlRedefinableElement::redefinedElements().
  */
 QUmlRegion *QUmlRegion::extendedRegion() const
 {
@@ -119,6 +128,9 @@ QUmlRegion *QUmlRegion::extendedRegion() const
     return _extendedRegion;
 }
 
+/*!
+    Adjusts extendedRegion to \a extendedRegion.
+ */
 void QUmlRegion::setExtendedRegion(QUmlRegion *extendedRegion)
 {
     // This is a read-write association end
@@ -140,6 +152,10 @@ void QUmlRegion::setExtendedRegion(QUmlRegion *extendedRegion)
 
 /*!
     References the classifier in which context this element may be redefined.
+
+    \b {This is a read-only derived property.}
+
+    \b {Redefined property(ies):} QUmlRedefinableElement::redefinitionContexts().
  */
 QUmlClassifier *QUmlRegion::redefinitionContext() const
 {
@@ -150,6 +166,9 @@ QUmlClassifier *QUmlRegion::redefinitionContext() const
     return 0;
 }
 
+/*!
+    Adjusts redefinitionContext to \a redefinitionContext.
+ */
 void QUmlRegion::setRedefinitionContext(QUmlClassifier *redefinitionContext)
 {
     // This is a read-only derived association end
@@ -171,6 +190,10 @@ void QUmlRegion::setRedefinitionContext(QUmlClassifier *redefinitionContext)
 
 /*!
     The State that owns the Region. If a Region is owned by a State, then it cannot also be owned by a StateMachine.
+
+    \b {Subsetted property(ies):} QUmlNamedElement::namespace_().
+
+    \b {Opposite property(ies):} QUmlState::regions().
  */
 QUmlState *QUmlRegion::state() const
 {
@@ -179,6 +202,9 @@ QUmlState *QUmlRegion::state() const
     return _state;
 }
 
+/*!
+    Adjusts state to \a state.
+ */
 void QUmlRegion::setState(QUmlState *state)
 {
     // This is a read-write association end
@@ -197,6 +223,10 @@ void QUmlRegion::setState(QUmlState *state)
 
 /*!
     The StateMachine that owns the Region. If a Region is owned by a StateMachine, then it cannot also be owned by a State.
+
+    \b {Subsetted property(ies):} QUmlNamedElement::namespace_().
+
+    \b {Opposite property(ies):} QUmlStateMachine::regions().
  */
 QUmlStateMachine *QUmlRegion::stateMachine() const
 {
@@ -205,6 +235,9 @@ QUmlStateMachine *QUmlRegion::stateMachine() const
     return _stateMachine;
 }
 
+/*!
+    Adjusts stateMachine to \a stateMachine.
+ */
 void QUmlRegion::setStateMachine(QUmlStateMachine *stateMachine)
 {
     // This is a read-write association end
@@ -223,6 +256,12 @@ void QUmlRegion::setStateMachine(QUmlStateMachine *stateMachine)
 
 /*!
     The set of vertices that are owned by this region.
+
+    \sa addSubvertex(), removeSubvertex()
+
+    \b {Subsetted property(ies):} QUmlNamespace::ownedMembers().
+
+    \b {Opposite property(ies):} QUmlVertex::container().
  */
 const QSet<QUmlVertex *> QUmlRegion::subvertices() const
 {
@@ -231,6 +270,11 @@ const QSet<QUmlVertex *> QUmlRegion::subvertices() const
     return _subvertices;
 }
 
+/*!
+    Adds \a subvertex to subvertices.
+
+    \sa subvertices(), removeSubvertex()
+ */
 void QUmlRegion::addSubvertex(QUmlVertex *subvertex)
 {
     // This is a read-write association end
@@ -251,6 +295,11 @@ void QUmlRegion::addSubvertex(QUmlVertex *subvertex)
     }
 }
 
+/*!
+    Removes \a subvertex from subvertices.
+
+    \sa subvertices(), addSubvertex()
+ */
 void QUmlRegion::removeSubvertex(QUmlVertex *subvertex)
 {
     // This is a read-write association end
@@ -272,6 +321,12 @@ void QUmlRegion::removeSubvertex(QUmlVertex *subvertex)
 
 /*!
     The set of transitions owned by the region.
+
+    \sa addTransition(), removeTransition()
+
+    \b {Subsetted property(ies):} QUmlNamespace::ownedMembers().
+
+    \b {Opposite property(ies):} QUmlTransition::container().
  */
 const QSet<QUmlTransition *> QUmlRegion::transitions() const
 {
@@ -280,6 +335,11 @@ const QSet<QUmlTransition *> QUmlRegion::transitions() const
     return _transitions;
 }
 
+/*!
+    Adds \a transition to transitions.
+
+    \sa transitions(), removeTransition()
+ */
 void QUmlRegion::addTransition(QUmlTransition *transition)
 {
     // This is a read-write association end
@@ -300,6 +360,11 @@ void QUmlRegion::addTransition(QUmlTransition *transition)
     }
 }
 
+/*!
+    Removes \a transition from transitions.
+
+    \sa transitions(), addTransition()
+ */
 void QUmlRegion::removeTransition(QUmlTransition *transition)
 {
     // This is a read-write association end

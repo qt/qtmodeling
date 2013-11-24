@@ -58,11 +58,20 @@ QT_BEGIN_NAMESPACE
     \inmodule QtUml
 
     \brief Observation is a superclass of TimeObservation and DurationObservation in order for TimeExpression and Duration to refer to either in a simple way.
+
+    \b {QUmlObservation is an abstract class.}
  */
+
+/*!
+    Creates a new QUmlObservation.
+*/
 QUmlObservation::QUmlObservation()
 {
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlObservation.
+*/
 QModelingElement *QUmlObservation::clone() const
 {
     QUmlObservation *c = new QUmlObservation;

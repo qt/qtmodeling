@@ -73,12 +73,19 @@ QT_BEGIN_NAMESPACE
 
     \brief An output pin is a pin that holds output values produced by an action.
  */
+
+/*!
+    Creates a new QUmlOutputPin. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlOutputPin::QUmlOutputPin(bool createQModelingObject)
 {
     if (createQModelingObject)
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlOutputPinObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlOutputPin.
+*/
 QModelingElement *QUmlOutputPin::clone() const
 {
     QUmlOutputPin *c = new QUmlOutputPin;

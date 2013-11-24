@@ -70,6 +70,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A decision node is a control node that chooses between outgoing flows.
  */
+
+/*!
+    Creates a new QUmlDecisionNode. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlDecisionNode::QUmlDecisionNode(bool createQModelingObject) :
     _decisionInput(0),
     _decisionInputFlow(0)
@@ -78,6 +82,9 @@ QUmlDecisionNode::QUmlDecisionNode(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlDecisionNodeObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlDecisionNode.
+*/
 QModelingElement *QUmlDecisionNode::clone() const
 {
     QUmlDecisionNode *c = new QUmlDecisionNode;
@@ -123,6 +130,9 @@ QUmlBehavior *QUmlDecisionNode::decisionInput() const
     return _decisionInput;
 }
 
+/*!
+    Adjusts decisionInput to \a decisionInput.
+ */
 void QUmlDecisionNode::setDecisionInput(QUmlBehavior *decisionInput)
 {
     // This is a read-write association end
@@ -144,6 +154,9 @@ QUmlObjectFlow *QUmlDecisionNode::decisionInputFlow() const
     return _decisionInputFlow;
 }
 
+/*!
+    Adjusts decisionInputFlow to \a decisionInputFlow.
+ */
 void QUmlDecisionNode::setDecisionInputFlow(QUmlObjectFlow *decisionInputFlow)
 {
     // This is a read-write association end

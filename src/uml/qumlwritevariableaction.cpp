@@ -70,12 +70,21 @@ QT_BEGIN_NAMESPACE
     \inmodule QtUml
 
     \brief WriteVariableAction is an abstract class for variable actions that change variable values.
+
+    \b {QUmlWriteVariableAction is an abstract class.}
  */
+
+/*!
+    Creates a new QUmlWriteVariableAction.
+*/
 QUmlWriteVariableAction::QUmlWriteVariableAction() :
     _value(0)
 {
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlWriteVariableAction.
+*/
 QModelingElement *QUmlWriteVariableAction::clone() const
 {
     QUmlWriteVariableAction *c = new QUmlWriteVariableAction;
@@ -120,6 +129,8 @@ QModelingElement *QUmlWriteVariableAction::clone() const
 
 /*!
     Value to be added or removed from the variable.
+
+    \b {Subsetted property(ies):} QUmlAction::inputs().
  */
 QUmlInputPin *QUmlWriteVariableAction::value() const
 {
@@ -128,6 +139,9 @@ QUmlInputPin *QUmlWriteVariableAction::value() const
     return _value;
 }
 
+/*!
+    Adjusts value to \a value.
+ */
 void QUmlWriteVariableAction::setValue(QUmlInputPin *value)
 {
     // This is a read-write association end

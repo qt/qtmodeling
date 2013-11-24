@@ -72,6 +72,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A raise exception action is an action that causes an exception to occur. The input value becomes the exception object.
  */
+
+/*!
+    Creates a new QUmlRaiseExceptionAction. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlRaiseExceptionAction::QUmlRaiseExceptionAction(bool createQModelingObject) :
     _exception(0)
 {
@@ -79,6 +83,9 @@ QUmlRaiseExceptionAction::QUmlRaiseExceptionAction(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlRaiseExceptionActionObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlRaiseExceptionAction.
+*/
 QModelingElement *QUmlRaiseExceptionAction::clone() const
 {
     QUmlRaiseExceptionAction *c = new QUmlRaiseExceptionAction;
@@ -121,6 +128,8 @@ QModelingElement *QUmlRaiseExceptionAction::clone() const
 
 /*!
     An input pin whose value becomes an exception object.
+
+    \b {Subsetted property(ies):} QUmlAction::inputs().
  */
 QUmlInputPin *QUmlRaiseExceptionAction::exception() const
 {
@@ -129,6 +138,9 @@ QUmlInputPin *QUmlRaiseExceptionAction::exception() const
     return _exception;
 }
 
+/*!
+    Adjusts exception to \a exception.
+ */
 void QUmlRaiseExceptionAction::setException(QUmlInputPin *exception)
 {
     // This is a read-write association end

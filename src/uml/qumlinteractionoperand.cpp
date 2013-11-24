@@ -66,6 +66,10 @@ QT_BEGIN_NAMESPACE
 
     \brief An interaction operand is contained in a combined fragment. An interaction operand represents one operand of the expression given by the enclosing combined fragment.
  */
+
+/*!
+    Creates a new QUmlInteractionOperand. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlInteractionOperand::QUmlInteractionOperand(bool createQModelingObject) :
     _guard(0)
 {
@@ -73,6 +77,9 @@ QUmlInteractionOperand::QUmlInteractionOperand(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlInteractionOperandObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlInteractionOperand.
+*/
 QModelingElement *QUmlInteractionOperand::clone() const
 {
     QUmlInteractionOperand *c = new QUmlInteractionOperand;
@@ -109,6 +116,12 @@ QModelingElement *QUmlInteractionOperand::clone() const
 
 /*!
     The fragments of the operand.
+
+    \sa addFragment(), removeFragment()
+
+    \b {Subsetted property(ies):} QUmlNamespace::ownedMembers().
+
+    \b {Opposite property(ies):} QUmlInteractionFragment::enclosingOperand().
  */
 const QList<QUmlInteractionFragment *> QUmlInteractionOperand::fragments() const
 {
@@ -117,6 +130,11 @@ const QList<QUmlInteractionFragment *> QUmlInteractionOperand::fragments() const
     return _fragments;
 }
 
+/*!
+    Adds \a fragment to fragments.
+
+    \sa fragments(), removeFragment()
+ */
 void QUmlInteractionOperand::addFragment(QUmlInteractionFragment *fragment)
 {
     // This is a read-write association end
@@ -137,6 +155,11 @@ void QUmlInteractionOperand::addFragment(QUmlInteractionFragment *fragment)
     }
 }
 
+/*!
+    Removes \a fragment from fragments.
+
+    \sa fragments(), addFragment()
+ */
 void QUmlInteractionOperand::removeFragment(QUmlInteractionFragment *fragment)
 {
     // This is a read-write association end
@@ -158,6 +181,8 @@ void QUmlInteractionOperand::removeFragment(QUmlInteractionFragment *fragment)
 
 /*!
     Constraint of the operand.
+
+    \b {Subsetted property(ies):} QUmlElement::ownedElements().
  */
 QUmlInteractionConstraint *QUmlInteractionOperand::guard() const
 {
@@ -166,6 +191,9 @@ QUmlInteractionConstraint *QUmlInteractionOperand::guard() const
     return _guard;
 }
 
+/*!
+    Adjusts guard to \a guard.
+ */
 void QUmlInteractionOperand::setGuard(QUmlInteractionConstraint *guard)
 {
     // This is a read-write association end

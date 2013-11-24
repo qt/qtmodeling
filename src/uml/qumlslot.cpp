@@ -56,6 +56,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A slot specifies that an entity modeled by an instance specification has a value or values for a specific structural feature.
  */
+
+/*!
+    Creates a new QUmlSlot. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlSlot::QUmlSlot(bool createQModelingObject) :
     _definingFeature(0),
     _owningInstance(0)
@@ -64,6 +68,9 @@ QUmlSlot::QUmlSlot(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlSlotObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlSlot.
+*/
 QModelingElement *QUmlSlot::clone() const
 {
     QUmlSlot *c = new QUmlSlot;
@@ -90,6 +97,9 @@ QUmlStructuralFeature *QUmlSlot::definingFeature() const
     return _definingFeature;
 }
 
+/*!
+    Adjusts definingFeature to \a definingFeature.
+ */
 void QUmlSlot::setDefiningFeature(QUmlStructuralFeature *definingFeature)
 {
     // This is a read-write association end
@@ -103,6 +113,10 @@ void QUmlSlot::setDefiningFeature(QUmlStructuralFeature *definingFeature)
 
 /*!
     The instance specification that owns this slot.
+
+    \b {Subsetted property(ies):} QUmlElement::owner().
+
+    \b {Opposite property(ies):} QUmlInstanceSpecification::slots_().
  */
 QUmlInstanceSpecification *QUmlSlot::owningInstance() const
 {
@@ -111,6 +125,9 @@ QUmlInstanceSpecification *QUmlSlot::owningInstance() const
     return _owningInstance;
 }
 
+/*!
+    Adjusts owningInstance to \a owningInstance.
+ */
 void QUmlSlot::setOwningInstance(QUmlInstanceSpecification *owningInstance)
 {
     // This is a read-write association end
@@ -129,6 +146,10 @@ void QUmlSlot::setOwningInstance(QUmlInstanceSpecification *owningInstance)
 
 /*!
     The value or values corresponding to the defining feature for the owning instance specification.
+
+    \sa addValue(), removeValue()
+
+    \b {Subsetted property(ies):} QUmlElement::ownedElements().
  */
 const QList<QUmlValueSpecification *> QUmlSlot::values() const
 {
@@ -137,6 +158,11 @@ const QList<QUmlValueSpecification *> QUmlSlot::values() const
     return _values;
 }
 
+/*!
+    Adds \a value to values.
+
+    \sa values(), removeValue()
+ */
 void QUmlSlot::addValue(QUmlValueSpecification *value)
 {
     // This is a read-write association end
@@ -152,6 +178,11 @@ void QUmlSlot::addValue(QUmlValueSpecification *value)
     }
 }
 
+/*!
+    Removes \a value from values.
+
+    \sa values(), addValue()
+ */
 void QUmlSlot::removeValue(QUmlValueSpecification *value)
 {
     // This is a read-write association end

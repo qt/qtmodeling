@@ -73,6 +73,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A structured activity node is an executable activity node that may have an expansion into subordinate nodes as an activity group. The subordinate nodes must belong to only one structured activity node, although they may be nested.Because of the concurrent nature of the execution of actions within and across activities, it can be difficult to guarantee the consistent access and modification of object memory. In order to avoid race conditions or other concurrency-related problems, it is sometimes necessary to isolate the effects of a group of actions from the effects of actions outside the group. This may be indicated by setting the mustIsolate attribute to true on a structured activity node. If a structured activity node is "isolated," then any object used by an action within the node cannot be accessed by any action outside the node until the structured activity node as a whole completes. Any concurrent actions that would result in accessing such objects are required to have their execution deferred until the completion of the node.
  */
+
+/*!
+    Creates a new QUmlStructuredActivityNode. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlStructuredActivityNode::QUmlStructuredActivityNode(bool createQModelingObject) :
     _activity(0),
     _mustIsolate(false)
@@ -81,6 +85,9 @@ QUmlStructuredActivityNode::QUmlStructuredActivityNode(bool createQModelingObjec
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlStructuredActivityNodeObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlStructuredActivityNode.
+*/
 QModelingElement *QUmlStructuredActivityNode::clone() const
 {
     QUmlStructuredActivityNode *c = new QUmlStructuredActivityNode;
@@ -138,6 +145,10 @@ QModelingElement *QUmlStructuredActivityNode::clone() const
 
 /*!
     Activity immediately containing the node.
+
+    \b {Redefined property(ies):} QUmlActivityGroup::inActivity(), QUmlActivityNode::activity().
+
+    \b {Opposite property(ies):} QUmlActivity::structuredNodes().
  */
 QUmlActivity *QUmlStructuredActivityNode::activity() const
 {
@@ -146,6 +157,9 @@ QUmlActivity *QUmlStructuredActivityNode::activity() const
     return _activity;
 }
 
+/*!
+    Adjusts activity to \a activity.
+ */
 void QUmlStructuredActivityNode::setActivity(QUmlActivity *activity)
 {
     // This is a read-write association end
@@ -163,6 +177,12 @@ void QUmlStructuredActivityNode::setActivity(QUmlActivity *activity)
 
 /*!
     Edges immediately contained in the structured node.
+
+    \sa addEdge(), removeEdge()
+
+    \b {Subsetted property(ies):} QUmlActivityGroup::containedEdges(), QUmlElement::ownedElements().
+
+    \b {Opposite property(ies):} QUmlActivityEdge::inStructuredNode().
  */
 const QSet<QUmlActivityEdge *> QUmlStructuredActivityNode::edges() const
 {
@@ -171,6 +191,11 @@ const QSet<QUmlActivityEdge *> QUmlStructuredActivityNode::edges() const
     return _edges;
 }
 
+/*!
+    Adds \a edge to edges.
+
+    \sa edges(), removeEdge()
+ */
 void QUmlStructuredActivityNode::addEdge(QUmlActivityEdge *edge)
 {
     // This is a read-write association end
@@ -192,6 +217,11 @@ void QUmlStructuredActivityNode::addEdge(QUmlActivityEdge *edge)
     }
 }
 
+/*!
+    Removes \a edge from edges.
+
+    \sa edges(), addEdge()
+ */
 void QUmlStructuredActivityNode::removeEdge(QUmlActivityEdge *edge)
 {
     // This is a read-write association end
@@ -222,6 +252,9 @@ bool QUmlStructuredActivityNode::mustIsolate() const
     return _mustIsolate;
 }
 
+/*!
+    Adjusts mustIsolate to \a mustIsolate.
+ */
 void QUmlStructuredActivityNode::setMustIsolate(bool mustIsolate)
 {
     // This is a read-write property
@@ -234,6 +267,12 @@ void QUmlStructuredActivityNode::setMustIsolate(bool mustIsolate)
 
 /*!
     Nodes immediately contained in the group.
+
+    \sa addNode(), removeNode()
+
+    \b {Subsetted property(ies):} QUmlActivityGroup::containedNodes(), QUmlElement::ownedElements().
+
+    \b {Opposite property(ies):} QUmlActivityNode::inStructuredNode().
  */
 const QSet<QUmlActivityNode *> QUmlStructuredActivityNode::nodes() const
 {
@@ -242,6 +281,11 @@ const QSet<QUmlActivityNode *> QUmlStructuredActivityNode::nodes() const
     return _nodes;
 }
 
+/*!
+    Adds \a node to nodes.
+
+    \sa nodes(), removeNode()
+ */
 void QUmlStructuredActivityNode::addNode(QUmlActivityNode *node)
 {
     // This is a read-write association end
@@ -263,6 +307,11 @@ void QUmlStructuredActivityNode::addNode(QUmlActivityNode *node)
     }
 }
 
+/*!
+    Removes \a node from nodes.
+
+    \sa nodes(), addNode()
+ */
 void QUmlStructuredActivityNode::removeNode(QUmlActivityNode *node)
 {
     // This is a read-write association end
@@ -283,14 +332,12 @@ void QUmlStructuredActivityNode::removeNode(QUmlActivityNode *node)
     }
 }
 
-
 const QSet<QUmlInputPin *> QUmlStructuredActivityNode::structuredNodeInputs() const
 {
     // This is a read-write association end
 
     return _structuredNodeInputs;
 }
-
 void QUmlStructuredActivityNode::addStructuredNodeInput(QUmlInputPin *structuredNodeInput)
 {
     // This is a read-write association end
@@ -305,7 +352,6 @@ void QUmlStructuredActivityNode::addStructuredNodeInput(QUmlInputPin *structured
         addInput(structuredNodeInput);
     }
 }
-
 void QUmlStructuredActivityNode::removeStructuredNodeInput(QUmlInputPin *structuredNodeInput)
 {
     // This is a read-write association end
@@ -320,14 +366,12 @@ void QUmlStructuredActivityNode::removeStructuredNodeInput(QUmlInputPin *structu
     }
 }
 
-
 const QSet<QUmlOutputPin *> QUmlStructuredActivityNode::structuredNodeOutputs() const
 {
     // This is a read-write association end
 
     return _structuredNodeOutputs;
 }
-
 void QUmlStructuredActivityNode::addStructuredNodeOutput(QUmlOutputPin *structuredNodeOutput)
 {
     // This is a read-write association end
@@ -342,7 +386,6 @@ void QUmlStructuredActivityNode::addStructuredNodeOutput(QUmlOutputPin *structur
         addOutput(structuredNodeOutput);
     }
 }
-
 void QUmlStructuredActivityNode::removeStructuredNodeOutput(QUmlOutputPin *structuredNodeOutput)
 {
     // This is a read-write association end
@@ -359,6 +402,12 @@ void QUmlStructuredActivityNode::removeStructuredNodeOutput(QUmlOutputPin *struc
 
 /*!
     A variable defined in the scope of the structured activity node. It has no value and may not be accessed
+
+    \sa addVariable(), removeVariable()
+
+    \b {Subsetted property(ies):} QUmlNamespace::ownedMembers().
+
+    \b {Opposite property(ies):} QUmlVariable::scope().
  */
 const QSet<QUmlVariable *> QUmlStructuredActivityNode::variables() const
 {
@@ -367,6 +416,11 @@ const QSet<QUmlVariable *> QUmlStructuredActivityNode::variables() const
     return _variables;
 }
 
+/*!
+    Adds \a variable to variables.
+
+    \sa variables(), removeVariable()
+ */
 void QUmlStructuredActivityNode::addVariable(QUmlVariable *variable)
 {
     // This is a read-write association end
@@ -387,6 +441,11 @@ void QUmlStructuredActivityNode::addVariable(QUmlVariable *variable)
     }
 }
 
+/*!
+    Removes \a variable from variables.
+
+    \sa variables(), addVariable()
+ */
 void QUmlStructuredActivityNode::removeVariable(QUmlVariable *variable)
 {
     // This is a read-write association end

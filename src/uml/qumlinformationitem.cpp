@@ -78,12 +78,19 @@ QT_BEGIN_NAMESPACE
 
     \brief An information item is an abstraction of all kinds of information that can be exchanged between objects. It is a kind of classifier intended for representing information in a very abstract way, one which cannot be instantiated.
  */
+
+/*!
+    Creates a new QUmlInformationItem. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlInformationItem::QUmlInformationItem(bool createQModelingObject)
 {
     if (createQModelingObject)
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlInformationItemObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlInformationItem.
+*/
 QModelingElement *QUmlInformationItem::clone() const
 {
     QUmlInformationItem *c = new QUmlInformationItem;
@@ -139,6 +146,8 @@ QModelingElement *QUmlInformationItem::clone() const
 
 /*!
     Determines the classifiers that will specify the structure and nature of the information. An information item represents all its represented classifiers.
+
+    \sa addRepresented(), removeRepresented()
  */
 const QSet<QUmlClassifier *> QUmlInformationItem::represented() const
 {
@@ -147,6 +156,11 @@ const QSet<QUmlClassifier *> QUmlInformationItem::represented() const
     return _represented;
 }
 
+/*!
+    Adds \a represented to represented.
+
+    \sa represented(), removeRepresented()
+ */
 void QUmlInformationItem::addRepresented(QUmlClassifier *represented)
 {
     // This is a read-write association end
@@ -158,6 +172,11 @@ void QUmlInformationItem::addRepresented(QUmlClassifier *represented)
     }
 }
 
+/*!
+    Removes \a represented from represented.
+
+    \sa represented(), addRepresented()
+ */
 void QUmlInformationItem::removeRepresented(QUmlClassifier *represented)
 {
     // This is a read-write association end

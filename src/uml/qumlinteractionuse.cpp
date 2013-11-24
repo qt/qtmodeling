@@ -66,6 +66,10 @@ QT_BEGIN_NAMESPACE
 
     \brief An interaction use refers to an interaction. The interaction use is a shorthand for copying the contents of the referenced interaction where the interaction use is. To be accurate the copying must take into account substituting parameters with arguments and connect the formal gates with the actual ones.
  */
+
+/*!
+    Creates a new QUmlInteractionUse. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlInteractionUse::QUmlInteractionUse(bool createQModelingObject) :
     _refersTo(0),
     _returnValue(0),
@@ -75,6 +79,9 @@ QUmlInteractionUse::QUmlInteractionUse(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlInteractionUseObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlInteractionUse.
+*/
 QModelingElement *QUmlInteractionUse::clone() const
 {
     QUmlInteractionUse *c = new QUmlInteractionUse;
@@ -111,6 +118,10 @@ QModelingElement *QUmlInteractionUse::clone() const
 
 /*!
     The actual gates of the InteractionUse
+
+    \sa addActualGate(), removeActualGate()
+
+    \b {Subsetted property(ies):} QUmlElement::ownedElements().
  */
 const QSet<QUmlGate *> QUmlInteractionUse::actualGates() const
 {
@@ -119,6 +130,11 @@ const QSet<QUmlGate *> QUmlInteractionUse::actualGates() const
     return _actualGates;
 }
 
+/*!
+    Adds \a actualGate to actualGates.
+
+    \sa actualGates(), removeActualGate()
+ */
 void QUmlInteractionUse::addActualGate(QUmlGate *actualGate)
 {
     // This is a read-write association end
@@ -134,6 +150,11 @@ void QUmlInteractionUse::addActualGate(QUmlGate *actualGate)
     }
 }
 
+/*!
+    Removes \a actualGate from actualGates.
+
+    \sa actualGates(), addActualGate()
+ */
 void QUmlInteractionUse::removeActualGate(QUmlGate *actualGate)
 {
     // This is a read-write association end
@@ -150,6 +171,10 @@ void QUmlInteractionUse::removeActualGate(QUmlGate *actualGate)
 
 /*!
     The actual arguments of the Interaction
+
+    \sa addArgument(), removeArgument()
+
+    \b {Subsetted property(ies):} QUmlElement::ownedElements().
  */
 const QList<QUmlValueSpecification *> QUmlInteractionUse::arguments() const
 {
@@ -158,6 +183,11 @@ const QList<QUmlValueSpecification *> QUmlInteractionUse::arguments() const
     return _arguments;
 }
 
+/*!
+    Adds \a argument to arguments.
+
+    \sa arguments(), removeArgument()
+ */
 void QUmlInteractionUse::addArgument(QUmlValueSpecification *argument)
 {
     // This is a read-write association end
@@ -173,6 +203,11 @@ void QUmlInteractionUse::addArgument(QUmlValueSpecification *argument)
     }
 }
 
+/*!
+    Removes \a argument from arguments.
+
+    \sa arguments(), addArgument()
+ */
 void QUmlInteractionUse::removeArgument(QUmlValueSpecification *argument)
 {
     // This is a read-write association end
@@ -197,6 +232,9 @@ QUmlInteraction *QUmlInteractionUse::refersTo() const
     return _refersTo;
 }
 
+/*!
+    Adjusts refersTo to \a refersTo.
+ */
 void QUmlInteractionUse::setRefersTo(QUmlInteraction *refersTo)
 {
     // This is a read-write association end
@@ -210,6 +248,8 @@ void QUmlInteractionUse::setRefersTo(QUmlInteraction *refersTo)
 
 /*!
     The value of the executed Interaction.
+
+    \b {Subsetted property(ies):} QUmlElement::ownedElements().
  */
 QUmlValueSpecification *QUmlInteractionUse::returnValue() const
 {
@@ -218,6 +258,9 @@ QUmlValueSpecification *QUmlInteractionUse::returnValue() const
     return _returnValue;
 }
 
+/*!
+    Adjusts returnValue to \a returnValue.
+ */
 void QUmlInteractionUse::setReturnValue(QUmlValueSpecification *returnValue)
 {
     // This is a read-write association end
@@ -248,6 +291,9 @@ QUmlProperty *QUmlInteractionUse::returnValueRecipient() const
     return _returnValueRecipient;
 }
 
+/*!
+    Adjusts returnValueRecipient to \a returnValueRecipient.
+ */
 void QUmlInteractionUse::setReturnValueRecipient(QUmlProperty *returnValueRecipient)
 {
     // This is a read-write association end

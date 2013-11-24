@@ -63,6 +63,10 @@ QT_BEGIN_NAMESPACE
 
     \brief An instance value is a value specification that identifies an instance.
  */
+
+/*!
+    Creates a new QUmlInstanceValue. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlInstanceValue::QUmlInstanceValue(bool createQModelingObject) :
     _instance(0)
 {
@@ -70,6 +74,9 @@ QUmlInstanceValue::QUmlInstanceValue(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlInstanceValueObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlInstanceValue.
+*/
 QModelingElement *QUmlInstanceValue::clone() const
 {
     QUmlInstanceValue *c = new QUmlInstanceValue;
@@ -104,6 +111,9 @@ QUmlInstanceSpecification *QUmlInstanceValue::instance() const
     return _instance;
 }
 
+/*!
+    Adjusts instance to \a instance.
+ */
 void QUmlInstanceValue::setInstance(QUmlInstanceSpecification *instance)
 {
     // This is a read-write association end

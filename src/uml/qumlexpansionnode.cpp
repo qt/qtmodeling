@@ -73,6 +73,10 @@ QT_BEGIN_NAMESPACE
 
     \brief An expansion node is an object node used to indicate a flow across the boundary of an expansion region. A flow into a region contains a collection that is broken into its individual elements inside the region, which is executed once per element. A flow out of a region combines individual elements into a collection for use outside the region.
  */
+
+/*!
+    Creates a new QUmlExpansionNode. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlExpansionNode::QUmlExpansionNode(bool createQModelingObject) :
     _regionAsInput(0),
     _regionAsOutput(0)
@@ -81,6 +85,9 @@ QUmlExpansionNode::QUmlExpansionNode(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlExpansionNodeObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlExpansionNode.
+*/
 QModelingElement *QUmlExpansionNode::clone() const
 {
     QUmlExpansionNode *c = new QUmlExpansionNode;
@@ -128,6 +135,8 @@ QModelingElement *QUmlExpansionNode::clone() const
 
 /*!
     The expansion region for which the node is an input.
+
+    \b {Opposite property(ies):} QUmlExpansionRegion::inputElements().
  */
 QUmlExpansionRegion *QUmlExpansionNode::regionAsInput() const
 {
@@ -136,6 +145,9 @@ QUmlExpansionRegion *QUmlExpansionNode::regionAsInput() const
     return _regionAsInput;
 }
 
+/*!
+    Adjusts regionAsInput to \a regionAsInput.
+ */
 void QUmlExpansionNode::setRegionAsInput(QUmlExpansionRegion *regionAsInput)
 {
     // This is a read-write association end
@@ -149,6 +161,8 @@ void QUmlExpansionNode::setRegionAsInput(QUmlExpansionRegion *regionAsInput)
 
 /*!
     The expansion region for which the node is an output.
+
+    \b {Opposite property(ies):} QUmlExpansionRegion::outputElements().
  */
 QUmlExpansionRegion *QUmlExpansionNode::regionAsOutput() const
 {
@@ -157,6 +171,9 @@ QUmlExpansionRegion *QUmlExpansionNode::regionAsOutput() const
     return _regionAsOutput;
 }
 
+/*!
+    Adjusts regionAsOutput to \a regionAsOutput.
+ */
 void QUmlExpansionNode::setRegionAsOutput(QUmlExpansionRegion *regionAsOutput)
 {
     // This is a read-write association end

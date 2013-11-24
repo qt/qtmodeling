@@ -62,12 +62,19 @@ QT_BEGIN_NAMESPACE
 
     \brief A literal null specifies the lack of a value.
  */
+
+/*!
+    Creates a new QUmlLiteralNull. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlLiteralNull::QUmlLiteralNull(bool createQModelingObject)
 {
     if (createQModelingObject)
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlLiteralNullObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlLiteralNull.
+*/
 QModelingElement *QUmlLiteralNull::clone() const
 {
     QUmlLiteralNull *c = new QUmlLiteralNull;

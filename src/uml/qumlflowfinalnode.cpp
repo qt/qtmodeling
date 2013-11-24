@@ -68,12 +68,19 @@ QT_BEGIN_NAMESPACE
 
     \brief A flow final node is a final node that terminates a flow.
  */
+
+/*!
+    Creates a new QUmlFlowFinalNode. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlFlowFinalNode::QUmlFlowFinalNode(bool createQModelingObject)
 {
     if (createQModelingObject)
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlFlowFinalNodeObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlFlowFinalNode.
+*/
 QModelingElement *QUmlFlowFinalNode::clone() const
 {
     QUmlFlowFinalNode *c = new QUmlFlowFinalNode;

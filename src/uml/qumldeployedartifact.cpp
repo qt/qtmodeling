@@ -55,11 +55,20 @@ QT_BEGIN_NAMESPACE
     \inmodule QtUml
 
     \brief A deployed artifact is an artifact or artifact instance that has been deployed to a deployment target.
+
+    \b {QUmlDeployedArtifact is an abstract class.}
  */
+
+/*!
+    Creates a new QUmlDeployedArtifact.
+*/
 QUmlDeployedArtifact::QUmlDeployedArtifact()
 {
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlDeployedArtifact.
+*/
 QModelingElement *QUmlDeployedArtifact::clone() const
 {
     QUmlDeployedArtifact *c = new QUmlDeployedArtifact;

@@ -89,6 +89,10 @@ QT_BEGIN_NAMESPACE
 
     \brief In the namespace of a component, all model elements that are involved in or related to its definition are either owned or imported explicitly. This may include, for example, use cases and dependencies (e.g. mappings), packages, components, and artifacts.A component represents a modular part of a system that encapsulates its contents and whose manifestation is replaceable within its environment.
  */
+
+/*!
+    Creates a new QUmlComponent. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlComponent::QUmlComponent(bool createQModelingObject) :
     QUmlClass(false),
     _isIndirectlyInstantiated(true)
@@ -97,6 +101,9 @@ QUmlComponent::QUmlComponent(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlComponentObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlComponent.
+*/
 QModelingElement *QUmlComponent::clone() const
 {
     QUmlComponent *c = new QUmlComponent;
@@ -180,6 +187,9 @@ bool QUmlComponent::isIndirectlyInstantiated() const
     return _isIndirectlyInstantiated;
 }
 
+/*!
+    Adjusts isIndirectlyInstantiated to \a isIndirectlyInstantiated.
+ */
 void QUmlComponent::setIndirectlyInstantiated(bool isIndirectlyInstantiated)
 {
     // This is a read-write property
@@ -192,6 +202,10 @@ void QUmlComponent::setIndirectlyInstantiated(bool isIndirectlyInstantiated)
 
 /*!
     The set of PackageableElements that a Component owns. In the namespace of a component, all model elements that are involved in or related to its definition may be owned or imported explicitly. These may include e.g. Classes, Interfaces, Components, Packages, Use cases, Dependencies (e.g. mappings), and Artifacts.
+
+    \sa addPackagedElement(), removePackagedElement()
+
+    \b {Subsetted property(ies):} QUmlNamespace::ownedMembers().
  */
 const QSet<QUmlPackageableElement *> QUmlComponent::packagedElements() const
 {
@@ -200,6 +214,11 @@ const QSet<QUmlPackageableElement *> QUmlComponent::packagedElements() const
     return _packagedElements;
 }
 
+/*!
+    Adds \a packagedElement to packagedElements.
+
+    \sa packagedElements(), removePackagedElement()
+ */
 void QUmlComponent::addPackagedElement(QUmlPackageableElement *packagedElement)
 {
     // This is a read-write association end
@@ -215,6 +234,11 @@ void QUmlComponent::addPackagedElement(QUmlPackageableElement *packagedElement)
     }
 }
 
+/*!
+    Removes \a packagedElement from packagedElements.
+
+    \sa packagedElements(), addPackagedElement()
+ */
 void QUmlComponent::removePackagedElement(QUmlPackageableElement *packagedElement)
 {
     // This is a read-write association end
@@ -231,6 +255,8 @@ void QUmlComponent::removePackagedElement(QUmlPackageableElement *packagedElemen
 
 /*!
     The interfaces that the component exposes to its environment. These interfaces may be Realized by the Component or any of its realizingClassifiers, or they may be the Interfaces that are provided by its public Ports.
+
+    \b {This is a read-only derived property.}
  */
 const QSet<QUmlInterface *> QUmlComponent::provided() const
 {
@@ -241,6 +267,11 @@ const QSet<QUmlInterface *> QUmlComponent::provided() const
     return QSet<QUmlInterface *>();
 }
 
+/*!
+    Adds \a provided to provided.
+
+    \sa provided(), removeProvided()
+ */
 void QUmlComponent::addProvided(QUmlInterface *provided)
 {
     // This is a read-only derived association end
@@ -253,6 +284,11 @@ void QUmlComponent::addProvided(QUmlInterface *provided)
     }
 }
 
+/*!
+    Removes \a provided from provided.
+
+    \sa provided(), addProvided()
+ */
 void QUmlComponent::removeProvided(QUmlInterface *provided)
 {
     // This is a read-only derived association end
@@ -267,6 +303,12 @@ void QUmlComponent::removeProvided(QUmlInterface *provided)
 
 /*!
     The set of Realizations owned by the Component. Realizations reference the Classifiers of which the Component is an abstraction; i.e., that realize its behavior.
+
+    \sa addRealization(), removeRealization()
+
+    \b {Subsetted property(ies):} QUmlElement::ownedElements().
+
+    \b {Opposite property(ies):} QUmlComponentRealization::abstraction().
  */
 const QSet<QUmlComponentRealization *> QUmlComponent::realizations() const
 {
@@ -275,6 +317,11 @@ const QSet<QUmlComponentRealization *> QUmlComponent::realizations() const
     return _realizations;
 }
 
+/*!
+    Adds \a realization to realizations.
+
+    \sa realizations(), removeRealization()
+ */
 void QUmlComponent::addRealization(QUmlComponentRealization *realization)
 {
     // This is a read-write association end
@@ -295,6 +342,11 @@ void QUmlComponent::addRealization(QUmlComponentRealization *realization)
     }
 }
 
+/*!
+    Removes \a realization from realizations.
+
+    \sa realizations(), addRealization()
+ */
 void QUmlComponent::removeRealization(QUmlComponentRealization *realization)
 {
     // This is a read-write association end
@@ -316,6 +368,8 @@ void QUmlComponent::removeRealization(QUmlComponentRealization *realization)
 
 /*!
     The interfaces that the component requires from other components in its environment in order to be able to offer its full set of provided functionality. These interfaces may be used by the Component or any of its realizingClassifiers, or they may be the Interfaces that are required by its public Ports.
+
+    \b {This is a read-only derived property.}
  */
 const QSet<QUmlInterface *> QUmlComponent::required() const
 {
@@ -326,6 +380,11 @@ const QSet<QUmlInterface *> QUmlComponent::required() const
     return QSet<QUmlInterface *>();
 }
 
+/*!
+    Adds \a required to required.
+
+    \sa required(), removeRequired()
+ */
 void QUmlComponent::addRequired(QUmlInterface *required)
 {
     // This is a read-only derived association end
@@ -338,6 +397,11 @@ void QUmlComponent::addRequired(QUmlInterface *required)
     }
 }
 
+/*!
+    Removes \a required from required.
+
+    \sa required(), addRequired()
+ */
 void QUmlComponent::removeRequired(QUmlInterface *required)
 {
     // This is a read-only derived association end

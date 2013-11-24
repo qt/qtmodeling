@@ -68,12 +68,19 @@ QT_BEGIN_NAMESPACE
 
     \brief An activity final node is a final node that stops all flows in an activity.
  */
+
+/*!
+    Creates a new QUmlActivityFinalNode. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlActivityFinalNode::QUmlActivityFinalNode(bool createQModelingObject)
 {
     if (createQModelingObject)
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlActivityFinalNodeObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlActivityFinalNode.
+*/
 QModelingElement *QUmlActivityFinalNode::clone() const
 {
     QUmlActivityFinalNode *c = new QUmlActivityFinalNode;

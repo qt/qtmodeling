@@ -63,6 +63,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A pseudostate is an abstraction that encompasses different types of transient vertices in the state machine graph.
  */
+
+/*!
+    Creates a new QUmlPseudostate. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlPseudostate::QUmlPseudostate(bool createQModelingObject) :
     _kind(QtUml::PseudostateKindInitial),
     _state(0),
@@ -72,6 +76,9 @@ QUmlPseudostate::QUmlPseudostate(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlPseudostateObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlPseudostate.
+*/
 QModelingElement *QUmlPseudostate::clone() const
 {
     QUmlPseudostate *c = new QUmlPseudostate;
@@ -105,6 +112,9 @@ QtUml::PseudostateKind QUmlPseudostate::kind() const
     return _kind;
 }
 
+/*!
+    Adjusts kind to \a kind.
+ */
 void QUmlPseudostate::setKind(QtUml::PseudostateKind kind)
 {
     // This is a read-write property
@@ -117,6 +127,10 @@ void QUmlPseudostate::setKind(QtUml::PseudostateKind kind)
 
 /*!
     The State that owns this pseudostate and in which it appears.
+
+    \b {Subsetted property(ies):} QUmlNamedElement::namespace_().
+
+    \b {Opposite property(ies):} QUmlState::connectionPoints().
  */
 QUmlState *QUmlPseudostate::state() const
 {
@@ -125,6 +139,9 @@ QUmlState *QUmlPseudostate::state() const
     return _state;
 }
 
+/*!
+    Adjusts state to \a state.
+ */
 void QUmlPseudostate::setState(QUmlState *state)
 {
     // This is a read-write association end
@@ -143,6 +160,10 @@ void QUmlPseudostate::setState(QUmlState *state)
 
 /*!
     The StateMachine in which this Pseudostate is defined. This only applies to Pseudostates of the kind entryPoint or exitPoint.
+
+    \b {Subsetted property(ies):} QUmlNamedElement::namespace_().
+
+    \b {Opposite property(ies):} QUmlStateMachine::connectionPoints().
  */
 QUmlStateMachine *QUmlPseudostate::stateMachine() const
 {
@@ -151,6 +172,9 @@ QUmlStateMachine *QUmlPseudostate::stateMachine() const
     return _stateMachine;
 }
 
+/*!
+    Adjusts stateMachine to \a stateMachine.
+ */
 void QUmlPseudostate::setStateMachine(QUmlStateMachine *stateMachine)
 {
     // This is a read-write association end

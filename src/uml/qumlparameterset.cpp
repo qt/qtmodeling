@@ -60,12 +60,19 @@ QT_BEGIN_NAMESPACE
 
     \brief A parameter set is an element that provides alternative sets of inputs or outputs that a behavior may use.
  */
+
+/*!
+    Creates a new QUmlParameterSet. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlParameterSet::QUmlParameterSet(bool createQModelingObject)
 {
     if (createQModelingObject)
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlParameterSetObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlParameterSet.
+*/
 QModelingElement *QUmlParameterSet::clone() const
 {
     QUmlParameterSet *c = new QUmlParameterSet;
@@ -88,6 +95,10 @@ QModelingElement *QUmlParameterSet::clone() const
 
 /*!
     Constraint that should be satisfied for the owner of the parameters in an input parameter set to start execution using the values provided for those parameters, or the owner of the parameters in an output parameter set to end execution providing the values for those parameters, if all preconditions and conditions on input parameter sets were satisfied.
+
+    \sa addCondition(), removeCondition()
+
+    \b {Subsetted property(ies):} QUmlElement::ownedElements().
  */
 const QSet<QUmlConstraint *> QUmlParameterSet::conditions() const
 {
@@ -96,6 +107,11 @@ const QSet<QUmlConstraint *> QUmlParameterSet::conditions() const
     return _conditions;
 }
 
+/*!
+    Adds \a condition to conditions.
+
+    \sa conditions(), removeCondition()
+ */
 void QUmlParameterSet::addCondition(QUmlConstraint *condition)
 {
     // This is a read-write association end
@@ -111,6 +127,11 @@ void QUmlParameterSet::addCondition(QUmlConstraint *condition)
     }
 }
 
+/*!
+    Removes \a condition from conditions.
+
+    \sa conditions(), addCondition()
+ */
 void QUmlParameterSet::removeCondition(QUmlConstraint *condition)
 {
     // This is a read-write association end
@@ -127,6 +148,10 @@ void QUmlParameterSet::removeCondition(QUmlConstraint *condition)
 
 /*!
     Parameters in the parameter set.
+
+    \sa addParameter(), removeParameter()
+
+    \b {Opposite property(ies):} QUmlParameter::parameterSets().
  */
 const QSet<QUmlParameter *> QUmlParameterSet::parameters() const
 {
@@ -135,6 +160,11 @@ const QSet<QUmlParameter *> QUmlParameterSet::parameters() const
     return _parameters;
 }
 
+/*!
+    Adds \a parameter to parameters.
+
+    \sa parameters(), removeParameter()
+ */
 void QUmlParameterSet::addParameter(QUmlParameter *parameter)
 {
     // This is a read-write association end
@@ -151,6 +181,11 @@ void QUmlParameterSet::addParameter(QUmlParameter *parameter)
     }
 }
 
+/*!
+    Removes \a parameter from parameters.
+
+    \sa parameters(), addParameter()
+ */
 void QUmlParameterSet::removeParameter(QUmlParameter *parameter)
 {
     // This is a read-write association end

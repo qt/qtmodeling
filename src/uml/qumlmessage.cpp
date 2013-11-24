@@ -62,6 +62,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A message defines a particular communication between lifelines of an interaction.
  */
+
+/*!
+    Creates a new QUmlMessage. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlMessage::QUmlMessage(bool createQModelingObject) :
     _connector(0),
     _interaction(0),
@@ -74,6 +78,9 @@ QUmlMessage::QUmlMessage(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlMessageObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlMessage.
+*/
 QModelingElement *QUmlMessage::clone() const
 {
     QUmlMessage *c = new QUmlMessage;
@@ -105,6 +112,10 @@ QModelingElement *QUmlMessage::clone() const
 
 /*!
     The arguments of the Message
+
+    \sa addArgument(), removeArgument()
+
+    \b {Subsetted property(ies):} QUmlElement::ownedElements().
  */
 const QList<QUmlValueSpecification *> QUmlMessage::arguments() const
 {
@@ -113,6 +124,11 @@ const QList<QUmlValueSpecification *> QUmlMessage::arguments() const
     return _arguments;
 }
 
+/*!
+    Adds \a argument to arguments.
+
+    \sa arguments(), removeArgument()
+ */
 void QUmlMessage::addArgument(QUmlValueSpecification *argument)
 {
     // This is a read-write association end
@@ -128,6 +144,11 @@ void QUmlMessage::addArgument(QUmlValueSpecification *argument)
     }
 }
 
+/*!
+    Removes \a argument from arguments.
+
+    \sa arguments(), addArgument()
+ */
 void QUmlMessage::removeArgument(QUmlValueSpecification *argument)
 {
     // This is a read-write association end
@@ -152,6 +173,9 @@ QUmlConnector *QUmlMessage::connector() const
     return _connector;
 }
 
+/*!
+    Adjusts connector to \a connector.
+ */
 void QUmlMessage::setConnector(QUmlConnector *connector)
 {
     // This is a read-write association end
@@ -165,6 +189,10 @@ void QUmlMessage::setConnector(QUmlConnector *connector)
 
 /*!
     The enclosing Interaction owning the Message
+
+    \b {Subsetted property(ies):} QUmlNamedElement::namespace_().
+
+    \b {Opposite property(ies):} QUmlInteraction::messages().
  */
 QUmlInteraction *QUmlMessage::interaction() const
 {
@@ -173,6 +201,9 @@ QUmlInteraction *QUmlMessage::interaction() const
     return _interaction;
 }
 
+/*!
+    Adjusts interaction to \a interaction.
+ */
 void QUmlMessage::setInteraction(QUmlInteraction *interaction)
 {
     // This is a read-write association end
@@ -191,6 +222,8 @@ void QUmlMessage::setInteraction(QUmlInteraction *interaction)
 
 /*!
     The derived kind of the Message (complete, lost, found or unknown)
+
+    \b {This is a read-only derived property.}
  */
 QtUml::MessageKind QUmlMessage::messageKind() const
 {
@@ -201,6 +234,9 @@ QtUml::MessageKind QUmlMessage::messageKind() const
     return QtUml::MessageKind();
 }
 
+/*!
+    Adjusts messageKind to \a messageKind.
+ */
 void QUmlMessage::setMessageKind(QtUml::MessageKind messageKind)
 {
     // This is a read-only derived property
@@ -223,6 +259,9 @@ QtUml::MessageSort QUmlMessage::messageSort() const
     return _messageSort;
 }
 
+/*!
+    Adjusts messageSort to \a messageSort.
+ */
 void QUmlMessage::setMessageSort(QtUml::MessageSort messageSort)
 {
     // This is a read-write property
@@ -235,6 +274,8 @@ void QUmlMessage::setMessageSort(QtUml::MessageSort messageSort)
 
 /*!
     References the Receiving of the Message
+
+    \b {Subsetted property(ies):} .
  */
 QUmlMessageEnd *QUmlMessage::receiveEvent() const
 {
@@ -243,6 +284,9 @@ QUmlMessageEnd *QUmlMessage::receiveEvent() const
     return _receiveEvent;
 }
 
+/*!
+    Adjusts receiveEvent to \a receiveEvent.
+ */
 void QUmlMessage::setReceiveEvent(QUmlMessageEnd *receiveEvent)
 {
     // This is a read-write association end
@@ -256,6 +300,8 @@ void QUmlMessage::setReceiveEvent(QUmlMessageEnd *receiveEvent)
 
 /*!
     References the Sending of the Message.
+
+    \b {Subsetted property(ies):} .
  */
 QUmlMessageEnd *QUmlMessage::sendEvent() const
 {
@@ -264,6 +310,9 @@ QUmlMessageEnd *QUmlMessage::sendEvent() const
     return _sendEvent;
 }
 
+/*!
+    Adjusts sendEvent to \a sendEvent.
+ */
 void QUmlMessage::setSendEvent(QUmlMessageEnd *sendEvent)
 {
     // This is a read-write association end
@@ -285,6 +334,9 @@ QUmlNamedElement *QUmlMessage::signature() const
     return _signature;
 }
 
+/*!
+    Adjusts signature to \a signature.
+ */
 void QUmlMessage::setSignature(QUmlNamedElement *signature)
 {
     // This is a read-write association end

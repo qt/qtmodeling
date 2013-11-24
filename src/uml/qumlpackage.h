@@ -47,8 +47,6 @@
 #include <QtUml/QUmlPackageableElement>
 #include <QtUml/QUmlTemplateableElement>
 
-QT_BEGIN_HEADER
-
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
@@ -109,8 +107,6 @@ protected:
 QT_END_NAMESPACE
 
 Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE(QUmlPackage) *)
-
-QT_END_HEADER
 
 #endif // QUMLPACKAGE_H
 

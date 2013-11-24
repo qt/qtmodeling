@@ -64,6 +64,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A connection point reference represents a usage (as part of a submachine state) of an entry/exit point defined in the statemachine reference by the submachine state.
  */
+
+/*!
+    Creates a new QUmlConnectionPointReference. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlConnectionPointReference::QUmlConnectionPointReference(bool createQModelingObject) :
     _state(0)
 {
@@ -71,6 +75,9 @@ QUmlConnectionPointReference::QUmlConnectionPointReference(bool createQModelingO
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlConnectionPointReferenceObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlConnectionPointReference.
+*/
 QModelingElement *QUmlConnectionPointReference::clone() const
 {
     QUmlConnectionPointReference *c = new QUmlConnectionPointReference;
@@ -97,6 +104,8 @@ QModelingElement *QUmlConnectionPointReference::clone() const
 
 /*!
     The entryPoint kind pseudo states corresponding to this connection point.
+
+    \sa addEntry(), removeEntry()
  */
 const QSet<QUmlPseudostate *> QUmlConnectionPointReference::entries() const
 {
@@ -105,6 +114,11 @@ const QSet<QUmlPseudostate *> QUmlConnectionPointReference::entries() const
     return _entries;
 }
 
+/*!
+    Adds \a entry to entries.
+
+    \sa entries(), removeEntry()
+ */
 void QUmlConnectionPointReference::addEntry(QUmlPseudostate *entry)
 {
     // This is a read-write association end
@@ -116,6 +130,11 @@ void QUmlConnectionPointReference::addEntry(QUmlPseudostate *entry)
     }
 }
 
+/*!
+    Removes \a entry from entries.
+
+    \sa entries(), addEntry()
+ */
 void QUmlConnectionPointReference::removeEntry(QUmlPseudostate *entry)
 {
     // This is a read-write association end
@@ -127,6 +146,8 @@ void QUmlConnectionPointReference::removeEntry(QUmlPseudostate *entry)
 
 /*!
     The exitPoints kind pseudo states corresponding to this connection point.
+
+    \sa addExit(), removeExit()
  */
 const QSet<QUmlPseudostate *> QUmlConnectionPointReference::exits() const
 {
@@ -135,6 +156,11 @@ const QSet<QUmlPseudostate *> QUmlConnectionPointReference::exits() const
     return _exits;
 }
 
+/*!
+    Adds \a exit to exits.
+
+    \sa exits(), removeExit()
+ */
 void QUmlConnectionPointReference::addExit(QUmlPseudostate *exit)
 {
     // This is a read-write association end
@@ -146,6 +172,11 @@ void QUmlConnectionPointReference::addExit(QUmlPseudostate *exit)
     }
 }
 
+/*!
+    Removes \a exit from exits.
+
+    \sa exits(), addExit()
+ */
 void QUmlConnectionPointReference::removeExit(QUmlPseudostate *exit)
 {
     // This is a read-write association end
@@ -157,6 +188,10 @@ void QUmlConnectionPointReference::removeExit(QUmlPseudostate *exit)
 
 /*!
     The State in which the connection point refreshens are defined.
+
+    \b {Subsetted property(ies):} QUmlNamedElement::namespace_().
+
+    \b {Opposite property(ies):} QUmlState::connections().
  */
 QUmlState *QUmlConnectionPointReference::state() const
 {
@@ -165,6 +200,9 @@ QUmlState *QUmlConnectionPointReference::state() const
     return _state;
 }
 
+/*!
+    Adjusts state to \a state.
+ */
 void QUmlConnectionPointReference::setState(QUmlState *state)
 {
     // This is a read-write association end

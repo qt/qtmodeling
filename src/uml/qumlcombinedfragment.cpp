@@ -64,6 +64,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A combined fragment defines an expression of interaction fragments. A combined fragment is defined by an interaction operator and corresponding interaction operands. Through the use of combined fragments the user will be able to describe a number of traces in a compact and concise manner.
  */
+
+/*!
+    Creates a new QUmlCombinedFragment. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlCombinedFragment::QUmlCombinedFragment(bool createQModelingObject) :
     _interactionOperator(QtUml::InteractionOperatorKindSeq)
 {
@@ -71,6 +75,9 @@ QUmlCombinedFragment::QUmlCombinedFragment(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlCombinedFragmentObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlCombinedFragment.
+*/
 QModelingElement *QUmlCombinedFragment::clone() const
 {
     QUmlCombinedFragment *c = new QUmlCombinedFragment;
@@ -102,6 +109,10 @@ QModelingElement *QUmlCombinedFragment::clone() const
 
 /*!
     Specifies the gates that form the interface between this CombinedFragment and its surroundings
+
+    \sa addCfragmentGate(), removeCfragmentGate()
+
+    \b {Subsetted property(ies):} QUmlElement::ownedElements().
  */
 const QSet<QUmlGate *> QUmlCombinedFragment::cfragmentGates() const
 {
@@ -110,6 +121,11 @@ const QSet<QUmlGate *> QUmlCombinedFragment::cfragmentGates() const
     return _cfragmentGates;
 }
 
+/*!
+    Adds \a cfragmentGate to cfragmentGates.
+
+    \sa cfragmentGates(), removeCfragmentGate()
+ */
 void QUmlCombinedFragment::addCfragmentGate(QUmlGate *cfragmentGate)
 {
     // This is a read-write association end
@@ -125,6 +141,11 @@ void QUmlCombinedFragment::addCfragmentGate(QUmlGate *cfragmentGate)
     }
 }
 
+/*!
+    Removes \a cfragmentGate from cfragmentGates.
+
+    \sa cfragmentGates(), addCfragmentGate()
+ */
 void QUmlCombinedFragment::removeCfragmentGate(QUmlGate *cfragmentGate)
 {
     // This is a read-write association end
@@ -149,6 +170,9 @@ QtUml::InteractionOperatorKind QUmlCombinedFragment::interactionOperator() const
     return _interactionOperator;
 }
 
+/*!
+    Adjusts interactionOperator to \a interactionOperator.
+ */
 void QUmlCombinedFragment::setInteractionOperator(QtUml::InteractionOperatorKind interactionOperator)
 {
     // This is a read-write property
@@ -161,6 +185,10 @@ void QUmlCombinedFragment::setInteractionOperator(QtUml::InteractionOperatorKind
 
 /*!
     The set of operands of the combined fragment.
+
+    \sa addOperand(), removeOperand()
+
+    \b {Subsetted property(ies):} QUmlElement::ownedElements().
  */
 const QList<QUmlInteractionOperand *> QUmlCombinedFragment::operands() const
 {
@@ -169,6 +197,11 @@ const QList<QUmlInteractionOperand *> QUmlCombinedFragment::operands() const
     return _operands;
 }
 
+/*!
+    Adds \a operand to operands.
+
+    \sa operands(), removeOperand()
+ */
 void QUmlCombinedFragment::addOperand(QUmlInteractionOperand *operand)
 {
     // This is a read-write association end
@@ -184,6 +217,11 @@ void QUmlCombinedFragment::addOperand(QUmlInteractionOperand *operand)
     }
 }
 
+/*!
+    Removes \a operand from operands.
+
+    \sa operands(), addOperand()
+ */
 void QUmlCombinedFragment::removeOperand(QUmlInteractionOperand *operand)
 {
     // This is a read-write association end

@@ -72,6 +72,10 @@ QT_BEGIN_NAMESPACE
 
     \brief A special kind of state signifying that the enclosing region is completed. If the enclosing region is directly contained in a state machine and all other regions in the state machine also are completed, then it means that the entire state machine is completed.
  */
+
+/*!
+    Creates a new QUmlFinalState. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
+*/
 QUmlFinalState::QUmlFinalState(bool createQModelingObject) :
     QUmlState(false)
 {
@@ -79,6 +83,9 @@ QUmlFinalState::QUmlFinalState(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QUmlFinalStateObject(this));
 }
 
+/*!
+    Returns a deep-copied clone of the QUmlFinalState.
+*/
 QModelingElement *QUmlFinalState::clone() const
 {
     QUmlFinalState *c = new QUmlFinalState;
