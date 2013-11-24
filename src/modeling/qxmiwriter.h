@@ -45,8 +45,6 @@
 
 #include <QtCore/QObject>
 
-QT_BEGIN_HEADER
-
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtModeling)
@@ -55,7 +53,6 @@ class QIODevice;
 class QModelingObject;
 
 class QXmiWriterPrivate;
-
 class Q_MODELING_EXPORT QXmiWriter : public QObject
 {
     Q_OBJECT
@@ -76,8 +73,6 @@ protected:
 };
 
 QT_END_NAMESPACE
-
-QT_END_HEADER
 
 #endif // QTMODELING_QXMIWRITER_H
 

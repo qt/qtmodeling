@@ -48,8 +48,6 @@
 #include <QtCore/QPointer>
 #include <QtCore/QStringList>
 
-QT_BEGIN_HEADER
-
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtModeling)
@@ -57,23 +55,16 @@ QT_MODULE(QtModeling)
 class Q_MODELING_EXPORT QModelingElement
 {
 public:
-    virtual ~QModelingElement()
-    {
-        if (!deletingFromQModelingObject) {
-            if (_qModelingObject)
-                _qModelingObject->setProperty("deletingFromModelingObject", true);
-            delete _qModelingObject;
-        }
-    }
+    virtual ~QModelingElement();
 
-    inline QModelingObject *asQModelingObject() { return _qModelingObject; }
+    inline QModelingObject *asQModelingObject() const { return _qModelingObject; }
 
     bool deletingFromQModelingObject;
 
     virtual QModelingElement *clone() const = 0;
 
 protected:
-    QModelingElement() : deletingFromQModelingObject(false), _qModelingObject(0) {}
+    QModelingElement();
     QPointer<QModelingObject> _qModelingObject;
 };
 
@@ -92,6 +83,5 @@ QT_END_NAMESPACE
 
 Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE(QModelingElement) *)
 
-QT_END_HEADER
-
 #endif // QTMODELING_QMODELINGELEMENT_H
+

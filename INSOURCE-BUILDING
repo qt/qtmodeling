@@ -2,7 +2,7 @@ In order to build the QtModeling add-on inside Qt official repository the follow
 steps should be applied. Apparently a complete clean, init-repository, configure
 and make is needed.
 
-1) Build
+1) FOR INTEGRATED BUILD
 
 1.1) Clone qt5 repository
 
@@ -17,14 +17,14 @@ git submodule add ../qtmodeling.git
 
 1.5) Add the following line in qt.pro:
 
-addModule(qtmodeling, qtbase, qtdeclarative, qtscript)
+addModule(qtmodeling, qtbase, qtdeclarative qtscript)
 
-1.6) The previous files (.gitmodules, init-repository, and qt.pro) should be committed in
-     qt5 super-repository when qtmodeling is ready to be released
+1.6) The previous files (.gitmodules, init-repository, qt.pro, and the empty qtmodeling directory)
+     should be committed in qt5 super-repository when qtmodeling is ready to be released
 
 1.7) Init the repository:
 
-perl init-repository --module-subset=qtbase,qtdeclarative,qtscript,qtmodeling
+perl init-repository --module-subset=qtbase,qtdeclarative,qtscript,qtdoc,qtmodeling
 
 1.8) Configure Qt5:
 
@@ -34,110 +34,21 @@ perl init-repository --module-subset=qtbase,qtdeclarative,qtscript,qtmodeling
 
 make -j <#core+1>
 
-2) Documentation
+2) FOR INTEGRATED DOCUMENTATION GENERATION
 
-2.1) Apply the following patch
+2.1) Add the following lines in the add-on modules table described in qtdoc/doc/src/qtmodules.qdoc:
 
-diff --git a/doc/config/qt-project.qdocconf b/doc/config/qt-project.qdocconf
-index c6c1f4b..d8ba88a 100644
---- a/doc/config/qt-project.qdocconf
-+++ b/doc/config/qt-project.qdocconf
-@@ -71,6 +71,8 @@ include($QT_CONTACTS_QDOCCONF)
- include($QT_ORGANIZER_QDOCCONF)
- include($QT_VERSIT_QDOCCONF)
- include($QT_BLUETOOTH_QDOCCONF)
-+include($QT_UML_QDOCCONF)
-+include($QT_MOF_QDOCCONF)
+    \row
+        \li \l{Qt Modeling}
+        \li All
+        \li
+        \li Classes for software (meta)modeling features in Qt.
 
+2.2) Add 'qtmodeling' to the 'depends' variable in qtdoc/doc/config/qtdoc.qdocconf file
 
- imagedirs += images
-diff --git a/doc/doc.pri b/doc/doc.pri
-index d2f64ef..4a5eac3 100644
---- a/doc/doc.pri
-+++ b/doc/doc.pri
-@@ -48,7 +48,9 @@ MODULES = activeqt \
-           contacts \
-           organizer \
-           versit \
--          bluetooth
-+          bluetooth \
-+          uml \
-+          mof
+2.3) Add 'qtmodeling' to the 'depends' variable in qtbase/qmake/doc/qmake.qdocconf file
 
- # Pretend there is a doc module. Simplifies things a bit.
- QT.doc.sources = $$dirname(PWD)
-diff --git a/doc/src/modules.qdoc b/doc/src/modules.qdoc
-index 0fe1f68..d6bda9c 100644
---- a/doc/src/modules.qdoc
-+++ b/doc/src/modules.qdoc
-@@ -161,6 +161,16 @@
-             search via QML and C++ interfaces. Provides an NMEA backend for
-             positioning.
-     \row
-+        \li \l{QtUml Module}{Qt UML}
-+        \li All
-+        \li
-+        \li OMG's UML Qt-based implementation.
-+    \row
-+        \li \l{QtMof Module}{Qt MOF}
-+        \li All
-+        \li
-+        \li OMG's Meta Object Facility (MOF) Qt-based implementation.
-+    \row
-         \li \l{QtOpenGL}{Qt OpenGL}
-         \li
-         \li
+2.4) Add the following row in the appropriate location in qtbase/qmake/doc/src/qmake-manual.qdoc:
 
-2.2) Create the file qtdoc/doc/config/modules/qtmof.qdocconf containing:
+\row    \li modeling                   \li \l{Qt Modeling}
 
-# QT_MOF_SOURCES points to qtmof/src/mof
-
-headerdirs  += $QT_MOF_SOURCES \
-               $QT_MOF_SOURCES/../../examples/mof
-
-sourcedirs  += $QT_MOF_SOURCES \
-               $QT_MOF_SOURCES/../../examples/mof \
-               $QT_MOF_SOURCES/doc
-
-exampledirs += $QT_MOF_SOURCES/../../examples/mof \
-               $QT_MOF_SOURCES/doc/snippets
-
-imagedirs   += $QT_MOF_SOURCES/doc/images
-
-excludedirs += $QT_MOF_SOURCES/doc/snippets
-
-Cpp.ignoretokens += \
-    QT_BEGIN_NAMESPACE_MOF \
-    QT_END_NAMESPACE_MOF \
-    QT_BEGIN_NAMESPACE_MOF_COMMON \
-    QT_END_NAMESPACE_MOF_COMMON \
-    QT_BEGIN_NAMESPACE_MOF_REFLECTION \
-    QT_END_NAMESPACE_MOF_REFLECTION \
-    Q_MOF_EXPORT
-
-2.3) Create the file qtdoc/doc/config/modules/qtuml.qdocconf containing:
-
-# QT_UML_SOURCES points to qtmof/src/uml
-
-headerdirs  += $QT_UML_SOURCES \
-               $QT_UML_SOURCES/../../examples/uml
-
-sourcedirs  += $QT_UML_SOURCES \
-               $QT_UML_SOURCES/../../examples/uml \
-               $QT_UML_SOURCES/doc
-
-exampledirs += $QT_UML_SOURCES/../../examples/uml \
-               $QT_UML_SOURCES/doc/snippets
-
-imagedirs   += $QT_UML_SOURCES/doc/images
-
-excludedirs += $QT_UML_SOURCES/doc/snippets
-
-Cpp.ignoretokens += \
-    QT_BEGIN_NAMESPACE_UML \
-    QT_END_NAMESPACE_UML \
-    QT_BEGIN_NAMESPACE_UML_CLASSES \
-    QT_END_NAMESPACE_UML_CLASSES \
-    QT_BEGIN_NAMESPACE_UML_CLASSES_KERNEL \
-    QT_END_NAMESPACE_UML_CLASSES_KERNEL \
-    Q_UML_EXPORT

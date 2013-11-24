@@ -2,22 +2,22 @@ include($QT_INSTALL_DOCS/global/qt-module-defaults.qdocconf)
 
 project                 = QtModeling
 description             = Qt Modeling Reference Documentation
-url                     = http://qt-project.org/doc/qtmodeling
-version                 = 5.0.0
+url                     = http://qt-project.org/doc/qt-$QT_VER
+version                 = $QT_VERSION
 
 examplesinstallpath     = modeling
 
 qhp.projects            = QtModeling
 
 qhp.QtModeling.file            = qtmodeling.qhp
-qhp.QtModeling.namespace           = org.qt-project.qtmodeling.500
+qhp.QtModeling.namespace           = org.qt-project.qtmodeling.$QT_VERSION_TAG
 qhp.QtModeling.virtualFolder       = qtmodeling
 qhp.QtModeling.indexTitle          = Qt Modeling
 qhp.QtModeling.indexRoot           =
 
-qhp.QtModeling.filterAttributes    = qtmodeling 5.0.0 qtrefdoc
-qhp.QtModeling.customFilters.Qt.name = QtModeling 5.0.0
-qhp.QtModeling.customFilters.Qt.filterAttributes = qtmodeling 5.0.0
+qhp.QtModeling.filterAttributes    = qtmodeling $QT_VERSION qtrefdoc
+qhp.QtModeling.customFilters.Qt.name = QtModeling $QT_VERSION
+qhp.QtModeling.customFilters.Qt.filterAttributes = qtmodeling $QT_VERSION
 
 qhp.QtModeling.subprojects         = classes
 qhp.QtModeling.subprojects.classes.title = C++ Classes
@@ -39,3 +39,6 @@ exampledirs += ../../../examples/modeling \
 
 imagedirs   += images \
                ../../../examples/modeling/doc/images
+
+navigation.landingpage = "Qt Modeling"
+navigation.cppclassespage = "Qt Modeling C++ Classes"

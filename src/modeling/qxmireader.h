@@ -45,8 +45,6 @@
 
 #include <QtCore/QObject>
 
-QT_BEGIN_HEADER
-
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtModeling)
@@ -55,10 +53,10 @@ class QIODevice;
 class QObject;
 
 class QScriptEngine;
-class QXmiReaderPrivate;
 
 class QModelingElement;
 
+class QXmiReaderPrivate;
 class Q_MODELING_EXPORT QXmiReader : public QObject
 {
     Q_OBJECT
@@ -79,8 +77,6 @@ protected:
 };
 
 QT_END_NAMESPACE
-
-QT_END_HEADER
 
 #endif // QTMODELING_QXMIREADER_H
 

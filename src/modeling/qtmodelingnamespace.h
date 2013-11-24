@@ -45,8 +45,6 @@
 
 #include <QtCore/QObject>
 
-QT_BEGIN_HEADER
-
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtModeling)
@@ -89,8 +87,6 @@ QT_END_NAMESPACE
 
 Q_DECLARE_METATYPE (QtModeling::MetaPropertyDataRole)
 Q_DECLARE_METATYPE (QtModeling::ModelingObjectRole)
-
-QT_END_HEADER
 
 #endif // QTMODELING_QTMODELINGNAMESPACE_H
 

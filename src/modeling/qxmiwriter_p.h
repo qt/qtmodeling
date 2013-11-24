@@ -47,8 +47,6 @@
 #include <QtCore/QStringList>
 #include <QtCore/QXmlStreamWriter>
 
-QT_BEGIN_HEADER
-
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtModeling)
@@ -75,8 +73,6 @@ public:
 };
 
 QT_END_NAMESPACE
-
-QT_END_HEADER
 
 #endif // QTMODELING_QXMIWRITER_P_H
 

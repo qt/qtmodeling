@@ -23,6 +23,7 @@ PRIVATE_HEADERS += \
 
 SOURCES += \
     qtmodelingnamespace.cpp \
+    qmodelingelement.cpp \
     qmodelingobject.cpp \
     qmetamodelplugin.cpp \
     qxmiwriter.cpp \

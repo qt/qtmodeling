@@ -45,6 +45,16 @@
 
 QT_BEGIN_NAMESPACE
 
+/*!
+    \class QModelingObject
+
+    \inmodule QtModeling
+
+    \brief The QModelingObject class acts as base class for all QObject-based representation of modeling elements.
+
+    \sa QModelingElement
+*/
+
 QHash< QString, QHash< QString, QHash<QtModeling::MetaPropertyDataRole, QVariant> > > QModelingObject::propertyDataHash;
 
 QModelingObjectPrivate::QModelingObjectPrivate()
@@ -56,6 +66,9 @@ QModelingObjectPrivate::~QModelingObjectPrivate()
     qDeleteAll(groupProperties);
 }
 
+/*!
+    Destroys the QModelingObject.
+*/
 QModelingObject::~QModelingObject()
 {
     if (!property("deletingFromModelingObject").isValid()) {
@@ -64,17 +77,34 @@ QModelingObject::~QModelingObject()
     }
 }
 
+/*!
+    Returs true if \a metaProperty has been modified (dirty property) since object creation. This
+    function returns false if property has not been modified or its RESET function has been called.
+*/
 bool QModelingObject::isPropertyModified(QMetaProperty metaProperty) const
 {
     Q_D(const QModelingObject);
     return d->modifiedResettableProperties.contains(QString::fromLatin1(metaProperty.name()));
 }
 
+/*!
+    Returns \a metaProperty's metadata identified by \a role and associated with \a className in the
+    pseudo inheritance tree.
+*/
 QVariant QModelingObject::propertyData(QString className, QMetaProperty metaProperty, QtModeling::MetaPropertyDataRole role)
 {
     return QModelingObject::propertyDataHash[className][QString::fromLatin1(metaProperty.name())][role];
 }
 
+/*!
+    \fn void QModelingObject::setPropertyData()
+
+    This virtual pure function allows for subclasses to define metaproperty metadata.
+*/
+
+/*!
+    Returns the index of the \a metaProperty's group in the QStringList returned by propertyGroups().
+*/
 int QModelingObject::propertyGroupIndex(QMetaProperty metaProperty) const
 {
     Q_D(const QModelingObject);
@@ -88,32 +118,54 @@ int QModelingObject::propertyGroupIndex(QMetaProperty metaProperty) const
     return -1;
 }
 
+/*!
+    Returns the property groups (classes in the pseudo inheritance tree) for this QModelingObject.
+*/
 const QStringList &QModelingObject::propertyGroups() const
 {
     Q_D(const QModelingObject);
     return d->propertyGroups;
 }
 
+/*!
+    Returns a QMultiHash containing all property groups and their corresponding properties.
+*/
 const QMultiHash<QString, QMetaProperty *> &QModelingObject::groupProperties() const
 {
     Q_D(const QModelingObject);
     return d->groupProperties;
 }
 
+/*!
+    \fn void QModelingObject::setGroupProperties()
+
+    This virtual pure function allows for subclasses to define new metaproperty groups.
+*/
+
+/*!
+    Returns all QModelingObject's properties that have been modified since object creation.
+*/
 QStringList &QModelingObject::modifiedResettableProperties()
 {
     Q_D(QModelingObject);
     return d->modifiedResettableProperties;
 }
 
+/*!
+    Returns true if the QModelingObject is a kind of \a type in the pseudo inheritance tree, otherwise returns false.
+*/
 bool QModelingObject::isKindOf(QString type) const
 {
     Q_D(const QModelingObject);
     return d->propertyGroups.contains(type);
 }
 
-QModelingObject::QModelingObject()
-    : QObject(*new QModelingObjectPrivate)
+/*!
+    Creates a new QModelingObject with the given \a parent. This is a protected constructor
+    since this class is not intended to be directly instantiated.
+*/
+QModelingObject::QModelingObject(QObject *parent)
+    : QObject(*new QModelingObjectPrivate, parent)
 {
 }
 

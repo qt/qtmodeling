@@ -48,8 +48,6 @@
 
 #define Q_DECLARE_METAPROPERTY_INFO(clazz, property, role, value) QModelingObject::propertyDataHash[QStringLiteral(#clazz)][QStringLiteral(#property)][QtModeling::role] = value;
 
-QT_BEGIN_HEADER
-
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtModeling)
@@ -70,8 +68,6 @@ public:
 };
 
 QT_END_NAMESPACE
-
-QT_END_HEADER
 
 #endif // QTMODELING_QMODELINGOBJECT_P_H
 

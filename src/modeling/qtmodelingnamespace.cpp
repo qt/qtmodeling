@@ -42,9 +42,63 @@
 
 QT_BEGIN_NAMESPACE
 
+/*!
+    \class QtModeling
+
+    \inmodule QtModeling
+
+    \brief The QtModeling namespace contains miscellanious
+    identifiers used throughout the QtModeling library.
+*/
+
+/*!
+    Teste
+*/
 QtModeling::QtModeling()
 {
 }
+
+/*!
+    \enum QtModeling::MetaPropertyDataRole
+
+    This enum type specifies the roles metadata plays in metaproperty extensions.
+
+    \value AggregationRole
+           Indicates the metaproperty aggregation type (None, Shared, Composite).
+    \value OppositeEndRole
+           Contains the properties that are opposite to the metaproperty.
+    \value DocumentationRole
+           Provides metaproperty documentation.
+    \value RedefinedPropertiesRole
+           Contains the properties that are redefined by the metaproperty.
+    \value SubsettedPropertiesRole
+           Contains the properties that are subsetted by the metaproperty;
+    \value IsDerivedUnionRole
+           Indicates if the metaproperty is a derived union.
+    \value IsDerivedRole
+           Indicates if the metaproperty is derived.
+    \value PropertyClassRole
+           Indicates the class in the pseudo hierarchy where the metaproperty has been defined.
+    \value PropertyTypeRole
+           Indicates if the property is a model element, imported element, imported package, or applied profile.
+    \value UserRole
+           First role for user-defined metadata.
+*/
+
+/*!
+    \enum QtModeling::ModelingObjectRole
+
+    This enum type specifies the roles an element can play in a model.
+
+    \value ModelElementRole
+           Indicates the element has been originally defined in the model.
+    \value ImportedElementRole
+           Indicates the element has been imported from other model.
+    \value ImportedPackageRole
+           Indicates the element is a package (group of elements) imported from other model.
+    \value AppliedProfileRole
+           Indicates the element is a profile applied to the original model.
+*/
 
 QT_END_NAMESPACE
 

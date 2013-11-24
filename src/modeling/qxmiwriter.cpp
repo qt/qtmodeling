@@ -53,6 +53,16 @@
 
 QT_BEGIN_NAMESPACE
 
+/*!
+    \class QXmiWriter
+
+    \inmodule QtModeling
+
+    \brief The QXmiWriter class provides funcionalities for exporting models as XMI (XML) files.
+
+    \sa QXmiReader
+ */
+
 QXmiWriterPrivate::QXmiWriterPrivate()
 {
     writer.setAutoFormatting(true);
@@ -63,16 +73,25 @@ QXmiWriterPrivate::~QXmiWriterPrivate()
 {
 }
 
+/*!
+    Creates a QXmiWrite with the given \a parent.
+*/
 QXmiWriter::QXmiWriter(QObject *parent) :
     QObject(*new QXmiWriterPrivate, parent)
 {
     loadPlugins();
 }
 
+/*!
+    Destroys the QXmiWriter.
+*/
 QXmiWriter::~QXmiWriter()
 {
 }
 
+/*!
+    Loads all installed Qt metamodel plugins.
+*/
 void QXmiWriter::loadPlugins()
 {
     Q_D(QXmiWriter);
@@ -91,6 +110,9 @@ void QXmiWriter::loadPlugins()
     }
 }
 
+/*!
+    Writes the model stored in \a modelingObjects to \a device. Returns true if writing succeeds, otherwise returns false.
+*/
 bool QXmiWriter::writeFile(QList<QModelingObject *> modelingObjects, QIODevice *device)
 {
     Q_D(QXmiWriter);
@@ -133,6 +155,9 @@ bool QXmiWriter::writeFile(QList<QModelingObject *> modelingObjects, QIODevice *
     return true;
 }
 
+/*!
+    Inserts \a modelingObject at the \a index position of elements ID map.
+*/
 void QXmiWriter::populateIdMap(QModelingObject *modelingObject, int index)
 {
     Q_D(QXmiWriter);
@@ -193,6 +218,9 @@ void QXmiWriter::populateIdMap(QModelingObject *modelingObject, int index)
     d->idStack.removeLast();
 }
 
+/*!
+    Writes a specific \a modelingObject identified by \a elementName.
+*/
 void QXmiWriter::writeObject(QModelingObject *modelingObject, QString elementName)
 {
     Q_D(QXmiWriter);

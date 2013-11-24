@@ -2,22 +2,22 @@ include($QT_INSTALL_DOCS/global/qt-module-defaults.qdocconf)
 
 project                 = QtMof
 description             = Qt MOF Reference Documentation
-url                     = http://qt-project.org/doc/qtmof
-version                 = 5.0.0
+url                     = http://qt-project.org/doc/qt-$QT_VER
+version                 = $QT_VERSION
 
 examplesinstallpath     = mof
 
 qhp.projects            = QtMof
 
 qhp.QtMof.file            = qtmof.qhp
-qhp.QtMof.namespace           = org.qt-project.qtmof.500
+qhp.QtMof.namespace           = org.qt-project.qtmof.$QT_VERSION_TAG
 qhp.QtMof.virtualFolder       = qtmof
 qhp.QtMof.indexTitle          = Qt MOF
 qhp.QtMof.indexRoot           =
 
-qhp.QtMof.filterAttributes    = qtmof 5.0.0 qtrefdoc
-qhp.QtMof.customFilters.Qt.name = QtMof 5.0.0
-qhp.QtMof.customFilters.Qt.filterAttributes = qtmof 5.0.0
+qhp.QtMof.filterAttributes    = qtmof $QT_VERSION qtrefdoc
+qhp.QtMof.customFilters.Qt.name = QtMof $QT_VERSION
+qhp.QtMof.customFilters.Qt.filterAttributes = qtmof $QT_VERSION
 
 qhp.QtMof.subprojects         = classes
 qhp.QtMof.subprojects.classes.title = C++ Classes

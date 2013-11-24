@@ -2,22 +2,22 @@ include($QT_INSTALL_DOCS/global/qt-module-defaults.qdocconf)
 
 project                 = QtSADuseProfile
 description             = Qt SADuseProfile Reference Documentation
-url                     = http://qt-project.org/doc/qtsaduseprofile
-version                 = 5.0.0
+url                     = http://qt-project.org/doc/qt-$QT_VER
+version                 = $QT_VERSION
 
 examplesinstallpath     = saduseprofile
 
 qhp.projects            = QtSADuseProfile
 
 qhp.QtSADuseProfile.file            = qtsaduseprofile.qhp
-qhp.QtSADuseProfile.namespace           = org.qt-project.qtsaduseprofile.500
+qhp.QtSADuseProfile.namespace           = org.qt-project.qtsaduseprofile.$QT_VERSION_TAG
 qhp.QtSADuseProfile.virtualFolder       = qtsaduseprofile
 qhp.QtSADuseProfile.indexTitle          = Qt SADuseProfile
 qhp.QtSADuseProfile.indexRoot           =
 
-qhp.QtSADuseProfile.filterAttributes    = qtsaduseprofile 5.0.0 qtrefdoc
-qhp.QtSADuseProfile.customFilters.Qt.name = QtSADuseProfile 5.0.0
-qhp.QtSADuseProfile.customFilters.Qt.filterAttributes = qtsaduseprofile 5.0.0
+qhp.QtSADuseProfile.filterAttributes    = qtsaduseprofile $QT_VERSION qtrefdoc
+qhp.QtSADuseProfile.customFilters.Qt.name = QtSADuseProfile $QT_VERSION
+qhp.QtSADuseProfile.customFilters.Qt.filterAttributes = qtsaduseprofile $QT_VERSION
 
 qhp.QtSADuseProfile.subprojects         = classes
 qhp.QtSADuseProfile.subprojects.classes.title = C++ Classes

@@ -42,10 +42,27 @@
 
 QT_BEGIN_NAMESPACE
 
+/*!
+    \class QMetaModelPlugin
+
+    \inmodule QtModeling
+
+    \brief The QMetaModelPlugin class acts as base-class for all QtModeling plugins.
+*/
+
+/*!
+    Creates a QMetaModelPlugin with the given \a parent.
+*/
 QMetaModelPlugin::QMetaModelPlugin(QObject *parent)
     : QObject(parent)
 {
 }
+
+/*!
+    \fn QModelingElement *QMetaModelPlugin::createModelingElement(QString type)
+
+    Returns a new instance of plugin's metamodel element with type \a type.
+*/
 
 #include "moc_qmetamodelplugin.cpp"
 

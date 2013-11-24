@@ -38,50 +38,49 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef QTMODELING_QMODELINGOBJECT_H
-#define QTMODELING_QMODELINGOBJECT_H
-
-#include <QtModeling/QtModelingGlobal>
-
-#include <QtModeling/QtModelingNamespace>
-
-#include <QtCore/QMetaProperty>
+#include "qmodelingelement.h"
 
 QT_BEGIN_NAMESPACE
 
-QT_MODULE(QtModeling)
+/*!
+    \class QModelingElement
 
-class QModelingObjectPrivate;
-class Q_MODELING_EXPORT QModelingObject : public QObject
+    \inmodule QtModeling
+
+    \brief The QModelingElement class acts as base class for all modeling elements.
+*/
+
+/*!
+    Destroys the QModelingElement.
+*/
+QModelingElement::~QModelingElement()
 {
-    Q_OBJECT
+    if (!deletingFromQModelingObject) {
+        if (_qModelingObject)
+            _qModelingObject->setProperty("deletingFromModelingObject", true);
+        delete _qModelingObject;
+    }
+}
 
-    Q_DISABLE_COPY(QModelingObject)
-    Q_DECLARE_PRIVATE(QModelingObject)
+/*!
+    \fn QModelingObject *QModelingElement::asQModelingObject() const
 
-public:
-    virtual ~QModelingObject();
+    Return the QObject-based counterpart class for this QModelingElement.
+*/
 
-    bool isPropertyModified(QMetaProperty metaProperty) const;
-    static QVariant propertyData(QString className, QMetaProperty metaProperty, QtModeling::MetaPropertyDataRole role);
-    int propertyGroupIndex(QMetaProperty metaProperty) const;
-    const QStringList &propertyGroups() const;
-    const QMultiHash<QString, QMetaProperty *> &groupProperties() const;
-    QStringList &modifiedResettableProperties();
-    Q_INVOKABLE bool isKindOf(QString type) const;
+/*!
+    \fn QModelingElement *QModelingElement::clone() const
 
-    static QHash< QString, QHash< QString, QHash<QtModeling::MetaPropertyDataRole, QVariant> > > propertyDataHash;
+    Returns a deep-copied clone of this QModelingElement.
+*/
 
-protected:
-    QModelingObject(QObject *parent = 0);
-
-    virtual void setGroupProperties() = 0;
-    virtual void setPropertyData() = 0;
-};
+/*!
+    Creates a new QModelingElement.
+*/
+QModelingElement::QModelingElement()
+    : deletingFromQModelingObject(false), _qModelingObject(0)
+{
+}
 
 QT_END_NAMESPACE
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE(QMetaProperty) *)
-
-#endif // QTMODELING_QMODELINGOBJECT_H
 

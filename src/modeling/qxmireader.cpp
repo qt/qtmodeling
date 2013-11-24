@@ -52,6 +52,16 @@
 
 QT_BEGIN_NAMESPACE
 
+/*!
+    \class QXmiReader
+
+    \inmodule QtModeling
+
+    \brief The QXmiReader class provides funcionalities for importing models as XMI (XML) files.
+
+    \sa QXmiWriter
+ */
+
 QXmiReaderPrivate::QXmiReaderPrivate()
 {
 }
@@ -60,16 +70,25 @@ QXmiReaderPrivate::~QXmiReaderPrivate()
 {
 }
 
+/*!
+    Creates a new QXmiReader with the given \a parent.
+*/
 QXmiReader::QXmiReader(QObject *parent) :
     QObject(*new QXmiReaderPrivate, parent)
 {
     loadPlugins();
 }
 
+/*!
+    Destroys the QXmiReader.
+*/
 QXmiReader::~QXmiReader()
 {
 }
 
+/*!
+    Loads all installed Qt metamodel plugins.
+*/
 void QXmiReader::loadPlugins()
 {
     Q_D(QXmiReader);
@@ -88,6 +107,9 @@ void QXmiReader::loadPlugins()
     }
 }
 
+/*!
+    Reads the model from \a device and returns it as a QList<QModelingElement *>. If specified, \a importedId limits the import to only the element with matching ID.
+*/
 QList<QModelingElement *> QXmiReader::readFile(QIODevice *device, QString importedId)
 {
     Q_D(QXmiReader);
@@ -318,6 +340,9 @@ QList<QModelingElement *> QXmiReader::readFile(QIODevice *device, QString import
     return modelingObjectList;
 }
 
+/*!
+    Use the factory facilities of metamodel plugin identified by \a namespaceUri to create \a instanceName as an object with type is \a instanceClass.
+*/
 QModelingElement *QXmiReader::createInstance(QString namespaceUri, QString instanceClass, QString instanceName)
 {
     Q_D(QXmiReader);
@@ -330,6 +355,9 @@ QModelingElement *QXmiReader::createInstance(QString namespaceUri, QString insta
     return 0;
 }
 
+/*!
+    Returns the errors found during model import.
+*/
 QStringList QXmiReader::errorStrings() const
 {
     Q_D(const QXmiReader);
