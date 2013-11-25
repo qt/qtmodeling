@@ -67,11 +67,11 @@ public:
     Q_INVOKABLE QObject *package() const;
 
     // Operations [Factory]
-    Q_INVOKABLE QObject *createFromString(QObject *dataType, QString string);
-    Q_INVOKABLE QString convertToString(QObject *dataType, QObject *object);
-    Q_INVOKABLE QObject *create(QObject *metaClass);
-    Q_INVOKABLE QObject *createElement(QObject *class_, QSet<QObject *> arguments);
-    Q_INVOKABLE QObject *createLink(QObject *association, QObject *firstElement, QObject *secondElement);
+    Q_TODO Q_INVOKABLE QObject *createFromString(QObject *dataType, QString string);
+    Q_TODO Q_INVOKABLE QString convertToString(QObject *dataType, QObject *object);
+    Q_TODO Q_INVOKABLE QObject *create(QObject *metaClass);
+    Q_TODO Q_INVOKABLE QObject *createElement(QObject *class_, QSet<QObject *> arguments);
+    Q_TODO Q_INVOKABLE QObject *createLink(QObject *association, QObject *firstElement, QObject *secondElement);
 
 public Q_SLOTS:
 

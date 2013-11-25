@@ -146,15 +146,15 @@ public:
     // Owned attributes [Classifier]
     Q_INVOKABLE const QSet<QObject *> attributes() const;
     Q_INVOKABLE const QSet<QObject *> features() const;
-    Q_INVOKABLE const QSet<QObject *> generals() const;
+    Q_TODO Q_INVOKABLE const QSet<QObject *> generals() const;
     Q_INVOKABLE const QSet<QObject *> generalizations() const;
-    Q_INVOKABLE const QSet<QObject *> inheritedMembers() const;
+    Q_TODO Q_INVOKABLE const QSet<QObject *> inheritedMembers() const;
     Q_INVOKABLE bool isAbstract() const;
     Q_INVOKABLE bool isFinalSpecialization() const;
     Q_INVOKABLE const QSet<QObject *> redefinedClassifiers() const;
 
     // Owned attributes [Association]
-    Q_INVOKABLE const QList<QObject *> endTypes() const;
+    Q_TODO Q_INVOKABLE const QList<QObject *> endTypes() const;
     Q_INVOKABLE bool isDerived() const;
     Q_INVOKABLE const QList<QObject *> memberEnds() const;
     Q_INVOKABLE const QSet<QObject *> navigableOwnedEnds() const;
@@ -163,38 +163,38 @@ public:
     // Operations [Element]
     Q_INVOKABLE QSet<QObject *> allOwnedElements() const;
     Q_INVOKABLE bool mustBeOwned() const;
-    Q_INVOKABLE QObject *getMetaClass() const;
-    Q_INVOKABLE QObject *container() const;
-    Q_INVOKABLE bool isInstanceOfType(QObject *type, bool includesSubtypes) const;
-    Q_INVOKABLE void delete_();
+    Q_TODO Q_INVOKABLE QObject *getMetaClass() const;
+    Q_TODO Q_INVOKABLE QObject *container() const;
+    Q_TODO Q_INVOKABLE bool isInstanceOfType(QObject *type, bool includesSubtypes) const;
+    Q_TODO Q_INVOKABLE void delete_();
 
     // Operations [NamedElement]
     Q_INVOKABLE QList<QObject *> allNamespaces() const;
-    Q_INVOKABLE bool isDistinguishableFrom(QObject *n, QObject *ns) const;
+    Q_TODO Q_INVOKABLE bool isDistinguishableFrom(QObject *n, QObject *ns) const;
     Q_INVOKABLE QString separator() const;
 
     // Operations [Type]
-    Q_INVOKABLE bool isInstance(QObject *object) const;
+    Q_TODO Q_INVOKABLE bool isInstance(QObject *object) const;
 
     // Operations [RedefinableElement]
-    Q_INVOKABLE bool isConsistentWith(QObject *redefinee) const;
-    Q_INVOKABLE bool isRedefinitionContextValid(QObject *redefined) const;
+    Q_TODO Q_INVOKABLE bool isConsistentWith(QObject *redefinee) const;
+    Q_TODO Q_INVOKABLE bool isRedefinitionContextValid(QObject *redefined) const;
 
     // Operations [Namespace]
-    Q_INVOKABLE QSet<QObject *> excludeCollisions(QObject *imps) const;
-    Q_INVOKABLE QSet<QString> getNamesOfMember(QObject *element) const;
-    Q_INVOKABLE QSet<QObject *> importMembers(QObject *imps) const;
-    Q_INVOKABLE bool membersAreDistinguishable() const;
+    Q_TODO Q_INVOKABLE QSet<QObject *> excludeCollisions(QObject *imps) const;
+    Q_TODO Q_INVOKABLE QSet<QString> getNamesOfMember(QObject *element) const;
+    Q_TODO Q_INVOKABLE QSet<QObject *> importMembers(QObject *imps) const;
+    Q_TODO Q_INVOKABLE bool membersAreDistinguishable() const;
 
     // Operations [Classifier]
-    Q_INVOKABLE QSet<QObject *> allFeatures() const;
-    Q_INVOKABLE QSet<QObject *> allParents() const;
-    Q_INVOKABLE bool conformsTo(QObject *other) const;
-    Q_INVOKABLE bool hasVisibilityOf(QObject *n) const;
-    Q_INVOKABLE QSet<QObject *> inherit(QSet<QObject *> inhs) const;
-    Q_INVOKABLE QSet<QObject *> inheritableMembers(QObject *c) const;
-    Q_INVOKABLE bool maySpecializeType(QObject *c) const;
-    Q_INVOKABLE QSet<QObject *> parents() const;
+    Q_TODO Q_INVOKABLE QSet<QObject *> allFeatures() const;
+    Q_TODO Q_INVOKABLE QSet<QObject *> allParents() const;
+    Q_TODO Q_INVOKABLE bool conformsTo(QObject *other) const;
+    Q_TODO Q_INVOKABLE bool hasVisibilityOf(QObject *n) const;
+    Q_TODO Q_INVOKABLE QSet<QObject *> inherit(QSet<QObject *> inhs) const;
+    Q_TODO Q_INVOKABLE QSet<QObject *> inheritableMembers(QObject *c) const;
+    Q_TODO Q_INVOKABLE bool maySpecializeType(QObject *c) const;
+    Q_TODO Q_INVOKABLE QSet<QObject *> parents() const;
 
 public Q_SLOTS:
 

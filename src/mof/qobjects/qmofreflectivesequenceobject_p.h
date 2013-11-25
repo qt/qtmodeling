@@ -61,10 +61,10 @@ public:
     Q_INVOKABLE explicit QMofReflectiveSequenceObject(QMofReflectiveSequence *modelingElement);
 
     // Operations [ReflectiveSequence]
-    Q_INVOKABLE void add(int index, QObject *object);
-    Q_INVOKABLE QObject *get(int index) const;
-    Q_INVOKABLE QObject *remove(int index);
-    Q_INVOKABLE QObject *set(int index, QObject *object);
+    Q_TODO Q_INVOKABLE void add(int index, QObject *object);
+    Q_TODO Q_INVOKABLE QObject *get(int index) const;
+    Q_TODO Q_INVOKABLE QObject *remove(int index);
+    Q_TODO Q_INVOKABLE QObject *set(int index, QObject *object);
 
 public Q_SLOTS:
 

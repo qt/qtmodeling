@@ -61,9 +61,9 @@ public:
     Q_INVOKABLE explicit QMofURIExtentObject(QMofURIExtent *modelingElement);
 
     // Operations [URIExtent]
-    Q_INVOKABLE QString contextURI() const;
-    Q_INVOKABLE QString uri(QObject *object) const;
-    Q_INVOKABLE QObject *element(QString uri) const;
+    Q_TODO Q_INVOKABLE QString contextURI() const;
+    Q_TODO Q_INVOKABLE QString uri(QObject *object) const;
+    Q_TODO Q_INVOKABLE QObject *element(QString uri) const;
 
 public Q_SLOTS:
 

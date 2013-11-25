@@ -71,8 +71,8 @@ public:
     Q_INVOKABLE QObject *association() const;
 
     // Operations [Link]
-    Q_INVOKABLE bool equals(QObject *otherLink) const;
-    Q_INVOKABLE void delete_();
+    Q_TODO Q_INVOKABLE bool equals(QObject *otherLink) const;
+    Q_TODO Q_INVOKABLE void delete_();
 
 public Q_SLOTS:
 

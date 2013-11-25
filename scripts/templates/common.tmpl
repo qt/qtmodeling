@@ -135,6 +135,8 @@ ${attributeName}
 [%- SET found = "false" -%]
 [%- SET className = class.findvalue("@name") -%]
 [%- FOREACH attribute IN attributes -%]
+    [%- SET derived = attribute.findvalue("@isDerived") -%]
+    [%- SET derivedUnion = attribute.findvalue("@isDerivedUnion") -%]
     [%- IF found == "false" %]
 
     // Owned attributes [${className}]
@@ -144,11 +146,11 @@ ${attributeName}
     [%- NEXT IF redefinedProperties.grep("^${className}-${qtAttribute}$").size > 0 -%]
     [%- SET qtType = QT_TYPE(namespace, attribute, "false") -%]
     [%- IF qtType.match("QList|QSet") %]
-    Q_INVOKABLE const ${qtType}${PLURALFORM(qtAttribute, attribute)}() const;
+    [% IF derived == "true" && (derivedUnion == "false" || derivedUnion == "") %]Q_TODO [% END %]Q_INVOKABLE const ${qtType}${PLURALFORM(qtAttribute, attribute)}() const;
     [%- ELSIF qtType.match('\*$') %]
-    Q_INVOKABLE ${qtType}${qtAttribute}() const;
+    [% IF derived == "true" && (derivedUnion == "false" || derivedUnion == "") %]Q_TODO [% END %]Q_INVOKABLE ${qtType}${qtAttribute}() const;
     [%- ELSE %]
-    Q_INVOKABLE ${qtType}${qtAttribute}() const;
+    [% IF derived == "true" && (derivedUnion == "false" || derivedUnion == "") %]Q_TODO [% END %]Q_INVOKABLE ${qtType}${qtAttribute}() const;
     [%- END %]
     [%- IF loop.last %]
     [%- END %]
@@ -174,7 +176,7 @@ ${attributeName}
 [%- NEXT IF redefinedOperations.grep("^${className}-${operationName}$").size > 0 -%]
 [%- SET qtType = QT_TYPE(namespace, operation.findnodes("ownedParameter[@direction='return']"), "false") -%]
 
-    Q_INVOKABLE [%- IF qtType != " " -%]${qtType}[%- ELSE -%]void [%- END -%]
+    Q_TODO Q_INVOKABLE [%- IF qtType != " " -%]${qtType}[%- ELSE -%]void [%- END -%]
 [%- IF uml2qt_attribute.item(operationName) != "" -%]${uml2qt_attribute.item(operationName)}[%- ELSE -%]${operationName}[%- END -%](
     [%- FOREACH parameter = operation.findnodes("ownedParameter[@direction!='return']") -%]
         [%- QT_TYPE(namespace, parameter, "false") -%]

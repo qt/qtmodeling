@@ -101,20 +101,20 @@ public:
     Q_INVOKABLE QObject *specification() const;
 
     // Owned attributes [EnumerationLiteral]
-    Q_INVOKABLE QObject *classifier() const;
+    Q_TODO Q_INVOKABLE QObject *classifier() const;
     Q_INVOKABLE QObject *enumeration() const;
 
     // Operations [Element]
     Q_INVOKABLE QSet<QObject *> allOwnedElements() const;
     Q_INVOKABLE bool mustBeOwned() const;
-    Q_INVOKABLE QObject *getMetaClass() const;
-    Q_INVOKABLE QObject *container() const;
-    Q_INVOKABLE bool isInstanceOfType(QObject *type, bool includesSubtypes) const;
-    Q_INVOKABLE void delete_();
+    Q_TODO Q_INVOKABLE QObject *getMetaClass() const;
+    Q_TODO Q_INVOKABLE QObject *container() const;
+    Q_TODO Q_INVOKABLE bool isInstanceOfType(QObject *type, bool includesSubtypes) const;
+    Q_TODO Q_INVOKABLE void delete_();
 
     // Operations [NamedElement]
     Q_INVOKABLE QList<QObject *> allNamespaces() const;
-    Q_INVOKABLE bool isDistinguishableFrom(QObject *n, QObject *ns) const;
+    Q_TODO Q_INVOKABLE bool isDistinguishableFrom(QObject *n, QObject *ns) const;
     Q_INVOKABLE QString separator() const;
 
 public Q_SLOTS:

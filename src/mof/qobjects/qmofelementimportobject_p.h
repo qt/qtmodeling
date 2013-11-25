@@ -101,13 +101,13 @@ public:
     // Operations [Element]
     Q_INVOKABLE QSet<QObject *> allOwnedElements() const;
     Q_INVOKABLE bool mustBeOwned() const;
-    Q_INVOKABLE QObject *getMetaClass() const;
-    Q_INVOKABLE QObject *container() const;
-    Q_INVOKABLE bool isInstanceOfType(QObject *type, bool includesSubtypes) const;
-    Q_INVOKABLE void delete_();
+    Q_TODO Q_INVOKABLE QObject *getMetaClass() const;
+    Q_TODO Q_INVOKABLE QObject *container() const;
+    Q_TODO Q_INVOKABLE bool isInstanceOfType(QObject *type, bool includesSubtypes) const;
+    Q_TODO Q_INVOKABLE void delete_();
 
     // Operations [ElementImport]
-    Q_INVOKABLE QString getName() const;
+    Q_TODO Q_INVOKABLE QString getName() const;
 
 public Q_SLOTS:
 

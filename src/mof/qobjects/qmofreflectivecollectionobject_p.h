@@ -61,11 +61,11 @@ public:
     Q_INVOKABLE explicit QMofReflectiveCollectionObject(QMofReflectiveCollection *modelingElement);
 
     // Operations [ReflectiveCollection]
-    Q_INVOKABLE bool add(QObject *object);
-    Q_INVOKABLE bool addAll(QObject *objects);
-    Q_INVOKABLE void clear();
-    Q_INVOKABLE bool remove(QObject *object);
-    Q_INVOKABLE int size() const;
+    Q_TODO Q_INVOKABLE bool add(QObject *object);
+    Q_TODO Q_INVOKABLE bool addAll(QObject *objects);
+    Q_TODO Q_INVOKABLE void clear();
+    Q_TODO Q_INVOKABLE bool remove(QObject *object);
+    Q_TODO Q_INVOKABLE int size() const;
 
 public Q_SLOTS:
 

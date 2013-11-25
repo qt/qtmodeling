@@ -47,6 +47,10 @@
 
 #include <QtCore/QMetaProperty>
 
+#ifndef Q_MOC_RUN
+    #define Q_TODO
+#endif
+
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtModeling)

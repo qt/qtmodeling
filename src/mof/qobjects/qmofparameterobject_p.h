@@ -107,13 +107,13 @@ public:
     // Owned attributes [MultiplicityElement]
     Q_INVOKABLE bool isOrdered() const;
     Q_INVOKABLE bool isUnique() const;
-    Q_INVOKABLE int lower() const;
+    Q_TODO Q_INVOKABLE int lower() const;
     Q_INVOKABLE QObject *lowerValue() const;
-    Q_INVOKABLE QString upper() const;
+    Q_TODO Q_INVOKABLE QString upper() const;
     Q_INVOKABLE QObject *upperValue() const;
 
     // Owned attributes [Parameter]
-    Q_INVOKABLE QString default_() const;
+    Q_TODO Q_INVOKABLE QString default_() const;
     Q_INVOKABLE QObject *defaultValue() const;
     Q_INVOKABLE QtMof::ParameterDirectionKind direction() const;
     Q_INVOKABLE QObject *operation() const;
@@ -121,22 +121,22 @@ public:
     // Operations [Element]
     Q_INVOKABLE QSet<QObject *> allOwnedElements() const;
     Q_INVOKABLE bool mustBeOwned() const;
-    Q_INVOKABLE QObject *getMetaClass() const;
-    Q_INVOKABLE QObject *container() const;
-    Q_INVOKABLE bool isInstanceOfType(QObject *type, bool includesSubtypes) const;
-    Q_INVOKABLE void delete_();
+    Q_TODO Q_INVOKABLE QObject *getMetaClass() const;
+    Q_TODO Q_INVOKABLE QObject *container() const;
+    Q_TODO Q_INVOKABLE bool isInstanceOfType(QObject *type, bool includesSubtypes) const;
+    Q_TODO Q_INVOKABLE void delete_();
 
     // Operations [NamedElement]
     Q_INVOKABLE QList<QObject *> allNamespaces() const;
-    Q_INVOKABLE bool isDistinguishableFrom(QObject *n, QObject *ns) const;
+    Q_TODO Q_INVOKABLE bool isDistinguishableFrom(QObject *n, QObject *ns) const;
     Q_INVOKABLE QString separator() const;
 
     // Operations [MultiplicityElement]
-    Q_INVOKABLE bool includesCardinality(int C) const;
-    Q_INVOKABLE bool includesMultiplicity(QObject *M) const;
-    Q_INVOKABLE bool isMultivalued() const;
-    Q_INVOKABLE int lowerBound() const;
-    Q_INVOKABLE QString upperBound() const;
+    Q_TODO Q_INVOKABLE bool includesCardinality(int C) const;
+    Q_TODO Q_INVOKABLE bool includesMultiplicity(QObject *M) const;
+    Q_TODO Q_INVOKABLE bool isMultivalued() const;
+    Q_TODO Q_INVOKABLE int lowerBound() const;
+    Q_TODO Q_INVOKABLE QString upperBound() const;
 
 public Q_SLOTS:
 

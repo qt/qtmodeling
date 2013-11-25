@@ -122,26 +122,26 @@ public:
 
     // Operations [Element]
     Q_INVOKABLE QSet<QObject *> allOwnedElements() const;
-    Q_INVOKABLE QObject *getMetaClass() const;
-    Q_INVOKABLE QObject *container() const;
-    Q_INVOKABLE bool isInstanceOfType(QObject *type, bool includesSubtypes) const;
-    Q_INVOKABLE void delete_();
+    Q_TODO Q_INVOKABLE QObject *getMetaClass() const;
+    Q_TODO Q_INVOKABLE QObject *container() const;
+    Q_TODO Q_INVOKABLE bool isInstanceOfType(QObject *type, bool includesSubtypes) const;
+    Q_TODO Q_INVOKABLE void delete_();
 
     // Operations [NamedElement]
     Q_INVOKABLE QList<QObject *> allNamespaces() const;
-    Q_INVOKABLE bool isDistinguishableFrom(QObject *n, QObject *ns) const;
+    Q_TODO Q_INVOKABLE bool isDistinguishableFrom(QObject *n, QObject *ns) const;
     Q_INVOKABLE QString separator() const;
 
     // Operations [Namespace]
-    Q_INVOKABLE QSet<QObject *> excludeCollisions(QObject *imps) const;
-    Q_INVOKABLE QSet<QString> getNamesOfMember(QObject *element) const;
-    Q_INVOKABLE QSet<QObject *> importMembers(QObject *imps) const;
-    Q_INVOKABLE bool membersAreDistinguishable() const;
+    Q_TODO Q_INVOKABLE QSet<QObject *> excludeCollisions(QObject *imps) const;
+    Q_TODO Q_INVOKABLE QSet<QString> getNamesOfMember(QObject *element) const;
+    Q_TODO Q_INVOKABLE QSet<QObject *> importMembers(QObject *imps) const;
+    Q_TODO Q_INVOKABLE bool membersAreDistinguishable() const;
 
     // Operations [Package]
-    Q_INVOKABLE bool makesVisible(QObject *el) const;
+    Q_TODO Q_INVOKABLE bool makesVisible(QObject *el) const;
     Q_INVOKABLE bool mustBeOwned() const;
-    Q_INVOKABLE QSet<QObject *> visibleMembers() const;
+    Q_TODO Q_INVOKABLE QSet<QObject *> visibleMembers() const;
 
 public Q_SLOTS:
 

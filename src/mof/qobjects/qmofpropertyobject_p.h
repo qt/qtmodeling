@@ -138,9 +138,9 @@ public:
     // Owned attributes [MultiplicityElement]
     Q_INVOKABLE bool isOrdered() const;
     Q_INVOKABLE bool isUnique() const;
-    Q_INVOKABLE int lower() const;
+    Q_TODO Q_INVOKABLE int lower() const;
     Q_INVOKABLE QObject *lowerValue() const;
-    Q_INVOKABLE QString upper() const;
+    Q_TODO Q_INVOKABLE QString upper() const;
     Q_INVOKABLE QObject *upperValue() const;
 
     // Owned attributes [StructuralFeature]
@@ -150,14 +150,14 @@ public:
     Q_INVOKABLE QObject *association() const;
     Q_INVOKABLE QObject *class_() const;
     Q_INVOKABLE QObject *datatype() const;
-    Q_INVOKABLE QString default_() const;
+    Q_TODO Q_INVOKABLE QString default_() const;
     Q_INVOKABLE QObject *defaultValue() const;
-    Q_INVOKABLE bool isComposite() const;
+    Q_TODO Q_INVOKABLE bool isComposite() const;
     Q_INVOKABLE bool isDerived() const;
     Q_INVOKABLE bool isDerivedUnion() const;
     Q_INVOKABLE bool isID() const;
     Q_INVOKABLE bool isReadOnly() const;
-    Q_INVOKABLE QObject *opposite() const;
+    Q_TODO Q_INVOKABLE QObject *opposite() const;
     Q_INVOKABLE QObject *owningAssociation() const;
     Q_INVOKABLE const QSet<QObject *> redefinedProperties() const;
     Q_INVOKABLE const QSet<QObject *> subsettedProperties() const;
@@ -165,31 +165,31 @@ public:
     // Operations [Element]
     Q_INVOKABLE QSet<QObject *> allOwnedElements() const;
     Q_INVOKABLE bool mustBeOwned() const;
-    Q_INVOKABLE QObject *getMetaClass() const;
-    Q_INVOKABLE QObject *container() const;
-    Q_INVOKABLE bool isInstanceOfType(QObject *type, bool includesSubtypes) const;
-    Q_INVOKABLE void delete_();
+    Q_TODO Q_INVOKABLE QObject *getMetaClass() const;
+    Q_TODO Q_INVOKABLE QObject *container() const;
+    Q_TODO Q_INVOKABLE bool isInstanceOfType(QObject *type, bool includesSubtypes) const;
+    Q_TODO Q_INVOKABLE void delete_();
 
     // Operations [NamedElement]
     Q_INVOKABLE QList<QObject *> allNamespaces() const;
-    Q_INVOKABLE bool isDistinguishableFrom(QObject *n, QObject *ns) const;
+    Q_TODO Q_INVOKABLE bool isDistinguishableFrom(QObject *n, QObject *ns) const;
     Q_INVOKABLE QString separator() const;
 
     // Operations [RedefinableElement]
-    Q_INVOKABLE bool isRedefinitionContextValid(QObject *redefined) const;
+    Q_TODO Q_INVOKABLE bool isRedefinitionContextValid(QObject *redefined) const;
 
     // Operations [MultiplicityElement]
-    Q_INVOKABLE bool includesCardinality(int C) const;
-    Q_INVOKABLE bool includesMultiplicity(QObject *M) const;
-    Q_INVOKABLE bool isMultivalued() const;
-    Q_INVOKABLE int lowerBound() const;
-    Q_INVOKABLE QString upperBound() const;
+    Q_TODO Q_INVOKABLE bool includesCardinality(int C) const;
+    Q_TODO Q_INVOKABLE bool includesMultiplicity(QObject *M) const;
+    Q_TODO Q_INVOKABLE bool isMultivalued() const;
+    Q_TODO Q_INVOKABLE int lowerBound() const;
+    Q_TODO Q_INVOKABLE QString upperBound() const;
 
     // Operations [Property]
-    Q_INVOKABLE bool isAttribute(QObject *p) const;
-    Q_INVOKABLE bool isConsistentWith(QObject *redefinee) const;
-    Q_INVOKABLE bool isNavigable() const;
-    Q_INVOKABLE QSet<QObject *> subsettingContext() const;
+    Q_TODO Q_INVOKABLE bool isAttribute(QObject *p) const;
+    Q_TODO Q_INVOKABLE bool isConsistentWith(QObject *redefinee) const;
+    Q_TODO Q_INVOKABLE bool isNavigable() const;
+    Q_TODO Q_INVOKABLE QSet<QObject *> subsettingContext() const;
 
 public Q_SLOTS:
 

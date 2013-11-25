@@ -184,6 +184,12 @@ QVariant QModelingObjectPropertyModel::data(const QModelIndex &index, int role) 
                     if (index.parent().row() != -1 && metaProperty->isValid()) {
                         QString typeName = QString::fromLatin1(metaProperty->typeName());
                         QVariant variant = metaProperty->read(d->modelingObject);
+                        int methodIndex = d->modelingMetaObject->indexOfMethod(QStringLiteral("%1()").arg(QString::fromLatin1(metaProperty->name())).toLatin1());
+                        if (methodIndex != -1) {
+                            if (QString::fromLatin1(d->modelingMetaObject->method(methodIndex).tag()) == QStringLiteral("Q_TODO")) {
+                                return QStringLiteral("<to be implemented>");
+                            }
+                        }
                         if (metaProperty->isEnumType())
                             return QString::fromLatin1(metaProperty->enumerator().valueToKey(variant.toInt())).remove(QString::fromLatin1(metaProperty->typeName()).split(':').last()).toLower();
                         else if (metaProperty->type() == QVariant::Bool || metaProperty->type() == QVariant::String || metaProperty->type() == QVariant::Int) {
@@ -266,6 +272,12 @@ QVariant QModelingObjectPropertyModel::data(const QModelIndex &index, int role) 
             if (!metaProperty) {
                 font.setBold(true);
                 return font;
+            }
+            int methodIndex = d->modelingMetaObject->indexOfMethod(QStringLiteral("%1()").arg(QString::fromLatin1(metaProperty->name())).toLatin1());
+            if (methodIndex != -1) {
+                if (QString::fromLatin1(d->modelingMetaObject->method(methodIndex).tag()) == QStringLiteral("Q_TODO")) {
+                    font.setItalic(true);
+                }
             }
             if (metaProperty->isValid() && index.column() == 0 && metaProperty->isResettable())
                 font.setBold(d->modelingObject->isPropertyModified(*metaProperty));

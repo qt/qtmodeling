@@ -103,26 +103,26 @@ public:
     // Operations [Element]
     Q_INVOKABLE QSet<QObject *> allOwnedElements() const;
     Q_INVOKABLE bool mustBeOwned() const;
-    Q_INVOKABLE QObject *getMetaClass() const;
-    Q_INVOKABLE QObject *container() const;
-    Q_INVOKABLE bool isInstanceOfType(QObject *type, bool includesSubtypes) const;
-    Q_INVOKABLE void delete_();
+    Q_TODO Q_INVOKABLE QObject *getMetaClass() const;
+    Q_TODO Q_INVOKABLE QObject *container() const;
+    Q_TODO Q_INVOKABLE bool isInstanceOfType(QObject *type, bool includesSubtypes) const;
+    Q_TODO Q_INVOKABLE void delete_();
 
     // Operations [NamedElement]
     Q_INVOKABLE QList<QObject *> allNamespaces() const;
-    Q_INVOKABLE bool isDistinguishableFrom(QObject *n, QObject *ns) const;
+    Q_TODO Q_INVOKABLE bool isDistinguishableFrom(QObject *n, QObject *ns) const;
     Q_INVOKABLE QString separator() const;
 
     // Operations [ValueSpecification]
-    Q_INVOKABLE bool booleanValue() const;
-    Q_INVOKABLE int integerValue() const;
-    Q_INVOKABLE bool isNull() const;
-    Q_INVOKABLE double realValue();
-    Q_INVOKABLE QString unlimitedValue() const;
+    Q_TODO Q_INVOKABLE bool booleanValue() const;
+    Q_TODO Q_INVOKABLE int integerValue() const;
+    Q_TODO Q_INVOKABLE bool isNull() const;
+    Q_TODO Q_INVOKABLE double realValue();
+    Q_TODO Q_INVOKABLE QString unlimitedValue() const;
 
     // Operations [LiteralString]
-    Q_INVOKABLE bool isComputable() const;
-    Q_INVOKABLE QString stringValue() const;
+    Q_TODO Q_INVOKABLE bool isComputable() const;
+    Q_TODO Q_INVOKABLE QString stringValue() const;
 
 public Q_SLOTS:
 

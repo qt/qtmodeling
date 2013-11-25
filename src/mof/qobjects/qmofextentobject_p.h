@@ -61,12 +61,12 @@ public:
     Q_INVOKABLE explicit QMofExtentObject(QMofExtent *modelingElement);
 
     // Operations [Extent]
-    Q_INVOKABLE bool useContainment() const;
-    Q_INVOKABLE QObject *elements() const;
-    Q_INVOKABLE QSet<QObject *> elementsOfType(QObject *type, bool includesSubtypes) const;
-    Q_INVOKABLE QSet<QObject *> linksOfType(QObject *type) const;
-    Q_INVOKABLE QSet<QObject *> linkedElements(QObject *association, QObject *endElement, bool end1ToEnd2Direction) const;
-    Q_INVOKABLE bool linkExists(QObject *association, QObject *firstElement, QObject *secondElement) const;
+    Q_TODO Q_INVOKABLE bool useContainment() const;
+    Q_TODO Q_INVOKABLE QObject *elements() const;
+    Q_TODO Q_INVOKABLE QSet<QObject *> elementsOfType(QObject *type, bool includesSubtypes) const;
+    Q_TODO Q_INVOKABLE QSet<QObject *> linksOfType(QObject *type) const;
+    Q_TODO Q_INVOKABLE QSet<QObject *> linkedElements(QObject *association, QObject *endElement, bool end1ToEnd2Direction) const;
+    Q_TODO Q_INVOKABLE bool linkExists(QObject *association, QObject *firstElement, QObject *secondElement) const;
 
 public Q_SLOTS:
 

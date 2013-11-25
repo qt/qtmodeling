@@ -142,45 +142,45 @@ public:
     Q_INVOKABLE QObject *bodyCondition() const;
     Q_INVOKABLE QObject *class_() const;
     Q_INVOKABLE QObject *datatype() const;
-    Q_INVOKABLE bool isOrdered() const;
+    Q_TODO Q_INVOKABLE bool isOrdered() const;
     Q_INVOKABLE bool isQuery() const;
-    Q_INVOKABLE bool isUnique() const;
-    Q_INVOKABLE int lower() const;
+    Q_TODO Q_INVOKABLE bool isUnique() const;
+    Q_TODO Q_INVOKABLE int lower() const;
     Q_INVOKABLE const QList<QObject *> ownedParameters() const;
     Q_INVOKABLE const QSet<QObject *> postconditions() const;
     Q_INVOKABLE const QSet<QObject *> preconditions() const;
     Q_INVOKABLE const QSet<QObject *> raisedExceptions() const;
     Q_INVOKABLE const QSet<QObject *> redefinedOperations() const;
-    Q_INVOKABLE QObject *type() const;
-    Q_INVOKABLE QString upper() const;
+    Q_TODO Q_INVOKABLE QObject *type() const;
+    Q_TODO Q_INVOKABLE QString upper() const;
 
     // Operations [Element]
     Q_INVOKABLE QSet<QObject *> allOwnedElements() const;
     Q_INVOKABLE bool mustBeOwned() const;
-    Q_INVOKABLE QObject *getMetaClass() const;
-    Q_INVOKABLE QObject *container() const;
-    Q_INVOKABLE bool isInstanceOfType(QObject *type, bool includesSubtypes) const;
-    Q_INVOKABLE void delete_();
+    Q_TODO Q_INVOKABLE QObject *getMetaClass() const;
+    Q_TODO Q_INVOKABLE QObject *container() const;
+    Q_TODO Q_INVOKABLE bool isInstanceOfType(QObject *type, bool includesSubtypes) const;
+    Q_TODO Q_INVOKABLE void delete_();
 
     // Operations [NamedElement]
     Q_INVOKABLE QList<QObject *> allNamespaces() const;
     Q_INVOKABLE QString separator() const;
 
     // Operations [RedefinableElement]
-    Q_INVOKABLE bool isRedefinitionContextValid(QObject *redefined) const;
+    Q_TODO Q_INVOKABLE bool isRedefinitionContextValid(QObject *redefined) const;
 
     // Operations [Namespace]
-    Q_INVOKABLE QSet<QObject *> excludeCollisions(QObject *imps) const;
-    Q_INVOKABLE QSet<QString> getNamesOfMember(QObject *element) const;
-    Q_INVOKABLE QSet<QObject *> importMembers(QObject *imps) const;
-    Q_INVOKABLE bool membersAreDistinguishable() const;
+    Q_TODO Q_INVOKABLE QSet<QObject *> excludeCollisions(QObject *imps) const;
+    Q_TODO Q_INVOKABLE QSet<QString> getNamesOfMember(QObject *element) const;
+    Q_TODO Q_INVOKABLE QSet<QObject *> importMembers(QObject *imps) const;
+    Q_TODO Q_INVOKABLE bool membersAreDistinguishable() const;
 
     // Operations [BehavioralFeature]
-    Q_INVOKABLE bool isDistinguishableFrom(QObject *n, QObject *ns) const;
+    Q_TODO Q_INVOKABLE bool isDistinguishableFrom(QObject *n, QObject *ns) const;
 
     // Operations [Operation]
-    Q_INVOKABLE bool isConsistentWith(QObject *redefinee) const;
-    Q_INVOKABLE QSet<QObject *> returnResult() const;
+    Q_TODO Q_INVOKABLE bool isConsistentWith(QObject *redefinee) const;
+    Q_TODO Q_INVOKABLE QSet<QObject *> returnResult() const;
 
 public Q_SLOTS:
 

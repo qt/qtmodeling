@@ -61,12 +61,12 @@ public:
     Q_INVOKABLE explicit QMofObjectObject(QMofObject *modelingElement);
 
     // Operations [Object]
-    Q_INVOKABLE QObject *get(QObject *property) const;
-    Q_INVOKABLE bool equals(QObject *element) const;
-    Q_INVOKABLE void set(QObject *property, QObject *value);
-    Q_INVOKABLE bool isSet(QObject *property) const;
-    Q_INVOKABLE void unset(QObject *property);
-    Q_INVOKABLE QObject *invoke(QObject *op, QSet<QObject *> arguments);
+    Q_TODO Q_INVOKABLE QObject *get(QObject *property) const;
+    Q_TODO Q_INVOKABLE bool equals(QObject *element) const;
+    Q_TODO Q_INVOKABLE void set(QObject *property, QObject *value);
+    Q_TODO Q_INVOKABLE bool isSet(QObject *property) const;
+    Q_TODO Q_INVOKABLE void unset(QObject *property);
+    Q_TODO Q_INVOKABLE QObject *invoke(QObject *op, QSet<QObject *> arguments);
 
 public Q_SLOTS:
 
