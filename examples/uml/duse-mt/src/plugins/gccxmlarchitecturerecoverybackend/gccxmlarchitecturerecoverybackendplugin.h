@@ -44,11 +44,11 @@
 #include <duseinterfaces/iplugin.h>
 #include <architecturerecoverycore/iarchitecturerecoverybackend.h>
 
-#include <QDir>
-#include <QProcess>
-#include <QObjectList>
-#include <QStringList>
-#include <QXmlStreamReader>
+#include <QtCore/QDir>
+#include <QtCore/QObjectList>
+#include <QtCore/QStringList>
+
+class QXmlStreamReader;
 
 class GccXmlArchitectureRecoveryBackendPlugin : public DuSE::IPlugin, public IArchitectureRecoveryBackend
 {
@@ -65,13 +65,17 @@ public:
     virtual QObjectList components();
     virtual QObjectList connectors();
 
+private Q_SLOTS:
+    void newArchitectureRecoveryProcess();
+
 private:
     QStringList generateXmlFiles(const QStringList &codeFiles) const;
     bool openXmlFile(const QString &filePath);
-    QStringList findConstructorsFromXml(const QString &className);
+    QStringList findConstructorsFromXml(QString xmlFile);
     QObject *extractComponent(QString xmlFile);
 
     QDir _rootProjectDir;
+    QFile _xmlFile;
     QXmlStreamReader *_xmlReader;
 };
 

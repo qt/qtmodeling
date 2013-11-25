@@ -40,6 +40,12 @@
 ****************************************************************************/
 #include "gccxmlarchitecturerecoverybackendplugin.h"
 
+#include <QtWidgets/QAction>
+#include <QtWidgets/QFileDialog>
+#include <QtCore/QProcess>
+
+#include <duseinterfaces/iuicontroller.h>
+
 GccXmlArchitectureRecoveryBackendPlugin::GccXmlArchitectureRecoveryBackendPlugin(QObject *parent) :
     DuSE::IPlugin(parent)
 {
@@ -47,13 +53,22 @@ GccXmlArchitectureRecoveryBackendPlugin::GccXmlArchitectureRecoveryBackendPlugin
 
 bool GccXmlArchitectureRecoveryBackendPlugin::initialize(DuSE::ICore *core)
 {
-    Q_UNUSED(core);
+    QAction *newArchitectureRecoveryProcessAction = new QAction(QIcon(), tr("New architecture recovery process"), this);
+    connect(newArchitectureRecoveryProcessAction, SIGNAL(triggered()), this, SLOT(newArchitectureRecoveryProcess()));
+    core->uiController()->addAction(newArchitectureRecoveryProcessAction, tr("menu_File"));
     return true;
 }
 
 void GccXmlArchitectureRecoveryBackendPlugin::setRootProjectDir(const QDir &rootProjectDir)
 {
     _rootProjectDir = rootProjectDir;
+}
+
+void GccXmlArchitectureRecoveryBackendPlugin::newArchitectureRecoveryProcess()
+{
+    QString fileName = QFileDialog::getOpenFileName(this, tr("Open xml file"), "/home", tr("Xml files (*.xml)"));
+    _rootProjectDir = new QDir(fileName);
+    components();
 }
 
 QObjectList GccXmlArchitectureRecoveryBackendPlugin::components()
@@ -63,7 +78,6 @@ QObjectList GccXmlArchitectureRecoveryBackendPlugin::components()
     QStringList headers = _rootProjectDir.entryList(QStringList("*.h"), QDir::Files | QDir::NoSymLinks);
     QStringList xmlFiles = generateXmlFiles(headers);
     int xmlFilesSize = xmlFiles.size();
-
     for (int i = 0; i < xmlFilesSize; ++i) {
         QString xmlFile = xmlFiles.at(i).toLocal8Bit().constData();
 
@@ -100,20 +114,22 @@ QStringList GccXmlArchitectureRecoveryBackendPlugin::generateXmlFiles(const QStr
 
 bool GccXmlArchitectureRecoveryBackendPlugin::openXmlFile(const QString &filePath)
 {
-    QFile file(filePath);
-    _xmlReader = new QXmlStreamReader(&file);
+    _xmlFile.setFileName(filePath);
+    _xmlReader = new QXmlStreamReader(&_xmlFile);
 
-    if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+    if (!_xmlFile.open(QIODevice::ReadOnly | QIODevice::Text)) {
         return false;
     }
 
     return true;
 }
 
-QStringList GccXmlArchitectureRecoveryBackendPlugin::findConstructorsFromXml(const QString &className)
+QStringList GccXmlArchitectureRecoveryBackendPlugin::findConstructorsFromXml(QString xmlFile)
 {
     QStringList constructors;
 
+    openXmlFile(_rootProjectDir.absolutePath() + "/" + xmlFile);
+    QString className = xmlFile.replace(".xml", "");
     while (!_xmlReader->atEnd() && !_xmlReader->hasError()) {
         QXmlStreamReader::TokenType token = _xmlReader->readNext();
 
@@ -134,11 +150,11 @@ QStringList GccXmlArchitectureRecoveryBackendPlugin::findConstructorsFromXml(con
 
 QObject *GccXmlArchitectureRecoveryBackendPlugin::extractComponent(QString xmlFile)
 {
-    QStringList constructors = findConstructorsFromXml(xmlFile.replace(".xml", ""));
+    QStringList constructors = findConstructorsFromXml(xmlFile);
 
     QString expression = constructors.last();
     QStringList elements = expression.split("::");
-    QString className = elements.at(1);
+    QString className = elements.at(0) + "::" + elements.at(1);
 
     QObject *component = new QObject;
     component->setObjectName(className);
