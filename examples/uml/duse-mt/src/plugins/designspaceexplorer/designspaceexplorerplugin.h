@@ -52,6 +52,9 @@ class QTableWidget;
 
 class QModelingElement;
 
+class QModelingObjectModel;
+class QModelingObjectView;
+
 namespace Duse {
     class ICore;
 }
@@ -70,6 +73,7 @@ public:
 private Q_SLOTS:
     void newDuseDesign();
     void openDuseDesign();
+    void designSpaceChanged();
 
 private:
     DuSE::ICore *_core;
@@ -77,9 +81,12 @@ private:
     QQuickView *_currentDesignSpaceLocationQuickView;
     QQuickView *_metricsQuickView;
     QTableWidget *_designSpaceExplorer;
+    QModelingObjectView *_currentDesignSpaceLocationView;
+    QModelingObjectModel *_currentDesignSpaceLocationModel;
 
     NewDuseDesignDialog *_newDuseDesignDialog;
     QList<QModelingElement *> _duseInstance;
+    QList<QModelingElement *> _currentDesignSpaceLocation;
 
     QScriptEngine _engine;
 

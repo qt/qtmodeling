@@ -85,7 +85,7 @@ bool ModelInspectorPlugin::initialize(DuSE::ICore *core)
     connect(_modelingObjectView, &QModelingObjectView::modelingObjectChanged, _propertyModel, &QModelingObjectPropertyModel::setModelingObject);
     connect(_modelingObjectView, SIGNAL(modelingObjectChanged(QModelingObject*)), core->uiController(), SIGNAL(currentModelingObjectChanged(QModelingObject*)));
     connect(_propertyModel, &QModelingObjectPropertyModel::indexChanged, _modelingObjectModel, &QModelingObjectModel::updateIndex);
-    connect(core->uiController(), SIGNAL(updateCurrentModelingObject()), this, SLOT(updateCurrentModelingObject()));
+    connect(core->uiController(), SIGNAL(updateCurrentModelingObject()), _modelingObjectView, SLOT(updateSelected()));
     connect(_modelingObjectView, SIGNAL(addToView(QObject*,QQuickItem*)), core->uiController(), SIGNAL(addToView(QObject*,QQuickItem*)));
 
     return true;
@@ -94,10 +94,5 @@ bool ModelInspectorPlugin::initialize(DuSE::ICore *core)
 void ModelInspectorPlugin::populateOutputIssues()
 {
     _outputIssues->setModel(new QStringListModel(DuSE::ICore::self()->projectController()->errorStrings()));
-}
-
-void ModelInspectorPlugin::updateCurrentModelingObject()
-{
-    _modelingObjectView->updateSelected();
 }
 

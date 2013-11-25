@@ -63,6 +63,9 @@
 #include <QtModeling/QXmiReader>
 #include <QtModeling/QModelingElement>
 
+#include <QtModelingWidgets/QModelingObjectView>
+#include <QtModelingWidgets/QModelingObjectModel>
+
 #include <QtUml/QUmlModel>
 #include <QtUml/QUmlProfile>
 #include <QtUml/QUmlOpaqueExpression>
@@ -121,8 +124,11 @@ DesignSpaceExplorerPlugin::DesignSpaceExplorerPlugin(QObject *parent) :
     _currentDesignSpaceLocationQuickView(new QQuickView),
     _metricsQuickView(new QQuickView),
     _designSpaceExplorer(new QTableWidget),
+    _currentDesignSpaceLocationView(new QModelingObjectView),
+    _currentDesignSpaceLocationModel(new QModelingObjectModel),
     _newDuseDesignDialog(new NewDuseDesignDialog)
 {
+    _currentDesignSpaceLocationView->setModel(_currentDesignSpaceLocationModel);
 }
 
 DesignSpaceExplorerPlugin::~DesignSpaceExplorerPlugin()
@@ -145,6 +151,8 @@ bool DesignSpaceExplorerPlugin::initialize(DuSE::ICore *core)
     _metricsQuickView->setResizeMode(QQuickView::SizeRootObjectToView);
 
     core->uiController()->addDockWidget(Qt::LeftDockWidgetArea, tr("Quality Metrics"), QWidget::createWindowContainer(_metricsQuickView));
+
+    core->uiController()->addDockWidget(Qt::LeftDockWidgetArea, tr("Current Location Inspector"), _currentDesignSpaceLocationView);
 
     _designSpaceExplorer->setAlternatingRowColors(true);
     _designSpaceExplorer->horizontalHeader()->setStretchLastSection(true);
@@ -297,5 +305,22 @@ void DesignSpaceExplorerPlugin::populateDesignSpaceExplorer()
 
 void DesignSpaceExplorerPlugin::openDuseDesign()
 {
+}
+
+void DesignSpaceExplorerPlugin::designSpaceChanged()
+{
+//    qDeleteAll(_currentDesignSpaceLocation);
+    QXmiReader reader;
+    QFile inputModel(_newDuseDesignDialog->_inputModelFileName);
+    if (!inputModel.open(QFile::ReadOnly | QFile::Text)) {
+        QMessageBox::critical(0, tr("Create new DuSE design"), tr("Cannot read file %1").arg(_newDuseDesignDialog->_inputModelFileName));
+        return;
+    }
+    _currentDesignSpaceLocation = reader.readFile(&inputModel);
+    QList<QModelingObject *> currentModelObjects;
+    foreach (QModelingElement *element, _currentDesignSpaceLocation)
+        currentModelObjects << element->asQModelingObject();
+
+    _currentDesignSpaceLocationModel->setModelingObjects(currentModelObjects);
 }
 

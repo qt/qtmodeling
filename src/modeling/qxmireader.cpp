@@ -121,6 +121,7 @@ QList<QModelingElement *> QXmiReader::readFile(QIODevice *device, QString import
         d->xmlNamespaceToNamespaceUri.clear();
     }
     QXmlStreamReader reader;
+    device->reset();
     reader.setDevice(device);
     QList<QModelingElement *> modelingObjectList;
     QModelingElement *rootElement = 0;

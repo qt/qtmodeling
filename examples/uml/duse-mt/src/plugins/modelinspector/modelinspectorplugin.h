@@ -62,7 +62,6 @@ public:
 
 private Q_SLOTS:
     void populateOutputIssues();
-    void updateCurrentModelingObject();
 
 private:
     QModelingObjectView *_modelingObjectView;
