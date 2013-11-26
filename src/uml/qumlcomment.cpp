@@ -62,6 +62,14 @@ QUmlComment::QUmlComment(bool createQModelingObject)
 }
 
 /*!
+    Destroys the QUmlComment.
+ */
+QUmlComment::~QUmlComment()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QUmlComment.
 */
 QModelingElement *QUmlComment::clone() const
@@ -69,8 +77,6 @@ QModelingElement *QUmlComment::clone() const
     QUmlComment *c = new QUmlComment;
     foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlElement *element, annotatedElements())
-        c->addAnnotatedElement(dynamic_cast<QUmlElement *>(element->clone()));
     c->setBody(body());
     return c;
 }

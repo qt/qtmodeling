@@ -55,6 +55,7 @@ class Q_UML_EXPORT QUmlAbstraction : public QUmlDependency
 {
 public:
     explicit QUmlAbstraction(bool createQModelingObject = true);
+    virtual ~QUmlAbstraction();
 
     virtual QModelingElement *clone() const;
 

@@ -55,6 +55,7 @@ class Q_UML_EXPORT QUmlProtocolConformance : public QUmlDirectedRelationship
 {
 public:
     explicit QUmlProtocolConformance(bool createQModelingObject = true);
+    virtual ~QUmlProtocolConformance();
 
     virtual QModelingElement *clone() const;
 

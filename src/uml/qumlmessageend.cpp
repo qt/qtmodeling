@@ -69,6 +69,14 @@ QUmlMessageEnd::QUmlMessageEnd() :
 }
 
 /*!
+    Destroys the QUmlMessageEnd.
+ */
+QUmlMessageEnd::~QUmlMessageEnd()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QUmlMessageEnd.
 */
 QModelingElement *QUmlMessageEnd::clone() const
@@ -76,14 +84,10 @@ QModelingElement *QUmlMessageEnd::clone() const
     QUmlMessageEnd *c = new QUmlMessageEnd;
     foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependencies())
-        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
         c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
     c->setVisibility(visibility());
-    if (message())
-        c->setMessage(dynamic_cast<QUmlMessage *>(message()->clone()));
     return c;
 }
 

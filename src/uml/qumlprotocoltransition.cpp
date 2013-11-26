@@ -85,6 +85,14 @@ QUmlProtocolTransition::QUmlProtocolTransition(bool createQModelingObject) :
 }
 
 /*!
+    Destroys the QUmlProtocolTransition.
+ */
+QUmlProtocolTransition::~QUmlProtocolTransition()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QUmlProtocolTransition.
 */
 QModelingElement *QUmlProtocolTransition::clone() const
@@ -92,8 +100,6 @@ QModelingElement *QUmlProtocolTransition::clone() const
     QUmlProtocolTransition *c = new QUmlProtocolTransition;
     foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependencies())
-        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
         c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
@@ -105,19 +111,11 @@ QModelingElement *QUmlProtocolTransition::clone() const
         c->addOwnedRule(dynamic_cast<QUmlConstraint *>(element->clone()));
     foreach (QUmlPackageImport *element, packageImports())
         c->addPackageImport(dynamic_cast<QUmlPackageImport *>(element->clone()));
-    if (container())
-        c->setContainer(dynamic_cast<QUmlRegion *>(container()->clone()));
     if (effect())
         c->setEffect(dynamic_cast<QUmlBehavior *>(effect()->clone()));
     if (guard())
         c->setGuard(dynamic_cast<QUmlConstraint *>(guard()->clone()));
     c->setKind(kind());
-    if (redefinedTransition())
-        c->setRedefinedTransition(dynamic_cast<QUmlTransition *>(redefinedTransition()->clone()));
-    if (source())
-        c->setSource(dynamic_cast<QUmlVertex *>(source()->clone()));
-    if (target())
-        c->setTarget(dynamic_cast<QUmlVertex *>(target()->clone()));
     foreach (QUmlTrigger *element, triggers())
         c->addTrigger(dynamic_cast<QUmlTrigger *>(element->clone()));
     if (postCondition())

@@ -65,6 +65,14 @@ QUmlParameterableElement::QUmlParameterableElement() :
 }
 
 /*!
+    Destroys the QUmlParameterableElement.
+ */
+QUmlParameterableElement::~QUmlParameterableElement()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QUmlParameterableElement.
 */
 QModelingElement *QUmlParameterableElement::clone() const
@@ -72,10 +80,6 @@ QModelingElement *QUmlParameterableElement::clone() const
     QUmlParameterableElement *c = new QUmlParameterableElement;
     foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    if (owningTemplateParameter())
-        c->setOwningTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(owningTemplateParameter()->clone()));
-    if (templateParameter())
-        c->setTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(templateParameter()->clone()));
     return c;
 }
 

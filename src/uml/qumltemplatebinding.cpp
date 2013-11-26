@@ -70,6 +70,14 @@ QUmlTemplateBinding::QUmlTemplateBinding(bool createQModelingObject) :
 }
 
 /*!
+    Destroys the QUmlTemplateBinding.
+ */
+QUmlTemplateBinding::~QUmlTemplateBinding()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QUmlTemplateBinding.
 */
 QModelingElement *QUmlTemplateBinding::clone() const
@@ -77,12 +85,8 @@ QModelingElement *QUmlTemplateBinding::clone() const
     QUmlTemplateBinding *c = new QUmlTemplateBinding;
     foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    if (boundElement())
-        c->setBoundElement(dynamic_cast<QUmlTemplateableElement *>(boundElement()->clone()));
     foreach (QUmlTemplateParameterSubstitution *element, parameterSubstitutions())
         c->addParameterSubstitution(dynamic_cast<QUmlTemplateParameterSubstitution *>(element->clone()));
-    if (signature())
-        c->setSignature(dynamic_cast<QUmlTemplateSignature *>(signature()->clone()));
     return c;
 }
 

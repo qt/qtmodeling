@@ -68,6 +68,14 @@ QUmlQualifierValue::QUmlQualifierValue(bool createQModelingObject) :
 }
 
 /*!
+    Destroys the QUmlQualifierValue.
+ */
+QUmlQualifierValue::~QUmlQualifierValue()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QUmlQualifierValue.
 */
 QModelingElement *QUmlQualifierValue::clone() const
@@ -75,10 +83,6 @@ QModelingElement *QUmlQualifierValue::clone() const
     QUmlQualifierValue *c = new QUmlQualifierValue;
     foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    if (qualifier())
-        c->setQualifier(dynamic_cast<QUmlProperty *>(qualifier()->clone()));
-    if (value())
-        c->setValue(dynamic_cast<QUmlInputPin *>(value()->clone()));
     return c;
 }
 

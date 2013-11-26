@@ -71,6 +71,14 @@ QUmlVertex::QUmlVertex() :
 }
 
 /*!
+    Destroys the QUmlVertex.
+ */
+QUmlVertex::~QUmlVertex()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QUmlVertex.
 */
 QModelingElement *QUmlVertex::clone() const
@@ -78,14 +86,10 @@ QModelingElement *QUmlVertex::clone() const
     QUmlVertex *c = new QUmlVertex;
     foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependencies())
-        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
         c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
     c->setVisibility(visibility());
-    if (container())
-        c->setContainer(dynamic_cast<QUmlRegion *>(container()->clone()));
     return c;
 }
 

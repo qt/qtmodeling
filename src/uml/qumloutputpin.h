@@ -53,6 +53,7 @@ class Q_UML_EXPORT QUmlOutputPin : public QUmlPin
 {
 public:
     explicit QUmlOutputPin(bool createQModelingObject = true);
+    virtual ~QUmlOutputPin();
 
     virtual QModelingElement *clone() const;
 

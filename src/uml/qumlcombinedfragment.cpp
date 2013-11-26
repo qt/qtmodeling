@@ -76,6 +76,14 @@ QUmlCombinedFragment::QUmlCombinedFragment(bool createQModelingObject) :
 }
 
 /*!
+    Destroys the QUmlCombinedFragment.
+ */
+QUmlCombinedFragment::~QUmlCombinedFragment()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QUmlCombinedFragment.
 */
 QModelingElement *QUmlCombinedFragment::clone() const
@@ -83,18 +91,10 @@ QModelingElement *QUmlCombinedFragment::clone() const
     QUmlCombinedFragment *c = new QUmlCombinedFragment;
     foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependencies())
-        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
         c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
     c->setVisibility(visibility());
-    foreach (QUmlLifeline *element, covered())
-        c->addCovered(dynamic_cast<QUmlLifeline *>(element->clone()));
-    if (enclosingInteraction())
-        c->setEnclosingInteraction(dynamic_cast<QUmlInteraction *>(enclosingInteraction()->clone()));
-    if (enclosingOperand())
-        c->setEnclosingOperand(dynamic_cast<QUmlInteractionOperand *>(enclosingOperand()->clone()));
     foreach (QUmlGeneralOrdering *element, generalOrderings())
         c->addGeneralOrdering(dynamic_cast<QUmlGeneralOrdering *>(element->clone()));
     foreach (QUmlGate *element, cfragmentGates())

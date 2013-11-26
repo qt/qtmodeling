@@ -53,6 +53,7 @@ class Q_UML_EXPORT QUmlDataStoreNode : public QUmlCentralBufferNode
 {
 public:
     explicit QUmlDataStoreNode(bool createQModelingObject = true);
+    virtual ~QUmlDataStoreNode();
 
     virtual QModelingElement *clone() const;
 

@@ -71,6 +71,14 @@ QUmlGate::QUmlGate(bool createQModelingObject)
 }
 
 /*!
+    Destroys the QUmlGate.
+ */
+QUmlGate::~QUmlGate()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QUmlGate.
 */
 QModelingElement *QUmlGate::clone() const
@@ -78,14 +86,10 @@ QModelingElement *QUmlGate::clone() const
     QUmlGate *c = new QUmlGate;
     foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependencies())
-        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
         c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
     c->setVisibility(visibility());
-    if (message())
-        c->setMessage(dynamic_cast<QUmlMessage *>(message()->clone()));
     return c;
 }
 

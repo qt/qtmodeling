@@ -69,6 +69,14 @@ QUmlSlot::QUmlSlot(bool createQModelingObject) :
 }
 
 /*!
+    Destroys the QUmlSlot.
+ */
+QUmlSlot::~QUmlSlot()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QUmlSlot.
 */
 QModelingElement *QUmlSlot::clone() const
@@ -76,10 +84,6 @@ QModelingElement *QUmlSlot::clone() const
     QUmlSlot *c = new QUmlSlot;
     foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    if (definingFeature())
-        c->setDefiningFeature(dynamic_cast<QUmlStructuralFeature *>(definingFeature()->clone()));
-    if (owningInstance())
-        c->setOwningInstance(dynamic_cast<QUmlInstanceSpecification *>(owningInstance()->clone()));
     foreach (QUmlValueSpecification *element, values())
         c->addValue(dynamic_cast<QUmlValueSpecification *>(element->clone()));
     return c;

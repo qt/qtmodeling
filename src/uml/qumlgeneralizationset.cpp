@@ -77,6 +77,14 @@ QUmlGeneralizationSet::QUmlGeneralizationSet(bool createQModelingObject) :
 }
 
 /*!
+    Destroys the QUmlGeneralizationSet.
+ */
+QUmlGeneralizationSet::~QUmlGeneralizationSet()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QUmlGeneralizationSet.
 */
 QModelingElement *QUmlGeneralizationSet::clone() const
@@ -84,22 +92,12 @@ QModelingElement *QUmlGeneralizationSet::clone() const
     QUmlGeneralizationSet *c = new QUmlGeneralizationSet;
     foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    if (owningTemplateParameter())
-        c->setOwningTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(owningTemplateParameter()->clone()));
-    if (templateParameter())
-        c->setTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(templateParameter()->clone()));
-    foreach (QUmlDependency *element, clientDependencies())
-        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
         c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
     c->setVisibility(visibility());
-    foreach (QUmlGeneralization *element, generalizations())
-        c->addGeneralization(dynamic_cast<QUmlGeneralization *>(element->clone()));
     c->setCovering(isCovering());
     c->setDisjoint(isDisjoint());
-    if (powertype())
-        c->setPowertype(dynamic_cast<QUmlClassifier *>(powertype()->clone()));
     return c;
 }
 

@@ -76,6 +76,14 @@ QUmlDestructionOccurrenceSpecification::QUmlDestructionOccurrenceSpecification(b
 }
 
 /*!
+    Destroys the QUmlDestructionOccurrenceSpecification.
+ */
+QUmlDestructionOccurrenceSpecification::~QUmlDestructionOccurrenceSpecification()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QUmlDestructionOccurrenceSpecification.
 */
 QModelingElement *QUmlDestructionOccurrenceSpecification::clone() const
@@ -83,26 +91,12 @@ QModelingElement *QUmlDestructionOccurrenceSpecification::clone() const
     QUmlDestructionOccurrenceSpecification *c = new QUmlDestructionOccurrenceSpecification;
     foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependencies())
-        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
         c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
     c->setVisibility(visibility());
-    if (enclosingInteraction())
-        c->setEnclosingInteraction(dynamic_cast<QUmlInteraction *>(enclosingInteraction()->clone()));
-    if (enclosingOperand())
-        c->setEnclosingOperand(dynamic_cast<QUmlInteractionOperand *>(enclosingOperand()->clone()));
     foreach (QUmlGeneralOrdering *element, generalOrderings())
         c->addGeneralOrdering(dynamic_cast<QUmlGeneralOrdering *>(element->clone()));
-    if (covered())
-        c->setCovered(dynamic_cast<QUmlLifeline *>(covered()->clone()));
-    foreach (QUmlGeneralOrdering *element, toAfters())
-        c->addToAfter(dynamic_cast<QUmlGeneralOrdering *>(element->clone()));
-    foreach (QUmlGeneralOrdering *element, toBefores())
-        c->addToBefore(dynamic_cast<QUmlGeneralOrdering *>(element->clone()));
-    if (message())
-        c->setMessage(dynamic_cast<QUmlMessage *>(message()->clone()));
     return c;
 }
 

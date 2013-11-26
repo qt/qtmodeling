@@ -63,6 +63,14 @@ QUmlDirectedRelationship::QUmlDirectedRelationship()
 }
 
 /*!
+    Destroys the QUmlDirectedRelationship.
+ */
+QUmlDirectedRelationship::~QUmlDirectedRelationship()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QUmlDirectedRelationship.
 */
 QModelingElement *QUmlDirectedRelationship::clone() const

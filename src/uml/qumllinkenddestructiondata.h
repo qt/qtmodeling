@@ -55,6 +55,7 @@ class Q_UML_EXPORT QUmlLinkEndDestructionData : public QUmlLinkEndData
 {
 public:
     explicit QUmlLinkEndDestructionData(bool createQModelingObject = true);
+    virtual ~QUmlLinkEndDestructionData();
 
     virtual QModelingElement *clone() const;
 

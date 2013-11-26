@@ -86,6 +86,14 @@ QUmlAddVariableValueAction::QUmlAddVariableValueAction(bool createQModelingObjec
 }
 
 /*!
+    Destroys the QUmlAddVariableValueAction.
+ */
+QUmlAddVariableValueAction::~QUmlAddVariableValueAction()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QUmlAddVariableValueAction.
 */
 QModelingElement *QUmlAddVariableValueAction::clone() const
@@ -93,27 +101,11 @@ QModelingElement *QUmlAddVariableValueAction::clone() const
     QUmlAddVariableValueAction *c = new QUmlAddVariableValueAction;
     foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependencies())
-        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
         c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
     c->setVisibility(visibility());
     c->setLeaf(isLeaf());
-    if (activity())
-        c->setActivity(dynamic_cast<QUmlActivity *>(activity()->clone()));
-    foreach (QUmlInterruptibleActivityRegion *element, inInterruptibleRegions())
-        c->addInInterruptibleRegion(dynamic_cast<QUmlInterruptibleActivityRegion *>(element->clone()));
-    foreach (QUmlActivityPartition *element, inPartitions())
-        c->addInPartition(dynamic_cast<QUmlActivityPartition *>(element->clone()));
-    if (inStructuredNode())
-        c->setInStructuredNode(dynamic_cast<QUmlStructuredActivityNode *>(inStructuredNode()->clone()));
-    foreach (QUmlActivityEdge *element, incomings())
-        c->addIncoming(dynamic_cast<QUmlActivityEdge *>(element->clone()));
-    foreach (QUmlActivityEdge *element, outgoings())
-        c->addOutgoing(dynamic_cast<QUmlActivityEdge *>(element->clone()));
-    foreach (QUmlActivityNode *element, redefinedNodes())
-        c->addRedefinedNode(dynamic_cast<QUmlActivityNode *>(element->clone()));
     foreach (QUmlExceptionHandler *element, handlers())
         c->addHandler(dynamic_cast<QUmlExceptionHandler *>(element->clone()));
     c->setLocallyReentrant(isLocallyReentrant());
@@ -121,8 +113,6 @@ QModelingElement *QUmlAddVariableValueAction::clone() const
         c->addLocalPostcondition(dynamic_cast<QUmlConstraint *>(element->clone()));
     foreach (QUmlConstraint *element, localPreconditions())
         c->addLocalPrecondition(dynamic_cast<QUmlConstraint *>(element->clone()));
-    if (variable())
-        c->setVariable(dynamic_cast<QUmlVariable *>(variable()->clone()));
     if (value())
         c->setValue(dynamic_cast<QUmlInputPin *>(value()->clone()));
     if (insertAt())

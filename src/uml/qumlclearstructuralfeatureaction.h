@@ -55,6 +55,7 @@ class Q_UML_EXPORT QUmlClearStructuralFeatureAction : public QUmlStructuralFeatu
 {
 public:
     explicit QUmlClearStructuralFeatureAction(bool createQModelingObject = true);
+    virtual ~QUmlClearStructuralFeatureAction();
 
     virtual QModelingElement *clone() const;
 

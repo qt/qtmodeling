@@ -53,6 +53,7 @@ class Q_UML_EXPORT QUmlCommunicationPath : public QUmlAssociation
 {
 public:
     explicit QUmlCommunicationPath(bool createQModelingObject = true);
+    virtual ~QUmlCommunicationPath();
 
     virtual QModelingElement *clone() const;
 

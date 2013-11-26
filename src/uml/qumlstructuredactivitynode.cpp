@@ -86,6 +86,14 @@ QUmlStructuredActivityNode::QUmlStructuredActivityNode(bool createQModelingObjec
 }
 
 /*!
+    Destroys the QUmlStructuredActivityNode.
+ */
+QUmlStructuredActivityNode::~QUmlStructuredActivityNode()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QUmlStructuredActivityNode.
 */
 QModelingElement *QUmlStructuredActivityNode::clone() const
@@ -93,25 +101,11 @@ QModelingElement *QUmlStructuredActivityNode::clone() const
     QUmlStructuredActivityNode *c = new QUmlStructuredActivityNode;
     foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependencies())
-        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
         c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
     c->setVisibility(visibility());
     c->setLeaf(isLeaf());
-    foreach (QUmlInterruptibleActivityRegion *element, inInterruptibleRegions())
-        c->addInInterruptibleRegion(dynamic_cast<QUmlInterruptibleActivityRegion *>(element->clone()));
-    foreach (QUmlActivityPartition *element, inPartitions())
-        c->addInPartition(dynamic_cast<QUmlActivityPartition *>(element->clone()));
-    if (inStructuredNode())
-        c->setInStructuredNode(dynamic_cast<QUmlStructuredActivityNode *>(inStructuredNode()->clone()));
-    foreach (QUmlActivityEdge *element, incomings())
-        c->addIncoming(dynamic_cast<QUmlActivityEdge *>(element->clone()));
-    foreach (QUmlActivityEdge *element, outgoings())
-        c->addOutgoing(dynamic_cast<QUmlActivityEdge *>(element->clone()));
-    foreach (QUmlActivityNode *element, redefinedNodes())
-        c->addRedefinedNode(dynamic_cast<QUmlActivityNode *>(element->clone()));
     foreach (QUmlExceptionHandler *element, handlers())
         c->addHandler(dynamic_cast<QUmlExceptionHandler *>(element->clone()));
     c->setLocallyReentrant(isLocallyReentrant());
@@ -125,8 +119,6 @@ QModelingElement *QUmlStructuredActivityNode::clone() const
         c->addOwnedRule(dynamic_cast<QUmlConstraint *>(element->clone()));
     foreach (QUmlPackageImport *element, packageImports())
         c->addPackageImport(dynamic_cast<QUmlPackageImport *>(element->clone()));
-    if (activity())
-        c->setActivity(dynamic_cast<QUmlActivity *>(activity()->clone()));
     foreach (QUmlActivityEdge *element, edges())
         c->addEdge(dynamic_cast<QUmlActivityEdge *>(element->clone()));
     c->setMustIsolate(mustIsolate());

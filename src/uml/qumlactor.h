@@ -53,6 +53,7 @@ class Q_UML_EXPORT QUmlActor : public QUmlBehavioredClassifier
 {
 public:
     explicit QUmlActor(bool createQModelingObject = true);
+    virtual ~QUmlActor();
 
     virtual QModelingElement *clone() const;
 

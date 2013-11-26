@@ -77,6 +77,14 @@ QUmlStringExpression::QUmlStringExpression(bool createQModelingObject) :
 }
 
 /*!
+    Destroys the QUmlStringExpression.
+ */
+QUmlStringExpression::~QUmlStringExpression()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QUmlStringExpression.
 */
 QModelingElement *QUmlStringExpression::clone() const
@@ -84,17 +92,9 @@ QModelingElement *QUmlStringExpression::clone() const
     QUmlStringExpression *c = new QUmlStringExpression;
     foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependencies())
-        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
         c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
-    if (type())
-        c->setType(dynamic_cast<QUmlType *>(type()->clone()));
-    if (owningTemplateParameter())
-        c->setOwningTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(owningTemplateParameter()->clone()));
-    if (templateParameter())
-        c->setTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(templateParameter()->clone()));
     c->setVisibility(visibility());
     foreach (QUmlValueSpecification *element, operands())
         c->addOperand(dynamic_cast<QUmlValueSpecification *>(element->clone()));
@@ -103,8 +103,6 @@ QModelingElement *QUmlStringExpression::clone() const
         c->setOwnedTemplateSignature(dynamic_cast<QUmlTemplateSignature *>(ownedTemplateSignature()->clone()));
     foreach (QUmlTemplateBinding *element, templateBindings())
         c->addTemplateBinding(dynamic_cast<QUmlTemplateBinding *>(element->clone()));
-    if (owningExpression())
-        c->setOwningExpression(dynamic_cast<QUmlStringExpression *>(owningExpression()->clone()));
     foreach (QUmlStringExpression *element, subExpressions())
         c->addSubExpression(dynamic_cast<QUmlStringExpression *>(element->clone()));
     return c;

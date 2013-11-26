@@ -71,6 +71,14 @@ QUmlLinkEndDestructionData::QUmlLinkEndDestructionData(bool createQModelingObjec
 }
 
 /*!
+    Destroys the QUmlLinkEndDestructionData.
+ */
+QUmlLinkEndDestructionData::~QUmlLinkEndDestructionData()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QUmlLinkEndDestructionData.
 */
 QModelingElement *QUmlLinkEndDestructionData::clone() const
@@ -78,14 +86,8 @@ QModelingElement *QUmlLinkEndDestructionData::clone() const
     QUmlLinkEndDestructionData *c = new QUmlLinkEndDestructionData;
     foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    if (end())
-        c->setEnd(dynamic_cast<QUmlProperty *>(end()->clone()));
     foreach (QUmlQualifierValue *element, qualifiers())
         c->addQualifier(dynamic_cast<QUmlQualifierValue *>(element->clone()));
-    if (value())
-        c->setValue(dynamic_cast<QUmlInputPin *>(value()->clone()));
-    if (destroyAt())
-        c->setDestroyAt(dynamic_cast<QUmlInputPin *>(destroyAt()->clone()));
     c->setDestroyDuplicates(isDestroyDuplicates());
     return c;
 }

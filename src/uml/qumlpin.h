@@ -53,6 +53,8 @@ QT_MODULE(QtUml)
 class Q_UML_EXPORT QUmlPin : public QUmlMultiplicityElement, public QUmlObjectNode
 {
 public:
+    virtual ~QUmlPin();
+
     Q_DECL_HIDDEN virtual QModelingElement *clone() const;
 
     // Owned attributes

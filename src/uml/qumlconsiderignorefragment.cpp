@@ -76,6 +76,14 @@ QUmlConsiderIgnoreFragment::QUmlConsiderIgnoreFragment(bool createQModelingObjec
 }
 
 /*!
+    Destroys the QUmlConsiderIgnoreFragment.
+ */
+QUmlConsiderIgnoreFragment::~QUmlConsiderIgnoreFragment()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QUmlConsiderIgnoreFragment.
 */
 QModelingElement *QUmlConsiderIgnoreFragment::clone() const
@@ -83,18 +91,10 @@ QModelingElement *QUmlConsiderIgnoreFragment::clone() const
     QUmlConsiderIgnoreFragment *c = new QUmlConsiderIgnoreFragment;
     foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependencies())
-        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
         c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
     c->setVisibility(visibility());
-    foreach (QUmlLifeline *element, covered())
-        c->addCovered(dynamic_cast<QUmlLifeline *>(element->clone()));
-    if (enclosingInteraction())
-        c->setEnclosingInteraction(dynamic_cast<QUmlInteraction *>(enclosingInteraction()->clone()));
-    if (enclosingOperand())
-        c->setEnclosingOperand(dynamic_cast<QUmlInteractionOperand *>(enclosingOperand()->clone()));
     foreach (QUmlGeneralOrdering *element, generalOrderings())
         c->addGeneralOrdering(dynamic_cast<QUmlGeneralOrdering *>(element->clone()));
     foreach (QUmlGate *element, cfragmentGates())
@@ -102,8 +102,6 @@ QModelingElement *QUmlConsiderIgnoreFragment::clone() const
     c->setInteractionOperator(interactionOperator());
     foreach (QUmlInteractionOperand *element, operands())
         c->addOperand(dynamic_cast<QUmlInteractionOperand *>(element->clone()));
-    foreach (QUmlNamedElement *element, messages())
-        c->addMessage(dynamic_cast<QUmlNamedElement *>(element->clone()));
     return c;
 }
 

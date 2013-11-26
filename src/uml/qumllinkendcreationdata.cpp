@@ -71,6 +71,14 @@ QUmlLinkEndCreationData::QUmlLinkEndCreationData(bool createQModelingObject) :
 }
 
 /*!
+    Destroys the QUmlLinkEndCreationData.
+ */
+QUmlLinkEndCreationData::~QUmlLinkEndCreationData()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QUmlLinkEndCreationData.
 */
 QModelingElement *QUmlLinkEndCreationData::clone() const
@@ -78,14 +86,8 @@ QModelingElement *QUmlLinkEndCreationData::clone() const
     QUmlLinkEndCreationData *c = new QUmlLinkEndCreationData;
     foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    if (end())
-        c->setEnd(dynamic_cast<QUmlProperty *>(end()->clone()));
     foreach (QUmlQualifierValue *element, qualifiers())
         c->addQualifier(dynamic_cast<QUmlQualifierValue *>(element->clone()));
-    if (value())
-        c->setValue(dynamic_cast<QUmlInputPin *>(value()->clone()));
-    if (insertAt())
-        c->setInsertAt(dynamic_cast<QUmlInputPin *>(insertAt()->clone()));
     c->setReplaceAll(isReplaceAll());
     return c;
 }

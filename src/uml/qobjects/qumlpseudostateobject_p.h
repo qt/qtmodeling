@@ -100,8 +100,8 @@ public:
 
     // Owned attributes [Vertex]
     Q_INVOKABLE QObject *container() const;
-    Q_INVOKABLE const QSet<QObject *> incomings() const;
-    Q_INVOKABLE const QSet<QObject *> outgoings() const;
+    Q_TODO Q_INVOKABLE const QSet<QObject *> incomings() const;
+    Q_TODO Q_INVOKABLE const QSet<QObject *> outgoings() const;
 
     // Owned attributes [Pseudostate]
     Q_INVOKABLE QtUml::PseudostateKind kind() const;
@@ -114,12 +114,12 @@ public:
 
     // Operations [NamedElement]
     Q_INVOKABLE QList<QObject *> allNamespaces() const;
-    Q_INVOKABLE QSet<QObject *> allOwningPackages() const;
-    Q_INVOKABLE bool isDistinguishableFrom(QObject *n, QObject *ns) const;
+    Q_TODO Q_INVOKABLE QSet<QObject *> allOwningPackages() const;
+    Q_TODO Q_INVOKABLE bool isDistinguishableFrom(QObject *n, QObject *ns) const;
     Q_INVOKABLE QString separator() const;
 
     // Operations [Vertex]
-    Q_INVOKABLE QObject *containingStateMachine() const;
+    Q_TODO Q_INVOKABLE QObject *containingStateMachine() const;
 
 public Q_SLOTS:
 

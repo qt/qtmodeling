@@ -78,6 +78,14 @@ QUmlLifeline::QUmlLifeline(bool createQModelingObject) :
 }
 
 /*!
+    Destroys the QUmlLifeline.
+ */
+QUmlLifeline::~QUmlLifeline()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QUmlLifeline.
 */
 QModelingElement *QUmlLifeline::clone() const
@@ -85,20 +93,10 @@ QModelingElement *QUmlLifeline::clone() const
     QUmlLifeline *c = new QUmlLifeline;
     foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependencies())
-        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
         c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
     c->setVisibility(visibility());
-    foreach (QUmlInteractionFragment *element, coveredBy())
-        c->addCoveredBy(dynamic_cast<QUmlInteractionFragment *>(element->clone()));
-    if (decomposedAs())
-        c->setDecomposedAs(dynamic_cast<QUmlPartDecomposition *>(decomposedAs()->clone()));
-    if (interaction())
-        c->setInteraction(dynamic_cast<QUmlInteraction *>(interaction()->clone()));
-    if (represents())
-        c->setRepresents(dynamic_cast<QUmlConnectableElement *>(represents()->clone()));
     if (selector())
         c->setSelector(dynamic_cast<QUmlValueSpecification *>(selector()->clone()));
     return c;

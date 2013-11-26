@@ -76,6 +76,14 @@ QUmlDeployment::QUmlDeployment(bool createQModelingObject) :
 }
 
 /*!
+    Destroys the QUmlDeployment.
+ */
+QUmlDeployment::~QUmlDeployment()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QUmlDeployment.
 */
 QModelingElement *QUmlDeployment::clone() const
@@ -83,26 +91,12 @@ QModelingElement *QUmlDeployment::clone() const
     QUmlDeployment *c = new QUmlDeployment;
     foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    if (owningTemplateParameter())
-        c->setOwningTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(owningTemplateParameter()->clone()));
-    if (templateParameter())
-        c->setTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(templateParameter()->clone()));
-    foreach (QUmlDependency *element, clientDependencies())
-        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
         c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
     c->setVisibility(visibility());
-    foreach (QUmlNamedElement *element, clients())
-        c->addClient(dynamic_cast<QUmlNamedElement *>(element->clone()));
-    foreach (QUmlNamedElement *element, suppliers())
-        c->addSupplier(dynamic_cast<QUmlNamedElement *>(element->clone()));
     foreach (QUmlDeploymentSpecification *element, configurations())
         c->addConfiguration(dynamic_cast<QUmlDeploymentSpecification *>(element->clone()));
-    foreach (QUmlDeployedArtifact *element, deployedArtifacts())
-        c->addDeployedArtifact(dynamic_cast<QUmlDeployedArtifact *>(element->clone()));
-    if (location())
-        c->setLocation(dynamic_cast<QUmlDeploymentTarget *>(location()->clone()));
     return c;
 }
 

@@ -73,6 +73,14 @@ QUmlExtensionPoint::QUmlExtensionPoint(bool createQModelingObject) :
 }
 
 /*!
+    Destroys the QUmlExtensionPoint.
+ */
+QUmlExtensionPoint::~QUmlExtensionPoint()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QUmlExtensionPoint.
 */
 QModelingElement *QUmlExtensionPoint::clone() const
@@ -80,15 +88,11 @@ QModelingElement *QUmlExtensionPoint::clone() const
     QUmlExtensionPoint *c = new QUmlExtensionPoint;
     foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependencies())
-        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
         c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
     c->setVisibility(visibility());
     c->setLeaf(isLeaf());
-    if (useCase())
-        c->setUseCase(dynamic_cast<QUmlUseCase *>(useCase()->clone()));
     return c;
 }
 

@@ -55,6 +55,7 @@ class Q_UML_EXPORT QUmlPackageMerge : public QUmlDirectedRelationship
 {
 public:
     explicit QUmlPackageMerge(bool createQModelingObject = true);
+    virtual ~QUmlPackageMerge();
 
     virtual QModelingElement *clone() const;
 

@@ -55,6 +55,7 @@ class Q_UML_EXPORT QUmlGeneralOrdering : public QUmlNamedElement
 {
 public:
     explicit QUmlGeneralOrdering(bool createQModelingObject = true);
+    virtual ~QUmlGeneralOrdering();
 
     virtual QModelingElement *clone() const;
 

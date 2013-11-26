@@ -52,6 +52,8 @@ QT_MODULE(QtUml)
 class Q_UML_EXPORT QUmlEvent : public QUmlPackageableElement
 {
 public:
+    virtual ~QUmlEvent();
+
     Q_DECL_HIDDEN virtual QModelingElement *clone() const;
 
 

@@ -103,7 +103,7 @@ public:
     Q_INVOKABLE bool mustBeOwned() const;
 
     // Operations [ElementImport]
-    Q_INVOKABLE QString getName() const;
+    Q_TODO Q_INVOKABLE QString getName() const;
 
 public Q_SLOTS:
 

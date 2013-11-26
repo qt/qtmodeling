@@ -56,6 +56,7 @@ class Q_UML_EXPORT QUmlConditionalNode : public QUmlStructuredActivityNode
 {
 public:
     explicit QUmlConditionalNode(bool createQModelingObject = true);
+    virtual ~QUmlConditionalNode();
 
     virtual QModelingElement *clone() const;
 

@@ -122,7 +122,7 @@ public:
 
     // Owned attributes [Region]
     Q_INVOKABLE QObject *extendedRegion() const;
-    Q_INVOKABLE QObject *redefinitionContext() const;
+    Q_TODO Q_INVOKABLE QObject *redefinitionContext() const;
     Q_INVOKABLE QObject *state() const;
     Q_INVOKABLE QObject *stateMachine() const;
     Q_INVOKABLE const QSet<QObject *> subvertices() const;
@@ -134,23 +134,23 @@ public:
 
     // Operations [NamedElement]
     Q_INVOKABLE QList<QObject *> allNamespaces() const;
-    Q_INVOKABLE QSet<QObject *> allOwningPackages() const;
-    Q_INVOKABLE bool isDistinguishableFrom(QObject *n, QObject *ns) const;
+    Q_TODO Q_INVOKABLE QSet<QObject *> allOwningPackages() const;
+    Q_TODO Q_INVOKABLE bool isDistinguishableFrom(QObject *n, QObject *ns) const;
     Q_INVOKABLE QString separator() const;
 
     // Operations [RedefinableElement]
 
     // Operations [Namespace]
-    Q_INVOKABLE QSet<QObject *> excludeCollisions(QSet<QObject *> imps) const;
-    Q_INVOKABLE QSet<QString> getNamesOfMember(QObject *element) const;
-    Q_INVOKABLE QSet<QObject *> importMembers(QSet<QObject *> imps) const;
-    Q_INVOKABLE bool membersAreDistinguishable() const;
+    Q_TODO Q_INVOKABLE QSet<QObject *> excludeCollisions(QSet<QObject *> imps) const;
+    Q_TODO Q_INVOKABLE QSet<QString> getNamesOfMember(QObject *element) const;
+    Q_TODO Q_INVOKABLE QSet<QObject *> importMembers(QSet<QObject *> imps) const;
+    Q_TODO Q_INVOKABLE bool membersAreDistinguishable() const;
 
     // Operations [Region]
-    Q_INVOKABLE bool belongsToPSM() const;
-    Q_INVOKABLE QObject *containingStateMachine() const;
-    Q_INVOKABLE bool isConsistentWith(QObject *redefinee) const;
-    Q_INVOKABLE bool isRedefinitionContextValid(QObject *redefined) const;
+    Q_TODO Q_INVOKABLE bool belongsToPSM() const;
+    Q_TODO Q_INVOKABLE QObject *containingStateMachine() const;
+    Q_TODO Q_INVOKABLE bool isConsistentWith(QObject *redefinee) const;
+    Q_TODO Q_INVOKABLE bool isRedefinitionContextValid(QObject *redefined) const;
 
 public Q_SLOTS:
 

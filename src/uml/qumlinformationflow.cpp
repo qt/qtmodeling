@@ -77,6 +77,14 @@ QUmlInformationFlow::QUmlInformationFlow(bool createQModelingObject)
 }
 
 /*!
+    Destroys the QUmlInformationFlow.
+ */
+QUmlInformationFlow::~QUmlInformationFlow()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QUmlInformationFlow.
 */
 QModelingElement *QUmlInformationFlow::clone() const
@@ -84,30 +92,10 @@ QModelingElement *QUmlInformationFlow::clone() const
     QUmlInformationFlow *c = new QUmlInformationFlow;
     foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    if (owningTemplateParameter())
-        c->setOwningTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(owningTemplateParameter()->clone()));
-    if (templateParameter())
-        c->setTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(templateParameter()->clone()));
-    foreach (QUmlDependency *element, clientDependencies())
-        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
         c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
     c->setVisibility(visibility());
-    foreach (QUmlClassifier *element, conveyed())
-        c->addConveyed(dynamic_cast<QUmlClassifier *>(element->clone()));
-    foreach (QUmlNamedElement *element, informationSources())
-        c->addInformationSource(dynamic_cast<QUmlNamedElement *>(element->clone()));
-    foreach (QUmlNamedElement *element, informationTargets())
-        c->addInformationTarget(dynamic_cast<QUmlNamedElement *>(element->clone()));
-    foreach (QUmlRelationship *element, realizations())
-        c->addRealization(dynamic_cast<QUmlRelationship *>(element->clone()));
-    foreach (QUmlActivityEdge *element, realizingActivityEdges())
-        c->addRealizingActivityEdge(dynamic_cast<QUmlActivityEdge *>(element->clone()));
-    foreach (QUmlConnector *element, realizingConnectors())
-        c->addRealizingConnector(dynamic_cast<QUmlConnector *>(element->clone()));
-    foreach (QUmlMessage *element, realizingMessages())
-        c->addRealizingMessage(dynamic_cast<QUmlMessage *>(element->clone()));
     return c;
 }
 

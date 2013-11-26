@@ -136,8 +136,8 @@ public:
 
     // Owned attributes [Vertex]
     Q_INVOKABLE QObject *container() const;
-    Q_INVOKABLE const QSet<QObject *> incomings() const;
-    Q_INVOKABLE const QSet<QObject *> outgoings() const;
+    Q_TODO Q_INVOKABLE const QSet<QObject *> incomings() const;
+    Q_TODO Q_INVOKABLE const QSet<QObject *> outgoings() const;
 
     // Owned attributes [State]
     Q_INVOKABLE const QSet<QObject *> connections() const;
@@ -147,11 +147,11 @@ public:
     Q_INVOKABLE QObject *entry() const;
     Q_INVOKABLE QObject *exit() const;
     Q_INVOKABLE bool isComposite() const;
-    Q_INVOKABLE bool isOrthogonal() const;
-    Q_INVOKABLE bool isSimple() const;
-    Q_INVOKABLE bool isSubmachineState() const;
+    Q_TODO Q_INVOKABLE bool isOrthogonal() const;
+    Q_TODO Q_INVOKABLE bool isSimple() const;
+    Q_TODO Q_INVOKABLE bool isSubmachineState() const;
     Q_INVOKABLE QObject *redefinedState() const;
-    Q_INVOKABLE QObject *redefinitionContext() const;
+    Q_TODO Q_INVOKABLE QObject *redefinitionContext() const;
     Q_INVOKABLE const QSet<QObject *> regions() const;
     Q_INVOKABLE QObject *stateInvariant() const;
     Q_INVOKABLE QObject *submachine() const;
@@ -162,24 +162,24 @@ public:
 
     // Operations [NamedElement]
     Q_INVOKABLE QList<QObject *> allNamespaces() const;
-    Q_INVOKABLE QSet<QObject *> allOwningPackages() const;
-    Q_INVOKABLE bool isDistinguishableFrom(QObject *n, QObject *ns) const;
+    Q_TODO Q_INVOKABLE QSet<QObject *> allOwningPackages() const;
+    Q_TODO Q_INVOKABLE bool isDistinguishableFrom(QObject *n, QObject *ns) const;
     Q_INVOKABLE QString separator() const;
 
     // Operations [Namespace]
-    Q_INVOKABLE QSet<QObject *> excludeCollisions(QSet<QObject *> imps) const;
-    Q_INVOKABLE QSet<QString> getNamesOfMember(QObject *element) const;
-    Q_INVOKABLE QSet<QObject *> importMembers(QSet<QObject *> imps) const;
-    Q_INVOKABLE bool membersAreDistinguishable() const;
+    Q_TODO Q_INVOKABLE QSet<QObject *> excludeCollisions(QSet<QObject *> imps) const;
+    Q_TODO Q_INVOKABLE QSet<QString> getNamesOfMember(QObject *element) const;
+    Q_TODO Q_INVOKABLE QSet<QObject *> importMembers(QSet<QObject *> imps) const;
+    Q_TODO Q_INVOKABLE bool membersAreDistinguishable() const;
 
     // Operations [RedefinableElement]
 
     // Operations [Vertex]
 
     // Operations [State]
-    Q_INVOKABLE QObject *containingStateMachine() const;
-    Q_INVOKABLE bool isConsistentWith(QObject *redefinee) const;
-    Q_INVOKABLE bool isRedefinitionContextValid(QObject *redefined) const;
+    Q_TODO Q_INVOKABLE QObject *containingStateMachine() const;
+    Q_TODO Q_INVOKABLE bool isConsistentWith(QObject *redefinee) const;
+    Q_TODO Q_INVOKABLE bool isRedefinitionContextValid(QObject *redefined) const;
 
 public Q_SLOTS:
 

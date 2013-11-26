@@ -56,6 +56,7 @@ class Q_UML_EXPORT QUmlProfile : public QUmlPackage
 {
 public:
     explicit QUmlProfile(bool createQModelingObject = true);
+    virtual ~QUmlProfile();
 
     virtual QModelingElement *clone() const;
 

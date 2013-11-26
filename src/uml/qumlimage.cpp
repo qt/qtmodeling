@@ -64,6 +64,14 @@ QUmlImage::QUmlImage(bool createQModelingObject)
 }
 
 /*!
+    Destroys the QUmlImage.
+ */
+QUmlImage::~QUmlImage()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QUmlImage.
 */
 QModelingElement *QUmlImage::clone() const

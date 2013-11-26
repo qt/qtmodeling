@@ -55,6 +55,7 @@ class Q_UML_EXPORT QUmlActivityParameterNode : public QUmlObjectNode
 {
 public:
     explicit QUmlActivityParameterNode(bool createQModelingObject = true);
+    virtual ~QUmlActivityParameterNode();
 
     virtual QModelingElement *clone() const;
 

@@ -54,6 +54,8 @@ class QUmlVariable;
 class Q_UML_EXPORT QUmlVariableAction : public QUmlAction
 {
 public:
+    virtual ~QUmlVariableAction();
+
     Q_DECL_HIDDEN virtual QModelingElement *clone() const;
 
     // Owned attributes

@@ -55,6 +55,7 @@ class Q_UML_EXPORT QUmlExecutionOccurrenceSpecification : public QUmlOccurrenceS
 {
 public:
     explicit QUmlExecutionOccurrenceSpecification(bool createQModelingObject = true);
+    virtual ~QUmlExecutionOccurrenceSpecification();
 
     virtual QModelingElement *clone() const;
 

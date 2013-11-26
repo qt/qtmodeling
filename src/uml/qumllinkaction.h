@@ -56,6 +56,8 @@ class QUmlLinkEndData;
 class Q_UML_EXPORT QUmlLinkAction : public QUmlAction
 {
 public:
+    virtual ~QUmlLinkAction();
+
     Q_DECL_HIDDEN virtual QModelingElement *clone() const;
 
     // Owned attributes

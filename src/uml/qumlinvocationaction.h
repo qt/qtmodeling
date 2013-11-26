@@ -55,6 +55,8 @@ class QUmlPort;
 class Q_UML_EXPORT QUmlInvocationAction : public QUmlAction
 {
 public:
+    virtual ~QUmlInvocationAction();
+
     Q_DECL_HIDDEN virtual QModelingElement *clone() const;
 
     // Owned attributes

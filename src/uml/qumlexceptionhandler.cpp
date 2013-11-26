@@ -70,6 +70,14 @@ QUmlExceptionHandler::QUmlExceptionHandler(bool createQModelingObject) :
 }
 
 /*!
+    Destroys the QUmlExceptionHandler.
+ */
+QUmlExceptionHandler::~QUmlExceptionHandler()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QUmlExceptionHandler.
 */
 QModelingElement *QUmlExceptionHandler::clone() const
@@ -77,14 +85,6 @@ QModelingElement *QUmlExceptionHandler::clone() const
     QUmlExceptionHandler *c = new QUmlExceptionHandler;
     foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    if (exceptionInput())
-        c->setExceptionInput(dynamic_cast<QUmlObjectNode *>(exceptionInput()->clone()));
-    foreach (QUmlClassifier *element, exceptionTypes())
-        c->addExceptionType(dynamic_cast<QUmlClassifier *>(element->clone()));
-    if (handlerBody())
-        c->setHandlerBody(dynamic_cast<QUmlExecutableNode *>(handlerBody()->clone()));
-    if (protectedNode())
-        c->setProtectedNode(dynamic_cast<QUmlExecutableNode *>(protectedNode()->clone()));
     return c;
 }
 

@@ -81,6 +81,14 @@ QUmlVariable::QUmlVariable(bool createQModelingObject) :
 }
 
 /*!
+    Destroys the QUmlVariable.
+ */
+QUmlVariable::~QUmlVariable()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QUmlVariable.
 */
 QModelingElement *QUmlVariable::clone() const
@@ -94,22 +102,10 @@ QModelingElement *QUmlVariable::clone() const
         c->setLowerValue(dynamic_cast<QUmlValueSpecification *>(lowerValue()->clone()));
     if (upperValue())
         c->setUpperValue(dynamic_cast<QUmlValueSpecification *>(upperValue()->clone()));
-    foreach (QUmlDependency *element, clientDependencies())
-        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
         c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
     c->setVisibility(visibility());
-    if (type())
-        c->setType(dynamic_cast<QUmlType *>(type()->clone()));
-    if (owningTemplateParameter())
-        c->setOwningTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(owningTemplateParameter()->clone()));
-    if (templateParameter())
-        c->setTemplateParameter(dynamic_cast<QUmlConnectableElementTemplateParameter *>(templateParameter()->clone()));
-    if (activityScope())
-        c->setActivityScope(dynamic_cast<QUmlActivity *>(activityScope()->clone()));
-    if (scope())
-        c->setScope(dynamic_cast<QUmlStructuredActivityNode *>(scope()->clone()));
     return c;
 }
 

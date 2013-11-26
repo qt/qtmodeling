@@ -78,6 +78,14 @@ QUmlConnector::QUmlConnector(bool createQModelingObject) :
 }
 
 /*!
+    Destroys the QUmlConnector.
+ */
+QUmlConnector::~QUmlConnector()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QUmlConnector.
 */
 QModelingElement *QUmlConnector::clone() const
@@ -85,22 +93,14 @@ QModelingElement *QUmlConnector::clone() const
     QUmlConnector *c = new QUmlConnector;
     foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependencies())
-        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
         c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
     c->setVisibility(visibility());
     c->setLeaf(isLeaf());
     c->setStatic(isStatic());
-    foreach (QUmlBehavior *element, contracts())
-        c->addContract(dynamic_cast<QUmlBehavior *>(element->clone()));
     foreach (QUmlConnectorEnd *element, ends())
         c->addEnd(dynamic_cast<QUmlConnectorEnd *>(element->clone()));
-    foreach (QUmlConnector *element, redefinedConnectors())
-        c->addRedefinedConnector(dynamic_cast<QUmlConnector *>(element->clone()));
-    if (type())
-        c->setType(dynamic_cast<QUmlAssociation *>(type()->clone()));
     return c;
 }
 

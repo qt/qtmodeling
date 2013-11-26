@@ -70,6 +70,14 @@ QUmlObservation::QUmlObservation()
 }
 
 /*!
+    Destroys the QUmlObservation.
+ */
+QUmlObservation::~QUmlObservation()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QUmlObservation.
 */
 QModelingElement *QUmlObservation::clone() const
@@ -77,12 +85,6 @@ QModelingElement *QUmlObservation::clone() const
     QUmlObservation *c = new QUmlObservation;
     foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    if (owningTemplateParameter())
-        c->setOwningTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(owningTemplateParameter()->clone()));
-    if (templateParameter())
-        c->setTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(templateParameter()->clone()));
-    foreach (QUmlDependency *element, clientDependencies())
-        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
         c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));

@@ -55,6 +55,7 @@ class Q_UML_EXPORT QUmlDeploymentSpecification : public QUmlArtifact
 {
 public:
     explicit QUmlDeploymentSpecification(bool createQModelingObject = true);
+    virtual ~QUmlDeploymentSpecification();
 
     virtual QModelingElement *clone() const;
 

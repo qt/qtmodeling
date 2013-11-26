@@ -127,13 +127,13 @@ public:
     Q_INVOKABLE bool mustBeOwned() const;
 
     // Operations [ParameterableElement]
-    Q_INVOKABLE bool isCompatibleWith(QObject *p) const;
-    Q_INVOKABLE bool isTemplateParameter() const;
+    Q_TODO Q_INVOKABLE bool isCompatibleWith(QObject *p) const;
+    Q_TODO Q_INVOKABLE bool isTemplateParameter() const;
 
     // Operations [NamedElement]
     Q_INVOKABLE QList<QObject *> allNamespaces() const;
-    Q_INVOKABLE QSet<QObject *> allOwningPackages() const;
-    Q_INVOKABLE bool isDistinguishableFrom(QObject *n, QObject *ns) const;
+    Q_TODO Q_INVOKABLE QSet<QObject *> allOwningPackages() const;
+    Q_TODO Q_INVOKABLE bool isDistinguishableFrom(QObject *n, QObject *ns) const;
     Q_INVOKABLE QString separator() const;
 
 public Q_SLOTS:

@@ -57,6 +57,8 @@ class QUmlPackageImport;
 class Q_UML_EXPORT QUmlNamespace : public virtual QUmlNamedElement
 {
 public:
+    virtual ~QUmlNamespace();
+
     Q_DECL_HIDDEN virtual QModelingElement *clone() const;
 
     // Owned attributes

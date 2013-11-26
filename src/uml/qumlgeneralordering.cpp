@@ -72,6 +72,14 @@ QUmlGeneralOrdering::QUmlGeneralOrdering(bool createQModelingObject) :
 }
 
 /*!
+    Destroys the QUmlGeneralOrdering.
+ */
+QUmlGeneralOrdering::~QUmlGeneralOrdering()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QUmlGeneralOrdering.
 */
 QModelingElement *QUmlGeneralOrdering::clone() const
@@ -79,16 +87,10 @@ QModelingElement *QUmlGeneralOrdering::clone() const
     QUmlGeneralOrdering *c = new QUmlGeneralOrdering;
     foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependencies())
-        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
         c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
     c->setVisibility(visibility());
-    if (after())
-        c->setAfter(dynamic_cast<QUmlOccurrenceSpecification *>(after()->clone()));
-    if (before())
-        c->setBefore(dynamic_cast<QUmlOccurrenceSpecification *>(before()->clone()));
     return c;
 }
 

@@ -67,6 +67,14 @@ QUmlTemplateSignature::QUmlTemplateSignature(bool createQModelingObject) :
 }
 
 /*!
+    Destroys the QUmlTemplateSignature.
+ */
+QUmlTemplateSignature::~QUmlTemplateSignature()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QUmlTemplateSignature.
 */
 QModelingElement *QUmlTemplateSignature::clone() const
@@ -76,10 +84,6 @@ QModelingElement *QUmlTemplateSignature::clone() const
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
     foreach (QUmlTemplateParameter *element, ownedParameters())
         c->addOwnedParameter(dynamic_cast<QUmlTemplateParameter *>(element->clone()));
-    foreach (QUmlTemplateParameter *element, parameters())
-        c->addParameter(dynamic_cast<QUmlTemplateParameter *>(element->clone()));
-    if (template_())
-        c->setTemplate(dynamic_cast<QUmlTemplateableElement *>(template_()->clone()));
     return c;
 }
 

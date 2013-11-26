@@ -84,6 +84,14 @@ QUmlObjectFlow::QUmlObjectFlow(bool createQModelingObject) :
 }
 
 /*!
+    Destroys the QUmlObjectFlow.
+ */
+QUmlObjectFlow::~QUmlObjectFlow()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QUmlObjectFlow.
 */
 QModelingElement *QUmlObjectFlow::clone() const
@@ -91,37 +99,17 @@ QModelingElement *QUmlObjectFlow::clone() const
     QUmlObjectFlow *c = new QUmlObjectFlow;
     foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependencies())
-        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
         c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
     c->setVisibility(visibility());
     c->setLeaf(isLeaf());
-    if (activity())
-        c->setActivity(dynamic_cast<QUmlActivity *>(activity()->clone()));
     if (guard())
         c->setGuard(dynamic_cast<QUmlValueSpecification *>(guard()->clone()));
-    foreach (QUmlActivityPartition *element, inPartitions())
-        c->addInPartition(dynamic_cast<QUmlActivityPartition *>(element->clone()));
-    if (inStructuredNode())
-        c->setInStructuredNode(dynamic_cast<QUmlStructuredActivityNode *>(inStructuredNode()->clone()));
-    if (interrupts())
-        c->setInterrupts(dynamic_cast<QUmlInterruptibleActivityRegion *>(interrupts()->clone()));
-    foreach (QUmlActivityEdge *element, redefinedEdges())
-        c->addRedefinedEdge(dynamic_cast<QUmlActivityEdge *>(element->clone()));
-    if (source())
-        c->setSource(dynamic_cast<QUmlActivityNode *>(source()->clone()));
-    if (target())
-        c->setTarget(dynamic_cast<QUmlActivityNode *>(target()->clone()));
     if (weight())
         c->setWeight(dynamic_cast<QUmlValueSpecification *>(weight()->clone()));
     c->setMulticast(isMulticast());
     c->setMultireceive(isMultireceive());
-    if (selection())
-        c->setSelection(dynamic_cast<QUmlBehavior *>(selection()->clone()));
-    if (transformation())
-        c->setTransformation(dynamic_cast<QUmlBehavior *>(transformation()->clone()));
     return c;
 }
 

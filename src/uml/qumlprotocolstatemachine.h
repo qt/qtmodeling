@@ -55,6 +55,7 @@ class Q_UML_EXPORT QUmlProtocolStateMachine : public QUmlStateMachine
 {
 public:
     explicit QUmlProtocolStateMachine(bool createQModelingObject = true);
+    virtual ~QUmlProtocolStateMachine();
 
     virtual QModelingElement *clone() const;
 

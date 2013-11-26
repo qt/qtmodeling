@@ -54,6 +54,8 @@ class QUmlClassifier;
 class Q_UML_EXPORT QUmlFeature : public QUmlRedefinableElement
 {
 public:
+    virtual ~QUmlFeature();
+
     Q_DECL_HIDDEN virtual QModelingElement *clone() const;
 
     // Owned attributes

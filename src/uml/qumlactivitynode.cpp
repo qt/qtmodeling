@@ -77,6 +77,14 @@ QUmlActivityNode::QUmlActivityNode() :
 }
 
 /*!
+    Destroys the QUmlActivityNode.
+ */
+QUmlActivityNode::~QUmlActivityNode()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QUmlActivityNode.
 */
 QModelingElement *QUmlActivityNode::clone() const
@@ -84,27 +92,11 @@ QModelingElement *QUmlActivityNode::clone() const
     QUmlActivityNode *c = new QUmlActivityNode;
     foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependencies())
-        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
         c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
     c->setVisibility(visibility());
     c->setLeaf(isLeaf());
-    if (activity())
-        c->setActivity(dynamic_cast<QUmlActivity *>(activity()->clone()));
-    foreach (QUmlInterruptibleActivityRegion *element, inInterruptibleRegions())
-        c->addInInterruptibleRegion(dynamic_cast<QUmlInterruptibleActivityRegion *>(element->clone()));
-    foreach (QUmlActivityPartition *element, inPartitions())
-        c->addInPartition(dynamic_cast<QUmlActivityPartition *>(element->clone()));
-    if (inStructuredNode())
-        c->setInStructuredNode(dynamic_cast<QUmlStructuredActivityNode *>(inStructuredNode()->clone()));
-    foreach (QUmlActivityEdge *element, incomings())
-        c->addIncoming(dynamic_cast<QUmlActivityEdge *>(element->clone()));
-    foreach (QUmlActivityEdge *element, outgoings())
-        c->addOutgoing(dynamic_cast<QUmlActivityEdge *>(element->clone()));
-    foreach (QUmlActivityNode *element, redefinedNodes())
-        c->addRedefinedNode(dynamic_cast<QUmlActivityNode *>(element->clone()));
     return c;
 }
 

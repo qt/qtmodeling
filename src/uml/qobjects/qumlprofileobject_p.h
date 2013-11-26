@@ -157,30 +157,30 @@ public:
 
     // Operations [NamedElement]
     Q_INVOKABLE QList<QObject *> allNamespaces() const;
-    Q_INVOKABLE QSet<QObject *> allOwningPackages() const;
-    Q_INVOKABLE bool isDistinguishableFrom(QObject *n, QObject *ns) const;
+    Q_TODO Q_INVOKABLE QSet<QObject *> allOwningPackages() const;
+    Q_TODO Q_INVOKABLE bool isDistinguishableFrom(QObject *n, QObject *ns) const;
     Q_INVOKABLE QString separator() const;
 
     // Operations [Namespace]
-    Q_INVOKABLE QSet<QObject *> excludeCollisions(QSet<QObject *> imps) const;
-    Q_INVOKABLE QSet<QString> getNamesOfMember(QObject *element) const;
-    Q_INVOKABLE QSet<QObject *> importMembers(QSet<QObject *> imps) const;
-    Q_INVOKABLE bool membersAreDistinguishable() const;
+    Q_TODO Q_INVOKABLE QSet<QObject *> excludeCollisions(QSet<QObject *> imps) const;
+    Q_TODO Q_INVOKABLE QSet<QString> getNamesOfMember(QObject *element) const;
+    Q_TODO Q_INVOKABLE QSet<QObject *> importMembers(QSet<QObject *> imps) const;
+    Q_TODO Q_INVOKABLE bool membersAreDistinguishable() const;
 
     // Operations [ParameterableElement]
-    Q_INVOKABLE bool isCompatibleWith(QObject *p) const;
-    Q_INVOKABLE bool isTemplateParameter() const;
+    Q_TODO Q_INVOKABLE bool isCompatibleWith(QObject *p) const;
+    Q_TODO Q_INVOKABLE bool isTemplateParameter() const;
 
     // Operations [TemplateableElement]
-    Q_INVOKABLE bool isTemplate() const;
-    Q_INVOKABLE QSet<QObject *> parameterableElements() const;
+    Q_TODO Q_INVOKABLE bool isTemplate() const;
+    Q_TODO Q_INVOKABLE QSet<QObject *> parameterableElements() const;
 
     // Operations [Package]
-    Q_INVOKABLE QSet<QObject *> allApplicableStereotypes() const;
-    Q_INVOKABLE QObject *containingProfile() const;
-    Q_INVOKABLE bool makesVisible(QObject *el) const;
+    Q_TODO Q_INVOKABLE QSet<QObject *> allApplicableStereotypes() const;
+    Q_TODO Q_INVOKABLE QObject *containingProfile() const;
+    Q_TODO Q_INVOKABLE bool makesVisible(QObject *el) const;
     Q_INVOKABLE bool mustBeOwned() const;
-    Q_INVOKABLE QSet<QObject *> visibleMembers() const;
+    Q_TODO Q_INVOKABLE QSet<QObject *> visibleMembers() const;
 
 public Q_SLOTS:
 

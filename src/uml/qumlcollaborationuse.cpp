@@ -71,6 +71,14 @@ QUmlCollaborationUse::QUmlCollaborationUse(bool createQModelingObject) :
 }
 
 /*!
+    Destroys the QUmlCollaborationUse.
+ */
+QUmlCollaborationUse::~QUmlCollaborationUse()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QUmlCollaborationUse.
 */
 QModelingElement *QUmlCollaborationUse::clone() const
@@ -78,16 +86,12 @@ QModelingElement *QUmlCollaborationUse::clone() const
     QUmlCollaborationUse *c = new QUmlCollaborationUse;
     foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependencies())
-        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
         c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
     c->setVisibility(visibility());
     foreach (QUmlDependency *element, roleBindings())
         c->addRoleBinding(dynamic_cast<QUmlDependency *>(element->clone()));
-    if (type())
-        c->setType(dynamic_cast<QUmlCollaboration *>(type()->clone()));
     return c;
 }
 

@@ -53,6 +53,7 @@ class Q_UML_EXPORT QUmlClearVariableAction : public QUmlVariableAction
 {
 public:
     explicit QUmlClearVariableAction(bool createQModelingObject = true);
+    virtual ~QUmlClearVariableAction();
 
     virtual QModelingElement *clone() const;
 

@@ -55,6 +55,7 @@ class Q_UML_EXPORT QUmlExpansionNode : public QUmlObjectNode
 {
 public:
     explicit QUmlExpansionNode(bool createQModelingObject = true);
+    virtual ~QUmlExpansionNode();
 
     virtual QModelingElement *clone() const;
 

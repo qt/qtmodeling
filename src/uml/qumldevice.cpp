@@ -101,6 +101,14 @@ QUmlDevice::QUmlDevice(bool createQModelingObject) :
 }
 
 /*!
+    Destroys the QUmlDevice.
+ */
+QUmlDevice::~QUmlDevice()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QUmlDevice.
 */
 QModelingElement *QUmlDevice::clone() const
@@ -108,8 +116,6 @@ QModelingElement *QUmlDevice::clone() const
     QUmlDevice *c = new QUmlDevice;
     foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependencies())
-        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
         c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
@@ -119,11 +125,7 @@ QModelingElement *QUmlDevice::clone() const
         c->addOwnedRule(dynamic_cast<QUmlConstraint *>(element->clone()));
     foreach (QUmlPackageImport *element, packageImports())
         c->addPackageImport(dynamic_cast<QUmlPackageImport *>(element->clone()));
-    if (owningTemplateParameter())
-        c->setOwningTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(owningTemplateParameter()->clone()));
     c->setVisibility(visibility());
-    if (package())
-        c->setPackage(dynamic_cast<QUmlPackage *>(package()->clone()));
     c->setLeaf(isLeaf());
     foreach (QUmlTemplateBinding *element, templateBindings())
         c->addTemplateBinding(dynamic_cast<QUmlTemplateBinding *>(element->clone()));
@@ -136,22 +138,10 @@ QModelingElement *QUmlDevice::clone() const
         c->setOwnedTemplateSignature(dynamic_cast<QUmlRedefinableTemplateSignature *>(ownedTemplateSignature()->clone()));
     foreach (QUmlUseCase *element, ownedUseCases())
         c->addOwnedUseCase(dynamic_cast<QUmlUseCase *>(element->clone()));
-    foreach (QUmlGeneralizationSet *element, powertypeExtents())
-        c->addPowertypeExtent(dynamic_cast<QUmlGeneralizationSet *>(element->clone()));
-    foreach (QUmlClassifier *element, redefinedClassifiers())
-        c->addRedefinedClassifier(dynamic_cast<QUmlClassifier *>(element->clone()));
-    if (representation())
-        c->setRepresentation(dynamic_cast<QUmlCollaborationUse *>(representation()->clone()));
     foreach (QUmlSubstitution *element, substitutions())
         c->addSubstitution(dynamic_cast<QUmlSubstitution *>(element->clone()));
-    if (templateParameter())
-        c->setTemplateParameter(dynamic_cast<QUmlClassifierTemplateParameter *>(templateParameter()->clone()));
-    foreach (QUmlUseCase *element, useCases())
-        c->addUseCase(dynamic_cast<QUmlUseCase *>(element->clone()));
     foreach (QUmlConnector *element, ownedConnectors())
         c->addOwnedConnector(dynamic_cast<QUmlConnector *>(element->clone()));
-    if (classifierBehavior())
-        c->setClassifierBehavior(dynamic_cast<QUmlBehavior *>(classifierBehavior()->clone()));
     foreach (QUmlInterfaceRealization *element, interfaceRealizations())
         c->addInterfaceRealization(dynamic_cast<QUmlInterfaceRealization *>(element->clone()));
     foreach (QUmlBehavior *element, ownedBehaviors())

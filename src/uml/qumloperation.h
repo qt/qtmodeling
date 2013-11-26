@@ -64,6 +64,7 @@ class Q_UML_EXPORT QUmlOperation : public QUmlTemplateableElement, public QUmlBe
 {
 public:
     explicit QUmlOperation(bool createQModelingObject = true);
+    virtual ~QUmlOperation();
 
     virtual QModelingElement *clone() const;
 

@@ -69,6 +69,14 @@ QUmlNamedElement::QUmlNamedElement() :
 }
 
 /*!
+    Destroys the QUmlNamedElement.
+ */
+QUmlNamedElement::~QUmlNamedElement()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QUmlNamedElement.
 */
 QModelingElement *QUmlNamedElement::clone() const
@@ -76,8 +84,6 @@ QModelingElement *QUmlNamedElement::clone() const
     QUmlNamedElement *c = new QUmlNamedElement;
     foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependencies())
-        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
         c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));

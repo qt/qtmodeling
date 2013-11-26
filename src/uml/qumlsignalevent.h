@@ -55,6 +55,7 @@ class Q_UML_EXPORT QUmlSignalEvent : public QUmlMessageEvent
 {
 public:
     explicit QUmlSignalEvent(bool createQModelingObject = true);
+    virtual ~QUmlSignalEvent();
 
     virtual QModelingElement *clone() const;
 

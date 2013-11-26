@@ -68,6 +68,14 @@ QUmlProtocolConformance::QUmlProtocolConformance(bool createQModelingObject) :
 }
 
 /*!
+    Destroys the QUmlProtocolConformance.
+ */
+QUmlProtocolConformance::~QUmlProtocolConformance()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QUmlProtocolConformance.
 */
 QModelingElement *QUmlProtocolConformance::clone() const
@@ -75,10 +83,6 @@ QModelingElement *QUmlProtocolConformance::clone() const
     QUmlProtocolConformance *c = new QUmlProtocolConformance;
     foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    if (generalMachine())
-        c->setGeneralMachine(dynamic_cast<QUmlProtocolStateMachine *>(generalMachine()->clone()));
-    if (specificMachine())
-        c->setSpecificMachine(dynamic_cast<QUmlProtocolStateMachine *>(specificMachine()->clone()));
     return c;
 }
 

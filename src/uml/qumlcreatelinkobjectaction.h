@@ -55,6 +55,7 @@ class Q_UML_EXPORT QUmlCreateLinkObjectAction : public QUmlCreateLinkAction
 {
 public:
     explicit QUmlCreateLinkObjectAction(bool createQModelingObject = true);
+    virtual ~QUmlCreateLinkObjectAction();
 
     virtual QModelingElement *clone() const;
 

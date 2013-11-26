@@ -53,6 +53,7 @@ class Q_UML_EXPORT QUmlExecutionEnvironment : public QUmlNode
 {
 public:
     explicit QUmlExecutionEnvironment(bool createQModelingObject = true);
+    virtual ~QUmlExecutionEnvironment();
 
     virtual QModelingElement *clone() const;
 

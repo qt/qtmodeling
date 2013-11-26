@@ -71,6 +71,14 @@ QUmlTemplateParameterSubstitution::QUmlTemplateParameterSubstitution(bool create
 }
 
 /*!
+    Destroys the QUmlTemplateParameterSubstitution.
+ */
+QUmlTemplateParameterSubstitution::~QUmlTemplateParameterSubstitution()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QUmlTemplateParameterSubstitution.
 */
 QModelingElement *QUmlTemplateParameterSubstitution::clone() const
@@ -78,14 +86,8 @@ QModelingElement *QUmlTemplateParameterSubstitution::clone() const
     QUmlTemplateParameterSubstitution *c = new QUmlTemplateParameterSubstitution;
     foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    if (actual())
-        c->setActual(dynamic_cast<QUmlParameterableElement *>(actual()->clone()));
-    if (formal())
-        c->setFormal(dynamic_cast<QUmlTemplateParameter *>(formal()->clone()));
     if (ownedActual())
         c->setOwnedActual(dynamic_cast<QUmlParameterableElement *>(ownedActual()->clone()));
-    if (templateBinding())
-        c->setTemplateBinding(dynamic_cast<QUmlTemplateBinding *>(templateBinding()->clone()));
     return c;
 }
 

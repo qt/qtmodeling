@@ -75,6 +75,14 @@ QUmlRedefinableTemplateSignature::QUmlRedefinableTemplateSignature(bool createQM
 }
 
 /*!
+    Destroys the QUmlRedefinableTemplateSignature.
+ */
+QUmlRedefinableTemplateSignature::~QUmlRedefinableTemplateSignature()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QUmlRedefinableTemplateSignature.
 */
 QModelingElement *QUmlRedefinableTemplateSignature::clone() const
@@ -84,21 +92,11 @@ QModelingElement *QUmlRedefinableTemplateSignature::clone() const
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
     foreach (QUmlTemplateParameter *element, ownedParameters())
         c->addOwnedParameter(dynamic_cast<QUmlTemplateParameter *>(element->clone()));
-    foreach (QUmlTemplateParameter *element, parameters())
-        c->addParameter(dynamic_cast<QUmlTemplateParameter *>(element->clone()));
-    if (template_())
-        c->setTemplate(dynamic_cast<QUmlTemplateableElement *>(template_()->clone()));
-    foreach (QUmlDependency *element, clientDependencies())
-        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
         c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
     c->setVisibility(visibility());
     c->setLeaf(isLeaf());
-    if (classifier())
-        c->setClassifier(dynamic_cast<QUmlClassifier *>(classifier()->clone()));
-    foreach (QUmlRedefinableTemplateSignature *element, extendedSignatures())
-        c->addExtendedSignature(dynamic_cast<QUmlRedefinableTemplateSignature *>(element->clone()));
     return c;
 }
 

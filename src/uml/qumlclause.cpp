@@ -67,6 +67,14 @@ QUmlClause::QUmlClause(bool createQModelingObject) :
 }
 
 /*!
+    Destroys the QUmlClause.
+ */
+QUmlClause::~QUmlClause()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QUmlClause.
 */
 QModelingElement *QUmlClause::clone() const
@@ -74,18 +82,6 @@ QModelingElement *QUmlClause::clone() const
     QUmlClause *c = new QUmlClause;
     foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlExecutableNode *element, bodies())
-        c->addBody(dynamic_cast<QUmlExecutableNode *>(element->clone()));
-    foreach (QUmlOutputPin *element, bodyOutputs())
-        c->addBodyOutput(dynamic_cast<QUmlOutputPin *>(element->clone()));
-    if (decider())
-        c->setDecider(dynamic_cast<QUmlOutputPin *>(decider()->clone()));
-    foreach (QUmlClause *element, predecessorClauses())
-        c->addPredecessorClause(dynamic_cast<QUmlClause *>(element->clone()));
-    foreach (QUmlClause *element, successorClauses())
-        c->addSuccessorClause(dynamic_cast<QUmlClause *>(element->clone()));
-    foreach (QUmlExecutableNode *element, tests())
-        c->addTest(dynamic_cast<QUmlExecutableNode *>(element->clone()));
     return c;
 }
 

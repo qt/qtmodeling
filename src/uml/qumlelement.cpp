@@ -63,6 +63,14 @@ QUmlElement::QUmlElement() :
 }
 
 /*!
+    Destroys the QUmlElement.
+ */
+QUmlElement::~QUmlElement()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QUmlElement.
 */
 QModelingElement *QUmlElement::clone() const

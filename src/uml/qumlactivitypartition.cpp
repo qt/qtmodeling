@@ -77,6 +77,14 @@ QUmlActivityPartition::QUmlActivityPartition(bool createQModelingObject) :
 }
 
 /*!
+    Destroys the QUmlActivityPartition.
+ */
+QUmlActivityPartition::~QUmlActivityPartition()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QUmlActivityPartition.
 */
 QModelingElement *QUmlActivityPartition::clone() const
@@ -84,26 +92,14 @@ QModelingElement *QUmlActivityPartition::clone() const
     QUmlActivityPartition *c = new QUmlActivityPartition;
     foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependencies())
-        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
         c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
     c->setVisibility(visibility());
-    if (inActivity())
-        c->setInActivity(dynamic_cast<QUmlActivity *>(inActivity()->clone()));
-    foreach (QUmlActivityEdge *element, edges())
-        c->addEdge(dynamic_cast<QUmlActivityEdge *>(element->clone()));
     c->setDimension(isDimension());
     c->setExternal(isExternal());
-    foreach (QUmlActivityNode *element, nodes())
-        c->addNode(dynamic_cast<QUmlActivityNode *>(element->clone()));
-    if (represents())
-        c->setRepresents(dynamic_cast<QUmlElement *>(represents()->clone()));
     foreach (QUmlActivityPartition *element, subpartitions())
         c->addSubpartition(dynamic_cast<QUmlActivityPartition *>(element->clone()));
-    if (superPartition())
-        c->setSuperPartition(dynamic_cast<QUmlActivityPartition *>(superPartition()->clone()));
     return c;
 }
 

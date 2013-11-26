@@ -55,6 +55,8 @@ QT_MODULE(QtUml)
 class Q_UML_EXPORT QUmlPackageableElement : public QUmlParameterableElement, public virtual QUmlNamedElement
 {
 public:
+    virtual ~QUmlPackageableElement();
+
     Q_DECL_HIDDEN virtual QModelingElement *clone() const;
 
     // Owned attributes

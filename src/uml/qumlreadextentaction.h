@@ -56,6 +56,7 @@ class Q_UML_EXPORT QUmlReadExtentAction : public QUmlAction
 {
 public:
     explicit QUmlReadExtentAction(bool createQModelingObject = true);
+    virtual ~QUmlReadExtentAction();
 
     virtual QModelingElement *clone() const;
 

@@ -70,6 +70,14 @@ QUmlFeature::QUmlFeature() :
 }
 
 /*!
+    Destroys the QUmlFeature.
+ */
+QUmlFeature::~QUmlFeature()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QUmlFeature.
 */
 QModelingElement *QUmlFeature::clone() const
@@ -77,8 +85,6 @@ QModelingElement *QUmlFeature::clone() const
     QUmlFeature *c = new QUmlFeature;
     foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependencies())
-        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
         c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));

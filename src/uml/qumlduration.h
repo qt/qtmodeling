@@ -55,6 +55,7 @@ class Q_UML_EXPORT QUmlDuration : public QUmlValueSpecification
 {
 public:
     explicit QUmlDuration(bool createQModelingObject = true);
+    virtual ~QUmlDuration();
 
     virtual QModelingElement *clone() const;
 

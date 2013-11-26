@@ -53,6 +53,7 @@ class Q_UML_EXPORT QUmlMergeNode : public QUmlControlNode
 {
 public:
     explicit QUmlMergeNode(bool createQModelingObject = true);
+    virtual ~QUmlMergeNode();
 
     virtual QModelingElement *clone() const;
 

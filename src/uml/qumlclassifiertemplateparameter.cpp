@@ -71,6 +71,14 @@ QUmlClassifierTemplateParameter::QUmlClassifierTemplateParameter(bool createQMod
 }
 
 /*!
+    Destroys the QUmlClassifierTemplateParameter.
+ */
+QUmlClassifierTemplateParameter::~QUmlClassifierTemplateParameter()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QUmlClassifierTemplateParameter.
 */
 QModelingElement *QUmlClassifierTemplateParameter::clone() const
@@ -78,19 +86,11 @@ QModelingElement *QUmlClassifierTemplateParameter::clone() const
     QUmlClassifierTemplateParameter *c = new QUmlClassifierTemplateParameter;
     foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    if (default_())
-        c->setDefault(dynamic_cast<QUmlParameterableElement *>(default_()->clone()));
     if (ownedDefault())
         c->setOwnedDefault(dynamic_cast<QUmlParameterableElement *>(ownedDefault()->clone()));
     if (ownedParameteredElement())
         c->setOwnedParameteredElement(dynamic_cast<QUmlParameterableElement *>(ownedParameteredElement()->clone()));
-    if (signature())
-        c->setSignature(dynamic_cast<QUmlTemplateSignature *>(signature()->clone()));
     c->setAllowSubstitutable(allowSubstitutable());
-    foreach (QUmlClassifier *element, constrainingClassifiers())
-        c->addConstrainingClassifier(dynamic_cast<QUmlClassifier *>(element->clone()));
-    if (parameteredElement())
-        c->setParameteredElement(dynamic_cast<QUmlClassifier *>(parameteredElement()->clone()));
     return c;
 }
 

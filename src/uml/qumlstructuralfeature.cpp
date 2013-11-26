@@ -73,6 +73,14 @@ QUmlStructuralFeature::QUmlStructuralFeature() :
 }
 
 /*!
+    Destroys the QUmlStructuralFeature.
+ */
+QUmlStructuralFeature::~QUmlStructuralFeature()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QUmlStructuralFeature.
 */
 QModelingElement *QUmlStructuralFeature::clone() const
@@ -80,14 +88,10 @@ QModelingElement *QUmlStructuralFeature::clone() const
     QUmlStructuralFeature *c = new QUmlStructuralFeature;
     foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependencies())
-        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
         c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
     c->setVisibility(visibility());
-    if (type())
-        c->setType(dynamic_cast<QUmlType *>(type()->clone()));
     c->setOrdered(isOrdered());
     c->setUnique(isUnique());
     if (lowerValue())

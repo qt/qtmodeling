@@ -68,6 +68,14 @@ QUmlPackageMerge::QUmlPackageMerge(bool createQModelingObject) :
 }
 
 /*!
+    Destroys the QUmlPackageMerge.
+ */
+QUmlPackageMerge::~QUmlPackageMerge()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QUmlPackageMerge.
 */
 QModelingElement *QUmlPackageMerge::clone() const
@@ -75,10 +83,6 @@ QModelingElement *QUmlPackageMerge::clone() const
     QUmlPackageMerge *c = new QUmlPackageMerge;
     foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    if (mergedPackage())
-        c->setMergedPackage(dynamic_cast<QUmlPackage *>(mergedPackage()->clone()));
-    if (receivingPackage())
-        c->setReceivingPackage(dynamic_cast<QUmlPackage *>(receivingPackage()->clone()));
     return c;
 }
 

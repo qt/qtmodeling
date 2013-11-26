@@ -77,6 +77,14 @@ QUmlSubstitution::QUmlSubstitution(bool createQModelingObject) :
 }
 
 /*!
+    Destroys the QUmlSubstitution.
+ */
+QUmlSubstitution::~QUmlSubstitution()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QUmlSubstitution.
 */
 QModelingElement *QUmlSubstitution::clone() const
@@ -84,26 +92,12 @@ QModelingElement *QUmlSubstitution::clone() const
     QUmlSubstitution *c = new QUmlSubstitution;
     foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    if (owningTemplateParameter())
-        c->setOwningTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(owningTemplateParameter()->clone()));
-    if (templateParameter())
-        c->setTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(templateParameter()->clone()));
-    foreach (QUmlDependency *element, clientDependencies())
-        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
         c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
     c->setVisibility(visibility());
-    foreach (QUmlNamedElement *element, clients())
-        c->addClient(dynamic_cast<QUmlNamedElement *>(element->clone()));
-    foreach (QUmlNamedElement *element, suppliers())
-        c->addSupplier(dynamic_cast<QUmlNamedElement *>(element->clone()));
     if (mapping())
         c->setMapping(dynamic_cast<QUmlOpaqueExpression *>(mapping()->clone()));
-    if (contract())
-        c->setContract(dynamic_cast<QUmlClassifier *>(contract()->clone()));
-    if (substitutingClassifier())
-        c->setSubstitutingClassifier(dynamic_cast<QUmlClassifier *>(substitutingClassifier()->clone()));
     return c;
 }
 

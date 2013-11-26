@@ -141,7 +141,7 @@ public:
     Q_INVOKABLE const QSet<QObject *> handlers() const;
 
     // Owned attributes [Action]
-    Q_INVOKABLE QObject *context() const;
+    Q_TODO Q_INVOKABLE QObject *context() const;
     Q_INVOKABLE const QList<QObject *> inputs() const;
     Q_INVOKABLE bool isLocallyReentrant() const;
     Q_INVOKABLE const QSet<QObject *> localPostconditions() const;
@@ -162,13 +162,13 @@ public:
 
     // Operations [NamedElement]
     Q_INVOKABLE QList<QObject *> allNamespaces() const;
-    Q_INVOKABLE QSet<QObject *> allOwningPackages() const;
-    Q_INVOKABLE bool isDistinguishableFrom(QObject *n, QObject *ns) const;
+    Q_TODO Q_INVOKABLE QSet<QObject *> allOwningPackages() const;
+    Q_TODO Q_INVOKABLE bool isDistinguishableFrom(QObject *n, QObject *ns) const;
     Q_INVOKABLE QString separator() const;
 
     // Operations [RedefinableElement]
-    Q_INVOKABLE bool isConsistentWith(QObject *redefinee) const;
-    Q_INVOKABLE bool isRedefinitionContextValid(QObject *redefined) const;
+    Q_TODO Q_INVOKABLE bool isConsistentWith(QObject *redefinee) const;
+    Q_TODO Q_INVOKABLE bool isRedefinitionContextValid(QObject *redefined) const;
 
 public Q_SLOTS:
 

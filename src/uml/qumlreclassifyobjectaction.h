@@ -56,6 +56,7 @@ class Q_UML_EXPORT QUmlReclassifyObjectAction : public QUmlAction
 {
 public:
     explicit QUmlReclassifyObjectAction(bool createQModelingObject = true);
+    virtual ~QUmlReclassifyObjectAction();
 
     virtual QModelingElement *clone() const;
 

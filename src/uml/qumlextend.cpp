@@ -75,6 +75,14 @@ QUmlExtend::QUmlExtend(bool createQModelingObject) :
 }
 
 /*!
+    Destroys the QUmlExtend.
+ */
+QUmlExtend::~QUmlExtend()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QUmlExtend.
 */
 QModelingElement *QUmlExtend::clone() const
@@ -82,20 +90,12 @@ QModelingElement *QUmlExtend::clone() const
     QUmlExtend *c = new QUmlExtend;
     foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependencies())
-        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
         c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
     c->setVisibility(visibility());
     if (condition())
         c->setCondition(dynamic_cast<QUmlConstraint *>(condition()->clone()));
-    if (extendedCase())
-        c->setExtendedCase(dynamic_cast<QUmlUseCase *>(extendedCase()->clone()));
-    if (extension())
-        c->setExtension(dynamic_cast<QUmlUseCase *>(extension()->clone()));
-    foreach (QUmlExtensionPoint *element, extensionLocations())
-        c->addExtensionLocation(dynamic_cast<QUmlExtensionPoint *>(element->clone()));
     return c;
 }
 

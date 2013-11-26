@@ -70,6 +70,14 @@ QUmlElementImport::QUmlElementImport(bool createQModelingObject) :
 }
 
 /*!
+    Destroys the QUmlElementImport.
+ */
+QUmlElementImport::~QUmlElementImport()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QUmlElementImport.
 */
 QModelingElement *QUmlElementImport::clone() const
@@ -78,10 +86,6 @@ QModelingElement *QUmlElementImport::clone() const
     foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
     c->setAlias(alias());
-    if (importedElement())
-        c->setImportedElement(dynamic_cast<QUmlPackageableElement *>(importedElement()->clone()));
-    if (importingNamespace())
-        c->setImportingNamespace(dynamic_cast<QUmlNamespace *>(importingNamespace()->clone()));
     c->setVisibility(visibility());
     return c;
 }

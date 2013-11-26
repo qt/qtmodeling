@@ -56,6 +56,7 @@ class Q_UML_EXPORT QUmlInterruptibleActivityRegion : public QUmlActivityGroup
 {
 public:
     explicit QUmlInterruptibleActivityRegion(bool createQModelingObject = true);
+    virtual ~QUmlInterruptibleActivityRegion();
 
     virtual QModelingElement *clone() const;
 

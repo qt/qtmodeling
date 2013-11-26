@@ -59,6 +59,8 @@ class QUmlStringExpression;
 class Q_UML_EXPORT QUmlNamedElement : public virtual QUmlElement
 {
 public:
+    virtual ~QUmlNamedElement();
+
     Q_DECL_HIDDEN virtual QModelingElement *clone() const;
 
     // Owned attributes

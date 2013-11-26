@@ -94,6 +94,14 @@ QUmlPort::QUmlPort(bool createQModelingObject) :
 }
 
 /*!
+    Destroys the QUmlPort.
+ */
+QUmlPort::~QUmlPort()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QUmlPort.
 */
 QModelingElement *QUmlPort::clone() const
@@ -101,14 +109,10 @@ QModelingElement *QUmlPort::clone() const
     QUmlPort *c = new QUmlPort;
     foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependencies())
-        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
         c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
     c->setVisibility(visibility());
-    if (type())
-        c->setType(dynamic_cast<QUmlType *>(type()->clone()));
     c->setOrdered(isOrdered());
     c->setUnique(isUnique());
     if (lowerValue())
@@ -117,44 +121,20 @@ QModelingElement *QUmlPort::clone() const
         c->setUpperValue(dynamic_cast<QUmlValueSpecification *>(upperValue()->clone()));
     c->setLeaf(isLeaf());
     c->setStatic(isStatic());
-    if (owningTemplateParameter())
-        c->setOwningTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(owningTemplateParameter()->clone()));
-    if (templateParameter())
-        c->setTemplateParameter(dynamic_cast<QUmlConnectableElementTemplateParameter *>(templateParameter()->clone()));
     foreach (QUmlDeployment *element, deployments())
         c->addDeployment(dynamic_cast<QUmlDeployment *>(element->clone()));
     c->setAggregation(aggregation());
-    if (association())
-        c->setAssociation(dynamic_cast<QUmlAssociation *>(association()->clone()));
-    if (associationEnd())
-        c->setAssociationEnd(dynamic_cast<QUmlProperty *>(associationEnd()->clone()));
-    if (class_())
-        c->setClass(dynamic_cast<QUmlClass *>(class_()->clone()));
-    if (datatype())
-        c->setDatatype(dynamic_cast<QUmlDataType *>(datatype()->clone()));
     if (defaultValue())
         c->setDefaultValue(dynamic_cast<QUmlValueSpecification *>(defaultValue()->clone()));
-    if (interface_())
-        c->setInterface(dynamic_cast<QUmlInterface *>(interface_()->clone()));
     c->setDerived(isDerived());
     c->setDerivedUnion(isDerivedUnion());
     c->setID(isID());
     c->setReadOnly(isReadOnly());
-    if (owningAssociation())
-        c->setOwningAssociation(dynamic_cast<QUmlAssociation *>(owningAssociation()->clone()));
     foreach (QUmlProperty *element, qualifiers())
         c->addQualifier(dynamic_cast<QUmlProperty *>(element->clone()));
-    foreach (QUmlProperty *element, redefinedProperties())
-        c->addRedefinedProperty(dynamic_cast<QUmlProperty *>(element->clone()));
-    foreach (QUmlProperty *element, subsettedProperties())
-        c->addSubsettedProperty(dynamic_cast<QUmlProperty *>(element->clone()));
     c->setBehavior(isBehavior());
     c->setConjugated(isConjugated());
     c->setService(isService());
-    if (protocol())
-        c->setProtocol(dynamic_cast<QUmlProtocolStateMachine *>(protocol()->clone()));
-    foreach (QUmlPort *element, redefinedPorts())
-        c->addRedefinedPort(dynamic_cast<QUmlPort *>(element->clone()));
     return c;
 }
 

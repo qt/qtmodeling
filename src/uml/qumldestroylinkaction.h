@@ -55,6 +55,7 @@ class Q_UML_EXPORT QUmlDestroyLinkAction : public QUmlWriteLinkAction
 {
 public:
     explicit QUmlDestroyLinkAction(bool createQModelingObject = true);
+    virtual ~QUmlDestroyLinkAction();
 
     virtual QModelingElement *clone() const;
 

@@ -57,6 +57,7 @@ class Q_UML_EXPORT QUmlReadLinkObjectEndQualifierAction : public QUmlAction
 {
 public:
     explicit QUmlReadLinkObjectEndQualifierAction(bool createQModelingObject = true);
+    virtual ~QUmlReadLinkObjectEndQualifierAction();
 
     virtual QModelingElement *clone() const;
 

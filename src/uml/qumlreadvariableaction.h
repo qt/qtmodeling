@@ -55,6 +55,7 @@ class Q_UML_EXPORT QUmlReadVariableAction : public QUmlVariableAction
 {
 public:
     explicit QUmlReadVariableAction(bool createQModelingObject = true);
+    virtual ~QUmlReadVariableAction();
 
     virtual QModelingElement *clone() const;
 

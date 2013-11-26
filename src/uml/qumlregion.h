@@ -60,6 +60,7 @@ class Q_UML_EXPORT QUmlRegion : public QUmlRedefinableElement, public QUmlNamesp
 {
 public:
     explicit QUmlRegion(bool createQModelingObject = true);
+    virtual ~QUmlRegion();
 
     virtual QModelingElement *clone() const;
 

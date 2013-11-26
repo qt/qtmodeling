@@ -56,6 +56,7 @@ class Q_UML_EXPORT QUmlInclude : public QUmlDirectedRelationship, public QUmlNam
 {
 public:
     explicit QUmlInclude(bool createQModelingObject = true);
+    virtual ~QUmlInclude();
 
     virtual QModelingElement *clone() const;
 

@@ -77,6 +77,14 @@ QUmlPseudostate::QUmlPseudostate(bool createQModelingObject) :
 }
 
 /*!
+    Destroys the QUmlPseudostate.
+ */
+QUmlPseudostate::~QUmlPseudostate()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QUmlPseudostate.
 */
 QModelingElement *QUmlPseudostate::clone() const
@@ -84,19 +92,11 @@ QModelingElement *QUmlPseudostate::clone() const
     QUmlPseudostate *c = new QUmlPseudostate;
     foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependencies())
-        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
         c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
     c->setVisibility(visibility());
-    if (container())
-        c->setContainer(dynamic_cast<QUmlRegion *>(container()->clone()));
     c->setKind(kind());
-    if (state())
-        c->setState(dynamic_cast<QUmlState *>(state()->clone()));
-    if (stateMachine())
-        c->setStateMachine(dynamic_cast<QUmlStateMachine *>(stateMachine()->clone()));
     return c;
 }
 

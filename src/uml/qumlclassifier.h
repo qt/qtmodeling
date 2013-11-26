@@ -66,6 +66,8 @@ class QUmlUseCase;
 class Q_UML_EXPORT QUmlClassifier : public QUmlNamespace, public QUmlType, public QUmlRedefinableElement, public QUmlTemplateableElement
 {
 public:
+    virtual ~QUmlClassifier();
+
     Q_DECL_HIDDEN virtual QModelingElement *clone() const;
 
     // Owned attributes

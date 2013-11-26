@@ -53,6 +53,7 @@ class Q_UML_EXPORT QUmlLiteralString : public QUmlLiteralSpecification
 {
 public:
     explicit QUmlLiteralString(bool createQModelingObject = true);
+    virtual ~QUmlLiteralString();
 
     virtual QModelingElement *clone() const;
 

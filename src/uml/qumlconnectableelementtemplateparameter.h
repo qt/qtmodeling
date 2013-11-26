@@ -55,6 +55,7 @@ class Q_UML_EXPORT QUmlConnectableElementTemplateParameter : public QUmlTemplate
 {
 public:
     explicit QUmlConnectableElementTemplateParameter(bool createQModelingObject = true);
+    virtual ~QUmlConnectableElementTemplateParameter();
 
     virtual QModelingElement *clone() const;
 

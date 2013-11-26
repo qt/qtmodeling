@@ -74,6 +74,14 @@ QUmlChangeEvent::QUmlChangeEvent(bool createQModelingObject) :
 }
 
 /*!
+    Destroys the QUmlChangeEvent.
+ */
+QUmlChangeEvent::~QUmlChangeEvent()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QUmlChangeEvent.
 */
 QModelingElement *QUmlChangeEvent::clone() const
@@ -81,12 +89,6 @@ QModelingElement *QUmlChangeEvent::clone() const
     QUmlChangeEvent *c = new QUmlChangeEvent;
     foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    if (owningTemplateParameter())
-        c->setOwningTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(owningTemplateParameter()->clone()));
-    if (templateParameter())
-        c->setTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(templateParameter()->clone()));
-    foreach (QUmlDependency *element, clientDependencies())
-        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
         c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));

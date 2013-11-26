@@ -72,6 +72,14 @@ QUmlTrigger::QUmlTrigger(bool createQModelingObject) :
 }
 
 /*!
+    Destroys the QUmlTrigger.
+ */
+QUmlTrigger::~QUmlTrigger()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QUmlTrigger.
 */
 QModelingElement *QUmlTrigger::clone() const
@@ -79,16 +87,10 @@ QModelingElement *QUmlTrigger::clone() const
     QUmlTrigger *c = new QUmlTrigger;
     foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependencies())
-        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
         c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
     c->setVisibility(visibility());
-    if (event_())
-        c->setEvent(dynamic_cast<QUmlEvent *>(event_()->clone()));
-    foreach (QUmlPort *element, ports())
-        c->addPort(dynamic_cast<QUmlPort *>(element->clone()));
     return c;
 }
 

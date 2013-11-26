@@ -69,6 +69,14 @@ QUmlDeploymentTarget::QUmlDeploymentTarget()
 }
 
 /*!
+    Destroys the QUmlDeploymentTarget.
+ */
+QUmlDeploymentTarget::~QUmlDeploymentTarget()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QUmlDeploymentTarget.
 */
 QModelingElement *QUmlDeploymentTarget::clone() const
@@ -76,8 +84,6 @@ QModelingElement *QUmlDeploymentTarget::clone() const
     QUmlDeploymentTarget *c = new QUmlDeploymentTarget;
     foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependencies())
-        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
         c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));

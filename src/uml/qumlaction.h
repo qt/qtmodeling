@@ -57,6 +57,8 @@ class QUmlOutputPin;
 class Q_UML_EXPORT QUmlAction : public QUmlExecutableNode
 {
 public:
+    virtual ~QUmlAction();
+
     Q_DECL_HIDDEN virtual QModelingElement *clone() const;
 
     // Owned attributes

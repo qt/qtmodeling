@@ -56,6 +56,7 @@ class Q_UML_EXPORT QUmlClearAssociationAction : public QUmlAction
 {
 public:
     explicit QUmlClearAssociationAction(bool createQModelingObject = true);
+    virtual ~QUmlClearAssociationAction();
 
     virtual QModelingElement *clone() const;
 

@@ -87,6 +87,14 @@ QUmlSendSignalAction::QUmlSendSignalAction(bool createQModelingObject) :
 }
 
 /*!
+    Destroys the QUmlSendSignalAction.
+ */
+QUmlSendSignalAction::~QUmlSendSignalAction()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QUmlSendSignalAction.
 */
 QModelingElement *QUmlSendSignalAction::clone() const
@@ -94,27 +102,11 @@ QModelingElement *QUmlSendSignalAction::clone() const
     QUmlSendSignalAction *c = new QUmlSendSignalAction;
     foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependencies())
-        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
         c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
     c->setVisibility(visibility());
     c->setLeaf(isLeaf());
-    if (activity())
-        c->setActivity(dynamic_cast<QUmlActivity *>(activity()->clone()));
-    foreach (QUmlInterruptibleActivityRegion *element, inInterruptibleRegions())
-        c->addInInterruptibleRegion(dynamic_cast<QUmlInterruptibleActivityRegion *>(element->clone()));
-    foreach (QUmlActivityPartition *element, inPartitions())
-        c->addInPartition(dynamic_cast<QUmlActivityPartition *>(element->clone()));
-    if (inStructuredNode())
-        c->setInStructuredNode(dynamic_cast<QUmlStructuredActivityNode *>(inStructuredNode()->clone()));
-    foreach (QUmlActivityEdge *element, incomings())
-        c->addIncoming(dynamic_cast<QUmlActivityEdge *>(element->clone()));
-    foreach (QUmlActivityEdge *element, outgoings())
-        c->addOutgoing(dynamic_cast<QUmlActivityEdge *>(element->clone()));
-    foreach (QUmlActivityNode *element, redefinedNodes())
-        c->addRedefinedNode(dynamic_cast<QUmlActivityNode *>(element->clone()));
     foreach (QUmlExceptionHandler *element, handlers())
         c->addHandler(dynamic_cast<QUmlExceptionHandler *>(element->clone()));
     c->setLocallyReentrant(isLocallyReentrant());
@@ -124,10 +116,6 @@ QModelingElement *QUmlSendSignalAction::clone() const
         c->addLocalPrecondition(dynamic_cast<QUmlConstraint *>(element->clone()));
     foreach (QUmlInputPin *element, arguments())
         c->addArgument(dynamic_cast<QUmlInputPin *>(element->clone()));
-    if (onPort())
-        c->setOnPort(dynamic_cast<QUmlPort *>(onPort()->clone()));
-    if (signal())
-        c->setSignal(dynamic_cast<QUmlSignal *>(signal()->clone()));
     if (target())
         c->setTarget(dynamic_cast<QUmlInputPin *>(target()->clone()));
     return c;

@@ -116,7 +116,7 @@ public:
     Q_INVOKABLE QObject *behavior() const;
     Q_INVOKABLE const QList<QString> bodies() const;
     Q_INVOKABLE const QList<QString> languages() const;
-    Q_INVOKABLE QObject *result() const;
+    Q_TODO Q_INVOKABLE QObject *result() const;
 
     // Operations [Element]
     Q_INVOKABLE QSet<QObject *> allOwnedElements() const;
@@ -124,28 +124,28 @@ public:
 
     // Operations [NamedElement]
     Q_INVOKABLE QList<QObject *> allNamespaces() const;
-    Q_INVOKABLE QSet<QObject *> allOwningPackages() const;
-    Q_INVOKABLE bool isDistinguishableFrom(QObject *n, QObject *ns) const;
+    Q_TODO Q_INVOKABLE QSet<QObject *> allOwningPackages() const;
+    Q_TODO Q_INVOKABLE bool isDistinguishableFrom(QObject *n, QObject *ns) const;
     Q_INVOKABLE QString separator() const;
 
     // Operations [ParameterableElement]
-    Q_INVOKABLE bool isTemplateParameter() const;
+    Q_TODO Q_INVOKABLE bool isTemplateParameter() const;
 
     // Operations [ValueSpecification]
-    Q_INVOKABLE bool booleanValue() const;
-    Q_INVOKABLE int integerValue() const;
-    Q_INVOKABLE bool isCompatibleWith(QObject *p) const;
-    Q_INVOKABLE bool isComputable() const;
-    Q_INVOKABLE bool isNull() const;
-    Q_INVOKABLE double realValue() const;
-    Q_INVOKABLE QString stringValue() const;
-    Q_INVOKABLE QString unlimitedValue() const;
+    Q_TODO Q_INVOKABLE bool booleanValue() const;
+    Q_TODO Q_INVOKABLE int integerValue() const;
+    Q_TODO Q_INVOKABLE bool isCompatibleWith(QObject *p) const;
+    Q_TODO Q_INVOKABLE bool isComputable() const;
+    Q_TODO Q_INVOKABLE bool isNull() const;
+    Q_TODO Q_INVOKABLE double realValue() const;
+    Q_TODO Q_INVOKABLE QString stringValue() const;
+    Q_TODO Q_INVOKABLE QString unlimitedValue() const;
 
     // Operations [OpaqueExpression]
-    Q_INVOKABLE bool isIntegral() const;
-    Q_INVOKABLE bool isNonNegative() const;
-    Q_INVOKABLE bool isPositive() const;
-    Q_INVOKABLE int value() const;
+    Q_TODO Q_INVOKABLE bool isIntegral() const;
+    Q_TODO Q_INVOKABLE bool isNonNegative() const;
+    Q_TODO Q_INVOKABLE bool isPositive() const;
+    Q_TODO Q_INVOKABLE int value() const;
 
 public Q_SLOTS:
 

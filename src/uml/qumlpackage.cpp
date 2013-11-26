@@ -81,6 +81,14 @@ QUmlPackage::QUmlPackage(bool createQModelingObject) :
 }
 
 /*!
+    Destroys the QUmlPackage.
+ */
+QUmlPackage::~QUmlPackage()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QUmlPackage.
 */
 QModelingElement *QUmlPackage::clone() const
@@ -88,8 +96,6 @@ QModelingElement *QUmlPackage::clone() const
     QUmlPackage *c = new QUmlPackage;
     foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependencies())
-        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
         c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
@@ -99,18 +105,12 @@ QModelingElement *QUmlPackage::clone() const
         c->addOwnedRule(dynamic_cast<QUmlConstraint *>(element->clone()));
     foreach (QUmlPackageImport *element, packageImports())
         c->addPackageImport(dynamic_cast<QUmlPackageImport *>(element->clone()));
-    if (owningTemplateParameter())
-        c->setOwningTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(owningTemplateParameter()->clone()));
-    if (templateParameter())
-        c->setTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(templateParameter()->clone()));
     c->setVisibility(visibility());
     if (ownedTemplateSignature())
         c->setOwnedTemplateSignature(dynamic_cast<QUmlTemplateSignature *>(ownedTemplateSignature()->clone()));
     foreach (QUmlTemplateBinding *element, templateBindings())
         c->addTemplateBinding(dynamic_cast<QUmlTemplateBinding *>(element->clone()));
     c->setURI(URI());
-    if (nestingPackage())
-        c->setNestingPackage(dynamic_cast<QUmlPackage *>(nestingPackage()->clone()));
     foreach (QUmlPackageMerge *element, packageMerges())
         c->addPackageMerge(dynamic_cast<QUmlPackageMerge *>(element->clone()));
     foreach (QUmlPackageableElement *element, packagedElements())

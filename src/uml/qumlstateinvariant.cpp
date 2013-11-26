@@ -77,6 +77,14 @@ QUmlStateInvariant::QUmlStateInvariant(bool createQModelingObject) :
 }
 
 /*!
+    Destroys the QUmlStateInvariant.
+ */
+QUmlStateInvariant::~QUmlStateInvariant()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QUmlStateInvariant.
 */
 QModelingElement *QUmlStateInvariant::clone() const
@@ -84,20 +92,12 @@ QModelingElement *QUmlStateInvariant::clone() const
     QUmlStateInvariant *c = new QUmlStateInvariant;
     foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependencies())
-        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
         c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
     c->setVisibility(visibility());
-    if (enclosingInteraction())
-        c->setEnclosingInteraction(dynamic_cast<QUmlInteraction *>(enclosingInteraction()->clone()));
-    if (enclosingOperand())
-        c->setEnclosingOperand(dynamic_cast<QUmlInteractionOperand *>(enclosingOperand()->clone()));
     foreach (QUmlGeneralOrdering *element, generalOrderings())
         c->addGeneralOrdering(dynamic_cast<QUmlGeneralOrdering *>(element->clone()));
-    if (covered())
-        c->setCovered(dynamic_cast<QUmlLifeline *>(covered()->clone()));
     if (invariant())
         c->setInvariant(dynamic_cast<QUmlConstraint *>(invariant()->clone()));
     return c;

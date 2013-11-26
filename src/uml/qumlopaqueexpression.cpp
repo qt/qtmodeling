@@ -76,6 +76,14 @@ QUmlOpaqueExpression::QUmlOpaqueExpression(bool createQModelingObject) :
 }
 
 /*!
+    Destroys the QUmlOpaqueExpression.
+ */
+QUmlOpaqueExpression::~QUmlOpaqueExpression()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QUmlOpaqueExpression.
 */
 QModelingElement *QUmlOpaqueExpression::clone() const
@@ -83,20 +91,10 @@ QModelingElement *QUmlOpaqueExpression::clone() const
     QUmlOpaqueExpression *c = new QUmlOpaqueExpression;
     foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependencies())
-        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
         c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
-    if (type())
-        c->setType(dynamic_cast<QUmlType *>(type()->clone()));
-    if (owningTemplateParameter())
-        c->setOwningTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(owningTemplateParameter()->clone()));
-    if (templateParameter())
-        c->setTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(templateParameter()->clone()));
     c->setVisibility(visibility());
-    if (behavior())
-        c->setBehavior(dynamic_cast<QUmlBehavior *>(behavior()->clone()));
     foreach (QString element, bodies())
         c->addBody(element);
     foreach (QString element, languages())

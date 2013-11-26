@@ -73,6 +73,14 @@ QUmlDurationObservation::QUmlDurationObservation(bool createQModelingObject) :
 }
 
 /*!
+    Destroys the QUmlDurationObservation.
+ */
+QUmlDurationObservation::~QUmlDurationObservation()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QUmlDurationObservation.
 */
 QModelingElement *QUmlDurationObservation::clone() const
@@ -80,18 +88,10 @@ QModelingElement *QUmlDurationObservation::clone() const
     QUmlDurationObservation *c = new QUmlDurationObservation;
     foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    if (owningTemplateParameter())
-        c->setOwningTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(owningTemplateParameter()->clone()));
-    if (templateParameter())
-        c->setTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(templateParameter()->clone()));
-    foreach (QUmlDependency *element, clientDependencies())
-        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
         c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
     c->setVisibility(visibility());
-    if (event_())
-        c->setEvent(dynamic_cast<QUmlNamedElement *>(event_()->clone()));
     c->setFirstEvent(firstEvent());
     return c;
 }

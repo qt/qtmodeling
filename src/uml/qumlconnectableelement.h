@@ -56,6 +56,8 @@ class QUmlConnectorEnd;
 class Q_UML_EXPORT QUmlConnectableElement : public virtual QUmlTypedElement, public QUmlParameterableElement
 {
 public:
+    virtual ~QUmlConnectableElement();
+
     Q_DECL_HIDDEN virtual QModelingElement *clone() const;
 
     // Owned attributes

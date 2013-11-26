@@ -55,6 +55,7 @@ class Q_UML_EXPORT QUmlCallBehaviorAction : public QUmlCallAction
 {
 public:
     explicit QUmlCallBehaviorAction(bool createQModelingObject = true);
+    virtual ~QUmlCallBehaviorAction();
 
     virtual QModelingElement *clone() const;
 

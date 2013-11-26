@@ -53,6 +53,7 @@ class Q_UML_EXPORT QUmlFlowFinalNode : public QUmlFinalNode
 {
 public:
     explicit QUmlFlowFinalNode(bool createQModelingObject = true);
+    virtual ~QUmlFlowFinalNode();
 
     virtual QModelingElement *clone() const;
 

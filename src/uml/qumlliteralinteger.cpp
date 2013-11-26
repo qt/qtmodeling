@@ -74,6 +74,14 @@ QUmlLiteralInteger::QUmlLiteralInteger(bool createQModelingObject) :
 }
 
 /*!
+    Destroys the QUmlLiteralInteger.
+ */
+QUmlLiteralInteger::~QUmlLiteralInteger()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QUmlLiteralInteger.
 */
 QModelingElement *QUmlLiteralInteger::clone() const
@@ -81,17 +89,9 @@ QModelingElement *QUmlLiteralInteger::clone() const
     QUmlLiteralInteger *c = new QUmlLiteralInteger;
     foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependencies())
-        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
         c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
-    if (type())
-        c->setType(dynamic_cast<QUmlType *>(type()->clone()));
-    if (owningTemplateParameter())
-        c->setOwningTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(owningTemplateParameter()->clone()));
-    if (templateParameter())
-        c->setTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(templateParameter()->clone()));
     c->setVisibility(visibility());
     c->setValue(value());
     return c;

@@ -58,6 +58,7 @@ class Q_UML_EXPORT QUmlPort : public QUmlProperty
 {
 public:
     explicit QUmlPort(bool createQModelingObject = true);
+    virtual ~QUmlPort();
 
     virtual QModelingElement *clone() const;
 

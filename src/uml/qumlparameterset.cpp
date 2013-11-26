@@ -71,6 +71,14 @@ QUmlParameterSet::QUmlParameterSet(bool createQModelingObject)
 }
 
 /*!
+    Destroys the QUmlParameterSet.
+ */
+QUmlParameterSet::~QUmlParameterSet()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QUmlParameterSet.
 */
 QModelingElement *QUmlParameterSet::clone() const
@@ -78,16 +86,12 @@ QModelingElement *QUmlParameterSet::clone() const
     QUmlParameterSet *c = new QUmlParameterSet;
     foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependencies())
-        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
         c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
     c->setVisibility(visibility());
     foreach (QUmlConstraint *element, conditions())
         c->addCondition(dynamic_cast<QUmlConstraint *>(element->clone()));
-    foreach (QUmlParameter *element, parameters())
-        c->addParameter(dynamic_cast<QUmlParameter *>(element->clone()));
     return c;
 }
 

@@ -56,6 +56,7 @@ class Q_UML_EXPORT QUmlConnectionPointReference : public QUmlVertex
 {
 public:
     explicit QUmlConnectionPointReference(bool createQModelingObject = true);
+    virtual ~QUmlConnectionPointReference();
 
     virtual QModelingElement *clone() const;
 

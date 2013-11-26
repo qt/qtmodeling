@@ -76,6 +76,14 @@ QUmlConnectionPointReference::QUmlConnectionPointReference(bool createQModelingO
 }
 
 /*!
+    Destroys the QUmlConnectionPointReference.
+ */
+QUmlConnectionPointReference::~QUmlConnectionPointReference()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QUmlConnectionPointReference.
 */
 QModelingElement *QUmlConnectionPointReference::clone() const
@@ -83,20 +91,10 @@ QModelingElement *QUmlConnectionPointReference::clone() const
     QUmlConnectionPointReference *c = new QUmlConnectionPointReference;
     foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependencies())
-        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
         c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
     c->setVisibility(visibility());
-    if (container())
-        c->setContainer(dynamic_cast<QUmlRegion *>(container()->clone()));
-    foreach (QUmlPseudostate *element, entries())
-        c->addEntry(dynamic_cast<QUmlPseudostate *>(element->clone()));
-    foreach (QUmlPseudostate *element, exits())
-        c->addExit(dynamic_cast<QUmlPseudostate *>(element->clone()));
-    if (state())
-        c->setState(dynamic_cast<QUmlState *>(state()->clone()));
     return c;
 }
 

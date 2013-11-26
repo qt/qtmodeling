@@ -57,6 +57,7 @@ class Q_UML_EXPORT QUmlExpansionRegion : public QUmlStructuredActivityNode
 {
 public:
     explicit QUmlExpansionRegion(bool createQModelingObject = true);
+    virtual ~QUmlExpansionRegion();
 
     virtual QModelingElement *clone() const;
 

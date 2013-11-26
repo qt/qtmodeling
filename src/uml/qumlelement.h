@@ -54,6 +54,8 @@ class QUmlComment;
 class Q_UML_EXPORT QUmlElement : public QModelingElement
 {
 public:
+    virtual ~QUmlElement();
+
     Q_DECL_HIDDEN virtual QModelingElement *clone() const;
 
     // Owned attributes

@@ -71,6 +71,14 @@ QUmlDependency::QUmlDependency(bool createQModelingObject)
 }
 
 /*!
+    Destroys the QUmlDependency.
+ */
+QUmlDependency::~QUmlDependency()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QUmlDependency.
 */
 QModelingElement *QUmlDependency::clone() const
@@ -78,20 +86,10 @@ QModelingElement *QUmlDependency::clone() const
     QUmlDependency *c = new QUmlDependency;
     foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    if (owningTemplateParameter())
-        c->setOwningTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(owningTemplateParameter()->clone()));
-    if (templateParameter())
-        c->setTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(templateParameter()->clone()));
-    foreach (QUmlDependency *element, clientDependencies())
-        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
         c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
     c->setVisibility(visibility());
-    foreach (QUmlNamedElement *element, clients())
-        c->addClient(dynamic_cast<QUmlNamedElement *>(element->clone()));
-    foreach (QUmlNamedElement *element, suppliers())
-        c->addSupplier(dynamic_cast<QUmlNamedElement *>(element->clone()));
     return c;
 }
 

@@ -116,7 +116,7 @@ public:
     // Owned attributes [RedefinableTemplateSignature]
     Q_INVOKABLE QObject *classifier() const;
     Q_INVOKABLE const QSet<QObject *> extendedSignatures() const;
-    Q_INVOKABLE const QSet<QObject *> inheritedParameters() const;
+    Q_TODO Q_INVOKABLE const QSet<QObject *> inheritedParameters() const;
 
     // Operations [Element]
     Q_INVOKABLE QSet<QObject *> allOwnedElements() const;
@@ -124,15 +124,15 @@ public:
 
     // Operations [NamedElement]
     Q_INVOKABLE QList<QObject *> allNamespaces() const;
-    Q_INVOKABLE QSet<QObject *> allOwningPackages() const;
-    Q_INVOKABLE bool isDistinguishableFrom(QObject *n, QObject *ns) const;
+    Q_TODO Q_INVOKABLE QSet<QObject *> allOwningPackages() const;
+    Q_TODO Q_INVOKABLE bool isDistinguishableFrom(QObject *n, QObject *ns) const;
     Q_INVOKABLE QString separator() const;
 
     // Operations [RedefinableElement]
-    Q_INVOKABLE bool isRedefinitionContextValid(QObject *redefined) const;
+    Q_TODO Q_INVOKABLE bool isRedefinitionContextValid(QObject *redefined) const;
 
     // Operations [RedefinableTemplateSignature]
-    Q_INVOKABLE bool isConsistentWith(QObject *redefinee) const;
+    Q_TODO Q_INVOKABLE bool isConsistentWith(QObject *redefinee) const;
 
 public Q_SLOTS:
 

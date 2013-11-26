@@ -81,6 +81,14 @@ QUmlRegion::QUmlRegion(bool createQModelingObject) :
 }
 
 /*!
+    Destroys the QUmlRegion.
+ */
+QUmlRegion::~QUmlRegion()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QUmlRegion.
 */
 QModelingElement *QUmlRegion::clone() const
@@ -88,8 +96,6 @@ QModelingElement *QUmlRegion::clone() const
     QUmlRegion *c = new QUmlRegion;
     foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependencies())
-        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
         c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
@@ -101,12 +107,6 @@ QModelingElement *QUmlRegion::clone() const
         c->addOwnedRule(dynamic_cast<QUmlConstraint *>(element->clone()));
     foreach (QUmlPackageImport *element, packageImports())
         c->addPackageImport(dynamic_cast<QUmlPackageImport *>(element->clone()));
-    if (extendedRegion())
-        c->setExtendedRegion(dynamic_cast<QUmlRegion *>(extendedRegion()->clone()));
-    if (state())
-        c->setState(dynamic_cast<QUmlState *>(state()->clone()));
-    if (stateMachine())
-        c->setStateMachine(dynamic_cast<QUmlStateMachine *>(stateMachine()->clone()));
     foreach (QUmlVertex *element, subvertices())
         c->addSubvertex(dynamic_cast<QUmlVertex *>(element->clone()));
     foreach (QUmlTransition *element, transitions())

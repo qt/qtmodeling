@@ -80,6 +80,14 @@ QUmlEnumerationLiteral::QUmlEnumerationLiteral(bool createQModelingObject) :
 }
 
 /*!
+    Destroys the QUmlEnumerationLiteral.
+ */
+QUmlEnumerationLiteral::~QUmlEnumerationLiteral()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QUmlEnumerationLiteral.
 */
 QModelingElement *QUmlEnumerationLiteral::clone() const
@@ -87,15 +95,9 @@ QModelingElement *QUmlEnumerationLiteral::clone() const
     QUmlEnumerationLiteral *c = new QUmlEnumerationLiteral;
     foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependencies())
-        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
         c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
-    if (owningTemplateParameter())
-        c->setOwningTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(owningTemplateParameter()->clone()));
-    if (templateParameter())
-        c->setTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(templateParameter()->clone()));
     c->setVisibility(visibility());
     foreach (QUmlDeployment *element, deployments())
         c->addDeployment(dynamic_cast<QUmlDeployment *>(element->clone()));
@@ -103,8 +105,6 @@ QModelingElement *QUmlEnumerationLiteral::clone() const
         c->addSlot(dynamic_cast<QUmlSlot *>(element->clone()));
     if (specification())
         c->setSpecification(dynamic_cast<QUmlValueSpecification *>(specification()->clone()));
-    if (enumeration())
-        c->setEnumeration(dynamic_cast<QUmlEnumeration *>(enumeration()->clone()));
     return c;
 }
 

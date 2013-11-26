@@ -86,13 +86,13 @@ public:
     // Owned attributes [MultiplicityElement]
     Q_INVOKABLE bool isOrdered() const;
     Q_INVOKABLE bool isUnique() const;
-    Q_INVOKABLE int lower() const;
+    Q_TODO Q_INVOKABLE int lower() const;
     Q_INVOKABLE QObject *lowerValue() const;
-    Q_INVOKABLE QString upper() const;
+    Q_TODO Q_INVOKABLE QString upper() const;
     Q_INVOKABLE QObject *upperValue() const;
 
     // Owned attributes [ConnectorEnd]
-    Q_INVOKABLE QObject *definingEnd() const;
+    Q_TODO Q_INVOKABLE QObject *definingEnd() const;
     Q_INVOKABLE QObject *partWithPort() const;
     Q_INVOKABLE QObject *role() const;
 
@@ -101,13 +101,13 @@ public:
     Q_INVOKABLE bool mustBeOwned() const;
 
     // Operations [MultiplicityElement]
-    Q_INVOKABLE bool compatibleWith(QObject *other) const;
-    Q_INVOKABLE bool includesCardinality(int C) const;
-    Q_INVOKABLE bool includesMultiplicity(QObject *M) const;
-    Q_INVOKABLE bool is(int lowerbound, int upperbound) const;
-    Q_INVOKABLE bool isMultivalued() const;
-    Q_INVOKABLE int lowerBound() const;
-    Q_INVOKABLE QString upperBoundOperation() const;
+    Q_TODO Q_INVOKABLE bool compatibleWith(QObject *other) const;
+    Q_TODO Q_INVOKABLE bool includesCardinality(int C) const;
+    Q_TODO Q_INVOKABLE bool includesMultiplicity(QObject *M) const;
+    Q_TODO Q_INVOKABLE bool is(int lowerbound, int upperbound) const;
+    Q_TODO Q_INVOKABLE bool isMultivalued() const;
+    Q_TODO Q_INVOKABLE int lowerBound() const;
+    Q_TODO Q_INVOKABLE QString upperBoundOperation() const;
 
 public Q_SLOTS:
 

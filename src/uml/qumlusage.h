@@ -53,6 +53,7 @@ class Q_UML_EXPORT QUmlUsage : public QUmlDependency
 {
 public:
     explicit QUmlUsage(bool createQModelingObject = true);
+    virtual ~QUmlUsage();
 
     virtual QModelingElement *clone() const;
 

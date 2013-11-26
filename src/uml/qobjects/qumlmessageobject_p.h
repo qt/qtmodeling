@@ -102,7 +102,7 @@ public:
     Q_INVOKABLE const QList<QObject *> arguments() const;
     Q_INVOKABLE QObject *connector() const;
     Q_INVOKABLE QObject *interaction() const;
-    Q_INVOKABLE QtUml::MessageKind messageKind() const;
+    Q_TODO Q_INVOKABLE QtUml::MessageKind messageKind() const;
     Q_INVOKABLE QtUml::MessageSort messageSort() const;
     Q_INVOKABLE QObject *receiveEvent() const;
     Q_INVOKABLE QObject *sendEvent() const;
@@ -114,8 +114,8 @@ public:
 
     // Operations [NamedElement]
     Q_INVOKABLE QList<QObject *> allNamespaces() const;
-    Q_INVOKABLE QSet<QObject *> allOwningPackages() const;
-    Q_INVOKABLE bool isDistinguishableFrom(QObject *n, QObject *ns) const;
+    Q_TODO Q_INVOKABLE QSet<QObject *> allOwningPackages() const;
+    Q_TODO Q_INVOKABLE bool isDistinguishableFrom(QObject *n, QObject *ns) const;
     Q_INVOKABLE QString separator() const;
 
 public Q_SLOTS:

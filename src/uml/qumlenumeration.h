@@ -55,6 +55,7 @@ class Q_UML_EXPORT QUmlEnumeration : public QUmlDataType
 {
 public:
     explicit QUmlEnumeration(bool createQModelingObject = true);
+    virtual ~QUmlEnumeration();
 
     virtual QModelingElement *clone() const;
 

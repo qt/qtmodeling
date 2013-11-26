@@ -64,6 +64,7 @@ class Q_UML_EXPORT QUmlState : public QUmlNamespace, public QUmlRedefinableEleme
 {
 public:
     explicit QUmlState(bool createQModelingObject = true);
+    virtual ~QUmlState();
 
     virtual QModelingElement *clone() const;
 

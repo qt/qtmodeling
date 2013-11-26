@@ -84,6 +84,14 @@ QUmlOutputPin::QUmlOutputPin(bool createQModelingObject)
 }
 
 /*!
+    Destroys the QUmlOutputPin.
+ */
+QUmlOutputPin::~QUmlOutputPin()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QUmlOutputPin.
 */
 QModelingElement *QUmlOutputPin::clone() const
@@ -97,35 +105,13 @@ QModelingElement *QUmlOutputPin::clone() const
         c->setLowerValue(dynamic_cast<QUmlValueSpecification *>(lowerValue()->clone()));
     if (upperValue())
         c->setUpperValue(dynamic_cast<QUmlValueSpecification *>(upperValue()->clone()));
-    foreach (QUmlDependency *element, clientDependencies())
-        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
         c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
     c->setVisibility(visibility());
     c->setLeaf(isLeaf());
-    if (activity())
-        c->setActivity(dynamic_cast<QUmlActivity *>(activity()->clone()));
-    foreach (QUmlInterruptibleActivityRegion *element, inInterruptibleRegions())
-        c->addInInterruptibleRegion(dynamic_cast<QUmlInterruptibleActivityRegion *>(element->clone()));
-    foreach (QUmlActivityPartition *element, inPartitions())
-        c->addInPartition(dynamic_cast<QUmlActivityPartition *>(element->clone()));
-    if (inStructuredNode())
-        c->setInStructuredNode(dynamic_cast<QUmlStructuredActivityNode *>(inStructuredNode()->clone()));
-    foreach (QUmlActivityEdge *element, incomings())
-        c->addIncoming(dynamic_cast<QUmlActivityEdge *>(element->clone()));
-    foreach (QUmlActivityEdge *element, outgoings())
-        c->addOutgoing(dynamic_cast<QUmlActivityEdge *>(element->clone()));
-    foreach (QUmlActivityNode *element, redefinedNodes())
-        c->addRedefinedNode(dynamic_cast<QUmlActivityNode *>(element->clone()));
-    if (type())
-        c->setType(dynamic_cast<QUmlType *>(type()->clone()));
-    foreach (QUmlState *element, inStates())
-        c->addInState(dynamic_cast<QUmlState *>(element->clone()));
     c->setControlType(isControlType());
     c->setOrdering(ordering());
-    if (selection())
-        c->setSelection(dynamic_cast<QUmlBehavior *>(selection()->clone()));
     if (upperBound())
         c->setUpperBound(dynamic_cast<QUmlValueSpecification *>(upperBound()->clone()));
     c->setControl(isControl());

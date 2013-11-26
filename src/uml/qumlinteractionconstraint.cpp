@@ -76,6 +76,14 @@ QUmlInteractionConstraint::QUmlInteractionConstraint(bool createQModelingObject)
 }
 
 /*!
+    Destroys the QUmlInteractionConstraint.
+ */
+QUmlInteractionConstraint::~QUmlInteractionConstraint()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QUmlInteractionConstraint.
 */
 QModelingElement *QUmlInteractionConstraint::clone() const
@@ -83,20 +91,10 @@ QModelingElement *QUmlInteractionConstraint::clone() const
     QUmlInteractionConstraint *c = new QUmlInteractionConstraint;
     foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    if (owningTemplateParameter())
-        c->setOwningTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(owningTemplateParameter()->clone()));
-    if (templateParameter())
-        c->setTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(templateParameter()->clone()));
-    foreach (QUmlDependency *element, clientDependencies())
-        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
         c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
     c->setVisibility(visibility());
-    foreach (QUmlElement *element, constrainedElements())
-        c->addConstrainedElement(dynamic_cast<QUmlElement *>(element->clone()));
-    if (context())
-        c->setContext(dynamic_cast<QUmlNamespace *>(context()->clone()));
     if (specification())
         c->setSpecification(dynamic_cast<QUmlValueSpecification *>(specification()->clone()));
     if (maxint())

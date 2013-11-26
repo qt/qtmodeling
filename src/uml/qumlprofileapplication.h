@@ -56,6 +56,7 @@ class Q_UML_EXPORT QUmlProfileApplication : public QUmlDirectedRelationship
 {
 public:
     explicit QUmlProfileApplication(bool createQModelingObject = true);
+    virtual ~QUmlProfileApplication();
 
     virtual QModelingElement *clone() const;
 

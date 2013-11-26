@@ -84,6 +84,14 @@ QUmlFinalState::QUmlFinalState(bool createQModelingObject) :
 }
 
 /*!
+    Destroys the QUmlFinalState.
+ */
+QUmlFinalState::~QUmlFinalState()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QUmlFinalState.
 */
 QModelingElement *QUmlFinalState::clone() const
@@ -91,8 +99,6 @@ QModelingElement *QUmlFinalState::clone() const
     QUmlFinalState *c = new QUmlFinalState;
     foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependencies())
-        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
         c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
@@ -104,8 +110,6 @@ QModelingElement *QUmlFinalState::clone() const
     foreach (QUmlPackageImport *element, packageImports())
         c->addPackageImport(dynamic_cast<QUmlPackageImport *>(element->clone()));
     c->setLeaf(isLeaf());
-    if (container())
-        c->setContainer(dynamic_cast<QUmlRegion *>(container()->clone()));
     foreach (QUmlConnectionPointReference *element, connections())
         c->addConnection(dynamic_cast<QUmlConnectionPointReference *>(element->clone()));
     foreach (QUmlPseudostate *element, connectionPoints())
@@ -118,14 +122,10 @@ QModelingElement *QUmlFinalState::clone() const
         c->setEntry(dynamic_cast<QUmlBehavior *>(entry()->clone()));
     if (exit())
         c->setExit(dynamic_cast<QUmlBehavior *>(exit()->clone()));
-    if (redefinedState())
-        c->setRedefinedState(dynamic_cast<QUmlState *>(redefinedState()->clone()));
     foreach (QUmlRegion *element, regions())
         c->addRegion(dynamic_cast<QUmlRegion *>(element->clone()));
     if (stateInvariant())
         c->setStateInvariant(dynamic_cast<QUmlConstraint *>(stateInvariant()->clone()));
-    if (submachine())
-        c->setSubmachine(dynamic_cast<QUmlStateMachine *>(submachine()->clone()));
     return c;
 }
 

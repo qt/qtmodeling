@@ -56,6 +56,7 @@ class Q_UML_EXPORT QUmlReplyAction : public QUmlAction
 {
 public:
     explicit QUmlReplyAction(bool createQModelingObject = true);
+    virtual ~QUmlReplyAction();
 
     virtual QModelingElement *clone() const;
 

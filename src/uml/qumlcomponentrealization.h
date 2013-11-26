@@ -56,6 +56,7 @@ class Q_UML_EXPORT QUmlComponentRealization : public QUmlRealization
 {
 public:
     explicit QUmlComponentRealization(bool createQModelingObject = true);
+    virtual ~QUmlComponentRealization();
 
     virtual QModelingElement *clone() const;
 

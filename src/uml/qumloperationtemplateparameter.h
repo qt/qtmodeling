@@ -55,6 +55,7 @@ class Q_UML_EXPORT QUmlOperationTemplateParameter : public QUmlTemplateParameter
 {
 public:
     explicit QUmlOperationTemplateParameter(bool createQModelingObject = true);
+    virtual ~QUmlOperationTemplateParameter();
 
     virtual QModelingElement *clone() const;
 

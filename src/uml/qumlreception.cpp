@@ -82,6 +82,14 @@ QUmlReception::QUmlReception(bool createQModelingObject) :
 }
 
 /*!
+    Destroys the QUmlReception.
+ */
+QUmlReception::~QUmlReception()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QUmlReception.
 */
 QModelingElement *QUmlReception::clone() const
@@ -89,8 +97,6 @@ QModelingElement *QUmlReception::clone() const
     QUmlReception *c = new QUmlReception;
     foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependencies())
-        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
         c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
@@ -105,16 +111,10 @@ QModelingElement *QUmlReception::clone() const
     c->setStatic(isStatic());
     c->setConcurrency(concurrency());
     c->setAbstract(isAbstract());
-    foreach (QUmlBehavior *element, methods())
-        c->addMethod(dynamic_cast<QUmlBehavior *>(element->clone()));
     foreach (QUmlParameter *element, ownedParameters())
         c->addOwnedParameter(dynamic_cast<QUmlParameter *>(element->clone()));
     foreach (QUmlParameterSet *element, ownedParameterSets())
         c->addOwnedParameterSet(dynamic_cast<QUmlParameterSet *>(element->clone()));
-    foreach (QUmlType *element, raisedExceptions())
-        c->addRaisedException(dynamic_cast<QUmlType *>(element->clone()));
-    if (signal())
-        c->setSignal(dynamic_cast<QUmlSignal *>(signal()->clone()));
     return c;
 }
 

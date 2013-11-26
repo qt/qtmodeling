@@ -93,6 +93,14 @@ QUmlOperation::QUmlOperation(bool createQModelingObject) :
 }
 
 /*!
+    Destroys the QUmlOperation.
+ */
+QUmlOperation::~QUmlOperation()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QUmlOperation.
 */
 QModelingElement *QUmlOperation::clone() const
@@ -104,8 +112,6 @@ QModelingElement *QUmlOperation::clone() const
         c->setOwnedTemplateSignature(dynamic_cast<QUmlTemplateSignature *>(ownedTemplateSignature()->clone()));
     foreach (QUmlTemplateBinding *element, templateBindings())
         c->addTemplateBinding(dynamic_cast<QUmlTemplateBinding *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependencies())
-        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
         c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
@@ -120,20 +126,10 @@ QModelingElement *QUmlOperation::clone() const
     c->setStatic(isStatic());
     c->setConcurrency(concurrency());
     c->setAbstract(isAbstract());
-    foreach (QUmlBehavior *element, methods())
-        c->addMethod(dynamic_cast<QUmlBehavior *>(element->clone()));
     foreach (QUmlParameterSet *element, ownedParameterSets())
         c->addOwnedParameterSet(dynamic_cast<QUmlParameterSet *>(element->clone()));
-    if (owningTemplateParameter())
-        c->setOwningTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(owningTemplateParameter()->clone()));
     if (bodyCondition())
         c->setBodyCondition(dynamic_cast<QUmlConstraint *>(bodyCondition()->clone()));
-    if (class_())
-        c->setClass(dynamic_cast<QUmlClass *>(class_()->clone()));
-    if (datatype())
-        c->setDatatype(dynamic_cast<QUmlDataType *>(datatype()->clone()));
-    if (interface_())
-        c->setInterface(dynamic_cast<QUmlInterface *>(interface_()->clone()));
     c->setQuery(isQuery());
     foreach (QUmlParameter *element, ownedParameters())
         c->addOwnedParameter(dynamic_cast<QUmlParameter *>(element->clone()));
@@ -141,12 +137,6 @@ QModelingElement *QUmlOperation::clone() const
         c->addPostcondition(dynamic_cast<QUmlConstraint *>(element->clone()));
     foreach (QUmlConstraint *element, preconditions())
         c->addPrecondition(dynamic_cast<QUmlConstraint *>(element->clone()));
-    foreach (QUmlType *element, raisedExceptions())
-        c->addRaisedException(dynamic_cast<QUmlType *>(element->clone()));
-    foreach (QUmlOperation *element, redefinedOperations())
-        c->addRedefinedOperation(dynamic_cast<QUmlOperation *>(element->clone()));
-    if (templateParameter())
-        c->setTemplateParameter(dynamic_cast<QUmlOperationTemplateParameter *>(templateParameter()->clone()));
     return c;
 }
 

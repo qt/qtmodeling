@@ -53,6 +53,7 @@ class Q_UML_EXPORT QUmlFunctionBehavior : public QUmlOpaqueBehavior
 {
 public:
     explicit QUmlFunctionBehavior(bool createQModelingObject = true);
+    virtual ~QUmlFunctionBehavior();
 
     virtual QModelingElement *clone() const;
 

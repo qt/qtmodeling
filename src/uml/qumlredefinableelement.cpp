@@ -69,6 +69,14 @@ QUmlRedefinableElement::QUmlRedefinableElement() :
 }
 
 /*!
+    Destroys the QUmlRedefinableElement.
+ */
+QUmlRedefinableElement::~QUmlRedefinableElement()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QUmlRedefinableElement.
 */
 QModelingElement *QUmlRedefinableElement::clone() const
@@ -76,8 +84,6 @@ QModelingElement *QUmlRedefinableElement::clone() const
     QUmlRedefinableElement *c = new QUmlRedefinableElement;
     foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependencies())
-        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
         c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));

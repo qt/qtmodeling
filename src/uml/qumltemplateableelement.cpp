@@ -66,6 +66,14 @@ QUmlTemplateableElement::QUmlTemplateableElement() :
 }
 
 /*!
+    Destroys the QUmlTemplateableElement.
+ */
+QUmlTemplateableElement::~QUmlTemplateableElement()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QUmlTemplateableElement.
 */
 QModelingElement *QUmlTemplateableElement::clone() const

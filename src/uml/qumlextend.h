@@ -58,6 +58,7 @@ class Q_UML_EXPORT QUmlExtend : public QUmlDirectedRelationship, public QUmlName
 {
 public:
     explicit QUmlExtend(bool createQModelingObject = true);
+    virtual ~QUmlExtend();
 
     virtual QModelingElement *clone() const;
 

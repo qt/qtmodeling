@@ -78,6 +78,14 @@ QUmlPartDecomposition::QUmlPartDecomposition(bool createQModelingObject) :
 }
 
 /*!
+    Destroys the QUmlPartDecomposition.
+ */
+QUmlPartDecomposition::~QUmlPartDecomposition()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QUmlPartDecomposition.
 */
 QModelingElement *QUmlPartDecomposition::clone() const
@@ -85,30 +93,18 @@ QModelingElement *QUmlPartDecomposition::clone() const
     QUmlPartDecomposition *c = new QUmlPartDecomposition;
     foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependencies())
-        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
         c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
     c->setVisibility(visibility());
-    foreach (QUmlLifeline *element, covered())
-        c->addCovered(dynamic_cast<QUmlLifeline *>(element->clone()));
-    if (enclosingInteraction())
-        c->setEnclosingInteraction(dynamic_cast<QUmlInteraction *>(enclosingInteraction()->clone()));
-    if (enclosingOperand())
-        c->setEnclosingOperand(dynamic_cast<QUmlInteractionOperand *>(enclosingOperand()->clone()));
     foreach (QUmlGeneralOrdering *element, generalOrderings())
         c->addGeneralOrdering(dynamic_cast<QUmlGeneralOrdering *>(element->clone()));
     foreach (QUmlGate *element, actualGates())
         c->addActualGate(dynamic_cast<QUmlGate *>(element->clone()));
     foreach (QUmlValueSpecification *element, arguments())
         c->addArgument(dynamic_cast<QUmlValueSpecification *>(element->clone()));
-    if (refersTo())
-        c->setRefersTo(dynamic_cast<QUmlInteraction *>(refersTo()->clone()));
     if (returnValue())
         c->setReturnValue(dynamic_cast<QUmlValueSpecification *>(returnValue()->clone()));
-    if (returnValueRecipient())
-        c->setReturnValueRecipient(dynamic_cast<QUmlProperty *>(returnValueRecipient()->clone()));
     return c;
 }
 

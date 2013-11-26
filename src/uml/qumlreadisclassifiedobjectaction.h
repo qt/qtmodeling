@@ -57,6 +57,7 @@ class Q_UML_EXPORT QUmlReadIsClassifiedObjectAction : public QUmlAction
 {
 public:
     explicit QUmlReadIsClassifiedObjectAction(bool createQModelingObject = true);
+    virtual ~QUmlReadIsClassifiedObjectAction();
 
     virtual QModelingElement *clone() const;
 

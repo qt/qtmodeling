@@ -56,6 +56,7 @@ class Q_UML_EXPORT QUmlClause : public QUmlElement
 {
 public:
     explicit QUmlClause(bool createQModelingObject = true);
+    virtual ~QUmlClause();
 
     virtual QModelingElement *clone() const;
 

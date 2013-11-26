@@ -79,6 +79,14 @@ QUmlMessage::QUmlMessage(bool createQModelingObject) :
 }
 
 /*!
+    Destroys the QUmlMessage.
+ */
+QUmlMessage::~QUmlMessage()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QUmlMessage.
 */
 QModelingElement *QUmlMessage::clone() const
@@ -86,25 +94,13 @@ QModelingElement *QUmlMessage::clone() const
     QUmlMessage *c = new QUmlMessage;
     foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependencies())
-        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
         c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
     c->setVisibility(visibility());
     foreach (QUmlValueSpecification *element, arguments())
         c->addArgument(dynamic_cast<QUmlValueSpecification *>(element->clone()));
-    if (connector())
-        c->setConnector(dynamic_cast<QUmlConnector *>(connector()->clone()));
-    if (interaction())
-        c->setInteraction(dynamic_cast<QUmlInteraction *>(interaction()->clone()));
     c->setMessageSort(messageSort());
-    if (receiveEvent())
-        c->setReceiveEvent(dynamic_cast<QUmlMessageEnd *>(receiveEvent()->clone()));
-    if (sendEvent())
-        c->setSendEvent(dynamic_cast<QUmlMessageEnd *>(sendEvent()->clone()));
-    if (signature())
-        c->setSignature(dynamic_cast<QUmlNamedElement *>(signature()->clone()));
     return c;
 }
 

@@ -59,6 +59,7 @@ class Q_UML_EXPORT QUmlConnector : public QUmlFeature
 {
 public:
     explicit QUmlConnector(bool createQModelingObject = true);
+    virtual ~QUmlConnector();
 
     virtual QModelingElement *clone() const;
 

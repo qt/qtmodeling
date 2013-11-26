@@ -71,6 +71,14 @@ QUmlTemplateParameter::QUmlTemplateParameter(bool createQModelingObject) :
 }
 
 /*!
+    Destroys the QUmlTemplateParameter.
+ */
+QUmlTemplateParameter::~QUmlTemplateParameter()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QUmlTemplateParameter.
 */
 QModelingElement *QUmlTemplateParameter::clone() const
@@ -78,16 +86,10 @@ QModelingElement *QUmlTemplateParameter::clone() const
     QUmlTemplateParameter *c = new QUmlTemplateParameter;
     foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    if (default_())
-        c->setDefault(dynamic_cast<QUmlParameterableElement *>(default_()->clone()));
     if (ownedDefault())
         c->setOwnedDefault(dynamic_cast<QUmlParameterableElement *>(ownedDefault()->clone()));
     if (ownedParameteredElement())
         c->setOwnedParameteredElement(dynamic_cast<QUmlParameterableElement *>(ownedParameteredElement()->clone()));
-    if (parameteredElement())
-        c->setParameteredElement(dynamic_cast<QUmlParameterableElement *>(parameteredElement()->clone()));
-    if (signature())
-        c->setSignature(dynamic_cast<QUmlTemplateSignature *>(signature()->clone()));
     return c;
 }
 

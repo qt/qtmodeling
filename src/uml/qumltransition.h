@@ -64,6 +64,7 @@ class Q_UML_EXPORT QUmlTransition : public QUmlRedefinableElement, public QUmlNa
 {
 public:
     explicit QUmlTransition(bool createQModelingObject = true);
+    virtual ~QUmlTransition();
 
     virtual QModelingElement *clone() const;
 

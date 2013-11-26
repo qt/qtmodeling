@@ -54,6 +54,7 @@ class Q_UML_EXPORT QUmlStringExpression : public QUmlExpression, public QUmlTemp
 {
 public:
     explicit QUmlStringExpression(bool createQModelingObject = true);
+    virtual ~QUmlStringExpression();
 
     virtual QModelingElement *clone() const;
 

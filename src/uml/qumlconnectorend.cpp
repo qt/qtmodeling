@@ -70,6 +70,14 @@ QUmlConnectorEnd::QUmlConnectorEnd(bool createQModelingObject) :
 }
 
 /*!
+    Destroys the QUmlConnectorEnd.
+ */
+QUmlConnectorEnd::~QUmlConnectorEnd()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QUmlConnectorEnd.
 */
 QModelingElement *QUmlConnectorEnd::clone() const
@@ -83,10 +91,6 @@ QModelingElement *QUmlConnectorEnd::clone() const
         c->setLowerValue(dynamic_cast<QUmlValueSpecification *>(lowerValue()->clone()));
     if (upperValue())
         c->setUpperValue(dynamic_cast<QUmlValueSpecification *>(upperValue()->clone()));
-    if (partWithPort())
-        c->setPartWithPort(dynamic_cast<QUmlProperty *>(partWithPort()->clone()));
-    if (role())
-        c->setRole(dynamic_cast<QUmlConnectableElement *>(role()->clone()));
     return c;
 }
 

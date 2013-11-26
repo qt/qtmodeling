@@ -72,6 +72,14 @@ QUmlActivityGroup::QUmlActivityGroup() :
 }
 
 /*!
+    Destroys the QUmlActivityGroup.
+ */
+QUmlActivityGroup::~QUmlActivityGroup()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QUmlActivityGroup.
 */
 QModelingElement *QUmlActivityGroup::clone() const
@@ -79,14 +87,10 @@ QModelingElement *QUmlActivityGroup::clone() const
     QUmlActivityGroup *c = new QUmlActivityGroup;
     foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependencies())
-        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
         c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
     c->setVisibility(visibility());
-    if (inActivity())
-        c->setInActivity(dynamic_cast<QUmlActivity *>(inActivity()->clone()));
     return c;
 }
 

@@ -55,6 +55,7 @@ class Q_UML_EXPORT QUmlJoinNode : public QUmlControlNode
 {
 public:
     explicit QUmlJoinNode(bool createQModelingObject = true);
+    virtual ~QUmlJoinNode();
 
     virtual QModelingElement *clone() const;
 

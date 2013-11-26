@@ -55,6 +55,7 @@ class Q_UML_EXPORT QUmlRaiseExceptionAction : public QUmlAction
 {
 public:
     explicit QUmlRaiseExceptionAction(bool createQModelingObject = true);
+    virtual ~QUmlRaiseExceptionAction();
 
     virtual QModelingElement *clone() const;
 

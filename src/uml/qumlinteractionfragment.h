@@ -57,6 +57,8 @@ class QUmlLifeline;
 class Q_UML_EXPORT QUmlInteractionFragment : public virtual QUmlNamedElement
 {
 public:
+    virtual ~QUmlInteractionFragment();
+
     Q_DECL_HIDDEN virtual QModelingElement *clone() const;
 
     // Owned attributes

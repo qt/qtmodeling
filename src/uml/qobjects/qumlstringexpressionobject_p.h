@@ -136,28 +136,28 @@ public:
 
     // Operations [NamedElement]
     Q_INVOKABLE QList<QObject *> allNamespaces() const;
-    Q_INVOKABLE QSet<QObject *> allOwningPackages() const;
-    Q_INVOKABLE bool isDistinguishableFrom(QObject *n, QObject *ns) const;
+    Q_TODO Q_INVOKABLE QSet<QObject *> allOwningPackages() const;
+    Q_TODO Q_INVOKABLE bool isDistinguishableFrom(QObject *n, QObject *ns) const;
     Q_INVOKABLE QString separator() const;
 
     // Operations [ParameterableElement]
-    Q_INVOKABLE bool isTemplateParameter() const;
+    Q_TODO Q_INVOKABLE bool isTemplateParameter() const;
 
     // Operations [ValueSpecification]
-    Q_INVOKABLE bool booleanValue() const;
-    Q_INVOKABLE int integerValue() const;
-    Q_INVOKABLE bool isCompatibleWith(QObject *p) const;
-    Q_INVOKABLE bool isComputable() const;
-    Q_INVOKABLE bool isNull() const;
-    Q_INVOKABLE double realValue() const;
-    Q_INVOKABLE QString unlimitedValue() const;
+    Q_TODO Q_INVOKABLE bool booleanValue() const;
+    Q_TODO Q_INVOKABLE int integerValue() const;
+    Q_TODO Q_INVOKABLE bool isCompatibleWith(QObject *p) const;
+    Q_TODO Q_INVOKABLE bool isComputable() const;
+    Q_TODO Q_INVOKABLE bool isNull() const;
+    Q_TODO Q_INVOKABLE double realValue() const;
+    Q_TODO Q_INVOKABLE QString unlimitedValue() const;
 
     // Operations [TemplateableElement]
-    Q_INVOKABLE bool isTemplate() const;
-    Q_INVOKABLE QSet<QObject *> parameterableElements() const;
+    Q_TODO Q_INVOKABLE bool isTemplate() const;
+    Q_TODO Q_INVOKABLE QSet<QObject *> parameterableElements() const;
 
     // Operations [StringExpression]
-    Q_INVOKABLE QString stringValue() const;
+    Q_TODO Q_INVOKABLE QString stringValue() const;
 
 public Q_SLOTS:
 

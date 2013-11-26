@@ -53,6 +53,7 @@ class Q_UML_EXPORT QUmlContinuation : public QUmlInteractionFragment
 {
 public:
     explicit QUmlContinuation(bool createQModelingObject = true);
+    virtual ~QUmlContinuation();
 
     virtual QModelingElement *clone() const;
 

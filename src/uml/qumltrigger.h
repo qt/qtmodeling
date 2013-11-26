@@ -56,6 +56,7 @@ class Q_UML_EXPORT QUmlTrigger : public QUmlNamedElement
 {
 public:
     explicit QUmlTrigger(bool createQModelingObject = true);
+    virtual ~QUmlTrigger();
 
     virtual QModelingElement *clone() const;
 

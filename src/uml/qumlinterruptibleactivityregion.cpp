@@ -73,6 +73,14 @@ QUmlInterruptibleActivityRegion::QUmlInterruptibleActivityRegion(bool createQMod
 }
 
 /*!
+    Destroys the QUmlInterruptibleActivityRegion.
+ */
+QUmlInterruptibleActivityRegion::~QUmlInterruptibleActivityRegion()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QUmlInterruptibleActivityRegion.
 */
 QModelingElement *QUmlInterruptibleActivityRegion::clone() const
@@ -80,18 +88,10 @@ QModelingElement *QUmlInterruptibleActivityRegion::clone() const
     QUmlInterruptibleActivityRegion *c = new QUmlInterruptibleActivityRegion;
     foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependencies())
-        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
         c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
     c->setVisibility(visibility());
-    if (inActivity())
-        c->setInActivity(dynamic_cast<QUmlActivity *>(inActivity()->clone()));
-    foreach (QUmlActivityEdge *element, interruptingEdges())
-        c->addInterruptingEdge(dynamic_cast<QUmlActivityEdge *>(element->clone()));
-    foreach (QUmlActivityNode *element, nodes())
-        c->addNode(dynamic_cast<QUmlActivityNode *>(element->clone()));
     return c;
 }
 

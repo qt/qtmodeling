@@ -55,6 +55,7 @@ class Q_UML_EXPORT QUmlInstanceValue : public QUmlValueSpecification
 {
 public:
     explicit QUmlInstanceValue(bool createQModelingObject = true);
+    virtual ~QUmlInstanceValue();
 
     virtual QModelingElement *clone() const;
 

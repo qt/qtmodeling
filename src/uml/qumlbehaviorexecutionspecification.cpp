@@ -77,6 +77,14 @@ QUmlBehaviorExecutionSpecification::QUmlBehaviorExecutionSpecification(bool crea
 }
 
 /*!
+    Destroys the QUmlBehaviorExecutionSpecification.
+ */
+QUmlBehaviorExecutionSpecification::~QUmlBehaviorExecutionSpecification()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QUmlBehaviorExecutionSpecification.
 */
 QModelingElement *QUmlBehaviorExecutionSpecification::clone() const
@@ -84,26 +92,12 @@ QModelingElement *QUmlBehaviorExecutionSpecification::clone() const
     QUmlBehaviorExecutionSpecification *c = new QUmlBehaviorExecutionSpecification;
     foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependencies())
-        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
         c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
     c->setVisibility(visibility());
-    foreach (QUmlLifeline *element, covered())
-        c->addCovered(dynamic_cast<QUmlLifeline *>(element->clone()));
-    if (enclosingInteraction())
-        c->setEnclosingInteraction(dynamic_cast<QUmlInteraction *>(enclosingInteraction()->clone()));
-    if (enclosingOperand())
-        c->setEnclosingOperand(dynamic_cast<QUmlInteractionOperand *>(enclosingOperand()->clone()));
     foreach (QUmlGeneralOrdering *element, generalOrderings())
         c->addGeneralOrdering(dynamic_cast<QUmlGeneralOrdering *>(element->clone()));
-    if (finish())
-        c->setFinish(dynamic_cast<QUmlOccurrenceSpecification *>(finish()->clone()));
-    if (start())
-        c->setStart(dynamic_cast<QUmlOccurrenceSpecification *>(start()->clone()));
-    if (behavior())
-        c->setBehavior(dynamic_cast<QUmlBehavior *>(behavior()->clone()));
     return c;
 }
 

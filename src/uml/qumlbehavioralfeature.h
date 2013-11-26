@@ -61,6 +61,8 @@ class QUmlType;
 class Q_UML_EXPORT QUmlBehavioralFeature : public QUmlNamespace, public QUmlFeature
 {
 public:
+    virtual ~QUmlBehavioralFeature();
+
     Q_DECL_HIDDEN virtual QModelingElement *clone() const;
 
     // Owned attributes

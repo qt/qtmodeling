@@ -113,7 +113,7 @@ public:
     Q_INVOKABLE QtUml::VisibilityKind visibility() const;
 
     // Owned attributes [DeploymentTarget]
-    Q_INVOKABLE const QSet<QObject *> deployedElements() const;
+    Q_TODO Q_INVOKABLE const QSet<QObject *> deployedElements() const;
     Q_INVOKABLE const QSet<QObject *> deployments() const;
 
     // Owned attributes [InstanceSpecification]
@@ -121,7 +121,7 @@ public:
     Q_INVOKABLE QObject *specification() const;
 
     // Owned attributes [EnumerationLiteral]
-    Q_INVOKABLE QObject *classifier() const;
+    Q_TODO Q_INVOKABLE QObject *classifier() const;
     Q_INVOKABLE QObject *enumeration() const;
 
     // Operations [Element]
@@ -130,13 +130,13 @@ public:
 
     // Operations [NamedElement]
     Q_INVOKABLE QList<QObject *> allNamespaces() const;
-    Q_INVOKABLE QSet<QObject *> allOwningPackages() const;
-    Q_INVOKABLE bool isDistinguishableFrom(QObject *n, QObject *ns) const;
+    Q_TODO Q_INVOKABLE QSet<QObject *> allOwningPackages() const;
+    Q_TODO Q_INVOKABLE bool isDistinguishableFrom(QObject *n, QObject *ns) const;
     Q_INVOKABLE QString separator() const;
 
     // Operations [ParameterableElement]
-    Q_INVOKABLE bool isCompatibleWith(QObject *p) const;
-    Q_INVOKABLE bool isTemplateParameter() const;
+    Q_TODO Q_INVOKABLE bool isCompatibleWith(QObject *p) const;
+    Q_TODO Q_INVOKABLE bool isTemplateParameter() const;
 
 public Q_SLOTS:
 

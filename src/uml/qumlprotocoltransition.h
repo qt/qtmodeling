@@ -56,6 +56,7 @@ class Q_UML_EXPORT QUmlProtocolTransition : public QUmlTransition
 {
 public:
     explicit QUmlProtocolTransition(bool createQModelingObject = true);
+    virtual ~QUmlProtocolTransition();
 
     virtual QModelingElement *clone() const;
 

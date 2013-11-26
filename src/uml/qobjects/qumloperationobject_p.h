@@ -171,51 +171,51 @@ public:
     Q_INVOKABLE QObject *class_() const;
     Q_INVOKABLE QObject *datatype() const;
     Q_INVOKABLE QObject *interface_() const;
-    Q_INVOKABLE bool isOrdered() const;
+    Q_TODO Q_INVOKABLE bool isOrdered() const;
     Q_INVOKABLE bool isQuery() const;
-    Q_INVOKABLE bool isUnique() const;
-    Q_INVOKABLE int lower() const;
+    Q_TODO Q_INVOKABLE bool isUnique() const;
+    Q_TODO Q_INVOKABLE int lower() const;
     Q_INVOKABLE const QList<QObject *> ownedParameters() const;
     Q_INVOKABLE const QSet<QObject *> postconditions() const;
     Q_INVOKABLE const QSet<QObject *> preconditions() const;
     Q_INVOKABLE const QSet<QObject *> raisedExceptions() const;
     Q_INVOKABLE const QSet<QObject *> redefinedOperations() const;
     Q_INVOKABLE QObject *templateParameter() const;
-    Q_INVOKABLE QObject *type() const;
-    Q_INVOKABLE QString upper() const;
+    Q_TODO Q_INVOKABLE QObject *type() const;
+    Q_TODO Q_INVOKABLE QString upper() const;
 
     // Operations [Element]
     Q_INVOKABLE QSet<QObject *> allOwnedElements() const;
     Q_INVOKABLE bool mustBeOwned() const;
 
     // Operations [TemplateableElement]
-    Q_INVOKABLE bool isTemplate() const;
-    Q_INVOKABLE QSet<QObject *> parameterableElements() const;
+    Q_TODO Q_INVOKABLE bool isTemplate() const;
+    Q_TODO Q_INVOKABLE QSet<QObject *> parameterableElements() const;
 
     // Operations [NamedElement]
     Q_INVOKABLE QList<QObject *> allNamespaces() const;
-    Q_INVOKABLE QSet<QObject *> allOwningPackages() const;
+    Q_TODO Q_INVOKABLE QSet<QObject *> allOwningPackages() const;
     Q_INVOKABLE QString separator() const;
 
     // Operations [Namespace]
-    Q_INVOKABLE QSet<QObject *> excludeCollisions(QSet<QObject *> imps) const;
-    Q_INVOKABLE QSet<QString> getNamesOfMember(QObject *element) const;
-    Q_INVOKABLE QSet<QObject *> importMembers(QSet<QObject *> imps) const;
-    Q_INVOKABLE bool membersAreDistinguishable() const;
+    Q_TODO Q_INVOKABLE QSet<QObject *> excludeCollisions(QSet<QObject *> imps) const;
+    Q_TODO Q_INVOKABLE QSet<QString> getNamesOfMember(QObject *element) const;
+    Q_TODO Q_INVOKABLE QSet<QObject *> importMembers(QSet<QObject *> imps) const;
+    Q_TODO Q_INVOKABLE bool membersAreDistinguishable() const;
 
     // Operations [RedefinableElement]
-    Q_INVOKABLE bool isRedefinitionContextValid(QObject *redefined) const;
+    Q_TODO Q_INVOKABLE bool isRedefinitionContextValid(QObject *redefined) const;
 
     // Operations [BehavioralFeature]
-    Q_INVOKABLE bool isDistinguishableFrom(QObject *n, QObject *ns) const;
+    Q_TODO Q_INVOKABLE bool isDistinguishableFrom(QObject *n, QObject *ns) const;
 
     // Operations [ParameterableElement]
-    Q_INVOKABLE bool isCompatibleWith(QObject *p) const;
-    Q_INVOKABLE bool isTemplateParameter() const;
+    Q_TODO Q_INVOKABLE bool isCompatibleWith(QObject *p) const;
+    Q_TODO Q_INVOKABLE bool isTemplateParameter() const;
 
     // Operations [Operation]
-    Q_INVOKABLE bool isConsistentWith(QObject *redefinee) const;
-    Q_INVOKABLE QSet<QObject *> returnResult() const;
+    Q_TODO Q_INVOKABLE bool isConsistentWith(QObject *redefinee) const;
+    Q_TODO Q_INVOKABLE QSet<QObject *> returnResult() const;
 
 public Q_SLOTS:
 

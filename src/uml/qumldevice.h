@@ -53,6 +53,7 @@ class Q_UML_EXPORT QUmlDevice : public QUmlNode
 {
 public:
     explicit QUmlDevice(bool createQModelingObject = true);
+    virtual ~QUmlDevice();
 
     virtual QModelingElement *clone() const;
 

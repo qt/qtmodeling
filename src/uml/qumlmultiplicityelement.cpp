@@ -67,6 +67,14 @@ QUmlMultiplicityElement::QUmlMultiplicityElement() :
 }
 
 /*!
+    Destroys the QUmlMultiplicityElement.
+ */
+QUmlMultiplicityElement::~QUmlMultiplicityElement()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QUmlMultiplicityElement.
 */
 QModelingElement *QUmlMultiplicityElement::clone() const

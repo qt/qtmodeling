@@ -57,6 +57,7 @@ class Q_UML_EXPORT QUmlActivityPartition : public QUmlActivityGroup
 {
 public:
     explicit QUmlActivityPartition(bool createQModelingObject = true);
+    virtual ~QUmlActivityPartition();
 
     virtual QModelingElement *clone() const;
 

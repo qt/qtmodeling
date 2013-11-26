@@ -70,6 +70,14 @@ QUmlProfileApplication::QUmlProfileApplication(bool createQModelingObject) :
 }
 
 /*!
+    Destroys the QUmlProfileApplication.
+ */
+QUmlProfileApplication::~QUmlProfileApplication()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QUmlProfileApplication.
 */
 QModelingElement *QUmlProfileApplication::clone() const
@@ -77,10 +85,6 @@ QModelingElement *QUmlProfileApplication::clone() const
     QUmlProfileApplication *c = new QUmlProfileApplication;
     foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    if (appliedProfile())
-        c->setAppliedProfile(dynamic_cast<QUmlProfile *>(appliedProfile()->clone()));
-    if (applyingPackage())
-        c->setApplyingPackage(dynamic_cast<QUmlPackage *>(applyingPackage()->clone()));
     c->setStrict(isStrict());
     return c;
 }

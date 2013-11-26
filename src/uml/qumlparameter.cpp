@@ -84,6 +84,14 @@ QUmlParameter::QUmlParameter(bool createQModelingObject) :
 }
 
 /*!
+    Destroys the QUmlParameter.
+ */
+QUmlParameter::~QUmlParameter()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QUmlParameter.
 */
 QModelingElement *QUmlParameter::clone() const
@@ -97,28 +105,16 @@ QModelingElement *QUmlParameter::clone() const
         c->setLowerValue(dynamic_cast<QUmlValueSpecification *>(lowerValue()->clone()));
     if (upperValue())
         c->setUpperValue(dynamic_cast<QUmlValueSpecification *>(upperValue()->clone()));
-    foreach (QUmlDependency *element, clientDependencies())
-        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
         c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
     c->setVisibility(visibility());
-    if (type())
-        c->setType(dynamic_cast<QUmlType *>(type()->clone()));
-    if (owningTemplateParameter())
-        c->setOwningTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(owningTemplateParameter()->clone()));
-    if (templateParameter())
-        c->setTemplateParameter(dynamic_cast<QUmlConnectableElementTemplateParameter *>(templateParameter()->clone()));
     if (defaultValue())
         c->setDefaultValue(dynamic_cast<QUmlValueSpecification *>(defaultValue()->clone()));
     c->setDirection(direction());
     c->setEffect(effect());
     c->setException(isException());
     c->setStream(isStream());
-    if (operation())
-        c->setOperation(dynamic_cast<QUmlOperation *>(operation()->clone()));
-    foreach (QUmlParameterSet *element, parameterSets())
-        c->addParameterSet(dynamic_cast<QUmlParameterSet *>(element->clone()));
     return c;
 }
 
