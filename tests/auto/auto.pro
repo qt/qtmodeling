@@ -1,2 +1,7 @@
 TEMPLATE=subdirs
-SUBDIRS = qtmofcontainment qtumlcontainment qtumlprovidedrequiredinterfaces qtumlconnectortypeandcomponentparts
+SUBDIRS = \
+    qtmofcontainment \
+    qtumlcontainment \
+    qtumlprovidedrequiredinterfaces \
+    qtumlconnectortypeandcomponentparts \
+    qtumlguardedcollection

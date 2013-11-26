@@ -139,6 +139,14 @@ Q${namespace}${className}::Q${namespace}${className}([%- IF class.findvalue("@is
 [%- END %]
 }
 
+/*!
+    Destroys the Q${namespace}${className}.
+ */
+Q${namespace}${className}::~Q${namespace}${className}()
+{
+    QUmlElement::deleteQModelingObject();
+}
+
 [%- IF documentation != "" %]
 /*!
     Returns a deep-copied clone of the Q${namespace}${className}.

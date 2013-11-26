@@ -3,7 +3,7 @@
 ** Copyright (C) 2013 Sandro S. Andrade <sandroandrade@kde.org>
 ** Contact: http://www.qt-project.org/legal
 **
-** This file is part of the QtModeling module of the Qt Toolkit.
+** This file is part of the QtUml module of the Qt Toolkit.
 **
 ** $QT_BEGIN_LICENSE:LGPL$
 ** Commercial License Usage
@@ -38,44 +38,36 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#include "qmodelingelement.h"
+#include <QtTest/QtTest>
 
-QT_BEGIN_NAMESPACE
+#include <QtUml/QUmlComment>
 
-/*!
-    \class QModelingElement
-
-    \inmodule QtModeling
-
-    \brief The QModelingElement class acts as base class for all modeling elements.
-*/
-
-/*!
-    Destroys the QModelingElement.
-*/
-QModelingElement::~QModelingElement()
+class TestQtUmlGuardedCollection : public QObject
 {
+    Q_OBJECT
+
+private Q_SLOTS:
+    void qtumlguardedcollection();
+};
+
+void TestQtUmlGuardedCollection::qtumlguardedcollection()
+{
+    QUmlComment *c1 = new QUmlComment;
+    c1->asQModelingObject()->setObjectName("c1");
+    QUmlComment *c2 = new QUmlComment;
+    c2->asQModelingObject()->setObjectName("c2");
+
+    c1->addOwnedComment(c2);
+
+    QCOMPARE(c1->ownedComments().size(), 1);
+
+    delete c2;
+
+    QCOMPARE(c1->ownedComments().size(), 0);
+
+    delete c1;
 }
 
-/*!
-    \fn QModelingObject *QModelingElement::asQModelingObject() const
-
-    Return the QObject-based counterpart class for this QModelingElement.
-*/
-
-/*!
-    \fn QModelingElement *QModelingElement::clone() const
-
-    Returns a deep-copied clone of this QModelingElement.
-*/
-
-/*!
-    Creates a new QModelingElement.
-*/
-QModelingElement::QModelingElement()
-    : deletingFromQModelingObject(false), _qModelingObject(0)
-{
-}
-
-QT_END_NAMESPACE
+QTEST_MAIN(TestQtUmlGuardedCollection)
+#include "tst_qtumlguardedcollection.moc"
 

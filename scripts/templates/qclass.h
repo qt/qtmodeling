@@ -90,8 +90,9 @@ public QModelingElement
 public:
 [%- IF class.findvalue("@isAbstract") != "true" %]
     explicit Q${namespace}${className}(bool createQModelingObject = true);
-
 [%- END %]
+    virtual ~Q${namespace}${className}();
+
     [% IF class.findvalue("@isAbstract") == "true" %]Q_DECL_HIDDEN [% END %]virtual QModelingElement *clone() const;
 [% FOREACH attribute = class.findnodes("ownedAttribute") -%]
     [%- IF loop.first %]

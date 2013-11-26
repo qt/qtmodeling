@@ -84,7 +84,7 @@ void TestQtUmlProvidedRequiredInterfaces::qtumlprovidedrequiredinterfaces()
     QCOMPARE(port3->required().contains(qmodelingelementproperty_cast<QUmlInterface *>(rootElements.first()->asQModelingObject()->findChild<QObject *>("IAvgResponseTimeMonitor"))), true);
     QCOMPARE(port3->required().contains(qmodelingelementproperty_cast<QUmlInterface *>(rootElements.first()->asQModelingObject()->findChild<QObject *>("IBaseRequiredInterface"))), true);
 
-//    qDeleteAll(rootElements);
+    qDeleteAll(rootElements);
 }
 
 QTEST_MAIN(TestQtUmlProvidedRequiredInterfaces)

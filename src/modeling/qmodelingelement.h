@@ -66,6 +66,15 @@ public:
 protected:
     QModelingElement();
     QPointer<QModelingObject> _qModelingObject;
+
+    inline void deleteQModelingObject()
+    {
+        if (!deletingFromQModelingObject) {
+            if (_qModelingObject)
+                _qModelingObject->setProperty("deletingFromModelingObject", true);
+            delete _qModelingObject;
+        }
+    }
 };
 
 inline QModelingElement *qModelingElement(const QObject * const object)
