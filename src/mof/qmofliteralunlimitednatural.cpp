@@ -69,6 +69,14 @@ QMofLiteralUnlimitedNatural::QMofLiteralUnlimitedNatural(bool createQModelingObj
 }
 
 /*!
+    Destroys the QMofLiteralUnlimitedNatural.
+ */
+QMofLiteralUnlimitedNatural::~QMofLiteralUnlimitedNatural()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QMofLiteralUnlimitedNatural.
 */
 QModelingElement *QMofLiteralUnlimitedNatural::clone() const
@@ -78,8 +86,6 @@ QModelingElement *QMofLiteralUnlimitedNatural::clone() const
         c->addOwnedComment(dynamic_cast<QMofComment *>(element->clone()));
     c->setName(name());
     c->setVisibility(visibility());
-    if (type())
-        c->setType(dynamic_cast<QMofType *>(type()->clone()));
     c->setValue(value());
     return c;
 }

@@ -55,6 +55,7 @@ class Q_DUSE_EXPORT QDuseQualityMetric : public QModelingElement
 {
 public:
     explicit QDuseQualityMetric(bool createQModelingObject = true);
+    virtual ~QDuseQualityMetric();
 
     virtual QModelingElement *clone() const;
 

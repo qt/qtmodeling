@@ -53,6 +53,7 @@ class Q_MOF_EXPORT QMofLiteralReal : public QMofLiteralSpecification
 {
 public:
     explicit QMofLiteralReal(bool createQModelingObject = true);
+    virtual ~QMofLiteralReal();
 
     virtual QModelingElement *clone() const;
 

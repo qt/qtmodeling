@@ -56,6 +56,7 @@ class Q_MOF_EXPORT QMofLink : public QMofObject
 {
 public:
     explicit QMofLink(bool createQModelingObject = true);
+    virtual ~QMofLink();
 
     virtual QModelingElement *clone() const;
 

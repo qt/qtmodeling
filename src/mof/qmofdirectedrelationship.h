@@ -54,6 +54,8 @@ class QMofElement;
 class Q_MOF_EXPORT QMofDirectedRelationship : public QMofRelationship
 {
 public:
+    virtual ~QMofDirectedRelationship();
+
     Q_DECL_HIDDEN virtual QModelingElement *clone() const;
 
     // Owned attributes

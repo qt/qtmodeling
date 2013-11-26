@@ -54,6 +54,8 @@ class QMofClassifier;
 class Q_MOF_EXPORT QMofFeature : public QMofRedefinableElement
 {
 public:
+    virtual ~QMofFeature();
+
     Q_DECL_HIDDEN virtual QModelingElement *clone() const;
 
     // Owned attributes

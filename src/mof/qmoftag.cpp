@@ -51,15 +51,19 @@ QMofTag::QMofTag(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QMofTagObject(this));
 }
 
+/*!
+    Destroys the QMofTag.
+ */
+QMofTag::~QMofTag()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
 QModelingElement *QMofTag::clone() const
 {
     QMofTag *c = new QMofTag;
     c->setName(name());
     c->setValue(value());
-    foreach (QMofElement *element, elements())
-        c->addElement(dynamic_cast<QMofElement *>(element->clone()));
-    if (tagOwner())
-        c->setTagOwner(dynamic_cast<QMofElement *>(tagOwner()->clone()));
     return c;
 }
 

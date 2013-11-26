@@ -55,6 +55,7 @@ class Q_MOF_EXPORT QMofEnumeration : public QMofDataType
 {
 public:
     explicit QMofEnumeration(bool createQModelingObject = true);
+    virtual ~QMofEnumeration();
 
     virtual QModelingElement *clone() const;
 

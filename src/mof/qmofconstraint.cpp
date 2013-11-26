@@ -71,6 +71,14 @@ QMofConstraint::QMofConstraint(bool createQModelingObject) :
 }
 
 /*!
+    Destroys the QMofConstraint.
+ */
+QMofConstraint::~QMofConstraint()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QMofConstraint.
 */
 QModelingElement *QMofConstraint::clone() const
@@ -80,10 +88,6 @@ QModelingElement *QMofConstraint::clone() const
         c->addOwnedComment(dynamic_cast<QMofComment *>(element->clone()));
     c->setName(name());
     c->setVisibility(visibility());
-    foreach (QMofElement *element, constrainedElements())
-        c->addConstrainedElement(dynamic_cast<QMofElement *>(element->clone()));
-    if (context())
-        c->setContext(dynamic_cast<QMofNamespace *>(context()->clone()));
     if (specification())
         c->setSpecification(dynamic_cast<QMofValueSpecification *>(specification()->clone()));
     return c;

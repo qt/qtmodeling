@@ -53,6 +53,7 @@ class Q_MOF_EXPORT QMofComment : public QMofElement
 {
 public:
     explicit QMofComment(bool createQModelingObject = true);
+    virtual ~QMofComment();
 
     virtual QModelingElement *clone() const;
 

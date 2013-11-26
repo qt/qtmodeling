@@ -58,6 +58,7 @@ class Q_MOF_EXPORT QMofElementImport : public QMofDirectedRelationship
 {
 public:
     explicit QMofElementImport(bool createQModelingObject = true);
+    virtual ~QMofElementImport();
 
     virtual QModelingElement *clone() const;
 

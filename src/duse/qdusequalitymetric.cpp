@@ -65,6 +65,14 @@ QDuseQualityMetric::QDuseQualityMetric(bool createQModelingObject) :
 }
 
 /*!
+    Destroys the QDuseQualityMetric.
+ */
+QDuseQualityMetric::~QDuseQualityMetric()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QDuseQualityMetric.
 */
 QModelingElement *QDuseQualityMetric::clone() const

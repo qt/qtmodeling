@@ -54,6 +54,14 @@ QMofObject::QMofObject(bool createQModelingObject)
         _qModelingObject = qobject_cast<QModelingObject *>(new QMofObjectObject(this));
 }
 
+/*!
+    Destroys the QMofObject.
+ */
+QMofObject::~QMofObject()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
 QModelingElement *QMofObject::clone() const
 {
     QMofObject *c = new QMofObject;

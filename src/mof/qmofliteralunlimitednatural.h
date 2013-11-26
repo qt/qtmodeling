@@ -53,6 +53,7 @@ class Q_MOF_EXPORT QMofLiteralUnlimitedNatural : public QMofLiteralSpecification
 {
 public:
     explicit QMofLiteralUnlimitedNatural(bool createQModelingObject = true);
+    virtual ~QMofLiteralUnlimitedNatural();
 
     virtual QModelingElement *clone() const;
 

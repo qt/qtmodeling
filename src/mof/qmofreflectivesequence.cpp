@@ -53,6 +53,14 @@ QMofReflectiveSequence::QMofReflectiveSequence(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QMofReflectiveSequenceObject(this));
 }
 
+/*!
+    Destroys the QMofReflectiveSequence.
+ */
+QMofReflectiveSequence::~QMofReflectiveSequence()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
 QModelingElement *QMofReflectiveSequence::clone() const
 {
     QMofReflectiveSequence *c = new QMofReflectiveSequence;

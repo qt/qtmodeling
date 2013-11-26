@@ -55,6 +55,7 @@ class Q_MOF_EXPORT QMofGeneralization : public QMofDirectedRelationship
 {
 public:
     explicit QMofGeneralization(bool createQModelingObject = true);
+    virtual ~QMofGeneralization();
 
     virtual QModelingElement *clone() const;
 

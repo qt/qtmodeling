@@ -69,6 +69,14 @@ QMofType::QMofType() :
 }
 
 /*!
+    Destroys the QMofType.
+ */
+QMofType::~QMofType()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QMofType.
 */
 QModelingElement *QMofType::clone() const
@@ -78,8 +86,6 @@ QModelingElement *QMofType::clone() const
         c->addOwnedComment(dynamic_cast<QMofComment *>(element->clone()));
     c->setName(name());
     c->setVisibility(visibility());
-    if (package())
-        c->setPackage(dynamic_cast<QMofPackage *>(package()->clone()));
     return c;
 }
 

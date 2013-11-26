@@ -55,6 +55,7 @@ class Q_SADUSEPROFILE_EXPORT QSADuseProfileProcessComponent : public QModelingEl
 {
 public:
     explicit QSADuseProfileProcessComponent(bool createQModelingObject = true);
+    virtual ~QSADuseProfileProcessComponent();
 
     virtual QModelingElement *clone() const;
 

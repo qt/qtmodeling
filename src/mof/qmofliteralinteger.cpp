@@ -70,6 +70,14 @@ QMofLiteralInteger::QMofLiteralInteger(bool createQModelingObject) :
 }
 
 /*!
+    Destroys the QMofLiteralInteger.
+ */
+QMofLiteralInteger::~QMofLiteralInteger()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QMofLiteralInteger.
 */
 QModelingElement *QMofLiteralInteger::clone() const
@@ -79,8 +87,6 @@ QModelingElement *QMofLiteralInteger::clone() const
         c->addOwnedComment(dynamic_cast<QMofComment *>(element->clone()));
     c->setName(name());
     c->setVisibility(visibility());
-    if (type())
-        c->setType(dynamic_cast<QMofType *>(type()->clone()));
     c->setValue(value());
     return c;
 }

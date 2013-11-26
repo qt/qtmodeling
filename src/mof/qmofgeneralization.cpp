@@ -70,6 +70,14 @@ QMofGeneralization::QMofGeneralization(bool createQModelingObject) :
 }
 
 /*!
+    Destroys the QMofGeneralization.
+ */
+QMofGeneralization::~QMofGeneralization()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QMofGeneralization.
 */
 QModelingElement *QMofGeneralization::clone() const
@@ -77,11 +85,7 @@ QModelingElement *QMofGeneralization::clone() const
     QMofGeneralization *c = new QMofGeneralization;
     foreach (QMofComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QMofComment *>(element->clone()));
-    if (general())
-        c->setGeneral(dynamic_cast<QMofClassifier *>(general()->clone()));
     c->setSubstitutable(isSubstitutable());
-    if (specific())
-        c->setSpecific(dynamic_cast<QMofClassifier *>(specific()->clone()));
     return c;
 }
 

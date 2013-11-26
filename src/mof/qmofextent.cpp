@@ -57,6 +57,14 @@ QMofExtent::QMofExtent(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QMofExtentObject(this));
 }
 
+/*!
+    Destroys the QMofExtent.
+ */
+QMofExtent::~QMofExtent()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
 QModelingElement *QMofExtent::clone() const
 {
     QMofExtent *c = new QMofExtent;

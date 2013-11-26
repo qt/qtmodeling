@@ -67,6 +67,14 @@ QMofLiteralSpecification::QMofLiteralSpecification()
 }
 
 /*!
+    Destroys the QMofLiteralSpecification.
+ */
+QMofLiteralSpecification::~QMofLiteralSpecification()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QMofLiteralSpecification.
 */
 QModelingElement *QMofLiteralSpecification::clone() const
@@ -76,8 +84,6 @@ QModelingElement *QMofLiteralSpecification::clone() const
         c->addOwnedComment(dynamic_cast<QMofComment *>(element->clone()));
     c->setName(name());
     c->setVisibility(visibility());
-    if (type())
-        c->setType(dynamic_cast<QMofType *>(type()->clone()));
     return c;
 }
 

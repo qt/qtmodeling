@@ -54,6 +54,8 @@ class QMofValueSpecification;
 class Q_MOF_EXPORT QMofMultiplicityElement : public virtual QMofElement
 {
 public:
+    virtual ~QMofMultiplicityElement();
+
     Q_DECL_HIDDEN virtual QModelingElement *clone() const;
 
     // Owned attributes

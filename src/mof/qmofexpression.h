@@ -53,6 +53,7 @@ class Q_MOF_EXPORT QMofExpression : public QMofValueSpecification
 {
 public:
     explicit QMofExpression(bool createQModelingObject = true);
+    virtual ~QMofExpression();
 
     virtual QModelingElement *clone() const;
 

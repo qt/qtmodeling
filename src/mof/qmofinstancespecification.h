@@ -57,6 +57,7 @@ class Q_MOF_EXPORT QMofInstanceSpecification : public QMofPackageableElement
 {
 public:
     explicit QMofInstanceSpecification(bool createQModelingObject = true);
+    virtual ~QMofInstanceSpecification();
 
     virtual QModelingElement *clone() const;
 

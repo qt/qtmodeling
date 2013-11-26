@@ -73,6 +73,14 @@ QMofBehavioralFeature::QMofBehavioralFeature()
 }
 
 /*!
+    Destroys the QMofBehavioralFeature.
+ */
+QMofBehavioralFeature::~QMofBehavioralFeature()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QMofBehavioralFeature.
 */
 QModelingElement *QMofBehavioralFeature::clone() const
@@ -92,8 +100,6 @@ QModelingElement *QMofBehavioralFeature::clone() const
         c->addPackageImport(dynamic_cast<QMofPackageImport *>(element->clone()));
     foreach (QMofParameter *element, ownedParameters())
         c->addOwnedParameter(dynamic_cast<QMofParameter *>(element->clone()));
-    foreach (QMofType *element, raisedExceptions())
-        c->addRaisedException(dynamic_cast<QMofType *>(element->clone()));
     return c;
 }
 

@@ -59,6 +59,7 @@ class Q_MOF_EXPORT QMofParameter : public QMofTypedElement, public QMofMultiplic
 {
 public:
     explicit QMofParameter(bool createQModelingObject = true);
+    virtual ~QMofParameter();
 
     virtual QModelingElement *clone() const;
 

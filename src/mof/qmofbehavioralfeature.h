@@ -57,6 +57,8 @@ class QMofType;
 class Q_MOF_EXPORT QMofBehavioralFeature : public QMofFeature, public QMofNamespace
 {
 public:
+    virtual ~QMofBehavioralFeature();
+
     Q_DECL_HIDDEN virtual QModelingElement *clone() const;
 
     // Owned attributes

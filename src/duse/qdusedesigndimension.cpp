@@ -67,6 +67,14 @@ QDuseDesignDimension::QDuseDesignDimension(bool createQModelingObject) :
 }
 
 /*!
+    Destroys the QDuseDesignDimension.
+ */
+QDuseDesignDimension::~QDuseDesignDimension()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QDuseDesignDimension.
 */
 QModelingElement *QDuseDesignDimension::clone() const
@@ -75,8 +83,6 @@ QModelingElement *QDuseDesignDimension::clone() const
     c->setName(name());
     if (instanceSelectionRule())
         c->setInstanceSelectionRule(dynamic_cast<QUmlOpaqueExpression *>(instanceSelectionRule()->clone()));
-    foreach (QDuseDesignDimension *element, requiredPreviousEvaluations())
-        c->addRequiredPreviousEvaluation(dynamic_cast<QDuseDesignDimension *>(element->clone()));
     foreach (QDuseVariationPoint *element, variationPoints())
         c->addVariationPoint(dynamic_cast<QDuseVariationPoint *>(element->clone()));
     foreach (QDuseDesignDimensionInstance *element, designDimensionInstances())

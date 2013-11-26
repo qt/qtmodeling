@@ -67,6 +67,14 @@ QDuseVariationPoint::QDuseVariationPoint(bool createQModelingObject) :
 }
 
 /*!
+    Destroys the QDuseVariationPoint.
+ */
+QDuseVariationPoint::~QDuseVariationPoint()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QDuseVariationPoint.
 */
 QModelingElement *QDuseVariationPoint::clone() const
@@ -78,8 +86,6 @@ QModelingElement *QDuseVariationPoint::clone() const
         c->setPreChangeValidationRule(dynamic_cast<QUmlOpaqueExpression *>(preChangeValidationRule()->clone()));
     foreach (QDuseModelChange *element, modelChanges())
         c->addModelChange(dynamic_cast<QDuseModelChange *>(element->clone()));
-    foreach (QUmlElement *element, addedElements())
-        c->addAddedElement(dynamic_cast<QUmlElement *>(element->clone()));
     return c;
 }
 

@@ -52,6 +52,8 @@ QT_MODULE(QtMof)
 class Q_MOF_EXPORT QMofRelationship : public virtual QMofElement
 {
 public:
+    virtual ~QMofRelationship();
+
     Q_DECL_HIDDEN virtual QModelingElement *clone() const;
 
     // Owned attributes

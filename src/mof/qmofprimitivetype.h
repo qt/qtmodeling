@@ -53,6 +53,7 @@ class Q_MOF_EXPORT QMofPrimitiveType : public QMofDataType
 {
 public:
     explicit QMofPrimitiveType(bool createQModelingObject = true);
+    virtual ~QMofPrimitiveType();
 
     virtual QModelingElement *clone() const;
 

@@ -80,6 +80,14 @@ QMofAssociation::QMofAssociation(bool createQModelingObject) :
 }
 
 /*!
+    Destroys the QMofAssociation.
+ */
+QMofAssociation::~QMofAssociation()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QMofAssociation.
 */
 QModelingElement *QMofAssociation::clone() const
@@ -89,8 +97,6 @@ QModelingElement *QMofAssociation::clone() const
         c->addOwnedComment(dynamic_cast<QMofComment *>(element->clone()));
     c->setName(name());
     c->setVisibility(visibility());
-    if (package())
-        c->setPackage(dynamic_cast<QMofPackage *>(package()->clone()));
     c->setLeaf(isLeaf());
     foreach (QMofElementImport *element, elementImports())
         c->addElementImport(dynamic_cast<QMofElementImport *>(element->clone()));
@@ -102,13 +108,7 @@ QModelingElement *QMofAssociation::clone() const
         c->addGeneralization(dynamic_cast<QMofGeneralization *>(element->clone()));
     c->setAbstract(isAbstract());
     c->setFinalSpecialization(isFinalSpecialization());
-    foreach (QMofClassifier *element, redefinedClassifiers())
-        c->addRedefinedClassifier(dynamic_cast<QMofClassifier *>(element->clone()));
     c->setDerived(isDerived());
-    foreach (QMofProperty *element, memberEnds())
-        c->addMemberEnd(dynamic_cast<QMofProperty *>(element->clone()));
-    foreach (QMofProperty *element, navigableOwnedEnds())
-        c->addNavigableOwnedEnd(dynamic_cast<QMofProperty *>(element->clone()));
     foreach (QMofProperty *element, ownedEnds())
         c->addOwnedEnd(dynamic_cast<QMofProperty *>(element->clone()));
     return c;

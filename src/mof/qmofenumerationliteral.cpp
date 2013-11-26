@@ -74,6 +74,14 @@ QMofEnumerationLiteral::QMofEnumerationLiteral(bool createQModelingObject) :
 }
 
 /*!
+    Destroys the QMofEnumerationLiteral.
+ */
+QMofEnumerationLiteral::~QMofEnumerationLiteral()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QMofEnumerationLiteral.
 */
 QModelingElement *QMofEnumerationLiteral::clone() const
@@ -87,8 +95,6 @@ QModelingElement *QMofEnumerationLiteral::clone() const
         c->addSlot(dynamic_cast<QMofSlot *>(element->clone()));
     if (specification())
         c->setSpecification(dynamic_cast<QMofValueSpecification *>(specification()->clone()));
-    if (enumeration())
-        c->setEnumeration(dynamic_cast<QMofEnumeration *>(enumeration()->clone()));
     return c;
 }
 

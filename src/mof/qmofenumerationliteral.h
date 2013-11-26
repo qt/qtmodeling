@@ -55,6 +55,7 @@ class Q_MOF_EXPORT QMofEnumerationLiteral : public QMofInstanceSpecification
 {
 public:
     explicit QMofEnumerationLiteral(bool createQModelingObject = true);
+    virtual ~QMofEnumerationLiteral();
 
     virtual QModelingElement *clone() const;
 

@@ -53,12 +53,18 @@ QMofArgument::QMofArgument(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QMofArgumentObject(this));
 }
 
+/*!
+    Destroys the QMofArgument.
+ */
+QMofArgument::~QMofArgument()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
 QModelingElement *QMofArgument::clone() const
 {
     QMofArgument *c = new QMofArgument;
     c->setName(name());
-    if (value())
-        c->setValue(dynamic_cast<QMofObject *>(value()->clone()));
     return c;
 }
 

@@ -51,6 +51,14 @@ QMofReflectiveCollection::QMofReflectiveCollection(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QMofReflectiveCollectionObject(this));
 }
 
+/*!
+    Destroys the QMofReflectiveCollection.
+ */
+QMofReflectiveCollection::~QMofReflectiveCollection()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
 QModelingElement *QMofReflectiveCollection::clone() const
 {
     QMofReflectiveCollection *c = new QMofReflectiveCollection;

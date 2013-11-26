@@ -57,15 +57,17 @@ QMofLink::QMofLink(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QMofLinkObject(this));
 }
 
+/*!
+    Destroys the QMofLink.
+ */
+QMofLink::~QMofLink()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
 QModelingElement *QMofLink::clone() const
 {
     QMofLink *c = new QMofLink;
-    if (firstElement())
-        c->setFirstElement(dynamic_cast<QMofElement *>(firstElement()->clone()));
-    if (secondElement())
-        c->setSecondElement(dynamic_cast<QMofElement *>(secondElement()->clone()));
-    if (association())
-        c->setAssociation(dynamic_cast<QMofAssociation *>(association()->clone()));
     return c;
 }
 

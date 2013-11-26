@@ -57,6 +57,7 @@ class Q_DUSE_EXPORT QDuseVariationPoint : public QModelingElement
 {
 public:
     explicit QDuseVariationPoint(bool createQModelingObject = true);
+    virtual ~QDuseVariationPoint();
 
     virtual QModelingElement *clone() const;
 

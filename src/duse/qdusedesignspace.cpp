@@ -65,6 +65,14 @@ QDuseDesignSpace::QDuseDesignSpace(bool createQModelingObject)
 }
 
 /*!
+    Destroys the QDuseDesignSpace.
+ */
+QDuseDesignSpace::~QDuseDesignSpace()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QDuseDesignSpace.
 */
 QModelingElement *QDuseDesignSpace::clone() const

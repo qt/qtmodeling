@@ -65,13 +65,19 @@ QDuseDesignDimensionInstance::QDuseDesignDimensionInstance(bool createQModelingO
 }
 
 /*!
+    Destroys the QDuseDesignDimensionInstance.
+ */
+QDuseDesignDimensionInstance::~QDuseDesignDimensionInstance()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QDuseDesignDimensionInstance.
 */
 QModelingElement *QDuseDesignDimensionInstance::clone() const
 {
     QDuseDesignDimensionInstance *c = new QDuseDesignDimensionInstance;
-    if (targetInstance())
-        c->setTargetInstance(dynamic_cast<QUmlElement *>(targetInstance()->clone()));
     return c;
 }
 

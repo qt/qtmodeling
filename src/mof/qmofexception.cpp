@@ -54,13 +54,17 @@ QMofException::QMofException(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QMofExceptionObject(this));
 }
 
+/*!
+    Destroys the QMofException.
+ */
+QMofException::~QMofException()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
 QModelingElement *QMofException::clone() const
 {
     QMofException *c = new QMofException;
-    if (objectInError())
-        c->setObjectInError(dynamic_cast<QMofElement *>(objectInError()->clone()));
-    if (elementInError())
-        c->setElementInError(dynamic_cast<QMofElement *>(elementInError()->clone()));
     c->setDescription(description());
     return c;
 }

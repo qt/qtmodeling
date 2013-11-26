@@ -53,6 +53,14 @@ QMofURIExtent::QMofURIExtent(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QMofURIExtentObject(this));
 }
 
+/*!
+    Destroys the QMofURIExtent.
+ */
+QMofURIExtent::~QMofURIExtent()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
 QModelingElement *QMofURIExtent::clone() const
 {
     QMofURIExtent *c = new QMofURIExtent;

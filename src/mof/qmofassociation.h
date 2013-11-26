@@ -57,6 +57,7 @@ class Q_MOF_EXPORT QMofAssociation : public QMofRelationship, public virtual QMo
 {
 public:
     explicit QMofAssociation(bool createQModelingObject = true);
+    virtual ~QMofAssociation();
 
     virtual QModelingElement *clone() const;
 

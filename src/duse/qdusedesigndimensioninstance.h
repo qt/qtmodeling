@@ -55,6 +55,7 @@ class Q_DUSE_EXPORT QDuseDesignDimensionInstance : public QModelingElement
 {
 public:
     explicit QDuseDesignDimensionInstance(bool createQModelingObject = true);
+    virtual ~QDuseDesignDimensionInstance();
 
     virtual QModelingElement *clone() const;
 

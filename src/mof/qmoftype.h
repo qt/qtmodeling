@@ -55,6 +55,8 @@ class QMofPackage;
 class Q_MOF_EXPORT QMofType : public QMofPackageableElement
 {
 public:
+    virtual ~QMofType();
+
     Q_DECL_HIDDEN virtual QModelingElement *clone() const;
 
     // Owned attributes

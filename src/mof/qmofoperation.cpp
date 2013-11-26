@@ -81,6 +81,14 @@ QMofOperation::QMofOperation(bool createQModelingObject) :
 }
 
 /*!
+    Destroys the QMofOperation.
+ */
+QMofOperation::~QMofOperation()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QMofOperation.
 */
 QModelingElement *QMofOperation::clone() const
@@ -100,10 +108,6 @@ QModelingElement *QMofOperation::clone() const
         c->addPackageImport(dynamic_cast<QMofPackageImport *>(element->clone()));
     if (bodyCondition())
         c->setBodyCondition(dynamic_cast<QMofConstraint *>(bodyCondition()->clone()));
-    if (class_())
-        c->setClass(dynamic_cast<QMofClass *>(class_()->clone()));
-    if (datatype())
-        c->setDatatype(dynamic_cast<QMofDataType *>(datatype()->clone()));
     c->setQuery(isQuery());
     foreach (QMofParameter *element, ownedParameters())
         c->addOwnedParameter(dynamic_cast<QMofParameter *>(element->clone()));
@@ -111,10 +115,6 @@ QModelingElement *QMofOperation::clone() const
         c->addPostcondition(dynamic_cast<QMofConstraint *>(element->clone()));
     foreach (QMofConstraint *element, preconditions())
         c->addPrecondition(dynamic_cast<QMofConstraint *>(element->clone()));
-    foreach (QMofType *element, raisedExceptions())
-        c->addRaisedException(dynamic_cast<QMofType *>(element->clone()));
-    foreach (QMofOperation *element, redefinedOperations())
-        c->addRedefinedOperation(dynamic_cast<QMofOperation *>(element->clone()));
     return c;
 }
 

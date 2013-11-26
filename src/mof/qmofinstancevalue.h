@@ -55,6 +55,7 @@ class Q_MOF_EXPORT QMofInstanceValue : public QMofValueSpecification
 {
 public:
     explicit QMofInstanceValue(bool createQModelingObject = true);
+    virtual ~QMofInstanceValue();
 
     virtual QModelingElement *clone() const;
 

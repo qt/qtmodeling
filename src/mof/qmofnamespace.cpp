@@ -70,6 +70,14 @@ QMofNamespace::QMofNamespace()
 }
 
 /*!
+    Destroys the QMofNamespace.
+ */
+QMofNamespace::~QMofNamespace()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QMofNamespace.
 */
 QModelingElement *QMofNamespace::clone() const

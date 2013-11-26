@@ -53,6 +53,7 @@ class Q_MOF_EXPORT QMofTag : public QMofElement
 {
 public:
     explicit QMofTag(bool createQModelingObject = true);
+    virtual ~QMofTag();
 
     virtual QModelingElement *clone() const;
 

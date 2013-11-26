@@ -67,6 +67,14 @@ QMofRedefinableElement::QMofRedefinableElement() :
 }
 
 /*!
+    Destroys the QMofRedefinableElement.
+ */
+QMofRedefinableElement::~QMofRedefinableElement()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QMofRedefinableElement.
 */
 QModelingElement *QMofRedefinableElement::clone() const

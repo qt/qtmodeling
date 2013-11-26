@@ -38,41 +38,36 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef QMOFPACKAGEMERGE_H
-#define QMOFPACKAGEMERGE_H
+#include <QtTest/QtTest>
 
-#include <QtMof/QtMofGlobal>
+#include <QtMof/QMofComment>
 
-#include <QtMof/QMofDirectedRelationship>
-
-QT_BEGIN_NAMESPACE
-
-QT_MODULE(QtMof)
-
-class QMofPackage;
-
-class Q_MOF_EXPORT QMofPackageMerge : public QMofDirectedRelationship
+class TestQtMofGuardedCollection : public QObject
 {
-public:
-    explicit QMofPackageMerge(bool createQModelingObject = true);
-    virtual ~QMofPackageMerge();
+    Q_OBJECT
 
-    virtual QModelingElement *clone() const;
-
-    // Owned attributes
-    QMofPackage *mergedPackage() const;
-    void setMergedPackage(QMofPackage *mergedPackage);
-    QMofPackage *receivingPackage() const;
-    void setReceivingPackage(QMofPackage *receivingPackage);
-
-protected:
-    QMofPackage *_mergedPackage;
-    QMofPackage *_receivingPackage;
+private Q_SLOTS:
+    void qtmofguardedcollection();
 };
 
-QT_END_NAMESPACE
+void TestQtMofGuardedCollection::qtmofguardedcollection()
+{
+    QMofComment *c1 = new QMofComment;
+    c1->asQModelingObject()->setObjectName("c1");
+    QMofComment *c2 = new QMofComment;
+    c2->asQModelingObject()->setObjectName("c2");
 
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE(QMofPackageMerge) *)
+    c1->addOwnedComment(c2);
 
-#endif // QMOFPACKAGEMERGE_H
+    QCOMPARE(c1->ownedComments().size(), 1);
+
+    delete c2;
+
+    QCOMPARE(c1->ownedComments().size(), 0);
+
+    delete c1;
+}
+
+QTEST_MAIN(TestQtMofGuardedCollection)
+#include "tst_qtmofguardedcollection.moc"
 

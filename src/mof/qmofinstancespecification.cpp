@@ -72,6 +72,14 @@ QMofInstanceSpecification::QMofInstanceSpecification(bool createQModelingObject)
 }
 
 /*!
+    Destroys the QMofInstanceSpecification.
+ */
+QMofInstanceSpecification::~QMofInstanceSpecification()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QMofInstanceSpecification.
 */
 QModelingElement *QMofInstanceSpecification::clone() const
@@ -81,8 +89,6 @@ QModelingElement *QMofInstanceSpecification::clone() const
         c->addOwnedComment(dynamic_cast<QMofComment *>(element->clone()));
     c->setName(name());
     c->setVisibility(visibility());
-    foreach (QMofClassifier *element, classifiers())
-        c->addClassifier(dynamic_cast<QMofClassifier *>(element->clone()));
     foreach (QMofSlot *element, slots_())
         c->addSlot(dynamic_cast<QMofSlot *>(element->clone()));
     if (specification())

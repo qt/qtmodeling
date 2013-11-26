@@ -57,6 +57,8 @@ class QMofPackageImport;
 class Q_MOF_EXPORT QMofNamespace : public virtual QMofNamedElement
 {
 public:
+    virtual ~QMofNamespace();
+
     Q_DECL_HIDDEN virtual QModelingElement *clone() const;
 
     // Owned attributes

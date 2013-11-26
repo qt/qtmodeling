@@ -69,6 +69,14 @@ QMofLiteralString::QMofLiteralString(bool createQModelingObject)
 }
 
 /*!
+    Destroys the QMofLiteralString.
+ */
+QMofLiteralString::~QMofLiteralString()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QMofLiteralString.
 */
 QModelingElement *QMofLiteralString::clone() const
@@ -78,8 +86,6 @@ QModelingElement *QMofLiteralString::clone() const
         c->addOwnedComment(dynamic_cast<QMofComment *>(element->clone()));
     c->setName(name());
     c->setVisibility(visibility());
-    if (type())
-        c->setType(dynamic_cast<QMofType *>(type()->clone()));
     c->setValue(value());
     return c;
 }

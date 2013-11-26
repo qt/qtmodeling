@@ -57,6 +57,7 @@ class Q_MOF_EXPORT QMofConstraint : public QMofPackageableElement
 {
 public:
     explicit QMofConstraint(bool createQModelingObject = true);
+    virtual ~QMofConstraint();
 
     virtual QModelingElement *clone() const;
 

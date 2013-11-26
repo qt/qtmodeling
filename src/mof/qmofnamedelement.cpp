@@ -66,6 +66,14 @@ QMofNamedElement::QMofNamedElement() :
 }
 
 /*!
+    Destroys the QMofNamedElement.
+ */
+QMofNamedElement::~QMofNamedElement()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QMofNamedElement.
 */
 QModelingElement *QMofNamedElement::clone() const

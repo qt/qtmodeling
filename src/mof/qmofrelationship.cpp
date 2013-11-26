@@ -63,6 +63,14 @@ QMofRelationship::QMofRelationship()
 }
 
 /*!
+    Destroys the QMofRelationship.
+ */
+QMofRelationship::~QMofRelationship()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QMofRelationship.
 */
 QModelingElement *QMofRelationship::clone() const

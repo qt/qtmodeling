@@ -58,6 +58,7 @@ class Q_MOF_EXPORT QMofPackage : public QMofNamespace, public QMofPackageableEle
 {
 public:
     explicit QMofPackage(bool createQModelingObject = true);
+    virtual ~QMofPackage();
 
     virtual QModelingElement *clone() const;
 

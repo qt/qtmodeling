@@ -4,4 +4,5 @@ SUBDIRS = \
     qtumlcontainment \
     qtumlprovidedrequiredinterfaces \
     qtumlconnectortypeandcomponentparts \
-    qtumlguardedcollection
+    qtumlguardedcollection \
+    qtmofguardedcollection

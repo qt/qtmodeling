@@ -54,6 +54,8 @@ QT_MODULE(QtMof)
 class Q_MOF_EXPORT QMofStructuralFeature : public QMofFeature, public virtual QMofTypedElement, public QMofMultiplicityElement
 {
 public:
+    virtual ~QMofStructuralFeature();
+
     Q_DECL_HIDDEN virtual QModelingElement *clone() const;
 
     // Owned attributes

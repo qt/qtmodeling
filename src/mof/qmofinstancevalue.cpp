@@ -71,6 +71,14 @@ QMofInstanceValue::QMofInstanceValue(bool createQModelingObject) :
 }
 
 /*!
+    Destroys the QMofInstanceValue.
+ */
+QMofInstanceValue::~QMofInstanceValue()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QMofInstanceValue.
 */
 QModelingElement *QMofInstanceValue::clone() const
@@ -80,10 +88,6 @@ QModelingElement *QMofInstanceValue::clone() const
         c->addOwnedComment(dynamic_cast<QMofComment *>(element->clone()));
     c->setName(name());
     c->setVisibility(visibility());
-    if (type())
-        c->setType(dynamic_cast<QMofType *>(type()->clone()));
-    if (instance())
-        c->setInstance(dynamic_cast<QMofInstanceSpecification *>(instance()->clone()));
     return c;
 }
 

@@ -69,6 +69,14 @@ QMofExpression::QMofExpression(bool createQModelingObject)
 }
 
 /*!
+    Destroys the QMofExpression.
+ */
+QMofExpression::~QMofExpression()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QMofExpression.
 */
 QModelingElement *QMofExpression::clone() const
@@ -78,8 +86,6 @@ QModelingElement *QMofExpression::clone() const
         c->addOwnedComment(dynamic_cast<QMofComment *>(element->clone()));
     c->setName(name());
     c->setVisibility(visibility());
-    if (type())
-        c->setType(dynamic_cast<QMofType *>(type()->clone()));
     foreach (QMofValueSpecification *element, operands())
         c->addOperand(dynamic_cast<QMofValueSpecification *>(element->clone()));
     c->setSymbol(symbol());

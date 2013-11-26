@@ -66,6 +66,14 @@ QMofPackageableElement::QMofPackageableElement() :
 }
 
 /*!
+    Destroys the QMofPackageableElement.
+ */
+QMofPackageableElement::~QMofPackageableElement()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QMofPackageableElement.
 */
 QModelingElement *QMofPackageableElement::clone() const

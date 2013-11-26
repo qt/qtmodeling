@@ -55,6 +55,7 @@ class Q_MOF_EXPORT QMofException : public QModelingElement
 {
 public:
     explicit QMofException(bool createQModelingObject = true);
+    virtual ~QMofException();
 
     virtual QModelingElement *clone() const;
 

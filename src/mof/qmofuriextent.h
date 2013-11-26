@@ -55,6 +55,7 @@ class Q_MOF_EXPORT QMofURIExtent : public QMofExtent
 {
 public:
     explicit QMofURIExtent(bool createQModelingObject = true);
+    virtual ~QMofURIExtent();
 
     virtual QModelingElement *clone() const;
 

@@ -62,6 +62,7 @@ class Q_MOF_EXPORT QMofProperty : public QMofStructuralFeature
 {
 public:
     explicit QMofProperty(bool createQModelingObject = true);
+    virtual ~QMofProperty();
 
     virtual QModelingElement *clone() const;
 

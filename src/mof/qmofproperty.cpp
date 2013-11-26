@@ -85,6 +85,14 @@ QMofProperty::QMofProperty(bool createQModelingObject) :
 }
 
 /*!
+    Destroys the QMofProperty.
+ */
+QMofProperty::~QMofProperty()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QMofProperty.
 */
 QModelingElement *QMofProperty::clone() const
@@ -96,8 +104,6 @@ QModelingElement *QMofProperty::clone() const
     c->setVisibility(visibility());
     c->setLeaf(isLeaf());
     c->setStatic(isStatic());
-    if (type())
-        c->setType(dynamic_cast<QMofType *>(type()->clone()));
     c->setOrdered(isOrdered());
     c->setUnique(isUnique());
     if (lowerValue())
@@ -105,24 +111,12 @@ QModelingElement *QMofProperty::clone() const
     if (upperValue())
         c->setUpperValue(dynamic_cast<QMofValueSpecification *>(upperValue()->clone()));
     c->setAggregation(aggregation());
-    if (association())
-        c->setAssociation(dynamic_cast<QMofAssociation *>(association()->clone()));
-    if (class_())
-        c->setClass(dynamic_cast<QMofClass *>(class_()->clone()));
-    if (datatype())
-        c->setDatatype(dynamic_cast<QMofDataType *>(datatype()->clone()));
     if (defaultValue())
         c->setDefaultValue(dynamic_cast<QMofValueSpecification *>(defaultValue()->clone()));
     c->setDerived(isDerived());
     c->setDerivedUnion(isDerivedUnion());
     c->setID(isID());
     c->setReadOnly(isReadOnly());
-    if (owningAssociation())
-        c->setOwningAssociation(dynamic_cast<QMofAssociation *>(owningAssociation()->clone()));
-    foreach (QMofProperty *element, redefinedProperties())
-        c->addRedefinedProperty(dynamic_cast<QMofProperty *>(element->clone()));
-    foreach (QMofProperty *element, subsettedProperties())
-        c->addSubsettedProperty(dynamic_cast<QMofProperty *>(element->clone()));
     return c;
 }
 

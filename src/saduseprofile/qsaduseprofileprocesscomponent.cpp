@@ -65,13 +65,19 @@ QSADuseProfileProcessComponent::QSADuseProfileProcessComponent(bool createQModel
 }
 
 /*!
+    Destroys the QSADuseProfileProcessComponent.
+ */
+QSADuseProfileProcessComponent::~QSADuseProfileProcessComponent()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QSADuseProfileProcessComponent.
 */
 QModelingElement *QSADuseProfileProcessComponent::clone() const
 {
     QSADuseProfileProcessComponent *c = new QSADuseProfileProcessComponent;
-    if (base_Component())
-        c->setBase_Component(dynamic_cast<QUmlComponent *>(base_Component()->clone()));
     return c;
 }
 

@@ -144,7 +144,7 @@ Q${namespace}${className}::Q${namespace}${className}([%- IF class.findvalue("@is
  */
 Q${namespace}${className}::~Q${namespace}${className}()
 {
-    QUmlElement::deleteQModelingObject();
+    QModelingElement::deleteQModelingObject();
 }
 
 [%- IF documentation != "" %]

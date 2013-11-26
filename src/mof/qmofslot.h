@@ -57,6 +57,7 @@ class Q_MOF_EXPORT QMofSlot : public QMofElement
 {
 public:
     explicit QMofSlot(bool createQModelingObject = true);
+    virtual ~QMofSlot();
 
     virtual QModelingElement *clone() const;
 

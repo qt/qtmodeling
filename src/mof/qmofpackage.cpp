@@ -73,6 +73,14 @@ QMofPackage::QMofPackage(bool createQModelingObject) :
 }
 
 /*!
+    Destroys the QMofPackage.
+ */
+QMofPackage::~QMofPackage()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QMofPackage.
 */
 QModelingElement *QMofPackage::clone() const
@@ -89,8 +97,6 @@ QModelingElement *QMofPackage::clone() const
         c->addPackageImport(dynamic_cast<QMofPackageImport *>(element->clone()));
     c->setVisibility(visibility());
     c->setURI(URI());
-    if (nestingPackage())
-        c->setNestingPackage(dynamic_cast<QMofPackage *>(nestingPackage()->clone()));
     foreach (QMofPackageMerge *element, packageMerges())
         c->addPackageMerge(dynamic_cast<QMofPackageMerge *>(element->clone()));
     foreach (QMofPackageableElement *element, packagedElements())

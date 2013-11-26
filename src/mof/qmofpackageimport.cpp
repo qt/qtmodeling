@@ -71,6 +71,14 @@ QMofPackageImport::QMofPackageImport(bool createQModelingObject) :
 }
 
 /*!
+    Destroys the QMofPackageImport.
+ */
+QMofPackageImport::~QMofPackageImport()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QMofPackageImport.
 */
 QModelingElement *QMofPackageImport::clone() const
@@ -78,10 +86,6 @@ QModelingElement *QMofPackageImport::clone() const
     QMofPackageImport *c = new QMofPackageImport;
     foreach (QMofComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QMofComment *>(element->clone()));
-    if (importedPackage())
-        c->setImportedPackage(dynamic_cast<QMofPackage *>(importedPackage()->clone()));
-    if (importingNamespace())
-        c->setImportingNamespace(dynamic_cast<QMofNamespace *>(importingNamespace()->clone()));
     c->setVisibility(visibility());
     return c;
 }

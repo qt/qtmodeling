@@ -55,6 +55,8 @@ class QMofComment;
 class Q_MOF_EXPORT QMofElement : public QMofObject
 {
 public:
+    virtual ~QMofElement();
+
     Q_DECL_HIDDEN virtual QModelingElement *clone() const;
 
     // Owned attributes

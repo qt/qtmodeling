@@ -60,6 +60,7 @@ class Q_MOF_EXPORT QMofOperation : public QMofBehavioralFeature
 {
 public:
     explicit QMofOperation(bool createQModelingObject = true);
+    virtual ~QMofOperation();
 
     virtual QModelingElement *clone() const;
 

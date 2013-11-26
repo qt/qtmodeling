@@ -82,6 +82,14 @@ QMofPrimitiveType::QMofPrimitiveType(bool createQModelingObject) :
 }
 
 /*!
+    Destroys the QMofPrimitiveType.
+ */
+QMofPrimitiveType::~QMofPrimitiveType()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QMofPrimitiveType.
 */
 QModelingElement *QMofPrimitiveType::clone() const
@@ -91,8 +99,6 @@ QModelingElement *QMofPrimitiveType::clone() const
         c->addOwnedComment(dynamic_cast<QMofComment *>(element->clone()));
     c->setName(name());
     c->setVisibility(visibility());
-    if (package())
-        c->setPackage(dynamic_cast<QMofPackage *>(package()->clone()));
     c->setLeaf(isLeaf());
     foreach (QMofElementImport *element, elementImports())
         c->addElementImport(dynamic_cast<QMofElementImport *>(element->clone()));
@@ -104,8 +110,6 @@ QModelingElement *QMofPrimitiveType::clone() const
         c->addGeneralization(dynamic_cast<QMofGeneralization *>(element->clone()));
     c->setAbstract(isAbstract());
     c->setFinalSpecialization(isFinalSpecialization());
-    foreach (QMofClassifier *element, redefinedClassifiers())
-        c->addRedefinedClassifier(dynamic_cast<QMofClassifier *>(element->clone()));
     foreach (QMofProperty *element, ownedAttributes())
         c->addOwnedAttribute(dynamic_cast<QMofProperty *>(element->clone()));
     foreach (QMofOperation *element, ownedOperations())

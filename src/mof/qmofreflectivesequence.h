@@ -55,6 +55,7 @@ class Q_MOF_EXPORT QMofReflectiveSequence : public QMofReflectiveCollection
 {
 public:
     explicit QMofReflectiveSequence(bool createQModelingObject = true);
+    virtual ~QMofReflectiveSequence();
 
     virtual QModelingElement *clone() const;
 

@@ -71,6 +71,14 @@ QMofStructuralFeature::QMofStructuralFeature() :
 }
 
 /*!
+    Destroys the QMofStructuralFeature.
+ */
+QMofStructuralFeature::~QMofStructuralFeature()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QMofStructuralFeature.
 */
 QModelingElement *QMofStructuralFeature::clone() const
@@ -82,8 +90,6 @@ QModelingElement *QMofStructuralFeature::clone() const
     c->setVisibility(visibility());
     c->setLeaf(isLeaf());
     c->setStatic(isStatic());
-    if (type())
-        c->setType(dynamic_cast<QMofType *>(type()->clone()));
     c->setOrdered(isOrdered());
     c->setUnique(isUnique());
     if (lowerValue())

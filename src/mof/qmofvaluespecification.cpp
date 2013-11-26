@@ -67,6 +67,14 @@ QMofValueSpecification::QMofValueSpecification()
 }
 
 /*!
+    Destroys the QMofValueSpecification.
+ */
+QMofValueSpecification::~QMofValueSpecification()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QMofValueSpecification.
 */
 QModelingElement *QMofValueSpecification::clone() const
@@ -76,8 +84,6 @@ QModelingElement *QMofValueSpecification::clone() const
         c->addOwnedComment(dynamic_cast<QMofComment *>(element->clone()));
     c->setName(name());
     c->setVisibility(visibility());
-    if (type())
-        c->setType(dynamic_cast<QMofType *>(type()->clone()));
     return c;
 }
 

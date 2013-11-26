@@ -59,11 +59,17 @@ QMofFactory::QMofFactory(bool createQModelingObject) :
         _qModelingObject = qobject_cast<QModelingObject *>(new QMofFactoryObject(this));
 }
 
+/*!
+    Destroys the QMofFactory.
+ */
+QMofFactory::~QMofFactory()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
 QModelingElement *QMofFactory::clone() const
 {
     QMofFactory *c = new QMofFactory;
-    if (package())
-        c->setPackage(dynamic_cast<QMofPackage *>(package()->clone()));
     return c;
 }
 

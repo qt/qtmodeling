@@ -42,7 +42,9 @@
 
 #include <QtWidgets/QAction>
 #include <QtWidgets/QFileDialog>
+
 #include <QtCore/QProcess>
+#include <QtCore/QXmlStreamReader>
 
 #include <duseinterfaces/iuicontroller.h>
 
@@ -66,8 +68,8 @@ void GccXmlArchitectureRecoveryBackendPlugin::setRootProjectDir(const QDir &root
 
 void GccXmlArchitectureRecoveryBackendPlugin::newArchitectureRecoveryProcess()
 {
-    QString fileName = QFileDialog::getOpenFileName(this, tr("Open xml file"), "/home", tr("Xml files (*.xml)"));
-    _rootProjectDir = new QDir(fileName);
+    QString fileName = QFileDialog::getOpenFileName(0, tr("Open xml file"), "/home", tr("Xml files (*.xml)"));
+    _rootProjectDir = QDir(fileName);
     components();
 }
 

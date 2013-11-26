@@ -52,6 +52,8 @@ QT_MODULE(QtMof)
 class Q_MOF_EXPORT QMofLiteralSpecification : public QMofValueSpecification
 {
 public:
+    virtual ~QMofLiteralSpecification();
+
     Q_DECL_HIDDEN virtual QModelingElement *clone() const;
 
 

@@ -54,6 +54,8 @@ class QMofType;
 class Q_MOF_EXPORT QMofTypedElement : public virtual QMofNamedElement
 {
 public:
+    virtual ~QMofTypedElement();
+
     Q_DECL_HIDDEN virtual QModelingElement *clone() const;
 
     // Owned attributes

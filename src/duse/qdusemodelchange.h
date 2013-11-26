@@ -56,6 +56,7 @@ class Q_DUSE_EXPORT QDuseModelChange : public QModelingElement
 {
 public:
     explicit QDuseModelChange(bool createQModelingObject = true);
+    virtual ~QDuseModelChange();
 
     virtual QModelingElement *clone() const;
 

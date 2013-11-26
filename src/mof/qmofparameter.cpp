@@ -74,6 +74,14 @@ QMofParameter::QMofParameter(bool createQModelingObject) :
 }
 
 /*!
+    Destroys the QMofParameter.
+ */
+QMofParameter::~QMofParameter()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QMofParameter.
 */
 QModelingElement *QMofParameter::clone() const
@@ -83,8 +91,6 @@ QModelingElement *QMofParameter::clone() const
         c->addOwnedComment(dynamic_cast<QMofComment *>(element->clone()));
     c->setName(name());
     c->setVisibility(visibility());
-    if (type())
-        c->setType(dynamic_cast<QMofType *>(type()->clone()));
     c->setOrdered(isOrdered());
     c->setUnique(isUnique());
     if (lowerValue())
@@ -94,8 +100,6 @@ QModelingElement *QMofParameter::clone() const
     if (defaultValue())
         c->setDefaultValue(dynamic_cast<QMofValueSpecification *>(defaultValue()->clone()));
     c->setDirection(direction());
-    if (operation())
-        c->setOperation(dynamic_cast<QMofOperation *>(operation()->clone()));
     return c;
 }
 

@@ -69,6 +69,14 @@ QMofOpaqueExpression::QMofOpaqueExpression(bool createQModelingObject)
 }
 
 /*!
+    Destroys the QMofOpaqueExpression.
+ */
+QMofOpaqueExpression::~QMofOpaqueExpression()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QMofOpaqueExpression.
 */
 QModelingElement *QMofOpaqueExpression::clone() const
@@ -78,8 +86,6 @@ QModelingElement *QMofOpaqueExpression::clone() const
         c->addOwnedComment(dynamic_cast<QMofComment *>(element->clone()));
     c->setName(name());
     c->setVisibility(visibility());
-    if (type())
-        c->setType(dynamic_cast<QMofType *>(type()->clone()));
     foreach (QString element, bodies())
         c->addBody(element);
     foreach (QString element, languages())

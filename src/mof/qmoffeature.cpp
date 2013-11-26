@@ -68,6 +68,14 @@ QMofFeature::QMofFeature() :
 }
 
 /*!
+    Destroys the QMofFeature.
+ */
+QMofFeature::~QMofFeature()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QMofFeature.
 */
 QModelingElement *QMofFeature::clone() const

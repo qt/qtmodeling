@@ -535,7 +535,7 @@ void Q${namespace}${originalClassName}Object::unset${qtAttribute.remove("^is").u
     [%- SET attributeName = attribute.findvalue("@name") -%]
     [%- SET qtAttribute = QT_ATTRIBUTE(attribute) -%]
     [%- NEXT IF redefinedProperties.grep("^${className}-${qtAttribute}$").size > 0 -%]
-    [%- NEXT IF attribute.findvalue("@aggregation") != "composite" -%]
+    [%- NEXT IF attribute.findvalue("@aggregation") != "composite" && qtType.match('\*') -%]
     [%- IF qtType.match("QList|QSet") %]
     foreach (${qtType.remove("QList<").remove("QSet<").remove(">").replace('\* ', '*')}element, ${PLURALFORM(qtAttribute, attribute)}())
         [%- IF qtType.match('\*') %]

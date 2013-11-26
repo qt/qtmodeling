@@ -53,6 +53,8 @@ QT_MODULE(QtMof)
 class Q_MOF_EXPORT QMofValueSpecification : public QMofPackageableElement, public QMofTypedElement
 {
 public:
+    virtual ~QMofValueSpecification();
+
     Q_DECL_HIDDEN virtual QModelingElement *clone() const;
 
 

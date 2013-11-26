@@ -68,6 +68,14 @@ QMofMultiplicityElement::QMofMultiplicityElement() :
 }
 
 /*!
+    Destroys the QMofMultiplicityElement.
+ */
+QMofMultiplicityElement::~QMofMultiplicityElement()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QMofMultiplicityElement.
 */
 QModelingElement *QMofMultiplicityElement::clone() const

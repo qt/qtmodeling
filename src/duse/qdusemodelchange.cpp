@@ -68,6 +68,14 @@ QDuseModelChange::QDuseModelChange(bool createQModelingObject) :
 }
 
 /*!
+    Destroys the QDuseModelChange.
+ */
+QDuseModelChange::~QDuseModelChange()
+{
+    QModelingElement::deleteQModelingObject();
+}
+
+/*!
     Returns a deep-copied clone of the QDuseModelChange.
 */
 QModelingElement *QDuseModelChange::clone() const
@@ -77,8 +85,6 @@ QModelingElement *QDuseModelChange::clone() const
         c->setTargetSelectionRule(dynamic_cast<QUmlOpaqueExpression *>(targetSelectionRule()->clone()));
     if (valueSelectionRule())
         c->setValueSelectionRule(dynamic_cast<QUmlOpaqueExpression *>(valueSelectionRule()->clone()));
-    if (targetProperty())
-        c->setTargetProperty(dynamic_cast<QUmlProperty *>(targetProperty()->clone()));
     return c;
 }
 

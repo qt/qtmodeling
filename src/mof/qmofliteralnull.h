@@ -53,6 +53,7 @@ class Q_MOF_EXPORT QMofLiteralNull : public QMofLiteralSpecification
 {
 public:
     explicit QMofLiteralNull(bool createQModelingObject = true);
+    virtual ~QMofLiteralNull();
 
     virtual QModelingElement *clone() const;
 
