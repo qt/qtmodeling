@@ -74,6 +74,12 @@ ModelInspectorPlugin::ModelInspectorPlugin(QObject *parent) :
     _outputIssues->setPalette(outputIssuesPallete);
 }
 
+ModelInspectorPlugin::~ModelInspectorPlugin()
+{
+    delete _outputIssues->model();
+    delete _outputIssues;
+}
+
 bool ModelInspectorPlugin::initialize(DuSE::ICore *core)
 {
     core->uiController()->addDockWidget(Qt::LeftDockWidgetArea, tr("Model Inspector"), _modelingObjectView);
@@ -93,6 +99,7 @@ bool ModelInspectorPlugin::initialize(DuSE::ICore *core)
 
 void ModelInspectorPlugin::populateOutputIssues()
 {
+    delete _outputIssues->model();
     _outputIssues->setModel(new QStringListModel(DuSE::ICore::self()->projectController()->errorStrings()));
 }
 

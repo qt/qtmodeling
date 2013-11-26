@@ -118,6 +118,7 @@ void UiController::addAction(QAction *action, const QString &menuTitle, const QS
     foreach (QToolBar *toolbar, _mainWindow.findChildren<QToolBar *>())
         if (toolbar->objectName() == toolbarName)
             toolbar->addAction(action);
+    action->setParent(&_mainWindow);
 }
 
 }

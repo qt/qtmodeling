@@ -57,6 +57,7 @@ class ModelInspectorPlugin : public DuSE::IPlugin
 
 public:
     ModelInspectorPlugin(QObject *parent = 0);
+    virtual ~ModelInspectorPlugin();
 
     virtual bool initialize(DuSE::ICore *core);
 

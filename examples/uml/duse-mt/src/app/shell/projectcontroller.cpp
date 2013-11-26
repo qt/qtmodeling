@@ -57,6 +57,7 @@ ProjectController::ProjectController()
 
 ProjectController::~ProjectController()
 {
+    qDeleteAll(_currentModelElements);
 }
 
 bool ProjectController::initialize()
