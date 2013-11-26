@@ -65,6 +65,7 @@ PluginController::PluginController()
 
 PluginController::~PluginController()
 {
+    qDeleteAll(_dusemtPlugins);
 }
 
 bool PluginController::initialize()

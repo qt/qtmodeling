@@ -74,6 +74,7 @@ void UiController::addDockWidget(Qt::DockWidgetArea area, QString name, QWidget 
     dockWidget->setWindowTitle(name);
     dockWidget->setObjectName(name);
     dockWidget->setWidget(widget);
+    widget->setParent(dockWidget);
 
     _mainWindow.addDockWidget(area, dockWidget);
     if (area == Qt::BottomDockWidgetArea) {

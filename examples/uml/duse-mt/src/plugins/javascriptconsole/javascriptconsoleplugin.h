@@ -65,6 +65,7 @@ class JavaScriptConsolePlugin : public DuSE::IPlugin
 
 public:
     JavaScriptConsolePlugin(QObject *parent = 0);
+    virtual ~JavaScriptConsolePlugin();
 
     virtual bool initialize(DuSE::ICore *core);
 

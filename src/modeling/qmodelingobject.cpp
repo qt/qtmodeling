@@ -73,6 +73,9 @@ QModelingObject::~QModelingObject()
 {
     if (!property("deletingFromModelingObject").isValid()) {
         qmodelingelementproperty_cast<QModelingElement *>(this)->deletingFromQModelingObject = true;
+        // Force removal of element from other element's property lists before element gets actually
+        // destroy in the following sentence.
+        emit destroyed(this);
         delete qmodelingelementproperty_cast<QModelingElement *>(this);
     }
 }

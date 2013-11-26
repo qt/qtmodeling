@@ -101,6 +101,11 @@ JavaScriptConsolePlugin::JavaScriptConsolePlugin(QObject *parent) :
 {
 }
 
+JavaScriptConsolePlugin::~JavaScriptConsolePlugin()
+{
+    delete _javaScriptConsole;
+}
+
 bool JavaScriptConsolePlugin::initialize(DuSE::ICore *core)
 {
     QWidget *javaScriptConsoleWidget = new QWidget;
