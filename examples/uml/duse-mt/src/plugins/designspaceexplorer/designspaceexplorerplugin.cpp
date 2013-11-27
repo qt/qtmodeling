@@ -40,8 +40,6 @@
 ****************************************************************************/
 #include "designspaceexplorerplugin.h"
 
-#include <QDebug>
-
 #include <duseinterfaces/iuicontroller.h>
 #include <duseinterfaces/iprojectcontroller.h>
 
@@ -252,7 +250,6 @@ void DesignSpaceExplorerPlugin::newDuseDesign()
 
                 foreach (QDuseDesignDimension *designDimension, designSpace->designDimensions()) {
                     foreach (const QString &body, designDimension->instanceSelectionRule()->bodies()) {
-                        qDebug() << body;
                         QScriptValue value = _engine.evaluate(body);
                         if (value.toVariant().canConvert(QMetaType::type("QVariantList"))) {
                             foreach (const QVariant &variant, value.toVariant().value<QVariantList>()) {
@@ -268,7 +265,6 @@ void DesignSpaceExplorerPlugin::newDuseDesign()
                             designDimensionInstance->setTargetInstance(qmodelingelementproperty_cast<QUmlElement *>(value.toVariant().value<QObject *>()));
                             designDimension->addDesignDimensionInstance(designDimensionInstance);
                         }
-                        qDebug() << "result: " << value.toVariant();
                     }
                 }
 
@@ -296,7 +292,7 @@ void DesignSpaceExplorerPlugin::populateDesignSpaceExplorer()
                 comboBox->addItem(variationPoint->asQModelingObject()->objectName());
             }
             _designSpaceExplorer->setCellWidget(row, 2, comboBox);
-            connect(comboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(designSpaceChanged()));
+            connect(comboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(currentDesignSpaceLocationChanged()));
             ++row;
         }
     }
@@ -307,9 +303,10 @@ void DesignSpaceExplorerPlugin::openDuseDesign()
 {
 }
 
-void DesignSpaceExplorerPlugin::designSpaceChanged()
+void DesignSpaceExplorerPlugin::currentDesignSpaceLocationChanged()
 {
     qDeleteAll(_currentDesignSpaceLocation);
+    _currentDesignSpaceLocation.clear();
 //    QXmiReader reader;
 //    QFile inputModel(_newDuseDesignDialog->_inputModelFileName);
 //    if (!inputModel.open(QFile::ReadOnly | QFile::Text)) {

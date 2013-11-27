@@ -73,7 +73,7 @@ public:
 private Q_SLOTS:
     void newDuseDesign();
     void openDuseDesign();
-    void designSpaceChanged();
+    void currentDesignSpaceLocationChanged();
 
 private:
     DuSE::ICore *_core;
