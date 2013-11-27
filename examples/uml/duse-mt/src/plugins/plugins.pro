@@ -7,12 +7,11 @@ SUBDIRS = \
 qtHaveModule(script): SUBDIRS += javascriptconsole
 
 qtHaveModule(quick): SUBDIRS += welcomedashboard \
-                                designoptimizer
+                                designoptimizer \
+                                concretesyntaxview \
+                                umlconcretesyntax
 
 qtHaveModule(script):qtHaveModule(quick): SUBDIRS += designspaceexplorer
-
-qtHaveModule(quick-private): SUBDIRS += concretesyntaxview \
-                                        umlconcretesyntax
 
 SUBDIRS += architecturerecoverycore \
     gccxmlarchitecturerecoverybackend
