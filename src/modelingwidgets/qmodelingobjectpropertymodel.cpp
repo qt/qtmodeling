@@ -256,7 +256,10 @@ QVariant QModelingObjectPropertyModel::data(const QModelIndex &index, int role) 
                             return !str.isEmpty() ? str:QVariant();
                         }
                     }
-                    return QVariant();
+                    if (QString::fromLatin1(metaProperty->typeName()).endsWith('*'))
+                        return QStringLiteral("undefined");
+                    else
+                        return QVariant();
                 }
                 default:
                     Q_ASSERT(false);
@@ -278,6 +281,9 @@ QVariant QModelingObjectPropertyModel::data(const QModelIndex &index, int role) 
                 if (QString::fromLatin1(d->modelingMetaObject->method(methodIndex).tag()) == QStringLiteral("Q_TODO")) {
                     font.setItalic(true);
                 }
+            }
+            if (QString::fromLatin1(metaProperty->typeName()).endsWith('*')) {
+                font.setItalic(true);
             }
             if (metaProperty->isValid() && index.column() == 0 && metaProperty->isResettable())
                 font.setBold(d->modelingObject->isPropertyModified(*metaProperty));

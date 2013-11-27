@@ -141,7 +141,7 @@ bool ProjectController::createModel(const QString &modelFileName, QMetaModelPlug
 {
     QModelingElement *topLevelElement = metamodelPlugin->createModelingElement(topLevelType);
     if (topLevelElement) {
-        topLevelElement->asQModelingObject()->setObjectName(topLevelType);
+        topLevelElement->asQModelingObject()->setObjectName(modelFileName);
         qDeleteAll(_currentModelElements);
         _currentModelElements.clear();
         _currentModelObjects.clear();

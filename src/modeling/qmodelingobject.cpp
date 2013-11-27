@@ -163,6 +163,13 @@ bool QModelingObject::isKindOf(QString type) const
     return d->propertyGroups.contains(type);
 }
 
+void QModelingObject::setObjectName(const QString &name)
+{
+    QObject::setObjectName(name);
+    if (metaObject()->indexOfProperty("name") != -1)
+        setProperty("name", name);
+}
+
 /*!
     Creates a new QModelingObject with the given \a parent. This is a protected constructor
     since this class is not intended to be directly instantiated.
