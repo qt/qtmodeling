@@ -65,6 +65,8 @@ QMofException::~QMofException()
 QModelingElement *QMofException::clone() const
 {
     QMofException *c = new QMofException;
+    c->asQModelingObject()->setObjectName(this->asQModelingObject()->objectName());
+    c->asQModelingObject()->setProperty("role", this->asQModelingObject()->property("role"));
     c->setDescription(description());
     return c;
 }

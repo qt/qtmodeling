@@ -93,6 +93,8 @@ QMofAssociation::~QMofAssociation()
 QModelingElement *QMofAssociation::clone() const
 {
     QMofAssociation *c = new QMofAssociation;
+    c->asQModelingObject()->setObjectName(this->asQModelingObject()->objectName());
+    c->asQModelingObject()->setProperty("role", this->asQModelingObject()->property("role"));
     foreach (QMofComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QMofComment *>(element->clone()));
     c->setName(name());

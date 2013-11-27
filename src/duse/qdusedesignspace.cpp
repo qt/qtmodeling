@@ -78,6 +78,8 @@ QDuseDesignSpace::~QDuseDesignSpace()
 QModelingElement *QDuseDesignSpace::clone() const
 {
     QDuseDesignSpace *c = new QDuseDesignSpace;
+    c->asQModelingObject()->setObjectName(this->asQModelingObject()->objectName());
+    c->asQModelingObject()->setProperty("role", this->asQModelingObject()->property("role"));
     c->setName(name());
     c->setRequiredProfile(requiredProfile());
     foreach (QDuseDesignDimension *element, designDimensions())

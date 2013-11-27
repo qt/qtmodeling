@@ -80,6 +80,8 @@ QDuseVariationPoint::~QDuseVariationPoint()
 QModelingElement *QDuseVariationPoint::clone() const
 {
     QDuseVariationPoint *c = new QDuseVariationPoint;
+    c->asQModelingObject()->setObjectName(this->asQModelingObject()->objectName());
+    c->asQModelingObject()->setProperty("role", this->asQModelingObject()->property("role"));
     c->setName(name());
     c->setRationale(rationale());
     if (preChangeValidationRule())

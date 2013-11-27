@@ -78,6 +78,8 @@ QMofElement::~QMofElement()
 QModelingElement *QMofElement::clone() const
 {
     QMofElement *c = new QMofElement;
+    c->asQModelingObject()->setObjectName(this->asQModelingObject()->objectName());
+    c->asQModelingObject()->setProperty("role", this->asQModelingObject()->property("role"));
     foreach (QMofComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QMofComment *>(element->clone()));
     return c;

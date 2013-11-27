@@ -64,6 +64,8 @@ QMofReflectiveSequence::~QMofReflectiveSequence()
 QModelingElement *QMofReflectiveSequence::clone() const
 {
     QMofReflectiveSequence *c = new QMofReflectiveSequence;
+    c->asQModelingObject()->setObjectName(this->asQModelingObject()->objectName());
+    c->asQModelingObject()->setProperty("role", this->asQModelingObject()->property("role"));
     return c;
 }
 

@@ -62,6 +62,8 @@ QMofReflectiveCollection::~QMofReflectiveCollection()
 QModelingElement *QMofReflectiveCollection::clone() const
 {
     QMofReflectiveCollection *c = new QMofReflectiveCollection;
+    c->asQModelingObject()->setObjectName(this->asQModelingObject()->objectName());
+    c->asQModelingObject()->setProperty("role", this->asQModelingObject()->property("role"));
     return c;
 }
 

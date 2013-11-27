@@ -78,6 +78,8 @@ QDuseQualityMetric::~QDuseQualityMetric()
 QModelingElement *QDuseQualityMetric::clone() const
 {
     QDuseQualityMetric *c = new QDuseQualityMetric;
+    c->asQModelingObject()->setObjectName(this->asQModelingObject()->objectName());
+    c->asQModelingObject()->setProperty("role", this->asQModelingObject()->property("role"));
     c->setName(name());
     c->setValue(value());
     if (expression())

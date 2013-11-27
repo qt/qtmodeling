@@ -64,6 +64,8 @@ QMofURIExtent::~QMofURIExtent()
 QModelingElement *QMofURIExtent::clone() const
 {
     QMofURIExtent *c = new QMofURIExtent;
+    c->asQModelingObject()->setObjectName(this->asQModelingObject()->objectName());
+    c->asQModelingObject()->setProperty("role", this->asQModelingObject()->property("role"));
     return c;
 }
 

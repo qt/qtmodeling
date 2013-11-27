@@ -62,6 +62,8 @@ QMofTag::~QMofTag()
 QModelingElement *QMofTag::clone() const
 {
     QMofTag *c = new QMofTag;
+    c->asQModelingObject()->setObjectName(this->asQModelingObject()->objectName());
+    c->asQModelingObject()->setProperty("role", this->asQModelingObject()->property("role"));
     c->setName(name());
     c->setValue(value());
     return c;

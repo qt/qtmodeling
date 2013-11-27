@@ -65,6 +65,8 @@ QMofObject::~QMofObject()
 QModelingElement *QMofObject::clone() const
 {
     QMofObject *c = new QMofObject;
+    c->asQModelingObject()->setObjectName(this->asQModelingObject()->objectName());
+    c->asQModelingObject()->setProperty("role", this->asQModelingObject()->property("role"));
     return c;
 }
 

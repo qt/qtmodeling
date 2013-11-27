@@ -68,6 +68,8 @@ QMofLink::~QMofLink()
 QModelingElement *QMofLink::clone() const
 {
     QMofLink *c = new QMofLink;
+    c->asQModelingObject()->setObjectName(this->asQModelingObject()->objectName());
+    c->asQModelingObject()->setProperty("role", this->asQModelingObject()->property("role"));
     return c;
 }
 

@@ -83,6 +83,8 @@ QMofSlot::~QMofSlot()
 QModelingElement *QMofSlot::clone() const
 {
     QMofSlot *c = new QMofSlot;
+    c->asQModelingObject()->setObjectName(this->asQModelingObject()->objectName());
+    c->asQModelingObject()->setProperty("role", this->asQModelingObject()->property("role"));
     foreach (QMofComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QMofComment *>(element->clone()));
     foreach (QMofValueSpecification *element, values())

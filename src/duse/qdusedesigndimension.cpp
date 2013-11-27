@@ -80,6 +80,8 @@ QDuseDesignDimension::~QDuseDesignDimension()
 QModelingElement *QDuseDesignDimension::clone() const
 {
     QDuseDesignDimension *c = new QDuseDesignDimension;
+    c->asQModelingObject()->setObjectName(this->asQModelingObject()->objectName());
+    c->asQModelingObject()->setProperty("role", this->asQModelingObject()->property("role"));
     c->setName(name());
     if (instanceSelectionRule())
         c->setInstanceSelectionRule(dynamic_cast<QUmlOpaqueExpression *>(instanceSelectionRule()->clone()));

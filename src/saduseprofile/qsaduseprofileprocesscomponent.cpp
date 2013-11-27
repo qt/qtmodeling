@@ -78,6 +78,8 @@ QSADuseProfileProcessComponent::~QSADuseProfileProcessComponent()
 QModelingElement *QSADuseProfileProcessComponent::clone() const
 {
     QSADuseProfileProcessComponent *c = new QSADuseProfileProcessComponent;
+    c->asQModelingObject()->setObjectName(this->asQModelingObject()->objectName());
+    c->asQModelingObject()->setProperty("role", this->asQModelingObject()->property("role"));
     return c;
 }
 

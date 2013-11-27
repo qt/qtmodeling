@@ -80,6 +80,8 @@ QMofLiteralSpecification::~QMofLiteralSpecification()
 QModelingElement *QMofLiteralSpecification::clone() const
 {
     QMofLiteralSpecification *c = new QMofLiteralSpecification;
+    c->asQModelingObject()->setObjectName(this->asQModelingObject()->objectName());
+    c->asQModelingObject()->setProperty("role", this->asQModelingObject()->property("role"));
     foreach (QMofComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QMofComment *>(element->clone()));
     c->setName(name());

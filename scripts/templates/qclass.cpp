@@ -155,6 +155,8 @@ Q${namespace}${className}::~Q${namespace}${className}()
 QModelingElement *Q${namespace}${className}::clone() const
 {
     Q${namespace}${className} *c = new Q${namespace}${className};
+    c->asQModelingObject()->setObjectName(this->asQModelingObject()->objectName());
+    c->asQModelingObject()->setProperty("role", this->asQModelingObject()->property("role"));
 [%- visitedClasses = [] -%]
 [%- redefinedProperties = [] -%]
 [%- POPULATE_REDEFINED_PROPERTIES(class, visitedClasses, redefinedProperties) -%]

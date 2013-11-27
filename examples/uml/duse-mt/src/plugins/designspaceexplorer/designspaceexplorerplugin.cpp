@@ -309,14 +309,17 @@ void DesignSpaceExplorerPlugin::openDuseDesign()
 
 void DesignSpaceExplorerPlugin::designSpaceChanged()
 {
-//    qDeleteAll(_currentDesignSpaceLocation);
-    QXmiReader reader;
-    QFile inputModel(_newDuseDesignDialog->_inputModelFileName);
-    if (!inputModel.open(QFile::ReadOnly | QFile::Text)) {
-        QMessageBox::critical(0, tr("Create new DuSE design"), tr("Cannot read file %1").arg(_newDuseDesignDialog->_inputModelFileName));
-        return;
-    }
-    _currentDesignSpaceLocation = reader.readFile(&inputModel);
+    qDeleteAll(_currentDesignSpaceLocation);
+//    QXmiReader reader;
+//    QFile inputModel(_newDuseDesignDialog->_inputModelFileName);
+//    if (!inputModel.open(QFile::ReadOnly | QFile::Text)) {
+//        QMessageBox::critical(0, tr("Create new DuSE design"), tr("Cannot read file %1").arg(_newDuseDesignDialog->_inputModelFileName));
+//        return;
+//    }
+//    _currentDesignSpaceLocation = reader.readFile(&inputModel);
+    foreach (QModelingElement *element, _core->projectController()->currentModelElements())
+        _currentDesignSpaceLocation << element->clone();
+
     QList<QModelingObject *> currentModelObjects;
     foreach (QModelingElement *element, _currentDesignSpaceLocation)
         currentModelObjects << element->asQModelingObject();

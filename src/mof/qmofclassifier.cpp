@@ -89,6 +89,8 @@ QMofClassifier::~QMofClassifier()
 QModelingElement *QMofClassifier::clone() const
 {
     QMofClassifier *c = new QMofClassifier;
+    c->asQModelingObject()->setObjectName(this->asQModelingObject()->objectName());
+    c->asQModelingObject()->setProperty("role", this->asQModelingObject()->property("role"));
     foreach (QMofComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QMofComment *>(element->clone()));
     c->setName(name());

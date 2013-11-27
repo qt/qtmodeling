@@ -81,6 +81,8 @@ QDuseModelChange::~QDuseModelChange()
 QModelingElement *QDuseModelChange::clone() const
 {
     QDuseModelChange *c = new QDuseModelChange;
+    c->asQModelingObject()->setObjectName(this->asQModelingObject()->objectName());
+    c->asQModelingObject()->setProperty("role", this->asQModelingObject()->property("role"));
     if (targetSelectionRule())
         c->setTargetSelectionRule(dynamic_cast<QUmlOpaqueExpression *>(targetSelectionRule()->clone()));
     if (valueSelectionRule())
