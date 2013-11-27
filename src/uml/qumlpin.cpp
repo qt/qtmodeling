@@ -95,6 +95,8 @@ QUmlPin::~QUmlPin()
 QModelingElement *QUmlPin::clone() const
 {
     QUmlPin *c = new QUmlPin;
+    c->asQModelingObject()->setObjectName(this->asQModelingObject()->objectName());
+    c->asQModelingObject()->setProperty("role", this->asQModelingObject()->property("role"));
     foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
     c->setOrdered(isOrdered());

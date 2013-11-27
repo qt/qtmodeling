@@ -89,6 +89,8 @@ QUmlCombinedFragment::~QUmlCombinedFragment()
 QModelingElement *QUmlCombinedFragment::clone() const
 {
     QUmlCombinedFragment *c = new QUmlCombinedFragment;
+    c->asQModelingObject()->setObjectName(this->asQModelingObject()->objectName());
+    c->asQModelingObject()->setProperty("role", this->asQModelingObject()->property("role"));
     foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
     c->setName(name());

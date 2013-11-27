@@ -75,6 +75,8 @@ QUmlRelationship::~QUmlRelationship()
 QModelingElement *QUmlRelationship::clone() const
 {
     QUmlRelationship *c = new QUmlRelationship;
+    c->asQModelingObject()->setObjectName(this->asQModelingObject()->objectName());
+    c->asQModelingObject()->setProperty("role", this->asQModelingObject()->property("role"));
     foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
     return c;
