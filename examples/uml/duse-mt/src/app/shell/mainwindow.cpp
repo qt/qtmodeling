@@ -119,7 +119,7 @@ void MainWindow::on_actionFileNewModel_triggered()
         _newModel->cboMetamodel->addItem(metamodelPlugin->metaObject()->className());
     _newModel->lneModel->setFocus();
     if (_newModelDialog->exec() == QDialog::Accepted) {
-        QMetaModelPlugin *metamodelPlugin;
+        QMetaModelPlugin *metamodelPlugin = 0;
         foreach (QMetaModelPlugin *plugin, ICore::self()->pluginController()->metamodelPlugins().values()) {
             if (plugin->metaObject()->className() == _newModel->cboMetamodel->currentText())
                 metamodelPlugin = plugin;
@@ -154,8 +154,8 @@ void MainWindow::on_actionFileOpenModel_triggered()
 
 void MainWindow::evaluateQualityMetrics()
 {
-//    _engine.evaluate("var m = designspace.qualityMetrics.length; \
-//                      for (var j = 0; j < m; ++j) \
+//    _engine.evaluate("var m = designspace.qualityMetrics.length;
+//                      for (var j = 0; j < m; ++j)
 //                          designspace.qualityMetrics[j].value = Math.random()*60+eval(designspace.qualityMetrics[j].expression)");
 }
 
@@ -316,6 +316,8 @@ void MainWindow::metaModelChanged(QString newMetaModel)
 
 void MainWindow::addToPareto(QModelingElement *modelingObject, int pos)
 {
+    Q_UNUSED(modelingObject);
+    Q_UNUSED(pos);
 //    QQmlContext *context = _paretoFrontQuickView->engine()->rootContext();
 //    //modelingObject->setQmlContextProperties(context);
 //    _qmlComponent = new QQmlComponent(_paretoFrontQuickView->engine());
