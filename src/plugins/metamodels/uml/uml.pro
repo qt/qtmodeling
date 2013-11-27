@@ -11,7 +11,7 @@ HEADERS = qumlmetamodelplugin.h
 SOURCES = qumlmetamodelplugin.cpp
 
 xmi.files = UML.xmi PrimitiveTypes.xmi
-xmi.path = $$MODULE_BASE_OUTDIR/plugins/$$PLUGIN_TYPE
+xmi.path = $${target.path}
 
 INSTALLS += xmi
 

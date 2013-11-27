@@ -11,7 +11,7 @@ HEADERS = qsaduseprofilemetamodelplugin.h
 SOURCES = qsaduseprofilemetamodelplugin.cpp
 
 xmi.files = SADuseProfile.xmi
-xmi.path = $$MODULE_BASE_OUTDIR/plugins/$$PLUGIN_TYPE
+xmi.path = $${target.path}
 
 INSTALLS += xmi
 
