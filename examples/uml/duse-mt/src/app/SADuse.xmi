@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:duse="http://liveblue.wordpress.com/Duse" xmlns:uml="http://www.omg.org/spec/UML/20110701">
   <duse:DesignSpace name="SADuse" xmi:id="SADuse" requiredProfile="SADuseProfile">
+    <packageImport xmi:type="uml:PackageImport" xmi:id="_packageImport.0">
+      <importedPackage href="http://www.omg.org/spec/UML/20110701/PrimitiveTypes.xmi#_0"/>
+    </packageImport>
+    <elementImport xmi:type="uml:ElementImport" xmi:id="ElementImport.0">
+        <importedElement href="http://www.omg.org/spec/UML/20110701/UML.xmi#NamedElement"/>
+    </elementImport>
+    <elementImport xmi:type="uml:ElementImport" xmi:id="ElementImport.1">
+        <importedElement href="http://www.omg.org/spec/UML/20110701/UML.xmi#Component"/>
+    </elementImport>
     <qualityMetric xmi:type="duse:QualityMetric" name="Control Robustness" xmi:id="SADuse-ControlRobustness">
         <expression xmi:type="uml:OpaqueExpression" xmi:id="SADuse-ControlRobustness-Expression">
             <language>JavaScript</language>
@@ -40,7 +49,9 @@
                     <language>JavaScript</language>
                     <body>input</body>
                 </valueSelectionRule>
+                <targetProperty href="NamedElement-visibility"/>
             </modelChange>
+            <addedElement href="http://www.omg.org/spec/UML/20110701/UML.xmi#Component"/>
         </variationPoint>
         <variationPoint xmi:type="duse:VariationPoint" name="Proportional-Integral" xmi:id="SADuse-ControlLaw-Proportional-Integral">
             <modelChange xmi:type="duse:ModelChange" xmi:id="SADuse-ControlLaw-Proportional-Integral-ModelChange1">

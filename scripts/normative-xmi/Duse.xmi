@@ -7,11 +7,17 @@
     <elementImport xmi:type="uml:ElementImport" xmi:id="ElementImport.0">
       <importedElement href="http://www.omg.org/spec/UML/20110701/UML.xmi#Property"/>
     </elementImport>
-    <elementImport xmi:type="uml:ElementImport" xmi:id="ElementImport.0">
+    <elementImport xmi:type="uml:ElementImport" xmi:id="ElementImport.1">
       <importedElement href="http://www.omg.org/spec/UML/20110701/UML.xmi#OpaqueExpression"/>
     </elementImport>
-    <elementImport xmi:type="uml:ElementImport" xmi:id="ElementImport.0">
+    <elementImport xmi:type="uml:ElementImport" xmi:id="ElementImport.2">
       <importedElement href="http://www.omg.org/spec/UML/20110701/UML.xmi#Element"/>
+    </elementImport>
+    <elementImport xmi:type="uml:ElementImport" xmi:id="ElementImport.3">
+      <importedElement href="http://www.omg.org/spec/UML/20110701/UML.xmi#ElementImport"/>
+    </elementImport>
+    <elementImport xmi:type="uml:ElementImport" xmi:id="ElementImport.4">
+      <importedElement href="http://www.omg.org/spec/UML/20110701/UML.xmi#PackageImport"/>
     </elementImport>
     <packagedElement xmi:type="uml:Association" name="A_designSpace_designDimension" xmi:id="A_designSpace_designDimension">
       <memberEnd xmi:idref="DesignSpace-designDimension"/>
@@ -54,6 +60,22 @@
       </ownedEnd>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" name="DesignSpace" xmi:id="DesignSpace">
+      <ownedAttribute xmi:type="uml:Property" name="elementImport" visibility="public" aggregation="composite" xmi:id="DesignSpace-elementImport">
+        <ownedComment xmi:type="uml:Comment" xmi:id="DesignSpace-elementImport-_ownedComment.0" annotatedElement="DesignSpace-elementImport">
+          <body>The elements imported by the design space.</body>
+        </ownedComment>
+        <type href="http://www.omg.org/spec/UML/20110701/UML.xmi#ElementImport"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" value="*" xmi:id="DesignSpace-elementImport-LiteralUnlimitedNatural.1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="DesignSpace-elementImport-LiteralInteger.1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" name="packageImport" visibility="public" aggregation="composite" xmi:id="DesignSpace-packageImport">
+        <ownedComment xmi:type="uml:Comment" xmi:id="DesignSpace-packageImport-_ownedComment.0" annotatedElement="DesignSpace-packageImport">
+          <body>The packages imported by the design space.</body>
+        </ownedComment>
+        <type href="http://www.omg.org/spec/UML/20110701/UML.xmi#PackageImport"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" value="*" xmi:id="DesignSpace-packageImport-LiteralUnlimitedNatural.1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="DesignSpace-packageImport-LiteralInteger.1"/>
+      </ownedAttribute>
       <ownedComment xmi:type="uml:Comment" xmi:id="DesignSpace-_ownedComment.0" annotatedElement="DesignSpace">
         <body>A design space entails the design dimensions (degrees of freedom) and quality metrics for a particular application domain.</body>
       </ownedComment>

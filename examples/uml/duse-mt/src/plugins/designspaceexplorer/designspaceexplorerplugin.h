@@ -55,6 +55,9 @@ class QModelingElement;
 class QModelingObjectModel;
 class QModelingObjectView;
 
+class QDuseDesignDimension;
+class QDuseVariationPoint;
+
 namespace Duse {
     class ICore;
 }
@@ -82,11 +85,12 @@ private:
     QQuickView *_metricsQuickView;
     QTableWidget *_designSpaceExplorer;
     QModelingObjectView *_currentDesignSpaceLocationView;
-    QModelingObjectModel *_currentDesignSpaceLocationModel;
+    QModelingObjectModel *_currentDesignSpaceLocationQtModel;
 
     NewDuseDesignDialog *_newDuseDesignDialog;
     QList<QModelingElement *> _duseInstance;
-    QList<QModelingElement *> _currentDesignSpaceLocation;
+    QList<QModelingElement *> _currentDesignSpaceLocationMofModel;
+    QHash<QString, QHash<QDuseDesignDimension *, QDuseVariationPoint *> > _currentDesignSpaceLocation;
 
     QScriptEngine _engine;
 

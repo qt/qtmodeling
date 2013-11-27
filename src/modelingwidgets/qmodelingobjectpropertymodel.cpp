@@ -42,6 +42,7 @@
 #include "qmodelingobjectpropertymodel_p.h"
 
 #include <QtModeling/QModelingObject>
+#include <QtModeling/QModelingElement>
 
 #include <QtGui/QFontMetrics>
 
@@ -282,7 +283,7 @@ QVariant QModelingObjectPropertyModel::data(const QModelIndex &index, int role) 
                     font.setItalic(true);
                 }
             }
-            if (QString::fromLatin1(metaProperty->typeName()).endsWith('*')) {
+            if (QString::fromLatin1(metaProperty->typeName()).endsWith('*') && !qvariant_cast<QModelingObject *>(metaProperty->read(d->modelingObject))) {
                 font.setItalic(true);
             }
             if (metaProperty->isValid() && index.column() == 0 && metaProperty->isResettable())

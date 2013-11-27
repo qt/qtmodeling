@@ -51,6 +51,8 @@ QT_MODULE(QtDuse)
 
 class QDuseDesignDimension;
 class QDuseQualityMetric;
+class QUmlElementImport;
+class QUmlPackageImport;
 
 class Q_DUSE_EXPORT QDuseDesignSpace : public QModelingElement
 {
@@ -61,6 +63,12 @@ public:
     virtual QModelingElement *clone() const;
 
     // Owned attributes
+    const QSet<QUmlElementImport *> elementImports() const;
+    void addElementImport(QUmlElementImport *elementImport);
+    void removeElementImport(QUmlElementImport *elementImport);
+    const QSet<QUmlPackageImport *> packageImports() const;
+    void addPackageImport(QUmlPackageImport *packageImport);
+    void removePackageImport(QUmlPackageImport *packageImport);
     QString name() const;
     void setName(QString name);
     QString requiredProfile() const;
@@ -73,6 +81,8 @@ public:
     void removeQualityMetric(QDuseQualityMetric *qualityMetric);
 
 protected:
+    QSet<QUmlElementImport *> _elementImports;
+    QSet<QUmlPackageImport *> _packageImports;
     QString _name;
     QString _requiredProfile;
     QList<QDuseDesignDimension *> _designDimensions;

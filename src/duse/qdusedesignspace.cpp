@@ -44,6 +44,8 @@
 
 #include <QtDuse/QDuseDesignDimension>
 #include <QtDuse/QDuseQualityMetric>
+#include <QtUml/QUmlElementImport>
+#include <QtUml/QUmlPackageImport>
 
 QT_BEGIN_NAMESPACE
 
@@ -80,6 +82,10 @@ QModelingElement *QDuseDesignSpace::clone() const
     QDuseDesignSpace *c = new QDuseDesignSpace;
     c->asQModelingObject()->setObjectName(this->asQModelingObject()->objectName());
     c->asQModelingObject()->setProperty("role", this->asQModelingObject()->property("role"));
+    foreach (QUmlElementImport *element, elementImports())
+        c->addElementImport(dynamic_cast<QUmlElementImport *>(element->clone()));
+    foreach (QUmlPackageImport *element, packageImports())
+        c->addPackageImport(dynamic_cast<QUmlPackageImport *>(element->clone()));
     c->setName(name());
     c->setRequiredProfile(requiredProfile());
     foreach (QDuseDesignDimension *element, designDimensions())
@@ -90,6 +96,96 @@ QModelingElement *QDuseDesignSpace::clone() const
 }
 
 // OWNED ATTRIBUTES
+
+/*!
+    The elements imported by the design space.
+
+    \sa addElementImport(), removeElementImport()
+ */
+const QSet<QUmlElementImport *> QDuseDesignSpace::elementImports() const
+{
+    // This is a read-write property
+
+    return _elementImports;
+}
+
+/*!
+    Adds \a elementImport to elementImports.
+
+    \sa elementImports(), removeElementImport()
+ */
+void QDuseDesignSpace::addElementImport(QUmlElementImport *elementImport)
+{
+    // This is a read-write property
+
+    if (!_elementImports.contains(elementImport)) {
+        _elementImports.insert(elementImport);
+        if (elementImport && elementImport->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(elementImport->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removeElementImport(QObject *)));
+        elementImport->asQModelingObject()->setParent(this->asQModelingObject());
+    }
+}
+
+/*!
+    Removes \a elementImport from elementImports.
+
+    \sa elementImports(), addElementImport()
+ */
+void QDuseDesignSpace::removeElementImport(QUmlElementImport *elementImport)
+{
+    // This is a read-write property
+
+    if (_elementImports.contains(elementImport)) {
+        _elementImports.remove(elementImport);
+        if (elementImport->asQModelingObject())
+            elementImport->asQModelingObject()->setParent(0);
+    }
+}
+
+/*!
+    The packages imported by the design space.
+
+    \sa addPackageImport(), removePackageImport()
+ */
+const QSet<QUmlPackageImport *> QDuseDesignSpace::packageImports() const
+{
+    // This is a read-write property
+
+    return _packageImports;
+}
+
+/*!
+    Adds \a packageImport to packageImports.
+
+    \sa packageImports(), removePackageImport()
+ */
+void QDuseDesignSpace::addPackageImport(QUmlPackageImport *packageImport)
+{
+    // This is a read-write property
+
+    if (!_packageImports.contains(packageImport)) {
+        _packageImports.insert(packageImport);
+        if (packageImport && packageImport->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(packageImport->asQModelingObject(), SIGNAL(destroyed(QObject*)), this->asQModelingObject(), SLOT(removePackageImport(QObject *)));
+        packageImport->asQModelingObject()->setParent(this->asQModelingObject());
+    }
+}
+
+/*!
+    Removes \a packageImport from packageImports.
+
+    \sa packageImports(), addPackageImport()
+ */
+void QDuseDesignSpace::removePackageImport(QUmlPackageImport *packageImport)
+{
+    // This is a read-write property
+
+    if (_packageImports.contains(packageImport)) {
+        _packageImports.remove(packageImport);
+        if (packageImport->asQModelingObject())
+            packageImport->asQModelingObject()->setParent(0);
+    }
+}
 
 /*!
     The design space name.

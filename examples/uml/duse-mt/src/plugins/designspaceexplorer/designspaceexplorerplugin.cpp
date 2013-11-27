@@ -53,7 +53,6 @@
 #include <QtWidgets/QTableWidget>
 #include <QtWidgets/QApplication>
 
-
 #include <QtCore/QFileInfo>
 
 #include <QtScript/QScriptValueIterator>
@@ -78,6 +77,8 @@
 #include "private/qsaduseprofileprocesscomponentobject_p.h"
 
 #include "newdusedesigndialog.h"
+
+#include <QDebug>
 
 template <class T>
 QScriptValue qSetToScriptValue(QScriptEngine *engine, const QSet<T *> &elements)
@@ -123,10 +124,10 @@ DesignSpaceExplorerPlugin::DesignSpaceExplorerPlugin(QObject *parent) :
     _metricsQuickView(new QQuickView),
     _designSpaceExplorer(new QTableWidget),
     _currentDesignSpaceLocationView(new QModelingObjectView),
-    _currentDesignSpaceLocationModel(new QModelingObjectModel),
+    _currentDesignSpaceLocationQtModel(new QModelingObjectModel),
     _newDuseDesignDialog(new NewDuseDesignDialog)
 {
-    _currentDesignSpaceLocationView->setModel(_currentDesignSpaceLocationModel);
+    _currentDesignSpaceLocationView->setModel(_currentDesignSpaceLocationQtModel);
 }
 
 DesignSpaceExplorerPlugin::~DesignSpaceExplorerPlugin()
@@ -305,22 +306,30 @@ void DesignSpaceExplorerPlugin::openDuseDesign()
 
 void DesignSpaceExplorerPlugin::currentDesignSpaceLocationChanged()
 {
-    qDeleteAll(_currentDesignSpaceLocation);
+    qDeleteAll(_currentDesignSpaceLocationMofModel);
+    _currentDesignSpaceLocationMofModel.clear();
+
     _currentDesignSpaceLocation.clear();
-//    QXmiReader reader;
-//    QFile inputModel(_newDuseDesignDialog->_inputModelFileName);
-//    if (!inputModel.open(QFile::ReadOnly | QFile::Text)) {
-//        QMessageBox::critical(0, tr("Create new DuSE design"), tr("Cannot read file %1").arg(_newDuseDesignDialog->_inputModelFileName));
-//        return;
-//    }
-//    _currentDesignSpaceLocation = reader.readFile(&inputModel);
+    QModelingObject *designSpaceObject = _duseInstance.first()->asQModelingObject();
+    int rowCount = _designSpaceExplorer->rowCount();
+    for (int i = 0; i < rowCount; ++i)
+        _currentDesignSpaceLocation[_designSpaceExplorer->item(i, 1)->text()][qmodelingelementproperty_cast<QDuseDesignDimension *>(designSpaceObject->findChild<QModelingObject *>(_designSpaceExplorer->item(i, 0)->text()))] = qmodelingelementproperty_cast<QDuseVariationPoint *>(designSpaceObject->findChild<QModelingObject *>((dynamic_cast<QComboBox *>(_designSpaceExplorer->cellWidget(i, 2)))->currentText()));
+
     foreach (QModelingElement *element, _core->projectController()->currentModelElements())
-        _currentDesignSpaceLocation << element->clone();
+        _currentDesignSpaceLocationMofModel << element->clone();
 
     QList<QModelingObject *> currentModelObjects;
-    foreach (QModelingElement *element, _currentDesignSpaceLocation)
+    foreach (QModelingElement *element, _currentDesignSpaceLocationMofModel)
         currentModelObjects << element->asQModelingObject();
 
-    _currentDesignSpaceLocationModel->setModelingObjects(currentModelObjects);
+    QDuseDesignSpace *designSpace = dynamic_cast<QDuseDesignSpace *>(_duseInstance.first());
+    foreach (QDuseDesignDimension *designDimension, designSpace->designDimensions())
+        foreach (QDuseDesignDimensionInstance *designDimensionInstance, designDimension->designDimensionInstances()) {
+            QDuseVariationPoint *variationPoint = _currentDesignSpaceLocation[designDimensionInstance->targetInstance()->asQModelingObject()->objectName()][designDimension];
+            foreach (QModelingElement *addedElement, variationPoint->addedElements())
+                qDebug() << "Added" << addedElement->asQModelingObject()->objectName();
+        }
+
+    _currentDesignSpaceLocationQtModel->setModelingObjects(currentModelObjects);
 }
 

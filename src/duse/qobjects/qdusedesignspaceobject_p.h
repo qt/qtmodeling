@@ -58,6 +58,8 @@ class Q_DUSE_EXPORT QDuseDesignSpaceObject : public QModelingObject
     Q_DECLARE_PRIVATE(QModelingObject)
 
     // Properties [DesignSpace]
+    Q_PROPERTY(QSet<QObject *> elementImports READ elementImports NOTIFY elementImportsChanged)
+    Q_PROPERTY(QSet<QObject *> packageImports READ packageImports NOTIFY packageImportsChanged)
     Q_PROPERTY(QString name READ name WRITE setName NOTIFY nameChanged)
     Q_PROPERTY(QString requiredProfile READ requiredProfile WRITE setRequiredProfile NOTIFY requiredProfileChanged)
     Q_PROPERTY(QList<QObject *> designDimensions READ designDimensions NOTIFY designDimensionsChanged)
@@ -67,6 +69,8 @@ public:
     Q_INVOKABLE explicit QDuseDesignSpaceObject(QDuseDesignSpace *modelingElement);
 
     // Owned attributes [DesignSpace]
+    Q_INVOKABLE const QSet<QObject *> elementImports() const;
+    Q_INVOKABLE const QSet<QObject *> packageImports() const;
     Q_INVOKABLE QString name() const;
     Q_INVOKABLE QString requiredProfile() const;
     Q_INVOKABLE const QList<QObject *> designDimensions() const;
@@ -75,6 +79,10 @@ public:
 public Q_SLOTS:
 
     // Slots for owned attributes [DesignSpace]
+    void addElementImport(QObject *elementImport);
+    void removeElementImport(QObject *elementImport);
+    void addPackageImport(QObject *packageImport);
+    void removePackageImport(QObject *packageImport);
     void setName(QString name);
     void setRequiredProfile(QString requiredProfile);
     void addDesignDimension(QObject *designDimension);
@@ -85,6 +93,8 @@ public Q_SLOTS:
 Q_SIGNALS:
 
     // Signals for owned attributes [DesignSpace]
+    void elementImportsChanged(QSet<QObject *> elementImports);
+    void packageImportsChanged(QSet<QObject *> packageImports);
     void nameChanged(QString name);
     void requiredProfileChanged(QString requiredProfile);
     void designDimensionsChanged(QList<QObject *> designDimensions);

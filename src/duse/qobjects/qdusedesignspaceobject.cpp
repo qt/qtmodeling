@@ -44,6 +44,8 @@
 #include <QtDuse/QDuseDesignSpace>
 #include <QtDuse/QDuseDesignDimension>
 #include <QtDuse/QDuseQualityMetric>
+#include <QtUml/QUmlElementImport>
+#include <QtUml/QUmlPackageImport>
 
 QT_BEGIN_NAMESPACE
 
@@ -55,6 +57,22 @@ QDuseDesignSpaceObject::QDuseDesignSpaceObject(QDuseDesignSpace *modelingElement
 }
 
 // OWNED ATTRIBUTES [DesignSpace]
+
+const QSet<QObject *> QDuseDesignSpaceObject::elementImports() const
+{
+    QSet<QObject *> set;
+    foreach (QUmlElementImport *element, qmodelingelementproperty_cast<QDuseDesignSpace *>(this)->elementImports())
+        set.insert(element->asQModelingObject());
+    return set;
+}
+
+const QSet<QObject *> QDuseDesignSpaceObject::packageImports() const
+{
+    QSet<QObject *> set;
+    foreach (QUmlPackageImport *element, qmodelingelementproperty_cast<QDuseDesignSpace *>(this)->packageImports())
+        set.insert(element->asQModelingObject());
+    return set;
+}
 
 QString QDuseDesignSpaceObject::name() const
 {
@@ -83,6 +101,30 @@ const QSet<QObject *> QDuseDesignSpaceObject::qualityMetrics() const
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [DesignSpace]
+
+void QDuseDesignSpaceObject::addElementImport(QObject *elementImport)
+{
+    qmodelingelementproperty_cast<QDuseDesignSpace *>(this)->addElementImport(qmodelingelementproperty_cast<QUmlElementImport *>(elementImport));
+    emit elementImportsChanged(this->elementImports());
+}
+
+void QDuseDesignSpaceObject::removeElementImport(QObject *elementImport)
+{
+    qmodelingelementproperty_cast<QDuseDesignSpace *>(this)->removeElementImport(qmodelingelementproperty_cast<QUmlElementImport *>(elementImport));
+    emit elementImportsChanged(this->elementImports());
+}
+
+void QDuseDesignSpaceObject::addPackageImport(QObject *packageImport)
+{
+    qmodelingelementproperty_cast<QDuseDesignSpace *>(this)->addPackageImport(qmodelingelementproperty_cast<QUmlPackageImport *>(packageImport));
+    emit packageImportsChanged(this->packageImports());
+}
+
+void QDuseDesignSpaceObject::removePackageImport(QObject *packageImport)
+{
+    qmodelingelementproperty_cast<QDuseDesignSpace *>(this)->removePackageImport(qmodelingelementproperty_cast<QUmlPackageImport *>(packageImport));
+    emit packageImportsChanged(this->packageImports());
+}
 
 void QDuseDesignSpaceObject::setName(QString name)
 {
@@ -130,6 +172,8 @@ void QDuseDesignSpaceObject::setGroupProperties()
     d->groupProperties.insert(QStringLiteral("QObject"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("objectName"))));
 
     d->propertyGroups << QStringLiteral("QDuseDesignSpace");
+    d->groupProperties.insert(QStringLiteral("QDuseDesignSpace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("elementImports"))));
+    d->groupProperties.insert(QStringLiteral("QDuseDesignSpace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("packageImports"))));
     d->groupProperties.insert(QStringLiteral("QDuseDesignSpace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
     d->groupProperties.insert(QStringLiteral("QDuseDesignSpace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("requiredProfile"))));
     d->groupProperties.insert(QStringLiteral("QDuseDesignSpace"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("designDimensions"))));
@@ -138,6 +182,26 @@ void QDuseDesignSpaceObject::setGroupProperties()
 
 void QDuseDesignSpaceObject::setPropertyData()
 {
+    Q_DECLARE_METAPROPERTY_INFO(QDuseDesignSpace, elementImports, AggregationRole, QStringLiteral("composite"));
+    Q_DECLARE_METAPROPERTY_INFO(QDuseDesignSpace, elementImports, PropertyClassRole, QStringLiteral("QDuseDesignSpace"));
+    Q_DECLARE_METAPROPERTY_INFO(QDuseDesignSpace, elementImports, PropertyTypeRole, QStringLiteral("QSet<QUmlElementImport *>"));
+    Q_DECLARE_METAPROPERTY_INFO(QDuseDesignSpace, elementImports, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QDuseDesignSpace, elementImports, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QDuseDesignSpace, elementImports, DocumentationRole, QStringLiteral("The elements imported by the design space."));
+    Q_DECLARE_METAPROPERTY_INFO(QDuseDesignSpace, elementImports, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QDuseDesignSpace, elementImports, SubsettedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QDuseDesignSpace, elementImports, OppositeEndRole, QStringLiteral(""));
+
+    Q_DECLARE_METAPROPERTY_INFO(QDuseDesignSpace, packageImports, AggregationRole, QStringLiteral("composite"));
+    Q_DECLARE_METAPROPERTY_INFO(QDuseDesignSpace, packageImports, PropertyClassRole, QStringLiteral("QDuseDesignSpace"));
+    Q_DECLARE_METAPROPERTY_INFO(QDuseDesignSpace, packageImports, PropertyTypeRole, QStringLiteral("QSet<QUmlPackageImport *>"));
+    Q_DECLARE_METAPROPERTY_INFO(QDuseDesignSpace, packageImports, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QDuseDesignSpace, packageImports, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QDuseDesignSpace, packageImports, DocumentationRole, QStringLiteral("The packages imported by the design space."));
+    Q_DECLARE_METAPROPERTY_INFO(QDuseDesignSpace, packageImports, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QDuseDesignSpace, packageImports, SubsettedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QDuseDesignSpace, packageImports, OppositeEndRole, QStringLiteral(""));
+
     Q_DECLARE_METAPROPERTY_INFO(QDuseDesignSpace, name, AggregationRole, QStringLiteral("none"));
     Q_DECLARE_METAPROPERTY_INFO(QDuseDesignSpace, name, PropertyClassRole, QStringLiteral("QDuseDesignSpace"));
     Q_DECLARE_METAPROPERTY_INFO(QDuseDesignSpace, name, PropertyTypeRole, QStringLiteral("QString"));
