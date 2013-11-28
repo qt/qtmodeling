@@ -76,6 +76,8 @@
     <addaction name="actionFileSave"/>
     <addaction name="actionFileSaveAs"/>
     <addaction name="separator"/>
+    <addaction name="actionFileCloseModel"/>
+    <addaction name="separator"/>
     <addaction name="actionFileQuit"/>
    </widget>
    <widget class="QMenu" name="menu_Help">
@@ -182,6 +184,19 @@
    </property>
    <property name="toolTip">
     <string>About DuSE-MT</string>
+   </property>
+  </action>
+  <action name="actionFileCloseModel">
+   <property name="icon">
+    <iconset theme="document-close">
+     <normaloff/>
+    </iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Close Model</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+W</string>
    </property>
   </action>
  </widget>

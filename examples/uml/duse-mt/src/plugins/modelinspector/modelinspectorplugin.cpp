@@ -88,8 +88,14 @@ bool ModelInspectorPlugin::initialize(DuSE::ICore *core)
 
     connect(core->projectController(), SIGNAL(modelOpened(QList<QModelingObject*>)), _modelingObjectModel, SLOT(setModelingObjects(QList<QModelingObject*>)));
     connect(core->projectController(), SIGNAL(modelOpened(QList<QModelingObject*>)), this, SLOT(populateOutputIssues()));
+
+    connect(core->projectController(), SIGNAL(modelClosed()), _modelingObjectModel, SLOT(clear()));
+    connect(core->projectController(), SIGNAL(modelClosed()), _propertyModel, SLOT(clear()));
+    connect(core->projectController(), SIGNAL(modelClosed()), this, SLOT(populateOutputIssues()));
+
     connect(_modelingObjectView, &QModelingObjectView::modelingObjectChanged, _propertyModel, &QModelingObjectPropertyModel::setModelingObject);
     connect(_modelingObjectView, SIGNAL(modelingObjectChanged(QModelingObject*)), core->uiController(), SIGNAL(currentModelingObjectChanged(QModelingObject*)));
+
     connect(_propertyModel, &QModelingObjectPropertyModel::indexChanged, _modelingObjectModel, &QModelingObjectModel::updateIndex);
     connect(core->uiController(), SIGNAL(updateCurrentModelingObject()), _modelingObjectView, SLOT(updateSelected()));
     connect(_modelingObjectView, SIGNAL(addToView(QObject*,QQuickItem*)), core->uiController(), SIGNAL(addToView(QObject*,QQuickItem*)));

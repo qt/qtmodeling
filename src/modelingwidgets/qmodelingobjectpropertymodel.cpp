@@ -100,6 +100,16 @@ void QModelingObjectPropertyModel::setModelingObject(QModelingObject *modelingOb
     }
 }
 
+void QModelingObjectPropertyModel::clear()
+{
+    Q_D(QModelingObjectPropertyModel);
+
+    beginResetModel();
+    d->modelingObject = 0;
+    d->modelingMetaObject = 0;
+    endResetModel();
+}
+
 /*!
     Returns the QModelIndex which corresponds to the \a parent's child at position \a row, \a column.
 */

@@ -63,6 +63,7 @@ public:
 
 public Q_SLOTS:
     virtual bool openModel(const QString &fileName);
+    virtual bool closeModel();
     virtual bool saveModel();
     virtual bool saveModelAs(const QString &fileName);
     virtual bool createModel(const QString &modelFileName, QMetaModelPlugin *metamodelPlugin, const QString &topLevelType);

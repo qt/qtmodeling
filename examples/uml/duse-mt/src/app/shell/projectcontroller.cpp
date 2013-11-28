@@ -57,7 +57,7 @@ ProjectController::ProjectController()
 
 ProjectController::~ProjectController()
 {
-    qDeleteAll(_currentModelElements);
+    closeModel();
 }
 
 bool ProjectController::initialize()
@@ -87,10 +87,7 @@ QList<QModelingElement *> ProjectController::currentModelElements() const
 
 bool ProjectController::openModel(const QString &fileName)
 {
-    qDeleteAll(_currentModelElements);
-    _currentModelElements.clear();
-    _currentModelObjects.clear();
-    _errorStrings.clear();
+    closeModel();
 
     QFile file(fileName);
     if (!file.open(QFile::ReadOnly | QFile::Text)) {
@@ -108,6 +105,21 @@ bool ProjectController::openModel(const QString &fileName)
         _currentModelObjects << element->asQModelingObject();
 
     emit modelOpened(_currentModelObjects);
+
+    return true;
+}
+
+bool ProjectController::closeModel()
+{
+    if (_currentModelObjects.size() == 0)
+        return false;
+
+    emit modelAboutToBeClosed(_currentModelObjects);
+    qDeleteAll(_currentModelElements);
+    _currentModelElements.clear();
+    _currentModelObjects.clear();
+    _errorStrings.clear();
+    emit modelClosed();
 
     return true;
 }

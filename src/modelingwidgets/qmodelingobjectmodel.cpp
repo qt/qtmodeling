@@ -257,8 +257,9 @@ void QModelingObjectModel::clear()
 {
     Q_D(QModelingObjectModel);
 
-    qDeleteAll(d->modelingObjects);
+    beginResetModel();
     d->modelingObjects.clear();
+    endResetModel();
 }
 
 QT_END_NAMESPACE

@@ -76,6 +76,7 @@ public:
 
 public Q_SLOTS:
     void setModelingObject(QModelingObject *modelingObject, QModelIndex index);
+    void clear();
 
 Q_SIGNALS:
     void indexChanged(const QModelIndex &modelingObjectIndex);

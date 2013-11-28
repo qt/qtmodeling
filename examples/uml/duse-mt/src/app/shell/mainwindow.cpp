@@ -152,6 +152,11 @@ void MainWindow::on_actionFileOpenModel_triggered()
     }
 }
 
+void MainWindow::on_actionFileCloseModel_triggered()
+{
+    ICore::self()->projectController()->closeModel();
+}
+
 void MainWindow::evaluateQualityMetrics()
 {
 //    _engine.evaluate("var m = designspace.qualityMetrics.length;

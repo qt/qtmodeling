@@ -85,6 +85,7 @@ private Q_SLOTS:
     void update();
     void on_actionFileNewModel_triggered();
     void on_actionFileOpenModel_triggered();
+    void on_actionFileCloseModel_triggered();
     void on_actionFileSaveAs_triggered();
     void on_actionFileSave_triggered();
     void on_actionHelpAboutPlugins_triggered();

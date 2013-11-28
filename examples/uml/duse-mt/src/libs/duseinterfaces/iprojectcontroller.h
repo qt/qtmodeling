@@ -70,12 +70,15 @@ public:
 
 public Q_SLOTS:
     virtual bool openModel(const QString &fileName) = 0;
+    virtual bool closeModel() = 0;
     virtual bool saveModel() = 0;
     virtual bool saveModelAs(const QString &fileName) = 0;
     virtual bool createModel(const QString &modelFileName, QMetaModelPlugin *metamodelPlugin, const QString &topLevelType) = 0;
 
 Q_SIGNALS:
     void modelOpened(QList<QModelingObject *> model);
+    void modelAboutToBeClosed(QList<QModelingObject *> model);
+    void modelClosed();
 
 protected:
     IProjectController();
