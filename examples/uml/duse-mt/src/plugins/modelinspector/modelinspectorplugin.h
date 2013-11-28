@@ -59,7 +59,7 @@ public:
     ModelInspectorPlugin(QObject *parent = 0);
     virtual ~ModelInspectorPlugin();
 
-    virtual bool initialize(DuSE::ICore *core);
+    virtual bool initialize();
 
 private Q_SLOTS:
     void populateOutputIssues();

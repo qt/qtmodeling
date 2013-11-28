@@ -53,7 +53,7 @@ class WelcomeDashboardPlugin : public DuSE::IPlugin
 public:
     WelcomeDashboardPlugin(QObject *parent = 0);
 
-    virtual bool initialize(DuSE::ICore *core);
+    virtual bool initialize();
 
 private:
     QQuickView *_welcomeQuickView;

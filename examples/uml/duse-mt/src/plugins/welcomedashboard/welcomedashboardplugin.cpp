@@ -52,12 +52,12 @@ WelcomeDashboardPlugin::WelcomeDashboardPlugin(QObject *parent) :
 {
 }
 
-bool WelcomeDashboardPlugin::initialize(DuSE::ICore *core)
+bool WelcomeDashboardPlugin::initialize()
 {
     _welcomeQuickView->setSource(QUrl("qrc:/welcomedashboard/welcomedashboard.qml"));
     _welcomeQuickView->setResizeMode(QQuickView::SizeRootObjectToView);
 
-    core->uiController()->addCentralWidgetTab(QWidget::createWindowContainer(_welcomeQuickView), "Welcome", 0);
+    DuSE::ICore::self()->uiController()->addCentralWidgetTab(QWidget::createWindowContainer(_welcomeQuickView), "Welcome", 0);
 
     return true;
 }

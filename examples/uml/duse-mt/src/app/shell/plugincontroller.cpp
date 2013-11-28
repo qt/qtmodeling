@@ -113,7 +113,6 @@ bool PluginController::initialize()
     }
 
     // Initialize DuSE-MT plugins
-    ICore *core = ICore::self();
     IPlugin *dusePlugin;
     int previousPluginListSize = 0;
     while (pluginList.size() != previousPluginListSize) {
@@ -131,7 +130,7 @@ bool PluginController::initialize()
                     }
                 }
                 if (loadedDependencies == dependencyCount) {
-                    if (dusePlugin->initialize(core)) {
+                    if (dusePlugin->initialize()) {
                         _dusemtPlugins << dusePlugin;
                         pluginList.removeAll(plugin);
                     }

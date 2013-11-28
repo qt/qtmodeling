@@ -54,9 +54,10 @@ class ConcreteSyntaxViewPlugin : public DuSE::IPlugin
 public:
     ConcreteSyntaxViewPlugin(QObject *parent = 0);
 
-    virtual bool initialize(DuSE::ICore *core);
+    virtual bool initialize();
 
 private Q_SLOTS:
+    void initializeQuickView();
     void addToView(QObject *selectedModelingObject, QQuickItem *parent = 0);
 
 private:

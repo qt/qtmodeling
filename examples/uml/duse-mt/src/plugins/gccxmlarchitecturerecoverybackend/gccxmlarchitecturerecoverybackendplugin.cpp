@@ -53,11 +53,11 @@ GccXmlArchitectureRecoveryBackendPlugin::GccXmlArchitectureRecoveryBackendPlugin
 {
 }
 
-bool GccXmlArchitectureRecoveryBackendPlugin::initialize(DuSE::ICore *core)
+bool GccXmlArchitectureRecoveryBackendPlugin::initialize()
 {
     QAction *newArchitectureRecoveryProcessAction = new QAction(QIcon(), tr("New architecture recovery process"), this);
     connect(newArchitectureRecoveryProcessAction, SIGNAL(triggered()), this, SLOT(newArchitectureRecoveryProcess()));
-    core->uiController()->addAction(newArchitectureRecoveryProcessAction, tr("menu_File"));
+    DuSE::ICore::self()->uiController()->addAction(newArchitectureRecoveryProcessAction, tr("menu_File"));
     return true;
 }
 

@@ -52,12 +52,12 @@ DesignOptimizerPlugin::DesignOptimizerPlugin(QObject *parent) :
 {
 }
 
-bool DesignOptimizerPlugin::initialize(DuSE::ICore *core)
+bool DesignOptimizerPlugin::initialize()
 {
     _paretoFrontQuickView->setSource(QUrl("qrc:/designoptimizer/paretofront.qml"));
     _paretoFrontQuickView->setResizeMode(QQuickView::SizeRootObjectToView);
 
-    core->uiController()->addCentralWidgetTab(QWidget::createWindowContainer(_paretoFrontQuickView), "Pareto Front");
+    DuSE::ICore::self()->uiController()->addCentralWidgetTab(QWidget::createWindowContainer(_paretoFrontQuickView), "Pareto Front");
 
     return true;
 }

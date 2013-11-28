@@ -41,6 +41,7 @@
 #include "concretesyntaxviewplugin.h"
 
 #include <duseinterfaces/iuicontroller.h>
+#include <duseinterfaces/iprojectcontroller.h>
 
 #include <QtQuick/QQuickView>
 #include <QtQuick/QQuickItem>
@@ -60,15 +61,21 @@ ConcreteSyntaxViewPlugin::ConcreteSyntaxViewPlugin(QObject *parent) :
 {
 }
 
-bool ConcreteSyntaxViewPlugin::initialize(DuSE::ICore *core)
+bool ConcreteSyntaxViewPlugin::initialize()
 {
-    _concreteSyntaxQuickView->setSource(QUrl("qrc:/concretesyntaxview/concretesyntaxview.qml"));
     _concreteSyntaxQuickView->setResizeMode(QQuickView::SizeRootObjectToView);
+    DuSE::ICore::self()->uiController()->addCentralWidgetTab(QWidget::createWindowContainer(_concreteSyntaxQuickView), "Concrete Syntax");
+    initializeQuickView();
 
-    core->uiController()->addCentralWidgetTab(QWidget::createWindowContainer(_concreteSyntaxQuickView), "Concrete Syntax");
-    connect(core->uiController(), &DuSE::IUiController::addToView, this, &ConcreteSyntaxViewPlugin::addToView);
+    connect(DuSE::ICore::self()->uiController(), &DuSE::IUiController::addToView, this, &ConcreteSyntaxViewPlugin::addToView);
+    connect(DuSE::ICore::self()->projectController(), SIGNAL(modelAboutToBeClosed(QList<QModelingObject *>)), this, SLOT(initializeQuickView()));
 
     return true;
+}
+
+void ConcreteSyntaxViewPlugin::initializeQuickView()
+{
+    _concreteSyntaxQuickView->setSource(QUrl("qrc:/concretesyntaxview/concretesyntaxview.qml"));
 }
 
 void ConcreteSyntaxViewPlugin::addToView(QObject *selectedModelingObject, QQuickItem *parent)

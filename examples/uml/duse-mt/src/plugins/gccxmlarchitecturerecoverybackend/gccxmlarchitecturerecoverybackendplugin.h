@@ -58,7 +58,7 @@ class GccXmlArchitectureRecoveryBackendPlugin : public DuSE::IPlugin, public IAr
 public:
     GccXmlArchitectureRecoveryBackendPlugin(QObject *parent = 0);
 
-    virtual bool initialize(DuSE::ICore *core);
+    virtual bool initialize();
 
     void setRootProjectDir(const QDir &rootProjectDir);
 

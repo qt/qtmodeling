@@ -50,10 +50,9 @@ ArchitectureRecoveryCorePlugin::ArchitectureRecoveryCorePlugin(QObject *parent) 
 {
 }
 
-bool ArchitectureRecoveryCorePlugin::initialize(DuSE::ICore *core)
+bool ArchitectureRecoveryCorePlugin::initialize()
 {
-    Q_UNUSED(core);
-    qDebug() << core->pluginController()->pluginsByType<IArchitectureRecoveryBackend *>();
+    qDebug() << DuSE::ICore::self()->pluginController()->pluginsByType<IArchitectureRecoveryBackend *>();
     return true;
 }
 

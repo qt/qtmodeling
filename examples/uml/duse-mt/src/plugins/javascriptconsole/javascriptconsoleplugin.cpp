@@ -97,60 +97,73 @@ void scriptValueToQList(const QScriptValue &obj, QList<T *> &elements)
 JavaScriptConsolePlugin::JavaScriptConsolePlugin(QObject *parent) :
     DuSE::IPlugin(parent),
     _javaScriptConsole(new Ui::JavaScriptConsole),
-    _codeCompletionView(new QListView)
+    _codeCompletionView(new QListView),
+    _engine(0)
 {
 }
 
 JavaScriptConsolePlugin::~JavaScriptConsolePlugin()
 {
     delete _javaScriptConsole;
+    delete _engine;
 }
 
-bool JavaScriptConsolePlugin::initialize(DuSE::ICore *core)
+bool JavaScriptConsolePlugin::initialize()
 {
     QWidget *javaScriptConsoleWidget = new QWidget;
     _javaScriptConsole->setupUi(javaScriptConsoleWidget);
-    core->uiController()->addDockWidget(Qt::BottomDockWidgetArea, tr("JavaScript Console"), javaScriptConsoleWidget);
+    DuSE::ICore::self()->uiController()->addDockWidget(Qt::BottomDockWidgetArea, tr("JavaScript Console"), javaScriptConsoleWidget);
 
     _javaScriptConsole->txeJavaScript->installEventFilter(this);
     _codeCompletionView->installEventFilter(this);
-
-    _javaScriptConsole->txeJavaScript->setText("self");
 
     _codeCompletionView->setParent(_javaScriptConsole->txeJavaScript);
     _codeCompletionView->hide();
 
     connect(_javaScriptConsole->psbJSEvaluate, &QPushButton::clicked, this, &JavaScriptConsolePlugin::evaluate);
-    connect(_javaScriptConsole->psbJSEvaluate, SIGNAL(clicked()), core->uiController(), SIGNAL(updateCurrentModelingObject()));
-    connect(core->uiController(), &DuSE::IUiController::currentModelingObjectChanged, this, &JavaScriptConsolePlugin::setSelfProperty);
-    connect(core->projectController(), SIGNAL(modelOpened(QList<QModelingObject*>)), this, SLOT(setRootAndInputProperties(QList<QModelingObject*>)));
+    connect(_javaScriptConsole->psbJSEvaluate, SIGNAL(clicked()), DuSE::ICore::self()->uiController(), SIGNAL(updateCurrentModelingObject()));
 
-    qScriptRegisterMetaType(&_engine, qSetToScriptValue<QObject>, scriptValueToQSet<QObject>);
-    qScriptRegisterMetaType(&_engine, qListToScriptValue<QObject>, scriptValueToQList<QObject>);
+    connect(DuSE::ICore::self()->uiController(), &DuSE::IUiController::currentModelingObjectChanged, this, &JavaScriptConsolePlugin::setSelfProperty);
+    connect(DuSE::ICore::self()->projectController(), SIGNAL(modelOpened(QList<QModelingObject*>)), this, SLOT(initializeEngine(QList<QModelingObject*>)));
+    connect(DuSE::ICore::self()->projectController(), SIGNAL(modelAboutToBeClosed(QList<QModelingObject*>)), this, SLOT(destroyEngine()));
 
     return true;
 }
 
 void JavaScriptConsolePlugin::setSelfProperty(QModelingObject *modelingObject)
 {
-    _engine.globalObject().setProperty("self", _engine.newQObject(modelingObject));
+    _engine->globalObject().setProperty("self", _engine->newQObject(modelingObject));
 }
 
-void JavaScriptConsolePlugin::setRootAndInputProperties(QList<QModelingObject *> modelingObjects)
+void JavaScriptConsolePlugin::initializeEngine(QList<QModelingObject *> modelingObjects)
 {
     if (modelingObjects.size() == 0)
         return;
 
-    QModelingObject *modelingObject = modelingObjects.at(0);
-    _engine.globalObject().setProperty(modelingObject->objectName(), _engine.newQObject(modelingObject));
+    _engine = new QScriptEngine;
+    qScriptRegisterMetaType(_engine, qSetToScriptValue<QObject>, scriptValueToQSet<QObject>);
+    qScriptRegisterMetaType(_engine, qListToScriptValue<QObject>, scriptValueToQList<QObject>);
 
-    QScriptValue array = _engine.newArray();
+    QModelingObject *modelingObject = modelingObjects.at(0);
+    _engine->globalObject().setProperty(modelingObject->objectName(), _engine->newQObject(modelingObject));
+
+    QScriptValue array = _engine->newArray();
     foreach (QModelingObject *modelingObject, modelingObjects)
-        array.property(QString::fromLatin1("push")).call(array, QScriptValueList() << _engine.newQObject(modelingObject));
-    _engine.globalObject().setProperty("input", array);
+        array.property(QString::fromLatin1("push")).call(array, QScriptValueList() << _engine->newQObject(modelingObject));
+    _engine->globalObject().setProperty("input", array);
 
     _javaScriptConsole->txeJavaScript->setText("self");
+    _javaScriptConsole->psbJSEvaluate->setEnabled(true);
     QTimer::singleShot(0, this, SLOT(evaluate()));
+}
+
+void JavaScriptConsolePlugin::destroyEngine()
+{
+    delete _engine;
+    _engine = 0;
+    _javaScriptConsole->txeJavaScript->clear();
+    _javaScriptConsole->txeJavaScriptEvaluation->clear();
+    _javaScriptConsole->psbJSEvaluate->setEnabled(false);
 }
 
 bool JavaScriptConsolePlugin::eventFilter(QObject *obj, QEvent *event)
@@ -158,7 +171,7 @@ bool JavaScriptConsolePlugin::eventFilter(QObject *obj, QEvent *event)
     if (event->type() == QEvent::KeyPress && obj == _javaScriptConsole->txeJavaScript) {
         QKeyEvent *keyEvent = static_cast<QKeyEvent *>(event);
         if (keyEvent->key() == 46) {
-            QModelingObject *modelingObject = dynamic_cast<QModelingObject *>(_engine.evaluate(_javaScriptConsole->txeJavaScript->toPlainText()).toQObject());
+            QModelingObject *modelingObject = dynamic_cast<QModelingObject *>(_engine->evaluate(_javaScriptConsole->txeJavaScript->toPlainText()).toQObject());
             if (modelingObject) {
                 const QMetaObject *metaObject = modelingObject->metaObject();
                 int propertyCount = metaObject->propertyCount();
@@ -197,5 +210,5 @@ bool JavaScriptConsolePlugin::eventFilter(QObject *obj, QEvent *event)
 
 void JavaScriptConsolePlugin::evaluate()
 {
-    _javaScriptConsole->txeJavaScriptEvaluation->setText(_engine.evaluate(_javaScriptConsole->txeJavaScript->toPlainText()).toString());
+    _javaScriptConsole->txeJavaScriptEvaluation->setText(_engine->evaluate(_javaScriptConsole->txeJavaScript->toPlainText()).toString());
 }

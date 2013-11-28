@@ -51,7 +51,7 @@ class ArchitectureRecoveryCorePlugin : public DuSE::IPlugin
 public:
     ArchitectureRecoveryCorePlugin(QObject *parent = 0);
 
-    virtual bool initialize(DuSE::ICore *core);
+    virtual bool initialize();
 };
 
 #endif // ARCHITECTURERECOVERYCOREPLUGIN

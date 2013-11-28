@@ -80,25 +80,25 @@ ModelInspectorPlugin::~ModelInspectorPlugin()
     delete _outputIssues;
 }
 
-bool ModelInspectorPlugin::initialize(DuSE::ICore *core)
+bool ModelInspectorPlugin::initialize()
 {
-    core->uiController()->addDockWidget(Qt::LeftDockWidgetArea, tr("Model Inspector"), _modelingObjectView);
-    core->uiController()->addDockWidget(Qt::RightDockWidgetArea, tr("Property Editor"), _propertyEditor);
-    core->uiController()->addDockWidget(Qt::BottomDockWidgetArea, tr("Issues"), _outputIssues);
+    DuSE::ICore::self()->uiController()->addDockWidget(Qt::LeftDockWidgetArea, tr("Model Inspector"), _modelingObjectView);
+    DuSE::ICore::self()->uiController()->addDockWidget(Qt::RightDockWidgetArea, tr("Property Editor"), _propertyEditor);
+    DuSE::ICore::self()->uiController()->addDockWidget(Qt::BottomDockWidgetArea, tr("Issues"), _outputIssues);
 
-    connect(core->projectController(), SIGNAL(modelOpened(QList<QModelingObject*>)), _modelingObjectModel, SLOT(setModelingObjects(QList<QModelingObject*>)));
-    connect(core->projectController(), SIGNAL(modelOpened(QList<QModelingObject*>)), this, SLOT(populateOutputIssues()));
+    connect(DuSE::ICore::self()->projectController(), SIGNAL(modelOpened(QList<QModelingObject*>)), _modelingObjectModel, SLOT(setModelingObjects(QList<QModelingObject*>)));
+    connect(DuSE::ICore::self()->projectController(), SIGNAL(modelOpened(QList<QModelingObject*>)), this, SLOT(populateOutputIssues()));
 
-    connect(core->projectController(), SIGNAL(modelClosed()), _modelingObjectModel, SLOT(clear()));
-    connect(core->projectController(), SIGNAL(modelClosed()), _propertyModel, SLOT(clear()));
-    connect(core->projectController(), SIGNAL(modelClosed()), this, SLOT(populateOutputIssues()));
+    connect(DuSE::ICore::self()->projectController(), SIGNAL(modelClosed()), _modelingObjectModel, SLOT(clear()));
+    connect(DuSE::ICore::self()->projectController(), SIGNAL(modelClosed()), _propertyModel, SLOT(clear()));
+    connect(DuSE::ICore::self()->projectController(), SIGNAL(modelClosed()), this, SLOT(populateOutputIssues()));
 
     connect(_modelingObjectView, &QModelingObjectView::modelingObjectChanged, _propertyModel, &QModelingObjectPropertyModel::setModelingObject);
-    connect(_modelingObjectView, SIGNAL(modelingObjectChanged(QModelingObject*)), core->uiController(), SIGNAL(currentModelingObjectChanged(QModelingObject*)));
+    connect(_modelingObjectView, SIGNAL(modelingObjectChanged(QModelingObject*)), DuSE::ICore::self()->uiController(), SIGNAL(currentModelingObjectChanged(QModelingObject*)));
 
     connect(_propertyModel, &QModelingObjectPropertyModel::indexChanged, _modelingObjectModel, &QModelingObjectModel::updateIndex);
-    connect(core->uiController(), SIGNAL(updateCurrentModelingObject()), _modelingObjectView, SLOT(updateSelected()));
-    connect(_modelingObjectView, SIGNAL(addToView(QObject*,QQuickItem*)), core->uiController(), SIGNAL(addToView(QObject*,QQuickItem*)));
+    connect(DuSE::ICore::self()->uiController(), SIGNAL(updateCurrentModelingObject()), _modelingObjectView, SLOT(updateSelected()));
+    connect(_modelingObjectView, SIGNAL(addToView(QObject*,QQuickItem*)), DuSE::ICore::self()->uiController(), SIGNAL(addToView(QObject*,QQuickItem*)));
 
     return true;
 }

@@ -50,6 +50,7 @@ class NewDuseDesignDialog;
 class QQuickView;
 class QTableWidget;
 
+class QModelingObject;
 class QModelingElement;
 
 class QModelingObjectModel;
@@ -71,16 +72,17 @@ public:
     DesignSpaceExplorerPlugin(QObject *parent = 0);
     virtual ~DesignSpaceExplorerPlugin();
 
-    virtual bool initialize(DuSE::ICore *core);
+    virtual bool initialize();
 
 private Q_SLOTS:
+    void initializeEngine(QList<QModelingObject *> modelingObjects);
+    void destroyEngine();
+    void resetDesignSpaceExplorer();
     void newDuseDesign();
     void openDuseDesign();
     void currentDesignSpaceLocationChanged();
 
 private:
-    DuSE::ICore *_core;
-
     QQuickView *_currentDesignSpaceLocationQuickView;
     QQuickView *_metricsQuickView;
     QTableWidget *_designSpaceExplorer;
@@ -92,7 +94,7 @@ private:
     QList<QModelingElement *> _currentDesignSpaceLocationMofModel;
     QHash<QString, QHash<QDuseDesignDimension *, QDuseVariationPoint *> > _currentDesignSpaceLocation;
 
-    QScriptEngine _engine;
+    QScriptEngine *_engine;
 
     void populateDesignSpaceExplorer();
 };

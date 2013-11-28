@@ -67,14 +67,15 @@ public:
     JavaScriptConsolePlugin(QObject *parent = 0);
     virtual ~JavaScriptConsolePlugin();
 
-    virtual bool initialize(DuSE::ICore *core);
+    virtual bool initialize();
 
 protected:
     bool eventFilter(QObject *obj, QEvent *event);
 
 public Q_SLOTS:
     void setSelfProperty(QModelingObject *modelingObject);
-    void setRootAndInputProperties(QList<QModelingObject *> modelingObjects);
+    void initializeEngine(QList<QModelingObject *> modelingObjects);
+    void destroyEngine();
 
 private Q_SLOTS:
     void evaluate();
@@ -82,7 +83,7 @@ private Q_SLOTS:
 private:
     Ui::JavaScriptConsole *_javaScriptConsole;
     QListView *_codeCompletionView;
-    QScriptEngine _engine;
+    QScriptEngine *_engine;
 };
 
 #endif // JAVASCRIPTCONSOLEPLUGIN_H

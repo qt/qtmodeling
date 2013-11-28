@@ -58,7 +58,7 @@ public:
     IPlugin(QObject *parent = 0);
     virtual ~IPlugin();
 
-    virtual bool initialize(ICore *core) = 0;
+    virtual bool initialize() = 0;
 };
 
 }

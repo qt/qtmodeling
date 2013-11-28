@@ -51,7 +51,7 @@ class UmlConcreteSyntaxPlugin : public DuSE::IPlugin
 public:
     UmlConcreteSyntaxPlugin(QObject *parent = 0);
 
-    virtual bool initialize(DuSE::ICore *core);
+    virtual bool initialize();
 };
 
 #endif // UMLCONCRETESYNTAXPLUGIN_H

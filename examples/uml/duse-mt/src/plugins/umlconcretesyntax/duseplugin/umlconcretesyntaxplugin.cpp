@@ -45,9 +45,8 @@ UmlConcreteSyntaxPlugin::UmlConcreteSyntaxPlugin(QObject *parent) :
 {
 }
 
-bool UmlConcreteSyntaxPlugin::initialize(DuSE::ICore *core)
+bool UmlConcreteSyntaxPlugin::initialize()
 {
-    Q_UNUSED(core);
     return true;
 }
 
