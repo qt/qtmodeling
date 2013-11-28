@@ -72,13 +72,13 @@ public:
 protected:
     bool eventFilter(QObject *obj, QEvent *event);
 
-public Q_SLOTS:
+private Q_SLOTS:
     void setSelfProperty(QModelingObject *modelingObject);
     void initializeEngine(QList<QModelingObject *> modelingObjects);
     void destroyEngine();
-
-private Q_SLOTS:
     void evaluate();
+    void saveScript();
+    void openScript();
 
 private:
     Ui::JavaScriptConsole *_javaScriptConsole;

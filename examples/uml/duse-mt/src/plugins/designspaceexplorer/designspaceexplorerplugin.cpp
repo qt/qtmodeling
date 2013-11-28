@@ -224,12 +224,19 @@ void DesignSpaceExplorerPlugin::destroyEngine()
 
 void DesignSpaceExplorerPlugin::resetDesignSpaceExplorer()
 {
+    qDeleteAll(_duseInstance);
+    _duseInstance.clear();
+    qDeleteAll(_currentDesignSpaceLocationMofModel);
+    _currentDesignSpaceLocationMofModel.clear();
+
     _designSpaceExplorer->setRowCount(0);
     _designSpaceExplorer->clearContents();
 }
 
 void DesignSpaceExplorerPlugin::newDuseDesign()
 {
+    DuSE::ICore::self()->projectController()->closeModel();
+    resetDesignSpaceExplorer();
     do {
         if (_newDuseDesignDialog->exec() == QDialog::Accepted) {
             if (_newDuseDesignDialog->_inputModelFileName.isEmpty() || _newDuseDesignDialog->_duseInstanceModelFileName.isEmpty()) {
@@ -247,8 +254,6 @@ void DesignSpaceExplorerPlugin::newDuseDesign()
                     QMessageBox::critical(0, tr("Create new DuSE design"), QStringLiteral("%1 is not a valid DuSE instance !").arg(QFileInfo(file).fileName()));
                     return;
                 }
-
-                DuSE::ICore::self()->projectController()->closeModel();
                 if (!DuSE::ICore::self()->projectController()->openModel(_newDuseDesignDialog->_inputModelFileName)) {
                     QMessageBox::critical(0, tr("Create new DuSE design"), QStringLiteral("Error loading input file %1 !").arg(_newDuseDesignDialog->_inputModelFileName));
                     return;
@@ -335,6 +340,10 @@ void DesignSpaceExplorerPlugin::currentDesignSpaceLocationChanged()
     _currentDesignSpaceLocationMofModel.clear();
 
     _currentDesignSpaceLocation.clear();
+
+    if (_duseInstance.size() == 0)
+        return;
+
     QModelingObject *designSpaceObject = _duseInstance.first()->asQModelingObject();
     int rowCount = _designSpaceExplorer->rowCount();
     for (int i = 0; i < rowCount; ++i)

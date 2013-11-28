@@ -52,8 +52,11 @@
 #include <QtGui/QKeyEvent>
 
 #include <QtWidgets/QListView>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QFileDialog>
 
 #include <QtCore/QTimer>
+#include <QtCore/QTextStream>
 #include <QtCore/QStringListModel>
 
 template <class T>
@@ -120,8 +123,11 @@ bool JavaScriptConsolePlugin::initialize()
     _codeCompletionView->setParent(_javaScriptConsole->txeJavaScript);
     _codeCompletionView->hide();
 
-    connect(_javaScriptConsole->psbJSEvaluate, &QPushButton::clicked, this, &JavaScriptConsolePlugin::evaluate);
-    connect(_javaScriptConsole->psbJSEvaluate, SIGNAL(clicked()), DuSE::ICore::self()->uiController(), SIGNAL(updateCurrentModelingObject()));
+    connect(_javaScriptConsole->tbtJSEvaluate, &QToolButton::clicked, this, &JavaScriptConsolePlugin::evaluate);
+    connect(_javaScriptConsole->tbtJSEvaluate, SIGNAL(clicked()), DuSE::ICore::self()->uiController(), SIGNAL(updateCurrentModelingObject()));
+
+    connect(_javaScriptConsole->tbtSaveScript, &QToolButton::clicked, this, &JavaScriptConsolePlugin::saveScript);
+    connect(_javaScriptConsole->tbtOpenScript, &QToolButton::clicked, this, &JavaScriptConsolePlugin::openScript);
 
     connect(DuSE::ICore::self()->uiController(), &DuSE::IUiController::currentModelingObjectChanged, this, &JavaScriptConsolePlugin::setSelfProperty);
     connect(DuSE::ICore::self()->projectController(), SIGNAL(modelOpened(QList<QModelingObject*>)), this, SLOT(initializeEngine(QList<QModelingObject*>)));
@@ -153,7 +159,9 @@ void JavaScriptConsolePlugin::initializeEngine(QList<QModelingObject *> modeling
     _engine->globalObject().setProperty("input", array);
 
     _javaScriptConsole->txeJavaScript->setText("self");
-    _javaScriptConsole->psbJSEvaluate->setEnabled(true);
+    _javaScriptConsole->tbtJSEvaluate->setEnabled(true);
+    _javaScriptConsole->tbtSaveScript->setEnabled(true);
+    _javaScriptConsole->tbtOpenScript->setEnabled(true);
     QTimer::singleShot(0, this, SLOT(evaluate()));
 }
 
@@ -163,7 +171,9 @@ void JavaScriptConsolePlugin::destroyEngine()
     _engine = 0;
     _javaScriptConsole->txeJavaScript->clear();
     _javaScriptConsole->txeJavaScriptEvaluation->clear();
-    _javaScriptConsole->psbJSEvaluate->setEnabled(false);
+    _javaScriptConsole->tbtJSEvaluate->setEnabled(false);
+    _javaScriptConsole->tbtSaveScript->setEnabled(false);
+    _javaScriptConsole->tbtOpenScript->setEnabled(false);
 }
 
 bool JavaScriptConsolePlugin::eventFilter(QObject *obj, QEvent *event)
@@ -211,4 +221,34 @@ bool JavaScriptConsolePlugin::eventFilter(QObject *obj, QEvent *event)
 void JavaScriptConsolePlugin::evaluate()
 {
     _javaScriptConsole->txeJavaScriptEvaluation->setText(_engine->evaluate(_javaScriptConsole->txeJavaScript->toPlainText()).toString());
+}
+
+void JavaScriptConsolePlugin::saveScript()
+{
+    QString fileName = QFileDialog::getSaveFileName(0, tr("Save script"), QDir::currentPath(), "*.js");
+    if (!fileName.isEmpty()) {
+        QFile file(fileName);
+        if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
+            QMessageBox::critical(0, tr("Save script"), tr("Error when saving script as %1").arg(fileName));
+            return;
+        }
+        QTextStream out(&file);
+        out << _javaScriptConsole->txeJavaScript->toPlainText();
+        file.close();
+    }
+}
+
+void JavaScriptConsolePlugin::openScript()
+{
+    QString fileName = QFileDialog::getOpenFileName(0, tr("Open script"), QDir::currentPath(), "*.js");
+    if (!fileName.isEmpty()) {
+        QFile file(fileName);
+        if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+            QMessageBox::critical(0, tr("Open script"), tr("Error when opening script %1").arg(fileName));
+            return;
+        }
+        QTextStream in(&file);
+        _javaScriptConsole->txeJavaScript->setPlainText(in.readAll());
+        file.close();
+    }
 }
