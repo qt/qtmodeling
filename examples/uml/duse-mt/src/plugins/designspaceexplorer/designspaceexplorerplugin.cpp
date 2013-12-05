@@ -41,12 +41,12 @@
 #include "designspaceexplorerplugin.h"
 
 #include <duseinterfaces/iuicontroller.h>
+#include <duseinterfaces/iplugincontroller.h>
 #include <duseinterfaces/iprojectcontroller.h>
 
 #include <QtQuick/QQuickView>
 
 #include <QtWidgets/QAction>
-#include <QtWidgets/QWidget>
 #include <QtWidgets/QComboBox>
 #include <QtWidgets/QMessageBox>
 #include <QtWidgets/QHeaderView>
@@ -58,7 +58,7 @@
 #include <QtScript/QScriptValueIterator>
 
 #include <QtModeling/QXmiReader>
-#include <QtModeling/QModelingElement>
+#include <QtModeling/QMetaModelPlugin>
 
 #include <QtModelingWidgets/QModelingObjectView>
 #include <QtModelingWidgets/QModelingObjectModel>
@@ -72,9 +72,6 @@
 #include <QtDuse/QDuseVariationPoint>
 #include <QtDuse/QDuseDesignDimension>
 #include <QtDuse/QDuseDesignDimensionInstance>
-
-#include <QtSADuseProfile/QSADuseProfileProcessComponent>
-#include "private/qsaduseprofileprocesscomponentobject_p.h"
 
 #include "newdusedesigndialog.h"
 
@@ -136,8 +133,6 @@ DesignSpaceExplorerPlugin::~DesignSpaceExplorerPlugin()
     delete _newDuseDesignDialog;
     delete _engine;
 }
-
-Q_SCRIPT_DECLARE_QMETAOBJECT(QSADuseProfileProcessComponentObject, QSADuseProfileProcessComponent *);
 
 bool DesignSpaceExplorerPlugin::initialize()
 {
@@ -357,11 +352,18 @@ void DesignSpaceExplorerPlugin::currentDesignSpaceLocationChanged()
         currentModelObjects << element->asQModelingObject();
 
     QDuseDesignSpace *designSpace = dynamic_cast<QDuseDesignSpace *>(_duseInstance.first());
+    QUmlModel *topModel = dynamic_cast<QUmlModel *>(_currentDesignSpaceLocationMofModel.first());
     foreach (QDuseDesignDimension *designDimension, designSpace->designDimensions())
         foreach (QDuseDesignDimensionInstance *designDimensionInstance, designDimension->designDimensionInstances()) {
             QDuseVariationPoint *variationPoint = _currentDesignSpaceLocation[designDimensionInstance->targetInstance()->asQModelingObject()->objectName()][designDimension];
-            foreach (QModelingElement *addedElement, variationPoint->addedElements())
+            foreach (QModelingElement *addedElement, variationPoint->addedElements()) {
+                QObject *modelingObject = addedElement->asQModelingObject();
+                QMetaModelPlugin *plugin = DuSE::ICore::self()->pluginController()->metamodelPlugins()[modelingObject->property("namespaceUri").toString()];
+                QModelingElement *newAddedElement = plugin->createModelingElement(modelingObject->property("factoryType").toString());
+                newAddedElement->asQModelingObject()->setObjectName(QStringLiteral("%1-%2").arg(designDimensionInstance->targetInstance()->asQModelingObject()->objectName()).arg(modelingObject->property("factoryType").toString()));
+                topModel->addPackagedElement(dynamic_cast<QUmlPackageableElement *>(newAddedElement));
                 qDebug() << "Added" << addedElement->asQModelingObject()->objectName();
+            }
         }
 
     _currentDesignSpaceLocationQtModel->setModelingObjects(currentModelObjects);

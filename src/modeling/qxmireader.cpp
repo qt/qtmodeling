@@ -190,15 +190,17 @@ QList<QModelingElement *> QXmiReader::readFile(QIODevice *device, QString import
             if (xmiType.isEmpty() || d->xmlNamespaceToImplementationNamespace[xmiType.split(':').first()].isEmpty())
                 continue;
             QString typeNamespaceUri = d->xmlNamespaceToNamespaceUri[xmiType.split(':').first()];
-            xmiType = QStringLiteral("%1%2").arg(d->xmlNamespaceToImplementationNamespace[xmiType.split(':').first()]).arg(xmiType.split(':').last());
+            QString prefix = d->xmlNamespaceToImplementationNamespace[xmiType.split(':').first()];
+            xmiType = QStringLiteral("%1%2").arg(prefix).arg(xmiType.split(':').last());
             QString instanceName = reader.attributes().value(QStringLiteral("name")).toString();
             if (instanceName.isEmpty())
                 instanceName = reader.attributes().value(QStringLiteral("xmi:id")).toString();
-            QModelingElement *modelingObject = createInstance(typeNamespaceUri, xmiType, instanceName);
-            if (modelingObject) {
-                d->idMap.insert(reader.attributes().value(QStringLiteral("xmi:id")).toString(), modelingObject);
+            QModelingElement *modelingElement = createInstance(typeNamespaceUri, xmiType, instanceName);
+            if (modelingElement) {
+                modelingElement->asQModelingObject()->setProperty("factoryType", QStringLiteral("%1%2").arg(prefix).arg(instanceName));
+                d->idMap.insert(reader.attributes().value(QStringLiteral("xmi:id")).toString(), modelingElement);
                 if (!rootElement) {
-                    rootElement = modelingObject;
+                    rootElement = modelingElement;
                     modelingObjectList.insert(insertPosition, rootElement);
                 }
             }
@@ -344,14 +346,15 @@ QList<QModelingElement *> QXmiReader::readFile(QIODevice *device, QString import
 /*!
     Use the factory facilities of metamodel plugin identified by \a namespaceUri to create \a instanceName as an object with type is \a instanceClass.
 */
-QModelingElement *QXmiReader::createInstance(QString namespaceUri, QString instanceClass, QString instanceName)
+QModelingElement *QXmiReader::createInstance(QString namespaceUri, QString instanceType, QString instanceName)
 {
     Q_D(QXmiReader);
     QMetaModelPlugin *metamodelPlugin = d->metaModelPlugins[namespaceUri].first;
-    QModelingElement *modelingObject = metamodelPlugin->createModelingElement(instanceClass);
-    if (modelingObject) {
-        modelingObject->asQModelingObject()->setObjectName(instanceName);
-        return modelingObject;
+    QModelingElement *modelingElement = metamodelPlugin->createModelingElement(instanceType);
+    if (modelingElement) {
+        modelingElement->asQModelingObject()->setObjectName(instanceName);
+        modelingElement->asQModelingObject()->setProperty("namespaceUri", namespaceUri);
+        return modelingElement;
     }
     return 0;
 }

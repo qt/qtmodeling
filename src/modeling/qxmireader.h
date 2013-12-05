@@ -73,7 +73,7 @@ public:
 
 protected:
     void loadPlugins();
-    QModelingElement *createInstance(QString namespaceUri, QString instanceClass, QString instanceName);
+    QModelingElement *createInstance(QString namespaceUri, QString instanceType, QString instanceName);
 };
 
 QT_END_NAMESPACE
