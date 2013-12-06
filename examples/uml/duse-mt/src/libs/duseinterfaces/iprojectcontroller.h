@@ -41,20 +41,24 @@
 #ifndef IPROJECTCONTROLLER_H
 #define IPROJECTCONTROLLER_H
 
+#include "duseinterfaces_global.h"
+
 #include <QtCore/QObject>
 
 #include <QtCore/QString>
 
+QT_BEGIN_NAMESPACE
 class QWidget;
 
 class QModelingObject;
 class QModelingElement;
 class QMetaModelPlugin;
+QT_END_NAMESPACE
 
 namespace DuSE
 {
 
-class IProjectController : public QObject
+class DUSEINTERFACESSHARED_EXPORT IProjectController : public QObject
 {
     Q_OBJECT
 

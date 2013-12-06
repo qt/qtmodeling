@@ -65,10 +65,12 @@
 
 #include <QtUml/QUmlModel>
 #include <QtUml/QUmlProfile>
+#include <QtUml/QUmlProperty>
 #include <QtUml/QUmlOpaqueExpression>
 #include <QtUml/QUmlProfileApplication>
 
 #include <QtDuse/QDuseDesignSpace>
+#include <QtDuse/QDuseModelChange>
 #include <QtDuse/QDuseVariationPoint>
 #include <QtDuse/QDuseDesignDimension>
 #include <QtDuse/QDuseDesignDimensionInstance>
@@ -115,14 +117,17 @@ void scriptValueToQList(const QScriptValue &obj, QList<T *> &elements)
     }
 }
 
+namespace DuSE
+{
+
 DesignSpaceExplorerPlugin::DesignSpaceExplorerPlugin(QObject *parent) :
-    DuSE::IPlugin(parent),
+    IPlugin(parent),
     _currentDesignSpaceLocationQuickView(new QQuickView),
     _metricsQuickView(new QQuickView),
     _designSpaceExplorer(new QTableWidget),
     _currentDesignSpaceLocationView(new QModelingObjectView),
     _currentDesignSpaceLocationQtModel(new QModelingObjectModel),
-    _newDuseDesignDialog(new NewDuseDesignDialog),
+    _newDuseDesignDialog(new DuSE::NewDuseDesignDialog),
     _engine(0)
 {
     _currentDesignSpaceLocationView->setModel(_currentDesignSpaceLocationQtModel);
@@ -139,14 +144,14 @@ bool DesignSpaceExplorerPlugin::initialize()
     _currentDesignSpaceLocationQuickView->setSource(QUrl("qrc:/designspaceexplorer/currentdesignspacelocation.qml"));
     _currentDesignSpaceLocationQuickView->setResizeMode(QQuickView::SizeRootObjectToView);
 
-    DuSE::ICore::self()->uiController()->addCentralWidgetTab(QWidget::createWindowContainer(_currentDesignSpaceLocationQuickView), "Current Design Space Location");
+    ICore::self()->uiController()->addCentralWidgetTab(QWidget::createWindowContainer(_currentDesignSpaceLocationQuickView), "Current Design Space Location");
 
     _metricsQuickView->setSource(QUrl("qrc:/designspaceexplorer/qualitymetrics/qualitymetrics.qml"));
     _metricsQuickView->setResizeMode(QQuickView::SizeRootObjectToView);
 
-    DuSE::ICore::self()->uiController()->addDockWidget(Qt::LeftDockWidgetArea, tr("Quality Metrics"), QWidget::createWindowContainer(_metricsQuickView));
+    ICore::self()->uiController()->addDockWidget(Qt::LeftDockWidgetArea, tr("Quality Metrics"), QWidget::createWindowContainer(_metricsQuickView));
 
-    DuSE::ICore::self()->uiController()->addDockWidget(Qt::LeftDockWidgetArea, tr("Current Location Inspector"), _currentDesignSpaceLocationView);
+    ICore::self()->uiController()->addDockWidget(Qt::LeftDockWidgetArea, tr("Current Location Inspector"), _currentDesignSpaceLocationView);
 
     _designSpaceExplorer->setAlternatingRowColors(true);
     _designSpaceExplorer->horizontalHeader()->setStretchLastSection(true);
@@ -160,7 +165,7 @@ bool DesignSpaceExplorerPlugin::initialize()
     _designSpaceExplorer->resizeColumnToContents(1);
     _designSpaceExplorer->resizeColumnToContents(2);
 
-    DuSE::ICore::self()->uiController()->addDockWidget(Qt::RightDockWidgetArea, "Design Space Explorer", _designSpaceExplorer);
+    ICore::self()->uiController()->addDockWidget(Qt::RightDockWidgetArea, "Design Space Explorer", _designSpaceExplorer);
 
     QString iconThemeName;
 
@@ -177,7 +182,7 @@ bool DesignSpaceExplorerPlugin::initialize()
     }
     _actionFileNewDuseDesign->setIcon(icon8);
     connect(_actionFileNewDuseDesign, &QAction::triggered, this, &DesignSpaceExplorerPlugin::newDuseDesign);
-    DuSE::ICore::self()->uiController()->addAction(_actionFileNewDuseDesign, "menu_File");
+    ICore::self()->uiController()->addAction(_actionFileNewDuseDesign, "menu_File");
 
     QAction *_actionFileOpenDuseDesign = new QAction(0);
     _actionFileOpenDuseDesign->setText(QApplication::translate("MainWindow", "Open DuSE Design ...", 0));
@@ -192,12 +197,12 @@ bool DesignSpaceExplorerPlugin::initialize()
     }
     _actionFileOpenDuseDesign->setIcon(icon9);
     connect(_actionFileOpenDuseDesign, &QAction::triggered, this, &DesignSpaceExplorerPlugin::openDuseDesign);
-    DuSE::ICore::self()->uiController()->addAction(_actionFileOpenDuseDesign, "menu_File");
+    ICore::self()->uiController()->addAction(_actionFileOpenDuseDesign, "menu_File");
 
-    connect(DuSE::ICore::self()->projectController(), SIGNAL(modelOpened(QList<QModelingObject*>)), this, SLOT(initializeEngine(QList<QModelingObject*>)));
-    connect(DuSE::ICore::self()->projectController(), SIGNAL(modelAboutToBeClosed(QList<QModelingObject*>)), this, SLOT(destroyEngine()));
-    connect(DuSE::ICore::self()->projectController(), SIGNAL(modelClosed()), _currentDesignSpaceLocationQtModel, SLOT(clear()));
-    connect(DuSE::ICore::self()->projectController(), SIGNAL(modelClosed()), this, SLOT(resetDesignSpaceExplorer()));
+    connect(ICore::self()->projectController(), SIGNAL(modelOpened(QList<QModelingObject*>)), this, SLOT(initializeEngine(QList<QModelingObject*>)));
+    connect(ICore::self()->projectController(), SIGNAL(modelAboutToBeClosed(QList<QModelingObject*>)), this, SLOT(destroyEngine()));
+    connect(ICore::self()->projectController(), SIGNAL(modelClosed()), _currentDesignSpaceLocationQtModel, SLOT(clear()));
+    connect(ICore::self()->projectController(), SIGNAL(modelClosed()), this, SLOT(resetDesignSpaceExplorer()));
 
     return true;
 }
@@ -230,7 +235,7 @@ void DesignSpaceExplorerPlugin::resetDesignSpaceExplorer()
 
 void DesignSpaceExplorerPlugin::newDuseDesign()
 {
-    DuSE::ICore::self()->projectController()->closeModel();
+    ICore::self()->projectController()->closeModel();
     resetDesignSpaceExplorer();
     do {
         if (_newDuseDesignDialog->exec() == QDialog::Accepted) {
@@ -249,13 +254,13 @@ void DesignSpaceExplorerPlugin::newDuseDesign()
                     QMessageBox::critical(0, tr("Create new DuSE design"), QStringLiteral("%1 is not a valid DuSE instance !").arg(QFileInfo(file).fileName()));
                     return;
                 }
-                if (!DuSE::ICore::self()->projectController()->openModel(_newDuseDesignDialog->_inputModelFileName)) {
+                if (!ICore::self()->projectController()->openModel(_newDuseDesignDialog->_inputModelFileName)) {
                     QMessageBox::critical(0, tr("Create new DuSE design"), QStringLiteral("Error loading input file %1 !").arg(_newDuseDesignDialog->_inputModelFileName));
                     return;
                 }
 
                 bool found = false;
-                QUmlModel *package = dynamic_cast<QUmlModel *>(DuSE::ICore::self()->projectController()->currentModelElements().first());
+                QUmlModel *package = dynamic_cast<QUmlModel *>(ICore::self()->projectController()->currentModelElements().first());
                 QDuseDesignSpace *designSpace = dynamic_cast<QDuseDesignSpace *>(_duseInstance.first());
                 foreach (QUmlProfileApplication *profileApplication, package->profileApplications()) {
                     if (profileApplication->appliedProfile()->name() == designSpace->requiredProfile()) {
@@ -270,7 +275,7 @@ void DesignSpaceExplorerPlugin::newDuseDesign()
                 }
 
                 QScriptValue array = _engine->newArray();
-                foreach (QObject *modelingObject, DuSE::ICore::self()->projectController()->currentModelObjects())
+                foreach (QObject *modelingObject, ICore::self()->projectController()->currentModelObjects())
                     array.property(QString::fromLatin1("push")).call(array, QScriptValueList() << _engine->newQObject(modelingObject));
                 _engine->globalObject().setProperty("input", array);
 
@@ -323,6 +328,7 @@ void DesignSpaceExplorerPlugin::populateDesignSpaceExplorer()
         }
     }
     _designSpaceExplorer->resizeRowsToContents();
+    currentDesignSpaceLocationChanged();
 }
 
 void DesignSpaceExplorerPlugin::openDuseDesign()
@@ -344,7 +350,7 @@ void DesignSpaceExplorerPlugin::currentDesignSpaceLocationChanged()
     for (int i = 0; i < rowCount; ++i)
         _currentDesignSpaceLocation[_designSpaceExplorer->item(i, 1)->text()][qmodelingelementproperty_cast<QDuseDesignDimension *>(designSpaceObject->findChild<QModelingObject *>(_designSpaceExplorer->item(i, 0)->text()))] = qmodelingelementproperty_cast<QDuseVariationPoint *>(designSpaceObject->findChild<QModelingObject *>((dynamic_cast<QComboBox *>(_designSpaceExplorer->cellWidget(i, 2)))->currentText()));
 
-    foreach (QModelingElement *element, DuSE::ICore::self()->projectController()->currentModelElements())
+    foreach (QModelingElement *element, ICore::self()->projectController()->currentModelElements())
         _currentDesignSpaceLocationMofModel << element->clone();
 
     QList<QModelingObject *> currentModelObjects;
@@ -353,19 +359,46 @@ void DesignSpaceExplorerPlugin::currentDesignSpaceLocationChanged()
 
     QDuseDesignSpace *designSpace = dynamic_cast<QDuseDesignSpace *>(_duseInstance.first());
     QUmlModel *topModel = dynamic_cast<QUmlModel *>(_currentDesignSpaceLocationMofModel.first());
-    foreach (QDuseDesignDimension *designDimension, designSpace->designDimensions())
+    foreach (QDuseDesignDimension *designDimension, designSpace->designDimensions()) {
         foreach (QDuseDesignDimensionInstance *designDimensionInstance, designDimension->designDimensionInstances()) {
             QDuseVariationPoint *variationPoint = _currentDesignSpaceLocation[designDimensionInstance->targetInstance()->asQModelingObject()->objectName()][designDimension];
             foreach (QModelingElement *addedElement, variationPoint->addedElements()) {
                 QObject *modelingObject = addedElement->asQModelingObject();
-                QMetaModelPlugin *plugin = DuSE::ICore::self()->pluginController()->metamodelPlugins()[modelingObject->property("namespaceUri").toString()];
+                QMetaModelPlugin *plugin = ICore::self()->pluginController()->metamodelPlugins()[modelingObject->property("namespaceUri").toString()];
                 QModelingElement *newAddedElement = plugin->createModelingElement(modelingObject->property("factoryType").toString());
                 newAddedElement->asQModelingObject()->setObjectName(QStringLiteral("%1-%2").arg(designDimensionInstance->targetInstance()->asQModelingObject()->objectName()).arg(modelingObject->property("factoryType").toString()));
                 topModel->addPackagedElement(dynamic_cast<QUmlPackageableElement *>(newAddedElement));
-                qDebug() << "Added" << addedElement->asQModelingObject()->objectName();
             }
         }
+    }
+
+    foreach (QDuseDesignDimension *designDimension, designSpace->designDimensions()) {
+        foreach (QDuseDesignDimensionInstance *designDimensionInstance, designDimension->designDimensionInstances()) {
+            QDuseVariationPoint *variationPoint = _currentDesignSpaceLocation[designDimensionInstance->targetInstance()->asQModelingObject()->objectName()][designDimension];
+            foreach (QDuseModelChange *modelChange, variationPoint->modelChanges()) {
+                QScriptValue target = _engine->evaluate(modelChange->targetSelectionRule()->bodies().first());
+                if (target.toVariant().canConvert(QMetaType::type("QObject*"))) {
+                    QObject *targetObject = target.toVariant().value<QObject *>();
+                    QString propertyName = modelChange->targetProperty()->name();
+                    QScriptValue value = _engine->evaluate(modelChange->valueSelectionRule()->bodies().first());
+                    QMetaProperty metaProperty = targetObject->metaObject()->property(targetObject->metaObject()->indexOfProperty(propertyName.toLatin1()));
+                    QString typeName = QString::fromLatin1(metaProperty.typeName());
+                    if (metaProperty.type() == QVariant::String) {
+                        targetObject->setProperty(propertyName.toLatin1(), value.toVariant().toString());
+                    }
+                    else if (metaProperty.type() == QVariant::Int || metaProperty.isEnumType()) {
+                        targetObject->setProperty(propertyName.toLatin1(), value.toVariant().toInt());
+                    }
+                    else if (typeName.endsWith('*')) {
+                        targetObject->setProperty(propertyName.toLatin1(), QVariant::fromValue(qmodelingelementproperty_cast<QUmlElement *>(value.toVariant().value<QObject *>())));
+                    }
+                }
+            }
+        }
+    }
 
     _currentDesignSpaceLocationQtModel->setModelingObjects(currentModelObjects);
+}
+
 }
 

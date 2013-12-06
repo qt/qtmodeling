@@ -53,10 +53,14 @@
 
 #include <QtWidgets/QWidget>
 
+#include <QtCore/QDebug>
 #include <QtCore/QRegularExpression>
 
+namespace DuSE
+{
+
 ConcreteSyntaxViewPlugin::ConcreteSyntaxViewPlugin(QObject *parent) :
-    DuSE::IPlugin(parent),
+    IPlugin(parent),
     _concreteSyntaxQuickView(new QQuickView)
 {
 }
@@ -64,11 +68,11 @@ ConcreteSyntaxViewPlugin::ConcreteSyntaxViewPlugin(QObject *parent) :
 bool ConcreteSyntaxViewPlugin::initialize()
 {
     _concreteSyntaxQuickView->setResizeMode(QQuickView::SizeRootObjectToView);
-    DuSE::ICore::self()->uiController()->addCentralWidgetTab(QWidget::createWindowContainer(_concreteSyntaxQuickView), "Concrete Syntax");
+    ICore::self()->uiController()->addCentralWidgetTab(QWidget::createWindowContainer(_concreteSyntaxQuickView), "Concrete Syntax");
     initializeQuickView();
 
-    connect(DuSE::ICore::self()->uiController(), &DuSE::IUiController::addToView, this, &ConcreteSyntaxViewPlugin::addToView);
-    connect(DuSE::ICore::self()->projectController(), SIGNAL(modelAboutToBeClosed(QList<QModelingObject *>)), this, SLOT(initializeQuickView()));
+    connect(ICore::self()->uiController(), &IUiController::addToView, this, &ConcreteSyntaxViewPlugin::addToView);
+    connect(ICore::self()->projectController(), SIGNAL(modelAboutToBeClosed(QList<QModelingObject *>)), this, SLOT(initializeQuickView()));
 
     return true;
 }
@@ -99,5 +103,7 @@ void ConcreteSyntaxViewPlugin::addToView(QObject *selectedModelingObject, QQuick
 
 //    _concreteSyntaxQuickView->rootObject()->dumpObjectTree();
     qmlComponent->deleteLater();
+}
+
 }
 

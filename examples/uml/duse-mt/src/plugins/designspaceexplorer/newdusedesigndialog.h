@@ -43,8 +43,11 @@
 
 #include <QtWidgets/QDialog>
 
+namespace DuSE
+{
+
 namespace Ui {
-class NewDuseDesignDialog;
+    class NewDuseDesignDialog;
 }
 
 class NewDuseDesignDialog : public QDialog
@@ -65,4 +68,7 @@ private:
     Ui::NewDuseDesignDialog *ui;
 };
 
+}
+
 #endif // NEWDUSEDESIGNDIALOG_H
+

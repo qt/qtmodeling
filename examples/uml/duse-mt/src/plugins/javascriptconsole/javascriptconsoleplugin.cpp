@@ -47,6 +47,7 @@
 
 #include <QtModeling/QModelingObject>
 
+#include <QtScript/QScriptEngine>
 #include <QtScript/QScriptValueIterator>
 
 #include <QtGui/QKeyEvent>
@@ -97,8 +98,11 @@ void scriptValueToQList(const QScriptValue &obj, QList<T *> &elements)
     }
 }
 
+namespace DuSE
+{
+
 JavaScriptConsolePlugin::JavaScriptConsolePlugin(QObject *parent) :
-    DuSE::IPlugin(parent),
+    IPlugin(parent),
     _javaScriptConsole(new Ui::JavaScriptConsole),
     _codeCompletionView(new QListView),
     _engine(0)
@@ -115,7 +119,7 @@ bool JavaScriptConsolePlugin::initialize()
 {
     QWidget *javaScriptConsoleWidget = new QWidget;
     _javaScriptConsole->setupUi(javaScriptConsoleWidget);
-    DuSE::ICore::self()->uiController()->addDockWidget(Qt::BottomDockWidgetArea, tr("JavaScript Console"), javaScriptConsoleWidget);
+    ICore::self()->uiController()->addDockWidget(Qt::BottomDockWidgetArea, tr("JavaScript Console"), javaScriptConsoleWidget);
 
     _javaScriptConsole->txeJavaScript->installEventFilter(this);
     _codeCompletionView->installEventFilter(this);
@@ -124,14 +128,14 @@ bool JavaScriptConsolePlugin::initialize()
     _codeCompletionView->hide();
 
     connect(_javaScriptConsole->tbtJSEvaluate, &QToolButton::clicked, this, &JavaScriptConsolePlugin::evaluate);
-    connect(_javaScriptConsole->tbtJSEvaluate, SIGNAL(clicked()), DuSE::ICore::self()->uiController(), SIGNAL(updateCurrentModelingObject()));
+    connect(_javaScriptConsole->tbtJSEvaluate, SIGNAL(clicked()), ICore::self()->uiController(), SIGNAL(updateCurrentModelingObject()));
 
     connect(_javaScriptConsole->tbtSaveScript, &QToolButton::clicked, this, &JavaScriptConsolePlugin::saveScript);
     connect(_javaScriptConsole->tbtOpenScript, &QToolButton::clicked, this, &JavaScriptConsolePlugin::openScript);
 
-    connect(DuSE::ICore::self()->uiController(), &DuSE::IUiController::currentModelingObjectChanged, this, &JavaScriptConsolePlugin::setSelfProperty);
-    connect(DuSE::ICore::self()->projectController(), SIGNAL(modelOpened(QList<QModelingObject*>)), this, SLOT(initializeEngine(QList<QModelingObject*>)));
-    connect(DuSE::ICore::self()->projectController(), SIGNAL(modelAboutToBeClosed(QList<QModelingObject*>)), this, SLOT(destroyEngine()));
+    connect(ICore::self()->uiController(), &IUiController::currentModelingObjectChanged, this, &JavaScriptConsolePlugin::setSelfProperty);
+    connect(ICore::self()->projectController(), SIGNAL(modelOpened(QList<QModelingObject*>)), this, SLOT(initializeEngine(QList<QModelingObject*>)));
+    connect(ICore::self()->projectController(), SIGNAL(modelAboutToBeClosed(QList<QModelingObject*>)), this, SLOT(destroyEngine()));
 
     return true;
 }
@@ -252,3 +256,6 @@ void JavaScriptConsolePlugin::openScript()
         file.close();
     }
 }
+
+}
+

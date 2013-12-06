@@ -46,8 +46,11 @@
 
 #include <QtWidgets/QWidget>
 
+namespace DuSE
+{
+
 DesignOptimizerPlugin::DesignOptimizerPlugin(QObject *parent) :
-    DuSE::IPlugin(parent),
+    IPlugin(parent),
     _paretoFrontQuickView(new QQuickView)
 {
 }
@@ -57,8 +60,10 @@ bool DesignOptimizerPlugin::initialize()
     _paretoFrontQuickView->setSource(QUrl("qrc:/designoptimizer/paretofront.qml"));
     _paretoFrontQuickView->setResizeMode(QQuickView::SizeRootObjectToView);
 
-    DuSE::ICore::self()->uiController()->addCentralWidgetTab(QWidget::createWindowContainer(_paretoFrontQuickView), "Pareto Front");
+    ICore::self()->uiController()->addCentralWidgetTab(QWidget::createWindowContainer(_paretoFrontQuickView), "Pareto Front");
 
     return true;
+}
+
 }
 

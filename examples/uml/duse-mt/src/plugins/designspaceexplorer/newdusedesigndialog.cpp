@@ -43,6 +43,9 @@
 
 #include <QtWidgets/QFileDialog>
 
+namespace DuSE
+{
+
 NewDuseDesignDialog::NewDuseDesignDialog(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::NewDuseDesignDialog)
@@ -66,3 +69,6 @@ void NewDuseDesignDialog::on_tbtDuseInstanceModel_clicked()
     _duseInstanceModelFileName = QFileDialog::getOpenFileName(this, tr("Open DuSE instance model"), QDir::currentPath(), "XMI files (*.xmi)");
     ui->lneDuseInstanceModel->setText(_duseInstanceModelFileName);
 }
+
+}
+

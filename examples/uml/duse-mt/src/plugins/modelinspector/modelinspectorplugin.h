@@ -43,14 +43,19 @@
 
 #include <duseinterfaces/iplugin.h>
 
+QT_BEGIN_NAMESPACE
 class QListView;
 
 class QModelingObjectView;
 class QModelingObjectModel;
 class QModelingObjectPropertyEditor;
 class QModelingObjectPropertyModel;
+QT_END_NAMESPACE
 
-class ModelInspectorPlugin : public DuSE::IPlugin
+namespace DuSE
+{
+
+class ModelInspectorPlugin : public IPlugin
 {
     Q_OBJECT
     Q_PLUGIN_METADATA(IID "org.liveblue.DuSE.IPlugin" FILE "modelinspector.json")
@@ -71,6 +76,8 @@ private:
     QModelingObjectPropertyModel *_propertyModel;
     QListView *_outputIssues;
 };
+
+}
 
 #endif // MODELINSPECTORPLUGIN_H
 

@@ -41,7 +41,12 @@
 #ifndef IMODELINGNOTATION_H
 #define IMODELINGNOTATION_H
 
+QT_BEGIN_NAMESPACE
 class QString;
+QT_END_NAMESPACE
+
+namespace DuSE
+{
 
 class IModelingNotation
 {
@@ -49,6 +54,8 @@ class IModelingNotation
 public:
     virtual void generateDiagram(const QString &name) = 0;
 };
+
+}
 
 #endif // IMODELINGNOTATION_H
 

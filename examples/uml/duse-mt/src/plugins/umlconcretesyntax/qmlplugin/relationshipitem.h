@@ -43,7 +43,9 @@
 
 #include <QtQuick/QQuickPaintedItem>
 
+QT_BEGIN_NAMESPACE
 class QQuickRectangle;
+QT_END_NAMESPACE
 
 class RelationshipItem : public QQuickPaintedItem
 {

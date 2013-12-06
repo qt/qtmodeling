@@ -45,6 +45,12 @@
 
 #include "mainwindow.h"
 
+QT_BEGIN_NAMESPACE
+class QModelingObject;
+class QModelingElement;
+class QMetaModelPlugin;
+QT_END_NAMESPACE
+
 namespace DuSE
 {
 

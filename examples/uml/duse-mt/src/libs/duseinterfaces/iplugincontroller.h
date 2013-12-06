@@ -41,19 +41,23 @@
 #ifndef IPLUGINCONTROLLER_H
 #define IPLUGINCONTROLLER_H
 
+#include "duseinterfaces_global.h"
+
 #include <QtCore/QObject>
 
 #include <QtCore/QPair>
 #include <QtCore/QJsonObject>
 
+QT_BEGIN_NAMESPACE
 class QMetaModelPlugin;
+QT_END_NAMESPACE
 
 namespace DuSE
 {
 
 class IPlugin;
 
-class IPluginController : public QObject
+class DUSEINTERFACESSHARED_EXPORT IPluginController : public QObject
 {
     Q_OBJECT
 

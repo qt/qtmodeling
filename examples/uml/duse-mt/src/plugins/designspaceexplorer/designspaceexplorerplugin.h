@@ -45,8 +45,7 @@
 
 #include <QtScript/QScriptEngine>
 
-class NewDuseDesignDialog;
-
+QT_BEGIN_NAMESPACE
 class QQuickView;
 class QTableWidget;
 
@@ -58,12 +57,14 @@ class QModelingObjectView;
 
 class QDuseDesignDimension;
 class QDuseVariationPoint;
+QT_END_NAMESPACE
 
-namespace Duse {
-    class ICore;
-}
+namespace DuSE {
 
-class DesignSpaceExplorerPlugin : public DuSE::IPlugin
+class ICore;
+class NewDuseDesignDialog;
+
+class DesignSpaceExplorerPlugin : public IPlugin
 {
     Q_OBJECT
     Q_PLUGIN_METADATA(IID "org.liveblue.DuSE.IPlugin" FILE "designspaceexplorer.json")
@@ -89,7 +90,7 @@ private:
     QModelingObjectView *_currentDesignSpaceLocationView;
     QModelingObjectModel *_currentDesignSpaceLocationQtModel;
 
-    NewDuseDesignDialog *_newDuseDesignDialog;
+    DuSE::NewDuseDesignDialog *_newDuseDesignDialog;
     QList<QModelingElement *> _duseInstance;
     QList<QModelingElement *> _currentDesignSpaceLocationMofModel;
     QHash<QString, QHash<QDuseDesignDimension *, QDuseVariationPoint *> > _currentDesignSpaceLocation;
@@ -98,6 +99,8 @@ private:
 
     void populateDesignSpaceExplorer();
 };
+
+}
 
 #endif // DESIGNSPACEEXPLORERPLUGIN_H
 

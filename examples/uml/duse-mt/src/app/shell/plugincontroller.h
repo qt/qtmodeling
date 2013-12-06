@@ -46,9 +46,11 @@
 #include <QtCore/QHash>
 #include <QtCore/QStringList>
 
-class QMetaModelPlugin;
-
+QT_BEGIN_NAMESPACE
 class QTreeWidgetItem;
+
+class QMetaModelPlugin;
+QT_END_NAMESPACE
 
 namespace DuSE
 {

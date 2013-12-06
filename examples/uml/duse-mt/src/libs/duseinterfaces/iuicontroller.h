@@ -41,23 +41,27 @@
 #ifndef IUICONTROLLER_H
 #define IUICONTROLLER_H
 
+#include "duseinterfaces_global.h"
+
 #include <QtCore/QObject>
 
 #include <QtCore/QString>
 
 #include <QtGui/QIcon>
 
+QT_BEGIN_NAMESPACE
 class QModelingObject;
 
 class QAction;
 class QWidget;
 class QQuickItem;
 class QMainWindow;
+QT_END_NAMESPACE
 
 namespace DuSE
 {
 
-class IUiController : public QObject
+class DUSEINTERFACESSHARED_EXPORT IUiController : public QObject
 {
     Q_OBJECT
 

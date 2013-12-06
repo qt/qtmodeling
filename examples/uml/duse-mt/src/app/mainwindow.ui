@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>MainWindow</class>
- <widget class="QMainWindow" name="MainWindow">
+ <class>DuSE::MainWindow</class>
+ <widget class="QMainWindow" name="DuSE::MainWindow">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -208,7 +208,7 @@
   <connection>
    <sender>actionFileQuit</sender>
    <signal>triggered()</signal>
-   <receiver>MainWindow</receiver>
+   <receiver>DuSE::MainWindow</receiver>
    <slot>close()</slot>
    <hints>
     <hint type="sourcelabel">

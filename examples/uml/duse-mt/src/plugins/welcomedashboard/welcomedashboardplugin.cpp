@@ -46,8 +46,11 @@
 
 #include <QtWidgets/QWidget>
 
+namespace DuSE
+{
+
 WelcomeDashboardPlugin::WelcomeDashboardPlugin(QObject *parent) :
-    DuSE::IPlugin(parent),
+    IPlugin(parent),
     _welcomeQuickView(new QQuickView)
 {
 }
@@ -57,8 +60,10 @@ bool WelcomeDashboardPlugin::initialize()
     _welcomeQuickView->setSource(QUrl("qrc:/welcomedashboard/welcomedashboard.qml"));
     _welcomeQuickView->setResizeMode(QQuickView::SizeRootObjectToView);
 
-    DuSE::ICore::self()->uiController()->addCentralWidgetTab(QWidget::createWindowContainer(_welcomeQuickView), "Welcome", 0);
+    ICore::self()->uiController()->addCentralWidgetTab(QWidget::createWindowContainer(_welcomeQuickView), "Welcome", 0);
 
     return true;
+}
+
 }
 

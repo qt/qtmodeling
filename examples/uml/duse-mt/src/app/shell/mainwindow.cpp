@@ -45,6 +45,7 @@
 #include "ui_newmodel.h"
 
 #include <QtCore/QTimer>
+#include <QtCore/QDebug>
 #include <QtCore/QSettings>
 #include <QtCore/QJsonArray>
 #include <QtCore/QJsonObject>
@@ -140,7 +141,7 @@ void MainWindow::on_actionFileOpenModel_triggered()
             QMessageBox::critical(this, tr("Open model"), ICore::self()->projectController()->errorStrings().first());
             return;
         }
-        setWindowTitle(QFileInfo(QFile(fileName)).fileName() + " - DuSE-MT");
+        setWindowTitle(QFileInfo(fileName).fileName() + " - DuSE-MT");
 
 //        _currentFileName = fileName;
 ////        foreach (QWrappedObject *object, _inputModel)

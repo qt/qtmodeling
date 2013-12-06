@@ -45,14 +45,19 @@
 #include <duseinterfaces/iplugincontroller.h>
 #include "iarchitecturerecoverybackend.h"
 
+namespace DuSE
+{
+
 ArchitectureRecoveryCorePlugin::ArchitectureRecoveryCorePlugin(QObject *parent) :
-    DuSE::IPlugin(parent)
+    IPlugin(parent)
 {
 }
 
 bool ArchitectureRecoveryCorePlugin::initialize()
 {
-    qDebug() << DuSE::ICore::self()->pluginController()->pluginsByType<IArchitectureRecoveryBackend *>();
+    qDebug() << ICore::self()->pluginController()->pluginsByType<DuSE::IArchitectureRecoveryBackend *>();
     return true;
+}
+
 }
 

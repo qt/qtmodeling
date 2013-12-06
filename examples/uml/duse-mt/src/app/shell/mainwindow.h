@@ -43,9 +43,22 @@
 
 #include <QtWidgets/QMainWindow>
 
+QT_BEGIN_NAMESPACE
 class QQuickItem;
 class QQmlComponent;
 class QTreeWidgetItem;
+
+class QModelingElement;
+//class QModelingObject;
+class QMetaModelPlugin;
+class QModelingObjectModel;
+class QProgressDialog;
+QT_END_NAMESPACE
+
+class NewDuseDesignDialog;
+
+namespace DuSE
+{
 
 namespace Ui {
     class MainWindow;
@@ -53,17 +66,6 @@ namespace Ui {
     class AboutDuSEMT;
     class NewModel;
 }
-
-class QModelingElement;
-//class QModelingObject;
-class QMetaModelPlugin;
-class QModelingObjectModel;
-class QProgressDialog;
-
-class NewDuseDesignDialog;
-
-namespace DuSE
-{
 
 class IPlugin;
 

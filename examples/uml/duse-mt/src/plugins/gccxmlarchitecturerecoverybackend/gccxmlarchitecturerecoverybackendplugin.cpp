@@ -48,8 +48,11 @@
 
 #include <duseinterfaces/iuicontroller.h>
 
+namespace DuSE
+{
+
 GccXmlArchitectureRecoveryBackendPlugin::GccXmlArchitectureRecoveryBackendPlugin(QObject *parent) :
-    DuSE::IPlugin(parent)
+    IPlugin(parent)
 {
 }
 
@@ -57,7 +60,7 @@ bool GccXmlArchitectureRecoveryBackendPlugin::initialize()
 {
     QAction *newArchitectureRecoveryProcessAction = new QAction(QIcon(), tr("New architecture recovery process"), this);
     connect(newArchitectureRecoveryProcessAction, SIGNAL(triggered()), this, SLOT(newArchitectureRecoveryProcess()));
-    DuSE::ICore::self()->uiController()->addAction(newArchitectureRecoveryProcessAction, tr("menu_File"));
+    ICore::self()->uiController()->addAction(newArchitectureRecoveryProcessAction, tr("menu_File"));
     return true;
 }
 
@@ -163,3 +166,6 @@ QObject *GccXmlArchitectureRecoveryBackendPlugin::extractComponent(QString xmlFi
 
     return component;
 }
+
+}
+

@@ -43,10 +43,15 @@
 
 #include <duseinterfaces/iplugin.h>
 
+QT_BEGIN_NAMESPACE
 class QQuickView;
 class QQuickItem;
+QT_END_NAMESPACE
 
-class ConcreteSyntaxViewPlugin : public DuSE::IPlugin
+namespace DuSE
+{
+
+class ConcreteSyntaxViewPlugin : public IPlugin
 {
     Q_OBJECT
     Q_PLUGIN_METADATA(IID "org.liveblue.DuSE.IPlugin" FILE "concretesyntaxview.json")
@@ -63,6 +68,8 @@ private Q_SLOTS:
 private:
     QQuickView *_concreteSyntaxQuickView;
 };
+
+}
 
 #endif // CONCRETESYNTAXVIEWPLUGIN_H
 

@@ -41,6 +41,9 @@
 #ifndef IARCHITECTURERECOVERYALGORITHM_H
 #define IARCHITECTURERECOVERYALGORITHM_H
 
+namespace DuSE
+{
+
 class IDevelopmentPlatform;
 class IModelingNotation;
 
@@ -56,6 +59,8 @@ public:
     virtual IDevelopmentPlatform* developmentPlatform() = 0;
     virtual IModelingNotation* modelingNotation() = 0;
 };
+
+}
 
 #endif // IARCHITECTURERECOVERYALGORITHM_H
 

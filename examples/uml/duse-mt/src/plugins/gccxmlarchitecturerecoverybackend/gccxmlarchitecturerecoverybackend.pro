@@ -6,6 +6,8 @@
 
 include(../../duse-mt-plugin.pri)
 
+QT += widgets gui
+
 HEADERS += gccxmlarchitecturerecoverybackendplugin.h
 
 SOURCES += gccxmlarchitecturerecoverybackendplugin.cpp

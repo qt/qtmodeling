@@ -43,9 +43,14 @@
 
 #include <duseinterfaces/iplugin.h>
 
+QT_BEGIN_NAMESPACE
 class QQuickView;
+QT_END_NAMESPACE
 
-class DesignOptimizerPlugin : public DuSE::IPlugin
+namespace DuSE
+{
+
+class DesignOptimizerPlugin : public IPlugin
 {
     Q_OBJECT
     Q_PLUGIN_METADATA(IID "org.liveblue.DuSE.IPlugin" FILE "designoptimizer.json")
@@ -58,6 +63,8 @@ public:
 private:
     QQuickView *_paretoFrontQuickView;
 };
+
+}
 
 #endif // DESIGNOPTIMIZERPLUGIN_H
 

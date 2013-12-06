@@ -48,9 +48,14 @@
 #include <QtCore/QObjectList>
 #include <QtCore/QStringList>
 
+QT_BEGIN_NAMESPACE
 class QXmlStreamReader;
+QT_END_NAMESPACE
 
-class GccXmlArchitectureRecoveryBackendPlugin : public DuSE::IPlugin, public IArchitectureRecoveryBackend
+namespace DuSE
+{
+
+class GccXmlArchitectureRecoveryBackendPlugin : public IPlugin, public IArchitectureRecoveryBackend
 {
     Q_OBJECT
     Q_PLUGIN_METADATA(IID "org.liveblue.DuSE.IPlugin" FILE "gccxmlarchitecturerecoverybackend.json")
@@ -78,5 +83,7 @@ private:
     QFile _xmlFile;
     QXmlStreamReader *_xmlReader;
 };
+
+}
 
 #endif // GCCXMLARCHITECTURERECOVERYBACKENDPLUGIN

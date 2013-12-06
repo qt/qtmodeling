@@ -43,9 +43,14 @@
 
 #include <duseinterfaces/iplugin.h>
 
+QT_BEGIN_NAMESPACE
 class QQuickView;
+QT_END_NAMESPACE
 
-class WelcomeDashboardPlugin : public DuSE::IPlugin
+namespace DuSE
+{
+
+class WelcomeDashboardPlugin : public IPlugin
 {
     Q_OBJECT
     Q_PLUGIN_METADATA(IID "org.liveblue.DuSE.IPlugin" FILE "welcomedashboard.json")
@@ -58,6 +63,8 @@ public:
 private:
     QQuickView *_welcomeQuickView;
 };
+
+}
 
 #endif // WELCOMEDASHBOARDPLUGIN_H
 

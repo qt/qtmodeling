@@ -43,22 +43,25 @@
 
 #include <duseinterfaces/iplugin.h>
 
-#include <QtScript/QScriptEngine>
-
+QT_BEGIN_NAMESPACE
 class QListView;
+class QScriptEngine;
 
 class QModelingObject;
-
 class QModelingObjectView;
 class QModelingObjectModel;
 class QModelingObjectPropertyEditor;
 class QModelingObjectPropertyModel;
+QT_END_NAMESPACE
+
+namespace DuSE
+{
 
 namespace Ui {
     class JavaScriptConsole;
 }
 
-class JavaScriptConsolePlugin : public DuSE::IPlugin
+class JavaScriptConsolePlugin : public IPlugin
 {
     Q_OBJECT
     Q_PLUGIN_METADATA(IID "org.liveblue.DuSE.IPlugin" FILE "javascriptconsole.json")
@@ -85,5 +88,7 @@ private:
     QListView *_codeCompletionView;
     QScriptEngine *_engine;
 };
+
+}
 
 #endif // JAVASCRIPTCONSOLEPLUGIN_H
