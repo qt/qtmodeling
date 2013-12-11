@@ -45,8 +45,11 @@
 #include <architecturerecoverycore/iarchitecturerecoverybackend.h>
 
 #include <QtCore/QDir>
+#include <QtCore/QHash>
 #include <QtCore/QObjectList>
 #include <QtCore/QStringList>
+#include <QtCore/QMetaType>
+#include <QtCore/QVariant>
 
 QT_BEGIN_NAMESPACE
 class QXmlStreamReader;
@@ -76,14 +79,24 @@ private Q_SLOTS:
 private:
     QStringList generateXmlFiles(const QStringList &codeFiles) const;
     bool openXmlFile(const QString &filePath);
-    QStringList findConstructorsFromXml(QString xmlFile);
-    QObject *extractComponent(QString xmlFile);
+    QStringList findConstructorsFromXml();
+    QObject *extractComponent();
+    void findFunctionsFromXml(QObject *component);
+    QHash<QString, QMultiHash<QString, QString> > classFunctionsContainer(QString xmlAttribute, QHash<QString, QMultiHash<QString, QString> > &classFunctions);
+    void findFunctionParameters(const QString &functionName, QMultiHash<QString, QString> &function);
+    QString findTypeNumber(const QString &typeID);
+    QString findType(const QString &typeNumber);
 
     QDir _rootProjectDir;
     QFile _xmlFile;
+    QString _xmlFileName;
     QXmlStreamReader *_xmlReader;
 };
 
-}
+typedef QHash<QString, QMultiHash<QString, QString> > ClassFunctions;
 
 #endif // GCCXMLARCHITECTURERECOVERYBACKENDPLUGIN
+
+}
+
+Q_DECLARE_METATYPE(DuSE::ClassFunctions);
