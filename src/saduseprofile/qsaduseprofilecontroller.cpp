@@ -38,39 +38,52 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef QSADUSEPROFILEPROCESSCOMPONENT_H
-#define QSADUSEPROFILEPROCESSCOMPONENT_H
+#include "qsaduseprofilecontroller.h"
 
-#include <QtSADuseProfile/QtSADuseProfileGlobal>
-
-#include <QtModeling/QModelingElement>
+#include <QtUml/QUmlComponent>
 
 QT_BEGIN_NAMESPACE
 
-QT_MODULE(QtSADuseProfile)
-
-class QUmlComponent;
-
-class Q_SADUSEPROFILE_EXPORT QSADuseProfileProcessComponent : public QModelingElement
+QSADuseProfileController::QSADuseProfileController() :
+    _base_Component(0)
 {
-public:
-    virtual ~QSADuseProfileProcessComponent();
+}
 
-    Q_DECL_HIDDEN virtual QModelingElement *clone() const;
+/*!
+    Destroys the QSADuseProfileController.
+ */
+QSADuseProfileController::~QSADuseProfileController()
+{
+    QModelingElement::deleteQModelingObject();
+}
 
-    // Owned attributes
-    QUmlComponent *base_Component() const;
-    void setBase_Component(QUmlComponent *base_Component);
+QModelingElement *QSADuseProfileController::clone() const
+{
+    QSADuseProfileController *c = new QSADuseProfileController;
+    c->asQModelingObject()->setObjectName(this->asQModelingObject()->objectName());
+    c->asQModelingObject()->setProperty("role", this->asQModelingObject()->property("role"));
+    return c;
+}
 
-protected:
-    explicit QSADuseProfileProcessComponent();
+// OWNED ATTRIBUTES
 
-    QUmlComponent *_base_Component;
-};
+QUmlComponent *QSADuseProfileController::base_Component() const
+{
+    // This is a read-write association end
+
+    return _base_Component;
+}
+
+void QSADuseProfileController::setBase_Component(QUmlComponent *base_Component)
+{
+    // This is a read-write association end
+
+    if (_base_Component != base_Component) {
+        _base_Component = base_Component;
+        if (base_Component && base_Component->asQModelingObject() && this->asQModelingObject())
+            QObject::connect(base_Component->asQModelingObject(), SIGNAL(destroyed()), this->asQModelingObject(), SLOT(setBase_Component()));
+    }
+}
 
 QT_END_NAMESPACE
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE(QSADuseProfileProcessComponent) *)
-
-#endif // QSADUSEPROFILEPROCESSCOMPONENT_H
 

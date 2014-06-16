@@ -1,22 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:uml="http://www.omg.org/spec/UML/20110701">
   <uml:Profile name="SADuseProfile" xmi:id="SADuseProfile" URI="http://liveblue.wordpress.com/SADuseProfile">
-    <elementImport xmi:type="uml:ElementImport" xmi:id="_elementImport.0">
+    <packageImport xmi:type="uml:PackageImport" xmi:id="packageImport0">
+      <importedPackage href=":/metamodels/PrimitiveTypes.xmi#_0"/>
+    </packageImport>
+    <elementImport xmi:type="uml:ElementImport" xmi:id="elementImport0">
       <importedElement href="http://www.omg.org/spec/UML/20110701/UML.xmi#Component"/>
     </elementImport>
-    <packagedElement xmi:type="uml:Stereotype" name="ProcessComponent" xmi:id="ProcessComponent">
-      <ownedComment xmi:type="uml:Comment" xmi:id="ProcessComponent-_ownedComment.0" annotatedElement="ProcessComponent">
-        <body>This stereotype indicates the corresponding QUmlComponent acts as a process component.</body>
-      </ownedComment>
-      <ownedAttribute xmi:type="uml:Property" visibility="public" name="base_Component" xmi:id="ProcessComponent-base_Component" association="A_component_processComponent">
-          <ownedComment xmi:type="uml:Comment" xmi:id="ProcessComponent-base_Component-_ownedComment.0" annotatedElement="ProcessComponent-base_Component">
-              <body>The QUmlComponent which this QSADuseProfileProcessComponent is attached to.</body>
-          </ownedComment>
-          <type href="http://www.omg.org/spec/UML/20110701/UML.xmi#Component"/>
+    <!-- Process Components -->
+    <packagedElement xmi:type="uml:Stereotype" name="ProcessComponent" xmi:id="ProcessComponent" isAbstract="true">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="ProcessComponent-base_Component" visibility="public" name="base_Component" association="A_component_processComponent">
+        <type href="http://www.omg.org/spec/UML/20110701/UML.xmi#Component"/>
       </ownedAttribute>
     </packagedElement>
-    <packagedElement xmi:type="uml:Extension" name="A_component_processComponent" xmi:id="A_component_processComponent" memberEnd="A_component_processComponent-ProcessComponent ProcessComponent-base_Component">
-      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="A_component_processComponent-ProcessComponent" name="extension_ProcessComponent" type="ProcessComponent" aggregation="composite" association="A_component_processComponent"/>
+    <packagedElement xmi:type="uml:Extension" xmi:id="A_component_processComponent" name="A_component_processComponent">
+      <memberEnd xmi:idref="A_component_processComponent-extension_ProcessComponent"/>
+      <memberEnd xmi:idref="ProcessComponent-base_Component"/>
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="A_component_processComponent-extension_ProcessComponent" name="extension_ProcessComponent" type="ProcessComponent" aggregation="composite" association="A_component_processComponent"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" name="TFProcessComponent" xmi:id="TFProcessComponent">
+      <generalization xmi:type="uml:Generalization" xmi:id="TFProcessComponent-generalization0" general="ProcessComponent"/>
+      <ownedAttribute xmi:type="uml:Property" name="tfNum" xmi:id="TFProcessComponent-tfNum">
+        <type href=":/metamodels/PrimitiveTypes.xmi#String"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="TFProcessComponent-tfNum-lowerValue" value="1"/>
+        <upperValue xmi:type="uml:LiteralInteger" xmi:id="TFProcessComponent-tfNum-upperValue" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" name="tfDen" xmi:id="TFProcessComponent-tfDen">
+        <type href=":/metamodels/PrimitiveTypes.xmi#String"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="TFProcessComponent-tfDen-lowerValue" value="1"/>
+        <upperValue xmi:type="uml:LiteralInteger" xmi:id="TFProcessComponent-tfDen-upperValue" value="1"/>
+      </ownedAttribute>
+    </packagedElement>
+    <!-- Controllers -->
+    <packagedElement xmi:type="uml:Stereotype" name="Controller" xmi:id="Controller" isAbstract="true">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="Controller-base_Component" visibility="public" name="base_Component" association="A_component_controller">
+        <type href="http://www.omg.org/spec/UML/20110701/UML.xmi#Component"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="A_component_controller" name="A_component_controller">
+      <memberEnd xmi:idref="A_component_controller-extension_Controller"/>
+      <memberEnd xmi:idref="Controller-base_Component"/>
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="A_component_controller-extension_Controller" name="extension_Controller" type="Controller" aggregation="composite" association="A_component_controller"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" name="SISOController" xmi:id="SISOController" isAbstract="true">
+      <generalization xmi:type="uml:Generalization" xmi:id="SISOController-generalization0" general="Controller"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" name="PIDController" xmi:id="PIDController">
+      <generalization xmi:type="uml:Generalization" xmi:id="PIDController-generalization0" general="SISOController"/>
+      <ownedAttribute xmi:type="uml:Property" name="kp" xmi:id="PIDController-kp">
+        <type href=":/metamodels/PrimitiveTypes.xmi#Real"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="PIDController-kp-lowerValue" value="1"/>
+        <upperValue xmi:type="uml:LiteralInteger" xmi:id="PIDController-kp-upperValue" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" name="ki" xmi:id="PIDController-ki">
+        <type href=":/metamodels/PrimitiveTypes.xmi#Real"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="PIDController-ki-lowerValue" value="1"/>
+        <upperValue xmi:type="uml:LiteralInteger" xmi:id="PIDController-ki-upperValue" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" name="kd" xmi:id="PIDController-kd">
+        <type href=":/metamodels/PrimitiveTypes.xmi#Real"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="PIDController-kd-lowerValue" value="1"/>
+        <upperValue xmi:type="uml:LiteralInteger" xmi:id="PIDController-kd-upperValue" value="1"/>
+      </ownedAttribute>
     </packagedElement>
   </uml:Profile>
 </xmi:XMI>
+

@@ -38,39 +38,66 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef QSADUSEPROFILEPROCESSCOMPONENT_H
-#define QSADUSEPROFILEPROCESSCOMPONENT_H
+#ifndef QSADUSEPROFILETFPROCESSCOMPONENTOBJECT_H
+#define QSADUSEPROFILETFPROCESSCOMPONENTOBJECT_H
 
 #include <QtSADuseProfile/QtSADuseProfileGlobal>
 
-#include <QtModeling/QModelingElement>
+#include <QtModeling/QModelingObject>
 
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtSADuseProfile)
 
-class QUmlComponent;
-
-class Q_SADUSEPROFILE_EXPORT QSADuseProfileProcessComponent : public QModelingElement
+class QSADuseProfileTFProcessComponent;
+class QModelingObjectPrivate;
+class Q_SADUSEPROFILE_EXPORT QSADuseProfileTFProcessComponentObject : public QModelingObject
 {
+    Q_OBJECT
+    Q_DISABLE_COPY(QSADuseProfileTFProcessComponentObject)
+    Q_DECLARE_PRIVATE(QModelingObject)
+
+    // Properties [ProcessComponent]
+    Q_PROPERTY(QObject * base_Component READ base_Component WRITE setBase_Component NOTIFY base_ComponentChanged)
+
+    // Properties [TFProcessComponent]
+    Q_PROPERTY(QString tfNum READ tfNum WRITE setTfNum NOTIFY tfNumChanged)
+    Q_PROPERTY(QString tfDen READ tfDen WRITE setTfDen NOTIFY tfDenChanged)
+
 public:
-    virtual ~QSADuseProfileProcessComponent();
+    Q_INVOKABLE explicit QSADuseProfileTFProcessComponentObject(QSADuseProfileTFProcessComponent *modelingElement);
 
-    Q_DECL_HIDDEN virtual QModelingElement *clone() const;
+    // Owned attributes [ProcessComponent]
+    Q_INVOKABLE QObject *base_Component() const;
 
-    // Owned attributes
-    QUmlComponent *base_Component() const;
-    void setBase_Component(QUmlComponent *base_Component);
+    // Owned attributes [TFProcessComponent]
+    Q_INVOKABLE QString tfNum() const;
+    Q_INVOKABLE QString tfDen() const;
+
+public Q_SLOTS:
+
+    // Slots for owned attributes [ProcessComponent]
+    void setBase_Component(QObject *base_Component = 0);
+
+    // Slots for owned attributes [TFProcessComponent]
+    void setTfNum(QString tfNum);
+    void setTfDen(QString tfDen);
+
+Q_SIGNALS:
+
+    // Signals for owned attributes [ProcessComponent]
+    void base_ComponentChanged(QObject *base_Component);
+
+    // Signals for owned attributes [TFProcessComponent]
+    void tfNumChanged(QString tfNum);
+    void tfDenChanged(QString tfDen);
 
 protected:
-    explicit QSADuseProfileProcessComponent();
-
-    QUmlComponent *_base_Component;
+    virtual void setGroupProperties();
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE
 
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE(QSADuseProfileProcessComponent) *)
-
-#endif // QSADUSEPROFILEPROCESSCOMPONENT_H
+#endif // QSADUSEPROFILETFPROCESSCOMPONENTOBJECT_H
 

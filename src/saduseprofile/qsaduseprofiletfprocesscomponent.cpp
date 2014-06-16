@@ -38,39 +38,71 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef QSADUSEPROFILEPROCESSCOMPONENT_H
-#define QSADUSEPROFILEPROCESSCOMPONENT_H
+#include "qsaduseprofiletfprocesscomponent.h"
 
-#include <QtSADuseProfile/QtSADuseProfileGlobal>
+#include "private/qsaduseprofiletfprocesscomponentobject_p.h"
 
-#include <QtModeling/QModelingElement>
+#include <QtUml/QUmlComponent>
 
 QT_BEGIN_NAMESPACE
 
-QT_MODULE(QtSADuseProfile)
-
-class QUmlComponent;
-
-class Q_SADUSEPROFILE_EXPORT QSADuseProfileProcessComponent : public QModelingElement
+QSADuseProfileTFProcessComponent::QSADuseProfileTFProcessComponent(bool createQModelingObject)
 {
-public:
-    virtual ~QSADuseProfileProcessComponent();
+    if (createQModelingObject)
+        _qModelingObject = qobject_cast<QModelingObject *>(new QSADuseProfileTFProcessComponentObject(this));
+}
 
-    Q_DECL_HIDDEN virtual QModelingElement *clone() const;
+/*!
+    Destroys the QSADuseProfileTFProcessComponent.
+ */
+QSADuseProfileTFProcessComponent::~QSADuseProfileTFProcessComponent()
+{
+    QModelingElement::deleteQModelingObject();
+}
 
-    // Owned attributes
-    QUmlComponent *base_Component() const;
-    void setBase_Component(QUmlComponent *base_Component);
+QModelingElement *QSADuseProfileTFProcessComponent::clone() const
+{
+    QSADuseProfileTFProcessComponent *c = new QSADuseProfileTFProcessComponent;
+    c->asQModelingObject()->setObjectName(this->asQModelingObject()->objectName());
+    c->asQModelingObject()->setProperty("role", this->asQModelingObject()->property("role"));
+    c->setTfNum(tfNum());
+    c->setTfDen(tfDen());
+    return c;
+}
 
-protected:
-    explicit QSADuseProfileProcessComponent();
+// OWNED ATTRIBUTES
 
-    QUmlComponent *_base_Component;
-};
+QString QSADuseProfileTFProcessComponent::tfNum() const
+{
+    // This is a read-write property
+
+    return _tfNum;
+}
+
+void QSADuseProfileTFProcessComponent::setTfNum(QString tfNum)
+{
+    // This is a read-write property
+
+    if (_tfNum != tfNum) {
+        _tfNum = tfNum;
+    }
+}
+
+QString QSADuseProfileTFProcessComponent::tfDen() const
+{
+    // This is a read-write property
+
+    return _tfDen;
+}
+
+void QSADuseProfileTFProcessComponent::setTfDen(QString tfDen)
+{
+    // This is a read-write property
+
+    if (_tfDen != tfDen) {
+        _tfDen = tfDen;
+    }
+}
 
 QT_END_NAMESPACE
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE(QSADuseProfileProcessComponent) *)
-
-#endif // QSADUSEPROFILEPROCESSCOMPONENT_H
 

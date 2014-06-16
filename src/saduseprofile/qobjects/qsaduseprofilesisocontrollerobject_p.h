@@ -38,39 +38,50 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef QSADUSEPROFILEPROCESSCOMPONENT_H
-#define QSADUSEPROFILEPROCESSCOMPONENT_H
+#ifndef QSADUSEPROFILESISOCONTROLLEROBJECT_H
+#define QSADUSEPROFILESISOCONTROLLEROBJECT_H
 
 #include <QtSADuseProfile/QtSADuseProfileGlobal>
 
-#include <QtModeling/QModelingElement>
+#include <QtModeling/QModelingObject>
 
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtSADuseProfile)
 
-class QUmlComponent;
-
-class Q_SADUSEPROFILE_EXPORT QSADuseProfileProcessComponent : public QModelingElement
+class QSADuseProfileSISOController;
+class QModelingObjectPrivate;
+class Q_SADUSEPROFILE_EXPORT QSADuseProfileSISOControllerObject : public QModelingObject
 {
+    Q_OBJECT
+    Q_DISABLE_COPY(QSADuseProfileSISOControllerObject)
+    Q_DECLARE_PRIVATE(QModelingObject)
+
+    // Properties [Controller]
+    Q_PROPERTY(QObject * base_Component READ base_Component WRITE setBase_Component NOTIFY base_ComponentChanged)
+
 public:
-    virtual ~QSADuseProfileProcessComponent();
+    Q_INVOKABLE explicit QSADuseProfileSISOControllerObject(QSADuseProfileSISOController *modelingElement);
 
-    Q_DECL_HIDDEN virtual QModelingElement *clone() const;
+    // Owned attributes [Controller]
+    Q_INVOKABLE QObject *base_Component() const;
 
-    // Owned attributes
-    QUmlComponent *base_Component() const;
-    void setBase_Component(QUmlComponent *base_Component);
+public Q_SLOTS:
+
+    // Slots for owned attributes [Controller]
+    void setBase_Component(QObject *base_Component = 0);
+
+Q_SIGNALS:
+
+    // Signals for owned attributes [Controller]
+    void base_ComponentChanged(QObject *base_Component);
 
 protected:
-    explicit QSADuseProfileProcessComponent();
-
-    QUmlComponent *_base_Component;
+    virtual void setGroupProperties();
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE
 
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE(QSADuseProfileProcessComponent) *)
-
-#endif // QSADUSEPROFILEPROCESSCOMPONENT_H
+#endif // QSADUSEPROFILESISOCONTROLLEROBJECT_H
 

@@ -38,41 +38,41 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#include "qsaduseprofileprocesscomponentobject_p.h"
+#include "qsaduseprofilesisocontrollerobject_p.h"
 #include "private/qmodelingobject_p.h"
 
-#include <QtSADuseProfile/QSADuseProfileProcessComponent>
+#include <QtSADuseProfile/QSADuseProfileSISOController>
 #include <QtUml/QUmlComponent>
 
 QT_BEGIN_NAMESPACE
 
-QSADuseProfileProcessComponentObject::QSADuseProfileProcessComponentObject(QSADuseProfileProcessComponent *modelingElement)
+QSADuseProfileSISOControllerObject::QSADuseProfileSISOControllerObject(QSADuseProfileSISOController *modelingElement)
 {
     setProperty("modelingElement", QVariant::fromValue(static_cast<QModelingElement *>(modelingElement)));
     setGroupProperties();
     setPropertyData();
 }
 
-// OWNED ATTRIBUTES [ProcessComponent]
+// OWNED ATTRIBUTES [Controller]
 
-QObject *QSADuseProfileProcessComponentObject::base_Component() const
+QObject *QSADuseProfileSISOControllerObject::base_Component() const
 {
-    if (!qmodelingelementproperty_cast<QSADuseProfileProcessComponent *>(this)->base_Component())
+    if (!qmodelingelementproperty_cast<QSADuseProfileSISOController *>(this)->base_Component())
         return 0;
     else
-        return qmodelingelementproperty_cast<QSADuseProfileProcessComponent *>(this)->base_Component()->asQModelingObject();
+        return qmodelingelementproperty_cast<QSADuseProfileSISOController *>(this)->base_Component()->asQModelingObject();
 }
 
-// SLOTS FOR OWNED ATTRIBUTES [ProcessComponent]
+// SLOTS FOR OWNED ATTRIBUTES [Controller]
 
-void QSADuseProfileProcessComponentObject::setBase_Component(QObject *base_Component)
+void QSADuseProfileSISOControllerObject::setBase_Component(QObject *base_Component)
 {
-    qmodelingelementproperty_cast<QSADuseProfileProcessComponent *>(this)->setBase_Component(qmodelingelementproperty_cast<QUmlComponent *>(base_Component));
+    qmodelingelementproperty_cast<QSADuseProfileSISOController *>(this)->setBase_Component(qmodelingelementproperty_cast<QUmlComponent *>(base_Component));
     emit base_ComponentChanged(this->base_Component());
 }
 
 
-void QSADuseProfileProcessComponentObject::setGroupProperties()
+void QSADuseProfileSISOControllerObject::setGroupProperties()
 {
     Q_D(QModelingObject);
     const QMetaObject *metaObject = this->metaObject();
@@ -80,21 +80,23 @@ void QSADuseProfileProcessComponentObject::setGroupProperties()
     d->propertyGroups << QStringLiteral("QObject");
     d->groupProperties.insert(QStringLiteral("QObject"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("objectName"))));
 
-    d->propertyGroups << QStringLiteral("QSADuseProfileProcessComponent");
-    d->groupProperties.insert(QStringLiteral("QSADuseProfileProcessComponent"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("base_Component"))));
+    d->propertyGroups << QStringLiteral("QSADuseProfileController");
+    d->groupProperties.insert(QStringLiteral("QSADuseProfileController"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("base_Component"))));
+
+    d->propertyGroups << QStringLiteral("QSADuseProfileSISOController");
 }
 
-void QSADuseProfileProcessComponentObject::setPropertyData()
+void QSADuseProfileSISOControllerObject::setPropertyData()
 {
-    Q_DECLARE_METAPROPERTY_INFO(QSADuseProfileProcessComponent, base_Component, AggregationRole, QStringLiteral("none"));
-    Q_DECLARE_METAPROPERTY_INFO(QSADuseProfileProcessComponent, base_Component, PropertyClassRole, QStringLiteral("QSADuseProfileProcessComponent"));
-    Q_DECLARE_METAPROPERTY_INFO(QSADuseProfileProcessComponent, base_Component, PropertyTypeRole, QStringLiteral("QUmlComponent *"));
-    Q_DECLARE_METAPROPERTY_INFO(QSADuseProfileProcessComponent, base_Component, IsDerivedRole, false);
-    Q_DECLARE_METAPROPERTY_INFO(QSADuseProfileProcessComponent, base_Component, IsDerivedUnionRole, false);
-    Q_DECLARE_METAPROPERTY_INFO(QSADuseProfileProcessComponent, base_Component, DocumentationRole, QStringLiteral(""));
-    Q_DECLARE_METAPROPERTY_INFO(QSADuseProfileProcessComponent, base_Component, RedefinedPropertiesRole, QStringLiteral(""));
-    Q_DECLARE_METAPROPERTY_INFO(QSADuseProfileProcessComponent, base_Component, SubsettedPropertiesRole, QStringLiteral(""));
-    Q_DECLARE_METAPROPERTY_INFO(QSADuseProfileProcessComponent, base_Component, OppositeEndRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QSADuseProfileController, base_Component, AggregationRole, QStringLiteral("none"));
+    Q_DECLARE_METAPROPERTY_INFO(QSADuseProfileController, base_Component, PropertyClassRole, QStringLiteral("QSADuseProfileController"));
+    Q_DECLARE_METAPROPERTY_INFO(QSADuseProfileController, base_Component, PropertyTypeRole, QStringLiteral("QUmlComponent *"));
+    Q_DECLARE_METAPROPERTY_INFO(QSADuseProfileController, base_Component, IsDerivedRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QSADuseProfileController, base_Component, IsDerivedUnionRole, false);
+    Q_DECLARE_METAPROPERTY_INFO(QSADuseProfileController, base_Component, DocumentationRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QSADuseProfileController, base_Component, RedefinedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QSADuseProfileController, base_Component, SubsettedPropertiesRole, QStringLiteral(""));
+    Q_DECLARE_METAPROPERTY_INFO(QSADuseProfileController, base_Component, OppositeEndRole, QStringLiteral(""));
 
 }
 

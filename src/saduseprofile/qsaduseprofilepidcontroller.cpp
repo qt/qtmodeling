@@ -38,39 +38,88 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef QSADUSEPROFILEPROCESSCOMPONENT_H
-#define QSADUSEPROFILEPROCESSCOMPONENT_H
+#include "qsaduseprofilepidcontroller.h"
 
-#include <QtSADuseProfile/QtSADuseProfileGlobal>
+#include "private/qsaduseprofilepidcontrollerobject_p.h"
 
-#include <QtModeling/QModelingElement>
+#include <QtUml/QUmlComponent>
 
 QT_BEGIN_NAMESPACE
 
-QT_MODULE(QtSADuseProfile)
-
-class QUmlComponent;
-
-class Q_SADUSEPROFILE_EXPORT QSADuseProfileProcessComponent : public QModelingElement
+QSADuseProfilePIDController::QSADuseProfilePIDController(bool createQModelingObject)
 {
-public:
-    virtual ~QSADuseProfileProcessComponent();
+    if (createQModelingObject)
+        _qModelingObject = qobject_cast<QModelingObject *>(new QSADuseProfilePIDControllerObject(this));
+}
 
-    Q_DECL_HIDDEN virtual QModelingElement *clone() const;
+/*!
+    Destroys the QSADuseProfilePIDController.
+ */
+QSADuseProfilePIDController::~QSADuseProfilePIDController()
+{
+    QModelingElement::deleteQModelingObject();
+}
 
-    // Owned attributes
-    QUmlComponent *base_Component() const;
-    void setBase_Component(QUmlComponent *base_Component);
+QModelingElement *QSADuseProfilePIDController::clone() const
+{
+    QSADuseProfilePIDController *c = new QSADuseProfilePIDController;
+    c->asQModelingObject()->setObjectName(this->asQModelingObject()->objectName());
+    c->asQModelingObject()->setProperty("role", this->asQModelingObject()->property("role"));
+    c->setKp(kp());
+    c->setKi(ki());
+    c->setKd(kd());
+    return c;
+}
 
-protected:
-    explicit QSADuseProfileProcessComponent();
+// OWNED ATTRIBUTES
 
-    QUmlComponent *_base_Component;
-};
+double QSADuseProfilePIDController::kp() const
+{
+    // This is a read-write property
+
+    return _kp;
+}
+
+void QSADuseProfilePIDController::setKp(double kp)
+{
+    // This is a read-write property
+
+    if (_kp != kp) {
+        _kp = kp;
+    }
+}
+
+double QSADuseProfilePIDController::ki() const
+{
+    // This is a read-write property
+
+    return _ki;
+}
+
+void QSADuseProfilePIDController::setKi(double ki)
+{
+    // This is a read-write property
+
+    if (_ki != ki) {
+        _ki = ki;
+    }
+}
+
+double QSADuseProfilePIDController::kd() const
+{
+    // This is a read-write property
+
+    return _kd;
+}
+
+void QSADuseProfilePIDController::setKd(double kd)
+{
+    // This is a read-write property
+
+    if (_kd != kd) {
+        _kd = kd;
+    }
+}
 
 QT_END_NAMESPACE
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE(QSADuseProfileProcessComponent) *)
-
-#endif // QSADUSEPROFILEPROCESSCOMPONENT_H
 

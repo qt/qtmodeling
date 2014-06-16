@@ -38,39 +38,42 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef QSADUSEPROFILEPROCESSCOMPONENT_H
-#define QSADUSEPROFILEPROCESSCOMPONENT_H
+#ifndef QSADUSEPROFILEPIDCONTROLLER_H
+#define QSADUSEPROFILEPIDCONTROLLER_H
 
 #include <QtSADuseProfile/QtSADuseProfileGlobal>
 
-#include <QtModeling/QModelingElement>
+#include <QtSADuseProfile/QSADuseProfileSISOController>
 
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtSADuseProfile)
 
-class QUmlComponent;
-
-class Q_SADUSEPROFILE_EXPORT QSADuseProfileProcessComponent : public QModelingElement
+class Q_SADUSEPROFILE_EXPORT QSADuseProfilePIDController : public QSADuseProfileSISOController
 {
 public:
-    virtual ~QSADuseProfileProcessComponent();
+    explicit QSADuseProfilePIDController(bool createQModelingObject = true);
+    virtual ~QSADuseProfilePIDController();
 
-    Q_DECL_HIDDEN virtual QModelingElement *clone() const;
+    virtual QModelingElement *clone() const;
 
     // Owned attributes
-    QUmlComponent *base_Component() const;
-    void setBase_Component(QUmlComponent *base_Component);
+    double kp() const;
+    void setKp(double kp);
+    double ki() const;
+    void setKi(double ki);
+    double kd() const;
+    void setKd(double kd);
 
 protected:
-    explicit QSADuseProfileProcessComponent();
-
-    QUmlComponent *_base_Component;
+    double _kp;
+    double _ki;
+    double _kd;
 };
 
 QT_END_NAMESPACE
 
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE(QSADuseProfileProcessComponent) *)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE(QSADuseProfilePIDController) *)
 
-#endif // QSADUSEPROFILEPROCESSCOMPONENT_H
+#endif // QSADUSEPROFILEPIDCONTROLLER_H
 

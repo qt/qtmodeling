@@ -40,28 +40,13 @@
 ****************************************************************************/
 #include "qsaduseprofileprocesscomponent.h"
 
-#include "private/qsaduseprofileprocesscomponentobject_p.h"
-
 #include <QtUml/QUmlComponent>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QSADuseProfileProcessComponent
-
-    \inmodule QtSADuseProfile
-
-    \brief This stereotype indicates the corresponding QUmlComponent acts as a process component.
- */
-
-/*!
-    Creates a new QSADuseProfileProcessComponent. Also creates the corresponding QObject-based representation returned by asQModelingObject() if \a createQModelingObject is true.
-*/
-QSADuseProfileProcessComponent::QSADuseProfileProcessComponent(bool createQModelingObject) :
+QSADuseProfileProcessComponent::QSADuseProfileProcessComponent() :
     _base_Component(0)
 {
-    if (createQModelingObject)
-        _qModelingObject = qobject_cast<QModelingObject *>(new QSADuseProfileProcessComponentObject(this));
 }
 
 /*!
@@ -72,9 +57,6 @@ QSADuseProfileProcessComponent::~QSADuseProfileProcessComponent()
     QModelingElement::deleteQModelingObject();
 }
 
-/*!
-    Returns a deep-copied clone of the QSADuseProfileProcessComponent.
-*/
 QModelingElement *QSADuseProfileProcessComponent::clone() const
 {
     QSADuseProfileProcessComponent *c = new QSADuseProfileProcessComponent;
@@ -85,9 +67,6 @@ QModelingElement *QSADuseProfileProcessComponent::clone() const
 
 // OWNED ATTRIBUTES
 
-/*!
-    The QUmlComponent which this QSADuseProfileProcessComponent is attached to.
- */
 QUmlComponent *QSADuseProfileProcessComponent::base_Component() const
 {
     // This is a read-write association end
@@ -95,9 +74,6 @@ QUmlComponent *QSADuseProfileProcessComponent::base_Component() const
     return _base_Component;
 }
 
-/*!
-    Adjusts base_Component to \a base_Component.
- */
 void QSADuseProfileProcessComponent::setBase_Component(QUmlComponent *base_Component)
 {
     // This is a read-write association end

@@ -38,39 +38,31 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef QSADUSEPROFILEPROCESSCOMPONENT_H
-#define QSADUSEPROFILEPROCESSCOMPONENT_H
+#include "qsaduseprofilesisocontroller.h"
 
-#include <QtSADuseProfile/QtSADuseProfileGlobal>
-
-#include <QtModeling/QModelingElement>
+#include <QtUml/QUmlComponent>
 
 QT_BEGIN_NAMESPACE
 
-QT_MODULE(QtSADuseProfile)
-
-class QUmlComponent;
-
-class Q_SADUSEPROFILE_EXPORT QSADuseProfileProcessComponent : public QModelingElement
+QSADuseProfileSISOController::QSADuseProfileSISOController()
 {
-public:
-    virtual ~QSADuseProfileProcessComponent();
+}
 
-    Q_DECL_HIDDEN virtual QModelingElement *clone() const;
+/*!
+    Destroys the QSADuseProfileSISOController.
+ */
+QSADuseProfileSISOController::~QSADuseProfileSISOController()
+{
+    QModelingElement::deleteQModelingObject();
+}
 
-    // Owned attributes
-    QUmlComponent *base_Component() const;
-    void setBase_Component(QUmlComponent *base_Component);
-
-protected:
-    explicit QSADuseProfileProcessComponent();
-
-    QUmlComponent *_base_Component;
-};
+QModelingElement *QSADuseProfileSISOController::clone() const
+{
+    QSADuseProfileSISOController *c = new QSADuseProfileSISOController;
+    c->asQModelingObject()->setObjectName(this->asQModelingObject()->objectName());
+    c->asQModelingObject()->setProperty("role", this->asQModelingObject()->property("role"));
+    return c;
+}
 
 QT_END_NAMESPACE
-
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE(QSADuseProfileProcessComponent) *)
-
-#endif // QSADUSEPROFILEPROCESSCOMPONENT_H
 

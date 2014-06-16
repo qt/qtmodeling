@@ -51,7 +51,8 @@ QSADuseProfileMetaModelPlugin::QSADuseProfileMetaModelPlugin(QObject *parent)
 
 QModelingElement *QSADuseProfileMetaModelPlugin::createModelingElement(QString type)
 {
-    if (type == "QSADuseProfileProcessComponent") return new QSADuseProfileProcessComponent;
+    if (type == "QSADuseProfileTFProcessComponent") return new QSADuseProfileTFProcessComponent;
+    if (type == "QSADuseProfilePIDController") return new QSADuseProfilePIDController;
     Q_ASSERT_X(true,
                "QSADuseProfileMetaModelPlugin::createModelingElement",
                QStringLiteral("QSADuseProfileMetaModelPlugin does not know how to create instances of '%1' type !").arg(type).toLatin1());

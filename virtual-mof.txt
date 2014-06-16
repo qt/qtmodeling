@@ -1,0 +1,1 @@
+vim qmofassociation.h qmofmultiplicityelement.h qmofnamedelement.h qmofnamespace.h qmofpackageableelement.h qmofredefinableelement.h qmofrelationship.h qmofstructuralfeature.h qmoftypedelement.h

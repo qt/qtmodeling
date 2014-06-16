@@ -38,8 +38,8 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef QSADUSEPROFILEPROCESSCOMPONENT_H
-#define QSADUSEPROFILEPROCESSCOMPONENT_H
+#ifndef QSADUSEPROFILECONTROLLER_H
+#define QSADUSEPROFILECONTROLLER_H
 
 #include <QtSADuseProfile/QtSADuseProfileGlobal>
 
@@ -51,10 +51,10 @@ QT_MODULE(QtSADuseProfile)
 
 class QUmlComponent;
 
-class Q_SADUSEPROFILE_EXPORT QSADuseProfileProcessComponent : public QModelingElement
+class Q_SADUSEPROFILE_EXPORT QSADuseProfileController : public QModelingElement
 {
 public:
-    virtual ~QSADuseProfileProcessComponent();
+    virtual ~QSADuseProfileController();
 
     Q_DECL_HIDDEN virtual QModelingElement *clone() const;
 
@@ -63,14 +63,14 @@ public:
     void setBase_Component(QUmlComponent *base_Component);
 
 protected:
-    explicit QSADuseProfileProcessComponent();
+    explicit QSADuseProfileController();
 
     QUmlComponent *_base_Component;
 };
 
 QT_END_NAMESPACE
 
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE(QSADuseProfileProcessComponent) *)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE(QSADuseProfileController) *)
 
-#endif // QSADUSEPROFILEPROCESSCOMPONENT_H
+#endif // QSADUSEPROFILECONTROLLER_H
 

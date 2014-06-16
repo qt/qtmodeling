@@ -38,39 +38,70 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef QSADUSEPROFILEPROCESSCOMPONENT_H
-#define QSADUSEPROFILEPROCESSCOMPONENT_H
+#ifndef QSADUSEPROFILEPIDCONTROLLEROBJECT_H
+#define QSADUSEPROFILEPIDCONTROLLEROBJECT_H
 
 #include <QtSADuseProfile/QtSADuseProfileGlobal>
 
-#include <QtModeling/QModelingElement>
+#include <QtModeling/QModelingObject>
 
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtSADuseProfile)
 
-class QUmlComponent;
-
-class Q_SADUSEPROFILE_EXPORT QSADuseProfileProcessComponent : public QModelingElement
+class QSADuseProfilePIDController;
+class QModelingObjectPrivate;
+class Q_SADUSEPROFILE_EXPORT QSADuseProfilePIDControllerObject : public QModelingObject
 {
+    Q_OBJECT
+    Q_DISABLE_COPY(QSADuseProfilePIDControllerObject)
+    Q_DECLARE_PRIVATE(QModelingObject)
+
+    // Properties [Controller]
+    Q_PROPERTY(QObject * base_Component READ base_Component WRITE setBase_Component NOTIFY base_ComponentChanged)
+
+    // Properties [PIDController]
+    Q_PROPERTY(double kp READ kp WRITE setKp NOTIFY kpChanged)
+    Q_PROPERTY(double ki READ ki WRITE setKi NOTIFY kiChanged)
+    Q_PROPERTY(double kd READ kd WRITE setKd NOTIFY kdChanged)
+
 public:
-    virtual ~QSADuseProfileProcessComponent();
+    Q_INVOKABLE explicit QSADuseProfilePIDControllerObject(QSADuseProfilePIDController *modelingElement);
 
-    Q_DECL_HIDDEN virtual QModelingElement *clone() const;
+    // Owned attributes [Controller]
+    Q_INVOKABLE QObject *base_Component() const;
 
-    // Owned attributes
-    QUmlComponent *base_Component() const;
-    void setBase_Component(QUmlComponent *base_Component);
+    // Owned attributes [PIDController]
+    Q_INVOKABLE double kp() const;
+    Q_INVOKABLE double ki() const;
+    Q_INVOKABLE double kd() const;
+
+public Q_SLOTS:
+
+    // Slots for owned attributes [Controller]
+    void setBase_Component(QObject *base_Component = 0);
+
+    // Slots for owned attributes [PIDController]
+    void setKp(double kp);
+    void setKi(double ki);
+    void setKd(double kd);
+
+Q_SIGNALS:
+
+    // Signals for owned attributes [Controller]
+    void base_ComponentChanged(QObject *base_Component);
+
+    // Signals for owned attributes [PIDController]
+    void kpChanged(double kp);
+    void kiChanged(double ki);
+    void kdChanged(double kd);
 
 protected:
-    explicit QSADuseProfileProcessComponent();
-
-    QUmlComponent *_base_Component;
+    virtual void setGroupProperties();
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE
 
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE(QSADuseProfileProcessComponent) *)
-
-#endif // QSADUSEPROFILEPROCESSCOMPONENT_H
+#endif // QSADUSEPROFILEPIDCONTROLLEROBJECT_H
 
