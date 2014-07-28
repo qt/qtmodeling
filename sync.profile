@@ -40,7 +40,7 @@
 );
 
 %dependencies = (
-    "qtbase" => "refs/heads/dev",
-    "qtscript" => "refs/heads/dev",
-    "qtdeclarative" => "refs/heads/dev",
+    "qtbase" => "refs/heads/5.3",
+    "qtscript" => "refs/heads/5.3",
+    "qtdeclarative" => "refs/heads/5.3",
 );

@@ -88,7 +88,19 @@ bool PluginController::initialize()
 
     // Load DuSE-MT plugins
     QDir dusePluginsDir(QCoreApplication::applicationDirPath());
-    dusePluginsDir.cd("../lib/duse-mt/plugins");
+
+#if defined(Q_OS_MAC)
+    if (dusePluginsDir.dirName() == "MacOS")
+    {
+        dusePluginsDir.cdUp();
+        dusePluginsDir.cdUp();
+        dusePluginsDir.cdUp();
+    }
+#endif
+
+    dusePluginsDir.cdUp();
+    dusePluginsDir.cd("lib/duse-mt/plugins");
+
     QHash<QString, QString> invertedDependency;
     QObjectList pluginList;
     foreach (const QFileInfo &subdir, dusePluginsDir.entryInfoList(QDir::Dirs|QDir::NoDotAndDotDot)) {
