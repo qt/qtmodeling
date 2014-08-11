@@ -72,13 +72,14 @@ public:
     virtual QStringList errorStrings() const = 0;
 
     template <class T>
-    QList<IPlugin *> pluginsByType() const
+    QList<T *> pluginsByType() const
     {
-        QList<IPlugin *> foundPlugins;
+        QList<T *> foundPlugins;
+        T *tPlugin;
         const QList<IPlugin *> &plugins = dusemtPlugins();
         foreach (IPlugin *dusePlugin, plugins)
-            if (dynamic_cast<T>(dusePlugin))
-                foundPlugins << dusePlugin;
+            if ((tPlugin = dynamic_cast<T *>(dusePlugin)))
+                foundPlugins << tPlugin;
         return foundPlugins;
     }
 
