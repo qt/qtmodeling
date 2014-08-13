@@ -38,36 +38,28 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef IPLUGIN_H
-#define IPLUGIN_H
+#ifndef DEPENDENCYRELATIONSTREEMANAGER_H
+#define DEPENDENCYRELATIONSTREEMANAGER_H
 
-#include "duseinterfaces_global.h"
-
-#include "icore.h"
-
-#include <QtCore/QObject>
-#include <QtCore/QString>
+#include <QMultiMap>
+#include <QHash>
+#include <QStringList>
 
 namespace DuSE
 {
 
-class DUSEINTERFACESSHARED_EXPORT IPlugin : public QObject
+class DependencyRelationsTreeManager
 {
-    Q_OBJECT
-
 public:
-    IPlugin(QObject *parent = 0);
-    virtual ~IPlugin();
+    DependencyRelationsTreeManager();
 
-    virtual bool initialize() = 0;
-
-    virtual QString name();
-
-protected:
-    QString _name;
+    void fillNodesTable(QHash<QString, int> &nodesTable, const QMultiMap<QString, QString> &dependencies);
+    void orderNodes(const QHash<QString, int> &nodesTable, QStringList &nodeList);
+    int findMax(const QHash<QString, int> &nodesTable);
+    QStringList targets(const QStringList &nodesList, const QMultiMap<QString, QString> &dependencies);
+    QStringList sources(QString node, QMultiMap<QString, QString> dependencies);
 };
 
 }
 
-#endif // IPLUGIN_H
-
+#endif // DEPENDENCYRELATIONSTREEMANAGER_H

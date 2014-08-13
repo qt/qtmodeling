@@ -42,13 +42,13 @@
 #define IARCHITECTURERECOVERYBACKEND_H
 
 #include <QObjectList>
+#include <QString>
 
 namespace DuSE
 {
 
 class IArchitectureRecoveryBackend
 {
-
 public:
     virtual QObjectList components() = 0;
     virtual QObjectList connectors() = 0;
@@ -57,4 +57,3 @@ public:
 }
 
 #endif // IARCHITECTURERECOVERYBACKEND_H
-

@@ -38,36 +38,32 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef IPLUGIN_H
-#define IPLUGIN_H
+#ifndef ARCHITECTURERECOVERYPANELPLUGIN_H
+#define ARCHITECTURERECOVERYPANELPLUGIN_H
 
-#include "duseinterfaces_global.h"
+#include <duseinterfaces/iplugin.h>
 
-#include "icore.h"
-
-#include <QtCore/QObject>
-#include <QtCore/QString>
+#include "architecturerecoverypanel.h"
 
 namespace DuSE
 {
 
-class DUSEINTERFACESSHARED_EXPORT IPlugin : public QObject
+class ArchitectureRecoveryPanelPlugin : public IPlugin
 {
     Q_OBJECT
+    Q_PLUGIN_METADATA(IID "org.liveblue.DuSE.IPlugin" FILE "architecturerecoverypanel.json")
 
 public:
-    IPlugin(QObject *parent = 0);
-    virtual ~IPlugin();
+    ArchitectureRecoveryPanelPlugin(QObject *parent = 0);
 
-    virtual bool initialize() = 0;
+    virtual bool initialize();
 
-    virtual QString name();
+    void run();
 
-protected:
-    QString _name;
+private:
+    ArchitectureRecoveryPanel *architectureRecoveryPanel;
 };
 
 }
 
-#endif // IPLUGIN_H
-
+#endif // ARCHITECTURERECOVERYPANELPLUGIN_H

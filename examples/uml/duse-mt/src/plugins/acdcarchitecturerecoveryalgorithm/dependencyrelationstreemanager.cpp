@@ -38,36 +38,80 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef IPLUGIN_H
-#define IPLUGIN_H
-
-#include "duseinterfaces_global.h"
-
-#include "icore.h"
-
-#include <QtCore/QObject>
-#include <QtCore/QString>
+#include "dependencyrelationstreemanager.h"
 
 namespace DuSE
 {
 
-class DUSEINTERFACESSHARED_EXPORT IPlugin : public QObject
+DependencyRelationsTreeManager::DependencyRelationsTreeManager()
 {
-    Q_OBJECT
-
-public:
-    IPlugin(QObject *parent = 0);
-    virtual ~IPlugin();
-
-    virtual bool initialize() = 0;
-
-    virtual QString name();
-
-protected:
-    QString _name;
-};
-
 }
 
-#endif // IPLUGIN_H
+void DependencyRelationsTreeManager::fillNodesTable(QHash<QString, int> &nodesTable, const QMultiMap<QString, QString> &dependencies)
+{
+    foreach (QString key, dependencies.uniqueKeys()) {
+        nodesTable.insert(key, dependencies.values(key).count());
+    }
 
+    foreach (QString value, dependencies.values()) {
+        if (!nodesTable.keys().contains(value)) {
+            nodesTable.insert(value, 0);
+        }
+    }
+}
+
+void DependencyRelationsTreeManager::orderNodes(const QHash<QString, int> &nodesTable, QStringList &nodeList)
+{
+    int max = findMax(nodesTable);
+
+    for (int i = 1; i <= max; ++i) {
+        foreach (QString node, nodesTable.keys()) {
+            int count = nodesTable.value(node);
+
+            if (i == count) {
+                nodeList.append(node);
+            }
+        }
+    }
+}
+
+int DependencyRelationsTreeManager::findMax(const QHash<QString, int> &nodesTable)
+{
+    int max = 0;
+    foreach (int count, nodesTable.values()) {
+        if (count > max) {
+            max = count;
+        }
+    }
+
+    return max;
+}
+
+QStringList DependencyRelationsTreeManager::targets(const QStringList &nodesList, const QMultiMap<QString, QString> &dependencies)
+{
+    QStringList coveredNodes;
+    foreach (QString itemNode, nodesList) {
+        foreach (QString coveredNode, dependencies.values(itemNode)) {
+            if ((coveredNode != itemNode) && !coveredNodes.contains(coveredNode)) {
+                coveredNodes.append(coveredNode);
+            }
+        }
+    }
+
+    return coveredNodes;
+}
+
+QStringList DependencyRelationsTreeManager::sources(QString node, QMultiMap<QString, QString> dependencies)
+{
+    QStringList sourceList;
+
+    foreach (QString key, dependencies.keys()) {
+        if (dependencies.values(key).contains(node)) {
+            sourceList.append(key);
+        }
+    }
+
+    return sourceList;
+}
+
+}

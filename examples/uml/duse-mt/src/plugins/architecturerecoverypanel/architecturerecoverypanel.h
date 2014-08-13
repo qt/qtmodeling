@@ -38,36 +38,53 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef IPLUGIN_H
-#define IPLUGIN_H
+#ifndef ARCHITECTURERECOVERYPANEL_H
+#define ARCHITECTURERECOVERYPANEL_H
 
-#include "duseinterfaces_global.h"
+#include <QtCore/QMap>
+#include <QtWidgets/QDialog>
 
-#include "icore.h"
-
-#include <QtCore/QObject>
-#include <QtCore/QString>
+#include <acdcarchitecturerecoveryalgorithm/acdcarchitecturerecoveryalgorithmplugin.h>
+#include <architecturerecoverycore/architecturerecoverycoreplugin.h>
+#include <architecturerecoverycore/iarchitecturerecoveryalgorithm.h>
+#include <architecturerecoverycore/iarchitecturerecoverybackend.h>
+#include <duseinterfaces/iplugin.h>
+#include <gccxmlarchitecturerecoverybackend/gccxmlarchitecturerecoverybackendplugin.h>
+#include <umlmodelingnotation/umlmodelingnotationplugin.h>
 
 namespace DuSE
 {
 
-class DUSEINTERFACESSHARED_EXPORT IPlugin : public QObject
+namespace Ui {
+    class ArchitectureRecoveryPanel;
+}
+
+class ArchitectureRecoveryPanel : public QDialog
 {
     Q_OBJECT
 
 public:
-    IPlugin(QObject *parent = 0);
-    virtual ~IPlugin();
+    explicit ArchitectureRecoveryPanel(QWidget *parent = 0);
+    ~ArchitectureRecoveryPanel();
 
-    virtual bool initialize() = 0;
+    void loadBackendPlugins();
+    void loadAlgorithmPlugins();
+    void loadNotationPlugins();
 
-    virtual QString name();
+public Q_SLOTS:
+    void loadPanel();
+    void run();
 
-protected:
-    QString _name;
+private:
+    Ui::ArchitectureRecoveryPanel *ui;
+    QMap<QString, IPlugin *> backendPluginsMap;
+    QMap<QString, IArchitectureRecoveryAlgorithm *> algorithmPluginsMap;
+    QMap<QString, IModelingNotation *> notationPluginsMap;
+    ArchitectureRecoveryCorePlugin *architectureRecoveryCore;
 };
+
+#endif // ARCHITECTURERECOVERYPANEL_H
 
 }
 
-#endif // IPLUGIN_H
 

@@ -38,36 +38,56 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef IPLUGIN_H
-#define IPLUGIN_H
+#ifndef ACDCARCHITECTURERECOVERYALGORITHMPLUGIN_H
+#define ACDCARCHITECTURERECOVERYALGORITHMPLUGIN_H
 
-#include "duseinterfaces_global.h"
+#include <QMultiMap>
+#include <QHash>
 
-#include "icore.h"
+#include <duseinterfaces/iplugin.h>
+#include <architecturerecoverycore/iarchitecturerecoveryalgorithm.h>
 
-#include <QtCore/QObject>
-#include <QtCore/QString>
+#include "dependencyrelationstreemanager.h"
+#include "subgraphdominatorpattern.h"
+
+#include "acdcarchitecturerecoveryalgorithm_export.h"
 
 namespace DuSE
 {
 
-class DUSEINTERFACESSHARED_EXPORT IPlugin : public QObject
+class ACDCARCHITECTURERECOVERYALGORITHM_EXPORT AcdcArchitectureRecoveryAlgorithmPlugin : public IPlugin, public IArchitectureRecoveryAlgorithm
 {
     Q_OBJECT
+    Q_PLUGIN_METADATA(IID "org.liveblue.DuSE.IPlugin" FILE "acdcarchitecturerecoveryalgorithm.json")
 
 public:
-    IPlugin(QObject *parent = 0);
-    virtual ~IPlugin();
+    AcdcArchitectureRecoveryAlgorithmPlugin(QObject *parent = 0);
 
-    virtual bool initialize() = 0;
+    virtual bool initialize();
 
-    virtual QString name();
+    virtual void run();
 
-protected:
-    QString _name;
+    void setDependencyRelations(QMultiMap<QString, QString> m_dependencyRelations);
+    QList<QStringList> subgraphs();
+
+    virtual void setDevelopmentPlatform(IDevelopmentPlatform *m_developmentPlatform);
+    virtual void setModelingNotation(IModelingNotation *m_modelingNotation);
+
+    virtual IDevelopmentPlatform* developmentPlatform();
+    virtual IModelingNotation* modelingNotation();
+
+private:
+    IDevelopmentPlatform *_developmentPlatform;
+    IModelingNotation *_modelingNotation;
+    QMultiMap<QString, QString> _dependencyRelations;
+    DependencyRelationsTreeManager *_dependencyRelationsTreeManager;
+    QHash<QString, int> _nodesTable;
+    QStringList _orderedNodes;
+    SubgraphDominatorPattern *_subgraphDominatorPattern;
+    QList<QStringList> _subgraphs;
+    QStringList _orphanNodes;
 };
 
 }
 
-#endif // IPLUGIN_H
-
+#endif // ACDCARCHITECTURERECOVERYALGORITHMPLUGIN_H

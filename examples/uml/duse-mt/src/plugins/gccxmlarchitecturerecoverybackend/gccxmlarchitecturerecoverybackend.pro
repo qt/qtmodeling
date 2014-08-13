@@ -8,8 +8,15 @@ include(../../duse-mt-plugin.pri)
 
 QT += widgets gui
 
-HEADERS += gccxmlarchitecturerecoverybackendplugin.h
+DEFINES += GCCXMLARCHITECTURERECOVERYBACKEND_LIBRARY
 
-SOURCES += gccxmlarchitecturerecoverybackendplugin.cpp
+HEADERS += gccxmlarchitecturerecoverybackend_export.h \
+    gccxmlarchitecturerecoverybackendplugin.h \
+    xmlfilemanager.h \
+    xmlfilereader.h
+
+SOURCES += gccxmlarchitecturerecoverybackendplugin.cpp \
+    xmlfilemanager.cpp \
+    xmlfilereader.cpp
 
 OTHER_FILES += gccxmlarchitecturerecoverybackend.json

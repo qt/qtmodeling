@@ -38,36 +38,33 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef IPLUGIN_H
-#define IPLUGIN_H
+#ifndef SUBGRAPHDOMINATORPATTERN_H
+#define SUBGRAPHDOMINATORPATTERN_H
 
-#include "duseinterfaces_global.h"
+#include <QMultiMap>
+#include <QStringList>
 
-#include "icore.h"
-
-#include <QtCore/QObject>
-#include <QtCore/QString>
+#include "dependencyrelationstreemanager.h"
 
 namespace DuSE
 {
 
-class DUSEINTERFACESSHARED_EXPORT IPlugin : public QObject
+class SubgraphDominatorPattern
 {
-    Q_OBJECT
-
 public:
-    IPlugin(QObject *parent = 0);
-    virtual ~IPlugin();
+    SubgraphDominatorPattern();
 
-    virtual bool initialize() = 0;
+    void executePattern(const QStringList &orderedNodes, QMultiMap<QString, QString> dependencies);
+    QStringList coveredSet(QString node, QMultiMap<QString, QString> dependencies);
+    QStringList orphanNodes(const QList<QStringList> &subgraphs, QMultiMap<QString, QString> dependencies);
 
-    virtual QString name();
+    QList<QStringList> subgraphs();
 
-protected:
-    QString _name;
+private:
+    QList<QStringList> _subgraphs;
+    DependencyRelationsTreeManager _treeManager;
 };
 
 }
 
-#endif // IPLUGIN_H
-
+#endif // SUBGRAPHDOMINATORPATTERN_H

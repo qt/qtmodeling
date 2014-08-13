@@ -38,36 +38,40 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef IPLUGIN_H
-#define IPLUGIN_H
+#ifndef UMLMODELINGNOTATIONPLUGIN_H
+#define UMLMODELINGNOTATIONPLUGIN_H
 
-#include "duseinterfaces_global.h"
+#include <duseinterfaces/iplugin.h>
+#include <architecturerecoverycore/imodelingnotation.h>
 
-#include "icore.h"
+#include <QtCore/QDebug>
+#include <QtCore/QFile>
+#include <QtUml/QtUml>
 
-#include <QtCore/QObject>
-#include <QtCore/QString>
+#include "umlmodelingnotation_export.h"
 
 namespace DuSE
 {
 
-class DUSEINTERFACESSHARED_EXPORT IPlugin : public QObject
+class UMLMODELINGNOTATION_EXPORT UmlModelingNotationPlugin : public IPlugin, public IModelingNotation
 {
     Q_OBJECT
+    Q_PLUGIN_METADATA(IID "org.liveblue.DuSE.IPlugin" FILE "umlmodelingnotation.json")
 
 public:
-    IPlugin(QObject *parent = 0);
-    virtual ~IPlugin();
+    UmlModelingNotationPlugin(QObject *parent = 0);
 
-    virtual bool initialize() = 0;
+    virtual bool initialize();
+    virtual void generateDiagram(const QString &name);
+    void loadSubsystems();
 
-    virtual QString name();
+    void setClusterList(QList<QStringList> m_clusterList);
 
-protected:
-    QString _name;
+private:
+    QList<QStringList> _clusterList;
+    QList<QUmlPackage *> _subsystems;
 };
 
 }
 
-#endif // IPLUGIN_H
-
+#endif // UMLMODELINGNOTATIONPLUGIN_H

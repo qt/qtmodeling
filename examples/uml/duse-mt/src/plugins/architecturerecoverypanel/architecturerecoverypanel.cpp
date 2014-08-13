@@ -38,36 +38,70 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef IPLUGIN_H
-#define IPLUGIN_H
+#include "architecturerecoverypanel.h"
+#include "ui_architecturerecoverypanel.h"
 
-#include "duseinterfaces_global.h"
+#include <QtCore/QDebug>
 
-#include "icore.h"
-
-#include <QtCore/QObject>
-#include <QtCore/QString>
+#include <duseinterfaces/iplugincontroller.h>
 
 namespace DuSE
 {
 
-class DUSEINTERFACESSHARED_EXPORT IPlugin : public QObject
+ArchitectureRecoveryPanel::ArchitectureRecoveryPanel(QWidget *parent) :
+    QDialog(parent),
+    ui(new Ui::ArchitectureRecoveryPanel)
 {
-    Q_OBJECT
+    ui->setupUi(this);
 
-public:
-    IPlugin(QObject *parent = 0);
-    virtual ~IPlugin();
-
-    virtual bool initialize() = 0;
-
-    virtual QString name();
-
-protected:
-    QString _name;
-};
-
+    connect(ui->startPushButton, SIGNAL(clicked()), this, SLOT(run()));
 }
 
-#endif // IPLUGIN_H
+ArchitectureRecoveryPanel::~ArchitectureRecoveryPanel()
+{
+    delete ui;
+}
 
+void ArchitectureRecoveryPanel::loadPanel()
+{
+    loadBackendPlugins();
+    loadAlgorithmPlugins();
+    loadNotationPlugins();
+    show();
+}
+
+void ArchitectureRecoveryPanel::run()
+{
+    GccXmlArchitectureRecoveryBackendPlugin *gccXmlBackend = new GccXmlArchitectureRecoveryBackendPlugin;
+    AcdcArchitectureRecoveryAlgorithmPlugin *acdcAlgorithm = new AcdcArchitectureRecoveryAlgorithmPlugin;
+    UmlModelingNotationPlugin *umlNotation = new UmlModelingNotationPlugin;
+
+    gccXmlBackend->run();
+    DependencyRelations dependencyRelations = gccXmlBackend->components().at(0)->property("components").value<DependencyRelations>();
+    QString systemDirectory = gccXmlBackend->components().at(0)->property("systemDirectory").toString();
+
+    acdcAlgorithm->setDependencyRelations(dependencyRelations);
+    acdcAlgorithm->run();
+    QList<QStringList> subgraphs = acdcAlgorithm->subgraphs();
+
+    umlNotation->setClusterList(subgraphs);
+    umlNotation->loadSubsystems();
+    umlNotation->generateDiagram(systemDirectory);
+}
+
+void ArchitectureRecoveryPanel::loadBackendPlugins()
+{
+    ui->backendComboBox->addItem("GCC-XML");
+}
+
+void ArchitectureRecoveryPanel::loadAlgorithmPlugins()
+{
+    ui->algorithmComboBox->addItem("ACDC (Algorithm for Compreehension-Driven Clustering)");
+}
+
+void ArchitectureRecoveryPanel::loadNotationPlugins()
+{
+    ui->notationComboBox->addItem("UML (Unified Modeling Language)");
+}
+
+}

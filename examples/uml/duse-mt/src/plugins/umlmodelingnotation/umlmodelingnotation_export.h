@@ -38,36 +38,16 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef IPLUGIN_H
-#define IPLUGIN_H
 
-#include "duseinterfaces_global.h"
+#ifndef UMLMODELINGNOTATION_EXPORT_H
+#define UMLMODELINGNOTATION_EXPORT_H
 
-#include "icore.h"
+#include <qglobal.h>
 
-#include <QtCore/QObject>
-#include <QtCore/QString>
+#if defined(UMLMODELINGNOTATION_LIBRARY)
+#  define UMLMODELINGNOTATION_EXPORT Q_DECL_EXPORT
+#else
+#  define UMLMODELINGNOTATION_EXPORT Q_DECL_IMPORT
+#endif
 
-namespace DuSE
-{
-
-class DUSEINTERFACESSHARED_EXPORT IPlugin : public QObject
-{
-    Q_OBJECT
-
-public:
-    IPlugin(QObject *parent = 0);
-    virtual ~IPlugin();
-
-    virtual bool initialize() = 0;
-
-    virtual QString name();
-
-protected:
-    QString _name;
-};
-
-}
-
-#endif // IPLUGIN_H
-
+#endif // UMLMODELINGNOTATION_EXPORT_H

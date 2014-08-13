@@ -6,6 +6,8 @@
 
 include(../../duse-mt-plugin.pri)
 
+QT += gui widgets
+
 HEADERS += architecturerecoverycoreplugin.h \
            iarchitecturerecoverybackend.h \
            imodelingnotation.h \
@@ -14,3 +16,5 @@ HEADERS += architecturerecoverycoreplugin.h \
 SOURCES += architecturerecoverycoreplugin.cpp
 
 OTHER_FILES += architecturerecoverycore.json
+
+FORMS +=

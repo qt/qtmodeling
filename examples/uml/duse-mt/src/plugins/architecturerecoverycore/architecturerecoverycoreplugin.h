@@ -41,6 +41,9 @@
 #ifndef ARCHITECTURERECOVERYCOREPLUGIN_H
 #define ARCHITECTURERECOVERYCOREPLUGIN_H
 
+#include <architecturerecoverycore/iarchitecturerecoverybackend.h>
+#include <architecturerecoverycore/iarchitecturerecoveryalgorithm.h>
+#include <architecturerecoverycore/imodelingnotation.h>
 #include <duseinterfaces/iplugin.h>
 
 namespace DuSE
@@ -55,6 +58,20 @@ public:
     ArchitectureRecoveryCorePlugin(QObject *parent = 0);
 
     virtual bool initialize();
+
+    void loadPluginsList();
+    void loadRecoveryBackends();
+    void loadRecoveryAlgorithms();
+    void loadModelingNotations();
+    QList<IArchitectureRecoveryBackend *> recoveryBackends();
+    QList<IArchitectureRecoveryAlgorithm *> recoveryAlgorithms();
+    QList<IModelingNotation *> modelingNotations();
+
+private:
+    QList<const QMetaObject*>               _metaObjects;
+    QList<IArchitectureRecoveryBackend *>   _recoveryBackends;
+    QList<IArchitectureRecoveryAlgorithm *> _recoveryAlgorithms;
+    QList<IModelingNotation *>              _modelingNotations;
 };
 
 }

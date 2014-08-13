@@ -38,36 +38,29 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef IPLUGIN_H
-#define IPLUGIN_H
+#include "architecturerecoverypanelplugin.h"
 
-#include "duseinterfaces_global.h"
+#include <QtCore/QDebug>
+#include <QtWidgets/QAction>
 
-#include "icore.h"
-
-#include <QtCore/QObject>
-#include <QtCore/QString>
+#include <duseinterfaces/iuicontroller.h>
 
 namespace DuSE
 {
 
-class DUSEINTERFACESSHARED_EXPORT IPlugin : public QObject
+ArchitectureRecoveryPanelPlugin::ArchitectureRecoveryPanelPlugin(QObject *parent)
+    : IPlugin(parent), architectureRecoveryPanel(new ArchitectureRecoveryPanel)
 {
-    Q_OBJECT
-
-public:
-    IPlugin(QObject *parent = 0);
-    virtual ~IPlugin();
-
-    virtual bool initialize() = 0;
-
-    virtual QString name();
-
-protected:
-    QString _name;
-};
-
 }
 
-#endif // IPLUGIN_H
 
+bool DuSE::ArchitectureRecoveryPanelPlugin::initialize()
+{
+    QAction *newArchitectureRecoveryProcessAction = new QAction(QIcon(), tr("New architecture recovery process"), this);
+    connect(newArchitectureRecoveryProcessAction, SIGNAL(triggered()), architectureRecoveryPanel, SLOT(loadPanel()));
+    ICore::self()->uiController()->addAction(newArchitectureRecoveryProcessAction, tr("menu_File"));
+
+    return true;
+}
+
+}

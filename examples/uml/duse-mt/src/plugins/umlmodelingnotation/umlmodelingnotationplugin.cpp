@@ -38,36 +38,64 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef IPLUGIN_H
-#define IPLUGIN_H
+#include "umlmodelingnotationplugin.h"
 
-#include "duseinterfaces_global.h"
-
-#include "icore.h"
-
-#include <QtCore/QObject>
-#include <QtCore/QString>
+#include <QtModeling/QXmiWriter>
 
 namespace DuSE
 {
 
-class DUSEINTERFACESSHARED_EXPORT IPlugin : public QObject
+UmlModelingNotationPlugin::UmlModelingNotationPlugin(QObject *parent)
+    : IPlugin(parent)
 {
-    Q_OBJECT
-
-public:
-    IPlugin(QObject *parent = 0);
-    virtual ~IPlugin();
-
-    virtual bool initialize() = 0;
-
-    virtual QString name();
-
-protected:
-    QString _name;
-};
-
+    _name = "UML Notation";
 }
 
-#endif // IPLUGIN_H
+bool UmlModelingNotationPlugin::initialize()
+{
+    return true;
+}
 
+void UmlModelingNotationPlugin::generateDiagram(const QString &name)
+{
+    QFile file(QString(name + "/output.xmi"));
+
+    if (!file.open(QFile::WriteOnly | QFile::Text)) {
+        qDebug() << "Cannot write file !";
+    } else {
+        QXmiWriter writer;
+        QList<QModelingObject *> list;
+        foreach (QUmlPackage *subsystem, _subsystems) {
+            list<< subsystem->asQModelingObject();
+        }
+
+        if (writer.writeFile(list, &file)) {
+            qDebug() << "XMI file saved !";
+        } else {
+            qDebug() << "Error when writing XMI file !";
+        }
+    }
+
+    file.close();
+}
+
+void UmlModelingNotationPlugin::loadSubsystems()
+{
+    foreach (QStringList clusterElements, _clusterList) {
+        QUmlPackage *subsystem = new QUmlPackage;
+        subsystem->setName(clusterElements.at(0));
+        for (int i = 1; i < clusterElements.count(); ++i) {
+            QUmlPackage *subsystemElement = new QUmlPackage;
+            subsystemElement->setName(clusterElements.at(i));
+            subsystem->addPackagedElement(subsystemElement);
+        }
+        _subsystems.append(subsystem);
+    }
+}
+
+void UmlModelingNotationPlugin::setClusterList(QList<QStringList> m_clusterList)
+{
+    _clusterList = m_clusterList;
+}
+
+}

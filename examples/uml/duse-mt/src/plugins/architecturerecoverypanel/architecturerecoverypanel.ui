@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>DuSE::ArchitectureRecoveryPanel</class>
+ <widget class="QDialog" name="DuSE::ArchitectureRecoveryPanel">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>393</width>
+    <height>265</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <widget class="QLabel" name="algorithmLabel">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>110</y>
+     <width>71</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Algoritmo:</string>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="notationComboBox">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>170</y>
+     <width>291</width>
+     <height>23</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="notationLabel">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>170</y>
+     <width>71</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Notação:</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="architectureProcessInformativeLabel">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>381</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Defina as etapas do processo de recuperação arquitetural:</string>
+   </property>
+   <property name="wordWrap">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="startPushButton">
+   <property name="geometry">
+    <rect>
+     <x>279</x>
+     <y>220</y>
+     <width>101</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Iniciar</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="backendLabel">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>50</y>
+     <width>71</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Backend:</string>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="backendComboBox">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>50</y>
+     <width>291</width>
+     <height>23</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="algorithmComboBox">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>110</y>
+     <width>291</width>
+     <height>23</height>
+    </rect>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

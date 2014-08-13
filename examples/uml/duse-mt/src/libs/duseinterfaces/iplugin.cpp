@@ -52,5 +52,10 @@ IPlugin::~IPlugin()
 {
 }
 
+QString IPlugin::name()
+{
+    return _name;
+}
+
 }
 

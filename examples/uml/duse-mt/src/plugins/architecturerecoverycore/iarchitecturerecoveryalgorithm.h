@@ -51,7 +51,7 @@ class IArchitectureRecoveryAlgorithm
 {
 
 public:
-    virtual void run() const = 0;
+    virtual void run() = 0;
 
     virtual void setDevelopmentPlatform(IDevelopmentPlatform *m_developmentPlatform) = 0;
     virtual void setModelingNotation(IModelingNotation *m_modelingNotation) = 0;

@@ -55,9 +55,40 @@ ArchitectureRecoveryCorePlugin::ArchitectureRecoveryCorePlugin(QObject *parent) 
 
 bool ArchitectureRecoveryCorePlugin::initialize()
 {
-    qDebug() << ICore::self()->pluginController()->pluginsByType<DuSE::IArchitectureRecoveryBackend>();
     return true;
 }
 
+void ArchitectureRecoveryCorePlugin::loadPluginsList()
+{
 }
 
+void ArchitectureRecoveryCorePlugin::loadRecoveryBackends()
+{
+}
+
+void ArchitectureRecoveryCorePlugin::loadRecoveryAlgorithms()
+{
+
+}
+
+void ArchitectureRecoveryCorePlugin::loadModelingNotations()
+{
+
+}
+
+QList<IArchitectureRecoveryBackend *> ArchitectureRecoveryCorePlugin::recoveryBackends()
+{
+    return _recoveryBackends;
+}
+
+QList<IArchitectureRecoveryAlgorithm *> ArchitectureRecoveryCorePlugin::recoveryAlgorithms()
+{
+    return _recoveryAlgorithms;
+}
+
+QList<IModelingNotation *> ArchitectureRecoveryCorePlugin::modelingNotations()
+{
+    return _modelingNotations;
+}
+
+}

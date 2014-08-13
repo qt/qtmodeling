@@ -38,36 +38,63 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef IPLUGIN_H
-#define IPLUGIN_H
+#include "acdcarchitecturerecoveryalgorithmplugin.h"
 
-#include "duseinterfaces_global.h"
-
-#include "icore.h"
-
-#include <QtCore/QObject>
-#include <QtCore/QString>
+#include <QDebug>
 
 namespace DuSE
 {
 
-class DUSEINTERFACESSHARED_EXPORT IPlugin : public QObject
+AcdcArchitectureRecoveryAlgorithmPlugin::AcdcArchitectureRecoveryAlgorithmPlugin(QObject *parent)
+    : IPlugin(parent), _dependencyRelationsTreeManager(new DependencyRelationsTreeManager),
+      _subgraphDominatorPattern(new SubgraphDominatorPattern)
 {
-    Q_OBJECT
-
-public:
-    IPlugin(QObject *parent = 0);
-    virtual ~IPlugin();
-
-    virtual bool initialize() = 0;
-
-    virtual QString name();
-
-protected:
-    QString _name;
-};
-
+    _name = "ACDC";
 }
 
-#endif // IPLUGIN_H
+bool AcdcArchitectureRecoveryAlgorithmPlugin::initialize()
+{
+    return true;
+}
 
+void AcdcArchitectureRecoveryAlgorithmPlugin::run()
+{
+    _dependencyRelationsTreeManager->fillNodesTable(_nodesTable, _dependencyRelations);
+    _dependencyRelationsTreeManager->orderNodes(_nodesTable, _orderedNodes);
+    _subgraphDominatorPattern->executePattern(_orderedNodes, _dependencyRelations);
+    _subgraphs = _subgraphDominatorPattern->subgraphs();
+    _orphanNodes = _subgraphDominatorPattern->orphanNodes(_subgraphs, _dependencyRelations);
+    _subgraphs.append(_orphanNodes);
+}
+
+void AcdcArchitectureRecoveryAlgorithmPlugin::setDependencyRelations(QMultiMap<QString, QString> m_dependencyRelations)
+{
+    _dependencyRelations = m_dependencyRelations;
+}
+
+QList<QStringList> AcdcArchitectureRecoveryAlgorithmPlugin::subgraphs()
+{
+    return _subgraphs;
+}
+
+void AcdcArchitectureRecoveryAlgorithmPlugin::setDevelopmentPlatform(IDevelopmentPlatform *m_developmentPlatform)
+{
+    _developmentPlatform = m_developmentPlatform;
+}
+
+void AcdcArchitectureRecoveryAlgorithmPlugin::setModelingNotation(IModelingNotation *m_modelingNotation)
+{
+    _modelingNotation = m_modelingNotation;
+}
+
+IDevelopmentPlatform *AcdcArchitectureRecoveryAlgorithmPlugin::developmentPlatform()
+{
+    return _developmentPlatform;
+}
+
+IModelingNotation *AcdcArchitectureRecoveryAlgorithmPlugin::modelingNotation()
+{
+    return _modelingNotation;
+}
+
+}

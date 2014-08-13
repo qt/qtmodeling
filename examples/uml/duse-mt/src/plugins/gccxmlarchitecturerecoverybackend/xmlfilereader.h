@@ -38,36 +38,48 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef IPLUGIN_H
-#define IPLUGIN_H
+#ifndef XMLFILEREADER_H
+#define XMLFILEREADER_H
 
-#include "duseinterfaces_global.h"
+#include <QHash>
+#include <QList>
+#include <QMultiMap>
+#include <QtCore/QStringList>
 
-#include "icore.h"
+QT_BEGIN_NAMESPACE
+class QXmlStreamReader;
+QT_END_NAMESPACE
 
-#include <QtCore/QObject>
-#include <QtCore/QString>
+#include "xmlfilemanager.h"
 
 namespace DuSE
 {
 
-class DUSEINTERFACESSHARED_EXPORT IPlugin : public QObject
+class XmlFileReader
 {
-    Q_OBJECT
-
 public:
-    IPlugin(QObject *parent = 0);
-    virtual ~IPlugin();
+    XmlFileReader(QString rootDirectory, QString fileName);
+    ~XmlFileReader();
 
-    virtual bool initialize() = 0;
+    void fillTagContainers();
+    QMap<QString, QString> fileClasses();
+    QList<QPair<QString, QString> > fileFields();
+    QMap<QString, QString> filePointers();
+    QList<QPair<QString, QString> > fileBases();
+    QList<QPair<QString, QString> > fileArguments();
 
-    virtual QString name();
-
-protected:
-    QString _name;
+private:
+    QString _rootProjectDir;
+    QString _fileName;
+    QXmlStreamReader *_xmlReader;
+    XmlFileManager *_xmlFileManager;
+    QMap<QString, QString> _fileClasses;
+    QList<QPair<QString, QString> > _fileFields;
+    QMap<QString, QString> _filePointers;
+    QList<QPair<QString, QString> > _fileBases;
+    QList<QPair<QString, QString> > _fileArguments;
 };
 
 }
 
-#endif // IPLUGIN_H
-
+#endif // XMLFILEREADER_H

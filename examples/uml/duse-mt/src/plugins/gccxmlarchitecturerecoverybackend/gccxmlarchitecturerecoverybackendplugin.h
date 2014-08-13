@@ -47,9 +47,15 @@
 #include <QtCore/QDir>
 #include <QtCore/QHash>
 #include <QtCore/QObjectList>
+#include <QtCore/QObject>
 #include <QtCore/QStringList>
 #include <QtCore/QMetaType>
 #include <QtCore/QVariant>
+
+#include "xmlfilemanager.h"
+#include "xmlfilereader.h"
+
+#include "gccxmlarchitecturerecoverybackend_export.h"
 
 QT_BEGIN_NAMESPACE
 class QXmlStreamReader;
@@ -58,7 +64,7 @@ QT_END_NAMESPACE
 namespace DuSE
 {
 
-class GccXmlArchitectureRecoveryBackendPlugin : public IPlugin, public IArchitectureRecoveryBackend
+class GCCXMLARCHITECTURERECOVERYBACKEND_EXPORT GccXmlArchitectureRecoveryBackendPlugin : public IPlugin, public IArchitectureRecoveryBackend
 {
     Q_OBJECT
     Q_PLUGIN_METADATA(IID "org.liveblue.DuSE.IPlugin" FILE "gccxmlarchitecturerecoverybackend.json")
@@ -68,35 +74,36 @@ public:
 
     virtual bool initialize();
 
-    void setRootProjectDir(const QDir &rootProjectDir);
-
     virtual QObjectList components();
     virtual QObjectList connectors();
+    void run();
+    void runGccXml();
+    void recoverDependencyRelations();
+    void fieldAdjacencies();
+    void baseAdjacencies();
+    void argumentsAdjacencies();
 
 private Q_SLOTS:
-    void newArchitectureRecoveryProcess();
 
 private:
-    QStringList generateXmlFiles(const QStringList &codeFiles) const;
-    bool openXmlFile(const QString &filePath);
-    QStringList findConstructorsFromXml();
-    QObject *extractComponent();
-    void findFunctionsFromXml(QObject *component);
-    QHash<QString, QMultiHash<QString, QString> > classFunctionsContainer(QString xmlAttribute, QHash<QString, QMultiHash<QString, QString> > &classFunctions);
-    void findFunctionParameters(const QString &functionName, QMultiHash<QString, QString> &function);
-    QString findTypeNumber(const QString &typeID);
-    QString findType(const QString &typeNumber);
-
-    QDir _rootProjectDir;
-    QFile _xmlFile;
-    QString _xmlFileName;
-    QXmlStreamReader *_xmlReader;
+    int            _xmlCount;
+    QDir           _rootProjectDirectory;
+    QString        _rootProjectDirectoryString;
+    QStringList    _xmlFilesList;
+    XmlFileManager *_xmlFileManager;
+    XmlFileReader  *_reader;
+    QMap<QString, QMap<QString, QString> > _fileClasses;
+    QMap<QString, QList<QPair<QString, QString> > > _fileFields;
+    QMap<QString, QMap<QString, QString> > _filePointers;
+    QMap<QString, QList<QPair<QString, QString> > > _fileBases;
+    QMap<QString, QList<QPair<QString, QString> > > _fileArguments;
+    QMultiMap<QString, QString> _dependencyRelations;
 };
 
-typedef QHash<QString, QMultiHash<QString, QString> > ClassFunctions;
+typedef QMultiMap<QString, QString> DependencyRelations;
 
 #endif // GCCXMLARCHITECTURERECOVERYBACKENDPLUGIN
 
 }
 
-Q_DECLARE_METATYPE(DuSE::ClassFunctions);
+Q_DECLARE_METATYPE(DuSE::DependencyRelations);

@@ -14,4 +14,7 @@ qtHaveModule(quick): SUBDIRS += welcomedashboard \
 qtHaveModule(script):qtHaveModule(quick): SUBDIRS += designspaceexplorer
 
 SUBDIRS += architecturerecoverycore \
-    gccxmlarchitecturerecoverybackend
+    gccxmlarchitecturerecoverybackend \
+    acdcarchitecturerecoveryalgorithm \
+    umlmodelingnotation \
+    architecturerecoverypanel

@@ -38,36 +38,36 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef IPLUGIN_H
-#define IPLUGIN_H
+#ifndef XMLFILEMANAGER_H
+#define XMLFILEMANAGER_H
 
-#include "duseinterfaces_global.h"
+#include <QtCore/QFile>
+#include <QtCore/QStringList>
 
-#include "icore.h"
-
-#include <QtCore/QObject>
-#include <QtCore/QString>
+QT_BEGIN_NAMESPACE
+class QDir;
+class QXmlStreamReader;
+QT_END_NAMESPACE
 
 namespace DuSE
 {
 
-class DUSEINTERFACESSHARED_EXPORT IPlugin : public QObject
+class XmlFileManager
 {
-    Q_OBJECT
-
 public:
-    IPlugin(QObject *parent = 0);
-    virtual ~IPlugin();
+    XmlFileManager();
 
-    virtual bool initialize() = 0;
+    ~XmlFileManager();
 
-    virtual QString name();
+    QStringList generateXmlFiles(const QDir &rootProjectDir) const;
+    QXmlStreamReader* openXmlFile(const QString &filePath);
+    void closeXmlFile();
 
-protected:
-    QString _name;
+private:
+    QFile            _xmlFile;
+    QXmlStreamReader *_xmlReader;
 };
 
 }
 
-#endif // IPLUGIN_H
-
+#endif // XMLFILEMANAGER_H

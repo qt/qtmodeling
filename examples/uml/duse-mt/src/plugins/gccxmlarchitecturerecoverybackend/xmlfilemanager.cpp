@@ -38,36 +38,55 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef IPLUGIN_H
-#define IPLUGIN_H
+#include "xmlfilemanager.h"
 
-#include "duseinterfaces_global.h"
-
-#include "icore.h"
-
-#include <QtCore/QObject>
-#include <QtCore/QString>
+#include <QtCore/QDir>
+#include <QtCore/QProcess>
+#include <QtCore/QXmlStreamReader>
 
 namespace DuSE
 {
 
-class DUSEINTERFACESSHARED_EXPORT IPlugin : public QObject
+XmlFileManager::XmlFileManager()
 {
-    Q_OBJECT
-
-public:
-    IPlugin(QObject *parent = 0);
-    virtual ~IPlugin();
-
-    virtual bool initialize() = 0;
-
-    virtual QString name();
-
-protected:
-    QString _name;
-};
-
 }
 
-#endif // IPLUGIN_H
+QStringList XmlFileManager::generateXmlFiles(const QDir &rootProjectDir) const
+{
+    QStringList headers = rootProjectDir.entryList(QStringList("*.h"), QDir::Files | QDir::NoSymLinks);
 
+    int codeFilesSize = headers.size();
+
+    for (int i = 0; i < codeFilesSize; ++i) {
+        QString file = headers.at(i).toLocal8Bit().constData();
+        QString fileDir = rootProjectDir.absolutePath() + "/" + file;
+        QString xmlFileDir = rootProjectDir.absolutePath() + "/" + file.replace(".h", ".xml");
+
+        QProcess process;
+        process.start("gccxml " + fileDir + " -fxml=" + xmlFileDir);
+        process.waitForFinished();
+    }
+
+    return rootProjectDir.entryList(QStringList("*.xml"), QDir::Files | QDir::NoSymLinks);
+}
+
+QXmlStreamReader *XmlFileManager::openXmlFile(const QString &filePath)
+{
+    _xmlFile.setFileName(filePath);
+    _xmlReader = new QXmlStreamReader(&_xmlFile);
+
+    if (!_xmlFile.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        return new QXmlStreamReader;
+    }
+
+    return _xmlReader;
+}
+
+void XmlFileManager::closeXmlFile()
+{
+    if (_xmlFile.isOpen()) {
+        _xmlFile.close();
+    }
+}
+
+}

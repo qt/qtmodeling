@@ -42,7 +42,9 @@
 
 #include <QtWidgets/QAction>
 #include <QtWidgets/QFileDialog>
+#include <QtWidgets/QMessageBox>
 
+#include <QtCore/QDebug>
 #include <QtCore/QProcess>
 #include <QtCore/QXmlStreamReader>
 
@@ -54,244 +56,247 @@ namespace DuSE
 GccXmlArchitectureRecoveryBackendPlugin::GccXmlArchitectureRecoveryBackendPlugin(QObject *parent) :
     IPlugin(parent)
 {
+    _name = "C++ (GCC-XML)";
+    qRegisterMetaType<DependencyRelations>("DependencyRelations");
 }
 
 bool GccXmlArchitectureRecoveryBackendPlugin::initialize()
 {
-    QAction *newArchitectureRecoveryProcessAction = new QAction(QIcon(), tr("New architecture recovery process"), this);
-    connect(newArchitectureRecoveryProcessAction, SIGNAL(triggered()), this, SLOT(newArchitectureRecoveryProcess()));
-    ICore::self()->uiController()->addAction(newArchitectureRecoveryProcessAction, tr("menu_File"));
-    qRegisterMetaType<ClassFunctions>("ClassFunctions");
     return true;
 }
 
-void GccXmlArchitectureRecoveryBackendPlugin::setRootProjectDir(const QDir &rootProjectDir)
-{
-    _rootProjectDir = rootProjectDir;
-}
-
-void GccXmlArchitectureRecoveryBackendPlugin::newArchitectureRecoveryProcess()
-{
-    QString directory = QFileDialog::getExistingDirectory(0, tr("Open code tree"), QDir::currentPath());
-    _rootProjectDir = QDir(directory);
-    components();
-}
 
 QObjectList GccXmlArchitectureRecoveryBackendPlugin::components()
 {
     QObjectList components;
 
-    QStringList headers = _rootProjectDir.entryList(QStringList("*.h"), QDir::Files | QDir::NoSymLinks);
-    QStringList xmlFiles = generateXmlFiles(headers);
-    int xmlFilesSize = xmlFiles.size();
-    for (int i = 0; i < xmlFilesSize; ++i) {
-        _xmlFileName = xmlFiles.at(i).toLocal8Bit().constData();
-
-        QObject *component = extractComponent();
-        components.append(component);
-    }
+    QObject *componentsDependencyRelations = new QObject;
+    componentsDependencyRelations->setProperty("components", QVariant::fromValue(_dependencyRelations));
+    componentsDependencyRelations->setProperty("systemDirectory", QVariant::fromValue(_rootProjectDirectoryString));
+    components.append(componentsDependencyRelations);
 
     return components;
 }
 
 QObjectList GccXmlArchitectureRecoveryBackendPlugin::connectors()
 {
-    return QObjectList();
+    QObjectList connectors;
+
+    return connectors;
 }
 
-QStringList GccXmlArchitectureRecoveryBackendPlugin::generateXmlFiles(const QStringList &codeFiles) const
+void GccXmlArchitectureRecoveryBackendPlugin::run()
 {
-    int codeFilesSize = codeFiles.size();
-
-    for (int i = 0; i < codeFilesSize; ++i) {
-        QString file = codeFiles.at(i).toLocal8Bit().constData();
-        QString fileDir = _rootProjectDir.absolutePath() + "/" + file;
-        QString xmlFileDir = _rootProjectDir.absolutePath() + "/" + file.replace(".h", ".xml");
-
-        QProcess process;
-        process.start("gccxml " + fileDir + " -fxml=" + xmlFileDir);
-        process.waitForFinished();
-    }
-
-    return _rootProjectDir.entryList(QStringList("*.xml"), QDir::Files | QDir::NoSymLinks);
+    runGccXml();
+    recoverDependencyRelations();
 }
 
-bool GccXmlArchitectureRecoveryBackendPlugin::openXmlFile(const QString &filePath)
+void GccXmlArchitectureRecoveryBackendPlugin::runGccXml()
 {
-    _xmlFile.setFileName(filePath);
-    _xmlReader = new QXmlStreamReader(&_xmlFile);
+    _rootProjectDirectoryString = QFileDialog::getExistingDirectory(0, "Escolha o diretório raíz do projeto", QDir::currentPath());
 
-    if (!_xmlFile.open(QIODevice::ReadOnly | QIODevice::Text)) {
-        return false;
-    }
-
-    return true;
-}
-
-QStringList GccXmlArchitectureRecoveryBackendPlugin::findConstructorsFromXml()
-{
-    QStringList constructors;
-
-    openXmlFile(_rootProjectDir.absolutePath() + "/" + _xmlFileName);
-    QString className = _xmlFileName;
-    className.replace(".xml", "");
-    while (!_xmlReader->atEnd() && !_xmlReader->hasError()) {
-        QXmlStreamReader::TokenType token = _xmlReader->readNext();
-
-        if (token == QXmlStreamReader::StartElement) {
-            if (_xmlReader->name() == "Constructor") {
-                QXmlStreamAttributes attributes = _xmlReader->attributes();
-
-                QString attribute = attributes.value("demangled").toString();
-                if (attribute.contains(className + "::", Qt::CaseInsensitive)) {
-                    constructors.append(attribute);
-                }
-            }
-        }
-    }
-    if (_xmlFile.isOpen()) {
-        _xmlFile.close();
-    }
-
-    return constructors;
-}
-
-QObject *GccXmlArchitectureRecoveryBackendPlugin::extractComponent()
-{
-    QObject *component = new QObject;
-    QString className;
-    QStringList constructors = findConstructorsFromXml();
-
-    if (!constructors.isEmpty()) {
-        QString expression = constructors.last();
-        QStringList elements = expression.split("::");
-        className = elements.at(0) + "::" + elements.at(1);
-
-        component->setObjectName(className);
+    if (_rootProjectDirectoryString.isEmpty()) {
+        QMessageBox errorMessage;
+        errorMessage.setInformativeText("Diretório inválido.");
+        errorMessage.show();
     } else {
-        className = _xmlFileName;
-        className.replace(".xml", "");
-        component->setObjectName(className);
+        _rootProjectDirectory = QDir(_rootProjectDirectoryString);
+        _xmlFilesList = _xmlFileManager->generateXmlFiles(_rootProjectDirectory);
+        _xmlCount = _xmlFilesList.count();
     }
-
-    findFunctionsFromXml(component);
-
-    return component;
 }
 
-void GccXmlArchitectureRecoveryBackendPlugin::findFunctionsFromXml(QObject *component)
+void GccXmlArchitectureRecoveryBackendPlugin::recoverDependencyRelations()
 {
-    QHash<QString, QMultiHash<QString, QString> > classFunctions;
+    QString fileName;
 
-    openXmlFile(_rootProjectDir.absolutePath() + "/" + _xmlFileName);
+    for (int i = 0; i < _xmlCount; ++i) {
+        fileName = _xmlFilesList.at(i).toLocal8Bit().constData();
 
-    QStringList expression = component->objectName().split("::");
-    QString classNamespace = expression.first();
+        _reader = new XmlFileReader(_rootProjectDirectory.absolutePath(), fileName);
 
-    while (!_xmlReader->atEnd() && !_xmlReader->hasError()) {
-        QXmlStreamReader::TokenType token = _xmlReader->readNext();
+        _reader->fillTagContainers();
 
-        if (token == QXmlStreamReader::StartElement) {
-            if ((_xmlReader->name() == "Method") ||
-                    (_xmlReader->name() == "Constructor") ||
-                    (_xmlReader->name() == "Destructor")) {
-                QString attribute = _xmlReader->attributes().value("demangled").toString();
+        _fileClasses.insert(fileName, _reader->fileClasses());
+        _fileFields.insert(fileName, _reader->fileFields());
+        _filePointers.insert(fileName, _reader->filePointers());
+        _fileBases.insert(fileName, _reader->fileBases());
+        _fileArguments.insert(fileName, _reader->fileArguments());
 
-                if (attribute.contains(classNamespace + "::", Qt::CaseInsensitive)) {
-                    classFunctions = classFunctionsContainer(attribute, classFunctions);
+        fieldAdjacencies();
+        baseAdjacencies();
+        argumentsAdjacencies();
+
+        qDebug() << "Tamanho de dependencyRelations: " << _dependencyRelations.count();
+    }
+}
+
+void GccXmlArchitectureRecoveryBackendPlugin::fieldAdjacencies()
+{
+    QString fileName;
+
+    for (int i = 0; i < _xmlCount; ++i) {
+
+        fileName = _xmlFilesList.at(i).toLocal8Bit().constData();
+
+        QMap<QString, QString> classes = _fileClasses.value(fileName);
+        QList<QPair<QString, QString> > fields = _fileFields.value(fileName);
+        QMap<QString, QString> pointers = _filePointers.value(fileName);
+
+        QString dependent;
+        QString dependency;
+
+        QStringList classIds = classes.keys();
+        foreach (QString classId, classIds) {
+            dependent = classes.value(classId);
+            for (int i = 0; i < fields.size(); ++i) {
+                QPair<QString, QString> field = fields.at(i);
+                if (classId == field.first) {
+                    if (classes.value(field.second).isEmpty()) {
+                        QStringList pointersId = pointers.keys();
+                        foreach (QString pointerId, pointersId) {
+                            if (field.second == pointerId) {
+                                if (!classes.value(pointers.value(pointerId)).isEmpty()) {
+                                    dependency = classes.value(pointers.value(pointerId));
+                                }
+                            }
+                        }
+                    } else {
+                        dependency = classes.value(field.second);
+                    }
+                }
+
+                if (!_dependencyRelations.keys().contains(dependent)) {
+                    if (!dependent.isEmpty() && !dependency.isEmpty()) {
+                        _dependencyRelations.insert(dependent, dependency);
+                    }
+                } else {
+                    bool isNewDependencie = false;
+                    QStringList dependencies = _dependencyRelations.values(dependent);
+                    foreach (QString d, dependencies) {
+                        if (dependency == d) {
+                            isNewDependencie = true;
+                        }
+                    }
+                    if (isNewDependencie == false) {
+                        if (!dependent.isEmpty() && !dependency.isEmpty()) {
+                            _dependencyRelations.insert(dependent, dependency);
+                        }
+                    }
+                }
+
+                dependency = "";
+            }
+        }
+    }
+}
+
+void GccXmlArchitectureRecoveryBackendPlugin::baseAdjacencies()
+{
+    QString fileName;
+
+    for (int i = 0; i < _xmlCount; ++i) {
+
+        fileName = _xmlFilesList.at(i).toLocal8Bit().constData();
+
+        QMap<QString, QString> classes = _fileClasses.value(fileName);
+        QList<QPair<QString, QString> > bases = _fileBases.value(fileName);
+
+        QString dependent;
+        QString dependency;
+
+        QStringList classIds = classes.keys();
+        foreach (QString classId, classIds) {
+            dependent = classes.value(classId);
+            for (int i = 0; i < bases.size(); ++i) {
+                QPair<QString, QString> base = bases.at(i);
+                if (classId == base.first) {
+                    dependency = classes.value(base.second);
                 }
             }
-        }
-    }
-    if (_xmlFile.isOpen()) {
-        _xmlFile.close();
-    }
 
-    component->setProperty("Functions", QVariant::fromValue(classFunctions));
-}
-
-QHash<QString, QMultiHash<QString, QString> > GccXmlArchitectureRecoveryBackendPlugin::classFunctionsContainer(QString xmlAttribute, QHash<QString, QMultiHash<QString, QString> > &classFunctions)
-{
-    QMultiHash<QString, QString> function;
-
-    QStringList signature = xmlAttribute.split("::");
-    QString className = signature.at(0) + "::" + signature.at(1);
-    QString functionName = signature.at(2).left(signature.at(2).indexOf("("));
-
-    findFunctionParameters(functionName, function);
-    classFunctions.insert(className, function);
-
-    return classFunctions;
-}
-
-void GccXmlArchitectureRecoveryBackendPlugin::findFunctionParameters(const QString &functionName, QMultiHash<QString, QString> &function)
-{
-    while (_xmlReader->readNextStartElement()) {
-        if (!_xmlReader->attributes().value("name").toString().isEmpty()) {
-            QString parameterName = _xmlReader->attributes().value("name").toString();
-            QString typeID = _xmlReader->attributes().value("type").toString();
-
-            QString parameterTypeNumber = findTypeNumber(typeID);
-            QString parameterType = findType(parameterTypeNumber);
-            if (parameterType == "") {
-                parameterType = findType(typeID);
-            }
-
-            function.insert(functionName, parameterName + " " + parameterType);
-        }
-    }
-}
-
-QString GccXmlArchitectureRecoveryBackendPlugin::findTypeNumber(const QString &typeID)
-{
-    QFile file(_rootProjectDir.absolutePath() + "/" + _xmlFileName);
-    QXmlStreamReader *typeNumberCollector = new QXmlStreamReader(&file);
-    file.open(QIODevice::ReadOnly | QIODevice::Text);
-
-    while (!typeNumberCollector->atEnd() && !typeNumberCollector->hasError()) {
-        QXmlStreamReader::TokenType token = typeNumberCollector->readNext();
-
-        if (token == QXmlStreamReader::StartElement) {
-            if (typeNumberCollector->name() == "PointerType") {
-                if (typeNumberCollector->attributes().value("id").toString() == typeID) {
-                    break;
+            if (!_dependencyRelations.keys().contains(dependent)) {
+                if (!dependent.isEmpty() && !dependency.isEmpty()) {
+                    _dependencyRelations.insert(dependent, dependency);
+                }
+            } else {
+                bool isNewDependencie = false;
+                QStringList dependencies = _dependencyRelations.values(dependent);
+                foreach (QString d, dependencies) {
+                    if (dependency == d) {
+                        isNewDependencie = true;
+                    }
+                }
+                if (isNewDependencie == false) {
+                    if (!dependent.isEmpty() && !dependency.isEmpty()) {
+                        _dependencyRelations.insert(dependent, dependency);
+                    }
                 }
             }
+
+            dependency = "";
         }
     }
-
-    QString typeNumber = typeNumberCollector->attributes().value("type").toString();
-
-    file.close();
-    delete typeNumberCollector;
-
-    return typeNumber;
 }
 
-QString GccXmlArchitectureRecoveryBackendPlugin::findType(const QString &typeNumber)
+void GccXmlArchitectureRecoveryBackendPlugin::argumentsAdjacencies()
 {
-    QFile file(_rootProjectDir.absolutePath() + "/" + _xmlFileName);
-    QXmlStreamReader *typeCollector = new QXmlStreamReader(&file);
-    file.open(QIODevice::ReadOnly | QIODevice::Text);
+    QString fileName;
 
-    while (!typeCollector->atEnd() && !typeCollector->hasError()) {
-        QXmlStreamReader::TokenType token = typeCollector->readNext();
+    for (int i = 0; i < _xmlCount; ++i) {
 
-        if (token == QXmlStreamReader::StartElement) {
-            if (typeCollector->name() == "Class") {
-                if (typeCollector->attributes().value("id").toString() == typeNumber) {
-                    break;
+        fileName = _xmlFilesList.at(i).toLocal8Bit().constData();
+
+        QMap<QString, QString> classes = _fileClasses.value(fileName);
+        QList<QPair<QString, QString> > arguments = _fileArguments.value(fileName);
+        QMap<QString, QString> pointers = _filePointers.value(fileName);
+
+        QString dependent;
+        QString dependency;
+
+        QStringList classIds = classes.keys();
+        foreach (QString classId, classIds) {
+            dependent = classes.value(classId);
+            for (int i = 0; i < arguments.size(); ++i) {
+                QPair<QString, QString> argument = arguments.at(i);
+                if (classId == argument.first) {
+                    if (classes.value(argument.second).isEmpty()) {
+                        QStringList pointersId = pointers.keys();
+                        foreach (QString pointerId, pointersId) {
+                            if (argument.second == pointerId) {
+                                if (!classes.value(pointers.value(pointerId)).isEmpty()) {
+                                    dependency = classes.value(pointers.value(pointerId));
+                                }
+                            }
+                        }
+                    } else {
+                        dependency = classes.value(argument.second);
+                    }
                 }
             }
+
+            if (!_dependencyRelations.keys().contains(dependent)) {
+                if (!dependent.isEmpty() && !dependency.isEmpty()) {
+                    _dependencyRelations.insert(dependent, dependency);
+                }
+            } else {
+                bool isNewDependencie = false;
+                QStringList dependencies = _dependencyRelations.values(dependent);
+                foreach (QString d, dependencies) {
+                    if (dependency == d) {
+                        isNewDependencie = true;
+                    }
+                }
+                if (isNewDependencie == false) {
+                    if (!dependent.isEmpty() && !dependency.isEmpty()) {
+                        _dependencyRelations.insert(dependent, dependency);
+                    }
+                }
+            }
+
+            dependency = "";
         }
     }
-
-    QString type = typeCollector->attributes().value("name").toString();
-
-    file.close();
-    delete typeCollector;
-
-    return type;
 }
 
 }
