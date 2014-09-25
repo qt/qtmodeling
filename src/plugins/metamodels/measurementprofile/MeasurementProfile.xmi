@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:uml="http://www.omg.org/spec/UML/20110701">
+  <uml:Profile name="MeasurementProfile" xmi:id="MeasurementProfile" URI="http://liveblue.wordpress.com/MeasurementProfile">
+    <elementImport xmi:type="uml:ElementImport" xmi:id="elementImport0">
+      <importedElement href="http://www.omg.org/spec/UML/20110701/UML.xmi#Interface"/>
+    </elementImport>
+    <packagedElement xmi:type="uml:Stereotype" name="ILFInterface" xmi:id="ILFInterface">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="ILFInterface-base_Interface" visibility="public" name="base_Interface" association="A_interface_ILFInterface">
+        <type href="http://www.omg.org/spec/UML/20110701/UML.xmi#Interface"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="A_interface_ILFInterface" name="A_interface_ILFInterface">
+      <memberEnd xmi:idref="A_interface_ILFInterface-extension_ILFInterface"/>
+      <memberEnd xmi:idref="ILFInterface-base_Interface"/>
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="A_interface_ILFInterface-extension_ILFInterface" name="extension_ILFInterface" type="ILFInterface" aggregation="composite" association="A_interface_ILFInterface"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" name="EIFInterface" xmi:id="EIFInterface">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="EIFInterface-base_Interface" visibility="public" name="base_Interface" association="A_interface_EIFInterface">
+        <type href="http://www.omg.org/spec/UML/20110701/UML.xmi#Interface"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="A_interface_EIFInterface" name="A_interface_EIFInterface">
+      <memberEnd xmi:idref="A_interface_EIFInterface-extension_EIFInterface"/>
+      <memberEnd xmi:idref="EIFInterface-base_Interface"/>
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="A_interface_EIFInterface-extension_EIFInterface" name="extension_EIFInterface" type="EIFInterface" aggregation="composite" association="A_interface_EIFInterface"/>
+    </packagedElement>
+  </uml:Profile>
+</xmi:XMI>
+

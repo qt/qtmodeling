@@ -1,0 +1,7 @@
+{
+    "Version": "1.0",
+    "Vendor": "Qt Project",
+    "MetaModelNamespaceUri": "http://liveblue.wordpress.com/MeasurementProfile",
+    "MetaModelPrefix": "QMeasurementProfile",
+    "MetaModelTopLevelTypes": [ ]
+}

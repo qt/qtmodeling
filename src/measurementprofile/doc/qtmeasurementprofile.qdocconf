@@ -1,0 +1,44 @@
+include($QT_INSTALL_DOCS/global/qt-module-defaults.qdocconf)
+
+project                 = QtMeasurementProfile
+description             = Qt MeasurementProfile Reference Documentation
+url                     = http://qt-project.org/doc/qt-$QT_VER
+version                 = $QT_VERSION
+
+examplesinstallpath     = measurementprofile
+
+qhp.projects            = QtMeasurementProfile
+
+qhp.QtMeasurementProfile.file            = qtmeasurementprofile.qhp
+qhp.QtMeasurementProfile.namespace           = org.qt-project.qtmeasurementprofile.$QT_VERSION_TAG
+qhp.QtMeasurementProfile.virtualFolder       = qtmeasurementprofile
+qhp.QtMeasurementProfile.indexTitle          = Qt Measurement Profile
+qhp.QtMeasurementProfile.indexRoot           =
+
+qhp.QtMeasurementProfile.filterAttributes    = qtmeasurementprofile $QT_VERSION qtrefdoc
+qhp.QtMeasurementProfile.customFilters.Qt.name = QtMeasurementProfile $QT_VERSION
+qhp.QtMeasurementProfile.customFilters.Qt.filterAttributes = qtmeasurementprofile $QT_VERSION
+
+qhp.QtMeasurementProfile.subprojects         = classes
+qhp.QtMeasurementProfile.subprojects.classes.title = C++ Classes
+qhp.QtMeasurementProfile.subprojects.classes.indexTitle = Qt Measurement Profile C++ Classes
+qhp.QtMeasurementProfile.subprojects.classes.selectors = class fake:headerfile
+qhp.QtMeasurementProfile.subprojects.classes.sortPages = true
+tagfile                 = ../../../doc/qtmeasurementprofile/qtmeasurementprofile.tags
+
+depends                 += qtcore qtdoc qtmodeling qtuml
+
+headerdirs  += ..
+
+sourcedirs  += .. \
+               ../../../examples/measurementprofile/doc/src
+
+exampledirs += ../../../examples/measurementprofile \
+               ../ \
+               snippets
+
+imagedirs   += images \
+               ../../../examples/measurementprofile/doc/images
+
+navigation.landingpage = "Qt Measurement Profiles"
+navigation.cppclassespage = "Qt Measurement Profile C++ Classes"
