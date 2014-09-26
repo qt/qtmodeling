@@ -5,6 +5,7 @@
     "QtUml" => "$basedir/src/uml",
     "QtDuse" => "$basedir/src/duse",
     "QtSADuseProfile" => "$basedir/src/saduseprofile",
+    "QtMeasurementProfile" => "$basedir/src/measurementprofile",
 );
 
 %moduleheaders = ( # restrict the module headers to those found in relative path
@@ -28,15 +29,9 @@
     "qtsaduseprofileversion.h" => "QtSADuseProfileVersion",
     "qtsaduseprofileglobal.h"  => "QtSADuseProfileGlobal",
     "qtsaduseprofilenamespace.h"  => "QtSADuseProfileNamespace",
-);
-
-%modulepris = (
-    "QtModeling" => "$basedir/modules/qtmodeling.pri",
-    "QtModelingWidgets" => "$basedir/modules/qtmodelingwidgets.pri",
-    "QtMof" => "$basedir/modules/qtmof.pri",
-    "QtUml" => "$basedir/modules/qtuml.pri",
-    "QtDuse" => "$basedir/modules/qtduse.pri",
-    "QtSADuseProfile" => "$basedir/modules/qtsaduseprofile.pri",
+    "qtmeasurementprofileversion.h" => "QtMeasurementProfileVersion",
+    "qtmeasurementprofileglobal.h"  => "QtMeasurementProfileGlobal",
+    "qtmeasurementprofilenamespace.h"  => "QtMeasurementProfileNamespace",
 );
 
 %dependencies = (
