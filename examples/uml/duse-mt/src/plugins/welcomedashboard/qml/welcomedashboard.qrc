@@ -1,6 +1,0 @@
-<RCC>
-    <qresource prefix="/welcomedashboard">
-        <file>welcomedashboard.qml</file>
-        <file>duse-mt-64x64.png</file>
-    </qresource>
-</RCC>

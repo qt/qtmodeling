@@ -1,6 +1,0 @@
-<RCC>
-    <qresource prefix="/concretesyntaxview">
-        <file>concretesyntaxview.qml</file>
-        <file>grid.png</file>
-    </qresource>
-</RCC>

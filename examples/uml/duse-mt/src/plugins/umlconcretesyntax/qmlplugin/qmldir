@@ -1,9 +1,0 @@
-module QtModeling.Uml
-internal UmlElement UmlElement.qml
-internal UmlSlot UmlSlot.qml
-UmlClass 1.0 UmlClass.qml
-UmlComponent 1.0 UmlComponent.qml
-UmlProperty 1.0 UmlProperty.qml
-UmlAssociation 1.0 UmlAssociation.qml
-UmlGeneralization 1.0 UmlGeneralization.qml
-plugin qtmodelingumlplugin
